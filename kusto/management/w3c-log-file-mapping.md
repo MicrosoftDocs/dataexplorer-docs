@@ -2,7 +2,7 @@
 title:  W3CLOGFILE Mapping
 description: Learn how to use W3CLOGFILE mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 08/11/2024
 ---
 
 # W3CLOGFILE mapping

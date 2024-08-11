@@ -3,7 +3,7 @@ title: matches regex operator
 description: Learn how to use the matches regex string operator to filter a record set based on a case-sensitive regex value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/30/2023
+ms.date: 08/11/2024
 ---
 # matches regex operator
 

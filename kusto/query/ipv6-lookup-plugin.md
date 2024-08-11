@@ -3,7 +3,7 @@ title:  "ipv6_lookup plugin"
 description: Learn how to use the ipv6_lookup plugin to look up an IPv6 address in a lookup table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/09/2024
+ms.date: 08/11/2024
 ---
 # ipv6_lookup plugin
 

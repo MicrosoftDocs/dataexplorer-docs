@@ -3,7 +3,7 @@ title:  ipv4_range_to_cidr_list()
 description: Learn how to use the ipv4_range_to_cidr_list() function to convert IPv4 address range to a list of CIDR ranges.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/10/2023
+ms.date: 08/11/2024
 ---
 # ipv4_range_to_cidr_list()
 

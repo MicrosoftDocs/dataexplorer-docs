@@ -3,7 +3,7 @@ title:  series_iir()
 description: Learn how to use the series_iir() function to apply an Infinite Impulse Response filter on a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_iir()
 

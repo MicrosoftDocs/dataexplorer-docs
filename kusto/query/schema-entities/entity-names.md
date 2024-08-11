@@ -3,7 +3,7 @@ title:  Entity names
 description:  This article describes Entity names.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/03/2023
+ms.date: 08/11/2024
 ---
 # Entity names
 

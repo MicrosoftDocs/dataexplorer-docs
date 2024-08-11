@@ -4,7 +4,7 @@ description: Learn how to use the azure_digital_twins_query_request plugin to ru
 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/07/2022
+ms.date: 08/11/2024
 ---
 # azure_digital_twins_query_request plugin
 

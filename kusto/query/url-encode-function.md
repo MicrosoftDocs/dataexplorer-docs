@@ -3,7 +3,7 @@ title:  url_encode()
 description: Learn how to use the url_encode() function to convert characters of the input URL into a transmittable format.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # url_encode()
 

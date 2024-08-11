@@ -3,7 +3,7 @@ title:  extract_json()
 description: Learn how to use the extract_json() function to get a specified element out of a JSON text using a path expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/30/2023
+ms.date: 08/11/2024
 ---
 # extract_json()
 

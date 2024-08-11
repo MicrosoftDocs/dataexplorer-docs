@@ -2,7 +2,7 @@
 title: Manage external table roles
 description: Learn how to use management commands to view, add, and remove external table admins on an external table level.
 ms.topic: reference
-ms.date: 07/17/2023
+ms.date: 08/11/2024
 ---
 
 # Manage external table roles

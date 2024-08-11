@@ -3,7 +3,7 @@ title:  unixtime_seconds_todatetime()
 description: Learn how to use the unixtime_seconds_todatetime() function to convert unix-epoch seconds to UTC datetime.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/28/2023
+ms.date: 08/11/2024
 ---
 # unixtime_seconds_todatetime()
 

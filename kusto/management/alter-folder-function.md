@@ -3,7 +3,7 @@ title: .alter function folder command
 description: Learn how to use the `.alter function folder` command to alter the folder value of an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/29/2024
+ms.date: 08/11/2024
 ---
 # .alter function folder command
 

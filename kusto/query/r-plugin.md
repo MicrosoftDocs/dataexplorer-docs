@@ -3,7 +3,7 @@ title:  R plugin (Preview)
 description: Learn how to use the R plugin (Preview) to run a user-defined function using an R script.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/27/2023
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # R plugin (Preview)

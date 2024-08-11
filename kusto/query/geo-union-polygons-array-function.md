@@ -3,7 +3,7 @@ title:  geo_union_polygons_array()
 description: Learn how to use the geo_union_polygons_array() function to calculate the union of polygons or multipolygons on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_union_polygons_array()
 

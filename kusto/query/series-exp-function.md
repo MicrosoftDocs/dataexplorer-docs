@@ -3,7 +3,7 @@ title:  series_exp()
 description: Learn how to use the series_exp() function to calculate the element-wise base-e exponential function (e^x) of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/11/2024
 ---
 # series_exp()
 

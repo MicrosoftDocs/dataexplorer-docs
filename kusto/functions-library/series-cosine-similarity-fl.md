@@ -3,7 +3,7 @@ title:  series_cosine_similarity_fl()
 description:  This article describes series_cosine_similarity_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_cosine_similarity_fl()

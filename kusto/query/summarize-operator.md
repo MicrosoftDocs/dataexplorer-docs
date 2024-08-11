@@ -3,7 +3,7 @@ title:  summarize operator
 description: Learn how to use the summarize operator to produce a table that summarizes the content of the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ms.localizationpriority: high 
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---

@@ -3,7 +3,7 @@ title:   Views
 description:  Learn how to define and use a view.
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 08/13/2023
+ms.date: 08/11/2024
 ---
 # Views
 

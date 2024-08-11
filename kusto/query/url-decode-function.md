@@ -3,7 +3,7 @@ title:  url_decode()
 description: Learn how to use the url_decode() function to convert an encoded URL into a regular URL representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 08/11/2024
 ---
 # url_decode()
 

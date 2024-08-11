@@ -3,7 +3,7 @@ title:  .alter materialized-view policy partitioning command
 description: Learn how to use the `.alter materialized-view policy partitioning` command to change the materialized view's partitioning policy. 
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
 ---
 # .alter materialized-view policy partitioning command
 

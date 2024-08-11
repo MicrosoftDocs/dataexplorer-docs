@@ -3,7 +3,7 @@ title:  geo_polygon_buffer()
 description: Learn how to use the geo_polygon_buffer() function to calculate polygon buffer
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 08/11/2024
 ---
 # geo_polygon_buffer()
 

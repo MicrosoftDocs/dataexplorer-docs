@@ -3,7 +3,7 @@ title:  toint()
 description: Learn how to use the toint() function to convert the input value to an integer number representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/22/2023
+ms.date: 08/11/2024
 ---
 # toint()
 

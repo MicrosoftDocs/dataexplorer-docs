@@ -3,7 +3,7 @@ title:  parse_ipv4()
 description: Learn how to use the parse_ipv4() function to convert an IPv4 string to a long number in big-endian order.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # parse_ipv4()
 

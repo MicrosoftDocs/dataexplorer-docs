@@ -3,7 +3,7 @@ title:  Create materialized view
 description:  This article describes how to create materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/22/2023
+ms.date: 08/11/2024
 ---
 
 # .create materialized-view

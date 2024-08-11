@@ -3,7 +3,7 @@ title: .alter database policy caching command
 description: Learn how to use the `.alter database policy caching` command to change the database cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
 ---
 # .alter database policy caching command
 

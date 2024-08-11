@@ -3,7 +3,7 @@ title:  isutf8()
 description: Learn how to use the isutf8() function to check if the argument is a valid utf8 string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2022
+ms.date: 08/11/2024
 ---
 # isutf8()
 

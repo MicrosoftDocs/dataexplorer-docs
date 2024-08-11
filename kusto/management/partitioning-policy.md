@@ -3,7 +3,7 @@ title: Partitioning policy
 description: Learn how to use the partitioning policy to improve query performance.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2024
+ms.date: 08/11/2024
 ---
 # Partitioning policy
 

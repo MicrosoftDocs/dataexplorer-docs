@@ -3,7 +3,7 @@ title:  find operator
 description: Learn how to use the find operator to find rows that match a predicate across a set of tables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/14/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # find operator

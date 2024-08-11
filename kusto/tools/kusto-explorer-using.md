@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 08/05/2024
+ms.date: 08/11/2024
 ---
 
 # Using Kusto.Explorer

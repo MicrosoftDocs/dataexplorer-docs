@@ -3,7 +3,7 @@ title: .show commands command
 description: Learn how to use the `.show commands` command to view a table with completed management commands.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 08/11/2024
 ---
 # .show commands command
 

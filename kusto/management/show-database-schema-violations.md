@@ -3,7 +3,7 @@ title: .show database schema violations
 description: Learn how to use the `.show database schema violations` command to show schema violations within a database.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 10/04/2023
+ms.date: 08/11/2024
 ---
 # .show database schema violations
 

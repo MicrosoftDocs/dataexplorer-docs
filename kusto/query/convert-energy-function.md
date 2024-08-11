@@ -3,7 +3,7 @@ title:  convert_energy()
 description: Learn how to use the convert_energy() function to convert an energy input value from one unit to another.
 ms.reviewer: itsagui
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # convert_energy
 

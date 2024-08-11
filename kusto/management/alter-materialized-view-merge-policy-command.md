@@ -3,7 +3,7 @@ title:  .alter materialized-view policy merge command
 description: Learn how to use the `.alter materialized-view policy merge` command to change the materialized view's merge policy. 
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
 ---
 # .alter materialized-view policy merge command
 

@@ -3,7 +3,7 @@ title:  JSONPath syntax
 description: Learn how to use JSONPath expressions to specify data mappings and KQL functions that process dynamic objects.
 ms.reviewer: igborodi
 ms.topic: reference
-ms.date: 07/24/2023
+ms.date: 08/11/2024
 ---
 
 # JSONPath expressions

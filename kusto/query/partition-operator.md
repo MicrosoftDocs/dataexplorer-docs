@@ -3,7 +3,7 @@ title:  partition operator
 description: Learn how to use the partition operator to partition the records of the input table into multiple subtables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/05/2023
+ms.date: 08/11/2024
 ---
 # partition operator
 

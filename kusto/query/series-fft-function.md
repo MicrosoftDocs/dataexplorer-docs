@@ -3,7 +3,7 @@ title:  series_fft()
 description: Learn how to use the series_fft() function to apply the Fast Fourier Transform (FFT) on a series.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/11/2024
 ---
 # series_fft()
 

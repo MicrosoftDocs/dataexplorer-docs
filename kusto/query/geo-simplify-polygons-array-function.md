@@ -3,7 +3,7 @@ title:  geo_simplify_polygons_array()
 description: Learn how to use the geo_simplify_polygons_array() function to simplify polygons by replacing nearly straight chains of short edges with a single long edge on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/14/2022
+ms.date: 08/11/2024
 ---
 # geo_simplify_polygons_array()
 

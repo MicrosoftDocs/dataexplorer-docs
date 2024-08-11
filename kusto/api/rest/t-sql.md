@@ -2,7 +2,7 @@
 title:  Send T-SQL queries over RESTful web API
 description: This article describes how to use T-SQL queries with the RESTful web API.
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 
 # Send T-SQL queries via the REST API

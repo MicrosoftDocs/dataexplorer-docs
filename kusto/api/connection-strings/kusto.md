@@ -3,7 +3,7 @@ title:  Kusto connection strings
 description: This article describes Kusto connection strings.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/18/2023
+ms.date: 08/11/2024
 ---
 # Kusto connection strings
 

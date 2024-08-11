@@ -3,7 +3,7 @@ title:  hash()
 description: Learn how to use the hash() function to return the hash value of the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/25/2022
+ms.date: 08/11/2024
 ---
 # hash()
 

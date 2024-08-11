@@ -3,7 +3,7 @@ title:  Aggregation Functions
 description: Learn how to use aggregation functions to perform calculations on a set of values and return a single value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/20/2022
+ms.date: 08/11/2024
 ---
 
 # Aggregation function types at a glance

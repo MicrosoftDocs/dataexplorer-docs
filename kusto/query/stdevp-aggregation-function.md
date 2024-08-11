@@ -3,7 +3,7 @@ title:  stdevp() (aggregation function)
 description: Learn how to use the stdevp() aggregation function to calculate the standard deviation of an expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 08/11/2024
 ---
 # stdevp() (aggregation function)
 

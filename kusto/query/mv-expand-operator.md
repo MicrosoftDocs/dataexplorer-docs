@@ -3,7 +3,7 @@ title:  mv-expand operator
 description: Learn how to use the mv-expand operator to expand multi-value dynamic arrays or property bags into multiple records.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/03/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # mv-expand operator

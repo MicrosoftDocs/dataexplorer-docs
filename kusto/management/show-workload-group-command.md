@@ -3,7 +3,7 @@ title: .show workload_group command
 description: Learn how to use the `.show workload_group` command to show the specified workload group definitions.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 ---
 # .show workload_group command
 

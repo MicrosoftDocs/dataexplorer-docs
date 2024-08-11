@@ -3,7 +3,7 @@ title:  "datetime_list_timezones()"
 description: Get a list of all supported timezones.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 06/25/2024
+ms.date: 08/11/2024
 ---
 # datetime_list_timezones()
 

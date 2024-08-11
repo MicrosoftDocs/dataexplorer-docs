@@ -3,7 +3,7 @@ title: Best practices for Kusto Query Language queries
 description:  This article describes Query best practices.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2021
+ms.date: 08/11/2024
 adobe-target: true
 ---
 # Best practices for Kusto Query Language queries

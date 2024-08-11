@@ -3,7 +3,7 @@ title:  make-series operator
 description: Learn how to use the make-series operator to create a series of specified aggregated values along a specified axis. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 08/11/2024
 ms.localizationpriority: high
 ---
 # make-series operator

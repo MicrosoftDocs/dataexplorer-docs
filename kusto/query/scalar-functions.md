@@ -3,7 +3,7 @@ title:  Scalar Functions
 description: Learn how to use scalar functions to perform calculations that return a single value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/23/2023
+ms.date: 08/11/2024
 ---
 # Scalar function types at a glance
 

@@ -3,7 +3,7 @@ title:  The case-insensitive endswith string operator
 description: Learn how to use the endswith operator to filter a record set for data with a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/10/2023
+ms.date: 08/11/2024
 ---
 # endswith operator
 

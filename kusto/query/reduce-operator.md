@@ -3,7 +3,7 @@ title:  reduce operator
 description: Learn how to use the reduce operator to group a set of strings together based on value similarity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/22/2023
+ms.date: 08/11/2024
 ---
 # reduce operator
 

@@ -3,7 +3,7 @@ title:  strcat_delim()
 description: Learn how to use the strcat_delim() function to concatenate between 2 and 64 arguments using a specified delimiter as the first argument.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 08/11/2024
 ---
 # strcat_delim()
 

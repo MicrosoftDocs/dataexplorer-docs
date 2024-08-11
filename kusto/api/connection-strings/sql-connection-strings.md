@@ -3,7 +3,7 @@ title:  SQL external table connection strings
 description: This article describes how to connect and authenticate to SQL external tables.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 08/05/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Azure SQL external table connection strings

@@ -3,7 +3,7 @@ title:  series_fit_2lines_dynamic()
 description: Learn how to use the series_fit_2lines_dynamic() function to apply two segments linear regression on a dynamic numerical array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 08/11/2024
 ---
 # series_fit_2lines_dynamic()
 

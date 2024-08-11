@@ -3,7 +3,7 @@ title:  geo_point_to_h3cell()
 description: Learn how to use the geo_point_to_h3cell() function to calculate the H3 Cell token string value of a geographic location.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_point_to_h3cell()
 

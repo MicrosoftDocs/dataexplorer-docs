@@ -3,7 +3,7 @@ title:  series_uv_change_points_fl()
 description:  This article describes the series_uv_change_points_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # series_uv_change_points_fl()

@@ -3,7 +3,7 @@ title:  convert_temperature()
 description: Learn how to use the convert_temperature() function to convert a temperature input value from one unit to another.
 ms.reviewer: itsagui
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # convert_temperature
 

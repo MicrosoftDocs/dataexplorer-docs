@@ -3,7 +3,7 @@ title:  Window functions
 description: Learn how to use window functions on rows in a serialized set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 08/11/2024
 ---
 # Window functions overview
 

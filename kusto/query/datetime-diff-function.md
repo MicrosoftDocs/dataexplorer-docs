@@ -3,7 +3,7 @@ title:  datetime_diff()
 description: Learn how to use the datetime_diff() function to calculate the period between two datetime values. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/28/2022
+ms.date: 08/11/2024
 ---
 # datetime_diff()
 

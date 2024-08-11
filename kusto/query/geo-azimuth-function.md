@@ -3,7 +3,7 @@ title:  geo_azimuth()
 description: Learn how to use the geo_azimuth() function to calculate the angle between the true north and a line on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/01/2024
+ms.date: 08/11/2024
 ---
 # geo_azimuth()
 

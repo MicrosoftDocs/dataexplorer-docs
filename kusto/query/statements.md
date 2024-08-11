@@ -3,7 +3,7 @@ title:  Query statements
 description: This article lists the types of query statements.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/11/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Query statement types

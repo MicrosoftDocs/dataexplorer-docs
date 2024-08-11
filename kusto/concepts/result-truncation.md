@@ -3,7 +3,7 @@ title: Kusto query result set exceeds internal limit
 description: This article describes Query result set has exceeded the internal.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Query result set has exceeded the internal ... limit

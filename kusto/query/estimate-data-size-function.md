@@ -3,7 +3,7 @@ title:  estimate_data_size()
 description: Learn how to use the estimate_data_size() function to return an estimated data size in bytes of the selected columns of the tabular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # estimate_data_size()
 

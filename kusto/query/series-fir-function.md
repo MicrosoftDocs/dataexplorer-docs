@@ -3,7 +3,7 @@ title:  series_fir()
 description: Learn how to use the series_fir() function to apply a Finite Impulse Response (FIR) filter on a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 08/11/2024
 ---
 # series_fir()
 

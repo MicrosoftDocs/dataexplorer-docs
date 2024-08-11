@@ -3,7 +3,7 @@ title:  .alter table policy ingestiontime command
 description: Learn how to use the `.alter table policy ingestiontime` command to turn on or turn off a table's ingestion time policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy ingestiontime command
 

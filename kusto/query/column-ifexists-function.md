@@ -3,7 +3,7 @@ title:  column_ifexists()
 description: Learn how to use the column_ifexists() function to return a reference to the column if it exists.  
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # column_ifexists()
 

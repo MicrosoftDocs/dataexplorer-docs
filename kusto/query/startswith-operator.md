@@ -3,7 +3,7 @@ title:  The case-insensitive startswith string operator
 description: Learn how to use the case-insensitive startswith string operator to filter a record set with a case-insensitive string starting sequence.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 08/11/2024
 ---
 # startswith operator
 

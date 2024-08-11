@@ -3,7 +3,7 @@ title: .drop ingestion mapping command
 description: Learn how to use the `.drop ingestion mapping` command to drop the ingestion mapping from a table or a database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 08/11/2024
 ---
 # .drop ingestion mapping command
 

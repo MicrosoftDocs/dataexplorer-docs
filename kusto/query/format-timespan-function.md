@@ -3,7 +3,7 @@ title:  format_timespan()
 description: Learn how to use the format_timespan() function to format a timespan according to the provided format.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # format_timespan()
 

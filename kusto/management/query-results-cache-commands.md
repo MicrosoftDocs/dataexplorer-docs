@@ -3,7 +3,7 @@ title:  Query results cache commands
 description:  This article describes Query results cache.
 ms.reviewer: amitof
 ms.topic: reference
-ms.date: 06/16/2020
+ms.date: 08/11/2024
 ---
 # Query results cache commands
 

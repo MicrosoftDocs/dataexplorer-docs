@@ -3,7 +3,7 @@ title: T-SQL
 description: This article describes T-SQL.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 08/11/2024
 ---
 # Query data using T-SQL
 

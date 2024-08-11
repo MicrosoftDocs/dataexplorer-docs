@@ -3,7 +3,7 @@ title: Restricted view access policy
 description: Learn how to use the restricted view access policy to limit the principals who can query specified tables in a database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/21/2023
+ms.date: 08/11/2024
 ---
 # Restricted view access policy
 

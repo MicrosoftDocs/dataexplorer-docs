@@ -3,7 +3,7 @@ title:  .alter-merge table policy partitioning command
 description: Learn how to use the `.alter-merge table policy partitioning` command to change the table's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
 ---
 # .alter-merge table policy partitioning command
 

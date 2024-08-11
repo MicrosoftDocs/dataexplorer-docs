@@ -3,7 +3,7 @@ title:  variancep() (aggregation function)
 description: Learn how to use the variancep() aggregation function to calculate the population variance of an expression across the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 08/11/2024
 ---
 # variancep() (aggregation function)
 

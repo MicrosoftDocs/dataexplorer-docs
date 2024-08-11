@@ -3,7 +3,7 @@ title: Mirroring policy
 description: Learn how to use the mirroring policy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/23/2024
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric"
 ---
 # Mirroring policy

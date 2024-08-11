@@ -3,7 +3,7 @@ title:  toscalar()
 description: Learn how to use the toscalar() function to return a scalar constant value of the evaluated expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 08/11/2024
 ---
 # toscalar()
 

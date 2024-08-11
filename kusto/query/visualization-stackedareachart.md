@@ -3,7 +3,7 @@ title:  Stacked area chart visualization
 description:  This article describes the stacked area chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Stacked area chart

@@ -3,7 +3,7 @@ title:  indexof_regex()
 description: Learn how to use the indexof_regex() function to return the zero-based index position of a `regex` input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # indexof_regex()
 

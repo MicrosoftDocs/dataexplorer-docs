@@ -3,7 +3,7 @@ title:  make_timespan()
 description: Learn how to use the make_timespan() function to create a timespan scalar value from the specified time period.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 08/11/2024
 ---
 # make_timespan()
 

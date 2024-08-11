@@ -3,7 +3,7 @@ title:  top-nested operator
 description: Learn how to use the top-nested operator to produce a hierarchical aggregation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/13/2023
+ms.date: 08/11/2024
 ---
 # top-nested operator
 

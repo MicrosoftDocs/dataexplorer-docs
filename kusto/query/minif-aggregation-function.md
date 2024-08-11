@@ -3,7 +3,7 @@ title:  minif() (aggregation function)
 description: Learn how to use the minif() function to return the minimum value of an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # minif() (aggregation function)
 

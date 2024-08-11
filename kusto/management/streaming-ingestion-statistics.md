@@ -2,7 +2,7 @@
 title: .show streamingingestion statistics command
 description: Learn how to use the `.show streamingingestion statistics` command to show aggregated statistics for the streaming ingestion.
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
 ---
 # .show streamingingestion statistics command
 

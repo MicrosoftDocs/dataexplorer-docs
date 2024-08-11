@@ -3,7 +3,7 @@ title:  make_list_if() (aggregation function)
 description: Learn how to use the make_list_if() aggregation function to create a dynamic JSON object of expression values where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # make_list_if() (aggregation function)
 

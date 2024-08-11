@@ -3,7 +3,7 @@ title: make-graph operator
 description: Learn how to use the graph-to-table operator to build a graph structure from tabular inputs of edges and nodes.
 ms.reviewer: rocohen
 ms.topic: reference
-ms.date: 09/03/2023
+ms.date: 08/11/2024
 ---
 # make-graph operator
 

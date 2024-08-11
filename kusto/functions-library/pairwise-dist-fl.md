@@ -3,7 +3,7 @@ title:  pairwise_dist_fl()
 description: Learn how to use the pairwise_dist_fl() function to calculate the multivariate distance between data points in the same partition.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
 ---
 # pairwise_dist_fl()
 

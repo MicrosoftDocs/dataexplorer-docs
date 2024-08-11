@@ -3,7 +3,7 @@ title:  Columns
 description:  This article describes Columns.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 08/11/2024
 ---
 # Columns
 

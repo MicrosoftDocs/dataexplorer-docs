@@ -3,7 +3,7 @@ title:  series_equals()
 description: Learn how to use the series_equals() function to calculate the element-wise equals (`==`) logic operation of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/11/2024
 ---
 # series_equals()
 

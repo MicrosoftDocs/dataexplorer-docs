@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 05/23/2024
+ms.date: 08/11/2024
 ---
 
 The Python plugin runs a user-defined function (UDF) using a Python script. The Python script gets tabular data as its input, and produces tabular output.

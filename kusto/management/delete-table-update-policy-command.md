@@ -3,7 +3,7 @@ title: .delete table policy update command
 description: Learn how to use the `.delete table policy update` command to delete a table's update policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .delete table policy update command
 

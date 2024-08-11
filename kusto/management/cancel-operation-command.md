@@ -3,7 +3,7 @@ title: .cancel operation command
 description: Learn how to use the `.cancel operation` command to cancel a long-running operation.
 ms.reviewer: odkadosh
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .cancel operation command
 

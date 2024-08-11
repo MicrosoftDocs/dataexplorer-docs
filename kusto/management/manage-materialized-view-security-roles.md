@@ -2,7 +2,7 @@
 title: Manage materialized view roles
 description: Learn how to use management commands to view, add, and remove materialized view admins on a materialized view level.
 ms.topic: reference
-ms.date: 07/17/2023
+ms.date: 08/11/2024
 ---
 
 # Manage materialized view roles

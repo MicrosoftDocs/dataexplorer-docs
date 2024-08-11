@@ -3,7 +3,7 @@ title:  .alter cluster caching policy command
 description: Learn how to use the `.alter cluster caching policy` command to change the cluster's caching policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # .alter cluster caching policy command

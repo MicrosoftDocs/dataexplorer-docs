@@ -3,7 +3,7 @@ title:  The case-sensitive contains_cs string operator
 description: Learn how to use the contains_cs operator to filter a record set for data containing a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 08/11/2024
 ---
 # contains_cs operator
 

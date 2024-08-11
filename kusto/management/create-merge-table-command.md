@@ -3,7 +3,7 @@ title: .create-merge table command
 description: Learn how to use the `.create-merge table` command to create a new table or extend an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .create-merge table command
 

@@ -3,7 +3,7 @@ title:   series_clean_anomalies_fl()
 description: Learn how to use the series_clean_anomalies_fl() function to clean anomalous points in a series.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/14/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_clean_anomalies_fl()

@@ -3,7 +3,7 @@ title:  series_mv_ee_anomalies_fl()
 description:  Learn how to use the series_mv_ee_anomalies_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
 ---
 # series_mv_ee_anomalies_fl()
 

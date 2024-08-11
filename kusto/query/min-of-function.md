@@ -3,7 +3,7 @@ title:  min_of()
 description: Learn how to use the min_of() function to return the minimum value of all argument expressions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # min_of()
 

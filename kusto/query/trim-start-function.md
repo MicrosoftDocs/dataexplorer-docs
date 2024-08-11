@@ -3,7 +3,7 @@ title:  trim_start()
 description: Learn how to use the trim_start() function to remove the leading match of the specified regular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/05/2024
+ms.date: 08/11/2024
 ---
 # trim_start()
 

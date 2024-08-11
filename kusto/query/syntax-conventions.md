@@ -2,7 +2,7 @@
 title:  Syntax conventions for reference documentation
 description: Learn about the syntax conventions for the Kusto Query Language and management command documentation.
 ms.topic: reference
-ms.date: 07/25/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # Syntax conventions for reference documentation

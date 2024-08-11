@@ -3,7 +3,7 @@ title:  round()
 description: Learn how to use the round() function to round the number to the specified precision.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 08/11/2024
 ---
 # round()
 

@@ -3,7 +3,7 @@ title:  Columns management
 description:  This article describes Columns management.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 08/11/2024
 ---
 # Columns management
 

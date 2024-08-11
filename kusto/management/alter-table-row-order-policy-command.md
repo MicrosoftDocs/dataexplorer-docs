@@ -3,7 +3,7 @@ title: .alter table policy roworder command
 description: Learn how to use the `.alter table policy roworder` command to change a table's row order policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy roworder command
 

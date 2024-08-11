@@ -3,7 +3,7 @@ title:  database()
 description: Learn how to use the database() function to change the reference of the query to a specific database.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # database()

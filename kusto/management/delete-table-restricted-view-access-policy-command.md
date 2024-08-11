@@ -3,7 +3,7 @@ title: .delete table policy restricted_view_access command
 description: Learn how to use the `.delete table policy restricted_view_access` command to delete a table's restricted view access policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .delete table policy restricted_view_access command
 

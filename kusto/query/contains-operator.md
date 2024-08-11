@@ -3,7 +3,7 @@ title:  The case-insensitive contains string operator
 description: Learn how to use the contains operator to filter a record set for data containing a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 08/11/2024
 ---
 # contains operator
 

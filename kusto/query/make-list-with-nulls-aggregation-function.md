@@ -3,7 +3,7 @@ title:  make_list_with_nulls() (aggregation function)
 description:  Learn how to use the make_list_with_nulls() aggregation function to create a `dynamic` JSON object (array) which includes null values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # make_list_with_nulls() (aggregation function)
 

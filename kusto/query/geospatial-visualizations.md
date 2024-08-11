@@ -3,7 +3,7 @@ title: Geospatial data visualizations
 description: Learn how to visualize geospatial data.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 
 # Geospatial visualizations

@@ -3,7 +3,7 @@ title:  serialize operator
 description: Learn how to use the serialize operator to mark the input row set as serialized and ready for window functions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 08/11/2024
 ---
 # serialize operator
 

@@ -3,7 +3,7 @@ title: Data ingestion properties
 description: Learn about the various data ingestion properties.
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Data ingestion properties

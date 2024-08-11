@@ -3,7 +3,7 @@ title:  min() (aggregation function)
 description: Learn how to use the min() function to find the minimum value in a group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # min() (aggregation function)
 

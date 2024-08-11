@@ -3,7 +3,7 @@ title:  Export data to an external table
 description:  This article describes Export data to an external table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/20/2023
+ms.date: 08/11/2024
 ---
 # Export data to an external table
 

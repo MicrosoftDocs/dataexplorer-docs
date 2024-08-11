@@ -3,7 +3,7 @@ title:  Stored functions
 description:  This article describes Stored functions.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/05/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Stored functions

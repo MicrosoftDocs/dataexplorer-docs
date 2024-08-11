@@ -3,7 +3,7 @@ title: Kusto Go SDK
 description: This article describes Kusto Go SDK.
 ms.reviewer: vladikb
 ms.topic: reference
-ms.date: 06/04/2023
+ms.date: 08/11/2024
 ---
 
 # Kusto Golang SDK

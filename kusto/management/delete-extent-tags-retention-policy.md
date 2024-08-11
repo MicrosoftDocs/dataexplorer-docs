@@ -3,7 +3,7 @@ title: .delete extent tags retention policy command
 description: Learn how to use the `.delete extent tags retention policy` command to delete the extent tags retention policy on a table or database level.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .delete extent tags retention policy command
 

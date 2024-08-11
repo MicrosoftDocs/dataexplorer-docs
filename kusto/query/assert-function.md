@@ -3,7 +3,7 @@ title:  assert()
 description: Learn how to use the assert() function to check for a condition and output an error message when false.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 08/11/2024
 ---
 # assert()
 

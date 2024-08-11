@@ -3,7 +3,7 @@ title:  Kusto Explorer options
 description:  This article describes Kusto Explorer options.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/20/2023
+ms.date: 08/11/2024
 ---
 # Kusto Explorer options
 

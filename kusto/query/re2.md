@@ -3,7 +3,7 @@ title:   RE2 syntax
 description: This article lists the RE2 regular expression syntax accepted by Kusto Query Language (KQL).
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2023
+ms.date: 08/11/2024
 ---
 # RE2 syntax
 

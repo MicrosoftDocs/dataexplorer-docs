@@ -3,7 +3,7 @@ title:  Show continuous data export artifacts
 description:  This article describes how to show continuous data export artifacts.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 # Show continuous export artifacts
 

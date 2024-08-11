@@ -2,7 +2,7 @@
 title: .dup-next-failed-ingest command
 description: Learn how to troubleshoot your data ingestion on demand using the .dup-next-failed-ingest command.
 ms.topic: reference
-ms.date: 05/29/2023
+ms.date: 08/11/2024
 ---
 
 # .dup-next-failed-ingest command

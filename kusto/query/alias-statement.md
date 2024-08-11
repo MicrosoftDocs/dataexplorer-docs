@@ -3,7 +3,7 @@ title:  Alias statement
 description: Learn how to use an alias statement to define an alias for a database that is used for a query.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/14/2023
+ms.date: 08/11/2024
 ---
 # Alias statement
 

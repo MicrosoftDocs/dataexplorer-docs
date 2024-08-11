@@ -3,7 +3,7 @@ title:  geo_h3cell_rings()
 description: Learn how to use the geo_h3cell_rings() function to calculate the H3 cell rings.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_h3cell_rings()
 

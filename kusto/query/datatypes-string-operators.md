@@ -3,7 +3,7 @@ title:  String operators
 description: Learn about query operators for searching string data types.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/25/2023
+ms.date: 08/11/2024
 ---
 # String operators
 

@@ -2,7 +2,7 @@
 title: .show external table artifacts command
 description: Learn how to use the `.show external table artifacts` command to show external table artifacts for Azure Blob Storage or Azure Data Lake external tables.
 ms.topic: reference
-ms.date: 04/09/2023
+ms.date: 08/11/2024
 ---
 
 # Show external table artifacts command

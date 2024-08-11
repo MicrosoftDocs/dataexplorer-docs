@@ -3,7 +3,7 @@ title:  geo_polygon_simplify()
 description: Learn how to use the geo_polygon_simplify() function to simplify a polygon or a multipolygon.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_polygon_simplify()
 

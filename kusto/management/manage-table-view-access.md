@@ -2,7 +2,7 @@
 title: Manage view access to tables
 description: Learn how to grant view access to tables in a database.
 ms.topic: reference
-ms.date: 6/20/2024
+ms.date: 08/11/2024
 ---
 
 # Manage view access to tables within the same database

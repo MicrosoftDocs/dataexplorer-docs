@@ -3,7 +3,7 @@ title:  ipv4_is_private()
 description: Learn how to use the ipv4_is_private() function to check if the IPv4 string address belongs to a set of private network IPs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/01/2023
+ms.date: 08/11/2024
 ---
 # ipv4_is_private()
 

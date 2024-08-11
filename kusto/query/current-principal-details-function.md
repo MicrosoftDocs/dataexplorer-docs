@@ -3,7 +3,7 @@ title:  current_principal_details()
 description: Learn how to use the current_principal_details() function to return the details of the principal running the query. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/07/2023
+ms.date: 08/11/2024
 ---
 # current_principal_details()
 

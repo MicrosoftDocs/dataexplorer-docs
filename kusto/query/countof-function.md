@@ -3,7 +3,7 @@ title:  countof()
 description: Learn how to use the countof() function to count the occurrences of a substring in a string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # countof()
 

@@ -3,7 +3,7 @@ title:  dayofmonth()
 description: Learn how to use the dayofmonth() function to return an integer representing the day of the month.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 08/11/2024
 ---
 # dayofmonth()
 

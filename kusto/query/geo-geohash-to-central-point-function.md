@@ -3,7 +3,7 @@ title:  geo_geohash_to_central_point()
 description: Learn how to use the geo_geohash_to_central() function to calculate the geospatial coordinates that represent the center of a geohash rectangular area.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_geohash_to_central_point()
 

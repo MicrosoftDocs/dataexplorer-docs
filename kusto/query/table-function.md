@@ -3,7 +3,7 @@ title:  table()
 description: Learn how to use the table() function to reference a table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # table()

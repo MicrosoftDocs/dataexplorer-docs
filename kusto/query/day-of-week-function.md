@@ -3,7 +3,7 @@ title:  dayofweek()
 description: Learn how to use the dayofweek() function to return the `timespan` since the preceding Sunday.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/09/2024
+ms.date: 08/11/2024
 ---
 # dayofweek()
 

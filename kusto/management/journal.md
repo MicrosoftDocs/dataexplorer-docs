@@ -3,7 +3,7 @@ title:  Journal management
 description:  This article describes Journal management.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 08/11/2024
 ---
 # Journal management
 

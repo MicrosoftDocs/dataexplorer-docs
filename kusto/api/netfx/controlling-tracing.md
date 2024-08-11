@@ -4,7 +4,7 @@ description: This article describes controlling and suppressing SDK client-side 
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 04/19/2023
+ms.date: 08/11/2024
 ---
 # Controlling and suppressing Kusto SDK client-side tracing
 

@@ -3,7 +3,7 @@ title:  parse_command_line()
 description: Learn how to use the parse_command_line() function to parse a unicode command-line string.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # parse_command_line()
 

@@ -3,7 +3,7 @@ title:  bag_set_key()
 description: Learn how to use the bag_set_key() function to set a given key to a given value in a dynamic property-bag. 
 ms.reviewer: afridman
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 08/11/2024
 ---
 # bag_set_key()
 

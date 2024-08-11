@@ -3,7 +3,7 @@ title:  geo_polygon_to_s2cells()
 description: Learn how to use the geo_polygon_to_s2cells() function to calculate S2 cell tokens that cover a polygon or a multipolygon on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_polygon_to_s2cells()
 

@@ -3,7 +3,7 @@ title:  Materialized views use cases
 description: Learn about common and advanced use cases for materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 11/16/2023
+ms.date: 08/11/2024
 ---
 
 # Materialized views use cases

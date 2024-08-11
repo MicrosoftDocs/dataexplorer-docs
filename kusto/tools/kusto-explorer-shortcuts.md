@@ -3,7 +3,7 @@ title:  Kusto.Explorer keyboard shortcuts (hot keys)
 description:  This article describes Kusto.Explorer keyboard shortcuts (hot keys).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/27/2023
+ms.date: 08/11/2024
 ---
 # Kusto.Explorer keyboard shortcuts (hot keys)
 

@@ -3,7 +3,7 @@ title: Data formats supported for ingestion
 description: Learn about the various data and compression formats supported for ingestion.
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 09/13/2022
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Data formats supported for ingestion

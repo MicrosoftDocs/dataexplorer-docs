@@ -3,7 +3,7 @@ title:  materialize()
 description: Learn how to use the materialize() function to capture the value of a tabular expression for reuse.
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 08/11/2024
 ---
 # materialize()
 

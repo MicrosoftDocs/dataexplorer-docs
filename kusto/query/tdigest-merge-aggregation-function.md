@@ -3,7 +3,7 @@ title:  tdigest_merge() (aggregation functions)
 description: Learn how to use the tdigest_merge() aggregation function to merge tdigest results across the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/20/2023
+ms.date: 08/11/2024
 ---
 # tdigest_merge() (aggregation functions)
 

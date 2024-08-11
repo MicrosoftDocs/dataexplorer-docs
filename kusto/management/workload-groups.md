@@ -3,7 +3,7 @@ title: Workload groups
 description: Learn how to use workload groups to govern incoming requests to the cluster.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 7/1/2024
+ms.date: 08/11/2024
 ---
 # Workload groups
 

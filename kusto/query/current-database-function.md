@@ -3,7 +3,7 @@ title:  current_database()
 description: Learn how to use the current_database() function to return the name of the database in scope as a string type value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # current_database()
 

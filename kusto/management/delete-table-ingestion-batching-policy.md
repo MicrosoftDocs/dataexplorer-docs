@@ -3,7 +3,7 @@ title: .delete table policy ingestionbatching command
 description: Learn how to use the `.delete table policy ingestionbatching` command to remove a table's ingestion batching policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 08/11/2024
 ---
 # .delete table policy ingestionbatching command
 

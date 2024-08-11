@@ -3,7 +3,7 @@ title:  bag_merge()
 description: Learn how to use the bag_merge() function to merge property bags.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # bag_merge()
 

@@ -3,7 +3,7 @@ title:  Caching policy (hot and cold cache)
 description: This article describes caching policy (hot and cold cache).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/08/2023
+ms.date: 08/11/2024
 ---
 # Caching policy (hot and cold cache)
 

@@ -3,7 +3,7 @@ title:  fork operator
 description: Learn how to use the fork operator to run multiple consumer operators in parallel.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/15/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # fork operator

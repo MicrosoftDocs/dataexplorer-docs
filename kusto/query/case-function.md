@@ -3,7 +3,7 @@ title:  case()
 description: Learn how to use the case() function to evaluate a list of predicates and return the first expression for which the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # case()
 

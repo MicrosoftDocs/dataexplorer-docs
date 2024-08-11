@@ -3,7 +3,7 @@ title:  parse_csv()
 description: Learn how to use the parse_csv() function to split a given string representing a single record of comma-separated values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # parse_csv()
 

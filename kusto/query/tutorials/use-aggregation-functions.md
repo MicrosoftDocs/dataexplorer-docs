@@ -2,7 +2,7 @@
 title:  'Tutorial: Use aggregation functions in Kusto Query Language'
 description: This tutorial describes how to use aggregation functions in the Kusto Query Language.
 ms.topic: tutorial
-ms.date: 05/16/2023
+ms.date: 08/11/2024
 ---
 
 # Tutorial: Use aggregation functions

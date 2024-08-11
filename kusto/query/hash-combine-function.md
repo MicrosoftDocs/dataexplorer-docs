@@ -3,7 +3,7 @@ title:  hash_combine()
 description: learn how to use the hash_combine() function to combine hash values of two or more hashes.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/25/2022
+ms.date: 08/11/2024
 ---
 # hash_combine()
 

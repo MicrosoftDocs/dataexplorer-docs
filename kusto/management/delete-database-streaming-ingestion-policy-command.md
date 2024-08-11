@@ -3,7 +3,7 @@ title: .delete database policy streamingingestion command
 description: Learn how to use the `.delete database policy streamingingestion` command to delete the database streaming ingestion policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # .delete database policy streamingingestion command

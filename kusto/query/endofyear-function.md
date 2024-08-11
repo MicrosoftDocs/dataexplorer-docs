@@ -3,7 +3,7 @@ title:  endofyear()
 description: Learn how to use the endofyear() function to return a datetime representing the end of the year for the given date value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/11/2022
+ms.date: 08/11/2024
 ---
 # endofyear()
 

@@ -3,7 +3,7 @@ title:  base64_decode_toarray()
 description: Learn how to use the base64_decode_toarray() function to decode a base64 string into an array of long values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # base64_decode_toarray()
 

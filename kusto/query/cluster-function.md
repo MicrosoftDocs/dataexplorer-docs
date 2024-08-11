@@ -3,7 +3,7 @@ title:  cluster()
 description: Learn how to use the cluster() function to change the reference of the query to a remote cluster or Eventhouse.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cluster()

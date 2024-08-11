@@ -3,7 +3,7 @@ title:  Kusto Data library overview
 description: This article describes the Kusto Data library.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/13/2023
+ms.date: 08/11/2024
 adobe-target: true
 ---
 # Kusto Data library overview

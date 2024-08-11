@@ -3,7 +3,7 @@ title:  project-keep operator
 description: Learn how to use the project-keep operator to select columns from the input to keep in the output.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # project-keep operator
 

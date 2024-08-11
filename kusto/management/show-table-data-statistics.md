@@ -3,7 +3,7 @@ title: .show table data statistics command
 description: Learn how to use the `.show table data statistics` command to show the table's data statistics estimation by table column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show table data statistics command
 

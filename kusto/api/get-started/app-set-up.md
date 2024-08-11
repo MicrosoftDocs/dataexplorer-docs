@@ -3,7 +3,7 @@ title: Set up your development environment to use Kusto client libraries
 description: Learn how to set up your development environment to use Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 06/20/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Set up your development environment to use Kusto client libraries

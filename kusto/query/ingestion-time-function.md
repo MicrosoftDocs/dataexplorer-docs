@@ -3,7 +3,7 @@ title:  ingestion_time()
 description: Learn how to use the ingestion_time() function to return the approximate time of the data's ingestion. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # ingestion_time()

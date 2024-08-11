@@ -2,7 +2,7 @@
 title: Manage table security roles
 description: Learn how to use management commands to view, add, and remove security roles on a table level.
 ms.topic: reference
-ms.date: 07/17/2023
+ms.date: 08/11/2024
 ---
 
 # Manage table security roles

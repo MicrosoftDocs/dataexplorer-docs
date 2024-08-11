@@ -3,7 +3,7 @@ title:  .alter database policy merge command
 description: Learn how to use the `.alter database policy merge` command to change the database's merge policy. 
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 # .alter database policy merge command
 

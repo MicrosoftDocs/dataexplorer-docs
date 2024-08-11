@@ -3,7 +3,7 @@ title:  ipv6_is_in_any_range()
 description: Learn how to use the ipv6_is_in_any_range function to check if an IPv6 string address is in any of the IPv6 address ranges.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2022
+ms.date: 08/11/2024
 ---
 # ipv6_is_in_any_range()
 

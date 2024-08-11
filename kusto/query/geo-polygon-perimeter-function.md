@@ -3,7 +3,7 @@ title:  geo_polygon_perimeter()
 description: Learn how to use the geo_polygon_perimeter() function to calculate the length of the boundary of a polygon or a multipolygon on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_polygon_perimeter()
 

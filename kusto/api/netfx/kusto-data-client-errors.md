@@ -3,7 +3,7 @@ title:  Kusto.Data exceptions
 description: This article describes Kusto.Data exceptions.
 ms.reviewer: yogilad
 ms.topic: reference
-ms.date: 06/20/2022
+ms.date: 08/11/2024
 ---
 # Kusto.Data exceptions
 

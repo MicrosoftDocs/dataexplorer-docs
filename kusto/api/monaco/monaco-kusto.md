@@ -3,7 +3,7 @@ title: Integrate the Monaco Editor with Kusto Query Language support in your app
 description: Learn how to integrate the Monaco Editor with Kusto query support in your app.
 ms.reviewer: izlisbon
 ms.topic: how-to
-ms.date: 07/02/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Integrate the Monaco Editor with Kusto Query Language support in your app

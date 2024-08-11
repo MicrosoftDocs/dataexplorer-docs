@@ -3,7 +3,7 @@ title:  gamma()
 description: Learn how to use the gamma() function to compute the gamma of the input parameter.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/13/2022
+ms.date: 08/11/2024
 ---
 # gamma()
 

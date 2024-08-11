@@ -3,7 +3,7 @@ title:  Kusto.ingest into command (pull data from storage)
 description:  This article describes The .ingest into command (pull data from storage).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/26/2023
+ms.date: 08/11/2024
 ---
 # Ingest from storage
 

@@ -3,7 +3,7 @@ title:   series_outliers()
 description: Learn how to use the series_outliers() function to score anomaly points in a series.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/15/2023
+ms.date: 08/11/2024
 ---
 # series_outliers()
 

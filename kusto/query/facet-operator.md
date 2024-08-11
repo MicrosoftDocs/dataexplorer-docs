@@ -3,7 +3,7 @@ title:  facet operator
 description: Learn how to use the facet operator to return a table for each specified column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 08/11/2024
 ---
 # facet operator
 

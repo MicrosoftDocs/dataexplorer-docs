@@ -3,7 +3,7 @@ title: .create-or-alter ingestion mapping command
 description: Learn how to use the `.create-or-alter ingestion mapping` command to create or alter an ingestion mapping.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/26/2023
+ms.date: 08/11/2024
 ---
 # .create-or-alter ingestion mapping command
 

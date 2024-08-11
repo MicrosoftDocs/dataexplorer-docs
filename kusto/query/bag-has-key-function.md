@@ -3,7 +3,7 @@ title:  bag_has_key()
 description: Learn how to use the bag_has_key() function to check if a dynamic property bag object contains a given key. 
 ms.reviewer: afridman
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # bag_has_key()
 

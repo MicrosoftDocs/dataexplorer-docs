@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 05/23/2024
+ms.date: 08/11/2024
 ---
 
 This function uses a variant of the [HyperLogLog (HLL) algorithm](https://en.wikipedia.org/wiki/HyperLogLog), which does a stochastic estimation of set cardinality. The algorithm provides a "knob" that can be used to balance accuracy and execution time per memory size:

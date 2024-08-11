@@ -3,7 +3,7 @@ title: .show table policy mirroring command
 description: Learn how to use the `.show table policy mirroring` command to display the table's mirroring policy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 06/03/2024
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric"
 ---
 # .show table policy mirroring command

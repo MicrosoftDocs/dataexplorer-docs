@@ -3,7 +3,7 @@ title:  convert_mass()
 description: Learn how to use the convert_mass() function to convert a mass input value from one unit to another.
 ms.reviewer: itsagui
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # convert_mass
 

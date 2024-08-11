@@ -3,7 +3,7 @@ title:  Materialized views
 description:  This article describes materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/19/2023
+ms.date: 08/11/2024
 ---
 # Materialized views
 

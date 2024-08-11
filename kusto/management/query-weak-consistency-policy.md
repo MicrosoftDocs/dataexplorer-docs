@@ -3,7 +3,7 @@ title: Query weak consistency policy
 description: Learn how to use the query weak consistency policy to configure the weak consistency service.
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Query weak consistency policy

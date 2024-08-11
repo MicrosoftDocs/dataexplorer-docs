@@ -3,7 +3,7 @@ title:  cot()
 description: Learn how to use the cot() function to calculate the trigonometric cotangent of the specified angle in radians.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # cot()
 

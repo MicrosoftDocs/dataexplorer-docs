@@ -3,7 +3,7 @@ title:  project-reorder operator
 description: Learn how to use the project-reorder operator to reorder columns in the output table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/16/2023
+ms.date: 08/11/2024
 ---
 # project-reorder operator
 

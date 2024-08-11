@@ -3,7 +3,7 @@ title:  Create and alter Azure Storage external tables
 description: This article describes how to create and alter external tables based on Azure Blob Storage or Azure Data Lake
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/09/2023
+ms.date: 08/11/2024
 ---
 
 # Create and alter Azure Storage external tables

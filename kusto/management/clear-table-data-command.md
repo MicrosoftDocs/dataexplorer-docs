@@ -3,7 +3,7 @@ title: .clear table data command
 description: Learn how to use the `.clear table data` command to clear data from an existing table.
 ms.reviewer: vrozov
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .clear table data command
 

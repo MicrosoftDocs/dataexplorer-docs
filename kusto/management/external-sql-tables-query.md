@@ -3,7 +3,7 @@ title:  Query SQL external tables
 description: This article describes how to query external tables based on SQL tables.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/18/2023
+ms.date: 08/11/2024
 ---
 
 # Query SQL external tables

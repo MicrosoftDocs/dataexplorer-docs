@@ -3,7 +3,7 @@ title:  ipv4_compare()
 description: Learn how to use the ipv4_compare() function to compare two IPv4 strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # ipv4_compare()
 

@@ -3,7 +3,7 @@ title:  fullouter join
 description: Learn how to use the fullouter join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/28/2024
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 

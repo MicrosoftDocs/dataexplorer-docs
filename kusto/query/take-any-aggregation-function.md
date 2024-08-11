@@ -3,7 +3,7 @@ title:  take_any() (aggregation function)
 description: Learn how to use the take_any() (aggregation function) to return the value of an arbitrarily selected record.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/20/2023
+ms.date: 08/11/2024
 ---
 # take_any() (aggregation function)
 

@@ -3,7 +3,7 @@ title:  Enable and disable materialized view commands
 description:  This article describes how to enable or disable materialized view commands.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 
 # .disable | .enable materialized-view

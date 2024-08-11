@@ -3,7 +3,7 @@ title: .alter materialized-view policy row_level_security command
 description: Learn how to use the `.alter materialized-view policy row_level_security` command to enable or disable the materialized view's row level security policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
 ---
 # .alter materialized-view policy row_level_security command
 

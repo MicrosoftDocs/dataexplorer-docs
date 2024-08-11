@@ -3,7 +3,7 @@ title:  geo_point_to_geohash()
 description: Learn how to use the geo_point_to_geohash() function to calculate the geohash string value of a geographic location.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/01/2024
+ms.date: 08/11/2024
 ---
 # geo_point_to_geohash()
 

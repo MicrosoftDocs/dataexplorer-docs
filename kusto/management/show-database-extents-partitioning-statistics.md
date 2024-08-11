@@ -3,7 +3,7 @@ title: .show database extents partitioning statistics command
 description: Learn how to use the `.show database extents partitioning statistics` command to display the database's partitioning statistics.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 08/17/2023
+ms.date: 08/11/2024
 ---
 # .show database extents partitioning statistics
 

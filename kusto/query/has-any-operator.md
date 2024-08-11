@@ -3,7 +3,7 @@ title:  The case-insensitive has_any string operator
 description: Learn how to use the has_any operator to filter data with any set of case-insensitive strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/29/2023
+ms.date: 08/11/2024
 ---
 # has_any operator
 

@@ -3,7 +3,7 @@ title:  dcount_hll()
 description: Learn how to use the dcount_hll() function to calculate the distinct count from hyper log log (hll) intermediate calculation results.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/11/2022
+ms.date: 08/11/2024
 ---
 # dcount_hll()
 

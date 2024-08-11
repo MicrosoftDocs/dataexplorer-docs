@@ -3,7 +3,7 @@ title:  row_rank_min()
 description: Learn how to use the row_rank_min() function to return the current row's minimal rank in a serialized row set.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 03/22/2023
+ms.date: 08/11/2024
 ---
 # row_rank_min()
 

@@ -3,7 +3,7 @@ title:  geo_line_length()
 description: Learn how to use the geo_line_length() function to calculate the total length of a line string or a multiline string on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_line_length()
 

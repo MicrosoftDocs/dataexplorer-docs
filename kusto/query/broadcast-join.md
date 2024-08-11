@@ -3,7 +3,7 @@ title:  Broadcast join
 description: Learn how to use the broadcast join execution strategy to distribute the join over nodes.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/11/2023
+ms.date: 08/11/2024
 ---
 # Broadcast join
 

@@ -3,7 +3,7 @@ title:  iff()
 description:  This article describes iff().
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # iff()
 

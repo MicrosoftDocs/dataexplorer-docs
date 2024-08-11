@@ -3,7 +3,7 @@ title:  series_pow()
 description: Learn how to use the series_pow() function to calculate the element-wise power of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_pow()
 

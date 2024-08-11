@@ -3,7 +3,7 @@ title:  Kusto partition & compose intermediate aggregation results
 description: Learn how to use the hll() and tdigest() functions to partition and compose intermediate results of aggregations.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Using hll() and tdigest()

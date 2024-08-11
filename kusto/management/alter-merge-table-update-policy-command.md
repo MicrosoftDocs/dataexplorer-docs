@@ -3,7 +3,7 @@ title:  .alter-merge table policy update command
 description: Learn how to use the `.alter-merge table policy` command to change the table's update policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/04/2023
+ms.date: 08/11/2024
 ---
 # .alter-merge table policy update command
 

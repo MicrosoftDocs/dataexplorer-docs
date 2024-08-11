@@ -3,7 +3,7 @@ title: .show database policy retention command
 description: Learn how to use the `.show database policy retention` command to show the database's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show database policy retention command
 

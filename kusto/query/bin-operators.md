@@ -3,7 +3,7 @@ title:  Bitwise (binary) operators
 description: This article lists the bitwise (binary) operators supported in the Kusto Query Language.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/11/2023
+ms.date: 08/11/2024
 ---
 # Bitwise (binary) operators
 

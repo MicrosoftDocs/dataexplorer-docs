@@ -3,7 +3,7 @@ title:  tobool()
 description: Learn how to use the tobool() function to convert an input to a boolean representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2024
+ms.date: 08/11/2024
 ---
 # tobool()
 

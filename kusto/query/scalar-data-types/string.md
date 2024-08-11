@@ -3,7 +3,7 @@ title:  The string data type
 description:  Learn about the string data type.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/15/2023
+ms.date: 08/11/2024
 ---
 # The string data type
 

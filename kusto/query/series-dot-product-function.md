@@ -3,7 +3,7 @@ title:  series_dot_product()
 description:  This article describes series_dot_product().
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # series_dot_product()
 

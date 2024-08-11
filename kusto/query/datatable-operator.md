@@ -3,7 +3,7 @@ title:  datatable operator
 description: Learn how to use the datatable operator to define a table with given schema and data.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/03/2023
+ms.date: 08/11/2024
 ---
 # datatable operator
 

@@ -3,7 +3,7 @@ title:  series_log()
 description: Learn how to use the series_log() function to calculate the element-wise natural logarithm function (base-e) of the numeric series input.
 ms.reviewer: afridman
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_log()
 

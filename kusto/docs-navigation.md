@@ -2,7 +2,7 @@
 title: KQL docs navigation guide
 description: Learn how to understand which version of KQL documentation you are viewing and how to switch to a different version.
 ms.topic: conceptual
-ms.date: 06/19/2024
+ms.date: 08/11/2024
 ---
 # KQL docs navigation guide
 

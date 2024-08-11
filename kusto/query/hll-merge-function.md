@@ -3,7 +3,7 @@ title:  hll_merge()
 description: Learn how to use the hll_merge() function toe merge HLL results.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # hll_merge()
 

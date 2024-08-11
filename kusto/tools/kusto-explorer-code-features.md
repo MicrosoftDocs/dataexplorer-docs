@@ -3,7 +3,7 @@ title:  Kusto Explorer code features
 description: This article describes Kusto Explorer Code features.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/19/2023
+ms.date: 08/11/2024
 ---
 
 # Kusto.Explorer code features

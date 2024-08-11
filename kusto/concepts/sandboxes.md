@@ -3,7 +3,7 @@ title:  Sandboxes
 description:  This article describes Sandboxes.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/03/2021
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Sandboxes

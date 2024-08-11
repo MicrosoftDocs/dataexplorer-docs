@@ -3,7 +3,7 @@ title:  The case-sensitive !hassuffix_cs string operator
 description: Learn how to use the !hassuffix_cs string operator to filter records for data that doesn't have a case-sensitive suffix.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/11/2023
+ms.date: 08/11/2024
 ---
 # !hassuffix_cs operator
 

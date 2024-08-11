@@ -3,7 +3,7 @@ title:  toreal()
 description: Learn how to use the toreal() function to convert the input expression to a value of type `real`.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2024
+ms.date: 08/11/2024
 ---
 # toreal()
 

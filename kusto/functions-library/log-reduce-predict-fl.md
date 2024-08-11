@@ -3,7 +3,7 @@ title:  log_reduce_predict_fl()
 description:  This article describes the log_reduce_predict_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 05/07/2023
+ms.date: 08/11/2024
 ---
 # log_reduce_predict_fl()
 

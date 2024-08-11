@@ -3,7 +3,7 @@ title:  replace_strings()
 description: Learn how to use the replace_strings() function to replace multiple strings matches with multiple replacement strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/21/2023
+ms.date: 08/11/2024
 ---
 # replace_strings()
 

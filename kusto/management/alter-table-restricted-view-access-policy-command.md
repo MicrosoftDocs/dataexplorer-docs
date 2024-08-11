@@ -3,7 +3,7 @@ title:  .alter table policy restricted_view_access command
 description: Learn how to use the `.alter table policy restricted_view_access` command to turn on or turn off the table's restricted view access policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/04/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy restricted_view_access command
 

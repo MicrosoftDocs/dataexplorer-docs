@@ -3,7 +3,7 @@ title:  binary_and()
 description: Learn how to use the binary_and() function to compare bits in corresponding operands. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/21/2022
+ms.date: 08/11/2024
 ---
 # binary_and()
 

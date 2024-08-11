@@ -3,7 +3,7 @@ title: dbscan_fl()
 description: This article describes the dbscan_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 07/25/2024
+ms.date: 08/11/2024
 ---
 # dbscan_fl()
 

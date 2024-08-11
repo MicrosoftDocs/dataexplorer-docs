@@ -3,7 +3,7 @@ title: graph-match operator
 description: Learn how to use the graph-match operator to search for all occurrences of a graph pattern in a graph.
 ms.reviewer: rocohen
 ms.topic: reference
-ms.date: 12/20/2023
+ms.date: 08/11/2024
 ---
 # graph-match operator
 

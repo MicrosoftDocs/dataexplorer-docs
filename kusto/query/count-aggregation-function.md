@@ -3,7 +3,7 @@ title:  count() (aggregation function)
 description: Learn how to use the count() function to count the number of records in a group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # count() (aggregation function)

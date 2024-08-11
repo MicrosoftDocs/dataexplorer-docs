@@ -3,7 +3,7 @@ title:  Pivot chart visualization
 description:  This article describes the pivot chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/13/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Pivot chart

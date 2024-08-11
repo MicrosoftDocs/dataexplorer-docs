@@ -3,7 +3,7 @@ title: .delete database policy merge command
 description: Learn how to use the `.delete database policy merge` command to delete a database's merge policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/13/2023
+ms.date: 08/11/2024
 ---
 # .delete database policy merge command
 

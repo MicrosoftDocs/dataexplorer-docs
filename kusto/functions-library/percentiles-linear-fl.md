@@ -3,7 +3,7 @@ title:  percentiles_linear_fl()
 description: Learn how to use the percentiles_linear_fl() function to calculate percentiles using the linear interpolation between closest ranks.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 08/11/2024
 ---
 # percentiles_linear_fl()
 

@@ -3,7 +3,7 @@ title:  geo_point_buffer()
 description: Learn how to use the geo_point_buffer() function to calculate point buffer
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 08/11/2024
 ---
 # geo_point_buffer()
 

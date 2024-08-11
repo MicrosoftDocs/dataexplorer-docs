@@ -2,7 +2,7 @@
 title:  .show operation details command
 description: Learn how to use the `.show operation details` command to view the details of an operation.
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 08/11/2024
 ---
 # .show operation details command
 

@@ -3,7 +3,7 @@ title:  replace_regex()
 description: Learn how to use the replace_regex() function to replace all regex matches with another string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/21/2023
+ms.date: 08/11/2024
 ---
 # replace_regex()
 

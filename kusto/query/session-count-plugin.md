@@ -3,7 +3,7 @@ title:  session_count plugin
 description: Learn how to use the session_count plugin to calculate the session count based on the ID column over a timeline.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/11/2023
+ms.date: 08/11/2024
 ---
 # session_count plugin
 

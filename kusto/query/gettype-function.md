@@ -3,7 +3,7 @@ title:  gettype()
 description: Learn how to use the gettype() function to return a string representing the runtime type of its single argument.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # gettype()
 

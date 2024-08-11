@@ -3,7 +3,7 @@ title:  top operator
 description: Learn how to use the top operator to return the first specified number of records sorted by the specified column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/24/2024
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # top operator

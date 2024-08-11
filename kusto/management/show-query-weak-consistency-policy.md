@@ -3,7 +3,7 @@ title: .show cluster policy query_weak_consistency command
 description: Learn how to use the `.show cluster policy query_weak_consistency` command to show the query weak consistency policy of the cluster.
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # .show cluster policy query_weak_consistency command

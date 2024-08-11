@@ -3,7 +3,7 @@ title:  geo_line_buffer()
 description: Learn how to use the geo_line_buffer() function to calculate line buffer
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 08/11/2024
 ---
 # geo_line_buffer()
 

@@ -3,7 +3,7 @@ title:  .alter table policy auto_delete command
 description: Learn how to use the `.alter table policy auto_delete` command to alter the auto delete policy that's applied to a table.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy auto_delete command
 

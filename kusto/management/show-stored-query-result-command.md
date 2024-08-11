@@ -3,7 +3,7 @@ title: .show stored_query_results command
 description: Learn how to use the `.show stored_query_result` command to show information on active query results.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
 ---
 
 # .show stored_query_result command

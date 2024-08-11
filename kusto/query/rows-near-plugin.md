@@ -3,7 +3,7 @@ title:  rows_near plugin
 description: Learn how to use the rows_near plugin to find rows near a specified condition.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/19/2023
+ms.date: 08/11/2024
 ---
 # rows_near() plugin
 

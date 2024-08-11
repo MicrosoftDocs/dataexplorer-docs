@@ -3,7 +3,7 @@ title:  array_slice()
 description: Learn how to use the array_slice() function to extract a slice of a dynamic array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 08/11/2024
 ---
 # array_slice()
 

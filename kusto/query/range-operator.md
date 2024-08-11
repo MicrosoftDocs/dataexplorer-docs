@@ -3,7 +3,7 @@ title:  range operator
 description: Learn how to use the range operator to generate a single-column table of values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # range operator
 

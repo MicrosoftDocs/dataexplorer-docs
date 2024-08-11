@@ -3,7 +3,7 @@ title: Capacity policy
 description: Learn how to use the capacity policy to control the compute resources of data management operations on a cluster.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Capacity policy

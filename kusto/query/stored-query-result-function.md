@@ -3,7 +3,7 @@ title:  stored_query_result()
 description: Learn how to use the `stored_query_result()` function to reference a stored query result.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 02/19/2024
+ms.date: 08/11/2024
 ---
 
 # stored_query_result()

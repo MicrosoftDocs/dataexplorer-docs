@@ -3,7 +3,7 @@ title:  max_of()
 description: Learn how to use the max_of() function to return the maximum value of all argument expressions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 08/11/2024
 ---
 # max_of()
 

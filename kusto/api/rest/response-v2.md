@@ -3,7 +3,7 @@ title:  Query V2 HTTP response
 description: This article describes Query V2 HTTP response.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 08/11/2024
 ---
 # Query V2 HTTP response
 

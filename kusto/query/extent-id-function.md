@@ -3,7 +3,7 @@ title:  extent_id()
 description: Learn how to use the extent_id() function to return an identifier of the current record's data shard
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/11/2022
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # extent_id()

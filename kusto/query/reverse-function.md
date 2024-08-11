@@ -3,7 +3,7 @@ title:  reverse()
 description: Learn how to use the reverse() function to reverse the order of the input string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 08/11/2024
 ---
 # reverse()
 

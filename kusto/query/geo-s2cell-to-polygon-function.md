@@ -3,7 +3,7 @@ title:  geo_s2cell_to_polygon()
 description: Learn how to use the geo_s2cell_to_polygon() function to calculate the polygon that represents the S2 Cell rectangular area.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/14/2022
+ms.date: 08/11/2024
 ---
 # geo_s2cell_to_polygon()
 

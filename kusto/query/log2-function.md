@@ -3,7 +3,7 @@ title:  log2()
 description: Learn how to use the log2() function to return the base-2 logarithm of the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/26/2022
+ms.date: 08/11/2024
 ---
 # log2()
 

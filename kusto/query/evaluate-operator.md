@@ -3,7 +3,7 @@ title:  evaluate plugin operator
 description: Learn how to use the evaluate plugin operator to invoke plugins.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # evaluate plugin operator
 

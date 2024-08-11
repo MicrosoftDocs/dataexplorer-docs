@@ -3,7 +3,7 @@ title:  .alter-merge policy managed_identity command
 description: Learn how to use the `.alter-merge policy managed_identity` command to update the ManagedIdentity policy of the cluster or database.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # .alter-merge policy managed_identity command

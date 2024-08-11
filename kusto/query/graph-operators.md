@@ -3,7 +3,7 @@ title: Graph operators
 description: Learn how to use KQL graph operators.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/03/2023
+ms.date: 08/11/2024
 ---
 # Graph operators
 

@@ -3,7 +3,7 @@ title:  Sync Kusto
 description:  This article describes Sync Kusto.
 ms.reviewer: zivc
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 08/11/2024
 ---
 
 # Sync Kusto

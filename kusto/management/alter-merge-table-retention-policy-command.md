@@ -3,7 +3,7 @@ title:  .alter-merge table policy retention command
 description: Learn how to use the `.alter-merge table policy retention` command to change the table's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/04/2023
+ms.date: 08/11/2024
 ---
 # .alter-merge table policy retention command
 

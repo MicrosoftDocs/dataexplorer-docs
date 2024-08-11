@@ -3,7 +3,7 @@ title:  cursor_current()
 description: Learn how to use the cursor_current() function to return a string type value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/08/2022
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cursor_current()

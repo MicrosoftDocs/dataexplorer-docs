@@ -3,7 +3,7 @@ title: Time series anomaly detection & forecasting
 description: Learn how to analyze time series data for anomaly detection and forecasting.
 ms.reviewer: adieldar
 ms.topic: how-to
-ms.date: 05/01/2023
+ms.date: 08/11/2024
 ---
 
 # Anomaly detection and forecasting

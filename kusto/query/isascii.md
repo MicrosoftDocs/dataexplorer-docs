@@ -3,7 +3,7 @@ title:  isascii()
 description: Learn how to use the isascii() to check if the argument is a valid ascii string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 08/11/2024
 ---
 # isascii()
 

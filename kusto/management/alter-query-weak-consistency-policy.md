@@ -3,7 +3,7 @@ title:  .alter cluster policy query_weak_consistency management command
 description: Learn how to use the `.alter cluster policy query_weak_consistency` command to cet the cluster's query weak consistency policy.
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # .alter cluster policy query_weak_consistency command

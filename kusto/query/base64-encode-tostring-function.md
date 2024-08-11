@@ -3,7 +3,7 @@ title:  base64_encode_tostring()
 description:  This article describes base64_encode_tostring().
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/22/2019
+ms.date: 08/11/2024
 ---
 # base64_encode_tostring()
 

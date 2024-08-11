@@ -3,7 +3,7 @@ title:  IngestionTime policy
 description:  This article describes IngestionTime policy.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 08/11/2024
 ---
 # IngestionTime policy
 

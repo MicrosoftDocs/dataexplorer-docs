@@ -3,7 +3,7 @@ title:  Kusto CLI
 description:  This article describes Kusto CLI.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 08/11/2024
 ---
 # Kusto CLI
 

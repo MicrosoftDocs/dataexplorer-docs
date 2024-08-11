@@ -3,7 +3,7 @@ title: .create table based-on command
 description: Learn how to use the `.create table based-on` command to create a new empty table based on an existing table.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 08/11/2024
 ---
 # .create table based-on command
 

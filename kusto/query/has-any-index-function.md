@@ -3,7 +3,7 @@ title:  The has_any_index operator
 description: Learn how to use the has_any_index operator to search the input string for items specified in the array.
 ms.reviewer: atefsawaed
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # has_any_index()
 

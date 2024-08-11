@@ -3,7 +3,7 @@ title:  pack_array()
 description: Learn how to use the pack_array() function to pack all input values into a dynamic array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # pack_array()
 

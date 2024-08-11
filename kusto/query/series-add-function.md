@@ -3,7 +3,7 @@ title:  series_add()
 description: Learn how to use the series_add() function to calculate the element-wise addition of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/11/2024
 ---
 # series_add()
 

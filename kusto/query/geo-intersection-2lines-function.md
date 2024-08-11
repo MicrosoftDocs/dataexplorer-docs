@@ -3,7 +3,7 @@ title:  geo_intersection_2lines()
 description: Learn how to use the geo_intersection_2lines() function to calculate the intersection of two line strings or multiline strings.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_intersection_2lines()
 

@@ -3,7 +3,7 @@ title: Best practices for the Kusto Data library
 description: This article describes best practices for Kusto Data client library.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/18/2023
+ms.date: 08/11/2024
 ---
 # Best practices for the Kusto Data library
 

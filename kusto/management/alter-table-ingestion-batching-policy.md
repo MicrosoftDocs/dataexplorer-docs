@@ -3,7 +3,7 @@ title:  .alter table policy ingestionbatching command
 description: Learn how to use the `.alter table policy ingestionbatching` command to set the table's ingestion batching policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy ingestionbatching command
 

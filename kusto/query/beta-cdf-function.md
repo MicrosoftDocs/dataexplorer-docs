@@ -3,7 +3,7 @@ title:  beta_cdf()
 description: Learn how to use the beta_cdf() function to return a standard beta cumulative distribution function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # beta_cdf()
 

@@ -3,7 +3,7 @@ title:  .alter column command
 description: Learn how to use the `.alter column` command to alter the data type of an existing table column.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 # .alter column command
 

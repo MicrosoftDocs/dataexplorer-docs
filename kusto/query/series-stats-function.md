@@ -3,7 +3,7 @@ title:  series_stats()
 description: Learn how to use the series_stats() function to calculate the statistics for a numerical series using multiple columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/29/2023
+ms.date: 08/11/2024
 ---
 # series_stats()
 

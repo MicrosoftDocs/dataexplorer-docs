@@ -3,7 +3,7 @@ title:  Datetime / timespan arithmetic
 description:  This article describes Datetime / timespan arithmetic.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 08/11/2024
 ---
 # Datetime / timespan arithmetic
 

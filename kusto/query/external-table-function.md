@@ -3,7 +3,7 @@ title:  external_table()
 description: Learn how to use the external_table() function to reference an external table by name.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 08/11/2024
 ---
 # external_table()
 

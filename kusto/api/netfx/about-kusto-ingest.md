@@ -3,7 +3,7 @@ title:  Kusto Ingest library overview
 description: This article describes the Kusto Ingest client library.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/18/2023
+ms.date: 08/11/2024
 ---
 # Kusto Ingest library overview
 

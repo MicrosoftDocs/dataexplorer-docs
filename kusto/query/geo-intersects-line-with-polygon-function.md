@@ -3,7 +3,7 @@ title:  geo_intersects_line_with_polygon()
 description: Learn how to use the geo_intersects_line_with_polygon() function to check if a line string or a multiline string intersect with a polygon or a multipolygon.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_intersects_line_with_polygon()
 

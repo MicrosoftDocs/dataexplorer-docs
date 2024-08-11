@@ -3,7 +3,7 @@ title:  acos()
 description: Learn how to use the acos() function to calculate the angle of the cosine input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/11/2023
+ms.date: 08/11/2024
 ---
 # acos()
 

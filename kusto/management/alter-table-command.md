@@ -3,7 +3,7 @@ title:  .alter table command
 description: This article describes the .alter table command.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 # .alter table command
 

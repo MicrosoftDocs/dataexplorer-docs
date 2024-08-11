@@ -3,7 +3,7 @@ title:  Pie chart visualization
 description:  This article describes the pie chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Pie chart

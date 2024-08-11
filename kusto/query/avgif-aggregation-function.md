@@ -3,7 +3,7 @@ title:  avgif() (aggregation function)
 description: Learn how to use the avgif() function to return the average value of an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/16/2022
+ms.date: 08/11/2024
 ---
 # avgif() (aggregation function)
 

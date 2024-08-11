@@ -3,7 +3,7 @@ title:  geo_union_lines_array()
 description: Learn how to use the geo_union_lines_array() function to calculate the union of line strings or multiline strings on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_union_lines_array()
 

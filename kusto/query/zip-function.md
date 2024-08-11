@@ -3,7 +3,7 @@ title:  zip()
 description:  This article describes zip().
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 08/11/2024
 ---
 # zip()
 

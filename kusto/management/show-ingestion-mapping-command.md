@@ -3,7 +3,7 @@ title: .show ingestion mapping
 description: Learn how to use the `.show ingestion mapping` command to view the ingestion mapping for a table or database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show ingestion mapping
 

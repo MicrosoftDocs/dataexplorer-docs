@@ -3,7 +3,7 @@ title:  base64_decode_tostring()
 description: Learn how to use a base64_decode_tostring() function to decode a base64 string into a UTF-8 string. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # base64_decode_tostring()
 

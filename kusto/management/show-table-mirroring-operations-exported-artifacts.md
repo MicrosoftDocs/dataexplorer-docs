@@ -3,7 +3,7 @@ title:  .show table mirroring operations exported artifacts command
 description: Learn how to use the `.show table mirroring operations exported artifacts` command to check the mirroring operations exported artifacts.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/28/2024
+ms.date: 08/11/2024
 ---
 # .show table mirroring operations exported artifacts command
 

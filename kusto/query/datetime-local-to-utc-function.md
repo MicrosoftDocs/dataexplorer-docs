@@ -3,7 +3,7 @@ title:  datetime_local_to_utc()
 description: Learn how to use the datetime_local_to_utc() function to convert local datetime to UTC datetime.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 11/28/2022
+ms.date: 08/11/2024
 ---
 # datetime_local_to_utc()
 

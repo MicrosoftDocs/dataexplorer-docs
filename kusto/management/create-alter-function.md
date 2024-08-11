@@ -3,7 +3,7 @@ title: .create-or-alter function command
 description: Learn how to use the `.create-or-alter function` command to create a stored function or alter an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/29/2024
+ms.date: 08/11/2024
 ---
 # .create-or-alter function command
 

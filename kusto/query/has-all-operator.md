@@ -3,7 +3,7 @@ title:  The case-insensitive has_all string operator
 description: Learn how to use the has_all string operator to filter a record set for data with one or more case-insensitive search strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/29/2023
+ms.date: 08/11/2024
 ---
 # has_all operator
 

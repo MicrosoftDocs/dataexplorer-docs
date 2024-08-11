@@ -3,7 +3,7 @@ title:  Set statement
 description: Learn how to use the set statement to set a request property for the duration of the query.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/14/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Set statement

@@ -3,7 +3,7 @@ title:  sign()
 description: Learn how to use the sign() function to return the sign of the numeric expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # sign()
 

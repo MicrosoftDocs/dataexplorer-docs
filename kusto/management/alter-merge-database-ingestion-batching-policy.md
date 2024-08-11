@@ -3,7 +3,7 @@ title:  .alter-merge database policy ingestionbatching command
 description: Learn how to use the `.alter-merge database policy ingestionbatching` command to set the ingestion batching policy.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 08/27/2023
+ms.date: 08/11/2024
 ---
 # .alter-merge database policy ingestionbatching command
 

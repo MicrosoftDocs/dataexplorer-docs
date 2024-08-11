@@ -3,7 +3,7 @@ title:  substring()
 description: Learn how to use the substring() function to extract a substring from the source string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 08/11/2024
 ---
 # substring()
 

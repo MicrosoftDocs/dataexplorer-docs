@@ -3,7 +3,7 @@ title:  strcat_array()
 description: Learn how to use the strcat_array() function to create a concatenated string of array values using a specified delimiter. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/13/2023
+ms.date: 08/11/2024
 ---
 # strcat_array()
 

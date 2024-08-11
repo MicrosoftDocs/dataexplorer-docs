@@ -3,7 +3,7 @@ title:  new_guid()
 description: Learn how to use the new_guid() function to return a random GUID (Globally Unique Identifier).
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # new_guid()
 

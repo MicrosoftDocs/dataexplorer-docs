@@ -3,7 +3,7 @@ title:  format_datetime()
 description: Learn how to use the format_datetime() function to format a datetime according to the provided format.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/27/2023
+ms.date: 08/11/2024
 ---
 # format_datetime()
 

@@ -3,7 +3,7 @@ title:  current_principal()
 description: Learn how to use the current_principal() function to return the name of the principal running the query.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # current_principal()

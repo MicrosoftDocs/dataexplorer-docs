@@ -3,7 +3,7 @@ title:  pow()
 description: Learn how to use the pow() function to calculate the base raised to the power of the exponent.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # pow()
 

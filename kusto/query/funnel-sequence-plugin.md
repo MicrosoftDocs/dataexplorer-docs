@@ -3,7 +3,7 @@ title:  funnel_sequence plugin
 description: Learn how to use the funnel_sequence plugin to learn how to calculate the distinct count of users who have taken a sequence of states, and the distribution of previous/next states that have led to/were followed by the sequence.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # funnel_sequence plugin
 

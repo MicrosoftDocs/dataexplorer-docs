@@ -3,7 +3,7 @@ title: .show queries command
 description: Learn how to use the `.show queries` command to manage see invoked queries.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/22/2023
+ms.date: 08/11/2024
 ---
 # .show queries command
 

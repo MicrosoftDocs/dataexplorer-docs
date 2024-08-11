@@ -3,7 +3,7 @@ title:  print operator
 description: Learn how to use the print operator to output a single row with one or more scalar expression results as columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # print operator
 

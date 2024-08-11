@@ -3,7 +3,7 @@ title:  Export data to cloud storage
 description: Learn how to export data to cloud storage.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/05/2023
+ms.date: 08/11/2024
 ---
 # Export data to cloud storage
 

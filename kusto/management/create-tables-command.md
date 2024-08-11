@@ -3,7 +3,7 @@ title: .create tables command
 description: Learn how to use the `.create tables` command to create new empty tables as a bulk operation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .create tables command
 

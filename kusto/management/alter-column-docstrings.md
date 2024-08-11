@@ -3,7 +3,7 @@ title:  .alter table column-docstrings command
 description: Learn how to use the `.alter table column-docstrings` command to set the `DocString` property of one or more columns of the specified table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
 ---
 # .alter table column-docstrings command
 

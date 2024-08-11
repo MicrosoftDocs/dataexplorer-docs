@@ -3,7 +3,7 @@ title:  series_fill_const()
 description: Learn how to use the series_fill_const() function to replace missing values in a series with a specified constant value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 08/11/2024
 ---
 # series_fill_const()
 

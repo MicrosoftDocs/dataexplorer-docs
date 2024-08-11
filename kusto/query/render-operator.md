@@ -3,7 +3,7 @@ title:  render operator
 description: Learn how to use the render operator to instruct the user agent to render a visualization of the query results.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/07/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # render operator

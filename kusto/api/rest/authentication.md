@@ -3,7 +3,7 @@ title:  Authentication over HTTPS
 description: This article describes Authentication over HTTPS.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/28/2023
+ms.date: 08/11/2024
 ---
 # Authentication over HTTPS
 

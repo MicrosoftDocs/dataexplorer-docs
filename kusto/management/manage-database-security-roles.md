@@ -2,7 +2,7 @@
 title: Manage database security roles
 description: Learn how to use management commands to view, add, and remove security roles on a database level.
 ms.topic: reference
-ms.date: 07/23/2024
+ms.date: 08/11/2024
 ---
 
 # Manage database security roles

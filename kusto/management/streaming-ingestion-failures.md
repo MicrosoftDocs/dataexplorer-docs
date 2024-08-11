@@ -2,7 +2,7 @@
 title: .show streamingingestion failures command
 description: Learn how to use the `.show streamingingestion failures` command to show streaming ingestion failures when data is ingested.
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
 ---
 
 # .show streamingingestion failures command

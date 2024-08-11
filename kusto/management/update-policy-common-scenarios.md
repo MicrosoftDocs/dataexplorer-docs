@@ -2,7 +2,7 @@
 title: "Common scenarios for using table update policies"
 description: "Learn about common scenarios that can use table update policies to perform complex transformations and save the results to destination tables."
 ms.topic: conceptual
-ms.date: 03/06/2024
+ms.date: 08/11/2024
 ---
 # What are common scenarios for using table update policies
 

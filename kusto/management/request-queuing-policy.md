@@ -3,7 +3,7 @@ title: Request queuing policy
 description: Learn how to use the request queuing policy to control queuing of requests for delayed execution.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 ---
 # Request queuing policy (Preview)
 

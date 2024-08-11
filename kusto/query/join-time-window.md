@@ -3,7 +3,7 @@ title:  Joining within time window
 description: Learn how to perform a time window join operation to match between two large datasets.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/11/2023
+ms.date: 08/11/2024
 ---
 # Time window join
 

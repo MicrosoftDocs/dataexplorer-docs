@@ -3,7 +3,7 @@ title:  Tabular expression statements
 description: Learn how to use tabular expression statements to produce tabular datasets.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/01/2023
+ms.date: 08/11/2024
 ---
 # Tabular expression statements
 

@@ -3,7 +3,7 @@ title:  tolong()
 description: Learn how to use the tolong() function to convert the input value to a long number representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/22/2023
+ms.date: 08/11/2024
 ---
 # tolong()
 

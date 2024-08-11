@@ -4,7 +4,7 @@ description: Learn how to use the `.clear database cache query_results` command 
  clear cached query results.
 ms.reviewer: amitof
 ms.topic: reference
-ms.date: 06/05/2023
+ms.date: 08/11/2024
 ---
 # .clear database cache query_results command
 

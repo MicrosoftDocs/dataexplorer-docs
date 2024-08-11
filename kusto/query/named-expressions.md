@@ -3,7 +3,7 @@ title: Named expressions
 description:  Learn how to optimally use named expressions.
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 08/11/2024
 
 ---
 # Optimize queries that use named expressions

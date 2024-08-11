@@ -3,7 +3,7 @@ title:  REST API overview
 description: This article describes how to use the REST API.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/19/2023
+ms.date: 08/11/2024
 ---
 # REST API overview
 

@@ -3,7 +3,7 @@ title:  invoke operator
 description: Learn how to use the  invoke operator to invoke a lambda expression that receives the source of `invoke` as a tabular parameter argument
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # invoke operator
 

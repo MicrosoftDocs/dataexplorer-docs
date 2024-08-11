@@ -3,7 +3,7 @@ title:  make_datetime()
 description: Learn how to use the make_datetime() function to create a datetime scalar value from the specified date and time.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 08/11/2024
 ---
 # make_datetime()
 

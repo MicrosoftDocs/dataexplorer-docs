@@ -3,7 +3,7 @@ title: .show databases command
 description: Learn how to use the `.show databases` command to show records of databases that the user has access to.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show databases command
 

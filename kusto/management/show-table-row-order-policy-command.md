@@ -3,7 +3,7 @@ title: .show table policy roworder command
 description: Learn how to use the `.show table policy roworder` command to display the table's row order policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
 ---
 # .show table policy roworder command
 

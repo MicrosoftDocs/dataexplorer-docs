@@ -3,7 +3,7 @@ title:  binary_shift_left()
 description: Learn how to use the binary_shift_left() function to perform a binary shift left operation on a pair of numbers. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/21/2022
+ms.date: 08/11/2024
 ---
 # binary_shift_left()
 

@@ -3,7 +3,7 @@ title:  exp()
 description: Learn how to use the exp() function to return the base-e exponential value of x.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/11/2022
+ms.date: 08/11/2024
 ---
 # exp()
 

@@ -3,7 +3,7 @@ title:  two_sample_t_test_fl()
 description:  This article describes the two_sample_t_test_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 08/11/2024
 ---
 # two_sample_t_test_fl()
 

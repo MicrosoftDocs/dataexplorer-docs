@@ -3,7 +3,7 @@ title:  avg() (aggregation function)
 description: Learn how to use the avg() function to calculate the average value of an expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/02/2022
+ms.date: 08/11/2024
 ---
 # avg() (aggregation function)
 

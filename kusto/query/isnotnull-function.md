@@ -3,7 +3,7 @@ title:  isnotnull()
 description: Learn how to use the isnotnull() function to check if the argument isn't null.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2022
+ms.date: 08/11/2024
 ---
 # isnotnull()
 

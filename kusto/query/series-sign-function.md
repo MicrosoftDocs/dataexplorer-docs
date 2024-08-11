@@ -3,7 +3,7 @@ title:  series_sign()
 description: Learn how to use the series_sign() function to calculate the element-wise sign of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_sign()
 

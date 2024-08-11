@@ -3,7 +3,7 @@ title:  current_cluster_endpoint()
 description: Learn how to use the current_cluster_endpoint() function to return the network endpoint of the cluster being queried as a string type value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # current_cluster_endpoint()
 

@@ -3,7 +3,7 @@ title:  unixtime_nanoseconds_todatetime()
 description: Learn how to use the unixtime_nanoseconds_todatetime() function to convert unix-epoch nanoseconds to UTC datetime.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/28/2023
+ms.date: 08/11/2024
 ---
 # unixtime_nanoseconds_todatetime()
 

@@ -3,7 +3,7 @@ title:  activity_counts_metrics plugin
 description: Learn how to use the activity_counts_metrics plugin to compare activity metrics in different time windows.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/15/2023
+ms.date: 08/11/2024
 ---
 # activity_counts_metrics plugin
 

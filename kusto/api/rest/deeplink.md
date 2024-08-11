@@ -3,7 +3,7 @@ title:  UI deep links
 description: This article describes UI deep links.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 08/11/2024
 ---
 # UI deep links
 

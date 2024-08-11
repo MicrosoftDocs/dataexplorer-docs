@@ -3,7 +3,7 @@ title:  datetime_utc_to_local()
 description:  This article describes the datetime_utc_to_local function.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 07/27/2023
+ms.date: 08/11/2024
 ---
 # datetime_utc_to_local()
 

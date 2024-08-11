@@ -3,7 +3,7 @@ title:  sliding_window_counts plugin
 description: Learn how to use the sliding_window_counts plugin to calculate counts and distinct counts of values in a sliding window over a lookback period.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # sliding_window_counts plugin
 

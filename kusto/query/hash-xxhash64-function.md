@@ -3,7 +3,7 @@ title:  hash_xxhash64()
 description: Learn how to use the hash_xxhash64() function to return the xxhash64 value of the input.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 12/25/2022
+ms.date: 08/11/2024
 ---
 # hash_xxhash64()
 
