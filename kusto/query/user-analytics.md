@@ -3,12 +3,7 @@ title:  User Analytics
 description:  This article describes User Analytics.
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 11/17/2019
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # User analytics plugins
 

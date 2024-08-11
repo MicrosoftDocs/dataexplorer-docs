@@ -3,12 +3,7 @@ title:  "ipv6_lookup plugin"
 description: Learn how to use the ipv6_lookup plugin to look up an IPv6 address in a lookup table.
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 07/09/2024
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # ipv6_lookup plugin
 

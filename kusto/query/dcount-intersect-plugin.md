@@ -3,12 +3,7 @@ title:  dcount_intersect plugin
 description: Learn how to use the dcount_intersect plugin to calculate the intersection between N sets based on hyper log log (hll) values.
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 12/11/2022
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # dcount_intersect plugin
 

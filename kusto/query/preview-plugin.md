@@ -3,12 +3,7 @@ title:  preview plugin
 description: Learn how to use the preview plugin to return two tables, one with the specified number of rows, and the other with the total number of records. 
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 01/12/2023
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # preview plugin
 

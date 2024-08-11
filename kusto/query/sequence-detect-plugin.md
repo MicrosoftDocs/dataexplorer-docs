@@ -3,12 +3,7 @@ title:  sequence_detect plugin
 description: Learn how to use the sequence_detect plugin to detect sequence occurrences based on provided predicates.
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 01/22/2023
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # sequence_detect plugin
 

@@ -3,12 +3,7 @@ title:  rolling_percentile plugin
 description: Learn how to use the rolling_percentile plugin to calculate an estimate of the rolling percentile per bin for the specified value column.
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 01/17/2023
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # rolling_percentile() plugin
 

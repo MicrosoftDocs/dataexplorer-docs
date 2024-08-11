@@ -3,12 +3,7 @@ title:  diffpatterns plugin
 description: Learn how to use the diffpatterns plugin to compare two datasets of the same structure to find the differences between the two datasets. 
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 03/12/2023
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # diffpatterns plugin
 

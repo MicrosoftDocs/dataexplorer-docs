@@ -3,12 +3,7 @@ title:  activity_metrics plugin
 description: Learn how to use the activity_metrics plugin to calculate activity metrics using the current time window compared to the previous window.
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 11/20/2022
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # activity_metrics plugin
 

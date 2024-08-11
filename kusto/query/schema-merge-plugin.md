@@ -3,12 +3,7 @@ title:  schema_merge plugin
 description: Learn how to use the schema_merge plugin to merge tabular schema definitions into a unified schema.
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 01/22/2023
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # schema_merge plugin
 

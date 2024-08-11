@@ -3,12 +3,7 @@ title:  narrow plugin
 description: Learn how to use the narrow plugin to display a wide table.
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 12/26/2022
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # narrow plugin
 

@@ -3,12 +3,7 @@ title:  evaluate plugin operator
 description: Learn how to use the evaluate plugin operator to invoke plugins.
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 03/09/2023
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # evaluate plugin operator
 

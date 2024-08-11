@@ -3,12 +3,7 @@ title:  diffpatterns_text plugin
 description: Learn how to use the diffpatterns_text plugin to compare two string value datasets to find the differences between the two datasets. 
 ms.reviewer: alexans
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 12/11/2022
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # diffpatterns_text plugin
 

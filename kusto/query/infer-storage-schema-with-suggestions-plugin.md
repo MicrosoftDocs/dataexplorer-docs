@@ -3,12 +3,7 @@ title:  infer_storage_schema_with_suggestions plugin
 description: Learn how to use the infer_storage_schema_with_suggestions plugin to infer the optimal schema of external data.
 ms.reviewer: avnera
 ms.topic: reference
-<<<<<<< HEAD
 ms.date: 08/11/2024
-=======
-ms.date: 07/21/2024
-monikerRange: "azure-data-explorer || microsoft-fabric"
->>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # infer_storage_schema_with_suggestions plugin
 
