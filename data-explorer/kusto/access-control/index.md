@@ -8,6 +8,7 @@ ms.date: 06/28/2023
 ---
 # Access control overview
 
+<!-- //TODO remove and redirect to kusto -->
 Azure Data Explorer access control is based on authentication and authorization. Each query and command on an Azure Data Explorer resource, such as a cluster or database, must pass both authentication and authorization checks.
 
 * [Authentication](#authentication): Validates the identity of the security principal making a request

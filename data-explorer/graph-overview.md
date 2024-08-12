@@ -9,6 +9,8 @@ ms.date: 09/03/2023
 
 # Kusto Query Language (KQL) graph semantics overview
 
+<!-- //TODO remove and redirect to kusto -->
+
 Graph semantics in Kusto Query Language (KQL) allows you to model and query data as graphs. The structure of a graph comprises nodes and edges that connect them. Both nodes and edges can have properties that describe them.
 
 Graphs are useful for representing complex and dynamic data that involve many-to-many, hierarchical, or networked relationships, such as social networks, recommendation systems, connected assets, or knowledge graphs.

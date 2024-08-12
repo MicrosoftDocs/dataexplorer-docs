@@ -2,6 +2,9 @@
 ms.topic: include
 ms.date: 01/01/2024
 ---
+
+<!-- //TODO remove this file and link everything in Fabric to the Kusto doc as a prereq -->
+
 A table schema defines the names and [data types](/azure/data-explorer/kusto/query/scalar-data-types/) of all the columns in the table. The table schema can be set during [table creation](/azure/data-explorer/kusto/management/create-table-command), or as a part of the data ingestion process by modifying the applicable [ingestion mapping](/azure/data-explorer/kusto/management/create-ingestion-mapping-command). The way a table schema is defined can significantly affect your query performance. The ideal schema for your data depends on many factors, including use case, data access patterns, and the specific data you plan to store. This article describes best practices for optimizing performance by designing efficient schemas.
 
 ## Data types
