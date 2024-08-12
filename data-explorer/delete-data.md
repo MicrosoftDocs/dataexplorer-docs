@@ -8,6 +8,8 @@ ms.date: 02/01/2022
 
 # Delete data from Azure Data Explorer
 
+<!-- //TODO: Remove this and redirect to KQL repo in concepts folder-->
+
 Azure Data Explorer supports several ways to delete data from a table. Use the following information to help you choose which deletion method is best for your use case.
 
 | Use case | Considerations | Method |

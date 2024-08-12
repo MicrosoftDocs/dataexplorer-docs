@@ -11,7 +11,7 @@ Shows a specific workload group or all workload group definitions.
 
 ## Permissions
 
-You must have [Cluster AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

@@ -51,7 +51,7 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
 
 * The `.purge` command is executed against the Data Management endpoint:
   `https://ingest-[YourClusterName].[region].kusto.windows.net`.
-   The command requires [database admin](../management/access-control/role-based-access-control.md)
+   The command requires [database admin](../access-control/role-based-access-control.md)
    permissions on the relevant databases.
 * Due to the purge process performance impact, and to guarantee that
    [purge guidelines](#purge-guidelines) have been followed, the caller is expected to modify the data schema so that
@@ -277,7 +277,7 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 |`DatabaseName`    |     Database name to filter results.    |Optional
 
 > [!NOTE]
-> Status will be provided only on databases for which the client has [Database Admin](../management/access-control/role-based-access-control.md) permissions.
+> Status will be provided only on databases for which the client has [Database Admin](../access-control/role-based-access-control.md) permissions.
 
 **Examples**
 

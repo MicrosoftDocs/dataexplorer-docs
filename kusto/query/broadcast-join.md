@@ -1,0 +1,51 @@
+---
+title:  Broadcast join
+description: Learn how to use the broadcast join execution strategy to distribute the join over nodes.
+ms.reviewer: alexans
+ms.topic: reference
+ms.date: 08/11/2024
+---
+# Broadcast join
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+:::moniker range="azure-data-explorer"
+Today, regular joins are executed on a cluster single node.
+Broadcast join is an execution strategy of join that distributes the join over cluster nodes. This strategy is useful when the left side of the join is small (up to several tens of MBs). In this case, a broadcast join is more performant than a regular join.
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+Today, regular joins are executed on an Eventhouse single node.
+Broadcast join is an execution strategy of join that distributes the join over Eventhouse nodes. This strategy is useful when the left side of the join is small (up to several tens of MBs). In this case, a broadcast join is more performant than a regular join.
+::: moniker-end
+
+Use the [lookup operator](lookup-operator.md) if the right side is smaller than the left side. The lookup operator runs in broadcast strategy by default when the right side is smaller than the left.
+
+> [!NOTE]
+> If the left side of the join is larger than several tens of MBs, the query will fail.
+>
+> You can run the following query to estimate the size of the left side, in bytes:
+>
+> ```kusto
+> leftSide
+> | summarize sum(estimate_data_size(*))
+> ```
+
+If left side of the join is a small dataset, then you may run join in broadcast mode using the following syntax (hint.strategy = broadcast):
+
+```kusto
+leftSide 
+| join hint.strategy = broadcast (factTable) on key
+```
+
+The performance improvement is more noticeable in scenarios where the join is followed by other operators such as `summarize`.  See the following query for example:
+
+```kusto
+leftSide 
+| join hint.strategy = broadcast (factTable) on Key
+| summarize dcount(Messages) by Timestamp, Key
+```
+
+## Related content
+
+* [lookup operator](lookup-operator.md).
