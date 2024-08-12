@@ -8,6 +8,8 @@ ms.date: 09/13/2022
 
 # Data formats supported by Azure Data Explorer for ingestion
 
+<!-- //TODO delete and redirect to kql repo -->
+
 Data ingestion is the process by which data is added to a table and is made available for query in Azure Data Explorer. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that Azure Data Explorer supports for data ingestion.
 
 > [!NOTE]
