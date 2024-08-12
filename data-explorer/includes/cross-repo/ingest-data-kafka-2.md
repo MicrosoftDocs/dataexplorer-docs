@@ -1,62 +1,92 @@
 ---
 ms.topic: include
-ms.date: 07/07/2024
+ms.date: 08/12/2024
 ---
 
-## Query and review data
+## Create a Microsoft Entra service principal
 
-### Confirm data ingestion
+The Microsoft Entra service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
 
-1. Wait for data to arrive in the `Storms` table. To confirm the transfer of data, check the row count:
+This service principal will be the identity used by the connector to write data your table in Kusto. You'll later grant permissions for this service principal to access Kusto resources.
 
-    ```kusto
-    Storms | count
-    ```
+[!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
-1. Confirm that there are no failures in the ingestion process:
+## Create a target table
 
-    ```kusto
-    .show ingestion failures
-    ```
-
-    Once you see data, try out a few queries.
-
-### Query the data
-
-1. To see all the records, run the following [query](/azure/data-explorer/kusto/query/tutorials/learn-common-operators):
+1. From your query environment, create a table called `Storms` using the following command:
 
     ```kusto
-    Storms
+    .create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
     ```
 
-1. Use `where` and `project` to filter specific data:
+1. Create the corresponding table mapping `Storms_CSV_Mapping` for ingested data using the following command:
 
     ```kusto
-    Storms
-    | where EventType == 'Drought' and State == 'TEXAS'
-    | project StartTime, EndTime, Source, EventId
+    .create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
     ```
 
-1. Use the [`summarize`](/azure/data-explorer/kusto/query/summarize-operator) operator:
+1. Create an [ingestion batching policy](/azure/data-explorer/kusto/management/batching-policy) on the table for configurable queued ingestion latency.
+
+    > [!TIP]
+    > The ingestion batching policy is a performance optimizer and includes three parameters. The first condition satisfied triggers ingestion into the Azure Data Explorer table.
 
     ```kusto
-    Storms
-    | summarize event_count=count() by State
-    | where event_count > 10
-    | project State, event_count
-    | render columnchart
+    .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
     ```
 
-    :::image type="content" source="/azure/data-explorer/includes/media/ingest-data-kafka/kusto-query.png" alt-text="Screenshot of Kafka query column chart results in Azure Data Explorer.":::
+1. Use the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) to grant permission to work with the database.
 
-For more query examples and guidance, see [Write queries in KQL](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) and [Kusto Query Language documentation](/azure/data-explorer/kusto/query/index).
+    ```kusto
+    .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
+    ```
 
-## Reset
+## Run the lab
 
-To reset, do the following steps:
+The following lab is designed to give you the experience of starting to create data, setting up the Kafka connector, and streaming this data to Azure Data Explorer with the connector. You can then look at the ingested data.
 
-1. Stop the containers (`docker-compose down -v`)
-1. Delete (`drop table Storms`)
-1. Re-create the `Storms` table
-1. Recreate table mapping
-1. Restart containers (`docker-compose up`)
+### Clone the git repo
+
+Clone the lab's git [repo](https://github.com/Azure/azure-kusto-labs).
+
+1. Create a local directory on your machine.
+
+    ```
+    mkdir ~/kafka-kusto-hol
+    cd ~/kafka-kusto-hol
+    ```
+
+1. Clone the repo.
+
+    ```shell
+    cd ~/kafka-kusto-hol
+    git clone https://github.com/Azure/azure-kusto-labs
+    cd azure-kusto-labs/kafka-integration/dockerized-quickstart
+    ```
+
+#### Contents of the cloned repo
+
+Run the following command to list the contents of the cloned repo:
+
+```
+cd ~/kafka-kusto-hol/azure-kusto-labs/kafka-integration/dockerized-quickstart
+tree
+```
+
+This result of this search is:
+
+```
+├── README.md
+├── adx-query.png
+├── adx-sink-config.json
+├── connector
+│   └── Dockerfile
+├── docker-compose.yaml
+└── storm-events-producer
+    ├── Dockerfile
+    ├── StormEvents.csv
+    ├── go.mod
+    ├── go.sum
+    ├── kafka
+    │   └── kafka.go
+    └── main.go
+ ```
