@@ -3,7 +3,6 @@ ms.topic: include
 ms.date: 08/12/2024
 ---
 
-
 Replace the values for the following attributes as per your setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name), `kusto.ingestion.url`, and `kusto.query.url`.
 
 #### Connector - Dockerfile
@@ -72,7 +71,7 @@ services:
     docker-compose up
     ```
 
-    The producer application will start sending events to the `storm-events` topic.
+    The producer application starts sending events to the `storm-events` topic.
     You should see logs similar to the following logs:
 
     ```shell
@@ -107,7 +106,7 @@ Use a Kafka Connect REST call to start the connector.
     curl http://localhost:8083/connectors/storm/status
     ```
 
-The connector will start queueing ingestion processes to Azure Data Explorer.
+The connector starts queueing ingestion processes.
 
 > [!NOTE]
 > If you have log connector issues, [create an issue](https://github.com/Azure/kafka-sink-azure-kusto/issues).

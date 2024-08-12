@@ -22,11 +22,11 @@ ms.date: 08/12/2024
 
 ### Review the files in the cloned repo
 
-The following sections explain the important parts of the files in the file tree above.
+The following sections explain the important parts of the files in the file tree.
 
 #### adx-sink-config.json
 
-This file contains the Kusto sink properties file where you'll update specific configuration details:
+This file contains the Kusto sink properties file where you update specific configuration details:
 
 ```json
 {

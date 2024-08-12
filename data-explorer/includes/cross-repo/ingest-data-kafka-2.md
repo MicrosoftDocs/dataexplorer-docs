@@ -28,7 +28,7 @@ This service principal will be the identity used by the connector to write data 
 1. Create an [ingestion batching policy](/azure/data-explorer/kusto/management/batching-policy) on the table for configurable queued ingestion latency.
 
     > [!TIP]
-    > The ingestion batching policy is a performance optimizer and includes three parameters. The first condition satisfied triggers ingestion into the Azure Data Explorer table.
+    > The ingestion batching policy is a performance optimizer and includes three parameters. The first condition satisfied triggers ingestion into the table.
 
     ```kusto
     .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
@@ -42,7 +42,7 @@ This service principal will be the identity used by the connector to write data 
 
 ## Run the lab
 
-The following lab is designed to give you the experience of starting to create data, setting up the Kafka connector, and streaming this data to Azure Data Explorer with the connector. You can then look at the ingested data.
+The following lab is designed to give you the experience of starting to create data, setting up the Kafka connector, and streaming this data. You can then look at the ingested data.
 
 ### Clone the git repo
 
