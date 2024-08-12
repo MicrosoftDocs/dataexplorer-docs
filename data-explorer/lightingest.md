@@ -14,7 +14,7 @@ LightIngest is most useful when you want to ingest a large amount of data, becau
 
 For an example of how to autogenerate a LightIngest command, see [ingest historical data](ingest-data-historical.md).
 
-[!INCLUDE [ingestion-size-limit](includes/ingestion-size-limit.md)]
+[!INCLUDE [ingestion-size-limit](includes/cross-repo/ingestion-size-limit.md)]
 
 ## Prerequisites
 
