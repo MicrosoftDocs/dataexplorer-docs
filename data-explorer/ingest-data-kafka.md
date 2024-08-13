@@ -3,7 +3,7 @@ title: 'Ingest data from Kafka into Azure Data Explorer'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Kafka.
 ms.reviewer: ankhanol
 ms.topic: how-to
-ms.date: 08/12/2024
+ms.date: 08/13/2024
 
 #Customer intent: As an integration developer, I want to build integration pipelines from Kafka into Azure Data Explorer, so I can make data available for near real time analytics.
 ---
@@ -48,6 +48,7 @@ This file contains the Kusto sink properties file where you update specific conf
     }
 }
 ```
+
 [!INCLUDE [ingest-data-kafka-3](includes/cross-repo/ingest-data-kafka-3.md)]
 
 ### Managed identity
@@ -56,7 +57,7 @@ By default, the Kafka connector uses the application method for authentication d
 
 1. Assign your cluster a managed identity and grant your storage account read permissions. For more information, see [Ingest data using managed identity authentication](ingest-data-managed-identity.md).
 
-1. In your **adx-sink-config.json** file, set `aad.auth.strategy` to `managed_identity` and ensure that `aad.auth.appid` is set to the managed identity object ID or managed identity client (application) ID.
+1. In your **adx-sink-config.json** file, set `aad.auth.strategy` to `managed_identity` and ensure that `aad.auth.appid` is set to the managed identity client (application) ID.
 
 1. Use a [private instance metadata service token](/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) instead of the [Microsoft Entra service principal](#create-a-microsoft-entra-service-principal).
 

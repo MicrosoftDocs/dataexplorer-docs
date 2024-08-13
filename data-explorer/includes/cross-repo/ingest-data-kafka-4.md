@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 08/12/2024
+ms.date: 08/13/2024
 ---
 
 
@@ -11,7 +11,8 @@ ms.date: 08/12/2024
 1. Once data has arrived in the `Storms` table, confirm the transfer of data, by checking the row count:
 
     ```kusto
-    Storms | count
+    Storms 
+    | count
     ```
 
 1. Confirm that there are no failures in the ingestion process:
