@@ -3,7 +3,7 @@ title: 'Ingest data from Cribl Stream into Azure Data Explorer'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Cribl stream.
 ms.reviewer: ramacg
 ms.topic: how-to
-ms.date: 07/18/2024
+ms.date: 08/13/2024
 
 #Customer intent: As an integration developer, I want to build integration pipelines from Cribl stream into Azure Data Explorer, so I can make data available for near real time analytics.
 ---
