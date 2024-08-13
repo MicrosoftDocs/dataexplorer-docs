@@ -70,7 +70,7 @@ let series_mv_oc_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:strin
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
