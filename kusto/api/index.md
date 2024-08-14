@@ -1,11 +1,11 @@
 ---
-title:  API Overview
-description: This article describes API.
+title: API and SDK Overview
+description: Learn about Kusto REST APIs and SDKs.
 ms.reviewer: vladikb
 ms.topic: reference
 ms.date: 08/11/2024
 ---
-# API Overview
+# API and SDK Overview
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 

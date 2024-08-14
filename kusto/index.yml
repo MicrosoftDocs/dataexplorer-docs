@@ -1,10 +1,10 @@
 ### YamlMime:Landing
 
-title: Kusto Query Language documentation
+title: Kusto documentation
 summary: Kusto Query Language (KQL) is a powerful tool for exploring your data, uncovering patterns, identifying anomalies and outliers, creating statistical models, and more. KQL is a versatile language that allows you to query structured, semi-structured, and unstructured data effectively. The language is expressive and straightforward, making it easy to read and understand the intent of queries, and is optimized for a smooth authoring experience.
 
 metadata:
-  title: Kusto Query Language documentation
+  title: Kusto documentation
   description: Kusto Query Language (KQL) is a dynamic and intuitive tool for querying all types of data, designed for easy authoring and clear query comprehension.
   ms.service: kusto
   ms.topic: landing-page
