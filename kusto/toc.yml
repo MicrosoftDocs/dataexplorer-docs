@@ -1,5 +1,5 @@
 items:
-  - name: Kusto Query Language documentation
+  - name: Kusto documentation
     href: index.yml
   - name: What is Kusto Query Language?
     href: query/index.md
