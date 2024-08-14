@@ -159,18 +159,6 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 `MaximumConcurrentOperationsPerCluster`
 
-### Purge storage artifacts cleanup capacity
-
-| Property | Type | Description |
-|--|--|--|
-| `MaximumConcurrentOperationsPerCluster` | `long` | The maximum number of concurrent purge storage artifacts cleanup operations on cluster. |
-
-**Formula**
-
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's purge storage artifacts cleanup capacity based on the following formula:
-
-`MaximumConcurrentOperationsPerCluster`
-
 ### Periodic storage artifacts cleanup capacity
 
 | Property | Type | Description |
