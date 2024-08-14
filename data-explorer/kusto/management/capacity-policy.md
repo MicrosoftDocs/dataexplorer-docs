@@ -20,6 +20,9 @@ The capacity policy is made of the following components:
 * [ExtentsPartitionCapacity](#extents-partition-capacity)
 * [MaterializedViewsCapacity](#materialized-views-capacity-policy)
 * [StoredQueryResultsCapacity](#stored-query-results-capacity)
+* [StreamingIngestionPostProcessingCapacity](#streaming-ingestion-postprocessing-capacity)
+* [PurgeStorageArtifactsCleanupCapacity](#purge-storage-artifacts-cleanup-capacity)
+* [PeriodicStorageArtifactsCleanupCapacity](#periodic-storage-artifacts-cleanup-capacity)
 
 To view the capacity of your cluster, use the [.show capacity](../management/diagnostics.md#show-capacity) command.
 
@@ -70,7 +73,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 *Number of nodes in cluster* x `MaximumConcurrentOperationsPerNode`
 
 > [!NOTE]
-> In clusters with four or more nodes, the admin node doesn't participate in merge operations, so *Number of nodes in cluster* is reduced by one.
+> In clusters with four or more nodes, the admin node doesn't participate in purge operations, so *Number of nodes in cluster* is reduced by one.
 
 ### Export capacity
 
@@ -129,6 +132,57 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in stored query results creation operations, so the *Number of nodes in cluster* is reduced by one.
 
+### Streaming ingestion post processing capacity
+
+| Property | Type | Description |
+|--|--|--|
+| `MaximumConcurrentOperationsPerNode` | `long` | The maximum number of concurrent streaming ingestion post processing operations on each cluster node node. |
+
+**Formula**
+
+The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's streaming ingestion post processing capacity based on the following formula:
+
+*Number of nodes in cluster* x `MaximumConcurrentOperationsPerNode`
+
+> [!NOTE]
+> In clusters with four or more nodes, the admin node doesn't participate in streaming ingestion post processing, so *Number of nodes in cluster* is reduced by one.
+
+### Purge storage artifacts cleanup capacity
+
+| Property | Type | Description |
+|--|--|--|
+| `MaximumConcurrentOperationsPerCluster` | `long` | The maximum number of concurrent purge storage artifacts cleanup operations on cluster. |
+
+**Formula**
+
+The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's purge storage artifacts cleanup capacity based on the following formula:
+
+`MaximumConcurrentOperationsPerCluster`
+
+### Purge storage artifacts cleanup capacity
+
+| Property | Type | Description |
+|--|--|--|
+| `MaximumConcurrentOperationsPerCluster` | `long` | The maximum number of concurrent purge storage artifacts cleanup operations on cluster. |
+
+**Formula**
+
+The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's purge storage artifacts cleanup capacity based on the following formula:
+
+`MaximumConcurrentOperationsPerCluster`
+
+### Periodic storage artifacts cleanup capacity
+
+| Property | Type | Description |
+|--|--|--|
+| `MaximumConcurrentOperationsPerCluster` | `long` | The maximum number of concurrent periodic storage artifacts cleanup operations on cluster. |
+
+**Formula**
+
+The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's periodic storage artifacts cleanup capacity based on the following formula:
+
+`MaximumConcurrentOperationsPerCluster`
+
 ## Defaults
 
 The default capacity policy has the following JSON representation:
@@ -164,6 +218,15 @@ The default capacity policy has the following JSON representation:
   "StoredQueryResultsCapacity": {
     "MaximumConcurrentOperationsPerDbAdmin": 250,
     "CoreUtilizationCoefficient": 0.75
+  },
+  "StreamingIngestionPostProcessingCapacity": {
+     "MaximumConcurrentOperationsPerNode": 4
+  },
+  "PurgeStorageArtifactsCleanupCapacity": {
+    "MaximumConcurrentOperationsPerCluster": 2
+  },
+  "PeriodicStorageArtifactsCleanupCapacity": {
+    "MaximumConcurrentOperationsPerCluster": 2
   }
 }
 ```
