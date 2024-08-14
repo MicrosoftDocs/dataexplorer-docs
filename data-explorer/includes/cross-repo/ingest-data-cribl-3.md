@@ -9,12 +9,12 @@ In the **New Data Explorer** window, in **General Settings** set the following s
 
 |Setting  |Value| Description  |
 |---------|---------|---------|
-|*Output ID*|<OutputID>, for instance, *KustoDestination* |The name used to identify your destination. |
+|*Output ID*|\<OutputID\>, for instance, *KustoDestination* |The name used to identify your destination. |
 | *Ingestion Mode* |**Batching** (default) or **Streaming** |The settings for ingestion mode. Batching allows your table to pull batches of data from a Cribl storage container when ingesting large amounts of data over a short amount of time. Streaming sends data directly to the target KQL table. Streaming is useful for ingesting smaller amounts of data, or for example, sending a critical alert in real-time. Streaming can achieve lower latency than batching. If the ingestion mode is set to *Streaming*, you'll need to enable a streaming policy. For more information, see [Streaming ingestion policy](/azure/data-explorer/kusto/management/streaming-ingestion-policy). |
 | *Cluster base URI* | [base URI](#ingestion-uri) |The [base URI](#ingestion-uri).|
 | *Ingestion service URI*| [ingestion URI](#ingestion-uri) |Displays when **Batching** mode is selected. The [ingestion URI](#ingestion-uri). |
-| *Database name* |<DatabaseName> |The name of your target database.|
-| *Table name* |<TableName> |The name of your target table.|
+| *Database name* |\<DatabaseName\> |The name of your target database.|
+| *Table name* |\<TableName\> |The name of your target table.|
 |*Validate database settings*| **Yes** (default) or **No**. |Validates the database name and credentials you entered when you save or start your destination. It validates the table name, except when **Add mapping object** is on. This setting should be disabled if your app doesn't have both *Database Viewer* and *Table Viewer* roles.|
 | *Add mapping object* | **Yes** or **No** (default.) |Displayed only when Batching mode is selected instead of the default **Data mapping** text field. Selecting **Yes** opens a window to enter a data mapping as a JSON object. |
 | *Data mapping*| The mapping schema name as defined in the [Create a target table](#create-a-target-table) step. | The mapping schema name. The default view when **Add mapping object** is set to **No**. |
@@ -31,8 +31,8 @@ Select **Authentication Settings** in the sidebar. Use the values you saved in [
 
 |Setting  |Value| Description  |
 |---------|---------|---------|
-|*Tenant ID*|<TenantID> |Use the `tenant` value you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
-| *Client ID*|<ClientID> | Use the `appId` values you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal).  |
+|*Tenant ID*|\<TenantID\> |Use the `tenant` value you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+| *Client ID*|\<ClientID\> | Use the `appId` values you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal).  |
 |*Scope*| `<baseuri>/.default`| Use the value from [base URI](#ingestion-uri) for *baseuri*. |
 |*Authentication method*| **Client secret**, **Client secret (text secret)**, or **Certificate**  |Options are **Client secret** Use the client secret of the Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) for **Client secret**. For  **Certificate** your certificate uses the public key you registered/will register for the Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
 
@@ -59,7 +59,7 @@ When complete, select **Next**.
 
 |Setting  |Value| Description  |
 |---------|---------|---------|
-|*Pipeline*|<defined_pipeline> | An optional pipeline to process data before sending it out using this output.|
+|*Pipeline*|<\defined_pipeline\> | An optional pipeline to process data before sending it out using this output.|
 |*System fields*|`cribl_pipe` (default), `cribl_host`, `cribl_input`, `cribl_output`, `cribl_route`, or `cribl_wp` | A list of fields that are automatically added to events before they're sent to their destination. Wildcards are supported.|
 
 When complete, select **Next**.
@@ -84,7 +84,7 @@ Choosing Parquet opens a Parquet Settings tab, to select the Parquet schema.
 |*Write page checksum*| **On** or **Off** |Select **On** if you use Parquet tools to check data integrity using Parquet page checksums.|
 |Metadata (optional)*| |The Destination file metadata properties that can be included as key-value pairs. |
 
-### Retries section
+### Retries
 
 Displays when Ingestion mode is set to **Streaming**.
 
@@ -108,7 +108,7 @@ Select **Advanced Settings** from the sidebar. The following describes the advan
 |---------|---------|---------|
 | *Flush immediately* | **Yes** or **No** (default.) | Set to **Yes** to override data aggregation in Kusto. For more information, see [Best practices for the Kusto Ingest library](/azure/data-explorer/kusto/api/netfx/kusto-ingest-best-practices).|
 |*Retain blob on success* | **Yes** or **No** (default.) | Set to **Yes** to retain data blob upon ingestion completion.|
-|*Extent tags* |<ExtentTag, ET2,...> |Set tags, if desired, to partitioned extents of the target table. |
+|*Extent tags* |<\ExtentTag, ET2,...\> |Set tags, if desired, to partitioned extents of the target table. |
 |*Enforce uniqueness via tag values* | | Select **Add value** to specify an `ingest-by` value list to use to filter incoming extents and discard the extents matching a listed value. For more information, see [Extents (data shards)](/azure/data-explorer/kusto/management/extents-overview)|
 |*Report level* | **DoNotReport**, **FailuresOnly** (default), and **FailuresAndSuccesses**.|The ingestion status reporting level. |
 |*Report method* |**Queue** (default), **Table**, and **QueueAndTable** (Recommended.) |Target for ingestion status reporting. |
