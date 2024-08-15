@@ -28,7 +28,7 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/s
     [![Build status badge](https://badge.fury.io/py/azure-kusto-python.svg)](https://github.com/Azure/azure-kusto-python/actions/workflows/build.yml)
 
 ::: moniker range ="azure-data-explorer"
-* [Ingest data using Python](/azure/data-explorer/python-ingest-data.md)
+* [Ingest data using Python](/azure/data-explorer/python-ingest-data)
 ::: moniker-end
 
 * Pypi packages:

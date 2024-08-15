@@ -27,7 +27,7 @@ in the form of default query limits. If you're considering removing these limits
   * The actual number of requests that can run concurrently on a database depends on various factors. The most dominant factors are database SKU, database's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
 
 ::: moniker range="azure-data-explorer"
- For more information, see [Optimize for high concurrency with Azure Data Explorer](/azure/data-explorer/high-concurrency.md).
+ For more information, see [Optimize for high concurrency with Azure Data Explorer](/azure/data-explorer/high-concurrency).
 ::: moniker-end
 
 ## Limit on result set size (result truncation)
@@ -272,6 +272,6 @@ The suggestion in this case is to review the query and reduce the columns being 
 ## Related content
 
 :::moniker range="azure-data-explorer"
-* [Optimize for high concurrency with Azure Data Explorer](/azure/data-explorer/high-concurrency.md)
+* [Optimize for high concurrency with Azure Data Explorer](/azure/data-explorer/high-concurrency)
 ::: moniker-end
 * [Query best practices](../query/best-practices.md)

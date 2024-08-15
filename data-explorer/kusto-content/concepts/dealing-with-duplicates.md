@@ -92,4 +92,4 @@ Data duplication can be handled in multiple ways. Evaluate the options carefully
 
 ## Related content
 
-* [Write queries for Azure Data Explorer](/azure/data-explorer/../query/tutorials/learn-common-operators)
+* [Write queries](../query/tutorials/learn-common-operators.md)

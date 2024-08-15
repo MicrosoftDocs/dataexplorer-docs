@@ -115,7 +115,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 **Syntax**
 
 > [!NOTE]
-> To connect to a cluster using the Azure Data Explorer web UI, see [Add clusters](/azure/data-explorer/web-query-data.md#add-clusters).
+> To connect to a cluster using the Azure Data Explorer web UI, see [Add clusters](/azure/data-explorer/web-query-data#add-clusters).
 
   ```kusto
   // Connect to the Data Management service - this command only works in Kusto.Explorer
@@ -418,4 +418,4 @@ The output is the same as the '.show tables' command output (returned without th
 
 ## Related content
 
-* [Enable data purge on your Azure Data Explorer cluster](/azure/data-explorer/data-purge-portal.md)
+* [Enable data purge on your Azure Data Explorer cluster](/azure/data-explorer/data-purge-portal)
