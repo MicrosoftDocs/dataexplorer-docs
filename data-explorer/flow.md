@@ -3,7 +3,7 @@ title: Azure Data Explorer connector for Power Automate
 description: Learn about using Azure Data Explorer connector for Power Automate to create flows of automatically scheduled or triggered tasks.
 ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 08/09/2023
+ms.date: 08/15/2024
 no-loc: [Power Automate]
 ---
 
@@ -99,7 +99,7 @@ The following flow will present the query results as a timechart.
 
 ### Run async management command
 
-Use this action to run a [management command](/kusto/management/index) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](/kusto/management/operations) command with the ID returned by this action.
+Use this action to run a [management command](/kusto/management/index) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](/kusto/management/show-operations) command with the ID returned by this action.
 
 If the async management command takes more than 60 minutes to run, it will fail with a "RequestTimeout" exception.
 
@@ -125,7 +125,7 @@ If the management command takes more than 8 minutes to run, it will fail with a 
 
 #### Example
 
-The following flow runs the [.show operation](/kusto/management/operations) command to find the status of an async command using an operation ID returned by an async command execution.
+The following flow runs the [.show operation](/kusto/management/show-operations) command to find the status of an async command using an operation ID returned by an async command execution.
 
 :::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show management command action.":::
 

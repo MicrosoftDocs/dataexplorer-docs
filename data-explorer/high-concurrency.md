@@ -87,13 +87,13 @@ When more than one user loads the same dashboard at a similar time, the dashboar
 
 ### Configure query consistency
 
-The default [query consistency](/kusto/concepts/queryconsistency) mode is **strong**. In this mode, an *admin* node manages metadata and ingestion for the cluster, as well as query planning and delegating execution to other nodes.
+The default [query consistency](/kusto/concepts/query-consistency) mode is **strong**. In this mode, an *admin* node manages metadata and ingestion for the cluster, as well as query planning and delegating execution to other nodes.
 
 In high-concurrency applications, managing queries may cause the *admin* node's CPU use to be high, whilst other nodes are less busy. This can cause a bottleneck where the number of concurrent queries can't grow. However, this may not be apparent in the cluster's CPU report (Azure portal > {your_cluster} > Metrics > CPU Metric) which shows the average CPU use for the cluster.
 
 For this scenario, we recommend using **weak** consistency mode. In this mode, more nodes are able to manage queries, which makes it possible to *horizontally scale* the number of concurrent queries. Nodes in this mode periodically refresh their copy of metadata and newly ingested data, which leads to a latency of typically less than a minute as the data is synchronized. However, this short latency is preferable to the bottleneck situation that can arise when using **strong** consistency mode.
 
-You can set the consistency mode in a [workload group query consistency policy](/kusto/management/query-consistency-policy), in the [client request properties](/kusto/api/netfx/request-properties), or in the Grafana data source configuration.
+You can set the consistency mode in a [workload group query consistency policy](/kusto/management/query-consistency-policy), in the [client request properties](/kusto/api/netfx/client-request-properties), or in the Grafana data source configuration.
 
 ## Set cluster policies
 

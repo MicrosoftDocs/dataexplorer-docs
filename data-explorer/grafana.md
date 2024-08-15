@@ -217,7 +217,7 @@ To enable results cache rendering, do the following on the **Query Optimizations
 
 Clusters are configured with strong consistency. This default configuration guarantees that query results are up to date with all changes in the cluster.
 
-When you enable weak consistency, query results can have a lag of 1 to 2 minutes after cluster alterations. However, weak consistency might boost visual rendering time. If immediate consistency isn't critical and performance is marginal, enable weak consistency to improve performance. For more information, see [Query consistency](/kusto/concepts/queryconsistency).
+When you enable weak consistency, query results can have a lag of 1 to 2 minutes after cluster alterations. However, weak consistency might boost visual rendering time. If immediate consistency isn't critical and performance is marginal, enable weak consistency to improve performance. For more information, see [Query consistency](/kusto/concepts/query-consistency).
 
 To enable weak consistency, on the **Query Optimizations** pane, select **Data consistency** > **Weak**.
 
