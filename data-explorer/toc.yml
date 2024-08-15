@@ -70,10 +70,10 @@ items:
             href: security-controls-policy.md
             displayName: Azure Policy Regulatory Compliance, compliance
           - name: Access control
-            href: kusto/access-control/index.md
+            href: /kusto/access-control/index
             items:
               - name: Role-based access control
-                href: kusto/access-control/role-based-access-control.md
+                href: /kusto/access-control/role-based-access-control
                 displayName: RBAC, security roles, principals
               - name: Cross-tenant queries and commands
                 href: cross-tenant-query-and-commands.md
@@ -537,67 +537,67 @@ items:
   - name: Develop
     items:
       - name: API overview
-        href: kusto/api/index.md
+        href: /kusto/api/index
       - name: Client libraries
         items:
           - name: Client libraries
-            href: kusto/api/client-libraries.md
+            href: /kusto/api/client-libraries
           - name: Kusto Data library
             items:
               - name: Kusto Data overview
-                href: kusto/api/netfx/about-kusto-data.md
+                href: /kusto/api/netfx/about-kusto-data
                 displayName: kusto.data, SDK
               - name: Best practices for Kusto Data
-                href: kusto/api/netfx/kusto-data-best-practices.md
+                href: /kusto/api/netfx/kusto-data-best-practices
                 displayName: kusto.data, SDK
               - name: ClientRequestProperties class
-                href: kusto/api/netfx/client-request-properties.md
+                href: /kusto/api/netfx/client-request-properties
                 displayName: request properties, CRP, kusto.data, SDK
           - name: Kusto Ingest library
             items:
               - name: Kusto Ingest overview
-                href: kusto/api/netfx/about-kusto-ingest.md
+                href: /kusto/api/netfx/about-kusto-ingest
                 displayName: kusto.ingest, SDK
               - name: Best practices for Kusto Ingest
-                href: kusto/api/netfx/kusto-ingest-best-practices.md
+                href: /kusto/api/netfx/kusto-ingest-best-practices
                 displayName: kusto.ingest, SDK
       - name: Sample app generator
         href: sample-app-generator-wizard.md
       - name: Write code with SDKs
         items:
           - name: Set up your environment
-            href: kusto/api/get-started/app-set-up.md
+            href: /kusto/api/get-started/app-set-up
           - name: Create your first app
-            href: kusto/api/get-started/app-hello-kusto.md
+            href: /kusto/api/get-started/app-hello-kusto
           - name: Run basic queries
-            href: kusto/api/get-started/app-basic-query.md
+            href: /kusto/api/get-started/app-basic-query
           - name: Run management commands
-            href: kusto/api/get-started/app-management-commands.md
+            href: /kusto/api/get-started/app-management-commands
           - name: Queued ingestion
-            href: kusto/api/get-started/app-queued-ingestion.md
+            href: /kusto/api/get-started/app-queued-ingestion
       - name: Connection strings
         items:
           - name: Connection strings overview
-            href: kusto/api/connection-strings/index.md
+            href: /kusto/api/connection-strings/index
           - name: Kusto connection strings
-            href: kusto/api/connection-strings/kusto.md
+            href: /kusto/api/connection-strings/kusto
           - name: Storage connection strings
-            href: kusto/api/connection-strings/storage-connection-strings.md
+            href: /kusto/api/connection-strings/storage-connection-strings
           - name: SQL external table connection strings
-            href: kusto/api/connection-strings/sql-connection-strings.md
+            href: /kusto/api/connection-strings/sql-connection-strings
           - name: Generate SAS token
-            href: kusto/api/connection-strings/generate-sas-token.md
+            href: /kusto/api/connection-strings/generate-sas-token
       - name: Integrate the query editor in your apps
         items:
           - name: Integration overview
             displayName: monaco web UI
-            href: kusto/api/monaco/monaco-overview.md
+            href: /kusto/api/monaco/monaco-overview
           - name: Embed the web UI in an IFrame
             displayName: monaco web UI
-            href: kusto/api/monaco/host-web-ux-in-iframe.md
+            href: /kusto/api/monaco/host-web-ux-in-iframe
           - name: Integrate the Monaco editor with Kusto query support
             displayName: monaco monaco-kusto
-            href: kusto/api/monaco/monaco-kusto.md
+            href: /kusto/api/monaco/monaco-kusto
       - name: Kusto emulator
         items:
           - name: Kusto emulator overview
@@ -620,12 +620,12 @@ items:
                 href: flow-usage.md
                 displayName: Microsoft Flow, flow, flow connector
           - name: Logic Apps
-            href: kusto/tools/logicapps.md
+            href: /kusto/tools/logicapps
           - name: Azure Pipelines
             href: devops.md
             displayName: CI/CD, continuous integration, continuous deployment, Azure DevOps
           - name: Sync Kusto
-            href: kusto/tools/synckusto.md
+            href: /kusto/tools/synckusto
       - name: Notebooks
         items:
           - name: Jupyter Notebooks with Kqlmagic
@@ -664,7 +664,7 @@ items:
       - name: PowerShell Az.Kusto
         items:
           - name: Use Kusto cmdlets in Azure PowerShell
-            href: kusto/api/powershell/azure-powershell.md
+            href: /kusto/api/powershell/azure-powershell
           - name: Az.Kusto cmdlets
             href: /powershell/module/az.kusto/#kusto
       - name: Python plugin packages

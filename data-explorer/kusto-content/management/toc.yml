@@ -751,6 +751,14 @@ items:
       - name: Security roles overview
         href: security-roles.md
         displayName: role based access control, rbac, principals
+      - name: Access control
+        items:
+        - name: Access control overview
+          href: ../access-control/index.md
+        - name: Kusto role-based Access Control
+          href: ../access-control/role-based-access-control.md
+        - name: Microsoft Entra App registration
+          href: ../access-control/provision-entra-id-app.md
       - name: Manage database roles
         href: manage-database-security-roles.md
         displayName: .show principal, principal access, security roles, roles, rbac

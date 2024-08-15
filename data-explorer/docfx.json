@@ -7,7 +7,7 @@
           "**/*.yml"
         ],
         "exclude": [
-          "**/kusto-docs/**",
+          "**/kusto-content/**",
           "**/obj/**",
           "**/includes/**",
           "_themes/**",

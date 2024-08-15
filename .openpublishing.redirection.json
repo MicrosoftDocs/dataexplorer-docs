@@ -387,7 +387,7 @@
     },
     {
       "source_path": "data-explorer/kusto/management/access-control/role-based-authorization.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/access-control/role-based-access-control",
+      "redirect_url": "/azure/data-explorer/kusto/access-control/role-based-access-control",
       "redirect_document_id": true
     },
     {
@@ -646,7 +646,7 @@
       "redirect_document_id": true
     },
     {
-      "source_path": "data-explorer/kusto/management/access-control/role-based-access-control.md",
+      "source_path": "data-explorer/kusto/access-control/role-based-access-control.md",
       "redirect_url": "/azure/data-explorer/kusto/access-control/role-based-access-control",
       "redirect_document_id": true
     },
