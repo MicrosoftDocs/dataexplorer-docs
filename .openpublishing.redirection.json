@@ -826,6 +826,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/kusto/management/access-control/role-based-access-control .md",
+      "redirect_url": "/kusto/access-control/role-based-access-control",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/ingestion-properties.md",
+      "redirect_url": "/kusto/ingestion-properties",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "data-explorer/kusto/management/commands.md",
       "redirect_url": "/kusto/management/show-commands",
       "redirect_document_id": false
