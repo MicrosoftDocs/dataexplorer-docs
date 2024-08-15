@@ -56,4 +56,4 @@ Logic Apps and :::no-loc text="Power Automate"::: are built on the same connecto
 ## Related content
 
 * To learn more about configuring a recurrence action, see the [:::no-loc text="Power Automate"::: documentation page](/azure/data-explorer/flow).
-* Take a look at some [usage examples](/azure-data-explorer/flow-usage) for ideas on configuring your logic app actions.
+* Take a look at some [usage examples](/azure/data-explorer/flow-usage) for ideas on configuring your logic app actions.
