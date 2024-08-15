@@ -21,7 +21,7 @@ Your Azure Data Explorer cluster can be granted two types of identities:
 
 Single-tenant Microsoft Entra resources can only use managed identities to communicate with resources in the same tenant. This limitation restricts the use of managed identities in certain authentication scenarios. For example, you can't use an Azure Data Explorer managed identity to access an event hub located in a different tenant. In such cases, use account-key based authentication.
 
-Azure Data Explorer is multi-tenant capable, which means that you can grant access to managed identities from different tenants. To accomplish this, assign the relevant [security roles](kusto/management/security-roles.md). When assigning the roles, refer to the managed identity as described in [Referencing security principals](kusto/management/referencing-security-principals.md#referencing-azure-ad-principals-and-groups).
+Azure Data Explorer is multi-tenant capable, which means that you can grant access to managed identities from different tenants. To accomplish this, assign the relevant [security roles](/kusto/management/security-roles). When assigning the roles, refer to the managed identity as described in [Referencing security principals](/kusto/management/referencing-security-principals#referencing-azure-ad-principals-and-groups).
 
 To authenticate with managed identities, follow these steps:
 
@@ -35,30 +35,30 @@ Your cluster needs permissions to act on behalf of the given managed identity. T
 
 ### Configure the managed identity policy
 
-To use the managed identity, you need to configure the managed identity policy to allow this identity. For instructions, see [Managed Identity policy](kusto/management/managed-identity-policy.md).
+To use the managed identity, you need to configure the managed identity policy to allow this identity. For instructions, see [Managed Identity policy](/kusto/management/managed-identity-policy).
 
 The managed identity policy management commands are:
 
-* [.alter policy managed_identity](kusto/management/alter-managed-identity-policy-command.md)
-* [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md)
-* [.delete policy managed_identity](kusto/management/delete-managed-identity-policy-command.md)
-* [.show policy managed_identity](kusto/management/show-managed-identity-policy-command.md)
+* [.alter policy managed_identity](/kusto/management/alter-managed-identity-policy-command)
+* [.alter-merge policy managed_identity](/kusto/management/alter-merge-managed-identity-policy-command)
+* [.delete policy managed_identity](/kusto/management/delete-managed-identity-policy-command)
+* [.show policy managed_identity](/kusto/management/show-managed-identity-policy-command)
 
 ### Use the managed identity in supported workflows
 
 After assigning the managed identity to your cluster and configuring the relevant managed identity policy usage, you can start using managed identity authentication in the following workflows:
 
-* **External Tables**: Create an external table with managed identity authentication. The authentication is stated as part of the connection string. For examples, see [storage connection string](./kusto/api/connection-strings/storage-connection-strings.md). For instructions for using external tables with managed identity authentication, see [Authenticate external tables with managed identities](external-tables-managed-identities.md).
+* **External Tables**: Create an external table with managed identity authentication. The authentication is stated as part of the connection string. For examples, see [storage connection string](/kusto/api/connection-strings/storage-connection-strings). For instructions for using external tables with managed identity authentication, see [Authenticate external tables with managed identities](external-tables-managed-identities.md).
 
-* **Continuous Export**: Run a continuous export on behalf of a managed identity.  A managed identity is required if the external table uses impersonation authentication or if the export query references tables in other databases. To use a managed identity, add the managed identity identifier in the optional parameters given in the `create-or-alter` command. For a step-by-step guide, see [Authenticate with managed identity for continuous export](kusto/management/data-export/continuous-export-with-managed-identity.md).
+* **Continuous Export**: Run a continuous export on behalf of a managed identity.  A managed identity is required if the external table uses impersonation authentication or if the export query references tables in other databases. To use a managed identity, add the managed identity identifier in the optional parameters given in the `create-or-alter` command. For a step-by-step guide, see [Authenticate with managed identity for continuous export](/kusto/management/data-export/continuous-export-with-managed-identity).
 
 * **Event Hubs Native Ingestion**: Use a managed identity with event hub native ingestion. For more information, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md).
 
-* **Python plugin**: Use a managed identity to authenticate to storage accounts of external artifacts that are used in the python plugin. Please note that the `SandboxArtifacts` usage needs to be defined on the cluster level managed identity policy. For more information, see [Python plugin](./kusto/query/python-plugin.md).
+* **Python plugin**: Use a managed identity to authenticate to storage accounts of external artifacts that are used in the python plugin. Please note that the `SandboxArtifacts` usage needs to be defined on the cluster level managed identity policy. For more information, see [Python plugin](/kusto/query/python-plugin).
 
 * **SDK based ingestion**: When queuing blobs for ingestion from your own storage accounts, you can use managed identities as an alternative to shared access signature (SAS) tokens and Shared Keys authentication methods. For more information, see [Queue blobs for ingestion using managed identity authentication](ingest-data-managed-identity.md).
 
-* **Ingest from storage**: Ingest data from files located in cloud storages into a target table using managed identity authentication. For more information, see [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md).
+* **Ingest from storage**: Ingest data from files located in cloud storages into a target table using managed identity authentication. For more information, see [Ingest from storage](/kusto/management/data-ingestion/ingest-from-storage).
 
 ## Related content
 

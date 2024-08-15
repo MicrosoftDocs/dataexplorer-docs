@@ -53,14 +53,14 @@ Microsoft Entra application authentication is used for applications that need to
 
 1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
 1. Browse to the database in which you want to ingest data.
-1. Run the following management command, replacing the placeholders. Replace *DatabaseName* with the name of the target database and *ApplicationID* with the previously saved value. This command grants the app the [database ingestor](kusto/access-control/role-based-access-control.md) role. For more information, see [Manage database security roles](kusto/management/manage-database-security-roles.md).
+1. Run the following management command, replacing the placeholders. Replace *DatabaseName* with the name of the target database and *ApplicationID* with the previously saved value. This command grants the app the [database ingestor](/kusto/access-control/role-based-access-control) role. For more information, see [Manage database security roles](/kusto/management/manage-database-security-roles).
 
     ```kusto
     .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'Azure Data Explorer App Registration'
     ```
 
     > [!NOTE]
-    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#show-existing-security-roles).
+    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](/kusto/management/manage-database-security-roles#show-existing-security-roles).
 
 ### Create target tables
 
@@ -84,7 +84,7 @@ Azure Data Explorer has two main types of ingestion: batching and streaming. For
 
 > [!NOTE]
 > [Streaming ingestion](ingest-data-streaming.md) must be enabled on Azure Data Explorer cluster to enable the `managed` option.
-> You can check if streaming is enabled using the [.show database streaming ingestion policy](kusto/management/show-database-streaming-ingestion-policy-command.md) command.
+> You can check if streaming is enabled using the [.show database streaming ingestion policy](/kusto/management/show-database-streaming-ingestion-policy-command) command.
 
 Run the following command for each of the three tables to enable streaming ingestion:
 
@@ -252,7 +252,7 @@ Once the sample app has run, your data has been ingested into the defined tables
 
 ### Further data processing
 
-Using update policies, the collected data can further be processed as per application need. For more information, see [Update policy overview](kusto/management/update-policy.md).
+Using update policies, the collected data can further be processed as per application need. For more information, see [Update policy overview](/kusto/management/update-policy).
 
 1. The following example exports histogram metrics to a histo-specific table with buckets and aggregates. Run the following command in the query pane of the Azure Data Explorer web UI:
     
@@ -301,4 +301,4 @@ Using update policies, the collected data can further be processed as per applic
 ## Related content
 
 * [KQL quick reference](kql-quick-reference.md)
-* [Kusto Query Language (KQL) overview](kusto/query/index.md)
+* [Kusto Query Language (KQL) overview](/kusto/query/index)

@@ -12,11 +12,11 @@ ms.date: 06/20/2022
 
 Azure Data Explorer supports the ability to delete individual records. Data deletion through the `.purge` command protects personal data and shouldn't be used in other scenarios. It isn't designed to support frequent delete requests, or deletion of massive quantities of data, and may have a significant performance impact on the service.
 
-Executing a `.purge` command triggers a process that can take a few days to complete. If the "density" of records on which the `predicate` is applied is large, the process will reingest all the data in the table. This process has a significant impact on performance and COGS (cost of goods sold). For more information, see [Data purge in Azure Data Explorer](kusto/concepts/data-purge.md).
+Executing a `.purge` command triggers a process that can take a few days to complete. If the "density" of records on which the `predicate` is applied is large, the process will reingest all the data in the table. This process has a significant impact on performance and COGS (cost of goods sold). For more information, see [Data purge in Azure Data Explorer](/kusto/concepts/data-purge).
 
 ## Methods of invoking purge operations
 
-Azure Data Explorer supports both individual record deletion and purging an entire table. The `.purge` command can be [invoked in two ways](kusto/concepts/data-purge.md#purge-table-tablename-records-command) for differing usage scenarios:
+Azure Data Explorer supports both individual record deletion and purging an entire table. The `.purge` command can be [invoked in two ways](/kusto/concepts/data-purge#purge-table-tablename-records-command) for differing usage scenarios:
 
 * Programmatic invocation: A single step that is intended to be invoked by applications. Calling this command directly triggers the purge execution sequence.
 
@@ -53,11 +53,11 @@ Azure Data Explorer supports both individual record deletion and purging an enti
 
 ## Limitations
 
-* The purge process is final and irreversible. It isn't possible to "undo" this process or recover data that has been purged. Therefore, commands such as [undo table drop](kusto/management/undo-drop-table-command.md) can't recover purged data, and rollback of the data to a previous version can't go to "before" the latest purge.
-* The `.purge` command is executed against the Data Management endpoint: *https://ingest-[YourClusterName].[Region].kusto.windows.net*. The command requires [database admin](kusto/access-control/role-based-access-control.md) permissions on the relevant databases.
+* The purge process is final and irreversible. It isn't possible to "undo" this process or recover data that has been purged. Therefore, commands such as [undo table drop](/kusto/management/undo-drop-table-command) can't recover purged data, and rollback of the data to a previous version can't go to "before" the latest purge.
+* The `.purge` command is executed against the Data Management endpoint: *https://ingest-[YourClusterName].[Region].kusto.windows.net*. The command requires [database admin](/kusto/access-control/role-based-access-control) permissions on the relevant databases.
 * Due to the purge process performance impact, the caller is expected to modify the data schema so that minimal tables include relevant data, and batch commands per table to reduce the significant COGS impact of the purge process.
 * The `predicate` parameter of the purge command is used to specify which records to purge. `Predicate` size is limited to 63 KB.
 
 ## Related content
 
-* [Data purge in Azure Data Explorer](kusto/concepts/data-purge.md)
+* [Data purge in Azure Data Explorer](/kusto/concepts/data-purge)

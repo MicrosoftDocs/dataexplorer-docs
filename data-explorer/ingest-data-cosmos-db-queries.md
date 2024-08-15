@@ -19,7 +19,7 @@ You can use the following ways to query the *current state* from your table:
 - [Run a query to get the latest versions of documents](#run-a-query-to-get-the-latest-versions-of-documents)
 - [Create a materialized view of the latest versions of documents](#create-a-materialized-view-of-the-latest-versions-of-documents)
 
-In the examples, you'll get the latest versions of the document by summarizing the table by the **Id** column, using the [arg_max](kusto/query/arg-max-aggregation-function.md) function on the **_timestamp** column to only show the rows with the most recent timestamps.
+In the examples, you'll get the latest versions of the document by summarizing the table by the **Id** column, using the [arg_max](/kusto/query/arg-max-aggregation-function) function on the **_timestamp** column to only show the rows with the most recent timestamps.
 
 > [!NOTE]
 > The **_timestamp** column is created from the **_ts** property of ingested the Cosmos DB documents. The conversion from `DateTimeFromUnixSeconds` (**_ts**) to `datetime` (**_timestamp**) is performed by the ingestion  [table mapping](ingest-data-cosmos-db-connection.md#step-1-choose-an-azure-data-explorer-table-and-configure-its-table-mapping) configured for the table. The converted data in the **_timestamp** column makes queries and materialized views more performant than using the native `DateTimeFromUnixSeconds` **_ts** value.
@@ -43,7 +43,7 @@ TestTable
 
 ### Create a materialized view of the latest versions of documents
 
-If your Cosmos DB container has a lot of updates, the query to get the latest versions of documents can be slow. [Materialized views](kusto/management/materialized-views/materialized-view-overview.md) usually have better performance than a query if there are a lot of updates. If the query is frequently run, using a materialized view can be beneficial and save cost.
+If your Cosmos DB container has a lot of updates, the query to get the latest versions of documents can be slow. [Materialized views](/kusto/management/materialized-views/materialized-view-overview) usually have better performance than a query if there are a lot of updates. If the query is frequently run, using a materialized view can be beneficial and save cost.
 
 Run the following command to create a materialized view of the latest versions of documents:
 
@@ -62,7 +62,7 @@ LatestDocuments
 | where not(IsDeleted)
 ```
 
-Optionally, encapsulate the filtered query in a [stored function](kusto/query/schema-entities/stored-functions.md) and call it to get the latest filtered results, as follows:
+Optionally, encapsulate the filtered query in a [stored function](/kusto/query/schema-entities/stored-functions) and call it to get the latest filtered results, as follows:
 
 ```kusto
 .create function LatestDocumentsDeletedRemoved(){
@@ -76,4 +76,4 @@ LatestDocumentsDeletedRemoved
 
 ## Related content
 
-* [Kusto Query Language (KQL) overview](kusto/query/index.md)
+* [Kusto Query Language (KQL) overview](/kusto/query/index)

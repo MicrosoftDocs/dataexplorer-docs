@@ -105,7 +105,7 @@ The following are detailed descriptions of connectors and tools and integrations
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs, Telemetry, Time series
-* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
+* **Underlying SDK:** [Java](/kusto/api/java/kusto-java-client-library)
 * **Repository:** Microsoft Azure - https://github.com/Azure/kafka-sink-azure-kusto/
 * **Documentation:** [Ingest data from Apache Kafka](ingest-data-kafka.md)
 * **Community Blog:** [Kafka ingestion into Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/kafka-ingestion-into-azure-data-explorer-part-1/ba-p/1452439)
@@ -117,7 +117,7 @@ The following are detailed descriptions of connectors and tools and integrations
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Streaming
 * **Use cases:** Telemetry
-* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
+* **Underlying SDK:** [Java](/kusto/api/java/kusto-java-client-library)
 * **Repository:** Microsoft Azure - https://github.com/Azure/flink-connector-kusto/
 * **Documentation:** [Ingest data from Apache Flink](ingest-data-flink.md)
 
@@ -128,7 +128,7 @@ The following are detailed descriptions of connectors and tools and integrations
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs
-* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
+* **Underlying SDK:** [Java](/kusto/api/java/kusto-java-client-library)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
 * **Documentation:** [Ingest data with the Apache Log4J 2 connector](apache-log4j2-connector.md)
 * **Community Blog:** [Getting started with Apache Log4J and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
@@ -140,7 +140,7 @@ The following are detailed descriptions of connectors and tools and integrations
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry
-* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
+* **Underlying SDK:** [Java](/kusto/api/java/kusto-java-client-library)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-spark/
 * **Documentation:** [Apache Spark connector](spark-connector.md)
 * **Community Blog:** [Data preprocessing for Azure Data Explorer for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
@@ -152,7 +152,7 @@ The following are detailed descriptions of connectors and tools and integrations
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Use cases:** Telemetry
-* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
+* **Underlying SDK:** [Java](/kusto/api/java/kusto-java-client-library)
 * **Documentation:** [Connect to an Azure Synapse workspace](/azure/synapse-analytics/quickstart-connect-azure-data-explorer)
 
 ### Azure Cosmos DB
@@ -234,7 +234,7 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 Java Database Connectivity (JDBC) is a Java API used to connect to databases and execute queries. You can use JDBC to connect to Azure Data Explorer.
 
 * **Functionality:** Query, visualization
-* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
+* **Underlying SDK:** [Java](/kusto/api/java/kusto-java-client-library)
 * **Documentation:** [Connect to Azure Data Explorer with JDBC](connect-jdbc.md)
 
 ### Logic Apps
@@ -244,7 +244,7 @@ The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) con
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Use cases:** Data orchestration
-* **Documentation:** [Microsoft Logic Apps and Azure Data Explorer](kusto/tools/logicapps.md)
+* **Documentation:** [Microsoft Logic Apps and Azure Data Explorer](/kusto/tools/logicapps)
 
 ### Logstash
 
@@ -253,7 +253,7 @@ The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) con
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching
 * **Use cases:** Logs
-* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
+* **Underlying SDK:** [Java](/kusto/api/java/kusto-java-client-library)
 * **Repository:** Microsoft Azure - https://github.com/Azure/logstash-output-kusto/
 * **Documentation:** [Ingest data from Logstash](ingest-data-logstash.md)
 * **Community Blog:** [How to migrate from Elasticsearch to Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/how-to-migrate-from-elasticsearch-to-azure-data-explorer/ba-p/1621539/)
@@ -272,7 +272,7 @@ NLog is a flexible and free logging platform for various .NET platforms, includi
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry, Logs, Metrics
-* **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
+* **Underlying SDK:** [.NET](/kusto/api/netfx/about-the-sdk)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-nlog-sink
 * **Documentation:** [Ingest data with the NLog sink](nlog-sink.md)
 * **Community Blog:** [Getting started with NLog sink and Azure Data Explorer](https://aka.ms/adx-docs-nlog-blog)
@@ -293,7 +293,7 @@ Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a wide
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Traces, Metrics, Logs
-* **Underlying SDK:** [Go](kusto/api/golang/kusto-golang-client-library.md)
+* **Underlying SDK:** [Go](/kusto/api/golang/kusto-golang-client-library)
 * **Repository:** Open Telemetry - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter
 * **Documentation:** [Ingest data from OpenTelemetry](open-telemetry-connector.md)
 * **Community Blog:** [Getting started with Open Telemetry and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-open-telemetry-and-azure-data-explorer/ba-p/3675708)
@@ -322,7 +322,7 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs
-* **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
+* **Underlying SDK:** [.NET](/kusto/api/netfx/about-the-sdk)
 * **Repository:** Microsoft Azure - https://github.com/Azure/serilog-sinks-azuredataexplorer
 * **Documentation:** [Ingest data with the Serilog sink](serilog-sink.md)
 * **Community Blog:** [Getting started with Serilog sink and Azure Data Explorer](https://go.microsoft.com/fwlink/p/?linkid=2227749)
@@ -334,7 +334,7 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching
 * **Use cases:** Logs
-* **Underlying SDK:** [Python](kusto/api/python/kusto-python-client-library.md)
+* **Underlying SDK:** [Python](/kusto/api/python/kusto-python-client-library)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-splunk/tree/main/splunk-adx-alert-addon
 * **Documentation:** [Ingest data from Splunk](ingest-data-splunk.md)
 * **Splunk Base:** [Microsoft Azure Data Explorer Add-On for Splunk](https://splunkbase.splunk.com/app/6979)
@@ -356,7 +356,7 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry, Logs, Metrics
-* **Underlying SDK:** [Go](kusto/api/golang/kusto-golang-client-library.md)
+* **Underlying SDK:** [Go](/kusto/api/golang/kusto-golang-client-library)
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 * **Documentation:** [Ingest data from Telegraf](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
@@ -431,7 +431,7 @@ Delta Kusto is a Command-line interface (CLI) enabling Continuous Integration / 
 
 [Jupyter Notebook](https://jupyter.org/) is an open-source web application that allows you to create and share documents containing live code, equations, visualizations, and narrative text. It's useful for a wide range of tasks, such as data cleaning and transformation, numerical simulation, statistical modeling, data visualization, and machine learning.
 
-[Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](kusto/query/index.md) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](kusto/query/render-operator.md) operator. The kqlmagic extension is compatible with Jupyter Lab, Visual Studio Code Jupyter extension, and Azure Data Studio, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
+[Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](/kusto/query/index) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](/kusto/query/render-operator) operator. The kqlmagic extension is compatible with Jupyter Lab, Visual Studio Code Jupyter extension, and Azure Data Studio, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
 
 * **Functionality:** Query, Visualization
 * **Documentation:** [Jupyter Notebooks](kqlmagic.md)
@@ -449,8 +449,8 @@ The open source repo contains C# parser and a semantic analyzer as well as a tra
 Kusto.Explorer is free software for download and use on your Windows desktop. Kusto.Explorer allows you to query and analyze your data with Kusto Query Language (KQL) in a user-friendly interface. 
 
 * **Functionality:** Query, Visualization
-* **Documentation:** [Installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
-  * Additional articles include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code features](kusto/tools/kusto-explorer-code-features.md)
+* **Documentation:** [Installation and user interface](/kusto/tools/kusto-explorer), [using Kusto.Explorer](/kusto/tools/kusto-explorer-using)
+  * Additional articles include [options](/kusto/tools/kusto-explorer-options), [troubleshooting](/kusto/tools/kusto-explorer-troubleshooting), [keyboard shortcuts](/kusto/tools/kusto-explorer-shortcuts), [code features](/kusto/tools/kusto-explorer-code-features)
 
 ### Kusto CLI
 
@@ -458,7 +458,7 @@ Kusto.Cli is a command-line utility for sending queries and control commands
 on a Kusto cluster. 
 
 * **Functionality:**  Query
-* **Documentation:** [Kusto CLI](kusto/tools/kusto-cli.md)
+* **Documentation:** [Kusto CLI](/kusto/tools/kusto-cli)
 
 ### Lightingest
 
@@ -483,16 +483,16 @@ You can integrate the [Monaco Editor](https://microsoft.github.io/monaco-editor)
 
 * **Functionality:** Query
 * **Repository:** [Monaco Editor](https://microsoft.github.io/monaco-editor)
-* **Documentation:** [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
+* **Documentation:** [Kusto Query Language setup and usage for the Monaco editor](/kusto/api/monaco/monaco-kusto) - The Kusto Query Language editor that can be embedded in web and electron based applications.
   * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
-  * [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
+  * [Embedding the Azure Data Explorer web UI](/kusto/api/monaco/host-web-ux-in-iframe) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
 
 ### PowerShell
 
-PowerShell scripts can use the [Kusto client libraries](kusto/api/client-libraries.md), as PowerShell inherently integrates with .NET libraries. 
+PowerShell scripts can use the [Kusto client libraries](/kusto/api/client-libraries), as PowerShell inherently integrates with .NET libraries. 
 
 * **Functionality:** Query
-* **Documentation:** [Use Kusto .NET client libraries from PowerShell](kusto/api/powershell/powershell.md)
+* **Documentation:** [Use Kusto .NET client libraries from PowerShell](/kusto/api/powershell/powershell)
 
 ### Real-Time Intelligence in Microsoft Fabric
 
@@ -509,11 +509,11 @@ system, an Azure Data Explorer database, and Azure Dev Ops repos.
 
 * **Functionality:** Source control
 * **Repository:** [SyncKusto](https://github.com/microsoft/delta-kusto)
-* **Documentation:** [Sync Kusto](kusto/tools/synckusto.md)
+* **Documentation:** [Sync Kusto](/kusto/tools/synckusto)
 
 ### Web UI
 
-Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share [Kusto Query Language (KQL)](kusto/query/index.md) commands and queries
+Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share [Kusto Query Language (KQL)](/kusto/query/index) commands and queries
 
 * **Functionality:** Ingestion, Export, Query, Visualization
 * **Ingestion type supported:** Batching, Streaming

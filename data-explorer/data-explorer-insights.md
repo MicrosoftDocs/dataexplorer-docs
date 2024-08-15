@@ -140,7 +140,7 @@ On this tab, you can select a metric tile and deep dive to understand its trend 
 
 The **Ingestion** tab allows you to monitor the status of queued ingestion operations to the cluster.
 
-In the [queued ingestion](ingest-data-overview.md#continuous-data-ingestion) process, data ingestion is optimized for high throughput. This is done by grouping small chunks of incoming data into batches based on a configurable [ingestion batching policy](kusto/management/batching-policy.md).
+In the [queued ingestion](ingest-data-overview.md#continuous-data-ingestion) process, data ingestion is optimized for high throughput. This is done by grouping small chunks of incoming data into batches based on a configurable [ingestion batching policy](/kusto/management/batching-policy).
 
 The **Ingestion** tab gives you detailed information about the following:
 
@@ -148,7 +148,7 @@ The **Ingestion** tab gives you detailed information about the following:
 - Ingestion error details by table.
 - The amount of ingested data.
 - The latency of the queued ingestion and where it occurs.
-- The batching process itself, including monitoring information about the [ingestion batching policy](kusto/management/batching-policy.md) and how the batches were [sealed](kusto/management/batching-policy.md#sealing-a-batch).
+- The batching process itself, including monitoring information about the [ingestion batching policy](/kusto/management/batching-policy) and how the batches were [sealed](/kusto/management/batching-policy#sealing-a-batch).
 - For Event Hubs, Event Grid, and IoT Hub ingestions: The number of events received into the cluster and the number of events sent for actual ingestion.
 
 ## Pin to an Azure dashboard

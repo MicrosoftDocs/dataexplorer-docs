@@ -11,7 +11,7 @@ This article contains error codes that may occur during [data ingestion](ingest-
 
 When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md) on your cluster, you can see error codes in the **Failed ingestion** [operation log](/azure/azure-monitor/reference/tables/failedingestion).
 
-You can use the [.show ingestion failures command](kusto/management/ingestion-failures.md) to present information on data ingestion management command failures, though this command excludes failures from other stages of the ingestion process. For a comprehensive view of failures across all stages, refer to [ingestion metrics](using-metrics.md#ingestion-metrics) and [diagnostic logs](using-diagnostic-logs.md). 
+You can use the [.show ingestion failures command](/kusto/management/ingestion-failures) to present information on data ingestion management command failures, though this command excludes failures from other stages of the ingestion process. For a comprehensive view of failures across all stages, refer to [ingestion metrics](using-metrics.md#ingestion-metrics) and [diagnostic logs](using-diagnostic-logs.md). 
 
 The **Ingestion result** metric provides information about the **Category** of ingestion errors, although it doesn't show the specific error codes. The errors in this article are organized by these categories.
 
@@ -27,7 +27,7 @@ The **Ingestion result** metric provides information about the **Category** of i
 |BadRequest_InvalidBlob                            |Blob is invalid.                                                              |Permanent           |
 |BadRequest_EmptyArchive                           |Archive is empty.                                                             |Permanent           |
 |BadRequest_InvalidArchive                         |Archive is invalid.                                                           |Permanent           |
-|BadRequest_InvalidMapping                         |Failed to parse ingestion mapping.<br>For more information about how to write ingestion mapping, see [Data mappings](./kusto/management/mappings.md).   |Permanent           |
+|BadRequest_InvalidMapping                         |Failed to parse ingestion mapping.<br>For more information about how to write ingestion mapping, see [Data mappings](/kusto/management/mappings).   |Permanent           |
 |BadRequest_InvalidMappingReference                |Invalid mapping reference.            |Permanent           |
 |BadRequest_FormatNotSupported                     |Format isn't supported. This may be because you're using a format not supported by a particular data connection. <br>For more information about data formats supported for ingestion, see [Supported data formats](ingestion-supported-formats.md). |Permanent          |
 |BadRequest_InconsistentMapping                    |Supported ingestion mapping isn't consistent with the existing table schema. |Permanent           |
@@ -41,9 +41,9 @@ The **Ingestion result** metric provides information about the **Category** of i
 |BadRequest_NoRecordsOrWrongFormat                 |Blob is empty or specified [ingestion format](ingestion-supported-formats.md) doesn't match blob content (for example, `JSON` format used instead of `MULTIJSON`).  |Permanent
 |BadRequest_EmptyBlobUri                           |Blob Uri is empty.                                                           |Permanent           |
 |BadRequest_DuplicateMapping                       |Ingestion properties include both ingestionMapping and ingestionMappingReference, which isn't valid.              |Permanent          |
-|BadRequest_InvalidOrEmptyTableName                |Table name is empty or invalid.<br>For more information about naming conventions, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent          |
+|BadRequest_InvalidOrEmptyTableName                |Table name is empty or invalid.<br>For more information about naming conventions, see [Entity names](/kusto/query/schema-entities/entity-names).    |Permanent          |
 |BadRequest_EmptyDatabaseName                      |Database name is empty.             |Permanent          |
-|BadRequest_EmptyMappingReference                  |Some formats should get ingestion mapping to be ingested and the mapping reference is empty.<br>For more information about mapping, see [Data Mapping](./kusto/management/mappings.md).        |Permanent           |
+|BadRequest_EmptyMappingReference                  |Some formats should get ingestion mapping to be ingested and the mapping reference is empty.<br>For more information about mapping, see [Data Mapping](/kusto/management/mappings).        |Permanent           |
 |Download_BadRequest                               |Failed to download source from Azure Storage because of bad request.    |Permanent           |
 |BadRequest_MissingMappingtFailure                 |Avro and Json formats must be ingested with ingestionMapping or ingestionMappingReference parameter.         |Permanent           |
 |Stream_NoDataToIngest                             |Found no data to ingest.<br>For data in JSON format, this error may indicate that the JSON format was invalid.        |Permanent          |
@@ -52,10 +52,10 @@ The **Ingestion result** metric provides information about the **Category** of i
 |BadRequest_CorruptedMessage                       |Message is corrupted.    |Permanent           |
 |BadRequest_SyntaxError                            |Request syntax error.     |Permanent           |
 |BadRequest_ZeroRetentionPolicyWithNoUpdatePolicy  |Table has zero retention policy and isn't the source table for any update policy.    |Permanent           |
-|BadRequest_CreationTimeEarlierThanSoftDeletePeriod|Creation time that was specified for ingestion, isn't within the `SoftDeletePeriod`.<br>For more information about `SoftDeletePeriod`, see [The policy object](./kusto/management/retention-policy.md#the-policy-object).  |Permanent   |
+|BadRequest_CreationTimeEarlierThanSoftDeletePeriod|Creation time that was specified for ingestion, isn't within the `SoftDeletePeriod`.<br>For more information about `SoftDeletePeriod`, see [The policy object](/kusto/management/retention-policy#the-policy-object).  |Permanent   |
 |BadRequest_NotSupported                           |Request not supported.    |Permanent           |
 |Download_SourceNotFound                           |Failed to download source from Azure Storage. Source not found.       |Permanent       |
-|BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about naming conventions, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent           |
+|BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about naming conventions, see [Entity names](/kusto/query/schema-entities/entity-names).    |Permanent           |
 |BadRequest_MalformedIngestionProperty              |Ingestion property is malformed.    |Permanent           |
 | BadRequest_IngestionPropertyNotSupportedInThisContext | Ingestion property isn't supported in this context.| Permanent |
 | BadRequest_NonMultiDatabaseDataConnection        | Event contains the 'Database' property that routes ingested data to a different database than the target database configured in the data connection's settings. However, since the connection isn't set to allow routing to multiple databases, dynamic database routing isn't allowed.| Permanent |
@@ -70,8 +70,8 @@ The **Ingestion result** metric provides information about the **Category** of i
 |Download_AccessConditionNotSatisfied              |Failed to download source from Azure storage. Access condition not satisfied.     |Permanent           |
 |Download_Forbidden                                |Failed to download source from Azure storage. Access forbidden.    |Permanent           |
 |Download_AccountNotFound                          |Failed to download source from Azure storage. Account not found.    |Permanent           |
-|BadRequest_TableAccessDenied                      |Access to table is denied.<br>For more information, see [role-based access control](./kusto/management/access-control/role-based-access-control.md).     |Permanent           |
-|BadRequest_DatabaseAccessDenied                   |Access to database is denied.<br>For more information, see [role-based access control](./kusto/management/access-control/role-based-access-control.md).                        |Permanent           |
+|BadRequest_TableAccessDenied                      |Access to table is denied.<br>For more information, see [role-based access control](/kusto/management/access-control/role-based-access-control).     |Permanent           |
+|BadRequest_DatabaseAccessDenied                   |Access to database is denied.<br>For more information, see [role-based access control](/kusto/management/access-control/role-based-access-control).                        |Permanent           |
 |BadRequest_InvalidAuthentication                  |Authentication to data isn't valid.                                |Permanent           |
 
 ## Category: DownloadFailed
@@ -96,7 +96,7 @@ The **Ingestion result** metric provides information about the **Category** of i
 
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
-|Stream_InputStreamTooLarge                        |The total size of the input data or a single field in the data is too large. HRESULT: 0x80DA0009<br>For more information about the size limit for this type of ingestion, see [The string data type](./kusto/query/scalar-data-types/string.md). |Permanent          |
+|Stream_InputStreamTooLarge                        |The total size of the input data or a single field in the data is too large. HRESULT: 0x80DA0009<br>For more information about the size limit for this type of ingestion, see [The string data type](/kusto/query/scalar-data-types/string). |Permanent          |
 |BadRequest_FileTooLarge                           |Blob size has exceeded the size limit allowed for ingestion. |Permanent           |
 
 ## Category: InternalServiceError

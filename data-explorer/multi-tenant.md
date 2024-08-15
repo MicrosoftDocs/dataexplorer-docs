@@ -19,7 +19,7 @@ This article describes some deployment architectures and provides characteristic
 
 In general, sharing a cluster among many tenants, regardless of the architecture used, means different tenants share the cluster's resources. This can lead to the [noisy neighbor](/azure/architecture/antipatterns/noisy-neighbor/noisy-neighbor) antipattern.
 
-For instance, if a tenant performs many compute-intensive queries or ingestions, other tenants are likely to be impacted by resource starvation. This can be mitigated by using [workload groups](kusto/management/workload-groups.md). You can also use policies to control caching and overall storage.
+For instance, if a tenant performs many compute-intensive queries or ingestions, other tenants are likely to be impacted by resource starvation. This can be mitigated by using [workload groups](/kusto/management/workload-groups). You can also use policies to control caching and overall storage.
 
 ## Architectures overview
 
@@ -48,14 +48,14 @@ The characteristics of this architecture are:
 * **Retention and caching policies**: Each tenant can have its own unique policies, which enable you to provide custom retention and caching policies to your customers.
 
 * **Security boundary per tenant**:
-  * For multi-tenant application (proxy): Configure your application to target the relevant database. Use [access restriction](kusto/query/cross-cluster-or-database-queries.md#qualified-names-and-restrict-access-statements) on queries to prohibit [cross-database queries](kusto/query/cross-cluster-or-database-queries.md).
-  * For users with direct access: Users can be granted access at the [database level](kusto/access-control/role-based-access-control.md). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
+  * For multi-tenant application (proxy): Configure your application to target the relevant database. Use [access restriction](/kusto/query/cross-cluster-or-database-queries#qualified-names-and-restrict-access-statements) on queries to prohibit [cross-database queries](/kusto/query/cross-cluster-or-database-queries).
+  * For users with direct access: Users can be granted access at the [database level](/kusto/access-control/role-based-access-control). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
 
-* **Aggregating data from multiple tenants at scale**: Use the [union operator](kusto/query/union-operator.md) to aggregate data between databases. However, this method can become cumbersome as the number of tenants increases. Even though aggregating data from multiple tenants might be a design goal from the tenant's perspective, it might be of interest for solution owner to aggregate data from all tenants to gather statistics.
+* **Aggregating data from multiple tenants at scale**: Use the [union operator](/kusto/query/union-operator) to aggregate data between databases. However, this method can become cumbersome as the number of tenants increases. Even though aggregating data from multiple tenants might be a design goal from the tenant's perspective, it might be of interest for solution owner to aggregate data from all tenants to gather statistics.
 
-* **Extents fragmentation**: Each tenant ingesting a few records per database table leads to the creation of small [extents](kusto/management/extents-overview.md) that later need to be merged. This results in higher cost for extent management. Therefore, we strongly recommend using [streaming ingestion](ingest-data-streaming.md), such as Event Hubs or Event Grid ingestion. To use streaming ingestion, you must make sure it's enabled on the cluster and table.
+* **Extents fragmentation**: Each tenant ingesting a few records per database table leads to the creation of small [extents](/kusto/management/extents-overview) that later need to be merged. This results in higher cost for extent management. Therefore, we strongly recommend using [streaming ingestion](ingest-data-streaming.md), such as Event Hubs or Event Grid ingestion. To use streaming ingestion, you must make sure it's enabled on the cluster and table.
 
-* **Materialized views and partitioning policy**. As number of tenants increases, it's important to remember that there are limits to the number of [materialized views](kusto/management/materialized-views/materialized-view-overview.md#performance-considerations) and [partition policies](kusto/management/partitioning-policy.md#supported-scenarios) a cluster can run efficiently.
+* **Materialized views and partitioning policy**. As number of tenants increases, it's important to remember that there are limits to the number of [materialized views](/kusto/management/materialized-views/materialized-view-overview#performance-considerations) and [partition policies](/kusto/management/partitioning-policy#supported-scenarios) a cluster can run efficiently.
 
 * **Event Grid and Event Hubs data connections**: These data connections are created per database. Therefore, this architecture requires a data connection and Event Grid or Event Hubs instance per tenant, which adds management complexity. Consider using event routing for [Event Hubs](ingest-data-event-hub-overview.md#events-routing) and [Event Grid](ingest-data-event-grid-overview.md#events-routing).
 
@@ -63,13 +63,13 @@ The characteristics of this architecture are:
 
 :::image type="content" source="media/multi-tenant/one-db-for-many-tenants.png" alt-text="Diagram showing the architecture for one database for many tenants.":::
 
-This architecture is more aggressive in its consolidation, using a single database for all tenants. Each table in the database has a **Tenant ID** column, or equivalent, which allows for filtering for a single tenant's data. You can [partition](kusto/management/partitioning-policy.md) tables by tenant to improve query performance, since most queries are likely to filter by tenant. Where possible, you should consider partition with another column using a *compound* partition key. For example, you can create a *compound* partition key concatenating the **tenant ID** and another columns' values.
+This architecture is more aggressive in its consolidation, using a single database for all tenants. Each table in the database has a **Tenant ID** column, or equivalent, which allows for filtering for a single tenant's data. You can [partition](/kusto/management/partitioning-policy) tables by tenant to improve query performance, since most queries are likely to filter by tenant. Where possible, you should consider partition with another column using a *compound* partition key. For example, you can create a *compound* partition key concatenating the **tenant ID** and another columns' values.
 
 The characteristics of this architecture are:
 
 * **Provisioning a new tenant**: Provisioning a new tenant doesn't require any database creation or schema adjustment. The new **tenant ID** is used in new records.
 
-* **Removing a tenant**: Requires a [soft delete](kusto/concepts/data-soft-delete.md) or [purge](kusto/concepts/data-purge.md) of the tenant's data. The former is more efficient, while the latter supports GDPR obligations. You can batch multiple purges together, for example, at the end of week to limit the impact on resource consumption.
+* **Removing a tenant**: Requires a [soft delete](/kusto/concepts/data-soft-delete) or [purge](/kusto/concepts/data-purge) of the tenant's data. The former is more efficient, while the latter supports GDPR obligations. You can batch multiple purges together, for example, at the end of week to limit the impact on resource consumption.
 
     [!INCLUDE [gdpr-intro-sentence](includes/gdpr-intro-sentence.md)]
 
@@ -78,14 +78,14 @@ The characteristics of this architecture are:
 * **Retention and caching policies**: The policies are the same for all tenants since they all share the same table.
 
 * **Security boundary per tenant**:
-  * For multi-tenant application (proxy): Use the [Restrict statement](kusto/query/restrict-statement.md)
-  * For users with direct access: Use the [Row Level Security Policy](kusto/management/row-level-security-policy.md) and familiarize yourself with its [limitations](kusto/management/row-level-security-policy.md#limitations). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
+  * For multi-tenant application (proxy): Use the [Restrict statement](/kusto/query/restrict-statement)
+  * For users with direct access: Use the [Row Level Security Policy](/kusto/management/row-level-security-policy) and familiarize yourself with its [limitations](/kusto/management/row-level-security-policy#limitations). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
 
 * **Aggregating data from multiple tenants at scale**: Users with the sufficient access permissions can run a standard aggregation query on multiple tenants' data.
 
 * **Extents fragmentation**: Since all tenants ingest data into the same table, data can usually be consolidated and efficiently ingested in one, or a few, extents.
 
-* **Materialized views and partitioning policy**: These can be used on multi-tenant table. You can improve performance by partitioning on the **Tenant ID**, or equivalent, column. For more information, see [Scenarios for partition policies](kusto/management/partitioning-policy.md#supported-scenarios).
+* **Materialized views and partitioning policy**: These can be used on multi-tenant table. You can improve performance by partitioning on the **Tenant ID**, or equivalent, column. For more information, see [Scenarios for partition policies](/kusto/management/partitioning-policy#supported-scenarios).
 
 * **Event Grid and Event Hubs data connections**: You consolidated data connections since data for all tenants ends up in one table.
 
@@ -99,8 +99,8 @@ Although each tenant's data is segregated, they all reside in the same security 
 
 ## Related content
 
-* [Workload groups](kusto/management/workload-groups.md)
-* [Role-based access control](kusto/access-control/role-based-access-control.md)
-* [Row Level Security](kusto/management/row-level-security-policy.md)
-* [Restrict statement](kusto/query/restrict-statement.md)
-* [Partitioning policy](kusto/management/partitioning-policy.md)
+* [Workload groups](/kusto/management/workload-groups)
+* [Role-based access control](/kusto/access-control/role-based-access-control)
+* [Row Level Security](/kusto/management/row-level-security-policy)
+* [Restrict statement](/kusto/query/restrict-statement)
+* [Partitioning policy](/kusto/management/partitioning-policy)

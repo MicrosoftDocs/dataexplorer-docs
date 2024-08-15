@@ -30,7 +30,7 @@ Ingestion properties instruct the ingestion process where to route the data and 
 | Database | Name (case sensitive) of the target database. This property can be used if you want to send the data to a different database than the database the data connection was created on (the default database). To route the data to multiple databases, you must first set up the connection as a multi-database connection. For more information, see [Events routing](#events-routing). |
 | Table | Name (case sensitive) of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
 | Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
-| IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
+| IngestionMappingReference | Name of the existing [ingestion mapping](/kusto/management/create-ingestion-mapping-command) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Encoding |  Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
 
 > [!NOTE]

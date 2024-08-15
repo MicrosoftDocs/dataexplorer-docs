@@ -138,11 +138,11 @@ You can use any of the following options when running the emulator:
 
 You can use any of the following tools to connect to and interact with the emulator:
 
-- [Kusto.Explorer](kusto/tools/kusto-explorer.md)
-- [Kusto.CLI](kusto/tools/kusto-cli.md)
-- [Kusto.Data SDKs](kusto/api/netfx/about-kusto-data.md)
+- [Kusto.Explorer](/kusto/tools/kusto-explorer)
+- [Kusto.CLI](/kusto/tools/kusto-cli)
+- [Kusto.Data SDKs](/kusto/api/netfx/about-kusto-data)
 
-In the following sections, you'll use Kusto.Explorer to create a database, ingest data, and query it. To learn more, see [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md).
+In the following sections, you'll use Kusto.Explorer to create a database, ingest data, and query it. To learn more, see [Using Kusto.Explorer](/kusto/tools/kusto-explorer-using).
 
 > [!IMPORTANT]
 > The Kusto Emulator doesn't support HTTPS or Microsoft Entra authentication.
@@ -166,7 +166,7 @@ A database can be persisted in a container folder or on a [mounted folder](#run-
 
 In this example, we keep the data on the container.
 
-In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mode), run the following command to create a persistent database if using a Windows container image:
+In the [Kusto.Explorer Query mode](/kusto/tools/kusto-explorer-using#query-mode), run the following command to create a persistent database if using a Windows container image:
 
 ```kusto
 .create database <YourDatabaseName> persist (
@@ -208,13 +208,13 @@ Bob, 2
 Carl, 3
 ```
 
-1. Run the following command to [create a table](kusto/management/create-table-command.md) to receive the data:
+1. Run the following command to [create a table](/kusto/management/create-table-command) to receive the data:
 
     ```kusto
     .create table MyIngestedSample(Name:string, Id:int)
     ```
 
-1. Run the following command to [ingest the file into the table](kusto/management/data-ingestion/ingest-from-storage.md):
+1. Run the following command to [ingest the file into the table](/kusto/management/data-ingestion/ingest-from-storage):
 
     ```kusto
     .ingest into table MyIngestedSample(@"c:\kustodata\sample.csv")
@@ -245,4 +245,4 @@ MyIngestedSample
 
 ## Related content
 
-- [Kusto Query Language (KQL) overview](kusto/query/index.md)
+- [Kusto Query Language (KQL) overview](/kusto/query/index)

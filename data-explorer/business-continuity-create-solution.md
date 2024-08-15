@@ -33,11 +33,11 @@ Replicate the management activities to have the same cluster configuration in ev
 
 1. Create on each replica the same: 
     * Databases: You can use the [Azure portal](create-cluster-and-database.md#create-a-database) or one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto) to create a new database.
-    * [Tables](kusto/management/create-table-command.md)
-    * [Mappings](kusto/management/create-ingestion-mapping-command.md)
-    * [Policies](./kusto/management/index.md)
+    * [Tables](/kusto/management/create-table-command)
+    * [Mappings](/kusto/management/create-ingestion-mapping-command)
+    * [Policies](/kusto/management/index)
 
-1. Manage the [authentication and authorization](kusto/management/security-roles.md) on each replica.
+1. Manage the [authentication and authorization](/kusto/management/security-roles) on each replica.
 
     :::image type="content" source="media/business-continuity-create-solution/regional-duplicate-management.png" alt-text="Duplicate management activities.":::    
 
@@ -72,7 +72,7 @@ Now you're ready to optimize your replicas using some of the following methods:
 Replicating and updating the Azure Data Explorer setup will linearly increase the cost with the number of replicas. To optimize cost, you can implement an architectural variant to balance time, failover, and cost.
 In an on-demand data recovery configuration, cost optimization has been implemented by introducing passive Azure Data Explorer replicas. These replicas are only turned on if there's a disaster in the primary region (for example, region A). The replicas in Regions B and C don't need to be active 24/7, reducing the cost significantly. However, in most cases, the performance of these replicas won't be as good as the primary cluster. For more information, see [On-demand data recovery configuration](business-continuity-overview.md#on-demand-data-recovery-configuration).
 
-In the image below, only one cluster is ingesting data from the event hub. The primary cluster in Region A performs [continuous data export](kusto/management/data-export/continuous-data-export.md) of all data to a storage account. The secondary replicas have access to the data using [external tables](kusto/query/schema-entities/external-tables.md).
+In the image below, only one cluster is ingesting data from the event hub. The primary cluster in Region A performs [continuous data export](/kusto/management/data-export/continuous-data-export) of all data to a storage account. The secondary replicas have access to the data using [external tables](/kusto/query/schema-entities/external-tables).
 
 :::image type="content" source="media/business-continuity-create-solution/active-hot-standby-scheme.png" alt-text="architecture for an on-demand data recovery configuration.":::
 

@@ -109,4 +109,4 @@ Results:
 
 ## Related content
 
-* Use the [Azure Kusto Logic App connector](kusto/tools/logicapps.md) to run Kusto queries and commands as part of a scheduled or triggered task.
+* Use the [Azure Kusto Logic App connector](/kusto/tools/logicapps) to run Kusto queries and commands as part of a scheduled or triggered task.

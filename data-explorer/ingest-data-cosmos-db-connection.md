@@ -66,13 +66,13 @@ Use the following steps to create a table and apply a table mapping:
     | **id** | Id | None |
     | **name** | Name | None |
     | **_ts** | _ts | None |
-    | **_ts** | _timestamp | Uses `DateTimeFromUnixSeconds` to [transform](kusto/management/mappings.md) **\_ts** ([UNIX seconds](https://wikipedia.org/wiki/Unix_time)) to **_timestamp** (`datetime`)) |
+    | **_ts** | _timestamp | Uses `DateTimeFromUnixSeconds` to [transform](/kusto/management/mappings) **\_ts** ([UNIX seconds](https://wikipedia.org/wiki/Unix_time)) to **_timestamp** (`datetime`)) |
 
     > [!NOTE]
     > We recommend using the following timestamp columns:
     >
     > - **_ts**: Use this column to reconcile data with Cosmos DB.
-    > - **_timestamp**:  Use this column to run efficient time filters in your Kusto queries. For more information, see [Query best practice](./kusto/query/best-practices.md).
+    > - **_timestamp**:  Use this column to run efficient time filters in your Kusto queries. For more information, see [Query best practice](/kusto/query/best-practices).
 
     ~~~kusto
     .create table TestTable ingestion json mapping "DocumentMapping"
@@ -90,13 +90,13 @@ Use the following steps to create a table and apply a table mapping:
 
 If your scenario requires more than a simple mapping of fields, you can use update policies to transform and map data ingested from your change feed.
 
-[Update policies](kusto/management/update-policy.md) are a way to transform data as it's ingested into your table. They're written in Kusto Query Language and are run on the ingestion pipeline. They can be used to transform data from a Cosmos DB change feed ingestion, such as in the following scenarios:
+[Update policies](/kusto/management/update-policy) are a way to transform data as it's ingested into your table. They're written in Kusto Query Language and are run on the ingestion pipeline. They can be used to transform data from a Cosmos DB change feed ingestion, such as in the following scenarios:
 
-- Your documents contain arrays that would be easier to query if they're transformed in multiple rows using the [`mv-expand`](kusto/management/alter-table-update-policy-command.md) operator.
-- You want to filter out documents. For example, you can filter out documents by type using the [`where`](kusto/query/where-operator.md) operator.
+- Your documents contain arrays that would be easier to query if they're transformed in multiple rows using the [`mv-expand`](/kusto/management/alter-table-update-policy-command) operator.
+- You want to filter out documents. For example, you can filter out documents by type using the [`where`](/kusto/query/where-operator) operator.
 - You have complex logic that can't be represented in a table mapping.
 
-For information on how to create and manage update policies, see [Update policy overview](kusto/management/alter-table-update-policy-command.md).
+For information on how to create and manage update policies, see [Update policy overview](/kusto/management/alter-table-update-policy-command).
 
 ## Step 2: Create a Cosmos DB data connection
 
@@ -320,7 +320,7 @@ To configure your Cosmos DB connection:
 
 > [!NOTE]
 >
-> Azure Data Explorer has an aggregation (batching) policy for queued data ingestion designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of one GB, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batching-policy.md). To reduce latency, configure your table to support streaming. See [streaming policy](kusto/management/streaming-ingestion-policy.md).
+> Azure Data Explorer has an aggregation (batching) policy for queued data ingestion designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of one GB, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](/kusto/management/batching-policy). To reduce latency, configure your table to support streaming. See [streaming policy](/kusto/management/streaming-ingestion-policy).
 
 ## Considerations
 
@@ -397,4 +397,4 @@ The connector invokes the Cosmos DB Change Feed API on each physical partition o
 ## Related content
 
 * [Get latest versions of Azure Cosmos DB documents](ingest-data-cosmos-db-queries.md)
-* [Kusto Query Language (KQL) overview](kusto/query/index.md)
+* [Kusto Query Language (KQL) overview](/kusto/query/index)

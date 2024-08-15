@@ -58,5 +58,5 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 
 * [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
-* [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)
+* [Tutorial: Learn common Kusto Query Language operators](/kusto/query/tutorials/learn-common-operators)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

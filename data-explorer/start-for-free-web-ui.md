@@ -27,7 +27,7 @@ A Microsoft account or a Microsoft Entra user identity to create a free cluster.
 On your cluster's overview page, you'll see the following:
 
 1. Your cluster's name, the option to upgrade to a full cluster, and the option to delete the cluster.
-1. Your cluster's location, policies, and URI links for connecting to your cluster via our [APIs](kusto/api/index.md) or other tools.
+1. Your cluster's location, policies, and URI links for connecting to your cluster via our [APIs](/kusto/api/index) or other tools.
 1. [Quick actions](#quick-actions) you can take to get started with your cluster.
 1. A list of databases in your cluster.
 1. A list of data connections in your cluster.
@@ -51,4 +51,4 @@ To start a quick action, under **Actions**, select the action you want to perfor
 * [Upgrade your free cluster](start-for-free-upgrade.md)
 * [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)
 * [Learn more about Azure Data Explorer](data-explorer-overview.md)
-* [Learn more about Kusto Query Language](kusto/query/index.md)
+* [Learn more about Kusto Query Language](/kusto/query/index)

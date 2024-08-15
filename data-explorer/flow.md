@@ -70,11 +70,11 @@ This section describes the capabilities and parameters for each action and provi
 ### Run KQL query
 
 > [!NOTE]
-> If your query starts with a dot, it's a [management command](kusto/management/index.md). Use [Run async management command](#run-async-management-command).
+> If your query starts with a dot, it's a [management command](/kusto/management/index). Use [Run async management command](#run-async-management-command).
 
 Use this action to query the specified cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
-If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
+If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](/kusto/query/best-practices).
 
 #### Example
 
@@ -85,11 +85,11 @@ The following flow triggers a query every minute. The query checks the number of
 ### Run KQL query and render a chart
 
 > [!NOTE]
-> If your query starts with a dot, it's a [management command](kusto/management/index.md). Use [Run management command and render a chart](#run-kql-query-and-render-a-chart).
+> If your query starts with a dot, it's a [management command](/kusto/management/index). Use [Run management command and render a chart](#run-kql-query-and-render-a-chart).
 
 Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email.
 
-If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
+If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](/kusto/query/best-practices).
 
 #### Example
 
@@ -99,7 +99,7 @@ The following flow will present the query results as a timechart.
 
 ### Run async management command
 
-Use this action to run a [management command](kusto/management/index.md) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action.
+Use this action to run a [management command](/kusto/management/index) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](/kusto/management/operations) command with the ID returned by this action.
 
 If the async management command takes more than 60 minutes to run, it will fail with a "RequestTimeout" exception.
 
@@ -111,7 +111,7 @@ The following flow triggers an async command to copy 10 records from the 'Transf
 
 ### Run management command and render a chart
 
-Use this action to run a [management command](kusto/management/index.md) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
+Use this action to run a [management command](/kusto/management/index) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
 
 If the management command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
 
@@ -125,7 +125,7 @@ If the management command takes more than 8 minutes to run, it will fail with a 
 
 #### Example
 
-The following flow runs the [.show operation](kusto/management/operations.md) command to find the status of an async command using an operation ID returned by an async command execution.
+The following flow runs the [.show operation](/kusto/management/operations) command to find the status of an async command using an operation ID returned by an async command execution.
 
 :::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show management command action.":::
 
@@ -219,9 +219,9 @@ To see why a run failed, select the run start time. The flow appears, and the st
 - The maximum number of records per request is 50,000 and the maximum data size per request is 32 MB. These limits can't be changed.
 - Synchronous requests have a timeout of 8 minutes.
 - Asynchronous requests have a timeout of 60 minutes.
-- The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschema-operator.md). For example, the [fork](kusto/query/fork-operator.md), [facet](kusto/query/facet-operator.md), and [evaluate](kusto/query/evaluate-operator.md) operators aren't supported.
+- The connector doesn't support operators that aren't supported by the [`getschema` operator](/kusto/query/getschema-operator). For example, the [fork](/kusto/query/fork-operator), [facet](/kusto/query/facet-operator), and [evaluate](/kusto/query/evaluate-operator) operators aren't supported.
 - Flows work best on Microsoft Edge and Google Chrome.
 
 ## Related content
 
-* Use the [Azure Kusto Logic App connector](kusto/tools/logicapps.md) to run Kusto queries and commands as part of a scheduled or triggered task.
+* Use the [Azure Kusto Logic App connector](/kusto/tools/logicapps) to run Kusto queries and commands as part of a scheduled or triggered task.

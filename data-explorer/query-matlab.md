@@ -77,7 +77,7 @@ To perform user authentication:
 
 ### [Windows OS](#tab/windows)
 
-1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
+1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](/kusto/api/rest/authenticate-with-msal#authentication-parameters).
 
     ```matlab
     % The Azure Data Explorer cluster URL
@@ -136,7 +136,7 @@ To perform user authentication:
     fprintf(2, 'User token aquired and will expire at %s & extended expires at %s', result.Result.ExpiresOn.LocalDateTime.ToString,result.Result.ExtendedExpiresOn.ToLocalTime.ToString);
     ```
 
-1. Use the authorization token to query your cluster through the [REST API](kusto/api/rest/index.md):
+1. Use the authorization token to query your cluster through the [REST API](/kusto/api/rest/index):
 
     ```matlab
     options=weboptions('HeaderFields',{'RequestMethod','POST';'Accept' 'application/json';'Authorization' ['Bearer ', token]; 'Content-Type' 'application/json; charset=utf-8'; 'Connection' 'Keep-Alive'; 'x-ms-app' 'Matlab'; 'x-ms-client-request-id' 'Matlab-Query-Request'});
@@ -196,7 +196,7 @@ To perform application authentication:
 
 1. [Provision a Microsoft Entra application](provision-azure-ad-app.md). For the **Redirect URI**, select **Web** and input http://localhost:8675 as the URI.
 
-1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
+1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](/kusto/api/rest/authenticate-with-msal#authentication-parameters).
 
     ```matlab
     % The Azure Data Explorer cluster URL
@@ -253,7 +253,7 @@ To perform application authentication:
     fprintf(2, 'User token aquired and will expire at %s & extended expires at %s', result.Result.ExpiresOn.LocalDateTime.ToString,result.Result.ExtendedExpiresOn.ToLocalTime.ToString);
     ```
 
-1. Use the authorization token to query your cluster through the [REST API](kusto/api/rest/index.md):
+1. Use the authorization token to query your cluster through the [REST API](/kusto/api/rest/index):
 
     ```matlab
     options=weboptions('HeaderFields',{'RequestMethod','POST';'Accept' 'application/json';'Authorization' ['Bearer ', token]; 'Content-Type' 'application/json; charset=utf-8'; 'Connection' 'Keep-Alive'; 'x-ms-app' 'Matlab'; 'x-ms-client-request-id' 'Matlab-Query-Request'});
@@ -305,4 +305,4 @@ To perform application authentication:
 
 ## Related content
 
-* Query your cluster with the [REST API](kusto/api/rest/index.md)
+* Query your cluster with the [REST API](/kusto/api/rest/index)

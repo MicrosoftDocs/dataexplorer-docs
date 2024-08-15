@@ -28,7 +28,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 ### [Ingestion](#tab/ingestion)
 
 > [!NOTE]
-> * Ingestion logs are supported for queued ingestion to the **Data ingestion URI** using [Kusto client libraries](kusto/api/client-libraries.md) and [data connectors](connector-overview.md).
+> * Ingestion logs are supported for queued ingestion to the **Data ingestion URI** using [Kusto client libraries](/kusto/api/client-libraries) and [data connectors](connector-overview.md).
 > * Ingestion logs aren't supported for streaming ingestion, direct ingestion to the **Cluster URI**, ingestion from query, or `.set-or-append` commands.
 
 > [!NOTE]
@@ -36,7 +36,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 * **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
 * **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details.
-* **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size, blobs count, and [batching types](kusto/management/batching-policy.md#sealing-a-batch)).
+* **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size, blobs count, and [batching types](/kusto/management/batching-policy#sealing-a-batch)).
 
 ### [Commands and Queries](#tab/commands-and-queries)
 
@@ -48,7 +48,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 ### [Tables](#tab/tables)
 
-* **TableUsageStatistics**: These logs have detailed information about the tables whose extents were scanned during query execution. Note that this log doesn't record statistics for queries that are part of commands, such as the [.set-or-append](kusto/management/data-ingestion/ingest-from-query.md) command.
+* **TableUsageStatistics**: These logs have detailed information about the tables whose extents were scanned during query execution. Note that this log doesn't record statistics for queries that are part of commands, such as the [.set-or-append](/kusto/management/data-ingestion/ingest-from-query) command.
 
     > [!NOTE]
     > The `TableUsageStatistics` log data doesn't contain the command or query text.
@@ -96,7 +96,7 @@ All [Azure Monitor diagnostic logs share a common top-level schema](/azure/azure
 * [FailedIngestion](/azure/azure-monitor/reference/tables/failedingestion)
     * For information about error codes, see [Ingestion error codes](error-codes.md)
 * [ADXIngestionBatching](/azure/azure-monitor/reference/tables/adxingestionbatching)
-    * For information about batching types, see [Batching policy](kusto/management/batching-policy.md#sealing-a-batch)
+    * For information about batching types, see [Batching policy](/kusto/management/batching-policy#sealing-a-batch)
 * [ADXCommand](/azure/azure-monitor/reference/tables/adxcommand)
 * [ADXQuery](/azure/azure-monitor/reference/tables/adxquery)
 * [ADXTableUsageStatistics](/azure/azure-monitor/reference/tables/adxtableusagestatistics)

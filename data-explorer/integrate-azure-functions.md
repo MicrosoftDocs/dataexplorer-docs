@@ -167,4 +167,4 @@ For more information about functions, see [Azure Functions documentation](/azure
 
 ## Related content
 
-- [Kusto Query Language (KQL) overview](kusto/query/index.md)
+- [Kusto Query Language (KQL) overview](/kusto/query/index)

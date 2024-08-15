@@ -13,7 +13,7 @@ Streaming ingestion is useful for loading data when you need low latency between
 * Latency of less than a second is required.
 * To optimize operational processing of many tables where the stream of data into each table is relatively small (a few records per second), but the overall data ingestion volume is high (thousands of records per second).
 
-If the stream of data into each table is high (over 4 GB per hour), consider using [queued ingestion](kusto/management/batching-policy.md).
+If the stream of data into each table is high (over 4 GB per hour), consider using [queued ingestion](/kusto/management/batching-policy).
 
 To learn more about different ingestion methods, see [data ingestion overview](ingest-data-overview.md).
 
@@ -26,7 +26,7 @@ Two streaming ingestion types are supported:
 | Ingestion type | Description |
 | -- | -- |
 | Data connection | Event Hubs, IoT Hub, and Event Grid data connections can use streaming ingestion, provided it is enabled on the cluster level. The decision to use streaming ingestion is done according to the streaming ingestion policy configured on the target table.<br />For information on managing data connections, see [**Event Hub**](ingest-data-event-hub.md), [**IoT Hub**](ingest-data-iot-hub.md) and [**Event Grid**](create-event-grid-connection.md). |
-| Custom ingestion | Custom ingestion requires you to write an application that uses one of the Azure Data Explorer [client libraries](kusto/api/client-libraries.md).<br />Use the information in this topic to configure custom ingestion. You may also find the [C# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) helpful. |
+| Custom ingestion | Custom ingestion requires you to write an application that uses one of the Azure Data Explorer [client libraries](/kusto/api/client-libraries).<br />Use the information in this topic to configure custom ingestion. You may also find the [C# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) helpful. |
 
 Use the following table to help you choose the ingestion type that's appropriate for your environment:
 
@@ -48,12 +48,12 @@ The main contributors that can impact streaming ingestion are:
 
 * **VM and cluster size**: Streaming ingestion performance and capacity scales with increased VM and cluster sizes. The number of concurrent ingestion requests is limited to six per core. For example, for 16 core SKUs, such as D14 and L16, the maximal supported load is 96 concurrent ingestion requests. For two core SKUs, such as D11, the maximal supported load is 12 concurrent ingestion requests.
 * **Data size limit**: The data size limit for a streaming ingestion request is 4 MB. This includes any data created for update policies during the ingestion.
-* **Schema updates**: Schema updates, such as creation and modification of tables and ingestion mappings, may take up to five minutes for the streaming ingestion service. For more information see [Streaming ingestion and schema changes](kusto/management/data-ingestion/streaming-ingestion-schema-changes.md).
+* **Schema updates**: Schema updates, such as creation and modification of tables and ingestion mappings, may take up to five minutes for the streaming ingestion service. For more information see [Streaming ingestion and schema changes](/kusto/management/data-ingestion/streaming-ingestion-schema-changes).
 * **SSD capacity**: Enabling streaming ingestion on a cluster, even when data isn't ingested via streaming, uses part of the local SSD disk of the cluster machines for streaming ingestion data and reduces the storage available for hot cache.
 
 ## Enable streaming ingestion on your cluster
 
-Before you can use streaming ingestion, you must enable the capability on your cluster and define a [streaming ingestion policy](kusto/management/streaming-ingestion-policy.md). You can enable the capability when [creating the cluster](#enable-streaming-ingestion-while-creating-a-new-cluster), or [add it to an existing cluster](#enable-streaming-ingestion-on-an-existing-cluster).
+Before you can use streaming ingestion, you must enable the capability on your cluster and define a [streaming ingestion policy](/kusto/management/streaming-ingestion-policy). You can enable the capability when [creating the cluster](#enable-streaming-ingestion-while-creating-a-new-cluster), or [add it to an existing cluster](#enable-streaming-ingestion-on-an-existing-cluster).
 
 > [!WARNING]
 > Review the [limitations](#limitations) prior to enabling streaming ingestion.
@@ -176,7 +176,7 @@ Create a table to receive the streaming ingestion data and define its related po
 
     :::image type="content" source="media/ingest-data-streaming/create-table.png" alt-text="Create a table for streaming ingestion into Azure Data Explorer.":::
 
-1. Copy one of the following commands into the **Query pane** and select **Run**. This defines the [streaming ingestion policy](kusto/management/streaming-ingestion-policy.md) on the table you created or on the database that contains the table.
+1. Copy one of the following commands into the **Query pane** and select **Run**. This defines the [streaming ingestion policy](/kusto/management/streaming-ingestion-policy) on the table you created or on the database that contains the table.
 
     > [!TIP]
     > A policy that is defined at the database level applies to all existing and future tables in the database. When you enable the policy at the database level, there is no need to enable it per table.
@@ -464,7 +464,7 @@ public class FileIngestion {
 > [!WARNING]
 > Disabling streaming ingestion may take a few hours.
 
-Before disabling streaming ingestion on your Azure Data Explorer cluster, drop the [streaming ingestion policy](kusto/management/streaming-ingestion-policy.md) from all relevant tables and databases. The removal of the streaming ingestion policy triggers data rearrangement inside your Azure Data Explorer cluster. The streaming ingestion data is moved from the initial storage to permanent storage in the column store (extents or shards). This process can take between a few seconds to a few hours, depending on the amount of data in the initial storage.
+Before disabling streaming ingestion on your Azure Data Explorer cluster, drop the [streaming ingestion policy](/kusto/management/streaming-ingestion-policy) from all relevant tables and databases. The removal of the streaming ingestion policy triggers data rearrangement inside your Azure Data Explorer cluster. The streaming ingestion data is moved from the initial storage to permanent storage in the column store (extents or shards). This process can take between a few seconds to a few hours, depending on the amount of data in the initial storage.
 
 ### Drop the streaming ingestion policy
 
@@ -554,10 +554,10 @@ class Program
 
 ## Limitations
 
-* [Data mappings](kusto/management/mappings.md) must be [pre-created](kusto/management/create-ingestion-mapping-command.md) for use in streaming ingestion. Individual streaming ingestion requests don't accommodate inline data mappings.
-* [Extent tags](kusto/management/extent-tags.md) can't be set on the streaming ingestion data.
-* [Update policy](kusto/management/update-policy.md). The update policy can reference only the newly ingested data in the source table and not any other data or tables in the database.
-* When an update policy with a [transactional policy](kusto/management/update-policy.md#handling-failures) fails, the retries will fall back to batch ingestion.
+* [Data mappings](/kusto/management/mappings) must be [pre-created](/kusto/management/create-ingestion-mapping-command) for use in streaming ingestion. Individual streaming ingestion requests don't accommodate inline data mappings.
+* [Extent tags](/kusto/management/extent-tags) can't be set on the streaming ingestion data.
+* [Update policy](/kusto/management/update-policy). The update policy can reference only the newly ingested data in the source table and not any other data or tables in the database.
+* When an update policy with a [transactional policy](/kusto/management/update-policy#handling-failures) fails, the retries will fall back to batch ingestion.
 * If streaming ingestion is enabled on a cluster used as a leader for [follower databases](follower.md), streaming ingestion must be enabled on the following clusters as well to follow streaming ingestion data. Same applies whether the cluster data is shared via [Data Share](data-share.md).
 
 ## Related content

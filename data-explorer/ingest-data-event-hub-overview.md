@@ -19,7 +19,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 Setup of a data connection using managed identity requires the following steps:
   1. [Add a managed identity to your cluster](configure-managed-identities-cluster.md).
   1. Grant permissions to the managed identity on the data source. To fetch data from Azure Event Hubs, the managed identity must have [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions.
-  1. Set a [managed identity policy](kusto/management/managed-identity-policy.md) on the target databases.
+  1. Set a [managed identity policy](/kusto/management/managed-identity-policy) on the target databases.
   1. Create a data connection using the managed identity authentication to fetch data.
 
     > [!CAUTION]
@@ -63,10 +63,10 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | Database | The case-sensitive name of the target database. By default, data is ingested into the target database associated with the data connection. Use this property to override the default database and send data to a different database. To do so, you must first [set up the connection as a multi-database connection](#route-event-data-to-an-alternate-database). |
 | Table | The case-sensitive name of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
 | Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
-| IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
+| IngestionMappingReference | Name of the existing [ingestion mapping](/kusto/management/create-ingestion-mapping-command) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
-| Tags | A list of [tags](kusto/management/extent-tags.md) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extent-tags.md) when using tags. |
+| Tags | A list of [tags](/kusto/management/extent-tags) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](/kusto/management/extent-tags) when using tags. |
 | RawHeaders | Indicates that event source is Kafka and Azure Data Explorer must use byte array deserialization to read other routing properties. Value is ignored. |
 
 > [!NOTE]
@@ -142,7 +142,7 @@ Specifically, the event payload is represented in the capture file as a byte arr
 To correctly decode the event payload:
 
 1. Map the `Body` field of the captured event to a column of type `dynamic` in the destination table.
-1. Apply an [update policy](./kusto/management/update-policy.md) that converts the byte array into a readable string using the [unicode_codepoints_to_string()](./kusto/query/unicode-codepoints-to-string-function.md) function.
+1. Apply an [update policy](/kusto/management/update-policy) that converts the byte array into a readable string using the [unicode_codepoints_to_string()](/kusto/query/unicode-codepoints-to-string-function) function.
 
 ## Ingest custom properties
 

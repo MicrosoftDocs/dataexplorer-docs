@@ -230,7 +230,7 @@ Use the Azure Data Explorer web UI to create the target tables in the Azure Data
     .create table DiagnosticRawRecords (Records:dynamic)
     ```
 
-1. Set zero [retention policy](./kusto/management/show-table-retention-policy-command.md) for the intermediate table:
+1. Set zero [retention policy](/kusto/management/show-table-retention-policy-command) for the intermediate table:
 
     ```kusto
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
@@ -254,7 +254,7 @@ Use the Azure Data Explorer web UI to create the target tables in the Azure Data
     .create table DiagnosticRawRecords (Records:dynamic)
     ```
 
-1. Set zero [retention policy](./kusto/management/show-table-retention-policy-command.md) for the intermediate table:
+1. Set zero [retention policy](/kusto/management/show-table-retention-policy-command) for the intermediate table:
 
     ```kusto
     .alter-merge table DiagnosticRawRecords policy retention softdelete = 0d
@@ -276,7 +276,7 @@ Use the Azure Data Explorer web UI to create the target tables in the Azure Data
     .create table ActivityLogsRawRecords (Records:dynamic)
     ```
 
-1. Set zero [retention policy](./kusto/management/show-table-retention-policy-command.md) for the intermediate table:
+1. Set zero [retention policy](/kusto/management/show-table-retention-policy-command) for the intermediate table:
 
     ```kusto
     .alter-merge table ActivityLogsRawRecords policy retention softdelete = 0d
@@ -286,7 +286,7 @@ Use the Azure Data Explorer web UI to create the target tables in the Azure Data
 
 ### Create table mappings
 
- Because the data format is `json`, data mapping is required. The `json` mapping maps each json path to a table column name. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](kusto/query/jsonpath.md).
+ Because the data format is `json`, data mapping is required. The `json` mapping maps each json path to a table column name. JSON paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](/kusto/query/jsonpath).
 
 ### [Diagnostic metrics / Diagnostic logs](#tab/diagnostic-metrics+diagnostic-logs)
 
@@ -316,7 +316,7 @@ To map the activity log data to the table, use the following query:
 
 #### Create data update policy for diagnostics metrics
 
-1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic metric records so that each value in the collection receives a separate row. Use the [`mv-expand`](kusto/query/mv-expand-operator.md) operator:
+1. Create a [function](/kusto/management/functions) that expands the collection of diagnostic metric records so that each value in the collection receives a separate row. Use the [`mv-expand`](/kusto/query/mv-expand-operator) operator:
 
      ```kusto
     .create function DiagnosticMetricsExpand() {
@@ -336,7 +336,7 @@ To map the activity log data to the table, use the following query:
     }
     ```
 
-2. Add the [update policy](kusto/management/update-policy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticMetrics* table:
+2. Add the [update policy](/kusto/management/update-policy) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticMetrics* table:
 
     ```kusto
     .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
@@ -346,7 +346,7 @@ To map the activity log data to the table, use the following query:
 
 #### Create data update policy for diagnostics logs
 
-1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic logs records so that each value in the collection receives a separate row. You'll enable ingestion logs on an Azure Data Explorer cluster, and use [ingestion logs schema](using-diagnostic-logs.md#diagnostic-logs-schema). You'll create one table for succeeded and for failed ingestion, while some of the fields will be empty for succeeded ingestion (ErrorCode for example). Use the [`mv-expand`](kusto/query/mv-expand-operator.md) operator:
+1. Create a [function](/kusto/management/functions) that expands the collection of diagnostic logs records so that each value in the collection receives a separate row. You'll enable ingestion logs on an Azure Data Explorer cluster, and use [ingestion logs schema](using-diagnostic-logs.md#diagnostic-logs-schema). You'll create one table for succeeded and for failed ingestion, while some of the fields will be empty for succeeded ingestion (ErrorCode for example). Use the [`mv-expand`](/kusto/query/mv-expand-operator) operator:
 
     ```kusto
     .create function DiagnosticLogsExpand() {
@@ -370,7 +370,7 @@ To map the activity log data to the table, use the following query:
     }
     ```
 
-2. Add the [update policy](kusto/management/update-policy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticLogs* table:
+2. Add the [update policy](/kusto/management/update-policy) to the target table. This policy will automatically run the query on any newly ingested data in the *DiagnosticRawRecords* intermediate data table and ingest its results into the *DiagnosticLogs* table:
 
     ```kusto
     .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
@@ -380,7 +380,7 @@ To map the activity log data to the table, use the following query:
 
 #### Create data update policy for activity logs
 
-1. Create a [function](kusto/management/functions.md) that expands the collection of activity log records so that each value in the collection receives a separate row. Use the [`mv-expand`](kusto/query/mv-expand-operator.md) operator:
+1. Create a [function](/kusto/management/functions) that expands the collection of activity log records so that each value in the collection receives a separate row. Use the [`mv-expand`](/kusto/query/mv-expand-operator) operator:
 
     ```kusto
     .create function ActivityLogRecordsExpand() {
@@ -401,7 +401,7 @@ To map the activity log data to the table, use the following query:
     }
     ```
 
-2. Add the [update policy](kusto/management/update-policy.md) to the target table. This policy will automatically run the query on any newly ingested data in the *ActivityLogsRawRecords* intermediate data table and ingest its results into the *ActivityLogs* table:
+2. Add the [update policy](/kusto/management/update-policy) to the target table. This policy will automatically run the query on any newly ingested data in the *ActivityLogsRawRecords* intermediate data table and ingest its results into the *ActivityLogs* table:
 
     ```kusto
     .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True", "IsTransactional": true}]'

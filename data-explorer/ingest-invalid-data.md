@@ -11,7 +11,7 @@ ms.date: 11/14/2022
 Data that is malformed, unparsable, too large, or doesn't conform to the schema may fail to be ingested properly. The following tables describe what to expect when ingesting invalid data into Azure Data Explorer.
 
 > [!NOTE]
-> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestion-failures.md) and [Ingestion error codes in Azure Data Explorer](error-codes.md).
+> For more information about why ingestion might fail, see [Ingestion failures](/kusto/management/ingestion-failures) and [Ingestion error codes in Azure Data Explorer](error-codes.md).
 
 ## Failure with error code
 
@@ -32,13 +32,13 @@ The following table shows cases where ingestion succeeds without an error, silen
 |---------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
 |Malformed records in JSON data ingested with format="json". For example: unexpected newlines, missing braces or quotes.            |Malformed records are ignored and not ingested|
 |Value larger than 1MB ingested into a string column                                                                        |Value truncated up to 1MB                     |
-|Value larger than 1MB (default, see [Encoding policy](kusto/management/encoding-policy.md)) ingested into a dynamic column |NULL value filled                             |
+|Value larger than 1MB (default, see [Encoding policy](/kusto/management/encoding-policy)) ingested into a dynamic column |NULL value filled                             |
 |Value not matching the table schema data type. For example: floating point value ingested into an `int` column.                      |NULL value filled                             |
 |Mapped fields are missing from the data                                                                                    |NULL value filled                             |
 
 ## Related content
 
 * [Data ingestion](ingest-data-overview.md)
-* [Ingestion failures](kusto/management/ingestion-failures.md)
-* [Encoding policy](kusto/management/encoding-policy.md)
-* [Duplicate next ingestion failure](kusto/management/dup-next-failed-ingest.md)
+* [Ingestion failures](/kusto/management/ingestion-failures)
+* [Encoding policy](/kusto/management/encoding-policy)
+* [Duplicate next ingestion failure](/kusto/management/dup-next-failed-ingest)

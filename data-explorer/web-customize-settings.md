@@ -92,7 +92,7 @@ Error level color scheme in **Light** mode | Error level color scheme in **Dark*
 
 ### Column requirements for highlighting
 
-For highlighted error levels, the column must be of [data type](kusto/query/scalar-data-types/index.md) `int`, `long`, or `string`.
+For highlighted error levels, the column must be of [data type](/kusto/query/scalar-data-types/index) `int`, `long`, or `string`.
 
 * If the column is of type `long` or `int`:
   * The column name must be *Level*

@@ -117,7 +117,7 @@ To configure the Kusto Splunk Universal connector to send logs to your Azure Dat
     |`authority`|The ID of the tenant that holds your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
     |`database_name`|The name of your Azure Data Explorer database.|
     |`table_name`|The name of your Azure Data Explorer destination table.|
-    |`table_mapping_name`|The name of the [ingestion data mapping](kusto/management/mappings.md) for your table. If you don't have a mapping, you can omit this property from the configuration file. You can always parse data into various columns later.|
+    |`table_mapping_name`|The name of the [ingestion data mapping](/kusto/management/mappings) for your table. If you don't have a mapping, you can omit this property from the configuration file. You can always parse data into various columns later.|
     |`data_format`|The expected data format for incoming data. The incoming data is in raw text format, so the recommended format is `csv`, which maps the raw text to the zero index by default.|
 
 3. Build the docker image:

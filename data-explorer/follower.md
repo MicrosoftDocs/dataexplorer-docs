@@ -246,7 +246,7 @@ Use the following steps to attach a database:
     | *attachedDatabaseConfigurationsName* | The name of the attached database configurations object. The name can be any string that is unique at the cluster level. |  |
     | *databaseName* | The name of the database to be followed. To follow all the leader's databases, use '*'. |  |
     | *leaderClusterResourceId* | The resource ID of the leader cluster. |  |
-    | *defaultPrincipalsModificationKind* | The default principal modification kind. | Can be `Union`, `Replace`, or `None`. For more information about the default principal modification kind, see [principal modification kind management command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind). |
+    | *defaultPrincipalsModificationKind* | The default principal modification kind. | Can be `Union`, `Replace`, or `None`. For more information about the default principal modification kind, see [principal modification kind management command](/kusto/management/cluster-follower#alter-follower-database-principals-modification-kind). |
     | *tablesToInclude* | The list of tables to include. To include all tables starting with 'Logs', use ["Logs*"]. | `["table1ToInclude", "table2ToInclude"]` |
     | *tablesToExclude* | The list of tables to exclude. To exclude all tables, use ["*"]. | `["table1ToExclude", "table2ToExclude"]` |
     | *externalTablesToInclude* | The list of tables to include. To include all external tables starting with 'Logs', use ["Logs*"]. | `["ExternalTable1ToInclude", "ExternalTable2ToInclude"]` |
@@ -584,7 +584,7 @@ Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -N
 
 ### Manage principals
 
-When attaching a database, specify the **"default principals modification kind"**. The default is to combine the override authorized principals with the leader database collection of [authorized principals](kusto/access-control/index.md#authorization)
+When attaching a database, specify the **"default principals modification kind"**. The default is to combine the override authorized principals with the leader database collection of [authorized principals](/kusto/access-control/index#authorization)
 
 |**Kind** |**Description**  |
 |---------|---------|
@@ -592,22 +592,22 @@ When attaching a database, specify the **"default principals modification kind"*
 |**Replace**   |    No inheritance of principals from the original database. New principals must be created for the attached database.     |
 |**None**   |   The attached database principals include only the principals of the original database with no other principals.      |
 
-For more information about using management commands to configure the authorized principals, see [Management commands for managing a follower cluster](kusto/management/cluster-follower.md).
+For more information about using management commands to configure the authorized principals, see [Management commands for managing a follower cluster](/kusto/management/cluster-follower).
 
 ### Manage permissions
 
-Managing read-only database permission is the same as for all database types. To assign permissions, see [Manage database permissions in the Azure portal](manage-database-permissions.md) or use management commands to [Manage database security roles](kusto/management/manage-database-security-roles.md).
+Managing read-only database permission is the same as for all database types. To assign permissions, see [Manage database permissions in the Azure portal](manage-database-permissions.md) or use management commands to [Manage database security roles](/kusto/management/manage-database-security-roles).
 
 ### Configure caching policy
 
-The follower database administrator can modify the [caching policy](./kusto/management/show-table-cache-policy-command.md) of the attached database or any of its tables on the hosting cluster. The default is to combine the source database in the leader cluster database and table-level caching policies with the policies defined in the database and table-level override policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using management commands to configure the caching policy on the follower database or table, see [Management commands for managing a follower cluster](kusto/management/cluster-follower.md).
+The follower database administrator can modify the [caching policy](/kusto/management/show-table-cache-policy-command) of the attached database or any of its tables on the hosting cluster. The default is to combine the source database in the leader cluster database and table-level caching policies with the policies defined in the database and table-level override policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using management commands to configure the caching policy on the follower database or table, see [Management commands for managing a follower cluster](/kusto/management/cluster-follower).
 
 ## Notes
 
 * If there are conflicts between databases of leader/follower clusters, when all databases are followed by the follower cluster, they're resolved as follows:
   * A database named *DB* created on the follower cluster takes precedence over a database with the same name that was created on the leader cluster. That's why database *DB* in the follower cluster needs to be removed or renamed for the follower cluster to include the leader's database *DB*.
   * A database named *DB* followed from two or more leader clusters will be arbitrarily chosen from *one* of the leader clusters, and won't be followed more than once.
-* Commands for showing [cluster activity log and history](kusto/management/system-info.md) run on a follower cluster will show the activity and history on the follower cluster, and their result sets won't include those results of the leader cluster or clusters.
+* Commands for showing [cluster activity log and history](/kusto/management/system-info) run on a follower cluster will show the activity and history on the follower cluster, and their result sets won't include those results of the leader cluster or clusters.
   * For example: a `.show queries` command run on the follower cluster will only show queries run on databases followed by follower cluster, and not queries run against the same database in the leader cluster.
 
 ## Limitations
@@ -625,4 +625,4 @@ The follower database administrator can modify the [caching policy](./kusto/mana
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Run follower commands](kusto/management/cluster-follower.md)
+> [Run follower commands](/kusto/management/cluster-follower)

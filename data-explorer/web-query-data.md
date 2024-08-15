@@ -10,7 +10,7 @@ ms.custom: mode-portal
 ---
 # Quickstart: Query sample data
 
-Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share [Kusto Query Language (KQL)](kusto/query/index.md) commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer web UI](https://dataexplorer.azure.com). In this quickstart, you'll learn how to query data in the stand-alone Azure Data Explorer web UI.
+Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share [Kusto Query Language (KQL)](/kusto/query/index) commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer web UI](https://dataexplorer.azure.com). In this quickstart, you'll learn how to query data in the stand-alone Azure Data Explorer web UI.
 
 In the Azure Data Explorer web UI, the query editor provides suggestions and warnings as you write your queries. To customize which suggestions and warnings you receive, see [Set query recommendations](web-customize-settings.md#set-query-recommendations).
 

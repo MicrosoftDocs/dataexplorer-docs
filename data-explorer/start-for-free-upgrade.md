@@ -17,7 +17,7 @@ Upgrading your free cluster to a full cluster allows you to use [all the feature
 - [Contributor](/azure/role-based-access-control/built-in-roles#contributor) permissions or greater in the Azure subscription
 
 > [!NOTE]
-> The status of ingestion operations started before the upgrade may not be available after the upgrade. Hence, we highly recommend that you complete all ingestion operations before upgrading your cluster. For more information, see [Ingestion status](kusto/api/netfx/kusto-ingest-client-status.md).
+> The status of ingestion operations started before the upgrade may not be available after the upgrade. Hence, we highly recommend that you complete all ingestion operations before upgrading your cluster. For more information, see [Ingestion status](/kusto/api/netfx/kusto-ingest-client-status).
 
 ## Upgrade to a full Azure cluster
 

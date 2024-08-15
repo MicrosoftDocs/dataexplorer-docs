@@ -9,10 +9,10 @@ ms.date: 07/18/2023
 
 <!-- //TODO:: Moved to Kusto. Needs redirect with moniker. -->
 
-In Azure Data Explorer, it's possible to customize the timeout length for your queries and [management commands](kusto/management/index.md). In this article, you'll learn how to set a custom timeout in various tools such as the [Azure Data Explorer web UI](./web-query-data.md), [Kusto.Explorer](kusto/tools/kusto-explorer.md), [Kusto.Cli](./kusto/tools/kusto-cli.md), [Power BI](power-bi-data-connector.md), and when using an [SDK](#sdks). Certain tools have their own default timeout values, but it may be helpful to adjust these values based on the complexity and expected runtime of your queries.
+In Azure Data Explorer, it's possible to customize the timeout length for your queries and [management commands](/kusto/management/index). In this article, you'll learn how to set a custom timeout in various tools such as the [Azure Data Explorer web UI](./web-query-data.md), [Kusto.Explorer](/kusto/tools/kusto-explorer), [Kusto.Cli](/kusto/tools/kusto-cli), [Power BI](power-bi-data-connector.md), and when using an [SDK](#sdks). Certain tools have their own default timeout values, but it may be helpful to adjust these values based on the complexity and expected runtime of your queries.
 
 > [!NOTE]
-> Server side policies, such as the [request limits policy](kusto/management/request-limits-policy.md), can override the timeout specified by the client.
+> Server side policies, such as the [request limits policy](/kusto/management/request-limits-policy), can override the timeout specified by the client.
 
 ## Azure Data Explorer web UI
 
@@ -74,17 +74,17 @@ This section describes how to configure a custom server timeout in the Kusto.Cli
 
 ### Prerequisites
 
-* Install the [Kusto.Cli](kusto/tools/kusto-cli.md) by downloading the package [Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
+* Install the [Kusto.Cli](/kusto/tools/kusto-cli) by downloading the package [Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
 
 ### Set timeout length
 
-Run the following command to set the *servertimeout* [client request property](kusto/api/netfx/request-properties.md#clientrequestproperties-options) with the desired timeout length as a valid [timespan](kusto/query/scalar-data-types/timespan.md) value up to 1 hour.
+Run the following command to set the *servertimeout* [client request property](/kusto/api/netfx/request-properties#clientrequestproperties-options) with the desired timeout length as a valid [timespan](/kusto/query/scalar-data-types/timespan) value up to 1 hour.
 
 ```dotnet
 Kusto.Cli.exe <ConnectionString> -execute:"#crp servertimeout=<timespan>" -execute:"…"
 ```
 
-Alternatively, use the following command to set the *norequesttimeout* [client request property](kusto/api/netfx/request-properties.md#clientrequestproperties-options), which will set the timeout to the maximum value of 1 hour.
+Alternatively, use the following command to set the *norequesttimeout* [client request property](/kusto/api/netfx/request-properties#clientrequestproperties-options), which will set the timeout to the maximum value of 1 hour.
 
 ```dotnet
 Kusto.Cli.exe <ConnectionString> -execute:"#crp norequesttimeout=true" -execute:"…"
@@ -129,8 +129,8 @@ This section describes how to configure a custom server timeout in Power BI.
 
 ## SDKs
 
-To learn how to set timeouts with the SDKs, see [Customize query behavior with client request properties](kusto/api/get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
+To learn how to set timeouts with the SDKs, see [Customize query behavior with client request properties](/kusto/api/get-started/app-basic-query#customize-query-behavior-with-client-request-properties).
 
 ## Related content
 
-* [Query limits](kusto/concepts/querylimits.md)
+* [Query limits](/kusto/concepts/querylimits)

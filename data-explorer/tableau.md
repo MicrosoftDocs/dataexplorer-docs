@@ -46,4 +46,4 @@ Once you've finished configuring ODBC, you can bring sample data into Tableau.
 
 ## Related content
 
-* [Write queries using Kusto Query Language](kusto/query/tutorials/learn-common-operators.md)
+* [Write queries using Kusto Query Language](/kusto/query/tutorials/learn-common-operators)
