@@ -18,6 +18,9 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices.md"
+        ],
+        "include": [
+          "**/kusto-content/**/includes/**"
         ]
       }
     ],
