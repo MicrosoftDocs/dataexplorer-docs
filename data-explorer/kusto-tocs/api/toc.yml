@@ -1,0 +1,86 @@
+items:
+- name: Overview
+  href: /kusto/api/index
+- name: REST API
+  items:
+  - name: REST API overview
+    href: /kusto/api/rest/index
+  - name: Authentication over HTTPs
+    href: /kusto/api/rest/authentication
+  - name: Query HTTP request
+    href: /kusto/api/rest/request
+  - name: Query HTTP response
+    href: /kusto/api/rest/response
+  - name: Query v2 HTTP response
+    href: /kusto/api/rest/response-v2
+  - name: Request properties
+    href: /kusto/api/rest/request-properties
+    displayName: CRPs, clientrequestproperties
+  - name: UI (Deep Links)
+    href: /kusto/api/rest/deeplink
+  - name: Streaming ingest
+    href: /kusto/api/rest/streaming-ingest
+  - name: Query with T-SQL
+    href: /kusto/api/rest/t-sql
+  - name: How to ingest data with the REST API
+    displayName: Kusto.Ingest
+    href: /kusto/api/netfx/kusto-ingest-client-rest
+  - name: How to authenticate with MSAL in apps
+    displayName: AAD, how to authenticate
+    href: /kusto/api/rest/authenticate-with-msal
+- name: .NET SDK
+  items:
+  - name: About the SDK
+    href: /kusto/api/netfx/about-the-sdk
+  - name: Controlling tracing
+    href: /kusto/api/netfx/controlling-tracing
+  - name: Kusto.Data
+    items:
+    - name: Errors and exceptions
+      href: /kusto/api/netfx/kusto-data-client-errors
+  - name: Kusto.Ingest
+    items:
+    - name: Client reference
+      displayName: Kusto.Ingest
+      href: /kusto/api/netfx/kusto-ingest-client-reference
+    - name: Errors and exceptions
+      displayName: Kusto.Ingest
+      href: /kusto/api/netfx/kusto-ingest-client-errors
+    - name: Operation status
+      displayName: Kusto.Ingest
+      href: /kusto/api/netfx/kusto-ingest-client-status
+    - name: Code samples
+      displayName: Kusto.Ingest
+      href: /kusto/api/netfx/kusto-ingest-client-examples
+  - name: Kusto.Language
+    items:
+    - name: Kusto.Language overview
+      href: /kusto/api/netfx/about-kusto-language
+    - name: Parse queries and commands
+      href: /kusto/api/netfx/kusto-language-parse-queries
+    - name: Define schemas
+      href: /kusto/api/netfx/kusto-language-define-schemas
+- name: Python SDK
+  items:
+  - name: azure-kusto-python
+    href: /kusto/api/python/kusto-python-client-library
+- name: R SDK
+  items:
+  - name: azure-kusto-r
+    href: /kusto/api/r/kusto-r-client-library
+- name: Java SDK
+  items:
+  - name: azure-kusto-java
+    href: /kusto/api/java/kusto-java-client-library
+- name: Node SDK
+  items:
+  - name: azure-kusto-node
+    href: /kusto/api/node/kusto-node-client-library
+- name: Go SDK
+  items:
+  - name: azure-kusto-go
+    href: /kusto/api/golang/kusto-golang-client-library
+- name: PowerShell
+  items:
+  - name: Use Kusto .NET client libraries from PowerShell
+    href: /kusto/api/powershell/powershell

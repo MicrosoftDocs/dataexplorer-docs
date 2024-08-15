@@ -434,9 +434,9 @@ items:
       - name: Kibana (K2Bridge connector)
         href: k2bridge.md
   - name: Kusto Query Language
-    href: kusto/query/toc.yml
+    href: kusto-tocs/query/toc.yml
   - name: Management commands
-    href: kusto/management/toc.yml
+    href: kusto-tocs/management/toc.yml
   - name: Admin
     items:
       - name: Manage
@@ -653,7 +653,7 @@ items:
   - name: Reference
     items:
       - name: API
-        href: kusto/api/toc.yml
+        href: kusto-tocs/api/toc.yml
       - name: Azure CLI Kusto
         href: /cli/azure/kusto
       - name: Azure Policy built-ins
@@ -661,8 +661,6 @@ items:
         href: policy-reference.md
       - name: Bicep and ARM template resource types
         href: /azure/templates/microsoft.kusto/allversions
-      - name: Functions library
-        href: kusto/functions-library/toc.yml
       - name: PowerShell Az.Kusto
         items:
           - name: Use Kusto cmdlets in Azure PowerShell

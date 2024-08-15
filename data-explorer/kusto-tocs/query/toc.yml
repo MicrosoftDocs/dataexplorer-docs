@@ -1,0 +1,1836 @@
+items:
+- name: Syntax conventions
+  href: /kusto/query/syntax-conventions
+- name: Add a comment in KQL
+  href: /kusto/query/comment
+- name: Query data using T-SQL
+  href: /kusto/query/t-sql
+- name: Best practices for KQL queries
+  items:
+  - name: Best practices for KQL queries
+    href: /kusto/query/best-practices
+  - name: Optimize queries that use named expressions
+    displayName: let statement, user defined functions, as operator, calculated
+    href: /kusto/query/named-expressions
+- name: Entities
+  items:
+  - name: Entity types
+    href: /kusto/query/schema-entities/index
+  - name: Entity names
+    displayName: language keywords, KQL keywords, keywords
+    href: /kusto/query/schema-entities/entity-names
+  - name: Entity references
+    href: /kusto/query/schema-entities/entity-references
+  - name: Databases
+    href: /kusto/query/schema-entities/databases
+  - name: Tables
+    href: /kusto/query/schema-entities/tables
+  - name: Columns
+    href: /kusto/query/schema-entities/columns
+  - name: Stored functions
+    href: /kusto/query/schema-entities/stored-functions
+  - name: Views
+    href: /kusto/query/schema-entities/views
+  - name: External tables
+    href: /kusto/query/schema-entities/external-tables
+  - name: Fact and dimension tables
+    href: /kusto/concepts/fact-and-dimension-tables
+- name: Data types
+  items:
+  - name: Scalar data types
+    href: /kusto/query/scalar-data-types/index
+  - name: bool
+    href: /kusto/query/scalar-data-types/bool
+    displayName: boolean
+  - name: datetime
+    href: /kusto/query/scalar-data-types/datetime
+    displayName: date
+  - name: decimal
+    href: /kusto/query/scalar-data-types/decimal
+  - name: dynamic
+    href: /kusto/query/scalar-data-types/dynamic
+  - name: guid
+    href: /kusto/query/scalar-data-types/guid
+    displayName: uuid, uniqueid
+  - name: int
+    href: /kusto/query/scalar-data-types/int
+  - name: long
+    href: /kusto/query/scalar-data-types/long
+  - name: real
+    href: /kusto/query/scalar-data-types/real
+    displayName: double
+  - name: string
+    href: /kusto/query/scalar-data-types/string
+  - name: timespan
+    href: /kusto/query/scalar-data-types/timespan
+    displayName: time
+  - name: Null values
+    href: /kusto/query/scalar-data-types/null-values
+- name: Functions
+  items:
+  - name: Function types
+    href: /kusto/query/functions/index
+  - name: User-defined functions
+    displayName: Kusto view, views, Kusto function
+    href: /kusto/query/functions/user-defined-functions
+  - name: Functions library
+    items:
+    - name: List of functions
+      displayName: functions library
+      href: /kusto/query/functions-library
+    - name: bartlett_test_fl()
+      displayName: functions library, statistical test
+      href: /kusto/query/bartlett-test-fl
+    - name: binomial_test_fl()
+      displayName: functions library, statistical test
+      href: /kusto/query/binomial-test-fl
+    - name: comb_fl()
+      displayName: functions library, statistics
+      href: /kusto/query/comb-fl
+    - name: dbscan_fl()
+      displayName: functions library, clustering, DBSCAN
+      href: /kusto/query/dbscan-fl
+    - name: dbscan_dynamic_fl()
+      displayName: functions library, clustering, DBSCAN
+      href: /kusto/query/dbscan-dynamic-fl
+    - name: factorial_fl()
+      displayName: functions library, statistics
+      href: /kusto/query/factorial-fl
+    - name: geoip_fl()
+      displayName: functions library, geographic, ip, country, state, city, longitude, latitude
+      href: /kusto/query/geoip-fl
+    - name: get_packages_version_fl()
+      displayName: functions library, python, version, package
+      href: /kusto/query/get-packages-version-fl
+    - name: kmeans_fl()
+      displayName: functions library, clustering, K-Means
+      href: /kusto/query/kmeans-fl
+    - name: kmeans_dynamic_fl()
+      displayName: functions library, clustering, K-Means
+      href: /kusto/query/kmeans-dynamic-fl
+    - name: ks_test_fl()
+      displayName: functions library, statistical test
+      href: /kusto/query/ks-test-fl
+    - name: normality_test_fl()
+      displayName: functions library, statistical test
+      href: /kusto/query/normality-test-fl
+    - name: levene_test_fl()
+      displayName: functions library, statistical test
+      href: /kusto/query/levene-test-fl
+    - name: log_reduce_fl()
+      displayName: functions library, log reduce, log parse, clustering, text analytics
+      href: /kusto/query/log-reduce-fl
+    - name: log_reduce_full_fl()
+      displayName: functions library, log reduce, log parse, clustering, text analytics
+      href: /kusto/query/log-reduce-full-fl
+    - name: log_reduce_predict_fl()
+      displayName: functions library, log reduce, log parse, clustering, text analytics
+      href: /kusto/query/log-reduce-predict-fl
+    - name: log_reduce_predict_full_fl()
+      displayName: functions library, log reduce, log parse, clustering, text analytics
+      href: /kusto/query/log-reduce-predict-full-fl
+    - name: log_reduce_train_fl()
+      displayName: functions library, log reduce, log parse, clustering, text analytics
+      href: /kusto/query/log-reduce-train-fl
+    - name: mann-whitney-u-test-fl()
+      displayName: functions library, statistical test
+      href: /kusto/query/mann-whitney-u-test-fl
+    - name: pair_probabilities_fl()
+      displayName: functions library, jaccard, lift
+      href: /kusto/query/pair-probabilities-fl
+    - name: pairwise_dist_fl()
+      displayName: functions library, multivariate, distance, anomaly, pairwise
+      href: /kusto/query/pairwise-dist-fl
+    - name: percentiles_linear_fl()
+      displayName: functions library, percentile, rank, statistics
+      href: /kusto/query/percentiles-linear-fl
+    - name: perm_fl()
+      displayName: functions library, statistics
+      href: /kusto/query/perm-fl
+    - name: plotly_anomaly_fl()
+      displayName: functions library, Plotly, anomaly, chart, render
+      href: /kusto/query/plotly-anomaly-fl
+    - name: plotly_scatter3d_fl()
+      displayName: functions library, Plotly, scatter, chart, render
+      href: /kusto/query/plotly-scatter3d-fl
+    - name: predict_fl()
+      displayName: functions library, score, classify
+      href: /kusto/query/predict-fl
+    - name: predict_onnx_fl()
+      displayName: functions library, score, classify
+      href: /kusto/query/predict-onnx-fl
+    - name: quantize_fl()
+      displayName: functions library, binning
+      href: /kusto/query/quantize-fl
+    - name: series_clean_anomalies_fl()
+      displayName: functions library, anomalies, outliers
+      href: /kusto/query/series-clean-anomalies-fl
+    - name: series_cosine_similarity_fl()
+      displayName: functions library, embedding, vector, cosine, similarity
+      href: /kusto/query/series-cosine-similarity-fl
+    - name: series_dbl_exp_smoothing_fl()
+      displayName: functions library, exponential, filter, low-pass
+      href: /kusto/query/series-dbl-exp-smoothing-fl
+    - name: series_dot_product_fl()
+      displayName: functions library, inner product, scalar product
+      href: /kusto/query/series-dot-product-fl
+    - name: series_downsample_fl()
+      displayName: functions library, subsampling, sub-sampling
+      href: /kusto/query/series-downsample-fl
+    - name: series_exp_smoothing_fl()
+      displayName: functions library, exponential, filter, low-pass
+      href: /kusto/query/series-exp-smoothing-fl
+    - name: series_fit_lowess_fl()
+      displayName: functions library, filter, low-pass, smoothing, regression
+      href: /kusto/query/series-fit-lowess-fl
+    - name: series_fit_poly_fl()
+      displayName: functions library, filter, low-pass, smoothing, regression
+      href: /kusto/query/series-fit-poly-fl
+    - name: series_fbprophet_forecast_fl()
+      displayName: functions library
+      href: /kusto/query/series-fbprophet-forecast-fl
+    - name: series_metric_fl()
+      displayName: functions library, PromQL, Prometheus
+      href: /kusto/query/series-metric-fl
+    - name: series_lag_fl()
+      displayName: functions library, filter, time shift, delay
+      href: /kusto/query/series-lag-fl
+    - name: series_monthly_decompose_anomalies_fl()
+      displayName: functions library, anomaly detection, monthly
+      href: /kusto/query/series-monthly-decompose-anomalies-fl
+    - name: series_moving_avg_fl()
+      displayName: functions library, filter, low-pass, smoothing
+      href: /kusto/query/series-moving-avg-fl
+    - name: series_moving_var_fl()
+      displayName: functions library, filter, rolling, variance, standard deviation, std
+      href: /kusto/query/series-moving-var-fl
+    - name: series_mv_ee_anomalies_fl()
+      displayName: functions library, anomaly detection, multivariate, elliptical envelope
+      href: /kusto/query/series-mv-ee-anomalies-fl
+    - name: series_mv_if_anomalies_fl()
+      displayName: functions library, anomaly detection, multivariate, isolation forest
+      href: /kusto/query/series-mv-if-anomalies-fl
+    - name: series_mv_oc_anomalies_fl()
+      displayName: functions library, anomaly detection, multivariate, one class svm, support vector machines
+      href: /kusto/query/series-mv-oc-anomalies-fl
+    - name: series_rate_fl()
+      displayName: functions library, PromQL, Prometheus
+      href: /kusto/query/series-rate-fl
+    - name: series_rolling_fl()
+      displayName: functions library, rolling, sliding
+      href: /kusto/query/series-rolling-fl
+    - name: series_shapes_fl()
+      displayName: functions library, shape, trend, jump, detect
+      href: /kusto/query/series-shapes-fl
+    - name: series_uv_anomalies_fl()
+      displayName: functions library, anomaly detection, univariate
+      href: /kusto/query/series-uv-anomalies-fl
+    - name: series_uv_change_points_fl()
+      displayName: functions library, anomaly detection, univariate, change point
+      href: /kusto/query/series-uv-change-points-fl
+    - name: time_weighted_avg_fl()
+      displayName: functions library, binning
+      href: /kusto/query/time-weighted-avg-fl
+    - name: time_window_rolling_avg_fl()
+      displayName: functions library, rolling, sliding
+      href: /kusto/query/time-window-rolling-avg-fl
+    - name: two_sample_t_test_fl()
+      displayName: functions library, statistical test
+      href: /kusto/query/two-sample-t-test-fl
+    - name: wilcoxon_test_fl()
+      displayName: functions library, statistical test
+      href: /kusto/query/wilcoxon-test-fl
+- name: Query statements
+  items:
+  - name: Query statement types
+    href: /kusto/query/statements
+  - name: Alias statement
+    href: /kusto/query/alias-statement
+  - name: Let statement
+    href: /kusto/query/let-statement
+  - name: Pattern statement
+    href: /kusto/query/pattern-statement
+  - name: Query parameters statement
+    href: /kusto/query/query-parameters-statement
+  - name: Restrict statement
+    href: /kusto/query/restrict-statement
+  - name: Set statement
+    href: /kusto/query/set-statement
+  - name: Tabular expression statements
+    displayName: views
+    href: /kusto/query/tabular-expression-statements
+  - name: Batches
+    href: /kusto/query/batches
+- name: Tabular operators
+  items:
+  - name: Query operators
+    href: /kusto/query/queries
+  - name: as operator
+    href: /kusto/query/as-operator
+  - name: consume operator
+    href: /kusto/query/consume-operator
+  - name: count operator
+    href: /kusto/query/count-operator
+  - name: datatable operator
+    href: /kusto/query/datatable-operator
+  - name: distinct operator
+    href: /kusto/query/distinct-operator
+  - name: evaluate operator
+    href: /kusto/query/evaluate-operator
+  - name: extend operator
+    href: /kusto/query/extend-operator
+  - name: externaldata operator
+    href: /kusto/query/externaldata-operator
+  - name: facet operator
+    href: /kusto/query/facet-operator
+  - name: find operator
+    href: /kusto/query/find-operator
+  - name: fork operator
+    href: /kusto/query/fork-operator
+  - name: getschema operator
+    href: /kusto/query/getschema-operator
+  - name: invoke operator
+    href: /kusto/query/invoke-operator
+  - name: join operator
+    items:
+    - name: join operator
+      href: /kusto/query/join-operator
+    - name: join flavors
+      items:
+      - name: innerunique
+        href: /kusto/query/join-innerunique
+      - name: inner
+        href: /kusto/query/join-inner
+      - name: leftouter
+        href: /kusto/query/join-leftouter
+      - name: rightouter
+        href: /kusto/query/join-rightouter
+      - name: fullouter
+        href: /kusto/query/join-fullouter
+      - name: leftsemi
+        href: /kusto/query/join-leftsemi
+      - name: leftanti
+        href: /kusto/query/join-leftanti
+        displayName: leftantisemi, anti
+      - name: rightsemi
+        href: /kusto/query/join-rightsemi
+        displayName: rightantisemi
+      - name: rightanti
+        href: /kusto/query/join-rightanti
+    - name: Cross-cluster join
+      href: /kusto/query/join-cross-cluster
+      displayName: cross cluster
+    - name: Broadcast join
+      href: /kusto/query/broadcast-join
+    - name: Time window join
+      href: /kusto/query/join-time-window
+  - name: lookup operator
+    href: /kusto/query/lookup-operator
+  - name: mv-apply operator
+    href: /kusto/query/mv-apply-operator
+    displayName: mv apply mv_apply
+  - name: mv-expand operator
+    href: /kusto/query/mv-expand-operator
+    displayName: mv expand mv_expand
+  - name: project operator
+    href: /kusto/query/project-operator
+  - name: project-away operator
+    href: /kusto/query/project-away-operator
+    displayName: project away project_away
+  - name: project-keep operator
+    href: /kusto/query/project-keep-operator
+    displayName: project keep project_keep
+  - name: project-rename operator
+    href: /kusto/query/project-rename-operator
+    displayName: project rename project_rename
+  - name: project-reorder operator
+    href: /kusto/query/project-reorder-operator
+    displayName: project reorder project_reorder
+  - name: parse operator
+    href: /kusto/query/parse-operator
+  - name: parse-where operator
+    href: /kusto/query/parse-where-operator
+    displayName: parse where parse_where
+  - name: parse-kv operator
+    href: /kusto/query/parse-kv-operator
+    displayName: parse kv parse_kv
+  - name: partition operator
+    href: /kusto/query/partition-operator
+  - name: print operator
+    href: /kusto/query/print-operator
+  - name: range operator
+    href: /kusto/query/range-operator
+  - name: reduce operator
+    href: /kusto/query/reduce-operator
+  - name: render operator
+    items:
+    - name: render operator
+      href: /kusto/query/render-operator
+    - name: visualizations
+      items:
+      - name: anomalychart
+        displayName: anomaly chart
+        href: /kusto/query/visualization-anomalychart
+      - name: areachart
+        displayName: area chart
+        href: /kusto/query/visualization-areachart
+      - name: barchart
+        displayName: bar chart
+        href: /kusto/query/visualization-barchart
+      - name: card
+        href: /kusto/query/visualization-card
+      - name: columnchart
+        displayName: column chart
+        href: /kusto/query/visualization-columnchart
+      - name: ladderchart
+        displayName: ladder chart
+        href: /kusto/query/visualization-ladderchart
+      - name: linechart
+        displayName: line chart
+        href: /kusto/query/visualization-linechart
+      - name: piechart
+        displayName: pie chart
+        href: /kusto/query/visualization-piechart
+      - name: pivotchart
+        displayName: pivot chart
+        href: /kusto/query/visualization-pivotchart
+      - name: Plotly
+        href: /kusto/query/visualization-plotly
+      - name: scatterchart
+        displayName: scatter chart
+        href: /kusto/query/visualization-scatterchart
+      - name: stackedareachart
+        displayName: stacked area chart
+        href: /kusto/query/visualization-stackedareachart
+      - name: table
+        href: /kusto/query/visualization-table
+      - name: timechart
+        displayName: time chart
+        href: /kusto/query/visualization-timechart
+      - name: timepivot
+        displayName: time pivot
+        href: /kusto/query/visualization-timepivot
+      - name: treemap
+        href: /kusto/query/visualization-treemap
+  - name: sample operator
+    href: /kusto/query/sample-operator
+  - name: sample-distinct operator
+    href: /kusto/query/sample-distinct-operator
+    displayName: sample distinct sample_distinct
+  - name: scan operator
+    href: /kusto/query/scan-operator
+  - name: search operator
+    href: /kusto/query/search-operator
+  - name: serialize operator
+    href: /kusto/query/serialize-operator
+  - name: shuffle query
+    displayName: hint.shufflekey, hint.strategy, shufflekey, hint, strategy
+    href: /kusto/query/shuffle-query
+  - name: sort operator
+    displayName: order operator
+    href: /kusto/query/sort-operator
+  - name: summarize operator
+    items:
+    - name: summarize operator overview
+      href: /kusto/query/summarize-operator
+    - name: Using hll() and tdigest()
+      href: /kusto/query/using-hll-tdigest
+  - name: take operator
+    displayName: limit operator
+    href: /kusto/query/take-operator
+  - name: top operator
+    href: /kusto/query/top-operator
+  - name: top-nested operator
+    href: /kusto/query/top-nested-operator
+    displayName: top nested top_nested
+  - name: top-hitters operator
+    href: /kusto/query/top-hitters-operator
+    displayName: top hitters top_hitters
+  - name: union operator
+    href: /kusto/query/union-operator
+  - name: where operator
+    displayName: filter operator
+    href: /kusto/query/where-operator
+- name: Special functions
+  items:
+  - name: Cross-cluster and cross-database queries
+    href: /kusto/query/cross-cluster-or-database-queries
+    displayName: cross cluster, cross database, schema change, schemas, partial query failure
+  - name: cluster()
+    href: /kusto/query/cluster-function
+  - name: database()
+    href: /kusto/query/database-function
+  - name: external_table()
+    href: /kusto/query/external-table-function
+    displayName: external table external-table
+  - name: materialize()
+    href: /kusto/query/materialize-function
+  - name: materialized_view()
+    href: /kusto/query/materialized-view-function
+    displayName: materialized view materialized-view
+  - name: Query results cache
+    href: /kusto/query/query-results-cache
+  - name: stored_query_result()
+    href: /kusto/query/stored-query-result-function
+    displayName: stored query result
+  - name: table()
+    href: /kusto/query/table-function
+  - name: toscalar()
+    href: /kusto/query/toscalar-function
+    displayName: to_scalar to-scalar
+- name: Scalar operators
+  items:
+  - name: between operators
+    items:
+    - name: between operator
+      href: /kusto/query/between-operator
+    - name: '!between operator'
+      displayName: not between operator
+      href: /kusto/query/not-between-operator
+  - name: Bitwise binary operators
+    href: /kusto/query/bin-operators
+  - name: Datetime/timespan arithmetic
+    href: /kusto/query/datetime-timespan-arithmetic
+  - name: in operators
+    items:
+    - name: in operator
+      displayName: in operator case sensitive
+      href: /kusto/query/in-cs-operator
+    - name: in~ operator
+      href: /kusto/query/in-operator
+    - name: '!in operator'
+      displayName: not in operator case sensitive
+      href: /kusto/query/not-in-cs-operator
+    - name: '!in~ operator'
+      displayName: not in operator
+      href: /kusto/query/not-in-operator
+  - name: Logical or binary operators
+    href: /kusto/query/logical-operators
+  - name: Numerical operators
+    href: /kusto/query/numerical-operators
+  - name: String operators
+    items:
+    - name: String operators overview
+      href: /kusto/query/datatypes-string-operators
+    - name: contains operator
+      href: /kusto/query/contains-operator
+    - name: contains_cs operator
+      displayName: contains operator case sensitive
+      href: /kusto/query/contains-cs-operator
+    - name: '!contains operator'
+      displayName: not contains operator
+      href: /kusto/query/not-contains-operator
+    - name: '!contains_cs operator'
+      displayName: not contains operator case sensitive
+      href: /kusto/query/not-contains-cs-operator
+    - name: endswith operator
+      href: /kusto/query/endswith-operator
+    - name: endswith_cs operator
+      displayName: ends with operator case sensitive
+      href: /kusto/query/endswith-cs-operator
+    - name: '!endswith operator'
+      displayName: not ends with operator
+      href: /kusto/query/not-endswith-operator
+    - name: '!endswith_cs operator'
+      displayName: not ends with operator case sensitive
+      href: /kusto/query/not-endswith-cs-operator
+    - name: == (equals) operator
+      displayName: equals case sensitive operator
+      href: /kusto/query/equals-cs-operator
+    - name: =~ (equals) operator
+      href: /kusto/query/equals-operator
+    - name: '!= (not equals) operator'
+      displayName: not equals case sensitive operator
+      href: /kusto/query/not-equals-cs-operator
+    - name: '!~ (not equals) operator'
+      href: /kusto/query/not-equals-operator
+    - name: has operator
+      href: /kusto/query/has-operator
+    - name: has_cs operator
+      displayName: has operator case sensitive
+      href: /kusto/query/has-cs-operator
+    - name: '!has operator'
+      displayName: not has operator
+      href: /kusto/query/not-has-operator
+    - name: '!has_cs operator'
+      displayName: not has operator case sensitive
+      href: /kusto/query/not-has-cs-operator
+    - name: hasprefix operator
+      href: /kusto/query/hasprefix-operator
+    - name: hasprefix_cs operator
+      displayName: has prefix operator case sensitive
+      href: /kusto/query/hasprefix-cs-operator
+    - name: '!hasprefix operator'
+      displayName: not has prefix operator
+      href: /kusto/query/not-hasprefix-operator
+    - name: '!hasprefix_cs operator'
+      displayName: not has prefix operator case sensitive
+      href: /kusto/query/not-hasprefix-cs-operator
+    - name: hassuffix operator
+      href: /kusto/query/hassuffix-operator
+    - name: hassuffix_cs operator
+      displayName: has suffix operator case sensitive
+      href: /kusto/query/hassuffix-cs-operator
+    - name: '!hassuffix operator'
+      displayName: not has suffix operator
+      href: /kusto/query/not-hassuffix-operator
+    - name: '!hassuffix_cs operator'
+      displayName: not has suffix operator case sensitive
+      href: /kusto/query/not-hassuffix-cs-operator
+    - name: has_all operator
+      displayName: has all operator
+      href: /kusto/query/has-all-operator
+    - name: has_any operator
+      displayName: has any operator
+      href: /kusto/query/has-any-operator
+    - name: in operator
+      displayName: in operator case sensitive
+      href: /kusto/query/in-cs-operator
+    - name: in~ operator
+      href: /kusto/query/in-operator
+    - name: '!in operator'
+      displayName: not in operator case sensitive
+      href: /kusto/query/not-in-cs-operator
+    - name: '!in~ operator'
+      displayName: not in operator
+      href: /kusto/query/not-in-operator
+    - name: matches regex operator
+      displayName: case-sensitive matches regex
+      href: /kusto/query/matches-regex-operator
+    - name: startswith operator
+      displayName: starts with operator
+      href: /kusto/query/startswith-operator
+    - name: startswith_cs operator
+      displayName: starts with operator case sensitive
+      href: /kusto/query/startswith-cs-operator
+    - name: '!startswith operator'
+      displayName: not starts with operator
+      href: /kusto/query/not-startswith-operator
+    - name: '!startswith_cs operator'
+      displayName: not starts with operator case sensitive
+      href: /kusto/query/not-startswith-cs-operator
+- name: Scalar functions
+  items:
+  - name: Scalar function types
+    displayName: stored procedures
+    href: /kusto/query/scalar-functions
+  - name: abs()
+    href: /kusto/query/abs-function
+  - name: acos()
+    href: /kusto/query/acos-function
+  - name: ago()
+    href: /kusto/query/ago-function
+  - name: around()
+    href: /kusto/query/around-function
+  - name: array_concat()
+    href: /kusto/query/array-concat-function
+  - name: array_iff()
+    displayName: array_iif() array iif
+    href: /kusto/query/array-iff-function
+  - name: array_index_of()
+    displayName: array index of
+    href: /kusto/query/array-index-of-function
+  - name: array_length()
+    displayName: arraylength() array length
+    href: /kusto/query/array-length-function
+  - name: array_reverse()
+    displayName: array reverse
+    href: /kusto/query/array-reverse-function
+  - name: array_rotate_left()
+    displayName: array rotate left
+    href: /kusto/query/array-rotate-left-function
+  - name: array_rotate_right()
+    displayName: array rotate right
+    href: /kusto/query/array-rotate-right-function
+  - name: array_shift_left()
+    displayName: array shift left
+    href: /kusto/query/array-shift-left-function
+  - name: array_shift_right()
+    displayName: array shift right
+    href: /kusto/query/array-shift-right-function
+  - name: array_slice()
+    displayName: array slice
+    href: /kusto/query/array-slice-function
+  - name: array_sort_asc()
+    displayName: array sort asc
+    href: /kusto/query/array-sort-asc-function
+  - name: array_sort_desc()
+    displayName: array sort desc
+    href: /kusto/query/array-sort-desc-function
+  - name: array_split()
+    displayName: array split
+    href: /kusto/query/array-split-function
+  - name: array_sum()
+    displayName: array sum
+    href: /kusto/query/array-sum-function
+  - name: asin()
+    displayName: asin function
+    href: /kusto/query/asin-function
+  - name: assert()
+    href: /kusto/query/assert-function
+  - name: atan()
+    href: /kusto/query/atan-function
+  - name: atan2()
+    href: /kusto/query/atan2-function
+  - name: bag_has_key()
+    displayName: bag has key
+    href: /kusto/query/bag-has-key-function
+  - name: bag_keys()
+    displayName: bag keys
+    href: /kusto/query/bag-keys-function
+  - name: bag_merge()
+    displayName: bag merge
+    href: /kusto/query/bag-merge-function
+  - name: bag_pack()
+    displayName: pack(), pack_dictionary(), bag pack
+    href: /kusto/query/pack-function
+  - name: bag_pack_columns()
+    displayName: bag pack columns, dynamic object, property bag
+    href: /kusto/query/bag-pack-columns-function
+  - name: bag_remove_keys()
+    displayName: bag remove keys
+    href: /kusto/query/bag-remove-keys-function
+  - name: bag_set_key()
+    displayName: bag set key
+    href: /kusto/query/bag-set-key-function
+  - name: bag_zip()
+    displayName: bag zip
+    href: /kusto/query/bag-zip
+  - name: base64_decode_toarray()
+    displayName: base64_decode_toarray()
+    href: /kusto/query/base64-decode-toarray-function
+  - name: base64_decode_tostring()
+    displayName: base64_decodestring() vase64 decode string
+    href: /kusto/query/base64-decode-tostring-function
+  - name: base64_decode_toguid()
+    displayName: base64_decode_toguid() base64 decode to guid
+    href: /kusto/query/base64-decode-toguid-function
+  - name: base64_encode_fromarray()
+    displayName: base64 encode from array
+    href: /kusto/query/base64-encode-fromarray-function
+  - name: base64_encode_tostring()
+    displayName: base64_encodestring() base 64 encode string
+    href: /kusto/query/base64-encode-tostring-function
+  - name: base64_encode_fromguid()
+    displayName: base64_encode_fromguid() base64 encode from guid
+    href: /kusto/query/base64-encode-fromguid-function
+  - name: beta_cdf()
+    displayName: beta_cdf() beta cdf
+    href: /kusto/query/beta-cdf-function
+  - name: beta_inv()
+    displayName: beta_inv() beta inv
+    href: /kusto/query/beta-inv-function
+  - name: beta_pdf()
+    displayName: beta_pdf() beta pdf
+    href: /kusto/query/beta-pdf-function
+  - name: bin()
+    displayName: floor()
+    href: /kusto/query/bin-function
+  - name: bin_at()
+    displayName: bin_at() bin at
+    href: /kusto/query/bin-at-function
+  - name: bin_auto()
+    displayName: bin_auto() bin auto
+    href: /kusto/query/bin-auto-function
+  - name: binary_and()
+    displayName: binary_and() binary and
+    href: /kusto/query/binary-and-function
+  - name: binary_not()
+    displayName: binary_not() binary not
+    href: /kusto/query/binary-not-function
+  - name: binary_or()
+    displayName: binary_or() binary or
+    href: /kusto/query/binary-or-function
+  - name: binary_shift_left()
+    displayName: binary_shift_left() binary shift left
+    href: /kusto/query/binary-shift-left-function
+  - name: binary_shift_right()
+    displayName: binary_shift_right() binary shift right
+    href: /kusto/query/binary-shift-right-function
+  - name: binary_xor()
+    displayName: binary_xor() binary xor
+    href: /kusto/query/binary-xor-function
+  - name: bitset_count_ones()
+    displayName: bitset_count_ones() bitset count ones
+    href: /kusto/query/bitset-count-ones-function
+  - name: case()
+    href: /kusto/query/case-function
+  - name: ceiling()
+    href: /kusto/query/ceiling-function
+    displayName: ceiling() ceiling function
+  - name: coalesce()
+    href: /kusto/query/coalesce-function
+  - name: column_ifexists()
+    displayName: columnifexists() column if exists
+    href: /kusto/query/column-ifexists-function
+  - name: convert_angle()
+    displayName: convert_angle() convert angle
+    href: /kusto/query/convert-angle-function
+  - name: convert_energy()
+    displayName: convert_energy() convert energy
+    href: /kusto/query/convert-energy-function
+  - name: convert_force()
+    displayName: convert_force() convert force
+    href: /kusto/query/convert-force-function
+  - name: convert_length()
+    displayName: convert_length() convert length
+    href: /kusto/query/convert-length-function
+  - name: convert_mass()
+    displayName: convert_mass() convert mass
+    href: /kusto/query/convert-mass-function
+  - name: convert_speed()
+    displayName: convert_speed() convert speed
+    href: /kusto/query/convert-speed-function
+  - name: convert_temperature()
+    displayName: convert_temperature() convert temperature
+    href: /kusto/query/convert-temperature-function
+  - name: convert_volume()
+    displayName: convert_volume() convert volume
+    href: /kusto/query/convert-volume-function
+  - name: cos()
+    href: /kusto/query/cos-function
+  - name: cot()
+    href: /kusto/query/cot-function
+  - name: countof()
+    displayName: countof() count of
+    href: /kusto/query/countof-function
+  - name: current_cluster_endpoint()
+    displayName: current_cluster_endpoint() current cluster endpoint
+    href: /kusto/query/current-cluster-endpoint-function
+  - name: current_database()
+    displayName: current_database() current database
+    href: /kusto/query/current-database-function
+  - name: current_principal()
+    displayName: current_principal() current principal
+    href: /kusto/query/current-principal-function
+  - name: current_principal_details()
+    displayName: current_principal_details() current principal details
+    href: /kusto/query/current-principal-details-function
+  - name: current_principal_is_member_of()
+    displayName: current_principal_is_member_of() current principal is member of
+    href: /kusto/query/current-principal-is-member-of-function
+  - name: cursor_after()
+    displayName: cursor_after() cursor after
+    href: /kusto/query/cursor-after-function
+  - name: cursor_before_or_at()
+    displayName: cursor_before_or_at() cursor before or at
+    href: /kusto/query/cursor-before-or-at-function
+  - name: cursor_current()
+    displayName: current_cursor() cursor current
+    href: /kusto/query/cursor-current
+  - name: datetime_add()
+    displayName: datetime_add() datetime add
+    href: /kusto/query/datetime-add-function
+  - name: datetime_diff()
+    displayName: datetime_diff() datetime diff
+    href: /kusto/query/datetime-diff-function
+  - name: datetime_list_timezones()
+    displayName: datetime_list_timezones() list timezones
+    href: /kusto/query/datetime-list-timezones
+  - name: datetime_local_to_utc()
+    href: /kusto/query/datetime-local-to-utc-function
+  - name: datetime_part()
+    displayName: datepart()
+    href: /kusto/query/datetime-part-function
+  - name: datetime_utc_to_local()
+    displayName: datetime_utc_to_local() datetime utc to local
+    href: /kusto/query/datetime-utc-to-local-function
+  - name: dayofmonth()
+    displayName: dayofmonth() day of month
+    href: /kusto/query/day-of-month-function
+  - name: dayofweek()
+    displayName: dayofweek() day of week
+    href: /kusto/query/day-of-week-function
+  - name: dayofyear()
+    displayName: day of year
+    href: /kusto/query/day-of-year-function
+  - name: dcount_hll()
+    displayName: dcount hll
+    href: /kusto/query/dcount-hll-function
+  - name: degrees()
+    href: /kusto/query/degrees-function
+  - name: dynamic_to_json()
+    displayName: dynamic_to_json() dynamic to json
+    href: /kusto/query/dynamic-to-json-function
+  - name: endofday()
+    displayName: endofday() end of day
+    href: /kusto/query/endofday-function
+  - name: endofmonth()
+    displayName: endofmonth() end of month
+    href: /kusto/query/endofmonth-function
+  - name: endofweek()
+    displayName: endofweek() end of week
+    href: /kusto/query/endofweek-function
+  - name: endofyear()
+    displayName: endofyear() end of year
+    href: /kusto/query/endofyear-function
+  - name: erf()
+    displayName: Gaussian, error function, statistics, distribution
+    href: /kusto/query/erf-function
+  - name: erfc()
+    displayName: complementary error function, statistics, distribution
+    href: /kusto/query/erfc-function
+  - name: estimate_data_size()
+    displayName: estimate_data_size() estimate data size
+    href: /kusto/query/estimate-data-size-function
+  - name: exp()
+    href: /kusto/query/exp-function
+  - name: exp10()
+    href: /kusto/query/exp10-function
+  - name: exp2()
+    href: /kusto/query/exp2-function
+  - name: extent_id()
+    displayName: extentid() extent id
+    href: /kusto/query/extent-id-function
+  - name: extent_tags()
+    displayName: extenttags() extent tags
+    href: /kusto/query/extent-tags-function
+  - name: extract()
+    href: /kusto/query/extract-function
+  - name: extract_all()
+    displayName: extractall() extract all
+    href: /kusto/query/extract-all-function
+  - name: extract_json()
+    displayName: extractjson() extract json
+    href: /kusto/query/extract-json-function
+  - name: format_bytes()
+    displayName: format bytes
+    href: /kusto/query/format-bytes-function
+  - name: format_datetime()
+    displayName: format datetime
+    href: /kusto/query/format-datetime-function
+  - name: format_ipv4()
+    displayName: format ipv4
+    href: /kusto/query/format-ipv4-function
+  - name: format_ipv4_mask()
+    displayName: format ipv4 mask
+    href: /kusto/query/format-ipv4-mask-function
+  - name: format_timespan()
+    displayName: format timespan
+    href: /kusto/query/format-timespan-function
+  - name: gamma()
+    href: /kusto/query/gamma-function
+  - name: geo_info_from_ip_address()
+    displayName: geo info from ip address
+    href: /kusto/query/geo-info-from-ip-address-function
+  - name: gettype()
+    displayName: get type
+    href: /kusto/query/gettype-function
+  - name: getyear()
+    displayName: get year
+    href: /kusto/query/getyear-function
+  - name: gzip_compress_to_base64_string()
+    displayName: gzip compress to base64 string
+    href: /kusto/query/gzip-base64-compress
+  - name: gzip_decompress_from_base64_string()
+    displayName: gzip decompress from base64 string
+    href: /kusto/query/gzip-base64-decompress
+  - name: has_any_index()
+    displayName: has any index
+    href: /kusto/query/has-any-index-function
+  - name: has_any_ipv4()
+    displayName: has any ipv4
+    href: /kusto/query/has-any-ipv4-function
+  - name: has_ipv4()
+    displayName: has ipv4
+    href: /kusto/query/has-ipv4-function
+  - name: has_any_ipv4_prefix()
+    displayName: has any ipv4 prefix
+    href: /kusto/query/has-any-ipv4-prefix-function
+  - name: has_ipv4_prefix()
+    displayName: has ipv4 prefix
+    href: /kusto/query/has-ipv4-prefix-function
+  - name: hash()
+    href: /kusto/query/hash-function
+  - name: hash_combine()
+    displayName: hash combine
+    href: /kusto/query/hash-combine-function
+  - name: hash_many()
+    displayName: hash many
+    href: /kusto/query/hash-many-function
+  - name: hash_md5()
+    displayName: hash md5
+    href: /kusto/query/hash-md5-function
+  - name: hash_sha1()
+    displayName: hash sha1
+    href: /kusto/query/hash-sha1-function
+  - name: hash_sha256()
+    displayName: hash sha256
+    href: /kusto/query/hash-sha256-function
+  - name: hash_xxhash64()
+    displayName: hash xxhash64
+    href: /kusto/query/hash-xxhash64-function
+  - name: hll_merge()
+    displayName: hll merge
+    href: /kusto/query/hll-merge-function
+  - name: hourofday()
+    displayName: hourofday() hour of day
+    href: /kusto/query/hour-of-day-function
+  - name: iff()
+    displayName: iif()
+    href: /kusto/query/iff-function
+  - name: indexof()
+    displayName: index of
+    href: /kusto/query/indexof-function
+  - name: indexof_regex()
+    displayName: index of regex
+    href: /kusto/query/indexof-regex-function
+  - name: ingestion_time()
+    displayName: ingestion time
+    href: /kusto/query/ingestion-time-function
+  - name: ipv4_compare()
+    displayName: ipv4 compare
+    href: /kusto/query/ipv4-compare-function
+  - name: ipv4_is_in_range()
+    displayName: ipv4 is in range
+    href: /kusto/query/ipv4-is-in-range-function
+  - name: ipv4_is_in_any_range()
+    displayName: ipv4 is in any range
+    href: /kusto/query/ipv4-is-in-any-range-function
+  - name: ipv4_is_match()
+    displayName: ipv4 is match
+    href: /kusto/query/ipv4-is-match-function
+  - name: ipv4_is_private()
+    displayName: ipv4 is private
+    href: /kusto/query/ipv4-is-private-function
+  - name: ipv4_range_to_cidr_list()
+    displayName: ipv4 range to cidr list
+    href: /kusto/query/ipv4-range-to-cidr-list-function
+  - name: ipv4_netmask_suffix()
+    displayName: ipv4 netmask suffix
+    href: /kusto/query/ipv4-netmask-suffix-function
+  - name: ipv6_compare()
+    displayName: ipv6 compare
+    href: /kusto/query/ipv6-compare-function
+  - name: ipv6_is_in_range()
+    displayName: ipv6 is in range
+    href: /kusto/query/ipv6-is-in-range-function
+  - name: ipv6_is_in_any_range()
+    displayName: ipv6 is in any range
+    href: /kusto/query/ipv6-is-in-any-range-function
+  - name: ipv6_is_match()
+    displayName: ipv6 is match
+    href: /kusto/query/ipv6-is-match-function
+  - name: isascii()
+    href: /kusto/query/isascii
+  - name: isempty()
+    displayName: is empty
+    href: /kusto/query/isempty-function
+  - name: isfinite()
+    displayName: is finite
+    href: /kusto/query/isfinite-function
+  - name: isinf()
+    displayName: is inf
+    href: /kusto/query/isinf-function
+  - name: isnan()
+    displayName: is nan
+    href: /kusto/query/isnan-function
+  - name: isnotempty()
+    displayName: is not empty notempty()
+    href: /kusto/query/isnotempty-function
+  - name: isnotnull()
+    displayName: is not null notnull()
+    href: /kusto/query/isnotnull-function
+  - name: isnull()
+    displayName: is null
+    href: /kusto/query/isnull-function
+  - name: isutf8()
+    displayName: is utf8
+    href: /kusto/query/isutf8-function
+  - name: jaccard_index()
+    displayName: jaccard index
+    href: /kusto/query/jaccard-index-function
+  - name: log()
+    href: /kusto/query/log-function
+  - name: log10()
+    href: /kusto/query/log10-function
+  - name: log2()
+    href: /kusto/query/log2-function
+  - name: loggamma()
+    displayName: log gamma
+    href: /kusto/query/loggamma-function
+  - name: make_datetime()
+    displayName: make datetime
+    href: /kusto/query/make-datetime-function
+  - name: make_timespan()
+    displayName: make timespan
+    href: /kusto/query/make-timespan-function
+  - name: max_of()
+    displayName: max of
+    href: /kusto/query/max-of-function
+  - name: merge_tdigest()
+    displayName: merge tdigest tdigest_merge()
+    href: /kusto/query/merge-tdigest-function
+  - name: min_of()
+    displayName: min of
+    href: /kusto/query/min-of-function
+  - name: monthofyear()
+    displayName: getmonth() month of year
+    href: /kusto/query/monthofyear-function
+  - name: new_guid()
+    displayName: new guid
+    href: /kusto/query/new-guid-function
+  - name: not()
+    href: /kusto/query/not-function
+  - name: now()
+    href: /kusto/query/now-function
+  - name: pack_all()
+    displayName: pack all
+    href: /kusto/query/pack-all-function
+  - name: pack_array()
+    displayName: pack array
+    href: /kusto/query/pack-array-function
+  - name: parse_command_line()
+    displayName: parse command line
+    href: /kusto/query/parse-command-line-function
+  - name: parse_csv()
+    displayName: parse csv
+    href: /kusto/query/parse-csv-function
+  - name: parse_ipv4()
+    displayName: parse ipv4
+    href: /kusto/query/parse-ipv4-function
+  - name: parse_ipv4_mask()
+    displayName: parse ipv4 mask
+    href: /kusto/query/parse-ipv4-mask-function
+  - name: parse_ipv6()
+    displayName: parse ipv6
+    href: /kusto/query/parse-ipv6-function
+  - name: parse_ipv6_mask()
+    displayName: parse ipv6 mask
+    href: /kusto/query/parse-ipv6-mask-function
+  - name: parse_json()
+    displayName: parse json toobject(), parsejson(), todynamic()
+    href: /kusto/query/parse-json-function
+  - name: parse_path()
+    displayName: parse path
+    href: /kusto/query/parse-path-function
+  - name: parse_url()
+    displayName: parse url parseurl()
+    href: /kusto/query/parse-url-function
+  - name: parse_urlquery()
+    displayName: parse url query parseurlquery()
+    href: /kusto/query/parse-url-query-function
+  - name: parse_user_agent()
+    displayName: parse user agent
+    href: /kusto/query/parse-user-agent-function
+  - name: parse_version()
+    displayName: parse version
+    href: /kusto/query/parse-version-function
+  - name: parse_xml()
+    displayName: parse xml
+    href: /kusto/query/parse-xml-function
+  - name: percentile_tdigest()
+    displayName: percentile tdigest()
+    href: /kusto/query/percentile-tdigest-function
+  - name: percentile_array_tdigest()
+    displayName: percentile array tdigest()
+    href: /kusto/query/percentile-array-tdigest-function
+  - name: percentrank_tdigest()
+    displayName: percentrank tdigest()
+    href: /kusto/query/percentrank-tdigest-function
+  - name: pi()
+    href: /kusto/query/pi-function
+  - name: pow()
+    href: /kusto/query/pow-function
+  - name: punycode_from_string()
+    displayName: punycode from string
+    href: /kusto/query/punycode-from-string-function
+  - name: punycode_to_string()
+    displayName: punycode to string
+    href: /kusto/query/punycode-to-string-function
+  - name: punycode_domain_from_string()
+    displayName: punycode domain from string
+    href: /kusto/query/punycode-domain-from-string-function
+  - name: punycode_domain_to_string()
+    displayName: punycode domain to string
+    href: /kusto/query/punycode-domain-to-string-function
+  - name: radians()
+    href: /kusto/query/radians-function
+  - name: rand()
+    href: /kusto/query/rand-function
+  - name: range()
+    href: /kusto/query/range-function
+  - name: rank_tdigest()
+    displayName: rank tdigest()
+    href: /kusto/query/rank-tdigest-function
+  - name: regex_quote()
+    displayName: regex quote
+    href: /kusto/query/regex-quote-function
+  - name: repeat()
+    href: /kusto/query/repeat-function
+  - name: replace_regex()
+    displayName: replace regex
+    href: /kusto/query/replace-regex-function
+  - name: replace_string()
+    displayName: replace string
+    href: /kusto/query/replace-string-function
+  - name: replace_strings()
+    displayName: replace strings
+    href: /kusto/query/replace-strings-function
+  - name: reverse()
+    href: /kusto/query/reverse-function
+  - name: round()
+    href: /kusto/query/round-function
+  - name: set_difference()
+    displayName: set difference
+    href: /kusto/query/set-difference-function
+  - name: set_has_element()
+    displayName: set has element
+    href: /kusto/query/set-has-element-function
+  - name: set_intersect()
+    displayName: set intersect
+    href: /kusto/query/set-intersect-function
+  - name: set_union()
+    displayName: set union
+    href: /kusto/query/set-union-function
+  - name: sign()
+    href: /kusto/query/sign-function
+  - name: sin()
+    href: /kusto/query/sin-function
+  - name: split()
+    href: /kusto/query/split-function
+  - name: sqrt()
+    href: /kusto/query/sqrt-function
+  - name: startofday()
+    displayName: start of day
+    href: /kusto/query/startofday-function
+  - name: startofmonth()
+    displayName: start of month
+    href: /kusto/query/startofmonth-function
+  - name: startofweek()
+    displayName: start of week
+    href: /kusto/query/startofweek-function
+  - name: startofyear()
+    displayName: start of year
+    href: /kusto/query/startofyear-function
+  - name: strcat()
+    displayName: string concat
+    href: /kusto/query/strcat-function
+  - name: strcat_array()
+    displayName: string concat array
+    href: /kusto/query/strcat-array-function
+  - name: strcat_delim()
+    displayName: string concat delim
+    href: /kusto/query/strcat-delim-function
+  - name: strcmp()
+    displayName: string compare
+    href: /kusto/query/strcmp-function
+  - name: string_size()
+    displayName: string size
+    href: /kusto/query/string-size-function
+  - name: strlen()
+    displayName: string length
+    href: /kusto/query/strlen-function
+  - name: strrep()
+    displayName: string replace
+    href: /kusto/query/strrep-function
+  - name: substring()
+    displayName: string substring
+    href: /kusto/query/substring-function
+  - name: tan()
+    href: /kusto/query/tan-function
+  - name: tobool()
+    displayName: to boolean toboolean
+    href: /kusto/query/tobool-function
+  - name: todatetime()
+    displayName: to datetime todatetime
+    href: /kusto/query/todatetime-function
+  - name: todecimal()
+    displayName: to decimal todecimal
+    href: /kusto/query/todecimal-function
+  - name: toguid()
+    displayName: to guid toguid
+    href: /kusto/query/toguid-function
+  - name: tohex()
+    displayName: to hex tohex
+    href: /kusto/query/tohex-function
+  - name: toint()
+    displayName: to int toint integer
+    href: /kusto/query/toint-function
+  - name: tolong()
+    displayName: to long tolong
+    href: /kusto/query/tolong-function
+  - name: tolower()
+    displayName: to lower tolower
+    href: /kusto/query/tolower-function
+  - name: toreal()
+    displayName: to real toreal todouble double todouble()
+    href: /kusto/query/toreal-function
+  - name: tostring()
+    displayName: to string tostring
+    href: /kusto/query/tostring-function
+  - name: totimespan()
+    displayName: to timespan totime()
+    href: /kusto/query/totimespan-function
+  - name: toupper()
+    displayName: to upper toupper
+    href: /kusto/query/toupper-function
+  - name: translate()
+    href: /kusto/query/translate-function
+  - name: treepath()
+    href: /kusto/query/treepath-function
+  - name: trim()
+    href: /kusto/query/trim-function
+  - name: trim_end()
+    displayName: trim end
+    href: /kusto/query/trim-end-function
+  - name: trim_start()
+    displayName: trim start
+    href: /kusto/query/trim-start-function
+  - name: unicode_codepoints_from_string()
+    displayName: to_utf8() unicode codepoints from string
+    href: /kusto/query/unicode-codepoints-from-string-function
+  - name: unicode_codepoints_to_string()
+    displayName: unicode codepoints to string make_string()
+    href: /kusto/query/unicode-codepoints-to-string-function
+  - name: unixtime_microseconds_todatetime()
+    displayName: unixtime microseconds to datetime
+    href: /kusto/query/unixtime-microseconds-todatetime-function
+  - name: unixtime_milliseconds_todatetime()
+    displayName: unixtime milliseconds to datetime
+    href: /kusto/query/unixtime-milliseconds-todatetime-function
+  - name: unixtime_nanoseconds_todatetime()
+    displayName: unixtime nanoseconds to datetime
+    href: /kusto/query/unixtime-nanoseconds-todatetime-function
+  - name: unixtime_seconds_todatetime()
+    displayName: unixtime seconds to datetime
+    href: /kusto/query/unixtime-seconds-todatetime-function
+  - name: url_decode()
+    displayName: url decode
+    href: /kusto/query/url-decode-function
+  - name: url_encode()
+    displayName: url encode
+    href: /kusto/query/url-encode-function
+  - name: url_encode_component()
+    displayName: url encode component
+    href: /kusto/query/url-encode-component-function
+  - name: week_of_year()
+    displayName: week of year weekofyear()
+    href: /kusto/query/week-of-year-function
+  - name: welch_test()
+    displayName: welch test
+    href: /kusto/query/welch-test-function
+  - name: zip()
+    href: /kusto/query/zip-function
+  - name: zlib_compress_to_base64_string()
+    displayName: zlib compress to base64 string
+    href: /kusto/query/zlib-base64-compress-function
+  - name: zlib_decompress_from_base64_string()
+    displayName: zlib decompress from base64 string
+    href: /kusto/query/zlib-base64-decompress-function
+- name: Aggregation functions
+  displayName: aggregation
+  items:
+  - name: Aggregation function types
+    href: /kusto/query/aggregation-functions
+  - name: arg_max()
+    displayName: argmax()
+    href: /kusto/query/arg-max-aggregation-function
+  - name: arg_min()
+    displayName: argmin()
+    href: /kusto/query/arg-min-aggregation-function
+  - name: avg()
+    href: /kusto/query/avg-aggregation-function
+  - name: avgif()
+    href: /kusto/query/avgif-aggregation-function
+  - name: binary_all_and
+    href: /kusto/query/binary-all-and-aggregation-function
+  - name: binary_all_or
+    href: /kusto/query/binary-all-or-aggregation-function
+  - name: binary_all_xor
+    href: /kusto/query/binary-all-xor-aggregation-function
+  - name: buildschema()
+    href: /kusto/query/buildschema-aggregation-function
+  - name: count()
+    displayName: cnt()
+    href: /kusto/query/count-aggregation-function
+  - name: count_distinct()
+    href: /kusto/query/count-distinct-aggregation-function
+  - name: count_distinctif()
+    href: /kusto/query/count-distinctif-aggregation-function
+  - name: countif()
+    displayName: count(predicate)
+    href: /kusto/query/countif-aggregation-function
+  - name: dcount()
+    href: /kusto/query/dcount-aggfunction
+  - name: dcountif()
+    href: /kusto/query/dcountif-aggregation-function
+  - name: hll()
+    href: /kusto/query/hll-aggregation-function
+  - name: hll_if()
+    href: /kusto/query/hll-if-aggregation-function
+  - name: hll_merge()
+    href: /kusto/query/hll-merge-aggregation-function
+  - name: make_bag()
+    href: /kusto/query/make-bag-aggregation-function
+  - name: make_bag_if()
+    href: /kusto/query/make-bag-if-aggregation-function
+  - name: make_list()
+    displayName: makelist()
+    href: /kusto/query/make-list-aggregation-function
+  - name: make_list_if()
+    href: /kusto/query/make-list-if-aggregation-function
+  - name: make_list_with_nulls()
+    href: /kusto/query/make-list-with-nulls-aggregation-function
+  - name: make_set()
+    displayName: makeset()
+    href: /kusto/query/make-set-aggregation-function
+  - name: make_set_if()
+    href: /kusto/query/make-set-if-aggregation-function
+  - name: max()
+    href: /kusto/query/max-aggregation-function
+  - name: maxif()
+    href: /kusto/query/maxif-aggregation-function
+  - name: min()
+    href: /kusto/query/min-aggregation-function
+  - name: minif()
+    href: /kusto/query/minif-aggregation-function
+  - name: percentile(), percentiles()
+    displayName: percentiles_array()
+    href: /kusto/query/percentiles-aggregation-function
+  - name: percentilew(), percentilesw()
+    displayName: percentilesw_array(), weighted percentiles
+    href: /kusto/query/percentilesw-aggregation-function
+  - name: stdev()
+    href: /kusto/query/stdev-aggregation-function
+  - name: stdevif()
+    href: /kusto/query/stdevif-aggregation-function
+  - name: stdevp()
+    href: /kusto/query/stdevp-aggregation-function
+  - name: sum()
+    href: /kusto/query/sum-aggregation-function
+  - name: sumif()
+    href: /kusto/query/sumif-aggregation-function
+  - name: take_any()
+    displayName: any()
+    href: /kusto/query/take-any-aggregation-function
+  - name: take_anyif()
+    displayName: anyif()
+    href: /kusto/query/take-anyif-aggregation-function
+  - name: tdigest()
+    href: /kusto/query/tdigest-aggregation-function
+  - name: tdigest_merge(), merge_tdigest()
+    href: /kusto/query/tdigest-merge-aggregation-function
+  - name: variance()
+    href: /kusto/query/variance-aggregation-function
+  - name: varianceif()
+    href: /kusto/query/varianceif-aggregation-function
+  - name: variancep()
+    href: /kusto/query/variancep-aggregation-function
+- name: Graph operators
+  items:
+  - name: Graph overview
+    href: /kusto/query/graph-overview
+  - name: Graph best practices
+    href: /kusto/query/graph-best-practices
+  - name: Graph scenarios
+    href: /kusto/query/graph-scenarios
+  - name: Graph operators overview
+    href: /kusto/query/graph-operators
+  - name: make-graph
+    href: /kusto/query/make-graph-operator
+  - name: graph-match
+    href: /kusto/query/graph-match-operator
+  - name: graph-to-table
+    href: /kusto/query/graph-to-table-operator
+- name: Geospatial
+  items:
+  - name: Geospatial clustering overview
+    displayName: H3, S2, Geohash
+    href: /kusto/query/geospatial-grid-systems
+  - name: Geospatial visualizations
+    href: /kusto/query/geospatial-visualizations
+  - name: geo_angle()
+    href: /kusto/query/geo-angle-function
+  - name: geo_azimuth()
+    href: /kusto/query/geo-azimuth-function
+  - name: geo_distance_2points()
+    href: /kusto/query/geo-distance-2points-function
+  - name: geo_distance_point_to_line()
+    href: /kusto/query/geo-distance-point-to-line-function
+  - name: geo_distance_point_to_polygon()
+    href: /kusto/query/geo-distance-point-to-polygon-function
+  - name: geo_intersects_2lines()
+    href: /kusto/query/geo-intersects-2lines-function
+  - name: geo_intersects_2polygons()
+    href: /kusto/query/geo-intersects-2polygons-function
+  - name: geo_intersects_line_with_polygon()
+    href: /kusto/query/geo-intersects-line-with-polygon-function
+  - name: geo_intersection_2lines()
+    href: /kusto/query/geo-intersection-2lines-function
+  - name: geo_intersection_2polygons()
+    href: /kusto/query/geo-intersection-2polygons-function
+  - name: geo_intersection_line_with_polygon()
+    href: /kusto/query/geo-intersection-line-with-polygon-function
+  - name: geo_line_buffer()
+    href: /kusto/query/geo-line-buffer-function
+  - name: geo_line_centroid()
+    href: /kusto/query/geo-line-centroid-function
+  - name: geo_line_densify()
+    href: /kusto/query/geo-line-densify-function
+  - name: geo_line_length()
+    href: /kusto/query/geo-line-length-function
+  - name: geo_line_simplify()
+    href: /kusto/query/geo-line-simplify-function
+  - name: geo_line_to_s2cells()
+    href: /kusto/query/geo-line-to-s2cells-function
+  - name: geo_polygon_area()
+    href: /kusto/query/geo-polygon-area-function
+  - name: geo_polygon_buffer()
+    href: /kusto/query/geo-polygon-buffer-function
+  - name: geo_polygon_centroid()
+    href: /kusto/query/geo-polygon-centroid-function
+  - name: geo_polygon_densify()
+    href: /kusto/query/geo-polygon-densify-function
+  - name: geo_polygon_perimeter()
+    href: /kusto/query/geo-polygon-perimeter-function
+  - name: geo_polygon_simplify()
+    href: /kusto/query/geo-polygon-simplify-function
+  - name: geo_polygon_to_s2cells()
+    href: /kusto/query/geo-polygon-to-s2cells-function
+  - name: geo_polygon_to_h3cells()
+    href: /kusto/query/geo-polygon-to-h3cells-function
+  - name: geo_point_buffer()
+    href: /kusto/query/geo-point-buffer-function
+  - name: geo_point_in_circle()
+    href: /kusto/query/geo-point-in-circle-function
+  - name: geo_point_in_polygon()
+    href: /kusto/query/geo-point-in-polygon-function
+  - name: geo_point_to_geohash()
+    href: /kusto/query/geo-point-to-geohash-function
+  - name: geo_point_to_h3cell()
+    href: /kusto/query/geo-point-to-h3cell-function
+  - name: geo_point_to_s2cell()
+    href: /kusto/query/geo-point-to-s2cell-function
+  - name: geo_geohash_to_central_point()
+    href: /kusto/query/geo-geohash-to-central-point-function
+  - name: geo_geohash_neighbors()
+    href: /kusto/query/geo-geohash-neighbors-function
+  - name: geo_geohash_to_polygon()
+    href: /kusto/query/geo-geohash-to-polygon-function
+  - name: geo_s2cell_to_central_point()
+    href: /kusto/query/geo-s2cell-to-central-point-function
+  - name: geo_s2cell_neighbors()
+    href: /kusto/query/geo-s2cell-neighbors-function
+  - name: geo_s2cell_to_polygon()
+    href: /kusto/query/geo-s2cell-to-polygon-function
+  - name: geo_h3cell_to_central_point()
+    href: /kusto/query/geo-h3cell-to-central-point-function
+  - name: geo_h3cell_neighbors()
+    href: /kusto/query/geo-h3cell-neighbors-function
+  - name: geo_h3cell_to_polygon()
+    href: /kusto/query/geo-h3cell-to-polygon-function
+  - name: geo_h3cell_parent()
+    href: /kusto/query/geo-h3cell-parent-function
+  - name: geo_h3cell_children()
+    href: /kusto/query/geo-h3cell-children-function
+  - name: geo_h3cell_level()
+    href: /kusto/query/geo-h3cell-level-function
+  - name: geo_h3cell_rings()
+    href: /kusto/query/geo-h3cell-rings-function
+  - name: geo_simplify_polygons_array()
+    href: /kusto/query/geo-simplify-polygons-array-function
+  - name: geo_union_lines_array()
+    href: /kusto/query/geo-union-lines-array-function
+  - name: geo_union_polygons_array()
+    href: /kusto/query/geo-union-polygons-array-function
+- name: Time series analysis
+  items:
+  - name: Example use cases
+    items:
+    - name: Time series analysis
+      href: /kusto/query/time-series-analysis
+    - name: Anomaly detection and forecasting
+      href: /kusto/query/anomaly-detection
+    - name: Anomaly diagnosis for root cause analysis
+      href: /kusto/query/anomaly-diagnosis
+  - name: make-series operator
+    href: /kusto/query/make-series-operator
+  - name: series_abs()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-abs-function
+  - name: series_acos()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-acos-function
+  - name: series_add()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-add-function
+  - name: series_asin()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-asin-function
+  - name: series_atan()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-atan-function
+  - name: series_ceiling()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-ceiling-function
+  - name: series_cos()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-cos-function
+  - name: series_cosine_similarity()
+    displayName: element-wise, elementwise, embedding, vector, cosine, similarity
+    href: /kusto/query/series-cosine-similarity-function
+  - name: series_decompose()
+    displayName: seasonal, trend, baseline
+    href: /kusto/query/series-decompose-function
+  - name: series_decompose_anomalies()
+    displayName: seasonal, trend, baseline
+    href: /kusto/query/series-decompose-anomalies-function
+  - name: series_decompose_forecast()
+    displayName: seasonal, trend, baseline
+    href: /kusto/query/series-decompose-forecast-function
+  - name: series_divide()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-divide-function
+  - name: series_dot_product()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-dot-product-function
+  - name: series_equals()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-equals-function
+  - name: series_exp()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-exp-function
+  - name: series_fft()
+    displayName: spectral, frequency, seasonality, transform, Fourier
+    href: /kusto/query/series-fft-function
+  - name: series_fill_backward()
+    displayName: missing values
+    href: /kusto/query/series-fill-backward-function
+  - name: series_fill_const()
+    displayName: missing values
+    href: /kusto/query/series-fill-const-function
+  - name: series_fill_forward()
+    displayName: missing values
+    href: /kusto/query/series-fill-forward-function
+  - name: series_fill_linear()
+    displayName: missing values
+    href: /kusto/query/series-fill-linear-function
+  - name: series_fir()
+    displayName: filter, finite impulse response
+    href: /kusto/query/series-fir-function
+  - name: series_fit_2lines()
+    displayName: regression
+    href: /kusto/query/series-fit-2lines-function
+  - name: series_fit_2lines_dynamic()
+    displayName: regression
+    href: /kusto/query/series-fit-2lines-dynamic-function
+  - name: series_fit_line()
+    displayName: regression
+    href: /kusto/query/series-fit-line-function
+  - name: series_fit_line_dynamic()
+    displayName: regression
+    href: /kusto/query/series-fit-line-dynamic-function
+  - name: series_fit_poly()
+    displayName: regression, polynomial
+    href: /kusto/query/series-fit-poly-function
+  - name: series_floor()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-floor-function
+  - name: series_greater()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-greater-function
+  - name: series_greater_equals()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-greater-equals-function
+  - name: series_ifft()
+    displayName: spectral, frequency, seasonality, transform, Fourier
+    href: /kusto/query/series-ifft-function
+  - name: series_iir()
+    displayName: filter, infinite impulse response
+    href: /kusto/query/series-iir-function
+  - name: series_less()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-less-function
+  - name: series_less_equals()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-less-equals-function
+  - name: series_log()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-log-function
+  - name: series_magnitude()
+    displayName: element-wise, elementwise, vector
+    href: /kusto/query/series-magnitude-function
+  - name: series_multiply()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-multiply-function
+  - name: series_not_equals()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-not-equals-function
+  - name: series_outliers()
+    displayName: anomaly detection, Tukey
+    href: /kusto/query/series-outliers-function
+  - name: series_pearson_correlation()
+    href: /kusto/query/series-pearson-correlation-function
+  - name: series_periods_detect()
+    displayName: spectral, fft, frequency, seasonality
+    href: /kusto/query/series-periods-detect-function
+  - name: series_periods_validate()
+    displayName: spectral, fft, frequency, seasonality
+    href: /kusto/query/series-periods-validate-function
+  - name: series_pow()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-pow-function
+  - name: series_seasonal()
+    displayName: periods
+    href: /kusto/query/series-seasonal-function
+  - name: series_sign()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-sign-function
+  - name: series_sin()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-sin-function
+  - name: series_stats()
+    displayName: statistics, average, standard deviation, variance
+    href: /kusto/query/series-stats-function
+  - name: series_stats_dynamic()
+    displayName: statistics, average, standard deviation, variance
+    href: /kusto/query/series-stats-dynamic-function
+  - name: series_subtract()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-subtract-function
+  - name: series_sum()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-sum-function
+  - name: series_tan()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-tan-function
+- name: Plugins
+  items:
+  - name: General plugins
+    items:
+    - name: dcount_intersect plugin
+      href: /kusto/query/dcount-intersect-plugin
+    - name: infer_storage_schema plugin
+      href: /kusto/query/infer-storage-schema-plugin
+    - name: infer_storage_schema_with_suggestions plugin
+      href: /kusto/query/infer-storage-schema-with-suggestions-plugin
+    - name: ipv4_lookup plugin
+      href: /kusto/query/ipv4-lookup-plugin
+    - name: ipv6_lookup plugin
+      href: /kusto/query/ipv6-lookup-plugin
+    - name: preview plugin
+      href: /kusto/query/preview-plugin
+    - name: schema_merge plugin
+      href: /kusto/query/schema-merge-plugin
+  - name: Data reshaping plugins
+    items:
+    - name: bag_unpack plugin
+      href: /kusto/query/bag-unpack-plugin
+    - name: narrow plugin
+      href: /kusto/query/narrow-plugin
+    - name: pivot plugin
+      href: /kusto/query/pivot-plugin
+  - name: Language plugins
+    items:
+    - name: Python plugin
+      href: /kusto/query/python-plugin
+    - name: R plugin
+      href: /kusto/query/r-plugin
+  - name: Machine learning plugins
+    items:
+    - name: autocluster plugin
+      displayName: clustering, diagnostics, RCA, root cause
+      href: /kusto/query/autocluster-plugin
+    - name: basket plugin
+      displayName: clustering, diagnostics, RCA, root cause
+      href: /kusto/query/basket-plugin
+    - name: diffpatterns plugin
+      displayName: clustering, diagnostics, RCA, root cause
+      href: /kusto/query/diffpatterns-plugin
+    - name: diffpatterns_text plugin
+      displayName: clustering, diagnostics, RCA, root cause
+      href: /kusto/query/diffpatterns-text-plugin
+  - name: Query connectivity plugins
+    items:
+    - name: azure_digital_twins_query_request plugin
+      href: /kusto/query/azure-digital-twins-query-request-plugin
+    - name: cosmosdb_sql_request plugin
+      href: /kusto/query/cosmosdb-plugin
+    - name: http_request plugin
+      href: /kusto/query/http-request-plugin
+    - name: http_request_post plugin
+      href: /kusto/query/http-request-post-plugin
+    - name: mysql_request plugin
+      href: /kusto/query/mysql-request-plugin
+    - name: postgresql_request plugin
+      href: /kusto/query/postgresql-request-plugin
+    - name: sql_request plugin
+      href: /kusto/query/sql-request-plugin
+  - name: User and sequence analytics plugins
+    items:
+    - name: User analytics plugins overview
+      href: /kusto/query/user-analytics
+    - name: active_users_count plugin
+      href: /kusto/query/active-users-count-plugin
+    - name: activity_counts_metrics plugin
+      href: /kusto/query/activity-counts-metrics-plugin
+    - name: activity_engagement plugin
+      href: /kusto/query/activity-engagement-plugin
+    - name: activity_metrics plugin
+      href: /kusto/query/activity-metrics-plugin
+    - name: new_activity_metrics plugin
+      href: /kusto/query/new-activity-metrics-plugin
+    - name: funnel_sequence_completion plugin
+      href: /kusto/query/funnel-sequence-completion-plugin
+    - name: funnel_sequence plugin
+      href: /kusto/query/funnel-sequence-plugin
+    - name: rolling_percentile plugin
+      href: /kusto/query/rolling-percentile-plugin
+    - name: rows_near plugin
+      href: /kusto/query/rows-near-plugin
+    - name: sequence_detect plugin
+      href: /kusto/query/sequence-detect-plugin
+    - name: session_count plugin
+      href: /kusto/query/session-count-plugin
+    - name: sliding_window_counts plugin
+      href: /kusto/query/sliding-window-counts-plugin
+- name: Window functions
+  items:
+  - name: Window functions overview
+    href: /kusto/query/window-functions
+  - name: next()
+    href: /kusto/query/next-function
+  - name: prev()
+    href: /kusto/query/prev-function
+  - name: row_cumsum()
+    href: /kusto/query/row-cumsum-function
+  - name: row_number()
+    href: /kusto/query/row-number-function
+  - name: row_rank_dense()
+    href: /kusto/query/row-rank-dense-function
+  - name: row_rank_min()
+    href: /kusto/query/row-rank-min-function
+  - name: row_window_session()
+    href: /kusto/query/row-window-session-function
+- name: Limits and Errors
+  items:
+  - name: Query consistency
+    href: /kusto/concepts/query-consistency
+  - name: Query limits
+    href: /kusto/concepts/query-limits
+  - name: Partial query failures
+    href: /kusto/concepts/partial-query-failures
+    items:
+    - name: Result truncation
+      href: /kusto/concepts/result-truncation
+    - name: Runaway queries
+      href: /kusto/concepts/runaway-queries
+    - name: Overflows
+      href: /kusto/concepts/overflow
+- name: Reference
+  items:
+  - name: RE2 syntax
+    href: /kusto/query/re2
+    displayName: RE2 library, regex, regular expressions
+  - name: JSONPath syntax
+    href: /kusto/query/jsonpath
+  - name: SQL to Kusto cheat sheet
+    displayName: Kusto
+    href: /kusto/query/sql-cheat-sheet
+  - name: Splunk to Kusto cheat sheet
+    href: /kusto/query/splunk-cheat-sheet
+  - name: Timezones
+    href: /kusto/query/timezone
+  - name: KQL docs navigation
+    href: /kusto/docs-navigation
