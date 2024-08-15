@@ -92,4 +92,4 @@ Data duplication can be handled in multiple ways. Evaluate the options carefully
 
 ## Related content
 
-* [Write queries](../query/tutorials/learn-common-operators)
+* [Write queries](../query/tutorials/learn-common-operators.md)
