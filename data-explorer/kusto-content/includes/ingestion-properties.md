@@ -6,7 +6,7 @@ ms.date: 08/11/2024
 ## Ingestion properties
 
 > [!IMPORTANT]
-> * In queued ingestion [data is batched using Ingestion properties](/azure/data-explorer/ingest-data-overview.md#continuous-data-ingestion). The more distinct ingestion mapping properties used, such as different ConstValue values, the more fragmented the ingestion becomes, which can lead to performance degradation.
+> In queued ingestion [data is batched using Ingestion properties](/azure/data-explorer/ingest-data-overview.md#continuous-data-ingestion). The more distinct ingestion mapping properties used, such as different ConstValue values, the more fragmented the ingestion becomes, which can lead to performance degradation.
 
 The following table lists and describes the supported properties, and provides examples:
 
