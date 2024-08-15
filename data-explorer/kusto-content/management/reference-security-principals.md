@@ -94,7 +94,7 @@ The following example assigns an MSA user to the user role on the `Test` databas
  to manage data partitioning policies for tables
 
 ::: moniker range="azure-data-explorer"
-* Read the [authentication overview](/azure/data-explorer/access-control/index)
+* Read the [authentication overview](../access-control/index.md)
 
 * Learn how to use the Azure portal to [manage database principals and roles](/azure/data-explorer/manage-database-permissions)
 ::: moniker-end

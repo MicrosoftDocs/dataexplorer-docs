@@ -21,7 +21,7 @@ This article explains how to execute queries that involve entities located outsi
 ## Prerequisites
 
 :::moniker range="azure-data-explorer"
-* If the clusters are in different tenants, follow the instructions in [Allow cross-tenant queries and commands](/azure/data-explorer/access-control/cross-tenant-query-and-commands).
+* If the clusters are in different tenants, follow the instructions in [Allow cross-tenant queries and commands](/azure/data-explorer/cross-tenant-query-and-commands).
 
 ## Identify the cluster and database in context
 :::moniker-end

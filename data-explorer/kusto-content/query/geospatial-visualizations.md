@@ -12,7 +12,7 @@ ms.date: 08/11/2024
 
 <!-- Put links in moniker pivots -->
 
-Geospatial data can be visualized using the [render operator](render-operator.md) in [Kusto Desktop Explorer](/azure/data-explorer/tools/kusto-explorer-using). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
+Geospatial data can be visualized using the [render operator](render-operator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
 
 :::moniker range="azure-data-explorer"
 You can also use the [Azure Data Explorer web UI](/azure/data-explorer/web-query-data).
