@@ -3889,6 +3889,3342 @@
       "source_path": "data-explorer/kusto/query/regex.md",
       "redirect_url": "/kusto/query/regex",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/access-control/index.md",
+      "redirect_url": "/kusto/access-control/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/access-control/role-based-access-control.md",
+      "redirect_url": "/kusto/access-control/role-based-access-control",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/client-libraries.md",
+      "redirect_url": "/kusto/api/client-libraries",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/connection-strings/generate-sas-token.md",
+      "redirect_url": "/kusto/api/connection-strings/generate-sas-token",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/connection-strings/index.md",
+      "redirect_url": "/kusto/api/connection-strings/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/connection-strings/kusto.md",
+      "redirect_url": "/kusto/api/connection-strings/kusto",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/connection-strings/sql-connection-strings.md",
+      "redirect_url": "/kusto/api/connection-strings/sql-connection-strings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/connection-strings/storage-connection-strings.md",
+      "redirect_url": "/kusto/api/connection-strings/storage-connection-strings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/get-started/app-basic-query.md",
+      "redirect_url": "/kusto/api/get-started/app-basic-query",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/get-started/app-hello-kusto.md",
+      "redirect_url": "/kusto/api/get-started/app-hello-kusto",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/get-started/app-management-commands.md",
+      "redirect_url": "/kusto/api/get-started/app-management-commands",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/get-started/app-queued-ingestion.md",
+      "redirect_url": "/kusto/api/get-started/app-queued-ingestion",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/get-started/app-set-up.md",
+      "redirect_url": "/kusto/api/get-started/app-set-up",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/golang/kusto-golang-client-library.md",
+      "redirect_url": "/kusto/api/golang/kusto-golang-client-library",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/index.md",
+      "redirect_url": "/kusto/api/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/java/kusto-java-client-library.md",
+      "redirect_url": "/kusto/api/java/kusto-java-client-library",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/monaco/host-web-ux-in-iframe.md",
+      "redirect_url": "/kusto/api/monaco/host-web-ux-in-iframe",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/monaco/monaco-kusto.md",
+      "redirect_url": "/kusto/api/monaco/monaco-kusto",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/monaco/monaco-overview.md",
+      "redirect_url": "/kusto/api/monaco/monaco-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/about-kusto-data.md",
+      "redirect_url": "/kusto/api/netfx/about-kusto-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/about-kusto-ingest.md",
+      "redirect_url": "/kusto/api/netfx/about-kusto-ingest",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/about-kusto-language.md",
+      "redirect_url": "/kusto/api/netfx/about-kusto-language",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/about-the-sdk.md",
+      "redirect_url": "/kusto/api/netfx/about-the-sdk",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/client-request-properties.md",
+      "redirect_url": "/kusto/api/netfx/client-request-properties",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/controlling-tracing.md",
+      "redirect_url": "/kusto/api/netfx/controlling-tracing",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-data-best-practices.md",
+      "redirect_url": "/kusto/api/netfx/kusto-data-best-practices",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-data-client-errors.md",
+      "redirect_url": "/kusto/api/netfx/kusto-data-client-errors",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-best-practices.md",
+      "redirect_url": "/kusto/api/netfx/kusto-ingest-best-practices",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-client-errors.md",
+      "redirect_url": "/kusto/api/netfx/kusto-ingest-client-errors",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-client-examples.md",
+      "redirect_url": "/kusto/api/netfx/kusto-ingest-client-examples",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-client-reference.md",
+      "redirect_url": "/kusto/api/netfx/kusto-ingest-client-reference",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-client-rest.md",
+      "redirect_url": "/kusto/api/netfx/kusto-ingest-client-rest",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-client-status.md",
+      "redirect_url": "/kusto/api/netfx/kusto-ingest-client-status",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-language-define-schemas.md",
+      "redirect_url": "/kusto/api/netfx/kusto-language-define-schemas",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-language-parse-queries.md",
+      "redirect_url": "/kusto/api/netfx/kusto-language-parse-queries",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/node/kusto-node-client-library.md",
+      "redirect_url": "/kusto/api/node/kusto-node-client-library",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/powershell/azure-powershell.md",
+      "redirect_url": "/kusto/api/powershell/azure-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/powershell/powershell.md",
+      "redirect_url": "/kusto/api/powershell/powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/python/kusto-python-client-library.md",
+      "redirect_url": "/kusto/api/python/kusto-python-client-library",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/r/kusto-r-client-library.md",
+      "redirect_url": "/kusto/api/r/kusto-r-client-library",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/rest/authenticate-with-msal.md",
+      "redirect_url": "/kusto/api/rest/authenticate-with-msal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/rest/authentication.md",
+      "redirect_url": "/kusto/api/rest/authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/rest/deeplink.md",
+      "redirect_url": "/kusto/api/rest/deeplink",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/rest/index.md",
+      "redirect_url": "/kusto/api/rest/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/rest/request.md",
+      "redirect_url": "/kusto/api/rest/request",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/rest/request-properties.md",
+      "redirect_url": "/kusto/api/rest/request-properties",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/rest/response.md",
+      "redirect_url": "/kusto/api/rest/response",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/rest/streaming-ingest.md",
+      "redirect_url": "/kusto/api/rest/streaming-ingest",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/rest/t-sql.md",
+      "redirect_url": "/kusto/api/rest/t-sql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/data-purge.md",
+      "redirect_url": "/kusto/concepts/data-purge",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/data-soft-delete.md",
+      "redirect_url": "/kusto/concepts/data-soft-delete",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/fact-and-dimension-tables.md",
+      "redirect_url": "/kusto/concepts/fact-and-dimension-tables",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/overflow.md",
+      "redirect_url": "/kusto/concepts/overflow",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/queryconsistency.md",
+      "redirect_url": "/kusto/concepts/queryconsistency",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/sandboxes.md",
+      "redirect_url": "/kusto/concepts/sandboxes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/sandboxes-in-non-modern-skus.md",
+      "redirect_url": "/kusto/concepts/sandboxes-in-non-modern-skus",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/bartlett-test-fl.md",
+      "redirect_url": "/kusto/functions-library/bartlett-test-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/binomial-test-fl.md",
+      "redirect_url": "/kusto/functions-library/binomial-test-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/comb-fl.md",
+      "redirect_url": "/kusto/functions-library/comb-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/dbscan-dynamic-fl.md",
+      "redirect_url": "/kusto/functions-library/dbscan-dynamic-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/dbscan-fl.md",
+      "redirect_url": "/kusto/functions-library/dbscan-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/factorial-fl.md",
+      "redirect_url": "/kusto/functions-library/factorial-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/functions-library.md",
+      "redirect_url": "/kusto/functions-library/functions-library",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/geoip-fl.md",
+      "redirect_url": "/kusto/functions-library/geoip-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/get-packages-version-fl.md",
+      "redirect_url": "/kusto/functions-library/get-packages-version-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/kmeans-dynamic-fl.md",
+      "redirect_url": "/kusto/functions-library/kmeans-dynamic-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/kmeans-fl.md",
+      "redirect_url": "/kusto/functions-library/kmeans-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/ks-test-fl.md",
+      "redirect_url": "/kusto/functions-library/ks-test-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/levene-test-fl.md",
+      "redirect_url": "/kusto/functions-library/levene-test-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/log-reduce-fl.md",
+      "redirect_url": "/kusto/functions-library/log-reduce-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/log-reduce-full-fl.md",
+      "redirect_url": "/kusto/functions-library/log-reduce-full-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/log-reduce-predict-fl.md",
+      "redirect_url": "/kusto/functions-library/log-reduce-predict-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/log-reduce-predict-full-fl.md",
+      "redirect_url": "/kusto/functions-library/log-reduce-predict-full-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/log-reduce-train-fl.md",
+      "redirect_url": "/kusto/functions-library/log-reduce-train-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/mann-whitney-u-test-fl.md",
+      "redirect_url": "/kusto/functions-library/mann-whitney-u-test-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/normality-test-fl.md",
+      "redirect_url": "/kusto/functions-library/normality-test-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/pair-probabilities-fl.md",
+      "redirect_url": "/kusto/functions-library/pair-probabilities-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/pairwise-dist-fl.md",
+      "redirect_url": "/kusto/functions-library/pairwise-dist-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/percentiles-linear-fl.md",
+      "redirect_url": "/kusto/functions-library/percentiles-linear-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/perm-fl.md",
+      "redirect_url": "/kusto/functions-library/perm-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/plotly-anomaly-fl.md",
+      "redirect_url": "/kusto/functions-library/plotly-anomaly-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/plotly-scatter3d-fl.md",
+      "redirect_url": "/kusto/functions-library/plotly-scatter3d-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/predict-fl.md",
+      "redirect_url": "/kusto/functions-library/predict-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/predict-onnx-fl.md",
+      "redirect_url": "/kusto/functions-library/predict-onnx-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/quantize-fl.md",
+      "redirect_url": "/kusto/functions-library/quantize-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-clean-anomalies-fl.md",
+      "redirect_url": "/kusto/functions-library/series-clean-anomalies-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-cosine-similarity-fl.md",
+      "redirect_url": "/kusto/functions-library/series-cosine-similarity-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-dbl-exp-smoothing-fl.md",
+      "redirect_url": "/kusto/functions-library/series-dbl-exp-smoothing-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-dot-product-fl.md",
+      "redirect_url": "/kusto/functions-library/series-dot-product-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-downsample-fl.md",
+      "redirect_url": "/kusto/functions-library/series-downsample-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-exp-smoothing-fl.md",
+      "redirect_url": "/kusto/functions-library/series-exp-smoothing-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-fbprophet-forecast-fl.md",
+      "redirect_url": "/kusto/functions-library/series-fbprophet-forecast-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-fit-lowess-fl.md",
+      "redirect_url": "/kusto/functions-library/series-fit-lowess-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-fit-poly-fl.md",
+      "redirect_url": "/kusto/functions-library/series-fit-poly-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-lag-fl.md",
+      "redirect_url": "/kusto/functions-library/series-lag-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-metric-fl.md",
+      "redirect_url": "/kusto/functions-library/series-metric-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-monthly-decompose-anomalies-fl.md",
+      "redirect_url": "/kusto/functions-library/series-monthly-decompose-anomalies-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-moving-avg-fl.md",
+      "redirect_url": "/kusto/functions-library/series-moving-avg-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-moving-var-fl.md",
+      "redirect_url": "/kusto/functions-library/series-moving-var-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-mv-ee-anomalies-fl.md",
+      "redirect_url": "/kusto/functions-library/series-mv-ee-anomalies-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-mv-if-anomalies-fl.md",
+      "redirect_url": "/kusto/functions-library/series-mv-if-anomalies-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-mv-oc-anomalies-fl.md",
+      "redirect_url": "/kusto/functions-library/series-mv-oc-anomalies-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-rate-fl.md",
+      "redirect_url": "/kusto/functions-library/series-rate-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-rolling-fl.md",
+      "redirect_url": "/kusto/functions-library/series-rolling-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-shapes-fl.md",
+      "redirect_url": "/kusto/functions-library/series-shapes-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-uv-anomalies-fl.md",
+      "redirect_url": "/kusto/functions-library/series-uv-anomalies-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/series-uv-change-points-fl.md",
+      "redirect_url": "/kusto/functions-library/series-uv-change-points-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/time-weighted-avg-fl.md",
+      "redirect_url": "/kusto/functions-library/time-weighted-avg-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/time-window-rolling-avg-fl.md",
+      "redirect_url": "/kusto/functions-library/time-window-rolling-avg-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/two-sample-t-test-fl.md",
+      "redirect_url": "/kusto/functions-library/two-sample-t-test-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/functions-library/wilcoxon-test-fl.md",
+      "redirect_url": "/kusto/functions-library/wilcoxon-test-fl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-auto-delete-policy-command.md",
+      "redirect_url": "/kusto/management/alter-auto-delete-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-callout-policy-command.md",
+      "redirect_url": "/kusto/management/alter-callout-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-capacity-policy-command.md",
+      "redirect_url": "/kusto/management/alter-capacity-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-cluster-cache-policy-command.md",
+      "redirect_url": "/kusto/management/alter-cluster-cache-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-cluster-policy-request-classification-command.md",
+      "redirect_url": "/kusto/management/alter-cluster-policy-request-classification-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-cluster-sandbox-policy-command.md",
+      "redirect_url": "/kusto/management/alter-cluster-sandbox-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-column.md",
+      "redirect_url": "/kusto/management/alter-column",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-column-docstrings.md",
+      "redirect_url": "/kusto/management/alter-column-docstrings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-database.md",
+      "redirect_url": "/kusto/management/alter-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-database-cache-policy-command.md",
+      "redirect_url": "/kusto/management/alter-database-cache-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-database-ingestion-batching-policy.md",
+      "redirect_url": "/kusto/management/alter-database-ingestion-batching-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-database-merge-policy-command.md",
+      "redirect_url": "/kusto/management/alter-database-merge-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-database-retention-policy-command.md",
+      "redirect_url": "/kusto/management/alter-database-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-database-sharding-policy-command.md",
+      "redirect_url": "/kusto/management/alter-database-sharding-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-database-streaming-ingestion-policy-command.md",
+      "redirect_url": "/kusto/management/alter-database-streaming-ingestion-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-docstring-function.md",
+      "redirect_url": "/kusto/management/alter-docstring-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-encoding-policy.md",
+      "redirect_url": "/kusto/management/alter-encoding-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-extent.md",
+      "redirect_url": "/kusto/management/alter-extent",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-extent-tags-retention-policy.md",
+      "redirect_url": "/kusto/management/alter-extent-tags-retention-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-folder-function.md",
+      "redirect_url": "/kusto/management/alter-folder-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-function.md",
+      "redirect_url": "/kusto/management/alter-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-ingestion-mapping-command.md",
+      "redirect_url": "/kusto/management/alter-ingestion-mapping-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-ingestion-time-policy-command.md",
+      "redirect_url": "/kusto/management/alter-ingestion-time-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-managed-identity-policy-command.md",
+      "redirect_url": "/kusto/management/alter-managed-identity-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-materialized-view-cache-policy-command.md",
+      "redirect_url": "/kusto/management/alter-materialized-view-cache-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-materialized-view-merge-policy-command.md",
+      "redirect_url": "/kusto/management/alter-materialized-view-merge-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-materialized-view-partitioning-policy-command.md",
+      "redirect_url": "/kusto/management/alter-materialized-view-partitioning-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-materialized-view-retention-policy-command.md",
+      "redirect_url": "/kusto/management/alter-materialized-view-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-materialized-view-row-level-security-policy-command.md",
+      "redirect_url": "/kusto/management/alter-materialized-view-row-level-security-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-callout-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-callout-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-capacity-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-capacity-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-cluster-policy-request-classification-command.md",
+      "redirect_url": "/kusto/management/alter-merge-cluster-policy-request-classification-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-database-ingestion-batching-policy.md",
+      "redirect_url": "/kusto/management/alter-merge-database-ingestion-batching-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-database-merge-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-database-merge-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-database-retention-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-database-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-database-sharding-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-database-sharding-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-database-streaming-ingestion-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-database-streaming-ingestion-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-managed-identity-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-managed-identity-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-materialized-view-merge-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-materialized-view-merge-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-materialized-view-partitioning-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-materialized-view-partitioning-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-materialized-view-retention-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-materialized-view-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-mirroring-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-mirroring-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-table-column.md",
+      "redirect_url": "/kusto/management/alter-merge-table-column",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-table-command.md",
+      "redirect_url": "/kusto/management/alter-merge-table-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-table-ingestion-batching-policy.md",
+      "redirect_url": "/kusto/management/alter-merge-table-ingestion-batching-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-table-merge-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-table-merge-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-table-partitioning-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-table-partitioning-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-table-retention-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-table-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-table-row-order-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-table-row-order-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-table-sharding-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-table-sharding-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-table-streaming-ingestion-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-table-streaming-ingestion-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-table-update-policy-command.md",
+      "redirect_url": "/kusto/management/alter-merge-table-update-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-merge-workload-group-command.md",
+      "redirect_url": "/kusto/management/alter-merge-workload-group-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-query-weak-consistency-policy.md",
+      "redirect_url": "/kusto/management/alter-query-weak-consistency-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-cache-policy-command.md",
+      "redirect_url": "/kusto/management/alter-table-cache-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-command.md",
+      "redirect_url": "/kusto/management/alter-table-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-docstring-command.md",
+      "redirect_url": "/kusto/management/alter-table-docstring-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-extent-tags-retention-policy.md",
+      "redirect_url": "/kusto/management/alter-table-extent-tags-retention-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-folder-command.md",
+      "redirect_url": "/kusto/management/alter-table-folder-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-ingestion-batching-policy.md",
+      "redirect_url": "/kusto/management/alter-table-ingestion-batching-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-merge-policy-command.md",
+      "redirect_url": "/kusto/management/alter-table-merge-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-partitioning-policy-command.md",
+      "redirect_url": "/kusto/management/alter-table-partitioning-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-restricted-view-access-policy-command.md",
+      "redirect_url": "/kusto/management/alter-table-restricted-view-access-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-retention-policy-command.md",
+      "redirect_url": "/kusto/management/alter-table-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-row-level-security-policy-command.md",
+      "redirect_url": "/kusto/management/alter-table-row-level-security-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-row-order-policy-command.md",
+      "redirect_url": "/kusto/management/alter-table-row-order-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-sharding-policy-command.md",
+      "redirect_url": "/kusto/management/alter-table-sharding-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-streaming-ingestion-policy-command.md",
+      "redirect_url": "/kusto/management/alter-table-streaming-ingestion-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/alter-table-update-policy-command.md",
+      "redirect_url": "/kusto/management/alter-table-update-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/auto-delete-policy.md",
+      "redirect_url": "/kusto/management/auto-delete-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/avro-mapping.md",
+      "redirect_url": "/kusto/management/avro-mapping",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/cancel-operation-command.md",
+      "redirect_url": "/kusto/management/cancel-operation-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/cancel-query-command.md",
+      "redirect_url": "/kusto/management/cancel-query-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/clear-cross-cluster-schema-cache.md",
+      "redirect_url": "/kusto/management/clear-cross-cluster-schema-cache",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/clear-external-artifacts-cache-command.md",
+      "redirect_url": "/kusto/management/clear-external-artifacts-cache-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/clear-query-results-cache-command.md",
+      "redirect_url": "/kusto/management/clear-query-results-cache-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/clear-table-data-command.md",
+      "redirect_url": "/kusto/management/clear-table-data-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/cluster-follower.md",
+      "redirect_url": "/kusto/management/cluster-follower",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/columns.md",
+      "redirect_url": "/kusto/management/columns",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/commands-and-queries.md",
+      "redirect_url": "/kusto/management/commands-and-queries",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/create-alter-function.md",
+      "redirect_url": "/kusto/management/create-alter-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/create-function.md",
+      "redirect_url": "/kusto/management/create-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/create-ingestion-mapping-command.md",
+      "redirect_url": "/kusto/management/create-ingestion-mapping-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/create-merge-table-command.md",
+      "redirect_url": "/kusto/management/create-merge-table-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/create-merge-tables-command.md",
+      "redirect_url": "/kusto/management/create-merge-tables-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/create-or-alter-ingestion-mapping-command.md",
+      "redirect_url": "/kusto/management/create-or-alter-ingestion-mapping-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/create-or-alter-workload-group-command.md",
+      "redirect_url": "/kusto/management/create-or-alter-workload-group-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/create-table-based-on-command.md",
+      "redirect_url": "/kusto/management/create-table-based-on-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/create-table-command.md",
+      "redirect_url": "/kusto/management/create-table-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/create-tables-command.md",
+      "redirect_url": "/kusto/management/create-tables-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/csv-mapping.md",
+      "redirect_url": "/kusto/management/csv-mapping",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/databases.md",
+      "redirect_url": "/kusto/management/databases",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/continuous-data-export.md",
+      "redirect_url": "/kusto/management/data-export/continuous-data-export",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/continuous-export-with-managed-identity.md",
+      "redirect_url": "/kusto/management/data-export/continuous-export-with-managed-identity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/create-alter-continuous.md",
+      "redirect_url": "/kusto/management/data-export/create-alter-continuous",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/disable-enable-continuous.md",
+      "redirect_url": "/kusto/management/data-export/disable-enable-continuous",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/drop-continuous-export.md",
+      "redirect_url": "/kusto/management/data-export/drop-continuous-export",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/export-data-to-an-external-table.md",
+      "redirect_url": "/kusto/management/data-export/export-data-to-an-external-table",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/export-data-to-sql.md",
+      "redirect_url": "/kusto/management/data-export/export-data-to-sql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/export-data-to-storage.md",
+      "redirect_url": "/kusto/management/data-export/export-data-to-storage",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/index.md",
+      "redirect_url": "/kusto/management/data-export/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/show-continuous-artifacts.md",
+      "redirect_url": "/kusto/management/data-export/show-continuous-artifacts",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/show-continuous-export.md",
+      "redirect_url": "/kusto/management/data-export/show-continuous-export",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-export/show-continuous-failures.md",
+      "redirect_url": "/kusto/management/data-export/show-continuous-failures",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-ingestion/clear-schema-cache-command.md",
+      "redirect_url": "/kusto/management/data-ingestion/clear-schema-cache-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-ingestion/ingest-from-query.md",
+      "redirect_url": "/kusto/management/data-ingestion/ingest-from-query",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-ingestion/ingest-from-storage.md",
+      "redirect_url": "/kusto/management/data-ingestion/ingest-from-storage",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-ingestion/ingest-inline.md",
+      "redirect_url": "/kusto/management/data-ingestion/ingest-inline",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/data-ingestion/streaming-ingestion-schema-changes.md",
+      "redirect_url": "/kusto/management/data-ingestion/streaming-ingestion-schema-changes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-auto-delete-policy-command.md",
+      "redirect_url": "/kusto/management/delete-auto-delete-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-callout-policy-command.md",
+      "redirect_url": "/kusto/management/delete-callout-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-cluster-policy-request-classification-command.md",
+      "redirect_url": "/kusto/management/delete-cluster-policy-request-classification-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-cluster-sandbox-policy-command.md",
+      "redirect_url": "/kusto/management/delete-cluster-sandbox-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-database-cache-policy-command.md",
+      "redirect_url": "/kusto/management/delete-database-cache-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-database-ingestion-batching-policy.md",
+      "redirect_url": "/kusto/management/delete-database-ingestion-batching-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-database-merge-policy-command.md",
+      "redirect_url": "/kusto/management/delete-database-merge-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-database-retention-policy-command.md",
+      "redirect_url": "/kusto/management/delete-database-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-database-sharding-policy-command.md",
+      "redirect_url": "/kusto/management/delete-database-sharding-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-database-streaming-ingestion-policy-command.md",
+      "redirect_url": "/kusto/management/delete-database-streaming-ingestion-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-extent-tags-retention-policy.md",
+      "redirect_url": "/kusto/management/delete-extent-tags-retention-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-ingestion-time-policy-command.md",
+      "redirect_url": "/kusto/management/delete-ingestion-time-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-managed-identity-policy-command.md",
+      "redirect_url": "/kusto/management/delete-managed-identity-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-materialized-view-cache-policy-command.md",
+      "redirect_url": "/kusto/management/delete-materialized-view-cache-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-materialized-view-partitioning-policy-command.md",
+      "redirect_url": "/kusto/management/delete-materialized-view-partitioning-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-materialized-view-retention-policy-command.md",
+      "redirect_url": "/kusto/management/delete-materialized-view-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-materialized-view-row-level-security-policy-command.md",
+      "redirect_url": "/kusto/management/delete-materialized-view-row-level-security-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-cache-policy-command.md",
+      "redirect_url": "/kusto/management/delete-table-cache-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-ingestion-batching-policy.md",
+      "redirect_url": "/kusto/management/delete-table-ingestion-batching-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-merge-policy-command.md",
+      "redirect_url": "/kusto/management/delete-table-merge-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-mirroring-policy-command.md",
+      "redirect_url": "/kusto/management/delete-table-mirroring-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-partitioning-policy-command.md",
+      "redirect_url": "/kusto/management/delete-table-partitioning-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-restricted-view-access-policy-command.md",
+      "redirect_url": "/kusto/management/delete-table-restricted-view-access-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-retention-policy-command.md",
+      "redirect_url": "/kusto/management/delete-table-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-row-level-security-policy-command.md",
+      "redirect_url": "/kusto/management/delete-table-row-level-security-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-row-order-policy-command.md",
+      "redirect_url": "/kusto/management/delete-table-row-order-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-sharding-policy-command.md",
+      "redirect_url": "/kusto/management/delete-table-sharding-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-streaming-ingestion-policy-command.md",
+      "redirect_url": "/kusto/management/delete-table-streaming-ingestion-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/delete-table-update-policy-command.md",
+      "redirect_url": "/kusto/management/delete-table-update-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/disable-plugin.md",
+      "redirect_url": "/kusto/management/disable-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/drop-column.md",
+      "redirect_url": "/kusto/management/drop-column",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/drop-extents.md",
+      "redirect_url": "/kusto/management/drop-extents",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/drop-extent-tags.md",
+      "redirect_url": "/kusto/management/drop-extent-tags",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/drop-external-table.md",
+      "redirect_url": "/kusto/management/drop-external-table",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/drop-function.md",
+      "redirect_url": "/kusto/management/drop-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/drop-ingestion-mapping-command.md",
+      "redirect_url": "/kusto/management/drop-ingestion-mapping-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/drop-stored-query-result-command.md",
+      "redirect_url": "/kusto/management/drop-stored-query-result-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/drop-table-command.md",
+      "redirect_url": "/kusto/management/drop-table-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/drop-workload-group-command.md",
+      "redirect_url": "/kusto/management/drop-workload-group-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/dup-next-failed-ingest.md",
+      "redirect_url": "/kusto/management/dup-next-failed-ingest",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/dup-next-ingest.md",
+      "redirect_url": "/kusto/management/dup-next-ingest",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/enable-plugin.md",
+      "redirect_url": "/kusto/management/enable-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/encoding-policy.md",
+      "redirect_url": "/kusto/management/encoding-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/estimate-table-size.md",
+      "redirect_url": "/kusto/management/estimate-table-size",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/execute-cluster-script.md",
+      "redirect_url": "/kusto/management/execute-cluster-script",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/execute-database-script.md",
+      "redirect_url": "/kusto/management/execute-database-script",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/extents-overview.md",
+      "redirect_url": "/kusto/management/extents-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/extent-tags.md",
+      "redirect_url": "/kusto/management/extent-tags",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/extent-tags-retention-policy.md",
+      "redirect_url": "/kusto/management/extent-tags-retention-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/external-sql-tables.md",
+      "redirect_url": "/kusto/management/external-sql-tables",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/external-sql-tables-query.md",
+      "redirect_url": "/kusto/management/external-sql-tables-query",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/external-table-mapping-alter.md",
+      "redirect_url": "/kusto/management/external-table-mapping-alter",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/external-table-mapping-create.md",
+      "redirect_url": "/kusto/management/external-table-mapping-create",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/external-table-mapping-drop.md",
+      "redirect_url": "/kusto/management/external-table-mapping-drop",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/external-table-mapping-show.md",
+      "redirect_url": "/kusto/management/external-table-mapping-show",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/functions.md",
+      "redirect_url": "/kusto/management/functions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/index.md",
+      "redirect_url": "/kusto/management/index",
+      "redirect_document_id": false
+    },
+data-explorer/kusto/management/ingestion-faq.yml
+    {
+      "source_path": "data-explorer/kusto/management/journal.md",
+      "redirect_url": "/kusto/management/journal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/json-mapping.md",
+      "redirect_url": "/kusto/management/json-mapping",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/manage-database-security-roles.md",
+      "redirect_url": "/kusto/management/manage-database-security-roles",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/managed-identity-policy.md",
+      "redirect_url": "/kusto/management/managed-identity-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/manage-external-table-security-roles.md",
+      "redirect_url": "/kusto/management/manage-external-table-security-roles",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/manage-function-security-roles.md",
+      "redirect_url": "/kusto/management/manage-function-security-roles",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/manage-materialized-view-security-roles.md",
+      "redirect_url": "/kusto/management/manage-materialized-view-security-roles",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/management-best-practices.md",
+      "redirect_url": "/kusto/management/management-best-practices",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/manage-table-security-roles.md",
+      "redirect_url": "/kusto/management/manage-table-security-roles",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/manage-table-view-access.md",
+      "redirect_url": "/kusto/management/manage-table-view-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/mappings.md",
+      "redirect_url": "/kusto/management/mappings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-alter.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-alter",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-alter-autoupdateschema.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-alter-autoupdateschema",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-alter-docstring.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-alter-docstring",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-alter-folder.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-alter-folder",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-alter-lookback.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-alter-lookback",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-clear-data.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-clear-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-create.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-create",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-create-or-alter.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-create-or-alter",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-drop.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-drop",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-enable-disable.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-enable-disable",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-overview.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-policies.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-policies",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-purge.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-purge",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-rename.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-rename",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-show-command.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-show-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-show-details-command.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-show-details-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-show-extents-command.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-show-extents-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-show-failures-command.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-show-failures-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-show-schema-command.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-show-schema-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-views-limitations.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-views-limitations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-views-monitoring.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-views-monitoring",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/materialized-views/materialized-view-use-cases.md",
+      "redirect_url": "/kusto/management/materialized-views/materialized-view-use-cases",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/mirroring-policy.md",
+      "redirect_url": "/kusto/management/mirroring-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/move-extents.md",
+      "redirect_url": "/kusto/management/move-extents",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/orc-mapping.md",
+      "redirect_url": "/kusto/management/orc-mapping",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/parquet-mapping.md",
+      "redirect_url": "/kusto/management/parquet-mapping",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/policies.md",
+      "redirect_url": "/kusto/management/policies",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/query-consistency-policy.md",
+      "redirect_url": "/kusto/management/query-consistency-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/query-results-cache-commands.md",
+      "redirect_url": "/kusto/management/query-results-cache-commands",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/query-weak-consistency-policy.md",
+      "redirect_url": "/kusto/management/query-weak-consistency-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/rename-column.md",
+      "redirect_url": "/kusto/management/rename-column",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/rename-table-command.md",
+      "redirect_url": "/kusto/management/rename-table-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/replace-extents.md",
+      "redirect_url": "/kusto/management/replace-extents",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/request-classification-policy.md",
+      "redirect_url": "/kusto/management/request-classification-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/request-limits-policy.md",
+      "redirect_url": "/kusto/management/request-limits-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/request-queuing-policy.md",
+      "redirect_url": "/kusto/management/request-queuing-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/request-rate-limit-policy.md",
+      "redirect_url": "/kusto/management/request-rate-limit-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/request-rate-limits-enforcement-policy.md",
+      "redirect_url": "/kusto/management/request-rate-limits-enforcement-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/row-level-security-external-sql.md",
+      "redirect_url": "/kusto/management/row-level-security-external-sql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/security-roles.md",
+      "redirect_url": "/kusto/management/security-roles",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/set-stored-query-result-command.md",
+      "redirect_url": "/kusto/management/set-stored-query-result-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-auto-delete-policy-command.md",
+      "redirect_url": "/kusto/management/show-auto-delete-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-capacity-command.md",
+      "redirect_url": "/kusto/management/show-capacity-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-cluster-callout-policy-command.md",
+      "redirect_url": "/kusto/management/show-cluster-callout-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-cluster-capacity-policy-command.md",
+      "redirect_url": "/kusto/management/show-cluster-capacity-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-cluster-database.md",
+      "redirect_url": "/kusto/management/show-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-cluster-policy-request-classification-command.md",
+      "redirect_url": "/kusto/management/show-cluster-policy-request-classification-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-cluster-sandbox-policy-command.md",
+      "redirect_url": "/kusto/management/show-cluster-sandbox-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-commands.md",
+      "redirect_url": "/kusto/management/show-commands",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-database.md",
+      "redirect_url": "/kusto/management/show-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-database-cache-policy-command.md",
+      "redirect_url": "/kusto/management/show-database-cache-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-database-extents-partitioning-statistics.md",
+      "redirect_url": "/kusto/management/show-database-extents-partitioning-statistics",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-database-ingestion-batching-policy.md",
+      "redirect_url": "/kusto/management/show-database-ingestion-batching-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-database-merge-policy-command.md",
+      "redirect_url": "/kusto/management/show-database-merge-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-database-retention-policy-command.md",
+      "redirect_url": "/kusto/management/show-database-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-databases.md",
+      "redirect_url": "/kusto/management/show-databases",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-database-schema-violations.md",
+      "redirect_url": "/kusto/management/show-database-schema-violations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-databases-entities.md",
+      "redirect_url": "/kusto/management/show-databases-entities",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-database-sharding-policy-command.md",
+      "redirect_url": "/kusto/management/show-database-sharding-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-database-streaming-ingestion-policy-command.md",
+      "redirect_url": "/kusto/management/show-database-streaming-ingestion-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-encoding-policy.md",
+      "redirect_url": "/kusto/management/show-encoding-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-extents.md",
+      "redirect_url": "/kusto/management/show-extents",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-extent-tags-retention-policy.md",
+      "redirect_url": "/kusto/management/show-extent-tags-retention-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-external-table-artifacts.md",
+      "redirect_url": "/kusto/management/show-external-table-artifacts",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-external-tables.md",
+      "redirect_url": "/kusto/management/show-external-tables",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-external-table-schema.md",
+      "redirect_url": "/kusto/management/show-external-table-schema",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-function.md",
+      "redirect_url": "/kusto/management/show-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-ingestion-mapping-command.md",
+      "redirect_url": "/kusto/management/show-ingestion-mapping-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-managed-identity-policy-command.md",
+      "redirect_url": "/kusto/management/show-managed-identity-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-materialized-view-cache-policy-command.md",
+      "redirect_url": "/kusto/management/show-materialized-view-cache-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-materialized-view-partitioning-policy-command.md",
+      "redirect_url": "/kusto/management/show-materialized-view-partitioning-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-materialized-view-retention-policy-command.md",
+      "redirect_url": "/kusto/management/show-materialized-view-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-materialized-view-row-level-security-policy-command.md",
+      "redirect_url": "/kusto/management/show-materialized-view-row-level-security-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-operation-details.md",
+      "redirect_url": "/kusto/management/show-operation-details",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-operations.md",
+      "redirect_url": "/kusto/management/show-operations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-plugins.md",
+      "redirect_url": "/kusto/management/show-plugins",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-queries-command.md",
+      "redirect_url": "/kusto/management/show-queries-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-query-results-cache-command.md",
+      "redirect_url": "/kusto/management/show-query-results-cache-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-query-weak-consistency-policy.md",
+      "redirect_url": "/kusto/management/show-query-weak-consistency-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-schema-database.md",
+      "redirect_url": "/kusto/management/show-schema-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-stored-query-result-command.md",
+      "redirect_url": "/kusto/management/show-stored-query-result-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-cache-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-cache-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-data-statistics.md",
+      "redirect_url": "/kusto/management/show-table-data-statistics",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-details-command.md",
+      "redirect_url": "/kusto/management/show-table-details-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-ingestion-batching-policy.md",
+      "redirect_url": "/kusto/management/show-table-ingestion-batching-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-ingestion-time-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-ingestion-time-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-merge-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-merge-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-mirroring-operations-command.md",
+      "redirect_url": "/kusto/management/show-table-mirroring-operations-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-mirroring-operations-exported-artifacts.md",
+      "redirect_url": "/kusto/management/show-table-mirroring-operations-exported-artifacts",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-mirroring-operations-failures.md",
+      "redirect_url": "/kusto/management/show-table-mirroring-operations-failures",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-mirroring-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-mirroring-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-partitioning-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-partitioning-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-restricted-view-access-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-restricted-view-access-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-retention-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-retention-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-row-level-security-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-row-level-security-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-row-order-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-row-order-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-schema-command.md",
+      "redirect_url": "/kusto/management/show-table-schema-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-tables-command.md",
+      "redirect_url": "/kusto/management/show-tables-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-sharding-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-sharding-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-streaming-ingestion-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-streaming-ingestion-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-table-update-policy-command.md",
+      "redirect_url": "/kusto/management/show-table-update-policy-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/show-workload-group-command.md",
+      "redirect_url": "/kusto/management/show-workload-group-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/soft-delete-command.md",
+      "redirect_url": "/kusto/management/soft-delete-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/stored-query-results.md",
+      "redirect_url": "/kusto/management/stored-query-results",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/tables.md",
+      "redirect_url": "/kusto/management/tables",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/undo-drop-table-command.md",
+      "redirect_url": "/kusto/management/undo-drop-table-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/update-policy-common-scenarios.md",
+      "redirect_url": "/kusto/management/update-policy-common-scenarios",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/update-policy-tutorial.md",
+      "redirect_url": "/kusto/management/update-policy-tutorial",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/update-policy-with-managed-identity.md",
+      "redirect_url": "/kusto/management/update-policy-with-managed-identity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/update-table-command.md",
+      "redirect_url": "/kusto/management/update-table-command",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/w3c-log-file-mapping.md",
+      "redirect_url": "/kusto/management/w3c-log-file-mapping",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/workload-groups.md",
+      "redirect_url": "/kusto/management/workload-groups",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/abs-function.md",
+      "redirect_url": "/kusto/query/abs-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/active-users-count-plugin.md",
+      "redirect_url": "/kusto/query/active-users-count-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/activity-counts-metrics-plugin.md",
+      "redirect_url": "/kusto/query/activity-counts-metrics-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/activity-engagement-plugin.md",
+      "redirect_url": "/kusto/query/activity-engagement-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/activity-metrics-plugin.md",
+      "redirect_url": "/kusto/query/activity-metrics-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/aggregation-functions.md",
+      "redirect_url": "/kusto/query/aggregation-functions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/anomaly-detection.md",
+      "redirect_url": "/kusto/query/anomaly-detection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/anomaly-diagnosis.md",
+      "redirect_url": "/kusto/query/anomaly-diagnosis",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/around-function.md",
+      "redirect_url": "/kusto/query/around-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/array-reverse-function.md",
+      "redirect_url": "/kusto/query/array-reverse-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/array-sum-function.md",
+      "redirect_url": "/kusto/query/array-sum-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/assert-function.md",
+      "redirect_url": "/kusto/query/assert-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/azure-digital-twins-query-request-plugin.md",
+      "redirect_url": "/kusto/query/azure-digital-twins-query-request-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/bag-has-key-function.md",
+      "redirect_url": "/kusto/query/bag-has-key-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/bag-merge-function.md",
+      "redirect_url": "/kusto/query/bag-merge-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/bag-pack-columns-function.md",
+      "redirect_url": "/kusto/query/bag-pack-columns-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/bag-remove-keys-function.md",
+      "redirect_url": "/kusto/query/bag-remove-keys-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/bag-set-key-function.md",
+      "redirect_url": "/kusto/query/bag-set-key-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/bag-zip.md",
+      "redirect_url": "/kusto/query/bag-zip",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/base64-decode-toguid-function.md",
+      "redirect_url": "/kusto/query/base64-decode-toguid-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/base64-encode-fromguid-function.md",
+      "redirect_url": "/kusto/query/base64-encode-fromguid-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/batches.md",
+      "redirect_url": "/kusto/query/batches",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/best-practices.md",
+      "redirect_url": "/kusto/query/best-practices",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/comment.md",
+      "redirect_url": "/kusto/query/comment",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/contains-cs-operator.md",
+      "redirect_url": "/kusto/query/contains-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/contains-operator.md",
+      "redirect_url": "/kusto/query/contains-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/convert-angle-function.md",
+      "redirect_url": "/kusto/query/convert-angle-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/convert-energy-function.md",
+      "redirect_url": "/kusto/query/convert-energy-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/convert-force-function.md",
+      "redirect_url": "/kusto/query/convert-force-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/convert-length-function.md",
+      "redirect_url": "/kusto/query/convert-length-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/convert-mass-function.md",
+      "redirect_url": "/kusto/query/convert-mass-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/convert-speed-function.md",
+      "redirect_url": "/kusto/query/convert-speed-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/convert-temperature-function.md",
+      "redirect_url": "/kusto/query/convert-temperature-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/convert-volume-function.md",
+      "redirect_url": "/kusto/query/convert-volume-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/cosmosdb-plugin.md",
+      "redirect_url": "/kusto/query/cosmosdb-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/cross-cluster-or-database-queries.md",
+      "redirect_url": "/kusto/query/cross-cluster-or-database-queries",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/current-cluster-endpoint-function.md",
+      "redirect_url": "/kusto/query/current-cluster-endpoint-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/current-database-function.md",
+      "redirect_url": "/kusto/query/current-database-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/datatypes-string-operators.md",
+      "redirect_url": "/kusto/query/datatypes-string-operators",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/datetime-list-timezones.md",
+      "redirect_url": "/kusto/query/datetime-list-timezones",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/datetime-local-to-utc-function.md",
+      "redirect_url": "/kusto/query/datetime-local-to-utc-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/datetime-timespan-arithmetic.md",
+      "redirect_url": "/kusto/query/datetime-timespan-arithmetic",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/datetime-utc-to-local-function.md",
+      "redirect_url": "/kusto/query/datetime-utc-to-local-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/dcount-aggfunction.md",
+      "redirect_url": "/kusto/query/dcount-aggfunction",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/dcount-intersect-plugin.md",
+      "redirect_url": "/kusto/query/dcount-intersect-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/dynamic-to-json-function.md",
+      "redirect_url": "/kusto/query/dynamic-to-json-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/endswith-cs-operator.md",
+      "redirect_url": "/kusto/query/endswith-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/endswith-operator.md",
+      "redirect_url": "/kusto/query/endswith-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/equals-cs-operator.md",
+      "redirect_url": "/kusto/query/equals-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/equals-operator.md",
+      "redirect_url": "/kusto/query/equals-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/erfc-function.md",
+      "redirect_url": "/kusto/query/erfc-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/erf-function.md",
+      "redirect_url": "/kusto/query/erf-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/exp10-function.md",
+      "redirect_url": "/kusto/query/exp10-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/exp2-function.md",
+      "redirect_url": "/kusto/query/exp2-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/exp-function.md",
+      "redirect_url": "/kusto/query/exp-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/externaldata-operator.md",
+      "redirect_url": "/kusto/query/externaldata-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/format-ipv4-function.md",
+      "redirect_url": "/kusto/query/format-ipv4-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/format-ipv4-mask-function.md",
+      "redirect_url": "/kusto/query/format-ipv4-mask-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/functions/index.md",
+      "redirect_url": "/kusto/query/functions/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/functions/user-defined-functions.md",
+      "redirect_url": "/kusto/query/functions/user-defined-functions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/funnel-sequence-completion-plugin.md",
+      "redirect_url": "/kusto/query/funnel-sequence-completion-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/funnel-sequence-plugin.md",
+      "redirect_url": "/kusto/query/funnel-sequence-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-angle-function.md",
+      "redirect_url": "/kusto/query/geo-angle-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-azimuth-function.md",
+      "redirect_url": "/kusto/query/geo-azimuth-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-distance-2points-function.md",
+      "redirect_url": "/kusto/query/geo-distance-2points-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-distance-point-to-line-function.md",
+      "redirect_url": "/kusto/query/geo-distance-point-to-line-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-distance-point-to-polygon-function.md",
+      "redirect_url": "/kusto/query/geo-distance-point-to-polygon-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-geohash-neighbors-function.md",
+      "redirect_url": "/kusto/query/geo-geohash-neighbors-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-geohash-to-central-point-function.md",
+      "redirect_url": "/kusto/query/geo-geohash-to-central-point-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-geohash-to-polygon-function.md",
+      "redirect_url": "/kusto/query/geo-geohash-to-polygon-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-h3cell-children-function.md",
+      "redirect_url": "/kusto/query/geo-h3cell-children-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-h3cell-level-function.md",
+      "redirect_url": "/kusto/query/geo-h3cell-level-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-h3cell-neighbors-function.md",
+      "redirect_url": "/kusto/query/geo-h3cell-neighbors-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-h3cell-parent-function.md",
+      "redirect_url": "/kusto/query/geo-h3cell-parent-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-h3cell-rings-function.md",
+      "redirect_url": "/kusto/query/geo-h3cell-rings-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-h3cell-to-central-point-function.md",
+      "redirect_url": "/kusto/query/geo-h3cell-to-central-point-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-h3cell-to-polygon-function.md",
+      "redirect_url": "/kusto/query/geo-h3cell-to-polygon-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-info-from-ip-address-function.md",
+      "redirect_url": "/kusto/query/geo-info-from-ip-address-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-intersection-2lines-function.md",
+      "redirect_url": "/kusto/query/geo-intersection-2lines-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-intersection-2polygons-function.md",
+      "redirect_url": "/kusto/query/geo-intersection-2polygons-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-intersection-line-with-polygon-function.md",
+      "redirect_url": "/kusto/query/geo-intersection-line-with-polygon-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-intersects-2lines-function.md",
+      "redirect_url": "/kusto/query/geo-intersects-2lines-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-intersects-2polygons-function.md",
+      "redirect_url": "/kusto/query/geo-intersects-2polygons-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-intersects-line-with-polygon-function.md",
+      "redirect_url": "/kusto/query/geo-intersects-line-with-polygon-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-line-buffer-function.md",
+      "redirect_url": "/kusto/query/geo-line-buffer-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-line-centroid-function.md",
+      "redirect_url": "/kusto/query/geo-line-centroid-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-line-densify-function.md",
+      "redirect_url": "/kusto/query/geo-line-densify-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-line-length-function.md",
+      "redirect_url": "/kusto/query/geo-line-length-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-line-simplify-function.md",
+      "redirect_url": "/kusto/query/geo-line-simplify-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-line-to-s2cells-function.md",
+      "redirect_url": "/kusto/query/geo-line-to-s2cells-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-point-buffer-function.md",
+      "redirect_url": "/kusto/query/geo-point-buffer-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-point-in-circle-function.md",
+      "redirect_url": "/kusto/query/geo-point-in-circle-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-point-in-polygon-function.md",
+      "redirect_url": "/kusto/query/geo-point-in-polygon-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-point-to-geohash-function.md",
+      "redirect_url": "/kusto/query/geo-point-to-geohash-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-point-to-h3cell-function.md",
+      "redirect_url": "/kusto/query/geo-point-to-h3cell-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-point-to-s2cell-function.md",
+      "redirect_url": "/kusto/query/geo-point-to-s2cell-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-polygon-area-function.md",
+      "redirect_url": "/kusto/query/geo-polygon-area-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-polygon-buffer-function.md",
+      "redirect_url": "/kusto/query/geo-polygon-buffer-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-polygon-centroid-function.md",
+      "redirect_url": "/kusto/query/geo-polygon-centroid-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-polygon-densify-function.md",
+      "redirect_url": "/kusto/query/geo-polygon-densify-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-polygon-perimeter-function.md",
+      "redirect_url": "/kusto/query/geo-polygon-perimeter-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-polygon-simplify-function.md",
+      "redirect_url": "/kusto/query/geo-polygon-simplify-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-polygon-to-h3cells-function.md",
+      "redirect_url": "/kusto/query/geo-polygon-to-h3cells-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-polygon-to-s2cells-function.md",
+      "redirect_url": "/kusto/query/geo-polygon-to-s2cells-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-s2cell-neighbors-function.md",
+      "redirect_url": "/kusto/query/geo-s2cell-neighbors-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-s2cell-to-central-point-function.md",
+      "redirect_url": "/kusto/query/geo-s2cell-to-central-point-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-s2cell-to-polygon-function.md",
+      "redirect_url": "/kusto/query/geo-s2cell-to-polygon-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-simplify-polygons-array-function.md",
+      "redirect_url": "/kusto/query/geo-simplify-polygons-array-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geospatial-grid-systems.md",
+      "redirect_url": "/kusto/query/geospatial-grid-systems",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geospatial-visualizations.md",
+      "redirect_url": "/kusto/query/geospatial-visualizations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-union-lines-array-function.md",
+      "redirect_url": "/kusto/query/geo-union-lines-array-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/geo-union-polygons-array-function.md",
+      "redirect_url": "/kusto/query/geo-union-polygons-array-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/graph-match-operator.md",
+      "redirect_url": "/kusto/query/graph-match-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/graph-to-table-operator.md",
+      "redirect_url": "/kusto/query/graph-to-table-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/gzip-base64-compress.md",
+      "redirect_url": "/kusto/query/gzip-base64-compress",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/gzip-base64-decompress.md",
+      "redirect_url": "/kusto/query/gzip-base64-decompress",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/has-all-operator.md",
+      "redirect_url": "/kusto/query/has-all-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/has-any-index-function.md",
+      "redirect_url": "/kusto/query/has-any-index-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/has-any-ipv4-function.md",
+      "redirect_url": "/kusto/query/has-any-ipv4-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/has-any-ipv4-prefix-function.md",
+      "redirect_url": "/kusto/query/has-any-ipv4-prefix-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/has-cs-operator.md",
+      "redirect_url": "/kusto/query/has-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/hash-xxhash64-function.md",
+      "redirect_url": "/kusto/query/hash-xxhash64-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/has-ipv4-function.md",
+      "redirect_url": "/kusto/query/has-ipv4-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/has-ipv4-prefix-function.md",
+      "redirect_url": "/kusto/query/has-ipv4-prefix-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/has-operator.md",
+      "redirect_url": "/kusto/query/has-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/hasprefix-cs-operator.md",
+      "redirect_url": "/kusto/query/hasprefix-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/hasprefix-operator.md",
+      "redirect_url": "/kusto/query/hasprefix-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/hassuffix-cs-operator.md",
+      "redirect_url": "/kusto/query/hassuffix-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/hassuffix-operator.md",
+      "redirect_url": "/kusto/query/hassuffix-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/hll-if-aggregation-function.md",
+      "redirect_url": "/kusto/query/hll-if-aggregation-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/http-request-plugin.md",
+      "redirect_url": "/kusto/query/http-request-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/http-request-post-plugin.md",
+      "redirect_url": "/kusto/query/http-request-post-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/in-cs-operator.md",
+      "redirect_url": "/kusto/query/in-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/index.md",
+      "redirect_url": "/kusto/query/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/infer-storage-schema-with-suggestions-plugin.md",
+      "redirect_url": "/kusto/query/infer-storage-schema-with-suggestions-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/ipv4-is-in-any-range-function.md",
+      "redirect_url": "/kusto/query/ipv4-is-in-any-range-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/ipv4-is-in-range-function.md",
+      "redirect_url": "/kusto/query/ipv4-is-in-range-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/ipv4-lookup-plugin.md",
+      "redirect_url": "/kusto/query/ipv4-lookup-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/ipv4-netmask-suffix-function.md",
+      "redirect_url": "/kusto/query/ipv4-netmask-suffix-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/ipv4-range-to-cidr-list-function.md",
+      "redirect_url": "/kusto/query/ipv4-range-to-cidr-list-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/ipv6-is-in-any-range-function.md",
+      "redirect_url": "/kusto/query/ipv6-is-in-any-range-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/ipv6-is-in-range-function.md",
+      "redirect_url": "/kusto/query/ipv6-is-in-range-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/ipv6-lookup-plugin.md",
+      "redirect_url": "/kusto/query/ipv6-lookup-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/isascii.md",
+      "redirect_url": "/kusto/query/isascii",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/jaccard-index-function.md",
+      "redirect_url": "/kusto/query/jaccard-index-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/join-fullouter.md",
+      "redirect_url": "/kusto/query/join-fullouter",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/join-inner.md",
+      "redirect_url": "/kusto/query/join-inner",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/join-innerunique.md",
+      "redirect_url": "/kusto/query/join-innerunique",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/join-leftanti.md",
+      "redirect_url": "/kusto/query/join-leftanti",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/join-leftouter.md",
+      "redirect_url": "/kusto/query/join-leftouter",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/join-leftsemi.md",
+      "redirect_url": "/kusto/query/join-leftsemi",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/join-rightanti.md",
+      "redirect_url": "/kusto/query/join-rightanti",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/join-rightouter.md",
+      "redirect_url": "/kusto/query/join-rightouter",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/join-rightsemi.md",
+      "redirect_url": "/kusto/query/join-rightsemi",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/jsonpath.md",
+      "redirect_url": "/kusto/query/jsonpath",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/kql-quick-reference.md",
+      "redirect_url": "/kusto/query/kql-quick-reference",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/log10-function.md",
+      "redirect_url": "/kusto/query/log10-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/log2-function.md",
+      "redirect_url": "/kusto/query/log2-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/log-function.md",
+      "redirect_url": "/kusto/query/log-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/make-graph-operator.md",
+      "redirect_url": "/kusto/query/make-graph-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/matches-regex-operator.md",
+      "redirect_url": "/kusto/query/matches-regex-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/materialized-view-function.md",
+      "redirect_url": "/kusto/query/materialized-view-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/merge-tdigest-function.md",
+      "redirect_url": "/kusto/query/merge-tdigest-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/named-expressions.md",
+      "redirect_url": "/kusto/query/named-expressions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/new-activity-metrics-plugin.md",
+      "redirect_url": "/kusto/query/new-activity-metrics-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-contains-cs-operator.md",
+      "redirect_url": "/kusto/query/not-contains-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-contains-operator.md",
+      "redirect_url": "/kusto/query/not-contains-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-endswith-cs-operator.md",
+      "redirect_url": "/kusto/query/not-endswith-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-endswith-operator.md",
+      "redirect_url": "/kusto/query/not-endswith-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-equals-cs-operator.md",
+      "redirect_url": "/kusto/query/not-equals-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-equals-operator.md",
+      "redirect_url": "/kusto/query/not-equals-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-has-cs-operator.md",
+      "redirect_url": "/kusto/query/not-has-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-has-operator.md",
+      "redirect_url": "/kusto/query/not-has-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-hasprefix-cs-operator.md",
+      "redirect_url": "/kusto/query/not-hasprefix-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-hasprefix-operator.md",
+      "redirect_url": "/kusto/query/not-hasprefix-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-hassuffix-cs-operator.md",
+      "redirect_url": "/kusto/query/not-hassuffix-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-hassuffix-operator.md",
+      "redirect_url": "/kusto/query/not-hassuffix-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-in-cs-operator.md",
+      "redirect_url": "/kusto/query/not-in-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-in-operator.md",
+      "redirect_url": "/kusto/query/not-in-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-startswith-cs-operator.md",
+      "redirect_url": "/kusto/query/not-startswith-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/not-startswith-operator.md",
+      "redirect_url": "/kusto/query/not-startswith-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/parse-kv-operator.md",
+      "redirect_url": "/kusto/query/parse-kv-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/postgresql-request-plugin.md",
+      "redirect_url": "/kusto/query/postgresql-request-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/project-keep-operator.md",
+      "redirect_url": "/kusto/query/project-keep-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/queries.md",
+      "redirect_url": "/kusto/query/queries",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/query-results-cache.md",
+      "redirect_url": "/kusto/query/query-results-cache",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/replace-regex-function.md",
+      "redirect_url": "/kusto/query/replace-regex-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/replace-string-function.md",
+      "redirect_url": "/kusto/query/replace-string-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/replace-strings-function.md",
+      "redirect_url": "/kusto/query/replace-strings-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/rolling-percentile-plugin.md",
+      "redirect_url": "/kusto/query/rolling-percentile-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/rows-near-plugin.md",
+      "redirect_url": "/kusto/query/rows-near-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/row-window-session-function.md",
+      "redirect_url": "/kusto/query/row-window-session-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/bool.md",
+      "redirect_url": "/kusto/query/scalar-data-types/bool",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/datetime.md",
+      "redirect_url": "/kusto/query/scalar-data-types/datetime",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/decimal.md",
+      "redirect_url": "/kusto/query/scalar-data-types/decimal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/dynamic.md",
+      "redirect_url": "/kusto/query/scalar-data-types/dynamic",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/guid.md",
+      "redirect_url": "/kusto/query/scalar-data-types/guid",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/index.md",
+      "redirect_url": "/kusto/query/scalar-data-types/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/int.md",
+      "redirect_url": "/kusto/query/scalar-data-types/int",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/long.md",
+      "redirect_url": "/kusto/query/scalar-data-types/long",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/null-values.md",
+      "redirect_url": "/kusto/query/scalar-data-types/null-values",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/real.md",
+      "redirect_url": "/kusto/query/scalar-data-types/real",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/string.md",
+      "redirect_url": "/kusto/query/scalar-data-types/string",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/timespan.md",
+      "redirect_url": "/kusto/query/scalar-data-types/timespan",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scan-operator.md",
+      "redirect_url": "/kusto/query/scan-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/schema-entities/columns.md",
+      "redirect_url": "/kusto/query/schema-entities/columns",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/schema-entities/databases.md",
+      "redirect_url": "/kusto/query/schema-entities/databases",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/schema-entities/entity-names.md",
+      "redirect_url": "/kusto/query/schema-entities/entity-names",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/schema-entities/entity-references.md",
+      "redirect_url": "/kusto/query/schema-entities/entity-references",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/schema-entities/index.md",
+      "redirect_url": "/kusto/query/schema-entities/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/schema-entities/stored-functions.md",
+      "redirect_url": "/kusto/query/schema-entities/stored-functions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/schema-entities/tables.md",
+      "redirect_url": "/kusto/query/schema-entities/tables",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/schema-entities/views.md",
+      "redirect_url": "/kusto/query/schema-entities/views",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/sequence-detect-plugin.md",
+      "redirect_url": "/kusto/query/sequence-detect-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/series-ceiling-function.md",
+      "redirect_url": "/kusto/query/series-ceiling-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/series-cosine-similarity-function.md",
+      "redirect_url": "/kusto/query/series-cosine-similarity-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/series-fft-function.md",
+      "redirect_url": "/kusto/query/series-fft-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/series-fit-poly-function.md",
+      "redirect_url": "/kusto/query/series-fit-poly-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/series-floor-function.md",
+      "redirect_url": "/kusto/query/series-floor-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/series-ifft-function.md",
+      "redirect_url": "/kusto/query/series-ifft-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/series-log-function.md",
+      "redirect_url": "/kusto/query/series-log-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/series-magnitude-function.md",
+      "redirect_url": "/kusto/query/series-magnitude-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/series-sum-function.md",
+      "redirect_url": "/kusto/query/series-sum-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/session-count-plugin.md",
+      "redirect_url": "/kusto/query/session-count-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/sliding-window-counts-plugin.md",
+      "redirect_url": "/kusto/query/sliding-window-counts-plugin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/sort-operator.md",
+      "redirect_url": "/kusto/query/sort-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/splunk-cheat-sheet.md",
+      "redirect_url": "/kusto/query/splunk-cheat-sheet",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/startswith-cs-operator.md",
+      "redirect_url": "/kusto/query/startswith-cs-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/startswith-operator.md",
+      "redirect_url": "/kusto/query/startswith-operator",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/statements.md",
+      "redirect_url": "/kusto/query/statements",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/stored-query-result-function.md",
+      "redirect_url": "/kusto/query/stored-query-result-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/syntax-conventions.md",
+      "redirect_url": "/kusto/query/syntax-conventions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/time-series-analysis.md",
+      "redirect_url": "/kusto/query/time-series-analysis",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/timezone.md",
+      "redirect_url": "/kusto/query/timezone",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/toreal-function.md",
+      "redirect_url": "/kusto/query/toreal-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/tutorial-archive.md",
+      "redirect_url": "/kusto/query/tutorial-archive",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/tutorials/create-geospatial-visualizations.md",
+      "redirect_url": "/kusto/query/tutorials/create-geospatial-visualizations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/tutorials/join-data-from-multiple-tables.md",
+      "redirect_url": "/kusto/query/tutorials/join-data-from-multiple-tables",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/tutorials/learn-common-operators.md",
+      "redirect_url": "/kusto/query/tutorials/learn-common-operators",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/tutorials/use-aggregation-functions.md",
+      "redirect_url": "/kusto/query/tutorials/use-aggregation-functions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/unicode-codepoints-from-string-function.md",
+      "redirect_url": "/kusto/query/unicode-codepoints-from-string-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/unicode-codepoints-to-string-function.md",
+      "redirect_url": "/kusto/query/unicode-codepoints-to-string-function",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-anomalychart.md",
+      "redirect_url": "/kusto/query/visualization-anomalychart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-areachart.md",
+      "redirect_url": "/kusto/query/visualization-areachart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-barchart.md",
+      "redirect_url": "/kusto/query/visualization-barchart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-card.md",
+      "redirect_url": "/kusto/query/visualization-card",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-columnchart.md",
+      "redirect_url": "/kusto/query/visualization-columnchart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-ladderchart.md",
+      "redirect_url": "/kusto/query/visualization-ladderchart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-linechart.md",
+      "redirect_url": "/kusto/query/visualization-linechart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-piechart.md",
+      "redirect_url": "/kusto/query/visualization-piechart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-pivotchart.md",
+      "redirect_url": "/kusto/query/visualization-pivotchart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-plotly.md",
+      "redirect_url": "/kusto/query/visualization-plotly",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-scatterchart.md",
+      "redirect_url": "/kusto/query/visualization-scatterchart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-stackedareachart.md",
+      "redirect_url": "/kusto/query/visualization-stackedareachart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-table.md",
+      "redirect_url": "/kusto/query/visualization-table",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-timechart.md",
+      "redirect_url": "/kusto/query/visualization-timechart",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-timepivot.md",
+      "redirect_url": "/kusto/query/visualization-timepivot",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/visualization-treemap.md",
+      "redirect_url": "/kusto/query/visualization-treemap",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-cli.md",
+      "redirect_url": "/kusto/tools/kusto-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer.md",
+      "redirect_url": "/kusto/tools/kusto-explorer",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer-code-features.md",
+      "redirect_url": "/kusto/tools/kusto-explorer-code-features",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer-options.md",
+      "redirect_url": "/kusto/tools/kusto-explorer-options",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer-shortcuts.md",
+      "redirect_url": "/kusto/tools/kusto-explorer-shortcuts",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer-troubleshooting.md",
+      "redirect_url": "/kusto/tools/kusto-explorer-troubleshooting",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/kusto-explorer-using.md",
+      "redirect_url": "/kusto/tools/kusto-explorer-using",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/logicapps.md",
+      "redirect_url": "/kusto/tools/logicapps",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/tools/synckusto.md",
+      "redirect_url": "/kusto/tools/synckusto",
+      "redirect_document_id": false
     }
   ]
 }
