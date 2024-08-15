@@ -59,5 +59,5 @@ For cost-effective ingestion:
 * [Kusto Ingest overview](about-kusto-ingest.md)
 ::: moniker range="azure-data-explorer"
 * [Data ingestion overview](/azure/data-explorer/ingest-data-overview)
-* [Create an app to get data using queued ingestion](/azure/data-explorer/get-started/app-batch-ingestion)
+* [Create an app to get data using queued ingestion](../get-started/app-queued-ingestion.md)
 ::: moniker-end
