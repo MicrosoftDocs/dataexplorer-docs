@@ -99,7 +99,7 @@ The following flow will present the query results as a timechart.
 
 ### Run async management command
 
-Use this action to run a [management command](/kusto/management/) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](/kusto/management/operations) command with the ID returned by this action.
+Use this action to run a [management command](/kusto/management/index) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](/kusto/management/show-operations) command with the ID returned by this action.
 
 If the async management command takes more than 60 minutes to run, it will fail with a "RequestTimeout" exception.
 
