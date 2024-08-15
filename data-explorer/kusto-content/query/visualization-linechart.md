@@ -131,4 +131,4 @@ StormEvents
 
 ## Related content
 
-* [Add a query visualization in the web UI](/azure/data-explorer/add-query-visualizations).
+* [Add a query visualization in the web UI](/azure/data-explorer/add-query-visualization).
