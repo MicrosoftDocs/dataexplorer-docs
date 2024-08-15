@@ -10,7 +10,7 @@ ms.date: 02/13/2024
 
 A common scenario when onboarding to Azure Data Explorer is to ingest historical data, sometimes called backfill. The process involves ingesting data from an existing storage system into a table, which is a collection of [extents](/kusto/management/extents-overview).
 
-We recommend ingesting historical data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties) to set the creation time of extents to the time the data was *created*. Using the creation time as the ingestion partitioning criterion can age your data in accordance with your [cache](/kusto/management/cache-policy) and [retention](/kusto/management/retention-policy) policies, and make time filters more efficient.
+We recommend ingesting historical data using the [creationTime ingestion property](/kusto/ingestion-properties#ingestion-properties) to set the creation time of extents to the time the data was *created*. Using the creation time as the ingestion partitioning criterion can age your data in accordance with your [cache](/kusto/management/cache-policy) and [retention](/kusto/management/retention-policy) policies, and make time filters more efficient.
 
 By default, the creation time for extents is set to the time when the data is ingested, which might not produce the behavior you're expecting. For example, suppose you have a table that has a cache period of 30 days and a retention period of two years. In the normal flow, data ingested as it's produced is cached for 30 days and then moved to cold storage. After two years, based on it's creation time, older data is removed one day at a time. However, if you ingest two years of historical data where, by default, the data is marked with creation time as the time the data is ingested. This might not produce the desired outcome because:
 
@@ -24,7 +24,7 @@ In this article, you learn how to partition historical data:
 
 - Using the `creationTime` ingestion property during ingestion (recommended)
 
-    Where possible, ingest historical data using the [`creationTime` ingestion property](ingestion-properties.md#ingestion-properties), which allows you to set the creation time of the extents by extracting it from the file or blob path. If your folder structure doesn't use a creation date pattern, we recommend that you restructure your file or blob path to reflect the creation time. By using this method, the data is ingested into the table with the correct creation time, and the cache and retention periods are applied correctly.
+    Where possible, ingest historical data using the [`creationTime` ingestion property](/kusto/ingestion-properties#ingestion-properties), which allows you to set the creation time of the extents by extracting it from the file or blob path. If your folder structure doesn't use a creation date pattern, we recommend that you restructure your file or blob path to reflect the creation time. By using this method, the data is ingested into the table with the correct creation time, and the cache and retention periods are applied correctly.
 
     > [!NOTE]
     > By default, extents are partitioned by time of creation (ingestion), and in most cases there's no need to set a data partitioning policy.

@@ -851,6 +851,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/kusto-content/ingestion-properties.md",
+      "redirect_url": "/kusto/ingestion-properties",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "data-explorer/excel-connector.md",
       "redirect_url": "/azure/data-explorer/excel",
       "redirect_document_id": false

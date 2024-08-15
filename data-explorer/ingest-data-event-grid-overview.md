@@ -44,7 +44,7 @@ Setup of an Event Grid data connection using managed identity requires the follo
 
 ## Ingestion properties
 
-You can specify [ingestion properties](ingestion-properties.md) of the blob ingestion via the blob metadata.
+You can specify [ingestion properties](/kusto/ingestion-properties) of the blob ingestion via the blob metadata.
 You can set the following properties:
 
 |Property | Description|

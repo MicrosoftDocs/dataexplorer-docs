@@ -289,7 +289,7 @@ items:
             displayName: ingest data, ingestion
             href: ingest-json-formats.md
           - name: Data ingestion properties
-            href: ingestion-properties.md
+            href: /kusto/ingestion-properties
           - name: Formats for data ingestion
             displayName: supported data formats
             href: ingestion-supported-formats.md

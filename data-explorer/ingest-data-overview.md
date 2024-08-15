@@ -117,7 +117,7 @@ For more information, see [Kusto role-based access control](/kusto/access-contro
 
 The following steps outline the general ingestion process:
 
-1. **Set batching policy (optional)**: Data is batched based on the [ingestion batching policy](/kusto/management/batching-policy). For guidance, see [Optimize for throughput](/kusto/api/netfx/kusto-ingest-best-practices#optimize-for-throughput). 
+1. **Set batching policy (optional)**: Data is batched based on the [ingestion batching policy](/kusto/management/batching-policy). For guidance, see [Optimize for throughput](/kusto/api/netfx/kusto-ingest-best-practices#optimize-for-throughput).
 
 1. **Set retention policy (optional)**: If the database retention policy isn't suitable for your needs, override it at the table level. For more information, see [Retention policy](/kusto/management/retentionpolicy).
 
@@ -133,5 +133,5 @@ The following steps outline the general ingestion process:
 
 * [Connectors overview](connector-overview.md)
 * [Supported data formats](ingestion-supported-formats.md)
-* [Supported ingestion properties](ingestion-properties.md)
+* [Supported ingestion properties](/kusto/ingestion-properties)
 * [Policies overview](/kusto/management/policies)

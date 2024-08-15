@@ -47,7 +47,7 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 ::: moniker range="azure-data-explorer"
 > [!TIP]
-> If a function involves [cross-cluster queries](../query/cross-cluster-or-database-queries.md) and you plan to recreate the function using a [Kusto Query Language script](/azure/data-explorer/database-script.md), set `skipvalidation` to `true`.
+> If a function involves [cross-cluster queries](../query/cross-cluster-or-database-queries.md) and you plan to recreate the function using a [Kusto Query Language script](/azure/data-explorer/database-script), set `skipvalidation` to `true`.
 :::moniker-end
 
 ## Returns

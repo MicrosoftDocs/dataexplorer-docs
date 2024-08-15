@@ -138,7 +138,7 @@ To define continuous export to a delta table, do the following steps:
 * Continuous export isn't designed to work over [materialized views](../materialized-views/materialized-view-overview.md), since a materialized view might be updated, while data exported to storage is always append only and never updated.
 * Continuous export cannot be created on [follower databases](/azure/data-explorer/follower) since follower databases are read-only and continuous export requires write operations.
 * Records in source table must be ingested to the table directly, using an [update policy](../update-policy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export might not process these records. See the limitations described in the [Database Cursors](../database-cursor.md#restrictions) page.
-* If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](/azure/data-explorer/ingest-data-event-grid-overview.md#known-event-grid-issues).
+* If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](/azure/data-explorer/ingest-data-event-grid-overview#known-event-grid-issues).
 
 :::moniker range="azure-data-explorer"
 **Cross-database and cross-cluster**:

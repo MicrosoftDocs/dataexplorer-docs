@@ -91,6 +91,6 @@ In the example, the last 28 days of data will be on the SSD and the additional 2
 
 ::: moniker range="azure-data-explorer"
 
-* [Hot windows for infrequent queries over cold data](/azure/data-explorer/hot-windows.md)
+* [Hot windows for infrequent queries over cold data](/azure/data-explorer/hot-windows)
 
 ::: moniker-end

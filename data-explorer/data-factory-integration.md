@@ -174,7 +174,7 @@ When copying a JSON file to Azure Data Explorer, note that:
 
 ### Specify Additional Properties when copying to Azure Data Explorer
 
-You can add additional [ingestion properties](ingestion-properties.md) by specifying them in the copy activity in the pipeline.
+You can add additional [ingestion properties](/kusto/ingestion-properties) by specifying them in the copy activity in the pipeline.
 
 #### To add properties
 

@@ -72,4 +72,4 @@ must be specified as an ingestion property because it cannot be inferred.
 ## Related content
 
 * Learn more about [data ingestion](ingest-data-overview.md)
-* Learn more about [Azure Data Explorer data ingestion properties](ingestion-properties.md)
+* Learn more about [Azure Data Explorer data ingestion properties](/kusto/ingestion-properties)
