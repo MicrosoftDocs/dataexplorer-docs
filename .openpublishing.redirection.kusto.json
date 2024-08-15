@@ -5275,7 +5275,11 @@
       "redirect_url": "/kusto/management/index",
       "redirect_document_id": false
     },
-data-explorer/kusto/management/ingestion-faq.yml
+    {
+      "source_path": "data-explorer/kusto/management/ingestion-faq.yml",
+      "redirect_url": "/kusto/management/ingestion-faq",
+      "redirect_document_id": false
+    },
     {
       "source_path": "data-explorer/kusto/management/journal.md",
       "redirect_url": "/kusto/management/journal",
