@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-This command returns a result set that includes aggregated streaming ingestion failures that occur when [data is ingested using one of the streaming ingestion types](/azure/data-explorer/ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
+This command returns a result set that includes aggregated streaming ingestion failures that occur when [data is ingested using one of the streaming ingestion types](/azure/data-explorer/ingest-data-streaming#choose-the-appropriate-streaming-ingestion-type).
 
 > [!NOTE]
 > Streaming ingestion failures are grouped into buckets of short periods of time and aggregated by database, table, principal, ingestion properties, failure kind, and error code.

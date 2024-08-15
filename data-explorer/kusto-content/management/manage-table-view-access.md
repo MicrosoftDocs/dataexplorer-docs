@@ -29,7 +29,7 @@ The [Row Level Security (RLS) policy](row-level-security-policy.md) allows you t
 ## Create a follower database
 
 ::: moniker range="azure-data-explorer"
-Create a [follower database](/azure/data-explorer/follower.md) and follow only the relevant tables that you'd like to share with the specific principal or set of principals.
+Create a [follower database](/azure/data-explorer/follower) and follow only the relevant tables that you'd like to share with the specific principal or set of principals.
 ::: moniker-end
 
 ::: moniker range="microsoft-fabric"

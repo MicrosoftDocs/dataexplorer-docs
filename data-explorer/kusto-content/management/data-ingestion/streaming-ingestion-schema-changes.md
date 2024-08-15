@@ -53,5 +53,5 @@ To coordinate the streaming ingestion flow with schema changes:
 
 ::: moniker range= "azure-data-explorer"
 > [!NOTE]
-> If you've built an application for [custom ingestion](/azure/data-explorer/ingest-data-streaming#choose-the-appropriate-streaming-ingestion-type), we recommend managing schema-related failures by either retrying for a set duration or redirecting data from failed requests using [queued ingestion methods](../../api/get-started/app-queued-ingestion.md).
+> If you've built an application for [custom ingestion](/azure/data-explorer/ingest-data-streaming#choose-the-appropriate-streaming-ingestion-type), we recommend managing schema-related failures by either retrying for a set duration or redirecting data from failed requests using [queued ingestion methods](../../api/get-started/app-queued-ingestion).
 ::: moniker-end

@@ -10,7 +10,7 @@ monikerRange: "azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The update policy must be configured with a [managed identity](/azure/data-explorer/managed-identities-overview.md) in the following scenarios:
+The update policy must be configured with a [managed identity](/azure/data-explorer/managed-identities-overview) in the following scenarios:
 
 * When the update policy query references tables in other databases.
 * When the update policy query references tables with an enabled [row level security policy](row-level-security-policy.md).

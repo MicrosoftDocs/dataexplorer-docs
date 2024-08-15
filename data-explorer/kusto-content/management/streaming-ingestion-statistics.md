@@ -8,7 +8,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-This command returns a result set that includes aggregated statistics for the [streaming ingestion](/azure/data-explorer/ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
+This command returns a result set that includes aggregated statistics for the [streaming ingestion](/azure/data-explorer/ingest-data-streaming#choose-the-appropriate-streaming-ingestion-type).
 
 > [!NOTE]
 > The streaming ingestion statistics are grouped into buckets of short periods of time and aggregated by database, table, principal, ingestion status, and ingestion properties.

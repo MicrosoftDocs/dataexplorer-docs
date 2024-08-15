@@ -41,7 +41,7 @@ ms.date: 08/11/2024
 ## Follower databases
 
 ::: moniker range="azure-data-explorer"
-* Materialized views cannot be created in [follower databases](/azure/data-explorer/follower.md). Follower databases are read-only and materialized views require write operations.  
+* Materialized views cannot be created in [follower databases](/azure/data-explorer/follower). Follower databases are read-only and materialized views require write operations.  
 ::: moniker-end
 ::: moniker range="microsoft-fabric"
 * Materialized views cannot be created in [database shortcuts](/fabric/real-time-intelligence/database-shortcut). Database shortcuts are read-only and materialized views require write operations.  
@@ -51,9 +51,8 @@ ms.date: 08/11/2024
 * Use the leader cluster to monitor follower database materialized views. For more details, see [Materialized views in follower databases](materialized-views-monitoring.md#materialized-views-in-follower-databases).
 ::: moniker-end
 :::moniker range="microsoft-fabric"
-* Use the source Eventhouse to monitor follower database materialized views. For more details, see [Monitor materialized views](/fabric/real-time-intelligence/materialized-views-monitoring)
+* Use the source Eventhouse to monitor shortcut database materialized views. For more details, see [Monitor materialized views](materialized-views-monitoring.md)
 ::: moniker-end
-
 
 ## Other
 

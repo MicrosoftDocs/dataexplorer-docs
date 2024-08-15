@@ -52,7 +52,7 @@ To run the following queries, you need a query environment with access to the sa
 
 :::moniker range="microsoft-fabric"
 * A Microsoft account or Microsoft Entra user identity 
-* A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses.md#capacity)
+* A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses#capacity)
 ::: moniker-end
 
 ## Count rows
