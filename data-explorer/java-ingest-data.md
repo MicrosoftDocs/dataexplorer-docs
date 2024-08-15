@@ -59,7 +59,7 @@ The program uses Microsoft Entra authentication credentials with ConnectionStrin
 
 ### Management commands
 
-[Management commands](/kusto/management/), such as [`.drop`](/kusto/management/drop-function) and [`.create`](/kusto/management/create-function), are executed by calling `execute` on a `com.microsoft.azure.kusto.data.Client` object.
+[Management commands](/kusto/management/index), such as [`.drop`](/kusto/management/drop-function) and [`.create`](/kusto/management/create-function), are executed by calling `execute` on a `com.microsoft.azure.kusto.data.Client` object.
 
 For example, the `StormEvents` table is created as follows:
 
