@@ -5,6 +5,8 @@ items:
     href: comment.md
   - name: Query data using T-SQL
     href: t-sql.md
+  - name: Set timeout limits
+    href: ../set-timeout-limits.md
   - name: Best practices for KQL queries
     items:
       - name: Best practices for KQL queries

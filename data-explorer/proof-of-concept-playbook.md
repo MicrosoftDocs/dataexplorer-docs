@@ -250,7 +250,7 @@ Here are some examples of high-level tasks:
     - If you're migrating from SQL based system, you can use the [SQL to Kusto cheat sheet](/kusto/query/sql-cheat-sheet) to help you get started.
 1. Execute the tests:
     - Many tests can be executed in parallel on your clusters using different client interfaces such as dashboards, PowerBIm and the Azure Data Explorer [web UI](./web-query-data.md).
-    - You can create [load test using JMeter or Grafana k6](/kusto/api/load-test-cluster).
+    - You can create [load test using JMeter or Grafana k6](/kusto/query/best-practices).
     - Record your results in a consumable and readily understandable format.
 1. Optimize the queries and cluster:
     - Whether you're writing new KQL queries or converting existing queries from other languages, we recommend checking that your queries follow [Query best practices](/kusto/query/best-practices).
