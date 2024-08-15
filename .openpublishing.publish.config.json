@@ -19,7 +19,8 @@
       "build_entry_point": "docs",
       "template_folder": "_themes",
       "redirection_files": [
-        ".openpublishing.redirection.kusto.json"
+        "data-explorer/.openpublishing.redirection.json",
+        "data-explorer/.openpublishing.redirection.kusto.json"
       ]
     },
     {
