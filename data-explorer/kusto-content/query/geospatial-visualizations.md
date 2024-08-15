@@ -10,9 +10,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-<!-- Put links in moniker pivots -->
-
-Geospatial data can be visualized using the [render operator](render-operator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
+Geospatial data can be visualized using the [render operator](render-operator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using.md). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
 
 :::moniker range="azure-data-explorer"
 You can also use the [Azure Data Explorer web UI](/azure/data-explorer/web-query-data).

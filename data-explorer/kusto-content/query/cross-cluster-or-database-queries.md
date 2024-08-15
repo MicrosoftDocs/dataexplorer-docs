@@ -344,7 +344,7 @@ cluster("OtherEventhouseClusterURI").database("OtherDb").GetDataPivot()
 
 :::moniker range="azure-data-explorer"
 * [Cross-cluster join](../query/join-cross-cluster.md)
-* [Allow cross-tenant queries and commands](/azure/data-explorer/access-control/cross-tenant-query-and-commands)
+* [Allow cross-tenant queries and commands](/azure/data-explorer/cross-tenant-query-and-commands)
 :::moniker-end
 
 :::moniker range="microsoft-fabric"
