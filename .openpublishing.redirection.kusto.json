@@ -1687,7 +1687,7 @@
     },
     {
       "source_path": "data-explorer/kusto/query/todoublefunction.md",
-      "redirect_url": "/kusto/query/todouble-function",
+      "redirect_url": "/kusto/query/toreal-function",
       "redirect_document_id": false
     },
     {
@@ -3632,7 +3632,7 @@
     },
     {
       "source_path": "data-explorer/kusto/query/todouble-function.md",
-      "redirect_url": "/kusto/query/todouble-function",
+      "redirect_url": "/kusto/query/toreal-function",
       "redirect_document_id": false
     },
     {
