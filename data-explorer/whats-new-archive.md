@@ -15,15 +15,15 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|- [Kusto.Language Overview](/kusto/api/netfx/about-kusto-language) <br/> - [Define schemas for semantic analysis with Kusto.Language](/kusto/api/netfx/kusto-language-define-schemas) <br/> - [Parse queries and commands with Kusto.Language](/kusto/api/netfx/kusto-language-parse-queries)| New articles. Describes how to use the Kusto.Language library for parsing queries.|
-|[Management commands: Create an app to run management commands](/kusto/api/get-started/app-management-commands)| New article. Describes how to create an app to run management commands using Kusto client libraries.|
+| - [Kusto.Language Overview](/kusto/api/netfx/about-kusto-language) <br/> - [Define schemas for semantic analysis with Kusto.Language](/kusto/api/netfx/kusto-language-define-schemas) <br/> - [Parse queries and commands with Kusto.Language](/kusto/api/netfx/kusto-language-parse-queries) | New articles. Describes how to use the Kusto.Language library for parsing queries. |
+| [Management commands: Create an app to run management commands](/kusto/api/get-started/app-management-commands) | New article. Describes how to create an app to run management commands using Kusto client libraries. |
 
 **Query**
 
-| Article title| Description|
+| Article title | Description |
 |--|--|
-|- [Join operator](/kusto/query/join-operator) <br/> - [fullouter join](/kusto/query/join-fullouter) <br/> - [inner join](/kusto/query/join-inner) <br/> - [innerunique join](/kusto/query/join-innerunique) <br/> - [leftanti join](/kusto/query/join-leftanti) <br/> - [leftouter join](/kusto/query/join-leftouter) <br/> - [leftsemi join](/kusto/query/join-leftsemi) <br/> - [rightanti join](/kusto/query/join-rightanti) <br/> - [rightouter join](/kusto/query/join-rightouter) <br/> - [rightsemi join](/kusto/query/join-rightsemi) | Updated and new articles. Refreshed `join` overview and added topics describing each `join` kind.
-|[replace_strings()](/kusto/query/replace-strings-function) | New article. Describes how to use the replace_strings() function to replace multiple string matches with multiple replacement strings.|
+| - [Join operator](/kusto/query/join-operator) <br/> - [fullouter join](/kusto/query/join-fullouter) <br/> - [inner join](/kusto/query/join-inner) <br/> - [innerunique join](/kusto/query/join-innerunique) <br/> - [leftanti join](/kusto/query/join-leftanti) <br/> - [leftouter join](/kusto/query/join-leftouter) <br/> - [leftsemi join](/kusto/query/join-leftsemi) <br/> - [rightanti join](/kusto/query/join-rightanti) <br/> - [rightouter join](/kusto/query/join-rightouter) <br/> - [rightsemi join](/kusto/query/join-rightsemi) | Updated and new articles. Refreshed `join` overview and added topics describing each `join` kind. |
+| [replace_strings()](/kusto/query/replace-strings-function) | New article. Describes how to use the replace_strings() function to replace multiple string matches with multiple replacement strings. |
 
 ## May 2023
 
@@ -43,7 +43,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|[Create and alter delta external tables on Azure Storage](/kusto/management/external-tables-azurestorage-deltalake)| New article. Describes how to create and alter delta external tables on Azure Storage.|
+|[Create and alter delta external tables on Azure Storage](/kusto/management/external-tables-delta-lake)| New article. Describes how to create and alter delta external tables on Azure Storage.|
 
 **Query**
 
@@ -140,7 +140,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) <br/> - [Referencing security principals](/kusto/management/access-control/referencing-security-principals) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
+|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) <br/> - [Referencing security principals](/kusto/management/reference-security-principals) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
 
 **Functions library**
 
@@ -216,7 +216,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 |[Kusto.Data exceptions](/kusto/api/netfx/kusto-data-client-errors)|New article. Describes Kusto.Data exceptions.|
-|[Evaluate query performance in your cluster](/kusto/api/load-test-cluster)|New article. Describes how to load test a cluster's query performance.|
+|[Evaluate query performance in your cluster](/kusto/query/best-practices)|New article. Describes how to load test a cluster's query performance.|
 
 **General**
 
@@ -240,9 +240,9 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 |[.cancel operation command](/kusto/management/cancel-operation-command)| New article. Describes how to use the `.cancel operation` command.|
-|[How to authenticate with Microsoft Entra ID](/kusto/access-control/how-to-authenticate-with-aad)| Updated article. Updated with Microsoft Authentication Library authentication.|
+|[How to authenticate with Microsoft Entra ID](/kusto/api/rest/authenticate-with-msal)| Updated article. Updated with Microsoft Authentication Library authentication.|
 |[.drop extents](/kusto/management/drop-extents)| Updated article. Added examples to drop specific extents.|
-|[Queries management](/kusto/management/queries)| Updated article. Added show by user command.
+|[Queries management](/kusto/management/show-queries-command)| Updated article. Added show by user command.
 |- [Ingest from storage](/kusto/management/data-ingestion/ingest-from-storage)|Updated article. Added ingest from Amazon S3.
 |- [.create-or-alter function](/kusto/management/create-alter-function)<br/>- [.create function](/kusto/management/create-function)| New and updated article. Added new parameter for stored view.|
 
@@ -330,7 +330,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 | [http_request plugin / http_request_post plugin](/kusto/query/http-request-plugin) | New article. Describes the http_request plugin. |
 | [Cross-database and cross-cluster queries](/kusto/query/cross-cluster-or-database-queries) | Updated article. Updated links to cross-cluster queries and schema changes page. |
-| [Cross-cluster queries and schema changes](/kusto/concepts/cross-cluster-and-schema-changes) | New article. Describes cross-cluster queries and schema changes. |
+| [Cross-cluster queries and schema changes](/kusto/query/cross-cluster-or-database-queries) | New article. Describes cross-cluster queries and schema changes. |
 
 ## February 2022
 
@@ -356,7 +356,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Azure Data Explorer API overview](/kusto/api/index) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.
+| [Azure Data Explorer API overview](/kusto/api/index) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.|
 
 ## December 2021
 
@@ -397,7 +397,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | [Add cluster principals using Python](cluster-principal-python.md) | Updated article. Added AllDatabasesMonitor role.
 | [Add cluster principals using an Azure Resource Manager template](cluster-principal-resource-manager.md) | Updated article. Added AllDatabasesMonitor role.
 | [Add database principals using Python](database-principal-python.md) | Updated article. AddedAllDatabasesMonitor role.
-| [Manage Azure Data Explorer database permissions](manage-database-permissions.md) | Updated article. Added AllDatabasesMonitor role.
+| [Manage Azure Data Explorer database permissions](manage-database-permissions.md) | Updated article. Added AllDatabasesMonitor role.|
 
 **Management**
 
@@ -405,19 +405,19 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 | [Role-based access control in Kusto](/kusto/access-control/role-based-access-control) | Updated article. Materialized views rename source table.
 | [Cache policy (hot and cold cache)](/kusto/management/cache-policy) | Updated article. Caching with long storage.
-| [Role-based access control in Kusto](/kusto/access-control/role-based-access-control)| Updated article. Using the AllDatabasesMonitor role.
+| [Role-based access control in Kusto](/kusto/access-control/role-based-access-control)| Updated article. Using the AllDatabasesMonitor role.|
 
 ## September 2021
 
 | Article title | Description |
 |--|--|
-| [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated article. Learn how to connect event hub with managed identity.
+| [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated article. Learn how to connect event hub with managed identity.|
 
 **Query**
 
 | Article title | Description |
 |--|--|
-| [Views](/kusto/query/schema-entities/views)| New article. Learn how to use views, which are virtual tables based on the result-set of a query.
+| [Views](/kusto/query/schema-entities/views)| New article. Learn how to use views, which are virtual tables based on the result-set of a query.|
 | [Entity types](/kusto/query/schema-entities/index)| Updated article. Added information on how to use views.
 
 ## August 2021
@@ -549,7 +549,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-[Request properties and ClientRequestProperties](/kusto/api/netfx/request-properties) | Updated article. Per shard query results cache added.
+[Request properties and ClientRequestProperties](/kusto/api/rest/request-properties) | Updated article. Per shard query results cache added.|
 
 ## March 2021
 
@@ -575,15 +575,15 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 ## February 2021
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 [Optimize for high concurrency with Azure Data Explorer](high-concurrency.md) | New article. In this article, you learn to optimize your Azure Data Explorer setup for high concurrency.
 | [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md) | Updated article. Explanation of table grid options.
 
 **Query**
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 [ipv4_is_in_range()](/kusto/query/ipv4-is-in-range-function) | New article. Checks if IPv4 string address is in IPv4-prefix notation range.
 [ipv4_netmask_suffix()](/kusto/query/ipv4-netmask-suffix-function) | New article. Returns the value of the IPv4 netmask suffix from IPv4 string address.
 [has_all operator](/kusto/query/has-all-operator) | New article. `has_all` operator filters based on the provided set of values (all values must be present).
@@ -593,68 +593,68 @@ Article title | Description
 
 **Management**
 
-Article title | Description
----|---
-| [Materialized views data purge](/kusto/management/materialized-views/materialized-view-purge) | New article. [Data purge](/kusto/concepts/data-purge) commands can be used to purge records from materialized views.
-[.alter materialized-view lookback](/kusto/management/materialized-views/materialized-view-alter-lookback) | New article. Alters the `lookback` value of an existing materialized view.
-[.alter materialized-view autoUpdateSchema](/kusto/management/materialized-views/materialized-view-alter-autoupdateschema) | New article. Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`.
-[.alter materialized-view docstring](/kusto/management/materialized-views/materialized-view-alter-docstring) | New article. Alters the DocString value of an existing materialized view.
-[.alter materialized-view folder](/kusto/management/materialized-views/materialized-view-alter-folder) | New article. Alters the folder value of an existing materialized view.
-[.create-or-alter materialized-view](/kusto/management/materialized-views/materialized-view-create-or-alter) | New article. Creates a materialized view or alters an existing materialized view.
-[Materialized views policies](/kusto/management/materialized-views/materialized-view-policies) | New article. Includes information about policies that can be set on a materialized view.
-[Request queuing policy (Preview)](/kusto/management/request-queuing-policy) | New article. A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.
+|Article title | Description|
+|---|---|
+| [Materialized views data purge](/kusto/management/materialized-views/materialized-view-purge) | New article. [Data purge](/kusto/concepts/data-purge) commands can be used to purge records from materialized views.|
+|[.alter materialized-view lookback](/kusto/management/materialized-views/materialized-view-alter-lookback) | New article. Alters the `lookback` value of an existing materialized view.|
+|[.alter materialized-view autoUpdateSchema](/kusto/management/materialized-views/materialized-view-alter-autoupdateschema) | New article. Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`.|
+|[.alter materialized-view docstring](/kusto/management/materialized-views/materialized-view-alter-docstring) | New article. Alters the DocString value of an existing materialized view.|
+|[.alter materialized-view folder](/kusto/management/materialized-views/materialized-view-alter-folder) | New article. Alters the folder value of an existing materialized view.|
+|[.create-or-alter materialized-view](/kusto/management/materialized-views/materialized-view-create-or-alter) | New article. Creates a materialized view or alters an existing materialized view.|
+|[Materialized views policies](/kusto/management/materialized-views/materialized-view-policies) | New article. Includes information about policies that can be set on a materialized view.|
+|[Request queuing policy (Preview)](/kusto/management/request-queuing-policy) | New article. A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.|
 
 **Functions library**
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 | [series_dbl_exp_smoothing_fl()](/kusto/functions-library/series-dbl-exp-smoothing-fl) | New article. Applies a double exponential smoothing filter on a series.
 
 ## January 2021
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 [Azure Policy Regulatory Compliance controls](security-controls-policy.md) | New article. This page lists the **compliance domains** and **security controls**.
 [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you'll learn how to give cluster access to principals from another tenant.
 
 **Management**
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 [Clean extent containers commands](/azure/data-explorer/kusto/management/extents-overview) | New article. Describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands.
 [Request classification policy (Preview)](/kusto/management/request-classification-policy)<br>[Request classification policy (Preview) - Management commands](/kusto/management/show-cluster-policy-request-classification-command) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
 [Request limits policy (Preview)](/kusto/management/request-limits-policy) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
 [Request rate limit policy (Preview)](/kusto/management/request-rate-limit-policy) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
 [Workload groups (Preview)](/kusto/management/workload-groups)<br>[Workload groups (Preview) - Management commands](/kusto/management/show-workload-group-command) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
-[Queries management](/kusto/management/queries) | Updated article. Syntax updated
+[Queries management](/kusto/management/show-queries-command) | Updated article. Syntax updated
 
 ## December 2020
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 [Ingestion error codes in Azure Data Explorer](error-codes.md) | New article. This list contains error codes you may come across during [ingestion](ingest-data-overview.md).
 
 **Management**
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 [.create table based-on](/kusto/management/create-table-based-on-command)  | New article. Creates a new empty table based on existing table.
 [Stored query results (Preview)](/kusto/management/stored-query-results) | New article. Stored query results is a mechanism that temporarily stores the result of a query on the service.
-[Create and alter Azure Storage external tables](/kusto/management/external-tables-azurestorage-azuredatalake) | Updated article. Document `filesPreview` and `dryRun` external table definition options
+[Create and alter Azure Storage external tables](/kusto/management/external-tables-azure-storage) | Updated article. Document `filesPreview` and `dryRun` external table definition options
 [Export data to an external table](/kusto/management/data-export/export-data-to-an-external-table) | Updated article. New external table syntax in export docs
 
 **Functions library**
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 [series_metric_fl()](/kusto/functions-library/series-metric-fl) | New article. The `series_metric_fl()` function selects and retrieves time series of metrics ingested to Azure Data Explorer using the Prometheus monitoring system.
 [series_rate_fl()](/kusto/functions-library/series-rate-fl) | New article. The function `series_rate_fl()` calculates the average rate of metric increase per second.
 [series_fit_lowess_fl()](/kusto/functions-library/series-fit-lowess-fl) | New article. The function `series_fit_lowess_fl()` applies a LOWESS regression on a series.
 
 ## November 2020
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 [Azure Policy built-in definitions](policy-reference.md) | New article. Index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions.
 [Use one-click ingestion to create an event hub data connection](./event-hub-wizard.md) | New article. Connect an event hub to a table using the [one-click ingestion](./ingest-data-wizard.md) experience.
 | [Configure managed identities for your cluster](configure-managed-identities-cluster.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
@@ -665,8 +665,8 @@ Article title | Description
 
 **Query**
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 [mysql_request plugin (Preview)](/kusto/query/mysql-request-plugin) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
 [ipv4_lookup plugin](/kusto/query/ipv4-lookup-plugin) | New article. The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values.
 [ipv4_is_private()](/kusto/query/ipv4-is-private-function) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
@@ -677,8 +677,8 @@ Article title | Description
 
 **Management**
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 [.disable plugin](/kusto/management/disable-plugin) | New article. Disables a plugin.
 [.enable plugin](/kusto/management/enable-plugin) | New article. Enables a plugin.
 [.show plugins](/kusto/management/show-plugins) | New article. Lists all plugins of the cluster.
@@ -686,7 +686,7 @@ Article title | Description
 
 **Functions library**
 
-Article title | Description
----|---
+|Article title | Description|
+|--|--|
 [series_downsample_fl()](/kusto/functions-library/series-downsample-fl) | The function `series_downsample_fl()` [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor).
 [series_exp_smoothing_fl()](/kusto/functions-library/series-exp-smoothing-fl) | Applies a basic exponential smoothing filter on a series.

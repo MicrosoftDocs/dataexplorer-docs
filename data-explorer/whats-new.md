@@ -107,8 +107,8 @@ No updates.
 
 | Article title | Description |
 |--|--|
-|-[Scalar function types at a glance](/kusto/query/scalarfunctions) <br/> -[series_cosine_similarity()](/kusto/query/series-cosine-similarity-function) <br/> - [series_magnitude()](/kusto/query/series-magnitude-function) <br/> - [series_sum()](/kusto/query/series-sum-function) | New articles. Describes how to calculate series elements, and added to scalar functions overview.|
-|[series_dot_product()](/kusto/query/series-dot-productfunction)| Updated article. Added section on performance optimization.|
+|-[Scalar function types at a glance](/kusto/query/scalar-functions) <br/> -[series_cosine_similarity()](/kusto/query/series-cosine-similarity-function) <br/> - [series_magnitude()](/kusto/query/series-magnitude-function) <br/> - [series_sum()](/kusto/query/series-sum-function) | New articles. Describes how to calculate series elements, and added to scalar functions overview.|
+|[series_dot_product()](/kusto/query/series-dot-product-function)| Updated article. Added section on performance optimization.|
 
 ## November 2023
 
@@ -209,7 +209,7 @@ No updates.
 | Article title | Description |
 |--|--|
 | [Connection strings overview](/kusto/api/connection-strings/index)| Updated article. Added privacy and security measures.|
-| [SQL external table authentication methods](/kusto/api/connection-strings/sql-authentication-methods)| Updated article. Refreshed supported authentication methods.|
+| [SQL external table authentication methods](/kusto/api/connection-strings/sql-connection-strings)| Updated article. Refreshed supported authentication methods.|
 
 **General** 
 
