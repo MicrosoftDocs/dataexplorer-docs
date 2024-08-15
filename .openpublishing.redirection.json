@@ -826,7 +826,7 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "data-explorer/kusto/management/access-control/role-based-access-control .md",
+      "source_path": "data-explorer/kusto/management/access-control/role-based-access-control.md",
       "redirect_url": "/kusto/access-control/role-based-access-control",
       "redirect_document_id": false
     },
