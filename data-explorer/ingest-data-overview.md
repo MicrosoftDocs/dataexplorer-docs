@@ -119,13 +119,13 @@ The following steps outline the general ingestion process:
 
 1. **Set batching policy (optional)**: Data is batched based on the [ingestion batching policy](/kusto/management/batching-policy). For guidance, see [Optimize for throughput](/kusto/api/netfx/kusto-ingest-best-practices#optimize-for-throughput).
 
-1. **Set retention policy (optional)**: If the database retention policy isn't suitable for your needs, override it at the table level. For more information, see [Retention policy](/kusto/management/retentionpolicy).
+1. **Set retention policy (optional)**: If the database retention policy isn't suitable for your needs, override it at the table level. For more information, see [Retention policy](/kusto/management/retention-policy).
 
 1. **Create a table**: If you're using the Get data experience, you can create a table as part of the ingestion flow. Otherwise, create a table prior to ingestion in the [Azure Data Explorer web UI](create-table-wizard.md) or with the [.create table command](/kusto/management/create-table-command).
 
 1. **Create a schema mapping**: [Schema mappings](/kusto/management/mappings) help bind source data fields to destination table columns. Different types of mappings are supported, including row-oriented formats like CSV, JSON, and AVRO, and column-oriented formats like Parquet. In most methods, mappings can also be [precreated on the table](/kusto/management/create-ingestion-mapping-command).
 
-1. **Set update policy (optional)**: Certain data formats like Parquet, JSON, and Avro enable straightforward ingest-time transformations. For more intricate processing during ingestion, use the [update policy](/kusto/management/updatepolicy). This policy automatically executes extractions and transformations on ingested data within the original table, then ingests the modified data into one or more destination tables.
+1. **Set update policy (optional)**: Certain data formats like Parquet, JSON, and Avro enable straightforward ingest-time transformations. For more intricate processing during ingestion, use the [update policy](/kusto/management/update-policy). This policy automatically executes extractions and transformations on ingested data within the original table, then ingests the modified data into one or more destination tables.
 
 1. **Ingest data**: Use your preferred ingestion tool, connector, or method to bring in the data.
 

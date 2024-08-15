@@ -35,7 +35,7 @@ https://mycompanystorage.blob.core.windows.net/archivedproducts/2019/01/02/part-
 ...
 ```
 
-To run a KQL query on these CSV files directly, use the `.create external table` command to define an external table in Azure Data Explorer. For more information on external table create command options, see [external table commands](/kusto/management/external-tables-azurestorage-azuredatalake).
+To run a KQL query on these CSV files directly, use the `.create external table` command to define an external table in Azure Data Explorer. For more information on external table create command options, see [external table commands](/kusto/management/external-tables-azure-storage).
 
 ```Kusto
 .create external table ArchivedProducts(Timestamp:datetime, ProductId:string, ProductDescription:string)
