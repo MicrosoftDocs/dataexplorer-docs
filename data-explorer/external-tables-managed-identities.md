@@ -94,7 +94,7 @@ To learn more, see [Permissions](/azure/cosmos-db/how-to-setup-rbac).
 
 ## 3 - Create an external table
 
-There are two types of external tables that support authentication with managed identities: [Azure Storage external tables](/kusto/management/external-tables-azurestorage-azuredatalake) and [SQL Server external tables](/kusto/management/external-sql-tables).
+There are two types of external tables that support authentication with managed identities: [Azure Storage external tables](/kusto/management/external-tables-azure-storage) and [SQL Server external tables](/kusto/management/external-sql-tables).
 
 Select one of the following tabs to set up an Azure Storage or SQL Server external table.
 
@@ -102,7 +102,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 To create an Azure Storage external table, do the following steps:
 
-1. Create a connection string based on the [storage connection string templates](/kusto/api/connection-strings/storage-connection-strings#storage-connection-string-templates). This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](/kusto/api/connection-strings/storage-authentication-methods#managed-identity).
+1. Create a connection string based on the [storage connection string templates](/kusto/api/connection-strings/storage-connection-strings#storage-connection-string-templates). This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](/kusto/api/connection-strings/storage-connection-strings#managed-identity).
 
 1. Run the [.create or .alter external table](/kusto/management/external-sql-tables) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
@@ -124,7 +124,7 @@ The following command creates `MyExternalTable` that refers to CSV-formatted dat
 
 To create a SQL Server external table, do the following steps:
 
-1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](/kusto/api/connection-strings/sql-authentication-methods#managed-identity).
+1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](/kusto/api/connection-strings/sql-connection-strings#managed-identity).
 
 2. Run the [.create or .alter external table](/kusto/management/external-sql-tables) command to create the table. Use the connection string as the *SqlConnectionString* argument.
 
@@ -146,7 +146,7 @@ The following command creates `MySqlExternalTable` that refers to `MySqlTable` t
 
 To create a Cosmos DB external table, do the following steps:
 
-1. Create a Cosmos DB connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](/kusto/api/connection-strings/sql-authentication-methods#managed-identity).
+1. Create a Cosmos DB connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](/kusto/api/connection-strings/sql-connection-strings#managed-identity).
 
 2. Run the [.create or .alter external table](/kusto/management/external-sql-tables) command to create the table. Use the connection string as the *SqlConnectionString* argument.
 

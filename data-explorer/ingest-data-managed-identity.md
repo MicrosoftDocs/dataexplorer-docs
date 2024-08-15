@@ -66,7 +66,7 @@ Replace `<managed_identity_id>` with the object ID of the required managed ident
 
 ## Queue blobs for ingestion with managed identity using Kusto SDK
 
-When ingesting data using a Kusto [SDK](net-sdk-ingest-data.md), generate your [blob URI using managed identity authentication](/kusto/api/connection-strings/storage-authentication-methods#managed-identity) by appending `;managed_identity={objectId}` to the unauthorized blob URI. If you ingest data using your cluster's system assigned managed identity, you can append `;managed_identity=system` to the blob URI.
+When ingesting data using a Kusto [SDK](net-sdk-ingest-data.md), generate your [blob URI using managed identity authentication](/kusto/api/connection-strings/storage-connection-strings#managed-identity) by appending `;managed_identity={objectId}` to the unauthorized blob URI. If you ingest data using your cluster's system assigned managed identity, you can append `;managed_identity=system` to the blob URI.
 
 > [!IMPORTANT]
 > 
