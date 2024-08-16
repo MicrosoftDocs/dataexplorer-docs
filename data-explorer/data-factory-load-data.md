@@ -43,7 +43,7 @@ In this article, you use the Data Factory Copy Data tool to load data from Amazo
 
 1. In the left pane, select **Create a resource** > **Analytics** > **Data Factory**.
 
-   ![Create a data factory in the Azure portal.](media/data-factory-load-data/create-adf.png)
+   :::image type="content" source="media/data-factory-load-data/create-adf.png" alt-text="Screenshot shows the option to create a data factory in the Azure portal.":::
 
 1. In the **New data factory** pane, provide values for the fields in the following table:
 
@@ -183,7 +183,6 @@ To create the Azure Data Explorer linked service, do the following steps:
 
    1. In the **Database** drop-down list, select your database name. Alternatively, select the **Edit** check box, and then enter the database name.
    1. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
-   1. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
    1. Select **Create** to complete the linked service creation.
 
 #### Configure the Azure Data Explorer data connection
@@ -240,8 +239,8 @@ After you've created the linked service connection, the **Destination data store
 
     ![The "Deployment complete" pane](media/data-factory-load-data/deployment.png)
 
-## Next steps
+## Related content
 
-* Learn about the [Azure Data Explorer connector](/azure/data-factory/connector-azure-data-explorer) in Azure Data Factory.
-* Learn more about editing linked services, datasets, and pipelines in the [Data Factory UI](/azure/data-factory/quickstart-create-data-factory-portal).
-* Learn about [Azure Data Explorer queries](web-query-data.md) for data querying.
+* Learn about the [Azure Data Explorer connector](/azure/data-factory/connector-azure-data-explorer) for Azure Data Factory.
+* Edit linked services, datasets, and pipelines in the [Data Factory UI](/azure/data-factory/quickstart-create-data-factory-portal).
+* [Query data in the Azure Data Explorer web UI](web-query-data.md).

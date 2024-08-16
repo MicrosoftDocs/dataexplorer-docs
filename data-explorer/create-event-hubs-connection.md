@@ -3,7 +3,7 @@ title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: Learn how to ingest data from Event Hubs into Azure Data Explorer.
 ms.topic: how-to
 ms.custom:
-ms.date: 09/26/2023
+ms.date: 11/16/2023
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer
@@ -15,8 +15,6 @@ In this article, you connect to an event hub and ingest data into Azure Data Exp
 To learn how to create the connection using the Kusto SDKs, see [Create an Event Hubs data connection with SDKs](create-event-hubs-connection-sdk.md).
 
 > For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-event-hubs-connection).
-
-[!INCLUDE [get-data-flow](includes/get-data-flow.md)]
 
 ## Create an event hub data connection
 
@@ -38,15 +36,15 @@ In this section, you establish a connection between the event hub and your Azure
 
     :::image type="content" source="media/get-data-event-hubs/get-data.png" alt-text="Screenshot of query tab, with right-click on a database and the get options dialog open." lightbox="media/get-data-event-hubs/get-data.png":::
 
-### Select a data source
+### Source
 
 In the **Get data** window, the **Source** tab is selected.
 
-Select the data source from the available list. In this example, you are ingesting data from **Event Hubs**.
+Select the data source from the available list. In this example, you're ingesting data from **Event Hubs**.
 
 :::image type="content" source="media/get-data-file/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/select-data-source.png":::
 
-#### Configure tab
+### Configure
 
 1. Select a target database and table. If you want to ingest data into a new table, select **+ New table** and enter a table name.
 
@@ -71,7 +69,7 @@ Select the data source from the available list. In this example, you are ingesti
 
 1. Select **Next**
 
-### Inspect the data
+### Inspect
 
 The **Inspect** tab opens with a preview of the data.
 
@@ -81,7 +79,7 @@ To complete the ingestion process, select **Finish**.
 
 Optionally:
 
-* If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
+* If the data you see in the preview window isn't complete, you might need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
 
   * **Discard and fetch new data**: Discards the data presented and searches for new events.
   * **Fetch more data**: Searches for more events in addition to the events already found.
@@ -108,68 +106,6 @@ Optionally:
 In the **Data preparation** window, all three steps are marked with green check marks when data ingestion finishes successfully. You can view the commands that were used for each step, or select a card to query, visualize, or drop the ingested data.
 
 :::image type="content" source="media/get-data-event-hubs/summary.png" alt-text="Summary screenshot of getting data from Event Hubs in Azure Data Explorer." lightbox="media/get-data-event-hubs/summary.png":::
-
-### [Wizard](#tab/wizard)
-
-### Prerequisites
-
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
-* An [ingestion mapping](kusto/management/mappings.md) for the table.
-* An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
-The following steps guide you through creating an event hub connection through the ingestion wizard in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
-
-> [!NOTE]
->
-> * You must have at least [Database User](kusto/access-control/role-based-access-control.md) permissions.
-> * To enable access between a cluster and a storage account without public access, see [Create a Managed Private Endpoint](security-network-private-endpoint-create.md).
-> * The cluster and event hub should be associated with the same tenants. If not, use one of the SDK options, such as C# or Python.
-
-### Get data
-
-1. From the **Data** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select **Ingest** from the **Ingest data from Event Hub** card.
-
-    :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Screenshot showing the ingestion wizard in the Azure Data Explorer web UI.":::
-
-1. The **Ingest data** window opens with the **Destination** tab selected. The **Cluster** and **Database** fields are autopopulated. You may select a different cluster or database from the drop-down menus.
-
-1. Under **Table**, select **New table** and enter a name for the new table. Alternatively, use an existing table.
-
-1. Select **Next: Source**.
-
-1. Under **Source type**, select **Event Hub**.
-
-1. Under **Data Connection**, fill in the following fields and select **Next: Schema**.
-
-    |**Setting** | **Suggested value** | **Field description**
-    |---|---|---|
-    | Subscription |      | The subscription ID where the event hub resource is located.  |
-    | Event hub namespace |  | The name that identifies your namespace. |
-    | Event hub |  | The event hub you wish to use. |
-    | Data connection name | *TestDataConnection*  | The name that identifies your data connection.|
-    | Consumer group |  | The consumer group defined in your event hub. |
-    | Compression | | The compression type of the event hub messages payload.|
-    | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
-    |Event retrieval start date| Coordinated Universal Time (UTC) | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created. |
-
-1. Set the ingestion policy. If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, you can select **Streaming ingestion**. If streaming isn't enabled for the cluster, set the **Batching time**. For Event Hubs, the recommended [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
-
-    :::image type="content" source="media/event-hub-wizard/event-hub-schema.png" alt-text="Screenshot of Schema page of ingestion wizard." lightbox="media/event-hub-wizard/event-hub-schema.png":::
-
-1. Select the **Data format**. For CSV-formatted data, **Ignore the first record** to ignore the heading row of the file. For JSON-formatted data, select **Ignore data format errors** to ingest the data in JSON format or leave unselected to ingest the data in multijson format. Select the **Nested levels** to determine the table column data division.
-
-1. If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
-
-    * **Discard and fetch new data**: discards the data presented and searches for new events.
-    * **Fetch more data**: Searches for more events in addition to the events already found.
-
-    > [!NOTE]
-    > To see a preview of your data, your event hub must be sending events.
-
-1. Select **Next: Summary**.
-
-1. In the **Continuous ingestion from Event Hub established** window, all steps are marked with green check marks when establishment finishes successfully.
 
 ### [Portal - Azure Data Explorer page](#tab/portalADX)
 
@@ -250,13 +186,13 @@ The following steps guide you through creating an event hub connection through t
     | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
     |Event retrieval start date| Coordinated Universal Time (UTC) | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created. |
 
-1. If [streaming](kusto/management/streamingingestionpolicy.md) is enabled for the cluster, you can select **Streaming ingestion**. If streaming isn't enabled for the cluster, set the **Data batching latency**. For Event Hubs, the recommended [batching time](kusto/management/batchingpolicy.md) is 30 seconds.
+1. If [streaming](kusto/management/streaming-ingestion-policy.md) is enabled for the cluster, you can select **Streaming ingestion**. If streaming isn't enabled for the cluster, set the **Data batching latency**. For Event Hubs, the recommended [batching time](kusto/management/batching-policy.md) is 30 seconds.
 
     :::image type="content" source="media/create-event-hubs-connection/schema-page-event-hubs.png" alt-text="Screenshot of schema page for ingesting from event hubs to Azure Data Explorer in the Azure portal." lightbox="media/create-event-hubs-connection/schema-page-event-hubs.png":::
 
 1. Select the **Data format**. For CSV-formatted data, **Ignore the first record** to ignore the heading row of the file. For JSON-formatted data, select **Ignore data format errors** to ingest the data in JSON format or leave unselected to ingest the data in multijson format. Select the **Nested levels** to determine the table column data division.
 
-1. If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
+1. If the data you see in the preview window isn't complete, you might need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
 
     * **Discard and fetch new data**: discards the data presented and searches for new events.
     * **Fetch more data**: Searches for more events in addition to the events already found.
@@ -409,10 +345,6 @@ The following example shows an Azure Resource Manager template for adding an Eve
 
 Remove the data connection through the Azure portal as explained in the portal tab.
 
-### [Wizard](#tab/wizard-2)
-
-From the final wizard page, select the **Manage Data Connection** card. If you have already exited the wizard, remove the data connection through the Azure portal as explained in the portal tab.
-
 ### [Portal](#tab/portal-2)
 
 To remove the event hub connection from the Azure portal, do the following:
@@ -423,8 +355,7 @@ To remove the event hub connection from the Azure portal, do the following:
 
 ---
 
-## Next steps
+## Related content
 
 * Check the connection with the [Event hub sample message app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)
 * [Query data in the Web UI](web-ui-query-overview.md)
-* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

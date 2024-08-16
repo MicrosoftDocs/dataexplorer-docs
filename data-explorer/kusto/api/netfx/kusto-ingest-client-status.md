@@ -172,7 +172,7 @@ public enum IngestionReportMethod
 To track the status of your ingestion, provide the following to the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) that you do the ingest operation with:
 1.	Set `IngestionReportLevel`property to the required level of report. Either `FailuresOnly` (which is the default value) or `FailuresAndSuccesses`.
 When set to `None`, nothing will be reported at the end of the ingestion.
-1.	Specify the `IngestionReportMethod` - `Queue`, `Table`, or `both`.
+1.	Specify the `IngestionReportMethod` - `Queue`, `Table`, or `QueueAndTable`.
 
 A usage example can be found on the [Kusto.Ingest Examples](kusto-ingest-client-examples.md) page.
 

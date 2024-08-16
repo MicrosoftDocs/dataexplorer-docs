@@ -19,8 +19,8 @@ Converts a IPv4 address range denoted by starting and ending IPv4 addresses to a
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *StartAddress*| string | &check; | An expression representing a starting IPv4 address of the range.|
-| *EndAddress*| string | &check; | An expression representing an ending IPv4 address of the range.|
+| *StartAddress*| `string` |  :heavy_check_mark: | An expression representing a starting IPv4 address of the range.|
+| *EndAddress*| `string` |  :heavy_check_mark: | An expression representing an ending IPv4 address of the range.|
 
 ## Returns
 
@@ -41,3 +41,8 @@ print start_IP="1.1.128.0", end_IP="1.1.140.255"
 |ipv4_range_list|
 |--|
 |`["1.1.128.0/21", "1.1.136.0/22","1.1.140.0/24"]`|
+
+## Related content
+
+* Overview of [IPv4/IPv6 functions](scalar-functions.md#ipv4ipv6-functions)
+* Overview of [IPv4 text match functions](scalar-functions.md#ipv4-text-match-functions)

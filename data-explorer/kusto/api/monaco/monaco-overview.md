@@ -30,7 +30,7 @@ You can integrate Azure Data Explorer capabilities in your apps in the following
 
     Embedding the Azure Data Explorer web UI offers you extensive functionality with little effort, but contains limited flexibility for the user experience. There's a fixed set of query parameters that enable limited control over the system's look and behavior.
 
-## Next steps
+## Related content
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
 - [Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

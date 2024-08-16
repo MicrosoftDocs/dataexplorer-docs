@@ -12,7 +12,7 @@ The `leftanti` join flavor returns all records from the left side that don't mat
 
 > **Aliases**: `anti`, `leftantisemi`
 
-:::image type="content" source="images/joinoperator/join-leftanti.png" alt-text="Diagram that shows how the join works." lightbox="images/joinoperator/join-kinds.png":::
+:::image type="content" source="media/joinoperator/join-leftanti.png" alt-text="Diagram that shows how the join works." lightbox="media/joinoperator/join-kinds.png":::
 
 ## Syntax
 

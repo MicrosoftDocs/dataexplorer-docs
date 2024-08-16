@@ -19,7 +19,7 @@ ms.date: 01/05/2023
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*number*| real | &check; | The number for which to calculate the base-10 logarithm.|
+|*number*| `real` |  :heavy_check_mark: | The number for which to calculate the base-10 logarithm.|
 
 ## Returns
 
@@ -41,7 +41,7 @@ print result=log10(5)
 |--|
 |0.69897000433601886|
 
-## See also
+## Related content
 
 * For natural (base-e) logarithms, see [log()](log-function.md).
 * For base-2 logarithms, see [log2()](log2-function.md)

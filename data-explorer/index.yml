@@ -6,7 +6,7 @@ summary: Azure Data Explorer is a fast, fully managed data analytics service for
 metadata:
   title: Azure Data Explorer documentation
   description: Azure Data Explorer is a log analytics cloud platform optimized for ad hoc big data queries.
-  ms.service: data-explorer
+  ms.service: azure-data-explorer
   ms.topic: landing-page
   author: shsagir
   ms.author: shsagir
@@ -22,12 +22,16 @@ landingContent:
         links:
           - text: What is Azure Data Explorer?
             url: data-explorer-overview.md
+          - text: How Azure Data Explorer works
+            url: how-it-works.md
       - linkListType: get-started
         links:
           - text: Start for free
             url: start-for-free.md
           - text: Kusto Detective Agency
             url: https://detective.kusto.io/
+          - text: Find a partner
+            url: find-my-partner.md
       - linkListType: video
         links:
           - text: What is Azure Data Explorer? (19:47)
@@ -85,8 +89,8 @@ landingContent:
             url: ingest-data-overview.md
       - linkListType: quickstart
         links:
-          - text: Ingest sample data
-            url: ingest-sample-data.md
+          - text: Get data from a local file
+            url: get-data-file.md
       - linkListType: how-to-guide
         links:
           - text: Ingestion wizard
@@ -100,7 +104,7 @@ landingContent:
           - text: Event hub using Azure portal
             url: ingest-data-event-hub.md
           - text: Event Grid using Azure portal
-            url: ingest-data-event-grid.md
+            url: create-event-grid-connection.md
           - text: Install and use LightIngest
             url: lightingest.md
 
@@ -132,7 +136,7 @@ landingContent:
           - text: Kusto Query Language
             url: kusto/query/index.md
           - text: SQL to Kusto cheat sheet
-            url: kusto/query/sqlcheatsheet.md
+            url: kusto/query/sql-cheat-sheet.md
 
   # Card
   - title: Visualize data
@@ -215,6 +219,8 @@ landingContent:
             url: /azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer
           - text: Data analytics for automotive test fleets
             url: /azure/architecture/industries/automotive/automotive-telemetry-analytics
+          - text: Real-Time analytics with Azure Service Bus
+            url: /azure/architecture/solution-ideas/articles/analytics-service-bus
   # Card
   - title: Development
     linkLists:

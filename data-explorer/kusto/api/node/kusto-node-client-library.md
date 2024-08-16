@@ -7,7 +7,7 @@ ms.date: 04/19/2023
 ---
 # Kusto Node SDK
 
-The Kusto Node SDK is compatible with Node LTS (currently v6.14) and built with ES6.
+The Kusto Node SDK is compatible with Node LTS v6.14 and built with ES6.
 
 *Kusto Node Client* Library provides the capability to query your cluster using NodeJs.
 

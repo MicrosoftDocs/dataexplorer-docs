@@ -9,7 +9,7 @@ ms.date: 05/24/2023
 
 Returns the schema of the external table, as JSON or CSL.
 
-This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
+This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/external-tables.md).
 
 ## Permissions
 
@@ -27,17 +27,17 @@ You must have at least Database User, Database Viewer, or Database Monitor, or E
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table for which to show the schema.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to show the schema.|
 
 ## Returns
 
 | Output parameter | Type   | Description                        |
 |------------------|--------|------------------------------------|
-| TableName        | string | Name of external table            |
-| Schema           | string | The table schema in a JSON format |
-| DatabaseName     | string | Table's database name             |
-| Folder           | string | Table's folder                    |
-| DocString        | string | String documenting the table      |
+| TableName        | `string` | Name of external table            |
+| Schema           | `string` | The table schema in a JSON format |
+| DatabaseName     | `string` | Table's database name             |
+| Folder           | `string` | Table's folder                    |
+| DocString        | `string` | String documenting the table      |
 
 ## Examples
 

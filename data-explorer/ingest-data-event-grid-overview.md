@@ -1,27 +1,37 @@
 ---
 title: Ingest from storage using Event Grid subscription - Azure Data Explorer
 description: This article describes Ingest from storage using Event Grid subscription in Azure Data Explorer.
-ms.reviewer: orspodek
+ms.reviewer: leshalev
 ms.topic: how-to
-ms.date: 06/05/2023
+ms.date: 06/03/2024
+ms.custom: devx-track-azurepowershell
 ---
 # Event Grid data connection
-
-[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
 
 Event Grid ingestion is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created or blob renamed notifications and streaming these notifications to Azure Data Explorer via an Azure Event Hubs.
 
 The Event Grid ingestion pipeline goes through several steps. You create a target table in Azure Data Explorer into which the [data in a particular format](#data-format) will be ingested. Then you create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#events-routing) information, such as what table to send the data to and the table mapping. You also specify [ingestion properties](#ingestion-properties), which describe the data to be ingested, the target table, and the mapping. You can generate sample data and [upload blobs](#upload-blobs) or [rename blobs](#rename-blobs) to test your connection. [Delete blobs](#delete-blobs-using-storage-lifecycle) after ingestion.
 
-Event Grid ingestion can be managed through the [Azure portal](ingest-data-event-grid.md), using the [ingestion wizard](/azure/data-explorer/ingest-from-container), programmatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
+Event Grid ingestion can be managed through the [Azure portal](create-event-grid-connection.md), using the [ingestion wizard](/azure/data-explorer/ingest-from-container), programmatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
-[!INCLUDE [data-connection-auth](includes/data-connection-auth.md)]
+## Event Grid data connection authentication mechanisms
 
-* So that the MI can fetch data from Azure Storage, it should have at least:
-  * [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) on the Azure Event Hubs.
-  * [Storage Blob Data Reader](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) on the Azure Storage account.
+* [Managed Identity](managed-identities-overview.md) based data connection (recommended): Using a managed identity-based data connection is the most secure way to connect to data sources. It provides full control over the ability to fetch data from a data source.
+Setup of an Event Grid data connection using managed identity requires the following steps:
+  1. [Add a managed identity to your cluster](configure-managed-identities-cluster.md).
+  1. [Grant permissions to the managed identity on the data source](ingest-data-managed-identity.md#grant-permissions-to-the-managed-identity). To fetch data from Azure Storage, the managed identity must have at least  [Storage Blob Data Reader](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) permissions on the Azure Storage account.
+  1. Grant permissions to the managed identity on the event hub. To fetch blob notifications from the event hub, the managed identity must have [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions on the Azure Event Hubs.
+  1. Set a [managed identity policy](kusto/management/managed-identity-policy.md) on the target databases.
+  1. Create a data connection using managed identity authentication to fetch data.
+
+    > [!CAUTION]
+    >
+    > * If the managed identity permissions are removed from the data source, the data connection will no longer work and will be unable to fetch data from the data source.
+    > * If local authentication is disabled on an existing Event Hubs namespace where blob notifications are streamed, you must use managed identity authentication for the data connection and correctly configure resources. For more information, see [Known Event Grid issues](#known-event-grid-issues).
+
+[!INCLUDE [data-connection-auth](includes/data-connection-auth.md)]
 
 ## Data format
 
@@ -29,8 +39,8 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 * See [supported compressions](ingestion-supported-formats.md#supported-data-compression-formats).
   * The original uncompressed data size should be part of the blob metadata, or else Azure Data Explorer will estimate it. The ingestion uncompressed size limit per file is 6 GB.
 
-> [!NOTE]
-> Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
+    > [!NOTE]
+    > Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 
 ## Ingestion properties
 
@@ -45,7 +55,7 @@ You can set the following properties:
 | `kustoDataFormat` |  Data format. Overrides the `Data format` set on the `Data Connection` pane. |
 | `kustoIngestionMappingReference` | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | `kustoIgnoreFirstRecord` | If set to `true`, Kusto ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
-| `kustoExtentTags` | String representing [tags](kusto/management/extents-overview.md#extent-tags) that will be attached to resulting extent. |
+| `kustoExtentTags` | String representing [tags](kusto/management/extent-tags.md) that will be attached to resulting extent. |
 | `kustoCreationTime` | Overrides [Extent Creation time](kusto/management/extents-overview.md#extent-creation-time) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
 
 ## Events routing
@@ -99,7 +109,7 @@ await blob.UploadAsync(BinaryData.FromString(File.ReadAllText("<filePath>")));
 
 ## Upload blobs
 
-You can create a blob from a local file, set ingestion properties to the blob metadata, and upload it. For examples, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#generate-sample-data)
+You can create a blob from a local file, set ingestion properties to the blob metadata, and upload it. For examples, see  [Use the Event Grid data connection](create-event-grid-connection.md#use-the-event-grid-data-connection).
 
 > [!NOTE]
 >
@@ -115,19 +125,97 @@ When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data
 > [!NOTE]
 >
 > * Directory renaming is possible in ADLSv2, but it doesn't trigger *blob renamed* events and ingestion of blobs inside the directory. To ingest blobs following renaming, directly rename the desired blobs.
-> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
+> * If you defined filters to track specific subjects while [creating the data connection](create-event-grid-connection.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
 
 ## Delete blobs using storage lifecycle
 
 Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It's recommended to keep the blobs for three to five days.
 
 ## Known Event Grid issues
+* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly from storage to the event hub using managed identities:
+
+    ### [Steps](#tab/steps)
+
+    1. Assign a system-assigned managed identity to the Event Grid system topic of the storage account. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics).
+    1. Grant the managed identity sender permissions by assigning it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Add identity to Azure roles on destinations](/azure/event-grid/add-identity-roles).
+    1. Make sure that the Event Grid subscription uses managed identity for event delivery. For more information, see [Create event subscriptions that use an identity](/azure/event-grid/managed-service-identity).
+
+
+    ### [PowerShell script](#tab/powershell)
+
+  ```powershell
+  $eventGridSubscriptionId = "<AZURE SUBSCRIPTION ID OF EVENTGRID SYSTEM TOPIC>"
+  $eventGridResourceGroupName = "<RESOURCE GROUP NAME CONTAINING THE EVENTGRID SYSTEM TOPIC>"
+  $eventGridSystemTopicName = "<EVENTGRID SYSTEM TOPIC NAME>"
+  $eventGridSubscriptionName = "<EVENTGRID SUBSCRIPTION NAME>"
+
+  $eventhubSubscriptionId = "<AZURE SUBSCRIPTION ID OF EVENTHUB NAMESPACE>"
+  $eventhubResourceGroupName = "<RESOURCE GROUP NAME CONTAINING THE EVENTHUB NAMESPACE>"
+  $eventhubNamespaceName = "<THE EVENTHUB NAMESPACE NAME>"
+  $eventhubName = "<THE EVENTHUB NAME>"
+
+  Set-AzContext -SubscriptionId $eventGridSubscriptionId
+
+  Write-Host "Checking if Event Grid Topic exists"
+  $eg = Get-AzEventGridSystemTopic -ResourceGroupName $eventGridResourceGroupName -Name $eventGridSystemTopicName
+  $hasSystemAssignedIdentity = $eg.IdentityType -match "SystemAssigned"
+
+  if ($hasSystemAssignedIdentity) {
+      Write-Host -ForegroundColor Green "Event Grid Topic $eventGridSystemTopicName already has a system-assigned identity"
+  }
+  else {
+      Write-Host "Event Grid Topic $eventGridSystemTopicName doesn't have a system-assigned identity. Assigning one..."
+      Update-AzEventGridSystemTopic -ResourceGroupName $eventGridResourceGroupName -Name $eventGridSystemTopicName -EnableSystemAssignedIdentity $true
+      Write-Host -ForegroundColor Green "System-assigned identity has been assigned to Event Grid Topic $eventGridSystemTopicName"
+  }
+
+  $eg = Get-AzEventGridSystemTopic -ResourceGroupName $eventGridResourceGroupName -Name $eventGridSystemTopicName
+  $identityPrincipalId = $eg.IdentityPrincipalId
+
+  Set-AzContext -SubscriptionId $eventhubSubscriptionId 
+
+  $eventhubResourceId = "/subscriptions/$eventhubSubscriptionId/resourceGroups/$eventhubResourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNamespaceName/eventhubs/$eventhubName"
+
+  Write-Host "Checking if Azure Event Hubs Data Sender role is assigned to Event Grid Topic's system-assigned identity $identityPrincipalId for Event Hub $eventhubName"
+  $roleAssignment = Get-AzRoleAssignment -ObjectId $identityPrincipalId -RoleDefinitionName "Azure Event Hubs Data Sender" -Scope $eventhubResourceId
+  $hasRoleAssignment = $null -ne $roleAssignment
+
+  if ($hasRoleAssignment) {
+      Write-Host -ForegroundColor Yellow "Azure Event Hubs Data Sender role is already assigned to Event Grid Topic's system-assigned identity $identityPrincipalId for Event Hub $eventhubName"
+  }
+  else {
+      Write-Host "Going to assign Azure Event Hubs Data Sender role to Event Grid Topic's system-assigned identity $identityPrincipalId for Event Hub $eventhubResourceId"
+      New-AzRoleAssignment -ObjectId $identityPrincipalId -RoleDefinitionName "Azure Event Hubs Data Sender" -Scope "/subscriptions/$eventhubSubscriptionId/resourceGroups/$eventhubResourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNamespaceName/eventhubs/$eventhubName"
+      Write-Host -ForegroundColor Green "Azure Event Hubs Data Sender role has been assigned to Event Grid Topic's system-assigned identity $identityPrincipalId for Event Hub $eventhubName"
+  }
+
+  Write-Host "Checking if Event Subscription $eventSubscriptionName is using Systeam assigned identity"
+  $eventGridSubscribtion = Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName $eventGridResourceGroupName -SystemTopicName $eventGridSystemTopicName -EventSubscriptionName $eventGridSubscriptionName
+  $deliveryIdentityType = $eventGridSubscribtion.DeliveryWithResourceIdentityType 
+  $destination = $eventGridSubscribtion.Destination
+
+  if ($deliveryIdentityType -eq "SystemAssigned") {
+      Write-Host -ForegroundColor Yellow "Event Subscription $eventGridSubscriptionName is allready using System Assigned Identity"
+  }
+  else {
+      Write-Host "Event Subscription $eventGridSubscriptionName is not using System Assigned Identity. Updating..."
+      Update-AzEventGridSystemTopicEventSubscription -ResourceGroupName $eventGridResourceGroupName -SystemTopicName $eventGridSystemTopicName -EventSubscriptionName $eventGridSubscriptionName -DeliveryWithResourceIdentityType "SystemAssigned" -DeliveryWithResourceIdentityDestination $destination
+      Write-Host -ForegroundColor Green "Event Subscription $eventGridSubscriptionName is now using System Assigned Identity"
+  }
+
+  Write-Host -ForegroundColor Green "%%%%%%%% Script has been executed successfully %%%%%%%%"
+
+    ```
+    
+    ---
+
+    In addition, configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
 
 * When using Azure Data Explorer to [export](kusto/management/data-export/export-data-to-storage.md) the files used for Event Grid ingestion, note:
   * Event Grid notifications aren't triggered if the connection string provided to the export command or the connection string provided to an [external table](kusto/management/data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) (for example, `abfss://filesystem@accountname.dfs.core.windows.net`) but the storage account isn't enabled for hierarchical namespace.
   * If the account isn't enabled for hierarchical namespace, connection string must use the [Blob Storage](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) format (for example, `https://accountname.blob.core.windows.net`). The export works as expected even when using the ADLS Gen2 connection string, but notifications won't be triggered and Event Grid ingestion won't work.
 
-## Next steps
+## Related content
 
 * [Create an Event Grid data connection](create-event-grid-connection.md)
 * [Ingest data from Azure Event Hubs into Azure Data Explorer using the ingestion wizard](./event-hub-wizard.md)

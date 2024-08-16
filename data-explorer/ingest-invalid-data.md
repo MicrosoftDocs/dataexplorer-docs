@@ -11,7 +11,7 @@ ms.date: 11/14/2022
 Data that is malformed, unparsable, too large, or doesn't conform to the schema may fail to be ingested properly. The following tables describe what to expect when ingesting invalid data into Azure Data Explorer.
 
 > [!NOTE]
-> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestionfailures.md) and [Ingestion error codes in Azure Data Explorer](error-codes.md).
+> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestion-failures.md) and [Ingestion error codes in Azure Data Explorer](error-codes.md).
 
 ## Failure with error code
 
@@ -36,9 +36,9 @@ The following table shows cases where ingestion succeeds without an error, silen
 |Value not matching the table schema data type. For example: floating point value ingested into an `int` column.                      |NULL value filled                             |
 |Mapped fields are missing from the data                                                                                    |NULL value filled                             |
 
-## See also
+## Related content
 
 * [Data ingestion](ingest-data-overview.md)
-* [Ingestion failures](kusto/management/ingestionfailures.md)
+* [Ingestion failures](kusto/management/ingestion-failures.md)
 * [Encoding policy](kusto/management/encoding-policy.md)
 * [Duplicate next ingestion failure](kusto/management/dup-next-failed-ingest.md)

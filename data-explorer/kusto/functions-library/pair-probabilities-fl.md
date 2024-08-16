@@ -35,9 +35,9 @@ The function `pair_probabilities_fl()` is a [UDF (user-defined function)](../que
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*A*|scalar|&check;|The first categorical variable.|
-|*B*|scalar|&check;|The second categorical variable.|
-|*Scope*|scalar|&check;|The field that contains the scope, so that the probabilities for *A* and *B* are calculated independently for each scope value.|
+|*A*|scalar| :heavy_check_mark:|The first categorical variable.|
+|*B*|scalar| :heavy_check_mark:|The second categorical variable.|
+|*Scope*|scalar| :heavy_check_mark:|The field that contains the scope, so that the probabilities for *A* and *B* are calculated independently for each scope value.|
 
 ## Function definition
 
@@ -45,10 +45,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `pair_probabilities_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `pair_probabilities_fl()`, see [Example](#example).
 
 ```kusto
 let pair_probabilities_fl = (tbl:(*), A_col:string, B_col:string, scope_col:string)
@@ -75,14 +75,14 @@ probAB
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate probabilities and related metrics for a pair of categorical variables")
-pair_probabilities_fl = (tbl:(*), A_col:string, B_col:string, scope_col:string)
+pair_probabilities_fl(tbl:(*), A_col:string, B_col:string, scope_col:string)
 {
 let T = materialize(tbl | extend _A = column_ifexists(A_col, ''), _B = column_ifexists(B_col, ''), _scope = column_ifexists(scope_col, ''));
 let countOnScope = T | summarize countAllOnScope = count() by _scope;
@@ -100,14 +100,14 @@ probAB
 | project _A, _B, _scope, bin(P_A, 0.00001), bin(P_B, 0.00001), bin(P_AB, 0.00001), bin(P_AUB, 0.00001), bin(P_AIB, 0.00001)
 , bin(P_BIA, 0.00001), bin(Lift_AB, 0.00001), bin(Jaccard_AB, 0.00001)
 | sort by _scope, _A, _B
-};
+}
 ```
 
 ---
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

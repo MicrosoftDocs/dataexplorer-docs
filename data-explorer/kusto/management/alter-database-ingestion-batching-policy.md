@@ -7,9 +7,9 @@ ms.date: 05/25/2023
 ---
 # .alter database policy ingestionbatching command
 
-Sets the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy determines when data aggregation stops and a batch is sealed and ingested.
+Sets the [ingestion batching policy](batching-policy.md) to determine when data aggregation stops and a batch is sealed and ingested. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
 
-When setting the policy for a database, it applies for all its tables, except tables that were set with their own IngestionBatching policy. If the policy isn't set for a database, the [default values](batchingpolicy.md#defaults-and-limits) apply.
+When setting the policy for a database, it applies for all its tables, except tables that were set with their own ingestion batching policy. If the policy isn't set for a database, the [default values](batching-policy.md#defaults-and-limits) apply.
 
 ## Permissions
 
@@ -17,7 +17,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 ## Defaults and limits
 
-See [defaults and limits](batchingpolicy.md#defaults-and-limits).
+See [defaults and limits](batching-policy.md#defaults-and-limits).
 
 ## Syntax
 
@@ -29,8 +29,8 @@ See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to alter the ingestion batching policy.|
-|*PolicyObject*|string|&check;|A policy object that defines the ingestion batching policy. For more information, see [ingestion batching policy](batchingpolicy.md).|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to alter the ingestion batching policy.|
+|*PolicyObject*| `string` | :heavy_check_mark:|A policy object that defines the ingestion batching policy. For more information, see [ingestion batching policy](batching-policy.md).|
 
 ## Example
 
@@ -48,8 +48,8 @@ The following command sets a batch ingress data time of 30 seconds, for 500 file
 ````
 
 >[!NOTE]
-> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](batchingpolicy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default. To override only some parameters, use the [alter-merge command](alter-merge-database-ingestion-batching-policy.md) command.
+> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](batching-policy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default. To override only some parameters, use the [alter-merge command](alter-merge-database-ingestion-batching-policy.md) command.
 
-## Next steps
+## Related content
 
-- [alter table ingestionbatching policy](alter-table-ingestion-batching-policy.md)
+- [.alter table ingestionbatching policy](alter-table-ingestion-batching-policy.md)

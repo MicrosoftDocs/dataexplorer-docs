@@ -3,7 +3,7 @@ title: Use the sample app generator to ingest and query data in Azure Data Explo
 description: Overview of using the sample app generator to create the code to ingest and query your data in your preferred programming language.
 ms.reviewer: talzamir
 ms.topic: how-to
-ms.date: 07/24/2023
+ms.date: 03/12/2024
 ---
 
 # Use the sample app generator wizard to create code to ingest and query your data
@@ -27,14 +27,14 @@ The sample app generator wizard guides you through the ingestion process.
 
 To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/):
 
-1. Select **Data** in the left pane.
-1. Within the **Data Management** page under Quick actions, select **Generate Sample App**.
+1. Select **Query** in the left pane.
+1. Right-click on the desired table, and select **Generate** > **Sample code**.
 
-    :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from welcome to Azure Data Explorer.":::
+    :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from table context menu.":::
 
 ## Generate a sample app
 
-This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.
+This section describes the wizard in general. The options you select depend on what data format you're ingesting, what kind of data source you're ingesting from, and whether you're ingesting into a new or existing table.
 
 The wizard guides you through the following options:
 
@@ -98,14 +98,13 @@ For more information, see [Mapping transformations](kusto/management/mappings.md
 
 ### Generate
 
-Once you've completed schema mapping and column manipulations, the sample app generator wizard will start the code generation process. After code generation, the sample app project will be available for download as a ZIP file.
+Once you've completed schema mapping and column manipulations, the sample app generator wizard starts the code generation process. After code generation, the sample app project will be available for download as a ZIP file.
 
-Detailed instructions for running the project with the selected SDK will be shown upon successful generation as well as inside the sample project file. In addition, the wizard gives you options to use **Quick queries** for initial exploration of your data.
+Detailed instructions for running the project with the selected SDK are provided upon successful generation and within the sample project file. In addition, the wizard gives you options to use **Quick queries** for initial exploration of your data.
 
 >[!NOTE]
 > You may need to run the downloaded app for the **Quick queries** to work.
 
-## Next steps
+## Related content
 
 * [Set up your development environment to use Kusto client libraries](kusto/api/get-started/app-set-up.md)
-* [Hello Kusto: Create your first Kusto client app](kusto/api/get-started/app-hello-kusto.md)

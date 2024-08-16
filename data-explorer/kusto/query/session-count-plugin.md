@@ -7,7 +7,7 @@ ms.date: 04/11/2023
 ---
 # session_count plugin
 
-Calculates the session count based on the ID column over a timeline. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Calculates the session count based on the ID column over a timeline. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
@@ -19,14 +19,14 @@ Calculates the session count based on the ID column over a timeline. The plugin 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TabularExpression* | string | &check; | The tabular expression that serves as input.|
-| *IdColumn* | string | &check; | The name of the column with ID values that represents user activity.|
-| *TimelineColumn* | string | &check; | The name of the column that represents the timeline.|
-| *Start* | scalar | &check; | The start of the analysis period.|
-| *End* | scalar | &check; | The end of the analysis period.|
-| *Bin* | scalar | &check; | The session's analysis step period.|
-| *LookBackWindow* | scalar | &check; | The session lookback period. If the ID from `IdColumn` appears in a time window within `LookBackWindow`, the session is considered to be an existing one. If the ID doesn't appear, then the session is considered to be new.|
-| *dim1*, *dim2*, ... | string | | A list of the dimensions columns that slice the session count calculation.|
+| *TabularExpression* | `string` |  :heavy_check_mark: | The tabular expression that serves as input.|
+| *IdColumn* | `string` |  :heavy_check_mark: | The name of the column with ID values that represents user activity.|
+| *TimelineColumn* | `string` |  :heavy_check_mark: | The name of the column that represents the timeline.|
+| *Start* | scalar |  :heavy_check_mark: | The start of the analysis period.|
+| *End* | scalar |  :heavy_check_mark: | The end of the analysis period.|
+| *Bin* | scalar |  :heavy_check_mark: | The session's analysis step period.|
+| *LookBackWindow* | scalar |  :heavy_check_mark: | The session lookback period. If the ID from `IdColumn` appears in a time window within `LookBackWindow`, the session is considered to be an existing one. If the ID doesn't appear, then the session is considered to be new.|
+| *dim1*, *dim2*, ... | `string` | | A list of the dimensions columns that slice the session count calculation.|
 
 ## Returns
 
@@ -36,7 +36,7 @@ Output table schema is:
 
 |*TimelineColumn*|dim1|..|dim_n|count_sessions|
 |---|---|---|---|---|--|--|--|--|--|--|
-|type: as of *TimelineColumn*|..|..|..|long|
+|type: as of *TimelineColumn*|..|..|..| `long` |
 
 ## Examples
 
@@ -110,4 +110,4 @@ _data
 | render linechart 
 ```
 
-:::image type="content" source="images/session-count-plugin/example-session-count.png" alt-text="Example session count." border="false":::
+:::image type="content" source="media/session-count-plugin/example-session-count.png" alt-text="Example session count." border="false":::

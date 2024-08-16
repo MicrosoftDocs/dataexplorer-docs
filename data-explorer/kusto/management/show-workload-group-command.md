@@ -11,7 +11,7 @@ Shows a specific workload group or all workload group definitions.
 
 ## Permissions
 
-You must have [Cluster AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -25,7 +25,7 @@ You must have [Cluster AllDatabasesAdmin](../management/access-control/role-base
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *WorkloadGroupName* | string | &check; | Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName']. |
+| *WorkloadGroupName* | `string` |  :heavy_check_mark: | Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName']. |
 
 ## Examples
 

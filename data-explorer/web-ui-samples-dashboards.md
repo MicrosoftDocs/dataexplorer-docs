@@ -39,7 +39,7 @@ A Microsoft account or a Microsoft Entra user identity to sign in to the [**help
 
 1. Learn how to [view parameters](dashboard-parameters.md#view-parameters-list) and [customize visuals](dashboard-customize-visuals.md#customize-visuals).
 
-## Next steps
+## Related content
 
 * [Query data in the web UI](web-ui-query-overview.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

@@ -329,5 +329,5 @@ The message that the Data Management expects to read from the input Azure Queue 
 |ErrorCode |The error code. For all the error codes, see [Ingestion error codes](kusto-ingest-client-errors.md#ingestion-error-codes). |
 |FailureStatus |Indicates whether the failure is permanent or transient |
 |RootActivityId |The correlation identifier (GUID) that can be used to track the operation on the service side |
-|OriginatesFromUpdatePolicy |Indicates whether the failure was caused by an erroneous [transactional update policy](../../management/updatepolicy.md) |
+|OriginatesFromUpdatePolicy |Indicates whether the failure was caused by an erroneous [transactional update policy](../../management/update-policy.md) |
 |ShouldRetry | Indicates whether the ingestion could succeed if retried as is |

@@ -22,7 +22,10 @@ The user-defined functions code is given in the articles.  It can be used within
 
 | Function Name | Description |
 |--|--|
-| [kmeans_fl()](kmeans-fl.md) | Clusterize using the k-means algorithm. |
+| [dbscan_fl()](dbscan-fl.md) | Clusterize using the DBSCAN algorithm, features are in separate columns. |
+| [dbscan_dynamic_fl()](dbscan-dynamic-fl.md) | Clusterize using the DBSCAN algorithm, features are in a single dynamic column. |
+| [kmeans_fl()](kmeans-fl.md) | Clusterize using the K-Means algorithm, features are in separate columns. |
+| [kmeans_dynamic_fl()](kmeans-dynamic-fl.md) | Clusterize using the K-Means algorithm, features are in a single dynamic column. |
 | [predict_fl()](predict-fl.md) | Predict using an existing trained machine learning model. |
 | [predict_onnx_fl()](predict-onnx-fl.md) | Predict using an existing trained machine learning model in ONNX format. |
 
@@ -59,6 +62,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [series_fit_poly_fl()](series-fit-poly-fl.md) | Fit a polynomial to series using regression analysis. |
 | [series_fbprophet_forecast_fl()](series-fbprophet-forecast-fl.md) | Forecast time series values using the Prophet algorithm. |
 | [series_lag_fl()](series-lag-fl.md) | Apply a lag filter on series. |
+| [series_monthly_decompose_anomalies_fl()](series-monthly-decompose-anomalies-fl.md) | Detect anomalies in a series with monthly seasonality. |
 | [series_moving_avg_fl()](series-moving-avg-fl.md) | Apply a moving average filter on series. |
 | [series_moving_var_fl()](series-moving-var-fl.md) | Apply a moving variance filter on series. |
 | [series_mv_ee_anomalies_fl()](series-mv-ee-anomalies-fl.md) | Multivariate Anomaly Detection for series using elliptical envelope model. |

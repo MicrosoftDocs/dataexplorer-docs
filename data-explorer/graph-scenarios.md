@@ -7,10 +7,10 @@ ms.date: 09/03/2023
 # Customer intent: As a data analyst, I want to learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ---
 
-# What are common scenarios for using Kusto Query Language (KQL) graph semantics (Preview)?
+# What are common scenarios for using Kusto Query Language (KQL) graph semantics?
 
-> [!WARNING]
-> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+
+<!-- //TODO remove and redirect to kusto -->
 
 Graph semantics in Kusto Query Language (KQL) allows you to model and query data as graphs. There are many scenarios where graphs are useful for representing complex and dynamic data that involve many-to-many, hierarchical, or networked relationships, such as social networks, recommendation systems, connected assets, or knowledge graphs.
 
@@ -66,7 +66,7 @@ let rawLogs = datatable (rawLog: string) [
 ];
 ```
 
-One possible way to model a graph from this table is to treat the source IP addresses as nodes and the web requests to resources as edges. You can use the [parse operator](kusto/query/parseoperator.md) to extract the columns you need for the graph and then you can create a graph that represents the network traffic and interactions between different sources and destinations. To create the graph, you can use the [make-graph operator](kusto/query/make-graph-operator.md) specifying the source and destination columns as the edge endpoints, and optionally providing additional columns as edge or node properties.
+One possible way to model a graph from this table is to treat the source IP addresses as nodes and the web requests to resources as edges. You can use the [parse operator](kusto/query/parse-operator.md) to extract the columns you need for the graph and then you can create a graph that represents the network traffic and interactions between different sources and destinations. To create the graph, you can use the [make-graph operator](kusto/query/make-graph-operator.md) specifying the source and destination columns as the edge endpoints, and optionally providing additional columns as edge or node properties.
 
 The following query creates a graph from the raw logs:
 

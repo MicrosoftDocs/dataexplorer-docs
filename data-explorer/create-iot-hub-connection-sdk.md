@@ -187,6 +187,6 @@ kusto_management_client.data_connections.delete(resource_group_name=resource_gro
 
 ---
 
-## Next steps
+## Related content
 
-* [Query data in Azure Data Explorer](web-query-data.md)
+* [Query data in the Azure Data Explorer web UI](web-query-data.md)

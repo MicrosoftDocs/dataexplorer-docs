@@ -23,9 +23,9 @@ To replace multiple strings, see [replace_strings()](replace-strings-function.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*text*|string|&check;|The source string.|
-|*lookup*|string|&check;|The string to be replaced.|
-|*rewrite*|string|&check;|The replacement string.|
+|*text*| `string` | :heavy_check_mark:|The source string.|
+|*lookup*| `string` | :heavy_check_mark:|The string to be replaced.|
+|*rewrite*| `string` | :heavy_check_mark:|The replacement string.|
 
 ## Returns
 
@@ -42,7 +42,7 @@ range x from 1 to 5 step 1
 | extend replaced=replace_string(str, 'is', 'was')
 ```
 
-**Output:**
+**Output**
 
 | x    | str | replaced|
 |---|---|---|
@@ -52,8 +52,8 @@ range x from 1 to 5 step 1
 | 4    | Number is 4.000000  | Number was 4.000000|
 | 5    | Number is 5.000000  | Number was 5.000000|
 
-## See also
+## Related content
 
 * To replace multiple strings, see [replace_strings()](replace-strings-function.md).
 * To replace strings based on regular expression, see [replace_regex()](replace-regex-function.md).
-* To replace a set of characters, see [translate()](translatefunction.md).
+* To replace a set of characters, see [translate()](translate-function.md).

@@ -21,16 +21,16 @@ Useful for calculating distinct counts of "fans" only, while not including appea
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | The tabular input used to count active users.|
-| *IdColumn* | string | &check; | The name of the column with ID values that represent user activity. |
-| *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
-| *Start* | datetime |  &check;  | The analysis start period. |
-| *End* | datetime | &check; | The analysis end period. |
-| *LookbackWindow* | timespan | &check; | The time window defining a period where user appearance is checked. The lookback period starts at ([current appearance] - [lookback window]) and ends on ([current appearance]). |
-| *Period* | timespan | &check; | A constant to count as single appearance (a user will be counted as active if it appears in at least distinct ActivePeriodsCount of this timespan. |
-| *ActivePeriodsCount* | decimal | &check; | The minimal number of distinct active periods to decide if user is active. Active users are those users who appeared in at least (equal or greater than) active periods count. |
-| *Bin* | decimal, datetime, or timespan | &check; | A constant value of the analysis step period. May also be a string of `week`, `month`, or `year`. All periods will be the corresponding [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), or[startofyear](startofyearfunction.md) functions. |
-| *dim1*, *dim2*, ... | dynamic |   | An array of the dimensions columns that slice the activity metrics calculation. |
+| *T* | `string` |  :heavy_check_mark: | The tabular input used to count active users.|
+| *IdColumn* | `string` |  :heavy_check_mark: | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | `string` |  :heavy_check_mark: | The name of the column that represents timeline. |
+| *Start* | `datetime` |   :heavy_check_mark:  | The analysis start period. |
+| *End* | `datetime` |  :heavy_check_mark: | The analysis end period. |
+| *LookbackWindow* | `timespan` |  :heavy_check_mark: | The time window defining a period where user appearance is checked. The lookback period starts at ([current appearance] - [lookback window]) and ends on ([current appearance]). |
+| *Period* | `timespan` |  :heavy_check_mark: | A constant to count as single appearance (a user will be counted as active if it appears in at least distinct ActivePeriodsCount of this timespan. |
+| *ActivePeriodsCount* | `decimal` |  :heavy_check_mark: | The minimal number of distinct active periods to decide if user is active. Active users are those users who appeared in at least (equal or greater than) active periods count. |
+| *Bin* | decimal, datetime, or timespan |  :heavy_check_mark: | A constant value of the analysis step period. May also be a string of `week`, `month`, or `year`. All periods will be the corresponding [startofweek](startofweek-function.md), [startofmonth](startofmonth-function.md), or[startofyear](startofyear-function.md) functions. |
+| *dim1*, *dim2*, ... | `dynamic` |   | An array of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 
@@ -40,7 +40,7 @@ Output table schema is:
 
 |*TimelineColumn*|dim1|..|dim_n|dcount_values|
 |---|---|---|---|---|
-|type: as of *TimelineColumn*|..|..|..|long|
+|type: as of *TimelineColumn*|..|..|..| `long` |
 
 ## Examples
 
@@ -87,4 +87,4 @@ A user is considered active if it fulfills both of the following criteria:
 In the illustration below, the only appearances that are active by this criteria are the following instances: User A on 7/20 and User B on 7/4 (see plugin results above).
 The appearances of User B are included for the lookback window on 7/4, but not for the Start-End time range of 6/29-30.
 
-:::image type="content" source="images/queries/active-users-count.png" alt-text="Graph showing active users based on the loopback window and active period specified in the query.":::
+:::image type="content" source="media/queries/active-users-count.png" alt-text="Graph showing active users based on the loopback window and active period specified in the query.":::

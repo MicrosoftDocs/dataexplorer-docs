@@ -19,7 +19,7 @@ Calculates the absolute value of the input.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x* | int, real, or timespan | &check; | The value to make absolute. |
+| *x* | int, real, or timespan |  :heavy_check_mark: | The value to make absolute. |
 
 ## Returns
 

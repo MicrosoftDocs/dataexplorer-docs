@@ -22,7 +22,7 @@ This article shows you how to configure customer-managed keys.
 To configure customer-managed keys with Azure Data Explorer, you must [set two properties on the key vault](/azure/key-vault/key-vault-ovw-soft-delete): **Soft Delete** and **Do Not Purge**. These properties aren't enabled by default. To enable these properties, perform **Enabling soft-delete** and **Enabling Purge Protection** in [PowerShell](/azure/key-vault/key-vault-soft-delete-powershell) or [Azure CLI](/azure/key-vault/key-vault-soft-delete-cli) on a new or existing key vault. Only RSA keys of size 2048 are supported. For more information about keys, see [Key Vault keys](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys).
 
 > [!NOTE]
-> Data encryption using customer managed keys is not supported on [leader and follower clusters](follower.md).
+> For information about the limitations of using customer managed keys on leader and follower clusters, see [Limitations](follower.md#limitations).
 
 ## Assign a managed identity to the cluster
 
@@ -247,7 +247,7 @@ You can deploy the Azure Resource Manager template by using the Azure portal or 
 
 When you create a new version of a key, you'll need to update the cluster to use the new version. First, call `Get-AzKeyVaultKey` to get the latest version of the key. Then update the cluster's key vault properties to use the new version of the key, as shown in [Enable encryption with customer-managed keys](#enable-encryption-with-customer-managed-keys).
 
-## Next steps
+## Related content
 
 * [Secure Azure Data Explorer clusters in Azure](security.md)
 * [Configure managed identities for your Azure Data Explorer cluster](configure-managed-identities-cluster.md)

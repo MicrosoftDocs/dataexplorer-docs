@@ -240,6 +240,6 @@ If you don't plan to use the resources you have created, run the following comma
 .drop table StormEvents
 ```
 
-## Next steps
+## Related content
 
-[Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

@@ -3,7 +3,7 @@ title:  Export data to SQL
 description: This article describes Export data to SQL in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/20/2023
+ms.date: 05/30/2024
 ---
 # Export data to SQL
 
@@ -23,12 +23,12 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|`async`|string||If specified, the command runs asynchronously.|
-|*SqlTableName*|string|&check;|The name of the SQL database table into which to insert the data. To protect against injection attacks, this name is restricted.|
-|*SqlConnectionString*|string|&check;|The connection string for the SQL endpoint and database. The string must follow the `ADO.NET` connection string format. For security reasons, the connection string is restricted.|
-|*PropertyName*, *PropertyValue*|string||A list of optional [properties](#properties).|
+|`async`| `string` ||If specified, the command runs asynchronously.|
+|*SqlTableName*| `string` | :heavy_check_mark:|The name of the SQL database table into which to insert the data. To protect against injection attacks, this name is restricted.|
+|*SqlConnectionString*| `string` | :heavy_check_mark:|The connection string for the SQL endpoint and database. The string must follow the `ADO.NET` connection string format. For security reasons, the connection string is restricted.|
+|*PropertyName*, *PropertyValue*| `string` ||A list of optional [properties](#supported-properties).|
 
-## Properties
+## Supported properties
 
 |Name               |Values           |Description|
 |-------------------|-----------------|-----------|
@@ -46,6 +46,9 @@ The supported authentication methods for exporting data to SQL are [Microsoft En
 
 * Existing table: table UPDATE and INSERT
 * New table: CREATE, UPDATE, and INSERT
+
+> [!NOTE]
+> Where possible, the preferred method of authentication is Microsoft Entra integrated (impersonation) authentication.
 
 ## Limitations and restrictions
 

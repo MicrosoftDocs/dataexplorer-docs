@@ -3,18 +3,18 @@ title:  geo_point_to_s2cell()
 description: Learn how to use the geo_point_to_s2cell() function to calculate the S2 cell token string value of a geographic location.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 04/04/2024
 ---
 # geo_point_to_s2cell()
 
 Calculates the S2 cell token string value of a geographic location.
 
-S2 Cell can be a useful geospatial clustering tool. The S2 Cell is a cell on a spherical surface and its edges are geodesics. S2 Cell has 31 levels of hierarchy with area coverage ranging from 85,011,012.19km² at the highest level of 0 to 0.44 cm² at the lowest level of 30. S2 Cell preserves the cell center well during level increase from 0 to 30. Two geographic locations can be very close to each other but have different S2 cell tokens.
+S2 cell can be a useful geospatial clustering tool. An S2 cell is a cell on a spherical surface and it has geodesic edges. S2 cells are part of a hierarchy dividing up the Earth's surface. They have a maximum of 31 levels, ranging from zero to 30, which define the number of times a cell is subdivided. Levels range from the largest coverage on level zero with area coverage of 85,011,012.19km², to the lowest coverage of 0.44 cm² at level 30. As S2 cells are subdivided at higher levels, the cell center is preserved well. Two geographic locations can be very close to each other but they have different S2 cell tokens.
 
 >[!NOTE]
 > If you invoke the [geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md) function on an S2 cell token string that was calculated on longitude x and latitude y, the function won't necessarily return x and y.
 
-Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
+Read more about [S2 cell hierarchy](http://s2geometry.io/devguide/s2cell_hierarchy).
 
 ## Syntax
 
@@ -26,17 +26,17 @@ Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierar
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *longitude* | real | &check; | Geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
-| *latitude* | real | &check; | Geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
-| *level* | int | | Defines the requested cell level. Supported values are in the range [0, 30]. If unspecified, the default value `11` is used.|
+| *longitude* | `real` |  :heavy_check_mark: | Geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
+| *latitude* | `real` |  :heavy_check_mark: | Geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
+| *level* | `int` | | Defines the requested cell level. Supported values are in the range [0, 30]. If unspecified, the default value `11` is used.|
 
 ## Returns
 
-The S2 cell token string value of a given geographic location. If the coordinates or levels are invalid, the query will produce an empty result.
+The S2 cell token string value of a given geographic location. If the coordinates or levels are invalid, the query produces an empty result.
 
-## S2 Cell approximate area coverage per level value
+## S2 cell approximate area coverage per level value
 
-For every level, the size of the S2 Cell is similar but not exactly equal. Nearby cell sizes tend to be more equal.
+For every level, the size of the S2 cell is similar but not exactly equal. Nearby cell sizes tend to be more equal.
 
 |Level|Minimum random cell edge length (UK)|Maximum random cell edge length (US)|
 |--|--|--|
@@ -72,15 +72,18 @@ For every level, the size of the S2 Cell is similar but not exactly equal. Nearb
 |29|12 mm|18 mm|
 |30|6 mm|9 mm|
 
-The table source can be found [in this S2 Cell statistical resource](https://s2geometry.io/resources/s2cell_statistics).
+The table source can be found [in this S2 Cell statistical resource](http://s2geometry.io/resources/s2cell_statistics).
 
 For comparison with other available grid systems, see [geospatial clustering with Kusto Query Language](geospatial-grid-systems.md).
 
 ## Examples
 
-### US storm events aggregated by S2 Cell
+### US storm events aggregated by S2 cell
 
-:::image type="content" source="images/geo-point-to-s2cell-function/s2cell.png" alt-text="US s2cell.":::
+The following example finds US storm events aggregated by S2 cells.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQoCMRBEe8F%2F2DIHVwmW1wh2dn5AWHPLJZpkw2ZPUfx4jWch2A3MvDdHZUn7K2Wt69UTivCZnMKOppAPnPtvQm1tnVNCCQ%2BC0x08Vj9MxLZwyGqVbd04itH8sz1su197o5Zxw9z7XDAuHtO0n7FQHkmgOlQlcR5F4RbUg7mEPA4JS%2FcCZ2nOhL0AAAA%3D" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -89,6 +92,12 @@ StormEvents
 | project geo_s2cell_to_central_point(hash)
 | render scatterchart with (kind=map)
 ```
+
+**Output**
+
+:::image type="content" source="media/geo-point-to-s2cell-function/s2-cell.png" alt-text="Screenshot of a map rendering of US storm events aggregated by S2 cell.":::
+
+The following example calculates the S2 cell ID.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2Sk7NyVGwVUhPzY8vyAcKxZfkx0NENXQtDPQMLU0tjCx1FIxM9SwMjIwMTXUULDQBug9pJTwAAAA=" target="_blank">Run the query</a>
@@ -176,7 +185,7 @@ print s2cell = geo_point_to_s2cell(1,1,int(null))
 |--------|
 |        |
 
-## See also
+## Related content
 
 * [geo_point_to_geohash()](geo-point-to-geohash-function.md)
 * [geo_point_to_h3cell()](geo-point-to-h3cell-function.md)

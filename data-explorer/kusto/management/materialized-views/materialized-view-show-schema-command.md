@@ -28,17 +28,17 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 | Name                   | Type   | Required | Description                    |
 |------------------------|--------|----------|--------------------------------|
-| *MaterializedViewName* | string | &check;  | Name of the materialized view. |
+| *MaterializedViewName* | `string` |  :heavy_check_mark:  | Name of the materialized view. |
 
 ### Returns
 
 | Name             | Type   | Description                                          |
 |------------------|--------|------------------------------------------------------|
-| TableName        | string | Name of the materialized view.                       |
-| Schema           | string | CSL or JSON schema of the materialized view.         |
-| DatabaseName     | string | Database that the materialized view belongs to.      |
-| Folder           | string | Folder under which the materialized view is created. |
-| DocString        | string | Description assigned to the materialized view.       |
+| TableName        | `string` | Name of the materialized view.                       |
+| Schema           | `string` | CSL or JSON schema of the materialized view.         |
+| DatabaseName     | `string` | Database that the materialized view belongs to.      |
+| Folder           | `string` | Folder under which the materialized view is created. |
+| DocString        | `string` | Description assigned to the materialized view.       |
 
 ## Examples
 
@@ -51,7 +51,7 @@ The following two commands are equivalent and both display the CSL schema of mat
 .show materialized-view ViewName schema as csl
 ```
 
-**Output:**
+**Output**
 
 | TableName | Schema                                      | DatabaseName | Folder  | DocString |
 |-----------|---------------------------------------------|--------------|---------|-----------|
@@ -65,7 +65,7 @@ The following command displays the JSON schema of materialized view ViewName:
 .show materialized-view ViewName schema as json
 ```
 
-**Output:**
+**Output**
 
 | TableName | Schema                                                                                                                                                                                                                        | DatabaseName | Folder  | DocString |
 |-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|---------|-----------|

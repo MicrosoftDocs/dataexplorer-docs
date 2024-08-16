@@ -3,11 +3,19 @@ title:  SQL external table connection strings
 description: This article describes how to connect and authenticate to SQL external tables in Azure Data Explorer.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 07/13/2023
+ms.date: 05/30/2024
 ---
-# SQL external table connection strings
+# Azure SQL external table connection strings
 
-To access a SQL external table, a connection string is provided during its creation. This connection string specifies the resource to be accessed and its authentication information. Supported SQL external table types include Microsoft SQL Server, MySQL, PostgreSQL, and Cosmos DB. For information on how to manage SQL external tables, see [Create and alter SQL external tables](../../management/external-sql-tables.md).
+To access an SQL external table, a connection string is provided during its creation. This connection string specifies the resource to be accessed and its authentication information.
+
+Supported SQL external table types:
+* Azure SQL Database
+* Azure Database for MySQL
+* Azure Database for PostgreSQL
+* Azure Cosmos DB.
+
+For information on how to manage SQL external tables, see [Create and alter SQL external tables](../../management/external-sql-tables.md).
 
 Regardless of the authentication method used, the principal must have the necessary permissions on the SQL database to perform the desired actions. For more information, see [Required permissions on the SQL database](#required-permissions-on-the-sql-database).
 
@@ -15,17 +23,20 @@ Regardless of the authentication method used, the principal must have the necess
 
 The following table shows the supported authentication methods for each type of database acting as the source for the external table.
 
+> [!NOTE]
+> Where possible, the preferred authentication method is managed identity.
+
 | Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
 |--|--|--|--|
-| [Microsoft Entra integrated (impersonation)](#azure-ad-integrated-impersonation) | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: |
-| [Managed identity](#managed-identity) | :heavy_check_mark: | :x: | :x: | :x: |
+| [Microsoft Entra integrated (impersonation)](#azure-ad-integrated-impersonation) | :heavy_check_mark: | :x: | :x: | :x: |
+| [Managed identity](#managed-identity) | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: |
 | [Username and Password](#username-and-password) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 <a name='azure-ad-integrated-impersonation'></a>
 
 ## Microsoft Entra integrated (impersonation)
 
-With this authentication method, the user or application authenticates via Microsoft Entra ID to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. This method is only supported for SQL Server.
+With this authentication method, the user or application authenticates via Microsoft Entra ID to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. This method is supported for SQL Server and Cosmos DB.
 
 To use Microsoft Entra integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
 
@@ -35,7 +46,7 @@ To use Microsoft Entra integrated authentication (impersonation), add `;Authenti
 
 ## Managed identity
 
-Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. This method is only supported for SQL Server.
+Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. This method is supported for SQL Server and Cosmos DB.
 
 For a system-assigned managed identity, append `;Authentication="Active Directory Managed Identity"` to the connection string. For a user-assigned managed identity, append `;Authentication="Active Directory Managed Identity";User Id={object_id}` to the connection string.
 
@@ -61,10 +72,10 @@ For all authentication methods, the principal (or managed identity) must have th
   * Existing table: table UPDATE and INSERT
   * New table: CREATE, UPDATE, and INSERT
 
-## See also
+## Related content
 
 * [Create and alter SQL external tables](../../management/external-sql-tables.md)
-* [Authentication with the sql_request plugin](../../query/sqlrequestplugin.md#authentication-and-authorization)
-* [Authentication with the mysql_request plugin](../../query/mysqlrequest-plugin.md#authentication-and-authorization)
+* [Authentication with the sql_request plugin](../../query/sql-request-plugin.md#authentication-and-authorization)
+* [Authentication with the mysql_request plugin](../../query/mysql-request-plugin.md#authentication-and-authorization)
 * [Authentication with the postgresql_request plugin](../../query/postgresql-request-plugin.md#authentication-and-authorization)
 * [Authentication with the cosmosdb_request plugin](../../query/cosmosdb-plugin.md#authentication-and-authorization)

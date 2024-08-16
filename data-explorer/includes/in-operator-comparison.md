@@ -9,7 +9,7 @@ The following table provides a comparison of the `in` operators:
 |-----------|--------------|----------------|-------------------------|
 |[`in`](../kusto/query/in-cs-operator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
 |[`!in`](../kusto/query/not-in-cs-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "abc")` |
-|[`in~`](../kusto/query/inoperator.md) |Equals to any of the elements |No | `"Abc" in~ ("123", "345", "abc")` |
+|[`in~`](../kusto/query/in-operator.md) |Equals to any of the elements |No | `"Abc" in~ ("123", "345", "abc")` |
 |[`!in~`](../kusto/query/not-in-operator.md) |Not equals to any of the elements |No | `"bCa" !in~ ("123", "345", "ABC")` |
 
 > [!NOTE]
@@ -17,4 +17,4 @@ The following table provides a comparison of the `in` operators:
 
 For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](../kusto/query/datatypes-string-operators.md).
 
-Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](../kusto/query/tolowerfunction.md) function.
+Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](../kusto/query/tolower-function.md) function.

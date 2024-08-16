@@ -10,7 +10,7 @@ ms.date: 06/29/2023
 
 The `rightsemi` join flavor returns all records from the right side that match a record from the left side. Only columns from the right side are returned.
 
-:::image type="content" source="images/joinoperator/join-rightsemi.png" alt-text="Diagram that shows how the join works." lightbox="images/joinoperator/join-kinds.png":::
+:::image type="content" source="media/joinoperator/join-rightsemi.png" alt-text="Diagram that shows how the join works." lightbox="media/joinoperator/join-kinds.png":::
 
 ## Syntax
 

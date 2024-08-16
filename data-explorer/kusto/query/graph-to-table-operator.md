@@ -1,16 +1,11 @@
 ---
-title: graph-to-table operator (Preview)
+title: graph-to-table operator
 description: Learn how to use the graph-to-table operator to export nodes or edges from a graph to tables.
-ms.author: rocohen
-ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/30/2023
 ---
-# graph-to-table operator (Preview)
-
-> [!WARNING]
-> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+# graph-to-table operator
 
 The `graph-to-table` operator exports nodes or edges from a graph to tables.
 
@@ -35,10 +30,10 @@ The `graph-to-table` operator exports nodes or edges from a graph to tables.
 
 |Name|Type|Required | Description |
 |---|---|---|---|
-|*G*|string|&check;|The input graph source.|
-|*NodesTableName*|string||The name of the exported nodes table.|
-|*EdgesTableName*|string||The name of the exported edges table.|
-|*ColumnName*|string||Export the node hash ID, source node hash ID, or target node hash ID with the given column name.|
+|*G*| `string` | :heavy_check_mark:|The input graph source.|
+|*NodesTableName*| `string` ||The name of the exported nodes table.|
+|*EdgesTableName*| `string` ||The name of the exported edges table.|
+|*ColumnName*| `string` ||Export the node hash ID, source node hash ID, or target node hash ID with the given column name.|
 
 ## Returns
 
@@ -190,8 +185,7 @@ E
 |3855580634910899594|Mallory|Alice|attacks|
 |3855580634910899594|Mallory|Bob|attacks|
 
-## Next steps
+## Related content
 
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
-* [graph-merge operator](graph-merge-operator.md)

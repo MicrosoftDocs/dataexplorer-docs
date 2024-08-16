@@ -14,7 +14,7 @@ zone_pivot_groups: kql-flavors-all
 The stacked area chart visual shows a continuous relationship. This visual is similar to the [Area chart](visualization-areachart.md), but shows the area under each element of a series. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, area charts also visually represent volume. Area charts are ideal for indicating the change among different datasets.
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
@@ -26,8 +26,8 @@ The stacked area chart visual shows a continuous relationship. This visual is si
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
@@ -59,7 +59,7 @@ nyc_taxi
 | render stackedareachart with (xcolumn=pickup_datetime, series=passenger_count)
 ```
 
-:::image type="content" source="images/visualization-stacked-areachart/stacked-area-chart.png" alt-text="Screenshot of stacked area chart visual output." lightbox="images/visualization-stacked-areachart/stacked-area-chart.png":::
+:::image type="content" source="media/visualization-stacked-areachart/stacked-area-chart.png" alt-text="Screenshot of stacked area chart visual output." lightbox="media/visualization-stacked-areachart/stacked-area-chart.png":::
 
 ::: zone-end
 

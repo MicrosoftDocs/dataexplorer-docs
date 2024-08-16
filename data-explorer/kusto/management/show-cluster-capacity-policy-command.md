@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .show cluster policy capacity command
 
-Display a cluster's [capacity policy](capacitypolicy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster.
+Display a cluster's [capacity policy](capacity-policy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster.
 
 ## Permissions
 

@@ -20,7 +20,7 @@ must authenticate by using the HTTP `Authorization` request header.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *AccessToken*| string | &check; | A Microsoft Entra access token for the service.|
+| *AccessToken*| `string` |  :heavy_check_mark: | A Microsoft Entra access token for the service.|
 
 ## Get an access token
 
@@ -98,7 +98,7 @@ Microsoft Entra service principals represent applications or services that need 
         -F resource=https://api.kusto.windows.net
       ```
 
-## See also
+## Related content
 
 * [Authentication overview](../../access-control/index.md)
 * To learn how to perform On-behalf-of (OBO) authentication or Single Page Application (SPA) authentication, see [How to authenticate with Microsoft Authentication Library (MSAL)](authenticate-with-msal.md).

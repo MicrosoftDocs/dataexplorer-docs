@@ -24,7 +24,7 @@ Cluster behavior isn't automatically resumed. To restart the cluster, do so manu
 
 Azure Data Explorer clusters are created by default with the cluster property of `enableAutoStop = true`. This property can be set or altered either on cluster creation or post creation.
 
-Set this property using one of the following methods, our using the [Azure portal](#azure-portal):
+Set this property using one of the following methods, or using the [Azure portal](#azure-portal):
 * [ARM Templates](/azure/templates/microsoft.kusto/clusters?tabs=json#trustedexternaltenant-object)
 * [Azure CLI](/cli/azure/kusto/cluster#az-kusto-cluster-update-optional-parameters)
 * [PowerShell](/powershell/module/az.kusto/new-azkustocluster)

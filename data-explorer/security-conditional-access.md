@@ -28,7 +28,7 @@ Using this feature requires a Microsoft Entra ID P1 or P2 license. To find the r
 
 ## Configure Conditional Access
 
-1. Sign in to the Azure portal as a global administrator, security administrator, or Conditional Access administrator.
+1. Sign in to the Azure portal as at least a [Conditional Access Administrator](/entra/identity/role-based-access-control/permissions-reference#conditional-access-administrator).
 
 1. Browse to **Microsoft Entra ID** > **Security** > **Conditional Access**.
 1. Select **New policy**.
@@ -63,6 +63,6 @@ Using this feature requires a Microsoft Entra ID P1 or P2 license. To find the r
 
      :::image type="content" source="media/conditional-access/configure-test-policy.png" alt-text="Screenshot of the M F A prompt.":::
 
-## Next steps
+## Related content
 
 * [Azure Data Explorer: Zero Trust Security with Conditional Access](https://aka.ms/kusto.conditional.access.blog)

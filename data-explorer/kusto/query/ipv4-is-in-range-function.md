@@ -19,11 +19,10 @@ Checks if IPv4 string address is in IPv4-prefix notation range.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Ipv4Address*| string | &check; | An expression representing an IPv4 address.|
-| *Ipv4Range*| string | &check; | An IPv4 range or list of IPv4 ranges written with [IP-prefix notation](#ip-prefix-notation).|
+| *Ipv4Address*| `string` |  :heavy_check_mark: | An expression representing an IPv4 address.|
+| *Ipv4Range*| `string` |  :heavy_check_mark: | An IPv4 range or list of IPv4 ranges written with [IP-prefix notation](#ip-prefix-notation).|
 
 [!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
-
 
 ## Returns
 
@@ -51,3 +50,8 @@ datatable(ip_address:string, ip_range:string)
 |---|---|---|
 |192.168.1.1|192.168.1.1|true|
 |192.168.1.1|192.168.1.255/24|true|
+
+## Related content
+
+* Overview of [IPv4/IPv6 functions](scalar-functions.md#ipv4ipv6-functions)
+* Overview of [IPv4 text match functions](scalar-functions.md#ipv4-text-match-functions)

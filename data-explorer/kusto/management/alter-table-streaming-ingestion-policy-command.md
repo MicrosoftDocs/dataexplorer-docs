@@ -7,13 +7,13 @@ ms.date: 06/05/2023
 ---
 # .alter table policy streamingingestion command
 
-Use this command to change the table streaming policy ingestion. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
+Use this command to change the table streaming policy ingestion. Use the [streaming policy](../management/streaming-ingestion-policy.md) to manage streaming ingestion for databases and tables.  
 
 Use in low latency scenarios, where ingestion time is less than 10 seconds for varying data volume. You can optimize processing for many tables in one or more databases, when tables receive a few records per second, whereas the ingestion volume is thousands of records per second.
 
 Use the classic bulk ingestion instead of streaming ingestion when the amount of data grows to more than 4 Gb per hour per table.
 
-To learn how to implement streaming ingestion, see [streaming policy](../management/streamingingestionpolicy.md).
+To learn how to implement streaming ingestion, see [streaming policy](../management/streaming-ingestion-policy.md).
 
 ## Permissions
 
@@ -29,8 +29,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check;| The name of the table.|
-| *PolicyObject* |string | &check; | A serialized policy object. For more information, see [streaming ingestion](../../ingest-data-streaming.md).|
+| *TableName* | `string` |  :heavy_check_mark:| The name of the table.|
+| *PolicyObject* | `string` |  :heavy_check_mark: | A serialized policy object. For more information, see [streaming ingestion](../../ingest-data-streaming.md).|
 
 ## Returns
 

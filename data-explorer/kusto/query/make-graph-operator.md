@@ -1,14 +1,11 @@
 ---
-title: make-graph operator (Preview)
+title: make-graph operator
 description: Learn how to use the graph-to-table operator to build a graph structure from tabular inputs of edges and nodes.
 ms.reviewer: rocohen
 ms.topic: reference
 ms.date: 09/03/2023
 ---
-# make-graph operator (Preview)
-
-> [!WARNING]
-> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+# make-graph operator
 
 The `make-graph` operator builds a graph structure from tabular inputs of edges and nodes.
 
@@ -20,11 +17,11 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *Edges* | string | &check; | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
-| *SourceNodeId* | string | &check; | The column in *Edges* with the source node IDs of the edges. |
-| *TargetNodeId* | string | &check; | The column in *Edges* with the target node IDs of the edges. |
-| *Nodes* | string || The tabular expressions containing the properties of the nodes in the graph. |
-| *NodesId* | string || The columns with the node IDs in *Nodes*. |
+| *Edges* | `string` |  :heavy_check_mark: | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
+| *SourceNodeId* | `string` |  :heavy_check_mark: | The column in *Edges* with the source node IDs of the edges. |
+| *TargetNodeId* | `string` |  :heavy_check_mark: | The column in *Edges* with the target node IDs of the edges. |
+| *Nodes* | `string` || The tabular expressions containing the properties of the nodes in the graph. |
+| *NodesId* | `string` || The columns with the node IDs in *Nodes*. |
 
 ## Returns
 
@@ -71,7 +68,7 @@ edges
 |---|---|---|
 |Mallory|Bob|Trent|
 
-## See also
+## Related content
 
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)

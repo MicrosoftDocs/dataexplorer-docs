@@ -88,7 +88,6 @@ Azure Data Explorer supports creating managed private endpoints to the following
 * [Azure Data Explorer](data-explorer-overview.md)
 * [Azure SQL](/azure/azure-sql/azure-sql-iaas-vs-paas-what-is-overview)
 * [Azure Digital Twins](/azure/digital-twins/overview)
-* [Azure Monitor](/azure/azure-monitor/overview)
 
 ## Limitations
 

@@ -44,6 +44,6 @@ Once you've finished configuring ODBC, you can bring sample data into Tableau.
 
 1. Now you can create visualizations in Tableau based on the data you brought in from Azure Data Explorer. For more information, see [Tableau Learning](https://www.tableau.com/learn).
 
-## Next steps
+## Related content
 
-* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries using Kusto Query Language](kusto/query/tutorials/learn-common-operators.md)

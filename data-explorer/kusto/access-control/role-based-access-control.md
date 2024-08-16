@@ -7,6 +7,8 @@ ms.date: 05/30/2023
 ---
 # Kusto role-based access control
 
+<!-- //TODO: REDIRECT TO KUSTO -->
+
 Kusto uses a role-based access control (RBAC) model in which [principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals) get access to resources based on their assigned roles. Roles are defined for a specific cluster, database, table, external table, materialized view, or function. When defined for a cluster, the role applies to all databases in the cluster. When defined for a database, the role applies to all entities in the database.
 
 Azure Resource Manager (ARM) roles, such as subscription owner or cluster owner, grant access permissions for resource administration. For data administration, you need the roles described in this document.
@@ -25,7 +27,7 @@ The **Dependencies** column lists the minimum roles required to obtain the role 
 The **Manage** column offers ways to add or remove role principals.
 
 |Scope|Role|Permissions|Dependencies|Manage|
-|--|--|--|--|
+|--|--|--|--|--|
 |Cluster|AllDatabasesAdmin |Full permission to all databases in the cluster. May show and alter certain cluster-level policies. Includes all permissions. ||[Azure portal](../../manage-cluster-permissions.md)|
 |Cluster|AllDatabasesViewer |Read all data and metadata of any database in the cluster. ||[Azure portal](../../manage-cluster-permissions.md)|
 |Cluster|AllDatabasesMonitor |Execute `.show` commands in the context of any database in the cluster.||[Azure portal](../../manage-cluster-permissions.md)|
@@ -41,8 +43,8 @@ The **Manage** column offers ways to add or remove role principals.
 |Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-materialized-view-security-roles.md)|
 |Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-function-security-roles.md)|
 
-## See also
+## Related content
 
 * [Manage cluster permissions](../../manage-cluster-permissions.md)
-* [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md)
+* [Allow cross-tenant queries and commands](../../cross-tenant-query-and-commands.md)
 * [Manage view access to tables within the same database](../management/manage-table-view-access.md)

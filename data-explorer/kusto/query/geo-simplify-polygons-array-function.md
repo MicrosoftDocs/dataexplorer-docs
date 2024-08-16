@@ -19,7 +19,7 @@ Simplifies polygons by replacing nearly straight chains of short edges with a si
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *polygon* | dynamic | &check; | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *polygon* | `dynamic` |  :heavy_check_mark: | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 | *tolerance* | int, long, or real | | Defines minimum distance in meters between any two vertices. Supported values are in the range [0, ~7,800,000 meters]. If unspecified, the default value `10` is used.|
 
 ## Returns

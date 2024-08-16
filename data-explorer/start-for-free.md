@@ -34,33 +34,33 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 
 | Feature | Full cluster | Free cluster |
 |--|--|--|
-| Kusto Query Language | &check; | &check; |
-| Database objects (tables, columns, functions) | &check; | &check; |
-| Materialized views | &check; | &check; |
-| Tools (Azure Data Explorer web UI) | &check; | &check; |
-| Dashboards (PowerBI, Azure Data Explorer web UI, Grafana) | &check; | &check; |
-| Streaming ingestion | &check; |&check; |
-| Azure Data Studio notebooks | &check; | &check; |
-| SDKs (all languages) | &check; | &check; |
-| Time series and Machine Learning functions | &check; | &check; |
-| Geospatial functions | &check; | &check; |
-| Soft delete | &check; | &check; |
-| Microsoft Power Automate and Azure Logic Apps connectors | &check; | &check; |
-| Event Hub connector | &check; | &check; |
-| Event Grid connector |  &check; | |
-| External tables | &check; | |
-| Continuous export | &check; | |
-| Workload groups | &check; | |
-| Purge | &check; | |
-| Follower clusters | &check; | |
-| Partitioning policy | &check; | |
-| Python and R plugins | &check; | |
-| Enterprise readiness (Customer managed keys, Virtual Network, disk encryption, managed identities) | &check; | |
-| Autoscale | &check; | |
-| Azure Monitor and Insights | &check; | |
-| Azure Resource Manager (ARM) templates | &check; | |
+| Kusto Query Language |  :heavy_check_mark: |  :heavy_check_mark: |
+| Database objects (tables, columns, functions) |  :heavy_check_mark: |  :heavy_check_mark: |
+| Materialized views |  :heavy_check_mark: |  :heavy_check_mark: |
+| Tools (Azure Data Explorer web UI) |  :heavy_check_mark: |  :heavy_check_mark: |
+| Dashboards (PowerBI, Azure Data Explorer web UI, Grafana) |  :heavy_check_mark: |  :heavy_check_mark: |
+| Streaming ingestion |  :heavy_check_mark: | :heavy_check_mark: |
+| Azure Data Studio notebooks |  :heavy_check_mark: |  :heavy_check_mark: |
+| SDKs (all languages) |  :heavy_check_mark: |  :heavy_check_mark: |
+| Time series and Machine Learning functions |  :heavy_check_mark: |  :heavy_check_mark: |
+| Geospatial functions |  :heavy_check_mark: |  :heavy_check_mark: |
+| Soft delete |  :heavy_check_mark: |  :heavy_check_mark: |
+| Microsoft Power Automate and Azure Logic Apps connectors |  :heavy_check_mark: |  :heavy_check_mark: |
+| Event Hub connector |  :heavy_check_mark: |  :heavy_check_mark: |
+| Event Grid connector |   :heavy_check_mark: | |
+| External tables |  :heavy_check_mark: | |
+| Continuous export |  :heavy_check_mark: | |
+| Workload groups |  :heavy_check_mark: | |
+| Purge |  :heavy_check_mark: | |
+| Follower clusters |  :heavy_check_mark: | |
+| Partitioning policy |  :heavy_check_mark: | |
+| Python and R plugins |  :heavy_check_mark: | |
+| Enterprise readiness (Customer managed keys, Virtual Network, disk encryption, managed identities) |  :heavy_check_mark: | |
+| Autoscale |  :heavy_check_mark: | |
+| Azure Monitor and Insights |  :heavy_check_mark: | |
+| Azure Resource Manager (ARM) templates |  :heavy_check_mark: | |
 
-## Next steps
+## Related content
 
 * [Get started with your free cluster](start-for-free-web-ui.md)
 * [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)

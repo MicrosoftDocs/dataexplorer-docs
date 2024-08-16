@@ -51,7 +51,7 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
 
 * The `.purge` command is executed against the Data Management endpoint:
   `https://ingest-[YourClusterName].[region].kusto.windows.net`.
-   The command requires [database admin](../management/access-control/role-based-access-control.md)
+   The command requires [database admin](../access-control/role-based-access-control.md)
    permissions on the relevant databases.
 * Due to the purge process performance impact, and to guarantee that
    [purge guidelines](#purge-guidelines) have been followed, the caller is expected to modify the data schema so that
@@ -60,8 +60,8 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
 * The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge.
 `Predicate` size is limited to 1 MB. When constructing the `predicate`:
 
-  * Use the ['in' operator](../query/inoperator.md), for example, `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`.
-  * Note the limits of the ['in' operator](../query/inoperator.md) (list can contain up to `1,000,000` values).
+  * Use the ['in' operator](../query/in-operator.md), for example, `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`.
+  * Note the limits of the ['in' operator](../query/in-operator.md) (list can contain up to `1,000,000` values).
   * If the query size is large, use [`externaldata` operator](../query/externaldata-operator.md), for example `where UserId in (externaldata(UserId:string) ["https://...blob.core.windows.net/path/to/file?..."])`. The file stores the list of IDs to purge.
   * The total query size, after expanding all `externaldata` blobs (total size of all blobs), can't exceed 64 MB.
 
@@ -73,10 +73,10 @@ Monitor the purge request queue size, and keep within adequate limits to match t
 To reduce purge execution time:
 
 * Follow the [purge guidelines](#purge-guidelines) to decrease the amount of purged data.
-* Adjust the [caching policy](../management/cachepolicy.md) since purge takes longer on cold data.
+* Adjust the [caching policy](../management/cache-policy.md) since purge takes longer on cold data.
 * Scale out the cluster
 
-* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacitypolicy.md#extents-purge-rebuild-capacity).
+* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacity-policy.md#extents-purge-rebuild-capacity).
 
 ## Trigger the purge process
 
@@ -277,7 +277,7 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 |`DatabaseName`    |     Database name to filter results.    |Optional
 
 > [!NOTE]
-> Status will be provided only on databases for which the client has [Database Admin](../management/access-control/role-based-access-control.md) permissions.
+> Status will be provided only on databases for which the client has [Database Admin](../access-control/role-based-access-control.md) permissions.
 
 **Examples**
 
@@ -413,6 +413,6 @@ The output is the same as the '.show tables' command output (returned without th
 |---|---|---|---
 |OtherTable|MyDatabase|---|---
 
-## Next steps
+## Related content
 
 * [Enable data purge on your Azure Data Explorer cluster](../../data-purge-portal.md)

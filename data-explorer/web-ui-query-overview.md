@@ -3,7 +3,7 @@ title: Azure Data Explorer web UI query overview
 description: This article describes the query page in Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 05/28/2023
+ms.date: 12/18/2023
 ---
 
 # Azure Data Explorer web UI query overview
@@ -37,6 +37,14 @@ To learn how to add a connection, see [Add a cluster connection in the Azure Dat
 
 > [!TIP]
 > Add clusters and databases to your favorites list with the star icon next to the resource name. To view only your favorite resources, select the star icon next to the filter text box.
+
+## Gain quick insights into table data
+
+The data profile feature provides quick access to column names, types, essential statistics, and top values within each column.
+
+:::image type="content" source="media/web-ui-query/data-profile-storms.png" alt-text="Screenshot of a data profile for the storm events table.":::
+
+For more information, see [Gain quick insights into table data](data-profile.md).
 
 ## Write and run queries
 
@@ -80,7 +88,7 @@ In the query page toolbar, there are several options to manage your queries and 
 
 :::image type="content" source="media/web-ui-query/toolbar-options.png" alt-text="Screenshot of extended toolbar options." lightbox="media/web-ui-query/toolbar-options.png":::
 
-## See also
+## Related content
 
 * Explore query results with the [web UI results grid](web-results-grid.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

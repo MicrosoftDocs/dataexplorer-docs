@@ -21,9 +21,9 @@ Checks whether an IPv6 string address is in any of the specified IPv6 address ra
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Ipv6Address* | string | &check; | An expression representing an IPv6 address.|
-| *Ipv6Range* | string | &check; | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
-| *Ipv6Ranges* | dynamic | &check; | An array containing IPv6 ranges using [IP-prefix notation](#ip-prefix-notation).|
+| *Ipv6Address* | `string` |  :heavy_check_mark: | An expression representing an IPv6 address.|
+| *Ipv6Range* | `string` |  :heavy_check_mark: | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
+| *Ipv6Ranges* | `dynamic` |  :heavy_check_mark: | An array containing IPv6 ranges using [IP-prefix notation](#ip-prefix-notation).|
 
 > [!NOTE]
 > Either one or more *IPv6Range* strings or an *IPv6Ranges* dynamic array is required.
@@ -64,3 +64,7 @@ IPs
 |a5e:f127:8a9d:146d:e102:b5d3:c755:abce|	True|
 |a5e:f127:8a9d:146d:e102:b5d3:c755:abcf|	True|
 |a5e:f127:8a9d:146d:e102:b5d3:c756:abd1|	False|
+
+## Related content
+
+* Overview of [IPv4/IPv6 functions](scalar-functions.md#ipv4ipv6-functions)

@@ -8,6 +8,7 @@ ms.date: 06/28/2023
 ---
 # Access control overview
 
+<!-- //TODO remove and redirect to kusto -->
 Azure Data Explorer access control is based on authentication and authorization. Each query and command on an Azure Data Explorer resource, such as a cluster or database, must pass both authentication and authorization checks.
 
 * [Authentication](#authentication): Validates the identity of the security principal making a request
@@ -56,7 +57,20 @@ Before carrying out an action on an Azure Data Explorer resource, all authentica
 
 The association of security principals to security roles can be defined individually or by using security groups that are defined in Microsoft Entra ID. For more information on how to assign security roles, see [Security roles overview](../management/security-roles.md).
 
-## Next steps
+## Group authorization
+
+Authorization can be granted to Microsoft Entra ID groups by assigning one or more roles to the group. 
+
+When the authorization of a user or application principal is checked, the system first checks for an explicit role assignment permitting the specific action. If no such role assignment exists, the system then analyzes the principal's membership across all groups that could potentially authorize the action. If the principal is confirmed to be a member of any of these groups, the requested action is authorized. Otherwise, if the principal is not a member of any such groups, the action doesn't pass the authorization check and the action isn't allowed.
+
+> [!NOTE]
+>
+> Checking group memberships can be resource-intensive. 
+> Since group memberships don't change frequently, the results of membership checks are cached.
+> The caching duration varies and is influenced by factors such as the membership result (whether the principal is a member or not), the type of principal (user or application), among others.
+> The maximum caching duration can extend up to three hours, while the minimum duration is 30 minutes.
+
+## Related content
 
 * Understand [Kusto role-based access control](role-based-access-control.md).
 * For user or application authentication, use the [Kusto client libraries](../api/client-libraries.md).

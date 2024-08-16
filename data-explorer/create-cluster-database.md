@@ -76,31 +76,11 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
 
 ### [PowerShell](#tab/powershell)
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
-* If you choose to install and use [PowerShell](/powershell/scripting/install/installing-powershell-on-windows) locally, follow the steps in [Configure parameters](#configure-parameters).
+* Set up your environment using the instructions in [Use Kusto cmdlets in Azure PowerShell](kusto/api/powershell/azure-powershell.md).
 
 ### Configure parameters
 
 The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps to set up the environment:
-
-1. Run the following command to sign in to Azure:
-
-    ```azurepowershell-interactive
-    Connect-AzAccount
-    ```
-
-1. Set the subscription where you want your cluster to be created:
-
-    ```azurepowershell-interactive
-     Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    ```
-
-1. When running Azure CLI locally or in the Azure Cloud Shell, you need to install the `Az.Kusto` module on your device:
-
-    ```azurepowershell-interactive
-     Install-Module -Name Az.Kusto
-    ```
 
 ### [ARM template](#tab/arm)
 
@@ -204,7 +184,7 @@ This section guides you through the process of creating an Azure Data Explorer c
    | resource_group_name | *testrg* | The resource group name where the cluster will be created. |
 
     > [!NOTE]
-    > **Create a cluster** is a long running operation. Method **begin_create_or_update** returns an instance of LROPoller, see [LROPoller class](/python/api/msrest/msrest.polling.lropoller) to get more information.
+    > **Create a cluster** is a long running operation. Method **begin_create_or_update** returns an instance of LROPoller, see [LROPoller class](/python/api/azure-core/azure.core.polling.lropoller) to get more information.
 
 1. Run the following command to check whether your cluster was successfully created:
 
@@ -733,7 +713,7 @@ The following code shows how to create a database. The package imports and envir
    | cluster-name | *azureclitest* | The name of your cluster where the database will be created.|
    | database-name | *clidatabase* | The name of your database.|
    | resource-group | *testrg* | The resource group name where the cluster will be created. |
-   | read-write-database | *P365D* *P31D* *westus* | The database type. Parameters: *soft-delete-period* - Signifies the amount of time the data will be kept available to query. See [retention policy](kusto/management/retentionpolicy.md) for more information. *hot-cache-period* - Signifies the amount of time the data will be kept in cache. See [cache policy](kusto/management/cachepolicy.md) for more information. *location* -The location where the database will be created. |
+   | read-write-database | *P365D* *P31D* *westus* | The database type. Parameters: *soft-delete-period* - Signifies the amount of time the data will be kept available to query. See [retention policy](kusto/management/retention-policy.md) for more information. *hot-cache-period* - Signifies the amount of time the data will be kept in cache. See [cache policy](kusto/management/cache-policy.md) for more information. *location* -The location where the database will be created. |
 
 1. Run the following command to see the database that you created:
 
@@ -769,7 +749,7 @@ The cluster and database are created together with the ARM template in the previ
 
 ---
 
-## Next steps
+## Next step
 
-* [Ingest data](ingest-data-overview.md)
-* [Query data](web-query-data.md)
+> [!div class="nextstepaction"]
+> [Create a table](create-table-wizard.md)

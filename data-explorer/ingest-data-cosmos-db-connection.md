@@ -8,11 +8,9 @@ ms.date: 06/15/2023
 
 # Ingest data from Azure Cosmos DB into Azure Data Explorer
 
-[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
-
 Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Cosmos DB for NoSql](/azure/cosmos-db/nosql/) using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your Data Explorer table. The change feed listens for new and updated documents but doesn't log deletes. For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
-Each data connection listens to a specific Cosmos DB container and ingests data into a specified table (more than one connection can ingest in a single table). The ingestion method supports streaming ingestion (when enabled) and batch ingestion.
+Each data connection listens to a specific Cosmos DB container and ingests data into a specified table (more than one connection can ingest in a single table). The ingestion method supports streaming ingestion (when enabled) and queued ingestion.
 
 In this article, you'll learn how to set up a Cosmos DB change feed data connection to ingest data into Azure Data Explorer with System Managed Identity. Review the [considerations](#considerations) before you start.
 
@@ -92,10 +90,10 @@ Use the following steps to create a table and apply a table mapping:
 
 If your scenario requires more than a simple mapping of fields, you can use update policies to transform and map data ingested from your change feed.
 
-[Update policies](kusto/management/updatepolicy.md) are a way to transform data as it's ingested into your table. They're written in Kusto Query Language and are run on the ingestion pipeline. They can be used to transform data from a Cosmos DB change feed ingestion, such as in the following scenarios:
+[Update policies](kusto/management/update-policy.md) are a way to transform data as it's ingested into your table. They're written in Kusto Query Language and are run on the ingestion pipeline. They can be used to transform data from a Cosmos DB change feed ingestion, such as in the following scenarios:
 
 - Your documents contain arrays that would be easier to query if they're transformed in multiple rows using the [`mv-expand`](kusto/management/alter-table-update-policy-command.md) operator.
-- You want to filter out documents. For example, you can filter out documents by type using the [`where`](kusto/query/whereoperator.md) operator.
+- You want to filter out documents. For example, you can filter out documents by type using the [`where`](kusto/query/where-operator.md) operator.
 - You have complex logic that can't be represented in a table mapping.
 
 For information on how to create and manage update policies, see [Update policy overview](kusto/management/alter-table-update-policy-command.md).
@@ -322,7 +320,7 @@ To configure your Cosmos DB connection:
 
 > [!NOTE]
 >
-> Azure Data Explorer has an aggregation (batching) policy for data ingestion designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of one GB, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batchingpolicy.md). To reduce latency, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
+> Azure Data Explorer has an aggregation (batching) policy for queued data ingestion designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of one GB, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batching-policy.md). To reduce latency, configure your table to support streaming. See [streaming policy](kusto/management/streaming-ingestion-policy.md).
 
 ## Considerations
 
@@ -396,7 +394,7 @@ The connector invokes the Cosmos DB Change Feed API on each physical partition o
 | Fixed costs | Fixed costs are about 2 RUs per physical partition every second. |
 | Variable costs | Variable costs are about 2% of the RUs used to write documents, though this may vary depending on your scenario. For example, if you write 100 documents to a Cosmos DB container, the cost of writing those documents is 1,000 RUs. The corresponding cost for using the connector to read those document is about 2% the cost to write them, approximately 20 RUs. |
 
-## Next steps
+## Related content
 
-- [Get latest versions of Azure Cosmos DB documents](ingest-data-cosmos-db-queries.md)
-- [Kusto Query Language (KQL) overview](kusto/query/index.md)
+* [Get latest versions of Azure Cosmos DB documents](ingest-data-cosmos-db-queries.md)
+* [Kusto Query Language (KQL) overview](kusto/query/index.md)

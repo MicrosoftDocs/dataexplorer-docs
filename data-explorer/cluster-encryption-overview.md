@@ -31,7 +31,7 @@ Use the steps in [Enable disk encryption](cluster-encryption-disk.md) to secure 
 
 Every Azure Data Explorer cluster runs on dedicated resources in a single region. All data is stored within the region.
 
-## Next steps
+## Related content
 
 * [Enable double encryption for your cluster](cluster-encryption-double.md)
 * [Enable disk encryption for your cluster](cluster-encryption-disk.md)

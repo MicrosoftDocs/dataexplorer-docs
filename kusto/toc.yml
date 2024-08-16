@@ -1,0 +1,57 @@
+items:
+  - name: Kusto documentation
+    href: index.yml
+  - name: What is Kusto Query Language?
+    href: query/index.md
+  - name: Get started with KQL
+    expanded: true
+    items:
+      - name: Learning resources
+        href: query/kql-learning-resources.md
+      - name: Quick reference guide
+        href: query/kql-quick-reference.md
+      - name: 1 - Learn common operators
+        href: query/tutorials/learn-common-operators.md
+      - name: 2 - Use aggregation functions
+        href: query/tutorials/use-aggregation-functions.md
+      - name: 3 - Join data from multiple tables
+        href: query/tutorials/join-data-from-multiple-tables.md
+      - name: 4 - Create geospatial visualizations
+        href: query/tutorials/create-geospatial-visualizations.md
+      - name: Train me
+        items:
+          - name: "Explore the fundamentals of data analysis using Kusto Query Language"
+            href: /training/paths/kusto-query-language/
+          - name: "Write your first query with Kusto Query Language"
+            href: /training/modules/write-first-query-kusto-query-language/
+          - name: "Gain insights from your data by using Kusto Query Language"
+            href: /training/modules/gain-insights-data-kusto-query-language/
+          - name: "Multi-table queries using Kusto Query Language"
+            href: /training/modules/multi-table-queries-with-kusto-query-language/
+  - name: Use queries and commands
+    items:
+      - name: Kusto.Explorer
+        items:
+          - name: Kusto.Explorer installation and user interface
+            href: tools/kusto-explorer.md
+          - name: Using Kusto.Explorer
+            href: tools/kusto-explorer-using.md
+          - name: Kusto.Explorer options
+            href: tools/kusto-explorer-options.md
+          - name: Keyboard shortcuts
+            href: tools/kusto-explorer-shortcuts.md
+          - name: Kusto.Explorer code features
+            displayName: Code Refactoring, Code Navigation, Code Analyzer
+            href: tools/kusto-explorer-code-features.md
+          - name: Troubleshooting Kusto.Explorer
+            href: tools/kusto-explorer-troubleshooting.md
+      - name: Kusto.Cli
+        href: tools/kusto-cli.md
+      - name: Kusto extension for Azure Data Studio
+        href: tools/azure-data-studio.md
+  - name: Query language
+    href: query/toc.yml
+  - name: Management commands
+    href: management/toc.yml
+  - name: APIs and SDKs
+    href: api/toc.yml

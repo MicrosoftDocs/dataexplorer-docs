@@ -1,11 +1,11 @@
 ---
-title:  .alter managed_identity policy command
-description: Learn how to use the `.alter managed_identity policy` command to set the ManagedIdentity policy of the cluster or database.
+title:  .alter policy managed_identity command
+description: Learn how to use the `.alter policy managed_identity` command to set the ManagedIdentity policy of the cluster or database.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 11/30/2023
 ---
-# .alter managed_identity policy command
+# .alter policy managed_identity command
 
 Sets the ManagedIdentity policy of the cluster or the specified database, overriding the existing policy.
 
@@ -28,8 +28,8 @@ The command to alter the policy requires [AllDatabasesAdmin](access-control/role
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ArrayOfPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects.|
-|*DatabaseName*|string|&check;|The name of the database.|
+|*ArrayOfPolicyObjects*|array| :heavy_check_mark:|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
 
 > [!NOTE]
 > Policy objects must define the *ObjectId* and *AllowedUsages* properties. Other properties are automatically populated.
@@ -38,7 +38,7 @@ The command to alter the policy requires [AllDatabasesAdmin](access-control/role
 
 The object ID is available in the Azure portal on the managed identity's overview page.
 
-:::image type="content" source="images/managed-identity-policy\azure-portal.png" alt-text="Look for 'Object (principal) ID.":::
+:::image type="content" source="media/managed-identity-policy\azure-portal.png" alt-text="Look for 'Object (principal) ID.":::
 
 ## Returns
 

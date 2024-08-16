@@ -7,7 +7,7 @@ ms.date: 06/05/2023
 ---
 # .alter table policy update command
 
-Use this command to change the table update policy. The [update policy](updatepolicy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
+Use this command to change the table update policy. The [update policy](update-policy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 
 > [!NOTE]
 > The source table and the table for which the update policy is defined must be in the same database.
@@ -27,9 +27,9 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *DatabaseName* | string | | The name of the database. If you run the command from a database context that doesn't contain the specified table, then this parameter is required.|
-| *TableName* | string | &check;| The name of the table.|
-| *ArrayOfPolicyObjects* |string | &check; | A serialized array of policy objects. For more information, see [update policy](updatepolicy.md).|
+| *DatabaseName* | `string` | | The name of the database. If you run the command from a database context that doesn't contain the specified table, then this parameter is required.|
+| *TableName* | `string` |  :heavy_check_mark:| The name of the table.|
+| *ArrayOfPolicyObjects* | `string` |  :heavy_check_mark: | A serialized array of policy objects. For more information, see [update policy](update-policy.md).|
 
 ## Returns
 

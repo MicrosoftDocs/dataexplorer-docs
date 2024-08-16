@@ -23,7 +23,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*EntityName*|string|&check;|The table or database name for which to show the extent tags retention policy.|
+|*EntityName*| `string` | :heavy_check_mark:|The table or database name for which to show the extent tags retention policy.|
 
 ## Returns
 

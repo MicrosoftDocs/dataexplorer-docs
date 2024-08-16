@@ -13,9 +13,8 @@ zone_pivot_groups: kql-flavors-all
 
 The line chart visual is the most basic type of chart. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Line charts track changes over short and long periods of time. When smaller changes exist, line graphs are more useful than bar graphs.
 
- 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
@@ -27,13 +26,13 @@ The line chart visual is the most basic type of chart. The first column of the q
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
 All properties are optional.
-    
+
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`accumulate`  |Whether the value of each measure gets added to all its predecessors (`true` or `false`).|
@@ -59,7 +58,7 @@ This visualization supports splitting into multiple y-axis values:
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
-    
+
 ## Examples
 
 ### Render a line chart
@@ -74,7 +73,7 @@ StormEvents
 | render linechart 
 ```
 
-:::image type="content" source="images/visualization-linechart/line-chart.png" alt-text="Screenshot of line chart visualization output." lightbox="images/visualization-linechart/line-chart.png":::
+:::image type="content" source="media/visualization-linechart/line-chart.png" alt-text="Screenshot of line chart visualization output." lightbox="media/visualization-linechart/line-chart.png":::
 
 ### Label a line chart
 
@@ -93,7 +92,7 @@ StormEvents
     )
 ```
 
-:::image type="content" source="images/visualization-linechart/line-chart-with-labels.png" alt-text="Screenshot of line chart with labels." lightbox="images/visualization-linechart/line-chart-with-labels.png":::
+:::image type="content" source="media/visualization-linechart/line-chart-with-labels.png" alt-text="Screenshot of line chart with labels." lightbox="media/visualization-linechart/line-chart-with-labels.png":::
 
 ### Limit values displayed on the y-axis
 
@@ -107,7 +106,7 @@ StormEvents
 | render linechart with (ymin=7000, ymax=300000)
 ```
 
-:::image type="content" source="images/visualization-linechart/line-chart-limit-y-values.png" alt-text="Screenshot of line chart with limitations on y-axis values." lightbox="images/visualization-linechart/line-chart-limit-y-values.png":::
+:::image type="content" source="media/visualization-linechart/line-chart-limit-y-values.png" alt-text="Screenshot of line chart with limitations on y-axis values." lightbox="media/visualization-linechart/line-chart-limit-y-values.png":::
 
 ### View multiple y-axes
 
@@ -121,9 +120,9 @@ StormEvents
 | render linechart with (ysplit=panels)
 ```
 
-:::image type="content" source="images/visualization-linechart/line-chart-ysplit-panels.png" alt-text="Screenshot of the time chart query result with the ysplit panels property." lightbox="images/visualization-linechart/line-chart-ysplit-panels.png":::
+:::image type="content" source="media/visualization-linechart/line-chart-ysplit-panels.png" alt-text="Screenshot of the time chart query result with the ysplit panels property." lightbox="media/visualization-linechart/line-chart-ysplit-panels.png":::
 
-## See also
+## Related content
 
 * [Add a query visualization in the web UI](../../add-query-visualization.md)
 

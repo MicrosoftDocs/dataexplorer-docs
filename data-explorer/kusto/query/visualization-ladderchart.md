@@ -14,7 +14,7 @@ zone_pivot_groups: kql-flavors-all
 The last two columns are the x-axis, and the other columns are the y-axis.
 
 > [!NOTE]
-> * This visualization can only be used in the context of the [render operator](renderoperator.md).
+> * This visualization can only be used in the context of the [render operator](render-operator.md).
 > * This visualization is available in [Kusto.Explorer](../../data-explorer-overview.md) but not in the [Azure Data Explorer web UI](../../web-ui-query-overview.md).
 
 ## Syntax
@@ -27,13 +27,13 @@ The last two columns are the x-axis, and the other columns are the y-axis.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
 All properties are optional.
-    
+
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
@@ -60,7 +60,7 @@ StormEvents
 | render ladderchart
 ```
 
-:::image type="content" source="images/visualization-ladderchart/ladderchart-state.png" alt-text="Screenshot of ladderchart showing dates of storms by state." lightbox="images/visualization-ladderchart/ladderchart-state.png":::
+:::image type="content" source="media/visualization-ladderchart/ladderchart-state.png" alt-text="Screenshot of ladderchart showing dates of storms by state." lightbox="media/visualization-ladderchart/ladderchart-state.png":::
 
 ### Dates of storms by event type
 
@@ -71,7 +71,7 @@ StormEvents
 | render ladderchart
 ```
 
-:::image type="content" source="images/visualization-ladderchart/ladderchart-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by event type." lightbox="images/visualization-ladderchart/ladderchart-event-type.png":::
+:::image type="content" source="media/visualization-ladderchart/ladderchart-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by event type." lightbox="media/visualization-ladderchart/ladderchart-event-type.png":::
 
 ### Dates of storms by state and event type
 
@@ -82,7 +82,7 @@ StormEvents
 | render ladderchart with (series=State, EventType)
 ```
 
-:::image type="content" source="images/visualization-ladderchart/ladderchart-state-and-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by state and event type." lightbox="images/visualization-ladderchart/ladderchart-state-and-event-type.png":::
+:::image type="content" source="media/visualization-ladderchart/ladderchart-state-and-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by state and event type." lightbox="media/visualization-ladderchart/ladderchart-state-and-event-type.png":::
 
 ::: zone-end
 

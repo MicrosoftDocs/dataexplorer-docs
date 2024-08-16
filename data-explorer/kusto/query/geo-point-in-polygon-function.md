@@ -3,7 +3,7 @@ title:  geo_point_in_polygon()
 description: Learn how to use the geo_point_in_polygon() function to check if the geospatial coordinates are inside a polygon or a multipolygon on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 04/04/2024
 ---
 # geo_point_in_polygon()
 
@@ -19,13 +19,13 @@ Calculates whether the geospatial coordinates are inside a polygon or a multipol
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *longitude* | real | &check; | Geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
-| *latitude* | real | &check; | Geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
-| *polygon* | dynamic | &check; | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *longitude* | `real` |  :heavy_check_mark: | Geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
+| *latitude* | `real` |  :heavy_check_mark: | Geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
+| *polygon* | `dynamic` |  :heavy_check_mark: | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 
 ## Returns
 
-Indicates whether the geospatial coordinates are inside a polygon. If the coordinates or polygon is invalid, the query will produce a null result.
+Indicates whether the geospatial coordinates are inside a polygon. If the coordinates or polygon is invalid, the query produces a null result.
 
 > [!NOTE]
 >
@@ -43,9 +43,9 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 * LinearRingHole is optional and defined as a `clockwise` ordered array of coordinates [[lng_1,lat_1],...,[lng_i,lat_i],...,[lng_j,lat_j],...,[lng_1,lat_1]]. There can be any number of interior rings and holes.
 * LinearRing vertices must be distinct with at least three coordinates. The first coordinate must be equal to the last. At least four entries are required.
 * Coordinates [longitude, latitude] must be valid. Longitude must be a real number in the range [-180, +180] and latitude must be a real number in the range [-90, +90].
-* LinearRingShell encloses at most half of the sphere. LinearRing divides the sphere into two regions. The smaller of the two regions will be chosen.
-* LinearRing edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
-* LinearRings must not cross and must not share edges. LinearRings may share vertices.
+* LinearRingShell encloses at most half of the sphere. LinearRing divides the sphere into two regions. The smaller of the two regions, is chosen.
+* LinearRing edge length must be less than 180 degrees. The shortest edge between the two vertices is chosen.
+* LinearRings must not cross and must not share edges. LinearRings might share vertices.
 * Polygon doesn't necessarily contain its vertices. Point containment in polygon is defined so that if the Earth is subdivided into polygons, every point is contained by exactly one polygon.
 
 > [!TIP]
@@ -55,9 +55,9 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 
 ## Examples
 
-Manhattan island without Central Park.
+The following example finds locations which fall within Manhattan island, excluding the area of Central Park.
 
-:::image type="content" source="images/geo-point-in-polygon-function/polygon-manhattan-with-hole.png" alt-text="Screenshot of a map of the Manhattan area, with markers for a landmark, a museum, and an airport. The island appears dimmed except for Central Park.":::
+:::image type="content" source="media/geo-point-in-polygon-function/polygon-manhattan-with-hole.png" alt-text="Screenshot of a map of the Manhattan area, with markers for a landmark, a museum, and an airport. The island appears dimmed except for Central Park.":::
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VT0WrbQBB8z1cIvyQGN7nb273dzVsKpRRaKLRvIQQ1VhOBIxlZpg1t/70jy5abQogMNkZzs7Mzc8uyx+fbqjpbtc193W+X1WVXlatFsSr7f/8uq81dV6/7um0uN31XN/fzk+uTAs/w/uyNpnM3ycLzRcHhXNnYdFGcvntc111VfMGYqni7rVdLHD1dFMfn4qL40BSf29XTfdsU/1HmROx7SnUhAeXXh6r4VPVdu25XdV82xaftpto+Fu334qrrB+6RsvrZV13ddsOL9Uj/nN2UU9YDuybJYP9Yvt+W3bIui6u6W7cj4bPnZfabk9/Fj4cK+95X7e26rZv+tm5u96+PFh/dhbFPTflY3539mvVP62p2Ods7MVvM7toWQho4t5ldXl9f7xwhcY0Od2GNLaDc1Cha5Bg4S7xZjDDOHjkrmUSsNcAkZM/RMomovQxjQMRzNg9qeYfj8xBDsBzERUOKA04lejKBEHGfUJbBR+BQ1x0qsFiGQs9CLBOO4nAsB08qAy67e4geMSZhjYM6V6XMHJg8+8hnGIw5ZOp0gKkyZLk6O9EOFoMlAmXCr0+wQDlkCjHCwB2MPLAy9MGaCQWfNCbDl+0c0cQYaQwyyM1HNmeoE/i5Q7GgTJRUQ5SjvYSTUQb9tgtLFX4grZCTaJpgiREgS4p7MgsWIkOpRNIDihy3StKQ1B4GV+LgBx6RAywFVYSdphAs8CAOah3QaQHMdMNCnHFXRxxSijljCsZMMAQXkQ86NmaFM9EDCiKMvKaxRGYE2WhNpLFw8ALrwgHYfIAhPHXYGy2NfdOI9mH5jIuuE+y1lgM3AsWIOcF39Ga/bUByQtHVbEoV0hAOOmKkY38zcsFSmQzOTKEOGQeMTHB2hDFRHvhd0jGv4dLQsF30KQlGhzEGxZ4sfk3czc2f+fwvLfY7vIMFAAA=" target="_blank">Run the query</a>
@@ -78,9 +78,9 @@ datatable(longitude:real, latitude:real, description:string)
 |---|---|---|
 |-73.985654|40.748487|Empire State Building|
 
-Search for coordinates in multipolygon.
+The following example searches for coordinates in a multipolygon.
 
-:::image type="content" source="images/geo-point-in-polygon-function/multipolygon-manhattan.png" alt-text="Screenshot of a map of the Manhattan area, with markers for the Upper West Side, Greenwich Village, and an airport. Three neighborhoods appear dimmed.":::
+:::image type="content" source="media/geo-point-in-polygon-function/multipolygon-manhattan.png" alt-text="Screenshot of a map of the Manhattan area, with markers for the Upper West Side, Greenwich Village, and an airport. Three neighborhoods appear dimmed.":::
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=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" target="_blank">Run the query</a>
@@ -105,9 +105,7 @@ coordinates
 |-73.9741|40.7914|Upper West Side|
 |-73.995|40.734|Greenwich Village|
 
-Storm events in California. The events are filtered by a California state polygon and aggregated by event type and hash.
-
-:::image type="content" source="images/geo-point-in-polygon-function/california-storm-events.png" alt-text="Storm events in California.":::
+The following example finds storm events in California. The events are filtered by a California state polygon and aggregated by event type and hash.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22WS2/cNhSF9/0Vglc2MFXI++AlU2RTIKt2UaDdBYExGau2mrE0mFGSuo//3kNqyEkdrzz+cHVIXZ5zqf2wdLvtfvx9Pk7jtnvT3T1N28dxd/331fJ0GK5eX/0y75/u5+lqc7Wb5+PdOG2X4XT1+t27d9974p6YScNGqHcu+BjebzKnni1G5cK9D4FX7nvH5hy471NSYlq5w9N42D/jPuG/wFE24noKoj49q+eIisSyrutjb14sZuyxLsUVWy8pxpQ2bD15lK849CpOWDeMX0Vv5dpHdSwb1j6Z03RWkT6wiKbMsbz/BksfTclXLOa8+ozNu+SockbLKGYuEp1LlXsOTgtnp8E1efRXVx1v4kPTEa8cqXAXhVu9skbD7rlPzN5Cq0+mHDIPyUK41JMk8pkrStp2jEyDZSzOuOGAU5aijhYlfUHFUZL4TReoxx4p6PN66k011CPJy5JLBXujpPWknNiqEkh8tHquHq7ImyS8NboUKicJKZTygBZzw1iVS3m04KnJMCWsnTcP72pMzTaGvWvmlCyqr9wil87gACI37/nI6gu3wJx85RScT0XdHHvRysWzSixcvESuHI8GKa2MglTFyjWEhOzgwJ0QdlZ5dOhJqU/F5jU7BEuvvvRoklnjFpPTzCkYNawaiUo5nIUYVQ5Tx1T8Jy4Fqwn0HA3JzBi+Sly5GEV7bm/wAFOUcrUkqg27FF1Rj7CtXcoxJ6TIIDqaLvWwtFszmGBjqTwmCY4yJwFugwVvCl9kLurofLR5EDn03BcOJ0gbUD7A3kU/wFFOK6eIKaOFm8RLPcJsaplbDiFVbj544TxafIKHWn1MIebUhp69Bmn6iZVyHgLWRf8aR1c05w0cFm3q0Xil0bFLTT3BpyuHX7l2mTAhFE4qHIuezzaPacaki3kuYuxR7T7BAeYTlXkp6E5s3DnLYxeRCXkaVY43hMEyV3Jq9C230r+2LqK96vyfiwvE6/xWJ01GELO8HWCcabzIwyLEWSax53oomB0IXCo8JsZJV57Y1JVbA0MqUXstTMZs5RxVlXOgKQ+DVIKLqKoPSpVjrEYpMohknaTggkSXzYcU22Eh3Wyei0yCF7nikPODl0qYpBh6TSVmA2vmjIvT+SZTLsDMVQmDptXjzinlsWxrxflSQItDvjlx+PBc5Tg4dYUjVq3HOfTOUsxcGOa56Chu8pR5jifbc31ECSOzvu2lHlESdx5qwC5onuDAIuTCRV4sDyPJicF+2jZJYWQpPPrAbZuEaxK3Z/ngcFbHywsfIu/f/3vzw3e/LvPx8e3nYVpO3/3THY7zH8Nu6X4c7sfp53nanH9tl01Xin7DRw/qvjwMx6G7H+bbwzxOy+044Uf5Drp+6dHLF9QNHj59enzcHse/hm43f5qW65vuw9NFfdM9bE8P+NK6qC/z7Yl2w37/orjdfLXx/NBam5/aQfO43a8y11n3ZvP1SmX9Wzx+HKa74dgdxmH3sD0u3ZdxeeiuP47T3ZvH7eGme/Wqw99z2Tjdd9vP23G//bAfunHqfvp0Wubu7Z+H/XyEyt1w+rjMh/8AiuopHzsKAAA=" target="_blank">Run the query</a>
@@ -122,7 +120,11 @@ StormEvents
 | render piechart with (kind=map) // map rendering available in Kusto Explorer desktop
 ```
 
-The following example shows how to classify coordinates to polygons using the [partition](./partitionoperator.md) operator.
+**Output**
+
+:::image type="content" source="media/geo-point-in-polygon-function/california-storm-events.png" alt-text="Screenshot of storm events in California rendered on a map by event type as pie chart indicators.":::
+
+The following example shows how to classify coordinates to polygons using the [partition](./partition-operator.md) operator.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA51U22rbQBB991csepJAUfZ+cckfhBIIFIoxZiMtjhJFK6RNXTfJv3dkXezUpC2xwdZoztzOmd3KBXTjq/3W1x26QoUN8L2rXFy4Lm/LJpS+XqIutGW9TVEzIJeo2Nf2qcyTBYLPCqHDf/TV7dB33z6ivAx7ZFtno3SCxi9R2DcuWqJorAe+KPe+LcraBteBZ7VaXSiWaYGxUVJIKlLEMdiKc2UIw4xQsk4RoHhGJOaScCqUJhOQU4O5VooaqeQMNFgqpukME8YwIbFWRgqiBxhUZfCGCE37KgNQEoihlFMqBCEz8O/trddvSTrwcetsCJX7JBNQOqNQiirFOFN9MZVJqMYwJYRBq+rQUo/jwhAsORdj7x8DlRBamCkdl9pwIEtJRbnmM4woSbEGDwYoH6CKSkm11JIwTmfkvzo8oePaduib29ruE1wQnpkUMZmxQVdCRMa50RTmJoMUvZNR0Bl0ZKCH+hAoYFOAKi4wpwSGGoFQghsDSiui1YAzmDJjwCKcSSKOwKmXYbz1l0UFB+na57Y/MO9PUuXrbRmeC7dEsAdViioAHe3xDB1+ezvud8yIJB0sWDDVG5eX6NY/ud29ax0qazSdtZO4Xg42x4ES8HwWN+7kaRgwRPQUB2MRmZzHzeL1w043xuIVNa1/cHmYroYb28JwwAFQEPxwb8SNzR/j6ORG6RfgaIHizSz++JQkfe452X1Zh+wJFqItbVX+csVVaJ/d8BqKgGO7v4KFKX84dLc/a+Yw7Qsa76lZpoP1itzP4OritCNoHmp3bvPQ+TqGOXJb2Tb+M22SZCdB77ON2P/PNL4aswy8b53fNB6G3JT1ZgQc9+m4SUfaxvBRlQu7szMbB9fbb4lZo3bxBQAA" target="_blank">Run the query</a>
@@ -162,7 +164,7 @@ Polygons
 
 See also [geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md).
 
-Folding several polygons into one multipolygon and querying it.
+The following example folds several polygons into one multipolygon and checks locations that fall within the multipolygon.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=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" target="_blank">Run the query</a>
@@ -198,7 +200,10 @@ Coordinates
 |-73.9741|40.7914|Upper West Side|
 |-73.995|40.734|Greenwich Village|
 
-The following example will return a null result because of the invalid coordinate input.
+The following example returns a null result because of the invalid coordinate input.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMiy%2FIz6lMz89TsFVIT80H8oDC8QhhDSMDAx1DnZTKvMTczGSNaqWSyoJUJSsFpQCIvJKOUnJ%2BflFKZl5iSWoxUCI6OtpAxyBWJ9oQqA9GAymQYGxsraYmAJZ3JaV5AAAA" target="_blank">Run the query</a>
 
 ```kusto
 print in_polygon = geo_point_in_polygon(200,1,dynamic({"type": "Polygon","coordinates": [[[0,0],[10,10],[10,1],[0,0]]]}))
@@ -210,7 +215,10 @@ print in_polygon = geo_point_in_polygon(200,1,dynamic({"type": "Polygon","coordi
 |------------|
 |            |
 
-The following example will return a null result because of the invalid polygon input.
+The following example returns a null result because of the invalid polygon input.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMiy%2FIz6lMz89TsFVIT80H8oDC8QhhDUMdQ52UyrzE3MxkjWqlksqCVCUrBaUAiKySjlJyfn5RSmZeYklqMVAiOjraQMcgVifa0EDHEJkGicbG1mpqAgD1Iu1ceAAAAA%3D%3D" target="_blank">Run the query</a>
 
 ```kusto
 print in_polygon = geo_point_in_polygon(1,1,dynamic({"type": "Polygon","coordinates": [[[0,0],[10,10],[10,10],[0,0]]]}))

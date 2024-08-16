@@ -15,14 +15,14 @@ Each CSV mapping element must contain either of the following optional propertie
 
 | Property   | Type   | Description                                                                           |
 |------------|--------|---------------------------------------------------------------------------------------|
-| Ordinal    | int    | The column order number in CSV.                                                       |
-| ConstValue | string | The constant value to be used for a column instead of some value inside the CSV file. |
-| Transform  | string | Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations). The only supported transformation by is `SourceLocation`. |
+| Ordinal    | `int` | The column order number in CSV.                                                       |
+| ConstValue | `string` | The constant value to be used for a column instead of some value inside the CSV file. |
+| Transform  | `string` | Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations). The only supported transformation by is `SourceLocation`. |
 
 > [!NOTE]
 >
-> * Ordinal and ConstValue are mutually exclusive.
-> * For TXT and RAW formats, only Ordinal 0 can be mapped, as text is treated as a single column of lines.
+> * When `ConstValue` or `SourceLocation` transformation are used, `Ordinal` must be unset.
+> * For TXT and RAW formats, only `Ordinal` 0 can be mapped, as text is treated as a single column of lines.
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
 

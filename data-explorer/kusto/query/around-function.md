@@ -19,9 +19,9 @@ Creates a `bool` value indicating if the first argument is within a range around
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*value*| int, long, real, datetime, or timespan | &check; | The value to compare to the *center*.|
-| *center* | int, long, real, datetime, or timespan | &check; | The center of the range defined as [(`center`-`delta`) .. (`center` + `delta`)]. |
-| *delta* | int, long, real, datetime, or timespan | &check; | The delta value of the range defined as [(`center`-`delta`) .. (`center` + `delta`)].|
+|*value*| int, long, real, datetime, or timespan |  :heavy_check_mark: | The value to compare to the *center*.|
+| *center* | int, long, real, datetime, or timespan |  :heavy_check_mark: | The center of the range defined as [(`center`-`delta`) .. (`center` + `delta`)]. |
+| *delta* | int, long, real, datetime, or timespan |  :heavy_check_mark: | The delta value of the range defined as [(`center`-`delta`) .. (`center` + `delta`)].|
 
 ## Returns
 

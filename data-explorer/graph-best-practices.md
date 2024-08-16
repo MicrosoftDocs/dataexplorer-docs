@@ -1,5 +1,5 @@
 ---
-title: Best practices for Kusto Query Language (KQL) graph semantics (Preview)
+title: Best practices for Kusto Query Language (KQL) graph semantics
 description: Learn about the best practices for Kusto Query Language (KQL) graph semantics.
 ms.reviewer: herauch
 ms.topic: conceptual
@@ -7,10 +7,7 @@ ms.date: 09/03/2023
 # Customer intent: As a data analyst, I want to learn about best practices for KQL graph semantics.
 ---
 
-# Best practices for Kusto Query Language (KQL) graph semantics (Preview)
-
-> [!WARNING]
-> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+# Best practices for Kusto Query Language (KQL) graph semantics
 
 This article explains how to use the graph semantics feature in KQL effectively and efficiently for different use cases and scenarios. It shows how to create and query graphs with the syntax and operators, and how to integrate them with other KQL features and functions. It also helps users avoid common pitfalls or errors, such as creating graphs that exceed memory or performance limits, or applying unsuitable or incompatible filters, projections, or aggregations.
 
@@ -18,7 +15,7 @@ This article explains how to use the graph semantics feature in KQL effectively 
 
 The [make-graph operator](kusto/query/make-graph-operator.md) creates an in-memory representation of a graph. It consists of the graph structure itself and its properties. When making a graph, use appropriate filters, projections, and aggregations to select only the relevant nodes and edges and their properties.
 
-The following example shows how to reduce the number of nodes and edges and their properties. In this scenario, Bob changed manager from Alice to Eve and the user only wants to see the latest state of the graph for their organization. To reduce the size of the graph, the nodes are first filtered by the organization property and then the property is removed from the graph using the [project-away operator](kusto/query/projectawayoperator.md). The same happens for edges. Then [summarize operator](kusto/query/summarizeoperator.md) together with [arg_max](kusto/query/arg-max-aggfunction.md) is used to get the last known state of the graph.
+The following example shows how to reduce the number of nodes and edges and their properties. In this scenario, Bob changed manager from Alice to Eve and the user only wants to see the latest state of the graph for their organization. To reduce the size of the graph, the nodes are first filtered by the organization property and then the property is removed from the graph using the [project-away operator](kusto/query/project-away-operator.md). The same happens for edges. Then [summarize operator](kusto/query/summarize-operator.md) together with [arg_max](kusto/query/arg-max-aggregation-function.md) is used to get the last known state of the graph.
 
 ```kusto
 let allEmployees = datatable(organization: string, name:string, age:long)
@@ -71,7 +68,7 @@ Consider creating a materialized view to improve the query performance, as follo
     .create table reportsTo (employee:string, manager:string, modificationDate: datetime)
     ```
 
-1. Create a materialized view for each table and use the [arg_max aggregation](kusto/query/arg-max-aggfunction.md) function to determine the *last known state* of employees and the *reportsTo* relation.
+1. Create a materialized view for each table and use the [arg_max aggregation](kusto/query/arg-max-aggregation-function.md) function to determine the *last known state* of employees and the *reportsTo* relation.
 
     ```kusto
     .create materialized-view employees_MV on table employees
@@ -223,7 +220,7 @@ let assetHierarchy = datatable(source:string, destination:string)
 ];
 ```
 
-The *employees*, *sensors*, and other entities and relationships don't share a canonical data model. You can use the [union operator](kusto/query/unionoperator.md) to combine and canonize the data.
+The *employees*, *sensors*, and other entities and relationships don't share a canonical data model. You can use the [union operator](kusto/query/union-operator.md) to combine and canonize the data.
 
 The following query joins the sensor data with the time series data to find the sensors that have abnormal readings. Then, it uses a projection to create a common model for the graph nodes.
 
@@ -282,6 +279,6 @@ graph
 
 The projection in graph-match outputs the information that the temperature sensor showed an anomaly on the specified day. It was operated by Eve who ultimately reports to Mallory. With this information, the factory manager can reach out to Eve and potentially Mallory to get a better understanding of the anomaly.
 
-## Next step
+## Related content
 
-- [Graph operators](kusto/query/graph-operators.md)
+* [Graph operators](kusto/query/graph-operators.md)

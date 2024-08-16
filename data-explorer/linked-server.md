@@ -43,7 +43,7 @@ Use Kusto [stored functions](kusto/query/schema-entities/stored-functions.md) fo
 
 SQL Server has a limitation where it can't use remote tabular functions from linked servers directly in its own queries. To overcome this limitation, use the `OpenQuery` function to run a query on the linked server. You can then use the outer T-SQL query to combine the data from the SQL server with the data returned from the Azure Data Explorer stored function.
 
-## See also
+## Related content
 
 * [Create linked servers](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine)
 * [Connect with ODBC](connect-odbc.md)

@@ -21,7 +21,7 @@ ms.date: 09/13/2023
 
 ## Create a new pipeline
 
-1. Select the **Author** pencil tool. 
+1. Select the **Author** pencil tool.
 1. Create a new pipeline by selecting **+** and then select **Pipeline** from the drop-down.
 
    ![create new pipeline.](media/data-factory-command-activity/create-pipeline.png)
@@ -31,10 +31,10 @@ ms.date: 09/13/2023
 A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrieve a dataset from any Azure Data Factory-supported data sources. The output from Lookup activity can be used in a ForEach or other activity.
 
 1. In the **Activities** pane, under **General**, select the **Lookup** activity. Drag and drop it into the main canvas on the right.
- 
+
     ![select lookup activity.](media/data-factory-command-activity/select-activity.png)
 
-1. The canvas now contains the Lookup activity you created. Use the tabs below the canvas to change any relevant parameters. In **General**, rename the activity. 
+1. The canvas now contains the Lookup activity you created. Use the tabs below the canvas to change any relevant parameters. In **General**, rename the activity.
 
     ![edit lookup activity.](media/data-factory-command-activity/edit-lookup-activity.png)
 
@@ -44,31 +44,31 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
 ### Create an Azure Data Explorer dataset in lookup activity
 
 1. In **Settings**, select your pre-created Azure Data Explorer **Source dataset**, or select **+ New** to create a new dataset.
- 
+
     ![add dataset in lookup settings.](media/data-factory-command-activity/lookup-settings.png)
 
 1. Select the **Azure Data Explorer (Kusto)** dataset from **New Dataset** window. Select **Continue** to add the new dataset.
 
-   ![select new dataset.](media/data-factory-command-activity/select-new-dataset.png) 
+   ![select new dataset.](media/data-factory-command-activity/select-new-dataset.png)
 
 1. The new Azure Data Explorer dataset parameters are visible in **Settings**. To update the parameters, select **Edit**.
 
     ![lookup settings with Azure Data Explorer dataset.](media/data-factory-command-activity/lookup-settings-with-adx-dataset.png)
 
-1. The **AzureDataExplorerTable** new tab opens in the main canvas. 
-    * Select **General** and edit the dataset name. 
-    * Select **Connection** to edit the dataset properties. 
+1. The **AzureDataExplorerTable** new tab opens in the main canvas.
+    * Select **General** and edit the dataset name.
+    * Select **Connection** to edit the dataset properties.
     * Select the **Linked service** from the drop-down, or select **+ New** to create a new linked service.
 
     ![Edit Azure Data Explorer dataset properties.](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
 
 1. When creating a new linked service, the **New Linked Service (Azure Data Explorer)** page opens:
 
-    ![ADX new linked service.](media/data-factory-command-activity/adx-new-linked-service.png)
+    ![ Azure Data Explorer new linked service.](media/data-factory-command-activity/adx-new-linked-service.png)
 
    * Select **Name** for Azure Data Explorer linked service. Add **Description** if needed.
-   * In **Connect via integration runtime**, change current settings, if needed. 
-   * In **Account selection method** select your cluster using one of two methods: 
+   * In **Connect via integration runtime**, change current settings, if needed.
+   * In **Account selection method** select your cluster using one of two methods:
         * Select the **From Azure subscription** radio button and select your **Azure subscription** account. Then, select your **Cluster**. Note the drop-down will only list clusters that belong to the user.
         * Instead, select **Enter manually** radio button and enter your **Endpoint** (cluster URL).
     * Specify the **Tenant**.
@@ -92,15 +92,15 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
     | summarize count() by Database
     ```
 
-1. Change the **Query timeout** or **No truncation** and **First row only** properties, as needed. In this flow, we keep the default **Query timeout** and uncheck the checkboxes. 
+1. Change the **Query timeout** or **No truncation** and **First row only** properties, as needed. In this flow, we keep the default **Query timeout** and uncheck the checkboxes.
 
     ![Final settings of lookup activity.](media/data-factory-command-activity/lookup-activity-final-settings.png)
 
-## Create a For-Each activity 
+## Create a For-Each activity
 
-The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is used to iterate over a collection and execute specified activities in a loop. 
+The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is used to iterate over a collection and execute specified activities in a loop.
 
-1. Now you add a For-Each activity to the pipeline. This activity will process the data returned from the Lookup activity. 
+1. Now you add a For-Each activity to the pipeline. This activity will process the data returned from the Lookup activity.
     * In the **Activities** pane, under **Iteration & Conditionals**, select the **ForEach** activity and drag and drop it into the canvas.
     * Draw a line between the output of the Lookup activity and the input of the ForEach activity in the canvas to connect them.
 
@@ -140,7 +140,7 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
     The **Command** instructs Azure Data Explorer to export the results of a given query into a blob storage, in a compressed format. It runs asynchronously (using the async modifier).
     The query addresses the database column of each row in the Lookup activity result. The **Command timeout** can be left unchanged.
 
-    ![command activity.](media/data-factory-command-activity/command.png)   
+    ![command activity.](media/data-factory-command-activity/command.png)
 
     > [!NOTE]
     > The command activity has the following limits:
@@ -156,7 +156,7 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
 
     ![azure data explorer command activity output.](media/data-factory-command-activity/command-activity-output.png)
 
-1. You can **Publish All** and then **Add trigger** to run the pipeline. 
+1. You can **Publish All** and then **Add trigger** to run the pipeline.
 
 ## Management command outputs
 
@@ -164,7 +164,7 @@ The structure of the command activity output is detailed below. This output can 
 
 ### Returned value of a non-async management command
 
-In a non-async management command, the structure of the returned value is similar to the structure of the Lookup activity result. The `count` field indicates the number of returned records. A fixed array field `value` contains a list of records. 
+In a non-async management command, the structure of the returned value is similar to the structure of the Lookup activity result. The `count` field indicates the number of returned records. A fixed array field `value` contains a list of records.
 
 ```json
 { 
@@ -209,9 +209,9 @@ In an async management command, the activity polls the operations table behind t
         } 
     ] 
 }
-``` 
+```
 
-## Next steps
+## Related content
 
-* Learn about how to [copy data to Azure Data Explorer using Azure Data Factory](data-factory-load-data.md).
-* Learn about using [Azure Data Factory template for bulk copy from database to Azure Data Explorer](data-factory-template.md).
+* [Copy data to Azure Data Explorer using Azure Data Factory](data-factory-load-data.md).
+* [Azure Data Factory template for bulk copy from database to Azure Data Explorer](data-factory-template.md).

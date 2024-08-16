@@ -37,7 +37,7 @@ ARM templates are [JSON](/azure/azure-resource-manager/templates/overview) or [B
 
 You can also use ARM templates to deploy [command scripts](/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json), which help you create a database schema and define policies. For more information, see [Configure a database by using a Kusto Query Language script](./database-script.md).
 
-You can find more example templates on the [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/) site.
+You can find more example templates on the [Azure Quickstart Templates](/samples/browse/?expanded=azure&products=azure-resource-manager&terms=data%20explorer) site.
 
 ### Terraform deployment
 
@@ -257,7 +257,7 @@ You create the cluster by using the service principal credentials that you speci
 
 You can verify the deployment by running a query against the *Customer* table. You should see the three records that were imported from the CSV file.
 
-## Next steps
+## Related content
 
 * Create a [cluster and database by using an Azure Resource Manager template](./create-cluster-database-resource-manager.md).
 * Configure a database by using a [KQL script](./database-script.md)

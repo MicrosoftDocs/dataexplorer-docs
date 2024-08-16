@@ -7,7 +7,7 @@ ms.date: 04/20/2023
 ---
 # .alter materialized-view policy caching command
 
-Changes the materialized view's cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
+Changes the materialized view's cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cache-policy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
 ## Permissions
 
@@ -23,8 +23,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*MaterializedViewName*|string|&check;| The name of the materialized view.|
-|*PolicyParameters*|string|&check;|One or more policy parameters. For parameters, see [cache policy](cachepolicy.md).|
+|*MaterializedViewName*| `string` | :heavy_check_mark:| The name of the materialized view.|
+|*PolicyParameters*| `string` | :heavy_check_mark:|One or more policy parameters. For parameters, see [cache policy](cache-policy.md).|
 
 ## Examples
 

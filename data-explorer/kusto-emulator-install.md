@@ -3,7 +3,7 @@ title: Install the Azure Data Explorer Kusto emulator
 description: In this article, you'll learn how to install the Azure Data Explorer Kusto emulator and run your first query.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 05/08/2023
+ms.date: 12/05/2023
 ---
 
 # Install the Azure Data Explorer Kusto emulator
@@ -145,12 +145,18 @@ You can use any of the following tools to connect to and interact with the emula
 In the following sections, you'll use Kusto.Explorer to create a database, ingest data, and query it. To learn more, see [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md).
 
 > [!IMPORTANT]
-> The Kusto Emulator doesn't support HTTPS or Microsoft Entra authentication. The following image highlights the affected fields in the **Add connection** properties.
+> The Kusto Emulator doesn't support HTTPS or Microsoft Entra authentication.
+>
+> You must first allow unsafe connections in **Tools** > **Options** > **Connections** > **Allow unsafe connections**.
+> 
+> :::image type="content" source="media/kusto-emulator/unsafe-connections.png" alt-text="Screenshot of Kusto Explorer connection options.":::
+> 
+> The following image highlights the affected fields in the **Add connection** properties.
 >
 > - The **Cluster connection** must begin with `http://` and not `https://`.
 > - In **Security** > **Advanced: Connection String**, you'll need to remove the `AAD Federated Security=True` portion of the connection string to disable Microsoft Entra authentication.
 >
-> :::image type="content" source="media/kusto-emulator/kusto-emulator-connection.png" alt-text="Screenshot of Kusto Explorer connection.":::
+> :::image type="content" source="media/kusto-emulator/kusto-emulator-connection.png" alt-text="Screenshot of Kusto Explorer single connection setup.":::
 
 ## Create a database
 
@@ -237,6 +243,6 @@ MyIngestedSample
     docker stop <containerID>
     ```
 
-## Next steps
+## Related content
 
 - [Kusto Query Language (KQL) overview](kusto/query/index.md)

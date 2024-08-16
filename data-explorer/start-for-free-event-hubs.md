@@ -79,7 +79,7 @@ To delete a data connection:
 1. In the **Data connections** tab, locate the data connection, and then select **Delete** (:::image type="icon" source="media/start-for-free-event-hubs/start-for-free-delete-hubs-data-connection.png" border="false":::).
 1. Verify that the data connection no longer appears in the list of connections.
 
-## Next steps
+## Related content
 
 - [Upgrade your free cluster](start-for-free-upgrade.md)
 - [Learn more about Azure Data Explorer](data-explorer-overview.md)

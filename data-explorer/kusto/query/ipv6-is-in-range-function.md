@@ -19,8 +19,8 @@ Checks if an IPv6 string address is in the IPv6-prefix notation range.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Ipv6Address* | string | &check; | An expression representing an IPv6 address.|
-| *Ipv6Range*| string | &check; | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
+| *Ipv6Address* | `string` |  :heavy_check_mark: | An expression representing an IPv6 address.|
+| *Ipv6Range*| `string` |  :heavy_check_mark: | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
 
 [!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 
@@ -52,3 +52,7 @@ datatable(ip_address:string, ip_range:string)
 |a5e:f127:8a9d:146d:e102:b5d3:c755:abcd|a5e:f127:8a9d:146d:e102:b5d3:c755:0000/112|True|
 |a5e:f127:8a9d:146d:e102:b5d3:c755:abcd|a5e:f127:8a9d:146d:e102:b5d3:c755:abcd|True|
 |a5e:f127:8a9d:146d:e102:b5d3:c755:abcd|0:0:0:0:0:ffff:c0a8:ac/60|False|
+
+## Related content
+
+* Overview of [IPv4/IPv6 functions](scalar-functions.md#ipv4ipv6-functions)

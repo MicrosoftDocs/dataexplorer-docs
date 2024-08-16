@@ -138,15 +138,17 @@ On this tab, you can select a metric tile and deep dive to understand its trend 
 
 ### Ingestion tab (preview tab)
 
-The **Ingestion** tab allows you to monitor the status of batching ingestion operations to the cluster.
-In the [batching ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion) process, data ingestion is optimized for high throughput. This is done by grouping small chunks of incoming data into batches based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md).
+The **Ingestion** tab allows you to monitor the status of queued ingestion operations to the cluster.
+
+In the [queued ingestion](ingest-data-overview.md#continuous-data-ingestion) process, data ingestion is optimized for high throughput. This is done by grouping small chunks of incoming data into batches based on a configurable [ingestion batching policy](kusto/management/batching-policy.md).
+
 The **Ingestion** tab gives you detailed information about the following:
 
-- The result of the batching ingestion, by database or table granularity.
+- The result of the queued ingestion, by database or table granularity.
 - Ingestion error details by table.
 - The amount of ingested data.
-- The latency of the batching ingestion and where it occurs.
-- The batching process itself, including monitoring information about the [ingestion batching policy](kusto/management/batchingpolicy.md) and how the batches were [sealed](kusto/management/batchingpolicy.md#sealing-a-batch).
+- The latency of the queued ingestion and where it occurs.
+- The batching process itself, including monitoring information about the [ingestion batching policy](kusto/management/batching-policy.md) and how the batches were [sealed](kusto/management/batching-policy.md#sealing-a-batch).
 - For Event Hubs, Event Grid, and IoT Hub ingestions: The number of events received into the cluster and the number of events sent for actual ingestion.
 
 ## Pin to an Azure dashboard
@@ -193,6 +195,6 @@ Currently, diagnostic logs don't work retroactively. The data will start appeari
 
 [!INCLUDE [azure-monitor-vs-log-analytics](includes/azure-monitor-vs-log-analytics.md)]
 
-## Next steps
+## Related content
 
-Learn the scenarios that workbooks are designed to support, how to author new and customize existing reports, and more by reviewing [Create interactive reports with Azure Monitor workbooks](/azure/azure-monitor/visualize/workbooks-overview).
+* [Create interactive reports with Azure Monitor workbooks](/azure/azure-monitor/visualize/workbooks-overview).

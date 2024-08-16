@@ -3,7 +3,7 @@ title:  'Create an app to run management commands'
 description: Learn how to create an app to run management commands using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 06/27/2023
+ms.date: 11/07/2023
 ---
 # Create an app to run management commands
 
@@ -63,20 +63,26 @@ In your preferred IDE or text editor, create a project or file named *management
       main()
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+    ```typescript
+    import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
+    import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
     async function main() {
       const clusterUri = "<your_cluster_uri>";
-      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
-
-      const kustoClient = new Client(kcsb);
+      const authOptions = {
+        clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+        redirectUri: "http://localhost:5173",
+      } as InteractiveBrowserCredentialInBrowserOptions;
+      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
+      const kustoClient = new KustoClient(kcsb);
     }
 
     main();
     ```
+
+    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 
     <!-- ### [Go](#tab/go) -->
 
@@ -90,7 +96,7 @@ In your preferred IDE or text editor, create a project or file named *management
     import com.microsoft.azure.kusto.data.KustoResultColumn;
     import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-    public class managementCommands {
+    public class ManagementCommands {
       public static void main(String[] args) throws Exception {
         try {
           String clusterUri = "<your_cluster_uri>";
@@ -138,17 +144,17 @@ In your preferred IDE or text editor, create a project or file named *management
           print("\t", col, "-", row[col])
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    function printResultAsValueList(command, response) {
+    ```typescript
+    function printResultsAsValueList(command: string, response: KustoResponseDataSet) {
       // create a list of columns
-      let cols = response.primaryResults[0].columns;
+      const cols = response.primaryResults[0].columns;
 
       console.log("\n" + "-".repeat(20) + "\n")
       console.log("Command: " + command)
       // print the values for each row
-      for (row of response.primaryResults[0].rows()) {
+      for (const row of response.primaryResults[0].rows()) {
         console.log("Result:")
         for (col of cols)
         console.log("\t", col.name, "-", row.getValueAt(col.ordinal) ? row.getValueAt(col.ordinal).toString() : "None")
@@ -213,15 +219,15 @@ In your preferred IDE or text editor, create a project or file named *management
               " StormSummary:dynamic)"
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const database = "<your_database>";
     const table = "MyStormEvents";
 
     // Create a table named MyStormEvents
     // The brackets contain a list of column Name:Type pairs that defines the table schema
-    let command = `.create table ` + table + `
+    const command = `.create table ${table}
                   (StartTime:datetime,
                    EndTime:datetime,
                    State:string,
@@ -275,13 +281,13 @@ In your preferred IDE or text editor, create a project or file named *management
     print_result_as_value_list(command, response)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     > [!NOTE]
     > You'll use the `executeMgmt` method to run the command.
 
-    ```nodejs
-    let response = await kustoClient.executeMgmt(database, command);
+    ```typescript
+    const response = await kustoClient.executeMgmt(database, command);
     printResultsAsValueList(command, response)
     ```
 
@@ -390,22 +396,27 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+```typescript
+import { Client as KustoClient, KustoConnectionStringBuilder, KustoResponseDataSet } from "azure-kusto-data/";
+import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
 async function main() {
-  const clusterUri = "https://<your_cluster_uri>";
-  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
-  const kustoClient = new Client(kcsb);
+  const clusterUri = "<your_cluster_uri>";
+  const authOptions = {
+    clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+    redirectUri: "http://localhost:5173",
+  } as InteractiveBrowserCredentialInBrowserOptions;
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
+  const kustoClient = new KustoClient(kcsb);
 
   const database = "<your_database>";
   const table = "MyStormEvents";
 
   // Create a table named MyStormEvents
   // The brackets contain a list of column Name:Type pairs that defines the table schema
-  let command = `.create table ` + table + `
+  const command = `.create table ${table}
                  (StartTime:datetime,
                   EndTime:datetime,
                   State:string,
@@ -413,27 +424,29 @@ async function main() {
                   Source:string,
                   StormSummary:dynamic)`;
 
-  let response = await kustoClient.executeMgmt(database, command);
+  const response = await kustoClient.executeMgmt(database, command);
   printResultsAsValueList(command, response)
 }
 
-function printResultsAsValueList(command, response) {
+function printResultsAsValueList(command: string, response: KustoResponseDataSet) {
   // create a list of columns
-  let cols = response.primaryResults[0].columns;
+  const cols = response.primaryResults[0].columns;
 
   console.log("\n" + "-".repeat(20) + "\n")
   console.log("Command: " + command)
   // print the values for each row
-  for (row of response.primaryResults[0].rows()) {
+  for (const row of response.primaryResults[0].rows()) {
     console.log("Result:")
-    for (col of cols)
-    console.log("\t", col.name, "-", row.getValueAt(col.ordinal) ? row.getValueAt(col.ordinal).toString() : "None")
+    for (const col of cols) {
+        console.log("\t", col.name, "-", row.getValueAt(col.ordinal) ? row.getValueAt(col.ordinal).toString() : "None")
+    }
   }
 }
 
 main();
 ```
 
+[!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
@@ -504,18 +517,29 @@ dotnet run .
 python management_commands.py
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
+
+In a Node.js environment:
 
 ```bash
 node management-commands.js
 ```
+
+In a browser environment, use the appropriate command to run your app. For example, for Vite-React:
+
+```bash
+npm run dev
+```
+
+> [!NOTE]
+> In a browser environment, open the [developer tools console](/microsoft-edge/devtools-guide-chromium/console/) to see the output.
 
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
 
 ```bash
-mvn install exec:java -Dexec.mainClass="<groupId>.managementCommands"
+mvn install exec:java -Dexec.mainClass="<groupId>.ManagementCommands"
 ```
 
 ---
@@ -542,10 +566,10 @@ Result:
 
 ## Change the table level ingestion batching policy
 
-You can customize the ingestion batching behavior for tables by changing the corresponding table policy. For more information, see [IngestionBatching policy](../../management/batchingpolicy.md).
+You can customize the ingestion batching behavior for tables by changing the corresponding table policy. For more information, see [IngestionBatching policy](../../management/batching-policy.md).
 
 > [!NOTE]
-> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](../../management/batchingpolicy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default.
+> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](../../management/batching-policy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default.
 
 For example, you can modify the app to change the [ingestion batching policy](../../management/alter-table-ingestion-batching-policy.md) timeout value to 30 seconds by altering the `ingestionBatching` policy for the `MyStormEvents` table using the following command:
 
@@ -571,9 +595,9 @@ response = kusto_client.execute_mgmt(database, command)
 print_result_as_value_list(command, response)
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 // Reduce the default batching timeout to 30 seconds
 command = ".alter-merge table " + table + " policy ingestionbatching '{ \"MaximumBatchingTimeSpan\":\"00:00:30\" }'"
 
@@ -615,7 +639,7 @@ Result:
 
 ## Show the database level retention policy
 
-You can use management commands to display a database's [retention policy](../../management/retentionpolicy.md).
+You can use management commands to display a database's [retention policy](../../management/retention-policy.md).
 
 For example, you can modify the app to [display your database's retention policy](../../management/show-database-retention-policy-command.md) using the following code. The result is curated to project away two columns from the result:
 
@@ -640,9 +664,9 @@ response = kusto_client.execute_mgmt(database, command)
 print_result_as_value_list(command, response)
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 // Show the database retention policy (drop some columns from the result)
 command = ".show database " + database + " policy retention | project-away ChildEntities, EntityType"
 
@@ -679,10 +703,10 @@ Result:
 }
 ```
 
-## Next steps
+## Next step
 
 <!-- > [!div class="nextstepaction"]
-> [Create an app to ingest data using the batching manager](app-batch-ingestion.md) -->
+> [Create an app to ingest data using the batching manager](app-queued-ingestion.md) -->
 
 > [!div class="nextstepaction"]
-> [Create an app to get data using batching ingestion](app-batch-ingestion.md)
+> [Create an app to get data using queued ingestion](app-queued-ingestion.md)

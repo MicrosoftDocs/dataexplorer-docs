@@ -42,6 +42,6 @@ When working with terabytes of fresh raw data, follow these guidelines to keep P
 
 To learn about tips and tricks for using Kusto Query Language in Power BI reports and visualizations, see [Tips for using the Azure Data Explorer Connector to query data](/power-query/connectors/azuredataexplorer#tips-for-using-the-azure-data-explorer-connector-to-query-data).
 
-## Next steps
+## Related content
 
-[Use Azure Data Explorer data in Power BI](power-bi-data-connector.md).
+* [Use Azure Data Explorer data in Power BI](power-bi-data-connector.md)

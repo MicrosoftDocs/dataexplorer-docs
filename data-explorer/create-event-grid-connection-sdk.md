@@ -270,7 +270,7 @@ dataLakeFileClient.Rename(destinationFilePath);
 ```
 
 > [!NOTE]
-> If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
+> If you defined filters to track specific subjects while [creating the data connection](create-event-grid-connection.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
 
 ---
 
@@ -297,6 +297,6 @@ kusto_management_client.data_connections.delete(resource_group_name=resource_gro
 
 ---
 
-## Next steps
+## Related content
 
 * [Process data from your event hub using Azure Stream Analytics](/azure/event-hubs/process-data-azure-stream-analytics)

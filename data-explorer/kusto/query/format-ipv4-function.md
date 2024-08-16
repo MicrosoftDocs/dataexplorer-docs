@@ -19,8 +19,8 @@ Parses the input with a netmask and returns a string representing the IPv4 addre
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ip* | string | &check; | The IPv4 address. The format may be a string or number representation in big-endian order.|
-| *prefix* | int | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account. If unspecified, all 32 bit-masks are used.|
+| *ip* | `string` |  :heavy_check_mark: | The IPv4 address. The format may be a string or number representation in big-endian order.|
+| *prefix* | `int` | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account. If unspecified, all 32 bit-masks are used.|
 
 ## Returns
 
@@ -53,7 +53,7 @@ datatable(address:string, mask:long)
 |192.168.1.1/24|32|192.168.1.0|192.168.1.0/24|
 |192.168.1.1/24|-1|||
 
-## See also
+## Related content
 
 * For IPv4 address formatting including CIDR notation, see [format_ipv4_mask()](format-ipv4-mask-function.md).
-* For a list of functions related to IP addresses, see [IPv4 and IPv6 functions](scalarfunctions.md#ipv4ipv6-functions).
+* For a list of functions related to IP addresses, see [IPv4 and IPv6 functions](scalar-functions.md#ipv4ipv6-functions).

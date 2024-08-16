@@ -218,6 +218,6 @@ To remove the IoT Hub connection from the Azure portal, do the following:
 
 ---
 
-## Next steps
+## Related content
 
-* [Query data in Azure Data Explorer](web-query-data.md)
+* [Query data in the Azure Data Explorer web UI](web-query-data.md)

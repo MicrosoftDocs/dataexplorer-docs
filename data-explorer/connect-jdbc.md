@@ -113,6 +113,6 @@ public class Sample {
 }
 ```
 
-## Next steps
+## Related content
 
 * [Run KQL queries and call stored functions](sql-kql-queries-and-stored-functions.md)

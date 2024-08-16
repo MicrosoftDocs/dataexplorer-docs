@@ -10,7 +10,7 @@ items:
       - name: Query HTTP response
         href: rest/response.md
       - name: Query v2 HTTP response
-        href: rest/response2.md
+        href: rest/response-v2.md
       - name: Request properties
         href: rest/request-properties.md
         displayName: CRPs, clientrequestproperties

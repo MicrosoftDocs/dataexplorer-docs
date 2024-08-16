@@ -27,9 +27,9 @@ When possible, use the case-sensitive [startswith_cs](startswith-cs-operator.md)
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input to filter.|
-| *col* | string | &check; | The column used to filter.|
-| *expression* | string | &check; | The expression by which to filter.|
+| *T* | `string` |  :heavy_check_mark: | The tabular input to filter.|
+| *col* | `string` |  :heavy_check_mark: | The column used to filter.|
+| *expression* | `string` |  :heavy_check_mark: | The expression by which to filter.|
 
 ## Returns
 

@@ -19,7 +19,7 @@ Creates a dynamic property bag object from a list of columns.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*column*| scalar | &check; | A column to pack. The name of the column is the property name in the property bag.|
+|*column*| scalar |  :heavy_check_mark: | A column to pack. The name of the column is the property name in the property bag.|
 
 ## Returns
 

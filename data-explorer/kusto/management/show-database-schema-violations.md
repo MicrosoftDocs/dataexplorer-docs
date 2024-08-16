@@ -21,7 +21,7 @@ You must have at least Database Viewer or Database Monitor permissions to run th
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string||The name of the database for which to validate the schema.|
+|*DatabaseName*| `string` ||The name of the database for which to validate the schema.|
 
 ## Returns
 

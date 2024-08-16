@@ -106,8 +106,7 @@ For highlighted error levels, the column must be of [data type](kusto/query/scal
     * information
     * verbose, verb, d
 
-## Next steps
+## Related content
 
-* Get data with the [ingestion wizard](ingest-data-wizard.md)
 * [Query data in the web UI](web-ui-query-overview.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

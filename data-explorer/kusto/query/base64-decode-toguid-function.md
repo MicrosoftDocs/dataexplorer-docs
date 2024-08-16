@@ -19,7 +19,7 @@ Decodes a base64 string to a [GUID](./scalar-data-types/guid.md).
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *base64_string* | string | &check; | The value to decode from base64 to a GUID. |
+| *base64_string* | `string` |  :heavy_check_mark: | The value to decode from base64 to a GUID. |
 
 ## Returns
 
@@ -49,6 +49,6 @@ If you try to decode an invalid base64 string, "null" will be returned:
 print Empty = base64_decode_toguid("abcd1231")
 ```
 
-## See also
+## Related content
 
 To encode a [GUID](./scalar-data-types/guid.md) to a base64 string, see [base64_encode_fromguid()](base64-encode-fromguid-function.md).

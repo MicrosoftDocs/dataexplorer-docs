@@ -240,7 +240,7 @@ Run the following commands from the root of the cloned repo:
     npm run watch
     ```
 
-## Next steps
+## Related content
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
 - [Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

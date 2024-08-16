@@ -225,6 +225,6 @@ The following example shows an Azure Resource Manager template for adding a data
 
 ---
 
-## Next steps
+## Related content
 
 * [Add cluster principals](add-cluster-principal.md)

@@ -2,7 +2,7 @@
 title: Splunk to Kusto map
 description: Learn how to write log queries in Kusto Query Language by comparing Splunk and Kusto Query Language concept mappings.
 ms.topic: conceptual
-ms.date: 05/01/2023
+ms.date: 05/22/2024
 ---
 
 # Splunk to Kusto cheat sheet
@@ -23,7 +23,7 @@ The following table compares concepts and data structures between Splunk and Kus
  | record attribute | field |  column |  In Kusto, this setting is predefined as part of the table structure. In Splunk, each event has its own set of fields. |
  | types | datatype |  datatype |  Kusto data types are more explicit because they're set on the columns. Both have the ability to work dynamically with data types and roughly equivalent set of datatypes, including JSON support. |
  | query and search  | search | query |  Concepts essentially are the same between Kusto and Splunk. |
- | event ingestion time | system time | `ingestion_time()` |  In Splunk, each event gets a system timestamp of the time the event was indexed. In Kusto, you can define a policy called [ingestion_time](../management/ingestiontimepolicy.md) that exposes a system column that can be referenced through the [ingestion_time()](ingestiontimefunction.md) function. |
+ | event ingestion time | system time | `ingestion_time()` |  In Splunk, each event gets a system timestamp of the time the event was indexed. In Kusto, you can define a policy called [ingestion_time](../management/ingestion-time-policy.md) that exposes a system column that can be referenced through the [ingestion_time()](ingestion-time-function.md) function. |
 
 ## Functions
 
@@ -112,14 +112,14 @@ Kusto uses the `project-rename` operator to rename a field. In the `project-rena
 
 ### Format results and projection
 
-Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](projectoperator.md).
+Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](project-operator.md).
 
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `table` |  `Event.Rule=330009.2`<br />&#124; `table rule, state` |
 | Kusto | `project` | `Office_Hub_OHubBGTaskError`<br />&#124; `project exception, state` |
 
-Splunk uses the `field -` command to select which columns to exclude from the results. Kusto has a `project-away` operator that does the same.
+Splunk uses the `fields -` command to select which columns to exclude from the results. Kusto has a `project-away` operator that does the same.
 
 | Product | Operator | Example |
 |:---|:---|:---|
@@ -146,11 +146,11 @@ See the [list of summarize aggregations functions](aggregation-functions.md) tha
 
 ### Sort
 
-In Splunk, to sort in ascending order, you must use the `reverse` operator. Kusto also supports defining where to put nulls, either at the beginning or at the end.
+The default sort order is ascending. To specify descending order, add a minus sign (`-`) before the field name. Kusto also supports defining where to put nulls, either at the beginning or at the end.
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `sort` |  `Event.Rule=120103`<br />&#124; `sort Data.Hresult` <br />&#124; `reverse` |
+| Splunk | `sort` |  `Event.Rule=120103`<br />&#124; `sort -Data.Hresult` |
 | Kusto | `order by` | `Office_Hub_OHubBGTaskError`<br />&#124; `order by Data_Hresult,  desc` |
 
 ### Multivalue expand
@@ -180,6 +180,6 @@ In Kusto, you can use `summarize arg_min()` to reverse the order of which record
 | Splunk | `dedup` |  `Event.Rule=330009.2`<br />&#124; `dedup device_id sortby -batterylife` |
 | Kusto | `summarize arg_max()` | `Office_Excel_BI_PivotTableCreate`<br />&#124; `summarize arg_max(batterylife, *) by device_id` |
 
-## Next steps
+## Related content
 
 - Walk through a tutorial on the [Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators?pivots=azuremonitor).

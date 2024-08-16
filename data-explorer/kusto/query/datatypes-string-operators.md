@@ -54,7 +54,7 @@ Operators with an `_cs` suffix are case sensitive.
 |[`has`](has-operator.md) |Right-hand-side (RHS) is a whole term in left-hand-side (LHS) |No |`"North America" has "america"`|
 |[`!has`](not-has-operator.md) |RHS isn't a full term in LHS |No |`"North America" !has "amer"`|
 |[`has_all`](has-all-operator.md) |Same as `has` but works on all of the elements |No |`"North and South America" has_all("south", "north")`|
-|[`has_any`](has-anyoperator.md) |Same as `has` but works on any of the elements |No |`"North America" has_any("south", "north")`|
+|[`has_any`](has-any-operator.md) |Same as `has` but works on any of the elements |No |`"North America" has_any("south", "north")`|
 |[`has_cs`](has-cs-operator.md) |RHS is a whole term in LHS |Yes |`"North America" has_cs "America"`|
 |[`!has_cs`](not-has-cs-operator.md) |RHS isn't a full term in LHS |Yes |`"North America" !has_cs "amer"`|
 |[`hasprefix`](hasprefix-operator.md) |RHS is a term prefix in LHS |No |`"North America" hasprefix "ame"`|
@@ -67,7 +67,7 @@ Operators with an `_cs` suffix are case sensitive.
 |[`!hassuffix_cs`](not-hassuffix-cs-operator.md) |RHS isn't a term suffix in LHS |Yes |`"North America" !hassuffix_cs "icA"`|
 |[`in`](in-cs-operator.md) |Equals to any of the elements |Yes |`"abc" in ("123", "345", "abc")`|
 |[`!in`](not-in-cs-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "abc")` |
-|[`in~`](inoperator.md) |Equals to any of the elements |No | `"Abc" in~ ("123", "345", "abc")` |
+|[`in~`](in-operator.md) |Equals to any of the elements |No | `"Abc" in~ ("123", "345", "abc")` |
 |[`!in~`](not-in-operator.md) |Not equals to any of the elements |No | `"bCa" !in~ ("123", "345", "ABC")` |
 |[`matches regex`](matches-regex-operator.md) |LHS contains a match for RHS |Yes |`"Fabrikam" matches regex "b.*k"`|
 |[`startswith`](startswith-operator.md) |RHS is an initial subsequence of LHS |No |`"Fabrikam" startswith "fab"`|

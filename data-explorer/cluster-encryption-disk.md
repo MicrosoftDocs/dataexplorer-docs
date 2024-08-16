@@ -33,6 +33,6 @@ The following considerations apply to encryption using Azure Disk Encryption:
 * Performance impact of up to a single digit
 * Can't be used with sandboxes
 
-## Next steps
+## Related content
 
-[Check cluster health](check-cluster-health.md)
+* [Check cluster health](check-cluster-health.md)

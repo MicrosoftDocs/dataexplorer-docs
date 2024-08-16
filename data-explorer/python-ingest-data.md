@@ -180,6 +180,7 @@ If you plan to follow our other articles, keep the resources you created. If not
 .drop table StormEvents
 ```
 
-## Next steps
+## Next step
 
-* [Query data using Python](python-query-data.md)
+> [!div class="nextstepaction"]
+> [Query data using Python](python-query-data.md)

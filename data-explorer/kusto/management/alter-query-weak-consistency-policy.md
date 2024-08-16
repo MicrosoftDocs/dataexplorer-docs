@@ -28,7 +28,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*PolicyObject*|string|&check;| A serialized JSON policy object. For the policy properties, see the [query weak consistency policy](./query-weak-consistency-policy.md#the-policy-object).|
+|*PolicyObject*| `string` | :heavy_check_mark:| A serialized JSON policy object. For the policy properties, see the [query weak consistency policy](./query-weak-consistency-policy.md#the-policy-object).|
 
 ## Returns
 
@@ -44,7 +44,7 @@ JSON serialization of the updated [query weak consistency policy object](./query
    "PercentageOfNodes": 10,
    "MinimumNumberOfNodes": 2,
    "MaximumNumberOfNodes": 20,
-   "SuperSlackerNumberOfNodesThreshold": 5,
+   "SuperSlackerNumberOfNodesThreshold": -1,
    "EnableMetadataPrefetch": false,
    "MaximumLagAllowedInMinutes": 10,
    "RefreshPeriodInSeconds": 300
@@ -55,7 +55,7 @@ JSON serialization of the updated [query weak consistency policy object](./query
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 10, "MinimumNumberOfNodes": 2, "MaximumNumberOfNodes": 20, "SuperSlackerNumberOfNodesThreshold": 5, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 10, "RefreshPeriodInSeconds": 300}| |Cluster
+|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 10, "MinimumNumberOfNodes": 2, "MaximumNumberOfNodes": 20, "SuperSlackerNumberOfNodesThreshold": -1, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 10, "RefreshPeriodInSeconds": 300}| |Cluster
 
 For demonstrating the `alter-merge`, we'll assume the following policy is set prior to executing the command:
 ```JSON
@@ -63,7 +63,7 @@ For demonstrating the `alter-merge`, we'll assume the following policy is set pr
   "PercentageOfNodes": 20,
   "MinimumNumberOfNodes": 10,
   "MaximumNumberOfNodes": 100, 
-  "SuperSlackerNumberOfNodesThreshold": 30,
+  "SuperSlackerNumberOfNodesThreshold": -1,
   "EnableMetadataPrefetch": false,
   "MaximumLagAllowedInMinutes": 5,
   "RefreshPeriodInSeconds": 30
@@ -81,6 +81,6 @@ For demonstrating the `alter-merge`, we'll assume the following policy is set pr
 
 |PolicyName|EntityName|Policy|ChildEntities|EntityType|
 |---|---|---|---|---|
-|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 30, "MinimumNumberOfNodes": 10, "MaximumNumberOfNodes": 100, "SuperSlackerNumberOfNodesThreshold": 30, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 15, "RefreshPeriodInSeconds": 30}| |Cluster
+|QueryWeakConsistencyPolicy||{"PercentageOfNodes": 30, "MinimumNumberOfNodes": 10, "MaximumNumberOfNodes": 100, "SuperSlackerNumberOfNodesThreshold": -1, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 15, "RefreshPeriodInSeconds": 30}| |Cluster
 
 As can be seen, only `PercentageOfNodes` and `MaximumLagAllowedInMinutes` were modified (whereas if the `alter` command was used instead, the remaining properties would be also modified, and set to their [defaults](./query-weak-consistency-policy.md#default-policy)).

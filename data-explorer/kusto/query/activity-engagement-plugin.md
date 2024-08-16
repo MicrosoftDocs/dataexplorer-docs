@@ -21,14 +21,14 @@ The activity_engagement plugin can be used for calculating DAU/WAU/MAU (daily/we
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input used to calculate engagement. |
-| *IdCoumn* | string | &check; | The name of the column with ID values that represent user activity. |
-| *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
-| *Start* | datetime |  | The analysis start period. |
-| *End* | datetime |  | The analysis end period. |
-| *InnerActivityWindow* | timespan | &check; | The inner-scope analysis window period. |
-| *OuterActivityWindow* | timespan | &check; | The outer-scope analysis window period. |
-| *dim1*, *dim2*, ... | dynamic |  | An array of the dimensions columns that slice the activity metrics calculation. |
+| *T* | `string` |  :heavy_check_mark: | The tabular input used to calculate engagement. |
+| *IdCoumn* | `string` |  :heavy_check_mark: | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | `string` |  :heavy_check_mark: | The name of the column that represents timeline. |
+| *Start* | `datetime` |  | The analysis start period. |
+| *End* | `datetime` |  | The analysis end period. |
+| *InnerActivityWindow* | `timespan` |  :heavy_check_mark: | The inner-scope analysis window period. |
+| *OuterActivityWindow* | `timespan` |  :heavy_check_mark: | The outer-scope analysis window period. |
+| *dim1*, *dim2*, ... | `dynamic` |  | An array of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 
@@ -38,7 +38,7 @@ Output table schema is:
 
 |TimelineColumn|dcount_activities_inner|dcount_activities_outer|activity_ratio|dim1|..|dim_n|
 |---|---|---|---|--|--|--|--|--|--|
-|type: as of *TimelineColumn*|long|long|double|..|..|..|
+|type: as of *TimelineColumn*| `long` |long|double|..|..|..|
 
 ## Examples
 
@@ -57,14 +57,14 @@ range _day from _start to _end  step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+100*r-1), 1) 
-| mv-expand id=_users to typeof(long) take 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 // Calculate DAU/WAU ratio
 | evaluate activity_engagement(['id'], _day, _start, _end, 1d, 7d)
 | project _day, Dau_Wau=activity_ratio*100 
 | render timechart 
 ```
 
-:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-wau.png" border="false" alt-text="Graph displaying the ratio of daily active users to weekly active users as specified in the query.":::
+:::image type="content" source="media/activity-engagement-plugin/activity-engagement-dau-wau.png" border="false" alt-text="Graph displaying the ratio of daily active users to weekly active users as specified in the query.":::
 
 ### DAU/MAU calculation
 
@@ -81,14 +81,14 @@ range _day from _start to _end  step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+100*r-1), 1) 
-| mv-expand id=_users to typeof(long) take 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 // Calculate DAU/MAU ratio
 | evaluate activity_engagement(['id'], _day, _start, _end, 1d, 30d)
 | project _day, Dau_Mau=activity_ratio*100 
 | render timechart 
 ```
 
-:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-mau.png" border="false" alt-text="Graph displaying the ratio of daily active users to monthly active users as specified in the query.":::
+:::image type="content" source="media/activity-engagement-plugin/activity-engagement-dau-mau.png" border="false" alt-text="Graph displaying the ratio of daily active users to monthly active users as specified in the query.":::
 
 ### DAU/MAU calculation with additional dimensions
 
@@ -105,7 +105,7 @@ range _day from _start to _end  step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+100*r-1), 1) 
-| mv-expand id=_users to typeof(long) take 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 | extend mod3 = strcat("mod3=", id % 3)
 // Calculate DAU/MAU ratio
 | evaluate activity_engagement(['id'], _day, _start, _end, 1d, 30d, mod3)
@@ -113,4 +113,4 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-mau-mod3.png" border="false" alt-text="Graph displaying the ratio of daily active users to monthly active users with modulo 3 as specified in the query.":::
+:::image type="content" source="media/activity-engagement-plugin/activity-engagement-dau-mau-mod3.png" border="false" alt-text="Graph displaying the ratio of daily active users to monthly active users with modulo 3 as specified in the query.":::

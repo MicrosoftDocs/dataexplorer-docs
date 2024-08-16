@@ -19,9 +19,9 @@ Converts planar lines or multiline edges to geodesics by adding intermediate poi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *lineString* | dynamic | &check; | A LineString or MultiLineString in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *lineString* | `dynamic` |  :heavy_check_mark: | A LineString or MultiLineString in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 | *tolerance* | int, long, or real | | Defines maximum distance in meters between the original planar edge and the converted geodesic edge chain. Supported values are in the range [0.1, 10000]. If unspecified, the default value `10` is used.|
-| *preserve_crossing* | bool | | If `true`, preserves edge crossing over antimeridian. If unspecified, the default value `false` is used.
+| *preserve_crossing* | `bool` | | If `true`, preserves edge crossing over antimeridian. If unspecified, the default value `false` is used.
 
 ## Returns
 

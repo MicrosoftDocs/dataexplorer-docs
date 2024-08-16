@@ -58,6 +58,6 @@ Azure Data Explorer supports both individual record deletion and purging an enti
 * Due to the purge process performance impact, the caller is expected to modify the data schema so that minimal tables include relevant data, and batch commands per table to reduce the significant COGS impact of the purge process.
 * The `predicate` parameter of the purge command is used to specify which records to purge. `Predicate` size is limited to 63 KB.
 
-## Next steps
+## Related content
 
 * [Data purge in Azure Data Explorer](kusto/concepts/data-purge.md)

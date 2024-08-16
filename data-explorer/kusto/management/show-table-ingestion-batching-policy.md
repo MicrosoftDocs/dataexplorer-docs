@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .show table policy ingestionbatching command
 
-Displays the table's [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
+Displays the table's [ingestion batching policy](batching-policy.md) that defines data aggregation for batching. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
 
 ## Permissions
 
@@ -23,7 +23,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table for which to show the policy details.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to show the policy details.|
 
 ## Returns
 
@@ -37,6 +37,6 @@ The following command returns the batching policy on a table.
 .show table MyTable policy ingestionbatching
 ```
 
-## See also
+## Related content
 
 * [show database batching policy](show-database-ingestion-batching-policy.md)

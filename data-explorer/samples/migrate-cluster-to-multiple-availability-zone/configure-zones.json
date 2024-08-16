@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "clusters_clusterName_name": {
+          "defaultValue": "clusterName",
+          "type": "string"
+      }
+  },
+  "variables": {},
+  "resources": [
+      {
+          "type": "Microsoft.Kusto/clusters",
+          "apiVersion": "2023-05-02",
+          "name": "[parameters('clusters_clusterName_name')]",
+          "location": "North Europe",
+          "sku": {
+              "name": "{skuName}",
+              "tier": "Basic",
+              "capacity": 1
+          },
+          "zones": ["1","2","3"],
+          "identity": {
+              "type": "SystemAssigned"
+          },
+          "properties": {
+              "trustedExternalTenants": [],
+              "enableDiskEncryption": false,
+              "enableStreamingIngest": false,
+              "languageExtensions": {
+                  "value": []
+              },
+              "enablePurge": false,
+              "enableDoubleEncryption": false,
+              "engineType": "V3",
+              "acceptedAudiences": [],
+              "restrictOutboundNetworkAccess": "Disabled",
+              "allowedFqdnList": [],
+              "publicNetworkAccess": "Enabled",
+              "allowedIpRangeList": [],
+              "enableAutoStop": true,
+              "publicIPType": "IPv4"
+          }
+      }
+  ]
+}

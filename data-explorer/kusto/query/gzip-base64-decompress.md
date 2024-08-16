@@ -19,7 +19,7 @@ Decodes the input string from base64 and performs gzip decompression.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string* | string | &check; | The value that was compressed with gzip and then base64-encoded. The function accepts only one argument.|
+| *string* | `string` |  :heavy_check_mark: | The value that was compressed with gzip and then base64-encoded. The function accepts only one argument.|
 
 > [!NOTE]
 >
@@ -61,7 +61,7 @@ print res=gzip_decompress_from_base64_string("x0x0x0")
 |--|
 ||
 
-## See also
+## Related content
 
 * [gzip_compress_to_base64_string()](gzip-base64-compress.md)
-* [zlib_decompress_from_base64_string](zlib-base64-decompress.md)
+* [zlib_decompress_from_base64_string](zlib-base64-decompress-function.md)

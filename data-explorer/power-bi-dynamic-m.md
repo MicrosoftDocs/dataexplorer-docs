@@ -251,6 +251,6 @@ There are some considerations and limitations to consider when using dynamic M q
 
 If you no longer need the report you created for this article, delete the Power BI Desktop (.pbix) file.
 
-## Next steps
+## Related content
 
-[Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)
+* [Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)

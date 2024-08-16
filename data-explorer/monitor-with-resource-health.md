@@ -51,7 +51,7 @@ A health status of **Unavailable** indicates that there's an ongoing problem wit
 :::image type="content" source="media/monitor-with-resource-health/unavailable.png" alt-text="Screenshot of a Resource health page for an Azure Data Explorer resource, with a highlighted unavailable status and links for support and information." border="false":::
 
 > [!TIP]
-> You can use the [system information commands](kusto/management/systeminfo.md) to find the source of the problem.
+> You can use the [system information commands](kusto/management/system-info.md) to find the source of the problem.
 
 ### Unknown
 
@@ -68,7 +68,7 @@ In **Resource Health** pane > **Health history**, access up to four weeks of res
 
 ![History.](media/monitor-with-resource-health/healthhistory.png)
 
-## Next steps
+## Related content
 
 * [Configuring Resource Health alerts](/azure/service-health/resource-health-alert-arm-template-guide)
 * [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md)

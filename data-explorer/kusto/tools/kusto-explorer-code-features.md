@@ -18,19 +18,19 @@ Use Kusto.Explorer's KQL query editing and refactoring features to rename variab
 
 Rename selected symbols by clicking `Ctrl`+`R` in the query editor window.
 
-![Animated GIF that shows a variable being renamed in the Query Editor window. Three occurrences are simultaneously replaced with the new name.](./Images/kusto-explorer-code-features/ke-refactor-rename.gif "refactor-rename")
+![Animated GIF that shows a variable being renamed in the Query Editor window. Three occurrences are simultaneously replaced with the new name.](./media/kusto-explorer-code-features/ke-refactor-rename.gif "refactor-rename")
 
 ### Extract scalars as `let` expressions
 
 To define selected literals as `let` expressions, press `Alt`+`Ctrl`+`M`.
 
-![Animated GIF. The Query Editor pointer starts on a literal expression. A let statement then appears that sets that literal value to a new variable.](./Images/kusto-explorer-code-features/ke-extract-as-let-literal.gif "extract-as-let-literal")
+![Animated GIF. The Query Editor pointer starts on a literal expression. A let statement then appears that sets that literal value to a new variable.](./media/kusto-explorer-code-features/ke-extract-as-let-literal.gif "extract-as-let-literal")
 
 ### Extract tabular statements as `let` expressions
 
 To define tabular expressions as `let` statements, select the text, and then press `Alt`+`Ctrl`+`M`.
 
-![Animated GIF. A tabular expression is selected in the Query Editor. A let statement then appears that sets that tabular expression to a new variable.](./Images/kusto-explorer-code-features/ke-extract-as-let-tabular.gif "extract-as-let-tabular")
+![Animated GIF. A tabular expression is selected in the Query Editor. A let statement then appears that sets that tabular expression to a new variable.](./media/kusto-explorer-code-features/ke-extract-as-let-tabular.gif "extract-as-let-tabular")
 
 ## Code navigation
 
@@ -44,7 +44,7 @@ You can navigate to the definition of the current symbol using `F12` or the `Alt
 
 You can obtain all references of the current symbol using the `Ctrl`+`F12` shortcut.
 
-:::image type="content" source="images/kusto-explorer-code-features/ke-code-nav-references.gif" alt-text="References of a symbol Kusto Explorer Code Navigation.":::
+:::image type="content" source="media/kusto-explorer-code-features/ke-code-nav-references.gif" alt-text="References of a symbol Kusto Explorer Code Navigation.":::
 
 For more information on keyboard shortcuts in Kusto.Explorer, see [Keyboard shortcuts](../tools/kusto-explorer-shortcuts.md).
 
@@ -54,4 +54,4 @@ Use Kusto.Explorer's code analyzer utility to automatically analyze the current 
 
 To view improvement recommendations, at the bottom of the result grid, select the **Issues** tab.
 
-:::image type="content" source="images/kusto-explorer-code-features/ke-code-analyze.gif" alt-text="Code analyzer GIF in Kusto Explorer.":::
+:::image type="content" source="media/kusto-explorer-code-features/ke-code-analyze.gif" alt-text="Code analyzer GIF in Kusto Explorer.":::

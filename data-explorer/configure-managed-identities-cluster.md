@@ -397,7 +397,7 @@ Run the following to remove the user-assigned identity:
 
 ---
 
-## Next steps
+## Related content
 
 * [Secure Azure Data Explorer clusters in Azure](security.md)
 * [Secure your cluster using Disk Encryption](cluster-encryption-disk.md) by enabling encryption at rest.

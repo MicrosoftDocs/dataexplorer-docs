@@ -8,19 +8,20 @@ ms.date: 08/15/2023
 # Use a managed identity to run an update policy
 
 The update policy must be configured with a [managed identity](../../managed-identities-overview.md) in the following scenarios:
-- When the update policy query references tables in other databases.
-- When the update policy query references tables with an enabled [row level security policy](./rowlevelsecuritypolicy.md).
+
+* When the update policy query references tables in other databases.
+* When the update policy query references tables with an enabled [row level security policy](./row-level-security-policy.md).
 
 An update policy configured with a managed identity is performed on behalf of the managed identity.
 
-In this article, you learn how to configure a system-assigned or user-assigned managed identity and set up that identity to create an update policy.
+In this article, you learn how to configure a system-assigned or user-assigned managed identity and create an update policy using that identity.
 
 ## Prerequisites
 
 * A cluster and database. [Create a cluster and database](../../create-cluster-and-database.md).
 * [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions on the database.
 
-## 1 - Configure a managed identity for update policy
+## Configure a managed identity
 
 There are two types of managed identities:
 
@@ -38,7 +39,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
     :::image type="content" source="../../media/update-policy/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="../../media/update-policy/managed-identity-ids.png":::
 
-1. Run the following [.alter-merge managed_identity policy](./alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
+1. Run the following [.alter-merge policy managed_identity](./alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
 
     ````kusto
     .alter-merge cluster policy managed_identity ```[
@@ -66,7 +67,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 1. Copy and save the **Object (principal) ID** for use in a later step.
 
-1. Run the following [.alter-merge managed_identity policy](./alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
+1. Run the following [.alter-merge policy managed_identity](./alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
 
     ````kusto
     .alter-merge cluster policy managed_identity ```[
@@ -90,7 +91,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ---
 
-## 2 - Create an update policy
+## Create an update policy
 
 Select one of the following tabs to create an update policy that will run on behalf of a user-assigned or system-assigned managed identity.
 
@@ -98,7 +99,7 @@ Select one of the following tabs to create an update policy that will run on beh
 
 Run the [.alter table policy update](alter-table-update-policy-command.md) command with the `ManagedIdentity` property set to the managed identity object ID.
 
-For example, the following command alters the update policy of the table `MyTable` in `MyDatabase` database that references the table `OtherTable` in the database `OtherDatabase` on behalf of a user-assigned managed identity. `<objectId>` should be a managed identity object ID.
+For example, the following command alters the update policy of the table `MyTable` in the database `MyDatabase`. It's important to note that both the `Source` and `Query` parameters should only reference objects within the same database where the update policy is defined. However, the code contained within the function specified in the `Query` parameter can interact with tables located in other databases. For example, the function `MyUpdatePolicyFunction()` can access `OtherTable` in `OtherDatabase` on behalf of a user-assigned managed identity. `<objectId>` should be a managed identity object ID.
 
 ````kusto
 .alter table MyDatabase.MyTable policy update
@@ -107,7 +108,7 @@ For example, the following command alters the update policy of the table `MyTabl
     {
         "IsEnabled": true,
         "Source": "MyTable",
-        "Query": "UpdatePolicyFunction",
+        "Query": "MyUpdatePolicyFunction()",
         "IsTransactional": false,
         "PropagateIngestionProperties": false,
         "ManagedIdentity": "<objectId>"
@@ -120,7 +121,7 @@ For example, the following command alters the update policy of the table `MyTabl
 
 Run the [.alter table policy update](alter-table-update-policy-command.md) command with the `ManagedIdentity` property set to the managed identity object ID.
 
-For example, the following command alters the update policy of the table `MyTable` in `MyDatabase` database that references the table `OtherTable` in the database `OtherDatabase` on behalf of your system-assigned managed identity.
+For example, the following command alters the update policy of the table `MyTable` in the database `MyDatabase`. It's important to note that both the `Source` and `Query` parameters should only reference objects within the same database where the update policy is defined. However, the code contained within the function specified in the `Query` parameter can interact with tables located in other databases. For example, the function `MyUpdatePolicyFunction()` can access `OtherTable` in `OtherDatabase` on behalf of your system-assigned managed identity.
 
 ````kusto
 .alter table MyDatabase.MyTable policy update
@@ -129,7 +130,7 @@ For example, the following command alters the update policy of the table `MyTabl
     {
         "IsEnabled": true,
         "Source": "MyTable",
-        "Query": "UpdatePolicyFunction",
+        "Query": "MyUpdatePolicyFunction()",
         "IsTransactional": false,
         "PropagateIngestionProperties": false,
         "ManagedIdentity": "system"

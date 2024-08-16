@@ -9,7 +9,7 @@ ms.date: 12/14/2022
 
 Calculates the polygon that represents the S2 Cell rectangular area.
 
-Read more about [S2 Cells](https://s2geometry.io/devguide/s2cell_hierarchy).
+Read more about [S2 Cells](http://s2geometry.io/devguide/s2cell_hierarchy).
 
 ## Syntax
 
@@ -21,7 +21,7 @@ Read more about [S2 Cells](https://s2geometry.io/devguide/s2cell_hierarchy).
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *s2cell* | string | &check; | S2 cell token value as it was calculated by [geo_point_to_s2cell()](geo-point-to-s2cell-function.md). The S2 cell token maximum string length is 16 characters.|
+| *s2cell* | `string` |  :heavy_check_mark: | S2 cell token value as it was calculated by [geo_point_to_s2cell()](geo-point-to-s2cell-function.md). The S2 cell token maximum string length is 16 characters.|
 
 ## Returns
 

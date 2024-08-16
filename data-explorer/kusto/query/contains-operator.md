@@ -29,9 +29,9 @@ If you're looking for a [term](datatypes-string-operators.md#what-is-a-term), us
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input whose records are to be filtered. |
-| *col* | string | &check; | The name of the column to check for *string*. |
-| *string* | string | &check; | The case-sensitive string by which to filter the data. |
+| *T* | `string` |  :heavy_check_mark: | The tabular input whose records are to be filtered. |
+| *col* | `string` |  :heavy_check_mark: | The name of the column to check for *string*. |
+| *string* | `string` |  :heavy_check_mark: | The case-sensitive string by which to filter the data. |
 
 ## Returns
 

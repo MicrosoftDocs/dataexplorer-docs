@@ -19,7 +19,7 @@ Converts a scalar value of type `dynamic` to a canonical `string` representation
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *expr* | dynamic | &check; | The expression to convert to string representation.|
+| *expr* | `dynamic` |  :heavy_check_mark: | The expression to convert to string representation.|
 
 ## Returns
 

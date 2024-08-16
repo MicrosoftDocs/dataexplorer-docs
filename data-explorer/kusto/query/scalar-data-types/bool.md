@@ -1,23 +1,32 @@
 ---
 title:  The bool data type
-description: This article describes The bool data type in Azure Data Explorer.
+description: This article describes the bool data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/08/2024
 ---
 # The bool data type
 
-The `bool` (`boolean`) data type can have one of two states: `true` or `false`
-(internally encoded as `1` and `0`, respectively), as well as the null value.
+The `bool` data type can be: `true` (`1`), `false` (`0`), or null.
 
-## bool literals
+> The `bool` and `boolean` data types are equivalent.
 
-The `bool` data type has the following literals:
-* `true` and `bool(true)`: Representing trueness
-* `false` and `bool(false)`:  Representing falsehood
-* `bool(null)`: See [null values](null-values.md)
+## `bool` literals
 
-## bool operators
+To specify a bool literal, use one of the following syntax options: 
 
-The `bool` data type supports the following operators:
-equality (`==`), inequality (`!=`), logical-and (`and`), and logical-or (`or`).
+|Syntax|Description|
+|--|--|--|
+|`true` or `bool(true)`|Represents trueness.|
+|`false` or `bool(false)`|Represents falsehood.|
+|`bool(null)`|Represents the [null value](/azure/data-explorer/kusto/query/scalar-data-types/null-values).|
+
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
+## Boolean operators
+
+The `bool` data type supports all of the [logical operators](../logicaloperators.md): equality (`==`), inequality (`!=`), logical-and (`and`), and logical-or (`or`).
+
+## Related content
+
+* [tobool()](../../query/toboolfunction.md)

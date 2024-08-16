@@ -26,7 +26,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*PluginName*|string|&check;|The name of the plugin to enable.|
+|*PluginName*| `string` | :heavy_check_mark:|The name of the plugin to enable.|
 
 ## Example
 
@@ -36,7 +36,7 @@ The following command enables the autocluster plugin on the cluster.
 .enable plugin autocluster
 ```
 
-## See also
+## Related content
 
 * [`.disable plugin`](disable-plugin.md)
 * [`.show plugins`](show-plugins.md)

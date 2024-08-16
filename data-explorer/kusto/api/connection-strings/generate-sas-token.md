@@ -29,7 +29,7 @@ This article shows you how to generate a SAS token to a resource.
 
    :::image type="content" source="storage/copy-sas-token-and-url.png" alt-text="Screenshot of Azure portal with blob SAS URL generated.":::
 
-## Next Steps
+## Related content
 
 * [Storage authentication methods](storage-authentication-methods.md)
 * [Storage connection strings](./storage-connection-strings.md)
