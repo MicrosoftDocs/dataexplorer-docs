@@ -233,7 +233,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|- [Use the ingestion wizard to ingest JSON data](/azure/data-explorer/ingest-from-local-file) <br/>- [Web UI overview](./web-query-data.md)|Updated articles. Added references to ingestion wizard and updated UI.|
+|- [Use the ingestion wizard to ingest JSON data](/azure/data-explorer/ingest-from-local-file) <br/>- [Web UI overview](web-query-data.md)|Updated articles. Added references to ingestion wizard and updated UI.|
 
 **Management**
 
@@ -273,8 +273,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 | [Ingest data from Azure Stream Analytics (Preview)](stream-analytics-connector.md) | New Article. Describes how to ingest (load) data from Azure Stream Analytics. |
-| [Azure Data Explorer web UI overview](./web-query-data.md) | New Article. Describes the elements of web UI home page and the data analytics journey. |
-| [Explore the Azure Data Explorer web UI samples gallery](./web-ui-samples-dashboards.md) | New Article. Describes how to use the samples gallery in the web UI. |
+| [Azure Data Explorer web UI overview](web-query-data.md) | New Article. Describes the elements of web UI home page and the data analytics journey. |
+| [Explore the Azure Data Explorer web UI samples gallery](web-ui-samples-dashboards.md) | New Article. Describes how to use the samples gallery in the web UI. |
 | [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) | Updated Article. New SKU list and refreshed content. |
 
 ## May 2022
@@ -464,7 +464,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | [Use one-click ingestion to create an event hub data connection](ingest-data-event-hub-oveview.md)| Updated article. New UI.
 | [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](/azure/data-explorer/ingest-from-local-file) | Updated article. New UI.
 | [Ingest data from a container/ADLS into Azure Data Explorer](/azure/data-explorer/ingest-from-container) | Updated article. New UI.
-| [Create a table in Azure Data Explorer](./create-table-wizard.md) | Updated article. New UI.
+| [Create a table in Azure Data Explorer](create-table-wizard.md) | Updated article. New UI.
 
 **Query**
 
@@ -658,7 +658,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 [Azure Policy built-in definitions](policy-reference.md) | New article. Index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions.
 [Use one-click ingestion to create an event hub data connection](ingest-data-event-hub-oveview.md) | New article. Connect an event hub to a table using the [one-click ingestion](ingest-data-overview.md) experience.
 | [Configure managed identities for your cluster](configure-managed-identities-cluster.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
-| [Create a table](./create-table-wizard.md) | Updated article. General availability (GA). |
+| [Create a table](create-table-wizard.md) | Updated article. General availability (GA). |
  | [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md) | Updated article. New capabilities.
 |  [What is one-click ingestion?](ingest-data-overview.md) | Updated article. Added ingestion from JSON nested levels. General availability (GA).
 | [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md) | Updated article. New dashboard visuals and parameter changes.

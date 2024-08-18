@@ -35,7 +35,7 @@ ARM templates and Terraform scripts are the two main, declarative ways to deploy
 
 ARM templates are [JSON](/azure/azure-resource-manager/templates/overview) or [Bicep](/azure/azure-resource-manager/bicep/overview) files that define the infrastructure and configuration of a deployment. You can use the templates to deploy [clusters](/azure/templates/microsoft.kusto/clusters?tabs=json), [databases](/azure/templates/microsoft.kusto/clusters/databases?tabs=json), [data connections](/azure/templates/microsoft.kusto/clusters/databases/dataconnections?tabs=json), and many other infrastructure components. For more information, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database.md).
 
-You can also use ARM templates to deploy [command scripts](/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json), which help you create a database schema and define policies. For more information, see [Configure a database by using a Kusto Query Language script](./database-script.md).
+You can also use ARM templates to deploy [command scripts](/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json), which help you create a database schema and define policies. For more information, see [Configure a database by using a Kusto Query Language script](database-script.md).
 
 You can find more example templates on the [Azure Quickstart Templates](/samples/browse/?expanded=azure&products=azure-resource-manager&terms=data%20explorer) site.
 
@@ -76,20 +76,20 @@ You can automate schema entities deployment by using the following methods:
 * Tools
   * [Sync Kusto](/kusto/tools/synckusto). Use this interactive developer tool to extract the database schema or management command script. You can then use the extracted content command script for automatic deployment.
   * [Delta Kusto](https://github.com/microsoft/delta-kusto): Invoke this tool in a CI/CD pipeline. It can compare two sources, such as the database schema or management command script, and compute a delta management command script. You can then use the extracted content command script for automatic deployment.
-  * [Azure DevOps task](./devops.md) for Azure Data Explorer.
+  * [Azure DevOps task](devops.md) for Azure Data Explorer.
 
 ## Ingest data
 
 Sometimes you want to ingest data into your cluster. For example, you might want to ingest data to run tests or re-create an environment. You can use the following methods to ingest data:
 
 * SDKs
-  * [.NET SDK](./net-sdk-ingest-data.md)
-  * [Python SDK](./python-ingest-data.md)
-  * [Java SDK](./java-ingest-data.md)
-  * [Node SDK](./node-ingest-data.md)
-  * [Go SDK](./go-ingest-data.md)
-* [LightIngest](./lightingest.md) CLI tool
-* Triggering an [Azure Data Factory pipeline](./data-factory-integration.md)
+  * [.NET SDK](net-sdk-ingest-data.md)
+  * [Python SDK](python-ingest-data.md)
+  * [Java SDK](java-ingest-data.md)
+  * [Node SDK](node-ingest-data.md)
+  * [Go SDK](go-ingest-data.md)
+* [LightIngest](lightingest.md) CLI tool
+* Triggering an [Azure Data Factory pipeline](data-factory-integration.md)
 
 ## Example deployment using a CI/CD pipeline
 
@@ -260,4 +260,4 @@ You can verify the deployment by running a query against the *Customer* table. Y
 ## Related content
 
 * Create a [cluster and database by using an Azure Resource Manager template](create-cluster-database.md).
-* Configure a database by using a [KQL script](./database-script.md)
+* Configure a database by using a [KQL script](database-script.md)

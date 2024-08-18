@@ -134,7 +134,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 ### Schema mapping for Event Hubs Capture Avro files
 
-One way to consume Event Hubs data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](./ingest-data-event-grid-overview.md).
+One way to consume Event Hubs data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](ingest-data-event-grid-overview.md).
 
 The schema of the capture files is different from the schema of the original event sent to Event Hubs. You should design the destination table schema with this difference in mind.
 Specifically, the event payload is represented in the capture file as a byte array, and this array isn't automatically decoded by the Event Grid Azure Data Explorer data connection. For more specific information on the file schema for Event Hubs Avro capture data, see [Exploring captured Avro files in Azure Event Hubs](/azure/event-hubs/explore-captured-avro-files).

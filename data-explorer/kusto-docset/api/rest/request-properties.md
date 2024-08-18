@@ -139,7 +139,7 @@ The following table overviews the supported request properties.
 
 You can set request properties in the following ways:
 
-* The POST body of an [HTTP request](./request.md)
+* The POST body of an [HTTP request](request.md)
 * A Kusto Query Language [set statement](../../query/set-statement.md)
 * The set option method of the [`ClientRequestProperties` class](../netfx/client-request-properties.md)
 

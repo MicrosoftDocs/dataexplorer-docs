@@ -51,7 +51,7 @@ The following table contains the common headers for query and management operati
 |------------------|-------------------------------------------------------------------------------------------|-------------------|
 |`Accept`          | Set this value to `application/json`.                                                     | Optional          |
 |`Accept-Encoding` | Supported encodings are `gzip` and `deflate`.                                             | Optional          |
-|`Authorization`   | See [authentication](./authentication.md).                                                | Required          |
+|`Authorization`   | See [authentication](authentication.md).                                                | Required          |
 |`Connection`      | Enable `Keep-Alive`.                                                                      | Optional          |
 |`Content-Length`  | Specify the request body length, when known.                                              | Optional          |
 |`Content-Encoding`| Set to `gzip` but the body must be gzip-compressed                                        | Optional          |
