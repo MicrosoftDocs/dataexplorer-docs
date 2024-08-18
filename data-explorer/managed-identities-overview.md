@@ -64,4 +64,4 @@ After assigning the managed identity to your cluster and configuring the relevan
 
 * [Configure managed identities for your cluster](configure-managed-identities-cluster.md)
 * [Authenticate external tables with managed identities](external-tables-managed-identities.md)
-* [Examples of using storage connection string for managed identity](./kusto/api/connection-strings/storage-connection-strings.md#example) 
+* [Examples of using storage connection string for managed identity](./kusto/api/connection-strings/kusto.md#examples) 
