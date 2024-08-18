@@ -20,7 +20,7 @@
           "ThirdPartyNotices.md"
         ],
         "include": [
-          "**/kusto-content/**/includes/**"
+          "**/kusto-docset/**/includes/**"
         ]
       }
     ],
