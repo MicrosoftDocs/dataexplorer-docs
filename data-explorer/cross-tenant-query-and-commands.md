@@ -44,7 +44,7 @@ The trustedExternalTenants array supports also all-tenants star ('*') notation, 
 > [!NOTE]
 > The default value for `trustedExternalTenants` is all tenants: `[ { "value": "*" }]`. If the external tenants array was not defined on cluster creation, it can be overridden with a cluster update operation. An empty array means that only identities of the clusters tenant are allowed to authenticate to this cluster.
 
-[!INCLUDE [syntax-conventions-note](kusto-content/includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](kusto-docset/includes/syntax-conventions-note.md)]
 
 ### Examples
 
