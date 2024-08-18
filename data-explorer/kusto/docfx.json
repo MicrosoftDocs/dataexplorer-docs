@@ -9,6 +9,8 @@
         "exclude": [
           "**/obj/**",
           "**/includes/**",
+          "/data-explorer/.openpublishing.redirection.json",
+          "/data-explorer/.openpublishing.redirection.migrated.json",
           "_themes/**",
           "_themes.pdf/**",
           "**/docfx.json",
