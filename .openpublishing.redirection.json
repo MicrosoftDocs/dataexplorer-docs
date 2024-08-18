@@ -416,11 +416,6 @@
       "redirect_document_id": true
     },
     {
-      "source_path": "data-explorer/ingestion-properties.md",
-      "redirect_url": "/kusto/ingestion-properties",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "data-explorer/set-timeout-limits.md",
       "redirect_url": "/kusto/set-timeout-limits",
       "redirect_document_id": false

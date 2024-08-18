@@ -32,10 +32,10 @@ sections:
           To view queued ingestion latency metrics, see [monitoring ingestion latency](monitor-queued-ingestion.md#view-the-ingestion-latency). The metrics `Stage Latency` and `Discovery Latency` show latencies in the ingestion process, and reveal if there are any long latencies.
       - question: How can I shorten queued ingestion latencies?
         answer: |
-          You can [learn about latencies](batching-policy.md#batching-latencies) and [adjust settings in the batching policy](/kusto/management/batching-policy) to address issues that cause latencies such as data backlogs, inefficient batching, batching large amounts of uncompressed data, or ingesting very small amounts of data.
+          You can [learn about latencies](/kusto/management/batching-policy#batching-latencies) and [adjust settings in the batching policy](/kusto/management/batching-policy) to address issues that cause latencies such as data backlogs, inefficient batching, batching large amounts of uncompressed data, or ingesting very small amounts of data.
       - question: How is batching data size calculated?
         answer: |
-          The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed [data size is calculated](batching-policy.md#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
+          The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed [data size is calculated](/kusto/management/batching-policy#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
   - name: Ingestion monitoring, metrics, and errors
     questions:
       - question: How can I monitor ingestion issues?
@@ -51,7 +51,7 @@ sections:
         answer: |
           The full ingestion process can be monitored using ingestion [metrics](using-metrics.md) and [diagnostic logs](using-diagnostic-logs.md). 
           Ingestion failures can be monitored using the `IngestionResult` metric or the `FailedIngestion` diagnostic log.
-          The [`.show ingestion failures`](ingestion-failures.md) command shows ingestion failures associated with the data ingestion management commands, and is not recommended for monitoring errors. 
+          The [`.show ingestion failures`](/kusto/management/ingestion-failures) command shows ingestion failures associated with the data ingestion management commands, and is not recommended for monitoring errors. 
           The [`.dup-next-failed-ingest`](/kusto/management/dup-next-failed-ingest) command provides information on the next failed ingestion by uploading ingestion files and metadata to a storage container. 
           This can be useful for checking an ingestion flow, though is not advised for steady monitoring.
       - question: What can I do if I find many retry errors?
