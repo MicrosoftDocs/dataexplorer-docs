@@ -677,7 +677,7 @@ items:
             href: ingest-invalid-data.md
             displayName: Failure, error code
           - name: Ingestion FAQ
-            href: /kusto/management/ingestion-faq
+            href: ingestion-faq.yml
       - name: Azure Data Explorer white paper
         href: https://aka.ms/adx.techwhitepaper
   - name: Resources
