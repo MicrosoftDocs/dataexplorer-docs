@@ -236,11 +236,6 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "data-explorer/kusto/management/ingestion-time-policy.md",
-      "redirect_url": "/kusto/management/ingestion-time-policy",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "data-explorer/kusto/management/iothub.md",
       "redirect_url": "/azure/data-explorer/ingest-data-iot-hub-overview",
       "redirect_document_id": true
