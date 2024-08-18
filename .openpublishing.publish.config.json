@@ -33,6 +33,10 @@
       "type_mapping": {
         "Conceptual": "Content"
       },
+      "exclude": [
+        "data-explorer/.openpublishing.redirection.json",
+        "data-explorer/.openpublishing.redirection.migrated.json"
+      ],
       "build_entry_point": "docs",
       "template_folder": "_themes"
     }

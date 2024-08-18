@@ -7,8 +7,6 @@
           "**/*.yml"
         ],
         "exclude": [
-          "data-explorer/.openpublishing.redirection.json",
-          "data-explorer/.openpublishing.redirection.migrated.json",
           "**/obj/**",
           "**/includes/**",
           "_themes/**",
