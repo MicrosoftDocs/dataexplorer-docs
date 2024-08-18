@@ -425,7 +425,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 | [Use wizard for ingestion with LightIngest (preview)](ingest-data-historical.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
-| [Use one-click ingestion to create an event hub data connection](ingest-data-event-hub-oveview.md)| Updated article. One click event hub experience.
+| [Use one-click ingestion to create an event hub data connection](ingest-data-event-hub-overview.md)| Updated article. One click event hub experience.
 | [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md)| Updated article. Generate LightIngest commands - one click experience.
 
 **Query**
@@ -461,7 +461,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 | [Monitor batching ingestion with metrics](using-diagnostic-logs.md) | New article. Learn how to use Azure Data Explorer metrics to monitor batching ingestion to Azure Data Explorer in Azure portal.
 | [Create an external table using the Azure Data Explorer web UI wizard](external-table.md) | Updated article. New UI.
-| [Use one-click ingestion to create an event hub data connection](ingest-data-event-hub-oveview.md)| Updated article. New UI.
+| [Use one-click ingestion to create an event hub data connection](ingest-data-event-hub-overview.md)| Updated article. New UI.
 | [Use one-click ingestion to ingest JSON data from a local file to an existing table in Azure Data Explorer](/azure/data-explorer/ingest-from-local-file) | Updated article. New UI.
 | [Ingest data from a container/ADLS into Azure Data Explorer](/azure/data-explorer/ingest-from-container) | Updated article. New UI.
 | [Create a table in Azure Data Explorer](create-table-wizard.md) | Updated article. New UI.
@@ -656,7 +656,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |Article title | Description|
 |--|--|
 [Azure Policy built-in definitions](policy-reference.md) | New article. Index of [Azure Policy](/azure/governance/policy/overview) built-in policy definitions.
-[Use one-click ingestion to create an event hub data connection](ingest-data-event-hub-oveview.md) | New article. Connect an event hub to a table using the [one-click ingestion](ingest-data-overview.md) experience.
+[Use one-click ingestion to create an event hub data connection](ingest-data-event-hub-overview.md) | New article. Connect an event hub to a table using the [one-click ingestion](ingest-data-overview.md) experience.
 | [Configure managed identities for your cluster](configure-managed-identities-cluster.md) | Updated article. Supports both user-assigned managed identities and system-assigned managed identities
 | [Create a table](create-table-wizard.md) | Updated article. General availability (GA). |
  | [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md) | Updated article. New capabilities.

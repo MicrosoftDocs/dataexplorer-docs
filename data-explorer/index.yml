@@ -76,7 +76,7 @@ landingContent:
           - text: C#
             url: create-cluster-database.md?tabs=csharp
           - text: PowerShell
-            url: createcreate-cluster-database.md?tabs=powershell
+            url: create-cluster-database.md?tabs=powershell
           - text: Azure CLI
             url: create-cluster-database.md?tabs=azcli
 
