@@ -300,5 +300,5 @@ Using update policies, the collected data can further be processed as per applic
 
 ## Related content
 
-* [KQL quick reference](kql-quick-reference.md)
+* [KQL quick reference](/kusto/query/kql-quick-reference)
 * [Kusto Query Language (KQL) overview](/kusto/query/index)

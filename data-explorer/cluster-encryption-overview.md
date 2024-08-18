@@ -18,7 +18,7 @@ Optionally, you can enable [double encryption](/azure/storage/common/infrastruct
 
 If you require a higher level of assurance that your data is secure, use the following options to configure your data at rest:
 
-* [Use your own customer-managed key](customer-managed-keys-portal.md)
+* [Use your own customer-managed key](customer-managed-keys.md?tabs=portal)
 * [Enable double encryption](cluster-encryption-double.md)
 
 ## Secure your virtual machine storage with encryption

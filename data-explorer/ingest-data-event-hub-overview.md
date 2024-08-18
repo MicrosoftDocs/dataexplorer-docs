@@ -78,7 +78,7 @@ When you create a data connection to your cluster, you can specify the routing f
 
 ### Route event data to an alternate database
 
-Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal [Azure portal](ingest-data-event-hub.md#target-database-multi-database-data-connection), [C#](data-connection-event-hub-csharp.md#add-an-event-hubs-data-connection), [Python](data-connection-event-hub-python.md#add-an-event-hubs-data-connection), or an [ARM template](data-connection-event-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-event-hubs-data-connection). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
+Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal [Azure portal](create-event-hubs-connection.md?tabs=portal), [C#](create-event-hubs-connection-sdk.md?tabs=c-sharp), [Python](create-event-hubs-connection-sdk.md?tabs=python), or an [ARM template](create-event-hubs-connection.md?tabs=arm-template). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
 
 To specify an alternate database, set the *Database* [ingestion property](#ingestion-properties).
 

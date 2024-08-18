@@ -58,6 +58,6 @@ Use the following steps to upgrade your free cluster to a full cluster. If you'r
 ## Related content
 
 - [Network security for Azure Data Explorer](security-network-overview.md)
-- [What is the ingestion wizard?](./ingest-data-wizard.md)
+- [What is the ingestion wizard?](ingest-data-overview.md)
 - [Visualize data with dashboards](azure-data-explorer-dashboards.md)
 - [Monitor your cluster with metrics](using-metrics.md)

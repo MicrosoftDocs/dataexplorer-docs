@@ -90,7 +90,7 @@ To use KQL tools:
 
 1. In the toolbar, select **KQL tools**.
 
-1. Choose from options like **Duplicate query**, **Open command palette**, or hover over **Resources** to access documentation links. This list includes resources such as the [KQL to SQL cheat sheet](/kusto/query/sql-cheat-sheet), [Keyboard shortcuts](web-ui-query-keyboard-shortcuts.md), and [KQL quick reference documentation](kql-quick-reference.md).
+1. Choose from options like **Duplicate query**, **Open command palette**, or hover over **Resources** to access documentation links. This list includes resources such as the [KQL to SQL cheat sheet](/kusto/query/sql-cheat-sheet), [Keyboard shortcuts](web-ui-query-keyboard-shortcuts.md), and [KQL quick reference documentation](/kusto/query/kql-quick-reference).
 
 :::image type="content" source="media/web-ui-kql/kql-tools.png" alt-text="Screenshot of the KQL tools option in the web UI toolbar." lightbox="media/web-ui-kql/kql-tools.png":::
 

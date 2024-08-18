@@ -293,5 +293,5 @@ Before you migrate your POC cluster to production, we highly recommend that you 
 
 ## Related content
 
-* [Common questions about Azure Data Explorer ingestion](kusto/management/ingestion-faq.yml)
+* [Common questions about Azure Data Explorer ingestion](/kusto/management/ingestion-faq)
 * [Best practices for schema management](/kusto/management/management-best-practices)

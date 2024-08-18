@@ -196,7 +196,7 @@ Azure activity logs are subscription-level logs that provide insight into the op
 
 ## Set up an ingestion pipeline in Azure Data Explorer
 
-Setting up an Azure Data Explorer pipeline involves several steps, such as [table creation and data ingestion](ingest-sample-data.md#ingest-data). You can also manipulate, map, and update the data.
+Setting up an Azure Data Explorer pipeline involves several steps, such as [table creation and data ingestion](web-ui-samples-query.md). You can also manipulate, map, and update the data.
 
 ### Connect to the Azure Data Explorer web UI
 

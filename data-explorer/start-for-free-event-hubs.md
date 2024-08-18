@@ -20,7 +20,7 @@ You can perform the following management action for Event Hubs data connections:
 ## Prerequisites
 
 - A [free Azure Data Explorer cluster](start-for-free-web-ui.md)
-- [An event hub with data for ingestion](ingest-data-event-hub.md#create-an-event-hub)
+- An [event hub with data for ingestion](/azure/event-hubs/event-hubs-about)
 
 > [!NOTE]
 > The cluster and event hub should be associated with the same tenant.
@@ -36,9 +36,9 @@ Use the following steps to create an Event Hubs data connection in your free clu
 
     :::image type="content" source="media/start-for-free-event-hubs/start-for-free-create-event-hubs-data-connection.png" alt-text="Screenshot of the data connections tab, showing the ingest from Event Hubs option." lightbox="media/start-for-free-event-hubs/start-for-free-create-event-hubs-data-connection.png":::
 
-1. Fill out the destination details using the information in [Destination tab](event-hub-wizard.md#destination-tab), and then select **Next**.
-1. Fill out the source details using the information in [Source tab](event-hub-wizard.md#source-tab), and then select **Next**.
-1. Fill out the schema details using the information in [Schema tab](event-hub-wizard.md#source-tab), and then select **Next**.  
+1. Fill out the destination details using the information in [Destination tab](create-event-hubs-connection.md?tabs=portalEH#create-an-event-hub-data-connection), and then select **Next**.
+1. Fill out the source details using the information in Source tab, and then select **Next**.
+1. Fill out the schema details using the information in Schema tab, and then select **Next**.  
     The data connection is created and starts ingesting data.
 1. Select **Close** to return to the **My cluster** page.
 1. Select the **Data connections** tab, and verify that the connection appears and the status is **Connected**.

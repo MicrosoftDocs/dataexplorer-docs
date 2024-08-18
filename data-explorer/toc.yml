@@ -364,8 +364,6 @@ items:
             href: sql-kql-queries-and-stored-functions.md
       - name: Optimize for high concurrency
         href: high-concurrency.md
-      - name: Set timeout limits
-        href: set-timeout-limits.md
       - name: Query cold data with hot windows
         href: hot-windows.md
       - name: Time series analysis and machine learning
