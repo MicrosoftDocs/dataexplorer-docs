@@ -231,6 +231,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/kusto/management/ingestiontime-policy.md",
+      "redirect_url": "/kusto/management/show-table-ingestion-time-policy-command",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "data-explorer/kusto/management/externaltables.md",
       "redirect_url": "/kusto/management/external-table-commands",
       "redirect_document_id": false
