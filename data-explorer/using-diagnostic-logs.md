@@ -28,7 +28,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 ### [Ingestion](#tab/ingestion)
 
 > [!NOTE]
-> * Ingestion logs are supported for queued ingestion to the **Data ingestion URI** using [Kusto client libraries](/kusto/api/client-libraries) and [data connectors](connector-overview.md).
+> * Ingestion logs are supported for queued ingestion to the **Data ingestion URI** using [Kusto client libraries](/kusto/api/client-libraries) and [data connectors](integrate-data-overview.md).
 > * Ingestion logs aren't supported for streaming ingestion, direct ingestion to the **Cluster URI**, ingestion from query, or `.set-or-append` commands.
 
 > [!NOTE]

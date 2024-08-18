@@ -194,7 +194,7 @@ To perform application authentication:
 
 ### [Windows OS](#tab/windows)
 
-1. [Provision a Microsoft Entra application](provision-azure-ad-app.md). For the **Redirect URI**, select **Web** and input http://localhost:8675 as the URI.
+1. [Provision a Microsoft Entra application](provision-entra-id-app.md). For the **Redirect URI**, select **Web** and input http://localhost:8675 as the URI.
 
 1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](/kusto/api/rest/authenticate-with-msal#authentication-parameters).
 

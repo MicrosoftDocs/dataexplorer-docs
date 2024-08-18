@@ -41,7 +41,7 @@ In this section, you prepare your environment to use the OTel exporter.
 
 Microsoft Entra application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the OTel exporter, you need to create and register a Microsoft Entra service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
 
-1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create a Microsoft Entra application registration in Azure Data Explorer](provision-azure-ad-app.md).
+1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create a Microsoft Entra application registration in Azure Data Explorer](provision-entra-id-app.md).
 1. Save the following values to be used in later steps:
     * Application (client) ID
     * Directory (tenant) ID

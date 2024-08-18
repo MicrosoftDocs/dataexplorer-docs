@@ -19,7 +19,7 @@ In this article, you'll learn how to:
 > * [Configure Fluent Bit to send logs to your table](#configure-fluent-bit-to-send-logs-to-your-table)
 > * [Verify that data has landed in your table](#verify-that-data-has-landed-in-your-table)
 
-For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
+For a complete list of data connectors, see [Data connectors overview](integrate-overview.md).
 
 ## Prerequisites
 

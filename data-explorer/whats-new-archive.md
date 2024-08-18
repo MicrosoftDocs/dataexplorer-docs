@@ -128,8 +128,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |[Connect from common apps](connect-common-apps.md) | New article. Describes how to connect to Azure Data Explorer with SQL Server emulation from various apps.|
 |- [Connect to Azure Data Explorer with JDBC](connect-jdbc.md) <br/> - [Connect to Azure Data Explorer with SQL Server emulation](sql-server-emulation-overview.md) <br/> - [Connect to Azure Data Explorer with ODBC](connect-odbc.md) | New articles. Describes how to connect to Azure Data Explorer with different connection apps.|
 |[Azure Data Explorer as a linked server from SQL Server](linked-server.md)| New article. Describes how to connect Azure Data Explorer as a linked server from SQL Server.|
-|[Set timeout limits](set-timeout-limits.md)| New article. Describes how to set query timeout limits.|
-|[Data connectors overview](connector-overview.md)| New article. Describes available data connectors and their capabilities.|
+|[Set timeout limits](/kusto/set-timeout-limits)| New article. Describes how to set query timeout limits.|
+|[Data connectors overview](integrate-data-overview.md)| New article. Describes available data connectors and their capabilities.|
 |- [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md) <br/> - [Azure Data Explorer web UI results grid](web-results-grid.md) <br/> - [Share queries from Azure Data Explorer web UI](web-share-queries.md) <br/> - [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md) <br/> - [Explore the samples gallery](web-ui-samples-query.md) | New articles. Describes how to use, query, visualize, and share queries in the Azure Data Explorer web UI.|
 |[Query data using T-SQL](t-sql.md)| Updated article. Support limitations added.|
 |[What is the ingestion wizard?](ingest-data-wizard.md) | Updated article. Management actions added.|
@@ -305,10 +305,10 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 | [Create a free cluster](start-for-free-web-ui.md) | New article. Describes how to create a free cluster, ingest data, and run queries. |
-| - [Create an Event Grid data connection using C\#](data-connection-event-grid-csharp.md)<br />- [Create an Event Grid data connection using Python](data-connection-event-grid-python.md)<br />- [Create an Event Grid data connection using Azure Resource Manager template](data-connection-event-grid-resource-manager.md)<br />- [Create an Event Hubs data connection using C\#](data-connection-event-hub-csharp.md)<br />- [Create an Event Hubs data connection using Python](data-connection-event-hub-python.md)<br />- [Create an Event Hubs data connection using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)<br />- [Create an IoT Hub data connection using C\# (Preview)](data-connection-iot-hub-csharp.md)<br />- [Create an IoT Hub data connection using Python (Preview)](data-connection-iot-hub-python.md)<br />- [Create an IoT Hub data connection using Azure Resource Manager template](data-connection-iot-hub-resource-manager.md) | Updated articles. Added `databaseRouting` parameter and setting. |
+| - [Create an Event Grid data connection using C\#](create-event-grid-connection-sdk.md?tabs=c-sharp)<br />- [Create an Event Grid data connection using Python](create-event-grid-connection-sdk.md?tabs=python)<br />- [Create an Event Grid data connection using Azure Resource Manager template](create-event-grid-connection.md?tabs=arm-template)<br />- [Create an Event Hubs data connection using C\#](create-event-hubs-connection-sdk.md?tabs=c-sharp)<br />- [Create an Event Hubs data connection using Python](create-event-hubs-connection-sdk.md?tabs=python)<br />- [Create an Event Hubs data connection using Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template)<br />- [Create an IoT Hub data connection using C\# (Preview)](data-connection-iot-hub-csharp.md)<br />- [Create an IoT Hub data connection using Python (Preview)](data-connection-iot-hub-python.md)<br />- [Create an IoT Hub data connection using Azure Resource Manager template](data-connection-iot-hub-resource-manager.md) | Updated articles. Added `databaseRouting` parameter and setting. |
 | - [Event Grid data connection](ingest-data-event-grid-overview.md)<br />- [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated articles. Added events routing setting. |
-| - [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)<br />- [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated articles. Added new Events Routing features including alternative databases and tables. |
-| - [IoT Hub data connection](ingest-data-iot-hub-overview.md)<br />- [Ingest data from IoT Hub into Azure Data Explorer](ingest-data-iot-hub.md) | Updated articles. Added new sections on target databases (multi-database data connection). |
+| - [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)<br />- [Ingest data from event hub into Azure Data Explorer](create-event-hubs-connection.md?tabs=portalADX) | Updated articles. Added new Events Routing features including alternative databases and tables. |
+| - [IoT Hub data connection](ingest-data-iot-hub-overview.md)<br />- [Ingest data from IoT Hub into Azure Data Explorer](create-iot-hub-connection.md?tabs=portal) | Updated articles. Added new sections on target databases (multi-database data connection). |
 
 **Functions library**
 
@@ -388,8 +388,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Create an Event Grid data connection using C#](data-connection-event-grid-csharp.md) | Updated article. AddedEvent Grid data connection from Azure portal.
-| [Create an Event Grid data connection using Python](data-connection-event-grid-python.md) | Updated article.
+| [Create an Event Grid data connection using C#](create-event-grid-connection-sdk.md?tabs=c-sharp) | Updated article. AddedEvent Grid data connection from Azure portal.
+| [Create an Event Grid data connection using Python](create-event-grid-connection-sdk.md?tabs=python) | Updated article.
 | [Manually create resources for Event Grid ingestion](ingest-data-event-grid-manual.md) | Updated article. AddedEvent Grid data connection from Azure portal.
 | [Event Grid data connection](ingest-data-event-grid-overview.md) | Updated article. AddedEvent Grid data connection from Azure portal.
 | [Ingest blobs by subscribing to Event Grid notifications](ingest-data-event-grid.md) | Updated article. Added Event Grid data connection from Azure portal.
@@ -411,7 +411,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md) | Updated article. Learn how to connect event hub with managed identity.|
+| [Ingest data from event hub into Azure Data Explorer](create-event-hubs-connection.md?tabs=portalADX) | Updated article. Learn how to connect event hub with managed identity.|
 
 **Query**
 

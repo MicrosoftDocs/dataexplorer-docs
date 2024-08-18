@@ -27,7 +27,7 @@ This document describes a simple example on the use of the **Azure Data Explorer
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Azure Data Explorer cluster setup:
-    * Create Microsoft Entra app by [provisioning a Microsoft Entra application](./provision-azure-ad-app.md).
+    * Create Microsoft Entra app by [provisioning a Microsoft Entra application](provision-entra-id-app.md).
     * Grant access to your Microsoft Entra App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
 * Azure DevOps setup:
     * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates).

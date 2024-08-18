@@ -75,7 +75,7 @@ Set up a managed identity using the Azure Data Explorer C# client:
 
 You can enable infrastructure encryption during cluster creation using Azure Resource Manager.
 
-An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database-resource-manager.md).
+An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database.md?tabs=arm).
 
 ## Add a system-assigned identity using an Azure Resource Manager template
 

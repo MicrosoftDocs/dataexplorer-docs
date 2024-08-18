@@ -10,13 +10,13 @@ ms.date: 06/27/2023
 
 Grafana is an analytics platform where you can query and visualize data, and then create and share dashboards based on your visualizations. Grafana provides an Azure Data Explorer *plug-in*, which enables you to connect to and visualize data from Azure Data Explorer. The plug-in works with both [Azure Managed Grafana](/azure/managed-grafana/overview) and self-hosted Grafana.
 
-In this article, you learn how to [configure your cluster as a data source for Grafana](#configure-the-data-source) and [visualize data in Grafana](#visualize-data) for Azure Managed Grafana and self-hosted Grafana. To follow along with the examples in this article, [ingest the StormEvents sample data](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
+In this article, you learn how to [configure your cluster as a data source for Grafana](#configure-the-data-source) and [visualize data in Grafana](#visualize-data) for Azure Managed Grafana and self-hosted Grafana. To follow along with the examples in this article, [ingest the StormEvents sample data](web-ui-samples-query.md). [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
 ## Prerequisites
 
 * For Azure Managed Grafana, an Azure account and [Azure Managed Grafana](/azure/managed-grafana/quickstart-managed-grafana-portal) instance.
 * For self-hosted Grafana, [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system and the [Azure Data Explorer plug-in](https://grafana.com/grafana/plugins/grafana-azure-data-explorer-datasource/) for Grafana. You need plug-in version 3.0.5 or later to use the Grafana query builder.
-* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-and-database.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
 
 ## Configure the data source
 

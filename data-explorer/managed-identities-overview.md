@@ -52,7 +52,7 @@ After assigning the managed identity to your cluster and configuring the relevan
 
 * **Continuous Export**: Run a continuous export on behalf of a managed identity.  A managed identity is required if the external table uses impersonation authentication or if the export query references tables in other databases. To use a managed identity, add the managed identity identifier in the optional parameters given in the `create-or-alter` command. For a step-by-step guide, see [Authenticate with managed identity for continuous export](/kusto/management/data-export/continuous-export-with-managed-identity).
 
-* **Event Hubs Native Ingestion**: Use a managed identity with event hub native ingestion. For more information, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md).
+* **Event Hubs Native Ingestion**: Use a managed identity with event hub native ingestion. For more information, see [Ingest data from event hub into Azure Data Explorer](create-event-hubs-connection.md?tabs=portalADX).
 
 * **Python plugin**: Use a managed identity to authenticate to storage accounts of external artifacts that are used in the python plugin. Please note that the `SandboxArtifacts` usage needs to be defined on the cluster level managed identity policy. For more information, see [Python plugin](/kusto/query/python-plugin).
 

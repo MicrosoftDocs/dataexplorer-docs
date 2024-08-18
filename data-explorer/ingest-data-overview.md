@@ -59,12 +59,12 @@ For more information, see the relevant documentation:
 
 | Callout | Relevant documentation |
 |--|--|
-| :::image type="icon" source="media/ingest-data-overview/callout-A.png" alt-text="Screenshot of continuous decision tree callout A."::: | For a list of connectors, see [Connectors overview](connector-overview.md). |
+| :::image type="icon" source="media/ingest-data-overview/callout-A.png" alt-text="Screenshot of continuous decision tree callout A."::: | For a list of connectors, see [Connectors overview](integrate-data-overview.md). |
 | :::image type="icon" source="media/ingest-data-overview/callout-1.png" alt-text="Screenshot of continuous decision tree callout #1."::: | [Create an Event Hubs data connection](create-event-hubs-connection.md). Integration with Event Hubs provides services such as throttling, retries, monitoring, and alerts. |
 | :::image type="icon" source="media/ingest-data-overview/callout-2.png" alt-text="Screenshot of continuous decision tree callout #2."::: | [Ingest data from Apache Kafka](ingest-data-kafka.md), a distributed streaming platform for building real-time streaming data pipelines. |
 | :::image type="icon" source="media/ingest-data-overview/callout-3.png" alt-text="Screenshot of continuous decision tree callout #3."::: | [Create an IoT Hub data connection](create-iot-hub-connection.md). Integration with IoT Hubs provides services such as throttling, retries, monitoring, and alerts. |
 | :::image type="icon" source="media/ingest-data-overview/callout-4.png" alt-text="Screenshot of continuous decision tree callout #4."::: | [Create an Event Grid data connection](create-event-grid-connection.md). Integration with Event Grid provides services such as throttling, retries, monitoring, and alerts. |
-| :::image type="icon" source="media/ingest-data-overview/callout-5.png" alt-text="Screenshot of continuous decision tree callout #5."::: | See the guidance for the relevant connector, such as Apache Spark, Apache Kafka, Azure Cosmos DB, Fluent Bit, Logstash, Open Telemetry, Power Automate, Splunk, and more. For more information, see [Connectors overview](connector-overview.md). |
+| :::image type="icon" source="media/ingest-data-overview/callout-5.png" alt-text="Screenshot of continuous decision tree callout #5."::: | See the guidance for the relevant connector, such as Apache Spark, Apache Kafka, Azure Cosmos DB, Fluent Bit, Logstash, Open Telemetry, Power Automate, Splunk, and more. For more information, see [Connectors overview](integrate-data-overview.md). |
 | :::image type="icon" source="media/ingest-data-overview/callout-6.png" alt-text="Screenshot of continuous decision tree callout #6."::: | [Kusto client libraries](/kusto/api/client-libraries) are available for C#, Python, Java, JavaScript, TypeScript, and Go. You can write code to manipulate your data and then use the Kusto Ingest library to ingest data into your Azure Data Explorer table. The data must be in one of the [supported formats](ingestion-supported-formats.md) prior to ingestion. |
 
 > [!NOTE]
@@ -101,7 +101,7 @@ The following table compares the main ingestion methods:
 | [LogStash](ingest-data-logstash.md) | JSON | Unlimited. Inherits Java restrictions. | Queued | Existing pipeline, use the mature, open source nature of Logstash for high volume consumption from the input(s). | Preference can be determined by the existing use of a multiple producers or consumer service or the desired level of service management. |
 | [Power Automate](flow.md) | [Supported data formats](ingestion-supported-formats.md) | 1 GB uncompressed | Queued | Ingestion commands as part of flow. Used to automate pipelines. | |
 
-For information on other connectors, see [Connectors overview](connector-overview.md).
+For information on other connectors, see [Connectors overview](integrate-data-overview.md).
 
 ## Permissions
 
@@ -131,7 +131,7 @@ The following steps outline the general ingestion process:
 
 ## Related content
 
-* [Connectors overview](connector-overview.md)
+* [Connectors overview](integrate-data-overview.md)
 * [Supported data formats](ingestion-supported-formats.md)
 * [Supported ingestion properties](/kusto/ingestion-properties)
 * [Policies overview](/kusto/management/policies)

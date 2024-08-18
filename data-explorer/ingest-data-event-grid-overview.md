@@ -12,7 +12,7 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates Az
 
 The Event Grid ingestion pipeline goes through several steps. You create a target table in Azure Data Explorer into which the [data in a particular format](#data-format) will be ingested. Then you create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#events-routing) information, such as what table to send the data to and the table mapping. You also specify [ingestion properties](#ingestion-properties), which describe the data to be ingested, the target table, and the mapping. You can generate sample data and [upload blobs](#upload-blobs) or [rename blobs](#rename-blobs) to test your connection. [Delete blobs](#delete-blobs-using-storage-lifecycle) after ingestion.
 
-Event Grid ingestion can be managed through the [Azure portal](create-event-grid-connection.md), using the [ingestion wizard](/azure/data-explorer/ingest-from-container), programmatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
+Event Grid ingestion can be managed through the [Azure portal](create-event-grid-connection.md), using the [ingestion wizard](/azure/data-explorer/ingest-from-container), programmatically with [C#](create-event-grid-connection-sdk.md?tabs=c-sharp) or [Python](create-event-grid-connection-sdk.md?tabs=python), or with the [Azure Resource Manager template](create-event-grid-connection.md?tabs=arm-template).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -172,7 +172,7 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
   $eg = Get-AzEventGridSystemTopic -ResourceGroupName $eventGridResourceGroupName -Name $eventGridSystemTopicName
   $identityPrincipalId = $eg.IdentityPrincipalId
 
-  Set-AzContext -SubscriptionId $eventhubSubscriptionId 
+  Set-AzContext -SubscriptionId $eventhubSubscriptionId
 
   $eventhubResourceId = "/subscriptions/$eventhubSubscriptionId/resourceGroups/$eventhubResourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNamespaceName/eventhubs/$eventhubName"
 
@@ -191,7 +191,7 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 
   Write-Host "Checking if Event Subscription $eventSubscriptionName is using Systeam assigned identity"
   $eventGridSubscribtion = Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName $eventGridResourceGroupName -SystemTopicName $eventGridSystemTopicName -EventSubscriptionName $eventGridSubscriptionName
-  $deliveryIdentityType = $eventGridSubscribtion.DeliveryWithResourceIdentityType 
+  $deliveryIdentityType = $eventGridSubscribtion.DeliveryWithResourceIdentityType
   $destination = $eventGridSubscribtion.Destination
 
   if ($deliveryIdentityType -eq "SystemAssigned") {
@@ -206,7 +206,7 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
   Write-Host -ForegroundColor Green "%%%%%%%% Script has been executed successfully %%%%%%%%"
 
     ```
-    
+
     ---
 
     In addition, configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
@@ -218,5 +218,5 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 ## Related content
 
 * [Create an Event Grid data connection](create-event-grid-connection.md)
-* [Ingest data from Azure Event Hubs into Azure Data Explorer using the ingestion wizard](./event-hub-wizard.md)
+* [Ingest data from Azure Event Hubs into Azure Data Explorer using the ingestion wizard](create-event-hubs-connection.md?tabs=get-data)
 * [Ingest data from a container or Azure Data Lake Storage into Azure Data Explorer](/azure/data-explorer/ingest-from-container)

@@ -28,7 +28,7 @@ In this article, learn how to ingest data using the Azure Data Explorer Java lib
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * JDK version 1.8 or later.
 * [Maven](https://maven.apache.org/download.cgi).
-* Create an [App Registration and grant it permissions to the database](provision-azure-ad-app.md). Save the client ID and client secret for later use.
+* Create an [App Registration and grant it permissions to the database](provision-entra-id-app.md). Save the client ID and client secret for later use.
 
 ## Review the code
 

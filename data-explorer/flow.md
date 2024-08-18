@@ -180,7 +180,7 @@ To authenticate with a Service Principal:
     - **Tenant**: The ID of the Microsoft Entra directory in which you created the application.
 
     > [!Note]
-    > Make sure your application is an [Microsoft Entra application](./provision-azure-ad-app.md) and is authorized to run queries on your cluster.
+    > Make sure your application is an [Microsoft Entra application](provision-entra-id-app.md) and is authorized to run queries on your cluster.
 
     :::image type="content" source="media/flow/flow-app-auth.png" alt-text="Screenshot of Azure Data Explorer connection, showing the application authentication dialog box.":::
 

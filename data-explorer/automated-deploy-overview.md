@@ -33,7 +33,7 @@ ARM templates and Terraform scripts are the two main, declarative ways to deploy
 
 ### ARM template deployment
 
-ARM templates are [JSON](/azure/azure-resource-manager/templates/overview) or [Bicep](/azure/azure-resource-manager/bicep/overview) files that define the infrastructure and configuration of a deployment. You can use the templates to deploy [clusters](/azure/templates/microsoft.kusto/clusters?tabs=json), [databases](/azure/templates/microsoft.kusto/clusters/databases?tabs=json), [data connections](/azure/templates/microsoft.kusto/clusters/databases/dataconnections?tabs=json), and many other infrastructure components. For more information, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](./create-cluster-database-resource-manager.md).
+ARM templates are [JSON](/azure/azure-resource-manager/templates/overview) or [Bicep](/azure/azure-resource-manager/bicep/overview) files that define the infrastructure and configuration of a deployment. You can use the templates to deploy [clusters](/azure/templates/microsoft.kusto/clusters?tabs=json), [databases](/azure/templates/microsoft.kusto/clusters/databases?tabs=json), [data connections](/azure/templates/microsoft.kusto/clusters/databases/dataconnections?tabs=json), and many other infrastructure components. For more information, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database.md).
 
 You can also use ARM templates to deploy [command scripts](/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json), which help you create a database schema and define policies. For more information, see [Configure a database by using a Kusto Query Language script](./database-script.md).
 
@@ -51,12 +51,12 @@ You can also use Terraform to deploy [command scripts](https://registry.terrafor
 
 You can also deploy infrastructure imperatively, by using any of the supported platforms:
 
-* [Azure CLI](./create-cluster-database-cli.md)
-* [PowerShell](./create-cluster-database-powershell.md)
+* [Azure CLI](create-cluster-database.md?tabs=azcli)
+* [PowerShell](create-cluster-database.md?tabs=powershell)
 * SDKs
-  * [.NET SDK](./create-cluster-database-csharp.md)
-  * [Python SDK](./create-cluster-database-python.md)
-  * [Go SDK](./create-cluster-database-go.md)
+  * [.NET SDK](create-cluster-database.md?tabs=csharp)
+  * [Python SDK](create-cluster-database.md?tabs=python)
+  * [Go SDK](create-cluster-database.md?tabs=go)
 
 ## Deploy schema entities
 
@@ -259,5 +259,5 @@ You can verify the deployment by running a query against the *Customer* table. Y
 
 ## Related content
 
-* Create a [cluster and database by using an Azure Resource Manager template](./create-cluster-database-resource-manager.md).
+* Create a [cluster and database by using an Azure Resource Manager template](create-cluster-database.md).
 * Configure a database by using a [KQL script](./database-script.md)

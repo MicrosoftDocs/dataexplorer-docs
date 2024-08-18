@@ -11,7 +11,7 @@ ms.reviewer: ramacg
 
 In this article you will learn how to ingest data with nLog sink.
 
-For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
+For a complete list of data connectors, see [Data connectors overview](integrate-data-overview.md).
 
 ## Prerequisites
 
@@ -34,5 +34,5 @@ Create a target table for the incoming data.
 
 ## Related content
 
-* [Data connectors overview](connector-overview.md)
+* [Data connectors overview](integrate-data-overview.md)
 * [Kusto Query Language (KQL) overview](/kusto/query/index)

@@ -9,7 +9,7 @@ ms.date: 06/04/2024
 
 [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
-The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an event hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Event Hubs connection needs to know [events routing](#events-routing). Data may be embedded with selected properties according to the [event system properties](#event-system-properties-mapping). Create a connection to Event Hubs to [create an event hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
+The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an event hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Event Hubs connection needs to know [events routing](#events-routing). Data may be embedded with selected properties according to the [event system properties](#event-system-properties-mapping). Create a connection to Event Hubs to [create an event hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](create-event-hubs-connection.md?tabs=portalADX), programmatically with [C#](create-event-hubs-connection-sdk.md?tabs=c-sharp) or [Python](create-event-hubs-connection-sdk.md?tabs=python), or with the [Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -192,7 +192,7 @@ If there is no other alternative, consider using [Premium](/azure/event-hubs/eve
 
 ### Create an event hub
 
-If you don't already have one, [Create an event hub](/azure/event-hubs/event-hubs-create). Connecting to event hub can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
+If you don't already have one, [Create an event hub](/azure/event-hubs/event-hubs-create). Connecting to event hub can be managed through the [Azure portal](create-event-hubs-connection.md?tabs=portalADX), programmatically with [C#](create-event-hubs-connection-sdk.md?tabs=c-sharp) or [Python](create-event-hubs-connection-sdk.md?tabs=python), or with the [Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template).
 
 > [!Note]
 >
@@ -202,8 +202,6 @@ If you don't already have one, [Create an event hub](/azure/event-hubs/event-hub
 ### Send events
 
 See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
-
-For an example of how to generate sample data, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md#generate-sample-data)
 
 ## Set up Geo-disaster recovery solution
 
@@ -215,9 +213,9 @@ Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement t
 
 ## Related content
 
-* [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md)
-* [Create an event hub data connection for Azure Data Explorer using C#](data-connection-event-hub-csharp.md)
-* [Create an event hub data connection for Azure Data Explorer using Python](data-connection-event-hub-python.md)
-* [Create an event hub data connection for Azure Data Explorer using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
+* [Ingest data from event hub into Azure Data Explorer](create-event-hubs-connection.md?tabs=portalADX)
+* [Create an event hub data connection for Azure Data Explorer using C#](create-event-hubs-connection-sdk.md?tabs=c-sharp)
+* [Create an event hub data connection for Azure Data Explorer using Python](create-event-hubs-connection-sdk.md?tabs=python)
+* [Create an event hub data connection for Azure Data Explorer using Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template)
 * [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)
 * [Ingest and query Azure Monitor logs with Azure Data Explorer](ingest-data-no-code.md?tabs=diagnostic-metrics)

@@ -11,7 +11,7 @@ ms.date: 09/14/2022
 This article shows you how to ingest JSON formatted data into an Azure Data Explorer database. You'll start with simple examples of raw and mapped JSON, continue to multi-lined JSON, and then tackle more complex JSON schemas containing arrays and dictionaries.  The examples detail the process of ingesting JSON formatted data using Kusto Query Language (KQL), C#, or Python.
 
 > [!NOTE]
-> We don't recommend using `.ingest` management commands in production scenarios. Instead, use a [data connector](connector-overview.md) or programmatically ingest data using one of the [Kusto client libraries](/kusto/api/client-libraries).
+> We don't recommend using `.ingest` management commands in production scenarios. Instead, use a [data connector](integrate-data-overview.md) or programmatically ingest data using one of the [Kusto client libraries](/kusto/api/client-libraries).
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ Azure Data Explorer supports two JSON file formats:
 * `multijson`: Multi-lined JSON. The parser ignores the line separators and reads a record from the previous position to the end of a valid JSON.
 
 > [!NOTE]
-> When ingesting using the [ingestion wizard](ingest-data-wizard.md), the default format is `multijson`. The format can handle multiline JSON records and arrays of JSON records. When a parsing error is encountered, the entire file is discarded. To ignore invalid JSON records, select the option to "Ignore data format errors.", which will switch the format to `json` (JSON Lines).
+> When ingesting using the [get data experience](ingest-data-overview.md), the default format is `multijson`. The format can handle multiline JSON records and arrays of JSON records. When a parsing error is encountered, the entire file is discarded. To ignore invalid JSON records, select the option to "Ignore data format errors.", which will switch the format to `json` (JSON Lines).
 > 
 > If you're using the JSON Line format (`json`), lines that don't represent a valid JSON records are skipped during parsing.
 

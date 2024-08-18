@@ -44,7 +44,7 @@ Query and admin commands have a default timeout limit. To extend or reduce these
 
 1. The changes are automatically saved.
 
-To learn how to set timeout limits outside of the web UI, see [Set timeout limits](set-timeout-limits.md).
+To learn how to set timeout limits outside of the web UI, see [Set timeout limits](/kusto/set-timeout-limits).
 
 ## Export and import environment settings
 

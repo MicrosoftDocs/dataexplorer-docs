@@ -47,7 +47,7 @@ Use Azure Data Explorer for time series analysis with a large set of functions i
 
 ### Easy-to-use wizard
 
-The [ingestion wizard](./ingest-data-wizard.md) makes the data ingestion process easy, fast, and intuitive. The [Azure Data Explorer web UI](web-query-data.md) provides an intuitive and guided experience that helps you ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in various data formats. Table mappings and schema are auto suggested and easy to modify.
+The [get data experience](ingest-data-overview.md) makes the data ingestion process easy, fast, and intuitive. The [Azure Data Explorer web UI](web-query-data.md) provides an intuitive and guided experience that helps you ramp-up quickly to start ingesting data, creating database tables, and mapping structures. It enables one time or a continuous ingestion from various sources and in various data formats. Table mappings and schema are auto suggested and easy to modify.
 
 ### Versatile data visualization
 
@@ -70,13 +70,13 @@ Generally speaking, when you interact with Azure Data Explorer, you're going to 
 
 1. **Create database:** Create a *cluster* and then create one or more *databases* in that cluster. Each Azure Data Explorer cluster can hold up to 10,000 databases and each database up to 10,000 tables. The data in each table is stored in data shards also called "extents". All data is automatically indexed and partitioned based on the ingestion time. This means you can store a lot of varied data and because of the way it's stored, you get fast access to querying it. [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
 
-1. **Ingest data:** Load data into database tables so that you can run queries against it. Azure Data Explorer supports several [ingestion methods](ingest-data-overview.md), each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion. Get started with the [ingestion wizard](./ingest-data-wizard.md).
+1. **Ingest data:** Load data into database tables so that you can run queries against it. Azure Data Explorer supports several [ingestion methods](ingest-data-overview.md), each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion. Get started with the [get data experience](ingest-data-overview.md).
 
 1. **Query database:** Azure Data Explorer uses the [Kusto Query Language](/kusto/query/index), which is an expressive, intuitive, and highly productive query language. It offers a smooth transition from simple one-liners to complex data processing scripts, and supports querying structured, semi-structured, and unstructured (text search) data. There's a wide variety of query language operators and functions ([aggregation](/kusto/query/aggregation-functions), filtering, [time series functions](/kusto/query/time-series-analysis), [geospatial functions](/kusto/query/geospatial-grid-systems), [joins](/kusto/query/join-operator), [unions](/kusto/query/union-operator), and more) in the language. KQL supports [cross-cluster and cross-database queries](/kusto/query/cross-cluster-or-database-queries), and is feature rich from a parsing (json, XML, and more) perspective. The language also natively supports advanced analytics.
 
     Use the web application to run, review, and share queries and results. You can also send queries programmatically (using an SDK) or to a REST API endpoint. If you're familiar with SQL, get started with the [SQL to Kusto cheat sheet](/kusto/query/sql-cheat-sheet). [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md)
 
-1. **Visualize results:**  Use different visual displays of your data in the native Azure Data Explorer [Dashboards](azure-data-explorer-dashboards.md). You can also display your results using connectors to some of the [leading visualization services](viz-overview.md), such as [Power BI](power-bi-data-connector.md?tabs=connector) and [Grafana](grafana.md). Azure Data Explorer also has [ODBC](connect-odbc.md) and JDBC connector support to tools such as [Tableau](tableau.md) and [Sisense](sisense.md).
+1. **Visualize results:**  Use different visual displays of your data in the native Azure Data Explorer [Dashboards](azure-data-explorer-dashboards.md). You can also display your results using connectors to some of the [leading visualization services](integrate-visualize-overview.md), such as [Power BI](power-bi-data-connector.md?tabs=connector) and [Grafana](grafana.md). Azure Data Explorer also has [ODBC](connect-odbc.md) and JDBC connector support to tools such as [Tableau](tableau.md) and [Sisense](sisense.md).
 
 ## How to provide feedback
 
@@ -91,6 +91,6 @@ We would be thrilled to hear your feedback about Azure Data Explorer and the Kus
 ## Related content
 
 * [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
-* [Quickstart: Ingest data from an event hub into Azure Data Explorer](ingest-data-event-hub.md)
+* [Quickstart: Ingest data from an event hub into Azure Data Explorer](create-event-hubs-connection.md)
 * [Quickstart: Query data in Azure Data Explorer](web-query-data.md)
 * [Find an Azure Data Explorer partner](find-my-partner.md)

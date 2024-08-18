@@ -14,7 +14,7 @@ For a full list of available visuals, see [Visualization](/kusto/query/render-op
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-and-database.md).
 
 ## Add a visual to a query
 

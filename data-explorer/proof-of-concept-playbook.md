@@ -244,7 +244,7 @@ Here are some examples of high-level tasks:
 
 1. Create an Azure Data Explorer cluster, and all Azure resources identified in the POC plan.
 1. Load POC dataset:
-    - Make data available in Azure by extracting from the source or by creating sample data in Azure. For an initial test on ingesting data in Azure Data Explorer, use the [ingestion wizard](ingest-data-wizard.md).
+    - Make data available in Azure by extracting from the source or by creating sample data in Azure. For an initial test on ingesting data in Azure Data Explorer, use the [get data experience](ingest-data-overview.md).
     - Test the connector/integration methods you've planned to use to ingest data into your cluster.
 1. Write Kusto Queries to query data:
     - If you're migrating from SQL based system, you can use the [SQL to Kusto cheat sheet](/kusto/query/sql-cheat-sheet) to help you get started.

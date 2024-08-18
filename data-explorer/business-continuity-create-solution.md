@@ -23,7 +23,7 @@ Azure Data Explorer doesn't support automatic protection against the outage of a
 Create more than one [Azure Data Explorer cluster](create-cluster-and-database.md) in more than one region.
 Make sure that at least two of these clusters are created in [Azure paired regions](/azure/best-practices-availability-paired-regions).
 
-The following image shows replicas, three clusters in three different regions. 
+The following image shows replicas, three clusters in three different regions.
 
 :::image type="content" source="media/business-continuity-create-solution/independent-clusters.png" alt-text="Create independent clusters.":::
 
@@ -31,7 +31,7 @@ The following image shows replicas, three clusters in three different regions.
 
 Replicate the management activities to have the same cluster configuration in every replica.
 
-1. Create on each replica the same: 
+1. Create on each replica the same:
     * Databases: You can use the [Azure portal](create-cluster-and-database.md#create-a-database) or one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto) to create a new database.
     * [Tables](/kusto/management/create-table-command)
     * [Mappings](/kusto/management/create-ingestion-mapping-command)
@@ -39,7 +39,7 @@ Replicate the management activities to have the same cluster configuration in ev
 
 1. Manage the [authentication and authorization](/kusto/management/security-roles) on each replica.
 
-    :::image type="content" source="media/business-continuity-create-solution/regional-duplicate-management.png" alt-text="Duplicate management activities.":::    
+    :::image type="content" source="media/business-continuity-create-solution/regional-duplicate-management.png" alt-text="Duplicate management activities.":::
 
 ## Disaster recovery solution using event hub ingestion
 
@@ -47,9 +47,9 @@ Once you've completed [Prepare for Azure regional outage to protect your data](#
 
 ### Set up ingestion using an event hub
 
-To ingest data from [Azure Event Hubs](/azure/event-hubs/event-hubs-about) into each region's Azure Data Explorer cluster, first replicate your Azure Event Hubs setup in each region. Then configure each region's Azure Data Explorer replica to [ingest data from its corresponding Event Hubs](ingest-data-event-hub.md).
+To ingest data from [Azure Event Hubs](/azure/event-hubs/event-hubs-about) into each region's Azure Data Explorer cluster, first replicate your Azure Event Hubs setup in each region. Then configure each region's Azure Data Explorer replica to [ingest data from its corresponding Event Hubs](create-event-hubs-connection.md).
 
-> [!NOTE] 
+> [!NOTE]
 > Ingestion via Azure Event Hubs/IoT Hub/Storage is robust. If a cluster isn't available for a period of time, it will catch up at a later time and insert any pending messages or blobs. This process relies on [checkpointing](/azure/event-hubs/event-hubs-features#checkpointing).
 
 :::image type="content" source="media/business-continuity-create-solution/event-hub-management-scheme.png" alt-text="Ingest via Azure Event Hubs.":::
@@ -76,7 +76,7 @@ In the image below, only one cluster is ingesting data from the event hub. The p
 
 :::image type="content" source="media/business-continuity-create-solution/active-hot-standby-scheme.png" alt-text="architecture for an on-demand data recovery configuration.":::
 
-### Start and stop the replicas 
+### Start and stop the replicas
 
 You can start and stop the secondary replicas using one of the following methods:
 
@@ -84,10 +84,10 @@ You can start and stop the secondary replicas using one of the following methods
 
 * The **Stop** button in the **Overview** tab in the Azure portal. For more information, see [Stop and restart the cluster](create-cluster-and-database.md#stop-and-restart-the-cluster).
 
-* Azure CLI: 
+* Azure CLI:
 
 ```azurecli
-az kusto cluster stop --name=<clusterName> --resource-group=<rgName> --subscription=<subscriptionId>” 
+az kusto cluster stop --name=<clusterName> --resource-group=<rgName> --subscription=<subscriptionId>"
 ```
 
 ### Implement a highly available application service
@@ -99,11 +99,11 @@ This section shows you how to create an [Azure App Service](https://azure.micros
 :::image type="content" source="media/business-continuity-create-solution/app-service-setup.png" alt-text="Create an Azure App Service.":::
 
 > [!TIP]
-> Having multiple connections between replicas in the same service gives you increased availability. This setup isn't only useful in instances of regional outages.  
+> Having multiple connections between replicas in the same service gives you increased availability. This setup isn't only useful in instances of regional outages.
 
 1. Use this [boilerplate code for an app service](https://github.com/Azure/azure-kusto-bcdr-boilerplate). To implement a multi-cluster client, the [AdxBcdrClient](https://github.com/Azure/azure-kusto-bcdr-boilerplate/blob/master/webapp/ADX/AdxBcdrClient.cs) class has been created. Each query that is executed using this client will be sent [first to the primary cluster](https://github.com/Azure/azure-kusto-bcdr-boilerplate/blob/26f8c092982cb8a3757761217627c0e94928ee07/webapp/ADX/AdxBcdrClient.cs#L69). If there's a failure, the query will be sent to secondary replicas.
 
-1. Use [custom application insights metrics](/azure/azure-monitor/app/api-custom-events-metrics) to measure performance, and request distribution to primary and secondary clusters. 
+1. Use [custom application insights metrics](/azure/azure-monitor/app/api-custom-events-metrics) to measure performance, and request distribution to primary and secondary clusters.
 
 #### Test the Azure App Service BCDR client
 
@@ -111,7 +111,7 @@ We ran a test using multiple Azure Data Explorer replicas. After a simulated out
 
 :::image type="content" source="media/business-continuity-create-solution/simulation-verify-service.png" alt-text="Verify app service BCDR client.":::
 
-The Azure Data Explorer clusters are distributed across West Europe (2xD14v2 primary), South East Asia, and East US (2xD11v2). 
+The Azure Data Explorer clusters are distributed across West Europe (2xD14v2 primary), South East Asia, and East US (2xD11v2).
 
 :::image type="content" source="media/business-continuity-create-solution/performance-test-query-time.png" alt-text="Cross planet query response time.":::
 
@@ -120,9 +120,9 @@ The Azure Data Explorer clusters are distributed across West Europe (2xD14v2 pri
 
 #### Perform dynamic or static routing
 
-Use [Azure Traffic Manager routing methods](/azure/traffic-manager/traffic-manager-routing-methods) for dynamic or static routing of the requests.  Azure Traffic Manager is a DNS-based traffic load balancer that enables you to distribute app service traffic. This traffic is optimized to services across global Azure regions, while providing high availability and responsiveness. 
+Use [Azure Traffic Manager routing methods](/azure/traffic-manager/traffic-manager-routing-methods) for dynamic or static routing of the requests.  Azure Traffic Manager is a DNS-based traffic load balancer that enables you to distribute app service traffic. This traffic is optimized to services across global Azure regions, while providing high availability and responsiveness.
 
-You can also use [Azure Front Door based routing](/azure/frontdoor/front-door-routing-methods). For comparison of these two methods, see [Load-balancing with Azure’s application delivery suite](/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite).
+You can also use [Azure Front Door based routing](/azure/frontdoor/front-door-routing-methods). For comparison of these two methods, see [Load-balancing with Azure's application delivery suite](/azure/frontdoor/front-door-lb-with-azure-app-delivery-suite).
 
 ### Optimize cost in an active-active configuration
 
@@ -130,7 +130,7 @@ Using an active-active configuration for disaster recovery increases the cost li
 
 #### Use optimized autoscale to optimize costs
 
-Use the [optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) feature to configure horizontal scaling for the secondary clusters. They should be dimensioned so they can handle the ingestion load. Once the primary cluster isn't reachable, the secondary clusters will get more traffic and scale according to the configuration. 
+Use the [optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) feature to configure horizontal scaling for the secondary clusters. They should be dimensioned so they can handle the ingestion load. Once the primary cluster isn't reachable, the secondary clusters will get more traffic and scale according to the configuration.
 
 Using optimized autoscale in this example saved roughly 50% of the cost in comparison to having the same horizontal and vertical scale on all replicas.
 
