@@ -7,7 +7,7 @@
           "**/*.yml"
         ],
         "exclude": [
-          "**/kusto-docset/**",
+          "**/kusto/**",
           "**/obj/**",
           "**/includes/**",
           "_themes/**",
@@ -20,7 +20,7 @@
           "ThirdPartyNotices.md"
         ],
         "include": [
-          "**/kusto-docset/**/includes/**"
+          "**/kusto/**/includes/**"
         ]
       }
     ],

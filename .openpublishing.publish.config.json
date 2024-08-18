@@ -24,7 +24,7 @@
     },
     {
       "docset_name": "kusto-docs",
-      "build_source_folder": "data-explorer/kusto-docset",
+      "build_source_folder": "data-explorer/kusto",
       "build_output_subfolder": "kusto-docs",
       "locale": "en-us",
       "monikers": [],
