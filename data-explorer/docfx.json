@@ -28,8 +28,8 @@
           "**/*.md",
           "**/*.yml"
         ],
-        "src": "/data-explorer/kusto-redirections",
-        "dst": "/azure/data-explorer/kusto"
+        "src": "kusto-redirections",
+        "dest": "/azure/data-explorer/kusto"
       }
     ],
     "resource": [
