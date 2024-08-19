@@ -21,9 +21,15 @@
         ],
         "include": [
           "**/kusto/**/includes/**"
+        ]
+      },
+      {
+        "files": [
+          "**/*.md",
+          "**/*.yml"
         ],
         "src": "kusto-redirections",
-        "dst": "/azure/data-explorer/kusto"
+        "dst": "kusto"
       }
     ],
     "resource": [
