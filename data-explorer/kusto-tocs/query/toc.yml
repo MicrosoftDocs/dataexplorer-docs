@@ -5,6 +5,8 @@ items:
   href: /kusto/query/comment
 - name: Query data using T-SQL
   href: /kusto/query/t-sql
+- name: Set timeout limits
+  href: /kusto/set-timeout-limits
 - name: Best practices for KQL queries
   items:
   - name: Best practices for KQL queries

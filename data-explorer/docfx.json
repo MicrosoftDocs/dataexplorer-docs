@@ -21,7 +21,9 @@
         ],
         "include": [
           "**/kusto/**/includes/**"
-        ]
+        ],
+        "src": "kusto-redirections",
+        "dst": "/azure/data-explorer/kusto"
       }
     ],
     "resource": [

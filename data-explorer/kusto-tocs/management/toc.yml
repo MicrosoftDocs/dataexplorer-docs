@@ -751,6 +751,14 @@ items:
   - name: Security roles overview
     href: /kusto/management/security-roles
     displayName: role based access control, rbac, principals
+  - name: Access control
+    items:
+    - name: Access control overview
+      href: /kusto/management/../access-control/index
+    - name: Kusto role-based Access Control
+      href: /kusto/management/../access-control/role-based-access-control
+    - name: Microsoft Entra App registration
+      href: /kusto/management/../access-control/provision-entra-id-app
   - name: Manage database roles
     href: /kusto/management/manage-database-security-roles
     displayName: .show principal, principal access, security roles, roles, rbac
