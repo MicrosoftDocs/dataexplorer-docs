@@ -3,7 +3,7 @@ title:  .update table command
 description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 08/19/2024
 ---
 # .update table command
 
@@ -166,7 +166,7 @@ The following example updates multiple columns on all rows with color gray.
       | extend Color="";
 ```
 
-### Update rows using another table
+### Update rows using another table (reference values)
 
 In this example, the first step is to create the following mapping table:
 
@@ -190,6 +190,18 @@ This mapping table is then used to update some colors in the original table:
   let A = D
     | lookup ColorMapping on $left.Color==$right.OldColor
     | project Id, Code, Color=NewColor
+```
+
+### Update rows with a datatable
+
+Sometimes values to update are known without being stored in a table and the [datatable](../query/datatable-operator.md) can be helpful:
+
+```kusto
+.update table Employees delete D append A <|
+    let A = datatable(ID:long, Code:string, Color:string);
+    let D = Employees
+        | join kind=leftsemi A on Id
+        | where true;
 ```
 
 ### Update rows with a staging table
