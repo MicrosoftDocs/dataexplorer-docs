@@ -29,7 +29,7 @@
           "**/*.yml"
         ],
         "src": "kusto-redirections",
-        "dst": "kusto"
+        "dst": "/azure/data-explorer/kusto"
       }
     ],
     "resource": [
