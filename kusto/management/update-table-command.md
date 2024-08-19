@@ -198,10 +198,14 @@ Sometimes values to update are known without being stored in a table and the [da
 
 ```kusto
 .update table Employees delete D append A <|
-    let A = datatable(ID:long, Code:string, Color:string);
-    let D = Employees
-        | join kind=leftsemi A on Id
-        | where true;
+  let A = datatable(Id:long, Code:string, Color:string)[
+    1, "Customer", "Purple",
+    2, "Customer", "Magenta",
+    3, "Customer", "Turquoise",
+  ];
+  let D = Employees
+      | join kind=leftsemi A on Id
+      | where true;
 ```
 
 ### Update rows with a staging table
