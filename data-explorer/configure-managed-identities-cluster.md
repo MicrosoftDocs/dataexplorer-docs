@@ -113,7 +113,7 @@ To set up a managed identity using the Azure Data Explorer C# client:
 
 ### Add a system-assigned identity using an Azure Resource Manager template
 
-An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database-resource-manager.md).
+An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database.md?tabs=arm).
 
 Adding the system-assigned type tells Azure to create and manage the identity for your cluster. Any resource of type `Microsoft.Kusto/clusters` can be created with an identity by including the following property in the resource definition:
 
@@ -279,7 +279,7 @@ To set up a managed identity using the Azure Data Explorer C# client:
 
 ### Add a user-assigned identity using an Azure Resource Manager template
 
-An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database-resource-manager.md).
+An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database.md?tabs=arm).
 
 Any resource of type `Microsoft.Kusto/clusters` can be created with a user-assigned identity by including the following property in the resource definition, replacing `<RESOURCEID>` with the resource ID of the desired identity:
 
@@ -401,5 +401,5 @@ Run the following to remove the user-assigned identity:
 
 * [Secure Azure Data Explorer clusters in Azure](security.md)
 * [Secure your cluster using Disk Encryption](cluster-encryption-disk.md) by enabling encryption at rest.
-* [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)
-* [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
+* [Configure customer-managed-keys using C#](customer-managed-keys.md?tabs=csharp)
+* [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys.md?tabs=arm)

@@ -3,9 +3,11 @@ title:  pivot plugin
 description: Learn how to use the pivot plugin to rotate a table with specified columns and aggregates the remaining columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # pivot plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Rotates a table by turning the unique values from one column in the input table into multiple columns in the output table and performs aggregations as required on any remaining column values that will appear in the final output.
 
@@ -16,7 +18,7 @@ Rotates a table by turning the unique values from one column in the input table 
 
 `T | evaluate pivot(`*pivotColumn*`[, `*aggregationFunction*`] [,`*column1* `[,`*column2* ... `]])` [`:` *OutputSchema*]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -37,8 +39,10 @@ Pivot returns the rotated table with specified columns (*column1*, *column2*, ..
 
 For each EventType and State starting with 'AL', count the number of events of this type in this state.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlEILkksSdVRAIuHVBakAqXKM1KLUiESCsUliUUlxeWZJRkKSo4+SnBZuHqFjMRiBaXwzLwUkGRqWWJOKUhfQWZZfokG2AxNABd5uxJ5AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -61,8 +65,10 @@ StormEvents
 
 For each EventType and State starting with 'AR', display the total number of direct deaths.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVKC5JLCopLs8syVBQcgxSAsoWFOVnpSaXQOR1FMC6QioLgEyX1MSSjGKXzCKgNNwYZEEFOwUDoERqWWJOKcjwgsyy/BINqEHFpbkayIo1NQH4o/xAlgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -87,8 +93,10 @@ StormEvents
 
 Result is identical to previous example.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVKC5JLCopLs8syVBQcgxSAsoWFOVnpSaXQOR1FMC6QioLgEyX1MSSjGKXzCKgNNwYZEEFOwUDoERqWWJOKcjwgsyy/BINqEHFpbkayIo1kczWBAB7xf6goQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -113,8 +121,10 @@ StormEvents
 
 For each event type, source, and state, sum the number of direct deaths.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03NOwqAMBCE4d5TLFYKFp5AEPQCxgsEWUhAjexOIoKH91GI9Tc/YxBk6ROv0Oyk3bEwGVgwKaxAdw9HeTvkn3Zs4bTzwhOoofoGTnaOT7P5FFC8fUUal+I/Lit6j8Zju9WEKBOXFzKrwnaAAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -141,8 +151,10 @@ StormEvents
 The following example selects specific columns in the StormEvents table.
 It uses an explicit schema definition that allows various optimizations to be evaluated before running the actual query.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlEILkksSdVRAIuHVBakAqXKM1KLUhEiChmJxQpK4Zl5KUpAydSyxJxSoBaFgsyy/BINsHZNKwUNuHKr4pKizLx0HQVHH0cnR19Hq5x8KC/YG8LRBADkMGe5igAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

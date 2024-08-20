@@ -1,11 +1,14 @@
 ---
 title:  time_window_rolling_avg_fl()
-description: This article describes time_window_rolling_avg_fl() user-defined function in Azure Data Explorer.
+description:  This article describes time_window_rolling_avg_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # time_window_rolling_avg_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The function `time_window_rolling_avg_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the rolling average of the required value over a constant duration time window.
 
@@ -17,7 +20,7 @@ This type of rolling window calculation is required for use cases where the metr
 
 `T | invoke time_window_rolling_avg_fl(`*t_col*`,` *y_col*`,` *key_col*`,` *dt* [`,` *direction* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -103,8 +106,10 @@ The following example uses the [invoke operator](../query/invoke-operator.md) to
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VUXbOaMBB951fsG8SiV2+vbcWhT/0XnQ4TIWhqSBgSUKb2v3cT+fLW0jgiSc7unnM2UTADhhcsuXCZqUtSKSG4PCa0OSa5iANzEFGwICGYJFUi0qbC3RDah9mZPc4zE9mcuqQSJ7xiqeFKRlyaGL/BckOI98sDHMKWP4iEXSG2L3ADdjVMZo6UNrQocQNz14VMeM6uXBsdOC6YmRpmYYGshSDIsaGiZk/w7R2/Xq2JI/sE0kkIwffJ3lHraLn3G5S0MtyqgBNKWKFSLH5sY32q81wwOLQusUMH7mnHey1xSdNzQquKtsGwGE60Lke7FplBthkThiLfSeBygEzMJUPNGxTNkl3R+6mJRoFpS6byoHdtSD5uCSWP00RaVcYqG9NQnfZhGdOphU3xKZW4ngpaMQjSukh0XUSZqg+Cxeh+CHYtVbU0ka0VrwlcuDmNOUbr7NCGlaAjMJVt69cxGg3Rq3H24U4phIfo96PjM8Ta9y4SFvezsx8zTH3o2mjvRH/EeI5O9uZDHMMmhLJiTa+avAwzx5GEff2XcW1S4nJi6FnX7RjGHk/9LSv1E1dhcnQcn3Ck5s63dxfwe+919wsJY9vxg40IjI76MxCCTRBVjAoX2N1gAt9diuGCfYnW9uqgRv8ba3jKNn74F2KDiNdZxBYRH/+L2KwHyOsTyM6WmYW8Wa5v/66zu6vZziKsmk+zCKdmhsgu2toynydJvB97D9vh3YDLRp3ZzF9v4BvtYyj2x/5gc3xrTUH+AIs9HfiyBQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let time_window_rolling_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, dt:timespan, direction:int=int(-1))

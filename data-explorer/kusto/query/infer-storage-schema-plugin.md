@@ -1,13 +1,15 @@
 ---
 title:  infer_storage_schema plugin
-description: Learn how to use the infer_storage_schema plugin to infer the schema of external data and retrieve the CSL schema string.
+description: Learn how to use the infer_storage_schema plugin to infer the schema of external data. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/21/2024
+ms.date: 08/11/2024
 ---
 # infer_storage_schema plugin
 
-This plugin infers the schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azurestorage-azuredatalake.md). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
+
+This plugin infers the schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azure-storage.md). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Authentication and authorization
 
@@ -17,16 +19,16 @@ The following table lists the supported authentication methods and any required 
 
 |Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
 |--|--|--|
-|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Reader|Reader|
-|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
-|[Microsoft Entra access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
-|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
+|[Impersonation](../api/connection-strings/storage-connection-strings.md#impersonation)|Storage Blob Data Reader|Reader|
+|[Shared Access (SAS) token](../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
+|[Microsoft Entra access token](../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)||
+|[Storage account access key](../api/connection-strings/storage-connection-strings.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
 
 ## Syntax
 
 `evaluate` `infer_storage_schema(` *Options* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,7 +41,7 @@ The following table lists the supported authentication methods and any required 
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*StorageContainers*| `dynamic` | :heavy_check_mark:|An array of [storage connection strings](../api/connection-strings/storage-connection-strings.md) that represent prefix URI for stored data artifacts.|
-|*DataFormat*| `string` | :heavy_check_mark:|One of the supported [data formats](../../ingestion-supported-formats.md).|
+|*DataFormat*| `string` | :heavy_check_mark:|One of the supported [data formats](../ingestion-supported-formats.md).|
 |*FileExtension*| `string` ||If specified, the function only scans files ending with this file extension. Specifying the extension may speed up the process or eliminate data reading issues.|
 |*FileNamePrefix*| `string` ||If specified, the function only scans files starting with this prefix. Specifying the prefix may speed up the process.|
 |*Mode*| `string` ||The schema inference strategy. A value of: `any`, `last`, `all`. The function infers the data schema from the first found file, from the last written file, or from all files respectively. The default value is `last`.|

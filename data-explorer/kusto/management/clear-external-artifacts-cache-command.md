@@ -3,9 +3,12 @@ title: .clear cluster cache external-artifacts command
 description: Learn how to use the `.clear cluster cache external-artifacts` command to clear cached external-artifacts of language plugins.
 ms.reviewer: 
 ms.topic: reference
-ms.date: 06/26/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .clear cluster cache external-artifacts command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Clears cached external-artifacts of language plugins.  
 
@@ -13,13 +16,13 @@ This command is useful when you update external-artifact files stored in externa
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.clear` `cluster` `cache` `external-artifacts` `(` *ArtifactURI* [`,` ... ] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -49,6 +52,6 @@ This command returns a table with the following columns:
 
 ## Related content
 
-* [Manage language extensions in your Azure Data Explorer cluster](../../language-extensions.md)
+* [Manage language extensions in your Azure Data Explorer cluster](/azure/data-explorer/language-extensions)
 * [Python plugin](../query/python-plugin.md)
 * [R plugin](../query/r-plugin.md)

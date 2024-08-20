@@ -3,9 +3,11 @@ title:  geo_union_lines_array()
 description: Learn how to use the geo_union_lines_array() function to calculate the union of line strings or multiline strings on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_union_lines_array()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the union of lines or multilines on Earth.
 
@@ -13,7 +15,7 @@ Calculates the union of lines or multilines on Earth.
 
 `geo_union_lines_array(`*lineStrings*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -23,7 +25,7 @@ Calculates the union of lines or multilines on Earth.
 
 ## Returns
 
-A line or a multiline in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If any of the provided lines or multilines is invalid, the query will produce a null result.
+A line or a multiline in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If any of the provided lines or multilines is invalid, the query will produce a null result.
 
 > [!NOTE]
 >
@@ -45,8 +47,10 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 
 The following example performs geospatial union on line rows.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8WSSWrEMBBF9z6F0coGp1FpbkNukF2WxhjFFo06ttTI6oUz3D1KPBwgBFK1KX3eLz6oBh1Tv4ymGK0zcz0sTk+2L7Mmy1Ntz+IdxeVmUI2eEvUcg3UXVKHe+zBYp6OZUd00D5KezlwoqhQTBAvBK4ZPCnNM1BmYwklvqx2jVBJJgSR1wyR8N4CUB8WSkQvCBKh9GWCCMaNAAdr2s6x+nfMvAuwYp5JRgbFinK4YY5A0SFYO/P+DpgBZm33k832adLBvJv/5706HkD/mk3413WjnuF5BmcBb8FfTxw27O+tdAi/Gr3N32PVSHHP5BY0haIxPAgAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(lines:dynamic)
@@ -67,8 +71,10 @@ datatable(lines:dynamic)
 
 The following example performs geospatial union on line columns.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA62Rz2rDMAzG73kK41MDXrH8v4G9QW87hlC8xBRvnR1c9xC2vfucJulltzHrok/8PklYg80lXi9ud/HBQTNMwX74nqBZsk3WVVuh8la5+8R5Gh1u8LFQLzn5cMYE9zGmwQeb3RU3bfuk+f4gleHGCMWoUpIIujdUUmYOIAwt9Y5sGOeaaQ6sVFdMwxwAWj8oUYxSMaHAbM2AMkoFBw7Qdd81+dOO/zF8wyTXgitKjZB8wYSAUoNilSDnJauu+kJjim+uz/ePvp5sSugZjbZ/n1M7LedYz1D/wm/Bx1AMZxeX/PRos3rvef0DcJZ9Yt8BAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(line1:dynamic, line2:dynamic)
@@ -87,8 +93,10 @@ datatable(line1:dynamic, line2:dynamic)
 
 The following example returns True because one of the lines is invalid.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQzWrFIBCF93kKcZVAenHUqDfQN+iuyxCCTeTirdGLMYX0591r70/2ndnMHL5zGGbSKfebM6Wz3izttHk927EqugLluq/lF07bxeAWv2TqNUXrT7jGYwhxsl4ns+C2654kOxwboZhSXFAiRFNzclCkIVQdgSuS9b5+YIxJKhnQrN4xCX8NIOVO8WxsBOUC1CMMCCWEM2AAff9T1f+/E2p0tRZ98Y2WdZ51tJ8GXR8w6BjRM5r1uxmcXdLtLVUGLzGczZiQ9R/a2WlYvQ0+o3bxq3PlyYSbNOw5eiv3uap+AQk/yOdqAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(lines:dynamic)

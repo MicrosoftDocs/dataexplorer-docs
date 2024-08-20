@@ -1,15 +1,18 @@
 ---
-title: Data soft delete - Azure Data Explorer
-description: This article describes data soft delete in Azure Data Explorer.
+title:  Data soft delete
+description:  This article describes data soft delete.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 05/17/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Soft delete overview
 
-As a data platform, Azure Data Explorer supports the ability to delete individual records. Record deletion is commonly achieved using one of the following methods:
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-* To delete records with a system guarantee that the storage artifacts containing these records are deleted as well, use [`.purge`](./data-purge.md)
+The ability to delete individual records is supported. Record deletion is commonly achieved using one of the following methods:
+
+* To delete records with a system guarantee that the storage artifacts containing these records are deleted as well, use [`.purge`](data-purge.md)
 * To delete records without such a guarantee, use `.delete` as described in this article - this command marks records as deleted but doesn't necessarily delete the data from storage artifacts. This deletion method is faster than purge. 
 
 For information on how to use the command, see [Syntax](../management/soft-delete-command.md)
@@ -18,7 +21,7 @@ For information on how to use the command, see [Syntax](../management/soft-delet
 
 This deletion method should only be used for the unplanned deletion of individual records. For example, if you discover that an IoT device is reporting corrupt telemetry for some time, you should consider using this method to delete the corrupt data.
 
-If you need to frequently delete records for deduplication or updates, we recommend using [materialized views](../management/materialized-views/materialized-view-overview.md). See [choose between materialized views and soft delete for data deduplication](../../dealing-with-duplicates.md#choose-between-materialized-views-and-soft-delete-for-data-deduplication).
+If you need to frequently delete records for deduplication or updates, we recommend using [materialized views](../management/materialized-views/materialized-view-overview.md). See [choose between materialized views and soft delete for data deduplication](dealing-with-duplicates.md#choose-between-materialized-views-and-soft-delete-for-data-deduplication).
 
 ## Deletion process
 

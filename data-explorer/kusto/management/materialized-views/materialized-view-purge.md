@@ -1,14 +1,16 @@
 ---
 title:  Materialized views data purge
-description: This article describes materialized views data purge in Azure Data Explorer.
+description:  This article describes materialized views data purge.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/27/2023
+ms.date: 08/11/2024
 ---
 
 # Materialized views data purge
 
-[!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
+[!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
 [Data purge](../../concepts/data-purge.md) commands can be used to purge records from materialized views. The same guidelines for purging records from a table apply to materialized views purge.
 

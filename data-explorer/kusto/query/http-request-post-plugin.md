@@ -4,13 +4,12 @@ description: Learn how to use the http_request_post plugin to send an HTTP reque
 services: data-explorer
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 04/03/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # http_request_post plugin
 
-::: zone pivot="azuredataexplorer"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 The `http_request_post` plugin sends an HTTP POST request and converts the response into a table.
 
@@ -23,7 +22,7 @@ The `http_request_post` plugin sends an HTTP POST request and converts the respo
 
 `evaluate` `http_request_post` `(` *Uri* [`,` *RequestHeaders* [`,` *Options* [`,` *Content*]]] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -44,7 +43,7 @@ The `http_request_post` plugin sends an HTTP POST request and converts the respo
 To authenticate, use the HTTP standard `Authorization` header or any custom header supported by the web service.
 
 > [!NOTE]
-> If the query includes confidential information, make sure that the relevant parts of the query text are obfuscated so that they'll be omitted from any tracing. For more information, see [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals).
+> If the query includes confidential information, make sure that the relevant parts of the query text are obfuscated so that they'll be omitted from any tracing. For more information, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Returns
 
@@ -86,11 +85,3 @@ let uri='https://example.com/node/js/on/eniac';
 let headers=dynamic({'x-ms-correlation-vector':'abc.0.1.0', 'authorization':'bearer ...Azure-AD-bearer-token-for-target-endpoint...'});
 evaluate http_request_post(uri, headers)
 ```
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor.
-
-::: zone-end

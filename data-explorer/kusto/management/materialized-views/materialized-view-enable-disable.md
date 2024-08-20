@@ -1,12 +1,14 @@
 ---
 title:  Enable and disable materialized view commands
-description: This article describes how to enable or disable materialized view commands in Azure Data Explorer.
+description:  This article describes how to enable or disable materialized view commands.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 
 # .disable | .enable materialized-view
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Disables or enables the materialization process for a materialized view.
 
@@ -15,13 +17,13 @@ Disables or enables the materialization process for a materialized view.
 
 ## Permissions
 
-You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) to run these commands.
+You must have at least [Materialized View Admin](../../access-control/role-based-access-control.md) to run these commands.
 
 ## Syntax
 
 `.enable` | `disable` `materialized-view` *MaterializedViewName*
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -35,7 +37,7 @@ If the materialized view is already in the state in which the command is trying 
 
 Otherwise, it returns the details about the materialized view whose IsEnabled property has been changed.
 
-[!INCLUDE [materialized-view-show-command-output-schema.md](../../../includes/materialized-view-show-command-output-schema.md)]
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../includes/materialized-view-show-command-output-schema.md)]
 
 ## Examples
 
@@ -76,7 +78,7 @@ A materialized view can be disabled in any of the following ways:
 * **Automatic disable by the system:**  Materialized view is automatically disabled if materialization fails with a permanent error. This process can occur in the following instances:
   * Schema changes that are inconsistent with the view definition.  
   * Changes to source table that result in the materialized view query being semantically invalid.
-* **Explicitly disable the materialized view:**  If the materialized view is negatively impacting the cluster's health (for example, consuming too much CPU), disable the view using the [`.disable materialized-view` command](#syntax).
+* **Explicitly disable the materialized view:**  If the materialized view is negatively impacting the database's health (for example, consuming too much CPU), disable the view using the [`.disable materialized-view` command](#syntax).
 
 ### Materialized views and Row Level Security
 
@@ -91,6 +93,6 @@ If a materialized view is disabled, and while the view is disabled someone defin
 
 ### Performance implications of enabling/disabling materialized views
 
-* When a materialized view is disabled, materializing will be paused and won't consume resources from the cluster. Querying the materialized view is possible even when disabled, but performance can be poor. Performance on a disabled materialized view depends on the number of records that were ingested to the source table since it was disabled.
+* When a materialized view is disabled, materializing will be paused and won't consume resources from the database. Querying the materialized view is possible even when disabled, but performance can be poor. Performance on a disabled materialized view depends on the number of records that were ingested to the source table since it was disabled.
 * You can enable a materialized view that has previously been disabled. When re-enabled, the materialized view will continue materializing from the point it left off, and no records will be skipped. If the view was disabled for a long time, it may take a long time to catch up.
-* Disabling a view is only recommended if you suspect that the view is impacting your cluster's health.
+* Disabling a view is only recommended if you suspect that the view is impacting your database's health.

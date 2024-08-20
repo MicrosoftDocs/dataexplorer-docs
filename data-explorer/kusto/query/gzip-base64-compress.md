@@ -3,10 +3,12 @@ title:  gzip_compress_to_base64_string
 description: Learn how to use the gzip_compress_to_base64_string() function to gzip-compress an input and encode it into a base64 string.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 
 # gzip_compress_to_base64_string()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Performs gzip compression and encodes the result to base64.
 
@@ -14,7 +16,7 @@ Performs gzip compression and encodes the result to base64.
 
 `gzip_compress_to_base64_string(`*string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -29,8 +31,10 @@ Performs gzip compression and encodes the result to base64.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLVawVUivyiyIT87PLQByi+NL8uOTEotTzUzii0uAitI1lAyNjE1MzcwtLA0Ky1OLSipLM/MLlDQBpoplR0IAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print res = gzip_compress_to_base64_string("1234567890qwertyuiop")

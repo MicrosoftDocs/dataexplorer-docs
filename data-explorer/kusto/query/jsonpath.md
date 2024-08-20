@@ -3,10 +3,12 @@ title:  JSONPath syntax
 description: Learn how to use JSONPath expressions to specify data mappings and KQL functions that process dynamic objects.
 ms.reviewer: igborodi
 ms.topic: reference
-ms.date: 07/24/2023
+ms.date: 08/11/2024
 ---
 
 # JSONPath expressions
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 JSONPath notation describes the path to one or more elements in a JSON document.
 
@@ -71,5 +73,5 @@ You can represent each of the fields with JSONPath notation as follows:
 
 ## Related content
 
-* [Get the path to a dynamic field](../../web-results-grid.md#get-the-path-to-a-dynamic-field)
-* [Add filter from dynamic field](../../web-results-grid.md#add-filter-from-dynamic-field)
+* [Get the path to a dynamic field](/azure/data-explorer/web-results-grid#get-the-path-to-a-dynamic-field)
+* [Add filter from dynamic field](/azure/data-explorer/web-results-grid#add-filter-from-dynamic-field)

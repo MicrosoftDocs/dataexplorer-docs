@@ -1,11 +1,14 @@
 ---
 title: .execute cluster script command
-description: Learn how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a single cluster in Azure Data Explorer.
+description:  Learn how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a single cluster.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/24/2024
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .execute cluster script command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Executes a batch of management commands in the scope is a cluster. 
 
@@ -15,14 +18,14 @@ Executes a batch of management commands in the scope is a cluster.
 
 ## Permissions
 
-You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.execute` `cluster` `script`  
 [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *ControlCommandsScript*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

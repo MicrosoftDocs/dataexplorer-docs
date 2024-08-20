@@ -8,7 +8,7 @@ ms.date: 11/08/2022
 
 # Debug Kusto Query Language inline Python using VS Code
 
-Azure Data Explorer supports running Python code embedded in Kusto Query Language using the [python() plugin](kusto/query/python-plugin.md). The plugin runtime is hosted in a sandbox, an isolated and secure Python environment. The python() plugin capability extends Kusto Query Language native functionalities with the huge archive of OSS Python packages. This extension enables you to run advanced algorithms, such as machine learning, artificial intelligence, statistical, and time series as part of the query.
+Azure Data Explorer supports running Python code embedded in Kusto Query Language using the [python() plugin](/kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true). The plugin runtime is hosted in a sandbox, an isolated and secure Python environment. The python() plugin capability extends Kusto Query Language native functionalities with the huge archive of OSS Python packages. This extension enables you to run advanced algorithms, such as machine learning, artificial intelligence, statistical, and time series as part of the query.
 
 Kusto Query Language tools aren't convenient for developing and debugging Python algorithms. Therefore, develop the algorithm on your favorite Python-integrated development environment such as Jupyter, PyCharm, VS, or VS Code. When the algorithm is complete, copy and paste into KQL. To improve and streamline this workflow, Azure Data Explorer supports integration between Kusto Explorer or Web UI clients and VS Code for authoring and debugging KQL inline Python code. 
 
@@ -88,7 +88,7 @@ Kusto Query Language tools aren't convenient for developing and debugging Python
     ![VS Code debug.](media/debug-inline-python/debug-vs-code.png)
 
 > [!NOTE]
-> There may be differences between the Python sandbox image and your local installation. [Check the sandbox image for specific packages by querying the plugin](kusto/functions-library/get-packages-version-fl.md).
+> There may be differences between the Python sandbox image and your local installation. [Check the sandbox image for specific packages by querying the plugin](/kusto/functions-library/get-packages-version-fl?view=azure-data-explorer&preserve-view=true).
 > [!NOTE]
 > In case there are errors when launching VS code debugging session try setting the default terminal profile to command prompt:
 >  * Press CTRL + SHIFT + P to open the Command Palette.

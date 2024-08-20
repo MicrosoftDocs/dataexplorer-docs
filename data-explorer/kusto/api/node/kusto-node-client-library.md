@@ -1,17 +1,19 @@
 ---
 title:  Kusto Node SDK
-description: This article describes Kusto Node SDK in Azure Data Explorer.
+description: This article describes Kusto Node SDK.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/19/2023
+ms.date: 08/11/2024
 ---
 # Kusto Node SDK
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 The Kusto Node SDK is compatible with Node LTS v6.14 and built with ES6.
 
-*Kusto Node Client* Library provides the capability to query your cluster using NodeJs.
+*Kusto Node Client* Library provides the capability to query your database using NodeJs.
 
-*Kusto Node Ingest Client* is a Node library that can send data to your cluster (i.e. ingest data). 
+*Kusto Node Ingest Client* is a Node library that can send data to your database (i.e. ingest data). 
 
 * [Kusto query sample](https://github.com/Azure/azure-kusto-node/blob/master/packages/azure-kusto-data/example.js)
 

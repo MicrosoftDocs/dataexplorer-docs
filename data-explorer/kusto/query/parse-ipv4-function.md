@@ -3,9 +3,11 @@ title:  parse_ipv4()
 description: Learn how to use the parse_ipv4() function to convert an IPv4 string to a long number in big-endian order.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # parse_ipv4()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Converts IPv4 string to a signed 64-bit wide long number representation in big-endian order.
 
@@ -13,7 +15,7 @@ Converts IPv4 string to a signed 64-bit wide long number representation in big-e
 
 `parse_ipv4(`*ip*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -21,7 +23,7 @@ Converts IPv4 string to a signed 64-bit wide long number representation in big-e
 |--|--|--|--|
 | *ip* | `string` |  :heavy_check_mark: | The IPv4 that is converted to long. The value may include net-mask using [IP-prefix notation](#ip-prefix-notation).|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 
@@ -30,8 +32,10 @@ If conversion isn't successful, the result is `null`.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcyC+OKSosy8dCsFCK3JFc2lAATqhpZGeoZmFnqGeobqOihcfSMTkIiRqakeEtY3NlTniuWqUUitKEnNS1EAmpyTn5euYKtQkFhUnBqfWVBmgrBOEwD8UomugwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip_string: string)

@@ -3,21 +3,24 @@ title: .delete cluster policy callout command
 description: Learn how to use the `.delete cluster policy callout` command to delete the callout policy defined for a cluster.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .delete cluster policy callout command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Delete the [callout policy](callout-policy.md) defined for the cluster.
 
 ## Permissions
 
-You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.delete` `cluster` `policy` `callout`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 

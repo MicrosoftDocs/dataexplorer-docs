@@ -1,11 +1,14 @@
 ---
 title:  series_downsample_fl()
-description: This article describes the series_downsample_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the series_downsample_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_downsample_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The function `series_downsample_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor). This function takes a table containing multiple time series (dynamic numerical array), and downsamples each series. The output contains both the coarser series and its respective times array. To avoid [aliasing](https://en.wikipedia.org/wiki/Aliasing), the function applies a simple [low pass filter](https://en.wikipedia.org/wiki/Low-pass_filter) on each series before subsampling.
 
@@ -13,7 +16,7 @@ The function `series_downsample_fl()` is a [user-defined function (UDF)](../quer
 
 `T | invoke series_downsample_fl(`*t_col*`,` *y_col*`,` *ds_t_col*`,` *ds_y_col*`,` *sampling_factor*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -87,8 +90,10 @@ The following example uses the [invoke operator](../query/invoke-operator.md) to
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22TTZObMAyG7/kVunRiOtBsOj2lw633Htrp1WNAbLzxB2OLENrtf68MZNOw4RBifTzSKxmDBBGDxigbP7iobGdQtqYUVJmD+JjlQLL25hApaPecw3h3aqKkteE+YiLyP9mqmnw4aEfZ5s8G+OEK0/sV8ELoGmAWlMDZvXVSt3jRkaKYCjB5dMrqWjxl3BMXeRA5votc8aesRW6rg2BDDgE7VCT273pN2kOP82+WSLsdgOo6M4KCqNOowPgBOhUjtNoQBqiw9QEh9lVxxS1N2HMx5yaZ5IHGDn0rvinCn9riourmaHxfGa7r3QQQi4igmzL4QbreVhhEVuwX/nBELsxu+LBWAiUPC3WyiJVr9/nTEzPgwZPUPtARe2tV0L9x2ZdVJ5SGFyD4/Lab/6yjXC+C1xQ5plLPslP1SVyvUZ6Qt0s0sa6pXfAvWFOhBjXOYey8Ys/K9DzHidi7iZlqZJu/XzcNWi+ndubN7zevU3fFfAQeZFn73pFIs4a0ix/EkiESdrA/QjXC9/gLA+dpd/YnfPjFiO1b5jaHLVPTq/YqRJR3rsU2R3zJGBt4KHx3iKPqowoEg6ajuMz3u1wz+COcPbG8obJ/VvBUm8oDAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_downsample_fl=(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_col:string, sampling_factor:int)

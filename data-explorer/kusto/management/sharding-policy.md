@@ -1,17 +1,20 @@
 ---
 title: Data sharding policy
-description: Learn how to use the data sharding policy to define if and how extents in the Azure Data Explorer cluster are created.
+description: Learn how to use the data sharding policy to define if and how extents in the database are created.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Data sharding policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The sharding policy defines if and how [extents (data shards)](../management/extents-overview.md) in your cluster are created. You can only query data in an extent once it's created.
 
 > [!NOTE]
 >
-> * For low latency between ingestion and query, consider configuring [Streaming ingestion](../../ingest-data-streaming.md).
+> * For low latency between ingestion and query, consider configuring [Streaming ingestion](/azure/data-explorer/ingest-data-streaming).
 > * The policy applies to all operations that create new extents,
 > such as commands for data ingestion, and [extent merge operations](extents-overview.md)
 
@@ -36,4 +39,4 @@ The data sharding policy contains the following properties:
 
 When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
 
-Use the [sharding policy management commands](./show-table-sharding-policy-command.md) to manage data sharding policies for databases and tables.
+Use the [sharding policy management commands](show-table-sharding-policy-command.md) to manage data sharding policies for databases and tables.

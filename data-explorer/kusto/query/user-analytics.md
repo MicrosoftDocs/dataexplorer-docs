@@ -1,11 +1,13 @@
 ---
 title:  User Analytics
-description: This article describes User Analytics in Azure Data Explorer.
+description:  This article describes User Analytics.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/17/2019
+ms.date: 08/11/2024
 ---
 # User analytics plugins
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 This section describes Kusto extensions (plugins) for user analytics scenarios.
 

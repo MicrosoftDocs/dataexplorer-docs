@@ -18,7 +18,7 @@ In this article, you'll learn how to use a Stream Analytics *job* to collect dat
 
 ## Prerequisites
 
-- Create a [cluster and database](create-cluster-and-database.md) and a [table](./create-table-wizard.md).
+- Create a [cluster and database](create-cluster-and-database.md) and a [table](create-table-wizard.md).
 - Create an event hub using the following sections of the Azure Stream Analytics tutorial:
     - [Create an event hub](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#create-an-event-hub)
     - [Grant access to the event hub and get a connection string](/azure/stream-analytics/stream-analytics-real-time-fraud-detection#grant-access-to-the-event-hub-and-get-a-connection-string)
@@ -38,7 +38,7 @@ Use the following steps to create an [Azure Data Explorer output](/azure/stream-
 > [!NOTE]
 >
 > - All [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-add-inputs) inputs are supported. The connector transforms the inputs to CSV format and then imports the data into the specified Azure Data Explorer table.
-> - Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. By default, the policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. For information about configuring the aggregation options, see [batching policy](kusto/management/batching-policy.md).
+> - Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. By default, the policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. For information about configuring the aggregation options, see [batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true).
 
 ## [Azure portal](#tab/portal)
 

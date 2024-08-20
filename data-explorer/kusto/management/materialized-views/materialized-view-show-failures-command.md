@@ -1,24 +1,26 @@
 ---
 title:  .show materialized-view failures commands
-description: This article describes show materialized-view failures commands in Azure Data Explorer.
+description:  This article describes show materialized-view failures commands.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/23/2023
+ms.date: 08/11/2024
 ---
 
 # .show materialized-view failures
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Returns failures that occurred as part of the materialization process of the materialized view.
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../../access-control/role-based-access-control.md).
 
 ## Syntax
 
 `.show` `materialized-view` *MaterializedViewName* `failures`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

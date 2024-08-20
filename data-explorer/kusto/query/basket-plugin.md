@@ -3,9 +3,11 @@ title:  basket plugin
 description: Learn how to use the basket plugin to find frequent patterns in data that exceed a frequency threshold. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # basket plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The `basket` plugin finds frequent patterns of attributes in the data and returns the patterns that pass a frequency threshold in that data. A pattern represents a subset of the rows that have the same value across one or more columns. The `basket` plugin is based on the [Apriori algorithm](https://en.wikipedia.org/wiki/Association_rule_learning#Apriori_algorithm) originally developed for basket analysis data mining.
 
@@ -13,7 +15,7 @@ The `basket` plugin finds frequent patterns of attributes in the data and return
 
 *T* | `evaluate` `basket` `(`[ *Threshold*`,` *WeightColumn*`,` *MaxDimensions*`,` *CustomWildcard*`,` *CustomWildcard*`,` ... ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -38,8 +40,10 @@ Each pattern is represented by a row in the results. The first column is the seg
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVOuw6CQBDs/YoJFURiiInl2SitmkBjeeqeoN4dWVaUxI/3AK1mJzuvQjzbvCMn7eyDV0VMsN5J5U1PmuNCNEtZW0qgFFZBQ28hd8FWW30lKNTGxBPZsG9azH+vQ2DE0mONDCmiY15EA+72URJiGvY3OgtCgVCKcULZN+Gc7H8cQ4faTj+eQYqTbu8kcbZYJl8ixlvuvQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -64,8 +68,10 @@ StormEvents
 
 ### Example with custom wildcards
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVOMQ6CQBDsfcWEhjtFgyaW2CitmkBjeeoiqMeRY0VJjG/3AG1mdrKzM5uwsTpuqOR69MYzJ0vQpuTcZC0pKxJWltNCk0QUYek89GIqz9gorS6ECEWWiUGsralqTH6rvVNkucUKIQJ4hzjxOt7uPOliKmuudGK4AqYA/QtpW7lxOP9zH9rVNur+cFYcVX0jFuFsEcD/+H8YOyhKFtO5lF/0AFrQ1QAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

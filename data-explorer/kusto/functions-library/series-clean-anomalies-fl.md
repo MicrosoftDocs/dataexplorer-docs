@@ -1,11 +1,14 @@
 ---
-title:  series_clean_anomalies_fl() - Azure Data Explorer
+title:   series_clean_anomalies_fl()
 description: Learn how to use the series_clean_anomalies_fl() function to clean anomalous points in a series.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/14/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_clean_anomalies_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Cleans anomalous points in a series.
 
@@ -15,7 +18,7 @@ The function `series_clean_anomalies_fl()` is a [user-defined function (UDF)](..
 
 `series_clean_anomalies_fl(`*y_series*`,` *anomalies*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -68,8 +71,10 @@ series_clean_anomalies_fl(y_series:dynamic, anomalies:dynamic)
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?query=H4sIAAAAAAAEAG2OzYrCQBCE74G8Qx8TMJJkQVwkz%2bBB8TqMkxbDTk%2bHmQ4q%2bPBmTPw57LGq66tqiwLUOSXQQKsFpSPM6rJaFeW6qH%2fzTZrYGNHX%2fyM%2fVYy0SKxI%2f6EK6DsMVZrcIepi0uAGagwPTrIc2MF%2brNiJph5Onml%2bQHieCYI91CXB8QbbcEAf2%2fAq6FrQjknbWNnA1K1aNEw9B1TvYzbuLaBcrvMvdPSU%2bWDGonYfRJ3sRL2dJ%2btHEv1s3sxZe4FLJ2fIXhbbgVxovrE0eQDAQen6VwEAAA%3d%3d" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_clean_anomalies_fl = (y_series:dynamic, anomalies:dynamic)

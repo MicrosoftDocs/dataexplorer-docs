@@ -3,9 +3,12 @@ title: Integrate the Monaco Editor with Kusto Query Language support in your app
 description: Learn how to integrate the Monaco Editor with Kusto query support in your app.
 ms.reviewer: izlisbon
 ms.topic: how-to
-ms.date: 11/22/2022
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Integrate the Monaco Editor with Kusto Query Language support in your app
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 You can integrate the [Monaco Editor](https://microsoft.github.io/monaco-editor) with Kusto Query Language support (*monaco-kusto*) into your app. Integrating *monaco-kusto* into your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration. It offers you full flexibility to fashion the user experience that fits your needs.
 
@@ -160,10 +163,9 @@ export function setSchema(editor) {
 
 You can get your database schema using one of the following methods:
 
-### [From your cluster](#tab/show)
+### [From your query environment](#tab/show)
 
-1. In the Azure Data Explorer web UI, on the left menu, select **Query**.
-1. Select the database for which you want to create a schema.
+1. In your query environment, select the database for which you want to create a schema.
 1. In the query window, run the following query:
 
     ```kusto
@@ -171,7 +173,7 @@ You can get your database schema using one of the following methods:
     ```
 
 1. Copy the result of the query and paste it as the **schema** constant. The result of the query is a list of databases (see interface `Result` in the *schema.ts* file).
-1. Use the `setSchemaFromShowSchema()` method to set the schema in the editor. You  must also specify the cluster URI and the name of the database to use in the editor.
+1. Use the `setSchemaFromShowSchema()` method to set the schema in the editor. You must also specify the database URI and the name of the database to use in the editor.
 
 ### [Create manually](#tab/manual)
 

@@ -3,9 +3,11 @@ title:  geo_intersection_line_with_polygon()
 description: Learn how to use the geo_intersection_line_with_polygon() function to calculate the intersection of a line string or a multiline string with a polygon or a multipolygon.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_intersection_line_with_polygon()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the intersection of a line or a multiline with a polygon or a multipolygon.
 
@@ -13,7 +15,7 @@ Calculates the intersection of a line or a multiline with a polygon or a multipo
 
 `geo_intersection_line_with_polygon(`*lineString*`,`*polygon*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -24,7 +26,7 @@ Calculates the intersection of a line or a multiline with a polygon or a multipo
 
 ## Returns
 
-Intersection in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If lineString or a multiLineString or a polygon or a multipolygon are invalid, the query will produce a null result.
+Intersection in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If lineString or a multiLineString or a polygon or a multipolygon are invalid, the query will produce a null result.
 
 > [!NOTE]
 >
@@ -65,8 +67,10 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 
 The following example calculates intersection between line and polygon. In this case, the result is a line.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32Qy2rDMBBF9/0Ko1UCbtBrHk7oH3RR6DIYExzhClzJOIJgSv+9bhQnhZYuZnNnmDNzepeK3gf3mkYfuuKpOE7h8O7b1YdI0+DEVjzfuqIUbYzj0YdDciex3e8fyWwqBlVBaeWGmDVBXeaYLIC+xFQRqrr+XO8e+hk3xH7qYviL9ZJbv0HXlUpXEpgNcZWBwBJQKWRCWsAspQWjGKVZDgBNyMayNAj3A6WURul5gyLMcwwa0YABRHsb+x+a/xpmP6mYy40n1yZ/ea9zsfkZNd+im7NPb83Vwequvly8rL8Ayu2maJMBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let lineString = dynamic({"type":"LineString","coordinates":[[-73.985195,40.788275],[-73.974552,40.779761]]});
@@ -82,8 +86,10 @@ print intersection = geo_intersection_line_with_polygon(lineString, polygon)
 
 The following example calculates intersection between line and polygon. In this case, the result is a multiline.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Qy2rDMBC89yuETgkoi6SVIiklf9BDoUdjTHCEI3Al4wiCKf332lZfoT3sZXZmdmd6n0kfon/JY4gdOZLzFE+vod280TwNnh7o0/eWMtqmNJ5DPGV/pYeq2gnBQUvJCDoQztas2jkBSlpGFAdreV2/bx8f+vnKkPqpS/G/E89l9dd/duMg98hwDwZXe8ElcCWY0iCNKogDRL1wtDTrC3eiGVlIHNAhUwIM10WGINAxtODkijgDWlu2RBFYKHeikmWYq8hkHj9efZvDGqnzqfkNNUunzS3kS/OZe/PTMvvqYvsBzDzDun4BAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let lineString = dynamic({"type":"LineString","coordinates":[[-110.522, 39.198],[-91.428, 40.880]]});
@@ -99,8 +105,10 @@ print intersection = geo_intersection_line_with_polygon(lineString, polygon)
 
 The following line and polygon don't intersect.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32QwWrDMBBE7/0KoVMCalhJ3tU6oX/QQ6FHY0xwhCtwJeMIgin997p2kxZaetjLzmOGmd5n0Yfon/MYYicexGmKx9fQbt5kngYv9/Lxpkol25TGU4jH7M9yX1VaCV2ryihh6vp9e7jrZ7sh9VOX4l9eT6v026i6d3ZXOm1KQGbruFQF7BwjA5LWxI7cHLRQDFCg1Uxg0SyYQ+OIbcFgCfHKOQCw2swO2tHKMRoiixaJihv2f+jaa5j7ZzGfH8++zWGp1/nU/Hw1n0M2l5Bfmq8NNt/Tqusu2w865byEcwEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let lineString = dynamic({"type":"LineString","coordinates":[[1, 1],[2, 2]]});
@@ -135,8 +143,10 @@ NY_Manhattan_Roads
 
 The following example finds all counties in the USA that intersect with area of interest literal LineString.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QwWrDMBBE7/kKVScbXCPbkSWl5FBKb20voacQhHE2toojGVkhmLb/3nXTFBPddng7mp0OAqk8VNodtLEBPAyBrMl+tNXR1NEnDWMPdEVfjIVN8MY2NKG1c35vbBVgoKvt9l4UqRIZV0wpLqTkIlmyVKglz4qikEIyqfguuXClKCTPVc54kecXLhdc4iszKXj5z6nJaXJgf35SCRQzWbKMM77bfccPi/eNfnInGwwMiy/Se/cBdSCYHfCIA1ThhAelqPfgJyh9e3x9Tkg97YxzpAF3hODHG5eE/JYy4GycxQXk9FzSHRajzya0unfd2Dgb3dZ5/S5G73OLEhbuq1F3YJvQRnO3awxMGpO7NWE/FmJxj58BAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let area_of_interest = dynamic({"type":"LineString","coordinates":[[-73.97159099578857,40.794513338780895],[-73.96738529205322,40.792758888618756],[-73.96978855133057,40.789769718601505]]});
@@ -154,8 +164,10 @@ US_Counties
 
 The following example will return a null result because the LineString is invalid.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WRy2rDMBBF9/0Ko5UNbtBjRhql9A+6KHQZTDCOMAJVMrZaMKX/XgfH8aKFbuceDjN3gstF8NG95dHHvnguLnNs331XfrE8D44d2cs9ZTXrUhovPrbZTex4Oj0adbCEwmIN/GCIpMGm+a6eHsLiHVKY+xT/kr6u0W/jqkSjSYMEiajMVU2ca1QIVoLSsqlvGEkyUlluYKPIGmG1NtLSTmkLVgEB2A1DbpTmChdwxzgKyUGTgBslLBlFSqBVd+qfzdbrh6WuXPjp7ONnG/xlqcBP8SOEsndpGWY3Tq7LPsWzvLY/lfsP6q23qvoB4Uu5gZ0BAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let lineString = dynamic({"type":"LineString","coordinates":[[-73.985195,40.788275]]});
@@ -171,8 +183,10 @@ print is_invalid = isnull(geo_intersection_2lines(lineString, polygon))
 
 The following example will return a null result because the polygon is invalid.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Qy2rDMBC89yuMTja4QY+sd5WSP+ih0GMwwdjCCBTJWGrAlP575bpND8keZ2ZnZ8eZVDjrzXuarR+LYzEsvrvYvvxkaZkMO7DXG8tq1ocwD9Z3yUR2OJ2eUe00CtBca0AiwHrPd6j3IJRShMRJQ1tvugYVgdSSg5Jy00kEytMIQmhuOr06rQ781480ZlBQwwVwaNuv6uXJ5eBTcMsY/KPUbxt1F/lnd8rfpMLGs/XXztkhG9joP5wrRxMymMwcTZ9s8Ge5lhPL/4rqv6tV9Q1G11oPPAEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let lineString = dynamic({"type":"LineString","coordinates":[[-73.97159099578857,40.794513338780895],[-73.96738529205322,40.792758888618756],[-73.96978855133057,40.789769718601505]]});

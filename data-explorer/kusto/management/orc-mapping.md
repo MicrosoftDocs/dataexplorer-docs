@@ -2,14 +2,16 @@
 title:  ORC Mapping
 description: Learn how to use ORC mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 08/11/2024
 ---
 
 # ORC mapping
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Use ORC mapping to map incoming data to columns inside tables when your ingestion source file is in ORC format.
 
-[!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
+[!INCLUDE [data-mapping-overview](../includes/data-mapping-overview.md)]
 
 Each ORC mapping element must contain either of the following optional properties:
 
@@ -38,7 +40,7 @@ Each ORC mapping element must contain either of the following optional propertie
 > ]
 > ```
 
-[!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
+[!INCLUDE [data-mapping-type-note](../includes/data-mapping-type-note.md)]
 
 ## Examples
 

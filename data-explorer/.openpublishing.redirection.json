@@ -1,0 +1,429 @@
+{
+  "redirections": [
+    {
+      "source_path_from_root": "/data-explorer/security-baseline.md",
+      "redirect_url": "/security/benchmark/azure/baselines/data-explorer-security-baseline",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/tools-integrations-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/net-standard-ingest-data.md",
+      "redirect_url": "/azure/data-explorer/net-sdk-ingest-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingest-data-streaming-csharp.md",
+      "redirect_url": "/azure/data-explorer/ingest-data-streaming",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/azure-notebooks.md",
+      "redirect_url": "/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/connect-from-databricks.md",
+      "redirect_url": "/azure/data-explorer/spark-connector",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/managed-identities.md",
+      "redirect_url": "/azure/data-explorer/configure-managed-identities-cluster",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/one-click-manage-database.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/vnet-create-private-endpoint.md",
+      "redirect_url": "/azure/data-explorer/security-network-private-endpoint",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/manage-cluster-security.md",
+      "redirect_url": "/azure/data-explorer/cluster-encryption-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/cluster-disk-encryption.md",
+      "redirect_url": "/azure/data-explorer/cluster-encryption-disk",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/double-encryption.md",
+      "redirect_url": "/azure/data-explorer/cluster-encryption-double",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingest-data-one-click.md",
+      "redirect_url": "/azure/data-explorer/ingest-data-wizard",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/one-click-table.md",
+      "redirect_url": "/azure/data-explorer/create-table-wizard",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/one-click-table-batching-policy.md",
+      "redirect_url": "/azure/data-explorer/table-batching-policy-wizard",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/one-click-table-retention-policy.md",
+      "redirect_url": "/azure/data-explorer/table-retention-policy-wizard",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/one-click-event-hub.md",
+      "redirect_url": "/azure/data-explorer/event-hub-wizard",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/sample-app-generator-one-click.md",
+      "redirect_url": "/azure/data-explorer/sample-app-generator-wizard",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/one-click-ingestion-existing-table.md",
+      "redirect_url": "/azure/data-explorer/ingestion-wizard-existing-table",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/one-click-ingestion-new-table.md",
+      "redirect_url": "/azure/data-explorer/ingestion-wizard-new-table",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/power-bi-connector.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/power-bi-imported-query.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/write-queries.md",
+      "redirect_url": "/kusto/query/tutorials/learn-common-operators",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/visualize-power-bi.md",
+      "redirect_url": "/azure/data-explorer/power-bi-data-connector",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/time-series-analysis.md",
+      "redirect_url": "/kusto/query/time-series-analysis",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/anomaly-detection.md",
+      "redirect_url": "/kusto/query/anomaly-detection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/machine-learning-clustering.md",
+      "redirect_url": "/kusto/query/machine-learning-clustering",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/web-ui-samples-gallery.md",
+      "redirect_url": "/azure/data-explorer/web-ui-samples-dashboards",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/web-ui-overview.md",
+      "redirect_url": "/azure/data-explorer/web-query-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingestion-wizard-existing-table.md",
+      "redirect_url": "/azure/data-explorer/ingest-from-local-file",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingestion-wizard-new-table.md",
+      "redirect_url": "/azure/data-explorer/ingest-from-container",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/connect-sql-server-emulation.md",
+      "redirect_url": "/azure/data-explorer/sql-server-emulation-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/matlab.md",
+      "redirect_url": "/azure/data-explorer/connect-common-apps",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/query-sql-server-emulation.md",
+      "redirect_url": "/azure/data-explorer/sql-kql-queries-and-stored-functions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/event-hub-wizard.md",
+      "redirect_url": "/azure/data-explorer/create-event-hubs-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingest-data-event-hub.md",
+      "redirect_url": "/azure/data-explorer/create-event-hubs-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/data-connection-event-hub-csharp.md",
+      "redirect_url": "/azure/data-explorer/create-event-hubs-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/data-connection-event-hub-python.md",
+      "redirect_url": "/azure/data-explorer/create-event-hubs-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/data-connection-event-hub-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/create-event-hubs-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingest-data-iot-hub.md",
+      "redirect_url": "/azure/data-explorer/create-iot-hub-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/data-connection-iot-hub-csharp.md",
+      "redirect_url": "/azure/data-explorer/create-iot-hub-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/data-connection-iot-hub-python.md",
+      "redirect_url": "/azure/data-explorer/create-iot-hub-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/data-connection-iot-hub-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/create-iot-hub-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingest-data-event-grid.md",
+      "redirect_url": "/azure/data-explorer/create-event-grid-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/data-connection-event-grid-csharp.md",
+      "redirect_url": "/azure/data-explorer/create-event-grid-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/data-connection-event-grid-python.md",
+      "redirect_url": "/azure/data-explorer/create-event-grid-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/data-connection-event-grid-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/create-event-grid-connection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/database-table-policies-csharp.md",
+      "redirect_url": "/azure/data-explorer/database-table-policies",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/database-table-policies-python.md",
+      "redirect_url": "/azure/data-explorer/database-table-policies",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/cluster-principal-csharp.md",
+      "redirect_url": "/azure/data-explorer/add-cluster-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/cluster-principal-python.md",
+      "redirect_url": "/azure/data-explorer/add-cluster-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/cluster-principal-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/add-cluster-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/database-principal-csharp.md",
+      "redirect_url": "/azure/data-explorer/add-database-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/database-principal-python.md",
+      "redirect_url": "/azure/data-explorer/add-database-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/database-principal-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/add-database-principal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/create-cluster-database-cli.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/create-cluster-database-csharp.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/create-cluster-database-python.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/create-cluster-database-powershell.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/create-cluster-database-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/create-cluster-database-go.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/end-to-end-csharp.md",
+      "redirect_url": "/azure/data-explorer/end-to-end-blob-ingestion",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/end-to-end-python.md",
+      "redirect_url": "/azure/data-explorer/end-to-end-blob-ingestion",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/customer-managed-keys-cli.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/customer-managed-keys-portal.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/customer-managed-keys-powershell.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/customer-managed-keys-resource-manager.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/customer-managed-keys-csharp.md",
+      "redirect_url": "/azure/data-explorer/customer-managed-keys",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/kql-quick-reference.md",
+      "redirect_url": "/kusto/query/kql-quick-reference",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/named-expressions.md",
+      "redirect_url": "/kusto/query/named-expressions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/create-cluster-database-portal.md",
+      "redirect_url": "/azure/data-explorer/create-cluster-and-database",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/generate-lightingest-command.md",
+      "redirect_url": "/azure/data-explorer/ingest-data-historical",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingest-data-wizard.md",
+      "redirect_url": "/azure/data-explorer/ingest-data-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingest-from-local-file.md",
+      "redirect_url": "/azure/data-explorer/get-data-file",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingest-from-container.md",
+      "redirect_url": "/azure/data-explorer/get-data-storage",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/engine-v3.md",
+      "redirect_url": "/azure/data-explorer/how-it-works",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/provision-azure-ad-app.md",
+      "redirect_url": "/azure/data-explorer/provision-entra-id-app",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/monitor-batching-ingestion.md",
+      "redirect_url": "/azure/data-explorer/monitor-queued-ingestion",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingest-sample-data.md",
+      "redirect_url": "/azure/data-explorer/web-ui-samples-query",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/connector-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-data-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/viz-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-visualize-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/ingestion-properties.md",
+      "redirect_url": "/kusto/ingestion-properties",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/excel-blank-query.md",
+      "redirect_url": "/azure/data-explorer/excel",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/set-timeout-limits.md",
+      "redirect_url": "/kusto/set-timeout-limits",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/data-explorer/excel-connector.md",
+      "redirect_url": "/azure/data-explorer/excel",
+      "redirect_document_id": false
+    }
+  ]
+}

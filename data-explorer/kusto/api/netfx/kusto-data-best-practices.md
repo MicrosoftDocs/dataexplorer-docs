@@ -3,15 +3,17 @@ title: Best practices for the Kusto Data library
 description: This article describes best practices for Kusto Data client library.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/18/2023
+ms.date: 08/11/2024
 ---
 # Best practices for the Kusto Data library
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 This article explains the best practices for working with the [Kusto Data library](about-kusto-data.md).
 
 ## Use a single client instance
 
-The Kusto client providers are designed for concurrent use by multiple threads, and they cache information retrieved during the initial contact with your cluster. To optimize performance, we recommend reusing a single client instance rather than creating a new one for each request.
+The Kusto client providers are designed for concurrent use by multiple threads, and they cache information retrieved during the initial contact with your database. To optimize performance, we recommend reusing a single client instance rather than creating a new one for each request.
 
 ## Specify the database parameter
 

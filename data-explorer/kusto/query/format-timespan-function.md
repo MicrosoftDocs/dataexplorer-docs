@@ -3,9 +3,11 @@ title:  format_timespan()
 description: Learn how to use the format_timespan() function to format a timespan according to the provided format.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # format_timespan()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Formats a timespan according to the provided format.
 
@@ -13,7 +15,7 @@ Formats a timespan according to the provided format.
 
 `format_timespan(`*timespan* `,` *format*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -70,8 +72,10 @@ A string with *timespan* formatted as specified by *format*.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoUbBVKMnMTdUwstQzsLQyMLAyMNUzNDI2MdW05iooyswrUeAqM7RNyy/KTSyJB6ksLkjM0yjRUVBPSdHLyLDKzbUqLrZyc1PX1OEqM8KhEKgSolAhOg0CYtU1AcM/CQ1/AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let t = time(29.09:00:05.12345);

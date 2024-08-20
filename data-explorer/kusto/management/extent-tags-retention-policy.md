@@ -1,11 +1,13 @@
 ---
 title:  Extent tags retention policy
-description: This article describes extent tags retention policies in Azure Data Explorer.
+description:  This article describes extent tags retention policies.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/01/2021
+ms.date: 08/11/2024
 ---
 # Extent tags retention policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The extent tags retention policy controls the mechanism that automatically removes [extent tags](extent-tags.md) from tables, based on the age of the extents.
 
