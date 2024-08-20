@@ -79,169 +79,169 @@ items:
     items:
     - name: List of functions
       displayName: functions library
-      href: /kusto/query/functions-library
+      href: /kusto/functions-library/functions-library
     - name: bartlett_test_fl()
       displayName: functions library, statistical test
-      href: /kusto/query/bartlett-test-fl
+      href: /kusto/functions-library/bartlett-test-fl
     - name: binomial_test_fl()
       displayName: functions library, statistical test
-      href: /kusto/query/binomial-test-fl
+      href: /kusto/functions-library/binomial-test-fl
     - name: comb_fl()
       displayName: functions library, statistics
-      href: /kusto/query/comb-fl
+      href: /kusto/functions-library/comb-fl
     - name: dbscan_fl()
       displayName: functions library, clustering, DBSCAN
-      href: /kusto/query/dbscan-fl
+      href: /kusto/functions-library/dbscan-fl
     - name: dbscan_dynamic_fl()
       displayName: functions library, clustering, DBSCAN
-      href: /kusto/query/dbscan-dynamic-fl
+      href: /kusto/functions-library/dbscan-dynamic-fl
     - name: factorial_fl()
       displayName: functions library, statistics
-      href: /kusto/query/factorial-fl
+      href: /kusto/functions-library/factorial-fl
     - name: geoip_fl()
       displayName: functions library, geographic, ip, country, state, city, longitude, latitude
-      href: /kusto/query/geoip-fl
+      href: /kusto/functions-library/geoip-fl
     - name: get_packages_version_fl()
       displayName: functions library, python, version, package
-      href: /kusto/query/get-packages-version-fl
+      href: /kusto/functions-library/get-packages-version-fl
     - name: kmeans_fl()
       displayName: functions library, clustering, K-Means
-      href: /kusto/query/kmeans-fl
+      href: /kusto/functions-library/kmeans-fl
     - name: kmeans_dynamic_fl()
       displayName: functions library, clustering, K-Means
-      href: /kusto/query/kmeans-dynamic-fl
+      href: /kusto/functions-library/kmeans-dynamic-fl
     - name: ks_test_fl()
       displayName: functions library, statistical test
-      href: /kusto/query/ks-test-fl
+      href: /kusto/functions-library/ks-test-fl
     - name: normality_test_fl()
       displayName: functions library, statistical test
-      href: /kusto/query/normality-test-fl
+      href: /kusto/functions-library/normality-test-fl
     - name: levene_test_fl()
       displayName: functions library, statistical test
-      href: /kusto/query/levene-test-fl
+      href: /kusto/functions-library/levene-test-fl
     - name: log_reduce_fl()
       displayName: functions library, log reduce, log parse, clustering, text analytics
-      href: /kusto/query/log-reduce-fl
+      href: /kusto/functions-library/log-reduce-fl
     - name: log_reduce_full_fl()
       displayName: functions library, log reduce, log parse, clustering, text analytics
-      href: /kusto/query/log-reduce-full-fl
+      href: /kusto/functions-library/log-reduce-full-fl
     - name: log_reduce_predict_fl()
       displayName: functions library, log reduce, log parse, clustering, text analytics
-      href: /kusto/query/log-reduce-predict-fl
+      href: /kusto/functions-library/log-reduce-predict-fl
     - name: log_reduce_predict_full_fl()
       displayName: functions library, log reduce, log parse, clustering, text analytics
-      href: /kusto/query/log-reduce-predict-full-fl
+      href: /kusto/functions-library/log-reduce-predict-full-fl
     - name: log_reduce_train_fl()
       displayName: functions library, log reduce, log parse, clustering, text analytics
-      href: /kusto/query/log-reduce-train-fl
+      href: /kusto/functions-library/log-reduce-train-fl
     - name: mann-whitney-u-test-fl()
       displayName: functions library, statistical test
-      href: /kusto/query/mann-whitney-u-test-fl
+      href: /kusto/functions-library/mann-whitney-u-test-fl
     - name: pair_probabilities_fl()
       displayName: functions library, jaccard, lift
-      href: /kusto/query/pair-probabilities-fl
+      href: /kusto/functions-library/pair-probabilities-fl
     - name: pairwise_dist_fl()
       displayName: functions library, multivariate, distance, anomaly, pairwise
-      href: /kusto/query/pairwise-dist-fl
+      href: /kusto/functions-library/pairwise-dist-fl
     - name: percentiles_linear_fl()
       displayName: functions library, percentile, rank, statistics
-      href: /kusto/query/percentiles-linear-fl
+      href: /kusto/functions-library/percentiles-linear-fl
     - name: perm_fl()
       displayName: functions library, statistics
-      href: /kusto/query/perm-fl
+      href: /kusto/functions-library/perm-fl
     - name: plotly_anomaly_fl()
       displayName: functions library, Plotly, anomaly, chart, render
-      href: /kusto/query/plotly-anomaly-fl
+      href: /kusto/functions-library/plotly-anomaly-fl
     - name: plotly_scatter3d_fl()
       displayName: functions library, Plotly, scatter, chart, render
-      href: /kusto/query/plotly-scatter3d-fl
+      href: /kusto/functions-library/plotly-scatter3d-fl
     - name: predict_fl()
       displayName: functions library, score, classify
-      href: /kusto/query/predict-fl
+      href: /kusto/functions-library/predict-fl
     - name: predict_onnx_fl()
       displayName: functions library, score, classify
-      href: /kusto/query/predict-onnx-fl
+      href: /kusto/functions-library/predict-onnx-fl
     - name: quantize_fl()
       displayName: functions library, binning
-      href: /kusto/query/quantize-fl
+      href: /kusto/functions-library/quantize-fl
     - name: series_clean_anomalies_fl()
       displayName: functions library, anomalies, outliers
-      href: /kusto/query/series-clean-anomalies-fl
+      href: /kusto/functions-library/series-clean-anomalies-fl
     - name: series_cosine_similarity_fl()
       displayName: functions library, embedding, vector, cosine, similarity
-      href: /kusto/query/series-cosine-similarity-fl
+      href: /kusto/functions-library/series-cosine-similarity-fl
     - name: series_dbl_exp_smoothing_fl()
       displayName: functions library, exponential, filter, low-pass
-      href: /kusto/query/series-dbl-exp-smoothing-fl
+      href: /kusto/functions-library/series-dbl-exp-smoothing-fl
     - name: series_dot_product_fl()
       displayName: functions library, inner product, scalar product
-      href: /kusto/query/series-dot-product-fl
+      href: /kusto/functions-library/series-dot-product-fl
     - name: series_downsample_fl()
       displayName: functions library, subsampling, sub-sampling
-      href: /kusto/query/series-downsample-fl
+      href: /kusto/functions-library/series-downsample-fl
     - name: series_exp_smoothing_fl()
       displayName: functions library, exponential, filter, low-pass
-      href: /kusto/query/series-exp-smoothing-fl
+      href: /kusto/functions-library/series-exp-smoothing-fl
     - name: series_fit_lowess_fl()
       displayName: functions library, filter, low-pass, smoothing, regression
-      href: /kusto/query/series-fit-lowess-fl
+      href: /kusto/functions-library/series-fit-lowess-fl
     - name: series_fit_poly_fl()
       displayName: functions library, filter, low-pass, smoothing, regression
-      href: /kusto/query/series-fit-poly-fl
+      href: /kusto/functions-library/series-fit-poly-fl
     - name: series_fbprophet_forecast_fl()
       displayName: functions library
-      href: /kusto/query/series-fbprophet-forecast-fl
+      href: /kusto/functions-library/series-fbprophet-forecast-fl
     - name: series_metric_fl()
       displayName: functions library, PromQL, Prometheus
-      href: /kusto/query/series-metric-fl
+      href: /kusto/functions-library/series-metric-fl
     - name: series_lag_fl()
       displayName: functions library, filter, time shift, delay
-      href: /kusto/query/series-lag-fl
+      href: /kusto/functions-library/series-lag-fl
     - name: series_monthly_decompose_anomalies_fl()
       displayName: functions library, anomaly detection, monthly
-      href: /kusto/query/series-monthly-decompose-anomalies-fl
+      href: /kusto/functions-library/series-monthly-decompose-anomalies-fl
     - name: series_moving_avg_fl()
       displayName: functions library, filter, low-pass, smoothing
-      href: /kusto/query/series-moving-avg-fl
+      href: /kusto/functions-library/series-moving-avg-fl
     - name: series_moving_var_fl()
       displayName: functions library, filter, rolling, variance, standard deviation, std
-      href: /kusto/query/series-moving-var-fl
+      href: /kusto/functions-library/series-moving-var-fl
     - name: series_mv_ee_anomalies_fl()
       displayName: functions library, anomaly detection, multivariate, elliptical envelope
-      href: /kusto/query/series-mv-ee-anomalies-fl
+      href: /kusto/functions-library/series-mv-ee-anomalies-fl
     - name: series_mv_if_anomalies_fl()
       displayName: functions library, anomaly detection, multivariate, isolation forest
-      href: /kusto/query/series-mv-if-anomalies-fl
+      href: /kusto/functions-library/series-mv-if-anomalies-fl
     - name: series_mv_oc_anomalies_fl()
       displayName: functions library, anomaly detection, multivariate, one class svm, support vector machines
-      href: /kusto/query/series-mv-oc-anomalies-fl
+      href: /kusto/functions-library/series-mv-oc-anomalies-fl
     - name: series_rate_fl()
       displayName: functions library, PromQL, Prometheus
-      href: /kusto/query/series-rate-fl
+      href: /kusto/functions-library/series-rate-fl
     - name: series_rolling_fl()
       displayName: functions library, rolling, sliding
-      href: /kusto/query/series-rolling-fl
+      href: /kusto/functions-library/series-rolling-fl
     - name: series_shapes_fl()
       displayName: functions library, shape, trend, jump, detect
-      href: /kusto/query/series-shapes-fl
+      href: /kusto/functions-library/series-shapes-fl
     - name: series_uv_anomalies_fl()
       displayName: functions library, anomaly detection, univariate
-      href: /kusto/query/series-uv-anomalies-fl
+      href: /kusto/functions-library/series-uv-anomalies-fl
     - name: series_uv_change_points_fl()
       displayName: functions library, anomaly detection, univariate, change point
-      href: /kusto/query/series-uv-change-points-fl
+      href: /kusto/functions-library/series-uv-change-points-fl
     - name: time_weighted_avg_fl()
       displayName: functions library, binning
-      href: /kusto/query/time-weighted-avg-fl
+      href: /kusto/functions-library/time-weighted-avg-fl
     - name: time_window_rolling_avg_fl()
       displayName: functions library, rolling, sliding
-      href: /kusto/query/time-window-rolling-avg-fl
+      href: /kusto/functions-library/time-window-rolling-avg-fl
     - name: two_sample_t_test_fl()
       displayName: functions library, statistical test
-      href: /kusto/query/two-sample-t-test-fl
+      href: /kusto/functions-library/two-sample-t-test-fl
     - name: wilcoxon_test_fl()
       displayName: functions library, statistical test
-      href: /kusto/query/wilcoxon-test-fl
+      href: /kusto/functions-library/wilcoxon-test-fl
 - name: Query statements
   items:
   - name: Query statement types

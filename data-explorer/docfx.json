@@ -8,6 +8,7 @@
         ],
         "exclude": [
           "**/kusto/**",
+          "**/kusto-redirections/**",
           "**/obj/**",
           "**/includes/**",
           "_themes/**",
@@ -29,7 +30,7 @@
           "**/*.yml"
         ],
         "src": "kusto-redirections",
-        "dest": "/azure/data-explorer/kusto"
+        "dest": "kusto"
       }
     ],
     "resource": [
