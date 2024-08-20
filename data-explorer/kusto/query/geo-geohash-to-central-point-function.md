@@ -3,9 +3,11 @@ title:  geo_geohash_to_central_point()
 description: Learn how to use the geo_geohash_to_central() function to calculate the geospatial coordinates that represent the center of a geohash rectangular area.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_geohash_to_central_point()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the geospatial coordinates that represent the center of a geohash rectangular area.
 
@@ -15,7 +17,7 @@ Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).
 
 `geo_geohash_to_central_point(`*geohash*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -25,15 +27,17 @@ Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).
 
 ## Returns
 
-The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the geohash is invalid, the query will produce a null result.
+The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If the geohash is invalid, the query will produce a null result.
 
 > [!NOTE]
 > The GeoJSON format specifies longitude first and latitude second.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjIB5G2Cump+fFAnJFYnBFfkh+fnJpXUpSYEw+W1lAqLs3Lq1TS5KpRSK0oSc1LUUjOzy9KycxLLEktBmoGq9JDEkMozMnPS88sKU1JBSpDUhBtEKujkJNYgk3KMBYAnhfZ4psAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print point = geo_geohash_to_central_point("sunny")
@@ -49,8 +53,10 @@ print point = geo_geohash_to_central_point("sunny")
 
 The following example returns a null result because of the invalid geohash input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4qG8+JL8+OTUvJKixJz4gnygMg2lRCVNAEhNnjMxAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print geohash = geo_geohash_to_central_point("a")
@@ -66,8 +72,10 @@ print geohash = geo_geohash_to_central_point("a")
 
 You can use the geohash value to create a deep-link URL to Bing Maps by pointing to the geohash center point:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32RS0/DMBCE7/kVo16cSGkNJ1BRhQRXuCD1gFBlGWdpLBI7st2G8vjvOA+gCgif7F17duYz51h7gg9Omy2UNUoGMjJoaxAslKN4xlXXvJUNCqJmXmnzjPXdDZ6crSGxJTtvrDYhqSig34lgRS0bsXMVVkhFX1wWByNrrXKIoENFy2FqhuQtQVzxGKenrAyh8UvO27ZdPMYLC2VrHtX8pW9WvdKCRY1hp6x1hY6OyT+cbpAz8XfvZJOj70VLgoyyBaWDjSwa+LhIOMe1NXtyoQtUSl/2AMgEckOoHNIUCCUZ7CIzNk3K/iXWwxmVp3jG8ghkymfEMx2XxlfiSLCz6mQ1ZP/WzL7Usi5kEwV/8q3A/P68fd0fzljyDnqJX19gMPXbaTqWcszu7Q7SEUpyNMs+AXziAcBEAgAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 // Use string concatenation to create Bing Map deep-link URL from a geo-point

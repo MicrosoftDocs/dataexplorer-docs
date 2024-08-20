@@ -3,9 +3,11 @@ title:  geo_h3cell_children()
 description: Learn how to use the geo_h3cell_children() function to calculate the H3 cell children.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_h3cell_children()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the H3 cell children.
 
@@ -15,7 +17,7 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 `geo_h3cell_children(`*h3cell*`,`*resolution*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,8 +36,10 @@ Array of H3 Cell children tokens. If the H3 Cell is invalid or child resolution 
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOyMxJKUrNU7BVSE/Nj88wTk7NyYmHiWqoW5gZJRoamBulQYC6JgDo0XQKNwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print children = geo_h3cell_children('862a1072fffffff')
@@ -49,8 +53,10 @@ print children = geo_h3cell_children('862a1072fffffff')
 
 The following example counts children 3 levels below a given cell.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIMI5PTs3JUbBVULcwM0o0NDA3SoMAdWsFroKizLwSheSMzJyUotS8+OT8UiDXViGxqCixMj4nNS+9JEMjPTU/PsMYZEg8TKEG1FQdBSTJnNSy1ByYjKaCtoKxpiYAhE7I7YIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let h3_cell = '862a1072fffffff'; 
@@ -65,8 +71,10 @@ print children_count = array_length(geo_h3cell_children(h3_cell, geo_h3cell_leve
 
 The following example assembles GeoJSON geometry collection of H3 Cell children polygons.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PwU7DMAyG73sKq5e1EkiwSsCFExLwFlHovCZbEkeJhyji4XFouoKET8nv//9sx2QDw2Cs2ycM8AgjkjL9gM6pRW23D3c7fXtzvzvMte02X+Dfr/Ej6rBf00zAU0Q6tJmFOxZbTHTEoY74y2dSkdw0UmgXREnks/c62U8E0yujs1lcymUWgtcnVM5mnlO/hwj8mKmc8aZHFfVwajcg1ZS1mitonlHzOclzlsXvkdMkrUvg4n2pzSdyTuCWQlFrxGKW3z8LdhUtK0VMPPtWeND+B/7aQw1lGNYBXfcNNfE/VZEBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print children = geo_h3cell_children('862a1072fffffff')
@@ -87,8 +95,10 @@ print children = geo_h3cell_children('862a1072fffffff')
 
 The following example returns true because of the invalid cell.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgsjs8rzclRsAWyQAyN9NT8+Azj5NScnPjkjMyclKLUPA31xKRkdU1NABWsmhkyAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print is_null = isnull(geo_h3cell_children('abc'))
@@ -102,8 +112,10 @@ print is_null = isnull(geo_h3cell_children('abc'))
 
 The following example returns true because the level difference between cell and its children is more than 5.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgsjs8rzclRsAWyQAyN9NT8+Azj5NScnPjkjMyclKLUPLBYQT5QeXwJTFLDUEcBiCw1gZSppiYAGXNpOU0AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print is_null = isnull(geo_h3cell_children(geo_point_to_h3cell(1, 1, 9), 15))

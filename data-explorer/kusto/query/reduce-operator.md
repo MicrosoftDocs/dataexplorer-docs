@@ -3,9 +3,11 @@ title:  reduce operator
 description: Learn how to use the reduce operator to group a set of strings together based on value similarity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/22/2023
+ms.date: 08/11/2024
 ---
 # reduce operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Groups a set of strings together based on value similarity.
 
@@ -15,7 +17,7 @@ For each such group, the operator returns a `pattern`, `count`, and `representat
 
 *T* `|` `reduce` [`kind` `=` *ReduceKind*] `by` *Expr* [`with` [`threshold` `=` *Threshold*] [`,` `characters` `=` *Characters*]]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -44,8 +46,10 @@ For example, the result of `reduce by city` might include:
 
 ### Small threshold value
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzWNMQ7CMBAEe16xcmWkCNkPyA9IR5H2cI7YCOzochGJxOO5hq1WGu2sUJ0ZOx7S3ojQhhhCwKq8IJ6+WKQ9OSmG48a7ojciidS7gVIula9MUkudR9fZ2KB1r61U9UJ18jGcLSYSnrbEuB9/FT5FMzQLr7m9pj5cQojokDIJJWVZ7c2N7gefKNUWogAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 1000 step 1
@@ -61,8 +65,10 @@ range x from 1 to 1000 step 1
 
 ### Large threshold value
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAAzWNMQ7CMBAEe16xcmWkCNklRX5AOoq0h3PERmBHl0MkEo/nGrZaabSzQnVmbLhLeyFCG2IIAavygnj4YpH24KQY9itvit6IJFLvBkq5VL4wSS11Hl1nY4PWvbZS1QvVycdwtJhIeHonxm3/q/ApmqFZeM3tOfXhdEaHlEkoKctqX250Px4hVlGgAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 1000 step 1
@@ -88,8 +94,10 @@ range x from 1 to 1000 step 1
 
 If the *Characters* parameter is unspecified, then every non-ascii numeric character becomes a term separator.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxWKQQqAMAwEv7L0VMGDfYAf8VZrKgo2JUao4ONNLwMzjMSyExqy8IUAZYQJt1I1+VCFT0pqQTB3pqjeZWY3wi0GZYtH2X0bBvuFticR1re/P7YelSlbAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | reduce by str
@@ -103,8 +111,10 @@ range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | re
 
 However, if you specify that "Z" is a separator, then it's as if each value in `str` is 2 terms: `foo` and `tostring(x)`:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2LSQqAQAwEv9LMyQEP+gA/4m2McQMnEiMq+Hijl4IuujTlkXFhUFlRwwR1hd148/FgU1mYzIWi+UjJijCIhBKhdZi4nPNYXDH6X7k/iNHdf3HONoGmpImMdW+8eAEwpEQbbwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | reduce by str with characters="Z"
@@ -135,7 +145,7 @@ Trace | take 10000
 
 ## Related content
 
-[autocluster](./autocluster-plugin.md)
+[autocluster](autocluster-plugin.md)
 
 > [!NOTE]
 > The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](https://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.

@@ -8,13 +8,13 @@ ms.date: 03/16/2023
 
 # Manage language extensions in your Azure Data Explorer cluster
 
-The language extensions feature allows you to use language extension plugins to integrate other languages into your Azure Data Explorer KQL queries. When you run a user-defined-function (UDF) using a relevant script, the script gets tabular data as its input and is expected to produce tabular output. The plugin's runtime is hosted in a [sandbox](kusto/concepts/sandboxes.md), an isolated and secure environment, running on the cluster's nodes. In this article, you manage the language extensions plugin in your Azure Data Explorer cluster within the Azure portal.
+The language extensions feature allows you to use language extension plugins to integrate other languages into your Azure Data Explorer KQL queries. When you run a user-defined-function (UDF) using a relevant script, the script gets tabular data as its input and is expected to produce tabular output. The plugin's runtime is hosted in a [sandbox](/kusto/concepts/sandboxes?view=azure-data-explorer&preserve-view=true), an isolated and secure environment, running on the cluster's nodes. In this article, you manage the language extensions plugin in your Azure Data Explorer cluster within the Azure portal.
 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* Review the [limitations](#limitations). Note that language extensions can only be enabled on SKUs that support [nested virtualization](kusto/concepts/sandboxes.md#vm-sizes-supporting-nested-virtualization).
+* Review the [limitations](#limitations). Note that language extensions can only be enabled on SKUs that support [nested virtualization](/kusto/concepts/sandboxes?view=azure-data-explorer&preserve-view=true#vm-sizes-supporting-nested-virtualization).
 
 ## Enable language extensions on your cluster
 
@@ -67,10 +67,10 @@ Do the following steps to disable language extensions on your cluster:
 
 ## Limitations
 
-* The language extensions runtime sandbox allocates disk space even if no query runs in the scope of the relevant language. For more detailed limitations, see [sandboxes](kusto/concepts/sandboxes.md).
-* For [VM SKUs that don't support nested virtualization](kusto/concepts/sandboxes-in-non-modern-skus.md#virtual-machine-sizes), see [limitations](kusto/concepts/sandboxes-in-non-modern-skus.md).
+* The language extensions runtime sandbox allocates disk space even if no query runs in the scope of the relevant language. For more detailed limitations, see [sandboxes](/kusto/concepts/sandboxes?view=azure-data-explorer&preserve-view=true).
+* For [VM SKUs that don't support nested virtualization](/kusto/concepts/sandboxes-in-non-modern-skus?view=azure-data-explorer&preserve-view=true#virtual-machine-sizes), see [limitations](/kusto/concepts/sandboxes-in-non-modern-skus?view=azure-data-explorer&preserve-view=true).
 
 ## Related content
 
-* Learn how to [run Python integrated KQL queries](kusto/query/python-plugin.md)
-* Learn how to [run R integrated KQL queries](kusto/query/r-plugin.md)
+* Learn how to [run Python integrated KQL queries](/kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true)
+* Learn how to [run R integrated KQL queries](/kusto/query/r-plugin?view=azure-data-explorer&preserve-view=true)

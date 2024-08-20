@@ -3,21 +3,23 @@ title: .delete materialized-view policy row_level_security command
 description: Learn how to use the `.delete materialized-view policy row_level_security` command to delete the row level security of a materialized view
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 10/23/2023
+ms.date: 08/11/2024
 ---
 # .delete materialized-view policy row_level_security command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Deletes the row level security policy of a materialized-view. For more information, see [row level security policy](row-level-security-policy.md).
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.delete` `materialized-view` *MaterializedViewName* `policy` `row_level_security`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

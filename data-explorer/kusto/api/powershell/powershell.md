@@ -1,11 +1,13 @@
 ---
 title:  Kusto .NET Client Libraries from PowerShell
-description: This article describes how to use Kusto .NET Client Libraries from PowerShell in Azure Data Explorer.
+description: This article describes how to use Kusto .NET Client Libraries from PowerShell.
 ms.reviewer: salevy
 ms.topic: reference
-ms.date: 11/07/2023
+ms.date: 08/11/2024
 ---
 # Use Kusto .NET client libraries from PowerShell
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 PowerShell scripts can use the [Kusto client libraries](../client-libraries.md), as PowerShell inherently integrates with .NET libraries. In this article, you learn how to load and use the client libraries to run queries and management commands.
 
@@ -39,14 +41,14 @@ Once loaded, you can use the libraries to [connect to a cluster and database](#c
 Authenticate to a cluster and database with one of the following methods:
 
 * **User authentication:** Prompt the user to verify their identity in a web browser.
-* **Application authentication:** [Create an MS Entra app](../../../provision-entra-id-app.md) and use the credentials for authentication.
+* **Application authentication:** [Create an MS Entra app](../../access-control/provision-entra-id-app.md) and use the credentials for authentication.
 * **Azure CLI authentication:** Sign-in to the Azure CLI on your machine, and Kusto will retrieve the token from Azure CLI.
 
 Select the relevant tab.
 
 ### [User](#tab/user)
 
-Once you run your first query or command, this method will open an interactive browser window for user authorization.
+Once you run your first query or command, this method opens an interactive browser window for user authorization.
 
 ```powershell
 $clusterUrl = "<Your cluster URI>"
@@ -57,7 +59,7 @@ $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databas
 
 ### [Application](#tab/app)
 
-[Create an MS Entra app](../../../provision-entra-id-app.md) and grant it access to your database. Then, provide the app credentials in place of the `$applicationId`, `$applicationKey`, and `$authority`.
+[Create an MS Entra app](../../access-control/provision-entra-id-app.md) and grant it access to your database. Then, provide the app credentials in place of the `$applicationId`, `$applicationKey`, and `$authority`.
 
 ```powershell
 $clusterUrl = "<Your cluster URI>"
@@ -137,11 +139,15 @@ $reader.Read() # this reads a single row/record. If you have multiple ones retur
 $isHealthy = $Reader.GetBoolean(0)
 Write-Host "IsHealthy = $isHealthy"
 ```
+
 **Output**
+
 ```
 IsHealthy = True
 ```
-For more guidance on how to run management commands with the Kusto client libraries, see [Create an app to run management commands](../get-started/app-management-commands.md).
+
+For more information on how to run management commands with the Kusto client libraries, see [Create an app to run management commands](../get-started/app-management-commands.md).
+
 ## Example
 The following example demonstrates the process of loading the libraries, authenticating, and executing a query on the publicly accessible `help` cluster.
 ```powershell
@@ -162,6 +168,21 @@ $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvi
 $query = "StormEvents | take 5"
 $reader = $queryProvider.ExecuteQuery($query, $crp)
 ```
+
+## Controlling tracing
+
+Since there's only one global `PowerShell.exe.config` file for all PowerShell applications, generally libraries can't rely on .NET's *app.config* model to access their settings. You can still use the programmatic model for tracing. For more information, see [controlling tracing](../netfx/controlling-tracing.md).
+
+You can use the following methods instead:
+
+* Enable tracing to the console:
+
+    ```powershell
+    $traceListener = New-Object Kusto.Cloud.Platform.Utils.ConsoleTraceListener
+    [Kusto.Cloud.Platform.Utils.TraceSourceManager]::RegisterTraceListener($traceListener)
+    ```
+
+* Create a `Kusto.Cloud.Platform.Utils.RollingCsvTraceListener2` object with a single argument of the folder location where traces are written.
 
 ## Related content
 

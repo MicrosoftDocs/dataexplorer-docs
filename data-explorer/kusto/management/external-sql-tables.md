@@ -3,10 +3,12 @@ title: Create and alter Azure SQL external tables
 description: Learn how to create and alter an SQL external table.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 06/28/2023
+ms.date: 08/11/2024
 ---
 
 # Create and alter Azure SQL external tables
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Creates or alters an Azure SQL [external table](../query/schema-entities/external-tables.md) in the database in which the command is executed.
 
@@ -24,15 +26,15 @@ Creates or alters an Azure SQL [external table](../query/schema-entities/externa
 
 ## Permissions
 
-To `.create` requires at least [Database User](access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+To `.create` requires at least [Database User](../access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](../access-control/role-based-access-control.md) permissions.
 
-To `.create`, `.alter`, or `.create-or-alter` an external table using managed identity authentication requires [Database Admin](access-control/role-based-access-control.md) permissions. This method is supported for SQL Server and Cosmos DB external tables.
+To `.create`, `.alter`, or `.create-or-alter` an external table using managed identity authentication requires [Database Admin](../access-control/role-based-access-control.md) permissions. This method is supported for SQL Server and Cosmos DB external tables.
 
 ## Syntax
 
 (`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `sql` [ `table` `=` *SqlTableName* ] `(`*SqlConnectionString*`)` [`with` `(` [ `sqlDialect` `=` *SqlDialect* ] `,` [ *Property* `,` ... ]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -61,9 +63,9 @@ To `.create`, `.alter`, or `.create-or-alter` an external table using managed id
 
 ## Authentication and authorization
 
-To interact with an external Azure SQL table from Azure Data Explorer, you must specify authentication means as part of the *SqlConnectionString*. The *SqlConnectionString* defines the resource to access and its authentication information.
+To interact with an external Azure SQL table, you must specify authentication means as part of the *SqlConnectionString*. The *SqlConnectionString* defines the resource to access and its authentication information.
 
-For more information, see [Azure SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).
+For more information, see [Azure SQL external table authentication methods](../api/connection-strings/sql-connection-strings.md).
 
 > [!NOTE]
 > If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by username/password or managed identities.
@@ -150,5 +152,5 @@ with
 ## Related content
 
 * [External tables overview](../query/schema-entities/external-tables.md)
-* [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md)
-* [Create and alter Azure Storage external tables](external-tables-azurestorage-azuredatalake.md)
+* [SQL external table authentication methods](../api/connection-strings/sql-connection-strings.md)
+* [Create and alter Azure Storage external tables](external-tables-azure-storage.md)

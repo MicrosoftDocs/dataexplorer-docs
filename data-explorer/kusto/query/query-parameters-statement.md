@@ -3,13 +3,12 @@ title:  Query parameters declaration statement
 description: Learn how to use the query parameters declaration statement to parameterize queries and protect against injection attacks.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/01/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Query parameters declaration statement
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Queries sent to Kusto may include a set of name or value pairs. The pairs are called *query parameters*, together with the query text itself. The query may reference one or more values, by specifying names and type, in a *query parameters declaration statement*.
 
@@ -28,7 +27,7 @@ To reference query parameters, the query text, or functions it uses, must first 
 
 `declare` `query_parameters` `(` *Name1* `:` *Type1* [`=` *DefaultValue1*] [`,`...] `);`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -45,8 +44,10 @@ To reference query parameters, the query text, or functions it uses, must first 
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WNuw7CMBAE+0j5hytBpKAFBBUpXEOPrHgFjvzifAEi8fEkQUBJO9qZNWicZtC1A/enpFl7CDjPvH6o0HYMs3YxnGlLq+V8UxYHiezrG4JkKosn3S8Y9GlqkfeW0QgtvkAF80Y7+hVHL3FsR14nm6OBMhVN1WOfUJFE0e7TGL7/9l+H314eyAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 declare query_parameters(maxInjured:long = 90);
@@ -101,11 +102,3 @@ To learn how to provide the names and values of query parameters when using Kust
 
 To set the query parameters sent when making a request to the service,
 use the **Query parameters** "wrench" icon (`ALT` + `P`).
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

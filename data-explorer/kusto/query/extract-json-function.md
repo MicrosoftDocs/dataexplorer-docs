@@ -3,9 +3,11 @@ title:  extract_json()
 description: Learn how to use the extract_json() function to get a specified element out of a JSON text using a path expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/30/2023
+ms.date: 08/11/2024
 ---
 # extract_json()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Get a specified element out of a JSON text using a path expression.
 
@@ -17,7 +19,7 @@ Optionally convert the extracted string to a specific type.
 
 `extract_json(`*jsonPath*`,` *dataSource*`,` *type*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,8 +42,10 @@ This function performs a [JSONPath](jsonpath.md) query into dataSource, which co
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIKs7PU7BVUK9WykvMTVWyUlDyys/IU9JRUEpMB3GNDYDM5MySSpCUX2q5QmR+UbZSrbo1V0FRZl6JQmpFSVFickk8yBwNJRU9sCk6YGN1FEoqC1Lz0zSKS4BK0zU1rQHS+nnUcQAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let json = '{"name": "John", "age": 30, "city": "New York"}';

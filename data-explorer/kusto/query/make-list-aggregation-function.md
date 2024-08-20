@@ -3,16 +3,18 @@ title:  make_list() (aggregation function)
 description: Learn how to use the make_list() function to create a dynamic JSON object array of all the values of the expressions in the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 adobe-target: true
 ---
 # make_list() (aggregation function)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Creates a `dynamic` array of all the values of *expr* in the group.
 
-[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
+[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 > **Deprecated aliases:** makelist()
 
@@ -20,7 +22,7 @@ Creates a `dynamic` array of all the values of *expr* in the group.
 
 `make_list(`*expr* [`,` *maxSize*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,7 +41,7 @@ If the input to the `summarize` operator isn't sorted, the order of elements in 
 If the input to the `summarize` operator is sorted, the order of elements in the resulting array tracks that of the input.
 
 > [!TIP]
-> Use the [`array_sort_asc()`](./array-sort-asc-function.md) or [`array_sort_desc()`](./array-sort-desc-function.md) function to create an ordered list by some key.
+> Use the [`array_sort_asc()`](array-sort-asc-function.md) or [`array_sort_desc()`](array-sort-desc-function.md) function to create an ordered list by some key.
 
 ## Examples
 
@@ -47,8 +49,10 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 The following example makes a list out of a single column:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XPzwrCMAwG8Huh7xB2crCD4v+JJx9DROIWtmKbzrYDFR/eTldNLuGX7/JpCuBb7MjDHmoMcS+aYMJoqAQfnOKmAK9qOtieQwmKQy7FUQqIk8U/cqMpK2BejOZvPbpBFkkcVSHFftgRB2wsR1sma+k+0upPXYqtk9kq0SYRWx5pm6imaqTZVIrTTopvUSle4Htj0KkngXlo5UMsb/BK5+H+dM/ff3I+dBkBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
@@ -77,8 +81,10 @@ shapes
 
 The following example runs a query using the `by` clause:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XQ3YrCMBAF4PtA3uEgCCv0wp/d9Y9eiU/gpYjEdqjBZlqbVFR8eKPbcSc3w5dzc6akAH80NXmkyE2I71ASvtg4WsCHxnKRwNucVlXLYQHLYaDVVivE6cV/w0VJvQSTpDN/bk3zkm+RhrIgsQ/WxMEUFUf7ETvStaPff6olNhWrMqGZEFfc0Vwop6yj0VCr3VKrv6JaPeBb50xj7wR3K60PsbwzJ9q/9nf3AQ43WL++EG+kfAx9DoE+xkhTDJ/VCjwFQQEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
@@ -106,10 +112,12 @@ shapes
 
 ### Packing a dynamic object
 
-The following examples show how to [pack](./packfunction.md) a dynamic object in a column before making it a list.
+The following examples show how to [pack](pack-function.md) a dynamic object in a column before making it a list.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03Pz0rEMBAG8Hsg7zAUhBZ6WP/rSk/iE3gUWabN0A3bTGuTyq748E6ws5ocEn75JvANlCDucaIIDThMstuBoGQMtIWYZs99DdE7eh4XTlvwnCpr3qwBWYW8I/cDFTVc16vFjwXnLDcqM3VJY2eciBP2I4vdqu3puNLdH00au1cbO6UHJR55pUclR91Klxtr3p+s+S1qzTfQMRE7cFK6xX43YXcoi9xZ0vmopYZ2Lv71r/JwXELA2X8RhNPgY5JPAh5ol++lq6A9gY8vn8SvOiaJ8xdwAVfQNLD5ARd0KSV7AQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
@@ -138,4 +146,4 @@ shapes
 
 ## Related content
 
-[`make_list_if`](./make-list-if-aggregation-function.md) operator is similar to `make_list`, except it also accepts a predicate.
+[`make_list_if`](make-list-if-aggregation-function.md) operator is similar to `make_list`, except it also accepts a predicate.

@@ -3,9 +3,12 @@ title:  'Hello Kusto: Create your first app'
 description: Learn how to create your first app to print Hello Kusto using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 11/07/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Hello Kusto: Create your first app
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 In this article, you learn how to:
 
@@ -45,7 +48,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
     ```
 
-    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
+    [!INCLUDE [node-vs-browser-auth](../../includes/node-vs-browser-auth.md)]
 
     <!-- ### [Go](#tab/go) -->
 
@@ -138,7 +141,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
     ```
 
-    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
+    [!INCLUDE [node-vs-browser-auth](../../includes/node-vs-browser-auth.md)]
 
     <!-- ### [Go](#tab/go) -->
 
@@ -378,7 +381,7 @@ async function main()
 main();
 ```
 
-[!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
+[!INCLUDE [node-vs-browser-auth](../../includes/node-vs-browser-auth.md)]
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)

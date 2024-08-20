@@ -3,13 +3,12 @@ title:  Cross-cluster join
 description: Learn how to perform the Cross-cluster join operation to join datasets residing on different clusters.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/03/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Cross-cluster join
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 A cross-cluster join involves joining data from datasets that reside in different clusters.
 
@@ -31,7 +30,7 @@ The cluster that runs the query fetches the data from the other cluster.
 &emsp;&emsp;[ `cluster(`*ClusterName*`).database(`*DatabaseName*`).`]*RightTable* `|` ...  
 &emsp;`)` on *Conditions*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -101,11 +100,3 @@ T | ... | join hint.remote=right (cluster("B").database("DB").T2 | ...) on Col1
 
 * [join operator](join-operator.md)
 * [Cross-cluster or cross-database queries](cross-cluster-or-database-queries.md)
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

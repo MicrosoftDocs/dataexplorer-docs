@@ -3,9 +3,11 @@ title:  .alter table policy ingestiontime command
 description: Learn how to use the `.alter table policy ingestiontime` command to turn on or turn off a table's ingestion time policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy ingestiontime command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Turns on or turns off a table's [ingestion time policy](ingestion-time-policy.md). This policy adds a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
 
@@ -19,7 +21,7 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 
 `.alter` `tables` `(`*TableName*`,` ...`)` `policy` `ingestiontime` *Flag*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

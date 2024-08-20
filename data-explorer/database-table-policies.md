@@ -16,7 +16,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* [A test table](./net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
+* [A test table](net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 
 ## Install packages
 
@@ -281,4 +281,4 @@ kustoManagementClient.databases.add_principals(resource_group_name=resource_grou
 
 ## Related content
 
-* [Policies overview](kusto/management/policies.md)
+* [Policies overview](/kusto/management/policies?view=azure-data-explorer&preserve-view=true)

@@ -3,9 +3,11 @@ title:  The case-insensitive =~ (equals) string operator
 description: Learn how to use the =~ (equals) operator to filter a record set for data with a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/11/2022
+ms.date: 08/11/2024
 ---
 # =~ (equals) operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Filters a record set for data with a case-insensitive string.
 
@@ -22,7 +24,7 @@ For more information about other operators and to determine which operator is mo
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 When possible, use [==](equals-cs-operator.md) - a case-sensitive version of the operator.
 
@@ -30,7 +32,7 @@ When possible, use [==](equals-cs-operator.md) - a case-sensitive version of the
 
 *T* `|` `where` *col* `=~` `(`*expression*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -49,8 +51,10 @@ Rows in *T* for which the predicate is `true`.
 The `State` values in the `StormEvents` table are capitalized. The following query matches
 columns with the value "KANSAS".
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsK1TUMpOzCtOLFYCyhQU5WelJpcogJV6puhAFAEAU9ecID4AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

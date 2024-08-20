@@ -3,9 +3,11 @@ title:  hash_many()
 description: Learn how to use the hash_many() function to return a combined hash value of multiple values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/25/2022
+ms.date: 08/11/2024
 ---
 # hash_many()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a combined hash value of multiple values.
 
@@ -13,7 +15,7 @@ Returns a combined hash value of multiple values.
 
 `hash_many(`*s1* `,` *s2* [`,` *s3* ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -32,8 +34,10 @@ The [hash()](hash-function.md) function is applied to each of the specified scal
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShLzClNNVSwVVDySM3JyVfSgYgYgUTC84tyUpS4ahRSK0pS81IUkvNzkzLzUlOAchmJxRnxuYl5lRoQA2DaNAGiXIb7VgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print value1 = "Hello", value2 = "World"

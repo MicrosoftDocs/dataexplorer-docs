@@ -3,9 +3,12 @@ title: .alter database policy streamingingestion command
 description: Learn how to use the `.alter database policy streamingingestion` command to change the database streaming ingestion policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
-# .alter database  policy streamingingestion command
+# .alter database policy streamingingestion command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Changes the database streaming ingestion policy. The [streaming policy](../management/streaming-ingestion-policy.md) manages streaming ingestion of data into databases and tables.
 
@@ -13,17 +16,18 @@ Streaming ingestion is best suited for low latency scenarios where the ingestion
 
 However, when the amount of data grows beyond 4 Gb per hour per table, it's recommended to switch to classic bulk ingestion instead of streaming ingestion.
 
-To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md). Streaming ingestion must be enabled at the cluster level before it can be used at the database level.
+To learn how to implement streaming ingestion, see [streaming ingestion](/azure/data-explorer/ingest-data-streaming).
+Streaming ingestion must be enabled at the cluster level before it can be used at the database level.
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `database` *DatabaseName* `policy` `streamingingestion` *PolicyObject*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

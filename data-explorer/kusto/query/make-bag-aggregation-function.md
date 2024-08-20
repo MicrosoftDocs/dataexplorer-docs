@@ -3,21 +3,23 @@ title:  make_bag() (aggregation function)
 description: Learn how to use the make_bag() aggregation function to create a dynamic JSON property bag.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # make_bag() (aggregation function)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Creates a `dynamic` JSON property bag (dictionary) of all the values of *expr* in the group.
 
-[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
+[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Syntax
 
  `make_bag` `(`*expr* [`,` *maxSize*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -38,8 +40,10 @@ If a key appears in more than one row, an arbitrary value, out of the possible v
 
 The following example shows a packed JSON property bag.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNzQrDIAyA7z5F8FTBw35uG32L3saQqKFItRNrxyh9+GWjhS055csHX6QKHbTgsfLaSE0uj3yZagljr+GJcabtUuImgEd+jMNRapD8Nij1Dz7t2P7h844d4/tVdGIFelUaPWSuW+xNRjd841tVsTLNKWEJC4EPrrYJBzLsNlm9AS6AdnS4AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let T = datatable(prop:string, value:string)
@@ -61,8 +65,10 @@ T
 
 Use the [bag_unpack()](bag-unpack-plugin.md) plugin for transforming the bag keys in the make_bag() output into columns.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNvQrDMAyEdz+F8BSDh/5sLXmLbKUYOREhxHZNYpdS+vCVTQKttJy+O3GOEnTQwoCJ1zpq4vKIlzUtUxg1PNFl2i4lbgJ4ZEkcjlKDZNug1D/4tGP7h8877hnfr6ITH6BXojBA5HaLo4nYz7V8a1UcWbP3uExvKonW40yGRROLRyWFqVomh/rOUn0B38wbbdIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let T = datatable(prop:string, value:string)

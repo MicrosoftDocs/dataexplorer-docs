@@ -3,9 +3,11 @@ title:  series_exp()
 description: Learn how to use the series_exp() function to calculate the element-wise base-e exponential function (e^x) of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/11/2024
 ---
 # series_exp()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the element-wise base-e exponential function (e^x) of the numeric series input.
 
@@ -13,7 +15,7 @@ Calculates the element-wise base-e exponential function (e^x) of the numeric ser
 
 `series_exp(`*series*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,8 +29,10 @@ Dynamic array of calculated exponential function. Any non-numeric element yields
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShWsFVIqcxLzM1M1og21DHSMY7V5KpRSK0oSc1LUSiOT60oAKooTi3KTAVzNIo1ASk3NNg5AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s = dynamic([1,2,3])

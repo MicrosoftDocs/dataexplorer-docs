@@ -8,14 +8,14 @@ ms.date: 04/20/2023
 
 # Authenticate external tables with managed identities
 
-An [external table](kusto/query/schema-entities/external-tables.md) is a schema entity that references data stored outside the Azure Data Explorer database. External tables can be defined to reference data in Azure Storage or SQL Server and support various authentication methods.
+An [external table](/kusto/query/schema-entities/external-tables?view=azure-data-explorer&preserve-view=true) is a schema entity that references data stored outside the Azure Data Explorer database. External tables can be defined to reference data in Azure Storage or SQL Server and support various authentication methods.
 
 In this article, you learn how to create an external table that authenticates with a [managed identity](managed-identities-overview.md).
 
 ## Prerequisites
 
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* [Database Admin](kusto/access-control/role-based-access-control.md) permissions on the Azure Data Explorer database.
+* [Database Admin](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) permissions on the Azure Data Explorer database.
 
 ## 1 - Configure a managed identity for use with external tables
 
@@ -31,7 +31,7 @@ Select one of the following tabs to set up the preferred managed identity type.
 
 1. Follow the steps to [Add a user-assigned identity](configure-managed-identities-cluster.md#add-a-user-assigned-identity) to your cluster, and save the **Object (principal) ID** for later use.
 
-1. Run the [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables. Replace `<objectId>` with the **Object (principal) ID**.
+1. Run the [.alter-merge policy managed_identity](/kusto/management/alter-merge-managed-identity-policy-command?view=azure-data-explorer&preserve-view=true) command. This command sets a [managed identity policy](/kusto/management/managed-identity-policy?view=azure-data-explorer&preserve-view=true) on the cluster that allows the managed identity to be used with external tables. Replace `<objectId>` with the **Object (principal) ID**.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -49,7 +49,7 @@ Select one of the following tabs to set up the preferred managed identity type.
 
 1. Follow the steps to [Add a system-assigned identity](configure-managed-identities-cluster.md#add-a-system-assigned-identity) to your cluster.
 
-1. Run the following [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables.
+1. Run the following [.alter-merge policy managed_identity](/kusto/management/alter-merge-managed-identity-policy-command?view=azure-data-explorer&preserve-view=true) command. This command sets a [managed identity policy](/kusto/management/managed-identity-policy?view=azure-data-explorer&preserve-view=true) on the cluster that allows the managed identity to be used with external tables.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -94,7 +94,7 @@ To learn more, see [Permissions](/azure/cosmos-db/how-to-setup-rbac).
 
 ## 3 - Create an external table
 
-There are two types of external tables that support authentication with managed identities: [Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md) and [SQL Server external tables](kusto/management/external-sql-tables.md).
+There are two types of external tables that support authentication with managed identities: [Azure Storage external tables](/kusto/management/external-tables-azure-storage?view=azure-data-explorer&preserve-view=true) and [SQL Server external tables](/kusto/management/external-sql-tables?view=azure-data-explorer&preserve-view=true).
 
 Select one of the following tabs to set up an Azure Storage or SQL Server external table.
 
@@ -102,9 +102,9 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 To create an Azure Storage external table, do the following steps:
 
-1. Create a connection string based on the [storage connection string templates](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/storage-authentication-methods.md#managed-identity).
+1. Create a connection string based on the [storage connection string templates](/kusto/api/connection-strings/storage-connection-strings?view=azure-data-explorer&preserve-view=true#storage-connection-string-templates). This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](/kusto/api/connection-strings/storage-connection-strings?view=azure-data-explorer&preserve-view=true#managed-identity).
 
-1. Run the [.create or .alter external table](kusto/management/external-sql-tables.md) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
+1. Run the [.create or .alter external table](/kusto/management/external-sql-tables?view=azure-data-explorer&preserve-view=true) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
 #### Example
 
@@ -124,9 +124,9 @@ The following command creates `MyExternalTable` that refers to CSV-formatted dat
 
 To create a SQL Server external table, do the following steps:
 
-1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/sql-authentication-methods.md#managed-identity).
+1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](/kusto/api/connection-strings/sql-connection-strings?view=azure-data-explorer&preserve-view=true#managed-identity).
 
-2. Run the [.create or .alter external table](kusto/management/external-sql-tables.md) command to create the table. Use the connection string as the *SqlConnectionString* argument.
+2. Run the [.create or .alter external table](/kusto/management/external-sql-tables?view=azure-data-explorer&preserve-view=true) command to create the table. Use the connection string as the *SqlConnectionString* argument.
 
 #### Example
 
@@ -146,9 +146,9 @@ The following command creates `MySqlExternalTable` that refers to `MySqlTable` t
 
 To create a Cosmos DB external table, do the following steps:
 
-1. Create a Cosmos DB connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/sql-authentication-methods.md#managed-identity).
+1. Create a Cosmos DB connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](/kusto/api/connection-strings/sql-connection-strings?view=azure-data-explorer&preserve-view=true#managed-identity).
 
-2. Run the [.create or .alter external table](kusto/management/external-sql-tables.md) command to create the table. Use the connection string as the *SqlConnectionString* argument.
+2. Run the [.create or .alter external table](/kusto/management/external-sql-tables?view=azure-data-explorer&preserve-view=true) command to create the table. Use the connection string as the *SqlConnectionString* argument.
 
 #### Example
 
@@ -190,5 +190,5 @@ with
 ## Related content
 
 * [Managed identities overview](managed-identities-overview.md)
-* [Export data to an external table](kusto/management/data-export/export-data-to-an-external-table.md)
-* [Continuous data export](kusto/management/data-export/continuous-data-export.md)
+* [Export data to an external table](/kusto/management/data-export/export-data-to-an-external-table?view=azure-data-explorer&preserve-view=true)
+* [Continuous data export](/kusto/management/data-export/continuous-data-export?view=azure-data-explorer&preserve-view=true)

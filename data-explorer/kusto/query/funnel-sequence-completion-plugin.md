@@ -3,9 +3,11 @@ title:  funnel_sequence_completion plugin
 description: Learn how to use the funnel_sequence_completion plugin to calculate a funnel of completed sequence steps while comparing different time periods.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # funnel_sequence_completion plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Calculates a funnel of completed sequence steps while comparing different time periods. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
@@ -13,7 +15,7 @@ Calculates a funnel of completed sequence steps while comparing different time p
 
 *T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *BinSize*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindows*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -45,8 +47,10 @@ Returns a single table useful for constructing a funnel diagram for the analyzed
 The following query checks the completion funnel of the sequence: `Hail` -> `Tornado` -> `Thunderstorm Wind`
 in "overall" time of 1hour, 4hours, 1day.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WQywrCMBBF937F7FohQusbxKWg6xZciEjojBhIJzVJFcWPNylVFBIIw8nh3tHk4eS8tB7WgNKTVzWl4yxbjLI8nOFqoCNCjAH4I5b/xF0xmnuhnhTAyXyG/dzRtSWu4hQfLGtVpYdkK5VOBCSlsSzRdM9Ly0jWeWNr2AdZcvyoG7LKoPs15BcB03BzjFQRP21uxN4NXkA3qdsQFM4tM+lvglNl6iYIleF00yhnkHYooIjty1BK9JsQXV3xW0lAZy8fTUf1QvGNNnwDOQRUXkgBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let _start = datetime(2007-01-01);

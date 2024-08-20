@@ -18,7 +18,7 @@ To learn how to run queries, see [Quickstart: Query data in the Azure Data Explo
 
 ## Expand a cell
 
-Expand a cell to open a detailed view of the cell content, which is especially helpful for viewing [dynamic](kusto/query/scalar-data-types/dynamic.md) data or long strings. In the detailed view, dynamic data is presented like JSON. To expand a cell, follow these steps:
+Expand a cell to open a detailed view of the cell content, which is especially helpful for viewing [dynamic](/kusto/query/scalar-data-types/dynamic?view=azure-data-explorer&preserve-view=true) data or long strings. In the detailed view, dynamic data is presented like JSON. To expand a cell, follow these steps:
 
 1. Double-click a cell to open the detailed view.
 1. Select the icon on the top right of the result grid to switch reading pane modes. Choose between the following reading pane modes: **Inline**, **Below**, and **Right**.

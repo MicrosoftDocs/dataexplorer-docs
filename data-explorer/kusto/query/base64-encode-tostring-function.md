@@ -1,11 +1,13 @@
 ---
 title:  base64_encode_tostring()
-description: This article describes base64_encode_tostring() in Azure Data Explorer.
+description:  This article describes base64_encode_tostring().
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/22/2019
+ms.date: 08/11/2024
 ---
 # base64_encode_tostring()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Encodes a string as base64 string.
 
@@ -15,7 +17,7 @@ Encodes a string as base64 string.
 
 `base64_encode_tostring(`*string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -29,8 +31,10 @@ Returns *string* encoded as a base64 string.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQgszcxLtU1KLE41M4lPzUvOT0mNL8kvLgFKpmsoeZcWl+QraQIAKEgGNSsAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print Quine=base64_encode_tostring("Kusto")

@@ -1,18 +1,20 @@
 ---
 title:  .show materialized-view schema commands
-description: This article describes show materialized-view schema commands in Azure Data Explorer.
+description:  This article describes show materialized-view schema commands.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 
 # .show materialized-view schema
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Displays the schema of the materialized view in CSL/JSON.
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../../access-control/role-based-access-control.md).
 
 ## Syntax
 
@@ -22,7 +24,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `materialized-view` *MaterializedViewName* `schema` `as` `csl`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

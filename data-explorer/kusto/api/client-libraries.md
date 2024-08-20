@@ -1,14 +1,16 @@
 ---
 title:  Client libraries overview
-description: This article lists the Client libraries in Azure Data Explorer.
+description: This article lists available client libraries
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/26/2023
+ms.date: 08/11/2024
 ---
 # Kusto client libraries
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The following table lists the different libraries provided for query, ingestion, and ARM/RP management.
-Use these libraries for Azure APIs and to programmatically interact with your cluster.
+Use these libraries for Azure APIs and to programmatically interact with your database.
 
 > For previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/kusto/api/client-libraries).
 

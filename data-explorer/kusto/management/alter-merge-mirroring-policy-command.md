@@ -3,14 +3,13 @@ title: .alter-merge table policy mirroring command
 description: Learn how to use the `.alter-merge table policy mirroring` command to create a logical copy of tables of your database.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/23/2024
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric"
 ---
 
 # .alter-merge table policy mirroring command
 
-::: zone pivot="fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)]
 
 Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring policy creates a logical copy of tables in your database in delta parquet format and allows you to partition your files to improve query speed. Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. This means there are more columns in the target than in your source table.
 
@@ -21,7 +20,7 @@ Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring poli
 `dataformat` = `parquet`  
 [`with` (`IsEnabled`=`IsEnabledValue`)]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,7 +29,7 @@ Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring poli
 |*TableName*| string| :heavy_check_mark:|A table name that adheres to the [Entity names](../query/schema-entities/entity-names.md) rules.|
 |*Partitions*| string| | A comma-separated list of columns used to divide the data into smaller partitions. See [Partitions formatting](#partitions-formatting). |
 
-[!INCLUDE [partitions-formatting](../../includes/partitions-formatting.md)]
+[!INCLUDE [partitions-formatting](../includes/partitions-formatting.md)]
 
 > [!NOTE]
 > Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
@@ -60,10 +59,3 @@ In the following example, a table called *myTable* is mirrored. The data is part
 * To check mirroring operations, see [.show table mirroring operations command](show-table-mirroring-operations-command.md).
 * To delete mirroring operations, see [.delete table policy mirroring command](delete-table-mirroring-policy-command.md).
 
-::: zone-end
-
-::: zone pivot="azuredataexplorer, azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

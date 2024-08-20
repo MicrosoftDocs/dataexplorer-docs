@@ -3,9 +3,11 @@ title:  datetime_local_to_utc()
 description: Learn how to use the datetime_local_to_utc() function to convert local datetime to UTC datetime.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 11/28/2022
+ms.date: 08/11/2024
 ---
 # datetime_local_to_utc()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Converts local datetime to UTC datetime using [a time-zone specification](timezone.md).
 
@@ -13,7 +15,7 @@ Converts local datetime to UTC datetime using [a time-zone specification](timezo
 
 `datetime_local_to_utc(`*from*`,`*timezone*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -24,12 +26,14 @@ Converts local datetime to UTC datetime using [a time-zone specification](timezo
 
 ## Returns
 
-A UTC [datetime](./scalar-data-types/datetime.md) that corresponds the local [datetime](./scalar-data-types/datetime.md) in the specified `timezone`.
+A UTC [datetime](scalar-data-types/datetime.md) that corresponds the local [datetime](scalar-data-types/datetime.md) in the specified `timezone`.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42PTQsCIRCG7/6KubmCseJR6BDRPYhOEWI6bYK7hjsLEf34jMBrMS9zmI935gmOalwSdil7l2wgA8ERUhxRAj0NzFTiNAh2avVOK61WSleBVkZpo5WQwI+Hfu98vEbPJTD4Ob8ZsUTv+u2t5iH/t7RbSr5jPVTizM/sBfggnAIs5OvzsG4G9gtE2dZWo/swiTePz2vZ9QAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(local_dt: datetime, tz: string)

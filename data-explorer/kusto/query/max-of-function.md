@@ -3,9 +3,11 @@ title:  max_of()
 description: Learn how to use the max_of() function to return the maximum value of all argument expressions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 08/11/2024
 ---
 # max_of()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns the maximum value of all argument expressions.
 
@@ -13,7 +15,7 @@ Returns the maximum value of all argument expressions.
 
 `max_of(`*arg*`,` *arg_2*`,` [ *arg_3*`,` ... ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -33,8 +35,10 @@ The maximum value of all argument expressions.
 
 ### Find the largest number
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVchNrIjPT9MwNNBRMNRR0DUGUuaaADn0q08kAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result = max_of(10, 1, -3, 17) 
@@ -50,8 +54,10 @@ print result = max_of(10, 1, -3, 17)
 
 Notice that non-null values take precedence over null values.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ1HK4XMvBIdBScwrcnLFc3LpQAEhjoKZjoQpoUOkAdhApVo5JXm5GjqKBjpwBUiRDFUwZm8XLG8XDUKBUX5WanJJQq5iRXx+WkajkCLNQGMk9JIjgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (A: int, B: int)

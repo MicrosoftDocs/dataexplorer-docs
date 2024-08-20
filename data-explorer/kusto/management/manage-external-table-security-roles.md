@@ -2,10 +2,12 @@
 title: Manage external table roles
 description: Learn how to use management commands to view, add, and remove external table admins on an external table level.
 ms.topic: reference
-ms.date: 07/17/2023
+ms.date: 08/11/2024
 ---
 
 # Manage external table roles
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
@@ -15,7 +17,7 @@ In this article, you'll learn how to use management commands to [view existing a
 
 ## Permissions
 
-You must have Database Admin permissions or be an External Table Admin on the specific external table to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have Database Admin permissions or be an External Table Admin on the specific external table to run these commands. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Show existing admins
 
@@ -31,7 +33,7 @@ To show your roles:
 
 `.show` `external table` *ExternalTableName* `principal` `roles`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -61,7 +63,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 *Action* `external table` *ExternalTableName* `admins` `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -69,7 +71,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 |--|--|--|--|
 | *Action* | `string` |  :heavy_check_mark: | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
 | *ExternalTableName* | `string` |  :heavy_check_mark: | The name of the external table for which to add principals.|
-| *Principal* | `string` |  :heavy_check_mark: | One or more principals. For guidance how to specify these principals, see [Referencing security principals](./access-control/referencing-security-principals.md).|
+| *Principal* | `string` |  :heavy_check_mark: | One or more principals. For guidance how to specify these principals, see [Referencing security principals](reference-security-principals.md).|
 | `skip-results` | `string` | | If provided, the command won't return the updated list of external table principals.|
 | *Description* | `string` | | Text to describe the change that will be displayed when using the `.show` command.|
 

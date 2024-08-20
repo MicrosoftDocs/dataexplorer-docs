@@ -3,10 +3,12 @@ title: .show stored_query_results command
 description: Learn how to use the `.show stored_query_result` command to show information on active query results.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
 ---
 
 # .show stored_query_result command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Shows information on active stored query results.
 
@@ -14,11 +16,9 @@ Use `.show` `stored_query_results` to show information about active stored query
 
 Use `.show` `stored_query_results` *storedQueryResultName* to show information on a specific active stored query result in the current database. This command is strongly consistent as opposed to the version above.
 
-Use `.show` `stored_query_result` *storedQueryResultName* `schema` to show the schema of an active stored query result in the current database.
-
 ## Permissions
 
-You must have [Database Viewer](access-control/role-based-access-control.md) permissions to run these commands.
+You must have [Database Viewer](../access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Syntax
 
@@ -28,7 +28,7 @@ You must have [Database Viewer](access-control/role-based-access-control.md) per
 
 `.show` `stored_query_result` *storedQueryResultName* `schema`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -67,7 +67,6 @@ The following example returns information about the stored query result `Events`
 | StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
-
 
 The following example shows the schema of the stored query result `Events`.
 

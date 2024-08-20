@@ -1,15 +1,14 @@
 ---
 title:  Pivot chart visualization
-description: This article describes the pivot chart visualization in Azure Data Explorer.
+description:  This article describes the pivot chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/13/2024
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Pivot chart
 
-::: zone pivot="azuredataexplorer"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Displays a pivot table and chart. You can interactively select data, columns, rows, and various chart types.
 
@@ -22,7 +21,7 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 *T* `|` `render` `pivotchart`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,11 +41,3 @@ SalesFact
 ```
 
 :::image type="content" source="media/visualize-pivotchart/pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="media/visualize-pivotchart/pivotchart.png":::
-
-::: zone-end
-
-::: zone pivot="azuremonitor, fabric"
-
-This visualization isn't supported.
-
-::: zone-end

@@ -3,20 +3,22 @@ title:  isnull()
 description: Learn how to use the isnull() function to check if the argument value is null.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/15/2024
+ms.date: 08/11/2024
 ---
 # isnull()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Evaluates an expression and returns a Boolean result indicating whether the value is null.
 
 > [!NOTE]
-> String values can't be null. Use [isempty](./isempty-function.md) to determine if a value of type `string` is empty or not.
+> String values can't be null. Use [isempty](isempty-function.md) to determine if a value of type `string` is empty or not.
 
 ## Syntax
 
 `isnull(`*Expr*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,8 +44,10 @@ The following table lists return values for different expressions (*x*):
 
 Find the storm events for which there's no begin location.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVyCzOK83J0XBKTc%2FM80ks0VRIzEtBFczP0wSqLijKz0pNLlEILkksKgnJzE3VUXDNS4EyCjKL81NSPVOATJDpIAZQXUkqlB9SWQBkwqyAsfLzAAm1x4OQAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

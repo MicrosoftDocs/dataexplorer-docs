@@ -3,9 +3,11 @@ title:  preview plugin
 description: Learn how to use the preview plugin to return two tables, one with the specified number of rows, and the other with the total number of records. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # preview plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Returns a table with up to the specified number of rows from the input record set, and the total number of records in the input record set.
 
@@ -13,7 +15,7 @@ Returns a table with up to the specified number of rows from the input record se
 
 *T* `|` `evaluate` `preview(`*NumberOfRows*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -38,8 +40,10 @@ The `preview` plugin returns two result tables:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRSC1LzClNLElVKChKLctMLdcw1QQA4xlbCCEAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents | evaluate preview(5)

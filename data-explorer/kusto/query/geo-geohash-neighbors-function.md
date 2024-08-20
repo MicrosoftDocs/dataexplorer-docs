@@ -3,9 +3,11 @@ title:  geo_geohash_neighbors()
 description: Learn how to use the geo_geohash_neighbors() function to calculate geohash neighbors.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_geohash_neighbors()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates Geohash neighbors.
 
@@ -15,7 +17,7 @@ Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).
 
 `geo_geohash_neighbors(`*geohash*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -31,8 +33,10 @@ An array of Geohash neighbors. If the Geohash is invalid, the query produces a n
 
 The following example calculates Geohash neighbors.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUchLzUzPSMovKlawVUhPzY8H4ozE4ox4uLiGenFpXl6luiYAmib90DAAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print neighbors = geo_geohash_neighbors('sunny')
@@ -46,8 +50,10 @@ print neighbors = geo_geohash_neighbors('sunny')
 
 The following example calculates an array of input Geohash with its neighbors.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIT83PSCzOULBVUC8uzcurVLfmKijKzCtRSE7NySkGCicWFSVWxifn5yUnlmgUJCZnx4NFNKAaNXVARsRDefF5qZnpGUn5RcVweU0AMyi9o2YAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let geohash = 'sunny';
@@ -62,8 +68,10 @@ print cells = array_concat(pack_array(geohash), geo_geohash_neighbors(geohash))
 
 The following example calculates Geohash polygons GeoJSON geometry collection.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQwU5EIQxF9/MVhM3wkvELjCsT/QzSwcpjBiiBPiPGj7c8USdxR29vT2+JyMojrdBW9aCObcu5H+8PpYbMymGMTWSoFbp1lB2wKeCudlfMHFxOA2FnZTMGv56ptt/+cvhU6e0O3wvkl0llUtwL0qtpLMv88JRKF3SsCsXuKY/Vt2AmOztmZ4yRtqUENXzgCCn+BFe0MTTJOSG3YCFdGmXxncHbcYnRI4U+Kf2EwFuVpxZXQq5d1P+259l8pBgFGSgPdY4EbFJJEvkSLUsLVv7W/kAZ0g76yaeX5QvXq2jehQEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let geohash = 'sunny';
@@ -82,8 +90,10 @@ print cells = array_concat(pack_array(geohash), geo_geohash_neighbors(geohash))
 
 The following example calculates polygon unions that represent Geohash and its neighbors.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PQQ4CIQxF956C3TCJrlwaz0IQK+AwLYGOEePhhZFJXLhoF7/977cBWLijgRDEWQx5QSzDaReTRxZNzVXWKemiDKHRLKM2k1oV+fWNe2GBVC2ns1MI3roLpbyNx91bzI8DPKPGa2cyCS4R6CYz1yjbdmKiOxgWkUKxhC34l8uk+kSujGbJyzzr5F/QTqz7s55ABZ/rlR3yB9y5C3rCDZn7R7WPH3yyyNkSAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let h3cell = 'sunny';
@@ -102,8 +112,10 @@ print cells = array_concat(pack_array(h3cell), geo_geohash_neighbors(h3cell))
 
 The following example returns true because of the invalid Geohash token input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMK0vMyUxRsFXILM4rzcnRSE/NjwfijMTijPi81Mz0jKT8omIN9UR1TU0AbJVClTIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print invalid = isnull(geo_geohash_neighbors('a'))

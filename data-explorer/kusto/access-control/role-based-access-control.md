@@ -1,15 +1,16 @@
 ---
-title:  Role-based access control in Kusto
-description: This article describes role-based access control in Kusto.
+title:  Role-based access control
+description: This article describes role-based access control.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/30/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Kusto role-based access control
 
-<!-- //TODO: REDIRECT TO KUSTO -->
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Kusto uses a role-based access control (RBAC) model in which [principals](/azure/data-explorer/kusto/management/access-control/referencing-security-principals) get access to resources based on their assigned roles. Roles are defined for a specific cluster, database, table, external table, materialized view, or function. When defined for a cluster, the role applies to all databases in the cluster. When defined for a database, the role applies to all entities in the database.
+Kusto uses a role-based access control (RBAC) model in which [principals](../management/reference-security-principals.md) get access to resources based on their assigned roles. Roles are defined for a specific cluster, database, table, external table, materialized view, or function. When defined for a cluster, the role applies to all databases in the cluster. When defined for a database, the role applies to all entities in the database.
 
 Azure Resource Manager (ARM) roles, such as subscription owner or cluster owner, grant access permissions for resource administration. For data administration, you need the roles described in this document.
 
@@ -26,25 +27,45 @@ The **Dependencies** column lists the minimum roles required to obtain the role 
 
 The **Manage** column offers ways to add or remove role principals.
 
+::: moniker range="azure-data-explorer"
 |Scope|Role|Permissions|Dependencies|Manage|
 |--|--|--|--|--|
-|Cluster|AllDatabasesAdmin |Full permission to all databases in the cluster. May show and alter certain cluster-level policies. Includes all permissions. ||[Azure portal](../../manage-cluster-permissions.md)|
-|Cluster|AllDatabasesViewer |Read all data and metadata of any database in the cluster. ||[Azure portal](../../manage-cluster-permissions.md)|
-|Cluster|AllDatabasesMonitor |Execute `.show` commands in the context of any database in the cluster.||[Azure portal](../../manage-cluster-permissions.md)|
-|Database|Admin|Full permission in the scope of a particular database. Includes all lower level permissions.  ||[Azure portal](../../manage-database-permissions.md) or [management commands](../management/manage-database-security-roles.md)|
-|Database|User|Read all data and metadata of the database. Create tables and functions, and become the admin for those tables and functions.||[Azure portal](../../manage-database-permissions.md) or [management commands](../management/manage-database-security-roles.md)|
-|Database|Viewer |Read all data and metadata, except for tables with the [RestrictedViewAccess policy](../management/show-table-restricted-view-access-policy-command.md) turned on. ||[Azure portal](../../manage-database-permissions.md) or [management commands](../management/manage-database-security-roles.md)|
-|Database|Unrestrictedviewer |Read all data and metadata, including in tables with the [RestrictedViewAccess policy](../management/show-table-restricted-view-access-policy-command.md) turned on. | Database User or Database Viewer |[Azure portal](../../manage-database-permissions.md) or [management commands](../management/manage-database-security-roles.md)|
-|Database|Ingestor |Ingest data to all tables in the database without access to query the data. ||[Azure portal](../../manage-database-permissions.md) or [management commands](../management/manage-database-security-roles.md)|
-|Database|Monitor |Execute `.show` commands in the context of the database and its child entities. ||[Azure portal](../../manage-database-permissions.md) or [management commands](../management/manage-database-security-roles.md)|
+|Cluster|AllDatabasesAdmin |Full permission to all databases in the cluster. May show and alter certain cluster-level policies. Includes all permissions. ||[Azure portal](/azure/data-explorer/manage-cluster-permissions)|
+|Cluster|AllDatabasesViewer |Read all data and metadata of any database in the cluster. ||[Azure portal](/azure/data-explorer/manage-cluster-permissions)|
+|Cluster|AllDatabasesMonitor |Execute `.show` commands in the context of any database in the cluster.||[Azure portal](/azure/data-explorer/manage-cluster-permissions)|
+|Database|Admin|Full permission in the scope of a particular database. Includes all lower level permissions.  ||[Azure portal](/azure/data-explorer/manage-database-permissions) or [management commands](../management/manage-database-security-roles.md)|
+|Database|User|Read all data and metadata of the database. Create tables and functions, and become the admin for those tables and functions.||[Azure portal](/azure/data-explorer/manage-database-permissions) or [management commands](../management/manage-database-security-roles.md)|
+|Database|Viewer |Read all data and metadata, except for tables with the [RestrictedViewAccess policy](../management/show-table-restricted-view-access-policy-command.md) turned on. ||[Azure portal](/azure/data-explorer/manage-database-permissions) or [management commands](../management/manage-database-security-roles.md)|
+|Database|Unrestrictedviewer |Read all data and metadata, including in tables with the [RestrictedViewAccess policy](../management/show-table-restricted-view-access-policy-command.md) turned on. | Database User or Database Viewer |[Azure portal](/azure/data-explorer/manage-database-permissions) or [management commands](../management/manage-database-security-roles.md)|
+|Database|Ingestor |Ingest data to all tables in the database without access to query the data. ||[Azure portal](/azure/data-explorer/manage-database-permissions) or [management commands](../management/manage-database-security-roles.md)|
+|Database|Monitor |Execute `.show` commands in the context of the database and its child entities. ||[Azure portal](/azure/data-explorer/manage-database-permissions) or [management commands](../management/manage-database-security-roles.md)|
 |Table|Admin | Full permission in the scope of a particular table.| Database User |[Management commands](../management/manage-table-security-roles.md)|
 |Table|Ingestor |Ingest data to the table without access to query the data. | Database User or Database Ingestor |[Management commands](../management/manage-table-security-roles.md)|
 |External Table|Admin | Full permission in the scope of a particular external table.| Database User or Database Viewer |[Management commands](../management/manage-external-table-security-roles.md)|
 |Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-materialized-view-security-roles.md)|
 |Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-function-security-roles.md)|
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+|Scope|Role|Permissions|Dependencies|Manage|
+|--|--|--|--|
+|Database|Admin|Full permission in the scope of a particular database. Includes all lower level permissions.  | [Management commands](../management/manage-database-security-roles.md)|
+|Database|User|Read all data and metadata of the database. Create tables and functions, and become the admin for those tables and functions.|[Management commands](../management/manage-database-security-roles.md)|
+|Database|Viewer |Read all data and metadata, except for tables with the [RestrictedViewAccess policy](../management/show-table-restricted-view-access-policy-command.md) turned on. ||[Management commands](../management/manage-database-security-roles.md)|
+|Database|Unrestrictedviewer |Read all data and metadata, including in tables with the [RestrictedViewAccess policy](../management/show-table-restricted-view-access-policy-command.md) turned on. | Database User or Database Viewer |[Management commands](../management/manage-database-security-roles.md)|
+|Database|Ingestor |Ingest data to all tables in the database without access to query the data. ||[Management commands](../management/manage-database-security-roles.md)|
+|Database|Monitor |Execute `.show` commands in the context of the database and its child entities. ||[Management commands](../management/manage-database-security-roles.md)|
+|Table|Admin | Full permission in the scope of a particular table.| Database User |[Management commands](../management/manage-table-security-roles.md)|
+|Table|Ingestor |Ingest data to the table without access to query the data. | Database User or Database Ingestor |[Management commands](../management/manage-table-security-roles.md)|
+|External Table|Admin | Full permission in the scope of a particular external table.| Database User or Database Viewer |[Management commands](../management/manage-external-table-security-roles.md)|
+|Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-materialized-view-security-roles.md)|
+|Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-function-security-roles.md)|
+::: moniker-end
 
 ## Related content
 
-* [Manage cluster permissions](../../manage-cluster-permissions.md)
-* [Allow cross-tenant queries and commands](../../cross-tenant-query-and-commands.md)
 * [Manage view access to tables within the same database](../management/manage-table-view-access.md)
+::: moniker range="azure-data-explorer"
+* [Manage cluster permissions](/azure/data-explorer/manage-cluster-permissions)
+* [Allow cross-tenant queries and commands](/azure/data-explorer/cross-tenant-query-and-commands)
+::: moniker-end

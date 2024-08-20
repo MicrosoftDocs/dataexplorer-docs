@@ -3,17 +3,19 @@ title:  The case-sensitive hassuffix_cs string operator
 description: Learn how to use the hassuffix_cs operator to filter data with a case-sensitive suffix string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # hassuffix_cs operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Filters a record set for data with a case-insensitive ending string. `hassuffix_cs` returns `true` if there is a [term](datatypes-string-operators.md#what-is-a-term) inside the filtered string column ending with the specified string expression.
 
-[!INCLUDE [hassuffix-operator-comparison](../../includes/hassuffix-operator-comparison.md)]
+[!INCLUDE [hassuffix-operator-comparison](../includes/hassuffix-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 > [!NOTE]
 > Text index cannot be fully utilized for this function, therefore the performance of this function is comparable to [endswith_cs](endswith-cs-operator.md) function, though the semantics is different.
@@ -22,7 +24,7 @@ Filters a record set for data with a case-insensitive ending string. `hassuffix_
 
 *T* `|` `where` *column* `hassuffix_cs` `(` *expression* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -38,8 +40,10 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPISOxuLg0LS2zIj65WEHJMVgJLo9kiIKdgpGBgQFQqqAoPys1uQSiWQdZDQCa6WLOjAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

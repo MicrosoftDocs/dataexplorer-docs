@@ -3,9 +3,11 @@ title:  gzip_decompress_from_base64_string()
 description: Learn how to use the gzip_decompress_from_base64_string() function to decode an input string from base64 and perform a gzip-decompression.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # gzip_decompress_from_base64_string()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Decodes the input string from base64 and performs gzip decompression.
 
@@ -13,7 +15,7 @@ Decodes the input string from base64 and performs gzip decompression.
 
 `gzip_decompress_from_base64_string(`*string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -37,8 +39,10 @@ Decodes the input string from base64 and performs gzip decompression.
 
 ### Valid input
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLbZNr8osiE9JTc7PLQByi+PTivJz45MSi1PNTOKLS4DK0jWUPEyKPR2hQL/cNdTRv0zfN8Szys8l1MivKt3U18PNOCrCyyA1IqwgydjRLNc8zcgNrNrWVkkTALBjGHhsAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print res=gzip_decompress_from_base64_string("H4sIAAAAAAAA/wEUAOv/MTIzNDU2Nzg5MHF3ZXJ0eXVpb3A6m7f2FAAAAA==")
@@ -50,8 +54,10 @@ print res=gzip_decompress_from_base64_string("H4sIAAAAAAAA/wEUAOv/MTIzNDU2Nzg5MH
 
 ### Invalid input
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLbZNr8osiE9JTc7PLQByi+PTivJz45MSi1PNTOKLS4DK0jWUKgxAUEkTAPzuZ/E2AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print res=gzip_decompress_from_base64_string("x0x0x0")

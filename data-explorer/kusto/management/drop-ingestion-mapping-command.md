@@ -3,21 +3,23 @@ title: .drop ingestion mapping command
 description: Learn how to use the `.drop ingestion mapping` command to drop the ingestion mapping from a table or a database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 08/11/2024
 ---
 # .drop ingestion mapping command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Drops the ingestion mapping from a database or table.
 
 ## Permissions
 
-The command to drop a database ingestion mapping requires at least [Database Ingestor](access-control/role-based-access-control.md) permissions, and the command to drop a table ingestion mapping requires at least [Table Ingestor](access-control/role-based-access-control.md) permissions.
+The command to drop a database ingestion mapping requires at least [Database Ingestor](../access-control/role-based-access-control.md) permissions, and the command to drop a table ingestion mapping requires at least [Table Ingestor](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
 `.drop` (`table` | `database`) *TableOrDatabaseName* `ingestion` *MappingKind*  `mapping` *MappingName*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

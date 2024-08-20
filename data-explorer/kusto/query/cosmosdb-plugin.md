@@ -3,13 +3,12 @@ title:  cosmosdb_sql_request plugin
 description: Learn how to use the cosmosdb_sql_request plugin to send a SQL query to an Azure Cosmos DB SQL network endpoint to query small datasets.
 ms.reviewer: miwalia
 ms.topic: reference
-ms.date: 06/18/2024
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cosmosdb_sql_request plugin
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL network endpoint and returns the results of the query. This plugin is primarily designed for querying small datasets, for example, enriching data with reference data stored in [Azure Cosmos DB](/azure/cosmos-db/). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
@@ -17,7 +16,7 @@ The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL ne
 
 `evaluate` `cosmosdb_sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)` [`:` *OutputSchema*]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -77,7 +76,6 @@ The following example shows an alter callout policy command for `cosmosdb` *Call
 ```
 
 ## Examples
-
 The following examples use placeholder text, in brackets.
 
 ### Query Azure Cosmos DB with a query-defined output schema
@@ -107,7 +105,7 @@ The following example uses SQL query parameters and queries the data from an alt
 
 ```kusto
 evaluate cosmosdb_sql_request(
-    'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=<MyDatabase>;Collection=<MyCollection>;AccountKey='h'<AccountKey>',
+   'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=<MyDatabase>;Collection=<MyCollection>;AccountKey='h'<AccountKey>',
     "SELECT c.id, c.lastName, @param0 as Column0 FROM c WHERE c.dob >= '1970-01-01T00:00:00Z'",
     dynamic({'@param0': datetime(2019-04-16 16:47:26.7423305)}),
     dynamic({'preferredLocations': ['East US']})) : (Id:long, Name:string, Column0: datetime) 
@@ -151,11 +149,3 @@ evaluate cosmosdb_sql_request(
     dynamic({'armResourceId': '/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<DatabaseAccount>'})
 ) : (Id:long, Name:string, City:string)
 ```
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

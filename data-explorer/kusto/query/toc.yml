@@ -1,42 +1,12 @@
 items:
-  - name: Kusto Query Language overview
-    href: index.md
   - name: Syntax conventions
     href: syntax-conventions.md
-  - name: Kusto Query Language learning resources
-    href: ../../kql-learning-resources.md
   - name: Add a comment in KQL
     href: comment.md
-  - name: Get started with KQL
-    items:
-      - name: Quick reference guide
-        href: kql-quick-reference.md
-      - name: 1 - Learn common operators
-        href: tutorials/learn-common-operators.md
-      - name: 2 - Use aggregation functions
-        href: tutorials/use-aggregation-functions.md
-      - name: 3 - Join data from multiple tables
-        href: tutorials/join-data-from-multiple-tables.md
-      - name: 4 - Create geospatial visualizations
-        href: tutorials/create-geospatial-visualizations.md
-      - name: Train me
-        items:
-          - name: "Introduction to Azure Data Explorer"
-            href: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
-          - name: "Write your first query with Kusto Query Language"
-            href: /training/modules/write-first-query-kusto-query-language/
-          - name: "Gain insights from your data by using Kusto Query Language"
-            href: /training/modules/gain-insights-data-kusto-query-language/
-          - name: "Multi-table queries using Kusto Query Language"
-            href: /training/modules/multi-table-queries-with-kusto-query-language/
-          - name: "Characterize an unfamiliar dataset with Azure Data Explorer"
-            href: /training/modules/characterize-data-azure-data-explorer/
-          - name: "Create dashboards in Azure Data Explorer"
-            href: /training/modules/create-dashboards-azure-data-explorer/
-          - name: "Learning path: Data analysis in Azure Data Explorer with Kusto Query Language"
-            href: /training/paths/data-analysis-data-explorer-kusto-query-language/
-          - name: "Learning path: Create queries for Microsoft Sentinel using Kusto Query Language"
-            href: /training/paths/sc-200-utilize-kql-for-azure-sentinel/
+  - name: Query data using T-SQL
+    href: t-sql.md
+  - name: Set timeout limits
+    href: ../set-timeout-limits.md
   - name: Best practices for KQL queries
     items:
       - name: Best practices for KQL queries
@@ -44,9 +14,6 @@ items:
       - name: Optimize queries that use named expressions
         displayName: let statement, user defined functions, as operator, calculated
         href: named-expressions.md
-  - name: Cross-cluster and cross-database queries
-    href: cross-cluster-or-database-queries.md
-    displayName: cross cluster, cross database, schema change, schemas, partial query failure
   - name: Entities
     items:
       - name: Entity types
@@ -108,6 +75,8 @@ items:
       - name: User-defined functions
         displayName: Kusto view, views, Kusto function
         href: functions/user-defined-functions.md
+      - name: Functions library
+        href: ../functions-library/toc.yml
   - name: Query statements
     items:
       - name: Query statement types
@@ -200,9 +169,6 @@ items:
       - name: mv-expand operator
         href: mv-expand-operator.md
         displayName: mv expand mv_expand
-      - name: sort operator
-        displayName: order operator
-        href: sort-operator.md
       - name: project operator
         href: project-operator.md
       - name: project-away operator
@@ -297,6 +263,9 @@ items:
       - name: shuffle query
         displayName: hint.shufflekey, hint.strategy, shufflekey, hint, strategy
         href: shuffle-query.md
+      - name: sort operator
+        displayName: order operator
+        href: sort-operator.md
       - name: summarize operator
         items:
           - name: summarize operator overview
@@ -321,6 +290,9 @@ items:
         href: where-operator.md
   - name: Special functions
     items:
+      - name: Cross-cluster and cross-database queries
+        href: cross-cluster-or-database-queries.md
+        displayName: cross cluster, cross database, schema change, schemas, partial query failure
       - name: cluster()
         href: cluster-function.md
       - name: database()
@@ -1284,6 +1256,12 @@ items:
         href: variancep-aggregation-function.md
   - name: Graph operators
     items:
+      - name: Graph overview
+        href: graph-overview.md
+      - name: Graph best practices
+        href: graph-best-practices.md
+      - name: Graph scenarios
+        href: graph-scenarios.md
       - name: Graph operators overview
         href: graph-operators.md
       - name: make-graph
@@ -1665,7 +1643,7 @@ items:
   - name: Limits and Errors
     items:
       - name: Query consistency
-        href: ../concepts/queryconsistency.md
+        href: ../concepts/query-consistency.md
       - name: Query limits
         href: ../concepts/query-limits.md
       - name: Partial query failures
@@ -1677,11 +1655,11 @@ items:
             href: ../concepts/runaway-queries.md
           - name: Overflows
             href: ../concepts/overflow.md
-  - name: Reference material for Kusto Query Language
+  - name: Reference
     items:
-      - name: Regex syntax
-        href: regex.md
-        displayName: regex, regular expressions
+      - name: RE2 syntax
+        href: re2.md
+        displayName: RE2 library, regex, regular expressions
       - name: JSONPath syntax
         href: jsonpath.md
       - name: SQL to Kusto cheat sheet
@@ -1691,24 +1669,5 @@ items:
         href: splunk-cheat-sheet.md
       - name: Timezones
         href: timezone.md
-  - name: Query tools
-    items:
-      - name: Kusto.Explorer
-        items:
-          - name: Kusto.Explorer installation and user interface
-            href: ../tools/kusto-explorer.md
-          - name: Using Kusto.Explorer
-            href: ../tools/kusto-explorer-using.md
-          - name: Kusto.Explorer options
-            href: ../tools/kusto-explorer-options.md
-          - name: Keyboard shortcuts
-            href: ../tools/kusto-explorer-shortcuts.md
-          - name: Kusto.Explorer code features
-            displayName: Code Refactoring, Code Navigation, Code Analyzer
-            href: ../tools/kusto-explorer-code-features.md
-          - name: Troubleshooting Kusto.Explorer
-            href: ../tools/kusto-explorer-troubleshooting.md
-      - name: Kusto.Cli
-        href: ../tools/kusto-cli.md
-      - name: Kusto extension for Azure Data Studio >>
-        href: /sql/azure-data-studio/extensions/kusto-extension
+      - name: KQL docs navigation
+        href: ../docs-navigation.md

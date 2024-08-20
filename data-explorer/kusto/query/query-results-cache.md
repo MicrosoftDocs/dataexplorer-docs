@@ -3,9 +3,11 @@ title:  Query results cache
 description: Learn how to use the query results cache functionality to get cached results.
 ms.reviewer: amitof
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # Query results cache
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Kusto includes a query results cache. You can choose to get cached results when issuing a query. You'll experience better query performance and lower resource consumption if your query's results can be returned by the cache. However, this performance comes at the expense of some "staleness" in the results.
 
@@ -31,9 +33,9 @@ The query results cache returns results only for queries that are considered "id
 * The two queries have the same representation (as UTF-8 strings).
 * The two queries are made to the same database.
 * The two queries share the same [client request properties](../api/netfx/client-request-properties.md). The following properties are ignored for caching purposes:
-  * [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id)
-  * [Application](../api/netfx/request-properties.md#application-x-ms-app)
-  * [User](../api/netfx/request-properties.md#user-x-ms-user)
+  * ClientRequestId
+  * Application
+  * User
 
 ### Incompatible queries
 
@@ -63,12 +65,12 @@ Cached query results will have another row appended to that table:
 
 * The row's `Key` column will contain the string `ServerCache`
 * The row's `Value` column will contain a property bag with two fields:
-  * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id).
+  * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/client-request-properties.md#named-properties).
   * `OriginalStartedOn` - Specifies the original request's execution start time.
 
 ## Distribution
 
-The cache isn't shared by cluster nodes. Every node has a dedicated cache in its own private storage. If two identical queries land on different nodes, the query will be executed and cached on both nodes. This process can happen if [weak consistency](../concepts/queryconsistency.md) is used. By setting query consistency to `affinitizedweakconsistency`, you can have weakly consistency queries that are identical land on the same query head, and thus increase the cache hit rate.
+The cache isn't shared by cluster nodes. Every node has a dedicated cache in its own private storage. If two identical queries land on different nodes, the query will be executed and cached on both nodes. This process can happen if [weak consistency](../concepts/query-consistency.md) is used. By setting query consistency to `affinitizedweakconsistency`, you can have weakly consistency queries that are identical land on the same query head, and thus increase the cache hit rate.
 
 ## Management
 
@@ -76,7 +78,7 @@ The following management and observability commands are supported:
 
 * [Show query results cache](../management/show-query-results-cache-command.md): Returns statistics related to the query results cache.
 * [Clear query results cache](../management/clear-query-results-cache-command.md): Clears query results cache.
-* Refresh query cache entry: a specific query cache entry can be refreshed using `query_results_cache_force_refresh` (OptionQueryResultsCacheForceRefresh)[client request property](../api/netfx/request-properties.md). When set to `true`, this command will force query results cache to be refreshed also when an existing cache is present. This process is useful in scenarios that require queries results to be available for querying. This property must be used in combination with 'query_results_cache_max_age', and sent via ClientRequestProperties object. The property can't be part of a 'set' statement.
+* Refresh query cache entry: a specific query cache entry can be refreshed using `query_results_cache_force_refresh` (OptionQueryResultsCacheForceRefresh)[client request property](../api/rest/request-properties.md). When set to `true`, this command will force query results cache to be refreshed also when an existing cache is present. This process is useful in scenarios that require queries results to be available for querying. This property must be used in combination with 'query_results_cache_max_age', and sent via ClientRequestProperties object. The property can't be part of a 'set' statement.
 
 ## Capacity
 
@@ -85,8 +87,9 @@ The eviction policy is LRU.
 
 ## Shard level query results cache
 
-You can use shard-level query results cache for scenarios that require the most up-to-date results, such as a live dashboard. 
+You can use shard-level query results cache for scenarios that require the most up-to-date results, such as a live dashboard.
 For example, a query that runs every 10 seconds and spans the last 1 hour can benefit from caching intermediate query results at the storage (shard) level.
+
 The shard level query results cache is automatically enabled when the `Query results cache` is in use. Because it shares the same cache as `Query results cache`, the same capacity and eviction policies apply.
 
 ### Syntax
@@ -94,9 +97,9 @@ The shard level query results cache is automatically enabled when the `Query res
 `set` `query_results_cache_per_shard`; *Query*
 
 > [!NOTE]
-> This option can be set in the query text or as a [client request property](../api/netfx/request-properties.md).
+> This option can be set in the query text or as a [client request property](../api/rest/request-properties.md).
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Example
 
