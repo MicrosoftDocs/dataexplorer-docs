@@ -3,17 +3,19 @@ title:  The case-insensitive hassuffix string operator
 description:  Learn how to use the hassuffix operator to filter data with a case-insensitive suffix string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # hassuffix operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Filters a record set for data with a case-insensitive ending string. `hassuffix` returns `true` if there is a [term](datatypes-string-operators.md#what-is-a-term) inside the filtered string column ending with the specified string expression.
 
-[!INCLUDE [hassuffix-operator-comparison](../../includes/hassuffix-operator-comparison.md)]
+[!INCLUDE [hassuffix-operator-comparison](../includes/hassuffix-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 When possible, use the case-sensitive [hassuffix_cs](hassuffix-cs-operator.md).
 
@@ -24,7 +26,7 @@ When possible, use the case-sensitive [hassuffix_cs](hassuffix-cs-operator.md).
 
 *T* `|` `where` *Column* `hassuffix` `(`*Expression*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,8 +42,10 @@ Rows in *T* for which the predicate is `true`.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPISOxuLg0LS2zQkEpXwkoV1CUn5WaXAKR1UE2CQBH0LHRbQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

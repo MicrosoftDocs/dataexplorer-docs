@@ -3,26 +3,33 @@ title:  count_distinctif() (aggregation function) - (preview)
 description: Learn how to use the count_distinctif() function to count unique values of a scalar expression in records for which the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # count_distinctif() (aggregation function) - (preview)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Conditionally counts unique values specified by the scalar expression per summary group, or the total number of unique values if the summary group is omitted. Only records for which *predicate* evaluates to `true` are counted.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 If you only need an estimation of unique values count, we recommend using the less resource-consuming [dcountif](dcountif-aggregation-function.md) aggregation function.
 
 > [!NOTE]
 >
 > * This function is limited to 100M unique values. An attempt to apply the function on an expression returning too many values will produce a runtime error (HRESULT: 0x80DA0012).
+:::moniker range="azure-data-explorer"
 > * Function performance can be degraded when operating on multiple data sources from different clusters.
+::: moniker-end
+:::moniker range="microsoft-fabric"
+> * Function performance can be degraded when operating on multiple data sources from different Eventhouses.
+::: moniker-end
 
 ## Syntax
 
 `count_distinctif` `(`*expr*`,` *predicate*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,8 +46,12 @@ Integer value indicating the number of unique values of *expr* per summary group
 
 This example shows how many types of death-causing storm events happened in each state. Only storm events with a nonzero count of deaths will be counted.
 
+:::moniker range="azure-data-explorer"
+> * Function performance can be degraded when operating on multiple data sources from different clusters.
+::: moniker-end
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NsQ6CQBAFe79iS4gWNJZQoYk1Wpv1WMMm3h3cvdNA/HgRSi3fzCSvgQ/28BSHuHlTTNZy0Eno4nRIcmTwY7Wl8cnh2mqEOgO9Zws/j73ssloYXaw1iAFtaZ0n1y4gr4qcbiM1YMh88uok/DmgiorZwve0/+Y/wQetTCWoqwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

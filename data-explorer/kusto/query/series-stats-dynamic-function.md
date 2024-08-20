@@ -3,9 +3,11 @@ title:  series_stats_dynamic()
 description: Learn how to use the series_stats_dynamic() function to calculate the statistics for a series in a dynamic object.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_stats_dynamic()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns statistics for a series in a dynamic object.  
 
@@ -13,7 +15,7 @@ Returns statistics for a series in a dynamic object.
 
 `series_stats_dynamic(`*series* [`,` *ignore_nonfinite* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -38,8 +40,10 @@ A dynamic property bag object with the following content:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUaiwTanMS8zNTNaINjLWUTAx01EA0RbmQDaQ0lEAcsxNgYI6CqZAOUMo1xjINwSptYzVVOCqUSgoys9KTS5RKC5JLCm2LU4tykwtjgdz4mHmV2gCANNsjChyAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print x=dynamic([23, 46, 23, 87, 4, 8, 3, 75, 2, 56, 13, 75, 32, 16, 29]) 
@@ -55,8 +59,10 @@ print x=dynamic([23, 46, 23, 87, 4, 8, 3, 75, 2, 56, 13, 75, 32, 16, 29])
 
 The following query creates a series of the average taxi fare per minute, and then calculates statistics on these average fares:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXMMQ6DMAxA0b2n8AgDQw/AKTiAZSVu5SI7UeygInF4Spm+/vJsTxj0lccBSitPzk3YYflnpu09vKgxkpZuMUIxqJLWXjFTcIgyeHCFp4r9iNrKh1PAEhQ+3xb6NZh3I5U03PJ4AhN2sX94AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 nyc_taxi

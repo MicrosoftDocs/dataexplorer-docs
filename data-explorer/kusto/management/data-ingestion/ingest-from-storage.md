@@ -1,11 +1,13 @@
 ---
 title:  Kusto.ingest into command (pull data from storage)
-description: This article describes The .ingest into command (pull data from storage) in Azure Data Explorer.
+description:  This article describes The .ingest into command (pull data from storage).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/26/2024
+ms.date: 08/11/2024
 ---
 # Ingest from storage
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 The `.ingest into` command ingests data into a table by "pulling" the data
 from one or more cloud storage files.
@@ -15,17 +17,17 @@ them, and ingest them together into a single target table.
 Data is appended to the table
 without affecting existing records, and without modifying the table's schema.
 
-[!INCLUDE [direct-ingestion-note](../../../includes/direct-ingestion-note.md)]
+[!INCLUDE [direct-ingestion-note](../../includes/direct-ingestion-note.md)]
 
 ## Permissions
 
-You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.ingest` [`async`] `into` `table` *TableName* *SourceDataLocator* [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -38,7 +40,7 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 > [!NOTE]
 > We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for the *SourceDataLocators*. The service will scrub credentials in internal traces and error messages.
 
-[!INCLUDE [ingestion-properties](../../../includes/ingestion-properties.md)]
+[!INCLUDE [ingestion-properties](../../includes/ingestion-properties.md)]
 
 ## Authentication and authorization
 
@@ -48,11 +50,11 @@ The following table lists the supported authentication methods and the permissio
 
 |Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
 |--|--|--|
-|[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Reader|Reader|
-|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
-|[Microsoft Entra access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
-|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
-|[Managed identity](../../api/connection-strings/storage-authentication-methods.md#managed-identity)|Storage Blob Data Reader|Reader|
+|[Impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation)|Storage Blob Data Reader|Reader|
+|[Shared Access (SAS) token](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
+|[Microsoft Entra access token](../../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)||
+|[Storage account access key](../../api/connection-strings/storage-connection-strings.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
+|[Managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity)|Storage Blob Data Reader|Reader|
 
 ## Returns
 
@@ -76,11 +78,7 @@ with an empty (zero-valued) extent ID.
 
 ### Azure Blob Storage with shared access signature
 
-The following example instructs your cluster to read two blobs from Azure Blob Storage
-as CSV files, and ingest their contents into table `T`. The `...` represents
-an Azure Storage shared access signature (SAS) which gives read access to each
-blob. Note also the use of obfuscated strings (the `h` in front of the string
-values) to ensure that the SAS is never recorded.
+The following example instructs your database to read two blobs from Azure Blob Storage as CSV files, and ingest their contents into table `T`. The `...` represents an Azure Storage shared access signature (SAS) which gives read access to each blob. Note also the use of obfuscated strings (the `h` in front of the string values) to ensure that the SAS is never recorded.
 
 ```kusto
 .ingest into table T (
@@ -91,7 +89,7 @@ values) to ensure that the SAS is never recorded.
 
 ### Azure Blob Storage with managed identity
 
-The following example shows how to read a CSV file from Azure Blob Storage and ingest its contents into table `T` using managed identity authentication. For additional information on managed identity authentication method, see [Managed Identity Authentication Overview](../../api/connection-strings/storage-authentication-methods.md#managed-identity).
+The following example shows how to read a CSV file from Azure Blob Storage and ingest its contents into table `T` using managed identity authentication. For additional information on managed identity authentication method, see [Managed Identity Authentication Overview](../../api/connection-strings/storage-connection-strings.md#managed-identity).
 
 ```kusto
 .ingest into table T ('https://StorageAccount.blob.core.windows.net/Container/file.csv;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e')

@@ -3,9 +3,11 @@ title:  atan2()
 description: Learn how to use the atan2() function to calculate an angle in radians between axes.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 08/11/2024
 ---
 # atan2()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x).
 
@@ -13,7 +15,7 @@ Calculates the angle, in radians, between the positive x-axis and the ray from t
 
 `atan2(`*y*`,`*x*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,8 +32,10 @@ Returns the angle in radians between the positive x-axis and the ray from the or
 
 The following example returns the angle measurements in radians.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAysoyswrUUgsScwzijdQsIWwNAx1DDUV9PUVAjIV9BVMFIoSUzIT84oVNExMFVJS04tSU4s1uWoUUitKUvNSoJoN4ZoNdHThuuE6DS0McGo1gmvVNdQxAGvVhVhthDBA1xJhAAA4Vl3utQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print atan2_0 = atan2(1,1) // Pi / 4 radians (45 degrees)

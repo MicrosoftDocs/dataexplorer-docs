@@ -3,9 +3,11 @@ title:  The case-sensitive !hasprefix_cs string operator
 description: Learn how to use the !hasprefix_cs string operator to filter records for data that doesn't have a case-sensitive prefix.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # !hasprefix_cs operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Filters a record set for data that doesn't have a case-sensitive starting string. `!hasprefix_cs` searches for indexed terms, where an indexed [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
@@ -26,13 +28,13 @@ For more information about other operators and to determine which operator is mo
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 ## Syntax
 
 *T* `|` `where` *column* `!hasprefix_cs` `(`*expression*`)`  
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -48,8 +50,10 @@ Rows in *T* for which the predicate is `true`.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPQTEjsbigKDUtsyI+uVhBKUAJKA/WAgDAMC2uXAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

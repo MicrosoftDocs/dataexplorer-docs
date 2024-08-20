@@ -3,10 +3,12 @@ title:  materialized_view()
 description: Learn how to use the materialized_view() function to reference the materialized part of a materialized view.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 08/11/2024
 ---
 
 # materialized_view()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 References the materialized part of a [materialized view](../management/materialized-views/materialized-view-overview.md).
 
@@ -16,7 +18,7 @@ The `materialized_view()` function supports a way of querying the *materialized*
 
 `materialized_view(`*ViewName*`,` [ *max_age* ] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

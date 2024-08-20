@@ -3,9 +3,11 @@ title:  pack_all()
 description: Learn how to use the pack_all() function to create a dynamic object from all the columns of the tabular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # pack_all()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from all the columns of the tabular expression.
 
@@ -16,7 +18,7 @@ Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from all t
 
 `pack_all(`[ *ignore_null_empty* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -35,8 +37,10 @@ The following query will use `pack_all()` to create columns for the below table.
 |555-555-1313 | | 42
 | |555-555-3456 | 74
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32PsQrCMBCG9zxFtrRwgm2SCgWn4uAigm4ikrZHFNOkpCko+PCmIFgXOY6f+/j+4VoV4tQGk4MbfYO7savRl0PwN6vhqLzG8Muqq/JD5UYbSuOsTsmJMCnlYtos54LB7MxyBqKAfwZnIJdzg0+IxV4OlLCZzIUsGKwEJWfyovgIaFu6V80d23Uf46KMSVL4oK22zsd/jNl0fXh+jeBHTN/V81O7+AAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(SourceNumber:string,TargetNumber:string,CharsCount:long)

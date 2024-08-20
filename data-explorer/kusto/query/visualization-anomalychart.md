@@ -1,17 +1,16 @@
 ---
 title:  Anomaly chart visualization
-description: This article describes the anomaly chart visualization in Azure Data Explorer.
+description:  This article describes the anomaly chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/29/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Anomaly chart
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-The anomaly chart visualization is similar to a [timechart](visualization-timechart.md), but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using the [series_decompose_anomalies](./series-decompose-anomalies-function.md) function.  
+The anomaly chart visualization is similar to a [timechart](visualization-timechart.md), but highlights anomalies using the [series_decompose_anomalies](series-decompose-anomalies-function.md) function.  
 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](render-operator.md).
@@ -20,7 +19,7 @@ The anomaly chart visualization is similar to a [timechart](visualization-timech
 
 *T* `|` `render` `anomalychart` [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -62,8 +61,10 @@ This visualization supports splitting into multiple y-axis values. The supported
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WR3W7CMAyF73mKI25KpRbaTmjSUJ8CpF1WoXVptPxUifmb9vBLoGO7GFeR7ePv2I4ihpamYdToBBNLTYuqKF/zosyLdbqZqagQl/8UVV68oKreimLSdVFUDZtZR9o2WnxQ48lJ8tXsCzHM7yHMUdfidFiEN4U12AXoloUe0Turp4nYTsaeaYzs/RVedgis80CObkFdI9ltywTAagV4UtQyRKiZgyLEaTGZ9taFQqtIGHI4SX8USn4KltYEJF2YTIeFMFaHPPkMvrWOMuxFoEpDaVjujmo6aq0erafmIY+7ZCiX6wx5mSGJHb3kJA1sF8jB8q69toNwjLPkYfGTseqoja//eLNkRXXyTnuIcVyCneh72cL2YQdtDQ8ZHvIkDcsfPWH+3AvPvObx0FMXD/RLhfDYW9VhtNKwj/8U69M1b2S//AbRUQMWQQIAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let min_t = datetime(2017-01-05);
@@ -77,11 +78,3 @@ demo_make_series2
 ```
 
 :::image type="content" source="media/visualization-anomalychart/anomaly-chart.png" alt-text="Screenshot of anomaly chart output." lightbox="media/visualization-anomalychart/anomaly-chart.png":::
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This visualization isn't supported in Azure Monitor.
-
-::: zone-end

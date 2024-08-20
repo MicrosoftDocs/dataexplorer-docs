@@ -22,8 +22,8 @@ For general information about ingesting into Azure Data Explorer from IoT Hub, s
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
-* An [ingestion mapping](kusto/management/mappings.md) for the table.
+* A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
+* An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.
 * An [IoT Hub](/azure/iot-hub/iot-hub-create-through-portal) with data for ingestion.
 
 ## Create an IoT Hub data connection
@@ -49,7 +49,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
     | IoT Hub | IoT Hub name |
     | Shared access policy | The name of the shared access policy. Must have read permissions |
     | Consumer group |  The consumer group defined in the IoT Hub built-in endpoint |
-    | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties.|
+    | Event system properties | The [IoT Hub event system properties](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). When adding system properties, [create](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or [update](/kusto/management/alter-table-command?view=azure-data-explorer&preserve-view=true) table schema and [mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) to include the selected properties.|
 
     :::image type="content" source="media/ingest-data-iot-hub/create-data-connection.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the Data connection form.":::
 
@@ -68,7 +68,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
     |---|---|---|
     | Table name | *TestTable* | The table you created in **testdb**. |
     | Data format | *JSON* | Supported formats are AVRO, CSV, JSON, ORC, PARQUET, PSV, SCSV, SOHSV, TSV, TXT, TSVE, APACHE AVRO, and W3CLOG.|
-    | Mapping | *TestMapping* | The [mapping](kusto/management/mappings.md) you created in **testdb**, which maps incoming data to the column names and data types of **testdb**. If not specified, an [identity data mapping](kusto/management/mappings.md#identity-mapping) derived from the table's schema is used. |
+    | Mapping | *TestMapping* | The [mapping](/kusto/management/mappings) you created in **testdb**, which maps incoming data to the column names and data types of **testdb**. If not specified, an [identity data mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true#identity-mapping) derived from the table's schema is used. |
     | | |
 
     :::image type="content" source="media/ingest-data-iot-hub/table-routing-settings.png" alt-text="Screenshot of the Azure Data Explorer Web UI, showing the default routing settings in the Target table form.":::

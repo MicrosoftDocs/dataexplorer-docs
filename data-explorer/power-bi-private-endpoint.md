@@ -16,7 +16,7 @@ A private endpoint is a network interface that uses private IP addresses from yo
 
 * A Microsoft account or a Microsoft Entra ID. An Azure subscription isn't required.
 * An Azure Data Explorer cluster behind a private endpoint. For more information, see [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md).
-* You must have [AllDatabasesViewer](kusto/access-control/role-based-access-control.md) permissions.
+* You must have [AllDatabasesViewer](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) permissions.
 * A data gateway installed on a virtual machine in the private endpoint. For more information, see [Install a data gateway](/data-integration/gateway/service-gateway-install).
 * Verify that the virtual machine where the data gateway is installed can access the data on the target cluster. For more information, see [Add a cluster connection](add-cluster-connection.md).
 * A [Power BI report](power-bi-data-connector.md?tabs=connector).
@@ -26,7 +26,7 @@ A private endpoint is a network interface that uses private IP addresses from yo
 You need to create a gateway connection and add a data source that can be used with that gateway. In this example, you bridge between your data gateway and a Power BI service by using an Azure Data Explorer cluster as the data source.
 
 1. Launch a Power BI service.
-1. In the upper-right corner of the Power BI service, select the gear icon ![Settings gear icon.](./media/power-bi-private-endpoint/settings.png), and then **Manage connections and gateways**.
+1. In the upper-right corner of the Power BI service, select the gear icon ![Settings gear icon.](media/power-bi-private-endpoint/settings.png), and then **Manage connections and gateways**.
 
     :::image type="content" source="media/power-bi-private-endpoint/manage-connections-gateways.png" alt-text="Screenshot of the Settings pane in the Power BI service. The option titled Manage connections and gateways is highlighted.":::
 

@@ -2,21 +2,23 @@
 title: Manage database security roles
 description: Learn how to use management commands to view, add, and remove security roles on a database level.
 ms.topic: reference
-ms.date: 05/28/2023
+ms.date: 08/11/2024
 ---
 
 # Manage database security roles
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
-In this article, you'll learn how to use management commands to [view existing security roles](#show-existing-security-roles) as well as [add and remove security roles](#add-and-drop-security-roles) on the database level.
-
-> [!NOTE]
-> To delete a database, you need at least **Contributor** Azure Resource Manager (ARM) permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
+In this article, you'll learn how to use management commands to [view existing security roles](#show-existing-security-roles) and [add and drop principal association to security roles](#add-and-drop-principal-association-to-security-roles) on the database level.
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run these commands.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run these commands.
+
+> [!NOTE]
+> To delete a database, you need at least **Contributor** Azure Resource Manager (ARM) permissions. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## Database level security roles
 
@@ -27,7 +29,7 @@ The following table shows the possible security roles on the database level and 
 |`admins` | View and modify the database and database entities.|
 |`users` | View the database and create new database entities.|
 |`viewers` | View tables in the database where [RestrictedViewAccess](restricted-view-access-policy.md) isn't turned on.|
-|`unrestrictedviewers`| View the tables in the database even where [RestrictedViewAccess](restricted-view-access-policy.md) is turned on. The principal must also have `admins`, `viewers` or `users` permissions. |
+|`unrestrictedviewers`| View the tables in the database even where [RestrictedViewAccess](restricted-view-access-policy.md) is turned on. The principal must also have `admins`, `viewers`, or `users` permissions. |
 |`ingestors` | Ingest data to the database without access to query. |
 |`monitors` | View database metadata such as schemas, operations, and permissions.|
 
@@ -48,7 +50,7 @@ To show your roles:
 
 `.show` `database` *DatabaseName* `principal` `roles`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -70,26 +72,41 @@ The following command lists all security principals that have access to the `Sam
 |---|---|---|---|---|
 |Database Samples Admin |Microsoft Entra user |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
 
-## Add and drop security roles
+## Add and drop principal association to security roles
 
-This section provides syntax, parameters, and examples for adding and removing principals.
+This section provides syntax, parameters, and examples for adding and removing principals to and from security roles.
 
 ### Syntax
 
 *Action* `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
+::: moniker range="azure-data-explorer"
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *Action* | `string` |  :heavy_check_mark: | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
+| *Action* | `string` |  :heavy_check_mark: | The command `.add`, `.drop`, or `.set`.</br>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
+| *DatabaseName* | `string` |  :heavy_check_mark: | The name of the database for which to add principals.|
+| *Role* | `string` |  :heavy_check_mark: | The role to assign to the principal. For databases, roles can be `admins`, `users`, `viewers`, `unrestrictedviewers`, `ingestors`, or `monitors`.|
+| *Principal* | `string` |  :heavy_check_mark: | One or more principals or managed identities. To reference managed identities, use the "App" format using the managed identity object ID or managed identity client (application) ID. For guidance on how to specify these principals, see [Referencing Microsoft Entra principals and groups](reference-security-principals.md#referencing-microsoft-entra-principals-and-groups).|
+| `skip-results` | `string` | | If provided, the command won't return the updated list of database principals.|
+| *Description* | `string` | | Text to describe the change that displays when using the `.show` command.|
+
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *Action* | `string` |  :heavy_check_mark: | The command `.add`, `.drop`, or `.set`.</br>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
 | *DatabaseName* | `string` |  :heavy_check_mark: | The name of the database for which to add principals.|
 | *Role* | `string` |  :heavy_check_mark: | The role to assign to the principal. For databases, this can be `admins`, `users`, `viewers`, `unrestrictedviewers`, `ingestors`, or `monitors`.|
-| *Principal* | `string` |  :heavy_check_mark: | One or more principals. For guidance on how to specify these principals, see [Referencing security principals](./access-control/referencing-security-principals.md).|
+| *Principal* | `string` |  :heavy_check_mark: | One or more principals. For guidance on how to specify these principals, see [Referencing Microsoft Entra principals and groups](reference-security-principals.md#referencing-microsoft-entra-principals-and-groups).|
 | `skip-results` | `string` | | If provided, the command won't return the updated list of database principals.|
-| *Description* | `string` | | Text to describe the change that will be displayed when using the `.show` command.|
+| *Description* | `string` | | Text to describe the change that displays when using the `.show` command.|
+
+::: moniker-end
 
 > [!NOTE]
 > The `.set` command with `none` instead of a list of principals will remove all principals of the specified role.

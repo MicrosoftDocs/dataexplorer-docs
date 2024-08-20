@@ -9,7 +9,7 @@ ms.date: 06/04/2024
 
 [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
-The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an event hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Event Hubs connection needs to know [events routing](#events-routing). Data may be embedded with selected properties according to the [event system properties](#event-system-properties-mapping). Create a connection to Event Hubs to [create an event hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
+The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an event hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Event Hubs connection needs to know [events routing](#events-routing). Data may be embedded with selected properties according to the [event system properties](#event-system-properties-mapping). Create a connection to Event Hubs to [create an event hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](create-event-hubs-connection.md?tabs=portalADX), programmatically with [C#](create-event-hubs-connection-sdk.md?tabs=c-sharp) or [Python](create-event-hubs-connection-sdk.md?tabs=python), or with the [Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -19,7 +19,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 Setup of a data connection using managed identity requires the following steps:
   1. [Add a managed identity to your cluster](configure-managed-identities-cluster.md).
   1. Grant permissions to the managed identity on the data source. To fetch data from Azure Event Hubs, the managed identity must have [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions.
-  1. Set a [managed identity policy](kusto/management/managed-identity-policy.md) on the target databases.
+  1. Set a [managed identity policy](/kusto/management/managed-identity-policy?view=azure-data-explorer&preserve-view=true) on the target databases.
   1. Create a data connection using the managed identity authentication to fetch data.
 
     > [!CAUTION]
@@ -53,7 +53,7 @@ Azure Data Explorer supports the following Event Hubs properties:
 
 ## Ingestion properties
 
-Ingestion properties instruct the ingestion process, where to route the data, and how to process it. You can specify [ingestion properties](ingestion-properties.md) of the events ingestion using the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
+Ingestion properties instruct the ingestion process, where to route the data, and how to process it. You can specify [ingestion properties](/kusto/ingestion-properties) of the events ingestion using the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-data-explorer&preserve-view=true#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
 > [!NOTE]
 > Property names are case sensitive.
@@ -63,10 +63,10 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | Database | The case-sensitive name of the target database. By default, data is ingested into the target database associated with the data connection. Use this property to override the default database and send data to a different database. To do so, you must first [set up the connection as a multi-database connection](#route-event-data-to-an-alternate-database). |
 | Table | The case-sensitive name of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
 | Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
-| IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
+| IngestionMappingReference | Name of the existing [ingestion mapping](/kusto/management/create-ingestion-mapping-command?view=azure-data-explorer&preserve-view=true) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
-| Tags | A list of [tags](kusto/management/extent-tags.md) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extent-tags.md) when using tags. |
+| Tags | A list of [tags](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) when using tags. |
 | RawHeaders | Indicates that event source is Kafka and Azure Data Explorer must use byte array deserialization to read other routing properties. Value is ignored. |
 
 > [!NOTE]
@@ -78,7 +78,7 @@ When you create a data connection to your cluster, you can specify the routing f
 
 ### Route event data to an alternate database
 
-Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal [Azure portal](ingest-data-event-hub.md#target-database-multi-database-data-connection), [C#](data-connection-event-hub-csharp.md#add-an-event-hubs-data-connection), [Python](data-connection-event-hub-python.md#add-an-event-hubs-data-connection), or an [ARM template](data-connection-event-hub-resource-manager.md#azure-resource-manager-template-for-adding-an-event-hubs-data-connection). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
+Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal [Azure portal](create-event-hubs-connection.md?tabs=portal), [C#](create-event-hubs-connection-sdk.md?tabs=c-sharp), [Python](create-event-hubs-connection-sdk.md?tabs=python), or an [ARM template](create-event-hubs-connection.md?tabs=arm-template). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
 
 To specify an alternate database, set the *Database* [ingestion property](#ingestion-properties).
 
@@ -134,7 +134,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 ### Schema mapping for Event Hubs Capture Avro files
 
-One way to consume Event Hubs data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](./ingest-data-event-grid-overview.md).
+One way to consume Event Hubs data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](ingest-data-event-grid-overview.md).
 
 The schema of the capture files is different from the schema of the original event sent to Event Hubs. You should design the destination table schema with this difference in mind.
 Specifically, the event payload is represented in the capture file as a byte array, and this array isn't automatically decoded by the Event Grid Azure Data Explorer data connection. For more specific information on the file schema for Event Hubs Avro capture data, see [Exploring captured Avro files in Azure Event Hubs](/azure/event-hubs/explore-captured-avro-files).
@@ -142,7 +142,7 @@ Specifically, the event payload is represented in the capture file as a byte arr
 To correctly decode the event payload:
 
 1. Map the `Body` field of the captured event to a column of type `dynamic` in the destination table.
-1. Apply an [update policy](./kusto/management/update-policy.md) that converts the byte array into a readable string using the [unicode_codepoints_to_string()](./kusto/query/unicode-codepoints-to-string-function.md) function.
+1. Apply an [update policy](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true) that converts the byte array into a readable string using the [unicode_codepoints_to_string()](/kusto/query/unicode-codepoints-to-string-function?view=azure-data-explorer&preserve-view=true) function.
 
 ## Ingest custom properties
 
@@ -192,7 +192,7 @@ If there is no other alternative, consider using [Premium](/azure/event-hubs/eve
 
 ### Create an event hub
 
-If you don't already have one, [Create an event hub](/azure/event-hubs/event-hubs-create). Connecting to event hub can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
+If you don't already have one, [Create an event hub](/azure/event-hubs/event-hubs-create). Connecting to event hub can be managed through the [Azure portal](create-event-hubs-connection.md?tabs=portalADX), programmatically with [C#](create-event-hubs-connection-sdk.md?tabs=c-sharp) or [Python](create-event-hubs-connection-sdk.md?tabs=python), or with the [Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template).
 
 > [!Note]
 >
@@ -202,8 +202,6 @@ If you don't already have one, [Create an event hub](/azure/event-hubs/event-hub
 ### Send events
 
 See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
-
-For an example of how to generate sample data, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md#generate-sample-data)
 
 ## Set up Geo-disaster recovery solution
 
@@ -215,9 +213,9 @@ Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement t
 
 ## Related content
 
-* [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md)
-* [Create an event hub data connection for Azure Data Explorer using C#](data-connection-event-hub-csharp.md)
-* [Create an event hub data connection for Azure Data Explorer using Python](data-connection-event-hub-python.md)
-* [Create an event hub data connection for Azure Data Explorer using Azure Resource Manager template](data-connection-event-hub-resource-manager.md)
+* [Ingest data from event hub into Azure Data Explorer](create-event-hubs-connection.md?tabs=portalADX)
+* [Create an event hub data connection for Azure Data Explorer using C#](create-event-hubs-connection-sdk.md?tabs=c-sharp)
+* [Create an event hub data connection for Azure Data Explorer using Python](create-event-hubs-connection-sdk.md?tabs=python)
+* [Create an event hub data connection for Azure Data Explorer using Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template)
 * [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)
 * [Ingest and query Azure Monitor logs with Azure Data Explorer](ingest-data-no-code.md?tabs=diagnostic-metrics)

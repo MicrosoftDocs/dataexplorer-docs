@@ -3,10 +3,13 @@ title: .drop table extent tags command
 description: Learn how to use the `.drop table extent tags` command to drop extent tags from a specified table in a database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 
 # .drop table extent tags
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Drops specific [extent tags](extent-tags.md) from all or specific extents a table. The command runs in the context of a specific database.
 
@@ -21,7 +24,7 @@ There are two ways to specify which tags should be removed from which extents:
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions for all involved source and destination tables.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions for all involved source and destination tables.
 
 ## Syntax
 
@@ -29,7 +32,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.drop` [`async`] `table` *TableName* `extent` `tags` `with` `(` `extentCreatedOnFrom` `=` *FromDate* `,` `extentCreatedOnTo` `=` *ToDate*`)` `<|` *Query*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -55,8 +58,8 @@ An Operation ID (GUID) is returned.
 
 > [!TIP]
 >
-> * The operation's status can be monitored with the GUID. Use the [`.show operations`](operations.md#show-operations) command.
-> * Use the [`.show operation details`](operations.md#show-operation-details) command to retrieve the results of a successful execution.
+> * The operation's status can be monitored with the GUID. Use the [`.show operations`](show-operations.md) command.
+> * Use the [`.show operation details`](show-operation-details.md) command to retrieve the results of a successful execution.
 
 ## Specify extents with a query
 

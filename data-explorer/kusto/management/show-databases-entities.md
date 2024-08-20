@@ -3,15 +3,17 @@ title: .show databases entities command
 description: Learn how to use the `.show databases entities` command to show databases' entities.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 07/20/2023
+ms.date: 08/11/2024
 ---
 # .show databases entities command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The following command shows databases' entities, such as tables, materialized views, external tables, etc.
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## .show databases entities
 
@@ -28,7 +30,12 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ### Returns
 
+:::moniker range="azure-data-explorer"
 Returns a list of entities of all cluster databases visible to the user. Database entities are: tables, materialized views, external tables, etc.
+::: moniker-end 
+:::moniker range="microsoft-fabric"
+Returns a list of entities of all eventhouse databases visible to the user. Database entities are: tables, materialized views, external tables, etc.
+::: moniker-end 
 
 > [!IMPORTANT]
 > By default, all databases' entites are returned. To make the command execution more optimal, add a `where` condition that filters by specific databases and/or entity types or names (see examples section in this article).

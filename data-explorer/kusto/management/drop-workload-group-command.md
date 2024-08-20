@@ -3,21 +3,28 @@ title: .drop workload_group command
 description: Learn how to use the `.drop workload_group` command to drop a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 08/11/2024
 ---
 # .drop workload_group command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Drop a workload group.
 
 ## Permissions
 
-You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
+
+:::moniker range="microsoft-fabric"
+> [!NOTE]
+> The `admin` role inherits `Cluster AllDatabasesAdmin` permissions.
+::: moniker-end
 
 ## Syntax
 
 `.drop` `workload_group` *WorkloadGroupName*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,7 +34,12 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 ## Returns
 
+:::moniker range="azure-data-explorer"
 The command returns all workload groups in the cluster, after the drop, which is the output of the [`.show workload_group`](show-workload-group-command.md#show-workload_group-command) command.
+::: moniker-end
+:::moniker range="microsoft-fabric"
+The command returns all workload groups in the eventhouse, after the drop, which is the output of the [`.show workload_group`](show-workload-group-command.md#show-workload_group-command) command.
+::: moniker-end
 
 Following is the schema of the output returned:
 

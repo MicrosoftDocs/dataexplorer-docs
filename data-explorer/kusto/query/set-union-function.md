@@ -3,9 +3,11 @@ title:  set_union()
 description: Learn how to use the set_union() function to create a union set of all the  distinct values in all of the array inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 08/11/2024
 ---
 # set_union()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a `dynamic` array of the set of all distinct values that are in any of the arrays - (arr1 ∪ arr2 ∪ ...).
 
@@ -13,7 +15,7 @@ Returns a `dynamic` array of the set of all distinct values that are in any of t
 
 `set_union(`*set1*`,` *set2* [`,` *set3*, ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -29,8 +31,10 @@ Returns a dynamic array of the set of all distinct values that are in any of arr
 
 ### Set from multiple dynamic array
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13MMQ7CMAyF4Z1TvLFBXprMPQNHqKwSECCSKHXVJOLwuBMK62e/P3O4exTccnxjhEQ4rOITxtMHvogPV1RM+nGG/VFTqj3tSq0nHtUSL6+Zc+Y6FKpUqBkC2/8L6sGu591oLOX49ItojdgSO7psMq1e5i08YhiUNXdszRcYE8jtzQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 3 step 1
@@ -51,8 +55,10 @@ range x from 1 to 3 step 1
 
 ### Set from one dynamic array
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ3HoiJDK4WUyrzE3MxkTa5oLgUggHI1otUdTdR1FNQdjcCkOZQdq6mjgKbOGazOGazC2RBMmgDVccUqcNUopFaUpOalKPiXltgWp5bEl+Zl5ueBLdZRAJGaAMqBZpGPAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (Arr1: dynamic)

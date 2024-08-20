@@ -2,10 +2,12 @@
 title: Manage table security roles
 description: Learn how to use management commands to view, add, and remove security roles on a table level.
 ms.topic: reference
-ms.date: 07/17/2023
+ms.date: 08/11/2024
 ---
 
 # Manage table security roles
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
@@ -16,7 +18,7 @@ In this article, you'll learn how to use management commands to [view existing s
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run these commands.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Table level security roles
 
@@ -44,7 +46,7 @@ To show your roles:
 
 `.show` `table` *TableName* `principal` `roles`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -74,7 +76,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 *Action* `table` *TableName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -83,7 +85,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 | *Action* | `string` |  :heavy_check_mark: | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
 | *TableName* | `string` |  :heavy_check_mark: | The name of the table for which to add principals.|
 | *Role* | `string` |  :heavy_check_mark: | The role to assign to the principal. For tables, this can be `admins` or `ingestors`.|
-| *Principal* | `string` |  :heavy_check_mark: | One or more principals. For guidance on how to specify these principals, see [Referencing security principals](./access-control/referencing-security-principals.md).|
+| *Principal* | `string` |  :heavy_check_mark: | One or more principals. For guidance on how to specify these principals, see [Referencing security principals](reference-security-principals.md).|
 | `skip-results` | `string` | | If provided, the command won't return the updated list of table principals.|
 | *Description* | `string` | | Text to describe the change that will be displayed when using the `.show` command.|
 

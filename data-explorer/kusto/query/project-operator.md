@@ -3,9 +3,13 @@ title:  Project operator
 description: Learn how to use the project operator to select columns to include, rename or drop, and to insert new computed columns in the output table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # project operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Select the columns to include, rename or drop, and insert new computed columns.
 
@@ -19,7 +23,7 @@ or
 
 *T* `| project` *ColumnName* [`=` *Expression*] [`,` ...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -47,8 +51,10 @@ A table with columns that were named as arguments. Contains same number of rows 
 
 Only show the `EventId`, `State`, `EventType` of the `StormEvents` table.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlEAC3im6CgElySWpOpA+CGVBakAzXMiTy8AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -75,8 +81,10 @@ The following results table shows only the top 10 results.
 
 The following query renames the `BeginLocation` column and creates a new column called `TotalInjuries` from a calculation over two existing columns.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvJL0nM8czLKi3KTC1WsFWAMV0yi1KTSxS04QKeeSlgIQBwTr1bMQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -100,7 +108,9 @@ The following table shows only the first 10 results.
 |COLLIERVILLE| 6|
 |...|...|
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * [`extend`](extend-operator.md)
 * [series_stats](series-stats-function.md)
+::: moniker-end

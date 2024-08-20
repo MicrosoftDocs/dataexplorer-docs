@@ -1,11 +1,14 @@
 ---
-title: Data soft delete command - Azure Data Explorer
-description: This article describes the data soft delete commands in Azure Data Explorer.
+title:  Data soft delete command
+description:  This article describes the data soft delete commands.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 03/28/2024
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .delete table records - soft delete command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 To soft delete individual records without a system guarantee that the storage artifacts containing these records are deleted as well, use the following command. This command marks records as deleted but doesn't necessarily delete the data from storage artifacts. For more information, see [Soft delete](../concepts/data-soft-delete.md).
 
@@ -15,7 +18,7 @@ To delete individual records with a system guarantee that the storage artifacts 
 
 `.delete` [`async`] `table` *TableName* `records` [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *Predicate*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -67,7 +70,7 @@ When soft delete is executed on materialized views, the same concepts and limita
 
 `.delete` [`async`] `materialized-view` *MaterializedViewName* `records` [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *Predicate*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters - materialized views
 

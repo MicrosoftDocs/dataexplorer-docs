@@ -11,7 +11,7 @@ ms.reviewer: ramacg
 
 In this article you will learn how to ingest data with nLog sink.
 
-For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
+For a complete list of data connectors, see [Data connectors overview](integrate-data-overview.md).
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ For a complete list of data connectors, see [Data connectors overview](connector
 
 Create a target table for the incoming data.
 
-* In your query editor, run the following [table creation command](kusto/management/create-table-command.md), replacing the placeholder *TableName* with the name of the target table:
+* In your query editor, run the following [table creation command](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true), replacing the placeholder *TableName* with the name of the target table:
 
     ```kusto
     .create table <TableName> (Timestamp:datetime, Level:string, Message:string, FormattedMessage:dynamic, Exception:string, Properties:dynamic)
@@ -34,5 +34,5 @@ Create a target table for the incoming data.
 
 ## Related content
 
-* [Data connectors overview](connector-overview.md)
-* [Kusto Query Language (KQL) overview](kusto/query/index.md)
+* [Data connectors overview](integrate-data-overview.md)
+* [Kusto Query Language (KQL) overview](/kusto/query/index?view=azure-data-explorer&preserve-view=true)

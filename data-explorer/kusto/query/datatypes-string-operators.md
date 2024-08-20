@@ -3,9 +3,11 @@ title:  String operators
 description: Learn about query operators for searching string data types.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/25/2023
+ms.date: 08/11/2024
 ---
 # String operators
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Kusto Query Language (KQL) offers various query operators for searching string data types. The following article describes how string terms are indexed, lists the string query operators, and gives tips for optimizing performance.
 
@@ -93,8 +95,10 @@ For more information, see [Query best practices](best-practices.md).
 
 For example, the first of these queries will run faster:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKM9ILUpVCC5JLElVyEgsVlDyyy8qyVACyiTnl+aVWPNyBeNUn5yfV5KYmQfUlJdfBNcCAHN0g3JgAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents | where State has "North" | count;

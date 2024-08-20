@@ -94,7 +94,7 @@ Mapping transformations can be performed on a column of type string or datetime,
 * DateTimeFromUnixMicroseconds
 * DateTimeFromUnixNanoseconds
 
-For more information, see [Mapping transformations](kusto/management/mappings.md#mapping-transformations).
+For more information, see [Mapping transformations](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true#mapping-transformations).
 
 ### Generate
 
@@ -107,4 +107,4 @@ Detailed instructions for running the project with the selected SDK are provided
 
 ## Related content
 
-* [Set up your development environment to use Kusto client libraries](kusto/api/get-started/app-set-up.md)
+* [Set up your development environment to use Kusto client libraries](/kusto/api/get-started/app-set-up?view=azure-data-explorer&preserve-view=true)

@@ -3,15 +3,16 @@ title:  find operator
 description: Learn how to use the find operator to find rows that match a predicate across a set of tables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/14/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # find operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Finds rows that match a predicate across a set of tables.
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The scope of the `find` can also be cross-database or cross-cluster.
 
@@ -23,9 +24,9 @@ find in (database('*').*) where Fruit == "apple"
 find in (cluster('cluster_name').database('MyDB*').*) where Fruit == "apple"
 ```
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ```kusto
 find in (Table1, Table2, Table3) where Fruit=="apple"
@@ -34,7 +35,7 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 > [!NOTE]
 > `find` operator is substantially less efficient than column-specific text filtering. Whenever the columns are known, we recommend using the [where operator](where-operator.md). `find` will not function well when the workspace contains large number of tables and columns and the data volume that is being scanned is high and the time range of the query is high.
 
-::: zone-end
+::: moniker-end
 
 ## Syntax
 
@@ -42,33 +43,33 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 
 * `find` *Predicate* [`project-smart` | `project` *ColumnName*[`:` *ColumnType* `,` ... ] [`,` `pack_all()`]]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*ColumnName*| `string` | | By default, the output will include a column called *source_* whose values indicate which source table has contributed each row. If specified, *ColumnName* will be used instead of *source_*. After wildcard matching, if the query references tables from more than one database including the default database, the value of this column will have a table name qualified with the database. Similarly *cluster* and *database* qualifications will be present in the value if more than one cluster is referenced.|
-| *Predicate* | `bool` |  :heavy_check_mark: | This boolean expression is evaluated for each row in each input table. For more information, see [predicate-syntax details](./find-operator.md#predicate-syntax).|
+| *Predicate* | `bool` |  :heavy_check_mark: | This boolean expression is evaluated for each row in each input table. For more information, see [predicate-syntax details](find-operator.md#predicate-syntax).|
 | *Tables* | `string` | | Zero or more comma-separated table references. By default, `find` will look in all the tables in the current database. You can use:<br/>1. The name of a table, such as `Events`<br/>2. A query expression, such as `(Events | where id==42)`<br/>3. A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin with `E`.|
-| `project-smart` or `project` | `string` | | If not specified, `project-smart` will be used by default. For more information, see [output-schema details](./find-operator.md#output-schema).|
+| `project-smart` or `project` | `string` | | If not specified, `project-smart` will be used by default. For more information, see [output-schema details](find-operator.md#output-schema).|
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 * `withsource=`*ColumnName*: Optional. By default, the output will include a column called *source_* whose values indicate which source table contributed each row. If specified, *ColumnName* will be used instead of *source_*.
-* *Predicate*: A `boolean` [expression](./scalar-data-types/bool.md) over the columns of the input tables *Table* [`,` *Table*, ...]. It's evaluated for each row in each input table. For more information, see  [predicate-syntax details](./find-operator.md#predicate-syntax).
+* *Predicate*: A `boolean` [expression](scalar-data-types/bool.md) over the columns of the input tables *Table* [`,` *Table*, ...]. It's evaluated for each row in each input table. For more information, see  [predicate-syntax details](find-operator.md#predicate-syntax).
 * *Tables*: Optional. Zero or more comma-separated table references. By default *find* will search all tables for:
 
   * The name of a table, such as `Events`
   * A query expression, such as `(Events | where id==42)`
   * A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables whose names begin with `E`.
-* `project-smart` | `project`: If not specified `project-smart` will be used by default. For more information, see [output-schema details](./find-operator.md#output-schema).
+* `project-smart` | `project`: If not specified `project-smart` will be used by default. For more information, see [output-schema details](find-operator.md#output-schema).
 
-::: zone-end
+::: moniker-end
 
 ## Returns
 
@@ -102,28 +103,28 @@ When using `project` *ColumnName*[`:` *ColumnType* `,` ... ] [`,` `pack_all()`]:
 
 The *find* operator supports an alternative syntax for the `* has` term, and using just *term*, will search a term across all input columns.
 
-For a summary of some filtering functions, see [where operator](./where-operator.md).
+For a summary of some filtering functions, see [where operator](where-operator.md).
 
 ## Notes
 
 * If the `project` clause references a column that appears in multiple tables and has multiple types, a type must follow this column reference in the project clause
-* If a column appears in multiple tables and has multiple types and `project-smart` is in use, there will be a corresponding column for each type in the `find`'s result, as described in [union](./union-operator.md)
+* If a column appears in multiple tables and has multiple types and `project-smart` is in use, there will be a corresponding column for each type in the `find`'s result, as described in [union](union-operator.md)
 * When you use *project-smart*, changes in the predicate, in the source tables set, or in the tables schema, may result in a change to the output schema. If a constant result schema is needed, use *project* instead
-* `find` scope can't include [functions](../management/functions.md). To include a function in the find scope, define a [let statement](./let-statement.md) with [view keyword](./let-statement.md).
+* `find` scope can't include [functions](../management/functions.md). To include a function in the find scope, define a [let statement](let-statement.md) with [view keyword](let-statement.md).
 
 ## Performance tips
 
-* Use [tables](../management/tables.md) as opposed to [tabular expressions](./tabular-expression-statements.md).
+* Use [tables](../management/tables.md) as opposed to [tabular expressions](tabular-expression-statements.md).
 If tabular expression, the find operator falls back to a `union` query that can result in degraded performance.
 * If a column that appears in multiple tables and has multiple types, is part of the project clause, prefer adding a *ColumnType* to the project clause over modifying the table before passing it to `find`.
-* Add time-based filters to the predicate. Use a datetime column value or [ingestion_time()](./ingestion-time-function.md).
+* Add time-based filters to the predicate. Use a datetime column value or [ingestion_time()](ingestion-time-function.md).
 * Search in specific columns rather than a full text search.
 * It's better not to reference columns that appear in multiple tables and have multiple types. If the predicate is valid when resolving such columns type for more than one type, the query will fall back to union.
-For example, see [examples of cases where find will act as a union](./find-operator.md#examples-of-cases-where-find-will-act-as-union).
+For example, see [examples of cases where find will act as a union](find-operator.md#examples-of-cases-where-find-will-act-as-union).
 
 ## Examples
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Term lookup across all tables in current database
 
@@ -140,6 +141,7 @@ find "Hernandez"
 
 The query finds all rows from all tables in the current database whose name starts with `C`, and in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). Now, the output only contains records from the `Customers` table.
 
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAA0vLzEtRyMxT0HDW0lQoz0gtSlXQUshILFZQ8kgtykvMS0mtUgIA+50LFCQAAAA=" target="_blank">Run the query</a>
 
@@ -150,7 +152,7 @@ find in (C*) where * has "Hernandez"
 ### Term lookup across all tables in all databases in the cluster
 
 The query finds all rows from all tables in all databases in which any column includes the word `Kusto`.
-This query is a [cross-database](./cross-cluster-or-database-queries.md) query.
+This query is a [cross-database](cross-cluster-or-database-queries.md) query.
 The resulting records are transformed according to the [output schema](#output-schema).
 
 > [!div class="nextstepaction"]
@@ -168,6 +170,7 @@ The resulting records are transformed according to the [output schema](#output-s
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0vLzEtRyMxT0EhJLElMSixO1VAK1lLS1HPW0lQoz0gtSlXQUshILFZQ8i4tLslXAgCcXznPLwAAAA==" target="_blank">Run the query</a>
 
+
 ```kusto
 find in (database("S*").C*) where * has "Kusto"
 ```
@@ -182,9 +185,9 @@ find in (cluster("cluster1").database("B*").K*, cluster("cluster2").database("C*
 where * has "Kusto"
 ```
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ### Term lookup across all tables
 
@@ -195,7 +198,7 @@ The resulting records are transformed according to the [output schema](#output-s
 find "Kusto"
 ```
 
-::: zone-end
+::: moniker-end
 
 ## Examples of `find` output results  
 

@@ -36,7 +36,7 @@ To run LightIngest:
     > [!TIP]
     > For a list of supported command-line arguments, enter `LightIngest /help`.
 
-1. Enter `ingest-` followed by the connection string to the Azure Data Explorer cluster that will manage the ingestion. Enclose the connection string in double quotes and follow the [Kusto connection strings specification](kusto/api/connection-strings/kusto.md).
+1. Enter `ingest-` followed by the connection string to the Azure Data Explorer cluster that will manage the ingestion. Enclose the connection string in double quotes and follow the [Kusto connection strings specification](/kusto/api/connection-strings/kusto?view=azure-data-explorer&preserve-view=true).
 
     For example:
 
@@ -54,10 +54,10 @@ To run LightIngest:
 
 | Argument | Type | Description | Required |
 |----------|------|-------------|----------|
-|          | `string` | A [Kusto connection string](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that handles the ingestion. This value should be enclosed with double quotes. |  :heavy_check_mark: |
+|          | `string` | A [Kusto connection string](/kusto/api/connection-strings/kusto?view=azure-data-explorer&preserve-view=true) specifying the Kusto endpoint that handles the ingestion. This value should be enclosed with double quotes. |  :heavy_check_mark: |
 | -database, -db | `string` | The target Azure Data Explorer database name. |  |
 | -table | `string` | The target Azure Data Explorer table name. |  :heavy_check_mark: |
-| -sourcePath, -source | `string` | The location of the source data, which can be either a local file path, the root URI of an Azure blob container, or the URI of an Amazon S3 bucket. If the data is stored in Azure blobs, the URI must include the storage account key or Shared Access Signature (SAS). If the data is in an S3 bucket, the URI must include the credential key. We recommend enclosing this value in double quotes. For more information, see [Storage connection strings](kusto/api/connection-strings/storage-connection-strings.md). Pass *-sourcePath:;impersonate* to list Azure storage items with user permissions (user prompt authorization). |  :heavy_check_mark: |
+| -sourcePath, -source | `string` | The location of the source data, which can be either a local file path, the root URI of an Azure blob container, or the URI of an Amazon S3 bucket. If the data is stored in Azure blobs, the URI must include the storage account key or Shared Access Signature (SAS). If the data is in an S3 bucket, the URI must include the credential key. We recommend enclosing this value in double quotes. For more information, see [Storage connection strings](/kusto/api/connection-strings/storage-connection-strings?view=azure-data-explorer&preserve-view=true). Pass *-sourcePath:;impersonate* to list Azure storage items with user permissions (user prompt authorization). |  :heavy_check_mark: |
 | -managedIdentity, -mi | `string` | Client ID of the managed identity (user-assigned or system-assigned) to use for connecting. Use "system" for system-assigned identity. |  |
 | -ingestWithManagedIdentity, -ingestmi | `string` | Client ID of the managed identity (user-assigned or system-assigned) installed on the Kusto service to download from storage. Use "system" for system-assigned identity. |  |
 | -connectToStorageWithManagedIdentity, -storageMi | `string` | Client ID of the managed identity (user-assigned or system-assigned) installed on the client side to list from storage. |  |
@@ -67,11 +67,11 @@ To run LightIngest:
 | -pattern | `string` | Pattern by which source files/blobs are picked. Supports wildcards. For example, `"*.csv"`. We recommend enclosing this value in double quotes. |  |
 | -zipPattern | `string` | Regular expression to use when selecting which files in a ZIP archive to ingest. All other files in the archive will be ignored. For example, `"*.csv"`. We recommend enclosing this value in double quotes. |  |
 | -format, -f | `string` | Source data format. Must be one of the [supported formats](ingestion-supported-formats.md) |  |
-| -ingestionMappingPath, -mappingPath | `string` | A path to a local file for ingestion column mapping. See [data mappings](kusto/management/mappings.md). |  |
-| -ingestionMappingRef, -mappingRef | `string` | The name of an ingestion column mapping that was previously created on the table. See [data mappings](kusto/management/mappings.md). |  |
+| -ingestionMappingPath, -mappingPath | `string` | A path to a local file for ingestion column mapping. See [data mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true). |  |
+| -ingestionMappingRef, -mappingRef | `string` | The name of an ingestion column mapping that was previously created on the table. See [data mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true). |  |
 | -creationTimePattern | `string` | When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#ingest-historical-data-with-the-creationtime-property). |  |
 | -ignoreFirstRow, -ignoreFirst | `bool` | If set, the first record of each file/blob is ignored. For example, if the source data has headers. |  |
-| -tag | `string` | [Tags](kusto/management/extent-tags.md) to associate with the ingested data. Multiple occurrences are permitted |  |
+| -tag | `string` | [Tags](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) to associate with the ingested data. Multiple occurrences are permitted |  |
 | -dontWait | `bool` | If set to `true`, doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs. |  |
 | -compression, -cr | double | Compression ratio hint. Useful when ingesting compressed files/blobs to help Azure Data Explorer assess the raw data size. Calculated as original size divided by compressed size. |  |
 | -limit, -l | integer | If set, limits the ingestion to first *N* files. |  |
@@ -107,7 +107,7 @@ The argument values must include:
 * Constant text immediately following the timestamp (suffix).
 
 > [!IMPORTANT]
-> When specifying that the creation time should be overridden, make sure the `Lookback` property in the target table's effective [Extents merge policy](kusto/management/merge-policy.md) is aligned with the values in your file or blob paths.
+> When specifying that the creation time should be overridden, make sure the `Lookback` property in the target table's effective [Extents merge policy](/kusto/management/merge-policy?view=azure-data-explorer&preserve-view=true) is aligned with the values in your file or blob paths.
 
 **Examples** 
 

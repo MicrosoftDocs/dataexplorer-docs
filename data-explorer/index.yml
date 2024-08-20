@@ -70,15 +70,15 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Python
-            url: create-cluster-database-python.md
+            url: create-cluster-database.md?tabs=python
           - text: Azure Resource Manager template
-            url: create-cluster-database-resource-manager.md
+            url: create-cluster-database.md?tabs=arm
           - text: C#
-            url: create-cluster-database-csharp.md
+            url: create-cluster-database.md?tabs=csharp
           - text: PowerShell
-            url: create-cluster-database-powershell.md
+            url: create-cluster-database.md?tabs=powershell
           - text: Azure CLI
-            url: create-cluster-database-cli.md
+            url: create-cluster-database.md?tabs=azcli
 
   # Card
   - title: Ingest data into Azure Data Explorer
@@ -94,7 +94,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Ingestion wizard
-            url: ingest-data-wizard.md
+            url: ingest-data-overview.md
           - text: Ingest historical data
             url: ingest-data-historical.md
           - text: Streaming ingestion
@@ -102,7 +102,7 @@ landingContent:
           - text: Python
             url: python-ingest-data.md
           - text: Event hub using Azure portal
-            url: ingest-data-event-hub.md
+            url: create-event-hubs-connection.md?tabs=portal
           - text: Event Grid using Azure portal
             url: create-event-grid-connection.md
           - text: Install and use LightIngest
@@ -128,15 +128,15 @@ landingContent:
           - text: Query data using Python
             url: python-query-data.md
           - text: Time series analysis
-            url: ./kusto/query/time-series-analysis.md
+            url: /kusto/query/time-series-analysis
       - linkListType: reference
         links:
           - text: KQL quick reference
-            url: kql-quick-reference.md
+            url: /kusto/query/kql-quick-reference
           - text: Kusto Query Language
-            url: kusto/query/index.md
+            url: /kusto/query/index
           - text: SQL to Kusto cheat sheet
-            url: kusto/query/sql-cheat-sheet.md
+            url: /kusto/query/sql-cheat-sheet
 
   # Card
   - title: Visualize data
@@ -144,7 +144,7 @@ landingContent:
       - linkListType: concept
         links:
           - text: Data visualization overview
-            url: viz-overview.md
+            url: integrate-visualize-overview.md
       - linkListType: how-to-guide
         links:
           - text: Power BI connector
@@ -196,7 +196,7 @@ landingContent:
       - linkListType: reference
         links:
           - text: Management commands
-            url: kusto/management/index.md
+            url: /kusto/management/index
 
   # Card
   - title: Architecture
@@ -227,10 +227,10 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Set up your development environment
-            url: kusto/api/get-started/app-set-up.md
+            url: /kusto/api/get-started/app-set-up
       - linkListType: reference
         links:
           - text: Kusto client libraries
-            url: kusto/api/client-libraries.md
+            url: /kusto/api/client-libraries
           - text: REST API overview
-            url: kusto/api/rest/index.md
+            url: /kusto/api/rest/index

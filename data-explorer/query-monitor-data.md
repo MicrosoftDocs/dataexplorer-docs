@@ -64,7 +64,7 @@ You can run the queries using client tools that support Kusto queries, such as: 
 > * The database should have the same name as the resource specified in the cross-service query. Names are case sensitive.
 > * In cross-service queries, make sure that Application Insights resource and Log Analytics workspace names are correct.
 > * If names contain special characters, they are replaced by URL encoding in the cross-service query.
-> * If names include characters that don't meet [KQL identifier name rules](kusto/query/schema-entities/entity-names.md), they are replaced by the dash **-** character.
+> * If names include characters that don't meet [KQL identifier name rules](/kusto/query/schema-entities/entity-names?view=azure-data-explorer&preserve-view=true), they are replaced by the dash **-** character.
 
 ### Direct query on your Log Analytics workspace or Application Insights resources from Azure Data Explorer client tools
 
@@ -99,7 +99,7 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 :::image type="content" source="media/query-monitor-data/cross-query.png" alt-text="Screenshot showing cross service query from the Azure Data Explorer web U I.":::
 
 > [!TIP]
-> Using the [`join` operator](kusto/query/join-operator.md), instead of union, may require a [`hint`](kusto/query/join-operator.md#hints) to run it on an Azure Data Explorer native cluster.
+> Using the [`join` operator](/kusto/query/join-operator), instead of union, may require a [`hint`](/kusto/query/join-operator?view=azure-data-explorer&preserve-view=true#hints) to run it on an Azure Data Explorer native cluster.
 
 ### Join data from an Azure Data Explorer cluster in one tenant with an Azure Monitor resource in another
 

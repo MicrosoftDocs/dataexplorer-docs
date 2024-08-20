@@ -3,9 +3,11 @@ title:  hash_sha1()
 description: Learn how to use the hash_sha1() function to return a sha1 hash value of the source input.
 ms.reviewer: atefsawaed
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # hash_sha1()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a sha1 hash value of the source input.
 
@@ -13,7 +15,7 @@ Returns a sha1 hash value of the source input.
 
 `hash_sha1(`*source*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,12 +32,14 @@ and 255).
 > [!WARNING]
 > The algorithm used by this function (SHA1) is guaranteed
 > to not be modified in the future, but is very complex to calculate. If you
-> need a "lightweight" hash function for the duration of a single query, consider using [hash()](./hash-function.md).
+> need a "lightweight" hash function for the duration of a single query, consider using [hash()](hash-function.md).
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUeBSAIIMQ9uMxOKM+OKMREMNpfD8opwUJU0diJQRklRKYklqSWZuqoaRgZGBroEhEGlqAgBM1jIESAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print 
@@ -51,8 +55,10 @@ print
 
 The following example uses the `hash_sha1()` function to aggregate StormEvents based on State's SHA1 hash value. 
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlUIBkk455fmlSjYKiSDaA1NhaRKoHhiSaoOhPJILM6wzQAS8cUZiYYaYDFNoCkl+QUKphDFcENSUouTAeqGdyxtAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 

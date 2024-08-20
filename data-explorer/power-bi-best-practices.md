@@ -30,7 +30,7 @@ When working with terabytes of fresh raw data, follow these guidelines to keep P
 
   * Increase the number of [concurrent connections in DirectQuery in Power BI](/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery).
 
-  * Use [weak consistency to improve parallelism](kusto/concepts/queryconsistency.md). This may have an impact on the freshness of the data.
+  * Use [weak consistency to improve parallelism](/kusto/concepts/query-consistency?view=azure-data-explorer&preserve-view=true). This may have an impact on the freshness of the data.
 
 * **Effective slicers** – Use [sync slicers](/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) to prevent reports from loading data before you're ready. After you structure the dataset, place all visuals, and mark all the slicers, you can select the sync slicer to load only the data needed.
 

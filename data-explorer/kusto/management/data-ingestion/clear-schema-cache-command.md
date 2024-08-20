@@ -1,13 +1,15 @@
 ---
 title:  Clearing cached schema for streaming ingestion
-description: This article describes management command for clearing cached database schema in Azure Data Explorer.
+description:  This article describes management command for clearing cached database schema.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/26/2023
+ms.date: 08/11/2024
 ---
 # Clear schema cache for streaming ingestion
 
-Cluster nodes cache schema of the databases that receive data via streaming ingestion. This process optimizes performance and utilization of cluster resources, but can cause propagation delays when the schema change.
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
+Nodes cache schema of the databases that receive data via streaming ingestion. This process optimizes performance and utilization of resources, but can cause propagation delays when the schema change.
 
 Clear the cache to guarantee that subsequent streaming ingestion requests incorporate database or table schema changes. For more information, see [Streaming ingestion and schema changes](streaming-ingestion-schema-changes.md).
 
@@ -16,7 +18,7 @@ Clear the cache to guarantee that subsequent streaming ingestion requests incorp
 
 ## Permissions
 
-You must have at least [Database Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Ingestor](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -24,7 +26,7 @@ You must have at least [Database Ingestor](../access-control/role-based-access-c
 
 `.clear` `database` `cache` `streamingingestion` `schema`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -38,7 +40,7 @@ This command returns a table with the following columns:
 
 |Column    |Type    |Description
 |---|---|---
-|NodeId|`string`|Identifier of the cluster node
+|NodeId|`string`|Identifier of the node
 |Status|`string`|Succeeded/Failed
 
 ## Example

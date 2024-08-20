@@ -1,11 +1,14 @@
 ---
 title:  series_exp_smoothing_fl()
-description: This article describes series_exp_smoothing_fl() user-defined function in Azure Data Explorer.
+description:  This article describes series_exp_smoothing_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_exp_smoothing_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Applies a basic exponential smoothing filter on a series.
 
@@ -15,7 +18,7 @@ The function `series_exp_smoothing_fl()` is a [user-defined function (UDF)](../q
 
 `series_exp_smoothing_fl(`*y_series* [`,` *alpha* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -66,8 +69,10 @@ series_exp_smoothing_fl(y_series:dynamic, alpha:double=0.5)
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPzWrDMBCE73qKuRQscIMFzSXFzyK29iYWkWSzUkDqz7tXaUNDDt3j7H6zM54zEovjZLlsNoV1zYuLJ3v0GNFV+7s8zDVScFMP8ttCh3m9vHkeh91eqw+FNjcT5+QP6rHRdLYkQrX74fSDZG5uz0Zr9fWqhOKJUXCUNcAgr9gPSJk3GPUJLpnjjNpiFTzBDE1LlxBI3PuVGhHozNa7lLvSHtUHpeq7xb2ovR79U7+rPYbdi0YDpWEs8C7ytJDkb6qtG1o2AQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_exp_smoothing_fl = (y_series:dynamic, alpha:double=0.5)

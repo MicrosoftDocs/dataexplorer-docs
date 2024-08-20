@@ -3,9 +3,11 @@ title: Request rate limit policy
 description: Learn how to use the request rate limit policy to limit the number of concurrent requests classified into a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # Request rate limit policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group, per workload group or per principal.
 
@@ -82,11 +84,18 @@ The following table shows a few examples of requests that exceed the resource ut
 
 ## How consistency affects rate limits
 
+:::moniker range="azure-data-explorer"
 With strong consistency, the default limit on maximum concurrent requests depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`. For example, a cluster that's set up with Azure D14_v2 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` = `160`.
 
 With weak consistency, the effective default limit on maximum concurrent requests depends on the SKU of the cluster and number of query heads, and is calculated as: `Cores-Per-Node x 10 x Number-Of-Query-Heads`. For example, a cluster that's set up with Azure D14_v2 and 5 query heads, where each node has 16 vCores, will have an effective default limit of `16` x `10` x `5` = `800`.
+::: moniker-end
+:::moniker range="microsoft-fabric"
+With strong consistency, the default limit on maximum concurrent requests depends on the SKU of the eventhouse, and is calculated as: `Cores-Per-Node x 10`. For example, a eventhouse that's set up with Azure D14_v2 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` = `160`.
 
-For more information, see [Query consistency](../concepts/queryconsistency.md).
+With weak consistency, the effective default limit on maximum concurrent requests depends on the SKU of the eventhouse and number of query heads, and is calculated as: `Cores-Per-Node x 10 x Number-Of-Query-Heads`. For example, a eventhouse that's set up with Azure D14_v2 and 5 query heads, where each node has 16 vCores, will have an effective default limit of `16` x `10` x `5` = `800`.
+::: moniker-end
+
+For more information, see [Query consistency](../concepts/query-consistency.md).
 
 ## The `default` workload group
 

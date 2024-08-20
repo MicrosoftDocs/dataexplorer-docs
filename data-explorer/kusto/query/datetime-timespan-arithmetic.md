@@ -1,11 +1,13 @@
 ---
 title:  Datetime / timespan arithmetic
-description: This article describes Datetime / timespan arithmetic in Azure Data Explorer.
+description:  This article describes Datetime / timespan arithmetic.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 08/11/2024
 ---
 # Datetime / timespan arithmetic
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Kusto supports performing arithmetic operations on values of types `datetime`
 and `timespan`.
@@ -46,8 +48,10 @@ the following functions are available.
 
 ### From Unix time
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIK8rPDc3LrAjJzE1VsFXQKLHKyc9L1+SqVuBSAIKUxJLUEqCUhqGluYGugSEQaSpoK5QoaCkYFqcmK3DVWnMVFGXmlSgUpRaX5pQAjUA2UcPQ1MTMwtLc1NhQEwCPpAMfbgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let fromUnixTime = (t: long) { 
@@ -64,8 +68,10 @@ print result = fromUnixTime(1546897531)
 
 ### To Unix time
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoyQ/Ny6wIycxNVbBV0EgpsVJISSxJLQHyNRWqFbgUgAAoqqALF9YwtDQ30DUwBCJNTQV9BcNiBa5aa66Cosy8EoWi1OLSnBKgSQhjNeAajQwMLcEazRWMDK1MTK2MDfUMIEBTEwBVI1K3jAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let toUnixTime = (dt: datetime) { 

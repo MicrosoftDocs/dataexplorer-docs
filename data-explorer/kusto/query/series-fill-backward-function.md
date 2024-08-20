@@ -3,9 +3,11 @@ title:  series_fill_backward()
 description: Learn how to use the series_fill_backward() function to perform a backward fill interpolation of missing values in a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/11/2024
 ---
 # series_fill_backward()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Performs a backward fill interpolation of missing values in a series.
 
@@ -15,7 +17,7 @@ An expression containing dynamic numerical array is the input. The function repl
 
 `series_fill_backward(`*series*`[,`*missing_value_placeholder*`])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -36,8 +38,10 @@ An expression containing dynamic numerical array is the input. The function repl
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFISSxJVLAFUyWJSTmpGolFRVYKKZV5ibmZyZpcCkAQDSahQhrRhoaGOgp5pTk5OgrGZjoKJnAehDQEipkBxYyNkcVjNYFGcMVac4Ht46pRKCjKz0pNLgEbDbRSRwHMSsvMyYlPSkzOLk8sSgE6qzi1KDO1OB5FGORCTQBymgAduwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let data = datatable(arr: dynamic)

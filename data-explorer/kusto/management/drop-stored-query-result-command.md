@@ -3,10 +3,12 @@ title: .drop stored_query_result command
 description: Learn how to use the `.drop stored_query_result` command to delete an active query result.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
 ---
 
 # .drop stored_query_result command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Deletes an active stored query result.
 
@@ -16,7 +18,7 @@ Use `.drop` `stored_query_results` `by user` *UserPrincipalName* to delete all a
 
 ## Permissions
 
-You must have [Database Viewer](access-control/role-based-access-control.md) permissions to delete stored query results in the database, and [Database Admin](access-control/role-based-access-control.md) permissions to delete stored query results created by specified user principals.
+You must have [Database Viewer](../access-control/role-based-access-control.md) permissions to delete stored query results in the database, and [Database Admin](../access-control/role-based-access-control.md) permissions to delete stored query results created by specified user principals.
 
 ## Syntax
 
@@ -24,7 +26,7 @@ You must have [Database Viewer](access-control/role-based-access-control.md) per
 
 `.drop` `stored_query_results` `by user` *UserPrincipalName*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

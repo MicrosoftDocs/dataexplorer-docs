@@ -3,9 +3,11 @@ title:  The has_any_index operator
 description: Learn how to use the has_any_index operator to search the input string for items specified in the array.
 ms.reviewer: atefsawaed
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # has_any_index()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Searches the string for items specified in the array and returns the position in the array of the first item found in the string.
 
@@ -13,7 +15,7 @@ Searches the string for items specified in the array and returns the position in
 
 `has_any_index` `(`*source*`,` *values*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -29,8 +31,10 @@ Returns -1 if none of the array items were found in the string or if *values* is
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA53RsQ6CMBDG8d2n+MICJk0IqKMjm29gDDmlYCNcm7Yk8PYWkEUXNbntkv/vmhqr2G+gqiHDEXdyJfFYKq7kkET+rhzCEEMO1JlWRgLVyNSpW3KOp3UsEL928WW7BdIUtbLOo9X60RvUuucKisOY3sP5ADYbiInMfyZZ+3cxgC195+3+9eboqrH+xtp/WsUCgPvuKi3yIFniRiaZwE4gW/KnpU3W0ghdh7aXjbTu1T38+ob1V4rO+HG9fK4/AfXYgrf8AQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print

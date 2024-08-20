@@ -3,9 +3,11 @@ title:  Queries
 description: Learn how to use queries to explore and process data in the context of databases. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 08/11/2024
 ---
 # Query operators
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 A query is a read-only operation against data ingested into your cluster. Queries always run in the context of a particular database in the cluster. They may also refer to data in another database, or even in another cluster.
 
@@ -15,8 +17,10 @@ The language syntax is that of a data flow, where "data" means "tabular data" (d
 
 For example:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVWwtVVQd/PxD/J0cVRXSMxLAQkXlYRk5qYq2CmkAFWUAJkaRgYGBroGhkCkCTIgOb80rwQATWE/B1YAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -24,7 +28,7 @@ StormEvents
 | count
 ```
 
-Each filter prefixed by the pipe character `|` is an instance of an *operator*, with some parameters. The input to the operator is the table that is the result of the preceding pipeline. In most cases, any parameters are [scalar expressions](./scalar-data-types/index.md) over the columns of the input.
+Each filter prefixed by the pipe character `|` is an instance of an *operator*, with some parameters. The input to the operator is the table that is the result of the preceding pipeline. In most cases, any parameters are [scalar expressions](scalar-data-types/index.md) over the columns of the input.
 In a few cases, the parameters are the names of input columns, and in a few cases, the parameter is a second table. The result of a query is always a table, even if it only has one column and one row.
 
 `T` is used in query to denote the preceding pipeline or source table.

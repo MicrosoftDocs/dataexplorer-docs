@@ -3,9 +3,11 @@ title:  .alter table policy ingestionbatching command
 description: Learn how to use the `.alter table policy ingestionbatching` command to set the table's ingestion batching policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy ingestionbatching command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Sets the table's [ingestion batching policy](batching-policy.md) to determine when data aggregation stops and a batch is sealed and ingested.
 
@@ -13,7 +15,7 @@ If the policy isn't set for a table, the database-level policy applies. If it is
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Defaults and limits
 
@@ -25,7 +27,7 @@ See [defaults and limits](batching-policy.md#defaults-and-limits).
 
 `.alter` `tables` `(`*Table1* `,` *Table2*  [`,`...]`)` `policy` `ingestionbatching` *PolicyObject*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

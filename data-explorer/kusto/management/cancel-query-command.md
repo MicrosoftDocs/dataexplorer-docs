@@ -3,17 +3,24 @@ title: .cancel query command
 description: Learn how to use management commands to manage your queries.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 08/11/2024
 ---
 # .cancel query command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+:::moniker range="azure-data-explorer"
 The `.cancel` `query` command starts a best-effort attempt to cancel a specific running query. Cluster admins can cancel any running query. Database admins can cancel any running query that was invoked on a database to which they have admin access. All principals can cancel running queries that they started.
+::: moniker-end
+:::moniker range="microsoft-fabric"
+The `.cancel` `query` command starts a best-effort attempt to cancel a specific running query. Admins can cancel any running query. Users with database admin rights can cancel any running query that was invoked on a database to which they have admin access. All users can cancel running queries that they started.
+::: moniker-end
 
 ## Syntax
 
 `.cancel` `query` *ClientActivityId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

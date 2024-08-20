@@ -3,10 +3,13 @@ title:  leftouter join
 description: Learn how to use the leftouter join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/18/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 
 # leftouter join
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The `leftouter` join flavor returns all the records from the left side table and only matching records from the right side table.
 
@@ -16,9 +19,9 @@ The `leftouter` join flavor returns all the records from the left side table and
 
 *LeftTable* `|` `join` `kind=leftouter` [ *Hints* ] *RightTable* `on` *Conditions*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
-[!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
+[!INCLUDE [join-parameters-attributes-hints](../includes/join-parameters-attributes-hints.md)]
 
 ## Returns
 
@@ -29,8 +32,10 @@ The `leftouter` join flavor returns all the records from the left side table and
 
 The result of a left outer join for tables X and Y always contains all records of the left table (X), even if the join condition doesn't find any matching record in the right table (Y).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5mnkJ2Zl2Kbk5pWkl9akloEtDI/TwFoEwD4dnPs2gAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let X = datatable(Key:string, Value1:long)

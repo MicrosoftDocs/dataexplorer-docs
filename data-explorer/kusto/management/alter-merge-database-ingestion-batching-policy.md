@@ -3,17 +3,19 @@ title:  .alter-merge database policy ingestionbatching command
 description: Learn how to use the `.alter-merge database policy ingestionbatching` command to set the ingestion batching policy.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 08/27/2023
+ms.date: 08/11/2024
 ---
 # .alter-merge database policy ingestionbatching command
 
-Sets the [ingestion batching policy](batching-policy.md) to determine when data aggregation stops and a batch is sealed and ingested. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+Sets the [ingestion batching policy](batching-policy.md) to determine when data aggregation stops and a batch is sealed and ingested. The ingestion batching policy applies to [queued ingestion](/azure/data-explorer/ingest-data-overview#continuous-data-ingestion).
 
 When setting the policy for a database, it applies for all its tables, except tables that were set with their own ingestion batching policy. If the policy isn't set for a database, the [default values](batching-policy.md#defaults-and-limits) apply.
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Defaults and limits
 
@@ -23,7 +25,7 @@ See [defaults and limits](batching-policy.md#defaults-and-limits).
 
 `.alter-merge` `database` *DatabaseName* `policy` `ingestionbatching` *PolicyObject*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

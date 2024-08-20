@@ -3,9 +3,11 @@ title: Auto delete policy
 description: Learn about the auto delete policy to set an expiry date for the table.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # Auto delete policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 An auto delete policy on a table sets an expiry date for the table. The table is automatically deleted at this expiry time. Unlike the [retention policy](retention-policy.md), which determines when data ([extents](extents-overview.md)) are removed from a table, the auto delete policy drops the entire table.
 
@@ -29,4 +31,4 @@ An auto delete policy includes the following properties:
 
 ## Related content
 
-For more information, see [auto delete policy](./show-auto-delete-policy-command.md) commands.
+For more information, see [auto delete policy](show-auto-delete-policy-command.md) commands.

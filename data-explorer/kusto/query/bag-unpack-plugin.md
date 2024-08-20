@@ -3,9 +3,11 @@ title:  bag_unpack plugin
 description: Learn how to use the bag_unpack plugin to unpack a dynamic column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # bag_unpack plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating each property bag top-level slot as a column. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
@@ -13,7 +15,7 @@ The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating e
 
 *T* `|` `evaluate` `bag_unpack(` *Column* [`,` *OutputColumnPrefix* ] [`,` *columnsConflict* ] [`,` *ignoredProperties* ] `)` [`:` *OutputSchema*]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -55,14 +57,16 @@ The `bag_unpack` plugin returns a table with as many records as its tabular inpu
     input *T*, unless it's the column to be unpacked (*Column*), since that will produce two columns with the same name.
 >
 > * All slot names, when prefixed by *OutputColumnPrefix*, must be valid
-    entity names and follow the [identifier naming rules](./schema-entities/entity-names.md#identifier-naming-rules).
+    entity names and follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
 
 ## Examples
 
 ### Expand a bag
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjRSrlMq8xNzMZE2uaC4FIIByNaqV/BJzU5WsFJS88jPylHQUlBzTgVwjg1pNHRwKXRLLUuEKTfAo9Eoszs3MQ6g1BquN5apRSC1LzClNLElVSEpMjy/NK0hMztZI0QQABlsx468AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(d:dynamic)
@@ -86,8 +90,10 @@ datatable(d:dynamic)
 
 Expand a bag and use the `OutputColumnPrefix` option to produce column names that begin with the prefix 'Property_'.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjRSrlMq8xNzMZE2uaC4FIIByNaqV/BJzU5WsFJS88jPylHQUlBzTgVwjg1pNHRwKXRLLUuEKTfAo9Eoszs3MQ6g1BquN5apRSC1LzClNLElVSEpMjy/NK0hMztZI0VFQDyjKL0gtKqmMV9cEAG0gI1O8AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(d:dynamic)
@@ -111,8 +117,10 @@ datatable(d:dynamic)
 
 Expand a bag and use the `columnsConflict` option to resolve conflicts between existing columns and columns produced by the `bag_unpack()` operator.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43NsQrCMBAG4L1PcWRJC4WKOhUcRKcOOjmJlGty1mKalCapiPrupgq69m66/+fjJLqwlaJ4hy3l1vWNrlOQubxrbBuRRMcIwvC9kmVIiIfyW8UPNhqWAyvMRbMU2LoO53z2StIJaIsD/dByIirQto3+u8XHnaIn0IDKoyOosC697lBcY5mCMMq32m6MPqtGuBXvqVMoqLTG94J4AlkGB0ug6Qbj2zdNIgveEgEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(Name:string, d:dynamic)
@@ -132,8 +140,10 @@ datatable(Name:string, d:dynamic)
 |40 |Dave   |
 |30 |Jasmine|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43NzwqCQBAG8LtPMexlFQSjOgkdok4G9QARMu5OJu4fcV0hqndvLairM6f5Pn6MxCFspSg+oqbcDX1j6hRkLu8GdSOS6BxBGH5SsgwJ8VB+q/jBJsNyYIW9GZYC29bhXC5eSToD7XGkH1rPRAU63Zi/W33cJXoCjag8DgQV1qU3HYo2likIq7w2bmfNVTVi2PCWqCud9b0gnkCWwSEEYJWE6ekb9wh0nRABAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(Name:string, d:dynamic)
@@ -157,8 +167,10 @@ datatable(Name:string, d:dynamic)
 
 Expand a bag and use the `ignoredProperties` option to ignore certain properties in the property bag.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XOPQ+CMBAG4J1fcekCJDUoOJE4mLjIYNwJMQe9IBEKaYHEqP/d8iFOtMt76dsnJ7A1Ny3JEaF4SqyKzLViC8yZR+fFLlgRC4FF9V0yDuyYm9HfDkkIRVoPj3Pc7Bh8XL4inLCnRdivCD5bByLUVSH/RrBiBKORWJ4H51zWisA2fRtQCpOmkg2NqhtSbUHaegP1WHbYEqSY3zrZYPZwBIdi/C6uS/Xw2ypeID7piet+AWW2HHFQAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(d:dynamic)
@@ -183,8 +195,10 @@ datatable(d:dynamic)
 
 Expand a bag and use the `OutputSchema` option to allow various optimizations to be evaluated before running the actual query.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjRSrlMq8xNzMZE2uaC4FIIByNaqV/BJzU5WsFJS88jPylHQUlBzTgVwjg1pNHRwKXRLLUuEKTfAo9Eoszs3MQ6g1BquN5apRSC1LzClNLElVSEpMjy/NK0hMztZI0VSwUtAA6bUqLinKzEvXUQDqssrJz0vXBADtklvGyQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(d:dynamic)
@@ -206,8 +220,10 @@ datatable(d:dynamic)
 
 Expand a bag and use the `OutputSchema` option to allow various optimizations to be evaluated before running the actual query. Use a wildcard `*` to return all columns of the input table.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPMQvCMBCF90L%2Fw5EplQyiTtmETh266CYi1%2BRog%2B21tGlB1P9upKKD9N5yB%2Fe9x7Pog4qapNX2xtg4oyClwfSu865lDYPvHZdJHJ3iCMJ8vuRd5NiQ0CCytmKhQOzLcG7WzyTsBz9aYi%2FUEpTiRF9oN0NHQlNRvwxlODSOf9z2L%2BwcRw%2BgCesRPUGB5WXkDs1V2gQ0yJWCt5eeSykILrpuQ70X00Yl8ggBAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(d:dynamic, Description: string)

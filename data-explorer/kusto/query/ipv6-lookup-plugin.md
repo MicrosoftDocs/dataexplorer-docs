@@ -1,11 +1,13 @@
 ---
-title:  ipv6_lookup plugin
+title:  "ipv6_lookup plugin"
 description: Learn how to use the ipv6_lookup plugin to look up an IPv6 address in a lookup table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/09/2024
+ms.date: 08/11/2024
 ---
 # ipv6_lookup plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The `ipv6_lookup` plugin looks up an IPv6 value in a lookup table and returns rows with matched values. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
@@ -23,7 +25,7 @@ The `ipv6_lookup` plugin looks up an IPv6 value in a lookup table and returns ro
 | *IPv6LookupKey* | `string` |  :heavy_check_mark: | The column of *LookupTable* with IPv6 string that is matched against each *SourceIPv6Key* value.|
 | *return_unmatched* | `bool` | | A boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 

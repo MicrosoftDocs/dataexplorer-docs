@@ -3,9 +3,11 @@ title:  lookup operator
 description: Learn how to use the lookup operator to extend columns of a fact table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # lookup operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Extends the columns of a fact table with values looked-up in a dimension table.
 
@@ -45,7 +47,7 @@ with the following differences:
 
 *LeftTable* `|` `lookup` [`kind` `=` (`leftouter`|`inner`)] `(`*RightTable*`)` `on` *Conditions*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -79,8 +81,10 @@ A table with:
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32RsW4CMQyG93sKKxOVslDahYoBqOhatWwVQ+4wyMJJqotpVakP3wQ3h2BAGRL7k+X/UxgFVq6TtWsZZ1sn+eTX6C1+T5P0FPb2FfsUg+Nar5wn/vmv7uCjATBjY8EsiDnfuXxxgsnYQu4vyZIpSAzKJjfYQ2Hvgl9YoFk4Zo+9ssfC1uRPY3kuxoNpNk8NZ5ln8tcuNwXsnMmlS5saqXqUJW3u7XX9gIfAijvFNfQ5M5hUeq3yGlxzq4KQ704Kw180v8CZHz/hQGE7Y9xJPAr2gyDEANXMgjr9AbRCGP7OAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let FactTable=datatable(Row:string,Personal:string,Family:string) [

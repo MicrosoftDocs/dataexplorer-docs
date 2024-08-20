@@ -1,11 +1,14 @@
 ---
 title:  Functions library
-description: This article describes user-defined functions that extend Azure Data Explorer capabilities.
+description: This article describes user-defined functions that extend query environment capabilities.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/07/2022
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Functions library
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The following article contains a categorized list of [UDF (user-defined functions)](../query/functions/user-defined-functions.md).
 
@@ -40,7 +43,7 @@ The following section contains functions for rendering interactive [Plotly chart
 
 ## PromQL functions
 
-The following section contains common [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) functions. These functions can be used for analysis of metrics ingested to your cluster by the [Prometheus](https://prometheus.io/) monitoring system. All functions assume that metrics in your cluster are structured using the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/).
+The following section contains common [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) functions. These functions can be used for analysis of metrics ingested to your database by the [Prometheus](https://prometheus.io/) monitoring system. All functions assume that metrics in your database are structured using the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/).
 
 | Function Name | Description |
 |--|--|
