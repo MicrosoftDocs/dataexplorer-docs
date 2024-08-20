@@ -8,7 +8,7 @@ ms.date: 02/16/2024
 ---
 # Configure a database using a Kusto Query Language script
 
-You can run a Kusto Query Language script to configure your database during Azure Resource Management (ARM) template deployment. A script is a list of one or more [management commands](/kusto/management/index), each separated by one line break, and is created as a resource that is accessed with the ARM template.
+You can run a Kusto Query Language script to configure your database during Azure Resource Management (ARM) template deployment. A script is a list of one or more [management commands](/kusto/management/index?view=azure-data-explorer&preserve-view=true), each separated by one line break, and is created as a resource that is accessed with the ARM template.
 
 The script can only run database-level management commands that start with the following verbs:
 
@@ -55,7 +55,7 @@ Notice the two commands are idempotent. When first run, they create the tables, 
 The principal, such as a user or service principal, used to deploy a script must have the following security roles:
 
 * [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role on the cluster
-* [Admin](/kusto/access-control/role-based-access-control) role on the database
+* [Admin](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) role on the database
 
 > [!IMPORTANT]
 > The principal provisioning the cluster automatically gets the `All Databases Admin` role on the cluster.
@@ -270,12 +270,12 @@ Use the following settings:
 
 * Scripts are only supported in Azure Data Explorer; Scripts aren't supported in Synapse Data Explorer pools.
 * Two scripts can't be added, modified, or removed in parallel on the same cluster. If this occurs, the following error: `Code="ServiceIsInMaintenance"` is raised.  You can work around the issue by placing a dependency between the two scripts so that they're created or updated sequentially.
-* To create functions with [cross-cluster queries](/kusto/query/cross-cluster-or-database-queries) using scripts, you must set the `skipvalidation` property to `true` in the [.create function command](/kusto/management/create-function).
+* To create functions with [cross-cluster queries](/kusto/query/cross-cluster-or-database-queries?view=azure-data-explorer&preserve-view=true) using scripts, you must set the `skipvalidation` property to `true` in the [.create function command](/kusto/management/create-function?view=azure-data-explorer&preserve-view=true).
 
 ## Troubleshooting
 
-Commands run by a script resource don't appear in the results of the [.show commands-and-queries](/kusto/management/commands-and-queries) command. You can trace the script execution using the [.show journal](/kusto/management/journal) command.
+Commands run by a script resource don't appear in the results of the [.show commands-and-queries](/kusto/management/commands-and-queries?view=azure-data-explorer&preserve-view=true) command. You can trace the script execution using the [.show journal](/kusto/management/journal?view=azure-data-explorer&preserve-view=true) command.
 
 ## Related content
 
-* [Management commands overview](/kusto/management/index)
+* [Management commands overview](/kusto/management/index?view=azure-data-explorer&preserve-view=true)

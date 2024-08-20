@@ -123,7 +123,7 @@ The availability zones are listed in the `availabilityZoneMappings` property.
 
 ### [PowerShell](#tab/az-powershell)
 
-Before you start, make sure you have [az.Kusto cmdlets](/kusto/api/powershell/azure-powershell) installed and [signed in](/kusto/api/powershell/azure-powershell#sign-in-to-azure), and then run the following command to get the list of availability zones for your cluster's region:
+Before you start, make sure you have [az.Kusto cmdlets](/kusto/api/powershell/azure-powershell) installed and [signed in](/kusto/api/powershell/azure-powershell?view=azure-data-explorer&preserve-view=true#sign-in-to-azure), and then run the following command to get the list of availability zones for your cluster's region:
 
 1. Set the resource ID of your cluster. You can get your cluster's resource ID from the Azure portal from your cluster's **Properties** page.
 
@@ -230,7 +230,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
 ### [PowerShell](#tab/config-powershell)
 
-You can use the following PowerShell command to configure your cluster to use availability zones. Make sure the [Kusto tools libraries](/kusto/api/powershell/powershell#get-the-libraries) is installed and replace the parameters with your values.
+You can use the following PowerShell command to configure your cluster to use availability zones. Make sure the [Kusto tools libraries](/kusto/api/powershell/powershell?view=azure-data-explorer&preserve-view=true#get-the-libraries) is installed and replace the parameters with your values.
 
 ```powershell
 Update-AzKustoCluster -SubscriptionId {subscriptionId} -ResourceGroupName {resourceGroupName} -Name {clusterName} -Zone "{zone1}", "{zone2}", "{zone3}"

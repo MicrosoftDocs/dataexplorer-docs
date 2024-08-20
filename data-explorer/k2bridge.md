@@ -49,7 +49,7 @@ Before you can visualize data from Azure Data Explorer in Kibana, have the follo
 * A Microsoft Entra service principal authorized to view data in Azure Data Explorer, including the client ID and client secret. Alternatively, you can use a [system-assigned managed identity](/azure/aks/use-managed-identity).
 
 If you choose to use a Microsoft Entra service principal, you will need to [create a Microsoft Entra service principal](/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). For the installation, you will need the ClientID and a Secret.
-We recommend a service principal with viewer permission and discourage you from using higher-level permissions. To assign permissions, see [Manage database permissions in the Azure portal](manage-database-permissions.md) or use management commands to [Manage database security roles](/kusto/management/manage-database-security-roles).
+We recommend a service principal with viewer permission and discourage you from using higher-level permissions. To assign permissions, see [Manage database permissions in the Azure portal](manage-database-permissions.md) or use management commands to [Manage database security roles](/kusto/management/manage-database-security-roles?view=azure-data-explorer&preserve-view=true).
 
 If you choose to use a system assigned identity, you will need to get the agent pool managed identity **ClientID** (located in the generated "[_MC_xxxx_]" [resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks)) 
 

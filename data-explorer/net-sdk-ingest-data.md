@@ -17,7 +17,7 @@ ms.date: 05/08/2023
 > * [Go](go-ingest-data.md)
 > * [Java](java-ingest-data.md)
 
-There are two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). For more information on .NET SDK, see [about .NET SDK](/kusto/api/netfx/about-the-sdk).
+There are two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). For more information on .NET SDK, see [about .NET SDK](/kusto/api/netfx/about-the-sdk?view=azure-data-explorer&preserve-view=true).
 These libraries enable you to ingest (load) data into a cluster and query data from your code. In this article, you first create a table and data mapping in a test cluster. You then queue an ingestion to the cluster and validate the results.
 
 ## Prerequisites
@@ -51,7 +51,7 @@ The tenant ID in this case is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
 
 This example uses an interactive Microsoft Entra user authentication to access the cluster. You can also use Microsoft Entra application authentication with certificate or application secret. Make sure to set the correct values for `tenantId` and `clusterUri` before running this code. 
 
-The SDK provides a convenient way to set up the authentication method as part of the connection string. For complete documentation on connection strings, see [connection strings](/kusto/api/connection-strings/kusto).
+The SDK provides a convenient way to set up the authentication method as part of the connection string. For complete documentation on connection strings, see [connection strings](/kusto/api/connection-strings/kusto?view=azure-data-explorer&preserve-view=true).
 
 > [!NOTE]
 > The current version of the SDK doesn't support interactive user authentication on .NET Core. If required, use Microsoft Entra username/password or application authentication instead.
@@ -121,7 +121,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 ## Define ingestion mapping
 
 Map the incoming CSV data to the column names used when creating the table.
-Provision a [CSV column mapping object](/kusto/management/create-ingestion-mapping-command) on that table.
+Provision a [CSV column mapping object](/kusto/management/create-ingestion-mapping-command?view=azure-data-explorer&preserve-view=true) on that table.
 
 ```csharp
 var tableMappingName = "StormEvents_CSV_Mapping";
@@ -164,7 +164,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## Define batching policy for your table
 
-Batching incoming data optimizes data shard size, which is controlled by the [ingestion batching policy](/kusto/management/batching-policy). Modify the policy with the [ingestion batching policy management command](/kusto/management/show-table-ingestion-batching-policy). Use this policy to reduce latency of slowly arriving data.
+Batching incoming data optimizes data shard size, which is controlled by the [ingestion batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true). Modify the policy with the [ingestion batching policy management command](/kusto/management/show-table-ingestion-batching-policy?view=azure-data-explorer&preserve-view=true). Use this policy to reduce latency of slowly arriving data.
 
 ```csharp
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))

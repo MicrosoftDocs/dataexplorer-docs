@@ -64,7 +64,7 @@ You can use the following methods to execute admin commands against a cluster wi
     :::image type="content" source="media/devops/create-folders.png" alt-text="Screenshot showing the folders to create in the repo.":::
 
     > [!TIP]
-    > When creating your own workflow, we recommend making your code idempotent. For example, use [`.create-merge table`](/kusto/management/create-merge-table-command) instead of [`.create table`](/kusto/management/create-table-command), and use [`.create-or-alter`](/kusto/management/create-alter-function) function instead of [`.create`](/kusto/management/create-function) function.
+    > When creating your own workflow, we recommend making your code idempotent. For example, use [`.create-merge table`](/kusto/management/create-merge-table-command?view=azure-data-explorer&preserve-view=true) instead of [`.create table`](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true), and use [`.create-or-alter`](/kusto/management/create-alter-function?view=azure-data-explorer&preserve-view=true) function instead of [`.create`](/kusto/management/create-function?view=azure-data-explorer&preserve-view=true) function.
 
 ## Create a release pipeline
 

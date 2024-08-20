@@ -10,7 +10,7 @@ ms.date: 09/13/2023
 
 # Use Azure Data Factory command activity to run Azure Data Explorer management commands
 
-[Azure Data Factory](/azure/data-factory/) (ADF) is a cloud-based data integration service that allows you to perform a combination of activities on the data. Use ADF to create data-driven workflows for orchestrating and automating data movement and data transformation. The **Azure Data Explorer Command** activity in Azure Data Factory enables you to run [Azure Data Explorer management commands](/kusto/query/index#management-commands) within an ADF workflow. This article teaches you how to create a pipeline with a lookup activity and ForEach activity containing an Azure Data Explorer command activity.
+[Azure Data Factory](/azure/data-factory/) (ADF) is a cloud-based data integration service that allows you to perform a combination of activities on the data. Use ADF to create data-driven workflows for orchestrating and automating data movement and data transformation. The **Azure Data Explorer Command** activity in Azure Data Factory enables you to run [Azure Data Explorer management commands](/kusto/query/index?view=azure-data-explorer&preserve-view=true#management-commands) within an ADF workflow. This article teaches you how to create a pipeline with a lookup activity and ForEach activity containing an Azure Data Explorer command activity.
 
 ## Prerequisites
 
@@ -146,7 +146,7 @@ The [For-Each](/azure/data-factory/control-flow-for-each-activity) activity is u
     > The command activity has the following limits:
     > * Size limit: 1 MB response size
     > * Time limit: 20 minutes (default), 1 hour (maximum).
-    > * If needed, you can append a query to the result using [AdminThenQuery](/kusto/management/index#combining-queries-and-management-commands), to reduce resulting size/time.
+    > * If needed, you can append a query to the result using [AdminThenQuery](/kusto/management/index?view=azure-data-explorer&preserve-view=true#combining-queries-and-management-commands), to reduce resulting size/time.
 
 1. Now the pipeline is ready. You can go back to the main pipeline view by clicking the pipeline name.
 

@@ -18,7 +18,7 @@ ms.date: 09/11/2022
 > * [Go](go-ingest-data.md)
 > * [Java](java-ingest-data.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides a [Go SDK client library](/kusto/api/golang/kusto-golang-client-library) for interacting with the Azure Data Explorer service. You can use the [Go SDK](https://github.com/Azure/azure-kusto-go) to ingest, control, and query data in Azure Data Explorer clusters.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides a [Go SDK client library](/kusto/api/golang/kusto-golang-client-library?view=azure-data-explorer&preserve-view=true) for interacting with the Azure Data Explorer service. You can use the [Go SDK](https://github.com/Azure/azure-kusto-go) to ingest, control, and query data in Azure Data Explorer clusters.
 
 In this article, you first create a table and data mapping in a test cluster. You then queue an ingestion to the cluster using the Go SDK and validate the results.
 
@@ -27,7 +27,7 @@ In this article, you first create a table and data mapping in a test cluster. Yo
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-* Install [Go](https://golang.org/) with the following [Go SDK minimum requirements](/kusto/api/golang/kusto-golang-client-library#minimum-requirements).
+* Install [Go](https://golang.org/) with the following [Go SDK minimum requirements](/kusto/api/golang/kusto-golang-client-library?view=azure-data-explorer&preserve-view=true#minimum-requirements).
 * Create an [App Registration and grant it permissions to the database](provision-entra-id-app.md). Save the client ID and client secret for later use.
 
 ## Install the Go SDK
@@ -81,7 +81,7 @@ The Kusto create table command is as follows:
 
 ### Create mapping
 
-Data mappings are used during ingestion to map incoming data to columns inside Azure Data Explorer tables. For more information, see [data mapping](/kusto/management/mappings). Mapping is created, in the same way as a table, using the `Mgmt` function with the database name and the appropriate command. The complete command is available in the [GitHub repo for the sample](https://github.com/Azure-Samples/Azure-Data-Explorer-Go-SDK-example-to-ingest-data/blob/main/main.go#L20).
+Data mappings are used during ingestion to map incoming data to columns inside Azure Data Explorer tables. For more information, see [data mapping](/kusto/management/mappings). Mapping is created, in the same way as a table, using the `Mgmt` function with the database name and the appropriate command. The complete command is available in the [GitHub repo for the sample](https://github.com/Azure-Samples/Azure-Data-Explorer-Go-SDK-example-to-ingest-data/blob/main/main.go?view=azure-data-explorer&preserve-view=true#L20).
 
 ```go
 func createMapping(kc *kusto.Client, kustoDB string) {

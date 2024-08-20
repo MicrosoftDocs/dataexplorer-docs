@@ -15,15 +15,15 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| - [Kusto.Language Overview](/kusto/api/netfx/about-kusto-language) <br/> - [Define schemas for semantic analysis with Kusto.Language](/kusto/api/netfx/kusto-language-define-schemas) <br/> - [Parse queries and commands with Kusto.Language](/kusto/api/netfx/kusto-language-parse-queries) | New articles. Describes how to use the Kusto.Language library for parsing queries. |
-| [Management commands: Create an app to run management commands](/kusto/api/get-started/app-management-commands) | New article. Describes how to create an app to run management commands using Kusto client libraries. |
+| - [Kusto.Language Overview](/kusto/api/netfx/about-kusto-language?view=azure-data-explorer&preserve-view=true) <br/> - [Define schemas for semantic analysis with Kusto.Language](/kusto/api/netfx/kusto-language-define-schemas?view=azure-data-explorer&preserve-view=true) <br/> - [Parse queries and commands with Kusto.Language](/kusto/api/netfx/kusto-language-parse-queries?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to use the Kusto.Language library for parsing queries. |
+| [Management commands: Create an app to run management commands](/kusto/api/get-started/app-management-commands?view=azure-data-explorer&preserve-view=true) | New article. Describes how to create an app to run management commands using Kusto client libraries. |
 
 **Query**
 
 | Article title | Description |
 |--|--|
-| - [Join operator](/kusto/query/join-operator) <br/> - [fullouter join](/kusto/query/join-fullouter) <br/> - [inner join](/kusto/query/join-inner) <br/> - [innerunique join](/kusto/query/join-innerunique) <br/> - [leftanti join](/kusto/query/join-leftanti) <br/> - [leftouter join](/kusto/query/join-leftouter) <br/> - [leftsemi join](/kusto/query/join-leftsemi) <br/> - [rightanti join](/kusto/query/join-rightanti) <br/> - [rightouter join](/kusto/query/join-rightouter) <br/> - [rightsemi join](/kusto/query/join-rightsemi) | Updated and new articles. Refreshed `join` overview and added topics describing each `join` kind. |
-| [replace_strings()](/kusto/query/replace-strings-function) | New article. Describes how to use the replace_strings() function to replace multiple string matches with multiple replacement strings. |
+| - [Join operator](/kusto/query/join-operator?view=azure-data-explorer&preserve-view=true) <br/> - [fullouter join](/kusto/query/join-fullouter?view=azure-data-explorer&preserve-view=true) <br/> - [inner join](/kusto/query/join-inner?view=azure-data-explorer&preserve-view=true) <br/> - [innerunique join](/kusto/query/join-innerunique?view=azure-data-explorer&preserve-view=true) <br/> - [leftanti join](/kusto/query/join-leftanti?view=azure-data-explorer&preserve-view=true) <br/> - [leftouter join](/kusto/query/join-leftouter?view=azure-data-explorer&preserve-view=true) <br/> - [leftsemi join](/kusto/query/join-leftsemi?view=azure-data-explorer&preserve-view=true) <br/> - [rightanti join](/kusto/query/join-rightanti?view=azure-data-explorer&preserve-view=true) <br/> - [rightouter join](/kusto/query/join-rightouter?view=azure-data-explorer&preserve-view=true) <br/> - [rightsemi join](/kusto/query/join-rightsemi?view=azure-data-explorer&preserve-view=true) | Updated and new articles. Refreshed `join` overview and added topics describing each `join` kind. |
+| [replace_strings()](/kusto/query/replace-strings-function?view=azure-data-explorer&preserve-view=true) | New article. Describes how to use the replace_strings() function to replace multiple string matches with multiple replacement strings. |
 
 ## May 2023
 
@@ -43,16 +43,16 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|[Create and alter delta external tables on Azure Storage](/kusto/management/external-tables-delta-lake)| New article. Describes how to create and alter delta external tables on Azure Storage.|
+|[Create and alter delta external tables on Azure Storage](/kusto/management/external-tables-delta-lake?view=azure-data-explorer&preserve-view=true)| New article. Describes how to create and alter delta external tables on Azure Storage.|
 
 **Query**
 
 | Article title | Description |
 |--|--|
-|[postgresql_request plugin](/kusto/query/postgresql-request-plugin)| New article. Describes how to use the postgresql_request plugin to send a SQL query to a PostgreSql server network endpoint.|
-|[Treemap](/kusto/query/visualization-treemap)| New article. Describes how to use the treemap visualization to visualize data.|
-|[geo_info_from_ip_address()](/kusto/query/geo-info-from-ip-address-function)| New article. Describes how to use the geo_info_from_ip_address() function to retrieve geolocation information about IPv4 or IPv6 addresses.|
-|[bag_zip()](/kusto/query/bag-zip)| New article. Describes how to use the bag_zip() function to merge two dynamic arrays into a single property-bag of keys and values.|
+|[postgresql_request plugin](/kusto/query/postgresql-request-plugin?view=azure-data-explorer&preserve-view=true)| New article. Describes how to use the postgresql_request plugin to send a SQL query to a PostgreSql server network endpoint.|
+|[Treemap](/kusto/query/visualization-treemap?view=azure-data-explorer&preserve-view=true)| New article. Describes how to use the treemap visualization to visualize data.|
+|[geo_info_from_ip_address()](/kusto/query/geo-info-from-ip-address-function?view=azure-data-explorer&preserve-view=true)| New article. Describes how to use the geo_info_from_ip_address() function to retrieve geolocation information about IPv4 or IPv6 addresses.|
+|[bag_zip()](/kusto/query/bag-zip?view=azure-data-explorer&preserve-view=true)| New article. Describes how to use the bag_zip() function to merge two dynamic arrays into a single property-bag of keys and values.|
 
 ## April 2023
 
@@ -60,7 +60,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| - [Set up your development environment to use Kusto client libraries](/kusto/api/get-started/app-set-up)<br/>- [Hello Kusto: Create your first Kusto client app](/kusto/api/get-started/app-hello-kusto)<br/> - [Basic query: Create an app to run basic queries](/kusto/api/get-started/app-basic-query) | New articles. Describes how to write code with SDKs.|
+| - [Set up your development environment to use Kusto client libraries](/kusto/api/get-started/app-set-up?view=azure-data-explorer&preserve-view=true)<br/>- [Hello Kusto: Create your first Kusto client app](/kusto/api/get-started/app-hello-kusto?view=azure-data-explorer&preserve-view=true)<br/> - [Basic query: Create an app to run basic queries](/kusto/api/get-started/app-basic-query?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to write code with SDKs.|
 
 **General**
 
@@ -72,20 +72,20 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|- [log_reduce_fl()](/kusto/functions-library/log-reduce-fl) <br/> - [log_reduce_full_fl()](/kusto/functions-library/log-reduce-full-fl) <br/> - [log_reduce_predict_fl()](/kusto/functions-library/log-reduce-predict-fl) <br/> - [log_reduce_predict_full_fl()](/kusto/functions-library/log-reduce-predict-full-fl) <br/> - [log_reduce_train_fl()](/kusto/functions-library/log-reduce-train-fl)| New articles. Describes how to find common patterns in textual logs. |
+|- [log_reduce_fl()](/kusto/functions-library/log-reduce-fl?view=azure-data-explorer&preserve-view=true) <br/> - [log_reduce_full_fl()](/kusto/functions-library/log-reduce-full-fl?view=azure-data-explorer&preserve-view=true) <br/> - [log_reduce_predict_fl()](/kusto/functions-library/log-reduce-predict-fl?view=azure-data-explorer&preserve-view=true) <br/> - [log_reduce_predict_full_fl()](/kusto/functions-library/log-reduce-predict-full-fl?view=azure-data-explorer&preserve-view=true) <br/> - [log_reduce_train_fl()](/kusto/functions-library/log-reduce-train-fl?view=azure-data-explorer&preserve-view=true)| New articles. Describes how to find common patterns in textual logs. |
 
 **Management**
 
 | Article title | Description |
 |--|--|
-|[Use a managed identity to run a continuous export job](/kusto/management/data-export/continuous-export-with-managed-identity)| New article. Describes how to use a managed identity for continuous export.
+|[Use a managed identity to run a continuous export job](/kusto/management/data-export/continuous-export-with-managed-identity?view=azure-data-explorer&preserve-view=true)| New article. Describes how to use a managed identity for continuous export.
 
 **Query**
 
 | Article title | Description |
 |--|--|
-|[Syntax conventions for reference documentation](/kusto/query/syntax-conventions)| New article. Describes the syntax conventions for the Kusto Query Language and management command documentation.|
-|- [punycode_from_string()](/kusto/query/punycode-from-string-function) <br/> - [punycode_to_string()](/kusto/query/punycode-to-string-function)| New articles. Describes how to encode and decode Punycode.|
+|[Syntax conventions for reference documentation](/kusto/query/syntax-conventions?view=azure-data-explorer&preserve-view=true)| New article. Describes the syntax conventions for the Kusto Query Language and management command documentation.|
+|- [punycode_from_string()](/kusto/query/punycode-from-string-function?view=azure-data-explorer&preserve-view=true) <br/> - [punycode_to_string()](/kusto/query/punycode-to-string-function?view=azure-data-explorer&preserve-view=true)| New articles. Describes how to encode and decode Punycode.|
 
 ## March 2023
 
@@ -102,15 +102,15 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Manage view access to tables in Azure Data Explorer](/kusto/management/manage-table-view-access) | New article. Describes how to grant access to tables in Azure Data Explorer. |
-|- [Materialized views](/kusto/management/materialized-views/materialized-view-overview)<br/>- [.show materialized-view(s)](/kusto/management/materialized-views/materialized-view-show-command)<br/>- [.show materialized-view extents](/kusto/management/materialized-views/materialized-view-show-extents-command)<br/>- [.show materialized-view failures](/kusto/management/materialized-views/materialized-view-show-failures-command)<br/>- [.show materialized-view schema](/kusto/management/materialized-views/materialized-view-show-schema-command)<br/>- [.alter materialized-view autoUpdateSchema](/kusto/management/materialized-views/materialized-view-alter-autoupdateschema) <br/> - [.alter materialized-view docstring](/kusto/management/materialized-views/materialized-view-alter-docstring)<br/>- [.alter materialized-view folder](/kusto/management/materialized-views/materialized-view-alter-folder)<br/>- [.alter materialized-view lookback](/kusto/management/materialized-views/materialized-view-alter-lookback)<br/>- [.alter materialized-view](/kusto/management/materialized-views/materialized-view-alter)<br/>- [.clear materialized-view data](/kusto/management/materialized-views/materialized-view-clear-data)<br/>- [.create-or-alter materialized-view](/kusto/management/materialized-views/materialized-view-create-or-alter)<br/>- [.create materialized-view](/kusto/management/materialized-views/materialized-view-create)<br/>- [.drop materialized-view](/kusto/management/materialized-views/materialized-view-drop)<br/>- [.disable .enable materialized-view](/kusto/management/materialized-views/materialized-view-enable-disable)<br/>- [.rename materialized-view](/kusto/management/materialized-views/materialized-view-rename)<br/>- [.show materialized view details](/kusto/management/materialized-views/materialized-view-show-details-command) | New and updated articles. Describe materialized-view commands. Parameters and examples added.|
-|- [.alter extent tags](/kusto/management/alter-extent)<br/>- [.drop extent tags](/kusto/management/drop-extent-tags)<br/>- [.move extents](/kusto/management/move-extents)<br/>- [.replace extents](/kusto/management/replace-extents) | Updated articles. Command syntax updated.|
+| [Manage view access to tables in Azure Data Explorer](/kusto/management/manage-table-view-access?view=azure-data-explorer&preserve-view=true) | New article. Describes how to grant access to tables in Azure Data Explorer. |
+|- [Materialized views](/kusto/management/materialized-views/materialized-view-overview?view=azure-data-explorer&preserve-view=true)<br/>- [.show materialized-view(s)](/kusto/management/materialized-views/materialized-view-show-command?view=azure-data-explorer&preserve-view=true)<br/>- [.show materialized-view extents](/kusto/management/materialized-views/materialized-view-show-extents-command?view=azure-data-explorer&preserve-view=true)<br/>- [.show materialized-view failures](/kusto/management/materialized-views/materialized-view-show-failures-command?view=azure-data-explorer&preserve-view=true)<br/>- [.show materialized-view schema](/kusto/management/materialized-views/materialized-view-show-schema-command?view=azure-data-explorer&preserve-view=true)<br/>- [.alter materialized-view autoUpdateSchema](/kusto/management/materialized-views/materialized-view-alter-autoupdateschema?view=azure-data-explorer&preserve-view=true) <br/> - [.alter materialized-view docstring](/kusto/management/materialized-views/materialized-view-alter-docstring?view=azure-data-explorer&preserve-view=true)<br/>- [.alter materialized-view folder](/kusto/management/materialized-views/materialized-view-alter-folder?view=azure-data-explorer&preserve-view=true)<br/>- [.alter materialized-view lookback](/kusto/management/materialized-views/materialized-view-alter-lookback?view=azure-data-explorer&preserve-view=true)<br/>- [.alter materialized-view](/kusto/management/materialized-views/materialized-view-alter?view=azure-data-explorer&preserve-view=true)<br/>- [.clear materialized-view data](/kusto/management/materialized-views/materialized-view-clear-data?view=azure-data-explorer&preserve-view=true)<br/>- [.create-or-alter materialized-view](/kusto/management/materialized-views/materialized-view-create-or-alter?view=azure-data-explorer&preserve-view=true)<br/>- [.create materialized-view](/kusto/management/materialized-views/materialized-view-create?view=azure-data-explorer&preserve-view=true)<br/>- [.drop materialized-view](/kusto/management/materialized-views/materialized-view-drop?view=azure-data-explorer&preserve-view=true)<br/>- [.disable .enable materialized-view](/kusto/management/materialized-views/materialized-view-enable-disable?view=azure-data-explorer&preserve-view=true)<br/>- [.rename materialized-view](/kusto/management/materialized-views/materialized-view-rename?view=azure-data-explorer&preserve-view=true)<br/>- [.show materialized view details](/kusto/management/materialized-views/materialized-view-show-details-command?view=azure-data-explorer&preserve-view=true) | New and updated articles. Describe materialized-view commands. Parameters and examples added.|
+|- [.alter extent tags](/kusto/management/alter-extent?view=azure-data-explorer&preserve-view=true)<br/>- [.drop extent tags](/kusto/management/drop-extent-tags?view=azure-data-explorer&preserve-view=true)<br/>- [.move extents](/kusto/management/move-extents?view=azure-data-explorer&preserve-view=true)<br/>- [.replace extents](/kusto/management/replace-extents?view=azure-data-explorer&preserve-view=true) | Updated articles. Command syntax updated.|
 
 **Query**
 
 | Article title | Description |
 |--|--|
-|- [Kusto.Explorer code features](/kusto/tools/kusto-explorer-code-features)<br/>- [Kusto Explorer options](/kusto/tools/kusto-explorer-options)<br/>- [Kusto.Explorer keyboard shortcuts (hot keys)](/kusto/tools/kusto-explorer-shortcuts)<br/>- [Using Kusto.Explorer](/kusto/tools/kusto-explorer-using)<br/>- [Kusto.Explorer installation and user interface](/kusto/tools/kusto-explorer) | Updated articles. Refreshed content.|
+|- [Kusto.Explorer code features](/kusto/tools/kusto-explorer-code-features?view=azure-data-explorer&preserve-view=true)<br/>- [Kusto Explorer options](/kusto/tools/kusto-explorer-options?view=azure-data-explorer&preserve-view=true)<br/>- [Kusto.Explorer keyboard shortcuts (hot keys)](/kusto/tools/kusto-explorer-shortcuts?view=azure-data-explorer&preserve-view=true)<br/>- [Using Kusto.Explorer](/kusto/tools/kusto-explorer-using?view=azure-data-explorer&preserve-view=true)<br/>- [Kusto.Explorer installation and user interface](/kusto/tools/kusto-explorer?view=azure-data-explorer&preserve-view=true) | Updated articles. Refreshed content.|
 
 ## February 2023
 
@@ -118,7 +118,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Authentication over HTTPS](/kusto/api/rest/authentication)| Updated article.  REST API authorization examples added. |
+| [Authentication over HTTPS](/kusto/api/rest/authentication?view=azure-data-explorer&preserve-view=true)| Updated article.  REST API authorization examples added. |
 
 **General**
 
@@ -128,7 +128,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |[Connect from common apps](connect-common-apps.md) | New article. Describes how to connect to Azure Data Explorer with SQL Server emulation from various apps.|
 |- [Connect to Azure Data Explorer with JDBC](connect-jdbc.md) <br/> - [Connect to Azure Data Explorer with SQL Server emulation](sql-server-emulation-overview.md) <br/> - [Connect to Azure Data Explorer with ODBC](connect-odbc.md) | New articles. Describes how to connect to Azure Data Explorer with different connection apps.|
 |[Azure Data Explorer as a linked server from SQL Server](linked-server.md)| New article. Describes how to connect Azure Data Explorer as a linked server from SQL Server.|
-|[Set timeout limits](/kusto/set-timeout-limits)| New article. Describes how to set query timeout limits.|
+|[Set timeout limits](/kusto/set-timeout-limits?view=azure-data-explorer&preserve-view=true)| New article. Describes how to set query timeout limits.|
 |[Data connectors overview](integrate-data-overview.md)| New article. Describes available data connectors and their capabilities.|
 |- [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md) <br/> - [Azure Data Explorer web UI results grid](web-results-grid.md) <br/> - [Share queries from Azure Data Explorer web UI](web-share-queries.md) <br/> - [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md) <br/> - [Explore the samples gallery](web-ui-samples-query.md) | New articles. Describes how to use, query, visualize, and share queries in the Azure Data Explorer web UI.|
 |[Query data using T-SQL](t-sql.md)| Updated article. Support limitations added.|
@@ -140,28 +140,28 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) <br/> - [Referencing security principals](/kusto/management/reference-security-principals) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
+|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) <br/> - [Referencing security principals](/kusto/management/reference-security-principals?view=azure-data-explorer&preserve-view=true) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
 
 **Functions library**
 
 | Article title | Description |
 |--|--|
-|- [plotly_anomaly_fl()](/kusto/functions-library/plotly-anomaly-fl) <br/> - [plotly_scatter3d_fl()](/kusto/functions-library/plotly-scatter3d-fl) | New articles. Describes how to customize a plotly template. |
+|- [plotly_anomaly_fl()](/kusto/functions-library/plotly-anomaly-fl?view=azure-data-explorer&preserve-view=true) <br/> - [plotly_scatter3d_fl()](/kusto/functions-library/plotly-scatter3d-fl?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to customize a plotly template. |
 
 **Management**
 
 | Article title | Description |
 |--|--|
-|- [.dup-next-failed-ingest](/kusto/management/dup-next-failed-ingest) <br/> - [.dup-next-ingest](/kusto/management/dup-next-ingest) | New articles. Describes how to troubleshoot data on demand. |
+|- [.dup-next-failed-ingest](/kusto/management/dup-next-failed-ingest?view=azure-data-explorer&preserve-view=true) <br/> - [.dup-next-ingest](/kusto/management/dup-next-ingest?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to troubleshoot data on demand. |
 
 **Query**
 
 | Article title | Description |
 |--|--|
-| - [render operator](/kusto/query/render-operator)<br />- [Anomaly chart](/kusto/query/visualization-anomalychart) <br/> - [Area chart](/kusto/query/visualization-areachart) <br/> - [Bar chart](/kusto/query/visualization-barchart) <br/> - [Card](/kusto/query/visualization-card) <br/> - [Column chart](/kusto/query/visualization-columnchart) <br/> - [Ladder chart](/kusto/query/visualization-ladderchart) <br/> - [Line chart](/kusto/query/visualization-linechart) <br/> - [Pie chart](/kusto/query/visualization-piechart) <br/> - [Pivot chart](/kusto/query/visualization-pivotchart) <br/> - [Scatter chart](/kusto/query/visualization-scatterchart) <br/> - [Stacked area chart](/kusto/query/visualization-stackedareachart) <br/> - [Table](/kusto/query/visualization-table) <br/> - [Time chart](/kusto/query/visualization-timechart) <br/> - [Time pivot](/kusto/query/visualization-timepivot) | Updated and new articles. Refreshed render overview and added topics describing each render visualization. |
-| [series_dot_product()](/kusto/query/series-dot-product-function) | New article. Describes how to calculate the dot product of two numeric series.|
-| [hll_if() (aggregation function)](/kusto/query/hll-if-aggregation-function) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
-| [bag_set_key()](/kusto/query/bag-set-key-function) | New article. Describes how to set a given key to a given value in a dynamic property bag. |
+| - [render operator](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true)<br />- [Anomaly chart](/kusto/query/visualization-anomalychart?view=azure-data-explorer&preserve-view=true) <br/> - [Area chart](/kusto/query/visualization-areachart?view=azure-data-explorer&preserve-view=true) <br/> - [Bar chart](/kusto/query/visualization-barchart?view=azure-data-explorer&preserve-view=true) <br/> - [Card](/kusto/query/visualization-card?view=azure-data-explorer&preserve-view=true) <br/> - [Column chart](/kusto/query/visualization-columnchart?view=azure-data-explorer&preserve-view=true) <br/> - [Ladder chart](/kusto/query/visualization-ladderchart?view=azure-data-explorer&preserve-view=true) <br/> - [Line chart](/kusto/query/visualization-linechart?view=azure-data-explorer&preserve-view=true) <br/> - [Pie chart](/kusto/query/visualization-piechart?view=azure-data-explorer&preserve-view=true) <br/> - [Pivot chart](/kusto/query/visualization-pivotchart?view=azure-data-explorer&preserve-view=true) <br/> - [Scatter chart](/kusto/query/visualization-scatterchart?view=azure-data-explorer&preserve-view=true) <br/> - [Stacked area chart](/kusto/query/visualization-stackedareachart?view=azure-data-explorer&preserve-view=true) <br/> - [Table](/kusto/query/visualization-table?view=azure-data-explorer&preserve-view=true) <br/> - [Time chart](/kusto/query/visualization-timechart?view=azure-data-explorer&preserve-view=true) <br/> - [Time pivot](/kusto/query/visualization-timepivot?view=azure-data-explorer&preserve-view=true) | Updated and new articles. Refreshed render overview and added topics describing each render visualization. |
+| [series_dot_product()](/kusto/query/series-dot-product-function?view=azure-data-explorer&preserve-view=true) | New article. Describes how to calculate the dot product of two numeric series.|
+| [hll_if() (aggregation function)](/kusto/query/hll-if-aggregation-function?view=azure-data-explorer&preserve-view=true) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
+| [bag_set_key()](/kusto/query/bag-set-key-function?view=azure-data-explorer&preserve-view=true) | New article. Describes how to set a given key to a given value in a dynamic property bag. |
 
 ## December 2022
 
@@ -182,23 +182,23 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|- [series_mv_ee_anomalies_fl()](/kusto/functions-library/series-mv-ee-anomalies-fl)<br /> - [series_mv_if_anomalies_fl()](/kusto/functions-library/series-mv-if-anomalies-fl)<br /> - [series_mv_oc_anomalies_fl()](/kusto/functions-library/series-mv-oc-anomalies-fl) | New article. Describes multivariate anomalies in a series user-defined functions. |
+|- [series_mv_ee_anomalies_fl()](/kusto/functions-library/series-mv-ee-anomalies-fl?view=azure-data-explorer&preserve-view=true)<br /> - [series_mv_if_anomalies_fl()](/kusto/functions-library/series-mv-if-anomalies-fl?view=azure-data-explorer&preserve-view=true)<br /> - [series_mv_oc_anomalies_fl()](/kusto/functions-library/series-mv-oc-anomalies-fl?view=azure-data-explorer&preserve-view=true) | New article. Describes multivariate anomalies in a series user-defined functions. |
 
 **Management**
 
 | Article title | Description |
 |--|--|
-|[.show function(s)](/kusto/management/show-function) | Updated article. Added optional arguments and tables to `.show function`. |
+|[.show function(s)](/kusto/management/show-function?view=azure-data-explorer&preserve-view=true) | Updated article. Added optional arguments and tables to `.show function`. |
 
 **Query**
 
 | Article title | Description |
 |--|--|
-|- [unicode_codepoints_from_string()](/kusto/query/unicode-codepoints-from-string-function) <br/> - [unicode_codepoints_to_string()](/kusto/query/unicode-codepoints-to-string-function) | Updated articles. Unicode codepoints conversion functions for strings. |
-|- [ipv6_is_in_any_range()](/kusto/query/ipv6-is-in-any-range-function) <br/> - [ipv6_is_in_range()](/kusto/query/ipv6-is-in-range-function) | New articles. Functions that check whether an IPv6 address is in a range.|
-|- [count_distinct() (aggregation function) - (preview)](/kusto/query/count-distinct-aggregation-function) <br/> - [count_distinctif() (aggregation function) - (preview)](/kusto/query/count-distinctif-aggregation-function) | New articles. Count unique values specified by the scalar expression per summary group. |
-|- [series_ceiling()](/kusto/query/series-ceiling-function) <br/> - [series_floor()](/kusto/query/series-floor-function) <br/> - [series_log()](/kusto/query/series-log-function)| New articles. Calculate the element-wise functions of the numeric series input. |
-|- [bin_auto()](/kusto/query/bin-auto-function) <br/> - [binary_shift_left()](/kusto/query/binary-shift-left-function) <br/> - [binary_shift_right()](/kusto/query/binary-shift-right-function) <br/> - [binary_xor()](/kusto/query/binary-xor-function) <br/> - [bin_at()](/kusto/query/bin-at-function) <br/> - [bin()](/kusto/query/bin-function) <br/> - [bitset_count_ones()](/kusto/query/bitset-count-ones-function) <br/> - [buildschema() (aggregation function)](/kusto/query/buildschema-aggregation-function) <br/> - [case()](/kusto/query/case-function) <br/> - [ceiling()](/kusto/query/ceiling-function) <br/> - [cosmosdb_sql_request plugin](/kusto/query/cosmosdb-plugin)| Updated articles. Added new tables and examples. |
+|- [unicode_codepoints_from_string()](/kusto/query/unicode-codepoints-from-string-function?view=azure-data-explorer&preserve-view=true) <br/> - [unicode_codepoints_to_string()](/kusto/query/unicode-codepoints-to-string-function?view=azure-data-explorer&preserve-view=true) | Updated articles. Unicode codepoints conversion functions for strings. |
+|- [ipv6_is_in_any_range()](/kusto/query/ipv6-is-in-any-range-function?view=azure-data-explorer&preserve-view=true) <br/> - [ipv6_is_in_range()](/kusto/query/ipv6-is-in-range-function?view=azure-data-explorer&preserve-view=true) | New articles. Functions that check whether an IPv6 address is in a range.|
+|- [count_distinct() (aggregation function) - (preview)](/kusto/query/count-distinct-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [count_distinctif() (aggregation function) - (preview)](/kusto/query/count-distinctif-aggregation-function?view=azure-data-explorer&preserve-view=true) | New articles. Count unique values specified by the scalar expression per summary group. |
+|- [series_ceiling()](/kusto/query/series-ceiling-function?view=azure-data-explorer&preserve-view=true) <br/> - [series_floor()](/kusto/query/series-floor-function?view=azure-data-explorer&preserve-view=true) <br/> - [series_log()](/kusto/query/series-log-function?view=azure-data-explorer&preserve-view=true)| New articles. Calculate the element-wise functions of the numeric series input. |
+|- [bin_auto()](/kusto/query/bin-auto-function?view=azure-data-explorer&preserve-view=true) <br/> - [binary_shift_left()](/kusto/query/binary-shift-left-function?view=azure-data-explorer&preserve-view=true) <br/> - [binary_shift_right()](/kusto/query/binary-shift-right-function?view=azure-data-explorer&preserve-view=true) <br/> - [binary_xor()](/kusto/query/binary-xor-function?view=azure-data-explorer&preserve-view=true) <br/> - [bin_at()](/kusto/query/bin-at-function?view=azure-data-explorer&preserve-view=true) <br/> - [bin()](/kusto/query/bin-function?view=azure-data-explorer&preserve-view=true) <br/> - [bitset_count_ones()](/kusto/query/bitset-count-ones-function?view=azure-data-explorer&preserve-view=true) <br/> - [buildschema() (aggregation function)](/kusto/query/buildschema-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [case()](/kusto/query/case-function?view=azure-data-explorer&preserve-view=true) <br/> - [ceiling()](/kusto/query/ceiling-function?view=azure-data-explorer&preserve-view=true) <br/> - [cosmosdb_sql_request plugin](/kusto/query/cosmosdb-plugin?view=azure-data-explorer&preserve-view=true)| Updated articles. Added new tables and examples. |
 
 ## October 2022
 
@@ -215,8 +215,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|[Kusto.Data exceptions](/kusto/api/netfx/kusto-data-client-errors)|New article. Describes Kusto.Data exceptions.|
-|[Evaluate query performance in your cluster](/kusto/query/best-practices)|New article. Describes how to load test a cluster's query performance.|
+|[Kusto.Data exceptions](/kusto/api/netfx/kusto-data-client-errors?view=azure-data-explorer&preserve-view=true)|New article. Describes Kusto.Data exceptions.|
+|[Evaluate query performance in your cluster](/kusto/query/best-practices?view=azure-data-explorer&preserve-view=true)|New article. Describes how to load test a cluster's query performance.|
 
 **General**
 
@@ -224,7 +224,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 |[POC playbook: Big data analytics](proof-of-concept-playbook.md)|New article. Describes a high-level methodology for running an effective proof of concept (POC) project.|
 |[Azure Data Explorer web UI keyboard shortcuts](web-ui-query-keyboard-shortcuts.md)|New article. Describes query keyboard shortcuts in the web UI.|
-|[Optimize queries that use named expressions](/kusto/query/named-expressions)|New article. Describes how to optimize repeat use of named expressions in a query.|
+|[Optimize queries that use named expressions](/kusto/query/named-expressions?view=azure-data-explorer&preserve-view=true)|New article. Describes how to optimize repeat use of named expressions in a query.|
 |- [Kusto emulator overview](kusto-emulator-overview.md)<br/>- [Install the Kusto emulator](kusto-emulator-install.md)|New articles. Describes the Kusto emulator, how to install it, and run your first query.|
 
 ## August 2022
@@ -239,12 +239,12 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|[.cancel operation command](/kusto/management/cancel-operation-command)| New article. Describes how to use the `.cancel operation` command.|
-|[How to authenticate with Microsoft Entra ID](/kusto/api/rest/authenticate-with-msal)| Updated article. Updated with Microsoft Authentication Library authentication.|
-|[.drop extents](/kusto/management/drop-extents)| Updated article. Added examples to drop specific extents.|
-|[Queries management](/kusto/management/show-queries-command)| Updated article. Added show by user command.
-|- [Ingest from storage](/kusto/management/data-ingestion/ingest-from-storage)|Updated article. Added ingest from Amazon S3.
-|- [.create-or-alter function](/kusto/management/create-alter-function)<br/>- [.create function](/kusto/management/create-function)| New and updated article. Added new parameter for stored view.|
+|[.cancel operation command](/kusto/management/cancel-operation-command?view=azure-data-explorer&preserve-view=true)| New article. Describes how to use the `.cancel operation` command.|
+|[How to authenticate with Microsoft Entra ID](/kusto/api/rest/authenticate-with-msal?view=azure-data-explorer&preserve-view=true)| Updated article. Updated with Microsoft Authentication Library authentication.|
+|[.drop extents](/kusto/management/drop-extents?view=azure-data-explorer&preserve-view=true)| Updated article. Added examples to drop specific extents.|
+|[Queries management](/kusto/management/show-queries-command?view=azure-data-explorer&preserve-view=true)| Updated article. Added show by user command.
+|- [Ingest from storage](/kusto/management/data-ingestion/ingest-from-storage?view=azure-data-explorer&preserve-view=true)|Updated article. Added ingest from Amazon S3.
+|- [.create-or-alter function](/kusto/management/create-alter-function?view=azure-data-explorer&preserve-view=true)<br/>- [.create function](/kusto/management/create-function?view=azure-data-explorer&preserve-view=true)| New and updated article. Added new parameter for stored view.|
 
 ## July 2022
 
@@ -258,15 +258,15 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [.alter extent tags](/kusto/management/alter-extent) | Updated article. Added documentation for `alter-merge` extent tags. |
+| [.alter extent tags](/kusto/management/alter-extent?view=azure-data-explorer&preserve-view=true) | Updated article. Added documentation for `alter-merge` extent tags. |
 
 **Query**
 
 | Article title | Description |
 |--|--|
-| - [convert_angle](/kusto/query/convert-angle-function) <br />- [convert_energy](/kusto/query/convert-energy-function) <br />- [convert_force](/kusto/query/convert-force-function) <br />- [convert_length](/kusto/query/convert-length-function) <br />- [convert_mass](/kusto/query/convert-mass-function) <br />- [convert_speed](/kusto/query/convert-speed-function) <br />- [convert_temperature](/kusto/query/convert-temperature-function) <br />- [convert_volume](/kusto/query/convert-volume-function) | New articles. New functions for converting values. |
-| [parse-kv operator](/kusto/query/parse-kv-operator) | New Article. Describes how to extract structured information from a string in key/value form. |
-|- [Scalar function types at a glance](/kusto/query/scalar-functions) <br />- [arg_max() (aggregation function)](/kusto/query/arg-max-aggregation-function) <br />- [arg_min() (aggregation function)](/kusto/query/arg-min-aggregation-function) <br />- [avg() (aggregation function)](/kusto/query/avg-aggregation-function) <br />- [max() (aggregation function)](/kusto/query/max-aggregation-function) <br />- [min() (aggregation function)](/kusto/query/min-aggregation-function) <br />- [sum() (aggregation function)](/kusto/query/sum-aggregation-function) | Updated articles. Added new examples. |
+| - [convert_angle](/kusto/query/convert-angle-function?view=azure-data-explorer&preserve-view=true) <br />- [convert_energy](/kusto/query/convert-energy-function?view=azure-data-explorer&preserve-view=true) <br />- [convert_force](/kusto/query/convert-force-function?view=azure-data-explorer&preserve-view=true) <br />- [convert_length](/kusto/query/convert-length-function?view=azure-data-explorer&preserve-view=true) <br />- [convert_mass](/kusto/query/convert-mass-function?view=azure-data-explorer&preserve-view=true) <br />- [convert_speed](/kusto/query/convert-speed-function?view=azure-data-explorer&preserve-view=true) <br />- [convert_temperature](/kusto/query/convert-temperature-function?view=azure-data-explorer&preserve-view=true) <br />- [convert_volume](/kusto/query/convert-volume-function?view=azure-data-explorer&preserve-view=true) | New articles. New functions for converting values. |
+| [parse-kv operator](/kusto/query/parse-kv-operator?view=azure-data-explorer&preserve-view=true) | New Article. Describes how to extract structured information from a string in key/value form. |
+|- [Scalar function types at a glance](/kusto/query/scalar-functions?view=azure-data-explorer&preserve-view=true) <br />- [arg_max() (aggregation function)](/kusto/query/arg-max-aggregation-function?view=azure-data-explorer&preserve-view=true) <br />- [arg_min() (aggregation function)](/kusto/query/arg-min-aggregation-function?view=azure-data-explorer&preserve-view=true) <br />- [avg() (aggregation function)](/kusto/query/avg-aggregation-function?view=azure-data-explorer&preserve-view=true) <br />- [max() (aggregation function)](/kusto/query/max-aggregation-function?view=azure-data-explorer&preserve-view=true) <br />- [min() (aggregation function)](/kusto/query/min-aggregation-function?view=azure-data-explorer&preserve-view=true) <br />- [sum() (aggregation function)](/kusto/query/sum-aggregation-function?view=azure-data-explorer&preserve-view=true) | Updated articles. Added new examples. |
 
 ## June 2022
 
@@ -283,7 +283,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 | [Ingest data from Telegraf](ingest-data-telegraf.md) | New Article. Describes how to ingest data into your cluster from Telegraf. |
 | [Ingest data using managed identity authentication](ingest-data-managed-identity.md) | New Article. Queue Azure Storage blobs for ingestion using managed identity authentication. |
-|- [Azure Data Explorer connector for Microsoft Power Automate](flow.md) <br />- [Usage examples for Power Automate connector](flow-usage.md) <br />- [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md) <br />- [Microsoft Logic App and Azure Data Explorer](/kusto/tools/logicapps)| Updated articles. General availability (GA). Content refreshed. |
+|- [Azure Data Explorer connector for Microsoft Power Automate](flow.md) <br />- [Usage examples for Power Automate connector](flow-usage.md) <br />- [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md) <br />- [Microsoft Logic App and Azure Data Explorer](/kusto/tools/logicapps?view=azure-data-explorer&preserve-view=true)| Updated articles. General availability (GA). Content refreshed. |
 | [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md) | Updated Article. Added section on drillthrough. |
 
 ## April 2022
@@ -297,8 +297,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Streaming ingestion failures](/kusto/management/streaming-ingestion-failures) | New article. Describes the command to show streaming ingestion failures. |
-| [Streaming ingestion statistics](/kusto/management/streaming-ingestion-statistics) | New article. Describes the command to show streaming ingestion statistics. |
+| [Streaming ingestion failures](/kusto/management/streaming-ingestion-failures?view=azure-data-explorer&preserve-view=true) | New article. Describes the command to show streaming ingestion failures. |
+| [Streaming ingestion statistics](/kusto/management/streaming-ingestion-statistics?view=azure-data-explorer&preserve-view=true) | New article. Describes the command to show streaming ingestion statistics. |
 
 ## March 2022
 
@@ -314,23 +314,23 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [pairwise_dist_fl()](/kusto/functions-library/pairwise-dist-fl) | New article. Describes the `pairwise_dist_fl()` user-defined function. |
-| [series_uv_anomalies_fl()](/kusto/functions-library/series-uv-anomalies-fl) | New article. Describes the `series_uv_anomalies_fl()` user-defined function. |
-| [series_uv_change_points_fl()](/kusto/functions-library/series-uv-change-points-fl) | New article. Describes the `series_uv_change_points_fl()` user-defined function. |
+| [pairwise_dist_fl()](/kusto/functions-library/pairwise-dist-fl?view=azure-data-explorer&preserve-view=true) | New article. Describes the `pairwise_dist_fl()` user-defined function. |
+| [series_uv_anomalies_fl()](/kusto/functions-library/series-uv-anomalies-fl?view=azure-data-explorer&preserve-view=true) | New article. Describes the `series_uv_anomalies_fl()` user-defined function. |
+| [series_uv_change_points_fl()](/kusto/functions-library/series-uv-change-points-fl?view=azure-data-explorer&preserve-view=true) | New article. Describes the `series_uv_change_points_fl()` user-defined function. |
 
 **Management**
 
 | Article title | Description |
 |--|--|
-| [Clear schema cache for cross-cluster queries](/kusto/management/clear-cross-cluster-schema-cache) | New article. Describes how to manually clear the cross-cluster query cache. |
+| [Clear schema cache for cross-cluster queries](/kusto/management/clear-cross-cluster-schema-cache?view=azure-data-explorer&preserve-view=true) | New article. Describes how to manually clear the cross-cluster query cache. |
 
 **Query**
 
 | Article title | Description |
 |--|--|
-| [http_request plugin / http_request_post plugin](/kusto/query/http-request-plugin) | New article. Describes the http_request plugin. |
-| [Cross-database and cross-cluster queries](/kusto/query/cross-cluster-or-database-queries) | Updated article. Updated links to cross-cluster queries and schema changes page. |
-| [Cross-cluster queries and schema changes](/kusto/query/cross-cluster-or-database-queries) | New article. Describes cross-cluster queries and schema changes. |
+| [http_request plugin / http_request_post plugin](/kusto/query/http-request-plugin?view=azure-data-explorer&preserve-view=true) | New article. Describes the http_request plugin. |
+| [Cross-database and cross-cluster queries](/kusto/query/cross-cluster-or-database-queries?view=azure-data-explorer&preserve-view=true) | Updated article. Updated links to cross-cluster queries and schema changes page. |
+| [Cross-cluster queries and schema changes](/kusto/query/cross-cluster-or-database-queries?view=azure-data-explorer&preserve-view=true) | New article. Describes cross-cluster queries and schema changes. |
 
 ## February 2022
 
@@ -344,7 +344,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [series_lag_fl()](/kusto/functions-library/series-lag-fl) | New article. Describes the `series_lag_fl()` user-defined function. |
+| [series_lag_fl()](/kusto/functions-library/series-lag-fl?view=azure-data-explorer&preserve-view=true) | New article. Describes the `series_lag_fl()` user-defined function. |
 
 ## January 2022
 
@@ -356,7 +356,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Azure Data Explorer API overview](/kusto/api/index) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.|
+| [Azure Data Explorer API overview](/kusto/api/index?view=azure-data-explorer&preserve-view=true) | Updated article. Added new tip and link to the doc on using the one-click sample app generator.|
 
 ## December 2021
 
@@ -368,7 +368,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [time_window_rolling_avg_fl()](/kusto/functions-library/time-window-rolling-avg-fl) | New Article. Describes the function that calculates the rolling average of a metric over a constant duration time window. |
+| [time_window_rolling_avg_fl()](/kusto/functions-library/time-window-rolling-avg-fl?view=azure-data-explorer&preserve-view=true) | New Article. Describes the function that calculates the rolling average of a metric over a constant duration time window. |
 
 ## November 2021
 
@@ -382,7 +382,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [[Soft delete]](/kusto/concepts/data-soft-delete) | New article. Describes the data soft delete function. |
+| [[Soft delete]](/kusto/concepts/data-soft-delete?view=azure-data-explorer&preserve-view=true) | New article. Describes the data soft delete function. |
 
 ## October 2021
 
@@ -403,9 +403,9 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Role-based access control in Kusto](/kusto/access-control/role-based-access-control) | Updated article. Materialized views rename source table.
-| [Cache policy (hot and cold cache)](/kusto/management/cache-policy) | Updated article. Caching with long storage.
-| [Role-based access control in Kusto](/kusto/access-control/role-based-access-control)| Updated article. Using the AllDatabasesMonitor role.|
+| [Role-based access control in Kusto](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) | Updated article. Materialized views rename source table.
+| [Cache policy (hot and cold cache)](/kusto/management/cache-policy?view=azure-data-explorer&preserve-view=true) | Updated article. Caching with long storage.
+| [Role-based access control in Kusto](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true)| Updated article. Using the AllDatabasesMonitor role.|
 
 ## September 2021
 
@@ -417,8 +417,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Views](/kusto/query/schema-entities/views)| New article. Learn how to use views, which are virtual tables based on the result-set of a query.|
-| [Entity types](/kusto/query/schema-entities/index)| Updated article. Added information on how to use views.
+| [Views](/kusto/query/schema-entities/views?view=azure-data-explorer&preserve-view=true)| New article. Learn how to use views, which are virtual tables based on the result-set of a query.|
+| [Entity types](/kusto/query/schema-entities/index?view=azure-data-explorer&preserve-view=true)| Updated article. Added information on how to use views.
 
 ## August 2021
 
@@ -432,28 +432,28 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [series_pow()](/kusto/query/series-pow-function)| New article. Calculates the element-wise power of two numeric series inputs.
-| [Aggregation function types at a glance](/kusto/query/aggregation-functions) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
-| [Scalar function types at a glance](/kusto/query/scalar-functions) | Updated article. Updated aggregation function and added series_pow.
-| [materialized_view() function](/kusto/query/materialized-view-function) | Updated article. Updated aggregation function.
+| [series_pow()](/kusto/query/series-pow-function?view=azure-data-explorer&preserve-view=true)| New article. Calculates the element-wise power of two numeric series inputs.
+| [Aggregation function types at a glance](/kusto/query/aggregation-functions?view=azure-data-explorer&preserve-view=true) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
+| [Scalar function types at a glance](/kusto/query/scalar-functions?view=azure-data-explorer&preserve-view=true) | Updated article. Updated aggregation function and added series_pow.
+| [materialized_view() function](/kusto/query/materialized-view-function?view=azure-data-explorer&preserve-view=true) | Updated article. Updated aggregation function.
 
 **Management**
 
 | Article title | Description |
 |--|--|
-| [.alter query weak consistency policy](/kusto/management/alter-query-weak-consistency-policy) | New article.
-| [Query weak consistency policy](/kusto/management/query-weak-consistency-policy) | New article.
-| [.show query weak consistency policy](/kusto/management/show-query-weak-consistency-policy) | New article.
+| [.alter query weak consistency policy](/kusto/management/alter-query-weak-consistency-policy?view=azure-data-explorer&preserve-view=true) | New article.
+| [Query weak consistency policy](/kusto/management/query-weak-consistency-policy?view=azure-data-explorer&preserve-view=true) | New article.
+| [.show query weak consistency policy](/kusto/management/show-query-weak-consistency-policy?view=azure-data-explorer&preserve-view=true) | New article.
 
 **Functions library**
 
 | Article title | Description |
 |--|--|
-| [pair_probabilities_fl()](/kusto/functions-library/functions-library) | New article. The function `pair_probabilities_fl()`calculates probabilities and metrics.
-| [bartlett_test_fl()](/kusto/functions-library/bartlett-test-fl) | New article. The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
-| [levene_test_fl()](/kusto/functions-library/levene-test-fl) | New article. The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
-| [mann_whitney_u_test_fl()](/kusto/functions-library/mann-whitney-u-test-fl) | New article. The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
-| [wilcoxon_test_fl()](/kusto/functions-library/wilcoxon-test-fl) | New article. The function `wilcoxon_test_fl()` performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
+| [pair_probabilities_fl()](/kusto/functions-library/functions-library?view=azure-data-explorer&preserve-view=true) | New article. The function `pair_probabilities_fl()`calculates probabilities and metrics.
+| [bartlett_test_fl()](/kusto/functions-library/bartlett-test-fl?view=azure-data-explorer&preserve-view=true) | New article. The function `bartlett_test_fl()` performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
+| [levene_test_fl()](/kusto/functions-library/levene-test-fl?view=azure-data-explorer&preserve-view=true) | New article. The function `levene_test_fl()` performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
+| [mann_whitney_u_test_fl()](/kusto/functions-library/mann-whitney-u-test-fl?view=azure-data-explorer&preserve-view=true) | New article. The function `mann_whitney_u_test_fl()` performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
+| [wilcoxon_test_fl()](/kusto/functions-library/wilcoxon-test-fl?view=azure-data-explorer&preserve-view=true) | New article. The function `wilcoxon_test_fl()` performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
 
 ## July 2021
 
@@ -470,26 +470,26 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [replace_string()](/kusto/query/replace-string-function)| New article. Replaces all string matches with another string.
-| [take_any() (aggregation function)](/kusto/query/take-any-aggregation-function) | New article. Replaces any().
-| [take_anyif() (aggregation function)](/kusto/query/take-anyif-aggregation-function) | New article. Replaces anyif().
-| [replace_regex()](/kusto/query/replace-regex-function) | Updated article. Replace() function changed to replace_regex().
+| [replace_string()](/kusto/query/replace-string-function?view=azure-data-explorer&preserve-view=true)| New article. Replaces all string matches with another string.
+| [take_any() (aggregation function)](/kusto/query/take-any-aggregation-function?view=azure-data-explorer&preserve-view=true) | New article. Replaces any().
+| [take_anyif() (aggregation function)](/kusto/query/take-anyif-aggregation-function?view=azure-data-explorer&preserve-view=true) | New article. Replaces anyif().
+| [replace_regex()](/kusto/query/replace-regex-function?view=azure-data-explorer&preserve-view=true) | Updated article. Replace() function changed to replace_regex().
 
 **Management**
 
 | Article title | Description |
 |--|--|
-| [.alter extent tags retention policy](/kusto/management/alter-extent-tags-retention-policy) | New article.
-| [.delete extent tags retention policy](/kusto/management/delete-extent-tags-retention-policy) | New article.
-| [Extent tags retention policy](/kusto/management/extent-tags-retention-policy) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](/kusto/management/extent-tags) from tables, based on the age of the extents.
-| [.show extent tags retention policy](/kusto/management/show-extent-tags-retention-policy) | New article.
-| [Stored query results](/kusto/management/stored-query-results) | Updated article. General Availability.
+| [.alter extent tags retention policy](/kusto/management/alter-extent-tags-retention-policy?view=azure-data-explorer&preserve-view=true) | New article.
+| [.delete extent tags retention policy](/kusto/management/delete-extent-tags-retention-policy?view=azure-data-explorer&preserve-view=true) | New article.
+| [Extent tags retention policy](/kusto/management/extent-tags-retention-policy?view=azure-data-explorer&preserve-view=true) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) from tables, based on the age of the extents.
+| [.show extent tags retention policy](/kusto/management/show-extent-tags-retention-policy?view=azure-data-explorer&preserve-view=true) | New article.
+| [Stored query results](/kusto/management/stored-query-results?view=azure-data-explorer&preserve-view=true) | Updated article. General Availability.
 
 **Functions library**
 
 | Article title | Description |
 |--|--|
- [two_sample_t_test_fl()](/kusto/functions-library/two-sample-t-test-fl) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test). |
+ [two_sample_t_test_fl()](/kusto/functions-library/two-sample-t-test-fl) | New article. The function `two_sample_t_test_fl()` performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test?view=azure-data-explorer&preserve-view=true#Independent_two-sample_t-test). |
 
 ## June 2021
 
@@ -501,15 +501,15 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [rows_near() plugin](/kusto/query/rows-near-plugin) | New article. Finds rows near a specified condition.
-| [has_any_ipv4()](/kusto/query/has-any-ipv4-function) | New article. Returns a value indicating whether one of specified IPv4 addresses appears in a text.
-| [has_any_ipv4_prefix()](/kusto/query/has-any-ipv4-prefix-function) | New article. Returns a value indicating whether one of specified IPv4 address prefixes appears in a text.
+| [rows_near() plugin](/kusto/query/rows-near-plugin?view=azure-data-explorer&preserve-view=true) | New article. Finds rows near a specified condition.
+| [has_any_ipv4()](/kusto/query/has-any-ipv4-function?view=azure-data-explorer&preserve-view=true) | New article. Returns a value indicating whether one of specified IPv4 addresses appears in a text.
+| [has_any_ipv4_prefix()](/kusto/query/has-any-ipv4-prefix-function?view=azure-data-explorer&preserve-view=true) | New article. Returns a value indicating whether one of specified IPv4 address prefixes appears in a text.
 
 **Management**
 
 | Article title | Description |
 |--|--|
-| [IngestionBatching policy](/kusto/management/batching-policy) | Updated article. Document batching types
+| [IngestionBatching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true) | Updated article. Document batching types
 
 ## May 2021
 
@@ -523,33 +523,33 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-[has_ipv4()](/kusto/query/has-ipv4-function) | New article. Returns a value indicating whether a specified IPv4 address appears in a text.
-[has_ipv4_prefix()](/kusto/query/has-ipv4-prefix-function) | New article. Returns a value indicating whether a specified IPv4 address prefix appears in a text.
-[scan operator (preview)](/kusto/query/scan-operator) | New article. Scans data, matches, and builds sequences based on the predicates.
-[Query results cache](/kusto/query/query-results-cache) | Updated article. Per shard query results cache added.
-[The string data type](/kusto/query/scalar-data-types/string) | Updated article.
-[Null Values](/kusto/query/scalar-data-types/null-values) | Updated article.
+[has_ipv4()](/kusto/query/has-ipv4-function?view=azure-data-explorer&preserve-view=true) | New article. Returns a value indicating whether a specified IPv4 address appears in a text.
+[has_ipv4_prefix()](/kusto/query/has-ipv4-prefix-function?view=azure-data-explorer&preserve-view=true) | New article. Returns a value indicating whether a specified IPv4 address prefix appears in a text.
+[scan operator (preview)](/kusto/query/scan-operator?view=azure-data-explorer&preserve-view=true) | New article. Scans data, matches, and builds sequences based on the predicates.
+[Query results cache](/kusto/query/query-results-cache?view=azure-data-explorer&preserve-view=true) | Updated article. Per shard query results cache added.
+[The string data type](/kusto/query/scalar-data-types/string?view=azure-data-explorer&preserve-view=true) | Updated article.
+[Null Values](/kusto/query/scalar-data-types/null-values?view=azure-data-explorer&preserve-view=true) | Updated article.
 
 **Management**
 
 | Article title | Description |
 |--|--|
-[Workload groups - Management commands](/kusto/management/show-workload-group-command) | Updated article. General Availability (GA).
-[Workload groups](/kusto/management/workload-groups) | Updated article. General Availability (GA).
-[Materialized views](/kusto/management/materialized-views/materialized-view-overview) | Updated article. General Availability (GA).
-[Materialized views policies](/kusto/management/materialized-views/materialized-view-policies) | Updated article. General Availability (GA).
+[Workload groups - Management commands](/kusto/management/show-workload-group-command?view=azure-data-explorer&preserve-view=true) | Updated article. General Availability (GA).
+[Workload groups](/kusto/management/workload-groups?view=azure-data-explorer&preserve-view=true) | Updated article. General Availability (GA).
+[Materialized views](/kusto/management/materialized-views/materialized-view-overview?view=azure-data-explorer&preserve-view=true) | Updated article. General Availability (GA).
+[Materialized views policies](/kusto/management/materialized-views/materialized-view-policies?view=azure-data-explorer&preserve-view=true) | Updated article. General Availability (GA).
 
 **Functions library**
 
 | Article title | Description |
 |--|--|
-[time_weighted_avg_fl()](/kusto/functions-library/time-weighted-avg-fl) | New article. The function `time_weighted_avg_fl()` calculates the time weighted average of a metric in a given time window, over input time bins.
+[time_weighted_avg_fl()](/kusto/functions-library/time-weighted-avg-fl?view=azure-data-explorer&preserve-view=true) | New article. The function `time_weighted_avg_fl()` calculates the time weighted average of a metric in a given time window, over input time bins.
 
 **API**
 
 | Article title | Description |
 |--|--|
-[Request properties and ClientRequestProperties](/kusto/api/rest/request-properties) | Updated article. Per shard query results cache added.|
+[Request properties and ClientRequestProperties](/kusto/api/rest/request-properties?view=azure-data-explorer&preserve-view=true) | Updated article. Per shard query results cache added.|
 
 ## March 2021
 
@@ -561,17 +561,17 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| - [Auto delete policy command](/kusto/management/show-auto-delete-policy-command)<br />- [Auto delete policy](/kusto/management/auto-delete-policy) | New articles. An auto delete policy on a table sets an expiry date for the table. |
-| [Stored query results (Preview)](/kusto/management/stored-query-results) | Updated article. Added async mode. |
+| - [Auto delete policy command](/kusto/management/show-auto-delete-policy-command?view=azure-data-explorer&preserve-view=true)<br />- [Auto delete policy](/kusto/management/auto-delete-policy?view=azure-data-explorer&preserve-view=true) | New articles. An auto delete policy on a table sets an expiry date for the table. |
+| [Stored query results (Preview)](/kusto/management/stored-query-results?view=azure-data-explorer&preserve-view=true) | Updated article. Added async mode. |
 
 **Functions library**
 
 | Article title | Description |
 |--|--|
-| [binomial_test_fl()](/kusto/functions-library/binomial-test-fl) | New article. The function `binomial_test_fl()` performs the [binomial test](https://en.wikipedia.org/wiki/Binomial_test). |
-| [comb_fl()](/kusto/functions-library/comb-fl) | New article. The function `comb_fl()`calculates *C(n, k)*, the number of [combinations](https://en.wikipedia.org/wiki/Combination) for selection of k items out of n, without order. |
-| [factorial_fl()](/kusto/functions-library/factorial-fl) | New article. The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). |
-| [perm_fl()](/kusto/functions-library/perm-fl) | New article. The function `perm_fl()`calculates *P(n, k)*, the number of [permutations](https://en.wikipedia.org/wiki/Permutation) for selection of k items out of n, with order. |
+| [binomial_test_fl()](/kusto/functions-library/binomial-test-fl?view=azure-data-explorer&preserve-view=true) | New article. The function `binomial_test_fl()` performs the [binomial test](https://en.wikipedia.org/wiki/Binomial_test). |
+| [comb_fl()](/kusto/functions-library/comb-fl?view=azure-data-explorer&preserve-view=true) | New article. The function `comb_fl()`calculates *C(n, k)*, the number of [combinations](https://en.wikipedia.org/wiki/Combination) for selection of k items out of n, without order. |
+| [factorial_fl()](/kusto/functions-library/factorial-fl?view=azure-data-explorer&preserve-view=true) | New article. The function `factorial_fl()`calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). |
+| [perm_fl()](/kusto/functions-library/perm-fl?view=azure-data-explorer&preserve-view=true) | New article. The function `perm_fl()`calculates *P(n, k)*, the number of [permutations](https://en.wikipedia.org/wiki/Permutation) for selection of k items out of n, with order. |
 
 ## February 2021
 
@@ -584,31 +584,31 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 |Article title | Description|
 |--|--|
-[ipv4_is_in_range()](/kusto/query/ipv4-is-in-range-function) | New article. Checks if IPv4 string address is in IPv4-prefix notation range.
-[ipv4_netmask_suffix()](/kusto/query/ipv4-netmask-suffix-function) | New article. Returns the value of the IPv4 netmask suffix from IPv4 string address.
-[has_all operator](/kusto/query/has-all-operator) | New article. `has_all` operator filters based on the provided set of values (all values must be present).
-[row_rank()](/kusto/query/row-rank-dense-function) | New article. Returns the current row's rank in a [serialized row set](/kusto/query/window-functions#serialized-row-set).
-| [Null Values](/kusto/query/scalar-data-types/null-values) | Updated article. New behavior in Engine V3.
-| [String operators](/kusto/query/datatypes-string-operators) | Updated article. String term indexing for Engine V3.
+[ipv4_is_in_range()](/kusto/query/ipv4-is-in-range-function?view=azure-data-explorer&preserve-view=true) | New article. Checks if IPv4 string address is in IPv4-prefix notation range.
+[ipv4_netmask_suffix()](/kusto/query/ipv4-netmask-suffix-function?view=azure-data-explorer&preserve-view=true) | New article. Returns the value of the IPv4 netmask suffix from IPv4 string address.
+[has_all operator](/kusto/query/has-all-operator?view=azure-data-explorer&preserve-view=true) | New article. `has_all` operator filters based on the provided set of values (all values must be present).
+[row_rank()](/kusto/query/row-rank-dense-function) | New article. Returns the current row's rank in a [serialized row set](/kusto/query/window-functions?view=azure-data-explorer&preserve-view=true#serialized-row-set).
+| [Null Values](/kusto/query/scalar-data-types/null-values?view=azure-data-explorer&preserve-view=true) | Updated article. New behavior in Engine V3.
+| [String operators](/kusto/query/datatypes-string-operators?view=azure-data-explorer&preserve-view=true) | Updated article. String term indexing for Engine V3.
 
 **Management**
 
 |Article title | Description|
 |---|---|
-| [Materialized views data purge](/kusto/management/materialized-views/materialized-view-purge) | New article. [Data purge](/kusto/concepts/data-purge) commands can be used to purge records from materialized views.|
-|[.alter materialized-view lookback](/kusto/management/materialized-views/materialized-view-alter-lookback) | New article. Alters the `lookback` value of an existing materialized view.|
-|[.alter materialized-view autoUpdateSchema](/kusto/management/materialized-views/materialized-view-alter-autoupdateschema) | New article. Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`.|
-|[.alter materialized-view docstring](/kusto/management/materialized-views/materialized-view-alter-docstring) | New article. Alters the DocString value of an existing materialized view.|
-|[.alter materialized-view folder](/kusto/management/materialized-views/materialized-view-alter-folder) | New article. Alters the folder value of an existing materialized view.|
-|[.create-or-alter materialized-view](/kusto/management/materialized-views/materialized-view-create-or-alter) | New article. Creates a materialized view or alters an existing materialized view.|
-|[Materialized views policies](/kusto/management/materialized-views/materialized-view-policies) | New article. Includes information about policies that can be set on a materialized view.|
-|[Request queuing policy (Preview)](/kusto/management/request-queuing-policy) | New article. A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.|
+| [Materialized views data purge](/kusto/management/materialized-views/materialized-view-purge?view=azure-data-explorer&preserve-view=true) | New article. [Data purge](/kusto/concepts/data-purge?view=azure-data-explorer&preserve-view=true) commands can be used to purge records from materialized views.|
+|[.alter materialized-view lookback](/kusto/management/materialized-views/materialized-view-alter-lookback?view=azure-data-explorer&preserve-view=true) | New article. Alters the `lookback` value of an existing materialized view.|
+|[.alter materialized-view autoUpdateSchema](/kusto/management/materialized-views/materialized-view-alter-autoupdateschema?view=azure-data-explorer&preserve-view=true) | New article. Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`.|
+|[.alter materialized-view docstring](/kusto/management/materialized-views/materialized-view-alter-docstring?view=azure-data-explorer&preserve-view=true) | New article. Alters the DocString value of an existing materialized view.|
+|[.alter materialized-view folder](/kusto/management/materialized-views/materialized-view-alter-folder?view=azure-data-explorer&preserve-view=true) | New article. Alters the folder value of an existing materialized view.|
+|[.create-or-alter materialized-view](/kusto/management/materialized-views/materialized-view-create-or-alter?view=azure-data-explorer&preserve-view=true) | New article. Creates a materialized view or alters an existing materialized view.|
+|[Materialized views policies](/kusto/management/materialized-views/materialized-view-policies?view=azure-data-explorer&preserve-view=true) | New article. Includes information about policies that can be set on a materialized view.|
+|[Request queuing policy (Preview)](/kusto/management/request-queuing-policy?view=azure-data-explorer&preserve-view=true) | New article. A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.|
 
 **Functions library**
 
 |Article title | Description|
 |--|--|
-| [series_dbl_exp_smoothing_fl()](/kusto/functions-library/series-dbl-exp-smoothing-fl) | New article. Applies a double exponential smoothing filter on a series.
+| [series_dbl_exp_smoothing_fl()](/kusto/functions-library/series-dbl-exp-smoothing-fl?view=azure-data-explorer&preserve-view=true) | New article. Applies a double exponential smoothing filter on a series.
 
 ## January 2021
 
@@ -622,11 +622,11 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |Article title | Description|
 |--|--|
 [Clean extent containers commands](/azure/data-explorer/kusto/management/extents-overview) | New article. Describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands.
-[Request classification policy (Preview)](/kusto/management/request-classification-policy)<br>[Request classification policy (Preview) - Management commands](/kusto/management/show-cluster-policy-request-classification-command) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
-[Request limits policy (Preview)](/kusto/management/request-limits-policy) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
-[Request rate limit policy (Preview)](/kusto/management/request-rate-limit-policy) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
-[Workload groups (Preview)](/kusto/management/workload-groups)<br>[Workload groups (Preview) - Management commands](/kusto/management/show-workload-group-command) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
-[Queries management](/kusto/management/show-queries-command) | Updated article. Syntax updated
+[Request classification policy (Preview)](/kusto/management/request-classification-policy?view=azure-data-explorer&preserve-view=true)<br>[Request classification policy (Preview) - Management commands](/kusto/management/show-cluster-policy-request-classification-command?view=azure-data-explorer&preserve-view=true) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
+[Request limits policy (Preview)](/kusto/management/request-limits-policy?view=azure-data-explorer&preserve-view=true) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
+[Request rate limit policy (Preview)](/kusto/management/request-rate-limit-policy?view=azure-data-explorer&preserve-view=true) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
+[Workload groups (Preview)](/kusto/management/workload-groups?view=azure-data-explorer&preserve-view=true)<br>[Workload groups (Preview) - Management commands](/kusto/management/show-workload-group-command?view=azure-data-explorer&preserve-view=true) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
+[Queries management](/kusto/management/show-queries-command?view=azure-data-explorer&preserve-view=true) | Updated article. Syntax updated
 
 ## December 2020
 
@@ -638,18 +638,18 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 |Article title | Description|
 |--|--|
-[.create table based-on](/kusto/management/create-table-based-on-command)  | New article. Creates a new empty table based on existing table.
-[Stored query results (Preview)](/kusto/management/stored-query-results) | New article. Stored query results is a mechanism that temporarily stores the result of a query on the service.
-[Create and alter Azure Storage external tables](/kusto/management/external-tables-azure-storage) | Updated article. Document `filesPreview` and `dryRun` external table definition options
-[Export data to an external table](/kusto/management/data-export/export-data-to-an-external-table) | Updated article. New external table syntax in export docs
+[.create table based-on](/kusto/management/create-table-based-on-command?view=azure-data-explorer&preserve-view=true)  | New article. Creates a new empty table based on existing table.
+[Stored query results (Preview)](/kusto/management/stored-query-results?view=azure-data-explorer&preserve-view=true) | New article. Stored query results is a mechanism that temporarily stores the result of a query on the service.
+[Create and alter Azure Storage external tables](/kusto/management/external-tables-azure-storage?view=azure-data-explorer&preserve-view=true) | Updated article. Document `filesPreview` and `dryRun` external table definition options
+[Export data to an external table](/kusto/management/data-export/export-data-to-an-external-table?view=azure-data-explorer&preserve-view=true) | Updated article. New external table syntax in export docs
 
 **Functions library**
 
 |Article title | Description|
 |--|--|
-[series_metric_fl()](/kusto/functions-library/series-metric-fl) | New article. The `series_metric_fl()` function selects and retrieves time series of metrics ingested to Azure Data Explorer using the Prometheus monitoring system.
-[series_rate_fl()](/kusto/functions-library/series-rate-fl) | New article. The function `series_rate_fl()` calculates the average rate of metric increase per second.
-[series_fit_lowess_fl()](/kusto/functions-library/series-fit-lowess-fl) | New article. The function `series_fit_lowess_fl()` applies a LOWESS regression on a series.
+[series_metric_fl()](/kusto/functions-library/series-metric-fl?view=azure-data-explorer&preserve-view=true) | New article. The `series_metric_fl()` function selects and retrieves time series of metrics ingested to Azure Data Explorer using the Prometheus monitoring system.
+[series_rate_fl()](/kusto/functions-library/series-rate-fl?view=azure-data-explorer&preserve-view=true) | New article. The function `series_rate_fl()` calculates the average rate of metric increase per second.
+[series_fit_lowess_fl()](/kusto/functions-library/series-fit-lowess-fl?view=azure-data-explorer&preserve-view=true) | New article. The function `series_fit_lowess_fl()` applies a LOWESS regression on a series.
 
 ## November 2020
 
@@ -667,26 +667,26 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 |Article title | Description|
 |--|--|
-[mysql_request plugin (Preview)](/kusto/query/mysql-request-plugin) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
-[ipv4_lookup plugin](/kusto/query/ipv4-lookup-plugin) | New article. The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values.
-[ipv4_is_private()](/kusto/query/ipv4-is-private-function) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
-[Splunk to Kusto Query Language map](/kusto/query/splunk-cheat-sheet) | New article. This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto.
-[gzip_compress_to_base64_string()](/kusto/query/gzip-base64-compress) | New article. Performs gzip compression and encodes the result to base64.
-[gzip_decompress_from_base64_string()](/kusto/query/gzip-base64-decompress) | New article. Decodes the input string from base64 and performs gzip decompression.
-[array_reverse()](/kusto/query/array-reverse-function) | New article. Reverses the order of the elements in a dynamic array.
+[mysql_request plugin (Preview)](/kusto/query/mysql-request-plugin?view=azure-data-explorer&preserve-view=true) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
+[ipv4_lookup plugin](/kusto/query/ipv4-lookup-plugin?view=azure-data-explorer&preserve-view=true) | New article. The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values.
+[ipv4_is_private()](/kusto/query/ipv4-is-private-function?view=azure-data-explorer&preserve-view=true) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
+[Splunk to Kusto Query Language map](/kusto/query/splunk-cheat-sheet?view=azure-data-explorer&preserve-view=true) | New article. This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto.
+[gzip_compress_to_base64_string()](/kusto/query/gzip-base64-compress?view=azure-data-explorer&preserve-view=true) | New article. Performs gzip compression and encodes the result to base64.
+[gzip_decompress_from_base64_string()](/kusto/query/gzip-base64-decompress?view=azure-data-explorer&preserve-view=true) | New article. Decodes the input string from base64 and performs gzip decompression.
+[array_reverse()](/kusto/query/array-reverse-function?view=azure-data-explorer&preserve-view=true) | New article. Reverses the order of the elements in a dynamic array.
 
 **Management**
 
 |Article title | Description|
 |--|--|
-[.disable plugin](/kusto/management/disable-plugin) | New article. Disables a plugin.
-[.enable plugin](/kusto/management/enable-plugin) | New article. Enables a plugin.
-[.show plugins](/kusto/management/show-plugins) | New article. Lists all plugins of the cluster.
-| [Follower commands](/kusto/management/cluster-follower) | Updated article. Syntax changed, added `.alter follower database prefetch-extents`. |
+[.disable plugin](/kusto/management/disable-plugin?view=azure-data-explorer&preserve-view=true) | New article. Disables a plugin.
+[.enable plugin](/kusto/management/enable-plugin?view=azure-data-explorer&preserve-view=true) | New article. Enables a plugin.
+[.show plugins](/kusto/management/show-plugins?view=azure-data-explorer&preserve-view=true) | New article. Lists all plugins of the cluster.
+| [Follower commands](/kusto/management/cluster-follower?view=azure-data-explorer&preserve-view=true) | Updated article. Syntax changed, added `.alter follower database prefetch-extents`. |
 
 **Functions library**
 
 |Article title | Description|
 |--|--|
-[series_downsample_fl()](/kusto/functions-library/series-downsample-fl) | The function `series_downsample_fl()` [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor).
-[series_exp_smoothing_fl()](/kusto/functions-library/series-exp-smoothing-fl) | Applies a basic exponential smoothing filter on a series.
+[series_downsample_fl()](/kusto/functions-library/series-downsample-fl) | The function `series_downsample_fl()` [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)?view=azure-data-explorer&preserve-view=true#Downsampling_by_an_integer_factor).
+[series_exp_smoothing_fl()](/kusto/functions-library/series-exp-smoothing-fl?view=azure-data-explorer&preserve-view=true) | Applies a basic exponential smoothing filter on a series.

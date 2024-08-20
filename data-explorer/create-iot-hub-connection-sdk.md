@@ -22,8 +22,8 @@ For general information about ingesting into Azure Data Explorer from IoT Hub, s
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* A destination table. [Create a table](/kusto/management/create-table-command) or use an existing table.
-* An [ingestion mapping](/kusto/management/mappings) for the table.
+* A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
+* An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.
 * An [IoT Hub](/azure/iot-hub/iot-hub-create-through-portal) with data for ingestion.
 
 ## Create an IoT Hub data connection

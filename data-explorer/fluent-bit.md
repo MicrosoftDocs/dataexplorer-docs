@@ -52,4 +52,4 @@ To see an example configuration file, select the relevant tab:
 
 ## Related content
 
-* [Write queries](/kusto/query/tutorials/learn-common-operators)
+* [Write queries](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true)

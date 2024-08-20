@@ -60,21 +60,21 @@ You can also deploy infrastructure imperatively, by using any of the supported p
 
 ## Deploy schema entities
 
-Schema entities provisioning pertains to deploying tables, functions, policies, and permissions. You can create or update entities by running scripts that consist of [management commands](/kusto/management/management-best-practices).
+Schema entities provisioning pertains to deploying tables, functions, policies, and permissions. You can create or update entities by running scripts that consist of [management commands](/kusto/management/management-best-practices?view=azure-data-explorer&preserve-view=true).
 
 You can automate schema entities deployment by using the following methods:
 
 * [ARM templates](/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json)
 * [Terraform scripts](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kusto_script)
-* [Kusto CLI](/kusto/tools/kusto-cli)
+* [Kusto CLI](/kusto/tools/kusto-cli?view=azure-data-explorer&preserve-view=true)
 * SDKs
-  * [.NET SDK](/kusto/api/netfx/about-kusto-data)
-  * [Python SDK](/kusto/api/python/kusto-python-client-library)
-  * [Java SDK](/kusto/api/java/kusto-java-client-library)
-  * [Node SDK](/kusto/api/node/kusto-node-client-library)
-  * [Go SDK](/kusto/api/golang/kusto-golang-client-library)
+  * [.NET SDK](/kusto/api/netfx/about-kusto-data?view=azure-data-explorer&preserve-view=true)
+  * [Python SDK](/kusto/api/python/kusto-python-client-library?view=azure-data-explorer&preserve-view=true)
+  * [Java SDK](/kusto/api/java/kusto-java-client-library?view=azure-data-explorer&preserve-view=true)
+  * [Node SDK](/kusto/api/node/kusto-node-client-library?view=azure-data-explorer&preserve-view=true)
+  * [Go SDK](/kusto/api/golang/kusto-golang-client-library?view=azure-data-explorer&preserve-view=true)
 * Tools
-  * [Sync Kusto](/kusto/tools/synckusto). Use this interactive developer tool to extract the database schema or management command script. You can then use the extracted content command script for automatic deployment.
+  * [Sync Kusto](/kusto/tools/synckusto?view=azure-data-explorer&preserve-view=true). Use this interactive developer tool to extract the database schema or management command script. You can then use the extracted content command script for automatic deployment.
   * [Delta Kusto](https://github.com/microsoft/delta-kusto): Invoke this tool in a CI/CD pipeline. It can compare two sources, such as the database schema or management command script, and compute a delta management command script. You can then use the extracted content command script for automatic deployment.
   * [Azure DevOps task](devops.md) for Azure Data Explorer.
 

@@ -39,7 +39,7 @@ To use managed identity authentication:
     .add table <MyTable> admins ('aadapp=<Object ID>;<Tenant ID>')
     ```
 
-For more information on authorization, see [Kusto role-based access control](/kusto/access-control/role-based-access-control).
+For more information on authorization, see [Kusto role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true).
 
 ---
 

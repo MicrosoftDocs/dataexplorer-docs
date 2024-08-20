@@ -14,4 +14,4 @@ The changes you can make in a table depend on the following parameters:
 | | Existing mapping | Sort ascending, Sort descending
 
 > [!NOTE]
-> When adding a new column or updating a column, you can change mapping transformations. For more information, see [Mapping transformations](/kusto/management/mappings#mapping-transformations)
+> When adding a new column or updating a column, you can change mapping transformations. For more information, see [Mapping transformations](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true#mapping-transformations)

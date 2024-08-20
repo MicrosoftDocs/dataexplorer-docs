@@ -6,7 +6,7 @@ ms.date: 05/28/2023
 ---
 # Write Kusto Query Language queries in the Azure Data Explorer web UI
 
-The [Azure Data Explorer web UI](https://dataexplorer.azure.com/) query editor offers various features to help you write [Kusto Query Language (KQL)](/kusto/query/index) queries. Some of these features include built-in KQL Intellisense and autocomplete, inline documentation, and quick fix pop-ups. In this article, we'll highlight what you should know when writing KQL queries in the web UI.
+The [Azure Data Explorer web UI](https://dataexplorer.azure.com/) query editor offers various features to help you write [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries. Some of these features include built-in KQL Intellisense and autocomplete, inline documentation, and quick fix pop-ups. In this article, we'll highlight what you should know when writing KQL queries in the web UI.
 
 ## KQL Intellisense and autocomplete
 
@@ -90,14 +90,14 @@ To use KQL tools:
 
 1. In the toolbar, select **KQL tools**.
 
-1. Choose from options like **Duplicate query**, **Open command palette**, or hover over **Resources** to access documentation links. This list includes resources such as the [KQL to SQL cheat sheet](/kusto/query/sql-cheat-sheet), [Keyboard shortcuts](web-ui-query-keyboard-shortcuts.md), and [KQL quick reference documentation](/kusto/query/kql-quick-reference).
+1. Choose from options like **Duplicate query**, **Open command palette**, or hover over **Resources** to access documentation links. This list includes resources such as the [KQL to SQL cheat sheet](/kusto/query/sql-cheat-sheet?view=azure-data-explorer&preserve-view=true), [Keyboard shortcuts](web-ui-query-keyboard-shortcuts.md), and [KQL quick reference documentation](/kusto/query/kql-quick-reference?view=azure-data-explorer&preserve-view=true).
 
 :::image type="content" source="media/web-ui-kql/kql-tools.png" alt-text="Screenshot of the KQL tools option in the web UI toolbar." lightbox="media/web-ui-kql/kql-tools.png":::
 
 ## Related content
 
-* [Tutorial: Learn common operators](/kusto/query/tutorials/learn-common-operators)
-* [Tutorial: Use aggregation functions](/kusto/query/tutorials/use-aggregation-functions)
-* [Tutorial: Join data from multiple tables](/kusto/query/tutorials/join-data-from-multiple-tables)
+* [Tutorial: Learn common operators](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true)
+* [Tutorial: Use aggregation functions](/kusto/query/tutorials/use-aggregation-functions?view=azure-data-explorer&preserve-view=true)
+* [Tutorial: Join data from multiple tables](/kusto/query/tutorials/join-data-from-multiple-tables?view=azure-data-explorer&preserve-view=true)
 * [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

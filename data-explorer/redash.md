@@ -66,7 +66,7 @@ ms.date: 11/04/2019
     ![query based dropdown list.](media/redash/query-based-dropdown-list.png)
 
     > [!NOTE]
-    > The query uses multiple values, therefore you must include the following syntax `| where Type in ((split('{{Type}}', ',')))`. For more information, see [in operator](/kusto/query/in-operator). This results in [multiple query parameter options in redash app](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io)
+    > The query uses multiple values, therefore you must include the following syntax `| where Type in ((split('{{Type}}', ',')))`. For more information, see [in operator](/kusto/query/in-operator). This results in [multiple query parameter options in redash app](https://redash.io/help/user-guide/querying/query-parameters?view=azure-data-explorer&preserve-view=true#Serialized-Multi-Select-Query-Parametersredash.io)
 
 ## Create a dashboard in Redash
 

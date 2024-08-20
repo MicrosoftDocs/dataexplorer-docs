@@ -43,7 +43,7 @@ If your cluster already has the desired managed identity assigned to it, copy it
 
 ## Set the managed identity policy in Azure Data Explorer
 
-In order to use the managed identity to ingest data into your cluster, allow the `NativeIngestion` usage option for the selected managed identity. Native ingestion refers to the ability to use an SDK for ingestion from an external source. For more information on the available SDKs, see [Client libraries](/kusto/api/client-libraries).
+In order to use the managed identity to ingest data into your cluster, allow the `NativeIngestion` usage option for the selected managed identity. Native ingestion refers to the ability to use an SDK for ingestion from an external source. For more information on the available SDKs, see [Client libraries](/kusto/api/client-libraries?view=azure-data-explorer&preserve-view=true).
 
 The usage Managed Identity policy can be defined at the cluster or database level of the target cluster.
 
@@ -66,7 +66,7 @@ Replace `<managed_identity_id>` with the object ID of the required managed ident
 
 ## Queue blobs for ingestion with managed identity using Kusto SDK
 
-When ingesting data using a Kusto [SDK](net-sdk-ingest-data.md), generate your [blob URI using managed identity authentication](/kusto/api/connection-strings/storage-connection-strings#managed-identity) by appending `;managed_identity={objectId}` to the unauthorized blob URI. If you ingest data using your cluster's system assigned managed identity, you can append `;managed_identity=system` to the blob URI.
+When ingesting data using a Kusto [SDK](net-sdk-ingest-data.md), generate your [blob URI using managed identity authentication](/kusto/api/connection-strings/storage-connection-strings?view=azure-data-explorer&preserve-view=true#managed-identity) by appending `;managed_identity={objectId}` to the unauthorized blob URI. If you ingest data using your cluster's system assigned managed identity, you can append `;managed_identity=system` to the blob URI.
 
 > [!IMPORTANT]
 > 

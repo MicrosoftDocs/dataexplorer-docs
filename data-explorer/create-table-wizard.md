@@ -17,7 +17,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md). 
-* Database User or Database Admin permissions. For more information, see [Kusto role-based access control](/kusto/access-control/role-based-access-control).
+* Database User or Database Admin permissions. For more information, see [Kusto role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]

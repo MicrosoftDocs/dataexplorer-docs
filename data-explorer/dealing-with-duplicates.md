@@ -42,7 +42,7 @@ Understand your business requirements and tolerance of duplicate data. Some data
 
 ### Solution #2: Handle duplicate rows during query
 
-Another option is to filter out the duplicate rows in the data during query. The [`arg_max()`](/kusto/query/arg-max-aggregation-function) aggregated function can be used to filter out the duplicate records and return the last record based on the timestamp (or another column). The advantage of using this method is faster ingestion since de-duplication occurs during query time. In addition, all records (including duplicates) are available for auditing and troubleshooting. The disadvantage of using the `arg_max` function is the additional query time and load on the CPU every time the data is queried. Depending on the amount of the data being queried, this solution may become non-functional or memory-consuming and will require switching to other options.
+Another option is to filter out the duplicate rows in the data during query. The [`arg_max()`](/kusto/query/arg-max-aggregation-function?view=azure-data-explorer&preserve-view=true) aggregated function can be used to filter out the duplicate records and return the last record based on the timestamp (or another column). The advantage of using this method is faster ingestion since de-duplication occurs during query time. In addition, all records (including duplicates) are available for auditing and troubleshooting. The disadvantage of using the `arg_max` function is the additional query time and load on the CPU every time the data is queried. Depending on the amount of the data being queried, this solution may become non-functional or memory-consuming and will require switching to other options.
 
 In the following example, we query the last record ingested for a set of columns that determine the unique records:
 
@@ -65,14 +65,14 @@ This query can also be placed inside a function instead of directly querying the
 
 ### Solution #3: Use materialized views to deduplicate
 
-[Materialized views](/kusto/management/materialized-views/materialized-view-overview) can be used for deduplication, by using the [take_any()](/kusto/query/take-any-aggregation-function)/[arg_min()](/kusto/query/arg-min-aggregation-function)/[arg_max()](/kusto/query/arg-max-aggregation-function) aggregation functions (see example #4 in [materialized view create command](/kusto/management/materialized-views/materialized-view-create#examples)).
+[Materialized views](/kusto/management/materialized-views/materialized-view-overview) can be used for deduplication, by using the [take_any()](/kusto/query/take-any-aggregation-function)/[arg_min()](/kusto/query/arg-min-aggregation-function)/[arg_max()](/kusto/query/arg-max-aggregation-function) aggregation functions (see example ?view=azure-data-explorer&preserve-view=true#4 in [materialized view create command](/kusto/management/materialized-views/materialized-view-create#examples)).
 
 > [!NOTE]
-> Materialized views come with a cost of consuming cluster's resources, which may not be negligible. For more information, see materialized views [performance considerations](/kusto/management/materialized-views/materialized-view-overview#performance-considerations).
+> Materialized views come with a cost of consuming cluster's resources, which may not be negligible. For more information, see materialized views [performance considerations](/kusto/management/materialized-views/materialized-view-overview?view=azure-data-explorer&preserve-view=true#performance-considerations).
 
 ### Solution #4: Use soft delete to remove duplicates
 
-[Soft delete](/kusto/concepts/data-soft-delete) supports the ability to delete individual records, and can therefore be used to delete duplicates. This option is recommended only for infrequent deletes, and not if you constantly need to deduplicate all incoming records.
+[Soft delete](/kusto/concepts/data-soft-delete?view=azure-data-explorer&preserve-view=true) supports the ability to delete individual records, and can therefore be used to delete duplicates. This option is recommended only for infrequent deletes, and not if you constantly need to deduplicate all incoming records.
 
 #### Choose between materialized views and soft delete for data deduplication
 
@@ -84,7 +84,7 @@ There are several considerations that can help you choose between using material
 
 ### Solution #5: `ingest-by` extent tags
 
-['ingest-by:' extent tags](/kusto/management/extent-tags) can be used to prevent duplicates during ingestion. This is relevant only in use cases where each ingestion batch is guaranteed to have no duplicates, and duplicates are only expected if the same ingestion batch is ingested more than once.
+['ingest-by:' extent tags](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) can be used to prevent duplicates during ingestion. This is relevant only in use cases where each ingestion batch is guaranteed to have no duplicates, and duplicates are only expected if the same ingestion batch is ingested more than once.
 
 ## Summary
 

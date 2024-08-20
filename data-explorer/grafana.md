@@ -204,7 +204,7 @@ To perform the optimization, in **Data Sources** > **Settings** > **Query Optimi
 
 ##### Optimize dashboard query rendering performance
 
-When a dashboard or visual is rendered more than once by one or more users, Grafana sends at least one query to Azure Data Explorer by default. Enable [Query results caching](/kusto/query/query-results-cache) to improve dashboard rendering performance and to reduce load on the Azure Data Explorer cluster.
+When a dashboard or visual is rendered more than once by one or more users, Grafana sends at least one query to Azure Data Explorer by default. Enable [Query results caching](/kusto/query/query-results-cache?view=azure-data-explorer&preserve-view=true) to improve dashboard rendering performance and to reduce load on the Azure Data Explorer cluster.
 
 During the specified time range, Azure Data Explorer will use the results cache to retrieve the previous results and won't run an unnecessary query. This capability is especially effective in reducing load on resources and improving performance when multiple users are using the same dashboard.
 
@@ -217,7 +217,7 @@ To enable results cache rendering, do the following on the **Query Optimizations
 
 Clusters are configured with strong consistency. This default configuration guarantees that query results are up to date with all changes in the cluster.
 
-When you enable weak consistency, query results can have a lag of 1 to 2 minutes after cluster alterations. However, weak consistency might boost visual rendering time. If immediate consistency isn't critical and performance is marginal, enable weak consistency to improve performance. For more information, see [Query consistency](/kusto/concepts/query-consistency).
+When you enable weak consistency, query results can have a lag of 1 to 2 minutes after cluster alterations. However, weak consistency might boost visual rendering time. If immediate consistency isn't critical and performance is marginal, enable weak consistency to improve performance. For more information, see [Query consistency](/kusto/concepts/query-consistency?view=azure-data-explorer&preserve-view=true).
 
 To enable weak consistency, on the **Query Optimizations** pane, select **Data consistency** > **Weak**.
 
@@ -257,14 +257,14 @@ Use query builder mode to define your query.
 1. Now that the table is defined, filter the data:
 
     1. Select **+** to the right of **Where (filter)** to select one or more columns in your table.
-    1. For each filter, define the values by using the applicable operator. This selection is similar to using the [where operator](/kusto/query/where-operator) in Kusto Query Language.
+    1. For each filter, define the values by using the applicable operator. This selection is similar to using the [where operator](/kusto/query/where-operator?view=azure-data-explorer&preserve-view=true) in Kusto Query Language.
 
 1. Select the values to present in the table:
 
     1. Select **+** to the right of **Value columns** to select the value columns that will appear on the pane.
     1. For each value column, set the aggregation type.
 
-       You can set one or more value columns. This selection is equivalent to using the [summarize operator](/kusto/query/summarize-operator).
+       You can set one or more value columns. This selection is equivalent to using the [summarize operator](/kusto/query/summarize-operator?view=azure-data-explorer&preserve-view=true).
 
 1. Select **+** to the right of **Group by (summarize)** to select one or more columns that will be used to arrange the values into groups. This selection is equivalent to the group expression in the `summarize` operator.
 

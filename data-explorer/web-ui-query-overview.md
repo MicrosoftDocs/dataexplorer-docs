@@ -52,7 +52,7 @@ Use the query editor to interact with your data by running queries in the contex
 
 :::image type="content" source="media/web-ui-query/switch-query-context.gif" alt-text="Screenshot of multiple query tabs and their context." lightbox="media/web-ui-query/switch-query-context.gif":::
 
-The editor offers [Kusto Query Language (KQL)](/kusto/query/index) Intellisense and autocompletion, providing helpful suggestions as you write your query. The editor also alerts you when accessing data outside the selected database and suggests query optimizations. To return all records matching the query, select **Run** or press *Shift + Enter*. To see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results** or press *Alt + Shift + Enter*.
+The editor offers [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) Intellisense and autocompletion, providing helpful suggestions as you write your query. The editor also alerts you when accessing data outside the selected database and suggests query optimizations. To return all records matching the query, select **Run** or press *Shift + Enter*. To see a preview of 50 results, select the dropdown menu on the **Run** button and select **Preview results** or press *Alt + Shift + Enter*.
 
 :::image type="content" source="media/web-ui-query/run-button-dropdown.png" alt-text="Screenshot of the web UI run button dropdown options." lightbox="media/web-ui-query/run-button-dropdown.png":::
 
@@ -69,7 +69,7 @@ With the use of query tabs, you can work on multiple queries simultaneously, all
 
 After you execute a query, the results are displayed in the results grid located below the query editor. The results grid presents query results in a tabular format, and provides functionality to sort, filter, group, and visualize the data in various ways. For more information, see [Azure Data Explorer web UI results grid](web-results-grid.md).
 
-You can also view query statistics such as query duration, CPU and memory usage, and data scanned. These statistics can be useful when trying to optimize your queries. For information on potential optimizations, see [Query best practices](/kusto/query/best-practices).
+You can also view query statistics such as query duration, CPU and memory usage, and data scanned. These statistics can be useful when trying to optimize your queries. For information on potential optimizations, see [Query best practices](/kusto/query/best-practices?view=azure-data-explorer&preserve-view=true).
 
 :::image type="content" source="media/web-ui-query/results-grid-with-stats.gif" alt-text="Moving screenshot of the results grid with statistics." lightbox="media/web-ui-query/results-grid-with-stats.gif":::
 

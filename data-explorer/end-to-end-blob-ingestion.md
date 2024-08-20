@@ -659,4 +659,4 @@ poller.wait()
 
 * [Create an Azure Data Explorer cluster and database](create-cluster-database.md?tabs=csharp)
 * [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
-* [Tutorial: Learn common KQL operators](/kusto/query/tutorials/learn-common-operators)
+* [Tutorial: Learn common KQL operators](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true)

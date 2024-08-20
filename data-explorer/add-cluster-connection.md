@@ -46,4 +46,4 @@ To add a connection to your Azure Data Explorer cluster:
 
 * [Get data overview](ingest-data-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
-* [Tutorial: Learn common Kusto Query Language operators](/kusto/query/tutorials/learn-common-operators)
+* [Tutorial: Learn common Kusto Query Language operators](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true)

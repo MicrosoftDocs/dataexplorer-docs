@@ -13,9 +13,9 @@ This article explains how to use the graph semantics feature in KQL effectively 
 
 ## Size of graph
 
-The [make-graph operator](/kusto/query/make-graph-operator) creates an in-memory representation of a graph. It consists of the graph structure itself and its properties. When making a graph, use appropriate filters, projections, and aggregations to select only the relevant nodes and edges and their properties.
+The [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) creates an in-memory representation of a graph. It consists of the graph structure itself and its properties. When making a graph, use appropriate filters, projections, and aggregations to select only the relevant nodes and edges and their properties.
 
-The following example shows how to reduce the number of nodes and edges and their properties. In this scenario, Bob changed manager from Alice to Eve and the user only wants to see the latest state of the graph for their organization. To reduce the size of the graph, the nodes are first filtered by the organization property and then the property is removed from the graph using the [project-away operator](/kusto/query/project-away-operator). The same happens for edges. Then [summarize operator](/kusto/query/summarize-operator) together with [arg_max](/kusto/query/arg-max-aggregation-function) is used to get the last known state of the graph.
+The following example shows how to reduce the number of nodes and edges and their properties. In this scenario, Bob changed manager from Alice to Eve and the user only wants to see the latest state of the graph for their organization. To reduce the size of the graph, the nodes are first filtered by the organization property and then the property is removed from the graph using the [project-away operator](/kusto/query/project-away-operator?view=azure-data-explorer&preserve-view=true). The same happens for edges. Then [summarize operator](/kusto/query/summarize-operator?view=azure-data-explorer&preserve-view=true) together with [arg_max](/kusto/query/arg-max-aggregation-function?view=azure-data-explorer&preserve-view=true) is used to get the last known state of the graph.
 
 ```kusto
 let allEmployees = datatable(organization: string, name:string, age:long)
@@ -68,7 +68,7 @@ Consider creating a materialized view to improve the query performance, as follo
     .create table reportsTo (employee:string, manager:string, modificationDate: datetime)
     ```
 
-1. Create a materialized view for each table and use the [arg_max aggregation](/kusto/query/arg-max-aggregation-function) function to determine the *last known state* of employees and the *reportsTo* relation.
+1. Create a materialized view for each table and use the [arg_max aggregation](/kusto/query/arg-max-aggregation-function?view=azure-data-explorer&preserve-view=true) function to determine the *last known state* of employees and the *reportsTo* relation.
 
     ```kusto
     .create materialized-view employees_MV on table employees
@@ -220,7 +220,7 @@ let assetHierarchy = datatable(source:string, destination:string)
 ];
 ```
 
-The *employees*, *sensors*, and other entities and relationships don't share a canonical data model. You can use the [union operator](/kusto/query/union-operator) to combine and canonize the data.
+The *employees*, *sensors*, and other entities and relationships don't share a canonical data model. You can use the [union operator](/kusto/query/union-operator?view=azure-data-explorer&preserve-view=true) to combine and canonize the data.
 
 The following query joins the sensor data with the time series data to find the sensors that have abnormal readings. Then, it uses a projection to create a common model for the graph nodes.
 
@@ -249,14 +249,14 @@ let edges =
         ( operates | project source = employee, destination = machine, properties = pack_all(true), label = "operates" );
 ```
 
-With the canonized nodes and edges data, you can create a graph using the [make-graph operator](/kusto/query/make-graph-operator), as follows:
+With the canonized nodes and edges data, you can create a graph using the [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true), as follows:
 
 ```kusto
 let graph = edges
 | make-graph source --> destination with nodes on nodeId;
 ```
 
-Once created, define the path pattern and project the information required. The pattern starts at a tag node followed by a variable length edge to an asset. That asset is operated by an operator that reports to a top manager via a variable length edge, called *reportsTo*. The constraints section of the [graph-match operator](/kusto/query/graph-match-operator), in this instance **where**, reduces the tags to the ones that have an anomaly and were operated on a specific day.
+Once created, define the path pattern and project the information required. The pattern starts at a tag node followed by a variable length edge to an asset. That asset is operated by an operator that reports to a top manager via a variable length edge, called *reportsTo*. The constraints section of the [graph-match operator](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true), in this instance **where**, reduces the tags to the ones that have an anomaly and were operated on a specific day.
 
 ```kusto
 graph
@@ -281,4 +281,4 @@ The projection in graph-match outputs the information that the temperature senso
 
 ## Related content
 
-* [Graph operators](/kusto/query/graph-operators)
+* [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true)

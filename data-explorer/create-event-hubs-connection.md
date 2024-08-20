@@ -64,7 +64,7 @@ Select the data source from the available list. In this example, you're ingestin
     | Data connection name       | The name that identifies your data connection.                 |
     | **Advanced filters**       |
     | Compression                | The compression type of the event hub messages payload.       |
-    | Event system properties    | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first one. When adding system properties, [create](/kusto/management/create-table-command) or [update](/kusto/management/alter-table-command) table schema and [mapping](/kusto/management/mappings) to include the selected properties. |
+    | Event system properties    | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first one. When adding system properties, [create](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or [update](/kusto/management/alter-table-command?view=azure-data-explorer&preserve-view=true) table schema and [mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) to include the selected properties. |
     | Event retrieval start date | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created.   |
 
 1. Select **Next**
@@ -113,8 +113,8 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* A destination table. [Create a table](/kusto/management/create-table-command) or use an existing table.
-* An [ingestion mapping](/kusto/management/mappings) for the table.
+* A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
+* An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 
 ### Get data
@@ -134,7 +134,7 @@ In the **Data preparation** window, all three steps are marked with green check 
     | Event hub namespace | A unique namespace name | The name you chose earlier that identifies your namespace. |
     | Event hub | *test-hub* | The event hub you created. |
     | Consumer group | *test-group* | The consumer group defined in the event hub you created. |
-    | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first record. When adding system properties, [create](/kusto/management/create-table-command) or [update](/kusto/management/alter-table-command) table schema and [mapping](/kusto/management/mappings) to include the selected properties. |
+    | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first record. When adding system properties, [create](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or [update](/kusto/management/alter-table-command?view=azure-data-explorer&preserve-view=true) table schema and [mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) to include the selected properties. |
     | Compression | *None* | The compression type of the event hub messages payload. Supported compression types: *None, Gzip*.|
     | Managed Identity (recommended) | System-assigned | The managed identity used by the Data Explorer cluster for access to read from the event hub. We recommend using managed identities to control access to your event hub.<br /><br />**Note**:<br />When the data connection is created:<br/>\* *System-assigned* identities are automatically created if they don't exist<br />\* The managed identity is automatically assigned the *Azure Event Hubs Data Receiver* role and is added to your Data Explorer cluster. We recommend verifying that the role was assigned and that the identity was added to the cluster. |
 
@@ -147,8 +147,8 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* A destination table. [Create a table](/kusto/management/create-table-command) or use an existing table.
-* An [ingestion mapping](/kusto/management/mappings) for the table.
+* A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
+* An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 
 ### Get data
@@ -161,7 +161,7 @@ In the **Data preparation** window, all three steps are marked with green check 
 
     > [!NOTE]
     >
-    > * You must have at least [Database User](/kusto/access-control/role-based-access-control) permissions.
+    > * You must have at least [Database User](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) permissions.
     > * To enable access between a cluster and a storage account without public access, see [Create a Managed Private Endpoint](security-network-private-endpoint-create.md).
     > * The cluster and event hub should be associated with the same tenants. If not, use one of the SDK options, such as C# or Python.
 
@@ -183,10 +183,10 @@ In the **Data preparation** window, all three steps are marked with green check 
     | Data connection name | *TestDataConnection*  | The name that identifies your data connection.|
     | Consumer group |  | The consumer group defined in your event hub. |
     | Compression | | The compression type of the event hub messages payload.|
-    | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first one. When adding system properties, [create](/kusto/management/create-table-command) or [update](/kusto/management/alter-table-command) table schema and [mapping](/kusto/management/mappings) to include the selected properties. |
+    | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first one. When adding system properties, [create](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or [update](/kusto/management/alter-table-command?view=azure-data-explorer&preserve-view=true) table schema and [mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) to include the selected properties. |
     |Event retrieval start date| Coordinated Universal Time (UTC) | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created. |
 
-1. If [streaming](/kusto/management/streaming-ingestion-policy) is enabled for the cluster, you can select **Streaming ingestion**. If streaming isn't enabled for the cluster, set the **Data batching latency**. For Event Hubs, the recommended [batching time](/kusto/management/batching-policy) is 30 seconds.
+1. If [streaming](/kusto/management/streaming-ingestion-policy?view=azure-data-explorer&preserve-view=true) is enabled for the cluster, you can select **Streaming ingestion**. If streaming isn't enabled for the cluster, set the **Data batching latency**. For Event Hubs, the recommended [batching time](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true) is 30 seconds.
 
     :::image type="content" source="media/create-event-hubs-connection/schema-page-event-hubs.png" alt-text="Screenshot of schema page for ingesting from event hubs to Azure Data Explorer in the Azure portal." lightbox="media/create-event-hubs-connection/schema-page-event-hubs.png":::
 
@@ -210,8 +210,8 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* A destination table. [Create a table](/kusto/management/create-table-command) or use an existing table.
-* An [ingestion mapping](/kusto/management/mappings) for the table.
+* A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
+* An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 
 ### ARM template

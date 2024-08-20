@@ -76,7 +76,7 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
 
 ### [PowerShell](#tab/powershell)
 
-* Set up your environment using the instructions in [Use Kusto cmdlets in Azure PowerShell](/kusto/api/powershell/azure-powershell).
+* Set up your environment using the instructions in [Use Kusto cmdlets in Azure PowerShell](/kusto/api/powershell/azure-powershell?view=azure-data-explorer&preserve-view=true).
 
 ### Configure parameters
 
@@ -713,7 +713,7 @@ The following code shows how to create a database. The package imports and envir
    | cluster-name | *azureclitest* | The name of your cluster where the database will be created.|
    | database-name | *clidatabase* | The name of your database.|
    | resource-group | *testrg* | The resource group name where the cluster will be created. |
-   | read-write-database | *P365D* *P31D* *westus* | The database type. Parameters: *soft-delete-period* - Signifies the amount of time the data will be kept available to query. See [retention policy](/kusto/management/retention-policy) for more information. *hot-cache-period* - Signifies the amount of time the data will be kept in cache. See [cache policy](/kusto/management/cache-policy) for more information. *location* -The location where the database will be created. |
+   | read-write-database | *P365D* *P31D* *westus* | The database type. Parameters: *soft-delete-period* - Signifies the amount of time the data will be kept available to query. See [retention policy](/kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true) for more information. *hot-cache-period* - Signifies the amount of time the data will be kept in cache. See [cache policy](/kusto/management/cache-policy?view=azure-data-explorer&preserve-view=true) for more information. *location* -The location where the database will be created. |
 
 1. Run the following command to see the database that you created:
 

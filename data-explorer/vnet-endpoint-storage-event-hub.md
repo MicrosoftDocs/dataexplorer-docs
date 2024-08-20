@@ -124,5 +124,5 @@ This section shows you how to use Azure portal to add a virtual network service 
 
 ## Related content
 
-* [Export data to storage](/kusto/management/data-export/export-data-to-storage)
+* [Export data to storage](/kusto/management/data-export/export-data-to-storage?view=azure-data-explorer&preserve-view=true)
 * [Ingest data from event hub into Azure Data Explorer](create-event-hubs-connection.md?tabs=portalADX)

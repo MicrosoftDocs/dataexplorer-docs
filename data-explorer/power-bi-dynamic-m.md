@@ -51,7 +51,7 @@ First, set up a connector for Power BI.
     >
     > * Your dataset is small.
     > * You don't need near real-time data.
-    > * Your data is already aggregated or you perform [aggregation in Kusto](/kusto/query/aggregation-functions)
+    > * Your data is already aggregated or you perform [aggregation in Kusto](/kusto/query/aggregation-functions?view=azure-data-explorer&preserve-view=true)
     >
     > Use **DirectQuery** mode when:
     >
