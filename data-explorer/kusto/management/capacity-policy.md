@@ -208,7 +208,7 @@ The default capacity policy has the following JSON representation:
     "CoreUtilizationCoefficient": 0.75
   },
   "StreamingIngestionPostProcessingCapacity": {
-     "MaximumConcurrentOperationsPerNode": 4
+    "MaximumConcurrentOperationsPerNode": 4
   },
   "PurgeStorageArtifactsCleanupCapacity": {
     "MaximumConcurrentOperationsPerCluster": 2
