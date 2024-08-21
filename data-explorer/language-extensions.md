@@ -68,7 +68,6 @@ Do the following steps to disable language extensions on your cluster:
 ## Limitations
 
 * The language extensions runtime sandbox allocates disk space even if no query runs in the scope of the relevant language. For more detailed limitations, see [sandboxes](/kusto/concepts/sandboxes?view=azure-data-explorer&preserve-view=true).
-* For [VM SKUs that don't support nested virtualization](/kusto/concepts/sandboxes-in-non-modern-skus?view=azure-data-explorer&preserve-view=true#virtual-machine-sizes), see [limitations](/kusto/concepts/sandboxes-in-non-modern-skus?view=azure-data-explorer&preserve-view=true).
 
 ## Related content
 

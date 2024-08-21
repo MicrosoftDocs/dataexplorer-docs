@@ -653,8 +653,6 @@ items:
     items:
     - name: Using sandboxes
       href: /kusto/concepts/sandboxes?view=azure-data-explorer&preserve-view=true
-    - name: Using sandboxes in non-modern sku
-      href: /kusto/concepts/sandboxes-in-non-modern-skus?view=azure-data-explorer&preserve-view=true
     - name: Sandbox policy
       href: /kusto/management/sandbox-policy?view=azure-data-explorer&preserve-view=true
     - name: .alter cluster policy sandbox command
