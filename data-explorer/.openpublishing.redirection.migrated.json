@@ -4611,11 +4611,6 @@
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/data-explorer/kusto-redirections/concepts/sandboxes-in-non-modern-skus.md",
-      "redirect_url": "/kusto/concepts/sandboxes-in-non-modern-skus",
-      "redirect_document_id": false
-    },
-    {
       "source_path_from_root": "/data-explorer/kusto-redirections/functions-library/bartlett-test-fl.md",
       "redirect_url": "/kusto/functions-library/bartlett-test-fl",
       "redirect_document_id": false
