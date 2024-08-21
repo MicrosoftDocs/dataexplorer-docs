@@ -140,7 +140,6 @@ You can view the query in either editing or viewing mode. Editing the underlying
 > [!NOTE]
 > Any edits made to the query using this flow won't be reflected in the original dashboard.
 
-## 
 ## Export dashboards
 
 Use the file menu to export a dashboard to a JSON file. Exporting dashboard can be useful in the following scenarios:
