@@ -1,6 +1,6 @@
 ---
-title: Visualize data with the Azure Data Explorer dashboard
-description: Learn how to visualize data with the Azure Data Explorer dashboard
+title: Share Azure Data Explorer dashboards
+description: Learn how to share Azure Data Explorer dashboards
 ms.reviewer: gabil
 ms.topic: how-to
 ms.date: 08/21/2024
