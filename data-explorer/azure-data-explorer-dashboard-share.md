@@ -41,7 +41,7 @@ To grant permissions to a user in the **Dashboard permissions** pane:
 
 ### Grant permissions to users in a different tenant
 
-Cross-tenant sharing is disabled by default. To enable cross-tenant sharing, a tenant admin must enable it in the Azure Data Explorer WebUI [settings](web-customize-settings.md).
+Cross-tenant sharing is disabled by default. To enable cross-tenant sharing, a tenant admin must enable it in the Azure Data Explorer WebUI [settings](web-customize-settings.md#enable-cross-tenant-dashboard-sharing).
 
 > [!IMPORTANT]
 > If a tenant admin enables cross-tenant sharing and later disables cross-tenant sharing, all dashboards shared while the feature was active will remain accessible.
@@ -51,7 +51,7 @@ Cross-tenant sharing is disabled by default. To enable cross-tenant sharing, a t
 
     > [!NOTE]
     > * You can share with security groups.
-    > * You can share with MSA users.
+    > * You can share with Microsoft accounts (MSA).
     > * You can't share with distribution groups.
 
 1. Choose if you want to allow the user to edit the dashboard. If so, check the **Allow edit permission** box.
