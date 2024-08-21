@@ -1,13 +1,14 @@
 ---
 title:  Bar chart visualization
-description: This article describes the bar chart visualization in Azure Data Explorer.
+description:  This article describes the bar chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/02/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Bar chart
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The bar chart visual needs a minimum of two columns in the query result. By default, the first column is used as the y-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the x-axis and contain numeric data types to be displayed as horizontal lines. Bar charts are used mainly for comparing numeric and nominal discrete values, where the length of each line represents its value.
 
@@ -18,7 +19,7 @@ The bar chart visual needs a minimum of two columns in the query result. By defa
 
 *T* `|` `render` `barchart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,7 +28,7 @@ The bar chart visual needs a minimum of two columns in the query result. By defa
 | *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Supported properties
 
@@ -60,9 +61,9 @@ This visualization supports splitting into multiple y-axis values:
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value.|
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ### Supported properties
 
@@ -74,7 +75,7 @@ All properties are optional.
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`title`       |The title of the visualization (of type `string`).                                |
 
-::: zone-end
+::: moniker-end
 
 #### `kind` property
 
@@ -94,8 +95,10 @@ The supported values of this property are:
 
 The following query creates a bar chart displaying the number of storm events for each state, filtering only those states with more than 10 events. The chart provides a visual representation of the event distribution across different states.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNwQ3CMAxF753C6qmVukKOTJABUJpYJKhJkOMCrRiexCBAwgfL/v/5W3OmeLhi4tI9oKwxGgo7AjbpaPOaWEkfRpg30GwYK3ihfEbLr336patJmBwSzIasN8Qd1LoF9jDIyIEXVL1un0FuWnJpSf0kxPaPvJ37x/nSC57qQ+WDc5hEGZ+m61uP1gAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -116,8 +119,10 @@ StormEvents
 
 The following query creates a `stacked` bar chart that shows the total count of storm events by their type for selected states of Texas, California, and Florida. Each bar represents a storm event type, and the stacked bars show the breakdown of storm events by state within each type.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMwQqDMBBE7/2KJScFf8FDsAqCVFAPvabJQoIYy2atWPrxjdpLT8PMm5meZ5rKF3oOlw+sFgmhZ8UIzkMihvIue5GBKGRTV213q+Xuqqbt6qsUadyEZZoUuTfCcVPMi2fIQe+apPDYznzYnpid13E0k0H6Y6CC/nEwGHQsEfqjpUhbRQyrYwvJ6LzJAys9okm/XvmC/L8AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -133,8 +138,10 @@ StormEvents
 
 The following query creates a `stacked100` bar chart that shows the total count of storm events by their type for selected states of Texas, California, and Florida. The chart shows the distribution of storm events across states within each type. Although the stacks visually sum up to 100, the values actually represent the number of events, not percentages. This visualization is helpful for understanding both the percentages and the actual event counts.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMvQqDQBCE+zzFcpWChXkAi8MoCBJBLdJe7hY8xFP21oghDx9/0qQaZr6ZaXikIXuhY3/5wNIhITSsGME6CESbPWQjIhCpLIu8qu+F3F1eVnVxkyLcNn4eBkX2jXDcpOPsGBLQuwYhPNczb9cJo/N6G41kkP4YKK9/HAx6vZUI3dFSpDtFDIvlDoLeOpN4VrpHc43j8AvTVplzwgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -146,7 +153,7 @@ StormEvents
 
 :::image type="content" source="media/visualization-barchart/stacked-100-bar-chart.png" alt-text="Screenshot of a stacked 100 bar chart visualization." lightbox="media/visualization-barchart/stacked-100-bar-chart.png":::
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Use the `ysplit` property
 
@@ -183,4 +190,4 @@ StormEvents
 :::image type="content" source="media/visualization-barchart/bar-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="media/visualization-barchart/bar-chart-ysplit-panels.png":::
 
 
-::: zone-end
+::: moniker-end

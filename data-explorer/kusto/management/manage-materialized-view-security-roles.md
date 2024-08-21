@@ -2,10 +2,12 @@
 title: Manage materialized view roles
 description: Learn how to use management commands to view, add, and remove materialized view admins on a materialized view level.
 ms.topic: reference
-ms.date: 07/17/2023
+ms.date: 08/11/2024
 ---
 
 # Manage materialized view roles
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
@@ -18,7 +20,7 @@ In this article, you'll learn how to use management commands to [view existing a
 
 ## Permissions
 
-You must have Database Admin permissions or be a Materialized View Admin on the specific materialized view to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have Database Admin permissions or be a Materialized View Admin on the specific materialized view to run these commands. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Show existing admins
 
@@ -34,7 +36,7 @@ To show your roles:
 
 `.show` `materialized-view` *MaterializedViewName* `principal` `roles`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -64,7 +66,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 *Action* `materialized-view` *MaterializedViewName* `admins` `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -72,7 +74,7 @@ This section provides syntax, parameters, and examples for adding and removing p
 |--|--|--|--|
 | *Action* | `string` |  :heavy_check_mark: | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
 | *MaterializedViewName* | `string` |  :heavy_check_mark: | The name of the materialized view for which to add principals.|
-| *Principal* | `string` |  :heavy_check_mark: | One or more principals. For guidance on how to specify these principals, see [Referencing security principals](./access-control/referencing-security-principals.md).|
+| *Principal* | `string` |  :heavy_check_mark: | One or more principals. For guidance on how to specify these principals, see [Referencing security principals](reference-security-principals.md).|
 | `skip-results` | `string` | | If provided, the command won't return the updated list of materialized view principals.|
 | *Description* | `string` | | Text to describe the change that will be displayed when using the `.show` command.|
 

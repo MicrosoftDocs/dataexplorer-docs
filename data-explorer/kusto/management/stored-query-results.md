@@ -3,10 +3,12 @@ title: Stored query results
 description: Learn how to manage stored query results.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 04/08/2024
+ms.date: 08/11/2024
 ---
 
 # Stored query results
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 *Stored query results* store the result of a query on the service for up to 24 hours. The same principal identity that created the stored query can reference the results in later queries.
 
@@ -19,11 +21,23 @@ Updates to security policies, such as database access and row level security, ar
 
 Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, we recommended that the query includes [unique ID columns](../query/stored-query-result-function.md#pagination). If a query returns multiple result sets, only the first result set is stored.
 
+:::moniker range="azure-data-explorer"
 > [!NOTE]
 >
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
 > * Query results are stored in a storage account associated with the cluster. The data isn't cached in local SSD storage.
-> * A follower cluster needs it's own writable database to store query results.
+> * A follower cluster needs its own writable database to store query results.
+
+::: moniker-end
+:::moniker range="microsoft-fabric"
+
+> [!NOTE]
+>
+> * When you have more than 500 columns, an error is raised and the results aren't stored.
+> * Query results are stored in a storage account associated with the eventhouse. The data isn't cached in local SSD storage.
+> * A shortcut database needs its own writable database to store query results.
+
+::: moniker-end
 
 The following table lists the management commands and functions used for managing stored query results:
 

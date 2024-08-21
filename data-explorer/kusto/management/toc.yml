@@ -512,7 +512,7 @@ items:
             displayName: .Show table mirroring operations exported artifacts
           - name: .show table mirroring operations failures command
             href: show-table-mirroring-operations-failures.md 
-            displayName: show table mirroring operations failures            
+            displayName: show table mirroring operations failures    
       - name: Partitioning
         items:
           - name: Partitioning policy
@@ -653,8 +653,6 @@ items:
         items:
           - name: Using sandboxes
             href: ../concepts/sandboxes.md
-          - name: Using sandboxes in non-modern sku
-            href: ../concepts/sandboxes-in-non-modern-skus.md
           - name: Sandbox policy
             href: sandbox-policy.md
           - name: .alter cluster policy sandbox command
@@ -751,6 +749,14 @@ items:
       - name: Security roles overview
         href: security-roles.md
         displayName: role based access control, rbac, principals
+      - name: Access control
+        items:
+        - name: Access control overview
+          href: ../access-control/index.md
+        - name: Kusto role-based Access Control
+          href: ../access-control/role-based-access-control.md
+        - name: Microsoft Entra App registration
+          href: ../access-control/provision-entra-id-app.md
       - name: Manage database roles
         href: manage-database-security-roles.md
         displayName: .show principal, principal access, security roles, roles, rbac
@@ -775,6 +781,10 @@ items:
         href: reference-security-principals.md
   - name: Data ingestion
     items:
+      - name: Data formats supported for ingestion
+        href: ../ingestion-supported-formats.md
+      - name: Ingestion properties
+        href: ../ingestion-properties.md
       - name: Ingest from storage
         displayName: .ingest into, pull data, pulling ingestion
         href: data-ingestion/ingest-from-storage.md
@@ -888,7 +898,7 @@ items:
             href: streaming-ingestion-statistics.md
           - name: .show table data statistics
             href: show-table-data-statistics.md
-  - name: Advanced data management
+  - name: Advanced data management 
     items:
       - name: Clear cached external artifacts
         href: clear-external-artifacts-cache-command.md

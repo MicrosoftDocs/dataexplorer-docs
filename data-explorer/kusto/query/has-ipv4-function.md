@@ -3,9 +3,11 @@ title:  has_ipv4()
 description: Learn how to use the has_ipv4() function to check if a specified IPv4 address appears in the text.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # has_ipv4()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a value indicating whether a specified IPv4 address appears in a text.
 
@@ -18,7 +20,7 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 `has_ipv4(`*source* `,` *ip_address* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,8 +42,10 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 ### Properly formatted IP address
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOzywoM9FQNzC1MjCxMjVRMDQy1zMAQkMFd9cQBf20xLLM5Pw8PSChYGJgoq6joA5Xoa4JAIl8hqBNAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=has_ipv4('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.0.1')
@@ -55,8 +59,10 @@ print result=has_ipv4('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.0.1')
 
 ### Invalid IP address
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOzywoM9FQNzC1MjCxMjVRMDQy1zMAQiNTMwV31xAF/bTEsszk/Dw9IKFgYmCirqOgjqRGXRMAk108LFEAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=has_ipv4('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0.0.256')
@@ -70,8 +76,10 @@ print result=has_ipv4('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0.0.256'
 
 ### Improperly delimited IP
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOzywoM9FQNzC1MjCxMjUxNDLXMwBCQwV31xAF/bTEsszk/Dw9IKFgYmCirqOgDlehrgkAPqxiHkwAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=has_ipv4('05:04:54127.0.0.1 GET /favicon.ico 404', '127.0.0.1')

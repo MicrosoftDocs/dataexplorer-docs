@@ -1,11 +1,13 @@
 ---
 title:  Kusto query ingestion (set, append, replace)
-description: Learn how to use the .set, .append, .set-or-append, and .set-or-replace commands to ingest data from a query into Azure Data Explorer.
+description: Learn how to use the .set, .append, .set-or-append, and .set-or-replace commands to ingest data from a query.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/13/2023
+ms.date: 08/11/2024
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 These commands execute a query or a management command and ingest the results of the query into a table. The difference between these commands is how they treat existing or nonexistent tables and data.
 
@@ -18,7 +20,7 @@ These commands execute a query or a management command and ingest the results of
 
 To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
 
-[!INCLUDE [direct-ingestion-note](../../../includes/direct-ingestion-note.md)]
+[!INCLUDE [direct-ingestion-note](../../includes/direct-ingestion-note.md)]
 
 ## Permissions
 
@@ -34,7 +36,7 @@ For more information on permissions, see [Kusto role-based access control](../..
 
 (`.set` | `.append` | `.set-or-append` | `.set-or-replace`) [`async`] *tableName* [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *queryOrCommand*
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -56,12 +58,12 @@ For more information on permissions, see [Kusto role-based access control](../..
 |`extend_schema` | `bool` | If `true`, the command may extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
 |`recreate_schema` | `bool` | If `true`, the command may recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the `extend_schema` property if both are set. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
 |`folder` | `string` | The folder to assign to the table. If the table already exists, this property overwrites the table's folder.|
-|`ingestIfNotExists` | `string` | If specified, ingestion fails if the table already has data tagged with an `ingest-by:` tag with the same value. For more information, see [ingest-by: tags](../../../kusto/management/extent-tags.md).|
+|`ingestIfNotExists` | `string` | If specified, ingestion fails if the table already has data tagged with an `ingest-by:` tag with the same value. For more information, see [ingest-by: tags](../extent-tags.md).|
 |`policy_ingestiontime` | `bool` | If `true`, the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) will be enabled on the table. The default is `true`.|
 |`tags` | `string` | A JSON string that represents a list of [tags](../extent-tags.md) to associate with the created extent. |
 |`docstring` | `string` | A description used to document the table.|
 |`distributed` | `bool` | If `true`, the command ingests from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips).|
-|`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../operations.md#show-operation-details) command. Defaults to `false`. |`with (persistDetails=true)`|
+|`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../show-operations.md) command. Defaults to `false`. |`with (persistDetails=true)`|
 
 ## Schema considerations
 
@@ -74,15 +76,15 @@ For more information on permissions, see [Kusto role-based access control](../..
 
 ## Performance tips
 
-* Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster, including running queries. Avoid running too many ingestion commands at the same time.
+* Data ingestion is a resource-intensive operation that might affect concurrent activities on the database, including running queries. Avoid running too many ingestion commands at the same time.
 * Limit the data for ingestion to less than 1 GB per ingestion operation. If necessary, use multiple ingestion commands.
 * Set the `distributed` flag to `true` if the amount of data being produced by the query is large, exceeds 1 GB, and doesn't require serialization. Then, multiple nodes can produce output in parallel. Don't use this flag when query results are small, since it might needlessly generate many small data shards.
 
 ## Character limitation
 
-The command will fail if the query generates an entity name with the `$` character. The [entity names](../../../kusto/query/schema-entities/entity-names.md) must comply with the naming rules, so the `$` character must be removed for the ingest command to succeed.
+The command will fail if the query generates an entity name with the `$` character. The [entity names](../../query/schema-entities/entity-names.md) must comply with the naming rules, so the `$` character must be removed for the ingest command to succeed.
 
-For example, in the following query, the `search` operator generates a column `$table`. To store the query results, use [project-rename](../../../kusto/query/projectrenameoperator.md) to rename the column.
+For example, in the following query, the `search` operator generates a column `$table`. To store the query results, use [project-rename](../../query/project-rename-operator.md) to rename the column.
 
 ```kusto
 .set Texas <| search State has 'Texas' | project-rename tableName=$table

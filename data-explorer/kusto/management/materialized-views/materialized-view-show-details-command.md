@@ -1,17 +1,19 @@
 ---
 title:  .show materialized-view details
-description: This article describes show materialized-view details command in Azure Data Explorer.
+description:  This article describes show materialized-view details command.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 # .show materialized view details
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Returns a set that contains the specified materialized view or all materialized views in the database with a detailed summary of each materialized view's properties.
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../../access-control/role-based-access-control.md).
 
 ## Syntax
 
@@ -21,7 +23,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `.materialized-views` `details`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -57,7 +59,7 @@ Following is the schema of the output returned:
 | MinExtentsCreationTime   | `datetime` | Minimum creation time of an extent in the materialized view (or null, if there are no extents).                        |
 | MaxExtentsCreationTime   | `datetime` | Maximum creation time of an extent in the materialized view (or null, if there are no extents).                        |
 
-`*` *Taking into account policies of parent entities (such as database/cluster).*
+`*` *Taking into account policies of parent entities (such as database/cluster/Eventhouse).*
 
 ## Examples
 

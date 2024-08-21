@@ -3,10 +3,12 @@ title: Anomaly diagnosis for root cause analysis
 description: Use machine learning clustering for Root Cause Analysis.
 ms.reviewer: adieldar
 ms.topic: how-to
-ms.date: 05/01/2023
+ms.date: 08/11/2024
 ---
 
 # Anomaly diagnosis for root cause analysis
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Kusto Query Language (KQL) has built-in [anomaly detection and forecasting](anomaly-detection.md) functions to check for anomalous behavior. Once such a pattern is detected, a Root Cause Analysis (RCA) can be run to mitigate or resolve the anomaly.
 
@@ -29,13 +31,15 @@ A common scenario includes a dataset selected by a specific criteria such as:
 * High temperature device readings
 * Long duration commands
 * Top spending users
-  
+
 You want a fast and easy way to find common patterns (segments) in the data. Patterns are a subset of the dataset whose records share the same values over multiple dimensions (categorical columns). 
 
 The following query builds and shows a time series of service exceptions over the period of a week, in ten-minute bins:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPsaoCQQyF4d6nCFa7oHCtZd9B0F6G8ajByWTJZHS5+PDOgpVgYRn485EkOAnno9NAriWGFKw7QfQYUy0O43zZ0JNKFQnG/5jrbmeIXHBgwd6DjH2/JVqk2QrTL1aYvlifa4tni29YlzaiUK4yRK3Zu54006dBZ1N5/+X6PqpRI23+pFGGfIKRtz5egzk92K+dsycMyz3szhGEKWJ01lxI760O9ABuq0bMcvV2hqFoqnOz7F9BdSHlSgEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let min_t = toscalar(demo_clustering1 | summarize min(PreciseTimeStamp));  
@@ -45,14 +49,16 @@ demo_clustering1
 | render timechart with(title="Service exceptions over a week, 10 minutes resolution")
 ```
 
-![Service exceptions timechart.](../../media/machine-learning-clustering/service-exceptions-timechart.png)
+![Service exceptions timechart.](media/machine-learning-clustering/service-exceptions-timechart.png)
 
 The service exception count correlates with the overall service traffic. You can clearly see the daily pattern for business days, Monday to Friday. There's a rise in service exception counts at mid-day, and drops in counts during the night. Flat low counts are visible over the weekend. Exception spikes can be detected using [time series anomaly detection](anomaly-detection.md#time-series-anomaly-detection).
 
 The second spike in the data occurs on Tuesday afternoon. The following query is used to further diagnose and verify whether it's a sharp spike. The query redraws the chart around the spike in a higher resolution of eight hours in one-minute bins. You can then study its borders.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNwQrCMBAE0Hu/YvHUooWkghSl/yDoyUsJyWpCk2xJNnjx403pbeYwbzwyBBdnnoxiZBewHYS89GLshzNIeRWiuzUGA83al8yYXPzI5gdBLdjnWjFDLGHSVCK3HVCEe0LtMj4r9mAVVngnCvsLMO3hOFqo2goyVCxhNJhgu9dWJYavY9uyY4/T4UV1XVm2CEM0kFe34AnkBhXGOs7kCzuKh+4P3/XM5M8AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let min_t=datetime(2016-08-23 11:00);
@@ -61,12 +67,14 @@ demo_clustering1
 | render timechart with(title="Zoom on the 2nd spike, 1 minute resolution")
 ```
 
-![Focus on spike timechart.](../../media/machine-learning-clustering/focus-spike-timechart.png)
+![Focus on spike timechart.](media/machine-learning-clustering/focus-spike-timechart.png)
 
 You see a narrow two-minute spike from 15:00 to 15:02. In the following query, count the exceptions in this two-minute window:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIzcyLL0hNzI4vsU1JLEktycxN1TAyMDTTNbDQNTJWMDS1MjDQtObKASlNrCCk1AioNCU1Nz8+Oae0uCS1KDMv3ZCrRqE8I7UoVSGgKDU5szg1BKgvuCQxt0AhKbWkPDU1TwPhBj09hCWaQI3J+aV5JQACnQoRpwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -82,8 +90,10 @@ demo_clustering1
 
 In the following query, sample 20 exceptions out of 972:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4XOsQrCMBSF4b1Pccd2aLmJKKL4DoLu4doeNDSJJb1SBx/eOHV0/37OCVCKPrkJMjo9DaJQH1FbNruW963dkNkemJtjFX5U3v+oLXRAfLo+vGZF9uluqg8tD2TQOaP3M66lu6jEiW7QBUj1+qHr1pGmhCojyPIX7QHvzakAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -120,8 +130,10 @@ demo_clustering1
 
 Even though there are less than a thousand exceptions, it's still hard to find common segments, since there are multiple values in each column. You can use the [`autocluster()`](autocluster-plugin.md) plugin to instantly extract a short list of common segments and find the interesting clusters within the spike's two minutes, as seen in the following query:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQrCMBRF937FG5OhJYkoovQfBN1DbC8aTNqSvlgHP94IQkf3c+65AUzRD3aCe1hue8dgHyGM0rta7WuzIb09KCWPVfii7vUPNQXtEUfbhTwzkh9uunrTckcCnRI6P+NSvDO7ONEVvACDWD80zRqRRcTThVxa5DKPv00hP81KL1+4AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -147,8 +159,10 @@ Autocluster uses a proprietary algorithm for mining multiple dimensions and extr
 
 You can also use the [`basket()`](basket-plugin.md) plugin as seen in the following query:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQ6CMBgGd57iH9sB0tZojMZ3MNG9KfBFG1og7Y84+PDWidH9LncBTNGPdoYbLF96x2AfIYzSh1oda7MjvT8pJc9V+KHu/Q81Be0RJ9uFJTOSHx+6+tD6RAJdEzqfcS/ejV2cqQWvwCi2h6bZIrKIeLmwlBa1Lg9gIb9KJv2TswAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -184,8 +198,11 @@ The [`diffpatterns()`](diffpatterns-plugin.md) plugin overcomes the limitation o
 
 In the following query, `diffpatterns` finds interesting clusters within the spike's two minutes, which are different from the clusters within the baseline. The baseline window is defined as the eight minutes before 15:00, when the spike started. You extend by a binary column (AB), and specify whether a specific record belongs to the baseline or to the anomalous set. `Diffpatterns` implements a supervised learning algorithm, where the two class labels were generated by the anomalous versus the baseline flag (AB).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42QzU+DQBDF7/wVcwOi5UtrmhJM4OzBRO9kWqbtpssuYacfGv94t0CrxFTd02by5jfvPUkMtVBlQ7gtOauQiUVNXhLFD5NoNknuIJ7Oo8hPHXmS4vEvaXKWWuoCDUmh6Jr8fj79Tv6HfOanEIbwRLgnQFhjAwviA5EC3hCcCYCq6gamEVsC1oB7LfoRt6iMYKEVvGtFQXfeNFKc7mXe2MjNVzl+mARR6lRU63Ipd4apFWodOx9w2FBL4D23tBSGXi3mhbG+OPPGVQTB+ITvg24dGN7vlN5JTxhc+dYAHZls4LzIxGr1k/B4iXcLbq50jfLNtd9i8OB2jD3KnW0dKstokG08Zby8uLbyCfX/tG46AgAA" target="_blank">Run the query</a>
+::: moniker-end
+
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -212,8 +229,11 @@ demo_clustering1
 
 The most dominant segment is the same segment that was extracted by `autocluster`. Its coverage on the two-minute anomalous window is also 65.74%. However, its coverage on the eight-minute baseline window is only 1.7%. The difference is 64.04%. This difference seems to be related to the anomalous spike. To verify this assumption, the following query splits the original chart into the records that belong to this problematic segment, and records from the other segments.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRsWrDMBCG9zzF4cmGGuJUjh2Ktw7tUkLTzuEsnRNRnRQkuSQlD185yRTo0EWIO913/J8MRWBttxE6iC5INOhzRey20owhktd2V8EZwsiMXv/Q9Dpfe5I60Idm2kTkQ1E8AczMxMLjf1h4/IN1PzY7Ax0jWQWBdomvhyF/p512FroOMsIxA0zdTdpKn1bHSzmMzbX8TAfjTkw2vqpLp69VpYQaatEogXOBsqrbtl5WDake6yabXWjkv7WkFxeuPGqG5VzWqhQrIUqx6B/L1WKB6aBViy01imT2ANnau94QT9c35xlNVqQAjF9UhpSHAtiRO+lGG/MCUoZ7CTB4x7ePie5mNbk4QDVn6E+ThUT0SQh5iGlM7tHHX4WFgLHOAQAA" target="_blank">Run the query</a>
+::: moniker-end
+
 
 ```kusto
 let min_t = toscalar(demo_clustering1 | summarize min(PreciseTimeStamp));  
@@ -225,7 +245,7 @@ and ServiceHost == "e7f60c5d-4944-42b3-922a-92e98a8e7dec", "Problem", "Normal")
 | render timechart
 ```
 
-![Validating `diffpattern` segment timechart.](../../media/machine-learning-clustering/validating-diffpattern-timechart.png)
+![Validating `diffpattern` segment timechart.](media/machine-learning-clustering/validating-diffpattern-timechart.png)
 
 This chart allows us to see that the spike on Tuesday afternoon was because of exceptions from this specific segment, discovered by using the `diffpatterns` plugin.
 

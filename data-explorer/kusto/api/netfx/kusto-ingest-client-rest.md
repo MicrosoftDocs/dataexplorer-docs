@@ -1,19 +1,21 @@
 ---
 title:  How to ingest data with the REST API
-description: This article describes how to ingest data without Kusto.Ingest library by using the REST API in Azure Data Explorer.
+description: This article describes how to ingest data without Kusto.Ingest library by using the REST API.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 08/11/2024
 ---
 # How to ingest data with the REST API
 
-The Kusto.Ingest library is preferred for ingesting data to your cluster. However, you can still achieve almost the same functionality, without being dependent on the Kusto.Ingest package.
-This article shows you how, by using *Queued Ingestion* to your cluster for production-grade pipelines.
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
+The Kusto.Ingest library is preferred for ingesting data to your database. However, you can still achieve almost the same functionality, without being dependent on the Kusto.Ingest package.
+This article shows you how, by using *Queued Ingestion* to your database for production-grade pipelines.
 
 > [!NOTE]
 > The code below is written in C#, and makes use of the Azure Storage SDK, the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview), and the NewtonSoft.JSON package, to simplify the sample code. If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](/rest/api/storageservices/blob-service-rest-api) calls, [non-.NET MSAL package](/azure/active-directory/develop/msal-overview), and any available JSON handling package.
 
-This article deals with the recommended mode of ingestion. For the Kusto.Ingest library, its corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. Here, the client code interacts with your cluster by posting ingestion notification messages to an Azure queue. References to the messages are obtained from the Kusto Data Management (also known as the Ingestion) service. Interaction with the service must be authenticated with Microsoft Entra ID.
+This article deals with the recommended mode of ingestion. For the Kusto.Ingest library, its corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. Here, the client code interacts with your database by posting ingestion notification messages to an Azure queue. References to the messages are obtained from the Kusto Data Management (also known as the Ingestion) service. Interaction with the service must be authenticated with Microsoft Entra ID.
 
 The following code shows how the Kusto Data Management service handles queued data ingestion without using the Kusto.Ingest library. This example may be useful if full .NET is inaccessible or unavailable because of the environment, or other restrictions.
 
@@ -42,15 +44,15 @@ internal class IngestionResourcesSnapshot
 
 public static void IngestSingleFile(string file, string db, string table, string ingestionMappingRef)
 {
-    // Your Azure Data Explorer ingestion service URI, typically ingest-<your cluster name>.kusto.windows.net
-    var dmServiceBaseUri = @"https://ingest-{serviceNameAndRegion}.kusto.windows.net";
+    // Your ingestion service URI
+    var dmServiceBaseUri = @"{serviceURI}";
     // 1. Authenticate the interactive user (or application) to access Kusto ingestion service
     var bearerToken = AuthenticateInteractiveUser(dmServiceBaseUri);
     // 2a. Retrieve ingestion resources
     var ingestionResources = RetrieveIngestionResources(dmServiceBaseUri, bearerToken);
     // 2b. Retrieve Kusto identity token
     var identityToken = RetrieveKustoIdentityToken(dmServiceBaseUri, bearerToken);
-    // 3. Upload file to one of the blob containers we got from Azure Data Explorer.
+    // 3. Upload file to one of the blob containers.
     // This example uses the first one, but when working with multiple blobs,
     // one should round-robin the containers in order to prevent throttling
     var blobName = $"TestData{DateTime.UtcNow:yyyy-MM-dd_HH-mm-ss.FFF}";
@@ -92,15 +94,15 @@ public static void IngestSingleFile(string file, string db, string table, string
 Here we use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to obtain a Microsoft Entra token to access the Kusto Data Management service and ask for its input queues. MSAL is available on multiple platforms.
 
 ```csharp
-// Authenticates the interactive user and retrieves Azure AD Access token for specified resource
+// Authenticates the interactive user and retrieves Microsoft Entra Access token for specified resource
 internal static string AuthenticateInteractiveUser(string resource)
 {
-    // Create an authentication client for Azure AD:
+    // Create an authentication client for Microsoft Entra ID:
     var authClient = PublicClientApplicationBuilder.Create("<appId>")
         .WithAuthority("https://login.microsoftonline.com/<appTenant>")
         .WithRedirectUri("<appRedirectUri>")
         .Build();
-    // Acquire user token for the interactive user for Azure Data Explorer:
+    // Acquire user token for the interactive user:
     var result = authClient.AcquireTokenInteractive(
         new[] { $"{resource}/.default" } // Define scopes
     ).ExecuteAsync().Result;
@@ -311,7 +313,7 @@ The message that the Kusto Data Management service expects to read from the inpu
 |FlushImmediately |If set to `true`, any aggregation will be skipped. Default is `false` |
 |ReportLevel |Success/Error reporting level: 0-Failures, 1-None, 2-All |
 |ReportMethod |Reporting mechanism: 0-Queue, 1-Table |
-|AdditionalProperties |Other properties such as `format`, `tags`, and `creationTime`. For more information, see [data ingestion properties](../../../ingestion-properties.md).|
+|AdditionalProperties |Other properties such as `format`, `tags`, and `creationTime`. For more information, see [data ingestion properties](../../ingestion-properties.md).|
 
 ### Ingestion failure message structure
 

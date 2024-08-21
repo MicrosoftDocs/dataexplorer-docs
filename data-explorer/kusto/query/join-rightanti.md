@@ -3,10 +3,12 @@ title:  rightanti join
 description: Learn how to use the rightanti join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/18/2023
+ms.date: 08/11/2024
 ---
 
 # rightanti join
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The `rightanti` join flavor returns all records from the right side that don't match any record from the left side. The anti join models the "NOT IN" query.
 
@@ -18,9 +20,9 @@ The `rightanti` join flavor returns all records from the right side that don't m
 
 *LeftTable* `|` `join` `kind=rightanti` [ *Hints* ] *RightTable* `on` *Conditions*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
-[!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
+[!INCLUDE [join-parameters-attributes-hints](../includes/join-parameters-attributes-hints.md)]
 
 ## Returns
 
@@ -29,8 +31,10 @@ The `rightanti` join flavor returns all records from the right side that don't m
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5mnkJ2Zl2JblJmeUZKYV5IJtDI/TwFoEwBGWDfq2gAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let X = datatable(Key:string, Value1:long)

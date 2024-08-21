@@ -1,14 +1,18 @@
 ---
-title: Overflows - Azure Data Explorer
-description: This article describes Overflows in Azure Data Explorer.
+title:  Overflows
+description:  This article describes Overflows.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Overflows
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
+
 An overflow occurs when the result of a computation is too large for the destination type.
-The overflow usually leads to a [partial query failure](partialqueryfailures.md).
+The overflow usually leads to a [partial query failure](partial-query-failures.md).
 
 For example, the following query will result in an overflow.
 

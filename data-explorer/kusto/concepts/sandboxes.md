@@ -1,11 +1,14 @@
 ---
-title: Sandboxes - Azure Data Explorer
-description: This article describes Sandboxes in Azure Data Explorer.
+title:  Sandboxes
+description:  This article describes Sandboxes.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/03/2021
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Sandboxes
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Kusto can run sandboxes for specific flows that must be run in a secure and isolated environment.
 Examples of these flows are user-defined scripts that run using the [Python plugin](../query/python-plugin.md) or the [R plugin](../query/r-plugin.md).
@@ -14,8 +17,7 @@ Sandboxes are run locally (meaning, processing is done close to the data), with 
 
 ## Prerequisites and limitations
 
-* Sandboxes that run on [VM sizes supporting nested virtualization](#vm-sizes-supporting-nested-virtualization) are implemented using [Hyper-V technology](https://en.wikipedia.org/wiki/Hyper-V) and have no limitations.
-* Sandboxes that run on [VM sizes not supporting nested virtualization](sandboxes-in-non-modern-skus.md#virtual-machine-sizes) are implemented using a proprietary legacy technology and are subject to [some limitations](sandboxes-in-non-modern-skus.md).
+* Sandboxes must run on [VM sizes supporting nested virtualization](#vm-sizes-supporting-nested-virtualization), which implemented using [Hyper-V technology](https://en.wikipedia.org/wiki/Hyper-V) and have no limitations.
 * The image for running the sandboxes is deployed to every cluster node and requires dedicated SSD space to run.
   * The estimated size is between 10-20 GB.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.

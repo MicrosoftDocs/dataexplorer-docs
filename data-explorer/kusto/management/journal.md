@@ -1,11 +1,13 @@
 ---
 title:  Journal management
-description: This article describes Journal management in Azure Data Explorer.
+description:  This article describes Journal management.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 08/11/2024
 ---
 # Journal management
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 `Journal` contains information about metadata operations done on your database.
 
@@ -34,7 +36,7 @@ The metadata operations can result from a management command that a user execute
 |Database             |Metadata of this database was changed following the event                |
 |EntityName           |The entity name that the operation was executed on, before the change    |
 |UpdatedEntityName    |The new entity name after the change                                     |
-|EntityVersion        |The new metadata version (db/cluster) following the change               |
+|EntityVersion        |The new metadata version following the change               |
 |EntityContainerName  |The entity container name (entity=column, container=table)               |
 |OriginalEntityState  |The state of the entity (entity properties) before the change            |
 |UpdatedEntityState   |The new state after the change                                           |
@@ -43,24 +45,38 @@ The metadata operations can result from a management command that a user execute
   
 ## .show journal
 
+:::moniker range="azure-data-explorer"
 The `.show journal` command returns a list of metadata changes on databases or the cluster that the user has admin access to.
-
+::: moniker-end
+:::moniker range="microsoft-fabric"
+The `.show journal` command returns a list of metadata changes on databases or the environment that the user has admin access to.
+::: moniker-end
 **Permissions**
 
-Everyone (cluster access) can execute the command. 
+Everyone with permission can execute the command.
 
-Results returned will include: 
-- All journal entries of the user executing the command. 
-- All journal entries of databases that the user executing the command has admin access to. 
-- All cluster journal entries if the user executing the command is a cluster admin. 
+Results returned will include:
 
-## .show database *DatabaseName* journal 
+* All journal entries of the user executing the command.
+
+* All journal entries of databases that the user executing the command has admin access to.
+
+:::moniker range="azure-data-explorer"
+* All cluster journal entries if the user executing the command is a Cluster AllDatabases Admin.
+::: moniker-end
+:::moniker range="microsoft-fabric"
+* All journal entries specific to the environment level if the user executing the command has appropriate admin permissions.
+::: moniker-end
+
+## .show database *DatabaseName* journal
 
 The `.show` `database` *DatabaseName* `journal` command returns journal for the specific database metadata changes.
 
 **Permissions**
 
-Everyone (cluster access) can execute the command. 
+Everyone with permission can execute the command.
+
 Results returned include: 
-- All journal entries of database *DatabaseName* if the user executing the command is a database admin in *DatabaseName*. 
-- Otherwise, all the journal entries of database `DatabaseName` and of the user executing the command. 
+
+* All journal entries of database *DatabaseName* if the user executing the command is a database admin in *DatabaseName*. 
+* Otherwise, all the journal entries of database `DatabaseName` and of the user executing the command. 

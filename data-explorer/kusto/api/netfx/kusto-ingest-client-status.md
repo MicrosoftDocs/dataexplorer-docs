@@ -1,11 +1,13 @@
 ---
 title:  Kusto.Ingest status reporting
-description: This article describes Kusto.Ingest ingestion status reporting in Azure Data Explorer.
+description: This article describes Kusto.Ingest ingestion status reporting.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 08/11/2024
 ---
 # Kusto.Ingest ingestion status reporting
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 This article explains how to use [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) features to track the status of an ingestion request.
 
@@ -143,7 +145,7 @@ public class IngestionStatus
 [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) is a 'fire-and-forget' client. The ingestion operation on the client side ends by posting a message to an Azure queue. After the posting, the client job is done. For the client user's convenience, KustoQueuedIngestClient provides a mechanism for tracking the individual ingestion status. This mechanism isn't intended for mass usage on high-throughput ingestion pipelines. This mechanism is for precision ingestion when the rate is relatively low and the tracking requirements are strict.
 
 > [!WARNING]
-> Turning on positive notifications for every ingestion request for large volume data streams should be avoided, since this places an extreme load on the underlying xStore resources, which might lead to increased ingestion latency and even complete cluster non-responsiveness.
+> Turning on positive notifications for every ingestion request for large volume data streams should be avoided, since this places an extreme load on the underlying xStore resources, which might lead to increased ingestion latency and even complete non-responsiveness.
 
 The following properties (set on [KustoQueuedIngestionProperties](kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties)) control the level and transport for ingestion success or failure notifications.
 

@@ -1,11 +1,13 @@
 ---
 title:  Query V2 HTTP response
-description: This article describes Query V2 HTTP response in Azure Data Explorer.
+description: This article describes Query V2 HTTP response.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 08/11/2024
 ---
 # Query V2 HTTP response
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 ## HTTP response status line
 
@@ -305,7 +307,7 @@ Where:
  in the v1 response).
 * `QueryProperties` - Provides additional values such as client visualization instructions (emitted, for example, to reflect the
  information in the [render operator](../../query/render-operator.md)) and [database cursor](../../management/database-cursor.md) information.
-* `QueryTraceLog` - The performance trace log information (returned when `perftrace` in [client request properties](../netfx/request-properties.md) is set to true).
+* `QueryTraceLog` - The performance trace log information (returned when `perftrace` in [client request properties](request-properties.md) is set to true).
 
 ## DataSetCompletion
 

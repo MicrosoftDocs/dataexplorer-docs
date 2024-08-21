@@ -1,15 +1,14 @@
 ---
-title: Treemap visualization - Azure Data Explorer
+title:  Treemap visualization
 description: Learn how to use the treemap visualization to visualize data.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/21/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Treemap
 
-::: zone pivot="azuredataexplorer"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Treemaps display hierarchical data as a set of nested rectangles. Each level of the hierarchy is represented by a colored rectangle (branch) containing smaller rectangles (leaves).
 
@@ -22,7 +21,7 @@ Treemaps display hierarchical data as a set of nested rectangles. Each level of 
 
 *T* `|` `render` `treemap` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -50,10 +49,3 @@ StormEvents
 ```
 
 :::image type="content" source="media/visualization-treemap/treemap.png" alt-text="Screenshot of treemap visualization output." lightbox="media/visualization-treemap/treemap.png":::
-::: zone-end
-
-::: zone pivot="azuremonitor, fabric"
-
-This visualization isn't supported.
-
-::: zone-end

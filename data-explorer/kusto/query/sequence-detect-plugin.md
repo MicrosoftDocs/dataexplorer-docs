@@ -3,9 +3,11 @@ title:  sequence_detect plugin
 description: Learn how to use the sequence_detect plugin to detect sequence occurrences based on provided predicates.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/11/2024
 ---
 # sequence_detect plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Detects sequence occurrences based on provided predicates. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
@@ -13,7 +15,7 @@ Detects sequence occurrences based on provided predicates. The plugin is invoked
 
 *T* `| evaluate` `sequence_detect` `(`*TimelineColumn*`,` *MaxSequenceStepWindow*`,` *MaxSequenceSpan*`,` *Expr1*`,` *Expr2*`,` ..., *Dim1*`,` *Dim2*`,` ...`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -46,8 +48,10 @@ T | evaluate sequence_detect(datetime_column, 10m, 1h, e1 = (Col1 == 'Val'), e2 
 
 The following query looks on the table StormEvents (weather statistics for 2007) and shows cases where sequence of 'Excessive Heat' was followed by 'Wildfire' within 5 days.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPMQuDMBCFd3/F4aJCilPHjEJ3BccSklcaMNaaM7XQH99QXAz1xnvfx7tr+TG7JmBkn30IQQ2LYpDHc8GocTVgaC4z2k/LaubOOog0ORtBVNfkGRM5tZ44UofQVnMI3qFYlr/7uvcEkpLyZtXw3gbQJaZ5JSi1XnYwNzsjMYt+2xd/nPgR7+qrLywAQRgbAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

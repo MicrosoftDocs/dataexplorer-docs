@@ -1,11 +1,14 @@
 ---
 title:  series_lag_fl()
-description: This article describes series_lag_fl() user-defined function in Azure Data Explorer.
+description:  This article describes series_lag_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_lag_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Applies a lag on a series.
 
@@ -15,7 +18,7 @@ The function `series_lag_fl()` is a [user-defined function (UDF)](../query/funct
 
 `series_lag_fl(`*y_series*`,` *offset*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -72,8 +75,10 @@ series_lag_fl(series:dynamic, offset:int)
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WRzW7DIBCE736KPRrVVetrIp6hh0a9WsQsCS0/Fqwlu03fvWuw0hZxYZhPMwsOCTImi3lw6jIYBxLaKhz0GpS3YwfRmIx0sIFE89UAL8dY8bOdYh6VU6lNKlwQFjApeuhZ38GHHjLhBH1BbzCl+I4jwSqtMe0CUt6NHfB+Frsxz96rZD+xZllHmDjQqw8cnM3UrkIci9fYtLfuqrcDo1xG0Xwfm62sJgb7az2Q9TjkqzVF1FU825DvIkUetv31PWniJI0+DiW9ZvXNrZR5rEcIs5djnJkUEAOcGH8l5ac6Plc4r/CS3zAxhwth0BtSE1DLf//Q8k33p5RgJjHBL7DVGq8q0Q9sViILvQEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_lag_fl = (series:dynamic, offset:int)

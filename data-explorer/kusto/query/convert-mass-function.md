@@ -3,9 +3,11 @@ title:  convert_mass()
 description: Learn how to use the convert_mass() function to convert a mass input value from one unit to another.
 ms.reviewer: itsagui
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # convert_mass
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Convert a mass value from one unit to another.
 
@@ -13,7 +15,7 @@ Convert a mass value from one unit to another.
 
 `convert_mass(`*value*`,`*from*`,`*to*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -57,8 +59,10 @@ Convert a mass value from one unit to another.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJz00sLtYw1DPSUVD3zszJTy9KzFUHsgPyS/NS1DUBemVMijUAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result = convert_mass(1.2, 'Kilogram', 'Pound')

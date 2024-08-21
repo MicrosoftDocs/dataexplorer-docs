@@ -1,12 +1,14 @@
 ---
-title: Named expressions in Azure Data Explorer
-description: Learn how to optimally use named expressions in Azure Data Explorer.
+title: Named expressions
+description:  Learn how to optimally use named expressions.
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 08/11/2024
 
 ---
 # Optimize queries that use named expressions
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 This article discusses how to optimize repeat use of named expressions in a query.
 
@@ -44,8 +46,10 @@ For example, the following query uses the non-deterministic tabular [sample oper
 
 **Behavior without using the materialize function**
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDk5apRKE7MLchJhbATixVCQHRpXmZ+nkIIAOuM1MA7AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 100 step 1
@@ -63,8 +67,10 @@ range x from 1 to 100 step 1
 
 **Behavior using the materialize function**
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDk5apRKE7MLchJhbATixUyMvNK9HITS1KLMhNzMqtSU2xLikpTFUJA0qV5mfl5CiEAbnko81IAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 100 step 1
@@ -86,8 +92,10 @@ Non-deterministic scalar functions can be forced to calculate exactly once by us
 
 For example, the following query uses the non-deterministic function, [rand()](rand-function.md):
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGoULBV0NBUqC5KzEvRMDQwMNCsteblygHKVEJlSvKLkxNzEos0EErAagqKMvOA+nVAqBKIAFmz1YBOAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let x = () {rand(1000)};

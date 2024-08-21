@@ -3,9 +3,11 @@ title:  parse_csv()
 description: Learn how to use the parse_csv() function to split a given string representing a single record of comma-separated values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # parse_csv()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Splits a given string representing a single record of comma-separated values and returns a string array with these values.
 
@@ -13,7 +15,7 @@ Splits a given string representing a single record of comma-separated values and
 
 `parse_csv(`*csv_text*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,10 +36,12 @@ A string array that contains the split values.
 
 ### Filter by count of values in record
 
-Count Azure Data Explorer conference sessions with more than three participants.
+Count the conference sessions with more than three participants.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+aqUSjPAAopJBYVJVbG56TmpZdkaBQkFhWnxicXl4FYJZnJmQWJeSXFmpoKdgrGQB0pmcUlmXnJJQpaAB0oOCtRAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 ConferenceSessions
@@ -54,8 +58,10 @@ ConferenceSessions
 
 ### Use escaping quotes
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxXFMQqAMAwF0KuUv1Qhi46CozdwFCSWIIVSa5N6fpU3vFJjNldFW7K5cFXZgz6dZyYc9AGFQFg0cIn5dHe7THRywBotCQBCilmGLf+N8P0LWIqWMVMAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=parse_csv('aa,"b,b,b",cc,"Escaping quotes: ""Title""","line1\nline2"')
@@ -71,8 +77,10 @@ print result=parse_csv('aa,"b,b,b",cc,"Escaping quotes: ""Title""","line1\nline2
 
 Only the first record is taken since this function doesn't support multiple records. 
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKYnPBRKZ8UWpyflFKbYFiUXFqfHJxWUa6hARQ51EnSSd5Jg8CNdIp0KnUqdKXRMAyO6RzEMAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result_multi_record=parse_csv('record1,a,b,c\nrecord2,x,y,z')

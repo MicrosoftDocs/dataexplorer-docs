@@ -27,7 +27,7 @@ This document describes a simple example on the use of the **Azure Data Explorer
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Azure Data Explorer cluster setup:
-    * Create Microsoft Entra app by [provisioning a Microsoft Entra application](./provision-azure-ad-app.md).
+    * Create Microsoft Entra app by [provisioning a Microsoft Entra application](provision-entra-id-app.md).
     * Grant access to your Microsoft Entra App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
 * Azure DevOps setup:
     * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates).
@@ -64,7 +64,7 @@ You can use the following methods to execute admin commands against a cluster wi
     :::image type="content" source="media/devops/create-folders.png" alt-text="Screenshot showing the folders to create in the repo.":::
 
     > [!TIP]
-    > When creating your own workflow, we recommend making your code idempotent. For example, use [`.create-merge table`](kusto/management/create-merge-table-command.md) instead of [`.create table`](kusto/management/create-table-command.md), and use [`.create-or-alter`](kusto/management/create-alter-function.md) function instead of [`.create`](kusto/management/create-function.md) function.
+    > When creating your own workflow, we recommend making your code idempotent. For example, use [`.create-merge table`](/kusto/management/create-merge-table-command?view=azure-data-explorer&preserve-view=true) instead of [`.create table`](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true), and use [`.create-or-alter`](/kusto/management/create-alter-function?view=azure-data-explorer&preserve-view=true) function instead of [`.create`](/kusto/management/create-function?view=azure-data-explorer&preserve-view=true) function.
 
 ## Create a release pipeline
 

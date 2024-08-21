@@ -1,11 +1,13 @@
 ---
 title:  Kusto.Data exceptions
-description: This article describes Kusto.Data exceptions in Azure Data Explorer.
+description: This article describes Kusto.Data exceptions.
 ms.reviewer: yogilad
 ms.topic: reference
-ms.date: 06/20/2022
+ms.date: 08/11/2024
 ---
 # Kusto.Data exceptions
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 All exceptions defined in the .NET SDK implement the interface `Kusto.Cloud.Platform.Utils.ICloudPlatformException`. The exceptions are defined in the `Kusto.Cloud.Platform` assembly, and are distributed through the `Microsoft.Azure.Kusto.Cloud.Platform` NuGet package. You can write exception handlers to inspect and process exceptions based on the following `get` properties:
 
@@ -78,6 +80,18 @@ All authentication exceptions have a **Failure code** of `0`, no **Failure subco
 
 All request exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
+:::moniker range="microsoft-fabric"
+| Exception name | Reason |
+|--|--|
+| `EntityNameIsNotValidException` | Indicates an entity name isn't valid. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_EntityNameIsNotValid </br> **Permanence**: True|
+| `KustoBadRequestException` | The Kusto service was sent a bad request. For a list of errors, see [Bad request exceptions](#bad-request-exceptions). </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanence**: True |
+| `KustoConflictException` | The Kusto service was sent a request, which can't be performed due to service state. </br> **Failure code**: 409 </br> **Failure subcode**: Conflict </br> **Permanence**: True|
+| `KustoFailedChangeServiceStateException` | The CM failed to change service state. |
+| `KustoRequestDeniedException` | The Kusto service was sent a request with insufficient security permissions to execute. </br> **Failure code**: 403 </br> **Failure subcode**: Forbidden </br> **Permanence**: True |
+| `KustoRequestPayloadTooLargeException` | The payload is too large. For example, when Kusto is told to process more data than is allowed in a single batch. </br> **Failure code**: 413 </br> **Failure subcode**: Payload too large </br> **Permanence**: True |
+::: moniker-end
+
+:::moniker range="azure-data-explorer"
 | Exception name | Reason |
 |--|--|
 | `EntityNameIsNotValidException` | Indicates an entity name isn't valid. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_EntityNameIsNotValid </br> **Permanence**: True|
@@ -87,6 +101,7 @@ All request exceptions have a **Failure code** of `0`, no **Failure subcode**, a
 | `KustoFailedChangeServiceStateException` | The CM failed to change service state. |
 | `KustoRequestDeniedException` | The Kusto service was sent a request with insufficient security permissions to execute. </br> **Failure code**: 403 </br> **Failure subcode**: Forbidden </br> **Permanence**: True |
 | `KustoRequestPayloadTooLargeException` | The payload is too large. For example, when Kusto is told to process more data than is allowed in a single batch. </br> **Failure code**: 413 </br> **Failure subcode**: Payload too large </br> **Permanence**: True |
+::: moniker-end
 
 ### Bad request exceptions
 

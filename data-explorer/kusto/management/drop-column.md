@@ -3,9 +3,11 @@ title: .drop column command
 description: Learn how to use the `.drop column` command to remove a column from a table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/06/2024
+ms.date: 08/11/2024
 ---
 # .drop column command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Removes a column from a table.
 
@@ -21,13 +23,13 @@ To drop multiple columns from a table, see [drop multiple table columns](#drop-m
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.drop` `column` *TableName*`.`*ColumnName* [`ifexists`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -61,7 +63,7 @@ Removes multiple columns from a table.
 
 `.drop` `table` *TableName* `columns` `(` *ColumnName* [`,` ...] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 

@@ -3,11 +3,12 @@ title:  Kusto partition & compose intermediate aggregation results
 description: Learn how to use the hll() and tdigest() functions to partition and compose intermediate results of aggregations.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/02/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Using hll() and tdigest()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Suppose you want to calculate the count of distinct users every day over the last seven days. You can run `summarize dcount(user)` once a day with a span filtered to the last seven days. This method is inefficient, because each time the calculation is run, there's a six-day overlap with the previous calculation. You can also calculate an aggregate for each day, and then combine these aggregates. This method requires you to "remember" the last six results, but it's much more efficient.
 
@@ -23,8 +24,10 @@ The following examples show how to use `hll`/`tdigest` and demonstrate that usin
 > For example, when persisting the output of `hll` function with accuracy level 4, the size of the `hll` object exceeds the default MaxValueSize, which is 1MB.
 > To avoid this issue, modify the encoding policy of the column as shown in the following examples.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2LQQqDMBQF9z3FWyYgaMRtD+DCM4Rf/VWLMSH50iAevrGznGEi7TMj4x29g4F4mOYPknCAeVxIh3MU15OxbJvKVaeLDNF/eBSk4vt9eOEJTrI6ErYTCdk7qDLYrFEj+K8yTdtVrf4Bfsb2aXIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 1000000 step 1
@@ -139,19 +142,19 @@ PageViewsHllTDigest
 
 Kusto limits are reached with datasets that are too large, where you need to run periodic queries over the dataset, but run the regular queries to calculate [`percentile()`](percentiles-aggregation-function.md) or [`dcount()`](dcount-aggfunction.md) over large datasets.
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
-To solve this problem, newly added data may be added to a temp table as `hll` or `tdigest` values using [`hll()`](hll-aggregation-function.md) when the required operation is `dcount` or [`tdigest()`](tdigest-aggregation-function.md) when the required operation is percentile using [`set/append`](../../ingest-data-overview.md) or [`update policy`](../management/update-policy.md). In this case, the intermediate results of `dcount` or `tdigest` are saved into another dataset, which should be smaller than the target large one.
+To solve this problem, newly added data may be added to a temp table as `hll` or `tdigest` values using [`hll()`](hll-aggregation-function.md) when the required operation is `dcount` or [`tdigest()`](tdigest-aggregation-function.md) when the required operation is percentile using [`set/append`](/azure/data-explorer/ingest-data-overview) or [`update policy`](../management/update-policy.md). In this case, the intermediate results of `dcount` or `tdigest` are saved into another dataset, which should be smaller than the target large one.
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 To solve this problem, newly added data may be added to a temp table as `hll` or `tdigest` values using [`hll()`](hll-aggregation-function.md) when the required operation is `dcount`. In this case, the intermediate results of `dcount` are saved into another dataset, which should be smaller than the target large one.
 
-::: zone-end
+::: moniker-end
 
-When you need to get the final results of these values, the queries may use `hll`/`tdigest` mergers: [`hll-merge()`](hll-merge-aggregation-function.md)/[`tdigest_merge()`](tdigest-merge-aggregation-function.md). Then, after getting the merged values, [`percentile_tdigest()`](percentile-tdigest-function.md) / [`dcount_hll()`](dcount-hllfunction.md) may be invoked on these merged values to get the final result of `dcount` or percentiles.
+When you need to get the final results of these values, the queries may use `hll`/`tdigest` mergers: [`hll-merge()`](hll-merge-aggregation-function.md)/[`tdigest_merge()`](tdigest-merge-aggregation-function.md). Then, after getting the merged values, [`percentile_tdigest()`](percentile-tdigest-function.md) / [`dcount_hll()`](dcount-hll-function.md) may be invoked on these merged values to get the final result of `dcount` or percentiles.
 
 Assuming there's a table, PageViews, into which data is ingested daily, every day on which you want to calculate the distinct count of pages viewed per minute later than date = datetime(2016-05-01 18:00:00.0000000).
 
@@ -234,7 +237,7 @@ on $left.Day1 == $right.Day
 
 The above query took ~18 seconds.
 
-When you use the [`hll()`](hll-aggregation-function.md), [`hll_merge()`](hll-merge-aggregation-function.md), and [`dcount_hll()`](dcount-hllfunction.md) functions, the equivalent query will end after ~1.3 seconds and show that the `hll` functions speeds up the query above by ~14 times:
+When you use the [`hll()`](hll-aggregation-function.md), [`hll_merge()`](hll-merge-aggregation-function.md), and [`dcount_hll()`](dcount-hll-function.md) functions, the equivalent query will end after ~1.3 seconds and show that the `hll` functions speeds up the query above by ~14 times:
 
 ```kusto
 let Stats=PageViewsSample | summarize pagehll=hll(Page, 2) by day=startofday(Timestamp); // saving the hll values (intermediate results of the dcount values)

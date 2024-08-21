@@ -3,11 +3,13 @@ title:  indexof_regex()
 description: Learn how to use the indexof_regex() function to return the zero-based index position of a `regex` input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # indexof_regex()
 
-Returns the zero-based index of the first occurrence of a specified lookup [regular expression](regex.md) within the input string.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+Returns the zero-based index of the first occurrence of a specified lookup [regular expression](re2.md) within the input string.
 
 See [`indexof()`](indexof-function.md).
 
@@ -15,14 +17,14 @@ See [`indexof()`](indexof-function.md).
 
 `indexof_regex(`*string*`,`*match*`[,`*start*`[,`*length*`[,`*occurrence*`]]])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*string*| `string` |  :heavy_check_mark: | The source string to search.|  
-|*match*| `string` |  :heavy_check_mark: | The [regular expression](regex.md) lookup string.|
+|*match*| `string` |  :heavy_check_mark: | The [regular expression](re2.md) lookup string.|
 |*start*| `int` | | The search start position. A negative value will offset the starting search position from the end of the *string* by this many steps: `abs(`*start*`)`. |
 |*length*| `int` | | The number of character positions to examine. A value of -1 means unlimited length.|
 |*occurrence*| `int` | | The number of the occurrence. The default is 1.|
@@ -44,8 +46,10 @@ The zero-based index position of *match*.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42Qy07DMBBF93zFVTalkqGkwIIFEj/AN1QTe+JYGDvyo8qCj2dSatjwsmd3Nef4ek4ulAvIcWbp8QgXDC9xPCS2vFx2NGiZTuGpo2vdbRV2O/gYX+qMMdZgZEFmrgW5CMs21v4nluHRfvIUbhQeFPYC/i/59s9XKvQKV/0XtkyceJMRIjLrKOyodU2Jg+ZVI7kElPSERMFyU919p5JLZxV9FGgqMT1T0RNnmBg2BfHIydOMHDFW71s9TWs48Llns93/XuyNhm51bU+VXDiSd0b+hlI5nNZAydZXDuUd3NbxhNUBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print

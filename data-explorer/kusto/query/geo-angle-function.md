@@ -3,9 +3,11 @@ title:  geo_angle()
 description: Learn how to use the geo_angle() function to calculate the angle between two lines on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 01/05/2024
+ms.date: 08/11/2024
 ---
 # geo_angle()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates clockwise angle in radians between two lines on Earth. The first line is [point1, point2] and the second line is [point2, point3].
 
@@ -13,7 +15,7 @@ Calculates clockwise angle in radians between two lines on Earth. The first line
 
 `geo_angle(`*p1_longitude*`,`*p1_latitude*`,`*p2_longitude*`,`*p2_latitude*`,`*p3_longitude*`,`*p3_latitude*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -44,8 +46,11 @@ An angle in radians in range [0, 2pi) between two lines [p1, p2] and [p2, p3]. T
 
 The following example calculates the angle in radians.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjMS89Jjc%2FMiy9KTMlMzCtWsFVIT82PBwtrGOgoGAKxgY6pjoKxjq6hgSYAgS0UoTUAAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 print angle_in_radians = geo_angle(0, 10, 0,5, 3,-10)
 ```
@@ -58,8 +63,11 @@ print angle_in_radians = geo_angle(0, 10, 0,5, 3,-10)
 
 The following example calculates the angle in degrees.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIzEvPSY3PzIsvSkzJTMwrVrBVSE%2FNjwcLaxjoKBgCsYGOqY6CsY6uoYGmNVdBUWYekraU1PSi1FSQNihLA91ETQCHVNd5ZwAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 let angle_in_radians = geo_angle(0, 10, 0,5, 3,-10);
 print angle_in_degrees = degrees(angle_in_radians)
@@ -73,8 +81,11 @@ print angle_in_degrees = degrees(angle_in_radians)
 
 The following example returns null because 1st point equals to 2nd point.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgsjs8rzclRsAWyQAyN9NT8%2BMS89JxUDQMdBUMghlLGOgq6hgaamgD0cBDLNwAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 print is_null = isnull(geo_angle(0, 10, 0, 10, 3, -10))
 ```

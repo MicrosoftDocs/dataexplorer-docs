@@ -3,12 +3,13 @@ title:  join operator
 description: Learn how to use the join operator to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/27/2024
+ms.date: 08/11/2024
 ms.localizationpriority: high 
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # join operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Merge the rows of two tables to form a new table by matching values of the specified columns from each table.
 
@@ -22,7 +23,7 @@ The following image provides a visual representation of the operation performed 
 
 *LeftTable* `|` `join` [ `kind` `=` *JoinFlavor* ] [ *Hints* ] `(`*RightTable*`)` `on` *Conditions*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,7 +40,7 @@ The following image provides a visual representation of the operation performed 
 
 ### Hints
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 |Hint key |Values |Description  |
 |---|---|---|
@@ -48,9 +49,9 @@ The following image provides a visual representation of the operation performed 
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shuffle-query.md) |
 |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shuffle-query.md)  |
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 |Name |Values |Description |
 |---|---|---|
@@ -59,7 +60,7 @@ The following image provides a visual representation of the operation performed 
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shuffle-query.md) |
 |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shuffle-query.md)  |
 
-::: zone-end
+::: moniker-end
 
 > [!NOTE]
 > The join hints don't change the semantic of `join` but may affect performance.

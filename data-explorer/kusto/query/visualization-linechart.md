@@ -1,15 +1,14 @@
 ---
 title:  Line chart visualization
-description: This article describes the line chart visualization in Azure Data Explorer.
+description:  This article describes the line chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/26/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Line chart
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The line chart visual is the most basic type of chart. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Line charts track changes over short and long periods of time. When smaller changes exist, line graphs are more useful than bar graphs.
 
@@ -20,7 +19,7 @@ The line chart visual is the most basic type of chart. The first column of the q
 
 *T* `|` `render` `linechart` [`with` `(` *propertyName* `=` *propertyValue* [`,` ...] `)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -63,8 +62,10 @@ This visualization supports splitting into multiple y-axis values:
 
 ### Render a line chart
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLEm1tVUK8wxy9/TzdFQCyhQU5WelJpeA5IpKQjJzU3UUXBJzE9NTA4ryC1KLSiqBaopS81JSixRyMvNSkzOAygCpk5aiXAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -77,8 +78,10 @@ StormEvents
 
 ### Label a line chart
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OwQrCMAyG73uK0JPCXmEHQZFeRJzsXrZsjaztSINz4MPb1Xkzp8D//V9SS2B3eqKXWLxhtsgItRjBqlKNvp31RR9USiYOD2xlzVju5LCEo3FmwCuHCVmWxDD6DhlG8tjahBWQZiaxsMurkIxYqV8DuiyAnoODuP4RgTw0xAN5MqrMpdfWyoeTwiGE/otvxPLfq3K4/wAc1ztT4QAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -96,8 +99,10 @@ StormEvents
 
 ### Limit values displayed on the y-axis
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxXKsQrCMBRG4d2nuHRS6BBwcMogKJKliC3uof6YiDcp14s14MM3Pet3es3C5y+SfjZ/mgME1KtXWNvc3e3iOndsqkySXxh1NdEhMlo6efZPXCVPEC31EaQHhN4xYQx1ozlqoG3hmOzBGNNSYf+ze7O2WwCSj8TeegAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -110,8 +115,10 @@ StormEvents
 
 ### View multiple y-axes
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWMvwqDMBCH9z7FkSkBlz6AQwpCQXBoHLpGPfAgOSU5FUsfvmm7/f7wfU6WFJsdWfLlDceMCcGJFwRi0KpvntapClTX3B7WtfabW9u5shrwPMGP7c8Voa5B3T0FVUR5i9EneiGMy8aiDQzn31vBQKxLTNJTLPU6mQIk5AkTBGIc5/LBQTKDPvMaSOrVM4ZsPghjwq6tAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -124,12 +131,4 @@ StormEvents
 
 ## Related content
 
-* [Add a query visualization in the web UI](../../add-query-visualization.md)
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This visualization isn't supported in Azure Monitor.
-
-::: zone-end
+* [Add a query visualization in the web UI](/azure/data-explorer/add-query-visualization).

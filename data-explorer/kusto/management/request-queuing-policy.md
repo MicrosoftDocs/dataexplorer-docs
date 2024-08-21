@@ -3,9 +3,11 @@ title: Request queuing policy
 description: Learn how to use the request queuing policy to control queuing of requests for delayed execution.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 11/27/2023
+ms.date: 08/11/2024
 ---
 # Request queuing policy (Preview)
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 A workload group's request queuing policy controls queuing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.
 

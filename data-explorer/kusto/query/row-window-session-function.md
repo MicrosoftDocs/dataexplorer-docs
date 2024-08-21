@@ -3,11 +3,13 @@ title:  row_window_session()
 description: Learn how to use the row_window_session() function to calculate session start values of a column in a serialized row set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/12/2024
+ms.date: 08/11/2024
 ---
 # row_window_session()
 
-Calculates session start values of a column in a [serialized row set](./window-functions.md#serialized-row-set).
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+Calculates session start values of a column in a [serialized row set](window-functions.md#serialized-row-set).
 
 ## Syntax
 
@@ -22,7 +24,7 @@ Calculates session start values of a column in a [serialized row set](./window-f
 |*MaxDistanceBetweenNeighbors*| `timespan` | :heavy_check_mark: | Another criterion for starting a new session using the maximum distance from one value of *Expr* to the next. |
 | *Restart* |`boolean` | | If specified, every value that evaluates to `true` immediately restarts the session. |
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 
@@ -48,8 +50,10 @@ The function returns the values at the beginning of each session. It uses the fo
 
 The following example calculates session start values for a table, `datatable`, with a sequence **ID** column and a **Timestamp** column to record the time of each record. The data is sorted by the sequence IDs and timestamps and then the example returns values for **ID**, **Timestamp**, and a new **SessionStarted** column. A session can't exceed one hour. It continues for as long as records are less than five minutes apart and the ID stays the same. The example includes records that are less than five minutes apart.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc-z5jd0tu7q3s9b5vyt8.northeurope/databases/TestDatabase?query=H4sIAAAAAAAAA42QwQqDMAyG7z5F5kmhQqtuDMGbF8%2FuNsaoa9kKs0ob5gZ7%2BLXIhjsIJoGQ5sufEsHReXuXENVVYdEofSVwUJ20yLuhEBwluiqGYwDOQhYS%2BD5GKU3zhOYJY8BoQX3EZOLSZY7tZ9yiHvvXy5a5bNXebCXn%2FrfzXHAK3mB7g9C%2BoK6A28vsML50fflEqQU00lrV6wa5QSmgBNOP51Fp4ZKdetFvlAC7Edh2xKtuShiMfLjjx%2FEHCP%2BU4YwBAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (ID:string, Timestamp:datetime) [

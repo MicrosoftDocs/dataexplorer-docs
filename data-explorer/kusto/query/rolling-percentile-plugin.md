@@ -3,9 +3,11 @@ title:  rolling_percentile plugin
 description: Learn how to use the rolling_percentile plugin to calculate an estimate of the rolling percentile per bin for the specified value column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 08/11/2024
 ---
 # rolling_percentile() plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Returns an estimate for the specified percentile of the *ValueColumn* population in a rolling (sliding) *BinsPerWindow* size window per *BinSize*.
 
@@ -15,7 +17,7 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 *T* `| evaluate` `rolling_percentile(`*ValueColumn*`,` *Percentile*`,` *IndexColumn*`,` *BinSize*`,` *BinsPerWindow*  [`,` *dim1*`,` *dim2*`,` ...] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -43,8 +45,10 @@ Output table schema is:
 
 The next query calculates a 3-day median value in daily granularity. Each row in the output represents the median value for the last 3 bins (days), including the bin itself.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2OwQqDMAyG7z7FjzDQWaF1GwyGx529eB9io+uotdRueNjDL+5gCYSQ7/9SSxEtaiTgFzo3EoxeMYR5gkScUZ1xhJIoobBE8lB/9Asf5hf1nDYTLbGbPFt0FynynFVSXUupuHIUUE92sFbg09l68xe7htZITuP+IdeERmu2mGHIGMQBFeoaUiDd1il3BtL8lrRAwlGG3nwRYbbWuPHhKfTkorG05QUuHN2/J6C0wCn/AfIZwjfyAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let T = 
@@ -74,8 +78,10 @@ T
 
 Same example from above, but now also calculates the rolling window partitioned for each value of the dimension.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WOQQuDMAyF7/6KhzDQWaF1GwyGx529eB9io+uoVWonHvbjF3dwIRBC3vteLAXUKBGByzeuJxi9ovPjAIkwojjjCCWRQ2EONEH9pB9MfnxRy24z0ByaYWKKbgIF3pNCqmsuFXeKDOrJDMYKLI0tN362Y2gN5DTuC7nKV1ozxXRdwkIcUKAsIQXi7RzzZEGc3qIaiNjKojcnwo/WGtc/JvItuWAsbX6BC1v39wSUFjiJf1T6BZy1q2z9AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let T = 

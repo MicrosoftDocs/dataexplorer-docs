@@ -3,9 +3,11 @@ title:  array_sort_asc()
 description: Learn how to use the array_sort_asc() function to sort arrays in ascending order.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 08/11/2024
 ---
 # array_sort_asc()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Receives one or more arrays. Sorts the first array in ascending order. Orders the remaining arrays to match the reordered first array.
 
@@ -15,7 +17,7 @@ Receives one or more arrays. Sorts the first array in ascending order. Orders th
 
 If *nulls_last* isn't provided, a default value of `true` is used.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,8 +41,10 @@ If an array contains elements of different types, it's sorted in the following o
 
 ## Example 1 - Sorting two arrays
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFILCpKrDRUsFVIqcxLzM1M1og21DHWMdEx1TGK1bTmyoEpMUJWopSopKOUBMTJQJwCxKlKIMUFRZl5UOXxxflFJfGJxckaEAt0IIZoAgAts93scwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let array1 = dynamic([1,3,4,5,2]);
@@ -59,8 +63,10 @@ print array_sort_asc(array1,array2)
 
 ## Example 2 - Sorting substrings
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHwS8xNLVawVVDyys/I0wlILM3RcU/NL0pP1QnKzEvPV7LmygGqCs4vKklNgaktLilKTiyJTywqSqzUAJPxxUAF8YnFyRrFBTmZJRpglToKSjpKmpoQypqroCgzr0ShKLW4NKcEaAiSkQD+ChdoiAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Names = "John,Paul,George,Ringo";
@@ -76,8 +82,10 @@ print result = SortedNames
 
 ## Example 3 - Combining summarize and array_sort_asc
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WR0WoDIRBF3/crJC9ZYQO7tiU00C8JQSYqiY2uy4yhpPTjq23sFmIK1ZdxOPdy5WqI6e6daVXwHka9oYh2PHTs+pbRerPREE0eOnYmg9IWjDfbhqWzVEcf9LJLY0Fb0Q/Pq369Gp543i+yclh037yjL7jG96LCa4tXwQ0varw/FcVtnscKj/5uHrGu8NObvpun9t+//B9mXvzTP/O75oPROZWF9t2wjFIEPxF7YR5ORjpLsf3dJv8pt8pwtr+UmpP1hOHVqFg2s1baUaojhjG4cLAKnAyoDSZLQISLpIBRAql2jjSL+XbYfQJov9dSfAIAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(command:string, command_time:datetime, user_id:string)
@@ -111,8 +119,10 @@ By default, `null` values are put last in the sorted array. However, you can con
 
 Example with default behavior:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKkqsjC/OLyqJTyxO1kipzEvMzUzWiM4rzcnRUUrKKU1V0lGqTM3JyS8HMtKLUlPzlHRAkrGamgDOvUliQgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print array_sort_asc(dynamic([null,"blue","yellow","green",null]))
@@ -126,8 +136,10 @@ print array_sort_asc(dynamic([null,"blue","yellow","green",null]))
 
 Example with non-default behavior:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxXJUQqAIAwA0KvIvhR2owhZtkJYMzYlvH319+DdVrUHMqOZvVnP5CXuU+mqJS46RBA2GQwIk0Xa8+E0ZgX8c00YDhLn9ALNIgvjSQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print array_sort_asc(dynamic([null,"blue","yellow","green",null]), false)

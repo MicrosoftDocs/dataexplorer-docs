@@ -1,11 +1,14 @@
 ---
 title:  How to authenticate with Microsoft Authentication Library (MSAL) in apps
-description: This article describes authentication with Microsoft Authentication Library (MSAL) in Azure Data Explorer.
+description: This article describes authentication with Microsoft Authentication Library (MSAL).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/28/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # How to authenticate with Microsoft Authentication Library (MSAL) in apps
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 To programmatically authenticate with your cluster, you need to request an access token from [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) specific to Azure Data Explorer. This access token acts as proof of identity when issuing requests to your cluster. You can use one of the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) [flows](/azure/active-directory/develop/msal-authentication-flows) to create an access token.
 
@@ -25,7 +28,7 @@ The main authentication scenarios are as follows:
 
 * [Single page application (SPA) authentication](#perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
 
-For user and application authentication, we recommend using the [Kusto client libraries](../../../kusto/api/client-libraries.md). For OBO and SPA authentication, the Kusto client libraries can't be used.
+For user and application authentication, we recommend using the [Kusto client libraries](../client-libraries.md). For OBO and SPA authentication, the Kusto client libraries can't be used.
 
 ## Authentication parameters
 
@@ -64,12 +67,12 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 > [!NOTE]
 >
-> * We recommend using the [Kusto client libraries](../client-libraries.md) whenever possible. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../../kusto/api/connection-strings/kusto.md).
+> * We recommend using the [Kusto client libraries](../client-libraries.md) whenever possible. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../connection-strings/kusto.md).
 > * With the Kusto client libraries, Microsoft Entra tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
 
 ## Perform application authentication with MSAL
 
-The following code sample shows how to use MSAL to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Microsoft Entra ID and have an app key or an X509v2 certificate issued by Microsoft Entra ID. To set up an application, see [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md).
+The following code sample shows how to use MSAL to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Microsoft Entra ID and have an app key or an X509v2 certificate issued by Microsoft Entra ID. To set up an application, see [Provision a Microsoft Entra application](../../access-control/provision-entra-id-app.md).
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -89,7 +92,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 ```
 
 > [!NOTE]
-> We recommend using the [Kusto client libraries](../client-libraries.md) whenever possible. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../../kusto/api/connection-strings/kusto.md).
+> We recommend using the [Kusto client libraries](../client-libraries.md) whenever possible. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../connection-strings/kusto.md).
 
 ## Perform On-behalf-of (OBO) authentication
 
@@ -99,8 +102,8 @@ In this scenario, an application is sent a Microsoft Entra access token for an a
 
 To perform on-behalf-of authentication:
 
-1. [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md).
-2. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application).
+1. [Provision a Microsoft Entra application](../../access-control/provision-entra-id-app.md).
+2. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../access-control/provision-entra-id-app.md#configure-delegated-permissions-for-the-application---optional).
 3. In your server code, use MSAL to perform the token exchange.
 
     ```csharp
@@ -135,7 +138,7 @@ Microsoft identity platform has detailed tutorials for different use cases such 
 
 To set up authentication for a web client:
 
-1. [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md).
+1. [Provision a Microsoft Entra application](../../access-control/provision-entra-id-app.md).
 1. Configure the app as described in [MSAL.js 2.0 with auth code flow](/azure/active-directory/develop/scenario-spa-app-registration#redirect-uri-msaljs-20-with-auth-code-flow).
 1. Use the MSAL.js 2.0 library to sign in a user and authenticate to your cluster. Microsoft identity platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
 
@@ -205,5 +208,5 @@ To set up authentication for a web client:
 ## Related content
 
 * [Authentication over HTTPs](authentication.md)
-* [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md)
+* [Provision a Microsoft Entra application](../../access-control/provision-entra-id-app.md)
 * [Kusto client libraries](../../api/client-libraries.md)

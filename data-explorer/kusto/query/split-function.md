@@ -3,10 +3,12 @@ title:  split()
 description: Learn how to use the split() function to split the source string according to a given delimiter.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/25/2023
+ms.date: 08/11/2024
 adobe-target: true
 ---
 # split()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The `split()` function takes a string and splits it into substrings based on a specified delimiter, returning the substrings in an array. Optionally, you can retrieve a specific substring by specifying its index.
 
@@ -14,7 +16,7 @@ The `split()` function takes a string and splits it into substrings based on a s
 
 `split(`*source*`,` *delimiter* [`,` *requestedIndex*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -28,12 +30,14 @@ The `split()` function takes a string and splits it into substrings based on a s
 
 An array of substrings obtained by separating the *source* string by the specified *delimiter*, or a single substring at the specified *requestedIndex*.
 
-[!INCLUDE [dynamic-access](../../includes/dynamic-access.md)]
+[!INCLUDE [dynamic-access](../includes/dynamic-access.md)]
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OQQrAIAwE731FyKlCQPqeIsF4EkqR1v/TWAvS4F43s5ly5bMuoLnLkeuKMbIIEiCjIxjxHnYtkVDr8CcaIpxS6hzB1tCXEHs9mR77Zph5ZvKpqEmTsS4iXUP/upm9tuEBNARoOvUAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print

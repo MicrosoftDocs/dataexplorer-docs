@@ -1,25 +1,23 @@
 ---
 title:  series_rolling_fl()
-description: This article describes the series_rolling_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the series_rolling_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
 ---
 # series_rolling_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The function `series_rolling_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke series_rolling_fl(`*y_series*`,` *y_rolling_series*`,` *n*`,` *aggr*`,` *aggr_params*`,` *center*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -312,11 +310,3 @@ range x from 1 to 100 step 1
 **Output**
 
 :::image type="content" source="media/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

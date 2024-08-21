@@ -3,20 +3,22 @@ title:  series_stats()
 description: Learn how to use the series_stats() function to calculate the statistics for a numerical series using multiple columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/29/2023
+ms.date: 08/11/2024
 ---
 # series_stats()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns statistics for a numerical series in a table with a column for each statistic.
 
 > [!NOTE]
-> This function returns multiple values. If you only need a single value, such as the average, consider using [series_stats_dynamic](./series-stats-dynamic-function.md).
+> This function returns multiple values. If you only need a single value, such as the average, consider using [series_stats_dynamic](series-stats-dynamic-function.md).
 
 ## Syntax
 
 `...` `|` `extend` `(` *Name*`,` ... `)` `=` `series_stats` `(` *series* [`,` *ignore_nonfinite*] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,8 +44,10 @@ A table with a column for each of the statistics displayed in the following tabl
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUaiwTanMS8zNTNaINjLWUTAx01EA0RbmQDaQ0lEAcsxNgYI6CqZAOUMo1xjINwSptYzVVOCqUSgoys9KTS5RKE4tykwtji8uSSwp1qjQBADbRN1SZAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print x=dynamic([23, 46, 23, 87, 4, 8, 3, 75, 2, 56, 13, 75, 32, 16, 29]) 

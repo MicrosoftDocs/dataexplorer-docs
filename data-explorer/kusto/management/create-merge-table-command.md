@@ -3,9 +3,11 @@ title: .create-merge table command
 description: Learn how to use the `.create-merge table` command to create a new table or extend an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .create-merge table command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Creates a new table or extends an existing table.
 
@@ -13,13 +15,13 @@ The command must run in the context of a specific database.
 
 ## Permissions
 
-This command requires [Database User](access-control/role-based-access-control.md) permissions, and [Table Admin](access-control/role-based-access-control.md) permissions for extending existing tables.
+This command requires [Database User](../access-control/role-based-access-control.md) permissions, and [Table Admin](../access-control/role-based-access-control.md) permissions for extending existing tables.
 
 ## Syntax
 
 `.create-merge` `table` *tableName* `(`*columnName*`:`*columnType* [`,` ...]`)`  [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -3,9 +3,13 @@ title:  where operator
 description: Learn how to use the where operator to filter a table to the subset of rows that satisfy a predicate.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # where operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Filters a table to the subset of rows that satisfy a predicate.
 
@@ -15,7 +19,7 @@ Filters a table to the subset of rows that satisfy a predicate.
 
 *T* `| where` *Predicate*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -31,20 +35,20 @@ Rows in *T* for which *Predicate* is `true`.
 > [!NOTE]
 > All filtering functions return false when compared with null values. Use special null-aware functions to write queries that handle null values.
 >
-> * [isnull()](./isnull-function.md)
-> * [isnotnull()](./isnotnull-function.md)
-> * [isempty()](./isempty-function.md)
-> * [isnotempty()](./isnotempty-function.md)
+> * [isnull()](isnull-function.md)
+> * [isnotnull()](isnotnull-function.md)
+> * [isempty()](isempty-function.md)
+> * [isnotempty()](isnotempty-function.md)
 
 ## Performance tips
 
-* **Use simple comparisons** between column names and constants. ('Constant' means constant over the table - so `now()` and `ago()` are OK, and so are scalar values assigned using a [`let` statement](./let-statement.md).)
+* **Use simple comparisons** between column names and constants. ('Constant' means constant over the table - so `now()` and `ago()` are OK, and so are scalar values assigned using a [`let` statement](let-statement.md).)
 
     For example, prefer `where Timestamp >= ago(1d)` to `where bin(Timestamp, 1d) == ago(1d)`.
 
 * **Simplest terms first**: If you have multiple clauses conjoined with `and`, put first the clauses that involve just one column. So `Timestamp > ago(1d) and OpId == EventId` is better than the other way around.
 
-For more information, see the summary of [available String operators](./datatypes-string-operators.md) and the summary of [available Numerical operators](./numerical-operators.md).
+For more information, see the summary of [available String operators](datatypes-string-operators.md) and the summary of [available Numerical operators](numerical-operators.md).
 
 ## Examples
 
@@ -54,8 +58,10 @@ The following query returns storm records that report damaged property, are floo
 
 Notice that we put the comparison between two columns last, as the where operator can't use the index and forces a scan.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlFwScxNTE8NKMovSC0qqdRRACsIqSxI1VFwSk3PzPPJT04syczPA8rkpcA4QP3lGalFqWi6FewUDLgUgCAxLwVhkIKtrYKSW05+fooSXBLFaAVFW2TDAe7+E2GoAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -84,16 +90,20 @@ The following table only shows the top 10 results. To see the full output, run t
 
 The following query returns the rows in which the word "cow" appears in any column.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVdBSyEgsVlBKzi9XAgC3DyzDIAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
 | where * has "cow"
 ```
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * [String operators](datatypes-string-operators.md)
 * [Numerical operators](numerical-operators.md)
 * [Logical operators](logical-operators.md)
+::: moniker-end

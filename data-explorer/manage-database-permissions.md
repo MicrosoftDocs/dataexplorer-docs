@@ -8,9 +8,9 @@ ms.date: 05/28/2023
 
 # Manage Azure Data Explorer database permissions in the Azure portal
 
-Azure Data Explorer allows you to control access to databases and tables using a *role-based access control* model. Under this model, *principals* (users, groups, and apps) are mapped to *roles*. Principals can access resources according to the roles they're assigned. For a list of available roles, see [role-based access control](kusto/access-control/role-based-access-control.md).
+Azure Data Explorer allows you to control access to databases and tables using a *role-based access control* model. Under this model, *principals* (users, groups, and apps) are mapped to *roles*. Principals can access resources according to the roles they're assigned. For a list of available roles, see [role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true).
 
-This article describes the available roles and how to assign principals to those roles using the Azure portal. For information on how to set database permissions with management commands, see [Manage database security roles](kusto/management/manage-database-security-roles.md).
+This article describes the available roles and how to assign principals to those roles using the Azure portal. For information on how to set database permissions with management commands, see [Manage database security roles](/kusto/management/manage-database-security-roles?view=azure-data-explorer&preserve-view=true).
 
 > [!NOTE]
 > To delete a database, you need at least **Contributor** Azure Resource Manager (ARM) permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
@@ -49,7 +49,7 @@ This article describes the available roles and how to assign principals to those
 
 ## Related content
 
-* Learn about [Azure Data Explorer role-based access control](kusto/access-control/role-based-access-control.md).
+* Learn about [Azure Data Explorer role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true).
 * To set cluster level permissions, see [Manage cluster permissions](manage-cluster-permissions.md).
-* To set permissions for a database with management commands, see [Manage database security roles](kusto/management/manage-database-security-roles.md).
-* To grant a principal view access to a subset of tables, see [Manage table view access](kusto/management/manage-table-view-access.md).
+* To set permissions for a database with management commands, see [Manage database security roles](/kusto/management/manage-database-security-roles?view=azure-data-explorer&preserve-view=true).
+* To grant a principal view access to a subset of tables, see [Manage table view access](/kusto/management/manage-table-view-access?view=azure-data-explorer&preserve-view=true).

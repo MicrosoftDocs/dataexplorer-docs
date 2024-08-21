@@ -1,11 +1,13 @@
 ---
 title:  punycode_from_string 
-description: This article describes the punycode_from_string() command in Azure Data Explorer.
+description:  This article describes the punycode_from_string() command.
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 08/11/2024
 ---
 
 # punycode_from_string()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Encodes input string to [Punycode](https://en.wikipedia.org/wiki/Punycode) form.
 The result string contains only ASCII characters. The result string doesn't start with "xn--".
@@ -15,7 +17,7 @@ The result string contains only ASCII characters. The result string doesn't star
 
 `punycode_from_string('input_string')`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,8 +32,10 @@ The result string contains only ASCII characters. The result string doesn't star
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjNS85PSU1RsFUoKM2rBLHj04ryc+OLS4DS6RrqicmJKYdX5mam6qYVJeYdXp6YWZyqrgkA2GFbdjwAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
  print encoded = punycode_from_string('académie-française')
@@ -41,8 +45,10 @@ The result string contains only ASCII characters. The result string doesn't star
 |---|
 |acadmie-franaise-npb1a|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjJz03MzLNVf9G569mc9XrJ+bnqvFw1CqkVJal5KVDZ+LLUZAVbheKCnMwSDYiQjoK6nromksrUvOT8lNSU+Iz84hKg2oLSvEqQQHxaUX5ufHEJ0K50jZJ8KANhbLRBrCY2YyAqQJaWFCUnlmioV+Tp6qrroFgDdoMOkhujDWM1AQ07DZjWAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
  print domain='艺术.com'

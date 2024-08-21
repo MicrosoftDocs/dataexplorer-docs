@@ -1,11 +1,13 @@
 ---
 title:  zlib_decompress_from_base64_string() 
-description: This article describes the zlib_decompress_from_base64_string() command in Azure Data Explorer.
+description:  This article describes the zlib_decompress_from_base64_string() command.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 08/11/2024
 ---
 # zlib_decompress_from_base64_string()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Decodes the input string from base64 and performs zlib decompression.
 
@@ -16,7 +18,7 @@ Decodes the input string from base64 and performs zlib decompression.
 
 `zlib_decompress_from_base64_string(`*string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,8 +36,10 @@ Decodes the input string from base64 and performs zlib decompression.
 
 ### Valid input
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUahKzs8tULBVqMrJTIpPSQXxilKLi+PTivJz45MSi1PNTOKLS4BK0zWUUr3KfYKDDUpDg9NLvZOLfIMNk8v9XDzdHZ0rCp0CTWyVNAGxo0NZVAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print zcomp = zlib_decompress_from_base64_string("eJwLSS0uUSguKcrMS1cwNDIGACxqBQ4=")
@@ -49,8 +53,10 @@ print zcomp = zlib_decompress_from_base64_string("eJwLSS0uUSguKcrMS1cwNDIGACxqBQ
 
 ### Invalid input
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUahKzs8tULBVqMrJTIpPSQXxilKLi+PTivJz45MSi1PNTOKLS4BK0zWUKgxAUEkTAB50Ccs6AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print zcomp = zlib_decompress_from_base64_string("x0x0x0")

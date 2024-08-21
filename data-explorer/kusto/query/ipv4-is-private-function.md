@@ -3,9 +3,11 @@ title:  ipv4_is_private()
 description: Learn how to use the ipv4_is_private() function to check if the IPv4 string address belongs to a set of private network IPs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/01/2023
+ms.date: 08/11/2024
 ---
 # ipv4_is_private()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Checks if the IPv4 string address belongs to a set of private network IPs.
 
@@ -32,7 +34,7 @@ ipv4_is_private("127.0.0.1") == false
 
 `ipv4_is_private(`*ip*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,7 +42,7 @@ ipv4_is_private("127.0.0.1") == false
 |--|--|--|--|
 |*ip*| `string` |  :heavy_check_mark: | An expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 
@@ -50,8 +52,10 @@ ipv4_is_private("127.0.0.1") == false
 
 ## Example: Check if IPv4 belongs to a private network
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcyC+OKSosy8dCsIpckVzaWgbmigZ6hnpGesrgPiWBrpGZpZAEUM9Y1MIEJG5noGQGgI5MVy1SikVpSk5qUoFKUWl+aUKNgqZBaUmcRnFscXFGWWJZYg2aIJAAFWRs16AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip_string:string)

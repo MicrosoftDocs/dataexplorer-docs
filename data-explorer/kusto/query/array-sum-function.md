@@ -4,9 +4,11 @@ description: Learn how to use the array_sum() function to calculate the sum of e
 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 08/11/2024
 ---
 # array_sum()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the sum of elements in a dynamic array.
 
@@ -14,7 +16,7 @@ Calculates the sum of elements in a dynamic array.
 
 `array_sum`(*array*)
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -33,8 +35,10 @@ Returns a double type value with the sum of the elements of the array.
 
 This following example shows the sum of an array.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYxidVU4OWqUUitKEnNSwGpiC8uzbUF0omVIJYGkKUJANbCqMA+AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print arr=dynamic([1,2,3,4]) 

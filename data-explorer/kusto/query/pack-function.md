@@ -3,9 +3,11 @@ title:  bag_pack()
 description: Learn how to use the bag_pack() function to create a dynamic JSON object from a list of keys and values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # bag_pack()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from a list of keys and values.
 
@@ -15,7 +17,7 @@ Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from a lis
 
 `bag_pack(`*key1*`,` *value1*`,` *key2*`,` *value2*`,... )`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -37,8 +39,10 @@ Returns a `dynamic` property bag object from the listed *key* and *value* inputs
 
 The following example creates and returns a property bag from an alternating list of keys and values.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhKTI8vSEzO1lDySS1LzVHSUVDyzEvLL8pNLMnMzwNxA4ryk1OLiz1dgBxDI2MToJBLYkkikIfQW1oE1lleXq6XlJmXrpecn6ukqQkA9RzT32IAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url", "www.bing.com"))
@@ -54,8 +58,10 @@ print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url"
 
 The following example creates a property bag and extract value from property bag using '.' operator.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PXwuCMBTF3wW%2Fw2VPCiv8V0Hgg9qrTz1GyE3HWMUUXZTQh2%2FTBeL2cvjtnHvPGlT63p4MPNcBfc7tq6%2FZEYRUdCYnNighUYlWLnHJhgG5dg6qF5K7jg%2BX%2BSWM4oRCGAQUSJYRCjNOdvsDhWjCeU7o3xxGFOKJFgXR3qvrfIF9FJMNlGOOPL0hrzqsHx4xXfTARSUd0024hraQb%2BJd395ZrTb4xtF%2BaZWy7vWuypjSSW6NpBabHRYb%2BQMdY4ddNwEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (
@@ -100,8 +106,10 @@ MmsMessages
 |555-555-1234 |555-555-1212 | 250 | jpeg | Pic2 |
 |555-555-1234 |555-555-1213 | 300 | png | Pic3 |
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61Sy26DMBC88xUrnxKJSmBCD604VDknikRuVVUZWIEJGGQb9aF+fG1olJgmbQ/FwmZ3Zr3MaBvUkLZqg0qxEhUkUDBtVtYgLDwwT9oNMsft0GYo70BpyUXpj8ieyRL1JWRdManW3SD0Me8t4XGESBzHN/YNabQi/nkcUhuvbs3+KzUa44D4c+Z0ybwyogS8p3uvMXI3/y73QWuWVy0KnfJ3vIbt3/qr2Ja1+JNVc1WTfhoE9qh7LO2543n43ZDLLtN4Xkr/UDp2jaauvThWRsRaez5F3gfUHRdw4KJIuBAoHdc74dhs2PiqURSwY/kBiyRj5XNvPhfkNEim1ykwfV3PDeomHIZ13mHYhMOw/jsMm1haHS8VSnR+F5JkZpKh9bKrMdcO0XdGxv9S9wkokKY3cgMAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let SmsMessages = datatable (

@@ -3,9 +3,11 @@ title:  set_difference()
 description: Learn how to use the set_difference() function to create a difference set of all distinct values in the first array that aren't in the other array inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # set_difference()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a `dynamic` (JSON) array of the set of all distinct values that are in the first array but aren't in other arrays - (((arr1 \ arr2) \ arr3) \ ...).
 
@@ -13,7 +15,7 @@ Returns a `dynamic` (JSON) array of the set of all distinct values that are in t
 
 `set_difference(`*set1*`,` *set2* [`,`*set3*, ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,8 +29,10 @@ Returns a dynamic array of the set of all distinct values that are in *set1* but
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA23MsQ7CMAwE0J2vuLFBWdLOfEtltQ4CRBK5kZpE/XicCVWweHi+O6FwZxR4iW845IgJW+YEdznAJXNYUXHTxBXjl5pSPdOu1M5ETi3R8ppJhOpQLKqF3mYsaPx9dp7+dXajq0nik5eMjfO8Prxn4bDwQK6P9ab5AIGKxtfOAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 3 step 1
@@ -47,8 +51,10 @@ range x from 1 to 3 step 1
 |[8]|
 |[12]|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVShOLYlPyUxLSy1KzUtO1UipzEvMzUzWiDbUMdIxjtXUUUAX0QQAej8Kqz4AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print arr = set_difference(dynamic([1,2,3]), dynamic([1,2,3]))

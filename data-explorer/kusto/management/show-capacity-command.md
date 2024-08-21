@@ -2,21 +2,24 @@
 title: .show capacity command
 description: Learn how to use the `.show capacity` command to display the capacity policy.
 ms.topic: reference
-ms.date: 11/21/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .show capacity command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Displays capacity for data management operations. For more information, see [Capacity policy](capacity-policy.md).
 
 ## Permissions
 
-You must have at least [Database User](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database User](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.show` `capacity` *Operation* [`with(``scope` `=` `cluster` | `workloadgroup``)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -33,7 +36,7 @@ The following list outlines the operations for which you can see the capacity:
 |[Data export](../management/data-export/index.md)|`data-export`|
 |[Extents merge](../management/merge-policy.md)|`extents-merge`|
 |[Extents partition](../management/partitioning-policy.md)|`extents-partition`|
-|[Ingestions](../../ingest-data-overview.md)|`ingestions`|
+|[Ingestions](/azure/data-explorer/ingest-data-overview)|`ingestions`|
 |[Materialized view](../management/materialized-views/materialized-view-overview.md)|`materialized-view`|
 |[Stored query results](../management/stored-query-results.md)|`stored-query-results`|
 

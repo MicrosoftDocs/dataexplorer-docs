@@ -3,9 +3,11 @@ title:  loggamma()
 description: Learn how to use the loggamma() function to compute the log of the absolute value of the gamma function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/26/2022
+ms.date: 08/11/2024
 ---
 # loggamma()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Computes log of the absolute value of the [gamma function](https://en.wikipedia.org/wiki/Gamma_function)
 
@@ -13,7 +15,7 @@ Computes log of the absolute value of the [gamma function](https://en.wikipedia.
 
 `loggamma(`*number*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -23,8 +25,10 @@ Computes log of the absolute value of the [gamma function](https://en.wikipedia.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNyU9PT8zNTdQw1QQAjpO9/xgAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=loggamma(5)

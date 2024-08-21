@@ -1,12 +1,14 @@
 ---
 title:  zlib_compress_to_base64_string 
-description: This article describes the zlib_compress_to_base64_string() command in Azure Data Explorer.
+description:  This article describes the zlib_compress_to_base64_string() command.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 08/11/2024
 ---
 
 # zlib_compress_to_base64_string()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Performs zlib compression and encodes the result to base64.
 
@@ -17,7 +19,7 @@ Performs zlib compression and encodes the result to base64.
 
 `zlib_compress_to_base64_string(`*string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,8 +36,10 @@ Performs zlib compression and encodes the result to base64.
 
 ### Using Kusto Query Language
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUahKzs8tULBVqMrJTIoHsYtSi4vjS/LjkxKLU81M4otLgMrSNZQMjYxNTM3MLSwNCstTi0oqSzPzC5Q0Ad0xYSFEAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print zcomp = zlib_compress_to_base64_string("1234567890qwertyuiop")

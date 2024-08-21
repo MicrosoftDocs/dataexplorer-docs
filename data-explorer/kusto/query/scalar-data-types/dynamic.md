@@ -1,11 +1,13 @@
 ---
 title:  The dynamic data type
-description: This article describes The dynamic data type in Azure Data Explorer.
+description:  This article describes The dynamic data type.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/29/2024
+ms.date: 08/11/2024
 ---
 # The dynamic data type
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
 The `dynamic` scalar data type can be any of the following values:
 
@@ -31,7 +33,7 @@ To specify a `dynamic` literal, use one of the following syntax options:
 |`dynamic(`*value*`)`|A dynamic value holding the value of the inner scalar data type.|`dynamic(4)`|
 |`dynamic(null)`|Represents the [null value](null-values.md). | |
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Dynamic object accessors
 
@@ -85,7 +87,7 @@ Cast functions are:
 
 Several functions enable you to create new `dynamic` objects:
 
-* [bag_pack()](../packfunction.md) creates a property bag from name/value pairs.
+* [bag_pack()](../pack-function.md) creates a property bag from name/value pairs.
 * [pack_array()](../pack-array-function.md) creates an array from list of values (can be list of columns, for each row it will create an array from the specified columns).
 * [range()](../range-function.md) creates an array with an arithmetic series of numbers.
 * [zip()](../zip-function.md) pairs "parallel" values from two arrays into a single array.
@@ -132,7 +134,7 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 
 Every field is indexed during data ingestion. The scope of the index is a single data shard.
 
-To index dynamic columns, the ingestion process enumerates all “atomic” elements within the dynamic value (property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.
+To index dynamic columns, the ingestion process enumerates all "atomic" elements within the dynamic value (property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.
 
 ## Examples
 
@@ -140,8 +142,10 @@ To index dynamic columns, the ingestion process enumerates all “atomic” elem
 
 The following query creates a dynamic property bag.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAw3HsQqAIBAA0D3oH46bCo4g3QS%2FJBrUExJMIxoK69%2B76fGOM5ULquWnuD2FoaFDMytNgB4NbjHnipKAZplJkV4ljKZ939h3L8T7ioXB2To5Ai94giAEAhb4B3199sBhAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})

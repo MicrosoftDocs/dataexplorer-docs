@@ -3,20 +3,22 @@ title:  ipv6_compare()
 description: Learn how to use the ipv6_compare() function to compare two IPv6 or IPv4 network address strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/01/2023
+ms.date: 08/11/2024
 ---
 # ipv6_compare()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Compares two IPv6 or IPv4 network address strings. The two IPv6 strings are parsed and compared while accounting for the combined IP-prefix mask calculated from argument prefixes, and the optional `prefix` argument.
 
 >[!Note]
-> The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. However, if the caller knows that arguments are in IPv4 format, use [ipv4_is_compare()](./ipv4-compare-function.md) function. This function will result in better runtime performance.
+> The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. However, if the caller knows that arguments are in IPv4 format, use [ipv4_is_compare()](ipv4-compare-function.md) function. This function will result in better runtime performance.
 
 ## Syntax
 
 `ipv6_compare(`*ip1*`,`*ip2*`[ ,`*prefix*`])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -25,7 +27,7 @@ Compares two IPv6 or IPv4 network address strings. The two IPv6 strings are pars
 | *ip1*, *ip2*| `string` |  :heavy_check_mark: | An expression representing an IPv6 or IPv4 address. IPv6 and IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
 | *prefix*| `int` | | An integer from 0 to 128 representing the number of most significant bits that are taken into account.|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 
@@ -38,8 +40,10 @@ Compares two IPv6 or IPv4 network address strings. The two IPv6 strings are pars
 
 ### Compare IPs using the IP-prefix notation specified inside the IPv6/IPv4 strings
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61UwU6EMBC98xVzWzdZgVbA0sSjBw8m3o3ZdKE1TRCQwoaDH+/s0igKwkIcDk1m5r2Zvg6Tihq/QyavdEn2pq50/sq7Ywe6pD9dW+fZAc+Dh6djAKKSkBRvJZ4pCHNyRiDStJLGSOPAhsTUJRFziUs2O0AbetCQ7v69ERnif4E8GmBWz0PD0MIQRAM46BpRwXVZSaVb0AYag72oorKNaVPkM40gZ1dnPad34w/6XMNplY0gEZ2ASjKfcxamXDKa8DgIIn4bx2dVJmIwruxfCI9Qf4KRfUuOifYu0aw+K3pntpN/rDZ3NxtfVg2zH3WLgdM7QaHs75Cn59cbmzecOM4VGk98wbhPfNJVnZz8AUqpDvU1UrO6jFQdm9OFnBfN/gLOF+cDZFtLVBCXR5PVcIe75xjt7Xrp7ab+Utp+Aj++uYm9BAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string)
@@ -82,8 +86,10 @@ datatable(ip1_string:string, ip2_string:string)
 
 ### Compare IPs using IP-prefix notation specified inside the IPv6/IPv4 strings and as additional argument of the `ipv6_compare()` function
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61UTW+DMAy98yt86yp1kITwZWk/YIdJu09TRSGpInWACK162I+fC5kEa7uOauFg6Rm9Z7/YKfOOvs1OPZiGr23XmmqLQ1iBacRPqGmVNkfc1dV26b15EATw/HqQkLcKivqjoVhCbk9gDHlZtspaZcGDBc+Ez+PU5z5frIDOCGE9EvLViS/ksDEdMcjHQQ2Mhb0lXl23TsTYuppyBkISyQgRUUSA4xTyHs6zOgdOIWdygrMphiInN0hEq5QhplGJKhUFZlLGmGRZ38KVXDRUA1wkvTxFpx/f7OmaXEAkv0imlOOCOTn2H3LsplwyV47+fjFHSpzMhVq7gazK3vJLU0J3iqjpYMHyFBnXeiL9d2OnNIxfGsH+zuabiDiuO2Rn1EMv8w179z5BHTtFBtF27ncdPNGmH+K129/RSzB+Ar53f/kFFQW7YjMEAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string, prefix:long)

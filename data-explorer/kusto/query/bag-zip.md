@@ -3,9 +3,11 @@ title:  bag_zip()
 description: Learn how to use bag_zip() to merge two dynamic arrays into a single property-bag of keys and values.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 05/01/2023
+ms.date: 08/11/2024
 ---
 # bag_zip()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Creates a dynamic property-bag from two input dynamic arrays. In the resulting property-bag, the values from the first input array are used as the property keys, while the values from the second input array are used as corresponding property values.
 
@@ -13,7 +15,7 @@ Creates a dynamic property-bag from two input dynamic arrays. In the resulting p
 
 `bag_zip(`*KeysArray*`,` *ValuesArray*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -36,8 +38,11 @@ Returns a [dynamic](scalar-data-types/dynamic.md) property-bag.
 
 In the following example, the array of keys and the array of values are the same length and are zipped together into a dynamic property bag.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFwSSxJVLBVSAFSJYlJOaka3qmVxY5FRYmVVgoplXmJuZnJOgphiTmlqWiimgrRvFwKQADla0SrJ6rrKKgngYhk9VhNHYSMIVDICChurGcSq8nLFWvNywWyl5erRiG1oiQ1L0XBL7XcKTEd6JCkxPT4qswChDNQbNcEAJQm8tKzAAAA" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 let Data = datatable(KeysArray: dynamic, ValuesArray: dynamic) [
     dynamic(['a', 'b', 'c']), dynamic([1, '2', 3.4])
@@ -54,8 +59,10 @@ Data
 
 In the following example, the array of keys is longer than the array of values. The missing values are filled with nulls.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFwSSxJVLBVSAFSJYlJOaka3qmVxY5FRYmVVgoplXmJuZnJOgphiTmlqWiimgrRvFwKQADla0SrJ6rrKKgngYhk9VhNHYSMIVDICCjEyxVrzcsFspKXq0YhtaIkNS9FwS+13CkxHeiGpMT0+KrMAoQLUCzWBAB4QDzurgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Data = datatable(KeysArray: dynamic, ValuesArray: dynamic) [
@@ -73,8 +80,10 @@ Data
 
 In the following example, the array of values is longer than the array of keys. Values with no matching keys are ignored.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFwSSxJVLBVSAFSJYlJOaka3qmVxY5FRYmVVgoplXmJuZnJOgphiTmlqWiimgrRvFwKQADla0SrJ6rrKKgnqcdq6iAEDYFCRkBxIz3TWE1erlhrXi6QlbxcNQqpFSWpeSkKfqnlTonpQDckJabHV2UWIFyAYrEmAMOF9yWuAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Data = datatable(KeysArray: dynamic, ValuesArray: dynamic) [
@@ -92,8 +101,10 @@ Data
 
 In the following example, there are some values in they keys array that aren't of type string. The non-string values are ignored.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFwSSxJVLBVSAFSJYlJOaka3qmVxY5FRYmVVimVeYm5mck6CmGJOaWpqIIKmgrRUKZGtHqiuo6FjnqSeqymjgJc1FBHQd1IXUfBSM80VjPWmpcLZBUvV41CakVJal6Kgl9quVNiOtDupMT0+KrMAoTNKDZqAgBG9LZkpgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Data = datatable(KeysArray: dynamic, ValuesArray: dynamic) [
@@ -111,8 +122,10 @@ Data
 
 In the following example, the parameter that is supposed to be an array of values isn't an array, so all values are filled with nulls.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFwSSxJVLBVSAFSJYlJOaka3qmVxY5FRYmVVgoplXmJuZnJOgphiTmlqWiimgrRvFwKQADla0SrJ6rrKFjoKKgnqcdq6sDFDTV5uWKteblANvFy1SikVpSk5qUo+KWWOyWmA61OSkyPr8osQFiMYp8mAJSpx+ClAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Data = datatable(KeysArray: dynamic, ValuesArray: dynamic) [
@@ -130,8 +143,10 @@ Data
 
 In the following example, the parameter that is supposed to be an array of keys isn't an array, so the resulting property-bag is null.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFwSSxJVLBVSAFSJYlJOaka3qmVxY5FRYmVVgoplXmJuZnJOgphiTmlqWiimgrRvFwKQADla6gnqmvqwHnRhjoK6kbqOgpGeqaxmrxcsda8XCC7eLlqFFIrSlLzUhT8UsudEtOBliclpsdXZRYgrEaxURNJi2cxRJNrbkFJpW1mcV5pTo4GREgTACOl4ijOAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Data = datatable(KeysArray: dynamic, ValuesArray: dynamic) [

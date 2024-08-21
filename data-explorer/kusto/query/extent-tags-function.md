@@ -3,13 +3,12 @@ title:  extent_tags()
 description: Learn how to use the extent_tags() function to return a dynamic array of the data shard that the current record is in.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/11/2022
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # extent_tags()
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a dynamic array with the [extent tags](../management/extent-tags.md) of the [extent](../management/extents-overview.md) that the current record is in.
 
@@ -19,7 +18,7 @@ If you apply this function to calculated data, which isn't attached to a data sh
 
 `extent_tags()`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 
@@ -55,11 +54,3 @@ T
 > [!NOTE]
 > Filtering on the value of `extent_tags()` performs best when one of the following string operators is used:
 > `has`, `has_cs`, `!has`, `!has_cs`.
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

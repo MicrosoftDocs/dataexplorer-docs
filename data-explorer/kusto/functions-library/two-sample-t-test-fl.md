@@ -1,28 +1,26 @@
 ---
 title:  two_sample_t_test_fl()
-description: This article describes the two_sample_t_test_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the two_sample_t_test_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
 ---
 # two_sample_t_test_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The function `two_sample_t_test_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test).
 
 > [!NOTE]
 > If the assumption is that the two datasets to be compared have different variances, we suggest using the native [welch_test()](../query/welch-test-function.md).
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke two_sample_t_test_fl(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value*`,` *equal_var*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -170,10 +168,3 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | Test #1 | [23.64, 20.57, 20.42] | [27.1, 22.12, 33.56] | -1.7415675457565645 | 0.15655096653487446 |
 | Test #2 | [20.85, 21.89, 23.41] | [35.09, 30.02, 26.52], -3.2711673491022579 | 0.030755331219276136 |
 | Test #3 | [20.13, 20.5, 21.7, 22.02] | [32.2, 32.79, 33.9, 34.22] | -18.5515946201742 | 1.5823717131966134E-06 |
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

@@ -15,7 +15,7 @@ To set the `trustedExternalTenants` on the cluster, use [ARM Templates](/azure/t
 The following examples show how to define trusted tenants in the portal and with an API request.
 
 > [!NOTE]
-> The principal who will run queries or commands must also have a relevant database role. See also [role-based access control](kusto/access-control/role-based-access-control.md). Validation of correct roles takes place after validation of trusted external tenants.
+> The principal who will run queries or commands must also have a relevant database role. See also [role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true). Validation of correct roles takes place after validation of trusted external tenants.
 
 ## [Portal](#tab/portal)
 
@@ -44,7 +44,7 @@ The trustedExternalTenants array supports also all-tenants star ('*') notation, 
 > [!NOTE]
 > The default value for `trustedExternalTenants` is all tenants: `[ { "value": "*" }]`. If the external tenants array was not defined on cluster creation, it can be overridden with a cluster update operation. An empty array means that only identities of the clusters tenant are allowed to authenticate to this cluster.
 
-[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](kusto/includes/syntax-conventions-note.md)]
 
 ### Examples
 
@@ -84,7 +84,7 @@ PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-1234567
 
 ## Add Principals
 
-After updating the `trustedExternalTenants` property, you can give access to principals from the approved tenants. Use the Azure portal to give a principal [cluster level permissions](manage-cluster-permissions.md) or [database permissions](manage-database-permissions.md). Alternatively, to give access to a database, table, function, or materialized view level, use [management commands](kusto/management/security-roles.md).
+After updating the `trustedExternalTenants` property, you can give access to principals from the approved tenants. Use the Azure portal to give a principal [cluster level permissions](manage-cluster-permissions.md) or [database permissions](manage-database-permissions.md). Alternatively, to give access to a database, table, function, or materialized view level, use [management commands](/kusto/management/security-roles?view=azure-data-explorer&preserve-view=true).
 
 ## Limitations
 
