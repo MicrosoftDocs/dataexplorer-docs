@@ -20,7 +20,7 @@ The capacity policy is made of the following components:
 * [ExtentsPartitionCapacity](#extents-partition-capacity)
 * [MaterializedViewsCapacity](#materialized-views-capacity-policy)
 * [StoredQueryResultsCapacity](#stored-query-results-capacity)
-* [StreamingIngestionPostProcessingCapacity](#streaming-ingestion-postprocessing-capacity)
+* [StreamingIngestionPostProcessingCapacity](#streaming-ingestion-post-processing-capacity)
 * [PurgeStorageArtifactsCleanupCapacity](#purge-storage-artifacts-cleanup-capacity)
 * [PeriodicStorageArtifactsCleanupCapacity](#periodic-storage-artifacts-cleanup-capacity)
 
