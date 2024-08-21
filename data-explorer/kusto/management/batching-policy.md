@@ -3,7 +3,7 @@ title: IngestionBatching policy
 description: Learn how to use the IngestionBatching policy to optimize batching for ingestion.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/04/2023
+ms.date: 08/21/2024
 ---
 # Ingestion batching policy
 
