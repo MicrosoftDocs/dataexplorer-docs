@@ -3,7 +3,7 @@ title: IngestionBatching policy
 description: Learn how to use the IngestionBatching policy to optimize batching for ingestion.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 08/21/2024
 ---
 # Ingestion batching policy
 
@@ -30,7 +30,7 @@ The following list shows the basic batching policy triggers to seal a batch. A b
 * `Count`: Batch file number limit reached
 * `Time`: Batching time has expired
 
-The `IngestionBatching` policy can be set on databases or tables. Default values are as follows: **5 minutes** maximum delay time, **1000** items, total size of **1 GB**.
+The `IngestionBatching` policy can be set on databases or tables. Default values are as follows: **5 minutes** maximum delay time, **500** items, total size of **1 GB**.
 
 > [!IMPORTANT]
 > The impact of setting this policy to very small values is
@@ -51,11 +51,11 @@ If the `SystemFlush` condition is set, a batch will be sealed when a system flus
 
 ## Defaults and limits
 
-| Type             | Property                | Default | Low latency setting | Minimum value | Maximum value |
-|------------------|-------------------------|---------|-------------|--------|----|
-| Number of items  | MaximumNumberOfItems    | 500     | 500         | 1      | 25,000 |
-| Data size (MB)   | MaximumRawDataSizeMB    | 1024    | 1024        | 100     | 4096 |
-| Time (sec)       | MaximumBatchingTimeSpan | 300     | 20 - 30     | 10 | 1800 |
+| Type             | Property                 | Default   | Low latency setting  | Minimum value | Maximum value |
+|------------------|--------------------------|-----------|----------------------|---------------|---------------|
+| Number of items  | MaximumNumberOfItems     | 500       | 500                  | 1             | 25,000        |
+| Data size (MB)   | MaximumRawDataSizeMB     | 1024      | 1024                 | 100           | 4096          |
+| Time (TimeSpan)  | MaximumBatchingTimeSpan  | 00:05:00  | 00:00:20 - 00:00:30  | 00:00:10      | 00:30:00      |
 
 The most effective way of controlling the end-to-end latency using ingestion batching policy is to alter its time boundary at [table](alter-table-ingestion-batching-policy.md) or [database](alter-database-ingestion-batching-policy.md) level, according to the higher bound of latency requirements.
 A database level policy affects all tables in that database that don't have the table-level policy defined, and any newly created table.
