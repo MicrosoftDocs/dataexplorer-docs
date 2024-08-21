@@ -3,9 +3,12 @@ title:  Create an app to get data using queued ingestion
 description: Learn how to create an app to get data using queued ingestion of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 11/07/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Create an app to get data using queued ingestion
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Kusto is capable of handling mass data intake by optimizing and batching ingested data via its batching manager. The batching manager aggregates ingested data before it reaches its target table, allowing for more efficient processing and improved performance. Batching is typically done in bulks of 1 GB of raw data, 1000 individual files, or by a default time out of 5 minutes. Batching policies can be updated at the database and table levels, commonly to lower the batching time and reduce latency. For more information about ingestion batching, see [IngestionBatching policy](../../management/batching-policy.md) and [Change table level ingestion batching policy programmatically](app-management-commands.md#change-the-table-level-ingestion-batching-policy).
 
@@ -33,9 +36,9 @@ In this article, you learn how to:
     1. Create a target table named *MyStormEvents* in your database by running the first app in [management commands](app-management-commands.md#run-a-management-command-and-process-the-results).
     1. Set the ingestion batching policy timeout to 10 seconds by running the second app in [management commands](app-management-commands.md#change-the-table-level-ingestion-batching-policy). Before running the app, change the timeout value to `00:00:10`.
 
-    ### [Web UI](#tab/webui)
+    ### [Create with command](#tab/command)
 
-    1. In the [Azure Data Explorer web UI](https://dataexplorer.azure.com), create a target table named *MyStormEvents* in your database by running the following query:
+    1. In your query environment, create a target table named *MyStormEvents* in your database by running the following query:
 
         ```kusto
         .create table MyStormEvents
@@ -190,7 +193,7 @@ Add the following code:
     main();
     ```
 
-    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
+    [!INCLUDE [node-vs-browser-auth](../../includes/node-vs-browser-auth.md)]
 
 
     <!-- ### [Go](#tab/go) -->
@@ -296,7 +299,7 @@ Add the following code:
         - **True**: The first row is ignored. Use this option to drop the header row from tabular textual data.
         - **False**: The first row is ingested as a regular row.
 
-    [!INCLUDE [ingestion-size-limit](../../../includes/ingestion-size-limit.md)]
+    [!INCLUDE [ingestion-size-limit](../../../includes/cross-repo/ingestion-size-limit.md)]
 
     ### [C\#](#tab/csharp)
 
@@ -1374,4 +1377,4 @@ Last ingested row:
 > [TBD](../../../kql-quick-reference.md) -->
 
 > [!div class="nextstepaction"]
-> [KQL quick reference](../../../kql-quick-reference.md)
+> [KQL quick reference](../../query/kql-quick-reference.md)

@@ -1,11 +1,14 @@
 ---
-title: Sandboxes - Azure Data Explorer
-description: This article describes Sandboxes in Azure Data Explorer.
+title:  Sandboxes
+description:  This article describes Sandboxes.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/03/2021
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Sandboxes
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Kusto can run sandboxes for specific flows that must be run in a secure and isolated environment.
 Examples of these flows are user-defined scripts that run using the [Python plugin](../query/python-plugin.md) or the [R plugin](../query/r-plugin.md).

@@ -3,9 +3,11 @@ title:  dynamic_to_json()
 description: Learn how to use the dynamic_to_json() function to convert a scalar value of type `dynamic` to a canonical string representation.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # dynamic_to_json()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Converts a scalar value of type `dynamic` to a canonical `string` representation.
 
@@ -13,7 +15,7 @@ Converts a scalar value of type `dynamic` to a canonical `string` representation
 
 `dynamic_to_json(`*expr*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,8 +42,10 @@ according to the following rules:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFISkw3VLBVSKnMS8zNTI4vyY/PKs7P0+BSgAlpVAPZCgrqkYYG6lZwsVpNHYhwhIW6FZpSoGiysbqVoQ6MlwJUYwrnJZqoW5mBOXBDXAyByg1NoDxHEM8IynECcmBsZyDbGK4IaEy0oamOgqExEFvEctVqalpz5UC8ZESUl7C7Hew+HTw+QXU7hkOwOBbZE+BwVMAMSKiv4YHBBbID6KOCosy8EgXHolTXwtLEHFtIfNmCPamjEJRaXJpTAhYEAM5EMCHNAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let bag1 = dynamic_to_json(

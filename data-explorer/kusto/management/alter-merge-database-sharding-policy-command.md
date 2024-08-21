@@ -3,9 +3,12 @@ title:  .alter-merge database policy sharding command
 description: Learn how to use the `.alter-merge database policy sharding` command to change the database sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter-merge database policy sharding command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)][!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Changes the database sharding policy. Use the [sharding policy](../management/sharding-policy.md) to manage data sharding for databases and tables.  
 
@@ -13,13 +16,13 @@ The sharding policy defines if and how [Extents (data shards)](../management/ext
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter-merge` `database` *DatabaseName* `policy` `sharding` *ArrayOfPolicyObjects*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -3,9 +3,11 @@ title: .create function command
 description: Learn how to use the `.create function` command to create a stored function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/10/2023
+ms.date: 08/11/2024
 ---
 # .create function command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Creates a stored function, which is a reusable KQL query,  with the given name. The function definition is persisted with the database metadata.
 
@@ -15,14 +17,14 @@ Rules for parameter types and CSL statements are the same as for [`let` statemen
 
 ## Permissions
 
-You must have at least [Database User](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database User](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.create` `function` [ `ifnotexists` ] [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)` ]
 *functionName* `(`*parameters*`)` `{` *body* `}`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -43,8 +45,10 @@ You must have at least [Database User](access-control/role-based-access-control.
 |`view`| `bool` |Designates this function as a stored view. Stored views can participate in [search](../query/search-operator.md) and [union *](../query/union-operator.md) scenarios. For more information, see [Views](../query/schema-entities/views.md).|
 |`skipvalidation`| `bool` |Determines whether or not to run validation logic on the function and fail the process if the function isn't valid. The default is `false`.|
 
+::: moniker range="azure-data-explorer"
 > [!TIP]
-> If a function involves [cross-cluster queries](../query/cross-cluster-or-database-queries.md) and you plan to recreate the function using a [Kusto Query Language script](../../database-script.md), set `skipvalidation` to `true`.
+> If a function involves [cross-cluster queries](../query/cross-cluster-or-database-queries.md) and you plan to recreate the function using a [Kusto Query Language script](/azure/data-explorer/database-script), set `skipvalidation` to `true`.
+:::moniker-end
 
 ## Returns
 
@@ -69,10 +73,13 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 ### Simple demo function
 
+The following example creates the `MyFunction1` function with a description (`docstring`), a folder named `Demo`, and defines the function.
+
 ```kusto
 .create function 
 with (docstring = 'Simple demo function', folder='Demo')
-MyFunction1()  {StormEvents | take 100}
+MyFunction1()
+{StormEvents | take 100}
 ```
 
 |Name|Parameters|Body|Folder|DocString|
@@ -81,10 +88,13 @@ MyFunction1()  {StormEvents | take 100}
 
 ### Demo function with parameter
 
+The following example creates the *MyFunction2* function with a description (`docstring`), folder named `Demo`, and defines the `MyLimit` parameter.
+
 ```kusto
 .create function
 with (docstring = 'Demo function with parameter', folder='Demo')
- MyFunction2(myLimit: long)  {StormEvents | take myLimit}
+ MyFunction2(myLimit: long)
+{StormEvents | take myLimit}
 ```
 
 |Name|Parameters|Body|Folder|DocString|

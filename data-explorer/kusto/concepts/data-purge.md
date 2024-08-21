@@ -1,33 +1,36 @@
 ---
-title: Data purge - Azure Data Explorer
-description: This article describes Data purge in Azure Data Explorer.
+title: Data purge
+description: This article describes Data purge.
 ms.reviewer: kedamari
 ms.topic: reference
-ms.date: 07/03/2022
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Data purge
 
-[!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-As a data platform, Azure Data Explorer supports the ability to delete individual records, by using Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table) or purge records in a [materialized view](../management/materialized-views/materialized-view-purge.md).
+[!INCLUDE [gdpr-intro-sentence](../includes/gdpr-intro-sentence.md)]
+
+The data platform supports the ability to delete individual records, by using Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table) or purge records in a [materialized view](../management/materialized-views/materialized-view-purge.md).
 
 > [!WARNING]
 > Data deletion through the `.purge` command is designed to be used to protect personal data and should not be used in other scenarios. It is not designed to support frequent delete requests, or deletion of massive quantities of data, and may have a significant performance impact on the service.
 
 ## Purge guidelines
 
-Carefully design your data schema and investigate relevant policies before storing personal data in Azure Data Explorer.
+Carefully design your data schema and investigate relevant policies before storing personal data.
 
 1. In a best-case scenario, the retention period on this data is sufficiently short and data is automatically deleted.
-1. If retention period usage isn't possible, isolate all data that is subject to privacy rules in a few Azure Data Explorer tables. Optimally, use just one table and link to it from all other tables. This isolation allows you to run the data [purge process](#purge-process) on a few tables holding sensitive data, and avoid all other tables.
+1. If retention period usage isn't possible, isolate all data that is subject to privacy rules in a few tables. Optimally, use just one table and link to it from all other tables. This isolation allows you to run the data [purge process](#purge-process) on a few tables holding sensitive data, and avoid all other tables.
 1. The caller should make every attempt to batch the execution of `.purge` commands to 1-2 commands per table per day. Don't issue multiple commands with unique user identity predicates. Instead, send a single command whose predicate includes all user identities that require purging.
 
 ## Purge process
 
-The process of selectively purging data from Azure Data Explorer happens in the following steps:
+The process of selectively purging data  happens in the following steps:
 
 1. Phase 1:
-   Give an input with an Azure Data Explorer table name and a per-record predicate, indicating which records to delete. Kusto scans the table looking to identify data extents that would participate in the data purge. The extents identified are those having one or more records for which the predicate returns true.
+   Give an input with a table name and a per-record predicate, indicating which records to delete. Kusto scans the table looking to identify data extents that would participate in the data purge. The extents identified are those having one or more records for which the predicate returns true.
 1. Phase 2: (Soft Delete)
    Replace each data extent in the table (identified in step (1)) with a reingested version. The reingested version shouldn't have the records for which the predicate returns true. If new data isn't being ingested into the table, then by the end of this phase, queries will no longer return data for which the predicate returns true. The duration of the purge soft delete phase depends on the following parameters:
 
@@ -51,7 +54,7 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
 
 * The `.purge` command is executed against the Data Management endpoint:
   `https://ingest-[YourClusterName].[region].kusto.windows.net`.
-   The command requires [database admin](../management/access-control/role-based-access-control.md)
+   The command requires [database admin](../access-control/role-based-access-control.md)
    permissions on the relevant databases.
 * Due to the purge process performance impact, and to guarantee that
    [purge guidelines](#purge-guidelines) have been followed, the caller is expected to modify the data schema so that
@@ -100,7 +103,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 
    // To purge materialized view records
   .purge materialized-view [MaterializedViewName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
-   ```
+  ```
 
 * Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data.
 
@@ -112,28 +115,28 @@ Purge command may be invoked in two ways for differing usage scenarios:
 **Syntax**
 
 > [!NOTE]
-> To connect to a cluster using the Azure Data Explorer web UI, see [Add clusters](../../web-query-data.md#add-clusters).
+> To connect to a cluster using the Azure Data Explorer web UI, see [Add clusters](/azure/data-explorer/web-query-data#add-clusters).
 
   ```kusto
-     // Connect to the Data Management service - this command only works in Kusto.Explorer
-     #connect "https://ingest-[YourClusterName].[region].kusto.windows.net"
+  // Connect to the Data Management service - this command only works in Kusto.Explorer
+  #connect "https://ingest-[YourClusterName].[region].kusto.windows.net"
 
-     // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
-     .purge table [TableName] records in database [DatabaseName] <| [Predicate]
+  // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
+  .purge table [TableName] records in database [DatabaseName] <| [Predicate]
 
-     // Step #2 - input the verification token to execute purge
-     .purge table [TableName] records in database [DatabaseName] with (verificationtoken=h'<verification token from step #1>') <| [Predicate]
+  // Step #2 - input the verification token to execute purge
+  .purge table [TableName] records in database [DatabaseName] with (verificationtoken=h'<verification token from step #1>') <| [Predicate]
   ```
 
 To purge a materialized view, replace the `table` keyword with `materialized-view`, and replace *TableName* with the *MaterializedViewName*.
 
-| Parameters  | Description  |
-|---------|---------|
-| `DatabaseName`   |   Name of the database      |
-| `TableName` / `MaterializedViewName`    |     Name of the table / materialized view to purge.  |
-| `Predicate`    |    Identifies the records to purge. See [purge predicate limitations](#purge-predicate-limitations). |
-| `noregrets`    |     If set, triggers a single-step activation.    |
-| `verificationtoken`     |  In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2.   |
+| Parameters | Description |
+|--|--|
+| `DatabaseName` | Name of the database |
+| `TableName` / `MaterializedViewName` | Name of the table / materialized view to purge. |
+| `Predicate` | Identifies the records to purge. See [purge predicate limitations](#purge-predicate-limitations). |
+| `noregrets` | If set, triggers a single-step activation. |
+| `verificationtoken` | In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2. |
 
 #### Purge predicate limitations
 
@@ -157,9 +160,9 @@ To start purge in a two-step activation scenario, run step #1 of the command:
 
 **Output**
 
- | NumRecordsToPurge | EstimatedPurgeExecutionTime| VerificationToken
- |---|---|---
- | 1,596 | 00:00:02 | e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b
+| NumRecordsToPurge | EstimatedPurgeExecutionTime | VerificationToken |
+|--|--|--|
+| 1,596 | 00:00:02 | e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b |
 
 Then, validate the NumRecordsToPurge before running step #2.
 
@@ -177,9 +180,9 @@ To complete a purge in a two-step activation scenario, use the verification toke
 
 **Output**
 
-| `OperationId` | `DatabaseName` | `TableName`|`ScheduledTime` | `Duration` | `LastUpdatedOn` |`EngineOperationId` | `State` | `StateDetails` |`EngineStartTime` | `EngineDuration` | `Retries` |`ClientRequestId` | `Principal`|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...|
+| `OperationId` | `DatabaseName` | `TableName` | `ScheduledTime` | `Duration` | `LastUpdatedOn` | `EngineOperationId` | `State` | `StateDetails` | `EngineStartTime` | `EngineDuration` | `Retries` | `ClientRequestId` | `Principal` |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 | MyDatabase | MyTable | 2019-01-20 11:41:05.4391686 | 00:00:00.1406211 | 2019-01-20 11:41:05.4391686 |  | Scheduled |  |  |  | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
 
 #### Example: Single-step purge
 
@@ -196,9 +199,9 @@ To trigger a purge in a single-step activation scenario, run the following comma
 
 **Output**
 
-| `OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...|
+| `OperationId` | `DatabaseName` | `TableName` | `ScheduledTime` | `Duration` | `LastUpdatedOn` | `EngineOperationId` | `State` | `StateDetails` | `EngineStartTime` | `EngineDuration` | `Retries` | `ClientRequestId` | `Principal` |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 | MyDatabase | MyTable | 2019-01-20 11:41:05.4391686 | 00:00:00.1406211 | 2019-01-20 11:41:05.4391686 |  | Scheduled |  |  |  | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
 
 ### Cancel purge operation command
 
@@ -231,9 +234,9 @@ If needed, you can cancel pending purge requests.
 The output of this command is the same as the 'show purges *OperationId*' command output, showing the updated status of the purge operation being canceled.
 If the attempt is successful, the operation state is updated to `Canceled`. Otherwise, the operation state isn't changed.
 
-|`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Canceled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+| `OperationId` | `DatabaseName` | `TableName` | `ScheduledTime` | `Duration` | `LastUpdatedOn` | `EngineOperationId` | `State` | `StateDetails` | `EngineStartTime` | `EngineDuration` | `Retries` | `ClientRequestId` | `Principal` |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 | MyDatabase | MyTable | 2019-01-20 11:41:05.4391686 | 00:00:00.1406211 | 2019-01-20 11:41:05.4391686 |  | Canceled |  |  |  | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
 
 #### Example: Cancel all pending purge operations in a database
 
@@ -246,17 +249,17 @@ If the attempt is successful, the operation state is updated to `Canceled`. Othe
 The output of this command is the same as the [show purges](#show-purges-command) command output, showing all operations in the database with their updated status.
 Operations that were canceled successfully will have their status updated to `Canceled`. Otherwise, the operation state isn't changed.
 
-|`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|5a34169e-8730-49f5-9694-7fde3a7a0139 |MyDatabase |MyTable |2021-03-03 05:07:29.7050198 |00:00:00.2971331 |2021-03-03 05:07:30.0021529 | |Canceled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
-|2fa7c04c-6364-4ce1-a5e5-1ab921f518f5 |MyDatabase |MyTable |2021-03-03 05:05:03.5035478 |00:00:00.1406211 |2021-03-03 05:05:03.6441689 | |InProgress | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+| `OperationId` | `DatabaseName` | `TableName` | `ScheduledTime` | `Duration` | `LastUpdatedOn` | `EngineOperationId` | `State` | `StateDetails` | `EngineStartTime` | `EngineDuration` | `Retries` | `ClientRequestId` | `Principal` |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| 5a34169e-8730-49f5-9694-7fde3a7a0139 | MyDatabase | MyTable | 2021-03-03 05:07:29.7050198 | 00:00:00.2971331 | 2021-03-03 05:07:30.0021529 |  | Canceled |  |  |  | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
+| 2fa7c04c-6364-4ce1-a5e5-1ab921f518f5 | MyDatabase | MyTable | 2021-03-03 05:05:03.5035478 | 00:00:00.1406211 | 2021-03-03 05:05:03.6441689 |  | InProgress |  |  |  | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
 
 ## Track purge operation status
 
 > [!NOTE]
 > Purge operations can be tracked with the [show purges](#show-purges-command) command, executed against the Data Management endpoint https://ingest-[YourClusterName].[region].kusto.windows.net.
 
-Status = 'Completed' indicates successful completion of the first phase of the purge operation, that is records are soft-deleted and are no longer available for querying. Customers aren't expected to track and verify the second phase (hard-delete) completion. This phase is monitored internally by Azure Data Explorer.
+Status = 'Completed' indicates successful completion of the first phase of the purge operation, that is records are soft-deleted and are no longer available for querying. Customers aren't expected to track and verify the second phase (hard-delete) completion. This phase is monitored internally.
 
 ### Show purges command
 
@@ -269,15 +272,15 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 .show purges from '<StartDate>' to '<EndDate>' [in database <DatabaseName>]
 ```
 
-| Properties  |Description  |Mandatory/Optional|
-|---------|------------|-------|
-|`OperationId `   |      The Data Management operation ID outputted after executing single phase or second phase.   |Mandatory
-|`StartDate`    |   Lower time limit for filtering operations. If omitted, defaults to 24 hours before current time.      |Optional
-|`EndDate`    |  Upper time limit for filtering operations. If omitted, defaults to current time.       |Optional
-|`DatabaseName`    |     Database name to filter results.    |Optional
+| Properties | Description | Mandatory/Optional |
+|--|--|--|
+| `OperationId ` | The Data Management operation ID outputted after executing single phase or second phase. | Mandatory |
+| `StartDate` | Lower time limit for filtering operations. If omitted, defaults to 24 hours before current time. | Optional |
+| `EndDate` | Upper time limit for filtering operations. If omitted, defaults to current time. | Optional |
+| `DatabaseName` | Database name to filter results. | Optional |
 
 > [!NOTE]
-> Status will be provided only on databases for which the client has [Database Admin](../management/access-control/role-based-access-control.md) permissions.
+> Status will be provided only on databases for which the client has [Database Admin](../access-control/role-based-access-control.md) permissions.
 
 **Examples**
 
@@ -291,9 +294,9 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 
 **Output**
 
-|`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:33.6782130 |2019-01-20 11:42:34.6169153 |a0825d4d-6b0f-47f3-a499-54ac5681ab78 |Completed |Purge completed successfully (storage artifacts pending deletion) |2019-01-20 11:41:34.6486506 |00:00:04.4687310 |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+| `OperationId` | `DatabaseName` | `TableName` | `ScheduledTime` | `Duration` | `LastUpdatedOn` | `EngineOperationId` | `State` | `StateDetails` | `EngineStartTime` | `EngineDuration` | `Retries` | `ClientRequestId` | `Principal` |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 | MyDatabase | MyTable | 2019-01-20 11:41:05.4391686 | 00:00:33.6782130 | 2019-01-20 11:42:34.6169153 | a0825d4d-6b0f-47f3-a499-54ac5681ab78 | Completed | Purge completed successfully (storage artifacts pending deletion) | 2019-01-20 11:41:34.6486506 | 00:00:04.4687310 | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
 
 * `OperationId` - the DM operation ID returned when executing purge.
 * `DatabaseName`** - database name (case sensitive).
@@ -306,7 +309,7 @@ Status = 'Completed' indicates successful completion of the first phase of the p
   * `InProgress` - the purge operation is in-progress in the engine.
   * `Completed` - purge completed successfully.
   * `BadInput` - purge failed on bad input and won't be retried. This failure may be due to various issues such as a syntax error in the predicate, an illegal predicate for purge commands, a query that exceeds limits (for example, over 1M entities in an `externaldata` operator or over 64 MB of total expanded query size), and 404 or 403 errors for `externaldata` blobs.
-  * `Failed` - purge failed and won't be retried. This failure may happen if the operation was waiting in the queue for too long (over 14 days), due to a backlog of other purge operations or a number of failures that exceed the retry limit. The latter will raise an internal monitoring alert and will be investigated by the Azure Data Explorer team.
+  * `Failed` - purge failed and won't be retried. This failure may happen if the operation was waiting in the queue for too long (over 14 days), due to a backlog of other purge operations or a number of failures that exceed the retry limit. The latter will raise an internal monitoring alert and will be investigated by the team.
 * `StateDetails` - a description of the State.
 * `EngineStartTime` - the time the command was issued to the engine. If there's a large difference between this time and ScheduledTime, there's usually a significant backlog of purge operations and the cluster isn't keeping up with the pace.
 * `EngineDuration` - time of actual purge execution in the engine. If purge was retried several times, it's the sum of all the execution durations.
@@ -355,12 +358,12 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
      .purge table [TableName] in database [DatabaseName] allrecords with (verificationtoken=h'<verification token from step #1>')
      ```
 
-    | Parameters  |Description  |
-    |---------|---------|
-    | `DatabaseName`   |   Name of the database.      |
-    | `TableName`    |     Name of the table.    |
-    | `noregrets`    |     If set, triggers a single-step activation.    |
-    | `verificationtoken`     |  In two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. In this step, a token is returned to pass back to the command and do step #2.|
+    | Parameters | Description |
+    |--|--|
+    | `DatabaseName` | Name of the database. |
+    | `TableName` | Name of the table. |
+    | `noregrets` | If set, triggers a single-step activation. |
+    | `verificationtoken` | In two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. In this step, a token is returned to pass back to the command and do step #2. |
 
 #### Example: Two-step purge
 
@@ -390,9 +393,9 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 
     **Output**
 
-    |  TableName|DatabaseName|Folder|DocString
-    |---|---|---|---
-    |  OtherTable|MyDatabase|---|---
+    | TableName | DatabaseName | Folder | DocString |
+    |--|--|--|--|
+    | OtherTable | MyDatabase | --- | --- |
 
 #### Example: Single-step purge
 
@@ -409,10 +412,10 @@ The output is the same as the '.show tables' command output (returned without th
 
 **Output**
 
-|TableName|DatabaseName|Folder|DocString
-|---|---|---|---
-|OtherTable|MyDatabase|---|---
+| TableName | DatabaseName | Folder | DocString |
+|--|--|--|--|
+| OtherTable | MyDatabase | --- | --- |
 
 ## Related content
 
-* [Enable data purge on your Azure Data Explorer cluster](../../data-purge-portal.md)
+* [Enable data purge on your Azure Data Explorer cluster](/azure/data-explorer/data-purge-portal)

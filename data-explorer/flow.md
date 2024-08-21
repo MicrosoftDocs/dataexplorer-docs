@@ -3,7 +3,7 @@ title: Azure Data Explorer connector for Power Automate
 description: Learn about using Azure Data Explorer connector for Power Automate to create flows of automatically scheduled or triggered tasks.
 ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 08/09/2023
+ms.date: 08/15/2024
 no-loc: [Power Automate]
 ---
 
@@ -70,11 +70,11 @@ This section describes the capabilities and parameters for each action and provi
 ### Run KQL query
 
 > [!NOTE]
-> If your query starts with a dot, it's a [management command](kusto/management/index.md). Use [Run async management command](#run-async-management-command).
+> If your query starts with a dot, it's a [management command](/kusto/management/index). Use [Run async management command](?view=azure-data-explorer&preserve-view=true#run-async-management-command).
 
 Use this action to query the specified cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
-If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
+If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](/kusto/query/best-practices?view=azure-data-explorer&preserve-view=true).
 
 #### Example
 
@@ -85,11 +85,11 @@ The following flow triggers a query every minute. The query checks the number of
 ### Run KQL query and render a chart
 
 > [!NOTE]
-> If your query starts with a dot, it's a [management command](kusto/management/index.md). Use [Run management command and render a chart](#run-kql-query-and-render-a-chart).
+> If your query starts with a dot, it's a [management command](/kusto/management/index). Use [Run management command and render a chart](?view=azure-data-explorer&preserve-view=true#run-kql-query-and-render-a-chart).
 
 Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email.
 
-If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
+If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](/kusto/query/best-practices?view=azure-data-explorer&preserve-view=true).
 
 #### Example
 
@@ -99,7 +99,7 @@ The following flow will present the query results as a timechart.
 
 ### Run async management command
 
-Use this action to run a [management command](kusto/management/index.md) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action.
+Use this action to run a [management command](/kusto/management/index?view=azure-data-explorer&preserve-view=true) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](/kusto/management/show-operations?view=azure-data-explorer&preserve-view=true) command with the ID returned by this action.
 
 If the async management command takes more than 60 minutes to run, it will fail with a "RequestTimeout" exception.
 
@@ -111,7 +111,7 @@ The following flow triggers an async command to copy 10 records from the 'Transf
 
 ### Run management command and render a chart
 
-Use this action to run a [management command](kusto/management/index.md) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
+Use this action to run a [management command](/kusto/management/index?view=azure-data-explorer&preserve-view=true) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
 
 If the management command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
 
@@ -125,7 +125,7 @@ If the management command takes more than 8 minutes to run, it will fail with a 
 
 #### Example
 
-The following flow runs the [.show operation](kusto/management/operations.md) command to find the status of an async command using an operation ID returned by an async command execution.
+The following flow runs the [.show operation](/kusto/management/show-operations?view=azure-data-explorer&preserve-view=true) command to find the status of an async command using an operation ID returned by an async command execution.
 
 :::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show management command action.":::
 
@@ -180,7 +180,7 @@ To authenticate with a Service Principal:
     - **Tenant**: The ID of the Microsoft Entra directory in which you created the application.
 
     > [!Note]
-    > Make sure your application is an [Microsoft Entra application](./provision-azure-ad-app.md) and is authorized to run queries on your cluster.
+    > Make sure your application is an [Microsoft Entra application](provision-entra-id-app.md) and is authorized to run queries on your cluster.
 
     :::image type="content" source="media/flow/flow-app-auth.png" alt-text="Screenshot of Azure Data Explorer connection, showing the application authentication dialog box.":::
 
@@ -219,9 +219,9 @@ To see why a run failed, select the run start time. The flow appears, and the st
 - The maximum number of records per request is 50,000 and the maximum data size per request is 32 MB. These limits can't be changed.
 - Synchronous requests have a timeout of 8 minutes.
 - Asynchronous requests have a timeout of 60 minutes.
-- The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschema-operator.md). For example, the [fork](kusto/query/fork-operator.md), [facet](kusto/query/facet-operator.md), and [evaluate](kusto/query/evaluate-operator.md) operators aren't supported.
+- The connector doesn't support operators that aren't supported by the [`getschema` operator](/kusto/query/getschema-operator?view=azure-data-explorer&preserve-view=true). For example, the [fork](/kusto/query/fork-operator?view=azure-data-explorer&preserve-view=true), [facet](/kusto/query/facet-operator?view=azure-data-explorer&preserve-view=true), and [evaluate](/kusto/query/evaluate-operator?view=azure-data-explorer&preserve-view=true) operators aren't supported.
 - Flows work best on Microsoft Edge and Google Chrome.
 
 ## Related content
 
-* Use the [Azure Kusto Logic App connector](kusto/tools/logicapps.md) to run Kusto queries and commands as part of a scheduled or triggered task.
+* Use the [Azure Kusto Logic App connector](/kusto/tools/logicapps?view=azure-data-explorer&preserve-view=true) to run Kusto queries and commands as part of a scheduled or triggered task.

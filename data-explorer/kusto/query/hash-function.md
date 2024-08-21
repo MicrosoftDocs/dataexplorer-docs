@@ -3,9 +3,11 @@ title:  hash()
 description: Learn how to use the hash() function to return the hash value of the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/25/2022
+ms.date: 08/11/2024
 ---
 # hash()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a hash value for the input value.
 
@@ -18,7 +20,7 @@ Returns a hash value for the input value.
 
 `hash(`*source* [`,` *mod*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -35,8 +37,10 @@ The hash value of *source*. If *mod* is specified, the function returns the hash
 
 ### String input
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCzO0FAKzy/KSVHSBADZZgKmGgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=hash("World")
@@ -48,8 +52,10 @@ print result=hash("World")
 
 ### String input with mod
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCzO0FAKzy/KSVHSUTA0MNAEAJfnV8cfAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=hash("World", 100)
@@ -61,8 +67,10 @@ print result=hash("World", 100)
 
 ### Datetime input
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCzO0EhJLEktycxN1VAyMjA01TUwBCIlTU0AvUZeXikAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=hash(datetime("2015-01-01"))
@@ -76,8 +84,10 @@ print result=hash(datetime("2015-01-01"))
 
 Use the `hash()` function for sampling data if the values in one of its columns is uniformly distributed. In the following example, *StartTime* values are uniformly distributed and the function is used to run a query on 10% of the data.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2NOw6DMBBEe04xJZYooKB0FaVOYS7gwCJTGCPvkgjE4bFBohpp3nyMhOjfP5qFURz4O4oEZ9mVRmyUbvJUoakVtEadArx6b+O0E0xuvsI6CzT6rKWq0G0LfcaLcfKHG1wHGSl8t9S0QvlNwoL2dp6tgbg/AeFM8LmVAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 

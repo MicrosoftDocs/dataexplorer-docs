@@ -3,9 +3,11 @@ title:  base64_decode_toarray()
 description: Learn how to use the base64_decode_toarray() function to decode a base64 string into an array of long values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # base64_decode_toarray()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Decodes a base64 string to an array of long values.
 
@@ -13,7 +15,7 @@ Decodes a base64 string to an array of long values.
 
 `base64_decode_toarray(`*base64_string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,8 +29,10 @@ Returns an array of long values decoded from a base64 string.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQgszcxLtU1KLE41M4lPSU3OT0mNL8lPLCpKrNRQCjYOq0pxt7BV0lRQ4NLXV1D3VtdRUC8FEcUgogRE5KsDAAf/Q9pKAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print Quine=base64_decode_toarray("S3VzdG8=")  

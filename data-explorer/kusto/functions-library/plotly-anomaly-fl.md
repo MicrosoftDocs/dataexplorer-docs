@@ -1,18 +1,23 @@
 ---
 title:  plotly_anomaly_fl()
-description: Learn how to use the plotly_anomaly_fl() user-defined function in Azure Data Explorer.
+description:  Learn how to use the plotly_anomaly_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/13/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # plotly_anomaly_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The function `plotly_anomaly_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that allows you to customize a [plotly](https://plotly.com/python/) template to create an interactive anomaly chart.  
 
-The function accepts a table containing the source and the baseline time series, lists of positive and negative anomalies with their respective sizes, and chart labeling string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](../../azure-data-explorer-dashboards.md) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
+The function accepts a table containing the source and the baseline time series, lists of positive and negative anomalies with their respective sizes, and chart labeling string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](/azure/data-explorer/azure-data-explorer-dashboards) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
 
+:::moniker range="azure-data-explorer"
 > [!NOTE]
 > Consider using Azure Data Explorer native [`" | render anomalychart"`](../query/render-operator.md#syntax) method for rendering a non-interactive anomaly chart.
+::: moniker-end
 
 ## Prerequisite
 
@@ -26,7 +31,7 @@ Extract the required 'anomaly' template from the publicly available `PlotlyTempl
 
 `T | invoke plotly_anomaly_fl(`*time_col*`,` *val_col*`,` *baseline_col*`,` *time_high_col*`,` *val_high_col*`,` *size_high_col*`,` *time_low_col*`,` *val_low__col*`,` *size_low_col*`,` *chart_title*`,` *series_name*`,` *val_name*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -86,7 +91,7 @@ let plotly_anomaly_fl=(tbl:(*), time_col:string, val_col:string, baseline_col:st
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
@@ -200,7 +205,7 @@ demo_make_series2
 
 **Output**
 
-The output is a Plotly JSON string that can be rendered using '| render plotly' or in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
+The output is a Plotly JSON string that can be rendered using '| render plotly' or in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](/azure/data-explorer/azure-data-explorer-dashboards).
 
 The following image shows a sample anomaly chart using the above function:
 

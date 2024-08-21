@@ -3,10 +3,12 @@ title:  Create and alter Azure Storage external tables
 description: This article describes how to create and alter external tables based on Azure Blob Storage or Azure Data Lake
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/09/2023
+ms.date: 08/11/2024
 ---
 
 # Create and alter Azure Storage external tables
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The commands in this article can be used to create or alter an Azure Storage [external table](../query/schema-entities/external-tables.md) in the database from which the command is executed. An Azure Storage external table references data located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
 
@@ -15,9 +17,9 @@ The commands in this article can be used to create or alter an Azure Storage [ex
 
 ## Permissions
 
-To `.create` requires at least [Database User](../management/access-control/role-based-access-control.md) permissions, and to `.alter` requires at least [Table Admin](../management/access-control/role-based-access-control.md) permissions.
+To `.create` requires at least [Database User](../access-control/role-based-access-control.md) permissions, and to `.alter` requires at least [Table Admin](../access-control/role-based-access-control.md) permissions.
 
-To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
+To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
@@ -26,7 +28,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 > [!NOTE]
 > `kind` is `storage` for all Azure Storage external data store types. `blob` and `adl` are deprecated terms.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -36,7 +38,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 |*Schema*| `string` | :heavy_check_mark:|The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*. If the schema is unknown, use [infer\_storage\_schema](../query/infer-storage-schema-plugin.md) to infer the schema based on external file contents.|
 |*Partitions*| `string` || A comma-separated list of columns by which the external table is partitioned. Partition column can exist in the data file itself, or as part of the file path. See [partitions formatting](#partitions-formatting) to learn how this value should look.|
 |*PathFormat*| `string` ||An external data folder URI path format to use with partitions. See [path format](#path-format).|
-|*DataFormat*| `string` | :heavy_check_mark:|The data format, which can be any of the [ingestion formats](../../ingestion-supported-formats.md). We recommend using the `Parquet` format for external tables to improve query and export performance, unless you use `JSON` paths mapping. When using an external table for [export scenario](data-export/export-data-to-an-external-table.md), you're limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.|
+|*DataFormat*| `string` | :heavy_check_mark:|The data format, which can be any of the [ingestion formats](../ingestion-supported-formats.md). We recommend using the `Parquet` format for external tables to improve query and export performance, unless you use `JSON` paths mapping. When using an external table for [export scenario](data-export/export-data-to-an-external-table.md), you're limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.|
 |*StorageConnectionString*| `string` | :heavy_check_mark:|One or more comma-separated paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 file systems or Azure Data Lake Gen 1 containers, including credentials. The external table storage type is determined by the provided connection strings. See [storage connection strings](../api/connection-strings/storage-connection-strings.md).|
 |*Property*| `string` ||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
 
@@ -54,13 +56,13 @@ The following table lists the supported authentication methods for Azure Storage
 
 | Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | Data Lake Storage Gen1 |
 |--|--|--|
-|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
-|[Managed identity](../api/connection-strings/storage-authentication-methods.md#managed-identity)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
-|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|**Read permissions:** List + Read<br/>**Write permissions:** Write|This authentication method isn't supported in Gen1.|
-|[Microsoft Entra access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|No additional permissions required.|No additional permissions required.|
-|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|No additional permissions required.|This authentication method isn't supported in Gen1.|
+|[Impersonation](../api/connection-strings/storage-connection-strings.md#impersonation)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
+|[Managed identity](../api/connection-strings/storage-connection-strings.md#managed-identity)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
+|[Shared Access (SAS) token](../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|**Read permissions:** List + Read<br/>**Write permissions:** Write|This authentication method isn't supported in Gen1.|
+|[Microsoft Entra access token](../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No additional permissions required.|No additional permissions required.|
+|[Storage account access key](../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No additional permissions required.|This authentication method isn't supported in Gen1.|
 
-[!INCLUDE [partitions-formatting](../../includes/partitions-formatting.md)]
+[!INCLUDE [partitions-formatting](../includes/partitions-formatting.md)]
 
 ### Path format
 
@@ -246,6 +248,9 @@ external_table("ExternalTable")
 
 ## Related content
 
-* [Query external tables](../../data-lake-query-data.md).
+::: moniker range="azure-data-explorer"
+* [Query external tables](/azure/data-explorer/data-lake-query-data).
+::: moniker-end
 * [Export data to an external table](data-export/export-data-to-an-external-table.md).
+
 * [Continuous data export to an external table](data-export/continuous-data-export.md).

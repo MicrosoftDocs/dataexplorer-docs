@@ -3,9 +3,11 @@ title:  indexof()
 description: Learn how to use the indexof() function to report the zero-based index position of the input string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # indexof()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Reports the zero-based index of the first occurrence of a specified string within the input string.
 
@@ -15,7 +17,7 @@ For more information, see [`indexof_regex()`](indexof-regex-function.md).
 
 `indexof(`*string*`,`*match*`[,`*start*`[,`*length*`[,`*occurrence*`]]])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,8 +44,10 @@ The zero-based index position of *match*.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42STW6DMBCF9znFyJsWyVEKhCRd9DDGjIlVYqOxadLbd4LdqpUoioXFxu97b35Gsi5uwHa3Et7Aug5v3jwL1eoOTS+k4L8ogM9uB4P379MIxk+u47f8jVOEEJnRb0DeKdX/FFnKfbGEIQyoSJ+xA1KuR8isepVVzayk5AyKYgBD/pIkUEpo53B+DKBMRIIK9FlRkBA8mGkYvoNo5Z4itJgSZfP9inmdC/lrnky81hMROo3gTXbIyGYFuW2KucUOexXtByZoep7lh1/ysqr3zeEom9TUdFger1yapRBhVKQuyIkCXJHutZG27fDJ1YbInY4+Dy6AmGkCFI9DNCLbHVfSVnJbFo+uxGkB9MODBLyPq3yRUBVrmzZvR6a+Pkjd8q0zNZ6Rr6VucUpgAzgflzbyC/vZ0L4mAwAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print

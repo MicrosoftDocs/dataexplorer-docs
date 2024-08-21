@@ -3,15 +3,17 @@ title:  make_set() (aggregation function)
 description: Learn how to use the make_set() function to return a JSON array of the distinct values that the expression takes in the group. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # make_set() (aggregation function)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Creates a `dynamic` array of the set of distinct values that *expr* takes in the group.
 
-[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
+[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 > **Deprecated aliases:** makeset()
 
@@ -19,7 +21,7 @@ Creates a `dynamic` array of the set of distinct values that *expr* takes in the
 
  `make_set(`*expr* [`,` *maxSize*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -45,8 +47,10 @@ The array's sort order is undefined.
 
 The following example shows the set of states grouped with the same amount of crop damage.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVKC5JLEktts1NzE6NL04t0QgG8TUVkioVXBJzE9NTnYvyC4oBmxrbeD8AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -72,8 +76,10 @@ The results table shown includes only the first 10 rows.
 
 The following example shows the set of elements in an array.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY2wxBwrhcy8Eh0Fx6IiQyuFlMq8xNzMZE2uaC4FIDDUgYloRKs7GqrrKKg7GoFJY/VYTR0FsCJTFEVgaWdDkDRY1hxZ1hlJM6ZeqCxIL1esAleNQnFpbm5iUWZVqgLQnfHFqSW2uYnZqSAGyOGaEEejioNENAHdRSJ74QAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (Val: int, Arr1: dynamic)
@@ -92,5 +98,5 @@ datatable (Val: int, Arr1: dynamic)
 
 ## Related content
 
-* Use [`mv-expand`](./mv-expand-operator.md) operator for the opposite function.
-* [`make_set_if`](./make-set-if-aggregation-function.md) operator is similar to `make_set`, except it also accepts a predicate.
+* Use [`mv-expand`](mv-expand-operator.md) operator for the opposite function.
+* [`make_set_if`](make-set-if-aggregation-function.md) operator is similar to `make_set`, except it also accepts a predicate.

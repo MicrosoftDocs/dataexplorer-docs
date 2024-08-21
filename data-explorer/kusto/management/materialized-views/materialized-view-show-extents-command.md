@@ -1,12 +1,14 @@
 ---
 title:  .show materialized-view extents commands
-description: This article describes show materialize-view extents commands in Azure Data Explorer.
+description:  This article describes show materialize-view extents commands.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 
 # .show materialized-view extents
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Returns the extents in the *materialized part* of the materialized view. For a definition of the *materialized part*, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).
 
@@ -16,13 +18,13 @@ This command provides the same details as the [show table extents](../show-exten
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../../access-control/role-based-access-control.md).
 
 ## Syntax
 
 `.show` `materialized-view` *MaterializedViewName* `extents` [`hot`]
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -32,7 +34,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ### Returns
 
-[!INCLUDE [show-extents-output-schema.md](../../../includes/show-extents-output-schema.md)]
+[!INCLUDE [show-extents-output-schema.md](../../includes/show-extents-output-schema.md)]
 
 ## Examples
 

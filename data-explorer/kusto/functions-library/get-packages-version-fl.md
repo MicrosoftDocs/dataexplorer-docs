@@ -1,27 +1,25 @@
 ---
 title:  get_packages_version_fl()
-description: Learn how to use the get_packages_version_fl() user-defined function in Azure Data Explorer.
+description:  Learn how to use the get_packages_version_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
 ---
 # get_packages_version_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 `get_packages_version_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves the versions of the Python engine and packages of the [inline python() plugin](../query/python-plugin.md).
 
 The function accepts a dynamic array containing the names of the packages to check, and returns their respective versions and the Python engine version.
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke get_packages_version_fl(`*packages*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -70,7 +68,7 @@ let get_packages_version_fl = (packages:dynamic=dynamic([]))
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
@@ -162,11 +160,3 @@ get_packages_version_fl(pack_array('numpy', 'scipy', 'pandas', 'statsmodels', 's
 | scipy | 1.9.3 |
 | sklearn | 1.1.3 |
 | statsmodels | 0.13.2 |
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

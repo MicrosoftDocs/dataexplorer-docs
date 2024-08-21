@@ -1,22 +1,20 @@
 ---
 title:  series_fbprophet_forecast_fl()
-description: This article describes the series_fbprophet_forecast_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the series_fbprophet_forecast_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
 ---
 # series_fbprophet_forecast_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a time series as input, and predicts the values of the last trailing points using the [Prophet algorithm](https://facebook.github.io/prophet/). The function returns both the forecasted points and their confidence intervals. This function is a Kusto Query Language (KQL) wrapper to Prophet() class, and exposes only the parameters that are mandatory for prediction. Feel free to modify your copy to support more parameters. such as holidays, change points, Fourier order, and so on.
 
 > [!NOTE]
 > Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecast-function.md). The native function is based on a simpler model, but is more scalable and runs faster.
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 * Install the `fbprophet` package since it isn't included in the Python image. To install the package, do the following:
   1. Follow the guidelines for [Installing packages for the Python plugin](../query/python-plugin.md#install-packages-for-the-python-plugin).
@@ -28,18 +26,18 @@ The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)]
 
 `T | invoke series_fbprophet_forecast_fl(`*ts_series*`,` *y_series*`,` *y_pred_series*`,` [ *points* ]`,` [ *y_pred_low_series* ]`,` [ *y_pred_high_series* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
   
 ## Parameters
 
-|Name|Type|Required|Description|
+| Name | Type | Required | Description |
 |--|--|--|--|
-|*ts_series*| `string` | :heavy_check_mark:|The name of the input table column containing the time stamps of the series to predict.|
-|*y_series*| `string` | :heavy_check_mark:|The name of the input table column containing the values of the series to predict.|
-|*y_pred_series*| `string` | :heavy_check_mark:|The name of the column to store the predicted series.|
-|*points*| `int` | :heavy_check_mark:|The number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process. The default is 0.|
-|*y_pred_low_series*| `string` ||The name of the column to store the series of the lowest values of the confidence interval. Omit if the confidence interval isn't needed.|
-|*y_pred_high_series*| `string` ||The name of the column to store the series of the highest values of the confidence interval. Omit if the confidence interval isn't needed.|
+| *ts_series* | `string` | :heavy_check_mark: | The name of the input table column containing the time stamps of the series to predict. |
+| *y_series* | `string` | :heavy_check_mark: | The name of the input table column containing the values of the series to predict. |
+| *y_pred_series* | `string` | :heavy_check_mark: | The name of the column to store the predicted series. |
+| *points* | `int` | :heavy_check_mark: | The number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process. The default is 0. |
+| *y_pred_low_series* | `string` |  | The name of the column to store the series of the lowest values of the confidence interval. Omit if the confidence interval isn't needed. |
+| *y_pred_high_series* | `string` |  | The name of the column to store the series of the highest values of the confidence interval. Omit if the confidence interval isn't needed. |
 
 ## Function definition
 
@@ -102,7 +100,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
@@ -251,11 +249,3 @@ demo_make_series2
 **Output**
 
 :::image type="content" source="media/series-fbprophet-forecast-fl/fbprophet-example.png" alt-text="Graph showing forecasting few time series." border="false":::
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

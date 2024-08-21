@@ -1,46 +1,57 @@
 ---
-title: Access Control Overview - Azure Data Explorer
-description: This article describes Access control in Azure Data Explorer.
+title: Access Control Overview
+description: This article describes Access control.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 06/28/2023
+ms.date: 08/11/2024
 ---
 # Access control overview
 
-Azure Data Explorer access control is based on authentication and authorization. Each query and command on an Azure Data Explorer resource, such as a cluster or database, must pass both authentication and authorization checks.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+:::moniker range="azure-data-explorer"
+Access control is based on authentication and authorization. Each query and command on an Azure Data Explorer resource, such as a cluster or database, must pass both authentication and authorization checks.
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+Access control is based on authentication and authorization. Each query and command on a Fabric resource, such as a KQL database, must pass both authentication and authorization checks.
+::: moniker-end
 
 * [Authentication](#authentication): Validates the identity of the security principal making a request
 * [Authorization](#authorization): Validates the security principal making a request is permitted to make that request on the target resource
 
 ## Authentication
 
-To programmatically authenticate with your cluster, a client must communicate with [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to your cluster.
+To programmatically authenticate, a client must communicate with [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) and request an access token specific to the Kusto service. Then, the client can use the acquired access token as proof of identity when issuing requests to your database.
 
 The main authentication scenarios are as follows:
 
 * [User authentication](#user-authentication): Used to verify the identity of human users.
 * [Application authentication](#application-authentication): Used to verify the identity of an application that needs to access resources without human intervention by using configured credentials.
 * [On-behalf-of (OBO) authentication](/azure/active-directory/develop/msal-authentication-flows#on-behalf-of-obo): Allows an application to exchange a token for said application with a token to access a Kusto service. This flow must be implemented with MSAL.
-* [Single page application (SPA) authentication](/azure/active-directory/develop/msal-authentication-flows#authorization-code): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
+* [Single page application (SPA) authentication](/azure/active-directory/develop/msal-authentication-flows#authorization-code): Allows client-side SPA web applications to sign in users and get tokens to access your database. This flow must be implemented with MSAL.
 
 > [!NOTE]
-> For user and application authentication, we recommend using the [Kusto client libraries](../../kusto/api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL directly as these flows aren't supported by the client libraries. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
+> For user and application authentication, we recommend using the [Kusto client libraries](../api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL directly as these flows aren't supported by the client libraries. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
 
 ### User authentication
 
 User authentication happens when a user presents credentials to Microsoft Entra ID or an identity provider that federates with Microsoft Entra ID, such as Active Directory Federation Services. The user gets back a security token that can be presented to the Azure Data Explorer service. Azure Data Explorer determines whether the token is valid, whether the token is issued by a trusted issuer, and what security claims the token contains.
 
+::: moniker range="azure-data-explorer"
 Azure Data Explorer supports the following methods of user authentication, including through the [Kusto client libraries](../api/client-libraries.md):
 
 * Interactive user authentication with sign-in through the user interface.
 * User authentication with a Microsoft Entra token issued for Azure Data Explorer.
 * User authentication with a Microsoft Entra token issued for another resource that can be exchanged for an Azure Data Explorer token using On-behalf-of (OBO) authentication.
+::: moniker-end
 
 ### Application authentication
 
 Application authentication is needed when requests aren't associated with a specific user or when no user is available to provide credentials. In this case, the application authenticates to Microsoft Entra ID or the federated IdP by presenting secret information.
 
+::: moniker range="azure-data-explorer"
 Azure Data Explorer supports the following methods of application authentication, including through the [Kusto client libraries](../api/client-libraries.md):
 
 * Application authentication with an Azure managed identity.
@@ -49,10 +60,11 @@ Azure Data Explorer supports the following methods of application authentication
 * Application authentication with a Microsoft Entra application ID and a Microsoft Entra application key. The application ID and application key are like a username and password.
 * Application authentication with a previously obtained valid Microsoft Entra token, issued to Azure Data Explorer.
 * Application authentication with a Microsoft Entra token issued for another resource that can be exchanged for an Azure Data Explorer token using On-behalf-of (OBO) authentication.
+::: moniker-end
 
 ## Authorization
 
-Before carrying out an action on an Azure Data Explorer resource, all authenticated users must pass an authorization check. Azure Data Explorer uses the [Kusto role-based access control](role-based-access-control.md) model, where principals are ascribed to one or more security roles. Authorization is granted as long as one of the roles assigned to the user allows them to perform the specified action. For example, the Database User role grants security principals the right to read the data of a particular database, create tables in the database, and more.
+Before carrying out an action on a resource, all authenticated users must pass an authorization check. The [Kusto role-based access control](role-based-access-control.md) model is used, where principals are ascribed to one or more security roles. Authorization is granted as long as one of the roles assigned to the user allows them to perform the specified action. For example, the Database User role grants security principals the right to read the data of a particular database, create tables in the database, and more.
 
 The association of security principals to security roles can be defined individually or by using security groups that are defined in Microsoft Entra ID. For more information on how to assign security roles, see [Security roles overview](../management/security-roles.md).
 

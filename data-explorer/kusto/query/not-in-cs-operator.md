@@ -3,23 +3,25 @@ title:  The case-sensitive !in string operator
 description: Learn how to use the !in string operator to filter records for data without a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/29/2023
+ms.date: 08/11/2024
 ---
 # !in operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Filters a record set for data without a case-sensitive string.
 
-[!INCLUDE [in-operator-comparison](../../includes/in-operator-comparison.md)]
+[!INCLUDE [in-operator-comparison](../includes/in-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 ## Syntax
 
 *T* `|` `where` *col* `!in` `(`*expression*`,` ... `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,8 +41,10 @@ Rows in *T* for which the predicate is `true`.
 
 The following query shows how to use `!in` with a comma-separated list of scalar values.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVVDMzFPQUHLz8Q/ydHFU0lFQcnf1D3L3BDP9XMMVIv2DvJU0QbqS80vzSgDNxq+9SgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -58,8 +62,10 @@ StormEvents
 
 The following query shows how to use `!in` with a dynamic array.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVVDMzFPQSKnMS8zNTNaIVnLz8Q/ydHFU0lFQcnf1D3L3BDP9XMMVIv2DvJViNTVBBiTnl+aVAAD4lvyYVQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -75,8 +81,10 @@ StormEvents
 
 The same query can also be written with a [let statement](let-statement.md).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoLkksSS1WsFVIqcxLzM1M1ohWcvPxD/J0cVTSUVByd/UPcvcEM/1cwxUi/YO8lWI1rbmCS/KLcl3LUvNKihW4ahTKM1KLUhWCQUYpKGbmKWhATNUEShWX5uYmFmVWpSok55fmlWhoKiRVQlQCAKFqvAF+AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let states = dynamic(["FLORIDA", "GEORGIA", "NEW YORK"]);
@@ -95,8 +103,10 @@ StormEvents
 
 The following query shows how to use `!in` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parentheses.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVVDMzFPQ0AjILyjNSSzJzM9zSSxJVIApQQgr2CmYGoABULKgKD8rNbkEYoKmJtDE4tLc3MSizKpUheT80rwSDU2FpEqINABw+yCTewAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -117,8 +127,10 @@ StormEvents
 
 The same query can also be written with a [let statement](let-statement.md). Notice that the double parentheses as provided in the last example aren't necessary in this case.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NvQrCQBCE+zzF2CWdjZXEKvZCHkDWsCQnd7dhby+i+PD5ESFTznwf49ngSXu+JyPjhBo3GbMncxIbMsIXr4GVdzUuOB23LOOo8uTO0K76uWhNNFwnjpZQ/NVtw8FFlPuvagFSDoHUfRid5Ghlhcf7x89eufmimgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let large_states = PopulationData | where Population > 5000000 | project State;

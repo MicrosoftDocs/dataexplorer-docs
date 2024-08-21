@@ -1,11 +1,13 @@
 ---
-title: Create and alter Azure Storage delta external tables - Azure Data Explorer
+title:  Create and alter Azure Storage delta external tables
 description: This article describes how to create and alter delta external tables
 ms.reviewer: igborodi
 ms.topic: reference
-ms.date: 01/18/2024
+ms.date: 08/11/2024
 ---
 # Create and alter delta external tables on Azure Storage
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The commands in this article can be used to create or alter a delta [external table](../query/schema-entities/external-tables.md) in the database from which the command is executed. A delta external table references Delta Lake table data located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
 
@@ -14,15 +16,15 @@ The commands in this article can be used to create or alter a delta [external ta
 
 ## Permissions
 
-To `.create` requires at least [Database User](../management/access-control/role-based-access-control.md) permissions, and to `.alter` requires at least [Table Admin](../management/access-control/role-based-access-control.md) permissions.
+To `.create` requires at least [Database User](../access-control/role-based-access-control.md) permissions, and to `.alter` requires at least [Table Admin](../access-control/role-based-access-control.md) permissions.
 
-To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
+To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
 (`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* [`(`*Schema*`)`] `kind` `=` `delta` `(`*StorageConnectionString* `)` [`with` `(`*Property* [`,` ...]`)`]  
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -36,8 +38,8 @@ To `.create-or-alter` an external table using managed identity authentication re
 > [!NOTE]
 >
 > * If a custom schema is provided, non-existing columns or columns having incompatible types will be filled with null values.
-> * Information about partitions is automatically inferred from the delta log. Partition columns are added as virtual columns to the table schema. For more information, see [Virtual columns](external-tables-azurestorage-azuredatalake.md#virtual-columns).
-> * The path format is automatically inferred from the partitioning information. For more information, see [Path format](external-tables-azurestorage-azuredatalake.md#path-format)
+> * Information about partitions is automatically inferred from the delta log. Partition columns are added as virtual columns to the table schema. For more information, see [Virtual columns](external-tables-azure-storage.md#virtual-columns).
+> * The path format is automatically inferred from the partitioning information. For more information, see [Path format](external-tables-azure-storage.md#path-format)
 
 > [!TIP]
 > For a custom schema, you can use the [infer_storage_schema](../query/infer-storage-schema-plugin.md) plugin to infer the schema based on the external file content.
@@ -46,7 +48,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
 
-The supported authentication methods are the same as those supported by [Azure Storage external tables](external-tables-azurestorage-azuredatalake.md#authentication-and-authorization).
+The supported authentication methods are the same as those supported by [Azure Storage external tables](external-tables-azure-storage.md#authentication-and-authorization).
 
 ## Optional properties
 
@@ -92,7 +94,8 @@ kind=delta
 
 * Time travel is not supported. Only the latest delta table version is used.
 
-
+::: moniker range="azure-data-explorer"
 ## Related content
 
-* [Query external tables](../../data-lake-query-data.md)
+* [Query external tables](/azure/data-explorer/data-lake-query-data)
+::: moniker-end

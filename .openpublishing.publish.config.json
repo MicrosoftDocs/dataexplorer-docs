@@ -19,19 +19,24 @@
       "build_entry_point": "docs",
       "template_folder": "_themes",
       "redirection_files": [
-        ".openpublishing.redirection.kusto.json"
+        ".openpublishing.redirection.migrated.json"
       ]
     },
     {
       "docset_name": "kusto-docs",
-      "build_source_folder": "kusto",
+      "build_source_folder": "data-explorer/kusto",
       "build_output_subfolder": "kusto-docs",
       "locale": "en-us",
       "monikers": [],
+      "moniker_ranges": [],
       "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"
       },
+      "exclude": [
+        "/data-explorer/.openpublishing.redirection.json",
+        "/data-explorer/.openpublishing.redirection.migrated.json"
+      ],
       "build_entry_point": "docs",
       "template_folder": "_themes"
     }

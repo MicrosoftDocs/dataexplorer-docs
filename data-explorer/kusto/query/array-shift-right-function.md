@@ -3,9 +3,11 @@ title:  array_shift_right()
 description: Learn how to use the array_shift_right() function to shift values inside a dynamic array to the right.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/05/2023
+ms.date: 08/11/2024
 ---
 # array_shift_right()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Shifts the values inside a dynamic array to the right.
 
@@ -13,7 +15,7 @@ Shifts the values inside a dynamic array to the right.
 
 `array_shift_right(`*array*, *shift_count* [`,` *default_value* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -31,8 +33,10 @@ Returns a dynamic array containing the same amount of the elements as in the ori
 
 Shifting to the right by two positions:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4osz0jBINoIiOgpEmAKRlW6FMAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])
@@ -47,8 +51,10 @@ print arr=dynamic([1,2,3,4,5])
 
 Shifting to the right by two positions and adding a default value:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4osz0jBINoIiOgpGOgq6hJgBHJWeJUAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])
@@ -63,8 +69,10 @@ print arr=dynamic([1,2,3,4,5])
 
 Shifting to the left by two positions by using a negative shift_count value:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4osz0jBINoIiOgq4REBtqAgCqvHZwUQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])

@@ -1,13 +1,14 @@
 ---
 title:  Time chart visualization
-description: This article describes the time chart visualization in Azure Data Explorer.
+description:  This article describes the time chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/26/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Time chart
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 A time chart visual is a type of line graph. The first column of the query is the x-axis, and should be a datetime. Other numeric columns are y-axes. One string column values are used to group the numeric columns and create different lines in the chart. Other string columns are ignored. The time chart visual is similar to a [line chart](visualization-linechart.md) except the x-axis is always time.
 
@@ -18,7 +19,7 @@ A time chart visual is a type of line graph. The first column of the query is th
 
 *T* `|` `render` `timechart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,7 +28,7 @@ A time chart visual is a type of line graph. The first column of the query is th
 | *T* | `string` |  :heavy_check_mark: | Input table name.
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Supported properties
 
@@ -105,6 +106,7 @@ StormEvents
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWMsQqDMBiE90Lf4ciUgEsfwCEFoSA4GIeuUX8wYKIkvxVLH76x3e6+4zvDS/TViwKn6+WDfaJIMGyZ4AKk6KqnNqKAaKp7q02tz1zrxmSqYMOIn9wdK6EsIR7WzeJ8Spv3Nro3YVi2wFKhP/7HBXoXZI6RO+dzvY3qNCKFkSI4s2HKI3bHE+SR1tlxudpAc1JfbEl6kbAAAAA=" target="_blank">Run the query</a>
 
+
 ```kusto
 StormEvents
 | where State in ("TEXAS", "NEBRASKA", "KANSAS") and EventType == "Hail"
@@ -116,11 +118,11 @@ StormEvents
 
 ## Related content
 
-* [Add a query visualization in the web UI](../../add-query-visualization.md)
+* [Add a query visualization in the web UI](/azure/data-explorer/add-query-visualization)
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ### Supported properties
 
@@ -149,4 +151,4 @@ demo_make_series2
 
 :::image type="content" source="media/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output." lightbox="media/visualization-timechart/visualization-timechart.png":::
 
-::: zone-end
+::: moniker-end

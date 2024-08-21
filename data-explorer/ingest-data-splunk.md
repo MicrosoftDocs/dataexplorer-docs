@@ -26,7 +26,7 @@ The following scenarios are most suitable for ingesting data into Azure Data Exp
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Splunk Enterprise 9 or newer.
-* A Microsoft Entra service principal. [Create a Microsoft Entra service principal](provision-azure-ad-app.md#programatically-create-a-microsoft-entra-service-principal).
+* A Microsoft Entra service principal. [Create a Microsoft Entra service principal](provision-entra-id-app.md).
 
 ## Create a table and a mapping object
 

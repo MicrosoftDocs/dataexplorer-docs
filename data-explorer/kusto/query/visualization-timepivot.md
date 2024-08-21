@@ -1,15 +1,14 @@
 ---
 title:  Time pivot visualization
-description: This article describes the time pivot visualization in Azure Data Explorer.
+description:  This article describes the time pivot visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Time pivot
 
-::: zone pivot="azuredataexplorer"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The time pivot visualization is an interactive navigation over the events time-line pivoting on time axis.
 
@@ -22,7 +21,7 @@ The time pivot visualization is an interactive navigation over the events time-l
 
 *T* `|` `render` `timepivot` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -63,11 +62,3 @@ StormEvents
 ```
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
-
-::: zone-end
-
-::: zone pivot="azuremonitor, fabric"
-
-This visualization isn't supported.
-
-::: zone-end

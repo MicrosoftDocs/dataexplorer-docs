@@ -3,9 +3,11 @@ title: Kusto Data ClientRequestProperties class
 description: This article describes the ClientRequestProperties class of Kusto Data.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/18/2023
+ms.date: 08/11/2024
 ---
 # Kusto Data ClientRequestProperties class
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 In the [Kusto Data library](about-kusto-data.md), the `ClientRequestProperties` class helps manage interaction between your client application and the service. This class contains the following information:
 

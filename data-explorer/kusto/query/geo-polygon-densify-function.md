@@ -3,9 +3,11 @@ title:  geo_polygon_densify()
 description: Learn how to use the geo_polygon_densify() function to convert polygon or multipolygon planar edges to geodesics.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 05/01/2023
+ms.date: 08/11/2024
 ---
 # geo_polygon_densify()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Converts polygon or multipolygon planar edges to geodesics by adding intermediate points.
 
@@ -13,7 +15,7 @@ Converts polygon or multipolygon planar edges to geodesics by adding intermediat
 
 `geo_polygon_densify(`*polygon*`,` *tolerance*`,` [ *preserve_crossing* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,7 +41,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 ### Constraints
 
 * The maximum number of points in the densified polygon is limited to 10485760.
-* Storing polygons in [dynamic](./scalar-data-types/dynamic.md) format has size limits.
+* Storing polygons in [dynamic](scalar-data-types/dynamic.md) format has size limits.
 * Densifying a valid polygon may invalidate the polygon. The algorithm adds points in a non-uniform manner, and as such may cause edges to intertwine with each other.
 
 ### Motivation
@@ -49,7 +51,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 ## Returns
 
-Densified polygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If either the polygon or tolerance is invalid, the query produces a null result.
+Densified polygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If either the polygon or tolerance is invalid, the query produces a null result.
 
 > [!NOTE]
 > The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
@@ -58,8 +60,10 @@ Densified polygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) a
 
 The following example densifies Manhattan Central Park polygon. The edges are short and the distance between planar edges and their geodesic counterparts is less than the distance specified by tolerance. As such, the result remains unchanged.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13MSwrDIABF0a2IIwNpMGr8BLqHziWEEG0QWpXoREr33o+kg07Pe9y4O5+BsT65q7NmjuFWtuDBGeSQ8nvc0GbDwXM9FmSKX+5uRQ+YS7RwhJd6gC1cQ9iN80u2CY5a65OgnRokYaxluJMYi15NbWWmesY/LBRXw6GCYkW/yhkh/GBJMCeVZT/8Gv/paXo2TfMCwhc/8NgAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print densified_polygon = tostring(geo_polygon_densify(dynamic({"type":"Polygon","coordinates":[[[-73.958244,40.800719],[-73.949146,40.79695],[-73.973093,40.764226],[-73.982062,40.768159],[-73.958244,40.800719]]]})))
@@ -73,8 +77,10 @@ print densified_polygon = tostring(geo_polygon_densify(dynamic({"type":"Polygon"
 
 The following example densifies two edges of the polygon. Densified edges length is ~110 km
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XKQQrDIBCF4avIrBRcONtA7tC9SAjRykA6I3E2Unr3tISS1Qfv/e0gVpMLd3pSyUuTfVRhMxuVrt+z2lrkPy9XOGwevL5os2/Q0QpM8LgC8LCJHJl41dJhijFi8BiSj4i3+DPchpTSxzl3AtyuS1uOAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print densified_polygon = tostring(geo_polygon_densify(dynamic({"type":"Polygon","coordinates":[[[10,10],[11,10],[11,11],[10,11],[10,10]]]})))
@@ -88,8 +94,10 @@ print densified_polygon = tostring(geo_polygon_densify(dynamic({"type":"Polygon"
 
 The following example returns a null result because of the invalid coordinate input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJzSvOTMtMTYkvyM+pTM/PU7BVSE/Nh/HiIfKVGimVeYm5mcka1UollQWpSlZKARAFSjpKyfn5RSmZeYklqcVKVtHR0YYGOpYGBrE60YaGOoYw2hBEGyBog9jY2FpNTQDqeX/DhQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print densified_polygon = geo_polygon_densify(dynamic({"type":"Polygon","coordinates":[[[10,900],[11,10],[11,11],[10,11],[10,10]]]}))
@@ -103,8 +111,10 @@ print densified_polygon = geo_polygon_densify(dynamic({"type":"Polygon","coordin
 
 The following example returns a null result because of the invalid tolerance input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJzSvOTMtMTYkvyM+pTM/PU7BVSE/Nh/HiIfKVGimVeYm5mcka1UollQWpSlZKARAFSjpKyfn5RSmZeYklqcVKVtHR0YYGOoYGsTrRhoYI2hBEGyBog9jY2FpNHQUDTQCMm+c8hwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print densified_polygon = geo_polygon_densify(dynamic({"type":"Polygon","coordinates":[[[10,10],[11,10],[11,11],[10,11],[10,10]]]}), 0)

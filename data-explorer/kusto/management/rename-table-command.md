@@ -3,9 +3,11 @@ title: .rename table command
 description: Learn how to use the `.rename table` command to change the name of an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .rename table command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Changes the name of an existing table.
 
@@ -13,7 +15,7 @@ The `.rename tables` command changes the name of a number of tables in the datab
 
 ## Permissions
 
-You must have at least [Table Admin](../management/access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -21,7 +23,7 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 
 `.rename` `tables` *NewName* `=` *OldName* [`ifexists`] [`,` ...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,8 +36,12 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 **Remarks**
 
 This command operates on tables of the database in scope only.
+:::moniker range="azure-data-explorer"
 Table names can't be qualified with cluster or database names.
-
+::: moniker-end
+:::moniker range="microsoft-fabric"
+Table names can't be qualified, for instance, with database names.
+::: moniker-end
 This command doesn't create new tables, nor does it remove existing tables.
 The transformation described by the command must be such that the number
 of tables in the database doesn't change.

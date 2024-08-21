@@ -3,10 +3,12 @@ title:  .show operations command
 description: Learn how to use the `.show operations` command to view a log of the administrative operations that are currently running or completed.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 08/11/2024
 ---
 
 # .show operations command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Kusto maintains an internal log of running and historic operations that it processes, such as ingestion operations and data management operations.
 Entries are appended to the log when operations start and change their state, including when operations reach their terminal state.

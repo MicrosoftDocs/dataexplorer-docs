@@ -2,10 +2,12 @@
 title: .dup-next-ingest command
 description: Learn how to use the `.dup-next-ingest` command to troubleshoot your data ingestion pull flow.
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 
 # .dup-next-ingest command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Use the `.dup-next-ingest` command for on-demand troubleshooting of your data ingestion pull flow.
 
@@ -20,13 +22,13 @@ The file uploads to the storage container and the ingestion are performed by the
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.dup-next-ingest` `into` *TableName* `to` *StorageContainerPath*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -44,9 +46,9 @@ Upon the next pull data ingestion, the ingestion source file(s) and a file conta
 ## Example
 
 ```kusto
-.dup-next-ingest into PerfCounter to h@'https://kustorenginsomecluster.blob.core.windows.net/ingestion-duplication-perf-counter;storagekey...==
+.dup-next-ingest into PerfCounter to h@'https://kustorenginsomelocation.blob.core.windows.net/ingestion-duplication-perf-counter;storagekey...==
 ```
 
 |TableName|StorageContainerPath|IngestionCommandFilePath|
 |--|--|--|
-|PerfCounter|https://kustorenginsomecluster.blob.core.windows.net/ingestion-duplication-perf-counter|ingestionrequest-KustoEH-PerfCounter-083736db-8cf7-4166-85fd-74ef54e491d1|
+|PerfCounter|https://kustorenginsomelocation.blob.core.windows.net/ingestion-duplication-perf-counter|ingestionrequest-KustoEH-PerfCounter-083736db-8cf7-4166-85fd-74ef54e491d1|

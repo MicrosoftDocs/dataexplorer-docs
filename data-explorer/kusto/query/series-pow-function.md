@@ -3,9 +3,11 @@ title:  series_pow()
 description: Learn how to use the series_pow() function to calculate the element-wise power of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_pow()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the element-wise power of two numeric series inputs.
 
@@ -13,7 +15,7 @@ Calculates the element-wise power of two numeric series inputs.
 
 `series_pow(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,8 +29,10 @@ A dynamic array of calculated element-wise power operation between the two input
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUahQsFVIqcxLzM1M1og21FEw0lEw1lEwidXUUai0xZQw0DON1eSqUUitKEnNS1GoiC/IL4+vBJpRnFqUmVoM4mpUALVqAgA61Qq1XgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print x = dynamic([1, 2, 3, 4]), y=dynamic([1, 2, 3, 0.5])

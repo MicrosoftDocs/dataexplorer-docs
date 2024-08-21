@@ -3,9 +3,11 @@ title:  series_seasonal()
 description: Learn how to use the series_seasonal() function to calculate the seasonal component of a series according to the detected seasonal period.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_seasonal()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the seasonal component of a series, according to the detected or given seasonal period.
 
@@ -13,7 +15,7 @@ Calculates the seasonal component of a series, according to the detected or give
 
 `series_seasonal(`*series* [`,` *period* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -33,8 +35,10 @@ A dynamic array of the same length as the *series* input that contains the calcu
 In the following example, the series' period is automatically detected. The first series' period is detected to be six bins and the second five bins. The third series' period is too short to be detected and returns a series of zeroes.
 See the next example on [how to force the period](#force-a-period).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSi2TanMS8zNTNaINtJRMNVRMNZRMAGTQK4hmCRZJFaTq0ahNC8zP09BowDdFgugApAiEyhtAMVkicVq4rPKEOwiU7CjgFrMwI5FEYHoT60oSc1LUSiOL05NLM7PS8xRsFUoTi3KTEWIaBRrAgCrZVUQMAEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s=dynamic([2, 5, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1])
@@ -55,8 +59,10 @@ print s=dynamic([2, 5, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1, 2, 3, 
 
 In this example, the series' period is too short to be detected by [series_periods_detect()](series-periods-detect-function.md), so we explicitly force the period to get the seasonal pattern.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSi2TanMS8zNTNaINtRRMNZRMNVRgDOMdBRMdBTMYjUVuGoUSvMy8/MUNApwaoOqxqZfE6g/taIkNS9FoTi+ODWxOD8vMUfBVqE4tSgzFSGiUQzUqQkAj46UZJkAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s=dynamic([1, 3, 5, 1, 3, 5, 2, 4, 6]) 

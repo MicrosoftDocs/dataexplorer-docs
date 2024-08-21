@@ -1,20 +1,23 @@
 ---
 title:  Authentication over HTTPS
-description: This article describes Authentication over HTTPS in Azure Data Explorer.
+description: This article describes Authentication over HTTPS.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/28/2023
+ms.date: 08/11/2024
 ---
 # Authentication over HTTPS
 
-To interact with your cluster over HTTPS, the principal making the request
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
+To interact with your database over HTTPS, the principal making the request
 must authenticate by using the HTTP `Authorization` request header.
 
 ## Syntax
 
 `Authorization:` `Bearer` *AccessToken*
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 
 ## Parameters
 
@@ -24,7 +27,7 @@ must authenticate by using the HTTP `Authorization` request header.
 
 ## Get an access token
 
-There are many different methods to get a Microsoft Entra access token. To learn more, see [user authentication](../../access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../access-control/how-to-authenticate-with-aad.md#application-authentication).
+There are many different methods to get a Microsoft Entra access token. To learn more, see [user authentication](authenticate-with-msal.md#perform-user-authentication-with-msal) and [application authentication](authenticate-with-msal.md#perform-application-authentication-with-msal).
 
 ### Get an access token for a user principal using the Azure CLI
 

@@ -3,9 +3,11 @@ title:  .alter ingestion mapping command
 description: Learn how to use the `.alter ingestion mapping` command to alter a table or database's existing ingestion mapping 
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/26/2023
+ms.date: 08/11/2024
 ---
 # .alter ingestion mapping command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Alters an existing ingestion mapping that is associated with a specific table/database and a specific format (full mapping replace).
 
@@ -14,7 +16,7 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 
 ## Permissions
 
-The command to alter database ingestion mapping requires at least [Database Ingestor](access-control/role-based-access-control.md) permissions, and the command to alter table ingestion mapping requires at least [Table Ingestor](access-control/role-based-access-control.md) permissions.
+The command to alter database ingestion mapping requires at least [Database Ingestor](../access-control/role-based-access-control.md) permissions, and the command to alter table ingestion mapping requires at least [Table Ingestor](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
@@ -25,7 +27,7 @@ The command to alter database ingestion mapping requires at least [Database Inge
 > [!NOTE]
 > This mapping can be referenced by its name by ingestion commands, instead of specifying the complete mapping as part of the command.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

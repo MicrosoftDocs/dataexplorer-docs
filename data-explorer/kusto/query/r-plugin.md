@@ -3,13 +3,14 @@ title:  R plugin (Preview)
 description: Learn how to use the R plugin (Preview) to run a user-defined function using an R script.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/27/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # R plugin (Preview)
 
-::: zone pivot="azuredataexplorer"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+::: moniker range="azure-data-explorer"
 
 The R plugin runs a user-defined function (UDF) using an R script.
 
@@ -20,7 +21,7 @@ The plugin's runtime is hosted in a [sandbox](../concepts/sandboxes.md) on the c
 
 *T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `r(`*output_schema*`,` *script* [`,` *script_parameters*] [`,` *external_artifacts*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -43,7 +44,7 @@ The following variables are reserved for interaction between Kusto Query Languag
 ## Enable the plugin
 
 * The plugin is disabled by default.
-* Enable or disable the plugin in the Azure portal in the **Configuration** tab of your cluster. For more information, see [Manage language extensions in your Azure Data Explorer cluster (Preview)](../../language-extensions.md)
+* Enable or disable the plugin in the Azure portal in the **Configuration** tab of your cluster. For more information, see [Manage language extensions in your Azure Data Explorer cluster (Preview)](/azure/data-explorer/language-extensions)
 
 ## R sandbox image
 
@@ -124,7 +125,7 @@ Follow these step by step instructions to install package(s) that aren't include
 
   1. Create a blob container to host the packages, preferably in the same place as your cluster. For example, `https://artifactswestus.blob.core.windows.net/r`, assuming your cluster is in West US.
   1. Alter the cluster's [callout policy](../management/callout-policy.md) to allow access to that location.
-        * This change requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
+        * This change requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions.
 
         * For example, to enable access to a blob located in `https://artifactswestus.blob.core.windows.net/r`, run the following command:
 
@@ -215,10 +216,4 @@ Make sure that the archive's name (first value in pack pair) has the *.zip suffi
 
 ---
 
-::: zone-end
-
-::: zone pivot="azuremonitor, fabric"
-
-This capability isn't supported.
-
-::: zone-end
+::: moniker-end

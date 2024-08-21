@@ -3,10 +3,12 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 07/03/2023
+ms.date: 08/11/2024
 ---
 
 # Using Kusto.Explorer
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Kusto.Explorer is a desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This article shows you how to use search and query modes, share your queries, and manage clusters, databases, and tables.
 
@@ -139,12 +141,20 @@ The second link (`Run the query`) is the deep link. If you move the link to an e
 You can use parametrized queries with deep-linking.
 
 1. Create a query to be formed as a parametrized query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`)
-1. Provide a parameter for every query parameter in the URI, such as:
 
-    `https://<your_cluster>.kusto.windows.net/MyDatabase?
+:::moniker range="azure-data-explorer"
+1. Provide a parameter for every query parameter in the URI. To copy your URI, in the Azure portal, go to your cluster's overview page, and then select the URI. The URI should be in the following format: 
+
+   `https://<your_cluster>.kusto.windows.net/MyDatabase?
 web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
     Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+1. Provide a parameter for every query parameter in the URI. To copy your URI, see [Copy a KQL database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri).
+::: moniker-end
+
 
 #### Limitations
 
@@ -211,7 +221,7 @@ Kusto.Explorer.exe c:\temp\script.kql "uri=https://help.kusto.windows.net/Sample
 ## Manage databases, tables, or function authorized principals
 
 > [!IMPORTANT]
-> Only [admins](../management/access-control/role-based-access-control.md) can add or drop authorized principals in their own scope.
+> Only [admins](../access-control/role-based-access-control.md) can add or drop authorized principals in their own scope.
 
 1. To view the list of authorized principals, right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Database Authorized Principals**. (You can also select this option from the Management Menu.)
 

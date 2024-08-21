@@ -3,9 +3,11 @@ title:  convert_volume()
 description: Learn how to use the convert_volume() function to convert a volume input value from one unit to another.
 ms.reviewer: itsagui
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # convert_volume
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Convert a volume value from one unit to another.
 
@@ -13,7 +15,7 @@ Convert a volume value from one unit to another.
 
 `convert_volume(`*value*`,`*from*`,`*to*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -84,8 +86,10 @@ Returns the input value converted from one volume unit to another. Invalid units
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJL8vPKc1N1TDUM9JRUHcuTcpM9k0tSS1SB/Ick4tS3fLzS9Q1Abo7scQ8AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result = convert_volume(1.2, 'CubicMeter', 'AcreFoot')

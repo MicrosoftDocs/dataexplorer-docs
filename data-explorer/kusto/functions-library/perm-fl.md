@@ -1,11 +1,14 @@
 ---
 title:  perm_fl()
-description: This article describes perm_fl() user-defined function in Azure Data Explorer.
+description:  This article describes perm_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # perm_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculate *P(n, k)*
 
@@ -15,7 +18,7 @@ The function `perm_fl()` is a [user-defined function (UDF)](../query/functions/u
 
 `perm_fl(`*n*, *k*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -47,7 +50,7 @@ let perm_fl=(n:int, k:int)
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
@@ -70,8 +73,10 @@ perm_fl(n:int, k:int)
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OQQrCMBBF9znFXyZo0dqdpWcpQSdBkkxCnUVBvbupFgvO5sO8x8yPJCg0pdHFQfP5xrJHWMKoh0KdWAVnLzIyBnibktW8a03/B8NGm/DjkmNmr7/KYTWNeqleTZY9geGmnNBVE+0Rd6GCTj1BsxBfsVzl5rQtyufRWlhz7WreODahQsIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let perm_fl=(n:int, k:int)

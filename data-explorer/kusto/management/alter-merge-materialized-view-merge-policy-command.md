@@ -3,21 +3,23 @@ title:  .alter-merge materialized-view policy merge command
 description: Learn how to use the `.alter-merge materialized-view policy merge policy` command to change the materialized view's merge policy.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/28/2023
+ms.date: 08/11/2024
 ---
 # .alter-merge materialized-view policy merge command
 
-Changes the materialized view's [merge policy](merge-policy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+Changes the materialized view's [merge policy](merge-policy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) should get merged.
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter-merge` `materialized-view` *MaterializedViewName* `policy` `merge` *PolicyObject*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

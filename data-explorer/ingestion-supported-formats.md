@@ -8,6 +8,8 @@ ms.date: 09/13/2022
 
 # Data formats supported by Azure Data Explorer for ingestion
 
+<!-- //TODO delete and redirect to kql repo -->
+
 Data ingestion is the process by which data is added to a table and is made available for query in Azure Data Explorer. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that Azure Data Explorer supports for data ingestion.
 
 > [!NOTE]
@@ -16,7 +18,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 > * CSV: http://csvlint.io/
 > * JSON: https://jsonlint.com/
 >
-> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestion-failures.md) and  [Ingestion error codes in Azure Data Explorer](error-codes.md).
+> For more information about why ingestion might fail, see [Ingestion failures](/kusto/management/ingestion-failures?view=azure-data-explorer&preserve-view=true) and  [Ingestion error codes in Azure Data Explorer](error-codes.md).
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
@@ -70,4 +72,4 @@ must be specified as an ingestion property because it cannot be inferred.
 ## Related content
 
 * Learn more about [data ingestion](ingest-data-overview.md)
-* Learn more about [Azure Data Explorer data ingestion properties](ingestion-properties.md)
+* Learn more about [Azure Data Explorer data ingestion properties](/kusto/ingestion-properties?view=azure-data-explorer&preserve-view=true)

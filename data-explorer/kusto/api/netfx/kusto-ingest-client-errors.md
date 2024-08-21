@@ -1,11 +1,13 @@
 ---
 title:  Kusto.Ingest errors & exceptions
-description: This article describes Kusto.Ingest - Errors and Exceptions in Azure Data Explorer.
+description: This article describes Kusto.Ingest - Errors and Exceptions.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/11/2021
+ms.date: 08/11/2024
 ---
 # Kusto.Ingest errors and exceptions
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Any error during the ingestion handling on the client side is indicated by a C# exception.
 
@@ -61,7 +63,9 @@ In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `reta
 
 To help handle ingestion failures programmatically, failure information is enriched with a numeric error code (`IngestionErrorCode enumeration`).
 
-For a full list of ingestion error codes, see [Ingestion Error codes](../../../error-codes.md).
+::: moniker range="azure-data-explorer"
+For a full list of ingestion error codes, see [Ingestion Error codes](/azure/data-explorer/error-codes).
+::: moniker-end
 
 ## Detailed exceptions reference
 

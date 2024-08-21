@@ -3,9 +3,11 @@ title:  series_fill_const()
 description: Learn how to use the series_fill_const() function to replace missing values in a series with a specified constant value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 08/11/2024
 ---
 # series_fill_const()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Replaces missing values in a series with a specified constant value.
 
@@ -15,7 +17,7 @@ Takes an expression containing dynamic numerical array as input, replaces all in
 
 `series_fill_const(`*series*`,` *constant_value*`,` [ *missing_value_placeholder* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -37,8 +39,10 @@ Takes an expression containing dynamic numerical array as input, replaces all in
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA3WOywrCMBBF94H8wywTiNJppAvFLymlxDRCJLaSxIXgxzsmPkBwFvM4XO6d4DJMJhvYl5HNIThhYtzCdJvN2VvJGVD1dbyg6BFRwXwNQYHuFGzoavWbIJGOiP6QZx8kGXA27DgriZzd4RKXk7O5mlOsgroefQijXeaUkT5LLnqXxi8URdqsG6l+9e1//QrlA3dBmsPvAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let data = datatable(arr: dynamic)

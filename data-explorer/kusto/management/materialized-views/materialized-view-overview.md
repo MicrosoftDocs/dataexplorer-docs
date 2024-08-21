@@ -1,11 +1,13 @@
 ---
 title:  Materialized views
-description: This article describes materialized views in Azure Data Explorer.
+description:  This article describes materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/19/2023
+ms.date: 08/11/2024
 ---
 # Materialized views
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Materialized views expose an *aggregation* query over a source table, or over [another materialized view](#materialized-view-over-materialized-view).
 
@@ -26,7 +28,7 @@ By investing resources (data storage, background CPU cycles) for materialized vi
 
 * **Freshness:** A materialized view query always returns the most up-to-date results, independent of when materialization last took place. The query combines the materialized part of the view with the records in the source table, which haven't yet been materialized (the `delta` part), always providing the most up-to-date results.
 
-* **Cost reduction:** [Querying a materialized view](#materialized-views-queries) consumes less resources from the cluster than doing the aggregation over the source table. Retention policy of source table can be reduced if only aggregation is required. This setup reduces hot cache costs for the source table.
+* **Cost reduction:** [Querying a materialized view](#materialized-views-queries) consumes less resources than doing the aggregation over the source table. Retention policy of source table can be reduced if only aggregation is required. This setup reduces hot cache costs for the source table.
 
 For example use cases, see [Materialized view use cases](materialized-view-use-cases.md).
 
@@ -54,6 +56,7 @@ There are 2 ways to query a materialized view:
 > [!TIP]
 > Queries over the materialized part only always perform better than querying the entire view. Always use the `materialized_view()` function when applicable for your use case.
 
+:::moniker range="azure-data-explorer"
 * Materialized views participate in cross-cluster or cross-database queries, but aren't included in wildcard unions or searches.
   * The following examples all **include** materialized views by the name `ViewName`:
    <!-- csl -->
@@ -74,13 +77,37 @@ There are 2 ways to query a materialized view:
     search in (*)
     search * 
     ```
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+* Materialized views participate in cross-Eventhouse or cross-database queries, but aren't included in wildcard unions or searches.
+  * The following examples all **include** materialized views by the name `ViewName`:
+   <!-- csl -->
+    ```kusto
+    cluster("<serviceURL>").database('db').ViewName
+    cluster("<serviceURL>").database('*').ViewName
+    database('*').ViewName
+    database('DB*').ViewName
+    database('*').materialized_view('ViewName')
+    database('DB*').materialized_view('ViewName')
+    ```
+
+  * The following examples do **not** include records from materialized views:
+   <!-- csl -->
+    ```kusto
+    cluster("<serviceURL>").database('db').*
+    database('*').View*
+    search in (*)
+    search * 
+    ```
+::: moniker-end
 
 ### Materialized view query optimizer
 
 When querying the entire view, the materialized part is combined with the `delta` during query time. This includes aggregating the `delta` and joining it with the materialized part.
 
 * Querying the entire view performs better if the query includes filters on the group by keys of the materialized view query. See more tips about how to create your materialized view, based on your query pattern, in the [`.create materialized-view` performance tips](materialized-view-create.md#performance-tips) section.
-* The query optimizer chooses summarize/join strategies that are expected to improve query performance. For example, the decision on whether to [shuffle](../../query/shuffle-query.md) the query is based on number of records in `delta` part. The following [client request properties](../../api/netfx/request-properties.md) provide some control over the optimizations applied. You can test these properties with your materialized view queries and evaluate their impact on queries performance.
+* The query optimizer chooses summarize/join strategies that are expected to improve query performance. For example, the decision on whether to [shuffle](../../query/shuffle-query.md) the query is based on number of records in `delta` part. The following [client request properties](../../api/rest/request-properties.md) provide some control over the optimizations applied. You can test these properties with your materialized view queries and evaluate their impact on queries performance.
 
 |Client request property name|Type|Description|
 |------------------------|-------|-------------------|
@@ -121,14 +148,18 @@ When querying the entire view, the materialized part is combined with the `delta
 
 The main contributors that can impact a materialized view health are:
 
-* **Cluster resources:** Like any other process running on the cluster, materialized views consume resources (CPU, memory) from the cluster. If the cluster is overloaded, adding materialized views to it may cause a degradation in the cluster's performance. Monitor your cluster's health using [cluster health metrics](../../../using-metrics.md#cluster-metrics). [Optimized autoscale](../../../manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) currently doesn't take materialized views health under consideration as part of autoscale rules.
+:::moniker range="azure-data-explorer"
+* **Cluster resources:** Like any other process running on the cluster, materialized views consume resources (CPU, memory) from the cluster. If the cluster is overloaded, adding materialized views to it may cause a degradation in the cluster's performance. Monitor your cluster's health using [cluster health metrics](/azure/data-explorer/using-metrics#cluster-metrics). [Optimized autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale-recommended-option) currently doesn't take materialized views health under consideration as part of autoscale rules.
   * The [materialization process](#how-materialized-views-work) is limited by the amount of memory and CPU it can consume. These limits are defined, and can be changed, in the [materialized views workload group](../workload-groups.md#materialized-views-workload-group).
+::: moniker-end
   
 * **Overlap with materialized data:** During materialization, all new records ingested to the source table since the last materialization (the delta) are processed and materialized into the view. The higher the intersection between new records and already materialized records is, the worse the performance of the materialized view will be. A materialized view works best if the number of records being updated (for example, in `arg_max` view) is a small subset of the source table. If all or most of the materialized view records need to be updated in every materialization cycle, then the materialized view might not perform well.
 
-* **Ingestion rate:** There are no hard-coded limits on the data volume or ingestion rate in the source table of the materialized view. However, the recommended ingestion rate for materialized views is no more than 1-2GB/sec. Higher ingestion rates may still perform well. Performance depends on cluster size, available resources, and amount of intersection with existing data.
+* **Ingestion rate:** There are no hard-coded limits on the data volume or ingestion rate in the source table of the materialized view. However, the recommended ingestion rate for materialized views is no more than 1-2GB/sec. Higher ingestion rates may still perform well. Performance depends on database size, available resources, and amount of intersection with existing data.
 
+:::moniker range="azure-data-explorer"
 * **Number of materialized views in cluster:** The above considerations apply to each individual materialized view defined in the cluster. Each view consumes its own resources, and many views compete with each other on available resources. While there are no hard-coded limits to the number of materialized views in a cluster, the cluster may not be able to handle all materialized views, when there are many defined. The [capacity policy](../capacity-policy.md#materialized-views-capacity-policy) can be adjusted if there is more than a single materialized view in the cluster. Increase the value of `ClusterMinimumConcurrentOperations` in the policy to run more materialized views concurrently.
+::: moniker-end
 
 * **Materialized view definition**: The materialized view definition must be defined according to query best practices for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
 

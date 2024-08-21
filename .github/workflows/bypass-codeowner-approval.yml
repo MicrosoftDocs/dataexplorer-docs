@@ -6,28 +6,33 @@ on:
 jobs:
   bypass_approval:
     runs-on: ubuntu-latest
+    env:
+      ACTION_TOKEN_SS: ${{ secrets.ACTIONTOKEN }}
+      ACTION_TOKEN_YS: ${{ secrets.ACTIONTOKEN_YS }}
     steps:
-      - name: Check if PR author is a code owner
+      - name: Approve PR if author is a code owner
         id: check-author
         run: |
-          TEAM_MEMBERS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          echo "Check if PR author is a code owner"
+          TEAM_MEMBERS=$(curl -s -H "Authorization: token $ACTION_TOKEN_SS" \
             https://api.github.com/orgs/MicrosoftDocs/teams/kusto-doc-writers/members)
+          echo "Checking if login in team -- ${{ github.actor }}"
+          IS_CODEOWNER=false
           if echo "$TEAM_MEMBERS" | grep -q "\"login\": \"${{ github.actor }}\""; then
-            DEBUG_IS_CODEOWNER=true
-            echo "is_codeowner=true" >> $GITHUB_ENV
-          else
-            DEBUG_IS_CODEOWNER=false
-            echo "is_codeowner=false" >> $GITHUB_ENV
+            echo "Login Found"
+            IS_CODEOWNER=true
           fi
-          echo "::debug::Team members -- $TEAM_MEMBERS"
-          echo "::debug::is_codeowner -- $DEBUG_IS_CODEOWNER"
+          echo "is_codeowner -- $IS_CODEOWNER"
 
-      - name: Bypass approval if author is a code owner
-        id: bypass-approval
-        if: steps.check-author.outputs.is_codeowner == 'true'
-        run: |
-          echo "Bypassing approval for code owner"
-          curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
-            -d '{"event":"APPROVE"}'
+          if $IS_CODEOWNER; then
+            echo "Bypassing approval for code owner"
+            if [ "${{ github.actor }}" == "shsagir" ]; then
+              ACTION_TOKEN=$ACTION_TOKEN_YS
+            else
+              ACTION_TOKEN=$ACTION_TOKEN_SS
+            fi
+            curl -s -X POST -H "Authorization: token $ACTION_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
+              -d '{"event":"APPROVE"}'
+          fi

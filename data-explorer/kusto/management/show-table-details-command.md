@@ -3,15 +3,17 @@ title: .show table details command
 description: Learn how to use the `.show table details` command to show the properties of the specified tables in the database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show table details command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Returns a set that contains the specified table or all tables in the database with a detailed summary of each table's properties.
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 
@@ -21,7 +23,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `tables` `details`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -57,7 +59,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 | `RowOrderPolicy`           | `string` | The table's effective row order policy, serialized as JSON.                                     |
 | `TableId`                  | `string` | The table's unique ID.                                                           |
 
-`*` *Taking into account policies of parent entities (such as database/cluster).*
+`*` *Taking into account policies of parent entities.*
 
 `**` *Values may be up to 15 minutes old, as they're taken from a cached summary of the table's extents.*
 

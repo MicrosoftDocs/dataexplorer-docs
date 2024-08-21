@@ -3,15 +3,17 @@ title: .rename column command
 description: Learn how to use the `.rename column` command to change the name of a column in an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .rename column command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Changes the name of existing table columns.
 
 ## Permissions
 
-You must have at least [Table Admin](../management/access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ### Syntax
 
@@ -22,7 +24,7 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 > [!NOTE]
 > `.rename` `columns` only supports swapping the names of exactly two existing columns.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

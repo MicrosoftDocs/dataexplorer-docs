@@ -3,9 +3,11 @@ title:  percentiles_linear_fl()
 description: Learn how to use the percentiles_linear_fl() function to calculate percentiles using the linear interpolation between closest ranks.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 08/11/2024
 ---
 # percentiles_linear_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The function `percentiles_linear_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates percentiles using linear interpolation between closest ranks, the same method used by Excel's [PERCENTILES.INC](https://support.microsoft.com/en-us/office/percentile-inc-function-680f9539-45eb-410b-9a5e-c1355e5fe2ed) function. Kusto native [percentile functions](../query/percentiles-aggregation-function.md) use the nearest rank method. For large sets of values the difference between both methods is insignificant, and we recommend using the native function for best performance. For further details on these and additional percentile calculation methods have a look at [percentile article on Wikipedia](https://en.wikipedia.org/wiki/Percentile#Calculation_methods).
 The function accepts a table containing the column to calculate on and an optional grouping key, and a dynamic array of the required percentiles, and returns a column containing dynamic array of the percentiles' values per each group.
@@ -14,7 +16,7 @@ The function accepts a table containing the column to calculate on and an option
 
 `T | invoke percentiles_linear_fl(`*val_col*`,` *pct_arr* [`,` *aggr_col* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -58,7 +60,7 @@ let percentiles_linear_fl=(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:st
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
@@ -94,8 +96,10 @@ The following example uses the [invoke operator](../query/invoke-operator.md) to
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21T246bMBB95yvmDTt1tkml1WpT8bB93j+IIuTAhLgxNjJOFtrtv3cMJpcV8DAwPnPmzMUaPTToCjReaWxzrQxKlx90xvxeb9iCC7hInRdWb1rvlKkENIXPpXObsjeyVoUAWVXuDpGlKU/+JkAPcQz2E7DzaErIiayFDAh9rk2uDtip1rcs5hCwelrxLyEn7GcipqQC0rf393QKsq5EB/t+DJMtyRtz0idETHuua+nUHxyPslqekCpvPRv++RT+qMOQCCpb9rlGU/ljBD+CqDdZ7E88qC9L2TS6D0fgLfi+QXtgDqXmYA2wATc+kUSZErtA8329on4smFmu+RV2zaXtRz5CvdXWVOygrXVscAlYcxrdUVXHR0yBimZcjSg+w6qMR0eVUUBpz3uNY53bG9WOL7+cXZXsZghDO2b47mK+jWqWVxdfTCru6G5Tiw2+mxt5uLhmevAHD5+m1Dj7Gwu/lB+yB5P8S34mpfT0Bl3dJnRIAG01xlXmsE2ew4alInmN9iXa4P8V/+/tehU/dskndfNiTzh/xVjapQLiLWJbCvtBnM9kX8jS6HdUUxrU0HbftDsMrkFlFrZUQJcNLf0PuYtI1MwDAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let percentiles_linear_fl=(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:string='')

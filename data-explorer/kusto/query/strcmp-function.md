@@ -3,9 +3,11 @@ title:  strcmp()
 description: Learn how to use the strcmp() function to compare two strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 08/11/2024
 ---
 # strcmp()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Compares two strings.
 
@@ -15,7 +17,7 @@ The function starts comparing the first character of each string. If they're equ
 
 `strcmp(`*string1*`,` *string2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,8 +36,10 @@ Returns an integer value indicating the relationship between the strings:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjeKSosy8dEMrCK2jAKGNoHxNhWguBSBQcnRyVtKBkBCBxKRkVAGICrAwXEVKKlSIK5arRiG1oiQ1L0WhKLW4NKdEwRZkVXJuAcwFOlCbNQEUhY2inAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(string1:string, string2:string) [
