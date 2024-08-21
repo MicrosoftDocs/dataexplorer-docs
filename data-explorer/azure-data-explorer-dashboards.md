@@ -3,7 +3,7 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 03/03/2024
+ms.date: 08/21/2024
 ---
 
 # Visualize data with Azure Data Explorer dashboards
@@ -140,48 +140,7 @@ You can view the query in either editing or viewing mode. Editing the underlying
 > [!NOTE]
 > Any edits made to the query using this flow won't be reflected in the original dashboard.
 
-## Share dashboards
-
-Use the share menu to [grant permissions](#grant-permissions) for a Microsoft Entra user or Microsoft Entra group to access the dashboard, [change a user's permission level](#change-a-user-permission-level), and [share the dashboard link](#share-the-dashboard-link).
-
-> [!IMPORTANT]
-> To access the dashboard, a dashboard viewer needs the following:
->
-> * Dashboard link for access
-> * Dashboard permissions
-> * Access to the underlying database in the Azure Data Explorer cluster
-
-### Manage permissions
-
-1. Select the **Share** menu item in the top bar of the dashboard.
-1. Select **Manage permissions** from the drop-down.
-
-    :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Share dashboard drop-down.":::
-
-### Grant permissions
-
-To grant permissions to a user in the **Dashboard permissions** pane:
-
-1. Enter the Microsoft Entra user or Microsoft Entra group in **Add new members**.
-1. In the **Permission** level, select one of the following values: **Can view** or **Can edit**.
-1. Select **Add**.
-
-:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Manage dashboard permissions.":::
-
-### Change a user permission level
-
-To change a user permission level in the **Dashboard permissions** pane:
-
-1. Either use the search box or scroll the user list to find the user.
-1. Change the **Permission** level as needed.
-
-### Share the dashboard link
-
-To share the dashboard link, do one of the following:
-
-* Select **Share** and then select **Copy link**
-* In the **Dashboard permissions** window, select **Copy link**.
-
+## 
 ## Export dashboards
 
 Use the file menu to export a dashboard to a JSON file. Exporting dashboard can be useful in the following scenarios:

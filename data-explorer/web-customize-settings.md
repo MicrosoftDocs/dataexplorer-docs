@@ -2,7 +2,7 @@
 title: 'Customize settings in the Azure Data Explorer web UI'
 description: In this guide, you'll learn how to customize your settings in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 05/28/2023
+ms.date: 08/21/2024
 ---
 
 # Customize settings in the Azure Data Explorer web UI
@@ -105,6 +105,20 @@ For highlighted error levels, the column must be of [data type](/kusto/query/sca
     * warning, w, monitor
     * information
     * verbose, verb, d
+
+## Enable cross-tenant dashboard sharing
+
+To enable cross-tenant sharing, a tenant admin must enable it in the Azure Data Explorer WebUI settings. This setting allows you to share dashboards with users in a different tenant.
+
+For more information, see [Grant permissions to users in a different tenant](azure-data-explorer-dashboard-share.md#grant-permissions-to-users-in-a-different-tenant).
+
+Under **Settings** > **Share Dashboards Across Tenants**, toggle to **On**.
+
+:::image type="content" source="media/web-customize-settings/dashboard-sharing.png" alt-text="Screenshot of enabling dashboard sharing in settings.":::
+
+> [!IMPORTANT]
+> If a tenant admin enables cross-tenant sharing and later disables cross-tenant sharing, all dashboards shared while the feature was active will remain accessible.
+
 
 ## Related content
 
