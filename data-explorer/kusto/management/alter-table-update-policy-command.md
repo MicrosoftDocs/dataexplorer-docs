@@ -3,9 +3,11 @@ title: .alter table policy update command
 description: Learn how to use the `.alter table policy update` command to change the table update policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/05/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy update command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Use this command to change the table update policy. The [update policy](update-policy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 
@@ -15,13 +17,13 @@ Use this command to change the table update policy. The [update policy](update-p
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `table` [ *DatabaseName*`.`]*TableName* `policy` `update` *ArrayOfPolicyObjects*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

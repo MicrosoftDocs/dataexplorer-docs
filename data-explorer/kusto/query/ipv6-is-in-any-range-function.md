@@ -3,9 +3,11 @@ title:  ipv6_is_in_any_range()
 description: Learn how to use the ipv6_is_in_any_range function to check if an IPv6 string address is in any of the IPv6 address ranges.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/21/2022
+ms.date: 08/11/2024
 ---
 # ipv6_is_in_any_range()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Checks whether an IPv6 string address is in any of the specified IPv6 address ranges.
 
@@ -15,7 +17,7 @@ Checks whether an IPv6 string address is in any of the specified IPv6 address ra
 
 `ipv6_is_in_any_range(`*Ipv6Address* `,` *Ipv6Ranges* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -28,7 +30,7 @@ Checks whether an IPv6 string address is in any of the specified IPv6 address ra
 > [!NOTE]
 > Either one or more *IPv6Range* strings or an *IPv6Ranges* dynamic array is required.
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 
@@ -38,8 +40,10 @@ Checks whether an IPv6 string address is in any of the specified IPv6 address ra
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQzQqCQBSF9/MUg6sEQcdyshs+gBDRPkSu8yNDNoYO/UAP31S4aGfnbL/Lx7mdcnTXC+z2yt364TQW8mHxbMTiSKhPgJkCzdI15LiRwFZcgmJJCk0mlyDWWQaaCxkzlgbR9yKBqdoHRII5oIh5EpAq3JLOG8uD96DzbTq1KA8wusHYNqSzpdgIOQln0eovWs+luacl83S1JX4VeVJ1d8pKWo6ftxbmcuW1GWtja7SPekDbvhdHv18PX7mD2cSIAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let LocalNetworks=dynamic([

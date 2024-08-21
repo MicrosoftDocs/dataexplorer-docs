@@ -3,9 +3,11 @@ title:  geo_line_centroid()
 description: Learn how to use the geo_line_centroid() function to calculate the centroid of a line or a multiline on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/02/2024
+ms.date: 08/11/2024
 ---
 # geo_line_centroid()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the centroid of a line or a multiline on Earth.
 
@@ -13,7 +15,7 @@ Calculates the centroid of a line or a multiline on Earth.
 
 `geo_line_centroid(`*lineString*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -23,7 +25,7 @@ Calculates the centroid of a line or a multiline on Earth.
 
 ## Returns
 
-The centroid coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the line or the multiline is invalid, the query produces a null result.
+The centroid coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If the line or the multiline is invalid, the query produces a null result.
 
 > [!NOTE]
 >
@@ -46,8 +48,10 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 
 The following example calculates line centroid.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIycxLVbBVSKnMS8zNTNaoViqpLEhVslLyAYoHlxRl5qUr6Sgl5+cXpWTmJZakFitZRUfrmhvrWZqaW5rpKJgY6FkYGJgYxeooQITNjQ3NwcLmZiYmFmaxsbWa1lwFQHNKFJJT80qK8jNTgNalp+bHg2yOh4lpgHia1gBYQZ0fkgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let line = dynamic({"type":"LineString","coordinates":[[-73.95796, 40.80042], [-73.97317, 40.764486]]});
@@ -62,8 +66,10 @@ print centroid = geo_line_centroid(line);
 
 The following example calculates line centroid longitude.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02QwWrDMAyG732K4FMLWZBkW5Y79ga77RhCKYkJLp0TMl/Ktnefs5Ax3X7p45f030Ou7jGF6qUaHun6Hvvjp8qPOaizei39t7zENKpa9dO0DDFdc/hQ57Z9crrxVsARM2mrLdUGGgEwxGgMstdou3rjjGdGskaEBFfOefboLEIp+4c5jU6Ei5fV/hdjY1ZdzEBrs3NCCIWxSOztxjlhLgKBCHeMyzHsWFDEyLZVQBw4q8nrrvs+PR/m8l2u+pDyMsWhhDCG6bLmcdl7x1WdDl/VvEy30Je00li4fdz8y6WF7gcIBtdSTwEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let line = dynamic({"type":"LineString","coordinates":[[-73.95807266235352,40.800426144169315],[-73.94966125488281,40.79691751000055],[-73.97317886352539,40.764486356930334],[-73.98210525512695,40.76786669510221],[-73.96004676818848,40.7980870753293]]});
@@ -79,8 +85,10 @@ print centroid = geo_line_centroid(line)
 
 The following example visualizes line centroid on a map.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzWPwWrDMBBE7/kKoZMNaVh5tSsppX/Qnno0JhhbJKKObBSVEtr+e+WaHGf37ezM5LOYQvTiRYz32F/DUH3LfF+8PMq3zymH17J8zynEs9zLYZ7TGGKf/U0e27Z9MnhwZJxli4qZoNlrOFgAIgYH0CjN3O03ziqHSA4NrZDhopVRlsho7gq0UdppQMONVQbtP+i4cKQAVtuHmUFlrGWkhtBtfhqJUYMuf1XXdb/1824pubMYfMxpDmPpePbzaa17esyqVdW7H5F8HH0St6HP2afh0qcsvkK+iOojxPX02i/1H97E8mMuAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let line = dynamic({"type":"MultiLineString","coordinates":[[[-73.95798683166502,40.800556090021466],[-73.98193359375,40.76819171855746]],[[-73.94940376281738,40.79691751000055],[-73.97317886352539,40.76435634049001]]]});
@@ -92,8 +100,10 @@ print centroid = geo_line_centroid(line)
 
 The following example returns `true` because of the invalid line.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2MQQqAIBAAvyJ7UvDSNegH3TpKiOkiC7aGbYeI/p50nBmYoxGLotNvIflCjGrqxFcpOmP9jY/I0iolnW4OO0X9gNwHwghzz4v0RQYLsdaWiIPgCaNzg1XDur7GmA+R8wB3ZAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print is_bad_line = isnull(geo_line_centroid(dynamic({"type":"LineString","coordinates":[[1, 1]]})))

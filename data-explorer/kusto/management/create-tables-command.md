@@ -3,9 +3,11 @@ title: .create tables command
 description: Learn how to use the `.create tables` command to create new empty tables as a bulk operation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .create tables command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Creates new empty tables as a bulk operation.
 
@@ -13,13 +15,13 @@ The command must run in the context of a specific database.
 
 ## Permissions
 
-You must have at least [Database User](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database User](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.create` `tables` *tableName1* `(`*columnName*`:`*columnType* [`,` ...]`)` [`,` *tableName2* `(`*columnName*`:`*columnType* [`,` ...]`)` ... ] [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

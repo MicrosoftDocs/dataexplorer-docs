@@ -1,11 +1,13 @@
 ---
 title:  Send T-SQL queries over RESTful web API
-description: This article describes how to use T-SQL queries with the RESTful web API for Azure Data Explorer.
+description: This article describes how to use T-SQL queries with the RESTful web API.
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 
 # Send T-SQL queries via the REST API
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 This article describes how to use a [subset of the T-SQL language](/azure/data-explorer/t-sql) to send T-SQL queries via the REST API.
 
@@ -13,9 +15,20 @@ This article describes how to use a [subset of the T-SQL language](/azure/data-e
 
 To send T-SQL queries to the API, create a `POST` request with the following components.
 
-* Request URL: The URL should be formatted as `https://<cluster_uri>/v1/rest/query`, where `<cluster_uri>` is the URI of your cluster containing the table you want to query.
+:::moniker range="azure-data-explorer"
+To copy your URI, in the Azure portal, go to your cluster's overview page, and then select the URI.
+   `https://<your_cluster>.kusto.windows.net/MyDatabase?
+web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
+    Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
+::: moniker-end
 
-* Headers: Set the following [headers](request.md#request-headers). Replace `<cluster_uri>` and `<bearer_token>` with your specific cluster URI and bearer token values.
+:::moniker range="microsoft-fabric"
+To copy your URI, see [Copy a KQL database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri).
+::: moniker-end
+
+* Request URL: The URL should be formatted as `https://<cluster_uri>/v1/rest/query`, where `<cluster_uri>` is the URI of your cluster or database containing the table you want to query.
+
+* Headers: Set the following [headers](request.md#request-headers). Replace `<cluster_uri>` and `<bearer_token>` with your specific cluster or database URI and bearer token values.
 
     ```makefile
     Accept:application/json
@@ -24,7 +37,7 @@ To send T-SQL queries to the API, create a `POST` request with the following com
     Authorization: Bearer <bearer_token>
     ```
 
-* Body: Set the `csl` property to the text of your T-SQL query, and the [client request property](../netfx/request-properties.md) `query_language` to `sql`.
+* Body: Set the `csl` property to the text of your T-SQL query, and the [client request property](request-properties.md) `query_language` to `sql`.
 
     ```json
     {

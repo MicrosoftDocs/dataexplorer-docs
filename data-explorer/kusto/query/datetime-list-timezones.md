@@ -1,9 +1,9 @@
 ---
-title:  datetime_list_timezones()
+title:  "datetime_list_timezones()"
 description: Get a list of all supported timezones.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 06/25/2024
+ms.date: 08/11/2024
 ---
 # datetime_list_timezones()
 
@@ -23,8 +23,10 @@ A list of timezones supported by the [Internet Assigned Numbers Authority (IANA)
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJLEktycxNjc%2FJLC6JB7Gq8vNSizU0AQnW1vofAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print datetime_list_timezones()
@@ -32,7 +34,6 @@ print datetime_list_timezones()
 
 **Output**
 print datetime_list_timezones()
-
 
 ## Related content
 

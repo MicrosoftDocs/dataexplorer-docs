@@ -3,15 +3,22 @@ title: .show queries command
 description: Learn how to use the `.show queries` command to manage see invoked queries.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/22/2023
+ms.date: 08/11/2024
 ---
 # .show queries command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+:::moniker range="azure-data-explorer"
 The `.show` `queries` command lists queries on the cluster that have reached a final state, and that the user invoking the command has access to see. Optionally, the command can return queries that are still running, queries by specific users, or queries grouped by user. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
+::: moniker-end
+:::moniker range="microsoft-fabric"
+The `.show` `queries` command lists queries on the eventhouse that have reached a final state, and that the user invoking the command has access to see. Optionally, the command can return queries that are still running, queries by specific users, or queries grouped by user. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
+::: moniker-end
 
 ## Permissions
 
-A [Database Admin or Database Monitor](./access-control/role-based-access-control.md) can see any command invoked on the database. Other users can only see their queries.
+A [Database Admin or Database Monitor](../access-control/role-based-access-control.md) can see any command invoked on the database. Other users can only see their queries.
 
 ## Syntax
 
@@ -19,7 +26,7 @@ A [Database Admin or Database Monitor](./access-control/role-based-access-contro
 
 `.show` `running` `queries` [ `by user` *UserPrincipalName*]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -29,8 +36,15 @@ A [Database Admin or Database Monitor](./access-control/role-based-access-contro
 
 ## Returns
 
+:::moniker range="azure-data-explorer"
 * Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
 * Returns a list of currently executing queries by the current user, or by another user, or by all users.
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+* Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
+* Returns a list of currently executing queries by the current user, or by another user, or by all users.
+::: moniker-end
 
 > [!NOTE]
 > The text of the query is truncated after 64 KB.
@@ -63,8 +77,10 @@ The returned table schema is:
 
 ### Show completed queries
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA9MrzsgvVygsTS3KTC1W4OWqUSgoys9KTS5RCEmtKNFRcCktSizJzM8DyZQkZqcqGBoAAA0BJaEzAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 .show queries 

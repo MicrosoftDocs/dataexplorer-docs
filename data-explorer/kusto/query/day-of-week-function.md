@@ -3,9 +3,11 @@ title:  dayofweek()
 description: Learn how to use the dayofweek() function to return the `timespan` since the preceding Sunday.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/09/2024
+ms.date: 08/11/2024
 ---
 # dayofweek()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns the number of days since the preceding Sunday, as a `timespan`.
 
@@ -15,7 +17,7 @@ To convert `timespan` to `int`, see [Convert timespan to integer](#convert-times
 
 `dayofweek(`*date*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -31,8 +33,10 @@ The `timespan` since midnight at the beginning of the preceding Sunday, rounded 
 
 The following example returns 0, indicating that the specified datetime is a Sunday.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr4eUKycxNLS5IzFOwVUhJrMxPK09NzdZISSxJLQFKaBhampjrGhrqGhsoGBpYGQCRqaYmAHvwNxk6AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print
@@ -47,8 +51,10 @@ Timespan = dayofweek(datetime(1947-11-30 10:00:05))
 
 The following example returns 1, indicating that the specified datetime is a Monday.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr4eUKycxNLS5IzFOwVUhJrMxPK09NzdZISSxJLQFKaBhamhvoGpjqGhpqagIA76Tx5DEAAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print
@@ -65,8 +71,10 @@ Timespan = dayofweek(datetime(1970-05-11))
 
 The following example returns the number of days both as a `timespan` and as data type `int`.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIyS%2B3TUmszE8rT03N1khJLEktycxN1TC0NDfQNdU1NNLUtOYqKMrMK1EIAYoXFyTmKdiCNOkoeALFbBVK8oFyGkABfcMUTQCfJzyAUQAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let dow=dayofweek(datetime(1970-5-12));

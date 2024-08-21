@@ -3,24 +3,26 @@ title:  dcount() (aggregation function)
 description: Learn how to use the dcount() function to return an estimate of the number of distinct values of an expression within a group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # dcount() (aggregation function)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates an estimate of the number of distinct values that are taken by a scalar expression in the summary group.
 
-[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
+[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
 > [!NOTE]
 > The `dcount()` aggregation function is primarily useful for estimating the cardinality of huge sets. It trades accuracy for performance, and may return a result that varies between executions. The order of inputs may have an effect on its output.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Syntax
 
 `dcount` `(`*expr*[`,` *accuracy*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -37,8 +39,10 @@ Returns an estimate of the number of distinct values of *expr* in the group.
 
 This example shows how many types of storm events happened in each state.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXDJTEtLLQIKQ+RsU5LzS/NKNMC8kMqCVE2FpEqF4JLEklSgtvyilNQikACaLgBDbD8AXQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -65,4 +69,4 @@ The results table shown includes only the first 10 rows.
 
 ## Estimation accuracy
 
-[!INCLUDE [data-explorer-estimation-accuracy](../../includes/data-explorer-estimation-accuracy.md)]
+[!INCLUDE [data-explorer-estimation-accuracy](../includes/estimation-accuracy.md)]

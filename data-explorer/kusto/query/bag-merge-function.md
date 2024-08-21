@@ -3,9 +3,11 @@ title:  bag_merge()
 description: Learn how to use the bag_merge() function to merge property bags.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # bag_merge()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The function merges multiple `dynamic` property bags into a single `dynamic` property bag object, consolidating all properties from the input bags.
 
@@ -13,7 +15,7 @@ The function merges multiple `dynamic` property bags into a single `dynamic` pro
 
 `bag_merge(`*bag1*`,`*bag2*`[`,`*bag3*, ...])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,8 +29,10 @@ A `dynamic` property bag containing the merged results of all input property bag
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUhKTI/PTS1KT9XgUlBQSKnMS8zNTNaoVnc0VLcyNNJRUHcCMkC0M5A2rtXUQVNmpG5lYQhSBmKA1IE11mpqAgDRMHuwaAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result = bag_merge(

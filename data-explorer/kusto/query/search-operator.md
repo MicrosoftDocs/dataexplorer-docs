@@ -3,9 +3,11 @@ title:  search operator
 description: Learn how to use the search operator to search for a text pattern in multiple tables and columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/15/2023
+ms.date: 08/11/2024
 ---
 # search operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Searches a text pattern in multiple tables and columns.
 
@@ -16,7 +18,7 @@ Searches a text pattern in multiple tables and columns.
 
 [*T* `|`] `search` [`kind=` *CaseSensitivity* ] [`in` `(`*TableSources*`)`] *SearchPredicate*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -85,8 +87,10 @@ Unlike the [find operator](find-operator.md), the `search` operator does not sup
 
 Search for a term over all unrestricted tables and views of the database in scope.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlBQci9KTc1TAgAhG1rADgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 search "Green"
@@ -98,8 +102,10 @@ The output contains records from the `Customers`, `Products`, and `SalesTable` t
 
 Search for records that match both terms over all unrestricted tables and views of the database in scope.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlBQci9KTc1TUkjMS1HQUHJJzSmtSFVSyC9SUAooyi9OLU8sSlXSBADUfdV9LAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 search "Green" and ("Deluxe" or "Proseware")
@@ -109,8 +115,10 @@ search "Green" and ("Deluxe" or "Proseware")
 
 Search only in the `Customers` table.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlDIzFPQCCjKTylNLinWVFByL0pNzVMCAAJBkngcAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 search in (Products) "Green"
@@ -120,8 +128,10 @@ search in (Products) "Green"
 
 Search for records that match both case-sensitive terms over all unrestricted tables and views of the database in scope.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlDIzsxLsU1OLE6NL07NK84sySxLVVBKyilNVQIAA9DDEiEAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 search kind=case_sensitive "blue"
@@ -131,8 +141,10 @@ search kind=case_sensitive "blue"
 
 Search for a term in the "FirstName" and "LastName" columns over all unrestricted tables and views of the database in scope.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlBwyywqLvFLzE21UnJMLMrPU1LIL1LwSYSJeZSmZ6QWKwEA/CSSXi0AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 search FirstName:"Aaron" or LastName:"Hughes"
@@ -142,8 +154,10 @@ search FirstName:"Aaron" or LastName:"Hughes"
 
 Search for a term over all unrestricted tables and views of the database in scope if the term appears in a record with a date greater than the given date.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAytOTSxKzlBQ8ihNz0gtVlJIzEtRcEksSfVOrVSwU0gBskoyc1M11I0MDCx1DQyBSF0TAMIgQA00AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 search "Hughes" and DateKey > datetime('2009-01-01')

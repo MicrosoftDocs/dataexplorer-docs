@@ -1,11 +1,13 @@
 ---
 title:  erf()
-description: This article describes erf() function in Azure Data Explorer.
+description:  This article describes erf() function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/12/2023
+ms.date: 08/11/2024
 ---
 # erf()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns the [error function](https://en.wikipedia.org/wiki/Error_function) of the input.
 
@@ -13,7 +15,7 @@ Returns the [error function](https://en.wikipedia.org/wiki/Error_function) of th
 
 `erf(`*x*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,8 +29,10 @@ Error function of x.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?query=H4sIAAAAAAAEACtKzEtPVahQSCvKz1XQNVYoyVcwViguSS1QMOTlqlFIrShJzUtRSC1Ki69QsAXRGhWavFwAxUmYIzYAAAA%3d" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from -3 to 3 step 1

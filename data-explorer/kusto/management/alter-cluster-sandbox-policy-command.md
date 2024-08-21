@@ -3,9 +3,12 @@ title:  .alter cluster policy sandbox command
 description: Learn how to use the `.alter cluster policy sandbox` command to change the cluster sandbox policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter cluster policy sandbox command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Changes the [cluster sandbox policy](sandbox-policy.md). Specified plugins run within [sandboxes](../concepts/sandboxes.md) whose resources are managed for security and resource governance. Sandbox limitations are defined in sandbox policies, where each sandbox kind can have its own policy. Your cluster can run sandboxes for specific flows that need secure isolation.
 Examples of these flows are user-defined scripts that run using the [Python plugin](../query/python-plugin.md) or the [R plugin](../query/r-plugin.md).
@@ -14,13 +17,13 @@ Sandbox policies are managed at cluster-level and affect all the nodes in the cl
 
 ## Permissions
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `cluster` `policy` `sandbox` *ArrayOfPolicyObjects*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

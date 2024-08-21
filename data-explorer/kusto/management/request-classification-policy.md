@@ -3,11 +3,18 @@ title: Request classification policy
 description: Learn how to use the request classification policy to assign incoming requests to a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # Request classification policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+:::moniker range="azure-data-explorer"
 The classification process assigns incoming requests to a workload group, based on the characteristics of the requests. Tailor the classification logic by writing a user-defined function, as part of a cluster-level request classification policy.
+::: moniker-end
+:::moniker range="microsoft-fabric"
+The classification process assigns incoming requests to a workload group, based on the characteristics of the requests. Tailor the classification logic by writing a user-defined function, as part of a eventhouse-level request classification policy.
+::: moniker-end
 
 In the absence of an enabled request classification policy, all requests are classified into the `default` workload group.
 
@@ -31,10 +38,18 @@ The user-defined function has the following characteristics and behaviors:
   * The function fails for any reason.
 * Only one user-defined function can be designated at any given time.
 
+:::moniker range="azure-data-explorer"
 > [!IMPORTANT]
 > The request classification function will be evaluated for each request that runs on the cluster.
 > It is recommended to keep it as lightweight as possible, and not include heavy computations in it.
 > For example, avoid having to evaluate many regular expressions as part of its execution.
+::: moniker-end
+:::moniker range="microsoft-fabric"
+> [!IMPORTANT]
+> The request classification function will be evaluated for each request that runs on the eventhouse.
+> It is recommended to keep it as lightweight as possible, and not include heavy computations in it.
+> For example, avoid having to evaluate many regular expressions as part of its execution.
+::: moniker-end
 
 ### Requirements and limitations
 
@@ -56,7 +71,7 @@ A classification function:
     | `current_application` | `string` | The name of the application that sent the request.                                                                                                                                                                                                                                | `"Kusto.Explorer"`, `"KusWeb"`                                                                    |
     | `current_principal`   | `string` | The fully qualified name of the principal identity that sent the request.                                                                                                                                                                                                         | `"aaduser=1793eb1f-4a18-418c-be4c-728e310c86d3;83af1c0e-8c6d-4f09-b249-c67a2e8fda65"` |
     | `query_consistency`   | `string` | For queries: the consistency of the query - `strongconsistency` or `weakconsistency`. This property can be set by the caller as part of the request's [request properties](../api/rest/request-properties.md): The client request property to set is: `queryconsistency`. | `"strongconsistency"`, `"weakconsistency"`                                                                 |
-    | `request_description` | `string` | Custom text that the author of the request can include. The text can be set by the caller as part of the request's [Client request properties](../api/netfx/request-properties.md): The client request property to set is: `request_description`.                                 | `"Some custom description"`; automatically populated for dashboards: `"dashboard:{dashboard_id};version:{version};sourceId:{source_id};sourceType:{tile/parameter}"`                                                           |
+    | `request_description` | `string` | Custom text that the author of the request can include. The text can be set by the caller as part of the request's [Client request properties](../api/rest/request-properties.md): The client request property to set is: `request_description`.                                 | `"Some custom description"`; automatically populated for dashboards: `"dashboard:{dashboard_id};version:{version};sourceId:{source_id};sourceType:{tile/parameter}"`                                                           |
     | `request_text`        | `string` | The obfuscated text of the request. Obfuscated string literals included in the query text are replaced by multiple of star (`*`) characters. **Note:** only the leading 65,536 characters of the request text are evaluated.                                                      | `".show version"`                                                                     |
     | `request_type`        | `string` | The type of the request - `Command` or `Query`.                                                                                                                                                                                                                                   | `"Command"`, `"Query"`                                                                           |
 
@@ -88,6 +103,7 @@ case(current_principal_is_member_of('aadgroup=somesecuritygroup@contoso.com'), "
 
 ## Management commands
 
+:::moniker range="azure-data-explorer"
 Use the following management commands to manage a cluster's request classification policy.
 
 | Command | Description |
@@ -96,3 +112,14 @@ Use the following management commands to manage a cluster's request classificati
 | [`.alter-merge cluster request classification policy`](alter-merge-cluster-policy-request-classification-command.md) | Enables or disables a cluster's request classification policy |
 | [`.delete cluster request classification policy`](delete-cluster-policy-request-classification-command.md) | Deletes the cluster's request classification policy |
 | [`.show cluster request classification policy`](show-cluster-policy-request-classification-command.md) | Shows the cluster's request classification policy |
+::: moniker-end
+:::moniker range="microsoft-fabric"
+Use the following management commands to manage an eventhouse's request classification policy.
+
+| Command | Description |
+|--|--|
+| [`.alter cluster request classification policy`](alter-cluster-policy-request-classification-command.md) | Alters eventhouse's request classification policy |
+| [`.alter-merge cluster request classification policy`](alter-merge-cluster-policy-request-classification-command.md) | Enables or disables a eventhouse's request classification policy |
+| [`.delete cluster request classification policy`](delete-cluster-policy-request-classification-command.md) | Deletes the eventhouse's request classification policy |
+| [`.show cluster request classification policy`](show-cluster-policy-request-classification-command.md) | Shows the cluster's request classification policy |
+::: moniker-end

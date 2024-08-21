@@ -3,9 +3,11 @@ title:  project-keep operator
 description: Learn how to use the project-keep operator to select columns from the input to keep in the output.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # project-keep operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Select what columns from the input to keep in the output. Only the columns that are specified as arguments will be shown in the result. The other columns are excluded.
 
@@ -13,7 +15,7 @@ Select what columns from the input to keep in the output. Only the columns that 
 
 *T* `| project-keep` *ColumnNameOrPattern* [`,` ...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -36,8 +38,10 @@ A table with columns that were named as arguments. Contains same number of rows 
 
 The following query returns columns from the `ConferenceSessions` table that contain the word "session".
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+blqlEoKMrPSk0u0c1OTS1QKIZIaAEAWs65FysAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 ConferenceSessions

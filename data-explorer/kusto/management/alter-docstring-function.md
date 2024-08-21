@@ -3,9 +3,11 @@ title:  .alter function docstring command
 description: Learn how to use the `.alter function docstring` command to change the `DocString` value of an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
 ---
 # .alter function docstring command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Alters the `DocString` value of an existing function.
 
@@ -22,7 +24,7 @@ You must have at least [Function Admin](../access-control/role-based-access-cont
 
 `.alter` `function` *FunctionName* `docstring` *Documentation*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,6 +44,8 @@ You must have at least [Function Admin](../access-control/role-based-access-cont
 |DocString| `string` |A description of the function for UI purposes|
 
 ## Example
+
+The following example updates the description (`docstring`) of the *MyFunction1* function.
 
 ```kusto
 .alter function MyFunction1 docstring "Updated docstring"

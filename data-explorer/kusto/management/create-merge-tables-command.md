@@ -3,21 +3,23 @@ title: .create-merge tables command
 description: Learn how to use the `.create-merge tables` command to create and extend the schemas of existing tables in a single bulk operation.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .create-merge tables command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Lets you create and extend the schemas of existing tables in a single bulk operation, in the context of a specific database.
 
 ## Permissions
 
-This command requires [Database User](access-control/role-based-access-control.md) permissions, and [Table Admin](access-control/role-based-access-control.md) permissions for extending existing tables.
+This command requires [Database User](../access-control/role-based-access-control.md) permissions, and [Table Admin](../access-control/role-based-access-control.md) permissions for extending existing tables.
 
 ## Syntax
 
 `.create-merge` `tables` *tableName1* `(`*columnName*`:`*columnType* [`,` ...]`)` [`,` *tableName2* `(`*columnName*`:`*columnType* [`,` ...]`)` ... ] [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

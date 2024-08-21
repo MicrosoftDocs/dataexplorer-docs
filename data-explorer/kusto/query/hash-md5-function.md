@@ -3,9 +3,11 @@ title:  hash_md5()
 description: Learn how to use the hash_md5() function to return the MD5 hash value of the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # hash_md5()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns an MD5 hash value of the input.
 
@@ -13,7 +15,7 @@ Returns an MD5 hash value of the input.
 
 `hash_md5(`*source*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -31,12 +33,14 @@ and 255).
 > The algorithm used by this function (MD5) is guaranteed
 > to not be modified in the future, but is very complex to calculate. Users that
 > need a "lightweight" hash function for the duration of a single query are advised
-> to use the function [hash()](./hash-function.md) instead.
+> to use the function [hash()](hash-function.md) instead.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUeDKMLTNSCzOiM9NMdVQCs8vyklR0tThyjBCiKYklqSWZOamahgZGBnoGhgCkaYmADVybf0+AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print 
@@ -52,8 +56,10 @@ h2=hash_md5(datetime(2020-01-01))
 
 The following example uses the `hash_md5()` function to aggregate StormEvents based on State's MD5 hash value.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgGiTvnl+aVKNgqJINoDU2FpEqgeGJJqg6E8kgszrDNABLxuSmmGmAhTaAhJfkFCqYQtTAzAJ9n7vdmAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

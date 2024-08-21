@@ -3,15 +3,17 @@ title: .show ingestion failures command
 description: Learn how to use the `.show ingestion failures` command to show any ingestion failures when running data ingestion management commands.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/05/2023
+ms.date: 08/11/2024
 ---
 # .show ingestion failures command
 
-This command returns information about ingestion failures associated with the use of data ingestion management commands. 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-This command only shows ingestion failures related to data ingestion management commands and doesn't include failures from other stages of the ingestion process. 
-<!-- //TODO put this link in adx moniker pivot -->
-Failures from all stages of ingestion are recorded in ingestion [metrics](/azure/data-explorer/using-metrics) and [diagnostic logs](/azure/data-explorer/using-diagnostic-logs).
+This command returns information about ingestion failures associated with the use of data ingestion management commands.
+
+::: moniker range="azure-data-explorer"
+This command only shows ingestion failures related to data ingestion management commands and doesn't include failures from other stages of the ingestion process. Failures from all stages of ingestion are recorded in ingestion [metrics](/azure/data-explorer/using-metrics) and [diagnostic logs](/azure/data-explorer/using-diagnostic-logs).
+::: moniker-end
 
 The retention period for ingestion failures is 14 days.
 
@@ -29,7 +31,7 @@ To return an ingestion failure for a specific operation ID:
 
 `.show` `ingestion` `failures` `with` `(` `OperationId` `=` *OperationId* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,7 +44,7 @@ To return an ingestion failure for a specific operation ID:
 
 | Output parameter | Type | Description |
 |--|--|--|
-| OperationId | `string` | Operation identifier that can be used to view additional operation details via the <br> [.show operations](operations.md) command </br> |
+| OperationId | `string` | Operation identifier that can be used to view additional operation details via the <br> [.show operations](show-operations.md) command </br> |
 | Database | `string` | Database on which the failure occurred |
 | Table | `string` | Table on which the failure occurred |
 | FailedOn | `dateTime` | Date/time (in UTC) when the failure was registered |
@@ -51,7 +53,7 @@ To return an ingestion failure for a specific operation ID:
 | FailureKind | `string` | Type of the failure (Permanent/Transient) |
 | RootActivityId | `string` | Root Activity ID. |
 | OperationKind | `string` | The ingestion operation type (phase) during which the failure was registered |
-| OriginatesFromUpdatePolicy | Boolean | Indicates whether the failure was registered while executing an [Update Policy](./show-table-update-policy-command.md) |
+| OriginatesFromUpdatePolicy | Boolean | Indicates whether the failure was registered while executing an [Update Policy](show-table-update-policy-command.md) |
 | ErrorCode | `string` | Ingestion error code |
 | Principal | `int` | The principal whosе credentials were used for the ingestion |
 | User | `int` | The user who performed the ingestion |
@@ -73,10 +75,9 @@ The following table is an example output from the `.show` `ingestion` `failures`
 
 ## Related content
 
-<!-- //TODO put links in moniker pivot -->
-
-
+::: moniker range="azure-data-explorer"
 * [Data ingestion](/azure/data-explorer/ingest-data-overview)
 * [Ingestion of invalid data](/azure/data-explorer/ingest-invalid-data)
 * [Duplicate next ingestion failure](dup-next-failed-ingest.md)
+::: moniker-end
 * [Kusto.Ingest ingestion status reporting](../api/netfx/kusto-ingest-client-status.md)

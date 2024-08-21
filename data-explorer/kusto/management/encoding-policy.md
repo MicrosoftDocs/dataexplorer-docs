@@ -1,11 +1,13 @@
 ---
 title:  Encoding policy
-description: This article describes the encoding policy in Azure Data Explorer.
+description:  This article describes the encoding policy.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2023
+ms.date: 08/11/2024
 ---
 # Encoding policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The encoding policy defines how data is encoded, compressed, and indexed. This policy applies to all columns of stored data. A default encoding policy is applied based on the column's data type, and a background process adjusts the encoding policy automatically if necessary.
 

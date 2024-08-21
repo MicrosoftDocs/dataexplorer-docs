@@ -3,9 +3,11 @@ title:  jaccard_index()
 description: Learn how to use the jaccard_index() function to calculate the Jaccard index of two input sets.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 08/11/2024
 ---
 # jaccard_index()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of two input sets.
 
@@ -13,7 +15,7 @@ Calculates the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of t
 
 `jaccard_index`(*set1*, *set2*)
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -31,8 +33,10 @@ The [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of the two inpu
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShOLTG0TanMS8zNTNaINtQx0jGO1dQBCRuhCeuYxGryctUopFaUpOalKGQlJicnFqXYQun4zLyU1AoNkHEQ3ZoAjvvou2AAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print set1=dynamic([1,2,3]), set2=dynamic([1,2,3,4])

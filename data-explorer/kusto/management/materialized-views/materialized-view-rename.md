@@ -1,23 +1,25 @@
 ---
 title:  Materialized view rename
-description: This article describes rename materialized view command in Azure Data Explorer.
+description:  This article describes rename materialized view command.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 # .rename materialized-view
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Renames a materialized view.
 
 ## Permissions
 
-You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Materialized View Admin](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.rename` `materialized-view` *OldName* `to` *NewName*
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,7 +32,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 The command returns all materialized views in the database, after the rename, which is the output of the [`.show materialized view(s)`](materialized-view-show-command.md#show-materialized-views) command.
 
-[!INCLUDE [materialized-view-show-command-output-schema.md](../../../includes/materialized-view-show-command-output-schema.md)]
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../includes/materialized-view-show-command-output-schema.md)]
 
 ## Examples
 

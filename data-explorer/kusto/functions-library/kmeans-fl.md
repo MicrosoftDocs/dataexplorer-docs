@@ -1,25 +1,23 @@
 ---
 title:  kmeans_fl()
-description: This article describes the kmeans_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the kmeans_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
 ---
 # kmeans_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The function `kmeans_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that clusterizes a dataset using the [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering).
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke kmeans_fl(`*k*`,` *features*`,` *cluster_col*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -38,7 +36,7 @@ You can define the function by either embedding its code as a query-defined func
 Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `kmeans_fl()`, see [example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `kmeans_fl()`, see [Example](#example).
 
 ~~~kusto
 let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
@@ -52,8 +50,8 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
         features = kargs["features"]
         cluster_col = kargs["cluster_col"]
 
+        km = KMeans(n_clusters=k)
         df1 = df[features]
-        km = KMeans(n_clusters=k, random_state=0)
         km.fit(df1)
         result = df
         result[cluster_col] = km.labels_
@@ -69,10 +67,10 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
 Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
-> You must run this code to create the function before you can use the function as shown in the [example](#example).
+> You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
 ~~~kusto
-.create-or-alter function with (folder = "Packages\\ML", docstring = "K-Means clustering")
+.create function with (folder = "Packages\\ML", docstring = "K-Means clustering")
 kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 {
     let kwargs = bag_pack('k', k, 'features', features, 'cluster_col', cluster_col);
@@ -84,8 +82,8 @@ kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
         features = kargs["features"]
         cluster_col = kargs["cluster_col"]
 
+        km = KMeans(n_clusters=k)
         df1 = df[features]
-        km = KMeans(n_clusters=k, random_state=0)
         km.fit(df1)
         result = df
         result[cluster_col] = km.labels_
@@ -101,7 +99,7 @@ kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 
 The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
-### Clustering of artificial dataset with three clusters
+### Clusterize artificial dataset with three clusters
 
 ### [Query-defined](#tab/query-defined)
 
@@ -119,8 +117,8 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
         features = kargs["features"]
         cluster_col = kargs["cluster_col"]
 
+        km = KMeans(n_clusters=k)
         df1 = df[features]
-        km = KMeans(n_clusters=k, random_state=0)
         km.fit(df1)
         result = df
         result[cluster_col] = km.labels_
@@ -128,11 +126,12 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
-union 
+OccupancyDetection
+| extend cluster_id=int(null)
+union
 (range x from 1 to 100 step 1 | extend x=rand()+3, y=rand()+2),
 (range x from 101 to 200 step 1 | extend x=rand()+1, y=rand()+4),
 (range x from 201 to 300 step 1 | extend x=rand()+2, y=rand()+6)
-| extend cluster_id=int(null)
 | invoke kmeans_fl(3, bag_pack("x", "y"), "cluster_id")
 | render scatterchart with(series=cluster_id)
 ~~~
@@ -147,19 +146,10 @@ union
 (range x from 1 to 100 step 1 | extend x=rand()+3, y=rand()+2),
 (range x from 101 to 200 step 1 | extend x=rand()+1, y=rand()+4),
 (range x from 201 to 300 step 1 | extend x=rand()+2, y=rand()+6)
-| extend cluster_id=int(null)
 | invoke kmeans_fl(3, bag_pack("x", "y"), "cluster_id")
 | render scatterchart with(series=cluster_id)
 ```
 
 ---
 
-![Screenshot of scatterchart of K-Means clustering of artificial dataset with three clusters.](media/kmeans-fl/kmeans-scattergram.png)
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end
+:::image type="content" source="media/kmeans-fl/kmeans-scattergram.png" alt-text="Screenshot of scatterchart of K-Means clustering of artificial dataset with three clusters.":::

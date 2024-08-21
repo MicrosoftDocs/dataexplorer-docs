@@ -1,24 +1,25 @@
 ---
 title:  azure_digital_twins_query_request plugin
 description: Learn how to use the azure_digital_twins_query_request plugin to run an Azure Digital Twins query as part of a Kusto query.
-
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/07/2022
+ms.date: 08/11/2024
 ---
 # azure_digital_twins_query_request plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 The `azure_digital_twins_query_request` plugin runs an Azure Digital Twins query as part of a Kusto Query Language (KQL) query. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 Using the plugin, you can query across data in both Azure Digital Twins and any data source accessible through KQL. For example, you can [perform time series analytics](#perform-time-series-analytics).
 
-For more information about the plugin, see [Azure Digital Twins query plugin for Azure Data Explorer](/azure/digital-twins/concepts-data-explorer-plugin#using-the-plugin).
+For more information about the plugin, see [Azure Digital Twins query plugin](/azure/digital-twins/concepts-data-explorer-plugin#using-the-plugin).
 
 ## Syntax
 
 `evaluate` `azure_digital_twins_query_request` `(` *AdtInstanceEndpoint* `,` *AdtQuery* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -69,4 +70,4 @@ evaluate azure_digital_twins_query_request(
 
 ## Perform time series analytics
 
-You can use the data history integration feature of Azure Digital Twins to historize digital twin property updates. To learn how to view the historized twin updates, see [View the historized twin updates in Azure Data Explorer](/azure/digital-twins/how-to-use-data-history?tabs=cli#view-the-historized-twin-updates-in-azure-data-explorer)
+You can use the data history integration feature of Azure Digital Twins to historize digital twin property updates. To learn how to view the historized twin updates, see [View the historized twin updates](/azure/digital-twins/how-to-use-data-history?tabs=cli#view-the-historized-twin-updates-in-azure-data-explorer)

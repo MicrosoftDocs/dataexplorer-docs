@@ -1,11 +1,13 @@
 ---
 title:  series_cosine_similarity()
-description: This article describes series_cosine_similarity() in Azure Data Explorer.
+description:  This article describes series_cosine_similarity().
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 12/20/2023
+ms.date: 08/11/2024
 ---
 # series_cosine_similarity()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculate the cosine similarity of two numerical vectors.
 
@@ -15,7 +17,7 @@ The function `series_cosine_similarity()` takes two numeric series as input, and
 
 `series_cosine_similarity(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -32,7 +34,7 @@ Any non-numeric element of the input series will be ignored.
 > [!NOTE]
 > If one or both input arrays are empty, the result will be `null`.
 
-[!INCLUDE [optimization-note](../../includes/vector16-encoding-policy.md)]
+[!INCLUDE [optimization-note](../includes/vector16-encoding-policy.md)]
 
 ## Example
 

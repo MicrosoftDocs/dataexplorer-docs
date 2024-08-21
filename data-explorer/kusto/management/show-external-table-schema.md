@@ -3,9 +3,11 @@ title: .show external table schema command
 description: Learn how to use the `.show external table schema` command to show the schema of the external table as JSON or CSL. 
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show external table schema command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Returns the schema of the external table, as JSON or CSL.
 
@@ -13,7 +15,7 @@ This command is relevant to any external table of any type. For an overview of e
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor, or External Table Admin permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor, or External Table Admin permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 
@@ -21,7 +23,7 @@ You must have at least Database User, Database Viewer, or Database Monitor, or E
 
 `.show` `external` `table` *TableName* `cslschema`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

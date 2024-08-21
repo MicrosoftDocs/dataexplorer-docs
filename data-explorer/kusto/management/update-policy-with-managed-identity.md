@@ -1,16 +1,19 @@
 ---
 title: Run an update policy with a managed identity
-description: This article describes how to use a managed identity for update policy in Azure Data Explorer.
+description:  This article describes how to use a managed identity for update policy.
 ms.reviewer: atefsawaed
 ms.topic: reference
-ms.date: 08/15/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Use a managed identity to run an update policy
 
-The update policy must be configured with a [managed identity](../../managed-identities-overview.md) in the following scenarios:
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+The update policy must be configured with a [managed identity](/azure/data-explorer/managed-identities-overview) in the following scenarios:
 
 * When the update policy query references tables in other databases.
-* When the update policy query references tables with an enabled [row level security policy](./row-level-security-policy.md).
+* When the update policy query references tables with an enabled [row level security policy](row-level-security-policy.md).
 
 An update policy configured with a managed identity is performed on behalf of the managed identity.
 
@@ -18,7 +21,7 @@ In this article, you learn how to configure a system-assigned or user-assigned m
 
 ## Prerequisites
 
-* A cluster and database. [Create a cluster and database](../../create-cluster-and-database.md).
+* A cluster and database [Create a cluster and database](/azure/data-explorer/create-cluster-and-database).
 * [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions on the database.
 
 ## Configure a managed identity
@@ -33,13 +36,13 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ### [User-assigned](#tab/user-assigned)
 
-1. Follow the steps to [Add a user-assigned identity](../../configure-managed-identities-cluster.md#add-a-user-assigned-identity).
+1. Follow the steps to [Add a user-assigned identity](/azure/data-explorer/configure-managed-identities-cluster#add-a-user-assigned-identity).
 
 1. In the Azure portal, in the left menu of your managed identity resource, select **Properties**. Copy and save the **Tenant Id** and **Principal Id** for use in the following steps.
 
-    :::image type="content" source="../../media/update-policy/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="../../media/update-policy/managed-identity-ids.png":::
+    :::image type="content" source="media/updatepolicy/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="media/updatepolicy/managed-identity-ids.png":::
 
-1. Run the following [.alter-merge policy managed_identity](./alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
+1. Run the following [.alter-merge policy managed_identity](alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
 
     ````kusto
     .alter-merge cluster policy managed_identity ```[
@@ -63,11 +66,11 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ### [System-assigned](#tab/system-assigned)
 
-1. Follow the steps to [Add a system-assigned identity](../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
+1. Follow the steps to [Add a system-assigned identity](/azure/data-explorer/configure-managed-identities-cluster#add-a-system-assigned-identity).
 
 1. Copy and save the **Object (principal) ID** for use in a later step.
 
-1. Run the following [.alter-merge policy managed_identity](./alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
+1. Run the following [.alter-merge policy managed_identity](alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
 
     ````kusto
     .alter-merge cluster policy managed_identity ```[

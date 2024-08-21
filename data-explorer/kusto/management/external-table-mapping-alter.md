@@ -2,18 +2,20 @@
 title: .alter external table mapping command
 description: Learn how to use the `.alter external table mapping` command to alter an external table mapping for Azure Blob Storage or Azure Data Lake external tables.
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 
 # .alter external table mapping command
 
-Alters an existing external table mapping. For more information, see [Data mappings](./mappings.md).
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+Alters an existing external table mapping. For more information, see [Data mappings](mappings.md).
 
 ## Syntax
 
 `.alter` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

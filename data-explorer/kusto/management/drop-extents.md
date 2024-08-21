@@ -3,9 +3,12 @@ title: .drop extents command
 description: Learn how to use the `.drop extents` command to drop extents from a specified database or table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .drop extents command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Drops extents from a specified database or table.
 
@@ -20,9 +23,9 @@ This command has several variants: In one, the extents to be dropped are specifi
 
 ## Permissions
 
-If the *TableName* is specified, you must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run the command.
+If the *TableName* is specified, you must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run the command.
 
-If the *TableName* isn't specified, you must have at least [Database Admin](./access-control/role-based-access-control.md) permissions to run the command.
+If the *TableName* isn't specified, you must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run the command.
 
 ## Syntax
 
@@ -30,7 +33,7 @@ If the *TableName* isn't specified, you must have at least [Database Admin](./ac
 
 `.drop` `extents` [`whatif`] `<|` *Query*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 #### Parameters
 
@@ -142,4 +145,4 @@ Remove an extent from a table using the built-in [`extent_id()`](../query/extent
 ```
 
 > [!NOTE]
-> Removing all extents does not necessarily delete all the data in the table, if streaming ingestion is enabled. To clear all the data of a table, use [`.clear table data TestTable`](./clear-table-data-command.md).
+> Removing all extents does not necessarily delete all the data in the table, if streaming ingestion is enabled. To clear all the data of a table, use [`.clear table data TestTable`](clear-table-data-command.md).

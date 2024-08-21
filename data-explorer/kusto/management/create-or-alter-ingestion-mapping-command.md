@@ -3,9 +3,11 @@ title: .create-or-alter ingestion mapping command
 description: Learn how to use the `.create-or-alter ingestion mapping` command to create or alter an ingestion mapping.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/26/2023
+ms.date: 08/11/2024
 ---
 # .create-or-alter ingestion mapping command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Creates or alters an ingestion mapping that can be associated with a specific format and a specific table or database.
 
@@ -16,7 +18,7 @@ If the ingestion mapping doesn't exist, the command will create it. If the inges
 
 ## Permissions
 
-At least [Database Ingestor](access-control/role-based-access-control.md) permissions are required to create a database ingestion mapping, and at least [Table Ingestor](access-control/role-based-access-control.md) permissions are required to create a table ingestion mapping.
+At least [Database Ingestor](../access-control/role-based-access-control.md) permissions are required to create a database ingestion mapping, and at least [Table Ingestor](../access-control/role-based-access-control.md) permissions are required to create a table ingestion mapping.
 
 ## Syntax
 
@@ -24,7 +26,7 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 
 `.create-or-alter` `database` *DatabaseName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

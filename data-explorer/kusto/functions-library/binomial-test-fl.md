@@ -1,25 +1,23 @@
 ---
 title:  binomial_test_fl()
-description: This article describes the binomial_test_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the binomial_test_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
 ---
 # binomial_test_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The function `binomial_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [binomial test](https://en.wikipedia.org/wiki/Binomial_test).
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke binomial_test_fl(`*successes*`,` *trials* [`,`*success_prob* [`,` *alt_hypotheis* ]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -164,11 +162,3 @@ datatable(id:string, x:int, n:int) [
 | Test #1 | 3 | 5 | 0.05792 |
 | Test #2 | 5 | 5 | 0.00032 |
 | Test #3 | 3 | 15 | 0.601976790745087 |
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

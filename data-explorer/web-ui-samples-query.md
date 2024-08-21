@@ -6,7 +6,7 @@ ms.date: 05/17/2023
 ---
 # Explore the samples gallery
 
-The Azure Data Explorer web UI has a samples gallery for you to practice writing [Kusto Query Language (KQL)](kusto/query/index.md) queries and commands. This gallery provides sample data with guided tutorials in a free and publicly accessible [**help** cluster](https://dataexplorer.azure.com/clusters/help).
+The Azure Data Explorer web UI has a samples gallery for you to practice writing [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries and commands. This gallery provides sample data with guided tutorials in a free and publicly accessible [**help** cluster](https://dataexplorer.azure.com/clusters/help).
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ Get started learning about KQL queries with a dataset from the samples gallery.
 
     :::image type="content" source="media/web-ui-samples-gallery/explore-dashboards-dialog.png" alt-text="Screenshot of Explore data samples dialog box showing sample database options.":::
 
-    In the cluster connections pane, the **help** cluster is displayed with sample databases showing [stored functions](kusto/query/schema-entities/stored-functions.md), [external tables](kusto/query/schema-entities/external-tables.md), [materialized views](kusto/management/materialized-views/materialized-view-overview.md), and database [tables](kusto/query/schema-entities/tables.md). The database selected in the sample data dialogue box is highlighted.
+    In the cluster connections pane, the **help** cluster is displayed with sample databases showing [stored functions](/kusto/query/schema-entities/stored-functions?view=azure-data-explorer&preserve-view=true), [external tables](/kusto/query/schema-entities/external-tables?view=azure-data-explorer&preserve-view=true), [materialized views](/kusto/management/materialized-views/materialized-view-overview?view=azure-data-explorer&preserve-view=true), and database [tables](/kusto/query/schema-entities/tables?view=azure-data-explorer&preserve-view=true). The database selected in the sample data dialogue box is highlighted.
 
     :::image type="content" source="media/web-ui-samples-gallery/cluster-connection-pane.png" alt-text="Screenshot of Azure Data Explorer U I cluster connection pane showing sample databases and tables in a tree diagram.":::
 
@@ -71,9 +71,9 @@ Since certain management commands can't be run in the **help** cluster, you can 
 
 | Table | Description | Command |
 |--|--|--|
-| **RawServerMetrics** | The ingestion [batching policy](kusto/management/batching-policy.md) can be configured to reduce the default ingestion latency from 5 minutes to 20 seconds, as described. | `.alter table RawServerMetrics policy ingestionbatching @'{"MaximumBatchingTimeSpan": "00:00:20", "MaximumNumberOfItems": 500,"MaximumRawDataSizeMB": 1024}'` |
-| **RawServerMetrics** | The data [retention policy](kusto/management/retention-policy.md) can be configured to 10 days to avoid the duplication of data across raw and transformed tables. If needed, you can keep raw data for longer. For example, if there are any issues with the *TransformedServerMetrics* table, rather than going back to the source data, you can refer to the data in the *RawServerMetrics* table. | `.alter table RawServerMetrics policy retention '{"SoftDeletePeriod": "10.00:00:00", "Recoverability": "Enabled"}'` |
-| **TransformedServerMetrics** | The [update policy](kusto/management/update-policy.md) can be applied to transform and parse raw data. | `.alter table TransformedServerMetrics policy update @'[{"IsEnabled": true, "Source": "RawServerMetrics", "Query": "Transform_RawServerMetrics()", "IsTransactional": true, "PropagateIngestionProperties": false}]'` |
+| **RawServerMetrics** | The ingestion [batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true) can be configured to reduce the default ingestion latency from 5 minutes to 20 seconds, as described. | `.alter table RawServerMetrics policy ingestionbatching @'{"MaximumBatchingTimeSpan": "00:00:20", "MaximumNumberOfItems": 500,"MaximumRawDataSizeMB": 1024}'` |
+| **RawServerMetrics** | The data [retention policy](/kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true) can be configured to 10 days to avoid the duplication of data across raw and transformed tables. If needed, you can keep raw data for longer. For example, if there are any issues with the *TransformedServerMetrics* table, rather than going back to the source data, you can refer to the data in the *RawServerMetrics* table. | `.alter table RawServerMetrics policy retention '{"SoftDeletePeriod": "10.00:00:00", "Recoverability": "Enabled"}'` |
+| **TransformedServerMetrics** | The [update policy](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true) can be applied to transform and parse raw data. | `.alter table TransformedServerMetrics policy update @'[{"IsEnabled": true, "Source": "RawServerMetrics", "Query": "Transform_RawServerMetrics()", "IsTransactional": true, "PropagateIngestionProperties": false}]'` |
 
 ## Related content
 

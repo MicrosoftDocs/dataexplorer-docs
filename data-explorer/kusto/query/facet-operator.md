@@ -3,9 +3,11 @@ title:  facet operator
 description: Learn how to use the facet operator to return a table for each specified column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 08/11/2024
 ---
 # facet operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a set of tables, one for each specified column.
 Each table specifies the list of values taken by its column.
@@ -15,7 +17,7 @@ An additional table can be created by using the `with` clause.
 
 *T* `| facet by` *ColumnName* [`,` *ColumnName2*`,` ...] [`with (` *filterPipe* `)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,8 +32,10 @@ Multiple tables: one for the `with` clause, and one for each column.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2VOywqCQBTdB/7DYVYKKVMUrlsEtdYfGJ0bWujIzE0R/Ph81qK7OvdwXgkbW11bqtl5uwFdQZaQsGKCY2XZdSUXEBcBVWvMwrRvCIVyEDdSbS8m30PlxMj6xbr/Cb0dxptDFuivzFZkOS0rQkbcEdW+Hu08Ev5RyjiUh1CeAkQRYh2sAQMaa56U89b1DRmhedt8qm9KZzTd9d+SAaxehPPyBR9NMsYY/wAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

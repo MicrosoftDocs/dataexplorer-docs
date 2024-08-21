@@ -1,13 +1,14 @@
 ---
 title:  Scatter chart visualization
-description: This article describes the scatter chart visualization in Azure Data Explorer.
+description:  This article describes the scatter chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/29/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Scatter chart
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 In a scatter chart visual, the first column is the x-axis and should be a numeric column. Other numeric columns are y-axes. Scatter plots are used to observe relationships between variables. The scatter chart visual can also be used in the context of [Geospatial visualizations](geospatial-visualizations.md).
 
@@ -19,7 +20,7 @@ In a scatter chart visual, the first column is the x-axis and should be a numeri
 
 *T* `|` `render` `scatterchart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -32,7 +33,7 @@ In a scatter chart visual, the first column is the x-axis and should be a numeri
 
 All properties are optional.
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -50,9 +51,9 @@ All properties are optional.
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -60,7 +61,7 @@ All properties are optional.
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`title`       |The title of the visualization (of type `string`).                                |
 
-::: zone-end
+::: moniker-end
 
 
 #### `kind` property
@@ -74,8 +75,10 @@ The supported values of this property are:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WOQQ6CMBBF955iwgoSPQI73JNwgpFOoNp2mukAYjy8hSjufvLf/3mdsvjrTEHT6Q1p8h7FvmhLZYMeB2qFI4mu1W2FTlEpc475MUVoOU4O1XJoUBE4HEAUvlOvF1zwvxIKhgRSj6ok/YiisFgdoXyqVUd1sZMQj9viDN/mZwFml4IskzY4E46GfFyP1hgK1QcXijj20QAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

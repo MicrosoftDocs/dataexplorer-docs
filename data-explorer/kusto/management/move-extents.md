@@ -3,10 +3,13 @@ title: .move extents command
 description: Learn how to use the `.move extents` command to move extents from a source table to a destination table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 
 # .move extents command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 This command runs in the context of a specific database. It moves the specified extents from the source table to the destination table.
 
@@ -39,7 +42,7 @@ Move extents specified by query results:
 
 `.move` [`async`] `extents` `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue* [`,`...]`)`] `<|` *Query*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -72,7 +75,7 @@ When the command is run synchronously, a table with the following schema is retu
 | ResultExtentId | `string` | A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Upon failure - "Failed". |
 | Details | `string` | Includes the failure details, in case the operation fails. |
 
-When the command is run asynchronously, an operation ID (GUID) is returned. Monitor the operation's status with the [.show operations](operations.md#show-operations) command, and retrieve the results of a successful execution with the [.show operation details](operations.md#show-operation-details) command.
+When the command is run asynchronously, an operation ID (GUID) is returned. Monitor the operation's status with the [.show operations](show-operations.md) command, and retrieve the results of a successful execution with the [.show operation details](show-operation-details.md) command.
 
 ## Examples
 

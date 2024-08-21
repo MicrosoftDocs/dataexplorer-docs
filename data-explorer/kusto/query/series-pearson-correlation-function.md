@@ -3,9 +3,11 @@ title:  series_pearson_correlation()
 description: Learn how to use the series_pearson_correlation() function to calculate the pearson correlation coefficient of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 08/11/2024
 ---
 # series_pearson_correlation()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the pearson correlation coefficient of two numeric series inputs.
 
@@ -15,7 +17,7 @@ See: [Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_cor
 
 `series_pearson_correlation(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -29,8 +31,10 @@ The calculated Pearson correlation coefficient between the two inputs. Any non-n
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03MQQrCMBCF4b2neEsrQknBZe/gDUqILxJskjIzghQPb1tBu5353ye+3Al1iFIzHKziAjVOcIc3+DKWG7RDjw6ntWtbXCmRwRCqCEdvqZal1WfOXtK8aT2yf3AYk9pRXXP+Ertb1/z5nTOEyhhTSCy2DJSSqMNEL7o9f+GirmjzAZfhTjnAAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range s1 from 1 to 5 step 1

@@ -3,18 +3,21 @@ title:  .alter policy managed_identity command
 description: Learn how to use the `.alter policy managed_identity` command to set the ManagedIdentity policy of the cluster or database.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter policy managed_identity command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Sets the ManagedIdentity policy of the cluster or the specified database, overriding the existing policy.
 
 > [!NOTE]
-> Managed identities should be assigned to the cluster (see [instructions](../../configure-managed-identities-cluster.md)) before you can assign them to the ManagedIdentity policy.
+> Managed identities should be assigned to the cluster (see [instructions](/azure/data-explorer/configure-managed-identities-cluster)) before you can assign them to the ManagedIdentity policy.
 
 ## Permissions
 
-The command to alter the policy requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
+The command to alter the policy requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
@@ -22,7 +25,7 @@ The command to alter the policy requires [AllDatabasesAdmin](access-control/role
 
 `.alter` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfPolicyObjects*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

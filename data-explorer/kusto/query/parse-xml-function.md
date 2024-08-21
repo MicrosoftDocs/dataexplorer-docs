@@ -3,9 +3,11 @@ title:  parse_xml()
 description: Learn how to use the parse_xml() function to return a dynamic object that is determined by the value of XML.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # parse_xml()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Interprets a `string` as an XML value, converts the value to a JSON, and returns the value as `dynamic`.
 
@@ -13,7 +15,7 @@ Interprets a `string` as an XML value, converts the value to a JSON, and returns
 
 `parse_xml(`*xml*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -23,7 +25,7 @@ Interprets a `string` as an XML value, converts the value to a JSON, and returns
 
 ## Returns
 
-An object of type [dynamic](./scalar-data-types/dynamic.md) that is determined by the value of *xml*, or null, if the XML format is invalid.
+An object of type [dynamic](scalar-data-types/dynamic.md) that is determined by the value of *xml*, or null, if the XML format is invalid.
 
 The conversion is done as follows:
 

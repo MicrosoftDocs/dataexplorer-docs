@@ -3,9 +3,11 @@ title: Row Level Security
 description: Learn how to use the Row Level Security policy to control access to rows in a database table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/21/2023
+ms.date: 08/11/2024
 ---
 # Row Level Security
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Use group membership or execution context to control access to rows in a database table.
 
@@ -22,7 +24,7 @@ RLS lets you provide access to other applications and users, only to a certain p
 > [!NOTE]
 > When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access.
 
-For more information, see [management commands for managing the Row Level Security policy](./show-table-row-level-security-policy-command.md).
+For more information, see [management commands for managing the Row Level Security policy](show-table-row-level-security-policy-command.md).
 
 > [!TIP]
 > These functions are often useful for row_level_security queries:
@@ -36,9 +38,9 @@ For more information, see [management commands for managing the Row Level Securi
 * There's no limit on the number of tables on which Row Level Security policy can be configured.
 * Row Level Security policy cannot be configured on [External Tables](../query/schema-entities/external-tables.md).
 * The RLS policy can't be enabled on a table under the following circumstances:
-  * When it's referenced by an [update policy](./update-policy.md) query, while the update policy is not configured with a managed identity.
+  * When it's referenced by an [update policy](update-policy.md) query, while the update policy is not configured with a managed identity.
   * When it's referenced by a [continuous export](../management/data-export/continuous-data-export.md) that uses an authentication method other than impersonation.
-  * When a [restricted view access policy](./restricted-view-access-policy.md) is configured for the table.
+  * When a [restricted view access policy](restricted-view-access-policy.md) is configured for the table.
 
 ## Examples
 
@@ -124,6 +126,7 @@ If you want nonauthorized table users to receive an error instead of returning a
 
 You can combine this approach with other examples. For example, you can display different results to users in different Microsoft Entra groups, and produce an error for everyone else.
 
+:::moniker range="azure-data-explorer"
 ### Control permissions on follower databases
 
 The RLS policy that you configure on the production database will also take effect in the follower databases. You can’t configure different RLS policies on the production and follower databases. However, you can use the [`current_cluster_endpoint()`](../query/current-cluster-endpoint-function.md) function in your RLS query to achieve the same effect, as having different RLS queries in follower tables.
@@ -141,6 +144,27 @@ For example:
 
 > [!NOTE]
 > The RLS function above has no performance impact whatsoever on queries on the leader cluster. The performance impact on queries on the follower clusters will be impacted only by the complexity of `DataForFollowerClusters`.
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+### Control permissions on shortcut databases
+
+The RLS policy that you configure on the production database will also take effect in the shortcut databases. You can’t configure different RLS policies on the production and shortcut databases. However, you can use the [`current_cluster_endpoint()`](../query/current-cluster-endpoint-function.md) function in your RLS query to achieve the same effect, as having different RLS queries in shortcut tables.
+
+For example:
+
+```kusto
+.create-or-alter function RLSForCustomersTables() {
+    let IsProductionCluster = current_cluster_endpoint() == "mycluster.eastus.kusto.windows.net";
+    let DataForProductionCluster = TempTable | where IsProductionCluster;
+    let DataForFollowerClusters = TempTable | where not(IsProductionCluster) | extend EmailAddress = "****";
+    union DataForProductionCluster, DataForFollowerClusters
+}
+```
+
+> [!NOTE]
+> The RLS function above has no performance impact whatsoever on queries on the source database. The performance impact on queries on the shortcut databases will be impacted only by the complexity of `DataForFollowerClusters`.
+::: moniker-end
 
 ## More use cases
 

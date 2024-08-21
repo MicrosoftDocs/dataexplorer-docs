@@ -3,21 +3,28 @@ title: .create-or-alter workload_group command
 description: Learn how to use the `create-or-alter workload_group` command to create a new workload group or alter an existing workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .create-or-alter workload_group command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Create a new workload group, or alters an existing workload group.
 
 ## Permissions
 
-You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
+
+:::moniker range="microsoft-fabric"
+> [!NOTE]
+> The `admin` role inherits `Cluster AllDatabasesAdmin` permissions.
+::: moniker-end
 
 ## Syntax
 
 `.create-or-alter` `workload_group` *WorkloadGroupName* *SerializedPolicyObject*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

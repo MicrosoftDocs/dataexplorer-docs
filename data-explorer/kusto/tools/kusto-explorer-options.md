@@ -1,11 +1,13 @@
 ---
-title: Kusto Explorer options - Azure Data Explorer
-description: This article describes Kusto Explorer options in Azure Data Explorer.
+title:  Kusto Explorer options
+description:  This article describes Kusto Explorer options.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/20/2023
+ms.date: 08/11/2024
 ---
 # Kusto Explorer options
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The following tables describe the options for customizing the behavior of Kusto.Explorer from the **Tools** > **Options** dialog box.
 

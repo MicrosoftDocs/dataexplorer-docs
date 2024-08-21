@@ -9,7 +9,7 @@ ms.date: 03/15/2022
 
 [Azure IoT Hub](/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. Azure Data Explorer offers continuous ingestion from customer-managed IoT Hubs, using its [Event Hub compatible built in endpoint of device-to-cloud messages](/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
 
-The IoT ingestion pipeline goes through several steps. First, you create an IoT Hub, and register a device to it. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Iot Hub connection needs to know [events routing](#events-routing) to connect to the Azure Data Explorer table. Data is embedded with selected properties according to the [event system properties mapping](#event-system-properties-mapping). This process can be managed through the [Azure portal](ingest-data-iot-hub.md), programmatically with [C#](data-connection-iot-hub-csharp.md) or [Python](data-connection-iot-hub-python.md), or with the [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md).
+The IoT ingestion pipeline goes through several steps. First, you create an IoT Hub, and register a device to it. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Iot Hub connection needs to know [events routing](#events-routing) to connect to the Azure Data Explorer table. Data is embedded with selected properties according to the [event system properties mapping](#event-system-properties-mapping). This process can be managed through the [Azure portal](create-iot-hub-connection.md?tabs=portal), programmatically with [C#](create-iot-hub-connection-sdk.md?tabs=c-sharp) or [Python](create-iot-hub-connection-sdk.md?tabs=c-python), or with the [Azure Resource Manager template](create-iot-hub-connection.md?tabs=arm-template).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -23,14 +23,14 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 
 ## Ingestion properties
 
-Ingestion properties instruct the ingestion process where to route the data and how to process it. You can specify [Ingestion properties](ingestion-properties.md) of the events using the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
+Ingestion properties instruct the ingestion process where to route the data and how to process it. You can specify [Ingestion properties](/kusto/ingestion-properties) of the events using the [EventData.Properties](/dotnet/api/microsoft.servicebus.messaging.eventdata.properties?view=azure-data-explorer&preserve-view=true#Microsoft_ServiceBus_Messaging_EventData_Properties). You can set the following properties:
 
 |Property |Description|
 |---|---|
 | Database | Name (case sensitive) of the target database. This property can be used if you want to send the data to a different database than the database the data connection was created on (the default database). To route the data to multiple databases, you must first set up the connection as a multi-database connection. For more information, see [Events routing](#events-routing). |
 | Table | Name (case sensitive) of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
 | Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
-| IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
+| IngestionMappingReference | Name of the existing [ingestion mapping](/kusto/management/create-ingestion-mapping-command?view=azure-data-explorer&preserve-view=true) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Encoding |  Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
 
 > [!NOTE]
@@ -107,7 +107,7 @@ There is no support for enriching the IoT Hub events payload with user propertie
 
 ### Create an IoT Hub
 
-If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create-an-iot-hub). Connection to IoT Hub can be managed through the [Azure portal](ingest-data-iot-hub.md), programmatically with [C#](data-connection-iot-hub-csharp.md) or [Python](data-connection-iot-hub-python.md), or with the [Azure Resource Manager template](data-connection-iot-hub-resource-manager.md).
+If you don't already have one, [Create an Iot Hub](/azure/iot-hub/iot-hub-create-through-portal). Connection to IoT Hub can be managed through the [Azure portal](create-iot-hub-connection.md?tabs=portal), programmatically with [C#](create-iot-hub-connection-sdk.md?tabs=c-sharp) or [Python](create-iot-hub-connection-sdk.md?tabs=c-python), or with the [Azure Resource Manager template](create-iot-hub-connection.md?tabs=arm-template).
 
 > [!Note]
 > * The `device-to-cloud partitions` count is not changeable, so you should consider long-term scale when setting partition count.

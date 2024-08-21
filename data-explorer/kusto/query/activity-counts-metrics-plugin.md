@@ -3,9 +3,11 @@ title:  activity_counts_metrics plugin
 description: Learn how to use the activity_counts_metrics plugin to compare activity metrics in different time windows.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/15/2023
+ms.date: 08/11/2024
 ---
 # activity_counts_metrics plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Calculates useful activity metrics for each time window compared/aggregated to *all* previous time windows. Metrics include: total count values, distinct count values, distinct count of new values, and aggregated distinct count. Compare this plugin to [activity_metrics plugin](activity-metrics-plugin.md), in which every time window is compared to its previous time window only.
 
@@ -13,7 +15,7 @@ Calculates useful activity metrics for each time window compared/aggregated to *
 
 *T* `| evaluate` `activity_counts_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Step* [`,` *Dimensions*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -47,8 +49,10 @@ The following table describes the output table schema.
 
 The next query calculates daily activity counts for the provided input table.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XSzwuCMBQH8Lvg/7CbCQs0g6Lw0I9DdW2dImS5EYOp4V5J0B/fKxU6jEUMD+PzeG/yfVoCMcBrSAUHCaqQg1EUT4bRdBjF4dz3NBbIUlh43HOjSlE1aSy6OyMpwXI8Zy0HByPrrZgZqFV5oYRhDxxYXGd9x9D3jr4XLAJKbG+gaGuH7Ry2dNjKaqOPMYfZ57W2sVri6Pnb7PMSx/+1tv/bxm87YYiE4fck8s71DasIz0HdFTyyvLqVYLJCYpi56aL9ypS2u0TfG0O7vQhfyOSsfmMCAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let start=datetime(2017-08-01);
