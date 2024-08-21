@@ -4612,7 +4612,7 @@
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/concepts/sandboxes-in-non-modern-skus.md",
-      "redirect_url": "/kusto/concepts/sandboxes-in-non-modern-skus",
+      "redirect_url": "/kusto/concepts/sandboxes",
       "redirect_document_id": false
     },
     {
