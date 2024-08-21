@@ -136,7 +136,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 | Property | Type | Description |
 |--|--|--|
-| `MaximumConcurrentOperationsPerNode` | `long` | The maximum number of concurrent streaming ingestion post processing operations on each cluster node node. |
+| `MaximumConcurrentOperationsPerNode` | `long` | The maximum number of concurrent streaming ingestion post processing operations on each cluster node. |
 
 **Formula**
 
