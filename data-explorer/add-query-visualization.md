@@ -40,7 +40,7 @@ For a full list of available visuals, see [Visualization](/kusto/query/render-op
     :::image type="content" source="media/add-query-visualization/select-visual-type.png" alt-text="Screenshot of visual type dropdown in Azure Data Explorer web UI.":::
 
 [!INCLUDE [customize-visuals](includes/customize-visuals.md)]
-
+ 
 ## Change an existing visualization
 
 There are two ways to use the visual formatting pane to change an existing visualization.
