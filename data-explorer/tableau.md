@@ -16,7 +16,7 @@ ms.date: 09/14/2022
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Tableau Desktop](https://www.tableau.com/products/desktop/download) full or trial version.
 * [Connect to Azure Data Explorer with ODBC](connect-odbc.md) using the SQL Server ODBC driver, to connect to Azure Data Explorer from Tableau.
-* To follow along with the example, [ingest the StormEvents sample data](ingest-sample-data.md).
+* To follow along with the example, [ingest the StormEvents sample data](web-ui-samples-query.md).
 
 ## Visualize data in Tableau
 
@@ -46,4 +46,4 @@ Once you've finished configuring ODBC, you can bring sample data into Tableau.
 
 ## Related content
 
-* [Write queries using Kusto Query Language](kusto/query/tutorials/learn-common-operators.md)
+* [Write queries using Kusto Query Language](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true)

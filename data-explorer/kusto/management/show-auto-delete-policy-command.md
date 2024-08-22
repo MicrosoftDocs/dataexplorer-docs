@@ -3,21 +3,23 @@ title: .show table policy auto_delete command
 description: Learn how to use the `.show table policy auto_delete` command to show the auto delete policy that's applied to a table.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show table policy auto_delete command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Shows the auto delete policy that's applied to a table. For more information, see [auto delete policy](auto-delete-policy.md).
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 
 `.show` `table` *TableName* `policy` `auto_delete`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

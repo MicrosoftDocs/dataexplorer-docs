@@ -3,9 +3,11 @@ title:  array_rotate_left()
 description: Learn how to use the array_rotate_left() function to rotate values inside a dynamic array to the left.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 08/11/2024
 ---
 # array_rotate_left()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Rotates values inside a `dynamic` array to the left.
 
@@ -13,7 +15,7 @@ Rotates values inside a `dynamic` array to the left.
 
 `array_rotate_left(`*array*, *rotate_count*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,8 +32,10 @@ Dynamic array containing the same elements as the original array with each eleme
 
 Rotating to the left by two positions:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eSqUUitKEnNSwGpiC/KL0ksSU2xBbITK6G8+JzUtBINoIiOgpEmACPTVOVNAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])
@@ -46,8 +50,10 @@ print arr=dynamic([1,2,3,4,5])
 
 Rotating to the right by two positions by using negative rotate_count value:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eSqUUitKEnNSwGpiC/KL0ksSU2xBbITK6G8+JzUtBINoIiOgq6RJgCXfX6MTgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])

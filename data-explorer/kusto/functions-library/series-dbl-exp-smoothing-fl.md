@@ -1,11 +1,14 @@
 ---
 title:  series_dbl_exp_smoothing_fl()
-description: This article describes the series_dbl_exp_smoothing_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the series_dbl_exp_smoothing_fl() user-defined function.
 ms.reviewer: joruales
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_dbl_exp_smoothing_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Applies a double exponential smoothing filter on a series.
 
@@ -15,7 +18,7 @@ The function `series_dbl_exp_smoothing_fl()` is a [user-defined function (UDF)](
 
 `series_dbl_exp_smoothing_fl(`*y_series* [`,` *alpha* [`,` *beta* ]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -67,8 +70,10 @@ series_dbl_exp_smoothing_fl(y_series:dynamic, alpha:double=0.5, beta:double=0.5)
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32Qza7CIBBG932KbwnammKuG02fhdB2tEQoDWBS7s+7S9V4bzd3Fiy+OXMyjKGIQF5TkH1rJM2TDNa5OOjxIs8GDViST+DYp1FZ3ZVQZhrUsXe31lBT7w4lWop/A158Fcj1Mmvt35YSk+quUnmvEnuIXr4NWySV4HyFiHdbbBeAV/sSonpknBc/p8Kr8UKYcfbOQiA6HGqESBNE8Q2aI409Uv7JjC0y3DO+EXVuhZu1yuvPZbiBVVeSRofI5rxBWiWJ/5rWZ5IL+M8BWSpR7/bL88GRLT47yMPokbpB+XgHMNFBGoEBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_dbl_exp_smoothing_fl = (y_series:dynamic, alpha:double=0.5, beta:double=0.5)

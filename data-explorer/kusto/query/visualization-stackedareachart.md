@@ -1,15 +1,14 @@
 ---
 title:  Stacked area chart visualization
-description: This article describes the stacked area chart visualization in Azure Data Explorer.
+description:  This article describes the stacked area chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Stacked area chart
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The stacked area chart visual shows a continuous relationship. This visual is similar to the [Area chart](visualization-areachart.md), but shows the area under each element of a series. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, area charts also visually represent volume. Area charts are ideal for indicating the change among different datasets.
 
@@ -20,7 +19,7 @@ The stacked area chart visual shows a continuous relationship. This visual is si
 
 *T* `|` `render` `stackedareachart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Supported parameters
 
@@ -50,8 +49,10 @@ All properties are optional.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNMQ7CMAwAd17hMZE6sfctketY1CpxI9sRLeLxIEZYT7o7PakEHnJ5gY/W0OTJQPvQSBmWEzq6s97YyhdOsIimLrSNXioGhzSe4FrzJ2CslQ08kDauaIy0ogU8JFZIB+330XT+k51N2OefU34D4n9FXJoAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 nyc_taxi
@@ -60,11 +61,3 @@ nyc_taxi
 ```
 
 :::image type="content" source="media/visualization-stacked-areachart/stacked-area-chart.png" alt-text="Screenshot of stacked area chart visual output." lightbox="media/visualization-stacked-areachart/stacked-area-chart.png":::
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This visualization isn't supported in Azure Monitor.
-
-::: zone-end

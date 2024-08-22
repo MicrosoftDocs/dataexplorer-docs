@@ -3,10 +3,12 @@ title: .set stored_query_results command
 description: Learn how to use the `.set stored_query_result` command to create a stored query result to store the results of a query on the service for up to 24 hours.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 02/26/2024
+ms.date: 08/11/2024
 ---
 
 # .set stored_query_result command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Sets a mechanism that stores a query result on the service for up to 24 hours.
 
@@ -14,7 +16,7 @@ If a stored query result name already exists, `.set` fails. Instead, use `.set-o
 
 ## Permissions
 
-You must have [Database Viewer](access-control/role-based-access-control.md) permissions to run these commands.
+You must have [Database Viewer](../access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Syntax
 
@@ -22,7 +24,7 @@ You must have [Database Viewer](access-control/role-based-access-control.md) per
 
 `.set-or-replace` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *Query*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -44,7 +46,7 @@ You must have [Database Viewer](access-control/role-based-access-control.md) per
 
 A tabular subset of the records produced by the query, referred to as the "preview", or all records. Regardless of how many records are shown on return, all records are stored.
 
-[!INCLUDE [store-query-known-issue.md](../../includes/store-query-character-limitation.md)]
+[!INCLUDE [store-query-known-issue.md](../includes/store-query-character-limitation.md)]
 
 ## Examples
 

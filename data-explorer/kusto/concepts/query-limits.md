@@ -1,11 +1,15 @@
 ---
-title: Query limits - Azure Data Explorer
-description: This article describes Query limits in Azure Data Explorer.
+title:  Query limits
+description: This article describes Query limits.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/27/2022
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Query limits
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Kusto is an ad-hoc query engine that hosts large datasets and
 attempts to satisfy queries by holding all relevant data in-memory.
@@ -15,14 +19,16 @@ in the form of default query limits. If you're considering removing these limits
 
 ## Limit on request concurrency
 
-**Request concurrency** is a limit that a cluster imposes on several requests running at the same time.
+**Request concurrency** is a limit that is imposed on several requests running at the same time.
 
-* The default value of the limit depends on the SKU the cluster is running on, and is calculated as: `Cores-Per-Node x 10`.
-  * For example, for a cluster that's set up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
+* The default value of the limit depends on the SKU the database is running on, and is calculated as: `Cores-Per-Node x 10`.
+  * For example, for a database that's set up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
 * The default value can be changed by configuring the [request rate limit policy](../management/request-rate-limit-policy.md) of the `default` workload group.
-  * The actual number of requests that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
- 
- For more information, see [Optimize for high concurrency with Azure Data Explorer](../../high-concurrency.md).
+  * The actual number of requests that can run concurrently on a database depends on various factors. The most dominant factors are database SKU, database's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
+
+::: moniker range="azure-data-explorer"
+ For more information, see [Optimize for high concurrency with Azure Data Explorer](/azure/data-explorer/high-concurrency).
+::: moniker-end
 
 ## Limit on result set size (result truncation)
 
@@ -33,13 +39,13 @@ records to **64 MB**. When either of these limits is exceeded, the
 query fails with a "partial query failure". Exceeding overall data size
 will generate an exception with the message:
 
-```
+```txt
 The Kusto DataEngine has failed to execute a query: 'Query result set has exceeded the internal data size limit 67108864 (E_QUERY_RESULT_SET_TOO_LARGE).'
 ```
 
 Exceeding the number of records will fail with an exception that says:
 
-```
+```txt
 The Kusto DataEngine has failed to execute a query: 'Query result set has exceeded the internal record count limit 500000 (E_QUERY_RESULT_SET_TOO_LARGE).'
 ```
 
@@ -84,16 +90,20 @@ Removing the result truncation limit means that you intend to move bulk data out
 
 You can remove the result truncation limit either for export purposes by using the `.export` command or for later aggregation. If you choose later aggregation, consider aggregating by using Kusto.
 
-Kusto provides a number of client libraries that can handle "infinitely large" results by streaming them to the caller. 
-Use one of these libraries, and configure it to streaming mode. 
+Kusto provides a number of client libraries that can handle "infinitely large" results by streaming them to the caller.
+Use one of these libraries, and configure it to streaming mode.
 For example, use the .NET Framework client (Microsoft.Azure.Kusto.Data) and either set the streaming property of the connection string to *true*, or use the *ExecuteQueryV2Async()* call that always streams results. For an example of how to use *ExecuteQueryV2Async()*, see the [HelloKustoV2](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/HelloKustoV2) application.
 
 You may also find the C# streaming ingestion sample application helpful.
 
-Result truncation is applied by default, not just to the
-result stream returned to the client. It's also applied by default to
-any subquery that one cluster issues to another cluster
-in a cross-cluster query, with similar effects.
+Result truncation is applied by default, not just to the result stream returned to the client.
+:::moniker range="azure-data-explorer"
+It's also applied by default to any subquery that one cluster issues to another cluster in a cross-cluster query, with similar effects.
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+It's also applied by default to any subquery that one Eventhouse issues to another Eventhouse in a cross-Eventhouse query, with similar effects.
+::: moniker-end
 
 ### Setting multiple result truncation properties
 
@@ -106,7 +116,7 @@ The following apply when using `set` statements, and/or when specifying flags in
 
 Kusto limits the memory that each query operator can consume to protect against "runaway" queries.
 This limit might be reached by some query operators, such as `join` and `summarize`, that operate by
-holding significant data in memory. By default the limit is 5GB (per cluster node), and it can be increased by setting the request option
+holding significant data in memory. By default the limit is 5GB (per node), and it can be increased by setting the request option
 `maxmemoryconsumptionperiterator`:
 
 <!-- csl -->
@@ -190,7 +200,7 @@ management commands. This value can be increased if needed (capped at one hour).
   or per-connection settings. For example, in Kusto.Explorer, use **Tools** &gt; **Options*** &gt;
   **Connections** &gt; **Query Server Timeout**.
 * Programmatically, SDKs support setting the timeout through the `servertimeout`
-  property. For example, in .NET SDK this is done through a [client request property](../api/netfx/request-properties.md),
+  property. For example, in .NET SDK this is done through a [client request property](../api/rest/request-properties.md),
   by setting a value of type `System.TimeSpan`.
 
 **Notes about timeouts**
@@ -204,12 +214,14 @@ management commands. This value can be increased if needed (capped at one hour).
    than the server timeout value requested by the user. This difference, is to allow for network latencies.
 * To automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
 
+:::moniker range="azure-data-explorer"
 > [!NOTE]
-> See [set timeout limits](../../set-timeout-limits.md) for a step-by-step guide on how to set timeouts in the Azure Data Explorer web UI, Kusto.Explorer, Kusto.Cli, Power BI, and when using an SDK.
+> See [set timeout limits](/azure/data-explorer/set-timeout-limits) for a step-by-step guide on how to set timeouts in the Azure Data Explorer web UI, Kusto.Explorer, Kusto.Cli, Power BI, and when using an SDK.
+::: moniker-end
 
 ## Limit on query CPU resource usage
 
-Kusto lets you run queries and use as much CPU resources as the cluster has.
+Kusto lets you run queries and use all the available CPU resources that the database has.
 It attempts to do a fair round-robin between queries if more than one is running. This method yields the best performance for query-defined functions.
 At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher
@@ -220,11 +232,11 @@ The properties are *query_fanout_threads_percent* and *query_fanout_nodes_percen
 Both properties are integers that default to the maximum value (100), but may be reduced for a specific query to some other value.
 
 The first, *query_fanout_threads_percent*, controls the fanout factor for thread use.
-When this property is set 100%, the cluster will assign all CPUs on each node. For example, 16 CPUs on a cluster deployed on Azure D14 nodes.
+When this property is set 100%, all CPUs will be assigned on each node. For example, 16 CPUs deployed on Azure D14 nodes.
 When this property is set to 50%, then half of the CPUs will be used, and so on.
 The numbers are rounded up to a whole CPU, so it's safe to set the property value to 0.
 
-The second, *query_fanout_nodes_percent*, controls how many of the query nodes in the cluster to use per subquery distribution operation.
+The second, *query_fanout_nodes_percent*, controls how many of the query nodes to use per subquery distribution operation.
 It functions in a similar manner.
 
 If `query_fanout_nodes_percent` or `query_fanout_threads_percent` are set multiple times, for example, in both client request properties and using a `set` statement - the lower value for each property applies.
@@ -239,9 +251,9 @@ The following examples show common query patterns that can cause the query to ex
 * a long list of binary operators that are chained together. For example:
 
 ```kusto
-T 
-| where Column == "value1" or 
-        Column == "value2" or 
+T
+| where Column == "value1" or
+        Column == "value2" or
         .... or
         Column == "valueN"
 ```
@@ -249,15 +261,17 @@ T
 For this specific case, rewrite the query using the [`in()`](../query/in-operator.md) operator.
 
 ```kusto
-T 
+T
 | where Column in ("value1", "value2".... "valueN")
 ```
 
-* a query which has a union operator that is running too wide schema analysis especially that the default flavor of union is to return “outer” union schema (meaning – that output will include all columns of the underlying table).
+* a query which has a union operator that is running too wide schema analysis especially that the default flavor of union is to return "outer" union schema (meaning – that output will include all columns of the underlying table).
 
 The suggestion in this case is to review the query and reduce the columns being used by the query.
 
 ## Related content
 
-* [Optimize for high concurrency with Azure Data Explorer](../../high-concurrency.md)
+:::moniker range="azure-data-explorer"
+* [Optimize for high concurrency with Azure Data Explorer](/azure/data-explorer/high-concurrency)
+::: moniker-end
 * [Query best practices](../query/best-practices.md)

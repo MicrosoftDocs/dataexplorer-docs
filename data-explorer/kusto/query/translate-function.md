@@ -3,9 +3,11 @@ title:  translate()
 description: Learn how to use the translate() function to replace a set of characters with another set of characters in a given string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/27/2023
+ms.date: 08/11/2024
 ---
 # translate()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Replaces a set of characters ('searchList') with another set of characters ('replacementList') in a given a string.
 The function searches for characters in the 'searchList' and replaces them with the corresponding characters in 'replacementList'
@@ -14,7 +16,7 @@ The function searches for characters in the 'searchList' and replaces them with 
 
 `translate(`*searchList*`,` *replacementList*`,` *source*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

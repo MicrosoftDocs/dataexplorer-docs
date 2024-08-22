@@ -1,11 +1,13 @@
 ---
 title:  Kusto.Language overview
-description: This article describes the Kusto.Language client library in Azure Data Explorer.
+description: This article describes the Kusto.Language client library.
 ms.topic: reference
-ms.date: 06/13/2023
+ms.date: 08/11/2024
 ---
 
 # Kusto.Language overview
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 The [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/) library provides a .NET implementation of a parser for the [Kusto Query Language (KQL)](../../query/index.md). The library allows you to parse queries, perform semantic analysis, check for errors, and optimize your queries.
 

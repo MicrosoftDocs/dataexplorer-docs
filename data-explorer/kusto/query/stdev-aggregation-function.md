@@ -3,17 +3,19 @@ title:  stdev() (aggregation function)
 description: Learn how to use the stdev() aggregation function to calculate the standard deviation of an expression using Bessel's correction.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # stdev() (aggregation function)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the standard deviation of *expr* across the group, using [Bessel's correction](https://en.wikipedia.org/wiki/Bessel's_correction) for a small dataset that is considered a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29).
 
-[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
+[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
 For a large dataset that is representative of the population, use [stdevp() (aggregation function)](stdevp-aggregation-function.md).
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Formula
 
@@ -25,7 +27,7 @@ This function uses the following formula.
 
 `stdev(`*expr*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -41,8 +43,10 @@ Returns the standard deviation value of *expr* across the group.
 
 The following example shows the standard deviation for the group.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBVKC5JLVAw5KpRKC7NzU0syqxKVchNzE6Nz8ksLtGo0NQBKkhJLQOyAG3qbWE9AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 5 step 1

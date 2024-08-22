@@ -1,12 +1,14 @@
 ---
 title: Policies overview
-description: Learn which policies are available for management with Azure Data Explorer.
+description: Learn which policies are available for management.
 ms.topic: reference
-ms.date: 08/21/2023
+ms.date: 08/11/2024
 ---
 # Policies overview
 
-The following table provides an overview of the policies for managing your cluster:
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+The following table provides an overview of the policies for managing your environment:
 
 |Policy|Description|
 |--|--|
@@ -27,7 +29,7 @@ The following table provides an overview of the policies for managing your clust
 |[Row level security policy](row-level-security-policy.md)|Defines rules for access to rows in a table based on group membership or execution context.|
 |[Row order policy](row-order-policy.md)|Maintains a specific order for rows within an extent.|
 |[Sandbox policy](sandbox-policy.md)|Controls the usage and behavior of sandboxes, which are isolated environments for query execution.|
-|[Sharding policy](sharding-policy.md)|Defines rules for how extents in your cluster are created.|
+|[Sharding policy](sharding-policy.md)|Defines rules for how extents are created.|
 |[Streaming ingestion policy](streaming-ingestion-policy.md)|Configurations for streaming data ingestion.|
 |[Update policy](update-policy.md)|Allows for data to be appended to a target table upon adding data to a source table.|
 |[Query weak consistency policy](query-weak-consistency-policy.md)|Controls the level of consistency for query results.|

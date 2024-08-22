@@ -3,9 +3,12 @@ title: Database cursors
 description: Learn how to use database cursors to query a database multiple times.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Database cursors
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 A **database cursor** is a database-level object that lets you query a database multiple times. You get consistent results even if there are `data-append` or `data-retention` operations happening in parallel with the queries.
 
@@ -33,13 +36,13 @@ Kusto provides three functions to help implement the two above scenarios:
 
 * [cursor_after(rhs:string)](../query/cursor-after-function.md):
    This special function can be used on table records that have the
-   [IngestionTime policy](./show-table-ingestion-time-policy-command.md) enabled. It returns
+   [IngestionTime policy](show-table-ingestion-time-policy-command.md) enabled. It returns
    a scalar value of type `bool` indicating whether the record's `ingestion_time()`
    database cursor value comes after the `rhs` database cursor value.
 
 * [cursor_before_or_at(rhs:string)](../query/cursor-before-or-at-function.md):
    This special function can be used on the table records that have the
-   [IngestionTime policy](./show-table-ingestion-time-policy-command.md) enabled. It returns
+   [IngestionTime policy](show-table-ingestion-time-policy-command.md) enabled. It returns
    a scalar value of type `bool` indicating whether the record's `ingestion_time()`
    database cursor value comes before or at the `rhs` database cursor value.
 
@@ -55,13 +58,13 @@ For example:
 ## Restrictions
 
 Database cursors can only be used with tables for which the
-[IngestionTime policy](./show-table-ingestion-time-policy-command.md)
+[IngestionTime policy](show-table-ingestion-time-policy-command.md)
 has been enabled. Each record in such a table is associated with the
 value of the database cursor that was in effect when the record was ingested.
 As such, the [ingestion_time()](../query/ingestion-time-function.md)
 function can be used.
 
-The database cursor object holds no meaningful value unless the database has at least one table that has an [IngestionTime policy](./show-table-ingestion-time-policy-command.md) defined.
+The database cursor object holds no meaningful value unless the database has at least one table that has an [IngestionTime policy](show-table-ingestion-time-policy-command.md) defined.
 This value is guaranteed to update, as-needed by the ingestion history, into such tables and the queries run, that reference such tables. It might, or might not, be updated in other cases.
 
 The ingestion process first commits the data, so that it's available for querying, and only then assigns an actual cursor value to each record. If you attempt to query for data immediately following the ingestion completion using a database cursor, the results might not yet incorporate the last records added, because they haven't yet been assigned the cursor value. Also, retrieving the current database cursor value repeatedly might return the same value, even if ingestion was done in between, because only a cursor commit can update its value.

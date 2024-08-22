@@ -3,9 +3,11 @@ title:  bag_has_key()
 description: Learn how to use the bag_has_key() function to check if a dynamic property bag object contains a given key. 
 ms.reviewer: afridman
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # bag_has_key()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Checks whether a dynamic property bag object contains a given key.
 
@@ -13,7 +15,7 @@ Checks whether a dynamic property bag object contains a given key.
 
 `bag_has_key(`*bag*`,`*key*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -28,8 +30,10 @@ True or false depending on if the key exists in the bag.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcy8gtISK4WUyrzE3MxkTa5oLgUggHI1qtWzUysN1RWsFAyNjHUUQDwjdSsF9cSkZPVaTR1Cao2R1cZy1SikVpSk5qUoFKUWl+aUKNgqJCWmx2ckFscD1UJcArNDEwDPKMflogAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(input: dynamic)
@@ -49,8 +53,10 @@ datatable(input: dynamic)
 
 ### Search using a JSONPath key
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2OwQqDMBBE7/mKPRTWQJAk3gL9EhGJGlqpTUUjGK3/3g3p7unN7DA72EDbTa4Y/bwFA0P09j32nNUMaP5YnPhyUaEBpSsBCTTBifPymRWCAbRdj+QkIVm4xwOvfFoR10pKAVrK5uKCNewLbg/OD7C4dZsC3KGzj/Zp15YC+RkK38rUVOYW/gOk4uu+rQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(input: dynamic)

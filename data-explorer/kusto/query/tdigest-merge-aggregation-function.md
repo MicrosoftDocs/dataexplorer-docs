@@ -3,13 +3,15 @@ title:  tdigest_merge() (aggregation functions)
 description: Learn how to use the tdigest_merge() aggregation function to merge tdigest results across the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/20/2023
+ms.date: 08/11/2024
 ---
 # tdigest_merge() (aggregation functions)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Merges tdigest results across the group.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 For more information about the underlying algorithm (T-Digest) and the estimated error, see [estimation error in percentiles](percentiles-aggregation-function.md#estimation-error-in-percentiles).
 
@@ -23,7 +25,7 @@ For more information about the underlying algorithm (T-Digest) and the estimated
 
 `tdigest_merge(`*expr*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,8 +44,10 @@ Returns the merged tdigest values of *expr* across the group.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgoSnVMT3dJzE1MTw0oyi9ILSqptC1JyUxPLS7RQBXWVEiqVAguSSxJRTEhN7UoPTUeqqVYA5uBmgCTdTq/fgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

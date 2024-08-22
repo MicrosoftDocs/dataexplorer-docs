@@ -3,10 +3,12 @@ title: Troubleshoot common problems in Kusto.Explorer
 description: Learn about common problems in installing and running Kusto.Explorer and their solutions
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 08/11/2024
 ---
 
 # Troubleshooting
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 This document provides common difficulties in running and using Kusto.Explorer, and offers solutions. This document also describes [how to reset Kusto.Explorer](#reset-kustoexplorer).
 
@@ -57,7 +59,7 @@ The program fails to start and displays one of the following errors:
 
 You can explore the error details by clicking `Details` in the following error dialog:
 
-![ClickOnce error.](./media/kusto-explorer-troubleshooting/clickonce-err-1.png)
+![ClickOnce error.](media/kusto-explorer-troubleshooting/clickonce-err-1.png)
 
 ```kusto
 Following errors were detected during this operation.

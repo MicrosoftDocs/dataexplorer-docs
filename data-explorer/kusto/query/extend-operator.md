@@ -3,9 +3,13 @@ title:  extend operator
 description: Learn how to use the extend operator to create calculated columns and append them to the result set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/11/2022
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # extend operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Creates calculated columns and append them to the result set.
 
@@ -13,7 +17,7 @@ Creates calculated columns and append them to the result set.
 
 *T* `| extend` [*ColumnName* | `(`*ColumnName*[`,` ...]`)` `=`] *Expression* [`,` ...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -35,17 +39,21 @@ A copy of the input tabular result set, such that:
 1. Column names noted by `extend` that don't exist in the input are appended
    as their new calculated values.
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 > [!NOTE]
 > The `extend` operator adds a new column to the input result set, which does
   **not** have an index. In most cases, if the new column is set to be exactly
   the same as an existing table column that has an index, Kusto can automatically
   use the existing index. However, in some complex scenarios this propagation is
   not done. In such cases, if the goal is to rename a column, use the [`project-rename` operator](project-rename-operator.md) instead.
+::: moniker-end
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlFwzUsJycxN1VEILkksKgExgZKpFSWpeSkKLqVFiSWZ+XkKtjBlCroIdQCqSrMYUAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -68,6 +76,8 @@ The following table shows only the first 10 results. To see the full output, run
 |2007-01-01T06:00:00Z| 2007-01-01T00:00:00Z |06:00:00|
 |2007-01-01T06:00:00Z| 2007-01-01T00:00:00Z |06:00:00|
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * Use [series_stats](series-stats-function.md) to return multiple columns
+::: moniker-end

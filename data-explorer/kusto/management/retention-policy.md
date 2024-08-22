@@ -3,15 +3,17 @@ title: Retention policy
 description: Learn how to use the retention policy to control how data is removed.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # Retention policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 The retention policy controls the mechanism that automatically removes data from tables or [materialized views](materialized-views/materialized-view-overview.md). It's useful to remove data that continuously flows into a table, and whose relevance is age-based. For example, the policy can be used for a table that holds diagnostics events that may become uninteresting after two weeks.
 
 The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it. When the policy is configured both at the database and table level, the retention policy in the table takes precedence over the database policy.
 
-Setting up a retention policy is important for clusters that are continuously ingesting data, which will limit costs.
+Setting up a retention policy is important when continuously ingesting data, which will limit costs.
 
 Data that is "outside" the retention policy is eligible for removal. There's no specific guarantee when removal occurs. Data may "linger" even if the retention policy is triggered.
 
@@ -42,13 +44,13 @@ A retention policy includes the following properties:
 
 ## Management commands
 
-* Use [`.show policy retention`](./show-table-retention-policy-command.md) to show the current retention policy for a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
-* Use [`.alter policy retention`](./alter-table-retention-policy-command.md) to change current retention policy of a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
+* Use [`.show policy retention`](show-table-retention-policy-command.md) to show the current retention policy for a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
+* Use [`.alter policy retention`](alter-table-retention-policy-command.md) to change current retention policy of a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Defaults
 
 By default, when a database or a table is created, it doesn't have a retention policy defined. Normally, the database is created and then immediately has its retention policy set by its creator according to known requirements.
-When you run a [`.show` command](./show-table-retention-policy-command.md) for the retention policy of a database or table that hasn't had its policy set, `Policy` appears as `null`.
+When you run a [`.show` command](show-table-retention-policy-command.md) for the retention policy of a database or table that hasn't had its policy set, `Policy` appears as `null`.
 
 The default retention policy, with the default values mentioned above, can be applied using the following command.
 
@@ -75,7 +77,7 @@ Clearing the retention policy of a database or table can be done using the follo
 
 ## Examples
 
-For a cluster that has a database named `MyDatabase`, with tables `MyTable1`, `MyTable2`, and `MySpecialTable`.
+For an environment that has a database named `MyDatabase`, with tables `MyTable1`, `MyTable2`, and `MySpecialTable`.
 
 ### Soft-delete period of seven days and recoverability disabled
 

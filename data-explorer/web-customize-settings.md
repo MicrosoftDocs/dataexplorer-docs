@@ -44,7 +44,7 @@ Query and admin commands have a default timeout limit. To extend or reduce these
 
 1. The changes are automatically saved.
 
-To learn how to set timeout limits outside of the web UI, see [Set timeout limits](set-timeout-limits.md).
+To learn how to set timeout limits outside of the web UI, see [Set timeout limits](/kusto/set-timeout-limits?view=azure-data-explorer&preserve-view=true).
 
 ## Export and import environment settings
 
@@ -92,7 +92,7 @@ Error level color scheme in **Light** mode | Error level color scheme in **Dark*
 
 ### Column requirements for highlighting
 
-For highlighted error levels, the column must be of [data type](kusto/query/scalar-data-types/index.md) `int`, `long`, or `string`.
+For highlighted error levels, the column must be of [data type](/kusto/query/scalar-data-types/index?view=azure-data-explorer&preserve-view=true) `int`, `long`, or `string`.
 
 * If the column is of type `long` or `int`:
   * The column name must be *Level*

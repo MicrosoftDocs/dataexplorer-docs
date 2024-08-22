@@ -3,9 +3,11 @@ title:  ipv6_is_in_range()
 description: Learn how to use the ipv6_is_in_range() function to check if an IPv6 string address is in the Ipv6-prefix notation range.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/01/2023
+ms.date: 08/11/2024
 ---
 # ipv6_is_in_range()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Checks if an IPv6 string address is in the IPv6-prefix notation range.
 
@@ -13,7 +15,7 @@ Checks if an IPv6 string address is in the IPv6-prefix notation range.
 
 `ipv6_is_in_range(`*Ipv6Address*`,`*Ipv6Range*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -22,7 +24,7 @@ Checks if an IPv6 string address is in the IPv6-prefix notation range.
 | *Ipv6Address* | `string` |  :heavy_check_mark: | An expression representing an IPv6 address.|
 | *Ipv6Range*| `string` |  :heavy_check_mark: | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 
@@ -32,8 +34,10 @@ Checks if an IPv6 string address is in the IPv6-prefix notation range.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA62QwQrCMBBE7/2K3Gqh0KSati74JSJlm92WQAnSRPHgx7tQRY8KztyG4R0eYZIOM2/8uUeihWOEmBYfplLJtGCY+DkU2TFTOVqG0dQtdLgnMLuGgI2uYbC0BddaCzg4yksl+eKsJZUxdV7+n72ef+VqeHWUgNPYAbqq0YI6ZXfFt8SBlJi6zEkdxNK16X3sfVhtfZh8KywepKIru2kBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip_address:string, ip_range:string)

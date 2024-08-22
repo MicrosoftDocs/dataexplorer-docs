@@ -3,9 +3,11 @@ title:  take_anyif() (aggregation function)
 description: Learn how to use the take_anyif() function to return the value of an arbitrarily selected record for which the predicate is 'true'.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 08/11/2024
 ---
 # take_anyif() (aggregation function)
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Arbitrarily selects one record for each group in a [summarize operator](summarize-operator.md) in records for which the *predicate*
 is 'true'. The function returns the value of an expression over each such record.
@@ -21,7 +23,7 @@ This function is useful when you want to get a sample value of one column per va
 
 `take_anyif(` *expr*`,` *predicate* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,8 +41,10 @@ for each of the records randomly selected from each group of the summarize opera
 
 Pick a random EventType from Storm events, where event description has a key phrase.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoScxOjU/Mq8xM0wBLh1QWpOoogJl+iUVFiSWZZakKGYnFCurFJUX5eekK5Zl5KeqaABMQsZRQAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

@@ -3,9 +3,12 @@ title: Kusto ManagedIdentity policy
 description: Learn about the ManagedIdentity policy to control managed identities.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Managed Identity policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 *ManagedIdentity* is a policy that controls which managed identities can be used for what purposes. For example, you can configure a policy that allows a specific managed identity to be used for accessing a storage account for ingestion purposes.
 
@@ -52,7 +55,7 @@ The following values specify authentication to a `usage` using the configured ma
 | Value | Description |
 |---|---|
 | `All` | All current and future usages are allowed. |
-| `AutomatedFlows`| Run a [Continuous Export](./data-export/continuous-data-export.md) or [Update Policy](./update-policy.md) automated flow on behalf of a managed identity. |
+| `AutomatedFlows`| Run a [Continuous Export](data-export/continuous-data-export.md) or [Update Policy](update-policy.md) automated flow on behalf of a managed identity. |
 | `DataConnection` | Authenticate to data connections to an Event Hub or an Event Grid. |
 |`ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
 | `NativeIngestion` |  Authenticate to an SDK for native ingestion from an external source. |

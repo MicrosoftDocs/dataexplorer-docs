@@ -3,9 +3,11 @@ title:  convert_speed()
 description: Learn how to use the convert_speed() function to convert a speed input value from one unit to another.
 ms.reviewer: itsagui
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # convert_speed
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Convert a speed value from one unit to another.
 
@@ -13,7 +15,7 @@ Convert a speed value from one unit to another.
 
 `convert_speed(`*value*`,`*from*`,`*to*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -64,8 +66,10 @@ Convert a speed value from one unit to another.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJLy5ITU3RMNQz0lFQ900tSS0KSC0KTgXKpqgDRZxT80oyc6HCHvmlReqaAK/HOJBIAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result = convert_speed(1.2, 'MeterPerSecond', 'CentimeterPerHour')

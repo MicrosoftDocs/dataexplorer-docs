@@ -3,9 +3,11 @@ title:  percentrank_tdigest()
 description: Learn how to use the percentrank_tdigest() function to calculate the approximate rank of the value in a set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # percentrank_tdigest()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the approximate rank of the value in a set, where rank is expressed as a percentage of the set's size.
 This function can be viewed as the inverse of the percentile.
@@ -14,7 +16,7 @@ This function can be viewed as the inverse of the percentile.
 
 `percentrank_tdigest(`*digest*`,` *value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,8 +36,10 @@ The percentage rank of value in a dataset.
 
 Getting the percentrank_tdigest() of the damage property that valued 4490$ is ~85%:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVShJyUxPLS4JSi1WsIVxNFwScxPTUwOK8gtSi0oqNYEaCorys1KTSxSAAslAM4oS87LjYaoRRugomJhYGmgCANhtajhsAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -51,8 +55,10 @@ StormEvents
 
 Using percentile 85 over the damage property should give 4490$:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVShJyUxPLS4JSi1WsIVxNFwScxPTUwOK8gtSi0oqNYEaCorys1KTSxSAAslAMzJzUuNhihEm6ChYmOoolFQWpOanaeTk56VragIAa7SLZXcAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

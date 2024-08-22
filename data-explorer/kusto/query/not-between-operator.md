@@ -3,9 +3,11 @@ title:  The !between operator
 description: Learn how to use the !between operator to match the input that is outside of the inclusive range.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # !between operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Matches the input that is outside of the inclusive range.
 
@@ -15,7 +17,7 @@ Matches the input that is outside of the inclusive range.
 
 *T* `|` `where` *expr* `!between` `(`*leftRange*` .. `*rightRange*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,8 +36,10 @@ Rows in *T* for which the predicate of (*expr* < *leftRange* or *expr* > *rightR
 
 ### Filter numeric values
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0UCguSS1QMOSqUSjPSC0CySompZaUp6bmKWiYKujpKVhqAgAyiN4KNwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 10 step 1
@@ -54,8 +58,10 @@ range x from 1 to 10 step 1
 
 ### Filter datetime  
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLCoJycxNVVBMSi0pT03NU9BISSxJLQEKaRgZGJjrApGRuaaCnp4ChrixgaYm0KTk/NK8EgDn7tLlXQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -71,8 +77,10 @@ StormEvents
 
 ### Filter datetime using a timespan range
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLCoJycxNVVBMSi0pT03NU9BISSxJLQEKaRgZGJjrApGRuaaCnp6CcYomUF9yfmleCQDBjXU5SwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

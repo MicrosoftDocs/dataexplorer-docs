@@ -3,10 +3,12 @@ title: Kusto.Explorer installation and user interface
 description: Learn about the features of Kusto.Explorer and how it can help you to explore your data
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 03/20/2023
+ms.date: 08/11/2024
 ---
 
 # Kusto.Explorer installation and user interface
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Kusto.Explorer is free software for download and use on your Windows desktop. Kusto.Explorer allows you to query and analyze your data with Kusto Query Language (KQL) in a user-friendly interface. This overview explains how to set up Kusto.Explorer, and describes the user interface you'll use.
 

@@ -25,24 +25,24 @@ Azure Data Explorer partitions all ingested data into *extents*, or *data shards
 
 Extents are spread evenly across cluster nodes, where they're cached both on the local SSD and in memory. This distribution enhances the capacity to prepare and execute highly distributed and parallel queries.
 
-For more information on data storage, see [Extents overview](kusto/management/extents-overview.md).
+For more information on data storage, see [Extents overview](/kusto/management/extents-overview?view=azure-data-explorer&preserve-view=true).
 
 > [!NOTE]
-> Azure Data Explorer also retains essential metadata such as table schemas and policy objects. For a list of policies, see [Policies overview](kusto/management/policies.md).
+> Azure Data Explorer also retains essential metadata such as table schemas and policy objects. For a list of policies, see [Policies overview](/kusto/management/policies?view=azure-data-explorer&preserve-view=true).
 
 ## Data cache
 
 Azure Data Explorer has a multi-hierarchy data cache system to ensure that the most relevant data is cached as closely as possible to the CPU. The cache system depends on the immutability of extents, and works entirely with [compressed data](#column-compression). In order to improve query performance, data remains compressed even in RAM and is only decompressed when required for a query.
 
-For more information on caching, see [Cache policy](kusto/management/cache-policy.md).
+For more information on caching, see [Cache policy](/kusto/management/cache-policy?view=azure-data-explorer&preserve-view=true).
 
 ## Text indexing
 
-Azure Data Explorer is designed to efficiently index free-text ([string](kusto/query/scalar-data-types/string.md)) and JSON-like ([dynamic](kusto/query/scalar-data-types/dynamic.md)) columns as data is ingested. The indexes maintain a level of granularity that enables evaluation of parts of the query based on the index without scanning the data.
+Azure Data Explorer is designed to efficiently index free-text ([string](/kusto/query/scalar-data-types/string?view=azure-data-explorer&preserve-view=true)) and JSON-like ([dynamic](/kusto/query/scalar-data-types/dynamic?view=azure-data-explorer&preserve-view=true)) columns as data is ingested. The indexes maintain a level of granularity that enables evaluation of parts of the query based on the index without scanning the data.
 
 Continuous background optimization of extents through merging improves compression and indexing, ensuring efficient storage and low query latency. Once extents reach a certain size, only the indexes are merged to enhance query performance without compromising efficiency.
 
-For more information on extent and index merging, see [Merge policy](kusto/management/merge-policy.md).
+For more information on extent and index merging, see [Merge policy](/kusto/management/merge-policy?view=azure-data-explorer&preserve-view=true).
 
 ## Row store
 
@@ -56,7 +56,7 @@ Azure Data Explorer maintains data in a compressed state, reducing the amount of
 
 Azure Data Explorer avoids vertical compression, which involves sorting data to improve compression, due to its high CPU cost in free-text or semi-structured data scenarios. Instead, you can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries.
 
-For more information on specifying data sort order, see [Row order policy](kusto/management/row-order-policy.md).
+For more information on specifying data sort order, see [Row order policy](/kusto/management/row-order-policy?view=azure-data-explorer&preserve-view=true).
 
 ## Distributed data query
 
@@ -64,12 +64,12 @@ Azure Data Explorer uses distributed data query technology intended for fast ad 
 
 * Query-generated temporary data is stored in aggregated RAM
 * Relevant extents are marked on a query plan, providing snapshot isolation
-* Fast and efficient queries are prioritized with short [default timeouts](set-timeout-limits.md)
-* Native support for [cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md) that minimizes inter-cluster data exchange
+* Fast and efficient queries are prioritized with short [default timeouts](/kusto/set-timeout-limits?view=azure-data-explorer&preserve-view=true)
+* Native support for [cross-cluster queries](/kusto/query/cross-cluster-or-database-queries?view=azure-data-explorer&preserve-view=true) that minimizes inter-cluster data exchange
 * Queries are just-in-time compiled into highly efficient machine code, using data statistics from all extents and tailored to column encoding specifics
 
 > [!NOTE]
-> Azure Data Explorer is designed to work with the [Kusto Query Language (KQL)](kusto/query/index.md), custom-built for Azure Data Explorer. Additionally, [T-SQL](t-sql.md) is supported.
+> Azure Data Explorer is designed to work with the [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true), custom-built for Azure Data Explorer. Additionally, [T-SQL](t-sql.md) is supported.
 
 ## Related content
 

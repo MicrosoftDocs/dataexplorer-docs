@@ -1,11 +1,14 @@
 ---
-title: series_cosine_similarity_fl() - Azure Data Explorer
-description: This article describes series_cosine_similarity_fl() user-defined function in Azure Data Explorer.
+title:  series_cosine_similarity_fl()
+description:  This article describes series_cosine_similarity_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_cosine_similarity_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the cosine similarity of two numerical vectors.
 
@@ -19,7 +22,7 @@ The function `series_cosine_similarity_fl()` is a [user-defined function (UDF)](
 
 `series_cosine_similarity_fl(`*vec1*`,` *vec2*`,` [ *vec1_size* [`,` *vec2_size* ]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -78,8 +81,10 @@ series_cosine_similarity_fl(vec1:dynamic, vec2:dynamic, vec1_size:real=double(nu
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42R0WoDIRBF3/0KH8clkGihD1n8FrHqhqHGteoGtqX/nkmyCVtKQ30b7vXcO0wMjddQMFTjxoopmIpHjLZgm80QNZyCk3s/J3tEt+E0qR+TJP9n2Jdgo/bj9BYDpClGcbP+IQr2xTi9SOE+c31v4Mdmchn95No19wYR/cN8kpHcOAyA9UKCRwMKrB+lwTOSFGLVeY1Vv7HqH1i1FFxvu2B93gK17Qgt2HfPLjFV6mzdu7Gl2Bl2Gy7FIqi1cA1U92Si9ywXTI3bdIhBW7oTPDkZVNq20rctqC4jCNG9vO7OCmRtfegBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_cosine_similarity_fl=(vec1:dynamic, vec2:dynamic, vec1_size:real=double(null), vec2_size:real=double(null))

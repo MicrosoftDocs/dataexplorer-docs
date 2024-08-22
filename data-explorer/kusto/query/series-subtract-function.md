@@ -3,9 +3,11 @@ title:  series_subtract()
 description: Learn how to use the series_subtract() function to calculate the element-wise subtraction of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_subtract()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the element-wise subtraction of two numeric series inputs.
 
@@ -13,7 +15,7 @@ Calculates the element-wise subtraction of two numeric series inputs.
 
 `series_subtract(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,8 +29,10 @@ A dynamic array of calculated element-wise subtract operation between the two in
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMMQoCMRBG4d5T/OVG0sxae5YQ4ygqbsLMCEnw8EYRF9uPx5O4nBkVJ8l3ECxjBzUuoM0TXI2XIxr2o9hiXqkPal8qkq+cDEoDS0y3EEVim6pvvjsPnf+9ezSP6tabUtDHwSQmC59aWS6sP5yU3hv3Ar+CKt2tAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 3 step 1

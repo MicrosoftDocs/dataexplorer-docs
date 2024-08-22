@@ -35,7 +35,7 @@ This article contains examples in C# and Python. Choose the tab for your preferr
 
 To install the required Python packages, open a command prompt that has Python in its path. Run these commands:
 
-```
+``` bash
 pip install azure-common
 pip install azure-mgmt-resource
 pip install azure-mgmt-kusto
@@ -657,6 +657,6 @@ poller.wait()
 
 ## Related content
 
-* [Create an Azure Data Explorer cluster and database](create-cluster-database-csharp.md)
+* [Create an Azure Data Explorer cluster and database](create-cluster-database.md?tabs=csharp)
 * [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
-* [Tutorial: Learn common KQL operators](kusto/query/tutorials/learn-common-operators.md)
+* [Tutorial: Learn common KQL operators](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true)

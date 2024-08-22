@@ -3,13 +3,15 @@ title:  arg_min() (aggregation function)
 description: Learn how to use the arg_min() aggregation function to find a row in a group that minimizes the input expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 08/11/2024
 ---
 # arg_min() (aggregation function)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Finds a row in the group that minimizes *ExprToMinimize*.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 > **Deprecated aliases:** argmin()
 
@@ -17,7 +19,7 @@ Finds a row in the group that minimizes *ExprToMinimize*.
 
 `arg_min` `(`*ExprToMinimize*`,` *\** | *ExprToReturn*  [`,` ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -38,8 +40,10 @@ Returns a row in the group that minimizes *ExprToMinimize*, and the value of *Ex
 
 Find the minimum latitude of a storm event in each state.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVSCxKj8/NzNNwSk3PzPNJLNFRgLDykxNLMvPzNBWSKhWCSxJLUgG8tM4mQwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -64,8 +68,10 @@ The results table shown includes only the first 10 rows.
 
 Find the first time an event with a direct death happened in each state showing all of the columns.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVXBJTSzJKHbJLEpNLlGwUzAAyRSX5uYmFmVWpSokFqXH52bmaQSXJBaVhGTmpuooaGkqJFUqAAVKUgHnoTY6UQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -91,8 +97,10 @@ The results table shown includes only the first 10 rows and first 3 columns.
 
 The following example demonstrates null handling.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31QPQvCQAzdC/0PoVMrt+jYzQp2FQdBRORKQzlIcyW9UhR/vKlYFEHzhny9F5LUNigqwnQrgws59EEcNwY2nry80wNK7zzn4DhkcIojUEvWXUeYGEj2WKtbmu96KYisgapSHoiymVFYVkyUIxL58T/n55gdWpkIhfiRPzeYG7NypY1zHN2hH9rWirshWGkureP0dZqBRQbVFZ5/eADFBqWOFwEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(Fruit: string, Color: string, Version: int) [
