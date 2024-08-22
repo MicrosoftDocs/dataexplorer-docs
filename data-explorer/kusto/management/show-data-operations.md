@@ -29,6 +29,8 @@ Any user can see their own data operations.
 
 ## Returns
 
+This command returns a table with the following columns:
+
 | Output parameter | Type   | Description                        |
 |------------------|--------|------------------------------------|
 |Timestamp |`datetime`|The time when the operation reached its final state. |
@@ -48,6 +50,12 @@ Any user can see their own data operations.
 ## Example
 
 The following example returns information about `UpdatePolicy`, `BatchIngest`, and `SetOrAppend` operations.
+
+```kusto
+.show data operations
+```
+
+**Output**
 
 |Timestamp |Database |Table |ClientActivityId |OperationKind |OriginalSize |ExtentSize |RowCount |ExtentCount |TotalCpu |Duration |Principal |Properties |
 |--|--|--|--|--|--|--|--|--|--|--|--|--|
