@@ -3,9 +3,11 @@ title:  dcount_intersect plugin
 description: Learn how to use the dcount_intersect plugin to calculate the intersection between N sets based on hyper log log (hll) values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/11/2022
+ms.date: 08/11/2024
 ---
 # dcount_intersect plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Calculates intersection between N sets based on `hll` values (N in range of [2..16]), and returns N `dcount` values. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
@@ -13,14 +15,14 @@ Calculates intersection between N sets based on `hll` values (N in range of [2..
 
 *T* `| evaluate` `dcount_intersect(`*hll_1*, *hll_2*, [`,` *hll_3*`,` ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*T*| `string` | :heavy_check_mark:| The input tabular expression. |
-|*hll_i*| The values of set S<sub>i</sub> calculated with the [`hll()`](./hll-aggregation-function.md) function.|
+|*hll_i*| The values of set S<sub>i</sub> calculated with the [`hll()`](hll-aggregation-function.md) function.|
 
 ## Returns
 
@@ -36,8 +38,10 @@ S<sub>1</sub> ∩ S<sub>2</sub> ∩ ... ∩ S<sub>n</sub>
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WSQWvjMBCF7/kV71JqgxbbMc4hkFMpuwvd/oWgypNEu7IUJDkNpT++mrh2nUK7PomZeU/6nqco8JMseRkJtu+eyAfsvOtQITpUZbnw0u4J5+sqQqQjqsUr6BzJttDh/kQWG2Rn3GCJzQZlLlL5j2vrsVxflZux3AzlRVHgThrVG36McrbVUTsrDX49POAkTU8BmXWpGQ8y4ra8TUbQVpm+pfQEC5LqALdLfeogA2Q7eVz0AsHhmfCsjUHon6KXKkJH8JU+Tzih7zrp9QvhYMyWBqZ0zLTeZQOkwFlcKJa5WGD2saIbcD8UzP8/RfNZ0cwU4Fx+25P7x9yEo+n3CfUSgRrjCmiV621isQkkkGLqMN3D/4kD4GCHwe00mI2gYgKYTg1HcvTub5oDzzy+r8gGocQPVGJOg/TQ7z7em4J3A005i4F9t9K2Y3ah+uycfPeqzZaizlN/JTgHTzvn1zPfVWpVq698xwNHHZZ8wZWvaHLepbr88Kb1u3FdJk39Bu22I/gpAwAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 // Generate numbers from 1 to 100

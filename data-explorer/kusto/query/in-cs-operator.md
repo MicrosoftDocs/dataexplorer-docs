@@ -3,23 +3,25 @@ title:  The case-sensitive in string operator
 description: Learn how to use the in operator to filter data with a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/29/2023
+ms.date: 08/11/2024
 ---
 # in operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Filters a record set for data with a case-sensitive string.
 
-[!INCLUDE [in-operator-comparison](../../includes/in-operator-comparison.md)]
+[!INCLUDE [in-operator-comparison](../includes/in-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 ## Syntax
 
 *T* `|` `where` *col* `in` `(`*expression*`,` ... `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,8 +44,10 @@ Rows in *T* for which the predicate is `true`.
 
 The following query shows how to use `in` with a list of scalar values.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMU9BQcvPxD/J0cVTSUVByd/UPcvcEM/1cwxUi/YO8lTRBmpLzS/NKAJNAy9pJAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -61,8 +65,10 @@ StormEvents
 
 The following query shows how to use `in` with a dynamic array.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoLkksSS1WsFVIqcxLzM1M1ohWd/PxD/J0cVTXUVB3DPFx9AvxdFYI9g8N8QCJuLv6B7l7OqrHalpzBZfkF+W6lqXmlRQrcNUolGekFqUqBIMMVMjMU9CAGK0JlEnOL80rAQDj7kmUbgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let states = dynamic(['FLORIDA', 'ATLANTIC SOUTH', 'GEORGIA']);
@@ -81,8 +87,10 @@ StormEvents
 
 The following query shows how to use `in` with a tabular expression.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIyS+IN40PLkksSS1WsFXg5VIAguCS/KJc17LUvJJiiECNQnFpbm5iUWZVqkJyfmleiYamQlKlAlgbTEVJfoGCKUgUrCDeGmgWkjlAXo1CeUZqUSpEl0JmnoIGsuWaYBVgvQBWFNNCmAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Top_5_States = 
@@ -96,8 +104,10 @@ StormEvents
 
 The same query can be written with an inline tabular expression statement.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXIzFPQ0ODlUgCCYIQyiECNQnFpbm5iUWZVqkJyfmleiYamQlIlRCNMRUl+gYIpSBSsIB4irKkJtgcsBAD4wHSifQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -117,8 +127,10 @@ StormEvents
 
 ### Top with other example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PPQuDMBCG9/yKFxcVXJ3EpdCt0EF3sfaqKZpIPEst/vhGpVZqs+Tg7nk/amKcZFmxkqrMDkOWcM6EGI39jMxr+SIvYW2a44MUdwL2jej6psmN3aFeYZoPLFroXrG8eTORDq2Vi+GuLq6Py4DZx49EbQOkus3CxXni/+QZwbpFOIE7wxGt0XcqeNGMIPYCYgQ9mdQVn37SBlxmqeBtE/jBchTAOXNFxvHFtrCdvN8M30ZvE2wmM1ABAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Lightning_By_State = materialize(StormEvents
@@ -142,8 +154,10 @@ Lightning_By_State
 
 ### Use a static list returned by a function
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMU9DwzCsBChSXZOalgwWLNTQ1QeqS80vzSgAtnqHrPAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -159,8 +173,10 @@ StormEvents
 
 The function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrzsgvV0grzUsuyczPU/DMK0ktSi0uycxLDy5JLEktBgBVrDk7IAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 .show function InterestingStates

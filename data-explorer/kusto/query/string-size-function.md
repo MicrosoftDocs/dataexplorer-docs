@@ -3,9 +3,11 @@ title:  string_size()
 description: Learn how to use the string_size() function to measure the size of the input string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 08/11/2024
 ---
 # string_size()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns the size, in bytes, of the input string.
 
@@ -13,7 +15,7 @@ Returns the size, in bytes, of the input string.
 
 `string_size(`*source*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -29,8 +31,10 @@ Returns the length, in bytes, of the input string.
 
 ### String of letters
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjOrEpVsFUoLgHy0uNBPA2ljNScnHwlTQB9vNZzIQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print size = string_size("hello")
@@ -44,8 +48,10 @@ print size = string_size("hello")
 
 ### String of letters and symbols
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjOrEpVsFUoLgHy0uNBPA2lR5OWPZq04dGkdY8mrX80aZWSJgDJzHqdKwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print size = string_size("⒦⒰⒮⒯⒪")

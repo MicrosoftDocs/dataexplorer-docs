@@ -3,9 +3,11 @@ title:  bag_remove_keys()
 description: Learn how to use the bag_remove_keys() function to remove keys and associated values from property bags. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # bag_remove_keys()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Removes keys and associated values from a `dynamic` property bag.
 
@@ -13,7 +15,7 @@ Removes keys and associated values from a `dynamic` property bag.
 
 `bag_remove_keys(`*bag*`,`*keys*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -28,8 +30,10 @@ Returns a `dynamic` property bag without specified keys and their values.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcy8gtISq5TKvMTczGRNrmguBSCAcjWq1bNTKw3VFawUDI2MdUAyCiARI3UrBfXEpGT1Wk0dHOrVyxJzSlPVdcDqjYHqTYz0DEDKY7lqFFIrSlLzUhSKUotLc0pskxLT44tSc/PLUuOBaoshLtKBmxkNsRFikol6rKYmAD1YmXe9AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(input:dynamic)
@@ -49,8 +53,10 @@ datatable(input:dynamic)
 
 ### Remove inner properties of dynamic values using JSONPath notation
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2O3QqDMAyF7/sUuRjEQpFW74Q9iRSpNgyZf2gVnfPd19JtydWXk5wTa5zvuqOkHabVFfYYTN82nJUMfH0xOfFJh8ICVJYLCJB5OHGax0khFICmbtArYRAk3I8XXnE191wqKQVkUuqLC6bZG2h3NFiYaVk7d6/No5qpHzeq/MUSvxH//BJvaQhNY+DPV3P+AU1I1W7BAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(input:dynamic)

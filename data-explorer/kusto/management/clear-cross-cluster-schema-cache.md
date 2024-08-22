@@ -3,26 +3,29 @@ title: Clear schema cache for cross-cluster queries
 description: Learn how to manually clear the cross-cluster query cache.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 
 # Clear schema cache for cross-cluster queries
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 When running a cross-cluster query, the cluster that performs the initial query interpretation must have the schema of the entities referenced on the remote clusters. Sending the command can be an expensive network operation and therefore the remote schema entities are cached.
 
-Any changes to the schema of the remote entity may result in unwanted effects. For example, new columns aren't recognized or deleted columns may cause a 'Partial Query Error' instead of a semantic error. For more information, see [Cross-cluster queries and schema changes](../concepts/cross-cluster-and-schema-changes.md).
+Any changes to the schema of the remote entity may result in unwanted effects. For example, new columns aren't recognized or deleted columns may cause a 'Partial Query Error' instead of a semantic error. For more information, see [Cross-cluster queries and schema changes](../query/cross-cluster-or-database-queries.md#handle-schema-changes-of-remote-entities).
 
 You can use the following command when you need to refresh the schema without waiting for the expiry time of the cache.
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 
 `.clear` `cache` `remote-schema` `cluster('`*ClusterName*`').database('`*DatabaseName*`')`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

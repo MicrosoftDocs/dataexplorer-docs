@@ -3,9 +3,11 @@ title:  log()
 description: Learn how to use the log() function to return the natural logarithm of the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 08/11/2024
 ---
 # log()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The natural logarithm is the base-e logarithm: the inverse of the natural exponential function (exp).  
 
@@ -13,7 +15,7 @@ The natural logarithm is the base-e logarithm: the inverse of the natural expone
 
 `log(`*number*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -28,8 +30,10 @@ The natural logarithm is the base-e logarithm: the inverse of the natural expone
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNyU/XMNUEAE7U1nYTAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=log(5)

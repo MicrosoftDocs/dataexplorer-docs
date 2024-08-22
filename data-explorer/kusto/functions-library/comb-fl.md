@@ -1,11 +1,14 @@
 ---
 title:  comb_fl()
-description: This article describes comb_fl() user-defined function in Azure Data Explorer.
+description:  This article describes comb_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/30/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # comb_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculate *C(n, k)*
 
@@ -15,7 +18,7 @@ The function `comb_fl()` is a [user-defined function (UDF)](../query/functions/u
 
 `comb_fl(`*n*, *k*`)`
   
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -72,8 +75,10 @@ comb_fl(n:int, k:int)
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WPwQrCMBBE7/sVc0zQorU3S7+lxJgESbKRNgdB/XdTWwjoXgb27Qw7wWToFC+jDYPg843zHn4RSU9CmVAOrNJ5ZAxwKkYleNfK/gf6Shv/zyuuMKeQ2InVf9hiVvWS3tTTpNgZMOyUIrpiQHvEnM0dHb1gHtnwFUs0N6e60N9ntlKCSx/5Abm0FffmAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let comb_fl=(n:int, k:int)

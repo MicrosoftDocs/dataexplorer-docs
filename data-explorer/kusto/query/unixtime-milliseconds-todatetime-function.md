@@ -3,9 +3,11 @@ title:  unixtime_milliseconds_todatetime()
 description: Learn how to use the unixtime_milliseconds_todatetime() function to convert unix-epoch milliseconds to UTC datetime.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/28/2023
+ms.date: 08/11/2024
 ---
 # unixtime_milliseconds_todatetime()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Converts unix-epoch milliseconds to UTC datetime.
 
@@ -13,7 +15,7 @@ Converts unix-epoch milliseconds to UTC datetime.
 
 `unixtime_milliseconds_todatetime(`*milliseconds*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -23,12 +25,14 @@ Converts unix-epoch milliseconds to UTC datetime.
 
 ## Returns
 
-If the conversion is successful, the result is a [datetime](./scalar-data-types/datetime.md) value. Otherwise, the result is null.
+If the conversion is successful, the result is a [datetime](scalar-data-types/datetime.md) value. Otherwise, the result is null.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJLEmNL8nMTVWwVSjNy6wAMeNzM3NyMotTk/PzUorjS/JBakDiGoamJmbGBgYWBiCgCQDATIC6QQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print date_time = unixtime_milliseconds_todatetime(1546300800000)

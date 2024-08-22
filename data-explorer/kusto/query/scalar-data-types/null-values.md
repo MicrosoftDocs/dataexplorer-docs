@@ -3,11 +3,12 @@ title:  Null values
 description: Learn how to use and understand null values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Null values
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
 All scalar data types in Kusto have a special value that represents a missing value.
 This value is called the *null value*, or *null*.
@@ -21,8 +22,10 @@ The null value of a scalar type *T* is represented in the query language by the 
 
 The following query returns a single row full of null values:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA0WMQQ6AIAzAvsJREz81ZCFLxkZgO%2Fh7NWZ4aw9tHySWsipv4sz7kQoYGjVcfgk0OkOrUwl%2B0kBWqcED4b%2BpZ16v9zs7yOc37tkiEnwAAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(null), real(null), double(null), timespan(null)
@@ -48,8 +51,10 @@ to determine if a scalar value isn't the null value.
 
 For example:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbLEHKvMvBLNaFMdBSCtkVeak6MZy1WjkFpRkpqXouBZ7JSZnp5aFJKRmGesYKsAVK9gp2CMQ4F/kR9QP0KZQn6RQmYxyEyQRZrIulwLSxNzQvKR1NvaIlyArNIvvwRTsSKSYgAsrfz+zgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(val:int)[5, int(null)]
@@ -96,8 +101,10 @@ they're `bool(false)`. Records for which the predicate returns the null value ar
 
 For example:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcyyxByrzLwSHYViEKu4pCgzL10z2lRHQSlRSUcBKKORV5qTownkJynFctUolGekFqUqgLQpKNoqmAIA+YQGikoAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ival:int, sval:string)[5, "a", int(null), "b"]
@@ -130,8 +137,10 @@ In other words, the null value is "sticky".
 
 For example:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbLEHKvMvBLNaFMdBSCtkVeak6MZy1WjkFpRkpqXouCYkqJgqwBUpaCtYGiAEPctzSnJLMiphEpqASUBmujtH1UAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(val:int)[5, int(null)]
@@ -181,17 +190,17 @@ T
 |&nbsp;|&nbsp;|false    |false     |1        |true     |
 |a     |1     |false    |false     |1        |false    |
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 > [!NOTE]
 > * If you run the above query in Kusto.Explorer, all `true` values will be displayed as `1`, and all `false` values will be displayed as `0`.
 > * Kusto doesn't offer a way to constrain a table's column from having null values. In other words, there's no equivalent to SQL's `NOT NULL` constraint.
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 > [!NOTE]
 > Kusto doesn't offer a way to constrain a table's column from having null values. In other words, there's no equivalent to SQL's `NOT NULL` constraint.
 
-::: zone-end
+::: moniker-end

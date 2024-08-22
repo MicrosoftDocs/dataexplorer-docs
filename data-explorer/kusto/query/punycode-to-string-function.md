@@ -1,11 +1,13 @@
 ---
 title:  punycode_to_string 
-description: This article describes the punycode_to_string() command in Azure Data Explorer.
+description:  This article describes the punycode_to_string() command.
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 08/11/2024
 ---
 
 # punycode_to_string()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Decodes input string from [punycode](https://en.wikipedia.org/wiki/Punycode) form. The string shouldn't contain the initial xn--, and must contain only ASCII characters.
 
@@ -13,7 +15,7 @@ Decodes input string from [punycode](https://en.wikipedia.org/wiki/Punycode) for
 
 `punycode_to_string('input_string')`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -28,8 +30,10 @@ Decodes input string from [punycode](https://en.wikipedia.org/wiki/Punycode) for
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJTc5PSU1RsFUoKM2rBLHjS/Lji0uAkuka6onJiSm5mam6aUWJeYmZxam6eQVJhonqmgCaLR+2PAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
  print decoded = punycode_to_string('acadmie-franaise-npb1a')

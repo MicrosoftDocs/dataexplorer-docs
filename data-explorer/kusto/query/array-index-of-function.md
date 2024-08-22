@@ -3,9 +3,11 @@ title:  array_index_of()
 description: Learn how to use the array_index_of() function to search an array for a specified item, and return its position.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/05/2023
+ms.date: 08/11/2024
 ---
 # array_index_of()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Searches an array for the specified item, and returns its position.
 
@@ -13,7 +15,7 @@ Searches an array for the specified item, and returns its position.
 
 `array_index_of(`*array*`,` *value* [`,` *start* [`,` *length* [`,` *occurence* ]]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -35,8 +37,10 @@ Returns *null* for irrelevant inputs (*occurrence* < 0 or  *length* < -1).
 
 The following example shows the position number of specific words within the array.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52T7WrCMBiF/3sVB//MQoq0dV8Mr2QMielbDUuTkqRO735pmsk2dQ5LG0jhPOfkvK0iD27tsj5o3koxe536rXRThum4cj2stOdtp+j0xVv2Mums1H4CWe8LLAcYP6ykrmm/Ms0sbNmgyRCu+RzKmPe+Q2N6XUPqcHe9h/OBsZmADZTyAuUYomBVdo5lyRG3Yks1LNcbQgJW14FlBI7ykIZb79BY0yIqUDCsY0zTOfDGk0WJHVc9OQZnvpIIru881jRGSu6LC+5DvyVbnDEeDYwQvbWkBcE0ySEh768dqGR5kZ30ndQP59VptOGoeXjKbJyXI2FCu9/C/BpdbDqRH/9DrhJZG4RPzf5gH6mRkqhPf1LzI4823MsdjS2mwX1IpWIH4B6KO48KpKgl7V3CP1/Cxx8gX9yK/wT41ILVWgMAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let arr=dynamic(["this", "is", "an", "example", "an", "example"]);

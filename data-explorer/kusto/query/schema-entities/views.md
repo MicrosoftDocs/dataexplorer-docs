@@ -1,11 +1,13 @@
 ---
-title:  Views - Azure Data Explorer
-description: Learn how to define and use a view in Azure Data Explorer.
+title:   Views
+description:  Learn how to define and use a view.
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 08/13/2023
+ms.date: 08/11/2024
 ---
 # Views
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
 A view is a virtual table based on the result-set of a Kusto Query Language (KQL) query.
 
@@ -25,8 +27,10 @@ To define a stored function as a view, set the `view` property to `true` when yo
 
 The following query defines two functions: `T_view` and `T_notview`. The query results demonstrate that only `T_view` is resolved by the wildcard reference in the union operation.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIiS/LTC1XsFUAUxqaCtUKBUWZeSUKFbaGCrXWXDlgNXn5JVBlKCqMQCpK8zLz8xRCtACsbfBqTgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let T_view = view () { print x=1 };

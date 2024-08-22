@@ -3,11 +3,14 @@ title: Query weak consistency policy
 description: Learn how to use the query weak consistency policy to configure the weak consistency service.
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Query weak consistency policy
 
-The query weak consistency policy is a cluster-level policy object that configures the [weak consistency](../concepts/queryconsistency.md) service.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+The query weak consistency policy is a cluster-level policy object that configures the [weak consistency](../concepts/query-consistency.md) service.
 
 ## Management commands
 

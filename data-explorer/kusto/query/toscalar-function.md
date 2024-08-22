@@ -3,9 +3,11 @@ title:  toscalar()
 description: Learn how to use the toscalar() function to return a scalar constant value of the evaluated expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 08/11/2024
 ---
 # toscalar()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a scalar constant value of the evaluated expression.
 
@@ -19,7 +21,7 @@ Any two statements must be separated by a semicolon.
 
 `toscalar(`*expression*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -57,8 +59,10 @@ _dataset1
 
 This failure can be mitigated by using the `join` operator, as in the following example:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIT0ksSSxOLTFUsFUAMUsSk3JSNSqsFHLy89I1ow11FIx0FIx1FEx0FExjrblykLQYYdOio1AJ1auAqllHwQyoH24dV41CVn5mnoIG3DRNhfw8hQoFoERBUX5WanKJQgXQMAB+d0ZipAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let _dataset1 = datatable(x: long)[1, 2, 3, 4, 5];
@@ -80,8 +84,10 @@ _dataset1
 
 Evaluate `Start`, `End`, and `Step` as scalar constants, and use the result for `range` evaluation.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NQQrCQAxF94J3+EuFbupOJEtP0BMMNS3COFPSCIP08M1kELoL/7/3E1kxaBAFQfM6hhjkssg7KQr118f5FI14ptexl5BmRsEk+YPectyxKi92bxjzN+lfHGp6MG+1aPqv6e25TdQfPuLOBi7KHllPTnWwgIzrHKQK7lv8zY7AAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Start = toscalar(print x=1);
@@ -104,8 +110,10 @@ The following example shows how `toscalar` can be used to "fix" an expression
 so that it will be calculated precisely once. In this case, the expression being
 calculated returns a different value per evaluation.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XLsQqAIBRG4T3wHf5RoUXX8FlC8nYJTEONDHr4bGo9HydQBWtY1FQWF1yWka6Zz81LpSYxhM9N9z/3ml1kQsOa0w7dXxiUSge0GB5QqxQ9mmU94rZsXqEZQWVlAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let g1 = toscalar(new_guid());

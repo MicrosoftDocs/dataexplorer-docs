@@ -3,10 +3,14 @@ title:  fullouter join
 description: Learn how to use the fullouter join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/28/2024
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 
 # fullouter join
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 A `fullouter` join combines the effect of applying both left and right outer-joins. For columns of the table that lack a matching row, the result set contains `null` values. For those records that do match, a single row is produced in the result set containing fields populated from both tables.
 
@@ -16,9 +20,9 @@ A `fullouter` join combines the effect of applying both left and right outer-joi
 
 *LeftTable* `|` `join` `kind=fullouter` [ *Hints* ] *RightTable* `on` *Conditions*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
-[!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
+[!INCLUDE [join-parameters-attributes-hints](../includes/join-parameters-attributes-hints.md)]
 
 ## Returns
 
@@ -27,8 +31,10 @@ A `fullouter` join combines the effect of applying both left and right outer-joi
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq%2BKSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5mnkJ2Zl2KbVpqTk19akloEtDI%2FTwFoEwDuw%2F%2BW2gAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let X = datatable(Key:string, Value1:long)

@@ -3,18 +3,20 @@ title:  prev()
 description: Learn how to use the prev() function to return the value of a specific column in a specified row.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/22/2023
+ms.date: 08/11/2024
 ---
 # prev()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Returns the value of a specific column in a specified row.
-The specified row is at a specified offset from the current row in a [serialized row set](./window-functions.md#serialized-row-set).
+The specified row is at a specified offset from the current row in a [serialized row set](window-functions.md#serialized-row-set).
 
 ## Syntax
 
 `prev(`*column*`,` [ *offset* ]`,` [ *default_value* ] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,8 +32,10 @@ The specified row is at a specified offset from the current row in a [serialized
 
 The following query returns rows that show breaks longer than a quarter of a second between calls to `sensor-9`.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAA3WOvQoCMRCEe8F32C53cIIKFhZndY2FNl4v62WDgUtyZBd/wIc30SI2djPzDcP0ET2bEB3pE3kOkTsUnM9ecL9SJPiGR3QEbQuKP3axVbmRlMDlCb11xIJuAuQhA3oIeQ2S8s4as/cHO46WaQheM7SgUSjDs060Uq5Q1ZS1BqZIt+rHr+q6PPuzvoP1ZvkGO/YBANYAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 TransformedSensorsData
@@ -56,8 +60,10 @@ TransformedSensorsData
 
 The following query calculates the average time difference in milliseconds between calls to `sensor-9`.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAA22NvQ6CQBCEexPfYbuDBAtLi+toLLSB3qzcopewB7ld8Sc+vBwWWNjNzDeZqSMGafvI5CoK0kcpUXG9esP9SpHgGx6RCawFI7Pd7ExqTErh/ITaM4kiD4DSJEAPpeBAp7z0bbsPB991XqjpgxOw4FApwZObaGZ4oaZY1goYIo3Zj9/m+fx7Y8boXwQ4XrL/L/kHqqI6JdkAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 TransformedSensorsData
@@ -77,8 +83,10 @@ TransformedSensorsData
 
 In the following query, as part of the serialization done with the [serialize operator](serialize-operator.md), a new column `previous_session_type` is added with data from the previous row. Since there was no session prior to the first session, the column is empty in the first row.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NMQ7CMAwAd17hrSB1ADaGLvAEHhBFiRFGIYlspwjUx9cCqerA6POdfSn5how54BVFqGTZTPC6G4KwrGAYoDs3ShGO+8OpM0WQySf6IFTGkUoTJ78DTt/Vii/frtnOssrlgUFB6YnO5+hiY69m9LCopAlXo5X9/yczmplkXLwAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 ConferenceSessions

@@ -1,23 +1,25 @@
 ---
 title:  .create-or-alter materialized view
-description: This article describes `.create-or-alter materialized view` in Azure Data Explorer.
+description:  This article describes `.create-or-alter materialized view`.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/22/2023
+ms.date: 08/11/2024
 ---
 # .create-or-alter materialized-view
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Creates a materialized view or alters an existing materialized view.
 
 ## Permissions
 
-You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Materialized View Admin](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.create-or-alter` `materialized-view` [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] *MaterializedViewName* `on table` *SourceTableName* `{` *Query* `}`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,7 +36,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 If the table is new, the following properties are supported in the `with(`*PropertyName* `=` *PropertyValue* `)`. All properties are optional.
 
-[!INCLUDE [materialized-view-create-properties](../../../includes/materialized-view-create-properties.md)]
+[!INCLUDE [materialized-view-create-properties](../../includes/materialized-view-create-properties.md)]
 
 ### Existing table
 
@@ -50,7 +52,7 @@ If the table already exists, only the following subset of properties are support
 
 ## Returns
 
-[!INCLUDE [materialized-view-show-command-output-schema.md](../../../includes/materialized-view-show-command-output-schema.md)]
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../includes/materialized-view-show-command-output-schema.md)]
 
 ## Examples
 
@@ -77,4 +79,4 @@ If the materialized view does not exist, this command behaves just like [.create
 
 For more information, see the [Query parameter](materialized-view-create.md#query-parameter) and [Properties](materialized-view-create.md#supported-properties) sections.
 
-[!INCLUDE [materialized-view-alter-limitations.md](../../../includes/materialized-view-alter-limitations.md)]
+[!INCLUDE [materialized-view-alter-limitations.md](../../includes/materialized-view-alter-limitations.md)]

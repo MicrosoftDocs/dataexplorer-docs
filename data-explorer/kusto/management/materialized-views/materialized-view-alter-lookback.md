@@ -1,23 +1,25 @@
 ---
 title:  .alter materialized view lookback
-description: This article describes alter materialized view lookback in Azure Data Explorer.
+description:  This article describes alter materialized view lookback.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 # .alter materialized-view lookback
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Alters the `lookback` value of an existing materialized view. For more information on the lookback property, see [materialized view create command properties](materialized-view-create.md#supported-properties).
 
 ## Permissions
 
-You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Materialized View Admin](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `materialized-view` *MaterializedViewName* `lookback` *LookbackPeriod*
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -28,7 +30,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Returns
 
-[!INCLUDE [materialized-view-show-command-output-schema.md](../../../includes/materialized-view-show-command-output-schema.md)]
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../includes/materialized-view-show-command-output-schema.md)]
 
 ## Examples
 

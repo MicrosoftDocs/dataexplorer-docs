@@ -1,11 +1,13 @@
 ---
-title: geo_polygon_buffer() - Azure Data Explorer
+title:  geo_polygon_buffer()
 description: Learn how to use the geo_polygon_buffer() function to calculate polygon buffer
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 08/11/2024
 ---
 # geo_polygon_buffer()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates polygon or multipolygon that contains all points within the given radius of the input polygon or multipolygon on Earth.
 
@@ -13,7 +15,7 @@ Calculates polygon or multipolygon that contains all points within the given rad
 
 `geo_polygon_buffer(`*polygon*`,` *radius*`,` *tolerance*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -3,18 +3,21 @@ title:  .alter-merge policy managed_identity command
 description: Learn how to use the `.alter-merge policy managed_identity` command to update the ManagedIdentity policy of the cluster or database.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter-merge policy managed_identity command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities or adding usages to existing managed identities.
 
 > [!NOTE]
-> Managed identities should be assigned to a cluster before you can assign them to the ManagedIdentity policy. For more information, see [Configure managed identities for your cluster](../../configure-managed-identities-cluster.md)
+> Managed identities should be assigned to a cluster before you can assign them to the ManagedIdentity policy. For more information, see [Configure managed identities for your cluster](/azure/data-explorer/configure-managed-identities-cluster)
 
 ## Permissions
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run these commands.
+You must have [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Syntax
 
@@ -22,7 +25,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 `.alter-merge` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfPolicyObjects*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

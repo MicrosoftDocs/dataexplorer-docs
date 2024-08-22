@@ -3,17 +3,19 @@ title:  row_cumsum()
 description: Learn how to use the row_cumsum() function to calculate the cumulative sum of a column in a serialized row set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/19/2023
+ms.date: 08/11/2024
 ---
 # row_cumsum()
 
-Calculates the cumulative sum of a column in a [serialized row set](./window-functions.md#serialized-row-set).
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+Calculates the cumulative sum of a column in a [serialized row set](window-functions.md#serialized-row-set).
 
 ## Syntax
 
 `row_cumsum(` *term* [`,` *restart*] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -31,8 +33,10 @@ The function returns the cumulative sum of its argument.
 The following example shows how to calculate the cumulative sum of the first
 few even integers.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAw3ITQqDMBBA4X1O8TYFhVmo1f5BTlJKGXVohaiQVITSwzfv271RP1kfjEJvhHV5ldwduVpohKPQCp1wEs7CRbgKdeUe7sf+tmgoBxq8p8orWZw0TF9jSD6u+3PY5rTNhZZ/2Wk/Y2kAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (a:long) [
@@ -53,8 +57,10 @@ a    | cs
 This example shows how to calculate the cumulative sum (here, of `salary`)
 when the data is partitioned (here, by `name`):
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WPSw6CQAxA95yisoJkFuBnIQkLvYYxZgYaJJmPmSkqiYe3A7qBtovm9TVpW0mcSiNkVhqsAvnedgKMs3SveksCgtTSj5V2tsuTSwIc6Un3DaYCSq6iKMRMz04xgwX9u1uutcu0PB6W7o7pfuVONLrX5APOt+hBjRDvBhma39Gx5TG+CW0L5Ejq2rvXrRlMGEw2fyPmrU0ND4/P6fU8/wKEiBU0DAEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (name:string, month:int, salary:long)

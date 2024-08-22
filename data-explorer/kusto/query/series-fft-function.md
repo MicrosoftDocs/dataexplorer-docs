@@ -3,9 +3,11 @@ title:  series_fft()
 description: Learn how to use the series_fft() function to apply the Fast Fourier Transform (FFT) on a series.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/11/2024
 ---
 # series_fft()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Applies the Fast Fourier Transform (FFT) on a series.  
 
@@ -15,7 +17,7 @@ The series_fft() function takes a series of complex numbers in the time/spatial 
 
 `series_fft(`*x_real* [`,` *x_imaginary*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

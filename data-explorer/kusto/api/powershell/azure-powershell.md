@@ -1,12 +1,14 @@
 ---
 title: Use Kusto cmdlets in Azure PowerShell
-description: This article describes how to use Kusto cmdlets in Azure PowerShell in Azure Data Explorer.
+description: This article describes how to use Kusto cmdlets in Azure PowerShell.
 ms.reviewer: orhasban
 ms.topic: reference
 ms.custom: devx-track-azurepowershell
-ms.date: 03/10/2024
+ms.date: 08/11/2024
 ---
 # Use Kusto cmdlets in Azure PowerShell
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 PowerShell scripts can use Azure PowerShell [Az.Kusto cmdlets](/powershell/module/az.kusto) to run management commands.
 

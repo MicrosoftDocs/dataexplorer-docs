@@ -3,9 +3,11 @@ title:  bag_set_key()
 description: Learn how to use the bag_set_key() function to set a given key to a given value in a dynamic property-bag. 
 ms.reviewer: afridman
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 08/11/2024
 ---
 # bag_set_key()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 bag_set_key() receives a `dynamic` property-bag, a key and a value. The function sets the given key in the bag to the given value. The function overrides any existing value in case the key already exists.
 
@@ -13,7 +15,7 @@ bag_set_key() receives a `dynamic` property-bag, a key and a value. The function
 
 `bag_set_key(`*bag*`,`*key*`,`*value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,8 +36,10 @@ Returns a `dynamic` property-bag with specified key-value pairs. If the input ba
 
 ### Use a root-level key
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcy8gtISK4WUyrzE3MxkTYVoXi4FIIDyNarVs1MrDdWtFAx1FEBMIyDTqFZTRwG/MmMgUz0xKVkdqJSXK5aXq0YhtaIkNS9FoSi1uDSnRMFWISkxPb44tSQeqBriCJhOHQVjTQAoaFq+oAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(input: dynamic) [
@@ -52,8 +56,10 @@ datatable(input: dynamic) [
 
 ### Use a JSONPath key
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcy8gtISK4WUyrzE3MxkzWheLgUggHI1qtWzUysN1a0UDI2MdRRAHCMgp1q9oCi/ACEM4oHE1Ssqq9RrazV1cBtSq8nLFcvLVaOQWlGSmpeiUJRaXJpTomCrkJSYHl+cWhIPVApxE9BcFT2QhXoQy4D8xKRkdU0AFVPFlLsAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(input: dynamic)[

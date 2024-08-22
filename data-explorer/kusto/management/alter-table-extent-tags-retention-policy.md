@@ -3,23 +3,25 @@ title:  .alter table policy extent_tags_retention command
 description: Learn how to use the `.alter table policy extent_tags_retention` command to alter the table's extent tag retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/04/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy extent_tags_retention command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Alters the table's extent tags retention policy. For more information, see [extent tags retention policy](extent-tags-retention-policy.md).
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `table` *TableName* `policy` `extent_tags_retention` *SerializedPolicyObject*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -47,7 +49,7 @@ The following command sets an extent tags retention policy for table T1. The pol
 
 ## Related content
 
-- See [.show extents](./show-extents.md)
+- See [.show extents](show-extents.md)
 commands to see the tags associated with an extent.
 - See the [extent-tags()](../query/extent-tags-function.md) 
 function to see the tags associated with records.

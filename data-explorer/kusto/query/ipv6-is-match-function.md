@@ -3,20 +3,22 @@ title:  ipv6_is_match()
 description: Learn how to use the ipv6_is_match() function to match two IPv6 or IPv4 network address strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/01/2023
+ms.date: 08/11/2024
 ---
 # ipv6_is_match()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Matches two IPv6 or IPv4 network address strings. The two IPv6/IPv4 strings are parsed and compared while accounting for the combined IP-prefix mask calculated from argument prefixes, and the optional `prefix` argument.
 
 > [!NOTE]
-> The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. If the caller knows that arguments are in IPv4 format, use the [ipv4_is_match()](./ipv4-is-match-function.md) function. This function will result in better runtime performance.
+> The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. If the caller knows that arguments are in IPv4 format, use the [ipv4_is_match()](ipv4-is-match-function.md) function. This function will result in better runtime performance.
 
 ## Syntax
 
 `ipv6_is_match(`*ip1*`,`*ip2*`[ ,`*prefix*`])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -25,7 +27,7 @@ Matches two IPv6 or IPv4 network address strings. The two IPv6/IPv4 strings are 
 | *ip1*, *ip2*| `string` |  :heavy_check_mark: | An expression representing an IPv6 or IPv4 address. IPv6 and IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
 | *prefix*| `int` | | An integer from 0 to 128 representing the number of most-significant bits that are taken into account.|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 
@@ -37,8 +39,10 @@ Matches two IPv6 or IPv4 network address strings. The two IPv6/IPv4 strings are 
 
 ### IPv6/IPv4 comparison equality case - IP-prefix notation specified inside the IPv6/IPv4 strings
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61UwW6DMAy98xW+dZW6QjJgIdKOO+wwafdpQilJtkgUGIGKwz5+bok2ttKyoplDJNvv2XkxlqLBb5OrK1OR1Da1KV55f6zAVPSna+k9e+D78PC0C0HUCrJyW+EpQdi9MwYhZa2sVdaDBUnomsRsTdZksQK0Yw8a0t2/tyJH/C+QT0PMGnhoFDkYgmgIG9MgKryuaqVNB8ZCa7EXXdauMWPLYqIR5OzrzOf0b4KjPudwOmVjyEQvoFYs4JxFkitGM56EYcxvk+SgypkYjCt7CuETGpxhZN+SY6K7Szypz4zemevkH6tN3c3FL6uG2Y+mw8D+naDU7nco5OH1xuYNJ45zjcazQDAekID0Vc9O/hFK6x71NVKTuoxUHZvTCzn/NPsXcL54H6C6RqGCuDzavIE73D27ODU23Yomexssp+FWWn4C162p674EAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string)
@@ -81,8 +85,10 @@ datatable(ip1_string:string, ip2_string:string)
 
 ### IPv6/IPv4 comparison equality case- IP-prefix notation specified inside the IPv6/IPv4 strings and as additional argument of the `ipv6_is_match()` function
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61UTW+DMAy98yt86yp1kKSBgqX9gB0m7T5NVQpJF6kFRGjFYT9+5mMSXdu1TAsHS8/oPfvFTqZq+jY7/WBLvnZ1ZfMt9mEBthQ/obLSxja4K/Lt3HvzIAjg+fUoQVUa0mJfUsxAuRaMQGVZpZ3TDjyY8UT4PIp97vPZAuiMENYhS75o+ZYcNrYmBvnYq4F1cHDEa4pqELGuyE85AyGJZISIMCRg4BTyL5xndfacQk7khMGmCFJFbpCI0TFDjMMMdSxSTKSMcJUkXQtXcmFfDXCx6uQpDvrRzZ6uyQVE8otkTDku2CDH/kOO3ZRbTZWjv19sQ4nWXCjMMJB51ll+aUroThENHUyZipFxY06k7zf2lIbxSyPY3dl0ExHHdS/ZGXXfy3TD3r1P0E2tySDazsOuhifa9GO0tm69V3X6MXoKxm/A9/LPvwDOD5PYNAQAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string, prefix:long)

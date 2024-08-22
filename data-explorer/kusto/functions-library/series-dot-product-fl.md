@@ -1,11 +1,14 @@
 ---
 title:  series_dot_product_fl()
-description: This article describes series_dot_product_fl() user-defined function in Azure Data Explorer.
+description:  This article describes series_dot_product_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_dot_product_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the dot product of two numerical vectors.
 
@@ -19,7 +22,7 @@ The function `series_dot_product_fl()` is a [user-defined function (UDF)](../que
 
 `series_dot_product_fl(`*vec1*`,` *vec2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -74,8 +77,10 @@ series_dot_product_fl(vec1:dynamic, vec2:dynamic)
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32Qy4oDIRBF935FLRXMwk7IIqG/JAxNRivBwUdjq0yYzL9P9SMPwhB39+o5JeUww4DJ4tCZmLs+RVN07k6u5RW12plLOHqrJVBqbkmwHwZ0HMHo0E8YtDeRLy7b3l0mw0yK/R3QxXdD8Y/n1iZ+t0hYZvCD+hDPSa6oWDw5mlg+HfJFdhjv2O+elWBjYLxPNmRQcAVyfqHOUFWbjuGMnD60lqBIXZul2kjYjpWQ70lC1SurCFYzza6A3xmDgbpu/90pr+M6GvEHdvJymnUBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_dot_product_fl=(vec1:dynamic, vec2:dynamic)

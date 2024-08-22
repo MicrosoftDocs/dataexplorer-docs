@@ -3,9 +3,11 @@ title:  project-reorder operator
 description: Learn how to use the project-reorder operator to reorder columns in the output table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/16/2023
+ms.date: 08/11/2024
 ---
 # project-reorder operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Reorders columns in the output table.
 
@@ -13,7 +15,7 @@ Reorders columns in the output table.
 
 *T* `| project-reorder` *ColumnNameOrPattern* [`asc` | `desc` | `granny-asc` | `granny-desc`] [`,` ...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,8 +42,10 @@ A table that contains columns in the order specified by the operator arguments. 
 
 Reorder a table with three columns (a, b, c) so the second column (b) will appear first.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUi0VU9U11FIslVPAlLJturJ6rxcNQoKBUX5WanJJbpFqflFKalFCkkA1H2l7S8AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print a='a', b='b', c='c'
@@ -56,8 +60,10 @@ print a='a', b='b', c='c'
 
 Reorder columns of a table so that columns starting with `a` will appear before other columns.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhSsFVQT1LXUUg0slVPNAIxjIEMYxDDEMgwVOflqlFQKCjKz0pNLtEtSs0vSkktUkjUUkgsTgYAJU2yOEMAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print b = 'b', a2='a2', a3='a3', a1='a1'

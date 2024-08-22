@@ -3,9 +3,11 @@ title:  geo_union_polygons_array()
 description: Learn how to use the geo_union_polygons_array() function to calculate the union of polygons or multipolygons on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_union_polygons_array()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the union of polygons or multipolygons on Earth.
 
@@ -13,7 +15,7 @@ Calculates the union of polygons or multipolygons on Earth.
 
 `geo_union_polygons_array(`*polygons*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -23,7 +25,7 @@ Calculates the union of polygons or multipolygons on Earth.
 
 ## Returns
 
-A polygon or a multipolygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If any of the provided polygons or multipolygons is invalid, the query will produce a null result.
+A polygon or a multipolygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If any of the provided polygons or multipolygons is invalid, the query will produce a null result.
 
 > [!NOTE]
 >
@@ -49,8 +51,10 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 The following example performs geospatial union on polygon rows.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52Ry26DMBBF93yF5RVINDJ+jUHKP2SPEHLBimjBRkAW9PHvJXVw6Tb2xnN0fXVnptXLdl97E4+uX6/OzkW7Wj10TRKVEdrOo4w/8bKOBhf44oU4xY1zU9tZvZgZF2VZvgA75TwXKScnyGVepR4JReDOFCFS7VBRkv0KpaJih8Ay8JCLAI+OVfWdpM/lkpR6G8pDMqmUekBFQ1zwGUAF3f/Pz4cAxnwvQIHv5jmTvmfJSBhEBn46QorDdI6/7ymiKvpC820Y9NR9GLTvsNbThM5o0O+m7rt5CctNNvk4uTfTLH/im+2c3eRX4/y7PvroNT6WyQ/35ucGMgIAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(polygons:dynamic)
@@ -71,8 +75,10 @@ datatable(polygons:dynamic)
 
 The following example performs geospatial union on polygon columns.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQTQ6CMBCF95yi6QqSakqFdiDxDu4JIRUagz8tAVwQ9e6ChaqJG9vNzJeZNy+vkv3492flN+Y8HIwO02rQ8lKXBM2ELSTwMg+Nb279G+6HRuEU7+wgJrg0pq1qLXvV4TTLspXYrJMoiUlE1yLhSU4sioGKiQGlHBYIjIavQQ4sXqDYhMLCKHbwUzHPHwH53xNnzEqwyLniADBDYM6qsPcFuLnv5cmAl3t31LTmqMp+ya0rZNuiLWpkeZpKObiM39kGv/auujZ63DwoY+viU/Kt82qDJ6h5+jHDAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(polygon1:dynamic, polygon2:dynamic)
@@ -91,8 +97,10 @@ datatable(polygon1:dynamic, polygon2:dynamic)
 
 The following example returns True because one of the polygons is invalid.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52QzYqDMBRG9z5FyMqALTH+JAp9h+5FJKOhZCYmksSCbefdxzZjcd17V/dw+Lh8A/frfikRT0YtF6NdPSyaj7JHUROBdf7P+A79MglYw3MQYQJ7Y+wgNffCwbppmgPNjlVeFUmOj7QqqzYJqGCYPhnDuGQbZASnL7FkpNggzVIaYF684T6xbX9R8tlfJSEhhuQhJ2qjB3DzOHIrbwJsBXTcWnACI/8RnZLOv5tBqz5Z8y16D6S+ciWHbtbS6NWWTs9KxRdhAur2aXyJ9ydCf8U93vV2AQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(polygons:dynamic)

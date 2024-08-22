@@ -3,9 +3,11 @@ title:  series_periods_detect()
 description: Learn how to use the series_periods_detect() function to find the most significant periods that exist in a time series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_periods_detect()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Finds the most significant periods that exist in a time series.  
 
@@ -13,7 +15,7 @@ Finds the most significant periods that exist in a time series.
 
 `series_periods_detect(`*series*`,` *min_period*`,` *max_period*`,` *num_periods*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -41,8 +43,10 @@ The function outputs a table with two columns:
 
 The following query embeds a snapshot of a month of an application’s traffic, aggregated twice a day. The bin size is 12 hours.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2OvW7DMAyE9z4FRwfwINrW35AnKYJCcITEQaIGgocKyMP3LnY7kDiS95F81qWs0o7nVtJjmbvPYHrRMfYSPISicqEXOyGgrSJGOpCCg5jQibRaVHFiB3C0FAA8Rk53GNPJ77AfyAx/DG6oIeTYN0pltifcuN20dluhfEINvwiRimxgqUze/isMIn+An2vf8b7BZMgGrlKWgXcH3TFVHvLmdPh4ybN+3/K8ys+xpnLJHUyp1tS+7rlc1mvXDvAimgjcNZdzrnJfSp6vqa6/5GXgcmIBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print y=dynamic([80, 139, 87, 110, 68, 54, 50, 51, 53, 133, 86, 141, 97, 156, 94, 149, 95, 140, 77, 61, 50, 54, 47, 133, 72, 152, 94, 148, 105, 162, 101, 160, 87, 63, 53, 55, 54, 151, 103, 189, 108, 183, 113, 175, 113, 178, 90, 71, 62, 62, 65, 165, 109, 181, 115, 182, 121, 178, 114, 170])
@@ -54,8 +58,10 @@ print y=dynamic([80, 139, 87, 110, 68, 54, 50, 51, 53, 133, 86, 141, 97, 156, 94
 
 Running `series_periods_detect()` on this series, results in the weekly period, 14 points long.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA01Qy26DMBC89yt8BAlFXsCvQ76kihAKVkKUEmQ41FI+vjNAqx52Pbs7s7PynMZpVfk85Kn/Gq/Fp9eVkiZUyjsAQWV9pUyLADaCaMhA8hagRSeQalCFlh2IgyGAwGFk5RBj2rpD7Gpq6l8NPERTZNnXQqT3I2yzexqzrxAeIZpX+EBErWcpTM78IQwCbwCfa7fYPJg0tZ6rhKWnby2HTIRGTl/Kj7ea0+sRr6v6Pqd+usUCpD6lPnfPON3We5FLcBFZqX/sJaYxLt2M5zUs3RBXdItcKX3iX2y5Ln8A3Zvs/YABAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print y=dynamic([80, 139, 87, 110, 68, 54, 50, 51, 53, 133, 86, 141, 97, 156, 94, 149, 95, 140, 77, 61, 50, 54, 47, 133, 72, 152, 94, 148, 105, 162, 101, 160, 87, 63, 53, 55, 54, 151, 103, 189, 108, 183, 113, 175, 113, 178, 90, 71, 62, 62, 65, 165, 109, 181, 115, 182, 121, 178, 114, 170])

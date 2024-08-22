@@ -1,15 +1,17 @@
 ---
 title:  Tables
-description: This article describes Tables in Azure Data Explorer.
+description:  This article describes Tables.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 08/11/2024
 ---
 # Tables
 
-Tables are named entities that hold data. A table has an ordered set of [columns](./columns.md), and zero or more rows of data. Each row holds one data value for each of the columns of the table. The order of rows in the table is unknown, and doesn't in general affect queries, except for some tabular operators (such as the [top operator](../top-operator.md)) that are inherently undetermined. For information on how to create and manage tables, see [managing tables](../../management/tables.md).
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
-Tables occupy the same namespace as [stored functions](./stored-functions.md). If a stored function and a table both have the same name, the stored function will be chosen.
+Tables are named entities that hold data. A table has an ordered set of [columns](columns.md), and zero or more rows of data. Each row holds one data value for each of the columns of the table. The order of rows in the table is unknown, and doesn't in general affect queries, except for some tabular operators (such as the [top operator](../top-operator.md)) that are inherently undetermined. For information on how to create and manage tables, see [managing tables](../../management/tables.md).
+
+Tables occupy the same namespace as [stored functions](stored-functions.md). If a stored function and a table both have the same name, the stored function will be chosen.
 
 > [!NOTE]
 >
@@ -32,7 +34,7 @@ An equivalent way to write the query above is by escaping the table name:
 | count
 ```
 
-Tables may also be referenced by explicitly noting the database (or database and cluster) they are in. Then you can author queries that combine data from multiple databases and clusters. For example, the following query will work with any database in context, as long as the caller has access to the target database:
+Tables may also be referenced by explicitly noting the database they are in. Then you can author queries that combine data from multiple databases. For example, the following query will work with any database in context, as long as the caller has access to the target database:
 
 ```kusto
 cluster("https://help.kusto.windows.net").database("Samples").StormEvents

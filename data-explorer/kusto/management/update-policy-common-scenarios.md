@@ -2,9 +2,11 @@
 title: "Common scenarios for using table update policies"
 description: "Learn about common scenarios that can use table update policies to perform complex transformations and save the results to destination tables."
 ms.topic: conceptual
-ms.date: 03/06/2024
+ms.date: 08/11/2024
 ---
 # What are common scenarios for using table update policies
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 This section describes some well-known scenarios that use update policies. Consider adopting these scenarios when your circumstances are similar.
 

@@ -3,11 +3,13 @@ title:  parse_path()
 description: Learn how to use the parse_path() function to parse a file path.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # parse_path()
 
-Parses a file path `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object that contains the following parts of the path:
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+Parses a file path `string` and returns a [`dynamic`](scalar-data-types/dynamic.md) object that contains the following parts of the path:
 
 * Scheme
 * RootPath
@@ -28,7 +30,7 @@ In addition to the simple paths with both types of slashes, the function support
 
 `parse_path(`*path*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,8 +44,10 @@ An object of type `dynamic` that included the path components as listed above.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NQQrDIBBF94J3EFcJFN0LhUKOUUMwOE0Ek4ozASk9fOMiLYHOrOY95n/vaN8xQpMMUg7r1ArO7pyJfW6yM5ZgSfYRIigqJC+H+YtlBUbrzujq9eENPhdQUOD3by3OLoO3G0LGc4uaXt9EvWHWMYznQMlZz9lbQCFYvUiO5iG5TCiu+5ERhoqa1H4A8WAkd+AAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(p:string) 

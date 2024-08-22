@@ -3,9 +3,11 @@ title:  Numerical operators
 description: Learn how to use numerical operators to calculate the value from two or more numbers.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/16/2023
+ms.date: 08/11/2024
 ---
 # Numerical operators
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The types `int`, `long`, and `real` represent numerical types.
 The following operators can be used between pairs of these types:
@@ -33,7 +35,7 @@ Operator       |Description                         |Example
 
 The data type of the result of an arithmetic operation is determined by the data types of the operands. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of integer types (`int` or `long`), the result will be of type `long`.
 
-Due to these rules, the result of division operations that only involve integers will be truncated to an integer, which might not always be what you want. To avoid truncation, convert at least one of the integer values to `real` using the [todouble()](todouble-function.md) before performing the operation.
+Due to these rules, the result of division operations that only involve integers will be truncated to an integer, which might not always be what you want. To avoid truncation, convert at least one of the integer values to `real` using the [todouble()](toreal-function.md) before performing the operation.
 
 The following examples illustrate how the operand types affect the result type in division operations.
 

@@ -3,15 +3,17 @@ title: .show database extents partitioning statistics command
 description: Learn how to use the `.show database extents partitioning statistics` command to display the database's partitioning statistics.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 08/17/2023
+ms.date: 08/11/2024
 ---
 # .show database extents partitioning statistics
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Displays statistics of data partitioning for all tables in the database that have a [data partitioning policy](partitioning-policy.md) defined.
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 

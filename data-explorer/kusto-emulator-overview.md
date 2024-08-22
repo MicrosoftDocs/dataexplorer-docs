@@ -17,13 +17,13 @@ The Kusto emulator is a local environment that encapsulates the query engine. Yo
 
 ## Architecture
 
-The emulator is available as a *Windows* or *Linux* Docker container image. It exposes a query endpoint over HTTP that can be used with any client including [Kusto.Explorer](kusto/tools/kusto-explorer-using.md), [Kusto.CLI](kusto/tools/kusto-cli.md), or [Kusto.Data SDKs](kusto/api/netfx/about-kusto-data.md).
+The emulator is available as a *Windows* or *Linux* Docker container image. It exposes a query endpoint over HTTP that can be used with any client including [Kusto.Explorer](/kusto/tools/kusto-explorer-using?view=azure-data-explorer&preserve-view=true), [Kusto.CLI](/kusto/tools/kusto-cli?view=azure-data-explorer&preserve-view=true), or [Kusto.Data SDKs](/kusto/api/netfx/about-kusto-data?view=azure-data-explorer&preserve-view=true).
 
 ![Schematic representation of Kusto emulator architecture.](media/kusto-emulator/kusto-emulator-architecture.png)
 
-The emulator supports all commands and queries within its [architecture limitations](#limitations). For instance, [Row Level Security policy commands](kusto/management/row-level-security-policy.md) are supported but since there's no authentication in the emulator, they aren't useful.
+The emulator supports all commands and queries within its [architecture limitations](#limitations). For instance, [Row Level Security policy commands](/kusto/management/row-level-security-policy?view=azure-data-explorer&preserve-view=true) are supported but since there's no authentication in the emulator, they aren't useful.
 
-The emulator doesn't include the [data management service](ingest-data-overview.md) and hence doesn't support queued, managed, or streaming ingestion. However, you can ingest data using [ingestion commands](kusto/management/data-ingestion/ingest-from-query.md). Data can be ingested from local files, [external tables](kusto/query/schema-entities/external-tables.md), or [external data](kusto/query/externaldata-operator.md?pivots=azuredataexplorer). By default, ingested data is persisted on the disk within the container; hence, the data is as transient as the container itself. If you want to retain the data, you can persist it outside the container by mounting a volume on the container and persisting the data to the volume.
+The emulator doesn't include the [data management service](ingest-data-overview.md) and hence doesn't support queued, managed, or streaming ingestion. However, you can ingest data using [ingestion commands](/kusto/management/data-ingestion/ingest-from-query?view=azure-data-explorer&preserve-view=true). Data can be ingested from local files, [external tables](/kusto/query/schema-entities/external-tables?view=azure-data-explorer&preserve-view=true), or [external data](/kusto/query/externaldata-operator?pivots=azuredataexplorer?view=azure-data-explorer&preserve-view=true). By default, ingested data is persisted on the disk within the container; hence, the data is as transient as the container itself. If you want to retain the data, you can persist it outside the container by mounting a volume on the container and persisting the data to the volume.
 
 ## Kusto emulator scenarios
 

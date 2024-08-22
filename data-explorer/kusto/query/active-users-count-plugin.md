@@ -3,9 +3,11 @@ title:  active_users_count plugin
 description: Learn how to use the active_users_count plugin to calculate the distinct count of values that appeared in a minimum number of periods in a lookback period.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 08/11/2024
 ---
 # active_users_count plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Calculates distinct count of values, where each value has appeared in at least a minimum number of periods in a lookback period.
 
@@ -15,7 +17,7 @@ Useful for calculating distinct counts of "fans" only, while not including appea
 
 *T* `| evaluate` `active_users_count(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *LookbackWindow*`,` *Period*`,` *ActivePeriodsCount*`,` *Bin* `,` [*dim1*`,` *dim2*`,` ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -46,8 +48,10 @@ Output table schema is:
 
 Calculate weekly number of distinct users that appeared in at least three different days over a period of prior eight days. Period of analysis: July 2018.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42SwWvCMBTG74X+Dw9PFlJI0rJWhweF3XYYWNlhDIltGMGaSJO6y/74vdZWNlFMcnrv/ZJ85Ptq6WDtRONgAZVw0qmDnHLK8phmMWXRcxjUiLzo6haQXIBXY/Y7Ue7fla7MN7J5NUzeZKNMd5qNnWXp1Eme+xYHydBfKY1VNmIFFt2TuHe1nG6sbObWNUp/EShQhXXicJyPmqIw+AgDwDVZTQj060rvU8xnEXkIJfQCLe9A+DX84U0IpT5Q7vEc89HEUh8o84A49RDOU/zzTzSrgB+QJ1G3SIDozd226JbdlqbVrnfuj2XkHDjShYpcBYcMcSH/Q0K6bES/nOHnRKwCAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Start = datetime(2018-07-01);

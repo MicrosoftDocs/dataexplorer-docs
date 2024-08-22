@@ -1,12 +1,14 @@
 ---
 title: .show streamingingestion statistics command
-description: Learn how to use the `.show streamingingestion statistics` command to show aggregated statistics for the streaming ingestion to the cluster.
+description: Learn how to use the `.show streamingingestion statistics` command to show aggregated statistics for the streaming ingestion.
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
 ---
 # .show streamingingestion statistics command
 
-This command returns a result set that includes aggregated statistics for the [streaming ingestion](../../ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type) to the cluster.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+This command returns a result set that includes aggregated statistics for the [streaming ingestion](/azure/data-explorer/ingest-data-streaming#choose-the-appropriate-streaming-ingestion-type).
 
 > [!NOTE]
 > The streaming ingestion statistics are grouped into buckets of short periods of time and aggregated by database, table, principal, ingestion status, and ingestion properties.
@@ -15,7 +17,7 @@ This command returns a result set that includes aggregated statistics for the [s
 
 ## Permissions
 
-If you have Database Admin or Database Monitor permissions, you'll see all failed operations. Otherwise, you'll only see operations that you created. For more information about permissions, see [role-based access control](access-control/role-based-access-control.md).
+If you have Database Admin or Database Monitor permissions, you'll see all failed operations. Otherwise, you'll only see operations that you created. For more information about permissions, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 
@@ -24,7 +26,7 @@ If you have Database Admin or Database Monitor permissions, you'll see all faile
 | `.show` `streamingingestion` `statistics` | Returns aggregated streaming ingestion statistics |
 | `.show` `streamingingestion` `statistics` \| `where` ... | Returns a filtered set of streaming ingestion statistics |
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Results
 

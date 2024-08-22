@@ -29,7 +29,6 @@ Use the following filters to see other connectors, tools, and integrations are a
    :::column-end:::
 :::row-end:::
 
-
 ## Azure Data Explorer dashboards
 
 Azure Data Explorer dashboards is a web application that enables you to run queries and build dashboards in the stand-alone web application, the [Azure Data Explorer web UI](web-query-data.md). Azure Data Explorer dashboards provide three main advantages:
@@ -42,7 +41,7 @@ For more information, see, [Visualize data with Azure Data Explorer dashboards](
 
 ## Kusto Query Language visualizations
 
-The Kusto Query Language [`render operator`](kusto/query/render-operator.md) offers various visualizations such as tables, pie charts, and bar charts to depict query results. Query visualizations are helpful in anomaly detection and forecasting, machine learning, and more.
+The Kusto Query Language [`render operator`](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true) offers various visualizations such as tables, pie charts, and bar charts to depict query results. Query visualizations are helpful in anomaly detection and forecasting, machine learning, and more.
 
 ## Power BI
 
@@ -56,7 +55,7 @@ Azure Data Explorer provides the capability to connect to [Power BI](https://pow
 
 ## Microsoft Excel
 
-Azure Data Explorer provides the capability to connect to [Microsoft Excel](https://www.microsoft.com/microsoft-365/excel) using the [built-in native Excel connector](excel-connector.md), or [import a query](excel-blank-query.md) from Azure Data Explorer into Excel.
+Azure Data Explorer provides the capability to connect to [Microsoft Excel](https://www.microsoft.com/microsoft-365/excel) using the [built-in native Excel connector](excel.md).
 
 ## Grafana
 
@@ -89,7 +88,7 @@ Azure Data Explorer provides the capability to connect to [Sisense](https://www.
 
 You can use [Redash](https://redash.io/) to build dashboards and visualize data. [Set up Azure Data Explorer as a data source for Redash, and then visualize the data](redash.md).
 
-For more information about connectors and tools, see [Integrations overview](tools-integrations-overview.md#detailed-descriptions).
+For more information about connectors and tools, see [Integrations overview](integrate-overview.md#detailed-descriptions).
 
 ## Related content
 

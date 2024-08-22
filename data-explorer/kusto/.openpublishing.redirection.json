@@ -1,0 +1,9 @@
+{
+  "redirections": [
+    {
+      "source_path": "concepts/sandboxes-in-non-modern-skus.md",
+      "redirect_url": "/kusto/concepts/sandboxes",
+      "redirect_document_id": false
+    }
+  ]
+}
