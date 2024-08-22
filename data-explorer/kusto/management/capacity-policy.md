@@ -155,7 +155,7 @@ The [.show capacity](../management/show-capacity-command.md) command returns the
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's purge storage artifacts cleanup capacity based on the following formula:
+The [.show capacity](../management/show-capacity-command.md) command returns the cluster's purge storage artifacts cleanup capacity based on the following formula:
 
 `MaximumConcurrentOperationsPerCluster`
 
