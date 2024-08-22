@@ -112,7 +112,7 @@
     },
     {
       "source_path_from_root": "/data-explorer/write-queries.md",
-      "redirect_url": "/kusto/query/tutorials/learn-common-operators",
+      "redirect_url": "/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
@@ -122,17 +122,17 @@
     },
     {
       "source_path_from_root": "/data-explorer/time-series-analysis.md",
-      "redirect_url": "/kusto/query/time-series-analysis",
+      "redirect_url": "/kusto/query/time-series-analysis?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/data-explorer/anomaly-detection.md",
-      "redirect_url": "/kusto/query/anomaly-detection",
+      "redirect_url": "/kusto/query/anomaly-detection?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/data-explorer/machine-learning-clustering.md",
-      "redirect_url": "/kusto/query/machine-learning-clustering",
+      "redirect_url": "/kusto/query/machine-learning-clustering?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
@@ -342,12 +342,12 @@
     },
     {
       "source_path_from_root": "/data-explorer/kql-quick-reference.md",
-      "redirect_url": "/kusto/query/kql-quick-reference",
+      "redirect_url": "/kusto/query/kql-quick-reference?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/data-explorer/named-expressions.md",
-      "redirect_url": "/kusto/query/named-expressions",
+      "redirect_url": "/kusto/query/named-expressions?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
@@ -407,7 +407,7 @@
     },
     {
       "source_path_from_root": "/data-explorer/ingestion-properties.md",
-      "redirect_url": "/kusto/ingestion-properties",
+      "redirect_url": "/kusto/ingestion-properties?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
@@ -417,7 +417,7 @@
     },
     {
       "source_path_from_root": "/data-explorer/set-timeout-limits.md",
-      "redirect_url": "/kusto/set-timeout-limits",
+      "redirect_url": "/kusto/set-timeout-limits?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
