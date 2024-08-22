@@ -785,6 +785,9 @@ items:
         href: ../ingestion-supported-formats.md
       - name: Ingestion properties
         href: ../ingestion-properties.md
+      - name: Data operations
+        displayName:  .show data operations
+        href: show-data-operations.md
       - name: Ingest from storage
         displayName: .ingest into, pull data, pulling ingestion
         href: data-ingestion/ingest-from-storage.md
