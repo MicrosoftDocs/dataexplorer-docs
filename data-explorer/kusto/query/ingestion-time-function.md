@@ -14,7 +14,9 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 Returns the approximate [datetime](../query/scalar-data-types/datetime.md) in UTC format indicating when the current record was ingested. 
 
-This function must be used in context of a table for which the [IngestionTime policy](../management/ingestion-time-policy.md) is enabled. Otherwise, this function produces null values.
+This function must be used in the context of a table or a [materialized view](../management/materialized-views/materialized-view-overview.md#ingestion_time-function-in-the-context-of-materialized-views). Otherwise, this function produces null values.
+
+If [IngestionTime policy](../management/ingestion-time-policy.md) was not enabled when the data was ingested, the function returns null values.
 
 ::: moniker-end
 
