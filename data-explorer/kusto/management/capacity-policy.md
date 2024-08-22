@@ -167,7 +167,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's periodic storage artifacts cleanup capacity based on the following formula:
+The [.show capacity](../management/show-capacity-command.md) command returns the cluster's periodic storage artifacts cleanup capacity based on the following formula:
 
 `MaximumConcurrentOperationsPerCluster`
 
