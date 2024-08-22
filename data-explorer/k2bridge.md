@@ -122,7 +122,7 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
     1. <a name="install-kibana-service"></a> The previous command's output suggests the next Helm command to deploy Kibana. Optionally, run this command:
 
         ```bash
-        helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=7.10.2 --set elasticsearchHosts=http://k2bridge:8080
+        helm install kibana elastic/kibana --version 7.17.3 -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=7.10.2 --set elasticsearchHosts=http://k2bridge:8080
         ```
 
     1. Use port forwarding to access Kibana on localhost.
