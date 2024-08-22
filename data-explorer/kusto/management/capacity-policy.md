@@ -35,7 +35,7 @@ To view the capacity of your cluster, use the [.show capacity](../management/dia
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's ingestion capacity based on the following formula:
+The [.show capacity](../management/show-capacity-command.md) command returns the cluster's ingestion capacity based on the following formula:
 
 `Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
@@ -51,7 +51,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents merge capacity based on the following formula:
+The [.show capacity](../management/show-capacity-command.md) command returns the cluster's extents merge capacity based on the following formula:
 
 *Number of nodes in cluster* `*` *Concurrent operations per node*
 
@@ -68,7 +68,7 @@ The effective value for *Concurrent operations per node* is automatically adjust
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents purge rebuild capacity based on the following formula:
+The [.show capacity](../management/show-capacity-command.md) command returns the cluster's extents purge rebuild capacity based on the following formula:
 
 *Number of nodes in cluster* x `MaximumConcurrentOperationsPerNode`
 
@@ -84,7 +84,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's export capacity based on the following formula:
+The [.show capacity](../management/show-capacity-command.md) command returns the cluster's export capacity based on the following formula:
 
 `Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
@@ -125,7 +125,7 @@ The effective value for *Concurrent operations* is automatically adjusted by the
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's stored query results creation capacity based on the following formula:
+The [.show capacity](../management/show-capacity-command.md) command returns the cluster's stored query results creation capacity based on the following formula:
 
 *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*` `CoreUtilizationCoefficient)`
 
