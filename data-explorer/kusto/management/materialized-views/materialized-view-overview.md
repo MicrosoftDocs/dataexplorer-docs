@@ -116,7 +116,7 @@ When querying the entire view, the materialized part is combined with the `delta
 
 ### `ingestion_time()` function in the context of materialized views
 
-[ingestion_time()](../../query/ingestiontimefunction.md) function returns null values, when used in the context of a materialized view, if [querying the entire view](#materialized-views-queries).
+[ingestion_time()](../../query/ingestion-time-function.md) function returns null values, when used in the context of a materialized view, if [querying the entire view](#materialized-views-queries).
 When querying the materialized part of the view, the return value depends on the type of materialized view:
 
 * In materialized views which include a single `arg_max()`/`arg_min()`/`take_any()` aggregation, the `ingestion_time()` is equal to the `ingestion_time()` of the corresponding record in the source table.
