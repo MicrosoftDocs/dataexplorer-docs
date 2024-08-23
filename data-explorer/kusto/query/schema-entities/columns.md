@@ -1,11 +1,13 @@
 ---
 title:  Columns
-description: This article describes Columns in Azure Data Explorer.
+description:  This article describes Columns.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 08/11/2024
 ---
 # Columns
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
 Columns are named entities that have a [scalar data type](../scalar-data-types/index.md). Columns are referenced in the query relative to the tabular data stream that is in context of the specific operator referencing them.Every [table](tables.md) in Kusto, and every tabular data stream, is a rectangular grid of columns and rows. The columns of a table or a tabular data stream are ordered, so a column also has a specific position in the table's collection of columns.
 

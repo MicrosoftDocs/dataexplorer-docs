@@ -3,11 +3,13 @@ title:  extract_all()
 description: Lean how to use the extract_all() to extract all matches for a regular expression from a source string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 08/11/2024
 ---
 # extract_all()
 
-Get all matches for a [regular expression](./regex.md) from a source string.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+Get all matches for a [regular expression](re2.md) from a source string.
 Optionally, retrieve a subset of matching groups.
 
 ```kusto
@@ -20,13 +22,13 @@ print extract_all(@"(\d+)", "a set of numbers: 123, 567 and 789") // results wit
 
 `extract_all(`*regex*`,` [*captureGroups*`,`] *source*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | `string` |  :heavy_check_mark: | A [regular expression](./regex.md) containing between one and 16 capture groups.|
+| *regex* | `string` |  :heavy_check_mark: | A [regular expression](re2.md) containing between one and 16 capture groups.|
 | *captureGroups* | `dynamic` | | An array that indicates the capture groups to extract. Valid values are from 1 to the number of capturing groups in the regular expression. Named capture groups are allowed as well. See [examples](#examples).|
 | *source* | `string` |  :heavy_check_mark:| The string to search.|
 
@@ -43,8 +45,10 @@ print extract_all(@"(\d+)", "a set of numbers: 123, 567 and 789") // results wit
 
 The following query returns hex-byte representation (two hex-digits) of the GUID.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUfBMsVWyMEqySEo1StFNSUs01zVJSjHUtUgzM9Y1MklMMTJLMTY0MbFU4qpRSK0oSc1LUUgvzUyJT6osSS1WsAWJFSUml8Qn5uRoOChpRMekJOqmxVYb1Woq6QAN1wQA6/wKuGYAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
@@ -61,8 +65,10 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 
 The following query uses a regular expression with three capturing groups to split each GUID part into first letter, last letter, and whatever is in the middle.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUfBMsVWyMEqySEo1StFNSUs01zVJSjHUtUgzM9Y1MklMMTJLMTY0MbFU4qpRSK0oSc1LUUgvzUyJT6osSS1WsAWJFSUml8Qn5uRoOChpxJRrArE2iNBU0gGargkAiT0FmGcAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
@@ -83,8 +89,10 @@ The regular expression matches the first letter, last letter, and all the rest.
 
 The *captureGroups* parameter is used to select only the first and the last parts.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUfBMsVWyMEqySEo1StFNSUs01zVJSjHUtUgzM9Y1MklMMTJLMTY0MbFU4qpRSK0oSc1LUUgvzUyJT6osSS1WsAWJFSUml8Qn5uRoOChpxJRrArE2iNBU0lFIqcxLzM1M1og21DGO1dQB2qYJAHPOX8l3AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
@@ -101,8 +109,10 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 
 The *captureGroups* in the following query uses both capture group indexes and named capture group references to fetch matching values.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWOsQrCMBRFd78iZEmLydA01AhWXd3cVcpLX1ICaZE2ogU/3qaO5x4O3Ofoh0guWFMtjTZWokAHO6EMFkK7qhRSAcoKy0KpPd18if1EOyDpXh4bM0c7kTptI7SxgRCyM81O14Pz4xSP93eeoPeIwS60XTHAX1FOcB6g9212Y2vAuOQsafbI+fIq/wFEwbznnwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"

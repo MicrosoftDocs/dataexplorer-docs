@@ -25,7 +25,7 @@ Power BI supports *Import* and *DirectQuery* connectivity modes. When building P
 Use **Import** mode when:
 
 * Your dataset is small and you don't need near real-time data.
-* You perform [aggregation in Kusto](./kusto/query/aggregation-functions.md).
+* You perform [aggregation in Kusto](/kusto/query/aggregation-functions?view=azure-data-explorer&preserve-view=true).
 
 Use **DirectQuery** mode when:
 

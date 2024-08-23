@@ -10,7 +10,7 @@ ms.date: 07/02/2023
 
 Free cluster allows anyone with a Microsoft account or a Microsoft Entra user identity to create a [free Azure Data Explorer cluster](start-for-free-web-ui.md) without needing an Azure subscription or a credit card.
 
-The free cluster can be used for any purpose and is the ideal solution for anyone who wants to get started quickly with Azure Data Explorer. It allows you to explore the wide range of [data ingestion](ingest-data-overview.md) methods, use the [Kusto Query Language](kusto/query/index.md), and experience the incredible ingestion and query performance.
+The free cluster can be used for any purpose and is the ideal solution for anyone who wants to get started quickly with Azure Data Explorer. It allows you to explore the wide range of [data ingestion](ingest-data-overview.md) methods, use the [Kusto Query Language](/kusto/query/index?view=azure-data-explorer&preserve-view=true), and experience the incredible ingestion and query performance.
 
 The cluster's trial period is for a year and may automatically be extended. The cluster is provided *as-is* and isn't subject to the Azure Data Explorer service level agreement. At any time, you can upgrade the cluster to a full Azure Data Explorer cluster.
 
@@ -65,4 +65,4 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 * [Get started with your free cluster](start-for-free-web-ui.md)
 * [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)
 * [Learn more about Azure Data Explorer](data-explorer-overview.md)
-* [Learn more about Kusto Query Language](kusto/query/index.md)
+* [Learn more about Kusto Query Language](/kusto/query/index?view=azure-data-explorer&preserve-view=true)

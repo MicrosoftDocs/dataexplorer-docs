@@ -31,7 +31,7 @@ Save the following values to be used in later steps:
 
 ### Grant the Microsoft Entra app permissions
 
-1. In your query environment, run the following management command, replacing the placeholders. Replace *DatabaseName* with the name of the target database and *ApplicationID* with the previously saved value. This command grants the app the [database ingestor](/azure/data-explorer/kusto/management/access-control/role-based-access-control) role. For more information, see [Manage database security roles](/azure/data-explorer/kusto/management/manage-database-security-roles).
+1. In your query environment, run the following management command, replacing the placeholders. Replace *DatabaseName* with the name of the target database and *ApplicationID* with the previously saved value. This command grants the app the [database ingestor](/azure/data-explorer/kusto/access-control/role-based-access-control) role. For more information, see [Manage database security roles](/azure/data-explorer/kusto/management/manage-database-security-roles).
 
      ```kusto
     .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'NLOG Azure App Registration role'

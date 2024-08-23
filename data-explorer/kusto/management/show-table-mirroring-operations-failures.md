@@ -3,9 +3,11 @@ title:  .show table mirroring operations failures
 description: Learn how to use the `.show table mirroring operations failures` command to check the mirroring operations failures.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/28/2024
+ms.date: 08/11/2024
 ---
 # .show table mirroring operations failures
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Returns the table's [mirroring policy](mirroring-policy.md) operations table export failures. It helps you identify failures or issues related to your table's mirroring operations.
 
@@ -13,7 +15,7 @@ Returns the table's [mirroring policy](mirroring-policy.md) operations table exp
 
 `.show` `table` *TableName* `operations` `mirroring-failures`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

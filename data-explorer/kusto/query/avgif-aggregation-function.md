@@ -3,19 +3,21 @@ title:  avgif() (aggregation function)
 description: Learn how to use the avgif() function to return the average value of an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/16/2022
+ms.date: 08/11/2024
 ---
 # avgif() (aggregation function)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the [average](avg-aggregation-function.md) of *expr* in records for which *predicate* evaluates to `true`.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Syntax
 
 `avgif` `(`*expr*`,` *predicate*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -32,8 +34,10 @@ Returns the average value of *expr* in records where *predicate* evaluates to `t
 
 This example calculates the average damage by state in cases where there was any damage.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXAsSy1KTE9NScwFkrYl+Tn5eekaiWXpGgouYCHnovyCYk1NHai68IzUPBd0tZlpGkiKdZDYCnYGmpoKSZUKwSWJJakAP4a4kIQAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

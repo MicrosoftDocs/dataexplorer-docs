@@ -8,16 +8,17 @@ ms.date: 09/11/2022
 # Customer intent: As a Go developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
 
-# Ingest data using the Azure Data Explorer Go SDK 
+# Ingest data using the Azure Data Explorer Go SDK
 
 > [!div class="op_single_selector"]
+>
 > * [.NET](net-sdk-ingest-data.md)
 > * [Python](python-ingest-data.md)
 > * [Node](node-ingest-data.md)
 > * [Go](go-ingest-data.md)
 > * [Java](java-ingest-data.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides a [Go SDK client library](kusto/api/golang/kusto-golang-client-library.md) for interacting with the Azure Data Explorer service. You can use the [Go SDK](https://github.com/Azure/azure-kusto-go) to ingest, control, and query data in Azure Data Explorer clusters. 
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. It provides a [Go SDK client library](/kusto/api/golang/kusto-golang-client-library?view=azure-data-explorer&preserve-view=true) for interacting with the Azure Data Explorer service. You can use the [Go SDK](https://github.com/Azure/azure-kusto-go) to ingest, control, and query data in Azure Data Explorer clusters.
 
 In this article, you first create a table and data mapping in a test cluster. You then queue an ingestion to the cluster using the Go SDK and validate the results.
 
@@ -26,8 +27,8 @@ In this article, you first create a table and data mapping in a test cluster. Yo
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-* Install [Go](https://golang.org/) with the following [Go SDK minimum requirements](kusto/api/golang/kusto-golang-client-library.md#minimum-requirements). 
-* Create an [App Registration and grant it permissions to the database](provision-azure-ad-app.md). Save the client ID and client secret for later use.
+* Install [Go](https://golang.org/) with the following [Go SDK minimum requirements](/kusto/api/golang/kusto-golang-client-library?view=azure-data-explorer&preserve-view=true#minimum-requirements).
+* Create an [App Registration and grant it permissions to the database](provision-entra-id-app.md). Save the client ID and client secret for later use.
 
 ## Install the Go SDK
 
@@ -57,15 +58,15 @@ An instance of [kusto.Authorization](https://godoc.org/github.com/Azure/azure-ku
 
 ### Create table
 
-The create table command is represented by a [Kusto statement](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Stmt).The [Mgmt](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Client.Mgmt) function is used to execute management commands. It's used to execute the command to create a table. 
+The create table command is represented by a [Kusto statement](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Stmt).The [Mgmt](https://godoc.org/github.com/Azure/azure-kusto-go/kusto#Client.Mgmt) function is used to execute management commands. It's used to execute the command to create a table.
 
 ```go
 func createTable(kc *kusto.Client, kustoDB string) {
-	_, err := kc.Mgmt(context.Background(), kustoDB, kusto.NewStmt(createTableCommand))
-	if err != nil {
-		log.Fatal("failed to create table", err)
-	}
-	log.Printf("Table %s created in DB %s\n", kustoTable, kustoDB)
+  _, err := kc.Mgmt(context.Background(), kustoDB, kusto.NewStmt(createTableCommand))
+  if err != nil {
+    log.Fatal("failed to create table", err)
+  }
+  log.Printf("Table %s created in DB %s\n", kustoTable, kustoDB)
 }
 ```
 
@@ -80,39 +81,39 @@ The Kusto create table command is as follows:
 
 ### Create mapping
 
-Data mappings are used during ingestion to map incoming data to columns inside Azure Data Explorer tables. For more information, see [data mapping](kusto/management/mappings.md). Mapping is created, in the same way as a table, using the `Mgmt` function with the database name and the appropriate command. The complete command is available in the [GitHub repo for the sample](https://github.com/Azure-Samples/Azure-Data-Explorer-Go-SDK-example-to-ingest-data/blob/main/main.go#L20).
+Data mappings are used during ingestion to map incoming data to columns inside Azure Data Explorer tables. For more information, see [data mapping](/kusto/management/mappings). Mapping is created, in the same way as a table, using the `Mgmt` function with the database name and the appropriate command. The complete command is available in the [GitHub repo for the sample](https://github.com/Azure-Samples/Azure-Data-Explorer-Go-SDK-example-to-ingest-data/blob/main/main.go?view=azure-data-explorer&preserve-view=true#L20).
 
 ```go
 func createMapping(kc *kusto.Client, kustoDB string) {
-	_, err := kc.Mgmt(context.Background(), kustoDB, kusto.NewStmt(createMappingCommand))
-	if err != nil {
-		log.Fatal("failed to create mapping - ", err)
-	}
-	log.Printf("Mapping %s created\n", kustoMappingRefName)
+  _, err := kc.Mgmt(context.Background(), kustoDB, kusto.NewStmt(createMappingCommand))
+  if err != nil {
+    log.Fatal("failed to create mapping - ", err)
+  }
+  log.Printf("Mapping %s created\n", kustoMappingRefName)
 }
 ```
 
 ### Ingest data
 
-An ingestion is queued using a file from an existing Azure Blob Storage container. 
+An ingestion is queued using a file from an existing Azure Blob Storage container.
 
 ```go
 func ingestFile(kc *kusto.Client, blobStoreAccountName, blobStoreContainer, blobStoreToken, blobStoreFileName, kustoMappingRefName, kustoDB, kustoTable string) {
-	kIngest, err := ingest.New(kc, kustoDB, kustoTable)
-	if err != nil {
-		log.Fatal("failed to create ingestion client", err)
-	}
-	blobStorePath := fmt.Sprintf(blobStorePathFormat, blobStoreAccountName, blobStoreContainer, blobStoreFileName, blobStoreToken)
-	err = kIngest.FromFile(context.Background(), blobStorePath, ingest.FileFormat(ingest.CSV), ingest.IngestionMappingRef(kustoMappingRefName, ingest.CSV))
+  kIngest, err := ingest.New(kc, kustoDB, kustoTable)
+  if err != nil {
+    log.Fatal("failed to create ingestion client", err)
+  }
+  blobStorePath := fmt.Sprintf(blobStorePathFormat, blobStoreAccountName, blobStoreContainer, blobStoreFileName, blobStoreToken)
+  err = kIngest.FromFile(context.Background(), blobStorePath, ingest.FileFormat(ingest.CSV), ingest.IngestionMappingRef(kustoMappingRefName, ingest.CSV))
 
-	if err != nil {
-		log.Fatal("failed to ingest file", err)
-	}
-	log.Println("Ingested file from -", blobStorePath)
+  if err != nil {
+    log.Fatal("failed to ingest file", err)
+  }
+  log.Println("Ingested file from -", blobStorePath)
 }
 ```
 
-The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#Ingestion) client is created using [ingest.New](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#New). The [FromFile](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#Ingestion.FromFile) function is used to refer to the Azure Blob Storage URI. The mapping reference name and the data type are passed in the form of [FileOption](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#FileOption). 
+The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#Ingestion) client is created using [ingest.New](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#New). The [FromFile](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#Ingestion.FromFile) function is used to refer to the Azure Blob Storage URI. The mapping reference name and the data type are passed in the form of [FileOption](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#FileOption).
 
 ## Run the application
 
@@ -123,7 +124,7 @@ The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#I
     cd Azure-Data-Explorer-Go-SDK-example-to-ingest-data
     ```
 
-1. Run the sample code as seen in this snippet from `main.go`: 
+1. Run the sample code as seen in this snippet from `main.go`:
 
     ```go
     func main {
@@ -140,7 +141,7 @@ The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#I
     > To try different combinations of operations, you can uncomment/comment the respective functions in `main.go`.
 
     When you run the sample code, the following actions are performed:
-    
+
     1. **Drop table**: `StormEvents` table is dropped (if it exists).
     1. **Table creation**: `StormEvents` table is created.
     1. **Mapping creation**: `StormEvents_CSV_Mapping` mapping is created.
@@ -175,7 +176,7 @@ The [Ingestion](https://godoc.org/github.com/Azure/azure-kusto-go/kusto/ingest#I
 
 ## Validate and troubleshoot
 
-Wait for 5 to 10 minutes for the queued ingestion to schedule the ingestion process and load the data into Azure Data Explorer. 
+Wait for 5 to 10 minutes for the queued ingestion to schedule the ingestion process and load the data into Azure Data Explorer.
 
 1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster. Then run the following command to get the count of records in the `StormEvents` table.
 

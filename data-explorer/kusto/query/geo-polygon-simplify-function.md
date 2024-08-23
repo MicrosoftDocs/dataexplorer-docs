@@ -3,9 +3,11 @@ title:  geo_polygon_simplify()
 description: Learn how to use the geo_polygon_simplify() function to simplify a polygon or a multipolygon.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_polygon_simplify()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Simplifies a polygon or a multipolygon by replacing nearly straight chains of short edges with a single long edge on Earth.
 
@@ -13,7 +15,7 @@ Simplifies a polygon or a multipolygon by replacing nearly straight chains of sh
 
 `geo_polygon_simplify(`*polygon*`,` *tolerance*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -24,7 +26,7 @@ Simplifies a polygon or a multipolygon by replacing nearly straight chains of sh
 
 ## Returns
 
-Simplified polygon or a multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type, with no two vertices with distance less than tolerance. If either the polygon or tolerance is invalid, the query will produce a null result.
+Simplified polygon or a multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type, with no two vertices with distance less than tolerance. If either the polygon or tolerance is invalid, the query will produce a null result.
 
 > [!NOTE]
 >
@@ -53,8 +55,10 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 The following example simplifies polygons by removing vertices that are within a 10-meter distance from each other.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA33Ry2rCUBAG4H2fImSlkMqcuZyZsfQdupcgYlIJaBI0m1D67j3FaLJyO/PBP5dzPWR9dx5PXZt9ZtXYHi7NcfWTD2Nf59v8697Ki/zYddeqaQ9Dfcu3u93uXWnjbCYBUTUChYJhox6VWCOJRNGymJmjMplSnJgjikW0pBdMnRxc2PXJQERUgXjBUggGCMwP9Z/pFMFpoSwlqhgCvmbEgTGaPJR4SPODB5CZOYBxGljBn46AyRXNn8whUjoIKrLdmQZIS6MGNZsZUgzIKuSPVFMwsKC+3PPlccvyd/3x1l+bdshuzaU/N99NXaUvnupuP/10PzXG1VRY/wEdFq3Y8QEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let polygon = dynamic({"type":"Polygon","coordinates":[[[-73.94885122776031,40.79673476355657],[-73.94885927438736,40.79692258628347],[-73.94887939095497,40.79692055577034],[-73.9488673210144,40.79693476936093],[-73.94888743758202,40.79693476936093],[-73.9488834142685,40.796959135509105],[-73.94890084862709,40.79695304397289],[-73.94906312227248,40.79710736271788],[-73.94923612475395,40.7968708081794],[-73.94885122776031,40.79673476355657]]]});
@@ -85,8 +89,10 @@ Polygons
 
 The following example simplifies polygons and unifies result
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQoCMQxF954iyxZExgN4isF1KZoZou20JOmig4c3i4qC2///e8l1DrNGRTm8oHJ54E2hltTXssEFFozaGOW0Ysmo3H9WQrkmWgjvNrQ+DCyMorsRHOE8TZM3VFrOkWlHSKJG5fjEkEjUfWX+/xEZB9pGpv+EITLH7szk3/JsgkXFAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 US_States
@@ -104,8 +110,10 @@ US_States
 
 The following example returns True because of the invalid polygon.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WMQQrDIBAA732F7EnBYwslIX/IXUQkmrCw2ZVoC1L69x7S0tPADAzlpopQ34TVpFLnuOOiX9B6yTDAfCawsIgcCTm2XGFwzt3s9e7tCe/fZryUA7kprAH5GQlT+H+x8oNIb1l+MlTcC+Ha9VcY8wFgUlqniwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let polygon = dynamic({"type":"Polygon","coordinates":[[[5,48],[5,48]]]});
@@ -120,8 +128,10 @@ print is_invalid_polygon = isnull(geo_polygon_simplify(polygon))
 
 The following example returns True because of the invalid tolerance.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WNwQoCIRQA732FeFKwMHApdukfuouIrLY8cJ+yWiDRvxe7RaeBmcPEUElOsU0JyYX4hm6GkT1pbTnQnl63RAUdU1o8oKuh0F5r3Ql1NkJL0ckV6vSB2rA2Y1582OUFsBIoFvDhInj7n0HBe4xsCuknbYE5R7g19hWC7OXhyPkbMhZUVaYAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let polygon = dynamic({"type":"Polygon","coordinates":[[[5,48],[0,50],[0,47],[4,47],[5,48]]]});
@@ -136,8 +146,10 @@ print is_invalid_polygon = isnull(geo_polygon_simplify(polygon, -0.1))
 
 The following example returns True because high tolerance causes polygon to disappear.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WNwQoCIRRF932FvJWCCwOHYqJ/mL2IyGjDA0dltECify+cors5cM7iBl9JTqEtKZIrcS3aFWf6hNqyhxGmPQGHOaXNYbTVFxiVUgOXZ82V4IPokKcP5I7etH6xyyFvGCvBYjA+bEBn/mdY4j0Euvj0k6bgmgPeGv0KTo6ij7E3IUIHfKkAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let polygon = dynamic({"type":"Polygon","coordinates":[[[5,48],[0,50],[0,47],[4,47],[5,48]]]});

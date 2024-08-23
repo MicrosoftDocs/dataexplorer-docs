@@ -3,9 +3,11 @@ title: .show ingestion mapping
 description: Learn how to use the `.show ingestion mapping` command to view the ingestion mapping for a table or database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show ingestion mapping
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Use this command to view a specific ingestion mapping, or all ingestion mappings, for a database or table.
 
@@ -19,7 +21,7 @@ View all mappings or all mappings of a specific type:
 
 `.show` (`table` | `database`) *EntityName* `ingestion` [ *MappingKind* ] `mappings`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

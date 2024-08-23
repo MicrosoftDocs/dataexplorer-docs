@@ -3,13 +3,12 @@ title:  sql_request plugin
 description: Learn how to use the sql_request plugin to send an SQL query to an SQL server network endpoint. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/08/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # sql_request plugin
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The `sql_request` plugin sends a SQL query to an Azure SQL Server network endpoint and returns the results.
 If more than one rowset is returned by SQL, only the first one is used.
@@ -19,7 +18,7 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)` [`:` *OutputSchema*]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -151,11 +150,3 @@ Where:
 > Other forms of specifying the network endpoint are not supported.
 > One cannot omit, for example, the prefix `tcp:` even though it is possible to
 > do so when using the SQL client libraries programmatically.
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

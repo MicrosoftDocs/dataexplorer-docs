@@ -2,22 +2,24 @@
 title: .show external table artifacts command
 description: Learn how to use the `.show external table artifacts` command to show external table artifacts for Azure Blob Storage or Azure Data Lake external tables.
 ms.topic: reference
-ms.date: 04/09/2023
+ms.date: 08/11/2024
 ---
 
 # Show external table artifacts command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 This article describes how to show all files that will be processed when querying a given external table.
 
 ## Permissions
 
-You must have [Database User](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Database User](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.show` `external` `table` *ExternalTableName* `artifacts` [`limit` *MaxResults*]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

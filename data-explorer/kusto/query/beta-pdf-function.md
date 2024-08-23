@@ -3,9 +3,11 @@ title:  beta_pdf()
 description: Learn how to use the beta_pdf() function to return the beta probability density function. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
 ---
 # beta_pdf()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns the probability density beta function.
 
@@ -15,7 +17,7 @@ The beta distribution is commonly used to study variation in the percentage of s
 
 `beta_pdf(`*x*`,` *alpha*`,` *beta*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -37,8 +39,10 @@ The [probability beta density function](https://en.wikipedia.org/wiki/Beta_distr
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PwQrCMBBE7/mKoacWYkgEL0X9hB69iEhqogbStLQpRPDjjWmph7oLyw7M22WU9LFrq/NQqnaMC4W03VMuqtb+J25t02jny8H3xj0KciaIxdmOQnDGKbZpZidpjYJx3egzmjxi5Qk4QlC8jLZqQCWr2Tn9yjeCFytiD/6H4CzeWTD25WYiRYEZViC5kDd08Nop9DiklNdO3fMw55+CFx9P6bKEIAEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(x:double, alpha:double, beta:double, comment:string)
@@ -62,5 +66,5 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 
 ## Related content
 
-* For computing the inverse of the beta cumulative probability density function, see [beta-inv()](./beta-inv-function.md).
-* For the standard cumulative beta distribution function, see [beta-cdf()](./beta-cdf-function.md).
+* For computing the inverse of the beta cumulative probability density function, see [beta-inv()](beta-inv-function.md).
+* For the standard cumulative beta distribution function, see [beta-cdf()](beta-cdf-function.md).

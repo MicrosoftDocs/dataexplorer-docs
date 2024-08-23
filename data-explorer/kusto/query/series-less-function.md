@@ -3,9 +3,11 @@ title:  series_less()
 description: Learn how to use the series_less() function to calculate the element-wise less (`<`) logic operation of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_less()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the element-wise less (`<`) logic operation of two numeric series inputs.
 
@@ -13,7 +15,7 @@ Calculates the element-wise less (`<`) logic operation of two numeric series inp
 
 `series_less(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,8 +29,10 @@ Dynamic array of booleans containing the calculated element-wise less logic oper
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2VLBVSKnMS8zNTNaINtQx0jGJ1dRRKDZCFjYBChvGanLVKKRWlKTmpQB1xeekFhfHg5UVpxZlphaDBTSKDUF6NQGAeKRCXAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])

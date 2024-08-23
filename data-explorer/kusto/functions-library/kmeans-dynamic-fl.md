@@ -1,25 +1,21 @@
 ---
 title:  kmeans_dynamic_fl()
-description: This article describes the kmeans_dynamic_fl() user-defined function in Azure Data Explorer.
+description: This article describes the kmeans_dynamic_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 07/25/2024
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
 ---
 # kmeans_dynamic_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
-
 The function `kmeans_dynamic_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that clusterizes a dataset using the [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering). This function is similar to [kmeans_fl()](kmeans-fl.md) just the features are supplied by a single numerical array column and not by multiple scalar columns.
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke kmeans_dynamic_fl(`*k*`,` *features_col*`,` *cluster_col*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -67,7 +63,7 @@ let kmeans_dynamic_fl=(tbl:(*),k:int, features_col:string, cluster_col:string)
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [example](#example).
@@ -159,12 +155,4 @@ union
 
 ---
 
-![Screenshot of scatterchart of K-Means clustering of artificial dataset with three clusters.](media/kmeans-fl/kmeans-scattergram.png)
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end
+:::image type="content" source="media/kmeans-fl/kmeans-scattergram.png" alt-text="Screenshot of scatterchart of K-Means clustering of artificial dataset with three clusters.":::

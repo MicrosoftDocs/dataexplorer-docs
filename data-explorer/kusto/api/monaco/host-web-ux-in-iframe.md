@@ -4,9 +4,12 @@ description: Learn how to embed the Azure Data Explorer web UI in an **iframe**.
 ms.reviewer: izlisbon
 ms.topic: how-to
 ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done
-ms.date: 6/6/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Embed the Azure Data Explorer web UI in an iframe
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an iframe.
 
@@ -69,7 +72,7 @@ Use the following steps to handle authentication:
         }
     ```
 
-1. Get a [JWT access token](https://tools.ietf.org/html/rfc7519) from the [Microsoft Entra authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization) for the scope. This code replaces placeholder CODE-1.
+1. Get a [JWT access token](https://tools.ietf.org/html/rfc7519) from the [Perform Single Page Application (SPA) authentication](../rest/authenticate-with-msal.md#perform-single-page-application-spa-authentication) for the scope. This code replaces placeholder CODE-1.
 
     For example, you can use @azure/MSAL-react to get the access token. The example uses the **mapScope** function you defined earlier.
 
@@ -111,7 +114,7 @@ Use the following steps to handle authentication:
 
 To embed a dashboard, a trust relationship must be established between the host's Microsoft Entra app and the Azure Data Explorer dashboard service (**RTD Metadata Service**).
 
-1. Follow the steps in [Web Client (JavaScript) authentication and authorization](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication#web-client-javascript-authentication-and-authorization).
+1. Follow the steps in [Perform Single Page Application (SPA) authentication](../rest/authenticate-with-msal.md#perform-single-page-application-spa-authentication).
 1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed into the correct tenant. In the top-right corner, verify the identity used to sign into the portal.
 1. In the resources pane, select **Microsoft Entra ID** > **App registrations**.
 1. Locate the app that uses the **on-behalf-of** flow and open it.

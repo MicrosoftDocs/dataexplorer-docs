@@ -1,27 +1,26 @@
 ---
 title:  Ladder chart visualization
-description: This article describes the ladder chart visualization in Azure Data Explorer.
+description:  This article describes the ladder chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/18/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Ladder chart
 
-::: zone pivot="azuredataexplorer"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The last two columns are the x-axis, and the other columns are the y-axis.
 
 > [!NOTE]
 > * This visualization can only be used in the context of the [render operator](render-operator.md).
-> * This visualization is available in [Kusto.Explorer](../../data-explorer-overview.md) but not in the [Azure Data Explorer web UI](../../web-ui-query-overview.md).
+> * This visualization is available in [Kusto.Explorer](/azure/data-explorer/data-explorer-overview) but not in the [Azure Data Explorer web UI](/azure/data-explorer/web-ui-query-overview).
 
 ## Syntax
 
 *T* `|` `render` `ladderchart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -83,11 +82,3 @@ StormEvents
 ```
 
 :::image type="content" source="media/visualization-ladderchart/ladderchart-state-and-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by state and event type." lightbox="media/visualization-ladderchart/ladderchart-state-and-event-type.png":::
-
-::: zone-end
-
-::: zone pivot="azuremonitor, fabric"
-
-This visualization isn't supported.
-
-::: zone-end

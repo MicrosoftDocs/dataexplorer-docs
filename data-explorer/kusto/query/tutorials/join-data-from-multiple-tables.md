@@ -2,10 +2,13 @@
 title:  'Tutorial: Join data from multiple tables'
 description: This tutorial shows how to join data from multiple tables using the Kusto Query Language.
 ms.topic: tutorial
-ms.date: 03/06/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || microsoft-sentinel || azure-monitor"
 ---
 
 # Tutorial: Join data from multiple tables
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
 Joining data from multiple tables allows for a more comprehensive analysis by combining information from different sources and creating new relationships between data points. In the [Kusto Query Language (KQL)](../index.md), the [join](../join-operator.md) and [lookup](../lookup-operator.md) operators are used to combine data across tables.
 
@@ -17,11 +20,25 @@ In this tutorial, you'll learn how to:
 > * [Use the lookup operator](#use-the-lookup-operator)
 > * [Join query-generated tables](#join-query-generated-tables)
 
-The examples in this tutorial use the publicly available [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
+::: moniker range="azure-data-explorer"
+The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](/azure/data-explorer/start-for-free-web-ui).
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+The examples in this tutorial use the `StormEvents` table, which is publicly available in the **Weather analytics** [sample data](/fabric/real-time-intelligence/sample-gallery).
+::: moniker-end
 
 ## Prerequisites
 
-* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
+To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
+:::moniker range="azure-data-explorer"
+* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+* A Microsoft account or Microsoft Entra user identity 
+* A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses#capacity)
+::: moniker-end
 
 ## Use the join operator
 
@@ -31,8 +48,10 @@ There are two tables in the [Samples database](https://dataexplorer.azure.com/cl
 
 Use the [take](../take-operator.md) operator to see what data each table contains.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUShJzE5VMAUAP49+9hUAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```Kusto
 StormEvents 
@@ -49,8 +68,10 @@ The following table shows only 6 of the 22 returned columns.
 |2007-09-29T08:11:00Z|2007-09-29T08:11:00Z|11091|61032|ATLANTIC SOUTH|Waterspout|...|
 |2007-09-18T20:00:00Z|2007-09-19T18:00:00Z|11074|60904|FLORIDA|Heavy Rain|...|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvILyjNSSzJzM9zSSxJVOCqUShJzE5VMAUAJEMCyxgAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 PopulationData 
@@ -73,8 +94,10 @@ Both tables contain a `State` column. The `StormEvents` table has many more colu
 
 Join the `PopulationData` table with `StormEvents` on the common `State` column to find the total property damage caused by storms per capita by state.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrCQAxF954iSwXBE8yqdV/oCaIGSXWSMc0IFQ/fGYoiBZefn/fzeleLxyeJj5s3jDlGNH4RdKaJzKcWI14JQq22S/hUOzhN0Ds6FXJQFrixXAKLkGXhRy4rmvIdnVVadASV730yHejsS96v3nVkDSYuRFiLHH42q7CaV40//AyUi5Na3gAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -86,8 +109,10 @@ StormEvents
 
 Add `| render columnchart` to the query to visualize the result.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOwQrCQAxE735FjgqCX9CT9V7oF8Q2aGo3WdOsUPHj3aUoUvA4zLyZaV0tnB4kPm1eMKUQ0PhJ0JhGMp9rDHghqIq1XcTH2sF5htbRKZODssCNpa9YhCwJ31Nu0ZhGdFap0RFUvvloOlDni96v5hqyI0bORLU+cvjpLIfVvNz4w+eEkfRk0OmYgnRXNH8DzTGGOPMAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 :::image type="content" source="../media/kql-tutorials/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
@@ -100,8 +125,10 @@ The [lookup](../lookup-operator.md) operator optimizes the performance of querie
 
 In the help cluster, there's another database called `ContosoSales` that contains sales data. The following query uses `lookup` to merge the `SalesFact` and `Products` tables from this database to get the total sales by product category.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAwtOzEktdktMLuGqUcjJz88uLVAIKMpPKU0uKVbIz4OxvVMrgfLFpbm5iUWZVakKIfkliTnBIK0KtgrJ+aV5JRqaCkmVMOXOiSWp6flFlX6JualAfflFKalFIGkkbSmpxckAoEL9GXwAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 SalesFact
@@ -132,8 +159,10 @@ Joins can also be done based on query results from the same table.
 
 Say you want to create a list of states in which both lightning and avalanche events occurred. Use the join operator to merge the rows of two tables—one containing data on lightning events and the other containing data on avalanche events—based on the `State` column.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZR8MtMzSvIy89KVgApSMotLMvOSSxSCSxJLUoECWfmZeQrZmXkptpl5ealFChpcCkAQjDBVASyA3WjHssScxLzkjFQlqCI040GCmmAyPw9uY0FRflYqTAkAZG8iCb8AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

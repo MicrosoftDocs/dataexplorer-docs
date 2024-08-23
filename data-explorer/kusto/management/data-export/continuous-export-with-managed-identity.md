@@ -1,15 +1,18 @@
 ---
 title:  Use a managed identity to run a continuous export job
-description: This article describes how to use a managed identity for continuous export in Azure Data Explorer.
+description:  This article describes how to use a managed identity for continuous export.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 06/19/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Use a managed identity to run a continuous export job
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 A [continuous export job](continuous-data-export.md) exports data to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query.
 
-The continuous export job should be configured with a [managed identity](../../../managed-identities-overview.md) in the following scenarios:
+The continuous export job should be configured with a [managed identity](/azure/data-explorer/managed-identities-overview) in the following scenarios:
 
 * When the external table uses impersonation authentication.
 * When the query references tables in other databases.
@@ -21,8 +24,8 @@ In this article, you learn how to configure a system-assigned or user-assigned m
 
 ## Prerequisites
 
-* A cluster and database. [Create a cluster and database](../../../create-cluster-and-database.md).
-* [All Databases Admin](../access-control/role-based-access-control.md) permissions on the database.
+* A cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database).
+* [All Databases Admin](../../access-control/role-based-access-control.md) permissions on the database.
 
 ## Configure a managed identity
 
@@ -36,11 +39,11 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ### [User-assigned](#tab/user-assigned)
 
-1. Follow the steps to [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity).
+1. Follow the steps to [Add a user-assigned identity](/azure/data-explorer/configure-managed-identities-cluster#add-a-user-assigned-identity).
 
 1. In the Azure portal, in the left menu of your managed identity resource, select **Properties**. Copy and save the **Tenant Id** and **Principal Id** for use in the following steps.
 
-    :::image type="content" source="../../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="../../../media/continuous-export/managed-identity-ids.png":::
+    :::image type="content" source="../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="../../media/continuous-export/managed-identity-ids.png":::
 
 1. Run the following [.alter-merge policy managed_identity](../alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
@@ -56,7 +59,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     > [!NOTE]
     > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
-1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
+1. Run the following command to grant the managed identity [Database Viewer](../../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
 
     ```kusto
     .add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
@@ -66,7 +69,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ### [System-assigned](#tab/system-assigned)
 
-1. Follow the steps to [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
+1. Follow the steps to [Add a system-assigned identity](/azure/data-explorer/configure-managed-identities-cluster#add-a-system-assigned-identity).
 
 1. Copy and save the **Object (principal) ID** for use in a later step.
 
@@ -84,7 +87,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     > [!NOTE]
     > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
-1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
+1. Run the following command to grant the managed identity [Database Viewer](../../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
 
     ```kusto
     .add database <DatabaseName> viewers ('aadapp=<objectId>')
@@ -102,7 +105,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 ### [Azure Storage](#tab/azure-storage)
 
-1. Create a connection string based on the [storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation).
+1. Create a connection string based on the [storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [impersonation authentication](../../api/connection-strings/storage-connection-strings.md#impersonation).
 
 1. Run the [.create or .alter external table](../external-sql-tables.md) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
@@ -125,7 +128,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 ### [SQL Server](#tab/sql-server)
 
-1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Microsoft Entra integrated authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation), which is impersonation authentication.
+1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Microsoft Entra integrated authentication](../../api/connection-strings/storage-connection-strings.md#impersonation), which is impersonation authentication.
 
 1. Run the [.create or .alter external table](../external-sql-tables.md) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
 
@@ -172,4 +175,4 @@ For example, the following command creates a continuous export job named `MyExpo
 
 * [.show continuous-exports](show-continuous-export.md)
 * [Continuous export overview](continuous-data-export.md)
-* [Managed identities](../../../managed-identities-overview.md)
+* [Managed identities](/azure/data-explorer/managed-identities-overview)

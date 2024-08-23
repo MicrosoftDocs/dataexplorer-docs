@@ -1,11 +1,13 @@
 ---
 title:  Query/management HTTP request
-description: This article describes Query/management HTTP request in Azure Data Explorer.
+description: This article describes Query/management HTTP request.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/12/2023
+ms.date: 08/11/2024
 ---
 # Query/management HTTP request
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 ## Request verb and resource
 
@@ -20,7 +22,7 @@ ms.date: 09/12/2023
 For example, to send a management command ("management") to a service endpoint,
 use the following request line:
 
-```
+```txt
 POST https://help.kusto.windows.net/v1/rest/mgmt HTTP/1.1
 ```
 
@@ -34,7 +36,7 @@ The following table contains the common headers used for query and management op
 |-----------------|--------------------------------------------------------------------------------------------|------------------|
 |`Accept`         |Set to `application/json`                                                                   |Required          |
 |`Accept-Encoding`|Supported encodings are `gzip` and `deflate`                                                |Optional          |
-|`Authorization`  |See [authentication](./authentication.md)                                                   |Required          |
+|`Authorization`  |See [authentication](authentication.md)                                                   |Required          |
 |`Connection`     |We recommend that you enable `Keep-Alive`                                                   |Optional          |
 |`Content-Length` |We recommend that you specify the request body length when known                            |Optional          |
 |`Content-Type`   |Set to `application/json` with `charset=utf-8`                                              |Required          |
@@ -66,7 +68,7 @@ or as part of the body, depending on whether GET or POST is used.
 |------------|--------------------------------------------------------------------------------------------|------------------|
 |`csl`       |Text of the query or management command to execute                                             |Required          |
 |`db`        |Name of the database in scope that is the target of the query or management command            |Optional for some management commands. <br>Required for other commands and all queries. </br>                                                                   |
-|`properties`|Provides request properties that modify how the request is processed and its results. For more information, see [Request properties](../netfx/request-properties.md)                                               | Optional         |
+|`properties`|Provides request properties that modify how the request is processed and its results. For more information, see [Request properties](request-properties.md)                                               | Optional         |
 
 ## GET query parameters
 
@@ -112,9 +114,9 @@ This example shows how to create a request that sends the query above, using [cu
 
 1. Obtain a token for authentication.
 
-    Replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID`, and `AAD_APPLICATION_KEY` with the relevant values, after having set up [Microsoft Entra application authentication](../../../provision-azure-ad-app.md)
+    Replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID`, and `AAD_APPLICATION_KEY` with the relevant values, after having set up [Microsoft Entra application authentication](../../access-control/provision-entra-id-app.md)
 
-    ```
+    ```bash
     curl "https://login.microsoftonline.com/AAD_TENANT_NAME_OR_ID/oauth2/token" \
       -F "grant_type=client_credentials" \
       -F "resource=https://help.kusto.windows.net" \
@@ -124,7 +126,7 @@ This example shows how to create a request that sends the query above, using [cu
 
     This code snippet will provide you with the bearer token.
 
-    ```
+    ```json
     {
       "token_type": "Bearer",
       "expires_in": "3599",
@@ -138,7 +140,7 @@ This example shows how to create a request that sends the query above, using [cu
 
 1. Use the bearer token in your request to the query endpoint.
 
-    ```
+    ```bash
     curl -d '{"db":"Samples","csl":"print Test=\"Hello, World!\"","properties":"{\"Options\":{\"queryconsistency\":\"strongconsistency\"}}"}"' \
     -H "Accept: application/json" \
     -H "Authorization: Bearer eyJ0...uXOQ" \
@@ -154,7 +156,7 @@ This example shows how to create a request that sends the query above, using [cu
 
 ### Set client request properties and query parameters
 
-In the following example body, the query in the `csl` field declares two parameters named `n` and `d`. The values for those query parameters are specified within the `Parameters` field under the `properties` field in the request body. The `Options` field defines [client request properties](../netfx/request-properties.md).
+In the following example body, the query in the `csl` field declares two parameters named `n` and `d`. The values for those query parameters are specified within the `Parameters` field under the `properties` field in the request body. The `Options` field defines [client request properties](request-properties.md).
 
 > [!NOTE]
 > Non-string and non-long parameters must be expressed as KQL literals in string format.
@@ -176,4 +178,4 @@ In the following example body, the query in the `csl` field declares two paramet
 }
 ```
 
-For more information, see [Query parameters](../netfx/request-properties.md#query-parameters).
+For more information, see [Supported request properties](request-properties.md#supported-request-properties).

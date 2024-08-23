@@ -3,9 +3,11 @@ title: .create table based-on command
 description: Learn how to use the `.create table based-on` command to create a new empty table based on an existing table.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 05/14/2023
+ms.date: 08/11/2024
 ---
 # .create table based-on command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Creates a new empty table based on an existing table. This command must run in the context of a specific database.
 
@@ -17,13 +19,13 @@ Creates a new empty table based on an existing table. This command must run in t
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.create` `table` *tableName* `based-on` *otherTable*  [`ifnotexists`] [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

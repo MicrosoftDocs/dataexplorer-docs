@@ -3,14 +3,18 @@ title:  mv-expand operator
 description: Learn how to use the mv-expand operator to expand multi-value dynamic arrays or property bags into multiple records.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/03/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # mv-expand operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Expands multi-value dynamic arrays or property bags into multiple records.
 
 `mv-expand` can be described as the opposite of the aggregation operators
-that pack multiple values into a single [dynamic](./scalar-data-types/dynamic.md)-typed
+that pack multiple values into a single [dynamic](scalar-data-types/dynamic.md)-typed
 array or property bag, such as `summarize` ... `make-list()` and `make-series`.
 Each element in the (scalar) array or property bag generates a new record in the
 output of the operator. All columns of the input that aren't expanded are duplicated to all the records in the output.
@@ -21,7 +25,7 @@ output of the operator. All columns of the input that aren't expanded are duplic
 
 *T* `|mv-expand` [`kind=`(`bag` | `array`)] [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [`,` [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -64,8 +68,10 @@ Two modes of property bag expansions are supported:
 
 ### Single column - array expansion
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGRNXq5oXi4FIDDUgYlpRBsa6CgYGcRq6kCkjJCk1BPVdRTUk9RjgTpjeblqFHLLdFMrChLzUhSSANALFPlqAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (a: int, b: dynamic)
@@ -89,8 +95,10 @@ datatable (a: int, b: dynamic)
 
 A simple expansion of a single column:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGRNXq5oXi4FIDDUgYlpVCsVFOUXGCpZKSglGirpKIC5RiBukqFSraYORIMRdg1GqBqMgBp4uWJ5uWoUcst0UysKEvNSFJIAxNVM3ZQAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (a: int, b: dynamic)
@@ -114,8 +122,10 @@ datatable (a: int, b: dynamic)
 
 A simple bag expansion to key-value pairs:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22LsQrDIBiEd8F3OJwSsFAdA3kSyfBbHaSJFZEQafvu1ZYOhd5N9x2fo9JqV4%2BBJoRYJOwEVyNt4TJyZjhDi5JfNtxFyrekxARBSki8p%2B7TKvEc5UfQ%2FwX9K%2BgmcLZw9sC2n%2FyRKDpcQ3Qz5UwVFv3yR%2FGd%2B4oZ1pwXiZ3W2Rq1vADUbch1vwAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (a: int, b: dynamic)
@@ -140,8 +150,10 @@ datatable (a: int, b: dynamic)
 
 Expanding two columns will first 'zip' the applicable columns and then expand them:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGQdhWQ4WzOal0sBCAx1YCIa1UoFRfkFhkpWCkqJSjoKYJ4RiJekVKuJUBZtqqNgoqNgHKvJyxXLy1WjkFumm1pRkJiXopAEtAEANvW+roIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (a: int, b: dynamic, c: dynamic)[
@@ -162,8 +174,10 @@ datatable (a: int, b: dynamic, c: dynamic)[
 
 If you want to get a Cartesian product of expanding two columns, expand one after the other:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGQdhWQ4W5OXK5qXSwEIDHVgYhrVSgVF+QWGSlYKSolKOgpgnhGIl6RUq4lQFm2qo2AWCzQhlperRiG3TDe1oiAxL0UhCZWbDACXJubPjQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (a: int, b: dynamic, c: dynamic)
@@ -187,8 +201,10 @@ datatable (a: int, b: dynamic, c: dynamic)
 
 To force the output of an mv-expand to a certain type (default is dynamic), use `to typeof`:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02MuwoCMRRE+4X8w7BVAtfCBz629TOWFHm5BkyymIu44McbC8WZZjgzjDfcbG8B0gyofI95ItgBfskmRUdwv6xG0aGpP5dc2WTu6VvJcU3YELaEnVZ/eE84EI6Ek1ai06J7IT1W4Tmb7GHbO7iAlzmUi4yZ1WcwBa7uGpJ5A3+651CdAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (a: string, b: dynamic, c: dynamic)[
@@ -212,8 +228,10 @@ Notice column `b` is returned as `dynamic` while `c` is returned as `int`.
 
 Expansion of an array with `with_itemindex`:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBRKC5JLVAw5OWqUSguzc1NLMqsAqmwVchNzE6Nz8ksLtGo0ATJ5pbpplYUJOalKJRnlmTEZ5ak5mbmpaRW2HqCSIUKAIrdlHpcAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 4 step 1
@@ -230,9 +248,10 @@ range x from 1 to 4 step 1
 |3|2|
 |4|3|
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
-* For more examples, see [Chart count of live activities over time](./samples.md#chart-concurrent-sessions-over-time).
-* [mv-apply](./mv-apply-operator.md) operator.
+* [mv-apply](mv-apply-operator.md) operator.
 * For the opposite of the mv-expand operator, see [summarize make_list()](make-list-aggregation-function.md).
 * For expanding dynamic JSON objects into columns using property bag keys, see [bag_unpack()](bag-unpack-plugin.md) plugin.
+::: moniker-end

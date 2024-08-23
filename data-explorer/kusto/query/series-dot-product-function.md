@@ -1,11 +1,13 @@
 ---
 title:  series_dot_product()
-description: This article describes series_dot_product() in Azure Data Explorer.
+description:  This article describes series_dot_product().
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # series_dot_product()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the dot product of two numeric series.
 
@@ -28,7 +30,7 @@ The function `series_dot_product()` takes two numeric series as input, and calcu
 >
 > For example, `series_dot_product([1, 2, 3], 10)` will be treated as `series_dot_product([1, 2, 3], [10, 10, 10])`.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -45,12 +47,14 @@ Any non-numeric element of the input series will be ignored.
 > [!NOTE]
 > If one or both input arrays are empty, the result will be `null`.
 
-[!INCLUDE [optimization-note](../../includes/vector16-encoding-policy.md)]
+[!INCLUDE [optimization-note](../includes/vector16-encoding-policy.md)]
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMQQoCMQyF4b2neMupdNNx7VlKaeOg4rQkEdri4a2DMLoLH3k/h3UhVFw4P+CgGSeIUhn34QWqSmtCw3m8HDHv1Ae1LxXON4oKcQNLiHcfmEObqm22GwuZ/71bNItq9po4n7L6EUrPqH4bCPGV5NcncZ+YeQNovYwctAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 3 step 1 
@@ -66,8 +70,10 @@ range x from 1 to 3 step 1
 |[2,4,8]|[8,4,2]|48|
 |[3,6,12]|[12,6,3]|108|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03LQQrCMBCF4b2neMtWsklde5YQklGq2ISZEZLi4Z2K0O6Gb97PcbkTGm5cXvDQggtEqdp9+oCa0pLRcbXJGdNOq1H/U+XyoKQQb1hjeobIHPvQXHfr6CDT1u+t+JCLBsvyO2n4vYV4Jjn6IH5Lxy/j/FcsogAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 3 step 1 

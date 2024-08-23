@@ -3,9 +3,11 @@ title:  parse_url()
 description: Learn how to use the parse_url() function to parse a URL string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # parse_url()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Parses an absolute URL `string` and returns a `dynamic` object contains URL parts.
 
@@ -15,7 +17,7 @@ Parses an absolute URL `string` and returns a `dynamic` object contains URL part
 
 `parse_url(`*url*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -25,12 +27,14 @@ Parses an absolute URL `string` and returns a `dynamic` object contains URL part
 
 ## Returns
 
-An object of type [dynamic](./scalar-data-types/dynamic.md) that included the URL components: Scheme, Host, Port, Path, Username, Password, Query Parameters, Fragment.
+An object of type [dynamic](scalar-data-types/dynamic.md) that included the URL components: Scheme, Host, Port, Path, Username, Password, Query Parameters, Fragment.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAw3GUQpAQBAA0KuIEl/TLl9q4wwuoIlhhbXNzHJ96n28yHvQbCRJp7qILDQlPqtcZk8XdQBJiAP+jSjy3rwM/hbtjG1aUL8L/BAiqu8P4x5THtY9tlgZt4uC5vUH0Z3WuWIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print Result=parse_url("scheme://username:password@host:1234/this/is/a/path?k1=v1&k2=v2#fragment")

@@ -1,11 +1,14 @@
 ---
-title: series_moving_var_fl() - Azure Data Explorer
-description: This article describes series_moving_var_fl() user-defined function in Azure Data Explorer.
+title:  series_moving_var_fl()
+description:  This article describes series_moving_var_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_moving_var_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Applies a moving variance filter on a series.
 
@@ -15,7 +18,7 @@ The function `series_moving_var_fl()` is a [user-defined function (UDF)](../quer
 
 `series_moving_var_fl(`*y_series*`,` *n* [`,` *center* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -79,8 +82,10 @@ The following example uses the [invoke operator](../query/invoke-operator.md) to
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42T3W6jMBBG73mKubQpTYG0UpXIb5F75MAktWpsZJsE73bffYcSElSlarnyz3fOjC2jMYBHp9BXrT0pc6xO0lUHDQJYrKadTRONbFWdgdkoEzKo0QR0m721Whyk9siTvwnQp8mGkdiL8qDc1ZKBww5lYAV5eAbB9Tir+PaGlwu+7XVQnY4MY0biRSyWd1K3UvNoKV4in42Vv2xpvJGJuwl8vw9O1oE6Iw01fcnfssm/ZJuMuFcGz/KEgg2bxvZ7TTU6itjmOj1KZS4TUaxy2n+THueVfJXPFzwGUxKyMu0U40+TJ2XDwyfB+bWqEUX5Og13osin0VmZxp7FLi23SW+UNQlz0hwRBjg420IOwYJ5LMAH7KCAD8AhoGkgivkUbMhgx3n2hTQjWab32fEAXwHKjsj6G+SHcuuJfv6GZsPjepWnhj/RJdwp/jzhL78rnnyAdQ062EcSSF8Drfi+baVTf8gpWvmOlVY+sIFeUVzM4wjP3vHXEvd+Nkavezc9vzHvKE3VNHVRv0kX/gMOVfCqpAMAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_moving_var_fl = (y_series:dynamic, n:int, center:bool=false)

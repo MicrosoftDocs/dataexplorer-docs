@@ -1,11 +1,13 @@
 ---
-title: ipv4_range_to_cidr_list() - Azure Data Explorer
+title:  ipv4_range_to_cidr_list()
 description: Learn how to use the ipv4_range_to_cidr_list() function to convert IPv4 address range to a list of CIDR ranges.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/10/2023
+ms.date: 08/11/2024
 ---
 # ipv4_range_to_cidr_list()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Converts a IPv4 address range denoted by starting and ending IPv4 addresses to a list of IPv4 ranges in CIDR notation.
 
@@ -13,7 +15,7 @@ Converts a IPv4 address range denoted by starting and ending IPv4 addresses to a
 
 `ipv4_range_to_cidr_list(`*StartAddress* `,` *EndAddress* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -26,7 +28,7 @@ Converts a IPv4 address range denoted by starting and ending IPv4 addresses to a
 
 A dynamic array object containing the list of ranges in CIDR notation.
 
-[!INCLUDE [CIDR notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [CIDR notation](../includes/ip-prefix-notation.md)]
 
 ## Examples
 

@@ -1,12 +1,14 @@
 ---
 title:  Create materialized view
-description: This article describes how to create materialized views in Azure Data Explorer.
+description:  This article describes how to create materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/22/2023
+ms.date: 08/11/2024
 ---
 
 # .create materialized-view
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 A [materialized view](materialized-view-overview.md) is an aggregation query over a source table. It represents a single `summarize` statement.
 
@@ -20,7 +22,7 @@ There are two possible ways to create a materialized view, as noted by the *back
 
 * See [Backfill a materialized view](#backfill-a-materialized-view).
 * Creation might take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until backfill is complete.
-* When you're using this option, the create command must be `async`. You can monitor execution by using the [`.show operations`](../operations.md#show-operations) command.
+* When you're using this option, the create command must be `async`. You can monitor execution by using the [`.show operations`](../show-operations.md) command.
 * You can cancel the backfill process by using the [`.cancel operation`](#cancel-materialized-view-creation) command.
 
 > [!IMPORTANT]
@@ -28,13 +30,13 @@ There are two possible ways to create a materialized view, as noted by the *back
 
 ## Permissions
 
-This command requires [Database Admin](../access-control/role-based-access-control.md) permissions. The creator of the materialized view becomes the admin of it.
+This command requires [Database Admin](../../access-control/role-based-access-control.md) permissions. The creator of the materialized view becomes the admin of it.
 
 ## Syntax
 
 `.create` [`async`] [`ifnotexists`] `materialized-view` [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] *MaterializedViewName* `on table` *SourceTableName* `{` *Query* `}`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -56,7 +58,7 @@ This command requires [Database Admin](../access-control/role-based-access-contr
 
 The following properties are supported in the `with` `(`*PropertyName* `=` *PropertyValue*`)` clause. All properties are optional.
 
-[!INCLUDE [materialized-view-create-properties](../../../includes/materialized-view-create-properties.md)]
+[!INCLUDE [materialized-view-create-properties](../../includes/materialized-view-create-properties.md)]
 
 > [!WARNING]
 >
@@ -191,7 +193,13 @@ The following rules limit the query used in the materialized view Query paramete
 
 * Composite aggregations are not supported in the definition of the materialized view. For instance, instead of using `SourceTableName | summarize Result=sum(Column1)/sum(Column2) by Id`, define the materialized view as: `SourceTableName | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run `MaterializedViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Access the stored function instead of accessing the materialized view directly.
 
+:::moniker range="azure-data-explorer"
 * Cross-cluster and cross-database queries aren't supported.
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+* Cross-Eventhouse and cross-database queries aren't supported.
+::: moniker-end
 
 * References to [external_table()](../../query/external-table-function.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
 
@@ -320,7 +328,7 @@ The following aggregation functions are supported:
 
 When you're creating a materialized view by using the `backfill` property, the materialized view will be created based on the records available in the source table. Or it will be created based on a subset of those records, if you use `effectiveDateTime`.
 
-Behind the scenes, the backfill process splits the data to backfill into multiple batches and executes several ingest operations to backfill the view. The process might take a long while to complete when the number of records in source table is large. The process duration depends on cluster size. Track the progress of the backfill by using the [`.show operations`](../operations.md#show-operations) command.
+Behind the scenes, the backfill process splits the data to backfill into multiple batches and executes several ingest operations to backfill the view. The process might take a long while to complete when the number of records in source table is large. The process duration depends on database size. Track the progress of the backfill by using the [`.show operations`](../show-operations.md) command.
 
 Transient failures that occur as part of the backfill process are retried. If all retries are exhausted, the command will fail and require a manual re-execution of the create command.
 
@@ -332,9 +340,9 @@ If you experience failures in view creation, try changing these properties:
 
 * `MaxSourceRecordsForSingleIngest`: By default, the number of source records in each ingest operation during backfill is 2 million per node. You can change this default by setting this property to the desired number of records. (The value is the *total* number of records in each ingest operation.)
 
-  Decreasing this value can be helpful when creation fails on memory limits or query timeouts. Increasing this value can speed up view creation, assuming that the cluster can execute the aggregation function on more records than the default.
+  Decreasing this value can be helpful when creation fails on memory limits or query timeouts. Increasing this value can speed up view creation, assuming that the database can execute the aggregation function on more records than the default.
 
-* `Concurrency`: The ingest operations, running as part of the backfill process, run concurrently. By default, concurrency is `min(number_of_nodes * 2, 5)`. You can set this property to increase or decrease concurrency. We recommend increasing this value only if the cluster's CPU is low, because the increase can significantly affect the cluster's CPU consumption.
+* `Concurrency`: The ingest operations, running as part of the backfill process, run concurrently. By default, concurrency is `min(number_of_nodes * 2, 5)`. You can set this property to increase or decrease concurrency. We recommend increasing this value only if the databse's CPU is low, because the increase can significantly affect the database's CPU consumption.
 
 For example, the following command will backfill the materialized view from `2020-01-01`. The maximum number of records in each ingest operation is 3 million. The command will execute the ingest operations with concurrency of `2`.
 
@@ -398,7 +406,11 @@ The option of backfilling by move extents can be useful in two main scenarios:
 
 * When you already have a table that includes the deduplicated source data for the materialized view, and you don't need these records in this table after view creation because you're using only the materialized view.
 
-* When the source table of the materialized view is very large, and backfilling the view based on the source table doesn't work well because of the limitations mentioned earlier. In this case, you can orchestrate the backfill process yourself into a temporary table by using [ingest from query commands](../data-ingestion/ingest-from-query.md) and one of the [recommended orchestration tools](/azure/data-explorer/tools-integrations-overview#orchestration). When the temporary table includes all records for the backfill, create the materialized view based on that table.
+* When the source table of the materialized view is very large, and backfilling the view based on the source table doesn't work well because of the limitations mentioned earlier. In this case, you can orchestrate the backfill process yourself into a temporary table by using [ingest from query commands](../data-ingestion/ingest-from-query.md). When the temporary table includes all records for the backfill, create the materialized view based on that table.
+
+::: moniker range="azure-data-explorer"
+You can also use one of the [recommended orchestration tools](/azure/data-explorer/tools-integrations-overview#orchestration).
+::: moniker-end
 
 **Examples:**
 
@@ -453,7 +465,7 @@ You can cancel the process of materialized view creation when you're using the b
 
 The creation process can't be canceled immediately. The cancel command signals materialization to stop, and the creation periodically checks if a cancel was requested. The cancel command waits for a maximum period of 10 minutes until the materialized view creation process is canceled, and it reports back if cancellation was successful.
 
-Even if the cancellation doesn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will probably cancel itself later in the creation process. The [`.show operations`](../operations.md#show-operations) command indicates if the operation was canceled.
+Even if the cancellation doesn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will probably cancel itself later in the creation process. The [`.show operations`](../show-operations.md) command indicates if the operation was canceled.
 
 If the operation is no longer in progress when the `.cancel operation` command is issued, the command will report an error saying so.
 
@@ -461,7 +473,7 @@ If the operation is no longer in progress when the `.cancel operation` command i
 
 `.cancel operation` *operationId*
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 #### Parameters
 

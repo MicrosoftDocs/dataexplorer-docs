@@ -3,9 +3,11 @@ title:  series_fit_2lines()
 description: Learn how to use the series_fit_2lines() function to apply a two segmented linear regression on a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/11/2024
 ---
 # series_fit_2lines()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Applies a two segmented linear regression on a series, returning multiple columns.  
 
@@ -36,7 +38,7 @@ Takes an expression containing dynamic numerical array as input and applies a [t
 
 project `series_fit_2lines(`*series*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 * Will return all mentioned above columns with the following names: series_fit_2lines_x_rsquare, series_fit_2lines_x_split_idx etc.
 
@@ -59,8 +61,10 @@ extend (rs, si, v)=`series_fit_2lines(`*series*`)`
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA1WQQUsDMRCF74X+h7k1CzE00VY97FUoeOqCF5ESs6M7ss3GbMRd8Mc7YW3X5vAyecz7mEmI5NNyAXyoLlewktNjKKP17yheyQvffYtCgm4KuAKtGwmX7iRTbizr0dsjOfGsJRhlsmwk3KhbCRu15l629Fpdn/Rewl2+t8q8FMvFD+CQ0NcTTlRtF1DCzieMDkOizkvYV59fNrL9ZCNZ77jaz+UjeXygVJQ9RsL+8Ebp0LInxtOQ4g/Ak1ShpbSrh5ll/sHMmWYucCbzegbmeUPsPtAl/j8JzBnPmTmc2yIvhRESHdE1NqZflsNPUXoBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print

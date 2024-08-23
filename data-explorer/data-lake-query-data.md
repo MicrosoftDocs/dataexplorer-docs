@@ -9,7 +9,7 @@ ms.date: 08/25/2022
 
 Azure Data Lake Storage is a highly scalable and cost-effective data lake solution for big data analytics. It combines the power of a high-performance file system with massive scale and economy to help you reduce your time to insight. Data Lake Storage Gen2 extends Azure Blob Storage capabilities and is optimized for analytics workloads.
 
-Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Storage (Gen1 and Gen2), providing fast, cached, and indexed access to data stored in external storage. You can analyze and query data without prior ingestion into Azure Data Explorer. You can also query across ingested and uningested external data simultaneously. For more information, see how to [create an external table using the Azure Data Explorer web UI wizard](external-table.md). For a brief overview, see [external tables](kusto/query/schema-entities/external-tables.md).
+Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Storage (Gen1 and Gen2), providing fast, cached, and indexed access to data stored in external storage. You can analyze and query data without prior ingestion into Azure Data Explorer. You can also query across ingested and uningested external data simultaneously. For more information, see how to [create an external table using the Azure Data Explorer web UI wizard](external-table.md). For a brief overview, see [external tables](/kusto/query/schema-entities/external-tables?view=azure-data-explorer&preserve-view=true).
 
 > [!TIP]
 > The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. [Optimize your external data query performance](#optimize-your-query-performance) for best results.
@@ -35,7 +35,7 @@ https://mycompanystorage.blob.core.windows.net/archivedproducts/2019/01/02/part-
 ...
 ```
 
-To run a KQL query on these CSV files directly, use the `.create external table` command to define an external table in Azure Data Explorer. For more information on external table create command options, see [external table commands](kusto/management/external-tables-azurestorage-azuredatalake.md).
+To run a KQL query on these CSV files directly, use the `.create external table` command to define an external table in Azure Data Explorer. For more information on external table create command options, see [external table commands](/kusto/management/external-tables-azure-storage?view=azure-data-explorer&preserve-view=true).
 
 ```Kusto
 .create external table ArchivedProducts(Timestamp:datetime, ProductId:string, ProductDescription:string)
@@ -70,7 +70,7 @@ external_table("ArchivedProducts")
 
 ## Querying external and ingested data together
 
-You can query both external tables and ingested data tables within the same query. You can [`join`](kusto/query/join-operator.md) or [`union`](kusto/query/union-operator.md) the external table with other data from Azure Data Explorer, SQL servers, or other sources. Use a [`let( ) statement`](kusto/query/let-statement.md) to assign a shorthand name to an external table reference.
+You can query both external tables and ingested data tables within the same query. You can [`join`](/kusto/query/join-operator?view=azure-data-explorer&preserve-view=true) or [`union`](/kusto/query/union-operator?view=azure-data-explorer&preserve-view=true) the external table with other data from Azure Data Explorer, SQL servers, or other sources. Use a [`let( ) statement`](/kusto/query/let-statement?view=azure-data-explorer&preserve-view=true) to assign a shorthand name to an external table reference.
 
 In the example below, *Products* is an ingested data table and *ArchivedProducts* is an external table that we've defined previously:
 
@@ -82,7 +82,7 @@ T1 | join T on ProductId | take 10
 
 ## Querying hierarchical data formats
 
-Azure Data Explorer allows querying hierarchical formats, such as `JSON`, `Parquet`, `Avro`, and `ORC`. To map hierarchical data schema to an external table schema (if it's different), use [external table mappings commands](kusto/management/external-table-mapping-create.md). For instance, if you want to query JSON log files with the following format:
+Azure Data Explorer allows querying hierarchical formats, such as `JSON`, `Parquet`, `Avro`, and `ORC`. To map hierarchical data schema to an external table schema (if it's different), use [external table mappings commands](/kusto/management/external-table-mapping-create?view=azure-data-explorer&preserve-view=true). For instance, if you want to query JSON log files with the following format:
 
 ```JSON
 {
@@ -125,7 +125,7 @@ When you query the external table, the mapping will be invoked, and relevant dat
 external_table('ApiCalls') | take 10
 ```
 
-For more info on mapping syntax, see [data mappings](kusto/management/mappings.md).
+For more info on mapping syntax, see [data mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true).
 
 ## Query *TaxiRides* external table in the help cluster
 
@@ -270,4 +270,4 @@ Select VM SKUs with more cores and higher network throughput (memory is less imp
 
 ## Related content
 
-* [Tutorial: Learn common KQL operators](kusto/query/tutorials/learn-common-operators.md)
+* [Tutorial: Learn common KQL operators](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true)

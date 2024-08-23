@@ -3,10 +3,12 @@ title:  Materialized views limitations
 description: This article describes materialized views limitations.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 10/15/2022
+ms.date: 08/11/2024
 ---
 
 # Materialized views limitations and known issues
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 ## The materialized view source
 
@@ -38,11 +40,19 @@ ms.date: 10/15/2022
 
 ## Follower databases
 
-<!-- //TODO put links in moniker pivots - follower for ADX and database shortcut for Fabric -->
-
+::: moniker range="azure-data-explorer"
 * Materialized views cannot be created in [follower databases](/azure/data-explorer/follower). Follower databases are read-only and materialized views require write operations.  
+::: moniker-end
+::: moniker range="microsoft-fabric"
+* Materialized views cannot be created in [database shortcuts](/fabric/real-time-intelligence/database-shortcut). Database shortcuts are read-only and materialized views require write operations.  
+::: moniker-end
 * Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
+:::moniker range="azure-data-explorer"
 * Use the leader cluster to monitor follower database materialized views. For more details, see [Materialized views in follower databases](materialized-views-monitoring.md#materialized-views-in-follower-databases).
+::: moniker-end
+:::moniker range="microsoft-fabric"
+* Use the source Eventhouse to monitor shortcut database materialized views. For more details, see [Monitor materialized views](materialized-views-monitoring.md)
+::: moniker-end
 
 ## Other
 

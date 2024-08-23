@@ -84,5 +84,5 @@ In the **Data preparation** window, all three steps are marked with green check 
 ## Related content
 
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
-* [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)
+* [Tutorial: Learn common Kusto Query Language operators](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

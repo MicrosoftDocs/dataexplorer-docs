@@ -3,11 +3,12 @@ title:  table()
 description: Learn how to use the table() function to reference a table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # table()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The table() function references a table by providing its name as an expression of type `string`.
 
@@ -15,7 +16,7 @@ The table() function references a table by providing its name as an expression o
 
 `table(` *TableName* [`,` *DataScope*] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -44,8 +45,10 @@ The table() function references a table by providing its name as an expression o
 
 ### Use table() to access table of the current database
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytJTMpJ1VAPLskvynUtS80rKVbXVKhRSM4vzSsBAIdoofIcAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 table('StormEvents') | count
@@ -61,8 +64,10 @@ table('StormEvents') | count
 
 The query above can be rewritten as a query-defined function (let statement) that receives a parameter `tableName` - which is passed into the table() function.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIy89XsFXQKElMykn1S8xNtSouKcrMS9fkquZSAAKwOEJWU6FGITm/NK+Eq9aaC6hVQz24JL8o17UsNa+kWF0TAD3GJXVRAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let foo = (tableName:string)
@@ -90,16 +95,16 @@ receives a parameter `tableName` - which is passed into the table() function.
 };
 ```
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 > [!NOTE]
 > Such functions can be used only locally and not in the cross-cluster query.
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
-::: zone-end
+::: moniker-end
 
 ### Use table() with non-constant parameter
 
@@ -107,8 +112,10 @@ A parameter, which isn't a scalar constant string, can't be passed as a paramete
 
 Below, given an example of workaround for such case.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIMVSwVSgoyswrUaiwNbTmygGJGSGJGUHE4pMz8vOLU4ESGvHFqTmpySX5RVbFJUBF6Zpc1VwKQFCal5mfB2ZpAE2tUSjPSC1KVYCrVrC1VVAPMVTX1IGqMcKlxkhdk6vWmgtqpQZYAADWO8bZrAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let T1 = print x=1;

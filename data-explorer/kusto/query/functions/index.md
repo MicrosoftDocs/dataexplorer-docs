@@ -1,13 +1,15 @@
 ---
 title:  Functions
-description: This article describes Functions in Azure Data Explorer.
+description:  This article describes Functions.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/05/2023
+ms.date: 08/11/2024
 adobe-target: true
 ---
 
 # Function types
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
 Functions are reusable queries or query parts. Kusto supports two
 kinds of functions:
@@ -21,4 +23,4 @@ kinds of functions:
 
   * *Query-defined functions*: user-defined functions that are defined and used within the scope of a single query. The definition of such functions is done through a let statement. For more information on how to create query-defined functions, see [Create a user defined function](../let-statement.md#create-a-user-defined-function-with-scalar-calculation).
 
-  For more information on user-defined functions, see [User-defined functions](./user-defined-functions.md).
+  For more information on user-defined functions, see [User-defined functions](user-defined-functions.md).

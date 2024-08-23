@@ -3,21 +3,23 @@ title:  .alter table policy caching command
 description: Learn how to use the `.alter table policy caching` command to change the table's cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/04/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy caching command
 
-Change's the table's cache policy. To speed up queries, data is cached on processing nodes, in SSD, or even in RAM. The [cache policy](cache-policy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+Change's the table's cache policy. To speed up queries, data is cached on processing nodes, in SSD, or even in RAM. The [cache policy](cache-policy.md) allows your database to describe the data artifacts that it uses, so that more important data can take priority.
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameters*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
