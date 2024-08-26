@@ -3,9 +3,11 @@ title: .create-or-alter function command
 description: Learn how to use the `.create-or-alter function` command to create a stored function or alter an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .create-or-alter function command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Creates a stored function or alters an existing function and stores it inside the database metadata.
 
@@ -13,13 +15,13 @@ Rules for parameter types and CSL statements are the same as for [let statements
 
 ## Permissions
 
-This command requires [Database User](access-control/role-based-access-control.md) permissions for creating a new function, and [Function Admin](access-control/role-based-access-control.md) permissions for altering an existing function.
+This command requires [Database User](../access-control/role-based-access-control.md) permissions for creating a new function, and [Function Admin](../access-control/role-based-access-control.md) permissions for altering an existing function.
 
 ## Syntax
 
 `.create-or-alter` `function` [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] *functionName* `(`*parameters*`)` `{` *body* `}`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -44,11 +46,12 @@ This command requires [Database User](access-control/role-based-access-control.m
 
 ## Example
 
+The following example creates the *TestFunction* function with a description (`docstring`), folder, and defines the `MyLimit` parameter.
+
 ```kusto
-.create-or-alter function with (docstring = 'Demo function with parameter', folder='MyFolder') TestFunction(myLimit:int)
-{
-    StormEvents | take myLimit 
-} 
+.create-or-alter function with (docstring = 'Demo function with parameter', folder='MyFolder')
+TestFunction(myLimit:int)
+{ StormEvents | take myLimit} 
 ```
 
 **Output**

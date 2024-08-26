@@ -1,17 +1,19 @@
 ---
 title:  Show continuous data export
-description: This article describes how to show continuous data export properties in Azure Data Explorer.
+description:  This article describes how to show continuous data export properties.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 # Show continuous export
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Returns the properties of a specified continuous export or all continuous exports in the database.
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../../access-control/role-based-access-control.md).
 
 ## Syntax
 
@@ -19,7 +21,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `continuous-exports`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

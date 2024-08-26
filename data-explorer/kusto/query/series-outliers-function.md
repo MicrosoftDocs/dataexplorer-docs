@@ -1,11 +1,13 @@
 ---
-title:  series_outliers() - Azure Data Explorer
+title:   series_outliers()
 description: Learn how to use the series_outliers() function to score anomaly points in a series.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/15/2023
+ms.date: 08/11/2024
 ---
 # series_outliers()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Scores anomaly points in a series.
 
@@ -15,7 +17,7 @@ The function takes an expression with a dynamic numerical array as input, and ge
 
 `series_outliers(`*series* [`,` *kind* ] [`,` *ignore_val* ] [`,` *min_percentile* ] [`,` *max_percentile* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,8 +41,10 @@ The following table describes differences between `"tukey"` and `"ctukey"`:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?query=H4sIAAAAAAAEAF2Q0U6EMBBF3038h%2bsb7KILu%2bob30ImMCyNtMXpoGD8eLvLYtCkaTrT2zP3VsidGRNa8RY51OP0%2boygPKDA%2fd03eFJ2DRQlGlJWYzk55sfTY17ElWKPotlNG%2bUclUKuSVLsUOT%2fbkzbJtY77Xw7M0miKR5KbDuD8Edspxnm%2fTGPe4rDAWd2LHE%2bCIHs0DMCi%2bGAT6Md%2fKi9YQkgRWskaPQ6w7dgqruFfvERRmtJzBdf41h646o3QeO0bMVt23O6Mb%2bOKBdhtdbJUm%2blgw8VOW%2bpX4gkQnN1SX57exaOUaTi95H6kKyoDMXTS7RSZMivPIk0Fiysue5I9Jo3mWrfj9aVGr9nOa6%2bsl%2f1rf3HTKT%2bAI%2bfv2rxAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 0 to 364 step 1 

@@ -3,9 +3,11 @@ title:  diffpatterns plugin
 description: Learn how to use the diffpatterns plugin to compare two datasets of the same structure to find the differences between the two datasets. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # diffpatterns plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Compares two datasets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two datasets. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
@@ -18,7 +20,7 @@ Compares two datasets of the same structure and finds patterns of discrete attri
 
 `T | evaluate diffpatterns(`*SplitColumn*`,` *SplitValueA*`,` *SplitValueB* [`,` *WeightColumn*`,`*Threshold*`,` *MaxDimensions*`,` *CustomWildcard*`,` ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -58,13 +60,15 @@ For each pattern, columns that aren't set in the pattern (that is, without restr
 
 > [!TIP]
 >
-> * Use [where](./where-operator.md) and [project](./project-operator.md) in the input pipe to reduce the data to just what you're interested in.
+> * Use [where](where-operator.md) and [project](project-operator.md) in the input pipe to reduce the data to just what you're interested in.
 > * When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVNvQ6CYAzcfYoLE0QHGBxxUXcTeIEvUATj95NSUBIf3n6gQ9u79npXiWd7ncnJiN0Hr56YYL2T3ncLGU4rMSz1YClDWeKoGnoLuRYXY82dUGLounQjZ/ZhxP53uikjlgUn5Dig0Moz/Q/sH9QI1FlIl2t6vYSIKz9xE8Fm8Z+rcYyezXOKX62GBiNC7Mb0r03yRFuRIPsCQuCK6dYAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 

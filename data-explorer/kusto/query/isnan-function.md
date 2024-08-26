@@ -3,9 +3,11 @@ title:  isnan()
 description: Learn how to use the isnan() function to check if the input is a not-a-number (NaN) value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 08/11/2024
 ---
 # isnan()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns whether the input is a Not-a-Number (NaN) value.  
 
@@ -13,7 +15,7 @@ Returns whether the input is a Not-a-Number (NaN) value.
 
 `isnan(`*number*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,8 +29,10 @@ Returns whether the input is a Not-a-Number (NaN) value.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1XQNVQoyVcwVCguSS1QMOTlqlFIrShJzUtRqFSwVdDQNdSq0FRAEk3JLAOKG+oZaFXoVyKJZxbnJebZgkkNoBpNAG+vyvhkAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from -1 to 1 step 1

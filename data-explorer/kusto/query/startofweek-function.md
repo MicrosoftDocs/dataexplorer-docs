@@ -3,9 +3,11 @@ title:  startofweek()
 description: Learn how to use the startofweek() function to return the start of the week for the given date.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 08/11/2024
 ---
 # startofweek()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns the start of the week containing the date, shifted by an offset, if provided.
 
@@ -15,7 +17,7 @@ Start of the week is considered to be a Sunday.
 
 `startofweek(`*date* [`,` *offset* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,8 +32,10 @@ A datetime representing the start of the week for the given *date* value, with t
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2MQQqAMAwE775ijxYUGi8FwVf4gqKpqNSUGvDi421BGFiYhcn+2hgSws2KkCWiJ6iAcCsnUPMiZTl4UTzM56w+K6ZylpVQVbt6Zd0jt4Ml11sqgOxYcab72+YDGdMCYmkAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range offset from -1 to 1 step 1

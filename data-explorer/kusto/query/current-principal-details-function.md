@@ -3,9 +3,11 @@ title:  current_principal_details()
 description: Learn how to use the current_principal_details() function to return the details of the principal running the query. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/07/2023
+ms.date: 08/11/2024
 ---
 # current_principal_details()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns details of the principal running the query.
 
@@ -13,7 +15,7 @@ Returns details of the principal running the query.
 
 `current_principal_details()`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 
@@ -28,12 +30,14 @@ The details of the current principal as a [dynamic](../query/scalar-data-types/d
 |Type|The category of the principal: `aaduser`, `aadapp`, or `aadgroup`.|
 |DisplayName|The user-friendly name  for the principal that is displayed in the UI.|
 |ObjectId|The Microsoft Entra object ID for the principal.|
-|FQN|The Fully Qualified Name (FQN) of the principal. Valuable for [security role management commands](../management/security-roles.md). For more information, see [Referencing security principals](../management/referencing-security-principals.md).|
+|FQN|The Fully Qualified Name (FQN) of the principal. Valuable for [security role management commands](../management/security-roles.md). For more information, see [Referencing security principals](../management/reference-security-principals.md).|
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUixTS4tKkrNK4kvAPKTMwsSc+JTUksSM3OKNTQBdsrI5yMAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print details=current_principal_details()

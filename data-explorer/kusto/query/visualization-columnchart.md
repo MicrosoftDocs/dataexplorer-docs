@@ -1,13 +1,14 @@
 ---
 title:  Column chart visualization
-description: This article describes the column chart visualization in Azure Data Explorer.
+description:  This article describes the column chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/02/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Column chart
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The column chart visual needs a minimum of two columns in the query result. By default, the first column is used as the x-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the y-axis and contain numeric data types to be displayed as vertical lines. Column charts are used for comparing specific sub category items in a main category range, where the length of each line represents its value.
 
@@ -18,7 +19,7 @@ The column chart visual needs a minimum of two columns in the query result. By d
 
 *T* `|` `render` `columnchart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,7 +28,7 @@ The column chart visual needs a minimum of two columns in the query result. By d
 | *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Supported properties
 
@@ -60,9 +61,9 @@ This visualization supports splitting into multiple y-axis values:
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value.|
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ### Supported properties
 
@@ -74,7 +75,7 @@ All properties are optional.
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`title`       |The title of the visualization (of type `string`).                                |
 
-::: zone-end
+::: moniker-end
 
 #### `kind` property
 
@@ -88,14 +89,16 @@ The supported values of this property are:
 |`stacked`          |Stack "columns" one atop the other.|
 |`stacked100`       |Stack "columns" and stretch each one to the same height as the others.|
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ## Examples
 
 ### Render a column chart
 
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNQiFEUKdgqGBkCJgqL8rNTkEohCHWQVQMmi1LyU1CKF5Pyc0ty85IzEohIAvF8Py38AAAA=" target="_blank">Run the query</a>
+
 
 ```kusto
 StormEvents
@@ -129,6 +132,7 @@ To split the view into separate panels, specify `panels` instead of `axes`:
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOMQ6DMAxFd07hEVSWHoCNDsxwgRAsYZQ4yDGtqHr4pkW04O1//2f/VoP42x1ZY/aCuHhvhJ6YQZouqHENT4sQRqg+23yXNQlaLeBychseNr/8H6jR6LjjmzjDm/dDv2S/Qk+ct2pEO/JYwnUoUsFZwpRCcFicWpbHnykvyAMK2OAWz3ZMEDxIR8jXODvSajaMLhZvciiM8gYBAAA=" target="_blank">Run the query</a>
 
+
 ```kusto
 StormEvents
 | summarize
@@ -141,9 +145,9 @@ StormEvents
 
 :::image type="content" source="media/visualization-columnchart/column-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="media/visualization-columnchart/column-chart-ysplit-panels.png":::
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ## Example
 
@@ -160,4 +164,4 @@ StormEvents
 
 :::image type="content" source="media/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="media/visualization-columnchart/column-chart.png":::
 
-::: zone-end
+::: moniker-end

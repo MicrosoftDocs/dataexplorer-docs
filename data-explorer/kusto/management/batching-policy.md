@@ -3,19 +3,21 @@ title: IngestionBatching policy
 description: Learn how to use the IngestionBatching policy to optimize batching for ingestion.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/04/2023
+ms.date: 08/21/2024
 ---
 # Ingestion batching policy
 
 ## Overview
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 During the queued ingestion process, the service optimizes for throughput by batching small ingress data chunks together before ingestion. Batching reduces the resources consumed by the queued ingestion process and doesn't require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
 
 The downside to doing batching before ingestion is the forced delay. Therefore, the end-to-end time from requesting the data ingestion until the data ready for query is larger.
 
-When you define the [`IngestionBatching`](./show-table-ingestion-batching-policy.md) policy, you'll need to find a balance between optimizing for throughput and time delay. This policy applies to queued ingestion. It defines the maximum forced delay allowed when batching small blobs together. To learn more about using batching policy commands, and optimizing for throughput, see:
+When you define the [`IngestionBatching`](show-table-ingestion-batching-policy.md) policy, you'll need to find a balance between optimizing for throughput and time delay. This policy applies to queued ingestion. It defines the maximum forced delay allowed when batching small blobs together. To learn more about using batching policy commands, and optimizing for throughput, see:
 
-* [Ingestion batching policy command reference](./show-table-ingestion-batching-policy.md)
+* [Ingestion batching policy command reference](show-table-ingestion-batching-policy.md)
 * [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput)
 
 ## Sealing a batch
@@ -28,11 +30,11 @@ The following list shows the basic batching policy triggers to seal a batch. A b
 * `Count`: Batch file number limit reached
 * `Time`: Batching time has expired
 
-The `IngestionBatching` policy can be set on databases or tables. Default values are as follows: **5 minutes** maximum delay time, **1000** items, total size of **1 GB**.
+The `IngestionBatching` policy can be set on databases or tables. Default values are as follows: **5 minutes** maximum delay time, **500** items, total size of **1 GB**.
 
 > [!IMPORTANT]
 > The impact of setting this policy to very small values is
-> an increase in the COGS (cost of goods sold) of the cluster and reduced performance. Additionally,
+> an increase in the COGS (cost of goods sold) and reduced performance. Additionally,
 > reducing batching policy values might actually result in **increased** effective
 > end-to-end ingestion latency, due to the overhead of managing multiple ingestion
 > processes in parallel.
@@ -41,25 +43,25 @@ The following list shows conditions to seal batches related to single blob inges
 
 * `SingleBlob_FlushImmediately`: Ingest a single blob because ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) was set
 * `SingleBlob_IngestIfNotExists`: Ingest a single blob because
-['IngestIfNotExists'](../../ingestion-properties.md#ingestion-properties) was set
+['IngestIfNotExists'](../ingestion-properties.md#ingestion-properties) was set
 * `SingleBlob_IngestByTag`: Ingest a single blob because ['ingest-by'](extent-tags.md) was set
 * `SingleBlob_SizeUnknown`: Ingest a single blob because blob size is unknown
 
-If the `SystemFlush` condition is set, a batch will be sealed when a system flush is triggered. With the `SystemFlush` parameter set, the system flushes the data, for example due to cluster scaling or internal reset of system components.
+If the `SystemFlush` condition is set, a batch will be sealed when a system flush is triggered. With the `SystemFlush` parameter set, the system flushes the data, for example due to database scaling or internal reset of system components.
 
 ## Defaults and limits
 
-| Type             | Property                | Default | Low latency setting | Minimum value | Maximum value |
-|------------------|-------------------------|---------|-------------|--------|----|
-| Number of items  | MaximumNumberOfItems    | 500     | 500         | 1      | 25,000 |
-| Data size (MB)   | MaximumRawDataSizeMB    | 1024    | 1024        | 100     | 4096 |
-| Time (sec)       | MaximumBatchingTimeSpan | 300     | 20 - 30     | 10 | 1800 |
+| Type             | Property                 | Default   | Low latency setting  | Minimum value | Maximum value |
+|------------------|--------------------------|-----------|----------------------|---------------|---------------|
+| Number of items  | MaximumNumberOfItems     | 500       | 500                  | 1             | 25,000        |
+| Data size (MB)   | MaximumRawDataSizeMB     | 1024      | 1024                 | 100           | 4096          |
+| Time (TimeSpan)  | MaximumBatchingTimeSpan  | 00:05:00  | 00:00:20 - 00:00:30  | 00:00:10      | 00:30:00      |
 
-The most effective way of controlling the end-to-end latency using ingestion batching policy is to alter its time boundary at [table](./alter-table-ingestion-batching-policy.md) or [database](./alter-database-ingestion-batching-policy.md) level, according to the higher bound of latency requirements.
+The most effective way of controlling the end-to-end latency using ingestion batching policy is to alter its time boundary at [table](alter-table-ingestion-batching-policy.md) or [database](alter-database-ingestion-batching-policy.md) level, according to the higher bound of latency requirements.
 A database level policy affects all tables in that database that don't have the table-level policy defined, and any newly created table.
 
 > [!IMPORTANT]
-> If you set the time boundary of the Ingestion Batching policy too low on low-ingress tables, you may incur additional compute and storage work as the cluster attempts to optimize the newly created data shards. For more information about data shards, see [extents](./extents-overview.md).
+> If you set the time boundary of the Ingestion Batching policy too low on low-ingress tables, you may incur additional compute and storage work as the database attempts to optimize the newly created data shards. For more information about data shards, see [extents](extents-overview.md).
 
 ## Batch data size
 
@@ -78,4 +80,4 @@ Latencies can result from many causes that can be addressed using batching polic
 | Data latency matches the `time` setting, with too little data to reach the `size` or `count` limit | Reduce the `time` limit |
 | Inefficient batching due to a large number of very small files | Increase the size of the source files. If using Kafka Sink, configure it to send data in ~100 KB chunks or higher. If you have many small files, increase the `count` (up to 2000) in the database or table ingestion policy. |
 | Batching a large amount of uncompressed data | This is common when ingesting Parquet files. Incrementally decrease `size` for the table or database batching policy towards 250 MB and check for improvement. |
-| Backlog because the cluster is under scaled | Accept any Azure advisor suggestions to scale aside or scale up your cluster. Alternatively, manually scale your cluster to see if the backlog is closed. If these options don't work, contact support for assistance. |
+| Backlog because the database is under scaled | Accept any Azure advisor suggestions to scale aside or scale up your database. Alternatively, manually scale your database to see if the backlog is closed. If these options don't work, contact support for assistance. |

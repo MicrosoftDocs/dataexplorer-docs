@@ -1,11 +1,13 @@
 ---
 title:  iff()
-description: This article describes iff() in Azure Data Explorer.
+description:  This article describes iff().
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # iff()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns the *:::no-loc text="then":::* value when the *:::no-loc text="if":::* condition evaluates to `true`, otherwise it returns the *:::no-loc text="else":::* value.
 
@@ -15,7 +17,7 @@ Returns the *:::no-loc text="then":::* value when the *:::no-loc text="if":::* c
 
 `iff(`*:::no-loc text="if":::*`,` *:::no-loc text="then":::*`,` *:::no-loc text="else":::*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -31,8 +33,10 @@ This function returns the  *:::no-loc text="then":::* value when the *:::no-loc 
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSK0oSc1LUQhKzMxTsFXITEvT0ADLhVQWpCoAxTSUPFITyyrBCpR0FJTcchKLMxTccvLzUyBcEENTE8gEG5EK0guS8MsvUShCiGgCrSooys9KTS5RCC5JLEnVUQBb45kCZYDs0wHbAgAA0TJCoAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

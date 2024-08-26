@@ -3,9 +3,11 @@ title:  beta_cdf()
 description: Learn how to use the beta_cdf() function to return a standard beta cumulative distribution function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # beta_cdf()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns the standard cumulative beta distribution function.
 
@@ -17,7 +19,7 @@ The beta distribution is commonly used to study variation in the percentage of s
 
 `beta_cdf(`*x*`,` *alpha*`,` *beta*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,8 +42,10 @@ The [cumulative beta distribution function](https://en.wikipedia.org/wiki/Beta_d
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PwQrCMBBE7/mKoacWYkgFDxb1E3r0IiJpEzWQpsWmEMGPN6algnUXlh2Yt8tI4UJXRqW+kO0QFgphuruYVaXcV9Rt0yjrit49tL1l5EQQirMtRc4Zp1jHmRyF0RLadoNLaPTkbPPj8Tggp3hqZWSPUpSTc/yVrnKeLYgd+B+Cs3BnxtiHm4gYBbpfgORMXlDeKStRYR9TXmp5Tf2UfwyevQFA2/Y/IAEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(x:double, alpha:double, beta:double, comment:string)
@@ -65,5 +69,5 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 
 ## Related content
 
-* For computing the inverse of the beta cumulative probability density function, see [beta-inv()](./beta-inv-function.md).
-* For computing probability density function, see [beta-pdf()](./beta-pdf-function.md).
+* For computing the inverse of the beta cumulative probability density function, see [beta-inv()](beta-inv-function.md).
+* For computing probability density function, see [beta-pdf()](beta-pdf-function.md).

@@ -1,11 +1,14 @@
 ---
 title:  Sandbox policy
-description: This article describes Sandbox policy in Azure Data Explorer.
+description:  This article describes Sandbox policy.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Sandbox policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Certain plugins run within [sandboxes](../concepts/sandboxes.md) whose available resources are limited and controlled for security and for resource governance.
 
@@ -69,4 +72,4 @@ The following policy sets different limits for `PythonExecution` and `RExecution
 ## Related content
 
 
-* [Sandbox policy management commands](./show-cluster-sandbox-policy-command.md)
+* [Sandbox policy management commands](show-cluster-sandbox-policy-command.md)

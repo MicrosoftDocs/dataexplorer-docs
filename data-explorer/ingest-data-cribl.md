@@ -17,7 +17,7 @@ For a complete list of data connectors, see [Data integrations overview](integra
 
 * A [Cribl Stream account](https://cribl.io)
 * An Azure Data Explorer [cluster and database](/azure/data-explorer/create-cluster-and-database) with the default cache and retention policies.
-* [Azure Data Explorer query environment](https://dataexplorer.azure.com/) <a id=ingestion-uri></a>
+* A query environment. For more information, see [Query integrations overview](integrate-query-overview.md). <a id=ingestion-uri></a>
 * Your Kusto cluster URI for the *TargetURI* value in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).
 
 [!INCLUDE [ingest-data-cribl-2](includes/cross-repo/ingest-data-cribl-2.md)]

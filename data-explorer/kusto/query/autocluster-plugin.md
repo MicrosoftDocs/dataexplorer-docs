@@ -3,9 +3,11 @@ title:  autocluster plugin
 description: Learn how to use the autocluster plugin to find common patterns in data. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # autocluster plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 `autocluster` finds common patterns of discrete attributes (dimensions) in the data. It then reduces the results of the original query, whether it's 100 or 100,000 rows, to a few patterns. The plugin was developed to help analyze failures (such as exceptions or crashes) but can potentially work on any filtered dataset. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
@@ -16,7 +18,7 @@ ms.date: 11/13/2023
 
 *T* `|` `evaluate` `autocluster` `(`[*SizeWeight* [`,` *WeightColumn* [`,` *NumSeeds* [`,` *CustomWildcard* [`,` ... ]]]]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,7 +41,7 @@ The first column is the segment ID. The next two columns are the count and perce
 The patterns aren't distinct, may be overlapping, and usually don't cover all the original rows. Some rows may not fall under any pattern.
 
 > [!TIP]
-> Use [where](./where-operator.md) and [project](./project-operator.md) in the input pipe to reduce the data to just what you're interested in.
+> Use [where](where-operator.md) and [project](project-operator.md) in the input pipe to reduce the data to just what you're interested in.
 >
 > When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
@@ -53,8 +55,10 @@ T | evaluate autocluster()
 
 ### Using autocluster
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy1OPQ+CMBDd/RUvTBCNYdENF2VVk7I4NngIhrbkONAm/nhbcbr3lfdOiWNTzmRlXH3waokJxllpXeNJc6pEs1SdoQxFgV3I0FvI3nHSRj8IBbqmSRdyZDeMWP+ta2DE4nFAjg2SW6mSeM+XJAs1A7sn1YIwIBT03w+VHyJeCuLWrPsp+noSV/fTKMRpvt1nX4BZevm3AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -74,8 +78,10 @@ StormEvents
 
 ### Using custom wildcards
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVOMQ6CQBDsfcWEBlBiiIklNkqrJtBYXnARDMeRZUFJjG/3TrTZ2ZnZzGwmhnU6Uiv94oVHRUzQppXKlBMpDjJRLHmtKUSSYGtv6CnUXnFQWt0ICeqyDGayZ9P1WP2ss2XEMmGHGBG8S5p5Do8nL7QxHZs7FQJbIGT17w/51Ll9DnBdo2oG56tBTNEMvRAH8XoTwX/7/7H0ww9RvGz7xgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -95,5 +101,5 @@ StormEvents
 
 ## Related content
 
-* [basket](./basket-plugin.md)
-* [reduce](./reduce-operator.md)
+* [basket](basket-plugin.md)
+* [reduce](reduce-operator.md)

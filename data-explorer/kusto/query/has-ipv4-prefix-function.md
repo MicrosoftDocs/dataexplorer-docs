@@ -3,9 +3,11 @@ title:  has_ipv4_prefix()
 description: Learn how to use the has_ipv4_prefix() function to check if a specified IPv4 address prefix appears in the text.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/25/2022
+ms.date: 08/11/2024
 ---
 # has_ipv4_prefix()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a value indicating whether a specified IPv4 address prefix appears in a text.
 
@@ -20,7 +22,7 @@ IP address entrances in a text must be properly delimited with nonalphanumeric c
 
 `has_ipv4_prefix(`*source* `,` *ip_address_prefix* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,8 +42,10 @@ IP address entrances in a text must be properly delimited with nonalphanumeric c
 
 ### Properly formatted IPv4 prefix
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOzywoM4kvKEpNy6zQUDcwtTIwsTI1UTA0MtczAEJDBXfXEAX9tMSyzOT8PD0goWBiYKKuo6AOUaGuCQBk8fTRUQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=has_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.')
@@ -53,8 +57,10 @@ print result=has_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.'
 
 ### Invalid IPv4 prefix
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOzywoM4kvKEpNy6zQUDcwtTIwsTI1UTA0MtczAEJDBXfXEAX9tMSyzOT8PD0goWBiYKKuo6AOVqGuCQDlc4Z2UAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=has_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0')
@@ -66,8 +72,10 @@ print result=has_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0')
 
 ### Invalid IPv4 address
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOzywoM4kvKEpNy6zQUDcwtTIwsTI1UTA0MtczAEIjUzMFd9cQBf20xLLM5Pw8PSChYGJgoq6joA5Ro64JAMAcwIpTAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=has_ipv4_prefix('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0.')
@@ -79,8 +87,10 @@ print result=has_ipv4_prefix('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0
 
 ### Improperly delimited IPv4 address
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOzywoM4kvKEpNy6zQUDcwtTIwsTI1MTQy1zMAQkMFd9cQBf20xLLM5Pw8PSChYGJgoq6joA5Roa4JAD4FydVQAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=has_ipv4_prefix('05:04:54127.0.0.1 GET /favicon.ico 404', '127.0.')

@@ -1,11 +1,14 @@
 ---
 title:  Extents (data shards)
-description: This article describes Extents (data shards) in Azure Data Explorer.
+description:  This article describes Extents (data shards).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/15/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Extents (data shards)
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Tables are partitioned into *extents*, or *data shards*. Each extent is a horizontal segment of the table that contains data and metadata such as its creation time and optional tags. The union of all these extents contains the entire dataset of the table. Extents are evenly distributed across nodes in the cluster, and they're cached in both local SSD and memory for optimized performance.
 
@@ -29,7 +32,7 @@ The creation time of an extent is used for the following purposes:
 * Caching: Extents created recently are kept in [hot cache](cache-policy.md).
 * Sampling: Recent extents are preferred when using query operations such as [take](../query/take-operator.md).
 
-To overwrite the creation time of an extent, provide an alternate `creationTime` in the [data ingestion properties](../../ingestion-properties.md). This can be useful for retention purposes, such as if you want to reingest data but don't want it to appear as if it arrived late.
+To overwrite the creation time of an extent, provide an alternate `creationTime` in the [data ingestion properties](../ingestion-properties.md). This can be useful for retention purposes, such as if you want to reingest data but don't want it to appear as if it arrived late.
 
 > [!NOTE]
 > The calculation for removing an extent based on time uses the creation time of the newest extent within the merged extent.

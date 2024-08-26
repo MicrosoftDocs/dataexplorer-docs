@@ -3,9 +3,11 @@ title:  bin_at()
 description: Learn how to use the bin_at() function to round values down to a fixed-size bin. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/15/2024
+ms.date: 08/11/2024
 ---
 # bin_at()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns the value rounded down to the nearest bin size, which is aligned to a fixed reference point.
 
@@ -15,7 +17,7 @@ In contrast to the [bin()](bin-function.md) function, where the point of alignme
 
 `bin_at` `(`*value*`,`*bin_size*`,`*fixed_point*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -36,8 +38,10 @@ The nearest multiple of *bin_size* below the given *value* that aligns to the sp
 
 In the following example, *value* is rounded down to the nearest *bin_size* that aligns to the *fixed_point*.
   
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNEw0zPVUTACEeaaALSGJjMZAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print bin_at(6.5, 2.5, 7)
@@ -51,8 +55,10 @@ print bin_at(6.5, 2.5, 7)
 
 In the following example, the time interval is binned into daily bins aligned to a 12 hour fixed point. The return value is -12 since a daily bin aligned to 12 hours rounds down to 12 on the previous day.
   
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNEoycxN1TDM0NRRMEwBYqMMTQDWMdZPHwAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print bin_at(time(1h), 1d, 12h)
@@ -66,8 +72,10 @@ print bin_at(time(1h), 1d, 12h)
 
 In the following example, daily bins align to noon.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNFISSxJLcnMTdUwMjA01zUw1TU0VTA0sDIysDIw0DPQ1FEwTNFRgCsytDQ30DUwBCIFQyOgCogiTQA0H6zaUgAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print bin_at(datetime(2017-05-15 10:20:00.0), 1d, datetime(1970-01-01 12:00:00.0))
@@ -81,8 +89,10 @@ print bin_at(datetime(2017-05-15 10:20:00.0), 1d, datetime(1970-01-01 12:00:00.0
 
 In the following example, bins are weekly and align to the start of Sunday June 6, 2017. The example returns a bin aligned to Sundays.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNFISSxJLcnMTdUwMjA01zUw1TU0VzA0sDIysDIw0DPQ1FEwT9FRQFNkpmtgomAAUgFRpAkAjzZv9FIAAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print bin_at(datetime(2017-05-17 10:20:00.0), 7d, datetime(2017-06-04 00:00:00.0))
@@ -96,8 +106,10 @@ print bin_at(datetime(2017-05-17 10:20:00.0), 7d, datetime(2017-06-04 00:00:00.0
 
 In the following example, the total number of events are grouped into daily bins aligned to the *fixed_point* date and time. The *fixed_point* value is included in one of the returned bins.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUDZfEklSrFCBRkpmbqqPgV5prlZlXohnNywUT1DAyMLTQNTDSNTIJMTS1MjTR1DHWwSZtHGJoBpY2wSptBtNtGsvLVaNQXJqbm1iUWZUKYmkA7dVUSKpUSMrMi08sAbtKR8EwRUcBiysUwOZYGRjoGUCApiYAxLxe/tAAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(Date:datetime, NumOfEvents:int)[
@@ -119,4 +131,4 @@ datetime(2018-02-26T15:14),5]
 
 ## Related content
 
-* [`bin()`](./bin-function.md)
+* [`bin()`](bin-function.md)

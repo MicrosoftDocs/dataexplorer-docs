@@ -3,9 +3,11 @@ title:  now()
 description: Learn how to use the now() function to return the current UTC time.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/19/2023
+ms.date: 08/11/2024
 ---
 # now()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns the current UTC time, optionally offset by a given [timespan](scalar-data-types/timespan.md).
 
@@ -15,7 +17,7 @@ The current UTC time will stay the same across all uses of `now()` in a single q
 
 `now(`[ *offset* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -31,8 +33,10 @@ The current UTC clock time, plus the *offset* time if provided, as a `datetime`.
 
 ### Show the current time
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSK0oSc1LUXDNSSwoTk2xzcsv19BU0FUILkksKgnJzE0FKilJzE5VMDQAAK5wFN84AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print now()
@@ -40,8 +44,10 @@ print now()
 
 ### Show the time 2 days ago
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSK0oSc1LUXDNSSwoTk2xzcsv19BU0FUILkksKgnJzE0FKilJzE5VMDQAAK5wFN84AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print now(-2d)
@@ -51,8 +57,10 @@ print now(-2d)
 
 The following example shows the time elapsed since the start of the storm events.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSK0oSc1LUXDNSSwoTk2xzcsv19BU0FUILkksKgnJzE0FKilJzE5VMDQAAK5wFN84AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -62,8 +70,10 @@ StormEvents
 
 ### Get the date relative to a specific time interval
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIUbBVSEksAcKknFSNnMSk1BwrheKSosy8dB2Fkszc1OKCxLywxJzSVCs4V1MhmpdLAQiUcjPzSktSlXQUzAyKdRSgghn5pUVAIcMMuEhKYiVIIAUuUJmaCFJibGaawssVa83LFQKUqVFIrShJzUsB2+OYng90WV5+uYamgi6qQwBVkuK6twAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let T = datatable(label: string, timespanValue: timespan) [

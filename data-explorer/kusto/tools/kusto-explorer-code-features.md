@@ -1,12 +1,14 @@
 ---
-title: Kusto Explorer code features - Azure Data Explorer
+title:  Kusto Explorer code features
 description: This article describes Kusto Explorer Code features.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/19/2023
+ms.date: 08/11/2024
 ---
 
 # Kusto.Explorer code features
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Similar to other IDEs, Kusto.Explorer offers a variety of code features, including [Code refactoring](#code-refactoring), [Code navigation](#code-navigation), and a [Code analyzer](#code-analyzer) utility.
 
@@ -18,19 +20,19 @@ Use Kusto.Explorer's KQL query editing and refactoring features to rename variab
 
 Rename selected symbols by clicking `Ctrl`+`R` in the query editor window.
 
-![Animated GIF that shows a variable being renamed in the Query Editor window. Three occurrences are simultaneously replaced with the new name.](./media/kusto-explorer-code-features/ke-refactor-rename.gif "refactor-rename")
+![Animated GIF that shows a variable being renamed in the Query Editor window. Three occurrences are simultaneously replaced with the new name.](media/kusto-explorer-code-features/ke-refactor-rename.gif "refactor-rename")
 
 ### Extract scalars as `let` expressions
 
 To define selected literals as `let` expressions, press `Alt`+`Ctrl`+`M`.
 
-![Animated GIF. The Query Editor pointer starts on a literal expression. A let statement then appears that sets that literal value to a new variable.](./media/kusto-explorer-code-features/ke-extract-as-let-literal.gif "extract-as-let-literal")
+![Animated GIF. The Query Editor pointer starts on a literal expression. A let statement then appears that sets that literal value to a new variable.](media/kusto-explorer-code-features/ke-extract-as-let-literal.gif "extract-as-let-literal")
 
 ### Extract tabular statements as `let` expressions
 
 To define tabular expressions as `let` statements, select the text, and then press `Alt`+`Ctrl`+`M`.
 
-![Animated GIF. A tabular expression is selected in the Query Editor. A let statement then appears that sets that tabular expression to a new variable.](./media/kusto-explorer-code-features/ke-extract-as-let-tabular.gif "extract-as-let-tabular")
+![Animated GIF. A tabular expression is selected in the Query Editor. A let statement then appears that sets that tabular expression to a new variable.](media/kusto-explorer-code-features/ke-extract-as-let-tabular.gif "extract-as-let-tabular")
 
 ## Code navigation
 

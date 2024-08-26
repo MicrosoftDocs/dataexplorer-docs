@@ -3,27 +3,31 @@ title: .show cluster policy query_weak_consistency command
 description: Learn how to use the `.show cluster policy query_weak_consistency` command to show the query weak consistency policy of the cluster.
 ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .show cluster policy query_weak_consistency command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 
 This article describes the show management command used for the [query weak consistency policy](query-weak-consistency-policy.md). This command returns the query weak consistency policy of the cluster.
 
 ## Permissions
 
-You must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [AllDatabasesMonitor](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.show` `cluster` `policy` `query_weak_consistency`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 
 |Policy name | Entity name | Policy | Child entities | Entity type
 |---|---|---|---|---
-|QueryWeakConsistencyPolicy |  | JSON serialization of the [query weak consistency policy object](./query-weak-consistency-policy.md#the-policy-object) | | Cluster
+|QueryWeakConsistencyPolicy |  | JSON serialization of the [query weak consistency policy object](query-weak-consistency-policy.md#the-policy-object) | | Cluster
 
 ## Example
 

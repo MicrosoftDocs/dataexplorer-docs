@@ -1,36 +1,32 @@
 ---
-title:  dbscan_fl()
-description: This article describes the dbscan_fl() user-defined function in Azure Data Explorer.
+title: dbscan_fl()
+description: This article describes the dbscan_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 07/25/2024
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
 ---
 # dbscan_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
-
 The function `dbscan_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that clusterizes a dataset using the [DBSCAN algorithm](https://en.wikipedia.org/wiki/DBSCAN).
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke dbscan_fl(`*features*`,` *cluster_col*`,` *epsilon*`,` *min_samples*`,` *metric*`,` *metric_params*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
-|Name|Type|Required|Description|
+| Name | Type | Required | Description |
 |--|--|--|--|
-|*features*| `dynamic` | :heavy_check_mark:|An array containing the names of the features columns to use for clustering.|
-|*cluster_col*| `string` | :heavy_check_mark:|The name of the column to store the output cluster ID for each record.|
-|*epsilon*| `real` | :heavy_check_mark:|The maximum distance between two samples to be considered as neighbors.|
-|*min_samples*| `int` | |The number of samples in a neighborhood for a point to be considered as a core point.|
-|*metric*| `string` | |The metric to use when calculating distance between points.|
-|*metric_params*| `dynamic` | |Extra keyword arguments for the metric function.|
+| *features* | `dynamic` | :heavy_check_mark: | An array containing the names of the features columns to use for clustering. |
+| *cluster_col* | `string` | :heavy_check_mark: | The name of the column to store the output cluster ID for each record. |
+| *epsilon* | `real` | :heavy_check_mark: | The maximum distance between two samples to be considered as neighbors. |
+| *min_samples* | `int` |  | The number of samples in a neighborhood for a point to be considered as a core point. |
+| *metric* | `string` |  | The metric to use when calculating distance between points. |
+| *metric_params* | `dynamic` |  | Extra keyword arguments for the metric function. |
 
 * For detailed description of the parameters, see [DBSCAN documentation](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html)
 * For the list of metrics see [distance computations](https://docs.scipy.org/doc/scipy/reference/spatial.distance.html)
@@ -87,7 +83,7 @@ let dbscan_fl=(tbl:(*), features:dynamic, cluster_col:string, epsilon:double, mi
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [example](#example).
@@ -205,12 +201,4 @@ union
 
 ---
 
-![Screenshot of scatterchart of DBSCAN clustering of artificial dataset with three clusters.](media/dbscan-fl/dbscan-scattergram.png)
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end
+:::image type="content" source="media/dbscan-fl/dbscan-scattergram.png" alt-text="Screenshot of scatterchart of DBSCAN clustering of artificial dataset with three clusters.":::

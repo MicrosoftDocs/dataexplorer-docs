@@ -3,9 +3,11 @@ title:  replace_string()
 description: Learn how to use the replace_string() function to replace all string matches with another string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/21/2023
+ms.date: 08/11/2024
 ---
 # replace_string()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Replaces all string matches with a specified string.
 
@@ -17,7 +19,7 @@ To replace multiple strings, see [replace_strings()](replace-strings-function.md
 
 `replace_string(`*text*`,` *lookup*`,` *rewrite*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -33,8 +35,10 @@ Returns the *text* after replacing all matches of *lookup* with evaluations of *
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WLOwqAMBBEe08x3RqwsbD0Cl5Boq4hoEnYREzh4d1CsBjmwxuxwTEqdoknepSIAblwQt884Fo4bNplVK22tDRd58ICn0Gd0jr74NpqzI8Lp8OuvI1fmD9IrQP5rEe6bSbzAkZqfYp8AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 5 step 1

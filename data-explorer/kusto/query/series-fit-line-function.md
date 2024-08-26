@@ -3,9 +3,11 @@ title:  series_fit_line()
 description: Learn how to use the series_fit_line() function to apply a linear regression on a series to return multiple columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 08/11/2024
 ---
 # series_fit_line()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Applies linear regression on a series, returning multiple columns.  
 
@@ -22,7 +24,7 @@ Takes an expression containing dynamic numerical array as input and does [linear
 
 `series_fit_line(`*series*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -35,8 +37,10 @@ Takes an expression containing dynamic numerical array as input and does [linear
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA1VMywrCQAy8C/2H3NzCCm7Fx6VXQfDUghcRWdtoAzWt6YoW/HijPYiBSWYmybRCHKIRaFGZjmFsB/FMxfMFzYnYcPMwsQVXxTAB5yoL/+7Qhr8+LXv2VyrMPrEwt7CwsNIDp1DllgrVifJEV7PpB4c4Gr0AnwG5BJPlt7sXtJDXTatj54U8F8qyH91wQCmwDdSwhS0xrinEaYdC2B3PFI61eqb/JovmokCgKxaVl/AGWOACk/UAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print

@@ -3,16 +3,19 @@ title: .show cluster databases command
 description: Learn how to use the `.show cluster databases` command to show the databases attached to the invoked cluster.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/22/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .show cluster databases command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Returns a table showing all the databases attached to the cluster and to which the user invoking the command has access. If specific database names are used, only those databases would
 be included.
 
 ## Permissions
 
-You must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [AllDatabasesMonitor](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -20,7 +23,7 @@ You must have at least [AllDatabasesMonitor](access-control/role-based-access-co
 
 `.show` `cluster` `databases` `(`*DatabaseName* [`,` ... ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

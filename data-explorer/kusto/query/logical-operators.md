@@ -3,9 +3,11 @@ title:  Logical (binary) operators
 description: Learn how to use Logical (binary) operators to return a Boolean result.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/26/2022
+ms.date: 08/11/2024
 ---
 # Logical (binary) operators
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The following logical operators can be used to perform comparisons and evaluations:
 
@@ -37,8 +39,10 @@ Null values adhere to the following rules:
 
 The following query returns a count of all storm events where the event type is "Tornado".
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZRC8ovyElPylYDSyfmleSUAv6U3MTIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -56,8 +60,10 @@ StormEvents
 
 The following query returns a count of all storm events where the event type isn't "Tornado".
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFRRtFZRC8ovyElPylYDSyfmleSUAcTPHAjIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -75,8 +81,10 @@ StormEvents
 
 The following query returns a count of all storm events where the event type is "Tornado" and the state is "KANSAS".
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZRC8ovyElPylRQS81IUgksSSyDC3o5+wY7BSkBNyfmleSUAE6g+EUgAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -94,8 +102,10 @@ StormEvents
 
 The following query returns a count of all storm events where the event type is "Tornado" or "Thunderstorm Wind".
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZRC8ovyElPylRTyi9BlMkrzUlKLikFGKIRn5qUoAY1Izi%2FNKwEAnoJgt1YAAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -113,8 +123,10 @@ StormEvents
 
 The following query shows that null values are treated as false.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUchMS9NIys/P0cgrzcnRVEjMS1EoKSpN1YGSaYk5xamaALhLkpUrAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print iff(bool(null) and true, true, false)

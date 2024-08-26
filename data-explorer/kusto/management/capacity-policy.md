@@ -3,9 +3,12 @@ title: Capacity policy
 description: Learn how to use the capacity policy to control the compute resources of data management operations on a cluster.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # Capacity policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 A capacity policy is used for controlling the compute resources of data management operations on the cluster.
 
@@ -20,8 +23,11 @@ The capacity policy is made of the following components:
 * [ExtentsPartitionCapacity](#extents-partition-capacity)
 * [MaterializedViewsCapacity](#materialized-views-capacity-policy)
 * [StoredQueryResultsCapacity](#stored-query-results-capacity)
+* [StreamingIngestionPostProcessingCapacity](#streaming-ingestion-post-processing-capacity)
+* [PurgeStorageArtifactsCleanupCapacity](#purge-storage-artifacts-cleanup-capacity)
+* [PeriodicStorageArtifactsCleanupCapacity](#periodic-storage-artifacts-cleanup-capacity)
 
-To view the capacity of your cluster, use the [.show capacity](../management/diagnostics.md#show-capacity) command.
+To view the capacity of your cluster, use the [.show capacity](show-capacity-command.md) command.
 
 ### Ingestion capacity
 
@@ -32,7 +38,7 @@ To view the capacity of your cluster, use the [.show capacity](../management/dia
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's ingestion capacity based on the following formula:
+The [.show capacity](show-capacity-command.md) command returns the cluster's ingestion capacity based on the following formula:
 
 `Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
@@ -48,7 +54,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents merge capacity based on the following formula:
+The [.show capacity](show-capacity-command.md) command returns the cluster's extents merge capacity based on the following formula:
 
 *Number of nodes in cluster* `*` *Concurrent operations per node*
 
@@ -65,12 +71,12 @@ The effective value for *Concurrent operations per node* is automatically adjust
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents purge rebuild capacity based on the following formula:
+The [.show capacity](show-capacity-command.md) command returns the cluster's extents purge rebuild capacity based on the following formula:
 
 *Number of nodes in cluster* x `MaximumConcurrentOperationsPerNode`
 
 > [!NOTE]
-> In clusters with four or more nodes, the admin node doesn't participate in merge operations, so *Number of nodes in cluster* is reduced by one.
+> In clusters with four or more nodes, the admin node doesn't participate in purge operations, so *Number of nodes in cluster* is reduced by one.
 
 ### Export capacity
 
@@ -81,7 +87,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's export capacity based on the following formula:
+The [.show capacity](show-capacity-command.md) command returns the cluster's export capacity based on the following formula:
 
 `Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
@@ -122,12 +128,51 @@ The effective value for *Concurrent operations* is automatically adjusted by the
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's stored query results creation capacity based on the following formula:
+The [.show capacity](show-capacity-command.md) command returns the cluster's stored query results creation capacity based on the following formula:
 
 *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*` `CoreUtilizationCoefficient)`
 
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in stored query results creation operations, so the *Number of nodes in cluster* is reduced by one.
+
+### Streaming ingestion post processing capacity
+
+| Property | Type | Description |
+|--|--|--|
+| `MaximumConcurrentOperationsPerNode` | `long` | The maximum number of concurrent streaming ingestion post processing operations on each cluster node. |
+
+**Formula**
+
+The [.show capacity](show-capacity-command.md) command returns the cluster's streaming ingestion post processing capacity based on the following formula:
+
+*Number of nodes in cluster* x `MaximumConcurrentOperationsPerNode`
+
+> [!NOTE]
+> In clusters with four or more nodes, the admin node doesn't participate in streaming ingestion post processing, so *Number of nodes in cluster* is reduced by one.
+
+### Purge storage artifacts cleanup capacity
+
+| Property | Type | Description |
+|--|--|--|
+| `MaximumConcurrentOperationsPerCluster` | `long` | The maximum number of concurrent purge storage artifacts cleanup operations on cluster. |
+
+**Formula**
+
+The [.show capacity](show-capacity-command.md) command returns the cluster's purge storage artifacts cleanup capacity based on the following formula:
+
+`MaximumConcurrentOperationsPerCluster`
+
+### Periodic storage artifacts cleanup capacity
+
+| Property | Type | Description |
+|--|--|--|
+| `MaximumConcurrentOperationsPerCluster` | `long` | The maximum number of concurrent periodic storage artifacts cleanup operations on cluster. |
+
+**Formula**
+
+The [.show capacity](show-capacity-command.md) command returns the cluster's periodic storage artifacts cleanup capacity based on the following formula:
+
+`MaximumConcurrentOperationsPerCluster`
 
 ## Defaults
 
@@ -164,6 +209,15 @@ The default capacity policy has the following JSON representation:
   "StoredQueryResultsCapacity": {
     "MaximumConcurrentOperationsPerDbAdmin": 250,
     "CoreUtilizationCoefficient": 0.75
+  },
+  "StreamingIngestionPostProcessingCapacity": {
+    "MaximumConcurrentOperationsPerNode": 4
+  },
+  "PurgeStorageArtifactsCleanupCapacity": {
+    "MaximumConcurrentOperationsPerCluster": 2
+  },
+  "PeriodicStorageArtifactsCleanupCapacity": {
+    "MaximumConcurrentOperationsPerCluster": 2
   }
 }
 ```
@@ -173,8 +227,8 @@ The default capacity policy has the following JSON representation:
 > [!WARNING]
 > Consult with the support team before altering a capacity policy.
 
-* Use [`.show cluster policy capacity`](./show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
-* Use [`.alter-merge cluster policy capacity`](./alter-merge-capacity-policy-command.md) to alter the capacity policy of the cluster.
+* Use [`.show cluster policy capacity`](show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
+* Use [`.alter-merge cluster policy capacity`](alter-merge-capacity-policy-command.md) to alter the capacity policy of the cluster.
 
 ## Management commands throttling
 
@@ -202,4 +256,4 @@ When the cluster detects that an operation has exceeded the limit on concurrent 
 
 ## Related content
 
-* [`.show capacity`](../management/diagnostics.md#show-capacity)
+* [`.show capacity`](show-capacity-command.md)

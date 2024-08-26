@@ -3,9 +3,11 @@ title:  series_iir()
 description: Learn how to use the series_iir() function to apply an Infinite Impulse Response filter on a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_iir()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Applies an Infinite Impulse Response filter on a series.  
 
@@ -21,7 +23,7 @@ The function takes as input the column containing the dynamic array and two stat
 
 `series_iir(`*series*`,` *numerators* `,` *denominators*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -49,8 +51,10 @@ Y<sub>i</sub> = a<sub>0</sub><sup>-1</sup>(b<sub>0</sub>X<sub>i</sub>
 Calculate a cumulative sum. 
 Use the iir filter with coefficients *denominators*=[1,-1] and *numerators*=[1]:  
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGoULBVKErMS0/VMNQz0FEwBGFNa66Cosw8oKRthY5CJVBFcWpRZmpxfGZmkQZQJKUyLzE3M1kj2jBWE5mnowsU0OSqUcgt002tKEjMS1EA6QcAEyBol2cAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let x = range(1.0, 10, 1);
@@ -69,8 +73,10 @@ print x=x, y = series_iir(x, dynamic([1]), dynamic([1,-1]))
 
 Here's how to wrap it in a function:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02OzQrCMBCE73mKOSaQglVPljxJKSE0iwbSKNsoCeq7GwR/5jY73ywTKeNGcz6zXa+LkeUAX5NbwqxwF2iKjajGMbtqI6VjPsmi0KEf3nFrkotyJQ602hBYFv15Icd+Uv9Oo2sXNdZJiecgLhxShjdfYKPRmK3GTmPfmAeoZEoe3pvfSunVC0CCVEu3AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let vector_sum=(x: dynamic) {

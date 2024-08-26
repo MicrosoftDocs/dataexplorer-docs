@@ -4,15 +4,25 @@ description: Learn about how to use Kusto Query Language to explore data.
 ms.reviewer: alexans
 ms.topic: reference
 ms.custom: build-2023, build-2023-dataai
-ms.date: 06/21/2023
+ms.date: 08/11/2024
 adobe-target: true
+monikerRange: "microsoft-fabric || azure-data-explorer || microsoft-sentinel || azure-monitor "
 ---
 # Kusto Query Language (KQL) overview
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Kusto Query Language (KQL) is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. 
 KQL is a simple yet powerful language to query structured, semi-structured, and unstructured data. The language is expressive, easy to read and understand the query intent, and optimized for authoring experiences. Kusto Query Language is optimal for querying telemetry, metrics, and logs with deep support for text search and parsing, time-series operators and functions, analytics and aggregation, geospatial, vector similarity searches, and many other language constructs that provide the most optimal language for data analysis. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
 
+::: moniker range="azure-data-explorer"
 This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). To learn how to use KQL, see [Tutorial: Learn common operators](tutorials/learn-common-operators.md).
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [KQL queryset](/fabric/real-time-intelligence/kusto-query-set). To learn how to use KQL, see [Tutorial: Learn common operators](tutorials/learn-common-operators.md).
+::: moniker-end
 
 ## What is a Kusto query?
 
@@ -37,8 +47,10 @@ It's like a funnel, where you start out with an entire data table. Each time the
 
 Let's look at an example query.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUUgDZkpxfmlcCAIItD6l6AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -56,7 +68,7 @@ StormEvents
 
 This query has a single tabular expression statement. The statement begins with a reference to a table called *StormEvents* and contains several operators, [`where`](where-operator.md) and [`count`](count-operator.md), each separated by a pipe. The data rows for the source table are filtered by the value of the *StartTime* column and then filtered by the value of the *State* column. In the last line, the query returns a table with a single column and a single row containing the count of the remaining rows.
 
-To try out some more Kusto queries, see [Tutorial: Write Kusto queries](tutorial.md).
+To try out some more Kusto queries, see [Tutorial: Write Kusto queries](tutorials/learn-common-operators.md).
 
 ## Management commands
 
@@ -87,6 +99,6 @@ KQL is used by many other Microsoft services. For specific information on the us
 
 * [Tutorial: Learn common operators](tutorials/learn-common-operators.md)
 * [Tutorial: Use aggregation functions](tutorials/use-aggregation-functions.md)
-* [KQL quick reference](../../kql-quick-reference.md)
+* [KQL quick reference](kql-quick-reference.md)
 * [SQL to Kusto Query Language cheat sheet](sql-cheat-sheet.md)
 * [Query best practices](best-practices.md)

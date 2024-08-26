@@ -1,15 +1,16 @@
 ---
 title:  Plotly visualization
-description: This article describes how to visualize data using the Plotly graphics library in Azure Data Explorer.
+description:  This article describes how to visualize data using the Plotly graphics library.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Plotly (preview)
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The Plotly graphics library supports ~80 chart types that are useful for advanced charting including geographic, scientific, machine learning, 3d, animation, and many other chart types. For more information, see [Plotly](https://plotly.com/python/). 
 
@@ -20,13 +21,12 @@ To render a Plotly visual in Kusto Query Language, the query must generate a tab
 
 ## Write your own Plotly visualization in Python
 
- In this method, you dynamically create the Plotly JSON string in Python using the [Plotly package](https://plotly.com/python/getting-started/). This process requires use of the [python() plugin](python-plugin.md). The Python script is run on the existing Azure Data Explorer nodes using the inline python() plugin. It generates a Plotly JSON that is rendered by the client application.
+ In this method, you dynamically create the Plotly JSON string in Python using the [Plotly package](https://plotly.com/python/getting-started/). This process requires use of the [python() plugin](python-plugin.md). The Python script is run on the existing nodes using the inline python() plugin. It generates a Plotly JSON that is rendered by the client application.
 
 Using this method, all types of Plotly visualizations are supported.
 
 > [!NOTE]
-> For best performance, make sure that the python plugin image contains the latest version of the Python engine (currently 3.10.8). This can be checked with the [get_packages_version_fl()](../functions-library/get-packages-version-fl.md) function. To upgrade the Python image see [Change the Python language extensions image on your cluster](../../language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
-
+> For best performance, make sure that the python plugin image contains the latest version of the Python engine (currently 3.10.8). This can be checked with the [get_packages_version_fl()](../functions-library/get-packages-version-fl.md) function. To upgrade the Python image see [Change the Python language extensions image on your cluster](/azure/data-explorer/language-extensions#change-the-python-language-extensions-image-on-your-cluster).
 
 ### Example
 
@@ -46,23 +46,23 @@ OccupancyDetection
 ```)
 ~~~
 
-:::image type="content" source="../../media/dashboard-customize-visuals/plotly-scatter3d.png" alt-text="Screenshot of plotly visual type.":::
+:::image type="content" source="media/plotly/plotly-scatter3d.png" alt-text="Screenshot of plotly visual type.":::
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 The Plotly graphics library supports ~80 chart types including basic charts, scientific, statistical, financial, maps, 3D, animations, and more. To render a Plotly visual in KQL, the query must generate a table with a single string cell containing [Plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). 
 
 Since python is not available in this service, you create this Plotly JSON using a preprepared template.
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuredataexplorer, azuremonitor, fabric"
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 
 ## Use a preprepared Plotly template
 
-In this method, a preprepared Plotly JSON for specific visualization can be reused by replacing the data objects with the required data to be rendered. The templates can be stored in a standard Azure Data Explorer table, and the data replacement logic can be packed in a stored function.
+In this method, a preprepared Plotly JSON for specific visualization can be reused by replacing the data objects with the required data to be rendered. The templates can be stored in a standard table, and the data replacement logic can be packed in a stored function.
 
 Currently, the supported templates are: [plotly_anomaly_fl()](../functions-library/plotly-anomaly-fl.md) and [plotly_scatter3d_fl()](../functions-library/plotly-scatter3d-fl.md). Refer to these documents for syntax and usage.
 
@@ -101,9 +101,9 @@ Iris
 | render plotly
 ```
 
-:::image type="content" source="media/visualization-plotly/plotly-scatter.png" alt-text="Screenshot of output of plotly example in Azure Data Explorer.":::
+:::image type="content" source="media/visualization-plotly/plotly-scatter.png" alt-text="Screenshot of output of plotly example.":::
 
-::: zone-end
+::: moniker-end
 
 ## Related content
 

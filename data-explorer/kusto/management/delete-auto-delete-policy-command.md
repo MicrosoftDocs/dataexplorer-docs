@@ -3,21 +3,23 @@ title: .delete table policy auto_delete command
 description: Learn how to use the `.delete table policy auto_delete` command to delete the auto delete policy of a table.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .delete table policy auto_delete command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Deletes the auto delete policy of a table. For more information, see [auto delete policy](auto-delete-policy.md).
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.delete` `table` *TableName* `policy` `auto_delete`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

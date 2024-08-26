@@ -3,17 +3,19 @@ title:  parse_user_agent()
 description: Learn how to use the parse_user_agent() to return a dynamic object that contains information about the user-agent.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # parse_user_agent()
 
-Interprets a user-agent string, which identifies the user's browser and provides certain system details to servers hosting the websites the user visits. The result is returned as [`dynamic`](./scalar-data-types/dynamic.md).
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+Interprets a user-agent string, which identifies the user's browser and provides certain system details to servers hosting the websites the user visits. The result is returned as [`dynamic`](scalar-data-types/dynamic.md).
 
 ## Syntax
 
 `parse_user_agent(`*user-agent-string*, *look-for*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -41,8 +43,10 @@ If queries with this function are frequently used, you may want to pre-create th
 
 ### Look-for parameter as string
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz3OsQrCMBSF4d2nuGRKoSZWySDFoZNK7aKWjiWxFwkNSUgqFvHhjQ5uZ/jhOz5oO8EjYpB3TGsHpHEvbYzkgq2AdtoO7hlLaEtAu2wvGVTeG+xQ1XriYlOwLdD6cG1OORg9IuzxNrpUDU5hdTzzNROsIIs34DyhHWBOhpchYv9V+x9L/wdyICokEAPJPkPKisOcAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print useragent = "Mozilla/5.0 (Windows; U; en-US) AppleWebKit/531.9 (KHTML, like Gecko) AdobeAIR/2.5.1"
@@ -64,8 +68,10 @@ Expected result is a dynamic object:
 
 ### Look-for parameter as dynamic array
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2PQUvDQBCF7/6KYU8JJNlsUkUpHiQFlTa1EKWHImWSTMqQ7W7YpNqKP97Vgzx4DA/e8L3BsZngNJLDA/nrHkRpv1hrlNdJCkF1OdaM5qWSd0k2h7c5VOSYxptU5omCte0Z17cqzqVKE688g42zHWuS5fNiE2f+SWFNx4eTw4mtkcVqUcTKd0N4GAZNW6qXPMmZyiFYPr2Wqwg09wSP1PQ2hAo7dCxn4uob6DyRaeHsKQd0I+1/ufd/4MH/hAjai8EjN8FO1M5++lxEwo7eWvrghsR7GP4AbEGfNfcAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print useragent = "Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 NokiaN81-3/10.0.032 Profile/MIDP-2.0 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/4"

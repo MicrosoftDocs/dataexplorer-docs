@@ -1,11 +1,13 @@
 ---
 title:  Shuffle query
-description: This article describes Shuffle query in Azure Data Explorer.
+description:  This article describes Shuffle query.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/01/2023
+ms.date: 08/11/2024
 ---
 # shuffle query
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The `shuffle` query is a semantic-preserving transformation used with a set of operators that support the `shuffle` strategy. Depending on the data involved, querying with the `shuffle` strategy can yield better performance. It's better to use the shuffle query strategy when the `shuffle` key (a `join` key, `summarize` key, `make-series` key or `partition` key) has a high cardinality and the regular operator query hits query limits.
 
@@ -50,7 +52,7 @@ In some cases, the `hint.strategy = shuffle` is ignored, and the query won't run
 
 *T* `|` *Query* `|` partition  `hint.shufflekey` = *key* `(` *SubQuery* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -71,8 +73,10 @@ In some cases, the `hint.strategy = shuffle` is ignored, and the query won't run
 
 The `shuffle` strategy query with `summarize` operator shares the load on all cluster nodes, where each node processes one partition of the data.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3MMQ6AIAxA0d1TdJTEeANHB2ZOgFoBIyVpiwnGw2vc//tOC+f5QlLpHpCas+d0I8REOoqyVwwNJpBY9/1EWEsl7c0A/gq9paNyQrG0JcZVDSwNnH7me/3lC79aGLFfAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -88,8 +92,10 @@ StormEvents
 
 ## Use join with shuffle
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOwQrCMBBE7/2KJSeF4h94s6I3oYLn0GyblDQbkq0S8ONN0yJe3MPAMm93pmUKU/NEx7F6w0tjQGhZMoKWEcQDI4uvUbh78pt5tkRqcUcyDrRxfIgc8u2QjlHPfW8RKsizK9r+RC37n68XaazYAB9oxI6h8SaSwquq13I1nOQkB7wF8hg4FXxflNyK5FodzY4/vA+5oeEAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -113,8 +119,10 @@ StormEvents
 
 ## Use make-series with shuffle
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQuCQBSE7/2KhyeFlFWRSPBW1wjsD2z4dBfd3Xj7LIR+fFt2iYY5zXwD07Ijc7yjZb95wkMhIbQsGUFJD9HJEasoNEaOmHokjR6Utpx5Nff9hCMu0HwXfjbxQRo54JncDYmXBDrs5TxxYAQ4+waJL9ogaAsk7YBxF6YckrgQYpeKPBiEqD/OxKpkC39YmUNR1tX+F8urLoHrsj56AR9yv8vdAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -132,8 +140,10 @@ StormEvents
 
 ### Use partition with shuffle
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OsQ6DMBBDd77iRiohFuZuZeiGxBcEOCAV5KKLQYrUjyewsODBi+0ntxBd650dQvYnbxQWVhzN1qEMUAOe4jvM2zguTF2k2tsgA3+HjJLyyyGeqjP8mNVM3Kh4VsQrS1CVH/e4lwW1SNziqf5KL3rZHA7GAN74mQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -155,8 +165,10 @@ StormEvents
 
 When you use `hint.strategy=shuffle`, the shuffled operator will be shuffled by all the keys. In the following example, the query shuffles the data using both `EpisodeId` and `EventId` as keys:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WNQQrCMBRE955ilhW0xC4UhLrRLrquFwjmt402PyX5VQQPb6iKwyxm8+Y14oOr7sQSFy88egqERnSQs3WEA4wWkjSzQqndWm1SodR+bq4+WSby6i3jZtmghGWmgN6y5FFCOuieZeynth0IWfMX4ic8aac7OgY/xqTcFt9beEY12ugN1WaFGapNkl38xPIGNG76e7oAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -173,8 +185,10 @@ StormEvents
 
 The following query uses `hint.shufflekey = key`. The query above is equivalent to this query.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OzQrCQAyE7z5FjhW0xB4UBL1oD57XF1jY1K51s2U3KoIPb/wpvRjmEDJk5jMSU6hvxJInT7i3lAiM2CRHHwi24KyQ6FpUiKs5LlSAuP6oxO9M9fMcPUPn2cEGPDMlaD1Lmdtr01yoo4fe697n6Ojg/nlvBHUKMwLBALS3wZ5ol2KfFWlZ/Woh8pg5GyJe+VHdN9IAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -192,8 +206,10 @@ StormEvents
 
 In some cases, the `hint.strategy=shuffle` will be ignored, and the query won't run in shuffle strategy. For example, in the following example, the join has summarize on its left side, so using `hint.strategy=shuffle` won't apply shuffle strategy to the query:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OsQ6CMBRFd7/ijpAoqQyamOCiDMz4A9U+oGpb0j40GD/eBjUu3tzhDu/lnJqdN+WNLIfZE/eOPKFm6fmgDWELJZk4ziQXYr0Qy1gIsZmaiXfS+BkGY6TXD8LJDZaTFMcRZa+DU1SpOSZEpeLl2WmLi7YKBbS15NFpy1lgH1HtWIRuaJorIal/aviq7aWRLe2860OUW+UfATj7B/YCGrh7PdwAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -215,8 +231,10 @@ StormEvents
 
 To overcome this issue and run in shuffle strategy, choose the key that is common for the `summarize` and `join` operations. In this case, this key is `EpisodeId`. Use the hint `hint.shufflekey` to specify the shuffle key on the `join` to `hint.shufflekey = EpisodeId`:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OPQ7CMBSDd07hsZUAhQ4gIZUFOnQuFwjklYaSpEpeQUUcnqj8LVgePNjyV7HzpriS5TB54NaQJ1QsPe+1IWygJBPHmGRCrGZiEQ0h1qPn4qU0LkNvjPT6Tji63nKS4jCg6HRwiko1xXhRqtg8O23RaquQQ1tLHo22PA9NX9cXamnIvzMk1Q8PH7ydNPJEW++6EAGX2RsCzv45fALuk5Ra4AAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

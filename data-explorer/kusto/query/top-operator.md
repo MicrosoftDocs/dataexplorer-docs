@@ -3,9 +3,13 @@ title:  top operator
 description: Learn how to use the top operator to return the first specified number of records sorted by the specified column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/24/2024
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # top operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Returns the first *N* records sorted by the specified column.
 
@@ -13,7 +17,7 @@ Returns the first *N* records sorted by the specified column.
 
 *T* `| top` *NumberOfRows* `by` *Expression* [`asc` | `desc`] [`nulls first` | `nulls last`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -32,8 +36,10 @@ Returns the first *N* records sorted by the specified column.
 
 Show top three storms with most direct injuries.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjJL1AwVkiqVPDMyyotykwtdsksSk0uAQCehD//JgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -48,6 +54,8 @@ The below table shows only the relevant column. Run the query above to see more 
 |422|...|
 |200|...|
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * Use [top-nested](top-nested-operator.md) operator to produce hierarchical (nested) top results.
+::: moniker-end

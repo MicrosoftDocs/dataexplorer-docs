@@ -3,17 +3,19 @@ title:  sliding_window_counts plugin
 description: Learn how to use the sliding_window_counts plugin to calculate counts and distinct counts of values in a sliding window over a lookback period.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # sliding_window_counts plugin
 
-Calculates counts and distinct count of values in a sliding window over a lookback period, using the technique described [here](samples.md#perform-aggregations-over-a-sliding-window). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
+
+Calculates counts and distinct count of values in a sliding window over a lookback period, using the technique described in the [Perform aggregations over a sliding window](tutorials/use-aggregation-functions.md#perform-aggregations-over-a-sliding-window) example. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
 *T* `| evaluate` `sliding_window_counts(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *LookbackWindow*`,` *Bin* `,` [*dim1*`,` *dim2*`,` ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,8 +44,10 @@ Output table schema is:
 
 Calculate counts and `dcounts` for users in past week, for each day in the analysis period. 
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA63TQWvCMBQH8Hs/xbtpIYJtNxTLDhu76LljhzEk7QsuGJPRpIrgh99rM50MWiLYQiD0R96f8o8SDqzjtYMnQO6EkzsxTqfJDCYwnbdLEueRIiU09ppZnEOHlDHbklfbd6nRHMhnmIP/VEpN+wT9aYU/i95SifGbFfUSF5SklnrDoKAJlGr3vbgMjCOg56NbRy+mHLHevAy8euV7iXd0K/OlA1hYuGfNNfJemBI8S9eoQReQLg2dm/3BobE3s8F0WdC/u1LC2WOvewg67bFVn3lURCcQe64aUmCVRCrg+tDVd12ZRjv7286rVjJ/ZVh7J9i/zrO26PEPos0Ri1cDAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let start = datetime(2017 - 08 - 01);

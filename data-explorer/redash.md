@@ -14,7 +14,7 @@ ms.date: 11/04/2019
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* Ingest data as explained in [ingest sample data into Azure Data Explorer](ingest-sample-data.md). For more ingestion options, see [ingestion overview](ingest-data-overview.md).
+* Ingest data as explained in [ingest sample data into Azure Data Explorer](web-ui-samples-query.md). For more ingestion options, see [ingestion overview](ingest-data-overview.md).
 
 [!INCLUDE [data-explorer-configure-data-source](includes/data-explorer-configure-data-source.md)]
 
@@ -66,7 +66,7 @@ ms.date: 11/04/2019
     ![query based dropdown list.](media/redash/query-based-dropdown-list.png)
 
     > [!NOTE]
-    > The query uses multiple values, therefore you must include the following syntax `| where Type in ((split('{{Type}}', ',')))`. For more information, see [in operator](kusto/query/in-operator.md). This results in [multiple query parameter options in redash app](https://redash.io/help/user-guide/querying/query-parameters#Serialized-Multi-Select-Query-Parametersredash.io)
+    > The query uses multiple values, therefore you must include the following syntax `| where Type in ((split('{{Type}}', ',')))`. For more information, see [in operator](/kusto/query/in-operator). This results in [multiple query parameter options in redash app](https://redash.io/help/user-guide/querying/query-parameters?view=azure-data-explorer&preserve-view=true#Serialized-Multi-Select-Query-Parametersredash.io)
 
 ## Create a dashboard in Redash
 

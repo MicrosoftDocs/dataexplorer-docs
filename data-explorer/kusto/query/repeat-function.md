@@ -3,9 +3,11 @@ title:  repeat()
 description: Learn how to use the repeat() function to generate a dynamic array containing a series comprised of repeated numbers.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 08/11/2024
 ---
 # repeat()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Generates a dynamic array containing a series comprised of repeated numbers.
 
@@ -13,7 +15,7 @@ Generates a dynamic array containing a series comprised of repeated numbers.
 
 `repeat(`*value*`,` *count*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

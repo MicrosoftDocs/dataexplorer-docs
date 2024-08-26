@@ -1,13 +1,15 @@
 ---
-title: Fact and dimension tables - Azure Data Explorer
-description: This article describes Fact and dimension tables in Azure Data Explorer.
+title:  Fact and dimension tables
+description:  This article describes Fact and dimension tables.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/23/2020
+ms.date: 08/11/2024
 ---
 # Fact and dimension tables
 
-When designing the schema for an Azure Data Explorer database, think of tables as broadly belonging to one of two categories.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+When designing the schema for a database, think of tables as broadly belonging to one of two categories.
 * [Fact tables](https://en.wikipedia.org/wiki/Fact_table)
 * [Dimension tables](https://en.wikipedia.org/wiki/Dimension_(data_warehouse)#Dimension_table)
 

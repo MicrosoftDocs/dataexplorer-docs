@@ -1,11 +1,13 @@
 ---
 title:  treepath()
-description: This article describes treepath() in Azure Data Explorer.
+description:  This article describes treepath().
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 08/11/2024
 ---
 # treepath()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Enumerates all the path expressions that identify leaves in a dynamic object.
 
@@ -13,7 +15,7 @@ Enumerates all the path expressions that identify leaves in a dynamic object.
 
 `treepath(`*object*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -3,21 +3,24 @@ title:  .alter-merge cluster policy callout command
 description: Learn how to use the `.alter-merge cluster policy callout` command to turn on or turn off a cluster's callout policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter-merge cluster policy callout command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Turn on or turn off a cluster's [callout policy](callout-policy.md) or add a new, nonexisting, callout policy to the array of callout policies defined for the cluster.
 
 ## Permissions
 
-You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter-merge` `cluster` `policy` `callout` *SerializedArrayOfPolicyObjects*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
