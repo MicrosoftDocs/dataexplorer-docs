@@ -27,4 +27,4 @@ For a complete list of data connectors, see [Data integrations overview](integra
 ## Related content
 
 * [Data integrations overview](integrate-data-overview.md)
-* [Kusto Query Language (KQL) overview](kusto/query/index.md)
+* [Kusto Query Language (KQL) overview](/kusto/query/)
