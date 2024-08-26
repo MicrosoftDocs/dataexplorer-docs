@@ -3,7 +3,7 @@ title: .show database schema violations
 description: Learn how to use the `.show database schema violations` command to show schema violations within a database.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 08/26/2024
 ---
 # .show database schema violations
 
@@ -29,14 +29,16 @@ You must have at least Database Viewer or Database Monitor permissions to run th
 
 The command returns a table of schema validation issues within a database. The table contains the following columns:
 
-|Column name|Description|
-|--|--|
-|Entity kind|The type of database entity.|
-|Entity name|The name of the entity.|
-|Property|The property of the entity being validated. For example, this value could be the name of a policy. For a list of policies, see [Policies overview](policies.md).|
-|Reason|A message explaining the reason for the validation failure.|
+|Column name|Type|Description|
+|--|--|--|
+|Entity kind|`string`|The type of database entity.|
+|Entity name|`string`|The name of the entity.|
+|Property|`string`|The property of the entity being validated. For example, this value could be the name of a policy. For a list of policies, see [Policies overview](policies.md).|
+|Reason|`string`|A message explaining the reason for the validation failure.|
 
 ## Example
+
+The following example returns a table with schema violations for the `MyDatabase` database.
 
 ```kusto
 .show database MyDatabase schema violations

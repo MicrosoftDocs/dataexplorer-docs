@@ -3,7 +3,7 @@ title:  Entity names
 description:  This article describes Entity names.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 08/26/2024
 ---
 # Entity names
 
@@ -28,7 +28,9 @@ In addition to the entity's name, some entities may have a **pretty name**. Simi
 
 Pretty names allow middle-tier applications to map automatically created entity names (such as UUIDs) to names that are human-readable for display and referencing purposes.
 
-For an example on how to assign a pretty name, see [.alter database prettyname command](../../management/alter-database.md).
+:::moniker range="azure-data-explorer"
+For an example on how to assign a pretty name, see [.alter database prettyname command](../../management/alter-database-prettyname.md).
+::: moniker-end
 
 ## Identifier naming rules
 

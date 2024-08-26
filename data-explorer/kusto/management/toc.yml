@@ -54,13 +54,16 @@ items:
         href: databases.md
         items:
           - name: .show databases command
+            displayName: .show databases command, .show cluster databases command
             href: show-databases.md
           - name: .show database command
             href: show-database.md
-          - name: .show cluster databases command
-            href: show-cluster-database.md
+												 
+										  
           - name: .alter database prettyname command
-            href: alter-database.md
+            href: alter-database-prettyname.md
+          - name: .drop database prettyname command
+            href: drop-database-prettyname.md            
           - name: .show database schema command
             displayName: .show databases schema
             href: show-schema-database.md
@@ -653,6 +656,8 @@ items:
         items:
           - name: Using sandboxes
             href: ../concepts/sandboxes.md
+          - name: Using sandboxes in non-modern sku
+            href: ../concepts/sandboxes-in-non-modern-skus.md
           - name: Sandbox policy
             href: sandbox-policy.md
           - name: .alter cluster policy sandbox command
@@ -756,7 +761,7 @@ items:
         - name: Kusto role-based Access Control
           href: ../access-control/role-based-access-control.md
         - name: Microsoft Entra App registration
-          href: ../access-control/provision-entra-id-app.md
+          href: ../access-control/provision-entra-id-app.md					
       - name: Manage database roles
         href: manage-database-security-roles.md
         displayName: .show principal, principal access, security roles, roles, rbac
