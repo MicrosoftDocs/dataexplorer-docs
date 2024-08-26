@@ -53,5 +53,19 @@ items:
     href: query/toc.yml
   - name: Management commands
     href: management/toc.yml
-  - name: APIs and SDKs
-    href: api/toc.yml
+  - name: Develop
+    items:
+      - name: Write code with SDKs
+        items:
+          - name: Set up your environment
+            href: api/get-started/app-set-up.md
+          - name: Create your first app
+            href: api/get-started/app-hello-kusto.md
+          - name: Run basic queries
+            href: api/get-started/app-basic-query.md
+          - name: Run management commands
+            href: api/get-started/app-management-commands.md
+          - name: Queued ingestion
+            href: api/get-started/app-queued-ingestion.md
+      - name: APIs and SDKs
+        href: api/toc.yml
