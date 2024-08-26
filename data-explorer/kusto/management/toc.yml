@@ -58,8 +58,6 @@ items:
             href: show-databases.md
           - name: .show database command
             href: show-database.md
-												 
-										  
           - name: .alter database prettyname command
             href: alter-database-prettyname.md
           - name: .drop database prettyname command
@@ -759,7 +757,7 @@ items:
         - name: Kusto role-based Access Control
           href: ../access-control/role-based-access-control.md
         - name: Microsoft Entra App registration
-          href: ../access-control/provision-entra-id-app.md					
+          href: ../access-control/provision-entra-id-app.md
       - name: Manage database roles
         href: manage-database-security-roles.md
         displayName: .show principal, principal access, security roles, roles, rbac

@@ -48,7 +48,7 @@ This command returns a table with the following columns for each option:
 |CurrentUserIsUnrestrictedViewer |`bool` | Specifies if the current user is an unrestricted viewer on the database.|
 |DatabaseId | `guid` |The database unique ID.|
 |InTransitionTo| `string` |Describes the database in a transition state. For instance, access mode change, detaching database, changing the database physical location, storage keys change, or database pretty name change.|
-|SuspensionState|`string` |When the database was suspended and the reason.|
+|SuspensionState|`string` |When the database was suspended and the reason for the suspension.|
 
 ### Output for `details` option
 
