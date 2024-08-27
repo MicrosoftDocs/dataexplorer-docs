@@ -60,3 +60,4 @@ The following values specify authentication to a `usage` using the configured ma
 |`ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
 | `NativeIngestion` |  Authenticate to an SDK for native ingestion from an external source. |
 | `SandboxArtifacts`| Authenticate to external artifacts referenced in sandboxed plugins (e.g., Python) with a managed identity. This usage needs to be defined on the cluster level managed identity policy. |
+| `SqlRequest`| Authenticate to an external database using the *sql_request* or *cosmosdb_request* plugin with a managed identity. |
