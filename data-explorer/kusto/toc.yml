@@ -55,6 +55,31 @@ items:
     href: management/toc.yml
   - name: Develop
     items:
+      - name: API overview
+        href: api/index.md
+      - name: Client libraries
+        items:
+          - name: Client libraries
+            href: api/client-libraries.md
+          - name: Kusto Data library
+            items:
+              - name: Kusto Data overview
+                href: api/netfx/about-kusto-data.md
+                displayName: kusto.data, SDK
+              - name: Best practices for Kusto Data
+                href: api/netfx/kusto-data-best-practices.md
+                displayName: kusto.data, SDK
+              - name: ClientRequestProperties class
+                href: api/netfx/client-request-properties.md
+                displayName: request properties, CRP, kusto.data, SDK
+          - name: Kusto Ingest library
+            items:
+              - name: Kusto Ingest overview
+                href: api/netfx/about-kusto-ingest.md
+                displayName: kusto.ingest, SDK
+              - name: Best practices for Kusto Ingest
+                href: api/netfx/kusto-ingest-best-practices.md
+                displayName: kusto.ingest, SDK
       - name: Write code with SDKs
         items:
           - name: Set up your environment
@@ -67,5 +92,28 @@ items:
             href: api/get-started/app-management-commands.md
           - name: Queued ingestion
             href: api/get-started/app-queued-ingestion.md
+      - name: Connection strings
+        items:
+          - name: Connection strings overview
+            href: api/connection-strings/index.md
+          - name: Kusto connection strings
+            href: api/connection-strings/kusto.md
+          - name: Storage connection strings
+            href: api/connection-strings/storage-connection-strings.md
+          - name: SQL external table connection strings
+            href: api/connection-strings/sql-connection-strings.md
+          - name: Generate SAS token
+            href: api/connection-strings/generate-sas-token.md
+      - name: Integrate the query editor in your apps
+        items:
+          - name: Integration overview
+            displayName: monaco web UI
+            href: api/monaco/monaco-overview.md
+          - name: Embed the web UI in an IFrame
+            displayName: monaco web UI
+            href: api/monaco/host-web-ux-in-iframe.md
+          - name: Integrate the Monaco editor with Kusto query support
+            displayName: monaco monaco-kusto
+            href: api/monaco/monaco-kusto.md
       - name: APIs and SDKs
         href: api/toc.yml
