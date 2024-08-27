@@ -322,17 +322,17 @@
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/query/getmonthfunction.md",
-      "redirect_url": "/kusto/query/monthofyearfunction?view=azure-data-explorer&preserve-view=true",
+      "redirect_url": "/kusto/query/monthofyear-function?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/query/iiffunction.md",
-      "redirect_url": "/kusto/query/ifffunction?view=azure-data-explorer&preserve-view=true",
+      "redirect_url": "/kusto/query/iff-function?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/query/limitoperator.md",
-      "redirect_url": "/kusto/query/takeoperator?view=azure-data-explorer&preserve-view=true",
+      "redirect_url": "/kusto/query/take-operator?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
@@ -2387,7 +2387,7 @@
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/query/re2.md",
-      "redirect_url": "/kusto/query/regex?view=azure-data-explorer&preserve-view=true",
+      "redirect_url": "/kusto/query/re2?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
@@ -5722,7 +5722,7 @@
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/management/ingestion-faq.yml",
-      "redirect_url": "/kusto/management/ingestion-faq?view=azure-data-explorer&preserve-view=true",
+      "redirect_url": "/azure/data-explorer/ingestion-faq",
       "redirect_document_id": false
     },
     {
