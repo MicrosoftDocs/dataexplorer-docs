@@ -1,24 +1,31 @@
 # Authentication Methods Documentation for Kusto SDK
 
-This documentation provides an overview of different authentication methods that can be used with the Kusto SDK. The code snippets provided demonstrate various ways to authenticate a user or application to interact with a Kusto cluster.
+This documentation provides an overview of different authentication methods that can be used with the Kusto SDK. The code snippets provided demonstrate various ways to authenticate a user or an application to interact with a Kusto cluster.
 
 ## Managed Identity Authentication
 
-There are two types of managed identities: user-assigned and system-assigned. User-assgined MI is a standalone Azure resource that can be assigned to one or more Azure resources. System-assigned MI is created by Azure for a specific Azure resource, such as a VM or an Azure Function and its lifecycle is tied to the resource.
+There are two types of managed identities: user-assigned and system-assigned.
+User-assgined MI is a standalone Azure resource that can be assigned to one or more Azure resources.
+System-assigned MI is created by Azure for a specific Azure resource, such as a virtual machine or an Azure Function.
+For more information, see [Managed Identities](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview).
 
-**User-Assigned Managed Identity:**
-For resources with a user-assigned managed identity, the identity client ID is used to authenticate with the correct managed identity.
+### User-Assigned Managed Identity
+
+For resources with a user-assigned managed identity, the identity client ID is required to authenticate with the correct managed identity.
 
 ```csharp
 var kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri").
     WithAadUserManagedIdentity("your-managed-identity-id");
 ```
 
-**Notes:**
+**Notes!**
 
-- The object (principal) ID of the MI must be authorized for the Kusto cluster.
+- The object (principal) ID of the MI must be authorized for the Kusto cluster. The permissions can be granted in Azure portal under Security > Permissions in the Kusto cluster resource page.
+- Don't assign the MI to the Kusto cluster resource directly.
+- **Managed identity authentication is not supported on local development environments.** To test managed identity authentication, deploy the application to Azure or use a different authentication method while developing locally.
 
-**System-Assigned Managed Identity:**
+### System-Assigned Managed Identity
+
 For resources with a system-assigned managed identity, no client ID is required.
 
 ```csharp
@@ -26,35 +33,47 @@ var kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri").
     WithAadSystemManagedIdentity();
 ```
 
-**Notes:**
+**Notes!**
 
-- The object (principal) ID of the MI must be authorized for the Kusto cluster.
+- The object (principal) ID of the MI must be authorized for the Kusto cluster. This can be done in Azure portal under Security > Permissions in the Kusto cluster resource page.
+- Don't assign the MI to the Kusto cluster resource directly.
+- **Managed identity authentication is not supported on local development environments.** To test managed identity authentication, deploy the application to Azure or use a different authentication method while developing locally.
 
 ## Certificate-Based Authentication
 
 Certificates can be used as secrets to prove the application's identity when requesting a token.
 There are multiple ways to load the Certificate, including loading from disk or from the machine's credentials store.
 
-**Using Certificate Subject Name With Or Without Issuer:**
-The certificate subject name with or without the issuer can be used to locate the certificate in the machine's local store.
+### Using Certificate Subject Name And Issuer (C# SDK only)
+
+The certificate subject name - with or without the issuer - can be used to locate the certificate in the machine's local store.
 When there are multiple certificates with the same subject name and issuer, the latest certificate is used.
 
 ```csharp
 // Subject name only
 var kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri").
-    WithAadApplicationSubjectNameAuthentication("your-application-id", "certificate-subject-name", "tenant-id");
+    WithAadApplicationSubjectNameAuthentication("your-application-id", "certificate-subject-name", "authority-id", "true/false to send x5c");
 // Subject and issuer
 kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri").
-    WithAadApplicationSubjectAndIssuerAuthentication(your-application-id, "certificate-subject-name", "certificate-issuer-name", authority);
+    WithAadApplicationSubjectAndIssuerAuthentication("your-application-id", "certificate-subject-name", "certificate-issuer-name", "authority-id");
+
+// Equivalent Kusto connection string (issuer is optional):
+// Data Source=<kusto-uri>;Initial Catalog=NetDefaultDB;Application Client Id=<app-id>;Application Certificate Subject=<subject-name>;Application Certificate Issuer=<issuer-name>;Authority Id=<authority-id>;SendX5c=<true/false>
 ```
 
-**Notes:**
+**Notes!**
 
-- The certificate should be stored in the "Personal" store location under either `CurrentUser` or `LocalMachine`.
+- The certificate should be stored in the "Personal" store location under `CurrentUser` (or `LocalMachine` on Windows).
 - The certificate must be trusted in order for the lookup to work.
+- When using Kusto connection string, an environment variable must be set to allow access to the certificate store. The environment variable is `KUSTO_DATA_ALLOW_ACCESS_TO_LOCAL_SECRETS_VIA_KCSB_KEYWORDS` and its value should be `1`.
+- Use the SendX5c property to send the certificate's public key to achieve easy certificate rollover in Azure AD
 
-**Loading Certificate from Azure Key Vault:**
-Certificates can also be loaded from Azure Key Vault using the `CertificateClient`. The `DefaultAzureCredential` is used to authenticate to Azure Key Vault, and the certificate is downloaded using its name.
+### Loading Certificate from Azure Key Vault
+
+Azure Key Vault can be used to store and manage certificates securely.
+To authenticate with a certificate stored in Azure Key Vault, the certificate must be downloaded from the Key Vault using the certificate name.
+This can be done using the `CertificateClient` class from the Azure SDK.
+For more information, see [Certificate Client](https://www.nuget.org/packages/Azure.Security.KeyVault.Certificates/).
 
 ```csharp
 // Load certificate from Azure Key Vault using the certificate name
@@ -66,46 +85,64 @@ var kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri")
     .WithAadApplicationCertificateAuthentication("your-application-id", certificateFromKV, "tenant-id");
 ```
 
-**Notes:**
+**Notes!**
 
-- This code example is intended to be used in test. Don't use it in a production deployment.
+- This exmaple demonstrates a scenario where we use one identity to access Azure Key Vault (using `DefaultAzureCredential` which supports MI, user credentials and more) and another identity (that is, application principal) to authenticate with Kusto.
+- This code example isn't intended for production use, certificates should be cached and not loaded from the Key Vault every time.
 
-**Loading Certificate From Any Source:**
-Certificates can be loaded from any source, such as a file on disk, and used for authentication.
+### Loading Certificate From An Arbitrary Source
+
+Certificates can be retrieved from various sources, such as a file on disk, cache, or a secure store.
+Assuming you're able to create a `X509Certificate2` object, you can use the following code to authenticate with Kusto.
+For more information, see [X509Certificate2](https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x509certificate2).
 
 ```csharp
 // Load certificate from an arbitrary source
-X509Certificate2 certificate = null;
+X509Certificate2 certificate = <your certificate object>;
 
 // Use the loaded certificate for authentication
 var kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri")
     .WithAadApplicationCertificateAuthentication("your-application-id", certificate, "tenant-id");
 ```
 
-**Notes:**
+**Notes!**
 
 - The certificate used must contain a private key for the authentication to work.
 
-**Using Certificate Thumbprint:**
+### Using Certificate Thumbprint (C# SDK only)
+
 Loading a certificate from the machine's local store using the certificate thumbprint.
 
 ```csharp
 var kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri").
-    WithAadApplicationThumbprintAuthentication("your-application-id", "certificate-thumbprint", "tenant-id");
+    WithAadApplicationThumbprintAuthentication("your-application-id", "certificate-thumbprint", "authority-id");
+
+// Equivalent Kusto connection string:
+// Data Source=<your-kusto-cluster-uri>;Database=NetDefaultDB;Fed=True;AppClientId=<your-application-id>;AppCert=<certificate-thumbprint>;Authority Id=<authority-id>
 ```
 
-**Notes:**
+**Notes!**
 
-- The certificate should be stored in the "Personal" store location under either `CurrentUser` or `LocalMachine`.
+- The certificate should be stored in the "Personal" store location under `CurrentUser` (or `LocalMachine` on Windows).
 - Using the certificate thumbprint is a bad practice as it changes when the certificate is renewed.
+- When using Kusto connection string, an environment variable must be set to allow access to the certificate store. The environment variable is `KUSTO_DATA_ALLOW_ACCESS_TO_LOCAL_SECRETS_VIA_KCSB_KEYWORDS` and its value should be `1`.
 
 ## User Credentials Authentication
 
-**Using Azure Command-Line Interface (CLI):**
+### Using User Prompt
 
-This method uses Azure CLI ('az login' command) to authenticate the user. The user is prompted to sign-in using the Azure CLI, and the token is obtained from the Azure CLI cache.
-This method doesn't always require the user to enter their credentials, as the Azure CLI cache can be used to authenticate the user.
-When passing the 'interactive' parameter as true, the user is prompted as needed.
+This method uses the user's credentials to authenticate with Kusto. The user is prompted to enter their username and password.
+
+```csharp
+var kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri").
+    WithAadUserPromptAuthentication();
+```
+
+### Using Azure Command-Line Interface (CLI)
+
+This method uses Azure CLI ('az login' command) to authenticate and obtain a token for the user.
+The user may be prompted to sign-in if the token isn't available in the Azure CLI cache and the `interactive` parameter is set to True.
+More on Azure CLI and its installation can be found [here](https://learn.microsoft.com/en-us/cli/azure/).
 
 ```csharp
 // Passing interactive == true allows intercative user login (prompt) if necessary
@@ -113,15 +150,15 @@ var kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri")
     .WithAadAzCliAuthentication(interactive: true);
 ```
 
-**Using Device Code:**
+### Using Device Code
 
-Device code method can be used in scenarios where no web browser is available or when the browser fails to open.
-The user is instructed to open a web browser at the provided URI and perform sign-in using the provided device code.
+This method is intended to be used on devices that don't have a proper user interface to sign-in. This includes IoT devices, servers terminals, and more. With this method, the user is provided with a code and a URL to authenticate using a different device (such as smartphone).
+This method is interactive and requires a user to sign-in using a browser.
 
 ```csharp
 kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri").WithAadDeviceCodeAuthentication((msg, uri, code) =>
 {
-    // An exmaple of how to display the device code message and uri to the user
+    // The callback is used to display instructions to the user on how to authenticate using the device code
     Console.WriteLine("Device Code Message: {0}", msg);
     Console.WriteLine("Device Code Uri: {0}", uri);
     Console.WriteLine("Device Code: {0}", code);
@@ -130,34 +167,41 @@ kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri").WithAadDeviceC
 },"authority", "tenant");
 ```
 
+**Notes!**
+
+- Device code authentication may be blocked by tenant Conditional Access Policies. Choose different methods in this case.
+
 ## Custom Token Provider Authentication
 
-**Using user provided callback to obtain AAD token:**
+### Using user provided callback to obtain Microsoft Entra ID token
 
-Custom token providers can be used to obtain an AAD token for authentication. The following example demonstrates how to use a custom token provider to authenticate:
+Custom token providers can be used to obtain a Microsoft Entra ID token for authentication. The following example demonstrates how to use a custom token provider to authenticate:
 
 ```csharp
 public class TokenProvider
 {
     private TokenRequestContext m_tokenRequestContext;
-    private AccessToken m_accessToken;
 
     public TokenProvider(string clusterUri)
     {
-        // Get the apropiate resource id by querying the cluster metadata
-        var httpClient = new HttpClient();
-        var response = httpClient.GetByteArrayAsync($"{clusterUri}/v1/rest/auth/metadata").Result;
-        var json = JObject.Parse(Encoding.UTF8.GetString(response));
-        var resourceId = json["AzureAD"]?["KustoServiceResourceId"]?.ToString() ?? "https://kusto.kusto.windows.net";
+        var resourceId = "https://kusto.kusto.windows.net";
+
+        try
+        {
+            // Get the apropiate resource id by querying the cluster metadata
+            var httpClient = new HttpClient();
+            var response = httpClient.GetByteArrayAsync($"{clusterUri}/v1/rest/auth/metadata").Result;
+            var json = JObject.Parse(Encoding.UTF8.GetString(response));
+            var resourceId = json["AzureAD"]?["KustoServiceResourceId"]?.ToString() ?? "https://kusto.kusto.windows.net";
+        }
+        catch { /* Handle exception */}
+
         m_tokenRequestContext = new TokenRequestContext(new string[] { resourceId });
     }
 
     public async Task<string> GetTokenAsync()
     {
-        if (string.IsNullOrWhiteSpace(m_accessToken.Token) || m_accessToken.ExpiresOn <= DateTimeOffset.UtcNow.AddMinutes(5))
-        {
-            m_accessToken = await new DefaultAzureCredential().GetTokenAsync(m_tokenRequestContext, default);
-        }
+        m_accessToken = await new DefaultAzureCredential().GetTokenAsync(m_tokenRequestContext, default);
         return m_accessToken.Token;
     }
 }
@@ -172,40 +216,40 @@ var kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri")
         });
 ```
 
-**Notes:**
+**Notes!**
 
-- This code example is intended to be used in test. Don't use it in a production deployment.
-- It's' best to cache the token and refresh it before it expires.
+- This code example wasn't tested and is intended for demonstration purposes only. Modify the code to fit your application's requirements.
 
 ## Azure Token Credential Authentication
 
-**Using Azure TokenCredential:**
+### Using Azure TokenCredential
 
-Azure TokenCredential is a base class for all Azure SDK credentials that can provide an AAD token. The following example demonstrates how to use Azure TokenCredential to authenticate:
+Azure TokenCredential is a base class for all Azure SDK credentials that can provide a Microsoft Entra ID token. The following example demonstrates how to use Azure TokenCredential to authenticate:
 
 ```csharp
 var kcsb = new KustoConnectionStringBuilder("our-kusto-cluster-uri").
     WithAadAzureTokenCredentialsAuthentication(new DefaultAzureCredential());
 ```
 
-**Notes:**
+**Notes!**
 
 - `DefaultAzureCredential` class is used to authenticate with Azure services. It tries multiple authentication methods to obtain a token. It can be configured to work with Managed Identity, Visual Studio, Azure CLI, and more.
 - `DefaultAzureCredential` is appropriate for both testing and production as it can be configured to use different authentication methods.
 
 ## Application Client ID and Password
 
-A secret string that the application uses to prove its identity when requesting a token.
+Application key - a secret string that the application uses to prove its identity when requesting a token.
 Also can be referred to as application password.
 
 ```csharp
-var appId = "application-client-id";
-var appKey = "secret";
 var kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri").
-    WithAadApplicationKeyAuthentication(appId, appKey, "tenant-id");
+    WithAadApplicationKeyAuthentication("app-id", "app-key", "authority-id");
+
+// Equivalent Kusto connection string:
+// Data Source=<your-kusto-cluster-uri>;Database=NetDefaultDB;Fed=True;AppClientId=<app-id>;AppKey=<app-key>;Authority Id=<authority-id>
 ```
 
-**Notes:**
+**Notes!**
 
 - Hard-coding secrets is a bad practice. Sensitive information should be kept encrypted or in a key vault.
 
