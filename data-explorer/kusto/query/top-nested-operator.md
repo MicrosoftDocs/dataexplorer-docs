@@ -73,15 +73,15 @@ For an example, see [Most recent events per state with other column data](#most-
 
 ## Performance considerations
 
-The number of records can grow exponentially with the number of `top-nested` clauses, and record growth is even faster if no *N* limit is specified. This operator can consume a considerable amount of resources.
+The number of records can grow exponentially with the number of `top-nested` clauses, and record growth is even faster without specifying an *N* limit. This operator can consume a considerable amount of resources.
 
-If the distribution of the aggregation is considerably irregular, limit the number of distinct values to return by specifying *N*. Then, use the `with` `others` `=` *ConstExpr* specification to get an indication for the weight of all other cases.
+If the aggregation distribution is irregular, limit the number of distinct values to return by specifying *N*. Then, use the `with` `others` `=` *ConstExpr* clause to get a sense of the weight of all other cases.
 
 ## Examples
 
 ### Top damaged states, event types, and end locations by property damage
 
-The following query partitions the `StormEvents` table by the `State` column and calculates the total property damage for each state. The query selects the top two states with the largest amount of property damage. Within these top two states, the query groups the data by `EventType` and selects the top three event types with the most damage. For each of the top three event types in the top two states, the query groups the data by `EndLocation` and selects the `EndLocation` with the highest damage. Only one `EndLocation` value appears in the results possibly due to the large nature of the storm events or not documenting the end location.
+The following query partitions the `StormEvents` table by the `State` column and calculates the total property damage for each state. The query selects the top two states with the largest amount of property damage. Within these top two states, the query groups the data by `EventType` and selects the top three event types with the most damage. Then the query groups the data by `EndLocation` and selects the `EndLocation` with the highest damage. Only one `EndLocation` value appears in the results, possibly due to the large nature of the storm events or not documenting the end location.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
