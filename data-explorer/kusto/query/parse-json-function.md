@@ -75,3 +75,7 @@ because its declared type is `dynamic`.
 let d='{"a":123, "b":"{\\"c\\":456}"}';
 print d_b_c=parse_json(tostring(parse_json(d).b)).c
 ```
+
+## Related content
+
+* [parse operator](parse-operator.md)
