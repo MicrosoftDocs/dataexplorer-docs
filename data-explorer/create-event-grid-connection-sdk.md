@@ -277,6 +277,9 @@ dataLakeFileClient.Rename(destinationFilePath);
 > [!NOTE]
 > Triggering ingestion following a `CopyBlob` operation is not supported for storage accounts that have the hierarchical namespace feature enabled on them.
 
+> [!IMPORTANT]
+> We highly discourage generating Storage Events from custom code and sending them to Event Hubs. If you choose to do so, make sure that the events produced strictly adhere to the appropriate Storage Events schema and JSON format specifications.
+
 ## Remove an Event Grid data connection
 
 ### [C#](#tab/c-sharp-2)
