@@ -212,7 +212,7 @@ The following are some examples of Unicode character classes that may impact mem
 
 * **Memory usage**: The impact of Unicode primarily arises from the use of Unicode character classes. Unicode character classes tend to be larger in size. For example, the `\w` character class matches around 140,000 distinct codepoints by default. This requires additional memory and can slow down regex compilation. If your requirements can be satisfied by ASCII, it is recommended to use ASCII classes instead of Unicode classes. The ASCII-only version of `\w` can be expressed in multiple ways, all of which are equivalent.
 
-    ```kusto
+    ```plaintext
     [0-9A-Za-z_]
     (?-u:\w)
     [[:word:]]
