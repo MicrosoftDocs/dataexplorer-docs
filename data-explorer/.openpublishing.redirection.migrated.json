@@ -362,7 +362,7 @@
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/query/re2-library.md",
-      "redirect_url": "/kusto/query/re2?view=azure-data-explorer&preserve-view=true",
+      "redirect_url": "/kusto/query/regex?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
@@ -2387,7 +2387,7 @@
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/query/re2.md",
-      "redirect_url": "/kusto/query/re2?view=azure-data-explorer&preserve-view=true",
+      "redirect_url": "/kusto/query/regex?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {

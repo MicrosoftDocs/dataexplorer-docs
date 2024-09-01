@@ -22,7 +22,7 @@ Counts occurrences of a substring in a string. Plain string matches may overlap;
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *source* | `string` |  :heavy_check_mark: | The value to search. |
-| *search* | `string` |  :heavy_check_mark: | The value or [regular expression](re2.md) to match inside *source*. |
+| *search* | `string` |  :heavy_check_mark: | The value or [regular expression](regex.md) to match inside *source*. |
 | *kind* | `string` | | The value `normal` or `regex`. The default is `normal`. |
 
 ## Returns

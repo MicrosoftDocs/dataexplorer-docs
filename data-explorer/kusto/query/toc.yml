@@ -1658,7 +1658,7 @@ items:
   - name: Reference
     items:
       - name: RE2 syntax
-        href: re2.md
+        href: regex.md
         displayName: RE2 library, regex, regular expressions
       - name: JSONPath syntax
         href: jsonpath.md
