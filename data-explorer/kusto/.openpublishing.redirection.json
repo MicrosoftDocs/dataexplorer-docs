@@ -4,6 +4,11 @@
       "source_path": "concepts/sandboxes-in-non-modern-skus.md",
       "redirect_url": "/kusto/concepts/sandboxes",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "query/re2.md",
+      "redirect_url": "/kusto/query/regex",
+      "redirect_document_id": true
     }
   ]
 }

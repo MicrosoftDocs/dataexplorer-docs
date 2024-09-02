@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Get all matches for a [regular expression](re2.md) from a source string.
+Get all matches for a [regular expression](regex.md) from a source string.
 Optionally, retrieve a subset of matching groups.
 
 ```kusto
@@ -28,7 +28,7 @@ print extract_all(@"(\d+)", "a set of numbers: 123, 567 and 789") // results wit
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | `string` |  :heavy_check_mark: | A [regular expression](re2.md) containing between one and 16 capture groups.|
+| *regex* | `string` |  :heavy_check_mark: | A [regular expression](regex.md) containing between one and 16 capture groups.|
 | *captureGroups* | `dynamic` | | An array that indicates the capture groups to extract. Valid values are from 1 to the number of capturing groups in the regular expression. Named capture groups are allowed as well. See [examples](#examples).|
 | *source* | `string` |  :heavy_check_mark:| The string to search.|
 
