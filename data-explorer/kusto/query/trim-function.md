@@ -22,7 +22,7 @@ Removes all leading and trailing matches of the specified regular expression.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | `string` |  :heavy_check_mark: | The string or [regular expression](re2.md) to be trimmed from *source*.|
+| *regex* | `string` |  :heavy_check_mark: | The string or [regular expression](regex.md) to be trimmed from *source*.|
 | *source* | `string` |  :heavy_check_mark: | The source string from which to trim *regex*.|
 
 ## Returns

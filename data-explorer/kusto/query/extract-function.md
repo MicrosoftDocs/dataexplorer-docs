@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Get a match for a [regular expression](re2.md) from a source string.
+Get a match for a [regular expression](regex.md) from a source string.
 
 Optionally, convert the extracted substring to the indicated type.
 
@@ -23,7 +23,7 @@ Optionally, convert the extracted substring to the indicated type.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | `string` |  :heavy_check_mark: | A [regular expression](re2.md).|
+| *regex* | `string` |  :heavy_check_mark: | A [regular expression](regex.md).|
 | *captureGroup* | `int` |  :heavy_check_mark: | The capture group to extract. 0 stands for the entire match, 1 for the value matched by the first '('parenthesis')' in the regular expression, and 2 or more for subsequent parentheses.|
 | *source* | `string` |  :heavy_check_mark:| The string to search.|
 | *typeLiteral* | `string` | | If provided, the extracted substring is converted to this type. For example, `typeof(long)`.

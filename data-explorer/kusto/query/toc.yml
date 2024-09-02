@@ -1657,8 +1657,8 @@ items:
             href: ../concepts/overflow.md
   - name: Reference
     items:
-      - name: RE2 syntax
-        href: re2.md
+      - name: Regex syntax
+        href: regex.md
         displayName: RE2 library, regex, regular expressions
       - name: JSONPath syntax
         href: jsonpath.md
