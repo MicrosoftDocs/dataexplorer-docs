@@ -85,7 +85,7 @@ When the user clicks on the invitation link, they see a page with the following 
 The user can then accept the invitation and sign in to access the dashboard.
 
 > [!IMPORTANT]
-> The user must accept the invitation while signed in to their home tenant. For more information, see [Microsoft Entra ID terminology](/entra/fundamentals/whatis#terminology)
+> The user must accept the invitation while signed in to their home tenant.
 
 > [!NOTE]
 > If you're accepting on behalf of a security group, you must be a member of the group to accept the invitation. Once the first member of the group accepts the invitation, all members of the group can use the [shared link](#share-the-dashboard-link) to access the dashboard.
