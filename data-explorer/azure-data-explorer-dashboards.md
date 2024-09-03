@@ -3,7 +3,7 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 08/21/2024
+ms.date: 09/03/2024
 ---
 
 # Visualize data with Azure Data Explorer dashboards
@@ -259,3 +259,4 @@ However, database editors might want to limit the minimum refresh rate that any 
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
 * [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
 * [Explore data in dashboard tiles (preview)](dashboard-explore-data.md)
+* [Share dashboards](azure-data-explorer-dashboard-share.md)
