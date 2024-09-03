@@ -90,10 +90,10 @@ The following query partitions the `StormEvents` table by the `State` column and
 
 ```kusto
 StormEvents  // Data source.
-| top-nested 2 of State       by sum(DamageProperty),    // Top 2 States by total damaged property.
-  top-nested 3 of EventType      by sum(DamageProperty),    // Top 3 EventType by total damaged property for each State.
-  top-nested 1 of EndLocation by sum(DamageProperty)     // Top 1 EndLocation by total damaged property for each EventType and State.
-| project State, EventType, EndLocation, StateTotalDamage = aggregated_State, EventTypeTotalDamage = aggregated_EventType, EndLocationDamage = aggregated_EndLocation 
+| top-nested 2 of State by sum(DamageProperty),       // Top 2 States by total damaged property.
+  top-nested 3 of EventType by sum(DamageProperty),   // Top 3 EventType by total damaged property for each State.
+  top-nested 1 of EndLocation by sum(DamageProperty)  // Top 1 EndLocation by total damaged property for each EventType and State.
+| project State, EventType, EndLocation, StateTotalDamage = aggregated_State, EventTypeTotalDamage = aggregated_EventType, EndLocationDamage = aggregated_EndLocation
 ```
 
 **Output**
