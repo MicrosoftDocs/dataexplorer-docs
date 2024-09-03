@@ -29,7 +29,7 @@ In general, dashboards are shared in two steps: Grant permissions, and share the
 
 ## Grant permissions
 
-Permissions can be granted to users within your tenant or to [users in a different tenant](#grant-permissions-to-users-in-a-different-tenant). 
+Permissions can be granted to users [within your tenant](#grant-permissions-to-users-within-your-tenant) or to [users in a different tenant](#grant-permissions-to-users-in-a-different-tenant). 
 
 To grant permissions to a user in the **Dashboard permissions** pane:
 
@@ -52,9 +52,7 @@ To grant permissions to a user in the **Dashboard permissions** pane:
 1. Under **Share with external user**, enter the user's email address. 
 
     > [!NOTE]
-    > * You can share with individual Microsoft Entra ID users.
-    > * You can share with security groups.
-    > * You can share with Microsoft accounts (MSA).
+    > * You can share with individual Microsoft Entra ID users, security groups, or Microsoft accounts (MSA).
     > * You can't share with distribution groups.
 
 1. Choose if you want to allow the user to edit the dashboard. If so, check the **Allow edit permission** box.
