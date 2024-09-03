@@ -38,8 +38,10 @@ Setup of a data connection using managed identity requires the following steps:
 
 * Data can be compressed using the `GZip` compression algorithm. You can specify `Compression` dynamically using [ingestion properties](#ingestion-properties), or in the static Data Connection settings.
     > [!NOTE]
-    > Data compression isn't supported for compressed formats (Avro, Parquet, ORC, ApacheAvro and W3CLOGFILE).
+    > * Data compression isn't supported for binary formats (Avro, ApacheAvro, Parquet, ORC, and W3CLOGFILE).
     > Custom encoding and embedded [system properties](#event-system-properties-mapping) aren't supported on compressed data.
+    > * Working with binary formats (Avro, ApacheAvro, Parquet, ORC, and W3CLOGFILE) and [ingestion mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true), 
+    > the order of the fields in the ingestion mapping definition must match the order of the corresponding columns in the table.
 
 ## Event Hubs properties
 
