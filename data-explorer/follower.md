@@ -32,6 +32,9 @@ Attaching a database to a different cluster using the follower capability is use
 There are various methods you can use to attach a database. In this article, we discuss attaching a database using C#, Python, PowerShell, or an Azure Resource Manager template.
 To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. Add or remove role assignments using [Azure portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli), and [ARM template](/azure/role-based-access-control/role-assignments-template). Learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles).
 
+> [!NOTE]
+> The attachment process automatically creates a follower database during its execution, eliminating the need to pre-create the database for later attachment.
+
 ### Table level sharing
 
 When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'.
@@ -49,6 +52,12 @@ When attaching the database all tables, external tables and materialized views a
 
     ```kusto
     tablesToInclude = []
+    ```
+
+1. Include all functions. The '*' is needed, since none followers are followed by default:
+
+    ```kusto
+    functionsToInclude = ["*"]
     ```
 
 1. Include all tables with names that start with "Logs":
