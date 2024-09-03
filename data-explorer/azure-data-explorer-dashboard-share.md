@@ -39,7 +39,7 @@ To grant permissions to a user in the **Dashboard permissions** pane:
 1. In the **Permission** level, select one of the following values: **Can view** or **Can edit**.
 1. Select **Add**.
 
-:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Manage dashboard permissions.":::
+:::image type="content" source="media/dashboard-explore-data/dashboard-permissions.png" alt-text="Manage dashboard permissions.":::
 
 ### Grant permissions to users in a different tenant
 
@@ -95,6 +95,10 @@ To change a user permission level in the **Dashboard permissions** pane:
 
 1. Either use the search box or scroll the user list to find the user.
 1. Change the **Permission** level as needed.
+1. To remove a user, select the trash icon next to the user.
+
+:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Screenshot of dashboard permissions dialog":::
+
 
 ## Share the dashboard link
 
