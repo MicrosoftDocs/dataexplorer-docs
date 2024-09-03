@@ -73,7 +73,7 @@ For an example, see [Most recent events per state with other column data](#most-
 
 ## Performance considerations
 
-The number of records can grow exponentially with the number of `top-nested` clauses, and record growth is even faster without specifying an *N* limit. This operator can consume a considerable amount of resources.
+The number of records can grow exponentially with the number of `top-nested` clauses, and record growth is even faster if the *N* parameter is not specified. This operator can consume a considerable amount of resources.
 
 If the aggregation distribution is irregular, limit the number of distinct values to return by specifying *N*. Then, use the `with` `others` `=` *ConstExpr* clause to get a sense of the weight of all other cases.
 
