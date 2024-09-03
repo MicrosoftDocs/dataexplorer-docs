@@ -65,11 +65,11 @@ To grant permissions to a user in the **Dashboard permissions** pane:
 
     :::image type="content" source="media/dashboard-explore-data/share-external-user.png" alt-text="Screenshot of sharing an Azure Data Explorer dashboard to an external tenant.":::
 
-1. Send the invitation link to the user. The user must accept the invitation to access the dashboard.
+1. Send the invitation link to the user. The user must [accept the invitation](#accept-an-invitation) to access the dashboard.
 
 > [!IMPORTANT]
 > * Once an invitation is sent, it can't be revoked. You can wait until the invitation expires, or you can revoke access once the invitee has accepted the invitation.
-> * The lifetime of an invitation is three days. After that, the invitation expires and the user can't access the dashboard.
+> * The lifetime of an invitation is three days. After that, the invitation expires and the a user who didn't accept the invitation can't access the dashboard.
 
 After sharing the dashboard, you can see who you've shared with in the **Dashboard permissions** pane.
 
