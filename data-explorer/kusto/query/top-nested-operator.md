@@ -85,7 +85,7 @@ The following query partitions the `StormEvents` table by the `State` column and
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42OMW%2FCQAyFd37FG1spEAFzN9g6IJG9MjkTQM35dGeQIvHjyeWoEkVExaP9PX9vr%2BLr7Y2tBiDPsSElBLn6khezO1Tc3HJQNlhBjtgrKSPNoUG41h8bqqninRfHXpvPLJ7aR4W4NtLxIaIqSr8wHWzgnvhihqFjHR1dm6Jx%2FK5mPYhMmnAUD6bylDqNxMtObM23lKRnsRNWDKzLMf%2Bfty9J1vy1uEfwwqWmRdZT2fB%2Fls5FVKRO%2BAJVleeqXZufcXgSfP3%2BJdmfHy%2F%2FKD8lAgAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOMW%2FCQAyFd37FG1spBFHmbunWAYnsyM05AdScT3cGKRI%2FvkkOCI2S1qP9%2BX1vp%2BLrjwtbDcBqhYyUEOTsC04XV6i4peWgbPAGKbFTUsZXg3CuXzKqqeKtF8dem9cEcdqUXFzL93DoaBWlb5ieN3C3j3SBZ8GmE%2FRV8sb9JbkJNr%2FhaQdK8WAqDrHNSLnuldZ8SkF6FDsjfSjXY%2Fg%2F6dCQrLlXuHbgiQuNi2Sgkuf8JJ7zThEL4R1UVZ6rdm324%2BdZcDp%2BkhzOP7tgm6IZAgAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
