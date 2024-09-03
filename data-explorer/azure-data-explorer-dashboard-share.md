@@ -9,7 +9,7 @@ ms.date: 09/03/2024
 
 A dashboard is a collection of tiles, optionally organized in pages, where each tile has an underlying query and a visual representation. For more information on creating dashboards, see [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
 
-In this document, you will learn how to share a dashboard with other users, grant permissions, and manage permissions. Use the share menu to [grant permissions](#grant-permissions) for a Microsoft Entra user or Microsoft Entra group to access the dashboard, [change a user's permission level](#change-a-user-permission-level), and [share the dashboard link](#share-the-dashboard-link).
+In this document, you'll learn how to grant permissions and manage permissions to share a dashboard with other users.
 
 > [!IMPORTANT]
 > To access the dashboard, a dashboard viewer needs the following:
@@ -30,11 +30,11 @@ In general, dashboards are shared in two steps: Grant permissions, and share the
 
 ## Grant permissions
 
-Permissions can be granted to users [within your tenant](#grant-permissions-to-users-within-your-tenant) or to [users in a different tenant](#grant-permissions-to-users-in-a-different-tenant). 
-
-To grant permissions to a user in the **Dashboard permissions** pane:
+Permissions can be granted to users [within your tenant](#grant-permissions-to-users-within-your-tenant) or to [users in a different tenant](#grant-permissions-to-users-in-a-different-tenant).
 
 ### Grant permissions to users within your tenant
+
+In the **Dashboard permissions** pane:
 
 1. Enter the Microsoft Entra user or Microsoft Entra group in **Add new members**.
 1. In the **Permission** level, select one of the following values: **Can view** or **Can edit**.
@@ -48,6 +48,8 @@ To grant permissions to a user in the **Dashboard permissions** pane:
 > Cross-tenant sharing is disabled by default. To enable cross-tenant sharing, a tenant admin must enable it in the Azure Data Explorer WebUI [settings](web-customize-settings.md#enable-cross-tenant-dashboard-sharing).
 >
 > If a tenant admin enables cross-tenant sharing and later disables cross-tenant sharing, all dashboards shared while the feature was active will remain accessible.
+
+In the **Dashboard permissions** pane:
 
 1. Select the **Share** menu item in the top bar of the dashboard.
 1. Under **Share with external user**, enter the user's email address. 
@@ -69,7 +71,7 @@ To grant permissions to a user in the **Dashboard permissions** pane:
 
 > [!IMPORTANT]
 > * Once an invitation is sent, it can't be revoked. You can wait until the invitation expires, or you can revoke access once the invitee has accepted the invitation.
-> * The lifetime of an invitation is three days. After that, the invitation expires and the a user who didn't accept the invitation can't access the dashboard.
+> * The lifetime of an invitation is three days. After that, the invitation expires and a user who didn't accept the invitation can't access the dashboard.
 
 After sharing the dashboard, you can see who you've shared with in the **Dashboard permissions** pane.
 
@@ -100,12 +102,11 @@ To change a user permission level in the **Dashboard permissions** pane:
 
 :::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Screenshot of dashboard permissions dialog":::
 
-
 ## Share the dashboard link
 
 To share the dashboard link, do one of the following:
 
-* Select **Share** and then select **Copy link**
+* Select **Share** and then select **Copy link**.
 * In the **Dashboard permissions** window, select **Copy link**.
 
 ## Related content
