@@ -376,7 +376,7 @@
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "python-package-reference.md",
+      "source_path": "python-package-reference.md",
       "redirect_url": "/kusto/query/python-package-reference?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
