@@ -504,7 +504,7 @@ items:
               - name: Delete data
                 href: delete-data.md
               - name: Deal with duplicate data
-                href: dealing-with-duplicates.md
+                href: /kusto/query/concepts/dealing-with-duplicates?view=azure-data-explorer&preserve-view=true
       - name: Monitor
         items:
           - name: Monitor Azure Data Explorer with metrics
@@ -618,12 +618,12 @@ items:
                 href: flow-usage.md
                 displayName: Microsoft Flow, flow, flow connector
           - name: Logic Apps
-            href: /kusto/tools/logicapps?view=azure-data-explorer&preserve-view=true
+            href: logic-apps.md
           - name: Azure Pipelines
             href: devops.md
             displayName: CI/CD, continuous integration, continuous deployment, Azure DevOps
           - name: Sync Kusto
-            href: /kusto/tools/synckusto?view=azure-data-explorer&preserve-view=true
+            href: sync-kusto.md
       - name: Notebooks
         items:
           - name: Jupyter Notebooks with Kqlmagic
@@ -662,11 +662,11 @@ items:
       - name: PowerShell Az.Kusto
         items:
           - name: Use Kusto cmdlets in Azure PowerShell
-            href: /kusto/api/powershell/azure-powershell?view=azure-data-explorer&preserve-view=true
+            href: azure-powershell.md
           - name: Az.Kusto cmdlets
             href: /powershell/module/az.kusto/#kusto
       - name: Python plugin packages
-        href: python-package-reference.md
+        href: /kusto/query/python-package-reference?view=azure-data-explorer&preserve-view=true
       - name: Resource provider operations
         href: /azure/role-based-access-control/resource-provider-operations#microsoftkusto
       - name: Troubleshoot ingestion
