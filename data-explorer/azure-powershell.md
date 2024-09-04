@@ -57,4 +57,4 @@ For a list of all available cmdlets, see [Az.Kusto cmdlets](/powershell/module/a
 
 ## Related content
 
-* [Use Kusto .NET client libraries from PowerShell](/kusto/api/powershell?view=azure-data-explorer&preserve-view=true)
+* [Use Kusto .NET client libraries from PowerShell](/kusto/api/powershell/powershell?view=azure-data-explorer&preserve-view=true)
