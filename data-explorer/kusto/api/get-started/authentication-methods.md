@@ -129,7 +129,7 @@ kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri").WithAadDeviceC
 
 ## Custom Token Provider Authentication Methods
 
-### Using user provided callback to obtain Microsoft Entra ID token
+### Custom Token Provider For Federated Managed Identity Credential
 
 Custom token providers can be used to obtain a Microsoft Entra ID token for authentication.\
 The following example demonstrates how to use a custom token provider to obtain token using federated managed identity.
@@ -137,8 +137,8 @@ The following example demonstrates how to use a custom token provider to obtain 
 ```csharp
 public class TokenProvider
 {
+    private ClientAssertionCredential m_clientAssertion;
     private TokenRequestContext m_tokenRequestContext;
-    private const string c_defaultResourceId = "https://kusto.kusto.windows.net";
 
     public TokenProvider(string clusterUri)
     {
@@ -154,19 +154,26 @@ public class TokenProvider
         }
         catch { /* Handle exception */}
 
-        m_tokenRequestContext = new TokenRequestContext(new string[] { resourceId ?? c_defaultResourceId });
+        m_tokenRequestContext = new TokenRequestContext(new string[] { resourceId ?? "https://kusto.kusto.windows.net" });
+
+        // Create client assertion credential to authenticate with Kusto
+        m_clientAssertion = new ClientAssertionCredential
+        (
+            "application-tenant-id",
+            "your-application-id",
+            async (token) =>
+            {
+                // Get Managed Identity token
+                var miCredential = new ManagedIdentityCredential("your-managed-identity-client-id");
+                var miToken = await miCredential.GetTokenAsync(new Azure.Core.TokenRequestContext(new[] { "api://AzureADTokenExchange/.default" })).ConfigureAwait(false);
+                return miToken.Token;
+            }
+        );
     }
 
     public async Task<string> GetTokenAsync()
     {
-        // Get Managed Identity token
-        var miCredential = new ManagedIdentityCredential("your-managed-identity-client-id");
-        var miToken = await miCredential.GetTokenAsync(new Azure.Core.TokenRequestContext(["api://AzureADTokenExchange/.default"])).ConfigureAwait(false);
-        
-        // Create client assertion token to authenticate with Kusto
-        ClientAssertionCredential clientAssertion = new ClientAssertionCredential("application-tenant-id", "your-application-id", new Func<string>( () => miToken.Token));
-    
-        var accessToken = await clientAssertion.GetTokenAsync(m_tokenRequestContext);
+        var accessToken = await m_clientAssertion.GetTokenAsync(m_tokenRequestContext).ConfigureAwait(false);
         return accessToken.Token;
     }
 }
