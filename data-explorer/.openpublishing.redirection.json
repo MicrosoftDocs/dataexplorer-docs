@@ -376,6 +376,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "python-package-reference.md",
+      "redirect_url": "/kusto/query/python-package-reference?view=azure-data-explorer&preserve-view=true",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "engine-v3.md",
       "redirect_url": "/azure/data-explorer/how-it-works",
       "redirect_document_id": false

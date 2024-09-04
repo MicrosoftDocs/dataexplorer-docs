@@ -4517,7 +4517,7 @@
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/api/powershell/azure-powershell.md",
-      "redirect_url": "/kusto/api/powershell/azure-powershell?view=azure-data-explorer&preserve-view=true",
+      "redirect_url": "/azure/data-explorer/azure-powershell",
       "redirect_document_id": false
     },
     {
@@ -7667,12 +7667,12 @@
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/tools/logicapps.md",
-      "redirect_url": "/kusto/tools/logicapps?view=azure-data-explorer&preserve-view=true",
+      "redirect_url": "/azure/data-explorer/logic-apps",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/tools/synckusto.md",
-      "redirect_url": "/kusto/tools/synckusto?view=azure-data-explorer&preserve-view=true",
+      "redirect_url": "/azure/data-explorer/sync-kusto",
       "redirect_document_id": false
     }
   ]
