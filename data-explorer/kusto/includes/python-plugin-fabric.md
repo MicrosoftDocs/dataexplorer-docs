@@ -36,7 +36,7 @@ The plugin is disabled by default. Before you start, [enable the Python plugin](
 
 ## Python sandbox image
 
-To see the list of packages for the different Python images, see [Python package reference](../python-package-reference.md).
+To see the list of packages for the different Python images, see [Python package reference](../query/python-package-reference.md).
 
 > [!NOTE]
 >
