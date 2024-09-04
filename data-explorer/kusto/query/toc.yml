@@ -1562,6 +1562,8 @@ items:
         items:
           - name: Python plugin
             href: python-plugin.md
+          - name: Python plugin packages
+            href: python-package-reference.md
           - name: R plugin
             href: r-plugin.md
       - name: Machine learning plugins
