@@ -21,11 +21,6 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "python-package-reference.md",
-      "redirect_url": "/kusto/query/python-package-reference",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "tools/logicapps.md",
       "redirect_url": "/azure/data-explorer/logic-apps",
       "redirect_document_id": false
