@@ -39,7 +39,7 @@ The plugin is disabled by default. Before you start, review the list of [prerequ
 
 To change the version of the Python image, see [Change the Python language extensions image on your cluster](/azure/data-explorer/language-extensions#change-the-python-language-extensions-image-on-your-cluster).
 
-To see the list of packages for the different Python images, see [Python package reference](../python-package-reference.md).
+To see the list of packages for the different Python images, see [Python package reference](../query/python-package-reference.md).
 
 > [!NOTE]
 >
