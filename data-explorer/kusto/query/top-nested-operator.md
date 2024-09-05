@@ -3,7 +3,7 @@ title:  top-nested operator
 description: Learn how to use the top-nested operator to produce a hierarchical aggregation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 09/05/2024
 ---
 # top-nested operator
 
@@ -126,85 +126,6 @@ StormEvents
 
 :::image type="content" source="../media/top-nested/with-others-piechart.png" alt-text="Screenshot of the top five states with the most property damaged, and all other states grouped separately rendered as a piechart. "  lightbox="../media/top-nested/with-others-piechart.png":::
 
-<!--### Enhance top-nested results with data from another column
-
-The following query adds an extra `top-nested` clause without a numeric specification. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant, so the [project-away](project-away-operator.md) operator removes the `Ignore` column. The result shows all event types associated with the previously aggregated data.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M1LLS5JTVEwUshPUwguSSxJVYCApEqF4tJcDafU9Mw8n8QSTR0uBWT1xmD1+aVFyalEqTcEqXfNS/HJT04syczPI6ReAawe5NCQyoJUiPme6Xn5RakKtgq5iRUahppADxQU5WelJpfoJpYnwqQBMzafY+IAAAA=" target="_blank">Run the query</a>
-::: moniker-end
-
-```kusto
-StormEvents
-| top-nested 2 of State       by sum(BeginLat),
-  top-nested 3 of Source      by sum(BeginLat),
-  top-nested 1 of EndLocation by sum(BeginLat),
-  top-nested   of EventType   by Ignore = max(1)
-| project-away Ignore
-```
-
-**Output**
-
-| State | aggregated_State | Source | aggregated_Source | EndLocation | aggregated_EndLocation | EventType |
-|--|--|--|--|--|--|--|
-| TEXAS | 123400.51009999994 | Public | 13650.907900000002 | AMARILLO | 246.25979999999998 | Hail |
-| TEXAS | 123400.51009999994 | Public | 13650.907900000002 | AMARILLO | 246.25979999999998 | Thunderstorm Wind |
-| KANSAS | 87771.235500000068 | Public | 22855.6206 | BUCKLIN | 488.2457 | Flood |
-| KANSAS | 87771.235500000068 | Public | 22855.6206 | BUCKLIN | 488.2457 | Thunderstorm Wind |
-| KANSAS | 87771.235500000068 | Public | 22855.6206 | BUCKLIN | 488.2457 | Hail |
-| TEXAS | 123400.51009999994 | Trained Spotter | 13997.712400000009 | CLAUDE | 421.44 | Hail |
-| KANSAS | 87771.235500000068 | Law Enforcement | 18744.823000000004 | FT SCOTT | 264.858 | Flash Flood |
-| KANSAS | 87771.235500000068 | Law Enforcement | 18744.823000000004 | FT SCOTT | 264.858 | Thunderstorm Wind |
-| KANSAS | 87771.235500000068 | Law Enforcement | 18744.823000000004 | FT SCOTT | 264.858 | Flood |
-| TEXAS | 123400.51009999994 | Law Enforcement | 37228.596599999961 | PERRYTON | 289.3178 | Hail |
-| ... | ... | ... | ... | ... | ... |
--->
-<!--
-### Sort hierarchical results
-
-To achieve a comprehensive sort order, the following query uses index-based sorting for each value within the current hierarchy level, per group. This sorting is geared towards arranging the result according to the ultimate nested level, in this case the `EndLocation`.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WQwW7CMBBE73zFHIPkSFD12kslbtzyAdE2WVyr2Eb2BkHVj+86AupCpfq4O/Nm1p3E5DdHDpIXX5B4aANn4RFPiDt0QsJ4OyNPvnll68KWZGkWeFTGKQ3/Sp+LdBPGbRxIXAwPeu2QY5Iyn7PNBWxA1ia2Ohr7ClD0k/eU3CdrFGp4xgs8fXC/d1maamGwXumbywH8s+gm/9v0d+jVP9vvm2ojPolC4cLoBseFmChYblZ6RUp07vccrLzXlfISLdYKLj/gjy2fDqSIWmHum5pbwjd+JIknxQEAAA==" target="_blank">Run the query</a>
-::: moniker-end
-
-```kusto
-StormEvents
-| top-nested 2 of State by sum(BeginLat),
-  top-nested 2 of Source by sum(BeginLat),
-  top-nested 4 of EndLocation by sum(BeginLat)
-| sort by State, Source, aggregated_EndLocation
-| summarize
-    EndLocations = make_list(EndLocation, 10000),
-    endLocationSums = make_list(aggregated_EndLocation, 10000)
-    by State, Source
-| extend indicies = range(0, array_length(EndLocations) - 1, 1)
-| mv-expand EndLocations, endLocationSums, indicies
-```
-
-**Output**
-
-|State|Source|EndLocations|endLocationSums|indices|
-|---|---|---|---|---|
-|TEXAS|Trained Spotter|CLAUDE|421.44|0|
-|TEXAS|Trained Spotter|AMARILLO|316.8892|1|
-|TEXAS|Trained Spotter|DALHART|252.6186|2|
-|TEXAS|Trained Spotter|PERRYTON|216.7826|3|
-|TEXAS|Law Enforcement|PERRYTON|289.3178|0|
-|TEXAS|Law Enforcement|LEAKEY|267.9825|1|
-|TEXAS|Law Enforcement|BRACKETTVILLE|264.3483|2|
-|TEXAS|Law Enforcement|GILMER|261.9068|3|
-|KANSAS|Trained Spotter|SHARON SPGS|388.7404|0|
-|KANSAS|Trained Spotter|ATWOOD|358.6136|1|
-|KANSAS|Trained Spotter|LENORA|317.0718|2|
-|KANSAS|Trained Spotter|SCOTT CITY|307.84|3|
-|KANSAS|Public|BUCKLIN|488.2457|0|
-|KANSAS|Public|ASHLAND|446.4218|1|
-|KANSAS|Public|PROTECTION|446.11|2|
-|KANSAS|Public|MEADE STATE PARK|371.1|3|
--->
 ### Most recent events per state with other column data
 
 The following query retrieves the two most recent events for each US state with relevant event details. It uses `max(1)` within certain columns to propagate data without using the top-nested selection logic. The generated `Ignore` aggregation columns are removed using `project-away`.
