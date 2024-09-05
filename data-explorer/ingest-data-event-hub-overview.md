@@ -35,7 +35,7 @@ Setup of a data connection using managed identity requires the following steps:
     >
     > * Ingestion from Event Hubs doesn't support RAW format.
     > * [Azure Event Hubs Schema Registry](/azure/event-hubs/schema-registry-overview) and schema-less Avro are not supported.
-    > * Data can be compressed using the `GZip` compression algorithm. You can specify `Compression` dynamically using [ingestion properties](#ingestion-properties), or in the static Data Connection settings.
+    > * Data can be compressed using the `gzip` compression algorithm. You can specify `Compression` dynamically using [ingestion properties](#ingestion-properties), or in the static Data Connection settings.
     > * Data compression isn't supported for binary formats (Avro, ApacheAvro, Parquet, ORC, and W3CLOGFILE).
     > * Custom encoding and embedded [system properties](#event-system-properties-mapping) aren't supported with binary formats and compressed data.
     > * When using binary formats (Avro, ApacheAvro, Parquet, ORC, and W3CLOGFILE) and [ingestion mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true), 
@@ -64,7 +64,7 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | Table | The case-sensitive name of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
 | Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
 | IngestionMappingReference | Name of the existing [ingestion mapping](/kusto/management/create-ingestion-mapping-command?view=azure-data-explorer&preserve-view=true) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
-| Compression | Data compression, `None` (default), or `GZip` compression.|
+| Compression | Data compression, `None` (default), or `gzip`.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
 | Tags | A list of [tags](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) when using tags. |
 | RawHeaders | Indicates that event source is Kafka and Azure Data Explorer must use byte array deserialization to read other routing properties. Value is ignored. |
