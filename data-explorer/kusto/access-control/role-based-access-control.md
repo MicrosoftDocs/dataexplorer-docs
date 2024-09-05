@@ -37,7 +37,7 @@ Within Fabric, roles can be assigned or inherited by [assigning a role in a work
 | Item **Editor**          | Admin RBAC role on the item.                       |
 | Item **Viewer**           | Viewer RBAC role on the item.                      |
 
-Roles can further be defined on the data plane for for a specific database, table, external table, materialized view, or function, by using [management commands](../management/manage-database-security-roles.md). In both cases, roles applied at a higher level (Workspace, Eventhouse) are inherited by lower levels (Database, Table).
+Roles can further be defined on the data plane for a specific database, table, external table, materialized view, or function, by using [management commands](../management/manage-database-security-roles.md). In both cases, roles applied at a higher level (Workspace, Eventhouse) are inherited by lower levels (Database, Table).
 ::: moniker-end
 
 ## Roles and permissions
