@@ -3,7 +3,7 @@ title: What's new in Azure Data Explorer documentation archive
 description: In this article, you'll find an archive of new and significant changes in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/03/2024
+ms.date: 09/04/2024
 ---
 # What's new in Azure Data Explorer documentation archive
 
