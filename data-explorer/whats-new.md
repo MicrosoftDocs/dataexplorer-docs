@@ -15,7 +15,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-| [Create an app to get data using queued ingestion](kusto/api/get-started/app-queued-ingestion?view=azure-data-explorer&preserve-view=true)| New article. Describes how to create an app to get data using queued ingestion of the Kusto client libraries.|
+| [Create an app to get data using queued ingestion](/kusto/api/get-started/app-queued-ingestion?view=azure-data-explorer&preserve-view=true)| New article. Describes how to create an app to get data using queued ingestion of the Kusto client libraries.|
 
 **General**
 
@@ -29,24 +29,24 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-| [series_clean_anomalies_fl()](kusto/functions-library/series-clean-anomalies-fl?view=azure-data-explorer&preserve-view=true)| New article. Describes how to clean anomalous points in a series.|
+| [series_clean_anomalies_fl()](/kusto/functions-library/series-clean-anomalies-fl?view=azure-data-explorer&preserve-view=true)| New article. Describes how to clean anomalous points in a series.|
 
 **Management**
 
 | Article title | Description |
 |--|--|
-| [Use a managed identity to run an update policy](kusto/management/update-policy-with-managed-identity?view=azure-data-explorer&preserve-view=true)| New article. Describes how to configure a managed identity to run an update policy.|
-| [.show databases entities command](kusto/management/show-databases-entities?view=azure-data-explorer&preserve-view=true)| New article. Describes how to show a database's entities.|
-| [.show database extents partitioning statistics](kusto/management/show-database-extents-partitioning-statistics?view=azure-data-explorer&preserve-view=true)| New article. Describes how to display a database's partitioning statistics.|
+| [Use a managed identity to run an update policy](/kusto/management/update-policy-with-managed-identity?view=azure-data-explorer&preserve-view=true)| New article. Describes how to configure a managed identity to run an update policy.|
+| [.show databases entities command](/kusto/management/show-databases-entities?view=azure-data-explorer&preserve-view=true)| New article. Describes how to show a database's entities.|
+| [.show database extents partitioning statistics](/kusto/management/show-database-extents-partitioning-statistics?view=azure-data-explorer&preserve-view=true)| New article. Describes how to display a database's partitioning statistics.|
 
 **Query**
 
 | Article title | Description |
 |--|--|
-| [Entity names](kusto/query/schema-entities/entity-names?view=azure-data-explorer&preserve-view=true)| Updated article. Refreshed identifier naming rules and references in queries.|
-| [partition operator](kusto/query/partition-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Refreshed content and added parameters.|
-| [scan operator](kusto/query/scan-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Added scan logic walkthrough.|
-| [top-nested operator](kusto/query/top-nested-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Refreshed content.|
+| [Entity names](/kusto/query/schema-entities/entity-names?view=azure-data-explorer&preserve-view=true)| Updated article. Refreshed identifier naming rules and references in queries.|
+| [partition operator](/kusto/query/partition-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Refreshed content and added parameters.|
+| [scan operator](/kusto/query/scan-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Added scan logic walkthrough.|
+| [top-nested operator](/kusto/query/top-nested-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Refreshed content.|
 
 ## July 2024
 
@@ -61,11 +61,11 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-| [infer_storage_schema_with_suggestions plugin](kusto/query/infer-storage-schema-with-suggestions-plugin?view=azure-data-explorer&preserve-view=true) | New article. Describes how to use the infer_storage_schema_with_suggestions plugin to infer the optimal schema of external data. |
-| [infer_storage_schema plugin](kusto/query/infer-storage-schema-plugin?view=azure-data-explorer&preserve-view=true) | Updated article. Added description of how to use the infer_storage_schema plugin to retrieve the CSL schema string. |
-| [cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin?view=azure-data-explorer&preserve-view=true) | Updated article. Added token authentication method. |
-| [evaluate plugin operator](kusto/query/evaluate-operator?view=azure-data-explorer&preserve-view=true) | Updated article. Added the ipv6_lookup plugin to the list of supported plugins. |
-| [ipv6_lookup plugin](kusto/query/ipv6-lookup-plugin?view=azure-data-explorer&preserve-view=true) | New article. Describes how to use the ipv6_lookup plugin to look up an IPv6 address in a lookup table. |
+| [infer_storage_schema_with_suggestions plugin](/kusto/query/infer-storage-schema-with-suggestions-plugin?view=azure-data-explorer&preserve-view=true) | New article. Describes how to use the infer_storage_schema_with_suggestions plugin to infer the optimal schema of external data. |
+| [infer_storage_schema plugin](/kusto/query/infer-storage-schema-plugin?view=azure-data-explorer&preserve-view=true) | Updated article. Added description of how to use the infer_storage_schema plugin to retrieve the CSL schema string. |
+| [cosmosdb_sql_request plugin](/kusto/query/cosmosdb-plugin?view=azure-data-explorer&preserve-view=true) | Updated article. Added token authentication method. |
+| [evaluate plugin operator](/kusto/query/evaluate-operator?view=azure-data-explorer&preserve-view=true) | Updated article. Added the ipv6_lookup plugin to the list of supported plugins. |
+| [ipv6_lookup plugin](/kusto/query/ipv6-lookup-plugin?view=azure-data-explorer&preserve-view=true) | New article. Describes how to use the ipv6_lookup plugin to look up an IPv6 address in a lookup table. |
 
 ## June 2024
 
