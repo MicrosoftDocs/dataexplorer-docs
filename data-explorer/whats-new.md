@@ -30,7 +30,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-| [Python plugin packages](python-package-reference.md) | Updated article. Refreshed the list of available Python packages in the Python plugin. |
+| [Python plugin packages](python-package-reference.md) | Updated article. Refreshed the list of available Python packages for the Python plugin. |
 |  [Azure DevOps Task for Azure Data Explorer](devops.md) | Updated article. Updated to include latest authentication changes in the Azure DevOps extension. |
 
 **Query**
