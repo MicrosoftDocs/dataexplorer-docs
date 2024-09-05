@@ -60,5 +60,5 @@ The following example returns information about `UpdatePolicy`, `BatchIngest`, a
 |Timestamp |Database |Table |ClientActivityId |OperationKind |OriginalSize |ExtentSize |RowCount |ExtentCount |TotalCpu |Duration |Principal |Properties |
 |--|--|--|--|--|--|--|--|--|--|--|--|--|
 |2024-07-18 15:21:10.5432134|TestLogs|UTResults|DM.IngestionExecutor;abcd1234-1234-1234-abcd-1234abcdce;1|UpdatePolicy|100,829|75,578|279|1|00:00:00.2656250|00:00:28.9101535|aadapp=xxx|{"SourceTable": "UTLogs"}|
-|2024-07-18 15:21:12.9481819|TestLogs|UTLogs|DM.IngestionExecutor;abcd1234-1234-1234-abcd-1234abcdce;1|BatchIngest|1,045,027,298|123,067,947|1,688,705|2|00:00:22.9843750|00:00:29.9745733|aadapp=xxx|{"format": "Csv"}|
+|2024-07-18 15:21:12.9481819|TestLogs|UTLogs|DM.IngestionExecutor;abcd1234-1234-1234-abcd-1234abcdce;1|BatchIngest|1,045,027,298|123,067,947|1,688,705|2|00:00:22.9843750|00:00:29.9745733|aadapp=xxx|{"Format": "Csv","NumberOfInputStreams":2}|
 |2024-07-18 15:21:16.1095441|KustoAuto|IncidentKustoGPTSummary|cdef12345-6789-ghij-0123-klmn45678|SetOrAppend|1,420|3,190|1|1|00:00:00.0156250|00:00:00.0638211|aaduser=xxx||
