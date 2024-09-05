@@ -124,7 +124,7 @@ StormEvents
 
 **Output**
 
-:::image type="content" source="../media/top-nested/with-others-piechart.png" alt-text="Screenshot of the top five states with the most property damaged, and all other states grouped separately rendered as a piechart. "  lightbox="../media/top-nested/with-others-piechart.png":::
+:::image type="content" source="media/top-nested/with-others-pie-chart.png" alt-text="Screenshot of the top five states with the most property damaged, and all other states grouped separately rendered as a pie-chart." lightbox="media/top-nested/with-others-pie-chart.png":::
 
 ### Most recent events per state with other column data
 
