@@ -9,6 +9,64 @@ ms.date: 02/01/2024
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## August 2023
+
+**API**
+
+| Article title | Description |
+|--|--|
+| [Create an app to get data using queued ingestion](kusto/api/get-started/app-queued-ingestion.md)| New article. Describes how to create an app to get data using queued ingestion of the Kusto client libraries.|
+
+**General**
+
+| Article title | Description |
+|--|--|
+|- [Get data from file](get-data-file.md) <br/> - [Get data from Azure storage](get-data-storage.md) <br/> - [Get data from Amazon S3](get-data-amazon-s3.md) <br/> - [Create an Event Hubs data connection](create-event-hubs-connection.md) | New articles. Describes the new Get data experience in Azure Data Explorer.|
+|- [Delete a cluster](delete-cluster.md) <br/> - [Delete a database](delete-database.md) | New articles. Describes how to delete an Azure Data Explorer cluster and database.|
+| [Monitor ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)| Updated article. Refreshed content and added journal log data tab.|
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+| [series_clean_anomalies_fl()](kusto/functions-library/series-clean-anomalies-fl.md)| New article. Describes how to clean anomalous points in a series.|
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| [Use a managed identity to run an update policy](kusto/management/update-policy-with-managed-identity.md)| New article. Describes how to configure a managed identity to run an update policy.|
+| [.show databases entities command](kusto/management/show-databases-entities.md)| New article. Describes how to show a database's entities.|
+| [.show database extents partitioning statistics](kusto/management/show-database-extents-partitioning-statistics.md)| New article. Describes how to display a database's partitioning statistics.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| [Entity names](kusto/query/schema-entities/entity-names.md)| Updated article. Refreshed identifier naming rules and references in queries.|
+| [partition operator](kusto/query/partition-operator.md)| Updated article. Refreshed content and added parameters.|
+| [scan operator](kusto/query/scan-operator.md)| Updated article. Added scan logic walkthrough.|
+| [top-nested operator](kusto/query/top-nested-operator.md)| Updated article. Refreshed content.|
+
+## July 2024
+
+**General**
+
+|Article title | Description|
+|--|--|
+| [Python plugin packages](python-package-reference.md) | Updated article. Refreshed the list of available Python packages in the Python plugin. |
+|  [Azure DevOps Task for Azure Data Explorer](devops.md) | Updated article. Updated to include latest authentication changes in the Azure DevOps extension. |
+
+**Query**
+
+|Article title | Description|
+|--|--|
+| [infer_storage_schema_with_suggestions plugin](kusto/query/infer-storage-schema-with-suggestions-plugin.md) | New article. Describes how to use the infer_storage_schema_with_suggestions plugin to infer the optimal schema of external data. |
+| [infer_storage_schema plugin](kusto/query/infer-storage-schema-plugin.md) | Updated article. Added description of how to use the infer_storage_schema plugin to retrieve the CSL schema string. |
+| [cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md) | Updated article. Added token authentication method. |
+| [evaluate plugin operator](kusto/query/evaluate-operator.md) | Updated article. Added the ipv6_lookup plugin to the list of supported plugins. |
+| [ipv6_lookup plugin](kusto/query/ipv6-lookup-plugin.md) | New article. Describes how to use the ipv6_lookup plugin to look up an IPv6 address in a lookup table. |
+
 ## June 2024
 
 **General**
@@ -162,75 +220,3 @@ No updates.
 |--|--|
 |- [Graph operators (Preview)](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true) <br/> - [graph-match operator (Preview)](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) <br/> - [graph-to-table operator (Preview)](/kusto/query/graph-to-table-operator?view=azure-data-explorer&preserve-view=true) <br/> - [make-graph operator (Preview)](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to use graph operators. |
 | [Plotly (preview)](/kusto/query/visualization-plotly?view=azure-data-explorer&preserve-view=true) | New article. Describes how to visualize data using the Plotly graphics library.|
-
-## August 2023
-
-**API**
-
-| Article title | Description |
-|--|--|
-| [Create an app to get data using queued ingestion](/kusto/api/get-started/app-queued-ingestion?view=azure-data-explorer&preserve-view=true)| New article. Describes how to create an app to get data using queued ingestion of the Kusto client libraries.|
-
-**General**
-
-| Article title | Description |
-|--|--|
-|- [Get data from file](get-data-file.md) <br/> - [Get data from Azure storage](get-data-storage.md) <br/> - [Get data from Amazon S3](get-data-amazon-s3.md) <br/> - [Create an Event Hubs data connection](create-event-hubs-connection.md) | New articles. Describes the new Get data experience in Azure Data Explorer.|
-|- [Delete a cluster](delete-cluster.md) <br/> - [Delete a database](delete-database.md) | New articles. Describes how to delete an Azure Data Explorer cluster and database.|
-| [Monitor ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)| Updated article. Refreshed content and added journal log data tab.|
-
-**Functions library**
-
-| Article title | Description |
-|--|--|
-| [series_clean_anomalies_fl()](/kusto/functions-library/series-clean-anomalies-fl?view=azure-data-explorer&preserve-view=true)| New article. Describes how to clean anomalous points in a series.|
-
-**Management**
-
-| Article title | Description |
-|--|--|
-| [Use a managed identity to run an update policy](/kusto/management/update-policy-with-managed-identity?view=azure-data-explorer&preserve-view=true)| New article. Describes how to configure a managed identity to run an update policy.|
-| [.show databases entities command](/kusto/management/show-databases-entities?view=azure-data-explorer&preserve-view=true)| New article. Describes how to show a database's entities.|
-| [.show database extents partitioning statistics](/kusto/management/show-database-extents-partitioning-statistics?view=azure-data-explorer&preserve-view=true)| New article. Describes how to display a database's partitioning statistics.|
-
-**Query**
-
-| Article title | Description |
-|--|--|
-| [Entity names](/kusto/query/schema-entities/entity-names?view=azure-data-explorer&preserve-view=true)| Updated article. Refreshed identifier naming rules and references in queries.|
-| [partition operator](/kusto/query/partition-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Refreshed content and added parameters.|
-| [scan operator](/kusto/query/scan-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Added scan logic walkthrough.|
-| [top-nested operator](/kusto/query/top-nested-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Refreshed content.|
-
-## July 2023
-
-**API**
-
-| Article title | Description |
-|--|--|
-| [Connection strings overview](/kusto/api/connection-strings/index?view=azure-data-explorer&preserve-view=true)| Updated article. Added privacy and security measures.|
-| [SQL external table authentication methods](/kusto/api/connection-strings/sql-connection-strings?view=azure-data-explorer&preserve-view=true)| Updated article. Refreshed supported authentication methods.|
-
-**General** 
-
-| Article title | Description |
-|--|--|
-| [Query data using MATLAB](query-matlab.md)| New article. Describes how to query data from Azure Data Explorer using MATLAB.|
-| [Migration guide: Elasticsearch to Azure Data Explorer](migrate-elasticsearch-to-azure-data-explorer.md)| New article. Describes how to migrate your Elasticsearch data to Azure Data Explorer.|
-| [Visualize data from Azure Data Explorer in Grafana](grafana.md)| Updated article. Added Azure Managed Grafana.|
-
-**Management**
-
-| Article title | Description |
-|--|--|
-[Data mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true)| Updated article. Added supported data formats for mapping transformations.|
-|- [Export data to SQL](/kusto/management/data-export/export-data-to-sql?view=azure-data-explorer&preserve-view=true) <br/> - [Create and alter SQL external tables](/kusto/management/external-sql-tables?view=azure-data-explorer&preserve-view=true)| Updated articles. Added supported authentication methods and parameters.|
-
-**Query**
-
-| Article title | Description |
-|--|--|
-|- [punycode_domain_from_string()](/kusto/query/punycode-domain-from-string-function?view=azure-data-explorer&preserve-view=true) <br/> - [punycode_domain_to_string()](/kusto/query/punycode-domain-to-string-function?view=azure-data-explorer&preserve-view=true)| New articles. Describes how to encode and decode a punycode domain name.|
-| [geo_line_to_s2cells()](/kusto/query/geo-line-to-s2cells-function?view=azure-data-explorer&preserve-view=true)| New article. Describes how to use the geo_line_to_2cells() function to calculate S2 cell tokens that cover a line or a multiline on Earth.|
-| [extract_json()](/kusto/query/extract-json-function?view=azure-data-explorer&preserve-view=true)| Updated article. Added new example.|
-| [Pivot chart](/kusto/query/visualization-pivotchart?view=azure-data-explorer&preserve-view=true)| Updated article. Added new example.|
