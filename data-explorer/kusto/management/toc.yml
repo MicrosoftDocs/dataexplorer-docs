@@ -753,7 +753,7 @@ items:
         items:
         - name: Access control overview
           href: ../access-control/index.md
-        - name: Kusto role-based Access Control
+        - name: Role-based access control
           href: ../access-control/role-based-access-control.md
         - name: Microsoft Entra App registration
           href: ../access-control/provision-entra-id-app.md
