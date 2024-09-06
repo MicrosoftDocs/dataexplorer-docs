@@ -3,7 +3,7 @@ title: Monitor Azure Data Explorer performance, health & usage with metrics
 description: Learn how to use Azure Data Explorer metrics to monitor the cluster's performance, health, and usage.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 04/07/2021
+ms.date: 09/10/2024
 ---
 
 # Monitor Azure Data Explorer performance, health, and usage with metrics
@@ -142,6 +142,16 @@ Query performance metrics track query duration and total number of concurrent or
 |MaterializedViewRecordsInDelta            | Records count | Avg | The number of records currently in the non-processed part of the source table. For more information, see [how materialized views work](/kusto/management/materialized-views/materialized-view-overview?view=azure-data-explorer&preserve-view=true#how-materialized-views-work)| Database, MaterializedViewName |
 |MaterializedViewExtentsRebuild            | Extents count | Avg | The number of extents that required updates in the materialization cycle. | Database, MaterializedViewName|
 |MaterializedViewDataLoss                  | 1       | Max    | Metric is fired when unprocessed source data is approaching retention. Indicates that the materialized view is unhealthy. | Database, MaterializedViewName, Kind |
+
+## Partitioning metrics
+
+Partitioning metrics tracks the partitioning process related to tables with [partitioning policy](kusto/management/partitioning-policy.md).
+
+|**Metric** | **Unit** | **Aggregation** | **Metric description** | **Dimensions** |
+|---|---|---|---|---|
+|PartitioningPercentage                    | Percent    | Avg, Min, Max     |  Percentage of records partitioned versus total number of records. | Database, Table |
+|PartitioningPercentageHot                | Percent | Avg, Min, Max     | Percentage of records partitioned versus total number of records (in hot / cached extents only). | Database, Table |
+|ProcessedPartitionedRecords                    | Percent       | Avg, Min, Max, Sum     | Number of records partitioned in measured time window. | Database, Table |
 
 ## Related content
 
