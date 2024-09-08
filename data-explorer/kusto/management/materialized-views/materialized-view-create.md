@@ -258,7 +258,7 @@ The following aggregation functions are supported:
   > [!TIP]
   > Late-arriving data in a datetime group-by key can have a negative impact on the materialized view's performance. For example, assume that a materialized view uses `bin(Timestamp, 1d)` as one of its group-by keys, and newly ingested records to the source table have old `Timestamp` values. These records might negatively affect the materialized view.
   >
-  > If you are expecting late arriving records ingested to the source table, you should adjust the caching policy of the materialized view accordingly. For example, if records with Timestamp of 6 months ago are expected to be ingested to the source table, the materialization process will need to scan the materialized view for 6 months back. If this period is in cold cache, materialization will experience cache misses which will have a negative impact on the performance of the view.
+  > If you expect late arriving records ingested to the source table, adjust the caching policy of the materialized view accordingly. For example, if records with Timestamp of six months ago are expected to be ingested to the source table, the materialization process will need to scan the materialized view for the previous six months. If this period is in cold cache, materialization will experience cache misses which will have a negative impact on the performance of the view.
   >
   > If such late arriving records are not expected, we recommend that in the materialized view query, you either filter out these records or normalize their timestamp values to the current time.
 
