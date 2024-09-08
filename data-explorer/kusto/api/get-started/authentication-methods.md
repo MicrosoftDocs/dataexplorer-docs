@@ -151,10 +151,12 @@ public class TokenProvider
             var response = httpClient.GetByteArrayAsync($"{clusterUri}/v1/rest/auth/metadata").Result;
             var json = JObject.Parse(Encoding.UTF8.GetString(response));
             var resourceId = json["AzureAD"]?["KustoServiceResourceId"]?.ToString();
+            // Append scope to resource id
+            resourceId = !string.IsNullOrWhiteSpace(resourceId) ? $"{resourceId}/.default" : null;
         }
         catch { /* Handle exception */}
 
-        m_tokenRequestContext = new TokenRequestContext(new string[] { resourceId ?? "https://kusto.kusto.windows.net" });
+        m_tokenRequestContext = new TokenRequestContext(new string[] { resourceId ?? "https://kusto.kusto.windows.net/.default" });
 
         // Create client assertion credential to authenticate with Kusto
         m_clientAssertion = new ClientAssertionCredential
@@ -165,7 +167,7 @@ public class TokenProvider
             {
                 // Get Managed Identity token
                 var miCredential = new ManagedIdentityCredential("your-managed-identity-client-id");
-                var miToken = await miCredential.GetTokenAsync(new Azure.Core.TokenRequestContext(new[] { "api://AzureADTokenExchange/.default" })).ConfigureAwait(false);
+                var miToken = await miCredential.GetTokenAsync(new TokenRequestContext(new[] { "api://AzureADTokenExchange/.default" })).ConfigureAwait(false);
                 return miToken.Token;
             }
         );
