@@ -133,6 +133,7 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 
 ## Known Event Grid issues
 ### Working without local authentication
+
 If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly from storage to the event hub using managed identities:
 
   #### [Steps](#tab/steps)
@@ -218,7 +219,8 @@ When using Azure Data Explorer to [export](/kusto/management/data-export/export-
   * If the account isn't enabled for hierarchical namespace, connection string must use the [Blob Storage](/kusto/api/connection-strings/storage-connection-strings?view=azure-data-explorer&preserve-view=true#storage-connection-string-templates) format (for example, `https://accountname.blob.core.windows.net`). The export works as expected even when using the ADLS Gen2 connection string, but notifications won't be triggered and Event Grid ingestion won't work.
 
 ### Emulating Storage events from custom components
-When using custom components to emulate Storage events, the emulated events must strictly comply with [Azure Blob Storage event schema](/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema), as Azure Data Explorer will discard events that cannot be parsed by Event Grid SDK.
+
+When using custom components to emulate Azure Storage events, the emulated events must strictly comply with [Azure Blob Storage event schema](/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema), as Azure Data Explorer will discard events that cannot be parsed by the Event Grid SDK.
 
 ## Related content
 
