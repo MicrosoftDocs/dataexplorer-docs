@@ -3,7 +3,7 @@ title:  top-nested operator
 description: Learn how to use the top-nested operator to produce a hierarchical aggregation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 09/05/2024
 ---
 # top-nested operator
 
@@ -54,6 +54,10 @@ The following aggregation functions are supported:
 
 A table with two columns for each clause. One column contains unique values computed using *Expr*, and the other column shows the results obtained from the *Aggregation* calculation.
 
+### Using the `with` `others` clause
+
+Using the `top-nested` operator with `with` `others` adds the ability to see your top content contextualized in a wider data set. Evaluating your data in this way is valuable when rendering the data visually.
+
 ### Include data from other columns
 
 Only columns specified as a `top-nested` clause *Expr* are displayed in the output table.
@@ -65,179 +69,66 @@ To include all values of a column at a specific level:
 1. Use `Ignore=max(1)` as the value of *Aggregation*.
 1. Remove the unnecessary `Ignore` column with [project-away](project-away-operator.md).
 
-For an example, see [Get the most recent events per state with additional data from other columns](#get-the-most-recent-events-per-state-with-additional-data-from-other-columns).
+For an example, see [Most recent events per state with other column data](#most-recent-events-per-state-with-other-column-data).
 
 ## Performance considerations
 
-The number of records may grow exponentially with the number of `top-nested` clauses, and record growth is even faster if no *N* limit is specified. This operator may consume a considerable amount of resources.
+The number of records can grow exponentially with the number of `top-nested` clauses, and record growth is even faster if the *N* parameter is not specified. This operator can consume a considerable amount of resources.
 
-If the distribution of the aggregation is considerably non-uniform, limit the number of distinct values to return by specifying *N*. Then, use the `with` `others` `=` *ConstExpr* specification to get an indication for the weight of all other cases.
+If the aggregation distribution is irregular, limit the number of distinct values to return by specifying *N*. Then, use the `with` `others` `=` *ConstExpr* clause to get a sense of the weight of all other cases.
 
 ## Examples
 
-### Get started with the `top-nested` operator
+### Top damaged states, event types, and end locations by property damage
 
-The following query partitions the `StormEvents` table by the `State` column and calculates the total latitude for each state. The query selects the top two states with the highest latitude sum. Within these top two states, the query groups the data by `Source` and selects the top three sources with the highest latitude sum. For each of the top three sources in the top two states, the query groups the data by `EndLocation` and selects the `EndLocation` with the highest latitude sum.
+The following query partitions the `StormEvents` table by the `State` column and calculates the total property damage for each state. The query selects the top two states with the largest amount of property damage. Within these top two states, the query groups the data by `EventType` and selects the top three event types with the most damage. Then the query groups the data by `EndLocation` and selects the `EndLocation` with the highest damage. Only one `EndLocation` value appears in the results, possibly due to the large nature of the storm events or not documenting the end location.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42OSw6CQBAF957iLTVRCXIDIzt2eIGWaZUEugnTmJh4ePnMgviJvnWl6uWmbZ3eWMzjz0URDmQEr11b8HbxgGmzEfbGDjvoGbmRcaBPd/iuXu75UkpGtloHxVGbHh5JP0CmRhUqstI611sxtyajdez9tiaB/KBFKWAqrlP3JRIPkVRcpkWPq7xFMIvEr+S30HSaxIXmE8PE8rpxAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOMW%2FCQAyFd37FG1spBFHmbunWAYnsyM05AdScT3cGKRI%2FvkkOCI2S1qP9%2BX1vp%2BLrjwtbDcBqhYyUEOTsC04XV6i4peWgbPAGKbFTUsZXg3CuXzKqqeKtF8dem9cEcdqUXFzL93DoaBWlb5ieN3C3j3SBZ8GmE%2FRV8sb9JbkJNr%2FhaQdK8WAqDrHNSLnuldZ8SkF6FDsjfSjXY%2Fg%2F6dCQrLlXuHbgiQuNi2Sgkuf8JJ7zThEL4R1UVZ6rdm324%2BdZcDp%2BkhzOP7tgm6IZAgAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-StormEvents                                        // Data source.
-| top-nested 2 of State       by sum(BeginLat),    // Top 2 States by total latitude.
-  top-nested 3 of Source      by sum(BeginLat),    // Top 3 Sources by total latitude in each State.
-  top-nested 1 of EndLocation by sum(BeginLat)     // Top 1 EndLocation by total latitude in each Source and State.
+StormEvents  // Data source.
+| top-nested 2 of State by sum(DamageProperty),       // Top 2 States by total damaged property.
+  top-nested 3 of EventType by sum(DamageProperty),   // Top 3 EventType by total damaged property for each State.
+  top-nested 1 of EndLocation by sum(DamageProperty)  // Top 1 EndLocation by total damaged property for each EventType and State.
+| project State, EventType, EndLocation, StateTotalDamage = aggregated_State, EventTypeTotalDamage = aggregated_EventType, EndLocationDamage = aggregated_EndLocation
 ```
 
 **Output**
 
-|State|aggregated_State|Source|aggregated_Source|EndLocation|aggregated_EndLocation|
+|State|EventType|EndLocation|StateTotalDamage|EventTypeTotalDamage|EndLocationDamage|
 |---|---|---|---|---|---|
-|KANSAS|87771.2355000001|Law Enforcement|18744.823|FT SCOTT|264.858|
-|KANSAS|87771.2355000001|Public|22855.6206|BUCKLIN|488.2457|
-|KANSAS|87771.2355000001|Trained Spotter|21279.7083|SHARON SPGS|388.7404|
-|TEXAS|123400.5101|Public|13650.9079|AMARILLO|246.2598|
-|TEXAS|123400.5101|Law Enforcement|37228.5966|PERRYTON|289.3178|
-|TEXAS|123400.5101|Trained Spotter|13997.7124|CLAUDE|421.44|
+|CALIFORNIA|Wildfire||1445937600|1326315000|1326315000|
+|CALIFORNIA|HighWind||1445937600|61320000|61320000|
+|CALIFORNIA|DebrisFlow||1445937600|48000000|48000000|
+|OKLAHOMA|IceStorm||915470300|826000000|826000000|
+|OKLAHOMA|WinterStorm||915470300|40027000|40027000|
+|OKLAHOMA|Flood|COMMERCE|915470300|21485000|20000000|
 
-### Enhance top-nested results with data from another column
+### Top five states with property damage `with` `others` grouped
 
-The following query builds upon the previous example by introducing an extra `top-nested` clause. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant, so the [project-away](project-away-operator.md) operator removes the `Ignore` column. The result shows all event types associated with the previously aggregated data.
+The following example uses the `top-nested` operator to identify the top five states with the most property damage and uses the `with` `others` clause to group damaged property for all other states. It then visualizes damaged property for the top five states and all other states as a `piechart` using the `render` command.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M1LLS5JTVEwUshPUwguSSxJVYCApEqF4tJcDafU9Mw8n8QSTR0uBWT1xmD1+aVFyalEqTcEqXfNS/HJT04syczPI6ReAawe5NCQyoJUiPme6Xn5RakKtgq5iRUahppADxQU5WelJpfoJpYnwqQBMzafY+IAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3MMQ7CMBBE0Z5TjFJBQUmZDmoi5QSGDDiFvdbuAIqUw0OovvSKP8q8XN6sit0KWTtWhjjhBHtgVBLxmZVhyvTou%2BvWv0eH24J4lf05lfTk4NboWg6%2FkbNOdLSZ95xcXzAmzPxmAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 StormEvents
-| top-nested 2 of State       by sum(BeginLat),
-  top-nested 3 of Source      by sum(BeginLat),
-  top-nested 1 of EndLocation by sum(BeginLat),
-  top-nested   of EventType   by Ignore = max(1)
-| project-away Ignore
+| top-nested 5 of State with others="OtherStates" by sum(DamageProperty)
+| render piechart  
 ```
 
 **Output**
 
-| State | aggregated_State | Source | aggregated_Source | EndLocation | aggregated_EndLocation | EventType |
-|--|--|--|--|--|--|--|
-| TEXAS | 123400.51009999994 | Public | 13650.907900000002 | AMARILLO | 246.25979999999998 | Hail |
-| TEXAS | 123400.51009999994 | Public | 13650.907900000002 | AMARILLO | 246.25979999999998 | Thunderstorm Wind |
-| KANSAS | 87771.235500000068 | Public | 22855.6206 | BUCKLIN | 488.2457 | Flood |
-| KANSAS | 87771.235500000068 | Public | 22855.6206 | BUCKLIN | 488.2457 | Thunderstorm Wind |
-| KANSAS | 87771.235500000068 | Public | 22855.6206 | BUCKLIN | 488.2457 | Hail |
-| TEXAS | 123400.51009999994 | Trained Spotter | 13997.712400000009 | CLAUDE | 421.44 | Hail |
-| KANSAS | 87771.235500000068 | Law Enforcement | 18744.823000000004 | FT SCOTT | 264.858 | Flash Flood |
-| KANSAS | 87771.235500000068 | Law Enforcement | 18744.823000000004 | FT SCOTT | 264.858 | Thunderstorm Wind |
-| KANSAS | 87771.235500000068 | Law Enforcement | 18744.823000000004 | FT SCOTT | 264.858 | Flood |
-| TEXAS | 123400.51009999994 | Law Enforcement | 37228.596599999961 | PERRYTON | 289.3178 | Hail |
-| ... | ... | ... | ... | ... | ... |
+:::image type="content" source="media/top-nested/with-others-pie-chart.png" alt-text="Screenshot of the top five states with the most property damaged, and all other states grouped separately rendered as a pie-chart." lightbox="media/top-nested/with-others-pie-chart.png":::
 
-### Use `with` `others` to explore excluded data
+### Most recent events per state with other column data
 
-When incorporated within a `top-nested` clause, the `with` `others` specification introduces an extra record that aggregates data excluded from the top results. In the following query, an extra record is created in the `State` and `aggregated_State` columns, representing the collective latitude of all states except Kansas and Texas. Moreover, the `EndLocation` and `aggregated_EndLocation` column have an extra nine records. These records show the combined latitude of end locations not qualifying as the top location within each state and source.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M1LLS5JTVEwUshPUwguSSxJVSjPLMlQyC/JSC0qVrBVUHLMyVHwB/Eg0sVKCkmVCsWluRpOqemZeT6JJZo6XArIRhmDjcovLUpOJaTUEKTUNS/FJz85sSQzPw+33UBFCjBVWJwAABtuhnPYAAAA" target="_blank">Run the query</a>
-::: moniker-end
-
-```kusto
-StormEvents
-| top-nested 2 of State with others = "All Other States" by sum(BeginLat),
-  top-nested 3 of Source by sum(BeginLat),
-  top-nested 1 of EndLocation with others = "All Other End Locations" by sum(BeginLat)
-```
-
-**Output**
-
-|State|aggregated_State|Source|aggregated_Source|EndLocation|aggregated_EndLocation|
-|---|---|---|---|---|---|
-|KANSAS|87771.2355000001|Law Enforcement|18744.823|FT SCOTT|264.858|
-|KANSAS|87771.2355000001|Public|22855.6206|BUCKLIN|488.2457|
-|KANSAS|87771.2355000001|Trained Spotter|21279.7083|SHARON SPGS|388.7404|
-|TEXAS|123400.5101|Public|13650.9079|AMARILLO|246.2598|
-|TEXAS|123400.5101|Law Enforcement|37228.5966|PERRYTON|289.3178|
-|TEXAS|123400.5101|Trained Spotter|13997.7124|CLAUDE|421.44|
-|KANSAS|87771.2355000001|Law Enforcement|18744.823|All Other End Locations|18479.965|
-|KANSAS|87771.2355000001|Public|22855.6206|All Other End Locations|22367.3749|
-|KANSAS|87771.2355000001|Trained Spotter|21279.7083|All Other End Locations|20890.9679|
-|TEXAS|123400.5101|Public|13650.9079|All Other End Locations|13404.6481|
-|TEXAS|123400.5101|Law Enforcement|37228.5966|All Other End Locations|36939.2788|
-|TEXAS|123400.5101|Trained Spotter|13997.7124|All Other End Locations|13576.2724|
-|KANSAS|87771.2355000001|||All Other End Locations|24891.0836|
-|TEXAS|123400.5101|||All Other End Locations|58523.2932000001|
-|All Other States|1149279.5923|||All Other End Locations|1149279.5923|
-
-The following query shows the same results for the first level used in the previous example.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVUMzMU9BQD3GNcAxW11FQ93b0CwayNIGqiktzcxOLMqtSQSwNp9T0zDyfxBJNAPC7f85LAAAA" target="_blank">Run the query</a>
-::: moniker-end
-
-```kusto
-StormEvents
-| where State !in ('TEXAS', 'KANSAS')
-| summarize sum(BeginLat)
-```
-
-**Output**
-
-|sum_BeginLat|
-|---|
-|1149279.5923|
-
-### Sort hierarchical results
-
-To achieve a comprehensive sort order, the following query uses index-based sorting for each value within the current hierarchy level, per group. This sorting is geared towards arranging the result according to the ultimate nested level, in this case the `EndLocation`.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WQwW7CMBBE73zFHIPkSFD12kslbtzyAdE2WVyr2Eb2BkHVj+86AupCpfq4O/Nm1p3E5DdHDpIXX5B4aANn4RFPiDt0QsJ4OyNPvnll68KWZGkWeFTGKQ3/Sp+LdBPGbRxIXAwPeu2QY5Iyn7PNBWxA1ia2Ohr7ClD0k/eU3CdrFGp4xgs8fXC/d1maamGwXumbywH8s+gm/9v0d+jVP9vvm2ojPolC4cLoBseFmChYblZ6RUp07vccrLzXlfISLdYKLj/gjy2fDqSIWmHum5pbwjd+JIknxQEAAA==" target="_blank">Run the query</a>
-::: moniker-end
-
-```kusto
-StormEvents
-| top-nested 2 of State by sum(BeginLat),
-  top-nested 2 of Source by sum(BeginLat),
-  top-nested 4 of EndLocation by sum(BeginLat)
-| sort by State, Source, aggregated_EndLocation
-| summarize
-    EndLocations = make_list(EndLocation, 10000),
-    endLocationSums = make_list(aggregated_EndLocation, 10000)
-    by State, Source
-| extend indicies = range(0, array_length(EndLocations) - 1, 1)
-| mv-expand EndLocations, endLocationSums, indicies
-```
-
-**Output**
-
-|State|Source|EndLocations|endLocationSums|indices|
-|---|---|---|---|---|
-|TEXAS|Trained Spotter|CLAUDE|421.44|0|
-|TEXAS|Trained Spotter|AMARILLO|316.8892|1|
-|TEXAS|Trained Spotter|DALHART|252.6186|2|
-|TEXAS|Trained Spotter|PERRYTON|216.7826|3|
-|TEXAS|Law Enforcement|PERRYTON|289.3178|0|
-|TEXAS|Law Enforcement|LEAKEY|267.9825|1|
-|TEXAS|Law Enforcement|BRACKETTVILLE|264.3483|2|
-|TEXAS|Law Enforcement|GILMER|261.9068|3|
-|KANSAS|Trained Spotter|SHARON SPGS|388.7404|0|
-|KANSAS|Trained Spotter|ATWOOD|358.6136|1|
-|KANSAS|Trained Spotter|LENORA|317.0718|2|
-|KANSAS|Trained Spotter|SCOTT CITY|307.84|3|
-|KANSAS|Public|BUCKLIN|488.2457|0|
-|KANSAS|Public|ASHLAND|446.4218|1|
-|KANSAS|Public|PROTECTION|446.11|2|
-|KANSAS|Public|MEADE STATE PARK|371.1|3|
-
-### Get the most recent events per state with additional data from other columns
-
-The following query demonstrates how to retrieve the two most recent events for each US state along with relevant event details. Notice the use of `max(1)` within certain columns, identified by `Ignore*`, which aids in propagating data through the query without imposing any selection logic.
+The following query retrieves the two most recent events for each US state with relevant event details. It uses `max(1)` within certain columns to propagate data without using the top-nested selection logic. The generated `Ignore` aggregation columns are removed using `project-away`.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -254,9 +145,9 @@ StormEvents
 | order by State asc, StartTime desc                      // Sort results alphabetically and chronologically.
 ```
 
-### Get the latest records per identity with additional data from other columns
+### Latest records per identity with other column data
 
-The following query showcases how to extract the latest records per identity and builds on the concepts introduced in the previous example. The first `top-nested` clause partitions the data by distinct values of `id`. The subsequent clause identifies the two most recent records based on the `timestamp` for each `id`. Other information is appended using a `top-nested` operator alongside an unspecified count and the arbitrary `max(1)` aggregation. Finally, unnecessary aggregation columns are removed using the `project-away` operator.
+The following `top-nested` example extracts the latest records per identity and builds on the concepts introduced in the previous example. The first `top-nested` clause partitions the data by distinct values of `id` using `Ignore0=max(1)` as a placeholder. For each `id`, it identifies the two most recent records based on the `timestamp`. Other information is appended using a `top-nested` operator without specifying a count and using  `Ignore2=max(1)` as a placeholder. Finally, unnecessary aggregation columns are removed using the `project-away` operator.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
