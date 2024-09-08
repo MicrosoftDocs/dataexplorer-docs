@@ -213,7 +213,8 @@ If local authentication is disabled on the Event Hubs namespace that contains th
 
   In addition, configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
 
-### Setting up Event Grid ingestion on files exported from Azure Data Explorer
+### Set up Event Grid ingestion on files exported from Azure Data Explorer
+
 When using Azure Data Explorer to [export](/kusto/management/data-export/export-data-to-storage?view=azure-data-explorer&preserve-view=true) the files used for Event Grid ingestion, note:
   * Event Grid notifications aren't triggered if the connection string provided to the export command or the connection string provided to an [external table](/kusto/management/data-export/export-data-to-an-external-table) is a connecting string in [ADLS Gen2 format](/kusto/api/connection-strings/storage-connection-strings?view=azure-data-explorer&preserve-view=true#storage-connection-string-templates) (for example, `abfss://filesystem@accountname.dfs.core.windows.net`) but the storage account isn't enabled for hierarchical namespace.
   * If the account isn't enabled for hierarchical namespace, connection string must use the [Blob Storage](/kusto/api/connection-strings/storage-connection-strings?view=azure-data-explorer&preserve-view=true#storage-connection-string-templates) format (for example, `https://accountname.blob.core.windows.net`). The export works as expected even when using the ADLS Gen2 connection string, but notifications won't be triggered and Event Grid ingestion won't work.
