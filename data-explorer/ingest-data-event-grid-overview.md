@@ -132,16 +132,19 @@ When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data
 Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It's recommended to keep the blobs for three to five days.
 
 ## Known Event Grid issues
-* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly from storage to the event hub using managed identities:
 
-    ### [Steps](#tab/steps)
+### Working without local authentication
 
-    1. Assign a system-assigned managed identity to the Event Grid system topic of the storage account. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics).
-    1. Grant the managed identity sender permissions by assigning it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Add identity to Azure roles on destinations](/azure/event-grid/add-identity-roles).
-    1. Make sure that the Event Grid subscription uses managed identity for event delivery. For more information, see [Create event subscriptions that use an identity](/azure/event-grid/managed-service-identity).
+If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly from storage to the event hub using managed identities:
+
+  #### [Steps](#tab/steps)
+
+1. Assign a system-assigned managed identity to the Event Grid system topic of the storage account. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics).
+1. Grant the managed identity sender permissions by assigning it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Add identity to Azure roles on destinations](/azure/event-grid/add-identity-roles).
+1. Make sure that the Event Grid subscription uses managed identity for event delivery. For more information, see [Create event subscriptions that use an identity](/azure/event-grid/managed-service-identity).
 
 
-    ### [PowerShell script](#tab/powershell)
+  #### [PowerShell script](#tab/powershell)
 
   ```powershell
   $eventGridSubscriptionId = "<AZURE SUBSCRIPTION ID OF EVENTGRID SYSTEM TOPIC>"
@@ -205,15 +208,21 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 
   Write-Host -ForegroundColor Green "%%%%%%%% Script has been executed successfully %%%%%%%%"
 
-    ```
+  ```
 
-    ---
+  ---
 
-    In addition, configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
+  In addition, configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
 
-* When using Azure Data Explorer to [export](/kusto/management/data-export/export-data-to-storage?view=azure-data-explorer&preserve-view=true) the files used for Event Grid ingestion, note:
+### Set up Event Grid ingestion on files exported from Azure Data Explorer
+
+When using Azure Data Explorer to [export](/kusto/management/data-export/export-data-to-storage?view=azure-data-explorer&preserve-view=true) the files used for Event Grid ingestion, note:
   * Event Grid notifications aren't triggered if the connection string provided to the export command or the connection string provided to an [external table](/kusto/management/data-export/export-data-to-an-external-table) is a connecting string in [ADLS Gen2 format](/kusto/api/connection-strings/storage-connection-strings?view=azure-data-explorer&preserve-view=true#storage-connection-string-templates) (for example, `abfss://filesystem@accountname.dfs.core.windows.net`) but the storage account isn't enabled for hierarchical namespace.
   * If the account isn't enabled for hierarchical namespace, connection string must use the [Blob Storage](/kusto/api/connection-strings/storage-connection-strings?view=azure-data-explorer&preserve-view=true#storage-connection-string-templates) format (for example, `https://accountname.blob.core.windows.net`). The export works as expected even when using the ADLS Gen2 connection string, but notifications won't be triggered and Event Grid ingestion won't work.
+
+### Emulating Storage events from custom components
+
+When using custom components to emulate Azure Storage events, the emulated events must strictly comply with [Azure Blob Storage event schema](/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema), as Azure Data Explorer will discard events that cannot be parsed by the Event Grid SDK.
 
 ## Related content
 
