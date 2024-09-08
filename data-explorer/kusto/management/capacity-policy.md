@@ -114,10 +114,11 @@ The policy can be used to change concurrency settings for [materialized views](m
 | `ClusterMinimumConcurrentOperations` | `long` | The minimal number of concurrent materialization operations in a cluster. Default is `1`. |
 | `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent materialization operations in a cluster. Default is `10`. |
 
-The effective value for *Concurrent operations* is automatically adjusted by the system in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU.
+By default, only a single materialization runs concurrently (see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work)). The system adjusts the current concurrency in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU. You can increase/decrease concurrency by altering this policy. For example, if the cluster has ten materialized views, setting the `ClusterMinimumConcurrentOperations` to five ensures that at least five of them can materialize concurrently.
+You can view the effective value for the current concurrency using the [.show capacity command](show-capacity-command.md)
 
 > [!WARNING]
-> Only increase `ClusterMinimumConcurrentOperations` if the cluster has ample resources (low CPU usage and available memory). Raising these values under resource constraints can lead to exhaustion and significantly degrade cluster performance.
+> Raising the `ClusterMinimumConcurrentOperations` can lead to resource exhaustion and degrade cluster performance. Carefully monitor the cluster's health and increase concurrency gradually if you manually alter this policy.
 
 ### Stored query results capacity
 
@@ -245,11 +246,11 @@ Kusto limits the number of concurrent requests for the following user-initiated 
 
 When the cluster detects that an operation has exceeded the limit on concurrent requests:
 
-* The command's state, as presented by [System information commands](system-info.md), will be `Throttled`.
-* The error message will include the *command type*, the *origin* of the throttling and the *capacity* that's been exceeded. For example:
+* The command's state, as presented by [System information commands](system-info.md), is `Throttled`.
+* The error message includes the *command type*, the *origin* of the throttling and the *capacity* that's been exceeded. For example:
   * For example: `The management command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableSetOrAppend', Capacity: 18, Origin: 'CapacityPolicy/Ingestion'`.
-* The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
-* The exception type will be `ControlCommandThrottledException`.
+* The HTTP response code is `429`. The subcode is `TooManyRequests`.
+* The exception type is `ControlCommandThrottledException`.
 
 > [!NOTE]
 > Management commands may also be throttled as a result of exceeding the limit defined by a workload group's [Request rate limit policy](request-rate-limit-policy.md).
