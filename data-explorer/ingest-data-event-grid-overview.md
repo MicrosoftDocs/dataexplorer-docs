@@ -132,6 +132,7 @@ When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data
 Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It's recommended to keep the blobs for three to five days.
 
 ## Known Event Grid issues
+
 ### Working without local authentication
 
 If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly from storage to the event hub using managed identities:
