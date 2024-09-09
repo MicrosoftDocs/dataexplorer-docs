@@ -31,6 +31,9 @@ The details of the current principal as a [dynamic](../query/scalar-data-types/d
 |DisplayName|The user-friendly name  for the principal that is displayed in the UI.|
 |ObjectId|The Microsoft Entra object ID for the principal.|
 |FQN|The Fully Qualified Name (FQN) of the principal. Valuable for [security role management commands](../management/security-roles.md). For more information, see [Referencing security principals](../management/reference-security-principals.md).|
+|Country|User's country/region. This property is returned if the information is present. The value is a standard two-letter country/region code, such as FR, JP, SZ, and so on.|
+|TenantCountry|Resource tenant's country/region. This property is returned if the information is present. The value is similar to Country, set at a tenant level by an admin.|
+|TenantRegion|Region of the resource tenant. This property is returned if the information is present.|
 
 ## Example
 
