@@ -47,9 +47,10 @@ var kcsb = new KustoConnectionStringBuilder("your-kusto-cluster-uri")
 // Equivalent Kusto connection string
 var connectionString = 
     "Data Source=<your-kusto-cluster-uri>;Initial Catalog=NetDefaultDB;Application Client Id=<app-id>;Application Certificate Subject=<subject-name>;Application Certificate Issuer=<issuer-name>;Authority Id=<authority-id>";
-// Allow access to local secrets when using a connection string
+// When using connection string to load local certificate, set PreventAccessToLocalSecretsViaKeywords to false
+var kcsb = new KustoConnectionStringBuilder() {PreventAccessToLocalSecretsViaKeywords = false, ConnectionString = connectionString};
+// Can also be set globally (less secure)
 KustoConnectionStringBuilder.DefaultPreventAccessToLocalSecretsViaKeywords = false;
-var kcsb = new KustoConnectionStringBuilder(connectionString);
 ```
 
 > [!IMPORTANT]
