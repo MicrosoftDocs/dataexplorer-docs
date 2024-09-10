@@ -150,7 +150,7 @@ Partitioning metrics tracks the partitioning process related to tables with [par
 |**Metric** | **Unit** | **Aggregation** | **Metric description** | **Dimensions** |
 |---|---|---|---|---|
 |PartitioningPercentage                    | Percent    | Avg, Min, Max     |  Percentage of records partitioned out of total number of records. | Database, Table |
-|PartitioningPercentageHot                | Percent | Avg, Min, Max     | Percentage of records partitioned versus total number of records (in hot / cached extents only). | Database, Table |
+|PartitioningPercentageHot                | Percent | Avg, Min, Max     | Percentage of records partitioned out of total number of records (in 'hot' cache only). | Database, Table |
 |ProcessedPartitionedRecords                    | Percent       | Avg, Min, Max, Sum     | Number of records partitioned in measured time window. | Database, Table |
 
 ## Related content
