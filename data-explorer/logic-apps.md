@@ -8,18 +8,14 @@ ms.date: 08/11/2024
 
 # Microsoft Logic Apps and Azure Data Explorer
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
-
 <!-- //TODO - per Akshay this does work with Fabric but you need to direct user to find the right query uri and take out ADX specific language -->
 
 The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) connector allows you to run queries and commands automatically as part of a scheduled or triggered task.
 
 Logic Apps and :::no-loc text="Power Automate"::: are built on the same connector. Therefore, the [limitations](/azure/data-explorer/flow#limitations), [actions](/azure/data-explorer/flow#flow-actions), [authentication](/azure/data-explorer/flow#authentication) and [usage examples](/azure/data-explorer/flow-usage) that apply to :::no-loc text="Power Automate":::, also apply to Logic Apps, as mentioned on the [:::no-loc text="Power Automate"::: documentation page](/azure/data-explorer/flow).
 
-:::moniker range="azure-data-explorer"
 > [!NOTE]
 > In order for a logic app to access to a [network protected cluster](/azure/data-explorer/security-network-private-endpoint), you must add the [outbound IP addresses](/connectors/common/outbound-ip-addresses#azure-logic-apps) associated with the region of your logic app to the firewall allowlist. For more information, see [Manage public access to your Azure Data Explorer cluster](/azure/data-explorer/security-network-restrict-public-access).
-:::moniker-end
 
 ## Create a logic app with Azure Data Explorer
 

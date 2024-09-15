@@ -27,9 +27,6 @@ Kusto: ad67d136-c1db-4f9f-88ef-d94f3b6b0b5a;KustoExplorerQueryRun
 
 Kusto builds a term index consisting of all terms that are *three characters or more*, and this index is used by string operators such as `has`, `!has`, and so on.  If the query looks for a term that is smaller than three characters, or uses a `contains` operator, then the query will revert to scanning the values in the column. Scanning is much slower than looking up the term in the term index.
 
-> [!NOTE]
-> In EngineV2, a term consists of four or more characters.
-
 ## Operators on strings
 
 The following abbreviations are used in this article:

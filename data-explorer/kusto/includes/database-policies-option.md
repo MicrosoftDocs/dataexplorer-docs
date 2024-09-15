@@ -5,7 +5,7 @@ ms.date: 08/26/2024
 
 |Output parameter |Type |Description|
 |---|---|---|
-|DatabaseName  | `string` |Database name. Database names are case-sensitive.|
+|DatabaseName  | `string` |The database name. Database names are case-sensitive.|
 |PersistentStorage  | `string` |The persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.)|
 |Version  | `string` |Database version number. This number is updated for each change operation in the database (such as adding data and changing the schema).|
 |IsCurrent  |`bool` |True if the database is the one that the current connection points to.|

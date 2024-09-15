@@ -57,7 +57,7 @@ landingContent:
           - text: Query data using T-SQL
             url: query/t-sql.md
           - text: Regular expression syntax
-            url: query/re2.md
+            url: query/regex.md
 
   # Card
   - title: Entities and data types
