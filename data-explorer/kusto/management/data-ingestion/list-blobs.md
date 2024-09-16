@@ -18,7 +18,6 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 ## Syntax
 
 `.list blobs` (*SourceDataLocators*)
-[Prefix=PrefixValue]
 [Suffix=SuffixValue]
 [MaxFiles=MaxFilesValue]
 [PathFormat=PatternValue]
@@ -30,7 +29,6 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*SourceDataLocators*| `string` | :heavy_check_mark:|One or many (maximum <span style="background:yellow">TODO</span> ???) [storage connection strings](../../api/connection-strings/storage-connection-strings.md) separated by a comma character.  Each connection string can refer to a storage container or a file prefix within a container.|
-|*Prefix*| `string` | |Prefix for each blob, allows filtering of blobs.  This is an alternative to having the prefix within *SourceDataLocators*.|
 |*Suffix*| `string` | |Suffix for each blob, allows filtering of blobs.|
 |*MaxFiles*| `integer` | | Maximum number of blobs to return.  See note below.  |
 |*PathFormat*| `string` | | Pattern in blob path in order to grab creation time as output field.  |
