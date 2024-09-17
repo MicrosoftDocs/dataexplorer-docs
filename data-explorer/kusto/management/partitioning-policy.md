@@ -25,11 +25,11 @@ The following are the only scenarios in which setting a data partitioning policy
 * **Frequent filters on a medium or high cardinality `string` or `guid` column**:
   * For example: multi-tenant solutions, or a metrics table where most or all queries filter on a column of type `string` or `guid`, such as the `TenantId` or the `MetricId`.
   * Medium cardinality is at least 10,000 distinct values.
-  * Set the [hash partition key](#hash-partition-key) to be the `string` or `guid` column, and set the [`PartitionAssigmentMode` property](#partition-properties) to `uniform`.
+  * Set the [hash partition key](#hash-partition-key) to be the `string` or `guid` column, and set the [`PartitionAssignmentMode` property](#partition-properties) to `uniform`.
 * **Frequent aggregations or joins on a high cardinality `string` or `guid` column**:
   * For example, IoT information from many different sensors, or academic records of many different students.
   * High cardinality is at least 1,000,000 distinct values, where the distribution of values in the column is approximately even.
-  * In this case, set the [hash partition key](#hash-partition-key) to be the column frequently grouped-by or joined-on, and set the [`PartitionAssigmentMode` property](#partition-properties) to `ByPartition`.
+  * In this case, set the [hash partition key](#hash-partition-key) to be the column frequently grouped-by or joined-on, and set the [`PartitionAssignmentMode` property](#partition-properties) to `ByPartition`.
 * **Out-of-order data ingestion**:
   * Data ingested into a table might not be ordered and partitioned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span.
   * In this case, set the [uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
