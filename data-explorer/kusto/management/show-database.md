@@ -39,16 +39,16 @@ This command returns a table with the following columns for each option:
 
 |Output parameter |Type |Description|
 |---|---|---|
-|DatabaseName  | `string` |The database name. Database names are case-sensitive.|
-|PersistentStorage  | `string` |The persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.)|
-|Version  | `string` |Database version number. This number is updated for each change operation in the database (such as adding data and changing the schema). |
-|IsCurrent  |`bool` |True if the database is the one that the current connection points to.|
-|DatabaseAccessMode  | `string` |The database access mode. For example, if the database access mode is `ReadOnly`, then all requests to modify the database fail. |
-|PrettyName | `string` |The database pretty name.|
+|DatabaseName  | `string` | The database name. Database names are case-sensitive.|
+|PersistentStorage  | `string` | The persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.)|
+|Version  | `string` | Database version number. This number is updated for each change operation in the database (such as adding data and changing the schema). |
+|IsCurrent  |`bool` | True if the database is the one that the current connection points to.|
+|DatabaseAccessMode  | `string` | The database access mode. For example, if the database access mode is `ReadOnly`, then all requests to modify the database fail. |
+|PrettyName | `string` | The database pretty name.|
 |CurrentUserIsUnrestrictedViewer |`bool` | Specifies if the current user is an unrestricted viewer on the database.|
-|DatabaseId | `guid` |The database unique ID.|
-|InTransitionTo| `string` |Describes the database in a transition state. For instance, access mode change, detaching database, changing the database physical location, storage keys change, or database pretty name change.|
-|SuspensionState|`string` |When the database was suspended and the reason for the suspension.|
+|DatabaseId | `guid` | The database unique ID.|
+|InTransitionTo| `string` | Describes the database in a transition state. For instance, access mode change, detaching database, changing the database physical location, storage keys change, or database pretty name change.|
+|SuspensionState|`string` | When the database was suspended and the reason for the suspension.|
 
 ### Output for `details` option
 

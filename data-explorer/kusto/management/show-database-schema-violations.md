@@ -23,7 +23,7 @@ You must have at least Database Viewer or Database Monitor permissions to run th
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*| `string` ||The name of the database for which to validate the schema.|
+|*DatabaseName*| `string` || The name of the database for which to validate the schema.|
 
 ## Returns
 
@@ -31,10 +31,10 @@ The command returns a table of schema validation issues within a database. The t
 
 |Column name|Type|Description|
 |--|--|--|
-|Entity kind|`string`|The type of database entity.|
-|Entity name|`string`|The name of the entity.|
-|Property|`string`|The property of the entity being validated. For example, this value could be the name of a policy. For a list of policies, see [Policies overview](policies.md).|
-|Reason|`string`|A message explaining the reason for the validation failure.|
+|Entity kind|`string`| The type of database entity.|
+|Entity name|`string`| The name of the entity.|
+|Property|`string`| The property of the entity being validated. For example, this value could be the name of a policy. For a list of policies, see [Policies overview](policies.md).|
+|Reason|`string`| A message explaining the reason for the validation failure.|
 
 ## Example
 

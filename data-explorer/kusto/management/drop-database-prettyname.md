@@ -26,7 +26,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database with the pretty name to drop.|
+|*DatabaseName*| `string` | :heavy_check_mark:| The name of the database with the pretty name to drop.|
 
 ## Returns
 
@@ -34,9 +34,9 @@ This command returns a table with the following columns:
 
 |Output parameter |Type |Description|
 |---|---|---|
-|DatabaseName | `string` |The name of the database.|
-|PrettyName | `string` |The pretty name of the database. This field is empty once the pretty name is dropped.|
-|Status|`string`|The status of the operation.|
+|DatabaseName | `string` | The name of the database.|
+|PrettyName | `string` | The pretty name of the database. This field is empty once the pretty name is dropped.|
+|Status|`string`| The status of the operation.|
 
 ## Example
 

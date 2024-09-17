@@ -26,8 +26,8 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database to alter.|
-|*DatabasePrettyName*| `string` | :heavy_check_mark:|The new pretty name for the database.|
+|*DatabaseName*| `string` | :heavy_check_mark:| The name of the database to alter.|
+|*DatabasePrettyName*| `string` | :heavy_check_mark:| The new pretty name for the database.|
 
 ## Returns
 
@@ -35,9 +35,9 @@ This command returns a table with the following columns:
 
 |Output parameter |Type |Description|
 |---|---|---|
-|DatabaseName | `string` |The name of the database.|
-|PrettyName | `string` |The pretty name of the database.|
-|Status|`string`|The status of the operation.|
+|DatabaseName | `string` | The name of the database.|
+|PrettyName | `string` | The pretty name of the database.|
+|Status|`string`| The status of the operation.|
 
 ## Example
 

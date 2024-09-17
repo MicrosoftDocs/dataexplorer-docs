@@ -47,15 +47,15 @@ This command returns a table with the following columns for each option:
 
 |Column name       |Column type|Description                                                                  |
 |------------------|-----------|-----------------------------------------------------------------------------|
-|DatabaseName      |`string`   |The name of the database.                    |
-|PersistentStorage  | `string` |The persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.)|
-|Version  | `string` |Database version number.|
-|IsCurrent  |`bool` |True if the database is the one that the current connection points to.|
-|DatabaseAccessMode  | `string` |How the database is attached. For example, if the database is attached in ReadOnly mode, all requests to modify the database in any way fail. Options include `ReadWrite`, `ReadOnly`, `ReadOnlyFollowing`, or `ReadWriteEphemeral`. |
-|PrettyName        |`string`   |The pretty name of the database, if any.                        |
-|DatabaseId | `guid` |The database unique ID.|
-|InTransitionTo| `string` |Describes the database in a transition state. For instance, access mode change, detaching database, changing the database physical location, storage keys change, or database pretty name change. |
-|SuspensionState|`string` |When the database was suspended and the reason.|
+|DatabaseName      |`string`   | The name of the database.                    |
+|PersistentStorage  | `string` | The persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.)|
+|Version  | `string` | Database version number.|
+|IsCurrent  |`bool` | True if the database is the one that the current connection points to.|
+|DatabaseAccessMode  | `string` | How the database is attached. For example, if the database is attached in ReadOnly mode, all requests to modify the database in any way fail. Options include `ReadWrite`, `ReadOnly`, `ReadOnlyFollowing`, or `ReadWriteEphemeral`. |
+|PrettyName        |`string`   | The pretty name of the database, if any.                        |
+|DatabaseId | `guid` | The database unique ID.|
+|InTransitionTo| `string` | Describes the database in a transition state. For instance, access mode change, detaching database, changing the database physical location, storage keys change, or database pretty name change. |
+|SuspensionState|`string` | When the database was suspended and the reason.|
 
 ### Output for `details` option
 
@@ -65,15 +65,15 @@ This command returns a table with the following columns for each option:
 
 |Output parameter |Type |Description|
 |---|---|---|
-|DatabaseName  | `string` |Database name. Database names are case-sensitive.|
-|PersistentStorage  | `string` |The persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.)|
-|Version  | `string` |Database version number. This number is updated for each change operation in the database (such as adding data and changing the schema).|
-|IsCurrent  |`bool` |True if the database is the one that the current connection points to.|
-|DatabaseAccessMode  | `string` |How the database is attached. For example, if the database is attached in ReadOnly mode, all requests to modify the database in any way fail. Options include `ReadWrite`, `ReadOnly`, `ReadOnlyFollowing`, or `ReadWriteEphemeral`. |
-|PrettyName | `string` |The database pretty name.|
+|DatabaseName  | `string` | The name of the database. Database names are case-sensitive.|
+|PersistentStorage  | `string` | The persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.)|
+|Version  | `string` | Database version number. This number is updated for each change operation in the database (such as adding data and changing the schema).|
+|IsCurrent  |`bool` | True if the database is the one that the current connection points to.|
+|DatabaseAccessMode  | `string` | How the database is attached. For example, if the database is attached in ReadOnly mode, all requests to modify the database in any way fail. Options include `ReadWrite`, `ReadOnly`, `ReadOnlyFollowing`, or `ReadWriteEphemeral`. |
+|PrettyName | `string` | The database pretty name.|
 |CurrentUserIsUnrestrictedViewer |`bool` | Specifies if the current user is an unrestricted viewer on the database.|
-|DatabaseId | `guid` |The database unique ID.|
-|InTransitionTo| `string` |Describes the database in a transition state. For instance, access mode change, detaching database, changing the database physical location, storage keys change, or database pretty name change.|
+|DatabaseId | `guid` | The database unique ID.|
+|InTransitionTo| `string` | Describes the database in a transition state. For instance, access mode change, detaching database, changing the database physical location, storage keys change, or database pretty name change.|
 
 ### Output for `policies` option
 
