@@ -1,9 +1,9 @@
 ---
 ms.topic: include
-ms.date: 08/13/2024
+ms.date: 09/17/2024
 ---
 
-### Setup general settings
+### Set up general settings
 
 In the **New Data Explorer** window, in **General Settings** set the following settings:
 
@@ -34,7 +34,7 @@ Select **Authentication Settings** in the sidebar. Use the values you saved in [
 |*Tenant ID*|\<TenantID\> |Use the `tenant` value you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
 | *Client ID*|\<ClientID\> | Use the `appId` values you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal).  |
 |*Scope*| `<baseuri>/.default`| Use the value from [base URI](#ingestion-uri) for *baseuri*. |
-|*Authentication method*| **Client secret**, **Client secret (text secret)**, or **Certificate**  |Options are **Client secret** Use the client secret of the Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) for **Client secret**. For  **Certificate** your certificate uses the public key you registered/will register for the Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+|*Authentication method*| **Client secret**, **Client secret (text secret)**, or **Certificate**  |Options are **Client secret** Use the client secret of the Microsoft Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) for **Client secret**. For  **Certificate** your certificate uses the public key you registered/will register for the Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
 
 Then select **Next**.
 
@@ -55,7 +55,7 @@ Displays when *Ingestion mode* is set to **Streaming**, and *Backpressure behavi
 
 When complete, select **Next**.
 
-### Processing Settings
+### Processing settings
 
 |Setting  |Value| Description  |
 |---------|---------|---------|
@@ -64,9 +64,9 @@ When complete, select **Next**.
 
 When complete, select **Next**.
 
-### Parquet Settings
+### Parquet settings
 
-Displays when **Parquet** is selected for *Data Format*. 
+Displays when **Parquet** is selected for *Data Format*.
 
 Choosing Parquet opens a Parquet Settings tab, to select the Parquet schema.
 
@@ -96,7 +96,6 @@ Displays when Ingestion mode is set to **Streaming**.
 |Pre-backoff interval (ms)|1000 ms (default) | The wait time before retrying.|
 |Backoff multiplier|2 s (default) | Used as the base for exponential backoff algorithm to determine the interval between retries.|
 |*Backoff limit (ms)*| 10,000 ms (default)| The maximum backoff interval for the final streaming retry. Possible values range from 10,000 milliseconds (10 seconds) to 180,000 milliseconds (3 minutes.)|
-<!--confirm Retry timed out ... on or off-->
 
 When complete, select **Next**.
 
@@ -123,8 +122,7 @@ Select **Advanced Settings** from the sidebar. The following describes the advan
 | *Remove empty staging dirs* | **Yes** (default) or **No** | When toggled on Cribl Stream deletes empty staging directories after moving files. This prevents the proliferation of orphaned empty directories. When enabled, exposes *Staging cleanup period*.|
 | *Staging cleanup period* | 300 (default) | The amount in time in seconds until empty directories are deleted when *Remove staging dirs* is enabled. Displays when *Remove empty staging dirs* is set to **Yes**. The minimum value is 10 seconds, and maximum is 86,400 seconds (every 24 hours.) |
 | *Environment* | | When empty (default) the configuration is enabled everywhere. If you’re using GitOps, you can specify the Git branch where you want to enable the configuration. |
-<!--does this field exist? | *Add output ID* |  **On** or **Off** | Set to **On** if you want your destination name appended to staging directory pathnames for organization or troubleshooting between multiple destinations. |
--->
+
 When completed, select **Save**.
 
 ### Connection configuration

@@ -432,7 +432,7 @@ Kqlmagic is a command that extends the capabilities of the Python kernel in Azur
 
 ### DeltaKusto
 
-Delta Kusto is a Command-line interface (CLI) enabling Continuous Integration / Continuous Deployment (CI / CD) automation with Kusto objects (for example: tables, functions, policies, security roles) in Azure Data Explorer databases. It can work on a single database, multiple databases, or an entire cluster. Delta Kusto also supports multi-tenant scenarios.
+Delta Kusto is a Command-line interface (CLI) enabling Continuous Integration / Continuous Deployment (CI / CD) automation with Kusto objects (for example: tables, functions, policies, security roles) in Azure Data Explorer databases. It can work on a single database, multiple databases, or an entire cluster. Delta Kusto also supports multitenant scenarios.
 
 * **Functionality:** Source control
 * **Documentation:** [Delta Kusto](https://github.com/microsoft/delta-kusto)
@@ -449,14 +449,14 @@ Delta Kusto is a Command-line interface (CLI) enabling Continuous Integration / 
 
 ### KQL Parser
 
-The open source repo contains C# parser and a semantic analyzer as well as a translator project that generates the same libraries in Java Script.
+The open source repo contains C# parser and a semantic analyzer as well as a translator project that generates the same libraries in JavaScript.
 
 * **Functionality:**  language parsing
 * **Documentation:** [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language)
 
 ### Kusto.Explorer  
 
-Kusto.Explorer is free software for download and use on your Windows desktop. Kusto.Explorer allows you to query and analyze your data with Kusto Query Language (KQL) in a user-friendly interface. 
+Kusto.Explorer is free software for download and use on your Windows desktop. Kusto.Explorer allows you to query and analyze your data with Kusto Query Language (KQL) in a user-friendly interface.
 
 * **Functionality:** Query, Visualization
 * **Documentation:** [Installation and user interface](/kusto/tools/kusto-explorer?view=azure-data-explorer&preserve-view=true), [using Kusto.Explorer](/kusto/tools/kusto-explorer-using?view=azure-data-explorer&preserve-view=true)
@@ -499,7 +499,7 @@ You can integrate the [Monaco Editor](https://microsoft.github.io/monaco-editor)
 
 ### PowerShell
 
-PowerShell scripts can use the [Kusto client libraries](/kusto/api/client-libraries?view=azure-data-explorer&preserve-view=true), as PowerShell inherently integrates with .NET libraries. 
+PowerShell scripts can use the [Kusto client libraries](/kusto/api/client-libraries?view=azure-data-explorer&preserve-view=true), as PowerShell inherently integrates with .NET libraries.
 
 * **Functionality:** Query
 * **Documentation:** [Use Kusto .NET client libraries from PowerShell](/kusto/api/powershell/powershell?view=azure-data-explorer&preserve-view=true)
@@ -515,7 +515,7 @@ Real-Time Intelligence is a fully managed big data analytics platform optimized 
 ### SyncKusto
 
 Sync Kusto is a tool that enables users to synchronize various Kusto schema entities, such as table schemas and stored functions. This synchronization is done between the local file
-system, an Azure Data Explorer database, and Azure Dev Ops repos.
+system, an Azure Data Explorer database, and Azure repos.
 
 * **Functionality:** Source control
 * **Repository:** [SyncKusto](https://github.com/microsoft/delta-kusto)
