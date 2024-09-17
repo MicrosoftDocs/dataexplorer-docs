@@ -202,7 +202,7 @@ These classes are based on the definitions provided in [UTS#18](https://www.unic
 
 ## Performance
 
-This section provides some guidance on speed and resource usage of regex expresssions.
+This section provides some guidance on speed and resource usage of regex expressions.
 
 ### Unicode can impact memory usage and search speed
 
@@ -223,4 +223,4 @@ The following are some examples of Unicode character classes that may impact mem
 
 ### Literals can accelerate searches
 
-KQL regex has a strong ability to recognize literals within a regex pattern, which can significantly speed up searches. If possible, including literals in your pattern can greatly improve search performance. For example, in the regex `\w+@\w+`, first occurrences of `@` are mathced and then a reverse match is performed for `\w+` to find the starting position.
+KQL regex has a strong ability to recognize literals within a regex pattern, which can significantly speed up searches. If possible, including literals in your pattern can greatly improve search performance. For example, in the regex `\w+@\w+`, first occurrences of `@` are matched and then a reverse match is performed for `\w+` to find the starting position.

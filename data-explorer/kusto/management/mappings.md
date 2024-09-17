@@ -14,7 +14,7 @@ Ingestion mappings are used during ingestion to map incoming data to columns ins
 
 Data Explorer supports different types of mappings, both row-oriented (CSV, JSON, AVRO and W3CLOGFILE), and column-oriented (Parquet and ORC).
 
-Ingestion mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters. Although, ingestion is possible without specifying a mapping. For more information, see [identity mapping](#identity-mapping).
+Ingestion mappings can be [precreated](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters. Ingestion is possible without specifying a mapping. For more information, see [identity mapping](#identity-mapping).
 
 Each element in the mapping list is constructed from three fields:
 
@@ -49,7 +49,7 @@ The following table defines mapping types to be used when ingesting or querying 
 
 ## Identity mapping
 
-Ingestion is possible without specifying `ingestionMapping` or `ingestionMappingReference` properties. The data will be mapped using an identity data mapping derived from the table's schema. The table schema will remain the same. `format` property should be specified. See [ingestion formats](../ingestion-supported-formats.md).
+Ingestion is possible without specifying `ingestionMapping` or `ingestionMappingReference` properties. The data is mapped using an identity data mapping derived from the table's schema. The table schema remains the same. `format` property should be specified. See [ingestion formats](../ingestion-supported-formats.md).
 
 | Format type                                                                                             | Format                                           | Mapping logic                                                                                                                                                    |
 |---------------------------------------------------------------------------------------------------------|--------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -61,19 +61,19 @@ Ingestion is possible without specifying `ingestionMapping` or `ingestionMapping
 
 ## Mapping transformations
 
-Some of the data format mappings (Parquet, JSON and AVRO) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use [Update policy](show-table-update-policy-command.md), which allows defining lightweight processing using KQL expression.
+Some of the data format mappings (Parquet, JSON, and AVRO) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use [Update policy](show-table-update-policy-command.md), which allows defining lightweight processing using KQL expression.
 
 | Path-dependant transformation | Description                                                                                                                                                             | Conditions                               |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
-| PropertyBagArrayToDictionary  | Transforms JSON array of properties, such as `{events:[{"n1":"v1"},{"n2":"v2"}]}`, to dictionary and serializes it to valid JSON document, such as `{"n1":"v1","n2":"v2"}`. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
-| SourceLocation                | Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).|Available for `CSV`, `JSON`, `Parquet`, `AVRO`, `ORC` and `W3CLOGFILE` mapping types. |
-| SourceLineNumber              | Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).   | Available for `CSV`, `JSON`, `Parquet`, `AVRO`, `ORC` and `W3CLOGFILE` mapping types. |
-| DateTimeFromUnixSeconds       | Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string.| Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
-| DateTimeFromUnixMilliseconds  | Converts number representing unix-time (milliseconds since 1970-01-01) to UTC datetime string. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
-| DateTimeFromUnixMicroseconds  | Converts number representing unix-time (microseconds since 1970-01-01) to UTC datetime string. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
-| DateTimeFromUnixNanoseconds   | Converts number representing unix-time (nanoseconds since 1970-01-01) to UTC datetime string. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
-| DropMappedFields | Maps an object in the JSON document to a column and removes any nested fields already referenced by other column mappings. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
-| BytesAsBase64 | Treats the data as byte array and converts it to a base64-encoded string. | Available for `AVRO` mapping type. For `ApacheAvro` format, the schema type of the mapped data field should be `bytes` or `fixed` Avro type. For `Avro` format, the field should be an array containing byte values from [0-255] range. `null` is ingested if the data does not represent a valid byte array. |
+| PropertyBagArrayToDictionary  | Transforms JSON array of properties, such as `{events:[{"n1":"v1"},{"n2":"v2"}]}`, to dictionary and serializes it to valid JSON document, such as `{"n1":"v1","n2":"v2"}`. | Available for `JSON`, `Parquet`, `AVRO`, and `ORC` mapping types. |
+| SourceLocation                | Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).|Available for `CSV`, `JSON`, `Parquet`, `AVRO`, `ORC`, and `W3CLOGFILE` mapping types. |
+| SourceLineNumber              | Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).   | Available for `CSV`, `JSON`, `Parquet`, `AVRO`, `ORC`, and `W3CLOGFILE` mapping types. |
+| DateTimeFromUnixSeconds       | Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string.| Available for `CSV`, `JSON`, `Parquet`, `AVRO`, and `ORC` mapping types. |
+| DateTimeFromUnixMilliseconds  | Converts number representing unix-time (milliseconds since 1970-01-01) to UTC datetime string. | Available for `CSV`, `JSON`, `Parquet`, `AVRO`, and `ORC` mapping types. |
+| DateTimeFromUnixMicroseconds  | Converts number representing unix-time (microseconds since 1970-01-01) to UTC datetime string. | Available for `CSV`, `JSON`, `Parquet`, `AVRO`, and `ORC` mapping types. |
+| DateTimeFromUnixNanoseconds   | Converts number representing unix-time (nanoseconds since 1970-01-01) to UTC datetime string. | Available for `CSV`, `JSON`, `Parquet`, `AVRO`, and `ORC` mapping types. |
+| DropMappedFields | Maps an object in the JSON document to a column and removes any nested fields already referenced by other column mappings. | Available for `JSON`, `Parquet`, `AVRO`, and `ORC` mapping types. |
+| BytesAsBase64 | Treats the data as byte array and converts it to a base64-encoded string. | Available for `AVRO` mapping type. For `ApacheAvro` format, the schema type of the mapped data field should be `bytes` or `fixed` Avro type. For `Avro` format, the field should be an array containing byte values from [0-255] range. `null` is ingested if the data doesn't represent a valid byte array. |
 
 ### Mapping transformation examples
 
@@ -122,17 +122,17 @@ Given the following AVRO file contents:
 }
 ```
 
-The following data mapping maps the id column twice, with and without the transformation.
+The following data mapping maps the ID column twice, with and without the transformation.
 
 ```json
 [
-    { "Column": "Id", "Properties": { "Path": "$.props.id" } },
+    { "Column": "ID", "Properties": { "Path": "$.props.id" } },
     { "Column": "Base64EncodedId", "Properties": { "Path": "$.props.id", "Transform":"BytesAsBase64" } },
 ]
 ```
 
 The ingested data looks as follows:
 
-|  Id | Base64EncodedId   |
+|  ID | Base64EncodedId   |
 |-------|-----------|
 | `[227,131,34,92,28,91,65,72,134,138,9,133,51,45,104,52]` | `44MiXBxbQUiGigmFMy1oNA==`  |
