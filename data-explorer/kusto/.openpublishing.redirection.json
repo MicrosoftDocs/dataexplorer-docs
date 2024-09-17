@@ -7,7 +7,7 @@
     },
     {
       "source_path": "management/alter-database.md",
-      "redirect_url": "/kusto/management/alter-database-prettyname.md",
+      "redirect_url": "/kusto/management/alter-database-prettyname",
       "redirect_document_id": false
     },
     {
