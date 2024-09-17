@@ -4,6 +4,41 @@
       "source_path": "concepts/sandboxes-in-non-modern-skus.md",
       "redirect_url": "/kusto/concepts/sandboxes",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "api/powershell/azure-powershell.md",
+      "redirect_url": "/azure/data-explorer/azure-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "concepts/dealing-with-duplicates.md",
+      "redirect_url": "/azure/data-explorer/dealing-with-duplicates",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "concepts/delete-data.md",
+      "redirect_url": "/azure/data-explorer/delete-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "python-package-reference.md",
+      "redirect_url": "/kusto/query/python-package-reference",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "tools/logicapps.md",
+      "redirect_url": "/azure/data-explorer/logic-apps",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "tools/synckusto.md",
+      "redirect_url": "/azure/data-explorer/sync-kusto",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "query/re2.md",
+      "redirect_url": "/kusto/query/regex",
+      "redirect_document_id": true
     }
   ]
 }

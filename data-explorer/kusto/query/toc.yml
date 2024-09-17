@@ -1562,6 +1562,8 @@ items:
         items:
           - name: Python plugin
             href: python-plugin.md
+          - name: Python plugin packages
+            href: python-package-reference.md
           - name: R plugin
             href: r-plugin.md
       - name: Machine learning plugins
@@ -1657,8 +1659,8 @@ items:
             href: ../concepts/overflow.md
   - name: Reference
     items:
-      - name: RE2 syntax
-        href: re2.md
+      - name: Regex syntax
+        href: regex.md
         displayName: RE2 library, regex, regular expressions
       - name: JSONPath syntax
         href: jsonpath.md

@@ -1727,6 +1727,8 @@ items:
     items:
     - name: Python plugin
       href: /kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true
+    - name: Python plugin packages
+      href: /kusto/query/python-package-reference?view=azure-data-explorer&preserve-view=true
     - name: R plugin
       href: /kusto/query/r-plugin?view=azure-data-explorer&preserve-view=true
   - name: Machine learning plugins
@@ -1822,8 +1824,8 @@ items:
       href: /kusto/concepts/overflow?view=azure-data-explorer&preserve-view=true
 - name: Reference
   items:
-  - name: RE2 syntax
-    href: /kusto/query/re2?view=azure-data-explorer&preserve-view=true
+  - name: Regex syntax
+    href: /kusto/query/regex?view=azure-data-explorer&preserve-view=true
     displayName: RE2 library, regex, regular expressions
   - name: JSONPath syntax
     href: /kusto/query/jsonpath?view=azure-data-explorer&preserve-view=true
