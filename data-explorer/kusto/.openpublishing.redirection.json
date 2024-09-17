@@ -6,7 +6,6 @@
       "redirect_document_id": false
     },
     {
-<<<<<<< HEAD
       "source_path": "management/alter-database.md",
       "redirect_url": "/kusto/management/alter-database-prettyname.md",
       "redirect_document_id": false
@@ -14,7 +13,6 @@
     {
       "source_path": "management/show-cluster-database.md",
       "redirect_url": "/kusto/management/show-databases",
-=======
       "source_path": "api/powershell/azure-powershell.md",
       "redirect_url": "/azure/data-explorer/azure-powershell",
       "redirect_document_id": false
@@ -47,7 +45,6 @@
     {
       "source_path": "query/re2.md",
       "redirect_url": "/kusto/query/regex",
->>>>>>> eee387443e7f8442d0ec0dc79f7f3dd4a641c240
       "redirect_document_id": true
     }
   ]
