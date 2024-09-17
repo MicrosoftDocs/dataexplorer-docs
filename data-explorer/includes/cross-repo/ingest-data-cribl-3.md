@@ -15,7 +15,7 @@ In the **New Data Explorer** window, in **General Settings** set the following s
 | *Ingestion service URI*| [ingestion URI](#ingestion-uri) |Displays when **Batching** mode is selected. The [ingestion URI](#ingestion-uri). |
 | *Database name* |\<DatabaseName\> |The name of your target database.|
 | *Table name* |\<TableName\> |The name of your target table.|
-|*Validate database settings*| **Yes** (default) or **No**. |Validates the database name and credentials you entered when you save or start your destination. It validates the table name, except when **Add mapping object** is on. This setting should be disabled if your app doesn't have both *Database Viewer* and *Table Viewer* roles.|
+|*Validate database settings*| **Yes** (default) or **No**. |Validates the service principal app credentials you entered when you save or start your destination. It validates the table name, except when **Add mapping object** is on. This setting should be disabled if your app doesn't have both *Database Viewer* and *Table Viewer* roles.|
 | *Add mapping object* | **Yes** or **No** (default.) |Displayed only when Batching mode is selected instead of the default **Data mapping** text field. Selecting **Yes** opens a window to enter a data mapping as a JSON object. |
 | *Data mapping*| The mapping schema name as defined in the [Create a target table](#create-a-target-table) step. | The mapping schema name. The default view when **Add mapping object** is set to **No**. |
 | *Compress* | gzip (default) | When *Data format* is set to Parquet, *Compress* isn't available. |
@@ -134,17 +134,34 @@ The connector starts queueing the data.
 
 ### Confirm data ingestion
 
-1. Once data arrives in the table, confirm the transfer of data, by checking the row count: 
+1. Once data arrives in the table, confirm the transfer of data, by checking the row count:
 
     ```kusto
     <Tablename> 
     | count
     ```
 
+1. Confirm the ingestions queued in the last five minutes:
+
+    ```kusto
+    .show commands-and-queries 
+    | where Database == "" and CommandType == "DataIngestPull" 
+    | where LastUpdatedOn >= ago(5m)
+    ```
+
 1. Confirm that there are no failures in the ingestion process:
+
+    1. **Batching**
 
     ```kusto
     .show ingestion failures
+    ```
+
+    1. **Streaming**
+
+    ```kusto
+    .show streamingingestion failures 
+    | order by LastFailureOn desc
     ```
 
 1. Verify data in your table:
