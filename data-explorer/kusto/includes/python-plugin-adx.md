@@ -155,7 +155,7 @@ External artifact files utilized in queries are cached on your cluster. If you m
 
 ## Install packages for the Python plugin
 
-In many use cases, you might prefer to [create a custom image](../../language-extensions.md#create-a-custom-image).
+In many use cases, you might prefer to [create a custom image](/azure/data-explorer/language-extensions#create-a-custom-image).
 
 You might want to install package(s) yourself, for the following reasons:
 
