@@ -151,13 +151,13 @@ The connector starts queueing the data.
 
 1. Confirm that there are no failures in the ingestion process:
 
-    1. **Batching**
+    * For batching:
 
     ```kusto
     .show ingestion failures
     ```
 
-    1. **Streaming**
+    * For streaming:
 
     ```kusto
     .show streamingingestion failures 
