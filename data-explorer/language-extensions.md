@@ -15,7 +15,7 @@ The language extensions feature allows you to use language extension plugins to 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Review the [limitations](#limitations). Note that language extensions can only be enabled on SKUs that support [nested virtualization](/kusto/concepts/sandboxes?view=azure-data-explorer&preserve-view=true#vm-sizes-supporting-nested-virtualization).
-* Permissions: 
+* Cluster AllDatabasesAdmin permissions. [Manage Azure Data Explorer cluster permissions](manage-cluster-permissions.md).
 
 ## Enable language extensions on your cluster
 
@@ -34,7 +34,7 @@ Do the following steps to enable a language extension on your cluster:
 1. Select **Save**.
 
 > [!NOTE]
-> Enabling the language extension can take up to 30 minutes. The process doesn't impact on cluster availability.
+> Enabling the language extension can take up to 30 minutes. The process doesn't impact cluster availability.
 
 ## Change the Python language extensions image on your cluster
 
@@ -50,16 +50,29 @@ Do the following steps to edit the **image** of your **Python** language extensi
 1. Select **Save**.
 
 > [!NOTE]
-> Updating the image process can take up to 30 minutes. The process doesn't impact on cluster availability.
+> Updating the image process can take up to 30 minutes. The process doesn't impact cluster availability.
 
 ## Create a custom image
 
+1. In the Azure portal, go to your Azure Data Explorer cluster.
+1. Select **Settings**.
+1. Under **Configurations**, select **+ Add Custom Image (Preview)**
+1. In the pane that opens, provide the following information:
+    * **Custom image name**: The name of the custom image.
+    * **Start from**: Choose either **Python engine** or **Existing image**.
+        * **Python engine**: Enter a valid Python version number and add a requirements file.
+        * **Existing image**: Select an existing image from the dropdown and add a requirements file.
+1. Select **Ok**. 
 
+    :::image type="content" source="media/language-extensions/create-custom-image.png" alt-text="Screenshot of Azure Data Explorer cluster configuration page, showing the custom image creation pane.":::
+
+> [!NOTE]
+> While the cluster is updating the new image, further changes to the cluster can't be made.
 
 ## Disable language extensions on your cluster
 
 > [!NOTE]
-> Disabling the image process can take up to 30 minutes. The process doesn't impact on cluster availability.
+> Disabling the image process can take up to 30 minutes. The process doesn't impact cluster availability.
 
 Do the following steps to disable language extensions on your cluster:
 
