@@ -513,7 +513,9 @@ Not supported
 ::: moniker-end
 ::: moniker range="azure-data-explorer"
 
-This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](/kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true).
+This article lists the available managed Python packages in the Python plugin. For more information, see [Python plugin](/kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true).
+
+To create a custom image, see [Create a custom image](/kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true#create-a-custom-image).
 
 ## [3.11.7 (Preview)](#tab/python3-11-7)
 

@@ -3,7 +3,7 @@ title: Manage language extensions in your Azure Data Explorer cluster.
 description: Use language extension to integrate other languages within your Azure Data Explorer KQL queries.
 ms.reviewer: orhasban
 ms.topic: how-to
-ms.date: 03/16/2023
+ms.date: 09/17/2024
 ---
 
 # Manage language extensions in your Azure Data Explorer cluster
@@ -15,6 +15,7 @@ The language extensions feature allows you to use language extension plugins to 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Review the [limitations](#limitations). Note that language extensions can only be enabled on SKUs that support [nested virtualization](/kusto/concepts/sandboxes?view=azure-data-explorer&preserve-view=true#vm-sizes-supporting-nested-virtualization).
+* Permissions: 
 
 ## Enable language extensions on your cluster
 
@@ -50,6 +51,10 @@ Do the following steps to edit the **image** of your **Python** language extensi
 
 > [!NOTE]
 > Updating the image process can take up to 30 minutes. The process doesn't impact on cluster availability.
+
+## Create a custom image
+
+
 
 ## Disable language extensions on your cluster
 

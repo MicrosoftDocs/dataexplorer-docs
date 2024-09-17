@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 08/11/2024
+ms.date: 09/17/2024
 ---
 
 The Python plugin runs a user-defined function (UDF) using a Python script. The Python script gets tabular data as its input, and produces tabular output. The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running on the cluster's nodes.
@@ -37,7 +37,7 @@ The plugin is disabled by default. Before you start, review the list of [prerequ
 
 ## Python sandbox image
 
-To change the version of the Python image, see [Change the Python language extensions image on your cluster](/azure/data-explorer/language-extensions#change-the-python-language-extensions-image-on-your-cluster).
+To change the version of the Python image to a different managed image or a custom image, see [Change the Python language extensions image on your cluster](/azure/data-explorer/language-extensions#change-the-python-language-extensions-image-on-your-cluster).
 
 To see the list of packages for the different Python images, see [Python package reference](../query/python-package-reference.md).
 
@@ -155,10 +155,12 @@ External artifact files utilized in queries are cached on your cluster. If you m
 
 ## Install packages for the Python plugin
 
-You may need to install package(s) yourself, for the following reasons:
+In many use cases, you might prefer to [create a custom image](../../language-extensions.md#create-a-custom-image).
+
+You might want to install package(s) yourself, for the following reasons:
 
 * The package is private and is your own.
-* The package is public but isn't included in the plugin's base image.
+* The package is public but isn't included in the plugin's base image, and you don't have permissions to create a custom image or you prefer to create an ad hoc package installation.
 
 Install packages as follows:
 
