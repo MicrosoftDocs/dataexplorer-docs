@@ -91,8 +91,6 @@ Do the following steps to disable language extensions on your cluster:
 1. In the **Configurations** pane, select **Off** to disable a language extension.
 1. Select **Save**.
 
-    :::image type="content" source="media/language-extensions/configuration-disable-extension-trim.png" alt-text="Screenshot of Azure Data Explorer portal cluster configuration to disable language extensions.":::
-
 ## Limitations
 
 * The language extensions runtime sandbox allocates disk space even if no query runs in the scope of the relevant language. For more detailed limitations, see [sandboxes](/kusto/concepts/sandboxes?view=azure-data-explorer&preserve-view=true).
