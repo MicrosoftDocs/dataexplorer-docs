@@ -54,13 +54,14 @@ items:
         href: databases.md
         items:
           - name: .show databases command
+            displayName: .show databases command, .show cluster databases command
             href: show-databases.md
           - name: .show database command
             href: show-database.md
-          - name: .show cluster databases command
-            href: show-cluster-database.md
           - name: .alter database prettyname command
-            href: alter-database.md
+            href: alter-database-prettyname.md
+          - name: .drop database prettyname command
+            href: drop-database-prettyname.md            
           - name: .show database schema command
             displayName: .show databases schema
             href: show-schema-database.md
