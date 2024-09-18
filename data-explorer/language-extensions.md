@@ -70,7 +70,7 @@ After the image is created you can edit or delete it.
 
 ### Requirements file
 
-Supported requirements files are in the format of `requirements.txt` and can include any Python package. Each line contains the name of a package, optionally followed by the package number. For example:
+Supported requirements files are in the format of `pip requirements.txt` and can include any Python package. Each line contains the name of a package, optionally followed by the package number. For example:
 
 ```plaintext
 annotated-types==0.6.0
