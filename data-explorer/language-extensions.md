@@ -53,8 +53,12 @@ Do the following steps to edit the **image** of your **Python** language extensi
 1. In the pane that opens, provide the following information:
     * **Custom image name**: The name of the custom image.
     * **Start from**: Choose either **Python engine** or **Existing image**.
-        * **Python engine**: Enter a valid Python version number and add a requirements file.
-        * **Existing image**: Select an existing image from the dropdown and add a requirements file.
+        * **Python engine**: 
+            1. Enter a valid Python version number.
+            1. Add a requirements file.
+        * **Existing image**: 
+            1. Select an existing image from the dropdown. 
+            1. Add a requirements file.
 1. Select **Ok**.
 
     :::image type="content" source="media/language-extensions/create-custom-image.png" alt-text="Screenshot of Azure Data Explorer cluster configuration page, showing the custom image creation pane.":::

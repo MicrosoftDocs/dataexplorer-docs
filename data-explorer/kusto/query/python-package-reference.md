@@ -11,9 +11,9 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](python-plugin.md).
-
 ::: moniker range="microsoft-fabric"
+
+This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](python-plugin.md).
 
 ## [3.11.7 (Preview)](#tab/python3-11-7)
 
@@ -515,7 +515,7 @@ Not supported
 
 This article lists the available managed Python packages in the Python plugin. For more information, see [Python plugin](/kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true).
 
-To create a custom image, see [Create a custom image](/kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true#create-a-custom-image).
+To create a custom image, see [Create a custom image](/azure/data-explorer/language-extensions#create-a-custom-image).
 
 ## [3.11.7 (Preview)](#tab/python3-11-7)
 
