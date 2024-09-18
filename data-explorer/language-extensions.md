@@ -8,7 +8,7 @@ ms.date: 09/17/2024
 
 # Manage language extensions in your Azure Data Explorer cluster
 
-The language extensions feature allows you to use language extension plugins to integrate other languages into your Azure Data Explorer KQL queries. When you run a user-defined-function (UDF) using a relevant script, the script gets tabular data as its input and is expected to produce tabular output. The plugin's runtime is hosted in a [sandbox](/kusto/concepts/sandboxes?view=azure-data-explorer&preserve-view=true), an isolated and secure environment, running on the cluster's nodes. In this article, you manage the language extensions plugin in your Azure Data Explorer cluster within the Azure portal.
+The language extensions feature allows you to use language extension plugins to integrate other languages into your Azure Data Explorer KQL queries. The plugin's runtime is hosted in a [sandbox](/kusto/concepts/sandboxes?view=azure-data-explorer&preserve-view=true), an isolated and secure environment, running on the cluster's nodes. In this article, you manage the language extensions plugin in your Azure Data Explorer cluster within the Azure portal.
 
 ## Prerequisites
 
@@ -27,14 +27,11 @@ Do the following steps to enable a language extension on your cluster:
 
     :::image type="content" source="media/language-extensions/configuration-enable-extension-trim.png" alt-text="Screenshot of Azure Data Explorer cluster configuration page, showing the enable language extension options.":::
 
-1. For Python, in the pane that opens, select a Python image from the list, and then select **OK**.
-
-    :::image type="content" source="media/language-extensions/select-python-image.png" alt-text="Screenshot of Azure Data Explorer cluster configuration page, showing the Python language extension image selection.":::
-
+1. For Python, select the desired image fom the list. The image can be [managed](/kusto/query/python-package-reference?view=azure-data-explorer&preserve-view=true) or a [custom image](#create-a-custom-image).
 1. Select **Save**.
 
 > [!NOTE]
-> Enabling the language extension can take up to 30 minutes. The process doesn't impact cluster availability.
+> Enabling the language extension can take up to 60 minutes. The process doesn't impact cluster availability.
 
 ## Change the Python language extensions image on your cluster
 
@@ -42,15 +39,11 @@ Do the following steps to edit the **image** of your **Python** language extensi
 
 1. In the Azure portal, go to your Azure Data Explorer cluster.
 1. Select **Settings**.
-1. Under **Configurations**, locate the Python language extension, and then select **Edit**.
-1. In the pane that opens, select a Python image from the list, and then select **OK**.
-
-    :::image type="content" source="media/language-extensions/edit-python-image.png" alt-text="Screenshot of Azure Data Explorer cluster configuration page, showing the Python language extension edit button and image selection.":::
-
+1. Under **Configurations**, select the desired Python image from the list.
 1. Select **Save**.
 
 > [!NOTE]
-> Updating the image process can take up to 30 minutes. The process doesn't impact cluster availability.
+> Updating the image process can take up to 60 minutes. The process doesn't impact cluster availability.
 
 ## Create a custom image
 
@@ -62,12 +55,25 @@ Do the following steps to edit the **image** of your **Python** language extensi
     * **Start from**: Choose either **Python engine** or **Existing image**.
         * **Python engine**: Enter a valid Python version number and add a requirements file.
         * **Existing image**: Select an existing image from the dropdown and add a requirements file.
-1. Select **Ok**. 
+1. Select **Ok**.
 
     :::image type="content" source="media/language-extensions/create-custom-image.png" alt-text="Screenshot of Azure Data Explorer cluster configuration page, showing the custom image creation pane.":::
 
 > [!NOTE]
 > While the cluster is updating the new image, further changes to the cluster can't be made.
+
+After the image is created you can edit or delete it.
+
+### Requirements file
+
+Supported requirements files are in the format of `requirements.txt` and can include any Python package. Each line contains is the name of a package, optionally followed by the package number. For example:
+
+```plaintext
+annotated-types==0.6.0
+anytree
+arrow==1.3.0
+attrs==23.2.0
+```
 
 ## Disable language extensions on your cluster
 
