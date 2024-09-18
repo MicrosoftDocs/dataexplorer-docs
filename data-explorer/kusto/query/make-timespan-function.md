@@ -50,3 +50,8 @@ print ['timespan'] = make_timespan(1,12,30,55.123)
 | `timespan` |
 |---|
 |1.12:30:55.1230000|
+
+## Related content
+
+* [timespan datatype](scalar-data-types/timespan.md)
+* [totimespan function](totimespan-function.md)

@@ -43,3 +43,8 @@ Else, result will be null.
 ```kusto
 totimespan("0.00:01:00") == time(1min)
 ```
+
+## Related content
+
+* [timespan datatype](scalar-data-types/timespan.md)
+* [make-timespan function](make-timespan-function.md)
