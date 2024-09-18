@@ -51,3 +51,9 @@ StormEvents
 | LatestEvent |
 |--|
 | 2007-12-31T23:53:00Z |
+
+## Related content
+
+* [min function](min-aggregation-function.md)
+* [avg function](avg-aggregation-function.md)
+* [percentile function](percentiles-aggregation-function.md)
