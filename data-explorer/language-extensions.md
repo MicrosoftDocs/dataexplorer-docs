@@ -27,7 +27,7 @@ Do the following steps to enable a language extension on your cluster:
 
     :::image type="content" source="media/language-extensions/configuration-enable-extension-trim.png" alt-text="Screenshot of Azure Data Explorer cluster configuration page, showing the enable language extension options.":::
 
-1. For Python, select the desired image fom the list. The image can be [managed](/kusto/query/python-package-reference?view=azure-data-explorer&preserve-view=true) or a [custom image](#create-a-custom-image).
+1. For Python, select the desired image from the list. The image can be [managed](/kusto/query/python-package-reference?view=azure-data-explorer&preserve-view=true) or a [custom image](#create-a-custom-image).
 1. Select **Save**.
 
 > [!NOTE]
