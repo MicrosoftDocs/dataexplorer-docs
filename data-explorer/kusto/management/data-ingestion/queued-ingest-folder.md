@@ -3,7 +3,7 @@ title:  Kusto.ingest into command (pull data from storage)
 description: This article describes the DM queued ingest command (pull data from storage) in Azure Data Explorer.
 ms.reviewer: ???
 ms.topic: reference
-ms.date: 09/15/2024
+ms.date: 09/18/2024
 ---
 # Queued ingest from storage
 

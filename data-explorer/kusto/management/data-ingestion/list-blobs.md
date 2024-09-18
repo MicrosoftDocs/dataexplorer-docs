@@ -73,7 +73,7 @@ This command lists a maximum of 20 blobs out of a folder using [system-assigned 
 
 ```kusto
 .list blobs (
-    "https://mystorageaccount.blob.core.windows.net/datasets/myfolder;system"
+    "https://mystorageaccount.blob.core.windows.net/datasets/myfolder;managed_identity=system"
 )
 MaxFiles=20
 ```
