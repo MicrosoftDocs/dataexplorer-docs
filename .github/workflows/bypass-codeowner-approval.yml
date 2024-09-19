@@ -14,8 +14,10 @@ jobs:
         id: check-author
         run: |
           echo "Check if PR author is a code owner"
-          TEAM_MEMBERS=$(curl -s -H "Authorization: token $ACTION_TOKEN_SS" \
+          TEAM_MEMBERS=$(curl -s -H 'Authorization: token $ACTION_TOKEN_SS' \
             https://api.github.com/orgs/MicrosoftDocs/teams/kusto-doc-writers/members)
+          TEAM_MEMBERS="$TEAM_MEMBERS $(curl -s -H 'Authorization: token $ACTION_TOKEN_SS' \
+            https://api.github.com/orgs/MicrosoftDocs/teams/apex-docs-pr-reviewers/members)"
           echo "Checking if login in team -- ${{ github.actor }}"
           IS_CODEOWNER=false
           if echo "$TEAM_MEMBERS" | grep -q "\"login\": \"${{ github.actor }}\""; then
