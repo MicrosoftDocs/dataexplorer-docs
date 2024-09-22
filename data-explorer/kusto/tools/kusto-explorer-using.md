@@ -102,18 +102,31 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
 1. [Run your query](#basic-queries) in Kusto.Explorer.
 1. In the Home tab, in the Share section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
-
     :::image type="content" source="media/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
 
+:::moniker range="azure-data-explorer"
     Kusto.Explorer copies the following to the clipboard:
      * Your query
      * The query results (table or chart)
      * The connection details for the Kusto cluster and database
      * A link that reruns the query automatically
+::: moniker-end
+:::moniker range="microsoft-fabric"
+    Kusto.Explorer copies the following to the clipboard:
+     * Your query
+     * The query results (table or chart)
+     * The connection details for the eventhouse and database
+     * A link that reruns the query automatically
+::: moniker-end
 
 1. Paste the contents of the clipboard into a new email message.
 
+:::moniker range="azure-data-explorer"
     :::image type="content" source="media/kusto-explorer-using/share-results-2.png" alt-text="Share results in email." lightbox="media/kusto-explorer-using/share-results-2.png":::
+::: moniker-end
+:::moniker range="microsoft-fabric"
+     :::image type="content" source="media/kusto-explorer-using/share-results-fabric.png" alt-text="Share results from a Fabric KQL database in email." lightbox="media/kusto-explorer-using/share-results-fabric.png":::
+::: moniker-end
 
 ### Deep-linking queries
 
@@ -129,12 +142,20 @@ The easiest way to create a deep-link is to author your query in Kusto.Explorer 
 
 When copied to an email, the deep link is displayed in small font. For example:
 
+:::moniker range="azure-data-explorer"
 https://help.kusto.windows.net/Samples [[Run the query](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)]
 
 The first link opens Kusto.Explorer and sets the cluster and database context appropriately.
 The second link (`Run the query`) is the deep link. If you move the link to an email message and press CTRL+K, you can see the actual URL:
 
 > https:\/\/help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
+::: moniker-end
+:::moniker range="microsoft-fabric"
+https://trd-1234.kusto.fabric.microsoft.com
+
+The link opens Kusto.Explorer and sets the eventhouse and database context appropriately.
+
+::: moniker-end
 
 #### Deep-links and parametrized queries
 
@@ -154,7 +175,6 @@ web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 :::moniker range="microsoft-fabric"
 1. Provide a parameter for every query parameter in the URI. To copy your URI, see [Copy a KQL database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri).
 ::: moniker-end
-
 
 #### Limitations
 
