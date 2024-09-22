@@ -506,8 +506,14 @@ items:
                 href: data-purge-portal.md
               - name: Delete data
                 href: delete-data.md
+              - name: Data soft delete
+                items:
+                  - name: Soft delete overview
+                    href: /kusto/concepts/data-soft-delete?view=azure-data-explorer&preserve-view=true
+                  - name: Soft delete command
+                    href: /kusto/management/soft-delete-command?view=azure-data-explorer&preserve-view=true
               - name: Deal with duplicate data
-                href: /kusto/query/concepts/dealing-with-duplicates?view=azure-data-explorer&preserve-view=true
+                href: /kusto/concepts/dealing-with-duplicates?view=azure-data-explorer&preserve-view=true
       - name: Monitor
         items:
           - name: Monitor Azure Data Explorer with metrics
