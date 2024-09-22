@@ -62,7 +62,7 @@ This query can also be placed inside a function instead of directly querying the
 
 ### Solution #3: Use materialized views to deduplicate
 
-[Materialized views](../management/materialized-views/materialized-view-overview) can be used for deduplication, by using the [take_any()](../query/take-any-aggregation-function)/[arg_min()](../query/arg-min-aggregation-function)/[arg_max()](../query/arg-max-aggregation-function) aggregation functions (see example .md#4 in [materialized view create command](../management/materialized-views/materialized-view-create#examples)).
+[Materialized views](../management/materialized-views/materialized-view-overview.md) can be used for deduplication, by using the [take_any()](../query/take-any-aggregation-function.md)/[arg_min()](../query/arg-min-aggregation-function.md)/[arg_max()](../query/arg-max-aggregation-function) aggregation functions (see example #4 in [materialized view create command](../management/materialized-views/materialized-view-create.md#examples)).
 
 > [!NOTE]
 > Materialized views come with a cost of consuming cluster's resources, which may not be negligible. For more information, see materialized views [performance considerations](../management/materialized-views/materialized-view-overview.md#performance-considerations).
