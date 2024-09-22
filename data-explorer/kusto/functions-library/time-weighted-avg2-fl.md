@@ -1,22 +1,22 @@
 ---
-title:  time_weighted_avg_fl()
-description:  This article describes time_weighted_avg_fl() user-defined function.
+title:  time_weighted_avg2_fl()
+description:  This article describes time_weighted_avg2_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 09/22/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
-# time_weighted_avg_fl()
+# time_weighted_avg2_fl()
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-The function `time_weighted_avg_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the time weighted average of a metric in a given time window, over input time bins. This function is similar to [summarize operator](../query/summarize-operator.md). The function aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggregation-function.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
+The function `time_weighted_avg2_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the time weighted average of a metric in a given time window, over input time bins. This function is similar to [summarize operator](../query/summarize-operator.md). The function aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggregation-function.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
 
-There are 2 options to calculate time weighted average. This function fills forward the the value of the current sample till the next one. Alternatively [time_weighted_avg2_fl()](time-weighted-avg2-fl.md) linearly interpolates the metric value between consecutive samples.
+There are 2 options to calculate time weighted average. This function linearly interpolates the metric value between consecutive samples. Alternatively [time_weighted_avg_fl()](time-weighted-avg-fl.md) fills forward the the value of the current sample till the next one.
 
 ## Syntax
 
-`T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *stime*, *etime*, *dt*`)`
+`T | invoke time_weighted_avg2_fl(`*t_col*, *y_col*, *key_col*, *stime*, *etime*, *dt*`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -43,10 +43,10 @@ Define the function using the following [let statement](../query/let-statement.m
 > A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `time_weighted_avg_fl()`, see [Example](#example).
 
 ```kusto
-let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
+let time_weighted_avg2_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
     let tbl_ex = tbl | extend _ts = column_ifexists(t_col, datetime(null)), _val = column_ifexists(y_col, 0.0), _key = column_ifexists(key_col, '');
-    let gridTimes = range _ts from stime to etime step dt | extend _val=real(null), dummy=1;
+    let gridTimes = range _ts from stime to etime step dt | extend _val=real(null), grid=1, dummy=1;
     let keys = materialize(tbl_ex | summarize by _key | extend dummy=1);
     gridTimes
     | join kind=fullouter keys on dummy
@@ -54,15 +54,27 @@ let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, s
     | union tbl_ex
     | where _ts between (stime..etime)
     | partition hint.strategy=native by _key (
-        order by _ts asc, _val nulls last
-        | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(_val), s.f_value, _val);) // fill forward null values
-        | extend diff_t=(next(_ts)-_ts)/1m
+      order by _ts desc, _val nulls last
+    | scan declare(val1:real=0.0, t1:datetime) with (                // fill backward null values
+        step s: true => val1=iff(isnull(_val), s.val1, _val), t1=iff(isnull(_val), s.t1, _ts);)
+    | extend dt1=(t1-_ts)/1m
+    | order by _ts asc, _val nulls last
+    | scan declare(val0:real=0.0, t0:datetime) with (                // fill forward null values
+        step s: true => val0=iff(isnull(_val), s.val0, _val), t0=iff(isnull(_val), s.t0, _ts);)
+    | extend dt0=(_ts-t0)/1m
+    | extend _twa_val=iff(dt0+dt1 == 0, _val, ((val0*dt1)+(val1*dt0))/(dt0+dt1))
+    | scan with (                                                    // fill forward null twa values
+        step s: true => _twa_val=iff(isnull(_twa_val), s._twa_val, _twa_val);)
     )
+    | extend diff_t=(next(_ts)-_ts)/1m
     | where isnotnull(diff_t)
-    | summarize tw_sum=sum(f_value*diff_t), t_sum =sum(diff_t) by bin_at(_ts, dt, stime), _key
+    | order by _key asc, _ts asc
+    | extend next_twa_val=iff(_key == next(_key), next(_twa_val), _twa_val)
+    | summarize tw_sum=sum((_twa_val+next_twa_val)*diff_t/2.0), t_sum =sum(diff_t) by bin_at(_ts, dt, stime), _key
     | where t_sum > 0
     | extend tw_avg = tw_sum/t_sum
     | project-away tw_sum, t_sum
+    | order by _key asc, _ts asc 
 };
 // Write your query to use the function here.
 ```
@@ -75,11 +87,11 @@ Define the stored function once using the following [`.create function`](../mana
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
 ```kusto
-.create-or-alter function with (folder = "Packages\\Series", docstring = "Time weighted average of a metric")
-time_weighted_avg_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
+.create-or-alter function with (folder = "Packages\\Series", docstring = "Time weighted average of a metric (linear interpolation)")
+time_weighted_avg2_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
     let tbl_ex = tbl | extend _ts = column_ifexists(t_col, datetime(null)), _val = column_ifexists(y_col, 0.0), _key = column_ifexists(key_col, '');
-    let gridTimes = range _ts from stime to etime step dt | extend _val=real(null), dummy=1;
+    let gridTimes = range _ts from stime to etime step dt | extend _val=real(null), grid=1, dummy=1;
     let keys = materialize(tbl_ex | summarize by _key | extend dummy=1);
     gridTimes
     | join kind=fullouter keys on dummy
@@ -87,15 +99,27 @@ time_weighted_avg_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:
     | union tbl_ex
     | where _ts between (stime..etime)
     | partition hint.strategy=native by _key (
-        order by _ts asc, _val nulls last
-        | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(_val), s.f_value, _val);) // fill forward null values
-        | extend diff_t=(next(_ts)-_ts)/1m
+      order by _ts desc, _val nulls last
+    | scan declare(val1:real=0.0, t1:datetime) with (                // fill backward null values
+        step s: true => val1=iff(isnull(_val), s.val1, _val), t1=iff(isnull(_val), s.t1, _ts);)
+    | extend dt1=(t1-_ts)/1m
+    | order by _ts asc, _val nulls last
+    | scan declare(val0:real=0.0, t0:datetime) with (                // fill forward null values
+        step s: true => val0=iff(isnull(_val), s.val0, _val), t0=iff(isnull(_val), s.t0, _ts);)
+    | extend dt0=(_ts-t0)/1m
+    | extend _twa_val=iff(dt0+dt1 == 0, _val, ((val0*dt1)+(val1*dt0))/(dt0+dt1))
+    | scan with (                                                    // fill forward null twa values
+        step s: true => _twa_val=iff(isnull(_twa_val), s._twa_val, _twa_val);)
     )
+    | extend diff_t=(next(_ts)-_ts)/1m
     | where isnotnull(diff_t)
-    | summarize tw_sum=sum(f_value*diff_t), t_sum =sum(diff_t) by bin_at(_ts, dt, stime), _key
+    | order by _key asc, _ts asc
+    | extend next_twa_val=iff(_key == next(_key), next(_twa_val), _twa_val)
+    | summarize tw_sum=sum((_twa_val+next_twa_val)*diff_t/2.0), t_sum =sum(diff_t) by bin_at(_ts, dt, stime), _key
     | where t_sum > 0
     | extend tw_avg = tw_sum/t_sum
     | project-away tw_sum, t_sum
+    | order by _key asc, _ts asc 
 }
 ```
 
@@ -110,10 +134,10 @@ The following example uses the [invoke operator](../query/invoke-operator.md) to
 To use a query-defined function, invoke it after the embedded function definition.
 
 ```kusto
-let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
+let time_weighted_avg2_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
     let tbl_ex = tbl | extend _ts = column_ifexists(t_col, datetime(null)), _val = column_ifexists(y_col, 0.0), _key = column_ifexists(key_col, '');
-    let gridTimes = range _ts from stime to etime step dt | extend _val=real(null), dummy=1;
+    let gridTimes = range _ts from stime to etime step dt | extend _val=real(null), grid=1, dummy=1;
     let keys = materialize(tbl_ex | summarize by _key | extend dummy=1);
     gridTimes
     | join kind=fullouter keys on dummy
@@ -121,15 +145,27 @@ let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, s
     | union tbl_ex
     | where _ts between (stime..etime)
     | partition hint.strategy=native by _key (
-        order by _ts asc, _val nulls last
-        | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(_val), s.f_value, _val);) // fill forward null values
-        | extend diff_t=(next(_ts)-_ts)/1m
+      order by _ts desc, _val nulls last
+    | scan declare(val1:real=0.0, t1:datetime) with (                // fill backward null values
+        step s: true => val1=iff(isnull(_val), s.val1, _val), t1=iff(isnull(_val), s.t1, _ts);)
+    | extend dt1=(t1-_ts)/1m
+    | order by _ts asc, _val nulls last
+    | scan declare(val0:real=0.0, t0:datetime) with (                // fill forward null values
+        step s: true => val0=iff(isnull(_val), s.val0, _val), t0=iff(isnull(_val), s.t0, _ts);)
+    | extend dt0=(_ts-t0)/1m
+    | extend _twa_val=iff(dt0+dt1 == 0, _val, ((val0*dt1)+(val1*dt0))/(dt0+dt1))
+    | scan with (                                                    // fill forward null twa values
+        step s: true => _twa_val=iff(isnull(_twa_val), s._twa_val, _twa_val);)
     )
+    | extend diff_t=(next(_ts)-_ts)/1m
     | where isnotnull(diff_t)
-    | summarize tw_sum=sum(f_value*diff_t), t_sum =sum(diff_t) by bin_at(_ts, dt, stime), _key
+    | order by _key asc, _ts asc
+    | extend next_twa_val=iff(_key == next(_key), next(_twa_val), _twa_val)
+    | summarize tw_sum=sum((_twa_val+next_twa_val)*diff_t/2.0), t_sum =sum(diff_t) by bin_at(_ts, dt, stime), _key
     | where t_sum > 0
     | extend tw_avg = tw_sum/t_sum
     | project-away tw_sum, t_sum
+    | order by _key asc, _ts asc 
 };
 let tbl = datatable(ts:datetime,  val:real, key:string) [
     datetime(2021-04-26 00:00), 100, 'Device1',
@@ -144,9 +180,9 @@ let stime=toscalar(minmax | project mint);
 let etime=toscalar(minmax | project maxt);
 let dt = 1h;
 tbl
-| invoke time_weighted_avg_fl('ts', 'val', 'key', stime, etime, dt)
+| invoke time_weighted_avg2_fl('ts', 'val', 'key', stime, etime, dt)
 | project-rename val = tw_avg
-| order by _key asc, _ts asc
+| order by key asc, timestamp asc
 ```
 
 ### [Stored](#tab/stored)
@@ -171,7 +207,7 @@ let dt = 1h;
 tbl
 | invoke time_weighted_avg_fl('ts', 'val', 'key', stime, etime, dt)
 | project-rename val = tw_avg
-| order by _key asc, _ts_ asc
+| order by key asc, timestamp asc
 ```
 
 ---
