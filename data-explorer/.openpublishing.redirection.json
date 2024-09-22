@@ -426,6 +426,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "dealing-with-duplicates.md",
+      "redirect_url": "/kusto/concepts/dealing-with-duplicates?view=azure-data-explorer&preserve-view=true",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "excel-connector.md",
       "redirect_url": "/azure/data-explorer/excel",
       "redirect_document_id": false
