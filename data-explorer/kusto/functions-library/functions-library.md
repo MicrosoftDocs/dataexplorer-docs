@@ -75,7 +75,9 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [series_shapes_fl()](series-shapes-fl.md) | Detects positive/negative trend or jump in series. |
 | [series_uv_anomalies_fl()](series-uv-anomalies-fl.md) | Detect anomalies in time series using the Univariate Anomaly Detection Cognitive Service API. |
 | [series_uv_change_points_fl()](series-uv-change-points-fl.md) | Detect change points in time series using the Univariate Anomaly Detection Cognitive Service API. |
-| [time_weighted_avg_fl()](time-weighted-avg-fl.md) | Calculates the time weighted average of a metric. |
+| [time_weighted_avg_fl()](time-weighted-avg-fl.md) | Calculates the time weighted average of a metric using fill forward interpolation. |
+| [time_weighted_avg2_fl()](time-weighted-avg2-fl.md) | Calculates the time weighted average of a metric using linear interpolation. |
+| [time_weighted_val_fl()](time-weighted-val-fl.md) | Calculates the time weighted value of a metric using linear interpolation. |
 | [time_window_rolling_avg_fl()](time-window-rolling-avg-fl.md) | Calculates the rolling average of a metric over a constant duration time window. |
 
 ## Statistical and probability functions
