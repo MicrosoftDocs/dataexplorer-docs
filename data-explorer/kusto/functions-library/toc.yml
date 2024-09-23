@@ -153,8 +153,14 @@ items:
   displayName: functions library, anomaly detection, univariate, change point
   href: series-uv-change-points-fl.md
 - name: time_weighted_avg_fl()
-  displayName: functions library, binning
+  displayName: functions library, binning, time weighted, time series, interpolation
   href: time-weighted-avg-fl.md
+- name: time_weighted_avg2_fl()
+  displayName: functions library, binning, time weighted, time series, interpolation
+  href: time-weighted-avg2-fl.md
+- name: time_weighted_val_fl()
+  displayName: functions library, binning, time weighted, time series, interpolation
+  href: time-weighted-val-fl.md
 - name: time_window_rolling_avg_fl()
   displayName: functions library, rolling, sliding
   href: time-window-rolling-avg-fl.md
