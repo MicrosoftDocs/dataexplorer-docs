@@ -174,7 +174,7 @@ web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 1. Paste the query link directly into your Kusto.Explorer query pane.
 ::: moniker-end
 :::moniker range="microsoft-fabric"
-1. Provide a parameter for every query parameter in the URI. To copy your URI, in your KQL query pane select **Copy query** > **Link to clipboard**.
+1. Provide a parameter for every query parameter in the URI. To copy your URI, in your KQL query pane in Fabric select **Copy query** > **Link to clipboard**.
 
 1. Past the link in your Kusto.Explorer query pane.
 
