@@ -226,4 +226,5 @@ tbl
 | 2021-04-26 01:00:00.0000000 | Device2 | 412.5 |
 
 The first value of Device1 is (45m*(100+300)/2 + 15m*(300+250)/2)/60m = 218.75, the second value is (15m*(250+200)/2 + 45m*200)/60m = 206.25.
+
 The first value of Device2 is (30m*(600+400)/2 + 30m*(400+450)/2)/60m = 462.5, the second value is (30m*(450+500)/2 + 15m*(500+300)/2 + 15m*300)/60m = 412.5.
