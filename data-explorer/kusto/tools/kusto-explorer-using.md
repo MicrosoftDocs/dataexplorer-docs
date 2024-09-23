@@ -146,8 +146,7 @@ Execute: [[Web](https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 
-Execute: [Web](https://dataexplorer.azure.com/clusters/https%3a%2f%2ftrd-1234.kusto.fabric.microsoft.com/databases/01234abc-defg-6789-4567fg890hi?query=1234AAAAAAAA567890BBBBBBB01234567890CCCCCCC1234AAAAAAAA567890BBBBB01234567890CCC%AB%AB)] [[Desktop](
-https://trd-1234.kusto.fabric.microsoft.com/01234abc-defg-6789-4567fg890hi?query=1234AAAAAAAA567890BBBBBBB01234567890CCCCCCC1234AAAAAAAA567890BBBBB01234567890CCC%AB%AB&web=0)] [Web (Lens)] [Desktop (SAW)] https:\/\/trd-1234.kusto.fabric.microsoft.com
+Execute: [Web] [Desktop] [Web (Lens)] [Desktop (SAW)] https:\/\/trd-1234.kusto.fabric.microsoft.com
 
 ::: moniker-end
 
