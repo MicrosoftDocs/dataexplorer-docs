@@ -12,7 +12,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 The function `time_weighted_avg_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the time weighted average of a metric in a given time window, over input time bins. This function is similar to [summarize operator](../query/summarize-operator.md). The function aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggregation-function.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
 
-There are two options to calculate time weighted average. This function fills forward the the value of the current sample till the next one. Alternatively [time_weighted_avg2_fl()](time-weighted-avg2-fl.md) linearly interpolates the metric value between consecutive samples.
+There are two options to calculate time weighted average. This function fills forward the the value of the current sample until the next one. Alternatively [time_weighted_avg2_fl()](time-weighted-avg2-fl.md) linearly interpolates the metric value between consecutive samples.
 
 ## Syntax
 
@@ -76,7 +76,7 @@ Define the stored function once using the following [`.create function`](../mana
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
 ```kusto
-.create-or-alter function with (folder = "Packages\\Series", docstring = "Time weighted average of a metric")
+.create-or-alter function with (folder = "Packages\\Series", docstring = "Time weighted average of a metric using fill forward interpolation")
 time_weighted_avg_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
     let tbl_ex = tbl | extend _ts = column_ifexists(t_col, datetime(null)), _val = column_ifexists(y_col, 0.0), _key = column_ifexists(key_col, '');

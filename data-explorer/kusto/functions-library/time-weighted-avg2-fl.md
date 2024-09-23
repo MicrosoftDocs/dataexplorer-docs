@@ -88,7 +88,7 @@ Define the stored function once using the following [`.create function`](../mana
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
 ```kusto
-.create-or-alter function with (folder = "Packages\\Series", docstring = "Time weighted average of a metric (linear interpolation)")
+.create-or-alter function with (folder = "Packages\\Series", docstring = "Time weighted average of a metric using linear interpolation")
 time_weighted_avg2_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
     let tbl_ex = tbl | extend _ts = column_ifexists(t_col, datetime(null)), _val = column_ifexists(y_col, 0.0), _key = column_ifexists(key_col, '');
