@@ -100,29 +100,28 @@ In Kusto.Explorer, you can share queries and results by email. You can also crea
 
 Kusto.Explorer provides a convenient way to share queries and query results by email.
 
+:::moniker range="azure-data-explorer"
 1. [Run your query](#basic-queries) in Kusto.Explorer.
 1. In the Home tab, in the Share section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
     :::image type="content" source="media/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
-:::moniker range="azure-data-explorer"
     Kusto.Explorer copies the following to the clipboard:
      * Your query
      * The query results (table or chart)
      * The connection details for the Kusto cluster and database
      * A link that reruns the query automatically
+1. Paste the contents of the clipboard into a new email message.
+    :::image type="content" source="media/kusto-explorer-using/share-results-2.png" alt-text="Share results in email." lightbox="media/kusto-explorer-using/share-results-2.png":::
 ::: moniker-end
 :::moniker range="microsoft-fabric"
+1. [Run your query](#basic-queries) in Kusto.Explorer.
+1. In the Home tab, in the Share section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
+    :::image type="content" source="media/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
     Kusto.Explorer copies the following to the clipboard:
      * Your query
      * The query results (table or chart)
      * The connection details for the eventhouse and database
      * A link that reruns the query automatically
-::: moniker-end
-
 1. Paste the contents of the clipboard into a new email message.
-:::moniker range="azure-data-explorer"
-    :::image type="content" source="media/kusto-explorer-using/share-results-2.png" alt-text="Share results in email." lightbox="media/kusto-explorer-using/share-results-2.png":::
-::: moniker-end
-:::moniker range="microsoft-fabric"
     :::image type="content" source="media/kusto-explorer-using/share-results-fabric.png" alt-text="Share results from a Fabric KQL database in email." lightbox="media/kusto-explorer-using/share-results-fabric.png":::
 ::: moniker-end
 
