@@ -54,14 +54,13 @@ items:
     href: /kusto/management/databases?view=azure-data-explorer&preserve-view=true
     items:
     - name: .show databases command
-      displayName: .show databases command, .show cluster databases command
       href: /kusto/management/show-databases?view=azure-data-explorer&preserve-view=true
     - name: .show database command
       href: /kusto/management/show-database?view=azure-data-explorer&preserve-view=true
+    - name: .show cluster databases command
+      href: /kusto/management/show-cluster-database?view=azure-data-explorer&preserve-view=true
     - name: .alter database prettyname command
-      href: /kusto/management/alter-database-prettyname?view=azure-data-explorer&preserve-view=true
-    - name: .drop database prettyname command
-      href: /kusto/management/drop-database-prettyname?view=azure-data-explorer&preserve-view=true
+      href: /kusto/management/alter-database?view=azure-data-explorer&preserve-view=true
     - name: .show database schema command
       displayName: .show databases schema
       href: /kusto/management/show-schema-database?view=azure-data-explorer&preserve-view=true
@@ -914,8 +913,6 @@ items:
       href: /kusto/concepts/data-soft-delete?view=azure-data-explorer&preserve-view=true
     - name: Soft delete command
       href: /kusto/management/soft-delete-command?view=azure-data-explorer&preserve-view=true
-  - name: Deal with duplicate data
-    href: /kusto/concepts/dealing-with-duplicates?view=azure-data-explorer&preserve-view=true
   - name: Extents (data shards)
     items:
     - name: Extents overview
