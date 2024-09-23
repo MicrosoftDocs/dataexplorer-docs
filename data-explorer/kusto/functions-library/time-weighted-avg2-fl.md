@@ -12,7 +12,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 The function `time_weighted_avg2_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the time weighted average of a metric in a given time window, over input time bins. This function is similar to [summarize operator](../query/summarize-operator.md). The function aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggregation-function.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
 
-There are 2 options to calculate time weighted average. This function linearly interpolates the metric value between consecutive samples. Alternatively [time_weighted_avg_fl()](time-weighted-avg-fl.md) fills forward the the value of the current sample till the next one.
+There are two options to calculate time weighted average. This function linearly interpolates the metric value between consecutive samples. Alternatively [time_weighted_avg_fl()](time-weighted-avg-fl.md) fills forward the value of the current sample till the next one.
 
 ## Syntax
 
@@ -225,5 +225,5 @@ tbl
 | 2021-04-26 00:00:00.0000000 | Device2 | 462.5 |
 | 2021-04-26 01:00:00.0000000 | Device2 | 412.5 |
 
-The first value of Device1 is (45m*(100+300)/2 + 15m*(300+250)/2)/60m = 218.75, the second value is (15m*(250+200)/2 + 45m*200)/60m = 206.25
-The first value of Device2 is (30m*(600+400)/2 + 30m*(400+450)/2)/60m = 462.5, the second value is (30m*(450+500)/2 + 15m*(500+300)/2 + 15m*300)/60m = 412.5
+The first value of Device1 is (45m*(100+300)/2 + 15m*(300+250)/2)/60m = 218.75, the second value is (15m*(250+200)/2 + 45m*200)/60m = 206.25.
+The first value of Device2 is (30m*(600+400)/2 + 30m*(400+450)/2)/60m = 462.5, the second value is (30m*(450+500)/2 + 15m*(500+300)/2 + 15m*300)/60m = 412.5.
