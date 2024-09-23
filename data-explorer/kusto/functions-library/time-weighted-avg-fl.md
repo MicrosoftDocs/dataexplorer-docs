@@ -16,7 +16,7 @@ There are 2 options to calculate time weighted average. This function fills forw
 
 ## Syntax
 
-`T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *stime*, *etime*, *dt*`)`
+`T | invoke time_weighted_avg_fl(`*t_col*`,` *y_col*`,` *key_col*`,` *stime*`,` *etime*`,` *dt*`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
