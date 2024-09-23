@@ -104,6 +104,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 1. [Run your query](#basic-queries) in Kusto.Explorer.
 1. In the Home tab, in the Share section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
     :::image type="content" source="media/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
+
     Kusto.Explorer copies the following to the clipboard:
      * Your query
      * The query results (table or chart)
@@ -116,6 +117,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 1. [Run your query](#basic-queries) in Kusto.Explorer.
 1. In the Home tab, in the Share section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
     :::image type="content" source="media/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
+
     Kusto.Explorer copies the following to the clipboard:
      * Your query
      * The query results (table or chart)
@@ -135,25 +137,26 @@ You can create a URI that, when opened in a browser, opens Kusto.Explorer locall
 #### Creating a deep-link
 
 The easiest way to create a deep-link is to author your query in Kusto.Explorer and then use
-`Export to Clipboard` to copy the query (including the deep link and results) to the clipboard. You can then share it by email.
+`Query and results to Clipboard` to copy the query (including the deep link and results) to the clipboard. You can then share it by email.
+
+When copied to an email, a number of links to execute are displayed in small font. For example:
 
 :::moniker range="azure-data-explorer"
-When copied to an email, the deep link is displayed in small font. For example:
-
-https://help.kusto.windows.net/Samples [[Run the query](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)]
-
-The first link opens Kusto.Explorer and sets the cluster and database context appropriately.
-The second link (`Run the query`) is the deep link. If you move the link to an email message and press CTRL+K, you can see the actual URL:
-
-> https:\/\/help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
+Execute: [[Web](https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] [[Desktop](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] [Web (Lens)] [Desktop (SAW)] https:\/\/help.kusto.windows.net/Samples
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 
-Copying the query to an email results in headings like the following example with appropriate linked texts:
+Execute: [Web](https://dataexplorer.azure.com/clusters/https%3a%2f%2ftrd-1234.kusto.fabric.microsoft.com/databases/01234abc-defg-6789-4567fg890hi?query=1234AAAAAAAA567890BBBBBBB01234567890CCCCCCC1234AAAAAAAA567890BBBBB01234567890CCC%AB%AB)] [[Desktop](
+https://trd-1234.kusto.fabric.microsoft.com/01234abc-defg-6789-4567fg890hi?query=1234AAAAAAAA567890BBBBBBB01234567890CCCCCCC1234AAAAAAAA567890BBBBB01234567890CCC%AB%AB&web=0)] [Web (Lens)] [Desktop (SAW)] https:\/\/trd-1234.kusto.fabric.microsoft.com
 
-Execute: [Web] [Desktop] [Web (Lens)] [Desktop (SAW)] https:\/\/trd-1234.kusto.fabric.microsoft.com
+::: moniker-end
 
-Choose **Desktop** to open the Kusto.Explorer appropriate link in your browser. Then select **Open** to open the query in Kusto.Explorer and set your eventhouse and database context appropriately.
+The **Web** link opens the query in Azure Data Explorer. The **Desktop** link is the deeplink. It opens the query in Kusto.Explorer and sets the context appropriately.
+
+If you move the link to an email message and press CTRL+K, you can see the actual URL.
+
+:::moniker range="azure-data-explorer"
+> https:\/\/help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
 ::: moniker-end
 
 #### Deep-links and parametrized queries
