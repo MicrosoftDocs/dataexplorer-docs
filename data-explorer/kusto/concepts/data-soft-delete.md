@@ -21,7 +21,7 @@ For information on how to use the command, see [Syntax](../management/soft-delet
 
 This deletion method should only be used for the unplanned deletion of individual records. For example, if you discover that an IoT device is reporting corrupt telemetry for some time, you should consider using this method to delete the corrupt data.
 
-If you need to frequently delete records for deduplication or updates, we recommend using [materialized views](../management/materialized-views/materialized-view-overview.md). See [choose between materialized views and soft delete for data deduplication](dealing-with-duplicates.md#choose-between-materialized-views-and-soft-delete-for-data-deduplication).
+If you need to frequently delete records for deduplication or updates, we recommend using [materialized views](../management/materialized-views/materialized-view-overview.md). See [choose between materialized views and soft delete for data deduplication](/azure/data-explorer/dealing-with-duplicates#choose-between-materialized-views-and-soft-delete-for-data-deduplication).
 
 ## Deletion process
 
