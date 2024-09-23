@@ -83,7 +83,7 @@ If you use the same value in multiple queries or in multiple tabs, it's highly i
 
 You can easily define and edit existing query parameters:
 
-:::image type="content" source="media/kusto-explorer-using/parametrized-query.png" alt-text="Screenshot of query editor showing a query with parameters. The query editor option titled "Query parameters" is highlighted.":::
+:::image type="content" source="media/kusto-explorer-using/parametrized-query.png" alt-text="Screenshot of query editor showing a query with parameters. The query editor option, Query parameters, is highlighted.":::
 
 :::image type="content" source="media/kusto-explorer-using/parametrized-query-3.png" alt-text="Screenshot of the Query parameters window showing the defined parameters.":::
 
@@ -103,7 +103,6 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 1. [Run your query](#basic-queries) in Kusto.Explorer.
 1. In the Home tab, in the Share section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
     :::image type="content" source="media/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
-
 :::moniker range="azure-data-explorer"
     Kusto.Explorer copies the following to the clipboard:
      * Your query
@@ -120,12 +119,11 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 ::: moniker-end
 
 1. Paste the contents of the clipboard into a new email message.
-
 :::moniker range="azure-data-explorer"
     :::image type="content" source="media/kusto-explorer-using/share-results-2.png" alt-text="Share results in email." lightbox="media/kusto-explorer-using/share-results-2.png":::
 ::: moniker-end
 :::moniker range="microsoft-fabric"
-     :::image type="content" source="media/kusto-explorer-using/share-results-fabric.png" alt-text="Share results from a Fabric KQL database in email." lightbox="media/kusto-explorer-using/share-results-fabric.png":::
+    :::image type="content" source="media/kusto-explorer-using/share-results-fabric.png" alt-text="Share results from a Fabric KQL database in email." lightbox="media/kusto-explorer-using/share-results-fabric.png":::
 ::: moniker-end
 
 ### Deep-linking queries
@@ -152,9 +150,9 @@ The second link (`Run the query`) is the deep link. If you move the link to an e
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 
-Copying the query to an email results in the following headings with appropriate linked texts:
+Copying the query to an email results in headings like the following example with appropriate linked texts:
 
-Execute: [Web] [Desktop] [Web (Lens)] [Desktop (SAW)] https://trd-1234.kusto.fabric.microsoft.com
+Execute: [Web] [Desktop] [Web (Lens)] [Desktop (SAW)] https:\/\/trd-1234.kusto.fabric.microsoft.com
 
 Choose **Desktop** to open the Kusto.Explorer appropriate link in your browser. Then select **Open** to open the query in Kusto.Explorer and set your eventhouse and database context appropriately.
 ::: moniker-end
@@ -213,7 +211,7 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
 ::: moniker-end
 
 :::moniker range="microsoft-fabric"
-https://<BaseAddress>/groups/1234ab-cd55-6789-0123-e4567fg890hi/databases/01234abc-defg-6789-4567fg890hi?experience=power-bi&extensionScenario=openArtifact&query=1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC%AB%AB
+https://<\BaseAddress>/groups/1234ab-cd55-6789-0123-e4567fg890hi/databases/01234abc-defg-6789-4567fg890hi?experience=power-bi&extensionScenario=openArtifact&query=1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC%AB%AB
 ::: moniker-end
 
 The query is made more compact by applying the following transformation:
