@@ -507,7 +507,7 @@ items:
               - name: Delete data
                 href: delete-data.md
               - name: Deal with duplicate data
-                href: /kusto/query/concepts/dealing-with-duplicates?view=azure-data-explorer&preserve-view=true
+                href: dealing-with-duplicates.md
       - name: Monitor
         items:
           - name: Monitor Azure Data Explorer with metrics
