@@ -914,8 +914,6 @@ items:
             href: ../concepts/data-soft-delete.md
           - name: Soft delete command
             href: soft-delete-command.md
-      - name: Deal with duplicate data
-        href: ../concepts/dealing-with-duplicates.md
       - name: Extents (data shards)
         items:
           - name: Extents overview

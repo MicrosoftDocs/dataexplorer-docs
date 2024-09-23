@@ -21,8 +21,8 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "query/concepts/dealing-with-duplicates.md",
-      "redirect_url": "/kusto/concepts/dealing-with-duplicates",
+      "source_path": "concepts/dealing-with-duplicates.md",
+      "redirect_url": "/azure/data-explorer/dealing-with-duplicates",
       "redirect_document_id": false
     },
     {
