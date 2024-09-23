@@ -12,7 +12,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 The function `time_weighted_avg2_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the time weighted average of a metric in a given time window, over input time bins. This function is similar to [summarize operator](../query/summarize-operator.md). The function aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggregation-function.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
 
-There are two options to calculate time weighted average. This function linearly interpolates the metric value between consecutive samples. Alternatively [time_weighted_avg_fl()](time-weighted-avg-fl.md) fills forward the value of the current sample until the next one.
+There are two options to calculate time weighted average. This function linearly interpolates the metric value between consecutive samples. Alternatively [time_weighted_avg_fl()](time-weighted-avg-fl.md) fills forward the value from the current sample until the next one.
 
 ## Syntax
 
