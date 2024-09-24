@@ -9,9 +9,9 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Calculates the intermediate results of [`dcount`](dcount-aggfunction.md) in records for which the *predicate* evaluates to `true`.
+Calculates the intermediate results of [`dcount`](dcount-aggregation-function.md) in records for which the *predicate* evaluates to `true`.
 
-Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accuracy](dcount-aggfunction.md#estimation-accuracy).
+Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accuracy](dcount-aggregation-function.md#estimation-accuracy).
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 

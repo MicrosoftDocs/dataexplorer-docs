@@ -1189,7 +1189,7 @@ items:
         displayName: count(predicate)
         href: countif-aggregation-function.md
       - name: dcount()
-        href: dcount-aggfunction.md
+        href: dcount-aggregation-function.md
       - name: dcountif()
         href: dcountif-aggregation-function.md
       - name: hll()

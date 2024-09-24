@@ -15,7 +15,7 @@ Counts unique values specified by the scalar expression per summary group, or th
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
-If you only need an estimation of unique values count, we recommend using the less resource-consuming [`dcount`](dcount-aggfunction.md) aggregation function.
+If you only need an estimation of unique values count, we recommend using the less resource-consuming [`dcount`](dcount-aggregation-function.md) aggregation function.
 
 To count only records for which a predicate returns `true`, use the [count_distinctif](count-distinctif-aggregation-function.md) aggregation function.
 

@@ -220,7 +220,7 @@ The following aggregation functions are supported:
 
 * [`count`](../../query/count-aggregation-function.md)
 * [`countif`](../../query/countif-aggregation-function.md)
-* [`dcount`](../../query/dcount-aggfunction.md)
+* [`dcount`](../../query/dcount-aggregation-function.md)
 * [`dcountif`](../../query/dcountif-aggregation-function.md)
 * [`min`](../../query/min-aggregation-function.md)
 * [`max`](../../query/max-aggregation-function.md)

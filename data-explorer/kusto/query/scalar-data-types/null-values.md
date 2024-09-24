@@ -78,7 +78,7 @@ When applying the following operators to entities that include null values, the 
 * [count()](../count-aggregation-function.md)
 * [count_distinct()](../count-distinct-aggregation-function.md)
 * [countif()](../countif-aggregation-function.md)
-* [dcount()](../dcount-aggfunction.md)
+* [dcount()](../dcount-aggregation-function.md)
 * [dcountif()](../dcountif-aggregation-function.md)
 * [make_bag()](../make-bag-aggregation-function.md)
 * [make_bag_if()](../make-bag-if-aggregation-function.md)
