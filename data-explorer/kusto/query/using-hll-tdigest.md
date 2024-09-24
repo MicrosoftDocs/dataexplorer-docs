@@ -140,7 +140,7 @@ PageViewsHllTDigest
 
 ## Example: Temporary table
 
-Kusto limits are reached with datasets that are too large, where you need to run periodic queries over the dataset, but run the regular queries to calculate [`percentile()`](percentiles-aggregation-function.md) or [`dcount()`](dcount-aggfunction.md) over large datasets.
+Kusto limits are reached with datasets that are too large, where you need to run periodic queries over the dataset, but run the regular queries to calculate [`percentile()`](percentiles-aggregation-function.md) or [`dcount()`](dcount-aggregation-function.md) over large datasets.
 
 ::: moniker range="microsoft-fabric  || azure-data-explorer"
 
@@ -267,4 +267,4 @@ Stats
 |2016-05-02 00:00:00.0000000|2016-05-03 00:00:00.0000000|14.5160020350006|
 
 > [!NOTE]
-> The results of the queries are not 100% accurate due to the error of the `hll` functions. For more information about the errors, see [`dcount()`](dcount-aggfunction.md).
+> The results of the queries are not 100% accurate due to the error of the `hll` functions. For more information about the errors, see [`dcount()`](dcount-aggregation-function.md).

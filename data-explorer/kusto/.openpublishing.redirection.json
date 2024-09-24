@@ -46,6 +46,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "query/dcount-aggfunction.md",
+      "redirect_url": "/kusto/query/dcount-aggregation-function",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "query/re2.md",
       "redirect_url": "/kusto/query/regex",
 
