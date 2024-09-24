@@ -44,8 +44,8 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 |*FromDate*| `datetime` ||The query window start date.|
 |*ToDate*| `datetime` ||The query window end date.|
 |*PropertyName*, *PropertyValue*| `string` ||One or more [Supported properties](#supported-properties).|
-|*ExtentsToDropQuery*| `string` | :heavy_check_mark:|The results of this query specify the extent IDs that should be dropped from the destination table. Should return a recordset with a column called "ExtentId".|
-|*ExtentsToMoveQuery*| `string` | :heavy_check_mark:|The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be moved to the destination table. Should return a recordset with columns called "ExtentId" and "TableName".|
+|*ExtentsToDropQuery*| `string` | :heavy_check_mark:|The results of this query specify the extent IDs that should be dropped from the destination table. Should return a recordset with a column called "ExtentId."|
+|*ExtentsToMoveQuery*| `string` | :heavy_check_mark:|The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be moved to the destination table. Should return a recordset with columns called "ExtentId" and "TableName."|
 
 ## Supported properties
 
@@ -65,7 +65,7 @@ When the command is run synchronously, a table with the following schema is retu
 | Output parameter | Type | Description |
 |--|--|--|
 | OriginalExtentId | `string` | A unique identifier (GUID) for the original extent in the source table that was moved to the destination table, or the extent in the destination table that was dropped. |
-| ResultExtentId | `string` | A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Empty, if the extent was dropped from the destination table. Upon failure: "Failed". |
+| ResultExtentId | `string` | A unique identifier (GUID) for the result extent moved from the source table to the destination table. Empty, if the extent was dropped from the destination table. Upon failure: "Failed." |
 | Details | `string` | Includes the failure details if the operation fails. |
 
 When the command is run asynchronously, an operation ID (GUID) is returned. Monitor the operation's status with the [.show operations](show-operations.md) command, and retrieve the results of a successful execution with the [.show operation details](show-operation-details.md) command.
