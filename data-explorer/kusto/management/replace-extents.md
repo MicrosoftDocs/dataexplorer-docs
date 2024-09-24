@@ -3,17 +3,15 @@ title: .replace extents command
 description: Learn how to use the `.replace extents` command to move extents from a source table to a destination table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 09/24/2024
 monikerRange: "azure-data-explorer"
 ---
 # .replace extents command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-This command runs in the context of a specific database.
-It moves the specified extents from their source tables to the destination table,
-and then drops the specified extents from the destination table.
-All of the drop and move operations are done in a single transaction.
+This command moves and drops extents in a single transaction.
+It runs in the context of a specific database. The command moves specified extents from source tables to the destination table and drops any specified extents from the destination table. The command is useful for ensuring that data isn't duplicated in the destination table.
 
 > [!NOTE]
 > Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.
@@ -28,7 +26,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 * Both source and destination tables must be in the context database.
 * All extents specified by the *ExtentsToDropQuery* are expected to belong to the destination table.
 * All columns in the source tables are expected to exist in the destination table with the same name and data type.
-* If the destination table is a source table of a [materialized view](materialized-views/materialized-view-overview.md), the command might fail since the materialized view won't process the records in the moved extents. See more details in the [materialized views limitations](materialized-views/materialized-views-limitations.md#the-materialized-view-source) page. You can workaround this error by setting a new ingestion time during the move command. See `setNewIngestionTime` in [supported properties](#supported-properties).
+* If the destination table is a source table of a [materialized view](materialized-views/materialized-view-overview.md), the command might fail since the materialized view can't process the records in the moved extents. See more details in the [materialized views limitations](materialized-views/materialized-views-limitations.md#the-materialized-view-source) page. You can work around this error by setting a new ingestion time during the move command. See `setNewIngestionTime` in [supported properties](#supported-properties).
 
 ## Syntax
 
@@ -53,7 +51,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 | Property name | Type | Required | Description |
 |--|--|--|--|
-| `setNewIngestionTime` | `bool` |  | If set to `true`, a new [ingestion time](../query/ingestion-time-function.md) is assigned to all records in extents being moved. This is useful when records should be processed by workloads that depend on [database cursors](database-cursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export](data-export/continuous-data-export.md). |
+| `setNewIngestionTime` | `bool` |  | If set to `true`, a new [ingestion time](../query/ingestion-time-function.md) is assigned to all records in extents being moved. This is useful when records are processed by workloads that depend on [database cursors](database-cursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export](data-export/continuous-data-export.md). |
 | `extentCreatedOnFrom` | `datetime` |  :heavy_check_mark: | Apply on extents created after this point in time. |
 | `extentCreatedOnTo` | `datetime` |  :heavy_check_mark: | Apply on extents created before this point in time. |
 
@@ -66,7 +64,7 @@ When the command is run synchronously, a table with the following schema is retu
 
 | Output parameter | Type | Description |
 |--|--|--|
-| OriginalExtentId | `string` | A unique identifier (GUID) for the original extent in the source table that has been moved to the destination table, or the extent in the destination table that has been dropped. |
+| OriginalExtentId | `string` | A unique identifier (GUID) for the original extent in the source table that was moved to the destination table, or the extent in the destination table that was dropped. |
 | ResultExtentId | `string` | A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Empty, if the extent was dropped from the destination table. Upon failure: "Failed". |
 | Details | `string` | Includes the failure details if the operation fails. |
 
@@ -74,11 +72,11 @@ When the command is run asynchronously, an operation ID (GUID) is returned. Moni
 
 > [!NOTE]
 > The command will fail if extents returned by the *ExtentsToDropQuery* query don't exist in the destination table. This may happen if the extents were merged before the replace command was executed.
-> To make sure the command fails on missing extents, check that the query returns the expected ExtentIds. Example #1 below will fail if the extent to drop doesn't exist in table *MyOtherTable*. Example #2, however, will succeed even though the extent to drop doesn't exist, since the query to drop didn't return any extent IDs.
+> To make sure the command fails on missing extents, check that the query returns the expected ExtentIds. The first example will fail if the extent to drop doesn't exist in table *MyOtherTable*. Example two, however, will succeed even though the extent to drop doesn't exist, since the query to drop didn't return any extent IDs.
 
 ## Examples
 
-### Move all extents in a specified creation time range from two tables 
+### Move all extents in a specified creation time range from two tables
 
 Move all extents from two specific tables (`MyTable1`, `MyTable2`) in a specified creation time range to table `MyOtherTable`, and drop all extents in `MyOtherTable` tagged with `drop-by:MyTag`:
 
