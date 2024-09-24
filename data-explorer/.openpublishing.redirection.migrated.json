@@ -6557,7 +6557,7 @@
     },
     {
       "source_path_from_root": "/data-explorer/kusto-redirections/query/dcount-aggfunction.md",
-      "redirect_url": "/kusto/query/dcount-aggfunction?view=azure-data-explorer&preserve-view=true",
+      "redirect_url": "/kusto/query/dcount-aggregation-function?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
     },
     {
