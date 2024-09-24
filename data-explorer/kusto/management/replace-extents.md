@@ -10,8 +10,8 @@ monikerRange: "azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-This command moves and drops extents in a single transaction.
-It runs in the context of a specific database. The command moves specified extents from source tables to the destination table and drops any specified extents from the destination table. The command is useful for ensuring that data isn't duplicated in the destination table.
+This command drops and moves extents in a single transaction.
+It runs in the context of a specific database. The command drops any specified extents from the destination table and moves specified extents from source tables to the destination table.
 
 > [!NOTE]
 > Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.
