@@ -40,7 +40,7 @@ In this article, you learn about:
 
 ## Prerequisites
 
-- Make sure your cluster is in a region where migration to multiple availability zones is supported. For more information, see [Supported regions](#supported-regions).
+- Make sure your cluster is in a region where migration to multiple availability zones is supported.
 
 - For migrating a cluster to support availability zones, you need a cluster that was deployed without any availability zones.
 - For changing the zones of a cluster, you need a cluster that is configured with availability zones.
