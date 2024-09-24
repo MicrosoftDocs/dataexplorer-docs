@@ -1354,7 +1354,7 @@ items:
     displayName: count(predicate)
     href: /kusto/query/countif-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: dcount()
-    href: /kusto/query/dcount-aggfunction?view=azure-data-explorer&preserve-view=true
+    href: /kusto/query/dcount-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: dcountif()
     href: /kusto/query/dcountif-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: hll()
