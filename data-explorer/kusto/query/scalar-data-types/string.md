@@ -33,7 +33,7 @@ Use the backslash character to escape the enclosing quote characters, tab charac
 
 ## Verbatim string literals
 
-Verbatim string literals are string literals prepended with the `@` character, which serves as a verbatim identifier. They are also supported. In this form, the backslash character (`\`) stands for itself and isn't an escape character. In verbatim string literals, double quotes are escaped with double quotes and single quotes are escaped with single quotes.
+Verbatim string literals are string literals prepended with the `@` character, which serves as a verbatim identifier. In this form, the backslash character (`\`) stands for itself and isn't an escape character. In verbatim string literals, double quotes are escaped with double quotes and single quotes are escaped with single quotes.
 
 For an example, see [Verbatim string](#verbatim-string-literal).
 
