@@ -40,27 +40,12 @@ In this article, you learn about:
 
 ## Prerequisites
 
-- Make sure your cluster is in a region where migration to multiple availability zones is supported. For more information, see [Supported regions](#supported-regions).
+- Make sure your cluster is in a region where migration to multiple availability zones is supported.
 
 - For migrating a cluster to support availability zones, you need a cluster that was deployed without any availability zones.
 - For changing the zones of a cluster, you need a cluster that is configured with availability zones.
 - For REST API, familiarize yourself with [Manage Azure resources by using the REST API](/azure/azure-resource-manager/management/manage-resources-rest).
 - For other programmatic methods, see [Prerequisites](create-cluster-database.md#prerequisites).
-
-### Supported regions
-
-Migration to multiple availability zones is limited to regions that don't have capacity restrictions. The following regions are currently supported:
-
-- Australia East
-- Canada Central
-- China North 3
-- India Central
-- North Europe
-- Norway East
-- South Africa North
-- Sweden Central
-- UAE North
-- UK South
 
 ## Get the list of availability zones for your cluster's region
 
