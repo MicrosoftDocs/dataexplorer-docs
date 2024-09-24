@@ -3,7 +3,7 @@ title:  The string data type
 description:  Learn about the string data type.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 09/24/2024
 ---
 # The string data type
 
@@ -22,10 +22,9 @@ For information on string query operators, see [String operators](../datatypes-s
 > * When ingesting the `string` data type, if a single string value in a record exceeds 1MB (measured using UTF-8 encoding), the value is truncated and ingestion succeeds. You can increase the `MaxValueSize` of the column by changing its [encoding policy](../../management/alter-encoding-policy.md).
 > * If a single string value in a record, or the entire record, exceeds the allowed data limit of 64MB, ingestion fails.
 
-
 ## `string` literals
 
-You can use double quotes or single quotes to encode string literals in query text. With double quotes, you must escape nested double quote characters with a backslash (`\`). With single quotes, you must escape nested single quote characters, and you don't need to escape double quotes.
+A string literal is a string enclosed in quotes. You can use double quotes or single quotes to encode string literals in query text. With double quotes, you must escape nested double quote characters with a backslash (`\`). With single quotes, you must escape nested single quote characters, and you don't need to escape double quotes.
 
 Use the backslash character to escape the enclosing quote characters, tab characters (`\t`), newline characters (`\n`), and the backslash itself (`\\`).
 
@@ -34,7 +33,7 @@ Use the backslash character to escape the enclosing quote characters, tab charac
 
 ## Verbatim string literals
 
-Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself and isn't an escape character. Prepending the `@` character to string literals serves as a verbatim identifier. In verbatim string literals, double quotes are escaped with double quotes and single quotes are escaped with single quotes.
+Verbatim string literals are string literals prepended with the `@` character, which serves as a verbatim identifier. They are also supported. In this form, the backslash character (`\`) stands for itself and isn't an escape character. In verbatim string literals, double quotes are escaped with double quotes and single quotes are escaped with single quotes.
 
 For an example, see [Verbatim string](#verbatim-string-literal).
 
