@@ -47,21 +47,6 @@ In this article, you learn about:
 - For REST API, familiarize yourself with [Manage Azure resources by using the REST API](/azure/azure-resource-manager/management/manage-resources-rest).
 - For other programmatic methods, see [Prerequisites](create-cluster-database.md#prerequisites).
 
-### Supported regions
-
-Migration to multiple availability zones is limited to regions that don't have capacity restrictions. The following regions are currently supported:
-
-- Australia East
-- Canada Central
-- China North 3
-- India Central
-- North Europe
-- Norway East
-- South Africa North
-- Sweden Central
-- UAE North
-- UK South
-
 ## Get the list of availability zones for your cluster's region
 
 You can get a list of availability zones for your cluster in the following ways:
