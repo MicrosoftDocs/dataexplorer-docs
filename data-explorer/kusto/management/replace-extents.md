@@ -43,7 +43,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 |*FromDate*| `datetime` ||The query window start date.|
 |*ToDate*| `datetime` ||The query window end date.|
 |*PropertyName*, *PropertyValue*| `string` ||One or more [Supported properties](#supported-properties).|
-|*ExtentsToDropQuery*| `string` | :heavy_check_mark:|The results of this query specify the extent IDs to be dropped from the destination table. Returns a recordset with a column called "ExtentId."|
+|*ExtentsToDropQuery*| `string` | :heavy_check_mark:|The results of this query must include the `ExtentId` column, which contains the extent IDs to be removed from the destination table.|
 |*ExtentsToMoveQuery*| `string` | :heavy_check_mark:|The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be moved to the destination table. Returns a recordset with columns called "ExtentId" and "TableName."|
 
 ## Supported properties
