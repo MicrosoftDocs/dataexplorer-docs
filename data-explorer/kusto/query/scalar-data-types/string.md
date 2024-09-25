@@ -3,7 +3,7 @@ title:  The string data type
 description:  Learn about the string data type.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/24/2024
+ms.date: 09/25/2024
 ---
 # The string data type
 
@@ -59,7 +59,7 @@ For an example, see [Concatenated string literals](#concatenated-string-literals
 
 ## Obfuscated string literals
 
-Queries are stored for telemetry and analysis. To safeguard sensitive information like passwords and secrets, you can mark a string as an *obfuscated string literal*. These marked strings are replaced with asterisks (`*`) in the query text.
+Queries are stored for telemetry and analysis. To safeguard sensitive information like passwords and secrets, you can mark a string as an *obfuscated string literal*. These marked strings are logged in obfuscated form replaced with asterisks (`*`) in the query text.
 
 An obfuscated string literal is created by prepending an `h` or an `H` character in front of a standard or verbatim [string literal](#string-literals).
 
@@ -201,7 +201,7 @@ print
 
 ### Obfuscated string literal
 
-In the following query output, the `h` string is visible. However, in tracing or telemetry, the `h` string is substituted with asterisks. For more information, see [Obfuscated string literals](#obfuscated-string-literals).
+In the following query output, the `h` string is visible in your results. However, in tracing or telemetry, the `h` string is stored in an obfuscated form and substituted with asterisks in the results. For more information, see [Obfuscated string literals](#obfuscated-string-literals).
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
