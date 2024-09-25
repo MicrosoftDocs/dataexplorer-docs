@@ -44,7 +44,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 |*ToDate*| `datetime` ||The query window end date.|
 |*PropertyName*, *PropertyValue*| `string` ||One or more [Supported properties](#supported-properties).|
 |*ExtentsToDropQuery*| `string` | :heavy_check_mark:|The results of this query must include the `ExtentId` column, which contains the extent IDs to be removed from the destination table.|
-|*ExtentsToMoveQuery*| `string` | :heavy_check_mark:|The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be moved to the destination table. Returns a recordset with columns called "ExtentId" and "TableName."|
+|*ExtentsToMoveQuery*| `string` | :heavy_check_mark:|The results of this query must include the `ExtentId` and `TableName` columns, which contains the source tables and extent IDs to be moved to the destination table.|
 
 ## Supported properties
 
