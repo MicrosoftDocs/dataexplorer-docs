@@ -20,7 +20,8 @@ These commands execute a query or a management command and ingest the results of
 
 To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
 
-[!INCLUDE [direct-ingestion-note](../../includes/direct-ingestion-note.md)]
+> [!NOTE]
+> Ingest from query is a [direct ingestion](../../../ingest-data-overview.md#direct-ingestion-with-management-commands). As such, it does not include automatic retries, which are available when ingesting through the data management service. Use the [ingestion overview](../../../ingest-data-overview.md) document to decide which is the most suitable ingestion option for your scenario.
 
 ## Permissions
 
@@ -45,15 +46,19 @@ For more information on permissions, see [Kusto role-based access control](../..
 | *async* | `string` | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
 | *tableName* | `string` |  :heavy_check_mark: | The name of the table to ingest data into. The *tableName* is always related to the database in context. |
 | *propertyName*, *propertyValue* | `string` | | One or more [supported ingestion properties](#supported-ingestion-properties) used to control the ingestion process. |
-| *queryOrCommand* | `string` |  :heavy_check_mark: | The text of a query or a management command whose results are used as data to ingest.|
+| *queryOrCommand* | `string` |  :heavy_check_mark: | The text of a query or a management command whose results are used as data to ingest. Only `.show` management commands are supported.|
 
-> [!NOTE]
-> Only `.show` management commands are supported.
+## Performance tips
+
+* Set the `distributed` property to `true` if the amount of data being produced by the query is large, exceeds 1 GB, and doesn't require serialization. Then, multiple nodes can produce output in parallel. Don't use this flag when query results are small, since it might needlessly generate many small data shards.
+* Data ingestion is a resource-intensive operation that might affect concurrent activities on the database, including running queries. Avoid running too many ingestion commands at the same time.
+* Limit the data for ingestion to less than 1 GB per ingestion operation. If necessary, use multiple ingestion commands.
 
 ## Supported ingestion properties
 
 |Property|Type|Description|
 |--|--|--|
+|`distributed` | `bool` | If `true`, the command ingests from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips).|
 |`creationTime` | `string` | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, `now()` is used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../merge-policy.md) is aligned with the specified value.|
 |`extend_schema` | `bool` | If `true`, the command may extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
 |`recreate_schema` | `bool` | If `true`, the command may recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the `extend_schema` property if both are set. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
@@ -62,7 +67,6 @@ For more information on permissions, see [Kusto role-based access control](../..
 |`policy_ingestiontime` | `bool` | If `true`, the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) will be enabled on the table. The default is `true`.|
 |`tags` | `string` | A JSON string that represents a list of [tags](../extent-tags.md) to associate with the created extent. |
 |`docstring` | `string` | A description used to document the table.|
-|`distributed` | `bool` | If `true`, the command ingests from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips).|
 |`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../show-operations.md) command. Defaults to `false`. |`with (persistDetails=true)`|
 
 ## Schema considerations
@@ -73,12 +77,6 @@ For more information on permissions, see [Kusto role-based access control](../..
 
 > [!CAUTION]
 > If the schema is modified, it happens in a separate transaction before the actual data ingestion. This means the schema may be modified even when there is a failure to ingest the data.
-
-## Performance tips
-
-* Data ingestion is a resource-intensive operation that might affect concurrent activities on the database, including running queries. Avoid running too many ingestion commands at the same time.
-* Limit the data for ingestion to less than 1 GB per ingestion operation. If necessary, use multiple ingestion commands.
-* Set the `distributed` flag to `true` if the amount of data being produced by the query is large, exceeds 1 GB, and doesn't require serialization. Then, multiple nodes can produce output in parallel. Don't use this flag when query results are small, since it might needlessly generate many small data shards.
 
 ## Character limitation
 
