@@ -21,7 +21,7 @@ These commands execute a query or a management command and ingest the results of
 To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
 
 > [!NOTE]
-> Ingest from query is a [direct ingestion](../../../ingest-data-overview.md#direct-ingestion-with-management-commands). As such, it does not include automatic retries. Automatic retries are available when ingesting through the data management service. Use the [ingestion overview](../../../ingest-data-overview.md) document to decide which is the most suitable ingestion option for your scenario.
+> Ingest from query is a [direct ingestion](/azure/data-explorer/ingest-data-overview#direct-ingestion-with-management-commands). As such, it does not include automatic retries. Automatic retries are available when ingesting through the data management service. Use the [ingestion overview](/azure/data-explorer/ingest-data-overview) document to decide which is the most suitable ingestion option for your scenario.
 
 ## Permissions
 
