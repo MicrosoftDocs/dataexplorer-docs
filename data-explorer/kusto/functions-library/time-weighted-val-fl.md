@@ -14,7 +14,7 @@ The function `time_weighted_val_fl()` is a [user-defined function (UDF)](../quer
 
 ## Syntax
 
-`T | invoke time_weighted_avg_fl(`*t_col*`,` *y_col*`,` *key_col*`,` *stime*`,` *etime*`,` *dt*`,` *keep_orig*`)`
+`T | invoke time_weighted_avg_fl(`*t_col*`,` *y_col*`,` *key_col*`,` *stime*`,` *etime*`,` *dt*`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -28,7 +28,6 @@ The function `time_weighted_val_fl()` is a [user-defined function (UDF)](../quer
 | *stime* | `datetime` |  :heavy_check_mark: | The start time of the aggregation window.|
 | *etime* | `datetime` |  :heavy_check_mark: | The end time of the aggregation window.|
 | *dt* | `timespan` |  :heavy_check_mark: | The aggregation time bin.|
-| *keep_orig* | `bool` | | Keep original samples. Default is false.|
 
 ## Function definition
 
@@ -42,7 +41,7 @@ Define the function using the following [let statement](../query/let-statement.m
 > A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `time_weighted_avg_fl()`, see [Example](#example).
 
 ```kusto
-let time_weighted_val_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan, keep_orig:bool=false)
+let time_weighted_val_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
     let tbl_ex = tbl | extend _ts = column_ifexists(t_col, datetime(null)), _val = column_ifexists(y_col, 0.0), _key = column_ifexists(key_col, '');
     let gridTimes = range _ts from stime to etime step dt | extend _val=real(null), grid=1, dummy=1;
@@ -50,7 +49,7 @@ let time_weighted_val_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, s
     gridTimes
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
-    | union tbl_ex
+    | union (tbl_ex | extend grid=0)
     | where _ts between (stime..etime)
     | partition hint.strategy=native by _key (
       order by _ts desc, _val nulls last
@@ -64,8 +63,8 @@ let time_weighted_val_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, s
     | extend _twa_val=iff(dt0+dt1 == 0, _val, ((val0*dt1)+(val1*dt0))/(dt0+dt1))
     | scan with (                                                    // fill forward null twa values
         step s: true => _twa_val=iff(isnull(_twa_val), s._twa_val, _twa_val);)
+    | where grid == 0 or (grid == 1 and _ts != prev(_ts))
     )
-    | where grid == 1 or (keep_orig and _ts != next(_ts))
     | project _ts, _key, _twa_val, orig_val=iff(grid == 1, 0, 1)
     | order by _key asc, _ts asc
 };
@@ -81,7 +80,7 @@ Define the stored function once using the following [`.create function`](../mana
 
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Linear interpolation of metric value by time weighted average")
-time_weighted_val_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan, keep_orig:bool=false)
+time_weighted_val_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
     let tbl_ex = tbl | extend _ts = column_ifexists(t_col, datetime(null)), _val = column_ifexists(y_col, 0.0), _key = column_ifexists(key_col, '');
     let gridTimes = range _ts from stime to etime step dt | extend _val=real(null), grid=1, dummy=1;
@@ -89,7 +88,7 @@ time_weighted_val_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:
     gridTimes
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
-    | union tbl_ex
+    | union (tbl_ex | extend grid=0)
     | where _ts between (stime..etime)
     | partition hint.strategy=native by _key (
       order by _ts desc, _val nulls last
@@ -103,8 +102,8 @@ time_weighted_val_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:
     | extend _twa_val=iff(dt0+dt1 == 0, _val, ((val0*dt1)+(val1*dt0))/(dt0+dt1))
     | scan with (                                                    // fill forward null twa values
         step s: true => _twa_val=iff(isnull(_twa_val), s._twa_val, _twa_val);)
+    | where grid == 0 or (grid == 1 and _ts != prev(_ts))
     )
-    | where grid == 1 or (keep_orig and _ts != next(_ts))
     | project _ts, _key, _twa_val, orig_val=iff(grid == 1, 0, 1)
     | order by _key asc, _ts asc
 }
@@ -121,7 +120,7 @@ The following example uses the [invoke operator](../query/invoke-operator.md) to
 To use a query-defined function, invoke it after the embedded function definition.
 
 ```kusto
-let time_weighted_val_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan, keep_orig:bool=false)
+let time_weighted_val_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
     let tbl_ex = tbl | extend _ts = column_ifexists(t_col, datetime(null)), _val = column_ifexists(y_col, 0.0), _key = column_ifexists(key_col, '');
     let gridTimes = range _ts from stime to etime step dt | extend _val=real(null), grid=1, dummy=1;
@@ -129,7 +128,7 @@ let time_weighted_val_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, s
     gridTimes
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
-    | union tbl_ex
+    | union (tbl_ex | extend grid=0)
     | where _ts between (stime..etime)
     | partition hint.strategy=native by _key (
       order by _ts desc, _val nulls last
@@ -143,8 +142,8 @@ let time_weighted_val_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, s
     | extend _twa_val=iff(dt0+dt1 == 0, _val, ((val0*dt1)+(val1*dt0))/(dt0+dt1))
     | scan with (                                                    // fill forward null twa values
         step s: true => _twa_val=iff(isnull(_twa_val), s._twa_val, _twa_val);)
+    | where grid == 0 or (grid == 1 and _ts != prev(_ts))
     )
-    | where grid == 1 or (keep_orig and _ts != next(_ts))
     | project _ts, _key, _twa_val, orig_val=iff(grid == 1, 0, 1)
     | order by _key asc, _ts asc
 };
@@ -162,7 +161,7 @@ let stime=toscalar(minmax | project mint);
 let etime=toscalar(minmax | project maxt);
 let dt = 1h;
 tbl
-| invoke time_weighted_val_fl('ts', 'val', 'key', stime, etime, dt, keep_orig=true)
+| invoke time_weighted_val_fl('ts', 'val', 'key', stime, etime, dt)
 | project-rename val = _twa_val
 | order by _key asc, _ts asc
 ```
@@ -187,7 +186,7 @@ let stime=toscalar(minmax | project mint);
 let etime=toscalar(minmax | project maxt);
 let dt = 1h;
 tbl
-| invoke time_weighted_val_fl('ts', 'val', 'key', stime, etime, dt, keep_orig=true)
+| invoke time_weighted_val_fl('ts', 'val', 'key', stime, etime, dt)
 | project-rename val = _twa_val
 | order by _key asc, _ts asc
 ```
