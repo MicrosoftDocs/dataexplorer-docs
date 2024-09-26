@@ -201,7 +201,7 @@ print
 
 ### Obfuscated string literal
 
-In the following query output, the `h` string is visible in your results. However, in tracing or telemetry, the `h` string is stored in an obfuscated form and substituted with asterisks in the results. For more information, see [Obfuscated string literals](#obfuscated-string-literals).
+In the following query output, the `h` string is visible in your results. However, in tracing or telemetry, the `h` string is stored in an obfuscated form and substituted with asterisks in the log. For more information, see [Obfuscated string literals](#obfuscated-string-literals).
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
