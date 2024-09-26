@@ -102,7 +102,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
 :::moniker range="azure-data-explorer"
 1. [Run your query](#basic-queries) in Kusto.Explorer.
-1. In the Home tab, in the Share section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
+1. In the **Home** tab, in the **Share** section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
 
     :::image type="content" source="media/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
 
