@@ -112,7 +112,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
      * The connection details for the Kusto cluster and database
      * A link that reruns the query automatically
 1. Paste the contents of the clipboard into a new email message.
-    :::image type="content" source="media/kusto-explorer-using/share-results-2.png" alt-text="Screenshot of the share results in an email." lightbox="media/kusto-explorer-using/share-results-2.png":::
+    :::image type="content" source="media/kusto-explorer-using/share-results-2.png" alt-text="Screenshot of the shared results in an email." lightbox="media/kusto-explorer-using/share-results-2.png":::
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 1. [Run your query](#basic-queries) in Kusto.Explorer.
@@ -126,7 +126,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
      * The connection details for the eventhouse and database
      * A link that reruns the query automatically
 1. Paste the contents of the clipboard into a new email message.
-    :::image type="content" source="media/kusto-explorer-using/share-results-fabric.png" alt-text="Screenshot of the share results from a Fabric KQL database in an email." lightbox="media/kusto-explorer-using/share-results-fabric.png":::
+    :::image type="content" source="media/kusto-explorer-using/share-results-fabric.png" alt-text="Screenshot of the shared results from a Fabric KQL database in an email." lightbox="media/kusto-explorer-using/share-results-fabric.png":::
 ::: moniker-end
 
 ### Deep-linking queries
