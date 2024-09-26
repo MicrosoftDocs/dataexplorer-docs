@@ -75,4 +75,8 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Related content
 
-Use `.alter-merge` when you wish to preserve the table settings and only override or expand certain columns. For more information, see [.alter-merge table](../management/alter-merge-table-command.md).
+* Use `.alter-merge` when you wish to preserve the table settings and only override or expand certain columns. For more information, see [.alter-merge table](../management/alter-merge-table-command.md).
+* [.alter table policy retention](../management/alter-table-retention-policy-command.md)
+* [.alter table policy caching](../management/alter-table-cache-policy-command.md)
+* [.alter table policy update](../management/alter-table-update-policy-command.md)
+* [.alter table policy merge](../management/alter-table-merge-policy-command.md)
