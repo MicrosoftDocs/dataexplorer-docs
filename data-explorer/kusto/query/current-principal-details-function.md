@@ -33,7 +33,7 @@ The details of the current principal as a [dynamic](../query/scalar-data-types/d
 |FQN|The Fully Qualified Name (FQN) of the principal. Valuable for [security role management commands](../management/security-roles.md). For more information, see [Referencing security principals](../management/reference-security-principals.md).|
 |Country|The user's country/region. This property is returned if the information is present. The value is a standard two-letter country/region code, for example, FR, JP, and SZ.|
 |TenantCountry|Resource tenant's country/region. This property is returned if the information is present. The value is similar to Country, set at a tenant level by an admin.|
-|TenantRegion|Region of the resource tenant. This property is returned if the information is present.|
+|TenantRegion|The region of the resource tenant. This property is returned if the information is present. The value is a standard two-letter country/region code, for example, FR, JP, and SZ. |
 
 ## Example
 
