@@ -3,7 +3,8 @@ title:  UI deep links
 description: This article describes UI deep links.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 09/29/2024
+monikerRange: "azure-data-explorer"
 ---
 # UI deep links
 
