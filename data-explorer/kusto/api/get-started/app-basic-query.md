@@ -1,10 +1,11 @@
 ---
-title:  'Create an app to run basic queries'
+title: Create an app to run basic queries
 description: Learn how to create an app to run basic queries using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
+#customer intent: To learn about creating an app to run basic queries using Kusto client libraries.
 ---
 # Create an app to run basic queries
 

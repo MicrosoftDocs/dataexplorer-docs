@@ -1,10 +1,11 @@
 ---
-title:  Create an app to get data using queued ingestion
+title: Create an app to get data using queued ingestion
 description: Learn how to create an app to get data using queued ingestion of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
+#customer intent: To learn about creating an app to get data using queued ingestion.
 ---
 # Create an app to get data using queued ingestion
 
@@ -1372,9 +1373,8 @@ Last ingested row:
 
 ## Next step
 
-<!-- Advance to the next article to learn how to create... -->
-<!-- > [!div class="nextstepaction"]
-> [TBD](../../../kql-quick-reference.md) -->
+> [!div class="nextstepaction"]
+> [App authentication methods](app-authentication-methods.md)
 
 > [!div class="nextstepaction"]
 > [KQL quick reference](../../query/kql-quick-reference.md)

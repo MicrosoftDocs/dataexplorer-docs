@@ -5,6 +5,7 @@ ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
+#customer intent: To learn about setting up your development environment to use Kusto client libraries.
 ---
 # Set up your development environment to use Kusto client libraries
 
