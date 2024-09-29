@@ -144,7 +144,7 @@ The easiest way to create a deep-link is to author your query in Kusto.Explorer 
 When copied to an email, a number of links to execute are displayed in small font. For example:
 
 :::moniker range="azure-data-explorer"
-Execute: [[Web](https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] [[Desktop](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] [Web (Lens)] [Desktop (SAW)] https:\/\/help.kusto.windows.net/Samples
+> Execute: [[Web](https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] [[Desktop](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] [Web (Lens)] [Desktop (SAW)] https:\/\/help.kusto.windows.net/Samples
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 
@@ -214,7 +214,7 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
 ::: moniker-end
 
 :::moniker range="microsoft-fabric"
-https://<\BaseAddress>/groups/1234ab-cd55-6789-0123-e4567fg890hi/databases/01234abc-defg-6789-4567fg890hi?experience=power-bi&extensionScenario=openArtifact&query=1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC%AB%AB
+> https://<\BaseAddress>/groups/1234ab-cd55-6789-0123-e4567fg890hi/databases/01234abc-defg-6789-4567fg890hi?experience=power-bi&extensionScenario=openArtifact&query=1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC%AB%AB
 ::: moniker-end
 
 The query is made more compact by applying the following transformation:
