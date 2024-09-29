@@ -148,7 +148,7 @@ When copied to an email, a number of links to execute are displayed in small fon
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 
-Execute: [Web] [Desktop] [Web (Lens)] [Desktop (SAW)] https:\/\/trd-1234.kusto.fabric.microsoft.com
+> Execute: [Web] [Desktop] [Web (Lens)] [Desktop (SAW)] https:\/\/trd-1234.kusto.fabric.microsoft.com
 
 ::: moniker-end
 
