@@ -43,10 +43,10 @@ If your cluster already has the desired managed identity assigned to it, copy it
 
 > [!IMPORTANT]
 >
-> Storage Service may return `Download Forbidden` error in case of network issues.
+> In the event of network problems, your storage service may return a `Download Forbidden` error.
 > 
-> If you use Private Link to access Storage account, you may run into this error unexpectedly.
-> In such cases, if permissions were correctly granted, please verify the connectivity to your Storage account.
+> This error may occur if you use a private link to access your storage account.
+> In such cases, if the permissions are correct, verify the connectivity to your storage account.
 
 ## Set the managed identity policy in Azure Data Explorer
 
