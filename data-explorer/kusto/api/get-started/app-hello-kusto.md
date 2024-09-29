@@ -1,5 +1,5 @@
 ---
-title: Hello Kusto: Create your first
+title: Create your first
 description: Learn how to create your first app to print Hello Kusto using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
