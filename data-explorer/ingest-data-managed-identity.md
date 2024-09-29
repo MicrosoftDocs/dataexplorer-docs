@@ -36,7 +36,6 @@ If your cluster already has the desired managed identity assigned to it, copy it
 1. Grant the managed identity **Storage Blob Data Reader**, or **Storage Blob Data Contributor** if you intend to use the **DeleteSourceOnSuccess** source option, permissions to the storage account.
 
 > [!NOTE]
->
 > Granting **Owner** or **Contributor** permissions is not sufficient and will result in the ingestion failing.
 
 :::image type="content" source="media/ingest-data-managed-identity/managed-identity-permissions-on-system-assigned.png" alt-text="Screenshot of the add role assignment page, showing the system assigned role for ingestion using managed identities":::
