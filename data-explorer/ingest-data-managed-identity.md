@@ -41,9 +41,7 @@ If your cluster already has the desired managed identity assigned to it, copy it
 :::image type="content" source="media/ingest-data-managed-identity/managed-identity-permissions-on-system-assigned.png" alt-text="Screenshot of the add role assignment page, showing the system assigned role for ingestion using managed identities":::
 
 > [!IMPORTANT]
->
 > In the event of network problems, Azure Storage may return a `Download Forbidden` error.
-> 
 > This error may occur if you use a private link to access your storage account.
 > In such cases, if the permissions are correct, verify the connectivity to your storage account.
 
