@@ -1,6 +1,6 @@
 ---
 title: Authentication methods for Kusto client libraries
-description: Learn about the different authentication methonds that can be used in apps using Kusto client libraries.
+description: Learn about the different authentication methods that can be used in apps using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 09/25/2024
@@ -13,8 +13,9 @@ monikerRange: "azure-data-explorer"
 
 This documentation provides an overview of the primary methods of authentication methods available for the Kusto client libraries. The provided code snippets demonstrate different approaches to authenticate users and apps, enabling seamless interaction with Kusto clusters. Each method is suitable for different scenarios and requirements.
 
+Where possible, we recommend using managed identities instead of username and password authentication or connection strings. Managed identities provide a more secure and streamlined approach to authentication.
+
 <!-- TODO: Add table showing which authentication methods are supported by each language SDK. -->
-<!-- TODO: Add recommendation for prefeered method. -->
 
 In this article, you learn how to authenticate using:
 
@@ -111,7 +112,7 @@ Certificates can serve as secrets to authenticate the application's identity whe
 
 ### Application key authentication
 
-Application key, also known as an application password, is a secret string that an application uses to authenticate and prove its identity when requesting a token. It serves as a form of credential for the application to access protected resources. The application key is typically generated and assigned by the identity provider or authorization server. It is important to securely manage and protect the application key to prevent unauthorized access to sensitive information or actions.
+Application key, also known as an application password, is a secret string that an application uses to authenticate and prove its identity when requesting a token. It serves as a form of credential for the application to access protected resources. The application key is typically generated and assigned by the identity provider or authorization server. It's important to securely manage and protect the application key to prevent unauthorized access to sensitive information or actions.
 
 | In the following examples, replace *`<QueryEndpointUri>`*, *`<ApplicationId>`*, *`<ApplicationKey>`*, and *`<AuthorityId>`* with your own values.
 
@@ -139,7 +140,7 @@ This section covers the different methods of authenticating using a user princip
 
 ### Interactive user sign-in authentication
 
-This authentication method uses the user's credentials to establish a secure connection with Kusto. The method opend a web browser where the user is prompted to enter their username and password to complete the authentication process.
+This authentication method uses the user's credentials to establish a secure connection with Kusto. The method opens a web browser where the user is prompted to enter their username and password to complete the authentication process.
 
 | In the following examples, replace *`<QueryEndpointUri>`* and *`<AuthorityId>`* with your own values.
 
@@ -160,7 +161,7 @@ This authentication method uses the user's credentials to establish a secure con
 
 ### Azure Command-Line Interface (CLI) authentication
 
-This authentication method uses the Azure Command-Line Interface (CLI) to authenticate and obtain a token for the user. By running the `az login` command, the user can securely establish a connection and retrieve the necessary token for authentication purposes. The user may be prompted to sign-in if the token isn't available in the Azure CLI cache and the `interactive` parameter is set to `true`. For more information, see [Azure Command-Line Interface (CLI)](/cli/azure/).
+This authentication method uses the Azure Command-Line Interface (CLI) to authenticate and obtain a token for the user. By running the `az login` command, the user can securely establish a connection and retrieve the necessary token for authentication purposes. The user might be prompted to sign-in if the token isn't available in the Azure CLI cache and the `interactive` parameter is set to `true`. For more information, see [Azure Command-Line Interface (CLI)](/cli/azure/).
 
 | In the following example, replace *`<QueryEndpointUri>`*  with your own value.
 
@@ -271,7 +272,7 @@ var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>")
 
 Create a custom token provider by creating a class that inherits from `TokenCredential` and implements the `GetToken` method. Alternatively, you can use an existing token provider like `DefaultAzureCredential`. This method provides flexibility for different authentication scenarios when a custom token provider is required.
 
-You can use `DefaultAzureCredential` to support production code that uses Managed Identity authentication, or for testing code using Visual Studio or Azure CLI. `DefaultAzureCredential` can be configured to use different authentication methods.
+You can use `DefaultAzureCredential` for supporting production code that uses Managed Identity authentication, or  testing code using Visual Studio or Azure CLI. `DefaultAzureCredential` can be configured to use different authentication methods.
 
 | In the following example, replace *`<QueryEndpointUri>`* and *`<ManagedIdentityClientId>`*  with your own values.
 
