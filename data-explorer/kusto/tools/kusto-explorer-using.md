@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 09/23/2024
+ms.date: 09/30/2024
 ---
 
 # Using Kusto.Explorer
@@ -235,8 +235,27 @@ Kusto.Explorer supports several command-line arguments in the following syntax (
 
 [*LocalScriptFile*] [*QueryString*]
 
-* *LocalScriptFile* is the name of a script file on your local machine, which must have the extension `.kql`. If such a file exists, Kusto.Explorer automatically loads this file when it starts up.
-* *QueryString* is a string that uses HTTP query string formatting. This method provides more properties, as described in the following table.
+#### Command-line arguments
+
+|Command-line Argument  |Description  |
+|-----------|----------------------------------------|
+| *LocalScriptFile* | The name of a script file on your local machine, which must have the extension `.kql`. If such a file exists, Kusto.Explorer automatically loads this file when it starts up. |
+| *QueryString* | A string that uses HTTP query string formatting. This method provides more properties, as described in the following table.|
+
+#### Querystring arguments
+
+|Argument  |Description |
+|----------|------------------------------------------------------|
+|**Query to execute**                                                                 |
+|`query`   |The query to execute (gzipped, then base64-encoded; see [Getting shorter links](#getting-shorter-links)). If empty, use `querysrc`.|
+|`querysrc`|The HTTP URL of a file/blob holding the query to execute (if `query` is empty).|
+|**Connection to the Kusto cluster**                                                  |
+|`uri`     |The connection string of the Kusto cluster to connect to.                 |
+|`name`    |The display name of the connection to the Kusto cluster.                  |
+|**Connection group**                                                                 |
+|`path`    |The URL of a connection group file to download (URL-encoded).             |
+|`group`   |The name of the connection group.                                         |
+|`filename`|The local file holding the connection group.                              |
 
 :::moniker range="azure-data-explorer"
 For example, to start Kusto.Explorer with a script file called `c:\temp\script.kql`
@@ -259,18 +278,6 @@ Kusto.Explorer.exe c:\temp\script.kql "uri=https://<baseaddress>/groups/<GroupID
 
 ::: moniker-end
 
-|Argument  |Description                                                               |
-|----------|--------------------------------------------------------------------------|
-|**Query to execute**                                                                 |
-|`query`   |The query to execute (gzipped, then base64-encoded; see [Getting shorter links](#getting-shorter-links)). If empty, use `querysrc`.|
-|`querysrc`|The HTTP URL of a file/blob holding the query to execute (if `query` is empty).|
-|**Connection to the Kusto cluster**                                                  |
-|`uri`     |The connection string of the Kusto cluster to connect to.                 |
-|`name`    |The display name of the connection to the Kusto cluster.                  |
-|**Connection group**                                                                 |
-|`path`    |The URL of a connection group file to download (URL-encoded).             |
-|`group`   |The name of the connection group.                                         |
-|`filename`|The local file holding the connection group.                              |
 
 ## Manage databases, tables, or function authorized principals
 
