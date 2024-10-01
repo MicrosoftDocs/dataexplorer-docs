@@ -54,10 +54,10 @@ When attaching the database all tables, external tables and materialized views a
     tablesToInclude = []
     ```
 
-1. Include all functions. The '*' is needed, since none followers are followed by default:
+1. Include all functions. No '*' is needed, since all tables are followed by default:
 
     ```kusto
-    functionsToInclude = ["*"]
+    functionsToInclude = [ ]
     ```
 
 1. Include all tables with names that start with "Logs":
