@@ -50,33 +50,33 @@ When attaching the database all tables, external tables and materialized views a
 
 The following examples includes all tables. By default, all tables are followed without using the '*' notation:
 
-    ```kusto
-    tablesToInclude = []
-    ```
+```kusto
+tablesToInclude = []
+```
 
 The following examples includes all functions. By default, all functions are followed without using the '*' notation:
 
-    ```kusto
-    functionsToInclude = []
-    ```
+```kusto
+functionsToInclude = []
+```
 
 The following examples includes all tables with names that start with "Logs":
 
-    ```kusto
-    tablesToInclude = ["Logs*"]
-    ```
+```kusto
+tablesToInclude = ["Logs*"]
+```
 
 The following examples includes all external tables:
 
-    ```kusto
-    externalTablesToExclude = ["*"]
-    ```
+```kusto
+externalTablesToExclude = ["*"]
+```
 
 The following examples includes all materialized views:
 
-    ```kusto
-    materializedViewsToExclude=["*"]
-    ```
+```kusto
+materializedViewsToExclude=["*"]
+```
 
 ### Database name override
 
