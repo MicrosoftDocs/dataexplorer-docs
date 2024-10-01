@@ -9,11 +9,11 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-::: moniker range= "azure-data-explorer"
+::: moniker range="azure-data-explorer"
 Cluster nodes cache the schema of databases that get data through [streaming ingestion](/azure/data-explorer/ingest-data-streaming), boosting performance and resource use. However, when there are schema changes, it can lead to delays in updates.
 ::: moniker-end
 
-::: moniker range= "microsoft-fabric"
+::: moniker range="microsoft-fabric"
 Eventhouse nodes cache the schema of databases that get data through [streaming ingestion](/azure/data-explorer/ingest-data-streaming), boosting performance and resource use. However, when there are schema changes, it can lead to delays in updates.
 ::: moniker-end
 
