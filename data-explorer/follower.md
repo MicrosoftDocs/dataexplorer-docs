@@ -48,31 +48,31 @@ When attaching the database all tables, external tables and materialized views a
 
 #### Examples
 
-The following examples includes all tables. By default, all tables are followed without using the '*' notation:
+The following example includes all tables. By default, all tables are followed without using the '*' notation:
 
 ```kusto
 tablesToInclude = []
 ```
 
-The following examples includes all functions. By default, all functions are followed without using the '*' notation:
+The following example includes all functions. By default, all functions are followed without using the '*' notation:
 
 ```kusto
 functionsToInclude = []
 ```
 
-The following examples includes all tables with names that start with "Logs":
+The following example includes all tables with names that start with "Logs":
 
 ```kusto
 tablesToInclude = ["Logs*"]
 ```
 
-The following examples includes all external tables:
+The following example includes all external tables:
 
 ```kusto
 externalTablesToExclude = ["*"]
 ```
 
-The following examples includes all materialized views:
+The following example includes all materialized views:
 
 ```kusto
 materializedViewsToExclude=["*"]
