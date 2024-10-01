@@ -54,17 +54,61 @@ There are two types of managed identities: system-assigned and user-assigned. Sy
 
 - For authentication using a system-assigned managed identity:
 
+    #### [C\#](#tab/csharp)
+
     ```csharp
-    var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>").
-        WithAadSystemManagedIdentity();
+    var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>")
+        .WithAadSystemManagedIdentity();
     ```
+
+    #### [Python](#tab/python)
+
+    ```python
+    kcsb = KustoConnectionStringBuilder.with_aad_managed_service_identity_authentication("<QueryEndpointUri>")
+    ```
+
+    #### [Typescript](#tab/typescript)
+
+    ```typescript
+    const kcsb = KustoConnectionStringBuilder.withSystemManagedIdentity("<QueryEndpointUri>");
+    ```
+
+    #### [Java](#tab/java)
+
+    ```java
+    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder.createWithAadManagedIdentity("<QueryEndpointUri>");
+    ```
+
+    ---
 
 - For authentication using a user-assigned managed identity, the identity client ID is required, as follows:
 
+    #### [C\#](#tab/csharp)
+
     ```csharp
-    var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>").
-        WithAadUserManagedIdentity("<ManagedIdentityId>");
+    var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>")
+        .WithAadUserManagedIdentity("<ManagedIdentityId>");
     ```
+
+    #### [Python](#tab/python)
+
+    ```python
+    kcsb = KustoConnectionStringBuilder.with_aad_managed_service_identity_authentication("<QueryEndpointUri>", "<ManagedIdentityId>")
+    ```
+
+    #### [Typescript](#tab/typescript)
+
+    ```typescript
+    const kcsb = KustoConnectionStringBuilder.withUserManagedIdentity("<QueryEndpointUri>", "<ManagedIdentityId>");
+    ```
+
+    #### [Java](#tab/java)
+
+    ```java
+    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder.createWithAadManagedIdentity("<QueryEndpointUri>", "<ManagedIdentityId>");
+    ```
+
+    ---
 
 > [!IMPORTANT]
 >
@@ -75,14 +119,42 @@ There are two types of managed identities: system-assigned and user-assigned. Sy
 
 Certificates can serve as secrets to authenticate the application's identity when requesting a token. There are several methods to load the certificate, such as loading it from disk or the machine's credentials store.
 
-| In the following examples, replace *`<QueryEndpointUri>`*, *`<ApplicationId>`*, *`<CertificateSubjectName>`*, *`<CertificateIssuerName>`*, and *`<AuthorityId>`* with your own values.
+| In the following examples, replace *`<QueryEndpointUri>`*, *`<ApplicationId>`*, *`<CertificateSubjectName>`*, *`<CertificateIssuerName>`*, *`<AuthorityId>`*, *`<PemCertificate>`* and *`<CertificateObject>`* with your own values.
 
 - For authentication using a certificate from the local store:
+
+    #### [C\#](#tab/csharp)
 
     ```csharp
     var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>").
         WithAadApplicationSubjectAndIssuerAuthentication("<ApplicationId>", "<CertificateSubjectName>", "<CertificateIssuerName>", "<AuthorityId>");
     ```
+
+    #### [Python](#tab/python)
+
+    ```python
+    kcsb = KustoConnectionStringBuilder.with_aad_application_certificate_authentication(
+      "<QueryEndpointUri>", "<ApplicationId>", "<CertificateSubjectName>", "<CertificateIssuerName>", "<AuthorityId>"
+    )
+    ```
+
+    #### [Typescript](#tab/typescript)
+
+    ```typescript
+    const kcsb = KustoConnectionStringBuilder.withAadApplicationCertificateAuthentication(
+      "<QueryEndpointUri>", "<ApplicationId>", "<CertificateSubjectName>", "<CertificateIssuerName>", "<AuthorityId>"
+    );
+    ```
+
+    #### [Java](#tab/java)
+
+    ```java
+    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder.createWithAadApplicationSubjectAndIssuerAuthentication(
+      "<QueryEndpointUri>", "<ApplicationId>", "<CertificateSubjectName>", "<CertificateIssuerName>", "<AuthorityId>"
+    );
+    ```
+
+    ---
 
 - For authentication using a certificate in a connection string. If the connection string loads a local certificate, set `PreventAccessToLocalSecretsViaKeywords` to `false`:
 
@@ -100,9 +172,18 @@ Certificates can serve as secrets to authenticate the application's identity whe
 - For authentication using a certificate from an arbitrary source, such as a file on disk, cache, or secure store like Azure Key Vault, the certificate object must contain a private key:
 
     ```csharp
-    X509Certificate2 certificate = <your certificate object>;
+    X509Certificate2 certificate = <CertificateObject>;
     var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>").
         WithAadApplicationCertificateAuthentication("<ApplicationId>", certificate, "<AuthorityId>");
+    ```
+
+    #### [Typescript](#tab/typescript)
+
+    ```typescript
+    const pemCertificate: string = await fs.promises.readFile(privateKeyPemFilePath, "utf8");
+    const kcsb = KustoConnectionStringBuilder.withAadApplicationCertificateAuthentication(
+      "<QueryEndpointUri>", "<ApplicationId>", "<PemCertificate>", "<AuthorityId>"
+    );
     ```
 
 > [!IMPORTANT]
