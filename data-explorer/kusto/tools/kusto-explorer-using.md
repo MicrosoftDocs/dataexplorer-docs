@@ -237,9 +237,9 @@ Kusto.Explorer supports several command-line arguments in the following syntax (
 
 #### Command-line arguments
 
-|Command-line Argument  |Description  |
+|Command-line argument  |Description  |
 |-----------|----------------------------------------|
-| *LocalScriptFile* | The name of a script file on your local machine, which must have the extension `.kql`. If such a file exists, Kusto.Explorer automatically loads this file when it starts up. |
+| *LocalScriptFile* | The name of a script file on your local machine, which must have the extension `.kql`. If the file exists, Kusto.Explorer automatically loads the file when it starts up. |
 | *QueryString* | A string that uses HTTP query string formatting. This method provides more properties, as described in the following table.|
 
 #### Querystring arguments
