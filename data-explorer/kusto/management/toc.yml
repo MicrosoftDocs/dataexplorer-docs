@@ -238,6 +238,8 @@ items:
         items:
           - name: Columns management
             href: columns.md
+          - name: Change column type without data loss
+            href: change-column-type-without-data-loss.md 
           - name: .alter column command
             href: alter-column.md
           - name: .drop column command
