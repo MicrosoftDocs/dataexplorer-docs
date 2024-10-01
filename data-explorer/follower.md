@@ -33,7 +33,7 @@ There are various methods you can use to attach a database. In this article, we 
 To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. Add or remove role assignments using [Azure portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli), and [ARM template](/azure/role-based-access-control/role-assignments-template). Learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles).
 
 > [!NOTE]
-> The attachment process automatically creates a follower database during its execution, eliminating the need to pre-create the database for later attachment.
+> The attachment process automatically creates a follower database during its execution, eliminating the need to pre-create the database beforehand for later attachment.
 
 ### Table level sharing
 
