@@ -247,8 +247,8 @@ Kusto.Explorer supports several command-line arguments in the following syntax (
 |Argument  |Description |
 |----------|------------------------------------------------------|
 |**Query to execute**                                                                 |
-|`query`   |The query to execute (gzipped, then base64-encoded; see [Getting shorter links](#getting-shorter-links)). If empty, use `querysrc`.|
-|`querysrc`|The HTTP URL of a file/blob holding the query to execute (if `query` is empty).|
+|`query`   |The query to execute (gzipped, then base64-encoded; see [Getting shorter links](#getting-shorter-links)). If not specified, uses `querysrc`.|
+|`querysrc`|The URL of a file/blob holding the query to execute.|
 |**Connection to the Kusto cluster**                                                  |
 |`uri`     |The connection string of the Kusto cluster to connect to.                 |
 |`name`    |The display name of the connection to the Kusto cluster.                  |
