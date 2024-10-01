@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 09/30/2024
+ms.date: 10/01/2024
 ---
 
 # Using Kusto.Explorer
@@ -257,8 +257,10 @@ Kusto.Explorer supports several command-line arguments in the following syntax (
 |`group`   |The name of the connection group.                                         |
 |`filename`|The local file holding the connection group.                              |
 
+#### Example
+
 :::moniker range="azure-data-explorer"
-For example, to start Kusto.Explorer with a script file called `c:\temp\script.kql`
+To start Kusto.Explorer with a script file called `c:\temp\script.kql`
 and configured to communicate with cluster `help`, database `Samples`, use the
 following command:
 
@@ -268,7 +270,7 @@ Kusto.Explorer.exe c:\temp\script.kql "uri=https://help.kusto.windows.net/Sample
 
 ::: moniker-end
 :::moniker range="microsoft-fabric"
-For example, to start Kusto.Explorer with a script file called `c:\temp\script.kql`
+To start Kusto.Explorer with a script file called `c:\temp\script.kql`
 and configured to communicate with a  specific group and database, use the
 following command:
 
