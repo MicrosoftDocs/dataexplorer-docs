@@ -97,7 +97,7 @@ The data is in JSON format and *mapping1* is pre-defined on table *WeatherMetric
 await using var producerClient = new EventHubProducerClient("<eventHubConnectionString>");
 // Create the event and add optional "dynamic routing" properties
 var eventData = new EventData(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(
-    new { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = 32 }
+    new { TimeStamp = DateTime.UtcNow, MetricName = "Temperature", Value = 32 }
 )));
 eventData.Properties.Add("Database", "MetricsDB");
 eventData.Properties.Add("Table", "WeatherMetrics");
