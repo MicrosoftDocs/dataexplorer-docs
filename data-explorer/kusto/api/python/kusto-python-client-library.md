@@ -24,13 +24,12 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/s
 * [Kusto query sample](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py)
 * [Data ingest sample](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-ingest/tests/sample.py)
 * [GitHub Repository](https://github.com/Azure/azure-kusto-python)
-
 :::moniker range="azure-data-explorer"
 * [Ingest data using Python](/azure/data-explorer/python-ingest-data)
 :::moniker-end
 
 * Pypi packages:
-    * [Pypi package github][![Build status badge](https://badge.fury.io/py/azure-kusto-python.svg)](https://github.com/Azure/azure-kusto-python/actions/workflows/build.yml)
+    * [Pypi package github](https://github.com/Azure/azure-kusto-python/actions/workflows/build.yml)[![Build status badge](https://badge.fury.io/py/azure-kusto-python.svg)](https://github.com/Azure/azure-kusto-python/actions/workflows/build.yml)
     * [azure-kusto-data](https://pypi.org/project/azure-kusto-data/)
     [![Screenshot of a button labeled P Y P I package 1.0.2.](https://badge.fury.io/py/azure-kusto-data.svg)](https://badge.fury.io/py/azure-kusto-data)
     * [azure-kusto-ingest](https://pypi.org/project/azure-kusto-ingest/)
