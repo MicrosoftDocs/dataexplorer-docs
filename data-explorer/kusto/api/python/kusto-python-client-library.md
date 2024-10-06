@@ -29,7 +29,7 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/s
 :::moniker-end
 
 * Pypi packages:
-    * [Pypi package github](https://github.com/Azure/azure-kusto-python/actions/workflows/build.yml)[![Build status badge](https://badge.fury.io/py/azure-kusto-python.svg)](https://github.com/Azure/azure-kusto-python/actions/workflows/build.yml)
+    * [Pypi package GitHub](https://github.com/Azure/azure-kusto-python/actions/workflows/build.yml)[![Build status badge](https://badge.fury.io/py/azure-kusto-python.svg)](https://github.com/Azure/azure-kusto-python/actions/workflows/build.yml)
     * [azure-kusto-data](https://pypi.org/project/azure-kusto-data/)
     [![Screenshot of a button labeled P Y P I package 1.0.2.](https://badge.fury.io/py/azure-kusto-data.svg)](https://badge.fury.io/py/azure-kusto-data)
     * [azure-kusto-ingest](https://pypi.org/project/azure-kusto-ingest/)
