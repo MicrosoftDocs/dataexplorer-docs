@@ -3,7 +3,7 @@ title: Migrate a Virtual Network injected cluster to private endpoints
 description: Learn how to migrate a Virtual Network injected Azure Data Explorer cluster to private endpoints.
 ms.reviewer: cosh, gunjand
 ms.topic: how-to
-ms.date: 11/28/2023
+ms.date: 10/07/2024
 ---
 
 # Migrate a Virtual Network injected cluster to private endpoints
@@ -14,6 +14,32 @@ The process of the migration takes several minutes. The migration creates a new 
 
 Following the migration, you can still connect to your cluster using the `private-[clustername].[geo-region].kusto.windows.net` (engine) and `ingest-private-[clustername].[geo-region].kusto.windows.net`\\`private-ingest-[clustername].[geo-region].kusto.windows.net` (data management) FQDNs. Nevertheless, we recommend moving to the regular cluster endpoints that aren't prefixed with `private`.
 
+## Detect clusters which are using Virtual Network injection
+
+You can use Azure Resource Graph to determine which clusters in your subscription use Virtual Network injection by exploring your Azure resources with the Kusto Query Language (KQL).
+
+### [Azure Resource Graph](#tab/arg)
+
+1. Go to the Resource Graph Explorer in the [Azure portal](https://portal.azure.com/).
+1. Copy and paste the following query. Then select **Run query** to list all clusters that use Virtual Network injection:
+
+    The query filters the resources to only include clusters (`microsoft.kusto/clusters`) where the `virtualNetworkConfiguration` property state is set to `Enabled`, indicating that the cluster is using Virtual Network injection.
+
+    ```kusto
+    resources 
+    | where type == 'microsoft.kusto/clusters' 
+    | where properties.virtualNetworkConfiguration.state == 'Enabled' 
+    | project name, resourceGroup, subscriptionId, location
+    ```
+
+### [Azure CLI](#tab/cli)
+
+You can also use the Azure CLI to run the same query. First, ensure you have the [Azure CLI installed](/cli/azure/install-azure-cli) and are [signed in](/cli/azure/authenticate-azure-cli) to your Azure account.
+
+Run the following Azure CLI command to execute the query:
+
+```azurecli
+az graph query -q "resources | where type == 'microsoft.kusto/clusters' | where properties.virtualNetworkConfiguration.state == 'Enabled' | project name, resourceGroup, subscriptionId, location"
 ## Prerequisites
 
 - You have an existing Azure Data Explorer cluster that uses Virtual Network injection and you want to migrate it.
@@ -117,7 +143,7 @@ After migrating to private endpoints, perform the following checks to verify the
 
 1. If you created new private endpoints, check that they are working as expected. If needed, refer to the [troubleshooting guide](security-network-private-endpoint-troubleshoot.md).
 
-1. Check that ingestion is working properly with the [.show ingestion failures command](/kusto/management/ingestion-failures?view=azure-data-explorer&preserve-view=true) or refer to the guidance in [Monitor queued ingestion with metrics](/azure/data-explorer/monitor-queued-ingestion). This verification is especially relevant if you need to connect to network secured services for ingestion with services like [Azure Event Hubs](create-event-hubs-connection.md?tabs=portalADX).
+1. Check that ingestion is working properly with the [.show ingestion failures command](/kusto/management/ingestion-failures?view=azure-data-explorer&preserve-view=true) or refer to the guidance in [Monitor queued ingestion with metrics](monitor-queued-ingestion.md). This verification is especially relevant if you need to connect to network secured services for ingestion with services like [Azure Event Hubs](ingest-data-event-hub.md).
 
 ## Related content
 
