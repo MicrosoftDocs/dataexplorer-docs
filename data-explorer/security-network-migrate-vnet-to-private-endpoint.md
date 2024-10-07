@@ -16,13 +16,14 @@ Following the migration, you can still connect to your cluster using the `privat
 
 ## Detect clusters which are using Virtual Network injection
 
-To identify which Azure Data Explorer clusters in your subscription are using Virtual Network injection, you can use Azure Resource Graph. Azure Resource Graph allows you to explore your Azure resources using the Kusto Query Language.
+You can use Azure Resource Graph to determine which clusters in your subscription use Virtual Network injection by exploring your Azure resources with the Kusto Query Language (KQL).
 
 ### [Azure Resource Graph](#tab/arg)
 
-1. Open the [Azure portal](https://portal.azure.com/).
-1. Navigate to **Resource Graph Explorer**.
-1. Run the following query to list all Azure Data Explorer clusters with Virtual Network injection:
+1. Go to the Resource Graph Explorer in the [Azure portal](https://portal.azure.com/).
+1. Copy and paste the following query. Then select **Run query** to list all clusters that use Virtual Network injection:
+
+    The query filters the resources to only include clusters (`microsoft.kusto/clusters`) where the `virtualNetworkConfiguration` property state is set to `Enabled`, indicating that the cluster is using Virtual Network injection.
 
     ```kusto
     resources 
@@ -31,25 +32,14 @@ To identify which Azure Data Explorer clusters in your subscription are using Vi
     | project name, resourceGroup, subscriptionId, location
     ```
 
-This query filters the resources to only include Azure Data Explorer clusters (`microsoft.kusto/clusters`) and checks if the `state` of the `virtualNetworkConfiguration` property is set to `Enabled`, indicating that the cluster is using Virtual Network injection.
-
 ### [Azure CLI](#tab/cli)
 
-You can also use the Azure CLI to run the same query. First, ensure you have the Azure CLI installed and are logged in to your Azure account.
+You can also use the Azure CLI to run the same query. First, ensure you have the [Azure CLI installed](/cli/azure/install-azure-cli) and are [signed in](/cli/azure/authenticate-azure-cli) to your Azure account.
 
-1. Open a terminal or command prompt.
-1. Run the following command to execute the query:
+Run the following Azure CLI command to execute the query:
 
-    ```sh
-    az graph query -q "resources | where type == 'microsoft.kusto/clusters' | where properties.virtualNetworkConfiguration.state == 'Enabled' | project name, resourceGroup, subscriptionId, location"
-    ```
-
-This command will output a list of Azure Data Explorer clusters in your subscription that are using Virtual Network injection, along with their names, resource groups, subscription id and location.
-
----
-
-By using these methods, you can easily detect which clusters in your subscription are configured with Virtual Network injection.
-
+```azurecli
+az graph query -q "resources | where type == 'microsoft.kusto/clusters' | where properties.virtualNetworkConfiguration.state == 'Enabled' | project name, resourceGroup, subscriptionId, location"
 ## Prerequisites
 
 - You have an existing Azure Data Explorer cluster that uses Virtual Network injection and you want to migrate it.
@@ -153,7 +143,7 @@ After migrating to private endpoints, perform the following checks to verify the
 
 1. If you created new private endpoints, check that they are working as expected. If needed, refer to the [troubleshooting guide](security-network-private-endpoint-troubleshoot.md).
 
-1. Check that ingestion is working properly with the [.show ingestion failures command](kusto/management/ingestion-failures.md) or refer to the guidance in [Monitor queued ingestion with metrics](/azure/data-explorer/monitor-queued-ingestion). This verification is especially relevant if you need to connect to network secured services for ingestion with services like [Azure Event Hubs](ingest-data-event-hub.md).
+1. Check that ingestion is working properly with the [.show ingestion failures command](kusto/management/ingestion-failures?view=azure-data-explorer&preserve-view=true) or refer to the guidance in [Monitor queued ingestion with metrics](monitor-queued-ingestion.md). This verification is especially relevant if you need to connect to network secured services for ingestion with services like [Azure Event Hubs](ingest-data-event-hub.md).
 
 ## Related content
 
