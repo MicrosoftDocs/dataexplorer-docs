@@ -3,7 +3,7 @@ title: Migrate a Virtual Network injected cluster to private endpoints
 description: Learn how to migrate a Virtual Network injected Azure Data Explorer cluster to private endpoints.
 ms.reviewer: cosh, gunjand
 ms.topic: how-to
-ms.date: 11/28/2023
+ms.date: 10/07/2024
 ---
 
 # Migrate a Virtual Network injected cluster to private endpoints
@@ -13,6 +13,42 @@ This article describes the migration of a Microsoft Azure Virtual Network inject
 The process of the migration takes several minutes. The migration creates a new cluster for the engine and data management services, which reside in a virtual network managed by Microsoft. The connection is switched to the newly created services for you. This process results in a minimal downtime for querying the cluster.
 
 Following the migration, you can still connect to your cluster using the `private-[clustername].[geo-region].kusto.windows.net` (engine) and `ingest-private-[clustername].[geo-region].kusto.windows.net`\\`private-ingest-[clustername].[geo-region].kusto.windows.net` (data management) FQDNs. Nevertheless, we recommend moving to the regular cluster endpoints that aren't prefixed with `private`.
+
+## Detect clusters which are using Virtual Network injection
+
+To identify which Azure Data Explorer clusters in your subscription are using Virtual Network injection, you can use Azure Resource Graph. Azure Resource Graph allows you to explore your Azure resources using the Kusto Query Language.
+
+### [Azure Resource Graph](#tab/arg)
+
+1. Open the [Azure portal](https://portal.azure.com/).
+1. Navigate to **Resource Graph Explorer**.
+1. Run the following query to list all Azure Data Explorer clusters with Virtual Network injection:
+
+    ```kusto
+    resources 
+    | where type == 'microsoft.kusto/clusters' 
+    | where properties.virtualNetworkConfiguration.state == 'Enabled' 
+    | project name, resourceGroup, subscriptionId, location
+    ```
+
+This query filters the resources to only include Azure Data Explorer clusters (`microsoft.kusto/clusters`) and checks if the `state` of the `virtualNetworkConfiguration` property is set to `Enabled`, indicating that the cluster is using Virtual Network injection.
+
+### [Azure CLI](#tab/cli)
+
+You can also use the Azure CLI to run the same query. First, ensure you have the Azure CLI installed and are logged in to your Azure account.
+
+1. Open a terminal or command prompt.
+1. Run the following command to execute the query:
+
+    ```sh
+    az graph query -q "resources | where type == 'microsoft.kusto/clusters' | where properties.virtualNetworkConfiguration.state == 'Enabled' | project name, resourceGroup, subscriptionId, location"
+    ```
+
+This command will output a list of Azure Data Explorer clusters in your subscription that are using Virtual Network injection, along with their names, resource groups, subscription id and location.
+
+---
+
+By using these methods, you can easily detect which clusters in your subscription are configured with Virtual Network injection.
 
 ## Prerequisites
 
@@ -117,7 +153,7 @@ After migrating to private endpoints, perform the following checks to verify the
 
 1. If you created new private endpoints, check that they are working as expected. If needed, refer to the [troubleshooting guide](security-network-private-endpoint-troubleshoot.md).
 
-1. Check that ingestion is working properly with the [.show ingestion failures command](/kusto/management/ingestion-failures?view=azure-data-explorer&preserve-view=true) or refer to the guidance in [Monitor queued ingestion with metrics](/azure/data-explorer/monitor-queued-ingestion). This verification is especially relevant if you need to connect to network secured services for ingestion with services like [Azure Event Hubs](create-event-hubs-connection.md?tabs=portalADX).
+1. Check that ingestion is working properly with the [.show ingestion failures command](kusto/management/ingestion-failures.md) or refer to the guidance in [Monitor queued ingestion with metrics](/azure/data-explorer/monitor-queued-ingestion). This verification is especially relevant if you need to connect to network secured services for ingestion with services like [Azure Event Hubs](ingest-data-event-hub.md).
 
 ## Related content
 
