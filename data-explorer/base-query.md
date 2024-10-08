@@ -15,7 +15,7 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 > Base query creation and management is available in **Editing** mode to dashboard editors.
 
 > [!IMPORTANT]
-> When using base queries, you can't refer to a different data source than is already used in a particular tile or parameter.
+> When using base queries, you can't refer to a different data source that is already used in a particular tile or parameter.
 
 ## Prerequisites
 
