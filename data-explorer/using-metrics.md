@@ -145,7 +145,7 @@ Query performance metrics track query duration and total number of concurrent or
 
 ## Partitioning metrics
 
-Partitioning metrics monitor the partitioning process for tables with a [partitioning policy](/azure/data-explorer/kusto/partitioning-policy?view=azure-data-explorer&preserve-view=true).
+Partitioning metrics monitor the partitioning process for tables with a [partitioning policy](/azure/data-explorer/kusto/management/partitioning-policy?view=azure-data-explorer&preserve-view=true).
 
 |**Metric** | **Unit** | **Aggregation** | **Metric description** | **Dimensions** |
 |---|---|---|---|---|
