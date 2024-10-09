@@ -14,7 +14,13 @@ The process of the migration takes several minutes. The migration creates a new 
 
 Following the migration, you can still connect to your cluster using the `private-[clustername].[geo-region].kusto.windows.net` (engine) and `ingest-private-[clustername].[geo-region].kusto.windows.net`\\`private-ingest-[clustername].[geo-region].kusto.windows.net` (data management) FQDNs. Nevertheless, we recommend moving to the regular cluster endpoints that aren't prefixed with `private`.
 
-## Detect clusters which are using Virtual Network injection
+## Prerequisites
+
+- You have an existing Azure Data Explorer cluster that uses Virtual Network injection and you want to migrate it. For more information, see [Find clusters that use Virtual Network injection](#find-clusters-that-use-virtual-network-injection).
+- (Optional) You have a virtual network and a subnet where you want to create the private endpoint for the Azure Data Explorer cluster.
+- You have the necessary permissions to establish and oversee private endpoints and private DNS zones within your subscription and resource group. For the Azure Data Explorer cluster, Contributor access is required, while other resources like Azure Storage or Event Hubs require Owner permissions.
+
+## Find clusters that use Virtual Network injection
 
 You can use Azure Resource Graph to determine which clusters in your subscription use Virtual Network injection by exploring your Azure resources with the Kusto Query Language (KQL).
 
@@ -40,11 +46,9 @@ Run the following Azure CLI command to execute the query:
 
 ```azurecli
 az graph query -q "resources | where type == 'microsoft.kusto/clusters' | where properties.virtualNetworkConfiguration.state == 'Enabled' | project name, resourceGroup, subscriptionId, location"
-## Prerequisites
+```
 
-- You have an existing Azure Data Explorer cluster that uses Virtual Network injection and you want to migrate it.
-- (Optional) You have a virtual network and a subnet where you want to create the private endpoint for the Azure Data Explorer cluster.
-- You have the necessary permissions to establish and oversee private endpoints and private DNS zones within your subscription and resource group. For the Azure Data Explorer cluster, Contributor access is required, while other resources like Azure Storage or Event Hubs require Owner permissions.
+---
 
 ## Prepare to migrate
 
