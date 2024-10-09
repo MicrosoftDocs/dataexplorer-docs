@@ -60,4 +60,5 @@ print
 
 ## Related content
 
-* [totimespan()](../totimespan-function.md)
+* [totimespan function](../totimespan-function.md)
+* [make-timespan function](../make-timespan-function.md)

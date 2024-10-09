@@ -51,3 +51,10 @@ StormEvents
 | FirstEvent |
 |--|
 | 2007-01-01T00:00:00Z |
+
+## Related content
+
+* [max function](max-aggregation-function.md)
+* [avg function](avg-aggregation-function.md)
+* [percentile function](percentiles-aggregation-function.md)
+* [min-of function](min-of-function.md)

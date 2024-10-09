@@ -27,6 +27,7 @@ deleted before the limit is exceeded, but deletion isn't immediate following tha
 > * When this is done, the ingested data won't be committed to the source table, avoiding the need to persist the data. As a result, `Recoverability` can only be set to `Disabled`.
 > * Such a configuration is useful mainly when the data gets ingested into a table.
 > A transactional [update policy](update-policy.md) is used to transform it and redirect the output into another table.
+> * The retention policy on a [materialized view](materialized-views/materialized-view-overview.md) affects only the view, not the source table. The source data remains unaffected.
 
 ## The policy object
 

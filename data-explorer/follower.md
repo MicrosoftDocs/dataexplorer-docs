@@ -32,6 +32,9 @@ Attaching a database to a different cluster using the follower capability is use
 There are various methods you can use to attach a database. In this article, we discuss attaching a database using C#, Python, PowerShell, or an Azure Resource Manager template.
 To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. Add or remove role assignments using [Azure portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli), and [ARM template](/azure/role-based-access-control/role-assignments-template). Learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles).
 
+> [!NOTE]
+> Pre-creating a follower database isn't necessary as one is created during the attachment process.
+
 ### Table level sharing
 
 When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'.
@@ -45,29 +48,35 @@ When attaching the database all tables, external tables and materialized views a
 
 #### Examples
 
-1. Include all tables. No '*' is needed, since all tables are followed by default:
+The following example includes all tables. By default, all tables are followed without using the '*' notation:
 
-    ```kusto
-    tablesToInclude = []
-    ```
+```kusto
+tablesToInclude = []
+```
 
-1. Include all tables with names that start with "Logs":
+The following example includes all functions. By default, all functions are followed without using the '*' notation:
 
-    ```kusto
-    tablesToInclude = ["Logs*"]
-    ```
+```kusto
+functionsToInclude = []
+```
 
-1. Exclude all external tables:
+The following example includes all tables with names that start with "Logs":
 
-    ```kusto
-    externalTablesToExclude = ["*"]
-    ```
+```kusto
+tablesToInclude = ["Logs*"]
+```
 
-1. Exclude all materialized views:
+The following example includes all external tables:
 
-    ```kusto
-    materializedViewsToExclude=["*"]
-    ```
+```kusto
+externalTablesToExclude = ["*"]
+```
+
+The following example includes all materialized views:
+
+```kusto
+materializedViewsToExclude=["*"]
+```
 
 ### Database name override
 

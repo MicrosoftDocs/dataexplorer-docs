@@ -3,7 +3,8 @@ title:  UI deep links
 description: This article describes UI deep links.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 09/29/2024
+monikerRange: "azure-data-explorer"
 ---
 # UI deep links
 
@@ -33,24 +34,24 @@ Where:
   the query parameter `uri` in *Parameters*.
 
 * *DatabaseName* is the name of the database in *Cluster* to use
-  as the database in scope. If this property is not set, the UI tool
-  will decide which database to use, if at all.
-  (Note that if a query or a command is specified by *Parameters*,
-  it is highly recommended that the correct value for *DatabaseName*
-  be included in the URI.)
+  as the database in scope. If this property isn't set, the UI tool
+  decides which database to use, if at all.
+  (If a query or a command is specified by *Parameters*,
+  the recommendation is for the correct value for *DatabaseName*
+  to be included in the URI.)
 
-* *Parameters* can be used to specify additional parameters to control
+* *Parameters* can be used to specify other parameters to control
   the behavior of the UI deep link. Parameters that are supported by all
-  Kusto "official" UI tools are indicated below (note that there are tool-specific
-  parameters, as noted later on in this document.)
+  Kusto "official" UI tools are indicated in the following table. Tool-specific
+  parameters are noted later on in this document.
 
   |Parameter |Description|
   |----------|-----------|
-  |`web`     |Selects the UI tool. By default, or if set to `1`, Kusto.WebExplorer is used. If set to `0`, Kusto.Explorer is used. If set to `3`, Kusto.WebExplorer is used with no pre-existing tabs.|
+  |`web`     |Selects the UI tool. By default, or if set to `1`, Kusto.WebExplorer is used. If set to `0`, Kusto.Explorer is used. If set to `3`, Kusto.WebExplorer is used with no preexisting tabs.|
   |`query`   |The text of the query or management command to start with when opening the UI tool.|
   |`querysrc`|A URI pointing at a web resource that holds the text of the query or management command to start with when opening the UI tool.|
   |`name`    |The name of the connection to the cluster.|
-  |`autorun` |If set to `false`, requires that the user actively run the query instead of auto-running it when the link is clicked.|
+  |`autorun` |If set to `false`, requires that the user actively run the query instead of autorunning it when the link is clicked.|
 
   The value of `query` can use standard HTTP query parameter encoding.
   Alternatively, it can be encoded using the transformation `base64(gzip(text))`,
@@ -62,13 +63,13 @@ Where:
 Here are a few examples for links:
 
 * `https://help.kusto.windows.net/`: When a user agent (such as a browser) issues
-  a `GET /` request it will be redirected to the default UI tool configured
+  a `GET /` request it's redirected to the default UI tool configured
   to query the `help` cluster.
 * `https://help.kusto.windows.net/Samples`: When a user agent (such as a browser) issues
-  a `GET /Samples` request it will be redirected to the default UI tool configured
+  a `GET /Samples` request it's redirected to the default UI tool configured
   to query the `help` cluster `Samples` database.
 * `http://help.kusto.windows.net/Samples?query=StormEvents`: When a user (such as a browser) issues
-  a `GET /Samples?query=StormEvents` request it will be redirected to the default UI tool configured
+  a `GET /Samples?query=StormEvents` request it's redirected to the default UI tool configured
   to query the `help` cluster `Samples` database, and issue the `StormEvents` query.
 
 > [!NOTE]
@@ -92,7 +93,7 @@ for a description of the redirect URI syntax for starting up Kusto.Explorer.
 
 ## Deep linking to Kusto.WebExplorer
 
-In addition to the query parameters mentioned above,
+In addition to the query parameters already mentioned,
 the following parameters might appear in UI deep links
 to Kusto.WebExplorer:
 
@@ -103,7 +104,7 @@ to Kusto.WebExplorer:
 
 To instruct Kusto.WebExplorer to sign-in a user from another Microsoft Entra tenant, specify `login_hint` and `tenant` for the user.
 
-Redirection will be to the following URI:
+Redirection is to the following URI:
 
 `https://` *BaseAddress* `/clusters/` *Cluster* [`/databases/` *DatabaseName*] [`?` *Parameters*]
 

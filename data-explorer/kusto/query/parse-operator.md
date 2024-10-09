@@ -309,6 +309,7 @@ Traces
 
 ## Related content
 
+* [parse-json function](parse-json-function.md)
 * [extract function](extract-function.md)
 * [extract-all function](extract-all-function.md)
 * [extract-json function](extract-json-function.md)

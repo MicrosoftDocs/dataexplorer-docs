@@ -3,7 +3,7 @@ title: .show table mirroring operations command
 description: Learn how to use the `.show table mirroring operations` command to check the mirroring policy operations.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 09/23/2024
 monikerRange: "microsoft-fabric"
 ---
 # .show table mirroring operations command
@@ -36,6 +36,8 @@ Check the table's [mirroring policy](mirroring-policy.md) operations mirroring s
 |LastExportResult | `string` | The status of the last export result. |
 |LastExportedDataTime|`datetime` | The time of the last data export.  |
 |Latency | `timespan` |The maximum amount of time in minutes between the last and next time new data was added to your logical copy.  |
+
+[!INCLUDE [mirroring-note](../includes/mirroring-note.md)]
 
 ## Example
 

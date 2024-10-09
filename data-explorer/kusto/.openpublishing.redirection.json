@@ -6,6 +6,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "management/alter-database.md",
+      "redirect_url": "/kusto/management/alter-database-prettyname",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "management/show-cluster-database.md",
+      "redirect_url": "/kusto/management/show-databases",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "api/powershell/azure-powershell.md",
       "redirect_url": "/azure/data-explorer/azure-powershell",
       "redirect_document_id": false
@@ -36,8 +46,14 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "query/dcount-aggfunction.md",
+      "redirect_url": "/kusto/query/dcount-aggregation-function",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "query/re2.md",
       "redirect_url": "/kusto/query/regex",
+
       "redirect_document_id": true
     }
   ]
