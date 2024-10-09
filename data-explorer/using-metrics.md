@@ -145,13 +145,13 @@ Query performance metrics track query duration and total number of concurrent or
 
 ## Partitioning metrics
 
-Partitioning metrics tracks the partitioning process related to tables with [partitioning policy](kusto/management/partitioning-policy.md).
+Partitioning metrics monitor the partitioning process for tables with a [partitioning policy](/azure/data-explorer/kusto/partitioning-policy?view=azure-data-explorer&preserve-view=true).
 
 |**Metric** | **Unit** | **Aggregation** | **Metric description** | **Dimensions** |
 |---|---|---|---|---|
-|PartitioningPercentage                    | Percent    | Avg, Min, Max     |  Percentage of records partitioned out of total number of records. | Database, Table |
-|PartitioningPercentageHot                | Percent | Avg, Min, Max     | Percentage of records partitioned out of total number of records (in 'hot' cache only). | Database, Table |
-|ProcessedPartitionedRecords                    | Percent       | Avg, Min, Max, Sum     | Number of records partitioned in measured time window. | Database, Table |
+|PartitioningPercentage | Percent| Avg, Min, Max | The percentage of records partitioned relative to the total number of records. | Database, Table |
+|PartitioningPercentageHot | Percent | Avg, Min, Max | The percentage of records partitioned related to the total number of records (in 'hot' cache only). | Database, Table |
+|ProcessedPartitionedRecords | Percent | Avg, Min, Max, Sum | The number of records partitioned in the measured time window. | Database, Table |
 
 ## Related content
 
