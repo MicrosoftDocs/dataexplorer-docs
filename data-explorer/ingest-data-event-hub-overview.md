@@ -13,9 +13,9 @@ The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in sev
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
-## Azure Data Explorer data connection authentication mechanisms
+## Azure Data Explorer data connection authentication options
 
-* [Managed Identity](managed-identities-overview.md) based data connection (recommended): Using a managed identity-based data connection is the most secure way to connect to data sources. It provides full control over the ability to fetch data from a data source.
+* [Managed Identity](managed-identities-overview.md) based data connection (**recommended**): Using a managed identity-based data connection is the most secure way to connect to data sources. It provides full control over the ability to fetch data from a data source.
 Setup of a data connection using managed identity requires the following steps:
   1. [Add a managed identity to your cluster](configure-managed-identities-cluster.md).
   1. Grant permissions to the managed identity on the data source. To fetch data from Azure Event Hubs, the managed identity must have [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions.
@@ -70,11 +70,15 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | RawHeaders | Indicates that event source is Kafka and Azure Data Explorer must use byte array deserialization to read other routing properties. Value is ignored. |
 
 > [!NOTE]
-> Only events enqueued after you create the data connection are ingested.
+> Only events enqueued after you create the data connection are ingested, unless a custom retrieval start date is provided. In any case, the lookback period cannot exceed the actual Event Hub retention period.
 
 ## Events routing
 
 When you create a data connection to your cluster, you can specify the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by setting the event data properties mentioned above.
+
+> [!NOTE]
+> Event Hubs data connection will attempt to process all the events it reads from the Event Hub, and every event it cannot process for whatever reason will be reported as an ingestion failure.
+> Read on how to monitor Azure Data Explorer ingestion [here](/azure/data-explorer/using-diagnostic-logs?view=azure-data-explorer&tabs=ingestion).
 
 ### Route event data to an alternate database
 
