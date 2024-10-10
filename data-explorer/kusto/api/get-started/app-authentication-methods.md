@@ -171,11 +171,15 @@ Certificates can serve as secrets to authenticate the application's identity whe
 
 - For authentication using a certificate from an arbitrary source, such as a file on disk, cache, or secure store like Azure Key Vault, the certificate object must contain a private key:
 
+    #### [C\#](#tab/csharp)
+
     ```csharp
     X509Certificate2 certificate = <CertificateObject>;
     var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>").
         WithAadApplicationCertificateAuthentication("<ApplicationId>", certificate, "<AuthorityId>");
     ```
+
+    #### [Python](#tab/python)
 
     #### [Typescript](#tab/typescript)
 
@@ -185,6 +189,10 @@ Certificates can serve as secrets to authenticate the application's identity whe
       "<QueryEndpointUri>", "<ApplicationId>", "<PemCertificate>", "<AuthorityId>"
     );
     ```
+
+    #### [Java](#tab/java)
+
+    ---
 
 > [!IMPORTANT]
 >
