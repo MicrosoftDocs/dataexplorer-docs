@@ -160,7 +160,7 @@ Certificates can serve as secrets to authenticate the application's identity whe
 
     ```csharp
     var connectionString = 
-        "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;Application Client Id=<app-id>;Application Certificate Subject=<CertificateSubjectName>;Application Certificate Issuer=<CertificateIssuerName>;Authority Id=<AuthorityId>";
+        "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;Application Client Id=<ApplicationId>;Application Certificate Subject=<CertificateSubjectName>;Application Certificate Issuer=<CertificateIssuerName>;Authority Id=<AuthorityId>";
     var kcsb = new KustoConnectionStringBuilder() {
         PreventAccessToLocalSecretsViaKeywords = false,
         ConnectionString = connectionString
@@ -283,7 +283,7 @@ This section covers the different methods of authenticating using a custom token
 
 ### Custom token provider for federated Managed Identity credential authentication
 
-Custom token providers can be used to acquire a Microsoft Entra ID token for authentication. The following example demonstrates how to use a custom token provider to obtain a token using federated managed identity.
+Custom token providers can be used to acquire a Microsoft Entra ID token for authentication. The following example demonstrates how to use a custom token provider to obtain a token using federated managed identity. You can modify the code to fit your application's requirements.
 
 | In the following example, replace *`<ApplicationTenantId>`*, *`<ApplicationId>`*, *`<ManagedIdentityClientId>`*, and *`<QueryEndpointUri>`*  with your own values.
 
@@ -344,10 +344,6 @@ var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>")
       return await tokenProvider.GetTokenAsync();
     });
 ```
-
-> [!IMPORTANT]
-> This code example is intended for demonstration purposes only and has not been tested.
-> Modify the code to fit your application's requirements.
 
 ### Using Azure TokenCredential authentication
 
