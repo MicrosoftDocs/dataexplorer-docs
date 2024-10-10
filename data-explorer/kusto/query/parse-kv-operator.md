@@ -18,7 +18,7 @@ The following extraction modes are supported:
 * [**Non-specified delimeter**](#nonspecified-delimiter): Extraction with no need to specify delimiters. Any nonalphanumeric character is considered a delimiter.
 * [**Regex**](#regex): Extraction based on [regular expressions](regex.md).
 
-:::moniker range="monitor, sentinel"
+::: moniker range="azure-monitor || microsoft-sentinel"
 >[!NOTE]
 > The `parse-kv` operator isn't supported in [DCR transformations](/azure/azure-monitor/essentials/data-collection-transformations). Use `regex` or the [parse operator](parse-operator.md) instead.
 ::: moniker-end
