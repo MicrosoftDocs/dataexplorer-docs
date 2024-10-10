@@ -79,7 +79,7 @@ When you create a data connection to your cluster, you can specify the routing f
 
 > [!NOTE]
 > Event Hubs data connection will attempt to process all the events it reads from the Event Hub, and every event it cannot process for whatever reason will be reported as an ingestion failure.
-> Read on how to monitor Azure Data Explorer ingestion [here](/azure/data-explorer/using-diagnostic-logs?view=azure-data-explorer&tabs=ingestion).
+> Read on how to monitor Azure Data Explorer ingestion [here](/azure/data-explorer/using-diagnostic-logs?tabs=ingestion).
 
 ### Route event data to an alternate database
 
@@ -131,7 +131,7 @@ Event Hubs service exposes the following system properties:
 | x-opt-publisher | `string` | The publisher name, if the message was sent to a publisher endpoint |
 | x-opt-partition-key | `string` |The partition key of the corresponding partition that stored the event |
 
-When you work with [IoT Central](https://azure.microsoft.com/services/iot-central/) event hubs, you can also embed IoT Hub system properties in the payload. For the complete list, see [IoT Hub system properties](ingest-data-iot-hub-overview.md#event-hubs-system-properties-mapping).
+When you work with [IoT Central](https://azure.microsoft.com/services/iot-central/) event hubs, you can also embed IoT Hub system properties in the payload. For the complete list, see [IoT Hub system properties](ingest-data-iot-hub-overview.md#event-system-properties-mapping).
 
 If you selected **Event system properties** in the **Data Source** section of the table, you must include the properties in the table schema and mapping.
 
