@@ -62,7 +62,7 @@ This query can also be placed inside a function instead of directly querying the
 
 ### Solution #3: Use materialized views to deduplicate
 
-[Materialized views](/kusto/management/materialized-views/materialized-view-overview) can be used for deduplication, by using the [take_any()](/kusto/query/take-any-aggregation-function)/[arg_min()](/kusto/query/arg-min-aggregation-function)/[arg_max()](/kusto/query/arg-max-aggregation-function) aggregation functions (see example ?view=azure-data-explorer&preserve-view=true#4 in [materialized view create command](/kusto/management/materialized-views/materialized-view-create#examples)).
+[Materialized views](/kusto/management/materialized-views/materialized-view-overview?view=azure-data-explorer&preserve-view=true) can be used for deduplication, by using the [take_any()](/kusto/query/take-any-aggregation-function?view=azure-data-explorer&preserve-view=true)/[arg_min()](/kusto/query/arg-min-aggregation-function?view=azure-data-explorer&preserve-view=true)/[arg_max()](/kusto/query/arg-max-aggregation-function?view=azure-data-explorer&preserve-view=true) aggregation functions (see example #4 in [materialized view create command](/kusto/management/materialized-views/materialized-view-create#examples?view=azure-data-explorer&preserve-view=true)).
 
 > [!NOTE]
 > Materialized views come with a cost of consuming cluster's resources, which may not be negligible. For more information, see materialized views [performance considerations](/kusto/management/materialized-views/materialized-view-overview?view=azure-data-explorer&preserve-view=true#performance-considerations).
