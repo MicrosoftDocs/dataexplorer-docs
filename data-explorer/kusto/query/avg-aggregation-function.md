@@ -58,3 +58,9 @@ The results table shown includes only the first 10 rows.
 | NEBRASKA             | 21366.36467      |
 | NEW YORK             | 5.714285714      |
 | ...      | ...   |
+
+## Related content
+
+* [min function](min-aggregation-function.md)
+* [max function](max-aggregation-function.md)
+* [percentile function](percentiles-aggregation-function.md)

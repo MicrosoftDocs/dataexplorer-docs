@@ -3,7 +3,7 @@ title: Mirroring policy
 description: Learn how to use the mirroring policy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 09/23/2024
 monikerRange: "microsoft-fabric"
 ---
 # Mirroring policy
@@ -34,6 +34,8 @@ The mirroring policy includes the following properties:
 
 > [!WARNING]
 > Deleting or dropping the table mirroring policy will permanently delete the delta table in OneLake.
+
+[!INCLUDE [mirroring-note](../includes/mirroring-note.md)]
 
 [!INCLUDE [partitions-formatting](../includes/partitions-formatting.md)]
 

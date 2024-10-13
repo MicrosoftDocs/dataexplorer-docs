@@ -3,7 +3,7 @@ title: .execute database script command
 description: Learn how to use the `.execute database script` command to execute a batch of management commands in the scope of a single database.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 08/26/2024
 ---
 # .execute database script command
 
@@ -41,7 +41,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ## Returns
 
-Each command appearing in the script will be reported as a separate record in the output table. Each record has the following fields:
+Each command appearing in the script is reported as a separate record in the output table. Each record has the following fields:
 
 |Output parameter |Type |Description|
 |---|---|--- |
@@ -73,6 +73,8 @@ Each command appearing in the script will be reported as a separate record in th
 ::: moniker-end
 
 ## Example
+
+The following example executes a script with multiple operations, continuing to execute even if a command fails. The script creates or merges table `T` with columns `a` and `b` of type string. It then sets a retention policy on table `T` to soft-delete data after 10 days. Finally, it creates or alters the `SampleT1` function, which takes a parameter `myLimit` of type long and returns the first `myLimit` rows from table `T1`. The function is created without validating it during creation.
 
 ```kusto
 .execute database script with (ContinueOnErrors=true)

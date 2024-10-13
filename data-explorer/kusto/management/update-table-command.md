@@ -3,7 +3,7 @@ title:  .update table command
 description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 08/22/2024
 ---
 # .update table command
 
@@ -69,7 +69,7 @@ The result of the command is a table where each record represents an [extent](ex
 | -------- | -------- | -------------------------------------------------------------------------------- |
 | Table    | `string`   | The table in which the extent was created or deleted.                            |
 | Action   | `string` | *Create* or *Delete* depending on the action performed on the extent.            |
-| ExtentId | `guid`   | The unique identifier for the extent that was created or deleted by the command. |
+| ExtentId | `guid`   | The unique identifier for the extent created or deleted by the command. |
 | RowCount | `long`   | The number of rows created or deleted in the specified extent by the command.    |
 
 ## Choose between `.update table` and materialized views
@@ -80,7 +80,7 @@ Use the following guidelines to decide which method to use:
 
 * If your update pattern isn't supported by materialized views, use the update command.
 * If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache or storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append or delete predicates.
-* Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. The update command requires an orchestrated process (for example, [Azure Data Factory](/azure/data-explorer/data-factory-integration), [Logic Apps](../tools/logicapps.md), [Power Automate](/azure/data-explorer/flow), and others) that explicitly executes the update command every time there are updates. If materialized views work well enough for your use case, using materialized views requires less management and maintenance.
+* Materialized views are a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. The update command requires an orchestrated process (for example, [Azure Data Factory](/azure/data-explorer/data-factory-integration), [Logic Apps](/azure/data-explorer/logic-apps), [Power Automate](/azure/data-explorer/flow), and others) that explicitly executes the update command every time there are updates. If materialized views work enough for your use case, using materialized views requires less management and maintenance.
 
 ## Performance tips
 
@@ -90,7 +90,7 @@ Use the following guidelines to decide which method to use:
 
 ## Examples
 
-For the examples, we are going to use the following table:
+For the examples, we're going to use the following table:
 
 ```kusto
 .set-or-replace Employees <|
@@ -166,7 +166,8 @@ The following example updates multiple columns on all rows with color gray.
       | extend Color="";
 ```
 
-### Update rows using another table
+
+### Update rows using another table (reference values)
 
 In this example, the first step is to create the following mapping table:
 
@@ -190,6 +191,22 @@ This mapping table is then used to update some colors in the original table:
   let A = D
     | lookup ColorMapping on $left.Color==$right.OldColor
     | project Id, Code, Color=NewColor
+```
+
+### Update rows with a datatable
+
+Sometimes values to update are known without being stored in a table, and the [datatable operator](../query/datatable-operator.md) can be helpful:
+
+```kusto
+.update table Employees delete D append A <|
+  let A = datatable(Id:long, Code:string, Color:string)[
+    1, "Customer", "Purple",
+    2, "Customer", "Magenta",
+    3, "Customer", "Turquoise",
+  ];
+  let D = Employees
+      | join kind=leftsemi A on Id
+      | where true;
 ```
 
 ### Update rows with a staging table

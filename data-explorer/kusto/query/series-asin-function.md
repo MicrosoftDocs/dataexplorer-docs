@@ -3,7 +3,7 @@ title:  series_asin()
 description: Learn how to use the series_asin() function to calculate the element-wise arcsine function of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 08/29/2024
 ---
 # series_asin()
 
@@ -29,6 +29,8 @@ Dynamic array of calculated arcsine function values. Any non-numeric element yie
 
 ## Example
 
+The following example creates a dynamic array, `arr`, with the value `[-1,0,1]`. It then extends the results with column `arr_asin`, containing the results of the `series_asin()` function applied to the `arr` array.  
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVUipzEvMzUzWiNY11DHQMYzV5KpRSK0oSc1LASmITyzOzAOqKk4tykwtBvM0gMKaAOO+/MVCAAAA" target="_blank">Run the query</a>
@@ -43,4 +45,4 @@ print arr = dynamic([-1,0,1])
 
 |arr|arr_asin|
 |---|---|
-|[-6.5,0,8.2]|[1.5707963267948966,0.0,1.5707963267948966]|
+|[-1,0,1]|["-1.5707963267948966",0,"1.5707963267948966"]|

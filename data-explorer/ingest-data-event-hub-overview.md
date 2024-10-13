@@ -9,13 +9,13 @@ ms.date: 06/04/2024
 
 [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
-The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an event hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Event Hubs connection needs to know [events routing](#events-routing). Data may be embedded with selected properties according to the [event system properties](#event-system-properties-mapping). Create a connection to Event Hubs to [create an event hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](create-event-hubs-connection.md?tabs=portalADX), programmatically with [C#](create-event-hubs-connection-sdk.md?tabs=c-sharp) or [Python](create-event-hubs-connection-sdk.md?tabs=python), or with the [Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template).
+The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in several steps. First you create an event hub in the Azure portal. Then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), is ingested using the provided [ingestion properties](#ingestion-properties). The Event Hubs connection needs to be aware of [events routing](#events-routing). Data may be embedded with selected properties according to the [event system properties](#event-hubs-system-properties-mapping). Create a connection to Event Hubs to [create an event hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](create-event-hubs-connection.md?tabs=portalADX), programmatically with [C#](create-event-hubs-connection-sdk.md?tabs=c-sharp) or [Python](create-event-hubs-connection-sdk.md?tabs=python), or with the [Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
-## Azure Data Explorer data connection authentication mechanisms
+## Azure Data Explorer data connection authentication options
 
-* [Managed Identity](managed-identities-overview.md) based data connection (recommended): Using a managed identity-based data connection is the most secure way to connect to data sources. It provides full control over the ability to fetch data from a data source.
+* [Managed Identity](managed-identities-overview.md) based data connection (**recommended**): Using a managed identity-based data connection is the most secure way to connect to data sources. It provides full control over the ability to fetch data from a data source.
 Setup of a data connection using managed identity requires the following steps:
   1. [Add a managed identity to your cluster](configure-managed-identities-cluster.md).
   1. Grant permissions to the managed identity on the data source. To fetch data from Azure Event Hubs, the managed identity must have [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions.
@@ -31,22 +31,23 @@ Setup of a data connection using managed identity requires the following steps:
 
 * Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects.
 * See [supported formats](ingestion-supported-formats.md).
-    > [!NOTE]
-    >
-    > * Ingestion from Event Hubs doesn't support RAW format.
-    > * [Azure Event Hubs Schema Registry](/azure/event-hubs/schema-registry-overview) and schema-less Avro are not supported.
 
-* Data can be compressed using the `GZip` compression algorithm. You can specify `Compression` dynamically using [ingestion properties](#ingestion-properties), or in the static Data Connection settings.
-    > [!NOTE]
-    > Data compression isn't supported for compressed formats (Avro, Parquet, ORC, ApacheAvro and W3CLOGFILE).
-    > Custom encoding and embedded [system properties](#event-system-properties-mapping) aren't supported on compressed data.
+> [!NOTE]
+>
+> * Ingestion from Event Hubs doesn't support RAW format.
+> * [Azure Event Hubs Schema Registry](/azure/event-hubs/schema-registry-overview) and schema-less Avro are not supported.
+> * Data can be compressed using the `gzip` compression algorithm. You can specify `Compression` dynamically using [ingestion properties](#ingestion-properties), or in the static Data Connection settings.
+> * Data compression isn't supported for binary formats (Avro, ApacheAvro, Parquet, ORC, and W3CLOGFILE).
+> * Custom encoding and embedded [system properties](#event-hubs-system-properties-mapping) aren't supported with binary formats and compressed data.
+> * When using binary formats (Avro, ApacheAvro, Parquet, ORC, and W3CLOGFILE) and [ingestion mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true), 
+> the order of the fields in the ingestion mapping definition must match the order of the corresponding columns in the table.
 
 ## Event Hubs properties
 
 Azure Data Explorer supports the following Event Hubs properties:
 
 * A closed set of [ingestion properties](#ingestion-properties), which helps to route the event to the relevant table.
-* A closed set of [event system properties](#event-system-properties-mapping), which can be embedded in the data based on a given mapping.
+* A closed set of [event system properties](#event-hubs-system-properties-mapping), which can be embedded in the data based on a given mapping.
 
 > [!NOTE]
 > Ingesting Event Hubs [custom properties](/azure/event-hubs/add-custom-data-event), used to associate metadata with events, isn't supported. If you need to ingest custom properties, send them in the body of the event data. For more information, see [Ingest custom properties](#ingest-custom-properties).
@@ -64,21 +65,25 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | Table | The case-sensitive name of the existing target table. Overrides the `Table` set on the `Data Connection` pane. |
 | Format | Data format. Overrides the `Data format` set on the `Data Connection` pane. |
 | IngestionMappingReference | Name of the existing [ingestion mapping](/kusto/management/create-ingestion-mapping-command?view=azure-data-explorer&preserve-view=true) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
-| Compression | Data compression, `None` (default), or `GZip` compression.|
+| Compression | Data compression, `None` (default), or `gzip`.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
 | Tags | A list of [tags](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) when using tags. |
 | RawHeaders | Indicates that event source is Kafka and Azure Data Explorer must use byte array deserialization to read other routing properties. Value is ignored. |
 
 > [!NOTE]
-> Only events enqueued after you create the data connection are ingested.
+> Only events enqueued after you create the data connection are ingested, unless a custom retrieval start date is provided. In any case, the lookback period cannot exceed the actual Event Hub retention period.
 
 ## Events routing
 
-When you create a data connection to your cluster, you can specify the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing for your data by setting the event data properties mentioned above.
+When you create a data connection to your cluster, you can specify the routing for where to send ingested data. The default routing is to the target table specified in the connection string that is associated with the target database. The default routing for your data is also referred to as *static routing*. You can specify an alternative routing and processing options for your data by setting one or more of event data properties mentioned in the previous paragraph.
+
+> [!NOTE]
+> Event Hubs data connection will attempt to process all the events it reads from the Event Hub, and every event it cannot process for whatever reason will be reported as an ingestion failure.
+> Read on how to monitor Azure Data Explorer ingestion [here](/azure/data-explorer/using-diagnostic-logs?tabs=ingestion).
 
 ### Route event data to an alternate database
 
-Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. You can do this in the Azure portal [Azure portal](create-event-hubs-connection.md?tabs=portal), [C#](create-event-hubs-connection-sdk.md?tabs=c-sharp), [Python](create-event-hubs-connection-sdk.md?tabs=python), or an [ARM template](create-event-hubs-connection.md?tabs=arm-template). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
+Routing data to an alternate database is off by default. To send the data to a different database, you must first set the connection as a multi-database connection. This feature can be enabled in the Azure portal [Azure portal](create-event-hubs-connection.md?tabs=portal), with [C#](create-event-hubs-connection-sdk.md?tabs=c-sharp) or [Python](create-event-hubs-connection-sdk.md?tabs=python) management SDKs, or with an [ARM template](create-event-hubs-connection.md?tabs=arm-template). The user, group, service principal, or managed identity used to allow database routing must at least have the **contributor** role and write permissions on the cluster.
 
 To specify an alternate database, set the *Database* [ingestion property](#ingestion-properties).
 
@@ -97,7 +102,7 @@ The data is in JSON format and *mapping1* is pre-defined on table *WeatherMetric
 await using var producerClient = new EventHubProducerClient("<eventHubConnectionString>");
 // Create the event and add optional "dynamic routing" properties
 var eventData = new EventData(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(
-    new { Timestamp = DateTime.UtcNow, MetricName = "Temperature", Value = 32 }
+    new { TimeStamp = DateTime.UtcNow, MetricName = "Temperature", Value = 32 }
 )));
 eventData.Properties.Add("Database", "MetricsDB");
 eventData.Properties.Add("Table", "WeatherMetrics");
@@ -109,10 +114,10 @@ var events = new[] { eventData };
 await producerClient.SendAsync(events);
 ```
 
-## Event system properties mapping
+## Event Hubs system properties mapping
 
-System properties store properties that are set by the Event Hubs service, at the time the event is enqueued.
-The data connection to the event hub can embed a selected set of system properties into the data ingested into a table based on a given mapping.
+System properties are fields set by the Event Hubs service, at the time the event is enqueued.
+Azuer Data Explorer Event Hubs data connection can embed a predefined set of system properties into the data ingested into a table based on a given mapping.
 
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
@@ -137,7 +142,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 One way to consume Event Hubs data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](ingest-data-event-grid-overview.md).
 
 The schema of the capture files is different from the schema of the original event sent to Event Hubs. You should design the destination table schema with this difference in mind.
-Specifically, the event payload is represented in the capture file as a byte array, and this array isn't automatically decoded by the Event Grid Azure Data Explorer data connection. For more specific information on the file schema for Event Hubs Avro capture data, see [Exploring captured Avro files in Azure Event Hubs](/azure/event-hubs/explore-captured-avro-files).
+Specifically, the event payload is represented in the capture file as a byte array, and this array isn't automatically decoded by the Event Grid Azure Data Explorer data connection. For more information on the file schema for Event Hubs Avro capture data, see [Exploring captured Avro files in Azure Event Hubs](/azure/event-hubs/explore-captured-avro-files).
 
 To correctly decode the event payload:
 
@@ -206,7 +211,7 @@ See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) 
 ## Set up Geo-disaster recovery solution
 
 Event hub offers a [Geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr) solution.
-Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement the Geo-disaster recovery in your solution, create two event hub data connections: one for the primary namespace and one for the secondary namespace. Azure Data Explorer will listen to both event hub connections.
+Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement the Geo-disaster recovery in your solution, create two event hub data connections: one for the primary namespace and one for the secondary namespace. Azure Data Explorer listens to both event hub connections.
 
 > [!NOTE]
 > It's the user's responsibility to implement a failover from the primary namespace to the secondary namespace.

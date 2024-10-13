@@ -47,8 +47,9 @@ Integer value indicating the number of unique values of *expr* per summary group
 This example shows how many types of death-causing storm events happened in each state. Only storm events with a nonzero count of deaths will be counted.
 
 :::moniker range="azure-data-explorer"
-> * Function performance can be degraded when operating on multiple data sources from different clusters.
-::: moniker-end
+> [!NOTE]
+> Function performance can be degraded when operating on multiple data sources from different clusters.
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NsQ6CQBAFe79iS4gWNJZQoYk1Wpv1WMMm3h3cvdNA/HgRSi3fzCSvgQ/28BSHuHlTTNZy0Eno4nRIcmTwY7Wl8cnh2mqEOgO9Zws/j73ssloYXaw1iAFtaZ0n1y4gr4qcbiM1YMh88uok/DmgiorZwve0/+Y/wQetTCWoqwAAAA==" target="_blank">Run the query</a>
 ::: moniker-end

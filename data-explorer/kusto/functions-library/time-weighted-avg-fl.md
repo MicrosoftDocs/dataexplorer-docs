@@ -12,11 +12,11 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 The function `time_weighted_avg_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the time weighted average of a metric in a given time window, over input time bins. This function is similar to [summarize operator](../query/summarize-operator.md). The function aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggregation-function.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
 
-This type of aggregation is required for use cases where the metric values are emitted only when changed (and not in constant intervals). For example in IoT, where edge devices send metrics to the cloud only upon changes, and optimize communication bandwidth.
+There are two options to calculate time weighted average. This function fills forward the value from the current sample until the next one. Alternatively [time_weighted_avg2_fl()](time-weighted-avg2-fl.md) linearly interpolates the metric value between consecutive samples.
 
 ## Syntax
 
-`T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *stime*, *etime*, *dt*`)`
+`T | invoke time_weighted_avg_fl(`*t_col*`,` *y_col*`,` *key_col*`,` *stime*`,` *etime*`,` *dt*`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -45,22 +45,23 @@ Define the function using the following [let statement](../query/let-statement.m
 ```kusto
 let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
-    let tbl_ex = tbl | extend timestamp = column_ifexists(t_col, datetime(null)), value = column_ifexists(y_col, 0.0), key = column_ifexists(key_col, '');
-    let gridTimes = range timestamp from stime to etime step dt | extend value=real(null), dummy=1;
-    let keys = materialize(tbl_ex | summarize by key | extend dummy=1);
+    let tbl_ex = tbl | extend _ts = column_ifexists(t_col, datetime(null)), _val = column_ifexists(y_col, 0.0), _key = column_ifexists(key_col, '');
+    let _etime = etime + dt;
+    let gridTimes = range _ts from stime to _etime step dt | extend _val=real(null), dummy=1;
+    let keys = materialize(tbl_ex | summarize by _key | extend dummy=1);
     gridTimes
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
     | union tbl_ex
-    | where timestamp between (stime..etime)
-    | partition hint.strategy=native by key (
-        order by timestamp asc, value nulls last
-        | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(value), s.f_value, value);)    // fill forward null values
-        | extend diff_t=(next(timestamp)-timestamp)/1m
+    | where _ts between (stime.._etime)
+    | partition hint.strategy=native by _key (
+        order by _ts asc, _val nulls last
+        | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(_val), s.f_value, _val);) // fill forward null values
+        | extend diff_t=(next(_ts)-_ts)/1m
     )
     | where isnotnull(diff_t)
-    | summarize tw_sum=sum(f_value*diff_t), t_sum =sum(diff_t) by bin_at(timestamp, dt, stime), key
-    | where t_sum > 0
+    | summarize tw_sum=sum(f_value*diff_t), t_sum =sum(diff_t) by bin_at(_ts, dt, stime), _key
+    | where t_sum > 0 and _ts <= etime
     | extend tw_avg = tw_sum/t_sum
     | project-away tw_sum, t_sum
 };
@@ -75,25 +76,26 @@ Define the stored function once using the following [`.create function`](../mana
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
 ```kusto
-.create-or-alter function with (folder = "Packages\\Series", docstring = "Time weighted average of a metric")
+.create-or-alter function with (folder = "Packages\\Series", docstring = "Time weighted average of a metric using fill forward interpolation")
 time_weighted_avg_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
-    let tbl_ex = tbl | extend timestamp = column_ifexists(t_col, datetime(null)), value = column_ifexists(y_col, 0.0), key = column_ifexists(key_col, '');
-    let gridTimes = range timestamp from stime to etime step dt | extend value=real(null), dummy=1;
-    let keys = materialize(tbl_ex | summarize by key | extend dummy=1);
+    let tbl_ex = tbl | extend _ts = column_ifexists(t_col, datetime(null)), _val = column_ifexists(y_col, 0.0), _key = column_ifexists(key_col, '');
+    let _etime = etime + dt;
+    let gridTimes = range _ts from stime to _etime step dt | extend _val=real(null), dummy=1;
+    let keys = materialize(tbl_ex | summarize by _key | extend dummy=1);
     gridTimes
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
     | union tbl_ex
-    | where timestamp between (stime..etime)
-    | partition hint.strategy=native by key (
-        order by timestamp asc, value nulls last
-        | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(value), s.f_value, value);)    // fill forward null values
-        | extend diff_t=(next(timestamp)-timestamp)/1m
+    | where _ts between (stime.._etime)
+    | partition hint.strategy=native by _key (
+        order by _ts asc, _val nulls last
+        | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(_val), s.f_value, _val);) // fill forward null values
+        | extend diff_t=(next(_ts)-_ts)/1m
     )
     | where isnotnull(diff_t)
-    | summarize tw_sum=sum(f_value*diff_t), t_sum =sum(diff_t) by bin_at(timestamp, dt, stime), key
-    | where t_sum > 0
+    | summarize tw_sum=sum(f_value*diff_t), t_sum =sum(diff_t) by bin_at(_ts, dt, stime), _key
+    | where t_sum > 0 and _ts <= etime
     | extend tw_avg = tw_sum/t_sum
     | project-away tw_sum, t_sum
 }
@@ -112,32 +114,34 @@ To use a query-defined function, invoke it after the embedded function definitio
 ```kusto
 let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
-    let tbl_ex = tbl | extend timestamp = column_ifexists(t_col, datetime(null)), value = column_ifexists(y_col, 0.0), key = column_ifexists(key_col, '');
-    let gridTimes = range timestamp from stime to etime step dt | extend value=real(null), dummy=1;
-    let keys = materialize(tbl_ex | summarize by key | extend dummy=1);
+    let tbl_ex = tbl | extend _ts = column_ifexists(t_col, datetime(null)), _val = column_ifexists(y_col, 0.0), _key = column_ifexists(key_col, '');
+    let _etime = etime + dt;
+    let gridTimes = range _ts from stime to _etime step dt | extend _val=real(null), dummy=1;
+    let keys = materialize(tbl_ex | summarize by _key | extend dummy=1);
     gridTimes
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
     | union tbl_ex
-    | where timestamp between (stime..etime)
-    | partition hint.strategy=native by key (
-        order by timestamp asc, value nulls last
-        | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(value), s.f_value, value);)    // fill forward null values
-        | extend diff_t=(next(timestamp)-timestamp)/1m
+    | where _ts between (stime.._etime)
+    | partition hint.strategy=native by _key (
+        order by _ts asc, _val nulls last
+        | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(_val), s.f_value, _val);) // fill forward null values
+        | extend diff_t=(next(_ts)-_ts)/1m
     )
     | where isnotnull(diff_t)
-    | summarize tw_sum=sum(f_value*diff_t), t_sum =sum(diff_t) by bin_at(timestamp, dt, stime), key
-    | where t_sum > 0
+    | summarize tw_sum=sum(f_value*diff_t), t_sum =sum(diff_t) by bin_at(_ts, dt, stime), _key
+    | where t_sum > 0 and _ts <= etime
     | extend tw_avg = tw_sum/t_sum
     | project-away tw_sum, t_sum
 };
 let tbl = datatable(ts:datetime,  val:real, key:string) [
     datetime(2021-04-26 00:00), 100, 'Device1',
-    datetime(2021-04-26 00:45), 200, 'Device1',
-    datetime(2021-04-26 01:06), 100, 'Device1',
+    datetime(2021-04-26 00:45), 300, 'Device1',
+    datetime(2021-04-26 01:15), 200, 'Device1',
+    datetime(2021-04-26 00:00), 600, 'Device2',
     datetime(2021-04-26 00:30), 400, 'Device2',
-    datetime(2021-04-26 01:00), 100, 'Device2',
-    datetime(2021-04-26 02:00), 300, 'Device2',
+    datetime(2021-04-26 01:30), 500, 'Device2',
+    datetime(2021-04-26 01:45), 300, 'Device2'
 ];
 let minmax=materialize(tbl | summarize mint=min(ts), maxt=max(ts));
 let stime=toscalar(minmax | project mint);
@@ -146,7 +150,7 @@ let dt = 1h;
 tbl
 | invoke time_weighted_avg_fl('ts', 'val', 'key', stime, etime, dt)
 | project-rename val = tw_avg
-| order by key asc, timestamp asc
+| order by _key asc, _ts asc
 ```
 
 ### [Stored](#tab/stored)
@@ -157,13 +161,13 @@ tbl
 ```kusto
 let tbl = datatable(ts:datetime,  val:real, key:string) [
     datetime(2021-04-26 00:00), 100, 'Device1',
-    datetime(2021-04-26 00:45), 200, 'Device1',
-    datetime(2021-04-26 01:06), 100, 'Device1',
+    datetime(2021-04-26 00:45), 300, 'Device1',
+    datetime(2021-04-26 01:15), 200, 'Device1',
+    datetime(2021-04-26 00:00), 600, 'Device2',
     datetime(2021-04-26 00:30), 400, 'Device2',
-    datetime(2021-04-26 01:00), 100, 'Device2',
-    datetime(2021-04-26 02:00), 300, 'Device2',
-]
-;
+    datetime(2021-04-26 01:30), 500, 'Device2',
+    datetime(2021-04-26 01:45), 300, 'Device2'
+];
 let minmax=materialize(tbl | summarize mint=min(ts), maxt=max(ts));
 let stime=toscalar(minmax | project mint);
 let etime=toscalar(minmax | project maxt);
@@ -171,18 +175,19 @@ let dt = 1h;
 tbl
 | invoke time_weighted_avg_fl('ts', 'val', 'key', stime, etime, dt)
 | project-rename val = tw_avg
-| order by key asc, timestamp asc
+| order by _key asc, _ts asc
 ```
 
 ---
 
 **Output**
 
-| timestamp | key | val |
+| _ts | _key | val |
 |---|---|---|
-| 2021-04-26 00:00:00.0000000 | Device1 | 125 |
-| 2021-04-26 01:00:00.0000000 | Device1 | 110 |
-| 2021-04-26 00:00:00.0000000 | Device2 | 200 |
-| 2021-04-26 01:00:00.0000000 | Device2 | 100 |
+| 2021-04-26 00:00:00.0000000 | Device1	| 150 |
+| 2021-04-26 01:00:00.0000000 | Device1	| 225 |
+| 2021-04-26 00:00:00.0000000 | Device2	| 500 |
+| 2021-04-26 01:00:00.0000000 | Device2	| 400 |
 
-The first value is (45m\*100 + 15m\*200)/60m = 125, the second value is (6m*200 + 54m*100)/60m = 110, and so on.
+The first value of Device1 is (45m\*100 + 15m\*300)/60m = 150, the second value is (15m\*300 + 45m\*200)/60m = 225.  
+The first value of Device2 is (30m\*600 + 30m\*400)/60m = 500, the second value is (30m\*400 + 15m\*500 + 15m*300)/60m = 400.

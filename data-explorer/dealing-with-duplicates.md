@@ -3,13 +3,10 @@ title: Handle duplicate data in Azure Data Explorer
 description: This topic will show you various approaches to deal with duplicate data when using Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: how-to
-ms.date: 12/19/2018
-
+ms.date: 09/23/2024
 #Customer intent: I want to learn how to deal with duplicate data.
 ---
 # Handle duplicate data in Azure Data Explorer
-
-<!-- //TODO: Remove this and redirect to KQL repo in concepts folder-->
 
 Devices sending data to the cloud maintain a local cache of the data. Depending on the data size, the local cache could be storing data for days or even months. You want to safeguard your analytical databases from malfunctioning devices that resend the cached data and cause data duplication in the analytical database. Duplicates can affect the number of records returned by a query. This is relevant when you need a precise count of records, such as counting events. This topic outlines best practices for handling duplicate data for these types of scenarios.
 
@@ -65,7 +62,7 @@ This query can also be placed inside a function instead of directly querying the
 
 ### Solution #3: Use materialized views to deduplicate
 
-[Materialized views](/kusto/management/materialized-views/materialized-view-overview) can be used for deduplication, by using the [take_any()](/kusto/query/take-any-aggregation-function)/[arg_min()](/kusto/query/arg-min-aggregation-function)/[arg_max()](/kusto/query/arg-max-aggregation-function) aggregation functions (see example ?view=azure-data-explorer&preserve-view=true#4 in [materialized view create command](/kusto/management/materialized-views/materialized-view-create#examples)).
+[Materialized views](/kusto/management/materialized-views/materialized-view-overview?view=azure-data-explorer&preserve-view=true) can be used for deduplication, by using the [take_any()](/kusto/query/take-any-aggregation-function?view=azure-data-explorer&preserve-view=true)/[arg_min()](/kusto/query/arg-min-aggregation-function?view=azure-data-explorer&preserve-view=true)/[arg_max()](/kusto/query/arg-max-aggregation-function?view=azure-data-explorer&preserve-view=true) aggregation functions (see example #4 in [materialized view create command](/kusto/management/materialized-views/materialized-view-create#examples?view=azure-data-explorer&preserve-view=true)).
 
 > [!NOTE]
 > Materialized views come with a cost of consuming cluster's resources, which may not be negligible. For more information, see materialized views [performance considerations](/kusto/management/materialized-views/materialized-view-overview?view=azure-data-explorer&preserve-view=true#performance-considerations).
