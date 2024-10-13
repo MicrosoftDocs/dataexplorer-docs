@@ -15,8 +15,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-|  |  |
-|  |  |
+| [Data integrations overview](integrate-data-overview.md) | Updated article. XXXXXXX adx cribl file |
+| [Integrations overview](integrate-overview.md) | Updated article. XXXXXXX adx cribl file |
 
 **Management**
 
