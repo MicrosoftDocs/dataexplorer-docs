@@ -3,7 +3,7 @@ title:  Streaming ingestion and schema changes
 description:  This article discusses options of handling schema changes with streaming ingestion.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 10/13/2024
 ---
 # Streaming ingestion and schema changes
 
@@ -50,7 +50,7 @@ To coordinate the streaming ingestion flow with schema changes:
     * Repeat until successful and all rows in the command output indicate success
 1. Resume streaming ingestion.
 
-::: moniker range= "azure-data-explorer"
+::: moniker range="azure-data-explorer"
 > [!NOTE]
 > If you've built an application for [custom ingestion](/azure/data-explorer/ingest-data-streaming#choose-the-appropriate-streaming-ingestion-type), we recommend managing schema-related failures by either retrying for a set duration or redirecting data from failed requests using [queued ingestion methods](../../api/get-started/app-queued-ingestion.md).
 ::: moniker-end
