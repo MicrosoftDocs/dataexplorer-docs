@@ -3,7 +3,7 @@ title:  .alter column command
 description: Learn how to use the `.alter column` command to alter the data type of an existing table column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/01/2024
+ms.date: 10/14/2024
 ---
 # .alter column command
 
@@ -12,7 +12,7 @@ ms.date: 10/01/2024
 Alters the data type of an existing table column.
 
 > [!WARNING]
-> When altering the data type of a column, any pre-existing data in that column will return a [null value](../query/scalar-data-types/null-values.md) in future queries.
+> When altering the data type of a column, any preexisting data in that column will return a [null value](../query/scalar-data-types/null-values.md) in future queries.
 > After using `.alter column`, that data cannot be recovered, even by using another command to alter the column type back to a previous value.
 > For information on how to preserve pre-existing data, see [Change column type without data loss](change-column-type-without-data-loss.md).
 
@@ -43,7 +43,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Related content
 
-* You can use `.alter` or `.alter-merge` to change column docstring properties in a certain table. For more information, see [.alter-merge table column-docstrings command](alter-merge-table-column.md) and [.alter table column-docstrings command](alter-column-docstrings.md).
-* To learn how `.alter` is used to change policy encoding, see [.alter column policy encoding command](alter-encoding-policy.md).
-* To rename a column, see [.rename column command](rename-column.md).
-* To drop a column, see [.drop column command](drop-column.md).
+* [.alter-merge table column-docstrings command](alter-merge-table-column.md) and [.alter table column-docstrings command](alter-column-docstrings.md)
+* [.alter column policy encoding command](alter-encoding-policy.md)
+* [.rename column command](rename-column.md)
+* [.drop column command](drop-column.md)
