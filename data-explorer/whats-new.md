@@ -15,16 +15,30 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-| [Data integrations overview](integrate-data-overview.md) | Updated article. XXXXXXX adx cribl file |
-| [Integrations overview](integrate-overview.md) | Updated article. XXXXXXX adx cribl file |
+| [Data integrations overview](integrate-data-overview.md) | Updated article. Added Cribl stream. |
+| [Integrations overview](integrate-overview.md) | Updated article. Added Cribl stream. |
+| [Title not found in: #6055](ingest-data-cribl.md) | New article. Learn how to ingest data from Cribl stream. |
 
 **Management**
 
 |Article title | Description|
 |--|--|
-|  | |
+| [.alter database prettyname command](kusto/management/alter-database-prettyname.md) | New article. Learn how to use the `.alter database prettyname` command to alter the database's prettyname. |
+| [.drop database prettyname command](kusto/management/drop-database-prettyname.md) | New article. Learn how to use the `.drop database prettyname` command to drop the database's prettyname. |
+| [Databases management](/azure/data-explorer/kusto/management/databases.md) | Updated article. Updated information for .alter db. |
+| [.execute database script command](kusto/management/execute-database-script.md) | Updated article. Updated information for .alter db. |
+| [.show database schema violations](kusto/management/show-database-schema-violations.md) | Updated article. Updated information for .alter db. |
+| [.show database command](kusto/management/show-database.md) | Updated article. Updated information for .alter db. |
+| [.show databases entities command](kusto/management/show-databases-entities.md) | Updated article. Updated information for .alter db. |
+| [.show databases command](kusto/management/show-databases.md) | Updated article. Updated information for .alter db. |
+| [.show database schema command](kusto/management/show-schema-database.md) | Updated article. Updated information for .alter db. |
+| [.show data operations command](kusto/management/show-data-operations.md) | New article. Learn how to use the `.show data operations` command to return data operations that reached a final state. |
 
+**Query**
 
+|Article title | Description|
+|--|--|
+| [top-nested operator](kusto/query/top-nested-operator.md) | Updated article. |
 
 ## August 2024
 
