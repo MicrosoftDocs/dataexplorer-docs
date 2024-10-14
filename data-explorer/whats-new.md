@@ -31,6 +31,12 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [.show database schema command](kusto/management/show-schema-database.md) | Updated article. Updated information for .alter db. |
 | [.show data operations command](kusto/management/show-data-operations.md) | New article. Learn how to use the `.show data operations` command to return data operations that reached a final state. |
 
+**Query**
+
+|Article title | Description|
+|--|--|
+| [top-nested operator](kusto/query/top-nested-operator.md) | Updated article. Refreshed content. |
+
 ## August 2024
 
 **General**
