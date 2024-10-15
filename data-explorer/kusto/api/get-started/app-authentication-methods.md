@@ -146,7 +146,8 @@ Certificates can serve as secrets to authenticate an application's identity when
     #### [TypeScript](#tab/typescript)
 
     ```typescript
-    Not supported
+    const kcsb = KustoConnectionStringBuilder
+      .withAadApplicationCertificateAuthentication(<QueryEndpointUri>, <ApplicationId>, <PemCertificate>, <AuthorityId>);
     ```
 
     #### [Java](#tab/java)
@@ -379,6 +380,8 @@ kcsb = KustoConnectionStringBuilder
   .with_az_cli_authentication(<QueryEndpointUri>)
 ```
 
+#### [TypeScript](#tab/typescript)
+
 ```typescript
 const kcsb = KustoConnectionStringBuilder
   .withAzLoginIdentity(<QueryEndpointUri>);
@@ -423,6 +426,8 @@ var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
 kcsb = KustoConnectionStringBuilder
   .with_aad_device_authentication(<QueryEndpointUri>)
 ```
+
+#### [TypeScript](#tab/typescript)
 
 ```typescript
 const kcsb = KustoConnectionStringBuilder
@@ -557,6 +562,8 @@ credential_povider = get_bearer_token_provider(
 kcsb = KustoConnectionStringBuilder
   .with_token_provider(<QueryEndpointUri>, credential_provider)
 ```
+
+#### [TypeScript](#tab/typescript)
 
 ```typescript
 const credentialProvider = () => Promise.resolve(<ManagedIdentityClientId>);
