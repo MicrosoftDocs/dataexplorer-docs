@@ -47,7 +47,7 @@ Displays when *Ingestion mode* is set to **Streaming**, and *Backpressure behavi
 |*Max file size*| 1 MB (default) | The maximum queue file size to reach before closing the file. Include units such as KB or MB, when entering a number. |
 |*Max queue size*| 5 GB (default) | The maximum amount of disk space that the queue can consume on each Worker Process before the Destination stops queueing data. A required value of positive numbers with units such as KB, MB, or GB. The maximum value is 1 TB.|
 |*Queue file path*|`$CRIBL_HOME/state/queues` (default) | The persistent queue file location. Cribl Stream appends `/<worker‑id>/<output‑id>` to this value.|
-|*Compression*|None (default), Gzip | The compression method to use to compress the persisted data, upon closing. |
+|*Compression*|None (default), gzip | The compression method to use to compress the persisted data, upon closing. |
 |*Queue-full behavior*|**Block** or **Drop** | Choose to block or drop events when the queue exerts backpressure due to low disk or full disk capacity.|
 |*Strict ordering*|**Yes** (default) or **No** | When set to **Yes** events are forwarded based on first in, first out ordering. Set to **No** to send new events before earlier queued events. |
 |*Drain rate limit (EPS)*| 0 (default)| This option is displayed when **Strict ordering** is set to **No**, to allow you to set a throttling rate (in events per second) on writing from the queue to receivers. Throttling the drain rate of queued events boosts new or active connection throughput. Zero disables throttling.|

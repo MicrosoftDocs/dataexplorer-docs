@@ -11,6 +11,9 @@ ms.date: 08/11/2024
 
 Merges HLL results across the group into a single HLL value.
 
+> [!NOTE]
+> You can't merge hll values that were created using different accuracy values. For more information, see [hll()](hll-aggregation-function.md).
+ 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 For more information, see the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy](#estimation-accuracy).
