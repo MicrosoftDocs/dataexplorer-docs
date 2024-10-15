@@ -1,6 +1,6 @@
 ---
-title: .delete query acceleration policy command
-description: Learn how to use the ".delete query acceleration policy command" to accelerate queries over external delta tables.
+title: ".delete query acceleration policy command"
+description: Learn how to use the .delete query acceleration policy command to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 10/10/2024
@@ -18,6 +18,12 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 ## Syntax
 
 `.delete` `external` `table` *ExternalTableName* `policy` `query_acceleration`
+
+## Parameters
+
+| Name                | Type     | Required           | Description                     |
+| ------------------- | -------- | ------------------ | ------------------------------- |
+| *ExternalTableName* | `string` | :heavy_check_mark: | The name of the external table. |
 
 ## Example
 
