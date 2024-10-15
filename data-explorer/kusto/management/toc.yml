@@ -544,6 +544,23 @@ items:
             displayName: .show table partitioning policy
           - name: .show database extents partitioning statistics command
             href: show-database-extents-partitioning-statistics.md
+      - name: Query acceleration
+        items:
+          - name: Query acceleration policy
+            href: query-acceleration-policy.md
+            displayName: external table, delta table
+          - name: .alter query acceleration policy command 
+            href: alter-query-acceleration-policy-command.md
+            displayName: external table, delta table
+          - name: .delete query acceleration policy command
+            href: delete-query-acceleration-policy-command.md
+            displayName: external table, delta table
+          - name: .show external table operations query acceleration statistcs command
+            href: show-external-table-operations-query-acceleration-statistics.md
+            displayName: external table, delta table 
+          - name: .show query acceleration policy command
+            href: show-query-acceleration-policy-command.md
+            displayName: external table, delta table
       - name: Query weak consistency
         items:
           - name: Query weak consistency policy

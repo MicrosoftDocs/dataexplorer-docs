@@ -43,3 +43,4 @@ Query acceleration is supported in Eventhouse over OneLake, Azure Data Lake Stor
 * [.alter query acceleration policy command](alter-query-acceleration-policy-command.md)
 * [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
 * [.show query acceleration policy command](show-query-acceleration-policy.md)
+* [.show external table operations query_acceleration statistics](show-external-table-operations-query-acceleration-statistics.md)

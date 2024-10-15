@@ -3,8 +3,44 @@ title: .alter query acceleration policy command
 description: Learn how to use the ".alter query acceleration policy command" to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 10/10/2024
+ms.date: 10/15/2024
 ---
 # .alter query acceleration policy command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+Alters the [query acceleration policy](query-acceleration-policy.md) of a specific external table.
+
+## Permissions
+
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
+
+`.alter` `external` `table` *ExternalTableName* `policy` `query_acceleration` '*JSON-serialized policy*'
+
+## Returns
+
+The command returns a table with one record that includes the modified policy object.
+
+| Column        | Type     | Description                                                                    |
+| ------------- | -------- | ------------------------------------------------------------------------------ |
+| PolicyName    | `string` | The name of the policy - `QueryAcceleration`                                   |
+| EntityName    | `string` | The fully qualified name of the entity: `[DatabaseName].[ExternalTableName]`   |
+| Policy        | `string` | A JSON-serialization of the query acceleration policy that is set on the table |
+| ChildEntities | `string` | The child entities this policy affects - `null`                                |
+| EntityType    | `string` | The type of the entity the policy applies to - `ExternalTable`                 |
+
+
+## Example
+
+```Kusto
+.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00", "MaxAge": "00:05:00"}'
+```
+
+## Related content
+
+* [Query acceleration policy](query-acceleration-policy.md)
+* [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
+* [.show query acceleration policy command](show-query-acceleration-policy.md)
+* [.show external table operations query_acceleration statistics](show-external-table-operations-query-acceleration-statistics.md)
