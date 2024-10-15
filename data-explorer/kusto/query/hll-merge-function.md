@@ -11,6 +11,9 @@ ms.date: 08/11/2024
 
 Merges HLL results. This is the scalar version of the aggregate version [`hll_merge()`](hll-merge-aggregation-function.md).
 
+> [!NOTE]
+> You can't merge hll values that were created using different accuracy values. For more information, see [hll()](hll-aggregation-function.md).
+
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy](#estimation-accuracy).
 
 > [!IMPORTANT]
