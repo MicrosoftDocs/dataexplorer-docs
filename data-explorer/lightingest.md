@@ -65,7 +65,7 @@ To run LightIngest:
 | -connectToStorageLoginUri, -storageLoginUri | `string` | If `-connectToStorageWithUserAuth` is set, you can optionally provide a Microsoft Entra ID login URI. |  |
 | -prefix | `string` | When the source data to ingest resides on blob storage, this URL prefix is shared by all blobs, excluding the container name. <br>For example, if the data is in `MyContainer/Dir1/Dir2`, then the prefix should be `Dir1/Dir2`. We recommend enclosing this value in double quotes. |  |
 | -pattern | `string` | Pattern by which source files/blobs are picked. Supports wildcards. For example, `"*.csv"`. We recommend enclosing this value in double quotes. |  |
-| -zipPattern | `string` | Regular expression to use when selecting which files in a zip archive to ingest. All other files in the archive will be ignored. For example, `"*.csv"`. We recommend enclosing this value in double quotes. |  |
+| -zipPattern | `string` | Regular expression to use when selecting which files in a ZIP archive to ingest. All other files in the archive will be ignored. For example, `"*.csv"`. We recommend enclosing this value in double quotes. |  |
 | -format, -f | `string` | Source data format. Must be one of the [supported formats](ingestion-supported-formats.md) |  |
 | -ingestionMappingPath, -mappingPath | `string` | A path to a local file for ingestion column mapping. See [data mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true). |  |
 | -ingestionMappingRef, -mappingRef | `string` | The name of an ingestion column mapping that was previously created on the table. See [data mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true). |  |
