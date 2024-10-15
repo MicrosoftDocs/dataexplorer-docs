@@ -60,4 +60,4 @@ The command returns a table with a record per external table that has a non-null
 * [Query acceleration policy](query-acceleration-policy.md)
 * [.alter query acceleration policy command](alter-query-acceleration-policy-command.md)
 * [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
-* [.show query acceleration policy command](show-query-acceleration-policy.md)
+* [.show query acceleration policy command](show-query-acceleration-policy-command.md)

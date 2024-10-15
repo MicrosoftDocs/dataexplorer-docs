@@ -48,5 +48,5 @@ The command returns a table with one record that includes the modified policy ob
 
 * [Query acceleration policy](query-acceleration-policy.md)
 * [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
-* [.show query acceleration policy command](show-query-acceleration-policy.md)
+* [.show query acceleration policy command](show-query-acceleration-policy-command.md)
 * [.show external table operations query_acceleration statistics](show-external-table-operations-query-acceleration-statistics.md)
