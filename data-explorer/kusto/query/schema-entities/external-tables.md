@@ -42,7 +42,7 @@ Use the following commands to manage external tables:
 For more information about how to query external tables, and ingested and uningested data, see [Query data in Azure Data Lake using Azure Data Explorer](/azure/data-explorer/data-lake-query-data).
 ::: moniker-end
 
-To accelerate queries over external delta tables, see [Query acceleration policy](query-acceleration-policy.md).
+To accelerate queries over external delta tables, see [Query acceleration policy](../../management/query-acceleration-policy.md).
 
 > [!NOTE]
 >
