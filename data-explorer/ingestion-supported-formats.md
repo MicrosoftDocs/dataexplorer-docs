@@ -53,13 +53,13 @@ Blobs and files can be compressed through any of the following compression algor
 |Compression|Extension|
 |-----------|---------|
 |gzip       |.gz      |
-|Zip        |.zip     |
+|zip        |.zip     |
 
 Indicate compression by appending the extension to the name of the blob or file.
 
 For example:
-* `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with ZIP (archive or a single file)
-* `MyData.json.gz` indicates a blob or a file formatted as JSON, compressed with GZip.
+* `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with zip (archive or a single file)
+* `MyData.json.gz` indicates a blob or a file formatted as JSON, compressed with gGzip.
 
 Blob or file names that don't include the format extensions but just compression (for example, `MyData.zip`) is also supported. In this case, the file format
 must be specified as an ingestion property because it cannot be inferred.
@@ -67,7 +67,7 @@ must be specified as an ingestion property because it cannot be inferred.
 > [!NOTE]
 > * Some compression formats keep track of the original file extension as part of the compressed stream. This extension is generally ignored for determining the file format. If the file format can't be determined from the (compressed) blob or file name, it must be specified through the `format` ingestion property.
 > * Not to be confused with internal (chunk level) compression codec used by `Parquet`, `AVRO` and `ORC` formats. Internal compression name is usually added to a file name before file format extension, for example: `file1.gz.parquet`, `file1.snappy.avro`, etc.
-> * [Deflate64/Enhanced Deflate](https://en.wikipedia.org/wiki/Deflate#Deflate64/Enhanced_Deflate) Zip compression method is not supported. Please note that Windows built-in Zip compressor may choose to use this compression method on files of size over 2GB.
+> * [Deflate64/Enhanced Deflate](https://en.wikipedia.org/wiki/Deflate#Deflate64/Enhanced_Deflate) zip compression method is not supported. Please note that Windows built-in zip compressor may choose to use this compression method on files of size over 2GB.
 
 ## Related content
 

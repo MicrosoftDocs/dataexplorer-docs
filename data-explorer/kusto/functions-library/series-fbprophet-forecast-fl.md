@@ -18,8 +18,8 @@ The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)]
 
 * Install the `fbprophet` package since it isn't included in the Python image. To install the package, do the following:
   1. Follow the guidelines for [Installing packages for the Python plugin](../query/python-plugin.md#install-packages-for-the-python-plugin).
-     * To save time in the above guidelines, you can download the `prophet` zip file, containing the wheel files of `prophet` and its dependencies, from [https://artifactswestusnew.blob.core.windows.net/public/prophet-1.1.5.zip](https://artifactswestusnew.blob.core.windows.net/public/prophet-1.1.5.zip). Save this file to your allowlisted blob container.
-  1. Create a SAS token with read access to your zip file. To create a SAS token, see [get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
+     * To save time in the above guidelines, you can download the `prophet` ZIP file, containing the wheel files of `prophet` and its dependencies, from [https://artifactswestusnew.blob.core.windows.net/public/prophet-1.1.5.zip](https://artifactswestusnew.blob.core.windows.net/public/prophet-1.1.5.zip). Save this file to your allowlisted blob container.
+  1. Create a SAS token with read access to your ZIP file. To create a SAS token, see [get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
   1. In the [Example](#example), replace the URL reference in the `external_artifacts` parameter with your file path and its SAS token.
 
 ## Syntax
