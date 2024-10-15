@@ -52,7 +52,7 @@ Blobs and files can be compressed through any of the following compression algor
 
 |Compression|Extension|
 |-----------|---------|
-|GZip       |.gz      |
+|gzip       |.gz      |
 |Zip        |.zip     |
 
 Indicate compression by appending the extension to the name of the blob or file.

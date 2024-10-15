@@ -56,7 +56,7 @@ Blobs and files can be compressed through any of the following compression algor
 
 |Compression|Extension|
 |-----------|---------|
-|GZip       |.gz      |
+|gzip       |.gz      |
 |Zip        |.zip     |
 
 Indicate compression by appending the extension to the name of the blob or file.
@@ -64,7 +64,7 @@ Indicate compression by appending the extension to the name of the blob or file.
 For example:
 
 * `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with ZIP (archive or a single file)
-* `MyData.json.gz` indicates a blob or a file formatted as JSON, compressed with GZip.
+* `MyData.json.gz` indicates a blob or a file formatted as JSON, compressed with gzip.
 
 Blob or file names that don't include the format extensions but just compression (for example, `MyData.zip`) is also supported. In this case, the file format
 must be specified as an ingestion property because it cannot be inferred.
