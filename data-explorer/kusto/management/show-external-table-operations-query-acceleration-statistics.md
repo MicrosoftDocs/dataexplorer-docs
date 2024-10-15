@@ -25,7 +25,7 @@ You must have at least [Database monitor or Database viewer](../access-control/r
 
 | Name                | Type     | Required           | Description                     |
 | ------------------- | -------- | ------------------ | ------------------------------- |
-| *ExternalTableName* | `string` | :heavy_check_mark: | The name of the external table. |
+| *ExternalTableName* | `string` |  | The name of the external table. |
 
 ## Returns
 
