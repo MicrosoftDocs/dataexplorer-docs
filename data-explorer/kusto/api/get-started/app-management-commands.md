@@ -67,7 +67,7 @@ In your preferred IDE or text editor, create a project or file named *management
       main()
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
@@ -148,7 +148,7 @@ In your preferred IDE or text editor, create a project or file named *management
           print("\t", col, "-", row[col])
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     function printResultsAsValueList(command: string, response: KustoResponseDataSet) {
@@ -223,7 +223,7 @@ In your preferred IDE or text editor, create a project or file named *management
               " StormSummary:dynamic)"
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     const database = "<your_database>";
@@ -285,7 +285,7 @@ In your preferred IDE or text editor, create a project or file named *management
     print_result_as_value_list(command, response)
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     > [!NOTE]
     > You'll use the `executeMgmt` method to run the command.
@@ -400,7 +400,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 import { Client as KustoClient, KustoConnectionStringBuilder, KustoResponseDataSet } from "azure-kusto-data/";
@@ -521,7 +521,7 @@ dotnet run .
 python management_commands.py
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 In a Node.js environment:
 
@@ -599,7 +599,7 @@ response = kusto_client.execute_mgmt(database, command)
 print_result_as_value_list(command, response)
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 // Reduce the default batching timeout to 30 seconds
@@ -668,7 +668,7 @@ response = kusto_client.execute_mgmt(database, command)
 print_result_as_value_list(command, response)
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 // Show the database retention policy (drop some columns from the result)

@@ -39,7 +39,7 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     - Ensure the `python` executable is in your `PATH`
     - Verify installation: In a command shell, run `python --version` to check that the version is 3.7 or later
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 - [Node 16 or later](https://nodejs.org/en/download/) built with ES6
     - Ensure the `node` executable is in your `PATH`
@@ -107,7 +107,7 @@ python -m pip install azure-kusto-data
 python -m pip install azure-kusto-ingest
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```bash
 npm install azure-kusto-data
@@ -170,7 +170,7 @@ The Kusto SDKs contain quick start sample applications. These applications showc
 
 [Python Quickstart App](https://github.com/Azure/azure-kusto-python/tree/master/quick_start)
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 - [Node.js Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start)
 - [Browser Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start_browser)

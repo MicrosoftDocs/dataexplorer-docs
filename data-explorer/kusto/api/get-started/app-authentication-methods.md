@@ -57,26 +57,29 @@ There are two types of managed identities: system-assigned and user-assigned. Sy
     #### [C\#](#tab/csharp)
 
     ```csharp
-    var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>")
-        .WithAadSystemManagedIdentity();
+    var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
+      .WithAadSystemManagedIdentity();
     ```
 
     #### [Python](#tab/python)
 
     ```python
-    kcsb = KustoConnectionStringBuilder.with_aad_managed_service_identity_authentication("<QueryEndpointUri>")
+    kcsb = KustoConnectionStringBuilder
+      .with_aad_managed_service_identity_authentication(<QueryEndpointUri>)
     ```
 
-    #### [Typescript](#tab/typescript)
+    #### [TypeScript](#tab/typescript)
 
     ```typescript
-    const kcsb = KustoConnectionStringBuilder.withSystemManagedIdentity("<QueryEndpointUri>");
+    const kcsb = KustoConnectionStringBuilder
+      .withSystemManagedIdentity(<QueryEndpointUri>);
     ```
 
     #### [Java](#tab/java)
 
     ```java
-    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder.createWithAadManagedIdentity("<QueryEndpointUri>");
+    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+      .createWithAadManagedIdentity(<QueryEndpointUri>);
     ```
 
     ---
@@ -86,26 +89,29 @@ There are two types of managed identities: system-assigned and user-assigned. Sy
     #### [C\#](#tab/csharp)
 
     ```csharp
-    var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>")
-        .WithAadUserManagedIdentity("<ManagedIdentityId>");
+    var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
+      .WithAadUserManagedIdentity(<ManagedIdentityId>);
     ```
 
     #### [Python](#tab/python)
 
     ```python
-    kcsb = KustoConnectionStringBuilder.with_aad_managed_service_identity_authentication("<QueryEndpointUri>", "<ManagedIdentityId>")
+    kcsb = KustoConnectionStringBuilder
+      .with_aad_managed_service_identity_authentication(<QueryEndpointUri>, <ManagedIdentityId>)
     ```
 
-    #### [Typescript](#tab/typescript)
+    #### [TypeScript](#tab/typescript)
 
     ```typescript
-    const kcsb = KustoConnectionStringBuilder.withUserManagedIdentity("<QueryEndpointUri>", "<ManagedIdentityId>");
+    const kcsb = KustoConnectionStringBuilder
+      .withUserManagedIdentity(<QueryEndpointUri>, <ManagedIdentityId>);
     ```
 
     #### [Java](#tab/java)
 
     ```java
-    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder.createWithAadManagedIdentity("<QueryEndpointUri>", "<ManagedIdentityId>");
+    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+      .createWithAadManagedIdentity(<QueryEndpointUri>, <ManagedIdentityId>);
     ```
 
     ---
@@ -117,55 +123,67 @@ There are two types of managed identities: system-assigned and user-assigned. Sy
 
 ### Certificate-Based Authentication
 
-Certificates can serve as secrets to authenticate the application's identity when requesting a token. There are several methods to load the certificate, such as loading it from disk or the machine's credentials store.
+Certificates can serve as secrets to authenticate an application's identity when requesting a token. There are several methods to load the certificate, such as loading it from disk or the machine's credentials store.
 
-| In the following examples, replace *`<QueryEndpointUri>`*, *`<ApplicationId>`*, *`<CertificateSubjectName>`*, *`<CertificateIssuerName>`*, *`<AuthorityId>`*, *`<PemCertificate>`* and *`<CertificateObject>`* with your own values.
+| In the following examples, replace *`<QueryEndpointUri>`*, *`<ApplicationId>`*, *`<CertificateSubjectName>`*, *`<CertificateIssuerName>`*, *`<AuthorityId>`*, *`<PemCertificate>`*, *`<privateKeyPemFilePath>`* and *`<CertificateObject>`* with your own values.
 
 - For authentication using a certificate from the local store:
 
     #### [C\#](#tab/csharp)
 
     ```csharp
-    var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>").
-        WithAadApplicationSubjectAndIssuerAuthentication("<ApplicationId>", "<CertificateSubjectName>", "<CertificateIssuerName>", "<AuthorityId>");
+    var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
+      .WithAadApplicationSubjectAndIssuerAuthentication(<ApplicationId>, <CertificateSubjectName>, <CertificateIssuerName>, <AuthorityId>);
     ```
 
     #### [Python](#tab/python)
 
     ```python
-    kcsb = KustoConnectionStringBuilder.with_aad_application_certificate_authentication(
-      "<QueryEndpointUri>", "<ApplicationId>", "<CertificateSubjectName>", "<CertificateIssuerName>", "<AuthorityId>"
-    )
+    kcsb = KustoConnectionStringBuilder
+      .with_aad_application_certificate_authentication(<QueryEndpointUri>, <ApplicationId>, <CertificateSubjectName>, <CertificateIssuerName>, <AuthorityId>)
     ```
 
-    #### [Typescript](#tab/typescript)
+    #### [TypeScript](#tab/typescript)
 
     ```typescript
-    const kcsb = KustoConnectionStringBuilder.withAadApplicationCertificateAuthentication(
-      "<QueryEndpointUri>", "<ApplicationId>", "<CertificateSubjectName>", "<CertificateIssuerName>", "<AuthorityId>"
-    );
+    Not supported
     ```
 
     #### [Java](#tab/java)
 
     ```java
-    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder.createWithAadApplicationSubjectAndIssuerAuthentication(
-      "<QueryEndpointUri>", "<ApplicationId>", "<CertificateSubjectName>", "<CertificateIssuerName>", "<AuthorityId>"
-    );
+    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+      .createWithAadApplicationSubjectAndIssuerAuthentication(<QueryEndpointUri>, <ApplicationId>, <CertificateSubjectName>, <CertificateIssuerName>, <AuthorityId>);
     ```
 
     ---
 
-- For authentication using a certificate in a connection string. If the connection string loads a local certificate, set `PreventAccessToLocalSecretsViaKeywords` to `false`:
+- For authentication using a certificate in a connection string, if the connection string loads a local certificate, set `PreventAccessToLocalSecretsViaKeywords` to `false`:
+
+    #### [C\#](#tab/csharp)
 
     ```csharp
     var connectionString = 
-        "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;Application Client Id=<ApplicationId>;Application Certificate Subject=<CertificateSubjectName>;Application Certificate Issuer=<CertificateIssuerName>;Authority Id=<AuthorityId>";
-    var kcsb = new KustoConnectionStringBuilder() {
-        PreventAccessToLocalSecretsViaKeywords = false,
-        ConnectionString = connectionString
-    };
+      "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;Application Client Id=<ApplicationId>;Application Certificate Subject=<CertificateSubjectName>;Application Certificate Issuer=<CertificateIssuerName>;Authority Id=<AuthorityId>;
+    var kcsb = new KustoConnectionStringBuilder() {ConnectionString = connectionString};
     ```
+
+    #### [Python](#tab/python)
+
+    ```python
+    ```
+
+    #### [TypeScript](#tab/typescript)
+
+    ```typescript
+    ```
+
+    #### [Java](#tab/java)
+
+    ```java
+    ```
+
+    ---
 
     For more information, see [Kusto connection strings](../connection-strings/kusto.md).
 
@@ -175,19 +193,18 @@ Certificates can serve as secrets to authenticate the application's identity whe
 
     ```csharp
     X509Certificate2 certificate = <CertificateObject>;
-    var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>").
-        WithAadApplicationCertificateAuthentication("<ApplicationId>", certificate, "<AuthorityId>");
+    var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
+      .WithAadApplicationCertificateAuthentication(<ApplicationId>, certificate, <AuthorityId>);
     ```
 
     #### [Python](#tab/python)
 
-    #### [Typescript](#tab/typescript)
+    #### [TypeScript](#tab/typescript)
 
     ```typescript
-    const pemCertificate: string = await fs.promises.readFile(privateKeyPemFilePath, "utf8");
-    const kcsb = KustoConnectionStringBuilder.withAadApplicationCertificateAuthentication(
-      "<QueryEndpointUri>", "<ApplicationId>", "<PemCertificate>", "<AuthorityId>"
-    );
+    const certificate: string = await fs.promises.readFile(<privateKeyPemFilePath>, "utf8");
+    const kcsb = KustoConnectionStringBuilder
+      .withAadApplicationCertificateAuthentication(<QueryEndpointUri>, <ApplicationId>, certificate, <AuthorityId>);
     ```
 
     #### [Java](#tab/java)
@@ -203,22 +220,69 @@ Certificates can serve as secrets to authenticate the application's identity whe
 
 Application key, also known as an application password, is a secret string that an application uses to authenticate and prove its identity when requesting a token. It serves as a form of credential for the application to access protected resources. The application key is typically generated and assigned by the identity provider or authorization server. It's important to securely manage and protect the application key to prevent unauthorized access to sensitive information or actions.
 
-| In the following examples, replace *`<QueryEndpointUri>`*, *`<ApplicationId>`*, *`<ApplicationKey>`*, and *`<AuthorityId>`* with your own values.
+| In the following examples, replace *`<QueryEndpointUri>`*, *`<ApplicationId>`*, *`<ApplicationKey>`*, *`<ApplicationTenant>`*, and *`<AuthorityId>`* with your own values.
 
 - For authentication using an application key:
 
+    #### [C\#](#tab/csharp)
+
     ```csharp
-    var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>").
-        WithAadApplicationKeyAuthentication("<ApplicationId>", "<ApplicationKey>", "<AuthorityId>");
+    var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
+      .WithAadApplicationKeyAuthentication(<ApplicationId>, <ApplicationKey>, <AuthorityId>);
     ```
+
+    #### [Python](#tab/python)
+
+    ```python
+    kcsb = KustoConnectionStringBuilder
+      .with_aad_application_key_authentication(<QueryEndpointUri>, <ApplicationId>, <ApplicationKey>, <ApplicationTenant>)
+    ```
+
+    #### [TypeScript](#tab/typescript)
+
+    ```typescript
+    const kcsb = KustoConnectionStringBuilder
+      .withAadApplicationKeyAuthentication(<QueryEndpointUri>, <ApplicationId>, <ApplicationKey>, <ApplicationTenant>);
+    ```
+
+    #### [Java](#tab/java)
+
+    ```java
+    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+      .createWithAadApplicationCredentials(<QueryEndpointUri>, <ApplicationId>, <ApplicationKey>, <ApplicationTenant>);
+    ```
+
+    ---
 
 - For authentication using an application key in a connection string:
 
+    #### [C\#](#tab/csharp)
+
     ```csharp
     var connectionString = 
-        "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;AAD Federated Security=True;AppClientId=<ApplicationId>;AppKey=<ApplicationKey>;Authority Id=<AuthorityId>";
+      "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;AAD Federated Security=True;AppClientId=<ApplicationId>;AppKey=<ApplicationKey>;Authority Id=<AuthorityId>;
     var kcsb = new KustoConnectionStringBuilder(connectionString);
     ```
+
+    #### [Python](#tab/python)
+
+    ```python
+    Not supported
+    ```
+
+    #### [TypeScript](#tab/typescript)
+
+    ```typescript
+    Not supported
+    ```
+
+    #### [Java](#tab/java)
+
+    ```java
+    Not supported
+    ```
+
+    ---
 
 > [!IMPORTANT]
 > Hard-coding secrets in your code is considered a bad practice. Storing sensitive information, such as authentication credentials, in plain text can lead to security vulnerabilities. We recommended that you keep sensitive information encrypted or store them securely in a key vault. By using encryption or a key vault, you can ensure that your secrets are protected and only accessible to authorized users or applications.
@@ -231,33 +295,103 @@ This section covers the different methods of authenticating using a user princip
 
 This authentication method uses the user's credentials to establish a secure connection with Kusto. The method opens a web browser where the user is prompted to enter their username and password to complete the authentication process.
 
-| In the following examples, replace *`<QueryEndpointUri>`* and *`<AuthorityId>`* with your own values.
+| In the following examples, replace *`<QueryEndpointUri>`* ,*`<AuthorityId>`*, and *`<AuthorityId>`* with your own values.
 
 - For authentication using interactive user sign-in:
 
+    #### [C\#](#tab/csharp)
+
     ```csharp
-    var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>").
-        WithAadUserPromptAuthentication();
+    var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
+      .WithAadUserPromptAuthentication();
     ```
+
+    #### [Python](#tab/python)
+
+    ```python
+    kcsb = KustoConnectionStringBuilder
+      .with_interactive_login(<QueryEndpointUri>)
+    ```
+
+    #### [TypeScript](#tab/typescript)
+
+    ```typescript
+    const kcsb = KustoConnectionStringBuilder
+      .withUserPrompt(<QueryEndpointUri>, {tenantId: <AuthorityId>});
+    ```
+
+    #### [Java](#tab/java)
+
+    ```java
+    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+      .createWithAadApplicationCredentials(<QueryEndpointUri>, <AuthorityId>);
+    ```
+
+    ---
 
 - For authentication using interactive user sign-in in a connection string:
 
+    #### [C\#](#tab/csharp)
+
     ```csharp
     var connectionString =
-        "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority Id=<AuthorityId>"
+        "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority Id=<AuthorityId>
     var kcsb = new KustoConnectionStringBuilder(connectionString);
     ```
 
+    #### [Python](#tab/python)
+
+    ```python
+    Not supported
+    ```
+
+    #### [TypeScript](#tab/typescript)
+
+    ```typescript
+    Not supported
+    ```
+
+    #### [Java](#tab/java)
+
+    ```java
+    Not supported
+    ```
+
+    ---
+
 ### Azure Command-Line Interface (CLI) authentication
 
-This authentication method uses the Azure Command-Line Interface (CLI) to authenticate and obtain a token for the user. By running the `az login` command, the user can securely establish a connection and retrieve the necessary token for authentication purposes. The user might be prompted to sign-in if the token isn't available in the Azure CLI cache and the `interactive` parameter is set to `true`. For more information, see [Azure Command-Line Interface (CLI)](/cli/azure/).
+This authentication method uses the Azure Command-Line Interface (CLI) to authenticate and obtain a token for the user. Running the `az login` command means the user can securely establish a connection and retrieve the necessary token for authentication purposes. The user might be prompted to sign in if the token isn't available in the Azure CLI cache and the `interactive` parameter is set to `true`. For more information, see [Azure Command-Line Interface (CLI)](/cli/azure/).
 
 | In the following example, replace *`<QueryEndpointUri>`*  with your own value.
 
+#### [C\#](#tab/csharp)
+
 ```csharp
-var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>")
-    .WithAadAzCliAuthentication(interactive: true);
+var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
+  .WithAadAzCliAuthentication(interactive: true);
 ```
+
+#### [Python](#tab/python)
+
+```python
+kcsb = KustoConnectionStringBuilder
+  .with_az_cli_authentication(<QueryEndpointUri>)
+```
+
+```typescript
+const kcsb = KustoConnectionStringBuilder
+  .withAzLoginIdentity(<QueryEndpointUri>);
+```
+
+#### [Java](#tab/java)
+
+```java
+KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+  .createWithAzureCli(<QueryEndpointUri>);
+```
+
+---
 
 > [!IMPORTANT]
 > This method is only supported for .NET Framework apps.
@@ -268,18 +402,41 @@ This method is designed for devices lacking a proper user interface for sign-in,
 
 | In the following example, replace *`<QueryEndpointUri>`*  with your own value.
 
-```csharp
-var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>")
-    .WithAadDeviceCodeAuthentication((msg, uri, code) =>
-    {
-        // The callback is used to display instructions to the user on how to authenticate using the device code
-        Console.WriteLine("Device Code Message: {0}", msg);
-        Console.WriteLine("Device Code Uri: {0}", uri);
-        Console.WriteLine("Device Code: {0}", code);
+#### [C\#](#tab/csharp)
 
-        return Task.CompletedTask;
-    });
+```csharp
+var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
+  .WithAadDeviceCodeAuthentication((msg, uri, code) =>
+  {
+    // The callback is used to display instructions to the user on how to authenticate using the device code
+    Console.WriteLine("Device Code Message: {0}", msg);
+    Console.WriteLine("Device Code Uri: {0}", uri);
+    Console.WriteLine("Device Code: {0}", code);
+
+    return Task.CompletedTask;
+  });
 ```
+
+#### [Python](#tab/python)
+
+```python
+kcsb = KustoConnectionStringBuilder
+  .with_aad_device_authentication(<QueryEndpointUri>)
+```
+
+```typescript
+const kcsb = KustoConnectionStringBuilder
+  .withAadDeviceAuthentication(<QueryEndpointUri>);
+```
+
+#### [Java](#tab/java)
+
+```java
+KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+  .createWithDeviceCode(<QueryEndpointUri>);
+```
+
+---
 
 > [!IMPORTANT]
 > Device code authentication may be blocked by tenant Conditional Access Policies.
@@ -294,6 +451,8 @@ This section covers the different methods of authenticating using a custom token
 Custom token providers can be used to acquire a Microsoft Entra ID token for authentication. The following example demonstrates how to use a custom token provider to obtain a token using federated managed identity. You can modify the code to fit your application's requirements.
 
 | In the following example, replace *`<ApplicationTenantId>`*, *`<ApplicationId>`*, *`<ManagedIdentityClientId>`*, and *`<QueryEndpointUri>`*  with your own values.
+
+#### [C\#](#tab/csharp)
 
 ```csharp
 public class TokenProvider
@@ -322,12 +481,12 @@ public class TokenProvider
     // Create client assertion credential to authenticate with Kusto
     m_clientAssertion = new ClientAssertionCredential
     (
-      "<ApplicationTenantId>",
-      "<ApplicationId>",
+      <ApplicationTenantId>,
+      <ApplicationId>,
       async (token) =>
       {
         // Get Managed Identity token
-        var miCredential = new ManagedIdentityCredential("<ManagedIdentityClientId>");
+        var miCredential = new ManagedIdentityCredential(<ManagedIdentityClientId>);
         var miToken = await miCredential.GetTokenAsync(new TokenRequestContext(new[] {
           "api://AzureADTokenExchange/.default" 
         })).ConfigureAwait(false);
@@ -343,15 +502,32 @@ public class TokenProvider
   }
 }
 
-var tokenProvider = new TokenProvider("<QueryEndpointUri>");
+var tokenProvider = new TokenProvider(<QueryEndpointUri>);
 
-var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>")
+var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
   .WithAadTokenProviderAuthentication(
     async () =>
     {
       return await tokenProvider.GetTokenAsync();
     });
 ```
+
+#### [Python](#tab/python)
+
+```python
+```
+
+#### [TypeScript](#tab/typescript)
+
+```typescript
+```
+
+#### [Java](#tab/java)
+
+```java
+```
+
+---
 
 ### Using Azure TokenCredential authentication
 
@@ -361,13 +537,42 @@ You can use `DefaultAzureCredential` for supporting production code that uses Ma
 
 | In the following example, replace *`<QueryEndpointUri>`* and *`<ManagedIdentityClientId>`*  with your own values.
 
+#### [C\#](#tab/csharp)
+
 ```csharp
 var credentialProvider = new DefaultAzureCredential(new DefaultAzureCredentialOptions {
-  ManagedIdentityClientId = "<ManagedIdentityClientId>"
+  ManagedIdentityClientId = <ManagedIdentityClientId>
  });
-var kcsb = new KustoConnectionStringBuilder("<QueryEndpointUri>")
-    .WithAadAzureTokenCredentialsAuthentication(credentialProvider);
+var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
+  .WithAadAzureTokenCredentialsAuthentication(credentialProvider);
 ```
+
+#### [Python](#tab/python)
+
+```python
+from azure.identity import get_bearer_token_provider, ManagedIdentityCredential
+credential_povider = get_bearer_token_provider(
+  client_id=<ManagedIdentityClientId>
+)
+kcsb = KustoConnectionStringBuilder
+  .with_token_provider(<QueryEndpointUri>, credential_provider)
+```
+
+```typescript
+const credentialProvider = () => Promise.resolve(<ManagedIdentityClientId>);
+const kcsb = KustoConnectionStringBuilder
+  .withTokenProvider(<QueryEndpointUri>, credentialProvider);
+```
+
+#### [Java](#tab/java)
+
+```java
+Callable<String> credentialProvider = () -> <ManagedIdentityClientId>;
+KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+  .createWithAadTokenProviderAuthentication(<QueryEndpointUri>, credentialProvider);
+```
+
+---
 
 > [!NOTE]
 > `DefaultAzureCredential` is used to authenticate with Azure services.
