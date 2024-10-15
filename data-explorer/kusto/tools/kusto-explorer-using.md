@@ -220,7 +220,7 @@ https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSs
 The query is made more compact by applying the following transformation:
 
 ```csharp
- UrlEncode(Base64Encode(GZip(original query)))
+ UrlEncode(Base64Encode(gzip(original query)))
 ```
 
 ## Kusto.Explorer command-line arguments
