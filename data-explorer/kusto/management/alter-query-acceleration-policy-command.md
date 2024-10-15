@@ -19,6 +19,13 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 `.alter` `external` `table` *ExternalTableName* `policy` `query_acceleration` '*JSON-serialized policy*'
 
+## Parameters
+
+| Name                     | Type     | Required           | Description                                                                                                               |
+| ------------------------ | -------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| *ExternalTableName*      | `string` | :heavy_check_mark: | The name of the external table.                                                                                           |
+| *JSON-serialized policy* | `string` | :heavy_check_mark: | String literal holding a JSON property bag with the following properties: <br> IsEnabled : `Boolean` <br> Hot: `Timespan` |
+
 ## Returns
 
 The command returns a table with one record that includes the modified policy object.
@@ -31,11 +38,10 @@ The command returns a table with one record that includes the modified policy ob
 | ChildEntities | `string` | The child entities this policy affects - `null`                                |
 | EntityType    | `string` | The type of the entity the policy applies to - `ExternalTable`                 |
 
-
 ## Example
 
 ```Kusto
-.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00", "MaxAge": "00:05:00"}'
+.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00"}'
 ```
 
 ## Related content

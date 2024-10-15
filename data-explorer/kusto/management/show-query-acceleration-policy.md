@@ -13,13 +13,19 @@ Shows the [query acceleration policy](query-acceleration-policy.md)of a specific
 
 ## Permissions
 
-TODO: What permissions? The internal doc says none, but wouldn't you at least need database viewer?
+You must have at least [Database user, Database monitor, or Database viewer](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.show` `external` `table` *ExternalTableName* `policy` `query_acceleration`
 
 `.show` `external` `table` `*` `policy` `query_acceleration`
+
+## Parameters
+
+| Name                | Type     | Required           | Description                     |
+| ------------------- | -------- | ------------------ | ------------------------------- |
+| *ExternalTableName* | `string` | :heavy_check_mark: | The name of the external table. |
 
 ## Returns
 
@@ -43,7 +49,7 @@ The command returns a table with a record per external table with the following 
 
 | PolicyName              | EntityName                     | Policy                                                                             | ChildEntities | EntityType    |
 | ----------------------- | ------------------------------ | ---------------------------------------------------------------------------------- | ------------- | ------------- |
-| QueryAccelerationPolicy | [MyDatabase].[MyExternalTable] | {<br>  "IsEnabled": true,<br>  "Hot": "1.00:00:00",<br>  "MaxAge": "00:05:00"<br>}                || ExternalTable |
+| QueryAccelerationPolicy | [MyDatabase].[MyExternalTable] | {<br>  "IsEnabled": true,<br>  "Hot": "1.00:00:00"}                || ExternalTable |
 
 ## Related content
 

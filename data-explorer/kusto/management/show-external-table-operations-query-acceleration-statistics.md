@@ -13,13 +13,19 @@ Shows statistics for [query acceleration](query-acceleration-policy.md) for a sp
 
 ## Permissions
 
-You must have either [Database monitor or Database viewer](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database monitor or Database viewer](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.show` `external` `table` *ExternalTableName* `operations` `query_acceleration` `statistics`
 
 `.show` `external` `tables` `operations` `query_acceleration` `statistics`
+
+## Parameters
+
+| Name                | Type     | Required           | Description                     |
+| ------------------- | -------- | ------------------ | ------------------------------- |
+| *ExternalTableName* | `string` | :heavy_check_mark: | The name of the external table. |
 
 ## Returns
 
