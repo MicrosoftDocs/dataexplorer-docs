@@ -13,7 +13,7 @@ PowerShell scripts can use the [Kusto client libraries](../client-libraries.md),
 
 ## Prerequisites
 
-* An archiving tool to extract ZIP files, such as 7-zip or WinRAR.
+* An archiving tool to extract ZIP files, such as 7-Zip or WinRAR.
 
 ## Get the libraries
 
