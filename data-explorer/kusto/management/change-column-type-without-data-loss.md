@@ -28,9 +28,9 @@ For each table `OriginalTable` you'd like to change a column type in, execute th
 
     When the command completes, the new data from existing ingestion pipelines flows to `OriginalTable` that is now typed correctly.
 
-1. Drop the table `NewTable`
+1. Drop the table `NewTable`.
 
-    `NewTable` will include only a copy of the historical data (before the schema change) and can be safely dropped after confirming the schema and data in `OriginalTable` were correctly updated.
+    `NewTable` includes only a copy of the historical data  from before the schema change. It can be safely dropped after confirming the schema and data in `OriginalTable` were correctly updated.
 
     ```kusto
     .drop table NewTable
@@ -38,25 +38,46 @@ For each table `OriginalTable` you'd like to change a column type in, execute th
 
 ## Example
 
-The following example updates the schema of `OriginalTable` while preserving its data. It creates two tables `OriginalTable` and `NewTable`, each with a column, "Col1," of types guid and string respectively and ingests data into `OriginalTable`. It appends data from `OriginalTable` to `NewTable` and uses the `tostring()` function to convert the "Col1" column from guid to string type. It then swaps table names and drops the table with the old schema and data.
+The following example updates the schema of `OriginalTable` while preserving its data.
+
+Create the table, `OriginalTable`, with a column, "Col1," of type guid.
 
 ```kusto
-
 .create table OriginalTable (Col1:guid, Id:int)
+```
 
+Then ingest data into `OriginalTable`.
+
+```kusto
 .ingest inline into table OriginalTable <|
 b642dec0-1040-4eac-84df-a75cfeba7aa4,1
 c224488c-ad42-4e6c-bc55-ae10858af58d,2
 99784a64-91ad-4897-ae0e-9d44bed8eda0,3
 d8857a93-2728-4bcb-be1d-1a2cd35386a7,4
 b1ddcfcc-388c-46a2-91d4-5e70aead098c,5
+```
 
+Create the table, `NewTable` of type string.
+
+```kusto
 .create table NewTable (Col1:string, Id:int)
+```
 
+Append data from `OriginalTable` to `NewTable` and use the `tostring()` function to convert the "Col1" column from type guid to type string.
+
+```kusto
 .set-or-append NewTable <| OriginalTable | extend Col1=tostring(Col1)
+```
 
+Swap the table names.
+
+```kusto
 .rename tables NewTable = OriginalTable, OriginalTable = NewTable
+```
 
+Drop table, `NewTable` with the old schema and data.
+
+```kusto
 .drop table NewTable
 ```
 
