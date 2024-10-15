@@ -40,7 +40,6 @@ The command returns a table with a record per external table that has a non-null
 | LastUpdatedDateTime             | `datetime` | Indicates the last datetime when the internal representation of the table was successfully refreshed |
 | AccelerationPendingArtifactSize | `long`     | The total size of artifacts that are pending acceleration                                            |
 | AccelerationCompletePercentage  | `double`   | The percentage of artifacts that are cached, out of the total artifacts that are cacheable           |
-| NotHealthyReason                | `string`   | Describes the reason for query acceleration not being healthy. Empty if healthy                      |
 
 ## Example
 
