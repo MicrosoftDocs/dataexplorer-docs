@@ -117,3 +117,9 @@ datatable(Fruit: string, Color: string, Version: int) [
 | Apple | 1 | Red |
 | Banana |  | Yellow |
 | Pear | 2 | Green |
+
+## Related content
+
+* [arg_min function](arg-min-aggregation-function.md)
+* [take_any function](take-any-aggregation-function.md)
+* [take_anyif function](take-anyif-aggregation-function.md)
