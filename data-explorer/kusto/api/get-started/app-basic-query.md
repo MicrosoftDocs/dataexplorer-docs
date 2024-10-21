@@ -73,7 +73,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
     async function main() {
       const clusterUri = "https://help.kusto.windows.net";
       const authOptions = {
-        clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+        clientId: "00001111-aaaa-2222-bbbb-3333cccc4444",
         redirectUri: "http://localhost:5173",
       } as InteractiveBrowserCredentialInBrowserOptions;
       const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
@@ -304,7 +304,7 @@ import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 async function main() {
   const clusterUri = "https://help.kusto.windows.net";
   const authOptions = {
-    clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+    clientId: "00001111-aaaa-2222-bbbb-3333cccc4444",
     redirectUri: "http://localhost:5173",
   } as InteractiveBrowserCredentialInBrowserOptions;
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
