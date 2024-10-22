@@ -1,7 +1,7 @@
 ---
 title: make-graph operator
 description: Learn how to use the graph-to-table operator to build a graph structure from tabular inputs of edges and nodes.
-ms.reviewer: rocohen
+ms.reviewer: royo
 ms.topic: reference
 ms.date: 08/11/2024
 ---
@@ -35,9 +35,15 @@ The `make-graph` operator returns a graph expression and has to be followed by a
 > [!NOTE]
 > Each node has a unique identifier. If the same node ID appears in both the *Nodes1* and *Nodes2* tables, a single node is created by merging their properties. If there are conflicting property values for the same node, one of the values is arbitrarily chosen.
 
+Users can handle node information in three ways:
+
+1. No node information required: `make-graph` completes with source and target.
+2. Explicit node properties: Provide up to two tabular expressions using "`with` *Nodes1* `on` *NodeId1* [`,` *Nodes2* `on` *NodeId2* ]".
+3. Default node identifier: Specify using "`with_node_id=` *DefaultNodeId*".
+
 ## Example
 
-The following example builds a graph from edges and nodes tables. The nodes represent people and systems, and the edges are different relations between nodes. The `make-graph` operator builds the graph. Then, there's a call to `graph-match` with a graph pattern that searches for attack paths to the "Trent" system node.
+The following example builds a graph from edges and nodes tables. The nodes represent people and systems, and the edges are different relations between nodes. The `make-graph` operator builds the graph. Then, there's a call to [graph-match](graph-match-operator.md) with a graph pattern that searches for attack paths to the "Trent" system node.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -64,6 +70,38 @@ let edges = datatable(source:string, destination:string, edge_type:string)
 ]; 
 edges 
 | make-graph source --> destination with nodes on name 
+| graph-match (mallory)-[attacks]->(compromised)-[hasPermission]->(trent) 
+  where mallory.name == "Mallory" and trent.name == "Trent" and attacks.edge_type == "attacks" and hasPermission.edge_type == "hasPermission" 
+  project Attacker = mallory.name, Compromised = compromised.name, System = trent.name
+```
+
+**Output**
+
+|Attacker|Compromised|System|
+|---|---|---|
+|Mallory|Bob|Trent|
+
+## Example Default Node Id
+
+This example builds a graph from edges only, using the "name" property as the default node identifier. This is useful when creating a graph from a tabular expression of edges, ensuring the node identifier is available for the constraints section of the subsequent [graph-match](graph-match-operator.md) operator.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA41Sy2rDMBC8%2ByuWnGyw8wEtDqSlx0KhhR5CCIq0xGosyUjrhkA%2Fviu%2F3VPxQUYzOzszdo0EqC4YoAQliJ9zjWlwrZf4EMhre8lBYSBtBWlnp7s4dKJ7M7IySA6QAGz2tZa4yWHz5M7xkM6Y1mopCMOnporv1rwPj5biC%2Fk2UBjxYXxCKxHe0BsdAtsYSS%2FfncSkJYiEvE4ar6Kunb%2F%2FkzJsHAmMHx8h6dtJfsCIKxYXL5oK%2Bn6gKHbLbuDG8U7WKTxpVVphkKe6gcIIkhWkpl%2BWFYdhybHYpVxQ4x0HQ8XAKmaEKRaQRa%2B3Cj3CoLGN%2BlCWcwIQVkHHnrG%2BvQ4ZNm6nD9cRprCRstr9h7iuP9ph018oCfadBHr%2Bg5becniegzG2iDng7%2FdAaBiaTf8C4hVjl48CAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+let edges = datatable(source:string, destination:string, edge_type:string) 
+[ 
+  "Alice", "Bob", "communicatesWith",  
+  "Alice", "Trent", "trusts",  
+  "Bob", "Trent", "hasPermission",  
+  "Eve", "Alice", "attacks",  
+  "Mallory", "Alice", "attacks",  
+  "Mallory", "Bob", "attacks"  
+]; 
+edges 
+| make-graph source --> destination with_node_id=name
 | graph-match (mallory)-[attacks]->(compromised)-[hasPermission]->(trent) 
   where mallory.name == "Mallory" and trent.name == "Trent" and attacks.edge_type == "attacks" and hasPermission.edge_type == "hasPermission" 
   project Attacker = mallory.name, Compromised = compromised.name, System = trent.name
