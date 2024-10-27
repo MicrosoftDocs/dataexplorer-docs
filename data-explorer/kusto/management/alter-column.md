@@ -14,7 +14,7 @@ Alters the data type of an existing table column.
 > [!WARNING]
 > When altering the data type of a column, any preexisting data in that column will return a [null value](../query/scalar-data-types/null-values.md) in future queries.
 > After using `.alter column`, that data cannot be recovered, even by using another command to alter the column type back to a previous value.
-> For information on how to preserve pre-existing data, see [Change column type without data loss](change-column-type-without-data-loss.md).
+> For information on how to preserve preexisting data, see [Change column type without data loss](change-column-type-without-data-loss.md).
 
 ## Permissions
 
