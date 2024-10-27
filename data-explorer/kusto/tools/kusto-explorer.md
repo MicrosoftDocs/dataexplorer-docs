@@ -31,7 +31,7 @@ With Kusto.Explorer, you can:
 ### Using Google Chrome and Kusto.Explorer
 
 If Google Chrome is your default browser, installing the ClickOnce extension for Chrome is required.
-[https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US](https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US)
+[https://chromewebstore.google.com/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb?hl=en-US](https://chromewebstore.google.com/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb?hl=en-US)
 
 If your default browser is the Microsoft Edge, installing this extension *isn't* required.
 Validate your ClickOnce settings in [Microsoft Edge flag settings](edge://flags/#edge-click-once).
