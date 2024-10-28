@@ -1,9 +1,9 @@
 ---
 title:  Request properties
 description: This article describes request properties.
-ms.reviewer: orspodek
+ms.reviewer: zivc
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 10/28/2024
 ---
 # Request properties
 
@@ -20,11 +20,13 @@ The following table overviews the supported request properties.
 :::moniker range="azure-data-explorer"
 | Property name | Type | Description |
 |--|--|--|
+| `best_effort` | `bool` | If set to `true`, allows fuzzy resolution and connectivity issues of data sources (union legs.) The set of union sources is reduced to the set of table references that exist and are accessible at the time of execution. If at least one accessible table is found, the query executes. Any failure yields a warning in the query status results but doesn't prevent the query from executing. |
 | `client_max_redirect_count` | `long` | Controls the maximum number of HTTP redirects the client follows during processing. |
+| `client_results_reader_allow_varying_row_widths` |`bool` |  If set to `true`, the results reader tolerates tables whose row width varies across rows. |
 | `deferpartialqueryfailures` | `bool` | If set to `true`, suppresses reporting of partial query failures within the result set. |
 | `materialized_view_shuffle_query` | `dynamic` | Provides a hint to use the shuffle strategy for referenced materialized views in the query. This property exclusively impacts materialized views and not any subsequent operations, such as joins, within the query. It takes an array of materialized view names and their corresponding shuffle keys. </br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` indicates shuffling view `V1` by keys `K1` and `K2`, while `dynamic([ { "Name": "V1" } ])` shuffles view `V1` by all keys.|
-| `max_memory_consumption_per_query_per_node` | `long` | Overrides the default maximum amount of memory a query may allocate per node.|
-| `maxmemoryconsumptionperiterator` | `long` | Overrides the default maximum amount of memory a query operator may allocate. |
+| `max_memory_consumption_per_query_per_node` | `long` | Overrides the default maximum amount of memory a query can allocate per node.|
+| `maxmemoryconsumptionperiterator` | `long` | Overrides the default maximum amount of memory a query operator can allocate. |
 | `maxoutputcolumns` | `long` | Overrides the default maximum number of columns a query is allowed to produce. |
 | `norequesttimeout` | `bool` | Sets the request timeout to its maximum value. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `notruncation` | `bool` | Disables truncation of query results returned to the caller. |
@@ -45,9 +47,10 @@ The following table overviews the supported request properties.
 | `query_fanout_threads_percent` | `int` | Specifies the percentage of threads for executing fan-out. |
 | `query_force_row_level_security` | `bool` | If set to `true`, enforces [row level security](../../management/row-level-security-policy.md) rules, even if the policy is disabled. |
 | `query_language` | `string` | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
-| `query_log_query_parameters` | `bool` | Enables logging of the query parameters for later viewing in the [.show queries](../../management/show-queries-command.md) journal. |
+| `query_log_query_parameters` | `bool` | Enables query parameters logging for later viewing in the [.show queries](../../management/show-queries-command.md) journal. |
 | `query_max_entities_in_union` | `long` | Overrides the default maximum number of columns a query is allowed to produce. |
 | `query_now` | `datetime` | Overrides the datetime value returned by the [now()](../../query/now-function.md) function. |
+| `query_optimize_fts_at_relop` |  `bool` | When set to `true`, enables an experimental optimization for queries that perform costly free-text search operations. For instance, `\|where * has "pattern"`. |
 | `query_python_debug` | `bool` or `int` |  If set to `true`, generates a Python debug query for the enumerated Python node.|
 | `query_results_apply_getschema` | `bool` | If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
 | `query_results_cache_force_refresh` | `bool` |If set to `true`, forces a cache refresh of query results for a specific query. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
@@ -66,10 +69,14 @@ The following table overviews the supported request properties.
 | `request_external_table_disabled` | `bool` | If set to `true`, prevents the request from accessing external tables. |
 | `request_impersonation_disabled` | `bool` | If set to `true`, indicates that the service shouldn't impersonate the caller's identity. |
 | `request_readonly` | `bool` | If set to `true`, prevents write access for the request. |
+| `request_readonly_hardline` |  `bool` | If set to `true`, then the request operates in a strict read-only mode. The request isn't able to write anything, and any noncompliant functionality, such as plugins, are disabled. |
 | `request_remote_entities_disabled` | `bool` | If set to `true`, prevents the request from accessing remote databases and clusters. |
 | `request_sandboxed_execution_disabled` | `bool` | If set to `true`, prevents the request from invoking code in the sandbox. |
 | `request_user` | `string` | Specifies the request user to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). |
+| `results_error_reporting_placement` | `string`   | Determines the placement of errors in the result set. Options are `'in_data', 'end_of_table', and 'end_of_dataset'`. |
 | `results_progressive_enabled` | `bool` | If set to `true`, enables the progressive query stream. |
+| `results_v2_fragment_primary_tables` |  `bool` | Causes primary tables to be sent in multiple fragments, each containing a subset of the rows. |
+| `results_v2_newlines_between_frames` |  `bool` | Adds new lines between frames in the results, in order to make it easier to parse them. |
 | `servertimeout` | `timespan` | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `truncation_max_records` | `long` | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` | `long` | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
@@ -77,13 +84,16 @@ The following table overviews the supported request properties.
 ::: moniker-end
 
 :::moniker range="microsoft-fabric"
+
 | Property name | Type | Description |
 |--|--|--|
+| `best_effort` | `bool` | If set to `true`, allows fuzzy resolution and connectivity issues of data sources (union legs.) The set of union sources is reduced to the set of table references that exist and are accessible at the time of execution. If at least one accessible table is found, the query executes. Any failure yields a warning in the query status results but doesn't prevent the query from executing. |
 | `client_max_redirect_count` | `long` | Controls the maximum number of HTTP redirects the client follows during processing. |
+| `client_results_reader_allow_varying_row_widths` |`bool` |  If set to `true`, the results reader tolerates tables whose row width varies across rows. |
 | `deferpartialqueryfailures` | `bool` | If set to `true`, suppresses reporting of partial query failures within the result set. |
 | `materialized_view_shuffle_query` | `dynamic` | Provides a hint to use the shuffle strategy for referenced materialized views in the query. This property exclusively impacts materialized views and not any subsequent operations, such as joins, within the query. It takes an array of materialized view names and their corresponding shuffle keys. </br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` indicates shuffling view `V1` by keys `K1` and `K2`, while `dynamic([ { "Name": "V1" } ])` shuffles view `V1` by all keys.|
-| `max_memory_consumption_per_query_per_node` | `long` | Overrides the default maximum amount of memory a query may allocate per node.|
-| `maxmemoryconsumptionperiterator` | `long` | Overrides the default maximum amount of memory a query operator may allocate. |
+| `max_memory_consumption_per_query_per_node` | `long` | Overrides the default maximum amount of memory a query can allocate per node.|
+| `maxmemoryconsumptionperiterator` | `long` | Overrides the default maximum amount of memory a query operator can allocate. |
 | `maxoutputcolumns` | `long` | Overrides the default maximum number of columns a query is allowed to produce. |
 | `norequesttimeout` | `bool` | Sets the request timeout to its maximum value. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `notruncation` | `bool` | Disables truncation of query results returned to the caller. |
@@ -104,9 +114,10 @@ The following table overviews the supported request properties.
 | `query_fanout_threads_percent` | `int` | Specifies the percentage of threads for executing fan-out. |
 | `query_force_row_level_security` | `bool` | If set to `true`, enforces [row level security](../../management/row-level-security-policy.md) rules, even if the policy is disabled. |
 | `query_language` | `string` | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
-| `query_log_query_parameters` | `bool` | Enables logging of the query parameters for later viewing in the [.show queries](../../management/show-queries-command.md) journal. |
+| `query_log_query_parameters` | `bool` | Enables query parameters logging for later viewing in the [.show queries](../../management/show-queries-command.md) journal. |
 | `query_max_entities_in_union` | `long` | Overrides the default maximum number of columns a query is allowed to produce. |
 | `query_now` | `datetime` | Overrides the datetime value returned by the [now()](../../query/now-function.md) function. |
+| `query_optimize_fts_at_relop` |  `bool` | When set to `true`, enables an experimental optimization for queries that perform costly free-text search operations. For instance, `\|where * has "pattern"`. |
 | `query_python_debug` | `bool` or `int` |  If set to `true`, generates a Python debug query for the enumerated Python node.|
 | `query_results_apply_getschema` | `bool` | If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
 | `query_results_cache_force_refresh` | `bool` |If set to `true`, forces a cache refresh of query results for a specific query. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
@@ -125,10 +136,14 @@ The following table overviews the supported request properties.
 | `request_external_table_disabled` | `bool` | If set to `true`, prevents the request from accessing external tables. |
 | `request_impersonation_disabled` | `bool` | If set to `true`, indicates that the service shouldn't impersonate the caller's identity. |
 | `request_readonly` | `bool` | If set to `true`, prevents write access for the request. |
+| `request_readonly_hardline` |  `bool` | If set to `true`, then the request operates in a strict read-only mode. The request isn't able to write anything, and any noncompliant functionality, such as plugins, are disabled. |
 | `request_remote_entities_disabled` | `bool` | If set to `true`, prevents the request from accessing remote databases. |
 | `request_sandboxed_execution_disabled` | `bool` | If set to `true`, prevents the request from invoking code in the sandbox. |
 | `request_user` | `string` | Specifies the request user to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). |
+| `results_error_reporting_placement` | `string` | Determines the placement of errors in the result set. Options are `'in_data', 'end_of_table', and 'end_of_dataset'`. |
 | `results_progressive_enabled` | `bool` | If set to `true`, enables the progressive query stream. |
+| `results_v2_fragment_primary_tables` |  `bool` | Causes primary tables to be sent in multiple fragments, each containing a subset of the rows. |
+| `results_v2_newlines_between_frames` |  `bool` | Adds new lines between frames in the results, in order to make it easier to parse them. |
 | `servertimeout` | `timespan` | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `truncation_max_records` | `long` | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` | `long` | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
@@ -144,7 +159,21 @@ You can set request properties in the following ways:
 * The set option method of the [`ClientRequestProperties` class](../netfx/client-request-properties.md)
 
 > [!NOTE]
-> Some request properties can't be set with a set statement, such as `servertimeout` and `norequesttimeout`. For more information, see [Set timeout limits](../../set-timeout-limits.md).
+> The following request properties can't be set with a set statement:
+>
+> * `norequesttimeout`
+> * `queryconsistency`
+> * `query_language`
+> * `query_weakconsistency_session_id`
+> * `request_app_name`
+> * `request_readonly`
+> * `request_readonly_hardline`
+> * `request_user`
+> * `results_progressive_enabled`
+> * `results_v2_fragment_primary_tables`
+> * `servertimeout`
+> * `truncationmaxsize`
+> For more information about setting timeout limits, see [Set timeout limits](../../set-timeout-limits.md).
 
 ## Related content
 
