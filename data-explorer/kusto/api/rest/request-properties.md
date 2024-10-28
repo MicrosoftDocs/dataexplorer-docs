@@ -46,7 +46,7 @@ The following table overviews the supported request properties.
 | `query_fanout_nodes_percent` | `int` | Specifies the percentage of nodes for executing fan-out. |
 | `query_fanout_threads_percent` | `int` | Specifies the percentage of threads for executing fan-out. |
 | `query_force_row_level_security` | `bool` | If set to `true`, enforces [row level security](../../management/row-level-security-policy.md) rules, even if the policy is disabled. |
-| `query_language` | `string` | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
+| `query_language` | `string` | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `query_log_query_parameters` | `bool` | Enables query parameters logging for later viewing in the [.show queries](../../management/show-queries-command.md) journal. |
 | `query_max_entities_in_union` | `long` | Overrides the default maximum number of columns a query is allowed to produce. |
 | `query_now` | `datetime` | Overrides the datetime value returned by the [now()](../../query/now-function.md) function. |
@@ -59,27 +59,27 @@ The following table overviews the supported request properties.
 | `query_results_progressive_row_count` | `long` | Provides a hint for how many records to send in each update. Takes effect only if `results_progressive_enabled` is set. |
 | `query_results_progressive_update_period` | `timespan` | Provides a hint for how often to send progress frames. Takes effect only if `results_progressive_enabled` is set. |
 | `query_take_max_records` | `long` | Limits query results to a specified number of records. |
-| `query_weakconsistency_session_id` | `string` | Sets the query weak consistency session ID. Takes effect when `queryconsistency` mode is set to `weakconsistency_by_session_id`. |
-| `queryconsistency` | `string` | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `query_weakconsistency_session_id` property. |
-| `request_app_name` | `string` | Specifies the request application name to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). |
+| `query_weakconsistency_session_id` | `string` | Sets the query weak consistency session ID. Takes effect when `queryconsistency` mode is set to `weakconsistency_by_session_id`. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
+| `queryconsistency` | `string` | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `query_weakconsistency_session_id` property. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
+| `request_app_name` | `string` | Specifies the request application name to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `request_block_row_level_security` | `bool` | If set to `true`, blocks access to tables with [row level security](../../management/row-level-security-policy.md) policy enabled. |
 | `request_callout_disabled` | `bool` | If set to `true`, prevents request callout to a user-provided service. |
 | `request_description` | `string` | Allows inclusion of arbitrary text as the request description. |
 | `request_external_data_disabled` | `bool` | If set to `true`, prevents the request from accessing external data using the [externaldata](../../query/externaldata-operator.md) operator or external tables. |
 | `request_external_table_disabled` | `bool` | If set to `true`, prevents the request from accessing external tables. |
 | `request_impersonation_disabled` | `bool` | If set to `true`, indicates that the service shouldn't impersonate the caller's identity. |
-| `request_readonly` | `bool` | If set to `true`, prevents write access for the request. |
-| `request_readonly_hardline` |  `bool` | If set to `true`, then the request operates in a strict read-only mode. The request isn't able to write anything, and any noncompliant functionality, such as plugins, are disabled. |
+| `request_readonly` | `bool` | If set to `true`, prevents write access for the request. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
+| `request_readonly_hardline` |  `bool` | If set to `true`, then the request operates in a strict read-only mode. The request isn't able to write anything, and any noncompliant functionality, such as plugins, are disabled. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `request_remote_entities_disabled` | `bool` | If set to `true`, prevents the request from accessing remote databases and clusters. |
 | `request_sandboxed_execution_disabled` | `bool` | If set to `true`, prevents the request from invoking code in the sandbox. |
-| `request_user` | `string` | Specifies the request user to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). |
+| `request_user` | `string` | Specifies the request user to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `results_error_reporting_placement` | `string`   | Determines the placement of errors in the result set. Options are `'in_data', 'end_of_table', and 'end_of_dataset'`. |
-| `results_progressive_enabled` | `bool` | If set to `true`, enables the progressive query stream. |
-| `results_v2_fragment_primary_tables` |  `bool` | Causes primary tables to be sent in multiple fragments, each containing a subset of the rows. |
+| `results_progressive_enabled` | `bool` | If set to `true`, enables the progressive query stream. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
+| `results_v2_fragment_primary_tables` |  `bool` | Causes primary tables to be sent in multiple fragments, each containing a subset of the rows. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `results_v2_newlines_between_frames` |  `bool` | Adds new lines between frames in the results, in order to make it easier to parse them. |
 | `servertimeout` | `timespan` | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `truncation_max_records` | `long` | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
-| `truncationmaxsize` | `long` | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
+| `truncationmaxsize` | `long` | Overrides the default maximum data size a query is allowed to return to the caller (truncation). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `validatepermissions` | `bool` | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
 ::: moniker-end
 
@@ -113,7 +113,7 @@ The following table overviews the supported request properties.
 | `query_fanout_nodes_percent` | `int` | Specifies the percentage of nodes for executing fan-out. |
 | `query_fanout_threads_percent` | `int` | Specifies the percentage of threads for executing fan-out. |
 | `query_force_row_level_security` | `bool` | If set to `true`, enforces [row level security](../../management/row-level-security-policy.md) rules, even if the policy is disabled. |
-| `query_language` | `string` | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
+| `query_language` | `string` | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `query_log_query_parameters` | `bool` | Enables query parameters logging for later viewing in the [.show queries](../../management/show-queries-command.md) journal. |
 | `query_max_entities_in_union` | `long` | Overrides the default maximum number of columns a query is allowed to produce. |
 | `query_now` | `datetime` | Overrides the datetime value returned by the [now()](../../query/now-function.md) function. |
@@ -126,27 +126,27 @@ The following table overviews the supported request properties.
 | `query_results_progressive_row_count` | `long` | Provides a hint for how many records to send in each update. Takes effect only if `results_progressive_enabled` is set. |
 | `query_results_progressive_update_period` | `timespan` | Provides a hint for how often to send progress frames. Takes effect only if `results_progressive_enabled` is set. |
 | `query_take_max_records` | `long` | Limits query results to a specified number of records. |
-| `query_weakconsistency_session_id` | `string` | Sets the query weak consistency session ID. Takes effect when `queryconsistency` mode is set to `weakconsistency_by_session_id`. |
-| `queryconsistency` | `string` | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `query_weakconsistency_session_id` property. |
-| `request_app_name` | `string` | Specifies the request application name to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). |
+| `query_weakconsistency_session_id` | `string` | Sets the query weak consistency session ID. Takes effect when `queryconsistency` mode is set to `weakconsistency_by_session_id`. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
+| `queryconsistency` | `string` | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `query_weakconsistency_session_id` property. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
+| `request_app_name` | `string` | Specifies the request application name to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `request_block_row_level_security` | `bool` | If set to `true`, blocks access to tables with [row level security](../../management/row-level-security-policy.md) policy enabled. |
 | `request_callout_disabled` | `bool` | If set to `true`, prevents request callout to a user-provided service. |
 | `request_description` | `string` | Allows inclusion of arbitrary text as the request description. |
 | `request_external_data_disabled` | `bool` | If set to `true`, prevents the request from accessing external data using the [externaldata](../../query/externaldata-operator.md) operator or external tables. |
 | `request_external_table_disabled` | `bool` | If set to `true`, prevents the request from accessing external tables. |
 | `request_impersonation_disabled` | `bool` | If set to `true`, indicates that the service shouldn't impersonate the caller's identity. |
-| `request_readonly` | `bool` | If set to `true`, prevents write access for the request. |
-| `request_readonly_hardline` |  `bool` | If set to `true`, then the request operates in a strict read-only mode. The request isn't able to write anything, and any noncompliant functionality, such as plugins, are disabled. |
+| `request_readonly` | `bool` | If set to `true`, prevents write access for the request. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
+| `request_readonly_hardline` |  `bool` | If set to `true`, then the request operates in a strict read-only mode. The request isn't able to write anything, and any noncompliant functionality, such as plugins, are disabled. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `request_remote_entities_disabled` | `bool` | If set to `true`, prevents the request from accessing remote databases. |
 | `request_sandboxed_execution_disabled` | `bool` | If set to `true`, prevents the request from invoking code in the sandbox. |
-| `request_user` | `string` | Specifies the request user to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). |
+| `request_user` | `string` | Specifies the request user to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `results_error_reporting_placement` | `string` | Determines the placement of errors in the result set. Options are `'in_data', 'end_of_table', and 'end_of_dataset'`. |
-| `results_progressive_enabled` | `bool` | If set to `true`, enables the progressive query stream. |
-| `results_v2_fragment_primary_tables` |  `bool` | Causes primary tables to be sent in multiple fragments, each containing a subset of the rows. |
+| `results_progressive_enabled` | `bool` | If set to `true`, enables the progressive query stream. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
+| `results_v2_fragment_primary_tables` |  `bool` | Causes primary tables to be sent in multiple fragments, each containing a subset of the rows. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `results_v2_newlines_between_frames` |  `bool` | Adds new lines between frames in the results, in order to make it easier to parse them. |
 | `servertimeout` | `timespan` | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `truncation_max_records` | `long` | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
-| `truncationmaxsize` | `long` | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
+| `truncationmaxsize` | `long` | Overrides the default maximum data size a query is allowed to return to the caller (truncation). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `validatepermissions` | `bool` | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
 ::: moniker-end
 
@@ -173,6 +173,7 @@ You can set request properties in the following ways:
 > * `results_v2_fragment_primary_tables`
 > * `servertimeout`
 > * `truncationmaxsize`
+>
 > For more information about setting timeout limits, see [Set timeout limits](../../set-timeout-limits.md).
 
 ## Related content
