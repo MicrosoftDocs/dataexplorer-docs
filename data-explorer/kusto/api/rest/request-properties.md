@@ -18,6 +18,7 @@ Request properties control how a query or command executes and returns results.
 The following table overviews the supported request properties.
 
 :::moniker range="azure-data-explorer"
+
 | Property name | Type | Description |
 |--|--|--|
 | `best_effort` | `bool` | If set to `true`, allows fuzzy resolution and connectivity issues of data sources (union legs.) The set of union sources is reduced to the set of table references that exist and are accessible at the time of execution. If at least one accessible table is found, the query executes. Any failure yields a warning in the query status results but doesn't prevent the query from executing. |
@@ -28,7 +29,7 @@ The following table overviews the supported request properties.
 | `max_memory_consumption_per_query_per_node` | `long` | Overrides the default maximum amount of memory a query can allocate per node.|
 | `maxmemoryconsumptionperiterator` | `long` | Overrides the default maximum amount of memory a query operator can allocate. |
 | `maxoutputcolumns` | `long` | Overrides the default maximum number of columns a query is allowed to produce. |
-| `norequesttimeout` | `bool` | Sets the request timeout to its maximum value. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
+| `norequesttimeout` | `bool` | Sets the request timeout to its maximum value. This option can't be modified as part of a [set statement](../../query/set-statement.md). Instead, modify the option using the dashboard settings. For more information, see [Set timeout limits](../../set-timeout-limits?view=azure-data-explorer&preserve-view=true). |
 | `notruncation` | `bool` | Disables truncation of query results returned to the caller. |
 | `push_selection_through_aggregation` | `bool` | If set to `true`, allows pushing simple selection through aggregation. |
 | `query_bin_auto_at` | literal | Specifies the start value to use when evaluating the [bin_auto()](../../query/bin-auto-function.md) function. |
@@ -60,7 +61,7 @@ The following table overviews the supported request properties.
 | `query_results_progressive_update_period` | `timespan` | Provides a hint for how often to send progress frames. Takes effect only if `results_progressive_enabled` is set. |
 | `query_take_max_records` | `long` | Limits query results to a specified number of records. |
 | `query_weakconsistency_session_id` | `string` | Sets the query weak consistency session ID. Takes effect when `queryconsistency` mode is set to `weakconsistency_by_session_id`. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
-| `queryconsistency` | `string` | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `query_weakconsistency_session_id` property. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
+| `queryconsistency` | `string` | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `query_weakconsistency_session_id` property. This option can't be modified as part of a [set statement](../../query/set-statement.md). To set query consistency to weak consistency through the dashboard settings select **Settings** > **Connection**. For more information, see [Customize settings in the Azure Data Explorer web UI](../../../web-customize-settings.md). |
 | `request_app_name` | `string` | Specifies the request application name to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `request_block_row_level_security` | `bool` | If set to `true`, blocks access to tables with [row level security](../../management/row-level-security-policy.md) policy enabled. |
 | `request_callout_disabled` | `bool` | If set to `true`, prevents request callout to a user-provided service. |
@@ -77,7 +78,7 @@ The following table overviews the supported request properties.
 | `results_progressive_enabled` | `bool` | If set to `true`, enables the progressive query stream. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `results_v2_fragment_primary_tables` |  `bool` | Causes primary tables to be sent in multiple fragments, each containing a subset of the rows. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `results_v2_newlines_between_frames` |  `bool` | Adds new lines between frames in the results, in order to make it easier to parse them. |
-| `servertimeout` | `timespan` | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
+| `servertimeout` | `timespan` | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/set-statement.md). Instead, modify the option using the dashboard settings. For more information, see [Set timeout limits](../../set-timeout-limits?view=azure-data-explorer&preserve-view=true). |
 | `truncation_max_records` | `long` | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` | `long` | Overrides the default maximum data size a query is allowed to return to the caller (truncation). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `validatepermissions` | `bool` | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
@@ -126,8 +127,6 @@ The following table overviews the supported request properties.
 | `query_results_progressive_row_count` | `long` | Provides a hint for how many records to send in each update. Takes effect only if `results_progressive_enabled` is set. |
 | `query_results_progressive_update_period` | `timespan` | Provides a hint for how often to send progress frames. Takes effect only if `results_progressive_enabled` is set. |
 | `query_take_max_records` | `long` | Limits query results to a specified number of records. |
-| `query_weakconsistency_session_id` | `string` | Sets the query weak consistency session ID. Takes effect when `queryconsistency` mode is set to `weakconsistency_by_session_id`. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
-| `queryconsistency` | `string` | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `query_weakconsistency_session_id` property. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `request_app_name` | `string` | Specifies the request application name to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `request_block_row_level_security` | `bool` | If set to `true`, blocks access to tables with [row level security](../../management/row-level-security-policy.md) policy enabled. |
 | `request_callout_disabled` | `bool` | If set to `true`, prevents request callout to a user-provided service. |
@@ -148,6 +147,7 @@ The following table overviews the supported request properties.
 | `truncation_max_records` | `long` | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` | `long` | Overrides the default maximum data size a query is allowed to return to the caller (truncation). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `validatepermissions` | `bool` | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
+
 ::: moniker-end
 
 ## How to set request properties
@@ -157,6 +157,8 @@ You can set request properties in the following ways:
 * The POST body of an [HTTP request](request.md)
 * A Kusto Query Language [set statement](../../query/set-statement.md)
 * The set option method of the [`ClientRequestProperties` class](../netfx/client-request-properties.md)
+
+:::moniker range="azure-data-explorer"
 
 > [!NOTE]
 > The following request properties can't be set with a set statement:
@@ -175,6 +177,28 @@ You can set request properties in the following ways:
 > * `truncationmaxsize`
 >
 > For more information about setting timeout limits, see [Set timeout limits](../../set-timeout-limits.md).
+
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+
+> [!NOTE]
+> The following request properties can't be set with a set statement:
+>
+> * `norequesttimeout`
+> * `queryconsistency`
+> * `query_language`
+> * `query_weakconsistency_session_id`
+> * `request_app_name`
+> * `request_readonly`
+> * `request_readonly_hardline`
+> * `request_user`
+> * `results_progressive_enabled`
+> * `results_v2_fragment_primary_tables`
+> * `servertimeout`
+> * `truncationmaxsize`
+
+::: moniker-end
 
 ## Related content
 
