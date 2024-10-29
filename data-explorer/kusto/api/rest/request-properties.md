@@ -53,7 +53,7 @@ The following table overviews the supported request properties.
 | `query_now` | `datetime` | Overrides the datetime value returned by the [now()](../../query/now-function.md) function. |
 | `query_optimize_fts_at_relop` |  `bool` | When set to `true`, enables an experimental optimization for queries that perform costly free-text search operations. For instance, `\|where * has "pattern"`. |
 | `query_python_debug` | `bool` or `int` |  If set to `true`, generates a Python debug query for the enumerated Python node.|
-| `query_results_apply_getschema` | `bool` | If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
+| `query_results_apply_getschema` | `bool` | If set to `true`, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
 | `query_results_cache_force_refresh` | `bool` |If set to `true`, forces a cache refresh of query results for a specific query. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `query_results_cache_max_age` | `timespan` | Controls the maximum age of the cached query results that the service is allowed to return. |
 | `query_results_cache_per_shard` | `bool` | If set to `true`, enables per [extent](../../management/extents-overview.md) query caching. |
@@ -74,7 +74,7 @@ The following table overviews the supported request properties.
 | `request_remote_entities_disabled` | `bool` | If set to `true`, prevents the request from accessing remote databases and clusters. |
 | `request_sandboxed_execution_disabled` | `bool` | If set to `true`, prevents the request from invoking code in the sandbox. |
 | `request_user` | `string` | Specifies the request user to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
-| `results_error_reporting_placement` | `string`   | Determines the placement of errors in the result set. Options are `'in_data', 'end_of_table', and 'end_of_dataset'`. |
+| `results_error_reporting_placement` | `string`   | Determines the placement of errors in the result set. Options are `in_data`, `end_of_table`, and `end_of_dataset`. |
 | `results_progressive_enabled` | `bool` | If set to `true`, enables the progressive query stream. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `results_v2_fragment_primary_tables` |  `bool` | Causes primary tables to be sent in multiple fragments, each containing a subset of the rows. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `results_v2_newlines_between_frames` |  `bool` | Adds new lines between frames in the results, in order to make it easier to parse them. |
@@ -120,7 +120,7 @@ The following table overviews the supported request properties.
 | `query_now` | `datetime` | Overrides the datetime value returned by the [now()](../../query/now-function.md) function. |
 | `query_optimize_fts_at_relop` |  `bool` | When set to `true`, enables an experimental optimization for queries that perform costly free-text search operations. For instance, `\|where * has "pattern"`. |
 | `query_python_debug` | `bool` or `int` |  If set to `true`, generates a Python debug query for the enumerated Python node.|
-| `query_results_apply_getschema` | `bool` | If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
+| `query_results_apply_getschema` | `bool` | If set to `true`, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
 | `query_results_cache_force_refresh` | `bool` |If set to `true`, forces a cache refresh of query results for a specific query. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `query_results_cache_max_age` | `timespan` | Controls the maximum age of the cached query results that the service is allowed to return. |
 | `query_results_cache_per_shard` | `bool` | If set to `true`, enables per [extent](../../management/extents-overview.md) query caching. |
