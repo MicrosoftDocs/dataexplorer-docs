@@ -27,7 +27,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 | *JSON-serialized policy* | `string` | :heavy_check_mark: | String literal holding a JSON property bag with the following properties: <br> IsEnabled : `Boolean` <br> Hot: `Timespan` |
 
 >[!NOTE]
-> Query acceleration is performed on data based on the time period defined as `timespan` in days from the `modificationTime` in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file). 
+> Query acceleration is applied to data within a specific time period, defined as `timespan`, starting from the `modificationTime` in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file). 
 
 ## Returns
 
