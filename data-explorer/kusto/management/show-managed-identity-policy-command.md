@@ -51,4 +51,4 @@ This command returns a table that has a single record.
 
 | EntityName   | Policies |
 |--------------|----------|
-| [MyDatabase] | [{"ObjectId": "f687680c-5ba0-4025-ab04-0433fdbd0086", "ClientId": "7c8fee41-97d1-4ebd-9140-32a3b8316820", "TenantId": "4549d41b-a99d-4367-a887-7dd2c00e542c", "DisplayName": "myManagedIdentity", "IsSystem": false, "AllowedUsages": "NativeIngestion, ExternalTable"}] |
+| [MyDatabase] | [{"ObjectId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb", "ClientId": "00001111-aaaa-2222-bbbb-3333cccc4444", "TenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee", "DisplayName": "myManagedIdentity", "IsSystem": false, "AllowedUsages": "NativeIngestion, ExternalTable"}] |
