@@ -54,7 +54,7 @@ The following table overviews the supported request properties.
 | `query_optimize_fts_at_relop` |  `bool` | When set to `true`, enables an experimental optimization for queries that perform costly free-text search operations. For instance, `\|where * has "pattern"`. |
 | `query_python_debug` | `bool` or `int` |  If set to `true`, generates a Python debug query for the enumerated Python node.|
 | `query_results_apply_getschema` | `bool` | If set to `true`, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
-| `query_results_cache_force_refresh` | `bool` |If set to `true`, forces a cache refresh of query results for a specific query. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
+| `query_results_cache_force_refresh` | `bool` |If set to `true`, forces a cache refresh of query results for a specific query. Must be used in combination with `query_results_cache_max_age`, and sent via [Kusto Data ClientRequestProperties class](../netfx/client-request-properties.md) not as a [set statement](../../query/set-statement.md). |
 | `query_results_cache_max_age` | `timespan` | Controls the maximum age of the cached query results that the service is allowed to return. |
 | `query_results_cache_per_shard` | `bool` | If set to `true`, enables per [extent](../../management/extents-overview.md) query caching. |
 | `query_results_progressive_row_count` | `long` | Provides a hint for how many records to send in each update. Takes effect only if `results_progressive_enabled` is set. |
@@ -121,7 +121,7 @@ The following table overviews the supported request properties.
 | `query_optimize_fts_at_relop` |  `bool` | When set to `true`, enables an experimental optimization for queries that perform costly free-text search operations. For instance, `\|where * has "pattern"`. |
 | `query_python_debug` | `bool` or `int` |  If set to `true`, generates a Python debug query for the enumerated Python node.|
 | `query_results_apply_getschema` | `bool` | If set to `true`, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
-| `query_results_cache_force_refresh` | `bool` |If set to `true`, forces a cache refresh of query results for a specific query. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
+| `query_results_cache_force_refresh` | `bool` |If set to `true`, forces a cache refresh of query results for a specific query. Must be used in combination with `query_results_cache_max_age`, and sent via [Kusto Data ClientRequestProperties class](../netfx/client-request-properties.md) not as a [set statement](../../query/set-statement.md). |
 | `query_results_cache_max_age` | `timespan` | Controls the maximum age of the cached query results that the service is allowed to return. |
 | `query_results_cache_per_shard` | `bool` | If set to `true`, enables per [extent](../../management/extents-overview.md) query caching. |
 | `query_results_progressive_row_count` | `long` | Provides a hint for how many records to send in each update. Takes effect only if `results_progressive_enabled` is set. |
