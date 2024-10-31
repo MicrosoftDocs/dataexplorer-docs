@@ -56,7 +56,7 @@ If any of the specified managed identities isn't assigned to the cluster, an err
 .alter database db policy managed_identity ```
 [
   {
-    "ObjectId": "d99c9846-1615-a2f9-a96f-78e136ba93eb",
+    "ObjectId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "AllowedUsages": "NativeIngestion, ExternalTable"
   }
 ]```

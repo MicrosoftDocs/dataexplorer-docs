@@ -33,7 +33,7 @@ To make changes in your dashboard:
 
     :::image type="content" source="media/dashboard-customize-visuals/save-changes-dashboard.png" alt-text="Screenshot of how to save the changes to your dashboard tile in Azure Data Explorer web UI.":::
 
-[!INCLUDE [customize-visuals](includes/cross-repo/customize-visuals.md)]
+[!INCLUDE [customize-visuals](includes/customize-visuals.md)]
 
 ## Embed images
 

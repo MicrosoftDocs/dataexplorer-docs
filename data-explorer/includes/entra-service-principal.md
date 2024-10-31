@@ -27,11 +27,11 @@ ms.date: 02/05/2024
 
     ```json
     {
-      "appId": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
+      "appId": "00001111-aaaa-2222-bbbb-3333cccc4444",
       "displayName": "my-service-principal",
       "name": "my-service-principal",
-      "password": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
-      "tenant": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn"
+      "password": "00001111-aaaa-2222-bbbb-3333cccc4444",
+      "tenant": "00001111-aaaa-2222-bbbb-3333cccc4444"
     }
     ```
 
