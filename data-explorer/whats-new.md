@@ -35,7 +35,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-| [top-nested operator](kusto/query/top-nested-operator.md) | Updated article. Refreshed content. |
+| [top-nested operator](kusto/query/top-nested-operator.md) | Updated article. Refreshed with clearer content and examples. |
 
 ## August 2024
 
