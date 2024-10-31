@@ -115,3 +115,5 @@ ChildOf
 
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
+* [graph-match operator](graph-match-operator.md)
+* [graph-to-table operator](graph-to-table-operator.md)
