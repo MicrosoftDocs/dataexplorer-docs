@@ -28,6 +28,8 @@ The following table describes the supported graph operators.
 | [make-graph](make-graph-operator.md) | Builds a graph from tabular data. |
 | [graph-match](graph-match-operator.md) | Searches for patterns in a graph. |
 | [graph-to-table](graph-to-table-operator.md) | Builds nodes or edges tables from a graph. |
+| [graph-shortest-paths](graph-shortest-paths-operator.md) | Find the shortest paths from a given set of source nodes to a set of target nodes. |
+| [graph-mark-components](graph-mark-components-operator.md) | Find and mark all connected components . |
 
 ## Graph model
 
