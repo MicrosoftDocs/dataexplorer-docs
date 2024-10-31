@@ -21,7 +21,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-| [.alter database prettyname command](kusto/management/alter-database-prettyname?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the `.alter database prettyname` command to alter the database's prettyname. |
+| [.alter database prettyname command](alter-database-prettyname.md) | New article. Learn how to use the `.alter database prettyname` command to alter the database's prettyname. |
 | [.drop database prettyname command](kusto/management/drop-database-prettyname?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the `.drop database prettyname` command to drop the database's prettyname. |
 | [.execute database script command](kusto/management/execute-database-script?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
 | [.show database schema violations](kusto/management/show-database-schema-violations?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
