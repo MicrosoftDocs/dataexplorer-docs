@@ -19,9 +19,7 @@ The following table overviews the supported request properties.
 
 :::moniker range="microsoft-fabric"
 > [!NOTE]
-> The following request properties are not available in Fabric:
-> * `query_weakconsistency_session_id`
-> * `queryconsistency`
+> The request properties `query_weakconsistency_session_id` and `queryconsistency` aren't available in Fabic.
 
 ::: moniker-end
 
@@ -116,9 +114,8 @@ You can set request properties in the following ways:
 :::moniker range="azure-data-explorer"
 
 > [!NOTE]
-> The following request properties can't be set with a set statement:
 >
-> * To set `norequesttimeout` and `servertimeout` from dashboard settings see, see [Set timeout limits](../../set-timeout-limits.md).
+> * To set `norequesttimeout` and `servertimeout` from dashboard settings see, [Set timeout limits](../../set-timeout-limits.md).
 > * To set `queryconsistency` to weak consistency through the dashboard settings select **Settings** > **Connection**. For more information, see  [Customize settings in the Azure Data Explorer web UI](/azure/data-explorer/web-customize-settings).
 
 ::: moniker-end
