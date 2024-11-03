@@ -9,7 +9,7 @@ ms.date: 10/10/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Deletes the [query acceleration policy](query-acceleration-policy.md) of a specific external table.
+Deletes the [query acceleration policy](query-acceleration-policy.md) of a specific external delta table.
 
 ## Permissions
 
@@ -23,7 +23,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 | Name                | Type     | Required           | Description                     |
 | ------------------- | -------- | ------------------ | ------------------------------- |
-| *ExternalTableName* | `string` | :heavy_check_mark: | The name of the external table. |
+| *ExternalTableName* | `string` | :heavy_check_mark: | The name of the external delta table. |
 
 ## Example
 

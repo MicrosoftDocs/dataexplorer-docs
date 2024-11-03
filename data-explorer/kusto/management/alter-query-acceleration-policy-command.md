@@ -9,7 +9,7 @@ ms.date: 10/15/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Alters the [query acceleration policy](query-acceleration-policy.md) of a specific external table.
+Alters the [query acceleration policy](query-acceleration-policy.md) of a specific external delta table.
 
 ## Permissions
 
@@ -23,7 +23,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 | Name                     | Type     | Required           | Description                                                                                                               |
 | ------------------------ | -------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| *ExternalTableName*      | `string` | :heavy_check_mark: | The name of the external table.                                                                                           |
+| *ExternalTableName*      | `string` | :heavy_check_mark: | The name of the external delta table.                                                                                           |
 | *JSON-serialized policy* | `string` | :heavy_check_mark: | String literal holding a JSON property bag with the following properties: <br> IsEnabled : `Boolean` <br> Hot: `Timespan` |
 
 >[!NOTE]
@@ -37,7 +37,7 @@ The command returns a table with one record that includes the modified policy ob
 | ------------- | -------- | ------------------------------------------------------------------------------ |
 | PolicyName    | `string` | The name of the policy - `QueryAcceleration`                                   |
 | EntityName    | `string` | The fully qualified name of the entity: `[DatabaseName].[ExternalTableName]`   |
-| Policy        | `string` | A JSON-serialization of the query acceleration policy that is set on the table |
+| Policy        | `string` | A JSON-serialization of the query acceleration policy that is set on the external delta table |
 | ChildEntities | `string` | The child entities this policy affects - `null`                                |
 | EntityType    | `string` | The type of the entity the policy applies to - `ExternalTable`                 |
 
