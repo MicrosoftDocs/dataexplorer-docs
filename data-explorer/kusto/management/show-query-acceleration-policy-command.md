@@ -9,7 +9,7 @@ ms.date: 10/15/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Shows the [query acceleration policy](query-acceleration-policy.md) of a specific external table, or for all external tables in the database that have a query acceleration policy set.
+Shows the [query acceleration policy](query-acceleration-policy.md) of a specific external delta table, or for all external delta tables in the database that have a query acceleration policy set.
 
 ## Permissions
 
@@ -25,7 +25,7 @@ You must have at least [Database monitor or Database viewer](../access-control/r
 
 | Name                | Type     | Required           | Description                     |
 | ------------------- | -------- | ------------------ | ------------------------------- |
-| *ExternalTableName* | `string` |  | The name of the external table. |
+| *ExternalTableName* | `string` |  | The name of the external delta table. |
 
 ## Returns
 

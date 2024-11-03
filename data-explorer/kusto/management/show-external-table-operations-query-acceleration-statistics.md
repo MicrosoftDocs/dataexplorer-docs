@@ -9,7 +9,7 @@ ms.date: 10/15/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Shows statistics for [query acceleration](query-acceleration-policy.md) for a specific external table, or all external tables in the database.
+Shows statistics for [query acceleration](query-acceleration-policy.md) for a specific external delta table, or all external delta tables in the database that have a query acceleration policy set.
 
 ## Permissions
 
@@ -39,7 +39,8 @@ The command returns a table with a record per external table that has a non-null
 | HotSize                         | `long`     | The total size on disk (in bytes) of artifacts cached due to the query acceleration policy           |
 | LastUpdatedDateTime             | `datetime` | Indicates the last datetime when the internal representation of the table was successfully refreshed |
 | AccelerationPendingArtifactSize | `long`     | The total size of artifacts that are pending acceleration                                            |
-| AccelerationCompletePercentage  | `double`   | The percentage of artifacts that are cached, out of the total artifacts that are cacheable           |
+|AccelerationCompletePercentage | `double`  | The percentage of artifacts that are cached, out of the total artifacts that are cacheable           |
+|NotHealthyReason               | `string`  | Describes the reason for query acceleration not being healthy. Empty if healthy                      |
 
 ## Example
 
@@ -49,10 +50,10 @@ The command returns a table with a record per external table that has a non-null
 
 **Output**
 
-| ExternalTableName | IsEnabled | Hot        | HotSize     | LastUpdatedDateTime         | AccelerationPendingArtifactSize | AccelerationCompletePercentage | NotHealthyReason |
-| ----------------- | --------- | ---------- | ----------- | --------------------------- | ------------------------------- | ------------------------------ | ---------------- |
-| MyExternalTable   | True      | 1.00:00:00 | 56877928187 | 2024-08-13 19:54:47.5868860 | 0                               | 100                                              ||
-| MyExternalTable2  | True      | 1.00:00:00 | 60467660293 | 2024-08-13 19:54:47.5868860 | 0                               | 100                                              ||
+| ExternalTableName | IsEnabled | Hot | HotSize | LastUpdatedDateTime | AccelerationPendingArtifactSize | AccelerationCompletePercentage | NotHealthyReason |
+| --- | --- | --- | --- | --- | --- | --- |
+| MyExternalTable | True | 1.00:00:00 | 56877928187 | 2024-08-13 19:54:47.5868860 | 0 | 100 | |
+| MyExternalTable2 | True | 1.00:00:00 | 60467660293 | 2024-08-13 19:54:47.5868860 | 0 | 100 | |
 
 ## Related content
 

@@ -21,13 +21,13 @@ Query acceleration is supported in Eventhouse over OneLake, Azure Data Lake Stor
 
 ## Limitations
 
-* The number of columns in external table can't exceed 900.
+* The number of columns in the external table can't exceed 900.
 * Delta tables must include column statistics.
 * Delta tables can't include partitions.
 * The feature assumes delta tables with static advanced features, for example column mapping doesn't change, partitions don't change, and so on. To change advanced features, first disable the policy, and once the change is made, re-enable the policy.
 * Schema changes on the delta table must also be followed with the respective `. alter` external delta table schema, which might result in acceleration starting from scratch if there was breaking schema change.
 * Catalog prefiltering doesn't support pruning external table partitions.
-* The maximum individual parquet file size is 6 GB (uncompressed).
+* Parquet files with a compressed size higher than 6 GB won't be cached.
 ::: moniker range="azure-data-explorer"
 * Query acceleration isn't supported for external tables with impersonation authentication.
 ::: moniker-end
@@ -36,7 +36,7 @@ Query acceleration is supported in Eventhouse over OneLake, Azure Data Lake Stor
 
 * Running [OPTIMIZE](/azure/databricks/sql/language-manual/delta-optimize) on the Delta Lake data results in reaccelerating all data, and isn't recommended.
 * If you run run frequent MERGE/UPDATE/DELETE operations in delta, the underlying parquet files may be rewritten with changes and Kusto will skip caching such files, causing retrieval during query time.
-* The system assumes that all artifacts under the delta table directory have the same access level to the selected users. Different files having different access permissions under the delta table directory might behave unexpectedly.
+* The system assumes that all artifacts under the delta table directory have the same access level to the selected users. Different files having different access permissions under the delta table directory might result with unexpected behavior.
 
 ## Commands for query acceleration
 
