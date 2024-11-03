@@ -3,11 +3,39 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/04/2024
+ms.date: 10/14/2024
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## September 2024
+
+**General**
+
+|Article title | Description|
+|--|--|
+| [Ingest data from Cribl Stream into Azure Data Explorer](ingest-data-cribl.md) | New article. Learn how to ingest data from Cribl stream. |
+
+**Management**
+
+|Article title | Description|
+|--|--|
+| [.alter database prettyname command](/kusto/management/alter-database-prettyname?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the `.alter database prettyname` command to alter the database's prettyname. |
+| [.drop database prettyname command](/kusto/management/drop-database-prettyname?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the `.drop database prettyname` command to drop the database's prettyname. |
+| [.execute database script command](/kusto/management/execute-database-script?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show database schema violations](/kusto/management/show-database-schema-violations?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show database command](/kusto/management/show-database?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show databases entities command](/kusto/management/show-databases-entities?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show databases command](/kusto/management/show-databases?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show database schema command](/kusto/management/show-schema-database?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show data operations command](/kusto/management/show-data-operations?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the `.show data operations` command to return data operations that reached a final state. |
+
+**Query**
+
+|Article title | Description|
+|--|--|
+| [top-nested operator](/kusto/query/top-nested-operator?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed with clearer content and examples. |
 
 ## August 2024
 
@@ -170,29 +198,3 @@ No updates.
 |--|--|
 |- [Ingest data with Fluent Bit](fluent-bit.md) <br/> - [Data connectors overview](integrate-data-overview.md)| New article that describes how to ingest data from Fluent Bit, and updated data connector overview with additional capabilities.|
 | [Connect a cluster behind a private endpoint to a Power BI service](power-bi-private-endpoint.md)| New article. Describes how to connect an Azure Data Explorer cluster behind a private endpoint to a Power BI service.|
-
-## September 2023
-
-**General**
-
-| Article title | Description |
-|--|--|
-|- [KQL graph semantics overview (Preview)](graph-overview.md) <br/> - [KQL graph semantics best practices (Preview)](graph-best-practices.md) <br/> - [Common scenarios for using KQL graph semantics (Preview)?](graph-scenarios.md) | New articles. Describes how to use Kusto Query Language (KQL) graph semantics.|
-| [How to ingest historical data](ingest-data-historical.md)| New article. Describes how to use LightIngest to ingest historical or ad hoc data into Azure Data Explorer.|
-|- [Ingest data from Splunk to Azure Data Explorer](ingest-data-splunk.md) <br/> - [Data connectors overview](integrate-data-overview.md)| New article that describes how to ingest data into Azure Data Explorer from Splunk, and updated data connector overview with additional capabilities.|
-| [KQL learning resources](kql-learning-resources.md)| New article. Describes the different learning resources for ramping up on KQL.|
-| [Dashboard-specific visuals](dashboard-visuals.md)| New article. Describes the visualizations available in Azure Data Explorer web UI or dashboards.|
-| [Create a dashboard base query](base-query.md)| New article. Describes how to create a base query for an Azure Data Explorer dashboard.|
-
-**Management**
-
-| Article title | Description |
-|--|--|
-|- [.alter-merge database policy ingestionbatching command](/kusto/management/alter-merge-database-ingestion-batching-policy?view=azure-data-explorer&preserve-view=true) <br/> - [.alter-merge table policy ingestionbatching command](/kusto/management/alter-merge-table-ingestion-batching-policy?view=azure-data-explorer&preserve-view=true)| New articles. Describes how to set the ingestion batching policy.|
-
-**Query**
-
-| Article title | Description |
-|--|--|
-|- [Graph operators (Preview)](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true) <br/> - [graph-match operator (Preview)](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) <br/> - [graph-to-table operator (Preview)](/kusto/query/graph-to-table-operator?view=azure-data-explorer&preserve-view=true) <br/> - [make-graph operator (Preview)](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to use graph operators. |
-| [Plotly (preview)](/kusto/query/visualization-plotly?view=azure-data-explorer&preserve-view=true) | New article. Describes how to visualize data using the Plotly graphics library.|
