@@ -3,7 +3,7 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/13/2024
+ms.date: 10/14/2024
 ---
 # What's new in Azure Data Explorer documentation
 
@@ -21,21 +21,21 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-| [.alter database prettyname command](kusto/management/alter-database-prettyname.md) | New article. Learn how to use the `.alter database prettyname` command to alter the database's prettyname. |
-| [.drop database prettyname command](kusto/management/drop-database-prettyname.md) | New article. Learn how to use the `.drop database prettyname` command to drop the database's prettyname. |
-| [.execute database script command](kusto/management/execute-database-script.md) | Updated article. Updated information for .alter db. |
-| [.show database schema violations](kusto/management/show-database-schema-violations.md) | Updated article. Updated information for .alter db. |
-| [.show database command](kusto/management/show-database.md) | Updated article. Updated information for .alter db. |
-| [.show databases entities command](kusto/management/show-databases-entities.md) | Updated article. Updated information for .alter db. |
-| [.show databases command](kusto/management/show-databases.md) | Updated article. Updated information for .alter db. |
-| [.show database schema command](kusto/management/show-schema-database.md) | Updated article. Updated information for .alter db. |
-| [.show data operations command](kusto/management/show-data-operations.md) | New article. Learn how to use the `.show data operations` command to return data operations that reached a final state. |
+| [.alter database prettyname command](/kusto/management/alter-database-prettyname?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the `.alter database prettyname` command to alter the database's prettyname. |
+| [.drop database prettyname command](/kusto/management/drop-database-prettyname?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the `.drop database prettyname` command to drop the database's prettyname. |
+| [.execute database script command](/kusto/management/execute-database-script?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show database schema violations](/kusto/management/show-database-schema-violations?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show database command](/kusto/management/show-database?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show databases entities command](/kusto/management/show-databases-entities?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show databases command](/kusto/management/show-databases?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show database schema command](/kusto/management/show-schema-database?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for .alter db. |
+| [.show data operations command](/kusto/management/show-data-operations?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the `.show data operations` command to return data operations that reached a final state. |
 
 **Query**
 
 |Article title | Description|
 |--|--|
-| [top-nested operator](kusto/query/top-nested-operator.md) | Updated article. Refreshed with clearer content and examples. |
+| [top-nested operator](/kusto/query/top-nested-operator?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed with clearer content and examples. |
 
 ## August 2024
 
