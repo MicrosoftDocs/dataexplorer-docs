@@ -22,7 +22,6 @@ Query acceleration is supported in Eventhouse over OneLake, Azure Data Lake Stor
 ## Limitations
 
 * The number of columns in the external table can't exceed 900.
-* Delta tables must include column statistics.
 * Delta tables can't include partitions.
 * The feature assumes delta tables with static advanced features, for example column mapping doesn't change, partitions don't change, and so on. To change advanced features, first disable the policy, and once the change is made, re-enable the policy.
 * Schema changes on the delta table must also be followed with the respective `. alter` external delta table schema, which might result in acceleration starting from scratch if there was breaking schema change.
