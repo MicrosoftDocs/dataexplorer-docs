@@ -3,13 +3,15 @@ title: .alter query acceleration policy command
 description: Learn how to use the ".alter query acceleration policy command" to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 10/15/2024
+ms.date: 11/03/2024
 ---
 # .alter query acceleration policy command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Alters the [query acceleration policy](query-acceleration-policy.md) of a specific external delta table.
+
+For limitations, see [Limitations](query-acceleration-policy.md#limitations).
 
 ## Permissions
 
@@ -27,7 +29,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 | *JSON-serialized policy* | `string` | :heavy_check_mark: | String literal holding a JSON property bag with the following properties: <br> IsEnabled : `Boolean` <br> Hot: `Timespan` |
 
 >[!NOTE]
-> Query acceleration is applied to data within a specific time period, defined as `timespan`, starting from the `modificationTime` in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file). 
+> Query acceleration is applied to data within a specific time period, defined as `timespan`, starting from the `modificationTime` as stated for each file in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file). 
 
 ## Returns
 
