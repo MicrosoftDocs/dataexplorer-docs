@@ -34,7 +34,7 @@ If the conversion is successful, the result is an integer. Otherwise, the result
 
 ### Convert string to integer
 
-The following example converts a string "123" to an integer and checks if the converted value is equal to the integer 123.
+The following example converts a string to an integer and checks if the converted value is equal to a specific integer.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -54,7 +54,7 @@ print toint("123") == 123
 
 ### Truncated integer
 
-The following example inputs a decimal value and returns a truncated integer as a result.
+The following example inputs a decimal value and returns a truncated integer.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
