@@ -50,4 +50,4 @@ print details=current_principal_details()
 
 |details|
 |---|
-|{<br>  "Country": "DE",<br>  "TenantCountry": "US",<br>  "TenantRegion": "WW",<br>  "UserPrincipalName": "user@fabrikam.com",<br>  "IdentityProvider": "https://sts.windows.net",<br>  "Authority": "11a11aa-22b2-33cc-44dd-5g5ee555ee55",<br>  "Mfa": "True",<br>  "Type": "AadUser",<br>  "DisplayName": "James Smith (upn: user@fabrikam.com)",<br>  "ObjectId": "666f666f-7g77-88hh-99i9-0jj0jjj0j00j",<br>  "FQN": null,<br>  "Notes": null<br>}|
+|{<br>  "Country": "DE",<br>  "TenantCountry": "US",<br>  "TenantRegion": "WW",<br>  "UserPrincipalName": "user@fabrikam.com",<br>  "IdentityProvider": "https://sts.windows.net",<br>  "Authority": "aaaabbbb-0000-cccc-1111-dddd2222eeee",<br>  "Mfa": "True",<br>  "Type": "AadUser",<br>  "DisplayName": "James Smith (upn: user@fabrikam.com)",<br>  "ObjectId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",<br>  "FQN": null,<br>  "Notes": null<br>}|
