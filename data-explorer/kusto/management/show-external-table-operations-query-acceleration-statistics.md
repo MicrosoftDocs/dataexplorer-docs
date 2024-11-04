@@ -1,11 +1,11 @@
 ---
-title: .show external table operations query_acceleration statistics
-description: Learn how to use the ".show external table operations query_acceleration statistics" to accelerate queries over external delta tables.
+title: .show external table operations query_acceleration statistics command (preview)
+description: Learn how to use the ".show external table operations query_acceleration statistics command" to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 11/19/2024
 ---
-# .show external table operations query_acceleration statistics
+# .show external table operations query_acceleration statistics command (preview)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 

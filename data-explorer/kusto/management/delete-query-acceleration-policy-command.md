@@ -1,11 +1,11 @@
 ---
-title: ".delete query acceleration policy command"
+title: ".delete query acceleration policy command (preview)"
 description: Learn how to use the .delete query acceleration policy command to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 11/19/2024
 ---
-# .delete query acceleration policy command
+# .delete query acceleration policy command (preview)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
