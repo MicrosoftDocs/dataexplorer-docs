@@ -3,7 +3,7 @@ title: .alter query acceleration policy command
 description: Learn how to use the ".alter query acceleration policy command" to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 11/03/2024
+ms.date: 11/19/2024
 ---
 # .alter query acceleration policy command
 
@@ -23,13 +23,26 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ## Parameters
 
-| Name                     | Type     | Required           | Description                                                                                                               |
-| ------------------------ | -------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| *ExternalTableName*      | `string` | :heavy_check_mark: | The name of the external delta table.                                                                                           |
-| *JSON-serialized policy* | `string` | :heavy_check_mark: | String literal holding a JSON property bag with the following properties: <br> IsEnabled : `Boolean` <br> Hot: `Timespan` |
+| Name                     | Type     | Required           | Description                                 |
+| ------------------------ | -------- | ------------------ | ------------------------------------------- |
+| *ExternalTableName*      | `string` | :heavy_check_mark: | The name of the external delta table.       |
+| *JSON-serialized policy* | `string` | :heavy_check_mark: | String literal holding a [JSON property bag](#json-property-bag). |
 
->[!NOTE]
+### JSON property bag
+
+| Property  | Type       | Required           | Description                                                                  |
+| --------- | ---------- | ------------------ | ---------------------------------------------------------------------------- |
+| IsEnabled | `Boolean`  | :heavy_check_mark: | Indicates whether the policy is enabled.                                     |
+| Hot       | `Timespan` | :heavy_check_mark: | The hot period defined in the query acceleration policy. Minimum value = 1 d. |
+
+> [!NOTE]
 > Query acceleration is applied to data within a specific time period, defined as `timespan`, starting from the `modificationTime` as stated for each file in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file). 
+
+### Example
+
+```json
+{"IsEnabled": true, "Hot": "1.00:00:00"}
+```
 
 ## Returns
 

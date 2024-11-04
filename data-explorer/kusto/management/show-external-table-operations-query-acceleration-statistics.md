@@ -3,7 +3,7 @@ title: .show external table operations query_acceleration statistics
 description: Learn how to use the ".show external table operations query_acceleration statistics" to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 10/15/2024
+ms.date: 11/19/2024
 ---
 # .show external table operations query_acceleration statistics
 

@@ -3,7 +3,7 @@ title: Query acceleration policy
 description: Learn how to use the query acceleration policy to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 10/10/2024
+ms.date: 11/19/2024
 ---
 # Query acceleration policy
 
@@ -17,6 +17,8 @@ Query acceleration is supported in Azure Data Explorer over Azure Data Lake Stor
 
 ::: moniker range="microsoft-fabric"
 Query acceleration is supported in Eventhouse over OneLake, Azure Data Lake Store Gen2, or Azure blob storage [external tables](/fabric/real-time-intelligence/onelake-shortcuts).
+
+To enable query acceleration in the Fabric UI, see [Query acceleration over OneLake shortcuts](https://aka.ms/rti-query-acceleration).
 ::: moniker-end
 
 ## Limitations
