@@ -1,16 +1,18 @@
 ---
-title: Delete data from Azure Data Explorer
-description: This article describes delete scenarios in Azure Data Explorer, including purge, dropping extents and retention based deletes.
+title: Delete data
+description: This article describes delete scenarios, including purge, dropping extents and retention based deletes.
 ms.reviewer: avneraa
 ms.topic: how-to
 ms.date: 02/01/2022
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
+# Overflows
 
-# Delete data from Azure Data Explorer
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-<!-- //TODO: Remove this and redirect to KQL repo in concepts folder-->
+# Delete data
 
-Azure Data Explorer supports several ways to delete data from a table. Use the following information to help you choose which deletion method is best for your use case.
+Delete data from a table is supported in several ways. Use the following information to help you choose which deletion method is best for your use case.
 
 | Use case | Considerations | Method |
 |--|--|--|
@@ -24,7 +26,7 @@ The following sections describe the different deletion methods.
 
 ## Delete all data in a table
 
-To delete all data in a table, use the [.clear table data](/kusto/management/clear-table-data-command?view=azure-data-explorer&preserve-view=true) command. This is the most efficient way to remove all data from a table.
+To delete all data in a table, use the [.clear table data](/kusto/management/clear-table-data-command) command. This is the most efficient way to remove all data from a table.
 
 Syntax:
 
@@ -34,7 +36,7 @@ Syntax:
 
 ## Delete data using a retention policy
 
-Automatically delete data based on a [retention policy](/kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true). You can set the retention policy at the database or table level. There is no guarantee as to when the deletion occurs, but it will not be deleted before the retention period. This is a very efficient and convenient way to remove old data.
+Automatically delete data based on a [retention policy](/kusto/management/retention-policy). You can set the retention policy at the database or table level. There is no guarantee as to when the deletion occurs, but it will not be deleted before the retention period. This is a very efficient and convenient way to remove old data.
 
 Consider a database or table that is set for 90 days of retention. If only 60 days of data are needed, delete the older data as follows:
 
@@ -44,9 +46,10 @@ Consider a database or table that is set for 90 days of retention. If only 60 da
 .alter-merge table <TableName> policy retention softdelete = 60d
 ```
 
+:::moniker range="azure-data-explorer"
 ## Delete data by dropping extents
 
-[Extent (data shard)](/kusto/management/extents-overview?view=azure-data-explorer&preserve-view=true) is the internal structure where data is stored. Each extent can hold up to millions of records. Extents can be deleted individually or as a group using [drop extent(s) commands](/kusto/management/drop-extents?view=azure-data-explorer&preserve-view=true).
+[Extent (data shard)](/kusto/management/extents-overview) is the internal structure where data is stored. Each extent can hold up to millions of records. Extents can be deleted individually or as a group using [drop extent(s) commands](/kusto/management/drop-extents?view=azure-data-explorer&preserve-view=true).
 
 ### Examples
 
@@ -63,6 +66,7 @@ You can delete all rows in a table or just a specific extent.
     ```kusto
     .drop extent e9fac0d2-b6d5-4ce3-bdb4-dea052d13b42
     ```
+:::moniker-end
 
 ## Delete individual rows
 
@@ -72,8 +76,8 @@ Both methods prevent deleted records from being recovered, regardless of any ret
 
 ### Soft delete
 
-With [soft delete](/kusto/concepts/data-soft-delete?view=azure-data-explorer&preserve-view=true), data is not necessarily deleted from storage artifacts. This method marks all matching records as deleted, so that they will be filtered out in queries, and doesn't require significant system resources.
+With [soft delete](/kusto/concepts/data-soft-delete), data is not necessarily deleted from storage artifacts. This method marks all matching records as deleted, so that they will be filtered out in queries, and doesn't require significant system resources.
 
 ### Purge
 
-With [purge](/kusto/concepts/data-purge?view=azure-data-explorer&preserve-view=true), extents that have one or more records to be deleted, are replaced with new extents in which those records do not exist. This deletion process isn't immediate, requires significant system resources, and can take a whole day to complete.
+With [purge](/kusto/concepts/data-purge), extents that have one or more records to be deleted, are replaced with new extents in which those records do not exist. This deletion process isn't immediate, requires significant system resources, and can take a whole day to complete.
