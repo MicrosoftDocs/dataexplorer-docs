@@ -3,7 +3,7 @@ title: make-graph operator
 description: Learn how to use the graph-to-table operator to build a graph structure from tabular inputs of edges and nodes.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/04/2024
 ---
 # make-graph operator
 
@@ -22,15 +22,15 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 | Name            | Type     | Required           | Description                                                                 |
 |-----------------|----------|--------------------|-----------------------------------------------------------------------------|
 | *Edges*         | `string` | :heavy_check_mark: | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
-| *SourceNodeId*  | `string` | :heavy_check_mark: | The column in *Edges* with the source node IDs of the edges.                |
-| *TargetNodeId*  | `string` | :heavy_check_mark: | The column in *Edges* with the target node IDs of the edges.                |
-| *Nodes*         | `string` |                    | The tabular expressions containing the properties of the nodes in the graph.|
-| *NodesId*       | `string` |                    | The columns with the node IDs in *Nodes*.                                   |
-| *DefaultNodeId* | `string` |                    | The name of the column for the default node ID.                             |
+| *SourceNodeId*  | `string` | :heavy_check_mark: | The column in *Edges* with the source node IDs of the edges. |
+| *TargetNodeId*  | `string` | :heavy_check_mark: | The column in *Edges* with the target node IDs of the edges. |
+| *Nodes*         | `string` |                    | The tabular expressions containing the properties of the nodes in the graph. |
+| *NodesId*       | `string` |                    | The columns with the node IDs in *Nodes*. |
+| *DefaultNodeId* | `string` |                    | The name of the column for the default node ID. |
 
 ## Returns
 
-The `make-graph` operator returns a graph expression and has to be followed by a [graph operator](graph-operators.md#supported-graph-operators). Each row in source *Edges* expression becomes an edge with the graph with properties that are the column values of the row. Each row in the nodes tabular expression becomes a node in the graph with properties that are the column values of the row. Nodes that appear in the *Edges* table but don't have a corresponding row in the nodes tables are created as nodes with the corresponding node ID and empty properties.
+The `make-graph` operator returns a graph expression and must be followed by a [graph operator](graph-operators.md#supported-graph-operators). Each row in the source *Edges* expression becomes an edge in the graph with properties that are the column values of the row. Each row in the *Nodes* tabular expression becomes a node in the graph with properties that are the column values of the row. Nodes that appear in the *Edges* table but don't have a corresponding row in the *Nodes* table are created as nodes with the corresponding node ID and empty properties.
 
 > [!NOTE]
 > Each node has a unique identifier. If the same node ID appears in both the *Nodes1* and *Nodes2* tables, a single node is created by merging their properties. If there are conflicting property values for the same node, one of the values is arbitrarily chosen.
@@ -38,12 +38,14 @@ The `make-graph` operator returns a graph expression and has to be followed by a
 Users can handle node information in three ways:
 
 1. No node information required: `make-graph` completes with source and target.
-2. Explicit node properties: Provide up to two tabular expressions using "`with` *Nodes1* `on` *NodeId1* [`,` *Nodes2* `on` *NodeId2* ]".
-3. Default node identifier: Specify using "`with_node_id=` *DefaultNodeId*".
+2. Explicit node properties: provide up to two tabular expressions using "`with` *Nodes1* `on` *NodeId1* [`,` *Nodes2* `on` *NodeId2* ]".
+3. Default node identifier: specify using "`with_node_id=` *DefaultNodeId*".
 
 ## Example
 
-The following example builds a graph from edges and nodes tables. The nodes represent people and systems, and the edges are different relations between nodes. The `make-graph` operator builds the graph. Then, there's a call to [graph-match](graph-match-operator.md) with a graph pattern that searches for attack paths to the "Trent" system node.
+### Edges and nodes graph
+
+The following example builds a graph from edges and nodes tables. The nodes represent people and systems, and the edges represent different relationships between nodes. The `make-graph` operator builds the graph. Then, the [graph-match](graph-match-operator.md) operator is used with a graph pattern to search for attack paths leading to the `"Trent"` system node.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -81,9 +83,9 @@ edges
 |---|---|---|
 |Mallory|Bob|Trent|
 
-## Example Default Node Id
+### Example Default Node ID
 
-This example builds a graph from edges only, using the "name" property as the default node identifier. This is useful when creating a graph from a tabular expression of edges, ensuring the node identifier is available for the constraints section of the subsequent [graph-match](graph-match-operator.md) operator.
+The following example builds a graph using only edges, with the *name* property as the default node identifier. This approach is useful when creating a graph from a tabular expression of edges, ensuring that the node identifier is available for the constraints section of the subsequent [graph-match](graph-match-operator.md) operator.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
