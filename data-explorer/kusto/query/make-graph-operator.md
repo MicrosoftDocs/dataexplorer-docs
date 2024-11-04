@@ -37,9 +37,9 @@ The `make-graph` operator returns a graph expression and must be followed by a [
 
 Users can handle node information in three ways:
 
-1. No node information required: `make-graph` completes with source and target.
-2. Explicit node properties: provide up to two tabular expressions using "`with` *Nodes1* `on` *NodeId1* [`,` *Nodes2* `on` *NodeId2* ]".
-3. Default node identifier: specify using "`with_node_id=` *DefaultNodeId*".
+1. **No node information required:** `make-graph` completes with source and target.
+2. **Explicit node properties:** use up to two tabular expressions using "`with` *Nodes1* `on` *NodeId1* [`,` *Nodes2* `on` *NodeId2* ]."
+3. **Default node identifier:** use "`with_node_id=` *DefaultNodeId*."
 
 ## Example
 
@@ -83,7 +83,7 @@ edges
 |---|---|---|
 |Mallory|Bob|Trent|
 
-### Example Default Node ID
+### Default node identifier
 
 The following example builds a graph using only edges, with the *name* property as the default node identifier. This approach is useful when creating a graph from a tabular expression of edges, ensuring that the node identifier is available for the constraints section of the subsequent [graph-match](graph-match-operator.md) operator.
 
