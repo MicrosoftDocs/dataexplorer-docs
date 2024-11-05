@@ -35,7 +35,7 @@ The `make-graph` operator returns a graph expression and must be followed by a [
 > [!NOTE]
 > Each node has a unique identifier. If the same node ID appears in both the *Nodes1* and *Nodes2* tables, a single node is created by merging their properties. If there are conflicting property values for the same node, one of the values is arbitrarily chosen.
 
-Users can handle node information in following ways:
+Users can handle node information in the following ways:
 
 1. **No node information required:** `make-graph` completes with source and target.
 2. **Explicit node properties:** use up to two tabular expressions using "`with` *Nodes1* `on` *NodeId1* [`,` *Nodes2* `on` *NodeId2* ]."
