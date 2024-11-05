@@ -4,6 +4,7 @@ description: This article describes caching policy (hot and cold cache).
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 08/11/2024
+monikerRange:  "microsoft-fabric || azure-data-explorer"
 ---
 # Caching policy (hot and cold cache)
 

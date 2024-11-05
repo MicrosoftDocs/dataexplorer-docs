@@ -46,7 +46,6 @@ Consider a database or table that is set for 90 days of retention. If only 60 da
 .alter-merge table <TableName> policy retention softdelete = 60d
 ```
 
-:::moniker range="azure-data-explorer"
 ## Delete data by dropping extents
 
 [Extent (data shard)](/kusto/management/extents-overview) is the internal structure where data is stored. Each extent can hold up to millions of records. Extents can be deleted individually or as a group using [drop extent(s) commands](/kusto/management/drop-extents?view=azure-data-explorer&preserve-view=true).
@@ -66,7 +65,6 @@ You can delete all rows in a table or just a specific extent.
     ```kusto
     .drop extent e9fac0d2-b6d5-4ce3-bdb4-dea052d13b42
     ```
-:::moniker-end
 
 ## Delete individual rows
 
@@ -78,6 +76,8 @@ Both methods prevent deleted records from being recovered, regardless of any ret
 
 With [soft delete](/kusto/concepts/data-soft-delete), data is not necessarily deleted from storage artifacts. This method marks all matching records as deleted, so that they will be filtered out in queries, and doesn't require significant system resources.
 
+:::moniker range="azure-data-explorer"
 ### Purge
 
 With [purge](/kusto/concepts/data-purge), extents that have one or more records to be deleted, are replaced with new extents in which those records do not exist. This deletion process isn't immediate, requires significant system resources, and can take a whole day to complete.
+::: moniker-end
