@@ -56,6 +56,8 @@ This section provides practical examples demonstrating how to use the `graph-sho
 
 ### Example: Finding Any Shortest Path between two train stations
 
+This example demonstrates how to use the `graph-shortest-paths` operator to find the shortest path between two stations in a transportation network. The query constructs a graph from the `connections` datatable and finds the shortest path from "South-West" to "North" station, considering paths up to 5 connections long. The default output is "any", so it finds any shortest path.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VSPW%2FDIBDd%2FStOnuzKWOrQpZWzVF27dOgQRRYJNJA6YAFRlv74HjhOjziVF3gf9w7fDTLAzhojd0Fb46EDwQN%2B20FWX84ee483ZJ59cNrsGwh2AQ3ayMulhmINBUD5Kk1wfCgbKN%2BtCyoenBRlE8krQlSJvLV%2B2FMSUnrGiO4unQ7sU%2FqQl8%2Fxq%2Fw%2FwbJAZr0TQPp%2F4xO5HU7yws4QURGWoHPhiaXBC2uxeYGCTrH4gSP%2Flmzv%2BKiAzhEYW5EZwlkH1RsrZK9FdwHRnYzMKxwUhrKRB%2BWhQt6Fmq1J1MNj2z5t2KoSqNMm%2BWts9qykk5AM7ZzVddlPA24EEFumm1YEC43OHjArPQK3M6vYQGwMUdJQ%2B%2Fe4aTNv6AjFLY6bvsz%2BBe1b5s0PAwAA" target="_blank">Run the query</a>
@@ -91,6 +93,8 @@ connections
 |South-West|[<br>  "South",<br>  "Central",<br>  "North"<br>]|[<br>  "red",<br>  "red",<br>  "red"<br>]|North|
 
 ### Example: Finding All Shortest Paths between two train stations
+
+Similar to the previous example, this one finds the shortest paths in a transportation network. The difference is the usage of `output=all`, which results in returning all shortest paths.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
