@@ -8,7 +8,7 @@ ms.date: 02/18/2024
 # graph-mark-components operator (Preview)
 
 > [!WARNING]
-> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+> This feature is currently in preview and is subject to change. The semantics and syntax of this operator might change before it will be released as generally available.
 
 The `graph-mark-components` operator finds all connected components of a graph and marks each node with a component identifier.
 
