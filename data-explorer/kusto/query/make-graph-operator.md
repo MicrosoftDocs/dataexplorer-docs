@@ -3,7 +3,7 @@ title: make-graph operator
 description: Learn how to use the graph-to-table operator to build a graph structure from tabular inputs of edges and nodes.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 11/04/2024
+ms.date: 11/05/2024
 ---
 # make-graph operator
 
@@ -45,7 +45,7 @@ Users can handle node information in three ways:
 
 ### Edges and nodes graph
 
-The following example builds a graph from edges and nodes tables. The nodes represent people and systems, and the edges represent different relationships between nodes. The `make-graph` operator builds the graph. Then, the [graph-match](graph-match-operator.md) operator is used with a graph pattern to search for attack paths leading to the `"Trent"` system node.
+The following example builds a graph from edges and nodes tables. The nodes represent people and systems, and the edges represent different relationships between nodes. The `make-graph` operator builds the graph. Then, the [`graph-match`](graph-match-operator.md) operator is used with a graph pattern to search for attack paths leading to the `"Trent"` system node.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -85,7 +85,7 @@ edges
 
 ### Default node identifier
 
-The following example builds a graph using only edges, with the *name* property as the default node identifier. This approach is useful when creating a graph from a tabular expression of edges, ensuring that the node identifier is available for the constraints section of the subsequent [graph-match](graph-match-operator.md) operator.
+The following example builds a graph using only edges, with the `name` property as the default node identifier. This approach is useful when creating a graph from a tabular expression of edges, ensuring that the node identifier is available for the constraints section of the subsequent [`graph-match`](graph-match-operator.md) operator.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
