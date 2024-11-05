@@ -3,7 +3,7 @@ title: Best practices for Kusto Query Language queries
 description:  This article describes Query best practices.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/05/2024
 adobe-target: true
 ---
 # Best practices for Kusto Query Language queries
@@ -28,7 +28,7 @@ Here are several best practices to follow to make your query run faster.
 | **Extract fields from [dynamic objects](scalar-data-types/dynamic.md) across millions of rows** | Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows. |  | This way, you'll only pay once for column extraction. |
 | **Lookup for rare keys/values in [dynamic objects](scalar-data-types/dynamic.md)** | Use `MyTable | where DynamicColumn has "Rare value" | where DynamicColumn.SomeKey == "Rare value"` | Don't use `MyTable | where DynamicColumn.SomeKey == "Rare value"` | This way, you filter out most records, and do JSON parsing only of the rest. |
 | **`let` statement with a value that you use more than once** | Use the [materialize() function](materialize-function.md) |  | For more information on how to use `materialize()`, see [materialize()](materialize-function.md). For more information, see [Optimize queries that use named expressions](named-expressions.md).|
-| **Apply conversions on more than 1 billion records** | Reshape your query to reduce the amount of data fed into the conversion. | Don't convert large amounts of data if it can be avoided. |  |
+| **Apply type conversions on more than 1 billion records** | Reshape your query to reduce the amount of data fed into the conversion. | Don't convert large amounts of data if it can be avoided. |  |
 | **New queries** | Use `limit [small number]` or `count` at the end. |  | Running unbound queries over unknown datasets may yield GBs of results to be returned to the client, resulting in a slow response and a busy cluster. |
 | **Case-insensitive comparisons** | Use `Col =~ "lowercasestring"` | Don't use `tolower(Col) == "lowercasestring"` |
 | **Compare data already in lowercase (or uppercase)** | `Col == "lowercasestring"` (or `Col == "UPPERCASESTRING"`) | Avoid using case insensitive comparisons. |  |
