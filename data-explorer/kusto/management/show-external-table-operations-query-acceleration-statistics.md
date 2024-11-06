@@ -39,7 +39,7 @@ The command returns a table with a record per external table that has a non-null
 | HotSize                         | `long`     | The total size on disk (in bytes) of artifacts accelerated due to the query acceleration policy           |
 | LastUpdatedDateTime             | `datetime` | Indicates the last datetime when the internal representation of the table was successfully refreshed |
 | AccelerationPendingArtifactSize | `long`     | The total size of artifacts that are pending acceleration                                            |
-|AccelerationCompletePercentage | `double`  | The percentage of artifacts that are cached, out of the total artifacts that are able to be accelerated           |
+|AccelerationCompletePercentage | `double`  | The percentage of artifacts that are accelerated, out of the total artifacts that are able to be accelerated           |
 |NotHealthyReason               | `string`  | Describes the reason for query acceleration not being healthy. Empty if healthy                      |
 
 ## Example
