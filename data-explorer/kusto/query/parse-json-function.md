@@ -49,7 +49,7 @@ in the object, and from that it retrieves two slots, `duration.value` and
  `duration.min` (`118.0` and `110.0`, respectively).
 
 ```kusto
-T
+Table_Name
 | extend d=parse_json(context_custom_metrics) 
 | extend duration_value=d.duration.value, duration_min=d["duration"]["min"]
 ```
@@ -57,7 +57,7 @@ T
 **Notes**
 
 It's common to have a JSON string describing a property bag in which
-one of the "slots" is another JSON string. 
+one of the "slots" is another JSON string.
 
 For example:
 
