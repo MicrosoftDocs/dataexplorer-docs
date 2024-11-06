@@ -43,7 +43,7 @@ The following table shows the supported path pattern notations.
 
 #### Variable length edge
 
-A variable length edge allows a specific pattern to be repeated multiple times within defined limits. An asterisk (`*`) denotes this type of edge, which is followed by the minimum and maximum occurrence values in the format *min*`..`*max*. The minimum and maximum values must be integer scalars. Any sequence of edges that falls within this occurrence range can match the variable edge of the pattern, if all the edges in the sequence satisfy the `where` clause constraints.
+A variable length edge allows a specific pattern to repeat multiple times within defined limits. An asterisk (`*`) denotes this type of edge, followed by the minimum and maximum occurrence values in the format *min*`..`*max*. These values must be integer scalars. Any sequence of edges within this range can match the variable edge of the pattern, provided all the edges in the sequence meet the `where` clause constraints.
 
 ## Returns
 
