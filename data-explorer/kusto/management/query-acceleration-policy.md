@@ -18,7 +18,7 @@ Query acceleration is supported in Azure Data Explorer over Azure Data Lake Stor
 ::: moniker range="microsoft-fabric"
 Query acceleration is supported in Eventhouse over OneLake, Azure Data Lake Store Gen2, or Azure blob storage [external tables](/fabric/real-time-intelligence/onelake-shortcuts).
 
-To enable query acceleration in the Fabric UI, see [Query acceleration over OneLake shortcuts](https://aka.ms/rti-query-acceleration).
+To enable query acceleration in the Fabric UI, see [Query acceleration over OneLake shortcuts](https://go.microsoft.com/fwlink/?linkid=2296674).
 ::: moniker-end
 
 ## Limitations
