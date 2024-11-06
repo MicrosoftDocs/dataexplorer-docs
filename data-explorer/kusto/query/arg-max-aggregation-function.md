@@ -3,13 +3,15 @@ title:  arg_max() (aggregation function)
 description: Learn how to use the arg_max() aggregation function to find a row in a group that maximizes the input expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/11/2024
 ---
 # arg_max() (aggregation function)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Finds a row in the group that maximizes *ExprToMaximize*.
+The arg_max() function is used in conjunction with the summarize operator and finds a row in the group that maximizes the expression specified. It can return all columns of the input table or specific columns
+The arg_max() function is used to find a row in a group that maximizes a specified expression. It returns the values of columns specified in the expression
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -31,6 +33,9 @@ Finds a row in the group that maximizes *ExprToMaximize*.
 ## Returns
 
 Returns a row in the group that maximizes *ExprToMaximize*, and the values of columns specified in *ExprToReturn*.
+
+> [!TIP]
+> To see the maximal value only, use the [max aggregation function](max-aggregation-function.md).
 
 ## Examples
 
