@@ -3,15 +3,16 @@ title: graph-shortest-paths Operator (Preview)
 description: Learn how to use the graph-shortest-paths operator to efficiently find the shortest paths from a given set of source nodes to a set of target nodes within a graph
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 06/13/2024
+ms.date: 11/05/2024
 ---
 
 # graph-shortest-paths Operator (Preview)
 
-> [!WARNING]
-> This feature is currently in preview and is subject to change. The semantics and syntax of this operator might change before it will be released as generally available.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-The `graph-shortest-paths` operator finds shortest paths between a set of source nodes and a set of target nodes in a graph and returns a table with the results.
+[](../includes/preview-warning.md)
+
+The `graph-shortest-paths` operator finds the shortest paths between a set of source nodes and a set of target nodes in a graph and returns a table with the results.
 
 > [!NOTE]
 > This operator is used in conjunction with the [make-graph operator](make-graph-operator.md).
@@ -22,41 +23,41 @@ The `graph-shortest-paths` operator finds shortest paths between a set of source
 
 ## Parameters
 
-| Name          | Type        | Required | Description                                                                                                           |
-|---------------|-------------|----------|-----------------------------------------------------------------------------------------------------------------------|
-| *G*           | string      | ✔️       | The graph source, typically the output from a `make-graph` operation.                                                 |
-| *Pattern*     | string      | ✔️       | A [path pattern](#path-pattern-notation) describing the path to find. Patterns must include at least one variable length edge and cannot contain multiple sequences. |
-| *Predicate*   | expression  |          | A Boolean expression composed of properties of named variables in the Pattern and constants.                          |
-| *Expression*  | expression  | ✔️       | A scalar expression that defines the output row for each found path, using constants and references to properties of named variables in the Pattern. |
-| *OutputOption*| string      |          | Specifies the search output: `any` for a single shortest path per source/target pair, `all` for all shortest paths of equal minimum length. Default is `any`. |
+| Name | Type | Required |Description |
+|---------------|-------------|----------|-----------------------------|
+| *G* | string | :heavy_check_mark: | The graph source, typically the output from a `make-graph` operation.                                                 |
+| *Pattern* | string | :heavy_check_mark: | A [path pattern](#path-pattern-notation) that describes the path to find. Patterns must include at least one variable length edge and can't contain multiple sequences. |
+| *Predicate* | expression | | A boolean expression that consists of properties of named variables in the pattern and constants. |
+| *Expression* | expression | :heavy_check_mark: | A scalar expression that defines the output row for each found path, using constants and references to properties of named variables in the pattern. |
+| *OutputOption*| string | | Specifies the search output as `any` (default) or `all`. Output is specified as `any` for a single shortest path per source/target pair and `all` for all shortest paths of equal minimum length. |
 
 ### Path pattern notation
 
-The following table shows the supported notations:
+The following table shows the supported path pattern notations.
 
-| Element                  | Named variable | Anonymous |
+| Element                  | Named variable | Anonymous element |
 |--------------------------|----------------|-----------|
 | Node                     | `(`*n*`)`      | `()`      |
-| Directed edge: left to right | `-[`*e*`]->` | `-->`     |
-| Directed edge: right to left | `<-[`*e*`]-` | `<--`     |
+| Directed edge from left to right | `-[`*e*`]->` | `-->`     |
+| Directed edge from right to left | `<-[`*e*`]-` | `<--`     |
 | Any direction edge       | `-[`*e*`]-`    | `--`      |
 | Variable length edge     | `-[`*e*`*3..5]-` | `-[*3..5]-` |
 
 #### Variable length edge
 
-A variable length edge allows a specific pattern to be repeated multiple times within defined limits. This type of edge is denoted by an asterisk (`*`), followed by the minimum and maximum occurrence values in the format *min*`..`*max*. Both the minimum and maximum values must be integer scalars. Any sequence of edges falling within this occurrence range can match the variable edge of the pattern, provided that all the edges in the sequence satisfy the constraints outlined in the `where` clause.
+A variable length edge allows a specific pattern to be repeated multiple times within defined limits. An asterisk (`*`) denotes this type of edge, which is followed by the minimum and maximum occurrence values in the format *min*`..`*max*. The minimum and maximum values must be integer scalars. Any sequence of edges that falls within this occurrence range can match the variable edge of the pattern, if all the edges in the sequence satisfy the `where` clause constraints.
 
 ## Returns
 
-The `graph-shortest-paths` operator returns a tabular result, where each record corresponds to a path found in the graph. The returned columns are defined in the operator's `project` clause using properties of nodes and edges defined in the pattern. Properties and functions of properties of variable length edges are returned as a dynamic array, each value in the array corresponds to an occurrence of the variable length edge.
+The `graph-shortest-paths` operator returns a tabular result, where each record corresponds to a path found in the graph. The returned columns are defined in the operator's `project` clause using properties of nodes and edges defined in the pattern. Properties and functions of properties of variable length edges, are returned as a dynamic array. Each value in the array corresponds to an occurrence of the variable length edge.
 
 ## Examples
 
 This section provides practical examples demonstrating how to use the `graph-shortest-paths` operator in different scenarios.
 
-### Example: Finding Any Shortest Path between two train stations
+### Find `any` shortest path between two train stations
 
-This example demonstrates how to use the `graph-shortest-paths` operator to find the shortest path between two stations in a transportation network. The query constructs a graph from the `connections` datatable and finds the shortest path from "South-West" to "North" station, considering paths up to 5 connections long. The default output is "any", so it finds any shortest path.
+The following example demonstrates how to use the `graph-shortest-paths` operator to find the shortest path between two stations in a transportation network. The query constructs a graph from the data in `connections` and finds the shortest path from the `"South-West"` to the `"North"` station, considering paths up to five connections long. Since the default output is `any`, it finds any shortest path.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -92,9 +93,9 @@ connections
 |---|---|---|---|
 |South-West|[<br>  "South",<br>  "Central",<br>  "North"<br>]|[<br>  "red",<br>  "red",<br>  "red"<br>]|North|
 
-### Example: Finding All Shortest Paths between two train stations
+### Finding all shortest paths between two train stations
 
-Similar to the previous example, this one finds the shortest paths in a transportation network. The difference is the usage of `output=all`, which results in returning all shortest paths.
+The following example, like the previous example, finds the shortest paths in a transportation network. However, it uses `output=all`, so returns all shortest paths.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

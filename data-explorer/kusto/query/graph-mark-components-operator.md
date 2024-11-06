@@ -3,12 +3,13 @@ title: graph-mark-components operator (Preview)
 description: Learn how to use the graph-mark-components operator to find and mark all connected components of a graph.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 02/18/2024
+ms.date: 11/06/2024
 ---
 # graph-mark-components operator (Preview)
 
-> [!WARNING]
-> This feature is currently in preview and is subject to change. The semantics and syntax of this operator might change before it will be released as generally available.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+[](../includes/preview-warning.md)
 
 The `graph-mark-components` operator finds all connected components of a graph and marks each node with a component identifier.
 
@@ -23,17 +24,19 @@ The `graph-mark-components` operator finds all connected components of a graph a
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *G* | string |  :heavy_check_mark: | The input graph source. |
-| *Kind* | string |  | The connected component kind: either `weak` (default) or `strong`. A weak comoponent is a set of nodes that are connected to each other by some path, ignoring the direction of edges. A strong component is a set of nodes that are connected to each other in both directions, while considering the edges' directions. |
-| *ComponentId* | string |  | A name for the property that denotes the component identifier, if not provided the default property name is `ComponentId`. |
+| *G* | string |  :heavy_check_mark: | The graph source. |
+| *Kind* | string |  | The connected component kind either `weak` (default) or `strong`. A weak component is a set of nodes connected by some path, ignoring the direction of edges. A strong component is a set of nodes connected in both directions, considering the edges' directions. |
+| *ComponentId* | string |  | The property name that denotes the component identifier. The default property name is `ComponentId`. |
 
 ## Returns
 
-The `graph-mark-components` operator returns a *graph* result, where the component identifier of each node is added in the *ComponentId* property. The identifier is zero-based consecutive index of the components, each component index is chosen arbitrarily and is not guaranteed to be consistent across runs.
+The `graph-mark-components` operator returns a *graph* result, where each node has a component identifier in the *ComponentId* property. The identifier is a zero-based consecutive index of the components. Each component index is chosen arbitrarily and might not be consistent across runs.
 
 ## Examples
 
-### Finding families by their relationships
+### Find families by their relationships
+
+The following example creates a graph from a set of child-parent pairs and identifies connected components using a `family` identifier.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -75,7 +78,9 @@ ChildOf
 |Mallory|1|
 |Kirk|1|
 
-### Finding a greatest ancesstor for each family
+### Find a greatest common ancestor for each family
+
+The following example uses the connected component `family` identifier and the `graph-match` operator to identify the greatest ancestor of each family in a set of child-parent data.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
