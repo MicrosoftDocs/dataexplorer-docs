@@ -9,7 +9,7 @@ ms.date: 11/19/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-An [external table](../query/schema-entities/external-tables.md) is a schema entity that references data stored external to a Kusto database. Queries run over external tables can be less performant than on data that is ingested due to various factors such as network calls to fetch data from storage, the absence of indexes, and more. Query acceleration allows specifying a policy on top of external delta tables. This policy defines a number of days to cache data for high-performance queries.
+An [external table](../query/schema-entities/external-tables.md) is a schema entity that references data stored external to a Kusto database. Queries run over external tables can be less performant than on data that is ingested due to various factors such as network calls to fetch data from storage, the absence of indexes, and more. Query acceleration allows specifying a policy on top of external delta tables. This policy defines a number of days to accelerate data for high-performance queries.
 
 ::: moniker range="azure-data-explorer"
 Query acceleration is supported in Azure Data Explorer over Azure Data Lake Store Gen2 or Azure blob storage [external tables](external-tables-azure-storage.md).
@@ -36,7 +36,7 @@ To enable query acceleration in the Fabric UI, see [Query acceleration over OneL
 ## Known issues
 
 * Running [OPTIMIZE](/azure/databricks/sql/language-manual/delta-optimize) on the Delta Lake data results in reaccelerating all data. Take this into consideration when determining the frequency of this operation.
-* If you run frequent MERGE/UPDATE/DELETE operations in delta, the underlying parquet files may be rewritten with changes and Kusto will skip caching such files, causing retrieval during query time.
+* If you run frequent MERGE/UPDATE/DELETE operations in delta, the underlying parquet files may be rewritten with changes and Kusto will skip accelerating such files, causing retrieval during query time.
 * The system assumes that all artifacts under the delta table directory have the same access level to the selected users. Different files having different access permissions under the delta table directory might result with unexpected behavior.
 
 ## Commands for query acceleration
