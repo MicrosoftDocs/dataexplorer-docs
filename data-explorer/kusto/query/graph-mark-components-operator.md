@@ -116,7 +116,7 @@ ChildOf
 
 ## Related content
 
-* [Best practices for Kusto Query Language (KQL) graph semantics](../../graph-best-practices.md)
+* [Best practices for Kusto Query Language (KQL) graph semantics](graph-best-practices.md)
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
 * [graph-match operator](graph-match-operator.md)
