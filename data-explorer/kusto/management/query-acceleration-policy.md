@@ -9,7 +9,7 @@ ms.date: 11/19/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-An [external table](../query/schema-entities/external-tables.md) is a schema entity that references data stored external to a Kusto database. Queries run over external tables can be less performant than on data that is ingested due to various factors such as network calls to fetch data from storage, the absence of indexes, and more. Query acceleration allows specifying a policy on top of external delta tables. This policy defines a number of days to cache data for high-performance queries.
+An [external table](../query/schema-entities/external-tables.md) is a schema entity that references data stored external to a Kusto database. Queries run over external tables can be less performant than on data that is ingested due to various factors such as network calls to fetch data from storage, the absence of indexes, and more. Query acceleration allows specifying a policy on top of external delta tables. This policy defines a number of days to accelerate data for high-performance queries.
 
 ::: moniker range="azure-data-explorer"
 Query acceleration is supported in Azure Data Explorer over Azure Data Lake Store Gen2 or Azure blob storage [external tables](external-tables-azure-storage.md).
