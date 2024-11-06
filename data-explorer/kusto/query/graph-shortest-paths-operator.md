@@ -10,8 +10,6 @@ ms.date: 11/05/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-[](../includes/preview-warning.md)
-
 The `graph-shortest-paths` operator finds the shortest paths between a set of source nodes and a set of target nodes in a graph and returns a table with the results.
 
 > [!NOTE]
@@ -134,5 +132,7 @@ connections
 
 ## Related content
 
+* [Best practices for Kusto Query Language (KQL) graph semantics](../../graph-best-practices.md)
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
+

@@ -9,8 +9,6 @@ ms.date: 11/06/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-[](../includes/preview-warning.md)
-
 The `graph-mark-components` operator finds all connected components of a graph and marks each node with a component identifier.
 
 > [!NOTE]
@@ -25,7 +23,7 @@ The `graph-mark-components` operator finds all connected components of a graph a
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *G* | string |  :heavy_check_mark: | The graph source. |
-| *Kind* | string |  | The connected component kind either `weak` (default) or `strong`. A weak component is a set of nodes connected by some path, ignoring the direction of edges. A strong component is a set of nodes connected in both directions, considering the edges' directions. |
+| *Kind* | string |  | The connected component kind, either `weak` (default) or `strong`. A weak component is a set of nodes connected by a path, ignoring the direction of edges. A strong component is a set of nodes connected in both directions, considering the edges' directions. |
 | *ComponentId* | string |  | The property name that denotes the component identifier. The default property name is `ComponentId`. |
 
 ## Returns
@@ -118,7 +116,9 @@ ChildOf
 
 ## Related content
 
+* [Best practices for Kusto Query Language (KQL) graph semantics](../../graph-best-practices.md)
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
 * [graph-match operator](graph-match-operator.md)
 * [graph-to-table operator](graph-to-table-operator.md)
+
