@@ -188,7 +188,7 @@ download the package and its dependencies.
     pip wheel [-w download-dir] package-name.
     ```
 
-1. Create a zip file that contains the required package and its dependencies.
+1. Create a ZIP file that contains the required package and its dependencies.
 
     * For private packages, zip the folder of the package and the folders of its dependencies.
     * For public packages, zip the files that were downloaded in the previous step.
@@ -202,8 +202,8 @@ download the package and its dependencies.
 1. Upload the zipped file to a blob in the artifacts location (from step 1).
 
 1. Call the `python` plugin.
-    * Specify the `external_artifacts` parameter with a property bag of name and reference to the zip file (the blob's URL, including a SAS token).
-    * In your inline python code, import `Zipackage` from `sandbox_utils` and call its `install()` method with the name of the zip file.
+    * Specify the `external_artifacts` parameter with a property bag of name and reference to the ZIP file (the blob's URL, including a SAS token).
+    * In your inline python code, import `Zipackage` from `sandbox_utils` and call its `install()` method with the name of the ZIP file.
 
 ### Example
 

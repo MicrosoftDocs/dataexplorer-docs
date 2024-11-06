@@ -275,7 +275,7 @@ class Program
         // Initialize client properties
         var ingestionProperties = new KustoIngestionProperties(databaseName: "<databaseName>", tableName: "<tableName>");
         // Create source options
-        var sourceOptions = new StreamSourceOptions { CompressionType = DataSourceCompressionType.GZip, };
+        var sourceOptions = new StreamSourceOptions { CompressionType = DataSourceCompressionType.gzip, };
         // Ingest from stream
         await client.IngestFromStreamAsync(fileStream, ingestionProperties, sourceOptions);
     }

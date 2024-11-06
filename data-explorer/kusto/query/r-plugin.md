@@ -190,8 +190,8 @@ The example snips below assume local R machine on Windows environment.
 1. Upload libs.zip to the blob container that was set above
 
 1. Call the `r` plugin.
-    * Specify the `external_artifacts` parameter with a property bag of name and reference to the zip file (the blob's URL, including a SAS token).
-    * In your inline r code, import `zipfile` from `sandboxutils` and call its `install()` method with the name of the zip file.
+    * Specify the `external_artifacts` parameter with a property bag of name and reference to the ZIP file (the blob's URL, including a SAS token).
+    * In your inline r code, import `zipfile` from `sandboxutils` and call its `install()` method with the name of the ZIP file.
 
 ### Example
 

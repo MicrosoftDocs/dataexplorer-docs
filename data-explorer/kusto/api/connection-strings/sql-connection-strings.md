@@ -72,7 +72,7 @@ For a system-assigned managed identity, append `;Authentication="Active Director
 | Managed identity type | Example |
 |--|--|
 | System-assigned | `"Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";Initial Catalog=mydatabase;"` |
-| User-assigned | `"Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";User Id=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b;Initial Catalog=mydatabase;"` |
+| User-assigned | `"Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";User Id=00aa00aa-bb11-cc22-dd33-44ee44ee44ee;Initial Catalog=mydatabase;"` |
 
 ::: moniker-end
 
