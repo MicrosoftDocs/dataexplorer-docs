@@ -35,7 +35,7 @@ To enable query acceleration in the Fabric UI, see [Query acceleration over OneL
 
 ## Known issues
 
-* Data in the external delta table that is optimized with [OPTIMIZE](/azure/databricks/sql/language-manual/delta-optimize) function will need to be reaccelearted.
+* Data in the external delta table that is optimized with the [OPTIMIZE](/azure/databricks/sql/language-manual/delta-optimize) function will need to be reaccelearted.
 * If you run frequent MERGE/UPDATE/DELETE operations in delta, the underlying parquet files may be rewritten with changes and Kusto will skip accelerating such files, causing retrieval during query time.
 * The system assumes that all artifacts under the delta table directory have the same access level to the selected users. Different files having different access permissions under the delta table directory might result with unexpected behavior.
 
