@@ -201,16 +201,15 @@ If you don't already have one, [Create an event hub](/azure/event-hubs/event-hub
 
 ### Cross-region Event Hubs data connection
 
-For best performance, create the event hub in the same region as the cluster.
-If there is no other alternative, consider using [Premium](/azure/event-hubs/event-hubs-premium-overview) or [Dedicated](/azure/event-hubs/event-hubs-dedicated-overview) Event Hubs tiers. Event Hubs tiers comparison can be found [here](/azure/event-hubs/compare-tiers).
+For best performance, create the event hub in the same region as the cluster. If this is not possible, consider using [Premium](/azure/event-hubs/event-hubs-premium-overview) or [Dedicated](/azure/event-hubs/event-hubs-dedicated-overview) Event Hubs tiers. For a comparison of tiers, see [Compare Azure Event Hubs tiers](/azure/event-hubs/compare-tiers).
 
 ## Send events
 
 See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
 
-> [!Note]
+> [!NOTE]
 > 
-> To enable efficient processing of events from Event Hubs to Azure Data Explorer, avoid an unbalanced distribution of events across partitions. Uneven mapping can cause a high [discovery latency](/azure/data-explorer/using-metrics#ingestion-metrics). For further information about mapping of events to partitions, see [here](/azure/event-hubs/event-hubs-features#mapping-of-events-to-partitions).
+> To enable efficient processing of events from Event Hubs to Azure Data Explorer, avoid an unbalanced distribution of events across partitions. Uneven mapping can cause a high [discovery latency](/azure/data-explorer/using-metrics#ingestion-metrics). For more information, see [Mapping of events to partitions](/azure/event-hubs/event-hubs-features#mapping-of-events-to-partitions).
 
 ## Set up Geo-disaster recovery solution
 
