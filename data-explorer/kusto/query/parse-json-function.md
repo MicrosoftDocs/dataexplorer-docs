@@ -3,9 +3,13 @@ title:  parse_json() function
 description: Learn how to use the parse_json() function to return an object of type `dynamic`.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # parse_json()
+
+<!-- CHECK EXAMPLE DEEP LINKS -->
+
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
@@ -37,16 +41,18 @@ An object of type `dynamic` that is determined by the value of *json*:
 
 ## Example
 
-In the following example, when `context_custom_metrics` is a `string`
-that looks like this:
+In the following example, when `context_custom_metrics` is a `string` that looks like this:
 
 ```json
 {"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
 ```
 
-then the following query retrieves the value of the `duration` slot
-in the object, and from that it retrieves two slots, `duration.value` and
- `duration.min` (`118.0` and `110.0`, respectively).
+then the following query retrieves the value of the `duration` slot in the object, and from that it retrieves two slots, `duration.value` and `duration.min` (`118.0` and `110.0`, respectively).
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/SamplesXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 Table_Name
@@ -56,20 +62,26 @@ Table_Name
 
 **Notes**
 
-It's common to have a JSON string describing a property bag in which
-one of the "slots" is another JSON string.
+It's common to have a JSON string describing a property bag in which one of the "slots" is another JSON string.
 
 For example:
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/SamplesXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let d='{"a":123, "b":"{\\"c\\":456}"}';
 print d
 ```
 
-In such cases, it isn't only necessary to invoke `parse_json` twice, but also
-to make sure that in the second call, `tostring` is used. Otherwise, the
-second call to `parse_json` will just pass on the input to the output as-is,
-because its declared type is `dynamic`.
+In such cases, it isn't only necessary to invoke `parse_json` twice, but also to make sure that in the second call, `tostring` is used. Otherwise, the second call to `parse_json` will just pass on the input to the output as-is, because its declared type is `dynamic`.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/SamplesXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let d='{"a":123, "b":"{\\"c\\":456}"}';
