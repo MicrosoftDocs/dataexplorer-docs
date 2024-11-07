@@ -45,7 +45,7 @@ Syntax:
 
 ## Delete data using a retention policy
 
-Automatically delete data based on a [retention policy](../management/retention-policy). You can set the retention policy at the database or table level. There's no guarantee as to when the deletion occurs, but it will not be deleted before the retention period. This is an efficient and convenient way to remove old data.
+Automatically delete data based on a [retention policy](../management/retention-policy.md). You can set the retention policy at the database or table level. There's no guarantee as to when the deletion occurs, but it will not be deleted before the retention period. This is an efficient and convenient way to remove old data.
 
 Consider a database or table that is set for 90 days of retention. If only 60 days of data are needed, delete the older data as follows:
 
@@ -57,7 +57,7 @@ Consider a database or table that is set for 90 days of retention. If only 60 da
 
 ## Delete data by dropping extents
 
-[Extent (data shard)](../management/extents-overview) is the internal structure where data is stored. Each extent can hold up to millions of records. Extents can be deleted individually or as a group using [drop extent(s) commands](../management/drop-extents).
+[Extent (data shard)](../management/extents-overview.md) is the internal structure where data is stored. Each extent can hold up to millions of records. Extents can be deleted individually or as a group using [drop extent(s) commands](../management/drop-extents.md).
 
 ### Examples
 
@@ -83,10 +83,10 @@ Both methods prevent deleted records from being recovered, regardless of any ret
 
 ### Soft delete
 
-With [soft delete](../concepts/data-soft-delete), data isn't necessarily deleted from storage artifacts. This method marks all matching records as deleted, so that they'll be filtered out in queries, and doesn't require significant system resources.
+With [Soft delete overview](data-soft-delete.md), data isn't necessarily deleted from storage artifacts. This method marks all matching records as deleted, so that they'll be filtered out in queries, and doesn't require significant system resources.
 
 :::moniker range="azure-data-explorer"
 ### Purge
 
-With [purge](../concepts/data-purge), extents that have one or more records to be deleted, are replaced with new extents in which those records don't exist. This deletion process isn't immediate, requires significant system resources, and can take a whole day to complete.
+With [purge](data-purge.md), extents that have one or more records to be deleted, are replaced with new extents in which those records don't exist. This deletion process isn't immediate, requires significant system resources, and can take a whole day to complete.
 ::: moniker-end
