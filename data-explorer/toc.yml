@@ -505,7 +505,7 @@ items:
               - name: Purge data - Azure portal
                 href: data-purge-portal.md
               - name: Delete data
-                href: delete-data.md
+                href: /kusto/concepts/delete-data?view=azure-data-explorer&preserve-view=true
               - name: Deal with duplicate data
                 href: dealing-with-duplicates.md
       - name: Monitor
