@@ -6,11 +6,9 @@ ms.topic: how-to
 ms.date: 11/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
-# Overflows
+# Delete data
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
-
-# Delete data
 
 Delete data from a table is supported in several ways. Use the following information to help you choose which deletion method is best for your use case.
 
