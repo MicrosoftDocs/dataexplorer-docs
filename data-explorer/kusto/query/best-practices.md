@@ -3,7 +3,7 @@ title: Best practices for Kusto Query Language queries
 description:  This article describes Query best practices.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/06/2024
+ms.date: 11/07/2024
 adobe-target: true
 ---
 # Best practices for Kusto Query Language queries
@@ -25,7 +25,7 @@ Here are several best practices to follow to make your query run faster.
 |--|--|--|--|
 | **Reduce the amount of data being queried** | Use mechanisms such as the `where` operator to reduce the amount of data being processed. |  | For more information on efficient ways to reduce the amount of data being processed, see [Reduce the amount of data being processed](#reduce-the-amount-of-data-being-processed). |
 | **Avoid using redundant qualified references** | When referencing local entities, use the unqualified name. | | For more information, see [Avoid using redundant qualified references](#avoid-using-redundant-qualified-references). |
-| **`datetime` columns** | Use the `datetime` data type. | Don't use the `long` data type. | In queries, don't use unix time conversion functions, such as `unixtime_milliseconds_todatetime()`. Instead, use update policies to convert unix time to the `datetime` data type during ingestion. |
+| **`datetime` columns** | Use the `datetime` data type. | Don't use the `long` data type. | In queries, don't use Unix time conversion functions, such as `unixtime_milliseconds_todatetime()`. Instead, use update policies to convert Unix time to the `datetime` data type during ingestion. |
 | **String operators** | Use the `has` operator | Don't use `contains` | When looking for full tokens, `has` works better, since it doesn't look for substrings. |
 | **Case-sensitive operators** | Use `==` | Don't use  `=~` | Use case-sensitive operators when possible. |
 |  | Use `in` | Don't use `in~` |
@@ -40,7 +40,7 @@ Here are several best practices to follow to make your query run faster.
 | **Compare data already in lowercase (or uppercase)** | `Col == "lowercasestring"` (or `Col == "UPPERCASESTRING"`) | Avoid using case insensitive comparisons. |  |
 | **Filtering on columns** | Filter on a table column. | Don't filter on a calculated column. |  |
 |  | Use `T | where predicate(*Expression*)` | Don't use `T | extend _value = *Expression* | where predicate(_value)` |  |
-| **summarize operator** | Use the [hint.shufflekey=\<key>](shuffle-query.md) when the `group by keys` of the `summarize` operator are with high cardinality. |  | High cardinality is ideally above one million. |
+| **summarize operator** | Use the [hint.shufflekey=\<key>](shuffle-query.md) when the `group by keys` of the `summarize` operator are with high cardinality. |  | High cardinality is ideally more than one million. |
 | **[join operator](join-operator.md)** | Select the table with the fewest rows as the first one (left-most in query). |  |
 |  | Use `in` instead of left semi `join` for filtering by a single column. |  |
 | Join across clusters | Across clusters, run the query on the "right" side of the join, where most of the data is located. |  |
@@ -59,7 +59,7 @@ Here are several best practices to follow to make your query run faster.
 |--|--|--|--|
 | **Reduce the amount of data being queried** | Use mechanisms such as the `where` operator to reduce the amount of data being processed. |  | For more information on efficient ways to reduce the amount of data being processed, see [Reduce the amount of data being processed](#reduce-the-amount-of-data-being-processed). |
 | **Avoid using redundant qualified references** | When referencing local entities, use the unqualified name. | | For more information, see [Avoid using redundant qualified references](#avoid-using-redundant-qualified-references). |
-| **`datetime` columns** | Use the `datetime` data type. | Don't use the `long` data type. | In queries, don't use unix time conversion functions, such as `unixtime_milliseconds_todatetime()`. Instead, use update policies to convert unix time to the `datetime` data type during ingestion. |
+| **`datetime` columns** | Use the `datetime` data type. | Don't use the `long` data type. | In queries, don't use Unix time conversion functions, such as `unixtime_milliseconds_todatetime()`. Instead, use update policies to convert Unix time to the `datetime` data type during ingestion. |
 | **String operators** | Use the `has` operator | Don't use `contains` | When looking for full tokens, `has` works better, since it doesn't look for substrings. |
 | **Case-sensitive operators** | Use `==` | Don't use  `=~` | Use case-sensitive operators when possible. |
 |  | Use `in` | Don't use `in~` |
@@ -128,7 +128,7 @@ In order of importance:
 * Then apply predicates that are selective and are based on numeric columns.
 
 * Last, for queries that scan a table column's data (for example, for predicates such as
-  `contains` "@!@!" that have no terms and don't benefit from indexing), order the predicates such that the ones
+  `contains` "@!@!", that have no terms and don't benefit from indexing), order the predicates such that the ones
   that scan columns with less data are first. Doing so reduces the need to decompress and scan large columns.
 
 ## Avoid using redundant qualified references
@@ -136,11 +136,11 @@ In order of importance:
 Entities such as tables and materialized views are referenced by name.
 
 :::moniker range="microsoft-fabric"
-For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (for example, `database("DB").T` when the table is in a database called `DB`), or by using a fully-qualified name (for example, `cluster("<serviceURL>").database("DB").T`).
+For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (for example, `database("DB").T` when the table is in a database called `DB`), or by using a fully qualified name (for example, `cluster("<serviceURL>").database("DB").T`).
 :::moniker-end
 
 :::moniker range="azure-data-explorer"
-For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (for example, `database("DB").T` when the table is in a database called `DB`), or by using a fully-qualified name (for example, `cluster("X.Y.kusto.windows.net").database("DB").T`).
+For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (for example, `database("DB").T` when the table is in a database called `DB`), or by using a fully qualified name (for example, `cluster("X.Y.kusto.windows.net").database("DB").T`).
 ::: moniker-end
 
 It's a best practice to avoid using name qualifications when they're redundant, for the following reasons:
