@@ -190,12 +190,7 @@ You can use one of the following methods to embed custom properties into the dat
 * Use Azure Stream Analytics to [process events from the event hub and embed the custom properties](/azure/event-hubs/process-data-azure-stream-analytics) in the event data. From Azure Stream Analytics you can ingest the data natively using the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), or route the data into another event hub and from there into your cluster.
 * Use [Azure Functions](/azure/azure-functions/functions-overview) to add the custom properties and then ingest the data.
 
-## Cross-region Event Hubs data connection
-
-For best performance, create all the following resources in the same region as the cluster.
-If there is no other alternative, consider using [Premium](/azure/event-hubs/event-hubs-premium-overview) or [Dedicated](/azure/event-hubs/event-hubs-dedicated-overview) Event Hubs tiers. Event Hubs tiers comparison can be found [here](/azure/event-hubs/compare-tiers).
-
-### Create an event hub
+## Create an Event Hubs
 
 If you don't already have one, [Create an event hub](/azure/event-hubs/event-hubs-create). Connecting to event hub can be managed through the [Azure portal](create-event-hubs-connection.md?tabs=portalADX), programmatically with [C#](create-event-hubs-connection-sdk.md?tabs=c-sharp) or [Python](create-event-hubs-connection-sdk.md?tabs=python), or with the [Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template).
 
@@ -204,9 +199,18 @@ If you don't already have one, [Create an event hub](/azure/event-hubs/event-hub
 > * The ability to dynamically add partitions after creating an event hub is only available with Event Hubs Premium and Dedicated tiers. Consider the long-term scale when setting partition count.
 > * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
 
-### Send events
+### Cross-region Event Hubs data connection
+
+For best performance, create the event hub in the same region as the cluster.
+If there is no other alternative, consider using [Premium](/azure/event-hubs/event-hubs-premium-overview) or [Dedicated](/azure/event-hubs/event-hubs-dedicated-overview) Event Hubs tiers. Event Hubs tiers comparison can be found [here](/azure/event-hubs/compare-tiers).
+
+## Send events
 
 See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) that generates data and sends it to an event hub.
+
+> [!Note]
+> 
+> To enable efficient processing of events from Event Hubs to Azure Data Explorer, avoid an unbalanced distribution of events across partitions. Uneven mapping can cause a high [discovery latency](/azure/data-explorer/using-metrics#ingestion-metrics). For further information about mapping of events to partitions, see [here](/azure/event-hubs/event-hubs-features#mapping-of-events-to-partitions).
 
 ## Set up Geo-disaster recovery solution
 
