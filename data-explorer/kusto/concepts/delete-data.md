@@ -3,7 +3,7 @@ title: Delete data
 description: This article describes delete scenarios, including purge, dropping extents and retention based deletes.
 ms.reviewer: avneraa
 ms.topic: how-to
-ms.date: 11/11/2024
+ms.date: 10/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Delete data
