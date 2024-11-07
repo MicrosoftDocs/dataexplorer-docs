@@ -77,6 +77,7 @@ You can delete all rows in a table or just a specific extent.
 
 ## Delete individual rows
 
+:::moniker range="azure-data-explorer"
 Both purge and soft delete can be used for deleting individual rows. Soft delete doesn't necessarily delete the storage artifacts that contain records to delete, and purge does delete all such storage artifacts.
 
 Both methods prevent deleted records from being recovered, regardless of any retention or recoverability settings. The deletion process is final and irreversible.
@@ -85,8 +86,11 @@ Both methods prevent deleted records from being recovered, regardless of any ret
 
 With [Soft delete overview](data-soft-delete.md), data isn't necessarily deleted from storage artifacts. This method marks all matching records as deleted, so that they'll be filtered out in queries, and doesn't require significant system resources.
 
-:::moniker range="azure-data-explorer"
 ### Purge
 
 With [purge](data-purge.md), extents that have one or more records to be deleted, are replaced with new extents in which those records don't exist. This deletion process isn't immediate, requires significant system resources, and can take a whole day to complete.
+::: moniker-end
+
+:::moniker range="mcrosoft-fabric"
+[Soft delete overview](data-soft-delete.md) can be used for deleting individual rows. Data isn't necessarily deleted from storage artifacts. Soft delete prevent deleted records from being recovered, regardless of any retention or recoverability settings. The deletion process is final and irreversible. This method marks all matching records as deleted, so that they'll be filtered out in queries, and doesn't require significant system resources.
 ::: moniker-end
