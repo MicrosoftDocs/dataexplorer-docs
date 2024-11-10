@@ -3,7 +3,7 @@ title: Run an update policy with a managed identity
 description:  This article describes how to use a managed identity for update policy.
 ms.reviewer: atefsawaed
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/10/2024
 monikerRange: "azure-data-explorer"
 ---
 # Use a managed identity to run an update policy
@@ -12,8 +12,8 @@ monikerRange: "azure-data-explorer"
 
 The update policy must be configured with a [managed identity](/azure/data-explorer/managed-identities-overview) in the following scenarios:
 
-* When the update policy query references tables in other databases.
-* When the update policy query references tables with an enabled [row level security policy](row-level-security-policy.md).
+* When the update policy query references tables in other databases
+* When the update policy query references tables with an enabled [row level security policy](row-level-security-policy.md)
 
 An update policy configured with a managed identity is performed on behalf of the managed identity.
 
@@ -38,9 +38,9 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 1. Follow the steps to [Add a user-assigned identity](/azure/data-explorer/configure-managed-identities-cluster#add-a-user-assigned-identity).
 
-1. In the Azure portal, in the left menu of your managed identity resource, select **Properties**. Copy and save the **Tenant Id** and **Principal Id** for use in the following steps.
+1. In the Azure portal, in the left menu of your managed identity resource, select **Properties**. Copy and save the **Tenant Id** and **Object (principal) ID** for use in the following steps.
 
-    :::image type="content" source="media/updatepolicy/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="media/updatepolicy/managed-identity-ids.png":::
+    :::image type="content" source="media/updatepolicy/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="media/updatepolicy/managed-identity-ids.png":::
 
 1. Run the following [.alter-merge policy managed_identity](alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
 
@@ -62,7 +62,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     .add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
     ```
 
-    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Microsoft Entra ID **Tenant Id** from step 2.
+    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Object (principal) ID** from step 2, and `<tenantId>` with the Microsoft Entra ID **Tenant Id** from step 2.
 
 ### [System-assigned](#tab/system-assigned)
 
@@ -96,7 +96,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ## Create an update policy
 
-Select one of the following tabs to create an update policy that will run on behalf of a user-assigned or system-assigned managed identity.
+Select one of the following tabs to create an update policy that runs on behalf of a user-assigned or system-assigned managed identity.
 
 ### [User-assigned](#tab/user-assigned)
 
