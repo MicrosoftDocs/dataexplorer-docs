@@ -91,5 +91,5 @@ With [purge](data-purge.md), extents that have one or more records to be deleted
 ::: moniker-end
 
 :::moniker range="microsoft-fabric"
-[Soft delete overview](data-soft-delete.md) can be used for deleting individual rows. Data isn't necessarily deleted from storage artifacts. Soft delete prevent deleted records from being recovered, regardless of any retention or recoverability settings. The deletion process is final and irreversible. This method marks all matching records as deleted, so that they'll be filtered out in queries, and doesn't require significant system resources.
+[Soft delete](data-soft-delete.md) can be used for deleting individual rows. Data isn't necessarily deleted from storage artifacts. Soft delete prevent deleted records from being recovered, regardless of any retention or recoverability settings. The deletion process is final and irreversible. This method marks all matching records as deleted, so that they'll be filtered out in queries, and doesn't require significant system resources.
 ::: moniker-end
