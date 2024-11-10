@@ -4,7 +4,6 @@ description: This article describes delete scenarios, including purge, dropping 
 ms.reviewer: avneraa
 ms.topic: how-to
 ms.date: 10/11/2024
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Delete data
 
