@@ -429,6 +429,11 @@
       "source_path": "excel-connector.md",
       "redirect_url": "/azure/data-explorer/excel",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "query-exported-azure-monitor-data.md",
+      "redirect_url": "/azure/data-explorer/query-monitor-data",
+      "redirect_document_id": false
     }
   ]
 }
