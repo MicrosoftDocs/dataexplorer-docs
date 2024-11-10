@@ -3,11 +3,20 @@ title: What's new in Azure Data Explorer documentation archive
 description: In this article, you'll find an archive of new and significant changes in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/04/2024
+ms.date: 11/10/2024
 ---
 # What's new in Azure Data Explorer documentation archive
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
+
+## October 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+|- [Ingest data with Fluent Bit](fluent-bit.md) <br/> - [Data connectors overview](integrate-data-overview.md)| New article that describes how to ingest data from Fluent Bit, and updated data connector overview with additional capabilities.|
+| [Connect a cluster behind a private endpoint to a Power BI service](power-bi-private-endpoint.md)| New article. Describes how to connect an Azure Data Explorer cluster behind a private endpoint to a Power BI service.|
 
 ## September 2023
 
