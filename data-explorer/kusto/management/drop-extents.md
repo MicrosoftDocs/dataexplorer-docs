@@ -4,7 +4,7 @@ description: Learn how to use the `.drop extents` command to drop extents from a
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 08/11/2024
-monikerRange: "azure-data-explorer"
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # .drop extents command
 

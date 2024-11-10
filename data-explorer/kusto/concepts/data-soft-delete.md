@@ -4,7 +4,7 @@ description:  This article describes data soft delete.
 ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 08/11/2024
-monikerRange: "azure-data-explorer"
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Soft delete overview
 
