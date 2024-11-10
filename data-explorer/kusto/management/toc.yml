@@ -908,6 +908,8 @@ items:
     items:
       - name: Clear cached external artifacts
         href: clear-external-artifacts-cache-command.md
+      - name: Delete data
+        href: /kusto/concepts/delete-data?view=azure-data-explorer&preserve-view=true
       - name: Data purge
         href: ../concepts/data-purge.md
       - name: Data soft delete
