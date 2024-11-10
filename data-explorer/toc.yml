@@ -333,11 +333,7 @@ items:
       - name: Query data in Azure Data Lake
         href: data-lake-query-data.md
       - name: Query data in Azure Monitor
-        items:
-          - name: Query data in Azure Monitor
-            href: query-monitor-data.md
-          - name: Export and query Azure Monitor data
-            href: query-exported-azure-monitor-data.md
+        href: query-monitor-data.md
       - name: Query data in MATLAB
         href: query-matlab.md
       - name: Query data using Power Apps
