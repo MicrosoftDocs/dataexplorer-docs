@@ -21,7 +21,8 @@ The best query performance is achieved when all ingested data is cached. However
 
 Use management commands to alter the caching policy at the [database](alter-database-cache-policy-command.md), [table](alter-table-cache-policy-command.md), or [materialized view](alter-materialized-view-cache-policy-command.md) level.
 
-For information about the consumption rate, see [Eventhouse and KQL database consumption](/fabric/real-time-intelligence/real-time-intelligence-consumption).
+> [!NOTE]
+> For information about the consumption rate, see [Eventhouse and KQL database consumption](/fabric/real-time-intelligence/real-time-intelligence-consumption).
 
 ::: moniker-end
 
