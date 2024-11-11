@@ -9,7 +9,7 @@ ms.date: 11/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Finds a row in the group that maximizes the specified expression. It returns all columns of the input table or specific columns.
+Finds a row in the group that maximizes the specified expression. It returns all columns of the input table or specified columns.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -127,7 +127,8 @@ The arg_max() function differs from the [max() function](max-aggregation-functio
 
 ### Examples
 
-**arg_max()**
+#### arg_max()
+
 Find the last time an event with a direct death happened showing all the columns in the table.
 
 :::moniker range="azure-data-explorer"
@@ -147,7 +148,7 @@ The results table returns all the columns for the row containing the highest val
 |--|--|--|
 | 2007-12-31T15:00:00Z | 2007-12-31T15:00:00 | 	12688 | 69700 | UTAH | Avalanche |
 
-**max()**
+#### max()
 
 Find the last time an event with a direct death happened.
 
