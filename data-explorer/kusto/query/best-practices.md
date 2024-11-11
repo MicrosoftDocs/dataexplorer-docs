@@ -3,7 +3,7 @@ title: Best practices for Kusto Query Language queries
 description:  This article describes Query best practices.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/10/2024
+ms.date: 11/11/2024
 adobe-target: true
 ---
 # Best practices for Kusto Query Language queries
@@ -11,11 +11,6 @@ adobe-target: true
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Here are several best practices to follow to make your query run faster.
-
-:::moniker range="microsoft-fabric"
-> [!NOTE]
-> The join across clusters best practice isn't relevant in Fabric.
-::: moniker-end
 
 ## In short
 
@@ -40,10 +35,10 @@ Here are several best practices to follow to make your query run faster.
 | **Compare data already in lowercase (or uppercase)** | `Col == "lowercasestring"` (or `Col == "UPPERCASESTRING"`). | Avoid using case insensitive comparisons. |  |
 | **Filtering on columns** | Filter on a table column. | Don't filter on a calculated column. |  |
 |  | Use `T | where predicate(*Expression*)` | Don't use `T | extend _value = *Expression* | where predicate(_value)` |  |
-| **summarize operator** | Use the [hint.shufflekey=\<key>](shuffle-query.md) when the `group by keys` of the `summarize` operator have high cardinality. |  | High cardinality is ideally more than one million. |
+| **[summarize operator](summarize-operator.md)** | Use the [hint.shufflekey=\<key>](shuffle-query.md) when the `group by keys` of the `summarize` operator have high cardinality. |  | High cardinality is ideally more than one million. |
 | **[join operator](join-operator.md)** | Select the table with the fewest rows as the first one (left-most in query). |  |
 |  | Use `in` instead of left semi `join` for filtering by a single column. |  |
-| Join across clusters | Run the query on the "right" side of the join across clusters, where most of the data is located. |  |
+| [Join across clusters](join-cross-cluster.md) | Run the query on the "right" side of the join across clusters/remote environment, where most of the data is located. |  |
 | Join when left side is small and right side is large | Use [hint.strategy=broadcast](broadcast-join.md). |  | Small refers to up to 100 megabytes (MB) of data. |
 | Join when right side is small and left side is large | Use the [lookup operator](lookup-operator.md) instead of the `join` operator | | If the right side of the lookup is larger than several tens of MB, the query fails. |
 | Join when both sides are too large | Use [hint.shufflekey=\<key>](shuffle-query.md). |  | Use when the join key has high cardinality. |
@@ -128,8 +123,7 @@ In order of importance:
 * Then apply predicates that are selective and are based on numeric columns.
 
 * Last, for queries that scan a table column's data (for example, for predicates such as
-  `contains` "@!@!", that have no terms and don't benefit from indexing), order the predicates such that the ones
-  that scan columns with less data are first. Doing so reduces the need to decompress and scan large columns.
+  `contains` `"@!@!"`, that have no terms and don't benefit from indexing), order the predicates such that the ones that scan columns with less data are first. Doing so reduces the need to decompress and scan large columns.
 
 ## Avoid using redundant qualified references
 
