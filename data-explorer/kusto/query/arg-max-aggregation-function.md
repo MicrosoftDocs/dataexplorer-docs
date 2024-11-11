@@ -33,7 +33,7 @@ Finds a row in the group that maximizes the specified expression. It returns all
 Returns a row in the group that maximizes the specified expression *ExprToMaximize*, and the values of columns specified in *ExprToReturn*.
 
 > [!TIP]
-> To see the maximal value only, use the [max aggregation function](max-aggregation-function.md).
+> To see the maximal value only, use the [max() function](max-aggregation-function.md).
 
 ## Examples
 
@@ -123,12 +123,17 @@ datatable(Fruit: string, Color: string, Version: int) [
 
 ## Comparison to max()
 
-The arg_max() function differs from the max() function. The arg_max() function allows you to return additional columns along with the maximum value, and max() only returns the maximum value itself.
+The arg_max() function differs from the [max() function](max-aggregation-function.md). The arg_max() function allows you to return additional columns along with the maximum value, and [max()](max-aggregation-function.md) only returns the maximum value itself.
 
-## Examples
+### Examples
 
-### arg_max()
+**arg_max()**
 Find the last time an event with a direct death happened showing all the columns in the table.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnJlZoBJckFpWEZOam6ihoaQIAErhf3kYAAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -142,9 +147,14 @@ The results table returns all the columns for the row containing the highest val
 |--|--|--|
 | 2007-12-31T15:00:00Z | 2007-12-31T15:00:00 | 	12688 | 69700 | UTAH | Avalanche |
 
-### max()
+**max()**
 
 Find the last time an event with a direct death happened.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKuQmVmgElyQWlYRk5qZqAgD8HVVGPwAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
