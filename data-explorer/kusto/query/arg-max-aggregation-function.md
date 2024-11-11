@@ -129,7 +129,7 @@ The arg_max() function differs from the [max() function](max-aggregation-functio
 
 #### arg_max()
 
-Find the last time an event with a direct death happened showing all the columns in the table.
+Find the last time an event with a direct death happened, showing all the columns in the table.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -144,9 +144,9 @@ StormEvents
 
 The results table returns all the columns for the row containing the highest value in the expression specified.
 
-| StartTime | EndTime |	EpisodeId | EventId | State | EventType |
-|--|--|--|
-| 2007-12-31T15:00:00Z | 2007-12-31T15:00:00 | 	12688 | 69700 | UTAH | Avalanche |
+| StartTime | EndTime |	EpisodeId | EventId | State | EventType | ... |
+|--|--|--|--|
+| 2007-12-31T15:00:00Z | 2007-12-31T15:00:00 | 	12688 | 69700 | UTAH | Avalanche | ... |
 
 #### max()
 
@@ -163,7 +163,7 @@ StormEvents
 | summarize max(StartTime)
 ```
 
-The results table returns the highest value in a specific column and that value alone.
+The results table returns the highest value in the specific column only.
 
 | max_StartTime |
 | --- |
