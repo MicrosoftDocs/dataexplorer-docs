@@ -41,7 +41,7 @@ For more information, see [management commands for managing the Row Level Securi
   * When it's referenced by an [update policy](update-policy.md) query, while the update policy is not configured with a managed identity.
   * When it's referenced by a [continuous export](../management/data-export/continuous-data-export.md) that uses an authentication method other than impersonation.
   * When a [restricted view access policy](restricted-view-access-policy.md) is configured for the table.
-* The RLS query cannot reference tables located in other databases.
+* The RLS query can't reference tables located in other databases.
 
 ## Examples
 
