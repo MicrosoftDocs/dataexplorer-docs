@@ -9,9 +9,7 @@ ms.date: 11/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Finds a row in the group that maximizes *ExprToMaximize*.
-The arg_max() function is used in conjunction with the summarize operator and finds a row in the group that maximizes the expression specified. It can return all columns of the input table or specific columns
-The arg_max() function is used to find a row in a group that maximizes a specified expression. It returns the values of columns specified in the expression
+Finds a row in the group that maximizes the specified expression. It returns all columns of the input table or specific columns.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -27,12 +25,12 @@ The arg_max() function is used to find a row in a group that maximizes a specifi
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExprToMaximize* | `string` |  :heavy_check_mark: | The expression used for aggregation calculation. |
-| *ExprToReturn* | `string` |  :heavy_check_mark: | The expression used for returning the value when *ExprToMaximize* is maximum.  Use a wildcard `*` to return all columns of the input table. |
+| *ExprToMaximize* | `string` |  :heavy_check_mark: | The expression specifies the expression or column that you want to maximize. |
+| *ExprToReturn* | `string` |  :heavy_check_mark: | The expression determines which columns' values are returned from the row that has the maximum value for *ExprToMaximize*.  Use a wildcard `*` to return all columns. |
 
 ## Returns
 
-Returns a row in the group that maximizes *ExprToMaximize*, and the values of columns specified in *ExprToReturn*.
+Returns a row in the group that maximizes the specified expression *ExprToMaximize*, and the values of columns specified in *ExprToReturn*.
 
 > [!TIP]
 > To see the maximal value only, use the [max aggregation function](max-aggregation-function.md).
@@ -122,3 +120,40 @@ datatable(Fruit: string, Color: string, Version: int) [
 | Apple | 1 | Red |
 | Banana |  | Yellow |
 | Pear | 2 | Green |
+
+## Comparison to max()
+
+The arg_max() function differs from the max() function. The arg_max() function allows you to return additional columns along with the maximum value, and max() only returns the maximum value itself.
+
+## Examples
+
+### arg_max()
+Find the last time an event with a direct death happened showing all the columns in the table.
+
+```kusto
+StormEvents
+| where DeathsDirect > 0
+| summarize arg_max(StartTime, *)
+```
+
+The results table returns all the columns for the row containing the highest value in the expression specified.
+
+| StartTime | EndTime |	EpisodeId | EventId | State | EventType |
+|--|--|--|
+| 2007-12-31T15:00:00Z | 2007-12-31T15:00:00 | 	12688 | 69700 | UTAH | Avalanche |
+
+### max()
+
+Find the last time an event with a direct death happened.
+
+```kusto
+StormEvents
+| where DeathsDirect > 0
+| summarize max(StartTime)
+```
+
+The results table returns the highest value in a specific column and that value alone.
+
+| max_StartTime |
+| --- |
+| 2007-12-31T15:00:00Z |
