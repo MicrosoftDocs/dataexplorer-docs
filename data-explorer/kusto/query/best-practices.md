@@ -14,8 +14,6 @@ Here are several best practices to follow to make your query run faster.
 
 ## In short
 
-<!--:::moniker range="azure-data-explorer"-->
-
 | Action | Use | Don't use | Notes |
 |--|--|--|--|
 | **Reduce the amount of data being queried** | Use mechanisms such as the `where` operator to reduce the amount of data being processed. |  | For more information on efficient ways to reduce the amount of data being processed, see [Reduce the amount of data being processed](#reduce-the-amount-of-data-being-processed). |
@@ -38,7 +36,7 @@ Here are several best practices to follow to make your query run faster.
 | **[summarize operator](summarize-operator.md)** | Use the [hint.shufflekey=\<key>](shuffle-query.md) when the `group by keys` of the `summarize` operator have high cardinality. |  | High cardinality is ideally more than one million. |
 | **[join operator](join-operator.md)** | Select the table with the fewest rows as the first one (left-most in query). |  |
 |  | Use `in` instead of left semi `join` for filtering by a single column. |  |
-| [Join across clusters](join-cross-cluster.md) | Run the query on the "right" side of the join across clusters/remote environment, where most of the data is located. |  |
+| **[Join across clusters](join-cross-cluster.md)** | Run the query on the "right" side of the join across remote environments, such as clusters or Eventhouses, where most of the data is located. |  |
 | Join when left side is small and right side is large | Use [hint.strategy=broadcast](broadcast-join.md). |  | Small refers to up to 100 megabytes (MB) of data. |
 | Join when right side is small and left side is large | Use the [lookup operator](lookup-operator.md) instead of the `join` operator | | If the right side of the lookup is larger than several tens of MB, the query fails. |
 | Join when both sides are too large | Use [hint.shufflekey=\<key>](shuffle-query.md). |  | Use when the join key has high cardinality. |
@@ -46,41 +44,7 @@ Here are several best practices to follow to make your query run faster.
 | **[extract() function](extract-function.md)** | Use when parsed strings don't all follow the same format or pattern. |  | Extract the required values by using a REGEX. |
 | **[materialize() function](materialize-function.md)** | Push all possible operators that reduce the materialized dataset and still keep the semantics of the query. |  | For example, filters, or project only required columns. For more information, see [Optimize queries that use named expressions](named-expressions.md). |
 | **Use materialized views** | Use [materialized views](../management/materialized-views/materialized-view-overview.md) for storing commonly used aggregations. Prefer using the `materialized_view()` function to query materialized part only. |  | `materialized_view('MV')` |
-<!--
-::: moniker-end
 
-:::moniker range="microsoft-fabric"
-| Action | Use | Don't use | Notes |
-|--|--|--|--|
-| **Reduce the amount of data being queried** | Use mechanisms such as the `where` operator to reduce the amount of data being processed. |  | For more information on efficient ways to reduce the amount of data being processed, see [Reduce the amount of data being processed](#reduce-the-amount-of-data-being-processed). |
-| **Avoid using redundant qualified references** | When referencing local entities, use the unqualified name. | | For more information, see [Avoid using redundant qualified references](#avoid-using-redundant-qualified-references). |
-| **`datetime` columns** | Use the `datetime` data type. | Don't use the `long` data type. | In queries, don't use Unix time conversion functions, such as `unixtime_milliseconds_todatetime()`. Instead, use update policies to convert Unix time to the `datetime` data type during ingestion. |
-| **String operators** | Use the `has` operator | Don't use `contains` | When looking for full tokens, `has` works better, since it doesn't look for substrings. |
-| **Case-sensitive operators** | Use `==` | Don't use  `=~` | Use case-sensitive operators when possible. |
-|  | Use `in` | Don't use `in~` |
-|  | Use `contains_cs` | Don't use `contains` | If you can use `has`/`has_cs` and not use `contains`/`contains_cs`, that's even better. |
-| **Searching text** | Look in a specific column | Don't use  `*` | `*` does a full text search across all columns. |
-| **Extract fields from [dynamic objects](scalar-data-types/dynamic.md) across millions of rows** | Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows. |  | With this method you only pay once for column extraction. |
-| **Lookup for rare keys/values in [dynamic objects](scalar-data-types/dynamic.md)** | Use `MyTable | where DynamicColumn has "Rare value" | where DynamicColumn.SomeKey == "Rare value"` | Don't use `MyTable | where DynamicColumn.SomeKey == "Rare value"` | With this method you filter out most records and only do JSON parsing on what's left. |
-| **`let` statement with a value that you use more than once** | Use the [materialize() function](materialize-function.md) |  | For more information on how to use `materialize()`, see [materialize()](materialize-function.md). For more information, see [Optimize queries that use named expressions](named-expressions.md).|
-| **Apply type conversions on more than one billion records** | Reshape your query to reduce the amount of data fed into the conversion. | Don't convert large amounts of data if it can be avoided. |  |
-| **New queries** | Use `limit [small number]` or `count` at the end. |  | Running unbound queries over unknown datasets can yield gigabytes of results to be returned to the client, resulting in a slow response and a busy database. |
-| **Case-insensitive comparisons** | Use `Col =~ "lowercasestring"` | Don't use `tolower(Col) == "lowercasestring"` |
-| **Compare data already in lowercase (or uppercase)** | `Col == "lowercasestring"` (or `Col == "UPPERCASESTRING"`) | Avoid using case insensitive comparisons. |  |
-| **Filtering on columns** | Filter on a table column. | Don't filter on a calculated column. |  |
-|  | Use `T | where predicate(*Expression*)` | Don't use `T | extend _value = *Expression* | where predicate(_value)` |  |
-| **summarize operator** | Use the [hint.shufflekey=\<key>](shuffle-query.md) when the `group by keys` of the `summarize` operator are with high cardinality. |  | High cardinality is ideally above one million. |
-| **[join operator](join-operator.md)** | Select the table with the fewest rows to be the first (left-most in query). |  |
-|  | Use `in` instead of left semi `join` for filtering by a single column. |  |
-| Join when left side is small and right side is large | Use [hint.strategy=broadcast](broadcast-join.md) |  | Small refers to up to 100 megabytes (MB) of data. |
-| Join when right side is small and left side is large | Use the [lookup operator](lookup-operator.md) instead of the `join` operator | | If the right side of the lookup is larger than several tens of MB, the query fails. |
-| Join when both sides are too large | Use [hint.shufflekey=\<key>](shuffle-query.md) |  | Use when the join key has high cardinality. |
-| **Extract values on column with strings sharing the same format or pattern** | Use the [parse operator](parse-operator.md) | Don't use several `extract()` statements. | For example, values like `"Time = <time>, ResourceId = <resourceId>, Duration = <duration>, ...."` |
-| **[extract() function](extract-function.md)** | Use when parsed strings don't all follow the same format or pattern. |  | Extract the required values by using a REGEX. |
-| **[materialize() function](materialize-function.md)** | Push all possible operators that reduce the materialized dataset and still keep the semantics of the query. |  | For example, filters, or project only required columns. For more information, see [Optimize queries that use named expressions](named-expressions.md). |
-| **Use materialized views** | Use [materialized views](../management/materialized-views/materialized-view-overview.md) for storing commonly used aggregations. Prefer using the `materialized_view()` function to query materialized part only |  | `materialized_view('MV')` |
-::: moniker-end
--->
 ## Reduce the amount of data being processed
 
 A query's performance depends directly on the amount of data it needs to process.
