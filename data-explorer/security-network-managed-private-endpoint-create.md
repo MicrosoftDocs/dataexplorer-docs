@@ -197,6 +197,85 @@ Whichever method you used to create the managed private endpoint using, you must
 
 Your cluster can now connect to the resource using the managed private endpoint connection.
 
+## Create multiple managed private endpoints
+
+The following examples demonstrate how to create multiple managed private endpoints using ARM templates and Terraform. These examples ensure that the managed private endpoint to the Event Hub namespace is created before the endpoint to the Storage account.
+
+### ARM template example
+
+This ARM template creates two managed private endpoints in an Azure Data Explorer cluster. The first endpoint connects to an Event Hub namespace, and the second endpoint connects to a Storage account, with a dependency ensuring the Event Hub endpoint is created first.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+      {
+          "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
+          "apiVersion": "2023-08-15",
+          "name": "[concat('<clusterName>', '/mpeToEventHub')]",
+          "properties": {
+              "privateLinkResourceId": "[resourceId('Microsoft.EventHub/namespaces', 'myEventHubNamespace')]",
+              "groupId": "namespace",
+              "requestMessage": "Please Approve."
+          }
+      },
+      {
+          "type": "Microsoft.Kusto/clusters/managedPrivateEndpoints",
+          "apiVersion": "2023-08-15",
+          "name": "[concat('<clusterName>', '/mpeToStorage')]",
+          "dependsOn": [
+              "[resourceId('Microsoft.Kusto/clusters/managedPrivateEndpoints', concat('<clusterName>', '/mpeToEventHub'))]"
+          ],
+          "properties": {
+              "privateLinkResourceId": "[resourceId('Microsoft.Storage/storageAccounts', 'myStorageAccount')]",
+              "groupId": "blob",
+              "requestMessage": "Please Approve."
+          }
+      }
+  ]
+}
+```
+
+### Terraform example
+
+This Terraform configuration creates two managed private endpoints in an Azure Data Explorer cluster. The first endpoint connects to an Event Hub namespace, and the second endpoint connects to a Storage account, with a dependency ensuring the Event Hub endpoint is created first.
+
+```hcl
+resource "azapi_resource" "mpe_to_eventhub" {
+  type = "Microsoft.Kusto/clusters/managedPrivateEndpoints@2023-08-15"
+  name                 = "mpeToEventHub"
+  parent_id            = "<the resource id of the cluster>"
+  body = jsonencode({
+    properties = {
+      groupId = "namespace"
+      privateLinkResourceId = "<The ARM resource ID of the EventHub for which the managed private endpoint is created.>"
+      requestMessage = "Please Approve."
+    }
+  })
+}
+
+resource "azapi_resource" "mpe_to_storage" {
+  type = "Microsoft.Kusto/clusters/managedPrivateEndpoints@2023-08-15"
+  name                 = "mpeToStorage"
+  parent_id            = "<the resource id of the cluster>"
+  body = jsonencode({
+    properties = {
+      groupId = "blob"
+      privateLinkResourceId = "<The ARM resource ID of the Storage Account for which the managed private endpoint is created.>"
+      requestMessage = "Please Approve."
+    }
+  })
+  depends_on = [
+    azapi_resource.mpe_to_eventhub
+  ]
+}
+```
+
+## Automatic approval
+
+It's possible to do [automatic approval](azure/private-link/private-endpoint-overview#access-to-a-private-link-resource-using-approval-workflow) if the identity making the request has the **Microsoft.<Provider>/<resource_type>/privateEndpointConnectionsApproval/action** permission on the target resource of the Managed Private Endpoint.
+
 ## Related content
 
 * [Troubleshooting private endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)
