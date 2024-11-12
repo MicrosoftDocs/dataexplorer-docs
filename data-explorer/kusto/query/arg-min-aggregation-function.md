@@ -25,7 +25,7 @@ Finds a row in the group that minimizes the specified expression. It returns all
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExprToMinimize*| `string` |  :heavy_check_mark: | The expression specifies the expression or column that you want to minimize. |
+| *ExprToMinimize*| `string` |  :heavy_check_mark: | The expression specifies column that you want to minimize. |
 | *ExprToReturn* | `string` |  :heavy_check_mark: | The expression determines which columns' values are returned from the row that has the minimum value for *ExprToMinimize*.  Use a wildcard `*` to return all columns. |
   
 ## Null handling
@@ -164,12 +164,12 @@ Find the first time an event with a direct death happened.
 ```kusto
 StormEvents
 | where DeathsDirect > 0
-| summarize max(StartTime)
+| summarize min(StartTime)
 ```
 
 The results table returns the lowest value in the specific column only.
 
-| max_StartTime |
+| min_StartTime |
 | --- |
 | 2007-01-01T00:00:00Z |
 

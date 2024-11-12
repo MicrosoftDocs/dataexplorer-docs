@@ -23,7 +23,7 @@ Finds the minimum value of the expression in the group.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | `string` |  :heavy_check_mark: | The expression used for the minimum value aggregation calculation. |
+| *expr* | `string` |  :heavy_check_mark: | The expression specifies the column that you want to minimize. |
 
 ## Returns
 
