@@ -1586,6 +1586,8 @@ items:
             href: diffpatterns-text-plugin.md
       - name: Query connectivity plugins
         items:
+          - name: ai_embed_text plugin
+            href: ai-embed-text-plugin.md
           - name: azure_digital_twins_query_request plugin
             href: azure-digital-twins-query-request-plugin.md
           - name: cosmosdb_sql_request plugin
