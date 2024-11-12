@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 08/11/2024
+ms.date: 10/01/2024
 ---
 
 # Using Kusto.Explorer
@@ -77,13 +77,13 @@ To learn more about the Kusto Query Language, see [Kusto Query Language](../quer
 >
 > * [Language-integrated query parametrization](../query/query-parameters-statement.md) is implemented server-side and is meant to be used by applications that query the service programmatically. This method is not described in this document.
 >
-> * Client-side query parametrization, described below, is a feature of the Kusto.Explorer application only. It's equivalent to using string-replace operations on the queries before sending them to be executed by the service. The syntax described below is not part of the query language itself and can't be used when sending queries to the service by means other than Kusto.Explorer.
+> * Client-side query parametrization, is a feature of the Kusto.Explorer application only. It's equivalent to using string-replace operations on the queries before sending them to be executed by the service. The syntax is not part of the query language itself and can't be used when sending queries to the service by means other than Kusto.Explorer.
 
-If you use the same value in multiple queries or in multiple tabs, it's highly inconvenient to change that value in every place it's used. That's why Kusto.Explorer supports query parameters. Query parameters are shared among tabs so that they can be easily reused. Parameters are denoted by {} brackets. For example, `{parameter1}`.
+If you use the same value in multiple queries or in multiple tabs, it's highly inconvenient to change that value in every place it's used. For convenience, Kusto.Explorer supports query parameters. Query parameters are shared among tabs so that they can be easily reused. Parameters are denoted by {} brackets. For example, `{parameter1}`.
 
 You can easily define and edit existing query parameters:
 
-:::image type="content" source="media/kusto-explorer-using/parametrized-query.png" alt-text="Screenshot of query editor showing a query with parameters. The query editor option titled Query parameters is highlighted.":::
+:::image type="content" source="media/kusto-explorer-using/parametrized-query.png" alt-text="Screenshot of query editor showing a query with parameters. The query editor option, Query parameters, is highlighted.":::
 
 :::image type="content" source="media/kusto-explorer-using/parametrized-query-3.png" alt-text="Screenshot of the Query parameters window showing the defined parameters.":::
 
@@ -100,20 +100,34 @@ In Kusto.Explorer, you can share queries and results by email. You can also crea
 
 Kusto.Explorer provides a convenient way to share queries and query results by email.
 
+:::moniker range="azure-data-explorer"
 1. [Run your query](#basic-queries) in Kusto.Explorer.
-1. In the Home tab, in the Share section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
+1. In the **Home** tab, in the **Share** section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
 
-    :::image type="content" source="media/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
+    :::image type="content" source="media/kusto-explorer-using/menu-export.png" alt-text="Screenshot of the Query and results to clipboard menu item.":::
 
     Kusto.Explorer copies the following to the clipboard:
      * Your query
      * The query results (table or chart)
      * The connection details for the Kusto cluster and database
      * A link that reruns the query automatically
-
 1. Paste the contents of the clipboard into a new email message.
+    :::image type="content" source="media/kusto-explorer-using/share-results-2.png" alt-text="Screenshot of the shared results in an email." lightbox="media/kusto-explorer-using/share-results-2.png":::
+::: moniker-end
+:::moniker range="microsoft-fabric"
+1. [Run your query](#basic-queries) in Kusto.Explorer.
+1. In the **Home** tab, in the **Share** section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
 
-    :::image type="content" source="media/kusto-explorer-using/share-results-2.png" alt-text="Share results in email." lightbox="media/kusto-explorer-using/share-results-2.png":::
+    :::image type="content" source="media/kusto-explorer-using/menu-export.png" alt-text="Screenshot of the Query and results to clipboard menu item.":::
+
+    Kusto.Explorer copies the following to the clipboard:
+     * Your query
+     * The query results (table or chart)
+     * The connection details for the eventhouse and database
+     * A link that reruns the query automatically
+1. Paste the contents of the clipboard into a new email message.
+    :::image type="content" source="media/kusto-explorer-using/share-results-fabric.png" alt-text="Screenshot of the shared results from a Fabric KQL database in an email." lightbox="media/kusto-explorer-using/share-results-fabric.png":::
+::: moniker-end
 
 ### Deep-linking queries
 
@@ -125,16 +139,26 @@ You can create a URI that, when opened in a browser, opens Kusto.Explorer locall
 #### Creating a deep-link
 
 The easiest way to create a deep-link is to author your query in Kusto.Explorer and then use
-`Export to Clipboard` to copy the query (including the deep link and results) to the clipboard. You can then share it by email.
+`Query and results to Clipboard` to copy the query (including the deep link and results) to the clipboard. You can then share it by email.
 
-When copied to an email, the deep link is displayed in small font. For example:
+When copied to an email, a number of links to execute are displayed in small font. For example:
 
-https://help.kusto.windows.net/Samples [[Run the query](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)]
+:::moniker range="azure-data-explorer"
+> Execute: [[Web](https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] [[Desktop](https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d)] [Web (Lens)] [Desktop (SAW)] https:\/\/help.kusto.windows.net/Samples
+::: moniker-end
+:::moniker range="microsoft-fabric"
 
-The first link opens Kusto.Explorer and sets the cluster and database context appropriately.
-The second link (`Run the query`) is the deep link. If you move the link to an email message and press CTRL+K, you can see the actual URL:
+> Execute: [Web] [Desktop] [Web (Lens)] [Desktop (SAW)] https:\/\/trd-1234.kusto.fabric.microsoft.com
 
+::: moniker-end
+
+The **Web** link opens the query in Azure Data Explorer. The **Desktop** link is the deeplink. It opens the query in Kusto.Explorer and sets the context appropriately.
+
+If you move the link to an email message and press CTRL+K, you can see the actual URL.
+
+:::moniker range="azure-data-explorer"
 > https:\/\/help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
+::: moniker-end
 
 #### Deep-links and parametrized queries
 
@@ -149,42 +173,59 @@ You can use parametrized queries with deep-linking.
 web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
     Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
+1. Paste the query link directly into your Kusto.Explorer query pane.
 ::: moniker-end
-
 :::moniker range="microsoft-fabric"
-1. Provide a parameter for every query parameter in the URI. To copy your URI, see [Copy a KQL database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri).
-::: moniker-end
+1. Provide a parameter for every query parameter in the URI. To copy your URI, in your KQL query pane in Fabric select **Copy query** > **Link to clipboard**.
 
+1. Past the link in your Kusto.Explorer query pane.
+
+> [!NOTE]
+> To ensure that you can run the query in Kusto.Explorer, make sure that you can connect to the database referred to in the query.
+::: moniker-end
 
 #### Limitations
 
-The queries are limited to ~2000 characters because of browser limitations, HTTP proxies, and tools that validate links, such as Microsoft Outlook. The limitation is approximate because it's dependent on the cluster and Database name length. For more information, see [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427).
+The queries are limited to ~2,000 characters because of browser limitations, HTTP proxies, and tools that validate links, such as Microsoft Outlook. The limitation is approximate because it's dependent on the cluster and Database name length. For more information, see [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427).
 
 To reduce the chances of reaching the character limit, see [Getting Shorter Links](#getting-shorter-links).
 
+:::moniker range="azure-data-explorer"
 The format of the URI is:
     `https://<ClusterCname>.kusto.windows.net/<DatabaseName>web=0?query=<QueryToExecute>`
 
 For example:
     [https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10](https://help.kusto.windows.net/Samples?web=0query=StormEvents+%7c+limit+10)
 
-This URI will open Kusto.Explorer, connect to the `Help` Kusto cluster, and run the specified query on the `Samples` database. If there's an instance of Kusto.Explorer already running, the running instance will open a new tab and run the query in it.
+This URI opens Kusto.Explorer, connect to the `Help` Kusto cluster, and runs the specified query on the `Samples` database. If there's an instance of Kusto.Explorer already running, the running instance opens a new tab and runs the query in it.
+::: moniker-end
+:::moniker range="microsoft-fabric"
+
+ The URI opens Kusto.Explorer and runs the specified query. A new tab is opened if there's already a running instance.
+
+::: moniker-end
 
 ### Getting shorter links
 
 Queries can become long. To reduce the chance the query exceeds the maximum length, use the `String Kusto.Data.Common.CslCommandGenerator.EncodeQueryAsBase64Url(string query)` method available in Kusto Client Library. This method produces a more compact version of the query. The shorter format is also recognized by Kusto.Explorer.
 
+:::moniker range="azure-data-explorer"
 https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
+::: moniker-end
 
-The query is made more compact by applying next transformation:
+:::moniker range="microsoft-fabric"
+> https://<\BaseAddress>/groups/1234ab-cd55-6789-0123-e4567fg890hi/databases/01234abc-defg-6789-4567fg890hi?experience=power-bi&extensionScenario=openArtifact&query=1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC1234AAAAAAAAAAA567890BBBBBBBBBB01234567890CCCCCCC%AB%AB
+::: moniker-end
+
+The query is made more compact by applying the following transformation:
 
 ```csharp
- UrlEncode(Base64Encode(GZip(original query)))
+ UrlEncode(Base64Encode(gzip(original query)))
 ```
 
 ## Kusto.Explorer command-line arguments
 
-Command-line arguments are used to configure the tool to perform additional functions on start-up. For example, load a script and connect to a cluster. As such, command-line arguments aren't a replacement for any Kusto.Explorer functionality.
+Command-line arguments are used to configure the tool to perform more functions on start-up. For example, load a script and connect to a cluster. As such, command-line arguments aren't a replacement for any Kusto.Explorer functionality.
 
 Command-line arguments are passed as part of the URL that's used to open the application, in a similar way to [query deep-linking](#creating-a-deep-link).
 
@@ -194,22 +235,20 @@ Kusto.Explorer supports several command-line arguments in the following syntax (
 
 [*LocalScriptFile*] [*QueryString*]
 
-* *LocalScriptFile* is the name of a script file on your local machine, which must have the extension `.kql`. If such a file exists, Kusto.Explorer automatically loads this file when it starts up.
-* *QueryString* is a string that uses HTTP query string formatting. This method provides additional properties, as described in the table below.
+#### Command-line arguments
 
-For example, to start Kusto.Explorer with a script file called `c:\temp\script.kql`
-and configured to communicate with cluster `help`, database `Samples`, use the
-following command:
+|Command-line argument  |Description  |
+|-----------|----------------------------------------|
+| *LocalScriptFile* | The name of a script file on your local machine, which must have the extension `.kql`. If the file exists, Kusto.Explorer automatically loads the file when it starts up. |
+| *QueryString* | A string that uses HTTP query string formatting. This method provides more properties, as described in the following table.|
 
-```kusto
-Kusto.Explorer.exe c:\temp\script.kql "uri=https://help.kusto.windows.net/Samples;Fed=true&name=Samples"
-```
+#### Querystring arguments
 
-|Argument  |Description                                                               |
-|----------|--------------------------------------------------------------------------|
+|Argument  |Description |
+|----------|------------------------------------------------------|
 |**Query to execute**                                                                 |
-|`query`   |The query to execute (gzipped, then base64-encoded; see "Getting shorter links" above). If empty, use `querysrc`.|
-|`querysrc`|The HTTP URL of a file/blob holding the query to execute (if `query` is empty).|
+|`query`   |The query to execute (gzipped, then base64-encoded; see [Getting shorter links](#getting-shorter-links)). If not specified, uses `querysrc`.|
+|`querysrc`|The URL of a file/blob holding the query to execute.|
 |**Connection to the Kusto cluster**                                                  |
 |`uri`     |The connection string of the Kusto cluster to connect to.                 |
 |`name`    |The display name of the connection to the Kusto cluster.                  |
@@ -218,14 +257,38 @@ Kusto.Explorer.exe c:\temp\script.kql "uri=https://help.kusto.windows.net/Sample
 |`group`   |The name of the connection group.                                         |
 |`filename`|The local file holding the connection group.                              |
 
+#### Example
+
+:::moniker range="azure-data-explorer"
+To start Kusto.Explorer with a script file called `c:\temp\script.kql`
+and configured to communicate with cluster `help`, database `Samples`, use the
+following command:
+
+```kusto
+Kusto.Explorer.exe c:\temp\script.kql "uri=https://help.kusto.windows.net/Samples;Fed=true&name=Samples"
+```
+
+::: moniker-end
+:::moniker range="microsoft-fabric"
+To start Kusto.Explorer with a script file called `c:\temp\script.kql`
+and configured to communicate with a  specific group and database, use the
+following command:
+
+```kusto
+Kusto.Explorer.exe c:\temp\script.kql "uri=https://<baseaddress>/groups/<GroupID>/databases/<DatabaseID>"
+```
+
+::: moniker-end
+
+
 ## Manage databases, tables, or function authorized principals
 
 > [!IMPORTANT]
 > Only [admins](../access-control/role-based-access-control.md) can add or drop authorized principals in their own scope.
 
-1. To view the list of authorized principals, right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Database Authorized Principals**. (You can also select this option from the Management Menu.)
+1. To view the list of authorized principals, right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab) and select **Manage Database Authorized Principals**. (You can also select this option from the Management Menu.)
 
-    :::image type="content" source="media/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity drop down menu. The options titled Manage Database Authorized Principals is highlighted.":::
+    :::image type="content" source="media/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity drop-down menu. The option titled Manage Database Authorized Principals is highlighted.":::
 
 1. Select **Add principal** to add an authorized principal.
     :::image type="content" source="media/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Screenshot of the Manage authorized principals window. The options titled Drop principal and Add principal are highlighted.":::

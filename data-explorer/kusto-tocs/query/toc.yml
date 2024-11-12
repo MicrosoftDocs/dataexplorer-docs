@@ -1441,6 +1441,10 @@ items:
     href: /kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true
   - name: graph-to-table
     href: /kusto/query/graph-to-table-operator?view=azure-data-explorer&preserve-view=true
+  - name: graph-shortest-paths
+    href: /kusto/query/graph-shortest-paths-operator?view=azure-data-explorer&preserve-view=true
+  - name: graph-mark-components
+    href: /kusto/query/graph-mark-components-operator?view=azure-data-explorer&preserve-view=true
 - name: Geospatial
   items:
   - name: Geospatial clustering overview

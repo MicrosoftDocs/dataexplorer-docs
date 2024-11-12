@@ -59,7 +59,7 @@ The merge policy contains the following properties:
     * `Default` - The system-managed default. This is the recommended and default value, whose period is currently set to 14 days.
     * `All` - All extents, hot and cold, are included.
     * `HotCache` - Only hot extents are included.
-    * `Custom` - Only extents whose age is under the provided `CustomPeriod` are included. `CustomPeriod` is a timespan value.
+    * `Custom` - Only extents whose age is under the provided `CustomPeriod` are included. `CustomPeriod` is a timespan value in the format `dd.hh:mm`.
 
 ## Default policy example
 

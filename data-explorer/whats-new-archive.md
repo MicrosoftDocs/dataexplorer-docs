@@ -3,11 +3,46 @@ title: What's new in Azure Data Explorer documentation archive
 description: In this article, you'll find an archive of new and significant changes in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/04/2024
+ms.date: 11/10/2024
 ---
 # What's new in Azure Data Explorer documentation archive
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
+
+## October 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+|- [Ingest data with Fluent Bit](fluent-bit.md) <br/> - [Data connectors overview](integrate-data-overview.md)| New article that describes how to ingest data from Fluent Bit, and updated data connector overview with additional capabilities.|
+| [Connect a cluster behind a private endpoint to a Power BI service](power-bi-private-endpoint.md)| New article. Describes how to connect an Azure Data Explorer cluster behind a private endpoint to a Power BI service.|
+
+## September 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+|- [KQL graph semantics overview (Preview)](graph-overview.md) <br/> - [KQL graph semantics best practices (Preview)](graph-best-practices.md) <br/> - [Common scenarios for using KQL graph semantics (Preview)?](graph-scenarios.md) | New articles. Describes how to use Kusto Query Language (KQL) graph semantics.|
+| [How to ingest historical data](ingest-data-historical.md)| New article. Describes how to use LightIngest to ingest historical or ad hoc data into Azure Data Explorer.|
+|- [Ingest data from Splunk to Azure Data Explorer](ingest-data-splunk.md) <br/> - [Data connectors overview](integrate-data-overview.md)| New article that describes how to ingest data into Azure Data Explorer from Splunk, and updated data connector overview with additional capabilities.|
+| [KQL learning resources](kql-learning-resources.md)| New article. Describes the different learning resources for ramping up on KQL.|
+| [Dashboard-specific visuals](dashboard-visuals.md)| New article. Describes the visualizations available in Azure Data Explorer web UI or dashboards.|
+| [Create a dashboard base query](base-query.md)| New article. Describes how to create a base query for an Azure Data Explorer dashboard.|
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|- [.alter-merge database policy ingestionbatching command](/kusto/management/alter-merge-database-ingestion-batching-policy?view=azure-data-explorer&preserve-view=true) <br/> - [.alter-merge table policy ingestionbatching command](/kusto/management/alter-merge-table-ingestion-batching-policy?view=azure-data-explorer&preserve-view=true)| New articles. Describes how to set the ingestion batching policy.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|- [Graph operators (Preview)](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true) <br/> - [graph-match operator (Preview)](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) <br/> - [graph-to-table operator (Preview)](/kusto/query/graph-to-table-operator?view=azure-data-explorer&preserve-view=true) <br/> - [make-graph operator (Preview)](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to use graph operators. |
+| [Plotly (preview)](/kusto/query/visualization-plotly?view=azure-data-explorer&preserve-view=true) | New article. Describes how to visualize data using the Plotly graphics library.|
 
 ## August 2023
 

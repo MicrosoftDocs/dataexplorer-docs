@@ -3,7 +3,7 @@ title:  todatetime()
 description: Learn how to use the todatetime() function to convert the input expression to a datetime value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 10/16/2024
 ---
 # todatetime()
 
@@ -12,7 +12,9 @@ ms.date: 08/11/2024
 Converts the input to a [datetime](scalar-data-types/datetime.md) scalar value.
 
 > [!NOTE]
-> When possible, use [datetime literals](scalar-data-types/datetime.md#) instead.
+>
+> * To learn more about supported data and time formats and syntax, see [The datetime data type](scalar-data-types/datetime.md).
+> * When possible, use [datetime literals](scalar-data-types/datetime.md#) instead of the `todatetime()` function.
 
 ## Syntax
 

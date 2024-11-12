@@ -135,7 +135,7 @@ In the **Data preparation** window, all three steps are marked with green check 
     | Event hub | *test-hub* | The event hub you created. |
     | Consumer group | *test-group* | The consumer group defined in the event hub you created. |
     | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first record. When adding system properties, [create](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or [update](/kusto/management/alter-table-command?view=azure-data-explorer&preserve-view=true) table schema and [mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) to include the selected properties. |
-    | Compression | *None* | The compression type of the event hub messages payload. Supported compression types: *None, Gzip*.|
+    | Compression | *None* | The compression type of the event hub messages payload. Supported compression types: *None, gzip*.|
     | Managed Identity (recommended) | System-assigned | The managed identity used by the Data Explorer cluster for access to read from the event hub. We recommend using managed identities to control access to your event hub.<br /><br />**Note**:<br />When the data connection is created:<br/>\* *System-assigned* identities are automatically created if they don't exist<br />\* The managed identity is automatically assigned the *Azure Event Hubs Data Receiver* role and is added to your Data Explorer cluster. We recommend verifying that the role was assigned and that the identity was added to the cluster. |
 
     > [!NOTE]
