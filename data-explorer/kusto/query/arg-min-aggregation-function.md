@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Finds a row in the group that minimizes *ExprToMinimize*.
+Finds a row in the group that minimizes the specified expression. It returns all columns of the input table or specified columns.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -25,8 +25,8 @@ Finds a row in the group that minimizes *ExprToMinimize*.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExprToMinimize*| `string` |  :heavy_check_mark: | The expression used for aggregation calculation. |
-| *ExprToReturn* | `string` |  :heavy_check_mark: | The expression used for returning the value when *ExprToMinimize* is minimum. Use a wildcard (*) to return all columns of the input table. |
+| *ExprToMinimize*| `string` |  :heavy_check_mark: | The expression specifies the expression or column that you want to minimize. |
+| *ExprToReturn* | `string` |  :heavy_check_mark: | The expression determines which columns' values are returned from the row that has the minimum value for *ExprToMinimize*.  Use a wildcard `*` to return all columns. |
   
 ## Null handling
 
@@ -34,7 +34,10 @@ When *ExprToMinimize* is null for all rows in a group, one row in the group is p
 
 ## Returns
 
-Returns a row in the group that minimizes *ExprToMinimize*, and the value of *ExprToReturn*. Use or `*` to return the entire row.
+Returns a row in the group that minimizes *ExprToMinimize*, and the values of columns specified in *ExprToReturn*. Use or `*` to return the entire row.
+
+> [!TIP]
+> To see the minimal value only, use the [min() function](min-aggregation-function.md).
 
 ## Examples
 
@@ -66,7 +69,7 @@ The results table shown includes only the first 10 rows.
 | OHIO           | 38.42    | SOUTH PT      |
 | ... | ... | ... |
 
-Find the first time an event with a direct death happened in each state showing all of the columns.
+Find the first time an event with a direct death happened in each state, showing all of the columns.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -121,3 +124,59 @@ datatable(Fruit: string, Color: string, Version: int) [
 | Apple | 1 | Red |
 | Banana |  | Yellow |
 | Pear | 1 | Brown |
+
+## Comparison to min()
+
+The arg_min() function differs from the [min() function](min-aggregation-function.md). The arg_min() function allows you to return additional columns along with the minimum value, and [min()](min-aggregation-function.md) only returns the minimum value itself.
+
+### Examples
+
+#### arg_min()
+
+Find the first time an event with a direct death happened, showing all the columns in the table.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnZuZpBJckFpWEZOam6ihoaQIA4GzUy0YAAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+StormEvents
+| where DeathsDirect > 0
+| summarize arg_min(StartTime, *)
+```
+
+The results table returns all the columns for the row containing the lowest value in the expression specified.
+
+| StartTime | EndTime |	EpisodeId | EventId | State | EventType | ... |
+|--|--|--|--|
+| 2007-01-01T00:00:00Z | 2007-01-22T18:49:00Z | 2408 | 11929 | INDIANA | Flood | ... |
+
+#### min()
+
+Find the first time an event with a direct death happened.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKuRm5mkElyQWlYRk5qZqAgCNhnP%2FPwAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+StormEvents
+| where DeathsDirect > 0
+| summarize max(StartTime)
+```
+
+The results table returns the lowest value in the specific column only.
+
+| max_StartTime |
+| --- |
+| 2007-01-01T00:00:00Z |
+
+## Related content
+
+* [min function](min-aggregation-function.md)
+* [max function](max-aggregation-function.md)
+* [avg function](avg-aggregation-function.md)
+* [percentile function](percentiles-aggregation-function.md)
+* [min-of function](min-of-function.md)

@@ -25,7 +25,7 @@ Finds a row in the group that maximizes the specified expression. It returns all
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExprToMaximize* | `string` |  :heavy_check_mark: | The expression specifies the expression or column that you want to maximize. |
+| *ExprToMaximize* | `string` |  :heavy_check_mark: | The expression specifies the column that you want to maximize. |
 | *ExprToReturn* | `string` |  :heavy_check_mark: | The expression determines which columns' values are returned from the row that has the maximum value for *ExprToMaximize*.  Use a wildcard `*` to return all columns. |
 
 ## Returns
@@ -65,7 +65,7 @@ The results table displays only the first 10 rows.
 | TEXAS                | 36.4607  | DARROUZETT           |
 | ...             | ...    | ...            |
 
-Find the last time an event with a direct death happened in each state showing all the columns.
+Find the last time an event with a direct death happened in each state, showing all the columns.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -168,3 +168,10 @@ The results table returns the highest value in the specific column only.
 | max_StartTime |
 | --- |
 | 2007-12-31T15:00:00Z |
+
+## Related content
+
+* [max fnction](max-aggregation-function.md)
+* [min function](min-aggregation-function.md)
+* [avg function](avg-aggregation-function.md)
+* [percentile function](percentiles-aggregation-function.md)

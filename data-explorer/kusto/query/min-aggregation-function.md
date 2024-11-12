@@ -3,13 +3,13 @@ title:  min() (aggregation function)
 description: Learn how to use the min() function to find the minimum value in a group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/12/2024
 ---
 # min() (aggregation function)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Finds the minimum value across the group.
+Finds the minimum value of the expression in the group.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -54,6 +54,7 @@ StormEvents
 
 ## Related content
 
+* [arg_min function](arg-min-aggregation-function.md)
 * [max function](max-aggregation-function.md)
 * [avg function](avg-aggregation-function.md)
 * [percentile function](percentiles-aggregation-function.md)
