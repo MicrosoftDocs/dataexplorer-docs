@@ -1,14 +1,14 @@
 ---
 title: Create a managed private endpoint for Azure Data Explorer
-description: In this article, you'll learn how to create a managed private endpoint for Azure Data Explorer.
+description: In this article, you learn how to create a managed private endpoint for Azure Data Explorer.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 04/05/2022
+ms.date: 11/12/2024
 ---
 
 # Create a managed private endpoint for Azure Data Explorer
 
-Managed private endpoints are required to connect to Azure resources that are highly protected. They are one-way private connections that allow Azure Data Explorer to connect to other protected services. In this article, you'll learn how to create a managed private endpoint and connect it to your data source.
+Managed private endpoints are required to connect to Azure resources that are highly protected. They're one-way private connections that allow Azure Data Explorer to connect to other protected services. In this article, you'll learn how to create a managed private endpoint and connect it to your data source.
 
 ## Prerequisites
 
@@ -45,7 +45,7 @@ You can create a managed private endpoint using the portal for your cluster to u
 
 Creating a managed private endpoint requires a single API call to the *Kusto* resource provider. You can establish a managed private endpoint to the following resource types:
 
-* Microsoft.Storage/storageAccounts (sub-resource may be "blob" or "dfs")
+* Microsoft.Storage/storageAccounts (sub-resource can be "blob" or "dfs")
 * Microsoft.EventHub/namespaces (sub-resource "namespace")
 * Microsoft.Devices/IoTHubs (sub-resource "iotHub")
 * Microsoft.KeyVault/vaults (sub-resource "vault")
@@ -183,7 +183,7 @@ To check the progress of the managed private endpoint migration, use the followi
 
 ## Approve the managed private endpoint
 
-Whichever method you used to create the managed private endpoint using, you must approve its creation on target resource. The following example shows the approval of a managed private endpoint to an Event Hubs service.
+Whichever method you used to create the managed private endpoint, you must approve its creation on the target resource. To approve a managed private endpoint to an Event Hubs service:
 
 1. In the Azure portal, navigate to your Event Hubs service and then select **Networking**.
 
@@ -199,11 +199,11 @@ Your cluster can now connect to the resource using the managed private endpoint 
 
 ## Create multiple managed private endpoints
 
-The following examples demonstrate how to create multiple managed private endpoints using ARM templates and Terraform. These examples ensure that the managed private endpoint to the Event Hub namespace is created before the endpoint to the Storage account.
+You can create multiple managed private endpoints using ARM templates and Terraform. The following examples ensure that the managed private endpoint to the Event Hubs namespace is created before the one to the Storage account.
 
-### ARM template example
+### Create multiple managed private endpoints using an ARM template
 
-This ARM template creates two managed private endpoints in an Azure Data Explorer cluster. The first endpoint connects to an Event Hub namespace, and the second endpoint connects to a Storage account, with a dependency ensuring the Event Hub endpoint is created first.
+The following example uses an ARM template to create two managed private endpoints in an Azure Data Explorer cluster. The first endpoint connects to an Event Hubs namespace. The second endpoint connects to a Storage account, with a dependency that ensures that the Event Hubs endpoint is created first.
 
 ```json
 {
@@ -237,9 +237,9 @@ This ARM template creates two managed private endpoints in an Azure Data Explore
 }
 ```
 
-### Terraform example
+### Create multiple managed private endpoints using a Terraform configuration
 
-This Terraform configuration creates two managed private endpoints in an Azure Data Explorer cluster. The first endpoint connects to an Event Hub namespace, and the second endpoint connects to a Storage account, with a dependency ensuring the Event Hub endpoint is created first.
+The following example uses a Terraform configuration that creates two managed private endpoints in an Azure Data Explorer cluster. The first endpoint connects to an Event Hubs namespace. The second endpoint connects to a Storage account, with a dependency that ensures that the Event Hubs endpoint is created first.
 
 ```hcl
 resource "azapi_resource" "mpe_to_eventhub" {
@@ -274,7 +274,7 @@ resource "azapi_resource" "mpe_to_storage" {
 
 ## Automatic approval
 
-It's possible to do [automatic approval](azure/private-link/private-endpoint-overview#access-to-a-private-link-resource-using-approval-workflow) if the identity making the request has the **Microsoft.<Provider>/<resource_type>/privateEndpointConnectionsApproval/action** permission on the target resource of the Managed Private Endpoint.
+You can [automatically approve](/azure/private-link/private-endpoint-overview#access-to-a-private-link-resource-using-approval-workflow) a managed private endpoint if the requesting identity has the **Microsoft.\<Provider>/<resource_type>/privateEndpointConnectionsApproval/action** permission on the target resource of the managed private endpoint.
 
 ## Related content
 
