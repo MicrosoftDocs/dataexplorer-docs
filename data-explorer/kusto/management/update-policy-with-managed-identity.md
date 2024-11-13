@@ -90,7 +90,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     .add database <DatabaseName> viewers ('aadapp=<objectId>')
     ```
 
-    Replace `<DatabaseName>` with the relevant database and `<objectId>` with the managed identity **Object ID** from step 2.
+    Replace `<DatabaseName>` with the relevant database and `<objectId>` with the managed identity **Object ID** you saved earlier.
 
 ---
 
