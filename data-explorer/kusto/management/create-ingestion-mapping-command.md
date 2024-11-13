@@ -3,7 +3,7 @@ title: .create ingestion mapping command
 description: Learn how to use the `.create ingestion mapping` command to create an ingestion mapping.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/13/2024
 ---
 # .create ingestion mapping command
 
@@ -38,7 +38,7 @@ At least [Database Ingestor](../access-control/role-based-access-control.md) per
 > [!NOTE]
 >
 > * Once created, the mapping can be referenced by its name in ingestion commands, instead of specifying the complete mapping as part of the command.
-> * If a mapping with the same name is created in both the table scope and the database scope, the mapping in the table scope will have a higher priority.
+> * If a mapping with the same name is created in both the table scope and the database scope, the mapping in the table scope will have higher priority.
 > * When ingesting into a table and referencing a mapping whose schema does not match the ingested table schema, the ingest operation will fail.
 
 ## Examples
@@ -76,3 +76,4 @@ At least [Database Ingestor](../access-control/role-based-access-control.md) per
 ## Related content
 
 * For detailed descriptions of various ingestion mapping formats such as CSV, JSON, Avro, Parquet, and Orc, see [Data mappings](mappings.md).
+* To learn more about JSON mapping as an ingestion source, see [JSON mapping](json-mapping.md)
