@@ -22,11 +22,11 @@ Kusto Query Language tools aren't convenient for developing and debugging Python
 ::: moniker range="azure-data-explorer"
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database.md).
 * Install Python [Anaconda Distribution](https://www.anaconda.com/download). In **Advanced Options**, select **Add Anaconda to my PATH environment variable**.
 * Install [Visual Studio Code](https://code.visualstudio.com/Download).
 * Install [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
-* Enable the Python plugin. For more information, see [Manage language extensions in your Azure Data Explorer cluster](../language-extensionsanguage-extensions#enable-language-extensions-on-your-cluster).
+* Enable the Python plugin. For more information, see [Manage language extensions in your Azure Data Explorer cluster](/azure/data-explorer/language-extensions#enable-language-extensions-on-your-cluster).
 ::: moniker-end
 
 ::: moniker range="microsoft-fabric"
