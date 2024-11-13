@@ -47,7 +47,7 @@ Extract the required 'gauge' template from the publicly available `PlotlyTemplat
 | *tick_color* | `string` | | The gauge's ticks color. Default is 'darkblue'.|
 | *tick_width* | `int` | | The gauge's ticks width. Default is 1.|
 
-Plotly gauge charts support many parameters, still this function exposes only the above ones. For further information about them see [indicator traces reference](https://plotly.com/python/reference/indicator/).
+Plotly gauge charts support many parameters, still this function exposes only the above ones. For further information, see [indicator traces reference](https://plotly.com/python/reference/indicator/).
 
 ## Function definition
 
