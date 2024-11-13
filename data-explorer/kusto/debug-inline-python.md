@@ -8,7 +8,7 @@ ms.date: 11/13/2024
 
 # Debug Kusto Query Language inline Python using VS Code
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](includes/applies-to-version/applies.md)] [!INCLUDE [fabric](includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](includes/applies-to-version/azure-data-explorer.md)]
 
 You can embed Python code in Kusto Query Language commands using the [python() plugin](/kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true). The plugin runtime is hosted in a sandbox, an isolated and secure Python environment. The python() plugin capability extends Kusto Query Language native functionalities with the huge archive of OSS Python packages. This extension enables you to run advanced algorithms, such as machine learning, artificial intelligence, statistical, and time series as part of the query.
 
