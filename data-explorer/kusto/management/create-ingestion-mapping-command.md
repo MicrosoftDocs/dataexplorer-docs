@@ -43,6 +43,10 @@ At least [Database Ingestor](../access-control/role-based-access-control.md) per
 
 ## Examples
 
+### Create a table and database with CSV ingestion mapping
+
+The following example creates a table, `MyTable` with CSV ingestion mapping `Mapping1` and a database, `MyDatabase` with CSV ingestion mapping `Mapping2`.
+
 ```kusto
 .create table MyTable ingestion csv mapping "Mapping1"
 '['
@@ -64,7 +68,9 @@ At least [Database Ingestor](../access-control/role-based-access-control.md) per
 | mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` | MyDatabase | MyTable |
 | mapping2 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` | MyDatabase | |
 
-### Example: .create ingestion mapping with escape characters
+### Create ingestion mapping with escape characters
+
+The following example creates a table, `test_table` with JSON ingestion mapping `test_mapping_name`. To avoid errors, backslashes are used to escape single quotes in the JSON path strings.
 
 ```kusto
 .create table test_table ingestion json mapping "test_mapping_name"
