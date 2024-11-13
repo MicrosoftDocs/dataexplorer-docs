@@ -3,7 +3,7 @@ title:  parse_json() function
 description: Learn how to use the parse_json() function to return an object of type `dynamic`.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/13/2024
 ---
 # parse_json()
 
@@ -37,8 +37,7 @@ An object of type `dynamic` that is determined by the value of *json*:
 
 ## Example
 
-In the following example, when `context_custom_metrics` is a `string`
-that looks like this:
+In the following example, when `context_custom_metrics` is a `string` that looks like this:
 
 ```json
 {"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
