@@ -12,7 +12,12 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 The function `plotly_scatter3d_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that allows you to customize a [plotly](https://plotly.com/python/) template to create an interactive 3D scatter chart.  
 
+::: moniker range="azure-data-explorer"
 The function accepts a table containing the records to be rendered, the names of the x, y, z & aggregation columns, and the chart title string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](/azure/data-explorer/azure-data-explorer-dashboards) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
+::: moniker-end
+::: moniker range="microsoft-fabric"
+The function accepts a table containing the records to be rendered, the names of the x, y, z & aggregation columns, and the chart title string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in a [Real-Time dashboard](/fabric/real-time-intelligence/dashboard-real-time-create) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
+::: moniker-end
 
 ## Prerequisite
 
@@ -175,7 +180,13 @@ Iris
 
 **Output**
 
+
+::: moniker range="azure-data-explorer"
 The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards](/azure/data-explorer/azure-data-explorer-dashboards).
+::: moniker-end
+::: moniker range="microsoft-fabric"
+The output is a Plotly JSON string that can be rendered in a Real-Time dashboard tile. For more information on creating dashboard tiles, see [Real-Time dashboards](/fabric/real-time-intelligence/dashboard-real-time-create).
+::: moniker-end
 
 ![Screenshot of 3D scatter chart of a sample dataset.](media/plotly-scatter3d-fl\plotly-scatter3d-chart.png)
 
