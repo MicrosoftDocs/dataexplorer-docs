@@ -3,7 +3,7 @@ title: Create a table in Azure Data Explorer
 description: Learn how to easily create a table and manually define the schema in Azure Data Explorer with the table creation wizard.
 ms.reviewer: aksdi
 ms.topic: how-to
-ms.date: 03/07/2024
+ms.date: 11/13/2024
 # Customer intent: As a data engineer, I want to create an empty table in Azure Data Explorer so that I can ingest data and query it.
 ---
 # Create a table in Azure Data Explorer
@@ -33,11 +33,11 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 The **Create table** window opens with the **Destination** tab selected.
 
-1. The **Cluster** and **Database** fields are prepopulated. You may select different values from the drop-down menu.
+1. The **Cluster** and **Database** fields are prepopulated. You can select different values from the drop-down menu.
 1. In **Table name**, enter a name for your table.
 
     > [!TIP]
-    >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
+    > Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
 1. Select **Next: Schema**
 
@@ -45,7 +45,7 @@ The **Create table** window opens with the **Destination** tab selected.
 
 1. Select **Add new column** and the **Edit columns** panel opens.
 1. For each column, enter **Column name** and **Data type**. Create more columns by selecting **Add column**.
-    
+
     :::image type="content" source="media/create-table-wizard/edit-columns.png" alt-text="Screenshot of Edit columns pane, in which you input the column name and data type in Azure Data Explorer.":::
 
 1. Select **Save**. The schema is displayed.
@@ -59,3 +59,8 @@ A new table is created in your target destination, with the schema you defined.
 
 * [Data ingestion overview](ingest-data-overview.md)
 * [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Ingest data using the Kusto .NET SDK](net-sdk-ingest-data.md)
+* [Ingest data using the Azure Data Explorer Python library](python-ingest-data.md)
+* [Ingest data using the Azure Data Explorer Node library](node-ingest-data.md)
+* [Ingest data using the Azure Data Explorer Go SDK](go-ingest-data.md)
+* [Ingest data using the Kusto Java SDK](java-ingest-data.md)
