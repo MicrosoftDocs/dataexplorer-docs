@@ -81,5 +81,5 @@ The following example creates a table, `test_table` with JSON ingestion mapping 
 
 ## Related content
 
-* For detailed descriptions of various ingestion mapping formats such as CSV, JSON, Avro, Parquet, and Orc, see [Data mappings](mappings.md).
+* For detailed descriptions of various ingestion mapping formats, such as CSV, JSON, Avro, Parquet, and Orc, see [Data mappings](mappings.md).
 * To learn more about JSON mapping as an ingestion source, see [JSON mapping](json-mapping.md)
