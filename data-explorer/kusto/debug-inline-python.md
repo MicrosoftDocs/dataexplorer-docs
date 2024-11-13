@@ -40,7 +40,7 @@ Kusto Query Language tools aren't convenient for developing and debugging Python
 
 ::: moniker-end
 
-## Run your query in your client application
+## Enable Python debugging in VS Code
 
 1. In your client application, prefix a query containing inline Python with `set query_python_debug;`
 1. Run the query.
@@ -53,7 +53,7 @@ Kusto Query Language tools aren't convenient for developing and debugging Python
         1. Right-click *debug_python.py* and open with VS Code.
         The *debug_python.py* script contains the inline Python code, from the KQL query, prefixed by the template code to initialize the input dataframe from *df.txt* and the dictionary of parameters from *kargs.txt*.
 
-1. In VS Code, launch the VS Code debugger: **Debug** > **Start Debugging (F5)**, select **Python** configuration. The debugger launches and automatically sets a breakpoint to debug the inline code.
+1. In VS Code, launch the VS Code debugger: **Run** > **Start Debugging (F5)**, select **Python** configuration. The debugger launches and automatically sets a breakpoint to debug the inline code.
 
 ### How does inline Python debugging in VS Code work?
 
