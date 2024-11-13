@@ -10,13 +10,18 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-The function `plotly_gauge_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that allows you to customize a [plotly](https://plotly.com/python/) template to create a [gauge chart](https://plotly.com/python/gauge-charts/).  
+The function `plotly_gauge_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that allows you to customize a [plotly](https://plotly.com/python/) template to create a [gauge chart](https://plotly.com/python/gauge-charts/).
 
+::: moniker range="azure-data-explorer"
 The function accepts few parameters to customize the gauge chart and returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](/azure/data-explorer/azure-data-explorer-dashboards) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
+::: moniker-end
+::: moniker range="microsoft-fabric"
+The function accepts few parameters to customize the gauge chart and returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in a [Real-Time dashboard](/fabric/real-time-intelligence/dashboard-real-time-create) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
+::: moniker-end
 
 ## Prerequisite
 
-Extract the required 'gauge' template from the publicly available `PlotlyTemplate` table. Copy this table from the Samples database to your database by running the following KQL command from your target database: 
+Extract the required 'gauge' template from the publicly available `PlotlyTemplate` table. Copy this table from the Samples database to your database by running the following KQL command from your target database:
 
 ```kusto
 .set PlotlyTemplate <| cluster('help.kusto.windows.net').database('Samples').PlotlyTemplate
@@ -130,7 +135,7 @@ let plotly_gauge_fl=(value:real, max_range:real=real(null), mode:string='gauge+n
     | project plotly
 };
 plotly_gauge_fl(value=180, chart_title='Speed', font_color='purple', tick_width=5)
-| render plotly 
+| render plotly
 ```
 
 ### [Stored](#tab/stored)
@@ -140,13 +145,18 @@ plotly_gauge_fl(value=180, chart_title='Speed', font_color='purple', tick_width=
 
 ```kusto
 plotly_gauge_fl(value=180, chart_title='Speed', font_color='purple', tick_width=5)
-| render plotly 
+| render plotly
 ```
 
 ---
 
 **Output**
 
+::: moniker range="azure-data-explorer"
 The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards](/azure/data-explorer/azure-data-explorer-dashboards).
+::: moniker-end
+::: moniker range="microsoft-fabric"
+The output is a Plotly JSON string that can be rendered in a Real-Time dashboard tile. For more information on creating dashboard tiles, see [Real-Time dashboards](/fabric/real-time-intelligence/dashboard-real-time-create).
+::: moniker-end
 
 ![Screenshot of gauge chart with random data.](media/plotly-gauge-fl\plotly-gauge-chart.png)
