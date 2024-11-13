@@ -10,7 +10,7 @@ ms.date: 11/13/2024
 
 > [!INCLUDE [applies](includes/applies-to-version/applies.md)] [!INCLUDE [fabric](includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](includes/applies-to-version/azure-data-explorer.md)]
 
-You can embed Python code in Kusto Query Language commands using the [python() plugin](/kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true). The plugin runtime is hosted in a sandbox, an isolated and secure Python environment. The python() plugin capability extends Kusto Query Language native functionalities with the huge archive of OSS Python packages. This extension enables you to run advanced algorithms, such as machine learning, artificial intelligence, statistical, and time series as part of the query.
+You can embed Python code in Kusto Query Language queries using the [python() plugin](/kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true). The plugin runtime is hosted in a sandbox, an isolated and secure Python environment. The python() plugin capability extends Kusto Query Language native functionalities with the huge archive of OSS Python packages. This extension enables you to run advanced algorithms, such as machine learning, artificial intelligence, statistical, and time series as part of the query.
 
 Kusto Query Language tools aren't convenient for developing and debugging Python algorithms. Therefore, develop the algorithm on your favorite Python-integrated development environment such as Jupyter, PyCharm, VS, or VS Code. When the algorithm is complete, copy and paste into KQL. To improve and streamline this workflow, Kusto Explorer or Web UI clients can integrate with VS Code for authoring and debugging KQL inline Python code.
 
@@ -53,7 +53,7 @@ Kusto Query Language tools aren't convenient for developing and debugging Python
         1. Right-click *debug_python.py* and open with VS Code.
         The *debug_python.py* script contains the inline Python code, from the KQL query, prefixed by the template code to initialize the input dataframe from *df.txt* and the dictionary of parameters from *kargs.txt*.
 
-1. In VS Code, launch the VS Code debugger: **Debug** > **Start Debugging (F5)**, select **Python** configuration. The debugger launches and automatically breakpoint to debug the inline code.
+1. In VS Code, launch the VS Code debugger: **Debug** > **Start Debugging (F5)**, select **Python** configuration. The debugger launches and automatically sets a breakpoint to debug the inline code.
 
 ### How does inline Python debugging in VS Code work?
 
