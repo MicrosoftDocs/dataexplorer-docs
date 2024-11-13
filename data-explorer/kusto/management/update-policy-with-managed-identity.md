@@ -100,9 +100,9 @@ Select one of the following tabs to create an update policy that runs on behalf 
 
 ### [User-assigned](#tab/user-assigned)
 
-Run the [.alter table policy update](alter-table-update-policy-command.md) command with the `ManagedIdentity` property set to the managed identity object ID.
+Run the [.alter table policy update](alter-table-update-policy-command.md) command with the `ManagedIdentity` property set to the managed identity object or principal ID.
 
-For example, the following command alters the update policy of the table `MyTable` in the database `MyDatabase`. It's important to note that both the `Source` and `Query` parameters should only reference objects within the same database where the update policy is defined. However, the code contained within the function specified in the `Query` parameter can interact with tables located in other databases. For example, the function `MyUpdatePolicyFunction()` can access `OtherTable` in `OtherDatabase` on behalf of a user-assigned managed identity. `<objectId>` should be a managed identity object ID.
+For example, the following command alters the update policy of the table `MyTable` in the database `MyDatabase`. It's important to note that both the `Source` and `Query` parameters should only reference objects within the same database where the update policy is defined. However, the code contained within the function specified in the `Query` parameter can interact with tables located in other databases. For example, the function `MyUpdatePolicyFunction()` can access `OtherTable` in `OtherDatabase` on behalf of a user-assigned managed identity. `<objectId>` should be a managed identity object or principal ID.
 
 ````kusto
 .alter table MyDatabase.MyTable policy update
