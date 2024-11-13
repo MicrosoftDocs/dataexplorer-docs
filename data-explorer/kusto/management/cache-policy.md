@@ -67,7 +67,7 @@ The `default` value indicates use of the default settings, which determine that 
 
 If there's a discrepancy between the different methods, then `set` takes precedence over the client request property. Specifying a value for a table reference takes precedence over both.
 
-For example, in the following query, all table references use hot cache data only, except for the second reference to "T," that is scoped to all the data:
+For example, in the following query, all table references use hot cache data only, except for the second reference to "T" that is scoped to all the data:
 
 ```kusto
 set query_datascope="hotcache";
