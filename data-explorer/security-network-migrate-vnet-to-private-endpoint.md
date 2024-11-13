@@ -85,6 +85,9 @@ To prepare your cluster for migration:
 > [!WARNING]
 > Failure of your cluster to connect to essential services for ingestion and external tables poses a risk of data loss. Additionally, queries calling out to other network-protected services may cease to function.
 
+> [!WARNING]
+> The actual migration must be performed within a few hours after completing the preparation steps. Delaying the migration may result in the service being in a malfunctioning state.
+
 ## Migrate your cluster
 
 ### [Azure portal](#tab/portal)
