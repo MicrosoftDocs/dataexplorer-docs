@@ -11,7 +11,7 @@ ms.date: 11/13/2024
 
 Creates an ingestion mapping that can be associated with a specific format and a specific table or database.
 
-If a mapping with same name in the given scope already exists, `.create` will fail. Use [`.create-or-alter`](create-or-alter-ingestion-mapping-command.md) instead.
+If a mapping with same name in the given scope already exists, `.create` fails. Use [`.create-or-alter`](create-or-alter-ingestion-mapping-command.md) instead.
 
 ## Permissions
 
