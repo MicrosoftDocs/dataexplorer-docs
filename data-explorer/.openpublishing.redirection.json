@@ -426,6 +426,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "debug-inline-python.md",
+      "redirect_url": "/kusto/debug-inline-python",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "excel-connector.md",
       "redirect_url": "/azure/data-explorer/excel",
       "redirect_document_id": false
