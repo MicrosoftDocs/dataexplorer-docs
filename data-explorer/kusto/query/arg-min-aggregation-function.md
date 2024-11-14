@@ -1,6 +1,6 @@
 ---
 title:  arg_min() (aggregation function)
-description: Learn how to use the arg_min() aggregation function to find a row in a group that minimizes the input expression.
+description: Learn how to use the arg_min() aggregation function to find a row in a table that minimizes the input expression.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/11/2024
@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Finds a row in the group that minimizes the specified expression. It returns all columns of the input table or specified columns.
+Finds a row in the table that minimizes the specified expression. It returns all columns of the input table or specified columns.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -25,16 +25,16 @@ Finds a row in the group that minimizes the specified expression. It returns all
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExprToMinimize*| `string` |  :heavy_check_mark: | The expression specifies column that you want to minimize. |
-| *ExprToReturn* | `string` |  :heavy_check_mark: | The expression determines which columns' values are returned from the row that has the minimum value for *ExprToMinimize*.  Use a wildcard `*` to return all columns. |
+| *ExprToMinimize*| `string` |  :heavy_check_mark: | The expression determines the row that contains the minimum value in the specifed column. |
+| *ExprToReturn* | `string` |  :heavy_check_mark: | The expression determines which columns' values are returned, from the row that has the minimum value for *ExprToMinimize*.  Use a wildcard `*` to return all columns. |
   
 ## Null handling
 
-When *ExprToMinimize* is null for all rows in a group, one row in the group is picked. Otherwise, rows where *ExprToMinimize* is null are ignored.
+When *ExprToMinimize* is null for all rows in a table, one row in the table is picked. Otherwise, rows where *ExprToMinimize* is null are ignored.
 
 ## Returns
 
-Returns a row in the group that minimizes *ExprToMinimize*, and the values of columns specified in *ExprToReturn*. Use or `*` to return the entire row.
+Returns a row in the table that minimizes *ExprToMinimize*, and the values of columns specified in *ExprToReturn*. Use or `*` to return the entire row.
 
 > [!TIP]
 > To see the minimal value only, use the [min() function](min-aggregation-function.md).
@@ -70,6 +70,8 @@ The results table shown includes only the first 10 rows.
 | ... | ... | ... |
 
 Find the first time an event with a direct death happened in each state, showing all of the columns.
+
+The query first filters the events to only include those where there was at least one direct death. Then the query returns the entire row with the lowest value for StartTime.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -135,6 +137,8 @@ The arg_min() function differs from the [min() function](min-aggregation-functio
 
 Find the first time an event with a direct death happened, showing all the columns in the table.
 
+The query first filters the events to only include those where there was at least one direct death. Then the query returns the entire row with the lowest value for StartTime.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnZuZpBJckFpWEZOam6ihoaQIA4GzUy0YAAAA%3D" target="_blank">Run the query</a>
@@ -155,6 +159,8 @@ The results table returns all the columns for the row containing the lowest valu
 #### min()
 
 Find the first time an event with a direct death happened.
+
+The query filters events to only include those where there is at least one direct death, and then returns the minimum value for StartTime.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

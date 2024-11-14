@@ -1,6 +1,6 @@
 ---
 title:  arg_max() (aggregation function)
-description: Learn how to use the arg_max() aggregation function to find a row in a group that maximizes the input expression.
+description: Learn how to use the arg_max() aggregation function to find a row in a table that maximizes the input expression.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/11/2024
@@ -9,7 +9,7 @@ ms.date: 11/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Finds a row in the group that maximizes the specified expression. It returns all columns of the input table or specified columns.
+Finds a row in the table that maximizes the specified expression. It returns all columns of the input table or specified columns.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -25,12 +25,12 @@ Finds a row in the group that maximizes the specified expression. It returns all
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExprToMaximize* | `string` |  :heavy_check_mark: | The expression specifies the column that you want to maximize. |
-| *ExprToReturn* | `string` |  :heavy_check_mark: | The expression determines which columns' values are returned from the row that has the maximum value for *ExprToMaximize*.  Use a wildcard `*` to return all columns. |
+| *ExprToMaximize* | `string` |  :heavy_check_mark: | The expression determines the row that contains the maximum value in the specifed column. |
+| *ExprToReturn* | `string` |  :heavy_check_mark: | The expression determines which columns' values are returned, from the row that has the maximum value for *ExprToMaximize*.  Use a wildcard `*` to return all columns. |
 
 ## Returns
 
-Returns a row in the group that maximizes the specified expression *ExprToMaximize*, and the values of columns specified in *ExprToReturn*.
+Returns a row in the table that maximizes the specified expression *ExprToMaximize*, and the values of columns specified in *ExprToReturn*.
 
 > [!TIP]
 > To see the maximal value only, use the [max() function](max-aggregation-function.md).
@@ -66,6 +66,8 @@ The results table displays only the first 10 rows.
 | ...             | ...    | ...            |
 
 Find the last time an event with a direct death happened in each state, showing all the columns.
+
+The query first filters the events to only include those where there was at least one direct death. Then the query returns the entire row with the most recent StartTime.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -131,6 +133,8 @@ The arg_max() function differs from the [max() function](max-aggregation-functio
 
 Find the last time an event with a direct death happened, showing all the columns in the table.
 
+The query first filters the events to only include those where there was at least one direct death. Then the query returns the entire row with the most recent StartTime.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnJlZoBJckFpWEZOam6ihoaQIAErhf3kYAAAA%3D" target="_blank">Run the query</a>
@@ -152,6 +156,8 @@ The results table returns all the columns for the row containing the highest val
 
 Find the last time an event with a direct death happened.
 
+The query filters events to only include those where there is at least one direct death, and then returns the maximum value for StartTime.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKuQmVmgElyQWlYRk5qZqAgD8HVVGPwAAAA%3D%3D" target="_blank">Run the query</a>
@@ -163,7 +169,7 @@ StormEvents
 | summarize max(StartTime)
 ```
 
-The results table returns the highest value in the specific column only.
+The results table returns the maximum value of StartTime, without returning other columns for this record.
 
 | max_StartTime |
 | --- |
@@ -171,7 +177,7 @@ The results table returns the highest value in the specific column only.
 
 ## Related content
 
-* [max fnction](max-aggregation-function.md)
+* [max function](max-aggregation-function.md)
 * [min function](min-aggregation-function.md)
 * [avg function](avg-aggregation-function.md)
 * [percentile function](percentiles-aggregation-function.md)

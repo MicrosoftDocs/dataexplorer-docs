@@ -1,6 +1,6 @@
 ---
 title:  min() (aggregation function)
-description: Learn how to use the min() function to find the minimum value in a group.
+description: Learn how to use the min() function to find the minimum value in a table.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/12/2024
@@ -9,7 +9,7 @@ ms.date: 11/12/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Finds the minimum value of the expression in the group.
+Finds the minimum value of the expression in the table.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -23,11 +23,11 @@ Finds the minimum value of the expression in the group.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | `string` |  :heavy_check_mark: | The expression specifies the column that you want to minimize. |
+| *expr* | `string` |  :heavy_check_mark: | The expression determines the minimum value in the specifed column. |
 
 ## Returns
 
-Returns the minimum value of *expr* across the group.
+Returns the minimum value of *expr* across the table.
 
 > [!TIP]
 > This gives you the min on its own. If you want to see other columns in addition to the min, use [arg_min](arg-min-aggregation-function.md).
