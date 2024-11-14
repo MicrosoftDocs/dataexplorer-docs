@@ -3,7 +3,7 @@ title: Create a managed private endpoint for Azure Data Explorer
 description: In this article, you learn how to create a managed private endpoint for Azure Data Explorer.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 11/12/2024
+ms.date: 11/14/2024
 ---
 
 # Create a managed private endpoint for Azure Data Explorer
@@ -207,33 +207,69 @@ The following example uses an ARM template to create two managed private endpoin
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-      {
-          "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
-          "apiVersion": "2023-08-15",
-          "name": "[concat('<clusterName>', '/mpeToEventHub')]",
-          "properties": {
-              "privateLinkResourceId": "[resourceId('Microsoft.EventHub/namespaces', 'myEventHubNamespace')]",
-              "groupId": "namespace",
-              "requestMessage": "Please Approve."
-          }
-      },
-      {
-          "type": "Microsoft.Kusto/clusters/managedPrivateEndpoints",
-          "apiVersion": "2023-08-15",
-          "name": "[concat('<clusterName>', '/mpeToStorage')]",
-          "dependsOn": [
-              "[resourceId('Microsoft.Kusto/clusters/managedPrivateEndpoints', concat('<clusterName>', '/mpeToEventHub'))]"
-          ],
-          "properties": {
-              "privateLinkResourceId": "[resourceId('Microsoft.Storage/storageAccounts', 'myStorageAccount')]",
-              "groupId": "blob",
-              "requestMessage": "Please Approve."
-          }
-      }
-  ]
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "cluster_name": {
+            "defaultValue": "<ADX cluster name>",
+            "type": "String"
+        },
+        "eventhub_resource_id": {
+            "defaultValue": "<Eventhub resource id>",
+            "type": "String"
+        },
+        "storage_resource_id": {
+            "defaultValue": "<Storage resource id>",
+            "type": "String"
+        },
+        "managed_pe_eventhub_name": {
+            "defaultValue": "<name of the managed private endpoint to Event Hub>",
+            "type": "String"
+        },
+        "managed_pe_storage_name": {
+            "defaultValue": "<name of the managed private endpoint to Storage>",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Kusto/Clusters",
+            "apiVersion": "2023-08-15",
+            "name": "[parameters('cluster_name')]",
+            "location": "<region of the cluster>",
+            "sku": {...},
+            "zones": {...}
+            "properties": {...}
+        },
+        {
+            "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
+            "apiVersion": "2023-08-15",
+            "name": "[concat(parameters('cluster_name'), '/', parameters('managed_pe_eventhub_name'))]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/Clusters', parameters('cluster_name'))]"
+            ],
+            "properties": {
+                "privateLinkResourceId": "[parameters('eventhub_resource_id')]",
+                "groupId": "namespace",
+                "requestMessage": "Please approve"
+            }
+        },
+        {
+            "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
+            "apiVersion": "2023-08-15",
+            "name": "[concat(parameters('cluster_name'), '/', parameters('managed_pe_storage_name'))]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/Clusters', parameters('cluster_name'))]",
+                "[resourceId('Microsoft.Kusto/Clusters/ManagedPrivateEndpoints', parameters('cluster_name'), parameters('managed_pe_eventhub_name'))]"
+            ],
+            "properties": {
+                "privateLinkResourceId": "[parameters('storage_resource_id')]",
+                "groupId": "blob",
+                "requestMessage": "Please approve"
+            }
+        }
+    ]
 }
 ```
 
