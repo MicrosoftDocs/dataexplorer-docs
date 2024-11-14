@@ -121,3 +121,9 @@ datatable(Fruit: string, Color: string, Version: int) [
 | Apple | 1 | Red |
 | Banana |  | Yellow |
 | Pear | 1 | Brown |
+
+## Related content
+
+* [arg_max function](arg-max-aggregation-function.md)
+* [take_any function](take-any-aggregation-function.md)
+* [take_anyif function](take-anyif-aggregation-function.md)
