@@ -129,3 +129,7 @@ To efficiently use the `ai_embed_text` plugin while minimizing throttling, you c
 * Use the `GlobalTimeout` option to set a timeout lower than the query [timeout](../set-timeout-limits.md), ensuring progress isn't lost on successful calls up to that point.
 
 These practices help manage costs and improve the efficiency of embedding operations.
+
+## Related content
+
+* [series_cosine_similarity()](series-cosine-similarity-function.md)
