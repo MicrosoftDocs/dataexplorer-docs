@@ -1,5 +1,5 @@
 ---
-title:  ai_embed_text plugin (Preview)
+title: ai_embed_text plugin (Preview)
 description: Learn how to use the ai_embed_text plugin to embed text via language models, enabling various AI-related scenarios such as RAG application and semantic search.
 ms.reviewer: alexans
 ms.topic: reference
@@ -10,12 +10,12 @@ monikerRange: "azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The `ai_embed_text` plugin allows embedding of text via language models, enabling various AI-related scenarios such as RAG application and semantic search. The plugin supports Azure Open AI embedding models accessed using managed identity.
+The `ai_embed_text` plugin allows embedding of text using language models, enabling various AI-related scenarios such as Retrieval Augmented Generation (RAG) applications and semantic search. The plugin supports Azure OpenAI Service embedding models accessed using managed identity.
 
 ## Prerequisites
 
-* An Azure Open AI Service configured with [Managed Identity](/azure/ai-services/openai/how-to/managed-identity)
-* [Configure managed identity and callout policies](#configure-managed-identity-and-callout-policies) to allow communication with Azure OpenAI services
+* An Azure OpenAI Service configured with [managed identity](/azure/ai-services/openai/how-to/managed-identity)
+* [Managed identity and callout policies](#configure-managed-identity-and-callout-policies) configured to allow communication with Azure OpenAI services
 
 ## Syntax
 
@@ -27,10 +27,10 @@ The `ai_embed_text` plugin allows embedding of text via language models, enablin
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Text* | `string` | :heavy_check_mark: | The text to be embedded. This can be a column reference or a constant scalar. |
-| *ConnectionString* | `string` | :heavy_check_mark: | Connection string for the language model in the format `<ModelUri>;<AuthenticationMethod>`; replace `<ModelUri>` and `<AuthenticationMethod>` with the AI model endpoint URI and the authentication method respectively. |
+| *Text* | `string` | :heavy_check_mark: | The text to be embedded. The value can be a column reference or a constant scalar. |
+| *ConnectionString* | `string` | :heavy_check_mark: | Connection string for the language model in the format `<ModelDeploymentUri>;<AuthenticationMethod>`; replace `<ModelDeploymentUri>` and `<AuthenticationMethod>` with the AI model deployment URI and the authentication method respectively. |
 | *Options* | `dynamic` |  | Options that control calls to the embedding model endpoint. See [Options](#options). |
-| *IncludeErrorMessages* | `bool` |  | Flag to output errors, adding an extra column to the output table. This requires `ReturnSuccessfulOnly` to be set to `false` in order to view the errors. |
+| *IncludeErrorMessages* | `bool` |  | Flag to output errors, adding an extra column to the output table. To view the errors, set `ReturnSuccessfulOnly` to `false`. |
 
 ## Options
 
@@ -39,10 +39,10 @@ The following table describes the options that control the way the requests are 
 | Name | Type | Description |
 |--|--|--|
 | `RecordsPerRequest` | `int` | Specifies the number of records to process per request. Default value: `1`. |
-| `CharsPerRequest` | `int` | Specifies the maximum number of characters to process per request. Default value: `0` (unlimited). Note that Azure OpenAI counts tokens, with each token approximately translating to 4 characters. |
+| `CharsPerRequest` | `int` | Specifies the maximum number of characters to process per request. Default value: `0` (unlimited). Azure OpenAI counts tokens, with each token approximately translating to four characters. |
 | `RetriesOnThrottling` | `int` | Specifies the number of retry attempts when throttling occurs. Default value: `0`. |
 | `GlobalTimeout` | `timespan` | Specifies the maximum time to wait for a response from the embedding model. Default value: `null` |
-| `ModelParameters` | `dynamic` | Additional parameters specific to the embedding model, such as embedding dimensions or user identifiers for monitoring purposes. Default value: `null`. |
+| `ModelParameters` | `dynamic` | Parameters specific to the embedding model, such as embedding dimensions or user identifiers for monitoring purposes. Default value: `null`. |
 | `ReturnSuccessfulOnly` | `bool` | Indicates whether to return only the successfully processed items. Default value: `false`. |
 
 ## Configure managed identity and callout policies
@@ -52,7 +52,7 @@ To use the `ai_embed_text` plugin, you must configure the following policies:
 * [managed identity](../management/managed-identity-policy.md): Allow the system-assigned managed identity to authenticate to Azure OpenAI services.
 * [callout](../management/callout-policy.md): Authorize the AI model endpoint domain.
 
-Use the commands in the following steps to configure these policies:
+To configure these policies, use the commands in the following steps:
 
 1. Configure the managed identity:
 
@@ -120,12 +120,12 @@ datatable(TextData: string)
 
 Azure OpenAI embedding models are subject to heavy throttling. Frequent calls to this plugin can quickly reach throttling limits.
 
-To efficiently use the `ai_embed_text` plugin while minimizing the impact of throttling, you can follow these best practices:
+To efficiently use the `ai_embed_text` plugin while minimizing throttling, you can follow these best practices:
 
 * Control the size of each request by adjusting the number of records (`RecordsPerRequest`) and characters per request (`CharsPerRequest`).
 * Configure retries on throttling to handle rate limits more gracefully.
-* Enable the output of underlying errors (`IncludeErrorMessages`) to assist in understanding and resolving issues related to throttling.
+* Enable the output of underlying errors (`IncludeErrorMessages`) to help understanding and resolving issues related to throttling.
 * Return partial results to avoid losing successfully embedded values. For failed records, either return an empty embedding value or omit it from the result, depending on the `ReturnSuccessfulOnly` flag.
-* Use the `GlobalTimeout` option to set a timeout lower than the query [timeout](../set-timeout-limits.md), ensuring progress is not lost on successful calls up to that point.
+* Use the `GlobalTimeout` option to set a timeout lower than the query [timeout](../set-timeout-limits.md), ensuring progress isn't lost on successful calls up to that point.
 
 These practices help manage costs and improve the efficiency of embedding operations.
