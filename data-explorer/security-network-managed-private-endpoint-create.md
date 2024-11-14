@@ -37,7 +37,6 @@ You can create a managed private endpoint using the portal for your cluster to u
     | Resource type | *Microsoft.Storage/storageAccounts* | Select the relevant resources type you want for your data source. |
     | Resource name | *share* | Choose the cluster that should be used as the destination for the new Azure Private Endpoint |
     | Target sub-resource | *blob* | Select the relevant target for your data source. |
-    | | | |
 
 1. select **Create** to create the managed private endpoint resource.
 
