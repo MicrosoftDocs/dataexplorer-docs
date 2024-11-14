@@ -3,7 +3,7 @@ title: Debug Kusto Query Language inline Python using Visual Studio Code
 description: Learn how to debug Kusto Query Language (KQL) inline Python using Visual Studio Code.
 ms.reviewer: adieldar
 ms.topic: how-to
-ms.date: 11/13/2024
+ms.date: 11/14/2024
 ---
 
 # Debug Kusto Query Language inline Python using Visual Studio Code
@@ -42,6 +42,8 @@ Kusto Query Language tools aren't convenient for developing and debugging Python
 
 ## Enable Python debugging in Visual Studio Code
 
+::: moniker range="azure-data-explorer"
+
 1. In your client application, prefix a query containing inline Python with `set query_python_debug;`
 1. Run the query.
     * Kusto Explorer: Visual Studio Code is automatically launched with the *debug_python.py* script.
@@ -51,6 +53,20 @@ Kusto Query Language tools aren't convenient for developing and debugging Python
         The *debug_python.py* script contains the inline Python code, from the KQL query, prefixed by the template code to initialize the input dataframe from *df.txt* and the dictionary of parameters from *kargs.txt*.
 
 1. In Visual Studio Code, launch the Visual Studio Code debugger: **Run** > **Start Debugging (F5)**, select **Python** configuration. The debugger launches and automatically sets a breakpoint to debug the inline code.
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+
+1. In your client application, prefix a query containing inline Python with `set query_python_debug;`
+1. Run the query.
+    * Kusto Explorer: Visual Studio Code is automatically launched with the *debug_python.py* script.
+    * KQL queryset:
+        1. Download and save *debug_python.py*, *df.txt*, and *kargs.txt*. In window, select **Allow**. **Save** files in selected directory.
+        1. Right-click *debug_python.py* and open with Visual Studio Code.
+        The *debug_python.py* script contains the inline Python code, from the KQL query, prefixed by the template code to initialize the input dataframe from *df.txt* and the dictionary of parameters from *kargs.txt*.
+
+1. In Visual Studio Code, launch the Visual Studio Code debugger: **Run** > **Start Debugging (F5)**, select **Python** configuration. The debugger launches and automatically sets a breakpoint to debug the inline code.
+::: moniker-end
 
 ### How does inline Python debugging in Visual Studio Code work?
 
