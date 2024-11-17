@@ -3,7 +3,7 @@ title:  Functions library
 description: This article describes user-defined functions that extend query environment capabilities.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/17/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Functions library
@@ -51,6 +51,12 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [series_metric_fl()](series-metric-fl.md) | Select and retrieve time series stored with the Prometheus data model. |
 | [series_rate_fl()](series-rate-fl.md) | Calculate the average rate of counter metric increase per second. |
 
+## Security research functions
+
+| Function Name | Description |
+|--|--|
+| [detect_anomalous_new_entity_fl()](detect-anomalous-new-entity-fl.md) | Detect the appearance of anomalous new entities in timestamped data. |
+
 ## Series processing functions
 
 | Function Name | Description |
@@ -94,7 +100,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [normality_test_fl()](normality-test-fl.md) | Performs the Normality Test. |
 | [mann_whitney_u_test_fl()](mann-whitney-u-test-fl.md) | Perform a Mann-Whitney U Test. |
 | [pair_probabilities_fl()](pair-probabilities-fl.md) | Calculate various probabilities and related metrics for a pair of categorical variables. |
-|[pairwise_dist_fl()](pairwise-dist-fl.md)| Calculate pairwise distances between entities based on multiple nominal and numerical variables. |
+| [pairwise_dist_fl()](pairwise-dist-fl.md) | Calculate pairwise distances between entities based on multiple nominal and numerical variables. |
 | [percentiles_linear_fl()](percentiles-linear-fl.md) | Calculate percentiles using linear interpolation between closest ranks |
 | [perm_fl()](perm-fl.md) | Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
 | [two_sample_t_test_fl()](two-sample-t-test-fl.md) | Perform the two sample t-test. |

@@ -2,6 +2,11 @@ items:
 - name: List of functions
   displayName: functions library
   href: functions-library.md
+- name: Security research functions
+  items:
+  name: detect_anomalous_new_entity_fl()
+  displayName: functions library, security, anomaly detection, new entity
+  href: detect-anomalous-new-entity-fl.md
 - name: bartlett_test_fl()
   displayName: functions library, statistical test
   href: bartlett-test-fl.md
