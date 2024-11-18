@@ -142,7 +142,9 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 
 :::moniker range="azure-data-explorer"
 
-### Microsoft Entra ID Federated authentication using the currently logged-on user identity (user is prompted when required)
+### Microsoft Entra ID federated authentication with current user identity
+
+The following example shows how to set up a connection to a Kusto service using Microsoft Entra ID for federated authentication. The user is prompted for credentials, when necessary.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -152,7 +154,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority}"
 ```
 
-### Microsoft Entra ID Federated authentication with user ID hint (user is prompted when required)
+### Microsoft Entra ID federated authentication with user ID hint
+
+The following example shows how to set up a connection to a Kusto service using Microsoft Entra ID for federated authentication and prefills the user's identity using the `userID` variable. The user is prompted for credentials, when necessary.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -163,7 +167,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority};User ID={userId}"
 ```
 
-### Microsoft Entra ID Federated application authentication using ApplicationClientId and ApplicationKey
+### Microsoft Entra ID federated application authentication with ApplicationClientId and ApplicationKey
+
+The following example shows how to authenticate to a Kusto service using Microsoft Entra ID for federated authentication with an application client ID and key.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -175,7 +181,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppKey={appKey};Authority Id={authority}"
 ```
 
-### Using System-assigned Managed Identity
+### Authenticate with a system-assigned Managed Identity
+
+The following example shows how to authenticate to a Kusto service using a system-assigned Managed Identity for authentication.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -183,7 +191,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadSystemManagedIdentity();
 ```
 
-### Using User-assigned Managed Identity
+### Authenticate with a user-assigned Managed Identity
+
+The following example shows how to authenticate to a Kusto service using a user-assigned Managed Identity for authentication.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -192,7 +202,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadUserManagedIdentity(managedIdentityClientId);
 ```
 
-### Microsoft Entra ID Federated authentication using user / application token
+### Microsoft Entra ID federated authentication with user and application tokens
+
+The following example shows how to set up a connection to a Kusto service using Microsoft Entra ID with either a user access token or an application access token.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -210,7 +222,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: "Data Source={kustoUri};Database=NetDefaultDB;Fed=True;ApplicationToken={appAccessToken}"
 ```
 
-### Using token provider callback (invoked each time a token is required)
+### Authentication with token provider callback
+
+The following example shows how to authenticate to a Kusto service using Microsoft Entra ID with a custom token provider callback. The token is invoked each time a token is required.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -219,7 +233,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadTokenProviderAuthentication(tokenProviderCallback);
 ```
 
-### Using X.509 certificate 
+### Authentication with X.509 certificate
+
+The following example shows how to authenticate to a Kusto service using Microsoft Entra ID for federated authentication with an application certificate.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -231,7 +247,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadApplicationCertificateAuthentication(appId, appCert, authority, sendX5c);
 ```
 
-### Using X.509 certificate by thumbprint (client attempts to load the certificate from local store)
+### Authentication with X.509 certificate thumbprint
+
+The following example shows how to set up a connection to a Kusto service using Microsoft Entra ID with an application certificate thumbprint. The client attempts to load the certificate from a local store.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -245,7 +263,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 
-### Microsoft Entra ID Federated authentication using the currently logged-on user identity (user is prompted when required)
+### Microsoft Entra ID federated authentication with current user identity
+
+The following example shows how to set up a connection to a Kusto service using Microsoft Entra ID for federated authentication. The user is prompted for credentials, when necessary.
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -255,7 +275,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority}"
 ```
 
-### Microsoft Entra ID Federated authentication with user ID hint (user is prompted when required)
+### Microsoft Entra ID federated authentication with user ID hint
+
+The following example shows how to set up a connection to a Kusto service using Microsoft Entra ID for federated authentication and prefills the user's identity using the `userID` variable. The user is prompted for credentials, when necessary.
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -266,7 +288,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority};User ID={userId}"
 ```
 
-### Microsoft Entra ID Federated application authentication using ApplicationClientId and ApplicationKey
+### Microsoft Entra ID federated application authentication with ApplicationClientId and ApplicationKey
+
+The following example shows how to authenticate to a Kusto service using Microsoft Entra ID for federated authentication with an application client ID and key.
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -278,7 +302,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppKey={appKey};Authority Id={authority}"
 ```
 
-### Microsoft Entra ID Federated authentication using user / application token
+### Microsoft Entra ID federated authentication with user and application tokens
+
+The following example shows how to set up a connection to a Kusto service using Microsoft Entra ID with either a user access token or an application access token.
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -296,7 +322,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: "Data Source={kustoUri};Database=NetDefaultDB;Fed=True;ApplicationToken={appAccessToken}"
 ```
 
-### Using token provider callback (invoked each time a token is required)
+### Authentication with token provider callback
+
+The following example shows how to authenticate to a Kusto service using Microsoft Entra ID with a custom token provider callback. The token is invoked each time a token is required.
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -305,7 +333,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadTokenProviderAuthentication(tokenProviderCallback);
 ```
 
-### Using X.509 certificate
+### Authentication with X.509 certificate
+
+The following example shows how to authenticate to a Kusto service using Microsoft Entra ID for federated authentication with an application certificate.
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -317,7 +347,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadApplicationCertificateAuthentication(appId, appCert, authority, sendX5c);
 ```
 
-### Using X.509 certificate by thumbprint (client attempts to load the certificate from local store)
+### Authentication with X.509 certificate thumbprint
+
+The following example shows how to set up a connection to a Kusto service using Microsoft Entra ID with an application certificate thumbprint. The client attempts to load the certificate from a local store.
 
 ```csharp
 var kustoUri = "serviceURI";
