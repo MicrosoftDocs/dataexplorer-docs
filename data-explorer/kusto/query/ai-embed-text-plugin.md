@@ -117,17 +117,18 @@ datatable(TextData: string)
 
 ## Best practices
 
-Azure OpenAI embedding models are subject to heavy throttling. Frequent calls to this plugin can quickly reach throttling limits.
+Azure OpenAI embedding models are subject to heavy throttling, and frequent calls to this plugin can quickly reach throttling limits.
 
-To efficiently use the `ai_embed_text` plugin while minimizing throttling, you can follow these best practices:
+To efficiently use the `ai_embed_text` plugin while minimizing throttling and costs, follow these best practices:
 
-* Control the size of each request by adjusting the number of records (`RecordsPerRequest`) and characters per request (`CharsPerRequest`).
-* Configure retries on throttling to handle rate limits more gracefully.
-* Configure the output of underlying errors to help understand and resolve issues related to throttling by setting `ReturnSuccessfulOnly` to true.
-* Return partial results to avoid losing successfully embedded values. For failed records, either return an empty embedding value or omit it from the result, depending on the `ReturnSuccessfulOnly` flag.
-* Use the `GlobalTimeout` option to set a timeout lower than the query [timeout](../set-timeout-limits.md), ensuring progress isn't lost on successful calls up to that point.
+* **Control request size **: Adjust the number of records (`RecordsPerRequest`) and characters per request (`CharsPerRequest`).
+* **Control query timeout**: Set `GlobalTimeout` to a value lower than the query [timeout](../set-timeout-limits.md) to ensure progress isn't lost on successful calls up to that point.
+* **Handle rate limits more gracefully**: Set retries on throttling (`RetriesOnThrottling`).
+* **Return partial results**: Set `ReturnSuccessfulOnly` to false to avoid losing successfully embedded values. Failed records are omitted from the results.
 
-These practices help manage costs and improve the efficiency of embedding operations.
+## Troubleshooting
+
+To handle issues, set `ReturnSuccessfulOnly` to `true` to show underlying errors in the results. Review the errors to better understand and resolve issues related to throttling.
 
 ## Related content
 
