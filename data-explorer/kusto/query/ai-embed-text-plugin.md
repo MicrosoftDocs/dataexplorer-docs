@@ -19,7 +19,7 @@ The `ai_embed_text` plugin allows embedding of text using language models, enabl
 
 ## Syntax
 
-`evaluate` `ai_embed_text` `(`*Text*, *ConnectionString* [`,` *Options*`,` *IncludeErrorMessages*]`)`
+`evaluate` `ai_embed_text` `(`*Text*, *ConnectionString* [`,` *Options*`]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -30,7 +30,6 @@ The `ai_embed_text` plugin allows embedding of text using language models, enabl
 | *Text* | `string` | :heavy_check_mark: | The text to be embedded. The value can be a column reference or a constant scalar. |
 | *ConnectionString* | `string` | :heavy_check_mark: | Connection string for the language model in the format `<ModelDeploymentUri>;<AuthenticationMethod>`; replace `<ModelDeploymentUri>` and `<AuthenticationMethod>` with the AI model deployment URI and the authentication method respectively. |
 | *Options* | `dynamic` |  | Options that control calls to the embedding model endpoint. See [Options](#options). |
-| *IncludeErrorMessages* | `bool` |  | Flag to output errors, adding an extra column to the output table. To view the errors, set `ReturnSuccessfulOnly` to `false`. |
 
 ## Options
 
@@ -124,7 +123,7 @@ To efficiently use the `ai_embed_text` plugin while minimizing throttling, you c
 
 * Control the size of each request by adjusting the number of records (`RecordsPerRequest`) and characters per request (`CharsPerRequest`).
 * Configure retries on throttling to handle rate limits more gracefully.
-* Enable the output of underlying errors (`IncludeErrorMessages`) to help understanding and resolving issues related to throttling.
+* Configure the output of underlying errors to help understand and resolve issues related to throttling by setting `ReturnSuccessfulOnly` to true.
 * Return partial results to avoid losing successfully embedded values. For failed records, either return an empty embedding value or omit it from the result, depending on the `ReturnSuccessfulOnly` flag.
 * Use the `GlobalTimeout` option to set a timeout lower than the query [timeout](../set-timeout-limits.md), ensuring progress isn't lost on successful calls up to that point.
 
