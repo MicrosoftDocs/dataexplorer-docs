@@ -25,9 +25,6 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Syntax
 
-> [!NOTE]
-> The *simplified* syntax, which was available during preview, has been deprecated.
-
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 `.update` `[async]` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
