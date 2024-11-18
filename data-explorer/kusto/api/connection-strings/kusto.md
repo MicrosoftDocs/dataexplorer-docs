@@ -3,7 +3,7 @@ title:  Kusto connection strings
 description: This article describes Kusto connection strings.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/18/2024
 ---
 # Kusto connection strings
 
@@ -29,12 +29,12 @@ https://help.kusto.windows.net/Samples; Fed=true; Accept=true
 Several Kusto client tools support an extension over the URI prefix of the connection string that allows for a shorthand format of `@`*ClusterName*`/`*InitialCatalog*. For example, these tools translate the connection string `@help/Samples` to `https://help.kusto.windows.net/Samples; Fed=true`.
 ::: moniker-end
 
-Programmatically, the C# `Kusto.Data.KustoConnectionStringBuilder` class can parse and manipulate Kusto connection strings. This class validates all connection strings and generates a runtime exception if validation fails. This functionality is present in all flavors of Kusto SDK.
+Programmatically, the C# `Kusto.Data.KustoConnectionStringBuilder` class can parse and manipulate Kusto connection strings. This class validates all connection strings and generates a runtime exception if validation fails. This functionality is present in all flavors of the Kusto SDK.
 
 ## Trusted endpoints
 
 A connection with a Kusto endpoint can only be established if that endpoint is trusted.
-The Kusto client trusts all endpoints whose hostname part is issued by the service.
+The Kusto client trusts all endpoints whose host domain is issued by the service.
 For instance, endpoints whose DNS hostname ends with `kusto.windows.net`.
 
 By default, the client doesn't establish connections to other endpoints. In order to allow connections
@@ -45,24 +45,24 @@ KustoTrustedEndpoints.AddTrustedHosts(
     new[]
     {
         // Allow an explicit service address
-        new FastSuffixMatcher.MatchRule("my-kusto.contoso.com", exact: true),
+        new FastSuffixMatcher<EndpointContext>.MatchRule("my-kusto.contoso.com", exact: true, new EndpointContext(EndpointType.Kusto)),
         // Allow services whose DNS name end with ".contoso.com"
-        new FastSuffixMatcher.MatchRule(".contoso.com", exact: false),
+        new FastSuffixMatcher<EndpointContext>.MatchRule(".contoso.com", exact: false, new EndpointContext(EndpointType.Kusto)),
     }
 );
 ```
 
 ## Connection string properties
 
-The following tables list all the possible properties that can be included in a Kusto connection string. The tables also provide alias names for each property. Moreover, the tables indicate the programmatic names associated with each property, which represents the name of the property in the `Kusto.Data.KustoConnectionStringBuilder` object.
+The following tables list all the possible properties that can be included in a Kusto connection string and provide alias names for each property. Additionally, the tables note the programmatic name associated with each property, which represents the name of the property in the `Kusto.Data.KustoConnectionStringBuilder` object.
 
 ### General properties
 
 | Property name | Programmatic name | Description |
-|--|--|--|
-| Client Version for Tracing | TraceClientVersion | When tracing the client version, use this property. |
+|---|---|---|
+| Client Version for Tracing | TraceClientVersion | The property used when tracing the client version. |
 | Data Source</br></br>**Aliases:** Addr, Address, Network Address, Server | DataSource | The URI specifying the Kusto service endpoint. For example, `https://mycluster.kusto.windows.net`. |
-| Initial Catalog</br></br>**Alias:** Database | InitialCatalog | The name of the database to be used by default. For example, `MyDatabase`. |
+| Initial Catalog</br></br>**Alias:** Database | InitialCatalog | The default database name. For example, `MyDatabase`. |
 | Query Consistency</br></br>**Alias:** QueryConsistency | QueryConsistency | Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running. |
 
 ### User authentication properties
@@ -71,7 +71,7 @@ The following tables list all the possible properties that can be included in a 
 |--|--|--|
 | Microsoft Entra ID Federated Security </br></br>**Aliases:** Federated Security, Federated, Fed, AADFed | FederatedSecurity | A boolean value that instructs the client to perform Microsoft Entra authentication.|
 | Authority ID </br></br>**Alias:** TenantId | Authority | A string value that provides the name or ID of the user's tenant. The default value is `microsoft.com`. For more information, see [Microsoft Entra authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
-| Enforce MFA </br></br>**Alias:** MFA, EnforceMFA | EnforceMfa | An optional boolean value that instructs the client to acquire a multifactor-authentication token. |
+| Enforce MFA </br></br>**Alias:** MFA, EnforceMFA | EnforceMfa | An optional boolean value that instructs the client to acquire a multifactor authentication token. |
 | User ID </br></br>**Aliases:** UID, User | UserID | A string value that instructs the client to perform user authentication with the indicated user name. |
 | User Name for Tracing | TraceUserName | An optional string value that reports to the service which user name to use when tracing the request internally. |
 | User Token </br></br>**Aliases:** UsrToken, UserToken | UserToken | A string value that instructs the client to perform user authentication with the specified bearer token. </br></br>Overrides `ApplicationClientId`, `ApplicationKey`, and `ApplicationToken`. If specified, skips the actual client authentication flow in favor of the provided token. |
@@ -119,19 +119,19 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 1. The application should be configured to accept the given certificate. [How to authentication based-on Microsoft Entra application's certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential).
 1. The application should be configured as an authorized principal in the relevant Kusto environment.
 1. The certificate needs to be installed in Local Machine store or in Current User store.
-1. The certificate's public key should contain at least 2048 bits.
+1. The certificate's public key should contain at least 2,048 bits.
 
 ### Client communication properties
 
 | Property name | Programmatic name | Description |
 |--|--|--|
 | Accept | Accept |A boolean value that requests detailed error objects to be returned on failure. |
-| Streaming | Streaming | A boolean value that requests the client not accumulate data before providing it to the caller. This is a default behavior. |
+| Streaming | Streaming | A boolean value that requests the client not accumulate data before providing it to the caller. Streaming is a default behavior. |
 | Uncompressed | Uncompressed | A boolean value that requests the client not ask for transport-level compression. |
 
 > [!NOTE]
-> When the `Streaming` flag is enabled (as is the default),
-> the SDK does not buffer all response data in memory;
+> When the `Streaming` flag is enabled (the default),
+> the SDK doesn't buffer all response data in memory;
 > instead, it "pulls" the data from the service when the caller
 > requests it. Therefore, it is essential that in this case
 > the caller properly disposes of the data (such as `IDataReader`)
@@ -141,7 +141,8 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 ## Examples
 
 :::moniker range="azure-data-explorer"
-**Microsoft Entra ID Federated authentication using the currently logged-on user identity (user will be prompted if required)**
+
+### Microsoft Entra ID Federated authentication using the currently logged-on user identity (user is prompted when required)
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -151,7 +152,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority}"
 ```
 
-**Microsoft Entra ID Federated authentication with user id hint (user will be prompted if required)**
+### Microsoft Entra ID Federated authentication with user ID hint (user is prompted when required)
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -162,7 +163,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority};User ID={userId}"
 ```
 
-**Microsoft Entra ID Federated application authentication using ApplicationClientId and ApplicationKey**
+### Microsoft Entra ID Federated application authentication using ApplicationClientId and ApplicationKey
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -174,7 +175,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppKey={appKey};Authority Id={authority}"
 ```
 
-**Using System-assigned Managed Identity**
+### Using System-assigned Managed Identity
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -182,7 +183,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadSystemManagedIdentity();
 ```
 
-**Using User-assigned Managed Identity**
+### Using User-assigned Managed Identity
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -191,7 +192,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadUserManagedIdentity(managedIdentityClientId);
 ```
 
-**Microsoft Entra ID Federated authentication using user / application token**
+### Microsoft Entra ID Federated authentication using user / application token
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -209,7 +210,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: "Data Source={kustoUri};Database=NetDefaultDB;Fed=True;ApplicationToken={appAccessToken}"
 ```
 
-**Using token provider callback (will be invoked each time a token is required)**
+### Using token provider callback (invoked each time a token is required)
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -218,7 +219,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadTokenProviderAuthentication(tokenProviderCallback);
 ```
 
-**Using X.509 certificate**
+### Using X.509 certificate 
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -230,7 +231,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadApplicationCertificateAuthentication(appId, appCert, authority, sendX5c);
 ```
 
-**Using X.509 certificate by thumbprint (client will attempt to load the certificate from local store)**
+### Using X.509 certificate by thumbprint (client attempts to load the certificate from local store)
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -242,9 +243,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppCert={appCert};Authority Id={authority}"
 ```
 ::: moniker-end
-
 :::moniker range="microsoft-fabric"
-**Microsoft Entra ID Federated authentication using the currently logged-on user identity (user will be prompted if required)**
+
+### Microsoft Entra ID Federated authentication using the currently logged-on user identity (user is prompted when required)
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -254,7 +255,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority}"
 ```
 
-**Microsoft Entra ID Federated authentication with user id hint (user will be prompted if required)**
+### Microsoft Entra ID Federated authentication with user ID hint (user is prompted when required)
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -265,7 +266,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority};User ID={userId}"
 ```
 
-**Microsoft Entra ID Federated application authentication using ApplicationClientId and ApplicationKey**
+### Microsoft Entra ID Federated application authentication using ApplicationClientId and ApplicationKey
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -277,7 +278,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppKey={appKey};Authority Id={authority}"
 ```
 
-**Microsoft Entra ID Federated authentication using user / application token**
+### Microsoft Entra ID Federated authentication using user / application token
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -295,7 +296,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: "Data Source={kustoUri};Database=NetDefaultDB;Fed=True;ApplicationToken={appAccessToken}"
 ```
 
-**Using token provider callback (will be invoked each time a token is required)**
+### Using token provider callback (invoked each time a token is required)
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -304,7 +305,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadTokenProviderAuthentication(tokenProviderCallback);
 ```
 
-**Using X.509 certificate**
+### Using X.509 certificate
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -316,7 +317,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadApplicationCertificateAuthentication(appId, appCert, authority, sendX5c);
 ```
 
-**Using X.509 certificate by thumbprint (client will attempt to load the certificate from local store)**
+### Using X.509 certificate by thumbprint (client attempts to load the certificate from local store)
 
 ```csharp
 var kustoUri = "serviceURI";
@@ -327,5 +328,5 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadApplicationThumbprintAuthentication(appId, appCert, authority);
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppCert={appCert};Authority Id={authority}"
 ```
-::: moniker-end
 
+::: moniker-end
