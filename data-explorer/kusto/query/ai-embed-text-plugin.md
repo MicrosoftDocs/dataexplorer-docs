@@ -121,7 +121,7 @@ Azure OpenAI embedding models are subject to heavy throttling, and frequent call
 
 To efficiently use the `ai_embed_text` plugin while minimizing throttling and costs, follow these best practices:
 
-* **Control request size **: Adjust the number of records (`RecordsPerRequest`) and characters per request (`CharsPerRequest`).
+* **Control request size**: Adjust the number of records (`RecordsPerRequest`) and characters per request (`CharsPerRequest`).
 * **Control query timeout**: Set `GlobalTimeout` to a value lower than the query [timeout](../set-timeout-limits.md) to ensure progress isn't lost on successful calls up to that point.
 * **Handle rate limits more gracefully**: Set retries on throttling (`RetriesOnThrottling`).
 * **Return partial results**: Set `ReturnSuccessfulOnly` to false to avoid losing successfully embedded values. Failed records are omitted from the results.
