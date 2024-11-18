@@ -52,8 +52,8 @@ The following table lists the management commands and functions used for managin
 
 * [Stored functions](../query/schema-entities/stored-functions.md)
 :::moniker range="azure-data-explorer"
-* [Visualize data with Azure Data Explorer dashboards](/azure/data-explorer/azure-data-explorer-dashboards)
+* [Pin a query to Azure Data Explorer dashboards](/azure/data-explorer/azure-data-explorer-dashboards#pin-tile-from-query)
 ::: moniker-end
 :::moniker range="microsoft-fabric"
-* [Create a Real-Time Dashboard](/fabric/real-time-intelligence/dashboard-real-time-create)
+* [Add a query to a Real-Time Dashboard tile](/fabric/real-time-intelligence/dashboard-real-time-create#add-tile)
 ::: moniker-end
