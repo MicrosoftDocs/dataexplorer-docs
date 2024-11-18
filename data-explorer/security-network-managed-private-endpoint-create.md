@@ -200,7 +200,7 @@ Your cluster can now connect to the resource using the managed private endpoint 
 
 You can create multiple managed private endpoints using ARM templates and Terraform. The following examples ensure that the managed private endpoint to the Event Hubs namespace is created before the one to the Storage account.
 
-### [Create multiple managed private endpoints using an ARM template](#tab/ARM-template)
+### [ARM template](#tab/ARM-template)
 
 The following example uses an ARM template to create two managed private endpoints in an Azure Data Explorer cluster. The first endpoint connects to an Event Hubs namespace. The second endpoint connects to a Storage account, with a dependency that ensures that the Event Hubs endpoint is created first.
 
@@ -272,7 +272,7 @@ The following example uses an ARM template to create two managed private endpoin
 }
 ```
 
-### [Create multiple managed private endpoints using a Terraform configuration](#tab/Terraform-configuration)
+### [Terraform configuration](#tab/Terraform-configuration)
 
 The following example uses a Terraform configuration that creates two managed private endpoints in an Azure Data Explorer cluster. The first endpoint connects to an Event Hubs namespace. The second endpoint connects to a Storage account, with a dependency that ensures that the Event Hubs endpoint is created first.
 
