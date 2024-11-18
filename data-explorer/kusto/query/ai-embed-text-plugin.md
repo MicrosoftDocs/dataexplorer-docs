@@ -19,7 +19,7 @@ The `ai_embed_text` plugin allows embedding of text using language models, enabl
 
 ## Syntax
 
-`evaluate` `ai_embed_text` `(`*Text*, *ConnectionString* [`,` *Options*]`)`
+`evaluate` `ai_embed_text` `(`*text*, *connectionString* [`,` *options*]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -27,9 +27,9 @@ The `ai_embed_text` plugin allows embedding of text using language models, enabl
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Text* | `string` | :heavy_check_mark: | The text to be embedded. The value can be a column reference or a constant scalar. |
-| *ConnectionString* | `string` | :heavy_check_mark: | Connection string for the language model in the format `<ModelDeploymentUri>;<AuthenticationMethod>`; replace `<ModelDeploymentUri>` and `<AuthenticationMethod>` with the AI model deployment URI and the authentication method respectively. |
-| *Options* | `dynamic` |  | Options that control calls to the embedding model endpoint. See [Options](#options). |
+| *text* | `string` | :heavy_check_mark: | The text to embed. The value can be a column reference or a constant scalar. |
+| *connectionString* | `string` | :heavy_check_mark: | The connection string for the language model in the format `<ModelDeploymentUri>;<AuthenticationMethod>`; replace `<ModelDeploymentUri>` and `<AuthenticationMethod>` with the AI model deployment URI and the authentication method respectively. |
+| *options* | `dynamic` |  | The options that control calls to the embedding model endpoint. See [Options](#options). |
 
 ## Options
 
@@ -86,9 +86,9 @@ To configure these policies, use the commands in the following steps:
 
 ## Returns
 
-Returns two embedding columns in the results: one with the **_embedding** suffix, which contains the embedding values, and another with the **_embedding_error** suffix, which contains error strings or is left empty if the operation is successful.
+Returns two new embedding columns for each record in the results: one with the **_embedding** suffix, which contains the embedding values, and another with the **_embedding_error** suffix, which contains error strings or is left empty if the operation is successful.
 
-If the input is a column reference, the plugin returns the input table with these two additional columns. If the input is a constant scalar, the plugin returns a single record containing the **_embedding** and **_embedding_error** columns.
+If the input is a column reference, the plugin returns the input table with these two additional columns prefixed with the reference column name. If the input is a constant scalar, the plugin returns a single record containing the **_embedding** and **_embedding_error** columns.
 
 ## Examples
 
