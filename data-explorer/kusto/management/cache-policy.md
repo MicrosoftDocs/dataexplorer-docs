@@ -3,8 +3,7 @@ title:  Caching policy (hot and cold cache)
 description: This article describes caching policy (hot and cold cache).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
-monikerRange:  "microsoft-fabric || azure-data-explorer"
+ms.date: 11/11/2024
 ---
 # Caching policy (hot and cold cache)
 
@@ -22,6 +21,9 @@ The best query performance is achieved when all ingested data is cached. However
 
 Use management commands to alter the caching policy at the [database](alter-database-cache-policy-command.md), [table](alter-table-cache-policy-command.md), or [materialized view](alter-materialized-view-cache-policy-command.md) level.
 
+> [!NOTE]
+> For information about the consumption rate, see [Eventhouse and KQL database consumption](/fabric/real-time-intelligence/real-time-intelligence-consumption).
+
 ::: moniker-end
 
 ::: moniker range="azure-data-explorer"
@@ -36,13 +38,13 @@ Use management commands to alter the caching policy at the [cluster](alter-clust
 
 ## How caching policy is applied
 
-When data is ingested, the system keeps track of the date and time of the ingestion, and of the extent that was created. The extent's ingestion date and time value (or maximum value, if an extent was built from multiple pre-existing extents), is used to evaluate the caching policy.
+When data is ingested, the system keeps track of the date and time of the ingestion, and of the extent that was created. The extent's ingestion date and time value (or maximum value, if an extent was built from multiple preexisting extents), is used to evaluate the caching policy.
 
 > [!NOTE]
 > You can specify a value for the ingestion date and time by using the ingestion property `creationTime`.
 > When doing so, make sure the `Lookback` property in the table's effective [Extents merge policy](merge-policy.md) is aligned with the values you set for `creationTime`.
 
-By default, the effective policy is `null`, which means that all the data is considered **hot**. A `null` policy at the table level means that the policy will be inherited from the database. A non-`null` table-level policy overrides a database-level policy.
+By default, the effective policy is `null`, which means that all the data is considered **hot**. A `null` policy at the table level means that the policy is inherited from the database. A non-`null` table-level policy overrides a database-level policy.
 
 ## Scoping queries to hot cache
 
@@ -65,7 +67,7 @@ The `default` value indicates use of the default settings, which determine that 
 
 If there's a discrepancy between the different methods, then `set` takes precedence over the client request property. Specifying a value for a table reference takes precedence over both.
 
-For example, in the following query, all table references use hot cache data only, except for the second reference to "T", that is scoped to all the data:
+For example, in the following query, all table references use hot cache data only, except for the second reference to "T" that is scoped to all the data:
 
 ```kusto
 set query_datascope="hotcache";
@@ -86,7 +88,7 @@ Example:
 * `SoftDeletePeriod` = 56d
 * `hot cache policy` = 28d
 
-In the example, the last 28 days of data will be on the SSD and the additional 28 days of data will be stored in Azure blob storage. You can run queries on the full 56 days of data.
+In the example, the last 28 days of data is stored on the SSD and the additional 28 days of data is stored in Azure blob storage. You can run queries on the full 56 days of data.
 
 ## Related content
 

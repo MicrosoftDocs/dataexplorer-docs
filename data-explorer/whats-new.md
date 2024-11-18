@@ -3,11 +3,20 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/14/2024
+ms.date: 11/10/2024
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## October 2024
+
+## Management
+
+|Article title | Description|
+|--|--|
+| [Change column type without data loss](/kusto/management/change-column-type-without-data-loss?view=azure-data-explorer&preserve-view=true) | New article. Learn how to preserve preexisting data by changing column type without data loss. |
+| [.alter column command](/kusto/management/alter-column?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for changing column type without data loss. |
 
 ## September 2024
 
@@ -189,12 +198,3 @@ No updates.
 | Article title | Description |
 |--|--|
 | [Materialized views use cases](/kusto/management/materialized-views/materialized-view-use-cases?view=azure-data-explorer&preserve-view=true)| New article. Describes common and advanced use cases for materialized views.|
-
-## October 2023
-
-**General**
-
-| Article title | Description |
-|--|--|
-|- [Ingest data with Fluent Bit](fluent-bit.md) <br/> - [Data connectors overview](integrate-data-overview.md)| New article that describes how to ingest data from Fluent Bit, and updated data connector overview with additional capabilities.|
-| [Connect a cluster behind a private endpoint to a Power BI service](power-bi-private-endpoint.md)| New article. Describes how to connect an Azure Data Explorer cluster behind a private endpoint to a Power BI service.|
