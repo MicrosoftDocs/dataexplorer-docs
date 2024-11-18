@@ -4,12 +4,7 @@ description: This article describes caching policy (hot and cold cache).
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/11/2024
-<<<<<<< HEAD
 ---
-=======
-monikerRange:  "microsoft-fabric || azure-data-explorer"
-=======
->>>>>>> 52b90e35d8122b01c44711a4fcdf78694d0557f6
 # Caching policy (hot and cold cache)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
