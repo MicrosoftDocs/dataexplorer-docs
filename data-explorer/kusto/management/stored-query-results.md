@@ -3,7 +3,7 @@ title: Stored query results
 description: Learn how to manage stored query results.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/18/2024
 ---
 
 # Stored query results
@@ -47,3 +47,13 @@ The following table lists the management commands and functions used for managin
 |[.show stored_query_result command](show-stored-query-result-command.md)| Shows information on active query results. |
 |[.drop stored_query_result command](drop-stored-query-result-command.md)| Deletes active query results.|
 |[stored_query_result()](../query/stored-query-result-function.md)| Retrieves a stored query result. |
+
+## Related Content
+
+* [Stored functions](../query/schema-entities/stored-functions.md)
+:::moniker range="azure-data-explorer"
+* [Visualize data with Azure Data Explorer dashboards](/azure/data-explorer/azure-data-explorer-dashboards.md)
+::: moniker-end
+:::moniker range="microsoft-fabric"
+* [Create a Real-Time Dashboard](/fabric/real-time-intelligence/dashboard-real-time-create)
+::: moniker-end
