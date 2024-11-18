@@ -51,17 +51,21 @@ The [.show capacity](show-capacity-command.md) command returns the cluster's ing
 |--|--|--|
 | `MinimumConcurrentOperationsPerNode` | `long` | The minimal number of concurrent extents merge/rebuild operations on a single node. Default is `1`. |
 | `MaximumConcurrentOperationsPerNode` |`long` | The maximum number of concurrent extents merge/rebuild operations on a single node. Default is `5`. |
+| `ClusterMaximumConcurrentOperations`  | `long` | The maximum number of concurrent extents merge/rebuild operations allowed in a cluster. This value caps the total merge capacity, as shown in the following formula. |
 
 **Formula**
 
 The [.show capacity](show-capacity-command.md) command returns the cluster's extents merge capacity based on the following formula:
 
-*Number of nodes in cluster* `*` *Concurrent operations per node*
+`Minimum([Number of nodes in cluster * Concurrent operations per node], ClusterMaximumConcurrentOperations)`
 
 The effective value for *Concurrent operations per node* is automatically adjusted by the system in the range [`MinimumConcurrentOperationsPerNode`,`MaximumConcurrentOperationsPerNode`], as long as the success rate of the merge operations is 90% or higher.
 
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in merge operations, so *Number of nodes in cluster* is reduced by one.
+
+> [!WARNING]
+> Consult with the support team before altering the extents merge capacity policy.
 
 ### Extents purge rebuild capacity
 
