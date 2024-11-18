@@ -19,7 +19,7 @@ https://help.kusto.windows.net/Samples; Fed=true; Accept=true
 
 > [!NOTE]
 >
-> * Property names are not case sensitive.
+> * Property names aren't case sensitive.
 > * Property values are case sensitive.
 > * Spaces between name-value parameter pairs are ignored.
 > * A property value that contains a semicolon (`;`), a single quotation mark (`'`), or a double quotation mark (`"`)
@@ -126,8 +126,8 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 | Property name | Programmatic name | Description |
 |--|--|--|
 | Accept | Accept |A boolean value that requests detailed error objects to be returned on failure. |
-| Streaming | Streaming | A boolean value that requests the client not accumulate data before providing it to the caller. Streaming is a default behavior. |
-| Uncompressed | Uncompressed | A boolean value that requests the client not ask for transport-level compression. |
+| Streaming | Streaming | A boolean value that requests that client provide data immediately to the caller without accumulating it first. Streaming is a default behavior. |
+| Uncompressed | Uncompressed | A boolean value that instructs the client to avoid requesting transport-level compression. |
 
 > [!NOTE]
 > When the `Streaming` flag is enabled (the default),
