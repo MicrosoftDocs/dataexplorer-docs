@@ -84,6 +84,12 @@ To configure these policies, use the commands in the following steps:
     ```
     ~~~
 
+## Returns
+
+Returns two embedding columns in the results: one with the **_embedding** suffix, which contains the embedding values, and another with the **_embedding_error** suffix, which contains error strings or is left empty if the operation is successful.
+
+If the input is a column reference, the plugin returns the input table with these two additional columns. If the input is a constant scalar, the plugin returns a single record containing the **_embedding** and **_embedding_error** columns.
+
 ## Examples
 
 The following example embeds the text `Embed this text using AI` using the Azure OpenAI Embedding model.
@@ -124,11 +130,6 @@ To efficiently use the `ai_embed_text` plugin while minimizing throttling and co
 * **Control request size**: Adjust the number of records (`RecordsPerRequest`) and characters per request (`CharsPerRequest`).
 * **Control query timeout**: Set `GlobalTimeout` to a value lower than the query [timeout](../set-timeout-limits.md) to ensure progress isn't lost on successful calls up to that point.
 * **Handle rate limits more gracefully**: Set retries on throttling (`RetriesOnThrottling`).
-* **Return partial results**: Set `ReturnSuccessfulOnly` to false to avoid losing successfully embedded values. Failed records are omitted from the results.
-
-## Troubleshooting
-
-To handle issues, set `ReturnSuccessfulOnly` to `true` to show underlying errors in the results. Review the errors to better understand and resolve issues related to throttling.
 
 ## Related content
 
