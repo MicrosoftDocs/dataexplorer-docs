@@ -56,3 +56,9 @@ StormEvents
 |EventType|
 |---|
 |Strong Wind|
+
+## Related content
+
+* [take_any function](take-any-aggregation-function.md)
+* [arg_max function](arg-max-aggregation-function.md)
+* [arg_min function](arg-min-aggregation-function.md)

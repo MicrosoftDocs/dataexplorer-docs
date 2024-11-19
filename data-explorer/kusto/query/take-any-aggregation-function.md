@@ -117,3 +117,9 @@ StormEvents
 |AMERICAN SAMOA|2007-12-07 14:00:00.0000000|13183|Flash Flood|
 |ARKANSAS|2007-12-09 16:00:00.0000000|11319|Lightning|
 |ALABAMA|2007-12-15 18:00:00.0000000|12580|Heavy Rain|
+
+## Related content
+
+* [take_anyif function](take-anyif-aggregation-function.md)
+* [arg_max function](arg-max-aggregation-function.md)
+* [arg_min function](arg-min-aggregation-function.md)
