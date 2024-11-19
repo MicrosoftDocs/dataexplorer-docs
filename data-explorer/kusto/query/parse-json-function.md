@@ -3,13 +3,10 @@ title:  parse_json() function
 description: Learn how to use the parse_json() function to return an object of type `dynamic`.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/11/2024
+ms.date: 11/19/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # parse_json()
-
-<!-- CHECK EXAMPLE DEEP LINKS -->
-
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
@@ -51,13 +48,16 @@ then the following query retrieves the value of the `duration` slot in the objec
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/SamplesXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQwWrEIBCG7z6FzCUrBDdpm1Jccttn6KVbxKiUlKgh6rKQ5t07zW5p9lAH8ffnd%2FgcoxJWN9idDj7ZS5I6xxScdDZNvY4i4uE%2FGHkjFFcxg8mTSn3wIGY4qyFbEHX9wqsSdMg%2BgWh%2BtOsxUFfVqtUFdbPqmMzRnkFcL8qNgzWvd11idje9LAV5J18Uqaw31NCWjmqKVn7G4P%2FhZZv8DVSulPjY8F%2BLr1b5F0Hc%2BwAaZL8fbKKmxU8rRHp4LCl0IGA%2BnUDjFk%2FN8wJLccDkiFPCrOykbjeQKVznt9t4hvGOMa6%2FATyHTkd7AQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-Table_Name
-| extend d=parse_json(context_custom_metrics) 
-| extend duration_value=d.duration.value, duration_min=d["duration"]["min"]
+datatable(context_custom_metrics:string)
+[
+    '{"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}'
+]
+| extend d = parse_json(context_custom_metrics)
+| extend duration_value = d.duration.value, duration_min = d.duration.min
 ```
 
 **Notes**
@@ -68,7 +68,7 @@ For example:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/SamplesXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIsVWvVkpUsjI0MtZRUEpSslKqjolRSgZiKxNTs1qlWnVrroKizDygSgBlQYoVLwAAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -80,8 +80,9 @@ In such cases, it isn't only necessary to invoke `parse_json` twice, but also to
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/SamplesXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIsVWvVkpUsjI0MtZRUEpSslKqjolRSgZiKxNTs1qlWnVrroKizDygyvik%2BGTbgsSi4tT4rOL8PI2S%2FOISoEy6BpJYiqZekqamXjIAxeS%2BXVsAAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
+
 
 ```kusto
 let d='{"a":123, "b":"{\\"c\\":456}"}';
