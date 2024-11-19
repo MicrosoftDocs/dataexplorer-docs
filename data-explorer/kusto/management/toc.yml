@@ -557,7 +557,7 @@ items:
           - name: .delete query acceleration policy command
             href: delete-query-acceleration-policy-command.md
             displayName: external table, delta table
-          - name: .show external table operations query acceleration statistcs command
+          - name: .show external table operations query acceleration statistics command
             href: show-external-table-operations-query-acceleration-statistics.md
             displayName: external table, delta table 
           - name: .show query acceleration policy command
