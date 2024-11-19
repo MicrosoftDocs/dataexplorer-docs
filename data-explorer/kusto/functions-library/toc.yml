@@ -5,7 +5,7 @@ items:
 - name: Cybersecurity functions
   items:
     - name: detect_anomalous_new_entity_fl()
-      displayName: functions library, security, anomaly detection, new entity
+      displayName: functions library, security, cybersecurity, anomaly detection, new entity, novelty
       href: detect-anomalous-new-entity-fl.md
 - name: bartlett_test_fl()
   displayName: functions library, statistical test
