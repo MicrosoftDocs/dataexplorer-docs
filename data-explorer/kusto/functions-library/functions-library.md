@@ -51,7 +51,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [series_metric_fl()](series-metric-fl.md) | Select and retrieve time series stored with the Prometheus data model. |
 | [series_rate_fl()](series-rate-fl.md) | Calculate the average rate of counter metric increase per second. |
 
-## Security research functions
+## Cybersecurity functions
 
 | Function Name | Description |
 |--|--|
