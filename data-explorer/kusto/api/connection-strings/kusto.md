@@ -130,11 +130,7 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 | Uncompressed | Uncompressed | A boolean value that instructs the client to avoid requesting transport-level compression. |
 
 > [!NOTE]
-> When the `Streaming` flag is enabled (the default),
-> the SDK doesn't buffer all response data in memory;
-> instead, it "pulls" the data from the service when the caller
-> requests it. Therefore, it is essential that in this case
-> the caller properly disposes of the data (such as `IDataReader`)
+> When the `Streaming` flag is enabled (default), the SDK doesn't buffer all response data in memory; instead, it "pulls" the data from the service when the caller requests it. Therefore, it is essential that in this case the caller properly disposes of the data, such as `IDataReader`.
 > once it is done reading the data, as the network connection
 > to the service is held open unnecessarily.
 
