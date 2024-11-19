@@ -311,7 +311,7 @@ resource "azapi_resource" "mpe_to_storage" {
 
 ## Automatic approval
 
-You can [automatically approve](/azure/private-link/private-endpoint-overview#access-to-a-private-link-resource-using-approval-workflow) a managed private endpoint if the requesting identity has the **Microsoft.\<Provider>/<ResourceType>/privateEndpointConnectionsApproval/action** permission on the target resource of the managed private endpoint.
+You can [automatically approve](/azure/private-link/private-endpoint-overview#access-to-a-private-link-resource-using-approval-workflow) a managed private endpoint if the requesting identity has the **Microsoft.\<Provider>/\<ResourceType>/privateEndpointConnectionsApproval/action** permission on the target resource of the managed private endpoint.
 
 ## Related content
 
