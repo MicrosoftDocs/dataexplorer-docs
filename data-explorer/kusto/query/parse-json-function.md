@@ -48,7 +48,7 @@ then the following query retrieves the value of the `duration` slot in the objec
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQwWrEIBCG7z6FzCUrBDdpm1Jccttn6KVbxKiUlKgh6rKQ5t07zW5p9lAH8ffnd%2FgcoxJWN9idDj7ZS5I6xxScdDZNvY4i4uE%2FGHkjFFcxg8mTSn3wIGY4qyFbEHX9wqsSdMg%2BgWh%2BtOsxUFfVqtUFdbPqmMzRnkFcL8qNgzWvd11idje9LAV5J18Uqaw31NCWjmqKVn7G4P%2FhZZv8DVSulPjY8F%2BLr1b5F0Hc%2BwAaZL8fbKKmxU8rRHp4LCl0IGA%2BnUDjFk%2FN8wJLccDkiFPCrOykbjeQKVznt9t4hvGOMa6%2FATyHTkd7AQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOQQrDIBBF955C3KSBEJJFoAjd9QzdlCJWpaREDXEMgTR379SmtFnUWfjm85WnJeBcO7NT3oGZQKgYwFthDQytCjzg5W45OROKJ5uZjoOE1jvGZzbKLhrG63pfVgVTPjpgvHmxbbFQV1ViOSE3iQPooxkZfy%2FS9p3Rp80vIdqVlyUjF%2FKgaGWcppoeaC%2BHYMQ9ePfHN%2F%2Fpr6IiWeJjXX6iMkXFt4K62wIGT8RU1acbAQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
