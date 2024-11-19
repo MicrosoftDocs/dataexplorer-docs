@@ -3,7 +3,7 @@ title:  .update table command
 description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 08/22/2024
+ms.date: 11/18/2024
 ---
 # .update table command
 
@@ -24,9 +24,6 @@ The `.update table` command performs data updates in a specified table by deleti
 You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
-
-> [!NOTE]
-> The *simplified* syntax, which was available during preview, has been deprecated.
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
