@@ -97,6 +97,7 @@ The following example renders a timechart that depicts crop damage grouped by we
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQrCMBBF957i01UCVlpddFU36gn0AqkZbKBJJR2tiod3GoogDgMz/JnP+0fuoz/cKfCweGNsKRKObCKfnCc0xCNRgLKGiUVR66Ko8qKU1lit8KuX63xTao0FpEyw2BtvLrSL/XXAFoUQhpv3JroXIUF3/S0wapynqTSaJxoX1DfBEpXVYosULEVMqHMrt0QYHbdQaWXHHdXZRJJMExT9fTZky/TymH/2EnmWnv+2+dLRRYh166ylkBT9AeKYKXcqAQAA" target="_blank">Run the query</a>
 ::: moniker-end
+
 ::: moniker range="microsoft-fabric || azure-data-explorer"
 
 ```kusto
