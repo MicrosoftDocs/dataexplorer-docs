@@ -179,6 +179,7 @@ For more information, see [Supported request properties](request-properties.md#s
 ### Send show database caching policy command
 
 The following example sends a request to show the `Samples` database caching policy. 
+
 ```json
 
 {
