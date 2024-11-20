@@ -3,7 +3,7 @@ title: Query consistency policy
 description: Learn how to use the query consistency policy to control the consistency mode of queries.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/20/2024
 ---
 # Query consistency policy
 
@@ -46,6 +46,10 @@ The following limits are configurable:
   }
 }
 ```
+
+## Monitoring
+
+You can monitor the latency of the age of the metadata snapshot used by nodes running the weak consistency service by using the `Weak consistency latency` metric (part of the [Query metrics](../../using-metrics.md#query-metrics)).
 
 ## Related content
 
