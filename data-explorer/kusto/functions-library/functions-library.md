@@ -14,6 +14,12 @@ The following article contains a categorized list of [UDF (user-defined function
 
 The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](../management/create-function.md).
 
+## Cybersecurity functions
+
+| Function Name | Description |
+|--|--|
+| [detect_anomalous_new_entity_fl()](detect-anomalous-new-entity-fl.md) | Detect the appearance of anomalous new entities in timestamped data. |
+
 ## General functions
 
 | Function Name | Description |
@@ -51,11 +57,6 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [series_metric_fl()](series-metric-fl.md) | Select and retrieve time series stored with the Prometheus data model. |
 | [series_rate_fl()](series-rate-fl.md) | Calculate the average rate of counter metric increase per second. |
 
-## Cybersecurity functions
-
-| Function Name | Description |
-|--|--|
-| [detect_anomalous_new_entity_fl()](detect-anomalous-new-entity-fl.md) | Detect the appearance of anomalous new entities in timestamped data. |
 
 ## Series processing functions
 
