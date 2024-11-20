@@ -28,7 +28,7 @@ A time chart visual is a type of line graph. The first column of the query is th
 | *T* | `string` |  :heavy_check_mark: | Input table name.
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-::: moniker range="microsoft-fabric  || azure-data-explorer"
+::: moniker range="microsoft-fabric || azure-data-explorer"
 
 ### Supported properties
 
@@ -72,7 +72,7 @@ The following example renders a timechart with a title "Web app. traffic over a 
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WqDQBCF7%2FMU506l2qilFBp8igR6KRsd49L9kXXy09KH72xioIX2aneYM%2Bd8M4YYVruW0aBXTKwtpXVZvRRlVZTP2WZlokJd%2FlLURfmEun4ty0XXR1E9blY9Wd9a9U7tTEHTXK%2B%2BEMviVsIdbaNOh1TeDN5hJ6ZbVnbCELxdiNgvwTPTFL33H5h1D%2FE6jxToWjQNkt22SgCs18BMhjqGkp47GEKkxRI6%2BCCNzpByFHDS81EZ%2FalYeyeWdGFyPdK9Eg%2FtKJcxNXunTA4O0soRSBJlKJMtb55tT523k58prpKjqHIkcXrQnGQ3pLtExyD4IcLJreTzE06W%2FTcvhxKyOxjSu%2FDhqssEPr6yUzTsRhUYZ81jypoNNckb7aGm6VFs1TDoDv5E8RLWOx7z33xJ9g1PIpCWEgIAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
-::: moniker range="microsoft-fabric  || azure-data-explorer"
+::: moniker range="microsoft-fabric || azure-data-explorer"
 
 ```kusto
 let min_t = datetime(2017-01-05);
@@ -98,7 +98,7 @@ The following example renders a timechart that depicts crop damage grouped by we
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQrCMBBF957i01UCVlpddFU36gn0AqkZbKBJJR2tiod3GoogDgMz/JnP+0fuoz/cKfCweGNsKRKObCKfnCc0xCNRgLKGiUVR66Ko8qKU1lit8KuX63xTao0FpEyw2BtvLrSL/XXAFoUQhpv3JroXIUF3/S0wapynqTSaJxoX1DfBEpXVYosULEVMqHMrt0QYHbdQaWXHHdXZRJJMExT9fTZky/TymH/2EnmWnv+2+dLRRYh166ylkBT9AeKYKXcqAQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
-::: moniker range="microsoft-fabric  || azure-data-explorer"
+::: moniker range="microsoft-fabric || azure-data-explorer"
 
 ```kusto
 StormEvents
@@ -128,7 +128,7 @@ The following example renders daily hail events in the states of Texas, Nebraska
 
 ::: moniker-end
 
-::: moniker range="microsoft-fabric  || azure-data-explorer"
+::: moniker range="microsoft-fabric || azure-data-explorer"
 ```kusto
 StormEvents
 | where State in ("TEXAS", "NEBRASKA", "KANSAS") and EventType == "Hail"
