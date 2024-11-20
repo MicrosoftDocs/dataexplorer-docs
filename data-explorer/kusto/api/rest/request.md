@@ -43,19 +43,19 @@ The following table contains the common headers used for query and management op
 |`Expect`|The expected response from the server. It can be set to `100-Continue`. |Optional |
 |`Host`  |The qualified domain name that the request was sent to. For example, `help.kusto.windows.net`. |Required|
 
-The following table contains the common custom headers used for query and management operations. Unless otherwise indicated, these headers are used for telemetry purposes only, and don't affect functionality.
+The following table contains the common custom headers used for query and management operations. Unless noted, these headers are used only for telemetry purposes and don’t affect functionality.
 
 All headers are optional. However, We recommend specifying the `x-ms-client-request-id` custom header.
-In some scenarios, such as canceling a running query, this header is required because it's used to identify the request.
+In some scenarios, such as canceling a running query, `x-ms-client-request-id` is required since it's used to identify the request.
 
 |Custom header  |Description     |
 |------------------------|----------------------------------------------------------------------------------------------------------|
-|`x-ms-app`     |The friendly name of the application making the request.    |
-|`x-ms-user`    |The friendly name of the user making the request.  |
-|`x-ms-user-id` |The same friendly name as `x-ms-user`.      |
-|`x-ms-client-request-id`|A unique identifier for the request.        |
-|`x-ms-client-version`   |The friendly version identifier for the client making the request.|
-|`x-ms-readonly`|If specified, forces the request to run in read-only mode, preventing the request from changing data. |
+|`x-ms-app` |The friendly name of the application making the request. |
+|`x-ms-user` |The friendly name of the user making the request. |
+|`x-ms-user-id` |The same friendly name as `x-ms-user`. |
+|`x-ms-client-request-id` |A unique identifier for the request. |
+|`x-ms-client-version` |The friendly version identifier for the client making the request.|
+|`x-ms-readonly` |If specified, it forces the request to run in read-only mode which prevents the request from changing data. |
 
 ## Request parameters
 
