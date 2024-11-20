@@ -3,7 +3,7 @@ title:  bag_unpack plugin
 description: Learn how to use the bag_unpack plugin to unpack a dynamic column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/20/2024
 ---
 # bag_unpack plugin
 
@@ -48,7 +48,9 @@ The `bag_unpack` plugin returns a table with as many records as its tabular inpu
   same type, or `dynamic`, if the values differ in type.
 
 > [!NOTE]
-> If the *OutputSchema* is not specified, the plugin's output schema varies according to the input data values. Therefore, multiple executions of the plugin using different data inputs, may produce different output schema.
+> If the *OutputSchema* isn't specified, the plugin's output schema varies according to the input data values. Therefore, multiple executions of the plugin using different data inputs, may produce different output schema.
+>
+> Null values are ignored.
 
 > [!NOTE]
 > The input data to the plugin must be such that the output schema follows all the rules for a tabular schema. In particular:
