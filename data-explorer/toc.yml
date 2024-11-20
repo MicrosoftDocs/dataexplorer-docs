@@ -333,19 +333,13 @@ items:
       - name: Query data in Azure Data Lake
         href: data-lake-query-data.md
       - name: Query data in Azure Monitor
-        items:
-          - name: Query data in Azure Monitor
-            href: query-monitor-data.md
-          - name: Export and query Azure Monitor data
-            href: query-exported-azure-monitor-data.md
+        href: query-monitor-data.md
       - name: Query data in MATLAB
         href: query-matlab.md
       - name: Query data using Power Apps
         href: power-apps-connector.md
       - name: Query data using Python
         href: python-query-data.md
-      - name: Debug KQL inline Python
-        href: debug-inline-python.md
       - name: Query data using T-SQL
         displayName: explain, sql, tsql 
         href: t-sql.md
@@ -502,10 +496,10 @@ items:
                 href: table-retention-policy-wizard.md
           - name: Data
             items:
+              - name: Delete data
+                href: /kusto/concepts/delete-data?view=azure-data-explorer&preserve-view=true
               - name: Purge data - Azure portal
                 href: data-purge-portal.md
-              - name: Delete data
-                href: delete-data.md
               - name: Deal with duplicate data
                 href: dealing-with-duplicates.md
       - name: Monitor

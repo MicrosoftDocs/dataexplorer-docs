@@ -11,7 +11,7 @@ sections:
     questions:
       - question: How does queued ingestion affect my data?
         answer: |
-          The batching manager buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5-minute delay when queueing a sample data for ingestion.
+          The batching manager buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1,000 blobs, meaning there will be at least a 5-minute delay when queueing a sample data for ingestion.
       - question: Should I use queued or streaming ingestion?
         answer: |
           Queued ingestion is optimized for high ingestion throughput, and is the preferred and most performant type of ingestion. 
@@ -19,10 +19,10 @@ sections:
           Learn more about [queued versus streaming ingestion](ingest-data-overview.md#continuous-data-ingestion).
       - question: Do I need to change the batching policy?
         answer: |
-          If default settings for the [ingestion batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true) do not suit your needs, you can try lowering the batching policy `time`. 
+          If default settings for the [ingestion batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true) don't suit your needs, you can try lowering the batching policy `time`. 
           See [Optimize for throughput](/kusto/api/netfx/kusto-ingest-best-practices?view=azure-data-explorer&preserve-view=true#optimize-for-throughput).
           You should also update settings when you scale up ingestion. 
-          When you change batching policy settings, it can take up to 5-minutes to take effect.
+          When you change batching policy settings, it can take up to 5 minutes to take effect.
       - question: What causes queued ingestion latency?
         answer: |
           Ingestion latency can result from the [ingestion batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true) settings, or a data backlog buildup. To address this, adjust the [batching policy settings](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true).
@@ -32,10 +32,10 @@ sections:
           To view queued ingestion latency metrics, see [monitoring ingestion latency](monitor-queued-ingestion.md#view-the-ingestion-latency). The metrics `Stage Latency` and `Discovery Latency` show latencies in the ingestion process, and reveal if there are any long latencies.
       - question: How can I shorten queued ingestion latencies?
         answer: |
-          You can [learn about latencies](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true#batching-latencies) and [adjust settings in the batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true) to address issues that cause latencies such as data backlogs, inefficient batching, batching large amounts of uncompressed data, or ingesting very small amounts of data.
+          You can [learn about latencies](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true#batching-latencies) and [adjust settings in the batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true) for addressing issues that cause latencies such as data backlogs, inefficient batching, batching large amounts of uncompressed data, or ingesting very small amounts of data.
       - question: How is batching data size calculated?
         answer: |
-          The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed [data size is calculated](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
+          The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed [data size is calculated](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true#batch-data-size) from ingestion batching parameters, ZIP files metadata, or factor over the compressed file size.
   - name: Ingestion monitoring, metrics, and errors
     questions:
       - question: How can I monitor ingestion issues?
@@ -51,15 +51,15 @@ sections:
         answer: |
           The full ingestion process can be monitored using ingestion [metrics](using-metrics.md) and [diagnostic logs](using-diagnostic-logs.md). 
           Ingestion failures can be monitored using the `IngestionResult` metric or the `FailedIngestion` diagnostic log.
-          The [`.show ingestion failures`](/kusto/management/ingestion-failures?view=azure-data-explorer&preserve-view=true) command shows ingestion failures associated with the data ingestion management commands, and is not recommended for monitoring errors. 
+          The [`.show ingestion failures`](/kusto/management/ingestion-failures?view=azure-data-explorer&preserve-view=true) command shows ingestion failures associated with the data ingestion management commands, and isn't recommended for monitoring errors. 
           The [`.dup-next-failed-ingest`](/kusto/management/dup-next-failed-ingest?view=azure-data-explorer&preserve-view=true) command provides information on the next failed ingestion by uploading ingestion files and metadata to a storage container. 
-          This can be useful for checking an ingestion flow, though is not advised for steady monitoring.
+          This can be useful for checking an ingestion flow, though isn't advised for steady monitoring.
       - question: What can I do if I find many retry errors?
         answer: |
           [Metrics](using-metrics.md) that include the `RetryAttemptsExceeded` metric status many times indicate that ingestion exceeded the retry attempt limit or time-span limit following a recurring transient error. 
           If this error also appears in the diagnostic log with [error code](error-codes.md) `General_RetryAttemptsExceeded` and the details "Failed to access storage and get information for the blob," this indicates a high load storage access issue.
           During Event Grid ingestion, Azure Data Explorer requests blob details from the storage account.
-          When the load is too high on a storage account, storage access may fail, and information needed for ingestion cannot be retrieved.
+          When the load is too high on a storage account, storage access may fail, and information needed for ingestion can't be retrieved.
           If attempts pass the maximum amount of retries defined, Azure Data Explorer stops trying to ingest the failed blob.
           To prevent a load issue, use a premium storage account or divide the ingested data over more storage accounts.
           To discover related errors, check the `FailedIngestion` diagnostic logs for error codes and for the paths of any failed blobs.
@@ -81,7 +81,7 @@ sections:
       - question: How can I improve ingestion with SDKs?
         answer: |
           When ingesting via SDK, you can use the ingestion [batching policy settings to improve performance](net-sdk-ingest-data.md). 
-          Try incrementally decreasing the size of data ingested in the table or database batching policy down towards 250 MB and check if there is an improvement.
+          Try incrementally decreasing the size of data ingested in the table or database batching policy down towards 250 MB. Check if there's an improvement.
       - question: How can I tune Kusto Kafka Sink for better ingestion performance?
         answer: |
           [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) users should [tune the connector](ingest-data-kafka.md) to work together with the [ingestion batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true) by tuning batching time, size, and item number.

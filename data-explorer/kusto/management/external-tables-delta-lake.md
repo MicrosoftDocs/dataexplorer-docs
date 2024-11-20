@@ -14,6 +14,8 @@ The commands in this article can be used to create or alter a delta [external ta
 > [!NOTE]
 > If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
 
+To accelerate queries over external delta tables, see [Query acceleration policy](query-acceleration-policy.md).
+
 ## Permissions
 
 To `.create` requires at least [Database User](../access-control/role-based-access-control.md) permissions, and to `.alter` requires at least [Table Admin](../access-control/role-based-access-control.md) permissions.

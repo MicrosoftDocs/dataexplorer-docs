@@ -16,6 +16,8 @@ References an [external table](schema-entities/external-tables.md) by name.
 > The `external_table` function has similar restrictions as the [table](table-function.md) function.
 > Standard [query limits](../concepts/query-limits.md) apply to external table queries as well.
 
+To accelerate queries over external delta tables, see [Query acceleration policy](../management/query-acceleration-policy.md).
+
 ## Syntax
 
 `external_table(` *TableName* [`,` *MappingName* ] `)`

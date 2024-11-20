@@ -3,12 +3,12 @@ title:  Extents (data shards)
 description:  This article describes Extents (data shards).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
-monikerRange: "azure-data-explorer"
+ms.date: 11/11/2024
+monikerRange:  "microsoft-fabric || azure-data-explorer"
 ---
 # Extents (data shards)
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Tables are partitioned into *extents*, or *data shards*. Each extent is a horizontal segment of the table that contains data and metadata such as its creation time and optional tags. The union of all these extents contains the entire dataset of the table. Extents are evenly distributed across nodes in the cluster, and they're cached in both local SSD and memory for optimized performance.
 

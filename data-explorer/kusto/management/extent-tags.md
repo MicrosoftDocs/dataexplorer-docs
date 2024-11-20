@@ -4,11 +4,11 @@ description: Learn how to create and use extent tags.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 08/11/2024
-monikerRange: "azure-data-explorer"
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Extent tags
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 An *extent tag* is a string that describes properties common to all data in an [extent](extents-overview.md). For example, during data ingestion, you can append an extent tag to signify the source of the ingested data. Then, you can use this tag for analysis.
 

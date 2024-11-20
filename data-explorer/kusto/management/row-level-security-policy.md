@@ -1,11 +1,11 @@
 ---
-title: Row Level Security
+title: Row level security policy
 description: Learn how to use the Row Level Security policy to control access to rows in a database table.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 08/11/2024
 ---
-# Row Level Security
+# Row level security policy
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -41,6 +41,7 @@ For more information, see [management commands for managing the Row Level Securi
   * When it's referenced by an [update policy](update-policy.md) query, while the update policy is not configured with a managed identity.
   * When it's referenced by a [continuous export](../management/data-export/continuous-data-export.md) that uses an authentication method other than impersonation.
   * When a [restricted view access policy](restricted-view-access-policy.md) is configured for the table.
+* The RLS query can't reference tables located in other databases.
 
 ## Examples
 

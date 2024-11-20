@@ -3,7 +3,7 @@ title:  current_principal_details()
 description: Learn how to use the current_principal_details() function to return the details of the principal running the query. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/03/2024
 ---
 # current_principal_details()
 
@@ -26,7 +26,7 @@ The details of the current principal as a [dynamic](../query/scalar-data-types/d
 |UserPrincipalName|The sign-in identifier for users. For more information, see [UPN](/azure/active-directory/hybrid/connect/plan-connect-userprincipalname#what-is-userprincipalname).|
 |IdentityProvider|The source that validates the identity of the principal.|
 |Authority|The Microsoft Entra tenant ID.|
-|Mfa|Indicates the use of [multi-factor authentication](/azure/active-directory/authentication/concept-mfa-howitworks). For more information, see [Access token claims reference](/azure/active-directory/develop/access-token-claims-reference#amr-claim).|
+|Mfa|Indicates the use of [multifactor authentication](/azure/active-directory/authentication/concept-mfa-howitworks). For more information, see [Access token claims reference](/azure/active-directory/develop/access-token-claims-reference#amr-claim).|
 |Type|The category of the principal: `aaduser`, `aadapp`, or `aadgroup`.|
 |DisplayName|The user-friendly name  for the principal that is displayed in the UI.|
 |ObjectId|The Microsoft Entra object ID for the principal.|
@@ -50,4 +50,4 @@ print details=current_principal_details()
 
 |details|
 |---|
-|{<br>  "UserPrincipalName": "user@fabrikam.com",<br>  "IdentityProvider": "https://sts.windows.net",<br>  "Authority": "72f988bf-86f1-41af-91ab-2d7cd011db47",<br>  "Mfa": "True",<br>  "Type": "AadUser",<br>  "DisplayName": "James Smith (upn: user@fabrikam.com)",<br>  "ObjectId": "346e950e-4a62-42bf-96f5-4cf4eac3f11e",<br>  "FQN": null,<br>  "Notes": null<br>}|
+|{<br>  "Country": "DE",<br>  "TenantCountry": "US",<br>  "TenantRegion": "WW",<br>  "UserPrincipalName": "user@fabrikam.com",<br>  "IdentityProvider": "https://sts.windows.net",<br>  "Authority": "aaaabbbb-0000-cccc-1111-dddd2222eeee",<br>  "Mfa": "True",<br>  "Type": "AadUser",<br>  "DisplayName": "James Smith (upn: user@fabrikam.com)",<br>  "ObjectId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",<br>  "FQN": null,<br>  "Notes": null<br>}|

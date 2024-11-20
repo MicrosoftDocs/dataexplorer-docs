@@ -80,11 +80,11 @@ You've created your Microsoft Entra application and service principal.
 
     ```json
     {
-      "appId": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
+      "appId": "00001111-aaaa-2222-bbbb-3333cccc4444",
       "displayName": "my-service-principal",
       "name": "my-service-principal",
-      "password": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
-      "tenant": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn"
+      "password": "00001111-aaaa-2222-bbbb-3333cccc4444",
+      "tenant": "00001111-aaaa-2222-bbbb-3333cccc4444"
     }
     ```
 
@@ -126,7 +126,7 @@ Once your application registration is created, you need to grant the correspondi
     For example:
 
     ```kusto
-    .add database Logs viewers ('aadapp=1234abcd-e5f6-g7h8-i9j0-1234kl5678mn;9876abcd-e5f6-g7h8-i9j0-1234kl5678mn') 'App Registration'
+    .add database Logs viewers ('aadapp=00001111-aaaa-2222-bbbb-3333cccc4444;9876abcd-e5f6-g7h8-i9j0-1234kl5678mn') 'App Registration'
     ```
 
     The last parameter is a string that shows up as notes when you query the roles associated with a database.
