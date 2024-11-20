@@ -66,10 +66,12 @@ This visualization supports splitting into multiple y-axis values:
 
 The following example renders a timechart with a title "Web app. traffic over a month, decomposing" that decomposes the data into baseline, seasonal, trend, and residual components.
 ::: moniker-end
+
 ::: moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WqDQBCF7%2FMU506l2qilFBp8igR6KRsd49L9kXXy09KH72xioIX2aneYM%2Bd8M4YYVruW0aBXTKwtpXVZvRRlVZTP2WZlokJd%2FlLURfmEun4ty0XXR1E9blY9Wd9a9U7tTEHTXK%2B%2BEMviVsIdbaNOh1TeDN5hJ6ZbVnbCELxdiNgvwTPTFL33H5h1D%2FE6jxToWjQNkt22SgCs18BMhjqGkp47GEKkxRI6%2BCCNzpByFHDS81EZ%2FalYeyeWdGFyPdK9Eg%2FtKJcxNXunTA4O0soRSBJlKJMtb55tT523k58prpKjqHIkcXrQnGQ3pLtExyD4IcLJreTzE06W%2FTcvhxKyOxjSu%2FDhqssEPr6yUzTsRhUYZ81jypoNNckb7aGm6VFs1TDoDv5E8RLWOx7z33xJ9g1PIpCWEgIAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
+
 ::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ```kusto
@@ -88,13 +90,14 @@ demo_make_series2
 ### Label a timechart
 
 The following example renders a timechart that depicts crop damage grouped by week. The timechart x axis is labled "Date" and the y axis is labled "Crop damage."
-
 ::: moniker-end
+
 ::: "azure-data-explorer"
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQrCMBBF957i01UCVlpddFU36gn0AqkZbKBJJR2tiod3GoogDgMz/JnP+0fuoz/cKfCweGNsKRKObCKfnCc0xCNRgLKGiUVR66Ko8qKU1lit8KuX63xTao0FpEyw2BtvLrSL/XXAFoUQhpv3JroXIUF3/S0wapynqTSaJxoX1DfBEpXVYosULEVMqHMrt0QYHbdQaWXHHdXZRJJMExT9fTZky/TymH/2EnmWnv+2+dLRRYh166ylkBT9AeKYKXcqAQAA" target="_blank">Run the query</a>
 ::: moniker-end
+
 ::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ```kusto
@@ -117,12 +120,14 @@ StormEvents
 
 The following example renders daily hail events in the states of Texas, Nebraska, and Kansas. The visualization uses the `ysplit` property to render each state's events in separate panels for comparison.
 ::: moniker-end
+
 ::: moniker range="azure-data-explorer"
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWMsQqDMBiE90Lf4ciUgEsfwCEFoSA4GIeuUX8wYKIkvxVLH76x3e6+4zvDS/TViwKn6+WDfaJIMGyZ4AKk6KqnNqKAaKp7q02tz1zrxmSqYMOIn9wdK6EsIR7WzeJ8Spv3Nro3YVi2wFKhP/7HBXoXZI6RO+dzvY3qNCKFkSI4s2HKI3bHE+SR1tlxudpAc1JfbEl6kbAAAAA=" target="_blank">Run the query</a>
 
 ::: moniker-end
+
 ::: moniker range="microsoft-fabric  || azure-data-explorer"
 ```kusto
 StormEvents
@@ -157,7 +162,7 @@ The following example renders a timechart with a title "Web app. traffic over a 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WqEQAyF7/cpcqdS7aqlFLr4FLvQS4ka16HzIzPZn5Y+fDOrCy20V5mQk3O+jCYGo2zL0MCATKwMpXVZvRRlVZTP2W6jowKvfynqonyCun4ty1U3RFE97TYDGdcafKc2kFcU6s0XxLZYWrAn0+D5mErNwFk4iOme0cwwemdWInZrcGCao3f3AUENIF6XiTzdmqaB5LCvEgDYbgECaeoZUGb2qAkiLayho/My6DWhJQ9nFU6o1SeyclYs6cpkB0g7FA9lKZc1DM6izoG9jHLwJImylMmVi2c7UO/M7ALFU3IoqhySuD0qTrIF6S5RMQjcGOHkr+TxE06O/TcvBxSyOxikd+HDTZcJfKxyUzTsJ/QMF8VTyoo1NckbdYDz/Ci2OI6qXxiMszzlv+mS7BvAR09lEAIAAA==" target="_blank">Run the query</a>
 
-```kusto 
+```kusto
 let min_t = datetime(2017-01-05);
 let max_t = datetime(2017-02-03 22:00);
 let dt = 2h;
