@@ -340,8 +340,6 @@ items:
         href: power-apps-connector.md
       - name: Query data using Python
         href: python-query-data.md
-      - name: Debug KQL inline Python
-        href: debug-inline-python.md
       - name: Query data using T-SQL
         displayName: explain, sql, tsql 
         href: t-sql.md
