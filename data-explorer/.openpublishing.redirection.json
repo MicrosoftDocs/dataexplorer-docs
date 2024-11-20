@@ -26,6 +26,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "delete-data.md",
+      "redirect_url": "/kusto/concepts/delete-data?view=azure-data-explorer&preserve-view=true",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "connect-from-databricks.md",
       "redirect_url": "/azure/data-explorer/spark-connector",
       "redirect_document_id": false
