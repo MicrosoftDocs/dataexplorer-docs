@@ -86,7 +86,7 @@ To prepare your cluster for migration:
 > Failure of your cluster to connect to essential services for ingestion and external tables poses a risk of data loss. Additionally, queries calling out to other network-protected services may cease to function.
 
 > [!WARNING]
-> The actual migration must be performed within a few hours after completing the preparation steps. Delaying the migration may result in the service being in a malfunctioning state.
+> The migration step must be performed within a few hours of completing the preparation steps. Delaying the migration might cause the service to malfunction. ```
 
 ## Migrate your cluster
 
