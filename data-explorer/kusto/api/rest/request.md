@@ -64,7 +64,7 @@ The following parameters can be passed in the request. They're encoded in the re
 |Parameter   |Description|Required/Optional |
 |------------|---------------------------------------------------------------|------------------|
 |`csl`       |The text of the query or management command to execute. |Required |
-|`db`        |The name of the database that is the target of the query or management command. |Optional for some management commands. </br>Required for all queries and all other commands. </br>    |
+|`db`        |The name of the database that is the target of the query or management command. |Optional for some management commands. <br>Required for all queries and all other commands. </br>    |
 |`properties`| Request properties that modify how the request is processed and its results. For more information, see [Request properties](request-properties.md).  | Optional|
 
 ## GET query parameters
