@@ -13,6 +13,10 @@ Filters a record set for data with any set of case-insensitive strings. `has_any
 
 For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
+## Performance tips
+
+[!INCLUDE [index-performance-tip-note](../includes/multi-arg-index-performance-note.md)]
+
 ## Syntax
 
 *T* `|` `where` *col* `has_any` `(`*expression*`,` ... `)`
