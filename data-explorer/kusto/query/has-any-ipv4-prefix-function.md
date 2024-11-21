@@ -16,6 +16,10 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 * "These requests came from: 192.168.1.1, 10.1.1.115 and 10.1.1.201"
 * "05:04:54 127.0.0.1 GET /favicon.ico 404"
 
+## Performance tips
+
+[!INCLUDE [index-performance-tip-note](../includes/multi-arg-index-performance-note.md)]
+
 ## Syntax
 
 `has_any_ipv4_prefix(`*source* `,` *ip_address_prefix* [`,` *ip_address_prefix_2*`,` ...] `)`  
