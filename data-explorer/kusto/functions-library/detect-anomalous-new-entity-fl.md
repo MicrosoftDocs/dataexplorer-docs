@@ -353,4 +353,10 @@ The output of running the function is the first-seen row in test dataset for eac
 * `anomalyExplainability`: textual wrapper for generated anomaly and its explanation.
 * `anomalyState`: bag of existing entities on scope with their first seen times.
 
-The output surfaces the anomalous entities together with fields that explain it in standardized format. These fields are useful for investigating the anomaly and for running anomalous entity detection on several entities, or running other algorithms together.
+Running this function on user per account with default parameters gets a previously unseen and anomalous user ('H4ck3r') with high anomaly score of 0.9969, meaning that this is very unexpected (due to samll numbers of existing users in training period). 
+
+When we run the function with default parameters on deviceId as entity, we won't see an anomaly, due to large number of existing devices which makes it expected. However, if we lower the parameter anomalyScoreThresh to 0.0001 and raise the parameter to maxEntitiesThresh to 10000, we will effectively decrease precision in favor of recall, and detect an anomaly (with a very low anomaly score) on device 'abcdefghijklmnoprtuvwxyz012345678'.
+
+The output shows the anomalous entities together with fields that explain it in standardized format. These fields are useful for investigating the anomaly and for running anomalous entity detection on several entities or running other algorithms together. 
+
+The suggest usage in cybersecurity context is running the function on meaningful entities - such as usernames or IP addresses - per meaningful scopes - such as subscription on accounts. A detected anomalous new entity means that its appearance is not expected on the scope, and might be suspicious.
