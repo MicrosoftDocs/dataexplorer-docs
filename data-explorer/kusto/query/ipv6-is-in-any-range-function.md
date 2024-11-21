@@ -11,6 +11,10 @@ ms.date: 08/11/2024
 
 Checks whether an IPv6 string address is in any of the specified IPv6 address ranges.
 
+## Performance tips
+
+[!INCLUDE [index-performance-tip-note](../includes/multi-arg-index-performance-note.md)]
+
 ## Syntax
 
 `ipv6_is_in_any_range(`*Ipv6Address* `,` *Ipv6Range* [ `,` *Ipv6Range* ...] `)`
