@@ -3,7 +3,7 @@ title:  print operator
 description: Learn how to use the print operator to output a single row with one or more scalar expression results as columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/20/2024
 ---
 # print operator
 
@@ -13,7 +13,7 @@ Outputs a single row with one or more scalar expression results as columns.
 
 ## Syntax
 
-`print` [*ColumnName* `=`] *ScalarExpression* [',' ...]
+`print` [*ColumnName* `=`] *ScalarExpression* [`,` ...]
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -30,6 +30,10 @@ A table with one or more columns and a single row. Each column returns the corre
 
 ## Examples
 
+### Print sum and variable value
+
+The following example outputs a row with two columns. One column contains the sum of a series of numbers and the other column contains the value of the variable, `x`.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUTBQ0FYwBGIjIDYGYhMgNtVRqFCwVVAKzy9XVAIAppjMyScAAAA=" target="_blank">Run the query</a>
@@ -44,6 +48,10 @@ print 0 + 1 + 2 + 3 + 4 + 5, x = "Wow!"
 |print_0|x|
 |--|--|
 |15| Wow!|
+
+### Print concatenated string
+
+The following example outputs the results of the `strcat()` function as a concatenated string.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
