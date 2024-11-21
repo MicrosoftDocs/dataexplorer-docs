@@ -11,6 +11,10 @@ ms.date: 08/11/2024
 
 Checks whether IPv4 string address is in any of the specified IPv4 address ranges.
 
+## Performance tips
+
+[!INCLUDE [index-performance-tip-note](../includes/multi-arg-index-performance-note.md)]
+
 ## Syntax
 
 `ipv4_is_in_any_range(`*Ipv4Address* `,` *Ipv4Range* [ `,` *Ipv4Range* ...] `)`
