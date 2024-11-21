@@ -11,15 +11,15 @@ ms.date: 11/17/2024
 
 Detect the appearance of anomalous new entities in timestamped data.
 
-The function `detect_anomalous_new_entity_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that detects the appearance of anomalous new entities - such as IP addresses or users - in timestamped data, such as traffic logs.
+The function `detect_anomalous_new_entity_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that detects the appearance of anomalous new entities - such as IP addresses or users - in timestamped data, such as traffic logs. In cybersecurity context, such events might be suspicious and indicate a potential attack or compromise.
 
 The  anomaly model is based on a Poisson distribution representing the number of new entities appearing per time bin (such as day) for each scope. Poisson distribution parameter is estimated based on the rate of appearance of new entities in training period, with added decay factor reflecting the fact that recent appearances are more important than old ones. Thus we calculate the probability to encounter a new entity in defined detection period per some scope - such as a subscription or an account. The model output is controlled by several optional parameters, such as minimal threshold for anomaly, decay rate parameter, and others. 
 
-The model's direct output is an anomaly score based on the inverse of probability to encounter a new entity and normalized to the range of [0, 1], with 100 representing something very anomalous. In addition to the anomaly score, there's a binary flag for detected anomaly (controlled by a minimal threshold parameter), and other explanatory fields.
+The model's direct output is an anomaly score based on the inverse of estimated probability to encounter a new entity. The score is monotonous in the range of [0, 1], with 1 representing something very anomalous. In addition to the anomaly score, there's a binary flag for detected anomaly (controlled by a minimal threshold parameter), and other explanatory fields.
 
 ## Syntax
 
-`detect_anomalous_new_entity_fl(`*entity*, *partition*`)`
+`detect_anomalous_new_entity_fl(`*entityColumnName*, *scopeColumnName*, *timeColumnName*, *startTraining*, *startDetection*, *endDetection*, [*maxEntitiesThresh*], [*minTrainingDaysThresh*], [*decayParam*], [*anomalyScoreThresh*]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -36,7 +36,7 @@ The model's direct output is an anomaly score based on the inverse of probabilit
 | *maxEntitiesThresh* | `int` |   | The maximum number of existing entities in scope to calculate anomalies. If the number of entities is above the threshold, the scope is considered too noisy and anomalies aren't calculated. The default value is 60.|
 | *minTrainingDaysThresh* | `int` |   | The minimum number of days in training period that a scope exists to calculate anomalies. If it is below threshold, the scope is considered too new and unknown, so anomalies aren't calculated. The default value is 14. |
 | *decayParam* | `real` |   | The decay rate parameter for anomaly model, a number in range (0,1]. Lower values mean faster decay, so more importance is given to later appearances in training period. A value of 1 means no decay, so a simple average is used for Poisson distribution parameter estimation. The default value is 0.95. |
-| *anomalyScoreThresh* | `real` |   | The minimum value of anomaly score for which an anomaly is detected, a number in range [0, 1]. Higher values mean that only more significant cases are considered anomalous, so fewer anomalies are detected (higher precision, lower recall). A value of 0 means that all entities that first appear in detection period will be tagged as anomaly (without taking probability into account). The default value is 0.9. |
+| *anomalyScoreThresh* | `real` |   | The minimum value of anomaly score for which an anomaly is detected, a number in range [0, 1]. Higher values mean that only more significant cases are considered anomalous, so fewer anomalies are detected (higher precision, lower recall). The default value is 0.9. |
 
 ## Function definition
 
@@ -321,7 +321,7 @@ let testData            = range t from 1 to 24*60 step 1
     | sort by timeSlice desc
 ;
 testData
-| invoke detect_anomalous_new_entity_fl(entityColumnName    = 'userName'  //principalName for positive, deviceId for negative
+| invoke detect_anomalous_new_entity_fl(entityColumnName    = 'userName'
                                 , scopeColumnName           = 'accountName'
                                 , timeColumnName            = 'timeSlice'
                                 , startTraining             = trainPeriodStart
