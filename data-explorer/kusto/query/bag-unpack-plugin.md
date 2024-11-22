@@ -3,7 +3,7 @@ title:  bag_unpack plugin
 description: Learn how to use the bag_unpack plugin to unpack a dynamic column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/21/2024
 ---
 # bag_unpack plugin
 
@@ -48,16 +48,15 @@ The `bag_unpack` plugin returns a table with as many records as its tabular inpu
   same type, or `dynamic`, if the values differ in type.
 
 > [!NOTE]
-> If the *OutputSchema* is not specified, the plugin's output schema varies according to the input data values. Therefore, multiple executions of the plugin using different data inputs, may produce different output schema.
-
-> [!NOTE]
-> The input data to the plugin must be such that the output schema follows all the rules for a tabular schema. In particular:
+> * If the *OutputSchema* isn't specified, the plugin's output schema varies according to the input data values. Therefore, multiple executions of the plugin using different data inputs, may produce different output schema.
 >
-> * An output column name can't be the same as an existing column in the tabular
-    input *T*, unless it's the column to be unpacked (*Column*), since that will produce two columns with the same name.
+> * The input data to the plugin must be such that the output schema follows all the rules for a tabular schema. In particular:
 >
-> * All slot names, when prefixed by *OutputColumnPrefix*, must be valid
-    entity names and follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
+>   * An output column name can't be the same as an existing column in the tabular input *T*, unless it's the column to be unpacked (*Column*), since that will produce two columns with the same name.
+>
+>   * All slot names, when prefixed by *OutputColumnPrefix*, must be valid entity names and follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
+>
+> * Null values are ignored.
 
 ## Examples
 
