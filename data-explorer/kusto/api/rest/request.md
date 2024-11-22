@@ -3,7 +3,7 @@ title:  Query/management HTTP request
 description: This article describes Query/management HTTP request.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/19/2024
 ---
 # Query/management HTTP request
 
@@ -26,62 +26,58 @@ use the following request line:
 POST https://help.kusto.windows.net/v1/rest/mgmt HTTP/1.1
 ```
 
-See below for the request headers and body to include.
+See [Request headers](#request-headers) and [Body](#body) to learn what to include.
 
 ## Request headers
 
 The following table contains the common headers used for query and management operations.
 
-|Standard header  |Description                                                                                 |Required/Optional |
-|-----------------|--------------------------------------------------------------------------------------------|------------------|
-|`Accept`         |Set to `application/json`                                                                   |Required          |
-|`Accept-Encoding`|Supported encodings are `gzip` and `deflate`                                                |Optional          |
-|`Authorization`  |See [authentication](authentication.md)                                                   |Required          |
-|`Connection`     |We recommend that you enable `Keep-Alive`                                                   |Optional          |
-|`Content-Length` |We recommend that you specify the request body length when known                            |Optional          |
-|`Content-Type`   |Set to `application/json` with `charset=utf-8`                                              |Required          |
-|`Expect`         |Can be set to `100-Continue`                                                                |Optional          |
-|`Host`           |Set to the qualified domain name that the request was sent to (for example, `help.kusto.windows.net`) |Required|
+|Standard header  |Description |Required/Optional |
+|-----------------|----------------------------------------------------------------------------|------------------|
+|`Accept`         |The media types the client receives. Set to `application/json`.|Required          |
+|`Accept-Encoding`|The supported content encodings. Supported encodings are `gzip` and `deflate`.   |Optional |
+|`Authorization`  | The authentication credentials. For more information, see [authentication](authentication.md). |Required |
+|`Connection`     |Whether the connection stays open after the operation. The recommendation is to set `Connection` to `Keep-Alive`. |Optional |
+|`Content-Length` |The size of the request body. Specify the request body length when known. |Optional |
+|`Content-Type`   |The media type of the request body. Set to `application/json` with `charset=utf-8`. |Required |
+|`Expect`|The expected response from the server. It can be set to `100-Continue`. |Optional |
+|`Host`  |The qualified domain name that the request was sent to. For example, `help.kusto.windows.net`. |Required|
 
-The following table contains the common custom headers used for query
-and management operations. Unless otherwise indicated, these headers are used
-for telemetry purposes only, and have no functionality impact.
+The following table contains the common custom headers used for query and management operations. Unless noted, these headers are used only for telemetry purposes and don’t affect functionality.
 
-All headers are optional. We recommend that you specify the `x-ms-client-request-id` custom header. 
-In some scenarios, such as canceling a running query, this header is required because it's used to identify the request.
+All headers are optional. However, We recommend specifying the `x-ms-client-request-id` custom header.
+In some scenarios, such as canceling a running query, `x-ms-client-request-id` is required since it's used to identify the request.
 
-|Custom header           |Description                                                                                               |
+|Custom header  |Description     |
 |------------------------|----------------------------------------------------------------------------------------------------------|
-|`x-ms-app`              |The (friendly) name of the application making the request                                                 |
-|`x-ms-user`             |The (friendly) name of the user making the request                                                        |
-|`x-ms-user-id`          |Same as `x-ms-user`                                                                                       |
-|`x-ms-client-request-id`|A unique identifier for the request                                                                       |
-|`x-ms-client-version`   |The (friendly) version identifier for the client making the request                                       |
-|`x-ms-readonly`         |If specified, forces the request to run in read-only mode, preventing it from making long-lasting changes |
+|`x-ms-app` |The friendly name of the application making the request. |
+|`x-ms-user` |The friendly name of the user making the request. |
+|`x-ms-user-id` |The same friendly name as `x-ms-user`. |
+|`x-ms-client-request-id` |A unique identifier for the request. |
+|`x-ms-client-version` |The friendly version identifier for the client making the request.|
+|`x-ms-readonly` |If specified, it forces the request to run in read-only mode which prevents the request from changing data. |
 
 ## Request parameters
 
-The following parameters can be passed in the request. They're encoded in the request as query parameters 
-or as part of the body, depending on whether GET or POST is used.
+The following parameters can be passed in the request. They're encoded in the request as query parameters or as part of the body, depending on whether GET or POST is used.
 
-|Parameter   |Description                                                                                 |Required/Optional |
-|------------|--------------------------------------------------------------------------------------------|------------------|
-|`csl`       |Text of the query or management command to execute                                             |Required          |
-|`db`        |Name of the database in scope that is the target of the query or management command            |Optional for some management commands. <br>Required for other commands and all queries. </br>                                                                   |
-|`properties`|Provides request properties that modify how the request is processed and its results. For more information, see [Request properties](request-properties.md)                                               | Optional         |
+|Parameter   |Description|Required/Optional |
+|------------|---------------------------------------------------------------|------------------|
+|`csl`       |The text of the query or management command to execute. |Required |
+|`db`        |The name of the database that is the target of the query or management command. |Optional for some management commands. <br>Required for all queries and all other commands. </br>    |
+|`properties`| Request properties that modify how the request is processed and its results. For more information, see [Request properties](request-properties.md).  | Optional|
 
 ## GET query parameters
 
-When GET is used, the query parameters of the request specify the request parameters.
+When a GET request is used, the query parameters specify the request parameters.
 
 ## Body
 
-When POST is used, the body of the request is a single JSON document encoded in UTF-8, with
-the values of the request parameters.
+When a POST request is used, the body of the request contains a single UTF-8 encoded JSON document, which includes the values of the request parameters.
 
 ## Examples
 
-This example shows the HTTP POST request for a query.
+The following example shows the HTTP POST request for a query.
 
 ```txt
 POST https://help.kusto.windows.net/v2/rest/query HTTP/1.1
@@ -110,11 +106,11 @@ Request body
 }
 ```
 
-This example shows how to create a request that sends the query above, using [curl](https://curl.haxx.se/).
+The following example shows how to create a request that sends the previous query, using [curl](https://curl.haxx.se/).
 
 1. Obtain a token for authentication.
 
-    Replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID`, and `AAD_APPLICATION_KEY` with the relevant values, after having set up [Microsoft Entra application authentication](../../access-control/provision-entra-id-app.md)
+    Replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID`, and `AAD_APPLICATION_KEY` with the relevant values, after setting up [Microsoft Entra application authentication](../../access-control/provision-entra-id-app.md).
 
     ```bash
     curl "https://login.microsoftonline.com/AAD_TENANT_NAME_OR_ID/oauth2/token" \
@@ -124,7 +120,7 @@ This example shows how to create a request that sends the query above, using [cu
       -F "client_secret=AAD_APPLICATION_KEY"
     ```
 
-    This code snippet will provide you with the bearer token.
+    This code snippet provides you with the bearer token.
 
     ```json
     {
@@ -152,11 +148,11 @@ This example shows how to create a request that sends the query above, using [cu
     -X POST https://help.kusto.windows.net/v2/rest/query
     ```
 
-1. Read the response according to [this specification](response.md).
+1. Read the response according to [the response status codes](response.md).
 
 ### Set client request properties and query parameters
 
-In the following example body, the query in the `csl` field declares two parameters named `n` and `d`. The values for those query parameters are specified within the `Parameters` field under the `properties` field in the request body. The `Options` field defines [client request properties](request-properties.md).
+In the following request body example, the query in the `csl` field declares two parameters named `n` and `d`. The values for those query parameters are specified within the `Parameters` field under the `properties` field in the request body. The `Options` field defines [client request properties](request-properties.md).
 
 > [!NOTE]
 > Non-string and non-long parameters must be expressed as KQL literals in string format.
@@ -179,3 +175,23 @@ In the following example body, the query in the `csl` field declares two paramet
 ```
 
 For more information, see [Supported request properties](request-properties.md#supported-request-properties).
+
+### Send show database caching policy command
+
+The following example sends a request to show the `Samples` database caching policy. 
+
+```json
+
+{
+    "db": "Samples",
+    "csl": ".show database Samples policy caching",
+    "properties": {
+        "Options": {
+            "maxmemoryconsumptionperiterator": 68719476736,
+            "max_memory_consumption_per_query_per_node": 68719476736,
+            "servertimeout": "50m"
+        }
+    }
+}
+
+```
