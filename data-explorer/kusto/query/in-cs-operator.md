@@ -15,6 +15,8 @@ Filters a record set for data with a case-sensitive string.
 
 ## Performance tips
 
+[!INCLUDE [index-performance-tip-note](../includes/multi-arg-index-performance-note.md)]
+
 [!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 ## Syntax
