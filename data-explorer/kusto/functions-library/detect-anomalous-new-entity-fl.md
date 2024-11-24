@@ -94,11 +94,11 @@ let modelData = (
 // adding exponentially decaying weights to counts
     | extend decayingWeight = pow(base = decayParam, exponent = diffInDays)
     | extend decayingValue = countAddedEntities * decayingWeight
-    | summarize   newEntityProbability = round(sum(decayingValue)/max(diffInDays), 4)
+    | summarize   newEntityProbability = round(1 - exp(-1.0 * sum(decayingValue)/max(diffInDays)), 4)
                 , countKnownEntities = sum(countAddedEntities), lastNewEntityTimestamp = max(firstSeenEntity), slicesOnScope = max(slicesInTrainingScope)///for explainability
         by scope, firstSeenSet
 // anomaly score is based on probability to get no new entities, calculated using Poisson distribution (P(X=0) = exp(-avg)) with added decay on average
-    | extend newEntityAnomalyScore = round(exp(-1.0 * newEntityProbability), 4)
+    | extend newEntityAnomalyScore = round(1 - newEntityProbability, 4)
     | extend isAnomalousNewEntity = iff(newEntityAnomalyScore >= anomalyScoreThresh, 1, 0)
 );
 let resultsData = (
@@ -171,11 +171,11 @@ let modelData = (
 // adding exponentially decaying weights to counts of 
     | extend decayingWeight = pow(base = decayParam, exponent = diffInDays)
     | extend decayingValue = countAddedEntities * decayingWeight
-    | summarize   newEntityProbability = round(sum(decayingValue)/max(diffInDays), 4)
+    | summarize   newEntityProbability = round(1 - exp(-1.0 * sum(decayingValue)/max(diffInDays)), 4)
                 , countKnownEntities = sum(countAddedEntities), lastNewEntityTimestamp = max(firstSeenEntity), slicesOnScope = max(slicesInTrainingScope)///for explainability
         by scope, firstSeenSet
 // anomaly score is based on probability to get no new entities, calculated using Poisson distribution (P(X=0) = exp(-avg)) with added decay on average
-    | extend newEntityAnomalyScore = round(exp(-1.0 * newEntityProbability), 4)
+    | extend newEntityAnomalyScore = round(1 - newEntityProbability, 4)
     | extend isAnomalousNewEntity = iff(newEntityAnomalyScore >= anomalyScoreThresh, 1, 0)
 );
 let resultsData = (
@@ -254,11 +254,11 @@ let modelData = (
 // adding exponentially decaying weights to counts
     | extend decayingWeight = pow(base = decayParam, exponent = diffInDays)
     | extend decayingValue = countAddedEntities * decayingWeight
-    | summarize   newEntityProbability = round(sum(decayingValue)/max(diffInDays), 4)
+    | summarize   newEntityProbability =  round(1 - exp(-1.0 * sum(decayingValue)/max(diffInDays)), 4)
                 , countKnownEntities = sum(countAddedEntities), lastNewEntityTimestamp = max(firstSeenEntity), slicesOnScope = max(slicesInTrainingScope)///for explainability
         by scope, firstSeenSet
 // anomaly score is based on probability to get no new entities, calculated using Poisson distribution (P(X=0) = exp(-avg)) with added decay on average
-    | extend newEntityAnomalyScore = round(exp(-1.0 * newEntityProbability), 4)
+    | extend newEntityAnomalyScore = round(1 - newEntityProbability, 4)
     | extend isAnomalousNewEntity = iff(newEntityAnomalyScore >= anomalyScoreThresh, 1, 0)
 );
 let resultsData = (
