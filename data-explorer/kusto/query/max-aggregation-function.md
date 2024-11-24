@@ -23,7 +23,7 @@ Finds the maximum value of the expression in the table.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | `string` |  :heavy_check_mark: | The expression determines the maximum value in the specifed column. |
+| *expr* | `string` |  :heavy_check_mark: | The expression for which the maximum value is determined. |
 
 ## Returns
 
