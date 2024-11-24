@@ -3,7 +3,7 @@ title:  detect_anomalous_new_entity_fl()
 description: Learn how to use the detect_anomalous_new_entity_fl() function to detect the appearance of anomalous new entities.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 11/17/2024
+ms.date: 11/24/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # detect_anomalous_new_entity_fl()
