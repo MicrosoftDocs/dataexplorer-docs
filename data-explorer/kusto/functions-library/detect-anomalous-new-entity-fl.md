@@ -16,7 +16,7 @@ The function `detect_anomalous_new_entity_fl()` is a [UDF (user-defined function
 
 The  anomaly model is based on a Poisson distribution representing the number of new entities appearing per time bin (such as day) for each scope. Poisson distribution parameter is estimated based on the rate of appearance of new entities in training period, with added decay factor reflecting the fact that recent appearances are more important than old ones. Thus we calculate the probability to encounter a new entity in defined detection period per some scope - such as a subscription or an account. The model output is controlled by several optional parameters, such as minimal threshold for anomaly, decay rate parameter, and others. 
 
-The model's direct output is an anomaly score based on the inverse of estimated probability to encounter a new entity. The score is monotonous in the range of [0, 1], with 1 representing something very anomalous. In addition to the anomaly score, there's a binary flag for detected anomaly (controlled by a minimal threshold parameter), and other explanatory fields.
+The model's direct output is an anomaly score based on the inverse of estimated probability to encounter a new entity. The score is monotonous in the range of [0, 1], with 1 representing something anomalous. In addition to the anomaly score, there's a binary flag for detected anomaly (controlled by a minimal threshold parameter), and other explanatory fields.
 
 ## Syntax
 
@@ -354,10 +354,10 @@ The output of running the function is the first-seen row in test dataset for eac
 * `anomalyExplainability`: textual wrapper for generated anomaly and its explanation.
 * `anomalyState`: bag of existing entities on scope with their first seen times.
 
-Running this function on user per account with default parameters gets a previously unseen and anomalous user ('H4ck3r') with high anomaly score of 0.9969, meaning that this is very unexpected (due to small numbers of existing users in training period). 
+Running this function on user per account with default parameters gets a previously unseen and anomalous user ('H4ck3r') with high anomaly score of 0.9969, meaning that this is unexpected (due to small numbers of existing users in training period). 
 
-When we run the function with default parameters on deviceId as entity, we won't see an anomaly, due to large number of existing devices which makes it expected. However, if we lower the parameter anomalyScoreThresh to 0.0001 and raise the parameter to maxEntitiesThresh to 10000, we will effectively decrease precision in favor of recall, and detect an anomaly (with a very low anomaly score) on device 'abcdefghijklmnoprtuvwxyz012345678'.
+When we run the function with default parameters on deviceId as entity, we won't see an anomaly, due to large number of existing devices which makes it expected. However, if we lower the parameter anomalyScoreThresh to 0.0001 and raise the parameter to maxEntitiesThresh to 10000, we'll effectively decrease precision in favor of recall, and detect an anomaly (with a low anomaly score) on device 'abcdefghijklmnoprtuvwxyz012345678'.
 
-The output shows the anomalous entities together with fields that explain it in standardized format. These fields are useful for investigating the anomaly and for running anomalous entity detection on several entities or running other algorithms together. 
+The output shows the anomalous entities together with explanation fields in standardized format. These fields are useful for investigating the anomaly and for running anomalous entity detection on several entities or running other algorithms together. 
 
-The suggest usage in cybersecurity context is running the function on meaningful entities - such as usernames or IP addresses - per meaningful scopes - such as subscription on accounts. A detected anomalous new entity means that its appearance is not expected on the scope, and might be suspicious.
+The suggested usage in cybersecurity context is running the function on meaningful entities - such as usernames or IP addresses - per meaningful scopes - such as subscription on accounts. A detected anomalous new entity means that its appearance isn't expected on the scope, and might be suspicious.
