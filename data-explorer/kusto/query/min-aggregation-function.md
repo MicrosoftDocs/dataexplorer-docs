@@ -23,7 +23,7 @@ Finds the minimum value of the expression in the table.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | `string` |  :heavy_check_mark: | The expression determines the minimum value in the specifed column. |
+| *expr* | `string` |  :heavy_check_mark: | The expression for which the minimum value is determined. |
 
 ## Returns
 
