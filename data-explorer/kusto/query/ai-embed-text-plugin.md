@@ -30,6 +30,7 @@ The `ai_embed_text` plugin allows embedding of text using language models, enabl
 | *text* | `string` | :heavy_check_mark: | The text to embed. The value can be a column reference or a constant scalar. |
 | *connectionString* | `string` | :heavy_check_mark: | The connection string for the language model in the format `<ModelDeploymentUri>;<AuthenticationMethod>`; replace `<ModelDeploymentUri>` and `<AuthenticationMethod>` with the AI model deployment URI and the authentication method respectively. |
 | *options* | `dynamic` |  | The options that control calls to the embedding model endpoint. See [Options](#options). |
+| *IncludeErrorMessages* | `bool` |  | Indicates whether to output errors in a new column in the output table. Default value: `false`.<br />To view the errors, you must also set the `ReturnSuccessfulOnly` option to `false`. |
 
 ## Options
 
@@ -86,9 +87,15 @@ To configure these policies, use the commands in the following steps:
 
 ## Returns
 
-Returns two new embedding columns for each record in the results: one with the **_embedding** suffix, which contains the embedding values, and another with the **_embedding_error** suffix, which contains error strings or is left empty if the operation is successful.
+Returns the following new embedding columns:
 
-If the input is a column reference, the plugin returns the input table with these two additional columns prefixed with the reference column name. If the input is a constant scalar, the plugin returns a single record containing the **_embedding** and **_embedding_error** columns.
+* A column with the **_embedding** suffix that contains the embedding values
+* If configured to return errors, a column with the **_embedding_error** suffix, which contains error strings or is left empty if the operation is successful.
+
+Depending on the input type, the plugin returns different results:
+
+* **Column reference**: Returns one or more records with additional columns are prefixed by the reference column name. For example, if the input column is named **TextData**, the output columns are named **TextData_embedding** and, if configured to return errors, **TextData_embedding_error**.
+* **Constant scalar**: Returns a single record with additional columns that are not prefixed. The column names are **_embedding** and, if configured to return errors, **_embedding_error**.
 
 ## Examples
 
