@@ -19,7 +19,7 @@ The `ai_embed_text` plugin allows embedding of text using language models, enabl
 
 ## Syntax
 
-`evaluate` `ai_embed_text` `(`*text*, *connectionString* [`,` *options*]`)`
+`evaluate` `ai_embed_text` `(`*text*, *connectionString* [`,` *options* [`,` *IncludeErrorMessages*]]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
