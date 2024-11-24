@@ -102,7 +102,7 @@ Returns information on the extents created because of the `.set` or `.append` co
 
 ### Create and update table from query source
 
-The following query creates the :::no-loc text=`RecentErrors`::: table with the same schema as :::no-loc text=`LogsTable`:::. It updates :::no-loc text=`RecentErrors`::: with all error logs from :::no-loc text=`LogsTable`::: over the last hour.
+The following query creates the :::no-loc text="`RecentErrors`"::: table with the same schema as :::no-loc text="`LogsTable`":::. It updates :::no-loc text="`RecentErrors`"::: with all error logs from :::no-loc text="`LogsTable`"::: over the last hour.
 
 ```kusto
 .set RecentErrors <|
@@ -112,7 +112,7 @@ The following query creates the :::no-loc text=`RecentErrors`::: table with the 
 
 ### Create and update table from query source using the *distributed* flag
 
-The following example creates a new table called `OldExtents` in the database asynchronously. The dataset is expected to be bigger than one GB (more than ~one million rows) so the *distributed* flag is used. It updates `OldExtents` with data with `ExtentId` entries from the `MyExtents` table that were created more than 30 days ago.
+The following example creates a new table called `OldExtents` in the database, asynchronously. The dataset is expected to be bigger than one GB (more than ~one million rows) so the *distributed* flag is used. It updates `OldExtents` with `ExtentId` entries from the `MyExtents` table that were created more than 30 days ago.
 
 ```kusto
 .set async OldExtents with(distributed=true) <|
@@ -166,6 +166,8 @@ The following example appends data to the `OldExtents` table asynchronously, usi
 ```
 
 **Sample output**
+
+The following is a sample of the type of output you may see from your queries.
 
 |ExtentId |OriginalSize |ExtentSize |CompressedSize |IndexSize |RowCount |
 |--|--|--|--|--|--|
