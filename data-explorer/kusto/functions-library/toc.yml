@@ -2,11 +2,6 @@ items:
 - name: List of functions
   displayName: functions library
   href: functions-library.md
-- name: Cybersecurity functions
-  items:
-    - name: detect_anomalous_new_entity_fl()
-      displayName: functions library, security, cybersecurity, anomaly detection, new entity, novelty
-      href: detect-anomalous-new-entity-fl.md
 - name: bartlett_test_fl()
   displayName: functions library, statistical test
   href: bartlett-test-fl.md
@@ -22,6 +17,9 @@ items:
 - name: dbscan_dynamic_fl()
   displayName: functions library, clustering, DBSCAN
   href: dbscan-dynamic-fl.md
+- name: detect_anomalous_new_entity_fl()
+  displayName: functions library, security, cybersecurity, anomaly detection, new entity, novelty, cyber, detect anomalous new entity
+  href: detect-anomalous-new-entity-fl.md
 - name: factorial_fl()
   displayName: functions library, statistics
   href: factorial-fl.md
