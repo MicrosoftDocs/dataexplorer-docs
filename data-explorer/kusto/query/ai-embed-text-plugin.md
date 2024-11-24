@@ -30,7 +30,7 @@ The `ai_embed_text` plugin allows embedding of text using language models, enabl
 | *text* | `string` | :heavy_check_mark: | The text to embed. The value can be a column reference or a constant scalar. |
 | *connectionString* | `string` | :heavy_check_mark: | The connection string for the language model in the format `<ModelDeploymentUri>;<AuthenticationMethod>`; replace `<ModelDeploymentUri>` and `<AuthenticationMethod>` with the AI model deployment URI and the authentication method respectively. |
 | *options* | `dynamic` |  | The options that control calls to the embedding model endpoint. See [Options](#options). |
-| *IncludeErrorMessages* | `bool` |  | Indicates whether to output errors in a new column in the output table. Default value: `false`.<br />To view the errors, you must also set the `ReturnSuccessfulOnly` option to `false`. |
+| *IncludeErrorMessages* | `bool` |  | Indicates whether to output errors in a new column in the output table. Default value: `false`. |
 
 ## Options
 
@@ -43,7 +43,7 @@ The following table describes the options that control the way the requests are 
 | `RetriesOnThrottling` | `int` | Specifies the number of retry attempts when throttling occurs. Default value: `0`. |
 | `GlobalTimeout` | `timespan` | Specifies the maximum time to wait for a response from the embedding model. Default value: `null` |
 | `ModelParameters` | `dynamic` | Parameters specific to the embedding model, such as embedding dimensions or user identifiers for monitoring purposes. Default value: `null`. |
-| `ReturnSuccessfulOnly` | `bool` | Indicates whether to return only the successfully processed items. Default value: `false`. |
+| `ReturnSuccessfulOnly` | `bool` | Indicates whether to return only the successfully processed items. Default value: `false`. If the *IncludeErrorMessages* parameter is set to `true`, this option is always set to `false`. |
 
 ## Configure managed identity and callout policies
 
