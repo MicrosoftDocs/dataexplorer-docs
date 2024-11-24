@@ -6,7 +6,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 <!-- update link for Fabric to (/fabric/real-time-intelligence/ingest-data-overview), once doc is merged-->
 :::moniker range="microsoft-fabric"
 > [!NOTE]
-> This ingestion method is intended for exploration and prototyping. Don't use it in production or high-volume scenarios. Look at other For more information about ingestion options, see [Data formats supported for ingestion](/kusto/ingestion-supported-formats?view=microsoft-fabric&preserve-view=true).
+> This ingestion method is intended for exploration and prototyping. Don't use it in production or high-volume scenarios. Look at other For more information about ingestion options, see [Data formats supported for ingestion](/kusto/ingestion-supported-formats?view=fabric&preserve-view=true).
 :::moniker-end
 
 :::moniker range="azure-data-explorer"
