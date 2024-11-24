@@ -25,7 +25,7 @@ Finds a row in the table that maximizes the specified expression. It returns all
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExprToMaximize* | `string` |  :heavy_check_mark: | The expression determines the row that contains the maximum value in the specifed column. |
+| *ExprToMaximize* | `string` |  :heavy_check_mark: | The expression for which the maximum value is determined. |
 | *ExprToReturn* | `string` |  :heavy_check_mark: | The expression determines which columns' values are returned, from the row that has the maximum value for *ExprToMaximize*.  Use a wildcard `*` to return all columns. |
 
 ## Returns
