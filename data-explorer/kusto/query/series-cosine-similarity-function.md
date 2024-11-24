@@ -55,3 +55,7 @@ datatable(s1:dynamic, s2:dynamic)
 |---|---|---|
 |[0.1,0.2,0.1,0.2]|[0.11,0.2,0.11,0.21]|0.99935343825504|
 |[0.1,0.2,0.1,0.2]|[1,2,3,4]|0.923760430703401|
+
+## Related content
+
+* [ai_embed_text plugin (Preview)](ai-embed-text-plugin.md)
