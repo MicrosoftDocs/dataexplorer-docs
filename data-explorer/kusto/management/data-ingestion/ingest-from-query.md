@@ -13,15 +13,21 @@ These commands execute a query or a management command and ingest the results of
 
 |Command          |If table exists                     |If table doesn't exist                    |
 |-----------------|------------------------------------|------------------------------------------|
-|`.set`           |The command fails                  |The table is created and data is ingested|
-|`.append`        |Data is appended to the table      |The command fails                        |
-|`.set-or-append` |Data is appended to the table      |The table is created and data is ingested|
-|`.set-or-replace`|Data replaces the data in the table|The table is created and data is ingested|
+|`.set`           |The command fails. |The table is created and data is ingested.|
+|`.append`        |Data is appended to the table.      |The command fails.|
+|`.set-or-append` |Data is appended to the table.      |The table is created and data is ingested.|
+|`.set-or-replace`|Data replaces the data in the table.|The table is created and data is ingested.|
 
 To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
 
+::: moniker range="azure-data-explorer"
 > [!NOTE]
 > Ingest from query is a [direct ingestion](/azure/data-explorer/ingest-data-overview#direct-ingestion-with-management-commands). As such, it does not include automatic retries. Automatic retries are available when ingesting through the data management service. Use the [ingestion overview](/azure/data-explorer/ingest-data-overview) document to decide which is the most suitable ingestion option for your scenario.
+::: moniker-end
+::: moniker range="microsoft-fabric"
+> [!NOTE]
+> Ingest from query is a [direct ingestion](/azure/data-explorer/ingest-data-overview#direct-ingestion-with-management-commands). As such, it does not include automatic retries. Automatic retries are available when ingesting through the data management service.
+::: moniker-end
 
 ## Permissions
 
@@ -50,22 +56,22 @@ For more information on permissions, see [Kusto role-based access control](../..
 
 ## Performance tips
 
-* Set the `distributed` property to `true` if the amount of data produced by the query is large, exceeds 1 GB, and doesn't require serialization. Then, multiple nodes can produce output in parallel. Don't use this flag when query results are small, since it might needlessly generate many small data shards.
+* Set the `distributed` property to `true` if the amount of data produced by the query is large, exceeds one gigabyte (GB), and doesn't require serialization. Then, multiple nodes can produce output in parallel. Don't use this flag when query results are small, since it might needlessly generate many small data shards.
 * Data ingestion is a resource-intensive operation that might affect concurrent activities on the database, including running queries. Avoid running too many ingestion commands at the same time.
-* Limit the data for ingestion to less than 1 GB per ingestion operation. If necessary, use multiple ingestion commands.
+* Limit the data for ingestion to less than one GB per ingestion operation. If necessary, use multiple ingestion commands.
 
 ## Supported ingestion properties
 
 |Property|Type|Description|
 |--|--|--|
 |`distributed` | `bool` | If `true`, the command ingests from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips).|
-|`creationTime` | `string` | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, `now()` is used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../merge-policy.md) is aligned with the specified value.|
+|`creationTime` | `string` | The `datetime` value, formatted as an ISO8601 `string`, to use at the creation time of the ingested data extents. If unspecified, `now()` is used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../merge-policy.md) is aligned with the specified value.|
 |`extend_schema` | `bool` | If `true`, the command might extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
 |`recreate_schema` | `bool` | If `true`, the command might recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the `extend_schema` property if both are set. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
 |`folder` | `string` | The folder to assign to the table. If the table already exists, this property overwrites the table's folder.|
 |`ingestIfNotExists` | `string` | If specified, ingestion fails if the table already has data tagged with an `ingest-by:` tag with the same value. For more information, see [ingest-by: tags](../extent-tags.md).|
 |`policy_ingestiontime` | `bool` | If `true`, the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) is enabled on the table. The default is `true`.|
-|`tags` | `string` | A JSON string that represents a list of [tags](../extent-tags.md) to associate with the created extent. |
+|`tags` | `string` | A JSON `string` that represents a list of [tags](../extent-tags.md) to associate with the created extent. |
 |`docstring` | `string` | A description used to document the table.|
 |`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../show-operations.md) command. Defaults to `false`. |`with (persistDetails=true)`|
 
@@ -106,7 +112,7 @@ The following query creates the :::no-loc text=`RecentErrors`::: table with the 
 
 ### Create and update table from query source using the *distributed* flag
 
-The following example creates a new table called `OldExtents` in the database asynchronously. The dataset is expected to be bigger than one GB (more than ~1 million rows) so the *distributed* flag is used. It updates `OldExtents` with data with `ExtentId` entries from the `MyExtents` table that were created more than 30 days ago.
+The following example creates a new table called `OldExtents` in the database asynchronously. The dataset is expected to be bigger than one GB (more than ~one million rows) so the *distributed* flag is used. It updates `OldExtents` with data with `ExtentId` entries from the `MyExtents` table that were created more than 30 days ago.
 
 ```kusto
 .set async OldExtents with(distributed=true) <|
