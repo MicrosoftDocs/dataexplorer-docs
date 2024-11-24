@@ -133,7 +133,7 @@ The arg_max() function differs from the [max() function](max-aggregation-functio
 
 Find the last time an event with a direct death happened, showing all the columns in the table.
 
-The query first filters the events to only include those where there was at least one direct death. Then the query returns the entire row with the most recent StartTime.
+The query first filters the events to only include those where there was at least one direct death. Then the query returns the entire row with the most recent (maximum) StartTime.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
