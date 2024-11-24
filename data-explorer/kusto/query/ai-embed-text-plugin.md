@@ -19,7 +19,7 @@ The `ai_embed_text` plugin allows embedding of text using language models, enabl
 
 ## Syntax
 
-`evaluate` `ai_embed_text` `(`*Text*, *ConnectionString* [`,` *Options*`,` *IncludeErrorMessages*]`)`
+`evaluate` `ai_embed_text` `(`*text*, *connectionString* [`,` *options*]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -27,10 +27,9 @@ The `ai_embed_text` plugin allows embedding of text using language models, enabl
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Text* | `string` | :heavy_check_mark: | The text to be embedded. The value can be a column reference or a constant scalar. |
-| *ConnectionString* | `string` | :heavy_check_mark: | Connection string for the language model in the format `<ModelDeploymentUri>;<AuthenticationMethod>`; replace `<ModelDeploymentUri>` and `<AuthenticationMethod>` with the AI model deployment URI and the authentication method respectively. |
-| *Options* | `dynamic` |  | Options that control calls to the embedding model endpoint. See [Options](#options). |
-| *IncludeErrorMessages* | `bool` |  | Flag to output errors, adding an extra column to the output table. To view the errors, set `ReturnSuccessfulOnly` to `false`. |
+| *text* | `string` | :heavy_check_mark: | The text to embed. The value can be a column reference or a constant scalar. |
+| *connectionString* | `string` | :heavy_check_mark: | The connection string for the language model in the format `<ModelDeploymentUri>;<AuthenticationMethod>`; replace `<ModelDeploymentUri>` and `<AuthenticationMethod>` with the AI model deployment URI and the authentication method respectively. |
+| *options* | `dynamic` |  | The options that control calls to the embedding model endpoint. See [Options](#options). |
 
 ## Options
 
@@ -85,6 +84,12 @@ To configure these policies, use the commands in the following steps:
     ```
     ~~~
 
+## Returns
+
+Returns two new embedding columns for each record in the results: one with the **_embedding** suffix, which contains the embedding values, and another with the **_embedding_error** suffix, which contains error strings or is left empty if the operation is successful.
+
+If the input is a column reference, the plugin returns the input table with these two additional columns prefixed with the reference column name. If the input is a constant scalar, the plugin returns a single record containing the **_embedding** and **_embedding_error** columns.
+
 ## Examples
 
 The following example embeds the text `Embed this text using AI` using the Azure OpenAI Embedding model.
@@ -118,17 +123,13 @@ datatable(TextData: string)
 
 ## Best practices
 
-Azure OpenAI embedding models are subject to heavy throttling. Frequent calls to this plugin can quickly reach throttling limits.
+Azure OpenAI embedding models are subject to heavy throttling, and frequent calls to this plugin can quickly reach throttling limits.
 
-To efficiently use the `ai_embed_text` plugin while minimizing throttling, you can follow these best practices:
+To efficiently use the `ai_embed_text` plugin while minimizing throttling and costs, follow these best practices:
 
-* Control the size of each request by adjusting the number of records (`RecordsPerRequest`) and characters per request (`CharsPerRequest`).
-* Configure retries on throttling to handle rate limits more gracefully.
-* Enable the output of underlying errors (`IncludeErrorMessages`) to help understanding and resolving issues related to throttling.
-* Return partial results to avoid losing successfully embedded values. For failed records, either return an empty embedding value or omit it from the result, depending on the `ReturnSuccessfulOnly` flag.
-* Use the `GlobalTimeout` option to set a timeout lower than the query [timeout](../set-timeout-limits.md), ensuring progress isn't lost on successful calls up to that point.
-
-These practices help manage costs and improve the efficiency of embedding operations.
+* **Control request size**: Adjust the number of records (`RecordsPerRequest`) and characters per request (`CharsPerRequest`).
+* **Control query timeout**: Set `GlobalTimeout` to a value lower than the query [timeout](../set-timeout-limits.md) to ensure progress isn't lost on successful calls up to that point.
+* **Handle rate limits more gracefully**: Set retries on throttling (`RetriesOnThrottling`).
 
 ## Related content
 
