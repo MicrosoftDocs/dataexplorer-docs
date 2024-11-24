@@ -25,7 +25,7 @@ Finds a row in the table that minimizes the specified expression. It returns all
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExprToMinimize*| `string` |  :heavy_check_mark: | The expression determines the row that contains the minimum value in the specifed column. |
+| *ExprToMinimize*| `string` |  :heavy_check_mark: | The expression for which the minimum value is determined. |
 | *ExprToReturn* | `string` |  :heavy_check_mark: | The expression determines which columns' values are returned, from the row that has the minimum value for *ExprToMinimize*.  Use a wildcard `*` to return all columns. |
   
 ## Null handling
