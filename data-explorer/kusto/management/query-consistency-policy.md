@@ -49,7 +49,11 @@ The following limits are configurable:
 
 ## Monitoring
 
-You can monitor the latency of the age of the metadata snapshot used by nodes running the weak consistency service by using the `Weak consistency latency` metric (part of the [Query metrics](../../using-metrics.md#query-metrics)).
+You can monitor the latency of the metadata snapshot age on nodes serving as weak consistency service heads by using the `Weak consistency latency` metric. 
+
+::: moniker range="azure-data-explorer"
+For more information, see [Query metrics](/azure/data-explorer/using-metrics#query-metrics).
+::: moniker-end
 
 ## Related content
 
