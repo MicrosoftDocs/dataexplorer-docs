@@ -340,10 +340,10 @@ testData
 | prodEnvironment	| H4ck3r	| 2022-04-30 05:00:00.0000000	| 1440	| 2022-04-30 05:00:00.0000000	| 1687	| H4ck3r	| abcdefghijklmnoprtuvwxyz012345678	| prodEnvironment	| detectSet	| trainSet	| 0.0031	| 4	| 2022-03-01 09:00:00.0000000	| 60	| 0.9969	| 1	| newEntity_userName	| The userName H4ck3r wasn't seen on accountName prodEnvironment during the last 60 days. Previously, four entities were seen, the last one of them appearing at 2022-03-01 09:00.	| ["IT-support : 2022-03-01 07:00", "Admin : 2022-03-01 08:00", "Dev2 : 2022-03-01 09:00", "Dev1 : 2022-03-01 14:00"] |
 
 
-The output of running the function is the first-seen row in test dataset for each entity per scope, filtered for entities that were tagged as anomalous (meaning that entity anomaly score was above anomalyScoreThresh). Some other fields are added for clarity:
+The output of running the function is the first-seen row in test dataset for each entity per scope, filtered for new entities (meaning they didn't appear during the training period) that were tagged as anomalous (meaning that entity anomaly score was above anomalyScoreThresh). Some other fields are added for clarity:
 
 * `dataSet`: current dataset (is always `detectSet`).
-* `firstSeenSet`: dataset in which the entity was first seen per scope.
+* `firstSeenSet`: dataset in which the scope was first seen (should be 'trainSet').
 * `newEntityProbability`: probability to see any new entity based on Poisson model estimation.
 * `countKnownEntities`: existing entities on scope.
 * `lastNewEntityTimestamp`: last time a new entity was seen before the anomalous one.
@@ -354,7 +354,7 @@ The output of running the function is the first-seen row in test dataset for eac
 * `anomalyExplainability`: textual wrapper for generated anomaly and its explanation.
 * `anomalyState`: bag of existing entities on scope with their first seen times.
 
-Running this function on user per account with default parameters gets a previously unseen and anomalous user ('H4ck3r') with high anomaly score of 0.9969, meaning that this is very unexpected (due to samll numbers of existing users in training period). 
+Running this function on user per account with default parameters gets a previously unseen and anomalous user ('H4ck3r') with high anomaly score of 0.9969, meaning that this is very unexpected (due to small numbers of existing users in training period). 
 
 When we run the function with default parameters on deviceId as entity, we won't see an anomaly, due to large number of existing devices which makes it expected. However, if we lower the parameter anomalyScoreThresh to 0.0001 and raise the parameter to maxEntitiesThresh to 10000, we will effectively decrease precision in favor of recall, and detect an anomaly (with a very low anomaly score) on device 'abcdefghijklmnoprtuvwxyz012345678'.
 
