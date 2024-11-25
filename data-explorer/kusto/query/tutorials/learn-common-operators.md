@@ -155,6 +155,33 @@ There are 46 types of storms in the table. Here's a sample of 10 of them.
 |Flood|
 |...|
 
+## Sort results
+
+To view the top floods in Texas that caused the most damage, use the [sort](../sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FOcXlSgkVSq4JOYmpqcGFOUXpBaVVAIlCorys1KTS0CGFZWEZOam6ii45qVAGGALdBBG6qBpBwDYBhI8lQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
+
+```Kusto
+StormEvents
+| where State == 'TEXAS' and EventType == 'Flood'
+| sort by DamageProperty
+| project StartTime, EndTime, State, EventType, DamageProperty
+```
+
+**Output**
+
+|StartTime|EndTime|State|EventType|DamageProperty|
+|--|--|--|--|--|
+|2007-08-18T21:30:00Z|2007-08-19T23:00:00Z|TEXAS|Flood|5000000|
+|2007-06-27T00:00:00Z|2007-06-27T12:00:00Z|TEXAS|Flood|1200000|
+|2007-06-28T18:00:00Z|2007-06-28T23:00:00Z|TEXAS|Flood|1000000|
+|2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|TEXAS|Flood|750000|
+|2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
+|...|...|...|...|...|
+
 ## Filter by condition
 
 The [where](../where-operator.md) operator filters rows of data based on certain criteria.
@@ -208,41 +235,14 @@ StormEvents
 | GEORGIA | Excessive Heat | 2007-08-01 00:00:00 | 2007-08-27 23:59:00 |
 | TENNESSEE | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
 | TENNESSEE | Drought | 2007-08-01 00:00:00 | 2007-08-3123:59:00 |
-| SOUTH CAROLINA | Drought | 2007-08-01 00:00:00Z | 2007-08-31 23:59:00 |
-| TENNESSEE | Drought | 2007-08-01 00:00:00Z | 2007-08-31 23:59:00 |
-| GEORGIA | Excessive Heat | 2007-08-01 00:00:00Z | 2007-08-27 23:59:00 |
-| TENNESSEE | Drought | 2007-08-01 00:00:00Z | 2007-08-31 23:59:00 |
-| MINNESOTA | Drought | 2007-08-01 00:00:00Z | 2007-08-31 23:59:00 |
-| WISCONSIN | Drought | 2007-08-01 00:00:00Z | 2007-08-31 23:59:00 |
-| GEORGIA | Excessive Heat | 2007-08-01 00:00:00Z | 2007-08-27 23:59:00 |
+| SOUTH CAROLINA | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| TENNESSEE | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| GEORGIA | Excessive Heat | 2007-08-01 00:00:00 | 2007-08-27 23:59:00 |
+| TENNESSEE | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| MINNESOTA | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| WISCONSIN | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| GEORGIA | Excessive Heat | 2007-08-01 00:00:00 | 2007-08-27 23:59:00 |
 |...|...|...|...|
-
-## Sort results
-
-To view the top floods in Texas that caused the most damage, use the [sort](../sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FOcXlSgkVSq4JOYmpqcGFOUXpBaVVAIlCorys1KTS0CGFZWEZOam6ii45qVAGGALdBBG6qBpBwDYBhI8lQAAAA==" target="_blank">Run the query</a>
-::: moniker-end
-
-```Kusto
-StormEvents
-| where State == 'TEXAS' and EventType == 'Flood'
-| sort by DamageProperty
-| project StartTime, EndTime, State, EventType, DamageProperty
-```
-
-**Output**
-
-|StartTime|EndTime|State|EventType|DamageProperty|
-|--|--|--|--|--|
-|2007-08-18T21:30:00Z|2007-08-19T23:00:00Z|TEXAS|Flood|5000000|
-|2007-06-27T00:00:00Z|2007-06-27T12:00:00Z|TEXAS|Flood|1200000|
-|2007-06-28T18:00:00Z|2007-06-28T23:00:00Z|TEXAS|Flood|1000000|
-|2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|TEXAS|Flood|750000|
-|2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
-|...|...|...|...|...|
 
 ## Get the top *n* rows
 
