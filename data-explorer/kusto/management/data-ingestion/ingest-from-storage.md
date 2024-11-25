@@ -87,7 +87,7 @@ The following example instructs your database to read two blobs from Azure Blob 
 
 ### Azure Blob Storage with managed identity
 
-The following example shows how to read a CSV file from Azure Blob Storage and ingest its contents into table `T` using managed identity authentication. Authentication uses the managed identity ID (object ID) set for the Azure Blob Storage in Azure. For more information, see [Create a managed identity for storage containers](/azure/ai-services/language-service/native-document-support/managed-identities).
+The following example shows how to read a CSV file from Azure Blob Storage and ingest its contents into table `T` using managed identity authentication. Authentication uses the managed identity ID (object ID) assigned to the Azure Blob Storage in Azure. For more information, see [Create a managed identity for storage containers](/azure/ai-services/language-service/native-document-support/managed-identities).
 
 ```kusto
 .ingest into table T ('https://StorageAccount.blob.core.windows.net/Container/file.csv;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e')
