@@ -148,4 +148,7 @@ Use the [S3 presigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide
 
 ## Related Content
 
-* For examples of how storage connection strings are used, see [externaldata operator](../../query/externaldata-operator.md) or [Create and alter Azure Storage external tables](../../management/external-tables-azure-storage.md).
+For examples of how storage connection strings are used, see:
+
+* [externaldata operator](../../query/externaldata-operator.md)
+* [Create and alter Azure Storage external tables](../../management/external-tables-azure-storage.md).
