@@ -3,7 +3,7 @@ title: Monitor Azure Data Explorer performance, health & usage with metrics
 description: Learn how to use Azure Data Explorer metrics to monitor the cluster's performance, health, and usage.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 09/10/2024
+ms.date: 11/20/2024
 ---
 
 # Monitor Azure Data Explorer performance, health, and usage with metrics
@@ -131,6 +131,7 @@ Query performance metrics track query duration and total number of concurrent or
 | QueryResult |	Count | Count | The total number of queries. |	QueryStatus | 
 | Total number of concurrent queries | Count | Avg, Max, Min, Sum | The number of queries run in parallel in the cluster. This metric is a good way to estimate the load on the cluster. | None |
 | Total number of throttled queries | Count | Avg, Max, Min, Sum | The number of throttled (rejected) queries in the cluster. The maximum number of concurrent (parallel) queries allowed is defined in the request rate limit policy. | None |
+| Weak consistency latency | Milliseconds | Avg, Max, Min | The age of the metadata snapshot used by nodes running the weak consistency service. | Database, Node |
 
 ## Materialized view metrics
 
