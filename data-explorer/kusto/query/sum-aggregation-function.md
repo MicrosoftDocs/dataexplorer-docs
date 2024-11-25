@@ -33,33 +33,34 @@ Returns the sum value of *expr* across the group.
 
 ## Example
 
-This example returns the total number of deaths by state.
+This example returns the total number of thunderstorm events by state.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlUAiznnl+aV2CaDSA1NHYWQ/JLEHJfUxJIM58Ti1GIFW5B6DbBAsUtmUWpyiaZCUqVCcEliSSrYtPyiEpAAmj4A7Xtp83QAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9PXVwjJL0nMUcgrzU1KLVLIT1NIysmsqkosSilWSKpUKC5JLEnlCi7JL8p1LUvNKynmqlEoz0gtSlUAc0MqC1IVbG0VlJygmpSA8sWlubmJRZlVqQowUef80rwSW6C4hqEmyNRgsKlAlflFJSA%2BijoAippnIpMAAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-StormEvents 
-| summarize EventCount=count(), TotalDeathCases = sum(DeathsDirect) by State 
-| sort by TotalDeathCases
+StormEvents
+| where EventType == "Blizzard"
+| summarize BlizzardCount=sum(1) by State
+| sort by BlizzardCount
 ```
 
 **Output**
 
 The results table shown includes only the first 10 rows.
 
-| State                | event_count | TotalDeathCases |
-| -------------------- | ----------- | --------------- |
-| TEXAS                | 4701        | 71              |
-| FLORIDA              | 1042        | 57              |
-| CALIFORNIA           | 898         | 48              |
-| ILLINOIS             | 2022        | 29              |
-| ALABAMA              | 1315        | 29              |
-| MISSOURI             | 2016        | 20              |
-| NEW YORK             | 1750        | 19              |
-| KANSAS               | 3166        | 17              |
-| GEORGIA              | 1983        | 17              |
-| TENNESSEE            | 1125        | 17              |
-| ...   | ... | ... |
+| State | BlizzardCount |
+| ---- | --- |
+| ALASKA | 64 |
+| IOWA | 62 |
+| SOUTH DAKOTA | 51 |
+| KANSAS | 45 |
+| NEBRASKA | 45 |
+| ILLINOIS | 44 |
+| WISCONSIN | 33 |
+| INDIANA | 27 |
+| COLORADO | 26 |
+| NORTH DAKOTA | 26 |
+| ... | ... |
