@@ -33,7 +33,7 @@ Returns the sum value of *expr* across the group.
 
 ## Example
 
-This example returns the total number of thunderstorm events by state.
+This example returns the total number of blizzards by state.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
