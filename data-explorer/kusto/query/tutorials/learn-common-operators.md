@@ -30,7 +30,7 @@ In this tutorial, you'll learn how to:
 > * [Select a subset of columns](#select-a-subset-of-columns)
 > * [List unique values](#list-unique-values)
 > * [Filter by condition](#filter-by-condition)
-> * [Filter by time range](#filter-by-time-range)
+> * [Filter by time range](#filter-by-date-and-time-range)
 > * [Sort results](#sort-results)
 > * [Get the top *n* rows](#get-the-top-n-rows)
 > * [Create calculated columns](#create-calculated-columns)
