@@ -102,7 +102,7 @@ Returns information on the extents created because of the `.set` or `.append` co
 
 ### Create and update table from query source
 
-The following query creates the :::no-loc text="\`RecentErrors\`"::: table with the same schema as :::no-loc text="\`LogsTable\`":::. It updates :::no-loc text="\`RecentErrors\`"::: with all error logs from :::no-loc text="\`LogsTable\`"::: over the last hour.
+The following query creates the `:::no-loc text="RecentErrors":::` table with the same schema as `:::no-loc text="LogsTable":::`. It updates `:::no-loc text="RecentErrors":::` with all error logs from `:::no-loc text="LogsTable":::` over the last hour.
 
 ```kusto
 .set RecentErrors <|
