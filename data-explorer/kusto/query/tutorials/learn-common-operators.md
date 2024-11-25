@@ -2,7 +2,7 @@
 title:  'Tutorial: Learn common Kusto Query Language operators'
 description: This tutorial describes how to write queries using common operators in the Kusto Query Language to meet common query needs.
 ms.topic: tutorial
-ms.date: 08/11/2024
+ms.date: 11/25/2024
 ---
 
 # Tutorial: Learn common operators
@@ -30,6 +30,7 @@ In this tutorial, you'll learn how to:
 > * [Select a subset of columns](#select-a-subset-of-columns)
 > * [List unique values](#list-unique-values)
 > * [Filter by condition](#filter-by-condition)
+> * [Filter by time range](#filter-by-time-range)
 > * [Sort results](#sort-results)
 > * [Get the top *n* rows](#get-the-top-n-rows)
 > * [Create calculated columns](#create-calculated-columns)
@@ -181,6 +182,40 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 |2007-01-15T22:00:00Z|2007-01-16T22:00:00Z|TEXAS|Flood|20000|
 |2007-03-12T02:30:00Z|2007-03-12T06:45:00Z|TEXAS|Flood|0|
 |...|...|...|...|...|
+
+## Filter by date and time range
+
+Use the [between operator](../between-operator.md) to filter data based on a specific time range.
+
+The following query finds all storm events that started in August 2007, along with their states, event types, start and end times. The results are then sorted in ascending order.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVCC5JLCoJycxNVbCzVUhJLEktAbI1jAwMzHUNLHQNDBUUDAyswEhTITEvBUm9DaZyYwMFI2MrU0sg0gTaUFCUn5WaXALSU5KqowC2OaSyAMiEmwIUzUsBMYDKi%2FOLShSSKpGsSCxOBgCegSYjtAAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```Kusto
+StormEvents
+| where StartTime >= datetime(2007-08-01  00:00:00) and StartTime < datetime(2007-08-30 23:59:59)
+| project State, EventType, StartTime, EndTime
+| sort by StartTime asc 
+```
+
+**Output**
+
+| State | Eventype | StartTime | EndTime |
+|--|--|--|--|
+| GEORGIA | Excessive Heat | 2007-08-01 00:00:00 | 2007-08-27 23:59:00 |
+| TENNESSEE | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| TENNESSEE | Drought | 2007-08-01 00:00:00 | 2007-08-3123:59:00 |
+| SOUTH CAROLINA | Drought | 2007-08-01 00:00:00Z | 2007-08-31 23:59:00 |
+| TENNESSEE | Drought | 2007-08-01 00:00:00Z | 2007-08-31 23:59:00 |
+| GEORGIA | Excessive Heat | 2007-08-01 00:00:00Z | 2007-08-27 23:59:00 |
+| TENNESSEE | Drought | 2007-08-01 00:00:00Z | 2007-08-31 23:59:00 |
+| MINNESOTA | Drought | 2007-08-01 00:00:00Z | 2007-08-31 23:59:00 |
+| WISCONSIN | Drought | 2007-08-01 00:00:00Z | 2007-08-31 23:59:00 |
+| GEORGIA | Excessive Heat | 2007-08-01 00:00:00Z | 2007-08-27 23:59:00 |
+|...|...|...|...|
 
 ## Sort results
 
