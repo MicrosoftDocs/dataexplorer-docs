@@ -3,7 +3,7 @@ title:  sum() (aggregation function)
 description: Learn how to use the sum() (aggregation function) function to calculate the sum of an expression across the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/25/2024
 ---
 # sum() (aggregation function)
 
