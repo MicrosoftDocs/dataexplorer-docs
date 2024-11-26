@@ -3,7 +3,7 @@ title:  not()
 description: Learn how to use the not() function to reverse the value of its boolean argument.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/26/2024
 ---
 # not()
 
