@@ -46,3 +46,16 @@ print str = strcat("hello", " ", "world")
 |str|
 |---|
 |hello world|
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUfAtzSnJ9MnMSw0uAfLTFWwVikuKkhNLNJRCMjKLFYAoByipYBiTp6SjgCpmhEXMWEkTAAxkDbtYAAAA" target="_blank">Run the query</a>
+```kusto
+print MultiLineString = strcat("This is line 1\n", "This is line 2\n", "This is line 3")
+```
+
+**Output**
+
+|MultiLineString|
+|---|
+| This is line 1<br>This is line 2<br>This is line 3 |
