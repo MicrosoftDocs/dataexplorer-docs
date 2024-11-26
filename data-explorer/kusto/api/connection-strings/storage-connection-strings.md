@@ -3,13 +3,13 @@ title:  Storage connection strings
 description: This article describes storage connection strings.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/19/2024
 ---
 # Storage connection strings
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The kusto service can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azure-storage.md) in order to query data stored on external storages.
+The Kusto service can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azure-storage.md) in order to query data stored on external storages.
 
 The following types of external storage are supported:
 
@@ -145,3 +145,10 @@ Use the [S3 presigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide
 | Example |
 |--|
 | `"https://yourbucketname.s3.us-east-1.amazonaws.com/file.csv?12345678PRESIGNEDTOKEN"` |
+
+## Related Content
+
+For examples of how storage connection strings are used, see:
+
+* [externaldata operator](../../query/externaldata-operator.md)
+* [Create and alter Azure Storage external tables](../../management/external-tables-azure-storage.md).
