@@ -21,7 +21,7 @@ Reverses the value of its `bool` argument.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*expr*|scalar| :heavy_check_mark:|An expression that evaluates to a boolean value. The result of this expression will be reversed.|
+|*expr*|scalar| :heavy_check_mark:|An expression that evaluates to a boolean value. The result of this expression is reversed.|
 
 ## Returns
 
@@ -29,7 +29,7 @@ Returns the reversed logical value of its `bool` argument.
 
 ## Examples
 
-The following query returns the number of events that are not "Tornado", per state.
+The following query returns the number of events that are not a tornado, per state.
 
 :::moniker range="azure-data-explorer"
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSspVuDlqlEoz0gtSlXIyy%2FRAAuGVBakKtjaKiiF5BflJabkK2mCVRWX5uYmFmVWpSok55fmlWhoKiRVKgSXJJakAgA2hsjZUAAAAA%3D%3D" target="_blank">Run the query</a>
@@ -57,7 +57,7 @@ StormEvents
 | NEW YORK | 1746 |
 | ... | ... |
 
-The following query excludes records where either the EventType is "Hail", *or* the State is "Alaska".
+The following query excludes records where either the EventType is hail, *or* the state is Alaska.
 
 :::moniker range="azure-data-explorer"
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVyMsv0QALhVQWpCrY2iooeSRm5igp5BcpBJcklkCEHHMSi7MTlTQBNhteI0EAAAA%3D" target="_blank">Run the query</a>
@@ -68,7 +68,7 @@ StormEvents
 | where not(EventType == "Hail" or State == "Alaska")
 ```
 
-The next query excludes records where both the EventType is "Hail" *and* the State is "Alaska" simultaneously.
+The next query excludes records where both the EventType is hail *and* the state is Alaska simultaneously.
 
 :::moniker range="azure-data-explorer"
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5uWqUSjPSC1KVcjLL9EAi4VUFqQq2NoqKHkkZuYoKSTmpSgElySWQMQccxKLsxOVNAFEoBiQQwAAAA%3D%3D" target="_blank">Run the query</a>
@@ -81,7 +81,7 @@ StormEvents
 
 ### Combine with other conditions
 
-You can also combine the not() function with other conditions. The following query returns all records where the EventType is not "Flood" and the property damage is greater than $1,000,000.
+You can also combine the not() function with other conditions. The following query returns all records where the EventType is not a flood and the property damage is greater than $1,000,000.
 
 :::moniker range="azure-data-explorer"
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5uWqUSjPSC1KVcjLL9EAi4VUFqQq2NoqKLnl5OenKGkqJOalKLgk5iampwYU5RekFpVUKtgpGBqAAQBYZhVQSwAAAA%3D%3D" target="_blank">Run the query</a>
