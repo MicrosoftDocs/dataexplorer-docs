@@ -33,7 +33,7 @@ This function returns the  *:::no-loc text="then":::* value when the *:::no-loc 
 
 ## Examples
 
-### *Then-if* example
+### Classify data using iff()
 
 This query adds a new column called Rain to the StormEvents table. The Rain column indicates whether the event is a "Rain event" or "Not rain event". A rain event is defined as heavy rain, flash flood events or flood events.
 
@@ -67,9 +67,8 @@ The following query defines the severity of an event. The level of severity depe
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQwQ6CMAyG7z5FwwkiBzx4Ey9iookmJvgCEwrOCDNdQTE%2BvIMZUOyp%2Ff%2F06%2F7FrKhY11iynrwAH4xlCkfF4hqJQuQIIdhmReqmYfqZDmZC4mbYibFGktyYBZll7jdiCbOgK1AE2%2FJSkUQdScKEO6%2BVIxR8HsTAB2cj87Pj%2F9EWMO9YwhwdwcIQrP5Da1WD26m7oTl7lSIJRsfzzON1VRSC5BNtZvsRJkKiqpJdz%2B9jjR04Nb33BssnD0pEAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQTQ6CQAyF956imRVEF7hwJ27ERBNNTPACIxQY4zCmFBTj4R0YI%2F501b6mX%2FsasyG9arDkavQAvDGWKRwMy3MktcwRQnDJksylgvGr2tsKidthJsYGSXFrB1SWeZ%2BIBUyDPsAQbMpTTQqrSBEm3Pc6OULJxSAGExBrlRdi8kebw6xnSbv0BxaG4PQvWqda3NZcLU3sTIokGYXv2%2BOrWmtJ6o7Os3uEtZCYumTPh2P7NvYEXHtYMioBAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
-
 
 ```kusto
 StormEvents
@@ -77,3 +76,11 @@ StormEvents
 | extend Severity = iff(TotalDamage > 1000000 or InjuriesDirect > 10 or DeathsDirect > 0, "High", iff(TotalDamage < 50000 and InjuriesDirect == 0 and DeathsDirect == 0, "Low", "Moderate"))
 | summarize TotalEvents = count(), SeverityEvents = count() by Severity
 ```
+
+**Output**
+
+| Severity | TotalEvents |
+|----------|-------------|
+| Low      | 54805       |
+| High     | 977         |
+| Moderate | 3284        |
