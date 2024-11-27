@@ -39,8 +39,8 @@ All continuous export commands require at least [Database Admin](../../access-co
 
 * **External table storage accounts**:
   
-  * For best performance, the database and the storage account(s) should be colocated in the same Azure region.
-  * Continuous export works in a distributed manner, such that all nodes are exporting concurrently. On large databases, and if the exported data volume is large, this might lead to storage throttling. It's recommended to configure multiple storage accounts for the external table. See [storage failures during export commands](export-data-to-storage.md#failures-during-export-commands) for more details.
+  * For best performance, the database and the storage accounts should be colocated in the same Azure region.
+  * Continuous export works in a distributed manner, such that all nodes are exporting concurrently. On large databases, and if the exported data volume is large, this might lead to storage throttling. The recommendation is to configure multiple storage accounts for the external table. For more information, see [storage failures during export commands](export-data-to-storage.md#failures-during-export-commands).
 
 ## Exactly once export
 
@@ -48,13 +48,13 @@ To guarantee "exactly once" export, continuous export uses [database cursors](..
 
 [IngestionTime policy](../show-table-ingestion-time-policy-command.md) must be enabled on all tables referenced in the query that should be processed "exactly once" in the export. The policy is enabled by default on all newly created tables.
 
-The guarantee for "exactly once" export is only for files reported in the [show exported artifacts command](show-continuous-artifacts.md). Continuous export doesn't guarantee that each record will be written only once to the external table. If a failure occurs after export has begun and some of the artifacts were already written to the external table, the external table might contain duplicates. If a write operation was aborted before completion, the external table might contain corrupted files. In such cases, artifacts aren't deleted from the external table, but they won't be reported in the [show exported artifacts command](show-continuous-artifacts.md). Consuming the exported files using the `show exported artifacts command` guarantees no duplications and no corruptions.
+The guarantee for "exactly once" export is only for files reported in the [show exported artifacts command](show-continuous-artifacts.md). Continuous export doesn't guarantee that each record is written only once to the external table. If a failure occurs after export begins and some of the artifacts were already written to the external table, the external table might contain duplicates. If a write operation was aborted before completion, the external table might contain corrupted files. In such cases, artifacts aren't deleted from the external table, but they aren't reported in the [show exported artifacts command](show-continuous-artifacts.md). Consuming the exported files using the `show exported artifacts command` guarantees no duplications and no corruptions.
 
 ## Export from fact and dimension tables
 
 By default, all tables referenced in the export query are assumed to be [fact tables](../../concepts/fact-and-dimension-tables.md). As such, they're scoped to the database cursor. The syntax explicitly declares which tables are scoped (fact) and which aren't scoped (dimension). See the `over` parameter in the [create command](create-alter-continuous.md) for details.
 
-The export query includes only the records that joined since the previous export execution. The export query might contain [dimension tables](../../concepts/fact-and-dimension-tables.md) in which all records of the dimension table are included in all export queries. When using joins between fact and dimension tables in continuous-export, keep in mind that records in the fact table are only processed once. If the export runs while records in the dimension tables are missing for some keys, records for the respective keys will either be missed or include null values for the dimension columns in the exported files. Returning missed or null records depends on whether the query uses inner or outer join. The `forcedLatency` property in the continuous-export definition can be useful in such cases, where the fact and dimensions tables are ingested during the same time for matching records.
+The export query includes only the records that joined since the previous export execution. The export query might contain [dimension tables](../../concepts/fact-and-dimension-tables.md) in which all records of the dimension table are included in all export queries. When using joins between fact and dimension tables in continuous-export, keep in mind that records in the fact table are only processed once. If the export runs while records in the dimension tables are missing for some keys, records for the respective keys are either missed or include null values for the dimension columns in the exported files. Returning missed or null records depends on whether the query uses inner or outer join. The `forcedLatency` property in the continuous-export definition can be useful in such cases, where the fact and dimensions tables are ingested during the same time for matching records.
 
 > [!NOTE]
 > Continuous export of only dimension tables isn't supported. The export query must include at least a single fact table.
@@ -63,7 +63,7 @@ The export query includes only the records that joined since the previous export
 
 Monitor the health of your continuous export jobs using the following [export metrics](/azure/data-explorer/using-metrics#export-metrics):
 
-* `Continuous export max lateness` - Max lateness (in minutes) of continuous exports in the databsae. This is the time between now and the min `ExportedTo` time of all continuous export jobs in database. For more information, see [`.show continuous export`](show-continuous-export.md) command.
+* `Continuous export max lateness` - Max lateness (in minutes) of continuous exports in the database. This is the time between now and the min `ExportedTo` time of all continuous export jobs in database. For more information, see [`.show continuous export`](show-continuous-export.md) command.
 * `Continuous export result` - Success/failure result of each continuous export execution. This metric can be split by the continuous export name.
 
 Use the [`.show continuous export failures`](show-continuous-failures.md) command to see the specific failures of a continuous export job.
@@ -76,7 +76,7 @@ Use the [`.show continuous export failures`](show-continuous-failures.md) comman
 ### Resource consumption
 
 * The impact of the continuous export on the database depends on the query the continuous export is running. Most resources, such as CPU and memory, are consumed by the query execution.
-* The number of export operations that can run concurrently is limited by the database's data export capacity. For more information, see [Management commands throttling](../../management/capacity-policy.md#management-commands-throttling). If the database doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind.
+* The number of export operations that can run concurrently is limited by the database's data export capacity. For more information, see [Management commands throttling](../../management/capacity-policy.md#management-commands-throttling). If the database doesn't have sufficient capacity to handle all continuous exports, some start lagging behind.
 * The [show commands-and-queries command](../commands-and-queries.md) can be used to estimate the resources consumption.
   * Filter on `| where ClientActivityId startswith "RunContinuousExports"` to view the commands and queries associated with continuous export.
 
@@ -135,8 +135,8 @@ To define continuous export to a delta table, do the following steps:
 **General**:
 
 * The following formats are allowed on target tables: `CSV`, `TSV`, `JSON`, and `Parquet`.
-* Continuous export isn't designed to work over [materialized views](../materialized-views/materialized-view-overview.md), since a materialized view might be updated, while data exported to storage is always append only and never updated.
-* Continuous export cannot be created on [follower databases](/azure/data-explorer/follower) since follower databases are read-only and continuous export requires write operations.
+* Continuous export isn't designed to work over [materialized views](../materialized-views/materialized-view-overview.md), since a materialized view might be updated, while data exported to storage is always appended and never updated.
+* Continuous export can't be created on [follower databases](/azure/data-explorer/follower) since follower databases are read-only and continuous export requires write operations.
 * Records in source table must be ingested to the table directly, using an [update policy](../update-policy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export might not process these records. See the limitations described in the [Database Cursors](../database-cursor.md#restrictions) page.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](/azure/data-explorer/ingest-data-event-grid-overview#known-event-grid-issues).
 
@@ -162,7 +162,13 @@ To define continuous export to a delta table, do the following steps:
 
 ## Related content
 
+:::moniker range="microsoft-fabric"
 * [Create or alter continuous export](create-alter-continuous.md)
+* [External tables](../../query/schema-entities/external-tables.md)
+:::monker-end
+
 :::moniker-range="azure-data-explorer"
+* [Create or alter continuous export](create-alter-continuous.md)
+* [External tables](../../query/schema-entities/external-tables.md)
 * [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md)
 :::monker-end

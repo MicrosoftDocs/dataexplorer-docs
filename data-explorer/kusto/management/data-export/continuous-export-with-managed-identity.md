@@ -8,15 +8,15 @@ monikerRange: "azure-data-explorer"
 ---
 # Use a managed identity to run a continuous export job
 
-> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 A [continuous export job](continuous-data-export.md) exports data to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query.
 
 The continuous export job should be configured with a [managed identity](/azure/data-explorer/managed-identities-overview) in the following scenarios:
 
-* When the external table uses impersonation authentication.
-* When the query references tables in other databases.
-* When the query references tables with an enabled [row level security policy](../row-level-security-policy.md).
+* When the external table uses impersonation authentication
+* When the query references tables in other databases
+* When the query references tables with an enabled [row level security policy](../row-level-security-policy.md)
 
 A continuous export job configured with a managed identity is performed on behalf of the managed identity.
 
@@ -99,7 +99,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ## Set up an external table
 
-External tables refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2, or SQL Server.
+External tables refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, or SQL Server.
 
 Select one of the following tabs to set up an Azure Storage or SQL Server external table.
 
@@ -107,7 +107,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 1. Create a connection string based on the [storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [impersonation authentication](../../api/connection-strings/storage-connection-strings.md#impersonation).
 
-1. Run the [.create or .alter external table](../external-sql-tables.md) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
+1. Run the [.create or .alter external table](../external-sql-tables.md) command to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
     For example, the following command creates `MyExternalTable` that refers to CSV-formatted data in `mycontainer` of `mystorageaccount` in Azure Blob Storage. The table has two columns, one for an integer `x` and one for a string `s`. The connection string ends with `;impersonate`, which indicates to use impersonation authentication to access the data store.
 
@@ -130,7 +130,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Microsoft Entra integrated authentication](../../api/connection-strings/storage-connection-strings.md#impersonation), which is impersonation authentication.
 
-1. Run the [.create or .alter external table](../external-sql-tables.md) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
+1. Run the [.create or .alter external table](../external-sql-tables.md) command to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
 
     For example, the following command creates `MySqlExternalTable` that refers to `MySqlTable` table in `MyDatabase` of SQL Server. The table has two columns, one for an integer `x` and one for a string `s`. The connection string contains `;Authentication=Active Directory Integrated`, which indicates to use impersonation authentication to access the table.
 
@@ -147,7 +147,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 ## Create a continuous export job
 
-Select one of the following tabs to create a continuous export job that will run on behalf of a user-assigned or system-assigned managed identity.
+Select one of the following tabs to create a continuous export job that runs on behalf of a user-assigned or system-assigned managed identity.
 
 ### [User-assigned](#tab/user-assigned)
 

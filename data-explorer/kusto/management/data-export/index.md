@@ -3,7 +3,7 @@ title: Data export
 description: Learn how to export data.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/27/2024
 ---
 # Data export
 
@@ -15,7 +15,7 @@ For examples on data export, see [Related content](#related-content).
 
 ## Client-side export
 
-Client-side export gives you control over saving query results either to the local file system or pushing them to a preferred storage location. This flexibility is facilitated through the use of [Kusto client libraries](../../api/client-libraries.md). You can [create an app to run queries](../../api/get-started/app-basic-query.md), read the desired data, and implement an export process tailored to your requirements.
+Client-side export gives you control over saving query results either to the local file system or pushing them to a preferred storage location. This flexibility is facilitated by using [Kusto client libraries](../../api/client-libraries.md). You can [create an app to run queries](../../api/get-started/app-basic-query.md), read the desired data, and implement an export process tailored to your requirements.
 
 ::: moniker range="azure-data-explorer"
 Alternatively, you can use a client tool like the Azure Data Explorer web UI to export data from your Kusto cluster. For more information, see [Share queries](/azure/data-explorer/web-share-queries).

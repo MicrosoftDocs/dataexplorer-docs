@@ -31,18 +31,26 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Returns
 
-| Output parameter    | Type     | Description                                                             |
-|---------------------|----------|-------------------------------------------------------------------------|
-| CursorScopedTables  | `string` | List of explicitly scoped (fact) tables (JSON serialized)               |
-| ExportProperties    | `string` | Export properties (JSON serialized)                                     |
-| ExportedTo          | `datetime` | The last datetime (ingestion time) that was exported successfully       |
-| ExternalTableName   | `string` | Name of the external table                                              |
-| ForcedLatency       | `timeSpan` | Forced latency (null if not provided)                                   |
-| IntervalBetweenRuns | `timeSpan` | Interval between runs                                                   |
-| IsDisabled          | `bool` | True if the continuous export is disabled                               |
-| IsRunning           | `bool` | True if the continuous export is currently running                      |
-| LastRunResult       | `string` | The results of the last continuous-export run (`Completed` or `Failed`) |
-| LastRunTime         | `datetime` | The last time the continuous export was executed (start time)           |
-| Name                | `string` | Name of the continuous export                                           |
-| Query               | `string` | Export query                                                            |
-| StartCursor         | `string` | Starting point of the first execution of this continuous export         |
+| Output parameter | Type | Description |
+|--|--|--|
+| CursorScopedTables | `string` | The list of explicitly scoped (fact) tables (JSON serialized). |
+| ExportProperties | `string` | The export properties (JSON serialized). |
+| ExportedTo | `datetime` | The last datetime (ingestion time) that was exported successfully. |
+| ExternalTableName | `string` | The external table name. |
+| ForcedLatency | `timeSpan` | The forced latency timespan, if defined. Returns `Null` if no timespan is defined. |
+| IntervalBetweenRuns | `timeSpan` | The interval between runs. |
+| IsDisabled | `bool` | A boolean value indicating whether the continuous export is disabled. |
+| IsRunning | `bool` | A boolean value indicating whether the continuous export is currently running. |
+| LastRunResult | `string` | The results of the last continuous-export run (`Completed` or `Failed`). |
+| LastRunTime | `datetime` | The last time the continuous export was executed (start time) |
+| Name | `string` | The name of the continuous export. |
+| Query | `string` | The export query. |
+| StartCursor | `string` | The starting point of the first execution of this continuous export. |
+
+## Related content
+
+* [External tables](../../query/schema-entities/external-tables.md)
+* [Create or alter continuous export](create-alter-continuous.md)
+* [Disable or enable continuous export](disable-enable-continuous.md)
+* [Drop continuous export](drop-continuous-export.md)
+* [Show continuous export failures](show-continuous-failures.md)
