@@ -69,7 +69,7 @@ dt
 
 ### Using parse_version with other functions
 
-This query compares all pairs of version numbers from the initial list, removes duplicate pairs, and then identifies the higher version number for each pair.
+This query compares all pairs of version numbers from the initial list, removes duplicate pairs, and then parses each version string to identify the higher version number for each pair.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
