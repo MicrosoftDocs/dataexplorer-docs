@@ -3,7 +3,7 @@ title:  iff()
 description:  This article describes iff().
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/27/2024
 ---
 # iff()
 
@@ -31,7 +31,11 @@ Returns the *:::no-loc text="then":::* value when the *:::no-loc text="if":::* c
 
 This function returns the  *:::no-loc text="then":::* value when the *:::no-loc text="if":::* condition evaluates to `true`, otherwise it returns the *:::no-loc text="else":::* value.
 
-## Example
+## Examples
+
+### *Then-if* example
+
+This query adds a new column called Rain to the StormEvents table. The Rain column indicates whether the event is a "Rain event" or "Not rain event". A rain event is defined as heavy rain, flash flood events or flood events.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -56,3 +60,20 @@ The following table shows only the first five rows.
 |GEORGIA| 64588 |Thunderstorm Wind |Not rain event|
 |MISSISSIPPI| 68796 |Thunderstorm Wind |Not rain event|
 |...|...|...|...|
+
+### Combine iff() with other functions
+
+The following query defines the severity of an event. The level of severity depends on the total value of damages, the number of injuries and the number of direct deaths associated with each event. The severity level is Low in cases where there are zero deaths, zero injuries, and damages of less than $50,000. Moderate severity results from zero deaths, less than 10 injuries or damages between $50,000 and $1,000,000. The severity level is High in cases where there is a direct death, more than 10 injuries, or damages above $1,000,000. The query then returns the number of events for each level of severity.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQwQ6CMAyG7z5FwwkiBzx4Ey9iookmJvgCEwrOCDNdQTE%2BvIMZUOyp%2Ff%2F06%2F7FrKhY11iynrwAH4xlCkfF4hqJQuQIIdhmReqmYfqZDmZC4mbYibFGktyYBZll7jdiCbOgK1AE2%2FJSkUQdScKEO6%2BVIxR8HsTAB2cj87Pj%2F9EWMO9YwhwdwcIQrP5Da1WD26m7oTl7lSIJRsfzzON1VRSC5BNtZvsRJkKiqpJdz%2B9jjR04Nb33BssnD0pEAQAA" target="_blank">Run the query</a>
+::: moniker-end
+
+
+```kusto
+StormEvents
+| extend TotalDamage = DamageCrops + DamageProperty
+| extend Severity = iff(TotalDamage > 1000000 or InjuriesDirect > 10 or DeathsDirect > 0, "High", iff(TotalDamage < 50000 and InjuriesDirect == 0 and DeathsDirect == 0, "Low", "Moderate"))
+| summarize TotalEvents = count(), SeverityEvents = count() by Severity
+```
