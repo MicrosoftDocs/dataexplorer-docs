@@ -171,4 +171,4 @@ To define continuous export to a delta table, do the following steps:
 * [Create or alter continuous export](create-alter-continuous.md)
 * [External tables](../../query/schema-entities/external-tables.md)
 * [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md)
-:::monker-end
+:::moniker-end
