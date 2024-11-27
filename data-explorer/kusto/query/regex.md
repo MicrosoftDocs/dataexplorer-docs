@@ -3,7 +3,7 @@ title:   Regex syntax
 description: Learn about the regular expression syntax supported by Kusto Query Language (KQL).
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/01/2024
+ms.date: 11/25/2024
 ---
 # Regex syntax
 
@@ -21,33 +21,34 @@ The following sections document the regular expression syntax supported by Kusto
 
 ### Match one character
 
-| Pattern     | Description                                                     |
+| Pattern     | Description |
 |-------------|-----------------------------------------------------------------|
-| `.`         | Any character except new line (includes new line with s flag)   |
-| `[0-9]`     | Any ASCII digit                                                 |
-| `\d`        | Digit (`\p{Nd}`)                                                |
-| `\D`        | Not a digit                                                     |
-| `\pX`       | Unicode character class identified by a one-letter name         |
-| `\p{Greek}` | Unicode character class (general category or script)            |
-| `\PX`       | Negated Unicode character class identified by a one-letter name |
-| `\P{Greek}` | Negated Unicode character class (general category or script)    |
+| `.`         | Any character except new line (includes new line with s flag).|
+| `[0-9]`     | Any ASCII digit.|
+| `[^0-9]`    | Any character that isn't an ASCII digit. |
+| `\d`        | Digit (`\p{Nd}`). |
+| `\D`        | Not a digit.|
+| `\pX`       | Unicode character class identified by a one-letter name.|
+| `\p{Greek}` | Unicode character class (general category or script).|
+| `\PX`       | Negated Unicode character class identified by a one-letter name.|
+| `\P{Greek}` | Negated Unicode character class (general category or script). |
 
 ### Character classes
 
 | Pattern        | Description                                                             |
 |----------------|-------------------------------------------------------------------------|
 | `[xyz]`        | Character class matching either x, y or z (union).                      |
-| `[^xyz]`       | Character class matching any character except x, y and z.               |
+| `[^xyz]`       | Character class matching any character except x, y, and z.               |
 | `[a-z]`        | Character class matching any character in range a-z.                    |
-| `[[:alpha:]]`  | ASCII character class ([A-Za-z])                                        |
-| `[[:^alpha:]]` | Negated ASCII character class ([^A-Za-z])                               |
-| `[x[^xyz]]`    | Nested/grouping character class (matching any character except y and z) |
-| `[a-y&&xyz]`   | Intersection (matching x or y)                                          |
-| `[0-9&&[^4]]`  | Subtraction using intersection and negation (matching 0-9 except 4)     |
-| `[0-9--4]`     | Direct subtraction (matching 0-9 except 4)                              |
-| `[a-g~~b-h]`   | Symmetric difference (matching `a` and `h` only)                        |
-| `[\[\]]`       | Escape in character classes (matching [ or ])                           |
-| `[a&&b]`       | Empty character class matching nothing                                  |
+| `[[:alpha:]]`  | ASCII character class ([A-Za-z]).                                        |
+| `[[:^alpha:]]` | Negated ASCII character class ([^A-Za-z]).                               |
+| `[x[^xyz]]`    | Nested/grouping character class (matching any character except y and z). |
+| `[a-y&&xyz]`   | Intersection (matching x or y).                                          |
+| `[0-9&&[^4]]`  | Subtraction using intersection and negation (matching 0-9 except 4).     |
+| `[0-9--4]`     | Direct subtraction (matching 0-9 except 4).                              |
+| `[a-g~~b-h]`   | Symmetric difference (matching `a` and `h` only).                        |
+| `[\[\]]`       | Escape in character classes (matching [ or ]).                           |
+| `[a&&b]`       | Empty character class matching nothing.                                  |
 
 > [!NOTE]
 > Any named character class may appear inside a bracketed `[...]` character class. For example, `[\p{Greek}[:digit:]]` matches any ASCII digit or any codepoint in the `Greek` script. `[\p{Greek}&&\pL]` matches Greek letters.
@@ -87,27 +88,27 @@ Precedence in character classes is from most binding to least binding:
 
 | Pattern           | Description                                                               |
 |------------------ |---------------------------------------------------------------------------|
-| `^`               | Beginning of a haystack (or start-of-line with multi-line mode)           |
-| `$`               | End of a haystack (or end-of-line with multi-line mode)                   |
-| `\A`              | Only the beginning of a haystack (even with multi-line mode enabled)      |
-| `\z`              | Only the end of a haystack (even with multi-line mode enabled)            |
-| `\b`              | Unicode word boundary (`\w` on one side and `\W`, `\A`, or `\z` on other) |
-| `\B`              | Not a Unicode word boundary                                               |
-| `\b{start}`, `\<` | Unicode start-of-word boundary (`\W\|\A` on the left, `\w` on the right)  |
-| `\b{end}`, `\>`   | Unicode end-of-word boundary (`\w` on the left, `\W\|\z` on the right)    |
-| `\b{start-half}`  | Half of a Unicode start-of-word boundary (`\W\|\A` on the left)           |
-| `\b{end-half}`    | Half of a Unicode end-of-word boundary (`\W\|\z` on the right)            |
+| `^`               | Beginning of a haystack or start-of-line with multi-line mode.           |
+| `$`               | End of a haystack or end-of-line with multi-line mode.                   |
+| `\A`              | Only the beginning of a haystack, even with multi-line mode enabled.      |
+| `\z`              | Only the end of a haystack, even with multi-line mode enabled.            |
+| `\b`              | Unicode word boundary with `\w` on one side and `\W`, `\A`, or `\z` on other. |
+| `\B`              | Not a Unicode word boundary.                                               |
+| `\b{start}`, `\<` | Unicode start-of-word boundary with `\W\|\A` at the start of the string and `\w` on the other side.  |
+| `\b{end}`, `\>`   | Unicode end-of-word boundary with `\w` on one side and `\W\|\z` at the end.    |
+| `\b{start-half}`  | Half of a Unicode start-of-word boundary with `\W\|\A` at the beginning of the boundary. |
+| `\b{end-half}`    | Half of a Unicode end-of-word boundary with `\W\|\z` at the end. |
 
 ### Grouping and flags
 
 | Pattern          | Description                                                       |
 |------------------|-------------------------------------------------------------------|
-| `(exp)`          | Numbered capture group (indexed by opening parenthesis)           |
-| `(?P<name>exp)`  | Named (also numbered) capture group (names must be alpha-numeric) |
-| `(?<name>exp)`   | Named (also numbered) capture group (names must be alpha-numeric) |
-| `(?:exp)`        | Non-capturing group                                               |
-| `(?flags)`       | Set flags within current group                                    |
-| `(?flags:exp)`   | Set flags for exp (non-capturing)                                 |
+| `(exp)`          | Numbered capture group (indexed by opening parenthesis).           |
+| `(?P<name>exp)`  | Named capture group (names must be alpha-numeric). |
+| `(?<name>exp)`   | Named capture group (names must be alpha-numeric). |
+| `(?:exp)`        | Non-capturing group.  |
+| `(?flags)`       | Set flags within current group. |
+| `(?flags:exp)`   | Set flags for exp (non-capturing). |
 
 Capture group names can contain only alpha-numeric Unicode codepoints, dots `.`, underscores `_`, and square brackets`[` and `]`. Names must start with either an `_` or an alphabetic codepoint. Alphabetic codepoints correspond to the `Alphabetic` Unicode property, while numeric codepoints correspond to the union of the `Decimal_Number`, `Letter_Number` and `Other_Number` general categories.
 
@@ -115,17 +116,17 @@ Flags are single characters. For example, `(?x)` sets the flag `x` and `(?-x)` c
 
 <a name="flags"></a>
 
-| Flag    | Description                                                                   |
+| Flag    | Description |
 |---------|-------------------------------------------------------------------------------|
-| `i`     | Case-insensitive: letters match both upper and lower case                     |
-| `m`     | Multi-line mode: `^` and `$` match begin/end of line                          |
-| `s`     | Allow dot (.). to match `\n`                                                  |
-| `R`     | Enables CRLF mode: when multi-line mode is enabled, `\r\n` is used            |
-| `U`     | Swap the meaning of `x*` and `x*?`                                            |
-| `u`     | Unicode support (enabled by default)                                          |
-| `x`     | Verbose mode, ignores whitespace and allow line comments (starting with `#`)  |
+| `i`     | Case-insensitive: letters match both upper and lower case. |
+| `m`     | Multi-line mode: `^` and `$` match begin/end of line. |
+| `s`     | Allow dot (.). to match `\n`. |
+| `R`     | Enables CRLF mode: when multi-line mode is enabled, `\r\n` is used. |
+| `U`     | Swap the meaning of `x*` and `x*?`. |
+| `u`     | Unicode support (enabled by default).|
+| `x`     | Verbose mode, ignores whitespace and allow line comments (starting with `#`). |
 
-Note that in verbose mode, whitespace is ignored everywhere, including within character classes. To insert whitespace, use its escaped form or a hex literal. For example, `\ ` or `\x20` for an ASCII space.
+In verbose mode, whitespace is ignored everywhere, including within character classes. To insert whitespace, use its escaped form or a hex literal. For example, `\ ` or `\x20` for an ASCII space.
 
 > [!NOTE]
 >
@@ -204,13 +205,13 @@ These classes are based on the definitions provided in [UTS#18](https://www.unic
 
 This section provides some guidance on speed and resource usage of regex expressions.
 
-### Unicode can impact memory usage and search speed
+### Unicode can affect memory usage and search speed
 
-KQL regex provides first class support for Unicode. In many cases, the extra memory required to support Unicode is negligible and won't typically impact search speed.
+KQL regex provides first class support for Unicode. In many cases, the extra memory required to support Unicode is negligible and doesn't typically affect search speed.
 
-The following are some examples of Unicode character classes that may impact memory usage and search speed:
+The following are some examples of Unicode character classes that can affect memory usage and search speed:
 
-* **Memory usage**: The impact of Unicode primarily arises from the use of Unicode character classes. Unicode character classes tend to be larger in size. For example, the `\w` character class matches around 140,000 distinct codepoints by default. This requires additional memory and can slow down regex compilation. If your requirements can be satisfied by ASCII, it is recommended to use ASCII classes instead of Unicode classes. The ASCII-only version of `\w` can be expressed in multiple ways, all of which are equivalent.
+* **Memory usage**: The effect of Unicode primarily arises from the use of Unicode character classes. Unicode character classes tend to be larger in size. For example, the `\w` character class matches around 140,000 distinct codepoints by default. This requires more memory and can slow down regex compilation. If ASCII satisfies your requirements, use ASCII classes instead of Unicode classes. The ASCII-only version of `\w` can be expressed in multiple ways, all of which are equivalent.
 
     ```
     [0-9A-Za-z_]
@@ -219,7 +220,7 @@ The following are some examples of Unicode character classes that may impact mem
     [\w&&\p{ascii}]
     ```
 
-* **Search speed**: Unicode tends to be handled pretty well, even when using large Unicode character classes. However, some of the faster internal regex engines cannot handle a Unicode aware word boundary assertion. So if you don't need Unicode-aware word boundary assertions, you might consider using `(?-u:\b)` instead of `\b`. The `(?-u:\b)` uses an ASCII-only definition of a word character, which can improve search speed.
+* **Search speed**: Unicode tends to be handled well, even when using large Unicode character classes. However, some of the faster internal regex engines can't handle a Unicode aware word boundary assertion. So if you don't need Unicode-aware word boundary assertions, you might consider using `(?-u:\b)` instead of `\b`. The `(?-u:\b)` uses an ASCII-only definition of a word character, which can improve search speed.
 
 ### Literals can accelerate searches
 
