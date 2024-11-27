@@ -34,34 +34,90 @@ Converts the input string representation of the version to a comparable decimal 
 If conversion is successful, the result will be a decimal.
 If conversion is unsuccessful, the result will be `null`.
 
-## Example
+## Examples
+
+### Parse strings
 
 The following query creates a table of version strings and then parses each version string into its individual components using the parse_version function. The result is a table with the original version strings and their parsed components, which can be further analyzed or used in subsequent operations.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoSy0qzszPCy4pysxLL1awVUhJLAHCpJxUDaiUlUIxWFKTK5pLAQiUDPWM9Iz1TJR0IFwwR88UxjUEcfTMYFxjPQMQRCg2BHO5Yq25UK3mqlFIrShJzUtRKEgsKk5NCYPIAl0E5sdDVcNcpQkA68ymFL0AAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLAHCpJxUjTIrheKSosy8dE0uBSCIBpNKBnogaKqkA2Ga6xnAmMYQhhGEMtQzgkiBGMZ6JmAmiLCEArA5BkpcsdZcKSVcNQqpFSWpeSkKBYlFxakpYalFxZn5eUD3gPnxZRC%2BRpkmAO77EVapAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let versionStrings = datatable(version: string)
-[
-    "1.2.3.4",
-    "2.3.4.5",
-    "1.4.5.6",
-    "3.0.0.0",
-    "2.1.0.0"
+let dt = datatable(v: string)
+    [
+    "0.0.0.5", "0.0.7.0", "0.0.3", "0.2", "0.1.2.0", "1.2.3.4", "1", "99999999.0.0.0"
 ];
-versionStrings
-| extend parsedVersion = parse_version(version)
+dt
+| extend parsedVersion = parse_version(v)
 ```
 
 **Output**
 
-| version | parsedVersion |
+| v | parsedVersion |
 |---|---|
+| 0.0.0.5 | 5 |
+| 0.0.7.0 | 700,000,000 |
+| 0.0.3 | 300,000,000 |
+| 0.2 | 20,000,000,000,000,000 |
+| 0.1.2.0 | 10,000,000,200,000,000 |
 | 1.2.3.4 | 1,000,000,020,000,000,300,000,004 |
-| 2.3.4.5 | 2,000,000,030,000,000,400,000,005 |
-| 1.4.5.6 | 1,000,000,040,000,000,500,000,006 |
-| 3.0.0.0 | 3,000,000,000,000,000,000,000,000 |
-| 2.1.0.0 | 2,000,000,010,000,000,000,000,000 |
+| 1 | 1,000,000,000,000,000,000,000,000 |
+| 99999999.0.0.0 | 99,999,999,000,000,000,000,000,000,000,000 |
+
+### Using parse_version with other functions
+
+This query compares all pairs of version numbers from the initial list, removes duplicate pairs, and then identifies the higher version number for each pair.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA11QYU/DIBD93l/x7CeITdcyF6MG/4gxC1txZWtpAwyd8cd7UJeod8nx7t3jcWHQAV2ARKcC5W7QLD7CB2fsgRegeMm1bOqUm7Ja4H3dXOF6AWI52losowTW9V2GqTz8RPZpyuL1qehC8YXZTUe9D4itjBW2J32RLYg/TsbiZGwnjbXagdGav9TiqqbdW47J5obuvffaaXLDjSQVEf48jsqZz0xKjOqDxZZXNEydsSwKjt0FrFe+TyPcYoGCc6xWcHqcIv0HuvM8mL0KZrL+z+bJrEJvDvT2NmrnSUHmxryxWTmvr1x2f8Y/TqRlsgf/Bt4b/NePAQAA" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+let dt = datatable(v: string)
+    [
+    "0.0.0.5", "0.0.7.0", "0.0.3", "0.2", "0.1.2.0", "1.2.3.4", "1", "99999999.0.0.0"
+];
+dt
+| project v1=v, _key=1 
+| join kind=inner (dt | project v2=v, _key = 1) on _key
+| where v1 != v2
+| summarize v1 = max(v1), v2 = min(v2) by (hash(v1) + hash(v2)) // removing duplications
+| project v1, v2, higher_version = iif(parse_version(v1) > parse_version(v2), v1, v2)
+```
+
+**Output**
+
+|v1|v2|higher_version|
+|---|---|---|
+|99999999.0.0.0|0.0.0.5|99999999.0.0.0|
+|1|0.0.0.5|1|
+|1.2.3.4|0.0.0.5|1.2.3.4|
+|0.1.2.0|0.0.0.5|0.1.2.0|
+|0.2|0.0.0.5|0.2|
+|0.0.3|0.0.0.5|0.0.3|
+|0.0.7.0|0.0.0.5|0.0.7.0|
+|99999999.0.0.0|0.0.7.0|99999999.0.0.0|
+|1|0.0.7.0|1|
+|1.2.3.4|0.0.7.0|1.2.3.4|
+|0.1.2.0|0.0.7.0|0.1.2.0|
+|0.2|0.0.7.0|0.2|
+|0.0.7.0|0.0.3|0.0.7.0|
+|99999999.0.0.0|0.0.3|99999999.0.0.0|
+|1|0.0.3|1|
+|1.2.3.4|0.0.3|1.2.3.4|
+|0.1.2.0|0.0.3|0.1.2.0|
+|0.2|0.0.3|0.2|
+|99999999.0.0.0|0.2|99999999.0.0.0|
+|1|0.2|1|
+|1.2.3.4|0.2|1.2.3.4|
+|0.2|0.1.2.0|0.2|
+|99999999.0.0.0|0.1.2.0|99999999.0.0.0|
+|1|0.1.2.0|1|
+|1.2.3.4|0.1.2.0|1.2.3.4|
+|99999999.0.0.0|1.2.3.4|99999999.0.0.0|
+|1.2.3.4|1|1.2.3.4|
+|99999999.0.0.0|1|99999999.0.0.0|
