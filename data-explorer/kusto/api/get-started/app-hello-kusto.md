@@ -470,4 +470,4 @@ Hello Kusto!
 
 <!-- Advance to the next article to learn how to create... -->
 > [!div class="nextstepaction"]
-> [Create an app to run basic queries](app-basic-query.md)
+> [Secure your app](app-authentication-methods.md)

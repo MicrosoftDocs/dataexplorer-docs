@@ -323,7 +323,7 @@ This authentication method uses the user's credentials to establish a secure con
 
 This authentication method uses the Azure Command-Line Interface (CLI) to authenticate and obtain a token for the user. Running the `az login` command means the user can securely establish a connection and retrieve the necessary token for authentication purposes. The user might be prompted to sign in if the token isn't available in the Azure CLI cache and the `interactive` parameter is set to `true`. For more information, see [Azure Command-Line Interface (CLI)](/cli/azure/).
 
-| In the following example, replace *`<QueryEndpointUri>`*  with your own value.
+| In the following example, replace *`<QueryEndpointUri>`* with your own value.
 
 #### [C\#](#tab/csharp)
 
@@ -362,7 +362,7 @@ ConnectionStringBuilder kcsb = ConnectionStringBuilder
 
 This method is designed for devices lacking a proper user interface for sign-in, such as IoT devices and server terminals. It provides the user with a code and a URL to authenticate using a different device, such as a smartphone. This interactive method requires the user to sign in through a browser.
 
-| In the following example, replace *`<QueryEndpointUri>`*  with your own value.
+| In the following example, replace *`<QueryEndpointUri>`* with your own value.
 
 #### [C\#](#tab/csharp)
 
@@ -414,7 +414,7 @@ This section covers the different methods of authenticating using a custom token
 
 Custom token providers can be used to acquire a Microsoft Entra ID token for authentication. The following example demonstrates how to use a custom token provider to obtain a token using federated managed identity. You can modify the code to fit your application's requirements.
 
-| In the following example, replace *`<AuthorityIdId>`*, *`<ApplicationId>`*, *`<ManagedIdentityClientId>`*, and *`<QueryEndpointUri>`*  with your own values.
+| In the following example, replace *`<AuthorityIdId>`*, *`<ApplicationId>`*, *`<ManagedIdentityClientId>`*, and *`<QueryEndpointUri>`* with your own values.
 
 #### [C\#](#tab/csharp)
 
@@ -647,7 +647,7 @@ Create a custom token provider by creating a class that inherits from `TokenCred
 
 You can use `DefaultAzureCredential` for supporting production code that uses Managed Identity authentication, or  testing code using Visual Studio or Azure CLI. `DefaultAzureCredential` can be configured to use different authentication methods.
 
-| In the following example, replace *`<QueryEndpointUri>`* and *`<ManagedIdentityClientId>`*  with your own values.
+| In the following example, replace *`<QueryEndpointUri>`* and *`<ManagedIdentityClientId>`* with your own values.
 
 #### [C\#](#tab/csharp)
 
@@ -692,8 +692,5 @@ Not supported.
 ## Next step
 
 <!-- Advance to the next article to learn how to create... -->
-<!-- > [!div class="nextstepaction"]
-> [TBD](../../kql-quick-reference.md) -->
-
 > [!div class="nextstepaction"]
-> [KQL quick reference](../../query/kql-quick-reference.md)
+> [Create an app to run basic queries](app-basic-query.md)
