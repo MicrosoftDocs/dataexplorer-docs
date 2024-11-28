@@ -35,7 +35,7 @@ This function returns the  *:::no-loc text="then":::* value when the *:::no-loc 
 
 ### Classify data using iff()
 
-This query adds a new column called Rain to the StormEvents table. The Rain column indicates whether the event is considered a rain event or not. A rain event is defined as EventType Heavy Rain, Flash Flood or Flood.
+The following query uses the `iff()` function to categorize storm events as either "Rain event" or "Not rain event" based on their event type, and then projects the state, event ID, event type, and the new rain category.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -63,7 +63,7 @@ The following table shows only the first five rows.
 
 ### Combine iff() with other functions
 
-The following query defines the severity of an event. The level of severity depends on the total value of damages, the number of injuries and the number of direct deaths associated with each event. The severity level is Low in cases where there are zero deaths, zero injuries, and damages of less than $50,000. Moderate severity results from zero deaths, less than 10 injuries or damages between $50,000 and $1,000,000. The severity level is High in cases where there is a direct death, more than 10 injuries, or damages above $1,000,000. The query then returns the number of events for each level of severity.
+The following query calculates the total damage from crops and property, categorizes the severity of storm events based on total damage, direct injuries, and direct deaths, and then summarizes the total number of events and the number of events by severity.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
