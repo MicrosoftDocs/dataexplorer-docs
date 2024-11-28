@@ -166,7 +166,7 @@ Certificates can serve as secrets to authenticate an application's identity when
 
     #### [TypeScript](#tab/typescript)
 
-    - Certificate loaded in memory, such as a from a file:
+    - Certificate loaded in memory, such as from a file:
 
         ```typescript
         const certificate: string = await fs.promises.readFile(<privateKeyPemFilePath>, "utf8");
