@@ -3,7 +3,7 @@ title: Create your first
 description: Learn how to create your first app to print Hello Kusto using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 08/11/2024
+ms.date: 11/28/2024
 monikerRange: "azure-data-explorer"
 #customer intent: To learn about creating a simple app that prints Hello Kusto using Kusto client libraries.
 ---
