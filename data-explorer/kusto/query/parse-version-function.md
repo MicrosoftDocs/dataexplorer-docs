@@ -38,7 +38,7 @@ If conversion is unsuccessful, the result will be `null`.
 
 ### Parse strings
 
-The following query creates a table of version strings and then parses each version string into its individual components using the parse_version function. The result is a table with the original version strings and their parsed components, which can be further analyzed or used in subsequent operations.
+The following query creates a table of version strings and then parses each version string into a comparable decimal number using the parse_version function. The result is a table with the original version strings and their parsed components, which can be further analyzed or used in subsequent operations.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
