@@ -78,7 +78,7 @@ There are two types of managed identities: system-assigned and user-assigned. Sy
     #### [Java](#tab/java)
 
     ```java
-    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+    ConnectionStringBuilder kcsb = ConnectionStringBuilder
       .createWithAadManagedIdentity(<QueryEndpointUri>);
     ```
 
@@ -113,7 +113,7 @@ There are two types of managed identities: system-assigned and user-assigned. Sy
     #### [Java](#tab/java)
 
     ```java
-    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+    ConnectionStringBuilder kcsb = ConnectionStringBuilder
       .createWithAadManagedIdentity(<QueryEndpointUri>, <ManagedIdentityClientId>);
     ```
 
@@ -130,21 +130,21 @@ Certificates can serve as secrets to authenticate an application's identity when
 
 | In the following examples, replace *`<QueryEndpointUri>`*, *`<ApplicationId>`*, *`<CertificateSubjectName>`*, *`<CertificateIssuerName>`*, *`<CertificateThumbprint>`*, *`<CertificateObject>`*, *`<AuthorityId>`*, *`<PemPublicCertificate>`*, *`<PemPrivateKey>`*, *`<privateKeyPemFilePath>`*, *`<PemCertificatePath>`*, and *`<EnableSubjectAndIssuerAuth>`* with your own values.
 
-- Certificate from the machine's local credentials store is only support using C#:
+- Certificate from the machine's local certificate store is only support using C#:
 
     ```csharp
     var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
       .WithAadApplicationSubjectAndIssuerAuthentication(<ApplicationId>, <CertificateSubjectName>, <CertificateIssuerName>, <AuthorityId>);
     ```
 
-- Certificate in a connection string. If the connection string loads a local certificate, set `PreventAccessToLocalSecretsViaKeywords` to `false`:
+- Certificate from an arbitrary source, such as a file on disk, cache, or secure store like Azure Key Vault. The certificate object must contain a private key:
 
     #### [C\#](#tab/csharp)
 
     ```csharp
-    var connectionString =
-      "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;Application Client Id=<ApplicationId>;Application Certificate Subject=<CertificateSubjectName>;Application Certificate Issuer=<CertificateIssuerName>;Authority Id=<AuthorityId>;
-    var kcsb = new KustoConnectionStringBuilder() {ConnectionString = connectionString};
+    X509Certificate2 certificate = <CertificateObject>;
+    var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
+      .WithAadApplicationCertificateAuthentication(<ApplicationId>, certificate, <AuthorityId>);
     ```
 
     #### [Python](#tab/python)
@@ -165,11 +165,12 @@ Certificates can serve as secrets to authenticate an application's identity when
 
     #### [TypeScript](#tab/typescript)
 
-    - Certificate loaded in memory:
+    - Certificate loaded in memory, such as a from a file:
 
         ```typescript
+        const certificate: string = await fs.promises.readFile(<privateKeyPemFilePath>, "utf8");
         const kcsb = KustoConnectionStringBuilder
-          .withAadApplicationCertificateAuthentication(<QueryEndpointUri>, <ApplicationId>, <PemPublicCertificate>, <AuthorityId>);
+          .withAadApplicationCertificateAuthentication(<QueryEndpointUri>, <ApplicationId>, <PemPrivateKey>, <AuthorityId>);
         ```
 
     - Certificate loaded from a file:
@@ -184,44 +185,20 @@ Certificates can serve as secrets to authenticate an application's identity when
     - Certificate loaded in memory:
 
         ```java
-        const kcsb = KustoConnectionStringBuilder
+        ConnectionStringBuilder kcsb = ConnectionStringBuilder
           .createWithAadApplicationCertificate(<QueryEndpointUri>, <ApplicationId>, <X509Certificate>, <PrivateKey>, <AuthorityId>);
         ```
 
     - Subject and Issuer (SNI) authentication:
 
-        ```typescript
-        const kcsb = KustoConnectionStringBuilder
+        ```java
+        ConnectionStringBuilder kcsb = ConnectionStringBuilder
           .createWithAadApplicationCertificateSubjectNameIssuer(<QueryEndpointUri>, <ApplicationId>, <PublicCertificateChain>, <PrivateKey>, <AuthorityId>
         ```
 
     ---
 
     For more information, see [Kusto connection strings](../connection-strings/kusto.md).
-
-- Certificate from an arbitrary source, such as a file on disk, cache, or secure store like Azure Key Vault. The certificate object must contain a private key:
-
-    #### [C\#](#tab/csharp)
-
-    ```csharp
-    X509Certificate2 certificate = <CertificateObject>;
-    var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
-      .WithAadApplicationCertificateAuthentication(<ApplicationId>, certificate, <AuthorityId>);
-    ```
-
-    #### [Python](#tab/python)
-
-    #### [TypeScript](#tab/typescript)
-
-    ```typescript
-    const certificate: string = await fs.promises.readFile(<privateKeyPemFilePath>, "utf8");
-    const kcsb = KustoConnectionStringBuilder
-      .withAadApplicationCertificateAuthentication(<QueryEndpointUri>, <ApplicationId>, certificate, <AuthorityId>);
-    ```
-
-    #### [Java](#tab/java)
-
-    ---
 
 > [!IMPORTANT]
 >
@@ -260,7 +237,7 @@ Application key, also known as an application password, is a secret string that 
     #### [Java](#tab/java)
 
     ```java
-    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+    ConnectionStringBuilder kcsb = ConnectionStringBuilder
       .createWithAadApplicationCredentials(<QueryEndpointUri>, <ApplicationId>, <ApplicationKey>, <AuthorityId>);
     ```
 
@@ -335,7 +312,7 @@ This authentication method uses the user's credentials to establish a secure con
     #### [Java](#tab/java)
 
     ```java
-    KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+    ConnectionStringBuilder kcsb = ConnectionStringBuilder
       .createWithAadApplicationCredentials(<QueryEndpointUri>, <AuthorityId>);
     ```
 
@@ -401,7 +378,7 @@ const kcsb = KustoConnectionStringBuilder
 #### [Java](#tab/java)
 
 ```java
-KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+ConnectionStringBuilder kcsb = ConnectionStringBuilder
   .createWithAzureCli(<QueryEndpointUri>);
 ```
 
@@ -448,7 +425,7 @@ const kcsb = KustoConnectionStringBuilder
 #### [Java](#tab/java)
 
 ```java
-KustoConnectionStringBuilder kcsb = KustoConnectionStringBuilder
+ConnectionStringBuilder kcsb = ConnectionStringBuilder
   .createWithDeviceCode(<QueryEndpointUri>);
 ```
 
