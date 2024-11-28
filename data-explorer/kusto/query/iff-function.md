@@ -84,3 +84,10 @@ StormEvents
 | Low      | 54805       |
 | High     | 977         |
 | Moderate | 3284        |
+
+## Related content
+
+* [Scalar function types summary](scalar-functions.md)
+* [array_iff()](array-iff-function.md)
+* [bin()](bin-function.md)
+* [extend operator](extend-operator.md)
