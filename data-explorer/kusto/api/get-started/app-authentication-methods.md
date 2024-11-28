@@ -15,8 +15,6 @@ This documentation provides an overview of the primary methods of authentication
 
 Where possible, we recommend using managed identities instead of username and password authentication or connection strings. Managed identities provide a more secure and streamlined approach to authentication.
 
-<!-- TODO: Add table showing which authentication methods are supported by each language SDK. -->
-
 In this article, you learn how to authenticate using:
 
 > [!div class="checklist"]
@@ -137,6 +135,9 @@ Certificates can serve as secrets to authenticate an application's identity when
       .WithAadApplicationSubjectAndIssuerAuthentication(<ApplicationId>, <CertificateSubjectName>, <CertificateIssuerName>, <AuthorityId>);
     ```
 
+    > [!IMPORTANT]
+    > When using subject name and issuer, the certificate must be installed in the local machine's certificate store.
+
 - Certificate from an arbitrary source, such as a file on disk, cache, or secure store like Azure Key Vault. The certificate object must contain a private key:
 
     #### [C\#](#tab/csharp)
@@ -170,7 +171,7 @@ Certificates can serve as secrets to authenticate an application's identity when
         ```typescript
         const certificate: string = await fs.promises.readFile(<privateKeyPemFilePath>, "utf8");
         const kcsb = KustoConnectionStringBuilder
-          .withAadApplicationCertificateAuthentication(<QueryEndpointUri>, <ApplicationId>, <PemPrivateKey>, <AuthorityId>);
+          .withAadApplicationCertificateAuthentication(<QueryEndpointUri>, <ApplicationId>, certificate, <AuthorityId>);
         ```
 
     - Certificate loaded from a file:
@@ -201,9 +202,7 @@ Certificates can serve as secrets to authenticate an application's identity when
     For more information, see [Kusto connection strings](../connection-strings/kusto.md).
 
 > [!IMPORTANT]
->
-> - To load certificates from Azure Key Vault, you can use the *Azure.Security.KeyVault.Certificates* [client](https://www.nuget.org/packages/Azure.Security.KeyVault.Certificates/).
-> - When using subject name and issuer, the certificate must be installed in the local machine's certificate store.
+> To load certificates from Azure Key Vault, you can use the *Azure.Security.KeyVault.Certificates* [client](https://www.nuget.org/packages/Azure.Security.KeyVault.Certificates/).
 
 ### Application key authentication
 
