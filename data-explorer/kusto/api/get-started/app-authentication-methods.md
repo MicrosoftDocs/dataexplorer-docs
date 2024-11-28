@@ -130,7 +130,7 @@ Certificates can serve as secrets to authenticate an application's identity when
 
 | In the following examples, replace *`<QueryEndpointUri>`*, *`<ApplicationId>`*, *`<CertificateSubjectName>`*, *`<CertificateIssuerName>`*, *`<CertificateThumbprint>`*, *`<CertificateObject>`*, *`<AuthorityId>`*, *`<PemPublicCertificate>`*, *`<PemPrivateKey>`*, *`<privateKeyPemFilePath>`*, *`<PemCertificatePath>`*, and *`<EnableSubjectAndIssuerAuth>`* with your own values.
 
-- Certificate from the machine's local certificate store is only support using C#:
+- Certificate from the machine's local certificate store is only supported using C#:
 
     ```csharp
     var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
@@ -248,27 +248,29 @@ Application key, also known as an application password, is a secret string that 
     #### [C\#](#tab/csharp)
 
     ```csharp
-    var connectionString =
-      "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;AAD Federated Security=True;AppClientId=<ApplicationId>;AppKey=<ApplicationKey>;Authority Id=<AuthorityId>;
+    var connectionString = "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;AAD Federated Security=True;AppClientId=<ApplicationId>;AppKey=<ApplicationKey>;Authority Id=<AuthorityId>;"
     var kcsb = new KustoConnectionStringBuilder(connectionString);
     ```
 
     #### [Python](#tab/python)
 
     ```python
-    Not supported
+    connectionString = "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;AAD Federated Security=True;AppClientId=<ApplicationId>;AppKey=<ApplicationKey>;Authority Id=<AuthorityId>"
+    kcsb = KustoConnectionStringBuilder(connectionString)
     ```
 
     #### [TypeScript](#tab/typescript)
 
     ```typescript
-    Not supported
+    const connectionString = "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;AAD Federated Security=True;AppClientId=<ApplicationId>;AppKey=<ApplicationKey>;Authority Id=<AuthorityId>";
+    const kcsb = new KustoConnectionStringBuilder(connectionString)
     ```
 
     #### [Java](#tab/java)
 
     ```java
-    Not supported
+    String connectionString = "Data Source=<QueryEndpointUri>;AppClientId=<ApplicationId>;AppKey=<ApplicationKey>;Authority Id=<AuthorityId>";
+    ConnectionStringBuilder kcsb = new ConnectionStringBuilder(connectionString);
     ```
 
     ---
@@ -314,36 +316,6 @@ This authentication method uses the user's credentials to establish a secure con
     ```java
     ConnectionStringBuilder kcsb = ConnectionStringBuilder
       .createWithAadApplicationCredentials(<QueryEndpointUri>, <AuthorityId>);
-    ```
-
-    ---
-
-- For authentication using interactive user sign-in in a connection string:
-
-    #### [C\#](#tab/csharp)
-
-    ```csharp
-    var connectionString =
-        "Data Source=<QueryEndpointUri>;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority Id=<AuthorityId>
-    var kcsb = new KustoConnectionStringBuilder(connectionString);
-    ```
-
-    #### [Python](#tab/python)
-
-    ```python
-    Not supported
-    ```
-
-    #### [TypeScript](#tab/typescript)
-
-    ```typescript
-    Not supported
-    ```
-
-    #### [Java](#tab/java)
-
-    ```java
-    Not supported
     ```
 
     ---
