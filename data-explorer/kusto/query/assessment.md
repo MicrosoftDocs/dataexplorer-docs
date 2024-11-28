@@ -49,7 +49,7 @@ Did you no, KQL is case-sensitive for everything – table names, table column n
 
 This query has a single tabular expression statement. The statement begins with a reference to a table called *StormEvents* and contains several operators, [`where`](where-operator.md) and [`count`](count-operator.md), each separated by a pipe. The data rows for the source table are filtered by the value of the *StartTime* column and then filtered by the value of the *State* column. In the last line, the query returns a table with a single column and a single row containing the count of the remaining rows.
 
-In contrast to Kusto queries, [Management commands](../management/index.md) are requests to     Kusto to process or modify data or metadata. For example, the following management command creates a new Kusto table with two columns, `Level` and `Number`:
+In contrast to Kusto queries, [Management commands](../management/index.md are requests to     Kusto to process or modify data or metadata. For example, the following management command creates a new Kusto table with two columns, `Level` and `Number`:
 
 ```kusto
 .create table Logs (Level:string, Text:string)
