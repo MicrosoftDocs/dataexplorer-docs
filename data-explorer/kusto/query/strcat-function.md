@@ -3,7 +3,7 @@ title:  strcat()
 description: Learn how to use the strcat() function to concatenate between 1 and 64 arguments.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/28/2024
 ---
 # strcat()
 
@@ -32,6 +32,10 @@ The arguments concatenated to a single string.
 
 ## Examples
 
+### Concatenated string
+
+The following example uses the `strcat()` function to concatenate the strings provided to form the string, "hello world." The results are assigned to the variable `str`.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSguKVKwBZHJiSUaShmpOTn5SjoKSgogojy/KCdFSRMA4dg7JykAAAA=" target="_blank">Run the query</a>
@@ -46,3 +50,22 @@ print str = strcat("hello", " ", "world")
 |str|
 |---|
 |hello world|
+
+### Concatenated multi-line string
+
+The following example uses the `strcat()` function to create a concatenated multi-line string which is saved to the variable, `MultiLineString`. It uses the newline character to break the string into new lines.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUfAtzSnJ9MnMSw0uAfLTFWwVikuKkhNLNJRAggqGMXlKOgoQthES21hJEwDpW0wqQAAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+print MultiLineString = strcat("Line 1\n", "Line 2\n", "Line 3")
+```
+
+**Output**
+
+|MultiLineString|
+|---|
+| Line 1<br>Line 2<br>Line 3 |
