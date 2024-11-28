@@ -35,7 +35,7 @@ This function returns the  *:::no-loc text="then":::* value when the *:::no-loc 
 
 ### Classify data using iff()
 
-This query adds a new column called Rain to the StormEvents table. The Rain column indicates whether the event is considered a rain event or not. A rain event is defined as EventType Heavy Rain, Flash Flood or Flood.
+The following query uses the `iff()` function to categorize storm events as either "Rain event" or "Not rain event" based on their event type, and then projects the state, event ID, event type, and the new rain category.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
