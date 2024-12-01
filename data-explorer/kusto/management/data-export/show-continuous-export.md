@@ -49,6 +49,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Related content
 
+* [Continuous data export overview](continuous-data-export.md)
 * [External tables](../../query/schema-entities/external-tables.md)
 * [Create or alter continuous export](create-alter-continuous.md)
 * [Disable or enable continuous export](disable-enable-continuous.md)

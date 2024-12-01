@@ -3,7 +3,7 @@ title:  Export data to an external table
 description:  This article describes Export data to an external table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/26/2024
+ms.date: 12/01/2024
 ---
 # Export data to an external table
 
@@ -146,8 +146,8 @@ If the command is executed asynchronously by using the `async` keyword, the outp
 
 ## Related content
 
+* [Continuous data export](continuous-data-export.md)
 * [Management commands overview](../index.md)
 * [External tables](../../query/schema-entities/external-tables.md)
 * [Export data to SQL](export-data-to-sql.md)
 * [Export data to cloud storage](export-data-to-storage.md)
-* [Continuous data export](continuous-data-export.md)

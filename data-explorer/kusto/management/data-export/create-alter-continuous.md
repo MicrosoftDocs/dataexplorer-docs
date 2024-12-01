@@ -3,7 +3,7 @@ title:  Create or alter continuous data export
 description:  This article describes how to create or alter continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 11/26/2024
+ms.date: 12/01/2024
 ---
 # Create or alter continuous export
 
@@ -67,6 +67,7 @@ with
 
 ## Related content
 
+* [Continuous export overview](continuous-data-export.md)
 * [External tables](../../query/schema-entities/external-tables.md)
 * [Disable or enable continuous export](disable-enable-continuous.md)
 * [Show continuous export](show-continuous-export.md)

@@ -62,6 +62,7 @@ The following example shows failures from the continuous export `MyExport`.
 
 ## Related content
 
+* [Continuous data export overview](continuous-data-export.md)
 * [External tables](../../query/schema-entities/external-tables.md)
 * [Create or alter continuous export](create-alter-continuous.md)
 * [Disable or enable continuous export](disable-enable-continuous.md)

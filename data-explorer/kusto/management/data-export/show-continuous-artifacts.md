@@ -60,6 +60,6 @@ The following example shows retrieved artifacts from the continuous export `MyEx
 
 ## Related content
 
-* [External tables](../../query/schema-entities/external-tables.md)
 * [Continuous data export overview](continuous-data-export.md)
+* [External tables](../../query/schema-entities/external-tables.md)
 * [Show continuous export failures](show-continuous-failures.md)

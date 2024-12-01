@@ -3,7 +3,7 @@ title:  Use a managed identity to run a continuous export job
 description:  This article describes how to use a managed identity for continuous export.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/01/2024
 monikerRange: "azure-data-explorer"
 ---
 # Use a managed identity to run a continuous export job
@@ -173,6 +173,6 @@ For example, the following command creates a continuous export job named `MyExpo
 
 ## Related content
 
-* [.show continuous-exports](show-continuous-export.md)
 * [Continuous export overview](continuous-data-export.md)
+* [.show continuous-exports](show-continuous-export.md)
 * [Managed identities](/azure/data-explorer/managed-identities-overview)

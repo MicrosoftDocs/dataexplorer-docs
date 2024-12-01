@@ -3,7 +3,7 @@ title:  Export data to cloud storage
 description: Learn how to export data to cloud storage.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/26/2024
+ms.date: 12/01/2024
 ---
 # Export data to cloud storage
 
@@ -187,8 +187,8 @@ On export, Kusto data types are mapped to Parquet data types using the following
 
 ## Related content
 
+* [Continuous data export](continuous-data-export.md)
 * [Ingest from storage](../data-ingestion/ingest-from-storage.md)
 * [Management commands overview](../index.md)
 * [Export to an external table](export-data-to-an-external-table.md)
 * [Export to a SQL table](export-data-to-sql.md)
-* [Continuous data export](continuous-data-export.md)

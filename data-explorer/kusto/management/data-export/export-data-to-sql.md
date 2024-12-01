@@ -3,7 +3,7 @@ title:  Export data to SQL
 description:  This article describes Export data to SQL.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/26/2024
+ms.date: 12/01/2024
 ---
 # Export data to SQL
 
@@ -126,4 +126,4 @@ The target table is created if it doesn't exist in the target database.
 * [Management commands overview](../index.md)
 * [Export to an external table](export-data-to-an-external-table.md)
 * [Export data to cloud storage](export-data-to-storage.md)
-* [Continuous data export](continuous-data-export.md)
+* [Create and alter Azure SQL external tables](../external-sql-tables.md)
