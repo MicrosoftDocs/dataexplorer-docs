@@ -48,7 +48,7 @@ The following query creates a table of version strings and then parses each vers
 ```kusto
 let dt = datatable(v: string)
     [
-    "0.0.0.5", "0.0.7.0", "0.0.3", "0.2", "0.1.2.0", "1.2.3.4", "1", "99999999.0.0.0"
+    "0.0.0.5", "0.0.7.0", "0.0.3", "0.2", "0.1.2.0", "1.2.3.4", "1"
 ];
 dt
 | extend parsedVersion = parse_version(v)
@@ -65,59 +65,42 @@ dt
 | 0.1.2.0 | 10,000,000,200,000,000 |
 | 1.2.3.4 | 1,000,000,020,000,000,300,000,004 |
 | 1 | 1,000,000,000,000,000,000,000,000 |
-| 99999999.0.0.0 | 99,999,999,000,000,000,000,000,000,000,000 |
 
 ### Using parse_version with other functions
 
-This query compares all pairs of version numbers from the initial list, removes duplicate pairs, and then parses each version string to identify the higher version number for each pair.
+This query determines which labs have equipment that requires updates.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA11QYU/DIBD93l/x7CeITdcyF6MG/4gxC1txZWtpAwyd8cd7UJeod8nx7t3jcWHQAV2ARKcC5W7QLD7CB2fsgRegeMm1bOqUm7Ja4H3dXOF6AWI52losowTW9V2GqTz8RPZpyuL1qehC8YXZTUe9D4itjBW2J32RLYg/TsbiZGwnjbXagdGav9TiqqbdW47J5obuvffaaXLDjSQVEf48jsqZz0xKjOqDxZZXNEydsSwKjt0FrFe+TyPcYoGCc6xWcHqcIv0HuvM8mL0KZrL+z+bJrEJvDvT2NmrnSUHmxryxWTmvr1x2f8Y/TqRlsgf/Bt4b/NePAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQTQvCMAyG7%2FsVoacNytBNEfw4%2BH0R7yIyujXKZGyjrUPBH286GZuzOTR98iZNkqEBaWABUhiyOEM3E%2FEUtFFpfuNQNa7nnB2gww4ihiXjwAa%2BtTHjLV81fOIPunzDeI3DLlx%2FxQFdLdx%2F4dAPfivsLLc09Eddvq05kcvMkcZ5Az4N5hJKoTTKqEKl0yKn%2BWrQvN3Ka6U5otTRo6QNIAnT69XtZc972dRIPTzz6PMTatvDsWC2ZqmKOyYGaIm0PP5TnMK6UAbilw2D0An8aT4NEEn1kAEAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let dt = datatable(v: string)
-    [
-    "0.0.0.5", "0.0.7.0", "0.0.3", "0.2", "0.1.2.0", "1.2.3.4", "1", "99999999.0.0.0"
+let dt = datatable(lab: string, v: string)
+[
+    "Lab A", "0.0.0.5",
+    "Lab B", "0.0.7.0",
+    "Lab D","0.0.3",
+    "Lab C", "0.2", 
+    "Lab G", "0.1.2.0",
+    "Lab F", "1.2.3.4",
+    "Lab E", "1",
 ];
 dt
-| project v1=v, _key=1 
-| join kind=inner (dt | project v2=v, _key = 1) on _key
-| where v1 != v2
-| summarize v1 = max(v1), v2 = min(v2) by (hash(v1) + hash(v2)) // removing duplications
-| project v1, v2, higher_version = iif(parse_version(v1) > parse_version(v2), v1, v2)
+| extend parsed_version = parse_version(v)
+| extend needs_update = iff(parsed_version < parse_version("1.0.0.0"), "Yes", "No")
+| project lab, v, needs_update
+| sort by lab asc , v, needs_update
 ```
 
 **Output**
 
-|v1|v2|higher_version|
+| lab | v | needs_update |
 |---|---|---|
-|99999999.0.0.0|0.0.0.5|99999999.0.0.0|
-|1|0.0.0.5|1|
-|1.2.3.4|0.0.0.5|1.2.3.4|
-|0.1.2.0|0.0.0.5|0.1.2.0|
-|0.2|0.0.0.5|0.2|
-|0.0.3|0.0.0.5|0.0.3|
-|0.0.7.0|0.0.0.5|0.0.7.0|
-|99999999.0.0.0|0.0.7.0|99999999.0.0.0|
-|1|0.0.7.0|1|
-|1.2.3.4|0.0.7.0|1.2.3.4|
-|0.1.2.0|0.0.7.0|0.1.2.0|
-|0.2|0.0.7.0|0.2|
-|0.0.7.0|0.0.3|0.0.7.0|
-|99999999.0.0.0|0.0.3|99999999.0.0.0|
-|1|0.0.3|1|
-|1.2.3.4|0.0.3|1.2.3.4|
-|0.1.2.0|0.0.3|0.1.2.0|
-|0.2|0.0.3|0.2|
-|99999999.0.0.0|0.2|99999999.0.0.0|
-|1|0.2|1|
-|1.2.3.4|0.2|1.2.3.4|
-|0.2|0.1.2.0|0.2|
-|99999999.0.0.0|0.1.2.0|99999999.0.0.0|
-|1|0.1.2.0|1|
-|1.2.3.4|0.1.2.0|1.2.3.4|
-|99999999.0.0.0|1.2.3.4|99999999.0.0.0|
-|1.2.3.4|1|1.2.3.4|
-|99999999.0.0.0|1|99999999.0.0.0|
+| Lab A | 0.0.0.5 | Yes |
+| Lab B | 0.0.7.0 | Yes |
+| Lab C | 0.2 | Yes |
+| Lab D | 0.0.3 | Yes |
+| Lab E | 1 |No |
+| Lab F | 1.2.3.4 |No |
+| Lab G | 0.1.2.0 | Yes |
