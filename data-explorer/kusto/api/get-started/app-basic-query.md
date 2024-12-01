@@ -1,10 +1,11 @@
 ---
-title:  'Create an app to run basic queries'
+title: Create an app to run basic queries
 description: Learn how to create an app to run basic queries using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
+#customer intent: To learn about creating an app to run basic queries using Kusto client libraries.
 ---
 # Create an app to run basic queries
 
@@ -64,7 +65,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
       main()
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
@@ -137,7 +138,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
             "| order by DailyDamage desc"
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     const database = "Samples";
@@ -195,7 +196,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
       print(row["StartTime"], "-", row["State"], ",", row["DailyDamage"], "$")
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     const response = await kustoClient.execute(database, query);
@@ -295,7 +296,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
@@ -384,7 +385,7 @@ dotnet run .
 python basic_query.py
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 In a Node.js environment:
 
@@ -460,7 +461,7 @@ for row in response.primary_results[0]:
   print(row[start_time_col], "-", row[state_col], ",", row[damage_col], "$")
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 const columnNoState = 0;
@@ -526,7 +527,7 @@ crp.set_option(crp.request_timeout_option_name, datetime.timedelta(minutes=1))
 response = kusto_client.execute_query(database, query, crp)
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 import { ClientRequestProperties } from "azure-kusto-data";
@@ -623,7 +624,7 @@ for row in response.primary_results[0]:
   print(row["StartTime"], "-", row["State"], ",", row["DailyDamage"], "$")
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 const query = `declare query_parameters(event_type:string, daily_damage:int);
@@ -770,7 +771,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 import {  

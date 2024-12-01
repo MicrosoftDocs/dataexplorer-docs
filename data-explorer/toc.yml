@@ -564,6 +564,8 @@ items:
             href: /kusto/api/get-started/app-set-up?view=azure-data-explorer&preserve-view=true
           - name: Create your first app
             href: /kusto/api/get-started/app-hello-kusto?view=azure-data-explorer&preserve-view=true
+          - name: Secure your app
+            href: /kusto/api/get-started/app-authentication-methods?view=azure-data-explorer&preserve-view=true
           - name: Run basic queries
             href: /kusto/api/get-started/app-basic-query?view=azure-data-explorer&preserve-view=true
           - name: Run management commands
