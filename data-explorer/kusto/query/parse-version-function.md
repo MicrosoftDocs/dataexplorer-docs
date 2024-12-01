@@ -42,7 +42,7 @@ The following query creates a table of version strings and then parses each vers
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLAHCpJxUjTIrheKSosy8dE0uBSCIBpNKBnogaKqkA2Ga6xnAmMYQhhGEMtQzgkiBGMZ6JmAmiLCEArA5BkpcsdZcKSVcNQqpFSWpeSkKBYlFxakpYalFxZn5eUD3gPnxZRC%2BRpkmAO77EVapAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLAHCpJxUjTIrheKSosy8dE0uBSCIBpNKBnogaKqkA2Ga6xnAmMYQhhGEMtQzgkiBGMZ6JmCmElesNVdKCVeNQmpFSWpeikJBYlFxakpYalFxZn4e0HYwP74Mwtco0wQA%2F7qnM5cAAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
