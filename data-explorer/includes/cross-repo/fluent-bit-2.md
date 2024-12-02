@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 12/01/2024
+ms.date: 12/02/2024
 ---
 ## Create a Microsoft Entra service principal
 
@@ -58,7 +58,7 @@ To create a table for incoming structured logs from Fluent Bit:
 
 ## Grant permissions to the service principal
 
-1. Grant the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) [database ingestor](/azure/data-explorer/kusto/access-control/role-based-access-control) role permissions to work with the database. For more information, see [Examples](/azure/data-explorer/kusto/management/manage-database-security-roles). Replace the placeholder *DatabaseName* with the name of the target database and *ApplicationID* with the `AppId` value you saved when creating a Microsoft Entra service principal.
+Grant the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) [database ingestor](/azure/data-explorer/kusto/access-control/role-based-access-control) role permissions to work with the database. For more information, see [Examples](/azure/data-explorer/kusto/management/manage-database-security-roles). Replace the placeholder *DatabaseName* with the name of the target database and *ApplicationID* with the `AppId` value you saved when creating a Microsoft Entra service principal.
 
     ```kusto
     .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>;<TenantID>')
@@ -66,19 +66,27 @@ To create a table for incoming structured logs from Fluent Bit:
 
 ## Configure Fluent Bit to send logs to your table
 
-To configure Fluent Bit to send logs to your Azure Data Explorer table, create a [classic mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file) or [YAML mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/yaml/configuration-file) configuration file with the following output properties:
+To configure Fluent Bit to send logs to your table in Kusto, create a [classic mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file) or [YAML mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/yaml/configuration-file) configuration file with the following output properties:
 
 | Field | Description |
 |--|--|
 | Name | `azure_kusto` |
 | Match | A pattern to match against the tags of incoming records. It's case-sensitive and supports the star (`*`) character as a wildcard. |
-| tenant_id | **Tenant ID** from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
-| client_id | **Application ID** from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+| tenant_id | The tenant ID from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+| client_id | The application ID from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
 | client_secret | The client secret key value (password) from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
-| Ingestion_Endpoint | Enter the value as described for [Ingestion_Endpoint](#ingestion-uri). |
-| Database_Name | The name of the database that contains your logs table. |
-| Table_Name | The name of the table from [Create a target table](#create-a-target-table). |
-| Ingestion_Mapping_Reference | The name of the ingestion mapping from [Create a target table](#create-a-target-table). If you didn't create an ingestion mapping, remove the property from the configuration file. |
+| ingestion_endpoint | Enter the value as described for [Ingestion_Endpoint](#ingestion-uri). |
+| database_name | The name of the database that contains your logs table. |
+| table_name | The name of the table from [Create a target table](#create-a-target-table). |
+| ingestion_mapping_reference | The name of the ingestion mapping from [Create a target table](#create-a-target-table). If you didn't create an ingestion mapping, remove the property from the configuration file. |
+| log_key | Key name of the log content. For instance, `log`. |
+| tag_key | The key name of tag. Ignored if `include_tag_key` is false. |
+| include_time_key | A timestamp is appended to output, if enabled. Uses the `time_key` property. |
+| time_key | The key name for the timestamp in the log records. Ignored if `include_time_key` false. |
+| ingestion_endpoint_connect_timeout| The connection timeout of various Kusto endpoints in seconds. |
+|compression_enabled | Sends compressed HTTP payload (gzip) to Kusto, if enabled. |
+|ingestion_resources_refresh_interval | The ingestion resources refresh interval of Kusto endpoint in seconds. |
+| workers | The number of [workers](https://docs.fluentbit.io/manual/administration/multithreading#outputs) to perform flush operations for this output. |
 
 To see an example configuration file, select the relevant tab:
 
@@ -105,16 +113,16 @@ To see an example configuration file, select the relevant tab:
 [OUTPUT]
     match *
     name azure_kusto
-    tenant_id <app_tenant_id>
-    client_id <app_client_id>
-    client_secret <app_secret>
-    ingestion_endpoint <ingestion_endpoint>
-    database_name <database_name>
-    table_name <table_name>
-    ingestion_mapping_reference <mapping_name>
-    ingestion_endpoint_connect_timeout <ingestion_endpoint_connect_timeout>
-    compression_enabled <compression_enabled>
-    ingestion_resources_refresh_interval <ingestion_resources_refresh_interval>
+    tenant_id <TenantId>
+    client_id <ClientId>
+    client_secret <AppSecret>
+    ingestion_endpoint <IngestionEndpoint>
+    database_name <DatabaseName>
+    table_name <TableName>
+    ingestion_mapping_reference <MappingName>
+    ingestion_endpoint_connect_timeout <IngestionEndpointConnectTimeout>
+    compression_enabled <CompressionEnabled>
+    ingestion_resources_refresh_interval <IngestionResourcesRefreshInterval>
 ```
 
 ### [YAML mode](#tab/yaml)
@@ -155,16 +163,16 @@ config:
     [OUTPUT]
         match *
         name azure_kusto
-        tenant_id <app_tenant_id>
-        client_id <app_client_id>
-        client_secret <app_secret>
-        ingestion_endpoint <ingestion_endpoint>
-        database_name <database_name>
-        table_name <table_name>
-        ingestion_mapping_reference <mapping_name>
-        ingestion_endpoint_connect_timeout <ingestion_endpoint_connect_timeout>
-        compression_enabled <compression_enabled>
-        ingestion_resources_refresh_interval <ingestion_resources_refresh_interval>
+        tenant_id <TenantId>
+        client_id <ClientId>
+        client_secret <AppSecret>
+        ingestion_endpoint <IngestionEndpoint>
+        database_name <DatabaseName>
+        table_name <TableName>
+        ingestion_mapping_reference <MappingName>
+        ingestion_endpoint_connect_timeout <IngestionEndpointConnectTimeout>
+        compression_enabled <CompressionEnabled>
+        ingestion_resources_refresh_interval <IngestionResourcesRefreshInterval>
 ```
 
 ---

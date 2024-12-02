@@ -3,7 +3,7 @@ title: Ingest data with Fluent Bit into Azure Data Explorer
 description: Learn how to ingest (load) data into Azure Data Explorer from Fluent Bit.
 ms.reviewer: ramacg
 ms.topic: how-to
-ms.date: 12/01/2024
+ms.date: 12/02/2024
 ---
 
 # Ingest data with Fluent Bit into Azure Data Explorer
@@ -18,8 +18,6 @@ For a complete list of data connectors, see [Data connectors overview](integrate
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A query environment. For more information, see [Query integrations overview](integrate-query-overview.md). <a id=ingestion-uri></a>
 * Your Kusto cluster URI for the *Ingestion_endpoint* value in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).
-
-You can use any of the available [Query tools](integrate-query-overview.md) for your query environment.
 
 [!INCLUDE [fluent-bit-2](includes/cross-repo/fluent-bit-2.md)]
 
