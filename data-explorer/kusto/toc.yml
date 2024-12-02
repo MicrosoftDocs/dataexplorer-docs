@@ -92,7 +92,7 @@ items:
             href: api/get-started/app-basic-query.md
           - name: Run management commands
             href: api/get-started/app-management-commands.md
-          - name: Queued ingestion
+          - name: Queue data for ingestion
             href: api/get-started/app-queued-ingestion.md
       - name: Connection strings
         items:

@@ -7,6 +7,8 @@ items:
   href: /kusto/query/t-sql?view=azure-data-explorer&preserve-view=true
 - name: Set timeout limits
   href: /kusto/set-timeout-limits?view=azure-data-explorer&preserve-view=true
+- name: Debug KQL inline Python
+  href: /kusto/debug-inline-python?view=azure-data-explorer&preserve-view=true
 - name: Best practices for KQL queries
   items:
   - name: Best practices for KQL queries
@@ -95,6 +97,9 @@ items:
     - name: dbscan_dynamic_fl()
       displayName: functions library, clustering, DBSCAN
       href: /kusto/functions-library/dbscan-dynamic-fl?view=azure-data-explorer&preserve-view=true
+    - name: detect_anomalous_new_entity_fl()
+      displayName: functions library, security, cybersecurity, anomaly detection, new entity, novelty, cyber, detect anomalous new entity
+      href: /kusto/functions-library/detect-anomalous-new-entity-fl?view=azure-data-explorer&preserve-view=true
     - name: factorial_fl()
       displayName: functions library, statistics
       href: /kusto/functions-library/factorial-fl?view=azure-data-explorer&preserve-view=true
@@ -152,6 +157,9 @@ items:
     - name: plotly_anomaly_fl()
       displayName: functions library, Plotly, anomaly, chart, render
       href: /kusto/functions-library/plotly-anomaly-fl?view=azure-data-explorer&preserve-view=true
+    - name: plotly_gauge_fl()
+      displayName: functions library, Plotly, gauge, speed, chart, render
+      href: /kusto/functions-library/plotly-gauge-fl?view=azure-data-explorer&preserve-view=true
     - name: plotly_scatter3d_fl()
       displayName: functions library, Plotly, scatter, chart, render
       href: /kusto/functions-library/plotly-scatter3d-fl?view=azure-data-explorer&preserve-view=true
