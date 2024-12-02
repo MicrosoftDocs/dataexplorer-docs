@@ -37,7 +37,7 @@ If conversion is successful, the result is a decimal; otherwise, the results is 
 
 ### Parse version strings
 
-The following query creates a table of version strings and then parses each version string into a comparable decimal number using the parse_version function. The result is a table with the original version strings and their parsed components, which can be further analyzed or used in subsequent operations.
+The following query shows version strings with their parsed version numbers.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -65,7 +65,7 @@ dt
 | 1.2.3.4 | 1,000,000,020,000,000,300,000,004 |
 | 1 | 1,000,000,000,000,000,000,000,000 |
 
-### Compare parsed versions strings
+### Compare parsed version strings
 
 The following query identifies which labs have equipment needing updates by comparing their parsed version strings to the minimum version number "1.0.0.0".
 
