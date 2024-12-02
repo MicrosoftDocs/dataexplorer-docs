@@ -37,7 +37,7 @@ The function discovers all possible paths between valid sources to valid targets
 |--|--|--|--|
 | *edgesTableName* | `string` |  :heavy_check_mark: | The name of the input table containing the edges of the graph. |
 | *nodesTableName* | `string` |  :heavy_check_mark: | The name of the input table containing the nodes of the graph. |
-| *scopeColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes and edges tables containing the partition or scope (e.g., subscription or account), so that a different anomaly model is built for each scope. |
+| *scopeColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes and edges tables containing the partition or scope (for example, subscription or account), so that a different anomaly model is built for each scope. |
 | *isValidPathStartColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes table containing a Boolean flag for a node, *True* meaning that the node is a valid start point for a path and *False* - not a valid one. |
 | *isValidPathEndColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes table containing a Boolean flag for a node, *True* meaning that the node is a valid end point for a path and *False* - not a valid one. |
 | *nodeIdColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes table containing the node Id. |
