@@ -53,7 +53,7 @@ print str = strcat("hello", " ", "world")
 
 ### Concatenated multi-line string
 
-The following example uses the `strcat()` function to create a concatenated multi-line string which is saved to the variable, `MultiLineString`. It uses the newline character to break the string into new lines.
+The following example uses the `strcat()` function to create a concatenated multi-line string which is saved to the variable, `MultiLineString`. It uses the newline character to break the string into new lines. The results shown is the expanded view.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -66,6 +66,7 @@ print MultiLineString = strcat("Line 1\n", "Line 2\n", "Line 3")
 
 **Output**
 
-|MultiLineString|
-|---|
-| Line 1<br>Line 2<br>Line 3 |
+1. "MultiLineString": Line 1
+1. Line 2
+1. Line 3
+1.
