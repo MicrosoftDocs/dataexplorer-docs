@@ -17,7 +17,7 @@ The function `graph_path_discovery_fl()` is a [UDF (user-defined function)](../q
 The data that can be used as input for this function is a table of edges in the format 'SourceId, EdgeId, TargetId', and a list of nodes with optional nodes' properties that can be used to define valid paths. Alternatively, graph input can be extracted from other types of data. For example, traffic logs with entries of type 'User A logged in to resource B' can be modeled as edges of type '(User A)-[logged in to]->(resource B)', while the list of distinct users and resources can be modeled as nodes.
 
 We make several assumptions:
-* All edges are valid for path discovery. Edges that are irrelavant should be filtered out before running path discovery.
+* All edges are valid for path discovery. Edges that are irrelevant should be filtered out before running path discovery.
 * Edges are unweighted, independent and unconditional, meaning that all edges has the same probability and moving from B to C is not dependent on previous move from A to B.
 * Paths we want to discover are simple directional paths without cycles, of type A->B->C. More complex definitions can be made by changing the internal syntax of graph-match operator in the function.
 
@@ -89,7 +89,7 @@ let paths = (
     // Current configurations looks for directed paths without any cycles; this can be changed if needed
       graph-match cycles = none (s)-[e*minPathLength..maxPathLength]->(t)
         // Filter only by paths with that connect valid endpoints
-        where ((s.isValidPathStart) and (t.isValidPathEnd))```
+        where ((s.isValidPathStart) and (t.isValidPathEnd))
         project   sourceId                  = s.nodeId
                 , isSourceValidPathStart    = s.isValidPathStart
                 , targetId                  = t.nodeId
@@ -238,8 +238,6 @@ let paths = (
     | mv-apply with_itemindex = SortIndex nodesInPath = pathAllNodeIds to typeof(string), edgesInPath = edgeIds to typeof(string) on (
         extend step = strcat(
               iff(isnotempty(nodesInPath), strcat('(', nodesInPath, ')'), '')
-//             , iff(isnotempty(SourceRelevanceSet) and NodesInPath == SourceId, SourceRelevanceSet, '')
-//             , iff(isnotempty(TargetRelevanceSet) and NodesInPath == TargetId, TargetRelevanceSet, '')
             , iff(isnotempty(edgesInPath), strcat('-[',  edgesInPath, ']->'), ''))
        | summarize fullPath = array_strcat(make_list(step), '')
     )
