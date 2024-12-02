@@ -10,16 +10,18 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Discover valid paths between interesting endpoints (sources and targets) over graph data (edge and nodes).
+Discover valid paths between relevant endpoints (sources and targets) over graph data (edge and nodes).
 
-The function `graph_path_discovery_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows to discover valid paths between interesting endpoints over graph data. Graph data consists of nodes (for example - resources, applications or users) and edges (for example - existing access permissions). In cybersecurity context, such paths might represent possible lateral movement paths that a potential attacker can utilize. We are interested in paths connecting endpoints defined as interesting by some criteria - for example, exposed sources connected to critical targets. Based on the function's configuration, other types of paths, suitable for other security scenarios, can be discovered.
+The function `graph_path_discovery_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows to discover valid paths between relevant endpoints over graph data. Graph data consists of nodes (for example - resources, applications or users) and edges (for example - existing access permissions). In cybersecurity context, such paths might represent possible lateral movement paths that a potential attacker can utilize. We are interested in paths connecting endpoints defined as relevant by some criteria - for example, exposed sources connected to critical targets. Based on the function's configuration, other types of paths, suitable for other security scenarios, can be discovered.
 
-The data that can be used for this function is a table of edges in the format 'SourceId, EdgeId, TargetId', and a list of nodes with optional nodes' properties that can be used to define valid paths. Alternatively, similar tables can be extracted from other types of data. For example, traffic logs with entries of type 'User A logged in to resource B' can be modeled as edges of type '(User A)-[logged in to]->(resource B)'.
+The data that can be used as input for this function is a table of edges in the format 'SourceId, EdgeId, TargetId', and a list of nodes with optional nodes' properties that can be used to define valid paths. Alternatively, graph input can be extracted from other types of data. For example, traffic logs with entries of type 'User A logged in to resource B' can be modeled as edges of type '(User A)-[logged in to]->(resource B)', while the list of distinct users and resources can be modeled as nodes.
 
 We make several assumptions:
 * All edges are valid for path discovery. Edges that are irrelavant should be filtered out before running path discovery.
 * Edges are unweighted, independent and unconditional, meaning that all edges has the same probability and moving from B to C is not dependent on previous move from A to B.
 * Paths we want to discover are simple directional paths without cycles, of type A->B->C. More complex definitions can be made by changing the internal syntax of graph-match operator in the function.
+
+These assumptions can be adapted as needed by changing the internal logic of the function.
 
 The function discovers all possible paths between valid sources to valid targets, under optional constraints such as path length limits, maximum output size, etc. The output is a list of discovered paths with source and target Ids, as well as list of connecting edges and nodes. Note that the function uses only the required fields, such as node Ids and edge Ids. In case additional relevant fields - such as types, property lists, security-related scores or external signals - are available in input data, they can be added to logic and output by changing the function definition.  
 
@@ -35,9 +37,9 @@ The function discovers all possible paths between valid sources to valid targets
 |--|--|--|--|
 | *edgesTableName* | `string` |  :heavy_check_mark: | The name of the input table containing the edges of the graph. |
 | *nodesTableName* | `string` |  :heavy_check_mark: | The name of the input table containing the nodes of the graph. |
-| *scopeColumnName* | `string` |  :heavy_check_mark: | The name of column in nodes and edges tables containing the partition or scope, so that a different anomaly model is built for each scope. |
-| *isValidPathStartColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes table containing a binary flag for a node, 1 marking that the node is a valid start point for a path and 0 - not a valid one. |
-| *isValidPathEndColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes table containing a binary flag for a node, 1 marking that the node is a valid end point for a path and 0 - not a valid one. |
+| *scopeColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes and edges tables containing the partition or scope (e.g., subscription or account), so that a different anomaly model is built for each scope. |
+| *isValidPathStartColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes table containing a Boolean flag for a node, *True* meaning that the node is a valid start point for a path and *False* - not a valid one. |
+| *isValidPathEndColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes table containing a Boolean flag for a node, *True* meaning that the node is a valid end point for a path and *False* - not a valid one. |
 | *nodeIdColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes table containing the node Id. |
 | *edgeIdColumnName* | `string` | :heavy_check_mark:  | The name of the column in edges table containing the edge Id. |
 | *sourceIdColumnName* | `string` | :heavy_check_mark:  | The name of the column in edges table containing edge's source node Id. |
@@ -87,7 +89,7 @@ let paths = (
     // Current configurations looks for directed paths without any cycles; this can be changed if needed
       graph-match cycles = none (s)-[e*minPathLength..maxPathLength]->(t)
         // Filter only by paths with that connect valid endpoints
-        where (s.isValidPathStart == 1 and t.isValidPathEnd == 1)
+        where ((s.isValidPathStart) and (t.isValidPathEnd))```
         project   sourceId                  = s.nodeId
                 , isSourceValidPathStart    = s.isValidPathStart
                 , targetId                  = t.nodeId
@@ -150,7 +152,7 @@ let paths = (
     // Current configurations looks for directed paths without any cycles; this can be changed if needed
       graph-match cycles = none (s)-[e*minPathLength..maxPathLength]->(t)
         // Filter only by paths with that connect valid endpoints
-        where (s.isValidPathStart == 1 and t.isValidPathEnd == 1)
+        where ((s.isValidPathStart) and (t.isValidPathEnd))
         project   sourceId                  = s.nodeId
                 , isSourceValidPathStart    = s.isValidPathStart
                 , targetId                  = t.nodeId
@@ -219,7 +221,7 @@ let paths = (
     // Current configurations looks for directed paths without any cycles; this can be changed if needed
       graph-match cycles = none (s)-[e*minPathLength..maxPathLength]->(t)
         // Filter only by paths with that connect valid endpoints
-        where (s.isValidPathStart == 1 and t.isValidPathEnd == 1)
+        where ((s.isValidPathStart) and (t.isValidPathEnd))
         project   sourceId                  = s.nodeId
                 , isSourceValidPathStart    = s.isValidPathStart
                 , targetId                  = t.nodeId
@@ -281,9 +283,9 @@ let nodes = datatable (NodeName:string, NodeType:string, NodeEnvironment:string,
 ];
 let nodesEnriched = (
     nodes
-    | extend IsValidStart = iff(NodeType == 'Virtual Machine', 1, 0),             IsValidEnd = iff(NodeType == 'Cloud Storage', 1, 0)              // option 1
-    //| extend IsValidStart = iff(NodeName in('vm-work-1', 'vm-work-2'), 1, 0),     IsValidEnd = iff(NodeName in('storage_main_backup'), 1, 0)       // option 2
-    //| extend IsValidStart = iff(NodeEnvironment == 'Test', 1, 0),                 IsValidEnd = iff(NodeEnvironment == 'Production', 1, 0)          // option 3
+    | extend IsValidStart = (NodeType == 'Virtual Machine'),             IsValidEnd = (NodeType == 'Cloud Storage')              // option 1
+    //| extend IsValidStart = (NodeName in('vm-work-1', 'vm-work-2')),     IsValidEnd = (NodeName in('storage_main_backup'))       // option 2
+    //| extend IsValidStart = (NodeEnvironment == 'Test'),                 IsValidEnd = (NodeEnvironment == 'Production')          // option 3
 );
 graph_path_discovery_fl(edgesTableName                = 'edges'
                 , nodesTableName                = 'nodesEnriched'
@@ -340,9 +342,9 @@ let nodes = datatable (NodeName:string, NodeType:string, NodeEnvironment:string,
 ];
 let nodesEnriched = (
     nodes
-    | extend IsValidStart = iff(NodeType == 'Virtual Machine', 1, 0),             IsValidEnd = iff(NodeType == 'Cloud Storage', 1, 0)              // option 1
-    //| extend IsValidStart = iff(NodeName in('vm-work-1', 'vm-work-2'), 1, 0),     IsValidEnd = iff(NodeName in('storage_main_backup'), 1, 0)       // option 2
-    //| extend IsValidStart = iff(NodeEnvironment == 'Test', 1, 0),                 IsValidEnd = iff(NodeEnvironment == 'Production', 1, 0)          // option 3
+    | extend IsValidStart = (NodeType == 'Virtual Machine'),             IsValidEnd = (NodeType == 'Cloud Storage')              // option 1
+    //| extend IsValidStart = (NodeName in('vm-work-1', 'vm-work-2')),     IsValidEnd = (NodeName in('storage_main_backup'))       // option 2
+    //| extend IsValidStart = (NodeEnvironment == 'Test'),                 IsValidEnd = (NodeEnvironment == 'Production')          // option 3
 );
 graph_path_discovery_fl(edgesTableName          = 'edges'
                 , nodesTableName                = 'nodesEnriched'
@@ -363,17 +365,17 @@ graph_path_discovery_fl(edgesTableName          = 'edges'
 
 | sourceId	| isSourceValidPathStart	| targetId	| isTargetValidPathEnd	| scope	| edgeIds	| pathLength	| pathId	| pathAllNodeIds	| fullPath |
 | ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| --- |
-| test-machine	| 1	| storage_DevBox	| 1	| US	| ["e9","e10","e14","e16"]	| 4	| 00605d35b6e1d28024fd846f217b43ac	| ["test-machine","hub_router","remote_DT","backup_prc","storage_DevBox"]	| (test-machine)-[e9]->(hub_router)-[e10]->(remote_DT)-[e14]->(backup_prc)-[e16]->(storage_DevBox) |
+| test-machine	| True	| storage_DevBox	| True	| US	| ["e9","e10","e14","e16"]	| 4	| 00605d35b6e1d28024fd846f217b43ac	| ["test-machine","hub_router","remote_DT","backup_prc","storage_DevBox"]	| (test-machine)-[e9]->(hub_router)-[e10]->(remote_DT)-[e14]->(backup_prc)-[e16]->(storage_DevBox) |
 
 
 
-Running the function finds all paths using input edges that connect between source nodes flagged as valid start points (isSourceValidPathStart == 1) to all targets flagged as valid end points (isTargetValidPathEnd == 1). The output is a table where each row describes a single path (limited to maximum size by resultCountLimit parameter). Each row contains the following fields:
+Running the function finds all paths using input edges that connect between source nodes flagged as valid start points (isSourceValidPathStart == True) to all targets flagged as valid end points (isTargetValidPathEnd == True). The output is a table where each row describes a single path (limited to maximum number of rows by resultCountLimit parameter). Each row contains the following fields:
 
 * `sourceId`: nodeId of the source - first node in the path.
-* `isSourceValidPathStart`: binary flag for source node being a valid path start; should be always equal to 1.
+* `isSourceValidPathStart`: Boolean flag for source node being a valid path start; should be equal to True.
 * `targetId`: nodeId of the target - last node in the path.
-* `isTargetValidPathEnd`: binary flag for target node being a valid path end; should be always equal to 1.
-* `scope`: the scope containing the path and used as partition.
+* `isTargetValidPathEnd`: Boolean flag for target node being a valid path end; should be always equal to True.
+* `scope`: the scope containing the path.
 * `edgeIds`: an ordered list of edges in the path.
 * `pathLength`: the numbers of edges (hops) in the path.
 * `pathId`: a hash of path's endpoints and steps, can be used as unique identifier for the path.
@@ -383,10 +385,10 @@ Running the function finds all paths using input edges that connect between sour
 In the example above, we pre-process the nodes table and add several options of possible endpoint definitions. By commenting/uncommenting different options, several scenarios can be discovered:
 
 * Option 1: Find paths between Virtual Machines to Cloud Storage resources. Useful in exploring connection patterns between types of nodes. 
-* Option 2: Find paths between specific nodes (vm-work-1 and vm-work-2) to a specific node ('storage_main_backup'). Useful in investigating known cases - such as paths from compromised assets. 
+* Option 2: Find paths between any of the specific nodes (vm-work-1, vm-work-2) to a specific node (storage_main_backup). Useful in investigating known cases - such as paths from known compromised assets to known critical ones. 
 * Option 3: Find paths between groups of nodes, such as nodes in different environments. Useful for monitoring insecure paths, such as paths between test and production environments.
 
-In the example above we use the first option to find all the paths between VMs to cloud storage resources, which might be used by potential attackers who want to access stored data. This scenario can be strengthened by addind more filters to valid endpoints - for example, connecting VMs with known vulnerabilities to storage containing sensitive data.
+In the example above we use the first option to find all the paths between VMs to cloud storage resources, which might be used by potential attackers who want to access stored data. This scenario can be strengthened by adding more filters to valid endpoints - for example, connecting VMs with known vulnerabilities to storage accounts containing sensitive data.
 
 The function `graph_path_discovery_fl()` can be used in cybersecurity domain to discover interesting paths, such as lateral movement paths, over data modeled as a graph.
 

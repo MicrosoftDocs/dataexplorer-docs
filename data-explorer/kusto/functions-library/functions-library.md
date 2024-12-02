@@ -19,7 +19,7 @@ The user-defined functions code is given in the articles.  It can be used within
 | Function Name | Description |
 |--|--|
 | [detect_anomalous_new_entity_fl()](detect-anomalous-new-entity-fl.md) | Detect the appearance of anomalous new entities in timestamped data. |
-| [graph_path_discovery_fl()](graph-path-discovery-fl.md) |  Discover valid paths between interesting endpoints (sources and targets) over graph data (edge and nodes).
+| [graph_path_discovery_fl()](graph-path-discovery-fl.md) |  Discover valid paths between relevant endpoints (sources and targets) over graph data (edge and nodes).
 
 ## General functions
 
