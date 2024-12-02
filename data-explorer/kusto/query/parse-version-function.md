@@ -67,7 +67,7 @@ dt
 
 ### Compare parsed versions strings
 
-This query determines which labs have equipment that requires updates.
+The following query identifies which labs have equipment needing updates by comparing their parsed version strings to the minimum version number "1.0.0.0".
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
