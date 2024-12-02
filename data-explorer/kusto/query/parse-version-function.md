@@ -31,7 +31,7 @@ Converts the input string representation of a version number into a decimal numb
 
 ## Returns
 
-If conversion is successful, the result is a decimal; otherwise, the results is `null`.
+If conversion is successful, the result is a decimal; otherwise, the result is `null`.
 
 ## Examples
 
