@@ -35,7 +35,7 @@ If conversion is successful, the result is a decimal; otherwise, the results is 
 
 ## Examples
 
-### Parse strings
+### Parse version strings
 
 The following query creates a table of version strings and then parses each version string into a comparable decimal number using the parse_version function. The result is a table with the original version strings and their parsed components, which can be further analyzed or used in subsequent operations.
 
