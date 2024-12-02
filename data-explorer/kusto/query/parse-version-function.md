@@ -65,7 +65,7 @@ dt
 | 1.2.3.4 | 1,000,000,020,000,000,300,000,004 |
 | 1 | 1,000,000,000,000,000,000,000,000 |
 
-### Using parse_version with other functions
+### Compare parsed versions strings
 
 This query determines which labs have equipment that requires updates.
 
