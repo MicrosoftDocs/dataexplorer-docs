@@ -12,18 +12,18 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 Discover valid paths between relevant endpoints (sources and targets) over graph data (edge and nodes).
 
-The function `graph_path_discovery_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows to discover valid paths between relevant endpoints over graph data. Graph data consists of nodes (for example - resources, applications or users) and edges (for example - existing access permissions). In cybersecurity context, such paths might represent possible lateral movement paths that a potential attacker can utilize. We are interested in paths connecting endpoints defined as relevant by some criteria - for example, exposed sources connected to critical targets. Based on the function's configuration, other types of paths, suitable for other security scenarios, can be discovered.
+The function `graph_path_discovery_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows to discover valid paths between relevant endpoints over graph data. Graph data consists of nodes (for example - resources, applications or users) and edges (for example - existing access permissions). In cybersecurity context, such paths might represent possible lateral movement paths that a potential attacker can utilize. We're interested in paths connecting endpoints defined as relevant by some criteria - for example, exposed sources connected to critical targets. Based on the function's configuration, other types of paths, suitable for other security scenarios, can be discovered.
 
 The data that can be used as input for this function is a table of edges in the format 'SourceId, EdgeId, TargetId', and a list of nodes with optional nodes' properties that can be used to define valid paths. Alternatively, graph input can be extracted from other types of data. For example, traffic logs with entries of type 'User A logged in to resource B' can be modeled as edges of type '(User A)-[logged in to]->(resource B)', while the list of distinct users and resources can be modeled as nodes.
 
 We make several assumptions:
 * All edges are valid for path discovery. Edges that are irrelevant should be filtered out before running path discovery.
-* Edges are unweighted, independent and unconditional, meaning that all edges has the same probability and moving from B to C is not dependent on previous move from A to B.
+* Edges are unweighted, independent, and unconditional, meaning that all edges have the same probability and moving from B to C is not dependent on previous move from A to B.
 * Paths we want to discover are simple directional paths without cycles, of type A->B->C. More complex definitions can be made by changing the internal syntax of graph-match operator in the function.
 
 These assumptions can be adapted as needed by changing the internal logic of the function.
 
-The function discovers all possible paths between valid sources to valid targets, under optional constraints such as path length limits, maximum output size, etc. The output is a list of discovered paths with source and target Ids, as well as list of connecting edges and nodes. Note that the function uses only the required fields, such as node Ids and edge Ids. In case additional relevant fields - such as types, property lists, security-related scores or external signals - are available in input data, they can be added to logic and output by changing the function definition.  
+The function discovers all possible paths between valid sources to valid targets, under optional constraints such as path length limits, maximum output size, etc. The output is a list of discovered paths with source and target Ids, as well as list of connecting edges and nodes. The function uses only the required fields, such as node Ids and edge Ids. In case other relevant fields - such as types, property lists, security-related scores, or external signals - are available in input data, they can be added to logic and output by changing the function definition.  
 
 ## Syntax
 
@@ -376,11 +376,11 @@ Running the function finds all paths using input edges that connect between sour
 * `scope`: the scope containing the path.
 * `edgeIds`: an ordered list of edges in the path.
 * `pathLength`: the numbers of edges (hops) in the path.
-* `pathId`: a hash of path's endpoints and steps, can be used as unique identifier for the path.
+* `pathId`: a hash of path's endpoints and steps can be used as unique identifier for the path.
 * `pathAllNodeIds`: an ordered list of nodes in the path.
 * `fullPath`: a string representing the full path, in format (source node)-[edge 1]->(node2)-.....->(target node).
 
-In the example above, we pre-process the nodes table and add several options of possible endpoint definitions. By commenting/uncommenting different options, several scenarios can be discovered:
+In the example above, we preprocess the nodes table and add several options of possible endpoint definitions. By commenting/uncommenting different options, several scenarios can be discovered:
 
 * Option 1: Find paths between Virtual Machines to Cloud Storage resources. Useful in exploring connection patterns between types of nodes. 
 * Option 2: Find paths between any of the specific nodes (vm-work-1, vm-work-2) to a specific node (storage_main_backup). Useful in investigating known cases - such as paths from known compromised assets to known critical ones. 
