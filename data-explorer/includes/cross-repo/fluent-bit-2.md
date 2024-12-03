@@ -71,7 +71,6 @@ To configure Fluent Bit to send logs to your table in Kusto, create a [classic m
 | Field | Description | Required | Default |
 |--|--|--|--|
 | Name | The pipeline name. |  |  `azure_kusto`|
-|--|--|--|--|
 | tenant_id | The tenant ID from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). | :heavy_check_mark: |  |
 | client_id | The application ID from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). | :heavy_check_mark: |  |
 | client_secret | The client secret key value (password) from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). | :heavy_check_mark: |  |
