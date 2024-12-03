@@ -67,7 +67,7 @@ print MultiLineString = strcat("Line 1\n", "Line 2\n", "Line 3")
 **Output**
 
 
-The results show the expanded row with the multiline string.
+The results show the expanded row view with the multiline string.
 
 |MultiLineString|
 |---|
