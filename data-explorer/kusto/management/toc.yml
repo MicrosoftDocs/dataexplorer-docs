@@ -488,6 +488,9 @@ items:
           - name: .delete table policy merge command
             href: delete-table-merge-policy-command.md
             displayName: .delete table merge policy
+          - name: .delete materialized-view policy merge command
+            href: delete-materialized-view-merge-policy-command.md
+            displayName: .delete materialized-view merge policy
           - name: .show database policy merge command
             href: show-database-merge-policy-command.md
             displayName: .show database merge policy
