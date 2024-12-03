@@ -1,10 +1,11 @@
 ---
-title:  Create an app to get data using queued ingestion
+title: Create an app to get data using queued ingestion
 description: Learn how to create an app to get data using queued ingestion of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
+#customer intent: To learn about creating an app to get data using queued ingestion.
 ---
 # Create an app to get data using queued ingestion
 
@@ -159,7 +160,7 @@ Add the following code:
       main()
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
@@ -265,7 +266,7 @@ Add the following code:
     ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, credentials)
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
@@ -329,7 +330,7 @@ Add the following code:
         ingest_client.ingest_from_file(file_path, ingest_props)
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     import path from 'path';
@@ -410,7 +411,7 @@ Add the following code:
     print_result_as_value_list(response)
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     console.log("\nWaiting 30 seconds for ingestion to complete ...");
@@ -580,7 +581,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 import path from 'path';
@@ -732,7 +733,7 @@ dotnet run .
 python basic_ingestion.py
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 In a Node.js environment:
 
@@ -802,7 +803,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     from azure.kusto.ingest import StreamDescriptor
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     import { Readable } from "stream";
@@ -837,7 +838,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     string_stream = io.StringIO(single_line)
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     const singleLine = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"';
@@ -872,7 +873,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     ingestProps.ignoreFirstRecord = false;
@@ -903,7 +904,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     stringStream.size = singleLine.length;
@@ -995,7 +996,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 import path from 'path';
@@ -1130,7 +1131,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
     from azure.kusto.ingest import BlobDescriptor
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     No additional packages are required.
@@ -1167,7 +1168,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
     ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     const blobUri = "<your_blob_uri>";
@@ -1263,7 +1264,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 import path from 'path';
@@ -1372,9 +1373,8 @@ Last ingested row:
 
 ## Next step
 
-<!-- Advance to the next article to learn how to create... -->
-<!-- > [!div class="nextstepaction"]
-> [TBD](../../../kql-quick-reference.md) -->
+> [!div class="nextstepaction"]
+> [App authentication methods](app-authentication-methods.md)
 
 > [!div class="nextstepaction"]
 > [KQL quick reference](../../query/kql-quick-reference.md)

@@ -86,11 +86,13 @@ items:
             href: api/get-started/app-set-up.md
           - name: Create your first app
             href: api/get-started/app-hello-kusto.md
+          - name: Secure your app
+            href: api/get-started/app-authentication-methods.md
           - name: Run basic queries
             href: api/get-started/app-basic-query.md
           - name: Run management commands
             href: api/get-started/app-management-commands.md
-          - name: Queued ingestion
+          - name: Queue data for ingestion
             href: api/get-started/app-queued-ingestion.md
       - name: Connection strings
         items:

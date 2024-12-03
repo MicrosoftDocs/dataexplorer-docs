@@ -29,6 +29,9 @@ items:
 - name: get_packages_version_fl()
   displayName: functions library, python, version, package
   href: get-packages-version-fl.md
+- name: graph_path_discovery_fl()
+  displayName: functions library, graph, path, discovery, cyber, security, cybersecurity,
+  href: graph-path-discovery-fl.md
 - name: kmeans_fl()
   displayName: functions library, clustering, K-Means
   href: kmeans-fl.md
