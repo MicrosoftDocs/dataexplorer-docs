@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 12/02/2024
+ms.date: 12/03/2024
 ---
 ## Create a Microsoft Entra service principal
 
@@ -68,8 +68,8 @@ Grant the service principal from [Create a Microsoft Entra service principal](#c
 
 To configure Fluent Bit to send logs to your table in Kusto, create a [classic mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file) or [YAML mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/yaml/configuration-file) configuration file with the following output properties:
 
-| Field | Description |
-|--|--|
+| Field | Description | Required | Default |
+|--|--|--|--|
 | Name | `azure_kusto` |
 | Match | A pattern to match against the tags of incoming records. It's case-sensitive and supports the star (`*`) character as a wildcard. |
 | tenant_id | The tenant ID from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
@@ -87,6 +87,26 @@ To configure Fluent Bit to send logs to your table in Kusto, create a [classic m
 |compression_enabled | Sends compressed HTTP payload (gzip) to Kusto, if enabled. |
 |ingestion_resources_refresh_interval | The ingestion resources refresh interval of Kusto endpoint in seconds. |
 | workers | The number of [workers](https://docs.fluentbit.io/manual/administration/multithreading#outputs) to perform flush operations for this output. |
+
+| Field | Description | Required | Default |
+|--|--|--|--|
+| Name | The pipeline name. |  |  `azure_kusto`|
+|--|--|--|--|
+| tenant_id | The tenant ID from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). | :heavy_check_mark: |  |
+| client_id | The application ID from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). | :heavy_check_mark: |  |
+| client_secret | The client secret key value (password) from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). | :heavy_check_mark: |  |
+| ingestion_endpoint | Enter the value as described for [Ingestion_Endpoint](#ingestion-uri). | :heavy_check_mark: |  |
+| database_name | The name of the database that contains your logs table. | :heavy_check_mark: |  |
+| table_name | The name of the table from [Create a target table](#create-a-target-table). | :heavy_check_mark: |  |
+| ingestion_mapping_reference | The name of the ingestion mapping from [Create a target table](#create-a-target-table). If you didn't create an ingestion mapping, remove the property from the configuration file. |  |  |
+| log_key | Key name of the log content. For instance, `log`. |  | `log` |
+| tag_key | The key name of tag. Ignored if `include_tag_key` is false. |  | `tag` |
+| include_time_key | A timestamp is appended to output, if enabled. Uses the `time_key` property. |  | `true` |
+| time_key | The key name for the timestamp in the log records. Ignored if `include_time_key` false. |  | `timestamp` |
+| ingestion_endpoint_connect_timeout The connection timeout of various Kusto endpoints in seconds. |  |  | `60s` |
+| compression_enabled | Sends compressed HTTP payload (gzip) to Kusto, if enabled. |  | `true` |
+| ingestion_resources_refresh_interval | The ingestion resources refresh interval of Kusto endpoint in seconds. |  | `3600` |
+| workers | The number of [workers](https://docs.fluentbit.io/manual/administration/multithreading#outputs) to perform flush operations for this output. |  | `0` |
 
 To see an example configuration file, select the relevant tab:
 
