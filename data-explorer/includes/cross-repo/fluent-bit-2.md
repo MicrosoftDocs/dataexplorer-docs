@@ -60,9 +60,9 @@ To create a table for incoming structured logs from Fluent Bit:
 
 Grant the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) [database ingestor](/azure/data-explorer/kusto/access-control/role-based-access-control) role permissions to work with the database. For more information, see [Examples](/azure/data-explorer/kusto/management/manage-database-security-roles). Replace the placeholder *DatabaseName* with the name of the target database and *ApplicationID* with the `AppId` value you saved when creating a Microsoft Entra service principal.
 
-    ```kusto
-    .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>;<TenantID>')
-    ```
+```kusto
+.add database <DatabaseName> ingestors ('aadapp=<ApplicationID>;<TenantID>')
+```
 
 ## Configure Fluent Bit to send logs to your table
 
