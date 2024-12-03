@@ -90,7 +90,7 @@ StormEvents
 | take 5
 ```
 
-The following table shows only 5 of the 22 returned columns. To see the full output, run the query.
+The following table shows only five of the 22 returned columns. To see the full output, run the query.
 
 |StartTime|EndTime|EpisodeId|EventId|State|EventType|...|
 |--|--|--|--|--|--|--|
@@ -218,12 +218,12 @@ The following query finds all storm events between August 1, 2007 and August 30,
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVCC5JLCoJycxNVbCzVUhJLEktAbI1jAwMzHUNLHQNDBUUDAyswEhTITEvBUm9DaZyYwMFI2MrU0sg0gTaUFCUn5WaXALSU5KqowC2OaSyAMiEmwIUzUsBMYDKi%2FOLShSSKpGsSCxOBgCegSYjtAAAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOwQqDQBBD7%2F2KObpQZaqUtt77BfoDqwbagrsyOyhCP76jh1Io5BDCI0mjUcb7jKDp8KblAQE16kXb5wjqoAsQKBu8Qi3JSuZLztecT8Rc73JUFPQHVExlVZ9vJuesepL4Qq9bueJI%2B2S7Tma%2Fc5aGYTOGpyhK3frzxaf%2BA3AsVtytAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```Kusto
 StormEvents
-| where StartTime >= datetime(2007-08-01  00:00:00) and StartTime < datetime(2007-08-30 23:59:59)
+| where StartTime between (datetime(2007-08-01 00:00:00) .. datetime(2007-08-30 23:59:59))
 | project State, EventType, StartTime, EndTime
 | sort by StartTime asc 
 ```
