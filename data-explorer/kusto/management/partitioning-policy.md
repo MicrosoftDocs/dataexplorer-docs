@@ -217,7 +217,7 @@ You can monitor the partitioning status of tables with defined policies in a dat
 
 * If there's a high ingestion throughput, or a large enough number of tables that have a partitioning policy defined, then the [Extents partition capacity](../management/capacity-policy.md#extents-partition-capacity) may gradually increase, so that [the process of partitioning extents](#the-data-partitioning-process) can keep up.
 
-::: moniker range = "azure-data-explorer"
+::: moniker range="azure-data-explorer"
 * To avoid consuming too many resources, these dynamic increases are capped. You may be required to gradually and linearly increase them beyond the cap, if they're used up entirely.
   * If increasing the capacities causes a significant increase in the use of the cluster's resources, you can scale the cluster
     [up](/azure/data-explorer/manage-cluster-vertical-scaling)/[out](/azure/data-explorer/manage-cluster-horizontal-scaling), either manually, or by enabling autoscale.
