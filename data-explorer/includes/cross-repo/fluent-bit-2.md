@@ -82,7 +82,7 @@ To configure Fluent Bit to send logs to your table in Kusto, create a [classic m
 | tag_key | The key name of tag. Ignored if `include_tag_key` is false. |  | `tag` |
 | include_time_key | A timestamp is appended to output, if enabled. Uses the `time_key` property. |  | `true` |
 | time_key | The key name for the timestamp in the log records. Ignored if `include_time_key` false. |  | `timestamp` |
-| ingestion_endpoint_connect_timeout The connection timeout of various Kusto endpoints in seconds. |  |  | `60s` |
+| ingestion_endpoint_connect_timeout | The connection timeout of various Kusto endpoints in seconds. |   | `60s` |
 | compression_enabled | Sends compressed HTTP payload (gzip) to Kusto, if enabled. |  | `true` |
 | ingestion_resources_refresh_interval | The ingestion resources refresh interval of Kusto endpoint in seconds. |  | `3600` |
 | workers | The number of [workers](https://docs.fluentbit.io/manual/administration/multithreading#outputs) to perform flush operations for this output. |  | `0` |
