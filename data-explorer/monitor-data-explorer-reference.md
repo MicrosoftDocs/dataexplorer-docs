@@ -7,6 +7,7 @@ ms.topic: reference
 author: shsagir
 ms.author: shsagir
 ms.service: azure-data-explorer
+---
 
 # Azure Data Explorer monitoring data reference
 
