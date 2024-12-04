@@ -11,7 +11,7 @@ ms.date: 12/04/2024
 
 Extends the columns of a fact table with values looked-up in a dimension table.
 
-For example, the following query results in a table that extends the `FactTable` (`$left`) with data from the `DimensionTable` (referenced by `$right`) by performing a lookup. The lookup matches each pair (`CommonColumn`, `Col1`) from `FactTable` with each pair (`CommonColumn`, `Col2`) in the `DimensionTable`. For the differences between fact and dimension tables, see [fact and dimension tables](../concepts/fact-and-dimension-tables.md).
+For example, the following query results in a table that extends the `FactTable` (`$left`) with data from the `DimensionTable` (`$right`) by performing a lookup. The lookup matches each pair (`CommonColumn`, `Col1`) from `FactTable` with each pair (`CommonColumn`, `Col2`) in the `DimensionTable`. For the differences between fact and dimension tables, see [fact and dimension tables](../concepts/fact-and-dimension-tables.md).
 
 ```kusto
 FactTable | lookup kind=leftouter (DimensionTable) on CommonColumn, $left.Col1 == $right.Col2
