@@ -59,7 +59,7 @@ Select the data source from the available list. In this example, you're ingestin
         | Folder path| Filters data to ingest files with a specific folder path. |
         | File extension| Filters data to ingest files with a specific file extension only.|
 
-    1. If you selected **Add URI**, from the storage account generate an SAS URL for the container or individual blobs you want to ingest. Set the permissions to **Read** and **List** for containers or **Read** for individual blobs.
+    1. If you selected **Add URI**, from the storage account, generate an SAS URL for the container or individual blobs you want to ingest. Set the permissions to **Read** and **List** for containers or **Read** for individual blobs.
     1. Paste the URL into the **URI** field, and then select **+**.
 
         > [!NOTE]
