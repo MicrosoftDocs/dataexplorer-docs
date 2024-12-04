@@ -11,7 +11,7 @@ ms.service: azure-data-explorer
 
 # Monitor Azure Data Explorer
 
-[!INCLUDE [azmon-horz-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-intro.md)]
+[!INCLUDE [azmon-horz-intro](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-intro.md)]
 
 ## Collect data with Azure Monitor
 
