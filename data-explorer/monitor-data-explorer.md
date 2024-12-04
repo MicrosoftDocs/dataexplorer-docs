@@ -4,9 +4,9 @@ description: Learn how to monitor Azure Data Explorer using Azure Monitor, inclu
 ms.date: 12/09/2024
 ms.custom: horz-monitor
 ms.topic: conceptual
-author: GitHub-alias
-ms.author: microsoft-alias
-ms.service: your-service
+author: shsagir
+ms.author: shsagir
+ms.service: azure-data-explorer
 ---
 
 # Monitor Azure Data Explorer
@@ -43,7 +43,7 @@ The **Resource** and **Metric Namespace** pickers are preselected for your Azure
 
   :::image type="content" source="media/using-metrics/metrics-pane.png" alt-text="Screenshot shows different options for viewing metrics.":::
 
-1. To create a metric chart, select **Metric** name and relevant **Aggregation** per metric. For more information about different metrics, see [supported Azure Data Explorer metrics](#supported-azure-data-explorer-metrics).
+1. To create a metric chart, select **Metric** name and relevant **Aggregation** per metric. For more information about different metrics, see [supported Azure Data Explorer metrics](monitor-data-explorer-reference.md#smetrics).
 1. Select **Add metric** to see multiple metrics plotted in the same chart.
 1. Select **+ New chart** to see multiple charts in one view.
 1. Use the time picker to change the time range (default: past 24 hours).
@@ -144,5 +144,5 @@ Once the settings are ready, logs start to appear in the configured destination 
 
 ## Related content
 
-- [Azure Data Explorer monitoring data reference](monitor-[TODO-replace-with-service-filename]-reference.md)
+- [Azure Data Explorer monitoring data reference](monitor-data-explorer-reference.md)
 - [Monitoring Azure resources with Azure Monitor](/azure/azure-monitor/essentials/monitor-azure-resource)
