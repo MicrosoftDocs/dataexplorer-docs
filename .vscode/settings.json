@@ -7,5 +7,27 @@
     },
     "cSpell.words": [
         "Kusto"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#c4abf2",
+        "activityBar.background": "#c4abf2",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#c1571e",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#15202b99",
+        "sash.hoverBorder": "#c4abf2",
+        "statusBar.background": "#a57feb",
+        "statusBar.debuggingBackground": "#c5eb7f",
+        "statusBar.debuggingForeground": "#15202b",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#8653e4",
+        "statusBarItem.remoteBackground": "#a57feb",
+        "statusBarItem.remoteForeground": "#15202b",
+        "titleBar.activeBackground": "#a57feb",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.inactiveBackground": "#a57feb99",
+        "titleBar.inactiveForeground": "#15202b99"
+    },
+    "peacock.color": "#A57FEB"
 }

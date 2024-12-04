@@ -3,7 +3,7 @@ title: Get data from Azure storage
 description: Learn how to get data from Azure storage in Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 12/04/2023
+ms.date: 12/04/2024
 ---
 
 # Get data from Azure storage
@@ -59,12 +59,14 @@ Select the data source from the available list. In this example, you're ingestin
         | Folder path| Filters data to ingest files with a specific folder path. |
         | File extension| Filters data to ingest files with a specific file extension only.|
 
-    1. If you selected **Add URI**, paste your storage connection string for a blob container or individual files in the **URI** field, and then select **+**.
+    1. If you selected **Add URI**, from the storage account generate an SAS URL for the container or individual blobs you want to ingest. Set the permissions to **Read** and **List** for containers or **Read** for individual blobs.
+    1. Paste the URL into the **URI** field, and then select **+**.
 
         > [!NOTE]
         >
         > * You can add up to 10 individual blobs. Each blob can be a max of 1 GB uncompressed.
         > * You can ingest up to 5000 blobs from a single container.
+        > * You can't ingest individual blobs and containers in the same ingestion.
 
         :::image type="content" source="media/get-data-storage/add-uri.png" alt-text="Screenshot of configure tab with the connection string pasted in the URI field."  lightbox="media/get-data-storage/add-uri.png":::
 
