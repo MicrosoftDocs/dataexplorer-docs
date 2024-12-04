@@ -3,7 +3,7 @@ title:  lookup operator
 description: Learn how to use the lookup operator to extend columns of a fact table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/03/2024
+ms.date: 12/04/2024
 ---
 # lookup operator
 
@@ -41,7 +41,7 @@ with the following differences:
 
 ## Syntax
 
-*LeftTable* `|` `lookup` [`kind` `=` (`leftouter`|`inner`)] `(`*RightTable*`)` `on` *Conditions*
+*LeftTable* `|` `lookup` [`kind` `=` (`leftouter`|`inner`)] `(`*RightTable*`)` `on` *Attributes*
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
