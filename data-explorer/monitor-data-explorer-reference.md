@@ -11,23 +11,23 @@ ms.service: azure-data-explorer
 
 # Azure Data Explorer monitoring data reference
 
-[!INCLUDE [horz-monitor-ref-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-intro.md)]
+[!INCLUDE [horz-monitor-ref-intro](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-intro.md)]
 
 See [Monitor Azure Data Explorer](monitor-data-explorer.md) for details on the data you can collect for Azure Data Explorer and how to use it.
 
-[!INCLUDE [horz-monitor-ref-metrics-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-intro.md)]
+[!INCLUDE [horz-monitor-ref-metrics-intro](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-intro.md)]
 
 ### Supported metrics for Microsoft.Kusto/clusters
 
 The following table lists the metrics available for the Microsoft.Kusto/clusters resource type.
 
-[!INCLUDE [horz-monitor-ref-metrics-tableheader](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-tableheader.md)]
+[!INCLUDE [horz-monitor-ref-metrics-tableheader](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-tableheader.md)]
 
-[!INCLUDE [Microsoft.Kusto/clusters](~/reusable-content/ce-skilling/azure/includes/azure-monitor/reference/metrics/microsoft-kusto-clusters-metrics-include.md)]
+[!INCLUDE [Microsoft.Kusto/clusters](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/reference/metrics/microsoft-kusto-clusters-metrics-include.md)]
 
-[!INCLUDE [horz-monitor-ref-metrics-dimensions-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions-intro.md)]
+[!INCLUDE [horz-monitor-ref-metrics-dimensions-intro](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions-intro.md)]
 
-[!INCLUDE [horz-monitor-ref-metrics-dimensions](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions.md)]
+[!INCLUDE [horz-monitor-ref-metrics-dimensions](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions.md)]
 
 - CommandType
 - ComponentName
@@ -48,13 +48,13 @@ The following table lists the metrics available for the Microsoft.Kusto/clusters
 
 ## Resource logs
 
-[!INCLUDE [horz-monitor-ref-resource-logs](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-resource-logs.md)]
+[!INCLUDE [horz-monitor-ref-resource-logs](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-resource-logs.md)]
 
 ### Supported resource logs for Microsoft.Kusto/clusters
 
-[!INCLUDE [Microsoft.Kusto/clusters](~/reusable-content/ce-skilling/azure/includes/azure-monitor/reference/logs/microsoft-kusto-clusters-logs-include.md)]
+[!INCLUDE [Microsoft.Kusto/clusters](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/reference/logs/microsoft-kusto-clusters-logs-include.md)]
 
-[!INCLUDE [horz-monitor-ref-logs-tables](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-logs-tables.md)]
+[!INCLUDE [horz-monitor-ref-logs-tables](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-logs-tables.md)]
 
 ### Azure Data Explorer Microsoft.Kusto/Clusters
 
@@ -77,7 +77,7 @@ The following table lists the metrics available for the Microsoft.Kusto/clusters
 
 ## Activity log
 
-[!INCLUDE [horz-monitor-ref-activity-log](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-activity-log.md)]
+[!INCLUDE [horz-monitor-ref-activity-log](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-activity-log.md)]
 
 - [Analytics resource provider operations](/azure/role-based-access-control/resource-provider-operations#analytics)
 
