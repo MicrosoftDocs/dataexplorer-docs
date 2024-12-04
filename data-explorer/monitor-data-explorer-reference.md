@@ -46,8 +46,6 @@ The following table lists the metrics available for the Microsoft.Kusto/clusters
 - State
 - Table
 
-## Resource logs
-
 [!INCLUDE [horz-monitor-ref-resource-logs](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-resource-logs.md)]
 
 ### Supported resource logs for Microsoft.Kusto/clusters
@@ -75,13 +73,11 @@ The following table lists the metrics available for the Microsoft.Kusto/clusters
 - [ADXTableDetails](/azure/azure-monitor/reference/tables/adxtabledetails#columns)
 - [ADXJournal](/azure/azure-monitor/reference/tables/adxjournal#columns)
 
-## Activity log
-
 [!INCLUDE [horz-monitor-ref-activity-log](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-activity-log.md)]
 
 - [Analytics resource provider operations](/azure/role-based-access-control/resource-provider-operations#analytics)
 
 ## Related content
 
-- See [Monitor Azure Data Explorer](monitor-data-explorer.md) for a description of monitoring [TODO-replace-with-service-name].
+- See [Monitor Azure Data Explorer](monitor-data-explorer.md) for a description of monitoring Azure Data Explorer.
 - See [Monitor Azure resources with Azure Monitor](/azure/azure-monitor/essentials/monitor-azure-resource) for details on monitoring Azure resources.
