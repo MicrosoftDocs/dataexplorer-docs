@@ -51,7 +51,7 @@ This example shows how many types of storm events happened in each state.
 
 :::moniker range="azure-data-explorer"
 > * Function performance can be degraded when operating on multiple data sources from different clusters.
-::: moniker-end
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQjNyywsTYVI2Cbnl+aVxKdkFpdk5iWXaIBFQyoLUjUVkioVgksSS1KBekvyCxRMQQLIWgE/wdUFXwAAAA==" target="_blank">Run the query</a>
 ::: moniker-end
