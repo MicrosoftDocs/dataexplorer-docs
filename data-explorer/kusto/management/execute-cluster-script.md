@@ -1,11 +1,14 @@
 ---
 title: .execute cluster script command
-description: Learn how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a single cluster in Azure Data Explorer.
+description:  Learn how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a single cluster.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/24/2024
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .execute cluster script command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Executes a batch of management commands in the scope is a cluster. 
 
@@ -15,14 +18,14 @@ Executes a batch of management commands in the scope is a cluster.
 
 ## Permissions
 
-You must have at least [Cluster Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.execute` `cluster` `script`  
 [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *ControlCommandsScript*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -55,7 +58,6 @@ Each command appearing in the script is reported as a separate record in the out
 >* The script text may include empty lines and comments between the commands.
 >* Commands are executed sequentially, in the order they appear in the input script.
 >* Script execution is sequential, but non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute cluster script`.
->* Execution of the command requires Cluster Admin permissions, in addition to permissions that may be required by each specific command.
->* Default behavior of the command - fail on the first error, it can be changed using property argument.
+>* The default behavior of the command is to fail on the first error. This can be changed by using the property argument: `ContinueOnErrors`.
 >* Read-only management commands (`.show` commands) aren't executed and are reported with status `Skipped`.
 

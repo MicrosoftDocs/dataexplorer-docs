@@ -138,7 +138,7 @@ You can load your data in either of the following ways:
 The new Azure Data Explorer linked service is created to copy the data into the Azure Data Explorer destination table (sink) that's specified in this section.
 
 > [!NOTE]
-> Use the [Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md) and use any of the [ingest from query commands](kusto/management/data-ingestion/ingest-from-query.md), such as `.set-or-replace`.
+> Use the [Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md) and use any of the [ingest from query commands](/kusto/management/data-ingestion/ingest-from-query?view=azure-data-explorer&preserve-view=true), such as `.set-or-replace`.
 
 #### Create the Azure Data Explorer linked service
 
@@ -183,7 +183,6 @@ To create the Azure Data Explorer linked service, do the following steps:
 
    1. In the **Database** drop-down list, select your database name. Alternatively, select the **Edit** check box, and then enter the database name.
    1. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
-   1. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
    1. Select **Create** to complete the linked service creation.
 
 #### Configure the Azure Data Explorer data connection
@@ -206,7 +205,7 @@ After you've created the linked service connection, the **Destination data store
 
     * Cancel the selection of the columns that you don't need to define your column mapping.
 
-    b. The second mapping occurs when this tabular data is ingested into Azure Data Explorer. Mapping is performed according to [CSV mapping rules](kusto/management/csv-mapping.md). Even if the source data isn't in CSV format, Azure Data Factory converts the data into a tabular format. Therefore, CSV mapping is the only relevant mapping at this stage. Do the following:
+    b. The second mapping occurs when this tabular data is ingested into Azure Data Explorer. Mapping is performed according to [CSV mapping rules](/kusto/management/csv-mapping?view=azure-data-explorer&preserve-view=true). Even if the source data isn't in CSV format, Azure Data Factory converts the data into a tabular format. Therefore, CSV mapping is the only relevant mapping at this stage. Do the following:
 
     * (Optional) Under **Azure Data Explorer (Kusto) sink properties**, add the relevant **Ingestion mapping name** so that column mapping can be used.
 

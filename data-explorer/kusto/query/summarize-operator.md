@@ -3,10 +3,14 @@ title:  summarize operator
 description: Learn how to use the summarize operator to produce a table that summarizes the content of the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ms.localizationpriority: high 
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # summarize operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Produces a table that aggregates the content of the input table.
 
@@ -17,7 +21,7 @@ Produces a table that aggregates the content of the input table.
     [`by`
       [*Column* `=`] *GroupExpression* [`,` ...]]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,6 +38,7 @@ Produces a table that aggregates the content of the input table.
 >
 > * If *GroupExpression* is not provided, the output will be a single (empty) row.
 > * If *GroupExpression* is provided, the output will have no rows.
+
 
 ### Supported parameters
 
@@ -79,8 +84,10 @@ The following table summarizes the default values of aggregations:
 
 The following query determines what unique combinations of `State` and `EventType` there are for storms that resulted in direct injury. There are no aggregation functions, just group-by keys. The output will just show the columns for those results.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVfDMyyotykwtdsksSk0uUbBTMADJFZfm5iYWZValKiRVKgSXJJak6iiAdYZUFqQCAEZA2i9IAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -105,8 +112,10 @@ The following table shows only the first 5 rows. To see the full output, run the
 
 Finds the minimum and maximum heavy rain storms in Hawaii. There's no group-by clause, so there's just one row in the output.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WMsQrCQBBEe8F/GK5S0E+4ImDAFGmSgPViFjzh9sJlExPx42VFsRvevJlWU47lzKLjdvPC48aZ0Sopw3u4c3EpqsqBpMfH6tbh2zDNKxoK4mw45HTnq+I0ZdKQBB6l9F2IjKP9ZbVs5jjFSDk8GXUwLQbZ/Vb7A2paDNLyh28u8qFKpAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -121,9 +130,10 @@ StormEvents
 |---|---|
 | 01:08:00 | 11:55:00 |
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ### Distinct count
 
-Create a row for each continent, showing a count of the cities in which activities occur. Because there are few values for "continent", no grouping function is needed in the 'by' clause:
+The following query calculates the number of unique storm event types for each state and sorts the results by the number of unique storm types:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIqSxILfZPCwbJF9umJOeX5pVogBWCZDQVkioVgksSS1LBuvKLSkACKHoALe01bFoAAAA=" target="_blank">Run the query</a>
@@ -182,6 +192,7 @@ When the input of `summarize` operator doesn't have an empty group-by key, the r
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2PwQ7CIBBE7yb+A0cwHLz0YqI/YkyzBaQbAU3ZNtT48S7EGg4zmTe7WSwQvyE4WU7hmby63va7j8hzjDDh2wlIa1/OBA/Xs5VFaQGT7yMUjn9OFi0OG8C0AUx/sPg2OcwYbDajiyDpadcEEQ27TBOmWlFcagur1nnWl5uMS4T1Ri26jqMxBEZCZ7JuaSU+eFO8114RF3HkgCx6l6nBhb8EyfAe9QXbqS6i+AAAAA==" target="_blank">Run the query</a>
 
+
 ```kusto
 datatable(x:long)[]
 | summarize any_x=take_any(x), arg_max_x=arg_max(x, *), arg_min_x=arg_min(x, *), avg(x), buildschema(todynamic(tostring(x))), max(x), min(x), percentile(x, 55), hll(x) ,stdev(x), sum(x), sumif(x, x > 0), tdigest(x), variance(x)
@@ -195,8 +206,10 @@ datatable(x:long)[]
 
 The result of `avg_x(x)` is `NaN` due to dividing by 0.
 
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjQqrnPy8dM3oWF6uGoXi0tzcxKLMqlQFheT80rwSjQpNHQgrM02jQsFOwUBTQUchBSGXApfUUYDIAwDGwdg7WgAAAA==" target="_blank">Run the query</a>
+
 
 ```kusto
 datatable(x:long)[]
@@ -209,8 +222,10 @@ datatable(x:long)[]
 |---|---|---|---|
 |0|0|0|0|
 
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjQqrnPy8dM3oWF6uGoXi0tzcxKLMqlQFhdzE7NT44tQSjQpNHQgnJ7MYxAMATGERsTsAAAA=" target="_blank">Run the query</a>
+
 
 ```kusto
 datatable(x:long)[]
@@ -225,8 +240,10 @@ datatable(x:long)[]
 
 The aggregate avg sums all the non-nulls and counts only those which participated in the calculation (won't take nulls into account).
 
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2KTQqAIBQG953iWyq0EWrpYYSeIvgTTw2NDp9BqxmYYZMcocNyjlCoGRtKpRNqeUC9UjowoOGtFR1aQ61gMkGkFoL8fZdy3qXFaNjf9JkYM5rLTb7y45THYwAAAA==" target="_blank">Run the query</a>
+
 
 ```kusto
 range x from 1 to 4 step 1
@@ -242,8 +259,10 @@ range x from 1 to 4 step 1
 
 The regular count will count nulls:
 
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy3KTQqAIBAG0H3QHb6lA20MWnoYqTEEf2JU0OjwEbR7iyc2nYwOJzlCo2asKJUv6Hl6wL1yOjBg4J1THcZALxC2QaUWAv3eiL5eWoxW/M3Yc0tVDXoBSiga018AAAA=" target="_blank">Run the query</a>
+
 
 ```kusto
 range x from 1 to 2 step 1
@@ -257,8 +276,10 @@ range x from 1 to 2 step 1
 |---|
 |2|
 
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03KSwqAIBRG4XnQHv6hQhODhq4lhK4h+YirgkWLr6BBs3PgYxNXQoPlFKBQEkbkQjtU312gViguOKDhrBUNWkMNYDJexOq9/HqS8uW5hmDYnYRgNpozFXE85Dc305SXFm8AAAA=" target="_blank">Run the query</a>
+
 
 ```kusto
 range x from 1 to 2 step 1
@@ -271,3 +292,5 @@ range x from 1 to 2 step 1
 |set_y|set_y1|
 |---|---|
 |[5.0]|[5.0]|
+
+::: moniker-end

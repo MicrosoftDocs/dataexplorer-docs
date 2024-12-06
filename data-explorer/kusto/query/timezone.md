@@ -1,11 +1,13 @@
 ---
 title:  Timezone
-description: This article is about the timezones supported by the Internet Assigned Numbers Authority Time Zone Database (IANA) in Azure Data Explorer.
+description:  This article is about the timezones supported by the Internet Assigned Numbers Authority Time Zone Database (IANA).
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 02/20/2023
+ms.date: 08/11/2024
 ---
 # Timezones
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The following is a list of timezones supported by the [Internet Assigned Numbers Authority (IANA) Time Zone Database](https://www.iana.org/time-zones).
 
@@ -13,6 +15,7 @@ Related functions:
 
 * [datetime_local_to_utc()](datetime-local-to-utc-function.md)
 * [datetime_utc_to_local()](datetime-utc-to-local-function.md)
+* [datetime-list-timezones()](datetime-list-timezones.md)
 
 | Timezone                         |
 | -------------------------------- |

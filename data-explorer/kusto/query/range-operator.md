@@ -3,9 +3,11 @@ title:  range operator
 description: Learn how to use the range operator to generate a single-column table of values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # range operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Generates a single-column table of values.
 
@@ -16,7 +18,7 @@ Generates a single-column table of values.
 
 `range` *columnName* `from` *start* `to` *stop* `step` *step*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,8 +41,10 @@ whose values are *start*, *start* `+` *step*, ... up to and until *stop*.
 
 The following example creates a table with entries for the current time stamp extended over the past seven days, once a day.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVfBJLC4JT03NVkgrys9VSEzP1zBP0VQoyVfIyy/X0FQoLkktUDBMAQDbz6iXLAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range LastWeek from ago(7d) to now() step 1d
@@ -57,8 +61,10 @@ range LastWeek from ago(7d) to now() step 1d
 
 The following example shows how to use the `range` operator with parameters, which are then extended and consumed as a table.  
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21QQU7DMBC8+xV7TKSGJCKAIOICHLhUSBQe4OINjUjWlrNRGyh/Zx1a4UpYlizvzNgz0yED21dqdy9tj3ALieEboxlZrimoL1AgS6aQwXGelNdXRVaUstMUcigHUN+16uSt5bS0xJsVa8/y2hBO2/RhlpDdJmlaQ57/wraBGZiFK0Z3N4mkOrs4rzYza3TOekYD4dPBaRpmKpHQLquiKAILnu0W7u1IDE573SP79hPNwU1I1bUUknlN73g0+GhHD423/aljtjC7FOPoDp7UHnDHSCbWthR19ldgElHSBTxIYU/UhVjrlmJwURrBg+SAx76y/9iqjuPswXqDHtbTiVIPbwKx/kBp6Qf2xjgc3AEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let toUnixTime = (dt:datetime) 
@@ -86,8 +92,10 @@ let MyTimeline = range MyMonthHour from MyMonthStart to now() step StepBy
 The following example creates a table with a single column called `Steps`
 whose type is `long` and whose values are `1`, `4`, and `7`.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVQguSS0oVkgrys9VMFQoyVewUCgGiigYAwBtHYQiHgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range Steps from 1 to 8 step 3

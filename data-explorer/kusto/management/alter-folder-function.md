@@ -3,9 +3,11 @@ title: .alter function folder command
 description: Learn how to use the `.alter function folder` command to alter the folder value of an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
 ---
 # .alter function folder command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Alters the folder value of an existing function.
 
@@ -14,13 +16,13 @@ Alters the folder value of an existing function.
 
 ## Permissions
 
-You must have at least [Function Admin](../management/access-control/role-based-access-control.md) permissions to run this command. The principal that creates the function is automatically made a Function Admin.
+You must have at least [Function Admin](../access-control/role-based-access-control.md) permissions to run this command. The principal that creates the function is automatically made a Function Admin.
 
 ## Syntax
 
 `.alter` `function` *FunctionName* `folder` *Folder*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,6 +42,8 @@ You must have at least [Function Admin](../management/access-control/role-based-
 |DocString| `string` |A description of the function for UI purposes.|
 
 ## Example
+
+The following example changes the folder value and folder name to `Updated Folder`.
 
 ```kusto
 .alter function MyFunction1 folder "Updated Folder"

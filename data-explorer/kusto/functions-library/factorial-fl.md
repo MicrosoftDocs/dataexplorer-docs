@@ -1,11 +1,14 @@
 ---
 title:  factorial_fl()
-description: This article describes factorial_fl() user-defined function in Azure Data Explorer.
+description:  This article describes factorial_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 04/30/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # factorial_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculate factorial.
 
@@ -15,7 +18,7 @@ The function `factorial_fl()` is a [UDF (user-defined function)](../query/functi
 
 `factorial_fl(`*n*`)`
   
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -44,7 +47,7 @@ let factorial_fl=(n:int)
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
@@ -63,8 +66,10 @@ factorial_fl(n:int)
 
 ### [Query-defined](#tab/query-defined)
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMMQ6DMAwF0N2n+GMilkZsoJwFWa2DIiUOSj1Eor07rLwDvCKGxG9rPXPZUolOl6zm6STcdq6VnU7B03+lzroLBlJvFQHWEF74mhyY6QcZJvpBGoiP0g1/ARFWBuNmAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let factorial_fl=(n:int)
@@ -80,8 +85,10 @@ range x from 1 to 10 step 3
 > [!IMPORTANT]
 > For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0UCguSS1QMOaqUUitKEnNS1FIq1CwVUhLTC7JL8pMzIlPy9Go0AQAVBtAKDkAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 10 step 3

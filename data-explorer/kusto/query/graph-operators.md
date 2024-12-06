@@ -3,9 +3,11 @@ title: Graph operators
 description: Learn how to use KQL graph operators.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/03/2023
+ms.date: 11/05/2024
 ---
 # Graph operators
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Kusto Query Language (KQL) graph operators enable graph analysis of data by representing tabular data as a graph with nodes and edges. This setup lets us use graph operations to study the connections and relationships between different data points.
 
@@ -26,6 +28,8 @@ The following table describes the supported graph operators.
 | [make-graph](make-graph-operator.md) | Builds a graph from tabular data. |
 | [graph-match](graph-match-operator.md) | Searches for patterns in a graph. |
 | [graph-to-table](graph-to-table-operator.md) | Builds nodes or edges tables from a graph. |
+| [graph-shortest-paths](graph-shortest-paths-operator.md) | Finds the shortest paths from a given set of source nodes to a set of target nodes. |
+| [graph-mark-components](graph-mark-components-operator.md) | Finds and marks all connected components. |
 
 ## Graph model
 
@@ -39,9 +43,9 @@ A graph is a transient object. It's built in each query that contains graph oper
 
 The graph object is built in memory on the fly for each graph query. As such, there's a performance cost for building the graph and a limit to the size of the graph that can be built.
 
-Although it isn't strictly enforced, we recommend building graphs with at most 10 million elements (nodes and edges). The actual memory limit for the graph is determined by [query operators memory limit](../concepts/querylimits.md#limit-on-memory-consumed-by-query-operators-e_runaway_query).
+Although it isn't strictly enforced, we recommend building graphs with at most 10 million elements (nodes and edges). The actual memory limit for the graph is determined by [query operators memory limit](../concepts/query-limits.md#limit-on-memory-consumed-by-query-operators-e_runaway_query).
 
 ## Related content
 
-* [Graph overview](../../graph-overview.md)
-* [Graph best practices](../../graph-best-practices.md)
+* [Graph overview](graph-overview.md)
+* [Graph best practices](graph-best-practices.md)

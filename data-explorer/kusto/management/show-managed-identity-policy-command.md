@@ -3,9 +3,12 @@ title: .show policy managed_identity command
 description: Learn how to use the `.show policy managed_identity` command to show the ManagedIdentity policy of the specified database or cluster.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .show policy managed_identity command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 This command returns the ManagedIdentity policy of the cluster or the specified database.
 
@@ -15,7 +18,7 @@ To see the managed identity policy on the cluster, you must have AllDatabasesMon
 
 To see the managed identity policy on a database, you must have Database User, Database Viewer, or Database Monitor permissions.
 
-For more information, see [role-based access control](access-control/role-based-access-control.md).
+For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 
@@ -23,7 +26,7 @@ For more information, see [role-based access control](access-control/role-based-
 
 `.show` `database` *DatabaseName* `policy` `managed_identity`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -48,4 +51,4 @@ This command returns a table that has a single record.
 
 | EntityName   | Policies |
 |--------------|----------|
-| [MyDatabase] | [{"ObjectId": "f687680c-5ba0-4025-ab04-0433fdbd0086", "ClientId": "7c8fee41-97d1-4ebd-9140-32a3b8316820", "TenantId": "4549d41b-a99d-4367-a887-7dd2c00e542c", "DisplayName": "myManagedIdentity", "IsSystem": false, "AllowedUsages": "NativeIngestion, ExternalTable"}] |
+| [MyDatabase] | [{"ObjectId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb", "ClientId": "00001111-aaaa-2222-bbbb-3333cccc4444", "TenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee", "DisplayName": "myManagedIdentity", "IsSystem": false, "AllowedUsages": "NativeIngestion, ExternalTable"}] |

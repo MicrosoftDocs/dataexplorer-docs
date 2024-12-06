@@ -3,13 +3,13 @@ title: .delete table policy mirroring command
 description: Learn how to use the `.delete table policy mirroring` command to delete a table's  logical copy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 06/04/2024
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric"
 ---
 # .delete table policy mirroring command
 
-::: zone pivot="fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)]
+
 Delete a table's [mirroring policy](mirroring-policy.md).
 
 > [!WARNING]
@@ -19,7 +19,7 @@ Delete a table's [mirroring policy](mirroring-policy.md).
 
 `.delete` `table` *TableName* `policy` `mirroring`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,11 +34,3 @@ The following command deletes the mirroring policy at the table level.
 ```kusto
 .delete table myTable policy mirroring
 ```
-
-::: zone-end
-
-::: zone pivot="azuredataexplorer, azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

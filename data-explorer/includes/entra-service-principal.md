@@ -2,6 +2,9 @@
 ms.topic: include
 ms.date: 02/05/2024
 ---
+
+<!-- //TODO remove this and redirect all links to the entra ID app doc in kusto -->
+
 1. Sign in to your Azure subscription via Azure CLI. Then authenticate in the browser.
 
    ```azurecli-interactive
@@ -24,11 +27,11 @@ ms.date: 02/05/2024
 
     ```json
     {
-      "appId": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
+      "appId": "00001111-aaaa-2222-bbbb-3333cccc4444",
       "displayName": "my-service-principal",
       "name": "my-service-principal",
-      "password": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
-      "tenant": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn"
+      "password": "00001111-aaaa-2222-bbbb-3333cccc4444",
+      "tenant": "00001111-aaaa-2222-bbbb-3333cccc4444"
     }
     ```
 

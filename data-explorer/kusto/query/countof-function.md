@@ -3,9 +3,11 @@ title:  countof()
 description: Learn how to use the countof() function to count the occurrences of a substring in a string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # countof()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.
 
@@ -13,14 +15,14 @@ Counts occurrences of a substring in a string. Plain string matches may overlap;
 
 `countof(`*source*`,` *search* [`,` *kind*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *source* | `string` |  :heavy_check_mark: | The value to search. |
-| *search* | `string` |  :heavy_check_mark: | The value or [regular expression](re2.md) to match inside *source*. |
+| *search* | `string` |  :heavy_check_mark: | The value or [regular expression](regex.md) to match inside *source*. |
 | *kind* | `string` | | The value `normal` or `regex`. The default is `normal`. |
 
 ## Returns

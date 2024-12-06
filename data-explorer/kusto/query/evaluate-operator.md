@@ -3,9 +3,11 @@ title:  evaluate plugin operator
 description: Learn how to use the evaluate plugin operator to invoke plugins.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # evaluate plugin operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Invokes a service-side query extension (plugin).
 
@@ -13,15 +15,15 @@ The `evaluate` operator is a tabular operator that allows you to invoke query la
 
 > [!NOTE]
 >
-> * Syntactically, `evaluate` behaves similarly to the [invoke operator](./invoke-operator.md), which invokes tabular functions.
+> * Syntactically, `evaluate` behaves similarly to the [invoke operator](invoke-operator.md), which invokes tabular functions.
 > * Plugins provided through the evaluate operator aren't bound by the regular rules of query execution or argument evaluation.
-> * Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data. For example, [bag_unpack plugin](./bag-unpack-plugin.md) and [pivot plugin](./pivot-plugin.md) can't be used when performing cross-cluster queries.
+> * Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data. For example, [bag_unpack plugin](bag-unpack-plugin.md) and [pivot plugin](pivot-plugin.md) can't be used when performing cross-cluster queries.
 
 ## Syntax
 
 [*T* `|`] `evaluate` [ *evaluateParameters* ] *PluginName* `(`[ *PluginArgs* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -56,6 +58,7 @@ The following plugins are supported:
 * [diffpatterns-text plugin](diffpatterns-text-plugin.md)
 * [infer-storage-schema plugin](infer-storage-schema-plugin.md)
 * [ipv4-lookup plugin](ipv4-lookup-plugin.md)
+* [ipv6-lookup plugin](ipv6-lookup-plugin.md)
 * [mysql-request-plugin](mysql-request-plugin.md)
 * [narrow plugin](narrow-plugin.md)
 * [pivot plugin](pivot-plugin.md)

@@ -22,8 +22,8 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
-* An [ingestion mapping](kusto/management/mappings.md) for the table.
+* A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
+* An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 * Have the [Event Grid resource provider registered](/azure/event-grid/blob-event-quickstart-portal#register-the-event-grid-resource-provider).
 
@@ -276,6 +276,9 @@ dataLakeFileClient.Rename(destinationFilePath);
 
 > [!NOTE]
 > Triggering ingestion following a `CopyBlob` operation is not supported for storage accounts that have the hierarchical namespace feature enabled on them.
+
+> [!IMPORTANT]
+> We highly discourage generating Storage Events from custom code and sending them to Event Hubs. If you choose to do so, make sure that the events produced strictly adhere to the appropriate Storage Events schema and JSON format specifications.
 
 ## Remove an Event Grid data connection
 

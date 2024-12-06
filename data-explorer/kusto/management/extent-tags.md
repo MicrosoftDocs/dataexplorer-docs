@@ -3,15 +3,18 @@ title:  Extent tags
 description: Learn how to create and use extent tags.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/15/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Extent tags
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 An *extent tag* is a string that describes properties common to all data in an [extent](extents-overview.md). For example, during data ingestion, you can append an extent tag to signify the source of the ingested data. Then, you can use this tag for analysis.
 
 Extents can hold multiple tags as part of their metadata. When extents merge, their tags also merge, ensuring consistent metadata representation.
 
-To see the tags associated with an extent, use the [.show extents](./show-extents.md) command. For a granular view of tags associated with records within an extent, use the [extent-tags()](../query/extent-tags-function.md) function.
+To see the tags associated with an extent, use the [.show extents](show-extents.md) command. For a granular view of tags associated with records within an extent, use the [extent-tags()](../query/extent-tags-function.md) function.
 
 > [!IMPORTANT]
 > Tags starting with `drop-by:` or `ingest-by:` carry specific meanings. For more information, see [drop-by extent tags](#drop-by-extent-tags) and [ingest-by extent tags](#ingest-by-extent-tags).

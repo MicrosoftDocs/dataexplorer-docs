@@ -1,11 +1,13 @@
 ---
 title:  The timespan data type
-description: This article describes The timespan data type in Azure Data Explorer.
+description:  This article describes The timespan data type.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/08/2024
+ms.date: 08/11/2024
 ---
 # The timespan data type
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
 The `timespan` data type represents a time interval.
 
@@ -29,7 +31,7 @@ To specify a `timespan` literal, use one of the following syntax options:
 | `timespan(`*days*`.`*hours*`:`*minutes*`:`*seconds*`.`*milliseconds*`)` | A time interval in days, hours, minutes, and seconds passed.| `timespan(0.12:34:56.7)` | `0d+12h+34m+56.7s` |
 | `timespan(null)` | Represents the [null value](null-values.md). | | |
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## `timespan` operators
 
@@ -58,4 +60,5 @@ print
 
 ## Related content
 
-* [totimespan()](../../query/totimespanfunction.md)
+* [totimespan function](../totimespan-function.md)
+* [make-timespan function](../make-timespan-function.md)

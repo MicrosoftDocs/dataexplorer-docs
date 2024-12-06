@@ -1,13 +1,15 @@
 ---
 title:  Storage connection strings
-description: This article describes storage connection strings in Azure Data Explorer.
+description: This article describes storage connection strings.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 07/13/2023
+ms.date: 11/19/2024
 ---
 # Storage connection strings
 
-Azure Data Explorer can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azurestorage-azuredatalake.md) in order to query data stored on external storages.
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
+The Kusto service can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azure-storage.md) in order to query data stored on external storages.
 
 The following types of external storage are supported:
 
@@ -17,34 +19,37 @@ The following types of external storage are supported:
 * Amazon S3
 
 Each type of storage has corresponding connection string formats used to describe the storage resources and how to access them.
-Azure Data Explorer uses a URI format to describe these storage resources and the properties necessary to access them, such as security credentials.
+A URI format is used to describe these storage resources and the properties necessary to access them, such as security credentials.
 
 > [!NOTE]
-> HTTP web services that don't implement the entire API set of Azure Blob Storage aren't supported, even if they appear to work in some scenarios.
+> HTTP web services support is limited to retrieving resources from arbitrary HTTP web services. Other operations, such as writing resources, are not supported.
 
 ## Storage connection string templates
 
 Each storage type has a different connection string format. See the following table for connection string templates for each storage type.
 
-|Storage Type                  |Scheme    |URI template                          |
-|------------------------------|----------|--------------------------------------|
-|Azure Blob Storage            |`https://`|`https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*]|
-|Azure Data Lake Storage Gen2  |`https://`|`https://`*StorageAccountName*`.dfs.core.windows.net/`*Filesystem*[`/`*PathToDirectoryOrFile*][*CallerCredentials*]|
-|Azure Data Lake Storage Gen2  |`abfss://`|`abfss://`*Filesystem*`@`*StorageAccountName*`.dfs.core.windows.net/`[*PathToDirectoryOrFile*][*CallerCredentials*]|
-|Azure Data Lake Storage Gen1  |`adl://`  |`adl://`*StorageAccountName*.azuredatalakestore.net/*PathToDirectoryOrFile*[*CallerCredentials*]|
-|Amazon S3                     |`https://`|`https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com/`*ObjectKey*[*CallerCredentials*]|
+| Storage Type | Scheme | URI template |
+|--|--|--|
+| Azure Blob Storage | `https://` | `https://`*StorageAccountName*`.blob.core.windows.net/`*Container*[`/`*BlobName*][*CallerCredentials*] |
+| Azure Data Lake Storage Gen2 | `https://` | `https://`*StorageAccountName*`.dfs.core.windows.net/`*Filesystem*[`/`*PathToDirectoryOrFile*][*CallerCredentials*] |
+| Azure Data Lake Storage Gen2 | `abfss://` | `abfss://`*Filesystem*`@`*StorageAccountName*`.dfs.core.windows.net/`[*PathToDirectoryOrFile*][*CallerCredentials*] |
+| Azure Data Lake Storage Gen1 | `adl://` | `adl://`*StorageAccountName*.azuredatalakestore.net/*PathToDirectoryOrFile*[*CallerCredentials*] |
+| Amazon S3 | `https://` | `https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com/`*ObjectKey*[*CallerCredentials*] |
+| HTTP web services | `https://` | `https://`*Hostname*`/`*PathAndQuery* |
 
 > [!NOTE]
 > To prevent secrets from showing up in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Storage authentication methods
 
-To interact with nonpublic external storage from Azure Data Explorer, you must specify authentication means as part of the external storage connection string. The connection string defines the resource to access and its authentication information.
+To interact with nonpublic external storage, you must specify authentication means as part of the external storage connection string. The connection string defines the resource to access and its authentication information.
 
-Azure Data Explorer supports the following authentication methods:
+The following authentication methods are supported:
 
 * [Impersonation](#impersonation)
+:::moniker range="azure-data-explorer"
 * [Managed identity](#managed-identity)
+::: moniker-end
 * [Shared Access (SAS) key](#shared-access-sas-token)
 * [Microsoft Entra access token](#azure-ad-access-token)
 * [Storage account access key](#storage-account-access-key)
@@ -56,7 +61,7 @@ Azure Data Explorer supports the following authentication methods:
 The following table summarizes the available authentication methods for different external storage types.
 
 | Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | Available in Amazon S3? | When should you use this method? |
-|---|---|---|---|---|---|
+|--|--|--|--|--|--|
 | [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use for attended flows when you need complex access control over the external storage. For example, in continuous export flows. You can also restrict storage access at the user level. |
 | [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use in unattended flows, where no Microsoft Entra principal can be derived to execute queries and commands. Managed identities are the only authentication solution. |
 | [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | SAS tokens have an expiration time. Use when accessing storage for a limited time. |
@@ -67,13 +72,15 @@ The following table summarizes the available authentication methods for differen
 
 ### Impersonation
 
-Azure Data Explorer impersonates the requestor's principal identity to access the resource. To use impersonation, append `;impersonate` to the connection string.
+Kusto impersonates the requestor's principal identity to access the resource. To use impersonation, append `;impersonate` to the connection string.
 
 |Example|
 |--|
 |`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;impersonate"`|
 
 The principal must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the principal needs the Storage Blob Data Reader role and to export to the blob the principal needs the Storage Blob Data Contributor role. To learn more, see [Azure Blob Storage / Data Lake Storage Gen2 access control](/azure/storage/blobs/data-lake-storage-access-control-model#role-based-access-control-azure-rbac) or [Data Lake Storage Gen1 access control](/azure/data-lake-store/data-lake-store-security-overview#azure-rbac-for-account-management).
+
+::: moniker range="azure-data-explorer"
 
 ### Managed identity
 
@@ -87,7 +94,8 @@ Azure Data Explorer makes requests on behalf of a managed identity and uses its 
 The managed identity must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the managed identity needs the Storage Blob Data Reader role and to export to the blob the managed identity needs the Storage Blob Data Contributor role. To learn more, see [Azure Blob Storage / Data Lake Storage Gen2 access control](/azure/storage/blobs/data-lake-storage-access-control-model#role-based-access-control-azure-rbac) or [Data Lake Storage Gen1 access control](/azure/data-lake-store/data-lake-store-security-overview#azure-rbac-for-account-management).
 
 > [!NOTE]
-> Managed identity is only supported in specific Azure Data Explorer flows and requires setting up the managed identity policy. For more information, see [Managed identities overview](../../../managed-identities-overview.md).
+> Managed identity is only supported in specific Azure Data Explorer flows and requires setting up the managed identity policy. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
+::: moniker-end
 
 ### Shared Access (SAS) token
 
@@ -97,9 +105,9 @@ For example, to read from the external storage specify the Read and List permiss
 
 Use the SAS URL as the connection string.
 
-|Example|
+| Example |
 |--|
-|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"`|
+| `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"` |
 
 <a name='azure-ad-access-token'></a>
 
@@ -109,31 +117,38 @@ To add a base-64 encoded Microsoft Entra access token, append `;token={AadToken}
 
 For more information on how to generate a Microsoft Entra access token, see [get an access token for authorization](/azure/storage/common/identity-library-acquire-token).
 
-|Example|
+| Example |
 |--|
-|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token=1234567890abcdef1234567890abcdef1234567890abc..."`|
+| `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;token=1234567890abcdef1234567890abcdef1234567890abc..."` |
 
 ### Storage account access key
 
 To add a storage account access key, append the key to the connection string. In Azure Blob Storage, append `;{key}` to the connection string. For Azure Data Lake Storage Gen 2, append `;sharedkey={key}` to the connection string.
 
-|Storage account|Example|
+| Storage account | Example |
 |--|--|--|
-|Azure Blob Storage|`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="`|
-|Azure Data Lake Storage Gen2|`"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"`|
+| Azure Blob Storage | `"https://fabrikam.blob.core.windows.net/container/path/to/file.csv;ljkAkl...=="` |
+| Azure Data Lake Storage Gen2 | `"abfss://fs@fabrikam.dfs.core.windows.net/path/to/file.csv;sharedkey=sv=...&sp=rwd"` |
 
 ### Amazon Web Services programmatic access keys
 
 To add Amazon Web Services access keys, append `;AwsCredentials={ACCESS_KEY_ID},{SECRET_ACCESS_KEY}` to the connection string.
 
-|Example|
+| Example |
 |--|
-|`"https://yourbucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AWS1234567890EXAMPLE,1234567890abc/1234567/12345678EXAMPLEKEY"`|
+| `"https://yourbucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AWS1234567890EXAMPLE,1234567890abc/1234567/12345678EXAMPLEKEY"` |
 
 ### Amazon Web Services S3 presigned URL
 
 Use the [S3 presigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) as the connection string.
 
-|Example|
+| Example |
 |--|
-|`"https://yourbucketname.s3.us-east-1.amazonaws.com/file.csv?12345678PRESIGNEDTOKEN"`|
+| `"https://yourbucketname.s3.us-east-1.amazonaws.com/file.csv?12345678PRESIGNEDTOKEN"` |
+
+## Related Content
+
+For examples of how storage connection strings are used, see:
+
+* [externaldata operator](../../query/externaldata-operator.md)
+* [Create and alter Azure Storage external tables](../../management/external-tables-azure-storage.md).

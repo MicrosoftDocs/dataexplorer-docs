@@ -3,11 +3,13 @@ title: Partitioning policy
 description: Learn how to use the partitioning policy to improve query performance.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2024
+ms.date: 09/10/2024
 ---
 # Partitioning policy
 
-The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+The partitioning policy defines if and how [extents (data shards)](extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 The policy triggers an additional background process that takes place after the creation of extents, following data ingestion. This process includes reingesting data from the source extents and producing *homogeneous* extents, in which all values of the column designated as the [partition key](#partition-keys) reside within a single partition.
 
@@ -21,13 +23,13 @@ The primary objective of the partitioning policy is to enhance query performance
 The following are the only scenarios in which setting a data partitioning policy is recommended. In all other scenarios, setting the policy isn't advised.
 
 * **Frequent filters on a medium or high cardinality `string` or `guid` column**:
-  * For example: multi-tenant solutions, or a metrics table where most or all queries filter on a column of type `string` or `guid`, such as the `TenantId` or the `MetricId`.
+  * For example: multitenant solutions, or a metrics table where most or all queries filter on a column of type `string` or `guid`, such as the `TenantId` or the `MetricId`.
   * Medium cardinality is at least 10,000 distinct values.
-  * Set the [hash partition key](#hash-partition-key) to be the `string` or `guid` column, and set the [`PartitionAssigmentMode` property](#partition-properties) to `uniform`.
+  * Set the [hash partition key](#hash-partition-key) to be the `string` or `guid` column, and set the [`PartitionAssignmentMode` property](#partition-properties) to `uniform`.
 * **Frequent aggregations or joins on a high cardinality `string` or `guid` column**:
   * For example, IoT information from many different sensors, or academic records of many different students.
   * High cardinality is at least 1,000,000 distinct values, where the distribution of values in the column is approximately even.
-  * In this case, set the [hash partition key](#hash-partition-key) to be the column frequently grouped-by or joined-on, and set the [`PartitionAssigmentMode` property](#partition-properties) to `ByPartition`.
+  * In this case, set the [hash partition key](#hash-partition-key) to be the column frequently grouped-by or joined-on, and set the [`PartitionAssignmentMode` property](#partition-properties) to `ByPartition`.
 * **Out-of-order data ingestion**:
   * Data ingested into a table might not be ordered and partitioned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span.
   * In this case, set the [uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
@@ -35,7 +37,7 @@ The following are the only scenarios in which setting a data partitioning policy
 
 > [!CAUTION]
 >
-> * There are no hard-coded limits set on the number of tables with the partitioning policy defined. But, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Setting a policy on more tables will result in more cluster resources being used, and higher cost due to underlying storage transactions. For more information, see [capacity](#partitioning-capacity).
+> * There are no hard-coded limits set on the number of tables with the partitioning policy defined. But, every additional table adds overhead to the background data partitioning process. Setting a policy on more tables will result in more resources being used, and higher cost due to underlying storage transactions. For more information, see [capacity](#partitioning-capacity).
 > * It isn't recommended to set a partitioning policy if the compressed size of data per partition is expected to be less than 1GB.
 > * The partitioning process results in residual storage artifacts for all the extents replaced during the partitioning process and during the merge process. Most of the residual storage artifacts are expected to be deleted during the automatic cleanup process. Increasing the value of the `MaxPartitionCount` property increases the number of residual storage artifacts and can reduce the cleanup performance.
 > * Before applying a partitioning policy on a materialized view, review the recommendations for [materialized views partitioning policy](materialized-views/materialized-view-policies.md#partitioning-policy).
@@ -51,7 +53,7 @@ The following kinds of partition keys are supported.
 
 ### Hash partition key
 
-If the policy includes a hash partition key, all homogeneous extents that belong to the same partition will be assigned to the same data node in the cluster.
+If the policy includes a hash partition key, all homogeneous extents that belong to the same partition will be assigned to the same data node.
 
 > [!NOTE]
 >
@@ -64,16 +66,16 @@ If the policy includes a hash partition key, all homogeneous extents that belong
 * A hash-modulo function is used to partition the data.
 * Data in homogeneous (partitioned) extents is ordered by the hash partition key.
   * You don't need to include the hash partition key in the [row order policy](row-order-policy.md), if one is defined on the table.
-* Queries that use the [shuffle strategy](../query/shuffle-query.md), and in which the `shuffle key` used in `join`, `summarize` or `make-series` is the table's hash partition key, are expected to perform better because the amount of data required to move across cluster nodes is reduced.
+* Queries that use the [shuffle strategy](../query/shuffle-query.md), and in which the `shuffle key` used in `join`, `summarize` or `make-series` is the table's hash partition key, are expected to perform better because the amount of data required to move across nodes is reduced.
 
 #### Partition properties
 
 |Property | Description | Supported value(s)| Recommended value |
 |---|---|---|---|
 | `Function` | The name of a hash-modulo function to use.| `XxHash64` | |
-| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. |  Higher values lead to greater overhead of the data partitioning process on the cluster's nodes, and a higher number of extents for each time period. The recommended value is `128`. Higher values will significantly increase the overhead of partitioning the data post-ingestion, and the size of metadata - and are therefore not recommended.
+| `MaxPartitionCount` | The maximum number of partitions to create (the modulo argument to the hash-modulo function) per time period. | In the range `(1,2048]`. |  Higher values lead to greater overhead of the data partitioning process, and a higher number of extents for each time period. The recommended value is `128`. Higher values will significantly increase the overhead of partitioning the data post-ingestion, and the size of metadata - and are therefore not recommended.
 | `Seed` | Use for randomizing the hash value. | A positive integer. | `1`, which is also the default value. |
-| `PartitionAssignmentMode` | The mode used for assigning partitions to nodes in the cluster. | `ByPartition`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node. <br> `Uniform`: An extents' partition values are disregarded. Extents are assigned uniformly to the cluster's nodes. | If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `ByPartition`. |
+| `PartitionAssignmentMode` | The mode used for assigning partitions to nodes. | `ByPartition`: All homogeneous (partitioned) extents that belong to the same partition are assigned to the same node. <br> `Uniform`: An extents' partition values are disregarded. Extents are assigned uniformly to the nodes. | If queries don't join or aggregate on the hash partition key, use `Uniform`. Otherwise, use `ByPartition`. |
 
 #### Hash partition key example
 
@@ -202,20 +204,24 @@ The following properties can be defined as part of the policy. These properties 
 
 ## The data partitioning process
 
-* Data partitioning runs as a post-ingestion background process in the cluster.
+* Data partitioning runs as a post-ingestion background process.
   * A table that is continuously ingested into is expected to always have a "tail" of data that is yet to be partitioned (nonhomogeneous extents).
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
   * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cache-policy.md).
 
-You can monitor the partitioning status of tables with defined policies in a database by using the [.show database extents partitioning statistics](show-database-extents-partitioning-statistics.md) command.
+You can monitor the partitioning status of tables with defined policies in a database by using the [.show database extents partitioning statistics](show-database-extents-partitioning-statistics.md) command and [partitioning metrics](/azure/data-explorer/using-metrics#partitioning-metrics).
 
 ### Partitioning capacity
 
-* The data partitioning process results in the creation of more extents. The cluster may gradually increase its [extents merge capacity](../management/capacity-policy.md#extents-merge-capacity), so that the process of [merging extents](../management/extents-overview.md) can keep up.
-* If there's a high ingestion throughput, or a large enough number of tables that have a partitioning policy defined, then the cluster may gradually increase its [Extents partition capacity](../management/capacity-policy.md#extents-partition-capacity), so that [the process of partitioning extents](#the-data-partitioning-process) can keep up.
+* The data partitioning process results in the creation of more extents. The [extents merge capacity](../management/capacity-policy.md#extents-merge-capacity) may gradually increase, so that the process of [merging extents](../management/extents-overview.md) can keep up.
+
+* If there's a high ingestion throughput, or a large enough number of tables that have a partitioning policy defined, then the [Extents partition capacity](../management/capacity-policy.md#extents-partition-capacity) may gradually increase, so that [the process of partitioning extents](#the-data-partitioning-process) can keep up.
+
+::: moniker range="azure-data-explorer"
 * To avoid consuming too many resources, these dynamic increases are capped. You may be required to gradually and linearly increase them beyond the cap, if they're used up entirely.
   * If increasing the capacities causes a significant increase in the use of the cluster's resources, you can scale the cluster
-    [up](../../manage-cluster-vertical-scaling.md)/[out](../../manage-cluster-horizontal-scaling.md), either manually, or by enabling autoscale.
+    [up](/azure/data-explorer/manage-cluster-vertical-scaling)/[out](/azure/data-explorer/manage-cluster-horizontal-scaling), either manually, or by enabling autoscale.
+::: moniker-end
 
 ### Limitations
 
@@ -224,13 +230,13 @@ You can monitor the partitioning status of tables with defined policies in a dat
 
 ## Outliers in partitioned columns
 
-* The following situations can contribute to imbalanced distribution of data across the cluster's nodes, and degrade query performance:
+* The following situations can contribute to imbalanced distribution of data across nodes, and degrade query performance:
   * If a hash partition key includes values that are much more prevalent than others, for example, an empty string, or a generic value (such as `null` or `N/A`).
   * The values represent an entity (such as `tenant_id`) that is more prevalent in the dataset.
-* If a uniform range datetime partition key has a large enough percentage of values that are "far" from the majority of the values in the column, the overhead of the data partitioning process is increased and may lead to many small extents that the cluster will need to keep track of. An example of such a situation is datetime values from the distant past or future.
+* If a uniform range datetime partition key has a large enough percentage of values that are "far" from the majority of the values in the column, the overhead of the data partitioning process is increased and may lead to many small extents to keep track of. An example of such a situation is datetime values from the distant past or future.
 
-In both of these cases, either "fix" the data, or filter out any irrelevant records in the data before or at ingestion time, to reduce the overhead of the data partitioning on the cluster. For example, use an [update policy](update-policy.md).
+In both of these cases, either "fix" the data, or filter out any irrelevant records in the data before or at ingestion time, to reduce the overhead of the data partitioning. For example, use an [update policy](update-policy.md).
 
 ## Related content
 
-* [Partitioning policy management commands](./show-table-partitioning-policy-command.md)
+* [Partitioning policy management commands](show-table-partitioning-policy-command.md)

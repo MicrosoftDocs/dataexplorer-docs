@@ -3,9 +3,11 @@ title:  welch_test()
 description: Learn how to use the welch_test() function to compute the p_value of the Welch-test.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 08/11/2024
 ---
 # welch_test()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Computes the p_value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s_t-test)
 
@@ -13,7 +15,7 @@ Computes the p_value of the [Welch-test function](https://en.wikipedia.org/wiki/
 
 `welch_test(`*mean1*`,` *variance1*`,` *count1*`,` *mean2*`,` *variance2*`,` *count2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -37,8 +39,10 @@ Welch's t-test is less popular than Student's t-test, and may be less familiar t
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WP3UrEMBCF7xf2HXKZQgydsT/uRV7DGxGJadRCk5ZtGnfFhzeTqBTNxWE4fOfMZDmPPhwPLL0VmGLD1Ws3Gv6AvWwFQ5C1YHAixVvZpbnPTi9PSTtSrCVkkmYkJpGQU91vFmSftXmsxPc6/LMOcrzOhXe5pNkpHdNmvzBNnmuJu9WloZzUZiatOx4+mYs39rJoP9Anw8zCdbHzCx/m7XmylaBb/rmUWzfn9Hn8sMyB0vGVr5DoCComV3tji2FAmXnzgafZYQGRQNyBZBj8AandXoJNJy33etqsereTeXsKdg3cgYggDAiHIqIwWH0B4CiCU6cBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 // s1, s2 values are from https://en.wikipedia.org/wiki/Welch%27s_t-test

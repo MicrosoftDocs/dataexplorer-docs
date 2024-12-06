@@ -1,11 +1,14 @@
 ---
 title:  series_moving_avg_fl()
-description: This article describes series_moving_avg_fl() user-defined function in Azure Data Explorer.
+description:  This article describes series_moving_avg_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_moving_avg_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Applies a moving average filter on a series.
 
@@ -15,7 +18,7 @@ The function `series_moving_avg_fl()` is a [user-defined function (UDF)](../quer
 
 `series_moving_avg_fl(`*y_series*`,` *n* [`,` *center* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -46,7 +49,7 @@ let series_moving_avg_fl = (y_series:dynamic, n:int, center:bool=false)
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
@@ -69,8 +72,10 @@ The following example uses the [invoke operator](../query/invoke-operator.md) to
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PsU7EMAyG9zzFPzZS0KnDLUV9BMTAiTVKW7cX0SSV41ZUwLuTcgcTlhfr1/fZnkmQiT1lG9Lm42TdNtlxRotqt7ekGfbogu8NYuOjGPQUhbjpUprb0c2ZtPpQKHU3jZ7/YAOmhZxUdcG1gfBKvwatvtSjOp1KA08/6+E2YjcR0ogzOh/zkQ8Ukg3uje7SWn3iGB9uI+Ia2j6tUSqNFHHxgV7EhQVZaEF9RbfjOb8SF47eheJwIMXY/vd7VTKDs8Gl3KoLwgUghhRtf3Us3/KQTtk1AQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_moving_avg_fl = (y_series:dynamic, n:int, center:bool=false)

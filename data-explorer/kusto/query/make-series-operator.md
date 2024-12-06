@@ -3,10 +3,12 @@ title:  make-series operator
 description: Learn how to use the make-series operator to create a series of specified aggregated values along a specified axis. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 08/11/2024
 ms.localizationpriority: high
 ---
 # make-series operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Create series of specified aggregated values along a specified axis.
 
@@ -18,7 +20,7 @@ Create series of specified aggregated values along a specified axis.
     [`by`
       [*Column* `=`] *GroupExpression* [`,` ...]]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,7 +32,7 @@ Create series of specified aggregated values along a specified axis.
 |*AxisColumn*| `string` |  :heavy_check_mark: | The column by which the series will be ordered. Usually the column values will be of type `datetime` or `timespan` but all numeric types are accepted.|
 |*start* | scalar |  :heavy_check_mark: | The low bound value of the *AxisColumn* for each of the series to be built. If *start* is not specified, it will be the first bin, or step, that has data in each series.|
 |*end*| scalar|  :heavy_check_mark: | The high bound non-inclusive value of the *AxisColumn*. The last index of the time series is smaller than this value and will be *start* plus integer multiple of *step* that is smaller than *end*. If *end* is not specified, it will be the upper bound of the last bin, or step, that has data per each series.|
-|*step*| scalar |  :heavy_check_mark: | The difference, or bin size, between two consecutive elements of the *AxisColumn* array. For a list of possible time intervals, see [timespan](./scalar-data-types/timespan.md).|
+|*step*| scalar |  :heavy_check_mark: | The difference, or bin size, between two consecutive elements of the *AxisColumn* array. For a list of possible time intervals, see [timespan](scalar-data-types/timespan.md).|
 |*GroupExpression* | | |An expression over the columns that provides a set of distinct values. Typically it's a column name that already provides a restricted set of values. |
 |*MakeSeriesParameters*| | | Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior. See [supported make series parameters](#supported-make-series-parameters).|
 
@@ -79,11 +81,11 @@ Finally the rows from the intermediate result arranged into groups having the sa
 
 |Function|Description|
 |--------|-----------|
-|[avg()](avg-aggfunction.md)|Returns an average value across the group|
+|[avg()](avg-aggregation-function.md)|Returns an average value across the group|
 |[avgif()](avgif-aggregation-function.md)|Returns an average with the predicate of the group|
 |[count()](count-aggregation-function.md)|Returns a count of the group|
 |[countif()](countif-aggregation-function.md)|Returns a count with the predicate of the group|
-|[dcount()](dcount-aggfunction.md)|Returns an  approximate distinct count of the group elements|
+|[dcount()](dcount-aggregation-function.md)|Returns an  approximate distinct count of the group elements|
 |[dcountif()](dcountif-aggregation-function.md)|Returns an approximate distinct count with the predicate of the group|
 |[max()](max-aggregation-function.md)|Returns the maximum value across the group|
 |[maxif()](maxif-aggregation-function.md)|Returns the maximum value with the predicate of the group|
@@ -136,8 +138,10 @@ on Purchase from datetime(2016-09-10) to datetime(2016-09-13) step 1d by Supplie
 
 :::image type="content" source="media/make-seriesoperator/make-series.png" alt-text="Three tables. The first lists raw data, the second has only distinct supplier-fruit-date combinations, and the third contains the make-series results.":::  
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WSwW7DIAyG73kKHxMpkWxo0jRT34JbtQNbvSkaNBWgnvbwBZH1MIGEkOzvN7+FbTjAVQd9TlfQH4bbsFr2Qdv7EnOcoh4sB7d+LuBYm665NAB/rBVI00BikKRwWhC7Hkbs/ymOA1I8kR3KSEQky0jWq6RCmS2nsmCMaK4gRXI5pFqqGE9142O93bluOStBud2K4BSRqCBFItcSFRWECsf9//vm/a0xcbTrLbB7aANnoGtO+VQV49J4soJrCsKoSIvS/ILVPzx4dit70I/vNm9IB9sNXgsEX26zu2HY9nd94Purryf8i1rafwIAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)
@@ -170,8 +174,10 @@ data
 
 When the input to `make-series` is empty, the default behavior of `make-series` produces an empty result.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WSwW6DMAyG7zyFjyDBZCeFMibeIrdph6y4E1oCFbg97eEXFLZJE5GiKPb3O7+V2LHAYMX22yb23XEuo+dVrL91IcdbVIJnWcZLBwtbV2SvGcAPyxVSU5GqNBlsOsSihBrLf4pzhRRWYKdjpALSx0inq7RBHS2bY0EdUJtAhnR32mopYdykjc/pdtu0ZWsUxXYTgueAVAIZUrGW6FBBaLDe37/M3l4yF752nISXh3XQAw0xtW5VIT76nqjglIIwKLZByb7AjX4UwHDy9pOrlZeRV7CPjzzOSgEDX+3dSU9PCPMEv2MF12X2exsy726r8O2v23DrZb5P8g2FvL+MngIAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)
@@ -208,8 +214,10 @@ data
 
 Using `kind=nonempty` in `make-series` will produce a non-empty result of the default values:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WSwWqEMBCG7z7FHFfQMmNW11p8i9xKD2mdLWETFZ0uFPrwjcTuoRgIITPfP/xDZhwLDEZMv11i3h2fxHpexfi5CzneogI8y2I/OljYuDx7zQD+2KlCakqqSkUamw4xL6DG4p/iUiKFE9j5GFUBqWOk0lVKo4qWzbGgDqhNIE2qO2+1lDBu0saXdLtt2rLVFcV2E4LngKoE0lTFWqJDBaHGev//Int7yVwYrR2Fl7tx0AMNMbVuVSE+Gk9UcEpBGBTbomQ/4Ky3Ahhe3ty4XHmxvMLNjkM/TiP7Wb7B3D9PcXNyGPhqvpz09IQwjfBYMrguk9+bkmn3XoXnR++/5AUDOqMCAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)

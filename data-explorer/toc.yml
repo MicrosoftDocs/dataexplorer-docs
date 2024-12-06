@@ -58,7 +58,7 @@ items:
               - name: Migrate from Elasticsearch
                 href: migrate-elasticsearch-to-azure-data-explorer.md
               - name: Migrate from TSI
-                href: /azure/time-series-insights/migration-to-adx
+                href: /azure/time-series-insights/migration-to-fabric
                 displayName: Time Series Insights
       - name: Secure
         items:
@@ -70,13 +70,13 @@ items:
             href: security-controls-policy.md
             displayName: Azure Policy Regulatory Compliance, compliance
           - name: Access control
-            href: kusto/access-control/index.md
+            href: /kusto/access-control/index?view=azure-data-explorer&preserve-view=true
             items:
               - name: Role-based access control
-                href: kusto/access-control/role-based-access-control.md
+                href: /kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true
                 displayName: RBAC, security roles, principals
               - name: Cross-tenant queries and commands
-                href: kusto/access-control/cross-tenant-query-and-commands.md
+                href: cross-tenant-query-and-commands.md
           - name: Isolated compute
             href: isolated-compute.md
           - name: Network isolation (VNet)
@@ -157,10 +157,10 @@ items:
           - name: Streaming ingestion
             displayName: ingest data, ingestion
             href: ingest-data-streaming.md
-          - name: Using LightIngest
+          - name: Use LightIngest
             displayName: ingest data, ingestion
             href: lightingest.md
-          - name: Using SDKs
+          - name: Use SDKs
             items:
               - name: .NET SDK
                 displayName: ingest data, ingestion
@@ -251,6 +251,9 @@ items:
             - name: Azure Stream Analytics
               href: stream-analytics-connector.md
               displayName: ingest data, ingestion, connector
+            - name: Cribl Stream
+              href: ingest-data-cribl.md
+              displayName: ingest data, ingestion, connector
             - name: Fluent Bit
               href: fluent-bit.md
               displayName: ingest data, ingestion, connector
@@ -289,7 +292,7 @@ items:
             displayName: ingest data, ingestion
             href: ingest-json-formats.md
           - name: Data ingestion properties
-            href: ingestion-properties.md
+            href: /kusto/ingestion-properties?view=azure-data-explorer&preserve-view=true
           - name: Formats for data ingestion
             displayName: supported data formats
             href: ingestion-supported-formats.md
@@ -330,19 +333,13 @@ items:
       - name: Query data in Azure Data Lake
         href: data-lake-query-data.md
       - name: Query data in Azure Monitor
-        items:
-          - name: Query data in Azure Monitor
-            href: query-monitor-data.md
-          - name: Export and query Azure Monitor data
-            href: query-exported-azure-monitor-data.md
+        href: query-monitor-data.md
       - name: Query data in MATLAB
         href: query-matlab.md
       - name: Query data using Power Apps
         href: power-apps-connector.md
       - name: Query data using Python
         href: python-query-data.md
-      - name: Debug KQL inline Python
-        href: debug-inline-python.md
       - name: Query data using T-SQL
         displayName: explain, sql, tsql 
         href: t-sql.md
@@ -364,8 +361,6 @@ items:
             href: sql-kql-queries-and-stored-functions.md
       - name: Optimize for high concurrency
         href: high-concurrency.md
-      - name: Set timeout limits
-        href: set-timeout-limits.md
       - name: Query cold data with hot windows
         href: hot-windows.md
       - name: Time series analysis and machine learning
@@ -391,6 +386,8 @@ items:
         items:
           - name: Use dashboards
             href: azure-data-explorer-dashboards.md
+          - name: Explore data in dashboard tiles 
+            href: dashboard-explore-data.md
           - name: Use dashboard parameters
             href: dashboard-parameters.md
           - name: Customize dashboard visuals
@@ -432,9 +429,9 @@ items:
       - name: Kibana (K2Bridge connector)
         href: k2bridge.md
   - name: Kusto Query Language
-    href: kusto/query/toc.yml
+    href: kusto-tocs/query/toc.yml
   - name: Management commands
-    href: kusto/management/toc.yml
+    href: kusto-tocs/management/toc.yml
   - name: Admin
     items:
       - name: Manage
@@ -499,10 +496,10 @@ items:
                 href: table-retention-policy-wizard.md
           - name: Data
             items:
+              - name: Delete data
+                href: /kusto/concepts/delete-data?view=azure-data-explorer&preserve-view=true
               - name: Purge data - Azure portal
                 href: data-purge-portal.md
-              - name: Delete data
-                href: delete-data.md
               - name: Deal with duplicate data
                 href: dealing-with-duplicates.md
       - name: Monitor
@@ -535,67 +532,69 @@ items:
   - name: Develop
     items:
       - name: API overview
-        href: kusto/api/index.md
+        href: /kusto/api/index?view=azure-data-explorer&preserve-view=true
       - name: Client libraries
         items:
           - name: Client libraries
-            href: kusto/api/client-libraries.md
+            href: /kusto/api/client-libraries?view=azure-data-explorer&preserve-view=true
           - name: Kusto Data library
             items:
               - name: Kusto Data overview
-                href: kusto/api/netfx/about-kusto-data.md
+                href: /kusto/api/netfx/about-kusto-data?view=azure-data-explorer&preserve-view=true
                 displayName: kusto.data, SDK
               - name: Best practices for Kusto Data
-                href: kusto/api/netfx/kusto-data-best-practices.md
+                href: /kusto/api/netfx/kusto-data-best-practices?view=azure-data-explorer&preserve-view=true
                 displayName: kusto.data, SDK
               - name: ClientRequestProperties class
-                href: kusto/api/netfx/client-request-properties.md
+                href: /kusto/api/netfx/client-request-properties?view=azure-data-explorer&preserve-view=true
                 displayName: request properties, CRP, kusto.data, SDK
           - name: Kusto Ingest library
             items:
               - name: Kusto Ingest overview
-                href: kusto/api/netfx/about-kusto-ingest.md
+                href: /kusto/api/netfx/about-kusto-ingest?view=azure-data-explorer&preserve-view=true
                 displayName: kusto.ingest, SDK
               - name: Best practices for Kusto Ingest
-                href: kusto/api/netfx/kusto-ingest-best-practices.md
+                href: /kusto/api/netfx/kusto-ingest-best-practices?view=azure-data-explorer&preserve-view=true
                 displayName: kusto.ingest, SDK
       - name: Sample app generator
         href: sample-app-generator-wizard.md
       - name: Write code with SDKs
         items:
           - name: Set up your environment
-            href: kusto/api/get-started/app-set-up.md
+            href: /kusto/api/get-started/app-set-up?view=azure-data-explorer&preserve-view=true
           - name: Create your first app
-            href: kusto/api/get-started/app-hello-kusto.md
+            href: /kusto/api/get-started/app-hello-kusto?view=azure-data-explorer&preserve-view=true
+          - name: Secure your app
+            href: /kusto/api/get-started/app-authentication-methods?view=azure-data-explorer&preserve-view=true
           - name: Run basic queries
-            href: kusto/api/get-started/app-basic-query.md
+            href: /kusto/api/get-started/app-basic-query?view=azure-data-explorer&preserve-view=true
           - name: Run management commands
-            href: kusto/api/get-started/app-management-commands.md
-          - name: Queued ingestion
-            href: kusto/api/get-started/app-queued-ingestion.md
+            href: /kusto/api/get-started/app-management-commands?view=azure-data-explorer&preserve-view=true
+          - name: Queue data for ingestion
+            href: /kusto/api/get-started/app-queued-ingestion?view=azure-data-explorer&preserve-view=true
       - name: Connection strings
         items:
           - name: Connection strings overview
-            href: kusto/api/connection-strings/index.md
+            href: /kusto/api/connection-strings/index?view=azure-data-explorer&preserve-view=true
           - name: Kusto connection strings
-            href: kusto/api/connection-strings/kusto.md
+            href: /kusto/api/connection-strings/kusto?view=azure-data-explorer&preserve-view=true
           - name: Storage connection strings
-            href: kusto/api/connection-strings/storage-connection-strings.md
+            href: /kusto/api/connection-strings/storage-connection-strings?view=azure-data-explorer&preserve-view=true
           - name: SQL external table connection strings
-            href: kusto/api/connection-strings/sql-connection-strings.md
+            href: /kusto/api/connection-strings/sql-connection-strings?view=azure-data-explorer&preserve-view=true
           - name: Generate SAS token
-            href: kusto/api/connection-strings/generate-sas-token.md
+            href: /kusto/api/connection-strings/generate-sas-token?view=azure-data-explorer&preserve-view=true
       - name: Integrate the query editor in your apps
         items:
           - name: Integration overview
             displayName: monaco web UI
-            href: kusto/api/monaco/monaco-overview.md
+            href: /kusto/api/monaco/monaco-overview?view=azure-data-explorer&preserve-view=true
           - name: Embed the web UI in an IFrame
             displayName: monaco web UI
-            href: kusto/api/monaco/host-web-ux-in-iframe.md
+            href: /kusto/api/monaco/host-web-ux-in-iframe?view=azure-data-explorer&preserve-view=true
           - name: Integrate the Monaco editor with Kusto query support
             displayName: monaco monaco-kusto
-            href: kusto/api/monaco/monaco-kusto.md
+            href: /kusto/api/monaco/monaco-kusto?view=azure-data-explorer&preserve-view=true
       - name: Kusto emulator
         items:
           - name: Kusto emulator overview
@@ -618,11 +617,12 @@ items:
                 href: flow-usage.md
                 displayName: Microsoft Flow, flow, flow connector
           - name: Logic Apps
-            href: kusto/tools/logicapps.md
+            href: logic-apps.md
           - name: Azure Pipelines
             href: devops.md
+            displayName: CI/CD, continuous integration, continuous deployment, Azure DevOps
           - name: Sync Kusto
-            href: kusto/tools/synckusto.md
+            href: sync-kusto.md
       - name: Notebooks
         items:
           - name: Jupyter Notebooks with Kqlmagic
@@ -650,7 +650,7 @@ items:
   - name: Reference
     items:
       - name: API
-        href: kusto/api/toc.yml
+        href: kusto-tocs/api/toc.yml
       - name: Azure CLI Kusto
         href: /cli/azure/kusto
       - name: Azure Policy built-ins
@@ -658,16 +658,14 @@ items:
         href: policy-reference.md
       - name: Bicep and ARM template resource types
         href: /azure/templates/microsoft.kusto/allversions
-      - name: Functions library
-        href: kusto/functions-library/toc.yml
       - name: PowerShell Az.Kusto
         items:
           - name: Use Kusto cmdlets in Azure PowerShell
-            href: kusto/api/powershell/azure-powershell.md
+            href: azure-powershell.md
           - name: Az.Kusto cmdlets
             href: /powershell/module/az.kusto/#kusto
       - name: Python plugin packages
-        href: python-package-reference.md
+        href: /kusto/query/python-package-reference?view=azure-data-explorer&preserve-view=true
       - name: Resource provider operations
         href: /azure/role-based-access-control/resource-provider-operations#microsoftkusto
       - name: Troubleshoot ingestion
@@ -678,7 +676,7 @@ items:
             href: ingest-invalid-data.md
             displayName: Failure, error code
           - name: Ingestion FAQ
-            href: kusto/management/ingestion-faq.yml
+            href: ingestion-faq.yml
       - name: Azure Data Explorer white paper
         href: https://aka.ms/adx.techwhitepaper
   - name: Resources

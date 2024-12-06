@@ -1,11 +1,13 @@
 ---
 title:  datetime_part()
-description: This article describes datetime_part() in Azure Data Explorer.
+description:  This article describes datetime_part().
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 08/11/2024
 ---
 # datetime_part()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Extracts the requested date part as an integer value.
 
@@ -15,7 +17,7 @@ Extracts the requested date part as an integer value.
 
 `datetime_part(`*part*`,`*datetime*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -48,8 +50,10 @@ An integer representing the extracted part.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XPTQqDMBAF4L2nCK4UtCTaVrD0DF13JcGMGKqJTSPF29efRgPG7XvfzDANaMQ0uiNGNWjeQpBgksUExylGmOQ4yXF6yq6Xc5qQ8Ia8TnGhkTcAVdZU0VGlA39K/WhcGEbeux8jcKB/YVwrha73ao6N+QK8HtXTeXPqClkV9m1Ghz0cQ6s/WrdWxtayd7ApXT/gotfgeGHOjfpAKQXbqyXfdjUNP6JWuflSyWO/lsYLKg751i36B5qEtWAcAgAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let dt = datetime(2017-10-30 01:02:03.7654321); 

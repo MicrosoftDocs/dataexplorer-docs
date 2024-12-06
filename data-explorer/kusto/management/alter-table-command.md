@@ -3,9 +3,11 @@ title:  .alter table command
 description: This article describes the .alter table command.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 # .alter table command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The `.alter table` command:
 
@@ -19,13 +21,13 @@ The `.alter table` command:
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `table` *tableName* `(`*columnName*`:`*columnType* [`,` ...]`)`  [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -73,4 +75,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Related content
 
-Use `.alter-merge` when you wish to preserve the table settings and only override or expand certain columns. For more information, see [.alter-merge table](../management/alter-merge-table-command.md).
+* Use `.alter-merge` when you want to keep the table settings and override or expand only certain columns. For more information, see [.alter-merge table](../management/alter-merge-table-command.md).
+* To change the table retention policy, see [.alter table policy retention](../management/alter-table-retention-policy-command.md).
+* To change the table caching policy, see [.alter table policy caching](../management/alter-table-cache-policy-command.md).
+* To change the table update policy, see [.alter table policy update](../management/alter-table-update-policy-command.md).
+* To change the table merge policy, see [.alter table policy merge](../management/alter-table-merge-policy-command.md).

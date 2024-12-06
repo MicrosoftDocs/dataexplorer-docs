@@ -3,17 +3,21 @@ title:  geo_line_to_s2cells()
 description: Learn how to use the geo_line_to_s2cells() function to calculate S2 cell tokens that cover a line or a multiline on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_line_to_s2cells()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates S2 cell tokens that cover a line or multiline on Earth. This function is a useful geospatial join tool.
+
+Read more about [S2 cell hierarchy](http://s2geometry.io/devguide/s2cell_hierarchy).
 
 ## Syntax
 
 `geo_line_to_s2cells(`*lineString* [`,` *level*[ `,` *radius*]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -56,8 +60,10 @@ If any of the following:  line, level, radius is invalid, or the cell count exce
 
 The following query finds all tube stations within 500 meters of streets and aggregates tubes count by street name.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5VTTXObMBC98yt2uBRmiCNhBMKpLzl2cuhMjhkPI4PqKAHJAyKJW/e/dyXwR3IrF6TV7tv3nlattNCLRo0DrIERche0GLHjVlaDFVYZ7Q4agWuxbWV0fVJp0cnVYHuldwm0erfqpWhxJewK3DIOngLAL3y0C/iBycM3+Cn61zCB+bshC7rMGCUFZzknuOZ5AowusrKkJc0YZ5wWaeJhIHwwujEa7nvV7CTMNBANYQjPyrRgKc0dypIXHoaRjBf5kuZZRhBuxrm9hc70EvZGaTsEm0k0CpHSfpY7xb4IVVqumgPGVH1WeD/Wr3j6LDpU2IpaIqs5J/oT2sNehqvwASsfPUqYhLUxfaO0sHIIV09P3omyzFleEJ7yJcpIvABaEk7SNOOcsU3i8zLCOUrkSy+YZFMioSlWFjm6lm42f+NJ7GfPJuf/lxjhBWXp1KVkZT7RQBLLjEzRnFJy6Xny1zl1tvcFza5a+SZbdJhmU9Bn4L7Dbr0Srfp98nyAI8gPK3UDqsEMLd+r3aiaKI6n0t4X+n5TH7c6wr43L7K2WJRAbd6kE4V5O2kql1ZZUw1pLdt2iNw+ueKVzC8hnqG6txv5sRfI4AxkDTjLzK9omoZTqgMBHIBmrbSWPTzjYC0wBWXtDuttb0RTi8H67Cg4Tf+nZ3aOnnV/oe+n9cI/av0wCnstYeITA174qfoucE4doTXmddzPjuO5aoIjvD9LvCeH3igkomt5aeMyr5q4bQzf17NJWDyMXSd6vDLsNWqLNP0/imF7APdkMHL1gP4ByJEmm2sEAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let radius = 500;
@@ -96,8 +102,10 @@ res | lookup lines on id
 
 In case of invalid line, a null result will be returned.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIycxLVbBVSKnMS8zNTNaoViqpLEhVslLyAYoHlxRl5qUr6Sgl5+cXpWTmJZakFitZRUdHG+gYxOqAydjYWk1rrgKguhKFzOK80pwcjfTU/HiQqfEl+fHFRsmpOTnFGiC+piYA0P7Z6XAAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let line = dynamic({"type":"LineString","coordinates":[[[0,0],[0,0]]]});

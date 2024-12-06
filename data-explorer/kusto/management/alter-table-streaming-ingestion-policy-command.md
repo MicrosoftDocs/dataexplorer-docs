@@ -3,9 +3,12 @@ title: .alter table policy streamingingestion command
 description: Learn how to use the `.alter table policy streamingingestion` command to change the table streaming policy ingestion.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/05/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter table policy streamingingestion command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Use this command to change the table streaming policy ingestion. Use the [streaming policy](../management/streaming-ingestion-policy.md) to manage streaming ingestion for databases and tables.  
 
@@ -17,20 +20,20 @@ To learn how to implement streaming ingestion, see [streaming policy](../managem
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `table` *TableName* `policy` `streamingingestion` *PolicyObject*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *TableName* | `string` |  :heavy_check_mark:| The name of the table.|
-| *PolicyObject* | `string` |  :heavy_check_mark: | A serialized policy object. For more information, see [streaming ingestion](../../ingest-data-streaming.md).|
+| *PolicyObject* | `string` |  :heavy_check_mark: | A serialized policy object. For more information, see [streaming ingestion](/azure/data-explorer/ingest-data-streaming).|
 
 ## Returns
 

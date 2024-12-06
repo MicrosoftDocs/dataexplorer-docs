@@ -3,10 +3,13 @@ title: .alter extent tags command
 description: Learn how to use the `.alter extent tags` command to change the extent tags.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 
 # .alter extent tags command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The command runs in the context of a specific database. It alters the specified [extent tags](extent-tags.md) of all of the extents returned by the query.
 
@@ -18,7 +21,7 @@ The extents whose tags should be altered are specified using a Kusto query that 
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -32,13 +35,13 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 > [!NOTE]
 > For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range 
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|`async`| `string` ||If specified, the command will run asynchronously. The return output when run with `async` is an operation ID (guid) that can be used to monitor the operation's status. Use [`.show operations`](operations.md#show-operations) or [`.show operation details`](operations.md#show-operation-details).|
+|`async`| `string` ||If specified, the command will run asynchronously. The return output when run with `async` is an operation ID (guid) that can be used to monitor the operation's status. Use [`.show operations`](show-operations.md) or [`.show operation details`](show-operation-details.md).|
 |*Tags*| `string` | :heavy_check_mark:|One or more comma-separated extent tags. Each tag should be enclosed in single quotes (`'`).|
 |*Query*| `string` | :heavy_check_mark:|Specifies the extents whose tags should be altered.|
 

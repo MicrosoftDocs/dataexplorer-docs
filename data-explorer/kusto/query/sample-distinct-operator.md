@@ -3,9 +3,11 @@ title:  sample-distinct operator
 description: Learn how to use the sample-distinct operator to return a column that contains up to the specified number of distinct values of the requested columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/19/2023
+ms.date: 08/11/2024
 ---
 # sample-distinct operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a single column that contains up to the specified number of distinct values of the requested column.
 
@@ -15,7 +17,7 @@ The operator tries to return an answer as quickly as possible rather than trying
 
 *T* `| sample-distinct` *NumberOfValues* `of` *ColumnName*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -34,8 +36,10 @@ The operator tries to return an answer as quickly as possible rather than trying
 
 Get 10 distinct values from a population
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKE7MLchJ1U3JLC7JzEsuUTA0UMhPU3AtyCzOT0n1TAEAXIVALi0AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents | sample-distinct 10 of EpisodeId
@@ -43,8 +47,10 @@ StormEvents | sample-distinct 10 of EpisodeId
 
 Sample a population and do further computation without exceeding the query limits in the summarize
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNuw6CUBBEe75iSihIsDZ0UlDzBVfuGpfcB9ldNBo+Xk0waDlzTmYCGdTFOVA3s2ZPihaDZYndjZIp1g3XntU4jYZDg3zBpvf+WPzqxYr7lYR2Dk4o/y+qj6ZLjE74SbBsLvRpWoRJ23dffsOJhUarcH7sey97JpXgsgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let sampleEpisodes = StormEvents | sample-distinct 10 of EpisodeId;

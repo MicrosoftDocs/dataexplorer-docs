@@ -1,15 +1,25 @@
 ---
 title:  Functions library
-description: This article describes user-defined functions that extend Azure Data Explorer capabilities.
+description: This article describes user-defined functions that extend query environment capabilities.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/07/2022
+ms.date: 11/27/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Functions library
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The following article contains a categorized list of [UDF (user-defined functions)](../query/functions/user-defined-functions.md).
 
 The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](../management/create-function.md).
+
+## Cybersecurity functions
+
+| Function Name | Description |
+|--|--|
+| [detect_anomalous_new_entity_fl()](detect-anomalous-new-entity-fl.md) | Detect the appearance of anomalous new entities in timestamped data. |
+| [graph_path_discovery_fl()](graph-path-discovery-fl.md) |  Discover valid paths between relevant endpoints (sources and targets) over graph data (edge and nodes).
 
 ## General functions
 
@@ -22,7 +32,10 @@ The user-defined functions code is given in the articles.  It can be used within
 
 | Function Name | Description |
 |--|--|
-| [kmeans_fl()](kmeans-fl.md) | Clusterize using the k-means algorithm. |
+| [dbscan_fl()](dbscan-fl.md) | Clusterize using the DBSCAN algorithm, features are in separate columns. |
+| [dbscan_dynamic_fl()](dbscan-dynamic-fl.md) | Clusterize using the DBSCAN algorithm, features are in a single dynamic column. |
+| [kmeans_fl()](kmeans-fl.md) | Clusterize using the K-Means algorithm, features are in separate columns. |
+| [kmeans_dynamic_fl()](kmeans-dynamic-fl.md) | Clusterize using the K-Means algorithm, features are in a single dynamic column. |
 | [predict_fl()](predict-fl.md) | Predict using an existing trained machine learning model. |
 | [predict_onnx_fl()](predict-onnx-fl.md) | Predict using an existing trained machine learning model in ONNX format. |
 
@@ -33,16 +46,18 @@ The following section contains functions for rendering interactive [Plotly chart
 | Function Name | Description |
 |--|--|
 | [plotly_anomaly_fl()](plotly-anomaly-fl.md) | Render anomaly chart using a Plotly template. |
+| [plotly_gauge_fl()](plotly-gauge-fl.md) | Render gauge chart using a Plotly template. |
 | [plotly_scatter3d_fl()](plotly-scatter3d-fl.md) | Render 3D scatter chart using a Plotly template. |
 
 ## PromQL functions
 
-The following section contains common [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) functions. These functions can be used for analysis of metrics ingested to your cluster by the [Prometheus](https://prometheus.io/) monitoring system. All functions assume that metrics in your cluster are structured using the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/).
+The following section contains common [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) functions. These functions can be used for analysis of metrics ingested to your database by the [Prometheus](https://prometheus.io/) monitoring system. All functions assume that metrics in your database are structured using the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/).
 
 | Function Name | Description |
 |--|--|
 | [series_metric_fl()](series-metric-fl.md) | Select and retrieve time series stored with the Prometheus data model. |
 | [series_rate_fl()](series-rate-fl.md) | Calculate the average rate of counter metric increase per second. |
+
 
 ## Series processing functions
 
@@ -69,7 +84,9 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [series_shapes_fl()](series-shapes-fl.md) | Detects positive/negative trend or jump in series. |
 | [series_uv_anomalies_fl()](series-uv-anomalies-fl.md) | Detect anomalies in time series using the Univariate Anomaly Detection Cognitive Service API. |
 | [series_uv_change_points_fl()](series-uv-change-points-fl.md) | Detect change points in time series using the Univariate Anomaly Detection Cognitive Service API. |
-| [time_weighted_avg_fl()](time-weighted-avg-fl.md) | Calculates the time weighted average of a metric. |
+| [time_weighted_avg_fl()](time-weighted-avg-fl.md) | Calculates the time weighted average of a metric using fill forward interpolation. |
+| [time_weighted_avg2_fl()](time-weighted-avg2-fl.md) | Calculates the time weighted average of a metric using linear interpolation. |
+| [time_weighted_val_fl()](time-weighted-val-fl.md) | Calculates the time weighted value of a metric using linear interpolation. |
 | [time_window_rolling_avg_fl()](time-window-rolling-avg-fl.md) | Calculates the rolling average of a metric over a constant duration time window. |
 
 ## Statistical and probability functions
@@ -85,7 +102,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [normality_test_fl()](normality-test-fl.md) | Performs the Normality Test. |
 | [mann_whitney_u_test_fl()](mann-whitney-u-test-fl.md) | Perform a Mann-Whitney U Test. |
 | [pair_probabilities_fl()](pair-probabilities-fl.md) | Calculate various probabilities and related metrics for a pair of categorical variables. |
-|[pairwise_dist_fl()](pairwise-dist-fl.md)| Calculate pairwise distances between entities based on multiple nominal and numerical variables. |
+| [pairwise_dist_fl()](pairwise-dist-fl.md) | Calculate pairwise distances between entities based on multiple nominal and numerical variables. |
 | [percentiles_linear_fl()](percentiles-linear-fl.md) | Calculate percentiles using linear interpolation between closest ranks |
 | [perm_fl()](perm-fl.md) | Calculate *P(n, k)*, the number of permutations for selection of k items out of n. |
 | [two_sample_t_test_fl()](two-sample-t-test-fl.md) | Perform the two sample t-test. |

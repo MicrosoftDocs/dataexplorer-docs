@@ -3,9 +3,13 @@ title:  .alter cluster policy capacity command
 description: Learn how to use the `.alter cluster policy capacity` command to change the cluster's capacity policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter cluster policy capacity command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 
 Changes the cluster's [capacity policy](capacity-policy.md). A capacity policy controls the computational resources for data management operations on the cluster.
 
@@ -16,13 +20,13 @@ Changes the cluster's [capacity policy](capacity-policy.md). A capacity policy c
 
 ## Permissions
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.alter` `cluster` `policy` `capacity` *PolicyObject*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

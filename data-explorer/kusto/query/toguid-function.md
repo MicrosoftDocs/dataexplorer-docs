@@ -3,20 +3,22 @@ title:  toguid()
 description: Learn how to use the toguid() function to convert the input string to a `guid` scalar.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2024
+ms.date: 08/11/2024
 ---
 # toguid()
 
-Converts a string to a [`guid`](./scalar-data-types/guid.md) scalar.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+Converts a string to a [`guid`](scalar-data-types/guid.md) scalar.
 
 > [!NOTE]
-> When possible, use [guid literals](./scalar-data-types/guid.md#guid-literals) instead.
+> When possible, use [guid literals](scalar-data-types/guid.md#guid-literals) instead.
 
 ## Syntax
 
 `toguid(`*value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -26,14 +28,16 @@ Converts a string to a [`guid`](./scalar-data-types/guid.md) scalar.
 
 ## Returns
 
-The conversion process takes the first 32 characters of the input, ignoring properly located hyphens, validates that the characters are between 0-9 or a-f, and then converts the string into a [`guid`](./scalar-data-types/guid.md) scalar. The rest of the string is ignored.
+The conversion process takes the first 32 characters of the input, ignoring properly located hyphens, validates that the characters are between 0-9 or a-f, and then converts the string into a [`guid`](scalar-data-types/guid.md) scalar. The rest of the string is ignored.
 
-If the conversion is successful, the result will be a [`guid`](./scalar-data-types/guid.md) scalar. Otherwise, the result will be `null`.
+If the conversion is successful, the result will be a [`guid`](scalar-data-types/guid.md) scalar. Otherwise, the result will be `null`.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjeKSIisFIJGZl67JyxXNy6UABEoGhkbGJqZm5haWiUnJKalp6HwlHSwKdUEyuiARXaxqE6H2KJRkJJYoZBYr5OWXKCQqpJdmpijxcsXyctUopFaUpOalgIUUbBVK8kEMkBM1ATuW7RixAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(str: string)

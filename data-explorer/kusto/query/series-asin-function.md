@@ -3,9 +3,11 @@ title:  series_asin()
 description: Learn how to use the series_asin() function to calculate the element-wise arcsine function of the numeric series input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/29/2024
 ---
 # series_asin()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates the element-wise arcsine function of the numeric series input.
 
@@ -13,7 +15,7 @@ Calculates the element-wise arcsine function of the numeric series input.
 
 `series_asin(`*series*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,8 +29,12 @@ Dynamic array of calculated arcsine function values. Any non-numeric element yie
 
 ## Example
 
+The following example creates a dynamic array, `arr`, with the value `[-1,0,1]`. It then extends the results with column `arr_asin`, containing the results of the `series_asin()` function applied to the `arr` array.  
+
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVUipzEvMzUzWiNY11DHQMYzV5KpRSK0oSc1LASmITyzOzAOqKk4tykwtBvM0gMKaAOO+/MVCAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print arr = dynamic([-1,0,1])
@@ -39,4 +45,4 @@ print arr = dynamic([-1,0,1])
 
 |arr|arr_asin|
 |---|---|
-|[-6.5,0,8.2]|[1.5707963267948966,0.0,1.5707963267948966]|
+|[-1,0,1]|["-1.5707963267948966",0,"1.5707963267948966"]|

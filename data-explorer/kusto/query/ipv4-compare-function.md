@@ -3,9 +3,11 @@ title:  ipv4_compare()
 description: Learn how to use the ipv4_compare() function to compare two IPv4 strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # ipv4_compare()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Compares two IPv4 strings. The two IPv4 strings are parsed and compared while accounting for the combined IP-prefix mask calculated from argument prefixes, and the optional `PrefixMask` argument.
 
@@ -20,7 +22,7 @@ Compares two IPv4 strings. The two IPv4 strings are parsed and compared while ac
 |*Expr1*, *Expr2*| `string` |  :heavy_check_mark: | A string expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).
 |*PrefixMask*| `int` | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account.
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 
@@ -33,8 +35,10 @@ Compares two IPv4 strings. The two IPv4 strings are parsed and compared while ac
 
 ### Compare IPs using the IP-prefix notation specified inside the IPv4 strings
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA51QsQ6CMBDd+YrbkAQprWDUxNHBzd0YAlLIJUhrWwyDH+8ldYAw6d1wyct7715eXTraqpMr1LywzmDfHvyJAbWYQ1FwDSDke5Hw7S7hSRrGQLNEaBiD03MoOzhf7EzEmciINUFEnn9lJBIZVOhItdZGNjgCWhisrKFRBu7qoUuDVvVzy0UOsvRv/rZkm3SR8nfLW/AGOTrZ12CkHToHR6r1lRWeM6192nf0AaIgALOYAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string)
@@ -58,8 +62,10 @@ datatable(ip1_string:string, ip2_string:string)
 
 ### Compare IPs using IP-prefix notation specified inside the IPv4 strings and as additional argument of the `ipv4_compare()` function
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52QQQrCMBBF9z3F7GqhtiamRQsewJ17kdLatAzUJCSpdOHhDUYh6kpnFh8ew2P4XWPdtiNfoCK1sRrFUPlIARX9RErzHudqlGJIomMEMdnSjJSbjGQkTsFNQFYPsiYp5LkLaNHC/rD0DkADk+Ed9FLDWV5Uo9FI8a7MKXOOgNCicOCppOwP5deXXknZT8pTdAM+Wy460NxMo4Wdq+vKan8T1hn2+CowuQNRhO/LeAEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string, prefix:long)

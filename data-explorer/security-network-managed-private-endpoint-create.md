@@ -1,14 +1,14 @@
 ---
 title: Create a managed private endpoint for Azure Data Explorer
-description: In this article, you'll learn how to create a managed private endpoint for Azure Data Explorer.
+description: In this article, you learn how to create a managed private endpoint for Azure Data Explorer.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 04/05/2022
+ms.date: 11/18/2024
 ---
 
 # Create a managed private endpoint for Azure Data Explorer
 
-Managed private endpoints are required to connect to Azure resources that are highly protected. They are one-way private connections that allow Azure Data Explorer to connect to other protected services. In this article, you'll learn how to create a managed private endpoint and connect it to your data source.
+Managed private endpoints are required to connect to Azure resources that are highly protected. They're one-way private connections that allow Azure Data Explorer to connect to other protected services. In this article, you'll learn how to create a managed private endpoint and connect it to your data source.
 
 ## Prerequisites
 
@@ -37,7 +37,6 @@ You can create a managed private endpoint using the portal for your cluster to u
     | Resource type | *Microsoft.Storage/storageAccounts* | Select the relevant resources type you want for your data source. |
     | Resource name | *share* | Choose the cluster that should be used as the destination for the new Azure Private Endpoint |
     | Target sub-resource | *blob* | Select the relevant target for your data source. |
-    | | | |
 
 1. select **Create** to create the managed private endpoint resource.
 
@@ -45,7 +44,7 @@ You can create a managed private endpoint using the portal for your cluster to u
 
 Creating a managed private endpoint requires a single API call to the *Kusto* resource provider. You can establish a managed private endpoint to the following resource types:
 
-* Microsoft.Storage/storageAccounts (sub-resource may be "blob" or "dfs")
+* Microsoft.Storage/storageAccounts (sub-resource can be "blob" or "dfs")
 * Microsoft.EventHub/namespaces (sub-resource "namespace")
 * Microsoft.Devices/IoTHubs (sub-resource "iotHub")
 * Microsoft.KeyVault/vaults (sub-resource "vault")
@@ -183,7 +182,7 @@ To check the progress of the managed private endpoint migration, use the followi
 
 ## Approve the managed private endpoint
 
-Whichever method you used to create the managed private endpoint using, you must approve its creation on target resource. The following example shows the approval of a managed private endpoint to an Event Hubs service.
+Whichever method you used to create the managed private endpoint, you must approve its creation on the target resource. To approve a managed private endpoint to an Event Hubs service:
 
 1. In the Azure portal, navigate to your Event Hubs service and then select **Networking**.
 
@@ -196,6 +195,123 @@ Whichever method you used to create the managed private endpoint using, you must
     :::image type="content" source="media/security-network-private-endpoint/pe-create-mpe-approved-inline.png" alt-text="Screenshot of the networking page, showing the approved managed private endpoint to the Event Hubs service." lightbox="media/security-network-private-endpoint/pe-create-mpe-approved.png":::
 
 Your cluster can now connect to the resource using the managed private endpoint connection.
+
+## Create multiple managed private endpoints
+
+You can create multiple managed private endpoints using ARM templates and Terraform. The following examples ensure that the managed private endpoint to the Event Hubs namespace is created before the one to the Storage account.
+
+### [ARM template](#tab/ARM-template)
+
+The following example uses an ARM template to create two managed private endpoints in an Azure Data Explorer cluster. The first endpoint connects to an Event Hubs namespace. The second endpoint connects to a Storage account, with a dependency that ensures that the Event Hubs endpoint is created first.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "cluster_name": {
+            "defaultValue": "<ADX cluster name>",
+            "type": "String"
+        },
+        "eventhub_resource_id": {
+            "defaultValue": "<Eventhub resource id>",
+            "type": "String"
+        },
+        "storage_resource_id": {
+            "defaultValue": "<Storage resource id>",
+            "type": "String"
+        },
+        "managed_pe_eventhub_name": {
+            "defaultValue": "<name of the managed private endpoint to Event Hub>",
+            "type": "String"
+        },
+        "managed_pe_storage_name": {
+            "defaultValue": "<name of the managed private endpoint to Storage>",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Kusto/Clusters",
+            "apiVersion": "2023-08-15",
+            "name": "[parameters('cluster_name')]",
+            "location": "<region of the cluster>",
+            "sku": {...},
+            "zones": {...}
+            "properties": {...}
+        },
+        {
+            "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
+            "apiVersion": "2023-08-15",
+            "name": "[concat(parameters('cluster_name'), '/', parameters('managed_pe_eventhub_name'))]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/Clusters', parameters('cluster_name'))]"
+            ],
+            "properties": {
+                "privateLinkResourceId": "[parameters('eventhub_resource_id')]",
+                "groupId": "namespace",
+                "requestMessage": "Please approve"
+            }
+        },
+        {
+            "type": "Microsoft.Kusto/Clusters/ManagedPrivateEndpoints",
+            "apiVersion": "2023-08-15",
+            "name": "[concat(parameters('cluster_name'), '/', parameters('managed_pe_storage_name'))]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/Clusters', parameters('cluster_name'))]",
+                "[resourceId('Microsoft.Kusto/Clusters/ManagedPrivateEndpoints', parameters('cluster_name'), parameters('managed_pe_eventhub_name'))]"
+            ],
+            "properties": {
+                "privateLinkResourceId": "[parameters('storage_resource_id')]",
+                "groupId": "blob",
+                "requestMessage": "Please approve"
+            }
+        }
+    ]
+}
+```
+
+### [Terraform configuration](#tab/Terraform-configuration)
+
+The following example uses a Terraform configuration that creates two managed private endpoints in an Azure Data Explorer cluster. The first endpoint connects to an Event Hubs namespace. The second endpoint connects to a Storage account, with a dependency that ensures that the Event Hubs endpoint is created first.
+
+```hcl
+resource "azapi_resource" "mpe_to_eventhub" {
+  type = "Microsoft.Kusto/clusters/managedPrivateEndpoints@2023-08-15"
+  name                 = "mpeToEventHub"
+  parent_id            = "<the resource id of the cluster>"
+  body = jsonencode({
+    properties = {
+      groupId = "namespace"
+      privateLinkResourceId = "<The ARM resource ID of the EventHub for which the managed private endpoint is created.>"
+      requestMessage = "Please Approve."
+    }
+  })
+}
+
+resource "azapi_resource" "mpe_to_storage" {
+  type = "Microsoft.Kusto/clusters/managedPrivateEndpoints@2023-08-15"
+  name                 = "mpeToStorage"
+  parent_id            = "<the resource id of the cluster>"
+  body = jsonencode({
+    properties = {
+      groupId = "blob"
+      privateLinkResourceId = "<The ARM resource ID of the Storage Account for which the managed private endpoint is created.>"
+      requestMessage = "Please Approve."
+    }
+  })
+  depends_on = [
+    azapi_resource.mpe_to_eventhub
+  ]
+}
+```
+
+---
+
+## Automatic approval
+
+You can [automatically approve](/azure/private-link/private-endpoint-overview#access-to-a-private-link-resource-using-approval-workflow) a managed private endpoint if the requesting identity has the **Microsoft.\<Provider>/\<ResourceType>/privateEndpointConnectionsApproval/action** permission on the target resource of the managed private endpoint.
 
 ## Related content
 

@@ -3,17 +3,21 @@ title:  geo_s2cell_to_central_point()
 description: Learn how to use the geo_s2cell_to_central_point() function to calculate the geospatial coordinates that represent the center of an S2 cell.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/14/2022
+ms.date: 08/11/2024
 ---
 # geo_s2cell_to_central_point()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the geospatial coordinates that represent the center of an S2 cell.
+
+Read more about [S2 cell hierarchy](http://s2geometry.io/devguide/s2cell_hierarchy).
 
 ## Syntax
 
 `geo_s2cell_to_central_point(`*s2cell*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -23,15 +27,17 @@ Calculates the geospatial coordinates that represent the center of an S2 cell.
 
 ## Returns
 
-The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the S2 cell token is invalid, the query will produce a null result.
+The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If the S2 cell token is invalid, the query will produce a null result.
 
 > [!NOTE]
 > The GeoJSON format specifies longitude first and latitude second.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjIB5G2Cump+fHFRsmpOTnxJfnxyal5JUWJOfFgWQ0lQyNjE1MzcyVNrhqF1IqS1LwUheT8/KKUzLzEktRioG6wOj0kMYTCnPy89MyS0pRUoDIkBdEGsToKOYkl2KQMYwEypEkCnAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print point = geo_s2cell_to_central_point("1234567")
@@ -47,8 +53,10 @@ print point = geo_s2cell_to_central_point("1234567")
 
 The following example returns a null result because of the invalid S2 cell token input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjIB5G2Cump+fHFRsmpOTnxJfnxyal5JUWJOfFgWQ2lRCVNADb75CkuAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print point = geo_s2cell_to_central_point("a")

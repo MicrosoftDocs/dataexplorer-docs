@@ -20,8 +20,8 @@ To learn how to create the connection in the Azure Data Explorer web UI, Azure p
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
-* An [ingestion mapping](kusto/management/mappings.md) for the table.
+* A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
+* An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.
 * An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 
 ## Create an event hub data connection
@@ -88,7 +88,7 @@ In this section, you establish a connection between the event hub and your Azure
     | eventHubResourceId | *Resource ID* | The resource ID of your event hub that holds the data for ingestion. |
     | consumerGroup | *$Default* | The consumer group of your event hub.|
     | location | *Central US* | The location of the data connection resource.|
-    | compression | *Gzip* or *None* | The type of data compression. |
+    | compression | *gzip* or *None* | The type of data compression. |
     | databaseRouting | *Multi* or *Single* | The database routing for the connection. If you set the value to **Single**, the data connection is routed to a single database in the cluster as specified in the *databaseName* setting. If you set the value to **Multi**, you can override the default target database using the *Database* [ingestion property](ingest-data-event-hub-overview.md#ingestion-properties). For more information, see [Events routing](ingest-data-event-hub-overview.md#events-routing). |
 
 ### [Python](#tab/python)

@@ -3,16 +3,19 @@ title: Geospatial grid system
 description: Learn how to use geospatial grid systems to cluster geospatial data.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 
 # Geospatial clustering
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Geospatial data can be analyzed efficiently using grid systems to create geospatial clusters. You can use geospatial tools to aggregate, cluster, partition, reduce, join, and index geospatial data. These tools improve query runtime performance, reduce stored data size, and visualize aggregated geospatial data.
 
-Azure Data Explorer supports the following methods of geospatial clustering:
+The following methods of geospatial clustering are supported:
 
 * [Geohash](https://en.wikipedia.org/wiki/Geohash)
+* [S2 Cell](http://s2geometry.io/devguide/s2cell_hierarchy)
 * [H3 Cell](https://eng.uber.com/h3/)
 
 The core functionalities of these methods are:

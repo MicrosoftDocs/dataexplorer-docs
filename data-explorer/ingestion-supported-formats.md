@@ -8,6 +8,8 @@ ms.date: 09/13/2022
 
 # Data formats supported by Azure Data Explorer for ingestion
 
+<!-- //TODO delete and redirect to kql repo -->
+
 Data ingestion is the process by which data is added to a table and is made available for query in Azure Data Explorer. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that Azure Data Explorer supports for data ingestion.
 
 > [!NOTE]
@@ -16,11 +18,11 @@ Data ingestion is the process by which data is added to a table and is made avai
 > * CSV: http://csvlint.io/
 > * JSON: https://jsonlint.com/
 >
-> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestion-failures.md) and  [Ingestion error codes in Azure Data Explorer](error-codes.md).
+> For more information about why ingestion might fail, see [Ingestion failures](/kusto/management/ingestion-failures?view=azure-data-explorer&preserve-view=true) and  [Ingestion error codes in Azure Data Explorer](error-codes.md).
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
-|ApacheAvro|`.avro`    |An [AVRO](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/current/spec.html#Logical+Types). The following compression codecs are supported: `null`, `deflate`, and `snappy`. Reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For information about ingesting Event Hubs Capture Avro files, see [Ingesting Event Hubs Capture Avro files](ingest-data-event-hub-overview.md#schema-mapping-for-event-hubs-capture-avro-files). |
+|ApacheAvro|`.avro`    |An [AVRO](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/++version++/specification/#Logical+Types). The following compression codecs are supported: `null`, `deflate`, and `snappy`. Reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For information about ingesting Event Hubs Capture Avro files, see [Ingesting Event Hubs Capture Avro files](ingest-data-event-hub-overview.md#schema-mapping-for-event-hubs-capture-avro-files). |
 |Avro     |`.avro`     |A legacy implementation for [AVRO](https://avro.apache.org/docs/current/) format based on [.NET library](https://www.nuget.org/packages/Microsoft.Hadoop.Avro). The following compression codecs are supported: `null`, `deflate` (for `snappy` - use `ApacheAvro` data format). |
 |CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
@@ -50,14 +52,14 @@ Blobs and files can be compressed through any of the following compression algor
 
 |Compression|Extension|
 |-----------|---------|
-|GZip       |.gz      |
-|Zip        |.zip     |
+|gzip       |.gz      |
+|zip        |.zip     |
 
 Indicate compression by appending the extension to the name of the blob or file.
 
 For example:
-* `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with ZIP (archive or a single file)
-* `MyData.json.gz` indicates a blob or a file formatted as JSON, compressed with GZip.
+* `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with zip (archive or a single file)
+* `MyData.json.gz` indicates a blob or a file formatted as JSON, compressed with gGzip.
 
 Blob or file names that don't include the format extensions but just compression (for example, `MyData.zip`) is also supported. In this case, the file format
 must be specified as an ingestion property because it cannot be inferred.
@@ -65,9 +67,9 @@ must be specified as an ingestion property because it cannot be inferred.
 > [!NOTE]
 > * Some compression formats keep track of the original file extension as part of the compressed stream. This extension is generally ignored for determining the file format. If the file format can't be determined from the (compressed) blob or file name, it must be specified through the `format` ingestion property.
 > * Not to be confused with internal (chunk level) compression codec used by `Parquet`, `AVRO` and `ORC` formats. Internal compression name is usually added to a file name before file format extension, for example: `file1.gz.parquet`, `file1.snappy.avro`, etc.
-> * [Deflate64/Enhanced Deflate](https://en.wikipedia.org/wiki/Deflate#Deflate64/Enhanced_Deflate) Zip compression method is not supported. Please note that Windows built-in Zip compressor may choose to use this compression method on files of size over 2GB.
+> * [Deflate64/Enhanced Deflate](https://en.wikipedia.org/wiki/Deflate#Deflate64/Enhanced_Deflate) zip compression method is not supported. Please note that Windows built-in zip compressor may choose to use this compression method on files of size over 2GB.
 
 ## Related content
 
 * Learn more about [data ingestion](ingest-data-overview.md)
-* Learn more about [Azure Data Explorer data ingestion properties](ingestion-properties.md)
+* Learn more about [Azure Data Explorer data ingestion properties](/kusto/ingestion-properties?view=azure-data-explorer&preserve-view=true)

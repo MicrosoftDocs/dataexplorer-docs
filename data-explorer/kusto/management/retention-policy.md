@@ -3,15 +3,17 @@ title: Retention policy
 description: Learn how to use the retention policy to control how data is removed.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # Retention policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 The retention policy controls the mechanism that automatically removes data from tables or [materialized views](materialized-views/materialized-view-overview.md). It's useful to remove data that continuously flows into a table, and whose relevance is age-based. For example, the policy can be used for a table that holds diagnostics events that may become uninteresting after two weeks.
 
 The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it. When the policy is configured both at the database and table level, the retention policy in the table takes precedence over the database policy.
 
-Setting up a retention policy is important for clusters that are continuously ingesting data, which will limit costs.
+Setting up a retention policy is important when continuously ingesting data, which will limit costs.
 
 Data that is "outside" the retention policy is eligible for removal. There's no specific guarantee when removal occurs. Data may "linger" even if the retention policy is triggered.
 
@@ -25,6 +27,7 @@ deleted before the limit is exceeded, but deletion isn't immediate following tha
 > * When this is done, the ingested data won't be committed to the source table, avoiding the need to persist the data. As a result, `Recoverability` can only be set to `Disabled`.
 > * Such a configuration is useful mainly when the data gets ingested into a table.
 > A transactional [update policy](update-policy.md) is used to transform it and redirect the output into another table.
+> * The retention policy on a [materialized view](materialized-views/materialized-view-overview.md) affects only the view, not the source table. The source data remains unaffected.
 
 ## The policy object
 
@@ -32,7 +35,7 @@ A retention policy includes the following properties:
 
 * **SoftDeletePeriod**:
   * Time span for which it's guaranteed that the data is kept available to query. The period is measured starting from the time the data was ingested.
-  * Defaults to `100 years`.
+  * Defaults to `1,000 years`.
   * When altering the soft-delete period of a table or database, the new value applies to both existing and new data.
 * **Recoverability**:
   * Data recoverability (Enabled/Disabled) after the data was deleted.
@@ -42,13 +45,13 @@ A retention policy includes the following properties:
 
 ## Management commands
 
-* Use [`.show policy retention`](./show-table-retention-policy-command.md) to show the current retention policy for a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
-* Use [`.alter policy retention`](./alter-table-retention-policy-command.md) to change current retention policy of a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
+* Use [`.show policy retention`](show-table-retention-policy-command.md) to show the current retention policy for a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
+* Use [`.alter policy retention`](alter-table-retention-policy-command.md) to change current retention policy of a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Defaults
 
 By default, when a database or a table is created, it doesn't have a retention policy defined. Normally, the database is created and then immediately has its retention policy set by its creator according to known requirements.
-When you run a [`.show` command](./show-table-retention-policy-command.md) for the retention policy of a database or table that hasn't had its policy set, `Policy` appears as `null`.
+When you run a [`.show` command](show-table-retention-policy-command.md) for the retention policy of a database or table that hasn't had its policy set, `Policy` appears as `null`.
 
 The default retention policy, with the default values mentioned above, can be applied using the following command.
 
@@ -62,7 +65,7 @@ The command results in the following policy object applied to the database or ta
 
 ```kusto
 {
-  "SoftDeletePeriod": "36500.00:00:00", "Recoverability":"Enabled"
+  "SoftDeletePeriod": "365000.00:00:00", "Recoverability":"Enabled"
 }
 ```
 
@@ -75,7 +78,7 @@ Clearing the retention policy of a database or table can be done using the follo
 
 ## Examples
 
-For a cluster that has a database named `MyDatabase`, with tables `MyTable1`, `MyTable2`, and `MySpecialTable`.
+For an environment that has a database named `MyDatabase`, with tables `MyTable1`, `MyTable2`, and `MySpecialTable`.
 
 ### Soft-delete period of seven days and recoverability disabled
 
@@ -125,7 +128,7 @@ Set all tables in the database to have a soft-delete period of seven days and di
 
 Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days, and have `MySpecialTable` keep its data indefinitely.
 
-* *Option 1*: Set a database-level retention policy, and set a table-level retention policy, with a soft-delete period of 100 years, the default retention policy, for `MySpecialTable`.
+* *Option 1*: Set a database-level retention policy, and set a table-level retention policy, with a soft-delete period of 1,000 years, the default retention policy, for `MySpecialTable`.
 
   ```kusto
   .delete table MyTable1 policy retention   // optional, only if the table previously had its policy set
@@ -143,7 +146,7 @@ Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days,
   .alter-merge table MyTable2 policy retention softdelete = 7d
   ```
 
-* *Option 3*: For tables `MyTable1` and `MyTable2`, set a table-level retention policy. For table `MySpecialTable`, set a table-level retention policy with a soft-delete period of 100 years, the default retention policy.
+* *Option 3*: For tables `MyTable1` and `MyTable2`, set a table-level retention policy. For table `MySpecialTable`, set a table-level retention policy with a soft-delete period of 1,000 years, the default retention policy.
 
   ```kusto
   .alter-merge table MyTable1 policy retention softdelete = 7d

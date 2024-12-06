@@ -1,11 +1,15 @@
 ---
-title:  'Create an app to run management commands'
+title: Create an app to run management commands
 description: Learn how to create an app to run management commands using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 11/07/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
+#customer intent: To learn about creating an app to run management commands using Kusto client libraries.
 ---
 # Create an app to run management commands
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 In this article, you learn how to:
 
@@ -63,7 +67,7 @@ In your preferred IDE or text editor, create a project or file named *management
       main()
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
@@ -72,7 +76,7 @@ In your preferred IDE or text editor, create a project or file named *management
     async function main() {
       const clusterUri = "<your_cluster_uri>";
       const authOptions = {
-        clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+        clientId: "00001111-aaaa-2222-bbbb-3333cccc4444",
         redirectUri: "http://localhost:5173",
       } as InteractiveBrowserCredentialInBrowserOptions;
       const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
@@ -82,7 +86,7 @@ In your preferred IDE or text editor, create a project or file named *management
     main();
     ```
 
-    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
+    [!INCLUDE [node-vs-browser-auth](../../includes/node-vs-browser-auth.md)]
 
     <!-- ### [Go](#tab/go) -->
 
@@ -144,7 +148,7 @@ In your preferred IDE or text editor, create a project or file named *management
           print("\t", col, "-", row[col])
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     function printResultsAsValueList(command: string, response: KustoResponseDataSet) {
@@ -219,7 +223,7 @@ In your preferred IDE or text editor, create a project or file named *management
               " StormSummary:dynamic)"
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     const database = "<your_database>";
@@ -281,7 +285,7 @@ In your preferred IDE or text editor, create a project or file named *management
     print_result_as_value_list(command, response)
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     > [!NOTE]
     > You'll use the `executeMgmt` method to run the command.
@@ -396,7 +400,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 import { Client as KustoClient, KustoConnectionStringBuilder, KustoResponseDataSet } from "azure-kusto-data/";
@@ -405,7 +409,7 @@ import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 async function main() {
   const clusterUri = "<your_cluster_uri>";
   const authOptions = {
-    clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+    clientId: "00001111-aaaa-2222-bbbb-3333cccc4444",
     redirectUri: "http://localhost:5173",
   } as InteractiveBrowserCredentialInBrowserOptions;
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
@@ -446,7 +450,7 @@ function printResultsAsValueList(command: string, response: KustoResponseDataSet
 main();
 ```
 
-[!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
+[!INCLUDE [node-vs-browser-auth](../../includes/node-vs-browser-auth.md)]
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
@@ -517,7 +521,7 @@ dotnet run .
 python management_commands.py
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 In a Node.js environment:
 
@@ -595,7 +599,7 @@ response = kusto_client.execute_mgmt(database, command)
 print_result_as_value_list(command, response)
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 // Reduce the default batching timeout to 30 seconds
@@ -664,7 +668,7 @@ response = kusto_client.execute_mgmt(database, command)
 print_result_as_value_list(command, response)
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 // Show the database retention policy (drop some columns from the result)

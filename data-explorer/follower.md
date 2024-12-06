@@ -25,12 +25,15 @@ Attaching a database to a different cluster using the follower capability is use
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database for the leader and follower. [Create a cluster and database](create-cluster-and-database.md).
-* The leader database should contain data. You can [ingest data](ingest-sample-data.md) using one of the methods discussed in [ingestion overview](ingest-data-overview.md).
+* The leader database should contain data. You can [ingest data](web-ui-samples-query.md) using one of the methods discussed in [ingestion overview](ingest-data-overview.md).
 
 ## Attach a database
 
 There are various methods you can use to attach a database. In this article, we discuss attaching a database using C#, Python, PowerShell, or an Azure Resource Manager template.
 To attach a database, you must have user, group, service principal, or managed identity with at least contributor role on the leader cluster and the follower cluster. Add or remove role assignments using [Azure portal](/azure/role-based-access-control/role-assignments-portal), [PowerShell](/azure/role-based-access-control/role-assignments-powershell), [Azure CLI](/azure/role-based-access-control/role-assignments-cli), and [ARM template](/azure/role-based-access-control/role-assignments-template). Learn more about [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) and the [different roles](/azure/role-based-access-control/rbac-and-directory-admin-roles).
+
+> [!NOTE]
+> Pre-creating a follower database isn't necessary as one is created during the attachment process.
 
 ### Table level sharing
 
@@ -45,29 +48,35 @@ When attaching the database all tables, external tables and materialized views a
 
 #### Examples
 
-1. Include all tables. No '*' is needed, since all tables are followed by default:
+The following example includes all tables. By default, all tables are followed without using the '*' notation:
 
-    ```kusto
-    tablesToInclude = []
-    ```
+```kusto
+tablesToInclude = []
+```
 
-1. Include all tables with names that start with "Logs":
+The following example includes all functions. By default, all functions are followed without using the '*' notation:
 
-    ```kusto
-    tablesToInclude = ["Logs*"]
-    ```
+```kusto
+functionsToInclude = []
+```
 
-1. Exclude all external tables:
+The following example includes all tables with names that start with "Logs":
 
-    ```kusto
-    externalTablesToExclude = ["*"]
-    ```
+```kusto
+tablesToInclude = ["Logs*"]
+```
 
-1. Exclude all materialized views:
+The following example includes all external tables:
 
-    ```kusto
-    materializedViewsToExclude=["*"]
-    ```
+```kusto
+externalTablesToExclude = ["*"]
+```
+
+The following example includes all materialized views:
+
+```kusto
+materializedViewsToExclude=["*"]
+```
 
 ### Database name override
 
@@ -246,7 +255,7 @@ Use the following steps to attach a database:
     | *attachedDatabaseConfigurationsName* | The name of the attached database configurations object. The name can be any string that is unique at the cluster level. |  |
     | *databaseName* | The name of the database to be followed. To follow all the leader's databases, use '*'. |  |
     | *leaderClusterResourceId* | The resource ID of the leader cluster. |  |
-    | *defaultPrincipalsModificationKind* | The default principal modification kind. | Can be `Union`, `Replace`, or `None`. For more information about the default principal modification kind, see [principal modification kind management command](kusto/management/cluster-follower.md#alter-follower-database-principals-modification-kind). |
+    | *defaultPrincipalsModificationKind* | The default principal modification kind. | Can be `Union`, `Replace`, or `None`. For more information about the default principal modification kind, see [principal modification kind management command](/kusto/management/cluster-follower?view=azure-data-explorer&preserve-view=true#alter-follower-database-principals-modification-kind). |
     | *tablesToInclude* | The list of tables to include. To include all tables starting with 'Logs', use ["Logs*"]. | `["table1ToInclude", "table2ToInclude"]` |
     | *tablesToExclude* | The list of tables to exclude. To exclude all tables, use ["*"]. | `["table1ToExclude", "table2ToExclude"]` |
     | *externalTablesToInclude* | The list of tables to include. To include all external tables starting with 'Logs', use ["Logs*"]. | `["ExternalTable1ToInclude", "ExternalTable2ToInclude"]` |
@@ -584,7 +593,7 @@ Remove-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername -N
 
 ### Manage principals
 
-When attaching a database, specify the **"default principals modification kind"**. The default is to combine the override authorized principals with the leader database collection of [authorized principals](kusto/access-control/index.md#authorization)
+When attaching a database, specify the **"default principals modification kind"**. The default is to combine the override authorized principals with the leader database collection of [authorized principals](/kusto/access-control/index?view=azure-data-explorer&preserve-view=true#authorization)
 
 |**Kind** |**Description**  |
 |---------|---------|
@@ -592,22 +601,22 @@ When attaching a database, specify the **"default principals modification kind"*
 |**Replace**   |    No inheritance of principals from the original database. New principals must be created for the attached database.     |
 |**None**   |   The attached database principals include only the principals of the original database with no other principals.      |
 
-For more information about using management commands to configure the authorized principals, see [Management commands for managing a follower cluster](kusto/management/cluster-follower.md).
+For more information about using management commands to configure the authorized principals, see [Management commands for managing a follower cluster](/kusto/management/cluster-follower?view=azure-data-explorer&preserve-view=true).
 
 ### Manage permissions
 
-Managing read-only database permission is the same as for all database types. To assign permissions, see [Manage database permissions in the Azure portal](manage-database-permissions.md) or use management commands to [Manage database security roles](kusto/management/manage-database-security-roles.md).
+Managing read-only database permission is the same as for all database types. To assign permissions, see [Manage database permissions in the Azure portal](manage-database-permissions.md) or use management commands to [Manage database security roles](/kusto/management/manage-database-security-roles?view=azure-data-explorer&preserve-view=true).
 
 ### Configure caching policy
 
-The follower database administrator can modify the [caching policy](./kusto/management/show-table-cache-policy-command.md) of the attached database or any of its tables on the hosting cluster. The default is to combine the source database in the leader cluster database and table-level caching policies with the policies defined in the database and table-level override policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using management commands to configure the caching policy on the follower database or table, see [Management commands for managing a follower cluster](kusto/management/cluster-follower.md).
+The follower database administrator can modify the [caching policy](/kusto/management/show-table-cache-policy-command?view=azure-data-explorer&preserve-view=true) of the attached database or any of its tables on the hosting cluster. The default is to combine the source database in the leader cluster database and table-level caching policies with the policies defined in the database and table-level override policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using management commands to configure the caching policy on the follower database or table, see [Management commands for managing a follower cluster](/kusto/management/cluster-follower?view=azure-data-explorer&preserve-view=true).
 
 ## Notes
 
 * If there are conflicts between databases of leader/follower clusters, when all databases are followed by the follower cluster, they're resolved as follows:
   * A database named *DB* created on the follower cluster takes precedence over a database with the same name that was created on the leader cluster. That's why database *DB* in the follower cluster needs to be removed or renamed for the follower cluster to include the leader's database *DB*.
   * A database named *DB* followed from two or more leader clusters will be arbitrarily chosen from *one* of the leader clusters, and won't be followed more than once.
-* Commands for showing [cluster activity log and history](kusto/management/system-info.md) run on a follower cluster will show the activity and history on the follower cluster, and their result sets won't include those results of the leader cluster or clusters.
+* Commands for showing [cluster activity log and history](/kusto/management/system-info?view=azure-data-explorer&preserve-view=true) run on a follower cluster will show the activity and history on the follower cluster, and their result sets won't include those results of the leader cluster or clusters.
   * For example: a `.show queries` command run on the follower cluster will only show queries run on databases followed by follower cluster, and not queries run against the same database in the leader cluster.
 
 ## Limitations
@@ -625,4 +634,4 @@ The follower database administrator can modify the [caching policy](./kusto/mana
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Run follower commands](kusto/management/cluster-follower.md)
+> [Run follower commands](/kusto/management/cluster-follower?view=azure-data-explorer&preserve-view=true)

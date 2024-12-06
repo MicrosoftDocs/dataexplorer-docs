@@ -3,9 +3,11 @@ title:  hash_sha256()
 description: Learn how to use the hash_sha256() function to return a sha256 hash value of the source input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # hash_sha256()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Returns a sha256 hash value of the source input.
 
@@ -13,7 +15,7 @@ Returns a sha256 hash value of the source input.
 
 `hash_sha256(`*source*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -31,12 +33,14 @@ and 255).
 > The algorithm used by this function (SHA256) is guaranteed
 > to not be modified in the future, but is very complex to calculate. Users that
 > need a "lightweight" hash function for the duration of a single query are advised
-> to use the function [hash()](./hash-function.md) instead.
+> to use the function [hash()](hash-function.md) instead.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUeBSAIIMQ9uMxOKM+OKMRCNTMw2l8PyinBQlTR2IpBGKZEpiSWpJZm6qhpGBkYGugSEQaWoCAD4yqn1MAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print 
@@ -52,8 +56,10 @@ print
 
 The following example uses the `hash_sha256()` function to aggregate StormEvents based on State's SHA256 hash value.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlUIBkk455fmlSjYKiSDaA1NhaRKoHhiSaoOhPJILM6wzQAS8cUZiUamZhpgUU2gOSX5BQqmEOVwY1JSi5MBsDX5S28AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 

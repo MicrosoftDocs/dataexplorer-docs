@@ -3,9 +3,11 @@ title:  trim_end()
 description: Learn how to use the trim_end() function to remove the trailing match of the specified regular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/18/2024
+ms.date: 08/11/2024
 ---
 # trim_end()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Removes trailing match of the specified regular expression.
 
@@ -13,13 +15,13 @@ Removes trailing match of the specified regular expression.
 
 `trim_end(`*regex*`,` *source*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | `string` |  :heavy_check_mark: | The string or [regular expression](re2.md) to be trimmed from the end of *source*.|
+| *regex* | `string` |  :heavy_check_mark: | The string or [regular expression](regex.md) to be trimmed from the end of *source*.|
 | *source* | `string` |  :heavy_check_mark: | The source string from which to trim *regex*.|
 
 ## Returns
@@ -30,8 +32,10 @@ Removes trailing match of the specified regular expression.
 
 The following statement trims *substring* from the end of *string_to_trim*.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoLinKzEuPL8mPBzJyFWwVHJSSgAJ6yfm5Sta8XDkgJaVJEFVAWSWYRAFQAItuVAEdEJGbmhIP1w8SiE/NS9GAG6qDqkUTAKQH9A2VAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let string_to_trim = @"bing.com";
@@ -49,8 +53,10 @@ print string_to_trim = string_to_trim,trimmed_string = trim_end(substring,string
 
 The following example trims all non-word characters from the end of the string.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSguKVKwBZHJiSUaSroKCko6SiGpQAElHQclfX0FFSVNXq4ahdSKktS8FIWSoszc3NSUeIguEC8eKKzhoBQdF1Meq62kA5TQBADbLZbMWQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print str = strcat("-  ","Te st",x,@"// $")
@@ -70,9 +76,10 @@ print str = strcat("-  ","Te st",x,@"// $")
 ### Trim whitespace
 
 The following example trims all spaces from the end of the string.
-
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/FindMyPartner?query=H4sIAAAAAAAAA8tJLVEoLinKzEuPL8mPBzJyFWwVHJQUgMAjNScnX0ehPL8oJ0URJKBkzZUDUl6aBNEBVhlTrA0ULwDyS7hAijAMQxXQASsCsXJTU%2BJT81KAKkA8EFMDbrIOmi5NAP6lDgenAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let string_to_trim = @"    Hello, world!    ";

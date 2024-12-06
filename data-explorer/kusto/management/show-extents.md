@@ -3,10 +3,13 @@ title: .show extents
 description: Learn how to use the `.show extents` command to show the extents for a specified scope.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 
 # .show extents
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 > [!NOTE]
 > Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.
@@ -28,11 +31,11 @@ The types of `.show extents` commands are as follows:
 
 ## Permissions
 
-To see extents on the cluster, you must have AllDatabasesMonitor permissions.
+To see extents on the cluster, you must have `AllDatabasesMonitor` permissions.
 
-To see extents on a database, you must have Database User, Database Viewer, or Database Monitor permissions.
+To see extents on a database, you must have `Database User`, `Database Viewer`, or `Database Monitor` permissions.
 
-For more information, see [role-based access control](access-control/role-based-access-control.md).
+For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Table scope
 
@@ -45,7 +48,7 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 
 `.show` `tables` `(`*TableName* [`,` ...]`)` `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -78,7 +81,7 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 
 `.show` `database` *DatabaseName* `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -94,31 +97,32 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 
 `.show` `cluster` `extents` [`hot`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 Shows information about extents (data shards) that are present in the cluster.
+
 If `hot` is specified - shows only extents that are expected to be in the hot cache.
 
 ## Returns
 
 |Output parameter |Type |Description |
 |---|---|---|
-|ExtentId | `guid` |ID of the extent
-|DatabaseName | `string` |Database that the extent belongs to
-|TableName | `string` |Table that the extents belong to
-|MaxCreatedOn | `datetime` |Date-time when the extent was created. For a merged extent, the maximum of creation times among source extents
-|OriginalSize |Double |Original size in bytes of the extent data
-|ExtentSize |Double |Size of the extent in memory (compressed + index)
-|CompressedSize |Double |Compressed size of the extent data in memory
-|IndexSize |Double |Index size of the extent data
-|Blocks | `long` |Number of data blocks in the extent
-|Segments | `long` |Number of data segments in the extent
-|ExtentContainerId | `string` | ID of the extent container the extent is in
-|RowCount | `long` |Number of rows in the extent
-|MinCreatedOn | `datetime` |Date-time when the extent was created. For a merged extent, the minimum of creation times among the source extents
-|Tags| `string` |Tags, if any, defined for the extent
-|Kind| `string` |The kind of the storage engine that created the extent
-|DeletedRowCount| `long` |Number of deleted rows in the extent
+|ExtentId | `guid` |ID of the extent |
+|DatabaseName | `string` |Database that the extent belongs to. |
+|TableName | `string` |Table that the extents belong to. |
+|MaxCreatedOn | `datetime` |Date-time when the extent was created. For a merged extent, the maximum of creation times among source extents. |
+|OriginalSize |Double |Original size in bytes of the extent data. |
+|ExtentSize |Double |Size of the extent in memory (compressed + index). |
+|CompressedSize |Double |Compressed size of the extent data in memory. |
+|IndexSize |Double |Index size of the extent data. |
+|Blocks | `long` |Number of data blocks in the extent. |
+|Segments | `long` |Number of data segments in the extent. |
+|ExtentContainerId | `string` | ID of the extent container the extent is in. |
+|RowCount | `long` |Number of rows in the extent. |
+|MinCreatedOn | `datetime` |Date-time when the extent was created. For a merged extent, the minimum of creation times among the source extents. |
+|Tags| `string` |Tags, if any, defined for the extent. |
+|Kind| `string` |The kind of the storage engine that created the extent. |
+|DeletedRowCount| `long` |Number of deleted rows in the extent. |
 
 ## Examples
 

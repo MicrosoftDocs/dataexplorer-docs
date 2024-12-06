@@ -3,13 +3,12 @@ title:  Restrict statement
 description: Learn how to use the restrict statement to limit tabular views that are visible to subsequent query statements.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Restrict statement
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The restrict statement limits the set of table/view entities which are visible to query statements that follow it. For example, in a database that includes two tables (`A`, `B`), the application can prevent the rest of the query from accessing `B` and only "see" a limited form of table `A` by using a view.
 
@@ -24,7 +23,7 @@ The middle-tier application can prefix the user's query with a **logical model**
 
 `restrict` `access` `to` `(`*EntitySpecifiers*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -41,7 +40,7 @@ The middle-tier application can prefix the user's query with a **logical model**
 
 ### Let statement
 
-The following example uses a [let statement](./let-statement.md) appearing before `restrict` statement.
+The following example uses a [let statement](let-statement.md) appearing before `restrict` statement.
 
 ```kusto
 // Limit access to 'Test' let statement only
@@ -62,7 +61,7 @@ restrict access to (database().Table1, database().Func1, database('DB2').Table2)
 
 ### Patterns
 
-The following example uses wildcard patterns that can match multiples of [let statements](./let-statement.md) or tables/functions.
+The following example uses wildcard patterns that can match multiples of [let statements](let-statement.md) or tables/functions.
 
 ```kusto
 let Test1 = () { print x=1 };
@@ -136,11 +135,3 @@ let View2 = view () { Table2 | project Column1, Column2 };
 restrict access to (View1, View2);
 Table1 |  count
 ```
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

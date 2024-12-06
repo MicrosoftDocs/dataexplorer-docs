@@ -3,9 +3,11 @@ title:  ipv4_is_match()
 description: Learn how to use the ipv4_is_match() function to match two IPv4 strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/01/2023
+ms.date: 08/11/2024
 ---
 # ipv4_is_match()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Matches two IPv4 strings. The two IPv4 strings are parsed and compared while accounting for the combined IP-prefix mask calculated from argument prefixes, and the optional `prefix` argument.
 
@@ -13,7 +15,7 @@ Matches two IPv4 strings. The two IPv4 strings are parsed and compared while acc
 
 `ipv4_is_match(`*ip1*`,`*ip2*`[ ,`*prefix*`])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -22,7 +24,7 @@ Matches two IPv4 strings. The two IPv4 strings are parsed and compared while acc
 | *ip1*, *ip2*| `string` |  :heavy_check_mark: | An expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
 | *prefix*| `int` | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account.|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 
@@ -37,8 +39,10 @@ Matches two IPv4 strings. The two IPv4 strings are parsed and compared while acc
 
 ### Simple example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA51Quw6CQBDs+YrtkAQ57gSjJpYWdvbGkAMO3YTHeXcYCj/eTbCAUOlssclkZ3YypXQ0ea1WqHlmncH2fhhXCKjFnAq8qwc+34uIb3cRj2I/BMKSITAGp2cvazhf7EzEmUjoasKINP3KSCQSyNGRaq2NqnAAtNBbVULVGSi6RkuDtmvnloscZDm++duSbeJFyt8tb94b1OBUW4JRtq8dHKnWV5KhzRrpisek92nhwQew+y1lmQEAAA==)" target="_blank">Run the query</a>
+::: moniker-end
 
 ``` kusto
 print ipv4_is_match('192.168.1.1/24', '192.168.1.255')
@@ -52,8 +56,10 @@ print ipv4_is_match('192.168.1.1/24', '192.168.1.255')
 
 ### IPv4 comparison equality - IP-prefix notation specified inside the IPv4 strings
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA51Quw6CQBDs+YrtkAQ57gSjJpYWdvbGkAMO3YTHeXcYCj/eTbCAUOlssclkZ3YypXQ0ea1WqHlmncH2fhhXCKjFnAq8qwc+34uIb3cRj2I/BMKSITAGp2cvazhf7EzEmUjoasKINP3KSCQSyNGRaq2NqnAAtNBbVULVGSi6RkuDtmvnloscZDm++duSbeJFyt8tb94b1OBUW4JRtq8dHKnWV5KhzRrpisek92nhwQew+y1lmQEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string)
@@ -77,8 +83,10 @@ datatable(ip1_string:string, ip2_string:string)
 
 ### IPv4 comparison equality - IP-prefix notation specified inside the IPv4 strings and an additional argument of the `ipv4_is_match()` function
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52QvQrCMBCA9z7FbbVQWxNT0YIP4OYuUvqT1oM2CUkqHXx4g1WIOundcPANH8fXlNZt1fMFKlIYq1F0+XxiQEU/kdK8xSnvpeii4BRASHY0IZttQhISxuDGI6sHWZMY0tQdqNDC4bicHYAGRsMbaKWGWg6q1GikeFemlDmHR2iWOfBUUvaH8uvLWUnZT8pzcAM+WS4a0NyMvYW9y3VlBZpiKG198Xr6IV8FozvG3oupeQEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string, prefix:long)

@@ -3,17 +3,21 @@ title:  geo_s2cell_to_polygon()
 description: Learn how to use the geo_s2cell_to_polygon() function to calculate the polygon that represents the S2 Cell rectangular area.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/14/2022
+ms.date: 08/11/2024
 ---
 # geo_s2cell_to_polygon()
 
-Calculates the polygon that represents the S2 Cell rectangular area.
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
+Calculates the polygon that represents the S2 Cell rectangular area. 
+
+Read more about [S2 Cells](http://s2geometry.io/devguide/s2cell_hierarchy).
 
 ## Syntax
 
 `geo_s2cell_to_polygon(`*s2cell*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -23,15 +27,17 @@ Calculates the polygon that represents the S2 Cell rectangular area.
 
 ## Returns
 
-Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the s2cell is invalid, the query produces a null result.
+Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If the s2cell is invalid, the query produces a null result.
 
 > [!NOTE]
 > S2 Cell edges are spherical geodesics.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2Sk7NyQnIz6lMz89TsFVIT82Ph4jFl+THF0DENZQsLJONTC2VNAF6g4+NNQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s2cellPolygon = geo_s2cell_to_polygon("89c259")
@@ -45,8 +51,10 @@ print s2cellPolygon = geo_s2cell_to_polygon("89c259")
 
 The following example assembles GeoJSON geometry collection of S2 Cell polygons.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22QTW6DMBCF95xixAokN+KvYCplFSk9QJdVZTl0RGgMRrazoOrhO4AVorT2xp4335tnf0pH+6QwUkP7YlAqBkq65RQH7wHQeqryXf1cljxnUCQ7nlR1UrFNSkte1quU8jwt7iRepwVfpKrIsypnwUfwA6PRX9g4sJk4S3uGPbSoxai7wQmnhc0aVGoOtGRhkCbxX4r61dTqwdMrNOO+Hvm+GbXXvpem+8ZHWCjryKCXFxSqsy560O/nnmQrRtlcouV5oZtGDBmER5Tuaui4lilLj85MJN2AW++rFw9aKbLs9DBXPdKhpds/AWNvTUFGNG7t28wH2S/mbxkc6AvAkxaabUoc/wKv/5OK6QEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(lng:real, lat:real)
@@ -72,8 +80,10 @@ datatable(lng:real, lat:real)
 
 The following example returns a null result because of the invalid s2cell token input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2Sk7NyQnIz6lMz89TsFVIT82Ph4jFl+THF0DENZQSlTQByV78WTAAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s2cellPolygon = geo_s2cell_to_polygon("a")

@@ -3,13 +3,13 @@ title: Mirroring policy
 description: Learn how to use the mirroring policy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/23/2024
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 09/23/2024
+monikerRange: "microsoft-fabric"
 ---
 # Mirroring policy
 
-::: zone pivot="fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)]
+
 The mirroring policy commands allow you to view, change, partition, and delete your table mirroring policy. They also provide a way to check the mirroring latency by reviewing the operations mirroring status.
 
 ## Management commands
@@ -35,7 +35,9 @@ The mirroring policy includes the following properties:
 > [!WARNING]
 > Deleting or dropping the table mirroring policy will permanently delete the delta table in OneLake.
 
-[!INCLUDE [partitions-formatting](../../includes/partitions-formatting.md)]
+[!INCLUDE [mirroring-note](../includes/mirroring-note.md)]
+
+[!INCLUDE [partitions-formatting](../includes/partitions-formatting.md)]
 
 > [!NOTE]
 > Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
@@ -73,11 +75,3 @@ For more information on Event house data types, see [Scalar data types](/azure/d
 }
 
 ```
-
-::: zone-end
-
-::: zone pivot="azuredataexplorer, azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

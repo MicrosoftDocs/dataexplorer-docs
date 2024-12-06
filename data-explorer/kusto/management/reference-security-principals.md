@@ -3,17 +3,19 @@ title: Referencing security principals
 description: Learn how to reference security principals and identity providers.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # Referencing security principals
 
-The Azure Data Explorer authorization model allows for the use of Microsoft Entra user and application identities and Microsoft Accounts (MSAs) as security principals. This article provides an overview of the supported principal types for both Microsoft Entra ID and MSAs, and demonstrates how to properly reference these principals when assigning security roles using [management commands](security-roles.md).
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+The authorization model allows for the use of Microsoft Entra user and application identities and Microsoft Accounts (MSAs) as security principals. This article provides an overview of the supported principal types for both Microsoft Entra ID and MSAs, and demonstrates how to properly reference these principals when assigning security roles using [management commands](security-roles.md).
 
 <a name='azure-active-directory'></a>
 
 ## Microsoft Entra ID
 
-The recommended way to access your cluster is by authenticating to the Microsoft Entra service. Microsoft Entra ID is an identity provider capable of authenticating security principals and coordinating with other identity providers, such as Microsoft's Active Directory.
+The recommended way to access your environment is by authenticating to the Microsoft Entra service. Microsoft Entra ID is an identity provider capable of authenticating security principals and coordinating with other identity providers, such as Microsoft's Active Directory.
 
 Microsoft Entra ID supports the following authentication scenarios:
 
@@ -23,7 +25,7 @@ Microsoft Entra ID supports the following authentication scenarios:
 > [!NOTE]
 >
 > * Microsoft Entra ID does not allow authentication of service accounts that are by definition on-premises AD entities. The Microsoft Entra equivalent of an AD service account is the Microsoft Entra application.
-> * Only supports Security Group (SG) principals and not Distribution Group (DG) principals are supported. An attempt to set up access for a DG on the cluster will result in an error.
+> * Only supports Security Group (SG) principals and not Distribution Group (DG) principals are supported. An attempt to set up access for a DG will result in an error.
 
 <a name='referencing-azure-ad-principals-and-groups'></a>
 
@@ -46,8 +48,10 @@ Similarly, you can reference a security group with the group email address in [U
 | App | Explicit (ID) | `aadapp`=*ApplicationDisplayName*;*TenantId*<br />or<br />`aadapp`=*ApplicationId*;*TenantId*|
 | App | Explicit (Name) | `aadapp`=*ApplicationDisplayName*;*TenantName*<br />or<br />`aadapp`=*ApplicationId*;*TenantName*|
 
+::: moniker range="azure-data-explorer"
 > [!NOTE]
-> Use the "App" format to reference [managed identities](../../managed-identities-overview.md), in which the *ApplicationId* is the managed identity object ID or managed identity client (application) ID.
+> Use the "App" format to reference [managed identities](/azure/data-explorer/managed-identities-overview), in which the *ApplicationId* is the managed identity object ID or managed identity client (application) ID.
+::: moniker-end
 
 ### Examples
 
@@ -89,7 +93,11 @@ The following example assigns an MSA user to the user role on the `Test` databas
 
  to manage data partitioning policies for tables
 
+::: moniker range="azure-data-explorer"
 * Read the [authentication overview](../access-control/index.md)
-* Learn how to use [management commands to assign security roles](security-roles.md)
-* Learn how to use the Azure portal to [manage database principals and roles](../../manage-database-permissions.md)
+
+* Learn how to use the Azure portal to [manage database principals and roles](/azure/data-explorer/manage-database-permissions)
+::: moniker-end
 * [current_principal_details()](../query/current-principal-details-function.md)
+
+* Learn how to use [management commands to assign security roles](security-roles.md)

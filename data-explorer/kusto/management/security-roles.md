@@ -3,9 +3,11 @@ title: Security roles
 description: Learn how to use security roles to provide principals access to resources.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/29/2024
+ms.date: 08/11/2024
 ---
 # Security roles overview
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
@@ -13,8 +15,16 @@ When a principal attempts an operation, the system performs an authorization che
 
 The management commands listed in this article can be used to manage principals and their security roles on databases, tables, external tables, materialized views, and functions.
 
+:::moniker range="microsoft-fabric"
 > [!NOTE]
-> The three cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. To learn how to configure them in the Azure portal, see [Manage cluster permissions](../../manage-cluster-permissions.md).
+> The security roles of `AllDatabasesAdmin`, `AllDatabasesViewer` can't be configured with security role management commands. They are inherited respectively by the `Admin` and `Viewer` roles in the workspace.
+::: moniker-end
+::: moniker range="azure-data-explorer"
+> [!NOTE]
+> The three  cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands.
+
+To learn how to configure them in the Azure portal, see [Manage cluster permissions](/azure/data-explorer/manage-cluster-permissions).
+::: moniker-end
 
 ## Management commands
 
@@ -40,16 +50,22 @@ The following table describes the level of access granted for each role and show
 |`ingestors` | Ingest data to the object without access to query. | :heavy_check_mark:| :heavy_check_mark:||||
 |`monitors` | View metadata such as schemas, operations, and permissions.| :heavy_check_mark:|||||
 
-For a full description of the security roles at each scope, see [Kusto role-based access control](access-control/role-based-access-control.md).
+For a full description of the security roles at each scope, see [Kusto role-based access control](../access-control/role-based-access-control.md).
 
 > [!NOTE]
 > It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [manage table view access](manage-table-view-access.md).
 
 ## Common scenarios
 
-### Show your roles on the cluster
+### Show your principal roles
 
+::: moniker range="azure-data-explorer"
 To see your own roles on the cluster, run the following command:
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+To see your own roles on the eventhouse, run the following command:
+::: moniker-end
 
 ```kusto
 .show cluster principal roles
@@ -106,5 +122,5 @@ For details on how to modify your role assignments at the database and table lev
 
 ## Related content
 
-* [Kusto role-based access control](access-control/role-based-access-control.md)
-* [Referencing security principals](access-control/referencing-security-principals.md)
+* [Kusto role-based access control](../access-control/role-based-access-control.md)
+* [Referencing security principals](reference-security-principals.md)

@@ -1,15 +1,14 @@
 ---
 title:  series_uv_anomalies_fl()
-description: This article describes the series_uv_anomalies_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the series_uv_anomalies_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # series_uv_anomalies_fl()
 
-::: zone pivot="azuredataexplorer"
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The function `series_uv_anomalies_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that detects anomalies in time series by calling the [Univariate Anomaly Detection API](/azure/cognitive-services/anomaly-detector/overview), part of [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services). The function accepts a limited set of time series as numerical dynamic arrays and the required anomaly detection sensitivity level. Each time series is converted into the required JSON format and posts it to the Anomaly Detector service endpoint. The service response contains dynamic arrays of high/low/all anomalies, the modeled baseline time series, its normal high/low boundaries (a value above or below the high/low boundary is an anomaly) and the detected seasonality.
 
@@ -19,7 +18,7 @@ The function `series_uv_anomalies_fl()` is a [user-defined function (UDF)](../qu
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* A cluster and database. [Create a cluster and database](../../create-cluster-and-database.md).
+* A cluster and database [Create a cluster and database](/azure/data-explorer/create-cluster-and-database) or a [KQL database](/fabric/real-time-intelligence/create-database) with editing permissions and data.
 * The Python plugin must be [enabled on the cluster](../query/python-plugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 * [Create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster to access the anomaly detection service endpoint.
@@ -31,7 +30,7 @@ In the following function example, replace `YOUR-AD-RESOURCE-NAME` in the uri an
 
 `T | invoke series_uv_anomalies_fl(`*y_series* [`,` *sensitivity* [`,` *tsid*]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -87,7 +86,7 @@ let series_uv_anomalies_fl=(tbl:(*), y_series:string, sensitivity:int=85, tsid:s
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Examples](#examples).
@@ -281,10 +280,3 @@ The following graph shows the anomalies detected by native function on TS1.
 
 ![Graph showing anomalies using the native function on a time series.](media/series-uv-anomalies-fl/native-anomalies-example-2.png)
 
-::: zone-end
-
-::: zone pivot="azuremonitor, fabric"
-
-This feature isn't supported.
-
-::: zone-end

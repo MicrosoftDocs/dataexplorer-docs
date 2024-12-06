@@ -3,9 +3,11 @@ title:  format_datetime()
 description: Learn how to use the format_datetime() function to format a datetime according to the provided format.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/27/2023
+ms.date: 08/11/2024
 ---
 # format_datetime()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Formats a datetime according to the provided format.
 
@@ -13,7 +15,7 @@ Formats a datetime according to the provided format.
 
 `format_datetime(`*date* `,` *format*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -83,8 +85,10 @@ A string with *date* formatted as specified by *format*.
 
 The following three examples return differently formatted datetimes.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLEktycxN1TAyMDTXNTDUNbJUMLC0MjCwMjDVtOblKijKzCtR4OUqM7RNyy/KTSyJh+tIKdFRr6zU9fXVTUlRiPbwsMrNtSoujlXXBAC5cbYnXQAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let dt = datetime(2017-01-29 09:00:05);
@@ -98,8 +102,10 @@ v1=format_datetime(dt,'yy-MM-dd [HH:mm:ss]')
 |--|
 |17-01-29 [09:00:05]|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLEktycxN1TAyMDTXNTDUNbJUMLC0MjCwMjDVtOblKijKzCtR4OUqM7JNyy/KTSyJh+tIKdFRUK8EAl1f3ZQUhWgPq9xcq+LiWHVNAPGQ6QdeAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let dt = datetime(2017-01-29 09:00:05);
@@ -113,8 +119,10 @@ v2=format_datetime(dt, 'yyyy-M-dd [H:mm:ss]')
 |--|
 |2017-1-29 [9:00:05]|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLEktycxN1TAyMDTXNTDUNbJUMLC0MjCwMjDVtOblKijKzCtR4OUqM7ZNyy/KTSyJh+tIKdFRUK+s1PX11U1JUYjOyLDKzbUqLlYoKYlV1wQA0Nc3NmEAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let dt = datetime(2017-01-29 09:00:05);

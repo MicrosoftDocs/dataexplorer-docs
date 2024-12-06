@@ -1,12 +1,14 @@
 ---
-title:  Azure Data Explorer control and suppress SDK client side tracing
-description: This article describes controlling and suppressing Azure Data Explorer SDK client-side tracing in Azure Data Explorer.
+title:  Control and suppress SDK client side tracing
+description: This article describes controlling and suppressing SDK client-side tracing.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 04/19/2023
+ms.date: 08/11/2024
 ---
 # Controlling and suppressing Kusto SDK client-side tracing
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 The Kusto client libraries use a common platform for tracing. The platform uses a large number of trace sources (`System.Diagnostics.TraceSource`), and each is connected to the default set of trace listeners (`System.Diagnostics.Trace.Listeners`) during its construction.
 

@@ -7,6 +7,8 @@
           "**/*.yml"
         ],
         "exclude": [
+          "**/kusto/**",
+          "**/kusto-redirections/**",
           "**/obj/**",
           "**/includes/**",
           "_themes/**",
@@ -17,7 +19,18 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices.md"
+        ],
+        "include": [
+          "**/kusto/**/includes/**"
         ]
+      },
+      {
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "src": "kusto-redirections",
+        "dest": "kusto"
       }
     ],
     "resource": [
@@ -117,7 +130,7 @@
       ],
       "author": "shsagir",
       "ms.author": "shsagir",
-      "ms.service": "data-explorer",
+      "ms.service": "azure-data-explorer",
       "services": "data-explorer",
       "titleSuffix": "Azure Data Explorer"
     },

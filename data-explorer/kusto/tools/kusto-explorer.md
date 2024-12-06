@@ -3,10 +3,12 @@ title: Kusto.Explorer installation and user interface
 description: Learn about the features of Kusto.Explorer and how it can help you to explore your data
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 03/20/2023
+ms.date: 08/11/2024
 ---
 
 # Kusto.Explorer installation and user interface
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Kusto.Explorer is free software for download and use on your Windows desktop. Kusto.Explorer allows you to query and analyze your data with Kusto Query Language (KQL) in a user-friendly interface. This overview explains how to set up Kusto.Explorer, and describes the user interface you'll use.
 
@@ -29,7 +31,7 @@ With Kusto.Explorer, you can:
 ### Using Google Chrome and Kusto.Explorer
 
 If Google Chrome is your default browser, installing the ClickOnce extension for Chrome is required.
-[https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US](https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US)
+[https://chromewebstore.google.com/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb?hl=en-US](https://chromewebstore.google.com/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb?hl=en-US)
 
 If your default browser is the Microsoft Edge, installing this extension *isn't* required.
 Validate your ClickOnce settings in [Microsoft Edge flag settings](edge://flags/#edge-click-once).

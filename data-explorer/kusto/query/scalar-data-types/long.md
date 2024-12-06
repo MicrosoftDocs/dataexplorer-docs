@@ -1,11 +1,13 @@
 ---
 title:  The long data type
-description: This article describes the long data type in Azure Data Explorer.
+description:  This article describes the long data type.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/08/2024
+ms.date: 08/11/2024
 ---
 # The long data type
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
 The `long` data type represents a signed, 64-bit wide, integer.
 
@@ -22,9 +24,9 @@ To specify a `long` literal, use one of the following syntax options:
 |`long(-`*number*`)`|A negative integer.|`long(-1)`|
 |`long(null)`|Represents the [null value](null-values.md).||
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Related content
 
-* [tolong()](../../query/tolongfunction.md)
-* To convert the `long` type into a hex string, see [tohex() function](../tohexfunction.md).
+* [tolong()](../tolong-function.md)
+* To convert the `long` type into a hex string, see [tohex() function](../tohex-function.md).

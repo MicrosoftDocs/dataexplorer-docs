@@ -11,6 +11,15 @@ items:
 - name: comb_fl()
   displayName: functions library, statistics
   href: comb-fl.md
+- name: dbscan_fl()
+  displayName: functions library, clustering, DBSCAN
+  href: dbscan-fl.md
+- name: dbscan_dynamic_fl()
+  displayName: functions library, clustering, DBSCAN
+  href: dbscan-dynamic-fl.md
+- name: detect_anomalous_new_entity_fl()
+  displayName: functions library, security, cybersecurity, anomaly detection, new entity, novelty, cyber, detect anomalous new entity
+  href: detect-anomalous-new-entity-fl.md
 - name: factorial_fl()
   displayName: functions library, statistics
   href: factorial-fl.md
@@ -20,9 +29,15 @@ items:
 - name: get_packages_version_fl()
   displayName: functions library, python, version, package
   href: get-packages-version-fl.md
+- name: graph_path_discovery_fl()
+  displayName: functions library, graph, path, discovery, cyber, security, cybersecurity,
+  href: graph-path-discovery-fl.md
 - name: kmeans_fl()
   displayName: functions library, clustering, K-Means
   href: kmeans-fl.md
+- name: kmeans_dynamic_fl()
+  displayName: functions library, clustering, K-Means
+  href: kmeans-dynamic-fl.md
 - name: ks_test_fl()
   displayName: functions library, statistical test
   href: ks-test-fl.md
@@ -65,6 +80,9 @@ items:
 - name: plotly_anomaly_fl()
   displayName: functions library, Plotly, anomaly, chart, render
   href: plotly-anomaly-fl.md
+- name: plotly_gauge_fl()
+  displayName: functions library, Plotly, gauge, speed, chart, render
+  href: plotly-gauge-fl.md
 - name: plotly_scatter3d_fl()
   displayName: functions library, Plotly, scatter, chart, render
   href: plotly-scatter3d-fl.md
@@ -144,8 +162,14 @@ items:
   displayName: functions library, anomaly detection, univariate, change point
   href: series-uv-change-points-fl.md
 - name: time_weighted_avg_fl()
-  displayName: functions library, binning
+  displayName: functions library, binning, time weighted, time series, interpolation
   href: time-weighted-avg-fl.md
+- name: time_weighted_avg2_fl()
+  displayName: functions library, binning, time weighted, time series, interpolation
+  href: time-weighted-avg2-fl.md
+- name: time_weighted_val_fl()
+  displayName: functions library, binning, time weighted, time series, interpolation
+  href: time-weighted-val-fl.md
 - name: time_window_rolling_avg_fl()
   displayName: functions library, rolling, sliding
   href: time-window-rolling-avg-fl.md

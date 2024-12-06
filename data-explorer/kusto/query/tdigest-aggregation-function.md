@@ -3,25 +3,27 @@ title:  tdigest() (aggregation function)
 description: Learn how to use the tdigest() (aggregation function) function to calculate the intermediate results of the weighted percentiles of expressions across the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/20/2023
+ms.date: 08/11/2024
 ---
 # tdigest() (aggregation function)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the intermediate results of [`percentiles()`](percentiles-aggregation-function.md) across the group.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 For more information, see the [underlying algorithm (T-Digest) and the estimated error](percentiles-aggregation-function.md#estimation-error-in-percentiles).
 
 > [!IMPORTANT]
->The results of tdigest() and tdigest_merge() can be stored and later retrieved. For example, you may want to create daily percentiles summary, which can then be used to calculate weekly percentiles.
-> However, the precise binary representation of these results may change over time. There's no guarantee that these functions will produce identical results for identical inputs, and therefore we don't advise relying on them.
+> The results of tdigest() and tdigest_merge() can be stored and later retrieved. For example, you may want to create daily percentiles summary, which can then be used to calculate weekly percentiles.
+> However, the precise binary representation of these results may change over time, and is not documented. There's no guarantee that these functions will produce identical results for identical inputs.
 
 ## Syntax
 
 `tdigest(`*expr* [`,` *weight*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -41,10 +43,14 @@ The Intermediate results of weighted percentiles of `*expr*` across the group.
 
 ## Examples
 
+### Results per state
+
 This example shows the results of the tdigest percentiles sorted by state.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoSclMTy0u0XBJzE1MTw0oyi9ILSqp1FRIqlQILkksSQUAy2eq1DkAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -65,3 +71,24 @@ The results table shown includes only the first 10 rows.
 | ALASKA | [[7],[5000,1000,25000,700000,12060,15000,100000,1600000,0,10000],[5,1,1,1,1,2,1,2,242,1]] |
 | CONNECTICUT | [[7],[5000,1000,2000000,0,50000,750000,6000],[1,1,1,142,1,1,1]] |
 | NEVADA | [[7],[5000,1000,200000,1000000,30000,40000,297000,5000000,0,10000],[4,2,1,1,1,1,1,1,148,3]] |
+
+### Convert pre-existing centroids
+
+The following example shows how one can convert pre-existing T-Digest centroids for long-term storage.
+The `V` column holds the value of each centroid, and the `W` column is its weight (relative count).
+The `tdigest()` aggregate function is then applied to convert the data in table `DT` into the internal
+representation, and `percentile_tdigest()` is used to demonstrate how ot find the 50-tile value.
+
+```kusto
+let DT=datatable(V:real, W:long) [
+    1.0, 1,
+    2.0, 2
+];
+DT
+| summarize TD=tdigest(V, W)
+| project P50=percentile_tdigest(TD, 50)
+```
+
+|P50|
+|---|
+|2|

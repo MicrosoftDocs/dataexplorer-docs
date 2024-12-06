@@ -1,11 +1,13 @@
 ---
-title: geo_line_buffer() - Azure Data Explorer
+title:  geo_line_buffer()
 description: Learn how to use the geo_line_buffer() function to calculate line buffer
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/24/2023
+ms.date: 08/11/2024
 ---
 # geo_line_buffer()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Calculates polygon or multipolygon that contains all points within the given radius of the input line or multiline on Earth.
 
@@ -13,7 +15,7 @@ Calculates polygon or multipolygon that contains all points within the given rad
 
 `geo_line_buffer(`*lineString*`,` *radius*`,` *tolerance*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

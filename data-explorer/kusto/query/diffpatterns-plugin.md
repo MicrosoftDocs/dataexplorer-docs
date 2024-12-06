@@ -3,9 +3,11 @@ title:  diffpatterns plugin
 description: Learn how to use the diffpatterns plugin to compare two datasets of the same structure to find the differences between the two datasets. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # diffpatterns plugin
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Compares two datasets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two datasets. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
@@ -18,7 +20,7 @@ Compares two datasets of the same structure and finds patterns of discrete attri
 
 `T | evaluate diffpatterns(`*SplitColumn*`,` *SplitValueA*`,` *SplitValueB* [`,` *WeightColumn*`,`*Threshold*`,` *MaxDimensions*`,` *CustomWildcard*`,` ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -28,7 +30,7 @@ Compares two datasets of the same structure and finds patterns of discrete attri
 |*SplitValueA*| `string` | :heavy_check_mark:|A string representation of one of the values in the *SplitColumn* that was specified. All the rows that have this value in their *SplitColumn* considered as dataset “A”.|
 |*SplitValueB*| `string` | :heavy_check_mark:|A string representation of one of the values in the *SplitColumn* that was specified. All the rows that have this value in their *SplitColumn* considered as dataset “B”.|
 |*WeightColumn*| `string` ||The column used to consider each row in the input according to the specified weight. Must be a name of a numeric column, such as `int`, `long`, `real`. By default each row has a weight of '1'. To use the default value, input the tilde: `~`. A common usage of a weight column is to take into account sampling or bucketing/aggregation of the data that is already embedded into each row.<br/><br/>Example: `T | extend splitColumn= iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", sample_Count)`|
-|*Threshold*| `long` ||A long in the range of 0.015 to 1. This value sets the minimal pattern ratio difference between the two sets. The default is 0.05. To use the default value, input the tilde: `~`.<br/><br/>Example:  `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", 0.04)`|
+|*Threshold*| `real` ||A real in the range of 0.015 to 1. This value sets the minimal pattern ratio difference between the two sets. The default is 0.05. To use the default value, input the tilde: `~`.<br/><br/>Example:  `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", 0.04)`|
 |*MaxDimensions*| `int` ||Sets the maximum number of uncorrelated dimensions per result pattern. By specifying a limit, you decrease the query runtime. The default is unlimited. To use the default value, input the tilde: `~`.<br/><br/>Example:  `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", "~", 3)`|
 |*CustomWildcard*| `string` ||Sets the wildcard value for a specific type in the result table that will indicate that the current pattern doesn't have a restriction on this column. The default is null, except for string columns for which the default is an empty string. If the default is a viable value in the data, a different wildcard value should be used. For example, `*`. To use the default value, input the tilde: `~`.<br/><br/>Example: `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", "~", "~", int(-1), double(-1), long(0), datetime(1900-1-1))`|
 
@@ -58,13 +60,15 @@ For each pattern, columns that aren't set in the pattern (that is, without restr
 
 > [!TIP]
 >
-> * Use [where](./where-operator.md) and [project](./project-operator.md) in the input pipe to reduce the data to just what you're interested in.
+> * Use [where](where-operator.md) and [project](project-operator.md) in the input pipe to reduce the data to just what you're interested in.
 > * When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVNvQ6CYAzcfYoLE0QHGBxxUXcTeIEvUATj95NSUBIf3n6gQ9u79npXiWd7ncnJiN0Hr56YYL2T3ncLGU4rMSz1YClDWeKoGnoLuRYXY82dUGLounQjZ/ZhxP53uikjlgUn5Dig0Moz/Q/sH9QI1FlIl2t6vYSIKz9xE8Fm8Z+rcYyezXOKX62GBiNC7Mb0r03yRFuRIPsCQuCK6dYAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 

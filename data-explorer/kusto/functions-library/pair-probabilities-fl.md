@@ -1,11 +1,13 @@
 ---
 title:  pair_probabilities_fl()
-description: This article describes the pair_probabilities_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the pair_probabilities_fl() user-defined function.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
 ---
 # pair_probabilities_fl()
+
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Calculate various probabilities and related metrics for a pair of categorical variables.
 
@@ -29,7 +31,7 @@ The function `pair_probabilities_fl()` is a [UDF (user-defined function)](../que
 
 `pair_probabilities_fl(`*A*, *B*, *Scope*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -75,14 +77,14 @@ probAB
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate probabilities and related metrics for a pair of categorical variables")
-pair_probabilities_fl = (tbl:(*), A_col:string, B_col:string, scope_col:string)
+pair_probabilities_fl (tbl:(*), A_col:string, B_col:string, scope_col:string)
 {
 let T = materialize(tbl | extend _A = column_ifexists(A_col, ''), _B = column_ifexists(B_col, ''), _scope = column_ifexists(scope_col, ''));
 let countOnScope = T | summarize countAllOnScope = count() by _scope;
@@ -100,7 +102,7 @@ probAB
 | project _A, _B, _scope, bin(P_A, 0.00001), bin(P_B, 0.00001), bin(P_AB, 0.00001), bin(P_AUB, 0.00001), bin(P_AIB, 0.00001)
 , bin(P_BIA, 0.00001), bin(Lift_AB, 0.00001), bin(Jaccard_AB, 0.00001)
 | sort by _scope, _A, _B
-};
+}
 ```
 
 ---
@@ -113,8 +115,10 @@ The following example uses the [invoke operator](../query/invoke-operator.md) to
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA71WwW7bMAy9+yt4s915S3dt0YO1U4oWC7b2NAyGLCutWlkKbLlItu7fR8lupCZOhiTAnItNPj4+UqIUyQ0sqGiKRaNLWgopjOBtMZdwBYkp5UVylmaQF0zLi9Y0Qj1kQN59tUwveGBJo9+RRNY7ZKip4Y2gUvzilgxegS8NVxUUOXoxpqtVIeZ8KVrTJi5LBnGMGQsyAiAhwOUdAa31OGB66cQw3SnzVX0fYu5QSdvVNW1QWe/MpfR+Z0lSKFdDnp7F9ignO+LJRlxui1jrfIUnLRQ8Cyz+CiSfG91hbyAJlaWglQ8YWjUrHLXRle5KyZMhWzrZkB1IBMQPWrd1og9Na5pspPyaLpMNq69pW962uj3iyD5x5BRxZEzcduvGOtfriXYukvP3q+Nb4J/JBPz4rGCuG+CUPcILlR0HPYd8PzXpqckx1Fa1X4p7W69dkg+u9o/97hl/kLpTAhMHCaLBl9nA6UBGJpZr/4NkTKsKTw+tqHyn2dZv6yMhOZnmnjw/iZxY8ty34UbMTT8zjj6x/Gc2ZbqLXGIE1ByPL+Y1XlPGaFMFTH1/d2scIqAVtZC4q1EeLjdfojSU/MSZ2TgVMiiFsvoyOP90js/n9M1Etk35mO1+zDgNjNGacbqVZujUptlXHtDgrOrG+BMxG2qJ/lxGk4kb74oqxmd4mbTYsYoa/NmpK/VqfVk8iMbfHA5fMEnb9u3u+OH6H1/TmrdxZl9vabNyb+5DV7xRcXYI6psueWOs83TUrWCPlEv0xjNqt4ugfcgRqED9HlSg6+SMB+u6we1Lh1YchQrUn4w6OOP/X8cjdH2xu1+wf7ViA7Zr5++GjbJFPy8jP7Q44kK96Gc+/ocwiXGQ4yy2I2xbEkxvnP4FjoTy7UcKAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let pair_probabilities_fl = (tbl:(*), A_col:string, B_col:string, scope_col:string)

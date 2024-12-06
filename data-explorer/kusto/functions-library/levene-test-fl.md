@@ -1,25 +1,23 @@
 ---
 title:  levene_test_fl()
-description: This article describes the levene_test_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the levene_test_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
 ---
 # levene_test_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The function `levene_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Levene Test](https://en.wikipedia.org/wiki/Levene%27s_test).
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke levene_test_fl(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -65,7 +63,7 @@ Define the function using the following [let statement](../query/let-statement.m
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
@@ -155,10 +153,3 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | Test #2 | [20.85, 21.89, 23.41] | [35.09, 30.02, 26.52] | 1.6402495788130482 | 0.26950872948841353 |
 | Test #3 | [20.13, 20.5, 21.7, 22.02] | [32.2, 32.79, 33.9, 34.22] | 0.0032989690721642395 | 0.95606240301049072 |
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

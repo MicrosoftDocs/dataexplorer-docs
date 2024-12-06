@@ -3,13 +3,12 @@ title:  sql_request plugin
 description: Learn how to use the sql_request plugin to send an SQL query to an SQL server network endpoint. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/08/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # sql_request plugin
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The `sql_request` plugin sends a SQL query to an Azure SQL Server network endpoint and returns the results.
 If more than one rowset is returned by SQL, only the first one is used.
@@ -19,7 +18,7 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 `evaluate` `sql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters* [`,` *Options*]] `)` [`:` *OutputSchema*]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -43,7 +42,8 @@ SQL Server endpoint.
 
 |Authentication method|Syntax|How|Description|
 |--|--|--|
-|Microsoft Entra integrated|`Authentication="Active Directory Integrated"`|Add to the *ConnectionString* parameter.|This is the preferred authentication method. The user or application authenticates via Microsoft Entra ID to your cluster, and the same token is used to access the SQL Server network endpoint.<br/>The principal must have the appropriate permissions on the SQL resource to perform the requested action. For example, to read from the database the principal needs table SELECT permissions, and to write to an existing table the principal needs UPDATE and INSERT permissions. To write to a new table, CREATE permissions are also required.|
+|Microsoft Entra integrated|`Authentication="Active Directory Integrated"`|Add to the *ConnectionString* parameter.| The user or application authenticates via Microsoft Entra ID to your cluster, and the same token is used to access the SQL Server network endpoint.<br/>The principal must have the appropriate permissions on the SQL resource to perform the requested action. For example, to read from the database the principal needs table SELECT permissions, and to write to an existing table the principal needs UPDATE and INSERT permissions. To write to a new table, CREATE permissions are also required.|
+|Managed identity|`Authentication="Active Directory Managed Identity";User Id={object_id}`|Add to the *ConnectionString* parameter.| The request is executed on behalf of a managed identity. The managed identity must have the appropriate permissions on the SQL resource to perform the requested action.<br/>To enable managed identity authentication, you must add the managed identity to your cluster and alter the managed identity policy. For more information, see [Managed Identity policy](/azure/data-explorer/kusto/management/managed-identity-policy). | 
 |Username and password|`User ID=...; Password=...;`|Add to the *ConnectionString* parameter.|When possible, avoid this method as it may be less secure.|
 |Microsoft Entra access token|`dynamic({'token': h"eyJ0..."})`|Add in the *Options* parameter.|The access token is passed as `token` property in the *Options* argument of the plugin.|
 
@@ -151,11 +151,3 @@ Where:
 > Other forms of specifying the network endpoint are not supported.
 > One cannot omit, for example, the prefix `tcp:` even though it is possible to
 > do so when using the SQL client libraries programmatically.
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

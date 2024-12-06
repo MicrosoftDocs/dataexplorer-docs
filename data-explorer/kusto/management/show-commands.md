@@ -3,9 +3,11 @@ title: .show commands command
 description: Learn how to use the `.show commands` command to view a table with completed management commands.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 08/11/2024
 ---
 # .show commands command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 `.show commands` returns a table with completed [management commands](index.md). These commands are available to query for 30 days.
 
@@ -14,7 +16,7 @@ ms.date: 11/30/2023
 
 ## Permissions
 
-A [database admin or database monitor](./access-control/role-based-access-control.md) can see any command that was invoked on their database. Other users can only see their commands.
+A [database admin or database monitor](../access-control/role-based-access-control.md) can see any command that was invoked on their database. Other users can only see their commands.
 
 ## Syntax
 
@@ -60,11 +62,20 @@ For example:
 
 **Output**
 
+:::moniker range="azure-data-explorer"
 |StartedOn |MemoryPeak |TotalCpu |Text
 |--|--|--|--|
 | 2017-09-28 12:11:27.8155381	| 800396032	| 00:00:04.5312500 |.append Server_Boots <\| let bootStartsSourceTable = SessionStarts; ...|
 | 2017-09-28 11:21:26.7304547	| 750063056	| 00:00:03.8218750 |.set-or-append WebUsage <\| database('CuratedDB').WebUsage_v2 \| summarize ... \| project ...|
 | 2017-09-28 12:16:17.4762522	| 676289120	| 00:00:00.0625000 |.set-or-append  AtlasClusterEventStats with(...) <\| Atlas_Temp(datetime(2017-09-28 12:13:28.7621737), datetime(2017-09-28 12:14:28.8168492))|
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+|StartedOn |MemoryPeak |TotalCpu |Text
+|--|--|--|--|
+| 2017-09-28 12:11:27.8155381	| 800396032	| 00:00:04.5312500 |.append Server_Boots <\| let bootStartsSourceTable = SessionStarts; ...|
+| 2017-09-28 11:21:26.7304547	| 750063056	| 00:00:03.8218750 |.set-or-append WebUsage <\| database('CuratedDB').WebUsage_v2 \| summarize ... \| project ...|
+::: moniker-end 
 
 ### Query the `TotalCpu` column
 

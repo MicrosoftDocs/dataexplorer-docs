@@ -2,10 +2,12 @@
 title:  Parse queries and commands with Kusto.Language
 description: This article describes how to parse queries and commands with the Kusto.Language library.
 ms.topic: reference
-ms.date: 06/13/2023
+ms.date: 08/11/2024
 ---
 
 # Parse queries and commands with Kusto.Language
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 With [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/), you can parse queries and management commands to generate a structured syntax tree. This article outlines the fundamental concepts and methods needed to parse queries with Kusto.Language.
 
@@ -20,12 +22,24 @@ The following table overviews the main methods used in this article.
 
 The following table overviews additional actions that can be taken once a query has been parsed. `code` is the returned value from the previously described methods, meaning it is a parsed `KustoCode` instance.
 
+:::moniker range="azure-data-explorer"
+
 |Goal|Method|Notes|
 |--|--|--|
 |Find the table for a column|`code.Globals.GetTable(`*column*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
 |Find the database for a table|`code.Globals.GetDatabase(`*table*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
 |Find the cluster for a database|`code.Globals.GetCluster(`*database*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
 |Get diagnostic information like errors and warnings|`code.GetDiagnostics()`|`Parse` provides syntax-related diagnostic information, while `ParseAndAnalyze` provides diagnostic information for both syntax and semantics.|
+::: moniker-end
+
+:::moniker range="azure-data-explorer"
+
+|Goal|Method|Notes|
+|--|--|--|
+|Find the table for a column|`code.Globals.GetTable(`*column*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
+|Find the database for a table|`code.Globals.GetDatabase(`*table*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
+|Get diagnostic information like errors and warnings|`code.GetDiagnostics()`|`Parse` provides syntax-related diagnostic information, while `ParseAndAnalyze` provides diagnostic information for both syntax and semantics.|
+::: moniker-end
 
 ## Parse a query
 

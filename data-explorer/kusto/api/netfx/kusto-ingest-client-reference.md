@@ -1,11 +1,13 @@
 ---
 title:  Kusto.Ingest client interfaces and factory classes
-description: This article describes Kusto.Ingest client interfaces and factory classes in Azure Data Explorer.
+description: This article describes Kusto.Ingest client interfaces and factory classes.
 ms.reviewer: ohbitton
 ms.topic: reference
-ms.date: 05/19/2020
+ms.date: 08/11/2024
 ---
 # Kusto.Ingest client interfaces and classes
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 The main interfaces and classes in the Kusto Ingest .NET library are:
 
@@ -344,13 +346,13 @@ KustoIngestionProperties class contains basic ingestion properties for fine cont
 |DatabaseName |Name of the database to ingest into |
 |TableName |Name of the table to ingest into |
 |DropByTags |Tags that each extent will have. DropByTags are permanent and can be used as follows: `.show table T extents where tags has 'some tag'` or `.drop extents <| .show table T extents where tags has 'some tag'` |
-|IngestByTags |Tags that are written per extent. Can later be used with the `IngestIfNotExists` property to avoid ingesting the same data twice. For more information, see [ingest-by: tags](../../../kusto/management/extent-tags.md). |
+|IngestByTags |Tags that are written per extent. Can later be used with the `IngestIfNotExists` property to avoid ingesting the same data twice. For more information, see [ingest-by: tags](../../management/extent-tags.md). |
 |IngestionMapping|Holds either a reference to an exiting mapping or a list of column mappings|
 |AdditionalTags |Extra tags as needed |
 |IngestIfNotExists |List of tags that you don't want to ingest again (per table) |
 |ValidationPolicy |Data validation definitions. |
 |Format |Format of the data being ingested |
-|AdditionalProperties | Other properties that are passed as [ingestion properties](../../../ingestion-properties.md) to the ingestion command. The properties are passed because not all of the ingestion properties are represented in a separate member of this class|
+|AdditionalProperties | Other properties that are passed as [ingestion properties](../../ingestion-properties.md) to the ingestion command. The properties are passed because not all of the ingestion properties are represented in a separate member of this class|
 
 ```csharp
 public class KustoIngestionProperties
@@ -364,7 +366,7 @@ public class KustoIngestionProperties
     public IngestionMapping IngestionMapping { get; set; }
     public ValidationPolicy ValidationPolicy { get; set; }
     public DataSourceFormat? Format { get; set; }
-    public bool IgnoreSizeLimit { get; set; } // Determines whether the limit of 4GB per single ingestion source should be ignored. Defaults to false.
+    public bool IgnoreSizeLimit { get; set; } // Determines whether the limit of 6 GB per single ingestion source should be ignored. Defaults to false.
     public IDictionary<string, string> AdditionalProperties { get; set; }
 
     public KustoIngestionProperties(string databaseName, string tableName);

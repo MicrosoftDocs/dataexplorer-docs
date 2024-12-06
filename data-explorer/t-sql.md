@@ -7,7 +7,10 @@ ms.date: 03/08/2023
 ---
 # Query data using T-SQL
 
-The Azure Data Explorer query editor supports the use of T-SQL in addition to its primary query language, [Kusto query language (KQL)](kusto/query/index.md). While KQL is the recommended query language, T-SQL can be useful for tools that are unable to use KQL.
+<!-- //TODO delete and redirect to kusto -->
+
+
+The Azure Data Explorer query editor supports the use of T-SQL in addition to its primary query language, [Kusto query language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true). While KQL is the recommended query language, T-SQL can be useful for tools that are unable to use KQL.
 
 > [!NOTE]
 > Only Data Query Language (DQL) commands are supported. For more information, see [Coverage](#coverage).
@@ -80,7 +83,7 @@ StormEvents
 
 ## Run stored functions
 
-When using T-SQL, we recommend that you create optimized KQL queries and encapsulate them in [stored functions](kusto/query/schema-entities/stored-functions.md), as doing so minimizes T-SQL code and may increase performance. For example, if you have a stored function as described in the following table, you can execute it as shown in the code example.
+When using T-SQL, we recommend that you create optimized KQL queries and encapsulate them in [stored functions](/kusto/query/schema-entities/stored-functions?view=azure-data-explorer&preserve-view=true), as doing so minimizes T-SQL code and may increase performance. For example, if you have a stored function as described in the following table, you can execute it as shown in the code example.
 
 |Name |Parameters|Body|Folder|DocString
 |---|---|---|---|---|
@@ -95,7 +98,7 @@ SELECT * FROM kusto.MyFunction(10)
 
 ## Set request properties
 
-[Request properties](kusto/api/rest/request-properties.md) control how a query executes and returns results. To set request properties with T-SQL, preface your query with one or more statements with the following syntax:
+[Request properties](/kusto/api/rest/request-properties?view=azure-data-explorer&preserve-view=true) control how a query executes and returns results. To set request properties with T-SQL, preface your query with one or more statements with the following syntax:
 
 ### Syntax
 
@@ -105,14 +108,14 @@ SELECT * FROM kusto.MyFunction(10)
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*requestPropertyName*| `string` | :heavy_check_mark:|The name of the [request property](kusto/api/rest/request-properties.md) to set.|
+|*requestPropertyName*| `string` | :heavy_check_mark:|The name of the [request property](/kusto/api/rest/request-properties?view=azure-data-explorer&preserve-view=true) to set.|
 |*type*| `string` | :heavy_check_mark:|The [T-SQL data type](/sql/t-sql/data-types/data-types-transact-sql) of the value.|
 |*value*|scalar| :heavy_check_mark:|The value to assign to the request property.|
 
 > [!NOTE]
 >
 > * Two statements must be separated by a semicolon, and there should be no empty line before the query.
-> * Request properties apply only to the [tabular expression statements](kusto/query/tabular-expression-statements.md) that immediately follow.
+> * Request properties apply only to the [tabular expression statements](/kusto/query/tabular-expression-statements?view=azure-data-explorer&preserve-view=true) that immediately follow.
 
 ### Examples
 
@@ -128,7 +131,7 @@ The following table shows examples for how to set request properties with T-SQL.
 |`notruncation`|DECLARE @__kql_set_notruncation BIT = 1;|
 |`norequesttimeout`|DECLARE @__kql_set_norequesttimeout BIT = 0;|
 
-To set request properties with KQL, see [set statement](kusto/query/set-statement.md).
+To set request properties with KQL, see [set statement](/kusto/query/set-statement?view=azure-data-explorer&preserve-view=true).
 
 ## Coverage
 
@@ -156,4 +159,4 @@ Azure Data Explorer offers limited support for T-SQL. The following table outlin
 ## Related content
 
 * Learn about [SQL Server emulation](sql-server-emulation-overview.md) in Azure Data Explorer
-* Use the [SQL to Kusto Query Language cheat sheet](kusto/query/sql-cheat-sheet.md)
+* Use the [SQL to Kusto Query Language cheat sheet](/kusto/query/sql-cheat-sheet?view=azure-data-explorer&preserve-view=true)

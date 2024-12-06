@@ -1,15 +1,14 @@
 ---
 title:  series_uv_change_points_fl()
-description: This article describes the series_uv_change_points_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the series_uv_change_points_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "azure-data-explorer"
 ---
 # series_uv_change_points_fl()
 
-::: zone pivot="azuredataexplorer"
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The function `series_uv_change_points_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that finds change points in time series by calling the [Univariate Anomaly Detection API](/azure/cognitive-services/anomaly-detector/overview), part of [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services). The function accepts a limited set of time series as numerical dynamic arrays, the change point detection threshold, and the minimum size of the stable trend window. Each time series is converted into the required JSON format and posts it to the Anomaly Detector service endpoint. The service response contains dynamic arrays of change points, their respective confidence, and the detected seasonality.
 
@@ -19,7 +18,7 @@ The function `series_uv_change_points_fl()` is a [user-defined function (UDF)](.
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* A cluster and database. [Create a cluster and database](../../create-cluster-and-database.md).
+* A cluster and database [Create a cluster and database](/azure/data-explorer/create-cluster-and-database) or a [KQL database](/fabric/real-time-intelligence/create-database) with editing permissions and data.
 * The Python plugin must be [enabled on the cluster](../query/python-plugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 * [Create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster to access the anomaly detection service endpoint.
@@ -29,7 +28,7 @@ The function `series_uv_change_points_fl()` is a [user-defined function (UDF)](.
 
 `T | invoke series_uv_change_points_fl(`*y_series* [`,` *score_threshold* [`,` *trend_window* [`,` *tsid*]]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -86,7 +85,7 @@ let series_uv_change_points_fl=(tbl:(*), y_series:string, score_threshold:real=0
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required. In the following function definition, replace `YOUR-AD-RESOURCE-NAME` in the uri and `YOUR-KEY` in the `Ocp-Apim-Subscription-Key` of the header with your Anomaly Detector resource name and key.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required. In the following function definition, replace `YOUR-AD-RESOURCE-NAME` in the uri and `YOUR-KEY` in the `Ocp-Apim-Subscription-Key` of the header with your Anomaly Detector resource name and key.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
@@ -205,11 +204,3 @@ ts
 The following graph shows change points on a time series.
 
 ![Graph showing change points on a time series.](media/series-uv-change-points-fl/uv-change-points-example-1.png)
-
-::: zone-end
-
-::: zone pivot="azuremonitor, fabric"
-
-This feature isn't supported.
-
-::: zone-end

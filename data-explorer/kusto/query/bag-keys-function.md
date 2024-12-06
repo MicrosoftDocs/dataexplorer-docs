@@ -3,9 +3,11 @@ title:  bag_keys()
 description: Learn how to use the bag_keys() function to enumerate the root keys in a dynamic property bag object.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # bag_keys()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Enumerates all the root keys in a dynamic property bag object.
 
@@ -13,7 +15,7 @@ Enumerates all the root keys in a dynamic property bag object.
 
 `bag_keys(`*object*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,8 +29,10 @@ An array of keys, order is undetermined.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XMSwrDIBCA4b2nmN0ouEnSBwg9iUjRjIRQaxdNICHt3WvzqN1kZjP8fAzZLq0LnreR/KDCIzYSSNEY7b2tBWgGaYrUlsIntKjQoQSsURVl9RYSZlTuoQlpkYnOstqT+kfNZg/Zxj6EtR7/PmzylFt6usZzjtoIZtgL/ND5SHDz4xMu4Gxz/Z6cxAfYZXgQDQEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(index:long, d:dynamic) [

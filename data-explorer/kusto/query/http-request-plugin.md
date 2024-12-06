@@ -4,13 +4,12 @@ description: Learn how to use the http_request plugin to send an HTTP request an
 services: data-explorer
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 04/03/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # http_request plugin
 
-::: zone pivot="azuredataexplorer, fabric"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 The `http_request` plugin sends an HTTP GET request and converts the response into a table.
 
@@ -23,7 +22,7 @@ The `http_request` plugin sends an HTTP GET request and converts the response in
 
 `evaluate` `http_request` `(` *Uri* [`,` *RequestHeaders* [`,` *Options*]] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -43,7 +42,7 @@ The `http_request` plugin sends an HTTP GET request and converts the response in
 To authenticate, use the HTTP standard `Authorization` header or any custom header supported by the web service.
 
 > [!NOTE]
-> If the query includes confidential information, make sure that the relevant parts of the query text are obfuscated so that they'll be omitted from any tracing. For more information, see [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals).
+> If the query includes confidential information, make sure that the relevant parts of the query text are obfuscated so that they'll be omitted from any tracing. For more information, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Returns
 
@@ -99,11 +98,3 @@ evaluate http_request(Uri)
 | westeurope    |                                                | USD          | 2021-09-28T00:00:00Z | false                | EU West  | 5d157295-441c-5ea7-ba7c-5083026dc456 | SQL Server vCore                                     | DZH318Z08M23 | Azure Purview Scanning Ingestion and Classification |           0 | Analytics     | DZH318Q66D0F | Azure Purview | DZH318Z08M23/000F | SQL Server                               |                0 | Consumption | 1 Hour        |         0 |
 | westeurope    |                                                | USD          | 2021-09-28T00:00:00Z | false                | EU West  | 0745df0d-ce4f-52db-ac31-ac574d4dcfe5 | Standard Capacity Unit                               | DZH318Z08M22 | Azure Purview Data Map                              |       0.411 | Analytics     | DZH318Q66D0F | Azure Purview | DZH318Z08M22/0002 | Standard                                 |                0 | Consumption | 1 Hour        |     0.411 |
 | westeurope    |                                                | USD          | 2021-09-28T00:00:00Z | false                | EU West  | 811e3118-5380-5ee8-a5d9-01d48d0a0627 | Standard vCore                                       | DZH318Z08M23 | Azure Purview Scanning Ingestion and Classification |        0.63 | Analytics     | DZH318Q66D0F | Azure Purview | DZH318Z08M23/0009 | Standard                                 |                0 | Consumption | 1 Hour        |      0.63 |
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor.
-
-::: zone-end

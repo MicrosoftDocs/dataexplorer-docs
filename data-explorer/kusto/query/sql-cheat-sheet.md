@@ -3,14 +3,18 @@ title:  SQL to Kusto query translation
 description: Learn about the Kusto Query Language equivalent of SQL queries.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/19/2023
+ms.date: 08/11/2024
 ---
 # SQL to Kusto Query Language cheat sheet
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 If you're familiar with SQL and want to learn KQL, translate SQL queries into KQL by prefacing the SQL query with a comment line, `--`, and the keyword `explain`. The output shows the KQL version of the query, which can help you understand the KQL syntax and concepts.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9PV5XKNCPBx9PRT4Ap29XF1DlFw9g/1C4l38nTX0NJUSCxWcFZwC/L3VQguyS/KdS1LzSspBgDZdzUzNQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 --
@@ -40,9 +44,9 @@ The following table shows sample queries in SQL and their KQL equivalents.
 | -- | `-- substring`<br>`SELECT * FROM dependencies`<br>`WHERE type like "%blob%"` | `// substring`<br>`dependencies`<br>`| where type has "blob"` | [has](has-operator.md) |
 | -- | `-- wildcard`<br>`SELECT * FROM dependencies`<br>`WHERE type like "Azure%"` | `// wildcard`<br>`dependencies`<br>`| where type startswith "Azure"`<br>`// or`<br>`dependencies`<br>`| where type matches regex "^Azure.*"` | [`startswith`](startswith-operator.md)</br>[matches regex](matches-regex-operator.md) |
 | Comparison (boolean) | `SELECT * FROM dependencies`<br>`WHERE !(success)` | `dependencies`<br>`| where success == False` | [Logical operators](logical-operators.md) |
-| Grouping, Aggregation | `SELECT name, AVG(duration) FROM dependencies`<br>`GROUP BY name` | `dependencies`<br>`| summarize avg(duration) by name` | [summarize](summarize-operator.md)</br>[avg()](avg-aggfunction.md) |
-| Distinct | `SELECT DISTINCT name, type  FROM dependencies` | `dependencies`<br>`| summarize by name, type` | [summarize](summarize-operator.md)</br>[distinct](distinctoperator.md) |
-| -- | `SELECT name, COUNT(DISTINCT type) `<br>` FROM dependencies `<br>` GROUP BY name` | ` dependencies `<br>`| summarize by name, type | summarize count() by name `<br>`// or approximate for large sets `<br>` dependencies `<br>` | summarize dcount(type) by name  ` | [count()](count-aggregation-function.md)</br>[dcount()](dcount-aggfunction.md) |
+| Grouping, Aggregation | `SELECT name, AVG(duration) FROM dependencies`<br>`GROUP BY name` | `dependencies`<br>`| summarize avg(duration) by name` | [summarize](summarize-operator.md)</br>[avg()](avg-aggregation-function.md) |
+| Distinct | `SELECT DISTINCT name, type  FROM dependencies` | `dependencies`<br>`| summarize by name, type` | [summarize](summarize-operator.md)</br>[distinct](distinct-operator.md) |
+| -- | `SELECT name, COUNT(DISTINCT type) `<br>` FROM dependencies `<br>` GROUP BY name` | ` dependencies `<br>`| summarize by name, type | summarize count() by name `<br>`// or approximate for large sets `<br>` dependencies `<br>` | summarize dcount(type) by name  ` | [count()](count-aggregation-function.md)</br>[dcount()](dcount-aggregation-function.md) |
 | Column aliases, Extending | `SELECT operationName as Name, AVG(duration) as AvgD FROM dependencies`<br>`GROUP BY name` | `dependencies`<br>`| summarize AvgD = avg(duration) by Name=operationName` | [Alias statement](alias-statement.md) |
 | -- | `SELECT conference, CONCAT(sessionid, ' ' , session_title) AS session FROM ConferenceSessions` | `ConferenceSessions`<br>`| extend session=strcat(sessionid, " ", session_title)`<br>`| project conference, session` | [strcat()](strcat-function.md)</br>[project](project-operator.md) |
 | Ordering | `SELECT name, timestamp FROM dependencies`<br>`ORDER BY timestamp ASC` | `dependencies`<br>`| project name, timestamp`<br>`| sort by timestamp asc nulls last` | [sort](sort-operator.md) |

@@ -1,11 +1,13 @@
 ---
 title:  percentile(), percentiles()
-description: Learn how to use the percentile(), percentiles() functions to calculate estimates for nearest rank percentiles in Azure Data Explorer.
+description:  Learn how to use the percentile(), percentiles() functions to calculate estimates for nearest rank percentiles.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 08/11/2024
 ---
 # percentile(), percentiles() (aggregation function)
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The `percentile()` function calculates an estimate for the specified [nearest-rank percentile](#nearest-rank-percentile) of the population defined by *expr*.
 The accuracy depends on the density of population in the region of the percentile.
@@ -14,7 +16,7 @@ The accuracy depends on the density of population in the region of the percentil
 
 To calculate weighted percentiles, see [percentilesw()](percentilesw-aggregation-function.md).
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Syntax
 
@@ -22,7 +24,7 @@ To calculate weighted percentiles, see [percentilesw()](percentilesw-aggregation
 
 `percentiles(`*expr*`,` *percentiles*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -45,8 +47,10 @@ Returns a table with the estimates for *expr* of the specified percentiles in th
 
 The following example shows the value of `DamageProperty` being larger than 95% of the sample set and smaller than 5% of the sample set.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKC7NzU0syqxKVShILUoGCmbmpGq4JOYmpqcGFOUDxUoqdRQsTTUVkioVgksSS1IBgwSa1j8AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents | summarize percentile(DamageProperty, 95) by State
@@ -73,8 +77,10 @@ The results table shown includes only the first 10 rows.
 
 The following example shows the value of `DamageProperty` simultaneously calculated using 5, 50 (median) and 95.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKC7NzU0syqxKVShILUoGCmbmpBZruCTmJqanBhTlAwVLKnUUTIHIQEfB0lRTIalSIbgksSQVAL6yeg1HAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents | summarize percentiles(DamageProperty, 5, 50, 95) by State
@@ -123,8 +129,10 @@ Returns an estimate for *expr* of the specified percentiles in the group as a si
 
 Multiple percentiles can be obtained as an array in a single dynamic column, instead of in multiple columns as with [percentiles()](percentiles-aggregation-function.md).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAAwspSswrTssvyk1NCU7NK84vKnZJLEnk5apRKC7NzU0syqxKVShILUpOzSvJzEktjk8sKkqs1AhLzClN1VEw1VEwAmJTAx0FcyBtaaqpo5BYlg6R1lRIqlSAmOmXmJsKANY0tLFpAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 TransformedSensorsData
@@ -153,8 +161,10 @@ The results table displays only the first 10 rows.
 
 Percentiles for `percentiles_array` can be specified in a dynamic array of integer or floating-point numbers. The array must be constant but doesn't have to be literal.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAAwspSswrTssvyk1NCU7NK84vKnZJLEnkqlEoLs3NTSzKrEpVKEgtSk7NK8nMSS2OTywqSqzUCEvMKU3VUUipzEvMzUzWiDbVUTACYlMDHQVzIG1pGqupqaOQWJYOUampkFSpADHdLzE3FQAgg+RhcwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 TransformedSensorsData
@@ -198,3 +208,7 @@ The percentiles aggregate provides an approximate value using [T-Digest](https:/
 > * The bounds on the estimation error vary with the value of the requested percentile. The best accuracy is at both ends of the [0..100] scale. Percentiles 0 and 100 are the exact minimum and maximum values of the distribution. The accuracy gradually decreases towards the middle of the scale. It's worst at the median and is capped at 1%.
 > * Error bounds are observed on the rank, not on the value. Suppose percentile(X, 50) returned a value of Xm. The estimate guarantees that at least 49% and at most 51% of the values of X are less or equal to Xm. There is no theoretical limit on the difference between Xm and the actual median value of X.
 > * The estimation may sometimes result in a precise value but there are no reliable conditions to define when it will be the case.
+
+## Related content
+
+* [avg function](avg-aggregation-function.md)

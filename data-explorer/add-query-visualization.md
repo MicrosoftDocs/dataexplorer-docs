@@ -9,16 +9,16 @@ ms.date: 08/02/2023
 
 In this article, you'll learn how to create and customize visuals from query results, using the UI like that found in Azure Data Explorer Dashboards. These visuals can be further manipulated, and can be pinned in a [dashboard](azure-data-explorer-dashboards.md). The addition or modification of these visuals doesn't require rerunning the query, which can be especially useful for heavy queries.
 
-For a full list of available visuals, see [Visualization](kusto/query/render-operator.md#visualization). For visuals that are only available in the web UI or dashboards, see [Dashboard-specific visuals](dashboard-visuals.md).
+For a full list of available visuals, see [Visualization](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true#visualization). For visuals that are only available in the web UI or dashboards, see [Dashboard-specific visuals](dashboard-visuals.md).
 
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-database-portal.md).
+* An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-and-database.md).
 
 ## Add a visual to a query
 
-1. [Run a query](web-ui-query-overview.md#write-and-run-queries) in the Azure Data Explorer web UI. For example, you can use the following query: 
+1. [Run a query](web-ui-query-overview.md#write-and-run-queries) in the Azure Data Explorer web UI. For example, you can use the following query:
 
     > [!div class="nextstepaction"]
     > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUPd29At2DFYHyhSX5uYmFmVWpYJYGi6JuYnpqQFF+QWpRSWVmgpJlQpgM0IqC1IBD28nVFIAAAA=" target="_blank">Run the query</a>
@@ -35,7 +35,7 @@ For a full list of available visuals, see [Visualization](kusto/query/render-ope
 
     A pane opens on the right side, with the **Visual Formatting** tab selected.
 
-1. Select the **Visual type** from the dropdown. For a list of available visualizations, see [Visualizations](kusto/query/render-operator.md#visualization). 
+1. Select the **Visual type** from the dropdown. For a list of available visualizations, see [Visualizations](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true#visualization). 
 
     :::image type="content" source="media/add-query-visualization/select-visual-type.png" alt-text="Screenshot of visual type dropdown in Azure Data Explorer web UI.":::
 
@@ -53,12 +53,12 @@ If you've added a visual through the UI, you can change this visual by selecting
 
 ### Visual created in query
 
-If you've created a visual using the [render operator](kusto/query/render-operator.md), you can edit the visual by selecting **Visual** in the results grid. 
+If you've created a visual using the [render operator](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true), you can edit the visual by selecting **Visual** in the results grid.
 
 :::image type="content" source="media/add-query-visualization/change-rendered-visual.png" alt-text="Screenshot of rendered visual as a bar chart that has been changed to a column chart in the visual formatting pane in Azure Data Explorer web UI." lightbox="media/add-query-visualization/change-rendered-visual.png":::
 
 > [!IMPORTANT]
-> Notice that the visual formatting pane has changed the visual representation, but has not modified the original query. 
+> Notice that the visual formatting pane has changed the visual representation, but has not modified the original query.
 
 ## Pin to dashboard
 

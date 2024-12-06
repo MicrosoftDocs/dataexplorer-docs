@@ -3,22 +3,27 @@ title:  geo_point_to_s2cell()
 description: Learn how to use the geo_point_to_s2cell() function to calculate the S2 cell token string value of a geographic location.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/04/2024
+ms.date: 08/11/2024
 ---
 # geo_point_to_s2cell()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the S2 cell token string value of a geographic location.
 
+Read more about [S2 cell hierarchy](http://s2geometry.io/devguide/s2cell_hierarchy).
 S2 cell can be a useful geospatial clustering tool. An S2 cell is a cell on a spherical surface and it has geodesic edges. S2 cells are part of a hierarchy dividing up the Earth's surface. They have a maximum of 31 levels, ranging from zero to 30, which define the number of times a cell is subdivided. Levels range from the largest coverage on level zero with area coverage of 85,011,012.19km², to the lowest coverage of 0.44 cm² at level 30. As S2 cells are subdivided at higher levels, the cell center is preserved well. Two geographic locations can be very close to each other but they have different S2 cell tokens.
 
 >[!NOTE]
 > If you invoke the [geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md) function on an S2 cell token string that was calculated on longitude x and latitude y, the function won't necessarily return x and y.
 
+Read more about [S2 cell hierarchy](http://s2geometry.io/devguide/s2cell_hierarchy).
+
 ## Syntax
 
 `geo_point_to_s2cell(`*longitude*`,` *latitude*`,` [ *level* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -70,6 +75,8 @@ For every level, the size of the S2 cell is similar but not exactly equal. Nearb
 |29|12 mm|18 mm|
 |30|6 mm|9 mm|
 
+The table source can be found [in this S2 Cell statistical resource](http://s2geometry.io/resources/s2cell_statistics).
+
 For comparison with other available grid systems, see [geospatial clustering with Kusto Query Language](geospatial-grid-systems.md).
 
 ## Examples
@@ -78,8 +85,10 @@ For comparison with other available grid systems, see [geospatial clustering wit
 
 The following example finds US storm events aggregated by S2 cells.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQoCMRBEe8F%2F2DIHVwmW1wh2dn5AWHPLJZpkw2ZPUfx4jWch2A3MvDdHZUn7K2Wt69UTivCZnMKOppAPnPtvQm1tnVNCCQ%2BC0x08Vj9MxLZwyGqVbd04itH8sz1su197o5Zxw9z7XDAuHtO0n7FQHkmgOlQlcR5F4RbUg7mEPA4JS%2FcCZ2nOhL0AAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -95,8 +104,10 @@ StormEvents
 
 The following example calculates the S2 cell ID.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2Sk7NyVGwVUhPzY8vyAcKxZfkx0NENXQtDPQMLU0tjCx1FIxM9SwMjIwMTXUULDQBug9pJTwAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s2cell = geo_point_to_s2cell(-80.195829, 25.802215, 8)
@@ -112,8 +123,10 @@ print s2cell = geo_point_to_s2cell(-80.195829, 25.802215, 8)
 
 The following example finds groups of coordinates. Every pair of coordinates in the group resides in the S2 cell with a maximum area of 1632.45 km².
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42QzWrDMAyA73kK0VMCpj9J/1boYdtjlGLcRE3FHCvYymFjD1+3Zml32qyD0Yf0CakxEuNkMbdcGyF2mppdEE+uVWDZtSRDgzuPxsY8VoxpkR0ygMnrRMFiPl2U1VLBqlI39pZYtdq8jOw9sfV2WSZ2zL4hDF1nPH0h1Dw4gX3680LBP99sBiTYBejRQ+t56JMiey762S3EAZ35QG0pyPPGxR9yciAXTP5f5tMnhLJGa6O5RdY9kxMtrBPNxws+jqdgW9zMoYR7I58f7itUpqIvjwEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(location_id:string, longitude:real, latitude:real)
@@ -138,8 +151,10 @@ datatable(location_id:string, longitude:real, latitude:real)
 
 The following example produces an empty result because of the invalid coordinate input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2Sk7NyVGwVUhPzY8vyAcKxZfkx0NENYwNDHQMdSw0AU8vTgcrAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s2cell = geo_point_to_s2cell(300,1,8)
@@ -153,8 +168,10 @@ print s2cell = geo_point_to_s2cell(300,1,8)
 
 The following example produces an empty result because of the invalid level input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2Sk7NyVGwVUhPzY8vyAcKxZfkx0NENQx1DHWMTTUB9oFeACoAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s2cell = geo_point_to_s2cell(1,1,35)
@@ -168,8 +185,10 @@ print s2cell = geo_point_to_s2cell(1,1,35)
 
 The following example produces an empty result because of the invalid level input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2Sk7NyVGwVUhPzY8vyAcKxZfkx0NENQx1DHWAIhp5pTk5mpoAYUJIkTEAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s2cell = geo_point_to_s2cell(1,1,int(null))

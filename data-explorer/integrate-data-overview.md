@@ -8,7 +8,7 @@ ms.date: 01/30/2024
 ---
 # Data integrations overview
 
-[Data ingestion](ingest-data-overview.md) is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for [query](kusto/query/index.md). Azure Data Explorer provides several connectors for data ingestion.
+[Data ingestion](ingest-data-overview.md) is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for [query](/kusto/query/index?view=azure-data-explorer&preserve-view=true). Azure Data Explorer provides several connectors for data ingestion.
 
 Use the following filters to see other connectors, tools, and integrations are available for your use case.
 
@@ -45,6 +45,7 @@ The following tables summarizes the available data connectors, tools, and integr
 | [Azure Functions](integrate-overview.md#azure-functions) | **Export**<br /><br />**Ingestion** | | | First party | Workflow integrations |
 | [Azure IoT Hubs](integrate-overview.md#azure-iot-hubs) | **Ingestion** | :heavy_check_mark: | | First party | IoT data |
 | [Azure Stream Analytics](integrate-overview.md#azure-stream-analytics) | **Ingestion** | :heavy_check_mark: | | First party | Event processing |
+| [Cribl Stream](integrate-overview.md#cribl-stream) | **Ingestion** |:heavy_check_mark: | | First party | Telemetry, Logs, Metrics, Machine data processing |
 | [Fluent Bit](integrate-overview.md#fluent-bit) | **Ingestion** | | | [Open source](https://github.com/fluent/fluent-bit) | Logs, Metrics, Traces |
 | [Logstash](integrate-overview.md#logstash) | **Ingestion** | | | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
 | [NLog](integrate-overview.md#nlog) | **Ingestion** | :heavy_check_mark: | :heavy_check_mark: | First party, [Open source](https://github.com/Azure/azure-kusto-nlog-sink) | Telemetry, Logs, Metrics |

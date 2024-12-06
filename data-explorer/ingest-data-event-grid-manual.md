@@ -11,9 +11,9 @@ ms.date: 06/03/2024
 >
 > * [Portal](create-event-grid-connection.md)
 > * [Portal - create resources manually](ingest-data-event-grid-manual.md)
-> * [C#](data-connection-event-grid-csharp.md)
-> * [Python](data-connection-event-grid-python.md)
-> * [Azure Resource Manager template](data-connection-event-grid-resource-manager.md)
+> * [C#](create-event-grid-connection-sdk.md?tabs=c-sharp)
+> * [Python](create-event-grid-connection-sdk.md?tabs=python)
+> * [Azure Resource Manager template](create-event-grid-connection.md?tabs=arm-template)
 
 Azure Data Explorer offers continuous ingestion from Azure Storage (Azure Blob storage and Azure Data Lake Storage Gen2) using an [Event Grid Ingestion pipeline](ingest-data-event-grid-overview.md). In the Event Grid ingestion pipeline, an Azure Event Grid service routes blob created or blob renamed events from a storage account to Azure Data Explorer via an Azure Event Hubs.
 

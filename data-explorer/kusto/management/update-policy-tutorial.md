@@ -2,11 +2,13 @@
 title: "Tutorial: Route data using table update policies"
 description: "Learn how to use table update policies to perform complex transformations and save the results to one or more destination tables."
 ms.topic: tutorial
-ms.date: 02/15/2024
+ms.date: 08/11/2024
 
 #customer intent: As a data engineer, I want to learn how to use table update policies to perform complex transformations and save the results to one or more destination tables so that I can route data to different tables based on the data content.
 ---
 # Tutorial: Route data using table update policies
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 When your source data involves simple and quick transformations, it's best to perform them upstream in the pipeline by using an event stream. However, this approach might not work well for other transformations that are complex or require specialized functionality to operate.
 
@@ -23,7 +25,12 @@ The example in this tutorial demonstrates how to use update policies for [data r
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database) **or** a [KQL database in Real-Time Analytics in Microsoft Fabric](/fabric/real-time-analytics/create-database).
+:::moniker range="azure-data-explorer"
+* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database)
+::: moniker-end
+:::moniker range="microsoft-fabric"
+* a [KQL database in Real-Time Intelligence in Microsoft Fabric](/fabric/real-time-intelligence/create-database).
+::: moniker-end
 
 ## 1 - Create tables and update policies
 

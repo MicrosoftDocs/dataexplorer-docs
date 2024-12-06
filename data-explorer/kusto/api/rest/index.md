@@ -1,11 +1,13 @@
 ---
 title:  REST API overview
-description: This article describes how to use the REST API overview for Azure Data Explorer.
+description: This article describes how to use the REST API.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/19/2023
+ms.date: 08/11/2024
 ---
 # REST API overview
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 This article describes how to interact with your cluster over HTTPS.
 
@@ -36,5 +38,5 @@ to interact with the service.
 * [REST API reference](/rest/api/azurerekusto/)
 * [Query management HTTP request](request.md)
 * [Query management HTTP response](response.md)
-* [Query v2 HTTP response](response2.md)
+* [Query v2 HTTP response](response-v2.md)
 * [Streaming ingestion HTTP request](streaming-ingest.md)

@@ -3,21 +3,23 @@ title:  Export data to cloud storage
 description: Learn how to export data to cloud storage.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/05/2023
+ms.date: 08/11/2024
 ---
 # Export data to cloud storage
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Executes a query and writes the first result set to an external cloud storage, specified by a [storage connection string](../../api/connection-strings/storage-connection-strings.md).
 
 ## Permissions
 
-You must have at least [Database Viewer](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Viewer](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.export` [`async`] [`compressed`] `to` *OutputDataFormat* `(` *StorageConnectionString* [`,` ...] `)` [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`] `<|` *Query*
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,7 +32,7 @@ You must have at least [Database Viewer](../access-control/role-based-access-con
 | *PropertyName*, *PropertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!NOTE]
-> We highly recommended exporting data to storage that is co-located in the same region as the cluster itself. This includes data that is exported so it can be transferred to another cloud service in other regions. Writes should be done locally, while reads can happen remotely.
+> We highly recommended exporting data to storage that is co-located in the same region as the database itself. This includes data that is exported so it can be transferred to another cloud service in other regions. Writes should be done locally, while reads can happen remotely.
 
 ## Supported properties
 
@@ -56,10 +58,10 @@ The following table lists the supported authentication methods and the permissio
 
 |Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
 |--|--|--|
-|[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Contributor|Contributor|
-|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Write|Write|
-|[Microsoft Entra access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|No extra permissions required|No extra permissions required|
-|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|No extra permissions required|No extra permissions required|
+|[Impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation)|Storage Blob Data Contributor|Contributor|
+|[Shared Access (SAS) token](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|Write|Write|
+|[Microsoft Entra access token](../../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No extra permissions required|No extra permissions required|
+|[Storage account access key](../../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No extra permissions required|No extra permissions required|
 
 ## Returns
 
@@ -80,8 +82,8 @@ export continues in the background until completion. The operation ID returned
 by the command can be used to track its progress and ultimately its results
 via the following commands:
 
-* [`.show operations`](../operations.md#show-operations): Track progress.
-* [`.show operation details`](../operations.md#show-operation-details): Get completion results.
+* [`.show operations`](../show-operations.md): Track progress.
+* [`.show operation details`](../show-operation-details.md): Get completion results.
 
 For example, after a successful completion, you can retrieve the results using:
 
@@ -115,20 +117,21 @@ Column name labels are added as the first row for each blob.
 Export commands can transiently fail during execution. [Continuous export](continuous-data-export.md) will automatically retry the command. Regular export commands ([export to storage](export-data-to-storage.md), [export to external table](export-data-to-an-external-table.md)) don't perform any retries.
 
 * When the export command fails, artifacts that were already written to storage aren't deleted. These artifacts remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written.
-* The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [`.show operations`](../operations.md#show-operations) and [`.show operation details`](../operations.md#show-operation-details) commands.
+* The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [`.show operations`](../show-operations.md) and [`.show operation details`](../show-operation-details.md) commands.
 
 ### Storage failures
 
 By default, export commands are distributed such that there may be many concurrent writes to storage. The level of distribution depends on the type of export command:
 
 * The default distribution for regular `.export` command is `per_shard`, which means all [extents](../extents-overview.md) that contain data to export write to storage concurrently. 
-* The default distribution for [export to external table](export-data-to-an-external-table.md) commands is `per_node`, which means the concurrency is the number of nodes in the cluster.
+
+* The default distribution for [export to external table](export-data-to-an-external-table.md) commands is `per_node`, which means the concurrency is the number of nodes.
 
 When the number of extents/nodes is large, this may lead to high load on storage that results in storage throttling, or transient storage errors. The following suggestions may overcome these errors (by order of priority):
 
-* Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azurestorage-azuredatalake.md) (the load will be evenly distributed between the accounts).
+* Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azure-storage.md) (the load will be evenly distributed between the accounts).
 * Reduce the concurrency by setting the distribution hint to `per_node` (see command properties).
-* Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command limits the number of nodes writing to storage concurrently to 50% of the cluster nodes:
+* Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/rest/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command limits the number of nodes writing to storage concurrently to 50% of the nodes:
 
     ```kusto
     .export async  to csv
@@ -142,7 +145,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
         ExportQuery
     ```
 
-* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command limits the number of threads writing to storage concurrently to 50% on each of the cluster nodes:
+* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/rest/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command limits the number of threads writing to storage concurrently to 50% on each of the nodes:
 
     ```kusto
     .export async  to csv
@@ -170,14 +173,14 @@ Authentication or authorization failures during export commands can occur when t
 On export, Kusto data types are mapped to Parquet data types using the following rules:
 
 | Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
-| --------------- | ----------------- | ------------------ | -------- |
-| `bool`     | `BOOLEAN` | | |
-| `datetime` | `INT64` | TIMESTAMP_MICROS | |
-| `dynamic`  | `BYTE_ARRAY` | UTF-8 | Serialized as JSON string |
-| `guid` | `BYTE_ARRAY` | UTF-8 | |
-| `int` | `INT32` | | |
-| `long` | `INT64` | | |
-| `real` | `DOUBLE` | | |
-| `string` | `BYTE_ARRAY` | UTF-8 | |
-| `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
-| `decimal` | `FIXED_LENGTH_BYTE_ARRAY` | DECIMAL | |
+|--|--|--|--|
+| `bool` | `BOOLEAN` |  |  |
+| `datetime` | `INT64` | TIMESTAMP_MICROS |  |
+| `dynamic` | `BYTE_ARRAY` | UTF-8 | Serialized as JSON string |
+| `guid` | `BYTE_ARRAY` | UTF-8 |  |
+| `int` | `INT32` |  |  |
+| `long` | `INT64` |  |  |
+| `real` | `DOUBLE` |  |  |
+| `string` | `BYTE_ARRAY` | UTF-8 |  |
+| `timespan` | `INT64` |  | Stored as ticks (100-nanosecond units) count |
+| `decimal` | `FIXED_LENGTH_BYTE_ARRAY` | DECIMAL |  |

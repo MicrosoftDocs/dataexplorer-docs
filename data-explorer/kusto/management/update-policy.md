@@ -3,9 +3,11 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/31/2024
+ms.date: 08/11/2024
 ---
 # Update policy overview
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Update policies are automation mechanisms triggered when new data is written to a table. They eliminate the need for special orchestration by running a query to transform the ingested data and save the result to a destination table. Multiple update policies can be defined on a single table, allowing for different transformations and saving data to multiple tables simultaneously. The target tables can have a different schema, retention policy, and other policies from the source table.
 
@@ -15,14 +17,18 @@ The following diagram depicts a high-level view of an update policy. It shows tw
 
 :::image type="content" source="media/updatepolicy/update-policy-overview.png" alt-text="Diagram shows an overview of the update policy.":::
 
+:::moniker range="azure-data-explorer"
 An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the cluster size, and is more efficient when handling bulk ingestion.
+::: moniker-end
+:::moniker range="microsoft-fabric"
+An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the eventhouse size, and is more efficient when handling bulk ingestion.
+::: moniker-end
 
 > [!NOTE]
 >
 > * The source and target table must be in the same database.
 > * The update policy function schema and the target table schema must match in their column names, types, and order.
 > * The update policy function can reference tables in other databases. To do this, the update policy must be defined with a `ManagedIdentity` property, and the managed identity must have `viewer` [role](security-roles.md) on the referenced databases.
-
 Ingesting formatted data improves performance, and CSV is preferred because of it's a well-defined format. Sometimes, however, you have no control over the format of the data, or you want to enrich ingested data, for example, by joining records with a static dimension table in your database.
 
 ## Update policy query
@@ -31,12 +37,22 @@ If the update policy is defined on the target table, multiple queries can run on
 
 ### Query limitations
 
+:::moniker range="azure-data-explorer"
 * The policy-related query can invoke stored functions, but:
   * It can't perform cross-cluster queries.
   * It can't access external data or external tables.
   * It can't make callouts (by using a plugin).
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
-* For update policy limitations in streaming ingestion, see [streaming ingestion limitations](../../ingest-data-streaming.md#limitations).
+* For update policy limitations in streaming ingestion, see [streaming ingestion limitations](/azure/data-explorer/ingest-data-streaming#limitations).
+::: moniker-end
+:::moniker range="microsoft-fabric"
+* The policy-related query can invoke stored functions, but:
+  * It can't perform cross-eventhouse queries.
+  * It can't access external data or external tables.
+  * It can't make callouts (by using a plugin).
+* The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
+* For update policy limitations in streaming ingestion, see [streaming ingestion limitations](/azure/data-explorer/ingest-data-streaming#limitations).
+::: moniker-end
 
 > [!WARNING]
 > An incorrect query can prevent data ingestion into the source table. It is important to note that limitations, as well as the compatibility between the query results and the schema of the source and destination tables, can cause an incorrect query to prevent data ingestion into the source table.
@@ -45,8 +61,14 @@ If the update policy is defined on the target table, multiple queries can run on
 
 When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
 
+:::moniker range="azure-data-explorer"
 * Don't use the qualified name of the table. Instead, use `TableName`.
-* Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
+* Don't use `database("<DatabaseName>").TableName` or `cluster("<ClusterName>").database("<DatabaseName>").TableName`.
+::: moniker-end
+:::moniker range="microsoft-fabric"
+* Don't use the qualified name of the table. Instead, use `TableName`.
+* Don't use `database("<DatabaseName>").TableName` or `cluster("<EventhouseName>").database("<DatabaseName>").TableName`.
+::: moniker-end
 
 ## The update policy object
 
@@ -108,11 +130,11 @@ After ingesting data to the target table, you can optionally remove it from the 
 
 ## Performance impact
 
-Update policies can affect cluster performance, and ingestion for data extents is multiplied by the number of target tables. It's important to optimize the policy-related query. You can test an update policy's performance impact by invoking the policy on already-existing extents, before creating or altering the policy, or on the function used with the query.
+Update policies can affect performance, and ingestion for data extents is multiplied by the number of target tables. It's important to optimize the policy-related query. You can test an update policy's performance impact by invoking the policy on already-existing extents, before creating or altering the policy, or on the function used with the query.
 
 ### Evaluate resource usage
 
-Use [`.show queries`](../management/queries.md), to evaluate resource usage (CPU, memory, and so on) with the following parameters:
+Use [`.show queries`](../query/queries.md), to evaluate resource usage (CPU, memory, and so on) with the following parameters:
 
 * Set the `Source` property, the source table name, as `MySourceTable`
 * Set the `Query` property to call a function named `MyFunction()`
@@ -137,9 +159,7 @@ MyFunction
 ## Transactional settings
 
 The update policy `IsTransactional` setting defines whether the update policy is transactional and can affect the behavior of the policy update, as follows:
-
 * `IsTransactional:false`: If the value is set to the default value, *false*, the update policy doesn't guarantee consistency between data in the source and target table. If an update policy fails, data is ingested only to the source table and not to the target table. In this scenario, ingestion operation is successful.
-
 * `IsTransactional:true`: If the value is set to *true*, the setting does guarantee consistency between data in the source and target tables. If an update policy fails, data isn't ingested to the source or target table. In this scenario, the ingestion operation is unsuccessful.
 
 ### Handling failures
@@ -149,7 +169,8 @@ When policy updates fail, they're handled differently based on whether the `IsTr
 * A mismatch between the query output schema and the target table.
 * Any query error.
 
-You can view policy update failures using the [`.show ingestion failures` command](../management/ingestion-failures.md) with the following command:
+You can view policy update failures using the [`.show ingestion failures` command](ingestion-failures.md) with the following command:
+In any other case, you can manually retry ingestion.
 
 ```kusto
 .show ingestion failures

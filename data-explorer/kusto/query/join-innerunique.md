@@ -3,10 +3,14 @@ title:  innerunique join
 description: Learn how to use the innerunique join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/19/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 
 # innerunique join
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 The `innerunique` join flavor removes duplicate keys from the left side. This behavior ensures that the output contains a row for every combination of unique left and right keys.
 
@@ -18,9 +22,9 @@ By default, the `innerunique` join flavor is used if the `kind` parameter isn't 
 
 *LeftTable* `|` `join` `kind=innerunique` [ *Hints* ] *RightTable* `on` *Conditions*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
-[!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
+[!INCLUDE [join-parameters-attributes-hints](../includes/join-parameters-attributes-hints.md)]
 
 ## Returns
 
@@ -31,8 +35,10 @@ By default, the `innerunique` join flavor is used if the `kind` parameter isn't 
 
 ### Use the default innerunique join
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5kHtCM/TwFoNADeA/cxywAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let X = datatable(Key:string, Value1:long)
@@ -78,8 +84,10 @@ The query executed the default join, which is an inner join after deduplicating 
 > In the first output, the join operator randomly selected the first key that appears in t1, with the value "val1.1" and matched it with t2 keys.
 > In the second output, the join operator randomly selected the second key that appears in t1, with the value "val1.2" and matched it with t2 keys.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WNQQvCMAyF7/0Vj54mFKHV08RfIh4mC6OupDjTwcAfb1aGoDcTSOC9vC+JBOJxRt+J9i1RM9LSImUeHOYuFWrxlCnysAMMtC51egertt976zbjIwWryvVk0goP/8F/WQfrvoXjBhdvXrjnyBgj9/okMtNUOD4K1YSEurIe0PIGa/tJfOgAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let t1 = datatable(key: long, value: string)  
@@ -105,8 +113,10 @@ t1
 |1|val1.1|1|val1.3|
 |1|val1.1|1|val1.4|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WNQQvCMAyF7/0Vj54mFKHV08RfIh4mC6OupDjTwcAfb1aGoDcTSOC9vC+JBOJxRt+J9i1RM9LSImUeHOYuFWrxlCnysAMMtC51egertt976zbjIwWryvVk0goP/8F/WQfFfyvHjS7evHDPkTFG7vVLZKapcHwUqgkJdWU9oOUNScAQaekAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let t1 = datatable(key: long, value: string)  
@@ -136,8 +146,10 @@ t1
 * Sometimes, the flavor used is **innerunique** and the filter is propagated to the left side of the join. The flavor is automatically propagated and the keys that apply to that filter appear in the output.
 * Use the previous example and add a filter `where value == "val1.2" `. It gives the second result and will never give the first result for the datasets:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WOwQrCMAyG73uKn54UitDqadInEQ+ThVlXUqytMvDhjXUM9GYCCfxJvj+BMrKBQ99lyVOg1UhTixB50Lh3oVCLW06ehzXQQOJQq9FQMjYbo/Q8WCSrRDnum/CG2//gv6yt4L+V3UzPpnniEj1j9NyLi2emVNhfC9WLbGuLskCT7D7OlOhjC+eWX18MNThdAwEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let t1 = datatable(key: long, value: string)  

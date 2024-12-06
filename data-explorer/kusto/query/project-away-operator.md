@@ -3,9 +3,13 @@ title:  project-away operator
 description: Learn how to use the project-away operator to select columns from the input table to exclude from the output table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # project-away operator
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Select what columns from the input table to exclude from the output table.
 
@@ -13,7 +17,7 @@ Select what columns from the input table to exclude from the output table.
 
 *T* `| project-away` *ColumnNameOrPattern* [`,` ...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -36,8 +40,10 @@ A table with columns that weren't named as arguments. Contains same number of ro
 
 The input table `PopulationData` has 2 columns: `State` and `Population`. Project-away the `Population` column and you're left with a list of state names.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvILyjNSSzJzM9zSSxJ5OWqUSgoys9KTS7RTSxPrFQIgEsDAH2sb1kpAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 PopulationData
@@ -64,8 +70,10 @@ The following table shows only the first 10 results.
 
 The following query removes columns starting with the word "session".
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+blqlEoKMrPSk0u0U0sT6xUKIZIaAEAV4MJgSsAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 ConferenceSessions
@@ -88,8 +96,11 @@ The following table shows only the first 10 results.
 |Ignite 2018| Manoj Raheja|  |<https://azure.microsoft.com/resources/videos/ignite-2018-azure-data-explorer-%E2%80%93-query-billions-of-records-in-seconds/>| 200|  |20|  |Focused|
 |...|...|...|...|...|...|...|...|...|
 
+
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * To choose what columns from the input to keep in the output, use [project-keep](project-keep-operator.md).
 * To rename columns, use [`project-rename`](project-rename-operator.md).
 * To reorder columns, use [`project-reorder`](project-reorder-operator.md).
+::: moniker-end

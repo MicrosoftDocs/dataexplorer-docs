@@ -3,9 +3,11 @@ title:  take_any() (aggregation function)
 description: Learn how to use the take_any() (aggregation function) to return the value of an arbitrarily selected record.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/20/2023
+ms.date: 08/11/2024
 ---
 # take_any() (aggregation function)
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Arbitrarily chooses one record for each group in a [summarize operator](summarize-operator.md),
 and returns the value of one or more expressions over each such record.
@@ -21,7 +23,7 @@ and returns the value of one or more expressions over each such record.
 
 `take_any(`*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -55,8 +57,10 @@ over a single record (per distinct group).
 
 Show indeterministic State:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoScxOjU/Mq9QILkksSdUEALgBS0YoAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -71,8 +75,10 @@ StormEvents
 
 Show all the details for a random record:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSgoys9KTS5RCC5JLCoJycxN1VFwLcgszk9J9UzRAYmWgERAykMqC1JBOopLc3MTizKrUhVKErNT4xPzKjW0NAGzMGIFVgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -88,8 +94,10 @@ StormEvents
 
 Show all the details of a random record for each State starting with 'A':
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAyWMMQ7CMBAEeyT+cEoFKJ+gSEGd9OggK8Ugx9bdQmTE4xMr7c7O9EwWuy9m+vHwl2WCQXoqIU41+hI4SXNtKs2WXniycuMQIlrpcvA04ja2u7UtNTaUjGr4J0a18INQ37jrXE6XszzKfl4BiZpjAH0AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -109,3 +117,9 @@ StormEvents
 |AMERICAN SAMOA|2007-12-07 14:00:00.0000000|13183|Flash Flood|
 |ARKANSAS|2007-12-09 16:00:00.0000000|11319|Lightning|
 |ALABAMA|2007-12-15 18:00:00.0000000|12580|Heavy Rain|
+
+## Related content
+
+* [take_anyif function](take-anyif-aggregation-function.md)
+* [arg_max function](arg-max-aggregation-function.md)
+* [arg_min function](arg-min-aggregation-function.md)

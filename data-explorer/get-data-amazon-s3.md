@@ -51,7 +51,7 @@ Select the data source from the available list. In this example, you are ingesti
 
     :::image type="content" source="media/get-data-amazon-s3/configure-tab.png" alt-text="Screenshot of configure tab with new table entered and an Amazon S3 connection string pasted." lightbox="media/get-data-amazon-s3/configure-tab.png":::
 
-    [!INCLUDE [ingestion-size-limit](includes/ingestion-size-limit.md)]
+    [!INCLUDE [ingestion-size-limit](includes/cross-repo/ingestion-size-limit.md)]
 
 1. Select **Next**.
 
@@ -88,5 +88,5 @@ In the **Data preparation** window, all three steps are marked with green check 
 ## Related content
 
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
-* [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)
+* [Tutorial: Learn common Kusto Query Language operators](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

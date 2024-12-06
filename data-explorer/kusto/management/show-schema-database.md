@@ -1,17 +1,19 @@
 ---
 title: .show database schema command
 description: Learn how to use the `.show database schema` command to show the database schema as a table, JSON object, or CSL script.
-ms.reviewer: orspodek
+ms.reviewer: vrozov
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show database schema command
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The following commands show database schema as a table, JSON object, or CSL script.
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## .show database schema
 
@@ -23,7 +25,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `details`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -41,7 +43,7 @@ When used with a version, the database is only returned if it's a later version 
 
 #### Show database schema
 
-The database 'TestDB' has one table called 'Events'.
+The following example displays the `TestDB` database schema. The database `TestDB` has one table called `Events`.
 
 ```kusto
 .show database TestDB schema 
@@ -49,37 +51,37 @@ The database 'TestDB' has one table called 'Events'.
 
 **Output**
 
-|DatabaseName|TableName|ColumnName|ColumnType|IsDefaultTable|IsDefaultColumn|PrettyName|Version
-|---|---|---|---|---|---|---|--- 
-|TestDB||||False|False||v.1.1		
-|TestDB|Events|||True|False||		
-|TestDB|Events|	Name|System.String|True|False||		
-|TestDB|Events|	StartTime|	System.DateTime|True|False||	
-|TestDB|Events|	EndTime|	System.DateTime|True|False||		
-|TestDB|Events|	City|	System.String|True|	False||		
-|TestDB|Events|	SessionId|	System.Int32|True|	True|| 
+|DatabaseName|TableName|ColumnName|ColumnType|IsDefaultTable|IsDefaultColumn|PrettyName|Version|
+|---|---|---|---|---|---|---|--- |
+|TestDB||||False|False||v.1.1|
+|TestDB|Events|||True|False|||
+|TestDB|Events|Name|System.String|True|False|||
+|TestDB|Events|StartTime|System.DateTime|True|False|||
+|TestDB|Events|EndTime|System.DateTime|True|False|||
+|TestDB|Events|City|System.String|True|False|||
+|TestDB|Events|SessionId|System.Int32|True|True|||
 
 #### Show database schema based on version
 
 In the following example, the database is only returned if it's a later version than the version provided.
- 
+
 ```kusto
 .show database TestDB schema if_later_than "v1.0" 
 ```
 
 **Output**
 
-|DatabaseName|TableName|ColumnName|ColumnType|IsDefaultTable|IsDefaultColumn|PrettyName|Version
-|---|---|---|---|---|---|---|--- 
-|TestDB||||False|False||v.1.1		
-|TestDB|Events|||True|False||		
-|TestDB|Events|	Name|System.String|True|False||		
-|TestDB|Events|	StartTime|	System.DateTime|True|False||	
-|TestDB|Events|	EndTime|	System.DateTime|True|False||		
-|TestDB|Events|	City|	System.String|True|	False||		
-|TestDB|Events|	SessionId|	System.Int32|True|	True||  
+|DatabaseName|TableName|ColumnName|ColumnType|IsDefaultTable|IsDefaultColumn|PrettyName|Version|
+|---|---|---|---|---|---|---|--- |
+|TestDB||||False|False||v.1.1|
+|TestDB|Events|||True|False|||
+|TestDB|Events|Name|System.String|True|False|||
+|TestDB|Events|StartTime|System.DateTime|True|False|||
+|TestDB|Events|EndTime|System.DateTime|True|False|||
+|TestDB|Events|City|System.String|True|False|||
+|TestDB|Events|SessionId|System.Int32|True|True||  |
 
-Because a version lower than the current database version was provided, the 'TestDB' schema was returned. Providing an equal or higher version would have generated an empty result.
+Because a version lower than the current database version was provided, the 'TestDB' schema was returned. Providing an equal or higher version would generate an empty result.
 
 ## .show database schema as json
 
@@ -91,7 +93,7 @@ Because a version lower than the current database version was provided, the 'Tes
 
 `.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `as` `json` [`with` `(`*Options*`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -118,7 +120,9 @@ Returns a flat list of the structure of the selected databases with all their ta
 When used with a version, the database is only returned if it's a later version than the version provided.
 
 ### Examples
- 
+
+The following example returns the `TestDB` database schema in JSON format.
+
 ```kusto
 .show database TestDB schema as json
 
@@ -139,7 +143,7 @@ Generates a CSL script with all the required commands to create a copy of the gi
 
 `.show` `database` *DatabaseName* `schema` `as` `csl` `script` [`with` `(`*Options*`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -159,7 +163,7 @@ Generates a CSL script with all the required commands to create a copy of the gi
 
 ### Returns
 
-The script, returned as a string, will contain:
+The script, returned as a string, contains:
 
 * Commands to create all the tables in the database.
 * Commands to set all database/tables/columns policies to match the original policies.
@@ -167,8 +171,18 @@ The script, returned as a string, will contain:
 
 ### Examples
 
+#### CSL script
+
+The following example generates a CSL script with the needed commands to recreate the `TestDB` database schema.
+
 ```kusto
 .show database TestDB schema as csl script
+```
 
+#### CSL script with obfuscated values
+
+The following example generates a CSL script with the needed commands to recreate the `TestDB` database schema. It includes values that were obfuscated in the results of the previous example.
+
+```kusto
 .show database TestDB schema as csl script with (ShowObfuscatedStrings = true)
 ```

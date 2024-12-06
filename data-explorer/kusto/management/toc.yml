@@ -54,13 +54,14 @@ items:
         href: databases.md
         items:
           - name: .show databases command
+            displayName: .show databases command, .show cluster databases command
             href: show-databases.md
           - name: .show database command
             href: show-database.md
-          - name: .show cluster databases command
-            href: show-cluster-database.md
           - name: .alter database prettyname command
-            href: alter-database.md
+            href: alter-database-prettyname.md
+          - name: .drop database prettyname command
+            href: drop-database-prettyname.md            
           - name: .show database schema command
             displayName: .show databases schema
             href: show-schema-database.md
@@ -237,6 +238,8 @@ items:
         items:
           - name: Columns management
             href: columns.md
+          - name: Change column type without data loss
+            href: change-column-type-without-data-loss.md 
           - name: .alter column command
             href: alter-column.md
           - name: .drop column command
@@ -485,6 +488,9 @@ items:
           - name: .delete table policy merge command
             href: delete-table-merge-policy-command.md
             displayName: .delete table merge policy
+          - name: .delete materialized-view policy merge command
+            href: delete-materialized-view-merge-policy-command.md
+            displayName: .delete materialized-view merge policy
           - name: .show database policy merge command
             href: show-database-merge-policy-command.md
             displayName: .show database merge policy
@@ -512,7 +518,7 @@ items:
             displayName: .Show table mirroring operations exported artifacts
           - name: .show table mirroring operations failures command
             href: show-table-mirroring-operations-failures.md 
-            displayName: show table mirroring operations failures            
+            displayName: show table mirroring operations failures    
       - name: Partitioning
         items:
           - name: Partitioning policy
@@ -543,6 +549,23 @@ items:
             displayName: .show table partitioning policy
           - name: .show database extents partitioning statistics command
             href: show-database-extents-partitioning-statistics.md
+      - name: Query acceleration
+        items:
+          - name: Query acceleration policy
+            href: query-acceleration-policy.md
+            displayName: external table, delta table
+          - name: .alter query acceleration policy command 
+            href: alter-query-acceleration-policy-command.md
+            displayName: external table, delta table
+          - name: .delete query acceleration policy command
+            href: delete-query-acceleration-policy-command.md
+            displayName: external table, delta table
+          - name: .show external table operations query acceleration statistics command
+            href: show-external-table-operations-query-acceleration-statistics.md
+            displayName: external table, delta table 
+          - name: .show query acceleration policy command
+            href: show-query-acceleration-policy-command.md
+            displayName: external table, delta table
       - name: Query weak consistency
         items:
           - name: Query weak consistency policy
@@ -613,25 +636,25 @@ items:
         items:
           - name: Row level security policy
             href: row-level-security-policy.md
-            displayName: row_level_security policy
+            displayName: row_level_security policy, row level security
           - name: .alter materialized-view policy row_level_security command
             href: alter-materialized-view-row-level-security-policy-command.md
-            displayName: .alter materialized-view row level security policy
+            displayName: .alter materialized-view row level security policy, row level security
           - name: .alter table policy row_level_security command
             href: alter-table-row-level-security-policy-command.md
-            displayName: .alter table row level security policy, .alter table row_level_security policy
+            displayName: .alter table row level security policy, .alter table row_level_security policy, row level security
           - name: .delete materialized-view policy row_level_security command
-            displayName: .delete materialized-view policy row_level_security command
+            displayName: .delete materialized-view policy row_level_security command, row level security
             href: delete-materialized-view-row-level-security-policy-command.md
           - name: .delete table policy row_level_security command
-            displayName: .delete table policy row_level_security command
+            displayName: .delete table policy row_level_security command, row level security
             href: delete-table-row-level-security-policy-command.md
           - name: .show materialized-view policy row_level_security command
             href: show-materialized-view-row-level-security-policy-command.md
-            displayName: .show materialized view row level security policy, .show materialized-view row_level_security policy, .show materialized view row_level_security policy
+            displayName: .show materialized view row level security policy, .show materialized-view row_level_security policy, .show materialized view row_level_security policy, row level security
           - name: .show table policy row_level_security command
             href: show-table-row-level-security-policy-command.md
-            displayName: .show table row level security policy, .show table row_level_security policy
+            displayName: .show table row level security policy, .show table row_level_security policy, row level security
       - name: Row order
         items:
           - name: Row order policy command
@@ -653,8 +676,6 @@ items:
         items:
           - name: Using sandboxes
             href: ../concepts/sandboxes.md
-          - name: Using sandboxes in non-modern sku
-            href: ../concepts/sandboxes-in-non-modern-skus.md
           - name: Sandbox policy
             href: sandbox-policy.md
           - name: .alter cluster policy sandbox command
@@ -751,6 +772,14 @@ items:
       - name: Security roles overview
         href: security-roles.md
         displayName: role based access control, rbac, principals
+      - name: Access control
+        items:
+        - name: Access control overview
+          href: ../access-control/index.md
+        - name: Role-based access control
+          href: ../access-control/role-based-access-control.md
+        - name: Microsoft Entra App registration
+          href: ../access-control/provision-entra-id-app.md
       - name: Manage database roles
         href: manage-database-security-roles.md
         displayName: .show principal, principal access, security roles, roles, rbac
@@ -775,6 +804,10 @@ items:
         href: reference-security-principals.md
   - name: Data ingestion
     items:
+      - name: Data formats supported for ingestion
+        href: ../ingestion-supported-formats.md
+      - name: Ingestion properties
+        href: ../ingestion-properties.md
       - name: Ingest from storage
         displayName: .ingest into, pull data, pulling ingestion
         href: data-ingestion/ingest-from-storage.md
@@ -805,6 +838,9 @@ items:
       - name: .show streamingingestion failures command
         displayName: .show streaming ingestion failures
         href: streaming-ingestion-failures.md
+      - name: Data operations
+        displayName:  .show data operation command
+        href: show-data-operations.md
   - name: Data export
     href: data-export/index.md
     items:
@@ -888,10 +924,12 @@ items:
             href: streaming-ingestion-statistics.md
           - name: .show table data statistics
             href: show-table-data-statistics.md
-  - name: Advanced data management
+  - name: Advanced data management 
     items:
       - name: Clear cached external artifacts
         href: clear-external-artifacts-cache-command.md
+      - name: Delete data
+        href: ../concepts/delete-data.md
       - name: Data purge
         href: ../concepts/data-purge.md
       - name: Data soft delete
@@ -931,5 +969,5 @@ items:
       - name: Follower commands
         displayName: Cluster commands, database commands, materialized view commands, table commands
         href: cluster-follower.md
-      - name: .update table command (preview)
+      - name: .update table command
         href: update-table-command.md

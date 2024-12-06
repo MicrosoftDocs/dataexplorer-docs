@@ -1,15 +1,23 @@
 ---
 title:  plotly_scatter3d_fl()
-description: Learn how to use the plotly_scatter3d_fl() user-defined function in Azure Data Explorer.
+description:  Learn how to use the plotly_scatter3d_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # plotly_scatter3d_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The function `plotly_scatter3d_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that allows you to customize a [plotly](https://plotly.com/python/) template to create an interactive 3D scatter chart.  
 
-The function accepts a table containing the records to be rendered, the names of the x, y, z & aggregation columns, and the chart title string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](../../azure-data-explorer-dashboards.md) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
+::: moniker range="azure-data-explorer"
+The function accepts a table containing the records to be rendered, the names of the x, y, z & aggregation columns, and the chart title string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](/azure/data-explorer/azure-data-explorer-dashboards) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
+::: moniker-end
+::: moniker range="microsoft-fabric"
+The function accepts a table containing the records to be rendered, the names of the x, y, z & aggregation columns, and the chart title string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in a [Real-Time dashboard](/fabric/real-time-intelligence/dashboard-real-time-create) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
+::: moniker-end
 
 ## Prerequisite
 
@@ -23,7 +31,7 @@ Extract the required 'scatter3d' template from the publicly available `PlotlyTem
 
 `T | invoke plotly_scatter3d_fl(`*x_col*`,` *y_col*`,` *z_col*`,` *aggr_col* [`,` *chart_title* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -79,7 +87,7 @@ let plotly_scatter3d_fl=(tbl:(*), x_col:string, y_col:string, z_col:string, aggr
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Example](#example).
@@ -172,7 +180,13 @@ Iris
 
 **Output**
 
-The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
+
+::: moniker range="azure-data-explorer"
+The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards](/azure/data-explorer/azure-data-explorer-dashboards).
+::: moniker-end
+::: moniker range="microsoft-fabric"
+The output is a Plotly JSON string that can be rendered in a Real-Time dashboard tile. For more information on creating dashboard tiles, see [Real-Time dashboards](/fabric/real-time-intelligence/dashboard-real-time-create).
+::: moniker-end
 
 ![Screenshot of 3D scatter chart of a sample dataset.](media/plotly-scatter3d-fl\plotly-scatter3d-chart.png)
 

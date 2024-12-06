@@ -3,9 +3,11 @@ title:  geo_simplify_polygons_array()
 description: Learn how to use the geo_simplify_polygons_array() function to simplify polygons by replacing nearly straight chains of short edges with a single long edge on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/14/2022
+ms.date: 08/11/2024
 ---
 # geo_simplify_polygons_array()
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Simplifies polygons by replacing nearly straight chains of short edges with a single long edge on Earth.
 
@@ -13,7 +15,7 @@ Simplifies polygons by replacing nearly straight chains of short edges with a si
 
 `geo_simplify_polygons_array(`*polygons*`,` *tolerance*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -24,7 +26,7 @@ Simplifies polygons by replacing nearly straight chains of short edges with a si
 
 ## Returns
 
-Simplified polygon or a multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type, with no two vertices with distance less than tolerance. If either the polygon or tolerance is invalid, the query will produce a null result.
+Simplified polygon or a multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type, with no two vertices with distance less than tolerance. If either the polygon or tolerance is invalid, the query will produce a null result.
 
 > [!NOTE]
 >
@@ -53,8 +55,10 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 The following example simplifies polygons with mutual borders (USA states), by removing vertices that are within a 100-meter distance from each other.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2XMMQ6DMAyF4b2n8AgSQnCAngJ1tqzKoNC4iWwzpOLw9dBOrE/f+x8LLk7Odjuhatn56VBLblt5wx1WJj+Ubdy4CLu2UHaIkKYPQzYPI/RizMm8+/36a8rCRQItSc1pbfjfkVSpdVEaYJ6m/gsta1dmjwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 US_States
@@ -71,8 +75,10 @@ US_States
 
 The following example returns True because one of the polygons is invalid.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6WR3WqEMBCF732KkCsFu8T8qrDvsPcikmq6pI1GTLZgf9692WYVr9sEAvPNzOEcMkgf7rNR6WzNerWTq4d1kqPus6RJQDiPMv2Efp0VrOElDsIc9tYug56kVw7WTdM8CXKqaMVyik6i4lWbR8RKJO6sRIiXGywxKn4HeYnZBgUpRISU7fCo2LbfWf43XxzjKIPpf3QEIdGOwIJuFivCo21O0J6lEDEg4+wQ8Lh9d5G0yRdwt3GUi/5QQC4LOINRvqnOaOf3b8nC1LzYV9V7oF2np3dp9NA92mFFu+lmTHpVtnN6nI1+Wbeu64KqXNPwZtkPN6O8sPIBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(polygons:dynamic)
@@ -93,8 +99,10 @@ datatable(polygons:dynamic)
 
 The following example returns True because of the invalid tolerance.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52RzW6EIBSF9z4FYaWJM0GQH036Dt0bY6jSCVMUI87C/rx7sYxkuh1ICHw59+TcyyBXv9+MSmdrtoudXD1skxx1nyVNAvy6P9MvuG6zgjV8DUKYw97aZdCTXJWDddM0J07OVVnRvERnXrGqzQOiAvGdCYSYOKDAqPgTMoHpATkpeIAljfDRsW1/svy5XAzjYIPLmIwJIe5Q4BiXhwxcRN3/4udDcEJCLxzz8jCvCAs9M4LiIAoepkMZfZjOY/WeImmTb+Bu4ygX/amAXBbwAkb5oTqj3Rr/NPOqebFX1a9Au266GeN12u2X9KJs5/Q4G/2+dUdF563klvozB6ciy34BttDM2igCAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(polygons:dynamic)
@@ -115,8 +123,10 @@ datatable(polygons:dynamic)
 
 The following example returns True because high tolerance causes polygon to disappear.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52RzW6EIBSF9z4FYaWJnSDIjyZ9h+6NMVTphBbFiLOwP+9eLCOx24GEwJdzT869DHL1+9WodLZmu9rJ1cM2yVH3WdIkwK/7M/2C6zYrWMOXIIQ57K1dBj3JVTlYN03zxMmlKiual+jCK1a1eUBUIL4zgRATBxQYFX9CJjA9ICcFD7CkEZ4d2/Ynyx/LxTAONriMyZgQ4g4FjnF5yMBF1P0vfjwEJyT0wjEvD/OKsNAzIygOouBhOpTR03TO1XuKpE2+gbuNo1z0pwJyWcAzGOWH6ox2a/zTzKvmxb6rfgXaddPNGK/Tbr+kV2U7p8fZ6LetOyo6byW31J85KJBfWfYLADokJCsCAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(polygons:dynamic)

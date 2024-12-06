@@ -1,24 +1,33 @@
 ---
 title:  Show continuous data export failures
-description: This article describes how to show continuous data export failures in Azure Data Explorer.
+description:  This article describes how to show continuous data export failures.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 # Show continuous export failures
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest.
-The command will not return any results if executed on a [follower database](../../../follower.md), it must be executed against the leader database.
+
+::: moniker range="azure-data-explorer"
+The command will not return any results if executed on a [follower database](/azure/data-explorer/follower), it must be executed against the leader database.
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+The command will not return any results if executed on a [database shortcut](/fabric/real-time-intelligence/database-shortcut), it must be executed against the leader database.
+::: moniker-end
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
+You must have at least Database Monitor or Database Admin permissions to run this command. For more information, see [role-based access control](../../access-control/role-based-access-control.md).
 
 ## Syntax
 
 `.show` `continuous-export` *ContinuousExportName* `failures`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
