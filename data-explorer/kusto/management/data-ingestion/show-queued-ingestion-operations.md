@@ -68,7 +68,7 @@ The following table describes the possible values for the result table's *State*
 
 OperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table
 --|--|--|--|--|--|--|--|--|--|--|--
-5da31e5f-2819-4835-8b01-3ecf4a70b0e5 |2015-01-10 14:57:41.0000000 |2015-01-10 14:57:41.0000000|InProgress | 10387 |9391 |995 |1 |0 | |MyDatabase|MyTable
+5da31e5f-2819-4835-8b01-3ecf4a70b0e5 |2015-01-10 14:57:41.0000000 |2015-01-10 14:57:41.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable
 
 ### Multiple operation IDs
 
@@ -78,5 +78,5 @@ OperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested 
 
 OperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table
 --|--|--|--|--|--|--|--|--|--|--|--
-5da31e5f-2819-4835-8b01-3ecf4a70b0e5 |2015-01-10 14:57:41.0000000 |2015-01-10 15:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | |MyDatabase|MyTable
-8033eaf9-bc3a-43c4-8533-d904e10e49fe |2015-01-10 15:12:23.0000000 |2015-01-10 15:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | |MyDatabase|MyOtherTable
+5da31e5f-2819-4835-8b01-3ecf4a70b0e5 |2015-01-10 14:57:41.0000000 |2015-01-10 15:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable
+8033eaf9-bc3a-43c4-8533-d904e10e49fe |2015-01-10 15:12:23.0000000 |2015-01-10 15:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|MyDatabase|MyOtherTable
