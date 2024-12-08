@@ -24,7 +24,7 @@ Replaces all [regular expression](regex.md) matches with a specified pattern.
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *source*| `string` |  :heavy_check_mark: | The text to search and replace.|
-| *lookup_regex*| `string` |  :heavy_check_mark: | The [regular expression](regex.md) to search for in *text*. The expression can contain capture groups in parentheses. To match over multiple lines, use the `m` or `s` flags. For more information on flags, see [Grouping and flags](./regex.md#grouping-and-flags) |
+| *lookup_regex*| `string` |  :heavy_check_mark: | The [regular expression](regex.md) to search for in *text*. The expression can contain capture groups in parentheses. To match over multiple lines, use the `m` or `s` flags. For more information on flags, see [Grouping and flags](regex.md#grouping-and-flags). |
 | *rewrite_pattern*| `string` |  :heavy_check_mark: | The replacement regex for any match made by *matchingRegex*. Use `\0` to refer to the whole match, `\1` for the first capture group, `\2` and so on for subsequent capture groups.|
 
 ## Returns
