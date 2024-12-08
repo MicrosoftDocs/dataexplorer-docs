@@ -547,6 +547,23 @@ items:
       displayName: .show table partitioning policy
     - name: .show database extents partitioning statistics command
       href: /kusto/management/show-database-extents-partitioning-statistics?view=azure-data-explorer&preserve-view=true
+  - name: Query acceleration
+    items:
+    - name: Query acceleration policy
+      href: /kusto/management/query-acceleration-policy?view=azure-data-explorer&preserve-view=true
+      displayName: external table, delta table
+    - name: .alter query acceleration policy command
+      href: /kusto/management/alter-query-acceleration-policy-command?view=azure-data-explorer&preserve-view=true
+      displayName: external table, delta table
+    - name: .delete query acceleration policy command
+      href: /kusto/management/delete-query-acceleration-policy-command?view=azure-data-explorer&preserve-view=true
+      displayName: external table, delta table
+    - name: .show external table operations query acceleration statistics command
+      href: /kusto/management/show-external-table-operations-query-acceleration-statistics?view=azure-data-explorer&preserve-view=true
+      displayName: external table, delta table
+    - name: .show query acceleration policy command
+      href: /kusto/management/show-query-acceleration-policy-command?view=azure-data-explorer&preserve-view=true
+      displayName: external table, delta table
   - name: Query weak consistency
     items:
     - name: Query weak consistency policy
@@ -908,6 +925,8 @@ items:
   items:
   - name: Clear cached external artifacts
     href: /kusto/management/clear-external-artifacts-cache-command?view=azure-data-explorer&preserve-view=true
+  - name: Delete data
+    href: /kusto/concepts/delete-data?view=azure-data-explorer&preserve-view=true
   - name: Data purge
     href: /kusto/concepts/data-purge?view=azure-data-explorer&preserve-view=true
   - name: Data soft delete

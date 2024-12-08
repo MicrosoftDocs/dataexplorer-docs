@@ -5,6 +5,7 @@ ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
+#customer intent: To learn about setting up your development environment to use Kusto client libraries.
 ---
 # Set up your development environment to use Kusto client libraries
 
@@ -38,7 +39,7 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     - Ensure the `python` executable is in your `PATH`
     - Verify installation: In a command shell, run `python --version` to check that the version is 3.7 or later
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 - [Node 16 or later](https://nodejs.org/en/download/) built with ES6
     - Ensure the `node` executable is in your `PATH`
@@ -106,7 +107,7 @@ python -m pip install azure-kusto-data
 python -m pip install azure-kusto-ingest
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```bash
 npm install azure-kusto-data
@@ -169,7 +170,7 @@ The Kusto SDKs contain quick start sample applications. These applications showc
 
 [Python Quickstart App](https://github.com/Azure/azure-kusto-python/tree/master/quick_start)
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 - [Node.js Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start)
 - [Browser Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start_browser)
@@ -187,6 +188,7 @@ The Kusto SDKs contain quick start sample applications. These applications showc
 The following articles walk you through creating apps that use the Kusto client libraries.
 
 - [Create your first app](app-hello-kusto.md)
+- [Secure your app](app-authentication-methods.md)
 - [Create an app to run basic queries](app-basic-query.md)
 - [Create an app to run management commands](app-management-commands.md)
 - [Create an app to get data using queued ingestion](app-queued-ingestion.md)
