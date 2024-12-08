@@ -3,7 +3,7 @@ title:  Continuous data export
 description:  This article describes Continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/08/2024
 ---
 # Continuous data export overview
 
@@ -164,13 +164,13 @@ To define continuous export to a delta table, do the following steps:
 
 :::moniker range="microsoft-fabric"
 
-* [Create or alter continuous export](create-alter-continuous.md)
+* [.create or alter continuous-export](create-alter-continuous.md)
 * [External tables](../../query/schema-entities/external-tables.md)
 :::moniker-end
 
 :::moniker range="azure-data-explorer"
 
-* [Create or alter continuous export](create-alter-continuous.md)
+* [.create or alter continuous-export](create-alter-continuous.md)
 * [External tables](../../query/schema-entities/external-tables.md)
 * [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md)
 

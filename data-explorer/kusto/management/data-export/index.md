@@ -39,4 +39,4 @@ For scalable data export, the service offers various `.export` management comman
 * [Export to cloud storage](export-data-to-storage.md)
 * [Export to an external table](export-data-to-an-external-table.md)
 * [Export to a SQL table](export-data-to-sql.md)
-* [Continuous data export](continuous-data-export.md)
+* [Continuous data export overview](continuous-data-export.md)

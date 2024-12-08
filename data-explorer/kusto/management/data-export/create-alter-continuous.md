@@ -1,11 +1,11 @@
 ---
-title:  Create or alter continuous data export
+title:  .create or alter continuous-export
 description:  This article describes how to create or alter continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 12/01/2024
+ms.date: 12/08/2024
 ---
-# Create or alter continuous export
+# .create or alter continuous-export
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -70,6 +70,7 @@ with
 * [Continuous export overview](continuous-data-export.md)
 * [External tables](../../query/schema-entities/external-tables.md)
 * [Disable or enable continuous export](disable-enable-continuous.md)
-* [Show continuous export](show-continuous-export.md)
-* [Drop continuous export](drop-continuous-export.md)
-* [Show continuous export failures](show-continuous-failures.md)
+* [.show continuous-exports](show-continuous-export.md)
+* [.show continuous-export](show-continuous-export.md)
+* [.drop continuous-export](drop-continuous-export.md)
+* [.show continuous-export failures](show-continuous-failures.md)

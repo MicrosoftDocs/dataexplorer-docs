@@ -1,11 +1,11 @@
 ---
-title:  Show continuous data export artifacts
+title:  .show continuous-export exported-artifacts
 description:  This article describes how to show continuous data export artifacts.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 11/27/2024
+ms.date: 12/08/2024
 ---
-# Show continuous export artifacts
+# .show continuous-export exported-artifacts
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -62,4 +62,4 @@ The following example shows retrieved artifacts from the continuous export `MyEx
 
 * [Continuous data export overview](continuous-data-export.md)
 * [External tables](../../query/schema-entities/external-tables.md)
-* [Show continuous export failures](show-continuous-failures.md)
+* [.show continuous-export failures](show-continuous-failures.md)

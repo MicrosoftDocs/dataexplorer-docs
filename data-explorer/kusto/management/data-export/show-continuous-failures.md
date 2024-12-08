@@ -1,11 +1,11 @@
 ---
-title:  Show continuous data export failures
+title:  .show continuous data-export failures
 description:  This article describes how to show continuous data export failures.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 11/27/2024
+ms.date: 12/08/2024
 ---
-# Show continuous export failures
+# .show continuous-export failures
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -64,7 +64,7 @@ The following example shows failures from the continuous export `MyExport`.
 
 * [Continuous data export overview](continuous-data-export.md)
 * [External tables](../../query/schema-entities/external-tables.md)
-* [Create or alter continuous export](create-alter-continuous.md)
-* [Disable or enable continuous export](disable-enable-continuous.md)
-* [Show continuous export](show-continuous-export.md)
-* [Drop continuous export](drop-continuous-export.md)
+* [.create or alter continuous-export](create-alter-continuous.md)
+* [.disable or enable continuous-export](disable-enable-continuous.md)
+* [.show continuous-export](show-continuous-export.md)
+* [.drop continuous-export](drop-continuous-export.md)

@@ -1,11 +1,11 @@
 ---
-title:  Show continuous data export
+title:  .show continuous-export
 description:  This article describes how to show continuous data export properties.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/08/2024
 ---
-# Show continuous export
+# .show continuous-export
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -51,7 +51,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 * [Continuous data export overview](continuous-data-export.md)
 * [External tables](../../query/schema-entities/external-tables.md)
-* [Create or alter continuous export](create-alter-continuous.md)
-* [Disable or enable continuous export](disable-enable-continuous.md)
-* [Drop continuous export](drop-continuous-export.md)
-* [Show continuous export failures](show-continuous-failures.md)
+* [.create or alter continuous-export](create-alter-continuous.md)
+* [.disable or enable continuous-export](disable-enable-continuous.md)
+* [.drop continuous-export](drop-continuous-export.md)
+* [.show continuous-export failures](show-continuous-failures.md)
