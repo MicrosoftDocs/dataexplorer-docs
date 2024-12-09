@@ -3,7 +3,7 @@ title:  not()
 description: Learn how to use the not() function to reverse the value of its boolean argument.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/26/2024
 ---
 # not()
 
@@ -21,22 +21,73 @@ Reverses the value of its `bool` argument.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*expr*|scalar| :heavy_check_mark:|An expression that evaluates to a boolean value. The result of this expression will be reversed.|
+|*expr*|scalar| :heavy_check_mark:|An expression that evaluates to a boolean value. The result of this expression is reversed.|
 
 ## Returns
 
 Returns the reversed logical value of its `bool` argument.
 
-## Example
+## Examples
 
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjLL9FIS8wpTtVUsLVVKCkqTQUAozQnchgAAAA=" target="_blank">Run the query</a>
+The following query returns the number of events that are not a tornado, per state.
+
+:::moniker range="azure-data-explorer"
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSspVuDlqlEoz0gtSlXIyy%2FRAAuGVBakKtjaKiiF5BflJabkK2mCVRWX5uYmFmVWpSok55fmlWhoKiRVKgSXJJakAgA2hsjZUAAAAA%3D%3D" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
-print not(false) == true
+StormEvents 
+| where not(EventType == "Tornado") 
+| summarize count() by State
 ```
 
 **Output**
 
-|print_0|
-|--|
-|true|
+| State | Count |
+|--|--|
+| TEXAS | 4485 |
+| KANSAS | 3005 |
+| IOWA | 2286 |
+| ILLINOIS | 1999 |
+| MISSOURI | 1971 |
+| GEORGIA | 1927 |
+| MINNESOTA | 1863 |
+| WISCONSIN | 1829 |
+| NEBRASKA | 1715 |
+| NEW YORK | 1746 |
+| ... | ... |
+
+The following query excludes records where either the EventType is hail, *or* the state is Alaska.
+
+:::moniker range="azure-data-explorer"
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVyMsv0QALhVQWpCrY2iooeSRm5igp5BcpBJcklkCEHHMSi7MTlTQBNhteI0EAAAA%3D" target="_blank">Run the query</a>
+:::moniker-end
+
+```kusto
+StormEvents
+| where not(EventType == "Hail" or State == "Alaska")
+```
+
+The next query excludes records where both the EventType is hail *and* the state is Alaska simultaneously.
+
+:::moniker range="azure-data-explorer"
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5uWqUSjPSC1KVcjLL9EAi4VUFqQq2NoqKHkkZuYoKSTmpSgElySWQMQccxKLsxOVNAFEoBiQQwAAAA%3D%3D" target="_blank">Run the query</a>
+:::moniker-end
+
+```kusto
+StormEvents
+| where not(EventType == "Hail" and State == "Alaska")
+```
+
+### Combine with other conditions
+
+You can also combine the not() function with other conditions. The following query returns all records where the EventType is not a flood and the property damage is greater than $1,000,000.
+
+:::moniker range="azure-data-explorer"
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5uWqUSjPSC1KVcjLL9EAi4VUFqQq2NoqKLnl5OenKGkqJOalKLgk5iampwYU5RekFpVUKtgpGBqAAQBYZhVQSwAAAA%3D%3D" target="_blank">Run the query</a>
+:::moniker-end
+
+```kusto
+StormEvents
+| where not(EventType == "Flood") and DamageProperty > 1000000
+```
