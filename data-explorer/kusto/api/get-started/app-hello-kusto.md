@@ -1,10 +1,11 @@
 ---
-title:  'Hello Kusto: Create your first app'
+title: Create your first
 description: Learn how to create your first app to print Hello Kusto using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 08/11/2024
+ms.date: 11/28/2024
 monikerRange: "azure-data-explorer"
+#customer intent: To learn about creating a simple app that prints Hello Kusto using Kusto client libraries.
 ---
 # Hello Kusto: Create your first app
 
@@ -41,7 +42,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
@@ -86,7 +87,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
       main()
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     async function main()
@@ -128,7 +129,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     The `clientId` and `redirectUri` are from the Microsoft Entra app registration you created in the **Prerequisites** section of [Set up your development environment](app-set-up.md#prerequisites).
 
@@ -179,7 +180,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     with KustoClient(kcsb) as kusto_client:
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     const kustoClient = new KustoClient(kcsb);
@@ -212,7 +213,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     query = "print Welcome='Hello Kusto!'"
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     const database = "Samples";
@@ -250,7 +251,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     print(response.primary_results[0][0]["Welcome"])
     ```
 
-    ### [Typescript](#tab/typescript)
+    ### [TypeScript](#tab/typescript)
 
     ```typescript
     const response = await kustoClient.execute(database, query);
@@ -355,7 +356,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 ```typescript
 import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
@@ -432,7 +433,7 @@ dotnet run .
 python hello_kusto.py
 ```
 
-### [Typescript](#tab/typescript)
+### [TypeScript](#tab/typescript)
 
 In a Node.js environment:
 
@@ -469,4 +470,4 @@ Hello Kusto!
 
 <!-- Advance to the next article to learn how to create... -->
 > [!div class="nextstepaction"]
-> [Create an app to run basic queries](app-basic-query.md)
+> [Secure your app](app-authentication-methods.md)

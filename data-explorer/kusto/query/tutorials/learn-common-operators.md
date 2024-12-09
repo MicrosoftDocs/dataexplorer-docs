@@ -2,7 +2,7 @@
 title:  'Tutorial: Learn common Kusto Query Language operators'
 description: This tutorial describes how to write queries using common operators in the Kusto Query Language to meet common query needs.
 ms.topic: tutorial
-ms.date: 08/11/2024
+ms.date: 11/25/2024
 ---
 
 # Tutorial: Learn common operators
@@ -30,6 +30,7 @@ In this tutorial, you'll learn how to:
 > * [Select a subset of columns](#select-a-subset-of-columns)
 > * [List unique values](#list-unique-values)
 > * [Filter by condition](#filter-by-condition)
+> * [Filter by time range](#filter-by-date-and-time-range)
 > * [Sort results](#sort-results)
 > * [Get the top *n* rows](#get-the-top-n-rows)
 > * [Create calculated columns](#create-calculated-columns)
@@ -89,7 +90,7 @@ StormEvents
 | take 5
 ```
 
-The following table shows only 5 of the 22 returned columns. To see the full output, run the query.
+The following table shows only five of the 22 returned columns. To see the full output, run the query.
 
 |StartTime|EndTime|EpisodeId|EventId|State|EventType|...|
 |--|--|--|--|--|--|--|
@@ -154,6 +155,33 @@ There are 46 types of storms in the table. Here's a sample of 10 of them.
 |Flood|
 |...|
 
+## Sort results
+
+To view the top floods in Texas that caused the most damage, use the [sort](../sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FOcXlSgkVSq4JOYmpqcGFOUXpBaVVAIlCorys1KTS0CGFZWEZOam6ii45qVAGGALdBBG6qBpBwDYBhI8lQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
+
+```Kusto
+StormEvents
+| where State == 'TEXAS' and EventType == 'Flood'
+| sort by DamageProperty
+| project StartTime, EndTime, State, EventType, DamageProperty
+```
+
+**Output**
+
+|StartTime|EndTime|State|EventType|DamageProperty|
+|--|--|--|--|--|
+|2007-08-18T21:30:00Z|2007-08-19T23:00:00Z|TEXAS|Flood|5000000|
+|2007-06-27T00:00:00Z|2007-06-27T12:00:00Z|TEXAS|Flood|1200000|
+|2007-06-28T18:00:00Z|2007-06-28T23:00:00Z|TEXAS|Flood|1000000|
+|2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|TEXAS|Flood|750000|
+|2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
+|...|...|...|...|...|
+
 ## Filter by condition
 
 The [where](../where-operator.md) operator filters rows of data based on certain criteria.
@@ -182,32 +210,39 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 |2007-03-12T02:30:00Z|2007-03-12T06:45:00Z|TEXAS|Flood|0|
 |...|...|...|...|...|
 
-## Sort results
+## Filter by date and time range
 
-To view the top floods in Texas that caused the most damage, use the [sort](../sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
+Use the [between operator](../between-operator.md) to filter data based on a specific time range.
+
+The following query finds all storm events between August 1, 2007 and August 30, 2007, along with their states, event types, start and end times. The results are then sorted in ascending order by start time.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FOcXlSgkVSq4JOYmpqcGFOUXpBaVVAIlCorys1KTS0CGFZWEZOam6ii45qVAGGALdBBG6qBpBwDYBhI8lQAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOwQqDQBBD7%2F2KObpQZaqUtt77BfoDqwbagrsyOyhCP76jh1Io5BDCI0mjUcb7jKDp8KblAQE16kXb5wjqoAsQKBu8Qi3JSuZLztecT8Rc73JUFPQHVExlVZ9vJuesepL4Qq9bueJI%2B2S7Tma%2Fc5aGYTOGpyhK3frzxaf%2BA3AsVtytAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```Kusto
 StormEvents
-| where State == 'TEXAS' and EventType == 'Flood'
-| sort by DamageProperty
-| project StartTime, EndTime, State, EventType, DamageProperty
+| where StartTime between (datetime(2007-08-01 00:00:00) .. datetime(2007-08-30 23:59:59))
+| project State, EventType, StartTime, EndTime
+| sort by StartTime asc 
 ```
 
 **Output**
 
-|StartTime|EndTime|State|EventType|DamageProperty|
-|--|--|--|--|--|
-|2007-08-18T21:30:00Z|2007-08-19T23:00:00Z|TEXAS|Flood|5000000|
-|2007-06-27T00:00:00Z|2007-06-27T12:00:00Z|TEXAS|Flood|1200000|
-|2007-06-28T18:00:00Z|2007-06-28T23:00:00Z|TEXAS|Flood|1000000|
-|2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|TEXAS|Flood|750000|
-|2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
-|...|...|...|...|...|
+| State | Eventype | StartTime | EndTime |
+|--|--|--|--|
+| GEORGIA | Excessive Heat | 2007-08-01 00:00:00 | 2007-08-27 23:59:00 |
+| TENNESSEE | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| TENNESSEE | Drought | 2007-08-01 00:00:00 | 2007-08-3123:59:00 |
+| SOUTH CAROLINA | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| TENNESSEE | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| GEORGIA | Excessive Heat | 2007-08-01 00:00:00 | 2007-08-27 23:59:00 |
+| TENNESSEE | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| MINNESOTA | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| WISCONSIN | Drought | 2007-08-01 00:00:00 | 2007-08-31 23:59:00 |
+| GEORGIA | Excessive Heat | 2007-08-01 00:00:00 | 2007-08-27 23:59:00 |
+|...|...|...|...|
 
 ## Get the top *n* rows
 

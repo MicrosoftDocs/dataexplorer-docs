@@ -3,13 +3,13 @@ title:  parse_version()
 description: Learn how to use the parse_version() function to convert the input string representation of the version to a comparable decimal number,
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/27/2024
 ---
 # parse_version()
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Converts the input string representation of the version to a comparable decimal number.
+Converts the input string representation of a version number into a decimal number that can be compared.
 
 ## Syntax
 
@@ -31,58 +31,75 @@ Converts the input string representation of the version to a comparable decimal 
 
 ## Returns
 
-If conversion is successful, the result will be a decimal.
-If conversion is unsuccessful, the result will be `null`.
+If conversion is successful, the result is a decimal; otherwise, the result is `null`.
 
-## Example
+## Examples
+
+### Parse version strings
+
+The following query shows version strings with their parsed version numbers.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA11QYU/DIBD93l/x7CeITdcyF6MG/4gxC1txZWtpAwyd8cd7UJeod8nx7t3jcWHQAV2ARKcC5W7QLD7CB2fsgRegeMm1bOqUm7Ja4H3dXOF6AWI52losowTW9V2GqTz8RPZpyuL1qehC8YXZTUe9D4itjBW2J32RLYg/TsbiZGwnjbXagdGav9TiqqbdW47J5obuvffaaXLDjSQVEf48jsqZz0xKjOqDxZZXNEydsSwKjt0FrFe+TyPcYoGCc6xWcHqcIv0HuvM8mL0KZrL+z+bJrEJvDvT2NmrnSUHmxryxWTmvr1x2f8Y/TqRlsgf/Bt4b/NePAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLAHCpJxUjTIrheKSosy8dE0uBSCIBpNKBnogaKqkA2Ga6xnAmMYQhhGEMtQzgkiBGMZ6JmCmElesNVdKCVeNQmpFSWpeikJBYlFxakpYalFxZn4e0HYwP74Mwtco0wQA%2F7qnM5cAAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 let dt = datatable(v: string)
     [
-    "0.0.0.5", "0.0.7.0", "0.0.3", "0.2", "0.1.2.0", "1.2.3.4", "1", "99999999.0.0.0"
+    "0.0.0.5", "0.0.7.0", "0.0.3", "0.2", "0.1.2.0", "1.2.3.4", "1"
 ];
 dt
-| project v1=v, _key=1 
-| join kind=inner (dt | project v2=v, _key = 1) on _key
-| where v1 != v2
-| summarize v1 = max(v1), v2 = min(v2) by (hash(v1) + hash(v2)) // removing duplications
-| project v1, v2, higher_version = iif(parse_version(v1) > parse_version(v2), v1, v2)
+| extend parsedVersion = parse_version(v)
 ```
 
 **Output**
 
-|v1|v2|higher_version|
+| v | parsedVersion |
+|---|---|
+| 0.0.0.5 | 5 |
+| 0.0.7.0 | 700,000,000 |
+| 0.0.3 | 300,000,000 |
+| 0.2 | 20,000,000,000,000,000 |
+| 0.1.2.0 | 10,000,000,200,000,000 |
+| 1.2.3.4 | 1,000,000,020,000,000,300,000,004 |
+| 1 | 1,000,000,000,000,000,000,000,000 |
+
+### Compare parsed version strings
+
+The following query identifies which labs have equipment needing updates by comparing their parsed version strings to the minimum version number "1.0.0.0".
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQTQvCMAyG7%2FsVoacNytBNEfw4%2BH0R7yIyujXKZGyjrUPBH286GZuzOTR98iZNkqEBaWABUhiyOEM3E%2FEUtFFpfuNQNa7nnB2gww4ihiXjwAa%2BtTHjLV81fOIPunzDeI3DLlx%2FxQFdLdx%2F4dAPfivsLLc09Eddvq05kcvMkcZ5Az4N5hJKoTTKqEKl0yKn%2BWrQvN3Ka6U5otTRo6QNIAnT69XtZc972dRIPTzz6PMTatvDsWC2ZqmKOyYGaIm0PP5TnMK6UAbilw2D0An8aT4NEEn1kAEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+let dt = datatable(lab: string, v: string)
+[
+    "Lab A", "0.0.0.5",
+    "Lab B", "0.0.7.0",
+    "Lab D","0.0.3",
+    "Lab C", "0.2", 
+    "Lab G", "0.1.2.0",
+    "Lab F", "1.2.3.4",
+    "Lab E", "1",
+];
+dt
+| extend parsed_version = parse_version(v)
+| extend needs_update = iff(parsed_version < parse_version("1.0.0.0"), "Yes", "No")
+| project lab, v, needs_update
+| sort by lab asc , v, needs_update
+```
+
+**Output**
+
+| lab | v | needs_update |
 |---|---|---|
-|99999999.0.0.0|0.0.0.5|99999999.0.0.0|
-|1|0.0.0.5|1|
-|1.2.3.4|0.0.0.5|1.2.3.4|
-|0.1.2.0|0.0.0.5|0.1.2.0|
-|0.2|0.0.0.5|0.2|
-|0.0.3|0.0.0.5|0.0.3|
-|0.0.7.0|0.0.0.5|0.0.7.0|
-|99999999.0.0.0|0.0.7.0|99999999.0.0.0|
-|1|0.0.7.0|1|
-|1.2.3.4|0.0.7.0|1.2.3.4|
-|0.1.2.0|0.0.7.0|0.1.2.0|
-|0.2|0.0.7.0|0.2|
-|0.0.7.0|0.0.3|0.0.7.0|
-|99999999.0.0.0|0.0.3|99999999.0.0.0|
-|1|0.0.3|1|
-|1.2.3.4|0.0.3|1.2.3.4|
-|0.1.2.0|0.0.3|0.1.2.0|
-|0.2|0.0.3|0.2|
-|99999999.0.0.0|0.2|99999999.0.0.0|
-|1|0.2|1|
-|1.2.3.4|0.2|1.2.3.4|
-|0.2|0.1.2.0|0.2|
-|99999999.0.0.0|0.1.2.0|99999999.0.0.0|
-|1|0.1.2.0|1|
-|1.2.3.4|0.1.2.0|1.2.3.4|
-|99999999.0.0.0|1.2.3.4|99999999.0.0.0|
-|1.2.3.4|1|1.2.3.4|
-|99999999.0.0.0|1|99999999.0.0.0|
+| Lab A | 0.0.0.5 | Yes |
+| Lab B | 0.0.7.0 | Yes |
+| Lab C | 0.2 | Yes |
+| Lab D | 0.0.3 | Yes |
+| Lab E | 1 |No |
+| Lab F | 1.2.3.4 |No |
+| Lab G | 0.1.2.0 | Yes |
