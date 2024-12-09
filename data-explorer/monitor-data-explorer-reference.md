@@ -60,12 +60,12 @@ The following table lists the metrics available for the Microsoft.Kusto/clusters
 - [AzureMetrics](/azure/azure-monitor/reference/tables/azuremetrics#columns)
 - [FailedIngestion](/azure/azure-monitor/reference/tables/failedingestion#columns)
 
-  For information about error codes, see [Ingestion error codes](error-codes.md)
+  For information about error codes, see [Ingestion error codes](error-codes.md).
 
 - [SucceededIngestion](/azure/azure-monitor/reference/tables/succeededingestion#columns)
 - [ADXIngestionBatching](/azure/azure-monitor/reference/tables/adxingestionbatching#columns)
 
-  For information about batching types, see [Batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true#sealing-a-batch)
+  For information about batching types, see [Batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true#sealing-a-batch).
 
 - [ADXCommand](/azure/azure-monitor/reference/tables/adxcommand#columns)
 - [ADXQuery](/azure/azure-monitor/reference/tables/adxquery#columns)
