@@ -184,7 +184,7 @@ The application inspects the error, determines that the error indicates a missin
 ```kusto
 declare pattern map_ip_to_longlat = (address:string)
 {
-  ("10.10.10.10") = { print Lat=37.405992, Long=-122.078515 }
+  ("10.10.10.10") = { print Lat=37.405992, Long=-122.078515 };
 };
 map_ip_to_longlat("10.10.10.10")
 ```

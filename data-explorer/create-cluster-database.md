@@ -196,7 +196,7 @@ This section guides you through the process of creating an Azure Data Explorer c
 
 ### [Go](#tab/go)
 
-The following code shows how to create a cluster. To clone the code repository, see [Manage an Azure Data Explorer cluster using Azure Go SDK](https://github.com/Azure-Samples/azure-data-explorer-go-cluster-management/tree/main).
+The following code shows how to create a cluster.
 
 1. Set the required environment variables including service principal information from the [prerequisites](#prerequisites). Enter your subscription ID, resource group, and region where you want to create the cluster.
 
@@ -637,7 +637,7 @@ In this section, you'll create a database within the cluster created in the prev
 
 ### [Go](#tab/go)
 
-The following code shows how to create a database. The package imports and environment variable initiation is the same as in the previous section. To clone the code repository, see [Manage an Azure Data Explorer cluster using Azure Go SDK](https://github.com/Azure-Samples/azure-data-explorer-go-cluster-management/tree/main).
+The following code shows how to create a database. The package imports and environment variable initiation is the same as in the previous section.
 
 1. Run the following code to create the database:
 
