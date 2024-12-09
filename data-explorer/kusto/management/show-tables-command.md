@@ -32,6 +32,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Returns
 
+
 |Output parameter |Type |Description
 |---|---|---
 |TableName  | `string` |The name of the table.
@@ -43,14 +44,15 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ```kusto
 .show tables
-.show tables (T1, ..., Tn)
+.show tables (PopulationData, StormEvents, Trips, GeoRegions)
 ```
 
 **Output example**
 
 |Table Name |Database Name |Folder | DocString
 |---|---|---|---
-|Table1 |DB1 |Logs |Contains services logs
-|Table2 |DB1 | Reporting |
-|Table3 |DB1 | | Extended info |
-|Table4 |DB2 | Metrics| Contains services performance information
+|StormEvents|	Samples	|Storm_Events|	US storm events. Data source: https://www.ncdc.noaa.gov/stormevents|
+|PopulationData|Samples|	Storm_Events|	
+|GeoRegions|	Samples|	NYC Taxi	|
+|Trips|	Samples|	NYC Taxi	|
+
