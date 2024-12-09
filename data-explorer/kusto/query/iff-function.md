@@ -3,7 +3,7 @@ title:  iff()
 description:  This article describes iff().
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 11/27/2024
 ---
 # iff()
 
@@ -31,7 +31,11 @@ Returns the *:::no-loc text="then":::* value when the *:::no-loc text="if":::* c
 
 This function returns the  *:::no-loc text="then":::* value when the *:::no-loc text="if":::* condition evaluates to `true`, otherwise it returns the *:::no-loc text="else":::* value.
 
-## Example
+## Examples
+
+### Classify data using iff()
+
+The following query uses the `iff()` function to categorize storm events as either "Rain event" or "Not rain event" based on their event type, and then projects the state, event ID, event type, and the new rain category.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -56,3 +60,34 @@ The following table shows only the first five rows.
 |GEORGIA| 64588 |Thunderstorm Wind |Not rain event|
 |MISSISSIPPI| 68796 |Thunderstorm Wind |Not rain event|
 |...|...|...|...|
+
+### Combine iff() with other functions
+
+The following query calculates the total damage from crops and property, categorizes the severity of storm events based on total damage, direct injuries, and direct deaths, and then summarizes the total number of events and the number of events by severity.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQTQ6CQAyF956imRVEF7hwJ27ERBNNTPACIxQY4zCmFBTj4R0YI%2F501b6mX%2FsasyG9arDkavQAvDGWKRwMy3MktcwRQnDJksylgvGr2tsKidthJsYGSXFrB1SWeZ%2BIBUyDPsAQbMpTTQqrSBEm3Pc6OULJxSAGExBrlRdi8kebw6xnSbv0BxaG4PQvWqda3NZcLU3sTIokGYXv2%2BOrWmtJ6o7Os3uEtZCYumTPh2P7NvYEXHtYMioBAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+StormEvents
+| extend TotalDamage = DamageCrops + DamageProperty
+| extend Severity = iff(TotalDamage > 1000000 or InjuriesDirect > 10 or DeathsDirect > 0, "High", iff(TotalDamage < 50000 and InjuriesDirect == 0 and DeathsDirect == 0, "Low", "Moderate"))
+| summarize TotalEvents = count(), SeverityEvents = count() by Severity
+```
+
+**Output**
+
+| Severity | TotalEvents |
+|----------|-------------|
+| Low      | 54805       |
+| High     | 977         |
+| Moderate | 3284        |
+
+## Related content
+
+* [Scalar function types summary](scalar-functions.md)
+* [array_iff()](array-iff-function.md)
+* [bin()](bin-function.md)
+* [extend operator](extend-operator.md)
