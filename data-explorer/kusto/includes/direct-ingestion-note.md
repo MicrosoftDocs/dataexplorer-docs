@@ -3,7 +3,7 @@ ms.topic: include
 ms.date: 09/12/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
-<!-- update link for Fabric to (/fabric/real-time-intelligence/ingest-data-overview), once doc is merged-->
+<!-- update link for Fabric to (/fabric/real-time-intelligence/ingest-data-overview), once the overview doc is merged-->
 :::moniker range="microsoft-fabric"
 > [!NOTE]
 > This ingestion method is intended for exploration and prototyping. Don't use it in production or high-volume scenarios.
