@@ -25,6 +25,10 @@ This table describes how you can collect data to monitor your service, and what 
 
 [!INCLUDE [azmon-horz-supported-data](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-supported-data.md)]
 
+## Built in monitoring for Azure Data Explorer
+
+Azure Data Explorer offers metrics and logs to monitor the service.
+
 ### Monitor Azure Data Explorer performance, health, and usage with metrics
 
 Azure Data Explorer metrics provide key indicators as to the health and performance of the Azure Data Explorer cluster resources. Use the metrics to monitor Azure Data Explorer cluster usage, health, and performance in your specific scenario as standalone metrics. You can also use metrics as the basis for operational [Azure Dashboards](/azure/azure-portal/azure-portal-dashboards) and [Azure Alerts](/azure/azure-monitor/alerts/alerts-types#metric-alerts).
@@ -125,11 +129,6 @@ Once the settings are ready, logs start to appear in the configured destination 
 > [!NOTE]
 > If you send logs to a Log Analytics workspace, the `SucceededIngestion`, `FailedIngestion`, `IngestionBatching`, `Command`, `Query`, `TableUsageStatistics`, `TableDetails`, and `Journal` logs are stored in Log Analytics tables named: `SucceededIngestion`, `FailedIngestion`, `ADXIngestionBatching`, `ADXCommand`, `ADXQuery`, `ADXTableUsageStatistics`, `ADXTableDetails`, and `ADXJournal` respectively.
 
-## Built in monitoring for Azure Data Explorer
-
-<!-- Add any monitoring mechanisms build in to your service here. -->
-
-<!--## Use Azure Monitor tools to analyze the data-->
 [!INCLUDE [azmon-horz-tools](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-tools.md)]
 
 [!INCLUDE [azmon-horz-export-data](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-export-data.md)]
