@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 08/11/2024
+ms.date: 09/12/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 <!-- update link for Fabric to (/fabric/real-time-intelligence/ingest-data-overview), once doc is merged-->
