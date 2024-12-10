@@ -514,10 +514,10 @@ items:
             href: show-table-operations-mirroring-status-command.md
             displayName: .show table mirroring status operations
           - name: .show table operations mirroring-exported-artifacts command
-            href: show-table-operations-mirroring-exported-artifacts.md
+            href: show-table-operations-mirroring-exported-artifacts-command.md
             displayName: .show table mirroring operations exported artifacts
           - name: .show table mirroring operations failures command
-            href: show-table-operations-mirroring-failures.md
+            href: show-table-operations-mirroring-failures-command.md
             displayName: show table mirroring operations failures
       - name: Partitioning
         items:
