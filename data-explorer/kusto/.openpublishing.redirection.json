@@ -62,12 +62,12 @@
     },
     {
       "source_path": "management/show-table-mirroring-operations-exported-artifacts.md",
-      "redirect_url": "/kusto/management/show-table-operations-mirroring-exported-artifacts",
+      "redirect_url": "/kusto/management/show-table-operations-mirroring-exported-artifacts-command",
       "redirect_document_id": true
     },
     {
       "source_path": "management/show-table-mirroring-operations-failures.md",
-      "redirect_url": "/kusto/management/show-table-operations-mirroring-failures",
+      "redirect_url": "/kusto/management/show-table-operations-mirroring-failures-command",
       "redirect_document_id": true
     }
   ]
