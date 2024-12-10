@@ -53,7 +53,21 @@
     {
       "source_path": "query/re2.md",
       "redirect_url": "/kusto/query/regex",
-
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "management/show-table-mirroring-operations-command.md",
+      "redirect_url": "/kusto/management/show-table-operations-mirroring-status-command",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "management/show-table-mirroring-operations-exported-artifacts.md",
+      "redirect_url": "/kusto/management/show-table-operations-mirroring-exported-artifacts",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "management/show-table-mirroring-operations-failures.md",
+      "redirect_url": "/kusto/management/show-table-operations-mirroring-failures",
       "redirect_document_id": true
     }
   ]

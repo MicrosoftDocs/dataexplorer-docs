@@ -61,7 +61,7 @@ items:
           - name: .alter database prettyname command
             href: alter-database-prettyname.md
           - name: .drop database prettyname command
-            href: drop-database-prettyname.md            
+            href: drop-database-prettyname.md
           - name: .show database schema command
             displayName: .show databases schema
             href: show-schema-database.md
@@ -239,7 +239,7 @@ items:
           - name: Columns management
             href: columns.md
           - name: Change column type without data loss
-            href: change-column-type-without-data-loss.md 
+            href: change-column-type-without-data-loss.md
           - name: .alter column command
             href: alter-column.md
           - name: .drop column command
@@ -510,15 +510,15 @@ items:
           - name: .show table policy mirroring command
             href: show-table-mirroring-policy-command.md
             displayName: .show table mirroring policy
-          - name: .show table mirroring operations command
-            href: show-table-mirroring-operations-command.md
-            displayName: .show table mirroring operations 
-          - name: .show table mirroring operations exported artifacts command
-            href: show-table-mirroring-operations-exported-artifacts.md
-            displayName: .Show table mirroring operations exported artifacts
+          - name: .show table operations mirroring-status command
+            href: show-table-operations-mirroring-status-command.md
+            displayName: .show table mirroring status operations
+          - name: .show table operations mirroring-exported-artifacts command
+            href: show-table-operations-mirroring-exported-artifacts.md
+            displayName: .show table mirroring operations exported artifacts
           - name: .show table mirroring operations failures command
-            href: show-table-mirroring-operations-failures.md 
-            displayName: show table mirroring operations failures    
+            href: show-table-operations-mirroring-failures.md
+            displayName: show table mirroring operations failures
       - name: Partitioning
         items:
           - name: Partitioning policy
@@ -554,7 +554,7 @@ items:
           - name: Query acceleration policy
             href: query-acceleration-policy.md
             displayName: external table, delta table
-          - name: .alter query acceleration policy command 
+          - name: .alter query acceleration policy command
             href: alter-query-acceleration-policy-command.md
             displayName: external table, delta table
           - name: .delete query acceleration policy command
@@ -562,7 +562,7 @@ items:
             displayName: external table, delta table
           - name: .show external table operations query acceleration statistics command
             href: show-external-table-operations-query-acceleration-statistics.md
-            displayName: external table, delta table 
+            displayName: external table, delta table
           - name: .show query acceleration policy command
             href: show-query-acceleration-policy-command.md
             displayName: external table, delta table
@@ -924,7 +924,7 @@ items:
             href: streaming-ingestion-statistics.md
           - name: .show table data statistics
             href: show-table-data-statistics.md
-  - name: Advanced data management 
+  - name: Advanced data management
     items:
       - name: Clear cached external artifacts
         href: clear-external-artifacts-cache-command.md
