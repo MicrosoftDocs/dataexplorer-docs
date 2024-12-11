@@ -3,15 +3,63 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/10/2024
+ms.date: 12/11/2024
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## November 2024
+
+**API**
+
+|Article title | Description|
+|--|--|
+| [App authentication methods](/azure/data-explorer/kusto/api/get-started/app-authentication-methods.md) | New article. 
+| [Kusto connection strings](/azure/data-explorer/kusto/api/connection-strings/kusto.md) | Updated article. Refreshed content and updated code. |
+| [Request properties](/azure/data-explorer/kusto/api/rest/request-properties.md) |Updated article. - set statement and additions
+| [Create an app to run basic queries](/azure/data-explorer/kusto/api/get-started/app-basic-query.md) | Updated article.- Init App authentication methods
+| [Hello Kusto: Create your first app](/azure/data-explorer/kusto/api/get-started/app-hello-kusto.md) | Updated article. - Init App authentication methods
+| [Create an app to run management commands](/azure/data-explorer/kusto/api/get-started/app-management-commands.md) | Updated article. - Init App authentication methods
+| [Create an app to get data using queued ingestion](/azure/data-explorer/kusto/api/get-started/app-queued-ingestion.md) | Updated article. - Init App authentication methods
+| [Set up your development environment to use Kusto client libraries](/azure/data-explorer/kusto/api/get-started/app-set-up.md) | Updated article. - Init App authentication methods
+
+**Functions library**
+
+|Article title | Description|
+|--|--|
+| [detect_anomalous_new_entity_fl()](/azure/data-explorer/kusto/functions-library/detect-anomalous-new-entity-fl.md) | New article. Learn how to use the detect_anomalous_new_entity_fl() function to detect the appearance of anomalous new entities. |
+| [plotly_gauge_fl()](/azure/data-explorer/kusto/functions-library/plotly-gauge-fl.md) | New article. Learn how to use the plotly_gauge_fl() user-defined function. |
+| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) | Updated article. In the functions library, added information for detect anomalous new entity. Added information about how to render a gauge chart using a Plotly template. |
+| [plotly_anomaly_fl()](/azure/data-explorer/kusto/functions-library/plotly-anomaly-fl.md) | Updated article. Added nformation about how to render a gauge chart using a Plotly template. |
+| [plotly_scatter3d_fl()](/azure/data-explorer/kusto/functions-library/plotly-scatter3d-fl.md)| Updated article. Add plotly_gauge_fl() - render gauge chart using a Plotly template
+
+**General**
+
+|Article title | Description|
+|--|--|
+| [Create a managed private endpoint for Azure Data Explorer](security-network-managed-private-endpoint-create.md) | Updated article. Refreshed content and added information about creating multiple managed private endpoints and automatic approval. |
+
+**Management**
+
+|Article title | Description|
+|--|--|
+- [Managed Identity policy](/azure/data-explorer/kusto/management/managed-identity-policy.md) | Updated article. - ai_embed_text plugin
+
+**Query**
+
+|Article title | Description|
+|--|--|
+| [graph-shortest-paths Operator (Preview)](/azure/data-explorer/kusto/query/graph-shortest-paths-operator.md) | New article. 
+| [ai_embed_text plugin (Preview)](/azure/data-explorer/kusto/query/ai-embed-text-plugin.md) | New article. 
+| [Graph operators](/azure/data-explorer/kusto/query/graph-operators.md) | New article. - new graph operators
+| [make-graph operator](/azure/data-explorer/kusto/query/make-graph-operator.md) | Updated article. Refreshed content and added information about default nodes. |
+| [toint()](/azure/data-explorer/kusto/query/toint-function.md) | Updated article. Refreshed content and added information on how to convert a decimal into a truncate integer. |
+| [series_cosine_similarity()](/azure/data-explorer/kusto/query/series-cosine-similarity-function.md) | Updated article. - ai_embed_text plugin
+
 ## October 2024
 
-## Management
+**Management**
 
 |Article title | Description|
 |--|--|
@@ -180,21 +228,3 @@ No updates.
 |--|--|
 |-[Scalar function types at a glance](/kusto/query/scalar-functions?view=azure-data-explorer&preserve-view=true) <br/> -[series_cosine_similarity()](/kusto/query/series-cosine-similarity-function?view=azure-data-explorer&preserve-view=true) <br/> - [series_magnitude()](/kusto/query/series-magnitude-function?view=azure-data-explorer&preserve-view=true) <br/> - [series_sum()](/kusto/query/series-sum-function?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to calculate series elements, and added to scalar functions overview.|
 |[series_dot_product()](/kusto/query/series-dot-product-function?view=azure-data-explorer&preserve-view=true)| Updated article. Added section on performance optimization.|
-
-## November 2023
-
-**General**
-
-| Article title | Description |
-|--|--|
-| [Migrate a Virtual Network injected cluster to private endpoints (Preview)](security-network-migrate-vnet-to-private-endpoint.md)| New article. Describes how to migrate a Virtual Network injected Azure Data Explorer Cluster to private endpoints.|
-| - [Ingest data from Splunk Universal Forwarder](ingest-data-splunk-uf.md) <br/> - [Ingest data with Apache Flink](ingest-data-flink.md) <br/> - [Data connectors overview](integrate-data-overview.md)| New articles that describe how to ingest data with Splunk Universal Forwarder and Apache Flink, and updated data connector overview.|
-| [Use follower databases](follower.md)| Updated article. Update limitations for clusters using customer-managed keys.|
-| [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md)| Updated article. Refreshed content.|
-| [Create a Microsoft Entra application registration in Azure Data Explorer](provision-entra-id-app.md)| Updated article. Added section on creating a Microsoft Entra service principal.|
-
-**Management**
-
-| Article title | Description |
-|--|--|
-| [Materialized views use cases](/kusto/management/materialized-views/materialized-view-use-cases?view=azure-data-explorer&preserve-view=true)| New article. Describes common and advanced use cases for materialized views.|
