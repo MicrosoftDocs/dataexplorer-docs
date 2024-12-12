@@ -44,8 +44,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 |Article title | Description|
 |--|--|
-| [graph-shortest-paths Operator (Preview)](/kusto/query/graph-shortest-paths-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the graph-shortest-paths operator to efficiently find the shortest paths from a given set of source nodes to a set of target nodes within a graph. |
-| [graph-mark-components operator (Preview)](/kusto/query/graph-mark-components-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the graph-mark-components operator to find and mark all connected components of a graph. |
+| [graph-shortest-paths Operator (Preview)](/kusto/query/graph-shortest-paths-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the graph_shortest_paths operator to efficiently find the shortest paths from a given set of source nodes to a set of target nodes within a graph. |
+| [graph-mark-components operator (Preview)](/kusto/query/graph-mark-components-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the graph_mark_components operator to find and mark all connected components of a graph. |
 | [ai_embed_text plugin (Preview)](/kusto/query/ai-embed-text-plugin?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the ai_embed_text plugin to embed text via language models, enabling various AI-related scenarios such as RAG application and semantic search. |
 | [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true) | Updated. Added new graph operators. |
 | [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed content and added information about default nodes. |
