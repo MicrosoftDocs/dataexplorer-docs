@@ -12,7 +12,7 @@ Kusto Query Language (KQL) is a powerful tool to explore your data and discover 
 
 This article provides an explanation of the query language and offers links to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). To learn how to use KQL, see [Tutorial: Learn common operators](tutorials/learn-common-operators.md).
 
-# Kusto queries
+## Kusto queries
 
 A Kusto query is a read-only request to process data and return results. The request is stated in plain text, using a data-flow model that is easy to read, author, and automate. Kusto queries are made of one or more query statements. 
 
@@ -55,7 +55,7 @@ NOTE: KQL is case-sensitive for everything – table names, table column names, 
 
 The statement begins with a reference to a table called *StormEvents* and contains several operators, [`where`](where-operator.md) and [`count`](count-operator.md), each separated by a pipe. The data rows for the source table are filtered by the value of the *StartTime* column and then filtered by the value of the *State* column. In the last line, the query returns a table with a single column and a single row containing the count of the remaining rows.
 
-# Management commands
+## Management commands
 
 In contrast to Kusto queries, management commands are requests for     Kusto to process or modify data or metadata. For example, the following management command creates a new Kusto table with two columns, `Level` and `Text`:
 
