@@ -15,18 +15,18 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-| [App authentication methods](/azure/data-explorer/kusto/api/get-started/app-authentication-methods.md) | New article. Learn about the different authentication methods that can be used in apps using Kusto client libraries. |
-| [Kusto connection strings](/azure/data-explorer/kusto/api/connection-strings/kusto.md) | Updated article. Refreshed content and updated code. |
-| [Request properties](/azure/data-explorer/kusto/api/rest/request-properties.md) | Updated article. Refreshed content and added a section that lists which request properties can't be set with a set statement. |
+| [App authentication methods](/kusto/api/get-started/app-authentication-methods?view=azure-data-explorer&preserve-view=true) | New article. Learn about the different authentication methods that can be used in apps using Kusto client libraries. |
+| [Kusto connection strings](/kusto/api/connection-strings/kusto?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed content and updated code. |
+| [Request properties](/kusto/api/rest/request-properties?view=azure-data-explorer&preserve-view=trued) | Updated article. Refreshed content and added a section that lists which request properties can't be set with a set statement. |
 
 **Functions library**
 
 |Article title | Description|
 |--|--|
-| [detect_anomalous_new_entity_fl()](/azure/data-explorer/kusto/functions-library/detect-anomalous-new-entity-fl.md) | New article. Learn how to use the detect_anomalous_new_entity_fl() function to detect the appearance of anomalous new entities. |
-| [plotly_gauge_fl()](/azure/data-explorer/kusto/functions-library/plotly-gauge-fl.md) | New article. Learn how to use the plotly_gauge_fl() user-defined function. |
-| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) | Updated article. In the functions library, added information for detect anomalous new entity. Added information about how to render a gauge chart using a Plotly template. |
-| [plotly_anomaly_fl()](/azure/data-explorer/kusto/functions-library/plotly-anomaly-fl.md) | Updated article. Added information about how to render a gauge chart using a Plotly template. |
+| [detect_anomalous_new_entity_fl()](/kusto/functions-library/detect-anomalous-new-entity-fl?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the detect_anomalous_new_entity_fl() function to detect the appearance of anomalous new entities. |
+| [plotly_gauge_fl()](/kusto/functions-library/plotly-gauge-fl?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the plotly_gauge_fl() user-defined function. |
+| [Functions library](/kusto/functions-library/functions-library?view=azure-data-explorer&preserve-view=true) | Updated article. In the functions library, added information for detect anomalous new entity. Added information about how to render a gauge chart using a Plotly template. |
+| [plotly_anomaly_fl()](/kusto/functions-library/plotly-anomaly-fl?view=azure-data-explorer&preserve-view=true) | Updated article. Added information about how to render a gauge chart using a Plotly template. |
 
 **General**
 
@@ -38,18 +38,18 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-- [Managed Identity policy](/azure/data-explorer/kusto/management/managed-identity-policy.md) | Updated article. Added *ai_embed_text* plugin for `AzureAI` to the list of Managed identity usages. |
+- [Managed Identity policy](/kusto/management/managed-identity-policy?view=azure-data-explorer&preserve-view=true) | Updated article. Added *ai_embed_text* plugin for `AzureAI` to the list of Managed identity usages. |
 
 **Query**
 
 |Article title | Description|
 |--|--|
-| [graph-shortest-paths Operator (Preview)](/azure/data-explorer/kusto/query/graph-shortest-paths-operator.md) | New article. Learn how to use the graph-shortest-paths operator to efficiently find the shortest paths from a given set of source nodes to a set of target nodes within a graph. |
-| [graph-mark-components operator (Preview)](/azure/data-explorer/kusto/query/graph-mark-components-operator.md) | New article. Learn how to use the graph-mark-components operator to find and mark all connected components of a graph. |
-| [ai_embed_text plugin (Preview)](/azure/data-explorer/kusto/query/ai-embed-text-plugin.md) | New article. Learn how to use the ai_embed_text plugin to embed text via language models, enabling various AI-related scenarios such as RAG application and semantic search. |
-| [Graph operators](/azure/data-explorer/kusto/query/graph-operators.md) | Updated. Added new graph operators. |
-| [make-graph operator](/azure/data-explorer/kusto/query/make-graph-operator.md) | Updated article. Refreshed content and added information about default nodes. |
-| [toint()](/azure/data-explorer/kusto/query/toint-function.md) | Updated article. Refreshed content and added instruction on how to convert a decimal value into a truncate integer. |
+| [graph-shortest-paths Operator (Preview)](/kusto/query/graph-shortest-paths-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the graph-shortest-paths operator to efficiently find the shortest paths from a given set of source nodes to a set of target nodes within a graph. |
+| [graph-mark-components operator (Preview)](/kusto/query/graph-mark-components-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the graph-mark-components operator to find and mark all connected components of a graph. |
+| [ai_embed_text plugin (Preview)](/kusto/query/ai-embed-text-plugin?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the ai_embed_text plugin to embed text via language models, enabling various AI-related scenarios such as RAG application and semantic search. |
+| [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true) | Updated. Added new graph operators. |
+| [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed content and added information about default nodes. |
+| [toint()](/kusto/query/toint-function?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed content and added instruction on how to convert a decimal value into a truncate integer. |
 
 ## October 2024
 
