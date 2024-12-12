@@ -25,8 +25,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 |--|--|
 | [detect_anomalous_new_entity_fl()](/kusto/functions-library/detect-anomalous-new-entity-fl?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the detect_anomalous_new_entity_fl() function to detect the appearance of anomalous new entities. |
 | [plotly_gauge_fl()](/kusto/functions-library/plotly-gauge-fl?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the plotly_gauge_fl() user-defined function. |
-| [Functions library](/kusto/functions-library/functions-library?view=azure-data-explorer&preserve-view=true) | Updated article. In the functions library, added information for detect anomalous new entity. Added information about how to render a gauge chart using a Plotly template. |
-| [plotly_anomaly_fl()](/kusto/functions-library/plotly-anomaly-fl?view=azure-data-explorer&preserve-view=true) | Updated article. Added information about how to render a gauge chart using a Plotly template. |
+| [Functions library](/kusto/functions-library/functions-library?view=azure-data-explorer&preserve-view=true) | Updated article. Added detect anomalous new entity and use of a Plotly template to render a gauge chart. |
+| [plotly_anomaly_fl()](/kusto/functions-library/plotly-anomaly-fl?view=azure-data-explorer&preserve-view=true) | Updated article. Added use of a Plotly template to render a gauge chart. |
 
 **General**
 
@@ -38,7 +38,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 |Article title | Description|
 |--|--|
-- [Managed Identity policy](/kusto/management/managed-identity-policy?view=azure-data-explorer&preserve-view=true) | Updated article. Added *ai_embed_text* plugin for `AzureAI` to the list of Managed identity usages. |
+| [Managed Identity policy](/kusto/management/managed-identity-policy?view=azure-data-explorer&preserve-view=true) | Updated article. Added *ai_embed_text* plugin for `AzureAI` to the list of Managed identity usages. |
 
 **Query**
 
