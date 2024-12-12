@@ -7,7 +7,7 @@ ms.date: 12/11/2024
 ---
 # What's new in Azure Data Explorer documentation
 
-Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+Welcome to what's new in Azure Data Explorer. This article details new and updated content in the Azure Data Explorer documentation.
 
 ## November 2024
 
@@ -57,7 +57,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-| [Change column type without data loss](/kusto/management/change-column-type-without-data-loss?view=azure-data-explorer&preserve-view=true) | New article. Learn how to preserve preexisting data by changing column type without data loss. |
+| [Change column type without data loss](/kusto/management/change-column-type-without-data-loss?view=azure-data-explorer&preserve-view=true) | New article. Learn how to preserve pre-existing data by changing column type without data loss. |
 | [.alter column command](/kusto/management/alter-column?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for changing column type without data loss. |
 
 ## September 2024
