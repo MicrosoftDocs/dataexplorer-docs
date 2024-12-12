@@ -32,24 +32,24 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 |Article title | Description|
 |--|--|
-| [Create a managed private endpoint for Azure Data Explorer](security-network-managed-private-endpoint-create.md) | Updated article. Refreshed content and added information about creating multiple managed private endpoints and automatic approval. |
+| [Create a managed private endpoint](security-network-managed-private-endpoint-create.md) | Updated article. Refreshed content and added information about creating multiple managed private endpoints and automatic approval. |
 
 **Management**
 
 |Article title | Description|
 |--|--|
-| [Managed Identity policy](/kusto/management/managed-identity-policy?view=azure-data-explorer&preserve-view=true) | Updated article. Added *ai_embed_text* plugin for `AzureAI` to the list of Managed identity usages. |
+| [Managed Identity policy](/kusto/management/managed-identity-policy?view=azure-data-explorer&preserve-view=true) | Updated article. Added *ai_embed_text* plugin for `AzureAI` to the list of managed identity usages. |
 
 **Query**
 
 |Article title | Description|
 |--|--|
-| [graph-shortest-paths Operator (Preview)](/kusto/query/graph-shortest-paths-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the graph_shortest_paths operator to efficiently find the shortest paths from a given set of source nodes to a set of target nodes within a graph. |
+| [graph-shortest-paths operator (Preview)](/kusto/query/graph-shortest-paths-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the graph_shortest_paths operator to efficiently find the shortest paths from a given set of source nodes to a set of target nodes within a graph. |
 | [graph-mark-components operator (Preview)](/kusto/query/graph-mark-components-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the graph_mark_components operator to find and mark all connected components of a graph. |
 | [ai_embed_text plugin (Preview)](/kusto/query/ai-embed-text-plugin?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the ai_embed_text plugin to embed text via language models, enabling various AI-related scenarios such as RAG application and semantic search. |
 | [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true) | Updated. Added new graph operators. |
 | [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed content and added information about default nodes. |
-| [toint()](/kusto/query/toint-function?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed content and added instruction on how to convert a decimal value into a truncate integer. |
+| [toint() function](/kusto/query/toint-function?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed content and added instruction on how to convert a decimal value into a truncate integer. |
 
 ## October 2024
 
