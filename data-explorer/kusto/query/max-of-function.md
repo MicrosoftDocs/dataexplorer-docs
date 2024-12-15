@@ -100,6 +100,7 @@ datatable (A: datetime, B: datetime)
     datetime(2024-12-15 10:45:00), datetime(2024-12-14 10:45:00)
 ]
 | project maxDate = max_of(A, B)
+```
 
 **Output**
 
