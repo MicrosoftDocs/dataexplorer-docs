@@ -3,7 +3,7 @@ title:  max_of()
 description: Learn how to use the max_of() function to return the maximum value of all argument expressions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/15/2024
 ---
 # max_of()
 
@@ -35,6 +35,8 @@ The maximum value of all argument expressions.
 
 ### Find the largest number
 
+This query returns the maximum value of the numbers in the string.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVchNrIjPT9MwNNBRMNRR0DUGUuaaADn0q08kAAAA" target="_blank">Run the query</a>
@@ -52,7 +54,7 @@ print result = max_of(10, 1, -3, 17)
 
 ### Find the maximum value in a data-table
 
-Notice that non-null values take precedence over null values.
+This query returns the highest value from columns A and B. Notice that non-null values take precedence over null values.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -80,3 +82,30 @@ datatable (A: int, B: int)
 |2|
 |1|
 |(null)|
+
+### Find the maximum datetime
+
+This query returns the later of the two datetime values from columns A and B.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ1HK4WUxJLUkszcVB0FJwRHkyuaSwEIYHwNIwMjE11DI11DUwUDcytDUysjI00dfNImmjq4TbCwMjAAIlwmWFoZQ6RxmmBoYGViissEE4Q0VyxXjUJBUX5WanKJQm5ihQtQsYItiBWfn6bhCPSzJgDRvgLNDgEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+datatable (A: datetime, B: datetime)
+[
+    datetime(2024-12-15 07:15:22), datetime(2024-12-15 07:15:24),
+    datetime(2024-12-15 08:00:00), datetime(2024-12-15 09:30:00),
+    datetime(2024-12-15 10:45:00), datetime(2024-12-14 10:45:00)
+]
+| project maxDate = max_of(A, B)
+```
+
+**Output**
+
+| maxDate |
+| --- |
+| 2024-12-15 07:15:24 |
+| 2024-12-15 09:30:00 |
+| 2024-12-15 10:45:00 |
