@@ -78,3 +78,4 @@ KQL is used by many other Microsoft services. For specific information on the us
 * [KQL quick reference](kql-quick-reference.md)
 * [SQL to Kusto Query Language cheat sheet](sql-cheat-sheet.md)
 * [Query best practices](best-practices.md)
+
