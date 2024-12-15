@@ -516,7 +516,7 @@ items:
           - name: .show table operations mirroring-exported-artifacts command
             href: show-table-operations-mirroring-exported-artifacts-command.md
             displayName: .show table mirroring operations exported artifacts
-          - name: .show table mirroring operations failures command
+          - name: .show table operations mirroring-failures command
             href: show-table-operations-mirroring-failures-command.md
             displayName: show table mirroring operations failures
       - name: Partitioning
