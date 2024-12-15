@@ -85,20 +85,14 @@ datatable (A: int, B: int)
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFISSxJNVWwBdMlmbmpGkYGRia6hka6hqYKhgZWJqZWBgaa1gB%2FwnNJKgAAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ1HK4WUxJLUkszcVB0FJwRHkyuaSwEIYHwNIwMjE11DI11DUwUDcytDUysjI00dfNImmjq4TbCwMjAAIlwmWFoZQ6RxmmBoYGViissEE4Q0VyxXjUJBUX5WanKJQm5ihQtQsYItiBWfn6bhCPSzJgDRvgLNDgEAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let date1 = datetime(2024-12-15 07:15:22);
-let date2 = datetime(2024-12-15 07:15:24);
-let date3 = datetime(2024-12-15 08:00:00);
-let date4 = datetime(2024-12-15 09:30:00);
-let date5 = datetime(2024-12-15 10:45:00);
-| print maxDate = max_of(date1, date2, date3, date4, date5);
-```
-
-**Output**
-
-| maxDate |
-| --- |
-| 2024-12-15 10:45:00 |
+datatable (A: datetime, B: datetime)
+[
+    datetime(2024-12-15 07:15:22), datetime(2024-12-15 07:15:24),
+    datetime(2024-12-15 08:00:00), datetime(2024-12-15 09:30:00),
+    datetime(2024-12-15 10:45:00), datetime(2024-12-14 10:45:00)
+]
+| project maxDate = max_of(A, B)
