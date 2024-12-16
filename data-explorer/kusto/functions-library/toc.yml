@@ -20,6 +20,9 @@ items:
 - name: detect_anomalous_new_entity_fl()
   displayName: functions library, security, cybersecurity, anomaly detection, new entity, novelty, cyber, detect anomalous new entity
   href: detect-anomalous-new-entity-fl.md
+- name: detect_anomalous_spike_fl()
+  displayName: functions library, security, cybersecurity, anomaly detection, spike, cyber, detect anomalous spike
+  href: detect-anomalous-spike-fl.md
 - name: factorial_fl()
   displayName: functions library, statistics
   href: factorial-fl.md
