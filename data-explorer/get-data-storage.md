@@ -71,7 +71,7 @@ Select the data source from the available list. In this example, you're ingestin
     > * You can ingest up to 5000 blobs from a single container.
     > * You can't ingest individual blobs and containers in the same ingestion.
 
-        :::image type="content" source="media/get-data-storage/add-uri.png" alt-text="Screenshot of configure tab with the connection string pasted in the URI field."  lightbox="media/get-data-storage/add-uri.png":::
+    :::image type="content" source="media/get-data-storage/add-uri.png" alt-text="Screenshot of configure tab with the connection string pasted in the URI field."  lightbox="media/get-data-storage/add-uri.png":::
 
 1. Select **Next**
 
