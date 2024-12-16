@@ -12,15 +12,15 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 Detect the appearance of anomalous spikes in numeric variables in timestamped data.
 
-The function `detect_anomalous_spike_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that detects the appearance of anomalous spikes in numeric variables - such as amount of exfiltrated data or failed login attempts - in timestamped data, such as traffic logs. In cybersecurity context, such events might be suspicious and indicate a potential attack or compromise.
+The function `detect_anomalous_spike_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that detects the appearance of anomalous spikes in numeric variables - such as amount of exfiltrated data or failed sign in attempts - in timestamped data, such as traffic logs. In cybersecurity context, such events might be suspicious and indicate a potential attack or compromise.
 
-The  anomaly model is based on a combination of two scores: Z-score (the number of standard deviations above average) and Q-score (the number of interquantile ranges above a high quantile). Z-score is a straightforward and common outlier metric; Q-score is based on Tukey's fences - but we extend the definition to any quantiles for more control. Choosing different quantiles (by default, 95th and 25th quantiles are used) allows to detect more significant outliers, thus improving precison. The model is built on top of some numeric variable and is calculated per scope - such as subscription or account - and per entity - such as user or device.
+The anomaly model is based on a combination of two scores: Z-score (the number of standard deviations above average) and Q-score (the number of interquantile ranges above a high quantile). Z-score is a straightforward and common outlier metric; Q-score is based on Tukey's fences - but we extend the definition to any quantiles for more control. Choosing different quantiles (by default, 95th and 25th quantiles are used) allows to detect more significant outliers, thus improving precision. The model is built on top of some numeric variable and is calculated per scope - such as subscription or account - and per entity - such as user or device.
 
-After calculating the scores for a single-variate numeric datapoint and checking additional requirements (e.g., the number of active days in training period on scope is above a predefined threshold), we check whether each of the scores is above its predefined threshold. If so, a spike is detected and the datapoint is flagged as anomalous. Two models are built: one for entity level (defined by entityColumnName parameter) - such as user or device per scope (defined by scopeColumnName parameter) - such as account or subscription. The second model is built for the whole scope. The anomaly detection logic is executed for each model, if anomaly is detected in one of them - it is shown. By default, upward spikes are detected; downward spikes ('dips') can also be interesting in some contexts and can be detected by adapting the logic.
+After we calculate the scores for a single-variate numeric datapoint and checking other requirements (for example, the number of active days in training period on scope is above a predefined threshold), we check whether each of the scores is above its predefined threshold. If so, a spike is detected and the datapoint is flagged as anomalous. Two models are built: one for entity level (defined by entityColumnName parameter) - such as user or device per scope (defined by scopeColumnName parameter) - such as account or subscription. The second model is built for the whole scope. The anomaly detection logic is executed for each model, if anomaly is detected in one of them - it's shown. By default, upward spikes are detected; downward spikes ('dips') can also be interesting in some contexts and can be detected by adapting the logic.
 
-The model's direct output is an anomaly score based on the scores. The score is monotonous in the range of [0, 1], with 1 representing something very anomalous. In addition to the anomaly score, there's a binary flag for detected anomaly (controlled by a minimal threshold parameter), and other explanatory fields.
+The model's direct output is an anomaly score based on the scores. The score is monotonous in the range of [0, 1], with 1 representing something anomalous. In addition to the anomaly score, there's a binary flag for detected anomaly (controlled by a minimal threshold parameter), and other explanatory fields.
 
-Note that the function disregards the temporal structure of the variable (mainly or scalability and explainability). If the variable has significant temporal components - such as trend and seasonalities - we suggest to consider using either the [series_decompose_anomalies()](../query/series-decompose-anomalies-function) function, or use [series_decompose()](../query/series-decompose-function) in order to calculate the residual, and execute `detect_anomalous_spike_fl()` on top of it.
+The function disregards the temporal structure of the variable (mainly or scalability and explainability). If the variable has significant temporal components - such as trend and seasonalities - we suggest to consider using either the [series_decompose_anomalies()](../query/series-decompose-anomalies-function) function, or use [series_decompose()](../query/series-decompose-function) in order to calculate the residual, and execute `detect_anomalous_spike_fl()` on top of it.
 
 ## Syntax
 
@@ -40,16 +40,16 @@ Note that the function disregards the temporal structure of the variable (mainly
 | *startDetection* | `datetime` |  :heavy_check_mark: | The beginning of the detection period for anomaly detection. |
 | *endDetection* | `datetime` |  :heavy_check_mark: | The end of the detection period for anomaly detection. |
 | *minTrainingDaysThresh* | `int` |   | The minimum number of days in training period that a scope exists to calculate anomalies. If it is below threshold, the scope is considered too new and unknown, so anomalies aren't calculated. The default value is 14.|
-| *lowPercentileForQscore* | `real` |   | A number in range [0.0,1.0] representing the percentile to be calculated as low limit for Q-score. In Tukey's fences, 0.25 is used. The default value is 0.25. Choosing a lower percentile will improve precision as more significant anomalies will be detected. |
-| *highPercentileForQscore* | `real` |   | A number in range [0.0,1.0] representing the percentile to be calculated as high limit for Q-score. In Tukey's fences, 0.075 is used. The default value is 0.9. Choosing a higher percentile will improve precision as more significant anomalies will be detected. |
-| *minSlicesPerEntity* | `int` |   | The minimum threshold of 'slices' (e.g., days) to exist on an entity before anomaly model is built for it. If the number is below the threshold, the entity is considered too new and unstable. The default value is 20. |
-| *zScoreThreshEntity* | `real` |   | The minimum threshold for entity-level Z-score (number of standard deviations above average) to be flagged as anomaly. When choosing higher values, only more significant anomalies will be detected. The default value is 3.0. |
-| *qScoreThreshEntity* | `real` |   | The minimum threshold for entity-level Q-score (number of interquantile ranges above high quantile) to be flagged as anomaly. When choosing higher values, only more significant anomalies will be detected. default value is 2.0. |
-| *minNumValueThreshEntity* | `long` |   | The minimum threshold for numeric variable to be flagged as anomaly for an entity. This is useful for filtering cases when a value is very anomalous statistically (high Z-score and Q-score), but the value itself is too small to be interesting. The default value is 0. |
-| *minSlicesPerScope* | `int` |   | The minimum threshold of 'slices' (e.g., days) to exist on a scope before anomaly model is built for it. If the number is below the threshold, the scope is considered too new and unstable. The default value is 20. |
-| *zScoreThreshScope* | `real` |   | The minimum threshold for scope-level Z-score (number of standard deviations above average) to be flagged as anomaly. When choosing higher values, only more significant anomalies will be detected. The default value is 3.0. |
-| *qScoreThreshScope* | `real` |   | The minimum threshold for scope-level Q-score (number of interquantile ranges above high quantile) to be flagged as anomaly. When choosing higher values, only more significant anomalies will be detected. The default value is 2.0. |
-| *minNumValueThreshScope* | `long` |   | The minimum threshold for numeric variable to be flagged as anomaly for a scope. This is useful for filtering cases when a value is very anomalous statistically (high Z-score and Q-score), but the value itself is too small to be interesting. The default value is 0. |
+| *lowPercentileForQscore* | `real` |   | A number in range [0.0,1.0] representing the percentile to be calculated as low limit for Q-score. In Tukey's fences, 0.25 is used. The default value is 0.25. Choosing a lower percentile improves precision as more significant anomalies are detected. |
+| *highPercentileForQscore* | `real` |   | A number in range [0.0,1.0] representing the percentile to be calculated as high limit for Q-score. In Tukey's fences, 0.075 is used. The default value is 0.9. Choosing a higher percentile improves precision as more significant anomalies are detected. |
+| *minSlicesPerEntity* | `int` |   | The minimum threshold of 'slices' (for example, days) to exist on an entity before anomaly model is built for it. If the number is below the threshold, the entity is considered too new and unstable. The default value is 20. |
+| *zScoreThreshEntity* | `real` |   | The minimum threshold for entity-level Z-score (number of standard deviations above average) to be flagged as anomaly. When choosing higher values, only more significant anomalies are detected. The default value is 3.0. |
+| *qScoreThreshEntity* | `real` |   | The minimum threshold for entity-level Q-score (number of interquantile ranges above high quantile) to be flagged as anomaly. When choosing higher values, only more significant anomalies are detected. Default value is 2.0. |
+| *minNumValueThreshEntity* | `long` |   | The minimum threshold for numeric variable to be flagged as anomaly for an entity. This is useful for filtering cases when a value is anomalous statistically (high Z-score and Q-score), but the value itself is too small to be interesting. The default value is 0. |
+| *minSlicesPerScope* | `int` |   | The minimum threshold of 'slices' (for example, days) to exist on a scope before anomaly model is built for it. If the number is below the threshold, the scope is considered too new and unstable. The default value is 20. |
+| *zScoreThreshScope* | `real` |   | The minimum threshold for scope-level Z-score (number of standard deviations above average) to be flagged as anomaly. When choosing higher values, only more significant anomalies are detected. The default value is 3.0. |
+| *qScoreThreshScope* | `real` |   | The minimum threshold for scope-level Q-score (number of interquantile ranges above high quantile) to be flagged as anomaly. When choosing higher values, only more significant anomalies are detected. The default value is 2.0. |
+| *minNumValueThreshScope* | `long` |   | The minimum threshold for numeric variable to be flagged as anomaly for a scope. This is useful for filtering cases when a value is anomalous statistically (high Z-score and Q-score), but the value itself is too small to be interesting. The default value is 0. |
 
 
 ## Function definition
@@ -399,14 +399,14 @@ The output of running the function is the rows in detection dataset that were ta
 * `dataSet`: current dataset (is always `detectSet`).
 * `firstSeenScope`: timestamp when the scope was first seen.
 * `lastSeenScope`: timestamp when the scope was last seen.
-* `slicesInTrainingScope`: number of slices (e.g., days) that the scope exists in training dataset.
-* `countSlicesEntity`: number of slices (e.g., days) that the entity exists on scope.
+* `slicesInTrainingScope`: number of slices (for example, days) that the scope exists in training dataset.
+* `countSlicesEntity`: number of slices (for example, days) that the entity exists on scope.
 * `avgNumEntity`: average of the numeric variable in training set per entity on scope.
 * `sdNumEntity`: standard deviation of the numeric variable in training set per entity on scope.
 * `firstSeenEntity`: timestamp when the entity was first seen on scope.
 * `lastSeenEntity`: timestamp when the entity was last seen on scope.
-* `slicesInTrainingEntity`: number of slices (e.g., days) that the entity exists on scope in training dataset.
-* `countSlicesScope`: number of slices (e.g., days) that the scope exists.
+* `slicesInTrainingEntity`: number of slices (for example, days) that the entity exists on scope in training dataset.
+* `countSlicesScope`: number of slices (for example, days) that the scope exists.
 * `avgNumScope`: average of the numeric variable in training set per scope.
 * `sdNumScope`: standard deviation of the numeric variable in training set per scope.
 * `zScoreEntity`: Z-score for the current value of numeric variable based on entity model.
@@ -424,10 +424,10 @@ The output of running the function is the rows in detection dataset that were ta
 * `anomalyExplainability`: textual wrapper for generated anomaly and its explanation.
 * `anomalyState`: bag of existing entities on scope with their first seen times.
 
-Running this function on countEvents variable using user as entity and account as scope with default parameters detect a spike on scope level. Since he user H4ck3r doesnt have enough data in training period, the anomaly is not calculated for entity level, so all relevant fields are empty. The scope level anomaly has an anomaly score of 0.998, meaning that this spike is very anomalous for the scope.
+Running this function on countEvents variable using user as entity and account as scope with default parameters detect a spike on scope level. Since he user H4ck3r doesnt have enough data in training period, the anomaly isn't calculated for entity level, so all relevant fields are empty. The scope level anomaly has an anomaly score of 0.998, meaning that this spike is anomalous for the scope.
 
 If we raise any of the minimum thresholds high enough, no anomaly will be detected since requirements would be too high.
 
 The output shows the rows with anomalous spikes together with explanation fields in standardized format. These fields are useful for investigating the anomaly and for running anomalous spike detection on several numeric variables or running other algorithms together. 
 
-The suggested usage in cybersecurity context is running the function on meaningful numeric variables (amounts of downloaded data, counts of uploaded files or failed login attempts) per meaningful scopes (such as subscription on accounts) and entities (such as users or devices). A detected anomalous spike means that the numeric value is much higher than what is expected on that scope or entity, and might be suspicious.
+The suggested usage in cybersecurity context is running the function on meaningful numeric variables (amounts of downloaded data, counts of uploaded files or failed sign in attempts) per meaningful scopes (such as subscription on accounts) and entities (such as users or devices). A detected anomalous spike means that the numeric value is higher than what is expected on that scope or entity, and might be suspicious.
