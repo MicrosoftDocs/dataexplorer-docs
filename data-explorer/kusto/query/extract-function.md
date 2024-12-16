@@ -58,7 +58,7 @@ Dates
 **Output**
 
 | DateString | Month |
-| ... | ... |
+| --- | --- |
 | 15-12-2024 | 12 |
 | 21-07-2023 | 7 |
 | 10-03-2022 | 3 |
@@ -78,7 +78,7 @@ let Text = "User: JohnDoe, Email: johndoe@example.com, Age: 29";
 **Output**
 
 | UserName |
-| ... |
+| --- |
 | JohnDoe |
 
 ## Related content
