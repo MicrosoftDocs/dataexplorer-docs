@@ -63,7 +63,7 @@ Dates
 | 21-07-2023 | 7 |
 | 10-03-2022 | 3 |
 
-The following example returns the username from the string. The regular expression `User: ([^,]+)` matches the text following "User: " up to the next comma, effectively extracting the username.
+The following example returns the username from the string. The regular expression `([^,]+)` matches the text following "User: " up to the next comma, effectively extracting the username.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
