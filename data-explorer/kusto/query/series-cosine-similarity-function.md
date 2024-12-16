@@ -15,7 +15,7 @@ The function `series_cosine_similarity()` takes two numeric series as input, and
 
 ## Syntax
 
-`series_cosine_similarity(`*series1*`,` *series2*`)`
+`series_cosine_similarity(`*series1*`, `*series2*`, [`*magnitude1`, [`*magnitude2`]])`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -24,6 +24,7 @@ The function `series_cosine_similarity()` takes two numeric series as input, and
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *series1, series2* | `dynamic` |   :heavy_check_mark: | Input arrays with numeric data. |
+| *magnitude1, magnitude2* | `real` |  | Optional magnitude of the first and the second vectors respectively (square root of dot product of the vector with itself). If not provided, the magnitude will be calculated. |
 
 ## Returns
 
