@@ -20,7 +20,7 @@ After we calculate the scores for a single-variate numeric datapoint and checkin
 
 The model's direct output is an anomaly score based on the scores. The score is monotonous in the range of [0, 1], with 1 representing something anomalous. In addition to the anomaly score, there's a binary flag for detected anomaly (controlled by a minimal threshold parameter), and other explanatory fields.
 
-The function disregards the temporal structure of the variable (mainly or scalability and explainability). If the variable has significant temporal components - such as trend and seasonalities - we suggest to consider using either the [series_decompose_anomalies()](../query/series-decompose-anomalies-function) function, or use [series_decompose()](../query/series-decompose-function) in order to calculate the residual, and execute `detect_anomalous_spike_fl()` on top of it.
+The function disregards the temporal structure of the variable (mainly or scalability and explainability). If the variable has significant temporal components - such as trend and seasonalities - we suggest to consider using either the [series_decompose_anomalies()](../query/series-decompose-anomalies-function.md) function, or use [series_decompose()](../query/series-decompose-function.md) in order to calculate the residual, and execute `detect_anomalous_spike_fl()` on top of it.
 
 ## Syntax
 
@@ -50,7 +50,6 @@ The function disregards the temporal structure of the variable (mainly or scalab
 | *zScoreThreshScope* | `real` |   | The minimum threshold for scope-level Z-score (number of standard deviations above average) to be flagged as anomaly. When choosing higher values, only more significant anomalies are detected. The default value is 3.0. |
 | *qScoreThreshScope* | `real` |   | The minimum threshold for scope-level Q-score (number of interquantile ranges above high quantile) to be flagged as anomaly. When choosing higher values, only more significant anomalies are detected. The default value is 2.0. |
 | *minNumValueThreshScope* | `long` |   | The minimum threshold for numeric variable to be flagged as anomaly for a scope. This is useful for filtering cases when a value is anomalous statistically (high Z-score and Q-score), but the value itself is too small to be interesting. The default value is 0. |
-
 
 ## Function definition
 
@@ -391,8 +390,6 @@ testData
 | t	| timeSlice | countEvents | userName | deviceId | accountName | scope	| entity | numVec	| sliceTime	| dataSet | firstSeenScope | lastSeenScope	| slicesInTrainingScope	| countSlicesEntity	| avgNumEntity	| sdNumEntity	| firstSeenEntity | lastSeenEntity	| slicesInTrainingEntity	| countSlicesScope	| avgNumScope | sdNumScope	| zScoreEntity	| qScoreEntity | zScoreScope | qScoreScope | isSpikeOnEntity | entityHighBaseline | isSpikeOnScope | scopeHighBaseline | entitySpikeAnomalyScore | scopeSpikeAnomalyScore | anomalyType	| anomalyScore | anomalyExplainability | anomalyState |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---	| --- | ---	| --- | --- | --- | ---	| --- | ---	| --- | --- | --- | --- | --- | --- | ---	| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1440 | 2022-04-30 05:00:00.0000000 | 5079 | H4ck3r | 9e8e151aced5a64938b93ee0c13fe940 | prodEnvironment | prodEnvironment | H4ck3r | 5079 | 2022-04-30 05:00:00.0000000	| detectSet | 2022-03-01 08:00:00.0000000 | 2022-04-30 05:00:00.0000000 | 60 | | | | | | | 1155 | 1363.22 | 267.51 | 0 | 0 | 13.84 | 185.46 | 0 | | 1 | 628 | 0 | 0.9987 | spike_accountName | 0.9987 | The value of numeric variable countEvents on accountName prodEnvironment is 5079, which is abnormally high for this accountName. Based on observations from last 60 days, the expected baseline value is below 628.0.	| {"avg": 1363.22,"stdev": 267.51,"percentile_0.25": 605,"percentile_0.9": 628} | 
-
-
 
 The output of running the function is the rows in detection dataset that were tagged as anomalous spikes either at scope or entity levels. Some other fields are added for clarity:
 
