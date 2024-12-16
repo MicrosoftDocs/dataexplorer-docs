@@ -59,18 +59,17 @@ Select the data source from the available list. In this example, you're ingestin
         | Folder path| Filters data to ingest files with a specific folder path. |
         | File extension| Filters data to ingest files with a specific file extension only.|
 
-    1. If you selected **Add URI**, from the storage account, generate an SAS URL for the container or individual blobs you want to ingest. Set the permissions to **Read** and **List** for containers or **Read** for individual blobs. For more information, see [Generate a SAS token](/kusto/api/connection-strings/generate-sas-token&view=azure-data-explorer&preserve-view=true).
+    1. If you selected **Add URI**, from the storage account, generate an SAS URL for the container or individual blobs you want to ingest. Set the permissions to **Read** and **List** for containers or **Read** for individual blobs. For more information, see [Generate a SAS token](/kusto/api/connection-strings/generate-sas-token?view=azure-data-explorer&preserve-view=true).
 
     1. Paste the URL into the **URI** field, and then select plus (**+**). You can add multiple URIs for individual blobs, or a single URI for a container.
 
-            :::image type="content" source="media/get-data-storage/add-uri.png" alt-text="Screenshot of configure tab with the connection string pasted in the URI field."  lightbox="media/get-data-storage/add-uri.png":::
+    :::image type="content" source="media/get-data-storage/add-uri.png" alt-text="Screenshot of configure tab with the connection string pasted in the URI field."  lightbox="media/get-data-storage/add-uri.png":::
 
-
-        > [!NOTE]
-        >
-        > * You can add up to 10 individual blobs. Each blob can be a max of 1 GB uncompressed.
-        > * You can ingest up to 5000 blobs from a single container.
-        > * You can't ingest individual blobs and containers in the same ingestion.
+    > [!NOTE]
+    >
+    > * You can add up to 10 individual blobs. Each blob can be a max of 1 GB uncompressed.
+    > * You can ingest up to 5000 blobs from a single container.
+    > * You can't ingest individual blobs and containers in the same ingestion.
 
         :::image type="content" source="media/get-data-storage/add-uri.png" alt-text="Screenshot of configure tab with the connection string pasted in the URI field."  lightbox="media/get-data-storage/add-uri.png":::
 
