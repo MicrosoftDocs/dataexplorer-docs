@@ -24,7 +24,8 @@ This article explains Kusto Query Language concepts, providing examples and exer
 The most common query type in KQL is the **tabular expression statement**, where input and output data are represented as **tables** (or tabular datasets). A query consists of **operators** chained together using the **pipe symbol (`|`)**, which streams data sequentially through transformations.
 
 Here's an example:
-
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUUgDZkpxfmlcCAIItD6l6AAAA" target="_blank">Run the query</a>
 ```kusto
 StormEvents
 | where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
