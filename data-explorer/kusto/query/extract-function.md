@@ -3,7 +3,7 @@ title:  extract()
 description: Learn how to use the extract() function to get a match for a regular expression from a source string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/16/2024
 ---
 # extract()
 
@@ -36,23 +36,58 @@ If there's no match, or the type conversion fails: `null`.
 
 ## Examples
 
-The example string `Trace` is searched for a definition for `Duration`.
-The match is converted to `real`, then multiplied it by a time constant (`1s`) so that `Duration` is of type `timespan`. In this example, it's equal to 123.45 seconds:
+### Extract month from datetime string
+
+The following query extracts the month from the string `Dates` and returns a table with the date string and the month.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNsQrCMBCG9zzFkSmBBJKrIiiCg6uTozrU9tRKSUp6g6K%2Bu2lFxLvh%2BD%2BO72%2BJYV0y9bCEuuS8x5bUQLacmnCeQz9eLXYC8kg%2FtR4tOpxI8yHorZsNpPgS76wrBoJSHBZi9Isn0I0p1LCJgS%2B5LsdUVqxW0qp9%2FcCXttKAN%2FBrN8D3juJJNYG1zoouxStV%2FPcy%2Bt4n%2F34nyAAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
-T
-| extend Trace="A=1, B=2, Duration=123.45, ..."
-| extend Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s) 
+let Dates = datatable(DateString: string)
+[
+    "15-12-2024",
+    "21-07-2023",
+    "10-03-2022"
+];
+Dates
+| extend Month = extract(@"-(\d{2})-", 1, DateString, typeof(int))
+| project DateString, Month
 ```
 
-This example is equivalent to `substring(Text, 2, 4)`:
+**Output**
+
+| DateString | Month |
+| --- | --- |
+| 15-12-2024 | 12 |
+| 21-07-2023 | 7 |
+| 10-03-2022 | 3 |
+
+### Extract username from a string
+
+The following example returns the username from the string. The regular expression `([^,]+)` matches the text following "User: " up to the next comma, effectively extracting the username.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEISa0oUbBVUAotTi2yUvDKz8hzyU%2FVUXDNTczMsVLIAvJT8lMdUisScwtyUvWS83N1FBzTU60UjCyVrLkKijLzShRAWv0Sc1OBxgANK0pMLtGAGqcRHacTq62ppKNgqAO2SRMAAQTyB3MAAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
-extract("^.{2,2}(.{4,4})", 1, Text)
+let Text = "User: JohnDoe, Email: johndoe@example.com, Age: 29";
+| print UserName = extract("User: ([^,]+)", 1, Text)
 ```
+
+**Output**
+
+| UserName |
+| --- |
+| JohnDoe |
 
 ## Related content
 
 * [extract-all function](extract-all-function.md)
 * [extract-json function](extract-json-function.md)
 * [parse operator](parse-operator.md)
+* [regular expression](regex.md)
