@@ -1,11 +1,11 @@
 ---
-title:  Show continuous data export
+title:  .show continuous-export
 description:  This article describes how to show continuous data export properties.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/08/2024
 ---
-# Show continuous export
+# .show continuous-export
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -31,18 +31,27 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Returns
 
-| Output parameter    | Type     | Description                                                             |
-|---------------------|----------|-------------------------------------------------------------------------|
-| CursorScopedTables  | `string` | List of explicitly scoped (fact) tables (JSON serialized)               |
-| ExportProperties    | `string` | Export properties (JSON serialized)                                     |
-| ExportedTo          | `datetime` | The last datetime (ingestion time) that was exported successfully       |
-| ExternalTableName   | `string` | Name of the external table                                              |
-| ForcedLatency       | `timeSpan` | Forced latency (null if not provided)                                   |
-| IntervalBetweenRuns | `timeSpan` | Interval between runs                                                   |
-| IsDisabled          | `bool` | True if the continuous export is disabled                               |
-| IsRunning           | `bool` | True if the continuous export is currently running                      |
-| LastRunResult       | `string` | The results of the last continuous-export run (`Completed` or `Failed`) |
-| LastRunTime         | `datetime` | The last time the continuous export was executed (start time)           |
-| Name                | `string` | Name of the continuous export                                           |
-| Query               | `string` | Export query                                                            |
-| StartCursor         | `string` | Starting point of the first execution of this continuous export         |
+| Output parameter | Type | Description |
+|--|--|--|
+| CursorScopedTables | `string` | The list of explicitly scoped (fact) tables (JSON serialized). |
+| ExportProperties | `string` | The export properties (JSON serialized). |
+| ExportedTo | `datetime` | The last datetime (ingestion time) that was exported successfully. |
+| ExternalTableName | `string` | The external table name. |
+| ForcedLatency | `timeSpan` | The forced latency timespan, if defined. Returns `Null` if no timespan is defined. |
+| IntervalBetweenRuns | `timeSpan` | The interval between runs. |
+| IsDisabled | `bool` | A boolean value indicating whether the continuous export is disabled. |
+| IsRunning | `bool` | A boolean value indicating whether the continuous export is currently running. |
+| LastRunResult | `string` | The results of the last continuous-export run (`Completed` or `Failed`). |
+| LastRunTime | `datetime` | The last time the continuous export was executed (start time) |
+| Name | `string` | The name of the continuous export. |
+| Query | `string` | The export query. |
+| StartCursor | `string` | The starting point of the first execution of this continuous export. |
+
+## Related content
+
+* [Continuous data export overview](continuous-data-export.md)
+* [External tables](../../query/schema-entities/external-tables.md)
+* [.create or alter continuous-export](create-alter-continuous.md)
+* [.disable or enable continuous-export](disable-enable-continuous.md)
+* [.drop continuous-export](drop-continuous-export.md)
+* [.show continuous-export failures](show-continuous-failures.md)
