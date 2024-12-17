@@ -3,7 +3,7 @@ title:  Export data to SQL
 description:  This article describes Export data to SQL.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/01/2024
 ---
 # Export data to SQL
 
@@ -32,13 +32,13 @@ You must have at least [Table Admin](../../access-control/role-based-access-cont
 
 ## Supported properties
 
-|Name               |Values           |Description|
-|-------------------|-----------------|-----------|
-|`firetriggers`     |`true` or `false`|If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. For more information, see [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) and [System.Data.SqlClient.SqlBulkCopy](/dotnet/api/system.data.sqlclient.sqlbulkcopy).|
-|`createifnotexists`|`true` or `false`|If `true`, the target SQL table is created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column that is the primary key. The default is `false`.|
-|`primarykey`       |                 |If `createifnotexists` is `true`, this property indicates the name of the column in the result that will be used as the SQL table's primary key if it's created by this command.|
-|`persistDetails`   |`bool`           |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results. Defaults to `false` in synchronous executions, but can be turned on. |
-|`token`            |`string`         |The Microsoft Entra access token that Kusto will forward to the SQL endpoint for authentication. When set, the SQL connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`.|
+| Name | Values | Description |
+|--|--|--|
+| `firetriggers` | `true` or `false` | If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. For more information, see [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) and [System.Data.SqlClient.SqlBulkCopy](/dotnet/api/system.data.sqlclient.sqlbulkcopy). |
+| `createifnotexists` | `true` or `false` | If `true`, the target SQL table is created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column that is the primary key. The default is `false`. |
+| `primarykey` |  | If `createifnotexists` is `true`, this property indicates the name of the column in the result that is used as the SQL table's primary key if it's created by this command. |
+| `persistDetails` | `bool` | Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results. Defaults to `false` in synchronous executions, but can be turned on. |
+| `token` | `string` | The Microsoft Entra access token that Kusto forwards to the SQL endpoint for authentication. When set, the SQL connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`. |
 
 ## Authentication and authorization
 
@@ -70,10 +70,10 @@ There are some limitations and restrictions when exporting data to an SQL databa
    identity itself.
 
 3. If the target table in the SQL database exists, it must match the query result
-   schema. Note that in some cases (such as Azure SQL Database) this means
+   schema. In some cases, such as Azure SQL Database, this means
    that the table has one column marked as an identity column.
 
-4. Exporting large volumes of data may take a long time. It's recommended that
+4. Exporting large volumes of data might take a long time. It's recommended that
    the target SQL table is set for minimal logging during bulk import.
    See [SQL Server Database Engine > ... > Database Features > Bulk Import and Export of Data](/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import).
 
@@ -87,32 +87,43 @@ There are some limitations and restrictions when exporting data to an SQL databa
 
 8. The primary key property on the column can be specified when creating
    a new SQL table. If the column is of type `string`, then SQL might refuse to create the
-   table due to other limitations on the primary key column. The workaround is to manually create the table in SQL before exporting the data. The reason for this limitation is that primary key columns in SQL can't be of unlimited size, but Kusto table columns
-   have no declared size limitations.
+   table due to other limitations on the primary key column. The workaround is to manually create the table in SQL before exporting the data. This limitation exists because primary key columns in SQL can’t be of unlimited size, but Kusto table columns don't have declared size limitations.
 
 <a name='azure-db-azure-ad-integrated-authentication-documentation'></a>
 
-## Azure DB Microsoft Entra integrated authentication Documentation
+## Azure database Microsoft Entra integrated authentication Documentation
 
 * [Use Microsoft Entra authentication for authentication with SQL Database](/azure/sql-database/sql-database-aad-authentication)
 <!-- * [Microsoft Entra authentication extensions for Azure SQL DB and SQL DW tools](https://azure.microsoft.com/blog/azure-ad-authentication-extensions-for-azure-sql-db-and-sql-dw-tools/) -->
 
 ## Examples
 
-In this example, Kusto runs the query and then exports the first record set produced by the query to the `MySqlTable` table in the `MyDatabase` database in server `myserver`.
+### Asynchronous export to SQL table
 
-```kusto 
+In the following example, Kusto runs the query and then exports the first record set produced by the query to the `MySqlTable` table in the `MyDatabase` database in server `myserver`.
+
+```kusto
 .export async to sql MySqlTable
     h@"Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=MyDatabase;Connection Timeout=30;"
     <| print Id="d3b68d12-cbd3-428b-807f-2c740f561989", Name="YSO4", DateOfBirth=datetime(2017-10-15)
 ```
 
-In this example, Kusto runs the query and then exports the first record set produced by the query to the `MySqlTable` table in the `MyDatabase` database in server `myserver`.
-If the target table doesn't exist in the target database, it's created.
+### Export to SQL table if it doesn't exist
 
-```kusto 
+In the following example, Kusto runs the query and then exports the first record set produced by the query to the `MySqlTable` table in the `MyDatabase` database in server `myserver`.
+The target table is created if it doesn't exist in the target database.
+
+```kusto
 .export async to sql ['dbo.MySqlTable']
     h@"Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=MyDatabase;Connection Timeout=30;"
     with (createifnotexists="true", primarykey="Id")
     <| print Message = "Hello World!", Timestamp = now(), Id=12345678
 ```
+
+## Related content
+
+* [Ingest from query](../data-ingestion/ingest-from-query.md)
+* [Management commands overview](../index.md)
+* [Export to an external table](export-data-to-an-external-table.md)
+* [Export data to cloud storage](export-data-to-storage.md)
+* [Create and alter Azure SQL external tables](../external-sql-tables.md)
