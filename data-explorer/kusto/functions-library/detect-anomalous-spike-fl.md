@@ -421,7 +421,7 @@ The output of running the function is the rows in detection dataset that were ta
 * `anomalyExplainability`: textual wrapper for generated anomaly and its explanation.
 * `anomalyState`: bag of metrics from the chosen model (average, standard deviation and percentiles) describing the model.
 
-Running this function on countEvents variable using user as entity and account as scope with default parameters detect a spike on scope level. Since he user H4ck3r doesnt have enough data in training period, the anomaly isn't calculated for entity level, so all relevant fields are empty. The scope level anomaly has an anomaly score of 0.998, meaning that this spike is anomalous for the scope.
+In the example above, running this function on countEvents variable using user as entity and account as scope with default parameters detects a spike on scope level. Since the user 'H4ck3r' doesn't have enough data in training period, the anomaly isn't calculated for entity level and all relevant fields are empty. The scope level anomaly has an anomaly score of 0.998, meaning that this spike is anomalous for the scope.
 
 If we raise any of the minimum thresholds high enough, no anomaly will be detected since requirements would be too high.
 
