@@ -36,6 +36,8 @@ If there's no match, or the type conversion fails: `null`.
 
 ## Examples
 
+**Extract value from datetime data**
+
 The following query extracts the month from the string `Dates` and returns a table with the date string and the month.
 
 :::moniker range="azure-data-explorer"
@@ -62,6 +64,8 @@ Dates
 | 15-12-2024 | 12 |
 | 21-07-2023 | 7 |
 | 10-03-2022 | 3 |
+
+**Extract from a text string**
 
 The following example returns the username from the string. The regular expression `([^,]+)` matches the text following "User: " up to the next comma, effectively extracting the username.
 
