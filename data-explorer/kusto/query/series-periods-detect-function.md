@@ -58,7 +58,7 @@ print y=dynamic([80, 139, 87, 110, 68, 54, 50, 51, 53, 133, 86, 141, 97, 156, 94
 
 :::image type="content" source="media/series-periods/series-periods.png" alt-text="Series periods.":::
 
-Let's run `series_periods_detect()` on the same series to identify the recurring patterns. The query returns the two most significant periods within the defined period range. This means the function considers all possible period lengths between 0 and 25 days and search for patterns within those ranges. The returned periods represent the most prominent cycles or patterns detected in the data.
+Let's run `series_periods_detect()` on the same series to identify the recurring patterns. The query returns the two most significant periods within the defined period range. This means the function considers all possible period lengths between 0 and 25 days and search for patterns within those ranges. The returned periods represent the two most prominent cycles or patterns detected in the data.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
