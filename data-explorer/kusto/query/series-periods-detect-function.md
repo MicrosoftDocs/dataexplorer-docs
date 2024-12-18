@@ -3,7 +3,7 @@ title:  series_periods_detect()
 description: Learn how to use the series_periods_detect() function to find the most significant periods that exist in a time series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/18/2024
 ---
 # series_periods_detect()
 
@@ -11,7 +11,7 @@ ms.date: 08/11/2024
 
 Finds the most significant periods within a time series.
 
-The series_periods_detect() function is particularly useful for detecting periodic patterns in data, such as daily, weekly, or monthly cycles.
+The series_periods_detect() function is useful for detecting periodic patterns in data, such as daily, weekly, or monthly cycles.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ The series_periods_detect() function is particularly useful for detecting period
 | *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values, typically the resulting output of the [make-series](make-series-operator.md) or [make_list](make-list-aggregation-function.md) operators.|
 | *min_period* | `real` |  :heavy_check_mark: | The minimal period length for which to search.|
 | *max_period* | `real` |  :heavy_check_mark: | The maximal period length for which to search.|
-| *num_periods* | `long` |  :heavy_check_mark: | The maximum number of periods to return. This number will be the length of the output dynamic arrays.|
+| *num_periods* | `long` |  :heavy_check_mark: | The maximum number of periods to return. This number is the length of the output dynamic arrays.|
 
 > [!IMPORTANT]
 >
@@ -38,35 +38,14 @@ The series_periods_detect() function is particularly useful for detecting period
 
 The function returns a table with two columns:
 
-* *periods*: A dynamic array containing the periods that have been found, in units of the bin size, ordered by their scores.
+* *periods*: A dynamic array containing the periods found, in units of the bin size, ordered by their scores.
 * *scores*: A dynamic array containing values between 0 and 1. Each array measures the significance of a period in its respective position in the *periods* array.
 
 ## Example
 
-### 
+### Line chart to show patterns
 
-The following query analyzes the series containing aggregated daily data, and returns the most significant period within the defined period range. This means the function will consider all possible period lengths between 0 and 50 days. The returned period represents the most prominent cycle or pattern detected in the data.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WQywrCMBBF935Fli0UybR5In6JSJEmi4JWabvx7723qYKLDHceZ2Yy97yqJc9jXtRZpfd0e4xDdQm6UdLFRgUPIfBcaJQ1eNBW8DpWwAQHYRCJLLXwomEEcLQUADxSTnYYWeN32Ldk2i%2BDGaIJOca1UOmyhOvKTGtLC%2BESorlFiFRkA12h8fankIjcAfVsu71tBo0mG9hK6AbObWXHRDjI62t9OrzmcVrVC5d6pqVPec3DmhNuVo7X%2F2eqEm2UPvLLm5X6AxYGZ0psAQAA" target="_blank">Run the query</a>
-::: moniker-end
-
-```kusto
-let series = dynamic([80, 139, 87, 110, 68, 54, 50, 51, 53, 133, 86, 141, 97, 156, 94, 149, 95, 140, 77, 61, 50, 54, 47, 133, 72, 152, 94, 148, 105, 162, 101, 160, 87, 63, 53, 55, 54, 151, 103, 189, 108, 183, 113, 175, 113, 178, 90, 71, 62, 62, 65, 165, 109, 181, 115, 182, 121, 178, 114, 170]);
-| print periods_detected = series_periods_detect(series, 0.0, 50.0, 1)
-```
-
-**Output**
-
-The query returns a significant cycle repeating every 14 days.
-
-| periods_detected |
-| --- |
-| 14 |
-
-
-The following query embeds a snapshot of a month of an application’s traffic. The amount of traffic is aggregated twice a day, meaning the bin size is 12 hours.
+The following query embeds a snapshot of application traffic for one month. The amount of traffic is aggregated twice a day, meaning the bin size is 12 hours. The query produces a line chart clearly showing a pattern in the data.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -81,7 +60,9 @@ print y=dynamic([80, 139, 87, 110, 68, 54, 50, 51, 53, 133, 86, 141, 97, 156, 94
 
 :::image type="content" source="media/series-periods/series-periods.png" alt-text="Series periods.":::
 
-Running `series_periods_detect()` on this series, results in the weekly period, 14 points long.
+### Find the period
+
+Let's run `series_periods_detect()` on the same series to identify the recurring patterns. The query returns the two most significant periods within the defined period range. This means the function considers all possible period lengths between 0 and 25 days and search for patterns within those ranges. The returned periods represent the most prominent cycles or patterns detected in the data.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -98,7 +79,14 @@ print y=dynamic([80, 139, 87, 110, 68, 54, 50, 51, 53, 133, 86, 141, 97, 156, 94
 
 | series\_periods\_detect\_y\_periods  | series\_periods\_detect\_y\_periods\_scores |
 |-------------|-------------------|
-| [14.0, 0.0] | [0.84, 0.0]  |
+| [14, 0] | [0.84, 0]  |
+
+The value in series\_periods\_detect\_y\_periods\_scores is truncated.
 
 > [!NOTE]
-> The daily period that can be also seen in the chart wasn't found because the sampling is too coarse (12h bin size), so a daily period of 2 bins is below the minimum period size of 4 points, required by the algorithm.
+> There is also a daily pattern visible in the chart, but this is not returned by the query because the sampling is too coarse (12h bin size). A daily period of 2 bins is below the minimum period size of 4 points, required by the algorithm.
+
+## Related content
+
+* [Regular expressions](/dotnet/standard/base-types/regular-expression-language-quick-reference)
+* [series_periods_validate()](series-periods-validate-function.md)
