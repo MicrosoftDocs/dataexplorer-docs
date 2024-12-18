@@ -46,7 +46,7 @@ Display the cluster's callout policy.
 |--|--|--|--|--|
 | CalloutPolicy |  | [] | ["$systemdb","KustoMonitoringPersistentDatabase","TestDB"] | Cluster |
 
-# Related content
+## Related content
 
 * [Callout policy](callout-policy.md)
 * [.alter cluster policy callout command](alter-callout-policy-command.md)

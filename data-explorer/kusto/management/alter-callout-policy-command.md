@@ -63,7 +63,7 @@ Define permitted callouts for the cluster callout policy.
 |--|--|--|--|--|
 | CalloutPolicy |  | [{"CalloutType":"sql","CalloutUriRegex":"sqlname\\\\.database\\\\.azure\\\\.com/?$","CanCall": true}] |  |  |
 
-# Related content
+## Related content
 
 * [Callout policy](callout-policy.md)
 * [.show cluster policy callout command](show-cluster-callout-policy-command.md)
