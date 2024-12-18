@@ -52,6 +52,7 @@ The command returns one row / one column table:
 |Name       |Type      |Description                                                                |
 |-----------|----------|---------------------------------------------------------------------------|
 |IngestionOperationId |`string`    |The ID used to track this set of blobs (regarless if tracking is enabled or not).
+|OperationInfo |`string`    |The text of the command to run to get the status of the operation
 
 >[!NOTE]
 > This command doesn't modify the schema of the table being ingested into. If necessary, the data is "coerced" into this schema during ingestion, not the other way around (extra columns are ignored, and missing columns are treated as null values).
