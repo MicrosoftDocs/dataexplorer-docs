@@ -3,7 +3,7 @@ title: .alter database policy streamingingestion command
 description: Learn how to use the `.alter database policy streamingingestion` command to change the database streaming ingestion policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/18/2024
 monikerRange: "azure-data-explorer"
 ---
 # .alter database policy streamingingestion command
@@ -14,7 +14,7 @@ Changes the database streaming ingestion policy. The [streaming policy](../manag
 
 Streaming ingestion is best suited for low latency scenarios where the ingestion time is under 10 seconds for varying data volume. It can optimize processing for multiple tables across one or more databases, especially when the tables receive only a few records per second but the ingestion volume is thousands of records per second.
 
-However, when the amount of data grows beyond 4 Gb per hour per table, it's recommended to switch to classic bulk ingestion instead of streaming ingestion.
+However, when the amount of data grows beyond 4 GB per hour per table, the recommendation is to switch to classic bulk ingestion instead of streaming ingestion.
 
 To learn how to implement streaming ingestion, see [streaming ingestion](/azure/data-explorer/ingest-data-streaming).
 Streaming ingestion must be enabled at the cluster level before it can be used at the database level.
@@ -48,3 +48,16 @@ The following command enables streaming ingestion and determines the suggestion 
 .alter database MyDatabase policy streamingingestion 
 '{"IsEnabled": true, "HintAllocatedRate": 2.1}'
 ```
+
+## Related content
+
+* [Streaming ingestion policy](streaming-ingestion-policy.md)
+* [.show database policy streamingingestion command](show-database-streaming-ingestion-policy-command.md)
+* [.show table policy streamingingestion command](show-table-streaming-ingestion-policy-command.md)
+* [.alter-merge database policy streamingingestion command](alter-merge-database-streaming-ingestion-policy-command.md)
+* [.alter table policy streamingingestion command](alter-table-streaming-ingestion-policy-command.md)
+* [.alter-merge table policy streamingingestion command]
+* [.delete database policy streamingingestion command](delete-database-streaming-ingestion-policy-command.md)
+* [.delete table policy streamingingestion command](delete-table-streaming-ingestion-policy-command.md)
+(alter-merge-table-streaming-ingestion-policy-command.md)
+* [Streaming ingestion and schema changes](data-ingestion/streaming-ingestion-schema-changes.md)

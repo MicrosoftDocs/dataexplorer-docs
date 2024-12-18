@@ -14,7 +14,7 @@ Changes the table's streaming ingestion policy. Use the [streaming policy](../ma
 
 Streaming ingestion is best suited for low latency scenarios where the ingestion time is under 10 seconds for varying data volume. It can optimize processing for multiple tables across one or more databases, especially when the tables receive only a few records per second but the ingestion volume is thousands of records per second.
 
-However, when the amount of data grows beyond 4 Gb per hour per table, it's recommended to switch to classic bulk ingestion instead of streaming ingestion.
+However, when the amount of data grows beyond 4 GB per hour per table, it's recommended to switch to classic bulk ingestion instead of streaming ingestion.
 
 To learn how to implement streaming ingestion, see [streaming ingestion](/azure/data-explorer/ingest-data-streaming).
 
@@ -54,3 +54,14 @@ The following command disables the streaming ingestion policy:
 .alter-merge table MyTable policy streamingingestion 
 '{"IsEnabled": false}'
 ```
+
+## Related content
+
+* [Streaming ingestion policy](streaming-ingestion-policy.md)
+* [.show database policy streamingingestion command](show-database-streaming-ingestion-policy-command.md)
+* [.show table policy streamingingestion command](show-table-streaming-ingestion-policy-command.md)
+* [.alter database policy streamingingestion command](alter-database-streaming-ingestion-policy-command.md)
+* [.alter table policy streamingingestion command](alter-table-streaming-ingestion-policy-command.md)
+* [.delete database policy streamingingestion command](delete-database-streaming-ingestion-policy-command.md)
+* [.delete table policy streamingingestion command](delete-table-streaming-ingestion-policy-command.md)
+(alter-merge-table-streaming-ingestion-policy-command.md)

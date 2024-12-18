@@ -3,7 +3,7 @@ title: .alter table policy streamingingestion command
 description: Learn how to use the `.alter table policy streamingingestion` command to change the table streaming policy ingestion.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/18/2024
 monikerRange: "azure-data-explorer"
 ---
 # .alter table policy streamingingestion command
@@ -46,3 +46,14 @@ The following command turns on streaming ingestion and determines the suggested 
 ```kusto
 .alter table Table1 policy streamingingestion '{"IsEnabled": true, "HintAllocatedRate": 2.1}'
 ```
+
+## Related content
+
+* [Streaming ingestion policy](streaming-ingestion-policy.md)
+* [.show database policy streamingingestion command](show-database-streaming-ingestion-policy-command.md)
+* [.show table policy streamingingestion command](show-table-streaming-ingestion-policy-command.md)
+* [.alter database policy streamingingestion command](alter-database-streaming-ingestion-policy-command.md)
+* [.alter-merge database policy streamingingestion command](alter-merge-database-streaming-ingestion-policy-command.md)
+* [.delete database policy streamingingestion command](delete-database-streaming-ingestion-policy-command.md)
+* [.delete table policy streamingingestion command](delete-table-streaming-ingestion-policy-command.md)
+(alter-merge-table-streaming-ingestion-policy-command.md)

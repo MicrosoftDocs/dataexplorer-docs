@@ -3,7 +3,7 @@ title:  .alter-merge database policy sharding command
 description: Learn how to use the `.alter-merge database policy sharding` command to change the database sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/18/2024
 monikerRange: "azure-data-explorer"
 ---
 # .alter-merge database policy sharding command
@@ -43,3 +43,12 @@ The following command changes a single property for the sharding policy for a da
 .alter-merge database MyDatabase policy sharding 
 @'{ "MaxExtentSizeInMb": 1024}'
 ```
+
+## Related content
+
+* [Data sharding policy](sharding-policy.md)
+* [.show database policy sharding command](show-database-sharding-policy-command.md)
+* [.alter database policy sharding command](alter-database-sharding-policy-command.md)
+* [.alter-merge table policy sharding command](alter-merge-table-sharding-policy-command.md)
+* [.delete database policy sharding command](delete-database-sharding-policy-command.md)
+* [Extents (data shards)](extents-overview.md)
