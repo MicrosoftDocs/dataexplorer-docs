@@ -43,7 +43,8 @@ StormEvents
 Count
 28
 ```
-> **Note**: KQL is **case-sensitive** for table names, column names, operators, and functions.
+> [!NOTE]
+> KQL is **case-sensitive** for table names, column names, operators, and functions.
 
 ### Types of Query Statements
 
