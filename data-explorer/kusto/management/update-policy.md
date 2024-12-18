@@ -3,7 +3,7 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/18/2024
 ---
 # Update policy overview
 
@@ -21,7 +21,7 @@ The following diagram depicts a high-level view of an update policy. It shows tw
 An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the cluster size, and is more efficient when handling bulk ingestion.
 ::: moniker-end
 :::moniker range="microsoft-fabric"
-An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the eventhouse size, and is more efficient when handling bulk ingestion.
+An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the Eventhouse size, and is more efficient when handling bulk ingestion.
 ::: moniker-end
 
 > [!NOTE]
@@ -38,6 +38,7 @@ If the update policy is defined on the target table, multiple queries can run on
 ### Query limitations
 
 :::moniker range="azure-data-explorer"
+
 * The policy-related query can invoke stored functions, but:
   * It can't perform cross-cluster queries.
   * It can't access external data or external tables.
@@ -51,7 +52,7 @@ If the update policy is defined on the target table, multiple queries can run on
   * It can't access external data or external tables.
   * It can't make callouts (by using a plugin).
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
-* For update policy limitations in streaming ingestion, see [streaming ingestion limitations](/azure/data-explorer/ingest-data-streaming#limitations).
+* By default, the [Streaming ingestion policy](streaming-ingestion-policy.md) is enabled for all tables in the Eventhouse. To use functions with the [`join`](../query/join-operator.md) operator in an update policy, the streaming ingestion policy must be disabled. Use the `.alter` `table` *TableName* `policy` `streamingingestion` *PolicyObject* command to disable it.
 ::: moniker-end
 
 > [!WARNING]
