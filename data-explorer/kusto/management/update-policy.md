@@ -3,7 +3,7 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/16/2024
+ms.date: 12/18/2024
 ---
 # Update policy overview
 
@@ -52,7 +52,7 @@ If the update policy is defined on the target table, multiple queries can run on
   * It can't access external data or external tables.
   * It can't make callouts (by using a plugin).
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
-* By default, the [Streaming ingestion policy](streaming-ingestion-policy.md) is enabled for all tables in Fabric. To use functions with the [`join`](../query/join-operator.md) operator in an update policy, the streaming ingestion policy must be disabled. Use the [.alter table policy streamingingestion](alter-table-streaming-ingestion-policy-command.md) command to disable it.
+* By default, the [Streaming ingestion policy](streaming-ingestion-policy.md) is enabled for all tables in Fabric. To use functions with the [`join`](../query/join-operator.md) operator in an update policy, the streaming ingestion policy must be disabled. Use the `.alter` `table` *TableName* `policy` `streamingingestion` *PolicyObject* command to disable it.
 ::: moniker-end
 
 > [!WARNING]
