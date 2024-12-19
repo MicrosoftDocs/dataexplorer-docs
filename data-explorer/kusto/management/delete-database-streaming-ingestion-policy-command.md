@@ -48,6 +48,5 @@ The following command deletes the streaming ingestion policy:
 * [.show database policy streamingingestion command](show-database-streaming-ingestion-policy-command.md)
 * [.alter database policy streamingingestion command](alter-database-streaming-ingestion-policy-command.md)
 * [.alter-merge database policy streamingingestion command](alter-merge-database-streaming-ingestion-policy-command.md)
-* [.alter table policy streamingingestion command](alter-table-streaming-ingestion-policy-command.md)
 * [.delete table policy streamingingestion command](delete-table-streaming-ingestion-policy-command.md)
 * [Streaming ingestion and schema changes](data-ingestion/streaming-ingestion-schema-changes.md)

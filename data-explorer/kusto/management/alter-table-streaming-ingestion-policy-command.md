@@ -56,4 +56,3 @@ The following command turns on streaming ingestion and determines the suggested 
 * [.alter-merge database policy streamingingestion command](alter-merge-database-streaming-ingestion-policy-command.md)
 * [.delete database policy streamingingestion command](delete-database-streaming-ingestion-policy-command.md)
 * [.delete table policy streamingingestion command](delete-table-streaming-ingestion-policy-command.md)
-(alter-merge-table-streaming-ingestion-policy-command.md)

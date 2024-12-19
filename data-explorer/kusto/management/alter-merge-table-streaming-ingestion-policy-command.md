@@ -64,4 +64,3 @@ The following command disables the streaming ingestion policy:
 * [.alter table policy streamingingestion command](alter-table-streaming-ingestion-policy-command.md)
 * [.delete database policy streamingingestion command](delete-database-streaming-ingestion-policy-command.md)
 * [.delete table policy streamingingestion command](delete-table-streaming-ingestion-policy-command.md)
-(alter-merge-table-streaming-ingestion-policy-command.md)
