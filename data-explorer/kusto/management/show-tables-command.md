@@ -40,10 +40,29 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |Folder | `string` |The table's folder.
 |DocString | `string` |A string documenting the table.
 
-## Example
+## Examples
 
 ```kusto
 .show tables
+```
+
+
+**Output example**
+
+## Table of Sample Data
+
+|Table Name|Database Name|Folder|DocString|
+|---|---|---|---|
+|StormEvents|Samples|Storm_Events|US storm events. Data source: https://www.ncdc.noaa.gov/stormevents|
+|demo_make_series1|Samples|TimeSeries_and_ML||
+|demo_series2|Samples|TimeSeries_and_ML||
+|demo_series3|Samples|TimeSeries_and_ML||
+|demo_many_series1|Samples|TimeSeries_and_ML||
+|ConferenceSessions|Samples|ADX_Conferences||
+
+
+
+```kusto
 .show tables (PopulationData, StormEvents, Trips, GeoRegions)
 ```
 
