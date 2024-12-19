@@ -64,3 +64,12 @@ More predefined policies on your cluster may be observed with next query:
 ## Remarks
 
 If an external resource of a given type matches more than one policy defined for such type, and at least one of the matched policies has their CanCall property set to false, access to the resource is denied.
+
+## Related content
+
+* [.show cluster policy callout command](show-cluster-callout-policy-command.md)
+* [.alter cluster policy callout command](alter-callout-policy-command.md)
+* [.alter-merge cluster policy callout command](alter-merge-callout-policy-command.md)
+* [.delete cluster policy callout command](delete-callout-policy-command.md)
+* [External tables](../query/schema-entities/external-tables.md)
+* [externaldata operator](../query/externaldata-operator.md)
