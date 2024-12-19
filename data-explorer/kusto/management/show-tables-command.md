@@ -44,7 +44,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ### Show all tables in the database
 
-Sows all tables in the current database.
+Shows all tables in the current database.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
