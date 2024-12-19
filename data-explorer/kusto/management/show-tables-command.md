@@ -42,12 +42,20 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Examples
 
+### Show all tables in the database
+
+Sows all tables in the current database.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrzsgvVyhJTMpJLQYAHfJS8AwAAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 .show tables
 ```
 
-
-**Output example**
+**Output**
 
 |Table Name|Database Name|Folder|DocString|
 |---|---|---|---|
@@ -59,12 +67,20 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |ConferenceSessions|Samples|ADX_Conferences||
 
 
+### Show specific tables
+
+Shows the specified tables.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrzsgvVyhJTMpJLVbQCMgvKM1JLMnMz3NJLEnUUQguyS%2FKdS1LzSsp1lEIKcosAFLuqflBqelAJcWaAMjc30o9AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 .show tables (PopulationData, StormEvents, Trips, GeoRegions)
 ```
 
-**Output example**
+**Output**
 
 |Table Name |Database Name |Folder | DocString
 |---|---|---|---
