@@ -49,8 +49,6 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 **Output example**
 
-## Table of Sample Data
-
 |Table Name|Database Name|Folder|DocString|
 |---|---|---|---|
 |StormEvents|Samples|Storm_Events|US storm events. Data source: https://www.ncdc.noaa.gov/stormevents|
