@@ -3,7 +3,7 @@ title: .create function command
 description: Learn how to use the `.create function` command to create a stored function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/19/2024
 ---
 # .create function command
 
@@ -91,12 +91,13 @@ MyFunction1()
 The following example creates the *MyFunction2* function with a description (`docstring`), folder named `Demo`, and defines the `MyLimit` parameter.
 
 ```kusto
-.create function
-with (docstring = 'Demo function with parameter', folder='Demo')
- MyFunction2(myLimit: long)
-{StormEvents | take myLimit}
+.create function with (docstring = "Demo function with date parameter",folder = "Demo") 
+ MyFunctionDate(timestamp:datetime) {
+    StormEvents
+    | where EndTime <= timestamp
+ }
 ```
 
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
-|MyFunction2|(myLimit:long)|{StormEvents &#124; take myLimit}|Demo|Demo function with parameter|
+|MyFunctionDate|(timestamp:datetime)|{StormEvents &#124; where EndTime <= timestamp}|Demo|Demo function with date parameter|
