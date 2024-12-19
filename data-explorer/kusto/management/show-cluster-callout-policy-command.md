@@ -52,5 +52,3 @@ Display the cluster's callout policy.
 * [.alter cluster policy callout command](alter-callout-policy-command.md)
 * [.alter-merge cluster policy callout command](alter-merge-callout-policy-command.md)
 * [.delete cluster policy callout command](delete-callout-policy-command.md)
-* [External tables](../query/schema-entities/external-tables.md)
-* [externaldata operator](../query/externaldata-operator.md)

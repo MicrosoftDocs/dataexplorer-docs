@@ -42,10 +42,7 @@ The following example deleted the sharding policy for a database:
 
 * [Data sharding policy](sharding-policy.md)
 * [.show database policy sharding command](show-database-sharding-policy-command.md)
-* [.show table policy sharding command](show-table-sharding-policy-command.md)
 * [.alter database policy sharding command](alter-database-sharding-policy-command.md)
 * [.alter-merge database policy sharding command](alter-merge-database-sharding-policy-command.md)
-* [.alter table policy sharding command](alter-table-sharding-policy-command.md)
-* [.alter-merge table policy sharding command](alter-merge-table-sharding-policy-command.md)
 * [.delete table policy sharding command](delete-table-sharding-policy-command.md)
 * [Extents (data shards)](extents-overview.md)

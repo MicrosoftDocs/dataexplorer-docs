@@ -53,11 +53,7 @@ The following command enables streaming ingestion and determines the suggestion 
 
 * [Streaming ingestion policy](streaming-ingestion-policy.md)
 * [.show database policy streamingingestion command](show-database-streaming-ingestion-policy-command.md)
-* [.show table policy streamingingestion command](show-table-streaming-ingestion-policy-command.md)
 * [.alter-merge database policy streamingingestion command](alter-merge-database-streaming-ingestion-policy-command.md)
 * [.alter table policy streamingingestion command](alter-table-streaming-ingestion-policy-command.md)
-* [.alter-merge table policy streamingingestion command]
 * [.delete database policy streamingingestion command](delete-database-streaming-ingestion-policy-command.md)
-* [.delete table policy streamingingestion command](delete-table-streaming-ingestion-policy-command.md)
-(alter-merge-table-streaming-ingestion-policy-command.md)
 * [Streaming ingestion and schema changes](data-ingestion/streaming-ingestion-schema-changes.md)

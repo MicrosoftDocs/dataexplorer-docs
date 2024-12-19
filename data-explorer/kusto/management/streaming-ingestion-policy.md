@@ -52,8 +52,7 @@ If setting _HintAllocatedRate_ in the streaming ingestion policy for the databas
 * [.alter database policy streamingingestion command](alter-database-streaming-ingestion-policy-command.md)
 * [.alter-merge database policy streamingingestion command](alter-merge-database-streaming-ingestion-policy-command.md)
 * [.alter table policy streamingingestion command](alter-table-streaming-ingestion-policy-command.md)
-* [.alter-merge table policy streamingingestion command]
+* [.alter-merge table policy streamingingestion command](alter-merge-table-streaming-ingestion-policy-command.md)
 * [.delete database policy streamingingestion command](delete-database-streaming-ingestion-policy-command.md)
 * [.delete table policy streamingingestion command](delete-table-streaming-ingestion-policy-command.md)
-(alter-merge-table-streaming-ingestion-policy-command.md)
 * [Streaming ingestion and schema changes](data-ingestion/streaming-ingestion-schema-changes.md)
