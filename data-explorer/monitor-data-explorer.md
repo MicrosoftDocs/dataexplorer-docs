@@ -39,7 +39,6 @@ To use metrics to monitor your Azure Data Explorer resources in the Azure portal
 1. In the left-hand pane of your Azure Data Explorer cluster, search for *metrics*.
 1. Select **Metrics** to open the metrics pane and begin analysis on your cluster.
 
-   :::image type="content" source="media/using-metrics/select-metrics.gif" alt-text="Animation shows search and select metrics in the Azure portal.":::
 
 In the metrics pane, select specific metrics to track, choose how to aggregate your data, and create metric charts to view on your dashboard.
 
