@@ -71,7 +71,7 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 ## Examples
 
-### Simple demo function
+### Simple function
 
 The following example creates the `MyFunction1` function with a description (`docstring`), a folder named `Demo`, and defines the function.
 
@@ -91,7 +91,7 @@ MyFunction1()
 |---|---|---|---|---|
 |MyFunction1|()|{StormEvents &#124; take 100}|Demo|Simple demo function|
 
-### Demo function with parameter
+### Function with a parameter
 
 The following example creates the *MyFunction2* function with a description (`docstring`), folder named `Demo`, and defines the `Mytimestamp` parameter.
 
