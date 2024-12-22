@@ -816,9 +816,9 @@ items:
           - name: Ingest from query
             displayName: .set, .append, .set-or-append, .set-or-replace, add row, append
             href: data-ingestion/ingest-from-query.md
-          - name: cancel operation command
+          - name: .cancel operation command
             href: cancel-operation-command.md
-      - name: Inline ingestion
+      - name: .ingest inline command
         displayName: .ingest inline
         href: data-ingestion/ingest-inline.md
       - name: Streaming ingestion
@@ -838,7 +838,7 @@ items:
       - name: .show streamingingestion failures command
         displayName: .show streaming ingestion failures
         href: streaming-ingestion-failures.md
-      - name: Data operations
+      - name: .show data operations command
         displayName:  .show data operation command
         href: show-data-operations.md
   - name: Data export
@@ -868,8 +868,6 @@ items:
             href: data-export/show-continuous-artifacts.md
           - name: .show continuous-export failures
             href: data-export/show-continuous-failures.md
-  - name: Database cursors
-    href: database-cursor.md
   - name: Plugin commands
     items:
       - name: .show plugins command
@@ -897,7 +895,7 @@ items:
     items:
       - name: Estimate table size
         href: estimate-table-size.md
-      - name: Journal
+      - name: .show journal commands
         href: journal.md
       - name: Operations
         items:
@@ -926,7 +924,7 @@ items:
             href: show-table-data-statistics.md
   - name: Advanced data management
     items:
-      - name: Clear cached external artifacts
+      - name: .clear cluster cache external-artifacts command
         href: clear-external-artifacts-cache-command.md
       - name: Delete data
         href: ../concepts/delete-data.md
@@ -936,7 +934,7 @@ items:
         items:
           - name: Soft delete overview
             href: ../concepts/data-soft-delete.md
-          - name: Soft delete command
+          - name: .delete table records - soft delete command
             href: soft-delete-command.md
       - name: Extents (data shards)
         items:
