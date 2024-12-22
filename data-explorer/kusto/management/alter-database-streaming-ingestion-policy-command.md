@@ -3,7 +3,7 @@ title: .alter database policy streamingingestion command
 description: Learn how to use the `.alter database policy streamingingestion` command to change the database streaming ingestion policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 12/18/2024
+ms.date: 12/22/2024
 monikerRange: "azure-data-explorer"
 ---
 # .alter database policy streamingingestion command
@@ -52,8 +52,8 @@ The following command enables streaming ingestion and determines the suggestion 
 ## Related content
 
 * [Streaming ingestion policy](streaming-ingestion-policy.md)
+* [.alter table policy streamingingestion command](alter-table-streaming-ingestion-policy-command.md)
 * [.show database policy streamingingestion command](show-database-streaming-ingestion-policy-command.md)
 * [.alter-merge database policy streamingingestion command](alter-merge-database-streaming-ingestion-policy-command.md)
-* [.alter table policy streamingingestion command](alter-table-streaming-ingestion-policy-command.md)
 * [.delete database policy streamingingestion command](delete-database-streaming-ingestion-policy-command.md)
 * [Streaming ingestion and schema changes](data-ingestion/streaming-ingestion-schema-changes.md)
