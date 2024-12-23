@@ -52,6 +52,7 @@ The command returns one row / one column table:
 |Name       |Type      |Description                                                                |
 |-----------|----------|---------------------------------------------------------------------------|
 |IngestionOperationId |`string`    |The ID used to track this set of blobs (regarless if tracking is enabled or not).
+|ClientRequestId |`string`    |The client request ID of the command.
 |OperationInfo |`string`    |The text of the command to run to get the status of the operation
 
 >[!NOTE]
