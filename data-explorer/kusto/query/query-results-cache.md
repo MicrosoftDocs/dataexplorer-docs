@@ -52,7 +52,7 @@ The query results won't be cached if any of the following conditions is true:
 
 ## No valid cache entry
 
-If a cached result satisfying the time constraints couldn't be found, or there isn't a cached result from an "identical" query in the cache, the query will be executed and its results cached, as long as: 
+If a cached result satisfying the time constraints couldn't be found, or there isn't a cached result from an "identical" query in the cache, the query will be executed and its results cached, as long as:
 
 * The query execution completes successfully, and
 * The query results size doesn't exceed 16 MB.
@@ -68,9 +68,9 @@ Cached query results will have another row appended to that table:
   * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/client-request-properties.md#named-properties).
   * `OriginalStartedOn` - Specifies the original request's execution start time.
 
-## Distribution
+## Query consistency
 
-The cache isn't shared by cluster nodes. Every node has a dedicated cache in its own private storage. If two identical queries land on different nodes, the query will be executed and cached on both nodes. This process can happen if [weak consistency](../concepts/query-consistency.md) is used. By setting query consistency to `affinitizedweakconsistency`, you can have weakly consistency queries that are identical land on the same query head, and thus increase the cache hit rate.
+Queries using [weak consistency](../concepts/query-consistency.md), can be processed on different cluster nodes. The cache isn't shared by cluster nodes, every node has a dedicated cache in its own private storage. Therefore, if two identical queries land on different nodes, the query will be executed and cached on both nodes. By setting query consistency to `affinitizedweakconsistency`, you can have weakly consistency queries that are identical land on the same query head, and thus increase the cache hit rate. This is not relevant when using [strong consistency](../concepts/query-consistency.md).
 
 ## Management
 
