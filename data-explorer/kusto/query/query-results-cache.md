@@ -70,7 +70,7 @@ Cached query results will have another row appended to that table:
 
 ## Query consistency
 
-Queries using [weak consistency](../concepts/query-consistency.md) can be processed on different cluster nodes. The cache isn't shared by cluster nodes, every node has a dedicated cache in its own private storage. Therefore, if two identical queries land on different nodes, the query will be executed and cached on both nodes. By setting query consistency to `affinitizedweakconsistency`, you can have weakly consistency queries that are identical land on the same query head, and thus increase the cache hit rate. This is not relevant when using [strong consistency](../concepts/query-consistency.md).
+Queries using [weak consistency](../concepts/query-consistency.md) can be processed on different cluster nodes. The cache isn't shared by cluster nodes, every node has a dedicated cache in its own private storage. Therefore, if two identical queries land on different nodes, the query will be executed and cached on both nodes. By setting query consistency to `affinitizedweakconsistency`, you can ensure that weak consistency queries that are identical land on the same query head, and thus increase the cache hit rate. This is not relevant when using [strong consistency](../concepts/query-consistency.md).
 
 ## Management
 
