@@ -3,7 +3,7 @@ title: Request rate limits enforcement policy
 description: Learn how to use the request rate limits enforcement policy to enforce request rate limits.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/25/2024
 ---
 # Request rate limits enforcement policy
 
@@ -15,17 +15,17 @@ A workload group's request rate limits enforcement policy controls how request r
 
 A request rate limit policy has the following properties:
 
-| Name                     | Supported values                            | Default value | Description                                   |
-|--------------------------|---------------------------------------------|----------------|-----------------------------------------------|
-| QueriesEnforcementLevel  | `Cluster`, `QueryHead`                      | `QueryHead`   | Indicates the enforcement level for queries.  |
-| CommandsEnforcementLevel | `Cluster`, `Database`                       | `Database`    | Indicates the enforcement level for commands. |
-
+| Name | Supported values | Default value | Description |
+|--|--|--|--|
+| QueriesEnforcementLevel | `Cluster`, `QueryHead` | `QueryHead` | Indicates the enforcement level for queries. |
+| CommandsEnforcementLevel | `Cluster`, `Database` | `Database` | Indicates the enforcement level for commands. |
 
 ### Request rate limits enforcement level
 
 Request rate limits can be enforced at one of the following levels:
 
 :::moniker range="azure-data-explorer"
+
 * `Cluster`:
   * Rate limits are enforced by the single cluster admin node.
 * `Database`:
@@ -45,7 +45,7 @@ Request rate limits can be enforced at one of the following levels:
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 * `Cluster`:
-  * Rate limits are enforced by the single eventhouse admin node.
+  * Rate limits are enforced by the single Eventhouse admin node.
 * `Database`:
   * Rate limits are enforced by the database admin node that manages the database the request was sent to.
   * If there are multiple database admin nodes, the configured rate limit is effectively multiplied by the number of database admin nodes.
@@ -111,5 +111,7 @@ The effective rate limits for the `default` workload group are:
 
 ## Related content
 
+* [Workload groups](workload-groups.md)
 * [.show workload_group command](show-workload-group-command.md)
+* [.alter-merge workload_group command](alter-merge-workload-group-command.md)
 * [System information](system-info.md)

@@ -3,7 +3,7 @@ title: .drop workload_group command
 description: Learn how to use the `.drop workload_group` command to drop a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/01/2025
 ---
 # .drop workload_group command
 
@@ -38,7 +38,7 @@ You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-co
 The command returns all workload groups in the cluster, after the drop, which is the output of the [`.show workload_group`](show-workload-group-command.md#show-workload_group-command) command.
 ::: moniker-end
 :::moniker range="microsoft-fabric"
-The command returns all workload groups in the eventhouse, after the drop, which is the output of the [`.show workload_group`](show-workload-group-command.md#show-workload_group-command) command.
+The command returns all workload groups in the Eventhouse, after the drop, which is the output of the [`.show workload_group`](show-workload-group-command.md#show-workload_group-command) command.
 ::: moniker-end
 
 Following is the schema of the output returned:
@@ -83,3 +83,10 @@ Drop `My Workload Group` workload group:
 ## Remarks
 
 The `internal` and `default` workload groups can't be dropped. An attempt to drop either of them aborts the command with an error indicating the reason.
+
+## Related content
+
+* [Workload groups](workload-groups.md)
+* [.alter-merge workload_group](alter-merge-workload-group-command.md)
+* [.show workload_group](show-workload-group-command.md)
+* [.create-or-alter workload_group](create-or-alter-workload-group-command.md)

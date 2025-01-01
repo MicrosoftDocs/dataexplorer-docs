@@ -3,7 +3,7 @@ title: Request rate limit policy
 description: Learn how to use the request rate limit policy to limit the number of concurrent requests classified into a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/25/2024
 ---
 # Request rate limit policy
 
@@ -17,20 +17,20 @@ Rate limits are enforced at the level defined by the workload group's [Request r
 
 A request rate limit policy has the following properties:
 
-| Name       | Supported values                            | Description                                |
-|------------|---------------------------------------------|--------------------------------------------|
-| IsEnabled  | `true`, `false`                             | Indicates if the policy is enabled or not. |
-| Scope      | `WorkloadGroup`, `Principal`                | The scope to which the limit applies.      |
-| LimitKind  | `ConcurrentRequests`, `ResourceUtilization` | The kind of the request rate limit.        |
-| Properties | Property bag                                | Properties of the request rate limit.      |
+| Name | Supported values | Description |
+|--|--|--|
+| IsEnabled | `true`, `false` | Indicates if the policy is enabled or not. |
+| Scope | `WorkloadGroup`, `Principal` | The scope to which the limit applies. |
+| LimitKind | `ConcurrentRequests`, `ResourceUtilization` | The kind of the request rate limit. |
+| Properties | Property bag | Properties of the request rate limit. |
 
 ### Concurrent requests rate limit
 
 A request rate limit of kind `ConcurrentRequests` includes the following property:
 
-| Name                  | Type | Description                                | Supported Values |
-|-----------------------|------|--------------------------------------------|------------------|
-| MaxConcurrentRequests | `int` | The maximum number of concurrent requests. | [`0`, `10000`]   |
+| Name | Type | Description | Supported Values |
+|--|--|--|--|
+| MaxConcurrentRequests | `int` | The maximum number of concurrent requests. | [`0`, `10000`] |
 
 > [!NOTE]
 >
@@ -61,11 +61,11 @@ The following table shows a few examples of concurrent requests that exceed the 
 
 A request rate limit of kind `ResourceUtilization` includes the following properties:
 
-| Name           | Type           | Description     | Supported Values      |
-|----------------|----------------|----------------|--------------|
-| ResourceKind   | `ResourceKind` | The resource to limit.</br></br>When `ResourceKind` is `TotalCpuSeconds`, the limit is enforced based on post-execution reports of CPU utilization of completed requests. Requests that report utilization of 0.005 seconds of CPU or lower aren't counted. The limit (`MaxUtilization`) represents the total CPU seconds that can be consumed by requests within a specified time window (`TimeWindow`). For example, a user running ad-hoc queries may have a limit of 1000 CPU seconds per hour. If this limit is exceeded, subsequent queries will be throttled, even if started concurrently, as the cumulative CPU seconds have surpassed the defined limit within the sliding window period. | `RequestCount`, `TotalCpuSeconds` |
-| MaxUtilization | `long`         | The maximum of the resource that can be utilized.    | RequestCount: [`1`, `16777215`]; TotalCpuSeconds: [`1`, `828000`]      |
-| TimeWindow     | `timespan`     | The sliding time window during which the limit is applied.     | [`00:01:00`, `1.00:00:00`]        |
+| Name | Type | Description | Supported Values |
+|--|--|--|--|
+| ResourceKind | `ResourceKind` | The resource to limit.</br></br>When `ResourceKind` is `TotalCpuSeconds`, the limit is enforced based on post-execution reports of CPU utilization of completed requests. Requests that report utilization of 0.005 seconds of CPU or lower aren't counted. The limit (`MaxUtilization`) represents the total CPU seconds that can be consumed by requests within a specified time window (`TimeWindow`). For example, a user running ad-hoc queries may have a limit of 1000 CPU seconds per hour. If this limit is exceeded, subsequent queries will be throttled, even if started concurrently, as the cumulative CPU seconds have surpassed the defined limit within the sliding window period. | `RequestCount`, `TotalCpuSeconds` |
+| MaxUtilization | `long` | The maximum of the resource that can be utilized. | RequestCount: [`1`, `16777215`]; TotalCpuSeconds: [`1`, `828000`] |
+| TimeWindow | `timespan` | The sliding time window during which the limit is applied. | [`00:01:00`, `1.00:00:00`] |
 
 When a request exceeds the limit on resources utilization:
 
@@ -75,7 +75,7 @@ When a request exceeds the limit on resources utilization:
 The following table shows a few examples of requests that exceed the resource utilization rate limit and the error message that these requests return:
 
 | Scenario | Error message |
-|----------------|----------------|
+|--|--|
 | A throttled request that was classified to a workload group named `Automated Requests`, which has a limit of 1000 requests per hour at the scope of a principal. | The request was denied due to exceeding quota limitations. Resource: 'RequestCount', Quota: '1000', TimeWindow: '01:00:00', Origin: 'RequestRateLimitPolicy/WorkloadGroup/Automated Requests/Principal/aadapp=9e04c4f5-1abd-48d4-a3d2-9f58615b4724;6ccf3fe8-6343-4be5-96c3-29a128dd9570'. |
 | A throttled request, that was classified to a workload group named `Automated Requests`, which has a limit of 2000 total CPU seconds per hour at the scope of the workload group. | The request was denied due to exceeding quota limitations. Resource: 'TotalCpuSeconds', Quota: '2000', TimeWindow: '01:00:00', Origin: 'RequestRateLimitPolicy/WorkloadGroup/Automated Requests'. |
 
@@ -173,4 +173,9 @@ The following policies will block all requests classified to the workload group:
 
 ## Related content
 
+* [Workload groups](workload-groups.md)
+* [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md)
 * [.show workload_group command](show-workload-group-command.md)
+* [.drop workload_group command](drop-workload-group-command.md)
+* [.alter-merge workload_group command](alter-merge-workload-group-command.md)
+* [.create-or-alter workload_group command](create-or-alter-workload-group-command.md)
