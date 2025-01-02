@@ -3,7 +3,7 @@ title: .drop workload_group command
 description: Learn how to use the `.drop workload_group` command to drop a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/01/2025
+ms.date: 01/02/2025
 ---
 # .drop workload_group command
 
@@ -88,5 +88,5 @@ The `internal` and `default` workload groups can't be dropped. An attempt to dro
 
 * [Workload groups](workload-groups.md)
 * [.alter-merge workload_group](alter-merge-workload-group-command.md)
-* [.show workload_group](show-workload-group-command.md)
 * [.create-or-alter workload_group](create-or-alter-workload-group-command.md)
+* [.show workload_group](show-workload-group-command.md)

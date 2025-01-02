@@ -3,7 +3,7 @@ title: Request rate limits enforcement policy
 description: Learn how to use the request rate limits enforcement policy to enforce request rate limits.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 12/25/2024
+ms.date: 01/02/2025
 ---
 # Request rate limits enforcement policy
 
@@ -112,6 +112,8 @@ The effective rate limits for the `default` workload group are:
 ## Related content
 
 * [Workload groups](workload-groups.md)
-* [.show workload_group command](show-workload-group-command.md)
-* [.alter-merge workload_group command](alter-merge-workload-group-command.md)
 * [System information](system-info.md)
+* [.alter-merge workload_group command](alter-merge-workload-group-command.md)
+* [.create-or-alter workload_group command](create-or-alter-workload-group-command.md)
+* [.drop workload_group command](drop-workload-group-command.md)
+* [.show workload_group command](show-workload-group-command.md)

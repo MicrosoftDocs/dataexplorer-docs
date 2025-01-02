@@ -58,6 +58,6 @@ Show definition for **MyWorkloadGroup** workload group:
 * [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md)
 * [Request queuing policy](request-queuing-policy.md)
 * [Query consistency policy](query-consistency-policy.md)
-* [.drop workload_group](drop-workload-group-command.md)
 * [.alter-merge workload_group](alter-merge-workload-group-command.md)
 * [.create-or-alter workload_group](create-or-alter-workload-group-command.md)
+* [.drop workload_group](drop-workload-group-command.md)

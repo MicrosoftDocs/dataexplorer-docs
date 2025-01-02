@@ -3,7 +3,7 @@ title: Request rate limit policy
 description: Learn how to use the request rate limit policy to limit the number of concurrent requests classified into a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 12/25/2024
+ms.date: 01/02/2025
 ---
 # Request rate limit policy
 
@@ -175,7 +175,7 @@ The following policies will block all requests classified to the workload group:
 
 * [Workload groups](workload-groups.md)
 * [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md)
-* [.show workload_group command](show-workload-group-command.md)
-* [.drop workload_group command](drop-workload-group-command.md)
 * [.alter-merge workload_group command](alter-merge-workload-group-command.md)
 * [.create-or-alter workload_group command](create-or-alter-workload-group-command.md)
+* [.drop workload_group command](drop-workload-group-command.md)
+* [.show workload_group command](show-workload-group-command.md)

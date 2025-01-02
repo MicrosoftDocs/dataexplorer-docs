@@ -3,7 +3,7 @@ title: Request limits policy
 description: Learn how to use the request limits policy to limit the resources used by the request during its execution.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/01/2025
+ms.date: 01/02/2025
 ---
 # Request limits policy
 
@@ -150,7 +150,7 @@ The following JSON represents a custom requests limits policy object:
 
 * [Workload groups](workload-groups.md)
 * [Client request properties](../api/rest/request-properties.md)
-* [.show workload_group command](show-workload-group-command.md)
-* [.drop workload_group](drop-workload-group-command.md)
 * [.alter-merge workload_group](alter-merge-workload-group-command.md)
 * [.create-or-alter workload_group](create-or-alter-workload-group-command.md)
+* [.drop workload_group](drop-workload-group-command.md)
+* [.show workload_group command](show-workload-group-command.md)

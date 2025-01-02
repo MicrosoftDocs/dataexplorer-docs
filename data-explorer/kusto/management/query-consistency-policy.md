@@ -3,7 +3,7 @@ title: Query consistency policy
 description: Learn how to use the query consistency policy to control the consistency mode of queries.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/01/2025
+ms.date: 01/02/2025
 ---
 # Query consistency policy
 
@@ -57,8 +57,7 @@ You can monitor the latency of the metadata snapshot age on nodes serving as wea
 
 * [Workload groups](workload-groups.md)
 * [Query consistency](../concepts/query-consistency.md)
-* [.show workload_group command](show-workload-group-command.md)
 * [.alter-merge workload_group](alter-merge-workload-group-command.md)
 * [.create-or-alter workload_group command](create-or-alter-workload-group-command.md)
 * [.drop workload_group](drop-workload-group-command.md)
-
+* [.show workload_group command](show-workload-group-command.md)

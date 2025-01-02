@@ -3,7 +3,7 @@ title:  .alter-merge workload_group command
 description: Learn how to use the ".alter-merge workload_group" command to alter a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 01/01/2025
+ms.date: 01/02/2025
 ---
 
 # .alter-merge workload_group command
@@ -171,6 +171,6 @@ Specify the applicable option for the query consistency model.
 ## Related content
 
 * [Workload groups](workload-groups.md)
+* [.create-or-alter workload_group](create-or-alter-workload-group-command.md)
 * [.drop workload_group](drop-workload-group-command.md)
 * [.show workload_group](show-workload-group-command.md)
-* [.create-or-alter workload_group](create-or-alter-workload-group-command.md)

@@ -183,6 +183,6 @@ Create **My Workload Group** workload group with a full definition of its reques
 ## Related content
 
 * [Workload groups](workload-groups.md)
-* [.show workload_group](show-workload-group-command.md)
 * [.alter-merge workload_group](alter-merge-workload-group-command.md)
 * [.drop workload_group](drop-workload-group-command.md)
+* [.show workload_group](show-workload-group-command.md)
