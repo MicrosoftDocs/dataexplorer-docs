@@ -12,7 +12,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 Calculate the Exposure Perimeter (list and score) of target nodes over path or edge data.
 
-The function `graph_exposure_perimeter_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows to calculate the Exposure Perimeter of each of the target nodes based on paths or edges data. Each row of input data contains a source node and a target node, which can represent direct connections (edges) between nodes and targets, or longer multi-hop paths between them. If the paths aren't available, we can first discover them using [graph-match()](../query/graph-match-operator) operator or [graph_path_discovery_fl()](../functions-library/graph-path-discovery-fl) function. Then `graph_exposure_perimeter_fl()` can be executed on top of the output of path discovery.
+The function `graph_exposure_perimeter_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows to calculate the Exposure Perimeter of each of the target nodes based on paths or edges data. Each row of input data contains a source node and a target node, which can represent direct connections (edges) between nodes and targets, or longer multi-hop paths between them. If the paths aren't available, we can first discover them using [graph-match()](../query/graph-match-operator.md) operator or [graph_path_discovery_fl()](graph-path-discovery-fl.md) function. Then `graph_exposure_perimeter_fl()` can be executed on top of the output of path discovery.
 
 Exposure Perimeter represents the accessibility of a specific target from relevant source nodes. The more sources can access the target, the more exposed it's to potential compromise by the attacker - hence the name. Nodes with high Exposure Perimeter are important in cybersecurity domain due to the likelihood they might be reached illegitimately and to being highly valued by attackers. Thus, nodes with high Exposure Perimeter should be protected accordingly - in terms of hardening and monitoring their perimeter.
 
@@ -205,20 +205,20 @@ connections
 **Output**
 
 
-| targetId |	exposurePerimeterList	| exposurePerimeterScore | exposurePerimeterScoreWeighted | isExposurePerimeterCapped |
-| --- |	---	| --- | --- | --- |		
-| hub_router | ["vm-custom","webapp-prd","test-machine"] | 3 | 11 | FALSE |
-| storage_main_backup | ["vm-work-1","backup_prc"] | 2 | 0 | FALSE |
-| vm-custom	| ["webapp-prd","test-machine"] | 2 | 6 | FALSE |
-| backup_prc | ["vm-work-2","remote_DT"] | 2 | 3 | FALSE |
-| webapp-prd | ["vm-work-1","vm-custom"] | 2 | 4 | FALSE |
-| test-machine | ["webapp-prd"] | 1 | 1 | FALSE |
-| server-0126 | ["vm-custom"] | 1 | 4 | FALSE |
-| remote_DT	| ["hub_router"] | 1 | 0 | FALSE |
-| vm-work-2	| ["hub_router"] | 1 | 0 | FALSE |
-| storage_DevBox | ["backup_prc"] | 1 | 0 | FALSE |
-| device_A1	| ["sevice_B2"]	| 1	| 2	| FALSE |
-| sevice_B2	| ["device_A1"]	| 1	| 1	| FALSE |
+| targetId            | exposurePerimeterList                     | exposurePerimeterScore | exposurePerimeterScoreWeighted | isExposurePerimeterCapped |
+| ------------------- | ----------------------------------------- | ---------------------- | ------------------------------ | ------------------------- |
+| hub_router          | ["vm-custom","webapp-prd","test-machine"] | 3                      | 11                             | FALSE                     |
+| storage_main_backup | ["vm-work-1","backup_prc"]                | 2                      | 0                              | FALSE                     |
+| vm-custom           | ["webapp-prd","test-machine"]             | 2                      | 6                              | FALSE                     |
+| backup_prc          | ["vm-work-2","remote_DT"]                 | 2                      | 3                              | FALSE                     |
+| webapp-prd          | ["vm-work-1","vm-custom"]                 | 2                      | 4                              | FALSE                     |
+| test-machine        | ["webapp-prd"]                            | 1                      | 1                              | FALSE                     |
+| server-0126         | ["vm-custom"]                             | 1                      | 4                              | FALSE                     |
+| remote_DT           | ["hub_router"]                            | 1                      | 0                              | FALSE                     |
+| vm-work-2           | ["hub_router"]                            | 1                      | 0                              | FALSE                     |
+| storage_DevBox      | ["backup_prc"]                            | 1                      | 0                              | FALSE                     |
+| device_A1           | ["sevice_B2"]                             | 1                      | 2                              | FALSE                     |
+| sevice_B2           | ["device_A1"]                             | 1                      | 1                              | FALSE                     |
 
 
 
