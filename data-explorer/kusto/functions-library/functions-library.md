@@ -3,7 +3,7 @@ title:  Functions library
 description: This article describes user-defined functions that extend query environment capabilities.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 12/16/2024
+ms.date: 01/05/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Functions library
@@ -20,6 +20,8 @@ The user-defined functions code is given in the articles.  It can be used within
 |--|--|
 | [detect_anomalous_new_entity_fl()](detect-anomalous-new-entity-fl.md) | Detect the appearance of anomalous new entities in timestamped data. |
 | [detect_anomalous_spike_fl()](detect-anomalous-spike-fl.md) | Detect the appearance of anomalous spikes in numeric variables in timestamped data. |
+| [graph_blast_radius_fl()](graph-blast-radius-fl.md) | Calculate the Blast Radius (list and score) of source nodes over path or edge data.
+| [graph_exposure_perimeter_fl()](graph-exposure-perimeter-fl.md) | Calculate the Exposure Perimeter (list and score) of target nodes over path or edge data.
 | [graph_path_discovery_fl()](graph-path-discovery-fl.md) |  Discover valid paths between relevant endpoints (sources and targets) over graph data (edge and nodes).
 
 ## General functions
