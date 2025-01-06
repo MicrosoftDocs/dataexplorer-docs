@@ -76,7 +76,7 @@ The following example returns the username from the string. The regular expressi
 
 ```kusto
 let Text = "User: JohnDoe, Email: johndoe@example.com, Age: 29";
-| print UserName = extract("User: ([^,]+)", 1, Text)
+print UserName = extract("User: ([^,]+)", 1, Text)
 ```
 
 **Output**
