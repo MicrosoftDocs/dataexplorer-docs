@@ -69,7 +69,7 @@ The following example shows information about all tables in the current database
 
 ### Show specific tables
 
-Shows the specified tables.
+The following example shows information about the specified tables.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
