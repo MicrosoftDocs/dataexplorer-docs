@@ -15,7 +15,7 @@ A **database cursor** is a database-level object that lets you query a database 
 Database cursors are designed to address two important scenarios:
 
 * The ability to repeat the same query multiple times and get the same results,
-  as long as the query indicates "same data set."
+  as long as the query indicates "same data set".
 
 * The ability to make an "exactly once" query. This query only "sees" the
    data that a previous query didn't see, because the data wasn't available then.
