@@ -1,9 +1,9 @@
 ---
 title: Database cursors
 description: Learn how to use database cursors to query a database multiple times.
-ms.reviewer: orspodek
+ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/22/2024
+ms.date: 01/06/2025
 monikerRange: "azure-data-explorer"
 ---
 # Database cursors
@@ -89,3 +89,7 @@ Employees | where cursor_after('636040929866479999') // -> 636040939866479000
 
 ## Related content
 
+* [cursor_current()](cursor-current.md)
+* [cursor_before_or_at()](cursor-before-or-at-function.md)
+* [cursor_after()](cursor-after-function.md)
+* [IngestionTime policy](../management/show-table-ingestion-time-policy-command.md)

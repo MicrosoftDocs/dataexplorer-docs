@@ -3,7 +3,7 @@ title:  Enable or disable continuous data export
 description:  This article describes how to disable or enable continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 12/01/2024
+ms.date: 01/06/2025
 ---
 # Disable or enable continuous export
 
@@ -39,7 +39,7 @@ The result of the [show continuous export command](show-continuous-export.md) of
 
 * [Continuous export overview](continuous-data-export.md)
 * [External tables](../../query/schema-entities/external-tables.md)
-* [Create or alter continuous export](create-alter-continuous.md)
-* [Drop continuous export](drop-continuous-export.md)
-* [Show continuous export](show-continuous-export.md)
-* [Show continuous export failures](show-continuous-failures.md)
+* [.create or alter continuous-export](create-alter-continuous.md)
+* [.drop continuous-export](drop-continuous-export.md)
+* [.show continuous-export](show-continuous-export.md)
+* [.show continuous-export failures](show-continuous-failures.md)

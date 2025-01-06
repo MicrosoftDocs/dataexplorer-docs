@@ -808,9 +808,9 @@ items:
         href: ../ingestion-supported-formats.md
       - name: Ingestion properties
         href: ../ingestion-properties.md
-      - name: Ingest from storage
+      - name: .ingest-into
         displayName: .ingest into, pull data, pulling ingestion
-        href: data-ingestion/ingest-from-storage.md
+        href: data-ingestion/ingest-into-command.md
       - name: Ingest from query
         items:
           - name: Ingest from query
@@ -844,11 +844,11 @@ items:
   - name: Data export
     href: data-export/index.md
     items:
-      - name: To cloud storage
+      - name: .export to storage
         href: data-export/export-data-to-storage.md
-      - name: To an external table
+      - name: .export totable
         href: data-export/export-data-to-an-external-table.md
-      - name: To an SQL table
+      - name: .export to SQL
         href: data-export/export-data-to-sql.md
       - name: Continuous data export
         items:

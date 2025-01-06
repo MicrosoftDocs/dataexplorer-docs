@@ -1,7 +1,7 @@
 ---
-title:  The ingest inline command (push)
+title:  .ingest inline command (push)
 description: This article describes the .ingest inline command (push).
-ms.reviewer: orspodek
+ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/11/2024
 ---
@@ -77,5 +77,6 @@ The following command ingests data into a table `Logs` with two columns: `Date` 
 
 ## Related content
 
-* [Ingest from storage](ingest-from-storage.md)
+* [Data formats supported for ingestion](../../ingestion-supported-formats.md)
+* [.ingest into (pull data from storage)](ingest-into-command.md)
 * [Ingest from query](ingest-from-query.md)
