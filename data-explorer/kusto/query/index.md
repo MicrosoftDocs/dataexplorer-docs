@@ -65,7 +65,7 @@ StormEvents
 
 > [!NOTE]
 > KQL is case-sensitive for everything – table names, table column names, operators, functions, and so on.  
-> Keywords can be used as identifiers by enclosing them in brackets and quotes (' or "), for example, `['title']`. For more information, see [Identifier naming rules](/kusto/query/schema-entities/entity-names?view=azure-data-explorer&preserve-view=true#identifier-naming-rules)
+> Keywords can be used as identifiers by enclosing them in brackets and quotes (`['` and `']` or `["` and `"]`). For example, `['where']`. For more information, see [Identifier naming rules](/kusto/query/schema-entities/entity-names?view=azure-data-explorer&preserve-view=true#identifier-naming-rules)
 
 This query has a single tabular expression statement. The statement begins with a reference to a table called *StormEvents* and contains several operators, [`where`](where-operator.md) and [`count`](count-operator.md), each separated by a pipe. The data rows for the source table are filtered by the value of the *StartTime* column and then filtered by the value of the *State* column. In the last line, the query returns a table with a single column and a single row containing the count of the remaining rows.
 
