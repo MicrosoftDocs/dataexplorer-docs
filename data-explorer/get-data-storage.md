@@ -3,14 +3,14 @@ title: Get data from Azure storage
 description: Learn how to get data from Azure storage in Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 12/04/2023
+ms.date: 12/04/2024
 ---
 
 # Get data from Azure storage
 
 Data ingestion is the process used to load data from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Azure storage (ADLS Gen2 container, blob container, or individual blobs) into either a new or existing table.
 
-Ingestion can be done as a one-time operation, or as a continuous method. Continuous ingestion can be configured via portal only.
+Ingestion from an Azure storage account is a one-time operation. To ingest data continuously, see [Configure streaming ingestion](ingest-data-streaming.md).
 
 For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -59,14 +59,16 @@ Select the data source from the available list. In this example, you're ingestin
         | Folder path| Filters data to ingest files with a specific folder path. |
         | File extension| Filters data to ingest files with a specific file extension only.|
 
-    1. If you selected **Add URI**, paste your storage connection string for a blob container or individual files in the **URI** field, and then select **+**.
+    1. If you selected **Add URI**, from the storage account, generate an SAS URL for the container or individual blobs you want to ingest. Set the permissions to **Read** and **List** for containers or **Read** for individual blobs. For more information, see [Generate a SAS token](/kusto/api/connection-strings/generate-sas-token?view=azure-data-explorer&preserve-view=true).
 
-        > [!NOTE]
-        >
-        > * You can add up to 10 individual blobs. Each blob can be a max of 1 GB uncompressed.
-        > * You can ingest up to 5000 blobs from a single container.
+        1. Paste the URL into the **URI** field, and then select plus (**+**). You can add multiple URIs for individual blobs, or a single URI for a container.
 
         :::image type="content" source="media/get-data-storage/add-uri.png" alt-text="Screenshot of configure tab with the connection string pasted in the URI field."  lightbox="media/get-data-storage/add-uri.png":::
+
+        > [!NOTE]
+        > * You can add up to 10 individual blobs. Each blob can be a max of 1 GB uncompressed.
+        > * You can ingest up to 5000 blobs from a single container.
+        > * You can't ingest individual blobs and containers in the same ingestion.
 
 1. Select **Next**
 
