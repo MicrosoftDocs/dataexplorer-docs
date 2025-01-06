@@ -75,11 +75,6 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 The following example creates the `MyFunction1` function with a description (`docstring`), a folder named `Demo`, and defines the function.
 
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9NLLkpNLElVSCvNSy7JzM9T4CrPLMlQ0EjJTy4uKcrMS1ewVVAPzswtyElVSEnNzYcrVNdRSMvPSUktslV3AYqra3L5VrpB5Qw1NLmqg0vyi3Jdy1LzSooVahRKErNTFQwNDGoBPpluyHEAAAA%3D" target="_blank">Run the query</a>
-::: moniker-end
-
 ```kusto
 .create function 
 with (docstring = 'Simple demo function', folder='Demo')
@@ -93,12 +88,7 @@ MyFunction1()
 
 ### Demo function with parameter
 
-The following example creates the *MyFunction2* function with a description (`docstring`), folder named `Demo`, and defines the `Mytimestamp` parameter.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13LsQrCMBSF4T1PccjUgjg4it2sWyd9gZDc2oBJys3VUtR3txEF8WwH%2Fm9tmYwQ%2Bmu04lPE5GVA5ZLNwj6e0UDvKaS%2FwBUzGjaBhFiv%2BnRxxN9Y11Do5sOHbKpuFh8oiwnjttDyatwVlh0lcWhvFCW%2F%2FwPTQExoozstGXYNfrjC8wUJOe6iswAAAA%3D%3D" target="_blank">Run the query</a>
-::: moniker-end
+The following example creates the `MyFunction2` function with a description (`docstring`), folder named `Demo`, and defines the `Mytimestamp` parameter.
 
 ```kusto
 .create function with (docstring = "Demo function with date parameter",folder = "Demo") 
