@@ -21,9 +21,7 @@ This article shows you how to generate a SAS token to a storage resource. You ca
 
    :::image type="content" source="storage/generate-sas-storage-account.png" lightbox="storage/generate-sas-storage-account.png" alt-text="Screenshot of Azure portal with Containers selected. Specific container is right-clicked and a menu opens. Generate SAS is selected from this menu.":::
 
-1. In the **Generate SAS** dialog, select **Read** and **List** permissions for containers, or **Read** for individual blobs.
-1. Specify the optional parameters for  **Start and expiry date/time**, and **Allowed IP addresses**. For more information, see [Best practices when using SAS](/azure/storage/common/storage-sas-overview#best-practices-when-using-sas) 
-1. Select **Generate SAS token and URL**. 
+1. In the **Generate SAS** dialog, select **Read** and **List** permissions for containers, or **Read** for individual blobs. Optionally, specify the **Start and expiry date/time** and **Allowed IP addresses**. For more information about the optional parameters, see [best practices when authorizing using SAS](/azure/storage/common/storage-sas-overview#best-practices-when-using-sas). Then select **Generate SAS token and URL**.
 
    :::image type="content" source="storage/generate-sas-token-and-url.png"  lightbox="storage/generate-sas-token-and-url.png" alt-text="Screen shot of the Generate SAS dialog with information filled in and Generate SAS token and URL selected.":::
 
