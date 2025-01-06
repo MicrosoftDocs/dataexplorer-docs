@@ -4,7 +4,7 @@ description: Learn how to use the parse_json() function to return an object of t
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/19/2024
-monikerRange: "microsoft-fabric || azure-data-explorer"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # parse_json()
 
