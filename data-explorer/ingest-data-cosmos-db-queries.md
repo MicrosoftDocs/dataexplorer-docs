@@ -33,7 +33,7 @@ TestTable
 | summarize arg_max(_timestamp, *) by Id
 ```
 
-If you used soft markers to mark deleted documents, you can filter out deleted documents with a query.  For instance, let's say you have a boolean column in your Kusto table named `IsDeleted` which indicate if the document was soft deleted.  You need to mark such document before actually deleting the document so Kusto can pick up the soft deleted value.  The following query could then filter out soft deleted documents:
+If you use soft markers to indicate deleted documents, you can filter out these documents with a query. Suppose you have a boolean column, `IsDeleted`, in your Kusto table that indicates whether a document is soft deleted. You need to mark these documents before actually deleting them so Kusto can recognize the soft deleted value. The following query can then filter out the soft deleted documents:
 
 ```kusto
 TestTable
