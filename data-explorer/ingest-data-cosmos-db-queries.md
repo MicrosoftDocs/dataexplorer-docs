@@ -3,7 +3,7 @@ title: Get latest versions of Azure Cosmos DB documents - Azure Data Explorer
 description: Learn about how to get latest versions of Azure Cosmos DB documents in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 06/13/2023
+ms.date: 01/07/2025
 ---
 
 # Get latest versions of Azure Cosmos DB documents
@@ -33,7 +33,7 @@ TestTable
 | summarize arg_max(_timestamp, *) by Id
 ```
 
-If you used soft markers to mark deleted documents, you can filter them out with the following query:
+If you used soft markers to mark deleted documents, you can filter out deleted documents with a query.  For instance, let's say you have a boolean column in your Kusto table named `IsDeleted` which indicate if the document was soft deleted.  You need to mark such document before actually deleting the document so Kusto can pick up the soft deleted value.  The following query could then filter out soft deleted documents:
 
 ```kusto
 TestTable
