@@ -109,6 +109,13 @@ StormEvents
 
 Add `| render columnchart` to the query to visualize the result.
 
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOwQrCQAxE735FjgqCX9CT9V7oF8Q2aGo3WdOsUPHj3aUoUvA4zLyZaV0tnB4kPm1eMKUQ0PhJ0JhGMp9rDHghqIq1XcTH2sF5htbRKZODssCNpa9YhCwJ31Nu0ZhGdFap0RFUvvloOlDni96v5hqyI0bORLU+cvjpLIfVvNz4w+eEkfRk0OmYgnRXNH8DzTGGOPMAAAA=" target="_blank">Run the query</a>
+::: moniker-end
+
+:::image type="content" source="../media/kql-tutorials/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
+
 If the columns have different names, for example `StormEvents` has `State` and `PopulationData` has `StateName`,  specify the join as follows:
 
 ```kusto 
@@ -117,20 +124,12 @@ If the columns have different names, for example `StormEvents` has `State` and `
 
 The `$left` table is the table on the left, or outer side of the join operator, in this case `StormEvents`, The `$right` table is the table on the right, or inner side of the join operator, in this case `PopulationData`.  
 
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOwQrCQAxE735FjgqCX9CT9V7oF8Q2aGo3WdOsUPHj3aUoUvA4zLyZaV0tnB4kPm1eMKUQ0PhJ0JhGMp9rDHghqIq1XcTH2sF5htbRKZODssCNpa9YhCwJ31Nu0ZhGdFap0RFUvvloOlDni96v5hqyI0bORLU+cvjpLIfVvNz4w+eEkfRk0OmYgnRXNH8DzTGGOPMAAAA=" target="_blank">Run the query</a>
-::: moniker-end
-
-:::image type="content" source="../media/kql-tutorials/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
-
 > [!TIP]
 > There are many types of joins that you can perform with the `join` operator. See a [list of join flavors](../join-operator.md#returns).
 
 ## Use the lookup operator
 
-The [lookup](../lookup-operator.md) operator optimizes the performance of queries where a fact table is enriched with data from a dimension table. It extends the fact table with values that are looked up in a dimension table. For best performance, specify the left table as the larger fact table, and the right table as the smaller dimension table. This is exactly opposite to the assumption that's used by the `join` operator.
+The [lookup](../lookup-operator.md) operator optimizes the performance of queries where a fact table is enriched with data from a dimension table. It extends the fact table with values that are looked up in a dimension table. For best performance, specify the larger fact table as the left table and the smaller dimension table as the right table.
 
 In the help cluster, there's another database called `ContosoSales` that contains sales data. The following query uses `lookup` to merge the `SalesFact` and `Products` tables from this database to get the total sales by product category.
 
