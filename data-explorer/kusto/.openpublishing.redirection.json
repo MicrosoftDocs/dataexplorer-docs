@@ -72,7 +72,7 @@
     },
     {
       "source_path": "management/data-ingestion/ingest-from-storage.md",
-      "redirect_url": "/kusto/data-ingestion/ingest-into-command",
+      "redirect_url": "/kusto/management/data-ingestion/ingest-into-command",
       "redirect_document_id": true
     },
 
