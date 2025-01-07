@@ -145,7 +145,7 @@ range Steps from 1 to 8 step 3
 
 ### Traces over a time range
 
-The following example shows how the `range` operator can be used to create a small, ad-hoc, dimension table that is then used to introduce zeros where the source data has no values. It takes timestamps from the last 4 hours and counts traces for each 1-minute interval. When no traces exist for a specific interval, the count is 0.
+The following example shows how the `range` operator can be used to create a dimension table that is used to introduce zeros where the source data has no values. It takes timestamps from the last four hours and counts traces for each one minute interval. When there are no traces for a specific interval, the count is zero.
 
 ```kusto
 range TIMESTAMP from ago(4h) to now() step 1m
