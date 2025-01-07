@@ -58,7 +58,7 @@ print Message="A magic trick can turn a cat into a dog"
 
 ### Generate and modify a sequence of numbers 
 
-The following example creates a table with column `x` containing a range of numbers from one to five, incremented by one. It then adds the column `str` using the `strcat()` function to concatenate the string "Number is " with the string representation of the `x` column values. Finally, it adds the `replaced` column where the word "is" is replaced by "was" in the strings from the `str` column.
+The following example creates a table with column `x` containing numbers from one to five, incremented by one. It adds the column `str` that concatenates  "Number is " with the string representation of the `x` column values using the `strcat()` function. It then adds the `replaced` column where "was" replaces the word "is" in the strings from the `str` column.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
