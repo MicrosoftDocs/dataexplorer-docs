@@ -1,9 +1,9 @@
 ---
 title: Capacity policy
 description: Learn how to use the capacity policy to control the compute resources of data management operations on a cluster.
-ms.reviewer: orspodek
+ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/06/2025
 monikerRange: "azure-data-explorer"
 ---
 # Capacity policy
@@ -236,7 +236,7 @@ The default capacity policy has the following JSON representation:
 Kusto limits the number of concurrent requests for the following user-initiated commands:
 
 * **Ingestions**
-  * This category includes commands that [ingest from storage](data-ingestion/ingest-from-storage.md), [ingest from a query](data-ingestion/ingest-from-query.md), and [ingest inline](data-ingestion/ingest-inline.md).
+  * This category includes commands that [ingest from storage](data-ingestion/ingest-into-command.md), [ingest from a query](data-ingestion/ingest-from-query.md), and [ingest inline](data-ingestion/ingest-inline.md).
   * The limit is as defined by the [ingestion capacity](#ingestion-capacity).
 * **Purges**
   * The global limit is currently fixed at one per cluster.
