@@ -1,6 +1,6 @@
 ---
 title: .cancel queued ingestion operation command
-description: Learn how to use the `.cancel operation` command to cancel a long-running operation.
+description: Learn how to use the `.cancel queued operation` command to cancel a long-running operation.
 ms.reviewer: odkadosh
 ms.topic: reference
 ms.date: 12/04/2024

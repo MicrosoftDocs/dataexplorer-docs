@@ -9,11 +9,11 @@ ms.date: 11/19/2024
 
 The `.ingest-from-storage-queued into` command used with the [`.list blobs`](list-blobs.md) queues blobs for ingestion into a table.  It allows to ingest an entire storage container or a folder within a container (more precisely all blobs satisfying a prefix and suffix).
 
-[!INCLUDE [direct-ingestion-note](../../../includes/direct-ingestion-note.md)]
+[!INCLUDE [direct-ingestion-note](../../includes/direct-ingestion-note.md)]
 
 ## Permissions
 
-You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -31,7 +31,7 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 
 *.list blobs command*
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
