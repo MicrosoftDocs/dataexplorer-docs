@@ -3,7 +3,7 @@ title:  Streaming ingestion and schema changes
 description:  This article discusses options of handling schema changes with streaming ingestion.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/13/2024
+ms.date: 12/17/2024
 ---
 # Streaming ingestion and schema changes
 
@@ -14,7 +14,7 @@ Cluster nodes cache the schema of databases that get data through [streaming ing
 ::: moniker-end
 
 ::: moniker range="microsoft-fabric"
-Eventhouse nodes cache the schema of databases that get data through [streaming ingestion](/azure/data-explorer/ingest-data-streaming), boosting performance and resource use. However, when there are schema changes, it can lead to delays in updates.
+Eventhouse nodes cache the schema of databases that get data through streaming ingestion, boosting performance and resource use. However, when there are schema changes, it can lead to delays in updates.
 ::: moniker-end
 
 If schema changes and streaming ingestion aren't synchronized, you can encounter failures like schema-related errors or incomplete and distorted data in the table.

@@ -20,6 +20,9 @@ items:
 - name: detect_anomalous_new_entity_fl()
   displayName: functions library, security, cybersecurity, anomaly detection, new entity, novelty, cyber, detect anomalous new entity
   href: detect-anomalous-new-entity-fl.md
+- name: detect_anomalous_spike_fl()
+  displayName: functions library, security, cybersecurity, anomaly detection, spike, cyber, detect anomalous spike
+  href: detect-anomalous-spike-fl.md
 - name: factorial_fl()
   displayName: functions library, statistics
   href: factorial-fl.md
@@ -29,6 +32,12 @@ items:
 - name: get_packages_version_fl()
   displayName: functions library, python, version, package
   href: get-packages-version-fl.md
+- name: graph_blast_radius_fl()
+  displayName: functions library, graph, blast radius, cyber, security, cybersecurity
+  href: graph-blast-radius-fl.md
+- name: graph_exposure_perimeter_fl()
+  displayName: functions library, graph, exposure, perimeter, cyber, security, cybersecurity
+  href: graph-exposure-perimeter-fl.md
 - name: graph_path_discovery_fl()
   displayName: functions library, graph, path, discovery, cyber, security, cybersecurity,
   href: graph-path-discovery-fl.md

@@ -3,7 +3,7 @@ title:  Export data to cloud storage
 description: Learn how to export data to cloud storage.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/01/2024
 ---
 # Export data to cloud storage
 
@@ -25,10 +25,10 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| `async` | `string` | | If specified, the command runs in asynchronous mode. See [asynchronous mode](#asynchronous-mode).|
-| `compressed` | `string` | | If specified, the output storage artifacts are compressed as `.gz` files. See the `compressionType` [supported property](#supported-properties) for compressing Parquet files as snappy.|
-| *OutputDataFormat* | `string` |  :heavy_check_mark: | Indicates the data format of the storage artifacts written by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`.|
-| *StorageConnectionString* | `string` | | One or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md) that indicate which storage to write the data to. More than one storage connection string may be specified for scalable writes. Each such connection string must indicate the credentials to use when writing to storage. For example, when writing to Azure Blob Storage, the credentials can be the storage account key, or a shared access key (SAS) with the permissions to read, write, and list blobs.|
+| `async` | `string` |  | If specified, the command runs in asynchronous mode. See [asynchronous mode](#asynchronous-mode). |
+| `compressed` | `string` |  | If specified, the output storage artifacts are compressed as `.gz` files. See the `compressionType` [supported property](#supported-properties) for compressing Parquet files as snappy. |
+| *OutputDataFormat* | `string` | :heavy_check_mark: | Indicates the data format of the storage artifacts written by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`. |
+| *StorageConnectionString* | `string` |  | One or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md) that indicate which storage to write the data to. More than one storage connection string might be specified for scalable writes. Each such connection string must indicate the credentials to use when writing to storage. For example, when writing to Azure Blob Storage, the credentials can be the storage account key, or a shared access key (SAS) with the permissions to read, write, and list blobs. |
 | *PropertyName*, *PropertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!NOTE]
@@ -45,9 +45,9 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 | `compressionType` | `string` | Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`. `snappy` can (optionally) be used for `parquet` format. |
 | `distribution` | `string` | Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread writes to storage. Otherwise, export writes from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluate-operator.md). Defaults to `per_shard`. |
 | `persistDetails` | `bool` | Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
-| `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Valid range: 100 MB (default) to 4 GB. |
+| `sizeLimit` | `long` | The size limit in bytes of a single storage artifact written before compression. Valid range: 100 MB (default) to 4 GB. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
-| `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
+| `distributed` | `bool` | Disable or enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
 | `parquetDatetimePrecision` | `string` | Specifies the precision to use when exporting `datetime` values to Parquet. Possible values are millisecond and microsecond. Default is millisecond. |
 
 ## Authentication and authorization
@@ -93,7 +93,7 @@ For example, after a successful completion, you can retrieve the results using:
 
 ## Examples
 
-In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed CSV blobs, up to 1GB before compression.
+In this example, Kusto runs the query and then exports the first recordset produced by the query to one or more compressed CSV blobs, up to 1 GB before compression.
 Column name labels are added as the first row for each blob.
 
 ```kusto
@@ -114,22 +114,22 @@ Column name labels are added as the first row for each blob.
 
 ## Failures during export commands
 
-Export commands can transiently fail during execution. [Continuous export](continuous-data-export.md) will automatically retry the command. Regular export commands ([export to storage](export-data-to-storage.md), [export to external table](export-data-to-an-external-table.md)) don't perform any retries.
+Export commands can transiently fail during execution. [Continuous export](continuous-data-export.md) automatically retries the command. Regular export commands ([export to storage](export-data-to-storage.md), [export to external table](export-data-to-an-external-table.md)) don't perform any retries.
 
 * When the export command fails, artifacts that were already written to storage aren't deleted. These artifacts remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written.
 * The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [`.show operations`](../show-operations.md) and [`.show operation details`](../show-operation-details.md) commands.
 
 ### Storage failures
 
-By default, export commands are distributed such that there may be many concurrent writes to storage. The level of distribution depends on the type of export command:
+By default, export commands are distributed such that there might be many concurrent writes to storage. The level of distribution depends on the type of export command:
 
 * The default distribution for regular `.export` command is `per_shard`, which means all [extents](../extents-overview.md) that contain data to export write to storage concurrently. 
 
 * The default distribution for [export to external table](export-data-to-an-external-table.md) commands is `per_node`, which means the concurrency is the number of nodes.
 
-When the number of extents/nodes is large, this may lead to high load on storage that results in storage throttling, or transient storage errors. The following suggestions may overcome these errors (by order of priority):
+When the number of extents/nodes is large, this might lead to high load on storage that results in storage throttling, or transient storage errors. The following suggestions might overcome these errors (by order of priority):
 
-* Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azure-storage.md) (the load will be evenly distributed between the accounts).
+* Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azure-storage.md). The load is evenly distributed between the accounts.
 * Reduce the concurrency by setting the distribution hint to `per_node` (see command properties).
 * Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/rest/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command limits the number of nodes writing to storage concurrently to 50% of the nodes:
 
@@ -160,7 +160,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
     ```
 
 * If exporting to a partitioned external table, setting the `spread`/`concurrency` properties can reduce concurrency (see details in the [command properties](export-data-to-an-external-table.md#syntax).
-* If neither of the above work, you can completely disable distribution by setting the `distributed` property to false. However, we don't recommend doing so, as it may significantly affect the command performance.
+* If neither of the previous recommendations work, you can completely disable distribution by setting the `distributed` property to false. However, we don't recommend doing so, as it might significantly affect the command performance.
 
 ### Authorization failures
 
@@ -184,3 +184,11 @@ On export, Kusto data types are mapped to Parquet data types using the following
 | `string` | `BYTE_ARRAY` | UTF-8 |  |
 | `timespan` | `INT64` |  | Stored as ticks (100-nanosecond units) count |
 | `decimal` | `FIXED_LENGTH_BYTE_ARRAY` | DECIMAL |  |
+
+## Related content
+
+* [Continuous data export](continuous-data-export.md)
+* [Ingest from storage](../data-ingestion/ingest-from-storage.md)
+* [Management commands overview](../index.md)
+* [Export to an external table](export-data-to-an-external-table.md)
+* [Export to a SQL table](export-data-to-sql.md)

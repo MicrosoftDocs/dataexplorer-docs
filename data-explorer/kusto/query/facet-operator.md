@@ -9,9 +9,9 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns a set of tables, one for each specified column.
-Each table specifies the list of values taken by its column.
-An additional table can be created by using the `with` clause.
+Returns a set of tables, one for each column specified in the facet clause.
+Each table contains the list of values taken by its column.
+An additional table can be created by using the `with` clause. Facet result tables can't be renamed or referenced by any additional operators.
 
 ## Syntax
 
