@@ -7,6 +7,8 @@ items:
     href: t-sql.md
   - name: Set timeout limits
     href: ../set-timeout-limits.md
+  - name: Database cursors
+    href: database-cursor.md
   - name: Debug KQL inline Python
     href: ../debug-inline-python.md  
   - name: Best practices for KQL queries

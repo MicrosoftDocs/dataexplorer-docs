@@ -1,11 +1,11 @@
 ---
-title:  Export data to an external table
+title:  .export to table
 description:  This article describes Export data to an external table.
-ms.reviewer: orspodek
+ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/01/2024
 ---
-# Export data to an external table
+# .export to table
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -149,5 +149,5 @@ If the command is executed asynchronously by using the `async` keyword, the outp
 * [Continuous data export](continuous-data-export.md)
 * [Management commands overview](../index.md)
 * [External tables](../../query/schema-entities/external-tables.md)
-* [Export data to SQL](export-data-to-sql.md)
-* [Export data to cloud storage](export-data-to-storage.md)
+* [.export to SQL](export-data-to-sql.md)
+* [.export to storage](export-data-to-storage.md)
