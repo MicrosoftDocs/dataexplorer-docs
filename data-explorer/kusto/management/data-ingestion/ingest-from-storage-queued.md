@@ -39,7 +39,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |--|--|--|--|
 |*DatabaseName*| `string` | |The name of the database into which to ingest data.  If no database name is provided, the request's context database is used.|
 |*TableName*| `string` | :heavy_check_mark:|The name of the table into which to ingest data.|
-|*EnableTracking*| `boolean` | | If `true`, the blob ingestion will be tracked so that <span style="background:yellow">TODO</span>. Default is `false`.  |
+|*EnableTracking*| `boolean` | | If `true`, the blob ingestion will be tracked (see [.show queued ingestion operations](show-queued-ingestion-operations.md)). Default is `false`.  |
 |*SkipBatching*| `boolean` | | If `true`, the blobs will not be batched (neither together nor with other blobs):  each blob will be ingested individually. Default is `false`.  |
 |*CompressionFactor*| `real` | |Compression factor (ratio) between the original size and the compressed size of blobs.  This is useful when blobs are provided in a compressed format to estimate the original size of the data (for batching purposes). |
 
