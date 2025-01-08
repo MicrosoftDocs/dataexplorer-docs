@@ -30,6 +30,9 @@ Takes a column name as a string and a default value. Returns a reference to the 
 
 If *columnName* exists, then the column it refers to. Otherwise *defaultValue*.
 
+> [!NOTE]
+> If *columnName* has a dynamic value, then it returns *defaultValue*.
+
 ## Example
 
 :::moniker range="azure-data-explorer"
