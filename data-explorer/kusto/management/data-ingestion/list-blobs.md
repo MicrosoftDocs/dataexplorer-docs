@@ -13,7 +13,7 @@ This command is typically used in conjunction with [.ingest-from-storage-queued]
 
 ## Permissions
 
-You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 [MaxFiles=MaxFilesValue]
 [PathFormat=PatternValue]
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,7 +39,7 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 > [!NOTE]
 > When used standalone, this command will return a maximum of 1000 files, even if a bigger value is specified in *MaxFiles*.
 
-[!INCLUDE [ingestion-properties](../../../includes/ingestion-properties.md)]
+[!INCLUDE [ingestion-properties](../../includes/ingestion-properties.md)]
 
 ## Authentication and authorization
 
@@ -49,11 +49,11 @@ The following table lists the supported authentication methods and the permissio
 
 |Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
 |--|--|--|
-|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
-|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
-|[Managed identity](../../api/connection-strings/storage-authentication-methods.md#managed-identity)|Storage Blob Data Reader|Reader|
+|[Shared Access (SAS) token](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
+|[Storage account access key](../../api/connection-strings/storage-connection-strings.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
+|[Managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity)|Storage Blob Data Reader|Reader|
 
-[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation) isn't supported.  This command primary usage is queued ingestion which is done asynchronously with no user context.
+[Impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) isn't supported.  This command primary usage is queued ingestion which is done asynchronously with no user context.
 
 ## Returns
 
