@@ -12,7 +12,7 @@ Ingestion operations can be tracked once the operation is initiated by [.ingest-
 
 ## Permissions
 
-You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions on the table the `OperationId`(s) belong to.
+You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions on the table the `OperationId`(s) belong to.
 
 ## Syntax
 

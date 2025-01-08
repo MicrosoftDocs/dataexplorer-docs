@@ -69,7 +69,7 @@ The result of the command is a table with one record per blob listed.
 
 ### Listing 20 blobs
 
-This command lists a maximum of 20 blobs out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings#managed-identity) authentication:
+This command lists a maximum of 20 blobs out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication:
 
 ```kusto
 .list blobs (
@@ -80,7 +80,7 @@ MaxFiles=20
 
 ### Listing *.parquet* blobs
 
-This command lists a maximum of 10 blobs ending with ".parquet" out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings#managed-identity) authentication:
+This command lists a maximum of 10 blobs ending with ".parquet" out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication:
 
 ```kusto
 .list blobs (
@@ -92,7 +92,7 @@ MaxFiles=10
 
 ### Capture date from blob path
 
-This command lists a maximum of 10 blobs ending with ".parquet" out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings#managed-identity) authentication and extract the date out of the URL:
+This command lists a maximum of 10 blobs ending with ".parquet" out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication and extract the date out of the URL:
 
 ```kusto
 .list blobs (
