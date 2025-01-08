@@ -1,11 +1,13 @@
 ---
 title:  Kusto list blobs command (list blobs from storage)
 description: This article describes the DM list blobs command in Azure Data Explorer.
-ms.reviewer: ???
+ms.reviewer: vplauzon
 ms.topic: reference
 ms.date: 11/19/2024
 ---
 # List blobs from storage
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 The `.list blobs` command lists blobs under a specified container path.
 
@@ -108,3 +110,7 @@ This `PathFormat` is able to extract the date for URL of the form:
 ```
 https://mystorageaccount.blob.core.windows.net/datasets/myfolder/year=2024/month=03/day=16/myblob.parquet
 ```
+
+## Related content
+
+* [Data formats supported for ingestion](../../ingestion-supported-formats.md)

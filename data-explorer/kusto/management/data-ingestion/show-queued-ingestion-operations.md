@@ -1,12 +1,14 @@
 ---
 title:  .show queued ingestion operations command
 description: Learn how to use the `.show queued ingestion operations` command to view a log of the queued ingestion operations that are currently running or completed.
-ms.reviewer: 
+ms.reviewer: vplauzon
 ms.topic: reference
 ms.date: 12/04/2024
 ---
 
 # .show queued ingestion operations command
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Ingestion operations can be tracked once the operation is initiated by [.ingest-from-storage-queued](ingest-from-storage-queued.md).
 
@@ -80,3 +82,7 @@ OperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested 
 --|--|--|--|--|--|--|--|--|--|--|--
 5da31e5f-2819-4835-8b01-3ecf4a70b0e5 |2015-01-10 14:57:41.0000000 |2015-01-10 15:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable
 8033eaf9-bc3a-43c4-8533-d904e10e49fe |2015-01-10 15:12:23.0000000 |2015-01-10 15:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|MyDatabase|MyOtherTable
+
+## Related content
+
+* [Data formats supported for ingestion](../../ingestion-supported-formats.md)
