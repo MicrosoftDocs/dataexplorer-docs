@@ -1,11 +1,11 @@
 ---
-title:  Export data to SQL
+title:  .export to SQL
 description:  This article describes Export data to SQL.
-ms.reviewer: orspodek
+ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/01/2024
 ---
-# Export data to SQL
+# .export to SQL
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -124,6 +124,6 @@ The target table is created if it doesn't exist in the target database.
 
 * [Ingest from query](../data-ingestion/ingest-from-query.md)
 * [Management commands overview](../index.md)
-* [Export to an external table](export-data-to-an-external-table.md)
-* [Export data to cloud storage](export-data-to-storage.md)
+* [.export to table](export-data-to-an-external-table.md)
+* [.export to storage](export-data-to-storage.md)
 * [Create and alter Azure SQL external tables](../external-sql-tables.md)

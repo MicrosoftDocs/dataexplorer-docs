@@ -3,7 +3,7 @@ title:  replace_string()
 description: Learn how to use the replace_string() function to replace all string matches with another string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/07/2025
 ---
 # replace_string()
 
@@ -33,7 +33,32 @@ To replace multiple strings, see [replace_strings()](replace-strings-function.md
 
 Returns the *text* after replacing all matches of *lookup* with evaluations of *rewrite*. Matches don't overlap.
 
-## Example
+## Examples
+
+### Replace words in a string
+
+The following example uses `replace_string()` to replace the word "cat" with the word "hamster" in the `Message` string.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2MMQrDMBAEe79iucqBgF%2FgIn1CnhAO%2BVCEI52QTpDCj89BvM1usTO1pWJ4SO8cZaUbMscUYC2FHYELbLQC9mnwp%2FrcNNJ0QL4mZcNzWNAsWNGkfjjIqztc4jzhzCm%2FglxCXm%2FO3aTRBVgW3FX3UfGn%2Bg8ZjGaxkAAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+print Message="A magic trick can turn a cat into a dog"
+| extend Outcome = replace_string(
+        Message, "cat", "hamster")  // Lookup strings
+```
+
+**Output**
+
+| Message | Outcome |
+|--|--|
+| A magic trick can turn a cat into a dog | A magic trick can turn a hamster into a dog |
+
+### Generate and modify a sequence of numbers 
+
+The following example creates a table with column `x` containing numbers from one to five, incremented by one. It adds the column `str` that concatenates  "Number is " with the string representation of the `x` column values using the `strcat()` function. It then adds the `replaced` column where "was" replaces the word "is" in the strings from the `str` column.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
