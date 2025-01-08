@@ -86,7 +86,7 @@ To prepare your cluster for migration:
 > Failure of your cluster to connect to essential services for ingestion and external tables poses a risk of data loss. Additionally, queries calling out to other network-protected services may cease to function.
 
 > [!WARNING]
-> The migration step must be performed within a few hours of completing the preparation steps. Delaying the migration might cause the service to malfunction. ```
+> The migration step must be performed within a few hours of completing the preparation steps. Delaying the migration might cause the service to malfunction.
 
 ## Migrate your cluster
 
@@ -151,6 +151,36 @@ After migrating to private endpoints, perform the following checks to verify the
 1. If you created new private endpoints, check that they are working as expected. If needed, refer to the [troubleshooting guide](security-network-private-endpoint-troubleshoot.md).
 
 1. Check that ingestion is working properly with the [.show ingestion failures command](/kusto/management/ingestion-failures?view=azure-data-explorer&preserve-view=true) or refer to the guidance in [Monitor queued ingestion with metrics](monitor-queued-ingestion.md). This verification is especially relevant if you need to connect to network secured services for ingestion with services like [Azure Event Hubs](ingest-data-event-hub.md).
+
+## Rollback
+
+If you encounter issues after the migration and need to rollback to the previous Virtual Network injected configuration, follow these steps to set the `virtualNetworkConfiguration` state back to `Enabled` using an ARM template:
+
+1. Locate the [**VirtualNetworkConfiguration**](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-arm-template#virtualnetworkconfiguration-1) in the ARM template of your cluster.
+
+	```json
+	"virtualNetworkConfiguration": {
+		"state": "Disabled",
+		"subnetId": "[concat(parameters('virtualNetworks_Test_vnet_externalid'), '/subnets/newsubnet')]",
+        "enginePublicIpId": "[parameters('publicIPAddresses_vnetclusterwestus3engine_externalid')]",
+        "dataManagementPublicIpId": "[parameters('publicIPAddresses_vnetclusterwestus3dm_externalid')]"
+	},
+	```
+
+1. Replace **"state": "Disabled"** with **"state": "Enabled"**. Ensure that the other properties remain unchanged.
+
+	```json
+	"virtualNetworkConfiguration": {
+		"state": "Enabled",
+		"subnetId": "[concat(parameters('virtualNetworks_Test_vnet_externalid'), '/subnets/newsubnet')]",
+        "enginePublicIpId": "[parameters('publicIPAddresses_vnetclusterwestus3engine_externalid')]",
+        "dataManagementPublicIpId": "[parameters('publicIPAddresses_vnetclusterwestus3dm_externalid')]"
+	},
+	```
+
+1. [**Deploy**](/azure/azure-resource-manager/templates/deployment-tutorial-local-template?tabs=azure-powershell) the ARM template to apply the changes.
+
+This will revert your cluster back to using the Virtual Network injected configuration.
 
 ## Related content
 
