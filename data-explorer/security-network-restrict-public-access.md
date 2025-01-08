@@ -70,11 +70,14 @@ There are two ways to configure the selected IP addresses: using the Azure porta
 
 #### [Azure portal](#tab/portal)
 
+> [!CAUTION]
+> For the configuration of [service tags](/azure/virtual-network/service-tags-overview#available-service-tags) use the **ARM template**.
+
 1. Navigate to the **Networking** configuration of your Azure Data Explorer cluster and select **Enabled from selected IP addresses**.
 
   :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses.png" alt-text="Screenshot of the network configuration page, showing showing the enabled from selected IP addresses option without any address range being configured.":::
 
-1. Configure the address ranges you like to allow to connect to the Azure Data Explorer cluster. You can use IP addresses or CIDRs. For the configuration of [service tags](/azure/virtual-network/service-tags-overview#available-service-tags) use the **ARM template**.
+1. Configure the address ranges you like to allow to connect to the Azure Data Explorer cluster. You can use IP addresses or CIDRs.
 
   :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" alt-text="Screenshot of the network configuration page, showing showing the enabled from selected IP addresses. There is a configuration for an IP address and a CIDR.":::
 
