@@ -134,8 +134,6 @@ whose type is `long` and results in values from one to eight incremented by thre
 
 ```kusto
 range Steps from 1 to 8 step 3
-```
-**Output**
 
 | Steps |
 |-------|
