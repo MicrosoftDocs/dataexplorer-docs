@@ -14,7 +14,7 @@ Changes the database streaming ingestion policy. The [streaming policy](../manag
 
 Streaming ingestion is best suited for low latency scenarios where the ingestion time is under 10 seconds for varying data volume. It can optimize processing for multiple tables across one or more databases, especially when the tables receive only a few records per second but the ingestion volume is thousands of records per second.
 
-However, when the amount of data grows beyond 4 GB per hour per table, the recommendation is to switch to classic bulk ingestion instead of streaming ingestion.
+However, when the amount of data grows beyond 4 GB per hour per table, we recommend switching to classic bulk ingestion instead of streaming ingestion.
 
 To learn how to implement streaming ingestion, see [streaming ingestion](/azure/data-explorer/ingest-data-streaming).
 Streaming ingestion must be enabled at the cluster level before it can be used at the database level.
