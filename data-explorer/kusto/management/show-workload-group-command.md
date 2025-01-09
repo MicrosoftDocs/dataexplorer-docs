@@ -3,7 +3,7 @@ title: .show workload_group command
 description: Learn how to use the `.show workload_group` command to show the specified workload group definitions.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/01/2025
 ---
 # .show workload_group command
 
@@ -49,3 +49,15 @@ Show definition for **MyWorkloadGroup** workload group:
 | WorkloadGroupName | WorkloadGroup |
 |--|--|
 | MyWorkloadGroup | {"RequestRateLimitPolicies": [{"IsEnabled": true, "Scope": "WorkloadGroup", "LimitKind": "ConcurrentRequests", "Properties": {"MaxConcurrentRequests": 30}}]} |
+
+## Related content
+
+* [Workload groups](workload-groups.md)
+* [Request limits policy](request-limits-policy.md)
+* [Request rate limit policy](request-rate-limit-policy.md)
+* [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md)
+* [Request queuing policy](request-queuing-policy.md)
+* [Query consistency policy](query-consistency-policy.md)
+* [.alter-merge workload_group](alter-merge-workload-group-command.md)
+* [.create-or-alter workload_group](create-or-alter-workload-group-command.md)
+* [.drop workload_group](drop-workload-group-command.md)

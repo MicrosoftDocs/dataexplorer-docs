@@ -41,3 +41,12 @@ The following command shows the streaming ingestion policy:
 ```kusto
 .show database MyDatabase policy streamingingestion 
 ```
+
+## Related content
+
+* [Streaming ingestion policy](streaming-ingestion-policy.md)
+* [.show table policy streamingingestion command](show-table-streaming-ingestion-policy-command.md)
+* [.alter database policy streamingingestion command](alter-database-streaming-ingestion-policy-command.md)
+* [.alter-merge database policy streamingingestion command](alter-merge-database-streaming-ingestion-policy-command.md)
+* [.delete database policy streamingingestion command](delete-database-streaming-ingestion-policy-command.md)
+* [Streaming ingestion and schema changes](data-ingestion/streaming-ingestion-schema-changes.md)
