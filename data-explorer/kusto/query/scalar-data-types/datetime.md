@@ -62,7 +62,7 @@ and the [todatetime()](../todatetime-function.md) function.
 |%Y-%m-%d %H:%M|2014-11-08 15:55|
 |%Y-%m-%d|2014-11-08|
 
-### [RFC 822](https://www.rfc-editor.org/rfc/rfc822.txt)
+### [RFC 822](https://www.w3.org/Protocols/rfc822/)
 
 |Format|Example|
 |------|-------|
