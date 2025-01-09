@@ -53,6 +53,8 @@ StormEvents
 | summarize arg_min(BeginLat, BeginLocation) by State
 ```
 
+**Output**
+
 The results table shown includes only the first 10 rows.
 
 | State          | BeginLat | BeginLocation |
@@ -83,6 +85,8 @@ StormEvents
 | where DeathsDirect > 0
 | summarize arg_min(StartTime, *) by State
 ```
+
+**Output**
 
 The results table shown includes only the first 10 rows and first 3 columns.
 
