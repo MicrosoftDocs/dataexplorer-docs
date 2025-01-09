@@ -154,7 +154,7 @@ After migrating to private endpoints, perform the following checks to verify the
 
 ## Rollback
 
-If you encounter issues after the migration and need to rollback to the previous Virtual Network injected configuration, follow these steps to set the `virtualNetworkConfiguration` state back to `Enabled` using an ARM template:
+To roll back your migration to the previous Virtual Network injected configuration by modifying the ARM template:
 
 1. Locate the [**VirtualNetworkConfiguration**](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-arm-template#virtualnetworkconfiguration-1) in the ARM template of your cluster.
 
