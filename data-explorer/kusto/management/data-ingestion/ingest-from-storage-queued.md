@@ -11,7 +11,7 @@ ms.date: 11/19/2024
 
 The `.ingest-from-storage-queued into` command is used with the [`.list blobs`](list-blobs.md) to queue blobs for ingestion into a table.  It allows you to ingest an entire storage container or a folder within a container. More precisely, it allows you to ingest all blobs satisfying a prefix and suffix.
 
-[!INCLUDE [direct-ingestion-note](../../../includes/direct-ingestion-note.md)]
+[!INCLUDE [direct-ingestion-note](../../includes/direct-ingestion-note.md)]
 
 ## Permissions
 
@@ -34,7 +34,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 *.list blobs command*
 <!-- clarify whether the list blobs command should be there, and if the syntax/parameters are correct.-->
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -42,9 +42,9 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |--|--|--|--|
 |*DatabaseName*| `string` | |The name of the database into which to ingest data.  If no database name is provided, the request's context database is used.|
 |*TableName*| `string` | :heavy_check_mark:|The name of the table into which to ingest data.|
-|*EnableTracking*| `boolean` | | Determines whether blob ingestion is tracked. The default `false`. <so that <span style="background:yellow">TODO</span>.  |
-|*SkipBatching*| `boolean` | | Determines whether to skip batching blobs together or with other blobs. When set to `true`, each blob will be ingested individually. Default is `false`.  |
-|*CompressionFactor*| `real` | | The compression factor (ratio) between the original size and the compressed size of blobs. This parameter helps estimate the original size of the data, for batching purposes, when blobs are provided in a compressed format. |
+|*EnableTracking*| `boolean` | | Determines whether the blob ingestion will be tracked. For more information,see [.show queued ingestion operations](show-queued-ingestion-operations.md). The default is `false`.  |
+|*SkipBatching*| `boolean` | | If `true`, the blobs will not be batched (neither together nor with other blobs):  each blob will be ingested individually. Default is `false`.  |
+|*CompressionFactor*| `real` | |Compression factor (ratio) between the original size and the compressed size of blobs.  This is useful when blobs are provided in a compressed format to estimate the original size of the data (for batching purposes). |
 
 <!--not sure what is meant here-->
 The [*.list blobs command*](list-blobs.md) is a valid command returning the blobs you want to ingest.

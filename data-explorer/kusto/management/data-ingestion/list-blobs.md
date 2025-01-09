@@ -15,7 +15,7 @@ This command is typically used in conjunction with [.ingest-from-storage-queued]
 
 ## Permissions
 
-You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
@@ -24,7 +24,7 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 [MaxFiles=MaxFilesValue]
 [PathFormat=PatternValue]
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -41,7 +41,7 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 > [!NOTE]
 > When used standalone, this command will return a maximum of 1000 files, even if a bigger value is specified in *MaxFiles*.
 
-[!INCLUDE [ingestion-properties](../../../includes/ingestion-properties.md)]
+[!INCLUDE [ingestion-properties](../../includes/ingestion-properties.md)]
 
 ## Authentication and authorization
 
@@ -51,11 +51,11 @@ The following table lists the supported authentication methods and the permissio
 
 |Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
 |--|--|--|
-|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
-|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
-|[Managed identity](../../api/connection-strings/storage-authentication-methods.md#managed-identity)|Storage Blob Data Reader|Reader|
+|[Shared Access (SAS) token](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
+|[Storage account access key](../../api/connection-strings/storage-connection-strings.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
+|[Managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity)|Storage Blob Data Reader|Reader|
 
-[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation) isn't supported.  This command primary usage is queued ingestion which is done asynchronously with no user context.
+[Impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) isn't supported.  This command primary usage is queued ingestion which is done asynchronously with no user context.
 
 ## Returns
 
@@ -71,7 +71,7 @@ The result of the command is a table with one record per blob listed.
 
 ### Listing 20 blobs
 
-This command lists a maximum of 20 blobs out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings#managed-identity) authentication:
+This command lists a maximum of 20 blobs out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication:
 
 ```kusto
 .list blobs (
@@ -82,7 +82,7 @@ MaxFiles=20
 
 ### Listing *.parquet* blobs
 
-This command lists a maximum of 10 blobs ending with ".parquet" out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings#managed-identity) authentication:
+This command lists a maximum of 10 blobs ending with ".parquet" out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication:
 
 ```kusto
 .list blobs (
@@ -94,7 +94,7 @@ MaxFiles=10
 
 ### Capture date from blob path
 
-This command lists a maximum of 10 blobs ending with ".parquet" out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings#managed-identity) authentication and extract the date out of the URL:
+This command lists a maximum of 10 blobs ending with ".parquet" out of a folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication and extract the date out of the URL:
 
 ```kusto
 .list blobs (
