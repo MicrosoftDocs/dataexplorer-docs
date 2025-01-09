@@ -30,6 +30,8 @@ Use the following steps to:
     ```
 
 1. Configure the Serilog sink, replacing placeholders using the information in the table that follows:
+    
+    1. For Entra service principal authentication use the following code:
 
     ```csharp
     var log = new LoggerConfiguration()
@@ -43,8 +45,8 @@ Use the following steps to:
     .CreateLogger();
 
     ```
-
-    You can also authenticate using Managed Identity. For mor information on creating a Managed Identity, see [Manage user-assigned managed identities](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azcli). Configure the Serilog sink, using Managed Identity as follows:  
+    
+    1. For Managed Identity authentication use the following code:
 
     ``` csharp
     var log = new LoggerConfiguration()
