@@ -3,7 +3,7 @@ title: .show cluster policy request_classification command
 description: Learn how to use the `.show cluster policy request_classification` command to show the request classification policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/01/2025
 ---
 # .show cluster policy request_classification command
 
@@ -13,7 +13,7 @@ ms.date: 08/11/2024
 Shows the cluster's request classification policy.
 ::: moniker-end
 :::moniker range="microsoft-fabric"
-Shows the eventhouse's request classification policy.
+Shows the Eventhouse's request classification policy.
 ::: moniker-end
 
 ## Permissions
@@ -38,26 +38,26 @@ The command returns one row showing the details of the cluster request classific
 
 Following is the schema of the output returned:
 
-| Name          | Type   | Description                                                                                                                                                                                                            |
-|---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | `string` | Name of the policy. For cluster request classification policy, this value is **ClusterRequestClassificationPolicy**.                                                                                                   |
-| EntityName    | `string` | Name of the entity for which the policy is set. For cluster request classification policy, this value is an empty string.                                                                                              |
-| Policy        | `string` | JSON representation of the policy object.                                                                                                                                                                              |
+| Name | Type | Description |
+|--|--|--|
+| PolicyName | `string` | Name of the policy. For cluster request classification policy, this value is **ClusterRequestClassificationPolicy**. |
+| EntityName | `string` | Name of the entity for which the policy is set. For cluster request classification policy, this value is an empty string. |
+| Policy | `string` | JSON representation of the policy object. |
 | ChildEntities | `string` | Child entities for which this policy is set. For cluster request classification policy, this value is an array of strings, each of which corresponds to the name of system and user databases attached to the cluster. |
-| EntityType    | `string` | Type of entity for which this policy is set. For cluster request classification policy, this value is **Cluster**.                                                                                                     |
+| EntityType | `string` | Type of entity for which this policy is set. For cluster request classification policy, this value is **Cluster**. |
 ::: moniker-end
 :::moniker range="microsoft-fabric"
-The command returns one row showing the details of the eventhouse request classification policy.
+The command returns one row showing the details of the Eventhouse request classification policy.
 
 Following is the schema of the output returned:
 
-| Name          | Type   | Description                                                                                                                                                                                                            |
-|---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | `string` | Name of the policy. For eventhouse request classification policy, this value is **ClusterRequestClassificationPolicy**.                                                                                                   |
-| EntityName    | `string` | Name of the entity for which the policy is set. For eventhouse request classification policy, this value is an empty string.                                                                                              |
-| Policy        | `string` | JSON representation of the policy object.                                                                                                                                                                              |
-| ChildEntities | `string` | Child entities for which this policy is set. For eventhouse request classification policy, this value is an array of strings, each of which corresponds to the name of system and user databases attached to the eventhouse. |
-| EntityType    | `string` | Type of entity for which this policy is set. For eventhouse request classification policy, this value is **Cluster**.                                                                                                     |
+| Name | Type | Description |
+|--|--|--|
+| PolicyName | `string` | Name of the policy. For Eventhouse request classification policy, this value is **ClusterRequestClassificationPolicy**. |
+| EntityName | `string` | Name of the entity for which the policy is set. For Eventhouse request classification policy, this value is an empty string. |
+| Policy | `string` | JSON representation of the policy object. |
+| ChildEntities | `string` | Child entities for which this policy is set. For Eventhouse request classification policy, this value is an array of strings, each of which corresponds to the name of system and user databases attached to the Eventhouse. |
+| EntityType | `string` | Type of entity for which this policy is set. For Eventhouse request classification policy, this value is **Cluster**. |
 ::: moniker-end
 
 ## Examples
@@ -68,9 +68,9 @@ Following is the schema of the output returned:
 Display request classification policy for the cluster:
 ::: moniker-end
 :::moniker range="microsoft-fabric"
-### Display the eventhouse's request classification policy
+### Display the Eventhouse's request classification policy
 
-Display request classification policy for the eventhouse:
+Display request classification policy for the Eventhouse:
 ::: moniker-end
 
 ```kusto
@@ -79,6 +79,14 @@ Display request classification policy for the eventhouse:
 
 **Output**
 
-| PolicyName                         | EntityName | Policy                                                                                                                                                                                                                                                                   | ChildEntities                                                          | EntityType |
-|------------------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|------------|
-| ClusterRequestClassificationPolicy |            | {"ClassificationProperties": ["current_application",  "request_type" ],"IsEnabled": true, "ClassificationFunction": "iff(request_properties.current_application == \"Kusto.Explorer\" and request_properties.request_type == \"Query\",\"Ad-hoc queries\",\"default\")"} | ["$systemdb", "KustoMonitoringPersistentDatabase", "YourDatabaseName"] | Cluster    |
+| PolicyName | EntityName | Policy | ChildEntities | EntityType |
+|--|--|--|--|--|
+| ClusterRequestClassificationPolicy |  | {"ClassificationProperties": ["current_application",  "request_type" ],"IsEnabled": true, "ClassificationFunction": "iff(request_properties.current_application == \"Kusto.Explorer\" and request_properties.request_type == \"Query\",\"Ad-hoc queries\",\"default\")"} | ["$systemdb", "KustoMonitoringPersistentDatabase", "YourDatabaseName"] | Cluster |
+
+## Related content
+
+* [Workload groups](workload-groups.md)
+* [Request classification policy](request-classification-policy.md)
+* [`.alter cluster request classification policy`](alter-cluster-policy-request-classification-command.md)
+* [`.alter-merge cluster request classification policy`](alter-merge-cluster-policy-request-classification-command.md)
+* [`.delete cluster request classification policy`](delete-cluster-policy-request-classification-command.md)

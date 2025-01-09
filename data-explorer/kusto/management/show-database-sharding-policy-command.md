@@ -3,7 +3,7 @@ title: .show database policy sharding command
 description: Learn how to use the `.show database policy sharding` command to show the database's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/18/2024
 monikerRange: "azure-data-explorer"
 ---
 # .show database policy sharding command
@@ -41,3 +41,12 @@ The following example shows the table sharding policy:
 ```kusto
 .show database MyDatabase policy sharding 
 ```
+
+## Related content
+
+* [Data sharding policy](sharding-policy.md)
+* [.show table policy sharding command](show-table-sharding-policy-command.md)
+* [.alter database policy sharding command](alter-database-sharding-policy-command.md)
+* [.alter-merge database policy sharding command](alter-merge-database-sharding-policy-command.md)
+* [.delete database policy sharding command](delete-database-sharding-policy-command.md)
+* [Extents (data shards)](extents-overview.md)

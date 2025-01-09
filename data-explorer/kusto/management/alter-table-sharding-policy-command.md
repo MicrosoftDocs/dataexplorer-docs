@@ -3,7 +3,7 @@ title: .alter table policy sharding command
 description: Learn how to use the `.alter table policy sharding` command to change the table sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/22/2024
 monikerRange: "azure-data-explorer"
 ---
 # .alter table policy sharding command
@@ -49,3 +49,12 @@ The following command returns the updated extents sharding policy for the table.
 }
 ```
 ````
+
+## Related content
+
+* [Data sharding policy](sharding-policy.md)
+* [.alter database policy sharding command](alter-database-sharding-policy-command.md)
+* [.show table policy sharding command](show-table-sharding-policy-command.md)
+* [.alter-merge table policy sharding command](alter-merge-table-sharding-policy-command.md)
+* [.delete table policy sharding command](delete-table-sharding-policy-command.md)
+* [Extents (data shards)](extents-overview.md)

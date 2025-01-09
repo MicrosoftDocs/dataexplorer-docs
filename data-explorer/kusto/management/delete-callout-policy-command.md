@@ -3,7 +3,7 @@ title: .delete cluster policy callout command
 description: Learn how to use the `.delete cluster policy callout` command to delete the callout policy defined for a cluster.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/18/2024
 monikerRange: "azure-data-explorer"
 ---
 # .delete cluster policy callout command
@@ -24,13 +24,13 @@ You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-co
 
 ## Returns
 
-| Name          | Type   | Description                                                                                               |
-|---------------|--------|-----------------------------------------------------------------------------------------------------------|
-| PolicyName    | `string` | Name of the policy. For cluster callout policy this value is **CalloutPolicy**.                           |
-| EntityName    | `string` | Name of the entity for which the policy is set. For cluster callout policy this value is an empty string. |
-| Policy        | `string` | JSON representation of the policy object. This command sets this value to null.                           |
-| ChildEntities | `string` | Child entities for which this policy is set. For cluster callout policy this value is an empty string.    |
-| EntityType    | `string` | Type of entity for which this policy is set. For cluster callout policy this value is an empty string.    |
+| Name | Type | Description |
+|--|--|--|
+| PolicyName | `string` | Name of the policy. For cluster callout policy, this value is **CalloutPolicy**. |
+| EntityName | `string` | Name of the entity for which the policy is set. For cluster callout policy, this value is an empty string. |
+| Policy | `string` | JSON representation of the policy object. This command sets this value to null. |
+| ChildEntities | `string` | Child entities for which this policy is set. For cluster callout policy, this value is an empty string. |
+| EntityType | `string` | Type of entity for which this policy is set. For cluster callout policy, this value is an empty string. |
 
 ## Examples
 
@@ -44,10 +44,17 @@ Delete cluster callout policy:
 
 **Output**
 
-| PolicyName    | EntityName | Policy                                                                                               | ChildEntities | EntityType |
-|---------------|------------|------------------------------------------------------------------------------------------------------|---------------|------------|
-| CalloutPolicy |            | null                                                                                                 |               |            |
+| PolicyName | EntityName | Policy | ChildEntities | EntityType |
+|--|--|--|--|--|
+| CalloutPolicy |  | null |  |  |
 
 ## Remarks
 
 Notice that this command doesn't delete the immutable predefined callout policies. For more information, see [predefined callout policies](callout-policy.md#predefined-callout-policies).
+
+## Related content
+
+* [Callout policy](callout-policy.md)
+* [.show cluster policy callout command](show-cluster-callout-policy-command.md)
+* [.alter cluster policy callout command](alter-callout-policy-command.md)
+* [.alter-merge cluster policy callout command](alter-merge-callout-policy-command.md)
