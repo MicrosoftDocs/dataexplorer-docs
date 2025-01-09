@@ -7,13 +7,13 @@ ms.date: 07/02/2024
 
 ## Authentication
 
-Microsoft Entra authentication is used for applications that need to access your KQL database table without a user present. To ingest data using the Serilog connector,you can use one of the following authentication methods:
+Microsoft Entra authentication is used for applications that need to access your KQL database table without a user present. To ingest data using the Serilog connector, you can use one of the following authentication methods:
 
-+ A Microsoft Entra service principal is a security identity used by applications to access specific Azure resources. This identity is used to authenticate the connector to your KQL database using a client Id and password, and can be used for applications that are running outside of Azure.
++ A Microsoft Entra service principal is a security identity used by applications to access specific Azure resources. This identity is used to authenticate the connector to your KQL database using a client ID and password, and can be used for applications that are running outside of Azure.
 
-+ A Managed identity is used to authenticate the connector to your KQL database using a client Id. Managed identities are used for applications that are running within Azure.
++ A Managed identity is used to authenticate the connector to your KQL database using a client ID. Managed identities are used for applications that are running within Azure.
 
-### [Entra service principal authentication](#tab/service-principal)
+### [Microsoft Entra service principal authentication](#tab/service-principal)
 ### Create a Microsoft Entra service principal
 
 Create a Microsoft Entra service principal and then authorize this principal as the identity used by the connector to ingest data to your KQL database.
@@ -25,10 +25,10 @@ You'll later grant permissions for this service principal to access Kusto resour
 
 [!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
-### [Managed Identity authenticatio](#tab/managed-identity)
+### [Managed Identity authentication](#tab/managed-identity)
 ### Create a managed identity
 
-Create a managed identity and authorize it as the identity used by the connector to ingest data to your KQL database. For mor information on creating a Managed Identity, see [Manage user-assigned managed identities](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azcli/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azcli). 
+Create a managed identity and authorize it as the identity used by the connector to ingest data to your KQL database. For more information on creating a Managed Identity, see [Manage user-assigned managed identities](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azcli/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azcli). 
 
 [!INCLUDE [managed-identity](../managed-identity.md)]
 

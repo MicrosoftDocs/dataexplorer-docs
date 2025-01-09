@@ -31,9 +31,9 @@ Use the following steps to:
 
 1. Configure the Serilog sink, replacing placeholders using the information in the table that follows:
 
-   ### [Entra service principal authentication](#tab/service-principal)
+   ### [Microsoft Entra service principal authentication](#tab/service-principal)
     
-    For Entra service principal authentication use the following code:
+    For Microsoft Entra service principal authentication use the following code:
 
     ```csharp
     var log = new LoggerConfiguration()
@@ -75,9 +75,9 @@ Use the following steps to:
     | `IngestionEndPointUri` | The [ingest URI](#ingestion-uri). |
     | `DatabaseName` | The case-sensitive name of the target database. |
     | `TableName` | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a target table and ingestion mapping](#create-a-target-table-and-ingestion-mapping). |
-    | `AppId` | TApplication client ID required for Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
-    | `AppKey` | The application key required for Entra service principal authentication. You saved this value as `password` in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
-    | `Tenant` | The ID of the tenant in which the application is registered when using Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+    | `AppId` | TApplication client ID required for Microsoft Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+    | `AppKey` | The application key required for Microsoft Entra service principal authentication. You saved this value as `password` in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+    | `Tenant` | The ID of the tenant in which the application is registered when using Microsoft Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
     | `BufferBaseFileName` | Optional base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog`. |
     | `ManagedIdentityClientId` | The client ID of the user-assigned managed identity, when using Managed Identity authentication. |
 
@@ -119,9 +119,9 @@ If you don't have your own data to test, you can use the sample log generator ap
     | `IngestionEndPointUri` | The [ingest URI](#ingestion-uri). |
     | `DatabaseName` | The case-sensitive name of the target database. |
     | `TableName` | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a target table and ingestion mapping](#create-a-target-table-and-ingestion-mapping). |
-    | `AppId` | Application client ID required for Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
-    | `AppKey` | Application key required for Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
-    | `Tenant` | The ID of the tenant in which the application is registered when using Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+    | `AppId` | Application client ID required for Microsoft Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+    | `AppKey` | Application key required for Microsoft Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+    | `Tenant` | The ID of the tenant in which the application is registered when using Microsoft Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
     | `BufferBaseFileName` | The base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog` |
     | `ManagedIdentityClientId` | The client ID of the user-assigned managed identity, when using Managed Identity authentication.|
 
