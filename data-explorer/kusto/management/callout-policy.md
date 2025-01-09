@@ -3,7 +3,7 @@ title:  Callout policy
 description: Learn how to update a cluster's callout policy to manage authorized domains for external calls.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/23/2024
 monikerRange: "azure-data-explorer"
 ---
 # Callout policy
@@ -38,6 +38,7 @@ Callout policies are managed at cluster-level and are classified into the follow
 | sandbox_artifacts | Controls sandboxed plugins ([python](../query/python-plugin.md) and [R](../query/r-plugin.md)). |
 | external_data | Controls access to external data through [external tables](../query/schema-entities/external-tables.md) or [externaldata](../query/externaldata-operator.md) operator. |
 | webapi | Controls access to http endpoints. |
+| ai_embed_text  | Controls the [ai_embed_text plugin)](../query/ai-embed-text-plugin.md). |
 
 ## Predefined callout policies
 
@@ -64,3 +65,10 @@ More predefined policies on your cluster may be observed with next query:
 ## Remarks
 
 If an external resource of a given type matches more than one policy defined for such type, and at least one of the matched policies has their CanCall property set to false, access to the resource is denied.
+
+## Related content
+
+* [.show cluster policy callout command](show-cluster-callout-policy-command.md)
+* [.alter cluster policy callout command](alter-callout-policy-command.md)
+* [.alter-merge cluster policy callout command](alter-merge-callout-policy-command.md)
+* [.delete cluster policy callout command](delete-callout-policy-command.md)
