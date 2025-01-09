@@ -167,7 +167,7 @@ To roll back your migration to the previous Virtual Network injected configurati
 	},
 	```
 
-1. Replace **"state": "Disabled"** with **"state": "Enabled"**. Ensure that the other properties remain unchanged.
+1. Replace **"state": "Disabled"** with **"state": "Enabled"**. Verify that the other properties remain unchanged.
 
 	```json
 	"virtualNetworkConfiguration": {
