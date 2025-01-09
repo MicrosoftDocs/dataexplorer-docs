@@ -30,8 +30,10 @@ Use the following steps to:
     ```
 
 1. Configure the Serilog sink, replacing placeholders using the information in the table that follows:
+
+### [Entra service principal authentication](#tab/service-principal)
     
-    1. For Entra service principal authentication use the following code:
+    For Entra service principal authentication use the following code:
 
     ```csharp
     var log = new LoggerConfiguration()
@@ -46,7 +48,9 @@ Use the following steps to:
 
     ```
     
-    1. For Managed Identity authentication use the following code:
+### [Entra service principal authentication](#tab/managed-identity) 
+    
+    For Managed Identity authentication use the following code:
 
     ``` csharp
     var log = new LoggerConfiguration()
@@ -57,10 +61,10 @@ Use the following steps to:
                     DatabaseName = "<MyDatabase>",
                     TableName = "<MyTable>",
                     BufferBaseFileName = "<BufferBaseFileName>"
-                    }
                 }).WithAadUserAssignedManagedIdentity("<ManagedIdentityClientId>")
     .CreateLogger();
     ```
+---
 
     | Variable | Description |
     |---|---|

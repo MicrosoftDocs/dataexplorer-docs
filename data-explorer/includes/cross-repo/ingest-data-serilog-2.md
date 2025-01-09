@@ -13,6 +13,7 @@ Microsoft Entra authentication is used for applications that need to access your
 
 + A Managed identity is used to authenticate the connector to your KQL database using a client Id. Managed identities are used for applications that are running within Azure.
 
+### [Entra service principal authentication](#tab/service-principal)
 ### Create a Microsoft Entra service principal
 
 Create a Microsoft Entra service principal and then authorize this principal as the identity used by the connector to ingest data to your KQL database.
@@ -24,12 +25,14 @@ You'll later grant permissions for this service principal to access Kusto resour
 
 [!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
+### [Entra service principal authentication](#tab/managed-identity)
 ### Create a managed identity
 
 Create a managed identity and authorize it as the identity used by the connector to ingest data to your KQL database. For mor information on creating a Managed Identity, see [Manage user-assigned managed identities](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azcli/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azcli). 
 
-[!INCLUDE [entra-service-principal](../managed-identity.md)]
+[!INCLUDE [managed-identity](../managed-identity.md)]
 
+---
 
 ## Create a target table and ingestion mapping
 
