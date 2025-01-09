@@ -180,7 +180,7 @@ To roll back your migration to the previous Virtual Network injected configurati
 
 1. [**Deploy**](/azure/azure-resource-manager/templates/deployment-tutorial-local-template?tabs=azure-powershell) the ARM template to apply the changes.
 
-This will revert your cluster back to using the Virtual Network injected configuration.
+This restores your cluster to the previous Virtual Network injected configuration.
 
 ## Related content
 
