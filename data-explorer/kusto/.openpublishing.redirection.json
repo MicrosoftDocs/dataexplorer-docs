@@ -66,6 +66,17 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "management/database-cursor.md",
+      "redirect_url": "/kusto/query/database-cursor",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "management/data-ingestion/ingest-from-storage.md",
+      "redirect_url": "/kusto/management/data-ingestion/ingest-into-command",
+      "redirect_document_id": true
+    },
+
+    {
       "source_path": "management/show-table-mirroring-operations-failures.md",
       "redirect_url": "/kusto/management/show-table-operations-mirroring-failures-command",
       "redirect_document_id": true

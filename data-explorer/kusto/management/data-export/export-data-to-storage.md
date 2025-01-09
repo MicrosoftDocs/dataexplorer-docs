@@ -1,11 +1,11 @@
 ---
-title:  Export data to cloud storage
+title: .export to storage
 description: Learn how to export data to cloud storage.
-ms.reviewer: orspodek
+ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/01/2024
+ms.date: 01/06/2025
 ---
-# Export data to cloud storage
+# .export to storage
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -32,7 +32,7 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 | *PropertyName*, *PropertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!NOTE]
-> We highly recommended exporting data to storage that is co-located in the same region as the database itself. This includes data that is exported so it can be transferred to another cloud service in other regions. Writes should be done locally, while reads can happen remotely.
+> We highly recommended exporting data to storage that is colocated in the same region as the database itself. This includes data that is exported so it can be transferred to another cloud service in other regions. Writes should be done locally, while reads can happen remotely.
 
 ## Supported properties
 
@@ -187,8 +187,8 @@ On export, Kusto data types are mapped to Parquet data types using the following
 
 ## Related content
 
-* [Continuous data export](continuous-data-export.md)
-* [Ingest from storage](../data-ingestion/ingest-from-storage.md)
 * [Management commands overview](../index.md)
-* [Export to an external table](export-data-to-an-external-table.md)
-* [Export to a SQL table](export-data-to-sql.md)
+* [.continuous data export](continuous-data-export.md)
+* [.ingest into](../data-ingestion/ingest-into-command.md)
+* [.export to table](export-data-to-an-external-table.md)
+* [.export to SQL](export-data-to-sql.md)
