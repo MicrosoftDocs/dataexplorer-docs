@@ -65,7 +65,7 @@ Use the following steps to:
     .CreateLogger();
     ```
 
----
+    ---
 
     Use the table below to set the values for the sink options:
 
