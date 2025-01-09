@@ -3,7 +3,7 @@ title:  Logical (binary) operators
 description: Learn how to use Logical (binary) operators to return a Boolean result.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/08/2025
 ---
 # Logical (binary) operators
 
@@ -15,7 +15,7 @@ The following logical operators can be used to perform comparisons and evaluatio
 |-------------|------|-------|
 |Equality     |`==`  |Returns `true` if both operands are non-null and equal to each other. Otherwise, returns `false`.|
 |Inequality   |`!=`  |Returns `true` if any of the operands are null or if the operands aren't equal to each other. Otherwise, returns `false`.|
-|Logical and  |`and` |Returns `true` only if both operands are `true`.|
+|Logical and  |`and` |Returns `true` only if both operands are `true`. The logical `and` has higher precedence than the logical `or`.|
 |Logical or   |`or`  |Returns `true` if either of the operands is `true`, regardless of the other operand.|
 
 > [!NOTE]
@@ -125,15 +125,22 @@ The following query shows that null values are treated as false.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUchMS9NIys/P0cgrzcnRVEjMS1EoKSpN1YGSaYk5xamaALhLkpUrAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSgAkbaZaWkaSfn5ORp5pTk5mgqJeSkKJUWlqTpQMi0xpzhVEwDMXGssMQAAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-print iff(bool(null) and true, true, false)
+print print=iff(bool(null) and true, true, false)
 ```
 
 **Output**
 
-|print_0|
+|print|
 |--|
 |false|
+
+## Related content
+
+* [case()](case-function.md)
+* [has operator](has-operator.md)
+* [in operator](in-cs-operator.md)
+* [startswith operator](startswith-operator.md)
