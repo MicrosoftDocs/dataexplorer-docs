@@ -32,7 +32,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 <|
 
 *.list blobs command*
-<!-- clarify whether the list blobs command should be there-->
+<!-- clarify whether the list blobs command should be there, and if the syntax/parameters are correct.-->
 
 [!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
@@ -42,10 +42,11 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |--|--|--|--|
 |*DatabaseName*| `string` | |The name of the database into which to ingest data.  If no database name is provided, the request's context database is used.|
 |*TableName*| `string` | :heavy_check_mark:|The name of the table into which to ingest data.|
-|*EnableTracking*| `boolean` | | If `true`, the blob ingestion will be tracked so that <span style="background:yellow">TODO</span>. Default is `false`.  |
-|*SkipBatching*| `boolean` | | If `true`, the blobs will not be batched (neither together nor with other blobs):  each blob will be ingested individually. Default is `false`.  |
-|*CompressionFactor*| `real` | |Compression factor (ratio) between the original size and the compressed size of blobs.  This is useful when blobs are provided in a compressed format to estimate the original size of the data (for batching purposes). |
+|*EnableTracking*| `boolean` | | Determines whether blob ingestion is tracked. The default `false`. <so that <span style="background:yellow">TODO</span>.  |
+|*SkipBatching*| `boolean` | | Determines whether to skip batching blobs together or with other blobs. When set to `true`, each blob will be ingested individually. Default is `false`.  |
+|*CompressionFactor*| `real` | | The compression factor (ratio) between the original size and the compressed size of blobs. This parameter helps estimate the original size of the data, for batching purposes, when blobs are provided in a compressed format. |
 
+<!--not sure what is meant here-->
 The [*.list blobs command*](list-blobs.md) is a valid command returning the blobs you want to ingest.
 
 ## Returns
@@ -69,7 +70,7 @@ The command returns one row / one column table:
 
 ### Ingesting all blobs in a folder
 
-The following command queues all blobs under a folder for ingestion using the cluster's system managed identity.
+The following example queues all blobs inside a folder for ingestion using the cluster's system managed identity.
 
 ```kusto
 .ingest-from-storage-queued into table database('LogDb').RawLogs
@@ -88,4 +89,6 @@ EnableTracking=true
 ## Related content
 
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
-* 
+* [Ingest from storage](ingest-from-storage.md)
+* [.cancel queued ingestion operation command](cancel-queued-ingestion-operation-command.md)
+* [List blobs from storage](list-blobs.md)

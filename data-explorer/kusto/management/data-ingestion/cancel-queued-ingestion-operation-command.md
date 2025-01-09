@@ -30,9 +30,9 @@ The cancel operation command is done on "best effort" conditions.  For example, 
 
 |Output parameter |Type |Description
 |---|---|---
-|OperationId | `string` | The operation ID of the operation that was canceled.
-|StartedOn | `datetime` | The start time of the operation that was canceled.
-|ReasonPhrase | `string` | Reason why cancellation wasn't successful.
+|OperationId | `string` | The operation ID of the operation that was canceled.|
+|StartedOn | `datetime` | The start time of the operation that was canceled. |
+|ReasonPhrase | `string` | Reason why cancellation wasn't successful. |
 
 ## Example
 

@@ -1,12 +1,12 @@
 ---
-title:  Kusto list blobs command (list blobs from storage)
+title:  .list blobs command (list blobs from storage)
 description: This article describes the DM list blobs command in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: reference
 ms.date: 11/19/2024
 ---
 # List blobs from storage
-
+<!--what does DM stand for?-->
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 The `.list blobs` command lists blobs under a specified container path.
