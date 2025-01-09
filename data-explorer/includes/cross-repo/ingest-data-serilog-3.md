@@ -48,7 +48,7 @@ Use the following steps to:
 
     ```
     
-   ### [Entra service principal authentication](#tab/managed-identity) 
+   ### [Managed Identity authentication](#tab/managed-identity) 
     
     For Managed Identity authentication use the following code:
 

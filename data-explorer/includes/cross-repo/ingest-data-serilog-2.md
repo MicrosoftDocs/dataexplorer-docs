@@ -25,7 +25,7 @@ You'll later grant permissions for this service principal to access Kusto resour
 
 [!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
-### [Entra service principal authentication](#tab/managed-identity)
+### [Managed Identity authenticatio](#tab/managed-identity)
 ### Create a managed identity
 
 Create a managed identity and authorize it as the identity used by the connector to ingest data to your KQL database. For mor information on creating a Managed Identity, see [Manage user-assigned managed identities](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azcli/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azcli). 
