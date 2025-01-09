@@ -1,15 +1,18 @@
 ---
 title:  column_ifexists()
-description: Learn how to use the column_ifexists() function to return a reference to the column if it exists.  
+description: Learn how to use the column_ifexists() function to return a reference to the column if it exists.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/09/2025
 ---
 # column_ifexists()
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Takes a column name as a string and a default value. Returns a reference to the column if it exists, otherwise - returns the default value.
+Disaplays the column, if the column exists. Otherwise, it returns the default column.
+
+> [!NOTE]
+> If the column data type is [dynamic](scalar-data-types/dynamic.md), then it returns the default column.
 
 > **Deprecated aliases:** columnifexists()
 
@@ -23,24 +26,41 @@ Takes a column name as a string and a default value. Returns a reference to the 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *columnName* | `string` |  :heavy_check_mark: | The name of the column to check if exists.|
-| *defaultValue* | scalar |  :heavy_check_mark: | The value to use if the column doesn't exist. This value can be any scalar expression. For example, a reference to another column.|
+| *columnName* | `string` |  :heavy_check_mark: | The name of the column to return.|
+| *defaultValue* | scalar |  :heavy_check_mark: | The default column to return if *columnName* doesn't exist in the table. This value can be any scalar expression. For example, a reference to another column.|
 
 ## Returns
 
-If *columnName* exists, then the column it refers to. Otherwise *defaultValue*.
-
-> [!NOTE]
-> If *columnName* has a dynamic value, then it returns *defaultValue*.
+If *columnName* exists, then returns the column. Otherwise, it returns the *defaultValue* column.
 
 ## Example
 
+This example returns the default **State** column, becuase a column named Capital does not exsit in the StormEvents table.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03NSwrCQBAE0L2nKGajQiCHEE8Q9zImFWyZTIfpTnTh4Y1f3HVBveq6xuHMwrUhK1pN05ARdnEUjylAltC4lmE/M7uFCv5s91r4OtF4dH7dVVLCiZiM3ULNGbvVH8cdY9ELW/+Io/S8ibltfi+r9+T2AZ+ufQiZAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSspVqhRKCjKz0pNLlFIzs8pzc2Lz0xLrcgsLinWUHJOLMgsScxR0lEILkksSdUEAKw3fkE3AAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-// There's no column "Capital" in "StormEvents", therefore, the State column will be used instead
 StormEvents | project column_ifexists("Capital", State)
 ```
+
+**Output**
+
+This output shows the first ten rows of the default **State** column.
+
+
+| State |
+|-------|
+| ATLANTIC SOUTH |
+| FLORIDA |
+| FLORIDA |
+| GEORGIA |
+| MISSISSIPPI |
+| MISSISSIPPI |
+| MISSISSIPPI |
+| MISSISSIPPI |
+| AMERICAN SAMOA |
+| KENTUCKY |
+| ... |
