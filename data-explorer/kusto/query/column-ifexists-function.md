@@ -9,7 +9,7 @@ ms.date: 01/09/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Disaplays the column, if the column exists. Otherwise, it returns the default column.
+Displays the column, if the column exists. Otherwise, it returns the default column.
 
 > [!NOTE]
 > If the column data type is [dynamic](scalar-data-types/dynamic.md), then it returns the default column.
@@ -35,7 +35,7 @@ If *columnName* exists, then returns the column. Otherwise, it returns the *defa
 
 ## Example
 
-This example returns the default **State** column, becuase a column named Capital does not exsit in the StormEvents table.
+This example returns the default **State** column, because a column named Capital doesn't exist in the StormEvents table.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -48,7 +48,7 @@ StormEvents | project column_ifexists("Capital", State)
 
 **Output**
 
-This output shows the first ten rows of the default **State** column.
+This output shows the first 10 rows of the default **State** column.
 
 
 | State |
