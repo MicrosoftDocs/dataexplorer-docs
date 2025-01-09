@@ -11,9 +11,6 @@ ms.date: 01/09/2025
 
 Displays the column, if the column exists. Otherwise, it returns the default column.
 
-> [!NOTE]
-> If the column data type is [dynamic](scalar-data-types/dynamic.md), then it returns the default column.
-
 > **Deprecated aliases:** columnifexists()
 
 ## Syntax
@@ -35,7 +32,7 @@ If *columnName* exists, then returns the column. Otherwise, it returns the *defa
 
 ## Example
 
-This example returns the default **State** column, because a column named Capital doesn't exist in the StormEvents table.
+This example returns the default **State** column, because a column named Capital doesn't exist in the *StormEvents* table.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -49,7 +46,6 @@ StormEvents | project column_ifexists("Capital", State)
 **Output**
 
 This output shows the first 10 rows of the default **State** column.
-
 
 | State |
 |-------|
