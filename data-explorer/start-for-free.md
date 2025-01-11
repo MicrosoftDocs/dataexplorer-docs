@@ -22,7 +22,7 @@ The following table describes specifications and quotas for a free cluster.
 
 | Item | Value |
 |--|--|
-| Storage (uncompressed) | ~100 GB |
+| Storage (uncompressed) | ~100 GB (20GB compressed) |
 | Databases | Up to 10 |
 | Tables per database | Up to 100 |
 | Columns per table | Up to 200 |
