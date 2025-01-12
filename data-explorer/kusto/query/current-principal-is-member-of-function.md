@@ -28,6 +28,7 @@ Checks group membership or principal identity of the current principal running t
 >
 > - To avoid throttling from Microsoft Entra ID, the `current_principal_is_member_of()` function only works with string literals. Using values that aren't string literals will result in an error in order to avoid a potentially large number of queries to Microsoft Entra ID.
 > - [!INCLUDE [Cached Group Membership](../includes/cached-group-membership.md)]
+> - For more information on Group Membership cache behavior, see [Access control overview - Group authorization](https://learn.microsoft.com/en-us/kusto/access-control/?view=microsoft-fabric#group-authorization)
 
 ## Returns
 
