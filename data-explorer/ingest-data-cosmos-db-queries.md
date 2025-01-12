@@ -3,7 +3,7 @@ title: Get latest versions of Azure Cosmos DB documents - Azure Data Explorer
 description: Learn about how to get latest versions of Azure Cosmos DB documents in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 06/13/2023
+ms.date: 01/07/2025
 ---
 
 # Get latest versions of Azure Cosmos DB documents
@@ -33,7 +33,7 @@ TestTable
 | summarize arg_max(_timestamp, *) by Id
 ```
 
-If you used soft markers to mark deleted documents, you can filter them out with the following query:
+If you use [soft markers to indicate deleted documents](/azure/cosmos-db/nosql/change-feed-design-patterns?tabs=latest-version#deletes), you can filter out these documents with a query. For example, if you use a Boolean property called `IsDeleted` that indicates deleted documents, you can use the following query to filter out the soft deleted documents:
 
 ```kusto
 TestTable
