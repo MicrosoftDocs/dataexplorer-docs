@@ -811,6 +811,17 @@ items:
       - name: .ingest-into
         displayName: .ingest into, pull data, pulling ingestion
         href: data-ingestion/ingest-into-command.md
+      - name: Ingest from queued storage
+        items:
+          - name: .ingest-from-storage-queued into command
+            displayName: .ingest-from-storage-queued, ingest from storage command
+            href: data-ingestion/ingest-from-storage-queued.md
+          - name: .list blobs command
+            href: data-ingestion/list-blobs.md
+          - name: .cancel queued ingestion operation command
+            href: data-ingestion/cancel-queued-ingestion-operation-command.md
+          - name: .show queued ingestion operation command
+            href: data-ingestion/show-queued-ingestion-operations.md
       - name: Ingest from query
         items:
           - name: Ingest from query
