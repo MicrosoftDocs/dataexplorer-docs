@@ -16,9 +16,9 @@ Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring poli
 ## Syntax
 
 (`.alter` | `.alter-merge`) `table` *TableName* `policy mirroring`
-[`partition` `by` (*Partitions*)] 
-`dataformat` = `parquet`  
-[`with` (`IsEnabled`=`IsEnabledValue`)]
+[`partition` `by` (*Partitions*)]
+`dataformat` = `parquet`
+[`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`]
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -28,17 +28,19 @@ Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring poli
 |--|--|--|--|
 |*TableName*| string| :heavy_check_mark:|A table name that adheres to the [Entity names](../query/schema-entities/entity-names.md) rules.|
 |*Partitions*| string| | A comma-separated list of columns used to divide the data into smaller partitions. See [Partitions formatting](#partitions-formatting). |
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 [!INCLUDE [partitions-formatting](../includes/partitions-formatting.md)]
 
 > [!NOTE]
 > Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
 
-## Properties
+## Supported properties
 
 |Name|Type|Description|
 |--|--|--|
 |`IsEnabled`| `bool`| A Boolean value that determines whether the mirroring policy is enabled. Default is `true`. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is soft-deleted and retained in the database. |
+|`TargetLatencyInMinutes`| `int`| The write operation delay in minites. By default, the write operation can take up to 3 hours or until there's 256 MB of data available. You can adjust the delay to a value between 5 minutes and 3 hours. |
 
 [!INCLUDE [mirroring-note](../includes/mirroring-note.md)]
 
