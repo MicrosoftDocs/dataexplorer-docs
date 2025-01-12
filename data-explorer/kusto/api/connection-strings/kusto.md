@@ -3,7 +3,7 @@ title:  Kusto connection strings
 description: This article describes Kusto connection strings.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/18/2024
+ms.date: 01/08/2025
 ---
 # Kusto connection strings
 
@@ -130,11 +130,13 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 | Uncompressed | Uncompressed | A boolean value that instructs the client to avoid requesting transport-level compression. |
 
 > [!NOTE]
-> When the `Streaming` flag is enabled (default), the SDK doesn't buffer all response data in memory; instead, it "pulls" the data from the service when the caller requests it. Therefore, it is essential that in this case the caller properly disposes of the data, such as `IDataReader`.
-> once it is done reading the data, as the network connection
+> When the `Streaming` flag is enabled (default), the SDK doesn't buffer all response data in memory; instead, it "pulls" the data from the service when the caller requests it. In this case, the caller must properly dispose of the data, such as `IDataReader`,
+> once it's done reading the data, as the network connection
 > to the service is held open unnecessarily.
 
 ## Examples
+
+The following examples show how to set up connections using C#. For examples in other languages, see [App authentication methods](../get-started/app-authentication-methods.md).
 
 :::moniker range="azure-data-explorer"
 
@@ -358,3 +360,9 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 ```
 
 ::: moniker-end
+
+## Related content
+
+* [Connection strings overview](index.md)
+* [Kusto API](../index.md)
+* [Kusto Query Language (KQL)](../../query/index.md)

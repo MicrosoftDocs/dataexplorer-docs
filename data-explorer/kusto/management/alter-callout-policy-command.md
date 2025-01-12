@@ -3,7 +3,7 @@ title:  .alter cluster policy callout command
 description: Learn how to use the `.alter cluster policy callout` command to change the cluster's callout policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/18/2024
 monikerRange: "azure-data-explorer"
 ---
 # .alter cluster policy callout command
@@ -24,19 +24,19 @@ You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-co
 
 ## Parameters
 
-| Name                             | Type   | Required | Description                                                                                              |
-|----------------------------------|--------|----------|----------------------------------------------------------------------------------------------------------|
-| *SerializedArrayOfPolicyObjects* | `string` |  :heavy_check_mark:  | A serialized array of JSON policy objects. See [callout policy](callout-policy.md) for policy properties. |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *SerializedArrayOfPolicyObjects* | `string` | :heavy_check_mark: | A serialized array of JSON policy objects. See [callout policy](callout-policy.md) for policy properties. |
 
 ## Returns
 
-| Name          | Type   | Description                                                                                               |
-|---------------|--------|-----------------------------------------------------------------------------------------------------------|
-| PolicyName    | `string` | Name of the policy. For cluster callout policy, this value is **CalloutPolicy**.                           |
-| EntityName    | `string` | Name of the entity for which the policy is set. For cluster callout policy, this value is an empty string. |
-| Policy        | `string` | JSON representation of the policy object.                                                                 |
-| ChildEntities | `string` | Child entities for which this policy is set. For cluster callout policy, this value is an empty string.    |
-| EntityType    | `string` | Type of entity for which this policy is set. For cluster callout policy, this value is an empty string.    |
+| Name | Type | Description |
+|--|--|--|
+| PolicyName | `string` | Name of the policy. For cluster callout policy, this value is **CalloutPolicy**. |
+| EntityName | `string` | Name of the entity for which the policy is set. For cluster callout policy, this value is an empty string. |
+| Policy | `string` | JSON representation of the policy object. |
+| ChildEntities | `string` | Child entities for which this policy is set. For cluster callout policy, this value is an empty string. |
+| EntityType | `string` | Type of entity for which this policy is set. For cluster callout policy, this value is an empty string. |
 
 ## Examples
 
@@ -59,6 +59,13 @@ Define permitted callouts for the cluster callout policy.
 
 **Output**
 
-| PolicyName    | EntityName | Policy                                                                                                | ChildEntities | EntityType |
-|---------------|------------|-------------------------------------------------------------------------------------------------------|---------------|------------|
-| CalloutPolicy |            | [{"CalloutType":"sql","CalloutUriRegex":"sqlname\\\\.database\\\\.azure\\\\.com/?$","CanCall": true}] |               |            |
+| PolicyName | EntityName | Policy | ChildEntities | EntityType |
+|--|--|--|--|--|
+| CalloutPolicy |  | [{"CalloutType":"sql","CalloutUriRegex":"sqlname\\\\.database\\\\.azure\\\\.com/?$","CanCall": true}] |  |  |
+
+## Related content
+
+* [Callout policy](callout-policy.md)
+* [.show cluster policy callout command](show-cluster-callout-policy-command.md)
+* [.alter-merge cluster policy callout command](alter-merge-callout-policy-command.md)
+* [.delete cluster policy callout command](delete-callout-policy-command.md)
