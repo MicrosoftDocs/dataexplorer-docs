@@ -12,7 +12,7 @@ ms.date: 01/07/2025
 Every data value, like the value of an expression or a function parameter, has a *data type* which is either a *scalar data type* or a *user-defined record*. A *scalar data type* is one of the built-in predefined types in [Supported data types](#supported-data-types). A *user-defined record* is an ordered sequence of name and scalar-data-type pairs, like the data type of a row in a table.
 
 > [!NOTE]
-> Custom user-defined data types that aren't based on scalar data types aren't supported in Kusto.
+> While user-defined records are supported in Kusto, user-defined data types aren't.
 
 ## Supported data types
 
