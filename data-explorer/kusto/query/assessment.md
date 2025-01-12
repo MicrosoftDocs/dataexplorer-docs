@@ -45,7 +45,7 @@ There are three types of user [query statements](statements.md):
 
 For information about application query statements, see [Application query statements](statements.md#application-query-statements).
 
-# Example query
+## Example query
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUUgDZkpxfmlcCAIItD6l6AAAA" target="_blank">Run the query</a>
@@ -82,11 +82,11 @@ For more information on management commands, see [Management commands overview](
 
 KQL is used by other Microsoft services. For specific information on the use of KQL in these environments, refer to the following links:
 
-* [Log queries in Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-query-overview)
-* [Kusto Query Language in Microsoft Sentinel](https://learn.microsoft.com/en-us/azure/sentinel/kusto-overview)
-* [Understanding the Azure Resource Graph query language](https://learn.microsoft.com/en-us/azure/governance/resource-graph/concepts/query-language)
-* [Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](https://learn.microsoft.com/en-us/microsoft-365/security/defender/advanced-hunting-overview)
-* [CMPivot queries](https://learn.microsoft.com/en-us/mem/configmgr/core/servers/manage/cmpivot-overview#queries)
+* [Log queries in Azure Monitor](https://learn.microsoft.com/azure/azure-monitor/logs/log-query-overview)
+* [Kusto Query Language in Microsoft Sentinel](https://learn.microsoft.com/azure/sentinel/kusto-overview)
+* [Understanding the Azure Resource Graph query language](https://learn.microsoft.com/azure/governance/resource-graph/concepts/query-language)
+* [Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](https://learn.microsoft.com/microsoft-365/security/defender/advanced-hunting-overview)
+* [CMPivot queries](https://learn.microsoft.com/mem/configmgr/core/servers/manage/cmpivot-overview#queries)
 
 ## Related content
 
