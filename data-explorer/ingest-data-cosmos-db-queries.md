@@ -33,7 +33,7 @@ TestTable
 | summarize arg_max(_timestamp, *) by Id
 ```
 
-If you use soft markers to indicate deleted documents, you can filter out these documents with a query. Suppose you have a boolean column, `IsDeleted`, in your Kusto table that indicates whether a document is soft deleted. You need to mark these documents before actually deleting them so Kusto can recognize the soft deleted value. The following query can then filter out the soft deleted documents:
+If you use [soft markers to indicate deleted documents](/azure/cosmos-db/nosql/change-feed-design-patterns?tabs=latest-version#deletes), you can filter out these documents with a query. For example, if you use a Boolean property called `IsDeleted` that indicates deleted documents, you can use the following query to filter out the soft deleted documents:
 
 ```kusto
 TestTable
