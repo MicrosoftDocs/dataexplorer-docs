@@ -60,9 +60,11 @@ For more information, see [Working with middle-tier applications](#work-with-mid
 
 ## Examples
 
-In these examples, a pattern defined.
+In the [help cluster](https://dataexplorer.azure.com/clusters/help/), there's a `Samples` database with a `StormEvents` table.
 
-### Define simple patterns
+In these examples, a pattern is defined.
+
+### Define a simple pattern
 
 This example defines a pattern that maps states to an expression that returns its capital/major city.
 
