@@ -3,7 +3,7 @@ title:  Alias statement
 description: Learn how to use an alias statement to define an alias for a database that is used for a query.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/12/2025
 ---
 # Alias statement
 
@@ -13,7 +13,8 @@ Alias statements allow you to define an alias for databases, which can be used l
 
 :::moniker range="azure-data-explorer"
 This is useful when you're working with several clusters but want to appear as if you're working on fewer clusters.
-The alias must be defined according to the following syntax, where *clustername* and *databasename* are existing and valid entities.
+The alias must be defined according to the following syntax, where *clustername* and *databasename* are existing and valid entities][OIUYHGTFDSZzDXFGHJK['
+
 
 ## Syntax
 
