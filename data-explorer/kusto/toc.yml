@@ -68,8 +68,6 @@ items:
                 displayName: kusto.data, SDK
               - name: Best practices for Kusto Data
                 href: api/netfx/kusto-data-best-practices.md
-              - name: Avrotize k2a tool
-                href: tools/avrotize.md
                 displayName: kusto.data, SDK
               - name: ClientRequestProperties class
                 href: api/netfx/client-request-properties.md
