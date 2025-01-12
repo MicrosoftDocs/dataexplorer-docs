@@ -507,6 +507,8 @@ items:
           - name: Monitor Azure Data Explorer
             displayName: health, performance
             href: monitor-data-explorer.md
+          - name: Monitoring data reference
+            href: monitor-data-explorer-reference.md
           - name: Use resource health to monitor cluster health
             href: monitor-with-resource-health.md
           - name: Use Azure Data Explorer Clusters Insights
@@ -656,8 +658,6 @@ items:
         href: policy-reference.md
       - name: Bicep and ARM template resource types
         href: /azure/templates/microsoft.kusto/allversions
-      - name: Monitoring data reference
-        href: monitor-data-explorer-reference.md
       - name: PowerShell Az.Kusto
         items:
           - name: Use Kusto cmdlets in Azure PowerShell
