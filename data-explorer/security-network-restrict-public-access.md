@@ -79,7 +79,7 @@ You can configure the selected IP addresses either through the [Azure portal](#a
 
 1. Configure the IP addresses or CIDR ranges that you want to allow to connect to the Azure Data Explorer cluster. 
 
-  :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" alt-text="Screenshot of the network configuration page, showing showing the enabled from selected IP addresses. There is a configuration for an IP address and a CIDR.":::
+  :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" lightbox="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" alt-text="Screenshot of the network configuration page, showing the selected IP addresses specified for Enabled from selected IP addresses. They are specified as individual IP address and in CIDR notation.":::
 
 1. Click on the **Save** button to submit the configuration.
 
