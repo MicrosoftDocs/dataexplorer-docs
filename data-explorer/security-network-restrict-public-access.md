@@ -59,7 +59,7 @@ The following example specifies a range of IP addresses from `192.168.1.0` to `1
 The following example uses a service tag to allow access to the Azure Storage IP address range from the Azure Data Center in West US.
 
 ```plaintext
-Storage
+ Storage.WestUS
 ```
 
 For a full list of service tags, refer to the [service tags documentation](/azure/virtual-network/service-tags-overview#available-service-tags).
