@@ -60,7 +60,13 @@ For more information, see [Working with middle-tier applications](#work-with-mid
 
 ## Examples
 
+<<<<<<< HEAD
 In the [help cluster](https://dataexplorer.azure.com/clusters/help/), there's a `Samples` database with a `StormEvents` table.
+=======
+[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+
+In each of the following examples, a pattern is declared, defined, and then invoked.
+>>>>>>> 64023baff08da7e840aa6020ac8a82df9c055aaa
 
 In these examples, a pattern is defined.
 

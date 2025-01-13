@@ -3,7 +3,7 @@ title:  Batches
 description:  This article describes Batches.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/13/2025
 ---
 # Batches
 
@@ -17,6 +17,8 @@ A query can include multiple tabular expression statements, as long as they're d
 > * Any two statements must be separated by a semicolon.
 
 ## Examples
+
+[!INCLUDE [help-cluster](../includes/help-cluster.md)]
 
 ### Name tabular results
 
@@ -32,9 +34,19 @@ StormEvents | where State == "FLORIDA" | count | as ['Count of events in Florida
 StormEvents | where State == "GUAM" | count | as ['Count of events in Guam']
 ```
 
+###Output###
+
+### [Florida](#tab/Count of events in Florida)
+
+1042
+
+### [Guam](#tab/Count of events in Guam)
+
+4
+
 ### Share a calculation
 
-Batching is useful for scenarios where a common calculation is shared by multiple subqueries, such as for dashboards. If the common calculation is complex, use the [materialize() function](materialize-function.md) and construct the query so that it will be executed only once:
+Batching is useful for scenarios where a common calculation is shared by multiple subqueries, such as for dashboards. If the common calculation is complex, use the [materialize() function](materialize-function.md) and construct the query so that it will be executed only once.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -46,3 +58,24 @@ let m = materialize(StormEvents | summarize n=count() by State);
 m | where n > 2000;
 m | where n < 10
 ```
+
+####Output####
+
+### [Table1](#tab/Table 1)
+
+| State | n    |
+|-------|------|
+| ILLINOIS | 2022|
+| IOWA | 2337    
+| KANSAS | 3166 |
+| MISSOURI | 2016  
+| TEXAS | 4701 |
+
+### [Table2](#tab/Table 2)
+
+| State | n    |
+|-------|------|
+| GUAM | 2022|
+| GULF OF ALASKA | 2337    
+| HAWAII WATERS | 3166 |
+| LAKE ONTARIO | 2016  

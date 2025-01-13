@@ -51,7 +51,7 @@ The alias must be defined according to the following syntax, where *Eventhouse* 
 
 ## Examples
 
-In the [help cluster](https://dataexplorer.azure.com/clusters/help/), there's a `Samples` database with a `StormEvents` table.
+[!INCLUDE [help-cluster](../includes/help-cluster.md)]
 
 First, count the number of records in that table.
 
