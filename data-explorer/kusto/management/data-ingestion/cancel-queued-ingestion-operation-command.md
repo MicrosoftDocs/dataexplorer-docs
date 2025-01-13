@@ -3,7 +3,7 @@ title: .cancel queued ingestion operation command
 description: Learn how to use the `.cancel queued operation` command to cancel a long-running operation.
 ms.reviewer: odkadosh
 ms.topic: reference
-ms.date: 01/12/2025
+ms.date: 01/13/2025
 ---
 # .cancel queued ingestion operation command
 
@@ -12,6 +12,10 @@ ms.date: 01/12/2025
 The `.cancel queued ingestion operation` command cancels an ingestion operation. This command is useful for aborting an ingestion operation that is taking too long to complete.
 
 The cancel operation command is done on a "best effort" basis.  For example, ongoing ingestion processes (in-flight ingestion) might not be canceled.
+
+## Permissions
+
+You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

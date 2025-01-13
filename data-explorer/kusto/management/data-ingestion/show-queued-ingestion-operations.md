@@ -3,7 +3,7 @@ title:  .show queued ingestion operations command
 description: Learn how to use the `.show queued ingestion operations` command to view a log of the queued ingestion operations that are currently running or completed.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 01/12/2025
+ms.date: 01/13/2025
 ---
 
 # .show queued ingestion operations command
@@ -14,7 +14,7 @@ Ingestion operations can be tracked once the [.ingest-from-storage-queued](inges
 
 ## Permissions
 
-You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions on the table the `OperationId` or IDs belong to.
+You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions on the table that the `OperationId` or IDs belong to.
 
 ## Syntax
 
@@ -42,7 +42,7 @@ The command returns a table with the latest update information for each ID.
 |InProgress | `long` |Count of blobs to be ingested.|
 |Ingested | `long` |Count of blobs that have been ingested.|
 |Failed | `long` |Count of blobs that failed **permanently**.|
-|Canceled | `long` |Count of blobs that were canceled due to a call to the [.cancel](cancel-queued-ingestion-operation-command.md) command.|
+|Canceled | `long` |Count of blobs that were canceled due to a call to the [.cancel queued ingestion operation command](cancel-queued-ingestion-operation-command.md) command.|
 |SampleFailedReasons | `string` |A sample of reasons for blob ingestion failures.|
 |Database | `string` |The database where the ingestion process is occurring.|
 |Table | `string` | The table where the ingestion process is occurring.|

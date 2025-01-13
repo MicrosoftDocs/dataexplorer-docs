@@ -3,7 +3,7 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 01/12/2025
+ms.date: 01/13/2025
 ---
 # .list blobs command
 
@@ -36,7 +36,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |*PathFormat*| `string` | | The pattern in the blob’s path that can be used to retrieve the creation time as an output field. |
 
 > [!NOTE]
-> * We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for the *SourceDataLocators* to scrub credentials in internal traces and error messages.
+> * We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for *SourceDataLocators* to scrub credentials in internal traces and error messages.
 >
 > * When used alone, `.list blob` returns up to 1,000 files, regardless of any larger value specified in *MaxFiles*.
 
@@ -68,7 +68,7 @@ The result of the command is a table with one record per blob listed.
 
 ## Examples
 
-### List 20 blobs
+### List maximum number of blobs
 
 This following command lists a maximum of 20 blobs from the `myfolder` folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication.
 
