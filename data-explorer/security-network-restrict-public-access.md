@@ -40,7 +40,7 @@ The following examples show how to specify IP addresses, CIDR notations, and ser
 
 ##### Individual IP addresses
 
-To allow a single IP address, enter it in the format `xxx.xxx.xxx.xxx`. For example:
+The following example specifies a single IP address in the format `xxx.xxx.xxx.xxx`.
 
 ```plaintext
 192.168.1.10
