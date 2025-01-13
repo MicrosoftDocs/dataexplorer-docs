@@ -81,7 +81,7 @@ You can configure the selected IP addresses either through the [Azure portal](#a
 
   :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" lightbox="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" alt-text="Screenshot of the network configuration page, showing the selected IP addresses specified for Enabled from selected IP addresses. They are specified as individual IP address and in CIDR notation.":::
 
-1. Click on the **Save** button to submit the configuration.
+1. Select **Save** to submit the configuration.
 
 #### [ARM template](#tab/arm)
 
