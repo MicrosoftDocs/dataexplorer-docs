@@ -36,7 +36,7 @@ When selecting the **Enabled from selected IP addresses** option, you have sever
 
 #### Examples
 
-Here are some examples of how to specify IP addresses, CIDR notations, and service tags:
+The following examples show how to specify IP addresses, CIDR notations, and service tags.
 
 ##### Individual IP addresses
 
