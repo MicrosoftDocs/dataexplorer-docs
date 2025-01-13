@@ -48,7 +48,7 @@ The following example specifies a single IP address in the format `xxx.xxx.xxx.x
 
 ##### CIDR notation
 
-To allow a range of IP addresses, use CIDR notation. For example, to allow all IP addresses from `192.168.1.0` to `192.168.1.255`, use:
+The following example specifies a range of IP addresses from `192.168.1.0` to `192.168.1.255` using CIDR notation. The `/24` indicates that the first 24 bits, or three octets, represent the network part of the address, while the last eight bits are used for the host addresses within the network from `0` to `255`.
 
 ```plaintext
 192.168.1.0/24
