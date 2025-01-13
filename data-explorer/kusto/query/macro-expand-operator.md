@@ -8,7 +8,7 @@ as its source). The set of entities is called **entity group**; it can be stored
 reuse in a database, or defined ad-hoc in the query text itself.
 
 > [!NOTE]
-> The operation of the `macro-expand` operator can be altered by setting the `best_effort` request property to `true`, using either a `set statement` or through [client request properties](../api/netfx/request-properties.md). When this property is set to `true`, the `macro-expand` operator will disregard fuzzy resolution and connectivity failures to execute any of the sub-expressions being “unioned” and yield a warning in the query status results.
+> The operation of the `macro-expand` operator can be altered by setting the `best_effort` request property to `true`, using either a `set statement` or through [client request properties](../api/rest/request-properties.md). When this property is set to `true`, the `macro-expand` operator will disregard fuzzy resolution and connectivity failures to execute any of the sub-expressions being “unioned” and yield a warning in the query status results.
 
 ## Computation model
 
