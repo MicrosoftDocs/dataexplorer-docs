@@ -96,7 +96,7 @@ You can configure the selected IP addresses either through the [Azure portal](#a
     }
    ```
 
-1. Add IP addresses, CIDRs or service tags to the **allowedIpRangeList** property.
+1. Add IP addresses, CIDRs, or service tags to the `allowedIpRangeList` property.
 
    ```json
    "properties": {
