@@ -112,7 +112,7 @@ You can configure the selected IP addresses either through the [Azure portal](#a
     }
    ```
 
-1. [**Deploy**](/azure/azure-resource-manager/templates/deployment-tutorial-local-template?tabs=azure-powershell) the ARM template
+1. [**Deploy**](/azure/azure-resource-manager/templates/deployment-tutorial-local-template?tabs=azure-powershell) the ARM template.
 
 ---
 
