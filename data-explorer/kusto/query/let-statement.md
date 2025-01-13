@@ -65,6 +65,8 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 ## Examples
 
+[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+
 ### Define scalar values
 
 The following example uses a scalar expression statement.

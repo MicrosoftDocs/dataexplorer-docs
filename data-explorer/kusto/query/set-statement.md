@@ -35,6 +35,8 @@ Request properties aren't formally a part of the Kusto Query Language and may be
 
 ## Example
 
+[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+
 ```kusto
 set querytrace;
 Events | take 100

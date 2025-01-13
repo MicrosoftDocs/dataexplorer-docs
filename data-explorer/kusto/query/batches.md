@@ -18,6 +18,8 @@ A query can include multiple tabular expression statements, as long as they're d
 
 ## Examples
 
+[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+
 ### Name tabular results
 
 The following query produces two tabular results. User agent tools can then display those results with the appropriate name associated with each (`Count of events in Florida` and `Count of events in Guam`, respectively).

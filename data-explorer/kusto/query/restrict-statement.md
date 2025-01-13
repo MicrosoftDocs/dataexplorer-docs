@@ -3,7 +3,7 @@ title:  Restrict statement
 description: Learn how to use the restrict statement to limit tabular views that are visible to subsequent query statements.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/13/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Restrict statement
@@ -37,6 +37,8 @@ The middle-tier application can prefix the user's query with a **logical model**
 > * Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they won't be considered part of the same query.
 
 ## Examples
+
+[!INCLUDE [help-cluster](../includes/help-cluster.md)]
 
 ### Let statement
 

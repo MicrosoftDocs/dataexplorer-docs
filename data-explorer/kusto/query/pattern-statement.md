@@ -56,6 +56,8 @@ For more information, see [Working with middle-tier applications](#work-with-mid
 
 ## Examples
 
+[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+
 In each of the following examples, a pattern is declared, defined, and then invoked.
 
 ### Define simple patterns
