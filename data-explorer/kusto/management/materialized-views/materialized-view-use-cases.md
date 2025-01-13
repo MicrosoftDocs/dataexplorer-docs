@@ -3,7 +3,7 @@ title:  Materialized views use cases
 description: Learn about common and advanced use cases for materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/13/2025
 ---
 
 # Materialized views use cases
@@ -45,7 +45,7 @@ The following are common scenarios that can be addressed by using a materialized
     ```
 
     > [!NOTE]
-    > You can conceal the source table by creating a function with the same name as the table that references the materialized view instead. This pattern ensures that callers querying the table access the deduplicated materialized view because [functions override tables with the same name](../../query/schema-entities/tables.md). To avoid cyclic references in the view definition, use the [table()](../../query/table-function.md) function to reference the source table:
+    > You can conceal the source table by creating a function with the same name as the table that references the materialized view instead. This pattern ensures that queries access the deduplicated materialized view because [functions override tables with the same name](../../query/schema-entities/tables.md). To avoid cyclic references in the view definition, use the [table()](../../query/table-function.md) function to reference the source table:
     >
     >    ```kusto
     >    .create materialized-view DeduplicatedTable on table T
@@ -59,7 +59,7 @@ For more examples, see the [.create materialized-view command](materialized-view
 
 ## Advanced scenario
 
-You can use a materialized view for create/update/delete event processing. When handling records with incomplete or outdated information for each column, a materialized view can provide the latest updates for each column, excluding entities that have been deleted.
+You can use a materialized view for create/update/delete event processing. For records with incomplete or outdated information in each column, a materialized view can provide the latest updates for each column, excluding entities that were deleted.
 
 Consider the following input table named `Events`:
 
@@ -130,7 +130,7 @@ Materialized views and update policies work differently and serve different use 
 
 ::: moniker range="azure-data-explorer"
 > [!NOTE]
-> If you do need to *materialize* joins, which are not suitable for update policies and materialized views, you can orchestrate your own process for doing so, using [orchestration tools](/azure/data-explorer/tools-integrations-overview#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
+> If you do need to *materialize* joins, and they aren't suitable for update policies and materialized views you can manage this process yourself. To create and store the results of join operations, use [orchestration tools](/azure/data-explorer/tools-integrations-overview#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
 ::: moniker-end
 
 ## Related content
