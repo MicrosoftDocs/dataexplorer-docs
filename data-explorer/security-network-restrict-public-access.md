@@ -56,7 +56,7 @@ The following example specifies a range of IP addresses from `192.168.1.0` to `1
 
 ##### Service tags
 
-To allow access from specific Azure services, use service tags. For example, to allow access from Azure Data Center in West US, use:
+The following example uses a service tag to allow access to the Azure Storage IP address range from the Azure Data Center in West US.
 
 ```plaintext
 Storage
