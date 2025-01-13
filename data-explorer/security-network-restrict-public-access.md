@@ -24,7 +24,7 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 
    * **Enabled from all networks**: This option allows access from public networks.
   
-   * **Enabled from selected IP addresses**: This option allows you to define a firewall allowlist of IP addresses or CIDR notations (Classless Inter-Domain Routing) or [service tags](/azure/virtual-network/service-tags-overview) that can connect to the public endpoint your cluster. In CIDR notation, the IP address is followed by a slash and a number that represents the subnet mask.
+   * **Enabled from selected IP addresses**: This option allows you to define a firewall allowlist of IP addresses, CIDR notations (Classless Inter-Domain Routing), or [service tags](/azure/virtual-network/service-tags-overview) that can connect to the public endpoint of your cluster. In CIDR notation, the IP address is followed by a slash and a number that represents the subnet mask.
   
    * **Disabled**: This option prevents access to the cluster from public networks and instead requires connection through a private endpoint.
 
