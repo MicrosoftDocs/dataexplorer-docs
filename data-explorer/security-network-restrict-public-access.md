@@ -62,7 +62,7 @@ The following example uses a service tag to allow access to the Azure Storage IP
  Storage.WestUS
 ```
 
-For a full list of service tags, refer to the [service tags documentation](/azure/virtual-network/service-tags-overview#available-service-tags).
+For a full list of service tags, see [Available service tags](/azure/virtual-network/service-tags-overview#available-service-tags).
 
 #### Configuration of selected IP addresses
 
