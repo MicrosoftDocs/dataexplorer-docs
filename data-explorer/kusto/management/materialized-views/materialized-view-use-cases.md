@@ -130,7 +130,7 @@ Materialized views and update policies work differently and serve different use 
 
 ::: moniker range="azure-data-explorer"
 > [!NOTE]
-> If you do need to *materialize* joins, and they aren't suitable for update policies and materialized views you can manage this process yourself. To create and store the results of join operations, use [orchestration tools](/azure/data-explorer/tools-integrations-overview#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
+> If you do need to *materialize* joins, and they aren't suitable for update policies and materialized views, you can manage this process yourself. To create and store the results of join operations, use [orchestration tools](/azure/data-explorer/tools-integrations-overview#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
 ::: moniker-end
 
 ## Related content
