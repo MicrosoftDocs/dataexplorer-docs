@@ -32,7 +32,7 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 
 ### Enabled from selected IP addresses
 
-When selecting the **Enabled from selected IP addresses** option, you have several ways to define the IP addresses that are allowed to connect to your Azure Data Explorer cluster. You can specify individual IP addresses, use CIDR (Classless Inter-Domain Routing) notation to define a range of IP addresses, or utilize [service tags](/azure/virtual-network/service-tags-overview) which represent a group of IP address prefixes from specific Azure services. These options provide flexibility in managing network access to your cluster.
+The **Enabled from selected IP addresses** option, provides flexibility in managing network access to your Azure Data Explorer cluster  by offering multiple ways to define the IP addresses that can connect. You can specify individual IP addresses, use CIDR (Classless Inter-Domain Routing) notation to define a range of IP addresses, or utilize [service tags](/azure/virtual-network/service-tags-overview) which represent a group of IP address prefixes from specific Azure services. The following [examples](#examples) shows how each can be specified.
 
 #### Examples
 
