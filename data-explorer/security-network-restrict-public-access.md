@@ -85,7 +85,7 @@ You can configure the selected IP addresses either through the [Azure portal](#a
 
 #### [ARM template](#tab/arm)
 
-1. Locate the [**allowedIpRangeList** cluster property](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-arm-template#clusterproperties-1) in the ARM template of your cluster
+1. Locate the [**allowedIpRangeList** cluster property](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-arm-template#clusterproperties-1) in your cluster's ARM template.
 
    ```json
    "properties": {
