@@ -24,8 +24,8 @@ The following table outlines the many options for how to share a query.
 |--|--|
 |[Pin to dashboard](#pin-to-dashboard)|Display the query in an [Azure Data Explorer dashboard](azure-data-explorer-dashboards.md).|
 |[Link to clipboard](#link-to-clipboard)|Copy a link that can be used to run the query.|
-|[Link, query to clipboard](#link-query-to-clipboard)|Copy a link that can be used to run the query and the text of the query. For enhanced security, the shared query opens in Azure Data Explorer in **Protected mode**. With Protected mode enabled a banner displays above the query, and an icon appears in the query tab. |
-|[Link, query, results to clipboard](#link-query-results-to-clipboard)|Copy a link that can be used to run the query, the text of the query, and the results of the query. For enhanced security, the shared query opens in Azure Data Explorer in Protected mode. With Protected mode enabled a banner displays above the query, and an icon appears in the query tab.|
+|[Link, query to clipboard](#link-query-to-clipboard)|Copy a link that can be used to run the query and the text of the query. For enhanced security, the shared query opens in Azure Data Explorer in **Protected mode**. When Protected mode is enabled, a banner displays above the query, and an icon appears in the query tab. |
+|[Link, query, results to clipboard](#link-query-results-to-clipboard)|Copy a link that can be used to run the query, the text of the query, and the results of the query. For enhanced security, the shared query opens in Azure Data Explorer in Protected mode. When Protected mode is enabled, a banner displays above the query, and an icon appears in the query tab.|
 |[Download](#download)|Download a KQL file of the query.|
 |[Open in Excel](#open-in-excel)|Open a live query in an Excel workbook that can be refreshed directly from Excel.|
 |[Export to CSV](#export-to-csv)|Download a CSV of the query results.|
