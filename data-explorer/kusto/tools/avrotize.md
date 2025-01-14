@@ -2,11 +2,11 @@
 title:  Avrotize k2a tool
 description: Learn how to use the avrotize k2a command to connect to a Kusto database and create an Avro schema.
 ms.topic: reference
-ms.date: 01/12/2025
+ms.date: 01/14/2025
 ---
 # Avrotize tool
 
-[Avrotize is a versatile tool](https://pypi.org/project/avrotize/) for converting data and database schema formats, generating code in various programming languages. The tool supports the conversion of Kusto table schemas to [Apache Avro](https://avro.apache.org/) format and vice versa with the [Convert Kusto table definition to Avrotize Schema](https://github.com/clemensv/avrotize?tab=readme-ov-file#convert-kusto-table-definition-to-avrotize-schema) command. The tool handles dynamic columns in Kusto tables by:
+[Avrotize is a versatile tool](https://pypi.org/project/avrotize/) for converting data and database schema formats, and generating code in various programming languages. The tool supports the conversion of Kusto table schemas to [Apache Avro](https://avro.apache.org/) format and vice versa with the [Convert Kusto table definition to Avrotize Schema](https://github.com/clemensv/avrotize?tab=readme-ov-file#convert-kusto-table-definition-to-avrotize-schema) or `avrotize k2a` command. The tool handles dynamic columns in Kusto tables by:
 
 * Inferring the schema through sampling
 * Resolving arrays and records at any level of nesting
@@ -38,7 +38,7 @@ The following are examples of how to use the command:
 
 ## Convert AVRO schema to Kusto table declaration
 
-You can use the `avrotize a2k` command to create KQL table declarations from Avro schema and JSON mappings. It can also include docstrings in the table declarations extracted from the "doc" annotations in the Avro record types.
+You can use the [`avrotize a2k`](https://github.com/clemensv/avrotize?tab=readme-ov-file#convert-avrotize-schema-to-kusto-table-declaration) command to create KQL table declarations from Avro schema and JSON mappings. It can also include docstrings in the table declarations extracted from the "doc" annotations in the Avro record types.
 
 If the Avro schema is a single record type, the output script includes a [`.create table`](../management/create-table-command.md) command for the record. The record fields are converted into columns in the table. If the Avro schema is a type union (a top-level array), the output script emits a separate `.create table` command for each record type in the union.
 
