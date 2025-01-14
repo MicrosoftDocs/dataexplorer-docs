@@ -66,7 +66,7 @@ For a full list of service tags, see [Available service tags](/azure/virtual-net
 
 #### Configure selected IP addresses
 
-You can configure the selected IP addresses either through the [Azure portal](#azure-portaltabportal) or by modifying the [ARM template](#arm-templatetabarm). Choose the method that best aligns with your workflow, requirements, and network access management needs.
+You can configure the selected IP addresses either through the Azure portal or by modifying the ARM template. Choose the method that best aligns with your workflow, requirements, and network access management needs.
 
 #### [Azure portal](#tab/portal)
 
