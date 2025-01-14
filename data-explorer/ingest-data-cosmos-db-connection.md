@@ -386,7 +386,7 @@ The following considerations apply to the Cosmos DB change feed:
 
 - Deleting and recreating a Cosmos DB container isn't supported
 
-    Azure Data Explorer keeps track of the change feed by checkpointing the "position" it is at in the feed. This is done using continuation token on each physical partitions of the container.  When a container is deleted/recreated, the continuation token is invalid and aren't reset. In this case, you must delete and recreate the data connection.
+    Azure Data Explorer keeps track of the change feed by checkpointing the "position" it is at in the feed. This is done using continuation token on each physical partitions of the container.  When a container is deleted/recreated, the continuation token is invalid and isn't reset. In this case, you must delete and recreate the data connection.
 
 ## Estimate cost
 
