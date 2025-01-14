@@ -24,7 +24,7 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 
    * **Enabled from all networks**: This option allows access from public networks.
   
-   * **Enabled from selected IP addresses**: This option allows you to define a firewall allowlist of IP addresses, CIDR notations (Classless Inter-Domain Routing), or [service tags](/azure/virtual-network/service-tags-overview) that can connect to the public endpoint of your cluster. In CIDR notation, the IP address is followed by a slash and a number that represents the subnet mask.
+   * **Enabled from selected IP addresses**: This option allows you to define a firewall allowlist of IP addresses, Classless Inter-Domain Routing (CIDR) notation, or [service tags](/azure/virtual-network/service-tags-overview) that can connect to the public endpoint of your cluster. In CIDR notation, the IP address is followed by a slash and a number that represents the subnet mask.
   
    * **Disabled**: This option prevents access to the cluster from public networks and instead requires connection through a private endpoint.
 
@@ -32,7 +32,7 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 
 ### Enabled from selected IP addresses
 
-The **Enabled from selected IP addresses** option, provides flexibility in managing network access to your Azure Data Explorer cluster  by offering multiple ways to define the IP addresses that can connect. You can specify individual IP addresses, use CIDR (Classless Inter-Domain Routing) notation to define a range of IP addresses, or utilize [service tags](/azure/virtual-network/service-tags-overview) which represent a group of IP address prefixes from specific Azure services. The following [examples](#examples) shows how each can be specified.
+The **Enabled from selected IP addresses** option provides flexibility in managing network access to your cluster by offering multiple ways to define the IP addresses that can connect. You can specify individual IP addresses, use CIDR notation to define a range of IP addresses, or utilize [service tags](/azure/virtual-network/service-tags-overview), which represent a group of IP address prefixes from specific Azure services. The following [examples](#examples) show how each can be specified.
 
 #### Examples
 
@@ -56,7 +56,7 @@ The following example specifies a range of IP addresses from `192.168.1.0` to `1
 
 ##### Service tags
 
-The following example uses a service tag to allow access to the Azure Storage IP address range from the Azure Data Center in West US.
+The following example uses a service tag to allow access to the Azure Storage IP address range from the Azure Data Center in the West US region.
 
 ```plaintext
  Storage.WestUS
@@ -75,11 +75,11 @@ You can configure the selected IP addresses either through the [Azure portal](#a
 
 1. Navigate to the **Networking** configuration of your Azure Data Explorer cluster and select **Enabled from selected IP addresses**.
 
-  :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses.png" lightbox="media/security-network-restrict-access/networking-public-access-selectedIpAddresses.png" alt-text="Screenshot of the network configuration page, showing the enabled from selected IP addresses option without any address range configured.":::
+    :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses.png" lightbox="media/security-network-restrict-access/networking-public-access-selectedIpAddresses.png" alt-text="Screenshot of the network configuration page, showing the enabled from selected IP addresses option without any address range configured.":::
 
 1. Configure the IP addresses or CIDR ranges that you want to allow to connect to the Azure Data Explorer cluster. 
 
-  :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" lightbox="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" alt-text="Screenshot of the network configuration page, showing the selected IP addresses specified for Enabled from selected IP addresses. They are specified as individual IP address and in CIDR notation.":::
+    :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" lightbox="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" alt-text="Screenshot of the network configuration page, showing the selected IP addresses specified for Enabled from selected IP addresses. They are specified as individual IP address and in CIDR notation.":::
 
 1. Select **Save** to submit the configuration.
 
