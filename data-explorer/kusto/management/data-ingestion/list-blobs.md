@@ -20,9 +20,9 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 ## Syntax
 
 `.list blobs` (*SourceDataLocators*)
-[Suffix=SuffixValue]
-[MaxFiles=MaxFilesValue]
-[PathFormat=PatternValue]
+[`Suffix`=*SuffixValue*]
+[`MaxFiles`=*MaxFilesValue*]
+[`PathFormat`=*PatternValue*]
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -31,9 +31,9 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*SourceDataLocators*| `string` | :heavy_check_mark:|One or many [storage connection strings](../../api/connection-strings/storage-connection-strings.md) separated by a comma character. Each connection string can refer to a storage container or a file prefix within a container. Currently, only one storage connection string is supported. |
-|*Suffix*| `string` | |The suffix that enables for blob filtering.|
-|*MaxFiles*| `integer` | | The maximum number of blobs to return. |
-|*PathFormat*| `string` | | The pattern in the blob’s path that can be used to retrieve the creation time as an output field. |
+|*SuffixValue*| `string` | |The suffix that enables for blob filtering.|
+|*MaxFilesValue*| `integer` | | The maximum number of blobs to return. |
+|*PatternValue*| `string` | | The pattern in the blob’s path that can be used to retrieve the creation time as an output field. |
 
 > [!NOTE]
 > * We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for *SourceDataLocators* to scrub credentials in internal traces and error messages.

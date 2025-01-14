@@ -21,20 +21,22 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 `.ingest-from-storage-queued` `into` `table` [database(*DatabaseName*).]*TableName*
 
-[EnableTracking=EnableTrackingValue]
+[`EnableTracking`=*EnableTrackingValue*]
 
-[SkipBatching=SkipBatchingValue]
+[`SkipBatching`=*SkipBatchingValue*]
 
-[CompressionFactor=CompressionFactorValue]
+[`CompressionFactor`=*CompressionFactorValue*]
 
 [with (*IngestionPropertyName* = *IngestionPropertyValue* [, ...])]
 
 <|
 
-*[.list blobs](list-blobs.md) command*
-<!-- clarify whether the list blobs command should be there, and if the syntax/parameters are correct.-->
+*[`.list blobs`](list-blobs.md)(*SourceDataLocators*) command*
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+> [!NOTE]
+> For detailed information about the `.list blobs` command and parameters, see [.list blobs command](list-blobs.md).
 
 ## Parameters
 
@@ -42,14 +44,12 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |--|--|--|--|
 |*DatabaseName*| `string` | |The name of the database into which to ingest data. If no database name is provided, the request's context database is used.|
 |*TableName*| `string` | :heavy_check_mark:|The name of the table into which to ingest data.|
-|*EnableTracking*| `boolean` | | Determines whether the blob ingestion is tracked. For more information, see [.show queued ingestion operations](show-queued-ingestion-operations.md). The default is `false`.|
-|*SkipBatching*| `boolean` | | If set to  `true`, the blobs are ingested individually rather than batched together with other blobs. The default value is `false`.|
-|*CompressionFactor*| `real` | |The compression factor (ratio) between the original size and the compressed size of blobs.  Compression factor is used to estimate the original size of the data for batching purposes, when blobs are provided in a compressed format.|
-|*IngestionPropertyName*| `string` | |The name of the ingestion property.|
-|*IngestionPropertyValue*| `string` | |The value of the ingestion property.|
-<!---->
-<!--Should list blob be here?not sure what is meant here-->
-The [*.list blobs command*](list-blobs.md) is a valid command returning the blobs you want to ingest.
+|*EnableTrackingValue*| `boolean` | | Determines whether the blob ingestion is tracked. For more information, see [.show queued ingestion operations](show-queued-ingestion-operations.md). The default is `false`.|
+|*SkipBatchingValue*| `boolean` | | If set to  `true`, the blobs are ingested individually rather than batched together with other blobs. The default value is `false`.|
+|*CompressionFactorValue*| `real` | |The compression factor (ratio) between the original size and the compressed size of blobs.  Compression factor is used to estimate the original size of the data for batching purposes, when blobs are provided in a compressed format.|
+|*IngestionPropertyName*| `string` | |The name of the ingestion property. For more information about ingestion properties, see [Data ingestion properties](../../ingestion-properties.md).|
+|*IngestionPropertyValue*| `string` | |The value of the ingestion property. For more information about ingestion properties, see [Data ingestion properties](../../ingestion-properties.md).|
+|*SourceDataLocators* | `string` | :heavy_check_mark:|One or many [storage connection strings](../../api/connection-strings/storage-connection-strings.md) separated by a comma character. Used in the `.list blobs` command, that is used in conjunction with the `.ingest-from-storage-queued into` command to return the blobs you want to ingest. For a full list of parameters that can be used, see [.list blobs command](list-blobs.md). |
 
 ## Returns
 

@@ -808,9 +808,6 @@ items:
         href: ../ingestion-supported-formats.md
       - name: Ingestion properties
         href: ../ingestion-properties.md
-      - name: .ingest-into
-        displayName: .ingest into, pull data, pulling ingestion
-        href: data-ingestion/ingest-into-command.md
       - name: Ingest from queued storage
         items:
           - name: .ingest-from-storage-queued into command
@@ -822,6 +819,9 @@ items:
             href: data-ingestion/cancel-queued-ingestion-operation-command.md
           - name: .show queued ingestion operation command
             href: data-ingestion/show-queued-ingestion-operations.md
+      - name: .ingest-into
+        displayName: .ingest into, pull data, pulling ingestion
+        href: data-ingestion/ingest-into-command.md
       - name: Ingest from query
         items:
           - name: Ingest from query
