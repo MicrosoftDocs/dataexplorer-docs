@@ -3,7 +3,7 @@ title: Share Azure Data Explorer dashboards
 description: Learn how to share Azure Data Explorer dashboards
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 09/03/2024
+ms.date: 01/14/2025
 ---
 # Share dashboards
 

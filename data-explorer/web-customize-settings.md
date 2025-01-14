@@ -2,7 +2,7 @@
 title: 'Customize settings in the Azure Data Explorer web UI'
 description: In this guide, you'll learn how to customize your settings in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 08/21/2024
+ms.date: 01/14/2025
 ---
 
 # Customize settings in the Azure Data Explorer web UI

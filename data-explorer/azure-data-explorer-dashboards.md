@@ -3,7 +3,7 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 09/03/2024
+ms.date: 01/14/2025
 ---
 
 # Visualize data with Azure Data Explorer dashboards
