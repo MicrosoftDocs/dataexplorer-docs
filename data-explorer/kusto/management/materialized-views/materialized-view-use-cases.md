@@ -3,7 +3,7 @@ title:  Materialized views use cases
 description: Learn about common and advanced use cases for materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/13/2025
 ---
 
 # Materialized views use cases
@@ -59,7 +59,7 @@ For more examples, see the [.create materialized-view command](materialized-view
 
 ## Advanced scenario
 
-You can use a materialized view for create/update/delete event processing. When handling records with incomplete or outdated information for each column, a materialized view can provide the latest updates for each column, excluding entities that have been deleted.
+You can use a materialized view for create/update/delete event processing. For records with incomplete or outdated information in each column, a materialized view can provide the latest updates for each column, excluding entities that were deleted.
 
 Consider the following input table named `Events`:
 
@@ -80,7 +80,6 @@ Create a materialized view to get the latest update per column, using the [arg_m
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6WTUWvDIBDH3/Mpjj4ZMKBnYUzY0/YR2qcxiq22CJqOxEA39uGnSZs2pCkZMwZOz9//7vDUKsRv6wyQlfWmDsp/Sq2CCXFFYddoWYfKlgcKVkt3TMbu6PjVxKspWjPP3jOI46JCkKEoOCtwCYxJxnIKi9cFBU4h/UghYaRsnMvpNMrP6LpDbxjAqCHEAxYfsGJm/NvUkf4lcyZ5H33IwHKmxKWAt7HEhJ19ZD9gTsGUGvqr3aS7gxew+z2xdTpI0k4k+6j8+YkVjMcZd3vwnFs7Bmo4UsN/qImRmpihFgutG+9VZb8NqOqw8epEhjV3XRupu27sOnnKLbruvudun0gO26/4PH4BCngxSkwDAAA=" target="_blank">Run the query</a>
 ::: moniker-end
-::: moniker-end 
 
 ```kusto
 .create materialized-view ItemHistory on table Events
@@ -131,7 +130,7 @@ Materialized views and update policies work differently and serve different use 
 
 ::: moniker range="azure-data-explorer"
 > [!NOTE]
-> If you do need to *materialize* joins, which are not suitable for update policies and materialized views, you can orchestrate your own process for doing so, using [orchestration tools](/azure/data-explorer/tools-integrations-overview#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
+> If you do need to *materialize* joins that aren't suitable for update policies and materialized views, you can manage this process yourself. To create and store the results of join operations, use [orchestration tools](/azure/data-explorer/tools-integrations-overview#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
 ::: moniker-end
 
 ## Related content
