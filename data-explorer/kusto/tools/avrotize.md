@@ -6,7 +6,7 @@ ms.date: 01/14/2025
 ---
 # Avrotize tool
 
-[Avrotize is a versatile tool](https://pypi.org/project/avrotize/) for converting data and database schema formats, and generating code in various programming languages. The tool supports the conversion of Kusto table schemas to [Apache Avro](https://avro.apache.org/) format and vice versa with the [Convert Kusto table definition to Avrotize Schema](https://github.com/clemensv/avrotize?tab=readme-ov-file#convert-kusto-table-definition-to-avrotize-schema) or `avrotize k2a` command. The tool handles dynamic columns in Kusto tables by:
+[Avrotize is a versatile tool](https://pypi.org/project/avrotize/) for converting data and database schema formats, and generating code in various programming languages. The tool supports the conversion of Kusto table schemas to [Apache Avro](https://avro.apache.org/) format and vice versa with the [Convert Kusto table definition to Avrotize Schema](https://github.com/clemensv/avrotize?tab=readme-ov-file#convert-kusto-table-definition-to-avrotize-schema) command. The tool handles dynamic columns in Kusto tables by:
 
 * Inferring the schema through sampling
 * Resolving arrays and records at any level of nesting
