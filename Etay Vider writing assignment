@@ -1,0 +1,14 @@
+# Kusto Query Language
+
+In this article:
+1.	Overview
+2.	Query Statements
+3.	Management Commands
+4.	KQL in other services 
+5.	Related stuff 
+
+## Overview
+
+This article provides an explanation of the Kusto Query Language (KQL) and offers practical exercises to get you started writing queries. 
+To access the query environment, use the Azure Data Explorer web UI. To learn how to use KQL, see Tutorial: Learn common operators.
+
