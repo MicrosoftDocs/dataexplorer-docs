@@ -14,8 +14,8 @@ Each data connection listens to a specific Cosmos DB container and ingests data 
 
 The two main scenarios for using the Cosmos DB change feed data connection are:
 
-1. Replicating a Cosmos DB container for analytical purposes. For more information,  see [Get latest versions of Azure Cosmos DB documents](ingest-data-cosmos-db-queries.md).
-1. Analyzing the document changes in a Cosmos DB container. For more information, see [Considerations](#considerations).
+*  Replicating a Cosmos DB container for analytical purposes. For more information,  see [Get latest versions of Azure Cosmos DB documents](ingest-data-cosmos-db-queries.md).
+*  Analyzing the document changes in a Cosmos DB container. For more information, see [Considerations](#considerations).
 
 In this article, you'll learn how to set up a Cosmos DB change feed data connection to ingest data into Azure Data Explorer with System Managed Identity. Review the [considerations](#considerations) before you start.
 
