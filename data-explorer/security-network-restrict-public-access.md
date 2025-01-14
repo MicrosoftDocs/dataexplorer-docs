@@ -24,13 +24,13 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 
    * **Enabled from all networks**: This option allows access from public networks.
   
-   * **Enabled from selected IP addresses**: This option allows you to define a firewall allowlist of IP addresses, Classless Inter-Domain Routing (CIDR) notation, or [service tags](/azure/virtual-network/service-tags-overview) that can connect to the public endpoint of your cluster. In CIDR notation, the IP address is followed by a slash and a number that represents the subnet mask.
+   * **Enabled from selected IP addresses**: This option allows you to define a firewall allowlist of IP addresses, Classless Inter-Domain Routing (CIDR) notation, or [service tags](/azure/virtual-network/service-tags-overview) that can connect to the public endpoint of your cluster. In CIDR notation, the IP address is followed by a slash and a number that represents the subnet mask. For more information, see [Specify selected IP addresses](#specify-selected-ip-addresses).
   
    * **Disabled**: This option prevents access to the cluster from public networks and instead requires connection through a private endpoint.
 
 1. Select **Save**.
 
-### Enabled from selected IP addresses
+### Specify selected IP addresses
 
 The **Enabled from selected IP addresses** option provides flexibility in managing network access to your cluster by offering multiple ways to define the IP addresses that can connect. You can specify individual IP addresses, use CIDR notation to define a range of IP addresses, or utilize [service tags](/azure/virtual-network/service-tags-overview), which represent a group of IP address prefixes from specific Azure services. The following [examples](#examples) show how each can be specified.
 
@@ -59,12 +59,12 @@ The following example specifies a range of IP addresses from `192.168.1.0` to `1
 The following example uses a service tag to allow access to the Azure Storage IP address range from the Azure Data Center in the West US region.
 
 ```plaintext
- Storage.WestUS
+Storage.WestUS
 ```
 
 For a full list of service tags, see [Available service tags](/azure/virtual-network/service-tags-overview#available-service-tags).
 
-#### Configuration of selected IP addresses
+#### Configure selected IP addresses
 
 You can configure the selected IP addresses either through the [Azure portal](#azure-portaltabportal) or by modifying the [ARM template](#arm-templatetabarm). Choose the method that best aligns with your workflow, requirements, and network access management needs.
 
@@ -73,11 +73,12 @@ You can configure the selected IP addresses either through the [Azure portal](#a
 > [!CAUTION]
 > To configure [service tags](/azure/virtual-network/service-tags-overview#available-service-tags) use the **ARM template**.
 
-1. Navigate to the **Networking** configuration of your Azure Data Explorer cluster and select **Enabled from selected IP addresses**.
+1. Go to your cluster in the [Azure portal](https://portal.azure.com/).
+1. Under **Security + networking** > **Networking** > **Public access**, select **Enabled from selected IP addresses**.
 
     :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses.png" lightbox="media/security-network-restrict-access/networking-public-access-selectedIpAddresses.png" alt-text="Screenshot of the network configuration page, showing the enabled from selected IP addresses option without any address range configured.":::
 
-1. Configure the IP addresses or CIDR ranges that you want to allow to connect to the Azure Data Explorer cluster. 
+1. Configure the IP addresses or CIDR ranges that you want to allow to connect to the cluster. 
 
     :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" lightbox="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" alt-text="Screenshot of the network configuration page, showing the selected IP addresses specified for Enabled from selected IP addresses. They are specified as individual IP address and in CIDR notation.":::
 
