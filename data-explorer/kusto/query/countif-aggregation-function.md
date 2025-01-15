@@ -3,7 +3,7 @@ title:  countif() (aggregation function)
 description: Learn how to use the countif() function to count the rows where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # countif() (aggregation function)
 
@@ -49,23 +49,23 @@ StormEvents
 
 The results table shown includes only the first 10 rows.
 
-| State                | TotalCount | TotalWithDamage |
-| -------------------- | ---------- | --------------- |
-| TEXAS                | 4701       | 72              |
-| KANSAS               | 3166       | 70              |
-| IOWA                 | 2337       | 359             |
-| ILLINOIS             | 2022       | 35              |
-| MISSOURI             | 2016       | 78              |
-| GEORGIA              | 1983       | 17              |
-| MINNESOTA            | 1881       | 37              |
-| WISCONSIN            | 1850       | 75              |
-| NEBRASKA             | 1766       | 201             |
-| NEW YORK             | 1750       | 1               |
+| State | TotalCount | TotalWithDamage |
+|--|--|--|
+| TEXAS | 4701 | 72 |
+| KANSAS | 3166 | 70 |
+| IOWA | 2337 | 359 |
+| ILLINOIS | 2022 | 35 |
+| MISSOURI | 2016 | 78 |
+| GEORGIA | 1983 | 17 |
+| MINNESOTA | 1881 | 37 |
+| WISCONSIN | 1850 | 75 |
+| NEBRASKA | 1766 | 201 |
+| NEW YORK | 1750 | 1 |
 | ... | ... | ... |
 
 ### Count based on string length
 
-This example shows the number of names with more than 4 letters.
+This example shows the number of names with more than four letters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -92,4 +92,7 @@ T
 
 ## Related content
 
-[count()](count-aggregation-function.md) function, which counts rows without predicate expression.
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [count_distinctif() (aggregation function) - (preview)](count-distinctif-aggregation-function.md)
+* [dcountif() (aggregation function)](dcountif-aggregation-function.md)
+* [count()](count-aggregation-function.md)

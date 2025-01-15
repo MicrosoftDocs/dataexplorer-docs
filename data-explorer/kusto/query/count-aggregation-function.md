@@ -3,13 +3,12 @@ title:  count() (aggregation function)
 description: Learn how to use the count() function to count the number of records in a group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # count() (aggregation function)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
-
 
 Counts the number of records per summarization group, or total if summarization is done without grouping.
 
@@ -32,7 +31,7 @@ Returns a count of the records per summarization group, or in total if summariza
 
 ## Example
 
-This example returns a count of events in states:
+The following example returns a count of events in states:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -46,22 +45,26 @@ StormEvents
 
 **Output**
 
-|State|Count|
-|---|---|
-|TEXAS	|4701|
-|KANSAS	|3166|
-|IOWA	|2337|
-|ILLINOIS	|2022|
-|MISSOURI	|2016|
-|GEORGIA	|1983|
-|MINNESOTA	|1881|
-|WISCONSIN	|1850|
-|NEBRASKA	|1766|
-|NEW YORK	|1750|
-|...|...|
+| State | Count |
+|--|--|
+| TEXAS | 4701 |
+| KANSAS | 3166 |
+| IOWA | 2337 |
+| ILLINOIS | 2022 |
+| MISSOURI | 2016 |
+| GEORGIA | 1983 |
+| MINNESOTA | 1881 |
+| WISCONSIN | 1850 |
+| NEBRASKA | 1766 |
+| NEW YORK | 1750 |
+| ... | ... |
 
 ::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
-* [bin_at()](bin-at-function.md#bin_at) rounds values down to a fixed-size bin, which can be used to aggregate data, such as by time unit.
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [countof()](countof-function.md)
+* [countif() (aggregation function)](countif-aggregation-function.md)
+* [count_distinct() (aggregation function)](count-distinct-aggregation-function.md)
+* [bin_at()](bin-at-function.md#bin_at)
 ::: moniker-end

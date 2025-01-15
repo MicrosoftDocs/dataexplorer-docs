@@ -63,3 +63,7 @@ range x from 1 to 100 step 1
 |evenNumbers|even_and_mod3|even_and_mod3_and_mod5|
 |---|---|---|
 |50|16|3|
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)

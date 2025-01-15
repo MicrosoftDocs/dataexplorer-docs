@@ -3,7 +3,7 @@ title:  dcount() (aggregation function)
 description: Learn how to use the dcount() function to return an estimate of the number of distinct values of an expression within a group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # dcount() (aggregation function)
 
@@ -14,7 +14,7 @@ Calculates an estimate of the number of distinct values that are taken by a scal
 [!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
 > [!NOTE]
-> The `dcount()` aggregation function is primarily useful for estimating the cardinality of huge sets. It trades accuracy for performance, and may return a result that varies between executions. The order of inputs may have an effect on its output.
+> The `dcount()` aggregation function is primarily useful for estimating the cardinality of huge sets. It trades accuracy for performance, and might return a result that varies between executions. The order of inputs might have an effect on its output.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -70,3 +70,10 @@ The results table shown includes only the first 10 rows.
 ## Estimation accuracy
 
 [!INCLUDE [data-explorer-estimation-accuracy](../includes/estimation-accuracy.md)]
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [dcountif() (aggregation function)](dcountif-aggregation-function.md)
+* [count()](count-aggregation-function.md)
+* [count_distinct() (aggregation function)](count-distinct-aggregation-function.md)

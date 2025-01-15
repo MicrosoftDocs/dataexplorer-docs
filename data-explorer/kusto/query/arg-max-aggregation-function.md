@@ -3,7 +3,7 @@ title:  arg_max() (aggregation function)
 description: Learn how to use the arg_max() aggregation function to find a row in a table that maximizes the input expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/11/2024
+ms.date: 01/15/2025
 ---
 # arg_max() (aggregation function)
 
@@ -37,7 +37,9 @@ Returns a row in the table that maximizes the specified expression *ExprToMaximi
 
 ## Examples
 
-Find the maximum latitude of a storm event in each state.
+### Find maximum latitute
+
+The following example finds the maximum latitude of a storm event in each state.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -48,6 +50,8 @@ Find the maximum latitude of a storm event in each state.
 StormEvents 
 | summarize arg_max(BeginLat, BeginLocation) by State
 ```
+
+**Output**
 
 The results table displays only the first 10 rows.
 
@@ -65,9 +69,11 @@ The results table displays only the first 10 rows.
 | TEXAS                | 36.4607  | DARROUZETT           |
 | ...             | ...    | ...            |
 
-Find the last time an event with a direct death happened in each state, showing all the columns.
+### Find last state fatal event
 
-The query first filters the events to only include those where there was at least one direct death. Then the query returns the entire row with the most recent StartTime.
+The following example finds the last time an event with a direct death happened in each state, showing all the columns.
+
+The query first filters the events to include only those events where there was at least one direct death. Then the query returns the entire row with the most recent `StartTime`.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -80,21 +86,25 @@ StormEvents
 | summarize arg_max(StartTime, *) by State
 ```
 
-The results table displays only the first 10 rows and first 3 columns.
+**Output**
 
-| State          | StartTime            | EndTime              | ... |
-| -------------- | -------------------- | -------------------- | --- |
-| GUAM           | 2007-01-27T11:15:00Z | 2007-01-27T11:30:00Z | ... |
-| MASSACHUSETTS  | 2007-02-03T22:00:00Z | 2007-02-04T10:00:00Z | ... |
+The results table displays only the first 10 rows and first three columns.
+
+| State | StartTime | EndTime | ... |
+|--|--|--|--|
+| GUAM | 2007-01-27T11:15:00Z | 2007-01-27T11:30:00Z | ... |
+| MASSACHUSETTS | 2007-02-03T22:00:00Z | 2007-02-04T10:00:00Z | ... |
 | AMERICAN SAMOA | 2007-02-17T13:00:00Z | 2007-02-18T11:00:00Z | ... |
-| IDAHO          | 2007-02-17T13:00:00Z | 2007-02-17T15:00:00Z | ... |
-| DELAWARE       | 2007-02-25T13:00:00Z | 2007-02-26T01:00:00Z | ... |
-| WYOMING        | 2007-03-10T17:00:00Z | 2007-03-10T17:00:00Z | ... |
-| NEW MEXICO     | 2007-03-23T18:42:00Z | 2007-03-23T19:06:00Z | ... |
-| INDIANA        | 2007-05-15T14:14:00Z | 2007-05-15T14:14:00Z | ... |
-| MONTANA        | 2007-05-18T14:20:00Z | 2007-05-18T14:20:00Z | ... |
-| LAKE MICHIGAN  | 2007-06-07T13:00:00Z | 2007-06-07T13:00:00Z | ... |
-|... | ... | ...| ... |
+| IDAHO | 2007-02-17T13:00:00Z | 2007-02-17T15:00:00Z | ... |
+| DELAWARE | 2007-02-25T13:00:00Z | 2007-02-26T01:00:00Z | ... |
+| WYOMING | 2007-03-10T17:00:00Z | 2007-03-10T17:00:00Z | ... |
+| NEW MEXICO | 2007-03-23T18:42:00Z | 2007-03-23T19:06:00Z | ... |
+| INDIANA | 2007-05-15T14:14:00Z | 2007-05-15T14:14:00Z | ... |
+| MONTANA | 2007-05-18T14:20:00Z | 2007-05-18T14:20:00Z | ... |
+| LAKE MICHIGAN | 2007-06-07T13:00:00Z | 2007-06-07T13:00:00Z | ... |
+| ... | ... | ... | ... |
+
+### Handle nulls
 
 The following example demonstrates null handling.
 
@@ -125,7 +135,7 @@ datatable(Fruit: string, Color: string, Version: int) [
 
 ## Comparison to max()
 
-The arg_max() function differs from the [max() function](max-aggregation-function.md). The arg_max() function allows you to return additional columns along with the maximum value, and [max()](max-aggregation-function.md) only returns the maximum value itself.
+The arg_max() function differs from the [max() function](max-aggregation-function.md). The arg_max() function allows you to return other columns along with the maximum value, and [max()](max-aggregation-function.md) only returns the maximum value itself.
 
 ### Examples
 
@@ -133,7 +143,7 @@ The arg_max() function differs from the [max() function](max-aggregation-functio
 
 Find the last time an event with a direct death happened, showing all the columns in the table.
 
-The query first filters the events to only include those where there was at least one direct death. Then the query returns the entire row with the most recent (maximum) StartTime.
+The query first filters the events to only include events where there was at least one direct death. Then the query returns the entire row with the most recent (maximum) StartTime.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -156,7 +166,7 @@ The results table returns all the columns for the row containing the highest val
 
 Find the last time an event with a direct death happened.
 
-The query filters events to only include those where there is at least one direct death, and then returns the maximum value for StartTime.
+The query filters events to only include events where there is at least one direct death, and then returns the maximum value for StartTime.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -177,7 +187,8 @@ The results table returns the maximum value of StartTime, without returning othe
 
 ## Related content
 
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [arg_min function](arg-min-aggregation-function.md)
 * [max function](max-aggregation-function.md)
-* [min function](min-aggregation-function.md)
 * [avg function](avg-aggregation-function.md)
 * [percentile function](percentiles-aggregation-function.md)

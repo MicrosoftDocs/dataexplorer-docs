@@ -155,4 +155,6 @@ print array_sort_desc(dynamic([null,"blue","yellow","green",null]), false)
 
 ## Related content
 
-To sort the first array in ascending order, use [array_sort_asc()](array-sort-asc-function.md).
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [array_sort_asc()](array-sort-asc-function.md)
+* 

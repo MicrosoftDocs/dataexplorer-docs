@@ -3,7 +3,7 @@ title:  hll_if() (aggregation function)
 description: Learn how to use the hll_if() function to calculate the intermediate results of the dcount() function.
 ms.reviewer: ziham
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # hll_if() (aggregation function)
 
@@ -14,10 +14,6 @@ Calculates the intermediate results of [`dcount`](dcount-aggregation-function.md
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accuracy](dcount-aggregation-function.md#estimation-accuracy).
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
-
-> [!IMPORTANT]
-> The results of hll(), hll_if(), and hll_merge() can be stored and later retrieved. For example, you may want to create a daily unique users summary, which can then be used to calculate weekly counts.
-> However, the precise binary representation of these results may change over time. There's no guarantee that these functions will produce identical results for identical inputs, and therefore we don't advise relying on them.
 
 ## Syntax
 
@@ -37,12 +33,15 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 
 Returns the intermediate results of distinct count of *Expr* for which *Predicate* evaluates to `true`.
 
-> [!TIP]
->
-> - You can use the aggregation function [`hll_merge`](hll-merge-aggregation-function.md) to merge more than one `hll` intermediate result. Only works with `hll` output only.
-> - You can use [`dcount_hll`](dcount-hll-function.md), to calculate the distinct count from `hll`,`hll_merge`, or `hll_if` aggregation functions.
+> [!NOTE]
+> - The results of hll(), hll_if(), and hll_merge() can be stored and later retrieved. For example, you might want to create a daily unique user summary, which can then be used to calculate weekly counts.
+> However, the precise binary representation of these results might change over time. There's no guarantee that these functions produce identical results for identical inputs, and therefore we don't advise relying on them.
+> - Use the [`hll_merge`](hll-merge-aggregation-function.md) function to merge more than one `hll` intermediate result. Only works with `hll` output.
+> - Use [`dcount_hll`](dcount-hll-function.md), to calculate the distinct count from `hll`,`hll_merge`, or `hll_if` aggregation functions.
 
 ## Examples
+
+The following query results in the number of unique flood event sources in Iowa and Kansas. It uses the `hll_if()` function to show only flood events.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -55,6 +54,8 @@ StormEvents
 | summarize hll_flood = hll_if(Source, EventType == "Flood") by State
 | project State, SourcesOfFloodEvents = dcount_hll(hll_flood)
 ```
+
+**Output**
 
 |State|SourcesOfFloodEvents|
 |---|---|
@@ -70,3 +71,10 @@ StormEvents
 | 2 | Slow | 0.4 |
 | 3 | Slow | 0.28 |
 | 4 | Slowest | 0.2 |
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [Using hll() and tdigest()](using-hll-tdigest.md)
+* [hll() (aggregation function)](hll-aggregation-function.md)
+* [hll_merge()](hll-merge-function.md)
