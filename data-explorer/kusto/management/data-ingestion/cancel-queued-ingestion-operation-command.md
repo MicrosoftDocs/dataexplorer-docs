@@ -11,7 +11,7 @@ ms.date: 01/13/2025
 
 The `.cancel queued ingestion operation` command cancels an ingestion operation. This command is useful for aborting an ingestion operation that is taking too long to complete.
 
-The cancel operation command is done on a "best effort" basis.  For example, ongoing ingestion processes (in-flight ingestion) might not be canceled.
+The cancel operation command is done on a best effort basis.  For example, ongoing ingestion processes or in-flight ingestion, might not be canceled.
 
 ## Permissions
 
@@ -40,6 +40,8 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Example
 
+The following example cancels the ingestion of operation `aaaaaaaa-0b0b-1c1c-2d2d-333333333333` and provides a reason.
+
 <!-- csl -->
 ```Kusto
 .cancel queued ingestion operation aaaaaaaa-0b0b-1c1c-2d2d-333333333333 with(Reason="Command canceled by me")
@@ -52,3 +54,4 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 ## Related content
 
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
+* [.ingest-from-storage-queued into command](ingest-from-storage-queued.md)

@@ -1,15 +1,15 @@
 ---
-title:  .ingest-from-storage-queued into
+title:  .ingest-from-storage-queued into command
 description: This article describes the `.ingest-from-storage-queued` `into` command used to ingest a storage folder in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: reference
 ms.date: 01/13/2025
 ---
-# .ingest-from-storage-queued into
+# .ingest-from-storage-queued into command
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The `.ingest-from-storage-queued into` command is used with the [`.list blobs`](list-blobs.md) command to queue blobs for ingestion into a table. It enables the ingestion of an entire storage container or a specific folder within a container. More precisely, it allows you to ingest all blobs that match a given prefix and suffix.
+The `.ingest-from-storage-queued into` command is used with the [`.list blobs`](list-blobs.md) command to queue blobs for ingestion into a table. It enables the ingestion of an entire storage container, a specific folder within a container, or to ingest all blobs that match a given prefix and suffix.
 
 [!INCLUDE [direct-ingestion-note](../../includes/direct-ingestion-note.md)]
 
@@ -19,18 +19,9 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Syntax
 
-`.ingest-from-storage-queued` `into` `table` [database(*DatabaseName*).]*TableName*
-
-[`EnableTracking`=*EnableTrackingValue*]
-
-[`SkipBatching`=*SkipBatchingValue*]
-
-[`CompressionFactor`=*CompressionFactorValue*]
-
-[with (*IngestionPropertyName* = *IngestionPropertyValue* [, ...])]
+`.ingest-from-storage-queued` `into` `table` [database(*DatabaseName*).]*TableName*[`EnableTracking`=*EnableTrackingValue*] [`SkipBatching`=*SkipBatchingValue*] [`CompressionFactor`=*CompressionFactorValue*] [with (*IngestionPropertyName* = *IngestionPropertyValue* [, ...])]
 
 <|
-
 *[`.list blobs`](list-blobs.md)(*SourceDataLocators*) command*
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
@@ -47,8 +38,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |*EnableTrackingValue*| `boolean` | | Determines whether the blob ingestion is tracked. For more information, see [.show queued ingestion operations](show-queued-ingestion-operations.md). The default is `false`.|
 |*SkipBatchingValue*| `boolean` | | If set to  `true`, the blobs are ingested individually rather than batched together with other blobs. The default value is `false`.|
 |*CompressionFactorValue*| `real` | |The compression factor (ratio) between the original size and the compressed size of blobs.  Compression factor is used to estimate the original size of the data for batching purposes, when blobs are provided in a compressed format.|
-|*IngestionPropertyName*| `string` | |The name of the ingestion property. For more information about ingestion properties, see [Data ingestion properties](../../ingestion-properties.md).|
-|*IngestionPropertyValue*| `string` | |The value of the ingestion property. For more information about ingestion properties, see [Data ingestion properties](../../ingestion-properties.md).|
+|*IngestionPropertyName*, *IngestionPropertyValue* | `string` | |Optional ingestion properties. For more information about ingestion properties, see [Data ingestion properties](../../ingestion-properties.md).|
 |*SourceDataLocators* | `string` | :heavy_check_mark:|One or many [storage connection strings](../../api/connection-strings/storage-connection-strings.md) separated by a comma character. Used in the `.list blobs` command, that is used in conjunction with the `.ingest-from-storage-queued into` command to return the blobs you want to ingest. For a full list of parameters that can be used, see [.list blobs command](list-blobs.md). |
 
 ## Returns

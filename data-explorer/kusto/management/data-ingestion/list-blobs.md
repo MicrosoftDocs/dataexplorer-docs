@@ -19,10 +19,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Syntax
 
-`.list blobs` (*SourceDataLocators*)
-[`Suffix`=*SuffixValue*]
-[`MaxFiles`=*MaxFilesValue*]
-[`PathFormat`=*PatternValue*]
+`.list blobs` (*SourceDataLocators*) [`Suffix`=*SuffixValue*] [`MaxFiles`=*MaxFilesValue*] [`PathFormat`=*PatternValue*]
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
