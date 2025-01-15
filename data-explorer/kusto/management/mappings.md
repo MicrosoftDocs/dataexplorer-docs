@@ -65,12 +65,14 @@ The following example shows ingestion where the mapping is defined in the ingest
     with (
     format = "json",
     ingestionMapping =
-    ```[ 
-  {"column":"timestamp","Properties":{"path":"$.timestamp"}},
-  {"column":"deviceId","Properties":{"path":"$.deviceId"}},
-  {"column":"messageId","Properties":{"path":"$.messageId"}},
-  {"column":"temperature","Properties":{"path":"$.temperature"}},
-  {"column":"humidity","Properties":{"path":"$.humidity"}}]
+    ```
+    [ 
+      {"column":"timestamp","Properties":{"path":"$.timestamp"}},
+      {"column":"deviceId","Properties":{"path":"$.deviceId"}},
+      {"column":"messageId","Properties":{"path":"$.messageId"}},
+      {"column":"temperature","Properties":{"path":"$.temperature"}},
+      {"column":"humidity","Properties":{"path":"$.humidity"}}
+    ]
   ```
     )
 ````
@@ -84,10 +86,10 @@ To map the same JSON file using a precreated mapping, create the `RawEventMappin
   ```
   [ 
     {"column":"timestamp","Properties":{"path":"$.timestamp"}},
-      {"column":"deviceId","Properties":{"path":"$.deviceId"}},
-      {"column":"messageId","Properties":{"path":"$.messageId"}},
-      {"column":"temperature","Properties":{"path":"$.temperature"}},
-      {"column":"humidity","Properties":{"path":"$.humidity"}}
+    {"column":"deviceId","Properties":{"path":"$.deviceId"}},
+    {"column":"messageId","Properties":{"path":"$.messageId"}},
+    {"column":"temperature","Properties":{"path":"$.temperature"}},
+    {"column":"humidity","Properties":{"path":"$.humidity"}}
   ]
   ```
 ````
