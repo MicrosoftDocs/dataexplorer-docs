@@ -60,7 +60,7 @@ The following examples use a RawEvents table with the following schema:
 
 The following example shows ingestion where the mapping is defined in the ingest command. The command ingests a JSON file from a URL into the RawEvents table. The mapping specifies the path to each field in the JSON file.
 
-```kusto
+````kusto
 .ingest into table RawEvents ('https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json') 
     with (
     format = "json",
@@ -73,13 +73,13 @@ The following example shows ingestion where the mapping is defined in the ingest
   {"column":"humidity","Properties":{"path":"$.humidity"}}]
   ```
     )
-```
+````
 
 ### Mapping with `ingestionMappingReference`
 
 To map the same JSON file using a precreated mapping, create the `RawEventMapping` ingestion mapping reference with the following command:
 
-```kusto
+````kusto
 .create table RawEvents ingestion json mapping 'RawEventMapping' 
   ```
   [ 
@@ -90,7 +90,7 @@ To map the same JSON file using a precreated mapping, create the `RawEventMappin
       {"column":"humidity","Properties":{"path":"$.humidity"}}
   ]
   ```
-```
+````
 
 Ingest the data using the `RawEventMapping` ingestion mapping reference with the following command:
 
