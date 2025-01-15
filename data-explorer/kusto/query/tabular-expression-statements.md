@@ -41,7 +41,7 @@ A tabular data source produces sets of records, to be further processed by tabul
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
 
 ### Filter rows by condition
 

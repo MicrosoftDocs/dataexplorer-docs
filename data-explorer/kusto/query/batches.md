@@ -18,7 +18,7 @@ A query can include multiple tabular expression statements, as long as they're d
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
 
 ### Name tabular results
 
