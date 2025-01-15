@@ -34,7 +34,7 @@ There are three kinds of user [query statements](statements.md):
 
 * A [tabular expression statement](tabular-expression-statements.md)
 * A [let statement](let-statement.md)
-* A [set statement](set-statement.md)
+* A [set statement](set-statement.md) (not available in Microsoft Sentinel) <!-- Monikerize? -->
 
 All query statements are separated by a `;` (semicolon), and only affect the query at hand.
 
@@ -91,7 +91,7 @@ For more information on management commands, see [Management commands overview](
 KQL is used by many other Microsoft services. For specific information on the use of KQL in these environments, refer to the following links:
 
 * [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview)
-* [Kusto Query Language in Microsoft Sentinel](/azure/sentinel/kusto-overview)
+* [Kusto Query Language in Microsoft Sentinel](kusto-sentinel-overview.md)
 * [Understanding the Azure Resource Graph query language](/azure/governance/resource-graph/concepts/query-language)
 * [Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview)
 * [CMPivot queries](/mem/configmgr/core/servers/manage/cmpivot-overview#queries)
