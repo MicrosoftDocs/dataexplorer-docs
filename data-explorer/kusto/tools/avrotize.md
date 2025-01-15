@@ -1,8 +1,8 @@
 ---
 title:  Avrotize k2a tool
-description: Learn how to use the avrotize k2a command to connect to a Kusto database and create an Avro schema.
+description: Learn how to use the Avrotize k2a command to connect to a Kusto database and create an Avro schema.
 ms.topic: reference
-ms.date: 01/14/2025
+ms.date: 01/15/2025
 ---
 # Avrotize tool
 
@@ -48,10 +48,16 @@ avrotize a2k  .\<AvroFilename.avsc> --out <KustoFilename.kql>
 
 The Avrotize tool is capable of converting JSON Schema, XML Schema, ASN.1 Schema, and Protobuf 2 and Protobuf 3 schemas into Avro schema. You can first convert the source schema into an Avro schema to normalize it, and then further convert it into Kusto schema.
 
-For example, the following command converts an input JSON Schema document "address.json":
+For example, to convert "address.json" into Avro schema, the following command first converts an input JSON Schema document "address.json" to normalize it:
 
 ```bash
 avrotize j2a address.json --out address.avsc
+```
+
+And then converts the Avro schema file into Kusto schema:
+
+```bash
+avrotize a2k address.avsc --out address.kql
 ```
 
 You can also chain the commands together to convert from JSON Schema via Avro into Kusto schema:
