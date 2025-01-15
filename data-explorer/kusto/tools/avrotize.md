@@ -46,7 +46,7 @@ If the Avro schema is a single record type, the output script includes a [`.crea
 avrotize a2k  .\<AvroFilename.avsc> --out <KustoFilename.kql>
 ```
 
-The Avrotize tool is capable of converting JSON Schema, XML Schema, ASN.1 Schema, and Protobuf 2 and Protobuf 3 schemas into Avro schema. You can first convert the source schema into an Avro schema to normalize it, and then further convert it into Kusto schema.
+The Avrotize tool is capable of converting JSON Schema, XML Schema, ASN.1 Schema, and Protobuf 2 and Protobuf 3 schemas into Avro schema. You can first convert the source schema into an Avro schema to normalize it and then convert it into Kusto schema.
 
 For example, to convert "address.json" into Avro schema, the following command first converts an input JSON Schema document "address.json" to normalize it:
 
@@ -54,7 +54,7 @@ For example, to convert "address.json" into Avro schema, the following command f
 avrotize j2a address.json --out address.avsc
 ```
 
-And then converts the Avro schema file into Kusto schema:
+Then convert the Avro schema file into Kusto schema:
 
 ```bash
 avrotize a2k address.avsc --out address.kql
