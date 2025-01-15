@@ -401,6 +401,8 @@ items:
             href: dashboard-visuals.md
           - name: Visualize sample data dashboards
             href: web-ui-samples-dashboards.md
+          - name: Share dashboards
+            href: azure-data-explorer-dashboard-share.md
       - name: Power BI
         items:
           - name: Use data in Power BI
