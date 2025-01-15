@@ -3,7 +3,7 @@ title:  Pattern statement
 description: Learn how to use pattern statements to map string tuples to tabular expressions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2025
+ms.date: 01/15/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 
@@ -11,9 +11,9 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-A **pattern** is a construct that maps string tuples to tabular expressions. 
+A **pattern** is a construct that maps string tuples to tabular expressions.
 
-Each pattern must *declare* a pattern name and optionally *define* a pattern mapping. Patterns that define a mapping return a tabular expression when invoked. Separate any two statements by a semicolon. 
+Each pattern must *declare* a pattern name and optionally *define* a pattern mapping. Patterns that define a mapping return a tabular expression when invoked. Separate any two statements by a semicolon.
 
 Empty patterns are patterns that are declared but don't define a mapping. When invoked, they return error *SEM0036* along with the details of the missing pattern definitions in the HTTP header.
 
@@ -60,13 +60,7 @@ For more information, see [Working with middle-tier applications](#work-with-mid
 
 ## Examples
 
-<<<<<<< HEAD
-In the [help cluster](https://dataexplorer.azure.com/clusters/help/), there's a `Samples` database with a `StormEvents` table.
-=======
 [!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
-
-In each of the following examples, a pattern is declared, defined, and then invoked.
->>>>>>> 64023baff08da7e840aa6020ac8a82df9c055aaa
 
 In these examples, a pattern is defined.
 
@@ -89,7 +83,7 @@ declare pattern country = (name:string)[state:string]
 country("Canada").Alberta
 ```
 
-**Output** 
+**Output**
 
 |Capital|
 |-------|
@@ -97,7 +91,7 @@ country("Canada").Alberta
 
 ### Define a scoped pattern
 
-This example defines a pattern to scope data and metrics of application data. The pattern is invoked to return a union of the data. 
+This example defines a pattern to scope data and metrics of application data. The pattern is invoked to return a union of the data.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -105,7 +99,7 @@ This example defines a pattern to scope data and metrics of application data. Th
 ::: moniker-end
 
 ```kusto
-declare pattern App = (applicationId:string)[scope:string]  
+declare pattern App = (applicationId:string)[scope:string]
 {
     ('a1').['Data']    = { range x from 1 to 5 step 1 | project App = "App #1", Data    = x };
     ('a1').['Metrics'] = { range x from 1 to 5 step 1 | project App = "App #1", Metrics = rand() };
@@ -161,16 +155,17 @@ union app("ApplicationX").["*"]
 | count
 ```
 
-**Output returns semantic error**
+**Output semantic error**
+
 > One or more pattern references were not declared. Detected pattern references: ["app('ApplicationX').['*']"]
 
 ## Work with middle-tier applications
 
-A middle-tier application provides its users with the ability to enhance the KQL experience by enriching the query results with augmented data from its internal service.
+A middle-tier application provides its users with the ability to use KQL and wants to enhnace the experience by enriching the query results with augmented data from its internal service.
 
 To this end, the application provides users with a pattern statement that returns tabular data that their users can use in their queries. The pattern's arguments are the keys the application will use to retrieve the enrichment data.
 
-When the user runs the query, the application doesn't parse the query itself but instead uses the error returned by an empty pattern to retrieve the keys it requires. So it prepends the query with the empty pattern declaration, sends it to the cluster for processing, and then parses the returned HTTP header to retrieve the values of missing pattern arguments. The application uses these values to look up the enrichment data and builds a new declaration that defines the appropriate enrichment data mapping. 
+When the user runs the query, the application doesn't parse the query itself but instead uses the error returned by an empty pattern to retrieve the keys it requires. So it prepends the query with the empty pattern declaration, sends it to the cluster for processing, and then parses the returned HTTP header to retrieve the values of missing pattern arguments. The application uses these values to look up the enrichment data and builds a new declaration that defines the appropriate enrichment data mapping.
 
 Finally, the application prepends the new definition to the query, resends it for processing, and returns the result it receives to the user.
 
@@ -200,7 +195,7 @@ The application receives the following error in response.
 
 #### Invoke a pattern
 
-The application inspects the error, determines that the error indicates a missing pattern reference, and retrieves the missing IP address (*10.10.10.10*). It uses the IP address to look up the enrichment data in its internal service and builds a new pattern defining the mapping of the IP address to the corresponding longitude and latitude data. The new pattern is prepended to the user's query and run again. 
+The application inspects the error, determines that the error indicates a missing pattern reference, and retrieves the missing IP address (*10.10.10.10*). It uses the IP address to look up the enrichment data in its internal service and builds a new pattern defining the mapping of the IP address to the corresponding longitude and latitude data. The new pattern is prepended to the user's query and run again.
 
 This time the query succeeds because the enrichment data is now declared in the query, and the result is sent to the user.
 
