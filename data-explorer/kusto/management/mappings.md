@@ -14,7 +14,7 @@ Ingestion mappings are used during ingestion to map incoming data to columns ins
 
 Data Explorer supports different types of mappings, both row-oriented (CSV, JSON, AVRO and W3CLOGFILE), and column-oriented (Parquet and ORC).
 
-Ingestion mappings can be defined in the ingest command, or can be [pre-created](create-ingestion-mapping-command.md) and referenced from the ingest command using `ingestionMappingReference` parameters. Ingestion is possible without specifying a mapping. For more information, see [identity mapping](#identity-mapping).
+Ingestion mappings can be defined in the ingest command, or can be [precreated](create-ingestion-mapping-command.md) and referenced from the ingest command using `ingestionMappingReference` parameters. Ingestion is possible without specifying a mapping. For more information, see [identity mapping](#identity-mapping).
 
 Each element in the mapping list is constructed from three fields:
 
@@ -79,7 +79,7 @@ The following example shows ingestion where the mapping is defined in the ingest
 
 ### Mapping with `ingestionMappingReference`
 
-To map the same JSON file using a pre-created mapping, create the `RawEventMapping` ingestion mapping reference with the following command:
+To map the same JSON file using a precreated mapping, create the `RawEventMapping` ingestion mapping reference with the following command:
 
 ````kusto
 .create table RawEvents ingestion json mapping 'RawEventMapping' 
