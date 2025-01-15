@@ -3,11 +3,43 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/11/2024
+ms.date: 01/14/2025
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and updated content in the Azure Data Explorer documentation.
+
+## December 2024
+
+**Functions library**
+
+|Article title | Description|
+|--|--|
+| [graph_path_discovery_fl()](/kusto/functions-library/graph-path-discovery-fl.md)| New article. Discover discover valid paths between relevant endpoints over graph data. |
+
+**General**
+
+|Article title | Description|
+|--|--|
+| [Azure Data Explorer web UI keyboard shortcuts](web-ui-query-keyboard-shortcuts.md) | Updated topic. Added keyboard shortcuts for Apple macOS. |
+| [Ingest data with Fluent Bit into Azure Data Explorer](fluent-bit.md)| Updated topic. Added new properties to the Fluent Bit client configuration file. |
+
+**Query**
+
+|Article title | Description|
+|--|--|
+| [series_periods_detect()](/kusto/query/series-periods-detect-function.md) | Updated topic. Refreshed with clearer content and examples. |
+| [extract()](/kusto/query/extract-function.md) |Updated topic. Refreshed the examples and added outputs to the example queries. |
+| [max_of()](/kusto/query/max-of-function.md) |Updated topic. Added an example of data with two datetime columns, to show that the later date is retured. |
+| [iff()](/kusto/query/iff-function.md) |Updated topic. Added new examples using the iff() function to classify data, and to combine with other functions.|
+| [parse_version()](/kusto/query/parse-version-function.md) |Updated topic. Refreshed with a two step example of how to compare parsed versions to a minimum version. |
+| [not()](/kusto/query/not-function.md) |Updated topic. Refreshed with examples of how to use the not() function to exclude records from the query results.|
+| [Tutorial: Learn common operators](/kusto/query/tutorials/learn-common-operators.md) |Updated topic. Added the syntax for filtering queries by date and time. |
+| [sum() (aggregation function)](/kusto/query/sum-aggregation-function.md) | Updated topic. Modified the example for clarity. |
+| [arg_max() (aggregation function)](/kusto/query/arg-max-aggregation-function.md) | Updated topic. Refreshed with clearer content and added an example to distinguish this function from max(). |
+| [arg_min() (aggregation function)](/kusto/query/arg-min-aggregation-function.md) | Updated topic. Added examples to distinguish this function from min().|
+| [max() (aggregation function)](/kusto/query/max-aggregation-function.md) | Updated topic. Refreshed with clearer content and examples. |
+| [min() (aggregation function)](/kusto/query/min-aggregation-function.md) | Updated topic. Refreshed with clearer content and examples. |
 
 ## November 2024
 
@@ -207,18 +239,3 @@ No updates.
 |--|--|
 | - [Integrations overview](integrate-overview.md) <br/> - [Data integrations overview](integrate-data-overview.md) <br/> - [Query integrations overview](integrate-query-overview.md) <br/> - [Visualize integrations overview](integrate-visualize-overview.md)  | New articles. Describes the available data connectors, tools, and query integrations, and updated article on the available visualize integrations.|
 | [Schema optimization best practices](schema-best-practice.md)| New article. Describes the best practices for schema design in Azure Data Explorer.|
-
-## December 2023
-
-**General**
-
-| Article title | Description |
-|--|--|
-| [Migrate your cluster to support multiple availability zones](migrate-cluster-to-multiple-availability-zone.md)| New article. Describes how to migrate your cluster to support multiple availability zones.|
-
-**Query**
-
-| Article title | Description |
-|--|--|
-|-[Scalar function types at a glance](/kusto/query/scalar-functions?view=azure-data-explorer&preserve-view=true) <br/> -[series_cosine_similarity()](/kusto/query/series-cosine-similarity-function?view=azure-data-explorer&preserve-view=true) <br/> - [series_magnitude()](/kusto/query/series-magnitude-function?view=azure-data-explorer&preserve-view=true) <br/> - [series_sum()](/kusto/query/series-sum-function?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to calculate series elements, and added to scalar functions overview.|
-|[series_dot_product()](/kusto/query/series-dot-product-function?view=azure-data-explorer&preserve-view=true)| Updated article. Added section on performance optimization.|
