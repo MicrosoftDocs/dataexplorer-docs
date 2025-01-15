@@ -26,7 +26,7 @@ In general, dashboards are shared in two steps: Grant permissions, and share the
 1. Select the **Share** menu item in the top bar of the dashboard.
 1. Select **Manage permissions** from the drop-down.
 
-    :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Share dashboard drop-down.":::
+    :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Screenshot of the share dashboard drop-down.":::
 
 ## Grant permissions
 
