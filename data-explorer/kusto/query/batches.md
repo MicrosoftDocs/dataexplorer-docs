@@ -36,13 +36,17 @@ StormEvents | where State == "GUAM" | count | as ['Count of events in Guam']
 
 **Output**
 
-### [Florida](#tab/Count_of_events_in_Florida)
+### [Count of events in Florida](#tab/Florida)
 
-1042
+| Count |
+| --- |
+| 1042 |
 
-### [Guam](#tab/Count_of_events_in_Guam)
+### [Count of events in Guam](#tab/Guam)
 
-4
+| Count |
+| --- |
+| 4 |
 
 ### Share a calculation
 
@@ -59,7 +63,7 @@ m | where n > 2000;
 m | where n < 10
 ```
 
-####Output####
+**Output**
 
 ### [Table1](#tab/Table 1)
 
