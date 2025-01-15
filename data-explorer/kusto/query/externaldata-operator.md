@@ -26,6 +26,8 @@ The `externaldata` operator returns a table whose schema is defined in the query
 
 > [!NOTE]
 > Use the `externaldata` operator to retrieve small reference tables of up to 100 MB from an external storage artifact. The operator is not designed for large data volumes. To retrieve large volumes of external data, we recommend [ingesting the external data into Log Analytics as custom logs](/azure/azure-monitor/logs/tutorial-custom-logs).
+
+> [!NOTE]
 > This operator isn't supported when the public endpoint of the storage artifact is behind a firewall.
 
 ::: moniker-end
