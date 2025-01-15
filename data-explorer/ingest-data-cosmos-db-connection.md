@@ -3,7 +3,7 @@ title: Ingest data from Azure Cosmos DB into Azure Data Explorer
 description: Learn how to ingest (load) data into Azure Data Explorer from Cosmos DB.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 06/15/2023
+ms.date: 01/07/2025
 ---
 
 # Ingest data from Azure Cosmos DB into Azure Data Explorer
@@ -11,6 +11,11 @@ ms.date: 06/15/2023
 Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Cosmos DB for NoSql](/azure/cosmos-db/nosql/) using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your Data Explorer table. The change feed listens for new and updated documents but doesn't log deletes. For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 Each data connection listens to a specific Cosmos DB container and ingests data into a specified table (more than one connection can ingest in a single table). The ingestion method supports streaming ingestion (when enabled) and queued ingestion.
+
+The two main scenarios for using the Cosmos DB change feed data connection are:
+
+*  Replicating a Cosmos DB container for analytical purposes. For more information,  see [Get latest versions of Azure Cosmos DB documents](ingest-data-cosmos-db-queries.md).
+*  Analyzing the document changes in a Cosmos DB container. For more information, see [Considerations](#considerations).
 
 In this article, you'll learn how to set up a Cosmos DB change feed data connection to ingest data into Azure Data Explorer with System Managed Identity. Review the [considerations](#considerations) before you start.
 
@@ -381,7 +386,7 @@ The following considerations apply to the Cosmos DB change feed:
 
 - Deleting and recreating a Cosmos DB container isn't supported
 
-    Azure Data Explorer keeps track of the change feed by checkpointing the "position" it is at in the feed.  This is done using continuation token on each physical partitions of the container.  When a container is deleted/recreated, those continuation token are invalid and aren't reset:  you must delete and recreate the data connection.
+    Azure Data Explorer keeps track of the change feed by checkpointing the "position" it is at in the feed. This is done using continuation token on each physical partitions of the container.  When a container is deleted/recreated, the continuation token is invalid and isn't reset. In this case, you must delete and recreate the data connection.
 
 ## Estimate cost
 
