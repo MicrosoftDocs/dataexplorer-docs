@@ -67,21 +67,23 @@ m | where n < 10
 
 **Output**
 
-### [Table1](#tab/Table 1)
+### [Table 1](#tab/table-1)
 
-| State | n    |
-|-------|------|
-| ILLINOIS | 2022|
-| IOWA | 2337    
+| State | n |
+|--|--|
+| ILLINOIS | 2022 |
+| IOWA | 2337 |
 | KANSAS | 3166 |
-| MISSOURI | 2016  
+| MISSOURI | 2016 |
 | TEXAS | 4701 |
 
-### [Table2](#tab/Table 2)
+### [Table 2](#tab/table-2)
 
-| State | n    |
-|-------|------|
-| GUAM | 2022|
-| GULF OF ALASKA | 2337    
+| State | n |
+|--|--|
+| GUAM | 2022 |
+| GULF OF ALASKA | 2337 |
 | HAWAII WATERS | 3166 |
-| LAKE ONTARIO | 2016  
+| LAKE ONTARIO | 2016 |
+
+---
