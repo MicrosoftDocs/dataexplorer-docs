@@ -119,10 +119,11 @@ Add `| render columnchart` to the query to visualize the result.
 If the columns have different names, for example `StormEvents` has `State` and `PopulationData` has `StateName`,  specify the join as follows:
 
 ```kusto 
- | join kind=innerunique PopulationData on $left.State == $right.StateName  
+StormEvents
+| join kind=innerunique PopulationData on $left.State == $right.StateName  
 ```
 
-The `$left` table is the table on the left, or outer side of the join operator, in this case `StormEvents`, The `$right` table is the table on the right, or inner side of the join operator, in this case `PopulationData`.  
+The `$left` table is the table on the left, or outer side of the join operator, in this case `StormEvents`. The `$right` table is the table on the right, or inner side of the join operator, in this case `PopulationData`.  
 
 > [!TIP]
 > There are many types of joins that you can perform with the `join` operator. See a [list of join flavors](../join-operator.md#returns).
