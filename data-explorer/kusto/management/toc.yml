@@ -46,6 +46,8 @@ items:
     items:
       - name: Best practices for schema management
         href: management-best-practices.md
+      - name: Avrotize k2a tool
+        href: /kusto/management/tools/avrotize.md
       - name: Clusters
         items:
         - name: .execute cluster script command
