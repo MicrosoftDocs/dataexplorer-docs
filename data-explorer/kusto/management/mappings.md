@@ -73,7 +73,7 @@ The following example shows ingestion where the mapping is defined in the ingest
       {"column":"temperature","Properties":{"path":"$.temperature"}},
       {"column":"humidity","Properties":{"path":"$.humidity"}}
     ]
-  ```
+    ```
     )
 ````
 
@@ -103,7 +103,6 @@ Ingest the JSON file using the `RawEventMapping` ingestion mapping reference wit
           ingestionMappingReference="RawEventMapping"
         )
 ```
-
 
 ## Identity mapping
 
