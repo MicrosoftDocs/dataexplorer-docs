@@ -63,18 +63,18 @@ The following example shows ingestion where the mapping is defined in the ingest
 ````kusto
 .ingest into table RawEvents ('https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json') 
     with (
-    format = "json",
-    ingestionMapping =
-    ```
-    [ 
-      {"column":"timestamp","Properties":{"path":"$.timestamp"}},
-      {"column":"deviceId","Properties":{"path":"$.deviceId"}},
-      {"column":"messageId","Properties":{"path":"$.messageId"}},
-      {"column":"temperature","Properties":{"path":"$.temperature"}},
-      {"column":"humidity","Properties":{"path":"$.humidity"}}
-    ]
-    ```
-    )
+            format = "json",
+            ingestionMapping =
+            ```
+            [ 
+              {"column":"timestamp","Properties":{"path":"$.timestamp"}},
+              {"column":"deviceId","Properties":{"path":"$.deviceId"}},
+              {"column":"messageId","Properties":{"path":"$.messageId"}},
+              {"column":"temperature","Properties":{"path":"$.temperature"}},
+              {"column":"humidity","Properties":{"path":"$.humidity"}}
+            ]
+            ```
+          )
 ````
 
 ### Mapping with `ingestionMappingReference`
