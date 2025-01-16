@@ -6,11 +6,13 @@ ms.topic: reference
 ms.custom: build-2023, build-2023-dataai
 ms.date: 08/11/2024
 adobe-target: true
-monikerRange: "microsoft-fabric || azure-data-explorer || microsoft-sentinel || azure-monitor "
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # Kusto Query Language (KQL) overview
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)]
+
+For Microsoft Sentinel, see [Kusto Query Language in Microsoft Sentinel](kusto-sentinel-overview.md).
 
 
 Kusto Query Language (KQL) is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. 
@@ -34,7 +36,7 @@ There are three kinds of user [query statements](statements.md):
 
 * A [tabular expression statement](tabular-expression-statements.md)
 * A [let statement](let-statement.md)
-* A [set statement](set-statement.md) (not available in Microsoft Sentinel) <!-- Monikerize? -->
+* A [set statement](set-statement.md) (not available in [Microsoft Sentinel](kusto-sentinel-overview.md))
 
 All query statements are separated by a `;` (semicolon), and only affect the query at hand.
 

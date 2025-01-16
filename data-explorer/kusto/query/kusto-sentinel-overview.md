@@ -55,11 +55,11 @@ Explore the demo environment. Like Log Analytics in your production environment,
 
 - **Find an existing query to study or modify.** Select the **Queries** tab (shown in the red rectangle at the upper left) to see a list of queries available out-of-the-box. Or, select **Queries** from the button bar at the top right. You can explore the queries that come with Microsoft Sentinel out-of-the-box. Double-clicking a query places the whole query in the query window at the point of the cursor.
 
-    :::image type="content" source="./media/kusto-overview/portal-placement.png" alt-text="Shows the Log Analytics demo environment.":::
+    :::image type="content" source="./media/kusto-sentinel-overview/portal-placement.png" alt-text="Screenshot that shows the Log Analytics demo environment.":::
 
 Like in this demo environment, you can query and filter data in the Microsoft Sentinel **Logs** page. You can select a table and drill down to see columns. You can modify the default columns shown using the **Column chooser**, and you can set the default time range for queries. If the time range is explicitly defined in the query, the time filter is unavailable (grayed out). For more information, see 
 
-If you're onboarded to [Microsoft's unified security operations platform](microsoft-sentinel-defender-portal.md), you can also query and filter data in the Microsoft Defender **Advanced hunting** page. For more information, see [Advanced hunting with Microsoft Sentinel data in Microsoft Defender portal](/defender-xdr/advanced-hunting-microsoft-defender?toc=%2Fazure%2Fsentinel%2FTOC.json&bc=%2Fazure%2Fsentinel%2Fbreadcrumb%2Ftoc.json&branch=main).
+If you're onboarded to [Microsoft's unified security operations platform](/azure/sentinel/microsoft-sentinel-defender-portal), you can also query and filter data in the Microsoft Defender **Advanced hunting** page. For more information, see [Advanced hunting with Microsoft Sentinel data in Microsoft Defender portal](/defender-xdr/advanced-hunting-microsoft-defender?toc=%2Fazure%2Fsentinel%2FTOC.json&bc=%2Fazure%2Fsentinel%2Fbreadcrumb%2Ftoc.json&branch=main).
 
 ## Query structure
 
@@ -166,7 +166,7 @@ In Kusto Query Language, log names are case sensitive, so `SigninLogs` and `sign
 
 ### Limiting data: *take* / *limit*
 
-The [*take*](take-operator.md?view=microsoft-sentinel&preserve-view=true) operator (and the identical [limit](limit-operator.md?view=microsoft-sentinel&preserve-view=true) operator) is used to limit your results by returning only a given number of rows. It's followed by an integer that specifies the number of rows to return. Typically, it's used at the end of a query after you have determined your sort order, and in such a case it returns the given number of rows at the top of the sorted order.
+The [*take*](take-operator.md?view=microsoft-sentinel&preserve-view=true) operator (and the identical *limit* operator) is used to limit your results by returning only a given number of rows. It's followed by an integer that specifies the number of rows to return. Typically, it's used at the end of a query after you have determined your sort order, and in such a case it returns the given number of rows at the top of the sorted order.
 
 Using `take` earlier in the query can be useful for testing a query, when you don't want to return large datasets. However, if you place the `take` operation before any `sort` operations, `take` returns rows selected at random - and possibly a different set of rows every time the query is run. Here's an example of using take:
 
@@ -174,14 +174,14 @@ Using `take` earlier in the query can be useful for testing a query, when you do
 SigninLogs
       | take 5
 ```
-:::image type="content" source="media/kusto-overview/table-take-5.png" alt-text="Screenshot of results of take operator.":::
+:::image type="content" source="media/kusto-sentinel-overview/table-take-5.png" alt-text="Screenshot of results of take operator.":::
 
 > [!TIP]
 > When working on a brand-new query where you may not know what the query looks like, it can be useful to put a `take` statement at the beginning to artificially limit your dataset for faster processing and experimentation. Once you are happy with the full query, you can remove the initial `take` step.
 
 ### Sorting data: *sort* / *order*
 
-The [*sort*](sort-operator.md?view=microsoft-sentinel&preserve-view=true) operator (and the identical [order](order-operator.md?view=microsoft-sentinel&preserve-view=true) operator) is used to sort your data by a specified column. In the following example, we ordered the results by *TimeGenerated* and set the order direction to descending with the *desc* parameter, placing the highest values first; for ascending order we would use *asc*. 
+The [*sort*](sort-operator.md?view=microsoft-sentinel&preserve-view=true) operator (and the identical *order* operator) is used to sort your data by a specified column. In the following example, we ordered the results by *TimeGenerated* and set the order direction to descending with the *desc* parameter, placing the highest values first; for ascending order we would use *asc*.
 
 > [!NOTE]
 > The default direction for sorts is descending, so technically you only have to specify if you want to sort in ascending order. However, specifying the sort direction in any case makes your query more readable.
@@ -194,7 +194,7 @@ SigninLogs
 
 As we mentioned, we put the `sort` operator before the `take` operator. We need to sort first to make sure we get the appropriate five records.
 
-:::image type="content" source="media/kusto-overview/table-take-sort.png" alt-text="Screenshot of results of sort operator, with take limit.":::
+:::image type="content" source="media/kusto-sentinel-overview/table-take-sort.png" alt-text="Screenshot of results of sort operator, with take limit.":::
 
 #### *Top*
 
@@ -298,7 +298,7 @@ Perf
 | summarize count() by CounterName
 ```
 
-:::image type="content" source="media/kusto-overview/table-summarize-count.png" alt-text="Screenshot of results of summarize operator with count aggregation.":::
+:::image type="content" source="media/kusto-sentinel-overview/table-summarize-count.png" alt-text="Screenshot of results of summarize operator with count aggregation.":::
 
 Because the output of `summarize` is a new table, any columns not explicitly specified in the `summarize` statement aren't passed down the pipeline. To illustrate this concept, consider this example:
 
@@ -320,7 +320,7 @@ Perf
 
 The way to read the `summarize` line in your head would be: "summarize the count of records by *CounterName*, and group by *ObjectName*." You can continue adding columns, separated by commas, to the end of the `summarize` statement.
 
-:::image type="content" source="media/kusto-overview/table-summarize-group.png" alt-text="Screenshot of results of summarize operator with two arguments.":::
+:::image type="content" source="media/kusto-sentinel-overview/table-summarize-group.png" alt-text="Screenshot of results of summarize operator with two arguments.":::
 
 Building on the previous example, if we want to aggregate multiple columns at the same time, we can achieve this by adding aggregations to the `summarize` operator, separated by commas. In the example below, we're getting not only a count of all the records but also a sum of the values in the *CounterValue* column across all records (that match any filters in the query):
 
@@ -331,7 +331,7 @@ Perf
 | sort by ObjectName asc
 ```
 
-:::image type="content" source="media/kusto-overview/table-summarize-multiple.png" alt-text="Screenshot of results of summarize operator with multiple aggregations.":::
+:::image type="content" source="media/kusto-sentinel-overview/table-summarize-multiple.png" alt-text="Screenshot of results of summarize operator with multiple aggregations.":::
 
 #### Renaming aggregated columns
 
@@ -348,7 +348,7 @@ Perf
 
 Now, our summarized columns are named *Count* and *CounterSum*.
 
-:::image type="content" source="media/kusto-overview/friendly-column-names.png" alt-text="Screenshot of friendly column names for aggregations.":::
+:::image type="content" source="media/kusto-sentinel-overview/friendly-column-names.png" alt-text="Screenshot of friendly column names for aggregations.":::
 
 There's more to the `summarize` operator than we can cover here, but you should invest the time to learn it because it's a key component to any data analysis you plan to perform on your Microsoft Sentinel data.
 
@@ -393,7 +393,7 @@ Perf
 | project ObjectName, CounterValue, CounterName
 ```
 
-:::image type="content" source="media/kusto-overview/table-project.png" alt-text="Screenshot of results of project operator.":::
+:::image type="content" source="media/kusto-sentinel-overview/table-project.png" alt-text="Screenshot of results of project operator.":::
 
 As you can imagine, when you're working with wide datasets, you might have lots of columns you want to keep, and specifying them all by name would require much typing. For those cases, you have [*project-away*](project-away-operator.md?view=microsoft-sentinel&preserve-view=true), which lets you specify which columns to remove, rather than which ones to keep, like so:
 
@@ -418,7 +418,7 @@ Usage
 
 On the final line in our `project` statement, we renamed the *Quantity* column to *Mbytes*, so we can easily tell which unit of measure is relevant to each column. 
 
-:::image type="content" source="media/kusto-overview/table-extend.png" alt-text="Screenshot of results of extend operator.":::
+:::image type="content" source="media/kusto-sentinel-overview/table-extend.png" alt-text="Screenshot of results of extend operator.":::
 
 It's worth noting that `extend` also works with already calculated columns. For example, we can add one more column called *Bytes* that is calculated from *Kbytes*:
 
@@ -430,7 +430,7 @@ Usage
 | project DataType, MBytes=Quantity, KBytes, Bytes
 ```
 
-:::image type="content" source="media/kusto-overview/table-extend-twice.png" alt-text="Screenshot of results of two extend operators.":::
+:::image type="content" source="media/kusto-sentinel-overview/table-extend-twice.png" alt-text="Screenshot of results of two extend operators.":::
 
 ## Joining tables
 
@@ -597,4 +597,4 @@ Take advantage of a Kusto Query Language workbook right in Microsoft Sentinel it
 
 ### More resources
 
-See [this collection of learning, training, and skilling resources](kusto-resources.md) for broadening and deepening your knowledge of Kusto Query Language.
+See [this collection of learning, training, and skilling resources](/azure/sentinel/kusto-resources) for broadening and deepening your knowledge of Kusto Query Language.
