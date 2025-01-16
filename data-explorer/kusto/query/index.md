@@ -36,7 +36,7 @@ There are three kinds of user [query statements](statements.md):
 
 * A [tabular expression statement](tabular-expression-statements.md)
 * A [let statement](let-statement.md)
-* A [set statement](set-statement.md) (not available in [Microsoft Sentinel](kusto-sentinel-overview.md))
+* A [set statement](set-statement.md)
 
 All query statements are separated by a `;` (semicolon), and only affect the query at hand.
 

@@ -16,7 +16,7 @@ monikerRange: "microsoft-sentinel"
 
 Kusto Query Language is the language you use to work with and manipulate data in Microsoft Sentinel. The logs you feed into your workspace aren't worth much if you can't analyze them and get the important information hidden in all that data. Kusto Query Language has not only the power and flexibility to get that information, but the simplicity to help you get started quickly. If you have a background in scripting or working with databases, much the content of this article should feel familiar. If not, don't worry, as the intuitive nature of the language quickly enables you to start writing your own queries and driving value for your organization.
 
-This article introduces the basics of Kusto Query Language, covering some of the most used functions and operators, which should address 75 to 80 percent of the queries users write day to day. When you need more depth, or to run more advanced queries, you can take advantage of the new **Advanced KQL for Microsoft Sentinel** workbook (see this [introductory blog post](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/advanced-kql-framework-workbook-empowering-you-to-become-kql/ba-p/3033766)). See also the [official Kusto Query Language documentation](index.md?view=microsoft-sentinel&preserve-view=true) and various online courses (such as [Pluralsight's](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)).
+This article introduces the basics of Kusto Query Language, covering some of the most used functions and operators, which should address 75 to 80 percent of the queries users write day to day. When you need more depth, or to run more advanced queries, you can take advantage of the new **Advanced KQL for Microsoft Sentinel** workbook (see this [introductory blog post](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/advanced-kql-framework-workbook-empowering-you-to-become-kql/ba-p/3033766)). See also the [official Kusto Query Language documentation](/kusto/?view=microsoft-sentinel&preserve-view=true) landing page, where you can also find links to other training resources.
 
 ## Background - Why Kusto Query Language?
 
@@ -27,7 +27,7 @@ Microsoft Sentinel is built on top of the Azure Monitor service and it uses Azur
 - data created by Microsoft Sentinel itself, resulting from the analyses it creates and performs - for example, alerts, incidents, and UEBA-related information.
 - data uploaded to Microsoft Sentinel to assist with detection and analysis - for example, threat intelligence feeds and watchlists.
 
-[Kusto Query Language](index.md?view=microsoft-sentinel&preserve-view=true) was developed as part of the [Azure Data Explorer](/azure/data-explorer/) service, and it’s therefore optimized for searching through big-data stores in a cloud environment. Inspired by famed undersea explorer Jacques Cousteau (and pronounced accordingly "koo-STOH"), it’s designed to help you dive deep into your oceans of data and explore their hidden treasures. 
+[Kusto Query Language](/kusto/?view=microsoft-sentinel&preserve-view=true) was developed as part of the [Azure Data Explorer](/azure/data-explorer/) service, and it’s therefore optimized for searching through big-data stores in a cloud environment. Inspired by famed undersea explorer Jacques Cousteau (and pronounced accordingly "koo-STOH"), it’s designed to help you dive deep into your oceans of data and explore their hidden treasures. 
 
 Kusto Query Language is also used in Azure Monitor, and supports extra Azure Monitor features that allow you to retrieve, visualize, analyze, and parse data in Log Analytics data stores. In Microsoft Sentinel, you're using tools based on Kusto Query Language whenever you’re visualizing and analyzing data and hunting for threats, whether in existing rules and workbooks, or in building your own.
 
@@ -94,7 +94,7 @@ Hopefully, you now have an appreciation for the overall structure of a query in 
 
 ### Data types
 
-Before we get into the query operators, let's first take a quick look at [data types](scalar-data-types/index.md?view=microsoft-sentinel&preserve-view=true). As in most languages, the data type determines what calculations and manipulations can be run against a value. For example, if you have a value that is of type *string*, you won't be able to perform arithmetic calculations against it.
+Before we get into the query operators, let's first take a quick look at [data types](scalar-data-types/index.md). As in most languages, the data type determines what calculations and manipulations can be run against a value. For example, if you have a value that is of type *string*, you won't be able to perform arithmetic calculations against it.
 
 In Kusto Query Language, most of the data types follow standard conventions and have names you've probably seen before. The following table shows the full list:
 
