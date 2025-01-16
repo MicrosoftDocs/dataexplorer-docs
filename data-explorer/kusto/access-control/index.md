@@ -76,7 +76,28 @@ When the authorization of a user or application principal is checked, the system
 
 > [!NOTE]
 >
-> [!INCLUDE [Cached Group Membership](../includes/cached-group-membership.md)]
+> [!INCLUDE [Cached Group Membership](../includes/cached-group-membership.md)] 
+
+### Forcing Reevaluation of Group Membership
+User have the option to force reevaluation of group membership **for a specific group**. This capability is useful in scenarios where group membership based JIT is used, e.g, when Entra Privileged Identity Management (PIM) is used to obtain higher privileges on the service.
+
+Reevaluation can be requested by any principal on a specific group. This ability is restricted in the following ways:
+1. It can called up to 10 times an hour per principal
+2. It requires the calling principal to be a member of the group at the time of the request
+
+If any of theese conditions are not met, the reqest will result in an error.
+
+Too reevaluate the membership of the current principal on a group, run 
+```
+.clear cluster cache groupmembership with (group='<Group FQN>')
+```
+
+Reevaluation can also be requested by a privileged principal for other principals. It requires the requesting principal to have _All Database Monitor_ rights on the target cluster, and is not restrcited as described above. Privileged principals can also run the previous flavor of the command without restrictions.
+
+Too reevaluate the membership of another principal on a group, run 
+```
+.clear cluster cache groupmembership with (principal=’<principal FQN>’, group='<Group FQN>')
+```
 
 ## Related content
 
