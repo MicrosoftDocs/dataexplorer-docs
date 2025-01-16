@@ -66,14 +66,14 @@ For more information on management commands, see [Management commands overview](
 KQL is used by many other Microsoft services. For specific information on the use of KQL in these environments, refer to the following links:
 
 [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview)
-[Kusto Query Language in Microsoft Sentinel](kusto-sentinel-overview.md)
+[Kusto Query Language in Microsoft Sentinel](/azure/sentinel/kusto-overview)
 [Understanding the Azure Resource Graph query language](/azure/governance/resource-graph/concepts/query-language)
 [Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview)
 [CMPivot queries](/mem/configmgr/core/servers/manage/cmpivot-overview#queries)
 
 ## Related stuff
 
-* [Tutorial: Learn common operators](tutorials/learn-common-operators.md)
+* [Tytorial: Learn common operators](tutorials/learn-common-operators.md)
 * [Tutorial: Use aggregation functions](tutorials/use-aggregation-functions.md)
 * [KQL quick reference](kql-quick-reference.md)
 * [SQL to Kusto Query Language cheat sheet](sql-cheat-sheet.md)
