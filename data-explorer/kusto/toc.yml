@@ -3,6 +3,8 @@ items:
     href: index.yml
   - name: What is Kusto Query Language?
     href: query/index.md
+  - name: Kusto overview for Microsoft Sentinel
+    href: query/kusto-sentinel-overview.md
   - name: Get started with KQL
     expanded: true
     items:
