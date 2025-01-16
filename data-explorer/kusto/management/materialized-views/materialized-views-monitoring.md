@@ -130,7 +130,8 @@ the view is unhealthy, you can follow the recommendations below to identify the 
    changes to the definition of view, if they are applicable to your scenario:
     * Include a `datetime` group by key in the view definition. A `datetime` group by key can significantly reduce the amount of
       data scanned from the view, **as long as there is no late arriving data in this column**. See more in
-      [Performance tips](materialized-view-create.md#performance-tips).
+      [Performance tips](materialized-view-create.md#performance-tips). Note that this change requires creating a new materialized view,
+      as updates to group by keys of an existing view aren't supported.
     * Use a `lookback` as part of the view definition. Read more about `lookback` in
       [create materialized view properties](../../includes/materialized-view-create-properties.md).
 
