@@ -3,7 +3,7 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 01/13/2025
+ms.date: 01/16/2025
 ---
 # .list blobs command
 
@@ -101,7 +101,7 @@ MaxFiles=10
 PathFormat=("myfolder/year=" datetime_pattern("yyyy'/month='MM'/day='dd", creationTime) "/")
 ```
 
-The `PathFormat` in the example can extract dates from a path such as the following:
+The `PathFormat` in the example can extract dates from a path such as the following path:
 
 ```
 https://mystorageaccount.blob.core.windows.net/datasets/myfolder/year=2024/month=03/day=16/myblob.parquet

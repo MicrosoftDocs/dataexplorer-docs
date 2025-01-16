@@ -19,12 +19,9 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Syntax
 
-`.ingest-from-storage-queued` `into` `table` [database(*DatabaseName*).]*TableName*[`EnableTracking`=*EnableTrackingValue*] [`SkipBatching`=*SkipBatchingValue*] [`CompressionFactor`=*CompressionFactorValue*] [with (*IngestionPropertyName* = *IngestionPropertyValue* [, ...])]<|*[`.list blobs`](list-blobs.md) command*
+`.ingest-from-storage-queued` `into` `table` [database(*DatabaseName*).]*TableName*[`EnableTracking`=*EnableTrackingValue*] [`SkipBatching`=*SkipBatchingValue*] [`CompressionFactor`=*CompressionFactorValue*] [with (*IngestionPropertyName* = *IngestionPropertyValue* [, ...])] `<|` *[`.list blobs`](list-blobs.md) command*
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
-
-> [!NOTE]
-> For detailed information about the `.list blobs` command and parameters, see [.list blobs command](list-blobs.md).
 
 ## Parameters
 
@@ -37,7 +34,8 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |*CompressionFactorValue*| `real` | |The compression factor (ratio) between the original size and the compressed size of blobs.  Compression factor is used to estimate the original size of the data for batching purposes, when blobs are provided in a compressed format.|
 |*IngestionPropertyName*, *IngestionPropertyValue* | `string` | |Optional ingestion properties. For more information about ingestion properties, see [Data ingestion properties](../../ingestion-properties.md).|
 
-The `.list blobs` command is used in conjunction with the `.ingest-from-storage-queued into` command to return the blobs you want to ingest. For a full list of parameters that can be used, see [.list blobs command](list-blobs.md).
+> [!NOTE]
+> The `.list blobs` command is used with the `.ingest-from-storage-queued into` command to return the blobs you want to ingest. For detailed information about the command and a full list of its parameters, see [.list blobs command](list-blobs.md).
 
 ## Returns
 

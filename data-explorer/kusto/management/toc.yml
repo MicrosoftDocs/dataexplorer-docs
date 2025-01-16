@@ -808,17 +808,6 @@ items:
         href: ../ingestion-supported-formats.md
       - name: Ingestion properties
         href: ../ingestion-properties.md
-      - name: Ingest from queued storage
-        items:
-          - name: .ingest-from-storage-queued into command
-            displayName: .ingest-from-storage-queued, ingest from storage command
-            href: data-ingestion/ingest-from-storage-queued.md
-          - name: .list blobs command
-            href: data-ingestion/list-blobs.md
-          - name: .cancel queued ingestion operation command
-            href: data-ingestion/cancel-queued-ingestion-operation-command.md
-          - name: .show queued ingestion operation command
-            href: data-ingestion/show-queued-ingestion-operations.md
       - name: .ingest-into
         displayName: .ingest into, pull data, pulling ingestion
         href: data-ingestion/ingest-into-command.md
@@ -832,6 +821,17 @@ items:
       - name: .ingest inline command
         displayName: .ingest inline
         href: data-ingestion/ingest-inline.md
+      - name: Queued ingestion
+        items:
+          - name: .ingest-from-storage-queued into command
+            displayName: .ingest-from-storage-queued, ingest from storage command
+            href: data-ingestion/ingest-from-storage-queued.md
+          - name: .list blobs command
+            href: data-ingestion/list-blobs.md
+          - name: .cancel queued ingestion operation command
+            href: data-ingestion/cancel-queued-ingestion-operation-command.md
+          - name: .show queued ingestion operation command
+            href: data-ingestion/show-queued-ingestion-operations.md        
       - name: Streaming ingestion
         items:
           - name: Streaming ingestion and schema changes

@@ -3,14 +3,14 @@ title:  .show queued ingestion operations command
 description: Learn how to use the `.show queued ingestion operations` command to view a log of the queued ingestion operations that are currently running or completed.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 01/13/2025
+ms.date: 01/16/2025
 ---
 
 # .show queued ingestion operations command
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-Ingestion operations can be tracked once the [.ingest-from-storage-queued](ingest-from-storage-queued.md) begins.
+Ingestion operations are tracked once the [.ingest-from-storage-queued](ingest-from-storage-queued.md) command begins.
 
 ## Permissions
 
@@ -42,7 +42,7 @@ The command returns a table with the latest update information for each ID.
 |InProgress | `long` |Count of blobs to be ingested.|
 |Ingested | `long` |Count of blobs that have been ingested.|
 |Failed | `long` |Count of blobs that failed **permanently**.|
-|Canceled | `long` |Count of blobs that were canceled due to a call to the [.cancel queued ingestion operation command](cancel-queued-ingestion-operation-command.md) command.|
+|Canceled | `long` |Count of blobs that were canceled due to a call to the [.cancel queued ingestion operation](cancel-queued-ingestion-operation-command.md) command.|
 |SampleFailedReasons | `string` |A sample of reasons for blob ingestion failures.|
 |Database | `string` |The database where the ingestion process is occurring.|
 |Table | `string` | The table where the ingestion process is occurring.|
@@ -74,7 +74,7 @@ The following example shows the queued ingestion operations for a specific opera
 
 ### Multiple operation IDs
 
-The following example shows the queued ingestion operations for more than one specific operation ID.
+The following example shows the queued ingestion operations for multiple operation ID numbers.
 
 ```kusto
 .show queued ingestion operations (aaaaaaaa-0b0b-1c1c-2d2d-333333333333, bbbbbbbb-1c1c-2d2d-3e3e-444444444444)
