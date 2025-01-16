@@ -19,10 +19,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Syntax
 
-`.ingest-from-storage-queued` `into` `table` [database(*DatabaseName*).]*TableName*[`EnableTracking`=*EnableTrackingValue*] [`SkipBatching`=*SkipBatchingValue*] [`CompressionFactor`=*CompressionFactorValue*] [with (*IngestionPropertyName* = *IngestionPropertyValue* [, ...])]
-
-<|
-*[`.list blobs`](list-blobs.md)(*SourceDataLocators*) command*
+`.ingest-from-storage-queued` `into` `table` [database(*DatabaseName*).]*TableName*[`EnableTracking`=*EnableTrackingValue*] [`SkipBatching`=*SkipBatchingValue*] [`CompressionFactor`=*CompressionFactorValue*] [with (*IngestionPropertyName* = *IngestionPropertyValue* [, ...])]<|*[`.list blobs`](list-blobs.md) command*
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -39,7 +36,8 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |*SkipBatchingValue*| `boolean` | | If set to  `true`, the blobs are ingested individually rather than batched together with other blobs. The default value is `false`.|
 |*CompressionFactorValue*| `real` | |The compression factor (ratio) between the original size and the compressed size of blobs.  Compression factor is used to estimate the original size of the data for batching purposes, when blobs are provided in a compressed format.|
 |*IngestionPropertyName*, *IngestionPropertyValue* | `string` | |Optional ingestion properties. For more information about ingestion properties, see [Data ingestion properties](../../ingestion-properties.md).|
-|*SourceDataLocators* | `string` | :heavy_check_mark:|One or many [storage connection strings](../../api/connection-strings/storage-connection-strings.md) separated by a comma character. Used in the `.list blobs` command, that is used in conjunction with the `.ingest-from-storage-queued into` command to return the blobs you want to ingest. For a full list of parameters that can be used, see [.list blobs command](list-blobs.md). |
+
+The `.list blobs` command is used in conjunction with the `.ingest-from-storage-queued into` command to return the blobs you want to ingest. For a full list of parameters that can be used, see [.list blobs command](list-blobs.md).
 
 ## Returns
 
