@@ -23,8 +23,8 @@ Monitor the materialized view's health in the following ways:
 
 ## Troubleshooting unhealthy materialized views
 
-If the `MaterializedViewAge` metric constantly increases, and the `MaterializedViewHealth` metric shows that the view is unhealthy, 
-you can follow the recommendations below to troubleshoot why the materialized view is unhealthy:
+If the value of `MaterializedViewAge` metric constantly increases, and the `MaterializedViewHealth` metric shows that 
+the view is unhealthy, you can follow the recommendations below to identify the root cause:
 
 1. Check how many materialized views there are on the cluster, and what is the current capacity for materialized views:
 
@@ -38,10 +38,12 @@ you can follow the recommendations below to troubleshoot why the materialized vi
     |---|---|---|
     |MaterializedView|1|0|
 
-    If there are several materialized views in the cluster, then the concurrency in which they run depends on the value of
-    `Total` in the command above. The `Consumed` column shows how many are currently running. The [materialized view capacity policy](../capacity-policy.md#materialized-views-capacity-policy), specifies the minimum and maximum concurrent operations, and system
-    chooses the current concurrency, noted in `Total`, based on the cluster's available resources. You can override the system's 
-    decision and increase concurrency of materialization processes by setting the minimum concurrent operations in the policy:
+    If there are several materialized views in the cluster, then the concurrency in which they run depends on the value of the
+    `Total` capacity. The `Consumed` column shows how many are currently running. The 
+    [materialized view capacity policy](../capacity-policy.md#materialized-views-capacity-policy), specifies the minimum and 
+    maximum concurrent operations, and system chooses the current concurrency, noted in `Total`, based on the cluster's 
+    available resources. You can override the system's decision and increase concurrency of materialization processes by 
+    setting the minimum concurrent operations in the policy:
 
     ```kusto
     .alter-merge cluster policy capacity '{  "MaterializedViewsCapacity": { "ClusterMinimumConcurrentOperations": 3 } }'
@@ -50,17 +52,28 @@ you can follow the recommendations below to troubleshoot why the materialized vi
     If you explicitly change this policy, you should monitor the cluster's health and verify other workloads are not impacted by this change.
 
 1. Check if there are failures during materialization process using [`.show materialized-view failures command`](materialized-view-show-failures-command.md#show-materialized-view-failures).
-    * If the error is permanent, the system will automatically disable the materialized view. You can identify this case by checking the `IsEnabled` column in the [.show materialized-view](materialized-view-show-command.md), and by checking the [Journal](../journal.md) for the disable event. This can happen, for example, if there's a change in the schema of the source table that makes it incompatible with the materialized view. See more details in the [.create materialized-view command](materialized-view-create.md#supported-properties).
-    * If the failure is transient (for example, hitting memory limits, query timeout), the system will automatically retry the operation, but such failures can delay the materialization and result in an increase in the materialized view age. See more recommendations below about how to troubleshoot transient failures.
+    * If the error is permanent, the system will automatically disable the materialized view. You can identify this case by checking 
+      the `IsEnabled` column in the [.show materialized-view](materialized-view-show-command.md), and by checking the [Journal](../journal.md)
+      for the disable event. This can happen, for example, if there's a change in the schema of the source table that makes it incompatible 
+      with the materialized view. See more details in the [.create materialized-view command](materialized-view-create.md#supported-properties).
+    * If the failure is transient (for example, hitting memory limits, query timeout), the system will automatically retry the 
+      operation, but such failures can delay the materialization and result in an increase in the materialized view age. See more 
+      recommendations below about how to troubleshoot transient failures.
 
-1. Analyze the materialization process using [.show commands-and-queries command](../commands-and-queries.md) (replace `DatabaseName` and `ViewName` to filter on a specific view):
+1. Analyze the materialization process using [.show commands-and-queries command](../commands-and-queries.md) 
+   (replace `DatabaseName` and `ViewName` to filter on a specific view):
     <!-- csl -->
     ```kusto
     .show commands-and-queries 
     | where Database  == "DatabaseName" and ClientActivityId startswith "DN.MaterializedViews;ViewName;"
     ```
   
-   * Check the memory consumption in the `MemoryPeak` column and whether there are operations that failed due to hitting memory limits (for example, [runaway queries](../../concepts/runaway-queries.md)). The materialization process is limited to 15GB memory peak per node by default. If the queries or commands during the materialization process exceed this value, materialization fails due to memory limits. You can alter the [$materialized-views workload group](../workload-groups.md#materialized-views-workload-group) to increase the memory peak per node in materialization process. For example, the following command will alter the materialized views workload group to use a max of 64GB memory peak per node during materialization:
+   * Check the memory consumption in the `MemoryPeak` column and whether there are operations that failed due to hitting memory limits 
+     (for example, [runaway queries](../../concepts/runaway-queries.md)). The materialization process is limited to 15GB memory peak 
+     per node by default. If the queries or commands executed during the materialization process exceed this value, materialization 
+     fails due to memory limits. You can alter the [$materialized-views workload group](../workload-groups.md#materialized-views-workload-group) 
+     to increase the memory peak per node in materialization process. For example, the following command will alter the materialized views 
+     workload group to use a max of 64GB memory peak per node during materialization:
     
     <!-- csl -->
     ```kusto
@@ -77,7 +90,8 @@ you can follow the recommendations below to troubleshoot why the materialized vi
     > [!NOTE]
     > MaxMemoryPerQueryPerNode can't be set to more than 50% of the total memory of each node.
 
-   * Check if the materialization process is hitting cold cache. The following command, for example, shows cache statistics of the materialization process for view `ViewName` in the past day:
+   * Check if the materialization process is hitting cold cache. The following command, for example, shows cache statistics of the 
+     materialization process for view `ViewName` in the past day:
 
     <!-- csl -->
     ```kusto
@@ -102,21 +116,41 @@ you can follow the recommendations below to troubleshoot why the materialized vi
     |---|---|---|---|---|---|
     |26 GB|0 Bytes|0 Bytes|1 GB|0 Bytes|866 MB|
 
-    If the view is not fully in hot cache, materialization can hit disk misses, which significantly slow down materialization.
+    If the view is not fully in hot cache, materialization can hit disk misses, which significantly slows down materialization.
     Increasing the caching policy for the materialized view will help avoiding cache misses. You can read more about
     [hot and cold cache and caching policy](../cache-policy.md) and how to [.alter materialized-view policy caching command](../alter-materialized-view-cache-policy-command.md).
 
-   * Check if the materialization is scanning old records by checking the `ScannedExtentsStatistics`. If the number of scanned extents is high, and the `MinDataScannedTime` is old, this indicates the materialization cycle requires scanning all, or most, of the materialized part of the view in order to find intersections with the "delta". See more about "delta" and "materialized part" in [How materialized views work](materialized-view-overview.md#how-materialized-views-work). Below are several recommendations for minimizing the intersection with the "delta", and therefore reducing the amount of data scanned in materialization cycles.
+   * Check if the materialization is scanning old records by checking the `ScannedExtentsStatistics`. If the number of scanned extents is
+     high, and the `MinDataScannedTime` is old, this indicates the materialization cycle requires scanning all, or most, of the materialized
+     part of the view in order to find intersections with the "delta". See more about "delta" and "materialized part" in
+     [How materialized views work](materialized-view-overview.md#how-materialized-views-work). Below are several recommendations for
+     minimizing the intersection with the "delta", and therefore reducing the amount of data scanned in materialization cycles.
 
-1. If the analysis above shows that each materialization cycle scans much data, potentially cold cache as well, consider the following changes to the definition of view, if they are applicable to your scenario:
-    * Include a `datetime` group by key in the view definition. A `datetime` group by key can significantly reduce the amount of data scanned from the view, **as long as there is no late arriving data in this column**. See more in [Performance tips](materialized-view-create.md#performance-tips).
-    * Use a `lookback` as part of the view definition. Read more about `lookback` in [create materialized view properties](../../includes/materialized-view-create-properties.md).
+1. If the analysis above shows that each materialization cycle scans much data, potentially cold cache as well, consider the following 
+   changes to the definition of view, if they are applicable to your scenario:
+    * Include a `datetime` group by key in the view definition. A `datetime` group by key can significantly reduce the amount of
+      data scanned from the view, **as long as there is no late arriving data in this column**. See more in
+      [Performance tips](materialized-view-create.md#performance-tips).
+    * Use a `lookback` as part of the view definition. Read more about `lookback` in
+      [create materialized view properties](../../includes/materialized-view-create-properties.md).
 
-1. Check if the `MaterializedViewResult` metric shows `InsufficientCapacity` values. This indicates that the cluster doesn't have sufficient ingestion capacity, which should also be noted in the cluster's [IngestionUtilization metric](../../../monitor-data-explorer-reference.md#supported-metrics-for-microsoftkustoclusters). You can increase ingestion capacity by scaling the cluster, or by altering the cluster's [ingestion capacity policy](../capacity-policy.md#ingestion-capacity) (less recommended).
+1. Check if the `MaterializedViewResult` metric shows `InsufficientCapacity` values. This indicates that the cluster doesn't have
+   sufficient ingestion capacity, which should also be noted in the cluster's [IngestionUtilization metric](../../../monitor-data-explorer-reference.md#supported-metrics-for-microsoftkustoclusters). 
+   You can increase ingestion capacity by scaling the cluster, or by altering the cluster's [ingestion capacity policy](../capacity-policy.md#ingestion-capacity)
+   (less recommended).
 
-1. If neither of the above suggestions work, and the view is still unhealthy, this indicates that the cluster doesn't have sufficient capacity and/or resources to materialize all data on time. You can consider the following options in this case:
-    * Scale out the cluster by increasing the min instance count. [Optimized autoscale](../../../manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) does not take materialized views into consideration and does not scale out the cluster automatically if materialized views are unhealthy. Therefore, if you would like to give the cluster more resources to accommodate for materialized views, you need to set the minimum instance count accordingly.
-    * Split the materialized view into several smaller views, each covering a subset of the data. You can split based on some high cardinality key from the materialized view's group by keys, for example. All views will be based on same source table, and each will filter by `SourceTable | where hash(key, number_of_views) == i` where `i ∈ {0,1,…,number_of_views-1}`. Then, you can define a [stored function](../../query/schema-entities/stored-functions.md) to union between all materialized views, and use that function in queries. This option might consume more CPU, but will reduce the memory peak in materialization cycles, and therefore if the single view is failing due to memory limits, this approach can help.
+1. If neither of the above suggestions work, and the view is still unhealthy, this indicates that the cluster doesn't have sufficient
+   capacity and/or resources to materialize all data on time. You can consider the following options in this case:
+    * Scale out the cluster by increasing the min instance count. [Optimized autoscale](../../../manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option)
+      does not take materialized views into consideration and does not scale out the cluster automatically if materialized views are unhealthy.
+      Therefore, if you would like to give the cluster more resources to accommodate for materialized views, you need to set the minimum
+      instance count accordingly.
+    * Split the materialized view into several smaller views, each covering a subset of the data. You can split based on some high
+      cardinality key from the materialized view's group by keys, for example. All views will be based on same source table, and each
+      will filter by `SourceTable | where hash(key, number_of_views) == i` where `i ∈ {0,1,…,number_of_views-1}`. Then, you can define
+      a [stored function](../../query/schema-entities/stored-functions.md) to union between all materialized views, and use that
+      function in queries. This option might consume more CPU, but will reduce the memory peak in materialization cycles, and therefore
+      if the single view is failing due to memory limits, this approach can help.
 
 ## MaterializedViewResult metric
 
