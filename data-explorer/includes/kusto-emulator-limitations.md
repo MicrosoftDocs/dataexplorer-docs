@@ -1,7 +1,7 @@
 ---
 ms.service: azure
 ms.topic: include
-ms.date: 08/14/2022
+ms.date: 01/17/2025
 ---
 
 ## Limitations
@@ -23,5 +23,5 @@ In general, this offering isn't suited for production workloads.
 - Although ingested data can be stored externally to the container, we don't recommend persisting data for long periods of time for the following reasons:
   - There's no guarantee the [extent](/kusto/management/extents-overview?view=azure-data-explorer&preserve-view=true) format will be compatible between versions of the Kusto emulator
   - Extents aren't [merged](/kusto/management/merge-policy?view=azure-data-explorer&preserve-view=true) and therefore can become fragmented as data get ingested
-  - Retention policies can be set but won't be honored
+  - Retention policies & Partitioning policies can be set but won't be honored
 - The [Python plugin](/kusto/query/python-plugin?view=azure-data-explorer&preserve-view=true?view=azure-data-explorer&preserve-view=true) isn't supported

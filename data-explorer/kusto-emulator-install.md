@@ -13,7 +13,7 @@ You can install the Azure Data Explorer Kusto emulator in the following ways:
 - On your own device: Consider using this option if you need to provision a local development environment
 - On a CI/CD agent virtual machine (VM): Use this option if you require a CI/CD pipeline for running automated tests
 
-The emulator is available as a *Windows* or *Linux* Docker container image.
+The emulator is available as a *Linux* and *Windows* Docker container image.
 
 In this article, you'll learn how to:
 
@@ -23,25 +23,27 @@ In this article, you'll learn how to:
 - [Ingest data](#ingest-data)
 - [Query data](#query-data)
 
+This article focuses on how to install the Linux Docker container on a Windows client.
+
 ## Prerequisites
 
 - The host operating system must be one of:
-  - Windows Server 2022
-  - Windows Server 2019 Version 10.0.17763.2928 or newer
-  - Windows 11
   - Any Linux distro that supports Docker Client for Linux
 
     > [!IMPORTANT]
     > Linux distros only support Linux container images.
+  - Windows Server 2022
+  - Windows Server 2019 Version 10.0.17763.2928 or newer
+  - Windows 11
 
 - 2 gigabytes (GB) of RAM minimum; we recommend using 4 GB or more
-- Docker Client for [Windows](https://docs.docker.com/desktop/windows/install/) or [Linux](https://docs.docker.com/desktop/install/linux-install/)
+- Docker Client for [Linux](https://docs.docker.com/desktop/install/linux-install/) or [Windows](https://docs.docker.com/desktop/windows/install/)
 
 ## Install the Kusto emulator
 
 The following steps are for using PowerShell to start the emulator using the [Kusto emulator container image](https://aka.ms/adx.emulator.image). For other options, see [Run emulator options](#run-emulator-options).
 
-1. For Windows only, switch Docker to run with Windows containers. You may need to enable the feature in the Docker settings.
+1. For Windows container only, switch Docker to run with Windows containers. You may need to enable the feature in the Docker settings.
 
     :::image type="content" source="media/kusto-emulator/kusto-emulator-docker-windows-container.png" alt-text="Screenshot of the Docker settings, showing the Switch to Windows containers option.":::
 
@@ -55,6 +57,12 @@ The following steps are for using PowerShell to start the emulator using the [Ku
     > - The first time this command is run, Docker pulls the container image which is several GBs in size and may take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
     > - (For Windows container only) The container must be run in process-isolation mode. This is the default on some versions of Docker. For other versions, you can start the container in Hyper-V isolation mode by adding `--isolation=hyperv` to the run command.
 
+    - To start the Linux container:
+
+        ```powershell
+        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
+        ```
+
     - To start the Windows container on Windows Server operating system, make sure you use the `latest` or `stable` tag:
 
         ```powershell
@@ -65,12 +73,6 @@ The following steps are for using PowerShell to start the emulator using the [Ku
 
         ```powershell
         docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
-        ```
-
-    - To start the Linux container:
-
-        ```powershell
-        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
         ```
 
 1. Run the following command to verify that the container is running.
@@ -120,7 +122,15 @@ You can use any of the following options when running the emulator:
 
 - Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a database persistent between container runs](#create-a-database) and [ingesting data](#ingest-data).
 
-    For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodatadata" in the container, use the next command on Windows Server:
+    [Linux container]
+    For example, to mount the folder "D:\host\local" on the host to the folder "/kustodatadata" in the container, use the next command on Windows Server:
+
+    ```powershell
+    docker run -v d:\host\local:/kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
+    ```
+
+    [Windows container]
+    For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodata" in the container, use the next command on Windows Server:
 
     ```powershell
     docker run -v d:\host\local:c:\kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
@@ -131,7 +141,7 @@ You can use any of the following options when running the emulator:
     For example, to map port 9000 on the host to the engine, use the following command on Windows Server:
 
     ```powershell
-    docker run -e ACCEPT_EULA=Y -m 4G -d -p 9000:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
+    docker run -e ACCEPT_EULA=Y -m 4G -d -p 9000:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
     ```
 
 ## Connect to the emulator
@@ -166,21 +176,21 @@ A database can be persisted in a container folder or on a [mounted folder](#run-
 
 In this example, we keep the data on the container.
 
-In the [Kusto.Explorer Query mode](/kusto/tools/kusto-explorer-using?view=azure-data-explorer&preserve-view=true#query-mode), run the following command to create a persistent database if using a Windows container image:
+In the [Kusto.Explorer Query mode](/kusto/tools/kusto-explorer-using?view=azure-data-explorer&preserve-view=true#query-mode), run the following command to create a persistent database:
 
-```kusto
-.create database <YourDatabaseName> persist (
-  @"c:\kustodata\dbs\<YourDatabaseName>\md",
-  @"c:\kustodata\dbs\<YourDatabaseName>\data"
-  )
-```
-
-The equivalent command for a Linux container image is:
-
+<Linux container>
 ```kusto
 .create database <YourDatabaseName> persist (
   @"/kustodata/dbs/<YourDatabaseName>/md",
   @"/kustodata/dbs/<YourDatabaseName>/data"
+  )
+```
+
+<Windows container>
+```kusto
+.create database <YourDatabaseName> persist (
+  @"c:\kustodata\dbs\<YourDatabaseName>\md",
+  @"c:\kustodata\dbs\<YourDatabaseName>\data"
   )
 ```
 
@@ -200,7 +210,7 @@ It's also possible to detach the database from the emulator, which will keep all
 
 To ingest data, you must first create an external table linked to a file and then ingest the data into a table in the database.
 
-Use the steps in the following example to create an external table and ingest data into it. For the example, in the local folder *c:\kustodata*, create a file called `sample.csv` with the following data:
+Use the steps in the following example to create an external table and ingest data into it. For the example, in the local folder *d:\host\local*, create a file called `sample.csv` with the following data:
 
 ```text
 Alice, 1
@@ -217,7 +227,7 @@ Carl, 3
 1. Run the following command to [ingest the file into the table](/kusto/management/data-ingestion/ingest-from-storage?view=azure-data-explorer&preserve-view=true):
 
     ```kusto
-    .ingest into table MyIngestedSample(@"c:\kustodata\sample.csv")
+    .ingest into table MyIngestedSample(@"/kustodata/sample.csv")
     ```
 
 ## Query data
