@@ -13,7 +13,7 @@ You can install the Azure Data Explorer Kusto emulator in the following ways:
 - On your own device: Consider using this option if you need to provision a local development environment
 - On a CI/CD agent virtual machine (VM): Use this option if you require a CI/CD pipeline for running automated tests
 
-Azure Data Explorer Kusto emulator is available in both *Linux* and *Windows* *Docker container image*.
+The emulator is available as a *Linux* and *Windows* Docker container image.
 
 In this article, you'll learn how to:
 
@@ -27,13 +27,15 @@ This article focuses on how to install the Linux Docker container on a Windows c
 
 ## Prerequisites
 
-- The host operating system must be either:
-  - For Linux container only
-      - Any Linux distro supporting Docker client
-  - For both Windows and Linux container
-    - Windows Server 2022
-    - Windows Server 2019 Version 10.0.17763.2928 or newer
-    - Windows 11
+- The host operating system must be one of:
+  - Windows Server 2022
+  - Windows Server 2019 Version 10.0.17763.2928 or newer
+  - Windows 11
+  - Any Linux distro that supports Docker Client for Linux
+
+    > [!IMPORTANT]
+    > Linux distros only support Linux container images.
+
 - 2 gigabytes (GB) of RAM minimum; we recommend using 4 GB or more
 - Docker Client for [Linux](https://docs.docker.com/desktop/install/linux-install/) or [Windows](https://docs.docker.com/desktop/windows/install/)
 
@@ -55,7 +57,7 @@ The following steps are for using PowerShell to start the emulator using the [Ku
     > - The first time this command is run, Docker pulls the container image which is several GBs in size and may take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
     > - (For Windows container only) The container must be run in process-isolation mode. This is the default on some versions of Docker. For other versions, you can start the container in Hyper-V isolation mode by adding `--isolation=hyperv` to the run command.
 
-    - To start the Linux container:
+    - To start the Linux container, make sure you use the `latest` or `stable` tag:
 
         ```powershell
         docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
