@@ -13,7 +13,7 @@ You can install the Azure Data Explorer Kusto emulator in the following ways:
 - On your own device: Consider using this option if you need to provision a local development environment
 - On a CI/CD agent virtual machine (VM): Use this option if you require a CI/CD pipeline for running automated tests
 
-The emulator is available as a *Linux* and *Windows* Docker container image.
+Azure Data Explorer Kusto emulator is available in both *Linux* and *Windows* *Docker container image*.
 
 In this article, you'll learn how to:
 
@@ -27,15 +27,13 @@ This article focuses on how to install the Linux Docker container on a Windows c
 
 ## Prerequisites
 
-- The host operating system must be one of:
-  - Any Linux distro that supports Docker Client for Linux
-
-    > [!IMPORTANT]
-    > Linux distros only support Linux container images.
-  - Windows Server 2022
-  - Windows Server 2019 Version 10.0.17763.2928 or newer
-  - Windows 11
-
+- The host operating system must be either:
+  - For Linux container only
+      - Any Linux distro supporting Docker client
+  - For both Windows and Linux container
+    - Windows Server 2022
+    - Windows Server 2019 Version 10.0.17763.2928 or newer
+    - Windows 11
 - 2 gigabytes (GB) of RAM minimum; we recommend using 4 GB or more
 - Docker Client for [Linux](https://docs.docker.com/desktop/install/linux-install/) or [Windows](https://docs.docker.com/desktop/windows/install/)
 
@@ -43,7 +41,7 @@ This article focuses on how to install the Linux Docker container on a Windows c
 
 The following steps are for using PowerShell to start the emulator using the [Kusto emulator container image](https://aka.ms/adx.emulator.image). For other options, see [Run emulator options](#run-emulator-options).
 
-1. For Windows container only, switch Docker to run with Windows containers. You may need to enable the feature in the Docker settings.
+1. (For Windows container only) Switch Docker to run with Windows containers. You may need to enable the feature in the Docker settings.
 
     :::image type="content" source="media/kusto-emulator/kusto-emulator-docker-windows-container.png" alt-text="Screenshot of the Docker settings, showing the Switch to Windows containers option.":::
 
