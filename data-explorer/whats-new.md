@@ -15,7 +15,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 |Article title | Description|
 |--|--|
-| [graph_path_discovery_fl()](/kusto/functions-library/graph-path-discovery-fl.md)| New article. Discover discover valid paths between relevant endpoints over graph data. |
+| [graph_path_discovery_fl()](/kusto/functions-library/graph-path-discovery-fl.md)| New article. Describes how to discover valid paths between relevant endpoints over graph data. |
 
 **General**
 
@@ -28,18 +28,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 |Article title | Description|
 |--|--|
-| [series_periods_detect()](/kusto/query/series-periods-detect-function.md) | Updated topic. Refreshed with clearer content and examples. |
-| [extract()](/kusto/query/extract-function.md) |Updated topic. Refreshed the examples and added outputs to the example queries. |
-| [max_of()](/kusto/query/max-of-function.md) |Updated topic. Added an example of data with two datetime columns, to show that the later date is retured. |
-| [iff()](/kusto/query/iff-function.md) |Updated topic. Added new examples using the iff() function to classify data, and to combine with other functions.|
-| [parse_version()](/kusto/query/parse-version-function.md) |Updated topic. Refreshed with a two step example of how to compare parsed versions to a minimum version. |
-| [not()](/kusto/query/not-function.md) |Updated topic. Refreshed with examples of how to use the not() function to exclude records from the query results.|
-| [Tutorial: Learn common operators](/kusto/query/tutorials/learn-common-operators.md) |Updated topic. Added the syntax for filtering queries by date and time. |
-| [sum() (aggregation function)](/kusto/query/sum-aggregation-function.md) | Updated topic. Modified the example for clarity. |
-| [arg_max() (aggregation function)](/kusto/query/arg-max-aggregation-function.md) | Updated topic. Refreshed with clearer content and added an example to distinguish this function from max(). |
-| [arg_min() (aggregation function)](/kusto/query/arg-min-aggregation-function.md) | Updated topic. Added examples to distinguish this function from min().|
-| [max() (aggregation function)](/kusto/query/max-aggregation-function.md) | Updated topic. Refreshed with clearer content and examples. |
-| [min() (aggregation function)](/kusto/query/min-aggregation-function.md) | Updated topic. Refreshed with clearer content and examples. |
+|- [series_periods_detect()](/kusto/query/series-periods-detect-function.md) <br/> - [extract()](/kusto/query/extract-function.md) <br/> - [max_of()](/kusto/query/max-of-function.md) <br/> - [iff()](/kusto/query/iff-function.md) <br/> - [parse_version()](/kusto/query/parse-version-function.md) <br/>- [not()](/kusto/query/not-function.md) <br/> - [Tutorial: Learn common operators](/kusto/query/tutorials/learn-common-operators.md) <br/> - [sum() (aggregation function)](/kusto/query/sum-aggregation-function.md) <br/> - [arg_max() (aggregation function)](/kusto/query/arg-max-aggregation-function.md) <br/> - [arg_min() (aggregation function)](/kusto/query/arg-min-aggregation-function.md) <br/> - [max() (aggregation function)](/kusto/query/max-aggregation-function.md) <br/> - [min() (aggregation function)](/kusto/query/min-aggregation-function.md) | Updated topics. Refreshed with clearer content and enhances examples. Added examples for the iff() and arg_min() functions. Added example outputs for extract().  |
+
 
 ## November 2024
 
