@@ -103,7 +103,6 @@ range y from 0 to ['some number'] step 5
 |15|
 |20|
 
-
 ### Create a user defined function with scalar calculation
 
 This example uses the let statement with arguments for scalar calculation. The query defines function `MultiplyByN` for multiplying two numbers.

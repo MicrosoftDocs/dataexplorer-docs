@@ -161,7 +161,7 @@ union app("ApplicationX").["*"]
 
 ## Work with middle-tier applications
 
-A middle-tier application provides its users with the ability to use KQL and wants to enhnace the experience by enriching the query results with augmented data from its internal service.
+A middle-tier application provides its users with the ability to use KQL and wants to enhance the experience by enriching the query results with augmented data from its internal service.
 
 To this end, the application provides users with a pattern statement that returns tabular data that their users can use in their queries. The pattern's arguments are the keys the application will use to retrieve the enrichment data.
 
