@@ -15,20 +15,20 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 |Article title | Description|
 |--|--|
-| [graph_path_discovery_fl()](/kusto/functions-library/graph-path-discovery-fl.md)| New article. Describes how to discover valid paths between relevant endpoints over graph data. |
+| [graph_path_discovery_fl()](/kusto/functions-library/graph-path-discovery-fl?view=azure-data-explorer&preserve-view=true)| New article. Describes how to discover valid paths between relevant endpoints over graph data. |
 
 **General**
 
 |Article title | Description|
 |--|--|
-| [Azure Data Explorer web UI keyboard shortcuts](web-ui-query-keyboard-shortcuts.md) | Updated topic. Added keyboard shortcuts for Apple macOS. |
-| [Ingest data with Fluent Bit into Azure Data Explorer](fluent-bit.md)| Updated topic. Added new properties to the Fluent Bit client configuration file. |
+| [Azure Data Explorer web UI keyboard shortcuts](web-ui-query-keyboard-shortcuts?view=azure-data-explorer&preserve-view=true) | Updated topic. Added keyboard shortcuts for Apple macOS. |
+| [Ingest data with Fluent Bit into Azure Data Explorer](fluent-bit?view=azure-data-explorer&preserve-view=true)| Updated topic. Added new properties to the Fluent Bit client configuration file. |
 
 **Query**
 
 |Article title | Description|
 |--|--|
-|- [series_periods_detect()](/kusto/query/series-periods-detect-function.md) <br/> - [extract()](/kusto/query/extract-function.md) <br/> - [max_of()](/kusto/query/max-of-function.md) <br/> - [iff()](/kusto/query/iff-function.md) <br/> - [parse_version()](/kusto/query/parse-version-function.md) <br/>- [not()](/kusto/query/not-function.md) <br/> - [Tutorial: Learn common operators](/kusto/query/tutorials/learn-common-operators.md) <br/> - [sum() (aggregation function)](/kusto/query/sum-aggregation-function.md) <br/> - [arg_max() (aggregation function)](/kusto/query/arg-max-aggregation-function.md) <br/> - [arg_min() (aggregation function)](/kusto/query/arg-min-aggregation-function.md) <br/> - [max() (aggregation function)](/kusto/query/max-aggregation-function.md) <br/> - [min() (aggregation function)](/kusto/query/min-aggregation-function.md) | Updated topics. Refreshed with clearer content and enhances examples. Added examples for the iff() and arg_min() functions. Added example outputs for extract().  |
+|- [series_periods_detect()](/kusto/query/series-periods-detect-function?view=azure-data-explorer&preserve-view=true) <br/> - [extract()](/kusto/query/extract-function?view=azure-data-explorer&preserve-view=true) <br/> - [max_of()](/kusto/query/max-of-function.md) <br/> - [iff()](/kusto/query/iff-function.md) <br/> - [parse_version()](/kusto/query/parse-version-function?view=azure-data-explorer&preserve-view=true) <br/>- [not()](/kusto/query/not-function?view=azure-data-explorer&preserve-view=true) <br/> - [Tutorial: Learn common operators](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true) <br/> - [sum() (aggregation function)](/kusto/query/sum-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [arg_max() (aggregation function)](/kusto/query/arg-max-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [arg_min() (aggregation function)](/kusto/query/arg-min-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [max() (aggregation function)](/kusto/query/max-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [min() (aggregation function)](/kusto/query/min-aggregation-function?view=azure-data-explorer&preserve-view=true) | Updated topics. Refreshed with clearer content and enhances examples. Added examples for the iff() and arg_min() functions. Added example outputs for extract().  |
 
 
 ## November 2024
