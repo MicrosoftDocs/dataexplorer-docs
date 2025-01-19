@@ -154,30 +154,32 @@ When querying the materialized part of the view, the return value depends on the
   
 ### Lookback period
 
-The Lookback Period defines the time window during which deduplication is performed when merging newly ingested data with existing records in the view. The purpose of the lookback period is to avoid merging newly ingested data with the entire view, which would be resource-intensive and inefficient. Instead, the newly ingested data (i.e., the delta) is merged only with the portion of the view that falls within the lookback period.
+The Lookback period defines the time window during which deduplication occurs when merging newly ingested data with existing records in the view. The purpose of the lookback period is to prevent the need for merging the newly ingested data with the *entire* view, which would be resource-intensive and inefficient. Instead, only the portion of the view that falls within the lookback period is merged with the newly ingested data (i.e., the delta).
 
-In other words, the lookback period sets a threshold for the minimum record in the view that should be included in the merge process. By limiting the scope of the merge, significant performance improvements are achieved. However, an incorrectly set lookback period could result in duplicate records in the materialized view, as explained in the example below. 
+In other words, the lookback period sets a threshold for the minimum record in the view that should be included in the merge process. By restricting the scope of the merge operation, a significant performance improvement is achieved. However, an incorrectly set lookback period could result in duplicate records in the materialized view, as explained in the example below. 
 
 **Lookback period reference**
 
-A lookback period can be defined by setting the lookback property and possibly also the lookback_column property. 
+The lookback period can be defined by setting the lookback property and, optionally, also the lookback_column property. 
 When only the lookback property is specified, the lookback period is relative to [ingestion_time()](../query/ingestion-time-function.md).
-However, if both lookback and lookback_column properties are specified, the lookback period is relative to that column.
+However, if both the lookback and lookback_column properties are specified, the lookback period is instead relative to the column indicated by the lookback_column. The lookback_column should reference one of the view's table columns, and it must be of type `datetime`.
 
-For example, if only the lookback property is provided and set to 6 hours, then the deduplication between newly ingested records and existing ones will take into consideration only records that were ingested up to 6 hours ago. That is a significant performance improvement, but it also means that if a record for a specific key is ingested 10 hours after a record for the same key was ingested, then that key will be a duplicate in the view. Therefore, make sure to carefully set the value of the lookback property.
+For instance, if only the lookback property is provided and set to 6 hours, deduplication between newly ingested records and existing ones will take into consideration only records that were ingested within the past 6 hours. That is a significant performance improvement, but it also means that if a record for a specific key is ingested 10 hours after a record for the same key was ingested, then that key will be a duplicate in the view. Therefore, it is important to carefully configure the lookback property to avoid unintentionally introducing duplicate records into the view.
 
-Note that under some conditions, a lookback period optimization can be applied implicitly even when user doesn't specify a lookback or a lookback_column property. This can heppen, for instance, if one of the group-by keys of the view is a DateTime column, and assuming that the materialied view query preserves the [ingestion_time()](../query/ingestion-time-function.md) value. See [materialized views limitations and known issues](../management/materialized-views/materialized-views-limitations.md).
+Note that, under certain conditions, a lookback period optimization can be applied implicitly even if neither the lookback nor lookback_column properties are specified. This can heppen, for instance, in `arg_max`/`arg_min`/`take_any` materialized views, if one of view's group-by keys is a `datetime` column (see [Performance tips](materialized-view-create.md#performance-tips)), and assuming that the materialied view query preserves the [ingestion_time()](../query/ingestion-time-function.md) value (see [materialized views limitations and known issues](../management/materialized-views/materialized-views-limitations.md)).
 An implicit lookback optimization is reltive to [ingestion_time()](../query/ingestion-time-function.md).
 
-To summarize, either the lookback period references the [ingestion_time()](../query/ingestion-time-function.md), or it references one of the view's datetime column.
+To summarize, the lookback period either references [ingestion_time()](../query/ingestion-time-function.md) or a specified `datetime` column in the view.
+The following table outlines when each type of lookback period is valid and when it is applied: 
 
-The following table describes when each one of these types of lookback periods is valid and when is it applied: 
-
-| lookback period reference | Under which conditions | When applied |
+| lookback period reference | Conditions | When applied |
 |--|--|--|
-| ingestion_time() lookback | Used when the lookback property is provided, but the lookback_column is not. It can also be applied as an implicit optimization if the materialized view query includes at least one datetime group-by key. This is valid only for arg_max, arg_min, and take_any materialized views, and only for views that preserve ingestion time. (See Materialized Views Limitations and Known Issues.) | Both during query time and materialization time |
-| Column-based lookback     | Used when both the lookback and lookback_column properties are provided. Requires having at least one DateTime column in the schema of the materialized view (the lookback_column will reference that column) | Only during materialization time.  |
+| ingestion_time() lookback | Used when the lookback property is provided, but the lookback_column is not. It can also be applied as an implicit optimization if the materialized view query includes at least one `datetime` group-by key. This is valid only for `arg_max`/`arg_min`/`take_any` materialized views, and only for views that preserve ingestion time. (See Materialized Views Limitations and Known Issues.) | During both [materialization time](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) and [query time](../management/materialized-views/materialized-view-overview.md#materialized-views-queries) |
+| Column-based lookback     | Used when both the lookback and lookback_column properties are specified. The lookback_column must reference a `datetime` column in the view schema. | During [materialization time](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work) only.  |
 
+**Known limitations**
+* If a lookback_column is already defined, the lookback_column name cannot be changed, and the lookback period cannot be increased.
+* Usage of a lookback_column might lead to duplicates if the lookback column is expected to have datetime(null) values.
 
 
 ## Performance considerations

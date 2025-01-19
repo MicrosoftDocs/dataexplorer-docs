@@ -122,7 +122,7 @@ You can create a materialized view over another materialized view only when the 
     } 
     ```
 
-* Create a materialized view that deduplicates the source table, based on the `EventId` column, by using a lookback of 6 hours. Records will be deduplicated against only records ingested 6 hours before current records.
+* Create a materialized view that deduplicates the source table, based on the `EventId` column, by using a lookback of 6 hours. Records will be deduplicated only against records ingested 6 hours before current records.
 
     <!-- csl -->
     ```kusto
@@ -130,6 +130,17 @@ You can create a materialized view over another materialized view only when the 
     {
         T
         | summarize take_any(*) by EventId
+    }
+    ```
+
+* Create a materialized view that deduplicates the source table, based on the `EventId` column, by using a lookback of 6 hours. Records will be deduplicated only against records whose `Timestamp` value is greater than 6 hours ago.
+
+    <!-- csl -->
+    ```kusto
+    .create materialized-view with(lookback=6h, lookback_column = "Timestamp") DeduplicatedTable on table T
+    {
+        T
+        | summarize arg_max(Timestamp, *) by EventId
     }
     ```
 
