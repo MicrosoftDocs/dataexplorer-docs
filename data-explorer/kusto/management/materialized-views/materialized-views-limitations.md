@@ -19,7 +19,7 @@ ms.date: 08/11/2024
       * `Cannot drop/move extents from/to table 'TableName' since Materialized View 'ViewName' is currently processing some of these extents`.
       * `Cannot move extents to 'TableName' since materialized view 'ViewName' will not process these extents (can lead to data loss in the materialized view)`.
 * The source table of a materialized view must have [IngestionTime policy](../ingestion-time-policy.md) enabled. This policy is enabled by default.
-* If the materialized view uses a `lookback` without using a `lookback_column` (see [supported properties](materialized-view-create.md#supported-properties)), the `ingestion_time()` must be preserved in the materialized view's query. Operators such as [mv-expand](../../query/mv-expand-operator.md) or [pivot plugin](../../query/pivot-plugin.md) don't preserve the `ingestion_time()` and therefore can't be used in a materialized view with a `lookback`.
+* If the materialized view uses a default `lookback` (see [Lookback period](materialized-view-create.md#lookback-period)), the `ingestion_time()` must be preserved in the materialized view's query. Operators such as [mv-expand](../../query/mv-expand-operator.md) or [pivot plugin](../../query/pivot-plugin.md) don't preserve the `ingestion_time()` and therefore can't be used in a materialized view with a `lookback`.
 * The source table of a materialized view can't be a table with [restricted view access policy](../restricted-view-access-policy.md).
 * A materialized view can't be created on top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view).
 * Materialized views can't be defined over [external tables](../../query/schema-entities/external-tables.md).
@@ -59,5 +59,5 @@ ms.date: 08/11/2024
 
 * [Cursor functions](../database-cursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
-* If a lookback_column is already defined, the lookback_column name cannot be changed, and the lookback period cannot be increased.
+* Once a lookback is defined on the materialized view, its value cannot be increased (only decreased). Once a lookback_column is defined, its value cannot be changed either.
 * Usage of a lookback_column might lead to duplicates if the lookback column is expected to have datetime(null) values.
