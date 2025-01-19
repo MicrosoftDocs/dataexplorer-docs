@@ -3,7 +3,7 @@ title: Add a cluster connection in the Azure Data Explorer web UI
 description: Learn how to add cluster connections for multiple user accounts or Microsoft Entra directories in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 01/16/2025
+ms.date: 01/19/2025
 ---
 
 # Add a cluster connection in the Azure Data Explorer web UI
@@ -30,7 +30,7 @@ To add a connection to your Azure Data Explorer cluster:
 
     :::image type="content" source="media/web-ui-add-cluster/add-connection-dialog.png" alt-text="Screenshot of add cluster connection dialog box." lightbox="media/web-ui-add-cluster/add-connection-dialog.png":::
 
-1. (Optional) If you have multiple user accounts and want to authenticate with a different account, select **Connect as another user** and proceed to add or select the appropriate account.
+1. (Optional) If you have multiple user accounts and want to authenticate with a different account, select **Connect as another user**, and proceed to add or select the appropriate account.
 
 1. (Optional) If your account is linked to multiple Microsoft Entra directories, select **Switch directory** and choose the relevant directory for this connection.
 
@@ -42,11 +42,33 @@ To add a connection to your Azure Data Explorer cluster:
 
     :::image type="content" source="media/web-ui-add-cluster/cluster-pane-with-various-accounts.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/cluster-pane-with-various-accounts.png":::
 
-1. (Optional) You can add your cluster to **Favorites** or to a group to help organize multiple clusters. Select the ellipsis menu next to your cluster and then **Add to favorites** or **Add to group** and the group name.
+## Manage cluster connections
 
-    To add your cluster to a new group, select **Add to group > New Group** or from the upper left  corner, select **Add** and then **Group**.
+To organize and manage your Azure Data Explorer clusters, you can add clusters to **Favorites** or to groups.
+
+### Manage cluster connections using Favorites
+
+To add your cluster to **Favorites**:
+
+1. From the ellipsis menu next to your cluster, select **Add to favorites**.
+
+1. Your saved favorites appear under the **Favorites** menu in the **Cluster connection** pane.
+
+1. To remove a cluster from Favorites, select the ellipsis menu next to the cluster and then **Remove from favorites**.
+
+    :::image type="content" source="media/web-ui-add-cluster/cluster-pane-remove-from-favorites.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/cluster-pane-remove-from-favorites.png":::
+
+### Manage cluster connections using groups
+
+To add your cluster to a group:
+
+1. From the ellipsis menu next to your cluster, select **Add to group** and the group name.
+
+1. To add your cluster to a new group, select **Add to group > New Group** or from the upper left corner, select **Add** and then **Group**.
 
     :::image type="content" source="media/web-ui-add-cluster/add-groups-favorites.png" alt-text="Screenshot of the Add to favorites and Add to group options. The Add to group dropdown includes the New Group selection and an existing group. "  lightbox="media/web-ui-add-cluster/add-groups-favorites.png":::
+
+1. To remove a cluster from a group, select the ellipsis menu next to the cluster, **Add to group**, and then select the group name under the **Remove from group** heading.
 
     > [!NOTE]
     > Clusters can be included in groups and favorites at the same time.
