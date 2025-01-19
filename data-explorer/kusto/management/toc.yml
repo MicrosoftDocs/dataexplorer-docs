@@ -255,6 +255,20 @@ items:
           - name: .alter-merge table column-docstrings command
             displayName: .alter-merge column-docstrings
             href: alter-merge-table-column.md
+    - name: Entity Group
+        items:
+          - name: Entity Group
+            href: entity-groups.md
+          - name: .create entity_group command
+            href: create-entity-group.md
+          - name: .alter entity_group command
+            href: alter-entity-group.md
+          - name: .alter-merge entity_group command
+            href: alter-merge-entity-group.md
+          - name: .drop entity_group command
+            href: drop-entity-group.md
+          - name: .show entity_group command
+            href: show-entity-group.md
       - name: Ingestion mappings
         items:
           - name: Ingestion mappings overview
