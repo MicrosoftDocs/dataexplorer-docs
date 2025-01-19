@@ -59,5 +59,3 @@ ms.date: 08/11/2024
 
 * [Cursor functions](../database-cursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
-* Once a lookback is defined on the materialized view, its value cannot be increased (only decreased). Once a lookback_column is defined, its value cannot be changed either.
-* Usage of a lookback_column might lead to duplicates if the lookback column is expected to have datetime(null) values.
