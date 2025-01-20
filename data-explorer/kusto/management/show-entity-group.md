@@ -1,59 +1,80 @@
+---
+title: .show entity_group(s)
+description: Learn how to use the `.show entity_group` command to view existing entity groups.
+ms.reviewer: ziham1531991
+ms.topic: reference
+ms.date: 01/20/2025
+---
+
 # .show entity_group(s)
 
-Lists all the [stored entity groups](entity-groups.md) in the currently-selected database.
-To return only one specific entity group, see [.show entity_group](#show-entity_group).
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-## .show entity_groups
+Lists all the [entity groups](entity-groups.md) in the selected database or lists the details of one specific stored entity group.
+
+## Permissions
+
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
+
+`.show` `entity_group`
+
+`.show` `entity_group` *EntityGroupName*
+
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*EntityGroupName*| `string` | |The name of the specific entity group you wish to view. |
+
+## Returns
+
+This command returns a table with the following columns:
+
+|Output parameter |Type |Description|
+|---|---|---|
+|Name | `string` | The name of the entity group.|
+|Entities | `array` | An array which includes one or more entities. If the entity group doesn't exist, an error is returned.|
+
+## Examples
+
+### Show entity groups
+
+The following example returns all the entity groups in the selected database,  `eg1` and `eg2`, along with their entities.
 
 ```kusto
 .show entity_groups
 ```
 
-Requires [database user permission](../management/access-control/role-based-authorization.md).
- 
-|Output parameter |Type |Description
-|---|---|--- 
-|Name  |String |The name of the entity group. 
-|Entities|String|The value of the entity group as an array that includes the entities.
- 
-**Output example** 
+**Output**
 
 |Name|Entities|
 |---|---|
 |eg1|["cluster('c1').database('d1')"]|
 |eg2|["cluster('c2').database('d2')"]|
 
+### Show an entity group
 
-## .show entity_group
-
-```kusto
-.show entity_group MyEntityGroup1
-```
-
-Lists the details of one specific stored entity group. 
-For a list of **all** entity groups, see [.show entity_groups](#show-entity_groups).
-
-**Syntax**
-
-`.show` `entity_group` *EntityGroupName*
-
-**Output**
-
-|Output parameter |Type |Description
-|---|---|--- 
-|Name  |String |The name of the entity group. 
-|Entities|String|The value of the entity group as an array that includes the entities.
- 
-> [!NOTE] 
-> * If the entity group does not exist, an error is returned.
-> * Requires [database user permission](../management/access-control/role-based-authorization.md).
- 
-**Example** 
+The following example returns the entity group, `eg1` along with its entity, database `d1` in the cluster `c1`.
 
 ```kusto
 .show entity_group eg1
 ```
 
+**Output**
+
 |Name|Entities|
 |---|---|
 |eg1|["cluster('c1').database('d1')"]|
+
+## Related content
+
+* [Entity groups](entity-groups.md)
+* [Entity types](../query/schema-entities/index.md)
+* [.alter entity_group](alter-entity-group.md)
+* [.alter-merge entity_group](alter-merge-entity-group.md)
+* [.create entity_group](create-entity-group.md)
+* [.drop entity_group](drop-entity-group.md)

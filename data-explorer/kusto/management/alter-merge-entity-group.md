@@ -1,43 +1,76 @@
+---
+title: .alter-merge entity_group
+description: Learn how to use the `.alter-merge entity_group` command to change an existing entity group.
+ms.reviewer: ziham1531991
+ms.topic: reference
+ms.date: 01/20/2025
+---
+
 # .alter-merge entity_group
 
-Alters and merges an existing entity group with the provided list of entities and stores it inside the database metadata. 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-    
-**Syntax**
+Alters and merges an existing entity group with the provided list of entities and stores it inside the database metadata. For more information, see [Entity groups](entity-groups.md).
 
-`.alter-merge` `entity_group` *EntityGroupName* `(` EntityReference1 , ... `)`
+## Permissions
 
-**Output**    
-    
-|Output parameter |Type |Description
-|---|---|--- 
-|Name  |String |The name of the entity group. 
-|Entities  |String | An array of the entities defined into the entity group.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
-> [!NOTE]
-> * If the entity group doesn't exist, an error is returned. For creating a new entity group, see [.create entity_group](entity-group-create.md)
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
+## Syntax
 
-**Examples** 
+`.alter-merge` `entity_group` *EntityGroupName* `(`[*EntityReference*`,` ...]`)`
 
-Running the following command to create a new entity group:
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*EntityGroupName*| `string` | :heavy_check_mark:|The name of the entity group. |
+|*EntityReference*| `string` | :heavy_check_mark:|An entity included in the entity group. |
+
+## Returns
+
+This command returns a table with the following columns:
+
+|Output parameter |Type |Description|
+|---|---|---|
+|Name | `string` | The name of the entity group.|
+|Entities | `array` | An array which includes one or more entities.|
+
+## Examples
+
+The following example edits the `MyEntityGroup` entity group and adds the entity `cluster('c2').database('d2')` to the entity group. 
+
+First run the following command to create a new entity group with entity `cluster('c1').database('d1')`:
 
 ```kusto
 .create entity_group MyEntityGroup  (cluster('c1').database('d1'))
 ```
 
+**Output**
+
 |Name|Entities|
 |---|---|
 |MyEntityGroup|["cluster('c1').database('d1')"]|
 
-
-Then running the following command to edit the existing entity group MyEntityGroup and add the entity `cluster('c2').database('d2')` :
+Then run the following command to edit the existing entity group `MyEntityGroup` and add the entity `cluster('c2').database('d2')`:
 
 ```kusto
 .alter-merge entity_group MyEntityGroup  (cluster('c2').database('d2'))
 ```
 
+**Output**
+
 |Name|Entities|
 |---|---|
 |MyEntityGroup|["cluster('c1').database('d1')","cluster('c2').database('d2')"]|
 
+## Related content
+
+* [Entity groups](entity-groups.md)
+* [Entity types](../query/schema-entities/index.md)
+* [.create entity_group](create-entity-group.md)
+* [.alter entity_group](alter-entity-group.md)
+* [.drop entity_group](drop-entity-group.md)
+* [.show entity_group and .show entity_groups](show-entity-group.md)
