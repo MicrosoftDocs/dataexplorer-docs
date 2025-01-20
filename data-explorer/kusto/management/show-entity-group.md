@@ -58,7 +58,7 @@ The following example returns all the entity groups in the selected database,  `
 
 ### Show an entity group
 
-The following example returns the entity group, `eg1` along with its entity, database `d1` in the cluster `c1`.
+The following example returns the entity group, `eg1` along with its entity, `cluster('c1').database('d1')`.
 
 ```kusto
 .show entity_group eg1
