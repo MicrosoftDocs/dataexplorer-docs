@@ -71,9 +71,10 @@ The following properties are supported in the `with` `(`*PropertyName* `=` *Prop
 
 ### Lookback period
 
-A lookback specified the max expected period of time between any two records of the same group by key combination in the source table
- of the materialized view. For example, consider a materialized view that is used to store the last event for each 
- session of a web service, and is defined as follows:
+A lookback specifies the max expected period of time between any two records of the same group by key combination in the 
+source table of the materialized view. Setting a lookback can significantly improve the materialized view's performance.
+
+For example, consider a materialized view that is used to store the last event for each session of a web service, and is defined as follows:
 
 <!-- csl -->
 ```kusto
@@ -93,13 +94,12 @@ a lookback of 1d, based on the ReceivedTime column:
 ```
 
 Setting a lookback on a materialized view minimizes the portion of the materialized part of the view which is scanned,
- during materialization time. See [How materialized views work](materialized-view-overview.md#how-materialized-views-work). 
- This is because only the portion of the view that falls within the lookback period is combined with the newly 
- ingested data (the "delta") during materialization time, instead of scanning the entire materialized part.
-Setting a lookback can significantly improve the materialized view's performance. On the other hand, setting an incorrect 
-lookback period can result in duplicate records in the materialized view. Considering the example above, if a record for 
-some SessionId is ingested 2d after the previous record for the same SessionId, then the materialized view will have duplicate 
-records for that SessionId.
+during materialization time. See [How materialized views work](materialized-view-overview.md#how-materialized-views-work). 
+This is because only the portion of the view that falls within the lookback period is combined with the newly 
+ingested data (the "delta") during materialization time, instead of scanning the entire materialized part.
+While this step can significantly improve the materialized view's performance, setting an incorrect lookback period can result 
+in duplicate records in the materialized view. Considering the example above, if a record for some SessionId is ingested 2d 
+after the previous record for the same SessionId, then the materialized view will have duplicate records for that SessionId.
 
 **Lookback column**
 
@@ -111,14 +111,15 @@ The lookback period is always relative to a `datetime` column in the materialize
    only for views that preserve ingestion time (see [Materialized views limitations and known issues](materialized-views-limitations.md)). 
    This option is configured by setting only the `lookback` property without the `lookback_column` property.
 2. [Preview] lookback_column - the lookback is relative to a `datetime` column in the materialized view, which is explicitly specified in 
-   the materialized view definition, using the l`ookback_column` property. See [Known limitations](#known-limitations) for this kind of lookback. 
+   the materialized view definition, using the `lookback_column` property. See [Known limitations](#known-limitations) for this kind of lookback. 
    This option is configured by setting both the `lookback` and the `lookback_column` properties.
 
 #### Known limitations
 
 * Once a lookback is defined on the materialized view, its value cannot be increased (only decreased). Once a `lookback_column` is defined, 
   its value cannot be changed either.
-* Usage of a `lookback_column` might lead to duplicates if the lookback column has `datetime(null)` values.
+* Usage of a `lookback_column` might lead to duplicates if the lookback column has `datetime(null)` values. In such cases, for a given combination
+  of group-by keys, the view might end up with having one record with a value of `datetime(null)` and another value with a non-null value.
 
 ### Create materialized view over materialized view
 

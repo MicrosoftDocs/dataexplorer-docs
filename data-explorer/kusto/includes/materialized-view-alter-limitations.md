@@ -9,7 +9,6 @@ ms.date: 08/11/2024
   * Changes to the materialized view group by expressions.
   * Changing column type.
   * Renaming columns. For example, altering a view of `T | summarize count() by Id` to `T | summarize Count=count() by Id` drops column `count_` and creates a new column `Count`, which initially contains nulls only.
-  * Changes to the `lookback_column` value or to the lookback period value.
 
 * **Impact on existing data:**
   * Altering the materialized view has no impact on existing data.
