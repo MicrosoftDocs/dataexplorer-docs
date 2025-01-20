@@ -180,6 +180,6 @@ macro-expand MyEntityGroup_Outer as X
 * [Entity groups](../management/entity-groups.md)
 * [join operator](join-operator.md)
 * [union operator](union-operator.md)
-* [.show entity_group(s)](show-entity-group.md)
+* [.show entity_group(s)](../management/show-entity-group.md)
 * [current_database()](current-database-function.md)
 * [current_cluster_endpoint()](current-cluster-endpoint-function.md)
