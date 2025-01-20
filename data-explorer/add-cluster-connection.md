@@ -3,7 +3,7 @@ title: Add a cluster connection in the Azure Data Explorer web UI
 description: Learn how to add cluster connections for multiple user accounts or Microsoft Entra directories in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 01/19/2025
+ms.date: 01/20/2025
 ---
 
 # Add a cluster connection in the Azure Data Explorer web UI
@@ -54,9 +54,9 @@ To add your cluster to **Favorites**:
 
 1. Your saved favorites appear under the **Favorites** menu in the **Cluster connection** pane.
 
-1. To remove a cluster from Favorites, select the ellipsis menu next to the cluster and then **Remove from favorites**.
+1. To remove a cluster from **Favorites**, select the ellipsis menu next to the cluster and then **Remove from favorites**.
 
-    :::image type="content" source="media/web-ui-add-cluster/cluster-pane-remove-from-favorites.png" alt-text="Screenshot of the remove from favorites selection." lightbox="media/web-ui-add-cluster/cluster-pane-remove-from-favorites.png":::
+    :::image type="content" source="media/web-ui-add-cluster/cluster-pane-remove-from-favorites.png" alt-text="Screenshot of the Remove from favorites selection." lightbox="media/web-ui-add-cluster/cluster-pane-remove-from-favorites.png":::
 
 ### Manage cluster connections using groups
 
@@ -68,10 +68,10 @@ To add your cluster to a group:
 
     :::image type="content" source="media/web-ui-add-cluster/add-groups-favorites.png" alt-text="Screenshot of the Add to favorites and Add to group options. The Add to group dropdown includes the New Group selection and an existing group. "  lightbox="media/web-ui-add-cluster/add-groups-favorites.png":::
 
-1. To remove a cluster from a group, select the ellipsis menu next to the cluster, **Add to group**, and then select the group name under the **Remove from group** heading.
+1. To remove a cluster from a group, select the ellipsis menu next to the cluster, then **Add to group**, and then select the group name under the **Remove from group** heading.
 
     > [!NOTE]
-    > Clusters can be included in groups and favorites at the same time.
+    > Clusters can be included in groups and **Favorites** at the same time.
 
 ## Related content
 
