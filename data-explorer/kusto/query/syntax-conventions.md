@@ -12,6 +12,34 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 This article outlines the syntax conventions followed in the [Kusto Query Language (KQL)](index.md) and [management commands](../management/index.md) reference documentation.
 
+
+A good place to start learning Kusto Query Language is to understand the overall query structure. The first thing you notice when looking at a Kusto query is the use of the pipe symbol (` | `). The structure of a Kusto query starts with getting your data from a data source and then passing the data across a "pipeline," and each step provides some level of processing and then passes the data to the next step. At the end of the pipeline, you get your final result. In effect, this is our pipeline:
+
+`Get Data | Filter | Summarize | Sort | Select`
+
+This concept of passing data down the pipeline makes for an intuitive structure, as it's easy to create a mental picture of your data at each step.
+
+To illustrate this, let's take a look at the following query, which looks at Microsoft Entra sign-in logs. As you read through each line, you can see the keywords that indicate what's happening to the data. We've included the relevant stage in the pipeline as a comment in each line.
+
+> [!NOTE]
+> You can add comments to any line in a query by preceding them with a double slash (` // `).
+
+```kusto
+SigninLogs                              // Get data
+| evaluate bag_unpack(LocationDetails)  // Ignore this line for now; we'll come back to it at the end.
+| where RiskLevelDuringSignIn == 'none' // Filter
+   and TimeGenerated >= ago(7d)         // Filter
+| summarize Count = count() by city     // Summarize
+| sort by Count desc                    // Sort
+| take 5                                // Select
+```
+
+Because the output of every step serves as the input for the following step, the order of the steps can determine the query's results and affect its performance. It's crucial that you order the steps according to what you want to get out of the query.
+
+> [!TIP]
+> - A good rule of thumb is to filter your data early, so you are only passing relevant data down the pipeline. This greatly increases performance and ensures that you aren't accidentally including irrelevant data in summarization steps.
+> - This article points out some other best practices to keep in mind. For a more complete list, see [query best practices](best-practices.md).
+
 ## Syntax conventions
 
 |Convention |Description |

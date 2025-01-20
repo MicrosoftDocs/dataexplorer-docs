@@ -11,12 +11,14 @@ ms.date: 01/07/2025
 
 Every data value, like the value of an expression or a function parameter, has a *data type* which is either a *scalar data type* or a *user-defined record*. A *scalar data type* is one of the built-in predefined types in [Supported data types](#supported-data-types). A *user-defined record* is an ordered sequence of name and scalar-data-type pairs, like the data type of a row in a table.
 
+As in most languages, the data type determines what calculations and manipulations can be run against a value. For example, if you have a value that is of type *string*, you won't be able to perform arithmetic calculations against it.
+
 > [!NOTE]
 > While user-defined records are supported in Kusto, user-defined data types aren't.
 
 ## Supported data types
 
-The following data types are supported:
+In Kusto Query Language, most of the data types follow standard conventions and have names you've probably seen before. The following table shows the full list:
 
 | Type | Description |
 |--|--|
@@ -33,6 +35,16 @@ The following data types are supported:
 
 > [!TIP]
 > To check the data type of a value, use the [gettype()](../gettype-function.md) function.
+
+::: moniker range="microsoft-sentinel"
+While most of the data types are standard, you might be less familiar with types like *[dynamic](dynamic.md)* or *[timespan](timespan.md)*, and *[guid](guid.md)*.
+
+- ***Dynamic*** has a structure similar to JSON, but with one key difference: It can store Kusto Query Language-specific data types that traditional JSON can't, such as a nested *dynamic* value, or *timespan*.
+
+- ***Timespan*** is a data type that refers to a measure of time such as hours, days, or seconds. Don't confuse *timespan* with *datetime*, which evaluates to an actual date and time, not a measure of time. The following table shows a list of *timespan* suffixes.
+
+- ***Guid*** is a datatype representing a 128-bit, globally unique identifier, which follows the standard format of [8]-[4]-[4]-[4]-[12], where each [number] represents the number of characters and each character can range from 0-9 or a-f.
+::: moniker-end
 
 ## Null values
 
