@@ -255,7 +255,7 @@ items:
           - name: .alter-merge table column-docstrings command
             displayName: .alter-merge column-docstrings
             href: alter-merge-table-column.md
-    - name: Entity Group
+      - name: Entity Group
         items:
           - name: Entity Group
             href: entity-groups.md

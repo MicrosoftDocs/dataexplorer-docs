@@ -10,7 +10,7 @@ ms.date: 01/20/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Creates a stored entity group with a specific name, which functions like a reusable [`let` statement](../query/letstatement.md). The entity group definition is saved as part of the database metadata.
+Creates a stored entity group with a specific name, which functions like a reusable [`let` statement](../query/let-statement.md). The entity group definition is saved as part of the database metadata.
 
 ## Permissions
 
