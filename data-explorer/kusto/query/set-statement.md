@@ -3,7 +3,7 @@ title:  Set statement
 description: Learn how to use the set statement to set a request property for the duration of the query.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/13/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Set statement
@@ -34,6 +34,8 @@ Request properties aren't formally a part of the Kusto Query Language and may be
 | *OptionValue* | |  :heavy_check_mark: | The value of the request property.|
 
 ## Example
+
+[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
 
 ```kusto
 set querytrace;
