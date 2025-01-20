@@ -9,6 +9,21 @@ ms.date: 12/11/2024
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
+## December 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+| [Migrate your cluster to support multiple availability zones](migrate-cluster-to-multiple-availability-zone.md)| New article. Describes how to migrate your cluster to support multiple availability zones.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|-[Scalar function types at a glance](/kusto/query/scalar-functions?view=azure-data-explorer&preserve-view=true) <br/> -[series_cosine_similarity()](/kusto/query/series-cosine-similarity-function?view=azure-data-explorer&preserve-view=true) <br/> - [series_magnitude()](/kusto/query/series-magnitude-function?view=azure-data-explorer&preserve-view=true) <br/> - [series_sum()](/kusto/query/series-sum-function?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to calculate series elements, and added to scalar functions overview.|
+|[series_dot_product()](/kusto/query/series-dot-product-function?view=azure-data-explorer&preserve-view=true)| Updated article. Added section on performance optimization.|
+
 ## November 2023
 
 **General**

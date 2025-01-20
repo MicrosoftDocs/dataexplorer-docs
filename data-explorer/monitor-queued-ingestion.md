@@ -269,5 +269,5 @@ Click away from the settings to get the full chart that compares the number of e
 ## Related content
 
 * [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)
-* [Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)
+* [Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](monitor-data-explorer.md#monitor-azure-data-explorer-ingestion-commands-queries-and-tables-using-diagnostic-logs)
 * [Use Azure Monitor Insights](/azure/azure-monitor/insights/data-explorer)
