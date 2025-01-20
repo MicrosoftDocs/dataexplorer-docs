@@ -6,11 +6,11 @@ ms.topic: reference
 ms.custom: build-2023, build-2023-dataai
 ms.date: 08/11/2024
 adobe-target: true
-monikerRange: "microsoft-fabric || azure-data-explorer || microsoft-sentinel || azure-monitor "
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # Kusto Query Language (KQL) overview
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)]
 
 
 Kusto Query Language (KQL) is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. 
@@ -91,7 +91,6 @@ For more information on management commands, see [Management commands overview](
 KQL is used by many other Microsoft services. For specific information on the use of KQL in these environments, refer to the following links:
 
 * [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview)
-* [Kusto Query Language in Microsoft Sentinel](/azure/sentinel/kusto-overview)
 * [Understanding the Azure Resource Graph query language](/azure/governance/resource-graph/concepts/query-language)
 * [Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview)
 * [CMPivot queries](/mem/configmgr/core/servers/manage/cmpivot-overview#queries)

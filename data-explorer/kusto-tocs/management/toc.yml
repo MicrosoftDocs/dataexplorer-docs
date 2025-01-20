@@ -46,6 +46,8 @@ items:
   items:
   - name: Best practices for schema management
     href: /kusto/management/management-best-practices?view=azure-data-explorer&preserve-view=true
+  - name: Avrotize k2a tool
+    href: /kusto/management/avrotize?view=azure-data-explorer&preserve-view=true
   - name: Clusters
     items:
     - name: .execute cluster script command
