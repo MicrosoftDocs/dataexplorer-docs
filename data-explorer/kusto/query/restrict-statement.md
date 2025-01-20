@@ -3,7 +3,7 @@ title:  Restrict statement
 description: Learn how to use the restrict statement to limit tabular views that are visible to subsequent query statements.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/13/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Restrict statement
@@ -38,9 +38,11 @@ The middle-tier application can prefix the user's query with a **logical model**
 
 ## Examples
 
+[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
+
 ### Let statement
 
-The following example uses a [let statement](let-statement.md) appearing before `restrict` statement.
+The example uses a [let statement](let-statement.md) appearing before `restrict` statement.
 
 ```kusto
 // Limit access to 'Test' let statement only
@@ -50,7 +52,7 @@ restrict access to (Test);
 
 ### Tables or functions
 
-The following example uses references to [tables](../management/tables.md) or [functions](../management/functions.md) that are defined in the database metadata.
+The example uses references to [tables](../management/tables.md) or [functions](../management/functions.md) that are defined in the database metadata.
 
 ```kusto
 // Assuming the database that the query uses has table Table1 and Func1 defined in the metadata, 
@@ -61,7 +63,7 @@ restrict access to (database().Table1, database().Func1, database('DB2').Table2)
 
 ### Patterns
 
-The following example uses wildcard patterns that can match multiples of [let statements](let-statement.md) or tables/functions.
+The example uses wildcard patterns that can match multiples of [let statements](let-statement.md) or tables/functions.
 
 ```kusto
 let Test1 = () { print x=1 };
@@ -82,7 +84,7 @@ restrict access to (database('DB2').*);
 
 ### Prevent user from querying other user data
 
-The following example shows how a middle-tier application can prepend a user's query
+The example shows how a middle-tier application can prepend a user's query
 with a logical model that prevents the user from querying any other user's data.
 
 ```kusto
