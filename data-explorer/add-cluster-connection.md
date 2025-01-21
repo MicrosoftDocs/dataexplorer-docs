@@ -44,7 +44,7 @@ To add a connection to your Azure Data Explorer cluster:
 
 ## Manage cluster connections
 
-To organize and manage your Azure Data Explorer clusters, you can add clusters to **Favorites** or to groups.
+To organize and manage your clusters, you can add clusters to **Favorites** or to groups.
 
 ### Manage cluster connections using Favorites
 
