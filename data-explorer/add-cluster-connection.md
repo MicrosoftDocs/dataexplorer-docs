@@ -56,9 +56,9 @@ To add your cluster to **Favorites**:
 
 To remove a cluster from **Favorites**:
 
- 1. Select the **More [...]** menu next to the cluster and then **Remove from favorites**.
+1. Select the **More [...]** menu next to the cluster and then **Remove from favorites**.
  
- 1. Verify that your cluster doesn't appear under **Favorites** in the **Cluster connection** pane.
+1. Verify that your cluster doesn't appear under **Favorites** in the **Cluster connection** pane.
 
     :::image type="content" source="media/web-ui-add-cluster/cluster-pane-remove-from-favorites.png" alt-text="Screenshot of the Remove from favorites selection.":::
 
