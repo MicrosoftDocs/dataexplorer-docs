@@ -19,6 +19,12 @@ If you're not able to connect to a cluster in Azure Data Explorer, follow these 
 1. If you are connecting from an external tenant, ensure the cluster has correct permissions.
 
     For more information about cross tenant scenarios, see [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md).
+   
+1. Ensure your cluster is not stopped. Clusters can automatically stop due to [auto-stop settings](auto-stop-clusters.md).
+  
+    In the [Azure portal](https://ms.portal.azure.com/), navigate to Azure Data Explorer Clusters and search for your cluster. If the state shows **Stopped**, select the cluster
+
+   and click **Start** in the action toolbar at the top, then try reconnecting. 
 
 1. Verify that the cluster hasn't been deleted: review the activity log in your subscription.
 
