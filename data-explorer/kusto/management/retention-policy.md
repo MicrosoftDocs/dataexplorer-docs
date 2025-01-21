@@ -43,6 +43,10 @@ A retention policy includes the following properties:
   * If set to `Enabled`, the data will be recoverable for 14 days after it's been soft-deleted.
   * It is not possible to configure the recoverability period.
 
+> [!NOTE]
+>
+> Data that is deleted using [soft delete](../concepts/data-soft-delete.md) or [purge](../concepts/data-purge.md) is not recoverable regardless of any retention or recoverability settings.
+
 ## Management commands
 
 * Use [`.show policy retention`](show-table-retention-policy-command.md) to show the current retention policy for a database, table, or [materialized view](materialized-views/materialized-view-overview.md).
