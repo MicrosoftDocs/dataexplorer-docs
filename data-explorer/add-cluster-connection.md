@@ -82,8 +82,8 @@ To remove a cluster from a group:
 
 1. Verify that your cluster doesn't appear under the selected group in the **Cluster connection** pane.
 
-    > [!NOTE]
-    > Clusters can be included in groups and **Favorites** at the same time.
+> [!NOTE]
+> Clusters can be included in groups and **Favorites** at the same time.
 
 ## Related content
 
