@@ -45,7 +45,7 @@ A retention policy includes the following properties:
 
 > [!NOTE]
 >
-> Data that is deleted using [soft delete](../concepts/data-soft-delete) or [purge](../concepts/data-purge) is not recoverable regardless of any retention or recoverability settings.
+> Data that is deleted using [soft delete](../concepts/data-soft-delete.md) or [purge](../concepts/data-purge.md) is not recoverable regardless of any retention or recoverability settings.
 
 ## Management commands
 
