@@ -26,7 +26,7 @@ You must have at least [Materialized View Admin](../../access-control/role-based
 | Name                   | Type     | Required | Description                                                                   |
 |------------------------|----------|----------|-------------------------------------------------------------------------------|
 | *MaterializedViewName* | `string` |  :heavy_check_mark:  | Name of the materialized view.                                                |
-| *LookbackPeriod*       | `timespan` |  :heavy_check_mark:  | Time span limiting the period of time in which duplicates are expected.       |
+| *LookbackPeriod*       | `timespan` |  :heavy_check_mark:  | Time span limiting the period of time in which duplicates or updates are expected.       |
 
 ## Returns
 

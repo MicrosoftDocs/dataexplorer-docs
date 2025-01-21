@@ -116,8 +116,7 @@ The lookback period is always relative to a `datetime` column in the materialize
 
 #### Known limitations
 
-* Once a lookback is defined on the materialized view, its value cannot be increased (only decreased). Once a `lookback_column` is defined, 
-  its value cannot be changed either.
+* Once a `lookback_column` is defined, its value cannot be changed.
 * Usage of a `lookback_column` might lead to duplicates if the lookback column has `datetime(null)` values. In such cases, for a given combination
   of group-by keys, the view might end up with having one record with a value of `datetime(null)` and another value with a non-null value.
 

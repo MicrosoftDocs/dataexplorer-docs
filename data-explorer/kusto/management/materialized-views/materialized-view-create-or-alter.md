@@ -44,8 +44,8 @@ If the table already exists, only the following subset of properties are support
 
 | Name                      | Type     | Description  |
 |---------------------------|--------- |--------|
-| lookback | `timespan` | Time span limiting the period of time in which duplicates are expected (see [Lookback period](materialized-view-create.md#lookback-period)). Once a lookback is defined on the materialized view, its value cannot be increased (only decreased). |
-| lookback_column | `string` | A `datetime` column in the view which serves as the reference for the lookback period (see [Lookback period](materialized-view-create.md#lookback-period)). If a lookback_column is already defined, the lookback_column value cannot be modified. |
+| lookback | `timespan` | Time span limiting the period of time in which duplicates or updates are expected (see [Lookback period](materialized-view-create.md#lookback-period)). |
+| lookback_column | `string` | A `datetime` column in the view which serves as the reference for the lookback period. If not specified, lookback period will be calculated based on [ingestion_time()](../../query/ingestion-time-function.md). If a lookback_column is already defined, the lookback_column value cannot be modified. See [Lookback period](materialized-view-create.md#lookback-period). |
 | autoUpdateSchema          | `bool` | Whether to automatically update the view on source table changes. Default is `false`. This option is valid only for views of type `arg_max(Timestamp, *)`/`arg_min(Timestamp, *)`/`take_any(*)` (only when the column's argument is `*`). If this option is set to `true`, changes to the source table will be automatically reflected in the materialized view.       |
 | dimensionTables           | array    | A dynamic argument that includes an array of dimension tables in the view. See [Query parameter](materialized-view-create.md#query-parameter).      |
 | folder                    | `string` | The materialized view's folder.          |
