@@ -60,6 +60,8 @@ To add your cluster to **Favorites**:
 
 ### Manage cluster connections using groups
 
+**Before you start**: If the group you wish to assign the cluster to doesn't exist, we recommend you create it first. Under **Connections**, select **Group**, enter a group name, and then select the check mark.
+
 To add your cluster to a group:
 
 1. From the **More [...]** menu next to your cluster, select **Add to group**, and then select a group name.
