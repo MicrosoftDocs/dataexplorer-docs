@@ -12,7 +12,7 @@ If you're not able to connect to a cluster in Azure Data Explorer, follow these 
 
 1. Ensure the connection string is correct. It should be in the form: `https://<ClusterName>.<Region>.kusto.windows.net`, such as the following example:  `https://docscluster.westus.kusto.windows.net`.
 
-1. Ensure you have adequate permissions. If you don't, you'll get a response of *unauthorized*.
+1. Ensure you have adequate permissions. Otherwise, you get a response of *unauthorized*.
 
     For more information about permissions, see [Manage database permissions](manage-database-permissions.md). If necessary, work with your cluster administrator so they can add you to the appropriate role.
 
@@ -22,7 +22,7 @@ If you're not able to connect to a cluster in Azure Data Explorer, follow these 
 
 1. Ensure your cluster is active. Clusters can automatically stop due to [auto-stop settings](auto-stop-clusters.md).
   
-    From the [Azure portal](https://ms.portal.azure.com/) navigate to **Azure Data Explorer Clusters** and view your cluster. If the value in the **State** column is **Stopped**, select your cluster to open the overview page. From the **Command bar**, select **Start**. Then try reconnecting.
+    From the [Azure portal](https://ms.portal.azure.com/), navigate to **Azure Data Explorer Clusters** and view your cluster. If the value in the **State** column is **Stopped**, select your cluster to open the overview page. From the **Command bar**, select **Start**. Then try reconnecting.
 
 1. Verify that the cluster wasn't deleted by reviewing your subscription activity log.
 
