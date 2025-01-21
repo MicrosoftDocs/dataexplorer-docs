@@ -34,7 +34,7 @@ To add a connection to your Azure Data Explorer cluster:
 
 1. (Optional) If your account is linked to multiple Microsoft Entra directories, select **Switch directory** and choose the relevant directory for this connection.
 
-    :::image type="content" source="media/web-ui-add-cluster/switch-directories.png" alt-text="Screenshot of option to switch directory." lightbox="media/web-ui-add-cluster/switch-directories.png":::
+    :::image type="content" source="media/web-ui-add-cluster/switch-directories.png" alt-text="Screenshot of option to switch directory.":::
 
 1. Select **Add** to add the connection. Your cluster and databases should now be visible in the left panel.
 
