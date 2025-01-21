@@ -40,7 +40,7 @@ To add a connection to your Azure Data Explorer cluster:
 
     For example, the following image shows a cluster connection pane that contains three clusters: `HomeCluster`, `help`, and `TestCluster`.
 
-    :::image type="content" source="media/web-ui-add-cluster/cluster-pane-with-various-accounts.png" alt-text="Screenshot of the help cluster and databases." lightbox="media/web-ui-add-cluster/cluster-pane-with-various-accounts.png":::
+    :::image type="content" source="media/web-ui-add-cluster/cluster-pane-with-various-accounts.png" alt-text="Screenshot of the help cluster and databases.":::
 
 ## Manage cluster connections
 
