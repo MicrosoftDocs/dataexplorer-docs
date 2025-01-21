@@ -28,7 +28,7 @@ To add a connection to your Azure Data Explorer cluster:
 
 1. In the **Add connection** dialog box, enter the cluster **Connection URI** and **Display name**. To find the connection URI, go to your cluster resource in the [Azure portal](https://ms.portal.azure.com/). The connection URI is the **URI** found in the **Overview**. To add a free sample cluster, specify "help" as the **Connection URI**.
 
-    :::image type="content" source="media/web-ui-add-cluster/add-connection-dialog.png" alt-text="Screenshot of add cluster connection dialog box." lightbox="media/web-ui-add-cluster/add-connection-dialog.png":::
+    :::image type="content" source="media/web-ui-add-cluster/add-connection-dialog.png" alt-text="Screenshot of add cluster connection dialog box.":::
 
 1. (Optional) If you have multiple user accounts and want to authenticate with a different account, select **Connect as another user**, and proceed to add or select the appropriate account.
 
@@ -66,10 +66,10 @@ To add your cluster to a group:
 
 1. To add your cluster to a new group, select **Add to group > New Group** or from the upper left corner, select **Add** and then **Group**.
 
-    :::image type="content" source="media/web-ui-add-cluster/add-groups-favorites.png" alt-text="Screenshot of the Add to favorites and Add to group options. The Add to group dropdown includes the New Group selection and an existing group. "  lightbox="media/web-ui-add-cluster/add-groups-favorites.png":::
+    :::image type="content" source="media/web-ui-add-cluster/add-groups-favorites.png" alt-text="Screenshot of the Add to favorites and Add to group options. The Add to group dropdown includes the New Group selection and an existing group.":::
 
 1. To remove a cluster from a group, select the **More [...]** menu next to the cluster, then **Add to group**. Under the the **Remove from group** heading select the group name.
-    :::image type="content" source="media/web-ui-add-cluster/cluster-pane-remove-from-groups.png" alt-text="Screenshot of the Remove from group option."  lightbox="media/web-ui-add-cluster/cluster-pane-remove-from-groups.png":::
+    :::image type="content" source="media/web-ui-add-cluster/cluster-pane-remove-from-groups.png" alt-text="Screenshot of the Remove from group option." :::
 
     > [!NOTE]
     > Clusters can be included in groups and **Favorites** at the same time.
