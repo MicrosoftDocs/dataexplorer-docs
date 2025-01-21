@@ -1,6 +1,6 @@
 ---
 title: macro-expand operator
-description: Learn how to use the macro-expand operator to run a subquery on a set of entitites.
+description: Learn how to use the macro-expand operator to run a subquery on a set of entities.
 ms.reviewer: ziham1531991
 ms.topic: reference
 ms.date: 01/20/2025
@@ -17,26 +17,7 @@ The set of entities you want to query, is called an **entity group**. The entity
 
 The `macro-expand` operator runs the subquery separately for each entity in the group and then combines all the results into a single output. The subquery can include nested `macro-expand` operators. This means you can use the `macro-expand` operator within another `macro-expand` operator. However, the identifier for the inner `macro-expand` must be different from the identifier for the outer `macro-expand` to clearly distinguish between the scope and references of each one.
 
-<!--## Computational model -->
-<!--is this important or described in the table below?
-The `macro-expand` operator takes three arguments:
-
-1. An entity identifier that, when it appears in the subquery, is replaced with each entity in the entity group.
-
-1. An entity group, or collection of entity references of the same kind. Entities of different types can't be combined in the same entity group.
-
-1. A subquery that takes no tabular input, produces a single tabular output,
-   and may reference entities in the entity group through the use of the
-   aforementioned identifier. The subquery must include exactly one tabular
-   expression, and may optionally include additional let-statements preceding
-   the tabular expression.
-
-The computation model of the `macro-expand` operator is as follows:
-The operator takes no input, and is the `union` of expanding the subquery
-as many times as there are individual entities in the entity group.
--->
-
-### Syntax
+## Syntax
 
 `macro-expand` [`kind` `=` *Kind*] [`isfuzzy` `=` *IsFuzzy*] *EntityGroup* `as` *EntityIdentifier*  `(` *Subquery* `)`
 
@@ -44,15 +25,14 @@ as many times as there are individual entities in the entity group.
 
 `macro-expand` *EntityIdentifier* `in` *EntityGroupIdentifier* `(` *Subquery* `)`
 
-<!---- should the syntax include a let example?-->
 > [!NOTE]
 > The operation of the `macro-expand` operator can be modified by setting the `best_effort` request property to `true`, either by using a `set statement` or through [client request properties](../api/rest/request-properties.md). When this property is set to `true`, the `macro-expand` operator ignores fuzzy resolution and connectivity failures to execute any of the subexpressions being unioned and issues a warning in the query status results.
 
-## Syntax variations
+### Syntax variations
 
 There are several syntactic variants that are used with the `macro-expand` operator:
 
-1. **Explicit:** The `macro-expand` operator, identifier, entity group, and subquery are all explicitly defined in the text of the operator invocation itself.
+1. **Explicit:** All elements are explicitly defined in the text of the operator invocation itself.
 
 1. **Explicit using let statement:** The entity group is specified in the query using a `let` statement outside the `macro-expand` operator using the syntax:
 
@@ -60,16 +40,18 @@ There are several syntactic variants that are used with the `macro-expand` opera
 
 1. **Explicit using stored entity group:** The query uses an entity group stored in the database in scope rather than defined in the query.
 
+To see examples of how the variants are used, see [Examples](#examples).
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *Kind* | `string` | | Either `inner` or `outer` (default). When `kind` is set to `inner`, the results only include columns common to all the accessed scoped entities. If set to `outer`, the result includes all the columns that occur in any of the inputs. Cells that aren't defined by an input row are set to `null`. |
 | *IsFuzzy* |  |  | When set to `true`, it only considers entity sources that currently exist and are accessible. If at least one entity is found, the query runs, and any missing entities generate warnings in the query status results. If no entities are found, the query can't resolve any specified entities and returns an error. The default is `false`. |
-| *EntityGroup* |  |  :heavy_check_mark: | A set of one or more entities that *EntityIdentifier* expands to when a query is run. The entity group can be a stored entity group or a directly defined group. It denotes one or more entities of the same type that *EntityIdentifier* expands to. |
+| *EntityGroup* |  |  :heavy_check_mark: | A set of one or more entities that *EntityIdentifier* expands to when a query is run. The entity group can be a stored entity group or a defined group. It denotes one or more entities of the same type that *EntityIdentifier* expands to. |
 | *EntityIdentifier* | `string` |  :heavy_check_mark: |  An identifier that serves as a placeholder for an entity in the subquery, and which is expanded into the actual entity when the query is run. Entities that aren't explicitly scoped in *EntityIdentifier* are assumed to be part of the current in scope database. Any specific identifiers included in the query override the default assumption. |
 |*EntityReference*| `string` | |An entity included in the entity group. One or more *EntityReference* is required if an *EntityGroup* isn't specified. |
-| *Subquery* | `string` |  :heavy_check_mark: | A single tabular expression that doesn’t take input data directly. It might include references to entities through an *EntityIdentifier*, and use expressions such as let statements, stored functions, or other elements from the database in scope. *Subquery* can also be preceded by one or more `let` statements. It can also reference [specialized scalar functions](#subquery-contextual-functions).|
+| *Subquery* | `string` |  :heavy_check_mark: | A single tabular expression that doesn’t take input data, directly. It might include references to entities through an *EntityIdentifier*, and use expressions such as let statements, stored functions, or other elements from the database in scope. *Subquery* can also be preceded by one or more `let` statements. It can also reference [Subquery contextual functions](#subquery-contextual-functions).|
 
 > [!NOTE]
 > A query can only reference entity groups defined in the query text or in the current database. Entity groups in other databases or clusters can't be referenced directly or indirectly.

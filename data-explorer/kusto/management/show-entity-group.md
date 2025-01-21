@@ -18,7 +18,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ## Syntax
 
-`.show` `entity_group`
+`.show` `entity_groups`
 
 `.show` `entity_group` *EntityGroupName*
 
@@ -43,10 +43,10 @@ This command returns a table with the following columns:
 
 ### Show entity groups
 
-The following example returns all the entity groups in the selected database,  `eg1` and `eg2`, along with their entities.
+The following example returns all the entity groups in the selected database, `eg1` and `eg2`, along with their entities.
 
 ```kusto
-.show entity_group
+.show entity_groups
 ```
 
 **Output**

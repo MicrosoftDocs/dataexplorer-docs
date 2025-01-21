@@ -10,7 +10,7 @@ ms.date: 01/21/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Entity groups are named entities  that are stored in a database and that the [macro-expand query operator](../query/macro-expand-operator.md) can reference.
+Entity groups are named entities that are stored in a database and that the [macro-expand query operator](../query/macro-expand-operator.md) can reference.
 
 
 Storing an entity group in the database instead of providing its value in the query text itself makes it easier to manage these objects.

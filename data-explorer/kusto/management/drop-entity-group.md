@@ -1,16 +1,16 @@
 ---
-title: .drop entity_group(s)
+title: .drop entity_group
 description: Learn how to use the `.drop entity_group` command to remove an entity group from your database.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/20/2025
+ms.date: 01/21/2025
 ---
 
 # .drop entity_group
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Drops an entity group from the database.
+Drops an entity group from a database.
 
 ## Permissions
 

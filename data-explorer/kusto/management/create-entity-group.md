@@ -3,7 +3,7 @@ title: .create entity_group(s)
 description: Learn how to use the `.create entity_group` command to create an entity group.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/20/2025
+ms.date: 01/21/2025
 ---
 
 # .create entity_group
@@ -44,7 +44,7 @@ This command returns a table with the following columns:
 The following example creates the `MyEntityGroup` entity group with two entities, `cluster('c1').database('d1')` and `cluster('c2').database('d2')`.
 
 ```kusto
-.create entity_group MyEntityGroup  (cluster('c1').database('d1'), cluster('c2').database('d2'))
+.create entity_group MyEntityGroup (cluster('c1').database('d1'), cluster('c2').database('d2'))
 ```
 
 |Name|Entities|

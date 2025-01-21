@@ -3,7 +3,7 @@ title: .alter entity_group
 description: Learn how to use the `.alter entity_group` command to change an existing entity group.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/19/2025
+ms.date: 01/21/2025
 ---
 
 
@@ -45,7 +45,7 @@ This command returns a table with the following columns:
 The following example alters `MyEntityGroup` to include the entity `cluster('c1').database('d1')`.
 
 ```kusto
-.alter entity_group MyEntityGroup  (cluster('c1').database('d1'))
+.alter entity_group MyEntityGroup (cluster('c1').database('d1'))
 ```
 
 **Output**

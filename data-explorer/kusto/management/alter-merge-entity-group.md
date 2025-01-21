@@ -3,7 +3,7 @@ title: .alter-merge entity_group
 description: Learn how to use the `.alter-merge entity_group` command to change an existing entity group.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/20/2025
+ms.date: 01/21/2025
 ---
 
 # .alter-merge entity_group
@@ -40,12 +40,12 @@ This command returns a table with the following columns:
 
 ## Examples
 
-The following example edits the `MyEntityGroup` entity group and adds the entity `cluster('c2').database('d2')` to the entity group. 
+The following example edits the `MyEntityGroup` entity group and adds the entity `cluster('c2').database('d2')` to the entity group.
 
 First run the following command to create a new entity group with entity `cluster('c1').database('d1')`:
 
 ```kusto
-.create entity_group MyEntityGroup  (cluster('c1').database('d1'))
+.create entity_group MyEntityGroup (cluster('c1').database('d1'))
 ```
 
 **Output**
@@ -57,7 +57,7 @@ First run the following command to create a new entity group with entity `cluste
 Then run the following command to edit the existing entity group `MyEntityGroup` and add the entity `cluster('c2').database('d2')`:
 
 ```kusto
-.alter-merge entity_group MyEntityGroup  (cluster('c2').database('d2'))
+.alter-merge entity_group MyEntityGroup (cluster('c2').database('d2'))
 ```
 
 **Output**
