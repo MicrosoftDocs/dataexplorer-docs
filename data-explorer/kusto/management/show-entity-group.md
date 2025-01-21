@@ -3,7 +3,7 @@ title: .show entity_group(s)
 description: Learn how to use the `.show entity_group` command to view existing entity groups.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/20/2025
+ms.date: 01/21/2025
 ---
 
 # .show entity_group(s)
@@ -46,7 +46,7 @@ This command returns a table with the following columns:
 The following example returns all the entity groups in the selected database,  `eg1` and `eg2`, along with their entities.
 
 ```kusto
-.show entity_groups
+.show entity_group
 ```
 
 **Output**

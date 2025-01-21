@@ -7,6 +7,8 @@ ms.date: 01/20/2025
 ---
 # macro-expand operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The `macro-expand` operator simplifies running a subquery on a set of [entities](schema-entities/index.md) such as clusters, databases, or tables, and then combining the results into a single output.
 
 The operator is useful when you have data spread across multiple clusters, databases, or tables. For example, when data is held in the same global region as its source, you can use the `macro-expand` operator in a single query across data in distinct locations, instead of running separate queries for each entity and combining the results manually.

@@ -3,7 +3,7 @@ title: Entity groups
 description: Learn how to use Entity groups to store entity groups in the database.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/20/2025
+ms.date: 01/21/2025
 ---
 
 # Entity groups
@@ -12,9 +12,10 @@ ms.date: 01/20/2025
 
 Entity groups are named entities  that are stored in a database and that the [macro-expand query operator](../query/macro-expand-operator.md) can reference.
 
+
 Storing an entity group in the database instead of providing its value in the query text itself makes it easier to manage these objects.
 
-## Create and management entity groups
+## Management commands
 
 |Function |Description|
 |---------|-----------|
