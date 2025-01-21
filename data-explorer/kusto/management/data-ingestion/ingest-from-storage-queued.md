@@ -9,7 +9,7 @@ ms.date: 01/13/2025
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The `.ingest-from-storage-queued into` command is used with the [`.list blobs`](list-blobs.md) command to queue blobs for ingestion into a table. It enables the ingestion of an entire storage container, a specific folder within a container, or to ingest all blobs that match a given prefix and suffix.
+The `.ingest-from-storage-queued into` command is used with the [`.list blobs`](list-blobs.md) command to queue blobs for ingestion into a table. It enables the ingestion of an entire storage container, a specific folder within a container, or all blobs that match a given prefix and suffix.
 
 [!INCLUDE [direct-ingestion-note](../../includes/direct-ingestion-note.md)]
 
