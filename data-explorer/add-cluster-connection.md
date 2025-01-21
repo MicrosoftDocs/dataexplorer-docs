@@ -68,7 +68,7 @@ To add your cluster to a group:
 
     :::image type="content" source="media/web-ui-add-cluster/add-groups-favorites.png" alt-text="Screenshot of the Add to favorites and Add to group options. The Add to group dropdown includes the New Group selection and an existing group.":::
 
-1. To remove a cluster from a group, select the **More [...]** menu next to the cluster, then **Add to group**. Under the the **Remove from group** heading select the group name.
+1. To remove a cluster from a group, select the **More [...]** menu next to the cluster, then **Add to group**. Under the **Remove from group** heading, select the group name.
     :::image type="content" source="media/web-ui-add-cluster/cluster-pane-remove-from-groups.png" alt-text="Screenshot of the Remove from group option." :::
 
     > [!NOTE]
