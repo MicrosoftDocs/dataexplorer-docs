@@ -62,9 +62,7 @@ To add your cluster to **Favorites**:
 
 To add your cluster to a group:
 
-1. From the **More [...]** menu next to your cluster, select **Add to group** and the group name.
-
-1. To add your cluster to a new group, select **Add to group > New Group** or from the upper left corner, select **Add** and then **Group**.
+1. From the **More [...]** menu next to your cluster, select **Add to group** then choose the group name. To add your cluster to a new group, first select **New Group** or **Add** from the upper left corner and then **Group** and create the new group name. Then select the group name from **Add to group**.
 
     :::image type="content" source="media/web-ui-add-cluster/add-groups-favorites.png" alt-text="Screenshot of the Add to favorites and Add to group options. The Add to group dropdown includes the New Group selection and an existing group.":::
 
