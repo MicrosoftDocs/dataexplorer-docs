@@ -52,24 +52,35 @@ To add your cluster to **Favorites**:
 
 1. From the **More [...]** menu next to your cluster, select **Add to favorites**.
 
-1. Verify that your saved favorites appear under the **Favorites** menu in the **Cluster connection** pane.
+1. Verify that your cluster appears under **Favorites** in the **Cluster connection** pane.
 
-1. To remove a cluster from **Favorites**, select the **More [...]** menu next to the cluster and then **Remove from favorites**.
+To remove a cluster from **Favorites**:
+
+ 1. Select the **More [...]** menu next to the cluster and then **Remove from favorites**.
+ 
+ 1. Verify that your cluster doesn't appear under **Favorites** in the **Cluster connection** pane.
 
     :::image type="content" source="media/web-ui-add-cluster/cluster-pane-remove-from-favorites.png" alt-text="Screenshot of the Remove from favorites selection.":::
 
 ### Manage cluster connections using groups
 
-**Before you start**: If the group you wish to assign the cluster to doesn't exist, we recommend you create it first. Under **Connections**, select **Group**, enter a group name, and then select the check mark.
+**Before you start**: If the group you wish to assign the cluster to doesn't exist, we recommend you create it first. In the **Cluster connection** pane, select **Add** > **Group**, enter a group name, and then select the check mark.
 
 To add your cluster to a group:
 
 1. From the **More [...]** menu next to your cluster, select **Add to group**, and then select a group name.
 
-    :::image type="content" source="media/web-ui-add-cluster/add-groups-favorites.png" alt-text="Screenshot of the Add to favorites and Add to group options. The Add to group dropdown includes the New Group selection and an existing group.":::
+    :::image type="content" source="media/web-ui-add-cluster/add-groups-favorites.png" alt-text="Screenshot of the add to group options. The add to group dropdown includes the New Group selection and an existing group.":::
 
-1. To remove a cluster from a group, select the **More [...]** menu next to the cluster, then **Add to group**. Under the **Remove from group** heading, select the group name.
+1. Verify that your cluster appears under the selected group in the **Cluster connection** pane.
+
+To remove a cluster from a group:
+
+1. Select the **More [...]** menu next to the cluster, then **Add to group**. Under the **Remove from group** heading, select the group name.
+
     :::image type="content" source="media/web-ui-add-cluster/cluster-pane-remove-from-groups.png" alt-text="Screenshot of the Remove from group option." :::
+
+1. Verify that your cluster doesn't appear under the selected group in the **Cluster connection** pane.
 
     > [!NOTE]
     > Clusters can be included in groups and **Favorites** at the same time.
