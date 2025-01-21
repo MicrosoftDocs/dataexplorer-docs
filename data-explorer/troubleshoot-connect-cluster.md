@@ -23,7 +23,9 @@ If you're not able to connect to a cluster in Azure Data Explorer, follow these 
 1. Ensure your cluster is active. Clusters can automatically stop due to [auto-stop settings](auto-stop-clusters.md).
   
     1. From the [Azure portal](https://ms.portal.azure.com/), navigate to **Azure Data Explorer Clusters** and view your cluster.
+
     1. If the value in the **State** column is **Stopped**, select your cluster to open the overview page.
+
     1. From the **Command bar**, select **Start**. Then try reconnecting.
 
 1. Verify that the cluster wasn't deleted by reviewing your subscription activity log.
