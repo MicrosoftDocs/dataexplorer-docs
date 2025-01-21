@@ -122,7 +122,7 @@ items:
           - name: .clear table data command
             href: clear-table-data-command.md
           - name: Avrotize k2a tool
-            href: /kusto/tools/avrotize.md
+            href: ../tools/avrotize.md
       - name: External tables
         items:
           - name: Azure Storage external tables
