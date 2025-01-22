@@ -78,7 +78,11 @@ The supported values of this property are:
 | `stacked`    | Stack "areas" to the right.                                                      |
 | `stacked100` | Stack "areas" to the right and stretch each one to the same width as the others. |
 
-## Example
+## Examples
+
+### Simple area chart
+
+The following example shows a basic area chart visualization.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -91,3 +95,33 @@ demo_series3
 ```
 
 :::image type="content" source="media/visualization-areachart/area-chart.png" alt-text="Screenshot of area chart visualization." lightbox="media/visualization-areachart/area-chart.png":::
+
+### Area chart using properties
+
+The following example shows an area chart using multiple property settings.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WRO2%2BEMAzH9%2FsUFhNIDNA9Uzt0u6G3n0ywwLokoDwoVP3wDY87Ui92%2Fr84fuQqZRjRyOWDPEnPg7n8ggtao%2BUfApy6%2B%2Fv1TUSfR1%2BUm%2BJJj2KN8luMyKIPlg7WB80t%2B2Xnn8epgGaBhk1%2BY03Oox5LqPsi1rJkWrKAllD2aP0Fon2z7yGHLV7twaYFATFRPqgtX7qijjYyseNG0UkWOaigjRPPEf53d86RpODMDoQaukTz7BWByL5iyzGYUAXKEq7ZxPJ1lUo4g6jrqkrEeX8bFBtCm%2Bh7m5GciznhURyyFWblqr3gs7FttGSsuA5%2Ffkq23S%2F%2BAJslc3TmAQAA" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+OccupancyDetection
+| summarize avg_CO2=avg(CO2), avg_temp= avg(Temperature), avg_humidity= avg(Humidity) by bin(Timestamp, 1h)
+| render areachart
+    with ( 
+        kind = stacked,
+        legend = visible,
+        ycolumns= avg_CO2, avg_humidity, avg_temp,
+        yaxis =log,
+        ytitle ="Sample value",
+        ymin = 10,
+        ymax =11000,
+        xaxis = linear,
+        xcolumn = Timestamp,
+        xtitle = "Time",    
+        title ="CO2, humidity, and temperature"
+    )
+```
+
+:::image type="content" source="media/visualization-areachart/area-chart-with-properties.png" alt-text="Screenshot of area chart visualization with properties." lightbox="media/visualization-areachart/area-chart-with-properties.png":::
