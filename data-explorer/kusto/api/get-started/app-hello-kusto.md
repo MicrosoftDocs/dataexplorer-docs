@@ -160,7 +160,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     > In C#, the interactive authentication process may not prompt the user if:
     >
     > - The user is already authenticated on the device
-    > - There is an existing Kusto.Explorer or Azure Date Explorer web UI authentication on the device
+    > - There is an existing Kusto.Explorer or Azure Data Explorer web UI authentication on the device
 
 1. Create a client object that uses the connection string builder object to connect to the cluster.
 
