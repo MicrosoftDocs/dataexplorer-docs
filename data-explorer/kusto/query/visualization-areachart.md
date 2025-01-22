@@ -147,7 +147,9 @@ The following example shows an area chart using split panels. In this example, t
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02RsW6DMBCG9zzFL08gMSQP4IG2kSpFyhAYuho4BUvGINskUPXhe0AbfIN1%2Fn7f%2Bfy7CL3rzg%2BywR9%2B8GzJEYqgAkFbJKI8f%2BWFyCCu57dbXlzyJb%2Fk14JpCmUbrLXlPBCkhPhU2ghu5MeuU05%2FE%2Bp%2BtEGua5KimrfuGSptE05dKHXH21OTcpkj25CDcqTqlrUDOJ46tEjWdInZD0YHiUFZMj57cUN3robEQ3tdGdqVue7N2Fm%2FTRFxNWkPafp7xIIOht8i3pezIhI6NkTiGBM1QZ6OEZq2jjDaknIR3yZgZX%2FyLv5dCfHBzrDBHC%2Fxf5zFWND6T2IV018qvG0uugEAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
+
 ::: moniker range="microsoft-fabric  || azure-data-explorer"
+
 ```kusto
 StormEvents
 | where State in ("TEXAS", "NEBRASKA", "KANSAS") and EventType == "Hail"
