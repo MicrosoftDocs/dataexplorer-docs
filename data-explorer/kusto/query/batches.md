@@ -18,7 +18,7 @@ A query can include multiple tabular expression statements, as long as they're d
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
 
 ### Name tabular results
 
@@ -34,15 +34,21 @@ StormEvents | where State == "FLORIDA" | count | as ['Count of events in Florida
 StormEvents | where State == "GUAM" | count | as ['Count of events in Guam']
 ```
 
-###Output###
+**Output**
 
-### [Florida](#tab/Count of events in Florida)
+### [Count of events in Florida](#tab/florida)
 
-1042
+| Count |
+| -- |
+| 1042 |
 
-### [Guam](#tab/Count of events in Guam)
+### [Count of events in Guam](#tab/guam)
 
-4
+| Count |
+| -- |
+| 4 |
+
+---
 
 ### Share a calculation
 
@@ -59,23 +65,25 @@ m | where n > 2000;
 m | where n < 10
 ```
 
-####Output####
+**Output**
 
-### [Table1](#tab/Table 1)
+### [Table 1](#tab/table-1)
 
-| State | n    |
-|-------|------|
-| ILLINOIS | 2022|
-| IOWA | 2337    
+| State | n |
+|--|--|
+| ILLINOIS | 2022 |
+| IOWA | 2337 |
 | KANSAS | 3166 |
-| MISSOURI | 2016  
+| MISSOURI | 2016 |
 | TEXAS | 4701 |
 
-### [Table2](#tab/Table 2)
+### [Table 2](#tab/table-2)
 
-| State | n    |
-|-------|------|
-| GUAM | 2022|
-| GULF OF ALASKA | 2337    
+| State | n |
+|--|--|
+| GUAM | 2022 |
+| GULF OF ALASKA | 2337 |
 | HAWAII WATERS | 3166 |
-| LAKE ONTARIO | 2016  
+| LAKE ONTARIO | 2016 |
+
+---

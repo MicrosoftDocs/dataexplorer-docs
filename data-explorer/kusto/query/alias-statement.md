@@ -3,17 +3,18 @@ title:  Alias statement
 description: Learn how to use an alias statement to define an alias for a database that is used for a query.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/12/2025
 ---
 # Alias statement
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Alias statements allow you to define an alias for databases, which can be used later in the same query.
+Alias statements allow you to define an alias for a database, which can be used in the same query.
 
 :::moniker range="azure-data-explorer"
 This is useful when you're working with several clusters but want to appear as if you're working on fewer clusters.
 The alias must be defined according to the following syntax, where *clustername* and *databasename* are existing and valid entities.
+
 
 ## Syntax
 
@@ -50,7 +51,7 @@ The alias must be defined according to the following syntax, where *Eventhouse* 
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
 
 First, count the number of records in that table.
 

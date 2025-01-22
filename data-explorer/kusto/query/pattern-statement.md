@@ -3,7 +3,7 @@ title:  Pattern statement
 description: Learn how to use pattern statements to map string tuples to tabular expressions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 
@@ -11,9 +11,13 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-A **pattern** is a construct that maps string tuples to tabular expressions. Each pattern must *declare* a pattern name and optionally *define* a pattern mapping. Patterns that define a mapping return a tabular expression when invoked. Any two statements must be separated by a semicolon.
+A **pattern** is a construct that maps string tuples to tabular expressions.
 
-*Empty patterns* are patterns that are declared but don't define a mapping. When invoked, they return error *SEM0036* along with the details of the missing pattern definitions in the HTTP header. Middle-tier applications that provide a Kusto Query Language (KQL) experience can use the returned details as part of their process to enrich KQL query results.
+Each pattern must *declare* a pattern name and optionally *define* a pattern mapping. Patterns that define a mapping return a tabular expression when invoked. Separate any two statements by a semicolon.
+
+Empty patterns are patterns that are declared but don't define a mapping. When invoked, they return error *SEM0036* along with the details of the missing pattern definitions in the HTTP header.
+
+Middle-tier applications that provide a Kusto Query Language (KQL) experience can use the returned details as part of their process to enrich KQL query results.
 For more information, see [Working with middle-tier applications](#work-with-middle-tier-applications).
 
 ## Syntax
@@ -56,13 +60,13 @@ For more information, see [Working with middle-tier applications](#work-with-mid
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
 
-In each of the following examples, a pattern is declared, defined, and then invoked.
+In these examples, a pattern is defined.
 
-### Define simple patterns
+### Define a simple pattern
 
-The following example defines a pattern that maps states to an expression that returns its capital/major city.
+This example defines a pattern that maps states to an expression that returns its capital/major city.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -79,21 +83,23 @@ declare pattern country = (name:string)[state:string]
 country("Canada").Alberta
 ```
 
-**Output** 
+**Output**
 
 |Capital|
 |-------|
 |Edmonton|
+
+### Define a scoped pattern
+
+This example defines a pattern to scope data and metrics of application data. The pattern is invoked to return a union of the data.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA62RsQrCMBCGd6Hv8FOHtlDFtrgoHQQXB5+gdAhpLJWahCRCofruJpjBCi7SwJHckfv/fJeG0Z4oBkmMYYrjICVKxETKvqPEdIKfmp02quNtUmkqJPNZDQSLMVjArjgiWZSsq+hIDIlqVyoxQhHeMgy4KHFDBiOwhTZM2vMDUokro8Ybhm5bZmEKJ/EWGPDcf+mfmfWm2lr8re8lbM22N3HyaZLPAZFPILINVlOSYg6S4heJizu33+aueyT3mtTnbo6+8QXib67/+wEAAA==" target="_blank">Run the query</a>
 ::: moniker-end
 
-The following example defines a pattern that defines some scoped application data.
-
 ```kusto
-declare pattern App = (applicationId:string)[scope:string]  
+declare pattern App = (applicationId:string)[scope:string]
 {
     ('a1').['Data']    = { range x from 1 to 5 step 1 | project App = "App #1", Data    = x };
     ('a1').['Metrics'] = { range x from 1 to 5 step 1 | project App = "App #1", Metrics = rand() };
@@ -149,22 +155,33 @@ union app("ApplicationX").["*"]
 | count
 ```
 
-**Returns semantic error**
+**Output semantic error**
+
 > One or more pattern references were not declared. Detected pattern references: ["app('ApplicationX').['*']"]
 
 ## Work with middle-tier applications
 
 A middle-tier application provides its users with the ability to use KQL and wants to enhance the experience by enriching the query results with augmented data from its internal service.
 
-To this end, the application provides users with a pattern statement that returns tabular data that their users can use in their queries. The pattern's arguments are the keys the application will use to retrieve the enrichment data. When the user runs the query, the application does not parse the query itself but instead plans to leverage the error returned by an empty pattern to retrieve the keys it requires. So it prepends the query with the empty pattern declaration, sends it to the cluster for processing, and then parses the returned HTTP header to retrieve the values of missing pattern arguments. The application uses these values to look up the enrichment data and builds a new declaration that defines the appropriate enrichment data mapping. Finally, the application prepends the new definition to the user's query, resends it for processing, and returns the result it receives to the user.
+To this end, the application provides users with a pattern statement that returns tabular data that their users can use in their queries. The pattern's arguments are the keys the application will use to retrieve the enrichment data.
+
+When the user runs the query, the application doesn't parse the query itself but instead uses the error returned by an empty pattern to retrieve the keys it requires. So it prepends the query with the empty pattern declaration, sends it to the cluster for processing, and then parses the returned HTTP header to retrieve the values of missing pattern arguments. The application uses these values to look up the enrichment data and builds a new declaration that defines the appropriate enrichment data mapping.
+
+Finally, the application prepends the new definition to the query, resends it for processing, and returns the result it receives to the user.
 
 ### Example
 
-In the following example, a middle-tier application provides the ability to enrich queries with longitude/latitude locations. The application uses an internal service to map IP addresses to longitude/latitude locations, and provides a pattern called `map_ip_to_longlat` for this purpose. Let's suppose the application gets the following query from the user:
+In the examples, a pattern is declared, defined, and then invoked.
+
+#### Declare an empty pattern
+
+In this example, a middle-tier application enriches queries with longitude/latitude locations. The application uses an internal service to map IP addresses to longitude/latitude locations, and provides a pattern called `map_ip_to_longlat`. When the query is run, it returns an error with missing pattern definitions:
 
 ```kusto
 map_ip_to_longlat("10.10.10.10")
 ```
+
+#### Declare and define a pattern
 
 The application does not parse this query and hence does not know which IP address (*10.10.10.10*) was passed to the pattern. So it prepends the user query with an empty `map_ip_to_longlat` pattern declaration and sends it for processing:
 
@@ -176,7 +193,11 @@ map_ip_to_longlat("10.10.10.10")
 The application receives the following error in response.
 > One or more pattern references were not declared. Detected pattern references: ["map_ip_to_longlat('10.10.10.10')"]
 
-The application inspects the error, determines that the error indicates a missing pattern reference, and retrieves the missing IP address (*10.10.10.10*). It uses the IP address to look up the enrichment data in its internal service and builds a new pattern defining the mapping of the IP address to the corresponding longitude and latitude data. The new pattern is prepended to the user's query and run again. This time the query succeeds because the enrichment data is now declared in the query, and the result is sent to the user.
+#### Invoke a pattern
+
+The application inspects the error, determines that the error indicates a missing pattern reference, and retrieves the missing IP address (*10.10.10.10*). It uses the IP address to look up the enrichment data in its internal service and builds a new pattern defining the mapping of the IP address to the corresponding longitude and latitude data. The new pattern is prepended to the user's query and run again.
+
+This time the query succeeds because the enrichment data is now declared in the query, and the result is sent to the user.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

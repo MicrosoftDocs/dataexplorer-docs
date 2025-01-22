@@ -44,7 +44,7 @@ To reference query parameters, the query text, or functions it uses, must first 
 
 ## Example
 
-[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

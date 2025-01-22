@@ -38,7 +38,7 @@ The middle-tier application can prefix the user's query with a **logical model**
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
 
 ### Let statement
 
