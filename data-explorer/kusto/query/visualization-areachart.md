@@ -48,7 +48,19 @@ All properties are optional.
 |`xtitle`      |The title of the x-axis (of type `string`).                                       |
 |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
+|`ysplit`      |How to split multiple the visualization. 
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
+
+#### `ysplit` property
+
+This visualization supports splitting into multiple y-axis values:
+
+|`ysplit`  |Description                                                       |
+|----------|------------------------------------------------------------------|
+|`none`    |A single y-axis is displayed for all series data. (Default)       |
+|`axes`    |A single chart is displayed with multiple y-axes (one per series).|
+|`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
+
 
 ::: moniker-end
 
@@ -126,6 +138,7 @@ OccupancyDetection
 
 :::image type="content" source="media/visualization-areachart/area-chart-with-properties.png" alt-text="Screenshot of area chart visualization with properties." lightbox="media/visualization-areachart/area-chart-with-properties.png":::
 
+::: moniker range="azure-monitor || microsoft-sentinel"
 ### Area chart using split panels
 
 The following example shows an area chart using split panels. In this example, the `ysplit` property is set to `panels`.
@@ -156,3 +169,5 @@ StormEvents
 ```
 
 :::image type="content" source="media/visualization-areachart/area-chart-with-split-panels.png" alt-text="Screenshot of area chart visualization with split panels." lightbox="media/visualization-areachart/area-chart-with-split-panels.png":::
+
+::: moniker-end
