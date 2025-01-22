@@ -114,25 +114,21 @@ The following example shows an area chart using multiple property settings.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WRO2%2BEMAzH9%2FsUFhNIDNA9Uzt0u6G3n0ywwLokoDwoVP3wDY87Ui92%2Fr84fuQqZRjRyOWDPEnPg7n8ggtao%2BUfApy6%2B%2Fv1TUSfR1%2BUm%2BJJj2KN8luMyKIPlg7WB80t%2B2Xnn8epgGaBhk1%2BY03Oox5LqPsi1rJkWrKAllD2aP0Fon2z7yGHLV7twaYFATFRPqgtX7qijjYyseNG0UkWOaigjRPPEf53d86RpODMDoQaukTz7BWByL5iyzGYUAXKEq7ZxPJ1lUo4g6jrqkrEeX8bFBtCm%2Bh7m5GciznhURyyFWblqr3gs7FttGSsuA5%2Ffkq23S%2F%2BAJslc3TmAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02Quw6DMAxF936FlQkkhvIBbB26dWj3ygQLLEiKgkOh6sc3UF6ebu6JnzetfYtWjxcS0sIve%2FpC541Bxx8CwL58Cpk2m1T0CIocincUJzOrvOGCZfzz6%2FKKIR8hZxs92FAnaNoE0ioOpR3ZghygI9QVOjlBiDdLBRHMeoqabQEZeBtSdU1FspGGSppZzx3nDe1kFJaGIFP30C2IHhtP6sAN25CXno8WDpCl54M1LFVATZOrZPI2uHZYtwQMo8h%2BEjX%2FjH%2FxorAnUwEAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 OccupancyDetection
-| summarize avg_CO2=avg(CO2), avg_temp= avg(Temperature), avg_humidity= avg(Humidity) by bin(Timestamp, 1h)
+| summarize avg_temp= avg(Temperature), avg_humidity= avg(Humidity) by bin(Timestamp, 1h)
 | render areachart
     with ( 
-        kind = stacked,
+        kind = unstacked,
         legend = visible,
-        ycolumns= avg_CO2, avg_humidity, avg_temp,
-        yaxis =log,
         ytitle ="Sample value",
         ymin = 10,
-        ymax =11000,
-        xaxis = linear,
-        xcolumn = Timestamp,
+        ymax =100,
         xtitle = "Time",    
-        title ="CO2, humidity, and temperature"
+        title ="Humidity and temperature"
     )
 ```
 
