@@ -24,7 +24,7 @@ The area chart visual shows a time-series relationship. The first column of the 
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
+|--|--|--|--|
 | *T* | `string` |  :heavy_check_mark: | Input table name.
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
@@ -128,7 +128,7 @@ OccupancyDetection
 
 ### Area chart using split panels
 
-The following example shows an area chart using split panels. In this example the `ysplit` property is set to `panels`.
+The following example shows an area chart using split panels. In this example, the `ysplit` property is set to `panels`.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
