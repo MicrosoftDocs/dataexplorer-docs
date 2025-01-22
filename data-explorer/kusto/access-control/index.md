@@ -1,10 +1,10 @@
 ---
 title: Access Control Overview
 description: This article describes Access control.
-ms.reviewer: orspodek
+ms.reviewer: yogilad
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 08/11/2024
+ms.date: 01/22/2025
 ---
 # Access control overview
 
@@ -70,37 +70,60 @@ The association of security principals to security roles can be defined individu
 
 ## Group authorization
 
-Authorization can be granted to Microsoft Entra ID groups by assigning one or more roles to the group. 
+Authorization can be granted to Microsoft Entra ID groups by assigning one or more roles to the group.
 
-When the authorization of a user or application principal is checked, the system first checks for an explicit role assignment permitting the specific action. If no such role assignment exists, the system then analyzes the principal's membership across all groups that could potentially authorize the action. If the principal is confirmed to be a member of any of these groups, the requested action is authorized. Otherwise, if the principal is not a member of any such groups, the action doesn't pass the authorization check and the action isn't allowed.
+When checking authorization for a user or application principal, the system first looks for an explicit role assignment that permits the specific action. If the role assignment doesn't exists, then the system checks the principal's membership in all groups that could authorize the action.
+
+If the principal is a member of a group with appropriate permissions, the requested action is authorized. Otherwise, the action doesn't pass the authorization check and is disallowed.
 
 > [!NOTE]
 >
-> [!INCLUDE [Cached Group Membership](../includes/cached-group-membership.md)] 
+> [!INCLUDE [Cached Group Membership](../includes/cached-group-membership.md)]
 
-### Forcing Reevaluation of Group Membership
-User have the option to force reevaluation of group membership **for a specific group**. This capability is useful in scenarios where group membership based JIT is used, e.g, when Entra Privileged Identity Management (PIM) is used to obtain higher privileges on the service.
+### Force group membership refresh
 
-Reevaluation can be requested by any principal on a specific group. This ability is restricted in the following ways:
-1. It can called up to 10 times an hour per principal
-2. It requires the calling principal to be a member of the group at the time of the request
+Principals can force a refresh of group membership **for a specific group**. This capability is useful in scenarios where just-in-time (JIT) privileged access services, such as Microsoft Entra Privileged Identity Management (PIM), are used to obtain higher privileges on a resource.
 
-If any of theese conditions are not met, the reqest will result in an error.
+::: moniker range="microsoft-fabric"
+You can force a refresh of Fabric roles in addition to JIT privileged access services. For information about Fabric roles see [Role-based access control](role-based-access-control.md) and [Give users access to workplaces](/fabric/get-started/give-access-workspaces).
 
-Too reevaluate the membership of the current principal on a group, run 
+<!--this needs a description of how to find Fabric id-->
+::: moniker-end
+
+Any principal can request a refresh of a specific group. However, the following restrictions apply:
+
+1. Reevaluation can be requested up to 10 times per hour per principal.
+2. The requesting principal must be a member of the group at the time of the request.
+
+The request results in an error if either of these conditions aren't met.
+
+To reevaluate the current principal's membership of a group, run the following command:
+
+```kusto
+.clear cluster cache groupmembership with (group='<GroupFQN>')
 ```
-.clear cluster cache groupmembership with (group='<Group FQN>')
+
+Use the group's fully qualified name (FQN). For more information, see [Referencing Microsoft Entra principals and groups](../management/reference-security-principals.md#referencing-microsoft-entra-principals-and-groups).
+
+::: moniker range="azure-data-explorer"
+A privileged principal can request reevaluation for other principals. The requesting principal must have [AllDatabaseMonitor](role-based-access-control.md) access for the target cluster. Privileged principals can also run the previous command without restrictions.
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+A privileged principal can request reevaluation for other principals. The requesting principal must have [Admin](role-based-access-control.md) access for the target Eventhouse. Privileged principals can also run the previous command without restrictions.
+::: moniker-end
+
+To reevaluate another principal’s group membership, run the following command:
+
+```kusto
+.clear cluster cache groupmembership with (principal='<PrincipalFQN>', group='<GroupFQN>')
 ```
 
-Reevaluation can also be requested by a privileged principal for other principals. It requires the requesting principal to have _All Database Monitor_ rights on the target cluster, and is not restrcited as described above. Privileged principals can also run the previous flavor of the command without restrictions.
-
-Too reevaluate the membership of another principal on a group, run 
-```
-.clear cluster cache groupmembership with (principal=’<principal FQN>’, group='<Group FQN>')
-```
+Use the FQNs for the principal and group names. For more information, see [Referencing Microsoft Entra principals and groups](../management/reference-security-principals.md#referencing-microsoft-entra-principals-and-groups).
 
 ## Related content
 
 * Understand [Kusto role-based access control](role-based-access-control.md).
 * For user or application authentication, use the [Kusto client libraries](../api/client-libraries.md).
 * For OBO or SPA authentication, see [How to authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
+* For referencing principals and groups, see [Referencing Microsoft Entra principals and groups](../management/reference-security-principals.md).
