@@ -138,7 +138,7 @@ OccupancyDetection
 
 :::image type="content" source="media/visualization-areachart/area-chart-with-properties.png" alt-text="Screenshot of area chart visualization with properties." lightbox="media/visualization-areachart/area-chart-with-properties.png":::
 
-::: moniker range="azure-monitor || microsoft-sentinel"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 ### Area chart using split panels
 
 The following example shows an area chart using split panels. In this example, the `ysplit` property is set to `panels`.
