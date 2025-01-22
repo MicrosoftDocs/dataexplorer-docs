@@ -125,3 +125,34 @@ OccupancyDetection
 ```
 
 :::image type="content" source="media/visualization-areachart/area-chart-with-properties.png" alt-text="Screenshot of area chart visualization with properties." lightbox="media/visualization-areachart/area-chart-with-properties.png":::
+
+### Area chart using split panels
+
+The following example shows an area chart using split panels. In this example the `ysplit` property is set to `panels`.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02RsW6DMBCG9zzFL08gMSQP4IG2kSpFyhAYuho4BUvGINskUPXhe0AbfIN1%2Fn7f%2Bfy7CL3rzg%2BywR9%2B8GzJEYqgAkFbJKI8f%2BWFyCCu57dbXlzyJb%2Fk14JpCmUbrLXlPBCkhPhU2ghu5MeuU05%2FE%2Bp%2BtEGua5KimrfuGSptE05dKHXH21OTcpkj25CDcqTqlrUDOJ46tEjWdInZD0YHiUFZMj57cUN3robEQ3tdGdqVue7N2Fm%2FTRFxNWkPafp7xIIOht8i3pezIhI6NkTiGBM1QZ6OEZq2jjDaknIR3yZgZX%2FyLv5dCfHBzrDBHC%2Fxf5zFWND6T2IV018qvG0uugEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+StormEvents
+| where State in ("TEXAS", "NEBRASKA", "KANSAS") and EventType == "Hail"
+| summarize count=count() by State, bin(StartTime, 1d)
+| render areachart
+    with (
+        ysplit= panels,
+        legend = visible,
+        ycolumns=count,
+        yaxis =log,
+        ytitle ="Count",
+        ymin = 0,
+        ymax =100,
+        xaxis = linear,
+        xcolumn = StartTime,
+        xtitle = "Date",    
+        title ="Hail events"
+    )
+```
+
+:::image type="content" source="media/visualization-areachart/area-chart-with-split-panels.png" alt-text="Screenshot of area chart visualization with split panels." lightbox="media/visualization-areachart/area-chart-with-split-panels.png":::
