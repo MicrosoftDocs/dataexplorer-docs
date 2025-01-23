@@ -3,7 +3,7 @@ title:  Query parameters declaration statement
 description: Learn how to use the query parameters declaration statement to parameterize queries and protect against injection attacks.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/13/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Query parameters declaration statement
@@ -43,6 +43,8 @@ To reference query parameters, the query text, or functions it uses, must first 
 > * Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they will not be considered part of the same query.
 
 ## Example
+
+[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
