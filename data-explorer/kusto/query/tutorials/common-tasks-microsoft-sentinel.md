@@ -11,7 +11,11 @@ monikerRange: "microsoft-sentinel"
 ---
 # Common tasks with KQL for Microsoft Sentinel
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
+Kusto Query Language (KQL) is a powerful tool for querying and analyzing data in Microsoft Sentinel. As a security analyst, mastering KQL can significantly enhance your ability to detect threats and respond to incidents effectively. This article provides a comprehensive guide to performing common tasks with KQL, helping you to manipulate and analyze data efficiently.
+
+In this tutorial, we cover the basics of KQL, including understanding query structure, getting, limiting, sorting, and filtering data, summarizing data, and joining tables. Additionally, we explore advanced concepts such as using the `evaluate` operator and `let` statements to create more complex and maintainable queries.
 
 ## Prerequisites
 
@@ -23,7 +27,6 @@ Before reading this article, make sure that you've familiarized yourself with th
 - [Demo environment](../kql-learning-resources.md#demo-environment)
 
 ## Understanding query structure basics
-
 
 A good place to start learning Kusto Query Language is to understand the overall query structure. The first thing you notice when looking at a Kusto query is the use of the pipe symbol (` | `). The structure of a Kusto query starts with getting your data from a data source and then passing the data across a "pipeline," and each step provides some level of processing and then passes the data to the next step. At the end of the pipeline, you get your final result. In effect, this is our pipeline:
 
@@ -48,9 +51,7 @@ SigninLogs                              // Get data
 
 Because the output of every step serves as the input for the following step, the order of the steps can determine the query's results and affect its performance. It's crucial that you order the steps according to what you want to get out of the query.
 
-> [!TIP]
-> - A good rule of thumb is to filter your data early, so you are only passing relevant data down the pipeline. This greatly increases performance and ensures that you aren't accidentally including irrelevant data in summarization steps.
-> - This article points out some other best practices to keep in mind. For a more complete list, see [query best practices](best-practices.md).
+A good rule of thumb is to filter your data early, so you are only passing relevant data down the pipeline. This greatly increases performance and ensures that you aren't accidentally including irrelevant data in summarization steps. For more information, see [Best practices for Kusto Query Language queries](../best-practices.md).
 
 Hopefully, you now have an appreciation for the overall structure of a query in Kusto Query Language. Now let's look at the actual query operators themselves, which are used to create a query.
 
@@ -70,7 +71,7 @@ In Kusto Query Language, log names are case sensitive, so `SigninLogs` and `sign
 
 ### Limiting data: *take* / *limit*
 
-The [*take*](take-operator.md) operator (and the identical *limit* operator) is used to limit your results by returning only a given number of rows. It's followed by an integer that specifies the number of rows to return. Typically, it's used at the end of a query after you have determined your sort order, and in such a case it returns the given number of rows at the top of the sorted order.
+The [*take*](../take-operator.md) operator (and the identical *limit* operator) is used to limit your results by returning only a given number of rows. It's followed by an integer that specifies the number of rows to return. Typically, it's used at the end of a query after you have determined your sort order, and in such a case it returns the given number of rows at the top of the sorted order.
 
 Using `take` earlier in the query can be useful for testing a query, when you don't want to return large datasets. However, if you place the `take` operation before any `sort` operations, `take` returns rows selected at random - and possibly a different set of rows every time the query is run. Here's an example of using take:
 
@@ -78,14 +79,15 @@ Using `take` earlier in the query can be useful for testing a query, when you do
 SigninLogs
       | take 5
 ```
-:::image type="content" source="../media/kusto-sentinel-overview/table-take-5.png" alt-text="Screenshot of results of take operator.":::
+
+:::image type="content" source="common-tasks-microsoft-sentinel/table-take-5.png" alt-text="Screenshot of sample results for the 'take' operator.":::
 
 > [!TIP]
 > When working on a brand-new query where you may not know what the query looks like, it can be useful to put a `take` statement at the beginning to artificially limit your dataset for faster processing and experimentation. Once you are happy with the full query, you can remove the initial `take` step.
 
 ### Sorting data: *sort* / *order*
 
-The [*sort*](sort-operator.md) operator (and the identical *order* operator) is used to sort your data by a specified column. In the following example, we ordered the results by *TimeGenerated* and set the order direction to descending with the *desc* parameter, placing the highest values first; for ascending order we would use *asc*.
+The [*sort*](../sort-operator.md) operator (and the identical *order* operator) is used to sort your data by a specified column. In the following example, we ordered the results by *TimeGenerated* and set the order direction to descending with the *desc* parameter, placing the highest values first; for ascending order we would use *asc*.
 
 > [!NOTE]
 > The default direction for sorts is descending, so technically you only have to specify if you want to sort in ascending order. However, specifying the sort direction in any case makes your query more readable.
@@ -98,11 +100,11 @@ SigninLogs
 
 As we mentioned, we put the `sort` operator before the `take` operator. We need to sort first to make sure we get the appropriate five records.
 
-:::image type="content" source="media/kusto-sentinel-overview/table-take-sort.png" alt-text="Screenshot of results of sort operator, with take limit.":::
+:::image type="content" source="common-tasks-microsoft-sentinel/table-take-sort.png" alt-text="Screenshot of sample results for the 'sort' operator, with a 'take' limit.":::
 
 #### *Top*
 
-The [*top*](top-operator.md) operator allows us to combine the `sort` and `take` operations into a single operator:
+The [*top*](../top-operator.md) operator allows us to combine the `sort` and `take` operations into a single operator:
 
 ```kusto
 SigninLogs
@@ -128,7 +130,7 @@ Now, if *TimeGenerated* is the same between multiple records, it then tries to s
 
 ### Filtering data: *where*
 
-The [*where*](where-operator.md) operator is arguably the most important operator, because it's the key to making sure you're only working with the subset of data that is relevant to your scenario. You should do your best to filter your data as early in the query as possible because doing so improves query performance by reducing the amount of data that needs to be processed in subsequent steps; it also ensures that you're only performing calculations on the desired data. See this example:
+The [*where*](../where-operator.md) operator is arguably the most important operator, because it's the key to making sure you're only working with the subset of data that is relevant to your scenario. You should do your best to filter your data as early in the query as possible because doing so improves query performance by reducing the amount of data that needs to be processed in subsequent steps; it also ensures that you're only performing calculations on the desired data. See this example:
 
 ```kusto
 SigninLogs
@@ -170,7 +172,7 @@ In this example, the first filter mentions a single column (*TimeGenerated*), wh
 
 ## Summarizing data
 
-[*Summarize*](summarize-operator.md) is one of the most important tabular operators in Kusto Query Language, but it also is one of the more complex operators to learn if you're new to query languages in general. The job of `summarize` is to take in a table of data and output a *new table* that is aggregated by one or more columns.
+[*Summarize*](../summarize-operator.md) is one of the most important tabular operators in Kusto Query Language, but it also is one of the more complex operators to learn if you're new to query languages in general. The job of `summarize` is to take in a table of data and output a *new table* that is aggregated by one or more columns.
 
 ### Structure of the summarize statement
 
@@ -185,7 +187,7 @@ Perf
 | summarize count() by CounterName
 ```
 
-:::image type="content" source="media/kusto-sentinel-overview/table-summarize-count.png" alt-text="Screenshot of results of summarize operator with count aggregation.":::
+:::image type="content" source="common-tasks-microsoft-sentinel/table-summarize-count.png" alt-text="Screenshot of sample results of the 'summarize' operator with a 'count' aggregation.":::
 
 Because the output of `summarize` is a new table, any columns not explicitly specified in the `summarize` statement aren't passed down the pipeline. To illustrate this concept, consider this example:
 
@@ -207,7 +209,7 @@ Perf
 
 The way to read the `summarize` line in your head would be: "summarize the count of records by *CounterName*, and group by *ObjectName*." You can continue adding columns, separated by commas, to the end of the `summarize` statement.
 
-:::image type="content" source="media/kusto-sentinel-overview/table-summarize-group.png" alt-text="Screenshot of results of summarize operator with two arguments.":::
+:::image type="content" source="common-tasks-microsoft-sentinel/table-summarize-group.png" alt-text="Screenshot of results of summarize operator with two arguments.":::
 
 Building on the previous example, if we want to aggregate multiple columns at the same time, we can achieve this by adding aggregations to the `summarize` operator, separated by commas. In the example below, we're getting not only a count of all the records but also a sum of the values in the *CounterValue* column across all records (that match any filters in the query):
 
@@ -218,7 +220,7 @@ Perf
 | sort by ObjectName asc
 ```
 
-:::image type="content" source="media/kusto-sentinel-overview/table-summarize-multiple.png" alt-text="Screenshot of results of summarize operator with multiple aggregations.":::
+:::image type="content" source="common-tasks-microsoft-sentinel/table-summarize-multiple.png" alt-text="Screenshot of results of summarize operator with multiple aggregations.":::
 
 #### Renaming aggregated columns
 
@@ -235,7 +237,7 @@ Perf
 
 Now, our summarized columns are named *Count* and *CounterSum*.
 
-:::image type="content" source="media/kusto-sentinel-overview/friendly-column-names.png" alt-text="Screenshot of friendly column names for aggregations.":::
+:::image type="content" source="common-tasks-microsoft-sentinel/friendly-column-names.png" alt-text="Screenshot of friendly column names for aggregations.":::
 
 There's more to the `summarize` operator than we can cover here, but you should invest the time to learn it because it's a key component to any data analysis you plan to perform on your Microsoft Sentinel data.
 
@@ -249,16 +251,16 @@ As you start working more with queries, you might find that you have more inform
 
 ### *Project* and *project-away*
 
-[*Project*](project-operator.md) is roughly equivalent to many languages' *select* statements. It allows you to choose which columns to keep. The order of the columns returned match the order of the columns you list in your `project` statement, as shown in this example:
+[*Project*](../project-operator.md) is roughly equivalent to many languages' *select* statements. It allows you to choose which columns to keep. The order of the columns returned match the order of the columns you list in your `project` statement, as shown in this example:
 
 ```kusto
 Perf
 | project ObjectName, CounterValue, CounterName
 ```
 
-:::image type="content" source="media/kusto-sentinel-overview/table-project.png" alt-text="Screenshot of results of project operator.":::
+:::image type="content" source="common-tasks-microsoft-sentinel/table-project.png" alt-text="Screenshot of results of project operator.":::
 
-As you can imagine, when you're working with wide datasets, you might have lots of columns you want to keep, and specifying them all by name would require much typing. For those cases, you have [*project-away*](project-away-operator.md), which lets you specify which columns to remove, rather than which ones to keep, like so:
+As you can imagine, when you're working with wide datasets, you might have lots of columns you want to keep, and specifying them all by name would require much typing. For those cases, you have [*project-away*](../project-away-operator.md), which lets you specify which columns to remove, rather than which ones to keep, like so:
 
 ```kusto
 Perf
@@ -271,7 +273,7 @@ Perf
 
 ### *Extend*
 
-[*Extend*](extend-operator.md) is used to create a new calculated column. This can be useful when you want to perform a calculation against existing columns and see the output for every row. Let's look at a simple example where we calculate a new column called *Kbytes*, which we can calculate by multiplying the MB value (in the existing *Quantity* column) by 1,024.
+[*Extend*](../extend-operator.md) is used to create a new calculated column. This can be useful when you want to perform a calculation against existing columns and see the output for every row. Let's look at a simple example where we calculate a new column called *Kbytes*, which we can calculate by multiplying the MB value (in the existing *Quantity* column) by 1,024.
 
 ```kusto
 Usage
@@ -282,7 +284,7 @@ Usage
 
 On the final line in our `project` statement, we renamed the *Quantity* column to *Mbytes*, so we can easily tell which unit of measure is relevant to each column. 
 
-:::image type="content" source="media/kusto-sentinel-overview/table-extend.png" alt-text="Screenshot of results of extend operator.":::
+:::image type="content" source="common-tasks-microsoft-sentinel/table-extend.png" alt-text="Screenshot of results of extend operator.":::
 
 It's worth noting that `extend` also works with already calculated columns. For example, we can add one more column called *Bytes* that is calculated from *Kbytes*:
 
@@ -294,7 +296,7 @@ Usage
 | project DataType, MBytes=Quantity, KBytes, Bytes
 ```
 
-:::image type="content" source="media/kusto-sentinel-overview/table-extend-twice.png" alt-text="Screenshot of results of two extend operators.":::
+:::image type="content" source="common-tasks-microsoft-sentinel/table-extend-twice.png" alt-text="Screenshot of results of two extend operators.":::
 
 ## Joining tables
 
@@ -302,7 +304,7 @@ Much of your work in Microsoft Sentinel can be carried out by using a single log
 
 ### *Union*
 
-[*Union*](union-operator.md) simply takes two or more tables and returns all the rows. For example:
+[*Union*](../union-operator.md) simply takes two or more tables and returns all the rows. For example:
 
 ```kusto
 OfficeActivity
@@ -322,7 +324,7 @@ The other parameter we specified was *kind*, which has two options: *inner* or *
 
 ### *Join*
 
-[*Join*](join-operator.md) works similarly to `union`, except instead of joining tables to make a new table, we're joining *rows* to make a new table. Like most database languages, there are multiple types of joins you can perform. The general syntax for a `join` is:
+[*Join*](../join-operator.md) works similarly to `union`, except instead of joining tables to make a new table, we're joining *rows* to make a new table. Like most database languages, there are multiple types of joins you can perform. The general syntax for a `join` is:
 
 ```kusto
 T1
@@ -355,7 +357,7 @@ For more information, see [join operator](../join-operator.md).
 
 ## Evaluate
 
-You might remember that back [in the first example](##understanding-query-structure-basics), we saw the [*evaluate*](evaluate-operator.md) operator on one of the lines. The `evaluate` operator is less commonly used than the ones we have touched on previously. However, knowing how the `evaluate` operator works is well worth your time. Once more, here's that first query, where you see `evaluate` on the second line.
+You might remember that back [in the first example](#understanding-query-structure-basics), we saw the [*evaluate*](../evaluate-operator.md) operator on one of the lines. The `evaluate` operator is less commonly used than the ones we have touched on previously. However, knowing how the `evaluate` operator works is well worth your time. Once more, here's that first query, where you see `evaluate` on the second line.
 
 ```kusto
 SigninLogs
@@ -367,9 +369,9 @@ SigninLogs
 | take 5
 ```
 
-This operator allows you to invoke available plugins (built-in functions). Many of these plugins are focused around data science, such as [*autocluster*](autocluster-plugin.md), [*diffpatterns*](diffpatterns-plugin.md), and [*sequence_detect*](sequence-detect-plugin.md), allowing you to perform advanced analysis and discover statistical anomalies and outliers.
+This operator allows you to invoke available plugins (built-in functions). Many of these plugins are focused around data science, such as [*autocluster*](../autocluster-plugin.md), [*diffpatterns*](../diffpatterns-plugin.md), and [*sequence_detect*](../sequence-detect-plugin.md), allowing you to perform advanced analysis and discover statistical anomalies and outliers.
 
-The plugin used in the example is called [*bag_unpack*](bag-unpack-plugin.md), and it makes it simple to take a chunk of dynamic data and convert it to columns. Remember, [dynamic data](#data-type-table) is a data type that looks similar to JSON, as shown in this example:
+The plugin used in the example is called [*bag_unpack*](../bag-unpack-plugin.md), and it makes it simple to take a chunk of dynamic data and convert it to columns. Remember, [dynamic data](../scalar-data-types/dynamic.md) is a data type that looks similar to JSON, as shown in this example:
 
 ```json
 {
@@ -393,11 +395,11 @@ Now that we've considered the `evaluate` operator, we can see that it represents
 
 `Get Data | `***`Parse`***` | Filter | Summarize | Sort | Select`
 
-There are many other examples of operators and functions that can be used to parse data sources into a more readable and manipulable format. You can learn about them - and the rest of the Kusto Query Language - in the [full documentation](#more-resources) and in the [workbook](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/advanced-kql-framework-workbook-empowering-you-to-become-kql/ba-p/3033766).
+There are many other examples of operators and functions that can be used to parse data sources into a more readable and manipulable format. You can learn about them - and the rest of the Kusto Query Language - in [Kusto Query Language learning resources](../kql-learning-resources.md) and in the [workbook](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/advanced-kql-framework-workbook-empowering-you-to-become-kql/ba-p/3033766).
 
 ## Let statements
 
-Now that we've covered many of the major operators and data types, let's wrap up with the [*let* statement](let-statement.md), which is a great 
+Now that we've covered many of the major operators and data types, let's wrap up with the [*let* statement](../let-statement.md), which is a great 
 way to make your queries easier to read, edit, and maintain.
 
 *Let* allows you to create and set a variable, or to assign a name to an expression. This expression could be a single value, but it could also be a whole query. Here's a simple example:
