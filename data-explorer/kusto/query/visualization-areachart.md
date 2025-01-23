@@ -25,7 +25,7 @@ The area chart visual shows a time-series relationship. The first column of the 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ::: moniker range="microsoft-fabric  || azure-data-explorer"
@@ -48,7 +48,7 @@ All properties are optional.
 |`xtitle`      |The title of the x-axis (of type `string`).                                       |
 |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-|`ysplit`      |How to split multiple the visualization. 
+|`ysplit`      |How to split the y-axis values for multiple the visualizations.                   |
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
 #### `ysplit` property
@@ -59,7 +59,7 @@ This visualization supports splitting into multiple y-axis values:
 |----------|------------------------------------------------------------------|
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
-|`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
+|`panels`  |One chart is rendered for each `ycolumn` value.|
 
 
 ::: moniker-end
