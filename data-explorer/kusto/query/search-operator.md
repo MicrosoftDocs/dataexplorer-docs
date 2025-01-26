@@ -3,7 +3,7 @@ title:  search operator
 description: Learn how to use the search operator to search for a text pattern in multiple tables and columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 ---
 # search operator
 
@@ -24,14 +24,14 @@ Searches a text pattern in multiple tables and columns.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | `string` | | The tabular data source to be searched over, such as a table name, a [union operator](union-operator.md), or the results of a tabular query. Cannot appear together with *TableSources*.|
+| *T* | `string` | | The tabular data source to be searched over, such as a table name, a [union operator](union-operator.md), or the results of a tabular query. Can't appear together with *TableSources*.|
 | *CaseSensitivity* | `string` | | A flag that controls the behavior of all `string` scalar operators, such as `has`, with respect to case sensitivity. Valid values are `default`, `case_insensitive`, `case_sensitive`. The options `default` and `case_insensitive` are synonymous, since the default behavior is case insensitive.|
-| *TableSources* | `string` | | A comma-separated list of "wildcarded" table names to take part in the search. The list has the same syntax as the list of the [union operator](union-operator.md). Cannot appear together with *TabularSource*.|
+| *TableSources* | `string` | | A comma-separated list of "wildcarded" table names to take part in the search. The list has the same syntax as the list of the [union operator](union-operator.md). Can't appear together with *TabularSource*.|
 | *SearchPredicate* | `string` |  :heavy_check_mark: | A boolean expression to be evaluated for every record in the input. If it returns `true`, the record is outputted. See [Search predicate syntax](#search-predicate-syntax).|
 
 ### Search predicate syntax
 
-The *SearchPredicate* allows you to search for specific terms in all columns of a table. The operator that will be applied to a search term depends on the presence and placement of a wildcard asterisk (`*`) in the term, as shown in the following table.
+The *SearchPredicate* allows you to search for specific terms in all columns of a table. The operator that is applied to a search term depends on the presence and placement of a wildcard asterisk (`*`) in the term, as shown in the following table.
 
 |Literal   |Operator   |
 |----------|-----------|
@@ -74,14 +74,18 @@ Use boolean expressions to combine conditions and create more complex searches. 
 
 ## Remarks
 
-Unlike the [find operator](find-operator.md), the `search` operator does not support the following:
+Unlike the [find operator](find-operator.md), the `search` operator doesn't support the following syntax:
 
-1. `withsource=`: The output will always include a column called `$table` of type `string` whose value
+1. `withsource=`: The output always includes a column called `$table` of type `string` whose value
    is the table name from which each record was retrieved (or some system-generated name if the source
    isn't a table but a composite expression).
 2. `project=`, `project-smart`: The output schema is equivalent to `project-smart` output schema.
 
 ## Examples
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
+Consider the following exaples:
 
 ### Global term search
 
@@ -96,7 +100,18 @@ Search for a term over all unrestricted tables and views of the database in scop
 search "Green"
 ```
 
-The output contains records from the `Customers`, `Products`, and `SalesTable` tables. The `Customers` records shows all customers with the last name "Green", and the `Products` and `SalesTable` records shows products with some mention of "Green".
+The output contains records from the `Customers`, `Products`, and `SalesTable` tables. The `Customers` records show all customers with the last name "Green", and the `Products` and `SalesTable` records shows products with some mention of "Green".
+
+**Output**
+
+| $table | CityName | ContinentName | CustomerKey | Education | FirstName | Gender | LastName |
+|--|--|--|--|--|--|--|--|
+| Customers | Ballard | North America | 16549 | Partial College | Mason | M | Green |
+| Customers | Bellingham | North America | 2070 | High School | Adam | M | Green |
+| Customers | Bellingham | North America | 10658 | Bachelors | Sara | F | Green |
+| Customers | Beverly Hills | North America | 806 | Graduate Degree | Richard | M | Green |
+| Customers | Beverly Hills | North America | 7674 | Graduate Degree | James | M | Green |
+| Customers | Burbank | North America | 5241 | Graduate Degree | Madeline | F | Green |
 
 ### Conditional global term search
 
@@ -111,6 +126,18 @@ Search for records that match both terms over all unrestricted tables and views 
 search "Green" and ("Deluxe" or "Proseware")
 ```
 
+**Output**
+
+| $table | ProductName | Manufacturer | ColorName | ClassName | ProductCategoryName |
+|--|--|--|--|--|--|
+| Products | Contoso 8GB Clock & Radio MP3 Player X850 Green | Contoso, Ltd | Green | Deluxe | Audio |
+| Products | Proseware Scan Jet Digital Flat Bed Scanner M300 Green | Proseware, Inc. | Green | Regular | Computers |
+| Products | Proseware All-In-One Photo Printer M200 Green | Proseware, Inc. | Green | Regular | Computers |
+| Products | Proseware Ink Jet Wireless All-In-One Printer M400 Green | Proseware, Inc. | Green | Regular | Computers |
+| Products | Proseware Ink Jet Instant PDF Sheet-Fed Scanner M300 Green | Proseware, Inc. | Green | Regular | Computers |
+| Products | Proseware Desk Jet All-in-One Printer, Scanner, Copier M350 Green | Proseware, Inc. | Green | Regular | Computers |
+| Products | Proseware Duplex Scanner M200 Green | Proseware, Inc. | Green | Regular | Computers |
+
 ### Search a specific table
 
 Search only in the `Customers` table.
@@ -123,6 +150,17 @@ Search only in the `Customers` table.
 ```kusto
 search in (Products) "Green"
 ```
+
+**Output**
+
+| $table | ProductName | Manufacturer | ColorName |
+|--|--|--|--|
+| Products | Contoso 4G MP3 Player E400 Green | Contoso, Ltd | Green |
+| Products | Contoso 8GB Super-Slim MP3/Video Player M800 Green | Contoso, Ltd | Green |
+| Products | Contoso 16GB Mp5 Player M1600 Green | Contoso, Ltd | Green |
+| Products | Contoso 8GB Clock & Radio MP3 Player X850 Green | Contoso, Ltd | Green |
+| Products | NT Wireless Bluetooth Stereo Headphones M402 Green | Northwind Traders | Green |
+| Products | NT Wireless Transmitter and Bluetooth Headphones M150 Green | Northwind Traders | Green |
 
 ### Case-sensitive search
 
@@ -137,6 +175,18 @@ Search for records that match both case-sensitive terms over all unrestricted ta
 search kind=case_sensitive "blue"
 ```
 
+**Output**
+
+| $table | ProductName | Manufacturer | ColorName | ClassName |
+|--|--|--|--|--|
+| Products | Contoso 16GB New Generation MP5 Player M1650 blue | Contoso, Ltd | blue | Regular |
+| Products | Contoso Bright Light battery E20 blue | Contoso, Ltd | blue | Economy |
+| Products | Litware 120mm Blue LED Case Fan E901 blue | Litware, Inc. | blue | Economy |
+| NewSales | Litware 120mm Blue LED Case Fan E901 blue | Litware, Inc. | blue | Economy |
+| NewSales | Litware 120mm Blue LED Case Fan E901 blue | Litware, Inc. | blue | Economy |
+| NewSales | Litware 120mm Blue LED Case Fan E901 blue | Litware, Inc. | blue | Economy |
+| NewSales | Litware 120mm Blue LED Case Fan E901 blue | Litware, Inc. | blue | Economy |
+
 ### Search specific columns
 
 Search for a term in the "FirstName" and "LastName" columns over all unrestricted tables and views of the database in scope.
@@ -150,6 +200,17 @@ Search for a term in the "FirstName" and "LastName" columns over all unrestricte
 search FirstName:"Aaron" or LastName:"Hughes"
 ```
 
+**Output**
+
+| $table | CustomerKey | Education | FirstName | Gender | LastName |
+|--|--|--|--|--|--|
+| Customers | 18285 | High School | Riley | F | Hughes |
+| Customers | 802 | Graduate Degree | Aaron | M | Sharma |
+| Customers | 986 | Bachelors | Melanie | F | Hughes |
+| Customers | 12669 | High School | Jessica | F | Hughes |
+| Customers | 13436 | Graduate Degree | Mariah | F | Hughes |
+| Customers | 10152 | Graduate Degree | Aaron | M | Campbell |
+
 ### Limit search by timestamp
 
 Search for a term over all unrestricted tables and views of the database in scope if the term appears in a record with a date greater than the given date.
@@ -162,6 +223,16 @@ Search for a term over all unrestricted tables and views of the database in scop
 ```kusto
 search "Hughes" and DateKey > datetime('2009-01-01')
 ```
+
+**Output**
+
+| $table | DateKey | SalesAmount_real |
+|--|--|--|
+| SalesTable | 2021-12-13T00:00:00Z | 446.4715 |
+| SalesTable | 2021-12-13T00:00:00Z | 120.555 |
+| SalesTable | 2021-12-13T00:00:00Z | 48.4405 |
+| SalesTable | 2021-12-13T00:00:00Z | 39.6435 |
+| SalesTable | 2021-12-13T00:00:00Z | 56.9905 |
 
 ## Performance Tips
 

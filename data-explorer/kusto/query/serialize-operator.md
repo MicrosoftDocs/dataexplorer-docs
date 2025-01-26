@@ -3,7 +3,7 @@ title:  serialize operator
 description: Learn how to use the serialize operator to mark the input row set as serialized and ready for window functions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 ---
 # serialize operator
 
@@ -28,6 +28,8 @@ The operator has a declarative meaning. It marks the input row set as serialized
 
 ## Examples
 
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
 ### Serialize subset of rows by condition
 
 :::moniker range="azure-data-explorer"
@@ -40,6 +42,19 @@ TraceLogs
 | where ClientRequestId == "5a848f70-9996-eb17-15ed-21b8eb94bf0e"
 | serialize
 ```
+
+**Output**
+
+This table only shows the top 5 query results.
+
+| Timestamp | Node | Component | ClientRequestId | Message |
+|--|--|--|--|--|
+| 2014-03-08T12:24:55.5464757Z | Engine000000000757 | INGESTOR_GATEWAY | 5a848f70-9996-eb17-15ed-21b8eb94bf0e | $$IngestionCommand table=fogEvents format=json |
+| 2014-03-08T12:24:56.0929514Z | Engine000000000757 | DOWNLOADER | 5a848f70-9996-eb17-15ed-21b8eb94bf0e | Downloading file path: ""https://benchmarklogs3.blob.core.windows.net/benchmark/2014/IMAGINEFIRST0_1399_0.json.gz"" |
+| 2014-03-08T12:25:40.3574831Z | Engine000000000341 | INGESTOR_EXECUTER | 5a848f70-9996-eb17-15ed-21b8eb94bf0e | IngestionCompletionEvent: finished ingestion file path: ""https://benchmarklogs3.blob.core.windows.net/benchmark/2014/IMAGINEFIRST0_1399_0.json.gz"" |
+| 2014-03-08T12:25:40.9039588Z | Engine000000000341 | DOWNLOADER | 5a848f70-9996-eb17-15ed-21b8eb94bf0e | Downloading file path: ""https://benchmarklogs3.blob.core.windows.net/benchmark/2014/IMAGINEFIRST0_1399_1.json.gz"" |
+| 2014-03-08T12:26:25.1684905Z | Engine000000000057 | INGESTOR_EXECUTER | 5a848f70-9996-eb17-15ed-21b8eb94bf0e | IngestionCompletionEvent: finished ingestion file path: ""https://benchmarklogs3.blob.core.windows.net/benchmark/2014/IMAGINEFIRST0_1399_1.json.gz"" |
+|...|...|...|...|...|
 
 ### Add row number to the serialized table
 
@@ -55,6 +70,19 @@ TraceLogs
 | where ClientRequestId == "5a848f70-9996-eb17-15ed-21b8eb94bf0e"
 | serialize rn = row_number()
 ```
+
+**Output**
+
+This table only shows the top 5 query results.
+
+| Timestamp | rn | Node | Component | ClientRequestId | Message |
+|--|--|--|--|--|--|
+| 2014-03-08T13:00:01.6638235Z | 1 | Engine000000000899 | INGESTOR_EXECUTER | 5a848f70-9996-eb17-15ed-21b8eb94bf0e | IngestionCompletionEvent: finished ingestion file path: ""https://benchmarklogs3.blob.core.windows.net/benchmark/2014/IMAGINEFIRST0_1399_46.json.gz"" |
+| 2014-03-08T13:00:02.2102992Z | 2 | Engine000000000899 | DOWNLOADER | 5a848f70-9996-eb17-15ed-21b8eb94bf0e | Downloading file path: ""https://benchmarklogs3.blob.core.windows.net/benchmark/2014/IMAGINEFIRST0_1399_47.json.gz"" |
+| 2014-03-08T13:00:46.4748309Z | 3 | Engine000000000584 | INGESTOR_EXECUTER | 5a848f70-9996-eb17-15ed-21b8eb94bf0e | IngestionCompletionEvent: finished ingestion file path: ""https://benchmarklogs3.blob.core.windows.net/benchmark/2014/IMAGINEFIRST0_1399_47.json.gz"" |
+| 2014-03-08T13:00:47.0213066Z | 4 | Engine000000000584 | DOWNLOADER | 5a848f70-9996-eb17-15ed-21b8eb94bf0e | Downloading file path: ""https://benchmarklogs3.blob.core.windows.net/benchmark/2014/IMAGINEFIRST0_1399_48.json.gz"" |
+| 2014-03-08T13:01:31.2858383Z | 5 | Engine000000000380 | INGESTOR_EXECUTER | 5a848f70-9996-eb17-15ed-21b8eb94bf0e | IngestionCompletionEvent: finished ingestion file path: ""https://benchmarklogs3.blob.core.windows.net/benchmark/2014/IMAGINEFIRST0_1399_48.json.gz"" |
+|...|...|...|...|...|
 
 ## Serialization behavior of operators
 

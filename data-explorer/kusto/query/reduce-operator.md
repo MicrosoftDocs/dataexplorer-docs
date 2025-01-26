@@ -3,7 +3,7 @@ title:  reduce operator
 description: Learn how to use the reduce operator to group a set of strings together based on value similarity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/22/2025
 ---
 # reduce operator
 
@@ -44,7 +44,11 @@ For example, the result of `reduce by city` might include:
 
 ## Examples
 
+Consider the following examples:
+
 ### Small threshold value
+
+This query generates a range of numbers, creates a new column with concatenated strings and random integers, and then groups the rows by the new column with specific reduction parameters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -65,6 +69,8 @@ range x from 1 to 1000 step 1
 
 ### Large threshold value
 
+This query generates a range of numbers, creates a new column with concatenated strings and random integers, and then groups the rows by the new column with specific reduction parameters. 
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAAzWNMQ7CMBAEe16xcmWkCNklRX5AOoq0h3PERmBHl0MkEo/nGrZaabSzQnVmbLhLeyFCG2IIAavygnj4YpH24KQY9itvit6IJFLvBkq5VL4wSS11Hl1nY4PWvbZS1QvVycdwtJhIeHonxm3/q/ApmqFZeM3tOfXhdEaHlEkoKctqX250Px4hVlGgAAAA" target="_blank">Run the query</a>
@@ -78,21 +84,23 @@ range x from 1 to 1000 step 1
 
 **Output**
 
-|Pattern         |Count|Representative   |
-|----------------|-----|-----------------|
-|MachineLearning*|177|MachineLearningX9|
-|MachineLearning*|102|MachineLearningX0|
-|MachineLearning*|106|MachineLearningX1|
-|MachineLearning*|96|MachineLearningX6|
-|MachineLearning*|110|MachineLearningX4|
-|MachineLearning*|100|MachineLearningX3|
-|MachineLearning*|99|MachineLearningX8|
-|MachineLearning*|104|MachineLearningX7|
-|MachineLearning*|106|MachineLearningX2|
+The result includes only those groups where the MyText value appears in at least 90% of the rows.
 
-### Behavior of Characters parameter
+| Pattern | Count | Representative |
+|--|--|--|
+| MachineLearning* | 177 | MachineLearningX9 |
+| MachineLearning* | 102 | MachineLearningX0 |
+| MachineLearning* | 106 | MachineLearningX1 |
+| MachineLearning* | 96 | MachineLearningX6 |
+| MachineLearning* | 110 | MachineLearningX4 |
+| MachineLearning* | 100 | MachineLearningX3 |
+| MachineLearning* | 99 | MachineLearningX8 |
+| MachineLearning* | 104 | MachineLearningX7 |
+| MachineLearning* | 106 | MachineLearningX2 |
 
-If the *Characters* parameter is unspecified, then every non-ascii numeric character becomes a term separator.
+### Behavior of `Characters` parameter
+
+If the `Characters` parameter is unspecified, then every non-ascii numeric character becomes a term separator.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -105,11 +113,11 @@ range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | re
 
 **Output**
 
-|Pattern|Count|Representative|
+| Pattern | Count | Representative |
 |--|--|--|
-|others|10||
+| others | 10 |  |
 
-However, if you specify that "Z" is a separator, then it's as if each value in `str` is 2 terms: `foo` and `tostring(x)`:
+However, if you specify that "Z" is a separator, then it's as if each value in `str` is two terms: `foo` and `tostring(x)`:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -129,12 +137,12 @@ range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | re
 ### Apply `reduce` to sanitized input
 
 The following example shows how one might apply the `reduce` operator to a "sanitized"
-input, in which GUIDs in the column being reduced are replaced prior to reducing
+input, in which GUIDs in the column being reduced are replaced before reducing:
 
 ```kusto
 // Start with a few records from the Trace table.
 Trace | take 10000
-// We will reduce the Text column which includes random GUIDs.
+// Then reduce the Text column which includes random GUIDs.
 // As random GUIDs interfere with the reduce operation, replace them all
 // by the string "GUID".
 | extend Text=replace_regex(Text, @"[[:xdigit:]]{8}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{12}", @"GUID")
@@ -145,7 +153,7 @@ Trace | take 10000
 
 ## Related content
 
-[autocluster](autocluster-plugin.md)
+* [autocluster](autocluster-plugin.md)
 
 > [!NOTE]
 > The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](https://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.

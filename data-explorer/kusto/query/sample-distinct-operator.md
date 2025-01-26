@@ -3,7 +3,7 @@ title:  sample-distinct operator
 description: Learn how to use the sample-distinct operator to return a column that contains up to the specified number of distinct values of the requested columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 ---
 # sample-distinct operator
 
@@ -34,6 +34,8 @@ The operator tries to return an answer as quickly as possible rather than trying
 
 ## Examples  
 
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
 Get 10 distinct values from a population
 
 :::moniker range="azure-data-explorer"
@@ -44,6 +46,20 @@ Get 10 distinct values from a population
 ```kusto
 StormEvents | sample-distinct 10 of EpisodeId
 ```
+
+**Output**
+
+| EpisodeId |
+|--|
+| 11074 |
+| 11078 |
+| 11749 |
+| 12554 |
+| 12561 |
+| 13183 |
+| 11780 |
+| 11781 |
+| 12826 |
 
 Sample a population and do further computation without exceeding the query limits in the summarize
 
@@ -58,3 +74,18 @@ StormEvents
 | where EpisodeId in (sampleEpisodes) 
 | summarize totalInjuries=sum(InjuriesDirect) by EpisodeId
 ```
+
+**Output**
+
+| EpisodeId | totalInjuries |
+|--|--|
+| 11091 | 0 |
+| 11074 | 0 |
+| 11078 | 0 |
+| 11749 | 0 |
+| 12554 | 3 |
+| 12561 | 0 |
+| 13183 | 0 |
+| 11780 | 0 |
+| 11781 | 0 |
+| 12826 | 0 |

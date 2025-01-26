@@ -69,6 +69,8 @@ In some cases, the `hint.strategy = shuffle` is ignored, and the query won't run
 
 ## Examples
 
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
 ## Use summarize with shuffle
 
 The `shuffle` strategy query with `summarize` operator shares the load on all cluster nodes, where each node processes one partition of the data.

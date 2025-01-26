@@ -3,7 +3,7 @@ title:  range operator
 description: Learn how to use the range operator to generate a single-column table of values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/07/2025
+ms.date: 01/22/2025
 ---
 # range operator
 
@@ -38,6 +38,8 @@ A table with a single column called *columnName*,
 whose values are *start*, *start* `+` *step*, ... up to and until *stop*.
 
 ## Examples
+
+Consider the following examples:
 
 ### Range over the past seven days
 
@@ -114,13 +116,13 @@ let MyTimeline = range MyMonthHour from MyMonthStart to now() step StepBy
 
 **Output**
 
-| MyMonthHour | MyMonthHourinUnixTime | DateOnly     | TimeOnly                    |
-|--------------|------------------------|---------------|------------------------------|
-| 2023-02-01  | 00:00:00.0000000      | 1675209600   | 2023-02-01 00:00:00.0000000 |
-| 2023-02-01  | 04:32:02.4000000      | 1675225922.4 | 2023-02-01 00:00:00.0000000 |
-| 2023-02-01  | 09:04:04.8000000      | 1675242244.8 | 2023-02-01 00:00:00.0000000 |
-| 2023-02-01  | 13:36:07.2000000      | 1675258567.2 | 2023-02-01 00:00:00.0000000 |
-| ...         | ...                   | ...          | ...                         |
+| MyMonthHour | MyMonthHourinUnixTime | DateOnly | TimeOnly |
+|--|--|--|--|
+| 2023-02-01 | 00:00:00.0000000 | 1675209600 | 2023-02-01 00:00:00.0000000 |
+| 2023-02-01 | 04:32:02.4000000 | 1675225922.4 | 2023-02-01 00:00:00.0000000 |
+| 2023-02-01 | 09:04:04.8000000 | 1675242244.8 | 2023-02-01 00:00:00.0000000 |
+| 2023-02-01 | 13:36:07.2000000 | 1675258567.2 | 2023-02-01 00:00:00.0000000 |
+| ... | ... | ... | ... |
 
 ### Incremented steps
 
@@ -134,16 +136,19 @@ whose type is `long` and results in values from one to eight incremented by thre
 
 ```kusto
 range Steps from 1 to 8 step 3
+```
+
+**Output**
 
 | Steps |
-|-------|
-| 1     |
-| 4     |
-| 7     |
+|--|
+| 1 |
+| 4 |
+| 7 |
 
 ### Traces over a time range
 
-The following example shows how the `range` operator can be used to create a dimension table that is used to introduce zeros where the source data has no values. It takes timestamps from the last four hours and counts traces for each one minute interval. When there are no traces for a specific interval, the count is zero.
+The following example shows how the `range` operator can be used to create a dimension table that is used to introduce zeros where the source data has no values. It takes timestamps from the last four hours and counts traces for each one-minute interval. When there are no traces for a specific interval, the count is zero.
 
 ```kusto
 range TIMESTAMP from ago(4h) to now() step 1m

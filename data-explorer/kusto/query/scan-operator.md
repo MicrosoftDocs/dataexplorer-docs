@@ -3,7 +3,7 @@ title:  scan operator
 description: Learn how to use the scan operator to scan data, match, and build sequences based on the predicates.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/22/2025
 ---
 # scan operator
 
@@ -80,6 +80,8 @@ Once the checks for *s_k* are complete, *r* moves on to be evaluated against *s_
 For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
 ## Examples
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 ### Cumulative sum
 
@@ -333,6 +335,18 @@ Events
     step s3: Event == "Stop" and Ts - s1.Ts <= 5m;
 )
 ```
+
+**Output**
+
+| Ts | Event | m_id |
+|--|--|--|
+| 00:01:00 | Start | 0 |
+| 00:02:00 | B | 0 |
+| 00:03:00 | D | 0 |
+| 00:04:00 | Stop | 0 |
+| 00:08:00 | Start | 1 |
+| 00:11:00 | E | 1 |
+| 00:12:00 | Stop | 1 |
 
 ### The state
 
