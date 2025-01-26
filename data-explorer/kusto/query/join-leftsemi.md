@@ -3,7 +3,7 @@ title:  leftsemi join
 description: Learn how to use the leftsemi join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 ---
 
 # leftsemi join
@@ -28,6 +28,10 @@ The `leftsemi` join flavor returns all records from the left side that match a r
 **Rows**: All records from the left table that match records from the right table.
 
 ## Example
+
+This query filters and returns only those rows from table X that have a matching key in table Y.
+
+```kusto
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -59,3 +63,7 @@ X | join kind=leftsemi Y on Key
 |b|2|
 |b|3|
 |c|4|
+
+## Related content
+
+* Learn about other [join flavors](join-operator.md#returns)
