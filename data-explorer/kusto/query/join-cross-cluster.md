@@ -3,7 +3,7 @@ title:  Cross-cluster join
 description: Learn how to perform the Cross-cluster join operation to join datasets residing on different clusters.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/20/2025
+ms.date: 01/26/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Cross-cluster join
@@ -57,14 +57,14 @@ The following list explains the supported values for the *Strategy* parameter:
 
 ## How the auto strategy works
 
-By default, the `auto` strategy determines where the cross-cluster join should be executed based on the following rules:
+By default, the `auto` strategy determines where the cross-cluster join is executed based on the following rules:
 
 * If one of the tables is hosted in the local cluster, then the join is performed on the local cluster.
 * If both tables are hosted outside of the local cluster, then join is performed on the right cluster.
 
 ## Examples
 
-Review the examples and run them in your Data Explorer query page. For more information, refer to [Quickstart: Query sample data](../../web-query-data.md).
+Review the examples and run them in your Data Explorer query page. For more information, see [Quickstart: Query sample data](../../web-query-data.md).
 
 ### Local Cluster join
 
@@ -86,23 +86,23 @@ cluster("B").database("DB").T | ... | join (cluster("C").database("DB2").T2 | ..
 
 For optimal performance, we recommend running the query on the cluster that contains the largest table.
 
-Consider the examples again:
+### Local cluster join on smaller dataset
 
-### Local cluster join
-
-Here, the join is set to run on the local cluster, but if the dataset produced by `T | ...` is smaller than one produced by `cluster("B").database("DB").T2 | ...` then it would be more efficient to execute the join operation on cluster `B`, in this case the right cluster, instead of on the local cluster.
+Here, the join is set to run on the local cluster, even though the larger dataset is on cluster 'B". This strategy doesn't prioritize performance.
 
 ```kusto
 T | ... | join (cluster("B").database("DB").T2 | ...) on Col1
 ```
 
-### Right cluster join
+### Right cluster join on larger dataset
+
+If the dataset produced by `T | ...` is smaller than one produced by `cluster("B").database("DB").T2 | ...` then it would be more efficient to execute the join operation on cluster `B`, in this case the right cluster, instead of on the local cluster.
 
 ```kusto
 cluster("B").database("DB").T | ... | join (cluster("C").database("DB2").T2 | ...) on Col1
 ```
 
-### Cross-cluster join
+### Cross-cluster join strategy
 
 This join is using the `right` strategy. With the `right` strategy, the join operation is performed on the right cluster, even if left table is in the local cluster.
 
