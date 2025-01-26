@@ -82,11 +82,13 @@ If the principal is a member of a group with appropriate permissions, the reques
 
 ### Force group membership refresh
 
-Principals can force a refresh of group membership **for a specific group**. This capability is useful in scenarios where just-in-time (JIT) privileged access services, such as Microsoft Entra Privileged Identity Management (PIM), are used to obtain higher privileges on a resource.
+Principals can force a refresh of group membership information. This capability is useful in scenarios where just-in-time (JIT) privileged access services, such as Microsoft Entra Privileged Identity Management (PIM), are used to obtain higher privileges on a resource.
 
-Any principal can request a refresh of a specific group. However, the following restrictions apply:
+#### Refresh for a specific group
 
-1. Reevaluation can be requested up to 10 times per hour per principal.
+Principals can force a refresh of group membership **for a specific group**. However, the following restrictions apply:
+
+1. A refresh can be requested up to 10 times per hour per principal.
 1. The requesting principal must be a member of the group at the time of the request.
 
 The request results in an error if either of these conditions aren't met.
@@ -99,9 +101,11 @@ To reevaluate the current principal's membership of a group, run the following c
 
 Use the group's fully qualified name (FQN). For more information, see [Referencing Microsoft Entra principals and groups](../management/reference-security-principals.md#referencing-microsoft-entra-principals-and-groups).
 
-A privileged principal can request reevaluation for other principals. The requesting principal must have [AllDatabaseMonitor](role-based-access-control.md) access for the target service. Privileged principals can also run the previous command without restrictions.
+#### Refresh for other principals
 
-To reevaluate another principal’s group membership, run the following command:
+A privileged principal can request a refresh **for other principals**. The requesting principal must have [AllDatabaseMonitor](role-based-access-control.md) access for the target service. Privileged principals can also run the previous command without restrictions.
+
+To refresh another principal’s group membership, run the following command:
 
 ```kusto
 .clear cluster cache groupmembership with (principal='<PrincipalFQN>', group='<GroupFQN>')
