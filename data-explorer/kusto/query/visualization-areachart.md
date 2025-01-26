@@ -3,7 +3,7 @@ title:  Area chart visualization
 description:  This article describes the area chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Area chart
@@ -25,7 +25,7 @@ The area chart visual shows a time-series relationship. The first column of the 
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ::: moniker range="microsoft-fabric  || azure-data-explorer"
@@ -79,6 +79,8 @@ The supported values of this property are:
 | `stacked100` | Stack "areas" to the right and stretch each one to the same width as the others. |
 
 ## Example
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

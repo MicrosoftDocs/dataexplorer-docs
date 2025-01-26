@@ -3,7 +3,7 @@ title:  Ladder chart visualization
 description:  This article describes the ladder chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "azure-data-explorer"
 ---
 # Ladder chart
@@ -26,7 +26,7 @@ The last two columns are the x-axis, and the other columns are the y-axis.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *T* | `string` |  :heavy_check_mark: | Input table name|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
@@ -49,6 +49,8 @@ All properties are optional.
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
 ## Examples
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 ### Dates of storms by state
 

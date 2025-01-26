@@ -3,7 +3,7 @@ title:  Card visualization
 description:  This article describes the card visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Card
@@ -37,6 +37,8 @@ All properties are optional.
 |`title`       |The title of the visualization (of type `string`).                                |
 
 ## Example
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

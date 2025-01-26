@@ -3,7 +3,7 @@ title:  Bar chart visualization
 description:  This article describes the bar chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Bar chart
@@ -90,6 +90,8 @@ The supported values of this property are:
 | `stacked100` | Stack "bars" and stretch each one to the same width as the others. |
 
 ## Examples
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 ### Render a bar chart
 
@@ -188,6 +190,5 @@ StormEvents
 ```
 
 :::image type="content" source="media/visualization-barchart/bar-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="media/visualization-barchart/bar-chart-ysplit-panels.png":::
-
 
 ::: moniker-end

@@ -3,7 +3,7 @@ title:  Line chart visualization
 description:  This article describes the line chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Line chart
@@ -25,7 +25,7 @@ The line chart visual is the most basic type of chart. The first column of the q
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
@@ -59,6 +59,8 @@ This visualization supports splitting into multiple y-axis values:
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
 
 ## Examples
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 ### Render a line chart
 
