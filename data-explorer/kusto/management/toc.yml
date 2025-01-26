@@ -848,7 +848,7 @@ items:
     items:
       - name: .export to storage
         href: data-export/export-data-to-storage.md
-      - name: .export totable
+      - name: .export to table
         href: data-export/export-data-to-an-external-table.md
       - name: .export to SQL
         href: data-export/export-data-to-sql.md
