@@ -40,6 +40,10 @@ A table that contains columns in the order specified by the operator arguments. 
 
 ## Examples
 
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
+### Reorder with b first
+
 Reorder a table with three columns (a, b, c) so the second column (b) will appear first.
 
 :::moniker range="azure-data-explorer"
@@ -57,6 +61,8 @@ print a='a', b='b', c='c'
 |b|a|c|
 |---|---|---|
 |b|a|c|
+
+### Reorder with a first
 
 Reorder columns of a table so that columns starting with `a` will appear before other columns.
 

@@ -47,6 +47,8 @@ A table with columns that were named as arguments. Contains same number of rows 
 
 ## Examples
 
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ### Only show specific columns
 
 Only show the `EventId`, `State`, `EventType` of the `StormEvents` table.
@@ -61,7 +63,9 @@ StormEvents
 | project EventId, State, EventType
 ```
 
-The following results table shows only the top 10 results.
+**Output**
+
+The table shows only the top 10 results.
 
 |EventId|State|EventType|
 |--|--|--|
@@ -92,7 +96,9 @@ StormEvents
 | where TotalInjuries > 5
 ```
 
-The following table shows only the first 10 results.
+**Output**
+
+The table shows only the first 10 results.
 
 |StartLocation| TotalInjuries|
 |--|--|

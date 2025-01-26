@@ -3,7 +3,7 @@ title:  project-rename operator
 description: Learn how to use the project-rename operator to rename columns in the output table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/20/2025
 ---
 # project-rename operator
 
@@ -30,6 +30,8 @@ Renames columns in the output table.
 A table that has the columns in the same order as in an existing table, with columns renamed.
 
 ## Examples
+
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
