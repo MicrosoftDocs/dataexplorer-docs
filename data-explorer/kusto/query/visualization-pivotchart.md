@@ -3,7 +3,7 @@ title:  Pivot chart visualization
 description:  This article describes the pivot chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "azure-data-explorer"
 ---
 # Pivot chart
@@ -30,6 +30,8 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 | *T* | `string` |  :heavy_check_mark: | Input table name. |
 
 ## Example
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 ```kusto
 SalesFact

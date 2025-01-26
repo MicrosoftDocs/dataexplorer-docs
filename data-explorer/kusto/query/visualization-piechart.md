@@ -3,7 +3,7 @@ title:  Pie chart visualization
 description:  This article describes the pie chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Pie chart
@@ -76,6 +76,8 @@ The supported values of this property are:
 | `map` | Expected columns are [Longitude, Latitude] or GeoJSON point, color-axis and numeric. Supported in Kusto Explorer desktop. For more information, see [Geospatial visualizations](geospatial-visualizations.md)
 
 ## Example
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

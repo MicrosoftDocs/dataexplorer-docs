@@ -3,7 +3,7 @@ title:  Time chart visualization
 description:  This article describes the time chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2024
+ms.date: 01/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Time chart
@@ -61,6 +61,8 @@ This visualization supports splitting into multiple y-axis values:
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
 
 ## Examples
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 ### Render a timechart
 

@@ -3,7 +3,7 @@ title:  Plotly visualization
 description:  This article describes how to visualize data using the Plotly graphics library.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Plotly (preview)
@@ -29,6 +29,8 @@ Using this method, all types of Plotly visualizations are supported.
 > For best performance, make sure that the python plugin image contains the latest version of the Python engine (currently 3.10.8). This can be checked with the [get_packages_version_fl()](../functions-library/get-packages-version-fl.md) function. To upgrade the Python image see [Change the Python language extensions image on your cluster](/azure/data-explorer/language-extensions#change-the-python-language-extensions-image-on-your-cluster).
 
 ### Example
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 The following KQL query uses inline Python to create a 3D scatter chart:
 

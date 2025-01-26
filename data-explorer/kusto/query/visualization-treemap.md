@@ -3,7 +3,7 @@ title:  Treemap visualization
 description: Learn how to use the treemap visualization to visualize data.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "azure-data-explorer"
 ---
 # Treemap
@@ -39,6 +39,8 @@ All properties are optional.
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 
 ## Example
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 ```kusto
 StormEvents

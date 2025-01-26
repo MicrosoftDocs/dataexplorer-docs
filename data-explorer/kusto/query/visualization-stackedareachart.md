@@ -3,7 +3,7 @@ title:  Stacked area chart visualization
 description:  This article describes the stacked area chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2024
+ms.date: 01/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Stacked area chart
@@ -48,6 +48,8 @@ All properties are optional.
 | `ytitle` | The title of the y-axis (of type `string`). |
 
 ## Example
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 The following query summarizes data from the `nyc_taxi` table by number of passengers and visualizes the data in a stacked area chart. The x-axis shows the pickup time in two day intervals, and the stacked areas represent different passenger counts.
 

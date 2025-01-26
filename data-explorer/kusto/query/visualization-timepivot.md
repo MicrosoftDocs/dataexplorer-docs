@@ -3,7 +3,7 @@ title:  Time pivot visualization
 description:  This article describes the time pivot visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "azure-data-explorer"
 ---
 # Time pivot
@@ -50,6 +50,8 @@ All properties are optional.
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
 ## Example
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 ```kusto
 let midwesternStates = dynamic([
