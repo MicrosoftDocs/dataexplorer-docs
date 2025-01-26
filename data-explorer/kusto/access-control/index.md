@@ -4,7 +4,7 @@ description: This article describes Access control.
 ms.reviewer: yogilad
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 01/22/2025
+ms.date: 01/26/2025
 ---
 # Access control overview
 
@@ -15,7 +15,7 @@ Access control is based on authentication and authorization. Each query and comm
 ::: moniker-end
 
 :::moniker range="microsoft-fabric"
-Access control is based on authentication and authorization. Each query and command on a Fabric resource, such as a KQL database, must pass both authentication and authorization checks.
+Access control is based on authentication and authorization. Each query and command on a Fabric resource, such as a database, must pass both authentication and authorization checks.
 ::: moniker-end
 
 * [Authentication](#authentication): Validates the identity of the security principal making a request
@@ -33,7 +33,7 @@ The main authentication scenarios are as follows:
 * [Single page application (SPA) authentication](/azure/active-directory/develop/msal-authentication-flows#authorization-code): Allows client-side SPA web applications to sign in users and get tokens to access your database. This flow must be implemented with MSAL.
 
 > [!NOTE]
-> For user and application authentication, we recommend using the [Kusto client libraries](../api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL directly as these flows aren't supported by the client libraries. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
+> For user and application authentication, we recommend using the [Kusto client libraries](../api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL directly as the client libraries don't support these flows. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
 
 ### User authentication
 
@@ -84,16 +84,10 @@ If the principal is a member of a group with appropriate permissions, the reques
 
 Principals can force a refresh of group membership **for a specific group**. This capability is useful in scenarios where just-in-time (JIT) privileged access services, such as Microsoft Entra Privileged Identity Management (PIM), are used to obtain higher privileges on a resource.
 
-::: moniker range="microsoft-fabric"
-You can force a refresh of Fabric roles in addition to JIT privileged access services. For information about Fabric roles see [Role-based access control](role-based-access-control.md) and [Give users access to workplaces](/fabric/get-started/give-access-workspaces).
-
-<!--this needs a description of how to find Fabric id-->
-::: moniker-end
-
 Any principal can request a refresh of a specific group. However, the following restrictions apply:
 
 1. Reevaluation can be requested up to 10 times per hour per principal.
-2. The requesting principal must be a member of the group at the time of the request.
+1. The requesting principal must be a member of the group at the time of the request.
 
 The request results in an error if either of these conditions aren't met.
 
@@ -105,13 +99,7 @@ To reevaluate the current principal's membership of a group, run the following c
 
 Use the group's fully qualified name (FQN). For more information, see [Referencing Microsoft Entra principals and groups](../management/reference-security-principals.md#referencing-microsoft-entra-principals-and-groups).
 
-::: moniker range="azure-data-explorer"
-A privileged principal can request reevaluation for other principals. The requesting principal must have [AllDatabaseMonitor](role-based-access-control.md) access for the target cluster. Privileged principals can also run the previous command without restrictions.
-::: moniker-end
-
-::: moniker range="microsoft-fabric"
-A privileged principal can request reevaluation for other principals. The requesting principal must have [Admin](role-based-access-control.md) access for the target Eventhouse. Privileged principals can also run the previous command without restrictions.
-::: moniker-end
+A privileged principal can request reevaluation for other principals. The requesting principal must have [AllDatabaseMonitor](role-based-access-control.md) access for the target service. Privileged principals can also run the previous command without restrictions.
 
 To reevaluate another principal’s group membership, run the following command:
 
