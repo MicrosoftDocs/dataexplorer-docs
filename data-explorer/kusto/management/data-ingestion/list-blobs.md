@@ -11,7 +11,7 @@ ms.date: 01/26/2025
 
 The `.list blobs` command lists blobs under a specified container path.
 
-This command is typically used with [.ingest-from-storage-queued](ingest-from-storage-queued.md) to ingest data. You can also use it on its own to better understand folder contents and parameterize ingestion commands.
+This command is typically used with `[.ingest-from-storage-queued](ingest-from-storage-queued.md)` to ingest data. You can also use it on its own to better understand folder contents and parameterize ingestion commands.
 
 ## Permissions
 
