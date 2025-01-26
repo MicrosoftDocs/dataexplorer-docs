@@ -3,7 +3,7 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 01/16/2025
+ms.date: 01/26/2025
 ---
 # .list blobs command
 
@@ -11,7 +11,7 @@ ms.date: 01/16/2025
 
 The `.list blobs` command lists blobs under a specified container path.
 
-This command is typically used with [.ingest-from-storage-queued](ingest-from-storage-queued.md) to ingest data. It can also be used on its own to better understand folder contents and parameterize ingestion commands.
+This command is typically used with [.ingest-from-storage-queued](ingest-from-storage-queued.md) to ingest data. You can also use it on its own to better understand folder contents and parameterize ingestion commands.
 
 ## Permissions
 
@@ -28,11 +28,12 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*SourceDataLocators*| `string` | :heavy_check_mark:|One or many [storage connection strings](../../api/connection-strings/storage-connection-strings.md) separated by a comma character. Each connection string can refer to a storage container or a file prefix within a container. Currently, only one storage connection string is supported. |
-|*SuffixValue*| `string` | |The suffix that enables for blob filtering.|
+|*SuffixValue*| `string` | |The suffix that enables blob filtering.|
 |*MaxFilesValue*| `integer` | | The maximum number of blobs to return. |
 |*PatternValue*| `string` | | The pattern in the blob’s path that can be used to retrieve the creation time as an output field. |
 
 > [!NOTE]
+>
 > * We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for *SourceDataLocators* to scrub credentials in internal traces and error messages.
 >
 > * When used alone, `.list blob` returns up to 1,000 files, regardless of any larger value specified in *MaxFiles*.
@@ -67,7 +68,7 @@ The result of the command is a table with one record per blob listed.
 
 ### List maximum number of blobs
 
-This following command lists a maximum of 20 blobs from the `myfolder` folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication.
+The following command lists a maximum of 20 blobs from the `myfolder` folder using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication.
 
 ```kusto
 .list blobs (
@@ -78,7 +79,7 @@ MaxFiles=20
 
 ### List Parquet blobs
 
-The following command lists a maximum of ten blobs of type `.parquet` from a folder, using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication.
+The following command lists a maximum of 10 blobs of type `.parquet` from a folder, using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication.
 
 ```kusto
 .list blobs (
@@ -90,7 +91,7 @@ MaxFiles=10
 
 ### Capture date from blob path
 
-The following command lists a maximum of ten blobs of type `.parquet` from a folder, using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication, and extracts the date from the URL path.
+The following command lists a maximum of 10 blobs of type `.parquet` from a folder, using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication, and extracts the date from the URL path.
 
 ```kusto
 .list blobs (

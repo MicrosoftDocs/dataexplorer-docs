@@ -3,7 +3,7 @@ title:  .ingest-from-storage-queued into command
 description: This article describes the `.ingest-from-storage-queued` `into` command used to ingest a storage folder in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 01/13/2025
+ms.date: 01/26/2025
 ---
 # .ingest-from-storage-queued into command
 
@@ -29,9 +29,9 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |--|--|--|--|
 |*DatabaseName*| `string` | |The name of the database into which to ingest data. If no database name is provided, the request's context database is used.|
 |*TableName*| `string` | :heavy_check_mark:|The name of the table into which to ingest data.|
-|*EnableTrackingValue*| `boolean` | | Determines whether the blob ingestion is tracked. For more information, see [.show queued ingestion operations](show-queued-ingestion-operations.md). The default is `false`.|
+|*EnableTrackingValue*| `boolean` | | Determines whether to track the blob ingestion. For more information, see [.show queued ingestion operations command](show-queued-ingestion-operations.md). The default is `false`.|
 |*SkipBatchingValue*| `boolean` | | If set to  `true`, the blobs are ingested individually rather than batched together with other blobs. The default value is `false`.|
-|*CompressionFactorValue*| `real` | |The compression factor (ratio) between the original size and the compressed size of blobs.  Compression factor is used to estimate the original size of the data for batching purposes, when blobs are provided in a compressed format.|
+|*CompressionFactorValue*| `real` | |The compression factor (ratio) between the original size and the compressed size of blobs. Compression factor is used to estimate the original size of the data for batching purposes, when blobs are provided in a compressed format.|
 |*IngestionPropertyName*, *IngestionPropertyValue* | `string` | |Optional ingestion properties. For more information about ingestion properties, see [Data ingestion properties](../../ingestion-properties.md).|
 
 > [!NOTE]
@@ -46,8 +46,6 @@ The result of the command is a table with one row and one column.
 | IngestionOperationId | `string` | A unique ID used to track the set of blobs, whether or not tracking is enabled. |
 | ClientRequestId | `string` | The client request ID of the command. |
 | OperationInfo | `string` | Displays the command needed to run to retrieve the current status of the operation. |
-
-<!--is this IngestionOperationId or OperationId like in ingest from storage? |OperationId|`guid`    |A unique ID representing the operation. Can be used with the `.show operation` command.| Are there now more returns?-->
 
 >[!NOTE]
 > This command doesn't modify the schema of the target table. If necessary, the data is converted to fit the table's schema during ingestion. Extra columns are ignored and missing columns are treated as null values.
