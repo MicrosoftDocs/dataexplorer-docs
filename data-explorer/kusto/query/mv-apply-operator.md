@@ -3,7 +3,7 @@ title:  mv-apply operator
 description: Learn how to use the mv-apply operator to apply a subquery to each record and union the results of each subquery.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 ---
 # mv-apply operator
 
@@ -94,7 +94,12 @@ and *SubQuery* has the same syntax of any query statement.
 
 ## Examples
 
+Review the examples and run them in your Data Explorer query page. For more information, refer to [Quickstart: Query sample data](../../web-query-data.md).
+
 ### Getting the largest element from the array
+
+The query outputs the smallest even number (2) and the smallest odd number (1).
+<!-- //the query and header do not match. Is the query wrong?// -->
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -120,6 +125,8 @@ _data
 |0    |[2, 4, 6, 8]|8      |
 
 ### Calculating the sum of the largest two elements in an array
+
+The query outputs the sum of the top 2 even numbers (6 + 8 = 14) and the sum of the top 2 odd numbers (5 + 7 = 12).
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -147,6 +154,8 @@ _data
 
 ### Select elements in arrays
 
+The query identifies the top 2 elements from each dynamic array based on the Arr2 values and summarizes them into new lists.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PQYvCMBCF7/kV79YEsmBSu4rgoe3doxcpEjW7FJO21KhU/PGmsVZZNsM8eDPzzZCDcj52RoOulVmUleNI21YsDl2lbLkPTr4cIxsIjsHRTZSKiCNKZdA4KhjH840jYsIR+5z1PQLMPvEs4FnAs+RfPOEQ/mQy8U2Px594HvA84HkcdBqWjCPfHFN/XPqcF4wUIHfYy5dqGtNhpa/9V5e98MHJ3km4Gq5rdP1DTV39MtQVKPHVBhK7FykJ7jidrVVtedPjOquOemvKk6NDhb2X/+1JRtgDW1SAO4MBAAA=" target="_blank">Run the query</a>
@@ -173,6 +182,8 @@ datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
 |3    |["C1","C2","C3","C4"]|[6,40,20,8]|["C2","C3"]|[40,20] |
 
 ### Using `with_itemindex` for working with a subset of the array
+
+The query results in a table with rows where the index is 3 or greater, including the index and element values from the original lists of even and odd numbers.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -203,6 +214,8 @@ _data
 
 ### Using mutiple columns to join element of 2 arrays
 
+The query combines elements from two dynamic arrays into a new concatenated format and then summarizes them into lists.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OPQuDMBCG9/yKo0sSsIMpXYQOfuzduohIqhlCEysaSy3++KaXtog5CLwf93CtdH6uRgG7SJOA7lwE6TDECbRzJ61uUIq/5KQk4F8c/RxW0jSmEdBU4H+gFV+HGYYZhlkIkXBcl3Is5WKzW6BdfGxSAVnAPvay782MN4bT4N4BQ6J6OtW1cJ4cnGB0QyMdC71dvQtljsUFxslaOeiXQpCvW3lTtdFj2OBf9MYX3vf0tetlYPI3W/swT0sBAAA=" target="_blank">Run the query</a>
@@ -229,8 +242,7 @@ datatable (Val: int, Arr1: dynamic, Arr2: dynamic)
 
 ### Applying mv-apply to a property bag
 
-In the following example, `mv-apply` is used in combination with an
-inner `mv-expand` to remove values that don't start with "555" from a property bag:
+This query dynamically removes properties from the packed values object based on the criteria that their values do not start with "555". The final result contains the original columns with unwanted properties removed.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -256,7 +268,7 @@ datatable(SourceNumber: string, TargetNumber: string, CharsCount: long)
 
 **Output**
 
-|SourceNumber|TargetNumber|CharsCount|values
+|SourceNumber|TargetNumber|CharsCount|values|
 |---|---|---|---|
 |555-555-1234|555-555-1212|46|{<br> "SourceNumber": "555-555-1234",<br>   "TargetNumber": "555-555-1212"<br> }|
 |555-555-1212|&nbsp;|&nbsp;|{<br> "SourceNumber": "555-555-1212"<br> }|

@@ -36,7 +36,9 @@ A table with columns that were named as arguments. Contains same number of rows 
 
 ## Example
 
-The following query returns columns from the `ConferenceSessions` table that contain the word "session".
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
+This query returns columns from the `ConferenceSessions` table that contain the word "session".
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -47,8 +49,9 @@ The following query returns columns from the `ConferenceSessions` table that con
 ConferenceSessions
 | project-keep session*
 ```
+**Output**
 
-The following table shows only the first 10 results.
+The output table shows only the first 10 results.
 
 |sessionid|session_title|session_type|session_location|
 |--|--|--|--|

@@ -3,7 +3,7 @@ title:  mv-expand operator
 description: Learn how to use the mv-expand operator to expand multi-value dynamic arrays or property bags into multiple records.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/20/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # mv-expand operator
@@ -65,6 +65,8 @@ Two modes of property bag expansions are supported:
 * `kind=array` or `bagexpansion=array`: Property bags are expanded into two-element `[`*key*`,`*value*`]` array structures, allowing uniform access to keys and values. This mode also allows, for example, running a distinct-count aggregation over property names.
 
 ## Examples
+
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Single column - array expansion
 

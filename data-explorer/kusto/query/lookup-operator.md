@@ -3,7 +3,7 @@ title:  lookup operator
 description: Learn how to use the lookup operator to extend columns of a fact table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/04/2024
+ms.date: 01/20/2025
 ---
 # lookup operator
 

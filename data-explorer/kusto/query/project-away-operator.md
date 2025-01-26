@@ -3,7 +3,7 @@ title:  project-away operator
 description: Learn how to use the project-away operator to select columns from the input table to exclude from the output table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/20/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # project-away operator
@@ -38,6 +38,8 @@ A table with columns that weren't named as arguments. Contains same number of ro
 
 ## Examples
 
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 The input table `PopulationData` has 2 columns: `State` and `Population`. Project-away the `Population` column and you're left with a list of state names.
 
 :::moniker range="azure-data-explorer"
@@ -49,6 +51,8 @@ The input table `PopulationData` has 2 columns: `State` and `Population`. Projec
 PopulationData
 | project-away Population
 ```
+
+**Output**
 
 The following table shows only the first 10 results.
 
@@ -68,7 +72,7 @@ The following table shows only the first 10 results.
 
 ### Project-away using a column name pattern
 
-The following query removes columns starting with the word "session".
+This query removes columns starting with the word "session".
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -80,7 +84,9 @@ ConferenceSessions
 | project-away session*
 ```
 
-The following table shows only the first 10 results.
+**Output**
+
+The table shows only the first 10 results.
 
 |conference|owner|participants|URL|level|starttime|duration|time_and_duration|kusto_affinity|
 |---|---|---|---|---|---|---|---|---|
@@ -96,8 +102,8 @@ The following table shows only the first 10 results.
 |Ignite 2018| Manoj Raheja|  |<https://azure.microsoft.com/resources/videos/ignite-2018-azure-data-explorer-%E2%80%93-query-billions-of-records-in-seconds/>| 200|  |20|  |Focused|
 |...|...|...|...|...|...|...|...|...|
 
-
 ::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+
 ## Related content
 
 * To choose what columns from the input to keep in the output, use [project-keep](project-keep-operator.md).

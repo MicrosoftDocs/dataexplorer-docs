@@ -60,7 +60,7 @@ For more information, see [Working with middle-tier applications](#work-with-mid
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 In these examples, a pattern is defined.
 

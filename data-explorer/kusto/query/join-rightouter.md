@@ -3,7 +3,7 @@ title:  rightouter join
 description: Learn how to use the rightouter join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 ---
 
 # rightouter join
@@ -28,6 +28,8 @@ The `rightouter` join flavor returns all the records from the right side and onl
 **Rows**: All records from the right table and only matching rows from the left table.
 
 ## Example
+
+This query returns all rows from table Y and any matching rows from table X, filling in NULL values where there is no match from X.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

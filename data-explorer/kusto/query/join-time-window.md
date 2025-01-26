@@ -3,7 +3,7 @@ title:  Joining within time window
 description: Learn how to perform a time window join operation to match between two large datasets.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/20/2025
 ---
 # Time window join
 
@@ -15,6 +15,8 @@ The above operation differs from the usual Kusto join operation, since for the `
 
 > [!NOTE]
 > A distance function doesn't behave like equality (that is, when both dist(x,y) and dist(y,z) are true it doesn't follow that dist(x,z) is also true.) Internally, we sometimes refer to this as "diagonal join".
+
+## Examples
 
 For example, if you want to identify event sequences within a relatively small time window, assume that you have a table `T` with the following schema:
 
@@ -51,7 +53,7 @@ T
 |3|A|2017-10-01 00:04:00.0000000|
 |3|B|2017-10-01 00:10:00.0000000|
 
-**Problem statement**
+### Problem statement
 
 Our query should answer the following question:
 
@@ -91,7 +93,7 @@ T
 To optimize this query, we can rewrite it as described below
 so that the time window is expressed as a join key.
 
-**Rewrite the query to account for the time window**
+### Rewrite the query to account for the time window**
 
 Rewrite the query so that the `datetime` values are "discretized" into buckets whose size is half the size of the time window. Use Kusto's *`equi-join`* to compare those bucket IDs.
 
@@ -120,7 +122,9 @@ T
 | project SessionId, Start, End 
 ```
 
-**Runnable query reference (with table inlined)**
+### Runnable query reference (with table inlined)
+
+The query finds pairs of events within the same session (*SessionId*) where an 'A' event is followed by a 'B' event within 1 minute. It projects the session ID, the start time of the 'A' event, and the end time of the 'B' event.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -162,7 +166,7 @@ T
 |---|---|---|
 |0|2017-10-01 00:00:00.0000000|2017-10-01 00:01:00.0000000|
 
-**5M data query**
+### 5M data query
 
 The next query emulates a dataset of 5M records and ~1M IDs and runs the query with the technique described above.
 
@@ -202,3 +206,7 @@ T
 |Count|
 |---|
 |3344|
+
+## Related content
+
+* [join operator](join-operator.md)
