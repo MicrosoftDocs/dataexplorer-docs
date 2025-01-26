@@ -17,8 +17,8 @@ Monitor the materialized view's health in the following ways:
 * Monitor [materialized view metrics](/fabric/real-time-intelligence/monitor-metrics#metric-specific-dimension-column) in your Microsoft Fabric workspace. For more information, see [Enable monitoring in your workspace](/fabric/get-started/enable-workspace-monitoring).
 ::: moniker-end
 
-  * Use the materialized view age metric, `MaterializedViewAgeSeconds`, as the primary metric to monitor the freshness of the view.
-* Monitor the `IsHealthy` property returned from [`.show materialized-view`](materialized-view-show-command.md#show-materialized-views).
+    * Use the materialized view age metric, `MaterializedViewAgeSeconds`, as the primary metric to monitor the freshness of the view.
+* Monitor the `IsHealthy` property using [`.show materialized-view`](materialized-view-show-command.md#show-materialized-views).
 * Check for failures using [`.show materialized-view failures`](materialized-view-show-failures-command.md#show-materialized-view-failures).
 
 > [!NOTE]
@@ -45,18 +45,17 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
     |---|---|---|
     |MaterializedView|1|0|
 
-    If there are many materialized views, concurrency level depends on the capacity shown in the `Total` column. The `Consumed` column shows how many materialized views are currently running. The [Materialized views capacity policy](../capacity-policy.md#materialized-views-capacity-policy) specifies the minimum and maximum number of concurrent operations. The system determines the current concurrency, shown in `Total`, based on the cluster's available resources. You can override the system's decision and increase the concurrency of materialization processes by setting the minimum number of concurrent operations in the policy. The following example changes the minimum concurrent operations to 3:
+    * If there are many materialized views, concurrency level depends on the capacity shown in the `Total` column while the `Consumed` column shows how many materialized views are currently running. The [Materialized views capacity policy](../capacity-policy.md#materialized-views-capacity-policy) specifies the minimum and maximum number of concurrent operations. The system determines the current concurrency, shown in `Total`, based on the cluster's available resources. You can override the system's decision and increase the concurrency of materialization processes by setting the minimum number of concurrent operations in the policy. The following example changes the minimum concurrent operations to 3:
 
     ```kusto
     .alter-merge cluster policy capacity '{  "MaterializedViewsCapacity": { "ClusterMinimumConcurrentOperations": 3 } }'
     ```
 
-    If you explicitly change this policy, monitor the cluster's health and ensure that other workloads aren't affected by this change.
+    * If you explicitly change this policy, monitor the cluster's health and ensure that other workloads aren't affected by this change.
 ::: moniker-end
 
 1. Check if there are failures during the materialization process using [.show materialized-view failures](materialized-view-show-failures-command.md#show-materialized-view-failures).
     * If the error is permanent, the system automatically disables the materialized view. To verify whether its disabled, use the [.show materialized-view](materialized-view-show-command.md) command to check if the value in the `IsEnabled` column is `false`. Then check the [Journal](../journal.md) for the disabled event with the [.show journal](../journal.md#show-journal) command.
-
     An example of a permanent failure is a change in the schema of the source table that makes it incompatible with the materialized view. For more information, see [.create materialized-view command](materialized-view-create.md#supported-properties).
     * If the failure is transient, the system automatically retries the operation, but the failure can delay the materialization and result in an increase in the materialized view age. This type of failure occurs, for example, when hitting memory limits or with a query time-out. For more recommendations, see the following recommendations on how to troubleshoot transient failures.
 
@@ -112,8 +111,7 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
     If the view isn’t fully in the hot cache, materialization can experience disk misses, significantly slowing down the process.
 
     Increasing the caching policy for the materialized view helps avoid cache misses. For more information, see [hot and cold cache and caching policy](../cache-policy.md) and [.alter materialized-view policy caching command](../alter-materialized-view-cache-policy-command.md).  
-    <!--should this section be elsewhere does it fit here? it uses show queries not show command and queries-->
-   * Check if the materialization is scanning old records by checking the `ScannedExtentsStatistics` with the [.show queries](../show-queries-command.md) command. If the number of scanned extents is high and the `MinDataScannedTime` is old, the materialization cycle needs to scan all, or most, of the *materialized* part of the view. The scan is needed to find intersections with the *delta*. For more information about the *delta* and the *materialized* part, see [How materialized views work](materialized-view-overview.md#how-materialized-views-work). See the following recommendations for ways to reduce the amount of data scanned in materialized cycles by minimizing the intersection with the *delta*.
+   * Check if the materialization is scanning old records by checking the `ScannedExtentsStatistics` with the [.show queries](../show-queries-command.md) command. If the number of scanned extents is high and the `MinDataScannedTime` is old, the materialization cycle needs to scan all, or most, of the *materialized* part of the view. The scan is needed to find intersections with the *delta*. For more information about the *delta* and the *materialized* part, see [How materialized views work](materialized-view-overview.md#how-materialized-views-work). The following recommendations provide ways to reduce the amount of data scanned in materialized cycles by minimizing the intersection with the *delta*.
 
 1. If the materialization cycle scans a large amount of data, potentially including cold cache, consider the following changes to the materialized view definition:
     * Include a `datetime` group-by key in the view definition. This can significantly reduce the view's scanned data scanned, **as long as there is no late arriving data in this column**. For more information, see [Performance tips](materialized-view-create.md#performance-tips). You need to create a new materialized view since updates to group-by keys aren't supported.
