@@ -51,7 +51,7 @@ The alias must be defined according to the following syntax, where *Eventhouse* 
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 First, count the number of records in that table.
 

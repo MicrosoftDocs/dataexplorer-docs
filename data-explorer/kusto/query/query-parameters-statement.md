@@ -44,7 +44,13 @@ To reference query parameters, the query text, or functions it uses, must first 
 
 ## Example
 
-[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
+Consider the following examples:
+
+### Declare query parameters
+
+ this query retrieves storm events from the *StormEvents* table where the total number of direct and indirect injuries exceeds a specified threshold (default is 90). It then projects the *EpisodeId*, *EventType*, and the total number of injuries for each of these events.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

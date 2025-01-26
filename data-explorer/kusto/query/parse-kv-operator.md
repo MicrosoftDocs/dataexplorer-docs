@@ -3,7 +3,7 @@ title:  parse-kv operator
 description: Learn how to use the parse-kv operator to represent structured information extracted from a string expression in a key/value form.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/22/2025
 ---
 
 # parse-kv operator
@@ -52,16 +52,18 @@ The original input tabular expression *T*, extended with columns per specified k
 
 > [!NOTE]
 >
-> * If a key doesn't appear in a record, the corresponding column value will either be `null` or an empty string, depending on the column type.
+> * If a key doesn't appear in a record, the corresponding column value is either `null` or an empty string, depending on the column type.
 > * Only keys that are listed in the operator are extracted.
 > * The first appearance of a key is extracted, and subsequent values are ignored.
-> * When extracting keys and values, leading and trailing white spaces are ignored.
+> * When you extract keys and values, leading and trailing white spaces are ignored.
 
 ## Examples
 
+Consider the following examples:
+
 ### Extraction with well-defined delimiters
 
-In the following example, keys and values are separated by well defined delimiters. These delimeters are comma and colon characters.
+In this query, keys and values are separated by well defined delimiters. These delimeters are comma and colon characters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -101,7 +103,7 @@ print str='src=10.1.1.123 dst=10.1.1.124 bytes=125 failure="connection aborted" 
 |--|--|--|--|--|
 |2021-01-01 10:00:54.0000000| 10.1.1.123| 10.1.1.124| 125| connection aborted|
 
-The following example uses different opening and closing quotes:
+This query uses different opening and closing quotes:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -221,7 +223,7 @@ print str="2021-01-01T10:00:34 [INFO] ThreadId:458745723, Machine:Node001, Text:
 
 ### Extraction using regex
 
-When no delimiters define text structure well enough, regular expression-based extraction can be useful.
+When no delimiters define text structure enough, regular expression-based extraction can be useful.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

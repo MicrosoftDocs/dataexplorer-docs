@@ -3,7 +3,7 @@ title:  Batches
 description:  This article describes Batches.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/13/2025
+ms.date: 01/22/2025
 ---
 # Batches
 
@@ -18,7 +18,9 @@ A query can include multiple tabular expression statements, as long as they're d
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
+Consider the following examples:
 
 ### Name tabular results
 
