@@ -121,6 +121,8 @@ items:
             href: show-table-schema-command.md
           - name: .clear table data command
             href: clear-table-data-command.md
+          - name: Avrotize k2a tool
+            href: ../tools/avrotize.md
       - name: External tables
         items:
           - name: Azure Storage external tables
@@ -253,23 +255,6 @@ items:
           - name: .alter-merge table column-docstrings command
             displayName: .alter-merge column-docstrings
             href: alter-merge-table-column.md
-      - name: Ingestion mappings
-        items:
-          - name: Ingestion mappings overview
-            href: mappings.md
-            displayName: schema mappings, data mappings
-          - name: "CSV mapping"
-            href: csv-mapping.md
-          - name: "JSON mapping"
-            href: json-mapping.md
-          - name: "AVRO mapping"
-            href: avro-mapping.md
-          - name: "Parquet mapping"
-            href: parquet-mapping.md
-          - name: "ORC mapping"
-            href: orc-mapping.md
-          - name: "W3CLOGFILE mapping"
-            href: w3c-log-file-mapping.md
       - name: Functions
         items:
           - name: Stored functions management overview
@@ -808,6 +793,23 @@ items:
         href: ../ingestion-supported-formats.md
       - name: Ingestion properties
         href: ../ingestion-properties.md
+      - name: Ingestion mappings
+        items:
+          - name: Ingestion mappings overview
+            href: mappings.md
+            displayName: schema mappings, data mappings
+          - name: "CSV mapping"
+            href: csv-mapping.md
+          - name: "JSON mapping"
+            href: json-mapping.md
+          - name: "AVRO mapping"
+            href: avro-mapping.md
+          - name: "Parquet mapping"
+            href: parquet-mapping.md
+          - name: "ORC mapping"
+            href: orc-mapping.md
+          - name: "W3CLOGFILE mapping"
+            href: w3c-log-file-mapping.md
       - name: .ingest-into
         displayName: .ingest into, pull data, pulling ingestion
         href: data-ingestion/ingest-into-command.md
@@ -857,7 +859,7 @@ items:
     items:
       - name: .export to storage
         href: data-export/export-data-to-storage.md
-      - name: .export totable
+      - name: .export to table
         href: data-export/export-data-to-an-external-table.md
       - name: .export to SQL
         href: data-export/export-data-to-sql.md

@@ -7,7 +7,7 @@ jobs:
   bypass_approval:
     runs-on: ubuntu-latest
     env:
-      ACTION_TOKEN_SS: ${{ secrets.ACTIONTOKEN }}
+      ACTION_TOKEN_SS: ${{ secrets.ACTIONTOKEN_SS }}
       ACTION_TOKEN_YS: ${{ secrets.ACTIONTOKEN_YS }}
     steps:
       - name: Approve PR if author is a code owner

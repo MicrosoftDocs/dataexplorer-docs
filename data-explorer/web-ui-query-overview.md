@@ -3,7 +3,7 @@ title: Azure Data Explorer web UI query overview
 description: This article describes the query page in Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 12/18/2023
+ms.date: 01/16/2025
 ---
 
 # Azure Data Explorer web UI query overview
@@ -36,7 +36,8 @@ From the connection pane, right-click on a database to open a menu with options 
 To learn how to add a connection, see [Add a cluster connection in the Azure Data Explorer web UI](add-cluster-connection.md).
 
 > [!TIP]
-> Add clusters and databases to your favorites list with the star icon next to the resource name. To view only your favorite resources, select the star icon next to the filter text box.
+> * Add clusters and databases to your favorites list with the star icon next to the resource name. To view only your favorite resources, select the star icon next to the filter text box. 
+> * Add clusters to groups for easier management. Groups display below favorites.
 
 ## Gain quick insights into table data
 
@@ -58,7 +59,7 @@ The editor offers [Kusto Query Language (KQL)](/kusto/query/index?view=azure-dat
 
 ## Manage queries in multiple contexts
 
-With the use of query tabs, you can work on multiple queries simultaneously, all with their own query context. The query tabs allow you to switch between different databases and clusters without losing your work. To rename a query tab, double-click on the tab title or click the pencil icon on the tab. To get a comprehensive view of all existing tabs, use the tabs list located in the top right corner.
+With the use of query tabs, you can work on multiple queries simultaneously, all with their own query context. The query tabs allow you to switch between different databases and clusters without losing your work. To rename a query tab, double-click on the tab title or select the pencil icon on the tab. To get a comprehensive view of all existing tabs, use the tabs list located in the top right corner.
 
 :::image type="content" source="media/web-ui-query/tabs-management.gif" alt-text="Moving screenshot of multiple tabs." lightbox="media/web-ui-query/tabs-management.gif":::
 

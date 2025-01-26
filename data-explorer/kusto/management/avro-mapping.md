@@ -2,7 +2,7 @@
 title:  AVRO Mapping
 description: Learn how to use AVRO mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/12/2025
 ---
 
 # AVRO mapping
@@ -15,12 +15,12 @@ Use AVRO mapping to map incoming data to columns inside tables when your ingesti
 
 Each AVRO mapping element must contain either of the following optional properties:
 
-| Property   | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                            |
-|------------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Field      | `string` | Name of the field in the AVRO record.                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Path       | `string` | If the value starts with `$` it's interpreted as the path to the field in the AVRO document that will become the content of the column in the table. The path that denotes the entire AVRO record is `$`. If the value doesn't start with `$` it's interpreted as a constant value. Paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md). |
-| ConstValue | `string` | The constant value to be used for a column instead of some value inside the AVRO file.                                                                                                                                                                                                                                                                                                                                                 |
-| Transform  | `string` | Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations).                                                                                                                                                                                                                                                                                                              |
+| Property | Type | Description |
+|--|--|--|
+| Field | `string` | Name of the field in the AVRO record. |
+| Path | `string` | If the value starts with `$`, it's treated as the path to the field in the AVRO document. This path specifies the part of the AVRO document that becomes the content of the column in the table. The path that denotes the entire AVRO record is `$`. If the value doesn't start with `$`, it's treated as a constant value. Paths that include special characters should be escaped as [\'Property Name\']. For more information, see [JSONPath syntax](../query/jsonpath.md). |
+| ConstValue | `string` | The constant value to be used for a column instead of some value inside the AVRO file. |
+| Transform | `string` | Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations). |
 
 >[!NOTE]
 >
@@ -44,6 +44,10 @@ Each AVRO mapping element must contain either of the following optional properti
 
 ## Examples
 
+### JSON serialization
+
+The following example mapping is serialized as a JSON string when provided as part of the `.ingest` management command.
+
 ``` json
 [
   {"Column": "event_timestamp", "Properties": {"Field": "Timestamp"}},
@@ -55,7 +59,7 @@ Each AVRO mapping element must contain either of the following optional properti
 ]
 ```
 
-The mapping above is serialized as a JSON string when it's provided as part of the `.ingest` management command.
+Here the serialized JSON mapping is included in the context of the `.ingest` management command.
 
 ````kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -72,9 +76,9 @@ The mapping above is serialized as a JSON string when it's provided as part of t
   )
 ````
 
-### Pre-created mapping
+### Precreated mapping
 
-When the mapping is [pre-created](create-ingestion-mapping-command.md), reference the mapping by name in the `.ingest` management command.
+When the mapping is [precreated](create-ingestion-mapping-command.md), reference the mapping by name in the `.ingest` management command.
 
 ```kusto
 .ingest into Table123 (@"source1", @"source2")
@@ -96,3 +100,7 @@ Use AVRO mapping during ingestion without defining a mapping schema (see [identi
         format="AVRO"
     )
 ```
+
+## Related content
+
+* Use the [avrotize k2a](../tools/avrotize.md) tool to create an Avro schema.
