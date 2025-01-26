@@ -3,7 +3,7 @@ title:  count operator
 description: Learn how to use the count operator to return the number of records in the input record set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # count operator
@@ -32,6 +32,10 @@ This function returns a table with a single record and column of type
 
 ## Example
 
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
+When you use the count operator with a table name, like StormEvents, it will return the total number of records in that table.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRSM4vzSsBALU2eHsTAAAA" target="_blank">Run the query</a>
@@ -40,6 +44,12 @@ This function returns a table with a single record and column of type
 ```kusto
 StormEvents | count
 ```
+
+**Output**
+
+| Count |
+|-------|
+| 59066 |
 
 ## Related content
 
