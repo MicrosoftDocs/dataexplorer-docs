@@ -64,7 +64,7 @@ By default, the `auto` strategy determines where the cross-cluster join is execu
 
 ## Examples
 
-Review the examples and run them in your Data Explorer query page. For more information, see [Quickstart: Query sample data](../../web-query-data.md=azure-data-explorer&preserve-view=true).
+Review the examples and run them in your Data Explorer query page. For more information, see [Quickstart: Query sample data](../../web-query-data.md?view=azure-data-explorer&preserve-view=true).
 
 ### Local Cluster join
 

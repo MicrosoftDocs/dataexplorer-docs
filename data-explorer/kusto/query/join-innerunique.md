@@ -33,7 +33,7 @@ By default, the `innerunique` join flavor is used if the `kind` parameter isn't 
 
 ## Examples
 
-Review the examples and run them in your Data Explorer query page. For more information, refer to [Quickstart: Query sample data](../../web-query-data.md=azure-data-explorer&preserve-view=true).
+Review the examples and run them in your Data Explorer query page. For more information, refer to [Quickstart: Query sample data](../../web-query-data.md?view=azure-data-explorer&preserve-view=true).
 
 ### Use the default innerunique join
 
