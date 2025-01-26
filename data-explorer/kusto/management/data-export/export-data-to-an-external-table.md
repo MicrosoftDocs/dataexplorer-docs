@@ -37,12 +37,12 @@ The following properties are supported as part of the export to external table c
 | Property | Type | Description | Default |
 |--|--|--|--|
 | `sizeLimit` | `long` | The size limit in bytes of a single storage artifact written before compression. A full row group of size `parquetRowGroupSize` is written before checking whether this row group reaches the size limit and should start a new artifact. Valid range: 100 MB (default) to 1 GB. |  |
-| `distributed` | `bool` | Disable or enable distributed export. Setting to false is equivalent to `single` distribution hint. | Default is `true`. |
-| `distribution` | `string` | Distribution hint (`single`, `per_node`, `per_shard`). See more details in [Distribution settings](#distribution-settings) | Default is `per_node`. |
+| `distributed` | `bool` | Disable or enable distributed export. Setting to false is equivalent to `single` distribution hint. | `true` |
+| `distribution` | `string` | Distribution hint (`single`, `per_node`, `per_shard`). See more details in [Distribution settings](#distribution-settings) | `per_node` |
 | `distributionKind` | `string` | Optionally switches to uniform distribution when the external table is partitioned by string partition. Valid values are `uniform` or `default`. See more details in [Distribution settings](#distribution-settings) |  |
-| `concurrency` | *Number* | Hints the system how many partitions to run in parallel. See more details in [Distribution settings](#distribution-settings) | The default value is 16. |
-| `spread` | *Number* | Hints the system how to distribute the partitions among nodes. See more details in [Distribution settings](#distribution-settings) | The default value is `Min(64, number-of-nodes)`. |
-| `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. This value takes precedence over `sizeLimit`, meaning a full row group will be exported before checking whether this row group reaches the size limit and should start a new artifact. | Default row group size is 100,000 records. |
+| `concurrency` | *Number* | Hints the system how many partitions to run in parallel. See more details in [Distribution settings](#distribution-settings) | 16 |
+| `spread` | *Number* | Hints the system how to distribute the partitions among nodes. See more details in [Distribution settings](#distribution-settings) | `Min(64, number-of-nodes)` |
+| `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. This value takes precedence over `sizeLimit`, meaning a full row group will be exported before checking whether this row group reaches the size limit and should start a new artifact. | 100,000 |
 
 ### Distribution settings
 
