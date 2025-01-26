@@ -131,7 +131,7 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
 
 1. If the materialized view is still unhealthy, then the service doesn't have sufficient capacity and/or resources to materialize all the data on time. Consider the following options:
     :::moniker range="azure-data-explorer"
-    * Scale out the cluster by increasing the min instance count. [Optimized autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) doesn't take materialized views into consideration and doesn't scale out the cluster automatically if materialized views are unhealthy. You need to set the minimum instance count to provide the cluster with more resources to accommodate materialized views.
+    * Scale out the cluster by increasing the min instance count. [Optimized autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale-recommended-option) doesn't take materialized views into consideration and doesn't scale out the cluster automatically if materialized views are unhealthy. You need to set the minimum instance count to provide the cluster with more resources to accommodate materialized views.
     ::: moniker-end
     :::moniker range="microsoft-fabric"
     <!--is minimum consumption good enough since it doesn't seem like minimum instance count is available in Fabric-->
