@@ -3,7 +3,7 @@ title:  as operator
 description: Learn how to use the as operator to bind a name to the operator's input tabular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/15/2025
+ms.date: 01/27/2025
 ---
 # as operator
 
@@ -38,24 +38,24 @@ In the following two examples, the generated TableName column consists of 'T1' a
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0UCguSS0Acni5ahQSixVCIKzSvMz8PIXyzJKM4vzSouRU25DEpJxUv8TcVAWNIjymQMww0gQAVf7ABmoAAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBVKC5JLQCyuWoUEosVQsCM0rzM%2FDyF8sySjOL80qLkVNuQxKScVL%2FE3FQFjSLcRkBMMNIEALyiibJmAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-range x from 1 to 10 step 1 
+range x from 1 to 5 step 1 
 | as T1 
-| union withsource=TableName (range x from 1 to 10 step 1 | as T2)
+| union withsource=TableName (range x from 1 to 5 step 1 | as T2)
 ```
 
 Alternatively, you can write the same example as follows:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyvNy8zPUyjPLMkozi8tSk61DUlMykn1S8xNVdAoSsxLT1WoUEgrys9VMFQoyVcwNFAoLkktAHJqFBKLFUIMNXWIUWakCQB5tG07ZwAAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyvNy8zPUyjPLMkozi8tSk61DUlMykn1S8xNVdAoSsxLT1WoUEgrys9VMFQoyVcwVSguSS0AsmsUEosVQgw1dYhQZaQJAJuYIo9lAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-union withsource=TableName (range x from 1 to 10 step 1 | as T1), (range x from 1 to 10 step 1 | as T2)
+union withsource=TableName (range x from 1 to 5 step 1 | as T1), (range x from 1 to 5 step 1 | as T2)
 ```
 
 **Output**
@@ -67,22 +67,11 @@ union withsource=TableName (range x from 1 to 10 step 1 | as T1), (range x from 
 | T1 | 3 |
 | T1 | 4 |
 | T1 | 5 |
-| T1 | 6 |
-| T1 | 7 |
-| T1 | 8 |
-| T1 | 9 |
-| T1 | 10 |
 | T2 | 1 |
 | T2 | 2 |
 | T2 | 3 |
 | T2 | 4 |
 | T2 | 5 |
-| T2 | 6 |
-| T2 | 7 |
-| T2 | 8 |
-| T2 | 9 |
-| T2 | 10 |
-
 
 In the following example, the 'left side' of the join is:
 `MyLogTable` filtered by `type == "Event"` and `Name == "Start"`

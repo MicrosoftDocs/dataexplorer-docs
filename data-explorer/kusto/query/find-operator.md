@@ -105,11 +105,12 @@ The `find` operator supports an alternative syntax for the `* has` term, and usi
 
 For a summary of some filtering functions, see [where operator](where-operator.md).
 
-> [!NOTE]
-> * If the `project` clause references a column that appears in multiple tables and has multiple types, a type must follow this column reference in the project clause
->* If a column appears in multiple tables and has multiple types and `project-smart` is in use, there's a corresponding column for each type in the `find`'s result, as described in [union](union-operator.md) 
->* When you use *project-smart*, changes in the predicate, in the source tables set, or in the tables schema, might result in a change to the output schema. If a constant result schema is needed, use *project* instead 
->* `find` scope can't include [functions](../management/functions.md). To include a function in the `find` scope, define a [let statement](let-statement.md) with [view keyword](let-statement.md). 
+## Considerations
+
+* If the `project` clause references a column that appears in multiple tables and has multiple types, a type must follow this column reference in the project clause
+* If a column appears in multiple tables and has multiple types and `project-smart` is in use, there's a corresponding column for each type in the `find`'s result, as described in [union](union-operator.md)
+* When you use *project-smart*, changes in the predicate, in the source tables set, or in the tables schema, might result in a change to the output schema. If a constant result schema is needed, use *project* instead
+* `find` scope can't include [functions](../management/functions.md). To include a function in the `find` scope, define a [let statement](let-statement.md) with [view keyword](let-statement.md).
 
 ## Performance tips
 
@@ -228,8 +229,6 @@ The resulting records are transformed according to the [output schema](#output-s
 find in (cluster("cluster1").database("B*").K*, cluster("cluster2").database("C*".*))
 where * has "Kusto"
 ```
-
-::: moniker-end
 
 ::: moniker range="azure-monitor || microsoft-sentinel"
 
@@ -353,7 +352,7 @@ find in (PartialEventsTable1, EventsTable2)
 
 ### Referencing a column that appears in multiple tables and has multiple types
 
-Assume we create two tables by running:
+For this example, create two tables by running:
 
 ```kusto
 .create tables 

@@ -3,7 +3,7 @@ title:  externaldata operator
 description: Learn how to use the externaldata operator to return a data table of the given schema whose data was parsed from the specified storage artifact.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/15/2025
+ms.date: 01/27/2025
 ---
 # externaldata operator
 
@@ -43,9 +43,9 @@ The `externaldata` operator returns a table whose schema is defined in the query
 
 ### Supported properties
 
-| Property         | Type     | Description       |
-|------------------|----------|-------------------|
-| format         | `string` | The data format. If unspecified, an attempt is made to detect the data format from file extension. The default is `CSV`. All [ingestion data formats](../ingestion-supported-formats.md) are supported. |
+| Property | Type | Description |
+|--|--|--|
+| format | `string` | The data format. If unspecified, an attempt is made to detect the data format from file extension. The default is `CSV`. All [ingestion data formats](../ingestion-supported-formats.md) are supported. |
 | ignoreFirstRecord | `bool` | If set to `true`, the first record in every file is ignored. This property is useful when querying CSV files with headers. |
 | ingestionMapping | `string` | Indicates how to map data from the source file to the actual columns in the operator result set. See [data mappings](../management/mappings.md). |
 
