@@ -33,7 +33,7 @@ The main authentication scenarios are as follows:
 * [Single page application (SPA) authentication](/azure/active-directory/develop/msal-authentication-flows#authorization-code): Allows client-side SPA web applications to sign in users and get tokens to access your database. This flow must be implemented with MSAL.
 
 > [!NOTE]
-> For user and application authentication, we recommend using the [Kusto client libraries](../api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL directly as the client libraries don't support these flows. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
+> For user and application authentication, we recommend using the [Kusto client libraries](../api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you must use MSAL directly as the client libraries don't support these flows. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
 
 ### User authentication
 
@@ -86,10 +86,10 @@ Principals can force a refresh of group membership information. This capability 
 
 #### Refresh for a specific group
 
-Principals can force a refresh of group membership **for a specific group**. However, the following restrictions apply:
+Principals can force a refresh of group membership *for a specific group*. However, the following restrictions apply:
 
-1. A refresh can be requested up to 10 times per hour per principal.
-1. The requesting principal must be a member of the group at the time of the request.
+* A refresh can be requested up to 10 times per hour per principal.
+* The requesting principal must be a member of the group at the time of the request.
 
 The request results in an error if either of these conditions aren't met.
 
@@ -107,11 +107,12 @@ A privileged principal can request a refresh **for other principals**. The reque
 
 To refresh another principal’s group membership, run the following command:
 
+> In the following command, replace `<PrincipalFQN>` with your own principal fully qualified name (FQN) and `<GroupFQN>` with your own group FQN. For more information, see [Referencing Microsoft Entra principals and groups](../management/reference-security-principals.md#referencing-microsoft-entra-principals-and-groups).
+
 ```kusto
 .clear cluster cache groupmembership with (principal='<PrincipalFQN>', group='<GroupFQN>')
 ```
 
-Use the FQNs for the principal and group names. For more information, see [Referencing Microsoft Entra principals and groups](../management/reference-security-principals.md#referencing-microsoft-entra-principals-and-groups).
 
 ## Related content
 
