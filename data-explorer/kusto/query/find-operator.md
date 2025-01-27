@@ -229,6 +229,7 @@ The resulting records are transformed according to the [output schema](#output-s
 find in (cluster("cluster1").database("B*").K*, cluster("cluster2").database("C*".*))
 where * has "Kusto"
 ```
+::: moniker-end
 
 ::: moniker range="azure-monitor || microsoft-sentinel"
 
