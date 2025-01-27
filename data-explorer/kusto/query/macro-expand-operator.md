@@ -32,13 +32,13 @@ The `macro-expand` operator runs the subquery separately for each entity in the 
 
 There are several syntactic variants that are used with the `macro-expand` operator:
 
-1. **Explicit:** All elements are explicitly defined in the text of the operator invocation itself.
+1. **Using the macro-expand operator:** All elements are explicitly defined in the text of the operator invocation itself.
 
-1. **Explicit using let statement:** The entity group is specified in the query using a `let` statement outside the `macro-expand` operator using the syntax:
+1. **Using a let statement:** The entity group is specified in the query using a `let` statement outside the `macro-expand` operator using the syntax:
 
     `let` *EntityGroupIdentifier* `=` `entity_group` `[`*EntityReference* [`,` ...]`]`
 
-1. **Explicit using stored entity group:** The query uses an entity group stored in the database in scope rather than defined in the query.
+1. **Using a stored entity group:** The query uses an entity group stored in the database in scope rather than defined in the query.
 
 To see examples of how the variants are used, see [Examples](#examples).
 
