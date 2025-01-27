@@ -4,7 +4,6 @@ description: Learn how to use the externaldata operator to return a data table o
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/15/2025
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # externaldata operator
 
@@ -14,6 +13,7 @@ The `externaldata` operator returns a table whose schema is defined in the query
 
 > [!NOTE]
 > The `externaldata` operator supports:
+>
 > * a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
 > * shared Access Signature (SAS) key, Access key, and Microsoft Entra Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md#storage-authentication-methods).
 

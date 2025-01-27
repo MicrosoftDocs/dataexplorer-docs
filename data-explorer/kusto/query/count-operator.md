@@ -4,7 +4,6 @@ description: Learn how to use the count operator to return the number of records
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/15/2025
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # count operator
 
