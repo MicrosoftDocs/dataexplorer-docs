@@ -113,7 +113,6 @@ To refresh another principal’s group membership, run the following command:
 .clear cluster cache groupmembership with (principal='<PrincipalFQN>', group='<GroupFQN>')
 ```
 
-
 ## Related content
 
 * Understand [Kusto role-based access control](role-based-access-control.md).
