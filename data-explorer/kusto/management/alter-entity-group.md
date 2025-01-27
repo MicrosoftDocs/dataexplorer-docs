@@ -1,5 +1,5 @@
 ---
-title: .alter entity_group
+title: .alter entity_group command
 description: Learn how to use the `.alter entity_group` command to change an existing entity group.
 ms.reviewer: ziham1531991
 ms.topic: reference
@@ -7,7 +7,7 @@ ms.date: 01/26/2025
 ---
 
 
-# .alter entity_group
+# .alter entity_group command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -58,7 +58,7 @@ The following example alters `MyEntityGroup` to include the entity, `cluster('c1
 
 * [Entity groups](entity-groups.md)
 * [Entity types](../query/schema-entities/index.md)
-* [.create entity_group](create-entity-group.md)
-* [.alter-merge entity_group](alter-merge-entity-group.md)
-* [.drop entity_group](drop-entity-group.md)
-* [.show entity_group and .show entity_groups](show-entity-group.md)
+* [.create entity_group command](create-entity-group.md)
+* [.alter-merge entity_group command](alter-merge-entity-group.md)
+* [.drop entity_group command](drop-entity-group.md)
+* [.show entity_group(s) command](show-entity-group.md)

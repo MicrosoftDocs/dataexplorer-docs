@@ -1,12 +1,12 @@
 ---
-title: .drop entity_group
+title: .drop entity_group command
 description: Learn how to use the `.drop entity_group` command to remove an entity group from your database.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/26/2025
+ms.date: 01/27/2025
 ---
 
-# .drop entity_group
+# .drop entity_group command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -49,7 +49,7 @@ The following example drops the `MyEntityGroup` from your selected database.
 
 * [Entity groups](entity-groups.md)
 * [Entity types](../query/schema-entities/index.md)
-* [.create entity_group](create-entity-group.md)
-* [.alter entity_group](alter-entity-group.md)
-* [.alter-merge entity_group](alter-merge-entity-group.md)
-* [.show entity_group and .show entity_groups](show-entity-group.md)
+* [.create entity_group command](create-entity-group.md)
+* [.alter entity_group command](alter-entity-group.md)
+* [.alter-merge entity_group command](alter-merge-entity-group.md)
+* [.show entity_group(s) command](show-entity-group.md)

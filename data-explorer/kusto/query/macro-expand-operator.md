@@ -19,7 +19,7 @@ The `macro-expand` operator runs the subquery separately for each entity in the 
 
 ## Syntax
 
-`macro-expand` [`kind` `=` *Kind*] [`isfuzzy` `=` *IsFuzzy*] *EntityGroup* `as` *EntityIdentifier*  `(` *Subquery* `)`
+`macro-expand` [`kind` `=` *Kind*] [`isfuzzy` `=` *IsFuzzy*] *EntityGroup* `as` *EntityIdentifier*  `(`*Subquery*`)`
 
 `macro-expand` [`kind` `=` *Kind*] [`isfuzzy` `=` *IsFuzzy*] `entity_group` `[`*EntityReference* [`,` ...]  `as` *EntityIdentifier*  `(`*Subquery*`)``]`
 
@@ -159,6 +159,6 @@ macro-expand MyEntityGroup_Outer as X
 * [Entity groups](../management/entity-groups.md)
 * [join operator](join-operator.md)
 * [union operator](union-operator.md)
-* [.show entity_group(s)](../management/show-entity-group.md)
+* [.show entity_group(s) command](../management/show-entity-group.md)
 * [current_database()](current-database-function.md)
 * [current_cluster_endpoint()](current-cluster-endpoint-function.md)

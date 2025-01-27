@@ -1,12 +1,12 @@
 ---
-title: .create entity_group(s)
+title: .create entity_group command
 description: Learn how to use the `.create entity_group` command to create an entity group.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/26/2025
+ms.date: 01/27/2025
 ---
 
-# .create entity_group
+# .create entity_group command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -55,7 +55,7 @@ The following example creates the `MyEntityGroup` entity group with two entities
 
 * [Entity groups](entity-groups.md)
 * [Entity types](../query/schema-entities/index.md)
-* [.alter entity_group](alter-entity-group.md)
-* [.alter-merge entity_group](alter-merge-entity-group.md)
-* [.drop entity_group](drop-entity-group.md)
-* [.show entity_group and .show entity_groups](show-entity-group.md)
+* [.alter entity_group command](alter-entity-group.md)
+* [.alter-merge entity_group command](alter-merge-entity-group.md)
+* [.drop entity_group command](drop-entity-group.md)
+* [.show entity_group(s) command](show-entity-group.md)
