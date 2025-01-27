@@ -19,7 +19,7 @@ The node_degree_in function is used to compute the in-degree of nodes in a direc
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| *node* | `string` |  :heavy_check_mark: | Reference to a graph node.
+| *node* | `string` |:heavy_check_mark:| Reference to a graph node|
 
 ## Returns
 
@@ -32,11 +32,7 @@ The node_degree_in function is used to compute the in-degree of nodes in a direc
 
 The following example shows how to create a graph to represent the relationships between employees and their managers and compute the in-degree for each node to find employees with exactly two direct reports.
 
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQUUvDMBSF3%2FMrLn1aIRHsFHFawYkvPvo6xsjaS5MtTUoanYI%2F3qRtGqdIX05yz8n5ehU6wLZT5hOxhxJq7vy3V7jQvMVV76zUDQXe4EoZ3eRkQ7JHJSvMKCwLSrK12Qd56eXze7gtbrx8MYO89fJJWNn7w9U1DVH8CPag16iDZ%2Bnlq6wEt3WY%2BMj2jiiPZbEz1p1DRdQZrOXas9npPOCNRJEyAaSbEXQ0Ro5oi%2BzJneCGRMCb0MiX7z8iayzvxLxGYOwhcsFJOvFjwUZD2KsPDhnWclcJWEzu%2FJ5tpqe3bP7XnJwEWgRtatzV2FjEndRpDGUJBemsOWDlYvFFqKG%2FIrGGnr1l3lya%2FFfyNzKPvgEBXARFQwIAAA%3D%3D" target="_blank">Run the query</a>
-::: moniker-end
-
+<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQUUvDMBSF3%2FMrLn1aIRHsFHFawYkvPvo6xsjaS5MtTUoanYI%2F3qRtGqdIX05yz8n5ehU6wLZT5hOxhxJq7vy3V7jQvMVV76zUDQXe4EoZ3eRkQ7JHJSvMKCwLSrK12Qd56eXze7gtbrx8MYO89fJJWNn7w9U1DVH8CPag16iDZ%2Bnlq6wEt3WY%2BMj2jiiPZbEz1p1DRdQZrOXas9npPOCNRJEyAaSbEXQ0Ro5oi%2BzJneCGRMCb0MiX7z8iayzvxLxGYOwhcsFJOvFjwUZD2KsPDhnWclcJWEzu%2FJ5tpqe3bP7XnJwEWgRtatzV2FjEndRpDGUJBemsOWDlYvFFqKG%2FIrGGnr1l3lya%2FFfyNzKPvgEBXARFQwIAAA%3D%3D" target="_blank">Run the query</a>
 
 ```kusto
 let employees = datatable(name:string, age:long)
