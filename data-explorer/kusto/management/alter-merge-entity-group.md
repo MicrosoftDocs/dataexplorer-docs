@@ -3,7 +3,7 @@ title: .alter-merge entity_group
 description: Learn how to use the `.alter-merge entity_group` command to change an existing entity group.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 01/26/2025
 ---
 
 # .alter-merge entity_group
@@ -18,7 +18,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ## Syntax
 
-`.alter-merge` `entity_group` *EntityGroupName* `(`[*EntityReference*`,` ...]`)`
+`.alter-merge` `entity_group` *EntityGroupName* `(`*EntityReference* [`,` ...]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 

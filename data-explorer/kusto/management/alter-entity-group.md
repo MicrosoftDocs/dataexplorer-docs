@@ -3,7 +3,7 @@ title: .alter entity_group
 description: Learn how to use the `.alter entity_group` command to change an existing entity group.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 01/26/2025
 ---
 
 
@@ -19,7 +19,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ## Syntax
 
-`.alter` `entity_group` [`ifnotexists`] *EntityGroupName* `(`[*EntityReference*`,` ...]`)`
+`.alter` `entity_group` [`ifnotexists`] *EntityGroupName* `(`*EntityReference* [`,` ...]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -27,7 +27,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| `ifnotexists` | `string` | | If specified, the entity group only is created if the entity group doesn't exist yet.|
+| `ifnotexists` | `string` | | If specified, the entity group is only created if the entity group doesn't exist yet.|
 |*EntityGroupName*| `string` | :heavy_check_mark:|The name of the entity group. |
 |*EntityReference*| `string` | :heavy_check_mark:|An entity included in the entity group. |
 
@@ -42,7 +42,7 @@ This command returns a table with the following columns:
 
 ## Examples
 
-The following example alters `MyEntityGroup` to include the entity `cluster('c1').database('d1')`.
+The following example alters `MyEntityGroup` to include the entity, `cluster('c1').database('d1')`.
 
 ```kusto
 .alter entity_group MyEntityGroup (cluster('c1').database('d1'))

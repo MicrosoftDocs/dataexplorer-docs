@@ -3,7 +3,7 @@ title: .drop entity_group
 description: Learn how to use the `.drop entity_group` command to remove an entity group from your database.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 01/26/2025
 ---
 
 # .drop entity_group
@@ -26,7 +26,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*EntityGroupName*| `string` | |The name of the specific entity group you wish to drop. |
+|*EntityGroupName*| `string` | |The name of the specific entity group you want to drop. |
 
 ## Returns
 
@@ -35,7 +35,7 @@ This command returns a list of the remaining tables in the database.
 |Output parameter |Type |Description|
 |---|---|---|
 |Name | `string` | The name of the entity group.|
-|Entities | `array` | An array which includes one or more entities.|
+|Entities | `array` | An array with one or more entities.|
 
 ## Examples
 

@@ -3,30 +3,30 @@ title: macro-expand operator
 description: Learn how to use the macro-expand operator to run a subquery on a set of entities.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/20/2025
+ms.date: 01/27/2025
 ---
 # macro-expand operator
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The `macro-expand` operator simplifies running a subquery on a set of [entities](schema-entities/index.md) such as clusters, databases, or tables, and then combining the results into a single output.
+The `macro-expand` operator simplifies running a subquery on a set of [entities](schema-entities/index.md), such as clusters, databases, or tables, and then combining the results into a single output.
 
 The operator is useful when you have data spread across multiple clusters, databases, or tables. For example, when data is held in the same global region as its source, you can use the `macro-expand` operator in a single query across data in distinct locations, instead of running separate queries for each entity and combining the results manually.
 
-The set of entities you want to query, is called an **entity group**. The entity group can be stored for reuse in a database, or defined directly in your query text. For more information about stored entity groups, see [Entity groups](../management/entity-groups.md).
+The set of entities you want to query is called an **entity group**. The entity group can be stored for reuse in a database or defined directly in your query text. For more information about stored entity groups, see [Entity groups](../management/entity-groups.md).
 
-The `macro-expand` operator runs the subquery separately for each entity in the group and then combines all the results into a single output. The subquery can include nested `macro-expand` operators. This means you can use the `macro-expand` operator within another `macro-expand` operator. However, the identifier for the inner `macro-expand` must be different from the identifier for the outer `macro-expand` to clearly distinguish between the scope and references of each one.
+The `macro-expand` operator runs the subquery separately for each entity in the group and then combines all the results into a single output. The subquery can include nested `macro-expand` operators. However, the identifier for the inner `macro-expand` must be different from the identifier for the outer `macro-expand` to clearly distinguish between the scope and references of each one.
 
 ## Syntax
 
 `macro-expand` [`kind` `=` *Kind*] [`isfuzzy` `=` *IsFuzzy*] *EntityGroup* `as` *EntityIdentifier*  `(` *Subquery* `)`
 
-`macro-expand` [`kind` `=` *Kind*] [`isfuzzy` `=` *IsFuzzy*] `entity_group` `[` *EntityReference* [`,` ...]  `as` *EntityIdentifier*  `(` *Subquery* `)` `]`
+`macro-expand` [`kind` `=` *Kind*] [`isfuzzy` `=` *IsFuzzy*] `entity_group` `[`*EntityReference* [`,` ...]  `as` *EntityIdentifier*  `(`*Subquery*`)``]`
 
-`macro-expand` *EntityIdentifier* `in` *EntityGroupIdentifier* `(` *Subquery* `)`
+`macro-expand` *EntityIdentifier* `in` *EntityGroupIdentifier* `(`*Subquery*`)`
 
 > [!NOTE]
-> The operation of the `macro-expand` operator can be modified by setting the `best_effort` request property to `true`, either by using a `set statement` or through [client request properties](../api/rest/request-properties.md). When this property is set to `true`, the `macro-expand` operator ignores fuzzy resolution and connectivity failures to execute any of the subexpressions being unioned and issues a warning in the query status results.
+> The operation of the `macro-expand` operator can be modified by setting the `best_effort` request property to `true`, either by using a `set statement` or through [client request properties](../api/rest/request-properties.md). When this property is set to `true`, the `macro-expand` operator ignores fuzzy resolution and connectivity failures, to execute any of the subexpressions being unioned and issues a warning in the query status results.
 
 ### Syntax variations
 
@@ -36,7 +36,7 @@ There are several syntactic variants that are used with the `macro-expand` opera
 
 1. **Explicit using let statement:** The entity group is specified in the query using a `let` statement outside the `macro-expand` operator using the syntax:
 
-    `let` *EntityGroupIdentifier* `=` `entity_group` `[` *EntityReference* [`,` ...] `]`
+    `let` *EntityGroupIdentifier* `=` `entity_group` `[`*EntityReference* [`,` ...]`]`
 
 1. **Explicit using stored entity group:** The query uses an entity group stored in the database in scope rather than defined in the query.
 
@@ -46,12 +46,12 @@ To see examples of how the variants are used, see [Examples](#examples).
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Kind* | `string` | | Either `inner` or `outer` (default). When `kind` is set to `inner`, the results only include columns common to all the accessed scoped entities. If set to `outer`, the result includes all the columns that occur in any of the inputs. Cells that aren't defined by an input row are set to `null`. |
+| *Kind* | `string` | | Either `inner` or `outer` (default). When `kind` is set to `inner`, the results only include columns common to all the accessed scoped entities. If set to `outer`, the result includes all the columns that occur in any of the inputs. Cells not defined by an input row are set to `null`. |
 | *IsFuzzy* |  |  | When set to `true`, it only considers entity sources that currently exist and are accessible. If at least one entity is found, the query runs, and any missing entities generate warnings in the query status results. If no entities are found, the query can't resolve any specified entities and returns an error. The default is `false`. |
-| *EntityGroup* |  |  :heavy_check_mark: | A set of one or more entities that *EntityIdentifier* expands to when a query is run. The entity group can be a stored entity group or a defined group. It denotes one or more entities of the same type that *EntityIdentifier* expands to. |
+| *EntityGroup* |  |  :heavy_check_mark: | A set of one or more entities that *EntityIdentifier* expands into when a query is run. The entity group can be a stored entity group or a defined group. It denotes one or more entities of the same type that *EntityIdentifier* expands to. |
 | *EntityIdentifier* | `string` |  :heavy_check_mark: |  An identifier that serves as a placeholder for an entity in the subquery, and which is expanded into the actual entity when the query is run. Entities that aren't explicitly scoped in *EntityIdentifier* are assumed to be part of the current in scope database. Any specific identifiers included in the query override the default assumption. |
 |*EntityReference*| `string` | |An entity included in the entity group. One or more *EntityReference* is required if an *EntityGroup* isn't specified. |
-| *Subquery* | `string` |  :heavy_check_mark: | A single tabular expression that doesn’t take input data, directly. It might include references to entities through an *EntityIdentifier*, and use expressions such as let statements, stored functions, or other elements from the database in scope. *Subquery* can also be preceded by one or more `let` statements. It can also reference [Subquery contextual functions](#subquery-contextual-functions).|
+| *Subquery* | `string` |  :heavy_check_mark: | A single tabular expression that doesn’t take input data directly. It might include references to entities through an *EntityIdentifier*, and use expressions such as let statements, stored functions, or other elements from the database in scope. *Subquery* can be preceded by one or more `let` statements. It can also reference [Subquery contextual functions](#subquery-contextual-functions).|
 
 > [!NOTE]
 > A query can only reference entity groups defined in the query text or in the current database. Entity groups in other databases or clusters can't be referenced directly or indirectly.
@@ -67,7 +67,7 @@ The `macro-expand` subquery can reference two specialized scalar functions as if
 
 ### Calculate errors
 
-The following example uses an entity group to calculate the number of errors produced by each Stock Keeping Unit (SKU). It defines an `entity_group`, `X` that includes databases named `Kuskus` in two clusters. The query then performs a subquery where it filters for error logs, counts the errors by `Source`, and performs an `inner` join on `Source` with the `DimCluster` table to get the `SKU` for each source. Finally, it sums the error counts by `SKU`.
+The following example uses an entity group to calculate the number of errors produced by each Stock Keeping Unit (SKU). It defines an `entity_group`, `X`, that includes databases named `Kuskus` in two clusters. The query then performs a subquery where it filters for error logs, counts the errors by `Source`, and performs an `inner` join on `Source` with the `DimCluster` table to get the `SKU` for each source. Finally, it sums the error counts by `SKU`.
 
 ```kusto
 macro-expand entity_group [cluster('C1').database('Kuskus'), cluster('C2').database('Kuskus')] as X
@@ -105,7 +105,7 @@ union
 
 ### Calculate SKU errors using `let` statement
 
-The following example uses a `let` statement to define an entity group named `UberKuskus` that includes the `Kuskus` database from both `C1` and `C2` clusters. It then uses that to perform the same query in the previous example to calculate the number of errors produced by each SKU.  It uses the `macro-expand` operator to reference the `UberKuskus` entity group (alias `X`).
+The following example uses a `let` statement to define an entity group named `UberKuskus` that includes the `Kuskus` database from both `C1` and `C2` clusters. It then uses that to perform the same query in the previous example to calculate the number of errors produced by each SKU. It uses the `macro-expand` operator to reference the `UberKuskus` entity group (alias `X`).
 
 ```kusto
 let UberKuskus = entity_group [cluster('C1').database('Kuskus'), cluster('C2').database('Kuskus')];

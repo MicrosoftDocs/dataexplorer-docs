@@ -3,7 +3,7 @@ title: .create entity_group(s)
 description: Learn how to use the `.create entity_group` command to create an entity group.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 01/26/2025
 ---
 
 # .create entity_group
@@ -26,7 +26,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| `ifnotexists` | `string` | | If specified, the entity group only is created if the entity group doesn't exist yet.|
+| `ifnotexists` | `string` | | If specified, the entity group is only created if the entity group doesn't exist yet.|
 |*EntityGroupName*| `string` | :heavy_check_mark:|The name of the entity group. |
 |*EntityReference*| `string` | :heavy_check_mark:|An entity included in the entity group. |
 
@@ -37,7 +37,7 @@ This command returns a table with the following columns:
 |Output parameter |Type |Description|
 |---|---|---|
 |Name | `string` | The name of the entity group.|
-|Entities | `array` | An array which includes one or more entities. If the entity group already exists, and the `ifnotexists` flag is specified, the command is ignored. Otherwise an error is returned.|
+|Entities | `array` | An array which includes one or more entities. If the entity group already exists, and the `ifnotexists` flag is specified, the command is ignored. Otherwise, an error is returned.|
 
 ## Examples
 
