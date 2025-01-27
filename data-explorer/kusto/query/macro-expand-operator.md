@@ -67,7 +67,7 @@ The `macro-expand` subquery can reference two specialized scalar functions as if
 
 ### Calculate errors
 
-The following example uses an entity group to calculate the number of errors produced by each Stock Keeping Unit (SKU). It defines an `entity_group`, `X`, that includes databases named `Kuskus` in two clusters. The query then performs a subquery where it filters for error logs, counts the errors by `Source`, and performs an `inner` join on `Source` with the `DimCluster` table to get the `SKU` for each source. Finally, it sums the error counts by `SKU`.
+The following example uses an entity group to calculate the number of errors produced by each Stock Keeping Unit (SKU). It defines an `entity_group`, `X`, that includes databases named `Kuskus` in two clusters. The query then performs a subquery to filter for error logs and counts the errors by `Source`. Next it performs an `inner` join on `Source` with the `DimCluster` table to get the `SKU` for each source. Finally, it sums the error counts by `SKU`.
 
 ```kusto
 macro-expand entity_group [cluster('C1').database('Kuskus'), cluster('C2').database('Kuskus')] as X
@@ -105,7 +105,7 @@ union
 
 ### Calculate SKU errors using `let` statement
 
-The following example uses a `let` statement to define an entity group named `UberKuskus` that includes the `Kuskus` database from both `C1` and `C2` clusters. It then uses that to perform the same query in the previous example to calculate the number of errors produced by each SKU. It uses the `macro-expand` operator to reference the `UberKuskus` entity group (alias `X`).
+The following example uses a `let` statement to define an entity group named `UberKuskus` which includes the `Kuskus` database from both `C1` and `C2` clusters. This entity group is then used to perform the same query in the [previous example](#calculate-errors) to calculate the number of errors produced by each SKU. The `macro-expand` operator is used to reference the `UberKuskus` entity group (alias `X`).
 
 ```kusto
 let UberKuskus = entity_group [cluster('C1').database('Kuskus'), cluster('C2').database('Kuskus')];
@@ -121,7 +121,7 @@ macro-expand UberKuskus as X
 
 ### Extend table with contextual scalar functions
 
-The following query runs a subquery on the `Admins` table from each entity in the `MyEntityGroup`. It uses `$current_database` and `$current_cluster_endpoint` to extend the table to include the current database and current cluster for each row. It then summarizes the results by counting the number of rows for each combination of `current_cluster` and `current_database`.
+The following query runs a subquery on the `Admins` table from each entity using [a stored entity group](../management/create-entity-group.md#examples), `MyEntityGroup`. It uses `$current_database` and `$current_cluster_endpoint` to extend the table, adding the current database and current cluster for each row. Then, it summarizes the results by counting the number of rows for each combination of `current_cluster` and `current_database`.
 
 ```kusto
 macro-expand MyEntityGroup as X
@@ -134,7 +134,7 @@ macro-expand MyEntityGroup as X
 
 ### Nested macro-expand query
 
-The following query runs a nested subquery with an outer entity group `MyEntityGroup_Outer` (alias `X`) and an inner entity group `MyEntityGroup_Inner` (alias `Y`). It joins the `Admins` table from each entity in both the outer and inner entity groups. The query filters for logs from the last hour, extends the tables to include the current database and cluster for each row using `$current_database` and `$current_cluster_endpoint`, and performs a `join` on the `Source` column. The prefixes `lhs` and `rhs` denote `X` and `Y` entity groups respectively. Finally, it summarizes the results by counting the number of rows for each combination of `lhs_cluster`, `lhs_database`, `rhs_cluster`, and `rhs_database`.
+The following query runs a nested subquery with an outer entity group `MyEntityGroup_Outer` (alias `X`) and an inner entity group `MyEntityGroup_Inner` (alias `Y`). It joins the `Admins` table from each entity in both the outer (`X`) and inner (`Y`) entity groups. The query filters for logs from the last hour. Then it extends the tables to include the current database and cluster for each row using `$current_database` and `$current_cluster_endpoint`. The query performs a `join` on the `Source` column to combine inner and outer entity groups. The prefixes `lhs` (left-hand side) and `rhs` (right-hand side) denote `X` and `Y` entity groups respectively. Finally, it summarizes the results by counting the number of rows for each combination of `lhs_cluster`, `lhs_database`, `rhs_cluster`, and `rhs_database`.
 
 ```kusto
 macro-expand MyEntityGroup_Outer as X
