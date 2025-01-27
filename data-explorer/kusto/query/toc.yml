@@ -911,6 +911,10 @@ items:
       - name: new_guid()
         displayName: new guid
         href: new-guid-function.md
+      - name: node_degree_in()
+        href: node_degree_in.md
+      - name: node_degree_out()
+        href: node_degree_out.md
       - name: not()
         href: not-function.md
       - name: now()
