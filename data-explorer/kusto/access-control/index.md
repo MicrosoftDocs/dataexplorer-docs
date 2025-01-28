@@ -1,10 +1,10 @@
 ---
 title: Access Control Overview
 description: This article describes Access control.
-ms.reviewer: orspodek
+ms.reviewer: yogilad
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 08/11/2024
+ms.date: 01/26/2025
 ---
 # Access control overview
 
@@ -15,7 +15,7 @@ Access control is based on authentication and authorization. Each query and comm
 ::: moniker-end
 
 :::moniker range="microsoft-fabric"
-Access control is based on authentication and authorization. Each query and command on a Fabric resource, such as a KQL database, must pass both authentication and authorization checks.
+Access control is based on authentication and authorization. Each query and command on a Fabric resource, such as a database, must pass both authentication and authorization checks.
 ::: moniker-end
 
 * [Authentication](#authentication): Validates the identity of the security principal making a request
@@ -33,7 +33,7 @@ The main authentication scenarios are as follows:
 * [Single page application (SPA) authentication](/azure/active-directory/develop/msal-authentication-flows#authorization-code): Allows client-side SPA web applications to sign in users and get tokens to access your database. This flow must be implemented with MSAL.
 
 > [!NOTE]
-> For user and application authentication, we recommend using the [Kusto client libraries](../api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL directly as these flows aren't supported by the client libraries. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
+> For user and application authentication, we recommend using the [Kusto client libraries](../api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you must use MSAL directly as the client libraries don't support these flows. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
 
 ### User authentication
 
@@ -70,16 +70,52 @@ The association of security principals to security roles can be defined individu
 
 ## Group authorization
 
-Authorization can be granted to Microsoft Entra ID groups by assigning one or more roles to the group. 
+Authorization can be granted to Microsoft Entra ID groups by assigning one or more roles to the group.
 
-When the authorization of a user or application principal is checked, the system first checks for an explicit role assignment permitting the specific action. If no such role assignment exists, the system then analyzes the principal's membership across all groups that could potentially authorize the action. If the principal is confirmed to be a member of any of these groups, the requested action is authorized. Otherwise, if the principal is not a member of any such groups, the action doesn't pass the authorization check and the action isn't allowed.
+When checking authorization for a user or application principal, the system first looks for an explicit role assignment that permits the specific action. If the role assignment doesn't exists, then the system checks the principal's membership in all groups that could authorize the action.
+
+If the principal is a member of a group with appropriate permissions, the requested action is authorized. Otherwise, the action doesn't pass the authorization check and is disallowed.
 
 > [!NOTE]
 >
 > [!INCLUDE [Cached Group Membership](../includes/cached-group-membership.md)]
+
+### Force group membership refresh
+
+Principals can force a refresh of group membership information. This capability is useful in scenarios where just-in-time (JIT) privileged access services, such as Microsoft Entra Privileged Identity Management (PIM), are used to obtain higher privileges on a resource.
+
+#### Refresh for a specific group
+
+Principals can force a refresh of group membership *for a specific group*. However, the following restrictions apply:
+
+* A refresh can be requested up to 10 times per hour per principal.
+* The requesting principal must be a member of the group at the time of the request.
+
+The request results in an error if either of these conditions aren't met.
+
+To reevaluate the current principal's membership of a group, run the following command:
+
+```kusto
+.clear cluster cache groupmembership with (group='<GroupFQN>')
+```
+
+Use the group's fully qualified name (FQN). For more information, see [Referencing Microsoft Entra principals and groups](../management/reference-security-principals.md#referencing-microsoft-entra-principals-and-groups).
+
+#### Refresh for other principals
+
+A privileged principal can request a refresh **for other principals**. The requesting principal must have [AllDatabaseMonitor](role-based-access-control.md) access for the target service. Privileged principals can also run the previous command without restrictions.
+
+To refresh another principal’s group membership, run the following command:
+
+> In the following command, replace `<PrincipalFQN>` with your own principal fully qualified name (FQN) and `<GroupFQN>` with your own group FQN. For more information, see [Referencing Microsoft Entra principals and groups](../management/reference-security-principals.md#referencing-microsoft-entra-principals-and-groups).
+
+```kusto
+.clear cluster cache groupmembership with (principal='<PrincipalFQN>', group='<GroupFQN>')
+```
 
 ## Related content
 
 * Understand [Kusto role-based access control](role-based-access-control.md).
 * For user or application authentication, use the [Kusto client libraries](../api/client-libraries.md).
 * For OBO or SPA authentication, see [How to authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
+* For referencing principals and groups, see [Referencing Microsoft Entra principals and groups](../management/reference-security-principals.md).
