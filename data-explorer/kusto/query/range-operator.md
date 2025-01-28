@@ -39,7 +39,7 @@ whose values are *start*, *start* `+` *step*, ... up to and until *stop*.
 
 ## Examples
 
-Consider the following examples:
+Review the examples and run them in your Data Explorer query page.
 
 ### Range over the past seven days
 
