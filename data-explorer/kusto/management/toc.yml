@@ -260,19 +260,19 @@ items:
           - name: Entity Group
             href: entity-groups.md
           - name: .create entity_group command
-            displayName: .create entity_group
+            displayName: create entity_group
             href: create-entity-group.md
           - name: .alter entity_group command
-            displayName: .alter entity_group
+            displayName: alter entity_group
             href: alter-entity-group.md
           - name: .alter-merge entity_group command
-            displayName: .alter-merge entity_group
+            displayName: alter-merge entity_group
             href: alter-merge-entity-group.md
           - name: .drop entity_group command
-            displayName: .drop entity_group
+            displayName: drop entity_group
             href: drop-entity-group.md
           - name: .show entity_group command
-            displayName: .show entity_group
+            displayName: show entity_group, show entity_groups, .show entity_group
             href: show-entity-group.md
       - name: Functions
         items:
