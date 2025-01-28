@@ -18,8 +18,8 @@ Monitor the materialized view's health in the following ways:
 * Monitor [materialized view metrics](/fabric/real-time-intelligence/monitor-metrics#metric-specific-dimension-column) in your Microsoft Fabric workspace. Use the materialized view age metric, `MaterializedViewAgeSeconds` as the primary metric to monitor the freshness of the view. For more information, see [Enable monitoring in your workspace](/fabric/get-started/enable-workspace-monitoring).
 
 ::: moniker-end
-
 * Monitor the `IsHealthy` property using [`.show materialized-view`](materialized-view-show-command.md#show-materialized-views).
+
 * Check for failures using [`.show materialized-view failures`](materialized-view-show-failures-command.md#show-materialized-view-failures).
 
 > [!NOTE]
@@ -119,11 +119,11 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
     * Use a `lookback` as part of the view definition. For more information, see [.create materialized view supported properties](materialized-view-create.md#supported-properties).
 :::moniker range="azure-data-explorer"
 
-* Check whether there's enough ingestion capacity by verifying if either the[`MaterializedViewResult` metric](#materializedviewresult-metric) or [IngestionUtilization metric](/azure/data-explorer/monitor-data-explorer-reference#supported-metrics-for-microsoftkustoclusters) show `InsufficientCapacity` values. You can increase ingestion capacity by scaling the available resources (preferred) or by altering the [ingestion capacity policy](../capacity-policy.md#ingestion-capacity).
+* Check whether there's enough ingestion capacity by verifying if either the [`MaterializedViewResult` metric](#materializedviewresult-metric) or [IngestionUtilization metric](/azure/data-explorer/monitor-data-explorer-reference#supported-metrics-for-microsoftkustoclusters) show `InsufficientCapacity` values. You can increase ingestion capacity by scaling the available resources (preferred) or by altering the [ingestion capacity policy](../capacity-policy.md#ingestion-capacity).
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 
-* Check whether there's enough ingestion capacity by verifying if the[`MaterializedViewResult` metric](#materializedviewresult-metric) shows `InsufficientCapacity` values. You can increase ingestion capacity by scaling the available resources.
+* Check whether there's enough ingestion capacity by verifying if the [`MaterializedViewResult` metric](#materializedviewresult-metric) shows `InsufficientCapacity` values. You can increase ingestion capacity by scaling the available resources.
 ::: moniker-end
 
 * If the materialized view is still unhealthy, then the service doesn't have sufficient capacity or resources to materialize all the data on time. Consider the following options:
@@ -144,7 +144,9 @@ The `MaterializedViewResult` metric provides information about the result of a m
 The `Result` dimension can have one of the following values:
 
 * **Success**: The materialization completed successfully.
+
 * **SourceTableNotFound**: The source table of the materialized view was dropped, so the materialized view is disabled automatically.
+
 * **SourceTableSchemaChange**: The schema of the source table changed in a way that isn’t compatible with the materialized view definition. Since the materialized view query no longer matches the materialized view schema, the materialized view is disabled automatically.
 :::moniker range="azure-data-explorer"
 * **InsufficientCapacity**: The instance doesn't have sufficient capacity to materialize the materialized view, due to a lack of [ingestion capacity](../capacity-policy.md#ingestion-capacity). While insufficient capacity failures can be transient, if they reoccur often, try scaling out the instance or increasing the relevant capacity in the policy.
@@ -152,6 +154,7 @@ The `Result` dimension can have one of the following values:
 :::moniker range="microsoft-fabric"
 * **InsufficientCapacity**: The instance doesn't have sufficient capacity to materialize the materialized view, due to a lack of ingestion capacity. While insufficient capacity failures can be transient, if they reoccur often, try scaling out the instance or increasing capacity. For more information, see [Plan your capacity size](/fabric/enterprise/plan-capacity).
 ::: moniker-end
+
 * **InsufficientResources:** The database doesn't have sufficient resources (CPU/memory) to materialize the materialized view. While insufficient resource errors might be transient, if they reoccur often, try scaling up or scaling out. For more ideas, see [Troubleshooting unhealthy materialized views](#troubleshooting-unhealthy-materialized-views).
 
 ## Materialized views in follower databases
