@@ -3,8 +3,7 @@ title:  externaldata operator
 description: Learn how to use the externaldata operator to return a data table of the given schema whose data was parsed from the specified storage artifact.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+ms.date: 01/27/2025
 ---
 # externaldata operator
 
@@ -13,14 +12,10 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in Azure Blob Storage or a file in Azure Data Lake Storage.
 
 > [!NOTE]
-> The `externaldata` operator supports a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
-
-> [!NOTE]
-> The `externaldata` operator supports Shared Access Signature (SAS) key, Access key, and Microsoft Entra Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md).
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
-
-::: moniker-end
+> The `externaldata` operator supports:
+>
+> * a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
+> * shared Access Signature (SAS) key, Access key, and Microsoft Entra Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md#storage-authentication-methods).
 
 ::: moniker range="azure-monitor || microsoft-sentinel"
 
@@ -48,9 +43,9 @@ The `externaldata` operator returns a table whose schema is defined in the query
 
 ### Supported properties
 
-| Property         | Type     | Description       |
-|------------------|----------|-------------------|
-| format         | `string` | The data format. If unspecified, an attempt is made to detect the data format from file extension. The default is `CSV`. All [ingestion data formats](../ingestion-supported-formats.md) are supported. |
+| Property | Type | Description |
+|--|--|--|
+| format | `string` | The data format. If unspecified, an attempt is made to detect the data format from file extension. The default is `CSV`. All [ingestion data formats](../ingestion-supported-formats.md) are supported. |
 | ignoreFirstRecord | `bool` | If set to `true`, the first record in every file is ignored. This property is useful when querying CSV files with headers. |
 | ingestionMapping | `string` | Indicates how to map data from the source file to the actual columns in the operator result set. See [data mappings](../management/mappings.md). |
 
@@ -65,6 +60,8 @@ The `externaldata` operator returns a table whose schema is defined in the query
 The `externaldata` operator returns a data table of the given schema whose data was parsed from the specified storage artifact, indicated by the storage connection string.
 
 ## Examples
+
+The examples query data in an external storage file.
 
 ### Fetch a list of user IDs stored in Azure Blob Storage
 
@@ -133,5 +130,7 @@ with(format='multijson', ingestionMapping='[{"Column":"Timestamp","Properties":{
 ```
 
 The `MultiJSON` format is used here because single JSON records are spanned into multiple lines.
+
+## Related content
 
 For more info on mapping syntax, see [data mappings](../management/mappings.md).
