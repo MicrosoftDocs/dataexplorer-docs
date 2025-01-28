@@ -3,7 +3,7 @@ title:  Monitor materialized views
 description:  This article describes how to monitor materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 01/27/2025
+ms.date: 01/28/2025
 ---
 # Monitor materialized views
 
@@ -11,14 +11,12 @@ ms.date: 01/27/2025
 
 Monitor the materialized view's health in the following ways:
 ::: moniker range="azure-data-explorer"
-* Monitor [materialized views metrics](/azure/data-explorer/monitor-data-explorer-reference#supported-metrics-for-microsoftkustoclusters) in the [Azure portal](https://portal.azure.com/) with [Azure Monitor](/azure/data-explorer/monitor-data-explorer-reference#metrics).
+* Monitor [materialized views metrics](/azure/data-explorer/monitor-data-explorer-reference#supported-metrics-for-microsoftkustoclusters) in the [Azure portal](https://portal.azure.com/) with [Azure Monitor](/azure/data-explorer/monitor-data-explorer-reference#metrics). Use the materialized view age metric, `MaterializedViewAgeSeconds`, as the primary metric to monitor the freshness of the view.
 
-    * Use the materialized view age metric, `MaterializedViewAgeSeconds`, as the primary metric to monitor the freshness of the view.
 ::: moniker-end
 :::moniker range="microsoft-fabric"
-* Monitor [materialized view metrics](/fabric/real-time-intelligence/monitor-metrics#metric-specific-dimension-column) in your Microsoft Fabric workspace. For more information, see [Enable monitoring in your workspace](/fabric/get-started/enable-workspace-monitoring).
+* Monitor [materialized view metrics](/fabric/real-time-intelligence/monitor-metrics#metric-specific-dimension-column) in your Microsoft Fabric workspace. Use the materialized view age metric, `MaterializedViewAgeSeconds` as the primary metric to monitor the freshness of the view. For more information, see [Enable monitoring in your workspace](/fabric/get-started/enable-workspace-monitoring).
 
-    * Use the materialized view age metric, `MaterializedViewAgeSeconds`, as the primary metric to monitor the freshness of the view.
 ::: moniker-end
 
 * Monitor the `IsHealthy` property using [`.show materialized-view`](materialized-view-show-command.md#show-materialized-views).
@@ -34,7 +32,7 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
 
 :::moniker range="azure-data-explorer"
 
-1. Check the number of materialized views using the [.show capacity](../show-capacity-command.md) command and the current capacity for materialized views:
+* Check the number of materialized views using the [.show capacity](../show-capacity-command.md) command and the current capacity for materialized views:
 
     ```kusto
     .show capacity 
@@ -56,12 +54,12 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
 
     * If you explicitly change this policy, monitor the cluster's health and ensure that other workloads aren't affected by this change.
 ::: moniker-end
-1. Check if there are failures during the materialization process using [.show materialized-view failures](materialized-view-show-failures-command.md#show-materialized-view-failures).
+* Check if there are failures during the materialization process using [.show materialized-view failures](materialized-view-show-failures-command.md#show-materialized-view-failures).
     * If the error is permanent, the system automatically disables the materialized view. To verify whether its disabled, use the [.show materialized-view](materialized-view-show-command.md) command to check if the value in the `IsEnabled` column is `false`. Then check the [Journal](../journal.md) for the disabled event with the [.show journal](../journal.md#show-journal) command.
     An example of a permanent failure is a change in the schema of the source table that makes it incompatible with the materialized view. For more information, see [.create materialized-view command](materialized-view-create.md#supported-properties).
     * If the failure is transient, the system automatically retries the operation, but the failure can delay the materialization and result in an increase in the materialized view age. This type of failure occurs, for example, when hitting memory limits or with a query time-out. For more recommendations, see the following recommendations on how to troubleshoot transient failures.
 
-1. Analyze the materialization process using the [.show commands-and-queries](../commands-and-queries.md) command. Replace *Databasename* and *ViewName* to filter for a specific view:
+* Analyze the materialization process using the [.show commands-and-queries](../commands-and-queries.md) command. Replace *Databasename* and *ViewName* to filter for a specific view:
 
     ```kusto
     .show commands-and-queries 
@@ -115,28 +113,28 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
     Increasing the caching policy for the materialized view helps avoid cache misses. For more information, see [hot and cold cache and caching policy](../cache-policy.md) and [.alter materialized-view policy caching command](../alter-materialized-view-cache-policy-command.md).  
    * Check if the materialization is scanning old records by checking the `ScannedExtentsStatistics` with the [.show queries](../show-queries-command.md) command. If the number of scanned extents is high and the `MinDataScannedTime` is old, the materialization cycle needs to scan all, or most, of the *materialized* part of the view. The scan is needed to find intersections with the *delta*. For more information about the *delta* and the *materialized* part, see [How materialized views work](materialized-view-overview.md#how-materialized-views-work). The following recommendations provide ways to reduce the amount of data scanned in materialized cycles by minimizing the intersection with the *delta*.
 
-1. If the materialization cycle scans a large amount of data, potentially including cold cache, consider the following changes to the materialized view definition:
+* If the materialization cycle scans a large amount of data, potentially including cold cache, consider the following changes to the materialized view definition:
     * Include a `datetime` group-by key in the view definition. This can significantly reduce the view's scanned data scanned, **as long as there is no late arriving data in this column**. For more information, see [Performance tips](materialized-view-create.md#performance-tips). You need to create a new materialized view since updates to group-by keys aren't supported.
     * Use a `lookback` as part of the view definition. For more information, see [.create materialized view supported properties](materialized-view-create.md#supported-properties).
 :::moniker range="azure-data-explorer"
 
-1. Check whether there's enough ingestion capacity by checking if either the[`MaterializedViewResult` metric](#materializedviewresult-metric) or [IngestionUtilization metric](/azure/data-explorer/monitor-data-explorer-reference#supported-metrics-for-microsoftkustoclusters) shows `InsufficientCapacity` values. You can increase ingestion capacity by scaling the available resources (preferred) or by altering the [ingestion capacity policy](../capacity-policy.md#ingestion-capacity).
+* Check whether there's enough ingestion capacity by checking if either the[`MaterializedViewResult` metric](#materializedviewresult-metric) or [IngestionUtilization metric](/azure/data-explorer/monitor-data-explorer-reference#supported-metrics-for-microsoftkustoclusters) shows `InsufficientCapacity` values. You can increase ingestion capacity by scaling the available resources (preferred) or by altering the [ingestion capacity policy](../capacity-policy.md#ingestion-capacity).
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 
-1. Check whether there's enough ingestion capacity by checking if the[`MaterializedViewResult` metric](#materializedviewresult-metric) shows `InsufficientCapacity` values. You can increase ingestion capacity by scaling the available resources.
+* Check whether there's enough ingestion capacity by checking if the[`MaterializedViewResult` metric](#materializedviewresult-metric) shows `InsufficientCapacity` values. You can increase ingestion capacity by scaling the available resources.
 ::: moniker-end
 
-1. If the materialized view is still unhealthy, then the service doesn't have sufficient capacity and/or resources to materialize all the data on time. Consider the following options:
+* If the materialized view is still unhealthy, then the service doesn't have sufficient capacity or resources to materialize all the data on time. Consider the following options:
     :::moniker range="azure-data-explorer"
     * Scale out the cluster by increasing the min instance count. [Optimized autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale-recommended-option) doesn't take materialized views into consideration and doesn't scale out the cluster automatically if materialized views are unhealthy. You need to set the minimum instance count to provide the cluster with more resources to accommodate materialized views.
     ::: moniker-end
     :::moniker range="microsoft-fabric"
-    * Scale out the Eventhouse to provide the Eventhouse with more resources to accommodate materialized views. For more information, see [Enable minimum consumption](/fabric/real-time-intelligence/manage-monitor-eventhouse#enable-minimum-consumption).
+    * Scale out the Eventhouse to provide it with more resources to accommodate materialized views. For more information, see [Enable minimum consumption](/fabric/real-time-intelligence/manage-monitor-eventhouse#enable-minimum-consumption).
     ::: moniker-end
-    * Divide the materialized view into several smaller views, each covering a subset of the data. For instance, you can split them based on a high cardinality key from the materialized view's group-by keys. All views are based on same source table, and each view filters by `SourceTable | where hash(key, number_of_views) == i` where `i ∈ {0,1,…,number_of_views-1}`. Then, you can define a [stored function](../../query/schema-entities/stored-functions.md) that [unions](../../query/union-operator.md) all the smaller materialized views. Use this function in queries to access the combined data.
+    * Divide the materialized view into several smaller views, each covering a subset of the data. For instance, you can split them based on a high cardinality key from the materialized view's group-by keys. All views are based on the same source table, and each view filters by `SourceTable | where hash(key, number_of_views) == i`, where `i` is part of the set `{0,1,…,number_of_views-1}`. Then, you can define a [stored function](../../query/schema-entities/stored-functions.md) that [unions](../../query/union-operator.md) all the smaller materialized views. Use this function in queries to access the combined data.
 
-    While splitting the view might consume more CPUs, it reduces the memory peak in materialization cycles. Reducing the memory peak can help if the single view is failing due to memory limits.
+    While splitting the view might increase CPU usage, it reduces the memory peak in materialization cycles. Reducing the memory peak can help if the single view is failing due to memory limits.
 
 ## MaterializedViewResult metric
 
