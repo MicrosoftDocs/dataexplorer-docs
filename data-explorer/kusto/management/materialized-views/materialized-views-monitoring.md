@@ -3,7 +3,7 @@ title:  Monitor materialized views
 description:  This article describes how to monitor materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 01/26/2025
+ms.date: 01/27/2025
 ---
 # Monitor materialized views
 
@@ -28,7 +28,7 @@ Monitor the materialized view's health in the following ways:
 ## Troubleshooting unhealthy materialized views
 
 If the `MaterializedViewAge` metric constantly increases, and the `MaterializedViewHealth` metric shows that the view is unhealthy, follow these recommendations to identify the root cause:
-<!--can show capacity be used for fabric?-->
+
 :::moniker range="azure-data-explorer"
 
 1. Check the number of materialized views using the [.show capacity](../show-capacity-command.md) command and the current capacity for materialized views:
@@ -53,7 +53,6 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
 
     * If you explicitly change this policy, monitor the cluster's health and ensure that other workloads aren't affected by this change.
 ::: moniker-end
-
 1. Check if there are failures during the materialization process using [.show materialized-view failures](materialized-view-show-failures-command.md#show-materialized-view-failures).
     * If the error is permanent, the system automatically disables the materialized view. To verify whether its disabled, use the [.show materialized-view](materialized-view-show-command.md) command to check if the value in the `IsEnabled` column is `false`. Then check the [Journal](../journal.md) for the disabled event with the [.show journal](../journal.md#show-journal) command.
     An example of a permanent failure is a change in the schema of the source table that makes it incompatible with the materialized view. For more information, see [.create materialized-view command](materialized-view-create.md#supported-properties).
@@ -118,13 +117,11 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
     * Use a `lookback` as part of the view definition. For more information, see [.create materialized view supported properties](materialized-view-create.md#supported-properties).
 :::moniker range="azure-data-explorer"
 
-1. Check whether there's enough ingestion capacity by checking if either the[`MaterializedViewResult` metric](#materializedviewresult-metric) or [IngestionUtilization metric](/azure/data-explorer/monitor-data-explorer-reference#supported-metrics-for-microsoftkustoclusters) shows `InsufficientCapacity` values. You can increase ingestion capacity by scaling the resources available (preferred) or by altering the [ingestion capacity policy](../capacity-policy.md#ingestion-capacity).
-<!-- Should this be removed for Fabric? depending on reply how to treat this info and capacity policy ADX  [IngestionUtilization metric](../../../monitor-data-explorer-reference.md#supported-metrics-for-microsoftkustoclusters).-->
+1. Check whether there's enough ingestion capacity by checking if either the[`MaterializedViewResult` metric](#materializedviewresult-metric) or [IngestionUtilization metric](/azure/data-explorer/monitor-data-explorer-reference#supported-metrics-for-microsoftkustoclusters) shows `InsufficientCapacity` values. You can increase ingestion capacity by scaling the available resources (preferred) or by altering the [ingestion capacity policy](../capacity-policy.md#ingestion-capacity).
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 
-1. Check whether there's enough ingestion capacity by checking if the[`MaterializedViewResult` metric](#materializedviewresult-metric) shows `InsufficientCapacity` values. You can increase ingestion capacity by scaling the resources available.
-<!-- Confirm capacity for Fabric.-->
+1. Check whether there's enough ingestion capacity by checking if the[`MaterializedViewResult` metric](#materializedviewresult-metric) shows `InsufficientCapacity` values. You can increase ingestion capacity by scaling the available resources.
 ::: moniker-end
 
 1. If the materialized view is still unhealthy, then the service doesn't have sufficient capacity and/or resources to materialize all the data on time. Consider the following options:
@@ -132,23 +129,26 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
     * Scale out the cluster by increasing the min instance count. [Optimized autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale-recommended-option) doesn't take materialized views into consideration and doesn't scale out the cluster automatically if materialized views are unhealthy. You need to set the minimum instance count to provide the cluster with more resources to accommodate materialized views.
     ::: moniker-end
     :::moniker range="microsoft-fabric"
-    <!--is minimum consumption good enough since it doesn't seem like minimum instance count is available in Fabric-->
     * Scale out the Eventhouse to provide the Eventhouse with more resources to accommodate materialized views. For more information, see [Enable minimum consumption](/fabric/real-time-intelligence/manage-monitor-eventhouse#enable-minimum-consumption).
     ::: moniker-end
     * Divide the materialized view into several smaller views, each covering a subset of the data. For instance, you can split them based on a high cardinality key from the materialized view's group-by keys. All views are based on same source table, and each view filters by `SourceTable | where hash(key, number_of_views) == i` where `i ∈ {0,1,…,number_of_views-1}`. Then, you can define a [stored function](../../query/schema-entities/stored-functions.md) that [unions](../../query/union-operator.md) all the smaller materialized views. Use this function in queries to access the combined data.
 
-    While splitting the view might consume more CPUs, it reduces the memory peak in materialization cycles. This can help if the single view is failing due to memory limits.
+    While splitting the view might consume more CPUs, it reduces the memory peak in materialization cycles. Reducing the memory peak can help if the single view is failing due to memory limits.
 
 ## MaterializedViewResult metric
 
 The `MaterializedViewResult` metric provides information about the result of a materialization cycle and can be used to identify issues in the materialized view health status. The metric includes the `Database` and `MaterializedViewName` and a `Result` dimension.
 
 The `Result` dimension can have one of the following values:
-<!--should this whole section be removed or just insufficientcapacity?-->
+
 * **Success**: The materialization completed successfully.
 * **SourceTableNotFound**: The source table of the materialized view was dropped, so the materialized view is disabled automatically.
 * **SourceTableSchemaChange**: The schema of the source table changed in a way that isn’t compatible with the materialized view definition. Since the materialized view query no longer matches the materialized view schema, the materialized view is disabled automatically.
+:::moniker range="azure-data-explorer"
 * **InsufficientCapacity**: The instance doesn't have sufficient capacity to materialize the materialized view, due to a lack of [ingestion capacity](../capacity-policy.md#ingestion-capacity). While insufficient capacity failures can be transient, if they reoccur often, try scaling out the instance or increasing the relevant capacity in the policy.
+::: moniker-end
+* **InsufficientCapacity**: The instance doesn't have sufficient capacity to materialize the materialized view, due to a lack of ingestion capacity. While insufficient capacity failures can be transient, if they reoccur often, try scaling out the instance or increasing capacity. For more information, see [Plan your capacity size](/fabric/enterprise/plan-capacity).
+:::moniker range="microsoft-fabric"
 * **InsufficientResources:** The database doesn't have sufficient resources (CPU/memory) to materialize the materialized view. While insufficient resource errors might be transient, if they reoccur often, try scaling up or scaling out. For more ideas, see [Troubleshooting unhealthy materialized views](#troubleshooting-unhealthy-materialized-views).
 
 ## Materialized views in follower databases
