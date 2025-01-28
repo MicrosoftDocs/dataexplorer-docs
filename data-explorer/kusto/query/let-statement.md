@@ -3,7 +3,7 @@ title:  Let statement
 description: Learn how to use the Let statement to set a variable name to define an expression or a function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/28/2025
 ms.localizationpriority: high
 ---
 # Let statement
@@ -65,7 +65,7 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Define scalar values
 

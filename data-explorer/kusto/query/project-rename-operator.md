@@ -45,6 +45,6 @@ print a='a', b='b', c='c'
 
 **Output**
 
-|new_a|new_b|c|
-|---|---|---|
-|a|b|c|
+| new_a | new_b | c |
+|--|--|--|
+| a | b | c |

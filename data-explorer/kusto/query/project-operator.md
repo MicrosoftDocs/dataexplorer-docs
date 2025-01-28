@@ -65,7 +65,7 @@ StormEvents
 
 **Output**
 
-The table shows only the top 10 results.
+The table shows the first 10 results.
 
 |EventId|State|EventType|
 |--|--|--|
@@ -98,7 +98,7 @@ StormEvents
 
 **Output**
 
-The table shows only the first 10 results.
+The table shows the first 10 results.
 
 |StartLocation| TotalInjuries|
 |--|--|
@@ -114,9 +114,7 @@ The table shows only the first 10 results.
 |COLLIERVILLE| 6|
 |...|...|
 
-::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * [`extend`](extend-operator.md)
 * [series_stats](series-stats-function.md)
-::: moniker-end

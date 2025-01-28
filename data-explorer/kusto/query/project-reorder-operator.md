@@ -42,6 +42,8 @@ A table that contains columns in the order specified by the operator arguments. 
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
+Review the examples and run them in your Data Explorer query page.
+
 ### Reorder with b first
 
 Reorder a table with three columns (a, b, c) so the second column (b) will appear first.
@@ -58,9 +60,9 @@ print a='a', b='b', c='c'
 
 **Output**
 
-|b|a|c|
-|---|---|---|
-|b|a|c|
+| b | a | c |
+|--|--|--|
+| b | a | c |
 
 ### Reorder with a first
 
@@ -78,6 +80,6 @@ print b = 'b', a2='a2', a3='a3', a1='a1'
 
 **Output**
 
-|a1|a2|a3|b|
-|---|---|---|---|
-|a1|a2|a3|b|
+| a1 | a2 | a3 | b |
+|--|--|--|--|
+| a1 | a2 | a3 | b |
