@@ -65,7 +65,7 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Define scalar values
 
