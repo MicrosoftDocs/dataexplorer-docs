@@ -129,7 +129,7 @@ three kinds of columns:
 |`xtitle`      |The title of the x-axis (of type `string`).                                       |
 |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-|`ysplit`      |How to split multiple the visualization. For more information, see [`y-split` property](#ysplit-property).                             |
+|`ysplit`      |How to split the visualization into multiple y-axis values. For more information, see [`y-split` property](#ysplit-property).                             |
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 |`anomalycolumns`|Property relevant only for `anomalychart`. Comma-delimited list of columns, which will be considered as anomaly series and displayed as points on the chart|
 
