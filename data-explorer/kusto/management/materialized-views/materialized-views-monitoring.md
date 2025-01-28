@@ -178,4 +178,4 @@ Materialized views can be defined in [follower databases](materialized-views-lim
 ## Related content
 
 * [Materialized views](materialized-view-overview.md)
-* 
+* [Materialized views use cases](materialized-view-use-cases.md)
