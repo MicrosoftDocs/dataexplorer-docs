@@ -157,4 +157,3 @@ print array_sort_desc(dynamic([null,"blue","yellow","green",null]), false)
 
 * [Aggregation function types at a glance](aggregation-functions.md)
 * [array_sort_asc()](array-sort-asc-function.md)
-* 
