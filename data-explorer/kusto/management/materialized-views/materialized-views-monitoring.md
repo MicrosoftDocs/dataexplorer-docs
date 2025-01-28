@@ -12,12 +12,15 @@ ms.date: 01/27/2025
 Monitor the materialized view's health in the following ways:
 ::: moniker range="azure-data-explorer"
 * Monitor [materialized views metrics](/azure/data-explorer/monitor-data-explorer-reference#supported-metrics-for-microsoftkustoclusters) in the [Azure portal](https://portal.azure.com/) with [Azure Monitor](/azure/data-explorer/monitor-data-explorer-reference#metrics).
+
+    * Use the materialized view age metric, `MaterializedViewAgeSeconds`, as the primary metric to monitor the freshness of the view.
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 * Monitor [materialized view metrics](/fabric/real-time-intelligence/monitor-metrics#metric-specific-dimension-column) in your Microsoft Fabric workspace. For more information, see [Enable monitoring in your workspace](/fabric/get-started/enable-workspace-monitoring).
-::: moniker-end
 
     * Use the materialized view age metric, `MaterializedViewAgeSeconds`, as the primary metric to monitor the freshness of the view.
+::: moniker-end
+
 * Monitor the `IsHealthy` property using [`.show materialized-view`](materialized-view-show-command.md#show-materialized-views).
 * Check for failures using [`.show materialized-view failures`](materialized-view-show-failures-command.md#show-materialized-view-failures).
 
@@ -147,8 +150,9 @@ The `Result` dimension can have one of the following values:
 :::moniker range="azure-data-explorer"
 * **InsufficientCapacity**: The instance doesn't have sufficient capacity to materialize the materialized view, due to a lack of [ingestion capacity](../capacity-policy.md#ingestion-capacity). While insufficient capacity failures can be transient, if they reoccur often, try scaling out the instance or increasing the relevant capacity in the policy.
 ::: moniker-end
-* **InsufficientCapacity**: The instance doesn't have sufficient capacity to materialize the materialized view, due to a lack of ingestion capacity. While insufficient capacity failures can be transient, if they reoccur often, try scaling out the instance or increasing capacity. For more information, see [Plan your capacity size](/fabric/enterprise/plan-capacity).
 :::moniker range="microsoft-fabric"
+* **InsufficientCapacity**: The instance doesn't have sufficient capacity to materialize the materialized view, due to a lack of ingestion capacity. While insufficient capacity failures can be transient, if they reoccur often, try scaling out the instance or increasing capacity. For more information, see [Plan your capacity size](/fabric/enterprise/plan-capacity).
+::: moniker-end
 * **InsufficientResources:** The database doesn't have sufficient resources (CPU/memory) to materialize the materialized view. While insufficient resource errors might be transient, if they reoccur often, try scaling up or scaling out. For more ideas, see [Troubleshooting unhealthy materialized views](#troubleshooting-unhealthy-materialized-views).
 
 ## Materialized views in follower databases
