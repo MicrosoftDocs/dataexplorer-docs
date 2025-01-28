@@ -3,7 +3,7 @@ title:  fork operator
 description: Learn how to use the fork operator to run multiple consumer operators in parallel.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # fork operator
@@ -28,7 +28,7 @@ Runs multiple consumer operators in parallel.
 > [!NOTE]
 >
 > * Avoid using `fork` with a single *subquery*.
-> * The name of the results tab will be the same name as provided with the `name` parameter or the [`as` operator](as-operator.md).
+> * The name of the results tab is the same name as provided with the `name` parameter or the [`as` operator](as-operator.md).
 
 ### Supported query operators
 
@@ -56,11 +56,15 @@ Multiple result tables, one for each of the *subquery* arguments.
 
 ## Tips
 
-* Use [`materialize`](materialize-function.md) as a replacement for [`join`](join-operator.md) or [`union`](union-operator.md) on fork legs. The input stream will be cached by materialize and then the cached expression can be used in join/union legs.
+* Use [`materialize`](materialize-function.md) as a replacement for [`join`](join-operator.md) or [`union`](union-operator.md) on fork legs. The input stream is cached by materialize and then the cached expression can be used in join/union legs.
 
 * Use [batch](batches.md) with [`materialize`](materialize-function.md) of tabular expression statements instead of the `fork` operator.
 
 ## Examples
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
+The examples output multiple tables, with named and umnamed columns.
 
 ### Unnamed subqueries
 
@@ -77,9 +81,33 @@ StormEvents
     ( where InjuriesDirect + InjuriesIndirect > 1)
 ```
 
+**Output**
+
+This output shows the first few rows and columns of the result table.
+
+### [GenericResult](#tab/generic-result-1)
+
+| StartTime | EndTime | EpisodeId | EventId | State | EventType | InjuriesDirect | InjuriesIndirect |
+|--|--|--|--|--|--|--|--|
+| 2007-02-02T03:17:00Z | 2007-02-02T03:25:00Z | 3464 | 18948 | FLORIDA | Tornado | 10 | 0 |
+| 2007-02-02T03:37:00Z | 2007-02-02T03:55:00Z | 3464 | 18950 | FLORIDA | Tornado | 9 | 0 |
+| 2007-03-13T08:20:00Z | 2007-03-13T08:20:00Z | 4094 | 22961 | FLORIDA | Dense Fog | 3 | 0 |
+| 2007-09-11T15:26:00Z | 2007-09-11T15:26:00Z | 9578 | 53798 | FLORIDA | Rip Current | 0 | 0 |
+
+### [GenericResult](#tab/generic-result-2)
+
+| StartTime | EndTime | EpisodeId | EventId | State | EventType | InjuriesDirect | InjuriesIndirect |
+|--|--|--|--|--|--|--|--|
+| 2007-02-02T03:10:00Z | 2007-02-02T03:16:00Z | 2545 | 17515 | FLORIDA | Tornado | 15 | 0 |
+| 2007-02-02T03:17:00Z | 2007-02-02T03:25:00Z | 3464 | 18948 | FLORIDA | Tornado | 10 | 0 |
+| 2007-02-02T03:37:00Z | 2007-02-02T03:55:00Z | 3464 | 18950 | FLORIDA | Tornado | 9 | 0 |
+| 2007-02-02T03:55:00Z | 2007-02-02T04:10:00Z | 3464 | 20318 | FLORIDA | Tornado | 42 | 0 |
+
+---
+
 ### Named subqueries
 
-In the following examples, the result tables will be named "StormsWithDeaths" and "StormsWithInjuries".
+In the following examples, the result table is named "StormsWithDeaths" and "StormsWithInjuries".
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -106,3 +134,27 @@ StormEvents
     StormsWithDeaths = (where DeathsDirect + DeathsIndirect > 1)
     StormsWithInjuries = (where InjuriesDirect + InjuriesIndirect > 1)
 ```
+
+**Output**
+
+This output shows the first few rows and columns of the result table.
+
+#### [StormsWithDeaths](#tab/deaths)
+
+| StartTime | EndTime | EpisodeId | EventId | State | EventType | InjuriesDirect | InjuriesIndirect |
+|--|--|--|--|--|--|--|--|
+| 2007-02-02T03:17:00Z | 2007-02-02T03:25:00Z | 3464 | 18948 | FLORIDA | Tornado | 10 | 0 |
+| 2007-02-02T03:37:00Z | 2007-02-02T03:55:00Z | 3464 | 18950 | FLORIDA | Tornado | 9 | 0 |
+| 2007-03-13T08:20:00Z | 2007-03-13T08:20:00Z | 4094 | 22961 | FLORIDA | Dense Fog | 3 | 0 |
+| 2007-09-11T15:26:00Z | 2007-09-11T15:26:00Z | 9578 | 53798 | FLORIDA | Rip Current | 0 | 0 |
+
+#### [StormsWithInjuries](#tab/injuries)
+
+| StartTime | EndTime | EpisodeId | EventId | State | EventType | InjuriesDirect | InjuriesIndirect |
+|--|--|--|--|--|--|--|--|
+| 2007-02-02T03:10:00Z | 2007-02-02T03:16:00Z | 2545 | 17515 | FLORIDA | Tornado | 15 | 0 |
+| 2007-02-02T03:17:00Z | 2007-02-02T03:25:00Z | 3464 | 18948 | FLORIDA | Tornado | 10 | 0 |
+| 2007-02-02T03:37:00Z | 2007-02-02T03:55:00Z | 3464 | 18950 | FLORIDA | Tornado | 9 | 0 |
+| 2007-02-02T03:55:00Z | 2007-02-02T04:10:00Z | 3464 | 20318 | FLORIDA | Tornado | 42 | 0 |
+
+---
