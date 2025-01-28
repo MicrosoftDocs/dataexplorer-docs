@@ -64,6 +64,8 @@ This visualization supports splitting into multiple y-axis values:
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
+Review the examples and run them in your Data Explorer query page.
+
 ### Render a timechart
 
 The following example renders a timechart with a title "Web app. traffic over a month, decomposing" that decomposes the data into baseline, seasonal, trend, and residual components.
@@ -91,7 +93,7 @@ demo_make_series2
 
 ### Label a timechart
 
-The following example renders a timechart that depicts crop damage grouped by week. The timechart x axis is labled "Date" and the y axis is labled "Crop damage."
+The following example renders a timechart that depicts crop damage grouped by week. The timechart x axis label is "Date" and the y axis label is "Crop damage."
 ::: moniker-end
 
 ::: moniker range="azure-data-explorer"

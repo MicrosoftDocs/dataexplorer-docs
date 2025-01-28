@@ -15,7 +15,7 @@ The time pivot visualization is an interactive navigation over the events time-l
 > [!NOTE]
 >
 > * This visualization can only be used in the context of the [render operator](render-operator.md).
-> * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
+> * This visualization can be used in Kusto.Explorer but isn't available in the Azure Data Explorer web UI.
 
 ## Syntax
 
@@ -52,6 +52,8 @@ All properties are optional.
 ## Example
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
+This query outputs a visualization of flood events in the specified Midwestern states, displayed as a time pivot chart
 
 ```kusto
 let midwesternStates = dynamic([

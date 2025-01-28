@@ -3,7 +3,7 @@ title:  Pie chart visualization
 description:  This article describes the pie chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 01/28/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Pie chart
@@ -31,7 +31,7 @@ The pie chart visual can also be used in the context of [Geospatial visualizatio
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
@@ -43,7 +43,7 @@ All properties are optional.
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
-|`kind`        |Further elaboration of the visualization kind.  For more information, see [`kind` property](#kind-property).                         |
+|`kind`        |Further elaboration of the visualization kind. For more information, see [`kind` property](#kind-property).                         |
 |`legend`      |Whether to display a legend or not (`visible` or `hidden`).                       |
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`title`       |The title of the visualization (of type `string`).                                |
@@ -78,6 +78,8 @@ The supported values of this property are:
 ## Example
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
+This query provides a visual representation of the top 10 states with the highest number of storm events, displayed as a pie chart
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

@@ -15,7 +15,7 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 > [!NOTE]
 >
 > * This visualization can only be used in the context of the [render operator](render-operator.md).
-> * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
+> * This visualization can be used in Kusto.Explorer but isn't available in the Azure Data Explorer web UI.
 
 ## Syntax
 
@@ -32,6 +32,8 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 ## Example
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
+This query provides a detailed analysis of sales for Contoso computer products within the specified date range, visualized as a pivot chart.
 
 ```kusto
 SalesFact
