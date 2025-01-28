@@ -3,7 +3,7 @@ title:  Column chart visualization
 description:  This article describes the column chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 01/28/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Column chart
@@ -97,6 +97,8 @@ The supported values of this property are:
 
 ### Render a column chart
 
+This query provides a visual representation of states with a high frequency of storm events, specifically those with more than 10 events, using a column chart.
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNQiFEUKdgqGBkCJgqL8rNTkEohCHWQVQMmi1LyU1CKF5Pyc0ty85IzEohIAvF8Py38AAAA=" target="_blank">Run the query</a>
 
@@ -111,6 +113,8 @@ StormEvents
 :::image type="content" source="media/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="media/visualization-columnchart/column-chart.png":::
 
 ### Use the `ysplit` property
+
+This query provides a daily summary of storm-related injuries and deaths, visualized as a column chart with split axes/panels for better comparison.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOMQ6DMAxFd07hkagsPQAbHZjhAiFYwogkyDGlVD1800a04O1//2f/Rjzb2x2dhOwFYbFWMz0xgzitFz3VblyYMED52ea7rIjRiILLya1dn/zif6BCLcOOJ3GGk/dDv2S3QUcub0SztGSxgGuvYsGZ/RhDcFicWhbHnzHP6HpkMH5arDNDhGAlGSDfwjyRlPqBQb0BEH1UJQQBAAA=" target="_blank">Run the query</a>

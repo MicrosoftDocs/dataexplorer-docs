@@ -3,7 +3,7 @@ title:  Card visualization
 description:  This article describes the card visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 01/28/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Card
@@ -39,6 +39,8 @@ All properties are optional.
 ## Example
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
+This query provides a count of flood events in Virginia and displays the result in a card format.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

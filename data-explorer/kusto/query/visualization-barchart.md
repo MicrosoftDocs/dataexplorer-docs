@@ -3,7 +3,7 @@ title:  Bar chart visualization
 description:  This article describes the bar chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 01/28/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Bar chart
@@ -93,6 +93,8 @@ The supported values of this property are:
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
+Review the examples and run them in your Data Explorer query page.
+
 ### Render a bar chart
 
 The following query creates a bar chart displaying the number of storm events for each state, filtering only those states with more than 10 events. The chart provides a visual representation of the event distribution across different states.
@@ -158,6 +160,8 @@ StormEvents
 ::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Use the `ysplit` property
+
+The following query provides a daily summary of storm-related injuries and deaths, visualized as a bar chart with split axes/panels for better comparison.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOMQ6DMAxFd07hkagsPQAbHZjhAiFYwogkyDGlVD1800a04O1//2f/Rjzb2x2dhOwFYbFWMz0xgzitFz3VblyYMED52ea7rIjRiILLya1dn/zif6BCLcOOJ3GGk/dDv2S3QUcub0SztGSxgGuvYsGZ/RhDcFicWhbHnzHP6HpkMH5arDNDhGAlGSDfwjyRlPqBQb0BEH1UJQQBAAA=" target="_blank">Run the query</a>

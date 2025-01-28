@@ -3,7 +3,7 @@ title:  Ladder chart visualization
 description:  This article describes the ladder chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 01/28/2025
 monikerRange: "azure-data-explorer"
 ---
 # Ladder chart
@@ -52,7 +52,11 @@ All properties are optional.
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
+Review the examples and run them in your Data Explorer query page.
+
 ### Dates of storms by state
+
+This query outputs a state-wise visualization of the duration of rain-related storm events, displayed as a ladder chart to help you analyze the temporal distribution of these events.
 
 ```kusto
 StormEvents
@@ -65,6 +69,8 @@ StormEvents
 
 ### Dates of storms by event type
 
+This query outputs a visualization of the duration of various storm events in Washington, displayed as a ladder chart to help you analyze the temporal distribution of these events by type.
+
 ```kusto
 StormEvents
 | where State == "WASHINGTON"
@@ -75,6 +81,8 @@ StormEvents
 :::image type="content" source="media/visualization-ladderchart/ladderchart-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by event type." lightbox="media/visualization-ladderchart/ladderchart-event-type.png":::
 
 ### Dates of storms by state and event type
+
+Tthis query outputs a visualization of the duration of various storm events in states starting with "W", displayed as a ladder chart to help you analyze the temporal distribution of these events by state and event type.
 
 ```kusto
 StormEvents

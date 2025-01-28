@@ -3,7 +3,7 @@ title:  Area chart visualization
 description:  This article describes the area chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 01/28/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Area chart
@@ -81,6 +81,8 @@ The supported values of this property are:
 ## Example
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
+This query takes the data from demo_series3 and generates an area chart.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
