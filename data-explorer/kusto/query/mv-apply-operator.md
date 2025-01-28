@@ -3,7 +3,7 @@ title:  mv-apply operator
 description: Learn how to use the mv-apply operator to apply a subquery to each record and union the results of each subquery.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 01/28/2025
 ---
 # mv-apply operator
 
@@ -94,7 +94,7 @@ and *SubQuery* has the same syntax of any query statement.
 
 ## Examples
 
-Review the examples and run them in your Data Explorer query page. For more information, refer to [Quickstart: Query sample data](../../web-query-data.md).
+Review the examples and run them in your Data Explorer query page.
 
 ### Getting the largest element from the array
 
@@ -119,10 +119,10 @@ _data
 
 **Output**
 
-|`xMod2`|l           |element|
-|-----|------------|-------|
-|1    |[1, 3, 5, 7]|7      |
-|0    |[2, 4, 6, 8]|8      |
+| `xMod2` | l | element |
+|--|--|--|
+| 1 | [1, 3, 5, 7] | 7 |
+| 0 | [2, 4, 6, 8] | 8 |
 
 ### Calculating the sum of the largest two elements in an array
 
@@ -147,10 +147,10 @@ _data
 
 **Output**
 
-|`xMod2`|l        |SumOfTop2|
-|-----|---------|---------|
-|1    |[1,3,5,7]|12       |
-|0    |[2,4,6,8]|14       |
+| `xMod2` | l | SumOfTop2 |
+|--|--|--|
+| 1 | [1,3,5,7] | 12 |
+| 0 | [2,4,6,8] | 14 |
 
 ### Select elements in arrays
 
@@ -175,11 +175,11 @@ datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
 
 **Output**
 
-|Val1|Arr1|Arr2|`NewArr1`|`NewArr2`|
-|-----|-----------|--------|-----|-----|
-|1    |["A1","A2","A3"]|[10,30,7]|["A2',"A1"]|[30,10] |
-|7    |["B1","B2","B5"]|[15,11,50]|["B5","B1"]|[50,15] |
-|3    |["C1","C2","C3","C4"]|[6,40,20,8]|["C2","C3"]|[40,20] |
+| Val1 | Arr1 | Arr2 | `NewArr1` | `NewArr2` |
+|--|--|--|--|--|
+| 1 | ["A1","A2","A3"] | [10,30,7] | ["A2',"A1"] | [30,10] |
+| 7 | ["B1","B2","B5"] | [15,11,50] | ["B5","B1"] | [50,15] |
+| 3 | ["C1","C2","C3","C4"] | [6,40,20,8] | ["C2","C3"] | [40,20] |
 
 ### Using `with_itemindex` for working with a subset of the array
 
@@ -205,12 +205,12 @@ _data
 
 **Output**
 
-|index|element|
-|---|---|
-|3|7|
-|4|9|
-|3|8|
-|4|10|
+| index | element |
+|--|--|
+| 3 | 7 |
+| 4 | 9 |
+| 3 | 8 |
+| 4 | 10 |
 
 ### Using mutiple columns to join element of 2 arrays
 
@@ -235,10 +235,10 @@ datatable (Val: int, Arr1: dynamic, Arr2: dynamic)
 
 **Output**
 
-|Val|Arr1|Arr2|`Out`|
-|---|---|---|---|
-|1|["A1","A2","A3"]|["B1","B2","B3"]|["A1_B1","A2_B2","A3_B3"]|
-|5|["C1","C2"]|["D1","D2"]|["C1_D1","C2_D2"]|
+| Val | Arr1 | Arr2 | `Out` |
+|--|--|--|--|
+| 1 | ["A1","A2","A3"] | ["B1","B2","B3"] | ["A1_B1","A2_B2","A3_B3"] |
+| 5 | ["C1","C2"] | ["D1","D2"] | ["C1_D1","C2_D2"] |
 
 ### Applying mv-apply to a property bag
 
@@ -268,10 +268,10 @@ datatable(SourceNumber: string, TargetNumber: string, CharsCount: long)
 
 **Output**
 
-|SourceNumber|TargetNumber|CharsCount|values|
-|---|---|---|---|
-|555-555-1234|555-555-1212|46|{<br> "SourceNumber": "555-555-1234",<br>   "TargetNumber": "555-555-1212"<br> }|
-|555-555-1212|&nbsp;|&nbsp;|{<br> "SourceNumber": "555-555-1212"<br> }|
+| SourceNumber | TargetNumber | CharsCount | values |
+|--|--|--|--|
+| 555-555-1234 | 555-555-1212 | 46 | {<br> "SourceNumber": "555-555-1234",<br>   "TargetNumber": "555-555-1212"<br> } |
+| 555-555-1212 | &nbsp; | &nbsp; | {<br> "SourceNumber": "555-555-1212"<br> } |
 
 ## Related content
 

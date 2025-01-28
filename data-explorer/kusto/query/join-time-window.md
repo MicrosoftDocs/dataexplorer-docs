@@ -3,7 +3,7 @@ title:  Joining within time window
 description: Learn how to perform a time window join operation to match between two large datasets.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2025
+ms.date: 01/28/2025
 ---
 # Time window join
 
@@ -68,9 +68,9 @@ T
 
 **Output**
 
-|SessionId|Start|End|
-|---|---|---|
-|0|2017-10-01 00:00:00.0000000|2017-10-01 00:01:00.0000000|
+| SessionId | Start | End |
+|--|--|--|
+| 0 | 2017-10-01 00:00:00.0000000 | 2017-10-01 00:01:00.0000000 |
 
 ## Example optimized with time window
 
@@ -114,9 +114,9 @@ T
 
 **Output**
 
-|SessionId|Start|End|
-|---|---|---|
-|0|2017-10-01 00:00:00.0000000|2017-10-01 00:01:00.0000000|
+| SessionId | Start | End |
+|--|--|--|
+| 0 | 2017-10-01 00:00:00.0000000 | 2017-10-01 00:01:00.0000000 |
 
 ## 5 million data query
 
@@ -155,9 +155,9 @@ T
 
 **Output**
 
-|Count|
-|---|
-|3344|
+| Count |
+|--|
+| 3344 |
 
 ## Related content
 

@@ -10,7 +10,6 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
 
-
 Expands multi-value dynamic arrays or property bags into multiple records.
 
 `mv-expand` can be described as the opposite of the aggregation operators
@@ -68,6 +67,8 @@ Two modes of property bag expansions are supported:
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
+Review the examples and run them in your Data Explorer query page.
+
 ### Single column - array expansion
 
 :::moniker range="azure-data-explorer"
@@ -86,12 +87,12 @@ datatable (a: int, b: dynamic)
 
 **Output**
 
-|a|b|
-|---|---|
-|1|10|
-|1|20|
-|2|a|
-|2|b|
+| a | b |
+|--|--|
+| 1 | 10 |
+| 1 | 20 |
+| 2 | a |
+| 2 | b |
 
 ### Single column - bag expansion
 
@@ -113,12 +114,12 @@ datatable (a: int, b: dynamic)
 
 **Output**
 
-|a|b|
-|---|---|
-|1|{"prop1": "a1"}|
-|1|{"prop2": "b1"}|
-|2|{"prop1": "a2"}|
-|2|{"prop2": "b2"}|
+| a | b |
+|--|--|
+| 1 | {"prop1": "a1"} |
+| 1 | {"prop2": "b1"} |
+| 2 | {"prop1": "a2"} |
+| 2 | {"prop2": "b2"} |
 
 ### Single column - bag expansion to key-value pairs
 
@@ -141,12 +142,12 @@ datatable (a: int, b: dynamic)
 
 **Output**
 
-|a|b|key|val|
-|---|---|---|---|
-|1|["prop1","a1"]|prop1|a1|
-|1|["prop2","b1"]|prop2|b1|
-|2|["prop1","a2"]|prop1|a2|
-|2|["prop2","b2"]|prop2|b2|
+| a | b | key | val |
+|--|--|--|--|
+| 1 | ["prop1","a1"] | prop1 | a1 |
+| 1 | ["prop2","b1"] | prop2 | b1 |
+| 2 | ["prop1","a2"] | prop1 | a2 |
+| 2 | ["prop2","b2"] | prop2 | b2 |
 
 ### Zipped two columns
 
@@ -166,11 +167,11 @@ datatable (a: int, b: dynamic, c: dynamic)[
 
 **Output**
 
-|a|b|c|
-|---|---|---|
-|1|{"prop1":"a"}|5|
-|1|{"prop2":"b"}|4|
-|1||3|
+| a | b | c |
+|--|--|--|
+| 1 | {"prop1":"a"} | 5 |
+| 1 | {"prop2":"b"} | 4 |
+| 1 |  | 3 |
 
 ### Cartesian product of two columns
 
@@ -192,12 +193,12 @@ datatable (a: int, b: dynamic, c: dynamic)
 
 **Output**
 
-|a|b|c|
-|---|---|---|
-|1|{  "prop1": "a"}|5|
-|1|{  "prop1": "a"}|6|
-|1|{  "prop2": "b"}|5|
-|1|{  "prop2": "b"}|6|
+| a | b | c |
+|--|--|--|
+| 1 | {  "prop1": "a"} | 5 |
+| 1 | {  "prop1": "a"} | 6 |
+| 1 | {  "prop2": "b"} | 5 |
+| 1 | {  "prop2": "b"} | 6 |
 
 ### Convert output
 
@@ -219,7 +220,7 @@ datatable (a: string, b: dynamic, c: dynamic)[
 **Output**
 
 | ColumnName | ColumnOrdinal | DateType | ColumnType |
-|---|---|---|---|
+|--|--|--|--|
 | a | 0 | System.String | `string` |
 | b | 1 | System.Object | `dynamic` |
 | c | 2 | System.Int32 | `int` |
@@ -243,12 +244,12 @@ range x from 1 to 4 step 1
 
 **Output**
 
-|x|Index|
-|---|---|
-|1|0|
-|2|1|
-|3|2|
-|4|3|
+| x | Index |
+|--|--|
+| 1 | 0 |
+| 2 | 1 |
+| 3 | 2 |
+| 4 | 3 |
 
 ::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
