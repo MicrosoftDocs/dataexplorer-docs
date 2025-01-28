@@ -126,7 +126,7 @@ To use this strategy, specify `hint.strategy=legacy` or omit any other strategy 
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
-Consider the following examples:
+Review the examples and run them in your Data Explorer query page.
 
 ### Find top values
 

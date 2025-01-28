@@ -56,7 +56,7 @@ For more information, see [Working with middle-tier applications](#work-with-mid
 | *PathArgType* | `string` | | The type of the *PathArgType* argument. Possible values: `string` |
 | *ArgValue* | `string` |  :heavy_check_mark: | The *ArgName* and optional *PathName* tuple values to be mapped to an *expression*.  |
 | *PathValue* | `string` | | The value to map for *PathName*. |
-| *expression* | `string` |  :heavy_check_mark: | A tabular or lambda expression that references a function returning tabular data. For example: `Logs | where Timestamp > ago(1h)`
+| *expression* | `string` |  :heavy_check_mark: | A tabular or lambda expression that references a function returning tabular data. For example: `Logs | where Timestamp > ago(1h)`|
 
 ## Examples
 

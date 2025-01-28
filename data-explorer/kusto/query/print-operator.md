@@ -30,7 +30,7 @@ A table with one or more columns and a single row. Each column returns the corre
 
 ## Examples
 
-Consider the following examples:
+Review the examples and run them in your Data Explorer query page.
 
 ### Print sum and variable value
 
