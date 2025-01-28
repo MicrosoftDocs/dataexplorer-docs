@@ -8,7 +8,7 @@ Please add a brief comment outlining the purpose of this PR. Add links to any re
 1. **Successful build with no warnings or suggestions**: Review the build status to make sure **all files are green** (Succeeded).
 1. **Preview the pages:**: Click each **Preview URL** link, scan the entire page looking for formatting issues, in particular the parts you edited.
 1. **Check the Table of Contents:** If you are adding a new markdown file, make sure it is linked from the table of contents.
-1. **#sign-off**: Once the PR is finalized, add a comment with `#sign-off` . If you need to cancel the sign-off, add a comment with `#hold-off`.
+1. **Sign off**: Once the PR is finalized, add a comment with `#sign-off` . If you need to cancel the sign-off, add a comment with `#hold-off`.
 
     **NOTE**: *Signing off means the document can be published at any time.*
 
