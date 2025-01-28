@@ -13,7 +13,7 @@ The `macro-expand` operator simplifies running a subquery on a set of [entities]
 
 The operator is useful when you have data spread across multiple clusters, databases, or tables. For example, when data is held in the same global region as its source, you can use the `macro-expand` operator in a single query across data in distinct locations, instead of running separate queries for each entity and combining the results manually.
 
-The set of entities you want to query is called an **entity group**. The entity group can be stored for reuse in a database or defined directly in your query text. For more information about stored entity groups, see [Entity groups](../management/entity-groups.md).
+The set of entities you want to query is called an *entity group*. The entity group can be stored for reuse in a database or defined directly in your query text. For more information about stored entity groups, see [Entity groups](../management/entity-groups.md).
 
 The `macro-expand` operator runs the subquery separately for each entity in the group and then combines all the results into a single output. The subquery can include nested `macro-expand` operators. However, the identifier for the inner `macro-expand` must be different from the identifier for the outer `macro-expand` to clearly distinguish between the scope and references of each one.
 
