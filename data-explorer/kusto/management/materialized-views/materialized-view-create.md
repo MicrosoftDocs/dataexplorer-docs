@@ -69,6 +69,57 @@ The following properties are supported in the `with` `(`*PropertyName* `=` *Prop
 > * Monitor automatic disabling of materialized views by using the [MaterializedViewResult metric](materialized-views-monitoring.md#materializedviewresult-metric).
 > * After you fix incompatibility issues, you should explicitly re-enable the view by using the [enable materialized view](materialized-view-enable-disable.md) command.
 
+### Lookback period
+
+A lookback specifies the max expected period of time between any two records of the same group by key combination in the 
+source table of the materialized view. Setting a lookback can significantly improve the materialized view's performance.
+
+For example, consider a materialized view that is used to store the last event for each session of a web service, and is defined as follows:
+
+<!-- csl -->
+```kusto
+Events | summarize arg_max(ReceivedTime, *) by SessionId
+```
+
+If we can assume that a certain session doesn't last for over 1d, then we can define the materialized view with 
+a lookback of 1d, based on the ReceivedTime column:
+
+<!-- csl -->
+```kusto
+.create materialized-view with(lookback=1d, lookback_column = "ReceivedTime") SessionEvents on table Events
+{
+    Events
+    | summarize arg_max(ReceivedTime, *) by SessionId
+}
+```
+
+Setting a lookback on a materialized view minimizes the portion of the materialized part of the view which is scanned,
+during materialization time. See [How materialized views work](materialized-view-overview.md#how-materialized-views-work). 
+This is because only the portion of the view that falls within the lookback period is combined with the newly 
+ingested data (the "delta") during materialization time, instead of scanning the entire materialized part.
+While this step can significantly improve the materialized view's performance, setting an incorrect lookback period can result 
+in duplicate records in the materialized view. Considering the example above, if a record for some SessionId is ingested 2d 
+after the previous record for the same SessionId, then the materialized view will have duplicate records for that SessionId.
+
+**Lookback column**
+
+The lookback period is always relative to a `datetime` column in the materialized view. There are 2 options to define this column:
+
+1. Default - the lookback is relative to the record's [ingestion_time()](../../query/ingestion-time-function.md) in the source 
+   table. Meaning, records are deduplicated only against records which were ingested to source table after lookback period 
+   relative to current records. This kind of lookback is valid only for `arg_max`/`arg_min`/`take_any` materialized views, and 
+   only for views that preserve ingestion time (see [Materialized views limitations and known issues](materialized-views-limitations.md)). 
+   This option is configured by setting only the `lookback` property without the `lookback_column` property.
+2. [Preview] lookback_column - the lookback is relative to a `datetime` column in the materialized view, which is explicitly specified in 
+   the materialized view definition, using the `lookback_column` property. See [Known limitations](#known-limitations) for this kind of lookback. 
+   This option is configured by setting both the `lookback` and the `lookback_column` properties.
+
+#### Known limitations
+
+* Once a `lookback_column` is defined, its value cannot be changed.
+* Usage of a `lookback_column` might lead to duplicates if the lookback column has `datetime(null)` values. In such cases, for a given combination
+  of group-by keys, the view might end up with having one record with a value of `datetime(null)` and another value with a non-null value.
+
 ### Create materialized view over materialized view
 
 You can create a materialized view over another materialized view only when the source materialized view is a `take_any(*)` aggregation (deduplication). For more information, see [Materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view) and [Examples](#examples).
@@ -122,7 +173,7 @@ You can create a materialized view over another materialized view only when the 
     } 
     ```
 
-* Create a materialized view that deduplicates the source table, based on the `EventId` column, by using a lookback of 6 hours. Records will be deduplicated against only records ingested 6 hours before current records.
+* Create a materialized view that deduplicates the source table, based on the `EventId` column, by using a lookback of 6 hours. Records will be deduplicated only against records ingested 6 hours before current records.
 
     <!-- csl -->
     ```kusto
@@ -130,6 +181,17 @@ You can create a materialized view over another materialized view only when the 
     {
         T
         | summarize take_any(*) by EventId
+    }
+    ```
+
+* Create a materialized view that deduplicates the source table, based on the `EventId` column, by using a lookback of 6 hours. Records will be deduplicated against records whose `Timestamp` has a maximum of 6 hours difference from current records.
+
+    <!-- csl -->
+    ```kusto
+    .create materialized-view with(lookback=6h, lookback_column = "Timestamp") DeduplicatedTable on table T
+    {
+        T
+        | summarize arg_max(Timestamp, *) by EventId
     }
     ```
 
