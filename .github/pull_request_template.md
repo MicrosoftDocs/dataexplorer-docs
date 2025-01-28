@@ -1,12 +1,6 @@
-# Thank you for contributing to Azure Data Explorer documentation
+# Thank you for contributing to Kusto documentation
 
-## Fill out these items before submitting your pull request:
-
-If you are working internally at Microsoft:
-
-- **Provide a link to an Azure DevOps Boards work item that tracks this feature/update.**
-
-- **Who is your Docs team contact?** \@mention them individually tag them and let them review the PR before signing off.
+Please add a brief comment outlining the purpose of this PR. Add links to any relevant references such as DevOps work items.
 
 ## Make sure you've done the following:
 
