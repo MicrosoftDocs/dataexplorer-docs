@@ -31,8 +31,6 @@ The `leftsemi` join flavor returns all records from the left side that match a r
 
 This query filters and returns only those rows from table X that have a matching key in table Y.
 
-```kusto
-
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5mnkJ2Zl2Kbk5pWUpyamwm0MT9PAWgRAJX/pofZAAAA" target="_blank">Run the query</a>
