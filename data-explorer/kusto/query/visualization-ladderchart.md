@@ -3,7 +3,7 @@ title:  Ladder chart visualization
 description:  This article describes the ladder chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/28/2025
+ms.date: 01/29/2025
 monikerRange: "azure-data-explorer"
 ---
 # Ladder chart
@@ -82,7 +82,7 @@ StormEvents
 
 ### Dates of storms by state and event type
 
-Tthis query outputs a visualization of the duration of various storm events in states starting with "W", displayed as a ladder chart to help you analyze the temporal distribution of these events by state and event type.
+This query outputs a visualization of the duration of various storm events in states starting with "W", displayed as a ladder chart to help you analyze the temporal distribution of these events by state and event type.
 
 ```kusto
 StormEvents

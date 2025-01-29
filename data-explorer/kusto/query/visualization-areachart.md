@@ -80,8 +80,6 @@ The supported values of this property are:
 
 ## Example
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
-
 This query takes the data from demo_series3 and generates an area chart.
 
 :::moniker range="azure-data-explorer"

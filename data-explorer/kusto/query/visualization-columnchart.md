@@ -3,8 +3,7 @@ title:  Column chart visualization
 description:  This article describes the column chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/28/2025
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+ms.date: 01/29/2025
 ---
 # Column chart
 
@@ -153,6 +152,8 @@ StormEvents
 ::: moniker range="azure-monitor || microsoft-sentinel"
 
 ## Example
+
+This query helps you identify states with a significant number of storm events and presents the information in a clear, visual format.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNQiFEUKdgqGBkCJgqL8rNTkEohCHWQVQMmi1LyU1CKF5Pyc0ty85IzEohIAvF8Py38AAAA=" target="_blank">Run the query</a>
