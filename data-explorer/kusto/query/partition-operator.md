@@ -126,8 +126,6 @@ To use this strategy, specify `hint.strategy=legacy` or omit any other strategy 
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
-Review the examples and run them in your Data Explorer query page.
-
 ### Find top values
 
 In some cases, it's more performant and easier to write a query using the `partition` operator than using the [`top-nested`](top-nested-operator.md) operator. The following query runs a subquery calculating `summarize` and `top` for each `State` starting with `W`: "WYOMING", "WASHINGTON", "WEST VIRGINIA", and "WISCONSIN".
