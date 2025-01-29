@@ -139,20 +139,6 @@ You should now be able to see the newly created data connection in the Azure por
     $Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $ServicePrincipalID, $Password
     ```
 
-1. Generate the Service Principal Credential:
-
-    ```PowerShell
-    $ServicePrincipalID = "<Application (client) ID>"
-    ```
-
-    ```PowerShell
-    $Password = ConvertTo-SecureString -String "<Secret>" -AsPlainText -Force
-    ```
-
-    ```PowerShell
-    $Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $ServicePrincipalID, $Password
-    ```
-
 1. Connect to the Event Hubs Tenant and Subscription, and store the access tokens in variables:
 
     ```PowerShell
@@ -168,29 +154,46 @@ You should now be able to see the newly created data connection in the Azure por
     ```
 
     > [Note:]
-    > Ensure that you use the ID for the tenant (e.g., 92f988bf-76f1-41ak-91ab-2d7cd010db47) and the subscription string name (e.g., "Visual Studio Enterprise Subscription").
+    > Ensure that you use the ID for the tenant (for example, 92f988bf-76f1-41ak-91ab-2d7cd010db47) and the subscription string name (for example., "Visual Studio Enterprise Subscription").
+
+1. Connect to the Data Explorer Tenant and Subscription, and store the access tokens in variables:
+
+    ```PowerShell
+    Connect-AzAccount -TenantId <Tenant ID> -Subscription "<Subscription Name>" -ServicePrincipal -Credential $Credential
+    ```
+
+    > [Note:]
+    > Ensure that you use the ID for the tenant (for example, 92f988bf-76f1-41ak-91ab-2d7cd010db47) and the subscription string name (for example, "Visual Studio Enterprise Subscription").
+
+    ```powershell
+    $tokenfromtenant2 = Get-AzCachedAccessToken
+    ```
+
+    ```powershell
+    $pat="Bearer $tokenfromtenant2"
+    ```
 
 1. Add Event Hub resource details to a variable:
 
-```PowerShell
-$requestbody = '{"location": "East US", "kind": "EventHub", "properties": { "eventHubResourceId": "/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.EventHub/namespaces/<event hub namespace name>/eventhubs/<event hub name>", "consumerGroup": "$Default", "dataFormat": "MultiJSON", "tableName": "<ADX table name>", "mappingRuleName": "<ADX table mapping name>"}}'
-```
+    ```PowerShell
+    $requestbody = '{"location": "East US", "kind": "EventHub", "properties": { "eventHubResourceId": "/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.EventHub/namespaces/<event hub namespace name>/eventhubs/<event hub name>", "consumerGroup": "$Default", "dataFormat": "MultiJSON", "tableName": "<ADX table name>", "mappingRuleName": "<ADX table mapping name>"}}'
+    ```
 
 1. Add Data Explorer resource details to a variable:
 
-```PowerShell
-$adxdcuri="https://management.azure.com/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Kusto/clusters/<adx cluster name>/databases/<adx db name>/dataconnections/<adx data connection name>?api-version=2020-02-15"
-```
+    ```PowerShell
+    $adxdcuri="https://management.azure.com/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Kusto/clusters/<adx cluster name>/databases/<adx db name>/dataconnections/<adx data connection name>?api-version=2020-02-15"
+    ```
 
 1. Send the request to create the data connection
 
-```PowerShell
-Invoke-WebRequest -Headers @{Authorization = $pat; 'x-ms-authorization-auxiliary' = $auxpat} -Uri $adxdcuri -Body $requestbody -Method PUT -ContentType 'application/json'
-```
+    ```PowerShell
+    Invoke-WebRequest -Headers @{Authorization = $pat; 'x-ms-authorization-auxiliary' = $auxpat} -Uri $adxdcuri -Body $requestbody -Method PUT -ContentType 'application/json'
+    ```
 
 1. *Optional*: Once the data connection is established, consider revoking or deleting any unnecessary permissions or accounts in both Data Explorer and Event Hubs.
 
-## Explanation of Permissions and Backend Process
+## Backend Process
 
 This explanation simplifies what occurs in the backend when the request is sent:
 
