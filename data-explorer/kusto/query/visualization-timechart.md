@@ -89,7 +89,7 @@ demo_make_series2
 
 ### Label a timechart
 
-The following example renders a timechart that depicts crop damage grouped by week. The timechart x axis is labled "Date" and the y axis is labled "Crop damage."
+The following example renders a timechart that depicts crop damage grouped by week. The timechart x axis is labeled "Date" and the y axis is labeled "Crop damage."
 ::: moniker-end
 
 ::: moniker range="azure-data-explorer"
