@@ -46,7 +46,7 @@ In the following example, you use PowerShell to create a cross-tenant Event Hubs
 
 ## Get an Access token for Tenant1
 
-The Entra object can be an [Entra account](#get-an-entra-account-access-token-for-tenant1) (for example, user@domain.com) or a [multitenant service principal](#get-a-service-principal-access-token-for-tenant1). For more information, see [Convert to multitenant](https://learn.microsoft.com/en-us/entra/identity-platform/howto-convert-app-to-be-multi-tenant).
+The Entra object can be an [Entra account](#get-an-entra-account-access-token-for-tenant1) (for example, user@domain.com) or a [multitenant service principal](#get-a-service-principal-access-token-for-tenant1). For more information, see [Convert to multitenant](/entra/identity-platform/howto-convert-app-to-be-multi-tenant).
 
 ### Get an Entra Account access token for Tenant1
 
