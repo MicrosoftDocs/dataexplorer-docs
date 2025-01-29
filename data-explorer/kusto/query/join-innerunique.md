@@ -3,7 +3,7 @@ title:  innerunique join
 description: Learn how to use the innerunique join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 
@@ -33,7 +33,11 @@ By default, the `innerunique` join flavor is used if the `kind` parameter isn't 
 
 ## Examples
 
+Review the examples and run them in your Data Explorer query page.
+
 ### Use the default innerunique join
+
+The example query combines rows from tables X and Y where the keys match, showing only the rows that exist in both tables
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
