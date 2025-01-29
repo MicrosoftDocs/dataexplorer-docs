@@ -31,8 +31,6 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 ## Example
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
-
 This query provides a detailed analysis of sales for Contoso computer products within the specified date range, visualized as a pivot chart.
 
 ```kusto

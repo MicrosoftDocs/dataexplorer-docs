@@ -30,8 +30,6 @@ All types of Plotly visualizations are supported.
 
 ### Example
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
-
 The following query uses inline Python to create a 3D scatter chart:
 
 ~~~kusto
