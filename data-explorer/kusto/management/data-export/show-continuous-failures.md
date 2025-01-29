@@ -9,7 +9,7 @@ ms.date: 12/08/2024
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-Returns all failures logged as part of the continuous export. To view only a specific time range, filter the results by the **Timestamp** column.
+Returns all failures logged as part of the continuous export within the past 14 days. To view only a specific time range, filter the results by the **Timestamp** column.
 
 ::: moniker range="azure-data-explorer"
 The command doesn't return any results if executed on a [follower database](/azure/data-explorer/follower), it must be executed against the leader database.
