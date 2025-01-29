@@ -3,7 +3,7 @@ title:  leftanti join
 description: Learn how to use the leftanti join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 ---
 
 # leftanti join
@@ -30,6 +30,8 @@ The `leftanti` join flavor returns all records from the left side that don't mat
 **Rows**: All records from the left table that don't match records from the right table.
 
 ## Example
+
+The example query combines rows from tables X and Y where there is no match in Y for the keys in X, effectively filtering out any rows in X that have corresponding rows in Y.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -59,3 +61,7 @@ X | join kind=leftanti Y on Key
 |Key|Value1|
 |---|---|
 |a|1|
+
+## Related content
+
+* Learn about other [join flavors](join-operator.md#returns)
