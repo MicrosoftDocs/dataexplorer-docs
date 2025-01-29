@@ -10,10 +10,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
 
-
 Counts the number of records per summarization group, or total if summarization is done without grouping.
 
-[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 ::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 To only count records for which a predicate returns `true`, use [countif()](countif-aggregation-function.md).
 ::: moniker-end

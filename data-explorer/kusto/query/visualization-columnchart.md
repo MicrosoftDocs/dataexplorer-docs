@@ -59,7 +59,7 @@ This visualization supports splitting into multiple y-axis values:
 |----------|------------------------------------------------------------------|
 |`none`    |A single y-axis is displayed for all series data. This is the default. |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
-|`panels`  |One chart is rendered for each `ycolumn` value.|
+|`panels`  |One chart is rendered for each `ycolumn` value. Maximum five panels.|
 
 ::: moniker-end
 

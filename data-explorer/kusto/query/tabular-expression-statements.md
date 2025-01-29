@@ -43,8 +43,6 @@ A tabular data source produces sets of records, to be further processed by tabul
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
-Review the examples and run them in your Data Explorer query page.
-
 ### Filter rows by condition
 
 This query counts the number of records in the `StormEvents` table that have a value of "FLORIDA" in the `State` column.

@@ -40,8 +40,6 @@ The middle-tier application can prefix the user's query with a **logical model**
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
-Review the examples and run them in your Data Explorer query page.
-
 ### Let statement
 
 The example uses a [let statement](let-statement.md) appearing before `restrict` statement.
