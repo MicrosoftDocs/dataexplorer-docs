@@ -123,7 +123,7 @@ StormEvents
 | join kind=innerunique PopulationData on $left.State == $right.StateName  
 ```
 
-The `$left` table is the table on the left, or outer side of the join operator, in this case `StormEvents`. The `$right` table is the table on the right, or inner side of the join operator, in this case `PopulationData`.  
+`$left` is the table on the left, or outer side of the join operator, in this case `StormEvents`. `$right` is the table on the right, or inner side of the join operator, in this case `PopulationData`.  
 
 > [!TIP]
 > There are many types of joins that you can perform with the `join` operator. See a [list of join flavors](../join-operator.md#returns).
