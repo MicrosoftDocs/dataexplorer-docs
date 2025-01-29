@@ -30,7 +30,7 @@ There are two possible ways to create a materialized view, as noted by the *back
 
 ## Permissions
 
-You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command. The materialized view creator becomes its administrator.
+You must have at least [Database Admin](../../access-control/role-based-access-control.md) permissions to run this command. The materialized view creator becomes its administrator.
 
 ## Syntax
 
@@ -115,7 +115,7 @@ You can create a materialized view over another materialized view only when the 
 
 **Parameters:**
 
-|| Name | Type | Required | Description |
+| Name | Type | Required | Description |
 |--|--|--|--|
 | *PropertyName*, *PropertyValue* | `string` |  | List of properties in the form of name and value pairs, from the list of [supported properties](#supported-properties). |
 | *MaterializedViewName* | `string` | :heavy_check_mark: | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |

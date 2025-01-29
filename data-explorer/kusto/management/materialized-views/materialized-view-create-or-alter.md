@@ -44,7 +44,7 @@ If the table already exists, only the following subset of properties are support
 
 | Name                      | Type     | Description  |
 |---------------------------|--------- |--------|
-| lookback | `timespan` | The time span that limits the period during which duplicates or updates are expected. For more information, see [Lookback period](../management/materialized-views/materialized-view-create.md#lookback-period). |
+| lookback | `timespan` | The time span that limits the period during which duplicates or updates are expected. For more information, see [Lookback period](../management/materialized-views/materialized-view-create#lookback-period). |
 | lookback_column | `datetime` | A `datetime` column in the view that serves as the reference for the lookback period. If the lookback period isn't specified, it's calculated based on [ingestion_time()](../../query/ingestion-time-function.md). If a `lookback_column` is already defined, its value can't be modified. For more information, see [Lookback period](materialized-view-create.md#lookback-period). |
 | autoUpdateSchema | `bool` | Whether to automatically update the view on source table changes. Default is `false`. This option is valid only for views of type `arg_max(Timestamp, *)`/`arg_min(Timestamp, *)`/`take_any(*)` (only when the column's argument is `*`). If this option is set to `true`, changes to the source table are automatically reflected in the materialized view. |
 |--|--|--|
