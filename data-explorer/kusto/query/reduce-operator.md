@@ -44,8 +44,6 @@ For example, the result of `reduce by city` might include:
 
 ## Examples
 
-Consider the following examples:
-
 ### Small threshold value
 
 This query generates a range of numbers, creates a new column with concatenated strings and random integers, and then groups the rows by the new column with specific reduction parameters.

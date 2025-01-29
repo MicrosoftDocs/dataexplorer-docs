@@ -39,8 +39,6 @@ whose values are *start*, *start* `+` *step*, ... up to and until *stop*.
 
 ## Examples
 
-Review the examples and run them in your Data Explorer query page.
-
 ### Range over the past seven days
 
 The following example creates a table with entries for the current time stamp extended over the past seven days, once a day.
