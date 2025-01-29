@@ -41,6 +41,8 @@ This command returns a table with the following columns:
 
 ## Examples
 
+The following examples show how to use the `.show entity_group` and `.show entity_group commands`.
+
 ### Show entity groups
 
 The following example returns all the entity groups in the selected database, `eg1` and `eg2`, along with their entities.

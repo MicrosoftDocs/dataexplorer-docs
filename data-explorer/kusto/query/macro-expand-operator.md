@@ -28,19 +28,21 @@ The `macro-expand` operator runs the subquery separately for each entity in the 
 > [!NOTE]
 > The operation of the `macro-expand` operator can be modified by setting the `best_effort` request property to `true`, either by using a `set statement` or through [client request properties](../api/rest/request-properties.md). When this property is set to `true`, the `macro-expand` operator ignores fuzzy resolution and connectivity failures, to execute any of the subexpressions being unioned and issues a warning in the query status results.
 
-### Syntax variations
+### Variations
 
-There are several syntactic variants that are used with the `macro-expand` operator:
+There are several ways to use the `macro-expand` operator:
 
-1. **Using the macro-expand operator:** All elements are explicitly defined in the text of the operator invocation itself.
+1. **Inline:** All elements are explicitly defined in the text of the operator invocation itself. For an example, see [Calculate errors](#calculate-errors).
 
-1. **Using a let statement:** The entity group is specified in the query using a `let` statement outside the `macro-expand` operator using the syntax:
+1. **Via `let` statement:** The entity group is specified in the query using a `let` statement outside the `macro-expand` operator using the syntax:
 
     `let` *EntityGroupIdentifier* `=` `entity_group` `[`*EntityReference* [`,` ...]`]`
 
+   For an example, see [Calculate SKU errors using `let` statement](#calculate-sku-errors-using-let-statement).
+
 1. **Using a stored entity group:** The query uses an entity group stored in the database in scope rather than defined in the query.
 
-To see examples of how the variants are used, see [Examples](#examples).
+   For an example, see [Extend table with contextual scalar functions](#extend-table-with-contextual-scalar-functions).
 
 ## Parameters
 
@@ -67,12 +69,12 @@ The `macro-expand` subquery can reference two specialized scalar functions as if
 
 ### Calculate errors
 
-The following example uses an entity group to calculate the number of errors produced by each Stock Keeping Unit (SKU). It defines an `entity_group`, `X`, that includes databases named `Kuskus` in two clusters. The query then performs a subquery to filter for error logs and counts the errors by `Source`. Next it performs an `inner` join on `Source` with the `DimCluster` table to get the `SKU` for each source. Finally, it sums the error counts by `SKU`.
+The following example uses an entity group, per the [inline variation](#variations), to calculate the number of errors produced by each Stock Keeping Unit (SKU). It defines an `entity_group`, `X`, that includes databases named `MyDatabase` in two clusters. The query then performs a subquery to filter for error logs and counts the errors by `Source`. Next it performs an `inner` join on `Source` with the `DimCluster` table to get the `SKU` for each source. Finally, it sums the error counts by `SKU`.
 
 ```kusto
-macro-expand entity_group [cluster('C1').database('Kuskus'), cluster('C2').database('Kuskus')] as X
+macro-expand entity_group [cluster('C1').database('MyDatabase'), cluster('C2').database('MyDatabase')] as X
 (
-    X.KustoLogs
+    X.Logs
     | where Level == 'Error'
     | summarize Count=count() by Source
     | join kind=inner (X.DimCluster | project SKU, Source) on Source
@@ -89,27 +91,27 @@ To write the same query without using `macro-expand`, it might look as follows:
 ```kusto
 union
   (
-    cluster('C1').database('Kuskus').KustoLogs
+    cluster('C1').database('MyDatabase').KustoLogs
     | where Level == 'Error'
     | summarize Count=count() by Source
-    | join kind=inner (cluster('C1').database('Kuskus').DimCluster | project SKU, Source) on Source
+    | join kind=inner (cluster('C1').database('MyDatabase').DimCluster | project SKU, Source) on Source
   ),
   (
-    cluster('C2').database('Kuskus').KustoLogs
+    cluster('C2').database('MyDatabase').KustoLogs
     | where Level == 'Error'
     | summarize Count=count() by Source
-    | join kind=inner (cluster('C2').database('Kuskus').DimCluster | project SKU, Source) on Source
+    | join kind=inner (cluster('C2').database('MyDatabase').DimCluster | project SKU, Source) on Source
   )
 | summarize Sum=sum(Count) by SKU
 ```
 
 ### Calculate SKU errors using `let` statement
 
-The following example uses a `let` statement to define an entity group named `UberKuskus` which includes the `Kuskus` database from both `C1` and `C2` clusters. This entity group is then used to perform the same query in the [previous example](#calculate-errors) to calculate the number of errors produced by each SKU. The `macro-expand` operator is used to reference the `UberKuskus` entity group (alias `X`).
+The following example uses a [`let` statement](#variations) to define an entity group named `Greater` which includes the `MyDatabase` database from both `C1` and `C2` clusters. This entity group is then used to perform the same query in the [previous example](#calculate-errors) to calculate the number of errors produced by each SKU. The `macro-expand` operator is used to reference the `Greater` entity group (alias `X`).
 
 ```kusto
-let UberKuskus = entity_group [cluster('C1').database('Kuskus'), cluster('C2').database('Kuskus')];
-macro-expand UberKuskus as X
+let GreaterDatabase = entity_group [cluster('C1').database('MyDatabase'), cluster('C2').database('MyDatabase')];
+macro-expand GreaterDatabase as X
 (
     X.KustoLogs
     | where Level == 'Error'
@@ -121,7 +123,7 @@ macro-expand UberKuskus as X
 
 ### Extend table with contextual scalar functions
 
-The following query runs a subquery on the `Admins` table from each entity using [a stored entity group](../management/create-entity-group.md#examples), `MyEntityGroup`. It uses `$current_database` and `$current_cluster_endpoint` to extend the table, adding the current database and current cluster for each row. Then, it summarizes the results by counting the number of rows for each combination of `current_cluster` and `current_database`.
+The following query runs a subquery on the `Admins` table from each entity using the [stored entity group](#variations) variation, with the `MyEntityGroup`. For more information on how to create a stored entity, see [.create entity_group command](../management/create-entity-group.md). It uses `$current_database` and `$current_cluster_endpoint` to extend the table, adding the current database and current cluster for each row. Then, it summarizes the results by counting the number of rows for each combination of `current_cluster` and `current_database`.
 
 ```kusto
 macro-expand MyEntityGroup as X
