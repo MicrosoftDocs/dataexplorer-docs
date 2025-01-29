@@ -67,6 +67,8 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
+The query examples show the syntax and example usage of the operator, statement, or function.
+
 ### Define scalar values
 
 The following example uses a scalar expression statement.
