@@ -52,8 +52,6 @@ All properties are optional.
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
-Review the examples and run them in your Data Explorer query page.
-
 ### Dates of storms by state
 
 This query outputs a state-wise visualization of the duration of rain-related storm events, displayed as a ladder chart to help you analyze the temporal distribution of these events.

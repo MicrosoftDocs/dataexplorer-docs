@@ -93,8 +93,6 @@ The supported values of this property are:
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
-Review the examples and run them in your Data Explorer query page.
-
 ### Render a bar chart
 
 The following query creates a bar chart displaying the number of storm events for each state, filtering only those states with more than 10 events. The chart provides a visual representation of the event distribution across different states.
