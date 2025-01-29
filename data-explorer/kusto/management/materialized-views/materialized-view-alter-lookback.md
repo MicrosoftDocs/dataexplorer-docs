@@ -3,7 +3,7 @@ title:  .alter materialized view lookback
 description:  This article describes alter materialized view lookback.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/29/2025
 ---
 # .alter materialized-view lookback
 
@@ -23,10 +23,10 @@ You must have at least [Materialized View Admin](../../access-control/role-based
 
 ## Parameters
 
-| Name                   | Type     | Required | Description                                                                   |
-|------------------------|----------|----------|-------------------------------------------------------------------------------|
-| *MaterializedViewName* | `string` |  :heavy_check_mark:  | Name of the materialized view.                                                |
-| *LookbackPeriod*       | `timespan` |  :heavy_check_mark:  | Time span limiting the period of time in which duplicates or updates are expected.       |
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *MaterializedViewName* | `string` | :heavy_check_mark: | The name of the materialized view. |
+| *LookbackPeriod* | `timespan` | :heavy_check_mark: | The time span that limits the period during which duplicates or updates are expected. |
 
 ## Returns
 
@@ -34,9 +34,11 @@ You must have at least [Materialized View Admin](../../access-control/role-based
 
 ## Examples
 
+The following examples show how to alter the lookback of a materialized view.
+
 ### Set the lookback property of a materialized view
 
-The following command sets the lookback period of materialized view MyView to six hours:
+The following example sets the lookback period of the materialized view, `MyView`, to six hours so that `MyView` considers data ingested over the last six hours for its operations. The lookback period is returned in the `Lookback` column of the table.
 
 ```kusto
 .alter materialized-view MyView lookback 6h
@@ -44,13 +46,13 @@ The following command sets the lookback period of materialized view MyView to si
 
 **Output**
 
-| Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
-|--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
-| MyView | MyTable     | MyTable \| summarize take_any(*) by Column1 | 2023-02-26T16:40:03.3345704Z     | 2023-02-26T16:44:15.9033667Z | Completed     | true      | true      |                  |           | true             | 2023-02-23T14:01:42.5172342Z | 6:00:00:00 |
+| Name | SourceTable | Query | MaterializedTo | LastRun | LastRunResult | IsHealthy | IsEnabled | Folder | DocString | AutoUpdateSchema | EffectiveDateTime | Lookback |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| MyView | MyTable | MyTable \| summarize take_any(*) by Column1 | 2023-02-26T16:40:03.3345704Z | 2023-02-26T16:44:15.9033667Z | Completed | true | true |  |  | true | 2023-02-23T14:01:42.5172342Z | 6:00:00:00 |
 
 ### Remove the lookback of a materialized view
 
-The following command removes the lookback period of materialized view MyView:
+The following example removes the lookback period of the materialized view, `MyView` allowing it to consider all available data for its operations. It returns a table with an empty `Lookback` column.
 
 ```kusto
 .alter materialized-view MyView lookback timespan(null)
@@ -58,6 +60,13 @@ The following command removes the lookback period of materialized view MyView:
 
 **Output**
 
-| Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
-|--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
-| MyView | MyTable     | MyTable \| summarize take_any(*) by Column1 | 2023-02-26T16:40:03.3345704Z     | 2023-02-26T16:44:15.9033667Z | Completed     | true      | true      |                  |           | true             | 2023-02-23T14:01:42.5172342Z |            |
+| Name | SourceTable | Query | MaterializedTo | LastRun | LastRunResult | IsHealthy | IsEnabled | Folder | DocString | AutoUpdateSchema | EffectiveDateTime | Lookback |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| MyView | MyTable | MyTable \| summarize take_any(*) by Column1 | 2023-02-26T16:40:03.3345704Z | 2023-02-26T16:44:15.9033667Z | Completed | true | true |  |  | true | 2023-02-23T14:01:42.5172342Z |  |
+
+## Related content
+
+* [Materialized views](materialized-view-overview.md)
+* [Materialized views use cases](materialized-view-use-cases.md)
+* [.create materialized-view](materialized-view-create.md)
+* [.alter materialized-view](materialized-view-alter.md)

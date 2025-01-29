@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 08/11/2024
+ms.date: 01/29/2025
 ---
 
 **Output schema:**
@@ -19,5 +19,5 @@ ms.date: 08/11/2024
 | DocString | `string` | Description assigned to the materialized view. |
 | AutoUpdateSchema | `bool` | Whether the view is enabled for auto updates. |
 | EffectiveDateTime | `datetime` | Effective date time of the view, determined during creation time (see [`.create materialized-view`](../management/materialized-views/materialized-view-create.md#create-materialized-view)). |
-| Lookback | `timespan` | Time span limiting the period of time in which duplicates or updates are expected. |
-| LookbackColumn | `string` | A `datetime` column in the view which serves as the reference for the lookback period. If it is empty, while the `lookback` has value, then the materialized view is using a default lookback. See ([Lookback period](../management/materialized-views/materialized-view-create.md#lookback-period)) |
+| Lookback | `timespan` | The time span that limits the period during which duplicates or updates are expected. For more information, see [Lookback period](../management/materialized-views/materialized-view-create.md#lookback-period). |
+| LookbackColumn | `datetime` | A `datetime` column in the view which serves as the reference for the lookback period. If this column is empty but the `lookback` has a value, then the materialized view uses a default lookback. For more information, see [Lookback period](../management/materialized-views/materialized-view-create.md#lookback-period). |
