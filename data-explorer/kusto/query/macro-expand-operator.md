@@ -91,13 +91,13 @@ To write the same query without using `macro-expand`, it might look as follows:
 ```kusto
 union
   (
-    cluster('C1').database('MyDatabase').KustoLogs
+    cluster('C1').database('MyDatabase').Logs
     | where Level == 'Error'
     | summarize Count=count() by Source
     | join kind=inner (cluster('C1').database('MyDatabase').DimCluster | project SKU, Source) on Source
   ),
   (
-    cluster('C2').database('MyDatabase').KustoLogs
+    cluster('C2').database('MyDatabase').Logs
     | where Level == 'Error'
     | summarize Count=count() by Source
     | join kind=inner (cluster('C2').database('MyDatabase').DimCluster | project SKU, Source) on Source
@@ -113,7 +113,7 @@ The following example uses a [`let` statement](#variations) to define an entity 
 let GreaterDatabase = entity_group [cluster('C1').database('MyDatabase'), cluster('C2').database('MyDatabase')];
 macro-expand GreaterDatabase as X
 (
-    X.KustoLogs
+    X.Logs
     | where Level == 'Error'
     | summarize Count=count() by Source
     | join kind=inner (X.DimCluster | project SKU, Source) on Source
