@@ -30,7 +30,7 @@ The `macro-expand` operator runs the subquery separately for each entity in the 
 
 ### Variations
 
-There are several ways to use the `macro-expand` operator:
+ There are several ways to specify the entity group used by the `macro-expand` operator:
 
 1. **Inline:** All elements are explicitly defined in the text of the operator invocation itself. For an example, see [Calculate errors](#calculate-errors).
 
