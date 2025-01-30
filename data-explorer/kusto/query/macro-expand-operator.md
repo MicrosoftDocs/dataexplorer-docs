@@ -107,7 +107,7 @@ union
 
 ### Calculate SKU errors using `let` statement
 
-The following example uses a [`let` statement](#variations) to define an entity group named `Greater` which includes the `MyDatabase` database from both `C1` and `C2` clusters. This entity group is then used to perform the same query in the [previous example](#calculate-errors) to calculate the number of errors produced by each SKU. The `macro-expand` operator is used to reference the `Greater` entity group (alias `X`).
+The following example uses a [`let` statement](#variations) to define an entity group in a variable named `Greater` which includes the `MyDatabase` database from both `C1` and `C2` clusters. This entity group is then used to perform the same query in the [previous example](#calculate-errors) to calculate the number of errors produced by each SKU. The `macro-expand` operator is used to reference the `Greater` entity group (alias `X`).
 
 ```kusto
 let GreaterDatabase = entity_group [cluster('C1').database('MyDatabase'), cluster('C2').database('MyDatabase')];
