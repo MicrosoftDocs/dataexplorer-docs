@@ -69,7 +69,7 @@ The `macro-expand` subquery can reference two specialized scalar functions as if
 
 ### Calculate errors
 
-The following example uses an entity group, per the [inline variation](#variations), to calculate the number of errors produced by each Stock Keeping Unit (SKU). It defines an `entity_group`, `X`, that includes databases named `MyDatabase` in two clusters. The query then performs a subquery to filter for error logs and counts the errors by `Source`. Next it performs an `inner` join on `Source` with the `DimCluster` table to get the `SKU` for each source. Finally, it sums the error counts by `SKU`.
+The following example uses an [inline variation](#variations) entity group to calculate the number of errors produced by each Stock Keeping Unit (SKU). It defines an `entity_group`, `X`, that includes databases named `MyDatabase` in two clusters. The query then performs a subquery to filter for error logs and counts the errors by `Source`. Next it performs an `inner` join on `Source` with the `DimCluster` table to get the `SKU` for each source. Finally, it sums the error counts by `SKU`.
 
 ```kusto
 macro-expand entity_group [cluster('C1').database('MyDatabase'), cluster('C2').database('MyDatabase')] as X
