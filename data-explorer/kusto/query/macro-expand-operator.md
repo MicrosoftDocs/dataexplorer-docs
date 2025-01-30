@@ -123,7 +123,7 @@ macro-expand GreaterDatabase as X
 
 ### Extend table with contextual scalar functions
 
-The following query runs a subquery on the `Admins` table from each entity using the [stored entity group](#variations) variation, with the `MyEntityGroup`. For more information on how to create a stored entity, see [.create entity_group command](../management/create-entity-group.md). It uses `$current_database` and `$current_cluster_endpoint` to extend the table, adding the current database and current cluster for each row. Then, it summarizes the results by counting the number of rows for each combination of `current_cluster` and `current_database`.
+The following query runs a subquery on the `Admins` table from each entity using the [stored entity group](#variations) variation, using the stored entity group `MyEntityGroup`. For more information on how to create a stored entity, see [.create entity_group command](../management/create-entity-group.md). It uses `$current_database` and `$current_cluster_endpoint` to extend the table, adding the current database and current cluster for each row. Then, it summarizes the results by counting the number of rows for each combination of `current_cluster` and `current_database`.
 
 ```kusto
 macro-expand MyEntityGroup as X
