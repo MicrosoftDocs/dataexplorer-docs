@@ -14,7 +14,7 @@ The Kusto client libraries are instrumented to write traces to local files. By d
 
 ## Enable tracing
 
-You can enable tracing in a Kusto client application using the `Kusto.Cloud.Platform.Utils` namespace. Ensure you have the `Microsoft.Azure.Kusto.Cloud.Platform` [NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Cloud.Platform/). Run the following code to enable tracing:
+You can enable tracing in a Kusto client application using the `Kusto.Cloud.Platform.Utils` namespace. Make sure you have the `Microsoft.Azure.Kusto.Cloud.Platform` [NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Cloud.Platform/) installed. Then run the following code to enable tracing:
 
 ```csharp
 using Kusto.Cloud.Platform.Utils; // Requires the NuGet package, Microsoft.Azure.Kusto.Cloud.Platform.
