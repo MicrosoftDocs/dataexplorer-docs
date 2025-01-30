@@ -147,7 +147,7 @@ The TopNested operator has exceeded the memory budget during evaluation. Results
 
 If `maxmemoryconsumptionperiterator` is set multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
 
-The maximum supported value for this request option is 32212254720 (30GB).
+The maximum supported value for this request option is 32212254720 (30 GB).
 
 An additional limit that might trigger an `E_RUNAWAY_QUERY` partial query failure is a limit on the max accumulated size of
 strings held by a single operator. This limit cannot be overridden by the request option above:
