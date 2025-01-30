@@ -10,11 +10,11 @@ ms.date: 01/30/2025
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The Kusto client libraries are instrumented to write traces to local files. By default the tracing mechanism is disabled, but can be enabled programmatically.
+The Kusto client libraries are instrumented to write traces to local files. By default, the tracing mechanism is disabled, but can be enabled programmatically.
 
 ## Enable tracing
 
-You can enable tracing in a Kusto client application using the `Kusto.Cloud.Platform.Utils` namespace. Ensure you have the `Microsoft.Azure.Kusto.Cloud.Platform` NuGet package. Run the following code to enable tracing:
+You can enable tracing in a Kusto client application using the `Kusto.Cloud.Platform.Utils` namespace. Ensure you have the `Microsoft.Azure.Kusto.Cloud.Platform` [NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Cloud.Platform/). Run the following code to enable tracing:
 
 ```csharp
 using Kusto.Cloud.Platform.Utils; // Requires the NuGet package, Microsoft.Azure.Kusto.Cloud.Platform.
