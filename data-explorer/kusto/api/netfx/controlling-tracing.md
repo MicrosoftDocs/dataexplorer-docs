@@ -4,52 +4,44 @@ description: This article describes controlling and suppressing SDK client-side 
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 08/11/2024
+ms.date: 01/30/2025
 ---
 # Controlling and suppressing Kusto SDK client-side tracing
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The Kusto client libraries are instrumented to writer traces to local files.
-The tracing mechanism is disabled by default, and can be enabled programmatically.
+The Kusto client libraries are instrumented to write traces to local files. By default the tracing mechanism is disabled, but can be enabled programmatically.
 
-## Enabling tracing
+## Enable tracing
 
-To enable tracing, execute the following code:
+You can enable tracing in a Kusto client application using the `Kusto.Cloud.Platform.Utils` namespace. Ensure you have the `Microsoft.Azure.Kusto.Cloud.Platform` NuGet package. Run the following code to enable tracing:
 
 ```csharp
-using Kusto.Cloud.Platform.Utils; // Requires Nuget package Microsoft.Azure.Kusto.Cloud.Platform.
+using Kusto.Cloud.Platform.Utils; // Requires the NuGet package, Microsoft.Azure.Kusto.Cloud.Platform.
 
 var manifest = new RollingCsvTraceListener2Manifest
 {
-  TracesLocalRootPath=@"c:\temp" // The folder to which trace files will be  written
+  TracesLocalRootPath=@"c:\temp" // The folder where trace files will be written.
 };
 RollingCsvTraceListener2.CreateAndInitialize(manifest);
 TraceSourceManager.StartupDone();
 ```
 
-## Controlling trace level
+## Control trace level
 
-Each trace source in the library can have its own default verbosity level.
-A trace source will only write to file traces whose verbosity is equal to or above its verbosity level.
-To control the verbosity of all trace sources, the following code can be called
-(for example, here we're forcing all trace sources to write all traces to files):
+Each trace source in the library can have its own default verbosity level. A trace source only writes to file traces whose verbosity is equal to or above its own verbosity level. You can control the verbosity of the trace sources. The following example sets the verbosity level for all trace sources to `Verbose`, ensuring that all traces are written to files:
 
 ```csharp
-using Kusto.Cloud.Platform.Utils; // Requires Nuget package Microsoft.Azure.Kusto.Cloud.Platform.
+using Kusto.Cloud.Platform.Utils; // Requires the NuGet package, Microsoft.Azure.Kusto.Cloud.Platform.
 
 TraceSourceManager.SetOverrideTraceVerbosityLevel(TraceVerbosity.Verbose);
 ```
 
-Using this with `TraceVerbosity.Fatal` as an argument stops writing
-all traces except the most severe.
+Use the `TraceVerbosity.Fatal` argument to trace only the most severe events.
 
-## Flushing any pending traces
+## Flush all pending traces
 
-To force all pending traces to be flushed to files, and "recycle" all files,
-use the following code. It's recommended that this be done when the application
-hosting the trace system is closed (it can be done safely even if the tracing system
-is never initialized.)
+Flushing pending trace is recommended when the application hosting the trace system is closed to ensure unwritten traces are saved. It can be done safely even if the tracing system isn't initialized. The following code forces all pending traces to flush to files and recycle all files:
 
 ```csharp
 TraceSourceManager.SuperFlush(SuperFlushMode.Emergency);
@@ -57,15 +49,16 @@ TraceSourceManager.SuperFlush(SuperFlushMode.Emergency);
 
 ## Enable MSAL (Microsoft Authentication Library) tracing
 
-Once tracing for client libraries is enabled, tracing for [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview) is enabled automatically.
+ Enabling tracing for client libraries automatically enables tracing for [MSAL (Microsoft Authentication Library)](/azure/active-directory/develop/msal-overview).
 
-## Reading trace files
+## Read trace files
 
-Trace files are written to the folder indicated when the tracing system is initialized
-(or subfolders in that folder), and are formatted as CSV files with the `.csv` extension.
-Files that are being actively written-to have the extension `.csv.in-progress`
-(and automatically renamed once they're sealed.)
+Once the tracing system is initialized,  trace files are written to the specified folder or its subfolders. They're formatted as CSV files with the `.csv` extension. Files that are currently being written use the extension `.csv.in-progress` and are automatically renamed once they're completed.
 
-Each record in every trace file consists of several fields. The second is the
-timestamp of the trace record; the third is the trace source name; the fourth is the trace level,
-and the last is the textual content of the trace record.
+Each trace file record includes the following fields:
+
+* **Trace record identifier:** Uniquely identifies each trace record.
+* **Timestamp:** The timestamp of the trace record.
+* **Trace source name:** The name of the trace source.
+* **Trace level:** The verbosity level of the trace.
+* **Textual content:** The trace record content.
