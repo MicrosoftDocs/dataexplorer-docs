@@ -3,7 +3,7 @@ title: macro-expand operator
 description: Learn how to use the macro-expand operator to run a subquery on a set of entities.
 ms.reviewer: ziham1531991
 ms.topic: reference
-ms.date: 01/27/2025
+ms.date: 01/30/2025
 ---
 # macro-expand operator
 
@@ -30,7 +30,7 @@ The `macro-expand` operator runs the subquery separately for each entity in the 
 
 ### Variations
 
- There are several ways to specify the entity group used by the `macro-expand` operator:
+There are several ways to specify the entity group used by the `macro-expand` operator:
 
 1. **Inline:** All elements are explicitly defined in the text of the operator invocation itself. For an example, see [Calculate errors](#calculate-errors).
 
@@ -66,6 +66,8 @@ The `macro-expand` subquery can reference two specialized scalar functions as if
 * `$current_cluster_endpoint` - Returns the URL of the cluster of the entity reference.
 
 ## Examples
+
+The following examples show how to use the `macro-expand`operator.
 
 ### Calculate errors
 
@@ -123,7 +125,7 @@ macro-expand GreaterDatabase as X
 
 ### Extend table with contextual scalar functions
 
-The following query runs a subquery on the `Admins` table from each entity using the [stored entity group](#variations) variation, using the stored entity group `MyEntityGroup`. For more information on how to create a stored entity, see [.create entity_group command](../management/create-entity-group.md). It uses `$current_database` and `$current_cluster_endpoint` to extend the table, adding the current database and current cluster for each row. Then, it summarizes the results by counting the number of rows for each combination of `current_cluster` and `current_database`.
+The following query uses the [stored entity group](#variations) variation. It runs a subquery on the `Admins` table from each entity using the stored entity group `MyEntityGroup`. For more information on how to create a stored entity, see [.create entity_group command](../management/create-entity-group.md). It uses `$current_database` and `$current_cluster_endpoint` to extend the table, adding the current database and current cluster for each row. Then, it summarizes the results by counting the number of rows for each combination of `current_cluster` and `current_database`.
 
 ```kusto
 macro-expand MyEntityGroup as X
