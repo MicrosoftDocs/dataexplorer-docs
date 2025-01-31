@@ -198,9 +198,9 @@ You should now be able to see the newly created data connection in the Azure por
 
 This explanation simplifies what occurs in the backend when the request is sent:
 
-Azure validates the Entra account for Contributor or Owner permissions in Data Explorer before processing the new data connection request. More explicitly: Microsoft.Kusto/clusters/databases/dataConnections/write.
+Azure validates the Entra account for Contributor or Owner permissions in Data Explorer before processing the new data connection request. More explicitly: `Microsoft.Kusto/clusters/databases/dataConnections/write`.
 
-Simultaneously, Azure checks that the account has necessary permissions to list the keys of the Event Hub namespace. More explicitly: Microsoft.EventHub/namespaces/listKeys/action.
+Simultaneously, Azure checks that the account has necessary permissions to list the keys of the Event Hub namespace. More explicitly: `Microsoft.EventHub/namespaces/listKeys/action`.
 
 If both permissions are valid, Event Hub keys are used to establish the connection in Data Explorer. Afterward, Entra account permissions can be removed, as Event Hub keys are used for data ingestion authentication.
 
