@@ -9,7 +9,7 @@ ms.date: 11/13/2023
 
 When you need to create a data connection for an Azure Event Hubs or Azure Event Grid service in a different tenant, use our [Create Data Connections API](/rest/api/azurerekusto/dataconnections/createorupdate) to build the connection.
 
-In the following example, you use PowerShell to create a cross-tenant Event Hubs data connection and [auxiliary tokens](/azure/azure-resource-manager/management/authenticate-multi-tenant) to authenticate.
+In the following example, use PowerShell to create a cross-tenant Event Hubs data connection and [auxiliary tokens](/azure/azure-resource-manager/management/authenticate-multi-tenant) to authenticate.
 
 ## Prerequisites
 
@@ -29,8 +29,7 @@ In the following example, you use PowerShell to create a cross-tenant Event Hubs
 1. In the Azure portal, browse to your Event Hubs namespace.
 1. In the left menu, select **Access control (IAM)** > **Add role assignments**
 
-    :::image type="content" source="media/cross-tenant-ingestion/access-control.png" alt-text="Screenshot of Event Hubs namespace":::
- <!--- screen shot is for receiver, not owner. Needs replacing. -->
+    :::image type="content" source="media/cross-tenant-ingestion/access-control.png" alt-text="Screenshot of Event Hubs namespace"::: <!--- screen shot is for receiver, not owner. Needs replacing? -->
 
 1. In the **Add role assignment** window, fill out the following information, and then select **Save**. <!--to add to list of prerequisites?-->
 
@@ -50,7 +49,7 @@ The Entra object can be an [Entra account](#get-an-entra-account-access-token-fo
 
 ### Get an Entra Account access token for Tenant1
 
-1. Create the `Get-AzCachedAccessToken` function to get the access token for *Tenant1*. The source code for the function can be found in the [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this code in your personal PowerShell profile to make it easier to call, or you can run it and then use it in these steps. <!--to add the code here as in the wiki?
+1. Create the `Get-AzCachedAccessToken` function to get the access token for *Tenant1*. The source code for the function can be found in the [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this code in your personal PowerShell profile to make it easier to call, or you can run it and then use it in these steps. <!--to add the code here as in the wiki?>
 
 1. Run the following command to connect to *Tenant1* and subscription:
 
@@ -193,14 +192,17 @@ You should now be able to see the newly created data connection in the Azure por
 
 1. *Optional*: Once the data connection is established, consider revoking or deleting any unnecessary permissions or accounts in both Data Explorer and Event Hubs.
 
+You should now be able to see the newly created data connection in the Azure portal.
+
 ## Backend Process
 
 This explanation simplifies what occurs in the backend when the request is sent:
 
 Azure validates the Entra account for Contributor or Owner permissions in Data Explorer before processing the new data connection request. More explicitly: Microsoft.Kusto/clusters/databases/dataConnections/write.
+
 Simultaneously, Azure checks that the account has necessary permissions to list the keys of the Event Hub namespace. More explicitly: Microsoft.EventHub/namespaces/listKeys/action.
-If both permissions are valid, Event Hub keys are used to establish the connection in Data Explorer.
-Afterward, Entra account permissions can be removed, as Event Hub keys are used for data ingestion authentication.
+
+If both permissions are valid, Event Hub keys are used to establish the connection in Data Explorer. Afterward, Entra account permissions can be removed, as Event Hub keys are used for data ingestion authentication.
 
 ## Related content
 
