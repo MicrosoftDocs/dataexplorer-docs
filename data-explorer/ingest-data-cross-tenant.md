@@ -49,7 +49,7 @@ The Entra object can be an [Entra account](#get-an-entra-account-access-token-fo
 
 ### Get an Entra Account access token for Tenant1
 
-1. Create the `Get-AzCachedAccessToken` function to get the access token for *Tenant1*. The source code for the function can be found in the [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this code in your personal PowerShell profile to make it easier to call, or you can run it and then use it in these steps. <!--to add the code here as in the wiki?>
+1. Create the `Get-AzCachedAccessToken` function to get the access token for *Tenant1*. The source code for the function can be found in the [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this code in your personal PowerShell profile to make it easier to call, or you can run it and then use it in these steps. <!--to add the code here as in the wiki? -->
 
 1. Run the following command to connect to *Tenant1* and subscription:
 
