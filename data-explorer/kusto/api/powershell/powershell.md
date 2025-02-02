@@ -3,7 +3,7 @@ title:  Kusto .NET Client Libraries from PowerShell
 description: This article describes how to use Kusto .NET Client Libraries from PowerShell.
 ms.reviewer: salevy
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 02/02/2025
 ---
 # Use Kusto .NET client libraries from PowerShell
 
@@ -21,7 +21,7 @@ To use the Kusto .NET client libraries in PowerShell:
 
 1. Download [`Microsoft.Azure.Kusto.Tools`](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
 1. Right-click on the downloaded package. From the menu, select your archiving tool and extract the package contents. If the archiving tool isn't visible from the menu, select **Show more options**. The extraction results in multiple folders, one of which is named *tools*.
-1. Inside the *tools* folder, there are different subfolders catering to different PowerShell versions. For PowerShell version 5.1, use the *net472* folder. For PowerShell version 7 or later, use any of the version folders. Copy the path of the relevant folder.
+1. Inside the *tools* folder, there are different subfolders catering to different PowerShell versions. For PowerShell version 5.1, use the *net472* folder. For PowerShell version 7 or later, use any of the version folders except the *net472* folder. Copy the path of the relevant folder.
 1. From PowerShell, load the libraries, replacing `<path>` with the copied folder path:
 
     ```powershell
@@ -36,13 +36,16 @@ To use the Kusto .NET client libraries in PowerShell:
 
 Once loaded, you can use the libraries to [connect to a cluster and database](#connect-to-a-cluster-and-database).
 
+> [!NOTE]
+> The tools in the *net472* folder aren't supported in Linux.
+
 ## Connect to a cluster and database
 
 Authenticate to a cluster and database with one of the following methods:
 
 * **User authentication:** Prompt the user to verify their identity in a web browser.
 * **Application authentication:** [Create a Microsoft Entra app](../../access-control/provision-entra-id-app.md) and use the credentials for authentication.
-* **Azure CLI authentication:** Sign-in to the Azure CLI on your machine, and Kusto will retrieve the token from Azure CLI.
+* **Azure CLI authentication:** Sign-in to the Azure CLI on your machine, and Kusto retrieves the token from Azure CLI.
 
 Select the relevant tab.
 
@@ -59,7 +62,7 @@ $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databas
 
 ### [Application](#tab/app)
 
-[Create an MS Entra app](../../access-control/provision-entra-id-app.md) and grant it access to your database. Then, provide the app credentials in place of the `$applicationId`, `$applicationKey`, and `$authority`.
+[Create a Microsoft Entra application](../../access-control/provision-entra-id-app.md) and grant it access to your database. Then, provide the app credentials in place of the `$applicationId`, `$applicationKey`, and `$authority`.
 
 ```powershell
 $clusterUrl = "<Your cluster URI>"
@@ -90,7 +93,7 @@ $kcsb = $kcsb.WithAadAzCliAuthentication()
 
 Create a query provider and run [Kusto Query Language](../../query/index.md) queries.
 
-The following example defines a simple [take](../../query/take-operator.md) query to sample the data. To run the query, replace `<TableName>` with the name of a table in your database. Before running the query, the [ClientRequestProperties class](../netfx/client-request-properties.md) is used to set a client request ID and a server timeout. Then, the query is run and the result set is formatted and sorted.
+The following example defines a simple [take](../../query/take-operator.md) query to sample the data. To run the query, replace `<TableName>` with the name of a table in your database. The [ClientRequestProperties class](../netfx/client-request-properties.md) is used to set a client request ID and a server time-out before running the query. Then, the query is run and the result set is formatted and sorted.
 
 ```powershell
 $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)
