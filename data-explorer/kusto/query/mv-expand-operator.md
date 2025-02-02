@@ -67,7 +67,7 @@ Two modes of property bag expansions are supported:
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
-Review the examples and run them in your Data Explorer query page.
+The examples in this section show how to use the syntax to help you get started.
 
 ### Single column - array expansion
 
