@@ -35,9 +35,6 @@ To identify event sequences within a relatively small time window, this example 
 
 The following query creates the dataset and then identifies all the session IDs in which event type `A` was followed by an event type `B` within a `1min` time window.
 
-> [!NOTE]
-> In the sample data in the example query, the only such session ID is `0`.
-
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WQTWvDMAyG74H8B91iQ1LsdjDI8GGFHnZubmOHdBGdu8YJjlgZ7MdPbsgHtKS2sbD12O8rnZGgAANVSTwPZxR77DrbuLcq78hbd0xh94OOit8Wx5vC1thRWbc5v0Pik4yj9zgCHolKUkheeRtyYq30c6ZVpjQolV+XTOf0doHWc1o/otc39JKTzZzePKKfbugFJ3qo8uMljgqIoz+4fKHHqZtgTNALmdY3J/wkGHufwp5KT2ZsdKBOjXXwbV1lrHPoeyOiD0EhxPsq22TI3lHa8YczncBJaNyETN4Fs5D13iQckC6IDoSq2dhqBZqjXKrnKvYPNlcRxHMCAAA=" target="_blank">Run the query</a>
