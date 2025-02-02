@@ -41,7 +41,7 @@ This command returns a table with the following columns:
 
 ## Examples
 
-The following examples show how to use the `.show entity_group` and `.show entity_group commands`.
+The following examples show how to use the `.show entity_group` and `.show entity_group` commands.
 
 ### Show entity groups
 
