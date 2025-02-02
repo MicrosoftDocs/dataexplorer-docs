@@ -37,7 +37,7 @@ To use the Kusto .NET client libraries in PowerShell:
 Once loaded, you can use the libraries to [connect to a cluster and database](#connect-to-a-cluster-and-database).
 
 > [!NOTE]
-> The tools in the *net472* folder aren't supported in Linux.
+> The tools in the *net472* folder aren't supported on Linux.
 
 ## Connect to a cluster and database
 
