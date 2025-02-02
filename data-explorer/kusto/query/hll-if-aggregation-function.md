@@ -3,7 +3,7 @@ title:  hll_if() (aggregation function)
 description: Learn how to use the hll_if() function to calculate the intermediate results of the dcount() function.
 ms.reviewer: ziham
 ms.topic: reference
-ms.date: 01/15/2025
+ms.date: 02/02/2025
 ---
 # hll_if() (aggregation function)
 
@@ -77,4 +77,4 @@ StormEvents
 * [Aggregation function types at a glance](aggregation-functions.md)
 * [Using hll() and tdigest()](using-hll-tdigest.md)
 * [hll() (aggregation function)](hll-aggregation-function.md)
-* [hll_merge()](hll-merge-function.md)
+* [hll_merge() (aggregation function)](hll-merge-aggregation-function.md)

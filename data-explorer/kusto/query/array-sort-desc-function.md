@@ -3,7 +3,7 @@ title:  array_sort_desc()
 description: Learn how to use the array_sort_desc() function to sort arrays in descending order.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 02/02/2025
 ---
 # array_sort_desc()
 
@@ -34,14 +34,20 @@ Returns the same number of arrays as in the input, with the first array sorted i
 
 `null` is returned for every array that differs in length from the first one.
 
-If an array contains elements of different types, it's sorted in the following order:
+An array which contains elements of different types, is sorted in the following order:
 
 * Numeric, `datetime`, and `timespan` elements
 * String elements
 * Guid elements
 * All other elements
 
-## Example 1 - Sorting two arrays
+## Examples
+
+The examples in this section show how to use the syntax to help you get started.
+
+### Sort two arrays
+
+The following example sorts the initial array, `array1`, in descending order. It then sorts `array2` to match the new order of `array1`.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -61,17 +67,19 @@ print array_sort_desc(array1,array2)
 |[5,4,3,2,1]|["d","c","b","e","a"]|
 
 > [!NOTE]
-> The output column names are generated automatically, based on the arguments to the function. To assign different names to the output columns, use the following syntax: `... | extend (out1, out2) = array_sort_desc(array1,array2)`
+> The output column names are generated automatically, based on the arguments to the function. To assign different names to the output columns, use the following syntax: `... | extend (out1, out2) = array_sort_desc(array1,array2)`.
 
-## Example 2 - Sorting substrings
+## Sort substrings
+
+The following example sorts a list of names in descending order. It saves a list of names to a variable, `Names`, which is then splits into an array and sorted in descending order. The query returns the names in descending order.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHwS8xNLVawVVDyys/I0wlILM3RcU/NL0pP1QnKzEvPV7LmygGqCs4vKklNgaktLilKTiyJTywqSqzUAJPxxUAF8SmpxckaxQU5mSUaYKU6Cko6SpqaEMqaq6AoM69EoSi1uDSnBGgKkpkA+RSmRokAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHwS8xNLVawVVDyys%2FI0wlILM3R8UrMS9XxTqzMV7Lm5coBqgnOLypJTYGpLC4pSk4siU8sKkqs1ACT8cVABfEpqcXJGsUFOZklGmClOgpKOkqamhAKaFJBUWZeiUJRanFpTgnQGCRDAeUAGb%2BIAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let Names = "John, Paul, George, Ringo";
+let Names = "John,Paul,Jane,Kayo";
 let SortedNames = strcat_array(array_sort_desc(split(Names, ",")), ",");
 print result = SortedNames
 ```
@@ -80,9 +88,11 @@ print result = SortedNames
 
 |result|
 |---|
-|Ringo, Paul, John, George|
+|Paul,Kayo,John,Jane|
 
-## Example 3 - Combining summarize and array_sort_desc
+### Combine summarize and array_sort_desc
+
+The following example uses the `summarize` operator and the `array_sort_asc` function to organize and sort commands by user in descending chronological order.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -113,43 +123,43 @@ datatable(command:string, command_time:datetime, user_id:string)
 |user2|[<br>  "pwd",<br>  "rm"<br>]|
 
 > [!NOTE]
-> If your data may contain `null` values, use [make_list_with_nulls](make-list-with-nulls-aggregation-function.md) instead of [make_list](make-list-aggregation-function.md).
+> If your data can contain `null` values, use [make_list_with_nulls](make-list-with-nulls-aggregation-function.md) instead of [make_list](make-list-aggregation-function.md).
 
-## Example 4 - Controlling location of `null` values
+### Control location of `null` values
 
-By default, `null` values are put last in the sorted array. However, you can control it explicitly by adding a `bool` value as the last argument to `array_sort_desc()`.
+By default, `null` values are put last in the sorted array. However, you can control it explicitly by adding a `bool` value as the last argument to `array_sort_asc()`.
 
-Example with default behavior:
+The following example shows the default behavior:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKkqsjC/OLyqJT0ktTtZIqcxLzM1M1ojOK83J0VFKyilNVdJRqkzNyckvBzLSi1JT85R0QJKxmpoAGsR2QUMAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbFNLCpKrIwvzi8qiU9JLU7WSKnMS8zNTNaIzivNydFRSsopTVXSUapMzcnJLwcy0otSU%2FOUdECSsZqaAAa5vexKAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-print array_sort_desc(dynamic([null,"blue","yellow","green",null]))
+print result=array_sort_desc(dynamic([null,"blue","yellow","green",null]))
 ```
 
 **Output**
 
-|`print_0`|
+|result|
 |---|
 |["yellow","green","blue",null,null]|
 
-Example with nondefault behavior:
+The following example uses nondefault behavior through the `false` parameter, which specifies that nulls should be placed at the beginning of the array:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAxXJUQqAIAwA0KvIvhR2owhZukKYM6YS3r76e/BuKzocmdGKvdmImXvyeSnVkvymUwThkMmAsFikPR8uY1bAP/eA7iTpHF4VdlwBSgAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxXJUQqAIAwA0KvIvhR2hU4SIaYrhDVjU8LbV38P3q1VulOywX1JqmlGa9pjIcu%2BTElXzX6VwYyw8yBAmMTcng%2BnEgngn1tAdyQ2Ci%2Bihlo3UQAAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-print array_sort_desc(dynamic([null,"blue","yellow","green",null]), false)
+print result=array_sort_desc(dynamic([null,"blue","yellow","green",null]), false)
 ```
 
 **Output**
 
-|`print_0`|
+|result|
 |---|
 |[null,null,"yellow","green","blue"]|
 
@@ -157,4 +167,4 @@ print array_sort_desc(dynamic([null,"blue","yellow","green",null]), false)
 
 * [Aggregation function types at a glance](aggregation-functions.md)
 * [array_sort_asc()](array-sort-asc-function.md)
-* 
+* [strcat_array()](strcat-array-function.md)

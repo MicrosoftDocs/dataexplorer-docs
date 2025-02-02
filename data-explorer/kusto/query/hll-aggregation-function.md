@@ -3,7 +3,7 @@ title:  hll() (aggregation function)
 description: Learn how to use the hll() function to calculate the results of the dcount() function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/15/2025
+ms.date: 02/02/2025
 ---
 # hll() (aggregation function)
 
@@ -77,4 +77,4 @@ The results table shown includes only the first 10 rows.
 * [Aggregation function types at a glance](aggregation-functions.md)
 * [Using hll() and tdigest()](using-hll-tdigest.md)
 * [hll_if() (aggregation function)](hll-if-aggregation-function.md)
-* [hll_merge()](hll-merge-function.md)
+* [hll_merge() (aggregation function)](hll-merge-aggregation-function.md)
