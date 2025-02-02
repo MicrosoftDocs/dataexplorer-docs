@@ -3,7 +3,7 @@ title:  datatable operator
 description: Learn how to use the datatable operator to define a table with given schema and data.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/07/2025
+ms.date: 01/21/2025
 ---
 # datatable operator
 
@@ -37,6 +37,8 @@ This operator returns a data table of the given schema and data.
 
 ## Example
 
+This example creates a table with *Date*, *Event*, and *MoreData* columns, filters rows with Event descriptions longer than 4 characters, and adds a new column *key2* to each row from the MoreData dynamic object.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XRS4vCMBAA4Lu/YsiphbiY1upa0IPYo8velz2kZtRgTCCNL1z/uxNZd6HYJAQyj++QUTLQrg0mCxmwVHQFvUcO1RFtKJvgtd1wWDqPVCBLdbFyr1cpfPWA1rM+ERMx6A9GfSFSDmzuvGUcfouTK9vhRbCSHaU5oKBMDGTPQMZuKW9zOXGCTuQqG9A3UK2cQfiQ1ISdet7Wh6/0Iv/XPw+10c0WFay1bwLUzu06+aLNj17xk3H8i6yI/EKj6uTGbe79wX33fuC0RY9AAzBok8c0UpjBkDJ4DmgVxDaY/o3mLb7vp72pd88BAAA=" target="_blank">Run the query</a>
@@ -55,7 +57,7 @@ datatable(Date:datetime, Event:string, MoreData:dynamic) [
 
 **Output**
 
-|Date|Event|MoreData|key2|
-|---|---|---|---|
-|1930-01-01 00:00:00.0000000|Enters Ecole Navale|{<br>  "key1": "value3",<br>  "key2": "value4"<br>}|value4|
-|1953-01-01 00:00:00.0000000|Published first book|{<br>  "key1": "value5",<br>  "key2": "value6"<br>}|value6|
+| Date | Event | MoreData | key2 |
+|--|--|--|--|
+| 1930-01-01 00:00:00.0000000 | Enters Ecole Navale | {<br>  "key1": "value3",<br>  "key2": "value4"<br>} | value4 |
+| 1953-01-01 00:00:00.0000000 | Published first book | {<br>  "key1": "value5",<br>  "key2": "value6"<br>} | value6 |

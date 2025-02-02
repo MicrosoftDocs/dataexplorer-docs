@@ -12,7 +12,6 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 Counts the number of records per summarization group, or total if summarization is done without grouping.
 
-[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 ::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 To only count records for which a predicate returns `true`, use [countif()](countif-aggregation-function.md).
 ::: moniker-end

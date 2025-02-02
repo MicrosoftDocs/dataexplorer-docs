@@ -65,6 +65,8 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 ## Examples
 
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ### Define scalar values
 
 The following example uses a scalar expression statement.
@@ -90,6 +92,16 @@ The following example binds the name `some number` using the `['name']` notation
 let ['some number'] = 20;
 range y from 0 to ['some number'] step 5
 ```
+
+**Output**
+
+|y|
+|---|
+|0|
+|5|
+|10|
+|15|
+|20|
 
 ### Create a user defined function with scalar calculation
 

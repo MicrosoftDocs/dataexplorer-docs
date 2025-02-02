@@ -92,7 +92,7 @@ Both tables contain a `State` column. The `StormEvents` table has many more colu
 
 ### Join the tables
 
-Join the `PopulationData` table with `StormEvents` on the common `State` column to find the total property damage caused by storms per capita by state.
+Join the `PopulationData` table with `StormEvents` on the common `State` column to find the total property damage caused by storms per capita by state.  
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -116,12 +116,21 @@ Add `| render columnchart` to the query to visualize the result.
 
 :::image type="content" source="../media/kql-tutorials/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
+If the columns have different names, for example `StormEvents` has `State` and `PopulationData` has `StateName`,  specify the join as follows:
+
+```kusto 
+StormEvents
+| join kind=innerunique PopulationData on $left.State == $right.StateName  
+```
+
+`$left` is the table on the left, or outer side of the join operator, in this case `StormEvents`. `$right` is the table on the right, or inner side of the join operator, in this case `PopulationData`.  
+
 > [!TIP]
 > There are many types of joins that you can perform with the `join` operator. See a [list of join flavors](../join-operator.md#returns).
 
 ## Use the lookup operator
 
-The [lookup](../lookup-operator.md) operator optimizes the performance of queries where a fact table is enriched with data from a dimension table. It extends the fact table with values that are looked up in a dimension table. For best performance, the system by default assumes that the left table is the larger fact table, and the right table is the smaller dimension table. This is exactly opposite to the assumption that's used by the `join` operator.
+The [lookup](../lookup-operator.md) operator optimizes the performance of queries where a fact table is enriched with data from a dimension table. It extends the fact table with values that are looked up in a dimension table. For best performance, the system by default assumes that the left table is the larger fact table, and the right table is the smaller dimension table. This is exactly opposite to the assumption that's used by the `join` operator.  
 
 In the help cluster, there's another database called `ContosoSales` that contains sales data. The following query uses `lookup` to merge the `SalesFact` and `Products` tables from this database to get the total sales by product category.
 
