@@ -21,12 +21,6 @@ In this article you learn how to use PowerShell to create a cross-tenant Event H
 
 You must have at least [Azure Event Hubs Data Owner](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-owner) permissions.
 
-|**Setting** | **Suggested value** |
-|---|---|
-| Role | [Azure Event Hubs Data Owner](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-owner) |
-| Assign access to | User, group, or service principal |
-| Select | The email address of the user in *Tenant2* |
-
 > [!NOTE]
 > The account can be local or guest to Tenant1 or Tenant2, as long as it has the prerequisite permissions.
 > Permissions must be at the Namespace level, and not at the Event Hubs level. Only Event Hubs Namespace keys are used for the connection.
@@ -35,15 +29,21 @@ You must have at least [Azure Event Hubs Data Owner](/azure/role-based-access-co
 
 1. In the Azure portal, browse to your Event Hubs namespace.
 
-1. In the left menu, select **Access control (IAM)** > **Add role assignments**
+1. In the left menu, select **Access control (IAM)** > **Add role assignments**.
 
-1. In the **Add role assignment** window, fill out the following information, and then select **Save**.
+1. In the **Add role assignment** window, enter the settings in the table and then select **Save**.
+
+    | **Setting** | **Suggested value** |
+    |--|--|
+    | Role | [Azure Event Hubs Data Owner](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-owner) |
+    | Assign access to | User, group, or service principal |
+    | Select | The email address of the user in *Tenant2* |
 
 1. When you receive an email invite on the selected address (`acc2@domain2.com account`), accept the invitation.
 
 ## Get an Access token for Tenant1
 
-The Entra object can be an [Entra account](#get-an-entra-account-access-token-for-tenant1) (for example, user@domain.com) or a [multitenant service principal](#get-a-service-principal-access-token-for-tenant1). For more information, see [Convert to multitenant](/entra/identity-platform/howto-convert-app-to-be-multi-tenant).
+Set up a cross-tenant data connection between Event Hubs and Data Explorer using PowerShell.
 
 # [Entra account](#tab/entra)
 
@@ -117,7 +117,7 @@ You should now be able to see the newly created data connection in the Azure por
 
 # [Service Principal](#tab/SPA)
 
-1. Create the `Get-AzCachedAccessToken` function to get the access token for *Tenant1*. The source code for the function can be found in the [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this code in your personal PowerShell profile to make it easier to call, or you can run it and then use it in these steps. <!--to add the code here as in the wiki?
+1. Create the `Get-AzCachedAccessToken` function to get the access token for *Tenant1*. The source code for the function can be found in the [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this code in your personal PowerShell profile to make it easier to call, or you can run it and then use it in these steps.
 
 1. Generate the Service Principal credential:
 
@@ -197,3 +197,4 @@ Afterward, Entra account permissions can be removed, as Event Hub keys are used 
 ## Related content
 
 * [Query data in Azure Data Explorer](web-query-data.md)
+* [Convert to multitenant](/entra/identity-platform/howto-convert-app-to-be-multi-tenant)
