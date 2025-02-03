@@ -3,7 +3,7 @@ title:  Create materialized view
 description:  This article describes how to create materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 01/29/2025
+ms.date: 02/03/2025
 ---
 
 # .create materialized-view
@@ -63,7 +63,7 @@ The following properties are supported in the `with` `(`*PropertyName* `=` *Prop
 > [!WARNING]
 >
 > * The system will automatically disable a materialized view if changes to the source table of the materialized view, or changes in data, lead to incompatibility between the materialized view query and the expected materialized view schema.
-> * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpack-plugin.md) or [pivot](../../query/pivot-plugin.md) plugin results in a non-deterministic schema.
+> * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpack-plugin.md) or [pivot](../../query/pivot-plugin.md) plugin results in a nondeterministic schema.
 > * When you're using an `arg_max(Timestamp, *)` aggregation and when `autoUpdateSchema` is false, changes to the source table can also lead to schema mismatches. Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)`, or by using the `autoUpdateSchema` option.
 > * Using `autoUpdateSchema` might lead to irreversible data loss when columns in the source table are dropped.
 > * Monitor automatic disabling of materialized views by using the [MaterializedViewResult metric](materialized-views-monitoring.md#materializedviewresult-metric).
@@ -79,7 +79,7 @@ For example, consider a materialized view used to store the last event for each 
 Events | summarize arg_max(ReceivedTime, *) by SessionId
 ```
 
-Assuming that a session doesn’t last for more than one day, the materialized view lookback can be defined as one day, based on the `ReceivedTime` column:
+When it's clear that a session won't last for more than one day, then the `lookback_column` and `lookback` period can be set, to improve performance:
 
 ```kusto
 .create materialized-view with(lookback=1d, lookback_column = "ReceivedTime") SessionEvents on table Events
@@ -90,14 +90,15 @@ Assuming that a session doesn’t last for more than one day, the materialized v
 ```
 
 Setting a lookback on a materialized view reduces the portion of the view scanned during materialization. Instead of scanning the entire materialized view, only the part that falls within the lookback period is combined with the *delta*, or newly ingested data, during materialization. For more information, see [How materialized views work](materialized-view-overview.md#how-materialized-views-work).
-While this step can significantly improve the materialized view's performance, setting an incorrect lookback period can result in duplicate records. In the previous web session example, if a record is ingested two days after a record for the same `SessionId`, the materialized view will have duplicate records for that `SessionId`.
+While this step can significantly improve the materialized view's performance, setting an incorrect lookback period can result in duplicate records. In the previous example, if a record is ingested two days after a record for the same `SessionId`, the materialized view will have duplicate records for that `SessionId`.
 
 #### Lookback column
 
-The lookback period is always relative to a materialized view `datetime` column. There are two ways to define this column:
+The lookback period is always relative to a `datetime` column in the materialized view. There are two ways to define this column:
 
-* **Default:** Relative to the record's [ingestion_time()](../../query/ingestion-time-function.md) in the source table, records are deduplicated only against records ingested to the source table after a lookback period relative to the current records. This kind of lookback is valid only for `arg_max`, `arg_min`, or `take_any` materialized views, and only for views that preserve ingestion time. For more information, see [Materialized views limitations and known issues](materialized-views-limitations.md).
+* **Default:** Relative to the record's [ingestion_time()](../../query/ingestion-time-function.md) in the source table. Records are deduplicated only against records which are ingested to the source table after a lookback period relative to the current records. This kind of lookback is valid only for `arg_max`, `arg_min`, or `take_any` materialized views, and only for views that preserve ingestion time. For more information, see [Materialized views limitations and known issues](materialized-views-limitations.md).
 You can configure the default option by setting the `lookback` property without the `lookback_column` property.
+
 * **lookback_column (Preview):** Relative to a `datetime` column in the materialized view. The lookback is explicitly specified in the materialized view definition, using the `lookback_column` property. For more information, see [Known limitations](#known-limitations).You can configure the lookback column option by setting both the `lookback` and the `lookback_column` properties.
 
 #### Known limitations
@@ -258,7 +259,7 @@ The following rules limit the query used in the materialized view Query paramete
 
     **Example**: A view definition includes an inner join with a dimension table. At the time of materialization, the dimension record wasn't fully ingested, but it was already ingested into the fact table. This record is dropped from the view and never processed again.
 
-    Similarly, if the join is an outer join, the record from fact table are processed and added to view with a null value for the dimension table columns. Records that have already been added (with null values) to the view aren't processed again. Their values, in columns from the dimension table, remains null.
+    Similarly, if the join is an outer join, the records from the fact table are processed and added to view with a null value for the dimension table columns. Records that have already been added (with null values) to the view aren't processed again. Their values, in columns from the dimension table, remains null.
 
 ### Supported aggregation functions
 
@@ -491,7 +492,7 @@ You can also use one of the [recommended orchestration tools](/azure/data-explor
   * **The `move_extents_from` table**: `DeduplicatedTable` in the following example. This table should include all historical data to backfill. You can optionally use the `effectiveDateTime` property to include only extents in `DeduplicatedTable` whose `MaxCreatedOn` value is greater than `effectiveDateTime`.
   * **The source table of the materialized view**: `T` in the following example. Backfill from this table includes only records whose [ingestion_time()](../../query/ingestion-time-function.md) value is greater than `source_ingestion_time_from`.
 
-     The `source_ingestion_time_from` property should be used only to handle the possible data loss in the short time between preparing the table to backfill from (`DeduplicatedTable`) and the time that the view is created. Don't set this property too far in the past or the materialized view starts with a significant lag, which might be hard to catch up with.
+     The `source_ingestion_time_from` property should be used only to handle the possible data loss in the short time between preparing the table to backfill from (`DeduplicatedTable`) and the time that the view is created. Don't set this property too far in the past. That would start the materialized view with a significant lag, which might be hard to catch up with.
 
    In the following example, assume that the current time is `2020-01-01 03:00`. Table `DeduplicatedTable` is a deduped table of `T`. It includes all historical data, deduplicated until `2020-01-01 00:00`. The `create` command uses `DeduplicatedTable` for backfilling the materialized view by using move extents. The `create` command also includes all records in `T` that were ingested since `2020-01-01`.
 

@@ -3,7 +3,7 @@ title:  .create-or-alter materialized view
 description:  This article describes `.create-or-alter materialized view`.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 01/29/2025
+ms.date: 02/03/2025
 ---
 # .create-or-alter materialized-view
 
@@ -45,7 +45,7 @@ If the table already exists, only the following subset of properties are support
 | Name                      | Type     | Description  |
 |---------------------------|--------- |--------|
 | lookback | `timespan` | The time span that limits the period during which duplicates or updates are expected. For more information, see [Lookback period](materialized-view-create.md#lookback-period). |
-| lookback_column | `datetime` | A `datetime` column in the view that serves as the reference for the lookback period. If the lookback period isn't specified, it's calculated based on [ingestion_time()](../../query/ingestion-time-function.md). If a `lookback_column` is already defined, its value can't be modified. For more information, see [Lookback period](materialized-view-create.md#lookback-period). |
+| lookback_column | `string` | A `string` column in the view that serves as the reference for the lookback period. If the `lookback_column` isn't defined, the lookback period is calculated based on [ingestion_time()](../../query/ingestion-time-function.md). If a `lookback_column` is already defined, its value can't be modified. For more information, see [Lookback period](materialized-view-create.md#lookback-period). |
 | autoUpdateSchema | `bool` | Whether to automatically update the view on source table changes. Default is `false`. This option is valid only for views of type `arg_max(Timestamp, *)`/`arg_min(Timestamp, *)`/`take_any(*)` (only when the column's argument is `*`). If this option is set to `true`, changes to the source table are automatically reflected in the materialized view. |
 |--|--|--|
 | folder | `string` | The materialized view's folder. |
@@ -57,9 +57,11 @@ If the table already exists, only the following subset of properties are support
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
 ### Create or alter a materialized view
 
-The following example creates a new materialized view or alters an existing one called `ArgMax` that is based on table `T`. It contains the most recent record based on the `Timestamp` column, for each user from table `T`.
+The following example creates a new materialized view or alters an existing one called `ArgMax` that's based on table `T`. It contains the most recent record based on the `Timestamp` column, for each user from table `T`.
 
 ```kusto
 .create-or-alter materialized-view ArgMax on table T
