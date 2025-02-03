@@ -19,7 +19,7 @@ In this article, you learn how to use PowerShell to create a cross-tenant Event 
 
 ## Permissions
 
-You must have at least [Azure Data Explorer Receiver](/azure/role-based-access-control/built-in-roles/analytics#azure-event-hubs-data-receiver) permissions.
+You must have at least [Azure Data Explorer Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions.
 
 > [!NOTE]
 > The account can be local or guest to Tenant1 or Tenant2, as long as it has the prerequisite permissions.
@@ -45,7 +45,9 @@ You must have at least [Azure Data Explorer Receiver](/azure/role-based-access-c
 
 Set up a cross-tenant data connection between the cluster and Event Hubs using PowerShell.
 
-1. Create the `Get-AzCachedAccessToken` function to get the access token for *Tenant1*. The source code for the function can be found in the [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this code in your personal PowerShell profile to make it easier to call, or you can run it and then use it in these steps.
+**Before you begin**
+
+Create the `Get-AzCachedAccessToken` function to get the access token for *Tenant1*. The source code for the function can be found in the [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this code in your personal PowerShell profile to make it easier to call, or you can run it and then use it in these steps.
 
 # [Entra account](#tab/entra)
 
@@ -181,7 +183,7 @@ Set up a cross-tenant data connection between the cluster and Event Hubs using P
 
 ---
 
-Verify that you can see the newly created data connection in the Azure portal.
+Verify that you can now see the newly created data connection in the Azure portal.
 
 *Optional*: Once the data connection is established, consider revoking or deleting any unnecessary permissions or accounts.
 
