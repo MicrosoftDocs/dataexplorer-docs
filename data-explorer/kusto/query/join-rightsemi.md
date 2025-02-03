@@ -3,7 +3,7 @@ title:  rightsemi join
 description: Learn how to use the rightsemi join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 ---
 
 # rightsemi join
@@ -28,6 +28,8 @@ The `rightsemi` join flavor returns all records from the right side that match a
 **Rows**: All records from the right table that match records from the left table.
 
 ## Example
+
+This query filters and returns only those rows from table Y that have a matching key in table X.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -59,3 +61,7 @@ X | join kind=rightsemi Y on Key
 | b | 10 |
 | c | 20 |
 | c | 30 |
+
+## Related content
+
+* Learn about other [join flavors](join-operator.md#returns)
