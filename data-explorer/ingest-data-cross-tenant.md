@@ -41,7 +41,7 @@ You must have at least [Azure Data Explorer Receiver](/azure/role-based-access-c
 
 1. When you receive an email invite on the selected address (`acc2@domain2.com account`), accept the invitation.
 
-## Get an Access token for Tenant1
+## Set up the cross-date connection
 
 Set up a cross-tenant data connection between the cluster and Event Hubs using PowerShell.
 
@@ -67,7 +67,7 @@ Set up a cross-tenant data connection between the cluster and Event Hubs using P
     $auxpat="Bearer $tokenfromtenant1"
     ```
 
-1. Grant the cluster tenant `acc1@domain1.com` access to the cluster, and set the subscription ID.
+1. Grant the cluster tenant `acc1@domain1.com` access to the cluster, and set the subscription ID:
 
     ```PowerShell
     Connect-AzAccount -TenantId <Tenant ID> -SubscriptionId "<SubscriptionName>"
@@ -100,15 +100,15 @@ Set up a cross-tenant data connection between the cluster and Event Hubs using P
     $adxdcuri="https://management.azure.com/subscriptions/<subscriptionID>/resourceGroups/<resource group name>/providers/Microsoft.Kusto/clusters/<ADXClusterName>/databases/<ADXdbName>/dataconnections/<ADXDataConnectionName>?api-version=2020-02-15"
     ```
 
-1. Add `acc1@domain1.com` as a contributor in the cluster.
+1. Add `acc1@domain1.com` as a contributor in the cluster:
 
-1. Invoke the following web request that uses the previously defined variables, to create the data connection.
+1. Invoke the following web request that uses the previously defined variables, to create the data connection:
 
     ```PowerShell
     Invoke-WebRequest -Headers @{Authorization = $pat; 'x-ms-authorization-auxiliary' = $auxpat} -Uri $adxdcuri -Body $requestbody -Method PUT -ContentType 'application/json'
     ```
 
-# [Service Principal Account](#tab/spa)
+# [Service Principal account](#tab/spa)
 
 1. Create the `Get-AzCachedAccessToken` function to get the access token for *Tenant1*. The source code for the function can be found in the [PowerShell gallery](https://www.powershellgallery.com/packages/AzureSimpleREST/0.2.64/Content/internal%5Cfunctions%5CGet-AzCachedAccessToken.ps1). You can include this code in your personal PowerShell profile to make it easier to call, or you can run it and then use it in these steps.
 
@@ -124,31 +124,31 @@ Set up a cross-tenant data connection between the cluster and Event Hubs using P
     $Password = ConvertTo-SecureString -String "<Secret>" -AsPlainText -Force
     ```
 
-1. Create a new PSCredential object to securely store and pass credentials in PowerShell scripts.
+1. Create a new PSCredential object to securely store and pass credentials:
 
     ```PowerShell
     $Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $ServicePrincipalID, $Password
     ```
 
-1. Connect to the Event Hubs Tenant.
+1. Connect to the Event hub tenant:
 
     ```PowerShell
     Connect-AzAccount -TenantId <Tenant ID> -Subscription "<SubscriptionName>" -ServicePrincipal -Credential $Credential
     ```
 
-1. Store the cached access token in the $tokenfromtenant1 variable.
+1. Store the cached access token in the $tokenfromtenant1 variable:
 
     ```PowerShell
     $tokenfromtenant1 = Get-AzCachedAccessToken
     ```
 
-1. Create a string that includes the cached access token in the format required for authorization headers.
+1. Create a string that includes the cached access token in the format required for authorization headers:
 
     ```PowerShell
     $auxpat="Bearer $tokenfromtenant1"
     ```
 
-1. Connect to the Event Hubs Tenant.
+1. Connect to the Event hub tenant:
 
     ```PowerShell
     Connect-AzAccount -TenantId <Tenant ID> -Subscription "<SubscriptionName>" -ServicePrincipal -Credential $Credential
@@ -160,7 +160,7 @@ Set up a cross-tenant data connection between the cluster and Event Hubs using P
     $tokenfromtenant2 = Get-AzCachedAccessToken
     ```
 
-1. Create a string that includes the cached access token in the format required for authorization headers.
+1. Create a string that includes the cached access token in the format required for authorization headers:
 
     ```powershell
     $pat="Bearer $tokenfromtenant2"
@@ -178,7 +178,7 @@ Set up a cross-tenant data connection between the cluster and Event Hubs using P
     $adxdcuri="https://management.azure.com/subscriptions/<subscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Kusto/clusters/<ADXClusterName>/databases/<ADXdbName>/dataconnections/<ADXDataConnectionName>?api-version=2020-02-15"
     ```
 
-1. Send the request to create the data connection
+1. Send the request to create the data connection:
 
     ```PowerShell
     Invoke-WebRequest -Headers @{Authorization = $pat; 'x-ms-authorization-auxiliary' = $auxpat} -Uri $adxdcuri -Body $requestbody -Method PUT -ContentType 'application/json'
