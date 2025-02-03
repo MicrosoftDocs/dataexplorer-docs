@@ -183,9 +183,11 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
 
 ---
 
-Verify that you can now see the newly created data connection in the Azure portal.
+**After you finish**
 
-*Optional*: Once the data connection is established, consider revoking or deleting any unnecessary permissions or accounts.
+1. Verify that you can now see the newly created data connection in the Azure portal.
+
+1. *Optional*: Once the data connection is established, consider revoking or deleting any unnecessary permissions or accounts.
 
 > [!IMPORTANT]
 > If the access used to build the data connection is revoked on Event Hubs, make sure you delete the data connection. Otherwise, the cluster continues to ingest data even if access on Event Hubs is revoked.
