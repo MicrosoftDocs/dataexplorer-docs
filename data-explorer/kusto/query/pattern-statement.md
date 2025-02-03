@@ -60,9 +60,10 @@ For more information, see [Working with middle-tier applications](#work-with-mid
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
-In these examples, a pattern is defined.
 
 ### Define a simple pattern
 

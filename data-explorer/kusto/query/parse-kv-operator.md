@@ -59,7 +59,8 @@ The original input tabular expression *T*, extended with columns per specified k
 
 ## Examples
 
-Consider the following examples:
+The examples in this section show how to use the syntax to help you get started.
+
 
 ### Extraction with well-defined delimiters
 

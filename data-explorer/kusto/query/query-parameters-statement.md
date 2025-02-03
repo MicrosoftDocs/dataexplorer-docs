@@ -44,9 +44,9 @@ To reference query parameters, the query text, or functions it uses, must first 
 
 ## Example
 
-[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+The examples in this section show how to use the syntax to help you get started.
 
-Consider the following examples:
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Declare query parameters
 

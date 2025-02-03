@@ -30,6 +30,10 @@ A table with one or more columns and a single row. Each column returns the corre
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ### Print sum and variable value
 
 The following example outputs a row with two columns. One column contains the sum of a series of numbers and the other column contains the value of the variable, `x`.

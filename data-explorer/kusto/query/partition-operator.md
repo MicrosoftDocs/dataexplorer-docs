@@ -124,7 +124,10 @@ To use this strategy, specify `hint.strategy=legacy` or omit any other strategy 
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 
 ### Find top values
 

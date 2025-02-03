@@ -67,6 +67,8 @@ The input table extended according to the list of columns that are provided to t
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 The `parse` operator provides a streamlined way to `extend` a table by using multiple `extract` applications on the same `string` expression. This result is useful, when the table has a `string` column that contains several values that you want to break into individual columns. For example, a column that's produced by a developer trace ("`printf`"/"`Console.WriteLine`") statement.

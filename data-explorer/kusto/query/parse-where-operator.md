@@ -70,6 +70,10 @@ The input table, which is extended according to the list of columns that are pro
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 The `parse-where` operator provides a streamlined way to `extend` a table by using multiple `extract` applications on the same `string` expression. This is most useful when the table has a `string` column that contains several values that you want to break into individual columns. For example, you can break up a column that was produced by a developer trace ("`printf`"/"`Console.WriteLine`") statement.
 
 ### Using `parse`
