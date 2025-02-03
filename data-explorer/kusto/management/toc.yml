@@ -255,6 +255,25 @@ items:
           - name: .alter-merge table column-docstrings command
             displayName: .alter-merge column-docstrings
             href: alter-merge-table-column.md
+      - name: Entity Group
+        items:
+          - name: Entity Group
+            href: entity-groups.md
+          - name: .create entity_group command
+            displayName: create entity_group
+            href: create-entity-group.md
+          - name: .alter entity_group command
+            displayName: alter entity_group
+            href: alter-entity-group.md
+          - name: .alter-merge entity_group command
+            displayName: alter-merge entity_group
+            href: alter-merge-entity-group.md
+          - name: .drop entity_group command
+            displayName: drop entity_group
+            href: drop-entity-group.md
+          - name: .show entity_group command
+            displayName: show entity_group, show entity_groups, .show entity_group
+            href: show-entity-group.md
       - name: Functions
         items:
           - name: Stored functions management overview

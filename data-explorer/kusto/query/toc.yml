@@ -167,6 +167,8 @@ items:
             href: join-time-window.md
       - name: lookup operator
         href: lookup-operator.md
+      - name: macro-expand operator
+        href: macro-expand-operator.md
       - name: mv-apply operator
         href: mv-apply-operator.md
         displayName: mv apply mv_apply
