@@ -41,7 +41,7 @@ You must have at least [Azure Data Explorer Receiver](/azure/role-based-access-c
 
 1. When you receive an email invite on the selected address (`acc2@domain2.com account`), accept the invitation.
 
-## Set up the cross-date connection
+## Set up the cross-tenant data connection
 
 Set up a cross-tenant data connection between the cluster and Event Hubs using PowerShell.
 
