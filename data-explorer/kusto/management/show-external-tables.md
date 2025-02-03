@@ -39,7 +39,7 @@ You must have at least Database User, Database Viewer, Database Monitor to run t
 | TableType        | `string` | Type of external table                                              |
 | Folder           | `string` | Table's folder                                                     |
 | DocString        | `string` | String documenting the table                                       |
-| Properties       | `string` | Table's JSON serialized properties (specific to the type of table; For more information, see [Create and alter Azure Storage external tables](external-tables-azure-storage.md) or [Create and alter delta external tables on Azure Storage](external-tables-delta-lake). |
+| Properties       | `string` | Table's JSON serialized properties (specific to the type of table; For more information, see [Create and alter Azure Storage external tables](external-tables-azure-storage.md) or [Create and alter delta external tables on Azure Storage](external-tables-delta-lake.md). |
 
 ## Example
 
