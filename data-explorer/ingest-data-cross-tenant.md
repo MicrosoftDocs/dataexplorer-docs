@@ -73,9 +73,6 @@ Set up a cross-tenant data connection between the cluster and Event Hubs using P
     Connect-AzAccount -TenantId <Tenant ID> -SubscriptionId "<SubscriptionName>"
     ```
 
-    > [!NOTE]
-    > Note: Ensure that you use the ID for the tenant (for example, 92f988bf-76f1-41ak-91ab-2d7cd010db47) and the subscription string name (for example, "Visual Studio Enterprise Subscription").
-
 1. Add a variable with the token for *Tenant2*:
 
     ```PowerShell
