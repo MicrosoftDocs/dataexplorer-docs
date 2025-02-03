@@ -52,6 +52,8 @@ StormEvents | take 100
 
 **Output**
 
+The table shows the first few results.
+
 StartTime |	EndTime |EpisodeId |EventId	| State| EventType
 |--|--|--|--|--|--|
 2007-01-15T12:30:00Z | 2007-01-15T16:00:00Z | 1636 | 7821 | OHIO | Flood |
@@ -60,3 +62,4 @@ StartTime |	EndTime |EpisodeId |EventId	| State| EventType
 2007-08-03T15:40:00Z | 2007-08-03T15:40:00Z | 10086 | 56085 | NEW YORK | Hail |
 2007-08-03T23:15:00Z | 2007-08-05T04:30:00Z | 6569 | 38232 | NEBRASKA | Flood |
 2007-08-06T18:19:00Z | 2007-08-06T18:19:00Z | 6719 | 39781 | IOWA | Thunderstorm Wind |
+|...|...|...|...|...|...|
