@@ -41,6 +41,8 @@ A tabular data source produces sets of records, to be further processed by tabul
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+	
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Filter rows by condition

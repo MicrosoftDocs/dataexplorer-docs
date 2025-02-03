@@ -47,6 +47,8 @@ A table with columns that were named as arguments. Contains same number of rows 
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Only show specific columns

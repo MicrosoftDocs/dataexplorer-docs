@@ -40,9 +40,9 @@ A table that contains columns in the order specified by the operator arguments. 
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+	
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
-
-Review the examples and run them in your Data Explorer query page.
 
 ### Reorder with b first
 

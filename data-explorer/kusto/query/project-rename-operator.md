@@ -29,8 +29,10 @@ Renames columns in the output table.
 
 A table that has the columns in the same order as in an existing table, with columns renamed.
 
-## Examples
+## Example
 
+The examples in this section show how to use the syntax to help you get started.
+	
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"

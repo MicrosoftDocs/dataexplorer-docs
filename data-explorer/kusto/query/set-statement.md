@@ -36,9 +36,27 @@ Request properties aren't formally a part of the Kusto Query Language and may be
 
 ## Example
 
+The example in this section shows how to use the syntax to help you get started.
+	
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytOLVEoLE0tqiwpSkxOteYKLskvynUtS80rKVaoUShJzE5VMDQwAAD531xtJgAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 set querytrace;
-Events | take 100
+StormEvents | take 100
 ```
+
+**Output**
+
+StartTime |	EndTime |EpisodeId |EventId	| State| EventType
+|--|--|--|--|--|--|
+2007-01-15T12:30:00Z | 2007-01-15T16:00:00Z | 1636 | 7821 | OHIO | Flood |
+2007-08-03T01:50:00Z | 2007-08-03T01:50:00Z | 10085 | 56083 | NEW YORK | Thunderstorm Wind |
+2007-08-03T15:33:00Z | 2007-08-03T15:33:00Z | 10086 | 56084 | NEW YORK | Hail |
+2007-08-03T15:40:00Z | 2007-08-03T15:40:00Z | 10086 | 56085 | NEW YORK | Hail |
+2007-08-03T23:15:00Z | 2007-08-05T04:30:00Z | 6569 | 38232 | NEBRASKA | Flood |
+2007-08-06T18:19:00Z | 2007-08-06T18:19:00Z | 6719 | 39781 | IOWA | Thunderstorm Wind |

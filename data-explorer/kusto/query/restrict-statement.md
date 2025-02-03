@@ -38,6 +38,8 @@ The middle-tier application can prefix the user's query with a **logical model**
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+	
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Let statement
