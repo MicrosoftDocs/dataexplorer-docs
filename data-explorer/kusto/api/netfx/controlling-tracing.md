@@ -1,20 +1,20 @@
 ---
-title:  Control and suppress SDK client side tracing
+title:  Control and suppress SDK client side-tracing
 description: This article describes controlling and suppressing SDK client-side tracing.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 01/30/2025
+ms.date: 02/03/2025
 ---
 # Controlling and suppressing Kusto SDK client-side tracing
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The Kusto client libraries are instrumented to write traces to local files. By default, the tracing mechanism is disabled, but can be enabled programmatically.
+The Kusto client libraries are instrumented to write traces to local files. By default, the tracing mechanism is disabled but can be enabled programmatically.
 
 ## Enable tracing
 
-You can enable tracing in a Kusto client application using the `Kusto.Cloud.Platform.Utils` namespace. Make sure you have the `Microsoft.Azure.Kusto.Cloud.Platform` [NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Cloud.Platform/) installed. Then run the following code to enable tracing:
+To enable tracing, make sure you have the `Microsoft.Azure.Kusto.Cloud.Platform` [NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Cloud.Platform/) installed. Then run the following code:
 
 ```csharp
 using Kusto.Cloud.Platform.Utils; // Requires the NuGet package, Microsoft.Azure.Kusto.Cloud.Platform.
