@@ -81,7 +81,9 @@ For a detailed example of this logic, see the [scan logic walkthrough](#scan-log
 
 ## Examples
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Cumulative sum
 

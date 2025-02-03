@@ -34,9 +34,11 @@ The operator tries to return an answer as quickly as possible rather than trying
 
 ## Examples  
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
-Get 10 distinct values from a population
+### Get 10 distinct values from a population
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -61,7 +63,7 @@ StormEvents | sample-distinct 10 of EpisodeId
 | 11781 |
 | 12826 |
 
-Sample a population and do further computation without exceeding the query limits in the summarize
+### Further compute the sample values
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

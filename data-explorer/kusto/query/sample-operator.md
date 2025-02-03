@@ -31,9 +31,9 @@ Returns up to the specified number of random rows from the input table.
 
 ## Examples
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
-
-Consider the following examples:
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Generate a sample
 

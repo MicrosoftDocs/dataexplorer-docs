@@ -28,7 +28,9 @@ The operator has a declarative meaning. It marks the input row set as serialized
 
 ## Examples
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Serialize subset of rows by condition
 

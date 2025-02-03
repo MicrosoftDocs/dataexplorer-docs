@@ -39,6 +39,10 @@ whose values are *start*, *start* `+` *step*, ... up to and until *stop*.
 
 ## Examples
 
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ### Range over the past seven days
 
 The following example creates a table with entries for the current time stamp extended over the past seven days, once a day.

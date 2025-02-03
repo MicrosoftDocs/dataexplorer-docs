@@ -83,9 +83,9 @@ Unlike the [find operator](find-operator.md), the `search` operator doesn't supp
 
 ## Examples
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
-
-Consider the following exaples:
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Global term search
 

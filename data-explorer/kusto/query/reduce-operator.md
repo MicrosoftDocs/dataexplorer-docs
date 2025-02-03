@@ -44,6 +44,10 @@ For example, the result of `reduce by city` might include:
 
 ## Examples
 
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ### Small threshold value
 
 This query generates a range of numbers, creates a new column with concatenated strings and random integers, and then groups the rows by the new column with specific reduction parameters.
