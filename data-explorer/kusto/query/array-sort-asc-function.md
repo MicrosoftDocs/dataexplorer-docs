@@ -3,7 +3,7 @@ title:  array_sort_asc()
 description: Learn how to use the array_sort_asc() function to sort arrays in ascending order.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 02/02/2025
+ms.date: 02/03/2025
 ---
 # array_sort_asc()
 
@@ -144,7 +144,7 @@ print result=array_sort_asc(dynamic([null,"blue","yellow","green",null]))
 |---|
 |["blue","green","yellow",null,null]|
 
-The following example uses nondefault behavior through the `false` parameter, which specifies that nulls should be placed at the beginning of the array:
+The following example shows nondefault behavior using the `false` parameter, which specifies that nulls are placed at the beginning of the array.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

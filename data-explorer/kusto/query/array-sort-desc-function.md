@@ -146,7 +146,7 @@ print result=array_sort_desc(dynamic([null,"blue","yellow","green",null]))
 |---|
 |["yellow","green","blue",null,null]|
 
-The following example uses nondefault behavior through the `false` parameter, which specifies that nulls should be placed at the beginning of the array:
+The following example shows nondefault behavior using the `false` parameter, which specifies that nulls are placed at the beginning of the array.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

@@ -3,7 +3,7 @@ title:  dcount_intersect plugin
 description: Learn how to use the dcount_intersect plugin to calculate the intersection between N sets based on hyper log log (hll) values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 02/03/2025
 ---
 # dcount_intersect plugin
 
@@ -66,4 +66,6 @@ range x from 1 to 100 step 1
 
 ## Related content
 
-* [Aggregation function types at a glance](aggregation-functions.md)
+* [dcount() (aggregation function)](dcount-aggregation-function.md)
+* [hll() (aggregation function)](hll-aggregation-function.md)
+* [evaluate plugin operator](evaluate-operator.md)

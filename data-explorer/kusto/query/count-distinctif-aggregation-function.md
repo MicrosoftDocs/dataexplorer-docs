@@ -3,7 +3,7 @@ title:  count_distinctif() (aggregation function) - (preview)
 description: Learn how to use the count_distinctif() function to count unique values of a scalar expression in records for which the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/15/2025
+ms.date: 02/03/2025
 ---
 # count_distinctif() (aggregation function) - (preview)
 
@@ -44,7 +44,7 @@ Integer value indicating the number of unique values of *expr* per summary group
 
 ## Example
 
-This example shows how many types of death-causing storm events happened in each state. Only storm events with a nonzero count of deaths are counted.
+The following example shows how many types of death-causing storm events happened in each state. Only storm events with a nonzero count of deaths are counted.
 
 :::moniker range="azure-data-explorer"
 > [!NOTE]

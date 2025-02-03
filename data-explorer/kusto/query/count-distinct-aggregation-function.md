@@ -3,7 +3,7 @@ title:  count_distinct() (aggregation function) - (preview)
 description: Learn how to use the count_distinct() (aggregation function) to count unique values specified by a scalar expression per summary group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/15/2025
+ms.date: 02/03/2025
 ---
 # count_distinct() (aggregation function) - (preview)
 
@@ -45,7 +45,7 @@ Long integer value indicating the number of unique values of *expr* per summary 
 
 ## Example
 
-This example shows how many types of storm events happened in each state.
+The following example shows how many types of storm events happened in each state.
 
 :::moniker range="azure-data-explorer"
 Function performance can be degraded when operating on multiple data sources from different clusters.
