@@ -183,7 +183,8 @@ Set up a cross-tenant data connection between the cluster and Event Hubs using P
     ```PowerShell
     Invoke-WebRequest -Headers @{Authorization = $pat; 'x-ms-authorization-auxiliary' = $auxpat} -Uri $adxdcuri -Body $requestbody -Method PUT -ContentType 'application/json'
     ```
-```
+
+---
 
 Verify that you can see the newly created data connection in the Azure portal.
 
