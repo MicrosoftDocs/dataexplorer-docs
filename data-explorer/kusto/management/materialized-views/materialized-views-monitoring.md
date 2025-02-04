@@ -3,7 +3,7 @@ title:  Monitor materialized views
 description:  This article describes how to monitor materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 01/28/2025
+ms.date: 02/04/2025
 ---
 # Monitor materialized views
 
@@ -46,7 +46,7 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
     |---|---|---|
     |MaterializedView|1|0|
 
-    * The concurrency level of multiple materialized views depends on the capacity shown in the `Total` column, while the `Consumed` column shows the number of materialized views currently running. You can use the [Materialized views capacity policy](../capacity-policy.md#materialized-views-capacity-policy) to specify the minimum and maximum number of concurrent operations, overriding the system's default concurrency level. The system determines the current concurrency, shown in `Total`, based on the cluster's available resources. The following example overrides the system's decision and changes the minimum concurrent operations to 3:
+    * The number of materialized views that can run concurrently depends on the capacity shown in the `Total` column, while the `Consumed` column shows the number of materialized views currently running. You can use the [Materialized views capacity policy](../capacity-policy.md#materialized-views-capacity-policy) to specify the minimum and maximum number of concurrent operations, overriding the system's default concurrency level. The system determines the current concurrency, shown in `Total`, based on the cluster's available resources. The following example overrides the system's decision and changes the minimum concurrent operations from 1 to 3:
 
     ```kusto
     .alter-merge cluster policy capacity '{  "MaterializedViewsCapacity": { "ClusterMinimumConcurrentOperations": 3 } }'
@@ -56,7 +56,7 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
 ::: moniker-end
 
 * Check if there are failures during the materialization process using [.show materialized-view failures](materialized-view-show-failures-command.md#show-materialized-view-failures).
-    * If the error is permanent, the system automatically disables the materialized view. To check if its disabled, use the [.show materialized-view](materialized-view-show-command.md) command and see if the value in the `IsEnabled` column is `false`. Then check the [Journal](../journal.md) for the disabled event with the [.show journal](../journal.md#show-journal) command.
+    * If the error is permanent, the system automatically disables the materialized view. To check if it's disabled, use the [.show materialized-view](materialized-view-show-command.md) command and see if the value in the `IsEnabled` column is `false`. Then check the [Journal](../journal.md) for the disabled event with the [.show journal](../journal.md#show-journal) command.
     An example of a permanent failure is a source table schema change that makes it incompatible with the materialized view. For more information, see [.create materialized-view command](materialized-view-create.md#supported-properties).
     * If the failure is transient, the system automatically retries the operation. However, the failure can delay the materialization and increase the age of the materialized view. This type of failure occurs, for example, when hitting memory limits or with a query time-out. See the following recommendations for more ways to troubleshoot transient failures.
 
