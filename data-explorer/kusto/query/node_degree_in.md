@@ -26,7 +26,7 @@ The node_degree_in function is used to compute the in-degree of nodes in a direc
 * Returns the in-degree of the input node.
 
 > [!IMPORTANT]
-> This function can only be used in the context of graph-match operator.
+> This function can only be used in the context of graph-match or graph-shortest-paths operators.
 
 ## Example
 
@@ -68,7 +68,7 @@ project manager.name,node_degree_in(manager), node_degree_out(manager),node_degr
 
 ## Related content
 
-* [graph-overview](graph-overview.md)
+* [Graph overview](graph-overview.md)
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)
 * [node-degree-out](node_degree_out.md)
