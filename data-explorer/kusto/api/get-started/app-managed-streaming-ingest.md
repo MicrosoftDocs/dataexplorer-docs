@@ -46,6 +46,7 @@ For mor information, see [Streaming Limitations](../../../ingest-data-streaming.
 + A Kusto cluster where you have database User or higher rights. You cam provision a free Kusto cluster in <https://dataexplorer.azure.com/freecluster>.
 Prerequisites:
 + Download the file [stormevents.csv](where do we store this ???)and place it in a folder next to your script.
++ [Set up your development environment](/kusto/api/get-started/app-set-up?view=azure-data-explorer) to use the Kusto client library.
 
 ## Before you begin
 
@@ -54,6 +55,7 @@ Before creating the app, you need to do the following
 1. Configure streaming ingestion on your Azure Data Explorer cluster.
 1. Create a Kusto table to ingest the data into.
 1. Enable the streaming ingestion policy on the table.
+1. Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file containing 1,000 storm event records.
 
 ## Configure streaming ingestion
 
@@ -86,6 +88,75 @@ For more information about streaming policy, see [Streaming ingestion policy - A
 Create a basic client application which connects to the Kusto Help cluster.
 Enter the cluster query and ingest URI and database name in the relevant variables.
 
+
+### [C#](#tab/c-sharp)
+
+```C#
+using System;
+using Kusto.Data;
+using Kusto.Data.Net.Client;
+using Kusto.Ingest;
+using Kusto.Data.Common;
+using Microsoft.Identity.Client;
+using System.Data;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        var tableName = "MyStormEvents";
+        var cluster_url = "<your Kusto cluster query URI>";
+        var ingestion_url = "<your Kusto cluster query ingest URI>";
+        var database_name = "<your database name> ";
+    
+   
+        var clusterKcsb = new KustoConnectionStringBuilder(cluster_url).WithAadUserPromptAuthentication();
+        var ingestionKcsb = new KustoConnectionStringBuilder(ingestion_url).WithAadUserPromptAuthentication();;
+
+        using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
+        using (var ingestClient = KustoIngestFactory.CreateManagedStreamingIngestClient(clusterKcsb, ingestionKcsb))
+        {
+            string SASURI ="<your SAS URI>";
+        
+
+            Console.WriteLine("Number of rows in " + tableName);
+            var queryProvider = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
+            var result = kustoClient.ExecuteQuery(databaseName, tableName + " | count", new ClientRequestProperties());
+    
+            PrintResultAsValueList(result);
+
+            //Ingestion section
+            Console.WriteLine("Ingesting data from a file");
+            var ingestProps = new KustoIngestionProperties(databaseName, tableName) 
+            {
+                Format = DataSourceFormat.csv,
+                IgnoreFirstRecord = true
+            };
+            ingestClient.IngestFromStorageAsync(SASURI, ingestProps).Wait();
+
+            Console.WriteLine("Example line from " + tableName);
+            result = kustoClient.ExecuteQuery(databaseName, tableName + " | top 1 by EndTime", new ClientRequestProperties());
+            PrintResultAsValueList(result);
+        }
+    }
+
+
+    static void PrintResultAsValueList(IDataReader result)
+    {
+        while (result.Read())
+        {
+            for (int i = 0; i < result.FieldCount; i++)
+            {
+                Console.Write(result.GetValue(i) + "\t");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+```
+
+### [Python](#tab/python)
+
 The code sample includes a service function `print_result_as_value_list()` for printing query results
 
 ```python
@@ -94,7 +165,7 @@ import time
 import io
 
 from azure.kusto.data import KustoClient, KustoConnectionStringBuilder, ClientRequestProperties, DataFormat
-from azure.kusto.ingest import QueuedIngestClient, FileDescriptor, StreamDescriptor, BlobDescriptor, IngestionProperties
+from azure.kusto.ingest import QueuedIngestClient, FileDescriptor, StreamDescriptor, BlobDescriptor, IngestionProperties, ManagedStreamingIngestClient
 
 
 def print_result_as_value_list(result):
@@ -135,12 +206,19 @@ def main():
 main()
 ```
 
+---
+
 ## Stream a file for ingestion
 
 Let’s use the `ingest_from_file()` API to ingest stormevents.csv.
 Place stormevents.csv file in the same location as your script. Since our CSV file contains a header row we use `ignore_first_record=True` to ignore it.
 
 Add and ingestion section using the following lines to the end of main().
+
+### [C#](#tab/c-sharp)
+
+
+### [Python](#tab/python)
 
 ```python
 # ingestion section
@@ -186,11 +264,18 @@ row 1 :
          StormSummary - {'TotalDamages': 0, 'StartTime': '2007-12-31T11:15:00.0000000Z', 'EndTime': '2007-12-31T13:21:00.0000000Z', 'Details': {'Description': 'Heavy showers caused flash flooding in the eastern part of Molokai.  Water was running over the bridge at Halawa Valley.', 'Location': 'HAWAII'}}
 ```
 
+---
+
 ### Stream in-memory data for ingestion
 
 To ingest data from memory, create a stream containing the data for ingestion and call the `ingest_from_stream()` API.
 
 Replace the ingestion section code with the following:
+
+### [C#](#tab/c-sharp)
+
+
+### [Python](#tab/python)
 
 ```python
 print("Ingesting data from memory")
@@ -226,6 +311,8 @@ row 1 :
 	 StormSummary - {}
 ```
 
+---
+
 ### Stream a blob for ingestion
 
 Kusto supports ingestion from Azure Storage blobs, Azure Data Lake files and Amazon S3 files.
@@ -236,12 +323,19 @@ For this section you’ll need to upload the sample csv file to your storage acc
 
 Replace the ingestion section code with the following section:
 
+### [C#](#tab/c-sharp)
+
+
+### [Python](#tab/python)
+
 ```python
 print("Ingesting data from an existing blob")
 blob_descriptor = BlobDescriptor("<blob path with SAS or key>")
 ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV, ignore_first_record=True)
 ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
 ```
+
+---
 
 > [NOTE!]
 > You can also use a managed identity based authorization as an alternative to SAS or account keys in Azure Storage and Azure Data Lake. For more information, see [Ingest data using managed identity authentication](/azure/data-explorer/ingest-data-managed-identity)
