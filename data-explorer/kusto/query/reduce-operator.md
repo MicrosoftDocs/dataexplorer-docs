@@ -3,7 +3,7 @@ title:  reduce operator
 description: Learn how to use the reduce operator to group a set of strings together based on value similarity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2025
+ms.date: 02/04/2025
 ---
 # reduce operator
 
@@ -141,17 +141,26 @@ range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | re
 The following example shows how one might apply the `reduce` operator to a "sanitized"
 input, in which GUIDs in the column being reduced are replaced before reducing:
 
+Start with a few records from the Trace table.
+
 ```kusto
-// Start with a few records from the Trace table.
 Trace | take 10000
-// Then reduce the Text column which includes random GUIDs.
-// As random GUIDs interfere with the reduce operation, replace them all
-// by the string "GUID".
+```kusto
+
+Then reduce the Text column which includes random GUIDs.
+As random GUIDs interfere with the reduce operation, replace them all
+by the string "GUID".
+
+```kusto
 | extend Text=replace_regex(Text, @"[[:xdigit:]]{8}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{12}", @"GUID")
-// Now perform the reduce. In case there are other "quasi-random" identifiers with embedded '-'
-// or '_' characters in them, treat these as non-term-breakers.
+```kusto
+
+Now perform the reduce. In case there are other "quasi-random" identifiers with embedded '-'
+or '_' characters in them, treat these as non-term-breakers.
+
+```kusto
 | reduce by Text with characters="-_"
-```
+```kusto
 
 ## Related content
 
