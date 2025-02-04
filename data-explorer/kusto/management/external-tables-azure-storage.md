@@ -122,12 +122,12 @@ external_table("ExternalTable")
 |------------------|----------|-------------------------------------------------------------------------------------|
 | `folder`         | `string` | Table's folder                                                                     |
 | `docString`      | `string` | String documenting the table                                                       |
-| `compressed`     | `bool`   | If set, indicates whether the files are compressed as `.gz` files (used in [export scenario](data-export/export-data-to-an-external-table.md) only; read path compression is automatically detected based on the file format) |
+| `compressed`     | `bool`   | If set, specifies whether the files are compressed as `.gz` files (used in [export scenario](data-export/export-data-to-an-external-table.md) only; read path compression is automatically detected based on the file format) |
 | `compressionType` | `string`   | If set, specifies the compression type of the files (used in [export scenario](data-export/export-data-to-an-external-table.md) only; read path compression is automatically detected based on the file format) |
 | `includeHeaders` | `string` | For delimited text formats (CSV, TSV, ...), specifies whether files contain a header. Possible values are: `All` (all files contain a header), `FirstFile` (first file in a folder contains a header), `None` (no files contain a header). |
 | `namePrefix`     | `string` | If set, specifies the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
 | `fileExtension` | `string` | If set, specifies the extension of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
-| `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
+| `encoding`       | `string` | Specifies how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
 | `sampleUris`     | `bool`   | If set, the command result provides several examples of simulated external data files URI as they're expected by the external table definition. This option helps validate whether the *Partitions* and *PathFormat* parameters are defined properly. |
 | `filesPreview`   | `bool`   | If set, one of the command result tables contains a preview of [.show external table artifacts](show-external-table-artifacts.md) command. Like `sampleUri`, the option helps validate the *Partitions* and *PathFormat* parameters of external table definition. |
 | `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |

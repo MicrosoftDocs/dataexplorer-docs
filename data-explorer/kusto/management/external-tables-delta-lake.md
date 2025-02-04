@@ -59,7 +59,7 @@ The supported authentication methods are the same as those supported by [Azure S
 | `folder`         | `string` | Table's folder                                                                     |
 | `docString`      | `string` | String documenting the table                                                       |
 | `compressed`     | `bool`   | If set, files are compressed as `.gz` files (used in [export scenario](data-export/export-data-to-an-external-table.md) only; read path compression is automatically detected based on the file format) |
-| `compressionType` | `string`   | If set, indicates the compression type of the files (used in [export scenario](data-export/export-data-to-an-external-table.md) only; read path compression is automatically detected based on the file format) |
+| `compressionType` | `string`   | If set, specifies the compression type of the files (used in [export scenario](data-export/export-data-to-an-external-table.md) only; read path compression is automatically detected based on the file format) |
 | `namePrefix`     | `string` | If set, specifies the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
 | `fileExtension` | `string` | If set, specifies extension of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`       | `string` | Specifies how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
