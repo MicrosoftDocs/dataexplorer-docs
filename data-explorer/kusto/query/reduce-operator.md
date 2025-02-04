@@ -102,7 +102,7 @@ The result includes only those groups where the MyText value appears in at least
 
 ### Behavior of `Characters` parameter
 
-If the `Characters` parameter is unspecified, then every non-ascii numeric character becomes a term separator.
+If the *Characters* parameter is unspecified, then every non-ascii numeric character becomes a term separator.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
