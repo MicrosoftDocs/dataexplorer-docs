@@ -43,7 +43,7 @@ The partition operator supports several strategies of subquery operation:
 |Hint name|Type|Strategy|Description|
 |--|--|--|--|
 |`hint.shufflekey`| `string` | [shuffle](#shuffle-strategy) | The partition key used to run the partition operator with the `shuffle` strategy. |
-|`hint.materialized`| `bool` | [legacy](#legacy-strategy) | If set to `true`, outputs the source of the `partition` operator. The default value is `false`. |
+|`hint.materialized`| `bool` | [legacy](#legacy-strategy) | If set to `true`, materializes the source of the `partition` operator. The default value is `false`. |
 |`hint.concurrency`| `int` | [legacy](#legacy-strategy) | Determines how many partitions to run in parallel. The default value is `16`.|
 |`hint.spread`| `int` | [legacy](#legacy-strategy) | Determines how to distribute the partitions among cluster nodes. The default value is `1`.</br></br> For example, if there are *N* partitions and the spread hint is set to *P*, then the *N* partitions are processed by *P* different cluster nodes equally, in parallel/sequentially depending on the concurrency hint.|
 
