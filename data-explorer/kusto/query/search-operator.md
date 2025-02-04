@@ -140,7 +140,7 @@ search "Green" and ("Deluxe" or "Proseware")
 
 ### Search a specific table
 
-Search fore the term *Green* only in the `Customers` table.
+Search for the term *Green* only in the `Customers` table.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
