@@ -42,7 +42,7 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 | `fileExtension` | `string` | Indicates the "extension" part of the storage artifact (for example, `.csv` or `.tsv`). If compression is used, `.gz` is appended as well. |
 | `namePrefix` | `string` | Indicates a prefix to add to each generated storage artifact name. A random prefix is used if left unspecified. |
 | `encoding` | `string` | Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`. |
-| `compressionType` | `string` | The type of compression to use. Possible values include `gzip`, and for Parquet format: `snappy`, `lz4_raw`, `brotli`, or `zstd`. Default is `gzip`. |
+| `compressionType` | `string` | The type of compression to use. Possible values include `gzip` and Parquet formats: `snappy`, `lz4_raw`, `brotli`, or `zstd`. Default is `gzip`. |
 | `distribution` | `string` | Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread writes to storage. Otherwise, export writes from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluate-operator.md). Defaults to `per_shard`. |
 | `persistDetails` | `bool` | Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
 | `sizeLimit` | `long` | The size limit in bytes of a single storage artifact written before compression. Valid range: 100 MB (default) to 4 GB. |
