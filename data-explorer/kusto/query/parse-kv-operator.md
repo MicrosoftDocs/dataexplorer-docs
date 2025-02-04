@@ -60,8 +60,6 @@ The original input tabular expression *T*, extended with columns per specified k
 ## Examples
 
 The examples in this section show how to use the syntax to help you get started.
-
-
 ### Extraction with well-defined delimiters
 
 In this query, keys and values are separated by well defined delimiters. These delimeters are comma and colon characters.
