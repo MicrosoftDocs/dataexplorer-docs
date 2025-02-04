@@ -164,7 +164,7 @@ search in (Products) "Green"
 
 ### Case-sensitive search
 
-Search for records that match both case-sensitive terms in the database.
+Search for records that match the case-sensitive term in the database.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
