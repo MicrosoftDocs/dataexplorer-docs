@@ -32,7 +32,7 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
 
 :::moniker range="azure-data-explorer"
 
-* Check the number of materialized views using the [.show capacity](../show-capacity-command.md) command and the current capacity for materialized views:
+* Check the number of materialized views on the cluster, and the current capacity for materialized views:
 
     ```kusto
     .show capacity 
@@ -46,7 +46,7 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
     |---|---|---|
     |MaterializedView|1|0|
 
-    * The number of materialized views that can run concurrently depends on the capacity shown in the `Total` column, while the `Consumed` column shows the number of materialized views currently running. You can use the [Materialized views capacity policy](../capacity-policy.md#materialized-views-capacity-policy) to specify the minimum and maximum number of concurrent operations, overriding the system's default concurrency level. The system determines the current concurrency, shown in `Total`, based on the cluster's available resources. The following example overrides the system's decision and changes the minimum concurrent operations from 1 to 3:
+    * The number of materialized views that can run concurrently depends on the capacity shown in the `Total` column, while the `Consumed` column shows the number of materialized views currently running. You can use the [Materialized views capacity policy](../capacity-policy.md#materialized-views-capacity-policy) to specify the minimum and maximum number of concurrent operations, overriding the system's default concurrency level. The system determines the current concurrency, shown in `Total`, based on the cluster's available resources. The following example overrides the system's decision and changes the minimum concurrent operations from one to three:
 
     ```kusto
     .alter-merge cluster policy capacity '{  "MaterializedViewsCapacity": { "ClusterMinimumConcurrentOperations": 3 } }'
