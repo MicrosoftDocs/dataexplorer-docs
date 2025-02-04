@@ -27,8 +27,8 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 |--|--|--|--|
 | *async* | `string` |  | If specified, the command runs in asynchronous mode. See [asynchronous mode](#asynchronous-mode). |
 | *compressed* | `bool` |  | If specified, the output storage artifacts are compressed as `.gz` files. See the `compressionType` [supported property](#supported-properties) for compressing Parquet files as snappy. |
-| *OutputDataFormat* | `string` | :heavy_check_mark: | Indicates the data format of the storage artifacts written by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`. |
-| *StorageConnectionString* | `string` |  | One or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md) that indicate which storage to write the data to. More than one storage connection string might be specified for scalable writes. Each such connection string must indicate the credentials to use when writing to storage. For example, when writing to Azure Blob Storage, the credentials can be the storage account key, or a shared access key (SAS) with the permissions to read, write, and list blobs. |
+| *OutputDataFormat* | `string` | :heavy_check_mark: | The data format of the storage artifacts written by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`. |
+| *StorageConnectionString* | `string` |  | One or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md) that specify which storage to write the data to. More than one storage connection string might be specified for scalable writes. Each such connection string must specify the credentials to use when writing to storage. For example, when writing to Azure Blob Storage, the credentials can be the storage account key, or a shared access key (SAS) with the permissions to read, write, and list blobs. |
 | *PropertyName*, *PropertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!NOTE]
@@ -39,16 +39,16 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 | Property | Type | Description |
 |--|--|--|
 | `includeHeaders` | `string` | For `csv`/`tsv` output, controls the generation of column headers. Can be one of `none` (default; no header lines emitted), `all` (emit a header line into every storage artifact), or `firstFile` (emit a header line into the first storage artifact only). |
-| `fileExtension` | `string` | Indicates the "extension" part of the storage artifact (for example, `.csv` or `.tsv`). If compression is used, `.gz` is appended as well. |
-| `namePrefix` | `string` | Indicates a prefix to add to each generated storage artifact name. A random prefix is used if left unspecified. |
-| `encoding` | `string` | Indicates how to encode the text: `UTF8NoBOM` (default) or `UTF8BOM`. |
+| `fileExtension` | `string` | The "extension" part of the storage artifact (for example, `.csv` or `.tsv`). If compression is used, `.gz` is appended as well. |
+| `namePrefix` | `string` | The prefix to add to each generated storage artifact name. A random prefix is used if left unspecified. |
+| `encoding` | `string` | The encoding for text. Possible values include: `UTF8NoBOM` (default) or `UTF8BOM`. |
 | `compressionType` | `string` | The type of compression to use. Possible values include `gzip` and Parquet formats: `snappy`, `lz4_raw`, `brotli`, or `zstd`. Default is `gzip`. |
 | `distribution` | `string` | Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread writes to storage. Otherwise, export writes from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluate-operator.md). Defaults to `per_shard`. |
-| `persistDetails` | `bool` | Specifies that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
+| `persistDetails` | `bool` | The command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
 | `sizeLimit` | `long` | The size limit in bytes of a single storage artifact written before compression. Valid range: 100 MB (default) to 4 GB. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
 | `distributed` | `bool` | Disable or enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
-| `parquetDatetimePrecision` | `string` | Specifies the precision to use when exporting `datetime` values to Parquet. Possible values are millisecond and microsecond. Default is millisecond. |
+| `parquetDatetimePrecision` | `string` | The precision to use when exporting `datetime` values to Parquet. Possible values are millisecond and microsecond. Default is millisecond. |
 
 ## Authentication and authorization
 
