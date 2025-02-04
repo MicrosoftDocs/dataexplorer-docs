@@ -3,14 +3,14 @@ title:  .show queued ingestion operations command
 description: Learn how to use the `.show queued ingestion operations` command to view a log of the queued ingestion operations that are currently running or completed.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 01/16/2025
+ms.date: 02/04/2025
 ---
 
 # .show queued ingestion operations command
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-Ingestion operations are tracked once the [.ingest-from-storage-queued](ingest-from-storage-queued.md) command begins.
+Displays the queued ingestion operations. Ingestion operations are tracked once the [.ingest-from-storage-queued](ingest-from-storage-queued.md) command begins.
 
 ## Permissions
 
@@ -87,6 +87,7 @@ The following example shows the queued ingestion operations for multiple operati
 
 ## Related content
 
+* [Queued ingestion overview](queued-ingestion-overview.md)
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
 * [.ingest-from-storage-queued into](ingest-from-storage-queued.md)
 * [.cancel queued ingestion operation command](cancel-queued-ingestion-operation-command.md)

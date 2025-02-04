@@ -3,7 +3,7 @@ title: .cancel queued ingestion operation command
 description: Learn how to use the `.cancel queued operation` command to cancel a long-running operation.
 ms.reviewer: odkadosh
 ms.topic: reference
-ms.date: 01/26/2025
+ms.date: 02/04/2025
 ---
 # .cancel queued ingestion operation command
 
@@ -53,5 +53,6 @@ The following example cancels the ingestion of operation `aaaaaaaa-0b0b-1c1c-2d2
 
 ## Related content
 
+* [Queued ingestion overview](queued-ingestion-overview.md)
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
 * [.ingest-from-storage-queued into command](ingest-from-storage-queued.md)

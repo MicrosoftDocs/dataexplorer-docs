@@ -3,7 +3,7 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 01/26/2025
+ms.date: 02/04/2025
 ---
 # .list blobs command
 
@@ -19,7 +19,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Syntax
 
-`.list blobs` (*SourceDataLocators*) [`Suffix`=*SuffixValue*] [`MaxFiles`=*MaxFilesValue*] [`PathFormat`=*PatternValue*]
+`.list blobs` (*SourceDataLocators*) [`Suffix`=*SuffixValue*] [`MaxFiles`=*MaxFilesValue*] [`PathFormat`=*PathFormatValue*]
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -30,7 +30,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |*SourceDataLocators*| `string` | :heavy_check_mark:|One or many [storage connection strings](../../api/connection-strings/storage-connection-strings.md) separated by a comma character. Each connection string can refer to a storage container or a file prefix within a container. Currently, only one storage connection string is supported. |
 |*SuffixValue*| `string` | |The suffix that enables blob filtering.|
 |*MaxFilesValue*| `integer` | | The maximum number of blobs to return. |
-|*PatternValue*| `string` | | The pattern in the blob’s path that can be used to retrieve the creation time as an output field. |
+|*PathFormatValue*| `string` | | The pattern in the blob’s path that can be used to retrieve the creation time as an output field. |
 
 > [!NOTE]
 >
@@ -110,6 +110,7 @@ https://mystorageaccount.blob.core.windows.net/datasets/myfolder/year=2024/month
 
 ## Related content
 
+* [Queued ingestion overview](queued-ingestion-overview.md)
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
 * [.ingest-from-storage-queued into](ingest-from-storage-queued.md)
 * [.show queued ingestion operations command](show-queued-ingestion-operations.md)
