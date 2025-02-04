@@ -97,9 +97,9 @@ For more examples, see [SymbolLoader](https://github.com/mattwar/Kusto.Toolkit/b
 
     ```csharp
     // Option 1: Add the cluster as the default with a specified default database.
-    var globalsWithMyDefaultCluster = GlobalState.Globals.WithCluster(mycluster).WithDatabase(mydb);
+    var globalsWithMyDefaultCluster = GlobalState.Default.WithCluster(mycluster).WithDatabase(mydb);
     // Option 2: Add the cluster to the list of known clusters.
-    var globalsWithMyClusterAdded = GlobalState.Globals.AddOrReplaceCluster(mycluster);
+    var globalsWithMyClusterAdded = GlobalState.Default.AddOrReplaceCluster(mycluster);
     ```
 
 1. Use the relevant globals in the `ParseAndAnalyze` method to [parse a query with semantic analysis](kusto-language-parse-queries.md#parse-a-query-with-semantic-analysis).
