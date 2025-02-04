@@ -37,7 +37,7 @@ Returns a row in the table that maximizes the specified expression *ExprToMaximi
 
 ## Examples
 
-### Find maximum latitute
+### Find maximum latitude
 
 The following example finds the maximum latitude of a storm event in each state.
 
