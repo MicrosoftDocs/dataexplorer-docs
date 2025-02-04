@@ -141,8 +141,6 @@ Leads
 |ebere@relecloud.com|ebere|relecloud.com|
 |abi@fourthcoffee.com|abi|www.fourthcoffee.com|
 
-## Regex mode examples
-
 ### Regex mode
 
 In the following example, regular expressions are used to parse and extract data from the `EventText` column. The extracted data is projected into new fields.
