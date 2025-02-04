@@ -50,7 +50,7 @@ The examples in this section show how to use the syntax to help you get started.
 
 ### Declare query parameters
 
- this query retrieves storm events from the *StormEvents* table where the total number of direct and indirect injuries exceeds a specified threshold (default is 90). It then projects the *EpisodeId*, *EventType*, and the total number of injuries for each of these events.
+ This query retrieves storm events from the *StormEvents* table where the total number of direct and indirect injuries exceeds a specified threshold (default is 90). It then projects the *EpisodeId*, *EventType*, and the total number of injuries for each of these events.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
