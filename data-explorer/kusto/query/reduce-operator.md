@@ -152,15 +152,17 @@ As random GUIDs interfere with the reduce operation, replace them all
 by the string "GUID".
 
 ```kusto
-| extend Text=replace_regex(Text, @"[[:xdigit:]]{8}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{12}", @"GUID")
+extend Text=replace_regex(Text, @"[[:xdigit:]]{8}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{12}", @"GUID")
 ```kusto
 
 Now perform the reduce. In case there are other "quasi-random" identifiers with embedded '-'
 or '_' characters in them, treat these as non-term-breakers.
 
 ```kusto
-| reduce by Text with characters="-_"
+reduce by Text with characters="-_"
 ```kusto
+
+```
 
 ## Related content
 
