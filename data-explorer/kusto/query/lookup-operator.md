@@ -3,7 +3,7 @@ title:  lookup operator
 description: Learn how to use the lookup operator to extend columns of a fact table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/04/2024
+ms.date: 01/20/2025
 ---
 # lookup operator
 
@@ -75,7 +75,7 @@ A table with:
 * If `kind` is unspecified or `kind=leftouter`, then in addition to the inner matches, there's a row for every row on the left (and/or right), even if it has no match. In that case, the unmatched output cells contain nulls.
 * If `kind=inner`, then there's a row in the output for every combination of matching rows from left and right.
 
-## Examples
+## Example
 
 The following example shows how to perform a left outer join between the  `FactTable` and `DimTable`, based on matching values in the `Personal` and `Family` columns.
 
