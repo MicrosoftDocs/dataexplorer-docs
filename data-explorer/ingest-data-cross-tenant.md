@@ -42,7 +42,7 @@ The Entra account or multitenant service principal must have at least the follow
     | Assign access to | User, group, or service principal |
     | Select | The email address of the Entra user or Service Principal ID |
 
-## Assign role to the Entra Account or Service Principal in Data Explorer for Tenant2
+## Assign role to the Entra Account or Service Principal in the cluster for Tenant2
 
 1. In the Azure portal, browse to your Data Explorer cluster.
 
@@ -84,7 +84,7 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
     $auxpat="Bearer $tokenfromtenant1"
     ```
 
-1. Run the following command to connect to the Data Explorer subscription in *Tenant2*:
+1. Run the following command to connect to the cluster subscription in *Tenant2*:
 
     ```PowerShell
     Connect-AzAccount -TenantId <Tenant ID> -SubscriptionId "<SubscriptionName>"
@@ -158,7 +158,7 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
     $auxpat="Bearer $tokenfromtenant1"
     ```
     
-1. Connect to the Data Explorer subscription in *Tenant2*:
+1. Connect to the cluster subscription in *Tenant2*:
 
     ```PowerShell
     Connect-AzAccount -TenantId <Tenant ID> -Subscription "<SubscriptionName>" -ServicePrincipal -Credential $Credential
@@ -200,10 +200,10 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
 
 1. Verify that you can now see the newly created data connection in the Azure portal.
 
-1. *Optional*: After establishing the data connection, you may revoke or delete the previously granted permissions for the Entra Account or Service Principal. Since Data Explorer ingestion will use the Event Hub keys, these permissions are no longer required.
+1. *Optional*: After establishing the data connection, you may revoke or delete the previously granted permissions for the Entra Account or Service Principal. Since the cluster ingestion uses the Event Hub keys, these permissions are no longer required.
 
 > [!IMPORTANT]
-> If the primary or secondary Event Hub keys are rotated, data ingestion may stop working. In that case, you will need to drop and recreate the data connection.
+> If the primary or secondary Event Hub keys are rotated, data ingestion may stop working. In that case, you need to drop and recreate the data connection.
 
 ## Related content
 
