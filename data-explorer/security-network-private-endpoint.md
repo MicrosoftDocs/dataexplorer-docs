@@ -78,6 +78,9 @@ You can use a managed private endpoint to either enable the cluster to securely 
 
 :::image type="content" source="media/security-network-private-endpoint/pe-mpe.png" alt-text="Diagram showing the schema of the managed private endpoint architecture.":::
 
+> [!NOTE]
+> We recommend using Managed Identity connect to [Azure Storage](/azure/storage/common/storage-network-security?tabs=azure-portal#grant-access-to-trusted-azure-services) and [Azure Event Hubs](/azure/event-hubs/event-hubs-ip-filtering#trusted-microsoft-services) instead of managed private endpoints. To connect using managed identities, configure the Azure Storage or Event Hubs resources to recognize Azure Data Explorer as a trusted service. Then, use [Managed Identity](/azure/data-explorer/managed-identities-overview) to grant access by creating a network rule exception for trusted Azure services.```
+
 ### Supported services
 
 Azure Data Explorer supports creating managed private endpoints to the following services:
