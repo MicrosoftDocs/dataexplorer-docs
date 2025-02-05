@@ -14,13 +14,13 @@ Extracts structured information from a string expression and represents the info
 
 The following extraction modes are supported:
 
-* [**Specified delimeter**](#specified-delimeter): Extraction based on specified delimiters that dictate how keys/values and pairs are separated from each other.
-* [**Non-specified delimeter**](#nonspecified-delimiter): Extraction with no need to specify delimiters. Any nonalphanumeric character is considered a delimiter.
+* [**Specified delimiter**](#specified-delimiter): Extraction based on specified delimiters that dictate how keys/values and pairs are separated from each other.
+* [**Non-specified delimiter**](#nonspecified-delimiter): Extraction with no need to specify delimiters. Any nonalphanumeric character is considered a delimiter.
 * [**Regex**](#regex): Extraction based on [regular expressions](regex.md).
 
 ## Syntax
 
-### Specified delimeter
+### Specified delimiter
 
 *T* `|` `parse-kv` *Expression* `as` `(` *KeysList* `)` `with` `(` `pair_delimiter` `=` *PairDelimiter* `,` `kv_delimiter` `=` *KvDelimiter*  [`,` `quote` `=` *QuoteChars* ... [`,` `escape` `=` *EscapeChar* ...]] [`,` `greedy` `=` `true`] `)`
 
