@@ -3,7 +3,7 @@ title:  Joining within time window
 description: Learn how to perform a time window join operation to match between two large datasets.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/28/2025
 ---
 # Time window join
 
@@ -11,20 +11,33 @@ ms.date: 08/11/2024
 
 It's often useful to join between two large datasets on some high-cardinality key, such as an operation ID or a session ID, and further limit the right-hand-side ($right) records that need to match up with each left-hand-side ($left) record by adding a restriction on the "time-distance" between `datetime` columns on the left and on the right.
 
-The above operation differs from the usual Kusto join operation, since for the `equi-join` part of matching the high-cardinality key between the left and right datasets, the system can also apply a distance function and use it to considerably speed up the join.
+The above operation differs from the usual join operation, since for the `equi-join` part of matching the high-cardinality key between the left and right datasets, the system can also apply a distance function and use it to considerably speed up the join.
 
 > [!NOTE]
-> A distance function doesn't behave like equality (that is, when both dist(x,y) and dist(y,z) are true it doesn't follow that dist(x,z) is also true.) Internally, we sometimes refer to this as "diagonal join".
+> A distance function doesn't behave like equality (that is, when both dist(x,y) and dist(y,z) are true it doesn't follow that dist(x,z) is also true.) This is sometimes referred to as a "diagonal join".
 
-For example, if you want to identify event sequences within a relatively small time window, assume that you have a table `T` with the following schema:
+## Example to identify event sequences without time window
+
+To identify event sequences within a relatively small time window, this example uses a table `T` with the following schema:
 
 * `SessionId`: A column of type `string` with correlation IDs.
 * `EventType`: A column of type `string` that identifies the event type of the record.
 * `Timestamp`: A column of type `datetime` indicates when the event described by the record happened.
 
+| SessionId | EventType | Timestamp |
+|--|--|--|
+| 0 | A | 2017-10-01T00:00:00Z |
+| 0 | B | 2017-10-01T00:01:00Z |
+| 1 | B | 2017-10-01T00:02:00Z |
+| 1 | A | 2017-10-01T00:03:00Z |
+| 3 | A | 2017-10-01T00:04:00Z |
+| 3 | B | 2017-10-01T00:10:00Z |
+
+The following query creates the dataset and then identifies all the session IDs in which event type `A` was followed by an event type `B` within a `1min` time window.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIUbBVSEksAcKknFSN4NTi4sz8PM8Uq+KSosy8dB0F17LUvJKQyoJUuEhIZm5qcUliboEVUF9qCZCnycsVzculAATqBuo6CuqOQAImp2FkYGiua2iga2CoYGBgBUaaOsiqnfCoNkRWbUhItRGGanwuMUZWbUxItQmGajwuMYT5MtaalysEAKb/JupnAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WQTWvDMAyG74H8B91iQ1LsdjDI8GGFHnZubmOHdBGdu8YJjlgZ7MdPbsgHtKS2sbD12O8rnZGgAANVSTwPZxR77DrbuLcq78hbd0xh94OOit8Wx5vC1thRWbc5v0Pik4yj9zgCHolKUkheeRtyYq30c6ZVpjQolV+XTOf0doHWc1o/otc39JKTzZzePKKfbugFJ3qo8uMljgqIoz+4fKHHqZtgTNALmdY3J/wkGHufwp5KT2ZsdKBOjXXwbV1lrHPoeyOiD0EhxPsq22TI3lHa8YczncBJaNyETN4Fs5D13iQckC6IDoSq2dhqBZqjXKrnKvYPNlcRxHMCAAA=" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -38,38 +51,6 @@ let T = datatable(SessionId:string, EventType:string, Timestamp:datetime)
     '3', 'B', datetime(2017-10-01 00:10:00),
 ];
 T
-```
-
-**Output**
-
-|SessionId|EventType|Timestamp|
-|---|---|---|
-|0|A|2017-10-01 00:00:00.0000000|
-|0|B|2017-10-01 00:01:00.0000000|
-|1|B|2017-10-01 00:02:00.0000000|
-|1|A|2017-10-01 00:03:00.0000000|
-|3|A|2017-10-01 00:04:00.0000000|
-|3|B|2017-10-01 00:10:00.0000000|
-
-**Problem statement**
-
-Our query should answer the following question:
-
-   Find all the session IDs in which event type `A` was followed by an
-   event type `B` within a `1min` time window.
-
-> [!NOTE]
-> In the sample data above, the only such session ID is `0`.
-
-Semantically, the following query answers this question, albeit inefficiently.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WQTWvDMAyG74H8B91iQ1LsdjDI8GGFHnZubmOHdBGdu8YJjlgZ7MdPbsgHtKS2sbD12O8rnZGgAANVSTwPZxR77DrbuLcq78hbd0xh94OOit8Wx5vC1thRWbc5v0Pik4yj9zgCHolKUkheeRtyYq30c6ZVpjQolV+XTOf0doHWc1o/otc39JKTzZzePKKfbugFJ3qo8uMljgqIoz+4fKHHqZtgTNALmdY3J/wkGHufwp5KT2ZsdKBOjXXwbV1lrHPoeyOiD0EhxPsq22TI3lHa8YczncBJaNyETN4Fs5D13iQckC6IDoSq2dhqBZqjXKrnKvYPNlcRxHMCAAA=" target="_blank">Run the query</a>
-::: moniker-end
-
-```kusto
-T 
 | where EventType == 'A'
 | project SessionId, Start=Timestamp
 | join kind=inner
@@ -84,43 +65,15 @@ T
 
 **Output**
 
-|SessionId|Start|End|
-|---|---|---|
-|0|2017-10-01 00:00:00.0000000|2017-10-01 00:01:00.0000000|
+| SessionId | Start | End |
+|--|--|--|
+| 0 | 2017-10-01 00:00:00.0000000 | 2017-10-01 00:01:00.0000000 |
 
-To optimize this query, we can rewrite it as described below
-so that the time window is expressed as a join key.
+## Example optimized with time window
 
-**Rewrite the query to account for the time window**
+To optimize this query, we can rewrite it to account for the time window. THe time window is expressed as a join key. Rewrite the query so that the `datetime` values are "discretized" into buckets whose size is half the size of the time window. Use *`equi-join`* to compare the bucket IDs.
 
-Rewrite the query so that the `datetime` values are "discretized" into buckets whose size is half the size of the time window. Use Kusto's *`equi-join`* to compare those bucket IDs.
-
-```kusto
-let lookupWindow = 1min;
-let lookupBin = lookupWindow / 2.0; // lookup bin = equal to 1/2 of the lookup window
-T 
-| where EventType == 'A'
-| project SessionId, Start=Timestamp,
-          // TimeKey on the left side of the join is mapped to a discrete time axis for the join purpose
-          TimeKey = bin(Timestamp, lookupBin)
-| join kind=inner
-    (
-    T 
-    | where EventType == 'B'
-    | project SessionId, End=Timestamp,
-              // TimeKey on the right side of the join - emulates event 'B' appearing several times
-              // as if it was 'replicated'
-              TimeKey = range(bin(Timestamp-lookupWindow, lookupBin),
-                              bin(Timestamp, lookupBin),
-                              lookupBin)
-    // 'mv-expand' translates the TimeKey array range into a column
-    | mv-expand TimeKey to typeof(datetime)
-    ) on SessionId, TimeKey 
-| where (End - Start) between (0min .. lookupWindow)
-| project SessionId, Start, End 
-```
-
-**Runnable query reference (with table inlined)**
+The query finds pairs of events within the same session (*SessionId*) where an 'A' event is followed by a 'B' event within 1 minute. It projects the session ID, the start time of the 'A' event, and the end time of the 'B' event.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -158,13 +111,13 @@ T
 
 **Output**
 
-|SessionId|Start|End|
-|---|---|---|
-|0|2017-10-01 00:00:00.0000000|2017-10-01 00:01:00.0000000|
+| SessionId | Start | End |
+|--|--|--|
+| 0 | 2017-10-01 00:00:00.0000000 | 2017-10-01 00:01:00.0000000 |
 
-**5M data query**
+## 5 million data query
 
-The next query emulates a dataset of 5M records and ~1M IDs and runs the query with the technique described above.
+The next query emulates an extensive dataset of 5M records and approximately 1M Session IDs and runs the query with the time window technique.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -199,6 +152,10 @@ T
 
 **Output**
 
-|Count|
-|---|
-|3344|
+| Count |
+|--|
+| 3344 |
+
+## Related content
+
+* [join operator](join-operator.md)
