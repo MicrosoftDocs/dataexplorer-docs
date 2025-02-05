@@ -7,7 +7,9 @@ ms.topic: how-to
 ms.date: 02/03/2025
 monikerRange: "azure-data-explorer"
 #customer intent: To learn about creating an app injest using Kusto’s batching manager and streaming ingestion.
+
 ---
+
 # Create an app for streaming ingestion using Kusto’s batching manager
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
@@ -83,13 +85,15 @@ Enable streaming ingestion on the table or on the entire database using one of t
 
 For more information about streaming policy, see [Streaming ingestion policy - Azure Data Explorer & Real-Time Analytics](../../../kusto//management/streaming-ingestion-policy.md)
 
-# Create a basic client application
+## Create a basic client application
 
 Create a basic client application which connects to the Kusto Help cluster.
 Enter the cluster query and ingest URI and database name in the relevant variables.
 
 
 ### [C#](#tab/c-sharp)
+
+The code sample includes a service function `PrintResultAsValueList()` for printing query results
 
 ```C#
 using System;
@@ -116,43 +120,67 @@ class Program
         using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
         using (var ingestClient = KustoIngestFactory.CreateManagedStreamingIngestClient(clusterKcsb, ingestionKcsb))
         {
-            string SASURI ="<your SAS URI>";
-        
-
+            
+            
             Console.WriteLine("Number of rows in " + tableName);
             var queryProvider = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
             var result = kustoClient.ExecuteQuery(databaseName, tableName + " | count", new ClientRequestProperties());
     
             PrintResultAsValueList(result);
-
-            //Ingestion section
-            Console.WriteLine("Ingesting data from a file");
-            var ingestProps = new KustoIngestionProperties(databaseName, tableName) 
-            {
-                Format = DataSourceFormat.csv,
-                IgnoreFirstRecord = true
-            };
-            ingestClient.IngestFromStorageAsync(SASURI, ingestProps).Wait();
-
-            Console.WriteLine("Example line from " + tableName);
-            result = kustoClient.ExecuteQuery(databaseName, tableName + " | top 1 by EndTime", new ClientRequestProperties());
-            PrintResultAsValueList(result);
+            
         }
     }
 
 
     static void PrintResultAsValueList(IDataReader result)
     {
+        var row=0;
         while (result.Read())
-        {
+        {   
+            row ++;
+            Console.WriteLine("row:" + row.ToString() + "\t");
             for (int i = 0; i < result.FieldCount; i++)
             {
-                Console.Write(result.GetValue(i) + "\t");
+
+                Console.WriteLine("\t"+ result.GetName(i)+" - " + result.GetValue(i) );
             }
             Console.WriteLine();
         }
     }
 }
+```
+
+## Stream a file for ingestion
+
+Use the `IngestFromStorageAsync` method to ingest the *stormevents.csv* file.
+
+Copy *stormevents.csv* file in the same location as your script. Since our CSV file contains a header row, use `IgnoreFirstRecord=True` to ignore the header.
+
+Add and ingestion section using the following lines to the end of `Main()`.
+
+```csharp           
+            var ingestProps = new KustoIngestionProperties(databaseName, tableName) 
+                {
+                    Format = DataSourceFormat.csv,
+                    IgnoreFirstRecord = true
+                };
+
+            //Ingestion section
+            Console.WriteLine("Ingesting data from a file");
+            ingestClient.IngestFromStorageAsync(".\\stormevents.csv", ingestProps).Wait();
+```
+
+Let’s also query the new number of rows and the most recent row after the ingestion.
+Add the following lines after the ingestion command:
+
+```csharp            
+            Console.WriteLine("Number of rows in " + tableName);
+            result = kustoClient.ExecuteQuery(databaseName, tableName + " | count", new ClientRequestProperties());
+            PrintResultAsValueList(result);
+            
+            Console.WriteLine("Example line from " + tableName);
+            result = kustoClient.ExecuteQuery(databaseName, tableName + " | top 1 by EndTime", new ClientRequestProperties());
+            PrintResultAsValueList(result);
 ```
 
 ### [Python](#tab/python)
@@ -202,23 +230,16 @@ def main():
             result = kusto_client.execute_query(database_name, table_name + " | count")
             print_result_as_value_list(result)
 
-
 main()
 ```
 
----
-
 ## Stream a file for ingestion
 
-Let’s use the `ingest_from_file()` API to ingest stormevents.csv.
-Place stormevents.csv file in the same location as your script. Since our CSV file contains a header row we use `ignore_first_record=True` to ignore it.
 
-Add and ingestion section using the following lines to the end of main().
+Use the `ingest_from_file()` API to ingest the *stormevents.csv* file.
+Place *stormevents.csv* file in the same location as your script. Since our CSV file contains a header row, use `ignore_first_record=True` to ignore the header.
 
-### [C#](#tab/c-sharp)
-
-
-### [Python](#tab/python)
+Add and ingestion section using the following lines to the end of `main()`.
 
 ```python
 # ingestion section
@@ -227,9 +248,8 @@ ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV, ig
 ingest_client.ingest_from_file(file_path, ingest_props)
 ```
 
-Let’s also query the new number of rows and the most recent row.
+Let’s also query the new number of rows and the most recent row after the ingestion.
 Add the following lines after the ingestion command:
-
 
 ```python
 print("New number of rows in " + table_name)
@@ -241,9 +261,9 @@ result = kusto_client.execute_query(database_name, table_name + " | top 1 by End
 print_result_as_value_list(result)
 ```
 
-Run the script from the directory where the script and stormevents.csv are located. Alternatively, you can specify the full path to the file. replacing `file_path = os.curdir + "/stormevents.csv"` with `file_path = "<full path to stormevents.csv>"`
+Run the script from the directory where the script and stormevents.csv are located. Alternatively, you can specify the full path to the file replacing `file_path = os.curdir + "/stormevents.csv"` with `file_path = "<full path to stormevents.csv>"`
 
-The first time your run the application the results will be as follows:
+The first time your run the application the results are as follows:
 
 ```plaintext
 Number of rows in MyStormEvents
@@ -263,21 +283,20 @@ row 1 :
          Source - COOP Observer
          StormSummary - {'TotalDamages': 0, 'StartTime': '2007-12-31T11:15:00.0000000Z', 'EndTime': '2007-12-31T13:21:00.0000000Z', 'Details': {'Description': 'Heavy showers caused flash flooding in the eastern part of Molokai.  Water was running over the bridge at Halawa Valley.', 'Location': 'HAWAII'}}
 ```
-
 ---
 
 ### Stream in-memory data for ingestion
 
-To ingest data from memory, create a stream containing the data for ingestion and call the `ingest_from_stream()` API.
-
-Replace the ingestion section code with the following:
-
-### [C#](#tab/c-sharp)
-
+To ingest data from memory, create a stream containing the data for ingestion.
 
 ### [Python](#tab/python)
 
+Call the `ingest_from_stream()` API to ingest the stream.
+
+Replace the ingestion section code with the following:
+
 ```python
+# Ingestion section
 print("Ingesting data from memory")
 single_line = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
 string_stream = io.StringIO(single_line)
@@ -287,18 +306,41 @@ stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=le
 ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
 ```
 
-The results will be as follows:
+### [C#](#tab/c-sharp)
+
+Call the `IngestFromStreamAsync()` method to ingest the stream.
+
+Replace the ingestion section code with the following:
+
+```csharp
+            // Ingestion section
+            Console.WriteLine("Ingesting data from memory");
+            var singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,'{}'";
+            byte[] byteArray = Encoding.UTF8.GetBytes(singleLine);
+            using (MemoryStream stream = new MemoryStream(byteArray))
+               {
+                var streamSourceOptions = new StreamSourceOptions
+                {
+                    LeaveOpen = false
+                };
+                ingestClient.IngestFromStreamAsync(stream, ingestProps, streamSourceOptions).Wait();
+               }
+```
+
+---
+
+The results are as follows:
 
 ```plaintext
 Number of rows in MyStormEvents
 row 1 :
-	 Count - 0
+	 Count - 1001
 
 Ingesting data from memory
 
 New number of rows in MyStormEvents
 row 1 :
-	 Count - 1
+	 Count - 1002
 
 Example line from MyStormEvents
 row 1 :
@@ -321,12 +363,10 @@ When you send a blob for streaming, the client only sends the blob reference to 
   
 For this section you’ll need to upload the sample csv file to your storage account and generate a URI with built-in read permissions (e.g. via SAS) to provide to the code sample. For information on uploading a file to blob storage, see [Upload, download, and list blobs with the Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal). For information on generation an SAS URL, see [Generate a SAS token](kusto/api/connection-strings/generate-sas-token?view=azure-data-explorer&preserve-view=true).
 
-Replace the ingestion section code with the following section:
-
-### [C#](#tab/c-sharp)
-
 
 ### [Python](#tab/python)
+
+Replace the ingestion section code with the following section:
 
 ```python
 print("Ingesting data from an existing blob")
@@ -335,7 +375,45 @@ ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV, ig
 ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
 ```
 
+### [C#](#tab/c-sharp)
+
+Replace the ingestion section code with the following section:
+
+```csharp
+            //Ingestion section
+            Console.WriteLine("Ingesting data from an existing blob");
+            var sasURI ="<your SAS URI>";
+            ingestClient.IngestFromStorageAsync(sasURI, ingestProps).Wait();
+```
+
 ---
+
+The results are as follows:
+
+```plaintext
+Number of rows in MyStormEvents
+row 1 :
+     Count - 1002
+
+Ingesting data from an existing blob
+
+New number of rows in MyStormEvents
+row 1 :
+	 Count - 2002
+
+Example line from MyStormEvents
+row 1 :
+	 StartTime - 2018-01-26 00:00:00+00:00
+	 EndTime - 2018-01-27 14:00:00+00:00
+	 State - MEXICO
+	 DamageProperty - 0
+	 DamageCrops - 0
+	 Source - Unknown
+	 StormSummary - {}
+
+```
+
+
 
 > [NOTE!]
 > You can also use a managed identity based authorization as an alternative to SAS or account keys in Azure Storage and Azure Data Lake. For more information, see [Ingest data using managed identity authentication](/azure/data-explorer/ingest-data-managed-identity)
