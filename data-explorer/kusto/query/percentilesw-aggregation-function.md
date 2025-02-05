@@ -3,7 +3,7 @@ title:  percentilew(), percentilesw()
 description:  Learn how to use the percentilew(), percentilesw() functions to calculate weighted percentiles.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # percentilew(), percentilesw() (aggregation function)
 
@@ -177,3 +177,9 @@ latencyTable
 | percentile_LatencyBucket |
 |---|---|---|
 | [20, 20, 40] |
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [percentile(), percentiles() (aggregation function)](percentiles-aggregation-function.md)
+* [avg function](avg-aggregation-function.md)

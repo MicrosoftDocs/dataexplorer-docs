@@ -3,7 +3,7 @@ title:  avg() (aggregation function)
 description: Learn how to use the avg() function to calculate the average value of an expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # avg() (aggregation function)
 
@@ -31,7 +31,7 @@ Returns the average value of *expr* across the group.
 
 ## Example
 
-This example returns the average number of damaged crops per state.
+The following example returns the average number of damaged crops per state.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -61,6 +61,7 @@ The results table shown includes only the first 10 rows.
 
 ## Related content
 
-* [min function](min-aggregation-function.md)
-* [max function](max-aggregation-function.md)
-* [percentile function](percentiles-aggregation-function.md)
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [min() (aggregation function)](min-aggregation-function.md)
+* [max() (aggregation function)](max-aggregation-function.md)
+* [percentile(), percentiles() (aggregation function)](percentiles-aggregation-function.md)

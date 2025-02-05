@@ -3,7 +3,7 @@ title:  make_bag() (aggregation function)
 description: Learn how to use the make_bag() aggregation function to create a dynamic JSON property bag.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # make_bag() (aggregation function)
 
@@ -33,8 +33,8 @@ Creates a `dynamic` JSON property bag (dictionary) of all the values of *expr* i
 
 ## Returns
 
-Returns a `dynamic` JSON property bag (dictionary) of all the values of *Expr* in the group, which are property bags. Non-dictionary values will be skipped.
-If a key appears in more than one row, an arbitrary value, out of the possible values for this key, will be selected.
+Returns a `dynamic` JSON property bag (dictionary) of all the values of *Expr* in the group, which are property bags. Nondictionary values are skipped.
+If a key appears in more than one row, an arbitrary value, out of the possible values for this key, is selected.
 
 ## Example
 
@@ -91,4 +91,9 @@ T
 
 ## Related content
 
-[bag_unpack()](bag-unpack-plugin.md).
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [make_bag_if() (aggregation function)](make-bag-if-aggregation-function.md)
+* [bag_unpack()](bag-unpack-plugin.md)
+* [bag_pack()](pack-function.md)
+* [make_list() (aggregation function)](make-list-aggregation-function.md)
+* [parse_json()](parse-json-function.md)
