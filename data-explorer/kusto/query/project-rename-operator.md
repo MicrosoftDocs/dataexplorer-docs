@@ -31,9 +31,7 @@ A table that has the columns in the same order as in an existing table, with col
 
 ## Example
 
-The examples in this section show how to use the syntax to help you get started.
-	
-[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+If you have a table with columns a, b, and c, and you want to rename a to new_a and b to new_b while keeping the same order, the query would look like this:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
