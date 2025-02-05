@@ -3,7 +3,7 @@ title:  make_list_if() (aggregation function)
 description: Learn how to use the make_list_if() aggregation function to create a dynamic JSON object of expression values where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # make_list_if() (aggregation function)
 
@@ -31,7 +31,7 @@ Creates a `dynamic` array of *expr* values in the group for which *predicate* ev
 
 ## Returns
 
-Returns a `dynamic` array of *expr* vlaues in the group for which *predicate* evaluates to `true`.
+Returns a `dynamic` array of *expr* values in the group for which *predicate* evaluates to `true`.
 If the input to the `summarize` operator isn't sorted, the order of elements in the resulting array is undefined.
 If the input to the `summarize` operator is sorted, the order of elements in the resulting array tracks that of the input.
 
@@ -64,4 +64,6 @@ T
 
 ## Related content
 
-[`make_list`](make-list-aggregation-function.md) function, which does the same, without predicate expression.
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [`make_list`](make-list-aggregation-function.md)
+* [make_bag_if() (aggregation function)](make-bag-if-aggregation-function.md)
