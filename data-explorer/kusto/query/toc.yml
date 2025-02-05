@@ -912,8 +912,10 @@ items:
         displayName: new guid
         href: new-guid-function.md
       - name: node_degree_in()
+        displayName: Node degree in node_degree_in, indegree node_degree_in 
         href: node_degree_in.md
       - name: node_degree_out()
+        displayName: Node degree out node_degree_out, outdegree node_degree_out
         href: node_degree_out.md
       - name: not()
         href: not-function.md
