@@ -50,7 +50,9 @@ All properties are optional.
 
 ## Examples
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Dates of storms by state
 

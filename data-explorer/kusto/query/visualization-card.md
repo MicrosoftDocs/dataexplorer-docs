@@ -38,9 +38,9 @@ All properties are optional.
 
 ## Example
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
-
 This query provides a count of flood events in Virginia and displays the result in a card format.
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

@@ -61,7 +61,6 @@ This visualization supports splitting into multiple y-axis values:
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value. Maximum five panels.|
 
-
 ::: moniker-end
 
 ::: moniker range="azure-monitor || microsoft-sentinel"
@@ -91,6 +90,10 @@ The supported values of this property are:
 | `stacked100` | Stack "areas" to the right and stretch each one to the same width as the others. |
 
 ## Examples
+
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Simple area chart
 
