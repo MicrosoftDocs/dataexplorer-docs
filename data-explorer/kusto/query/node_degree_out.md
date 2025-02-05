@@ -15,7 +15,7 @@ This function can only be used in the context of `graph-match` or `graph-shortes
 
 ## Syntax
 
-`node_degree_out``(`*node*`)`
+`node_degree_out(`*node*`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -23,7 +23,7 @@ This function can only be used in the context of `graph-match` or `graph-shortes
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-|*node*|`string`|:heavy_check_mark:|The reference to a graph node.|
+|*node*|`string`| :heavy_check_mark: |The reference to a graph node.|
 
 ## Returns
 
@@ -31,9 +31,12 @@ Returns the out-degree of the input node.
 
 ## Example
 
-The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to match where a manager node has an incoming edge from an employee node, and then uses `node_degree_out` to identify managers with exactly one direct report.
+The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to match where a manager node has an incoming edge from an employee node and then uses `node_degree_out` to identify managers with exactly one direct report.
 
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
 <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQQU%2FDIBiG7%2FyKLz2tCZhs0xjnauKMF49el2Vh7ZfCpNBQdJr444W20DljenmB9%2BF7ikIH2LTKfCF2UEDFnf8OCmeaN7jqnJW6psBrXCmj65xsSfaoZIkZheWCkmxjDiHOfXz%2BCLuLWx9fTB%2FvfHwSVnZ%2BcX1DA4qfoR7yBnXoLH18laXgtgonHtndE%2BW1LLbGut9SUTWJNVx7Nzuue73BKFpOAtPOIDoUo0esRfepPcn1RNAb1ci3n%2F%2BGrLa8FekZgbGH6AUn6cTZAxsN4V092DOs4a4UMBvb%2BZptx6t3LP1rTk4CLYI2Fe4rrC3i3ry7BEFRwJy01hyxdHHwVRhDzxGpE0H%2FveuSSA5%2FkXT0A7lPLqdDAgAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let employees = datatable(name:string, age:long)
