@@ -14,18 +14,21 @@ In this article, you learn how to use PowerShell to create a cross-tenant Event 
 ## Prerequisites
 
 * If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
-* Create an [event hub with data for ingestion](ingest-data-event-hub-overview.md) with an account in *Tenant1*, acc1@domain1.com. This is the tenant that hosts the source Event Hubs.
-* Create [a test cluster and database](create-cluster-and-database.md), with an account in *Tenant2*, acc2@domain2.com. This is the tenant that hosts the destination cluster.
+* Create an Event Hub in *Tenant1*. This is the tenant that hosts the source Event Hubs.
+* Create [a test cluster and database](create-cluster-and-database.md) in *Tenant2*. This is the tenant that hosts the destination cluster.
+* A single Entra account with access to both tenants or a [multitenant service principal](/entra/identity-platform/howto-convert-app-to-be-multi-tenant).
 
 ## Permissions
 
-You must have at least [Azure Data Explorer Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions.
+The Entra account or multitenant service principal must have at least the following permissions:
+1. Data Explorer: Contributor
+2. Event Hubs Namespace: [Azure Event Hubs Data Owner](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-owner)
 
 > [!NOTE]
 > The account can be local or guest to Tenant1 or Tenant2, as long as it has the prerequisite permissions.
-> Permissions must be at the Namespace level, and not at the Event Hubs level. Only Event Hubs Namespace keys are used for the connection.
+> Permissions must be at the Namespace level, and not at the Event Hubs level.
 
-## Assign role to Tenant2 in Event Hubs
+## Assign role to the Entra Account or Service Principal in Event Hubs for Tenant1
 
 1. In the Azure portal, browse to your Event Hubs namespace.
 
@@ -37,10 +40,22 @@ You must have at least [Azure Data Explorer Receiver](/azure/role-based-access-c
     |--|--|
     | Role | [Azure Event Hubs Data Owner](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-owner) |
     | Assign access to | User, group, or service principal |
-    | Select | The email address of the user in *Tenant2* |
+    | Select | The email address of the Entra user or Service Principal ID |
 
-1. When you receive an email invite on the selected address (`acc2@domain2.com account`), accept the invitation.
+## Assign role to the Entra Account or Service Principal in the cluster for Tenant2
 
+1. In the Azure portal, browse to your Data Explorer cluster.
+
+1. In the left menu, select **Access control (IAM)** > **Add role assignments**.
+
+1. In the **Add role assignment** window, enter the settings in the table and then select **Save**.
+
+    | **Setting** | **Suggested value** |
+    |--|--|
+    | Role | Contributor |
+    | Assign access to | User, group, or service principal |
+    | Select | The email address of the Entra user or Service Principal ID |
+   
 ## Set up the cross-tenant data connection
 
 Set up a cross-tenant data connection between the cluster and Event Hubs using PowerShell.
@@ -51,7 +66,7 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
 
 # [Entra account](#tab/entra)
 
-1. Run the following command to connect to *Tenant1* and subscription:
+1. Run the following command to connect to the Event Hub subscription in *Tenant1*:
 
     ```PowerShell
     Connect-AzAccount -TenantId <Tenant ID> -Subscription "<SubscriptionName>"
@@ -69,7 +84,7 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
     $auxpat="Bearer $tokenfromtenant1"
     ```
 
-1. Grant the cluster tenant `acc1@domain1.com` access to the cluster, and set the subscription ID:
+1. Run the following command to connect to the cluster subscription in *Tenant2*:
 
     ```PowerShell
     Connect-AzAccount -TenantId <Tenant ID> -SubscriptionId "<SubscriptionName>"
@@ -99,8 +114,6 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
     $adxdcuri="https://management.azure.com/subscriptions/<subscriptionID>/resourceGroups/<resource group name>/providers/Microsoft.Kusto/clusters/<ADXClusterName>/databases/<ADXdbName>/dataconnections/<ADXDataConnectionName>?api-version=2020-02-15"
     ```
 
-1. Add `acc1@domain1.com` as a contributor in the cluster:
-
 1. Invoke the following web request that uses the previously defined variables, to create the data connection:
 
     ```PowerShell
@@ -127,7 +140,7 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
     $Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $ServicePrincipalID, $Password
     ```
 
-1. Connect to the Event hub tenant:
+1. Connect to the Event Hub subscription in *Tenant1*:
 
     ```PowerShell
     Connect-AzAccount -TenantId <Tenant ID> -Subscription "<SubscriptionName>" -ServicePrincipal -Credential $Credential
@@ -144,8 +157,8 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
     ```PowerShell
     $auxpat="Bearer $tokenfromtenant1"
     ```
-
-1. Connect to the Event hub tenant:
+    
+1. Connect to the cluster subscription in *Tenant2*:
 
     ```PowerShell
     Connect-AzAccount -TenantId <Tenant ID> -Subscription "<SubscriptionName>" -ServicePrincipal -Credential $Credential
@@ -187,10 +200,10 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
 
 1. Verify that you can now see the newly created data connection in the Azure portal.
 
-1. *Optional*: Once the data connection is established, consider revoking or deleting any unnecessary permissions or accounts.
+1. *Optional*: After establishing the data connection, you may revoke or delete the previously granted permissions for the Entra Account or Service Principal. Since the cluster ingestion uses the Event Hub keys, these permissions are no longer required.
 
 > [!IMPORTANT]
-> If the access used to build the data connection is revoked on Event Hubs, make sure you delete the data connection. Otherwise, the cluster continues to ingest data even if access on Event Hubs is revoked.
+> If the primary or secondary Event Hub keys are rotated, data ingestion may stop working. In that case, you need to drop and recreate the data connection.
 
 ## Related content
 
