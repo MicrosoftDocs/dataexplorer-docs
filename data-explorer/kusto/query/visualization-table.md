@@ -62,9 +62,9 @@ All properties are optional.
 
 ## Example
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
-
 This query outputs a snapshot of the first 10 storm event records, displayed in a table format.
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

@@ -33,6 +33,8 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 This query provides a detailed analysis of sales for Contoso computer products within the specified date range, visualized as a pivot chart.
 
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ```kusto
 SalesFact
 | join kind= inner Products on ProductKey

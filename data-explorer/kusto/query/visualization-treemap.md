@@ -26,9 +26,9 @@ Treemaps display hierarchical data as a set of nested rectangles. Each level of 
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *T* | `string` |  :heavy_check_mark: | Input table name.
-| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+|--|--|--|--|
+| *T* | `string` | :heavy_check_mark: | Input table name. |
+| *propertyName*, *propertyValue* | `string` |  | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties). |
 
 ### Supported properties
 
@@ -40,9 +40,9 @@ All properties are optional.
 
 ## Example
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
-
 This query counts the number of storm events for each type and state, sorts them in descending order, limits the results to the top 30, and then visualizes the data as a treemap.
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 ```kusto
 StormEvents

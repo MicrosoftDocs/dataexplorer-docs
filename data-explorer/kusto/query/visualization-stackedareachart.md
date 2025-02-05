@@ -49,9 +49,9 @@ All properties are optional.
 
 ## Example
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
-
 The following query summarizes data from the `nyc_taxi` table by number of passengers and visualizes the data in a stacked area chart. The x-axis shows the pickup time in two day intervals, and the stacked areas represent different passenger counts.
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

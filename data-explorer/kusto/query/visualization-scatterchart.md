@@ -74,9 +74,9 @@ The supported values of this property are:
 
 ## Example
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
-
 This query provides a scatter chart that helps you analyze the correlation between state populations and the total property damage caused by storm events.
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
