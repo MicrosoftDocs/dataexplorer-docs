@@ -3,7 +3,7 @@ title:  .show queued ingestion operations command
 description: Learn how to use the `.show queued ingestion operations` command to view a log of the queued ingestion operations that are currently running or completed.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/04/2025
+ms.date: 02/05/2025
 ---
 
 # .show queued ingestion operations command
@@ -18,9 +18,9 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Syntax
 
-`.show queued ingestion operations` *OperationId*
+`.show queued ingestion operations` `"`*OperationId*`"`
 
-`.show queued ingestion operations` `(` *OperationId* [`,` ... ] `)`
+`.show queued ingestion operations` `(` `"`*OperationId*`"` [`,` ... ] `)`
 
 ## Parameters
 
@@ -65,7 +65,7 @@ The following table describes the possible values for the result table's *State*
 The following example shows the queued ingestion operations for a specific operation ID.
 
 ```kusto
-.show queued ingestion operations aaaaaaaa-0b0b-1c1c-2d2d-333333333333
+.show queued ingestion operations "aaaaaaaa-0b0b-1c1c-2d2d-333333333333"
 ```
 
 |OperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
@@ -77,7 +77,7 @@ The following example shows the queued ingestion operations for a specific opera
 The following example shows the queued ingestion operations for multiple operation ID numbers.
 
 ```kusto
-.show queued ingestion operations (aaaaaaaa-0b0b-1c1c-2d2d-333333333333, bbbbbbbb-1c1c-2d2d-3e3e-444444444444)
+.show queued ingestion operations ("aaaaaaaa-0b0b-1c1c-2d2d-333333333333", "bbbbbbbb-1c1c-2d2d-3e3e-444444444444")
 ```
 
 |OperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|

@@ -56,7 +56,7 @@ with (format='parquet')
 The `.show queued ingestion operations` command is run to check whether the ingestion is complete or if there are any errors.
 
 ```kusto
-.show queued ingestion operations (aaaaaaaa-0b0b-1c1c-2d2d-333333333333)
+.show queued ingestion operations "aaaaaaaa-0b0b-1c1c-2d2d-333333333333"
  ```
 
 ### Filter queued files for ingestion
@@ -93,7 +93,7 @@ with (format='parquet')
 
 The `.show queued ingestion operations` command is run to check whether there are any issues with this ingestion.
 
-.show queued ingestion operations (bbbbbbbb-1c1c-2d2d-3e3e-444444444444)
+.show queued ingestion operations "bbbbbbbb-1c1c-2d2d-3e3e-444444444444"
 
 ### Cancel ingestion
 
