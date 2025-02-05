@@ -1,8 +1,7 @@
 ---
-title: Create an app to ingest data by streaming ingestion using Kusto’s batching manager
+title: Create an app to ingest data by streaming ingestion using Kusto’s managed streaming ingestion client
 description: Learn how to create an app to ingest data from a file, stream, or blob streaming ingestion by queuing it to Kusto’s batching manager.
 ms.reviewer: yogilad
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 02/03/2025
 monikerRange: "azure-data-explorer"
@@ -38,16 +37,16 @@ The following applies when using data ingesting with managed streaming:
 
 Data Streaming has some limitations compared to queuing data for ingestion.
 • Tags can not be set on data
-• Mapping can only be provided by Mapping Reference. Inline Mapping is not supported.
+• Mapping can only be provided by Mapping Reference. Inline Mapping isn't supported.
 • The payload sent in the request can not exceed 10MBs (regardless of format or compression).
 
-For mor information, see [Streaming Limitations](../../../ingest-data-streaming.md#limitations).
+For mor information, see [Streaming Limitations](/azure/data-explorer/ingest-data-streaming#limitations).
 
 ## Prerequisites
 
 + A Kusto cluster where you have database User or higher rights. You cam provision a free Kusto cluster in <https://dataexplorer.azure.com/freecluster>.
 Prerequisites:
-+ Download the file [stormevents.csv](where do we store this ???)and place it in a folder next to your script.
+
 + [Set up your development environment](/kusto/api/get-started/app-set-up?view=azure-data-explorer) to use the Kusto client library.
 
 ## Before you begin
@@ -361,7 +360,7 @@ Kusto supports ingestion from Azure Storage blobs, Azure Data Lake files and Ama
 
 When you send a blob for streaming, the client only sends the blob reference to the database, and the data is actually read once by the service itself. Read Access to the blob can be granted with keys, SAS tokens or managed identities attached to the Kusto Cluster.
   
-For this section you’ll need to upload the sample csv file to your storage account and generate a URI with built-in read permissions (e.g. via SAS) to provide to the code sample. For information on uploading a file to blob storage, see [Upload, download, and list blobs with the Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal). For information on generation an SAS URL, see [Generate a SAS token](kusto/api/connection-strings/generate-sas-token?view=azure-data-explorer&preserve-view=true).
+For this section you’ll need to upload the sample csv file to your storage account and generate a URI with built-in read permissions (e.g. via SAS) to provide to the code sample. For information on uploading a file to blob storage, see [Upload, download, and list blobs with the Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal). For information on generation an SAS URL, see [Generate a SAS token](/kusto/api/connection-strings/generate-sas-token?view=azure-data-explorer&preserve-view=true).
 
 
 ### [Python](#tab/python)
@@ -414,11 +413,9 @@ row 1 :
 ```
 
 
-
-> [NOTE!]
+> [!NOTE]
 > You can also use a managed identity based authorization as an alternative to SAS or account keys in Azure Storage and Azure Data Lake. For more information, see [Ingest data using managed identity authentication](/azure/data-explorer/ingest-data-managed-identity)
 
-
-Resources:
+## Resources
 + Kusto Python Git Hub repository [https://github.com/Azure/azure-kusto-python]
 + Python Sample App Wizard [https://dataexplorer.azure.com/oneclick/generatecode?programingLang=Python]
