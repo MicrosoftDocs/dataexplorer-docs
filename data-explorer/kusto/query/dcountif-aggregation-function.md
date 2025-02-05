@@ -3,7 +3,7 @@ title:  dcountif() (aggregation function)
 description: Learn how to use the dcountif() function to return an estimate of the number of distinct values of an expression for rows where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # dcountif() (aggregation function)
 
@@ -34,7 +34,7 @@ Estimates the number of distinct values of *expr* for rows in which *predicate* 
 Returns an estimate of the number of distinct values of *expr* for rows in which *predicate* evaluates to `true`.
 
 > [!TIP]
-> `dcountif()` may return an error in cases where all, or none of the rows pass the `Predicate` expression.
+> `dcountif()` might return an error in cases where all, or none of the rows pass the `Predicate` expression.
 
 ## Example
 
@@ -71,3 +71,10 @@ The results table shown includes only the first 10 rows.
 ## Estimation accuracy
 
 [!INCLUDE [data-explorer-estimation-accuracy](../includes/estimation-accuracy.md)]
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [dcount() (aggregation function)](dcount-aggregation-function.md)
+* [countif() (aggregation function)](countif-aggregation-function.md)
+* [count_distinctif() (aggregation function)](count-distinctif-aggregation-function.md)

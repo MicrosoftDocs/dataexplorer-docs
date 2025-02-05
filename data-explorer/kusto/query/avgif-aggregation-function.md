@@ -3,7 +3,7 @@ title:  avgif() (aggregation function)
 description: Learn how to use the avgif() function to return the average value of an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # avgif() (aggregation function)
 
@@ -24,7 +24,7 @@ Calculates the [average](avg-aggregation-function.md) of *expr* in records for w
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *expr* | `string` |  :heavy_check_mark: | The expression used for aggregation calculation. Records with `null` values are ignored and not included in the calculation. |
-| *predicate* | `string` |  :heavy_check_mark: | The predicate that if true, the *expr* calculated value will be added to the average. |
+| *predicate* | `string` |  :heavy_check_mark: | The predicate that if true, the *expr* calculated value is added to the average. |
 
 ## Returns
 
@@ -32,7 +32,7 @@ Returns the average value of *expr* in records where *predicate* evaluates to `t
 
 ## Example
 
-This example calculates the average damage by state in cases where there was any damage.
+The following example calculates the average damage by state in cases where there was any damage.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -43,6 +43,8 @@ This example calculates the average damage by state in cases where there was any
 StormEvents
 | summarize Averagedamage=tolong(avg( DamageCrops)),AverageWhenDamage=tolong(avgif(DamageCrops,DamageCrops >0)) by State
 ```
+
+**Output**
 
 The results table shown includes only the first 10 rows.
 
@@ -59,3 +61,10 @@ The results table shown includes only the first 10 rows.
 | NEBRASKA             | 21366         | 187726            |
 | NEW YORK             | 5             | 10000             |
 | ... | ... | ... |
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [avg() (aggregation function)](avg-aggregation-function.md)
+* [minif() (aggregation function)](minif-aggregation-function.md)
+* [maxif() (aggregation function)](maxif-aggregation-function.md)

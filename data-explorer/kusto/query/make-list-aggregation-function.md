@@ -3,7 +3,7 @@ title:  make_list() (aggregation function)
 description: Learn how to use the make_list() function to create a dynamic JSON object array of all the values of the expressions in the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 02/03/2025
 adobe-target: true
 ---
 # make_list() (aggregation function)
@@ -45,9 +45,11 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
 ### One column
 
-The following example makes a list out of a single column:
+The following example uses the datatable, `shapes`, to return a list of shapes in a single column.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -79,7 +81,7 @@ shapes
 
 ### Using the 'by' clause
 
-The following example runs a query using the `by` clause:
+The following example uses the `make_list` function and  the `by` clause to create two lists of objects grouped by whether they have an even or odd number of sides.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -112,7 +114,7 @@ shapes
 
 ### Packing a dynamic object
 
-The following examples show how to [pack](pack-function.md) a dynamic object in a column before making it a list.
+The following examples show how to [pack](pack-function.md) a dynamic object in a column before making it a list. It returns a column with a boolean table `isEvenSideCount` indicating whether the side count is even or odd and a `mylist` column that contains lists of packed bags int each category.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -146,4 +148,6 @@ shapes
 
 ## Related content
 
-[`make_list_if`](make-list-if-aggregation-function.md) operator is similar to `make_list`, except it also accepts a predicate.
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [`make_list_if`](make-list-if-aggregation-function.md)
+* [make_bag() (aggregation function)](make-bag-aggregation-function.md)
