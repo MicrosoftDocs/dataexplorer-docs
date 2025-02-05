@@ -3,7 +3,7 @@ title:  make_bag_if() (aggregation function)
 description: Learn how to use the make_bag_if() function to create a dynamic JSON property bag of expression values where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # make_bag_if() (aggregation function)
 
@@ -31,8 +31,8 @@ Creates a `dynamic` JSON property bag (dictionary) of *expr* values in records f
 
 ## Returns
 
-Returns a `dynamic` JSON property bag (dictionary) of *expr* values in records for which *predicate* evaluates to `true`. Non-dictionary values will be skipped.
-If a key appears in more than one row, an arbitrary value, out of the possible values for this key, will be selected.
+Returns a `dynamic` JSON property bag (dictionary) of *expr* values in records for which *predicate* evaluates to `true`. Nondictionary values are skipped.
+If a key appears in more than one row, an arbitrary value, out of the possible values for this key, are selected.
 
 > [!NOTE]
 > This function without the predicate is similar to [`make_bag`](make-bag-aggregation-function.md).
@@ -89,3 +89,12 @@ T
 |prop01|prop03|
 |---|---|
 |val_a|val_c|
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [make_bag() (aggregation function)](make-bag-aggregation-function.md)
+* [bag_unpack()](bag-unpack-plugin.md)
+* [bag_pack()](pack-function.md)
+* [make_list_if() (aggregation function)](make-list-if-aggregation-function.md)
+* [parse_json()](parse-json-function.md)

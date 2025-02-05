@@ -3,7 +3,7 @@ title:  maxif() (aggregation function)
 description: Learn how to use the maxif() function to calculate the maximum value of an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # maxif() (aggregation function)
 
@@ -51,16 +51,23 @@ StormEvents
 
 The results table shown includes only the first 10 rows.
 
-| State                | MaxDamageNoCasualties |
-| -------------------- | --------------------- |
-| TEXAS                | 25000000              |
-| KANSAS               | 37500000              |
-| IOWA                 | 15000000              |
-| ILLINOIS             | 5000000               |
-| MISSOURI             | 500005000             |
-| GEORGIA              | 344000000             |
-| MINNESOTA            | 38390000              |
-| WISCONSIN            | 45000000              |
-| NEBRASKA             | 4000000               |
-| NEW YORK             | 26000000              |
+| -- | -- |
+|--|--|
+| TEXAS | 25000000 |
+| KANSAS | 37500000 |
+| IOWA | 15000000 |
+| ILLINOIS | 5000000 |
+| MISSOURI | 500005000 |
+| GEORGIA | 344000000 |
+| MINNESOTA | 38390000 |
+| WISCONSIN | 45000000 |
+| NEBRASKA | 4000000 |
+| NEW YORK | 26000000 |
 | ... | ... |
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [minif() (aggregation function)](minif-aggregation-function.md)
+* [max_of()](max-of-function.md)
+* [arg_max() (aggregation function)](arg-max-aggregation-function.md)

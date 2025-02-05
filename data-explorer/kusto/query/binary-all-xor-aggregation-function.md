@@ -3,7 +3,7 @@ title:  binary_all_xor() (aggregation function)
 description: Learn how to use the binary_all_xor() function to aggregate values using the binary XOR operation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # binary_all_xor() (aggregation function)
 
@@ -27,7 +27,7 @@ Accumulates values using the binary `XOR` operation for each summarization group
 
 ## Returns
 
-Returns a value that is aggregated using the binary `XOR` operation over records for each summarization group, or in total if a group is not specified.
+Returns a value that is aggregated using the binary `XOR` operation over records for each summarization group, or in total if a group isn't specified.
 
 ## Example
 
@@ -54,3 +54,10 @@ datatable(num:long)
 |results|
 |--|
 |CAFEF00D|
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [binary_all_or() (aggregation function)](binary-all-or-aggregation-function.md)
+* [binary_all_and() (aggregation function)](binary-all-and-aggregation-function.md)
+* [binary_xor()](binary-xor-function.md)
