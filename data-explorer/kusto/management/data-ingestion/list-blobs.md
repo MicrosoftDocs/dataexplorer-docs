@@ -3,7 +3,7 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/04/2025
+ms.date: 02/05/2025
 ---
 # .list blobs command
 
@@ -30,7 +30,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |*SourceDataLocators*| `string` | :heavy_check_mark:|One or many [storage connection strings](../../api/connection-strings/storage-connection-strings.md) separated by a comma character. Each connection string can refer to a storage container or a file prefix within a container. Currently, only one storage connection string is supported. |
 |*SuffixValue*| `string` | |The suffix that enables blob filtering.|
 |*MaxFilesValue*| `integer` | | The maximum number of blobs to return. |
-|*PathFormatValue*| `string` | | The pattern in the blob’s path that can be used to retrieve the creation time as an output field. |
+|*PathFormatValue*| `string` | | The pattern in the blob’s path that can be used to retrieve the creation time as an output field. For more information, see [Path format](#path-format). |
 
 > [!NOTE]
 >
@@ -53,6 +53,29 @@ The following table lists the supported authentication methods and the permissio
 |[Managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity)|Storage Blob Data Reader|Reader|
 
 The primary use of `.list blobs` is for queued ingestion which is done asynchronously with no user context. Therefore, [Impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) isn't supported.
+
+### Path format
+
+The *PathFormat* parameter allows you to specify the format of the creation time for listed blobs. It consists of a sequence of text separators and partition elements. A partition element refers to a partition that is declared in the partition `by` clause, and the text separator is any text enclosed in quotes. Consecutive partition elements must be set apart using the text separator.
+
+[ *StringSeparator* ] *Partition* [ *StringSeparator* ] [*Partition* [ *StringSeparator* ] ...]
+
+To construct the original file path prefix, partition elements are rendered as strings and separated with corresponding text separators. You can use the `datetime_pattern` macro (`datetime_pattern(`*DateTimeFormat*`,` *PartitionName*`)`) to specify the format used for rendering a datetime partition value. The macro adheres to the .NET format specification, and allows format specifiers to be enclosed in curly brackets. For example, the following two formats are equivalent:
+
+* 'year='yyyy'/month='MM
+* year={yyyy}/month={MM}
+
+By default, datetime values are rendered using the following formats:
+
+| Partition function    | Default format |
+|-----------------------|----------------|
+| `startofyear`         | `yyyy`         |
+| `startofmonth`        | `yyyy/MM`      |
+| `startofweek`         | `yyyy/MM/dd`   |
+| `startofday`          | `yyyy/MM/dd`   |
+| `bin(`*Column*`, 1d)` | `yyyy/MM/dd`   |
+| `bin(`*Column*`, 1h)` | `yyyy/MM/dd/HH` |
+| `bin(`*Column*`, 1m)` | `yyyy/MM/dd/HH/mm` |
 
 ## Returns
 
