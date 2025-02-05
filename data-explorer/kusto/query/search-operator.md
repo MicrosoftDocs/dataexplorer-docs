@@ -89,7 +89,7 @@ The example in this section shows how to use the syntax to help you get started.
 
 ### Global term search
 
-Search for the term Green in the database.
+Search for the term Green in all the tables of the *ContosoSales* database.
 
 The output finds records with the term *Green* as a last name or a color in the `Customers`, `Products`, and `SalesTable` tables. 
 
@@ -115,7 +115,7 @@ The output finds records with the term *Green* as a last name or a color in the 
 
 ### Conditional global term search
 
-Search for records that contain the term *Green* and one of either terms *Deluze* or *Proseware* in the database.
+Search for records that contain the term *Green* and one of either terms *Deluze* or *Proseware* in the *ContosoSales* database.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -164,7 +164,7 @@ search in (Products) "Green"
 
 ### Case-sensitive search
 
-Search for records that match the case-sensitive term in the database.
+Search for records that match the case-sensitive term in the *ContosoSales* database.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -189,7 +189,7 @@ search kind=case_sensitive "blue"
 
 ### Search specific columns
 
-Search for the terms  *Aaron* and *Hughes*, in the "FirstName" and "LastName" columns respectively, in the database.
+Search for the terms  *Aaron* and *Hughes*, in the "FirstName" and "LastName" columns respectively, in the *ContosoSales* database.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -213,7 +213,7 @@ search FirstName:"Aaron" or LastName:"Hughes"
 
 ### Limit search by timestamp
 
-Search for the term *Hughes* in the database, if the term appears in a record with a date greater than the given date in 'datetime'.
+Search for the term *Hughes* in the *ContosoSales* database, if the term appears in a record with a date greater than the given date in 'datetime'.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
