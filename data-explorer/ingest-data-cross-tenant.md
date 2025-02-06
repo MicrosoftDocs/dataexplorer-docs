@@ -34,7 +34,7 @@ The Entra account or multitenant service principal must have at least the follow
 
 1. In the left menu, select **Access control (IAM)** > **Add role assignments**.
 
-1. In the **Add role assignment** window, enter the settings in the table and then select **Save**.
+1. In the **Add role assignment** window, enter the settings in the table, and then select **Save**.
 
     | **Setting** | **Suggested value** |
     |--|--|
@@ -66,7 +66,7 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
 
 # [Entra account](#tab/entra)
 
-1. Run the following command to connect to the Event Hub subscription in *Tenant1*:
+1. Run the following command to connect to the Event Hubs subscription in *Tenant1*:
 
     ```PowerShell
     Connect-AzAccount -TenantId <Tenant ID> -Subscription "<SubscriptionName>"
@@ -114,7 +114,7 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
     $adxdcuri="https://management.azure.com/subscriptions/<subscriptionID>/resourceGroups/<resource group name>/providers/Microsoft.Kusto/clusters/<ADXClusterName>/databases/<ADXdbName>/dataconnections/<ADXDataConnectionName>?api-version=2020-02-15"
     ```
 
-1. Invoke the following web request that uses the previously defined variables, to create the data connection:
+1. Invoke the following web request, that uses the previously defined variables, to create the data connection:
 
     ```PowerShell
     Invoke-WebRequest -Headers @{Authorization = $pat; 'x-ms-authorization-auxiliary' = $auxpat} -Uri $adxdcuri -Body $requestbody -Method PUT -ContentType 'application/json'
@@ -200,10 +200,10 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
 
 1. Verify that you can now see the newly created data connection in the Azure portal.
 
-1. *Optional*: After establishing the data connection, you may revoke or delete the previously granted permissions for the Entra Account or Service Principal. Since the cluster ingestion uses the Event Hub keys, these permissions are no longer required.
+1. *Optional*: After establishing the data connection, you can revoke or delete the previously granted permissions for the Entra Account or Service Principal. Since the cluster ingestion uses the Event Hubs keys, these permissions are no longer required.
 
 > [!IMPORTANT]
-> If the primary or secondary Event Hub keys are rotated, data ingestion may stop working. In that case, you need to drop and recreate the data connection.
+> If the primary or secondary Event Hubs keys are rotated, data ingestion might stop working. In that case, you need to drop and recreate the data connection.
 
 ## Related content
 
