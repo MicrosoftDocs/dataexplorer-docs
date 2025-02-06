@@ -117,7 +117,7 @@ The output finds records with the term *Green* as a last name or a color in the 
 
 ### Conditional global term search
 
-Search for records that contain the term *Green* and one of either terms *Deluze* or *Proseware* in the *ContosoSales* database.
+Search for records that contain the term *Green* and one of either terms *Deluxe* or *Proseware* in the *ContosoSales* database.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

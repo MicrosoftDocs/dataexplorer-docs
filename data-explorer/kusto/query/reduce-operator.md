@@ -145,7 +145,7 @@ Start with a few records from the Trace table.
 Then reduce the Text column which includes random GUIDs.
 As random GUIDs interfere with the reduce operation, replace them all
 by the string "GUID".
-Now perform the reduce. In case there are other "quasi-random" identifiers with embedded '-'
+Now perform the reduce operation. In case there are other "quasi-random" identifiers with embedded '-'
 or '_' characters in them, treat  characters as non-term-breakers.
 
 ```kusto
