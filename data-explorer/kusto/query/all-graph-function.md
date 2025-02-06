@@ -26,12 +26,12 @@ Evaluates a condition for each [variable length edge](./graph-match-operator.md#
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *edge* | `string` |  :heavy_check_mark: | A variable length edge from the [graph-match operator](graph-match-operator.md)/[graph-shortest-paths operator](graph-shortest-paths-operator.md) pattern. See [Graph pattern notation](./graph-match-operator.md#graph-pattern-notation).|
-| *condition* | `string` |  :heavy_check_mark: | A Boolean expression composed of properties of the *edge* or *inner node* (if [inner_nodes](inner-nodes.md) was used) in the [variable length edge](./graph-match-operator.md#variable-length-edge). A property is referenced using the property name directly. The expression is evaluated for each *edge*/*inner node* in the [variable length edge](./graph-match-operator.md#variable-length-edge). |
+| *condition* | `string` |  :heavy_check_mark: | A Boolean expression composed of properties of the *edge* or *inner node* (if [inner_nodes](inner_nodes-graph-function.md) was used) in the [variable length edge](./graph-match-operator.md#variable-length-edge). A property is referenced using the property name directly. The expression is evaluated for each *edge*/*inner node* in the [variable length edge](./graph-match-operator.md#variable-length-edge). |
 
 
 ## Returns
 
-`true` if the condition was evaluated to `true` for each  *edge* or *inner node* (if [inner_nodes](inner-nodes.md) was used) in the [variable length edge](./graph-match-operator.md#variable-length-edge) and `false` otherwise.
+`true` if the condition was evaluated to `true` for each  *edge* or *inner node* (if [inner_nodes](inner_nodes-graph-function.md) was used) in the [variable length edge](./graph-match-operator.md#variable-length-edge) and `false` otherwise.
 
 For zero length paths, the condition is evaluated to `true`.
 
@@ -138,5 +138,5 @@ North|Central->South|South-West
 
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)
-* [graph-shortest-paths operator](graph-shortest-paths.md)
+* [graph-shortest-paths operator](graph-shortest-paths-operator.md)
 * [inner_nodes()](inner_nodes-graph-function.md)

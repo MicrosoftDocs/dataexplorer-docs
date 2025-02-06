@@ -83,6 +83,6 @@ Richard|Alice|["Bob"]|
 
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)
-* [graph-shortest-paths operator](graph-shortest-paths.md)
+* [graph-shortest-paths operator](graph-shortest-paths-operator.md)
 * [all()](all-graph-function.md)
 * [map()](map-graph-function.md)

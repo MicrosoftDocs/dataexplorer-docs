@@ -26,14 +26,14 @@ Calculates an expression for each [variable length edge](./graph-match-operator.
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *edge* | `string` |  :heavy_check_mark: | A variable length edge from the [graph-match operator](graph-match-operator.md)/[graph-shortest-paths operator](graph-shortest-paths-operator.md) pattern. See [Graph pattern notation](./graph-match-operator.md#graph-pattern-notation).|
-| *expression* | `string` |  :heavy_check_mark: | Calculation to perform over the properties of the *edge* or *inner node* (if [inner_nodes](inner-nodes.md) was used) in the [variable length edge](./graph-match-operator.md#variable-length-edge). A property is referenced using the property name directly. The expression is evaluated for each *edge*/*inner node* in the [variable length edge](./graph-match-operator.md#variable-length-edge). |
+| *expression* | `string` |  :heavy_check_mark: | Calculation to perform over the properties of the *edge* or *inner node* (if [inner_nodes](inner_nodes-graph-function.md) was used) in the [variable length edge](./graph-match-operator.md#variable-length-edge). A property is referenced using the property name directly. The expression is evaluated for each *edge*/*inner node* in the [variable length edge](./graph-match-operator.md#variable-length-edge). |
 
 
 ## Returns
 
 A dynamic array, such that:
 
-1. the array length matches the number of edges or inner nodes (if used with [inner_nodes](inner-nodes.md)) in the variable length edge.
+1. the array length matches the number of edges or inner nodes (if used with [inner_nodes](inner_nodes-graph-function.md)) in the variable length edge.
 2. for zero length path the array is empty.
 3. each element in the array is the result of the `expression` calculated over the edge/inner node in the corresponding index in the variable length edge.
 
@@ -120,7 +120,7 @@ connections
 
 **Output**
 
-connections_temperatures_sorted|
+|connections_temperatures_sorted|
 |---|
 [  57.2,  71.6]|
 [  57.2,  68.0]|
@@ -136,5 +136,5 @@ connections_temperatures_sorted|
 
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)
-* [graph-shortest-paths operator](graph-shortest-paths.md)
+* [graph-shortest-paths operator](graph-shortest-paths-operator.md)
 * [inner_nodes()](inner_nodes-graph-function.md)
