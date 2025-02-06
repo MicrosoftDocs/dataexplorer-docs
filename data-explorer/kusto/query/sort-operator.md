@@ -3,13 +3,11 @@ title:  sort operator
 description: Learn how to use the sort operator to sort the rows of the input table by one or more columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
+ms.date: 01/21/2025
 ---
 # sort operator
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
-
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Sorts the rows of the input table into order by one or more columns.
 
@@ -52,6 +50,8 @@ When the input table contains the special values `null`, `NaN`, `-inf` and `+inf
 
 The following example shows storm events by state in alphabetical order with the most recent storms in each state appearing first.
 
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRyC9KSS1SSKpUCC5JLElVSCxO1gExi0pCMnNTFVJSi5MBfa8LRzAAAAA=" target="_blank">Run the query</a>
@@ -61,6 +61,8 @@ The following example shows storm events by state in alphabetical order with the
 StormEvents
 | sort by State asc, StartTime desc
 ```
+
+**Output**
 
 This table only shows the top 10 query results.
 
