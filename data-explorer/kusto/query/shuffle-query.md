@@ -69,7 +69,11 @@ In some cases, the `hint.strategy = shuffle` is ignored, and the query won't run
 
 ## Examples
 
-## Use summarize with shuffle
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
+### Use summarize with shuffle
 
 The `shuffle` strategy query with `summarize` operator shares the load on all cluster nodes, where each node processes one partition of the data.
 
@@ -90,7 +94,7 @@ StormEvents
 |---|
 |67|
 
-## Use join with shuffle
+### Use join with shuffle
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -117,7 +121,7 @@ StormEvents
 |---|
 |103|
 
-## Use make-series with shuffle
+### Use make-series with shuffle
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -306,7 +310,7 @@ lineitem
 | consume
 ```
 
-## Use join with shuffle to improve performance
+### Use join with shuffle to improve performance
 
 The following example shows how using `shuffle` strategy with the `join` operator improves performance.
 
