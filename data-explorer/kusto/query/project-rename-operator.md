@@ -33,7 +33,7 @@ A table that has the columns in the same order as in an existing table, with col
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUi0VU9U11FIslVPAlLJturJ6rxcNQoFRflZqcklukWpeYm5qQp5qeXxSbZJOmBGom0iALIWMhk8AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXGMQqAMAwF0N1TZMtSj5CzyE8ItFLbEoouHl7RN70RpU2CMOrI4EQqrIGzvzVhy4hanJebRvTdba7hDYdT82uDIH1R0T8m9gD9E68JUgAAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
