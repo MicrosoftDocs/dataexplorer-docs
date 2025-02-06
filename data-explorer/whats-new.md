@@ -26,8 +26,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 | Article title | Description |
 |--|--|
-| [range operator](/azure/data-explorer/kusto/query/range-operator.md) | Updated topic. Added example of using the range operator to combine different stop times. |
-| [replace_string()](/azure/data-explorer/kusto/query/replace-string-function.md) | Updated topic. Added a simpler example that replaces words in a string. |
+| [range operator](/kusto/query/range-operator.md) | Updated topic. Added example of using the range operator to combine different stop times. |
+| [replace_string()](/kusto/query/replace-string-function.md) | Updated topic. Added a simpler example that replaces words in a string. |
 
 ## December 2024
 
@@ -240,4 +240,3 @@ No updates.
 |Article title| Description|
 |--|--|
 | [sort operator](/kusto/query/sort-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Added section on the use of special floating-point values.|
-
