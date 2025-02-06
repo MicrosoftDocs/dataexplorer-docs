@@ -16,10 +16,10 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 | Article title | Description |
 |--|--|
 | [Customize settings in the web UI](web-customize-settings.md) | Updated topic. Added how to enable cross-tenant dashboard sharing. |
-| [Share queries from web UI](web-share-queries.md) | Updated topic. Added information about shared queries opening in protected mode for enhanced security. |
-| [Troubleshoot: Failure to connect to a cluster](troubleshoot-connect-cluster.md) | Updated topic. Added instructions how to verify cluster is active. |
-| [Manage public access to your cluster](security-network-restrict-public-access.md) | Updated topic. Added section to manage access to your cluster by specifying selected IP addresses, CIDER notations, or servcice tags. |
 | [Share dashboards](azure-data-explorer-dashboard-share.md) | New article. Describes how to share dashboards in Azure Data Explorer. |
+| [Share queries from web UI](web-share-queries.md) | Updated topic. Added information about shared queries opening in protected mode for enhanced security. |
+| [Troubleshoot: Failure to connect to a cluster](troubleshoot-connect-cluster.md) | Updated topic. Added instructions how to verify a cluster is active. |
+| [Manage public access to your cluster](security-network-restrict-public-access.md) | Updated topic. Added section to manage access to your cluster by specifying selected IP addresses, CIDER notations, or service tags. |
 
 **Query**
 
