@@ -19,7 +19,6 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 | [Share queries from web UI](web-share-queries.md) | Updated topic. Added information about shared queries opening in protected mode for enhanced security. |
 | [Troubleshoot: Failure to connect to a cluster](troubleshoot-connect-cluster.md) | Updated topic. Added instructions how to verify cluster is active. |
 | [Manage public access to your cluster](security-network-restrict-public-access.md) | Updated topic. Added section to manage access to your cluster by specifying selected IP addresses, CIDER notations, or servcice tags. |
-| [Visualize data with dashboards](azure-data-explorer-dashboards.md) | Updated topic. Dashboard cross-tenant |
 | [Share dashboards](azure-data-explorer-dashboard-share.md) | New article. Describes how to share dashboards in Azure Data Explorer. |
 
 **Query**
@@ -27,7 +26,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 | Article title | Description |
 |--|--|
 | [range operator](/kusto/query/range-operator.md) | Updated topic. Added example of using the range operator to combine different stop times. |
-| [replace_string()](/kusto/query/replace-string-function.md) | Updated topic. Added a simpler example that replaces words in a string. |
+| [replace_string() function](/kusto/query/replace-string-function.md) | Updated topic. Added a simpler example that replaces words in a string. |
 
 ## December 2024
 
