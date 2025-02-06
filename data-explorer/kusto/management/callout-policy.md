@@ -38,7 +38,7 @@ Callout policies are managed at cluster-level and are classified into the follow
 | sandbox_artifacts | Controls sandboxed plugins ([python](../query/python-plugin.md) and [R](../query/r-plugin.md)). |
 | external_data | Controls access to external data through [external tables](../query/schema-entities/external-tables.md) or [externaldata](../query/externaldata-operator.md) operator. |
 | webapi | Controls access to http endpoints. |
-| azure_openai  | Controls calls to Azure OpenAI plugins (e.g. the embedding plugin [ai_embed_text plugin)](../query/ai-embed-text-plugin.md). |
+| azure_openai  | Controls calls to Azure OpenAI plugins such as the embedding plugin [ai_embed_text plugin](../query/ai-embed-text-plugin.md). |
 
 ## Predefined callout policies
 
