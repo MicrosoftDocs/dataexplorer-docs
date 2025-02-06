@@ -76,10 +76,10 @@ The following steps are for using PowerShell to start the emulator using the [Ku
 
     To start the Windows container on Windows 11, make sure you use the `windows11` tag:
 
-        ```powershell
-        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
-        ```
----
+    ```powershell
+    docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
+    ```
+    ---
 
 1. Run the following command to verify that the container is running.
 
