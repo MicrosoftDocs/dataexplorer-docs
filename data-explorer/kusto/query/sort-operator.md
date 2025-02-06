@@ -4,7 +4,6 @@ description: Learn how to use the sort operator to sort the rows of the input ta
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/21/2025
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # sort operator
 
@@ -49,9 +48,9 @@ When the input table contains the special values `null`, `NaN`, `-inf` and `+inf
 
 ## Example
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
-
 The following example shows storm events by state in alphabetical order with the most recent storms in each state appearing first.
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
