@@ -62,7 +62,7 @@ The following example represents an organizational hierarchy, it demonstrates ho
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WSwU7DMAyG75P2DtZOK2ortlKhjRUJEBdOiOu0Q9ZabSFNqjRiIPHwOGmSrqp6+B3/zmc7HDVg13P5izhAARXT9J05rgXrcD9o1Yo6BlbjnktRR7BcHOmH1RNvS1zFkG1jsIFneTZy4+Trtznd3jv5Jq3cOfnSqHagwF0eu2r4Y9x5bEuhMMmZFR9t2TBVmdMdBU4PZOBErbCXSs+ZfSeBu2OC0JXTE/0IG5qYMc2jYx+jYWLzyVNrwTVntkZH7YmXiz8C+8KkVqxvwvghSR49MFxa3VwtRgow+7BW60o6pssG1szcGh2Soyt+s0nT/JSESUSEc2lQIdjM1FYpCo8LTFThmpRuhgNkt+TplfzEcnobNOaQZmrYJ3EdJBm7ndCk3xnhF35HqevqH55azattAgAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WSTU%2FDMAyG7%2FkV1k4tSiq2Mk0bKxIgLpwQ12mHrLXaQppUacRA4seTjza06iVvYr9%2BbFegAex6oX4QByig4sZ%2BF4GJ5B0eBqNbWVPgNR6EknUK5AQEVo%2BiLXFFId9QcPpJXZxaB%2FXy5d42u6BelVf7oJ4b3Q5W321pMMJvl7mlzgWli8zd%2Bb0tG64r97an5HwPRFhUjb3SZgk64UfYjkvLq0c9IQfESD5nWVwG%2BBAemabQ2E5MWaD6LA87gZJfi%2FOJrNa8b%2BKkgbGHCROurWlmO1AS3Ohdpk9iHTdlAwl3BdMjO43WN%2Bss255ZbD8lcG1QI%2FjAzHsUxQQKXFaxSGbrwhHyWwK9Vh9Y%2Fv8DdrIxyln41c8vraTjGuxw37hlL2wrfTJixfGnfyYvyQRbAgAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -90,7 +90,7 @@ reports
 | make-graph employee --> manager with employees on name 
 | graph-match (alice)<-[reports*1..5]-(employee)
   where alice.name == "Alice" and employee.age < 30
-  project employee = employee.name, age = employee.age, reportingPath = reports.manager
+  project employee = employee.name, age = employee.age, reportingPath = map(reports, manager)
 ```
 
 **Output**
@@ -186,3 +186,6 @@ Actions
 
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
+* [all()](all-graph-function.md)
+* [map()](map-graph-function.md)
+* [inner_nodes()](inner_nodes-graph-function.md)
