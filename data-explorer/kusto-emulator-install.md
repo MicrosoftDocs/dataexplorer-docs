@@ -55,25 +55,31 @@ The following steps are for using PowerShell to start the emulator using the [Ku
     > [!NOTE]
     >
     > - The first time this command is run, Docker pulls the container image which is several GBs in size and might take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
-    > - **For Windows container only:** The container must be run in process-isolation mode. This is the default on some versions of Docker. For other versions, you can start the container in Hyper-V isolation mode by adding `--isolation=hyperv` to the run command.
+    > - **For Windows container only:** The container must run in process-isolation mode. This is the default on some versions of Docker. For other versions, you can start the container in Hyper-V isolation mode by adding `--isolation=hyperv` to the run command.
 
-    - To start the Linux container, make sure you use the `latest` or `stable` tag:
+    # [Linux container](#tab/linuxcontainer)
+    To start the Linux container, make sure you use the `latest` or `stable` tag:
 
-        ```powershell
-        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
-        ```
+    ```powershell
+    docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
+    ```
 
-    - To start the Windows container on Windows Server operating system, make sure you use the `latest` or `stable` tag:
+    # [Windows Server](#tab/windowsservercontainer)
 
-        ```powershell
-        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
-        ```
+    To start the Windows container on Windows Server operating system, make sure you use the `latest` or `stable` tag:
 
-    - To start the Windows container on Windows 11, make sure you use the `windows11` tag:
+    ```powershell
+    docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
+    ```
+
+    # [Windows container](#tab/windowscontainer)
+
+    To start the Windows container on Windows 11, make sure you use the `windows11` tag:
 
         ```powershell
         docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
         ```
+---
 
 1. Run the following command to verify that the container is running.
 
