@@ -29,6 +29,9 @@ Searches a text pattern in multiple tables and columns.
 | *TableSources* | `string` | | A comma-separated list of "wildcarded" table names to take part in the search. The list has the same syntax as the list of the [union operator](union-operator.md). Can't appear together with *TabularSource*.|
 | *SearchPredicate* | `string` |  :heavy_check_mark: | A boolean expression to be evaluated for every record in the input. If it returns `true`, the record is outputted. See [Search predicate syntax](#search-predicate-syntax).|
 
+> [!NOTE]
+> If both tabular data source (*T*) and *TableSources* are omitted, the search is carried over all unrestricted tables and views of the database in scope.
+
 ### Search predicate syntax
 
 The *SearchPredicate* allows you to search for specific terms in all columns of a table. The operator that is applied to a search term depends on the presence and placement of a wildcard asterisk (`*`) in the term, as shown in the following table.
@@ -51,8 +54,7 @@ You can also restrict the search to a specific column, look for an exact match i
 
 Use boolean expressions to combine conditions and create more complex searches. For example, `"error" and x==123` would result in a search for records that have the term `error` in any columns and the value `123` in the `x` column.
 
-> [!NOTE]
-> If both *TabularSource* and *TableSources* are omitted, the search is carried over all unrestricted tables and views of the database in scope.
+
 
 ### Search predicate syntax examples
 
