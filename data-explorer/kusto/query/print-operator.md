@@ -1,9 +1,9 @@
 ---
-title:  print operator
+title: print operator
 description: Learn how to use the print operator to output a single row with one or more scalar expression results as columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2024
+ms.date: 01/20/2025
 ---
 # print operator
 
@@ -29,6 +29,10 @@ Outputs a single row with one or more scalar expression results as columns.
 A table with one or more columns and a single row. Each column returns the corresponding value of the evaluated *ScalarExpression*.
 
 ## Examples
+
+The examples in this section show how to use the syntax to help you get started.
+
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Print sum and variable value
 
