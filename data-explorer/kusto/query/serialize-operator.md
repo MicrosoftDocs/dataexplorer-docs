@@ -34,6 +34,8 @@ The example in this section shows how to use the syntax to help you get started.
 
 ### Serialize subset of rows by condition
 
+ This query retrieves all log entries from the *TraceLogs* table that have a specific *ClientRequestId* and preserves the order of these entries during processing.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAAwspSkxO9clPL+blqlEoz0gtSlVwzslMzSsJSi0sTS0u8UxRsLVVUDJNtDCxSDM30LW0tDTTTU0yNNc1NE1N0TUyTLJITbI0SUozSFUCGVGcWpSZmJNZlQoAv59YuFkAAAA=" target="_blank">Run the query</a>
