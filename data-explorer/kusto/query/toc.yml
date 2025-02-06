@@ -911,12 +911,6 @@ items:
       - name: new_guid()
         displayName: new guid
         href: new-guid-function.md
-      - name: node_degree_in()
-        displayName: Node degree in node_degree_in, indegree node_degree_in 
-        href: node_degree_in.md
-      - name: node_degree_out()
-        displayName: Node degree out node_degree_out, outdegree node_degree_out
-        href: node_degree_out.md
       - name: not()
         href: not-function.md
       - name: now()
@@ -1264,7 +1258,7 @@ items:
         href: varianceif-aggregation-function.md
       - name: variancep()
         href: variancep-aggregation-function.md
-  - name: Graph operators
+  - name: Graph
     items:
       - name: Graph overview
         href: graph-overview.md
@@ -1284,6 +1278,12 @@ items:
         href: graph-shortest-paths-operator.md
       - name: graph-mark-components
         href: graph-mark-components-operator.md
+      - name: node_degree_in()
+        displayName: Node degree in node_degree_in, indegree node_degree_in 
+        href: node_degree_in.md
+      - name: node_degree_out()
+        displayName: Node degree out node_degree_out, outdegree node_degree_out
+        href: node_degree_out.md
   - name: Geospatial
     items:
       - name: Geospatial clustering overview

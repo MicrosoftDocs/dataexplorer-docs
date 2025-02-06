@@ -31,11 +31,11 @@ Returns the in-degree of the input node.
 
 ## Example
 
-The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to match where a manager node has an incoming edge from an employee node and then uses `node_degree_in` to find employees with exactly two direct reports.
+The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to match where a manager node has an incoming edge from an employee node and then uses `node_degree_in` to find a manager with exactly three direct reports. The query returns the manager and the name of each direct report as well as the number of degrees in to the manager and the number of direct reports for each employee.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQUUvDMBSF3%2FMrLn1aIRHsFHFawYkvPvo6xsjaS5MtTUoanYI%2F3qRtGqdIX05yz8n5ehU6wLZT5hOxhxJq7vy3V7jQvMVV76zUDQXe4EoZ3eRkQ7JHJSvMKCwLSrK12Qd56eXze7gtbrx8MYO89fJJWNn7w9U1DVH8CPag16iDZ%2Bnlq6wEt3WY%2BMj2jiiPZbEz1p1DRdQZrOXas9npPOCNRJEyAaSbEXQ0Ro5oi%2BzJneCGRMCb0MiX7z8iayzvxLxGYOwhcsFJOvFjwUZD2KsPDhnWclcJWEzu%2FJ5tpqe3bP7XnJwEWgRtatzV2FjEndRpDGUJBemsOWDlYvFFqKG%2FIrGGnr1l3lya%2FFfyNzKPvgEBXARFQwIAAA%3D%3D" target="_blank">Run the query</a>
+<a href="https://dataexplorer.azure.com/clusters/trd-deqn7erj8u05settn9.z4/databases/0cefaa0d-cbcb-40be-bb5b-d9a93adf9dce?query=H4sIAAAAAAAAA3WQQUvEMBCF7%2FkVQ09baAS3irhawRUvHr0uy5JthyaaJiWNroI%2F3knbNO5BenmTvJf3dTR6wK7X9htxgAoa4ek7alwZ0eFm8E6ZtgDR4kZb0%2BZsx7JHrWrMCijXBcu29hjkJcnnz3C6viH5Ykd5S%2FJJOjXQcHVdhCh%2BBXvQWzTBU5J8VbUUrgk3FNnfMU1YDnvr%2FDlURF3AOmGIzc3ziDcRRcoEkE4m0MkYOaItsid3ghsTAW9GYz%2FU%2F468daKXyxqB84fIBSfl5Z8FWwNhrxQcM7wTvpawmt35Pd%2FNT%2B%2F58q85O0l0CMY2eGiwdYgHZZYMVBWUrHf2DWsfey9CS7EUz%2BM%2FL5xf2A%2Bfqn8B7w%2FREh8CAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -62,15 +62,17 @@ let reports = datatable(employee:string, manager:string)
 reports
 | make-graph employee --> manager with employees on name
 | graph-match (manager)<-[reports]-(employee)
-where node_degree_in(employee) == 2
-project manager.name,node_degree_in(manager), node_degree_out(manager),node_degree_in(employee), node_degree_out(employee) 
+where node_degree_in(manager) == 3
+project manager.name, employee.name, node_degree_in(manager), node_degree_out(employee) 
 ```
 
 **Output**
 
-|manager_name|node_degree_in|node_degree_out|node_degree_in1|node_degree_out1|
-|---|---|---|---|---|
-|Alice|3|0|2|1|
+| manager_name | employee_name | node_degree_in | node_degree_out |
+|--|--|--|--|
+| Alice | Bob | 3 | 1 |
+| Alice | Chris | 3 | 1 |
+| Alice | Joe | 3 | 1 |
 
 ## Related content
 
