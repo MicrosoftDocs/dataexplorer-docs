@@ -3,7 +3,7 @@ title: Create a cross-tenant data connection for Azure Data Explorer
 description: Learn how to create a cross-tenant data connection for an Azure Event Hubs or Azure Event Grid service in a different tenant
 ms.reviewer: vilauzon
 ms.topic: reference
-ms.date: 02/03/2025
+ms.date: 02/06/2025
 ---
 # Cross-tenant data connection
 
@@ -52,10 +52,10 @@ The Entra account or multitenant service principal must have at least the follow
 
     | **Setting** | **Suggested value** |
     |--|--|
-    | Role | Contributor |
+    | Role | [Contributor](/azure/role-based-access-control/built-in-roles/privileged#contributor)|
     | Assign access to | User, group, or service principal |
     | Select | The email address of the Entra user or Service Principal ID |
-   
+
 ## Set up the cross-tenant data connection
 
 Set up a cross-tenant data connection between the cluster and Event Hubs using PowerShell.
@@ -157,7 +157,7 @@ Create the `Get-AzCachedAccessToken` function to get the access token for *Tenan
     ```PowerShell
     $auxpat="Bearer $tokenfromtenant1"
     ```
-    
+
 1. Connect to the cluster subscription in *Tenant2*:
 
     ```PowerShell
