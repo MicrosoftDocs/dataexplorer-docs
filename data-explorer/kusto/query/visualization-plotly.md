@@ -4,7 +4,6 @@ description:  This article describes how to visualize data using the Plotly grap
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 01/28/2025
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Plotly (preview)
 

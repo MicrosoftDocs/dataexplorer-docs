@@ -4,7 +4,6 @@ description:  This article describes the time chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/21/2025
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Time chart
 
