@@ -3,7 +3,7 @@ title:  Ladder chart visualization
 description:  This article describes the ladder chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/29/2025
 monikerRange: "azure-data-explorer"
 ---
 # Ladder chart
@@ -26,7 +26,7 @@ The last two columns are the x-axis, and the other columns are the y-axis.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *T* | `string` |  :heavy_check_mark: | Input table name|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
@@ -50,7 +50,13 @@ All properties are optional.
 
 ## Examples
 
+The example in this section shows how to use the syntax to help you get started.
+	
+The examples in this article use publicly available tables in the help cluster, such as the *StormEvents* table in the Samples database.
+
 ### Dates of storms by state
+
+This query outputs a state-wise visualization of the duration of rain-related storm events, displayed as a ladder chart to help you analyze the temporal distribution of these events.
 
 ```kusto
 StormEvents
@@ -63,6 +69,8 @@ StormEvents
 
 ### Dates of storms by event type
 
+This query outputs a visualization of the duration of various storm events in Washington, displayed as a ladder chart to help you analyze the temporal distribution of these events by type.
+
 ```kusto
 StormEvents
 | where State == "WASHINGTON"
@@ -73,6 +81,8 @@ StormEvents
 :::image type="content" source="media/visualization-ladderchart/ladderchart-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by event type." lightbox="media/visualization-ladderchart/ladderchart-event-type.png":::
 
 ### Dates of storms by state and event type
+
+This query outputs a visualization of the duration of various storm events in states starting with "W", displayed as a ladder chart to help you analyze the temporal distribution of these events by state and event type.
 
 ```kusto
 StormEvents
