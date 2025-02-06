@@ -122,7 +122,7 @@ You can use any of the following options when running the emulator:
 
 - Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a database persistent between container runs](#create-a-database) and [ingesting data](#ingest-data).
 
-    [Linux container](#tab/linuxcontainer)
+    # [Linux container](#tab/linuxcontainer)
 
     For example, to mount the folder "D:\host\local" on the host to the folder "/kustodatadata" in the container, use the following command on Windows Server:
 
@@ -130,7 +130,7 @@ You can use any of the following options when running the emulator:
     docker run -v d:\host\local:/kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
     ```
 
-    [Windows container](#tab/windowscontainer)
+    # [Windows container](#tab/windowscontainer)
     For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodata" in the container, use the following command on Windows Server:
 
     ```powershell
@@ -181,7 +181,7 @@ In this example, we keep the data on the container.
 
 In the [Kusto.Explorer Query mode](/kusto/tools/kusto-explorer-using?view=azure-data-explorer&preserve-view=true#query-mode), run the following command to create a persistent database:
 
-[Linux container](#tab/linuxcontainer)
+# [Linux container](#tab/linuxcontainer)
 
 ```kusto
 .create database <YourDatabaseName> persist (
@@ -190,7 +190,7 @@ In the [Kusto.Explorer Query mode](/kusto/tools/kusto-explorer-using?view=azure-
   )
 ```
 
-[Windows container](#tab/windowscontainer)
+# [Windows container](#tab/windowscontainer)
 
 ```kusto
 .create database <YourDatabaseName> persist (
