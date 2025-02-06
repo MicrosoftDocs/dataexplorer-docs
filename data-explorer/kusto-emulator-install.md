@@ -59,21 +59,21 @@ The following steps are for using PowerShell to start the emulator using the [Ku
 
     - To start the Linux container, make sure you use the `latest` or `stable` tag:
 
-    ```powershell
-    docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
-    ```
+        ```powershell
+        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
+        ```
 
     - To start the Windows container on Windows Server operating system, make sure you use the `latest` or `stable` tag:
 
-    ```powershell
-    docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
-    ```
+        ```powershell
+        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
+        ```
 
    - To start the Windows container on Windows 11, make sure you use the `windows11` tag:
 
-    ```powershell
-    docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
-    ```
+        ```powershell
+        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
+        ```
 
 1. Run the following command to verify that the container is running.
 
@@ -122,22 +122,22 @@ You can use any of the following options when running the emulator:
 
 - Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a database persistent between container runs](#create-a-database) and [ingesting data](#ingest-data).
 
-# [Linux container](#tab/linuxcontainer)
+    # [Linux container](#tab/linuxcontainer)
 
-For example, to mount the folder "D:\host\local" on the host to the folder "/kustodatadata" in the container, use the following command on Windows Server:
+    For example, to mount the folder "D:\host\local" on the host to the folder "/kustodatadata" in the container, use the following command on Windows Server:
 
-```powershell
-docker run -v d:\host\local:/kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
-```
+    ```powershell
+    docker run -v d:\host\local:/kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
+    ```
 
-# [Windows container](#tab/windowscontainer)
-For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodata" in the container, use the following command on Windows Server:
+    # [Windows container](#tab/windowscontainer)
+    For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodata" in the container, use the following command on Windows Server:
 
-```powershell
-docker run -v d:\host\local:c:\kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
-```
+    ```powershell
+    docker run -v d:\host\local:c:\kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
+    ```
 
----
+    ---
 
 - Run on a different port: The Kusto emulator exposes access to the Kusto Query Engine on port 8080; hence in other examples you mapped the host port 8080 to the emulator port 8080. You can use this option to map a different host to the engine.
 
