@@ -3,7 +3,7 @@ title:  make_set_if() (aggregation function)
 description: Learn how to use the make_set_if() function to create a dynamic JSON object of a set of distinct values that an expression takes where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # make_set_if() (aggregation function)
 
@@ -36,13 +36,9 @@ Returns a `dynamic` array of the set of distinct values that *expr* takes in rec
 > [!TIP]
 > To only count the distinct values, use [dcountif()](dcountif-aggregation-function.md).
 
-## Related content
-
-[`make_set`](make-set-aggregation-function.md) function, which does the same, without predicate expression.
-
 ## Example
 
-The following example shows a list of names with more than 4 letters.
+The following example shows a list of names with more than four letters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -66,3 +62,11 @@ T
 |set_name|
 |----|
 |["George", "Ringo"]|
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [make_set() (aggregation function)](make-set-aggregation-function.md)
+* [make_list_if() (aggregation function)](make-list-if-aggregation-function.md)
+* [make_bag_if() (aggregation function)](make-bag-if-aggregation-function.md)
+* [`mv-expand`](mv-expand-operator.md)
