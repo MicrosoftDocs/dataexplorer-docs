@@ -4,7 +4,6 @@ description:  This article describes the scatter chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/28/2025
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Scatter chart
 
