@@ -36,7 +36,7 @@ Request properties aren't formally a part of the Kusto Query Language and may be
 
 ## Example
 
-The example in this section shows how to use the syntax to help you get started.
+This query enables query tracing and then fetches the first 100 records from the StormEvents table.
 	
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
