@@ -22,8 +22,8 @@ In this article, you learn how to use PowerShell to create a cross-tenant Event 
 
 The Entra account or multitenant service principal must have at least the following permissions:
 
-1. Data Explorer: Contributor
-1. Event Hubs Namespace: [Azure Event Hubs Data Owner](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-owner)
+- Data Explorer: Contributor
+- Event Hubs Namespace: [Azure Event Hubs Data Owner](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-owner)
 
 > [!NOTE]
 > The account can be local or guest to Tenant1 or Tenant2, as long as it has the prerequisite permissions.
