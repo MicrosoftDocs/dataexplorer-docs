@@ -611,7 +611,7 @@ A product spin-off of Elastacloud, Intelligent Spaces build an Azure backed Digi
 
 **Additional information**
 
-- [Intelligent Spaces Limited website](https://www.intelligentspaces.io)
+- [Intelligent Spaces Limited website](https://intelligentspaces.com/)
 
 ## LINKIT
 
