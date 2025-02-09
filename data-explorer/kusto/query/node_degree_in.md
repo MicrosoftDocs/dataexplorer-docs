@@ -9,9 +9,9 @@ ms.date: 02/09/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The `node_degree_in` function is used to compute the *in-degree*, or number of incoming edges, to a node in a directed graph. This function is useful in graph analytics for understanding the connectivity and significance of nodes within a network.
+The `node_degree_in` function calculates the *in-degree*, or number of incoming edges, to a node in a directed graph. This is useful in graph analytics to understand how connected and significant a node is within a network.
 
-This function can only be used in the context of `graph-match` or `graph-shortest-paths` operators.
+This function is specifically used with the `graph-match` or `graph-shortest-paths` operators.
 
 ## Syntax
 
@@ -31,7 +31,7 @@ Returns the in-degree of the input node.
 
 ## Example
 
-The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to match where a manager node has an incoming edge from an employee node and then uses `node_degree_in` to find a manager with exactly three direct reports. The query returns the manager and the name of each direct report as well as the number of degrees in to the manager and the number of direct reports for each employee.
+The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to identify where a manager node has an incoming edge from an employee node. Then, it uses the `node_degree_in` function to find managers with exactly three direct reports. The query returns the manager, the name of each direct report, the in-degree to the manager, and the number of direct reports for each employee.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

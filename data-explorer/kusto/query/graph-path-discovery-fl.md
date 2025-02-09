@@ -14,16 +14,17 @@ Discover valid paths between relevant endpoints (sources and targets) over graph
 
 The function `graph_path_discovery_fl()` is a [UDF (user-defined function)](functions/user-defined-functions.md) that allows you to discover valid paths between relevant endpoints over graph data. Graph data consists of nodes (for example - resources, applications or users) and edges (for example - existing access permissions). In cybersecurity context, such paths might represent possible lateral movement paths that a potential attacker can utilize. We're interested in paths connecting endpoints defined as relevant by some criteria - for example, exposed sources connected to critical targets. Based on the function's configuration, other types of paths, suitable for other security scenarios, can be discovered.
 
-The data that can be used as input for this function is a table of edges in the format 'SourceId, EdgeId, TargetId', and a list of nodes with optional nodes' properties that can be used to define valid paths. Alternatively, graph input can be extracted from other types of data. For example, traffic logs with entries of type 'User A logged in to resource B' can be modeled as edges of type '(User A)-[logged in to]->(resource B)', while the list of distinct users and resources can be modeled as nodes.
+The input data for this function should include a table of edges in the format 'SourceId, EdgeId, TargetId' and a list of nodes with optional nodes' properties that can be used to define valid paths. Alternatively, graph input can be extracted from other types of data. For example, traffic logs with entries of type 'User A logged in to resource B' can be modeled as edges of type '(User A)-[logged in to]->(resource B)'. The list of distinct users and resources can be modeled as nodes.
 
 We make several assumptions:
+
 * All edges are valid for path discovery. Edges that are irrelevant should be filtered out before running path discovery.
-* Edges are unweighted, independent, and unconditional, meaning that all edges have the same probability and moving from B to C is not dependent on previous move from A to B.
+* Edges are unweighted, independent, and unconditional, meaning that all edges have the same probability and moving from B to C isn't dependent on previous move from A to B.
 * Paths we want to discover are simple directional paths without cycles, of type A->B->C. More complex definitions can be made by changing the internal syntax of graph-match operator in the function.
 
 These assumptions can be adapted as needed by changing the internal logic of the function.
 
-The function discovers all possible paths between valid sources to valid targets, under optional constraints such as path length limits, maximum output size, etc. The output is a list of discovered paths with source and target Ids, as well as list of connecting edges and nodes. The function uses only the required fields, such as node Ids and edge Ids. In case other relevant fields - such as types, property lists, security-related scores, or external signals - are available in input data, they can be added to logic and output by changing the function definition.  
+The function discovers all possible paths between valid sources to valid targets, under optional constraints such as path length limits, maximum output size, etc. The output is a list of discovered paths with source and target Ids, as well as list of connecting edges and nodes. The function uses only the required fields, such as node Ids and edge Ids. In case other relevant fields - such as types, property lists, security-related scores, or external signals - are available in input data, they can be added to logic and output by changing the function definition.
 
 ## Syntax
 
@@ -35,19 +36,18 @@ The function discovers all possible paths between valid sources to valid targets
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *edgesTableName* | `string` |  :heavy_check_mark: | The name of the input table containing the edges of the graph. |
-| *nodesTableName* | `string` |  :heavy_check_mark: | The name of the input table containing the nodes of the graph. |
-| *scopeColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes and edges tables containing the partition or scope (for example, subscription or account), so that a different anomaly model is built for each scope. |
-| *isValidPathStartColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes table containing a Boolean flag for a node, *True* meaning that the node is a valid start point for a path and *False* - not a valid one. |
-| *isValidPathEndColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes table containing a Boolean flag for a node, *True* meaning that the node is a valid end point for a path and *False* - not a valid one. |
-| *nodeIdColumnName* | `string` |  :heavy_check_mark: | The name of the column in nodes table containing the node Id. |
-| *edgeIdColumnName* | `string` | :heavy_check_mark:  | The name of the column in edges table containing the edge Id. |
-| *sourceIdColumnName* | `string` | :heavy_check_mark:  | The name of the column in edges table containing edge's source node Id. |
-| *targetIdColumnName* | `string` | :heavy_check_mark:  | The name of the column in edges table containing edge's target node Id. |
-| *minPathLength* | `long` |   | The minimum number of steps (edges) in the path. The default value is 1. |
-| *maxPathLength* | `long` |   | The maximum number of steps (edges) in the path. The default value is 8. |
-| *resultCountLimit* | `long` |   | The maximum number of paths returned for output. The default value is 100000. |
-
+| *edgesTableName* | `string` | :heavy_check_mark: | The name of the input table containing the edges of the graph. |
+| *nodesTableName* | `string` | :heavy_check_mark: | The name of the input table containing the nodes of the graph. |
+| *scopeColumnName* | `string` | :heavy_check_mark: | The name of the column in nodes and edges tables containing the partition or scope (for example, subscription or account), so that a different anomaly model is built for each scope. |
+| *isValidPathStartColumnName* | `string` | :heavy_check_mark: | The name of the column in nodes table containing a Boolean flag for a node, *True* meaning that the node is a valid start point for a path and *False* - not a valid one. |
+| *isValidPathEndColumnName* | `string` | :heavy_check_mark: | The name of the column in nodes table containing a Boolean flag for a node, *True* meaning that the node is a valid end point for a path and *False* - not a valid one. |
+| *nodeIdColumnName* | `string` | :heavy_check_mark: | The name of the column in nodes table containing the node ID. |
+| *edgeIdColumnName* | `string` | :heavy_check_mark: | The name of the column in edges table containing the edge ID. |
+| *sourceIdColumnName* | `string` | :heavy_check_mark: | The name of the column in edges table containing edge's source node ID. |
+| *targetIdColumnName* | `string` | :heavy_check_mark: | The name of the column in edges table containing edge's target node ID. |
+| *minPathLength* | `long` |  | The minimum number of steps (edges) in the path. The default value is 1. |
+| *maxPathLength* | `long` |  | The maximum number of steps (edges) in the path. The default value is 8. |
+| *resultCountLimit* | `long` |  | The maximum number of paths returned for output. The default value is 100000. |
 
 ## Function definition
 
@@ -380,10 +380,10 @@ Running the function finds all paths using input edges that connect between sour
 * `pathAllNodeIds`: an ordered list of nodes in the path.
 * `fullPath`: a string representing the full path, in format (source node)-[edge 1]->(node2)-.....->(target node).
 
-In the example above, we preprocess the nodes table and add several options of possible endpoint definitions. By commenting/uncommenting different options, several scenarios can be discovered:
+In the previous example, we preprocess the nodes table and add several options of possible endpoint definitions. By commenting/uncommenting different options, several scenarios can be discovered:
 
-* Option 1: Find paths between Virtual Machines to Cloud Storage resources. Useful in exploring connection patterns between types of nodes. 
-* Option 2: Find paths between any of the specific nodes (vm-work-1, vm-work-2) to a specific node (storage_main_backup). Useful in investigating known cases - such as paths from known compromised assets to known critical ones. 
+* Option 1: Find paths between Virtual Machines to Cloud Storage resources. Useful in exploring connection patterns between types of nodes.
+* Option 2: Find paths between any of the specific nodes (vm-work-1, vm-work-2) to a specific node (storage_main_backup). Useful in investigating known cases - such as paths from known compromised assets to known critical ones.
 * Option 3: Find paths between groups of nodes, such as nodes in different environments. Useful for monitoring insecure paths, such as paths between test and production environments.
 
 In the example above we use the first option to find all the paths between VMs to cloud storage resources, which might be used by potential attackers who want to access stored data. This scenario can be strengthened by adding more filters to valid endpoints - for example, connecting VMs with known vulnerabilities to storage accounts containing sensitive data.
