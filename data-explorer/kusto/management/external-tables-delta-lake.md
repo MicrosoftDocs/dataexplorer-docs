@@ -54,16 +54,16 @@ The supported authentication methods are the same as those supported by [Azure S
 
 ## Optional properties
 
-| Property         | Type     | Description       |
-|------------------|----------|------------------------------------------------------------------------------------|
-| `folder`         | `string` | Table's folder                                                                     |
-| `docString`      | `string` | String documenting the table                                                       |
-| `compressed`     | `bool`   | If set, files are compressed as `.gz` files (used in [export scenario](data-export/export-data-to-an-external-table.md) only; read path compression is automatically detected based on the file format) |
-| `compressionType` | `string`   | If set, specifies the compression type of the files (used in [export scenario](data-export/export-data-to-an-external-table.md) only; read path compression is automatically detected based on the file format) |
-| `namePrefix`     | `string` | If set, specifies the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
-| `fileExtension` | `string` | If set, specifies extension of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
-| `encoding`       | `string` | Specifies how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
-| `dryRun` | `bool` | If set, the external table definition isn't persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
+| Property          | Type       | Description       |
+|------------------ |----------  |------------------------------------------------------------------------------------|
+| `folder`          | `string`   | Table's folder                                                                     |
+| `docString`       | `string`   | String documenting the table                                                       |
+| `compressed`      | `bool`     | Only relevant for the [export scenario](data-export/export-data-to-an-external-table.md).<br>If set to true, the data is exported in the format specified by the `compressionType` property. For the read path, compression is automatically detected. |
+| `compressionType` | `string`   | Only relevant for the [export scenario](data-export/export-data-to-an-external-table.md).<br>The compression type of exported files. For non-Parquet files, only `gzip` is allowed. For Parquet files, possible values include `gzip`, `snappy`, `lz4_raw`, `brotli`, and `zstd`. Default is `gzip`. For the read path, compression type is automatically detected. |
+| `namePrefix`      | `string`   | If set, specifies the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
+| `fileExtension`   | `string`   | If set, specifies extension of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
+| `encoding`        | `string`   | Specifies how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
+| `dryRun`          | `bool`     | If set, the external table definition isn't persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
 
 > [!NOTE]
 > The external delta table is accessed during creation, to infer the partitioning information and, optionally, the schema. Make sure that the table definition is valid and that the storage is accessible.
