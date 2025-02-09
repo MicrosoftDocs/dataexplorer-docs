@@ -75,7 +75,21 @@
       "redirect_url": "/kusto/management/data-ingestion/ingest-into-command",
       "redirect_document_id": true
     },
-
+    {
+      "source_path": "management/function-library/graph-blast-radius-fl.md",
+      "redirect_url": "/kusto/query/graph-blast-radius-fl",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "management/function-library/graph-exposure-perimeter-fl.md",
+      "redirect_url": "/kusto/query/graph-exposure-perimeter-fl",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "management/function-library/graph-path-discovery-fl.md",
+      "redirect_url": "/kusto/query/graph-path-discovery-fl",
+      "redirect_document_id": true
+    },
     {
       "source_path": "management/show-table-mirroring-operations-failures.md",
       "redirect_url": "/kusto/management/show-table-operations-mirroring-failures-command",

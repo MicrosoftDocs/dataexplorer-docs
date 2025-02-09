@@ -3,7 +3,7 @@ title:  graph_blast_radius_fl()
 description: Learn how to use the graph_blast_radius_fl() function to calculate the Blast Radius of source nodes over path or edge data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 01/05/2025
+ms.date: 02/09/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_blast_radius_fl()
@@ -12,7 +12,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 Calculate the Blast Radius (list and score) of source nodes over path or edge data.
 
-The function `graph_blast_radius_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows to calculate the Blast Radius of each of the source nodes based on paths or edges data. Each row of input data contains a source node and a target node, which can represent direct connections (edges) between nodes and targets, or longer multi-hop paths between them. If the paths aren't available, we can first discover them using [graph-match()](../query/graph-match-operator.md) operator or [graph_path_discovery_fl()](graph-path-discovery-fl.md) function. Then `graph_blast_radius_fl()` can be executed on top of the output of path discovery.
+The function `graph_blast_radius_fl()` is a [UDF (user-defined function)](functions/user-defined-functions.md) that allows you to calculate the Blast Radius of each of the source nodes based on paths or edges data. Each row of input data contains a source node and a target node, which can represent direct connections (edges) between nodes and targets, or longer multi-hop paths between them. If the paths aren't available, we can first discover them using [graph-match()](graph-match-operator.md) operator or [graph_path_discovery_fl()](graph-path-discovery-fl.md) function. Then `graph_blast_radius_fl()` can be executed on top of the output of path discovery.
 
 Blast Radius represents the connectivity of a specific source node to relevant targets. The more targets the source can access, the more effect it has if it's compromised by the attacker - hence the name. Nodes with high Blast Radius are important in cybersecurity domain due to the potential damage they might cause and to being highly valued by attackers. Thus, nodes with high Blast Radius should be protected accordingly - in terms of hardening and prioritizing security signals such as alerts.
 

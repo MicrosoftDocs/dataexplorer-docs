@@ -2,7 +2,7 @@
 title:  node_degree_out
 description:  This article describes the node_degree_out() command.
 ms.topic: reference
-ms.date: 02/05/2025
+ms.date: 02/09/2025
 ---
 
 # node_degree_out()
@@ -31,11 +31,11 @@ Returns the out-degree of the input node.
 
 ## Example
 
-The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to match where a manager node has an incoming edge from an employee node and then uses `node_degree_out` to identify managers with exactly one direct report.
+The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to match where a manager node has an incoming edge from an employee node and then uses `node_degree_out` to identify managers who report to exactly one manager.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQQU%2FDIBiG7%2FyKLz2tCZhs0xjnauKMF49el2Vh7ZfCpNBQdJr444W20DljenmB9%2BF7ikIH2LTKfCF2UEDFnf8OCmeaN7jqnJW6psBrXCmj65xsSfaoZIkZheWCkmxjDiHOfXz%2BCLuLWx9fTB%2FvfHwSVnZ%2BcX1DA4qfoR7yBnXoLH18laXgtgonHtndE%2BW1LLbGut9SUTWJNVx7Nzuue73BKFpOAtPOIDoUo0esRfepPcn1RNAb1ci3n%2F%2BGrLa8FekZgbGH6AUn6cTZAxsN4V092DOs4a4UMBvb%2BZptx6t3LP1rTk4CLYI2Fe4rrC3i3ry7BEFRwJy01hyxdHHwVRhDzxGpE0H%2FveuSSA5%2FkXT0A7lPLqdDAgAA" target="_blank">Run the query</a>
+<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12RQUvEMBCF7%2FkVoactNMLuKuJqBVe8ePS6LCXbDk00TUoaXQV%2FvJM2SbuSy5v0vZmvEwWOQtcr8wMw0JI23OE5KVhp3sFucFbqtqC8hZ0yus3JgWRPStaQFXS7KUi2Nycv1yhfvvzt5hblqxnlHcpnYeWAxfVN4aPw7e1e70F7zxblm6wFt43%2FgpHjPVGIZaE31l1CRdQE1nGNbDbUI95EFClngPlmAp2MkSPaIvvsnuHGhMcLaOQX538Aay3vRVojZewxctGzdGKxYKOp3ysGxwzruKsFXQV3%2FsAOofWRpX%2FNyVmABapNA1UDrQWozKdLIVqWdE16a96hnh%2Fzys9J%2BwlVSEtddeWyndSpWzLhiH%2Bu5dA%2FyE4T3zgCAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -63,16 +63,16 @@ reports
 | make-graph employee --> manager with employees on name
 | graph-match (manager)<-[reports]-(employee)
 where node_degree_out(manager) == 1
-project manager.name,node_degree_in(manager), node_degree_out(manager),node_degree_in(employee), node_degree_out(employee) 
+project employee.name, manager.name, degree_in_m=node_degree_in(manager), degree_out_m=node_degree_out(manager)
 ```
 
 **Output**
 
-|manager_name|node_degree_in|node_degree_out|node_degree_in1|node_degree_out1|
-|---|---|---|---|---|
-|Bob|2|1|0|1|
-|Bob|2|1|0|1|
-|Chris|1|1|0|1|
+| employee_name | manager_name | degree_in_m | degree_out_m |
+|--|--|--|--|
+| Eve | Bob | 2 | 1 |
+| Richard | Bob | 2 | 1 |
+| Ben | Chris | 1 | 1 |
 
 ## Related content
 

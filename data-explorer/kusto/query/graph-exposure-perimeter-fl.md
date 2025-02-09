@@ -3,7 +3,7 @@ title:  graph_exposure_perimeter_fl()
 description: Learn how to use the graph_exposure_perimeter_fl() function to calculate the Exposure Perimeter of target nodes over path or edge data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 01/05/2025
+ms.date: 02/09/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_exposure_perimeter_fl()
@@ -12,7 +12,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 Calculate the Exposure Perimeter (list and score) of target nodes over path or edge data.
 
-The function `graph_exposure_perimeter_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows to calculate the Exposure Perimeter of each of the target nodes based on paths or edges data. Each row of input data contains a source node and a target node, which can represent direct connections (edges) between nodes and targets, or longer multi-hop paths between them. If the paths aren't available, we can first discover them using [graph-match()](../query/graph-match-operator.md) operator or [graph_path_discovery_fl()](graph-path-discovery-fl.md) function. Then `graph_exposure_perimeter_fl()` can be executed on top of the output of path discovery.
+The function `graph_exposure_perimeter_fl()` is a [UDF (user-defined function)](functions/user-defined-functions.md) that allows you to calculate the Exposure Perimeter of each of the target nodes based on paths or edges data. Each row of input data contains a source node and a target node, which can represent direct connections (edges) between nodes and targets, or longer multi-hop paths between them. If the paths aren't available, we can first discover them using [graph-match()](graph-match-operator.md) operator or [graph_path_discovery_fl()](graph-path-discovery-fl.md) function. Then `graph_exposure_perimeter_fl()` can be executed on top of the output of path discovery.
 
 Exposure Perimeter represents the accessibility of a specific target from relevant source nodes. The more sources can access the target, the more exposed it's to potential compromise by the attacker - hence the name. Nodes with high Exposure Perimeter are important in cybersecurity domain due to the likelihood they might be reached illegitimately and to being highly valued by attackers. Thus, nodes with high Exposure Perimeter should be protected accordingly - in terms of hardening and monitoring their perimeter.
 

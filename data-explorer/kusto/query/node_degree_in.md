@@ -2,7 +2,7 @@
 title:  node_degree_in
 description:  This article describes the node_degree_in() command.
 ms.topic: reference
-ms.date: 02/05/2025
+ms.date: 02/09/2025
 ---
 
 # node_degree_in()
@@ -35,7 +35,7 @@ The following example creates a graph to represent the hierarchical relationship
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-<a href="https://dataexplorer.azure.com/clusters/trd-deqn7erj8u05settn9.z4/databases/0cefaa0d-cbcb-40be-bb5b-d9a93adf9dce?query=H4sIAAAAAAAAA3WQQUvEMBCF7%2FkVQ09baAS3irhawRUvHr0uy5JthyaaJiWNroI%2F3knbNO5BenmTvJf3dTR6wK7X9htxgAoa4ek7alwZ0eFm8E6ZtgDR4kZb0%2BZsx7JHrWrMCijXBcu29hjkJcnnz3C6viH5Ykd5S%2FJJOjXQcHVdhCh%2BBXvQWzTBU5J8VbUUrgk3FNnfMU1YDnvr%2FDlURF3AOmGIzc3ziDcRRcoEkE4m0MkYOaItsid3ghsTAW9GYz%2FU%2F468daKXyxqB84fIBSfl5Z8FWwNhrxQcM7wTvpawmt35Pd%2FNT%2B%2F58q85O0l0CMY2eGiwdYgHZZYMVBWUrHf2DWsfey9CS7EUz%2BM%2FL5xf2A%2Bfqn8B7w%2FREh8CAAA%3D" target="_blank">Run the query</a>
+<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQQUvEMBCF7%2FkVw5620AhuFXG1gitePHpdlpJthyaaJiWNroI%2F3knbpO5BcnkzeS%2FzZTR6wK7X9htxgBIa4ekcNa6N6HA7eKdMm4NocautaTO2Z6tHrWpc5VBscrba2WOQlySfP0N3c0PyxY7yluSTdGqg4uo6D1H8Cvagd2iCpyD5qmopXBNuKHK4Y5qwHPbW%2BXOoiJrAOmGIzc31iDcRRcoFYOlMoJMxckRbZF%2FcC9yYCHgzGvuh%2Be%2FIWyd6mdYInD9ELjgpL%2F8s2BoIe6XgmOGd8LWE9ezO7vl%2BfvrA018zdpLoEIxtsGqwdYiVMikDZQkF6519w9rHuRdhSp4Gz2UKV135z2vJZD98hWcu6ixMvx71ba44AgAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -63,12 +63,12 @@ reports
 | make-graph employee --> manager with employees on name
 | graph-match (manager)<-[reports]-(employee)
 where node_degree_in(manager) == 3
-project manager.name, employee.name, node_degree_in(manager), node_degree_out(employee) 
+project manager.name, employee.name, degree_in_m=node_degree_in(manager), degree_out_e=node_degree_out(employee) 
 ```
 
 **Output**
 
-| manager_name | employee_name | node_degree_in | node_degree_out |
+| manager_name | employee_name | degree_in_m | degree_out_e |
 |--|--|--|--|
 | Alice | Bob | 3 | 1 |
 | Alice | Chris | 3 | 1 |
