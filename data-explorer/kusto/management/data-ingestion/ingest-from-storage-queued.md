@@ -3,13 +3,13 @@ title:  .ingest-from-storage-queued into command
 description: This article describes the `.ingest-from-storage-queued` `into` command used to ingest a storage folder in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/04/2025
+ms.date: 02/09/2025
 ---
 # .ingest-from-storage-queued into command
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The `.ingest-from-storage-queued into` command is used with the `[.list blobs](list-blobs.md)` command to queue blobs for ingestion into a table. It enables the ingestion of an entire storage container, a specific folder within a container, or all blobs that match a given prefix and suffix.
+The `.ingest-from-storage-queued into` command is used with the `[.list blobs](list-blobs.md)` command to queue blobs for ingestion into a table. This command supports bulk ingestion of an entire storage container, a specific folder within a container, or all blobs that match a given prefix and suffix. This command can also ingest multiple or individual blobs by URL.
 
 [!INCLUDE [direct-ingestion-note](../../includes/direct-ingestion-note.md)]
 
