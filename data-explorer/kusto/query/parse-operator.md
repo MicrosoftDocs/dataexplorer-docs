@@ -3,7 +3,7 @@ title:  parse operator
 description: Learn how to use the parse operator to parse the value of a string expression into one or more calculated columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/22/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # parse operator
@@ -37,7 +37,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 > * If the parsed *expression* isn't of type `string`, it will be converted to type `string`.
 > * Use [`project`](project-operator.md) if you also want to drop or rename some columns.
 
-### Supported kind values
+### Supported `kind` values
 
 |Text|Description|
 |--|--|
@@ -67,9 +67,14 @@ The input table extended according to the list of columns that are provided to t
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 The `parse` operator provides a streamlined way to `extend` a table by using multiple `extract` applications on the same `string` expression. This result is useful, when the table has a `string` column that contains several values that you want to break into individual columns. For example, a column that's produced by a developer trace ("`printf`"/"`Console.WriteLine`") statement.
 
 ### Parse and extend results
+
 In the following example, the column `EventText` of table `Traces` contains
 strings of the form `Event: NotifySliceRelease (resourceName={0}, totalSlices={1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})`.
 The operation extends the table with six columns: `resourceName`, `totalSlices`, `sliceNumber`, `lockTime`, `releaseTime`, and `previousLockTime`.

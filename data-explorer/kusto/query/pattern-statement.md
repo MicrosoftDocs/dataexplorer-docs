@@ -56,13 +56,14 @@ For more information, see [Working with middle-tier applications](#work-with-mid
 | *PathArgType* | `string` | | The type of the *PathArgType* argument. Possible values: `string` |
 | *ArgValue* | `string` |  :heavy_check_mark: | The *ArgName* and optional *PathName* tuple values to be mapped to an *expression*.  |
 | *PathValue* | `string` | | The value to map for *PathName*. |
-| *expression* | `string` |  :heavy_check_mark: | A tabular or lambda expression that references a function returning tabular data. For example: `Logs | where Timestamp > ago(1h)` |
+| *expression* | `string` |  :heavy_check_mark: | A tabular or lambda expression that references a function returning tabular data. For example: `Logs | where Timestamp > ago(1h)`|
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
-In these examples, a pattern is defined.
 
 ### Define a simple pattern
 
@@ -85,9 +86,9 @@ country("Canada").Alberta
 
 **Output**
 
-|Capital|
-|-------|
-|Edmonton|
+| Capital |
+|--|
+| Edmonton |
 
 ### Define a scoped pattern
 
@@ -111,18 +112,18 @@ union App('a2').Data, App('a1').Metrics
 
 **Output**
 
-|App|Data|Metrics|
-|---|----|-------|
-|App #2|9| |
-|App #2|8| |
-|App #2|7| |
-|App #2|6| |
-|App #2|5| |
-|App #1| |0.53674122855537532|
-|App #1| |0.78304713305654439|
-|App #1| |0.20168860732346555|
-|App #1| |0.13249123867679469|
-|App #1| |0.19388305330563443|
+| App | Data | Metrics |
+|--|--|--|
+| App #2 | 9 |  |
+| App #2 | 8 |  |
+| App #2 | 7 |  |
+| App #2 | 6 |  |
+| App #2 | 5 |  |
+| App #1 |  | 0.53674122855537532 |
+| App #1 |  | 0.78304713305654439 |
+| App #1 |  | 0.20168860732346555 |
+| App #1 |  | 0.13249123867679469 |
+| App #1 |  | 0.19388305330563443 |
 
 ### Normalization
 
@@ -214,6 +215,6 @@ map_ip_to_longlat("10.10.10.10")
 
 **Output**
 
-|Lat| `Long` |
-|---|---|
-|37.405992|-122.078515|
+| Lat | `Long` |
+|--|--|
+| 37.405992 | -122.078515 |

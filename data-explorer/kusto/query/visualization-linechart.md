@@ -3,7 +3,7 @@ title:  Line chart visualization
 description:  This article describes the line chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/29/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Line chart
@@ -25,7 +25,7 @@ The line chart visual is the most basic type of chart. The first column of the q
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
@@ -60,7 +60,13 @@ This visualization supports splitting into multiple y-axis values:
 
 ## Examples
 
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ### Render a line chart
+
+This query retrieves storm events in Virginia, focusing on the start time and property damage, and then displays this information in a line chart.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -77,6 +83,8 @@ StormEvents
 :::image type="content" source="media/visualization-linechart/line-chart.png" alt-text="Screenshot of line chart visualization output." lightbox="media/visualization-linechart/line-chart.png":::
 
 ### Label a line chart
+
+This query retrieves storm events in Virginia, focusing on the start time and property damage, and then displays this information in a line chart with specified titles for better clarity and presentation.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -99,6 +107,8 @@ StormEvents
 
 ### Limit values displayed on the y-axis
 
+This query retrieves storm events in Virginia, focusing on the start time and property damage, and then displays this information in a line chart with specified y-axis limits for better visualization of the data.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxXKsQrCMBRG4d2nuHRS6BBwcMogKJKliC3uof6YiDcp14s14MM3Pet3es3C5y+SfjZ/mgME1KtXWNvc3e3iOndsqkySXxh1NdEhMlo6efZPXCVPEC31EaQHhN4xYQx1ozlqoG3hmOzBGNNSYf+ze7O2WwCSj8TeegAAAA==" target="_blank">Run the query</a>
@@ -114,6 +124,8 @@ StormEvents
 :::image type="content" source="media/visualization-linechart/line-chart-limit-y-values.png" alt-text="Screenshot of line chart with limitations on y-axis values." lightbox="media/visualization-linechart/line-chart-limit-y-values.png":::
 
 ### View multiple y-axes
+
+This query retrieves hail events in Texas, Nebraska, and Kansas. It counts the number of hail events per day for each state, and then displays this information in a line chart with separate panels for each state.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
