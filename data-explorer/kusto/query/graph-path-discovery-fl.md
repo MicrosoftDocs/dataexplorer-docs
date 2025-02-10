@@ -390,3 +390,9 @@ In the example above we use the first option to find all the paths between VMs t
 
 The function `graph_path_discovery_fl()` can be used in cybersecurity domain to discover interesting paths, such as lateral movement paths, over data modeled as a graph.
 
+## Related content
+
+- [Kusto Query Language (KQL) graph semantics overview](../../graph-overview.md)
+- [Graph operators](graph-operators.md)
+- [Scenarios](graph-scenarios.md)
+- [Best practices](graph-best-practices.md)
