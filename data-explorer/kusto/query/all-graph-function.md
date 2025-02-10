@@ -12,7 +12,7 @@ ms.date: 02/06/2025
 Evaluates a condition for each [variable length edge](./graph-match-operator.md#variable-length-edge) *edge* or *inner node*.
 
 > [!NOTE]
-> This function is used with the [graph-match operator](graph-match-operator.md), the [graph-shortest-paths](graph-shortest-paths-operator.md), and [inner_nodes() function](inner_nodes-graph-function.md).
+> This function is used with the [graph-match operator](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md).
 
 ## Syntax
 
