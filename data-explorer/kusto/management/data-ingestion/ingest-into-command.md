@@ -123,7 +123,7 @@ properties.
 The following example ingests a single file from Amazon S3 using an [access key ID and a secret access key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
 
 ```kusto
-.ingest into table T ('https://bucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AKIAIOSFODNN7EXAMPLE,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY')
+.ingest into table T ('https://bucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=EXAMPLEKEY')
   with (format='csv')
 ```
 
