@@ -57,7 +57,7 @@ The [.show capacity](show-capacity-command.md) command returns the cluster's ing
 
 The [.show capacity](show-capacity-command.md) command returns the cluster's extents merge capacity based on the following formula:
 
-`Minimum([Number of nodes in cluster * Concurrent operations per node], ClusterMaximumConcurrentOperations)`
+`Minimum(`*Number of nodes in cluster* `*` *Concurrent operations per node*`,` `ClusterMaximumConcurrentOperations)`
 
 The effective value for *Concurrent operations per node* is automatically adjusted by the system in the range [`MinimumConcurrentOperationsPerNode`,`MaximumConcurrentOperationsPerNode`], as long as the success rate of the merge operations is 90% or higher.
 
