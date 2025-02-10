@@ -76,17 +76,17 @@
       "redirect_document_id": true
     },
     {
-      "source_path": "management/functions-library/graph-blast-radius-fl.md",
+      "source_path": "functions-library/graph-blast-radius-fl.md",
       "redirect_url": "/kusto/query/graph-blast-radius-fl",
       "redirect_document_id": true
     },
     {
-      "source_path": "management/functions-library/graph-exposure-perimeter-fl.md",
+      "source_path": "functions-library/graph-exposure-perimeter-fl.md",
       "redirect_url": "/kusto/query/graph-exposure-perimeter-fl",
       "redirect_document_id": true
     },
     {
-      "source_path": "management/functions-library/graph-path-discovery-fl.md",
+      "source_path": "functions-library/graph-path-discovery-fl.md",
       "redirect_url": "/kusto/query/graph-path-discovery-fl",
       "redirect_document_id": true
     },
