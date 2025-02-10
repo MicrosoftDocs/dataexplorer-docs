@@ -38,7 +38,7 @@ When ingesting with `ManagedStreamingIngestionClient`, failures and retries are 
 
 Data Streaming has some limitations compared to queuing data for ingestion.
 + Tags can’t be set on data.
-+ Mapping can only be provided using [`ingestionMappingReference`](kusto/management/mappings?view=microsoft-fabric#mapping-with-ingestionmappingreference). Inline mapping isn't supported.
++ Mapping can only be provided using [`ingestionMappingReference`](/kusto/management/mappings?view=azure-data-explorer#mapping-with-ingestionmappingreference). Inline mapping isn't supported.
 + The payload sent in the request can’t exceed 10 MB, regardless of format or compression.
 
 For more information, see [Streaming Limitations](/azure/data-explorer/ingest-data-streaming#limitations).
