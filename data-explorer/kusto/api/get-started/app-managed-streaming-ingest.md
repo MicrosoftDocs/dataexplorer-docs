@@ -6,18 +6,17 @@ ms.topic: how-to
 ms.date: 02/03/2025
 monikerRange: "azure-data-explorer"
 
-# customer intent: To learn about creating an app ingest using Kusto’s batching manager and streaming ingestion.
+# customer intent: To learn about creating an app ingest using Kusto’s managed streaming ingestion client.
 
 ---
 
-# Create an app for streaming ingestion using Kusto’s batching manager
+# Create an app for streaming ingestion using Kusto’s managed streaming ingestion client
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Streaming Ingestion allows writing data to Kusto with near-real-time latencies. It’s also useful when writing small amounts of data to a large number of tables, making batching inefficient.
 
-In this article, you’ll learn how to ingest data to Kusto by queuing it to Kusto’s batching manager.
-You'll ingest a data stream in the form of a file, stream, or blob.
+In this article, you’ll learn how to ingest data to Kusto using the managed streaming ingestion client. You'll ingest a data stream in the form of a file, in-memory stream, or blob.
 
 > [!NOTE]
 > Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion isn't the same as `IngestFromStream`.
