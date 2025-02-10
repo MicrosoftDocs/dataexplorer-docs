@@ -574,7 +574,7 @@ items:
             href: /kusto/api/get-started/app-management-commands?view=azure-data-explorer&preserve-view=true
           - name: Queue data for ingestion
             href: /kusto/api/get-started/app-queued-ingestion?view=azure-data-explorer&preserve-view=true
-          - name: Ingest data the managed streaming ingestion client 
+          - name: Ingest data using the managed streaming ingestion client 
             href: /kusto/api/get-started/app-managed-streaming-ingest?view=azure-data-explorer&preserve-view=true
       - name: Connection strings
         items:
