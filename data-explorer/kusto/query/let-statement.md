@@ -65,6 +65,8 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 The query examples show the syntax and example usage of the operator, statement, or function.
