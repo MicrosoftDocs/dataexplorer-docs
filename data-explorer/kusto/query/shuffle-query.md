@@ -70,7 +70,7 @@ In some cases, the `hint.strategy = shuffle` is ignored, and the query won't run
 ## Examples
 
 The example in this section shows how to use the syntax to help you get started.
-	
+
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Use summarize with shuffle
