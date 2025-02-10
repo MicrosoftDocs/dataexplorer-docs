@@ -60,7 +60,7 @@ Before creating the app the following steps are required. Each step is detailed 
 
 ## Configure streaming ingestion
 
-To configure streaming ingestion on your Azure Data Explorer cluster, see [Configure streaming ingestion on your Azure Data Explorer cluster](/azure/data-explorer/ingest-data-streaming?tabs=azure-portal%2Ccsharp). If you're using a free cluster, streaming ingestion is automatically enabled.
+To configure streaming ingestion, see [Configure streaming ingestion on your Azure Data Explorer cluster](/azure/data-explorer/ingest-data-streaming?tabs=azure-portal%2Ccsharp). If you're using a free cluster, streaming ingestion is automatically enabled.
 
 ### Create a Kusto table
 
@@ -91,7 +91,7 @@ Enter the cluster query and ingest URI and database name in the relevant variabl
 
 ### [C#](#tab/c-sharp)
 
-The code sample includes a service function `PrintResultAsValueList()` for printing query results
+The code sample includes a service function `PrintResultAsValueList()` for printing query results.
 
 ```C#
 using System;
@@ -181,11 +181,6 @@ Add the following lines after the ingestion command:
             PrintResultAsValueList(result);
 ```
 
-### [TypeScript](#tab/typescript)
-
-The code sample includes a service function `printResultAsValueList()` for printing query results
-
-
 ### [Python](#tab/python)
 
 The code sample includes a service function `print_result_as_value_list()` for printing query results
@@ -266,6 +261,10 @@ Add the following lines after the ingestion command:
 
 Run the script from the directory where the script and stormevents.csv are located. Alternatively, you can specify the full path to the file replacing `file_path = os.curdir + "/stormevents.csv"` with `file_path = "<full path to stormevents.csv>"`
 
+### [TypeScript](#tab/typescript)
+
+The code sample includes a service function `printResultAsValueList()` for printing query results.
+
 ```typescript
 
 import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
@@ -325,7 +324,6 @@ Place *stormevents.csv* file in the same location as your script. Since our CSV 
 
 Add and ingestion section using the following lines to the end of `main()`.
 
-
 ```typescript
 
     const ingestProperties = new IngestionProperties({
@@ -339,6 +337,7 @@ Add and ingestion section using the following lines to the end of `main()`.
     console.log("Ingesting data from a file");
     await ingestClient.ingestFromFile(".\\stormevents.csv", ingestProperties);
 ```
+
 Let’s also query the new number of rows and the most recent row after the ingestion.
 Add the following lines after the ingestion command:
 
@@ -352,10 +351,9 @@ Add the following lines after the ingestion command:
     printResultAsValueList(result);
 ```
 
-
 ### [Java](#tab/java)
 
-The code sample includes a service method `printResultsAsValueList()` for printing query results
+The code sample includes a service method `printResultsAsValueList()` for printing query results.
 
 ```java
 
@@ -413,7 +411,6 @@ public class BatchIngestion {
 ```
 
 ## Stream a file for ingestion
-
 
 Use the `ingestFromFile()` method to ingest the *stormevents.csv* file.
 Place *stormevents.csv* file in the same location as your script. Since our CSV file contains a header row, use `ingestionProperties.setIgnoreFirstRecord(true);` to ignore the header.
@@ -594,7 +591,7 @@ Kusto supports ingestion from Azure Storage blobs, Azure Data Lake files, and Am
 
 When you send a blob for streaming, the client only sends the blob reference to the database. The data is read by the database service itself. Read Access to the blob can be granted with keys, SAS tokens, or managed identities attached to the Kusto Cluster.
   
-To stream from a blob, upload the sample csv file to your storage account and generate a SAS URI with built-in read permissions. Use the URIin the code sample. For information on uploading a file to blob storage, see [Upload, download, and list blobs with the Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal). For information on generation an SAS URL, see [Generate a SAS token](/kusto/api/connection-strings/generate-sas-token?view=azure-data-explorer&preserve-view=true).
+To ingest from a blob, upload the sample csv file to your storage account and generate a SAS URI with built-in read permissions. Use the URI in the code sample. For information on uploading a file to blob storage, see [Upload, download, and list blobs with the Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal). For information on generation an SAS URL, see [Generate a SAS token](/kusto/api/connection-strings/generate-sas-token?view=azure-data-explorer&preserve-view=true).
 
 ### [C#](#tab/c-sharp)
 
