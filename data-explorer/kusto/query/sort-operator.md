@@ -40,7 +40,7 @@ When the input table contains the special values `null`, `NaN`, `-inf` and `+inf
 |--|--|--|
 |**Nulls first**|`null`,`NaN`,`-inf`,`-5`,`0`,`5`,`+inf`|`null`,`NaN`,`+inf`,`5`,`0`,`-5`|
 |**Nulls last**|`-inf`,`-5`,`0`,`+inf`,`NaN`,`null`|`+inf`,`5`,`0`,`-5`,`NaN`,`null`|
- 
+
 > [!NOTE]
 >
 > * Null and NaN values are always grouped together.
