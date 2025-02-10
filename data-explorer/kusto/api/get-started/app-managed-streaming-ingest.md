@@ -19,27 +19,27 @@ Streaming Ingestion allows writing data to Kusto with near-real-time latencies. 
 In this article, you’ll learn how to ingest data to Kusto by queuing it to Kusto’s batching manager.
 You'll ingest a data stream in the form of a file, stream, or blob.
 
-> [NOTE!]
+> [!NOTE]
 > Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion isn't the same as `IngestFromStream`.
-> `IngestFromStream` is an API that takes in a memory stream and sends it for ingestion. It is available for all ingestion client implementations including queued and Streaming ingestion.
+> `IngestFromStream` is an API that takes in a memory stream and sends it for ingestion. `IngestFromStream` is available for all ingestion client implementations including queued and streaming ingestion.
 
 ## Streaming and Managed Streaming
 
 Kusto SDKs provide two flavors of Streaming Ingestion Clients, `StreamingIngestionClient` and `ManagedStreamingIngestionClient` where Managed Streaming has built-in retry and failover logic.
 
-When ingesting with managed streaming failures and retries are handled automatically as follows:
+When ingesting with `ManagedStreamingIngestionClient`, failures and retries are handled automatically as follows:
 
 + Streaming requests that fail due to server-side size limitations are failed-over to queued ingestion.
 + Data that's larger than 4 MB is automatically sent to queued ingestion, regardless of format or compression.
 + Transient failure, for example throttling, are retried three times, then moved to queued ingestion.
-+ Permanent failures aren't retired.
++ Permanent failures aren't retried.
 
 ## Limitations
 
 Data Streaming has some limitations compared to queuing data for ingestion.
-• Tags can’t be set on data
-• Mapping can only be provided using [`ingestionMappingReference`](kusto/management/mappings?view=microsoft-fabric#mapping-with-ingestionmappingreference). Inline mapping isn't supported.
-• The payload sent in the request can’t exceed 10MBs (regardless of format or compression).
++ Tags can’t be set on data.
++ Mapping can only be provided using [`ingestionMappingReference`](kusto/management/mappings?view=microsoft-fabric#mapping-with-ingestionmappingreference). Inline mapping isn't supported.
++ The payload sent in the request can’t exceed 10 MB, regardless of format or compression.
 
 For more information, see [Streaming Limitations](/azure/data-explorer/ingest-data-streaming#limitations).
 
@@ -51,9 +51,9 @@ For more information, see [Streaming Limitations](/azure/data-explorer/ingest-da
 
 ## Before you begin
 
-Before creating the app:
+Before creating the app the following steps are required. Each step is detailed in the following sections.
 
-1. Configure streaming ingestion on your Azure Data Explorer cluster. 
+1. Configure streaming ingestion on your Azure Data Explorer cluster.
 1. Create a Kusto table to ingest the data into.
 1. Enable the streaming ingestion policy on the table.
 1. Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file containing 1,000 storm event records.
