@@ -12,7 +12,7 @@ ms.date: 02/06/2025
 Calculates an expression for each [variable length edge](./graph-match-operator.md#variable-length-edge) *edge* or *inner node* and returns a dynamic array of all results
 
 > [!NOTE]
-> This function is used with the [graph-match operator](graph-match-operator.md), the [graph-shortest-paths](graph-shortest-paths-operator.md), and [inner_nodes() function](inner_nodes-graph-function.md).
+> This function is used with the [graph-match operator](graph-match-operator.md), and the [graph-shortest-paths](graph-shortest-paths-operator.md).
 
 ## Syntax
 
@@ -77,13 +77,13 @@ from|path|to|
 |---|---|---|
 South-West|[<br>  "South (red)",<br>  "Central (red)",<br>  "North (red)"<br>]|North|
 
-### Get the temperatures in the stopovers in all paths between two stations
+### Get a list of stopovers with wifi in all paths between two stations
 
-The following example demonstrates how to use the `graph-match` operator together with `all` function and `inner_nodes` function to find the temperatures in the stopovers in all paths between two stations in a transportation network. The query constructs a graph from the data in `connections` and finds all paths between "South-West" and "North" station, collects the temperatures in all stopovers, convert from celsius to fahrenheit and return a sorted array of the temperatures.
+The following example demonstrates how to use the `graph-match` operator together with `all` function and `inner_nodes` function to find all stopovers with wifi available in all paths between two stations in a transportation network.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VTwU6DQBC98xWTXgoGGluth5r2UvXoxYOHpiFbGAsKu83sYmPixztQqIPUcJl9782bmZ2lQAeJ0RoTlxttYQmpcvztCvTfyJSx5RMzC%2Bso1%2FsQnBlARa6xPQTgbcADGK1RO1LFKITRsyGX1QFhOgpr8owIVUP%2BTX0xVSOUdIcJ3UW6CaJXtK5v38fP8v8EQ4Ne6oUCov9HdSJ3RYUt20FCJViBdsYnVhYepHrbe%2FAK3mS7mf4aBxvE8oCkXEW4gMJcXNr0treoeSivdnYdDu5pNpUtzmahmHV6xw168pV531CqD4z2pA4ZyHcGUbQSbwyOuct%2Bx2KgjdmhSY5K5ZIM6iHJBdFGVLmaTibzbbTyU24q101awG0dMySEJmHSlVkue%2FOA0imItJ7udClsdCDzzrXk%2FxOLy7WxZSWmvAxFpL6aY6xs4pfq4OecQ7E2XMUXBkEIZCqd1tgnsl4Y%2BiIOYfyAe0JcY2Hzyo7PwJPKCHWGuRuz2U0QBD8Qf0J75AMAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA41SPW%2BDMBTc%2BRVPTLjCkTp0SUWWqmuXDh2iCDlggltjI%2BM0itQf32cHU0PSqrDYd%2B%2FufVlyC5VWildWaDVAATWz%2BO8lzxqju3LAGzLrwRqhDjlYfQVJofh4IZBsIQFIn7iyhsk0h%2FRFG9u6g%2BF1mjtyQqIoTy6lr%2FroA2M6YFHcTdof6Bsf7Nx%2Bjk%2FhvwVcG8ykNxJE9T%2BzC7mXRz6yAYqiIjZCg%2FGFjRNfSZPdIyQSNzluZr7G5bpOohHrvdbyxrKsOfLZihomhwsSJrVAwgAm5fI%2BNuxlWGgSv7bkCzr2wenBsL6F%2BL0BpZvorWHRtv1pD4HxjA5eTDtmqxaqcyX5UCitOLjGjSV0G2W8u1%2BtHnZ0k9VYpVDegmCVp5YbDl6wCimLYtYiMFVDJJvF%2BSbRpzf6HVOhk%2B71JzduEzj3itmSGcPOWcf6TGA5plQazbKoNpKHpvCU0k1K3PzCNzmWbhSlW6Lz5rYUyiKMJv82%2FztONE3m7CcFVpMSQr4BgxtWvisEAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -102,34 +102,29 @@ let connections = datatable(from_station:string, to_station:string, line:string)
   "Central", "West", "blue",
   "West", "Central", "blue",
 ]; 
-let stations = datatable(station:string, temperature: long) 
+let stations = datatable(station:string, wifi:bool) 
 [ 
-  "Central", 14,
-  "North", 5,
-  "South", 20,
-  "South-West", 21,
-  "West", 22,
-  "East", 16
+  "Central", true,
+  "North", false,
+  "South", false,
+  "South-West", true,
+  "West", true,
+  "East", false
 ];
 connections 
 | make-graph from_station --> to_station with stations on station
-| graph-match (start)-[connections*1..5]->(destination)
-  where start.station == "South-West" and destination.station == "North"
-  project connections_temperatures_sorted = array_sort_asc(map(inner_nodes(connections), round(convert_temperature(temperature, 'DegreeCelsius', 'DegreeFahrenheit'), 3)))
+| graph-match cycles=none (start)-[connections*1..5]->(destination)
+  where start.station == "South-West" and destination.station == "East"
+  project stopovers = strcat_array(map(inner_nodes(connections), station), "->"),
+          stopovers_with_wifi = set_intersect(map(inner_nodes(connections), station), map(inner_nodes(connections), iff(wifi, station, "")))
 ```
 
 **Output**
 
-|connections_temperatures_sorted|
-|---|
-[  57.2,  71.6]|
-[  57.2,  68.0]|
-[  57.2,  57.2,  68.0,  71.6]|
-[  57.2,  57.2,  60.8,  68.0]|
-[  57.2,  68.0,  69.8,  71.6]|
-[  57.2,  68.0,  69.8,  71.6]|
-[  57.2,  57.2,  60.8,  71.6]|
-[  57.2,  57.2,  68.0,  71.6]
+|stopovers|stopovers_with_wifi|
+|---|---|
+| West->Central  | [ "West", "Central"] |
+| South->Central | [ "Central"] |
 
 
 ## Related content

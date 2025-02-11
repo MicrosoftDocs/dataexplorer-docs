@@ -12,7 +12,7 @@ ms.date: 02/06/2025
 Evaluates a condition for each [variable length edge](./graph-match-operator.md#variable-length-edge) *edge* or *inner node*.
 
 > [!NOTE]
-> This function is used with the [graph-match operator](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md).
+> This function is used with the [graph-match operator](graph-match-operator.md), and the [graph-shortest-paths](graph-shortest-paths-operator.md).
 
 ## Syntax
 
@@ -88,13 +88,13 @@ West|South-West->South->Central->North|Central|East->Central|West|
 Central|South->South-West|West|Central->East|Central|
 West|South-West->South|Central|East->Central|West|
 
-### Starting from a specific station, finding paths to all reachable stations, without going through specific station
+### Find shortest path between 2 stations, inculding only stations with wifi available 
 
-The following example demonstrates how to use the `graph-shortest-paths` operator together with `all` function and `inner_nodes` function to find the paths to all reachable stations in a transportation network. The query constructs a graph from the data in `connections` and finds the shortest paths from "North" station that doesn't go through "West" station.
+The following example demonstrates how to use the `graph-shortest-paths` operator together with `all` function and `inner_nodes` function to find a path between 2 stations in a transportation network. The query constructs a graph from the data in `connections` and finds the shortest path from "South-West" station to "North" that go through stations that have wifi available.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTPU%2FDMBDd8yuOTAmKKzGwgJIFsbIwMFRV5DamMbh2dL6qQuLHc3Hj1qFFJIv9Pu6dc45RBBtnrdqQdtZDDZ0kftdGFe%2Fodq3nHTMPnlDbbQXkLiCjrZo2JWRLyADyJ2UJpckryF8cUj8uUHV5NZInJFEF8rf11e2DMKUjluiu0mEh3pSnefk5fpL%2FJbgsMLNeCUj6f5ZHcm32amIjlKgSNkFj4SObBl9Ys9UjZOkUs2%2FYyU8ltiiHHtI5ghBNMkM4aOpb6zrV6q6eQHYHo%2FA9D4pDxSCp91Awj1SKZRJ1e7dY3K9EU3Ss0zb4S2720CtUII0pNGsxRPgiMZYVxB5u6ulsJUjbjd%2Fh%2BIS4RVTVdbw4LBjQfXChcDS%2BszNlda4AMcMHEW4ktRJRfhU7OfzfGa9y0eTlrCK58Sc5nzbG%2FgBCl5ctSgMAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31SPU%2FDMBDd8ytOmRIUd0BiKWoXxMrCwFBVldu4jcG1I%2BeqCokfz8X56DkpJIv97r37ejYK4eCsVQfUzjawglIi%2FXujsqN3511DN4osG%2FTangpAN4OMtqq%2F5JBsIAFIX5RFL01aQPrmPFbtwasyLdrgiDBWCE6l7%2B4SiDw8YIx3NxwO4kM1GKeP8ZH%2BF2GeIJLeKcD6f5VdcG8uqo8OEGOxKEOHxF2UF55Jk%2B0zJIac7J2JbZzaddVHvYS9c%2BaOW%2BgvKvLoKE3TIcOqJsiwgVE5vfcTBxl1mvDnlvzAWX4pcfKyroA%2FOBBizR4bdY3VbT4C%2BjNlCGLRVNQxlRa1xKqBdmyPudiwcg%2BPi8XTVqyzknjaBn1OLV4r5RUEwWKot1pF84G0JTG7j8kjfrezlgojVxqTaerA76wjXcbayTsv2g5q7z4JDRsg86JWilsy4A6TnweJO%2Bm9%2FM7Osv6nTK%2BiUyrWaR5lRNe%2BlvlEv327CZEaBAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -113,11 +113,21 @@ let connections = datatable(from_station:string, to_station:string, line:string)
   "Central", "West", "blue",
   "West", "Central", "blue",
 ]; 
+let stations = datatable(station:string, wifi: bool) 
+[ 
+  "Central", true,
+  "North", false,
+  "South", false,
+  "South-West", true,
+  "West", true,
+  "East", false
+];
 connections 
-| make-graph from_station --> to_station with_node_id=station
-| graph-shortest-paths (start)-[connections*1..5]->(destination)
-  where all(inner_nodes(connections), station != "West") and 
-        start.station == "North"
+| make-graph from_station --> to_station with stations on station
+| graph-shortest-paths (start)-[connections*2..5]->(destination)
+  where start.station == "South-West" and
+        destination.station == "North" and 
+        all(inner_nodes(connections), wifi)
   project from = start.station, 
           stations = strcat_array(map(inner_nodes(connections), station), "->"), 
           to = destination.station
@@ -127,11 +137,8 @@ connections
 
 from|stations|to|
 |---|---|---|
-North||Central
-North|Central|South
-North|Central|East
-North|Central|West
-North|Central->South|South-West
+South-West|West->Central|North
+
 
 
 ## Related content

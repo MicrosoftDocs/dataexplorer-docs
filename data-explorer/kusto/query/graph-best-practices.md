@@ -111,7 +111,7 @@ reportsTo_lastKnownState
 | make-graph employee --> manager with filteredEmployees on name
 | graph-match (employee)-[hasManager*2..5]-(manager)
   where employee.name == "Bob"
-  project employee = employee.name, reportingPath = map(hasManager,manager)
+  project employee = employee.name, reportingPath = map(hasManager, manager)
 ```
 
 ## Graph time travel
