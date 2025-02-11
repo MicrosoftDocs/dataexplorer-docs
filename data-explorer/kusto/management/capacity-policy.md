@@ -65,7 +65,7 @@ The effective value for *Concurrent operations per node* is automatically adjust
 > In clusters with four or more nodes, the admin node doesn't participate in merge operations, so *Number of nodes in cluster* is reduced by one.
 
 > [!WARNING]
-> Consult with the support team before altering the extents merge capacity policy.
+> Before altering the extents merge policy, we recommend that you [consult with support](https://ms.portal.azure.com/#create/Microsoft.Support).
 
 ### Extents purge rebuild capacity
 
@@ -241,7 +241,7 @@ Kusto limits the number of concurrent requests for the following user-initiated 
 
 * **Ingestions**
   * This category includes commands that [ingest from storage](data-ingestion/ingest-into-command.md), [ingest from a query](data-ingestion/ingest-from-query.md), and [ingest inline](data-ingestion/ingest-inline.md).
-  * The limit is defined by the [ingestion capacity](#ingestion-capacity).
+  * The [ingestion capacity](#ingestion-capacity) defines the limit.
 * **Purges**
   * The global limit is currently fixed at one per cluster.
   * The [purge rebuild capacity](#extents-purge-rebuild-capacity) is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands aren't blocked or throttled because of this process, but completes faster or slower depending on the purge rebuild capacity.
@@ -257,7 +257,7 @@ When the cluster detects that an operation exceeded the limit on concurrent requ
 * The exception type is `ControlCommandThrottledException`.
 
 > [!NOTE]
-> Management commands can also be throttled as a result of exceeding the limit defined by a workload group's [Request rate limit policy](request-rate-limit-policy.md).
+> Management commands can also be throttled if they exceed the limits set by a workload group's [Request rate limit policy](request-rate-limit-policy.md).
 
 ## Related content
 
