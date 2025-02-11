@@ -46,7 +46,7 @@ A health status of **Degraded** indicates that your Azure Data Explorer resource
 
 ### Unavailable
 
-A health status of **Unavailable** indicates that there's an ongoing problem with your Azure Data Explorer resource that causes it to be unavailable for queries and ingestion. For example, nodes in your Azure Data Explorer resource may have rebooted unexpectedly. If your Azure Data Explorer resource remains in this state for an extended period of time, contact [support]().
+A health status of **Unavailable** indicates that there's an ongoing problem with your Azure Data Explorer resource that causes it to be unavailable for queries and ingestion. For example, nodes in your Azure Data Explorer resource may have rebooted unexpectedly. If your Azure Data Explorer resource remains in this state for an extended period of time, contact [support](https://ms.portal.azure.com/#create/Microsoft.Support).
 
 :::image type="content" source="media/monitor-with-resource-health/unavailable.png" alt-text="Screenshot of a Resource health page for an Azure Data Explorer resource, with a highlighted unavailable status and links for support and information." border="false":::
 
