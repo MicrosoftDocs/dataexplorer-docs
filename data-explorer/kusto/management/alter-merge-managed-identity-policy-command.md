@@ -41,7 +41,9 @@ You must have [AllDatabasesAdmin](../access-control/role-based-access-control.md
 > * For every item in `ArrayOfManagedIdentityPolicyObjects`:
 >
 >   * If the ObjectId *doesn't exist* in the ManagedIdentity policy, the item will be added to the policy.
->   * If the ObjectId *already exists* in the ManagedIdentity policy, the identity's AllowedUsages property will be added to the relevant item in the policy. For example, if the current policy has AllowedUsages="NativeIngestion" for a specific managed identity, then if `ArrayOfManagedIdentityPolicyObjects` has an item for this managed identity with AllowedUsages="ExternalTables", then the AllowedUsages for this managed identity in the Managed Identity policy will become "NativeIngestion, ExternalTables".
+>   * If the ObjectId *already exists* in the ManagedIdentity policy:
+>       * The identity's AllowedUsages property will be added to the relevant item in the policy. For example, if the current policy has AllowedUsages="NativeIngestion" for a specific managed identity, then if `ArrayOfManagedIdentityPolicyObjects` has an item for this managed identity with AllowedUsages="ExternalTables", then the AllowedUsages for this managed identity in the Managed Identity policy will become "NativeIngestion, ExternalTables".
+>       * The latest information (such as the `DisplayName`) about the managed identity will be retrieved from Entra and updated in the policy.
 
 ### Getting the managed identity object ID
 
