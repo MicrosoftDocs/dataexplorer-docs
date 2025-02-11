@@ -3,7 +3,7 @@ title:  Create materialized view
 description:  This article describes how to create materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/03/2025
+ms.date: 02/11/2025
 ---
 
 # .create materialized-view
@@ -169,6 +169,17 @@ You can create a materialized view over another materialized view only when the 
     }
     ```
 
+* Create a downsampling materialized view based on the `DeduplicatedTable` materialized view:
+
+    <!-- csl -->
+    ```kusto
+    .create materialized-view DailyUsage on materialized-view DeduplicatedTable
+    {
+        DeduplicatedTable
+        | summarize count(), dcount(User) by Day=bin(Timestamp, 1d)
+    }
+    ```
+
 * Create a materialized view that deduplicates the source table, based on the `EventId` column, by using a lookback of six hours. Records are deduplicated against records whose `Timestamp` has a maximum of six hours difference from current records.
 
     <!-- csl -->
@@ -177,17 +188,6 @@ You can create a materialized view over another materialized view only when the 
     {
         T
         | summarize arg_max(Timestamp, *) by EventId
-    }
-    ```
-
-* Create a downsampling materialized view based on the previous `DeduplicatedTable` materialized view:
-
-    <!-- csl -->
-    ```kusto
-    .create materialized-view DailyUsage on materialized-view DeduplicatedTable
-    {
-        DeduplicatedTable
-        | summarize count(), dcount(User) by Day=bin(Timestamp, 1d)
     }
     ```
 

@@ -3,7 +3,7 @@ title:  .alter materialized view lookback
 description:  This article describes alter materialized view lookback.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 01/29/2025
+ms.date: 02/11/2025
 ---
 # .alter materialized-view lookback
 
@@ -38,7 +38,7 @@ The following examples show how to alter the lookback of a materialized view.
 
 ### Set the lookback property of a materialized view
 
-The following example sets the lookback period of the materialized view, `MyView`, to six hours, so that `MyView` considers data ingested over the last six hours for its operations. The lookback period is returned in the `Lookback` column of the table.
+The following example sets the lookback period of the materialized view, `MyView`, to six hours.
 
 ```kusto
 .alter materialized-view MyView lookback 6h
@@ -52,7 +52,7 @@ The following example sets the lookback period of the materialized view, `MyView
 
 ### Remove the lookback of a materialized view
 
-The following example removes the lookback period of the materialized view, `MyView`, allowing it to consider all available data for its operations. It returns a table with an empty `Lookback` column.
+The following example removes the lookback period of the materialized view, `MyView`.
 
 ```kusto
 .alter materialized-view MyView lookback timespan(null)
@@ -66,7 +66,8 @@ The following example removes the lookback period of the materialized view, `MyV
 
 ## Related content
 
+* [Lookback period](materialized-view-create.md#lookback-period)
 * [Materialized views](materialized-view-overview.md)
 * [Materialized views use cases](materialized-view-use-cases.md)
 * [.create materialized-view](materialized-view-create.md)
-* [.alter materialized-view](materialized-view-alter.md)
+* [.alter materialized-view](materialized-view-alter.md
