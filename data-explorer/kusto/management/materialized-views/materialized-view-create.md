@@ -184,7 +184,7 @@ You can create a materialized view over another materialized view only when the 
 
     <!-- csl -->
     ```kusto
-    .create materialized-view with(lookback=6h, lookback_column = "Timestamp") DeduplicatedTable on table T
+    .create materialized-view with(lookback=6h, lookback_column = "Timestamp") LatestEventID on table T
     {
         T
         | summarize arg_max(Timestamp, *) by EventId
