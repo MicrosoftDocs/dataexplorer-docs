@@ -62,7 +62,7 @@ The following properties are supported in the `with` `(`*PropertyName* `=` *Prop
 
 > [!WARNING]
 >
-> * The system will automatically disable a materialized view if changes to the source table of the materialized view, or changes in data, lead to incompatibility between the materialized view query and the expected materialized view schema.
+> * The system automatically disables a materialized view if changes to the source table of the materialized view, or changes in data, lead to incompatibility between the materialized view query and the expected materialized view schema.
 > * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpack-plugin.md) or [pivot](../../query/pivot-plugin.md) plugin results in a nondeterministic schema.
 > * When you're using an `arg_max(Timestamp, *)` aggregation and when `autoUpdateSchema` is false, changes to the source table can also lead to schema mismatches. Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)`, or by using the `autoUpdateSchema` option.
 > * Using `autoUpdateSchema` might lead to irreversible data loss when columns in the source table are dropped.
@@ -259,7 +259,7 @@ The following rules limit the query used in the materialized view Query paramete
 
     **Example**: A view definition includes an inner join with a dimension table. At the time of materialization, the dimension record wasn't fully ingested, but it was already ingested into the fact table. This record is dropped from the view and never processed again.
 
-    Similarly, if the join is an outer join, the records from the fact table are processed and added to view with a null value for the dimension table columns. Records that have already been added (with null values) to the view aren't processed again. Their values, in columns from the dimension table, remains null.
+    Similarly, if the join is an outer join, the records from the fact table are processed and added to view with a null value for the dimension table columns. Records that were already added (with null values) to the view aren't processed again. Their values, in columns from the dimension table, remains null.
 
 ### Supported aggregation functions
 
@@ -307,7 +307,7 @@ The following aggregation functions are supported:
   >
   > If you expect late arriving records ingested to the source table, adjust the caching policy of the materialized view accordingly. For example, if records with Timestamp of six months ago are expected to be ingested to the source table, the materialization process needs to scan the materialized view for the previous six months. If this period is in cold cache, materialization experiences cache misses which have a negative impact on the performance of the view.
   >
-  > If such late arriving records aren't expected, we recommend that in the materialized view query, you either filter out these records or normalize their timestamp values to the current time.
+  > If such late arriving records aren't expected, we recommend that in the materialized view query. Either filter these records out or normalize their timestamp values to the current time.
 
 * **Define a lookback period**: If applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [Supported properties](#supported-properties).  
 
