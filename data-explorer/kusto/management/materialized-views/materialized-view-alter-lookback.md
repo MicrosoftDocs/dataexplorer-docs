@@ -66,7 +66,7 @@ The following example removes the lookback period of the materialized view, `MyV
 
 ## Related content
 
-* [Lookback period](materialized-view-create.md#lookback-period)
+* [Materialized views lookback period](materialized-view-create.md#lookback-period)
 * [Materialized views](materialized-view-overview.md)
 * [Materialized views use cases](materialized-view-use-cases.md)
 * [.create materialized-view](materialized-view-create.md)
