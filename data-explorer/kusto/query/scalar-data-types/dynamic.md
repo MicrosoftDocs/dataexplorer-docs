@@ -20,7 +20,7 @@ The `dynamic` scalar data type can be any of the following values:
 >
 > * Although the `dynamic` type appears JSON-like, it can hold values that the JSON model doesn't represent because they don't exist in JSON (e.g. `long`, `real`, `datetime`, `timespan`, and `guid`). Therefore, in serializing `dynamic` values into a JSON representation, values that JSON can't represent are serialized into `string` values. Conversely, Kusto will parse strings as strongly-typed values if they can be parsed as such. This applies to `datetime`, `real`, `long`, and `guid` types. For more information on the JSON object model, see [json.org](https://json.org/).
 > * Kusto doesn't attempt to preserve the order of name-to-value mappings in a property bag, and so you can't assume the order to be preserved. It's entirely possible for two property bags with the same set of mappings to yield different results when they are represented as `string` values, for example.
-> * At ingestion: Values of `dynamic` values are limited by default to 1MiB (2^20), uncompressed. You can increase the `MaxValueSize` of the column by changing its [encoding policy](../../management/alter-encoding-policy.md) and increase it up-to 32MiB.
+> * When ingesting data, values of `dynamic` data types are limited by default to 1 MiB (2^20), uncompressed. You can increase the `MaxValueSize` of the column by changing its [encoding policy](../../management/alter-encoding-policy.md) to allow values up to 32 MiB.
 
 ## Dynamic literals
 
