@@ -3,7 +3,7 @@ title:  hll_merge()
 description: Learn how to use the hll_merge() function toe merge HLL results.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 02/02/2025
 ---
 # hll_merge()
 
@@ -14,8 +14,8 @@ Merges HLL results. This is the scalar version of the aggregate version [`hll_me
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy](#estimation-accuracy).
 
 > [!IMPORTANT]
-> The results of hll(), hll_if(), and hll_merge() can be stored and later retrieved. For example, you may want to create a daily unique users summary, which can then be used to calculate weekly counts.
-> However, the precise binary representation of these results may change over time. There's no guarantee that these functions will produce identical results for identical inputs, and therefore we don't advise relying on them.
+> The results of hll(), hll_if(), and hll_merge() can be stored and later retrieved. For example, you might want to create a daily unique users summary, which can then be used to calculate weekly counts.
+> However, the precise binary representation of these results can change over time. There's no guarantee that these functions produce identical results for identical inputs, and therefore we don't advise relying on them.
 
 ## Syntax
 
@@ -59,3 +59,10 @@ range x from 1 to 10 step 1
 ## Estimation accuracy
 
 [!INCLUDE [data-explorer-estimation-accuracy](../includes/estimation-accuracy.md)]
+
+## Related content
+
+* [Using hll() and tdigest()](using-hll-tdigest.md)
+* [hll() (aggregation function)](hll-aggregation-function.md)
+* [hll_if() (aggregation function)](hll-if-aggregation-function.md)
+* [hll_merge() (aggregation function)](hll-merge-aggregation-function.md)

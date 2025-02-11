@@ -3,15 +3,13 @@ title:  count_distinct() (aggregation function) - (preview)
 description: Learn how to use the count_distinct() (aggregation function) to count unique values specified by a scalar expression per summary group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 02/03/2025
 ---
 # count_distinct() (aggregation function) - (preview)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Counts unique values specified by the scalar expression per summary group, or the total number of unique values if the summary group is omitted.
-
-[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -21,7 +19,7 @@ To count only records for which a predicate returns `true`, use the [count_disti
 
 > [!NOTE]
 >
-> * This function is limited to 100M unique values. An attempt to apply the function on an expression returning too many values will produce a runtime error (HRESULT: 0x80DA0012).
+> * This function is limited to 100M unique values. An attempt to apply the function on an expression returning too many values produce a runtime error (HRESULT: 0x80DA0012).
 :::moniker range="azure-data-explorer"
 > * Function performance can be degraded when operating on multiple data sources from different clusters.
 ::: moniker-end
@@ -47,7 +45,7 @@ Long integer value indicating the number of unique values of *expr* per summary 
 
 ## Example
 
-This example shows how many types of storm events happened in each state.
+The following example shows how many types of storm events happened in each state.
 
 :::moniker range="azure-data-explorer"
 Function performance can be degraded when operating on multiple data sources from different clusters.
@@ -71,3 +69,11 @@ StormEvents
 | PENNSYLVANIA         | 25            |
 | GEORGIA              | 24            |
 | NORTH CAROLINA       | 23            |
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [count_distinctif() (aggregation function)](count-distinctif-aggregation-function.md)
+* [count() (aggregation function)](count-aggregation-function.md)
+* [countof()](countof-function.md)
+* [countif() (aggregation function)](countif-aggregation-function.md)

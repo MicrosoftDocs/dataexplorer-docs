@@ -3,7 +3,7 @@ title:  percentile(), percentiles()
 description:  Learn how to use the percentile(), percentiles() functions to calculate estimates for nearest rank percentiles.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # percentile(), percentiles() (aggregation function)
 
@@ -211,4 +211,6 @@ The percentiles aggregate provides an approximate value using [T-Digest](https:/
 
 ## Related content
 
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [percentilew(), percentilesw() (aggregation function)](percentilesw-aggregation-function.md)
 * [avg function](avg-aggregation-function.md)

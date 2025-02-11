@@ -47,6 +47,10 @@ A table with columns that were named as arguments. Contains same number of rows 
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ### Only show specific columns
 
 Only show the `EventId`, `State`, `EventType` of the `StormEvents` table.
@@ -61,7 +65,9 @@ StormEvents
 | project EventId, State, EventType
 ```
 
-The following results table shows only the top 10 results.
+**Output**
+
+The table shows the first 10 results.
 
 |EventId|State|EventType|
 |--|--|--|
@@ -92,7 +98,9 @@ StormEvents
 | where TotalInjuries > 5
 ```
 
-The following table shows only the first 10 results.
+**Output**
+
+The table shows the first 10 results.
 
 |StartLocation| TotalInjuries|
 |--|--|
@@ -108,9 +116,7 @@ The following table shows only the first 10 results.
 |COLLIERVILLE| 6|
 |...|...|
 
-::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * [`extend`](extend-operator.md)
 * [series_stats](series-stats-function.md)
-::: moniker-end

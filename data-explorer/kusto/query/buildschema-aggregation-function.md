@@ -3,7 +3,7 @@ title:  buildschema() (aggregation function)
 description: Learn how to use the buildschema() function to build a table schema from a dynamic expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # buildschema() (aggregation function)
 
@@ -30,7 +30,7 @@ Builds the minimal schema that admits all values of *DynamicExpr*.
 Returns the minimal schema that admits all values of *DynamicExpr*.
 
 > [!TIP]
-> If the input is a JSON string, use the [parse_json()](parse-json-function.md) function to convert the JSON to a [dynamic](scalar-data-types/dynamic.md) value. Otherwise, an error may occur.
+> If the input is a JSON string, use the [parse_json()](parse-json-function.md) function to convert the JSON to a [dynamic](scalar-data-types/dynamic.md) value. Otherwise, an error might occur.
 
 ## Example
 
@@ -60,35 +60,19 @@ datatable(value: dynamic) [
 |--|
 |{"x":["long","string"],"y":["double",{"w":"string"}],"z":{"`indexer`":["long","string"]},"t":{"`indexer`":"string"}}|
 
-The resulting schema tells us that:
+### Schema breakdown
 
-* The root object is a container with four properties named x, y, z, and t.
-* The property called `x` is of type *long* or of type *string*.
-* The property called `y` ii of type *double*, or another container with a property called `w` of type *string*.
-* The `indexer` keyword indicates that `z` and `t` are arrays.
-* Each item in the array `z` is of type *long* or of type *string*.
-* `t` is an array of strings.
-* Every property is implicitly optional, and any array may be empty.
+In the resulting schema:
 
-### Schema model
+* The root object is a container with four properties named `x`, `y`, `z`, and `t`.
+* Property `x` is either type *long* or type *string*.
+* Property `y` is either type *double* or another container with a property `w` of type *string*.
+* Property `z` is an array, indicated by the `indexer` keyword, where each item can be either type *long* or type *string*.
+* Property  `t` is an array, indicated by the `indexer` keyword, where each item is a *string*.  
+* Every property is implicitly optional, and any array might be empty.
 
-The syntax of the returned schema is:
+## Related content
 
-Container ::= '{' Named-type* '}';
-Named-type: := (name | '"`indexer`"') ':' Type;
-Type ::= Primitive-type | Union-type | Container;
-Union-type ::= '[' Type* ']';
-Primitive-type ::= "long" | "string" | ...;
-
-The values are equivalent to a subset of TypeScript type annotations, encoded as a Kusto dynamic value.
-In TypeScript, the example schema would be:
-
-```typescript
-var someobject:
-{
-    x?: (number | string),
-    y?: (number | { w?: string}),
-    z?: { [n:number] : (long | string)},
-    t?: { [n:number]: string }
-}
-```
+* [Best practices for schema management](../management/management-best-practices.md)
+* [getschema operator](getschema-operator.md)
+* [infer_storage_schema plugin](infer-storage-schema-plugin.md)

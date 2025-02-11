@@ -3,7 +3,7 @@ title:  invoke operator
 description: Learn how to use the  invoke operator to invoke a lambda expression that receives the source of `invoke` as a tabular parameter argument
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # invoke operator
 
@@ -34,7 +34,7 @@ Returns the result of the evaluated expression.
 
 ## Example
 
-The following example shows how to use the `invoke` operator to call lambda `let` expression:
+This example shows how to use the `invoke` operator to call lambda `let` expression:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

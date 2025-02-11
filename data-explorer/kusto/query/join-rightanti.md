@@ -3,7 +3,7 @@ title:  rightanti join
 description: Learn how to use the rightanti join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 ---
 
 # rightanti join
@@ -30,6 +30,8 @@ The `rightanti` join flavor returns all records from the right side that don't m
 **Rows**: All records from the right table that don't match records from the left table.
 
 ## Example
+
+This query filters and returns only those rows from table Y that do not have a matching key in table X.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -59,3 +61,7 @@ X | join kind=rightanti Y on Key
 |Key|Value1|
 |---|---|
 |d|40|
+
+## Related content
+
+* Learn about other [join flavors](join-operator.md#returns)

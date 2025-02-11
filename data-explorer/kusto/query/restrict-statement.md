@@ -3,7 +3,7 @@ title:  Restrict statement
 description: Learn how to use the restrict statement to limit tabular views that are visible to subsequent query statements.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/13/2025
+ms.date: 01/20/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Restrict statement
@@ -14,10 +14,10 @@ The restrict statement limits the set of table/view entities which are visible t
 
 The restrict statement's main scenario is for middle-tier applications that accept queries from users and want to
 apply a row-level security mechanism over those queries.
-The middle-tier application can prefix the user's query with a **logical model**, a set of let statements defining views that restrict the user's access to data, for example ( `T | where UserId == "..."`). As the last statement being added, it restricts the user's access to the logical model only.
+The middle-tier application can prefix the user's query with a **logical model**, a set of let statements to define views that restrict the user's access to data, for example ( `T | where UserId == "..."`). As the last statement being added, it restricts the user's access to the logical model only.
 
 > [!NOTE]
-> The restrict statement can be used to restrict access to entities in another database or cluster (wildcards are not supported in cluster names).
+> The restrict statement can be used to restrict access to entities in another database or cluster (wildcards aren't supported in cluster names).
 
 ## Syntax
 
@@ -34,11 +34,13 @@ The middle-tier application can prefix the user's query with a **logical model**
 > [!NOTE]
 >
 > * All tables, tabular views, or patterns that aren't specified by the restrict statement become "invisible" to the rest of the query.
-> * Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they won't be considered part of the same query.
+> * Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they aren't considered part of the same query.
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster-samples-stormevents.md)]
+The examples in this section show how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Let statement
 

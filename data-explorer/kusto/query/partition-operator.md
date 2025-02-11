@@ -3,7 +3,7 @@ title:  partition operator
 description: Learn how to use the partition operator to partition the records of the input table into multiple subtables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/22/2025
 ---
 # partition operator
 
@@ -11,7 +11,7 @@ ms.date: 08/11/2024
 
 The partition operator partitions the records of its input table into multiple subtables according to values in a key column. The operator runs a subquery on each subtable, and produces a single output table that is the union of the results of all subqueries.
 
-This operator is useful when you need to perform a subquery only on a subset of rows that belongs to the same partition key, and not query the whole dataset. These subqueries could include aggregate functions, window functions, top *N* and others.
+The partition operator is useful when you need to perform a subquery only on a subset of rows that belong to the same partition key, and not a query of the whole dataset. These subqueries could include aggregate functions, window functions, top *N* and others.
 
 The partition operator supports several strategies of subquery operation:
 
@@ -36,16 +36,16 @@ The partition operator supports several strategies of subquery operation:
 | *Column*| `string` |  :heavy_check_mark: | The name of a column in *T* whose values determine how to partition the input tabular source.|
 | *TransformationSubQuery*| `string` |  :heavy_check_mark: | A tabular transformation expression. The source is implicitly the subtables produced by partitioning the records of *T*. Each subtable is homogenous on the value of *Column*.</br></br> The expression must provide only one tabular result and shouldn't have other types of statements, such as `let` statements.|
 | *SubQueryWithSource*| `string` |  :heavy_check_mark: | A tabular expression that includes its own tabular source, such as a table reference. This syntax is only supported with the [legacy strategy](#legacy-strategy). The subquery can only reference the key column, *Column*, from *T*. To reference the column, use the syntax `toscalar(`*Column*`)`.</br></br> The expression must provide only one tabular result and shouldn't have other types of statements, such as `let` statements.|
-| *Hints*| `string` | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints) per strategy type.
+| *Hints*| `string` | | Zero or more space-separated parameters in the form of: *HintName* `=` *Value* that control the behavior of the operator. See the [supported hints](#supported-hints) per strategy type.|
 
 ### Supported hints
 
 |Hint name|Type|Strategy|Description|
 |--|--|--|--|
 |`hint.shufflekey`| `string` | [shuffle](#shuffle-strategy) | The partition key used to run the partition operator with the `shuffle` strategy. |
-|`hint.materialized`| `bool` | [legacy](#legacy-strategy) | If set to `true`, will materialize the source of the `partition` operator. The default value is `false`. |
+|`hint.materialized`| `bool` | [legacy](#legacy-strategy) | If set to `true`, materializes the source of the `partition` operator. The default value is `false`. |
 |`hint.concurrency`| `int` | [legacy](#legacy-strategy) | Determines how many partitions to run in parallel. The default value is `16`.|
-|`hint.spread`| `int` | [legacy](#legacy-strategy) | Determines how to distribute the partitions among cluster nodes. The default value is `1`.</br></br> For example, if there are *N* partitions and the spread hint is set to *P*, then the *N* partitions will be processed by *P* different cluster nodes equally in parallel/sequentially depending on the concurrency hint.|
+|`hint.spread`| `int` | [legacy](#legacy-strategy) | Determines how to distribute the partitions among cluster nodes. The default value is `1`.</br></br> For example, if there are *N* partitions and the spread hint is set to *P*, then the *N* partitions are processed by *P* different cluster nodes equally, in parallel/sequentially depending on the concurrency hint.|
 
 ## Returns
 
@@ -120,9 +120,13 @@ If the subquery is a tabular transformation without a tabular source, the source
 To use this strategy, specify `hint.strategy=legacy` or omit any other strategy indication.
 
 > [!NOTE]
-> An error will occur if the partition column, *Column*, contains more than 64 distinct values.
+> An error occurs if the partition column, *Column*, contains more than 64 distinct values.
 
 ## Examples
+
+The examples in this section show how to use the syntax to help you get started.
+
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 
 ### Find top values
@@ -144,7 +148,7 @@ StormEvents
     ) 
 ```
 
-**Output** 
+**Output**
 
 |EventType|State|Events|Injuries|
 |---|---|---|---|
@@ -180,7 +184,7 @@ StormEvents
     )
 ```
 
-**Output** 
+**Output**
 
 |EventType|TotalInjueries|
 |---|---|
@@ -212,7 +216,7 @@ StormEvents
 | count
 ```
 
-**Output** 
+**Output**
 
 |Count|
 |---|
@@ -238,7 +242,7 @@ range x from 1 to 2 step 1
 | count 
 ```
 
-**Output** 
+**Output**
 
 |Count|
 |---|

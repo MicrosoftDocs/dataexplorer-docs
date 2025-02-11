@@ -19,7 +19,7 @@ The following table overviews the supported request properties.
 
 :::moniker range="microsoft-fabric"
 > [!NOTE]
-> The request properties `query_weakconsistency_session_id` and `queryconsistency` aren't available in Fabic.
+> The request properties `query_weakconsistency_session_id` and `queryconsistency` aren't available in Fabric.
 
 ::: moniker-end
 

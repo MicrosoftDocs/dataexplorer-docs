@@ -3,7 +3,7 @@ title:  max() (aggregation function)
 description: Learn how to use the max() function to find the maximum value of the expression in the table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/11/2024
+ms.date: 01/15/2025
 ---
 # max() (aggregation function)
 
@@ -30,11 +30,11 @@ Finds the maximum value of the expression in the table.
 Returns the value in the table that maximizes the specified expression.
 
 > [!TIP]
-> This gives you the max on its own. If you want to see other columns in addition to the max, use [arg_max](arg-max-aggregation-function.md).
+> This function gives you the max on its own. If you want to see other columns in addition to the max, use [arg_max](arg-max-aggregation-function.md).
 
 ## Example
 
-This example returns the last record in a table by querying the maximum value for StartTime.
+The following example returns the last record in a table by querying the maximum value for StartTime.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -54,6 +54,7 @@ StormEvents
 
 ## Related content
 
+* [Aggregation function types at a glance](aggregation-functions.md)
 * [arg_max](arg-max-aggregation-function.md)
 * [min function](min-aggregation-function.md)
 * [avg function](avg-aggregation-function.md)

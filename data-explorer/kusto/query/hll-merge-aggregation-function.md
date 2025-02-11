@@ -3,7 +3,7 @@ title:  hll_merge() (aggregation function)
 description: Learn how to use the hll_merge() function to merge HLL results into a single HLL value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # hll_merge() (aggregation function)
 
@@ -13,14 +13,10 @@ Merges HLL results across the group into a single HLL value.
 
 > [!NOTE]
 > You can't merge hll values that were created using different accuracy values. For more information, see [hll()](hll-aggregation-function.md).
- 
+
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 For more information, see the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy](#estimation-accuracy).
-
-> [!IMPORTANT]
-> The results of hll(), hll_if(), and hll_merge() can be stored and later retrieved. For example, you may want to create a daily unique users summary, which can then be used to calculate weekly counts.
-> However, the precise binary representation of these results may change over time. There's no guarantee that these functions will produce identical results for identical inputs, and therefore we don't advise relying on them.
 
 ## Syntax
 
@@ -38,8 +34,10 @@ For more information, see the [underlying algorithm (*H*yper*L*og*L*og) and esti
 
 The function returns the merged HLL values of *hll* across the group.
 
-> [!TIP]
-> Use the [dcount_hll](dcount-hll-function.md) function to calculate the `dcount` from [hll()](hll-aggregation-function.md) and [hll_merge()](hll-merge-aggregation-function.md) aggregation functions.
+> [!NOTE]
+> - The results of hll(), hll_if(), and hll_merge() can be stored and later retrieved. For example, you might want to create a daily unique user summary, which can then be used to calculate weekly counts.
+> However, the precise binary representation of these results might change over time. There's no guarantee that these functions produce identical results for identical inputs, and therefore we don't advise relying on them.
+> - Use the [dcount_hll](dcount-hll-function.md) function to calculate the `dcount` from [hll()](hll-aggregation-function.md) and [hll_merge()](hll-merge-aggregation-function.md) aggregation functions.
 
 ## Example
 
@@ -67,3 +65,10 @@ The results show only the first five results in the array.
 ## Estimation accuracy
 
 [!INCLUDE [data-explorer-estimation-accuracy](../includes/estimation-accuracy.md)]
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [Using hll() and tdigest()](using-hll-tdigest.md)
+* [hll() (aggregation function)](hll-aggregation-function.md)
+* [hll_if() (aggregation function)](hll-if-aggregation-function.md)
