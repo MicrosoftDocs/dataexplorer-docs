@@ -32,7 +32,7 @@ You must have [AllDatabasesAdmin](../access-control/role-based-access-control.md
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
-|*ArrayOPolicyObjects*|array| :heavy_check_mark:|A serialized array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
+|*ArrayOPolicyObjects*|array| :heavy_check_mark:|A serialized array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined, each defined with only the `ObjectId` and `AllowedUsages` properties.|
 
 > [!NOTE]
 >
