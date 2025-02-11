@@ -30,7 +30,7 @@ There are two possible ways to create a materialized view, as noted by the *back
 
 ## Permissions
 
-You must have at least [Database Admin](../../access-control/role-based-access-control.md) permissions to run this command. The materialized view creator becomes its administrator.
+You must have at least [Database Admin](../../access-control/role-based-access-control.md) permissions to run this command. The materialized view creator becomes its admin.
 
 ## Syntax
 
@@ -89,7 +89,7 @@ When it's clear that a session won't last for more than one day, then the `lookb
 }
 ```
 
-Setting a lookback on a materialized view reduces the portion of the view scanned during materialization. Instead of scanning the entire materialized view, only the part that falls within the lookback period is combined with the *delta*, or newly ingested data, during materialization. For more information, see [How materialized views work](materialized-view-overview.md#how-materialized-views-work).
+Setting a lookback on a materialized view reduces the portion of the view scanned during materialization. Instead of scanning the entire materialized view, only the part that falls within the lookback period is combined with the *delta* during materialization. For more information, see [How materialized views work](materialized-view-overview.md#how-materialized-views-work).
 While this step can significantly improve the materialized view's performance, setting an incorrect lookback period can result in duplicate records. In the previous example, if a record is ingested two days after a record for the same `SessionId`, the materialized view will have duplicate records for that `SessionId`.
 
 #### Lookback column
@@ -99,7 +99,7 @@ The lookback period is always relative to a `datetime` column in the materialize
 * **Default:** Relative to the record's [ingestion_time()](../../query/ingestion-time-function.md) in the source table. Records are deduplicated only against records which are ingested to the source table after a lookback period relative to the current records. This kind of lookback is valid only for `arg_max`, `arg_min`, or `take_any` materialized views, and only for views that preserve ingestion time. For more information, see [Materialized views limitations and known issues](materialized-views-limitations.md).
 You can configure the default option by setting the `lookback` property without the `lookback_column` property.
 
-* **lookback_column (Preview):** Relative to a `datetime` column in the materialized view. The lookback is explicitly specified in the materialized view definition, using the `lookback_column` property. For more information, see [Known limitations](#known-limitations).You can configure the lookback column option by setting both the `lookback` and the `lookback_column` properties.
+* **lookback_column (Preview):** Relative to a `datetime` column in the materialized view. The lookback is explicitly specified in the materialized view definition, using the `lookback_column` property. For more information, see [Known limitations](#known-limitations). You can configure the lookback column option by setting both the `lookback` and the `lookback_column` properties.
 
 #### Known limitations
 
