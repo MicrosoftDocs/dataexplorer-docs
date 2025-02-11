@@ -65,7 +65,7 @@ The effective value for *Concurrent operations per node* is automatically adjust
 > In clusters with four or more nodes, the admin node doesn't participate in merge operations, so *Number of nodes in cluster* is reduced by one.
 
 > [!WARNING]
-> Before altering the extents merge policy, we recommend that you [consult with support](https://ms.portal.azure.com/#create/Microsoft.Support).
+> Given the complexity of the extents merge policy, we recommend that you [consult with support](https://ms.portal.azure.com/#create/Microsoft.Support) before making any changes.
 
 ### Extents purge rebuild capacity
 
@@ -230,7 +230,7 @@ The default capacity policy has the following JSON representation:
 ## Management commands
 
 > [!WARNING]
-> Before altering the extents policy, we recommend that you [consult with support](https://ms.portal.azure.com/#create/Microsoft.Support).
+> Given the complexity of the capacity policy, we recommend that you [consult with support](https://ms.portal.azure.com/#create/Microsoft.Support) before making any changes.
 
 * Use [`.show cluster policy capacity`](show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
 * Use [`.alter-merge cluster policy capacity`](alter-merge-capacity-policy-command.md) to alter the capacity policy of the cluster.
