@@ -51,9 +51,9 @@ All properties are optional.
 
 ## Example
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+This query outputs a visualization of flood events in the specified Midwestern states, displayed as a time pivot chart.
 
-This query outputs a visualization of flood events in the specified Midwestern states, displayed as a time pivot chart
+[!INCLUDE [help-cluster-note-ADX-only](../includes/help-cluster-note-ADX-only.md)]
 
 ```kusto
 let midwesternStates = dynamic([
@@ -64,5 +64,7 @@ StormEvents
 | where EventType == "Flood" and State in (midwesternStates)
 | render timepivot with (xcolumn=State)
 ```
+
+**Output**
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
