@@ -38,12 +38,12 @@ You must have [AllDatabasesAdmin](../access-control/role-based-access-control.md
 >
 > * Policy objects must define the *ObjectId* and *AllowedUsages* properties. Other properties are automatically populated.
 >
-> * For every item in `ArrayOfManagedIdentityPolicyObjects`:
+> * For every item in *ArrayOfPolicyObjects*:
 >
 >   * If the ObjectId *doesn't exist* in the ManagedIdentity policy, the item is added to the policy.
 >   * If the ObjectId *already exists* in the ManagedIdentity policy:
->       * The identity's *AllowedUsages* property is added to the relevant item in the policy. For example, if the current policy has AllowedUsages="NativeIngestion" for a specific managed identity, then if `ArrayOfPolicyObjects` has an item for this managed identity with AllowedUsages="ExternalTables", then the AllowedUsages for this managed identity in the ManagedIdentity policy becomes "NativeIngestion, ExternalTables".
->       * The latest information (such as the `DisplayName`) about the managed identity is retrieved from Microsoft Entra and updated in the policy.
+>       * The identity's *AllowedUsages* property is added to the relevant item in the policy. For example, if the current policy has AllowedUsages="NativeIngestion" for a specific managed identity, then if *ArrayOfPolicyObjects* has an item for this managed identity with AllowedUsages="ExternalTables", then the AllowedUsages for this managed identity in the ManagedIdentity policy becomes "NativeIngestion, ExternalTables".
+>       * The latest information (such as the *DisplayName*) about the managed identity is retrieved from Microsoft Entra and updated in the policy.
 
 ### Getting the managed identity object ID
 
