@@ -3,8 +3,7 @@ title:  Scatter chart visualization
 description:  This article describes the scatter chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+ms.date: 01/28/2025
 ---
 # Scatter chart
 
@@ -38,7 +37,7 @@ All properties are optional.
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
-|`kind`        |Further elaboration of the visualization kind.  For more information, see [`kind` property](#kind-property).                         |
+|`kind`        |Further elaboration of the visualization kind. For more information, see [`kind` property](#kind-property).                         |
 |`legend`      |Whether to display a legend or not (`visible` or `hidden`).                       |
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`ymin`        |The minimum value to be displayed on Y-axis.                                      |
@@ -63,7 +62,6 @@ All properties are optional.
 
 ::: moniker-end
 
-
 #### `kind` property
 
 This visualization can be further elaborated by providing the `kind` property.
@@ -74,6 +72,10 @@ The supported values of this property are:
 |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point. Series column is optional. For more information, see [Geospatial visualizations](geospatial-visualizations.md). |
 
 ## Example
+
+This query provides a scatter chart that helps you analyze the correlation between state populations and the total property damage caused by storm events.
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
