@@ -9,6 +9,25 @@ ms.date: 01/14/2025
 
 Welcome to what's new in Azure Data Explorer. This article details new and updated content in the Azure Data Explorer documentation.
 
+## January 2025
+
+**General**
+
+| Article title | Description |
+|--|--|
+| [Customize settings in the web UI](web-customize-settings.md) | Updated topic. Added how to enable cross-tenant dashboard sharing. |
+| [Share dashboards](azure-data-explorer-dashboard-share.md) | New article. Describes how to share dashboards in Azure Data Explorer. |
+| [Share queries from web UI](web-share-queries.md) | Updated topic. Added information about shared queries opening in protected mode for enhanced security. |
+| [Troubleshoot: Failure to connect to a cluster](troubleshoot-connect-cluster.md) | Updated topic. Added instructions how to verify a cluster is active. |
+| [Manage public access to your cluster](security-network-restrict-public-access.md) | Updated topic. Added section to manage access to your cluster by specifying selected IP addresses, CIDER notations, or service tags. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| [range operator](/kusto/query/range-operator?view=azure-data-explorer&preserve-view=true) | Updated topic. Added example of using the range operator to combine different stop times. |
+| [replace_string() function](/kusto/query/replace-string-function?view=azure-data-explorer&preserve-view=true) | Updated topic. Added a simpler example that replaces words in a string. |
+
 ## December 2024
 
 **Functions library**
@@ -220,12 +239,3 @@ No updates.
 |Article title| Description|
 |--|--|
 | [sort operator](/kusto/query/sort-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Added section on the use of special floating-point values.|
-
-## January 2024
-
-**General**
-
-| Article title | Description |
-|--|--|
-| - [Integrations overview](integrate-overview.md) <br/> - [Data integrations overview](integrate-data-overview.md) <br/> - [Query integrations overview](integrate-query-overview.md) <br/> - [Visualize integrations overview](integrate-visualize-overview.md)  | New articles. Describes the available data connectors, tools, and query integrations, and updated article on the available visualize integrations.|
-| [Schema optimization best practices](schema-best-practice.md)| New article. Describes the best practices for schema design in Azure Data Explorer.|
