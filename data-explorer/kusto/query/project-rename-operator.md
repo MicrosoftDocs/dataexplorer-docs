@@ -37,12 +37,12 @@ A table that has the columns in the same order as in an existing table, with col
 ::: moniker-end
 
 ```kusto
-print a='a', b='b', c='c'
-|  project-rename new_b=b, new_a=a
+print a='alpha', b='bravo', c='charlie'
+| project-rename new_a=a, new_b=b, new_c=c
 ```
 
 **Output**
 
-|new_a|new_b|c|
-|---|---|---|
-|a|b|c|
+|new_a|new_b|new_c|
+|--|--|--|
+|alpha|bravo|charlie|
