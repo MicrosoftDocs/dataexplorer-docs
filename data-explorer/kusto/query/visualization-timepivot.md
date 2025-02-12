@@ -3,7 +3,7 @@ title:  Time pivot visualization
 description:  This article describes the time pivot visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "azure-data-explorer"
 ---
 # Time pivot
@@ -15,7 +15,7 @@ The time pivot visualization is an interactive navigation over the events time-l
 > [!NOTE]
 >
 > * This visualization can only be used in the context of the [render operator](render-operator.md).
-> * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
+> * This visualization can be used in Kusto.Explorer but isn't available in the Azure Data Explorer web UI.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ The time pivot visualization is an interactive navigation over the events time-l
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
@@ -51,6 +51,10 @@ All properties are optional.
 
 ## Example
 
+This query outputs a visualization of flood events in the specified Midwestern states, displayed as a time pivot chart.
+
+[!INCLUDE [help-cluster-note-data-explorer-only](../includes/help-cluster-note-data-explorer-only.md)]
+
 ```kusto
 let midwesternStates = dynamic([
     "ILLINOIS", "INDIANA", "IOWA", "KANSAS", "MICHIGAN", "MINNESOTA",
@@ -60,5 +64,7 @@ StormEvents
 | where EventType == "Flood" and State in (midwesternStates)
 | render timepivot with (xcolumn=State)
 ```
+
+**Output**
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::

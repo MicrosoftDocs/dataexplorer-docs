@@ -3,7 +3,7 @@ title:  Pivot chart visualization
 description:  This article describes the pivot chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "azure-data-explorer"
 ---
 # Pivot chart
@@ -15,7 +15,7 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 > [!NOTE]
 >
 > * This visualization can only be used in the context of the [render operator](render-operator.md).
-> * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
+> * This visualization can be used in Kusto.Explorer but isn't available in the Azure Data Explorer web UI.
 
 ## Syntax
 
@@ -31,6 +31,10 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 ## Example
 
+This query provides a detailed analysis of sales for Contoso computer products within the specified date range, visualized as a pivot chart.
+
+[!INCLUDE [help-cluster-note-data-explorer-only](../includes/help-cluster-note-data-explorer-only.md)]
+
 ```kusto
 SalesFact
 | join kind= inner Products on ProductKey
@@ -39,5 +43,7 @@ SalesFact
 | project SalesAmount, ProductName, DateKey
 | render pivotchart
 ```
+
+**Output**
 
 :::image type="content" source="media/visualize-pivotchart/pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="media/visualize-pivotchart/pivotchart.png":::
