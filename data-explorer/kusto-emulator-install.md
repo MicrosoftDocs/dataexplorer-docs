@@ -55,7 +55,7 @@ The following steps are for using PowerShell to start the emulator using the [Ku
     > [!NOTE]
     >
     > - The first time this command is run, Docker pulls the container image which is several GBs in size and might take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
-    > - **For Windows container only:** The container must run in process-isolation mode. This is the default on some versions of Docker. For other versions, you can start the container in Hyper-V isolation mode by adding `--isolation=hyperv` to the run command.
+    > - **For Windows container only**: The container must run in process-isolation mode. This is the default on some versions of Docker. For other versions, you can start the container in Hyper-V isolation mode by adding `--isolation=hyperv` to the run command.
 
     # [Linux container](#tab/linux-container)
 
