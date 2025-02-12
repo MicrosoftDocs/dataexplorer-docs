@@ -10,8 +10,8 @@ ms.date: 02/09/2025
 
 You can install the Azure Data Explorer Kusto emulator in the following ways:
 
-- **On your own device:** Consider using this option if you need to provision a local development environment
-- **On a CI/CD agent virtual machine (VM):** Use this option if you require a CI/CD pipeline for running automated tests
+- **On your own device**: Consider using this option if you need to provision a local development environment
+- **On a CI/CD agent virtual machine (VM)**: Use this option if you require a CI/CD pipeline for running automated tests
 
 The emulator is available as a *Linux* and *Windows* Docker container image.
 
@@ -43,7 +43,7 @@ This article focuses on how to install the Linux Docker container on a Windows c
 
 The following steps are for using PowerShell to start the emulator using the [Kusto emulator container image](https://aka.ms/adx.emulator.image). For other options, see [Run emulator options](#run-emulator-options).
 
-1. **For Windows container only:** Switch Docker to run with Windows containers. You might need to enable the feature in the Docker settings.
+1. **For Windows container only**: Switch Docker to run with Windows containers. You might need to enable the feature in the Docker settings.
 
     :::image type="content" source="media/kusto-emulator/kusto-emulator-docker-windows-container.png" alt-text="Screenshot of the Docker settings, showing the Switch to Windows containers option.":::
 
