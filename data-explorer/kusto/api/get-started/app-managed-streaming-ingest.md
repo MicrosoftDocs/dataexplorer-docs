@@ -33,6 +33,9 @@ When ingesting with `ManagedStreamingIngestionClient`, failures and retries are 
 + Transient failure, for example throttling, are retried three times, then moved to queued ingestion.
 + Permanent failures aren't retried.
 
+> [!NOTE]
+> If the streaming ingestion fails and the data is sent to queued ingestion, some latency is introduced until the data is visible in the table.
+
 ## Limitations
 
 Data Streaming has some limitations compared to queuing data for ingestion.
@@ -50,7 +53,7 @@ For more information, see [Streaming Limitations](/azure/data-explorer/ingest-da
 
 ## Before you begin
 
-Before creating the app the following steps are required. Each step is detailed in the following sections.
+Before creating the app, the following steps are required. Each step is detailed in the following sections.
 
 1. Configure streaming ingestion on your Azure Data Explorer cluster.
 1. Create a Kusto table to ingest the data into.
@@ -109,22 +112,18 @@ class Program
         var cluster_url = "<your Kusto cluster query URI>";
         var ingestion_url = "<your Kusto cluster query ingest URI>";
         var database_name = "<your database name> ";
-    
-   
+
         var clusterKcsb = new KustoConnectionStringBuilder(cluster_url).WithAadUserPromptAuthentication();
         var ingestionKcsb = new KustoConnectionStringBuilder(ingestion_url).WithAadUserPromptAuthentication();;
 
         using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
         using (var ingestClient = KustoIngestFactory.CreateManagedStreamingIngestClient(clusterKcsb, ingestionKcsb))
-        {
-            
-            
+        {          
             Console.WriteLine("Number of rows in " + tableName);
             var queryProvider = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
             var result = kustoClient.ExecuteQuery(databaseName, tableName + " | count", new ClientRequestProperties());
     
             PrintResultAsValueList(result);
-            
         }
     }
 
@@ -138,7 +137,6 @@ class Program
             Console.WriteLine("row:" + row.ToString() + "\t");
             for (int i = 0; i < result.FieldCount; i++)
             {
-
                 Console.WriteLine("\t"+ result.GetName(i)+" - " + result.GetValue(i) );
             }
             Console.WriteLine();
@@ -208,7 +206,6 @@ def print_result_as_value_list(result):
         for col in cols:
             print("\t", col, "-", row[col])
 
-
 def main():
     # Connect to the public access Help cluster
     file_path = os.curdir + "/stormevents.csv"
@@ -243,6 +240,7 @@ Add and ingestion section using the following lines to the end of `main()`.
             print("Ingesting data from a file")
             ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV, ignore_first_record=True)
             ingest_client.ingest_from_file(file_path, ingest_props)
+            ingest_client.close()
 ```
 
 Let’s also query the new number of rows and the most recent row after the ingestion.
@@ -335,6 +333,7 @@ Add and ingestion section using the following lines to the end of `main()`.
     //Ingest section
     console.log("Ingesting data from a file");
     await ingestClient.ingestFromFile(".\\stormevents.csv", ingestProperties);
+    ingestClient.close();
 ```
 
 Let’s also query the new number of rows and the most recent row after the ingestion.
@@ -516,6 +515,7 @@ Replace the ingestion section with the following code:
         # when possible provide the size of the raw data
         stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
         ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
+        ingest_client.close()
 ```
 
 ### [TypeScript](#tab/typescript)
@@ -529,6 +529,7 @@ Replace the ingestion section with the following code:
     console.log('Ingesting data from memory');
     const single_line = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
     await ingestClient.ingestFromStream(Buffer.from(single_line), ingestProperties)
+    ingestClient.close();
 ```
 
 ### [Java](#tab/java)
@@ -617,6 +618,7 @@ Replace the ingestion section with the following code:
         blob_descriptor = BlobDescriptor("<blob path with SAS or key>")
         ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV, ignore_first_record=True)
         ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
+        ingest_client.close()
 ```
 
 ### [TypeScript](#tab/typescript)
@@ -630,6 +632,7 @@ Replace the ingestion section with the following code:
     console.log('Ingesting data from an existing blob');
     const sasURI = "<your SAS URI>";
     await ingestClient.ingestFromBlob(sasURI, ingestProperties);
+    ingestClient.close();
 ```
 
 ### [Java](#tab/java)    
