@@ -3,8 +3,7 @@ title:  Table visualization
 description:  This article describes the table visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+ms.date: 01/28/2025
 ---
 # Table
 
@@ -61,6 +60,10 @@ All properties are optional.
 ::: moniker-end
 
 ## Example
+
+This query outputs a snapshot of the first 10 storm event records, displayed in a table format.
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
