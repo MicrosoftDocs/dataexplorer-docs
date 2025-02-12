@@ -42,6 +42,7 @@ Data Streaming has some limitations compared to queuing data for ingestion.
 + Tags can’t be set on data.
 + Mapping can only be provided using [`ingestionMappingReference`](/kusto/management/mappings?view=azure-data-explorer#mapping-with-ingestionmappingreference). Inline mapping isn't supported.
 + The payload sent in the request can’t exceed 10 MB, regardless of format or compression.
++ The `ignoreFirstRecord` property isn't supported for managed streaming ingestion, so ingested data must not contain a header row.
 
 For more information, see [Streaming Limitations](/azure/data-explorer/ingest-data-streaming#limitations).
 
@@ -58,7 +59,7 @@ Before creating the app, the following steps are required. Each step is detailed
 1. Configure streaming ingestion on your Azure Data Explorer cluster.
 1. Create a Kusto table to ingest the data into.
 1. Enable the streaming ingestion policy on the table.
-1. Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file containing 1,000 storm event records.
+1. Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-managed-streaming-ingestion/stormevents.csv) sample data file containing 1,000 storm event records.
 
 ## Configure streaming ingestion
 
@@ -149,15 +150,14 @@ class Program
 
 Use the `IngestFromStorageAsync` method to ingest the *stormevents.csv* file.
 
-Copy *stormevents.csv* file in the same location as your script. Since our CSV file contains a header row, use `IgnoreFirstRecord=True` to ignore the header.
+Copy *stormevents.csv* file to the same location as your script. Since our input is a CSV file, use `Format = DataSourceFormat.csv` in the ingestion properties.
 
 Add and ingestion section using the following lines to the end of `Main()`.
 
 ```csharp
             var ingestProps = new KustoIngestionProperties(databaseName, tableName) 
                 {
-                    Format = DataSourceFormat.csv,
-                    IgnoreFirstRecord = true
+                    Format = DataSourceFormat.csv
                 };
 
             //Ingestion section
@@ -231,14 +231,14 @@ main()
 
 
 Use the `ingest_from_file()` API to ingest the *stormevents.csv* file.
-Place *stormevents.csv* file in the same location as your script. Since our CSV file contains a header row, use `ignore_first_record=True` to ignore the header.
+Place the *stormevents.csv* file in the same location as your script. Since our input is a CSV file, use `DataFormat.CSV` in the ingestion properties.
 
 Add and ingestion section using the following lines to the end of `main()`.
 
 ```python
             # Ingestion section
             print("Ingesting data from a file")
-            ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV, ignore_first_record=True)
+            ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV)
             ingest_client.ingest_from_file(file_path, ingest_props)
             ingest_client.close()
 ```
@@ -317,7 +317,7 @@ main().catch((err) => {
 
 
 Use the `ingestFromFile()` API to ingest the *stormevents.csv* file.
-Place *stormevents.csv* file in the same location as your script. Since our CSV file contains a header row, use `ignoreFirstRecord=True` to ignore the header.
+Place the *stormevents.csv* file in the same location as your script. Since our input is a CSV file, use `format: DataFormat.CSV` in the ingestion properties.
 
 Add and ingestion section using the following lines to the end of `main()`.
 
@@ -326,8 +326,7 @@ Add and ingestion section using the following lines to the end of `main()`.
     const ingestProperties = new IngestionProperties({
         database: databaseName,
         table: tableName,
-        format: DataFormat.CSV,
-        additionalProperties: { ignoreFirstRecord: true }
+        format: DataFormat.CSV
     });
 
     //Ingest section
@@ -411,7 +410,7 @@ public class BatchIngestion {
 ## Stream a file for ingestion
 
 Use the `ingestFromFile()` method to ingest the *stormevents.csv* file.
-Place *stormevents.csv* file in the same location as your script. Since our CSV file contains a header row, use `ingestionProperties.setIgnoreFirstRecord(true);` to ignore the header.
+Place the *stormevents.csv* file in the same location as your script. Since our input is a CSV file, use `ingestionProperties.setDataFormat(DataFormat.CSV)` in the ingestion properties.
 
 Add and ingestion section using the following lines to the end of `main()`.
 
@@ -424,7 +423,6 @@ Add and ingestion section using the following lines to the end of `main()`.
                 String filePath = "stormevents.csv";
                 IngestionProperties ingestionProperties = new IngestionProperties(database, table);
                 ingestionProperties.setDataFormat(DataFormat.CSV);
-                ingestionProperties.setIgnoreFirstRecord(true);
                 FileSourceInfo fileSourceInfo = new FileSourceInfo(filePath, 0);
                 ingestClient.ingestFromFile(fileSourceInfo, ingestionProperties);
 
@@ -547,7 +545,6 @@ Replace the ingestion section with the following code:
                 System.out.println("Ingesting data from a byte array");
                 IngestionProperties ingestionProperties = new IngestionProperties(database, table);
                 ingestionProperties.setDataFormat(DataFormat.CSV);
-                ingestionProperties.setIgnoreFirstRecord(true);
                 StreamSourceInfo streamSourceInfo = new StreamSourceInfo(inputStream);
                 ingestClient.ingestFromStream(streamSourceInfo, ingestionProperties);
 
@@ -616,7 +613,7 @@ Replace the ingestion section with the following code:
         # Ingestion section
         print("Ingesting data from an existing blob")
         blob_descriptor = BlobDescriptor("<blob path with SAS or key>")
-        ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV, ignore_first_record=True)
+        ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV)
         ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
         ingest_client.close()
 ```
@@ -650,7 +647,6 @@ Replace the ingestion section with the following code:
                 BlobSourceInfo blobSourceInfo = new BlobSourceInfo(sasURI);
                 IngestionProperties ingestionProperties = new IngestionProperties(database, table);
                 ingestionProperties.setDataFormat(DataFormat.CSV);
-                ingestionProperties.setIgnoreFirstRecord(true);
                 ingestClient.ingestFromBlob(blobSourceInfo, ingestionProperties);
 
             } catch (Exception e) {
