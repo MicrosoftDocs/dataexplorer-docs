@@ -3,8 +3,7 @@ title:  Time chart visualization
 description:  This article describes the time chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2024
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+ms.date: 01/21/2025
 ---
 # Time chart
 
@@ -62,6 +61,10 @@ This visualization supports splitting into multiple y-axis values:
 
 ## Examples
 
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ### Render a timechart
 
 The following example renders a timechart with a title "Web app. traffic over a month, decomposing" that decomposes the data into baseline, seasonal, trend, and residual components.
@@ -89,7 +92,7 @@ demo_make_series2
 
 ### Label a timechart
 
-The following example renders a timechart that depicts crop damage grouped by week. The timechart x axis is labeled "Date" and the y axis is labeled "Crop damage."
+The following example renders a timechart that depicts crop damage grouped by week. The timechart x axis label is "Date" and the y axis label is "Crop damage."
 ::: moniker-end
 
 ::: moniker range="azure-data-explorer"

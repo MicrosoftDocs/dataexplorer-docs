@@ -35,16 +35,16 @@ If you have a table with columns a, b, and c, and you want to rename a to new_a 
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUi0VU9U11FIslVPAlLJturJ6rxcNQoFRflZqcklukWpeYm5qQp5qeXxSbZJOmBGom0iALIWMhk8AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXGMQqAMAwF0N1TZMtSj5CzyE8ItFLbEoouHl7RN70RpU2CMOrI4EQqrIGzvzVhy4hanJebRvTdba7hDYdT82uDIH1R0T8m9gD9E68JUgAAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-print a='a', b='b', c='c'
-|  project-rename new_b=b, new_a=a
+print a='alpha', b='bravo', c='charlie'
+| project-rename new_a=a, new_b=b, new_c=c
 ```
 
 **Output**
 
-| new_a | new_b | c |
+|new_a|new_b|new_c|
 |--|--|--|
-| a | b | c |
+|alpha|bravo|charlie|
