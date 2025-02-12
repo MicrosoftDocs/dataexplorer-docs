@@ -42,7 +42,7 @@ All properties are optional.
 
 This query counts the number of storm events for each type and state, sorts them in descending order, limits the results to the top 30, and then visualizes the data as a treemap.
 
-[!INCLUDE [help-cluster-note-ADX-only](../includes/help-cluster-note-ADX-only.md)]
+[!INCLUDE [help-cluster-note-data-explorer-only](../includes/help-cluster-note-data-explorer-only.md)]
 
 ```kusto
 StormEvents

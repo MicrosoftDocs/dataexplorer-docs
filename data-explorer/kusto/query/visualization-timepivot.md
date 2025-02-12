@@ -53,7 +53,7 @@ All properties are optional.
 
 This query outputs a visualization of flood events in the specified Midwestern states, displayed as a time pivot chart.
 
-[!INCLUDE [help-cluster-note-ADX-only](../includes/help-cluster-note-ADX-only.md)]
+[!INCLUDE [help-cluster-note-data-explorer-only](../includes/help-cluster-note-data-explorer-only.md)]
 
 ```kusto
 let midwesternStates = dynamic([
