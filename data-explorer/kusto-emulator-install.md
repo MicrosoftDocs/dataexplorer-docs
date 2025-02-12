@@ -50,14 +50,14 @@ The following steps are for using PowerShell to start the emulator using the [Ku
 1. Run the following command to start the emulator.
 
     > [!IMPORTANT]
-    > The Kusto emulator container image is a free offering under the [Microsoft Software License Terms](https://aka.ms/adx.emulator.license). Since the emulator runs in a container, you must accept the license terms by passing the `ACCEPT_EULA` environment variable to the container with its value set to `Y` indicating.
+    > The Kusto emulator container image is a free offering under the [Microsoft Software License Terms](https://aka.ms/adx.emulator.license). Since the emulator runs in a container, you must accept the license terms by passing the `ACCEPT_EULA` environment variable to the container with its value set to `Y`.
 
     > [!NOTE]
     >
     > - The first time this command is run, Docker pulls the container image which is several GBs in size and might take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
     > - **For Windows container only:** The container must run in process-isolation mode. This is the default on some versions of Docker. For other versions, you can start the container in Hyper-V isolation mode by adding `--isolation=hyperv` to the run command.
 
-    # [Linux container](#tab/linuxcontainer)
+    # [Linux container](#tab/linux-container)
 
     To start the Linux container, make sure you use the `latest` or `stable` tag:
 
@@ -128,7 +128,7 @@ You can use any of the following options when running the emulator:
 
 - Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a database persistent between container runs](#create-a-database) and [ingesting data](#ingest-data).
 
-    # [Linux container](#tab/linuxcontainer)
+    # [Linux container](#tab/linux-container)
 
     For example, to mount the folder "D:\host\local" on the host to the folder "/kustodatadata" in the container, use the following command on Windows Server:
 
@@ -187,7 +187,7 @@ In this example, we keep the data on the container.
 
 In the [Kusto.Explorer Query mode](/kusto/tools/kusto-explorer-using?view=azure-data-explorer&preserve-view=true#query-mode), run the following command to create a persistent database:
 
-# [Linux container](#tab/linuxcontainer)
+# [Linux container](#tab/linux-container)
 
 ```kusto
 .create database <YourDatabaseName> persist (
