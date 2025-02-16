@@ -51,7 +51,7 @@ The [.show capacity](show-capacity-command.md) command returns the cluster's ing
 |--|--|--|
 | `MinimumConcurrentOperationsPerNode` | `long` | The minimal number of concurrent extents merge/rebuild operations on a single node. Default is `1`. |
 | `MaximumConcurrentOperationsPerNode` |`long` | The maximum number of concurrent extents merge/rebuild operations on a single node. Default is `5`. |
-| `ClusterMaximumConcurrentOperations`  | `long` | The maximum number of concurrent extents merge/rebuild operations allowed in a cluster. This value caps the total merge capacity. For an example, see the following formula. |
+| `ClusterMaximumConcurrentOperations`  | `long` | The maximum number of concurrent extents merge/rebuild operations allowed in a cluster. This value caps the total merge capacity. |
 
 **Formula**
 
