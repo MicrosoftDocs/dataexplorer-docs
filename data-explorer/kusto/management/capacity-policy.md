@@ -3,7 +3,7 @@ title: Capacity policy
 description: Learn how to use the capacity policy to control the compute resources of data management operations on a cluster.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/06/2025
+ms.date: 02/11/2025
 monikerRange: "azure-data-explorer"
 ---
 # Capacity policy
@@ -51,17 +51,21 @@ The [.show capacity](show-capacity-command.md) command returns the cluster's ing
 |--|--|--|
 | `MinimumConcurrentOperationsPerNode` | `long` | The minimal number of concurrent extents merge/rebuild operations on a single node. Default is `1`. |
 | `MaximumConcurrentOperationsPerNode` |`long` | The maximum number of concurrent extents merge/rebuild operations on a single node. Default is `5`. |
+| `ClusterMaximumConcurrentOperations`  | `long` | The maximum number of concurrent extents merge/rebuild operations allowed in a cluster. This value caps the total merge capacity. |
 
 **Formula**
 
 The [.show capacity](show-capacity-command.md) command returns the cluster's extents merge capacity based on the following formula:
 
-*Number of nodes in cluster* `*` *Concurrent operations per node*
+`Minimum(`*Number of nodes in cluster* `*` *Concurrent operations per node*`,` `ClusterMaximumConcurrentOperations)`
 
 The effective value for *Concurrent operations per node* is automatically adjusted by the system in the range [`MinimumConcurrentOperationsPerNode`,`MaximumConcurrentOperationsPerNode`], as long as the success rate of the merge operations is 90% or higher.
 
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in merge operations, so *Number of nodes in cluster* is reduced by one.
+
+> [!WARNING]
+> Due to the complexity of the extents merge policy, we recommend that you [consult with support](https://ms.portal.azure.com/#create/Microsoft.Support) before making any changes.
 
 ### Extents purge rebuild capacity
 
@@ -114,7 +118,7 @@ The policy can be used to change concurrency settings for [materialized views](m
 | `ClusterMinimumConcurrentOperations` | `long` | The minimal number of concurrent materialization operations in a cluster. Default is `1`. |
 | `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent materialization operations in a cluster. Default is `10`. |
 
-By default, only a single materialization runs concurrently (see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work)). The system adjusts the current concurrency in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU. You can increase/decrease concurrency by altering this policy. For example, if the cluster has ten materialized views, setting the `ClusterMinimumConcurrentOperations` to five ensures that at least five of them can materialize concurrently.
+By default, only a single materialization runs concurrently (see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work)). The system adjusts the current concurrency in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU. You can increase/decrease concurrency by altering this policy. For example, if the cluster has 10 materialized views, setting the `ClusterMinimumConcurrentOperations` to five ensures that at least five of them can materialize concurrently.
 You can view the effective value for the current concurrency using the [.show capacity command](show-capacity-command.md)
 
 > [!WARNING]
@@ -226,7 +230,7 @@ The default capacity policy has the following JSON representation:
 ## Management commands
 
 > [!WARNING]
-> Consult with the support team before altering a capacity policy.
+> Given the complexity of the capacity policy, we recommend that you [consult with support](https://ms.portal.azure.com/#create/Microsoft.Support) before making any changes.
 
 * Use [`.show cluster policy capacity`](show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
 * Use [`.alter-merge cluster policy capacity`](alter-merge-capacity-policy-command.md) to alter the capacity policy of the cluster.
@@ -237,23 +241,23 @@ Kusto limits the number of concurrent requests for the following user-initiated 
 
 * **Ingestions**
   * This category includes commands that [ingest from storage](data-ingestion/ingest-into-command.md), [ingest from a query](data-ingestion/ingest-from-query.md), and [ingest inline](data-ingestion/ingest-inline.md).
-  * The limit is as defined by the [ingestion capacity](#ingestion-capacity).
+  * The [ingestion capacity](#ingestion-capacity) defines the limit.
 * **Purges**
   * The global limit is currently fixed at one per cluster.
-  * The [purge rebuild capacity](#extents-purge-rebuild-capacity) is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands won't be blocked or throttled because of this process, but will complete faster or slower depending on the purge rebuild capacity.
+  * The [purge rebuild capacity](#extents-purge-rebuild-capacity) is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands aren't blocked or throttled because of this process, but completes faster or slower depending on the purge rebuild capacity.
 * **Exports**
   * The limit is as defined in the [export capacity](#export-capacity).
 
-When the cluster detects that an operation has exceeded the limit on concurrent requests:
+When the cluster detects that an operation exceeded the limit on concurrent requests:
 
 * The command's state, as presented by [System information commands](system-info.md), is `Throttled`.
-* The error message includes the *command type*, the *origin* of the throttling and the *capacity* that's been exceeded. For example:
+* The error message includes the *command type*, the *origin* of the throttling and the *capacity* that exceeded. For example:
   * For example: `The management command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableSetOrAppend', Capacity: 18, Origin: 'CapacityPolicy/Ingestion'`.
 * The HTTP response code is `429`. The subcode is `TooManyRequests`.
 * The exception type is `ControlCommandThrottledException`.
 
 > [!NOTE]
-> Management commands may also be throttled as a result of exceeding the limit defined by a workload group's [Request rate limit policy](request-rate-limit-policy.md).
+> Management commands can also be throttled if they exceed the limits set by a workload group's [Request rate limit policy](request-rate-limit-policy.md).
 
 ## Related content
 
