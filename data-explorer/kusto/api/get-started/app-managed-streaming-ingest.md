@@ -82,7 +82,7 @@ Enable streaming ingestion on the table or on the entire database using one of t
 ```kql
 .alter table <your table name> policy streamingingestion enable
 
-.alter database <your database Name> policy streamingingestion enable
+.alter database <databaseName> policy streamingingestion enable
 ```
 
 For more information about streaming policy, see [Streaming ingestion policy - Azure Data Explorer & Real-Time Analytics](../../../kusto//management/streaming-ingestion-policy.md)
@@ -96,6 +96,13 @@ Enter the cluster query and ingest URI and database name in the relevant variabl
 
 The code sample includes a service function `PrintResultAsValueList()` for printing query results.
 
+Add the Kusto libraries using the following commands:
+
+```powershell
+dotnet add package Microsoft.Azure.Kusto.Data
+dotnet add package Microsoft.Azure.Kusto.ingest
+```
+
 ```C#
 using System;
 using Kusto.Data;
@@ -104,18 +111,19 @@ using Kusto.Ingest;
 using Kusto.Data.Common;
 using Microsoft.Identity.Client;
 using System.Data;
+using System.Text;
 
 class Program
 {
     static void Main(string[] args)
     {
         var tableName = "MyStormEvents";
-        var clusterUrl = "<your Kusto cluster query URI>";
-        var ingestionUrl = "<your Kusto cluster query ingest URI>";
-        var databaseName = "<your database name> ";
+        var clusterUrl = "<KustoClusterQueryURI>";
+        var ingestionUrl = "<KustoClusterQueryIngestURI>";
+        var databaseName = "<databaseName>";
 
         var clusterKcsb = new KustoConnectionStringBuilder(clusterUrl).WithAadUserPromptAuthentication();
-        var ingestionKcsb = new KustoConnectionStringBuilder(ingestionUrl).WithAadUserPromptAuthentication();;
+        var ingestionKcsb = new KustoConnectionStringBuilder(ingestionUrl).WithAadUserPromptAuthentication();
 
         using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
         using (var ingestClient = KustoIngestFactory.CreateManagedStreamingIngestClient(clusterKcsb, ingestionKcsb))
@@ -184,8 +192,8 @@ The code sample includes a service function `print_result_as_value_list()` for p
 
 ```python
 import os
-import time
 import io
+
 
 from azure.kusto.data import KustoClient, KustoConnectionStringBuilder, ClientRequestProperties, DataFormat
 from azure.kusto.ingest import QueuedIngestClient, FileDescriptor, StreamDescriptor, BlobDescriptor, IngestionProperties, ManagedStreamingIngestClient
@@ -209,9 +217,9 @@ def print_result_as_value_list(result):
 def main():
     # Connect to the public access Help cluster
     file_path = os.curdir + "/stormevents.csv"
-    cluster_url = "<your Kusto cluster query URI>"
-    ingestion_url = "<your Kusto cluster query ingest URI>"
-    database_name = "<your database name> "
+    cluster_url = "<KustoClusterQueryURI>"
+    ingestion_url = "<KustoClusterQueryIngestURI>"
+    database_name = "<databaseName>"
     table_name = "MyStormEvents"
     cluster_kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_url)
     ingestion_kcsb = KustoConnectionStringBuilder.with_interactive_login(ingestion_url)
@@ -261,14 +269,13 @@ Run the script from the directory where the script and stormevents.csv are locat
 The code sample includes a service function `printResultAsValueList()` for printing query results.
 
 ```typescript
-
 import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
 import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 import { ManagedStreamingIngestClient, BlobDescriptor, IngestionProperties, DataFormat } from 'azure-kusto-ingest';
 
-const clusterUrl = "<your Kusto cluster query URI>";
-const ingestionUrl ="<your Kusto cluster query ingest URI>";
-const databaseName = "<your database name> ";
+const clusterUrl = "<KustoClusterQueryURI>";
+const ingestionUrl ="<KustoClusterQueryIngestURI>";
+const databaseName = "<databaseName>";
 
 const tableName = "MyStormEvents"
 
@@ -320,7 +327,6 @@ Place the *stormevents.csv* file in the same location as your script. Since our 
 Add and ingestion section using the following lines to the end of `main()`.
 
 ```typescript
-
     const ingestProperties = new IngestionProperties({
         database: databaseName,
         table: tableName,
@@ -373,10 +379,9 @@ import com.microsoft.azure.kusto.ingest.source.FileSourceInfo;
 public class BatchIngestion {
     public static void main(String[] args) throws Exception {
 
-        String clusterUri = "<your Kusto cluster query URI>";
-        String ingestionUri = "<your Kusto cluster query ingest URI>";
-
-        String database = "<your database name>";
+        String clusterUri = "<KustoClusterQueryURI>";
+        String ingestionUri = "<KustoClusterQueryIngestURI>";
+        String databaseName = "<databaseName>";
         String table = "MyStormEvents";
 
         ConnectionStringBuilder clusterKcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
@@ -386,7 +391,7 @@ public class BatchIngestion {
                 Client kustoClient = ClientFactory.createClient(clusterKcsb)) {
 
             String query = table + " | count";
-            KustoOperationResult results = kustoClient.execute(database, query);
+            KustoOperationResult results = kustoClient.execute(databaseName, query);
             KustoResultSetTable primaryResults = results.getPrimaryResults();
             System.out.println("\nNumber of rows in " + table + " BEFORE ingestion:");
             printResultsAsValueList(primaryResults);
@@ -419,7 +424,7 @@ Add and ingestion section using the following lines to the end of `main()`.
                             .createManagedStreamingIngestClient(clusterKcsb, ingestionKcsb)) {
                 System.out.println("Ingesting data from a file");
                 String filePath = "stormevents.csv";
-                IngestionProperties ingestionProperties = new IngestionProperties(database, table);
+                IngestionProperties ingestionProperties = new IngestionProperties(databaseName, table);
                 ingestionProperties.setDataFormat(DataFormat.CSV);
                 FileSourceInfo fileSourceInfo = new FileSourceInfo(filePath, 0);
                 ingestClient.ingestFromFile(fileSourceInfo, ingestionProperties);
@@ -436,13 +441,13 @@ Add the following lines after the ingestion command:
 
 ```java
             query = table + " | count";
-            results = kustoClient.execute(database, query);
+            results = kustoClient.execute(databaseName, query);
             primaryResults = results.getPrimaryResults();
             System.out.println("\nNumber of rows in " + table + " AFTER ingestion:");
             printResultsAsValueList(primaryResults);
 
             query = table + " | top 1 by EndTime";
-            results = kustoClient.execute(database, query);
+            results = kustoClient.execute(databaseName, query);
             primaryResults = results.getPrimaryResults();
             System.out.println("\nExample line from " + table);
             printResultsAsValueList(primaryResults);
@@ -459,7 +464,7 @@ row 1 :
 Ingesting data from a file
 New number of rows in MyStormEvents
 row 1 :
-         Count - 1001
+         Count - 1000
 Example line from MyStormEvents
 row 1 :
          StartTime - 2007-12-31 11:15:00+00:00
@@ -541,7 +546,7 @@ Replace the ingestion section with the following code:
                     ManagedStreamingIngestClient ingestClient = (ManagedStreamingIngestClient) IngestClientFactory
                             .createManagedStreamingIngestClient(clusterKcsb, ingestionKcsb)) {
                 System.out.println("Ingesting data from a byte array");
-                IngestionProperties ingestionProperties = new IngestionProperties(database, table);
+                IngestionProperties ingestionProperties = new IngestionProperties(databaseName, table);
                 ingestionProperties.setDataFormat(DataFormat.CSV);
                 StreamSourceInfo streamSourceInfo = new StreamSourceInfo(inputStream);
                 ingestClient.ingestFromStream(streamSourceInfo, ingestionProperties);
@@ -559,13 +564,13 @@ The results are as follows:
 ```plaintext
 Number of rows in MyStormEvents
 row 1 :
-	 Count - 1001
+	 Count - 1000
 
 Ingesting data from memory
 
 New number of rows in MyStormEvents
 row 1 :
-	 Count - 1002
+	 Count - 1001
 
 Example line from MyStormEvents
 row 1 :
