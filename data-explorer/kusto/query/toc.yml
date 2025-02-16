@@ -1280,6 +1280,14 @@ items:
         href: graph-shortest-paths-operator.md
       - name: graph-mark-components
         href: graph-mark-components-operator.md
+      - name: Graph functions
+        items:
+          - name: all()
+            href: all-graph-function.md
+          - name: map()
+            href: map-graph-function.md
+          - name: inner_nodes()
+            href: inner_nodes-graph-function.md
   - name: Geospatial
     items:
       - name: Geospatial clustering overview

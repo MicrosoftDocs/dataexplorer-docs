@@ -82,7 +82,7 @@ The following example uses the connected component `family` identifier and the `
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQy07DQAxF9%2FkKK6sEJZFYsAG1EpSXhBAfUFWVO%2BMmQ%2BYROQMliI9nkiYlqJqFx9fHvpY1eVhVSsu3PSxAog9vpykRvXbdela2zKBBJuvHNIVoDRFAfKuVoDiD%2BM7tQhi0FbLTvTYV%2F6v3%2BHkSn5jKM3IS5%2BCzOyDLM%2FRPnsMPwzd%2BZLT1pE1J%2FIpaO%2B7ibEa%2BKA61aHMD0XSI6AcM1pSXjE0Fwykgz5fjGeCgfLW1TtJWyYVFQ4Ef0Nwg17lwpnE2gO2RPOUBDzfeo1G6m7V4UUEiqRVkJVqf5mtx3OPisiiuNvkyQSuo9Y7TsHbD7p2Eh943TJtKRZ9noJUlLPvCOKMYYja6zhtOe7QfJuytvgmSkiwxeuVsmw0Oad%2FBpcGvBJmx22qypa%2BS0SfNjtCuGw1%2BAcTWyMtPAgAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQ207DMAyG7%2FsUVq9alE7ighvQJsE4SQjxANNUeanXhuVQuYFRxMOTnkbRlIvEvz%2F7d6zJw7pSunjbwxIK9OHsNCWy064bz8qWAmpksn4MU4g2EAHEt1pJigXEd24Xrl5bIzvdaVPyv3qPnyfxiak8IydxDj67I3Jxhv7Jc%2Fihf8aPjPYwaVMQv6LWjttYzMgXxSEXbW8gmhYR%2FYDBA2UlY11BvwrIstW4BjgqX%2BXWFZSrYmnRUOB7NDPIh0w6UzsbwGYgT3HAw473aJRuZyVeVpAU1EiyBVqfZhs5zHFxuVhcbbNVglZS4x2nYeya3TtJD51v6DalFl0sQCtLWHYJg3Uy9hHDF1Ixes%2FLTtM0HyZMr74JkpIsMXrlbCN6n7Sr4DI3%2BJUgM7a5Jlv6KhntUjFQu3Z0%2BAVmt0c2VgIAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -103,8 +103,8 @@ ChildOf
 | make-graph child --> parent with_node_id=name
 | graph-mark-components with_component_id = family
 | graph-match (descendant)-[childOf*1..5]->(ancestor)
-  project name = ancestor.name, lineage = childOf.child, family = ancestor.family
-| summarize (generations, name) = argmax(array_length(lineage),name) by family
+  project name = ancestor.name, lineage = map(childOf, child), family = ancestor.family
+| summarize (generations, name) = arg_max(array_length(lineage),name) by family
 ```
 
 **Output**
