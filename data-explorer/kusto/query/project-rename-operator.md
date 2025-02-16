@@ -3,7 +3,7 @@ title:  project-rename operator
 description: Learn how to use the project-rename operator to rename columns in the output table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/20/2025
 ---
 # project-rename operator
 
@@ -29,20 +29,22 @@ Renames columns in the output table.
 
 A table that has the columns in the same order as in an existing table, with columns renamed.
 
-## Examples
+## Example
+
+If you have a table with columns a, b, and c, and you want to rename a to new_a and b to new_b while keeping the same order, the query would look like this:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUi0VU9U11FIslVPAlLJturJ6rxcNQoFRflZqcklukWpeYm5qQp5qeXxSbZJOmBGom0iALIWMhk8AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXGMQqAMAwF0N1TZMtSj5CzyE8ItFLbEoouHl7RN70RpU2CMOrI4EQqrIGzvzVhy4hanJebRvTdba7hDYdT82uDIH1R0T8m9gD9E68JUgAAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-print a='a', b='b', c='c'
-|  project-rename new_b=b, new_a=a
+print a='alpha', b='bravo', c='charlie'
+| project-rename new_a=a, new_b=b, new_c=c
 ```
 
 **Output**
 
-|new_a|new_b|c|
-|---|---|---|
-|a|b|c|
+|new_a|new_b|new_c|
+|--|--|--|
+|alpha|bravo|charlie|

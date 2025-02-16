@@ -3,7 +3,7 @@ title:  Anomaly chart visualization
 description:  This article describes the anomaly chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Anomaly chart
@@ -60,6 +60,10 @@ This visualization supports splitting into multiple y-axis values. The supported
 |`panels`  |One chart is rendered for each `ycolumn` value. Maximum five panels.|
 
 ## Example
+
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
