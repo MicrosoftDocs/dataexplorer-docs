@@ -2,16 +2,17 @@
 title:  node_degree_out
 description:  This article describes the node_degree_out() command.
 ms.topic: reference
-ms.date: 02/09/2025
+ms.date: 02/16/2025
 ---
 
 # node_degree_out()
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The `node_degree_out` function calculates the *out-degree*, or number of outgoing edges, from  a node in a directed graph. This is useful in graph analytics to understand how connected and significant a node is within a network.
+The `node_degree_out` function calculates the *out-degree*, or number of outgoing edges, from  a node in a directed graph.
 
-This function is specifically used with the `graph-match` or `graph-shortest-paths` operators.
+> [!NOTE]
+> This function is used with the [`graph-match`](graph-match-operator.md) or [`graph-shortest-paths`](graph-shortest-paths-operator.md) operators.
 
 ## Syntax
 
@@ -23,7 +24,7 @@ This function is specifically used with the `graph-match` or `graph-shortest-pat
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-|*node*|`string`| :heavy_check_mark: |The reference to a graph node.|
+|*node*|`string`| :heavy_check_mark: |The reference to a graph node variable in a graph pattern.|
 
 ## Returns
 

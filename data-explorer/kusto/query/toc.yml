@@ -1284,15 +1284,6 @@ items:
             href: graph-mark-components-operator.md
       - name: Graph functions 
         items:
-          - name: graph_blast_radius_fl()
-            displayName: graph function, blast radius, cyber, security, cybersecurity
-            href: graph-blast-radius-fl.md
-          - name: graph_exposure_perimeter_fl()
-            displayName: graph function, exposure, perimeter, cyber, security, cybersecurity
-            href: graph-exposure-perimeter-fl.md
-          - name: graph_path_discovery_fl()
-            displayName: graph, path, discovery, cyber, security, cybersecurity,
-            href: graph-path-discovery-fl.md
           - name: node_degree_in()
             displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in 
             href: node_degree_in.md
