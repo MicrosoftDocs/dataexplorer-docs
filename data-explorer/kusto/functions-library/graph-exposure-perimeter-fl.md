@@ -3,7 +3,7 @@ title:  graph_exposure_perimeter_fl()
 description: Learn how to use the graph_exposure_perimeter_fl() function to calculate the Exposure Perimeter of target nodes over path or edge data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 02/10/2025
+ms.date: 02/16/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_exposure_perimeter_fl()
@@ -12,7 +12,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 Calculate the Exposure Perimeter (list and score) of target nodes over path or edge data.
 
-The function `graph_exposure_perimeter_fl()` is a [UDF (user-defined function)](functions/user-defined-functions.md) that allows you to calculate the Exposure Perimeter of each of the target nodes based on paths or edges data. Each row of input data contains a source node and a target node, which can represent direct connections (edges) between nodes and targets, or longer multi-hop paths between them. If the paths aren't available, we can first discover them using [graph-match()](graph-match-operator.md) operator or [graph_path_discovery_fl()](graph-path-discovery-fl.md) function. Then `graph_exposure_perimeter_fl()` can be executed on top of the output of path discovery.
+The function `graph_exposure_perimeter_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows you to calculate the Exposure Perimeter of each of the target nodes based on paths or edges data. Each row of input data contains a source node and a target node, which can represent direct connections (edges) between nodes and targets, or longer multi-hop paths between them. If the paths aren't available, we can first discover them using the [graph-match](../query/graph-match-operator.md) operator or [graph_path_discovery_fl()](graph-path-discovery-fl.md) function. Then `graph_exposure_perimeter_fl()` can be executed on top of the output of path discovery.
 
 Exposure Perimeter represents the accessibility of a specific target from relevant source nodes. The more sources can access the target, the more exposed it's to potential compromise by the attacker - hence the name. Nodes with high Exposure Perimeter are important in cybersecurity domain due to the likelihood they might be reached illegitimately and to being highly valued by attackers. Thus, nodes with high Exposure Perimeter should be protected accordingly - in terms of hardening and monitoring their perimeter.
 
@@ -237,14 +237,14 @@ In the example above we run the `graph_exposure_perimeter_fl()` function on top 
 
 In case the multi-hop paths aren't available, we can build multi-hop paths between sources and targets (for example, by running 'graph_path_discovery_fl()') and run 'graph_exposure_perimeter_fl()' on top of the results.
 
-The output looks similar, but will reflect the Exposure Perimeter calculated over multi-hop paths, thus being a better indicator of target nodes true accessibility from  relevant sources. In order to find the full paths between source and target scenarios (for example, for disruption), [graph_path_discovery_fl()](graph-path-discovery-fl.md) function can be used with filters on relevant source and target nodes.
+The output looks similar, but reflects the Exposure Perimeter calculated over multi-hop paths, thus being a better indicator of target nodes true accessibility from  relevant sources. In order to find the full paths between source and target scenarios (for example, for disruption), [graph_path_discovery_fl()](graph-path-discovery-fl.md) function can be used with filters on relevant source and target nodes.
 
 The function `graph_exposure_perimeter_fl()` can be used to calculate the Exposure Perimeter of target nodes, either over direct edges or longer paths. In cybersecurity domain, it can be used for several insights. Exposure Perimeter scores (regular and weighted), represent target node's importance both from defenders and attackers perspectives. Nodes with high Exposure Perimeter, especially critical ones, should be protected accordingly. For example, in terms of access monitoring and hardening. Security signals, such as alerts, should be prioritized on sources that can access these nodes. The Exposure Perimeter list should be monitored for undesired connections between sources and targets and used in disruption scenarios. For example, if there was active compromise of one of the sources, connections between it and important target should be broken.
 
 ## Related content
 
-- [Kusto Query Language (KQL) graph semantics overview](../../graph-overview.md)
-- [Graph operators](graph-operators.md)
-- [Scenarios](graph-scenarios.md)
-- [Best practices](graph-best-practices.md)
-- [graph_path_discovery_fl()](graph-path-discovery-fl.md)
+* [Kusto Query Language (KQL) graph semantics overview](../../graph-overview.md)
+* [Graph operators](../../graph-operators.md)
+* [Scenarios](../../graph-scenarios.md)
+* [Best practices](../../graph-best-practices.md)
+* [graph_path_discovery_fl()](graph-path-discovery-fl.md)

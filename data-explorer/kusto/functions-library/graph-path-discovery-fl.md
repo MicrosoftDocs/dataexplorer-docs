@@ -3,7 +3,7 @@ title:  graph_path_discovery_fl()
 description: Learn how to use the graph_path_discovery_fl() function to detect paths over graph data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 02/09/2025
+ms.date: 02/16/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_path_discovery_fl()
@@ -12,7 +12,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 Discover valid paths between relevant endpoints (sources and targets) over graph data (edge and nodes).
 
-The function `graph_path_discovery_fl()` is a [UDF (user-defined function)](functions/user-defined-functions.md) that allows you to discover valid paths between relevant endpoints over graph data. Graph data consists of nodes (for example - resources, applications or users) and edges (for example - existing access permissions). In cybersecurity context, such paths might represent possible lateral movement paths that a potential attacker can utilize. We're interested in paths connecting endpoints defined as relevant by some criteria - for example, exposed sources connected to critical targets. Based on the function's configuration, other types of paths, suitable for other security scenarios, can be discovered.
+The function `graph_path_discovery_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows you to discover valid paths between relevant endpoints over graph data. Graph data consists of nodes (for example - resources, applications or users) and edges (for example - existing access permissions). In cybersecurity context, such paths might represent possible lateral movement paths that a potential attacker can utilize. We're interested in paths connecting endpoints defined as relevant by some criteria - for example, exposed sources connected to critical targets. Based on the function's configuration, other types of paths, suitable for other security scenarios, can be discovered.
 
 The input data for this function should include a table of edges in the format 'SourceId, EdgeId, TargetId' and a list of nodes with optional nodes' properties that can be used to define valid paths. Alternatively, graph input can be extracted from other types of data. For example, traffic logs with entries of type 'User A logged in to resource B' can be modeled as edges of type '(User A)-[logged in to]->(resource B)'. The list of distinct users and resources can be modeled as nodes.
 
@@ -392,7 +392,7 @@ The function `graph_path_discovery_fl()` can be used in cybersecurity domain to 
 
 ## Related content
 
-- [Kusto Query Language (KQL) graph semantics overview](../../graph-overview.md)
-- [Graph operators](graph-operators.md)
-- [Scenarios](graph-scenarios.md)
-- [Best practices](graph-best-practices.md)
+* [Kusto Query Language (KQL) graph semantics overview](../../graph-overview.md)
+* [Graph operators](../../graph-operators.md)
+* [Scenarios](../../graph-scenarios.md)
+* [Best practices](../../graph-best-practices.md)
