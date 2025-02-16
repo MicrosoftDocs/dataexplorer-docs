@@ -1,16 +1,16 @@
 ---
-title: Create an app to ingest data by streaming ingestion using Kusto’s managed streaming ingestion client
-description: Learn how to create an app to ingest data from a file, stream, or blob streaming using the ingestion managed streaming ingestion client.
+title: Create an app to get data using the managed streaming ingestion client
+description: Learn how to create an app to ingest data from a file or in-memory stream using the managed streaming ingestion client.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 02/03/2025
 monikerRange: "azure-data-explorer"
 
-# customer intent: To learn about creating an app ingest using Kusto’s managed streaming ingestion client.
+# customer intent: To learn about creating an app to ingest data using Kusto’s managed streaming ingestion client.
 
 ---
 
-# Create an app for streaming ingestion using Kusto’s managed streaming ingestion client
+# Create an app to get data using the managed streaming ingestion client
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -26,7 +26,7 @@ In this article, you’ll learn how to ingest data to Kusto using the managed st
 
 Kusto SDKs provide two flavors of Streaming Ingestion Clients, `StreamingIngestionClient` and `ManagedStreamingIngestionClient` where Managed Streaming has built-in retry and failover logic.
 
-When ingesting with `ManagedStreamingIngestionClient`, failures and retries are handled automatically as follows:
+When ingesting with the `ManagedStreamingIngestionClient` API, failures and retries are handled automatically as follows:
 
 + Streaming requests that fail due to server-side size limitations are failed-over to queued ingestion.
 + Data that's larger than 4 MB is automatically sent to queued ingestion, regardless of format or compression.
@@ -34,7 +34,7 @@ When ingesting with `ManagedStreamingIngestionClient`, failures and retries are 
 + Permanent failures aren't retried.
 
 > [!NOTE]
-> If the streaming ingestion fails and the data is sent to queued ingestion, some latency is introduced until the data is visible in the table.
+> If the streaming ingestion fails and the data is sent to queued ingestion, some delay is be experienced before the data is visible in the table.
 
 ## Limitations
 
@@ -110,12 +110,12 @@ class Program
     static void Main(string[] args)
     {
         var tableName = "MyStormEvents";
-        var cluster_url = "<your Kusto cluster query URI>";
-        var ingestion_url = "<your Kusto cluster query ingest URI>";
-        var database_name = "<your database name> ";
+        var clusterUrl = "<your Kusto cluster query URI>";
+        var ingestionUrl = "<your Kusto cluster query ingest URI>";
+        var databaseName = "<your database name> ";
 
-        var clusterKcsb = new KustoConnectionStringBuilder(cluster_url).WithAadUserPromptAuthentication();
-        var ingestionKcsb = new KustoConnectionStringBuilder(ingestion_url).WithAadUserPromptAuthentication();;
+        var clusterKcsb = new KustoConnectionStringBuilder(clusterUrl).WithAadUserPromptAuthentication();
+        var ingestionKcsb = new KustoConnectionStringBuilder(ingestionUrl).WithAadUserPromptAuthentication();;
 
         using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
         using (var ingestClient = KustoIngestFactory.CreateManagedStreamingIngestClient(clusterKcsb, ingestionKcsb))
@@ -155,14 +155,14 @@ Copy *stormevents.csv* file to the same location as your script. Since our input
 Add and ingestion section using the following lines to the end of `Main()`.
 
 ```csharp
-            var ingestProps = new KustoIngestionProperties(databaseName, tableName) 
+            var ingestProperties = new KustoIngestionProperties(databaseName, tableName) 
                 {
                     Format = DataSourceFormat.csv
                 };
 
             //Ingestion section
             Console.WriteLine("Ingesting data from a file");
-            ingestClient.IngestFromStorageAsync(".\\stormevents.csv", ingestProps).Wait();
+            ingestClient.IngestFromStorageAsync(".\\stormevents.csv", ingestProperties).Wait();
 ```
 
 Let’s also query the new number of rows and the most recent row after the ingestion.
@@ -218,7 +218,6 @@ def main():
 
     with KustoClient(cluster_kcsb) as kusto_client:
         with ManagedStreamingIngestClient(cluster_kcsb, ingestion_kcsb) as ingest_client:
-        # with KustoStreamingIngestClient(cluster_kcsb) as ingest_client:
 
             print("Number of rows in " + table_name)
             result = kusto_client.execute_query(database_name, table_name + " | count")
@@ -229,7 +228,6 @@ main()
 
 ## Stream a file for ingestion
 
-
 Use the `ingest_from_file()` API to ingest the *stormevents.csv* file.
 Place the *stormevents.csv* file in the same location as your script. Since our input is a CSV file, use `DataFormat.CSV` in the ingestion properties.
 
@@ -238,8 +236,8 @@ Add and ingestion section using the following lines to the end of `main()`.
 ```python
             # Ingestion section
             print("Ingesting data from a file")
-            ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV)
-            ingest_client.ingest_from_file(file_path, ingest_props)
+            ingest_properties = IngestionProperties(database_name, table_name, DataFormat.CSV)
+            ingest_client.ingest_from_file(file_path, ingest_properties)
             ingest_client.close()
 ```
 
@@ -494,7 +492,7 @@ Replace the ingestion section with the following code:
                 {
                     LeaveOpen = false
                 };
-                ingestClient.IngestFromStreamAsync(stream, ingestProps, streamSourceOptions).Wait();
+                ingestClient.IngestFromStreamAsync(stream, ingestProperties, streamSourceOptions).Wait();
                }
 ```
 
@@ -509,10 +507,10 @@ Replace the ingestion section with the following code:
         print("Ingesting data from memory")
         single_line = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
         string_stream = io.StringIO(single_line)
-        ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV)
+        ingest_properties = IngestionProperties(database_name, table_name, DataFormat.CSV)
         # when possible provide the size of the raw data
         stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
-        ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
+        ingest_client.ingest_from_stream(stream_descriptor, ingest_properties)
         ingest_client.close()
 ```
 
@@ -525,8 +523,8 @@ Replace the ingestion section with the following code:
 ```typescript
     //Ingest section
     console.log('Ingesting data from memory');
-    const single_line = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
-    await ingestClient.ingestFromStream(Buffer.from(single_line), ingestProperties)
+    const singleLine = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
+    await ingestClient.ingestFromStream(Buffer.from(singleLine), ingestProperties)
     ingestClient.close();
 ```
 
@@ -582,105 +580,6 @@ row 1 :
 
 ---
 
-### Stream a blob for ingestion
-
-Kusto supports ingestion from Azure Storage blobs, Azure Data Lake files, and Amazon S3 files.
-
-When you send a blob for streaming, the client only sends the blob reference to the database. The data is read by the database service itself. Read Access to the blob can be granted with keys, SAS tokens, or managed identities attached to the Kusto Cluster.
-  
-To ingest from a blob, upload the sample csv file to your storage account and generate a SAS URI with built-in read permissions. Use the URI in the code sample. For information on uploading a file to blob storage, see [Upload, download, and list blobs with the Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal). For information on generation an SAS URL, see [Generate a SAS token](/kusto/api/connection-strings/generate-sas-token?view=azure-data-explorer&preserve-view=true).
-
-### [C#](#tab/c-sharp)
-
-To ingest the blob, call the `IngestFromStorageAsync()` method.
-  
-Replace the ingestion section with the following code:
-
-```csharp
-        // Ingestion section
-        Console.WriteLine("Ingesting data from an existing blob");
-        var sasURI ="<your SAS URI>";
-        ingestClient.IngestFromStorageAsync(sasURI, ingestProps).Wait();
-```
-
-### [Python](#tab/python)
-
-To ingest the blob, call the `ingest_from_blob()` API.
-  
-Replace the ingestion section with the following code:
-
-```python
-        # Ingestion section
-        print("Ingesting data from an existing blob")
-        blob_descriptor = BlobDescriptor("<blob path with SAS or key>")
-        ingest_props = IngestionProperties(database_name, table_name, DataFormat.CSV)
-        ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
-        ingest_client.close()
-```
-
-### [TypeScript](#tab/typescript)
-
-To ingest the blob, call the `ingestFromBlob()` API.
-  
-Replace the ingestion section with the following code:
-
-```typescript
-    // Ingestion section
-    console.log('Ingesting data from an existing blob');
-    const sasURI = "<your SAS URI>";
-    await ingestClient.ingestFromBlob(sasURI, ingestProperties);
-    ingestClient.close();
-```
-
-### [Java](#tab/java)    
-
-To ingest the blob, call the `ingestFromBlob()` API.
-  
-Replace the ingestion section with the following code:
-
-```java
-            // Ingestion section
-            try (ManagedStreamingIngestClient ingestClient = (ManagedStreamingIngestClient) IngestClientFactory
-                    .createManagedStreamingIngestClient(clusterKcsb, ingestionKcsb)) {
-                System.out.println("Ingesting data from a blob");
-                String sasURI = "<your SAS URI>";
-                BlobSourceInfo blobSourceInfo = new BlobSourceInfo(sasURI);
-                IngestionProperties ingestionProperties = new IngestionProperties(database, table);
-                ingestionProperties.setDataFormat(DataFormat.CSV);
-                ingestClient.ingestFromBlob(blobSourceInfo, ingestionProperties);
-
-            } catch (Exception e) {
-                // TODO: handle exception
-                System.out.println("Error: " + e);
-            }
-```
-
----
-
-The results are as follows:
-
-```plaintext
-Number of rows in MyStormEvents
-row 1 :
-     Count - 1002
-
-Ingesting data from an existing blob
-
-New number of rows in MyStormEvents
-row 1 :
-	 Count - 2002
-
-Example line from MyStormEvents
-row 1 :
-	 StartTime - 2018-01-26 00:00:00+00:00
-	 EndTime - 2018-01-27 14:00:00+00:00
-	 State - MEXICO
-	 DamageProperty - 0
-	 DamageCrops - 0
-	 Source - Unknown
-	 StormSummary - {}
-
-```
 
 > [!NOTE]
 > You can also use a managed identity based authorization as an alternative to SAS or account keys in Azure Storage and Azure Data Lake. For more information, see [Ingest data using managed identity authentication](/azure/data-explorer/ingest-data-managed-identity)

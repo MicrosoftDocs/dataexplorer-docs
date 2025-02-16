@@ -96,7 +96,7 @@ items:
             href: api/get-started/app-management-commands.md
           - name: Queue data for ingestion
             href: api/get-started/app-queued-ingestion.md
-          - name: Ingest data using the managed streaming ingestion client 
+          - name: Managed streaming ingestion 
             href: api/get-started/app-managed-streaming-ingest.md
       - name: Connection strings
         items:
