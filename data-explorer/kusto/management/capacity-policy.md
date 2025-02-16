@@ -65,7 +65,7 @@ The effective value for *Concurrent operations per node* is automatically adjust
 > In clusters with four or more nodes, the admin node doesn't participate in merge operations, so *Number of nodes in cluster* is reduced by one.
 
 > [!WARNING]
-> Given the complexity of the extents merge policy, we recommend that you [consult with support](https://ms.portal.azure.com/#create/Microsoft.Support) before making any changes.
+> Due to the complexity of the extents merge policy, we recommend that you [consult with support](https://ms.portal.azure.com/#create/Microsoft.Support) before making any changes.
 
 ### Extents purge rebuild capacity
 
