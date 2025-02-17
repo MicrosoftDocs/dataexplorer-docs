@@ -3,7 +3,7 @@ title: .cancel queued ingestion operation command
 description: Learn how to use the `.cancel queued operation` command to cancel a long-running operation.
 ms.reviewer: odkadosh
 ms.topic: reference
-ms.date: 02/09/2025
+ms.date: 02/17/2025
 ---
 # .cancel queued ingestion operation command
 
@@ -19,7 +19,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Syntax
 
-`.cancel queued ingestion operation` *OperationId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
+`.cancel queued ingestion operation` *IngestionOperationId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -27,14 +27,14 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *OperationId* | `string` |  :heavy_check_mark: | The unique ingestion operation ID returned from the running command.|
+| *IngestionOperationId* | `string` |  :heavy_check_mark: | The unique ingestion operation ID returned from the running command.|
 | *ReasonPhrase* | `string` | | The reason for canceling the running command.|
 
 ## Returns
 
 |Output parameter |Type |Description|
 |---|---|---|
-|OperationId | `string` | The operation ID of the canceled operation.|
+|IngestionOperationId | `string` | The operation ID of the canceled operation.|
 |StartedOn | `datetime` | The start time of the canceled operation. |
 |ReasonPhrase | `string` | Reason the cancellation wasn't successful. |
 
@@ -46,7 +46,7 @@ The following example cancels the ingestion of operation `00001111;11112222;0000
 .cancel queued ingestion operation '00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444' with(Reason="Command canceled by me")
 ```
 
-|OperationId|ReasonPhrase|
+|IngestionOperationId|ReasonPhrase|
 |---|---|
 |00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444|Command canceled by me|
 

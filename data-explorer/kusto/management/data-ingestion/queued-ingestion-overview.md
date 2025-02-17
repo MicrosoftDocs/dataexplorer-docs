@@ -3,7 +3,7 @@ title: Queued ingestion overview
 description: Learn about queued ingestion and its commands.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/09/2025
+ms.date: 02/17/2025
 ---
 # Queued ingestion overview
 
@@ -31,29 +31,29 @@ To understand the historical data better, the data engineer lists a maximum of 1
 
 ```kusto
 .list blobs (
-    "https://vpldata.blob.core.windows.net/logsparquet1tb;managed_identity=system"
+    "https://testdata.blob.core.windows.net/logsparquet1tb;managed_identity=system"
 )
 MaxFiles=10
  ```
 
 ### Ingest folder
 
-Next they queue 10 parquet files for ingestion into the `Logs` table in the `dm-ingest-test` database with tracking enabled for the ingestion.
+Next they queue 10 parquet files for ingestion into the `Logs` table in the `TestDatabase` database with tracking enabled for the ingestion.
 
 ```kusto
-.ingest-from-storage-queued into table database('dm-ingest-test').Logs
+.ingest-from-storage-queued into table database('TestDatabase').Logs
 EnableTracking=true
 with (format='parquet')
 <|
     .list blobs (
-        "https://vpldata.blob.core.windows.net/logsparquet1tb;managed_identity=system"
+        "https://testdata.blob.core.windows.net/logsparquet1tb;managed_identity=system"
     )
     MaxFiles=10
 ```
 
 ### Track ingestion status
 
-The `.show queued ingestion operations` command is run to check whether the ingestion is complete or if there are any errors.
+They run the `.show queued ingestion operations` command to check whether the ingestion is complete or if there are any errors.
 
 ```kusto
 .show queued ingestion operations "00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444"
@@ -61,7 +61,7 @@ The `.show queued ingestion operations` command is run to check whether the inge
 
 ### Filter queued files for ingestion
 
-After the results of the ingestion are examined, another attempt at listing blobs for ingestion is made. This time the parquet suffix is added to ensure that only parquet files are ingested, and a path format to capture the creation time is included.
+After the results of the ingestion are examined, another attempt at listing blobs for ingestion is made. This time the parquet suffix is added to ensure that only parquet files are ingested, and a path format is added to capture the creation time.
 
 ```kusto
 .list blobs (
@@ -93,15 +93,27 @@ with (format='parquet')
 
 The `.show queued ingestion operations` command is run to check whether there are any issues with this ingestion.
 
+```kusto
 .show queued ingestion operations "11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444"
+```
+
+### Check blob ingestion details
+
+Since some blobs were ingested, some failed, and some are still pending, the `.show queued ingestion operations details` command is run to see more detailed information for each blob in the ingestion.
+
+```kusto
+.show queued ingestion operations "11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444" details
+```
 
 ### Cancel ingestion
 
-The ingestion is now canceled.
+Since the mapping didn't complete, the ingestion is now canceled.
 
 ```kusto
 .cancel queued ingestion operation "11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444"
 ```
+
+They can then roll back the ingestion, fix the issues, and rerun the ingestion.
 
 ## Management commands
 
