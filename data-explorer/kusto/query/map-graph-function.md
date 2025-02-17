@@ -3,45 +3,45 @@ title: map() (graph function)
 description: Learn how to use the map() function to evaluate an expression over the elements of a variable length edge.
 ms.reviewer: michalfaktor
 ms.topic: reference
-ms.date: 02/06/2025
+ms.date: 02/17/2025
 ---
 # map() (graph function)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Calculates an expression for each [variable length edge](./graph-match-operator.md#variable-length-edge) *edge* or *inner node* and returns a dynamic array of all results
+The `map()` graph function calculates an expression for each [variable length *edge*](graph-match-operator.md#variable-length-edge) or *inner node* and returns a dynamic array of all results.
 
 > [!NOTE]
-> This function is used with the [graph-match operator](graph-match-operator.md), and the [graph-shortest-paths](graph-shortest-paths-operator.md).
+> This function is used with the [graph-match](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md) operators.
 
 ## Syntax
 
-`map`(*edge*, *expression*)
+`map``(`*edge*`,` *expression*`)`
 
-`map`(`inner_nodes`(*edge*), *expression*)
-
+`map``(``inner_nodes``(`*edge*`)``,` *expression*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *edge* | `string` |  :heavy_check_mark: | A variable length edge from the [graph-match operator](graph-match-operator.md)/[graph-shortest-paths operator](graph-shortest-paths-operator.md) pattern. See [Graph pattern notation](./graph-match-operator.md#graph-pattern-notation).|
-| *expression* | `string` |  :heavy_check_mark: | Calculation to perform over the properties of the *edge* or *inner node* (if [inner_nodes](inner_nodes-graph-function.md) was used) in the [variable length edge](./graph-match-operator.md#variable-length-edge). A property is referenced using the property name directly. The expression is evaluated for each *edge*/*inner node* in the [variable length edge](./graph-match-operator.md#variable-length-edge). |
-
+| *edge* | `string` |  :heavy_check_mark: | A variable length edge from the [graph-match operator](graph-match-operator.md) or [graph-shortest-paths operator](graph-shortest-paths-operator.md) pattern. For more information, see [Graph pattern notation](./graph-match-operator.md#graph-pattern-notation).|
+| *expression* | `string` |  :heavy_check_mark: | The calculation to perform over the properties of the *edge* or *inner node*, when [inner_nodes](inner_nodes-graph-function.md) is used, in the [variable length edge](./graph-match-operator.md#variable-length-edge). A property is referenced using the property name directly. The expression is evaluated for each *edge* or *inner node* in the [variable length edge](./graph-match-operator.md#variable-length-edge). |
 
 ## Returns
 
-A dynamic array, such that:
+A dynamic array where:
 
-1. the array length matches the number of edges or inner nodes (if used with [inner_nodes](inner_nodes-graph-function.md)) in the variable length edge.
-2. for zero length path the array is empty.
-3. each element in the array is the result of the `expression` calculated over the edge/inner node in the corresponding index in the variable length edge.
+1. The array length matches the number of edges or inner nodes, when [inner_nodes](inner_nodes-graph-function.md) is used, in the variable length edge.
+1. The array is empty for zero length paths.
+1. Each element in the array corresponds to the results of applying the *expression* to each edge or inner node in the variable length edge.
 
 ## Examples
 
-### Collect the station + line used to arrive to that station in a shortest path between two train stations
+The examples in this section show how to use the syntax to help you get started.
 
-The following example demonstrates how to use the `graph-shortest-paths` operator to find the shortest path between two stations, `"South-West"` and `"North"` , in a transportation network, and how to enrich the path with the line information using `map` function. The query constructs a graph from the data in `connections` and finds a shortest path from the `"South-West"` to the `"North"` station, considering paths up to five connections long.
+### Find the station and line for the shortest route between two stations
+
+The following example demonstrates how to use the `graph-shortest-paths` operator to find the shortest path between the `"South-West"` and `"North"` stations in a transportation network. It enriches the path with the line information using the `map()` function. The query constructs a graph from the `connections` data, considering paths up to five connections long.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -77,9 +77,9 @@ from|path|to|
 |---|---|---|
 South-West|[<br>  "South (red)",<br>  "Central (red)",<br>  "North (red)"<br>]|North|
 
-### Get a list of stopovers with wifi in all paths between two stations
+### Get list of stopovers with Wi-Fi in all routes between two stations
 
-The following example demonstrates how to use the `graph-match` operator together with `all` function and `inner_nodes` function to find all stopovers with wifi available in all paths between two stations in a transportation network.
+The following example shows how to use the `graph-match` operator with `all()` and `inner_nodes` functions to find all stopovers where Wi-Fi is available along all routes between two stations in a transportation network.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -125,7 +125,6 @@ connections
 |---|---|
 | West->Central  | [ "West", "Central"] |
 | South->Central | [ "Central"] |
-
 
 ## Related content
 

@@ -3,43 +3,43 @@ title: all() (graph function)
 description: Learn how to use the all() function to evaluate a condition over the elements of a variable length edge.
 ms.reviewer: michalfaktor
 ms.topic: reference
-ms.date: 02/06/2025
+ms.date: 02/17/2025
 ---
 # all() (graph function)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Evaluates a condition for each [variable length edge](./graph-match-operator.md#variable-length-edge) *edge* or *inner node*.
+The `all()` graph function evaluates a condition for each [variable length edge](graph-match-operator.md#variable-length-edge) *edge* or *inner node*.
 
 > [!NOTE]
-> This function is used with the [graph-match operator](graph-match-operator.md), and the [graph-shortest-paths](graph-shortest-paths-operator.md).
+> This function is used with the [graph-match](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md) operators.
 
 ## Syntax
 
-`all`(*edge*, *condition*)
+`all` `(`*edge*`,` *condition*`)`
 
-`all`(`inner_nodes`(*edge*), *condition*)
-
+`all``(``inner_nodes``(`*edge*`)``,` *condition*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *edge* | `string` |  :heavy_check_mark: | A variable length edge from the [graph-match operator](graph-match-operator.md)/[graph-shortest-paths operator](graph-shortest-paths-operator.md) pattern. See [Graph pattern notation](./graph-match-operator.md#graph-pattern-notation).|
-| *condition* | `string` |  :heavy_check_mark: | A Boolean expression composed of properties of the *edge* or *inner node* (if [inner_nodes](inner_nodes-graph-function.md) was used) in the [variable length edge](./graph-match-operator.md#variable-length-edge). A property is referenced using the property name directly. The expression is evaluated for each *edge*/*inner node* in the [variable length edge](./graph-match-operator.md#variable-length-edge). |
-
+| *edge* | `string` |  :heavy_check_mark: | A variable length edge from the [graph-match operator](graph-match-operator.md) or [graph-shortest-paths operator](graph-shortest-paths-operator.md) pattern. For more information, see [Graph pattern notation](graph-match-operator.md#graph-pattern-notation). |
+| *condition* | `string` |  :heavy_check_mark: | A Boolean expression composed of properties of the *edge* or *inner node*, when [inner_nodes](inner_nodes-graph-function.md) is used, in the [variable length edge](./graph-match-operator.md#variable-length-edge). A property is referenced using the property name directly. The expression is evaluated for each *edge* and *inner node* in the [variable length edge](./graph-match-operator.md#variable-length-edge). |
 
 ## Returns
 
-`true` if the condition was evaluated to `true` for each  *edge* or *inner node* (if [inner_nodes](inner_nodes-graph-function.md) was used) in the [variable length edge](./graph-match-operator.md#variable-length-edge) and `false` otherwise.
+Returns `true` if the condition evaluates to `true` for each  *edge* or *inner node*, when [inner_nodes](inner_nodes-graph-function.md) is used, in the [variable length edge](graph-match-operator.md#variable-length-edge). Otherwise, it returns `false`.
 
-For zero length paths, the condition is evaluated to `true`.
+For zero length paths, the condition evaluates to `true`.
 
 ## Examples
 
-### Finding all paths between two train stations, and back, using a different line for each direction
+The examples in this section show how to use the syntax to help you get started.
 
-The following example demonstrates how to use the `graph-match` operator together with `all` function to find all paths between two stations in a transportation network, and back, while taking a different line for each direction. The query constructs a graph from the data in `connections` and finds all paths that use the "red" line for the outward route, and the "blue" line for the return route, considering paths up to five connections long. It uses `all` to ensure all edges in the variable length edge are part of the same line, "red" or "blue".
+### Find all round-trip paths between two train stations using different lines for each direction
+
+The following example demonstrates how to use the `graph-match` operator with the `all()` function to find all round-trip paths between two stations in a transportation network using a different line for each direction. The query constructs a graph from the `connections` data, finding all paths up to five connections long that use the `"red"` line for the outward route, and the `"blue"` line for the return route. The `all()` function ensures that all edges in the variable length edge are part of the same line, either `"red"` or `"blue"`.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -77,20 +77,20 @@ connections
 
 **Output**
 
-from|outward_stations|to|return_stations|back|
+|from|outward_stations|to|return_stations|back|
 |---|---|---|---|---|
-Central|North->Central->South->South-West|West||Central|
-West|South-West->South->Central->North|Central||West|
-Central|South->South-West|West||Central|
-West|South-West->South|Central||West|
-Central|North->Central->South->South-West|West|Central->East|Central|
-West|South-West->South->Central->North|Central|East->Central|West|
-Central|South->South-West|West|Central->East|Central|
-West|South-West->South|Central|East->Central|West|
+|Central|North->Central->South->South-West|West||Central|
+|West|South-West->South->Central->North|Central||West|
+|Central|South->South-West|West||Central|
+|West|South-West->South|Central||West|
+|Central|North->Central->South->South-West|West|Central->East|Central|
+|West|South-West->South->Central->North|Central|East->Central|West|
+|Central|South->South-West|West|Central->East|Central|
+|West|South-West->South|Central|East->Central|West|
 
-### Find shortest path between 2 stations, inculding only stations with wifi available 
+### Find the shortest path between two stations with Wi-Fi available
 
-The following example demonstrates how to use the `graph-shortest-paths` operator together with `all` function and `inner_nodes` function to find a path between 2 stations in a transportation network. The query constructs a graph from the data in `connections` and finds the shortest path from "South-West" station to "North" that go through stations that have wifi available.
+The following example demonstrates how to use the `graph-shortest-paths` operator  with the `all()` and `inner_nodes` functions to find a path between two stations in a transportation network. The query constructs a graph from the `connections` data and finds the shortest path from the `"South-West"` station to the `"North"` station, passing through stations where Wi-Fi is available.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -135,11 +135,9 @@ connections
 
 **Output**
 
-from|stations|to|
+|from|stations|to|
 |---|---|---|
-South-West|West->Central|North
-
-
+|South-West|West->Central|North|
 
 ## Related content
 

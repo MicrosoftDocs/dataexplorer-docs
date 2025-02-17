@@ -3,37 +3,38 @@ title: inner_nodes() (graph function)
 description: Learn how to use the inner_nodes() function to access all inner nodes in a variable length path.
 ms.reviewer: michalfaktor
 ms.topic: reference
-ms.date: 02/06/2025
+ms.date: 02/16/2025
 ---
 # inner_nodes() (graph function)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Allows accessing the inner nodes of a [variable length edge](./graph-match-operator.md#variable-length-edge). Can be used only as the first parameter of  [all() function](all-graph-function.md), and [map() function](map-graph-function.md)
+The `inner_nodes()` graph function allows access to the inner nodes of a [variable length edge](graph-match-operator.md#variable-length-edge). It can only be used as the first parameter of the [all() graph](all-graph-function.md) and [map()](map-graph-function.md) functions.
 
 > [!NOTE]
-> This function is used with the [graph-match operator](graph-match-operator.md), the [graph-shortest-paths](graph-shortest-paths-operator.md), [all() function](all-graph-function.md), and [map() function](map-graph-function.md).
+> This function is used with the [graph-match](graph-match-operator.md) operator, [graph-shortest-paths](graph-shortest-paths-operator.md) operator, [all()](all-graph-function.md) function, and [map()](map-graph-function.md) function.
 
 ## Syntax
 
-`inner_nodes`(*edge*)
-
+`inner_nodes``(`*edge*`)`
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *edge* | `string` |  :heavy_check_mark: | A variable length edge from the [graph-match operator](graph-match-operator.md)/[graph-shortest-paths operator](graph-shortest-paths-operator.md) pattern. See [Graph pattern notation](./graph-match-operator.md#graph-pattern-notation).|
+| *edge* | `string` |  :heavy_check_mark: | A variable length edge from the [graph-match operator](graph-match-operator.md) or [graph-shortest-paths operator](graph-shortest-paths-operator.md) pattern. For more information, see [Graph pattern notation](./graph-match-operator.md#graph-pattern-notation). |
 
 ## Returns
 
-Sets the execution scope of `all` or `map` expression to a variable length edge inner node
+Sets the execution scope of the `all` or `map` expression to the inner node of a variable length edge.
 
 ## Examples
 
-### All employees in a manager's org
+The examples in this section show how to use the syntax to help you get started.
 
-The following example represents an organizational hierarchy. It demonstrates how a variable length edge could be used to find employees of different levels of the hierarchy in a single query. The nodes in the graph represent employees and the edges are from an employee to their manager. After we build the graph using `make-graph`, we use `all` together with `inner_nodes` to search for employees in Alice's org that have managers younger than 40 (excluding Alice). Then, we use `map` together with `inner_nodes` to get those managers' names.
+### Find all employees in a manager's organization
+
+The following example represents an organizational hierarchy. It shows how a variable length edge in a single graph query can be used to find employees at various levels within an organizational hierarchy. The nodes in the graph represent employees and the edges connect an employee to their manager. After the graph is built using the `make-graph` operator, the `all()` and `inner_nodes` functions are used to search for employees in Alice's organization besides Alice, who have managers younger than 40. Then, `map()` and `inner_nodes` are used together to get those managers' names.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -77,7 +78,6 @@ Chris|Alice|[]|
 Joe|Alice|[]|
 Eve|Alice|["Bob"]|
 Richard|Alice|["Bob"]|
-
 
 ## Related content
 
