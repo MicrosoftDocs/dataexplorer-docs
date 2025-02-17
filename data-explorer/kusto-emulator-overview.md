@@ -1,9 +1,9 @@
 ---
 title: Azure Data Explorer Kusto emulator overview
-description: In this article, you'll learn about the Azure Data Explorer Kusto emulator
+description: In this article, you learn about the Azure Data Explorer Kusto emulator.
 ms.reviewer: vplauzon
 ms.topic: conceptual
-ms.date: 05/08/2023
+ms.date: 02/06/2025
 ---
 # Azure Data Explorer Kusto emulator
 
@@ -13,11 +13,11 @@ The Kusto emulator is a local environment that encapsulates the query engine. Yo
 >
 > - The emulator is provided *as-is*, without any support or warranties.
 > - The emulator isn't intended for use in production environments.
-> - The [license terms](https://aka.ms/adx.emulator.license) explicitly prohibit benchmark tests using the emulator as it is not intended or optimized for that purpose. The emulator has a very different performance profile compared to the Azure Data Explorer service.
+> - The [license terms](https://aka.ms/adx.emulator.license) explicitly prohibit benchmark tests using the emulator as it isn't intended or optimized for that purpose. The emulator has a different performance profile compared to the Azure Data Explorer service.
 
 ## Architecture
 
-The emulator is available as a *Windows* or *Linux* Docker container image. It exposes a query endpoint over HTTP that can be used with any client including [Kusto.Explorer](/kusto/tools/kusto-explorer-using?view=azure-data-explorer&preserve-view=true), [Kusto.CLI](/kusto/tools/kusto-cli?view=azure-data-explorer&preserve-view=true), or [Kusto.Data SDKs](/kusto/api/netfx/about-kusto-data?view=azure-data-explorer&preserve-view=true).
+The emulator is available as a *Linux* and *Windows* Docker container image. It exposes a query endpoint over HTTP that can be used with any client including [Kusto.Explorer](/kusto/tools/kusto-explorer-using?view=azure-data-explorer&preserve-view=true), [Kusto.CLI](/kusto/tools/kusto-cli?view=azure-data-explorer&preserve-view=true), or [Kusto.Data SDKs](/kusto/api/netfx/about-kusto-data?view=azure-data-explorer&preserve-view=true).
 
 ![Schematic representation of Kusto emulator architecture.](media/kusto-emulator/kusto-emulator-architecture.png)
 
@@ -34,7 +34,7 @@ The main scenarios for the emulator are:
 
 ## Kusto emulator vs. free cluster
 
-There are some overlaps between the Kusto emulator and the [free cluster](start-for-free.md) offerings.  The following table contrasts the features of the offerings.
+There are some overlaps between the Kusto emulator and the [free cluster](start-for-free.md) offerings. The following table contrasts the features of the offerings.
 
 | Item | Kusto emulator | Free cluster |
 |--|--|--|
@@ -49,10 +49,10 @@ There are some overlaps between the Kusto emulator and the [free cluster](start-
 | Long term data management | No extent merge capability | Full support |
 | Internet requirement | No connectivity required | Cloud service |
 
-When choosing the best option for your use case, you should consider the following:
+When choosing the best option for your use case, you should consider:
 
 - **Local development**: The best fit for local development depends on the features you require. For instance, if your scenario requires the use of managed pipelines, the free cluster offering works best. On the other hand, if your scenario requires local development in a disconnected environment, the Kusto emulator would be a better fit.
-- **Automated testing**: In general, the Kusto emulator is more suited to automated testing than the free cluster offering.  It's faster to provision and doesn't require any Azure principal to set up.
+- **Automated testing**: In general, the Kusto emulator is more suited to automated testing than the free cluster offering. It's faster to provision and doesn't require any Azure principal to set up.
 
 [!INCLUDE [kusto-emulator-limitations](includes/kusto-emulator-limitations.md)]
 
