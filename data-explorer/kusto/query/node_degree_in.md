@@ -2,7 +2,7 @@
 title:  node_degree_in
 description:  This article describes the node_degree_in() command.
 ms.topic: reference
-ms.date: 02/16/2025
+ms.date: 02/17/2025
 ---
 
 # node_degree_in()
@@ -12,7 +12,7 @@ ms.date: 02/16/2025
 The `node_degree_in` function calculates the *in-degree*, or number of incoming edges, to a node in a directed graph.
 
 > [!NOTE]
-> This function is used with the [`graph-match`](graph-match-operator.md) or [`graph-shortest-paths`](graph-shortest-paths-operator.md) operators.
+> This function is used with the [`graph-match`](graph-match-operator.md) and [`graph-shortest-paths`](graph-shortest-paths-operator.md) operators.
 
 ## Syntax
 
