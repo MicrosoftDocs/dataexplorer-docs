@@ -18,7 +18,7 @@ The `map()` graph function calculates an expression for each [variable length *e
 
 `map``(`*edge*`,` *expression*`)`
 
-`map``(``inner_nodes``(`*edge*`)``,` *expression*`)`
+`map(inner_nodes(`*edge*`),` *expression*`)`
 
 ## Parameters
 
@@ -41,7 +41,7 @@ The examples in this section show how to use the syntax to help you get started.
 
 ### Find the station and line for the shortest route between two stations
 
-The following example demonstrates how to use the `graph-shortest-paths` operator to find the shortest path between the `"South-West"` and `"North"` stations in a transportation network. It enriches the path with the line information using the `map()` function. The query constructs a graph from the `connections` data, considering paths up to five connections long.
+The following example shows how to use the `graph-shortest-paths` operator to find the shortest path between the `"South-West"` and `"North"` stations in a transportation network. It adds line information to the path using the `map()` function. The query constructs a graph from the `connections` data, considering paths up to five connections long.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -79,7 +79,7 @@ South-West|[<br>  "South (red)",<br>  "Central (red)",<br>  "North (red)"<br>]|N
 
 ### Get list of stopovers with Wi-Fi in all routes between two stations
 
-The following example shows how to use the `graph-match` operator with `all()` and `inner_nodes` functions to find all stopovers where Wi-Fi is available along all routes between two stations in a transportation network.
+The following example shows how to use the `graph-match` operator with the `all()` and `inner_nodes` functions to find all stopovers with Wi-Fi along all routes between two stations in a transportation network.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

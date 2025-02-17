@@ -3,7 +3,7 @@ title: graph-mark-components operator (Preview)
 description: Learn how to use the graph-mark-components operator to find and mark all connected components of a graph.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 11/06/2024
+ms.date: 02/17/2025
 ---
 # graph-mark-components operator (Preview)
 
@@ -12,7 +12,7 @@ ms.date: 11/06/2024
 The `graph-mark-components` operator finds all connected components of a graph and marks each node with a component identifier.
 
 > [!NOTE]
-> This operator is used in conjunction with the [make-graph operator](make-graph-operator.md).
+> This operator is used with the [make-graph operator](make-graph-operator.md).
 
 ## Syntax
 
@@ -31,6 +31,8 @@ The `graph-mark-components` operator finds all connected components of a graph a
 The `graph-mark-components` operator returns a *graph* result, where each node has a component identifier in the *ComponentId* property. The identifier is a zero-based consecutive index of the components. Each component index is chosen arbitrarily and might not be consistent across runs.
 
 ## Examples
+
+The examples in this section show how to use the syntax to help you get started.
 
 ### Find families by their relationships
 
@@ -121,4 +123,3 @@ ChildOf
 * [make-graph operator](make-graph-operator.md)
 * [graph-match operator](graph-match-operator.md)
 * [graph-to-table operator](graph-to-table-operator.md)
-

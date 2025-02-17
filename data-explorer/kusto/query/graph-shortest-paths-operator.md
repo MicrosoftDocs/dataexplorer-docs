@@ -3,7 +3,7 @@ title: graph-shortest-paths Operator (Preview)
 description: Learn how to use the graph-shortest-paths operator to efficiently find the shortest paths from a given set of source nodes to a set of target nodes within a graph
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 11/05/2024
+ms.date: 02/17/2025
 ---
 
 # graph-shortest-paths Operator (Preview)
@@ -13,7 +13,7 @@ ms.date: 11/05/2024
 The `graph-shortest-paths` operator finds the shortest paths between a set of source nodes and a set of target nodes in a graph and returns a table with the results.
 
 > [!NOTE]
-> This operator is used in conjunction with the [make-graph operator](make-graph-operator.md).
+> This operator is used with the [make-graph operator](make-graph-operator.md).
 
 ## Syntax
 
@@ -91,7 +91,7 @@ connections
 |---|---|---|---|
 |South-West|[<br>  "South",<br>  "Central",<br>  "North"<br>]|[<br>  "red",<br>  "red",<br>  "red"<br>]|North|
 
-### Finding all shortest paths between two train stations
+### Find all shortest paths between two train stations
 
 The following example, like the previous example, finds the shortest paths in a transportation network. However, it uses `output=all`, so returns all shortest paths.
 
@@ -135,4 +135,3 @@ connections
 * [Best practices for Kusto Query Language (KQL) graph semantics](graph-best-practices.md)
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
-
