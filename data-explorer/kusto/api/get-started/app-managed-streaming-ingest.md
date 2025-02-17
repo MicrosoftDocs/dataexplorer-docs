@@ -422,7 +422,7 @@ Add and ingestion section using the following lines to the end of `main()`.
 ```java
             // Ingestion section
             try (
-                    ManagedStreamingIngestClient ingestClient = (ManagedStreamingIngestClient) IngestClientFactory
+                    ManagedStreamingIngestClient ingestClient =  IngestClientFactory
                             .createManagedStreamingIngestClient(clusterKcsb, ingestionKcsb)) {
                 System.out.println("Ingesting data from a file");
                 String filePath = "stormevents.csv";
