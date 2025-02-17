@@ -179,7 +179,7 @@ Add the following code:
       const query = table + " | count";
       let response = await kustoClient.execute(database, query);
       console.log("\nNumber of rows in " + table + " BEFORE ingestion:");
-      printResultAsValueList(response);
+      printResultsAsValueList(response);
     }
 
     function printResultsAsValueList(response) {
@@ -225,7 +225,7 @@ Add the following code:
           KustoOperationResult results = kustoClient.execute(database, query);
           KustoResultSetTable primaryResults = results.getPrimaryResults();
           System.out.println("\nNumber of rows in " + table + " BEFORE ingestion:");
-          printResultAsValueList(primaryResults);
+          printResultsAsValueList(primaryResults);
         }
       }
 
@@ -679,7 +679,7 @@ public class BatchIngestion {
       KustoOperationResult results = kustoClient.execute(database, query);
       KustoResultSetTable primaryResults = results.getPrimaryResults();
       System.out.println("\nNumber of rows in " + table + " BEFORE ingestion:");
-      printResultAsValueList(primaryResults);
+      printResultsAsValueList(primaryResults);
 
       System.out.println("\nIngesting data from file: \n\t " + fileSourceInfo.toString());
       IngestionProperties ingestProps = new IngestionProperties(database, table);
