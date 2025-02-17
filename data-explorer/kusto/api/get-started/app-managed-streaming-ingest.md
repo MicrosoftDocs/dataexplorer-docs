@@ -16,7 +16,7 @@ monikerRange: "azure-data-explorer"
 
 Streaming Ingestion allows writing data to Kusto with near-real-time latencies. It’s also useful when writing small amounts of data to a large number of tables, making batching inefficient.
 
-In this article, you’ll learn how to ingest data to Kusto using the managed streaming ingestion client. You'll ingest a data stream in the form of a file, in-memory stream, or blob.
+In this article, you’ll learn how to ingest data to Kusto using the managed streaming ingestion client. You'll ingest a data stream in the form of a file or in-memory stream.
 
 > [!NOTE]
 > Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion isn't the same as `IngestFromStream`.
@@ -28,13 +28,13 @@ Kusto SDKs provide two flavors of Streaming Ingestion Clients, `StreamingIngesti
 
 When ingesting with the `ManagedStreamingIngestionClient` API, failures and retries are handled automatically as follows:
 
-+ Streaming requests that fail due to server-side size limitations are failed-over to queued ingestion.
++ Streaming requests that fail due to server-side size limitations are moved to queued ingestion.
 + Data that's larger than 4 MB is automatically sent to queued ingestion, regardless of format or compression.
 + Transient failure, for example throttling, are retried three times, then moved to queued ingestion.
 + Permanent failures aren't retried.
 
 > [!NOTE]
-> If the streaming ingestion fails and the data is sent to queued ingestion, some delay is be experienced before the data is visible in the table.
+> If the streaming ingestion fails and the data is moved to queued ingestion, some delay is expected before the data is visible in the table.
 
 ## Limitations
 
@@ -48,7 +48,7 @@ For more information, see [Streaming Limitations](/azure/data-explorer/ingest-da
 
 ## Prerequisites
 
-+ A Kusto cluster where you have database User or higher rights. Provision a free Kusto cluster at <https://dataexplorer.azure.com/freecluster>.
++ Fabric or an Azure Data Explorer cluster where you have database User or higher rights. Provision a free cluster at <https://dataexplorer.azure.com/freecluster>.
 
 + [Set up your development environment](/kusto/api/get-started/app-set-up?view=azure-data-explorer) to use the Kusto client library.
 
@@ -63,7 +63,7 @@ Before creating the app, the following steps are required. Each step is detailed
 
 ## Configure streaming ingestion
 
-To configure streaming ingestion, see [Configure streaming ingestion on your Azure Data Explorer cluster](/azure/data-explorer/ingest-data-streaming?tabs=azure-portal%2Ccsharp). If you're using a free cluster, streaming ingestion is automatically enabled.
+To configure streaming ingestion, see [Configure streaming ingestion on your Azure Data Explorer cluster](/azure/data-explorer/ingest-data-streaming?tabs=azure-portal%2Ccsharp). It can take several minutes for the configuration to take effect. If you're using Fabric or a free cluster, streaming ingestion is automatically enabled.  
 
 ### Create a Kusto table
 
@@ -85,12 +85,15 @@ Enable streaming ingestion on the table or on the entire database using one of t
 .alter database <databaseName> policy streamingingestion enable
 ```
 
+It can take up to two minutes for the policy to take effect.
+
 For more information about streaming policy, see [Streaming ingestion policy - Azure Data Explorer & Real-Time Analytics](../../../kusto//management/streaming-ingestion-policy.md)
 
 ## Create a basic client application
 
 Create a basic client application which connects to the Kusto Help cluster.
 Enter the cluster query and ingest URI and database name in the relevant variables.
+The app uses two clients: one for querying and one for ingestion. Each client brings up a browser window to authenticate the user.
 
 ### [C#](#tab/c-sharp)
 
@@ -246,7 +249,6 @@ Add and ingestion section using the following lines to the end of `main()`.
             print("Ingesting data from a file")
             ingest_properties = IngestionProperties(database_name, table_name, DataFormat.CSV)
             ingest_client.ingest_from_file(file_path, ingest_properties)
-            ingest_client.close()
 ```
 
 Let’s also query the new number of rows and the most recent row after the ingestion.
@@ -516,7 +518,6 @@ Replace the ingestion section with the following code:
         # when possible provide the size of the raw data
         stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
         ingest_client.ingest_from_stream(stream_descriptor, ingest_properties)
-        ingest_client.close()
 ```
 
 ### [TypeScript](#tab/typescript)
@@ -584,10 +585,6 @@ row 1 :
 ```
 
 ---
-
-
-> [!NOTE]
-> You can also use a managed identity based authorization as an alternative to SAS or account keys in Azure Storage and Azure Data Lake. For more information, see [Ingest data using managed identity authentication](/azure/data-explorer/ingest-data-managed-identity)
 
 ## Resources
 + [Kusto Python GitHub repository](https://github.com/Azure/azure-kusto-python)
