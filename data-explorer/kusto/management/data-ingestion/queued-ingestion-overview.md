@@ -40,16 +40,16 @@ MaxFiles=10
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://sample.blob.core.windows.net/sample/100.parquet |  1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/101.parquet | 1024  | CreationTime |
-| https://sample.blob.core.windows.net/sample/102.parquet | 1024  | CreationTime |
-| https://sample.blob.core.windows.net/sample/103.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/104.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/105.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/106.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/107.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/108.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/109.csv.gz | 1024 | CreationTime |
+| https://blob.example.com/sample/100.parquet |  1024 | CreationTime |
+| https://blob.example.com/sample/101.parquet | 1024  | CreationTime |
+| https://blob.example.com/sample/102.parquet | 1024  | CreationTime |
+| https://blob.example.com/sample/103.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/104.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/105.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/106.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/107.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/108.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/109.csv.gz | 1024 | CreationTime |
 
 ### Ingest folder
 
@@ -107,16 +107,16 @@ PathFormat=("output/03/Year=" datetime_pattern("yyyy'/Month='MM'/Day='dd", creat
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://sample.blob.core.windows.net/sample/100.parquet |  1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/101.parquet | 1024  | CreationTime |
-| https://sample.blob.core.windows.net/sample/102.parquet | 1024  | CreationTime |
-| https://sample.blob.core.windows.net/sample/103.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/104.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/105.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/106.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/107.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/108.parquet | 1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/110.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/100.parquet |  1024 | CreationTime |
+| https://blob.example.com/sample/101.parquet | 1024  | CreationTime |
+| https://blob.example.com/sample/102.parquet | 1024  | CreationTime |
+| https://blob.example.com/sample/103.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/104.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/105.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/106.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/107.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/108.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/110.parquet | 1024 | CreationTime |
 
 ### Ingest 20 files
 
@@ -139,10 +139,10 @@ with (format='parquet')
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://sample.blob.core.windows.net/sample/100.parquet |  1024 | CreationTime |
-| https://sample.blob.core.windows.net/sample/101.parquet | 1024  | CreationTime |
-| https://sample.blob.core.windows.net/sample/102.parquet | 1024  | CreationTime |
-| https://sample.blob.core.windows.net/sample/103.parquet | 1024 | CreationTime |
+| https://blob.example.com/sample/100.parquet |  1024 | CreationTime |
+| https://blob.example.com/sample/101.parquet | 1024  | CreationTime |
+| https://blob.example.com/sample/102.parquet | 1024  | CreationTime |
+| https://blob.example.com/sample/103.parquet | 1024 | CreationTime |
 |...|...|...|
 
 ### Track follow up ingestion status
@@ -179,9 +179,9 @@ Since some blobs were ingested, some failed, and some are still pending, the `.s
 
 | IngestionOperationId | BlobUrl | IngestionStatus | StartedAt | CompletedAt | FailedReason |
 |--|--|--|--|--|--|
-| 22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://sample.blob.core.windows.net/sample/100.parquet | Pending | 2025-02-09T14:56:08.8708746Z |  |  |
-| 22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://sample.blob.core.windows.net/sample/102.parquet | Succeeded | 2025-02-09T14:56:09.0800631Z | 2024-02-09T15:02:06.5529901Z |  |
-|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://sample.blob.core.windows.net/sample/103.parquet | Failed | 2025-02-09T14:56:09.3026602Z |  | Failed to download |
+| 22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://blob.example.com/sample/100.parquet | Pending | 2025-02-09T14:56:08.8708746Z |  |  |
+| 22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://blob.example.com/sample/102.parquet | Succeeded | 2025-02-09T14:56:09.0800631Z | 2024-02-09T15:02:06.5529901Z |  |
+|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://blob.example.com/sample/103.parquet | Failed | 2025-02-09T14:56:09.3026602Z |  | Failed to download |
 | ... | ... | ... | ... | ... | ... |
 
 ### Cancel ingestion
