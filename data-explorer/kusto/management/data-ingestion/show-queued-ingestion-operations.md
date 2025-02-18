@@ -120,9 +120,9 @@ The following example shows details for each blob in the queued ingestion operat
 
 | IngestionOperationId | BlobUrl | IngestionStatus | StartedAt | CompletedAt | FailedReason |
 |--|--|--|--|--|--|
-| 00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://blob.example.com/sample/100.csv.gz | Pending | 2025-02-09T14:56:08.8708746Z |  |  |
-| 00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://blob.example.com/sample/102.csv.gz | Succeeded | 2025-02-09T14:56:09.0800631Z | 2024-02-09T15:02:06.5529901Z |  |
-|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://blob.example.com/sample/103.csv.gz | Failed | 2025-02-09T14:56:09.3026602Z |  | Failed to download |
+| 00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://<blobstoragelocation>/100.csv.gz | Pending | 2025-02-09T14:56:08.8708746Z |  |  |
+| 00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://<blobstoragelocation>/102.csv.gz | Succeeded | 2025-02-09T14:56:09.0800631Z | 2024-02-09T15:02:06.5529901Z |  |
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://<blobstoragelocation>/103.csv.gz | Failed | 2025-02-09T14:56:09.3026602Z |  | Failed to download |
 
 ## Related content
 
