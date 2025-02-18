@@ -3,13 +3,13 @@ title: Queued ingestion overview
 description: Learn about queued ingestion and its commands.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/17/2025
+ms.date: 02/18/2025
 ---
 # Queued ingestion overview
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-Queued ingestion commands allow you to ingest files, specific folders, or an entire container and manage the operations related to queued ingestion. They're useful for preparing and testing distinct ingestion scenarios before the final ingestion. Using them helps to ensure that fields, columns, partitioning, and other needs are handled properly during ingestion.
+Queued ingestion commands allow you to ingest specific folders, or an entire container and manage the operations related to queued ingestion. They can also ingest multiple or individual blobs by URL and from a source file. The ingestion commands are useful for preparing and testing distinct ingestion scenarios before the final ingestion. Using them helps to ensure that fields, columns, partitioning, and other needs are handled properly during ingestion.
 
 In this article, you learn about a common scenario, ingesting historical data.
 
@@ -36,6 +36,21 @@ To understand the historical data better, the data engineer lists a maximum of 1
 MaxFiles=10
  ```
 
+**Output**
+
+| BlobUri | SizeInBytes | CapturedVariables |
+|--|--|--|
+| https://sample.blob.core.windows.net/sample/100.parquet |  1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/101.parquet | 1024  | CreationTime |
+| https://sample.blob.core.windows.net/sample/102.parquet | 1024  | CreationTime |
+| https://sample.blob.core.windows.net/sample/103.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/104.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/105.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/106.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/107.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/108.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/109.csv.gz | 1024 | CreationTime |
+
 ### Ingest folder
 
 Next they queue 10 parquet files for ingestion into the `Logs` table in the `TestDatabase` database with tracking enabled for the ingestion.
@@ -51,6 +66,14 @@ with (format='parquet')
     MaxFiles=10
 ```
 
+**Output**
+
+| IngestionOperationId | ClientRequestId | OperationInfo |
+|----------------------|-----------------|---------------|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444|managed_identity=system||
+
+The IngestionOperationID is then used to [track the ingestion status](#track-ingestion-status).
+
 ### Track ingestion status
 
 They run the `.show queued ingestion operations` command to check whether the ingestion is complete or if there are any errors.
@@ -59,9 +82,17 @@ They run the `.show queued ingestion operations` command to check whether the in
 .show queued ingestion operations "00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444"
  ```
 
+**Output**
+
+|IngestionOperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
+|--|--|--|--|--|--|--|--|--|--|--|--|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 14:57:41.0000000 |2025-01-10 15:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.parquet' has a malformed Parquet format*|TestDatabase|Logs|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 15:12:23.0000000 |2025-01-10 15:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|TestDatabase|Logs|
+| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+
 ### Filter queued files for ingestion
 
-After the results of the ingestion are examined, another attempt at listing blobs for ingestion is made. This time the parquet suffix is added to ensure that only parquet files are ingested, and a path format is added to capture the creation time.
+After the results of the ingestion are examined and changes are made, another attempt at listing blobs for ingestion is made. This time the parquet suffix is added to ensure that only parquet files are ingested, and a path format is added to capture the creation time.
 
 ```kusto
 .list blobs (
@@ -72,12 +103,27 @@ MaxFiles=10
 PathFormat=("output/03/Year=" datetime_pattern("yyyy'/Month='MM'/Day='dd", creationTime) "/")
 ```
 
+**Output**
+
+| BlobUri | SizeInBytes | CapturedVariables |
+|--|--|--|
+| https://sample.blob.core.windows.net/sample/100.parquet |  1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/101.parquet | 1024  | CreationTime |
+| https://sample.blob.core.windows.net/sample/102.parquet | 1024  | CreationTime |
+| https://sample.blob.core.windows.net/sample/103.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/104.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/105.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/106.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/107.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/108.parquet | 1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/110.parquet | 1024 | CreationTime |
+
 ### Ingest 20 files
 
 Now 20 files in parquet format are ingested from the Azure blob storage container, along with their creation time.
 
 ```kusto
-.ingest-from-storage-queued into table database('dm-ingest-test').Logs
+.ingest-from-storage-queued into table database('TestDatabase').Logs
 EnableTracking=true
 with (format='parquet')
 <|
@@ -89,12 +135,36 @@ with (format='parquet')
     PathFormat=("output/03/Year=" datetime_pattern("yyyy'/Month='MM'/Day='dd", creationTime) "/")
 ```
 
+**Output**
+
+| BlobUri | SizeInBytes | CapturedVariables |
+|--|--|--|
+| https://sample.blob.core.windows.net/sample/100.parquet |  1024 | CreationTime |
+| https://sample.blob.core.windows.net/sample/101.parquet | 1024  | CreationTime |
+| https://sample.blob.core.windows.net/sample/102.parquet | 1024  | CreationTime |
+| https://sample.blob.core.windows.net/sample/103.parquet | 1024 | CreationTime |
+|...|...|...|
+
 ### Track follow up ingestion status
 
 The `.show queued ingestion operations` command is run to check whether there are any issues with this ingestion.
 
 ```kusto
-.show queued ingestion operations "11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444"
+.show queued ingestion operations "22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555"
+```
+
+**Output**
+
+|IngestionOperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
+|--|--|--|--|--|--|--|--|--|--|--|--|
+|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 |2025-01-10 14:57:41.0000000 |2025-01-10 16:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.parquet' has a malformed Parquet format*|TestDatabase|Logs|
+|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 |2025-01-10 15:12:23.0000000 |2025-01-10 16:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|TestDatabase|Logs|
+| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+
+The `.show extents` command is run to check whether extents are created with an anterior date for data integrity and historical accuracy.
+
+```kusto
+.show table Logs extents
 ```
 
 ### Check blob ingestion details
@@ -105,13 +175,28 @@ Since some blobs were ingested, some failed, and some are still pending, the `.s
 .show queued ingestion operations "11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444" details
 ```
 
+**Output**
+
+| IngestionOperationId | BlobUrl | IngestionStatus | StartedAt | CompletedAt | FailedReason |
+|--|--|--|--|--|--|
+| 22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://sample.blob.core.windows.net/sample/100.parquet | Pending | 2025-02-09T14:56:08.8708746Z |  |  |
+| 22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://sample.blob.core.windows.net/sample/102.parquet | Succeeded | 2025-02-09T14:56:09.0800631Z | 2024-02-09T15:02:06.5529901Z |  |
+|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://sample.blob.core.windows.net/sample/103.parquet | Failed | 2025-02-09T14:56:09.3026602Z |  | Failed to download |
+| ... | ... | ... | ... | ... | ... |
+
 ### Cancel ingestion
 
 Since the mapping didn't complete, the ingestion is now canceled.
 
-```kusto
-.cancel queued ingestion operation "11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444"
+```Kusto
+.cancel queued ingestion operation '22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555' with(Reason="Canceled due to incomplete mapping")
 ```
+
+**Output**
+
+|IngestionOperationId|ReasonPhrase|
+|---|---|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444|Canceled due to incomplete mapping|
 
 They can then roll back the ingestion, fix the issues, and rerun the ingestion.
 
@@ -142,10 +227,10 @@ MaxFiles=10
     .create table MySourceTable (OriginalRecord:string)
     ```
 
-1. Next they queue 10 parquet files for ingestion into the `Logs` table in the `dm-ingest-test` database with tracking enabled for the ingestion.
+1. Next they queue 10 parquet files for ingestion into the `Logs` table in the `TestDatabase` database with tracking enabled for the ingestion.
 
 ```kusto
-.ingest-from-storage-queued into table database('dm-ingest-test').Logs
+.ingest-from-storage-queued into table database('TestDatabase').Logs
 EnableTracking=true
 with (format='parquet')
 <|
@@ -174,7 +259,7 @@ PathFormat=("output/03/Year=" datetime_pattern("yyyy'/Month='MM'/Day='dd", creat
 1. Now 20 files in parquet format are ingested from the Azure blob storage container, along with their creation time.
 
 ```kusto
-.ingest-from-storage-queued into table database('dm-ingest-test').Logs
+.ingest-from-storage-queued into table database('TestDatabase').Logs
 EnableTracking=true
 with (format='parquet')
 <|
@@ -199,3 +284,4 @@ with (format='parquet')
 ## Related content
 
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
+* [.show extents](../show-extents.md)

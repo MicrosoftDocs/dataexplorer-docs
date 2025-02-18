@@ -3,7 +3,7 @@ title:  .ingest-from-storage-queued into command
 description: This article describes the `.ingest-from-storage-queued` `into` command used to ingest a storage folder in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/09/2025
+ms.date: 02/18/2025
 ---
 # .ingest-from-storage-queued into command
 
@@ -48,7 +48,7 @@ The result of the command is a table with one row and one column.
 |--|--|--|
 | IngestionOperationId | `string` | A unique ID used to track the set of blobs, whether or not tracking is enabled. |
 | ClientRequestId | `string` | The client request ID of the command. |
-| OperationInfo | `string` | Displays the command needed to run to retrieve the current status of the operation. |
+| OperationInfo | `string` | Displays the command to run to retrieve the current status of the operation. |
 
 >[!NOTE]
 > This command doesn't modify the schema of the target table. If necessary, the data is converted to fit the table's schema during ingestion. Extra columns are ignored and missing columns are treated as null values.

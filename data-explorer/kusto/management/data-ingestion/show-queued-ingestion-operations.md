@@ -3,7 +3,7 @@ title:  .show queued ingestion operations command
 description: Learn how to use the `.show queued ingestion operations` command to view a log of the queued ingestion operations that are currently running or completed.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/09/2025
+ms.date: 02/18/2025
 ---
 
 # .show queued ingestion operations command
@@ -34,7 +34,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ### Returns for queued ingestion operations with details
 
-The command returns a table with details about the ingestion status of each blob ingested in the operation.
+The command returns a table with details about the ingestion status for each blob ingested in the operation.
 
 |Output parameter |Type |Description|
 |---|---|---|
@@ -55,11 +55,11 @@ The command returns a table with the latest update information for each ID.
 |StartedOn | `datetime` |Date/time, in UTC, at which the `.ingest-from-storage-queued` was executed.|
 |LastUpdatedOn | `datetime` |Date/time, in UTC, when the status was updated.|
 |State | `string` |The state of the operation.|
-|Discovered | `long` |Count of blobs that were listed from storage and queued for ingestion.|
-|Pending | `long` |Count of blobs to be ingested.|
-|Ingested | `long` |Count of blobs that have been ingested.|
-|Failed | `long` |Count of blobs that failed **permanently**.|
-|Canceled | `long` |Count of blobs that were canceled due to a call to the [.cancel queued ingestion operation](cancel-queued-ingestion-operation-command.md) command.|
+|Discovered | `long` |Count of the blobs that were listed from storage and queued for ingestion.|
+|Pending | `long` |Count of the blobs to be ingested.|
+|Ingested | `long` |Count of the blobs that have been ingested.|
+|Failed | `long` |Count of the blobs that failed **permanently**.|
+|Canceled | `long` |Count of the blobs that were canceled due to a call to the [.cancel queued ingestion operation](cancel-queued-ingestion-operation-command.md) command.|
 |SampleFailedReasons | `string` |A sample of reasons for blob ingestion failures.|
 |Database | `string` |The database where the ingestion process is occurring.|
 |Table | `string` | The table where the ingestion process is occurring.|
@@ -87,9 +87,11 @@ The following example shows the queued ingestion operations for a specific opera
 .show queued ingestion operations "00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444"
 ```
 
+**Output**
+
 |IngestionOperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
 |--|--|--|--|--|--|--|--|--|--|--|--|
-|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2015-01-10 14:57:41.0000000 |2015-01-10 14:57:41.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 14:57:41.0000000 |2025-01-10 14:57:41.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable|
 
 ### Multiple operation IDs
 
@@ -99,14 +101,16 @@ The following example shows the queued ingestion operations for multiple operati
 .show queued ingestion operations ("00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444", "11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444")
 ```
 
+**Output**
+
 |IngestionOperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
 |--|--|--|--|--|--|--|--|--|--|--|--|
-|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2015-01-10 14:57:41.0000000 |2015-01-10 15:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable|
-|11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444 |2015-01-10 15:12:23.0000000 |2015-01-10 15:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|MyDatabase|MyOtherTable|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 14:57:41.0000000 |2025-01-10 15:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable|
+|11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444 |2025-01-10 15:12:23.0000000 |2025-01-10 15:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|MyDatabase|MyOtherTable|
 
 ### Show details
 
-The following example shows the details of each blob in the queued ingestion operation.
+The following example shows details for each blob in the queued ingestion operation.
 
 ```kusto
 .show queued ingestion operations '00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444' details
@@ -117,7 +121,7 @@ The following example shows the details of each blob in the queued ingestion ope
 | IngestionOperationId | BlobUrl | IngestionStatus | StartedAt | CompletedAt | FailedReason |
 |--|--|--|--|--|--|
 | 00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://sample.blob.core.windows.net/sample/100.csv.gz | Pending | 2025-02-09T14:56:08.8708746Z |  |  |
-| 00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://sample.blob.core.windows.net/sample/10`.csv.gz | Succeeded | 2025-02-09T14:56:09.0800631Z | 2024-02-09T15:02:06.5529901Z |  |
+| 00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://sample.blob.core.windows.net/sample/102.csv.gz | Succeeded | 2025-02-09T14:56:09.0800631Z | 2024-02-09T15:02:06.5529901Z |  |
 |00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://sample.blob.core.windows.net/sample/103.csv.gz | Failed | 2025-02-09T14:56:09.3026602Z |  | Failed to download |
 
 ## Related content
