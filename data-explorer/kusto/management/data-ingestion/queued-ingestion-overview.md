@@ -31,7 +31,7 @@ To understand the historical data better, the data engineer lists a maximum of 1
 
 ```kusto
 .list blobs (
-    "https://<blobstoragelocation>/logsparquet1tb;managed_identity=system"
+    "https://\<blobstoragelocation>/logsparquet1tb;managed_identity=system"
 )
 MaxFiles=10
  ```
@@ -40,16 +40,16 @@ MaxFiles=10
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://<blobstoragelocation>/100.parquet |  1024 | CreationTime |
-| https://<blobstoragelocation>/101.parquet | 1024  | CreationTime |
-| https://<blobstoragelocation>/102.parquet | 1024  | CreationTime |
-| https://<blobstoragelocation>/103.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/104.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/105.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/106.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/107.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/108.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/109.csv.gz | 1024 | CreationTime |
+| https://\<blobstoragelocation>/100.parquet |  1024 | CreationTime |
+| https://\<blobstoragelocation>/101.parquet | 1024  | CreationTime |
+| https://\<blobstoragelocation>/102.parquet | 1024  | CreationTime |
+| https://\<blobstoragelocation>/103.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/104.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/105.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/106.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/107.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/108.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/109.csv.gz | 1024 | CreationTime |
 
 ### Ingest folder
 
@@ -117,16 +117,16 @@ PathFormat=("output/03/Year=" datetime_pattern("yyyy'/Month='MM'/Day='dd", creat
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://<blobstoragelocation>/100.parquet |  1024 | CreationTime |
-| https://<blobstoragelocation>/101.parquet | 1024  | CreationTime |
-| https://<blobstoragelocation>/102.parquet | 1024  | CreationTime |
-| https://<blobstoragelocation>/103.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/104.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/105.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/106.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/107.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/108.parquet | 1024 | CreationTime |
-| https://<blobstoragelocation>/110.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/100.parquet |  1024 | CreationTime |
+| https://\<blobstoragelocation>/101.parquet | 1024  | CreationTime |
+| https://\<blobstoragelocation>/102.parquet | 1024  | CreationTime |
+| https://\<blobstoragelocation>/103.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/104.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/105.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/106.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/107.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/108.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/110.parquet | 1024 | CreationTime |
 
 ### Ingest 20 files
 
@@ -149,10 +149,10 @@ with (format='parquet')
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://<blobstoragelocation>/100.parquet |  1024 | CreationTime |
-| https://<blobstoragelocation>/101.parquet | 1024  | CreationTime |
-| https://<blobstoragelocation>/102.parquet | 1024  | CreationTime |
-| https://<blobstoragelocation>/103.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>/100.parquet |  1024 | CreationTime |
+| https://\<blobstoragelocation>/101.parquet | 1024  | CreationTime |
+| https://\<blobstoragelocation>/102.parquet | 1024  | CreationTime |
+| https://\<blobstoragelocation>/103.parquet | 1024 | CreationTime |
 |...|...|...|
 
 ### Track follow up ingestion status
@@ -189,9 +189,9 @@ Since some blobs were ingested, some failed, and some are still pending, the `.s
 
 | IngestionOperationId | BlobUrl | IngestionStatus | StartedAt | CompletedAt | FailedReason |
 |--|--|--|--|--|--|
-| 22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://<blobstoragelocation>/100.parquet | Pending | 2025-02-09T14:56:08.8708746Z |  |  |
-| 22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://<blobstoragelocation>/102.parquet | Succeeded | 2025-02-09T14:56:09.0800631Z | 2024-02-09T15:02:06.5529901Z |  |
-|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://<blobstoragelocation>/103.parquet | Failed | 2025-02-09T14:56:09.3026602Z |  | Failed to download |
+| 22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://\<blobstoragelocation>/100.parquet | Pending | 2025-02-09T14:56:08.8708746Z |  |  |
+| 22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://\<blobstoragelocation>/102.parquet | Succeeded | 2025-02-09T14:56:09.0800631Z | 2024-02-09T15:02:06.5529901Z |  |
+|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://\<blobstoragelocation>/103.parquet | Failed | 2025-02-09T14:56:09.3026602Z |  | Failed to download |
 | ... | ... | ... | ... | ... | ... |
 
 ### Cancel ingestion
