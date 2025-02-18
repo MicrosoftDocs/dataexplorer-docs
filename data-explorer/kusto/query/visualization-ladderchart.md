@@ -3,12 +3,12 @@ title:  Ladder chart visualization
 description:  This article describes the ladder chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/29/2025
+ms.date: 02/18/2025
 monikerRange: "azure-data-explorer"
 ---
 # Ladder chart
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The last two columns are the x-axis, and the other columns are the y-axis.
 
