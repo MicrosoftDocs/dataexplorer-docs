@@ -1,11 +1,11 @@
 ---
-title:  node_degree_in
+title:  node_degree_in (graph function)
 description:  This article describes the node_degree_in() command.
 ms.topic: reference
-ms.date: 02/17/2025
+ms.date: 02/18/2025
 ---
 
-# node_degree_in()
+# node_degree_in() (graph function)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
