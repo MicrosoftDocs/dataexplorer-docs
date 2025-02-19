@@ -10,11 +10,16 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.
+Returns a unique identifier that identifies the data shard ("extent") that the current record resides in at the time the query was run.
 
 Applying this function to calculated data that isn't attached to a data shard returns an empty guid (all zeros).
 
 > **Deprecated aliases:** extentid()
+
+> [!CAUTION]
+>
+> The value returned by this function isn't guaranteed to remain stable over time. The system continuously performs data grooming operations in the background
+> and these can result with changes to existing extents and their IDs.
 
 ## Syntax
 
@@ -24,13 +29,13 @@ Applying this function to calculated data that isn't attached to a data shard re
 
 ## Returns
 
-A value of type `guid` that identifies the current record's data shard,
+A value of type `guid` that identifies the current record's data shard at the time the query was run,
 or an empty guid (all zeros).
 
 ## Example
 
 The following example shows how to get a list of all the data shards
-that have records from an hour ago with a specific value for the
+that currently have records from an hour ago with a specific value for the
 column `ActivityId`. It demonstrates that some query operators (here,
 the `where` operator, and also `extend` and `project`)
 preserve the information about the data shard hosting the record.
