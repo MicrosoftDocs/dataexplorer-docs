@@ -2,7 +2,7 @@
 title:  node_degree_out (graph function)
 description:  This article describes the node_degree_out() command.
 ms.topic: reference
-ms.date: 02/18/2025
+ms.date: 02/19/2025
 ---
 
 # node_degree_out() (graph function)
@@ -30,7 +30,7 @@ The `node_degree_out` function calculates the *out-degree*, or number of outgoin
 
 Returns the out-degree of the input node.
 
-## Example
+## Examples
 
 The examples in this section show how to use the syntax to help you get started.
 
@@ -80,7 +80,7 @@ project src.LocationName, dest.LocationName, route.TransportMode, node_degree_ou
 
 ## Find employee with no managers
 
-The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to find instances where a manager node has an incoming edge from an employee node. Then, it uses the `node_degree_out` function to identify managers who don't report to any manager.
+The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to find employees who report to a top-level manager who doesn't report to anyone else. It uses the `node_degree_out` function to identify the managers who don't report to any other manager.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
