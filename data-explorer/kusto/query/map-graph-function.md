@@ -3,13 +3,13 @@ title: map() (graph function)
 description: Learn how to use the map() function to evaluate an expression over the elements of a variable length edge.
 ms.reviewer: michalfaktor
 ms.topic: reference
-ms.date: 02/17/2025
+ms.date: 02/19/2025
 ---
 # map() (graph function)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-The `map()` graph function calculates an expression for each *edge* and *inner node* along a [variable length](graph-match-operator.md#variable-length-edge) path and returns a dynamic array of all results.
+The `map()` graph function calculates an expression for each *edge* or *inner node* along a [variable length](graph-match-operator.md#variable-length-edge) path and returns a dynamic array of all results.
 
 > [!NOTE]
 > This function is used with the [graph-match](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md) operators.

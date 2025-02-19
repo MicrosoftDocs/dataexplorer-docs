@@ -3,13 +3,13 @@ title: all() (graph function)
 description: Learn how to use the all() function to evaluate a condition over the elements of a variable length edge.
 ms.reviewer: michalfaktor
 ms.topic: reference
-ms.date: 02/17/2025
+ms.date: 02/19/2025
 ---
 # all() (graph function)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-The `all()` graph function evaluates a condition for each *edge* and *inner node* along a [variable length](graph-match-operator.md#variable-length-edge) path.
+The `all()` graph function evaluates a condition for each *edge* or *inner node* along a [variable length](graph-match-operator.md#variable-length-edge) path.
 
 > [!NOTE]
 > This function is used with the [graph-match](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md) operators.
@@ -25,7 +25,7 @@ The `all()` graph function evaluates a condition for each *edge* and *inner node
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *edge* | `string` |  :heavy_check_mark: | A variable length edge from the [graph-match operator](graph-match-operator.md) or [graph-shortest-paths operator](graph-shortest-paths-operator.md) pattern. For more information, see [Graph pattern notation](graph-match-operator.md#graph-pattern-notation). |
-| *condition* | `string` |  :heavy_check_mark: | A Boolean expression composed of properties of the *edge* or *inner node*, when [inner_nodes](inner_nodes-graph-function.md) is used, in the [variable length edge](./graph-match-operator.md#variable-length-edge). A property is referenced using the property name directly. The expression is evaluated for each *edge* and *inner node* in the [variable length edge](./graph-match-operator.md#variable-length-edge). |
+| *condition* | `string` |  :heavy_check_mark: | A Boolean expression composed of properties of the *edge* or *inner node*, when [inner_nodes](inner_nodes-graph-function.md) is used, in the [variable length edge](./graph-match-operator.md#variable-length-edge). A property is referenced using the property name directly. The expression is evaluated for each *edge* or *inner node* in the [variable length edge](./graph-match-operator.md#variable-length-edge). |
 
 ## Returns
 
