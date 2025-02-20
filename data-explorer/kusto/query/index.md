@@ -47,7 +47,7 @@ Because Kusto Query Language is a part of nearly everything you do in Microsoft 
 
 A Kusto query is a read-only request to process data and return results. The request is stated in plain text, using a data-flow model that is easy to read, author, and automate. Kusto queries are made of one or more query statements.
 
-A Kusto Query Language query is a read-only request to process data and return results – it doesn’t write any data. Queries operate on data that's organized into a hierarchy of [databases](schema-entities/databases.md), [tables](schema-entities/tables.md), and [columns](schema-entities/columns.md), similar to SQL.
+A Kusto query doesn’t write any data. Queries operate on data that's organized into a hierarchy of [databases](schema-entities/databases.md), [tables](schema-entities/tables.md), and [columns](schema-entities/columns.md), similar to SQL.
 
 Requests are stated in plain language and use a data-flow model designed to make the syntax easy to read, write, and automate.
 

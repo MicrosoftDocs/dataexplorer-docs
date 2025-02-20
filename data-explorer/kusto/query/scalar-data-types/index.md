@@ -43,7 +43,7 @@ While most of the data types are standard, you might be less familiar with types
 
 - ***Timespan*** is a data type that refers to a measure of time such as hours, days, or seconds. Don't confuse *timespan* with *datetime*, which evaluates to an actual date and time, not a measure of time. The following table shows a list of *timespan* suffixes.
 
-- ***Guid*** is a datatype representing a 128-bit, globally unique identifier, which follows the standard format of [8]-[4]-[4]-[4]-[12], where each [number] represents the number of characters and each character can range from 0-9 or a-f.
+- ***GUID*** is a datatype representing a 128-bit, globally unique identifier, which follows the standard format of [8]-[4]-[4]-[4]-[12], where each [number] represents the number of characters and each character can range from 0-9 or a-f.
 ::: moniker-end
 
 ## Null values
