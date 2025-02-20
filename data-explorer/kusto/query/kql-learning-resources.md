@@ -16,7 +16,7 @@ For more information on KQL, see [KQL overview](index.md).
 
 ## Demo environment
 
-You can practice Kusto Query Language statements <!--- including the ones in this article ---> in a [Log Analytics demo environment](https://aka.ms/lademo) in the Azure portal. There's no charge to use this practice environment, but you do need an Azure account to access it.
+You can practice Kusto Query Language statements in a [Log Analytics demo environment](https://aka.ms/lademo) in the Azure portal. There's no charge to use this practice environment, but you do need an Azure account to access it.
 
 Like Log Analytics in your production environment, it can be used in many ways:
 
@@ -28,12 +28,8 @@ Like Log Analytics in your production environment, it can be used in many ways:
     You can explore the queries that come with Microsoft Sentinel out-of-the-box. Double-clicking a query places the whole query in the query window at the point of the cursor.
     ::: moniker-end
 
-    :::image type="content" source="tutorials/common-tasks-microsoft-sentinel/portal-placement.png" alt-text="Screenshot that shows the Log Analytics demo environment.":::
-
-    <!--do we want to keep or recreate this image without text?-->
-
 ::: moniker range="microsoft-sentinel"
-Like in this demo environment, you can query and filter data in the Microsoft Sentinel **Logs** page. You can select a table and drill down to see columns. You can modify the default columns shown using the **Column chooser**, and you can set the default time range for queries. If the time range is explicitly defined in the query, the time filter is unavailable (grayed out). For more information, see 
+Like in this demo environment, you can query and filter data in the Microsoft Sentinel **Logs** page. You can select a table and drill down to see columns. You can modify the default columns shown using the **Column chooser**, and you can set the default time range for queries. If the time range is explicitly defined in the query, the time filter is unavailable (grayed out).
 
 If you're onboarded to [Microsoft's unified security operations platform](/azure/sentinel/microsoft-sentinel-defender-portal), you can also query and filter data in the Microsoft Defender **Advanced hunting** page. For more information, see [Advanced hunting with Microsoft Sentinel data in Microsoft Defender portal](/defender-xdr/advanced-hunting-microsoft-defender?toc=%2Fazure%2Fsentinel%2FTOC.json&bc=%2Fazure%2Fsentinel%2Fbreadcrumb%2Ftoc.json&branch=main).
 

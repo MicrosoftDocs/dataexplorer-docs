@@ -8,11 +8,15 @@ ms.date: 08/11/2024
 adobe-target: true
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
-# Kusto Query Language (KQL) overview
+# Kusto Query Language overview
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)]
 
 Kusto Query Language (KQL) is a powerful tool for exploring your data and discovering patterns, identifying anomalies and outliers, creating statistical modeling, and more.
 
-KQL is a simple yet powerful language to query structured, semi-structured, and unstructured data. The language is expressive, easy to read and understand the query intent, and optimized for authoring experiences. Kusto Query Language is optimal for querying telemetry, metrics, and logs with deep support for text search and parsing, time-series operators and functions, analytics and aggregation, geospatial, vector similarity searches, and many other language constructs that provide the most optimal language for data analysis. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
+KQL is a simple yet powerful language to query structured, semi-structured, and unstructured data. The language is expressive, easy to read and understand the query intent, and optimized for authoring experiences. KQL is optimal for querying telemetry, metrics, and logs with deep support for text search and parsing, time-series operators and functions, analytics and aggregation, geospatial, vector similarity searches, and many other language constructs that provide the most optimal language for data analysis. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
+
+If you have a background in scripting or working with databases, much the content of this article should feel familiar. If not, don't worry, as the intuitive nature of the language quickly enables you to start writing your own queries and driving value for your organization.
 
 ::: moniker range="azure-data-explorer"
 This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). To learn how to use KQL, see [Tutorial: Learn common operators](tutorials/learn-common-operators.md).
@@ -23,11 +27,11 @@ This article provides an explanation of the query language and offers practical 
 ::: moniker-end
 
 ::: moniker range="microsoft-sentinel"
-Kusto Query Language is also the language you use to work with and manipulate data in Microsoft Sentinel. The logs you feed into your workspace aren't worth much if you can't analyze them and get the important information hidden in all that data. Kusto Query Language has not only the power and flexibility to get that information, but the simplicity to help you get started quickly. If you have a background in scripting or working with databases, much the content of this article should feel familiar. If not, don't worry, as the intuitive nature of the language quickly enables you to start writing your own queries and driving value for your organization.
+KQL is also the language you use to work with and manipulate data in Microsoft Sentinel. The logs you feed into your workspace aren't worth much if you can't analyze them and get the important information hidden in all that data. KQL has not only the power and flexibility to get that information, but the simplicity to help you get started quickly.
 
-This article introduces the basics of Kusto Query Language, covering some of the most used functions and operators, which should address 75 to 80 percent of the queries users write day to day. When you need more depth, or to run more advanced queries, you can take advantage of the [Advanced KQL for Microsoft Sentinel workbook](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/advanced-kql-framework-workbook-empowering-you-to-become-kql/ba-p/3033766).
+This article introduces the basics of KQL, covering some of the most used functions and operators, which should address 75 to 80 percent of the queries users write day to day. When you need more depth, or to run more advanced queries, you can take advantage of the [Advanced KQL for Microsoft Sentinel workbook](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/advanced-kql-framework-workbook-empowering-you-to-become-kql/ba-p/3033766).
 
-## Why Kusto Query Language for Microsoft Sentinel?
+## Why KQL for Microsoft Sentinel?
 
 Microsoft Sentinel is built on top of the Azure Monitor service and it uses Azure Monitor’s [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) workspaces to store all of its data. This data includes any of the following:
 
@@ -36,11 +40,11 @@ Microsoft Sentinel is built on top of the Azure Monitor service and it uses Azur
 * data created by Microsoft Sentinel itself, resulting from the analyses it creates and performs - for example, alerts, incidents, and UEBA-related information.
 * data uploaded to Microsoft Sentinel to assist with detection and analysis - for example, threat intelligence feeds and watchlists.
 
-Kusto Query Language was developed as part of the [Azure Data Explorer](/azure/data-explorer/) service, and it’s therefore optimized for searching through big-data stores in a cloud environment. It’s designed to help you dive deep into your of data and explore their hidden treasures.
+KQL was developed as part of the [Azure Data Explorer](/azure/data-explorer/) service, and it’s therefore optimized for searching through big-data stores in a cloud environment. It’s designed to help you dive deep into your of data and explore their hidden treasures.
 
-Kusto Query Language is also used in Azure Monitor, and supports extra Azure Monitor features that allow you to retrieve, visualize, analyze, and parse data in Log Analytics data stores. In Microsoft Sentinel, you're using tools based on Kusto Query Language whenever you’re visualizing and analyzing data and hunting for threats, whether in existing rules and workbooks, or in building your own.
+KQL is also used in Azure Monitor, and supports extra Azure Monitor features that allow you to retrieve, visualize, analyze, and parse data in Log Analytics data stores. In Microsoft Sentinel, you're using tools based on KQL whenever you’re visualizing and analyzing data and hunting for threats, whether in existing rules and workbooks, or in building your own.
 
-Because Kusto Query Language is a part of nearly everything you do in Microsoft Sentinel, a clear understanding of how it works helps you get that more out of your SIEM.
+Because KQL is a part of nearly everything you do in Microsoft Sentinel, a clear understanding of how it works helps you get that more out of your SIEM.
 ::: moniker-end
 
 ## What is a Kusto query?
@@ -49,15 +53,13 @@ A Kusto query is a read-only request to process data and return results. The req
 
 A Kusto query doesn’t write any data. Queries operate on data that's organized into a hierarchy of [databases](schema-entities/databases.md), [tables](schema-entities/tables.md), and [columns](schema-entities/columns.md), similar to SQL.
 
-Requests are stated in plain language and use a data-flow model designed to make the syntax easy to read, write, and automate.
-
 ## What is a query statement?
 
 There are three kinds of user [query statements](statements.md):
 
 * A [tabular expression statement](tabular-expression-statements.md)
 * A [let statement](let-statement.md)
-* A [set statement](set-statement.md) <!--is this supported in Sentinel?-->
+* A [set statement](set-statement.md)
 
 All query statements are separated by a `;` (semicolon), and only affect the query at hand.
 
@@ -102,7 +104,7 @@ In contrast to Kusto queries, [Management commands](../management/index.md) are 
 .create table Logs (Level:string, Text:string)
 ```
 
-Management commands have their own syntax, which isn't part of the Kusto Query Language syntax, although the two share many concepts. In particular, management commands are distinguished from queries by having the first character in the text of the command be the dot (`.`) character (which can't start a query).
+Management commands have their own syntax, which isn't part of the KQL syntax, although the two share many concepts. In particular, management commands are distinguished from queries by having the first character in the text of the command be the dot (`.`) character (which can't start a query).
 This distinction prevents many kinds of security attacks, simply because it prevents embedding management commands inside queries.
 
 Not all management commands modify data or metadata. The large class of commands that start with `.show`, are used to display metadata or data. For example, the `.show tables` command returns a list of all tables in the current database.
@@ -123,5 +125,5 @@ KQL is used by many other Microsoft services. For specific information on the us
 * [Tutorial: Learn common operators](tutorials/learn-common-operators.md)
 * [Tutorial: Use aggregation functions](tutorials/use-aggregation-functions.md)
 * [KQL quick reference](kql-quick-reference.md)
-* [SQL to Kusto Query Language cheat sheet](sql-cheat-sheet.md)
+* [SQL to KQL cheat sheet](sql-cheat-sheet.md)
 * [Query best practices](best-practices.md)
