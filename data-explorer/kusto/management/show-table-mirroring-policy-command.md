@@ -40,4 +40,5 @@ The following example requests information about the *myTable* table mirroring p
 
 |PolicyName|EntityName|Policy|ChildEntities| EntityType|
 |------|------|------|------|------|
-|MirroringPolicy|[a9c1234-b1c2-34d9-a9c1-b23c45d3e2fg3].[MyTable]	|{"ConnectionStrings": ["https://example.microsoft.com/45a01bcd-cd22-41e0/45a01bcd-cd22-41e0-567f-g891-30hij152536kl/Tables/myTable/;******"], "Format": "parquet", "IsEnabled": true,"Partitions": null, "PathFormat": null} | | Table|
+|MirroringPolicy|[a9c1234-b1c2-34d9-a9c1-b23c45d3e2fg3].[MyTable]	|{"ConnectionStrings": ["https://example.microsoft.com/45a01bcd-cd22-41e0/45a01bcd-cd22-41e0-567f-g891-30hij152536kl/Tables/myTable/;******"], "Format": "parquet", "IsEnabled": true,"Partitions": null, "PathFormat": null, "Backfill": false,
+  "EffectiveDateTime": null, "TargetLatencyInMinutes": 180} | | Table|
