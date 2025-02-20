@@ -61,7 +61,7 @@ EnableTracking=true
 with (format='parquet')
 <|
     .list blobs (
-        "https://\<blobstoragelocation>t/\<blobstoragelocation>;managed_identity=system"
+        "https://\<blobstoragelocation>/\<foldername>;managed_identity=system"
     )
     MaxFiles=10
 ```
@@ -72,7 +72,7 @@ with (format='parquet')
 |----------------------|-----------------|---------------|
 |00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444|Kusto.Web.KWE,Query;11112222;11112222;22223333-bbbb-3333-cccc-4444cccc5555|.show queued ingestion operations "00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |
 
-The `OpertionInfo`, including the `IngestionOperationId`, is then used to [track the ingestion status](#track-ingestion-status).
+The `OperationInfo`, which includes the `IngestionOperationId`, is then used to [track the ingestion status](#track-ingestion-status).
 
 ### Track ingestion status
 
@@ -94,7 +94,7 @@ After the results of the ingestion are examined, another attempt at listing blob
 
 ```kusto
 .list blobs (
-    "https://\<blobstoragelocation>/\<blobstoragelocation>;managed_identity=system"
+    "https://\<blobstoragelocation>/\<foldername>;managed_identity=system"
 )
 Suffix="parquet"
 MaxFiles=10
@@ -104,7 +104,7 @@ Then a path format is added to capture the creation time.
 
 ```kusto
 .list blobs (
-    "https://\<blobstoragelocation>/\<blobstoragelocation>;managed_identity=system"
+    "https://\<blobstoragelocation>/\<foldername>;managed_identity=system"
 )
 Suffix="parquet"
 MaxFiles=10
@@ -115,16 +115,16 @@ PathFormat=("output/03/Year=" datetime_pattern("yyyy'/Month='MM'/Day='dd", creat
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-100.parquet |  7,429,062 | {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-101.parquet | 262,610  |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-102.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-103.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-104.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-105.parquet | 7,441,587 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-106.parquet | 1,087,425 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-107.parquet | 6,238,357 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-108.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-109.parquet | 6,338,148 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-100.parquet |  7,429,062 | {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-101.parquet | 262,610  |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-102.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-103.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-104.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-105.parquet | 7,441,587 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-106.parquet | 1,087,425 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-107.parquet | 6,238,357 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-108.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-109.parquet | 6,338,148 |  {"creationTime":"03/20/2025 00:00:00"} |
 
 The `CapturedVariables` column is populated by dates that match those in the `BlobUri` column.
 
@@ -149,11 +149,11 @@ with (format='parquet')
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-100.parquet |  7,429,062 | {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-101.parquet | 262,610  |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-102.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-103.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-104.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-100.parquet |  7,429,062 | {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-101.parquet | 262,610  |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-102.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-103.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-104.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
 |...|...|...|
 
 ### Track follow up ingestion status

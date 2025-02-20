@@ -32,7 +32,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Returns
 
-### Returns for queued ingestion operations with details
+<!--### Returns for queued ingestion operations with details
 
 The command returns a table with details about the ingestion status for each blob ingested in the operation.
 
@@ -43,7 +43,7 @@ The command returns a table with details about the ingestion status for each blo
 |IngestionStatus|`string` |The status of the ingestion.|
 |StartedAt | `datetime` |Date/time, in UTC, at which the `.ingest-from-storage-queued` was executed.|
 |CompletedAt | `datetime` |Date/time, in UTC, at which the `.ingest-from-storage-queued` was completed.|
-|FailedReasons | `string` | Reasons for the ingestion failure.|
+|FailedReasons | `string` | Reasons for the ingestion failure.| -->
 
 ### Returns for queued ingestion operations
 
@@ -66,7 +66,7 @@ The command returns a table with the latest update information for each ID.
 
 #### States
 
-The following table describes the possible values for the result table's *State* column:
+The following table describes the possible values for the result table's *State* column.
 
 | Value | Description |
 |--|--|
