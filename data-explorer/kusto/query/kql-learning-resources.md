@@ -14,6 +14,8 @@ Kusto Query Language (KQL) is a powerful tool to explore your data and discover 
 
 For more information on KQL, see [KQL overview](index.md).
 
+::: moniker range="azure-monitor"
+
 ## Demo environment
 
 You can practice Kusto Query Language statements in a [Log Analytics demo environment](https://aka.ms/lademo) in the Azure portal. There's no charge to use this practice environment, but you do need an Azure account to access it.
@@ -24,11 +26,23 @@ Like Log Analytics in your production environment, it can be used in many ways:
 
 * **Find an existing query to study or modify.** Select the **Queries** tab (shown in the red rectangle at the upper left) to see a list of queries available out-of-the-box. Or, select **Queries** from the button bar at the top right.
 
-    ::: moniker range="microsoft-sentinel"
+::: moniker-end
+
+::: moniker range="microsoft-sentinel"
+
+## Demo environment
+
+You can practice Kusto Query Language statements in a [Log Analytics demo environment](https://aka.ms/lademo) in the Azure portal. There's no charge to use this practice environment, but you do need an Azure account to access it.
+
+Like Log Analytics in your production environment, it can be used in many ways:
+
+* **Choose a table on which to build a query.** From the default **Tables** tab (shown in the red rectangle at the upper left), select a table from the list of tables grouped by topics (shown at the lower left). Expand the topics to see the individual tables, and you can further expand each table to see all its fields (columns). Double-clicking on a table or a field name places it at the point of the cursor in the query window. Type the rest of your query following the table name, as directed below.
+
+* **Find an existing query to study or modify.** Select the **Queries** tab (shown in the red rectangle at the upper left) to see a list of queries available out-of-the-box. Or, select **Queries** from the button bar at the top right.
+
     You can explore the queries that come with Microsoft Sentinel out-of-the-box. Double-clicking a query places the whole query in the query window at the point of the cursor.
     ::: moniker-end
 
-::: moniker range="microsoft-sentinel"
 Like in this demo environment, you can query and filter data in the Microsoft Sentinel **Logs** page. You can select a table and drill down to see columns. You can modify the default columns shown using the **Column chooser**, and you can set the default time range for queries. If the time range is explicitly defined in the query, the time filter is unavailable (grayed out).
 
 If you're onboarded to [Microsoft's unified security operations platform](/azure/sentinel/microsoft-sentinel-defender-portal), you can also query and filter data in the Microsoft Defender **Advanced hunting** page. For more information, see [Advanced hunting with Microsoft Sentinel data in Microsoft Defender portal](/defender-xdr/advanced-hunting-microsoft-defender?toc=%2Fazure%2Fsentinel%2FTOC.json&bc=%2Fazure%2Fsentinel%2Fbreadcrumb%2Ftoc.json&branch=main).
