@@ -454,7 +454,7 @@
       "source_path": "using-diagnostic-logs.md",
       "redirect_url": "/azure/data-explorer/monitor-data-explorer",
       "redirect_document_id": false
-    }
+    },
     {
       "source_path": "kusto/query/kusto-sentinel-overview.md",
       "redirect_url": "/kusto/query/?view=microsoft-sentinel",
