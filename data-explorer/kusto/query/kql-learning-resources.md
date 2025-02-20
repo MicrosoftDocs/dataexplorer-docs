@@ -28,7 +28,7 @@ Like Log Analytics in your production environment, it can be used in many ways:
 
 ::: moniker-end
 
-::: moniker range="microsoft-sentinel"
+::: moniker range="microsoft-sentinel || azure-monitor"
 
 ## Demo environment
 
@@ -40,8 +40,11 @@ Like Log Analytics in your production environment, it can be used in many ways:
 
 * **Find an existing query to study or modify.** Select the **Queries** tab (shown in the red rectangle at the upper left) to see a list of queries available out-of-the-box. Or, select **Queries** from the button bar at the top right.
 
+::: moniker-end
+
+::: moniker range="microsoft-sentinel"
+
     You can explore the queries that come with Microsoft Sentinel out-of-the-box. Double-clicking a query places the whole query in the query window at the point of the cursor.
-    ::: moniker-end
 
 Like in this demo environment, you can query and filter data in the Microsoft Sentinel **Logs** page. You can select a table and drill down to see columns. You can modify the default columns shown using the **Column chooser**, and you can set the default time range for queries. If the time range is explicitly defined in the query, the time filter is unavailable (grayed out).
 
