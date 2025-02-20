@@ -14,20 +14,6 @@ Kusto Query Language (KQL) is a powerful tool to explore your data and discover 
 
 For more information on KQL, see [KQL overview](index.md).
 
-::: moniker range="azure-monitor"
-
-## Demo environment
-
-You can practice Kusto Query Language statements in a [Log Analytics demo environment](https://aka.ms/lademo) in the Azure portal. There's no charge to use this practice environment, but you do need an Azure account to access it.
-
-Like Log Analytics in your production environment, it can be used in many ways:
-
-* **Choose a table on which to build a query.** From the default **Tables** tab (shown in the red rectangle at the upper left), select a table from the list of tables grouped by topics (shown at the lower left). Expand the topics to see the individual tables, and you can further expand each table to see all its fields (columns). Double-clicking on a table or a field name places it at the point of the cursor in the query window. Type the rest of your query following the table name, as directed below.
-
-* **Find an existing query to study or modify.** Select the **Queries** tab (shown in the red rectangle at the upper left) to see a list of queries available out-of-the-box. Or, select **Queries** from the button bar at the top right.
-
-::: moniker-end
-
 ::: moniker range="microsoft-sentinel || azure-monitor"
 
 ## Demo environment
