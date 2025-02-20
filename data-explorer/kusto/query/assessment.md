@@ -5,31 +5,50 @@ ms.reviewer: orspod
 ms.topic: reference
 ms.date: 08/11/2024
 ---
-# Kusto Query Language
-
-Kusto Query Language is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, etc. 
-You can query different kinds of data. The language is expressive, easy to read and understand the query intent, and optimized for authoring experiences. Kusto Query Language is optimal for querying telemetry, metrics, and logs with deep support for text search and parsing, time-series operators and functions, analytics and aggregation, geospatial, vector similarity searches, and many other language constructs that provide the most optimal language for data analysis. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
-
 This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). To learn how to use KQL, see [Tutorial: Learn common operators](tutorials/learn-common-operators.md).
 
-The most common kind of query statement is a tabular expression **statement**, which means both its input and output consist of tables or tabular datasets. Tabular statements contain zero or more **operators**, each of which starts with a tabular input and returns a tabular output. Operators are sequenced by a `|` (pipe). Data flows, or is piped, from one operator to the next. The data is filtered or manipulated at each step and then fed into the following step.
+# Introduction to Kusto Query Language (KQL)
 
-A Kusto query is a read-only request to process data and return results. The request is stated in plain text, using a data-flow model that is easy to read, author, and automate. Kusto queries are made of one or more query statements.
+Kusto Query Language is a powerful tool for data exploration, pattern discovery, and statistical analysis. It's designed to efficiently query various types of data, with particular strength in handling telemetry, metrics, and logs. The language is expressively designed to be both readable and optimized for performance.
 
-There are two kinds of user [query statements](statements.md):
+## Core Features
+
+- Deep support for text search and parsing
+
+- Time-series operators and functions
+
+- Analytics and aggregation capabilities
+
+- Geospatial analysis functions
+
+- Vector similarity searches
+
+- Optimized data analysis constructs
+
+# Query Structure and Operation
+## Basic Query Components
+A Kusto query is a read-only request that processes data and returns results. Queries consist of one or more statements, written in plain text using a data-flow model.
+
+## Types of Query Statements
+There are three kinds of user [query statements](statements.md):
 
 1. A [tabular expression statement](tabular-expression-statements.md)
-1. A [let statement](let-statement.md)
-1. A [set statement](set-statement.md)
+2. A [let statement](let-statement.md)
+3. A [set statement](set-statement.md)
+All statements are separated by semicolons (;) and affect only the current query.
 
-All query statements are separated by a `;` (semicolon), and only affect the query at hand.
+## The Pipeline Model
+KQL operates like a funnel, where data flows through operators sequentially. Each operator:
 
-For information about application query statements, see [Application query statements](statements.md#application-query-statements).
+- Filters
 
+- Rearranges
+
+- Summarizes the data
 
 It's like a funnel, where you start out with an an entire data table. Each time the data passes through another operator, it's filtered, rearranged, or summarized. Because the piping of information from one operator to another is sequential, the query operator order is important, and can affect both results and performance. At the end of the funnel, you're left with a refined output.
 
-Why don't you see an example query.
+## Query Example
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUUgDZkpxfmlcCAIItD6l6AAAA" target="_blank">Run the query</a>
@@ -45,19 +64,33 @@ StormEvents
 |-----|
 |   28|
 
-Did you no, KQL is case-sensitive for everything – table names, table column names, operators, functions, and so on.
+All query statements are separated by a `;` (semicolon), and only affect the query at hand.
+For information about application query statements, see [Application query statements](statements.md#application-query-statements).
 
-This query has a single tabular expression statement. The statement begins with a reference to a table called *StormEvents* and contains several operators, [`where`](where-operator.md) and [`count`](count-operator.md), each separated by a pipe. The data rows for the source table are filtered by the value of the *StartTime* column and then filtered by the value of the *State* column. In the last line, the query returns a table with a single column and a single row containing the count of the remaining rows.
+## Important Note
+KQL is case-sensitive for all elements:
 
-In contrast to Kusto queries, [Management commands](../management/index.md are requests to     Kusto to process or modify data or metadata. For example, the following management command creates a new Kusto table with two columns, `Level` and `Number`:
+- Table names
 
+- Column names
+
+- Operators
+
+- Functions
+
+## Management Commands
+Management commands in KQL are distinguished by starting with a dot (.) character. For example:
 ```kusto
 .create table Logs (Level:string, Text:string)
 ```
+## Purpose of Management Commands
 
-Management commands have their own syntax, which isn't part of the Kusto Query Language syntax, although the two share many concepts. In particular, management comands are distinguished from queries by having the first character in the text of the command be the dot (`.`) character (which can't start a query). Why do we do it like this? This distinction prevents many kinds of security attacks, simply because it prevents embedding management commands inside queries.
+- Modify data or metadata
+- Display information (commands starting with .show)
+- Handle administrative tasks
 
-Not all management commands modify data or metadata. The large class of commands that start with `.show`, are used to display metadata or data. For example, the `.show tables` command returns a list of all tables in the current database.
+##  Security Feature
+The dot prefix distinction prevents security attacks by ensuring management commands cannot be embedded within regular queries.
 
 For more information on management commands, see [Management commands overview](../management/index.md).
 
