@@ -3,7 +3,7 @@ title: Queued ingestion overview
 description: Learn about queued ingestion and its commands.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/18/2025
+ms.date: 02/20/2025
 ---
 # Queued ingestion overview
 
@@ -31,7 +31,7 @@ To understand the historical data better, the data engineer lists a maximum of 1
 
 ```kusto
 .list blobs (
-    "https://\<blobstoragelocation>/logsparquet1tb;managed_identity=system"
+    "https://\<blobstoragelocation>/\<blobstoragelocation>;managed_identity=system"
 )
 MaxFiles=10
  ```
@@ -40,16 +40,16 @@ MaxFiles=10
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://\<blobstoragelocation>/100.parquet |  1024 | CreationTime |
-| https://\<blobstoragelocation>/101.parquet | 1024  | CreationTime |
-| https://\<blobstoragelocation>/102.parquet | 1024  | CreationTime |
-| https://\<blobstoragelocation>/103.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/104.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/105.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/106.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/107.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/108.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/109.csv.gz | 1024 | CreationTime |
+| https://\<blobstoragelocation>/part-100.parquet |  7,429,062 | {} |
+| https://\<blobstoragelocation>/part-101.parquet | 262,610  |  {} |
+| https://\<blobstoragelocation>/part-102.parquet | 6,154,166 |  {} |
+| https://\<blobstoragelocation>/part-103.parquet | 7,460,408 |  {} |
+| https://\<blobstoragelocation>/part-104.parquet | 6,154,166 |  {} |
+| https://\<blobstoragelocation>/part-105.parquet | 7,441,587 |  {} |
+| https://\<blobstoragelocation>/part-106.parquet | 1,087,425 |  {} |
+| https://\<blobstoragelocation>/part-107.parquet | 6,238,357 |  {} |
+| https://\<blobstoragelocation>/part-108.parquet | 7,460,408 |  {} |
+| https://\<blobstoragelocation>/part-109.parquet | 6,338,148 |  {} |
 
 ### Ingest folder
 
@@ -61,7 +61,7 @@ EnableTracking=true
 with (format='parquet')
 <|
     .list blobs (
-        "https://testdata.blob.core.windows.net/logsparquet1tb;managed_identity=system"
+        "https://\<blobstoragelocation>t/\<blobstoragelocation>;managed_identity=system"
     )
     MaxFiles=10
 ```
@@ -70,9 +70,9 @@ with (format='parquet')
 
 | IngestionOperationId | ClientRequestId | OperationInfo |
 |----------------------|-----------------|---------------|
-|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444|managed_identity=system||
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444|Kusto.Web.KWE,Query;11112222;11112222;22223333-bbbb-3333-cccc-4444cccc5555|.show queued ingestion operations "00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |
 
-The IngestionOperationID is then used to [track the ingestion status](#track-ingestion-status).
+The `OpertionInfo`, including the `IngestionOperationId`, is then used to [track the ingestion status](#track-ingestion-status).
 
 ### Track ingestion status
 
@@ -86,17 +86,15 @@ They run the `.show queued ingestion operations` command to check whether the in
 
 |IngestionOperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
 |--|--|--|--|--|--|--|--|--|--|--|--|
-|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 14:57:41.0000000 |2025-01-10 15:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.parquet' has a malformed Parquet format*|TestDatabase|Logs|
-|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 15:12:23.0000000 |2025-01-10 15:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|TestDatabase|Logs|
-| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-03-19 14:57:41.0000000 |2025-01-10 15:15:04.0000000|Completed | 10 |0 |10 |0 |0 | |TestDatabase|Logs|
 
 ### Filter queued files for ingestion
 
-After the results of the ingestion are examined and changes are made, another attempt at listing blobs for ingestion is made. This time the parquet suffix is added to ensure that only parquet files are ingested.
+After the results of the ingestion are examined, another attempt at listing blobs for ingestion is made. This time the parquet suffix is added to ensure that only parquet files are ingested.
 
 ```kusto
 .list blobs (
-    "https://testdata.blob.core.windows.net/logsparquet1tb;managed_identity=system"
+    "https://\<blobstoragelocation>/\<blobstoragelocation>;managed_identity=system"
 )
 Suffix="parquet"
 MaxFiles=10
@@ -106,7 +104,7 @@ Then a path format is added to capture the creation time.
 
 ```kusto
 .list blobs (
-    "https://testdata.blob.core.windows.net/logsparquet1tb;managed_identity=system"
+    "https://\<blobstoragelocation>/\<blobstoragelocation>;managed_identity=system"
 )
 Suffix="parquet"
 MaxFiles=10
@@ -117,16 +115,18 @@ PathFormat=("output/03/Year=" datetime_pattern("yyyy'/Month='MM'/Day='dd", creat
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://\<blobstoragelocation>/100.parquet |  1024 | CreationTime |
-| https://\<blobstoragelocation>/101.parquet | 1024  | CreationTime |
-| https://\<blobstoragelocation>/102.parquet | 1024  | CreationTime |
-| https://\<blobstoragelocation>/103.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/104.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/105.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/106.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/107.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/108.parquet | 1024 | CreationTime |
-| https://\<blobstoragelocation>/110.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-100.parquet |  7,429,062 | {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-101.parquet | 262,610  |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-102.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-103.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-104.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-105.parquet | 7,441,587 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-106.parquet | 1,087,425 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-107.parquet | 6,238,357 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-108.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-109.parquet | 6,338,148 |  {"creationTime":"03/20/2025 00:00:00"} |
+
+The `CapturedVariables` column is populated by dates that match those in the `BlobUri` column.
 
 ### Ingest 20 files
 
@@ -149,10 +149,11 @@ with (format='parquet')
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://\<blobstoragelocation>/100.parquet |  1024 | CreationTime |
-| https://\<blobstoragelocation>/101.parquet | 1024  | CreationTime |
-| https://\<blobstoragelocation>/102.parquet | 1024  | CreationTime |
-| https://\<blobstoragelocation>/103.parquet | 1024 | CreationTime |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-100.parquet |  7,429,062 | {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-101.parquet | 262,610  |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-102.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-103.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>//output/03/Year=2025//Month=03/Day=20/Hour=00/part-104.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
 |...|...|...|
 
 ### Track follow up ingestion status
@@ -165,18 +166,16 @@ The `.show queued ingestion operations` command is run to check whether there ar
 
 **Output**
 
-|IngestionOperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
+|IngestionOperationId|Started On |Last Updated On |State |Discovered |InProgress|Canceled|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
 |--|--|--|--|--|--|--|--|--|--|--|--|
-|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 |2025-01-10 14:57:41.0000000 |2025-01-10 16:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.parquet' has a malformed Parquet format*|TestDatabase|Logs|
-|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 |2025-01-10 15:12:23.0000000 |2025-01-10 16:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|TestDatabase|Logs|
-| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 |2025-02-20 14:57:41.0000000 | | InProgress| 10 |10 |0 |0 |0 | |TestDatabase|Logs|
 
 The `.show extents` command is run to check whether extents are created with an anterior date for data integrity and historical accuracy.
 
 ```kusto
 .show table Logs extents
 ```
-
+<!--
 ### Check blob ingestion details
 
 Since some blobs were ingested, some failed, and some are still pending, the `.show queued ingestion operations details` command is run to see more detailed information for each blob in the ingestion.
@@ -193,20 +192,21 @@ Since some blobs were ingested, some failed, and some are still pending, the `.s
 | 22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://\<blobstoragelocation>/102.parquet | Succeeded | 2025-02-09T14:56:09.0800631Z | 2024-02-09T15:02:06.5529901Z |  |
 |22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555 | https://\<blobstoragelocation>/103.parquet | Failed | 2025-02-09T14:56:09.3026602Z |  | Failed to download |
 | ... | ... | ... | ... | ... | ... |
+-->
 
 ### Cancel ingestion
 
-Since the mapping didn't complete, the ingestion is now canceled.
+The ingestion is now canceled.
 
 ```Kusto
-.cancel queued ingestion operation '22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555' with(Reason="Canceled due to incomplete mapping")
+.cancel queued ingestion operation '22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555'
 ```
 
 **Output**
 
-|IngestionOperationId|ReasonPhrase|
-|---|---|
-|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444|Canceled due to incomplete mapping|
+|IngestionOperationId|Started On |Last Updated On |State |Discovered |Pending| Canceled | Ingested |Failed|SampleFailedReasons|Database|Table|
+|--|--|--|--|--|--|--|--|--|--|--|--|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-03-20 15:03:11.0000000 ||Canceled | 10 |10 |0 |0 |0 | |TestDatabase|Logs|
 
 They can then roll back the ingestion, fix the issues, and rerun the ingestion.
 

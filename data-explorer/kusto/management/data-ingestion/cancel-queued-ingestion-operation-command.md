@@ -3,7 +3,7 @@ title: .cancel queued ingestion operation command
 description: Learn how to use the `.cancel queued operation` command to cancel a long-running operation.
 ms.reviewer: odkadosh
 ms.topic: reference
-ms.date: 02/17/2025
+ms.date: 02/20/2025
 ---
 # .cancel queued ingestion operation command
 
@@ -19,7 +19,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Syntax
 
-`.cancel queued ingestion operation` *IngestionOperationId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
+`.cancel queued ingestion operation` *IngestionOperationId*
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -28,27 +28,35 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *IngestionOperationId* | `string` |  :heavy_check_mark: | The unique ingestion operation ID returned from the running command.|
-| *ReasonPhrase* | `string` | | The reason for canceling the running command.|
 
 ## Returns
 
 |Output parameter |Type |Description|
 |---|---|---|
-|IngestionOperationId | `string` | The operation ID of the canceled operation.|
-|StartedOn | `datetime` | The start time of the canceled operation. |
-|ReasonPhrase | `string` | Reason the cancellation wasn't successful. |
+|IngestionOperationId | `string` |The unique operation identifier.|
+|StartedOn | `datetime` |Date/time, in UTC, at which the `.ingest-from-storage-queued` was executed.|
+|LastUpdatedOn | `datetime` |Date/time, in UTC, when the status was updated.|
+|State | `string` |The state of the operation.|
+|Discovered | `long` |Count of the blobs that were listed from storage and queued for ingestion.|
+|Pending | `long` |Count of the blobs to be ingested.|
+|Canceled | `long` |Count of the blobs that were canceled due to a call to the [.cancel queued ingestion operation](cancel-queued-ingestion-operation-command.md) command.|
+|Ingested | `long` |Count of the blobs that have been ingested.|
+|Failed | `long` |Count of the blobs that failed **permanently**.|
+|SampleFailedReasons | `string` |A sample of reasons for blob ingestion failures.|
+|Database | `string` |The database where the ingestion process is occurring.|
+|Table | `string` | The table where the ingestion process is occurring.|
 
 ## Example
 
 The following example cancels the ingestion of operation `00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444` and provides a reason.
 
 ```Kusto
-.cancel queued ingestion operation '00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444' with(Reason="Command canceled by me")
+.cancel queued ingestion operation '00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444'
 ```
 
-|IngestionOperationId|ReasonPhrase|
-|---|---|
-|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444|Command canceled by me|
+|IngestionOperationId|Started On |Last Updated On |State |Discovered |Pending| Canceled | Ingested |Failed|SampleFailedReasons|Database|Table|
+|--|--|--|--|--|--|--|--|--|--|--|--|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-03-20 15:03:11.0000000 ||Canceled | 10 |10 |0 |0 |0 | |TestDatabase|Logs|
 
 ## Related content
 
