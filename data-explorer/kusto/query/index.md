@@ -31,12 +31,12 @@ This article introduces the basics of Kusto Query Language, covering some of the
 
 Microsoft Sentinel is built on top of the Azure Monitor service and it uses Azure Monitor’s [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) workspaces to store all of its data. This data includes any of the following:
 
-- data ingested from external sources into predefined tables using Microsoft Sentinel data connectors.
-- data ingested from external sources into user-defined custom tables, using custom-created data connectors and some types of out-of-the-box connectors. 
-- data created by Microsoft Sentinel itself, resulting from the analyses it creates and performs - for example, alerts, incidents, and UEBA-related information.
-- data uploaded to Microsoft Sentinel to assist with detection and analysis - for example, threat intelligence feeds and watchlists.
+* data ingested from external sources into predefined tables using Microsoft Sentinel data connectors.
+* data ingested from external sources into user-defined custom tables, using custom-created data connectors and some types of out-of-the-box connectors.
+* data created by Microsoft Sentinel itself, resulting from the analyses it creates and performs - for example, alerts, incidents, and UEBA-related information.
+* data uploaded to Microsoft Sentinel to assist with detection and analysis - for example, threat intelligence feeds and watchlists.
 
-Kusto Query Language was developed as part of the [Azure Data Explorer](/azure/data-explorer/) service, and it’s therefore optimized for searching through big-data stores in a cloud environment. Inspired by famed undersea explorer Jacques Cousteau (and pronounced accordingly "koo-STOH"), it’s designed to help you dive deep into your oceans of data and explore their hidden treasures. 
+Kusto Query Language was developed as part of the [Azure Data Explorer](/azure/data-explorer/) service, and it’s therefore optimized for searching through big-data stores in a cloud environment. It’s designed to help you dive deep into your of data and explore their hidden treasures.
 
 Kusto Query Language is also used in Azure Monitor, and supports extra Azure Monitor features that allow you to retrieve, visualize, analyze, and parse data in Log Analytics data stores. In Microsoft Sentinel, you're using tools based on Kusto Query Language whenever you’re visualizing and analyzing data and hunting for threats, whether in existing rules and workbooks, or in building your own.
 
@@ -76,10 +76,10 @@ Let's look at an example query.
 ::: moniker-end
 
 ```kusto
-StormEvents 
+StormEvents
 | where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
-| where State == "FLORIDA"  
-| count 
+| where State == "FLORIDA"
+| count
 ```
 
 |Count|
@@ -87,7 +87,7 @@ StormEvents
 |   28|
 
 > [!NOTE]
-> KQL is case-sensitive for everything – table names, table column names, operators, functions, and so on.  
+> KQL is case-sensitive for everything – table names, table column names, operators, functions, and so on.
 > Keywords can be used as identifiers by enclosing them in brackets and quotes (`['` and `']` or `["` and `"]`). For example, `['where']`. For more information, see [Identifier naming rules](/kusto/query/schema-entities/entity-names?view=azure-data-explorer&preserve-view=true#identifier-naming-rules)
 
 This query has a single tabular expression statement. The statement begins with a reference to a table called *StormEvents* and contains several operators, [`where`](where-operator.md) and [`count`](count-operator.md), each separated by a pipe. The data rows for the source table are filtered by the value of the *StartTime* column and then filtered by the value of the *State* column. In the last line, the query returns a table with a single column and a single row containing the count of the remaining rows.

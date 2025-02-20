@@ -20,9 +20,9 @@ You can practice Kusto Query Language statements <!--- including the ones in thi
 
 Like Log Analytics in your production environment, it can be used in many ways:
 
-- **Choose a table on which to build a query.** From the default **Tables** tab (shown in the red rectangle at the upper left), select a table from the list of tables grouped by topics (shown at the lower left). Expand the topics to see the individual tables, and you can further expand each table to see all its fields (columns). Double-clicking on a table or a field name places it at the point of the cursor in the query window. Type the rest of your query following the table name, as directed below.
+* **Choose a table on which to build a query.** From the default **Tables** tab (shown in the red rectangle at the upper left), select a table from the list of tables grouped by topics (shown at the lower left). Expand the topics to see the individual tables, and you can further expand each table to see all its fields (columns). Double-clicking on a table or a field name places it at the point of the cursor in the query window. Type the rest of your query following the table name, as directed below.
 
-- **Find an existing query to study or modify.** Select the **Queries** tab (shown in the red rectangle at the upper left) to see a list of queries available out-of-the-box. Or, select **Queries** from the button bar at the top right.
+* **Find an existing query to study or modify.** Select the **Queries** tab (shown in the red rectangle at the upper left) to see a list of queries available out-of-the-box. Or, select **Queries** from the button bar at the top right.
 
     ::: moniker range="microsoft-sentinel"
     You can explore the queries that come with Microsoft Sentinel out-of-the-box. Double-clicking a query places the whole query in the query window at the point of the cursor.
@@ -50,7 +50,6 @@ For general information about KQL, see:
 * [Tutorial: Join data from multiple tables](tutorials/join-data-from-multiple-tables.md)
 * [Cloud Academy: Introduction to Kusto Query Language](https://cloudacademy.com/lab/introduction-to-kusto-query-language/)
 
-
 ::: moniker range="azure-data-explorer"
 
 ## Azure Data Explorer
@@ -70,6 +69,7 @@ For more information about KQL in Microsoft Fabric, see [Get started with Real-T
 ::: moniker-end
 
 ::: moniker range="azure-monitor"
+
 ## Azure Monitor
 
 For more information about KQL in Azure Monitor, see:
@@ -90,4 +90,3 @@ For more information about KQL in Microsoft Sentinel, see:
 * [SC-200: Create queries for Microsoft Sentinel using Kusto Query Language (KQL)](/training/paths/sc-200-utilize-kql-for-azure-sentinel/)
 * [Infosec Train: Kusto Query Language (KQL) eLearning Training Program Online](https://www.infosectrain.com/self-paced-learning/kusto-query-language-training/)
 ::: moniker-end
-

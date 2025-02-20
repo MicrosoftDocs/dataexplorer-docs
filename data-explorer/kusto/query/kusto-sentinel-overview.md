@@ -16,7 +16,7 @@ monikerRange: "microsoft-sentinel"
 
 Kusto Query Language is the language you use to work with and manipulate data in Microsoft Sentinel. The logs you feed into your workspace aren't worth much if you can't analyze them and get the important information hidden in all that data. Kusto Query Language has not only the power and flexibility to get that information, but the simplicity to help you get started quickly. If you have a background in scripting or working with databases, much the content of this article should feel familiar. If not, don't worry, as the intuitive nature of the language quickly enables you to start writing your own queries and driving value for your organization.
 
-This article introduces the basics of Kusto Query Language, covering some of the most used functions and operators, which should address 75 to 80 percent of the queries users write day to day. When you need more depth, or to run more advanced queries, you can take advantage of the new **Advanced KQL for Microsoft Sentinel** workbook (see this [introductory blog post](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/advanced-kql-framework-workbook-empowering-you-to-become-kql/ba-p/3033766)).
+This article introduces the basics of Kusto Query Language, covering some of the most used functions and operators, which should address 75 to 80 percent of the queries users write day to day. When you need more depth, or to run more advanced queries, you can take advantage of the new **Advanced KQL for Microsoft Sentinel** workbook (see [introductory blog post](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/advanced-kql-framework-workbook-empowering-you-to-become-kql/ba-p/3033766)).
 
 ## Background - Why Kusto Query Language?
 
@@ -87,6 +87,7 @@ SigninLogs                              // Get data
 Because the output of every step serves as the input for the following step, the order of the steps can determine the query's results and affect its performance. It's crucial that you order the steps according to what you want to get out of the query.
 
 > [!TIP]
+>
 > - A good rule of thumb is to filter your data early, so you are only passing relevant data down the pipeline. This greatly increases performance and ensures that you aren't accidentally including irrelevant data in summarization steps.
 > - This article points out some other best practices to keep in mind. For a more complete list, see [query best practices](best-practices.md).
 
@@ -112,7 +113,6 @@ In Kusto Query Language, most of the data types follow standard conventions and 
 | `string`   |                    | `System.String`                   |
 | `timespan` | `Time`             | `System.TimeSpan`                 |
 | `decimal`  |                    | `System.Data.SqlTypes.SqlDecimal` |
-
 
 While most of the data types are standard, you might be less familiar with types like *dynamic*, *timespan*, and *guid*.
 
@@ -144,7 +144,6 @@ While most of the data types are standard, you might be less familiar with types
 | `Microsecond` | microseconds |
 | `Tick` | nanoseconds |
 
-
 ***Guid*** is a datatype representing a 128-bit, globally unique identifier, which follows the standard format of [8]-[4]-[4]-[4]-[12], where each [number] represents the number of characters and each character can range from 0-9 or a-f.
 
 > [!NOTE]
@@ -174,6 +173,7 @@ Using `take` earlier in the query can be useful for testing a query, when you do
 SigninLogs
       | take 5
 ```
+
 :::image type="content" source="tutorials/common-tasks-microsoft-sentinel/table-take-5.png" alt-text="Screenshot of the results of a 'take' operator.":::
 
 > [!TIP]
