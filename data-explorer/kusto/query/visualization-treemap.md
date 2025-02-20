@@ -3,7 +3,7 @@ title:  Treemap visualization
 description: Learn how to use the treemap visualization to visualize data.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/28/2025
 monikerRange: "azure-data-explorer"
 ---
 # Treemap
@@ -15,7 +15,7 @@ Treemaps display hierarchical data as a set of nested rectangles. Each level of 
 > [!NOTE]
 >
 > * This visualization can only be used in the context of the [render operator](render-operator.md).
-> * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
+> * This visualization can be used in Kusto.Explorer but isn't available in the Azure Data Explorer web UI.
 
 ## Syntax
 
@@ -26,9 +26,9 @@ Treemaps display hierarchical data as a set of nested rectangles. Each level of 
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *T* | `string` |  :heavy_check_mark: | Input table name.
-| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+|--|--|--|--|
+| *T* | `string` | :heavy_check_mark: | Input table name. |
+| *propertyName*, *propertyValue* | `string` |  | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties). |
 
 ### Supported properties
 
@@ -39,6 +39,10 @@ All properties are optional.
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 
 ## Example
+
+This query counts the number of storm events for each type and state, sorts them in descending order, limits the results to the top 30, and then visualizes the data as a treemap.
+
+[!INCLUDE [help-cluster-note-data-explorer-only](../includes/help-cluster-note-data-explorer-only.md)]
 
 ```kusto
 StormEvents

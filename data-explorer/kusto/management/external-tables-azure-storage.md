@@ -118,19 +118,20 @@ external_table("ExternalTable")
 
 ## Optional properties
 
-| Property         | Type     | Description       |
-|------------------|----------|-------------------------------------------------------------------------------------|
-| `folder`         | `string` | Table's folder                                                                     |
-| `docString`      | `string` | String documenting the table                                                       |
-| `compressed`     | `bool`   | If set, indicates whether the files are compressed as `.gz` files (used in [export scenario](data-export/export-data-to-an-external-table.md) only) |
-| `includeHeaders` | `string` | For delimited text formats (CSV, TSV, ...), indicates whether files contain a header. Possible values are: `All` (all files contain a header), `FirstFile` (first file in a folder contains a header), `None` (no files contain a header). |
-| `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
-| `fileExtension`  | `string` | If set, indicates file extensions of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
-| `encoding`       | `string` | Indicates how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
-| `sampleUris`     | `bool`   | If set, the command result provides several examples of simulated external data files URI as they're expected by the external table definition. This option helps validate whether the *Partitions* and *PathFormat* parameters are defined properly. |
-| `filesPreview`   | `bool`   | If set, one of the command result tables contains a preview of [.show external table artifacts](show-external-table-artifacts.md) command. Like `sampleUri`, the option helps validate the *Partitions* and *PathFormat* parameters of external table definition. |
+| Property           | Type     | Description       |
+|------------------  |----------|-------------------------------------------------------------------------------------|
+| `folder`           | `string` | Table's folder                                                                     |
+| `docString`        | `string` | String documenting the table                                                       |
+| `compressed`       | `bool`   | Only relevant for the [export scenario](data-export/export-data-to-an-external-table.md).<br>If set to true, the data is exported in the format specified by the `compressionType` property. For the read path, compression is automatically detected. |
+| `compressionType`  | `string` | Only relevant for the [export scenario](data-export/export-data-to-an-external-table.md).<br>The compression type of exported files. For non-Parquet files, only `gzip` is allowed. For Parquet files, possible values include `gzip`, `snappy`, `lz4_raw`, `brotli`, and `zstd`. Default is `gzip`. For the read path, compression type is automatically detected. |
+| `includeHeaders`   | `string` | For delimited text formats (CSV, TSV, ...), specifies whether files contain a header. Possible values are: `All` (all files contain a header), `FirstFile` (first file in a folder contains a header), `None` (no files contain a header). |
+| `namePrefix`       | `string` | If set, specifies the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
+| `fileExtension`    | `string` | If set, specifies the extension of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
+| `encoding`         | `string` | Specifies how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
+| `sampleUris`       | `bool`   | If set, the command result provides several examples of simulated external data files URI as they're expected by the external table definition. This option helps validate whether the *Partitions* and *PathFormat* parameters are defined properly. |
+| `filesPreview`     | `bool`   | If set, one of the command result tables contains a preview of [.show external table artifacts](show-external-table-artifacts.md) command. Like `sampleUri`, the option helps validate the *Partitions* and *PathFormat* parameters of external table definition. |
 | `validateNotEmpty` | `bool`   | If set, the connection strings are validated for having content in them. The command will fail if the specified URI location doesn't exist, or if there are insufficient permissions to access it. |
-| `dryRun` | `bool` | If set, the external table definition isn't persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
+| `dryRun`           | `bool`   | If set, the external table definition isn't persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
 
 > [!NOTE]
 > The external table isn't accessed during creation, only during query and export. Use the `validateNotEmpty` optional property during creation to make sure the table definition is valid and the storage is accessible.

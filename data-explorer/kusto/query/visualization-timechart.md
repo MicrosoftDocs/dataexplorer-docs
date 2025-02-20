@@ -3,8 +3,7 @@ title:  Time chart visualization
 description:  This article describes the time chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2024
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+ms.date: 01/21/2025
 ---
 # Time chart
 
@@ -47,7 +46,7 @@ All properties are optional.
 |`xtitle`      |The title of the x-axis (of type `string`).                                       |
 |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-|`ysplit`      |How to split multiple the visualization. For more information, see [`ysplit` property](#ysplit-property).                             |
+|`ysplit`      |How to split the visualization into multiple y-axis values. For more information, see [`ysplit` property](#ysplit-property).                             |
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
 #### `ysplit` property
@@ -58,9 +57,13 @@ This visualization supports splitting into multiple y-axis values:
 |----------|------------------------------------------------------------------|
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
-|`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
+|`panels`  |One chart is rendered for each `ycolumn` value. Maximum five panels.|
 
 ## Examples
+
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Render a timechart
 
@@ -89,7 +92,7 @@ demo_make_series2
 
 ### Label a timechart
 
-The following example renders a timechart that depicts crop damage grouped by week. The timechart x axis is labled "Date" and the y axis is labled "Crop damage."
+The following example renders a timechart that depicts crop damage grouped by week. The timechart x axis label is "Date" and the y axis label is "Crop damage."
 ::: moniker-end
 
 ::: moniker range="azure-data-explorer"

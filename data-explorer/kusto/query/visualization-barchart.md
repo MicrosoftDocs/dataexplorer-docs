@@ -3,8 +3,7 @@ title:  Bar chart visualization
 description:  This article describes the bar chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+ms.date: 01/28/2025
 ---
 # Bar chart
 
@@ -59,7 +58,7 @@ This visualization supports splitting into multiple y-axis values:
 |----------|------------------------------------------------------------------|
 |`none`    |A single y-axis is displayed for all series data. This is the default.      |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
-|`panels`  |One chart is rendered for each `ycolumn` value.|
+|`panels`  |One chart is rendered for each `ycolumn` value. Maximum five panels.|
 
 ::: moniker-end
 
@@ -90,6 +89,10 @@ The supported values of this property are:
 | `stacked100` | Stack "bars" and stretch each one to the same width as the others. |
 
 ## Examples
+
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Render a bar chart
 
@@ -157,6 +160,8 @@ StormEvents
 
 ### Use the `ysplit` property
 
+The following query provides a daily summary of storm-related injuries and deaths, visualized as a bar chart with split axes/panels for better comparison.
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOMQ6DMAxFd07hkagsPQAbHZjhAiFYwogkyDGlVD1800a04O1//2f/Rjzb2x2dhOwFYbFWMz0xgzitFz3VblyYMED52ea7rIjRiILLya1dn/zif6BCLcOOJ3GGk/dDv2S3QUcub0SztGSxgGuvYsGZ/RhDcFicWhbHnzHP6HpkMH5arDNDhGAlGSDfwjyRlPqBQb0BEH1UJQQBAAA=" target="_blank">Run the query</a>
 
@@ -188,6 +193,5 @@ StormEvents
 ```
 
 :::image type="content" source="media/visualization-barchart/bar-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="media/visualization-barchart/bar-chart-ysplit-panels.png":::
-
 
 ::: moniker-end

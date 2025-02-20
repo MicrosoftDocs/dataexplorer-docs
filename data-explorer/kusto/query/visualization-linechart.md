@@ -3,12 +3,12 @@ title:  Line chart visualization
 description:  This article describes the line chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 02/18/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Line chart
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 The line chart visual is the most basic type of chart. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Line charts track changes over short and long periods of time. When smaller changes exist, line graphs are more useful than bar graphs.
 
@@ -25,7 +25,7 @@ The line chart visual is the most basic type of chart. The first column of the q
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
@@ -45,7 +45,7 @@ All properties are optional.
 |`xtitle`      |The title of the x-axis (of type `string`).                                       |
 |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-|`ysplit`      |How to split multiple the visualization. For more information, see [`ysplit` property](#ysplit-property).                             |
+|`ysplit`      |How to split the visualization into multiple y-axis values. For more information, see [`ysplit` property](#ysplit-property).                             |
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
 #### `ysplit` property
@@ -56,11 +56,17 @@ This visualization supports splitting into multiple y-axis values:
 |----------|------------------------------------------------------------------|
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
-|`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
+|`panels`  |One chart is rendered for each `ycolumn` value. Maximum five panels.|
 
 ## Examples
 
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ### Render a line chart
+
+This query retrieves storm events in Virginia, focusing on the start time and property damage, and then displays this information in a line chart.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -77,6 +83,8 @@ StormEvents
 :::image type="content" source="media/visualization-linechart/line-chart.png" alt-text="Screenshot of line chart visualization output." lightbox="media/visualization-linechart/line-chart.png":::
 
 ### Label a line chart
+
+This query retrieves storm events in Virginia, focusing on the start time and property damage, and then displays this information in a line chart with specified titles for better clarity and presentation.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -99,6 +107,8 @@ StormEvents
 
 ### Limit values displayed on the y-axis
 
+This query retrieves storm events in Virginia, focusing on the start time and property damage, and then displays this information in a line chart with specified y-axis limits for better visualization of the data.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxXKsQrCMBRG4d2nuHRS6BBwcMogKJKliC3uof6YiDcp14s14MM3Pet3es3C5y+SfjZ/mgME1KtXWNvc3e3iOndsqkySXxh1NdEhMlo6efZPXCVPEC31EaQHhN4xYQx1ozlqoG3hmOzBGNNSYf+ze7O2WwCSj8TeegAAAA==" target="_blank">Run the query</a>
@@ -114,6 +124,8 @@ StormEvents
 :::image type="content" source="media/visualization-linechart/line-chart-limit-y-values.png" alt-text="Screenshot of line chart with limitations on y-axis values." lightbox="media/visualization-linechart/line-chart-limit-y-values.png":::
 
 ### View multiple y-axes
+
+This query retrieves hail events in Texas, Nebraska, and Kansas. It counts the number of hail events per day for each state, and then displays this information in a line chart with separate panels for each state.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
