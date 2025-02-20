@@ -40,7 +40,7 @@ Microsoft Sentinel is built on top of the Azure Monitor service and it uses Azur
 * data created by Microsoft Sentinel itself, resulting from the analyses it creates and performs - for example, alerts, incidents, and UEBA-related information.
 * data uploaded to Microsoft Sentinel to assist with detection and analysis - for example, threat intelligence feeds and watchlists.
 
-KQL was developed as part of the [Azure Data Explorer](/azure/data-explorer/) service, and it’s therefore optimized for searching through big-data stores in a cloud environment. It’s designed to help you dive deep into your of data and explore their hidden treasures.
+KQL was developed as part of the [Azure Data Explorer](/azure/data-explorer/) service, and it’s therefore optimized for searching through big-data stores in a cloud environment. It’s designed to help you dive deep into your data and explore their hidden treasures.
 
 KQL is also used in Azure Monitor, and supports extra Azure Monitor features that allow you to retrieve, visualize, analyze, and parse data in Log Analytics data stores. In Microsoft Sentinel, you're using tools based on KQL whenever you’re visualizing and analyzing data and hunting for threats, whether in existing rules and workbooks, or in building your own.
 
