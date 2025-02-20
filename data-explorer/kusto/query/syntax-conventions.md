@@ -7,13 +7,11 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # Syntax conventions for reference documentation
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
-
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 This article outlines the syntax conventions followed in the [Kusto Query Language (KQL)](index.md) and [management commands](../management/index.md) reference documentation.
 
-
-A good place to start learning Kusto Query Language is to understand the overall query structure. The first thing you notice when looking at a Kusto query is the use of the pipe symbol (` | `). The structure of a Kusto query starts with getting your data from a data source and then passing the data across a "pipeline," and each step provides some level of processing and then passes the data to the next step. At the end of the pipeline, you get your final result. In effect, this is our pipeline:
+A good place to start learning Kusto Query Language is to understand the overall query structure. The first thing you notice when looking at a Kusto query is the use of the pipe symbol (` | `). The structure of a Kusto query starts with getting your data from a data source and then passing the data across a *pipeline*, and each step provides some level of processing and then passes the data to the next step. At the end of the pipeline, you get your final result. In effect, this is our pipeline:
 
 `Get Data | Filter | Summarize | Sort | Select`
 
@@ -37,8 +35,9 @@ SigninLogs                              // Get data
 Because the output of every step serves as the input for the following step, the order of the steps can determine the query's results and affect its performance. It's crucial that you order the steps according to what you want to get out of the query.
 
 > [!TIP]
-> - A good rule of thumb is to filter your data early, so you are only passing relevant data down the pipeline. This greatly increases performance and ensures that you aren't accidentally including irrelevant data in summarization steps.
-> - This article points out some other best practices to keep in mind. For a more complete list, see [query best practices](best-practices.md).
+>
+> * A good rule of thumb is to filter your data early, so you are only passing relevant data down the pipeline. This greatly increases performance and ensures that you aren't accidentally including irrelevant data in summarization steps.
+> * This article points out some other best practices to keep in mind. For a more complete list, see [query best practices](best-practices.md).
 
 ## Syntax conventions
 

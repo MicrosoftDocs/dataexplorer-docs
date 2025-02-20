@@ -2,8 +2,7 @@
 title:  Common tasks with KQL for Microsoft Sentinel
 description:  This article describes commonly used tasks in Kusto Query Language (KQL) when working with Microsoft Sentinel.
 ms.topic: concept-article
-author: batamig
-ms.author: bagol
+ms.reviewer: batamig
 ms.date: 01/20/2025
 monikerRange: "microsoft-sentinel"
 #Customer intent: As a security analyst, I want to learn how to perform commonly used tasks with Kusto Query Language so that I can effectively analyze and manipulate data in Microsoft Sentinel for threat detection and incident response.
@@ -21,10 +20,10 @@ In this tutorial, we cover the basics of KQL, including understanding query stru
 
 Before reading this article, make sure that you've familiarized yourself with the basics of Kusto Query Language (KQL). If you're new to KQL, see:
 
-- [Kusto Query Language (KQL) overview](../index.md)
-- [Syntax conventions for reference documentation](../syntax-conventions.md)
-- [Scalar data types](../scalar-data-types/index.md)
-- [Demo environment](../kql-learning-resources.md#demo-environment)
+* [Kusto Query Language (KQL) overview](../index.md)
+* [Syntax conventions for reference documentation](../syntax-conventions.md)
+* [Scalar data types](../scalar-data-types/index.md)
+* [Demo environment](../kql-learning-resources.md#demo-environment)
 
 ## Understanding query structure basics
 
@@ -80,7 +79,7 @@ SigninLogs
       | take 5
 ```
 
-:::image type="content" source="common-tasks-microsoft-sentinel/table-take-5.png" alt-text="Screenshot of sample results for the 'take' operator.":::
+:::image type="content" source="../media/kql-tutorials/common-tasks-microsoft-sentinel/table-take-5.png" alt-text="Screenshot of sample results for the 'take' operator.":::
 
 > [!TIP]
 > When working on a brand-new query where you may not know what the query looks like, it can be useful to put a `take` statement at the beginning to artificially limit your dataset for faster processing and experimentation. Once you are happy with the full query, you can remove the initial `take` step.
@@ -100,7 +99,7 @@ SigninLogs
 
 As we mentioned, we put the `sort` operator before the `take` operator. We need to sort first to make sure we get the appropriate five records.
 
-:::image type="content" source="common-tasks-microsoft-sentinel/table-take-sort.png" alt-text="Screenshot of sample results for the 'sort' operator, with a 'take' limit.":::
+:::image type="content" source="../media/kql-tutorials/common-tasks-microsoft-sentinel/table-take-sort.png" alt-text="Screenshot of sample results for the 'sort' operator, with a 'take' limit.":::
 
 #### *Top*
 
@@ -124,9 +123,9 @@ Now, if *TimeGenerated* is the same between multiple records, it then tries to s
 > [!NOTE]
 > **When to use `sort` and `take`, and when to use `top`**
 >
-> - If you're only sorting on one field, use `top`, as it provides better performance than the combination of `sort` and `take`.
+> * If you're only sorting on one field, use `top`, as it provides better performance than the combination of `sort` and `take`.
 >
-> - If you need to sort on more than one field (like in the last example), `top` can't do that, so you must use `sort` and `take`.
+> * If you need to sort on more than one field (like in the last example), `top` can't do that, so you must use `sort` and `take`.
 
 ### Filtering data: *where*
 
@@ -145,8 +144,8 @@ There are two types of comparison operators in Kusto Query Language: string and 
 
 The `==` operator is both a numeric and string operator, meaning it can be used for both numbers and text. For example, both of the following statements would be valid where statements:
 
-- `| where ResultType == 0`  
-- `| where Category == 'SignInLogs'`
+* `| where ResultType == 0`
+* `| where Category == 'SignInLogs'`
 
 For more information, see [Numerical operators](../numerical-operators.md) and [String operators](../datatypes-string-operators.md).
 
@@ -187,7 +186,7 @@ Perf
 | summarize count() by CounterName
 ```
 
-:::image type="content" source="common-tasks-microsoft-sentinel/table-summarize-count.png" alt-text="Screenshot of sample results of the 'summarize' operator with a 'count' aggregation.":::
+:::image type="content" source="../media/kql-tutorials/common-tasks-microsoft-sentinel/table-summarize-count.png" alt-text="Screenshot of sample results of the 'summarize' operator with a 'count' aggregation.":::
 
 Because the output of `summarize` is a new table, any columns not explicitly specified in the `summarize` statement aren't passed down the pipeline. To illustrate this concept, consider this example:
 
@@ -209,7 +208,7 @@ Perf
 
 The way to read the `summarize` line in your head would be: "summarize the count of records by *CounterName*, and group by *ObjectName*." You can continue adding columns, separated by commas, to the end of the `summarize` statement.
 
-:::image type="content" source="common-tasks-microsoft-sentinel/table-summarize-group.png" alt-text="Screenshot of results of summarize operator with two arguments.":::
+:::image type="content" source="../media/kql-tutorials/common-tasks-microsoft-sentinel/table-summarize-group.png" alt-text="Screenshot of results of summarize operator with two arguments.":::
 
 Building on the previous example, if we want to aggregate multiple columns at the same time, we can achieve this by adding aggregations to the `summarize` operator, separated by commas. In the example below, we're getting not only a count of all the records but also a sum of the values in the *CounterValue* column across all records (that match any filters in the query):
 
@@ -220,7 +219,7 @@ Perf
 | sort by ObjectName asc
 ```
 
-:::image type="content" source="common-tasks-microsoft-sentinel/table-summarize-multiple.png" alt-text="Screenshot of results of summarize operator with multiple aggregations.":::
+:::image type="content" source="../media/kql-tutorials/common-tasks-microsoft-sentinel/table-summarize-multiple.png" alt-text="Screenshot of results of summarize operator with multiple aggregations.":::
 
 #### Renaming aggregated columns
 
@@ -237,7 +236,7 @@ Perf
 
 Now, our summarized columns are named *Count* and *CounterSum*.
 
-:::image type="content" source="common-tasks-microsoft-sentinel/friendly-column-names.png" alt-text="Screenshot of friendly column names for aggregations.":::
+:::image type="content" source="../media/kql-tutorials/common-tasks-microsoft-sentinel/friendly-column-names.png" alt-text="Screenshot of friendly column names for aggregations.":::
 
 There's more to the `summarize` operator than we can cover here, but you should invest the time to learn it because it's a key component to any data analysis you plan to perform on your Microsoft Sentinel data.
 
@@ -258,7 +257,7 @@ Perf
 | project ObjectName, CounterValue, CounterName
 ```
 
-:::image type="content" source="common-tasks-microsoft-sentinel/table-project.png" alt-text="Screenshot of results of project operator.":::
+:::image type="content" source="../media/kql-tutorials/common-tasks-microsoft-sentinel/table-project.png" alt-text="Screenshot of results of project operator.":::
 
 As you can imagine, when you're working with wide datasets, you might have lots of columns you want to keep, and specifying them all by name would require much typing. For those cases, you have [*project-away*](../project-away-operator.md), which lets you specify which columns to remove, rather than which ones to keep, like so:
 
@@ -282,9 +281,9 @@ Usage
 | project DataType, MBytes=Quantity, KBytes
 ```
 
-On the final line in our `project` statement, we renamed the *Quantity* column to *Mbytes*, so we can easily tell which unit of measure is relevant to each column. 
+On the final line in our `project` statement, we renamed the *Quantity* column to *Mbytes*, so we can easily tell which unit of measure is relevant to each column.
 
-:::image type="content" source="common-tasks-microsoft-sentinel/table-extend.png" alt-text="Screenshot of results of extend operator.":::
+:::image type="content" source="../media/kql-tutorials/common-tasks-microsoft-sentinel/table-extend.png" alt-text="Screenshot of results of extend operator.":::
 
 It's worth noting that `extend` also works with already calculated columns. For example, we can add one more column called *Bytes* that is calculated from *Kbytes*:
 
@@ -296,7 +295,7 @@ Usage
 | project DataType, MBytes=Quantity, KBytes, Bytes
 ```
 
-:::image type="content" source="common-tasks-microsoft-sentinel/table-extend-twice.png" alt-text="Screenshot of results of two extend operators.":::
+:::image type="content" source="../media/kql-tutorials/common-tasks-microsoft-sentinel/table-extend-twice.png" alt-text="Screenshot of results of two extend operators.":::
 
 ## Joining tables
 
@@ -399,7 +398,7 @@ There are many other examples of operators and functions that can be used to par
 
 ## Let statements
 
-Now that we've covered many of the major operators and data types, let's wrap up with the [*let* statement](../let-statement.md), which is a great 
+Now that we've covered many of the major operators and data types, let's wrap up with the [*let* statement](../let-statement.md), which is a great
 way to make your queries easier to read, edit, and maintain.
 
 *Let* allows you to create and set a variable, or to assign a name to an expression. This expression could be a single value, but it could also be a whole query. Here's a simple example:
@@ -442,6 +441,6 @@ Take advantage of a Kusto Query Language workbook right in Microsoft Sentinel it
 
 For more information, see:
 
-- [Advanced KQL Framework Workbook - Empowering you to become KQL-savvy](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/advanced-kql-framework-workbook-empowering-you-to-become-kql/ba-p/3033766) (Blog)
-- [Visualize and monitor your data by using workbooks in Microsoft Sentinel](/azure/sentinel/monitor-your-data?tabs=azure-portal)
-- [Useful resources for working with Kusto Query Language in Microsoft Sentinel](/azure/sentinel/kusto-resources)
+* [Advanced KQL Framework Workbook - Empowering you to become KQL-savvy](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/advanced-kql-framework-workbook-empowering-you-to-become-kql/ba-p/3033766) (Blog)
+* [Visualize and monitor your data by using workbooks in Microsoft Sentinel](/azure/sentinel/monitor-your-data?tabs=azure-portal)
+* [Useful resources for working with Kusto Query Language in Microsoft Sentinel](/azure/sentinel/kusto-resources)
