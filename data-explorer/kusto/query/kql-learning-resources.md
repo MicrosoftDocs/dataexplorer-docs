@@ -26,9 +26,9 @@ Like Log Analytics in your production environment, it can be used in many ways:
 
 * **Find an existing query to study or modify.** Select the **Queries** tab (shown in the red rectangle at the upper left) to see a list of queries available out-of-the-box. Or, select **Queries** from the button bar at the top right.
 
-::: moniker-end
+    ::: moniker-end
 
-::: moniker range="microsoft-sentinel"
+    ::: moniker range="microsoft-sentinel"
 
     You can explore the queries that come with Microsoft Sentinel out-of-the-box. Double-clicking a query places the whole query in the query window at the point of the cursor.
 
