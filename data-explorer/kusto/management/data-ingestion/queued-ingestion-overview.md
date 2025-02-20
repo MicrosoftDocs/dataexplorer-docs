@@ -9,7 +9,7 @@ ms.date: 02/20/2025
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-Queued ingestion commands allow you to ingest specific folders, or an entire container and manage the operations related to queued ingestion. They can also ingest multiple or individual blobs by URL and from a source file. The ingestion commands are useful for preparing and testing distinct ingestion scenarios before the final ingestion. Using them helps to ensure that fields, columns, partitioning, and other needs are handled properly during ingestion.
+Queued ingestion commands allow you to ingest specific folders, or an entire container and manage the operations related to queued ingestion. You can also ingest multiple or individual blobs by URL and from a source file. The ingestion commands are useful for preparing and testing distinct ingestion scenarios before the final ingestion. Using them helps to ensure that fields, columns, partitioning, and other needs are handled properly during ingestion.
 
 In this article, you learn about a common scenario, ingesting historical data.
 
@@ -27,7 +27,7 @@ One common use case for queued storage commands is in fine-tuning ingestion of h
 
 ### List blobs in a folder
 
-To understand the historical data better, the data engineer lists a maximum of 10 blobs from the Azure blob storage container.
+To understand the historical data better, you list a maximum of 10 blobs from the Azure blob storage container.
 
 ```kusto
 .list blobs (
@@ -53,7 +53,7 @@ MaxFiles=10
 
 ### Ingest folder
 
-Next they queue 10 parquet files for ingestion into the `Logs` table in the `TestDatabase` database with tracking enabled for the ingestion.
+Next you queue 10 parquet files for ingestion into the `Logs` table in the `TestDatabase` database with tracking enabled for the ingestion.
 
 ```kusto
 .ingest-from-storage-queued into table database('TestDatabase').Logs
@@ -76,7 +76,7 @@ The `OperationInfo`, which includes the `IngestionOperationId`, is then used to 
 
 ### Track ingestion status
 
-They run the `.show queued ingestion operations` command to check whether the ingestion is complete or if there are any errors.
+You run the `.show queued ingestion operations` command to check whether the ingestion is complete or if there are any errors.
 
 ```kusto
 .show queued ingestion operations "00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444"
@@ -208,7 +208,7 @@ The ingestion is now canceled.
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-03-20 15:03:11.0000000 ||Canceled | 10 |10 |0 |0 |0 | |TestDatabase|Logs|
 
-They can then roll back the ingestion, fix the issues, and rerun the ingestion.
+You can then roll back the ingestion, fix the issues, and rerun the ingestion.
 
 ## Management commands
 
