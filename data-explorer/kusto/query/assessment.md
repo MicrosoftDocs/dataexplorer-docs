@@ -5,31 +5,37 @@ ms.reviewer: orspod
 ms.topic: reference
 ms.date: 08/11/2024
 ---
-# Kusto Query Language
+# Introduction to Kusto Query Language (KQL)
 
-Kusto Query Language is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, etc. 
-You can query different kinds of data. The language is expressive, easy to read and understand the query intent, and optimized for authoring experiences. Kusto Query Language is optimal for querying telemetry, metrics, and logs with deep support for text search and parsing, time-series operators and functions, analytics and aggregation, geospatial, vector similarity searches, and many other language constructs that provide the most optimal language for data analysis. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
+Kusto Query Language (KQL) helps users explore and analyze data across services. With KQL, users can write queries to identify patterns, detect anomalies, and create statistical models from their data. KQL includes built-in support for structured logs, telemetry, and metrics, making it ideal for monitoring and analytics. The language works with many data types, including structured logs, telemetry, and geospatial data, and offers deep support for text search, time-series analysis, and vector similarity searches. KQL organizes data using a structured hierarchy of databases, tables, and columns, similar to how SQL structures relational data.
 
-This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). To learn how to use KQL, see [Tutorial: Learn common operators](tutorials/learn-common-operators.md).
+Users can get started with KQL by practicing real queries in a live environment. Start by accessing the query environment in [Azure Data Explorer](https://dataexplorer.azure.com/), then follow the [Learn common operators tutorial](tutorials/learn-common-operators.md) to build your first queries.
 
-The most common kind of query statement is a tabular expression **statement**, which means both its input and output consist of tables or tabular datasets. Tabular statements contain zero or more **operators**, each of which starts with a tabular input and returns a tabular output. Operators are sequenced by a `|` (pipe). Data flows, or is piped, from one operator to the next. The data is filtered or manipulated at each step and then fed into the following step.
+### KQL Query Processing
 
-A Kusto query is a read-only request to process data and return results. The request is stated in plain text, using a data-flow model that is easy to read, author, and automate. Kusto queries are made of one or more query statements.
+A KQL query typically processes tabular data—data organized in rows and columns—using **Tabular Expression Statements**. Each query consists of operators that process this data step by step. Users connect these operators using the pipe symbol (|), which allows data to flow efficiently from one operation to the next—similar to Unix pipelines or PowerShell commands. Common operators include [where](where-operator.md) for filtering data and [count](count-operator.md) for aggregating results.
 
-There are two kinds of user [query statements](statements.md):
+A Kusto query is a read-only request that processes data and returns results. KQL queries use a **text-based syntax** that follows a **data-flow model**, making them easy to read, write, and automate. A query consists of one or more **query statements**, each performing a specific operation on the data.
 
-1. A [tabular expression statement](tabular-expression-statements.md)
-1. A [let statement](let-statement.md)
-1. A [set statement](set-statement.md)
+### Query Statements
 
-All query statements are separated by a `;` (semicolon), and only affect the query at hand.
+There are three kinds of user [query statements](statements.md):
 
-For information about application query statements, see [Application query statements](statements.md#application-query-statements).
+1. A [tabular expression statement](tabular-expression-statements.md) – Defines a query that processes and returns tabular data.
+2. A [let statement](let-statement.md) – Assigns a value or expression to a variable for reuse in queries.
+3. A [set statement](set-statement.md) – Modifies query behavior or configuration settings.
 
+All query statements are separated by a semicolon (;) and apply only to the current query session.
 
-It's like a funnel, where you start out with an an entire data table. Each time the data passes through another operator, it's filtered, rearranged, or summarized. Because the piping of information from one operator to another is sequential, the query operator order is important, and can affect both results and performance. At the end of the funnel, you're left with a refined output.
+To learn more about application query statements, see [Application query statements](statements.md#application-query-statements).
 
-Why don't you see an example query.
+### KQL Query Processing Step by Step
+
+A KQL query processes data step by step, starting with an entire data table. Each operator refines the data by filtering, rearranging, or summarizing it before passing it to the next step. Because the order of query operators is sequential, it determines how transformations are applied and impacts both results and performance. The final output is a refined dataset.
+
+### Example Query
+
+To see KQL in action, run the following example query:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSwqCcnMTVVISi0pT03NU9BISSxJLQGKaBgZGJjrGhrqGhhqKujpKaCJG4HENZENKklVsLVVUHLz8Q/ydHFUUgDZkpxfmlcCAIItD6l6AAAA" target="_blank">Run the query</a>
@@ -37,44 +43,52 @@ Why don't you see an example query.
 ```kusto
 StormEvents 
 | where StartTime between (datetime(2007-11-01) .. datetime(2007-12-01))
-| where State == "florida"  
-| count 
+| where State == "Florida"  
+| count
 ```
+
+This query filters the StormEvents table to include rows where the StartTime is between November 1, 2007, and December 1, 2007, and the State is "Florida." It then counts the number of remaining rows.
 
 |Count|
 |-----|
 |   28|
 
-Did you no, KQL is case-sensitive for everything – table names, table column names, operators, functions, and so on.
+### Case Sensitivity in KQL
 
-This query has a single tabular expression statement. The statement begins with a reference to a table called *StormEvents* and contains several operators, [`where`](where-operator.md) and [`count`](count-operator.md), each separated by a pipe. The data rows for the source table are filtered by the value of the *StartTime* column and then filtered by the value of the *State* column. In the last line, the query returns a table with a single column and a single row containing the count of the remaining rows.
+Did you know that KQL is case-sensitive for everything—table names, table column names, operators, functions, and so on?
 
-In contrast to Kusto queries, [Management commands](../management/index.md are requests to     Kusto to process or modify data or metadata. For example, the following management command creates a new Kusto table with two columns, `Level` and `Number`:
+### Query Explanation
+
+This query has a single tabular expression statement. The statement begins with a reference to a table called *StormEvents* and contains several operators, [where](where-operator.md) and [count](count-operator.md), each separated by a pipe. The data rows for the source table are filtered by the value of the *StartTime* column and then filtered by the value of the *State* column. In the last line, the query returns a table with a single column and a single row containing the count of the remaining rows.
+
+### Management Commands
+
+In contrast to Kusto queries, [management commands](../management/index.md) are requests to Kusto to process or modify data or metadata. For example, the following management command creates a new Kusto table with two columns, Level and Number:
 
 ```kusto
 .create table Logs (Level:string, Text:string)
 ```
 
-Management commands have their own syntax, which isn't part of the Kusto Query Language syntax, although the two share many concepts. In particular, management comands are distinguished from queries by having the first character in the text of the command be the dot (`.`) character (which can't start a query). Why do we do it like this? This distinction prevents many kinds of security attacks, simply because it prevents embedding management commands inside queries.
+Management commands have their own syntax, which isn't part of the KQL syntax, although the two share many concepts. In particular, management commands are distinguished from queries by having the first character in the text of the command be the dot (.) character (which can't start a query). This distinction prevents many kinds of security attacks, simply because it prevents embedding management commands inside queries.
 
-Not all management commands modify data or metadata. The large class of commands that start with `.show`, are used to display metadata or data. For example, the `.show tables` command returns a list of all tables in the current database.
+Not all management commands modify data or metadata. The large class of commands that start with .show are used to display metadata or data. For example, the .show tables command returns a list of all tables in the current database.
 
 For more information on management commands, see [Management commands overview](../management/index.md).
 
-## KQL in other services
+## KQL in Other Services
 
 KQL is used by many other Microsoft services. For specific information on the use of KQL in these environments, refer to the following links:
 
-[Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview)
-[Kusto Query Language in Microsoft Sentinel](/azure/sentinel/kusto-overview)
-[Understanding the Azure Resource Graph query language](/azure/governance/resource-graph/concepts/query-language)
-[Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview)
-[CMPivot queries](/mem/configmgr/core/servers/manage/cmpivot-overview#queries)
+- [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview)
+- [KQL in Microsoft Sentinel](/azure/sentinel/kusto-overview)
+- [Understanding the Azure Resource Graph query language](/azure/governance/resource-graph/concepts/query-language)
+- [Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview)
+- [CMPivot queries](/mem/configmgr/core/servers/manage/cmpivot-overview#queries)
 
-## Related stuff
+## Related Topics
 
-* [Tytorial: Learn common operators](tutorials/learn-common-operators.md)
-* [Tutorial: Use aggregation functions](tutorials/use-aggregation-functions.md)
-* [KQL quick reference](kql-quick-reference.md)
-* [SQL to Kusto Query Language cheat sheet](sql-cheat-sheet.md)
-* [Query best practices](best-practices.md)
+- [Tutorial: Learn common operators](tutorials/learn-common-operators.md)
+- [Tutorial: Use aggregation functions](tutorials/use-aggregation-functions.md)
+- [KQL quick reference](kql-quick-reference.md)
+- [SQL to Kusto Query Language cheat sheet](sql-cheat-sheet.md)
+- [Query best practices](best-practices.md)
