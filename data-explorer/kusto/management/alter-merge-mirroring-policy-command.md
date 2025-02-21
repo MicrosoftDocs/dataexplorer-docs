@@ -42,7 +42,7 @@ Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring poli
 |`IsEnabled`| `bool`| A Boolean value that determines whether the mirroring policy is enabled. Default is `true`. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is soft-deleted and retained in the database. |
 |`TargetLatencyInMinutes`| `int`| The write operation delay in minites. By default, the write operation can take up to 3 hours or until there's 256 MB of data available. You can adjust the delay to a value between 5 minutes and 3 hours. |
 |`Backfill`| `bool`| If set to `true`, mirroring will start from `EffectiveDateTime` if provided, or from the beginning of the table otherwise. Default is `false`.|
-|`effectiveDateTime`| `datetime`| Relevant only when you're using backfill. If provided, mirroring will start from the specified point in time. backfill must also be set to true. |
+|`EffectiveDateTime`| `datetime`| Relevant only when you're using backfill. If provided, mirroring will start from the specified point in time. `Backfill` must also be set to `true`. |
 
 [!INCLUDE [mirroring-note](../includes/mirroring-note.md)]
 
