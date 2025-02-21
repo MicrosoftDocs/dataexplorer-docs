@@ -55,7 +55,7 @@ This query filters the StormEvents table to include rows where the StartTime is 
 
 ### Case Sensitivity in KQL
 
-Did you know that KQL is case-sensitive for everything—table names, table column names, operators, functions, and so on?
+KQL is case-sensitive for everything—table names, table column names, operators and functions.
 
 ### Query Explanation
 
