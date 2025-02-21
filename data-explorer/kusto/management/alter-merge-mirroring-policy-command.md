@@ -57,7 +57,7 @@ In the following example, a table called *myTable* is mirrored. The data is part
   partition by (Name: string=Name, Date: datetime= startofday(timestamp))
   dataformat=parquet
   with
-  (IsEnabled=true, backfill=true)
+  (IsEnabled=true, Backfill=true, EffectiveDateTime=datetime(2025-01-01))
 ```
 
 ## Related content
