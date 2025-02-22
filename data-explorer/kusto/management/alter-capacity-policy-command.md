@@ -100,7 +100,7 @@ Alter the capacity policy. The resulting policy is the properties in the command
   },
   "QueryAccelerationCapacity": {
     "ClusterMaximumConcurrentOperations": 100,
-    "CoreUtilizationCoefficient": 1.0
+    "CoreUtilizationCoefficient": 0.5
   }
 },
 "ChildEntities": ,

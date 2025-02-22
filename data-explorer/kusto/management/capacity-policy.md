@@ -240,7 +240,7 @@ The default capacity policy has the following JSON representation:
   },
   "QueryAccelerationCapacity": {
     "ClusterMaximumConcurrentOperations": 100,
-    "CoreUtilizationCoefficient": 1.0
+    "CoreUtilizationCoefficient": 0.5
   }
 }
 ```
