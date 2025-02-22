@@ -97,6 +97,10 @@ Alter the capacity policy. The resulting policy is the properties in the command
   },
   "PeriodicStorageArtifactsCleanupCapacity": {
     "MaximumConcurrentOperationsPerCluster": 1
+  },
+  "QueryAccelerationCapacity": {
+    "ClusterMaximumConcurrentOperations": 100,
+    "CoreUtilizationCoefficient": 1.0
   }
 },
 "ChildEntities": ,
