@@ -6,7 +6,7 @@ ms.topic: reference
 ms.date: 08/11/2024
 ---
 # Kusto Query Language
-> ### In This Article
+> ## In This Article
 > [Query statements](#query-statements)  
 > [Kusto query](#kusto-query)   
 > [Management commands](#management-commands)  
