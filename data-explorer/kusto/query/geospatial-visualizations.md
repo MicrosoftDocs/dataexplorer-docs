@@ -123,10 +123,10 @@ StormEvents
 
 ### Example: Visualize bubbles using a color-axis
 
+The following example shows storm events aggregated by S2 cells. The chart aggregates events in bubbles by location. Since the color-axis, `"count"`, is the same for all events, the `render` operator generates colored bubbles.
+
 > [!NOTE]
 > The color-axis visualization is only supported in [Kusto.Explorer](../tools/kusto-explorer.md).
-
-The following example shows storm events aggregated by S2 cells. The chart aggregates events in bubbles by location. Since the color-axis, `"count"`, is the same for all events, the `render` operator generates colored bubbles.
 
 ```kusto
 StormEvents
