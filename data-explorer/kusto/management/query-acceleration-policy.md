@@ -29,7 +29,7 @@ To enable query acceleration in the Fabric UI, see [Query acceleration over OneL
 * The feature assumes delta tables with static advanced features, for example column mapping doesn't change, partitions don't change, and so on. To change advanced features, first disable the policy, and once the change is made, re-enable the policy.
 * Schema changes on the delta table must also be followed with the respective `.alter` external delta table schema, which might result in acceleration starting from scratch if there was breaking schema change.
 * Index-based pruning isn't supported for partitions.
-* Parquet files with a size higher than 1 GB won't be cached.
+* Parquet files larger than 1 GB won't be cached.
 ::: moniker range="azure-data-explorer"
 * Query acceleration isn't supported for external tables with impersonation authentication.
 ::: moniker-end
