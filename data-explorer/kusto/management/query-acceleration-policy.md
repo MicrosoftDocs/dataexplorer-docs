@@ -35,7 +35,7 @@ To enable query acceleration in the Fabric UI, see [Query acceleration over OneL
 ::: moniker-end
 
 > [!NOTE]
-> The query acceleration caching operations are limited by the available query acceleration capacity of your database. Run the [.show capacity command](../show-capacity-command.md) to view the total, consumed, and remaining query acceleration capacity.
+> The query acceleration caching operations are limited by the available query acceleration capacity of your cluster. Run the [.show capacity command](../show-capacity-command.md) to view the total, consumed, and remaining query acceleration capacity.
 
 ## Known issues
 
