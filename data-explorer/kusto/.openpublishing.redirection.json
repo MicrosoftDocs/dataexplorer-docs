@@ -75,11 +75,15 @@
       "redirect_url": "/kusto/management/data-ingestion/ingest-into-command",
       "redirect_document_id": true
     },
-
     {
       "source_path": "management/show-table-mirroring-operations-failures.md",
       "redirect_url": "/kusto/management/show-table-operations-mirroring-failures-command",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "query/kusto-sentinel-overview.md",
+      "redirect_url": "/kusto/query/",
+      "redirect_document_id": false
     }
   ]
 }
