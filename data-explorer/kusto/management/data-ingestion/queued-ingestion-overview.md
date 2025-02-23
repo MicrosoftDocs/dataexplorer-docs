@@ -3,7 +3,7 @@ title: Queued ingestion overview
 description: Learn about queued ingestion and its commands.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/20/2025
+ms.date: 02/23/2025
 ---
 # Queued ingestion overview
 
@@ -51,6 +51,8 @@ MaxFiles=10
 | https://\<blobstoragelocation>/part-108.parquet | 7,460,408 |  {} |
 | https://\<blobstoragelocation>/part-109.parquet | 6,338,148 |  {} |
 
+You can now verify if these are the correct blobs to ingest.
+
 ### Ingest folder
 
 Next you queue 10 parquet files for ingestion into the `Logs` table in the `TestDatabase` database with tracking enabled for the ingestion.
@@ -88,6 +90,8 @@ You run the `.show queued ingestion operations` command to check whether the ing
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-03-19 14:57:41.0000000 |2025-01-10 15:15:04.0000000|Completed | 10 |0 |10 |0 |0 | |TestDatabase|Logs|
 
+If the `State` isn't `Completed`, you can run the `.show queued ingestion operations` again. This allows you to monitor the increase in the number of ingested blobs until the `State` changes to `Completed`.
+
 ### Filter queued files for ingestion
 
 After the results of the ingestion are examined, another attempt at listing blobs for ingestion is made. This time the parquet suffix is added to ensure that only parquet files are ingested.
@@ -100,7 +104,24 @@ Suffix="parquet"
 MaxFiles=10
 ```
 
-Then a path format is added to capture the creation time.
+**Output**
+
+| BlobUri | SizeInBytes | CapturedVariables |
+|--|--|--|
+| https://\<blobstoragelocation>/\<foldername>/part-100.parquet |  7,429,062 | {} |
+| https://\<blobstoragelocation>/\<foldername>/part-101.parquet | 262,610  |  {} |
+| https://\<blobstoragelocation>/\<foldername>/part-102.parquet | 6,154,166 |  {} |
+| https://\<blobstoragelocation>/\<foldername>/part-103.parquet | 7,460,408 |  {} |
+| https://\<blobstoragelocation>/\<foldername>/part-104.parquet | 6,154,166 |  {} |
+| https://\<blobstoragelocation>/\<foldername>/part-105.parquet | 7,441,587 |  {} |
+| https://\<blobstoragelocation>/\<foldername>/part-106.parquet | 1,087,425 |  {} |
+| https://\<blobstoragelocation>/\<foldername>/part-107.parquet | 6,238,357 |  {} |
+| https://\<blobstoragelocation>/\<foldername>/part-108.parquet | 7,460,408 |  {} |
+| https://\<blobstoragelocation>/\<foldername>/part-109.parquet | 6,338,148 |  {} |
+
+### Capture the creation time
+
+A path format is added to capture the creation time.
 
 ```kusto
 .list blobs (
@@ -115,18 +136,18 @@ PathFormat=("output/03/Year=" datetime_pattern("yyyy'/Month='MM'/Day='dd", creat
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://\<blobstoragelocation>/<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-100.parquet |  7,429,062 | {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-101.parquet | 262,610  |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-102.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-103.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-104.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-105.parquet | 7,441,587 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-106.parquet | 1,087,425 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-107.parquet | 6,238,357 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-108.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-109.parquet | 6,338,148 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-100.parquet |  7,429,062 | {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-101.parquet | 262,610  |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-102.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-103.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-104.parquet | 6,154,166 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-105.parquet | 7,441,587 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-106.parquet | 1,087,425 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-107.parquet | 6,238,357 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-108.parquet | 7,460,408 |  {"creationTime":"03/20/2025 00:00:00"} |
+| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-109.parquet | 6,338,148 |  {"creationTime":"03/20/2025 00:00:00"} |
 
-The `CapturedVariables` column is populated by dates that match those in the `BlobUri` column.
+The `CapturedVariables` column dates match the dates specified in the `BlobUri` column.
 
 ### Ingest 20 files
 
@@ -175,6 +196,9 @@ The `.show extents` command is run to check whether extents are created with an 
 ```kusto
 .show table Logs extents
 ```
+
+The `MinCreatedOn` and `MaxCreatedOn` values should show the data creation time, rather than the data ingestion time. For more information about these returns, see [.show extents](../show-extents.md).
+
 <!--
 ### Check blob ingestion details
 
