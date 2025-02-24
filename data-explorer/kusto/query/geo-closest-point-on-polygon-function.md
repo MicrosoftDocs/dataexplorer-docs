@@ -34,6 +34,7 @@ A point in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynam
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
 > * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
 > * If input polygon edges are straight cartesian lines, consider using [geo_polygon_densify()](geo-polygon-densify-function.md) to convert planar edges to geodesics.
+> * In order to calculate a distance between the closest point on a polygon or multipolygon to a given point, use [geo_distance_point_to_polygon()](geo-distance-point-to-polygon-function.md)
 
 **Polygon definition and constraints**
 
@@ -53,8 +54,6 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 > [!TIP]
 >
 > * Using literal polygons may result in better performance.
-> * If you want to know if polygon contains point, see [geo_point_in_polygon()](geo-point-in-polygon-function.md)
-> * In order to calculate a distance between the closest point on a polygon or multipolygon to a given point, use [geo_distance_point_to_polygon()](geo-distance-point-to-polygon-function.md)
 
 ## Examples
 

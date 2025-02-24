@@ -49,7 +49,6 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 > [!TIP]
 >
 > * Using literal LineString or a MultiLineString may result in better performance.
-> * If you want to know the shortest distance between one or more points to many lines, consider folding these lines into one multiline. See the following [example](#examples).
 
 ## Examples
 
