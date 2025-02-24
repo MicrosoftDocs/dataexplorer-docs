@@ -33,7 +33,7 @@ Shape in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic
 
 > [!TIP]
 > 
-> * Using stored GeoJSON shapes may result in better performance.
+> * Using converted and stored GeoJSON shapes may result in better performance in geospatial analysis.
 
 ## Examples
 

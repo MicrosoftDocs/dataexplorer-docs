@@ -27,7 +27,7 @@ Calculates a point on a polygon or a multipolygon, which is closest to a given p
 
 ## Returns
 
-A point in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type on a polygon or multipolygon which is the closest to a given point on Earth. If polygon contains input point, the result with be the same point. If the coordinates or polygons are invalid, the query will produce a null result.
+A point in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type on a polygon or multipolygon which is the closest to a given point on Earth. If polygon contains input point, the result with be the same point. If the coordinates or polygons are invalid, the query produces a null result.
 
 > [!NOTE]
 >
@@ -76,7 +76,7 @@ print geo_closest_point_on_polygon(-73.9839, 40.7705, central_park)
 |{"type": "Point","coordinates": [-73.981205580153926, 40.769359452843211] }|
 
 
-The following example will return a null result because of the invalid coordinate input.
+The following example returns a null result because of the invalid coordinate input.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -93,7 +93,7 @@ print result = isnull(geo_closest_point_on_polygon(500,1,dynamic({"type": "Polyg
 |--------|
 | true   |
 
-The following example will return a null result because of the invalid polygon input.
+The following example returns a null result because of the invalid polygon input.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
