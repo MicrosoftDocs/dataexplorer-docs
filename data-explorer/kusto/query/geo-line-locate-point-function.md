@@ -34,8 +34,8 @@ Line fraction value between 0 and 1 (0 - 100%) as a ratio of a line from start t
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
 > * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used to measure distance on Earth is a sphere. Line edges are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
 > * If input line edges are straight cartesian lines, consider using [geo_line_densify()](geo-line-densify-function.md) in order to convert planar edges to geodesics.
-> * The input should not contain more than a single line string.
-> * If the input line string has more than single point on the line at equal distances from the input point, it isn't guranted which one is selected.
+> * The input shouldn't contain more than a single line string.
+> * If the input line string has more than single point on the line at equal distances from the input point, it isn't guaranteed which one is selected.
 > * In order to calculate a point at fraction on a line use [geo_line_interpolate_point()](geo-line-interpolate-point-function.md)
 
 **LineString definition and constraints**
