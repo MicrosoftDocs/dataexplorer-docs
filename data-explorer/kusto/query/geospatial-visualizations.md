@@ -10,13 +10,7 @@ ms.date: 02/23/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Geospatial data can be visualized using the [render operator](render-operator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using.md). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
-
-:::moniker range="azure-data-explorer"
-You can also use the [Azure Data Explorer web UI](/azure/data-explorer/web-query-data).
-
-For more information about visualization options, see [Data visualization with Azure Data Explorer](/azure/data-explorer/viz-overview).
-::: moniker-end
+Geospatial data can be visualized as part of your query using the [render operator](render-operator.md) as [points](#visualize-points on-a-map), [pies, or bubbles](#visualization-of-pies-or-bubbles-on-a-map) on a map.
 
 For more information about geospatial clustering, see [Geospatial clustering](geospatial-grid-systems.md).
 
@@ -121,12 +115,12 @@ StormEvents
 
 :::image type="content" source="media/geo-visualizations/storm-events-bubble.png" alt-text="Screenshot of storm events on a bubble map.":::
 
-### Example: Visualize bubbles using a color-axis
+### Example: Visualize bubbles using a color axis
 
 The following example shows storm events aggregated by S2 cells. The chart aggregates events in bubbles by location. Since the color-axis, `"count"`, is the same for all events, the `render` operator generates colored bubbles.
 
 > [!NOTE]
-> The color-axis visualization is only supported in [Kusto.Explorer](../tools/kusto-explorer.md).
+> The color axis visualization is only supported in [Kusto.Explorer](../tools/kusto-explorer.md).
 
 ```kusto
 StormEvents
