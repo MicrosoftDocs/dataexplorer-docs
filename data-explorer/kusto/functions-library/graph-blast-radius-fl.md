@@ -3,7 +3,7 @@ title:  graph_blast_radius_fl()
 description: Learn how to use the graph_blast_radius_fl() function to calculate the Blast Radius of source nodes over path or edge data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 02/16/2025
+ms.date: 02/24/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_blast_radius_fl()
@@ -235,7 +235,7 @@ If the multi-hop paths aren't available, we can build multi-hop paths between so
 
 The output looks similar, but reflects the Blast Radius calculated over multi-hop paths, thus being a better indicator of source nodes true connectivity to relevant targets. In order to find the full paths between source and target scenarios (for example, for disruption), [graph_path_discovery_fl()](graph-path-discovery-fl.md) function can be used with filters on relevant source and target nodes.
 
-The function `graph_blast_radius_fl()` can be used to calculate the Blast Radius of source nodes, calculated either over direct edges or longer paths. In cybersecurity domain, it can be used for several insights. Blast Radius scores (regular and weighted), represent source node's importance both from defenders and attackers perspectives. Nodes with high Blast Radius should be protected accordingly (for example, in terms of access hardening and vulnerability management); security signals (such as alerts) on such nodes should be prioritized. The Blast Radius list should be monitored for undesired connections between sources and targets and used in disruption scenarios (for example, if there was active compromise of the source, connections between it and important target should be broken).
+The function `graph_blast_radius_fl()` can be used to calculate the Blast Radius of source nodes, calculated either over direct edges or longer paths. In cybersecurity domain, it can be used for several insights. Blast Radius scores (regular and weighted), represent source node's importance both from defenders' and attackers' perspectives. Nodes with high Blast Radius should be protected accordingly (for example, in terms of access hardening and vulnerability management); security signals (such as alerts) on such nodes should be prioritized. The Blast Radius list should be monitored for undesired connections between sources and targets and used in disruption scenarios (for example, if there was active compromise of the source, connections between it and important target should be broken).
 
 ## Related content
 

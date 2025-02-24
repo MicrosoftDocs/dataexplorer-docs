@@ -1286,10 +1286,10 @@ items:
         items:
           - name: node_degree_in()
             displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in 
-            href: node_degree_in.md
+            href: node-degree-in.md
           - name: node_degree_out()
             displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
-            href: node_degree_out.md
+            href: node-degree-out.md
   - name: Geospatial
     items:
       - name: Geospatial clustering overview

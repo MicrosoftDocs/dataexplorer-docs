@@ -2,7 +2,7 @@
 title:  node_degree_out (graph function)
 description:  This article describes the node_degree_out() command.
 ms.topic: reference
-ms.date: 02/19/2025
+ms.date: 02/24/2025
 ---
 
 # node_degree_out() (graph function)
