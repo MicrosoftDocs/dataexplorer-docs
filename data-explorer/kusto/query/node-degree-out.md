@@ -128,4 +128,4 @@ project manager.name, employee.name, di_m=node_degree_in(manager), do_m=node_deg
 * [Graph overview](graph-overview.md)
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)
-* [node-degree-in](node_degree_in.md)
+* [node-degree-in](node-degree-in.md)

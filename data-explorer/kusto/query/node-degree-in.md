@@ -80,4 +80,4 @@ project manager.name, employee.name, degree_in_m=node_degree_in(manager), degree
 * [Graph overview](graph-overview.md)
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)
-* [node-degree-out](node_degree_out.md)
+* [node-degree-out](node-degree-out.md)
