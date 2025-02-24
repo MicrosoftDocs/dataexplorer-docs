@@ -2,7 +2,7 @@
 title: Splunk to Kusto map
 description: Learn how to write log queries in Kusto Query Language by comparing Splunk and Kusto Query Language concept mappings.
 ms.topic: conceptual
-ms.date: 08/11/2024
+ms.date: 02/24/2025
 ---
 
 # Splunk to Kusto cheat sheet
@@ -181,6 +181,15 @@ In Kusto, you can use `summarize arg_min()` to reverse the order of which record
 |:---|:---|:---|
 | Splunk | `dedup` |  `Event.Rule=330009.2`<br />&#124; `dedup device_id sortby -batterylife` |
 | Kusto | `summarize arg_max()` | `Office_Excel_BI_PivotTableCreate`<br />&#124; `summarize arg_max(batterylife, *) by device_id` |
+
+### Timechart
+
+Kusto and Splunk both use the timechart operator to visualize data over time. In Splunk, it aggregates data over specified time intervals and can be used with various statistical functions. In Kusto, the equivalent of [timechart](visualization-timechart.md) is achieved using the summarize and bin functions, followed by the render timechart command.
+
+| Product | Operator | Example |
+|:---|:---|:---|
+| Splunk | `timechart` |  `index=web_logs | timechart count by hour` |
+| Kusto | `timechart` | `WeatherData` <br />&#124; `summarize avg(Temperature) by bin(Time, 1d)` <br />&#124; `render timechart` |
 
 ## Related content
 
