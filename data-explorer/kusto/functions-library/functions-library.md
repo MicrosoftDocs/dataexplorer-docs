@@ -3,7 +3,7 @@ title:  Functions library
 description: This article describes user-defined functions that extend query environment capabilities.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 01/05/2025
+ms.date: 02/20/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Functions library
@@ -12,7 +12,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 The following article contains a categorized list of [UDF (user-defined functions)](../query/functions/user-defined-functions.md).
 
-The user-defined functions code is given in the articles.  It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](../management/create-function.md).
+The user-defined functions code is given in the articles. It can be used within a let statement embedded in a query or can be persisted in a database using [`.create function`](../management/create-function.md).
 
 ## Cybersecurity functions
 
@@ -20,9 +20,9 @@ The user-defined functions code is given in the articles.  It can be used within
 |--|--|
 | [detect_anomalous_new_entity_fl()](detect-anomalous-new-entity-fl.md) | Detect the appearance of anomalous new entities in timestamped data. |
 | [detect_anomalous_spike_fl()](detect-anomalous-spike-fl.md) | Detect the appearance of anomalous spikes in numeric variables in timestamped data. |
-| [graph_blast_radius_fl()](graph-blast-radius-fl.md) | Calculate the Blast Radius (list and score) of source nodes over path or edge data.
-| [graph_exposure_perimeter_fl()](graph-exposure-perimeter-fl.md) | Calculate the Exposure Perimeter (list and score) of target nodes over path or edge data.
-| [graph_path_discovery_fl()](graph-path-discovery-fl.md) |  Discover valid paths between relevant endpoints (sources and targets) over graph data (edge and nodes).
+| [graph_blast_radius_fl()](graph-blast-radius-fl.md) | Calculate the Blast Radius (list and score) of source nodes over path or edge data. |
+| [graph_exposure_perimeter_fl()](graph-exposure-perimeter-fl.md) | Calculate the Exposure Perimeter (list and score) of target nodes over path or edge data.|
+| [graph_path_discovery_fl()](graph-path-discovery-fl.md) |  Discover valid paths between relevant endpoints (sources and targets) over graph data (edge and nodes).|
 
 ## General functions
 
@@ -60,7 +60,6 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 |--|--|
 | [series_metric_fl()](series-metric-fl.md) | Select and retrieve time series stored with the Prometheus data model. |
 | [series_rate_fl()](series-rate-fl.md) | Calculate the average rate of counter metric increase per second. |
-
 
 ## Series processing functions
 
@@ -101,7 +100,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [comb_fl()](comb-fl.md) | Calculate *C(n, k)*, the number of combinations for selection of k items out of n. |
 | [factorial_fl()](factorial-fl.md) | Calculate *n!*, the factorial of n. |
 | [ks_test_fl()](ks-test-fl.md) | Perform a Kolmogorov Smirnov test. |
-| [levene_test_fl()n](levene-test-fl.md) | Perform a Levene test. |
+| [levene_test_fl()](levene-test-fl.md) | Perform a Levene test. |
 | [normality_test_fl()](normality-test-fl.md) | Performs the Normality Test. |
 | [mann_whitney_u_test_fl()](mann-whitney-u-test-fl.md) | Perform a Mann-Whitney U Test. |
 | [pair_probabilities_fl()](pair-probabilities-fl.md) | Calculate various probabilities and related metrics for a pair of categorical variables. |
