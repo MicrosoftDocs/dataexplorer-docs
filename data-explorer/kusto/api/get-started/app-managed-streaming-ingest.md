@@ -79,15 +79,22 @@ Run the following commands on your database via Kusto Explorer (Desktop) or Kust
 
 Enable streaming ingestion on the table or on the entire database using one of the following commands:
 
+Table level:
+
 ```kql
 .alter table <your table name> policy streamingingestion enable
+```
+
+Database levle:
+
+```kql
 
 .alter database <databaseName> policy streamingingestion enable
 ```
 
 It can take up to two minutes for the policy to take effect.
 
-For more information about streaming policy, see [Streaming ingestion policy - Azure Data Explorer & Real-Time Analytics](../../../kusto//management/streaming-ingestion-policy.md)
+For more information about streaming policy, see [Streaming ingestion policy](../../../kusto//management/streaming-ingestion-policy.md)
 
 ## Create a basic client application
 
@@ -149,7 +156,7 @@ class Program
             Console.WriteLine("row:" + row.ToString() + "\t");
             for (int i = 0; i < result.FieldCount; i++)
             {
-                Console.WriteLine("\t"+ result.GetName(i)+" - " + result.GetValue(i) );
+                Console.WriteLine("\t" + result.GetName(i) + " - " + result.GetValue(i));
             }
             Console.WriteLine();
         }
@@ -166,27 +173,26 @@ Copy *stormevents.csv* file to the same location as your script. Since our input
 Add and ingestion section using the following lines to the end of `Main()`.
 
 ```csharp
-            var ingestProperties = new KustoIngestionProperties(databaseName, tableName) 
-                {
-                    Format = DataSourceFormat.csv
-                };
-
-            //Ingestion section
-            Console.WriteLine("Ingesting data from a file");
-            ingestClient.IngestFromStorageAsync(".\\stormevents.csv", ingestProperties).Wait();
+var ingestProperties = new KustoIngestionProperties(databaseName, tableName) 
+    {
+        Format = DataSourceFormat.csv
+    };
+//Ingestion section
+Console.WriteLine("Ingesting data from a file");
+ingestClient.IngestFromStorageAsync(".\\stormevents.csv", ingestProperties).Wait();
 ```
 
 Let’s also query the new number of rows and the most recent row after the ingestion.
 Add the following lines after the ingestion command:
 
 ```csharp
-            Console.WriteLine("Number of rows in " + tableName);
-            result = kustoClient.ExecuteQuery(databaseName, tableName + " | count", new ClientRequestProperties());
-            PrintResultAsValueList(result);
-            
-            Console.WriteLine("Example line from " + tableName);
-            result = kustoClient.ExecuteQuery(databaseName, tableName + " | top 1 by EndTime", new ClientRequestProperties());
-            PrintResultAsValueList(result);
+Console.WriteLine("Number of rows in " + tableName);
+result = kustoClient.ExecuteQuery(databaseName, tableName + " | count", new ClientRequestProperties());
+PrintResultAsValueList(result);
+
+Console.WriteLine("Example line from " + tableName);
+result = kustoClient.ExecuteQuery(databaseName, tableName + " | top 1 by EndTime", new ClientRequestProperties());
+PrintResultAsValueList(result);
 ```
 
 ### [Python](#tab/python)
@@ -245,23 +251,23 @@ Place the *stormevents.csv* file in the same location as your script. Since our 
 Add and ingestion section using the following lines to the end of `main()`.
 
 ```python
-            # Ingestion section
-            print("Ingesting data from a file")
-            ingest_properties = IngestionProperties(database_name, table_name, DataFormat.CSV)
-            ingest_client.ingest_from_file(file_path, ingest_properties)
+# Ingestion section
+print("Ingesting data from a file")
+ingest_properties = IngestionProperties(database_name, table_name, DataFormat.CSV)
+ingest_client.ingest_from_file(file_path, ingest_properties)
 ```
 
 Let’s also query the new number of rows and the most recent row after the ingestion.
 Add the following lines after the ingestion command:
 
 ```python
-            print("New number of rows in " + table_name)
-            result = kusto_client.execute_query(database_name, table_name + " | count")
-            print_result_as_value_list(result)
-            
-            print("Example line from " + table_name)
-            result = kusto_client.execute_query(database_name, table_name + " | top 1 by EndTime")
-            print_result_as_value_list(result)
+print("New number of rows in " + table_name)
+result = kusto_client.execute_query(database_name, table_name + " | count")
+print_result_as_value_list(result)
+
+print("Example line from " + table_name)
+result = kusto_client.execute_query(database_name, table_name + " | top 1 by EndTime")
+print_result_as_value_list(result)
 ```
 
 Run the script from the directory where the script and stormevents.csv are located. Alternatively, you can specify the full path to the file replacing `file_path = os.curdir + "/stormevents.csv"` with `file_path = "<full path to stormevents.csv>"`
@@ -329,29 +335,27 @@ Place the *stormevents.csv* file in the same location as your script. Since our 
 Add and ingestion section using the following lines to the end of `main()`.
 
 ```typescript
-    const ingestProperties = new IngestionProperties({
-        database: databaseName,
-        table: tableName,
-        format: DataFormat.CSV
-    });
-
-    //Ingest section
-    console.log("Ingesting data from a file");
-    await ingestClient.ingestFromFile(".\\stormevents.csv", ingestProperties);
-    ingestClient.close();
+const ingestProperties = new IngestionProperties({
+    database: databaseName,
+    table: tableName,
+    format: DataFormat.CSV
+});
+//Ingest section
+console.log("Ingesting data from a file");
+await ingestClient.ingestFromFile(".\\stormevents.csv", ingestProperties);
+ingestClient.close();
 ```
 
 Let’s also query the new number of rows and the most recent row after the ingestion.
 Add the following lines after the ingestion command:
 
 ```typescript
-    console.log(`New number of rows in ${tableName}`);
-    result = await kustoClient.executeQuery(databaseName, `${tableName} | count`);
-    printResultAsValueList(result);
-
-    console.log(`Example line from ${tableName}`);
-    result = await kustoClient.executeQuery(databaseName, `${tableName} | top 1 by EndTime`);
-    printResultAsValueList(result);
+console.log(`New number of rows in ${tableName}`);
+result = await kustoClient.executeQuery(databaseName, `${tableName} | count`);
+printResultAsValueList(result);
+console.log(`Example line from ${tableName}`);
+result = await kustoClient.executeQuery(databaseName, `${tableName} | top 1 by EndTime`);
+printResultAsValueList(result);
 ```
 
 ### [Java](#tab/java)
@@ -420,21 +424,20 @@ Place the *stormevents.csv* file in the same location as your script. Since our 
 Add and ingestion section using the following lines to the end of `main()`.
 
 ```java
-            // Ingestion section
-            try (
-                    ManagedStreamingIngestClient ingestClient =  IngestClientFactory
-                            .createManagedStreamingIngestClient(clusterKcsb, ingestionKcsb)) {
-                System.out.println("Ingesting data from a file");
-                String filePath = "stormevents.csv";
-                IngestionProperties ingestionProperties = new IngestionProperties(databaseName, table);
-                ingestionProperties.setDataFormat(DataFormat.CSV);
-                FileSourceInfo fileSourceInfo = new FileSourceInfo(filePath, 0);
-                ingestClient.ingestFromFile(fileSourceInfo, ingestionProperties);
-
-            } catch (Exception e) {
-                // TODO: handle exception
-                System.out.println("Error: " + e);
-            }
+// Ingestion section
+try (
+        ManagedStreamingIngestClient ingestClient =  IngestClientFactory
+                .createManagedStreamingIngestClient(clusterKcsb, ingestionKcsb)) {
+    System.out.println("Ingesting data from a file");
+    String filePath = "stormevents.csv";
+    IngestionProperties ingestionProperties = new IngestionProperties(databaseName, table);
+    ingestionProperties.setDataFormat(DataFormat.CSV);
+    FileSourceInfo fileSourceInfo = new FileSourceInfo(filePath, 0);
+    ingestClient.ingestFromFile(fileSourceInfo, ingestionProperties);
+} catch (Exception e) {
+    // TODO: handle exception
+    System.out.println("Error: " + e);
+}
 
 ```
 
@@ -442,17 +445,17 @@ Let’s also query the new number of rows and the most recent row after the inge
 Add the following lines after the ingestion command:
 
 ```java
-            query = table + " | count";
-            results = kustoClient.execute(databaseName, query);
-            primaryResults = results.getPrimaryResults();
-            System.out.println("\nNumber of rows in " + table + " AFTER ingestion:");
-            printResultsAsValueList(primaryResults);
+query = table + " | count";
+results = kustoClient.execute(databaseName, query);
+primaryResults = results.getPrimaryResults();
+System.out.println("\nNumber of rows in " + table + " AFTER ingestion:");
+printResultsAsValueList(primaryResults);
 
-            query = table + " | top 1 by EndTime";
-            results = kustoClient.execute(databaseName, query);
-            primaryResults = results.getPrimaryResults();
-            System.out.println("\nExample line from " + table);
-            printResultsAsValueList(primaryResults);
+query = table + " | top 1 by EndTime";
+results = kustoClient.execute(databaseName, query);
+primaryResults = results.getPrimaryResults();
+System.out.println("\nExample line from " + table);
+printResultsAsValueList(primaryResults);
 ```
 
 ---
@@ -489,18 +492,18 @@ To ingest the stream from memory, call the `IngestFromStreamAsync()` method.
 Replace the ingestion section with the following code:
 
 ```csharp
-            // Ingestion section
-            Console.WriteLine("Ingesting data from memory");
-            var singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,'{}'";
-            byte[] byteArray = Encoding.UTF8.GetBytes(singleLine);
-            using (MemoryStream stream = new MemoryStream(byteArray))
-               {
-                var streamSourceOptions = new StreamSourceOptions
-                {
-                    LeaveOpen = false
-                };
-                ingestClient.IngestFromStreamAsync(stream, ingestProperties, streamSourceOptions).Wait();
-               }
+// Ingestion section
+Console.WriteLine("Ingesting data from memory");
+var singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,'{}'";
+byte[] byteArray = Encoding.UTF8.GetBytes(singleLine);
+using (MemoryStream stream = new MemoryStream(byteArray))
+   {
+    var streamSourceOptions = new StreamSourceOptions
+    {
+        LeaveOpen = false
+    };
+    ingestClient.IngestFromStreamAsync(stream, ingestProperties, streamSourceOptions).Wait();
+   }
 ```
 
 ### [Python](#tab/python)
@@ -510,14 +513,14 @@ To ingest the stream from memory, call the `ingest_from_stream()` API.
 Replace the ingestion section with the following code:
 
 ```python
-        # Ingestion section
-        print("Ingesting data from memory")
-        single_line = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
-        string_stream = io.StringIO(single_line)
-        ingest_properties = IngestionProperties(database_name, table_name, DataFormat.CSV)
-        # when possible provide the size of the raw data
-        stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
-        ingest_client.ingest_from_stream(stream_descriptor, ingest_properties)
+# Ingestion section
+print("Ingesting data from memory")
+single_line = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
+string_stream = io.StringIO(single_line)
+ingest_properties = IngestionProperties(database_name, table_name, DataFormat.CSV)
+# when possible provide the size of the raw data
+stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
+ingest_client.ingest_from_stream(stream_descriptor, ingest_properties)
 ```
 
 ### [TypeScript](#tab/typescript)
@@ -527,11 +530,11 @@ To ingest the stream from memory, call the `ingestFromStream()` API.
 Replace the ingestion section with the following code:
 
 ```typescript
-    //Ingest section
-    console.log('Ingesting data from memory');
-    const singleLine = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
-    await ingestClient.ingestFromStream(Buffer.from(singleLine), ingestProperties)
-    ingestClient.close();
+//Ingest section
+console.log('Ingesting data from memory');
+const singleLine = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"'
+await ingestClient.ingestFromStream(Buffer.from(singleLine), ingestProperties)
+ingestClient.close();
 ```
 
 ### [Java](#tab/java)
@@ -541,21 +544,20 @@ To ingest the stream from memory, call the `ingestFromStream()` API.
 Replace the ingestion section with the following code:
 
 ```java
-            String singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
-            ByteArrayInputStream inputStream = new ByteArrayInputStream(singleLine.getBytes(StandardCharsets.UTF_8));
-            try (
-                    ManagedStreamingIngestClient ingestClient = (ManagedStreamingIngestClient) IngestClientFactory
-                            .createManagedStreamingIngestClient(clusterKcsb, ingestionKcsb)) {
-                System.out.println("Ingesting data from a byte array");
-                IngestionProperties ingestionProperties = new IngestionProperties(databaseName, table);
-                ingestionProperties.setDataFormat(DataFormat.CSV);
-                StreamSourceInfo streamSourceInfo = new StreamSourceInfo(inputStream);
-                ingestClient.ingestFromStream(streamSourceInfo, ingestionProperties);
-
-            } catch (Exception e) {
-                // TODO: handle exception
-                System.out.println("Error: " + e);
-            }
+String singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
+ByteArrayInputStream inputStream = new ByteArrayInputStream(singleLine.getBytes(StandardCharsets.UTF_8));
+try (
+        ManagedStreamingIngestClient ingestClient = (ManagedStreamingIngestClient) IngestClientFactory
+                .createManagedStreamingIngestClient(clusterKcsb, ingestionKcsb)) {
+    System.out.println("Ingesting data from a byte array");
+    IngestionProperties ingestionProperties = new IngestionProperties(databaseName, table);
+    ingestionProperties.setDataFormat(DataFormat.CSV);
+    StreamSourceInfo streamSourceInfo = new StreamSourceInfo(inputStream);
+    ingestClient.ingestFromStream(streamSourceInfo, ingestionProperties);
+} catch (Exception e) {
+    // TODO: handle exception
+    System.out.println("Error: " + e);
+}
 ```
 
 ---
