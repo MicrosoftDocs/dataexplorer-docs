@@ -847,6 +847,9 @@ items:
           - name: Queued ingestion overview
             displayName: Queued ingestion, ingest from folders, ingest from files, ingest from storage
             href: data-ingestion/queued-ingestion-overview.md
+          - name: Queued ingestion use case
+            displayName: Queued ingestion historical data ingestion
+            href: data-ingestion/queued-ingestion-use-case.md
           - name: .ingest-from-storage-queued into command
             displayName: .ingest-from-storage-queued, ingest from storage command
             href: data-ingestion/ingest-from-storage-queued.md
