@@ -94,7 +94,7 @@ Database level:
 
 It can take up to two minutes for the policy to take effect.
 
-For more information about streaming policy, see [Streaming ingestion policy](../../../kusto//management/streaming-ingestion-policy.md)
+For more information about streaming policy, see [Streaming ingestion policy](../../../kusto//management/streaming-ingestion-policy.md).
 
 ## Create a basic client application
 
@@ -460,7 +460,7 @@ printResultsAsValueList(primaryResults);
 
 ---
 
-The first time your run the application the results are as follows:
+The first time you run the application the results are as follows:
 
 ```plaintext
 Number of rows in MyStormEvents
