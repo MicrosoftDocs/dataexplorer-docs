@@ -85,7 +85,7 @@ Table level:
 .alter table <your table name> policy streamingingestion enable
 ```
 
-Database levle:
+Database level:
 
 ```kql
 
