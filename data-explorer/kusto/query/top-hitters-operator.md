@@ -37,14 +37,14 @@ with the largest sum, in the input.
 The first syntax (no *SummingExpression*) is conceptually equivalent to:
 
 *T*
-`|` `summarize` `C``=``count()` `by` *ValueExpression*
-`|` `top` *NumberOfValues* by `C` `desc`
+`|` `summarize` `C` = `count()` `by` *ValueExpression*
+`|` `top` *NumberOfValues* `by` `C` `desc`
 
 The second syntax (with *SummingExpression*) is conceptually equivalent to:
 
 *T*
-`|` `summarize` `S``=``sum(*SummingExpression*)` `by` *ValueExpression*
-`|` `top` *NumberOfValues* by `S` `desc`
+`|` `summarize` `S` = `sum(*SummingExpression*)` `by` *ValueExpression*
+`|` `top` *NumberOfValues* `by` `S` `desc`
 
 ## Examples
 
