@@ -22,8 +22,6 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 `.show queued ingestion operations` `(` `"`*IngestionOperationId*`"` [`,` ... ] `)`
 
-<!--`.show queued ingestion operations` `"`*IngestionOperationId*`"` `details`-->
-
 ## Parameters
 
 |Name|Type|Required|Description|
@@ -31,19 +29,6 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 | *IngestionOperationId* | `string` | | The operation ID for which to show details.|
 
 ## Returns
-
-<!--### Returns for queued ingestion operations with details
-
-The command returns a table with details about the ingestion status for each blob ingested in the operation.
-
-|Output parameter |Type |Description|
-|---|---|---|
-|IngestionOperationId | `string` |The unique operation identifier.|
-|BlobURL| `string` |When the ingestion operation includes blob files, the URL of the Blob file.|
-|IngestionStatus|`string` |The status of the ingestion.|
-|StartedAt | `datetime` |Date/time, in UTC, at which the `.ingest-from-storage-queued` was executed.|
-|CompletedAt | `datetime` |Date/time, in UTC, at which the `.ingest-from-storage-queued` was completed.|
-|FailedReasons | `string` | Reasons for the ingestion failure.| -->
 
 ### Returns for queued ingestion operations
 
@@ -107,22 +92,6 @@ The following example shows the queued ingestion operations for multiple operati
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 14:57:41.0000000 |2025-01-10 15:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable|
 |11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444 |2025-01-10 15:12:23.0000000 |2025-01-10 15:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|MyDatabase|MyOtherTable|
-
-<!--### Show details
-
-The following example shows details for each blob in the queued ingestion operation.
-
-```kusto
-.show queued ingestion operations '00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444' details
-```
-
-**Output**
-
-| IngestionOperationId | BlobUrl | IngestionStatus | StartedAt | CompletedAt | FailedReason |
-|--|--|--|--|--|--|
-| 00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://\<blobstoragelocation>/100.csv.gz | Pending | 2025-02-09T14:56:08.8708746Z |  |  |
-| 00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://\<blobstoragelocation>/102.csv.gz | Succeeded | 2025-02-09T14:56:09.0800631Z | 2024-02-09T15:02:06.5529901Z |  |
-|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 | https://\<blobstoragelocation>/103.csv.gz | Failed | 2025-02-09T14:56:09.3026602Z |  | Failed to download | -->
 
 ## Related content
 

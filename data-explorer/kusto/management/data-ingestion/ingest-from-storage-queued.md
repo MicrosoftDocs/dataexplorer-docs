@@ -11,8 +11,6 @@ ms.date: 02/18/2025
 
 The `.ingest-from-storage-queued into` command is used with the `[.list blobs](list-blobs.md)` command to queue blobs for ingestion into a table. This command supports bulk ingestion of an entire storage container, a specific folder within a container, or all blobs that match a given prefix and suffix.
 
-<!--This command can also ingest multiple or individual blobs by URL and from a source file.-->
-
 [!INCLUDE [direct-ingestion-note](../../includes/direct-ingestion-note.md)]
 
 ## Permissions
