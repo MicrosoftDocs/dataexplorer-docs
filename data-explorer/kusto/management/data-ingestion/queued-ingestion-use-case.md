@@ -28,7 +28,7 @@ To understand the historical data better, you list a maximum of 10 blobs from th
 
 ```kusto
 .list blobs (
-    "https://<blobstoragelocation>/<blobstoragelocation>;managed_identity=system"
+    "https://<BlobStorageLocation>/<FolderName>;managed_identity=system"
 )
 MaxFiles=10
  ```
@@ -37,16 +37,16 @@ MaxFiles=10
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://\<blobstoragelocation>/part-100.parquet |  7,429,062 | {} |
-| https://\<blobstoragelocation>/part-101.parquet | 262,610  |  {} |
-| https://\<blobstoragelocation>/part-102.parquet | 6,154,166 |  {} |
-| https://\<blobstoragelocation>/part-103.parquet | 7,460,408 |  {} |
-| https://\<blobstoragelocation>/part-104.parquet | 6,154,166 |  {} |
-| https://\<blobstoragelocation>/part-105.parquet | 7,441,587 |  {} |
-| https://\<blobstoragelocation>/part-106.parquet | 1,087,425 |  {} |
-| https://\<blobstoragelocation>/part-107.parquet | 6,238,357 |  {} |
-| https://\<blobstoragelocation>/part-108.parquet | 7,460,408 |  {} |
-| https://\<blobstoragelocation>/part-109.parquet | 6,338,148 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-100.parquet |  7,429,062 | {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-101.parquet | 262,610  |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-102.parquet | 6,154,166 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-103.parquet | 7,460,408 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-104.parquet | 6,154,166 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-105.parquet | 7,441,587 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-106.parquet | 1,087,425 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-107.parquet | 6,238,357 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-208.csv | 7,460,408 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-109.parquet | 6,338,148 |  {} |
 
 You can now verify if the blobs are the correct blobs to ingest.
 
@@ -60,7 +60,7 @@ EnableTracking=true
 with (format='parquet')
 <|
     .list blobs (
-        "https://<blobstoragelocation>/<foldername>;managed_identity=system"
+        "https://<BlobStorageLocation>/<FolderName>;managed_identity=system"
     )
     MaxFiles=10
 ```
@@ -95,7 +95,7 @@ After the results of the ingestion are examined, another attempt at listing blob
 
 ```kusto
 .list blobs (
-    "https://<blobstoragelocation>/<foldername>;managed_identity=system"
+    "https://<BlobStorageLocation>/<FolderName>;managed_identity=system"
 )
 Suffix="parquet"
 MaxFiles=10
@@ -105,16 +105,16 @@ MaxFiles=10
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://\<blobstoragelocation>/\<foldername>/part-100.parquet |  7,429,062 | {} |
-| https://\<blobstoragelocation>/\<foldername>/part-101.parquet | 262,610  |  {} |
-| https://\<blobstoragelocation>/\<foldername>/part-102.parquet | 6,154,166 |  {} |
-| https://\<blobstoragelocation>/\<foldername>/part-103.parquet | 7,460,408 |  {} |
-| https://\<blobstoragelocation>/\<foldername>/part-104.parquet | 6,154,166 |  {} |
-| https://\<blobstoragelocation>/\<foldername>/part-105.parquet | 7,441,587 |  {} |
-| https://\<blobstoragelocation>/\<foldername>/part-106.parquet | 1,087,425 |  {} |
-| https://\<blobstoragelocation>/\<foldername>/part-107.parquet | 6,238,357 |  {} |
-| https://\<blobstoragelocation>/\<foldername>/part-108.parquet | 7,460,408 |  {} |
-| https://\<blobstoragelocation>/\<foldername>/part-109.parquet | 6,338,148 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-100.parquet |  7,429,062 | {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-101.parquet | 262,610  |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-102.parquet | 6,154,166 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-103.parquet | 7,460,408 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-104.parquet | 6,154,166 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-105.parquet | 7,441,587 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-106.parquet | 1,087,425 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-107.parquet | 6,238,357 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-108.parquet | 7,460,408 |  {} |
+| https://\<BlobStorageLocation>/\<FolderName>/part-109.parquet | 6,338,148 |  {} |
 
 ### Capture the creation time
 
@@ -122,7 +122,7 @@ A path format is added to capture the creation time.
 
 ```kusto
 .list blobs (
-    "https://<blobstoragelocation>/<foldername>;managed_identity=system"
+    "https://<BlobStorageLocation>/<FolderName>;managed_identity=system"
 )
 Suffix="parquet"
 MaxFiles=10
@@ -133,16 +133,16 @@ PathFormat=("output/03/Year=" datetime_pattern("yyyy'/Month='MM'/Day='dd", creat
 
 | BlobUri | SizeInBytes | CapturedVariables |
 |--|--|--|
-| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-100.parquet |  7,429,062 | {"creationTime": "03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-101.parquet | 262,610  |  {"creationTime": "03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-102.parquet | 6,154,166 |  {"creationTime": "03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-103.parquet | 7,460,408 |  {"creationTime": "03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-104.parquet | 6,154,166 |  {"creationTime": "03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-105.parquet | 7,441,587 |  {"creationTime": "03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-106.parquet | 1,087,425 |  {"creationTime": "03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-107.parquet | 6,238,357 |  {"creationTime": "03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-108.parquet | 7,460,408 |  {"creationTime": "03/20/2025 00:00:00"} |
-| https://\<blobstoragelocation>/\<foldername>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-109.parquet | 6,338,148 |  {"creationTime": "03/20/2025 00:00:00"} |
+| https://\<BlobStorageLocation>/\<FolderName>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-100.parquet |  7,429,062 | {"creationTime": "03/20/2025 00:00:00"} |
+| https://\<BlobStorageLocation>/\<FolderName>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-101.parquet | 262,610  |  {"creationTime": "03/20/2025 00:00:00"} |
+| https://\<BlobStorageLocation>/\<FolderName>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-102.parquet | 6,154,166 |  {"creationTime": "03/20/2025 00:00:00"} |
+| https://\<BlobStorageLocation>/\<FolderName>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-103.parquet | 7,460,408 |  {"creationTime": "03/20/2025 00:00:00"} |
+| https://\<BlobStorageLocation>/\<FolderName>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-104.parquet | 6,154,166 |  {"creationTime": "03/20/2025 00:00:00"} |
+| https://\<BlobStorageLocation>/\<FolderName>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-105.parquet | 7,441,587 |  {"creationTime": "03/20/2025 00:00:00"} |
+| https://\<BlobStorageLocation>/\<FolderName>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-106.parquet | 1,087,425 |  {"creationTime": "03/20/2025 00:00:00"} |
+| https://\<BlobStorageLocation>/\<FolderName>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-107.parquet | 6,238,357 |  {"creationTime": "03/20/2025 00:00:00"} |
+| https://\<BlobStorageLocation>/\<FolderName>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-108.parquet | 7,460,408 |  {"creationTime": "03/20/2025 00:00:00"} |
+| https://\<BlobStorageLocation>/\<FolderName>/output/03/Year=2025/Month=03/Day=20/Hour=00/part-109.parquet | 6,338,148 |  {"creationTime": "03/20/2025 00:00:00"} |
 
 The `CapturedVariables` column dates match the dates specified in the `BlobUri` column.
 
@@ -156,7 +156,7 @@ EnableTracking=true
 with (format='parquet')
 <|
     .list blobs (
-        "https://<blobstoragelocation>/<foldername>;managed_identity=system"
+        "https://<BlobStorageLocation>/<FolderName>;managed_identity=system"
     )
     Suffix="parquet"
     MaxFiles=20

@@ -1,9 +1,9 @@
 ---
 title: .cancel queued ingestion operation command
 description: Learn how to use the `.cancel queued operation` command to cancel a long-running operation.
-ms.reviewer: odkadosh
+ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/20/2025
+ms.date: 02/25/2025
 ---
 # .cancel queued ingestion operation command
 
@@ -48,7 +48,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Example
 
-The following example cancels the ingestion of operation `00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444` and provides a reason.
+The following example cancels the ingestion of operation `00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444`.
 
 ```Kusto
 .cancel queued ingestion operation '00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444'
