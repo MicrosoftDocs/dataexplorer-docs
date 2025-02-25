@@ -2,7 +2,7 @@
 title: Splunk to Kusto map
 description: Learn how to write log queries in Kusto Query Language by comparing Splunk and Kusto Query Language concept mappings.
 ms.topic: conceptual
-ms.date: 02/24/2025
+ms.date: 02/25/2025
 ---
 
 # Splunk to Kusto cheat sheet
@@ -184,12 +184,12 @@ In Kusto, you can use `summarize arg_min()` to reverse the order of which record
 
 ### Timechart
 
-Kusto and Splunk both use the timechart operator to visualize data over time. In Splunk, it aggregates data over specified time intervals and can be used with various statistical functions. In Kusto, the equivalent of [timechart](visualization-timechart.md) is achieved using the summarize and bin functions, followed by the render timechart command.
+Kusto and Splunk both use the timechart operator to visualize data over time. In Splunk, it aggregates data over specified time intervals and can be used with various statistical functions. In Kusto, the equivalent is achieved using the summarize and bin functions, followed by the render [timechart](visualization-timechart.md) operator.
 
 | Product | Operator | Example |
-|:---|:---|:---|
-| Splunk | `timechart` |  `index=web_logs | timechart count by hour` |
-| Kusto | `timechart` | `WeatherData` <br />&#124; `summarize avg(Temperature) by bin(Time, 1d)` <br />&#124; `render timechart` |
+|:---|:---|:---| 
+| Splunk | `timechart` | `index=StormEvents` <br />&#124; `where StartTime >= "2007-01-01" AND StartTime <= "2007-12-31" AND DamageCrops > 0` <br />&#124; `bin span=7d StartTime` <br />&#124; `stats count as EventCount by StartTime` <br />&#124; `timechart span=7d count as EventCount` |
+| Kusto | `timechart` | `StormEvents <br />&#124; where StartTime between (datetime(2007-01-01) .. datetime(2007-12-31)) and DamageCrops > 0 `<br />&#124; `summarize EventCount = count() by bin(StartTime, 7d)` <br />&#124; `render timechart` |
 
 ## Related content
 
