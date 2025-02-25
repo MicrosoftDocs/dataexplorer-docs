@@ -3,7 +3,7 @@ title:  graph_blast_radius_fl()
 description: Learn how to use the graph_blast_radius_fl() function to calculate the Blast Radius of source nodes over path or edge data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 01/05/2025
+ms.date: 02/24/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_blast_radius_fl()
@@ -12,9 +12,9 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 Calculate the Blast Radius (list and score) of source nodes over path or edge data.
 
-The function `graph_blast_radius_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows to calculate the Blast Radius of each of the source nodes based on paths or edges data. Each row of input data contains a source node and a target node, which can represent direct connections (edges) between nodes and targets, or longer multi-hop paths between them. If the paths aren't available, we can first discover them using [graph-match()](../query/graph-match-operator.md) operator or [graph_path_discovery_fl()](graph-path-discovery-fl.md) function. Then `graph_blast_radius_fl()` can be executed on top of the output of path discovery.
+The function `graph_blast_radius_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows you to calculate the Blast Radius of each of the source nodes based on paths or edges data. Each row of input data contains a source node and a target node, which can represent direct connections (edges) between nodes and targets, or longer multi-hop paths between them. If the paths aren't available, we can first discover them using the [graph-match](../query/graph-match-operator.md) operator or [graph_path_discovery_fl()](graph-path-discovery-fl.md) function. Then `graph_blast_radius_fl()` can be executed on top of the output of path discovery.
 
-Blast Radius represents the connectivity of a specific source node to relevant targets. The more targets the source can access, the more effect it has if it's compromised by the attacker - hence the name. Nodes with high Blast Radius are important in cybersecurity domain due to the potential damage they might cause and to being highly valued by attackers. Thus, nodes with high Blast Radius should be protected accordingly - in terms of hardening and prioritizing security signals such as alerts.
+Blast Radius represents the connectivity of a specific source node to relevant targets. The more targets the source can access, the more effect it has if it's compromised by the attacker - hence the name. Nodes with high Blast Radius are important in the cybersecurity domain due to the potential damage they might cause and to being highly valued by attackers. Thus, nodes with high Blast Radius should be protected accordingly - in terms of hardening and prioritizing security signals such as alerts.
 
 The function outputs a list of connected targets for each source and also a score representing targets' number. Optionally, in case there's a meaningful 'weight' for each target (such as criticality or cost), a weighted score is calculated as a sum of targets' weights. In addition, the limits for maximum total number of shown sources and maximum number of targets in each list are exposed as optional parameters for better control.
 
@@ -205,20 +205,18 @@ connections
 **Output**
 
 
-| sourceId     | blastRadiusList                           | blastRadiusScore | blastRadiusScoreWeighted | isBlastRadiusListCapped |
-| ------------ | ----------------------------------------- | ---------------- | ------------------------ | ----------------------- |
-| webapp-prd   | ["vm-custom","test-machine","hub_router"] | 3                | 4                        | FALSE                   |
-| vm-custom    | ["webapp-prd","server-0126","hub_router"] | 3                | 6                        | FALSE                   |
-| test-machine | ["vm-custom","hub_router"]                | 2                | 3                        | FALSE                   |
-| vm-work-1    | ["webapp-prd","storage_main_backup"]      | 2                | 8                        | FALSE                   |
-| backup_prc   | ["storage_main_backup","storage_DevBox"]  | 2                | 6                        | FALSE                   |
-| hub_router   | ["remote_DT","vm-work-2"]                 | 2                | 2                        | FALSE                   |
-| vm-work-2    | ["backup_prc"]                            | 1                | 3                        | FALSE                   |
-| device_A1    | ["sevice_B2"]                             | 1                | 2                        | FALSE                   |
-| remote_DT    | ["backup_prc"]                            | 1                | 3                        | FALSE                   |
-| sevice_B2    | ["device_A1"]                             | 1                | 2                        | FALSE                   |
-
-
+| sourceId | blastRadiusList | blastRadiusScore | blastRadiusScoreWeighted | isBlastRadiusListCapped |
+|--|--|--|--|--|
+| webapp-prd | ["vm-custom","test-machine","hub_router"] | 3 | 4 | FALSE |
+| vm-custom | ["webapp-prd","server-0126","hub_router"] | 3 | 6 | FALSE |
+| test-machine | ["vm-custom","hub_router"] | 2 | 3 | FALSE |
+| vm-work-1 | ["webapp-prd","storage_main_backup"] | 2 | 8 | FALSE |
+| backup_prc | ["storage_main_backup","storage_DevBox"] | 2 | 6 | FALSE |
+| hub_router | ["remote_DT","vm-work-2"] | 2 | 2 | FALSE |
+| vm-work-2 | ["backup_prc"] | 1 | 3 | FALSE |
+| device_A1 | ["sevice_B2"] | 1 | 2 | FALSE |
+| remote_DT | ["backup_prc"] | 1 | 3 | FALSE |
+| sevice_B2 | ["device_A1"] | 1 | 2 | FALSE |
 
 Running the function takes the connections between and sources and targets, and aggregates the targets by source. For each source, Blast Radius represents the connected targets as score (regular and weighted) and list.
 
@@ -235,7 +233,15 @@ In the example above, we run the `graph_blast_radius_fl()` function on top of co
 
 If the multi-hop paths aren't available, we can build multi-hop paths between sources and targets (for example, by running 'graph_path_discovery_fl()') and run 'graph_blast_radius_fl()' on top of the results.
 
-The output looks similar, but will reflect the Blast Radius calculated over multi-hop paths, thus being a better indicator of source nodes true connectivity to relevant targets. In order to find the full paths between source and target scenarios (for example, for disruption), [graph_path_discovery_fl()](graph-path-discovery-fl.md) function can be used with filters on relevant source and target nodes.
+The output looks similar, but reflects the Blast Radius calculated over multi-hop paths, thus being a better indicator of source nodes true connectivity to relevant targets. In order to find the full paths between source and target scenarios (for example, for disruption), [graph_path_discovery_fl()](graph-path-discovery-fl.md) function can be used with filters on relevant source and target nodes.
 
-The function `graph_blast_radius_fl()` can be used to calculate the Blast Radius of source nodes, calculated either over direct edges or longer paths. In cybersecurity domain, it can be used for several insights. Blast Radius scores (regular and weighted), represent source node's importance both from defenders and attackers perspectives. Nodes with high Blast Radius should be protected accordingly (for example, in terms of access hardening and vulnerability management); security signals (such as alerts) on such nodes should be prioritized. The Blast Radius list should be monitored for undesired connections between sources and targets and used in disruption scenarios (for example, if there was active compromise of the source, connections between it and important target should be broken).
+The function `graph_blast_radius_fl()` can be used to calculate the Blast Radius of source nodes, calculated either over direct edges or longer paths. In cybersecurity domain, it can be used for several insights. Blast Radius scores (regular and weighted), represent source node's importance both from defenders' and attackers' perspectives. Nodes with high Blast Radius should be protected accordingly (for example, in terms of access hardening and vulnerability management); security signals (such as alerts) on such nodes should be prioritized. The Blast Radius list should be monitored for undesired connections between sources and targets and used in disruption scenarios (for example, if there was active compromise of the source, connections between it and important target should be broken).
 
+## Related content
+
+* [Functions library](functions-library.md)
+* [Kusto Query Language (KQL) graph semantics overview](../query/graph-overview.md)
+* [Graph operators](../query/graph-operators.md)
+* [Scenarios](../query/graph-scenarios.md)
+* [Best practices](../query/graph-best-practices.md)
+* [graph_path_discovery_fl()](graph-path-discovery-fl.md)

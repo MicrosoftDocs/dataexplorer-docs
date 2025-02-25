@@ -43,9 +43,9 @@ The following command returns the updated extents sharding policy for the databa
 .alter database MyDatabase policy sharding
 ```
 {
-    "MaxRowCount" : 750000,
-    "MaxExtentSizeInMb" : 1024,
-    "MaxOriginalSizeInMb": 2048
+    "ShardEngineMaxRowCount" : 750000,
+    "ShardEngineMaxExtentSizeInMb" : 1024,
+    "ShardEngineMaxOriginalSizeInMb": 2048
 }
 ```
 ````

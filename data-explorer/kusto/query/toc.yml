@@ -1260,7 +1260,7 @@ items:
         href: varianceif-aggregation-function.md
       - name: variancep()
         href: variancep-aggregation-function.md
-  - name: Graph operators
+  - name: Graph
     items:
       - name: Graph overview
         href: graph-overview.md
@@ -1268,18 +1268,28 @@ items:
         href: graph-best-practices.md
       - name: Graph scenarios
         href: graph-scenarios.md
-      - name: Graph operators overview
-        href: graph-operators.md
-      - name: make-graph
-        href: make-graph-operator.md
-      - name: graph-match
-        href: graph-match-operator.md
-      - name: graph-to-table
-        href: graph-to-table-operator.md
-      - name: graph-shortest-paths
-        href: graph-shortest-paths-operator.md
-      - name: graph-mark-components
-        href: graph-mark-components-operator.md
+      - name: Graph operators 
+        items: 
+          - name: Graph operators overview
+            href: graph-operators.md
+          - name: make-graph
+            href: make-graph-operator.md
+          - name: graph-match
+            href: graph-match-operator.md
+          - name: graph-to-table
+            href: graph-to-table-operator.md
+          - name: graph-shortest-paths
+            href: graph-shortest-paths-operator.md
+          - name: graph-mark-components
+            href: graph-mark-components-operator.md
+      - name: Graph functions 
+        items:
+          - name: node_degree_in()
+            displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in 
+            href: node-degree-in.md
+          - name: node_degree_out()
+            displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
+            href: node-degree-out.md
   - name: Geospatial
     items:
       - name: Geospatial clustering overview
