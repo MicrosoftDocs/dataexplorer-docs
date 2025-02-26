@@ -1271,17 +1271,17 @@ items:
       - name: Graph operators 
         items: 
           - name: Graph operators overview
-                href: graph-operators.md
-              - name: make-graph
-                href: make-graph-operator.md
-              - name: graph-match
-                href: graph-match-operator.md
-              - name: graph-to-table
-                href: graph-to-table-operator.md
-              - name: graph-shortest-paths
-                href: graph-shortest-paths-operator.md
-              - name: graph-mark-components
-                href: graph-mark-components-operator.md
+            href: graph-operators.md
+          - name: make-graph
+            href: make-graph-operator.md
+          - name: graph-match
+            href: graph-match-operator.md
+          - name: graph-to-table
+            href: graph-to-table-operator.md
+          - name: graph-shortest-paths
+            href: graph-shortest-paths-operator.md
+          - name: graph-mark-components
+            href: graph-mark-components-operator.md
       - name: Graph functions
         items:
           - name: all()
