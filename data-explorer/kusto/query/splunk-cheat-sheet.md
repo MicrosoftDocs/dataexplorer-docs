@@ -189,7 +189,7 @@ Kusto and Splunk both use the timechart operator to visualize data over time. In
 | Product | Operator | Example |
 |:---|:---|:---| 
 | Splunk | `timechart` | `index=StormEvents` <br />&#124; `where StartTime >= "2007-01-01" AND StartTime <= "2007-12-31" AND DamageCrops > 0` <br />&#124; `bin span=7d StartTime` <br />&#124; `stats count as EventCount by StartTime` <br />&#124; `timechart span=7d count as EventCount` |
-| Kusto | `timechart` | `StormEvents <br />&#124; where StartTime between (datetime(2007-01-01) .. datetime(2007-12-31)) and DamageCrops > 0 `<br />&#124; `summarize EventCount = count() by bin(StartTime, 7d)` <br />&#124; `render timechart` |
+| Kusto | `timechart` | `StormEvents` <br />&#124; `where StartTime between (datetime(2007-01-01) .. datetime(2007-12-31)) and DamageCrops > 0` <br />&#124; `summarize EventCount = count() by bin(StartTime, 7d)` <br />&#124; `render timechart` |
 
 ## Related content
 
