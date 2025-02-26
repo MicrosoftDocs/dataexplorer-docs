@@ -41,7 +41,7 @@ The following command changes a single property for the sharding policy for a ta
 
 ```kusto
 .alter-merge table MyTable policy sharding 
-@'{ "MaxExtentSizeInMb": 1024}'
+@'{ "ShardEngineMaxExtentSizeInMb": 1024}'
 ```
 
 ## Related content

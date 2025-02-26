@@ -151,7 +151,7 @@ When querying the materialized part of the view, the return value depends on the
     set materialized_view_shuffle = dynamic([{"Name" : "ViewName" }]);
     ViewName
     ```
-  
+
 ## Performance considerations
 
 The main contributors that can impact a materialized view health are:
