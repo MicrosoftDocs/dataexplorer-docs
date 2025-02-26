@@ -3,7 +3,7 @@ title: .export to storage
 description: Learn how to export data to cloud storage.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/06/2025
+ms.date: 02/26/2025
 ---
 # .export to storage
 
@@ -28,7 +28,7 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 | *async*                         | `string` |                    | If specified, the command runs in asynchronous mode. See [asynchronous mode](#asynchronous-mode). |
 | *compressed*                    | `bool`   |                    | If specified, the output storage artifacts are compressed in the format specified by the `compressionType` [supported property](#supported-properties). |
 | *OutputDataFormat*              | `string` | :heavy_check_mark: | The data format of the storage artifacts written by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`. |
-| *StorageConnectionString*       | `string` |                    | One or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md) that specify which storage to write the data to. More than one storage connection string might be specified for scalable writes. Each such connection string must specify the credentials to use when writing to storage. For example, when writing to Azure Blob Storage, the credentials can be the storage account key, or a shared access key (SAS) with the permissions to read, write, and list blobs. |
+| *StorageConnectionString*       | `string` |                    | One or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md) that specify which storage to write the data to. More than one storage connection string might be specified for scalable writes. Each such connection string must specify the credentials to use when writing to storage. For example, when writing to Azure Blob Storage, the credentials can be the storage account key, or a shared access key (SAS) with the permissions to read, write, and list blobs. <br/> > [!NOTE] When exporting data to CSV files using a 'dfs' endpoint, the data goes through a [DFS managed private endpoint](../../../security-network-managed-private-endpoint-create#create-a-managed-private-endpoint-using-the-rest-api). > When exporting data to parquet files, the data goes through a [blob managed private endpoint](../../../security-network-managed-private-endpoint-create#create-a-managed-private-endpoint-to-an-azure-storage-account.|
 | *PropertyName*, *PropertyValue* | `string` |                    | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!NOTE]
