@@ -1285,10 +1285,13 @@ items:
       - name: Graph functions
         items:
           - name: all()
+            displayName: all() graph function 
             href: all-graph-function.md
           - name: map()
+            displayName: map() graph function 
             href: map-graph-function.md
           - name: inner_nodes()
+            displayName: inner nodes() graph function, inner nodes 
             href: inner_nodes-graph-function.md
           - name: node_degree_in()
             displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in 
