@@ -3,20 +3,14 @@ title: Geospatial data visualizations
 description: Learn how to visualize geospatial data.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 02/26/2025
 ---
 
 # Geospatial visualizations
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Geospatial data can be visualized using the [render operator](render-operator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using.md). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
-
-:::moniker range="azure-data-explorer"
-You can also use the [Azure Data Explorer web UI](/azure/data-explorer/web-query-data).
-
-For more information about visualization options, see [Data visualization with Azure Data Explorer](/azure/data-explorer/viz-overview). 
-::: moniker-end
+Geospatial data can be visualized as part of your query using the [render operator](render-operator.md) as [points](#example-visualize-points-on-a-map), [pies, or bubbles](#visualization-of-pies-or-bubbles-on-a-map) on a map.
 
 For more information about geospatial clustering, see [Geospatial clustering](geospatial-grid-systems.md).
 
@@ -64,17 +58,15 @@ StormEvents
 
 The following example visualizes a series of points on a map. If you have multiple columns in the result, you must specify the columns to be used for xcolumn (Longitude), ycolumn (Latitude), and series.
 
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKEnMTlUwNDAAMotS81JSixSKkxNLSlKLkjMSi0oUyjNLMhQ0sjPzUhRsFXITC3QUKpLzc0pz84Bcp9T0zDyf%2FDwdhUqIWDFcMLFER6E4tSgzFSQEtiuksiBVEwDmTUhSewAAAA%3D%3D" target="_blank">Run the query</a>
-::: moniker-end
+> [!NOTE]
+> The multiple columns visualization is only supported in [Kusto.Explorer](../tools/kusto-explorer.md).
 
 ```kusto
 StormEvents
 | take 100
 | render scatterchart with (kind = map, xcolumn = BeginLon, ycolumns = BeginLat, series = EventType)
 ```
-<!--this image still needs to be replaced-->
+
 :::image type="content" source="media/geo-visualizations/storm-events-series-sample.png" alt-text="Screenshot of sample storm series events using arguments.":::
 
 ### Example: Visualize points on a map defined by GeoJSON dynamic values
@@ -102,31 +94,11 @@ You can visualize pies or bubbles either using [Longitude, Latitude] columns, or
 
 ### Example: Visualize pie charts by location
 
-The following example shows storm events aggregated by S2 cell. The chart aggregates events in pie charts by location.
+The following example shows storm events aggregated by S2 cells. The chart aggregates events in bubbles by location in one color.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PsU7DMBCGd57ixhiZNmmhCkOXSp1ggz1ynVNi6tjW%2BdISxMNjt5XI0OlOuv%2F%2FPvuDPQ37EzqOD78QyH%2BhZthhZ9y7d%2FK2KZZwCX1OAVPu3CMhdOib4I3jxrhGG9IWi3tNQmWLp7parOvXSkhY1YuX9fNGQlWWJTzmIRI0jsOgyPwgaD86LgQcpn%2BrhF7FHrYzK%2FsmrjRae8cqZr%2FJjWswV3QCkrJXRpGhQs41F3mT6oSuRYJgUPeKGM6GeyiOxrXpFYMKApbLfM37LWxcB%2BqkjFUHi%2BCdncA4eBsje9h%2FB%2BspAVuMR%2FbhDzcwHP56AQAA" target="_blank">Run the query</a>
-::: moniker-end
-
-```kusto
-StormEvents
-| project BeginLon, BeginLat, EventType
-| where geo_point_in_circle(BeginLon, BeginLat, real(-81.3891), 28.5346, 1000 * 100)
-| summarize count() by EventType, hash = geo_point_to_s2cell(BeginLon, BeginLat)
-| project geo_s2cell_to_central_point(hash), EventType, count_
-| render piechart with (kind = map) // pie map rendering available only in Kusto Explorer desktop
-```
-
-:::image type="content" source="media/geo-visualizations/storm-events-pie.png" alt-text="Screenshot of storm events on a pie map.":::
-
-### Example: Visualize bubbles using a color axis
-
-The following example shows storm events aggregated by S2 cell. The chart aggregates events in bubble by location. Since the color-axis ("count") is the same for all events, the `render` operator generates bubbles.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PPW%2FCMBCG9%2F6KE1NSpZBAqdKBpRJTu7V7ZMwpueL4LPsCpOqPrx2QysB0p3s%2FHvtT2PfbI1oJD7%2FgPH%2BjFnjDluwH2%2BK6KSlgMn2NDqPv1KFHaJEbx2SlIdto8tpgdi%2FpUZnsqa7mq%2Fq1ygtY1vP16vmlgKosS3hMI4%2BlYeh75ekHQfNgJcthN%2F5TC%2BhU6GBzQxVuwlKjMXeo%2Bc1vUuJiTBEdC70yl44slcYnTcQmZvAsaPcXbIi02aTMouLjHT04Qt0pL3Ai6SA7UHRvoFcuh8UiqWm%2Fmsm2oI6KjNoZBLZmBLLwPgRh2J6dYR8L9xgOwu4PYF0r54kBAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PP08DMQzFdz6F1SlBobproTqGLpW6sbV7FILVBHJJ5Lj0j%2Fjw5O6Q6NDJlv3e%2B9k7TtRvvzFyefiBTOkTLcMGDz6%2Bpaj%2BOsMKRtH%2BkrHqTg4J4YBJ5%2BQjax%2B19WQDintOQhPEU9fOl91rKxUsuvnL8nmloG2aBh6HImtoOfa9IX9FsOkYWUh4v%2FxTFThTHKxvqJx0WVgM4Q5V3nwzOCbhYLE1kEyYMsQQWk8aibp68MwYPyZsqbTZuJnVDdU5EmSP1hliOHl2IL58Va%2BhN1n%2BAsxScyJLAQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -136,10 +108,28 @@ StormEvents
 | summarize count() by EventType, hash = geo_point_to_s2cell(BeginLon, BeginLat)
 | project geo_s2cell_to_central_point(hash), count_
 | extend Events = "count"
-| render piechart with (kind = map) // pie map rendering available only in Kusto Explorer desktop
+| render piechart with (kind = map)
 ```
 
 :::image type="content" source="media/geo-visualizations/storm-events-bubble.png" alt-text="Screenshot of storm events on a bubble map.":::
+
+### Example: Visualize bubbles using a color axis
+
+The following example shows storm events aggregated by S2 cells. The chart aggregates events by event type in pie charts by location.
+
+> [!NOTE]
+> The color axis visualization is only supported in [Kusto.Explorer](../tools/kusto-explorer.md).
+
+```kusto
+StormEvents
+| project BeginLon, BeginLat, EventType
+| where geo_point_in_circle(BeginLon, BeginLat, real(-81.3891), 28.5346, 1000 * 100)
+| summarize count() by EventType, hash = geo_point_to_s2cell(BeginLon, BeginLat)
+| project geo_s2cell_to_central_point(hash), EventType, count_
+| render piechart with (kind = map)
+```
+
+:::image type="content" source="media/geo-visualizations/storm-events-color-pie-map.png" alt-text="Screenshot of storm events on a pie map in Kusto.Explorer.":::
 
 ## Related content
 
