@@ -42,4 +42,4 @@ print result = regex_quote('(so$me.Te^xt)')
 
 | result |
 |---|
-| `\(so\\$me\\.Te\\^xt\\)` |
+| `\(so\$me\.Te\^xt\)` |
