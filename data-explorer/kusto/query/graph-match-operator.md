@@ -193,4 +193,4 @@ Actions
 * [make-graph operator](make-graph-operator.md)
 * [all()](all-graph-function.md)
 * [map()](map-graph-function.md)
-* [inner_nodes()](inner_nodes-graph-function.md)
+* [inner_nodes()](inner-nodes-graph-function.md)
