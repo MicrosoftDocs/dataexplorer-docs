@@ -3,7 +3,7 @@ title: map() (graph function)
 description: Learn how to use the map() function to evaluate an expression over the elements of a variable length edge.
 ms.reviewer: michalfaktor
 ms.topic: reference
-ms.date: 02/19/2025
+ms.date: 02/27/2025
 ---
 # map() (graph function)
 
@@ -31,9 +31,9 @@ The `map()` graph function calculates an expression for each *edge* or *inner no
 
 A dynamic array where:
 
-1. The array length matches the number of edges or inner nodes, when [inner_nodes](inner_nodes-graph-function.md) is used, in the variable length edge.
-1. The array is empty for zero length paths.
-1. Each element in the array corresponds to the results of applying the *expression* to each edge or inner node in the variable length edge.
+* The array length matches the number of edges or inner nodes, when [inner_nodes](inner_nodes-graph-function.md) is used, in the variable length edge.
+* The array is empty for zero length paths.
+* Each element in the array corresponds to the results of applying the *expression* to each edge or inner node in the variable length edge.
 
 ## Examples
 

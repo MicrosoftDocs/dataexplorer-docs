@@ -30,7 +30,7 @@ Sets the execution scope of the `all` or `map` expression to the inner node of a
 
 ## Examples
 
-The example in this section show how to use the syntax to help you get started.
+The example in this section shows how to use the syntax to help you get started.
 
 ### Find all employees in a manager's organization
 
