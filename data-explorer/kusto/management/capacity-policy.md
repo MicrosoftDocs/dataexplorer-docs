@@ -26,6 +26,7 @@ The capacity policy is made of the following components:
 * [StreamingIngestionPostProcessingCapacity](#streaming-ingestion-post-processing-capacity)
 * [PurgeStorageArtifactsCleanupCapacity](#purge-storage-artifacts-cleanup-capacity)
 * [PeriodicStorageArtifactsCleanupCapacity](#periodic-storage-artifacts-cleanup-capacity)
+* [QueryAccelerationCapacity](#query-acceleration-capacity)
 
 To view the capacity of your cluster, use the [.show capacity](show-capacity-command.md) command.
 
@@ -179,6 +180,19 @@ The [.show capacity](show-capacity-command.md) command returns the cluster's per
 
 `MaximumConcurrentOperationsPerCluster`
 
+### Query Acceleration capacity
+
+| Property | Type | Description |
+|--|--|--|
+| `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent query acceleration caching operations in a cluster. This value caps the total query acceleration caching capacity, as shown in the following formula. |
+| `CoreUtilizationCoefficient` | `long` | Determines the percentage of cores to use in the query acceleration caching capacity calculation. |
+
+**Formula**
+
+The [.show capacity](show-capacity-command.md) command returns the cluster's query acceleration caching capacity based on the following formula:
+
+`Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
+
 ## Defaults
 
 The default capacity policy has the following JSON representation:
@@ -223,6 +237,10 @@ The default capacity policy has the following JSON representation:
   },
   "PeriodicStorageArtifactsCleanupCapacity": {
     "MaximumConcurrentOperationsPerCluster": 2
+  },
+  "QueryAccelerationCapacity": {
+    "ClusterMaximumConcurrentOperations": 100,
+    "CoreUtilizationCoefficient": 0.5
   }
 }
 ```
@@ -247,6 +265,8 @@ Kusto limits the number of concurrent requests for the following user-initiated 
   * The [purge rebuild capacity](#extents-purge-rebuild-capacity) is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands aren't blocked or throttled because of this process, but completes faster or slower depending on the purge rebuild capacity.
 * **Exports**
   * The limit is as defined in the [export capacity](#export-capacity).
+* **Query Acceleration**
+  * The limit is as defined in the [query acceleration capacity](#query-acceleration-capacity).
 
 When the cluster detects that an operation exceeded the limit on concurrent requests:
 
