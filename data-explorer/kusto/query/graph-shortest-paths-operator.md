@@ -3,7 +3,7 @@ title: graph-shortest-paths Operator (Preview)
 description: Learn how to use the graph-shortest-paths operator to efficiently find the shortest paths from a given set of source nodes to a set of target nodes within a graph
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 11/05/2024
+ms.date: 02/17/2025
 ---
 
 # graph-shortest-paths Operator (Preview)
@@ -13,7 +13,7 @@ ms.date: 11/05/2024
 The `graph-shortest-paths` operator finds the shortest paths between a set of source nodes and a set of target nodes in a graph and returns a table with the results.
 
 > [!NOTE]
-> This operator is used in conjunction with the [make-graph operator](make-graph-operator.md).
+> This operator is used with the [make-graph operator](make-graph-operator.md).
 
 ## Syntax
 
@@ -59,7 +59,7 @@ The following example demonstrates how to use the `graph-shortest-paths` operato
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VSPW%2FDIBDd%2FStOnuzKWOrQpZWzVF27dOgQRRYJNJA6YAFRlv74HjhOjziVF3gf9w7fDTLAzhojd0Fb46EDwQN%2B20FWX84ee483ZJ59cNrsGwh2AQ3ayMulhmINBUD5Kk1wfCgbKN%2BtCyoenBRlE8krQlSJvLV%2B2FMSUnrGiO4unQ7sU%2FqQl8%2Fxq%2Fw%2FwbJAZr0TQPp%2F4xO5HU7yws4QURGWoHPhiaXBC2uxeYGCTrH4gSP%2Flmzv%2BKiAzhEYW5EZwlkH1RsrZK9FdwHRnYzMKxwUhrKRB%2BWhQt6Fmq1J1MNj2z5t2KoSqNMm%2BWts9qykk5AM7ZzVddlPA24EEFumm1YEC43OHjArPQK3M6vYQGwMUdJQ%2B%2Fe4aTNv6AjFLY6bvsz%2BBe1b5s0PAwAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VSPW%2BDMBDd%2BRUnJqgwUocurchSde3SoUMUISd2g1Owke0oS398zwaic6Fisd%2FHvTN3vfRwMlrLk1dGO2hAcI%2FfsZfFlzVD6%2FCGzLPzVulzBd6soF5pOV9KyPaQAeSvUnvL%2B7yC%2FN1Y34WDlSKvAnlHiCqSf60f5hqFlF4wotuk44F9SufT8il%2Bl%2F8nWBdIrBsBpP83PpHH%2FipndoGIirAEXQpPLA1eWbPDC2R0itkPDPxbsrPlYwd0jsDYjswQbsp3rTZCtko0M4juaGSuw0FhKBu57xwUyFtfsj2Jenis66cD2xUCdUpHf4nN3jppJURDvWQ1TfLTgGsBxJbophXBQqM1F8yKj8DtTCpWEBpDdOBjQZqiW1pO%2B7klCngZtGHr1338ApCGusgbAwAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -82,7 +82,7 @@ connections
 | make-graph from_station --> to_station with_node_id=station
 | graph-shortest-paths (start)-[connections*1..5]->(destination)
   where start.station == "South-West" and destination.station == "North"
-  project from = start.station, path = connections.to_station, line = connections.line, to = destination.station
+  project from = start.station, path = map(connections, to_station), line = map(connections, line), to = destination.station
 ```
 
 **Output**
@@ -91,13 +91,13 @@ connections
 |---|---|---|---|
 |South-West|[<br>  "South",<br>  "Central",<br>  "North"<br>]|[<br>  "red",<br>  "red",<br>  "red"<br>]|North|
 
-### Finding all shortest paths between two train stations
+### Find all shortest paths between two train stations
 
 The following example, like the previous example, finds the shortest paths in a transportation network. However, it uses `output=all`, so returns all shortest paths.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VSPW%2BDMBDd%2BRUnJqgwUocurchSde3SoUMUISdcY1LHRsYoS398zwbSI6Risd%2FHvTN3Gj0crDF48K01PVTQSE%2FfXmP25ey57ulGzHPvXWuOBXi7gnRrcLrkkGwhAUhf0XgndVpA%2Bm6dV%2BHgsEmLQF4RporkrfXDDlHI6Rljurt0PIhP7P2y%2FBK%2Fyv8TrAssrHcCWP9vciT3esCJnSGmYixD58Ijy4NX1mT3AgmfYvIDZ%2FmN4uhkp4DPEYTYsBnCpfWqNrbBum2qCSR3NIpe0aAoVHTSqx7ovd3gK6k1ZCR1PhdblvrwWJZPO7HJGrK0JpbKqe%2BLQocQDeUcW1WL%2FwfSNMBsC924LVSoc%2FZEWfE9tKiLigWEHgllDZV%2F7xyX9IYOUFjosPTr7F%2FiorS0GgMAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VTvW6DMBDeeYoTE1QYqUOXVmSpunbp0CGKkBOuwamxkW2UpQ%2Ffw0B0lFQs5vu7M3doDHCyxuApKGs8VNDIQM9RY%2FblbFd7eiPm2QenzLmAYDeQVgbnlxySPSQA6Sua4KROC0jfrQvteHDYpMVI3hCmiuRf64cdopDTC8Z0d%2Bl4EJ%2Fowzp%2Bjd%2Fk%2Fwm2ASvrnQKs%2Fzc5kUc94MwuEFMxlqFL8MTywhtrcniBhE8x%2BYFOfqM4O9m3wOcIQuzYDOGqQlsb22CtmmoGyR2Nwrc0KCoqehlaD3TffgiV1BoykrqQiz2r%2BvBYlk8HscsasigTo3Lq%2B9qiQ4iGcilbVavvB9I0wGwr3bQtFNQ7e6Fa8T60qKvEAsYeCe1kn7Gm%2BMLm06reE414PmrHH2Dbxy%2FzY0GpJgMAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -120,7 +120,7 @@ connections
 | make-graph from_station --> to_station with_node_id=station
 | graph-shortest-paths output=all (start)-[connections*1..5]->(destination)
   where start.station == "South-West" and destination.station == "North"
-  project from = start.station, path = connections.to_station, line = connections.line, to = destination.station
+  project from = start.station, path = map(connections, to_station), line = map(connections, line), to = destination.station
 ```
 
 **Output**
@@ -135,4 +135,3 @@ connections
 * [Best practices for Kusto Query Language (KQL) graph semantics](graph-best-practices.md)
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
-
