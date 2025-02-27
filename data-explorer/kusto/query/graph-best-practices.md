@@ -3,7 +3,7 @@ title: Best practices for Kusto Query Language (KQL) graph semantics
 description: Learn about the best practices for Kusto Query Language (KQL) graph semantics.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 08/11/2024
+ms.date: 02/17/2025
 # Customer intent: As a data analyst, I want to learn about best practices for KQL graph semantics.
 ---
 
@@ -11,7 +11,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-This article explains how to use the graph semantics feature in KQL effectively and efficiently for different use cases and scenarios. It shows how to create and query graphs with the syntax and operators, and how to integrate them with other KQL features and functions. It also helps users avoid common pitfalls or errors, such as creating graphs that exceed memory or performance limits, or applying unsuitable or incompatible filters, projections, or aggregations.
+This article explains how to use the graph semantics feature in KQL effectively and efficiently for different use cases and scenarios. It shows how to create and query graphs with the syntax and operators, and how to integrate them with other KQL features and functions. It also helps users avoid common pitfalls or errors. For instance, creating graphs that exceed memory or performance limits, or applying unsuitable or incompatible filters, projections, or aggregations.
 
 ## Size of graph
 
@@ -86,7 +86,7 @@ Consider creating a materialized view to improve the query performance, as follo
     }
     ```
 
-1. Create two functions that ensure that only the materialized component of the materialized view is used and additional filters and projections are applied.
+1. Create two functions that ensure that only the materialized component of the materialized view is used and other filters and projections are applied.
 
     ```kusto
     .create function currentEmployees () {
@@ -111,7 +111,7 @@ reportsTo_lastKnownState
 | make-graph employee --> manager with filteredEmployees on name
 | graph-match (employee)-[hasManager*2..5]-(manager)
   where employee.name == "Bob"
-  project employee = employee.name, reportingPath = hasManager.manager
+  project employee = employee.name, reportingPath = map(hasManager, manager)
 ```
 
 ## Graph time travel
@@ -142,7 +142,7 @@ With the function in place, the user can craft a query to get the top manager of
 graph_time_travel(datetime(2022-06-01))
 | graph-match (employee)-[hasManager*2..5]-(manager)
   where employee.name == "Bob"
-  project employee = employee.name, reportingPath = hasManager.manager
+  project employee = employee.name, reportingPath = map(hasManager, manager)
 ```
 
 **Output**
@@ -155,7 +155,7 @@ graph_time_travel(datetime(2022-06-01))
 
 Sometimes it's required to contextualize time series data with a graph that consists of multiple node types. One way of handling this scenario is creating a general-purpose property graph that is represented by a canonical model.
 
-Occasionally, you may need to contextualize time series data with a graph that has multiple node types. You could approach the problem by creating a general-purpose property graph that is based on a canonical model, such as the following.
+Occasionally, you might need to contextualize time series data with a graph that has multiple node types. You could approach the problem by creating a general-purpose property graph that is based on a canonical model, such as the following.
 
 - nodes
   - nodeId (string)
@@ -283,4 +283,5 @@ The projection in graph-match outputs the information that the temperature senso
 
 ## Related content
 
+* [Kusto Query Language (KQL) graph semantics overview](graph-overview.md)
 * [Graph operators](graph-operators.md)
