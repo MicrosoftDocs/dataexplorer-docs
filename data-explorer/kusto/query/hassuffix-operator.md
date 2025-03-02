@@ -44,7 +44,7 @@ Rows in *T* for which the predicate is `true`.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPISOxuLg0LS2zQkEpXwkoV1CUn5WaXAKR1UE2CQBH0LHRbQAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPISOxuLg0LS2zQkGpJEMJKFlQlJ+VmlwCkdZBNgoApSHU8m4AAAA=" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
