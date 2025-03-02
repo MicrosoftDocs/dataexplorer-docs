@@ -365,7 +365,7 @@ items:
     items:
     - name: Capacity policy
       href: /kusto/management/capacity-policy?view=azure-data-explorer&preserve-view=true
-      displayName: IngestionCapacity, ExtentsMergeCapacity, ExtentsPurgeRebuildCapacity, ExportCapacity, ExtentsPartitionCapacity, MaterializedViewsCapacity, StoredQueryResultsCapacity, ingestion, extents,
+      displayName: IngestionCapacity, ExtentsMergeCapacity, ExtentsPurgeRebuildCapacity, ExportCapacity, ExtentsPartitionCapacity, MaterializedViewsCapacity, StoredQueryResultsCapacity, QueryAccelerationCapacity, ingestion, extents,
         purge, partition
     - name: .alter cluster policy capacity command
       href: /kusto/management/alter-capacity-policy-command?view=azure-data-explorer&preserve-view=true

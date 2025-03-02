@@ -1282,8 +1282,17 @@ items:
             href: graph-shortest-paths-operator.md
           - name: graph-mark-components
             href: graph-mark-components-operator.md
-      - name: Graph functions 
+      - name: Graph functions
         items:
+          - name: all()
+            displayName: all() graph function 
+            href: all-graph-function.md
+          - name: map()
+            displayName: map() graph function 
+            href: map-graph-function.md
+          - name: inner_nodes()
+            displayName: inner nodes() graph function, inner nodes 
+            href: inner-nodes-graph-function.md
           - name: node_degree_in()
             displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in 
             href: node-degree-in.md
