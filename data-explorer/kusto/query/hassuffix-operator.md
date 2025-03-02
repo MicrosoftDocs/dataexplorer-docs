@@ -50,7 +50,7 @@ Rows in *T* for which the predicate is `true`.
 ```kusto
 StormEvents
 | summarize event_count=count() by State
-| where State hassuffix "o"
+| where State hassuffix "th"
 | project State, event_count
 ```
 
@@ -58,10 +58,9 @@ StormEvents
 
 |State|event_count|
 |-----|-----------|
-|COLORADO|1654|
-|OHIO|1233|
-|GULF OF MEXICO|577|
-|NEW MEXICO|527|
-|IDAHO|247|
-|PUERTO RICO|192|
-|LAKE ONTARIO|8|
+|NORTH CAROLINA|1721|
+|SOUTH DAKOTA|1567|
+|SOUTH CAROLINA|915|
+|NORTH DAKOTA|905|
+|ATLANTIC SOUTH|193|
+|ATLANTIC NORTH|188|
