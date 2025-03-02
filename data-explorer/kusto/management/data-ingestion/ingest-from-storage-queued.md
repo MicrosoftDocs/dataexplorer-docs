@@ -3,7 +3,7 @@ title:  .ingest-from-storage-queued into command
 description: This article describes the `.ingest-from-storage-queued` `into` command used to ingest a storage folder in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/18/2025
+ms.date: 03/02/2025
 ---
 # .ingest-from-storage-queued into command
 
@@ -19,7 +19,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 ## Syntax
 
-`.ingest-from-storage-queued` `into` `table` [database(*DatabaseName*).]*TableName*[`EnableTracking`=*EnableTrackingValue*] [`SkipBatching`=*SkipBatchingValue*] [`CompressionFactor`=*CompressionFactorValue*] [with (*IngestionPropertyName* = *IngestionPropertyValue* [, ...])] `<|` *IngestionSource*
+`.ingest-from-storage-queued` `into` `table` [database(*DatabaseName*).]*TableName*[`EnableTracking`=*EnableTracking*] [`SkipBatching`=*SkipBatching*] [`CompressionFactor`=*CompressionFactor*] [with (*IngestionPropertyName* = *IngestionPropertyValue* [, ...])] `<|` *IngestionSource*
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -29,9 +29,9 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |--|--|--|--|
 |*DatabaseName*| `string` | |The name of the database into which to ingest data. If no database name is provided, the request's context database is used.|
 |*TableName*| `string` | :heavy_check_mark: |The name of the table into which to ingest data.|
-|*EnableTrackingValue*| `boolean` | | Determines whether to track the blob ingestion. For more information, see [.show queued ingestion operations command](show-queued-ingestion-operations.md). The default is `false`.|
-|*SkipBatchingValue*| `boolean` | | If set to  `true`, the blobs are ingested individually rather than batched together with other blobs. The default value is `false`.|
-|*CompressionFactorValue*| `real` | |The compression factor (ratio) between the original size and the compressed size of blobs. Compression factor is used to estimate the original size of the data for batching purposes, when blobs are provided in a compressed format.|
+|*EnableTracking*| `boolean` | | Determines whether to track the blob ingestion. For more information, see [.show queued ingestion operations command](show-queued-ingestion-operations.md). The default is `false`.|
+|*SkipBatching*| `boolean` | | If set to  `true`, the blobs are ingested individually rather than batched together with other blobs. The default value is `false`.|
+|*CompressionFactor*| `real` | |The compression factor (ratio) between the original size and the compressed size of blobs. Compression factor is used to estimate the original size of the data for batching purposes, when blobs are provided in a compressed format.|
 |*IngestionPropertyName*, *IngestionPropertyValue* | `string` | |Optional ingestion properties. For more information about ingestion properties, see [Data ingestion properties](../../ingestion-properties.md).|
 |*IngestionSourceName* | `string` | :heavy_check_mark: | The ingestion source. The source can be a URL, source file, or a list of blobs using the [`.list blobs`](list-blobs.md) command.|
 
