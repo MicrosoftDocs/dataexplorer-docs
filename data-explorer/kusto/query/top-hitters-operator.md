@@ -32,25 +32,25 @@ with the largest sum, in the input.
 | *ValueExpression* | `string` |  :heavy_check_mark: | An expression over the input table *T* whose distinct values are returned.|
 | *SummingExpression* | `string` | | If specified, a numeric expression over the input table *T* whose sum per distinct value of *ValueExpression* establishes which values to emit. If not specified, the count of each distinct value of *ValueExpression*  is used instead.|
 
-## Remarks
-
-The first syntax (no *SummingExpression*) is conceptually equivalent to:
-
-*T*
-`|` `summarize` `C` = `count()` `by` *ValueExpression*
-`|` `top` *NumberOfValues* `by` `C` `desc`
-
-The second syntax (with *SummingExpression*) is conceptually equivalent to:
-
-*T*
-`|` `summarize` `S` = `sum(*SummingExpression*)` `by` *ValueExpression*
-`|` `top` *NumberOfValues* `by` `S` `desc`
+> [!NOTE]
+>
+> * When you don't include *SummingExpression* in the syntax, the query is equivalent to:
+> *T*
+> `| summarize C = count() by *ValueExpression* | top *NumberOfValues* by C desc`
+>
+> * When you do include *SummingExpression* in the syntax, the query is equivalent to:
+> *T*
+> `| summarize S = sum(*SummingExpression*) by *ValueExpression* | top *NumberOfValues* by S desc`
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
 ### Get most frequent items
 
-The next example shows how to find top-5 types of storms.
+This example shows how to find the top-5 types of storms.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -74,7 +74,7 @@ StormEvents
 
 ### Get top hitters based on column value
 
-The next example shows how to find the States with the most "Thunderstorm Wind" events.
+This example shows how to find the States with the most *Thunderstorm Wind* events.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
