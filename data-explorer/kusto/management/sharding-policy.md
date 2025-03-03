@@ -41,9 +41,10 @@ When a database is created, it contains the default data sharding policy. This p
 
 Use the [sharding policy management commands](show-table-sharding-policy-command.md) to manage data sharding policies for databases and tables.
 
+::: moniker range="azure-data-explorer"
+
 ## Related content
 
-::: moniker range="azure-data-explorer"
 * [.show table policy sharding command](show-table-sharding-policy-command.md)
 * [.show database policy sharding command](show-database-sharding-policy-command.md)
 * [.alter database policy sharding command](alter-database-sharding-policy-command.md)
@@ -54,7 +55,11 @@ Use the [sharding policy management commands](show-table-sharding-policy-command
 * [.delete table policy sharding command](delete-table-sharding-policy-command.md)
 * [Extents (data shards)](extents-overview.md)
 ::: moniker-end
+
 ::: moniker range="microsoft-fabric"
+
+## Related content
+
 * [.show table policy sharding command](show-table-sharding-policy-command.md)
 * [Extents (data shards)](extents-overview.md)
 ::: moniker-end
