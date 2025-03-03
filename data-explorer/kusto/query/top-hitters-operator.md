@@ -35,12 +35,10 @@ with the largest sum, in the input.
 > [!NOTE]
 >
 > * When you don't include *SummingExpression* in the syntax, the query is equivalent to:
-> *T*
-> `| summarize C = count() by *ValueExpression* | top *NumberOfValues* by C desc`
+> `*T* | summarize C = count() by *ValueExpression* | top *NumberOfValues* by C desc`
 >
 > * When you do include *SummingExpression* in the syntax, the query is equivalent to:
-> *T*
-> `| summarize S = sum(*SummingExpression*) by *ValueExpression* | top *NumberOfValues* by S desc`
+> `*T* | summarize S = sum(*SummingExpression*) by *ValueExpression* | top *NumberOfValues* by S desc`
 
 ## Examples
 
