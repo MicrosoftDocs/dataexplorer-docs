@@ -53,8 +53,14 @@ The following command returns the updated extents sharding policy for the table.
 ## Related content
 
 * [Data sharding policy](sharding-policy.md)
+
+:::moniker range="azure-data-explorer"
+
 * [.alter database policy sharding command](alter-database-sharding-policy-command.md)
 * [.show table policy sharding command](show-table-sharding-policy-command.md)
 * [.alter-merge table policy sharding command](alter-merge-table-sharding-policy-command.md)
 * [.delete table policy sharding command](delete-table-sharding-policy-command.md)
+
+:::moniker-end
+
 * [Extents (data shards)](extents-overview.md)

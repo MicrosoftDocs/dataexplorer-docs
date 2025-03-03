@@ -45,8 +45,14 @@ The following example shows the sharding policies for all tables:
 ## Related content
 
 * [Data sharding policy](sharding-policy.md)
+
+:::moniker range="azure-data-explorer"
+
 * [.show database policy sharding command](show-database-sharding-policy-command.md)
 * [.alter table policy sharding command](alter-table-sharding-policy-command.md)
 * [.alter-merge table policy sharding command](alter-merge-table-sharding-policy-command.md)
 * [.delete table policy sharding command](delete-table-sharding-policy-command.md)
+
+:::moniker-end
+
 * [Extents (data shards)](extents-overview.md)

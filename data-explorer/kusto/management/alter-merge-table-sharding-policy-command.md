@@ -47,8 +47,14 @@ The following command changes a single property for the sharding policy for a ta
 ## Related content
 
 * [Data sharding policy](sharding-policy.md)
-* [.alter-merge database policy sharding command](alter-merge-database-sharding-policy-command.md)
 * [.show table policy sharding command](show-table-sharding-policy-command.md)
+
+:::moniker range="azure-data-explorer"
+
+* [.alter-merge database policy sharding command](alter-merge-database-sharding-policy-command.md)
 * [.alter table policy sharding command](alter-table-sharding-policy-command.md)
 * [.delete table policy sharding command](delete-table-sharding-policy-command.md)
+
+:::moniker-end
+
 * [Extents (data shards)](extents-overview.md)

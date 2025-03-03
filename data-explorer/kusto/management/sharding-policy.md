@@ -3,7 +3,7 @@ title: Data sharding policy
 description: Learn how to use the data sharding policy to define if and how extents in the database are created.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/18/2024
+ms.date: 03/03/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Data sharding policy
@@ -43,12 +43,18 @@ Use the [sharding policy management commands](show-table-sharding-policy-command
 
 ## Related content
 
-* [.show database policy sharding command](show-database-sharding-policy-command.md)
 * [.show table policy sharding command](show-table-sharding-policy-command.md)
+
+::: moniker range="azure-data-explorer"
+
+* [.show database policy sharding command](show-database-sharding-policy-command.md)
 * [.alter database policy sharding command](alter-database-sharding-policy-command.md)
 * [.alter-merge database policy sharding command](alter-merge-database-sharding-policy-command.md)
 * [.alter table policy sharding command](alter-table-sharding-policy-command.md)
 * [.alter-merge table policy sharding command](alter-merge-table-sharding-policy-command.md)
 * [.delete database policy sharding command](delete-database-sharding-policy-command.md)
 * [.delete table policy sharding command](delete-table-sharding-policy-command.md)
+
+::: moniker-end
+
 * [Extents (data shards)](extents-overview.md)
