@@ -43,10 +43,9 @@ Use the [sharding policy management commands](show-table-sharding-policy-command
 
 ## Related content
 
-* [.show table policy sharding command](show-table-sharding-policy-command.md)
-
 ::: moniker range="azure-data-explorer"
 
+* [.show table policy sharding command](show-table-sharding-policy-command.md)
 * [.show database policy sharding command](show-database-sharding-policy-command.md)
 * [.alter database policy sharding command](alter-database-sharding-policy-command.md)
 * [.alter-merge database policy sharding command](alter-merge-database-sharding-policy-command.md)
@@ -54,7 +53,13 @@ Use the [sharding policy management commands](show-table-sharding-policy-command
 * [.alter-merge table policy sharding command](alter-merge-table-sharding-policy-command.md)
 * [.delete database policy sharding command](delete-database-sharding-policy-command.md)
 * [.delete table policy sharding command](delete-table-sharding-policy-command.md)
+* [Extents (data shards)](extents-overview.md)
+
 
 ::: moniker-end
+::: moniker range="microsoft-fabric"
 
+* [.show table policy sharding command](show-table-sharding-policy-command.md)
 * [Extents (data shards)](extents-overview.md)
+
+::: moniker-end

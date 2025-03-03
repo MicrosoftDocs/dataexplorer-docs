@@ -46,13 +46,7 @@ The following example shows the table sharding policy:
 
 * [Data sharding policy](sharding-policy.md)
 * [.show table policy sharding command](show-table-sharding-policy-command.md)
-
-::: moniker range="azure-data-explorer"
-
 * [.alter database policy sharding command](alter-database-sharding-policy-command.md)
 * [.alter-merge database policy sharding command](alter-merge-database-sharding-policy-command.md)
 * [.delete database policy sharding command](delete-database-sharding-policy-command.md)
-
-::: moniker-end
-
 * [Extents (data shards)](extents-overview.md)
