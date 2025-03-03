@@ -15,51 +15,51 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 |Article title | Description|
 |--|--|
-| [Create an app to get data using the managed streaming ingestion client](/azure/data-explorer/kusto/api/get-started/app-managed-streaming-ingest.md)| New article. Learn how to create an app to ingest data from a file or in-memory stream using the managed streaming ingestion client.|
-| [Create an app to get data using queued ingestion](/azure/data-explorer/kusto/api/get-started/app-queued-ingestion.md) | Updated article. Fixed an error in the code.|
-| [Controlling and suppressing Kusto SDK client-side tracing](/azure/data-explorer/kusto/api/netfx/controlling-tracing.md) | Updated article. Clarified instructions of how to enable or disable tracing. |
+| [Create an app to get data using the managed streaming ingestion client](/kusto/api/get-started/app-managed-streaming-ingest.md)| New article. Learn how to create an app to ingest data from a file or in-memory stream using the managed streaming ingestion client.|
+| [Create an app to get data using queued ingestion](/kusto/api/get-started/app-queued-ingestion.md) | Updated article. Fixed an error in the code.|
+| [Controlling and suppressing Kusto SDK client-side tracing](/kusto/api/netfx/controlling-tracing.md) | Updated article. Clarified instructions of how to enable or disable tracing. |
 
 ## Functions library
 
 |Article title | Description|
 |--|--|
-| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) | Updated article. Minor corrections. |
-| [graph_blast_radius_fl()](/azure/data-explorer/kusto/functions-library/graph-blast-radius-fl.md) | Updated article. Refreshed with clearer content. |
-| [graph_exposure_perimeter_fl()](/azure/data-explorer/kusto/functions-library/graph-exposure-perimeter-fl.md) | Updated article. Refreshed with clearer content. |
-| [graph_path_discovery_fl()](/azure/data-explorer/kusto/functions-library/graph-path-discovery-fl.md) |Updated article. Refreshed with clearer content. |
+| [Functions library](/kusto/functions-library/functions-library.md) | Updated article. Minor corrections. |
+| [graph_blast_radius_fl()](/kusto/functions-library/graph-blast-radius-fl.md) | Updated article. Refreshed with clearer content. |
+| [graph_exposure_perimeter_fl()](/kusto/functions-library/graph-exposure-perimeter-fl.md) | Updated article. Refreshed with clearer content. |
+| [graph_path_discovery_fl()](/kusto/functions-library/graph-path-discovery-fl.md) |Updated article. Refreshed with clearer content. |
 
 ## Management
 
 |Article title | Description|
 |--|--|
-| [Entity groups](/azure/data-explorer/kusto/management/entity-groups.md) | New article. Learn how to use Entity groups to store entity groups in the database.|
-| [.alter entity_group command](/azure/data-explorer/kusto/management/alter-entity-group.md) | New article. Learn how to use the `.alter entity_group` command to change an existing entity group. |
-| [.alter-merge entity_group command](/azure/data-explorer/kusto/management/alter-merge-entity-group.md) | New article. Learn how to use the `.alter-merge entity_group` command to change an existing entity group. |
-| [.create entity_group command](/azure/data-explorer/kusto/management/create-entity-group.md) | New article. Learn how to use the `.create entity_group` command to create an entity group. |
-| [.drop entity_group command](/azure/data-explorer/kusto/management/drop-entity-group.md) | New article. Learn how to use the `.drop entity_group` command to remove an entity group from your database. |
-| [.show entity_group(s) command](/azure/data-explorer/kusto/management/show-entity-group.md) | New article. Learn how to use the `.show entity_group` command to view existing entity groups. |
-| [.alter materialized-view lookback](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter-lookback.md) | Updated article. Refreshed with clearer content and examples. |
-| [.alter materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter.md) | Updated article. Refreshed with clearer content and examples. |
-| [.create-or-alter materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create-or-alter.md) | Updated article. Refreshed with clearer content and examples.|
-| [.create materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create.md) | Updated article. Refreshed with clearer content and examples. |
-| [Materialized views](/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview.md) | Updated article. Refreshed with clearer content and examples. |
-| [Materialized views limitations and known issues](/azure/data-explorer/kusto/management/materialized-views/materialized-views-limitations.md) | Updated article. Refreshed with clearer content and examples. |
-| [Monitor materialized views](/azure/data-explorer/kusto/management/materialized-views/materialized-views-monitoring.md) | Updated article. Added how to check if materialization is hitting cold cache. |
+| [Entity groups](/kusto/management/entity-groups.md) | New article. Learn how to use Entity groups to store entity groups in the database.|
+| [.alter entity_group command](/kusto/management/alter-entity-group.md) | New article. Learn how to use the `.alter entity_group` command to change an existing entity group. |
+| [.alter-merge entity_group command](/kusto/management/alter-merge-entity-group.md) | New article. Learn how to use the `.alter-merge entity_group` command to change an existing entity group. |
+| [.create entity_group command](/kusto/management/create-entity-group.md) | New article. Learn how to use the `.create entity_group` command to create an entity group. |
+| [.drop entity_group command](/kusto/management/drop-entity-group.md) | New article. Learn how to use the `.drop entity_group` command to remove an entity group from your database. |
+| [.show entity_group(s) command](/kusto/management/show-entity-group.md) | New article. Learn how to use the `.show entity_group` command to view existing entity groups. |
+| [.alter materialized-view lookback](/kusto/management/materialized-views/materialized-view-alter-lookback.md) | Updated article. Refreshed with clearer content and examples. |
+| [.alter materialized-view](/kusto/management/materialized-views/materialized-view-alter.md) | Updated article. Refreshed with clearer content and examples. |
+| [.create-or-alter materialized-view](/kusto/management/materialized-views/materialized-view-create-or-alter.md) | Updated article. Refreshed with clearer content and examples.|
+| [.create materialized-view](/kusto/management/materialized-views/materialized-view-create.md) | Updated article. Refreshed with clearer content and examples. |
+| [Materialized views](/kusto/management/materialized-views/materialized-view-overview.md) | Updated article. Refreshed with clearer content and examples. |
+| [Materialized views limitations and known issues](/kusto/management/materialized-views/materialized-views-limitations.md) | Updated article. Refreshed with clearer content and examples. |
+| [Monitor materialized views](/kusto/management/materialized-views/materialized-views-monitoring.md) | Updated article. Added how to check if materialization is hitting cold cache. |
 
 ## Query
 
 |Article title | Description|
 |--|--|
-| [all() (graph function)](/azure/data-explorer/kusto/query/all-graph-function.md) | New article. Learn how to use the all() function to evaluate a condition over the elements of a variable length edge. |
-| [inner_nodes() (graph function)](/azure/data-explorer/kusto/query/inner-nodes-graph-function.md) | New article. Learn how to use the inner_nodes() function to access all inner nodes in a variable length path. |
-| [map() (graph function)](/azure/data-explorer/kusto/query/map-graph-function.md) | New article. Learn how to use the map() function to evaluate an expression over the elements of a variable length edge. |
-| [node_degree_in() (graph function)](/azure/data-explorer/kusto/query/node-degree-in.md) | New article. The `node_degree_in` function calculates the *in-degree*, or number of incoming edges, to a node in a directed graph.|
-| [node_degree_out() (graph function)](/azure/data-explorer/kusto/query/node-degree-out.md) | New article. The `node_degree_out` function calculates the *out-degree*, or number of outgoing edges, from  a node in a directed graph.|
-| [macro-expand operator](/azure/data-explorer/kusto/query/macro-expand-operator.md) | New article. Learn how to use the macro-expand operator to run a subquery on a set of entities. |
-| [Best practices for Kusto Query Language (KQL) graph semantics](/azure/data-explorer/kusto/query/graph-best-practices.md) | Updated article. Corrections made to the query syntax. |
-| [graph-mark-components operator (Preview)](/azure/data-explorer/kusto/query/graph-mark-components-operator.md) | Updated article. Corrections made to the query syntax. |
-| [graph-match operator](/azure/data-explorer/kusto/query/graph-match-operator.md) | Updated article. Corrections made to the query syntax. |
-| [graph-shortest-paths Operator (Preview)](/azure/data-explorer/kusto/query/graph-shortest-paths-operator.md) | Updated article. Corrections made to the query syntax. |
+| [all() (graph function)](/kusto/query/all-graph-function.md) | New article. Learn how to use the all() function to evaluate a condition over the elements of a variable length edge. |
+| [inner_nodes() (graph function)](/kusto/query/inner-nodes-graph-function.md) | New article. Learn how to use the inner_nodes() function to access all inner nodes in a variable length path. |
+| [map() (graph function)](/kusto/query/map-graph-function.md) | New article. Learn how to use the map() function to evaluate an expression over the elements of a variable length edge. |
+| [node_degree_in() (graph function)](/kusto/query/node-degree-in.md) | New article. The `node_degree_in` function calculates the *in-degree*, or number of incoming edges, to a node in a directed graph.|
+| [node_degree_out() (graph function)](/kusto/query/node-degree-out.md) | New article. The `node_degree_out` function calculates the *out-degree*, or number of outgoing edges, from  a node in a directed graph.|
+| [macro-expand operator](/kusto/query/macro-expand-operator.md) | New article. Learn how to use the macro-expand operator to run a subquery on a set of entities. |
+| [Best practices for Kusto Query Language (KQL) graph semantics](/kusto/query/graph-best-practices.md) | Updated article. Corrections made to the query syntax. |
+| [graph-mark-components operator (Preview)](/kusto/query/graph-mark-components-operator.md) | Updated article. Corrections made to the query syntax. |
+| [graph-match operator](/kusto/query/graph-match-operator.md) | Updated article. Corrections made to the query syntax. |
+| [graph-shortest-paths Operator (Preview)](/kusto/query/graph-shortest-paths-operator.md) | Updated article. Corrections made to the query syntax. |
 
 ## January 2025
 
