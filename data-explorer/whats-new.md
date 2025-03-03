@@ -11,7 +11,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 ## February 2025
 
-## API
+**API**
 
 |Article title | Description|
 |--|--|
@@ -19,7 +19,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 | [Create an app to get data using queued ingestion](/kusto/api/get-started/app-queued-ingestion?view=azure-data-explorer&preserve-view=true) | Updated article. Fixed an error in the code.|
 | [Controlling and suppressing Kusto SDK client-side tracing](/kusto/api/netfx/controlling-tracing?view=azure-data-explorer&preserve-view=true) | Updated article. Clarified instructions of how to enable or disable tracing. |
 
-## Functions library
+**Functions library**
 
 |Article title | Description|
 |--|--|
@@ -28,7 +28,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 | [graph_exposure_perimeter_fl()](/kusto/functions-library/graph-exposure-perimeter-fl?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed with clearer content. |
 | [graph_path_discovery_fl()](/kusto/functions-library/graph-path-discovery-fl?view=azure-data-explorer&preserve-view=true) |Updated article. Refreshed with clearer content. |
 
-## Management
+**Management**
 
 |Article title | Description|
 |--|--|
@@ -46,7 +46,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 | [Materialized views limitations and known issues](/kusto/management/materialized-views/materialized-views-limitations?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed with clearer content and examples. |
 | [Monitor materialized views](/kusto/management/materialized-views/materialized-views-monitoring?view=azure-data-explorer&preserve-view=true) | Updated article. Added how to check if materialization is hitting cold cache. |
 
-## Query
+**Query**
 
 |Article title | Description|
 |--|--|
