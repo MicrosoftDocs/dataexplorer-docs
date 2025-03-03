@@ -52,11 +52,9 @@ The following command returns the updated extents sharding policy for the databa
 
 ## Related content
 
-* [Data sharding policy](sharding-policy.md)
-::: moniker range="azure-data-explorer"
+* [Data sharding policy](sharding-policy.md) ::: moniker range="azure-data-explorer"
 * [.alter table policy sharding command](alter-table-sharding-policy-command.md)
 * [.show database policy sharding command](show-database-sharding-policy-command.md)
 * [.alter-merge database policy sharding command](alter-merge-database-sharding-policy-command.md)
-* [.delete database policy sharding command](delete-database-sharding-policy-command.md)
-::: moniker-end
+* [.delete database policy sharding command](delete-database-sharding-policy-command.md) ::: moniker-end
 * [Extents (data shards)](extents-overview.md)
