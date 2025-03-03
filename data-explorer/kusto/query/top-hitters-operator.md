@@ -3,7 +3,7 @@ title:  top-hitters operator
 description: Learn how to use the top-hitters operator  to return an approximation for the most popular distinct values in the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/03/2025
 ---
 # top-hitters operator
 
