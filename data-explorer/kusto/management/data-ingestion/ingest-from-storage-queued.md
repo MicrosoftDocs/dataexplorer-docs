@@ -51,9 +51,9 @@ The result of the command is a table with one row and one column.
 >[!NOTE]
 > This command doesn't modify the schema of the target table. If necessary, the data is converted to fit the table's schema during ingestion. Extra columns are ignored and missing columns are treated as null values.
 
-## Examples
+## Example
 
-The examples in this section show how to use the syntax to help you get started.
+The example in this section shows how to use the syntax to help you get started.
 
 ### Ingest all blobs in a folder
 
@@ -71,25 +71,6 @@ EnableTracking=true
   .list blobs (
       "https://mystorageaccount.blob.core.windows.net/datasets/myfolder;managed_identity=system"
   )
-```
-
-### Ingest blobs from files
-
-The following example queues blobs from source files.
-
-```kusto
-.ingest-from-storage-queued into table database ('MyDatabase').mytable
-EnableTracking=true  
-with (
-  format='csv',
-  ingestionMappingReference='MyMapping',
-  DeleteSourceOnSuccess='true',
-  IgnoreFirstRecord='false',
-  IngestIfNotExists='false'
-)
-<| 'https://https://sample.blob.core.windows.net/sample/test_1.csv'
-   'https://https://sample.blob.core.windows.net/sample/test_2.csv'
-   'https://https://sample.blob.core.windows.net/sample/test_3.csv'
 ```
 
 ## Related content
