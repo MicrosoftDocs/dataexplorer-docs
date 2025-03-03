@@ -15,50 +15,51 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 |Article title | Description|
 |--|--|
-| [Title not found in: #6608](/azure/data-explorer/kusto/api/get-started/app-managed-streaming-ingest.md)| New article. |
-| [Create an app to get data using queued ingestion](/azure/data-explorer/kusto/api/get-started/app-queued-ingestion.md) | Updated article. |
-| [Controlling and suppressing Kusto SDK client-side tracing](/azure/data-explorer/kusto/api/netfx/controlling-tracing.md) | Updated article. |
+| [Create an app to get data using the managed streaming ingestion client](/azure/data-explorer/kusto/api/get-started/app-managed-streaming-ingest.md)| New article. Learn how to create an app to ingest data from a file or in-memory stream using the managed streaming ingestion client.|
+| [Create an app to get data using queued ingestion](/azure/data-explorer/kusto/api/get-started/app-queued-ingestion.md) | Updated article. Fixed an error in the code.|
+| [Controlling and suppressing Kusto SDK client-side tracing](/azure/data-explorer/kusto/api/netfx/controlling-tracing.md) | Updated article. Clarified instructions of how to enable or disable tracing. |
 
 ## Functions library
 
-### Updated articles
 |Article title | Description|
 |--|--|
-| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) | Updated article. |
-| [graph_blast_radius_fl()](/azure/data-explorer/kusto/functions-library/graph-blast-radius-fl.md) | Updated article. |
-| [graph_exposure_perimeter_fl()](/azure/data-explorer/kusto/functions-library/graph-exposure-perimeter-fl.md) | Updated article. |
-| [graph_path_discovery_fl()](/azure/data-explorer/kusto/functions-library/graph-path-discovery-fl.md) |Updated article. |
+| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) | Updated article. Minor corrections. |
+| [graph_blast_radius_fl()](/azure/data-explorer/kusto/functions-library/graph-blast-radius-fl.md) | Updated article. Refreshed with clearer content. |
+| [graph_exposure_perimeter_fl()](/azure/data-explorer/kusto/functions-library/graph-exposure-perimeter-fl.md) | Updated article. Refreshed with clearer content. |
+| [graph_path_discovery_fl()](/azure/data-explorer/kusto/functions-library/graph-path-discovery-fl.md) |Updated article. Refreshed with clearer content. |
 
 ## Management
 
 |Article title | Description|
 |--|--|
-| [.alter entity_group command](/azure/data-explorer/kusto/management/alter-entity-group.md) | New article. |
-| [.alter-merge entity_group command](/azure/data-explorer/kusto/management/alter-merge-entity-group.md) | New article. |
-| [.create entity_group command](/azure/data-explorer/kusto/management/create-entity-group.md) | New article. |
-| [.drop entity_group command](/azure/data-explorer/kusto/management/drop-entity-group.md) | New article. |
-| [Entity groups](/azure/data-explorer/kusto/management/entity-groups.md) | New article. |
-| [.show entity_group(s) command](/azure/data-explorer/kusto/management/show-entity-group.md) | New article. |
-| [.alter materialized-view lookback](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter-lookback.md) | Updated article. |
-| [.alter materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter.md) | Updated article. |
-| [.create-or-alter materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create-or-alter.md) | Updated article. |
-| [.create materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create.md) | Updated article. |
-| [Materialized views](/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview.md) | Updated article. |
-| [Materialized views limitations and known issues](/azure/data-explorer/kusto/management/materialized-views/materialized-views-limitations.md) | Updated article. |
-| [Monitor materialized views](/azure/data-explorer/kusto/management/materialized-views/materialized-views-monitoring.md) | Updated article. |
+| [Entity groups](/azure/data-explorer/kusto/management/entity-groups.md) | New article. Learn how to use Entity groups to store entity groups in the database.|
+| [.alter entity_group command](/azure/data-explorer/kusto/management/alter-entity-group.md) | New article. Learn how to use the `.alter entity_group` command to change an existing entity group. |
+| [.alter-merge entity_group command](/azure/data-explorer/kusto/management/alter-merge-entity-group.md) | New article. Learn how to use the `.alter-merge entity_group` command to change an existing entity group. |
+| [.create entity_group command](/azure/data-explorer/kusto/management/create-entity-group.md) | New article. Learn how to use the `.create entity_group` command to create an entity group. |
+| [.drop entity_group command](/azure/data-explorer/kusto/management/drop-entity-group.md) | New article. Learn how to use the `.drop entity_group` command to remove an entity group from your database. |
+| [.show entity_group(s) command](/azure/data-explorer/kusto/management/show-entity-group.md) | New article. Learn how to use the `.show entity_group` command to view existing entity groups. |
+| [.alter materialized-view lookback](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter-lookback.md) | Updated article. Refreshed with clearer content and examples. |
+| [.alter materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter.md) | Updated article. Refreshed with clearer content and examples. |
+| [.create-or-alter materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create-or-alter.md) | Updated article. Refreshed with clearer content and examples.|
+| [.create materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create.md) | Updated article. Refreshed with clearer content and examples. |
+| [Materialized views](/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview.md) | Updated article. Refreshed with clearer content and examples. |
+| [Materialized views limitations and known issues](/azure/data-explorer/kusto/management/materialized-views/materialized-views-limitations.md) | Updated article. Refreshed with clearer content and examples. |
+| [Monitor materialized views](/azure/data-explorer/kusto/management/materialized-views/materialized-views-monitoring.md) | Updated article. Added how to check if materialization is hitting cold cache. |
 
 ## Query
 
-| [Title not found in: #6635](/azure/data-explorer/kusto/query/all-graph-function.md) | New article. |
-| [Title not found in: #6635](/azure/data-explorer/kusto/query/inner-nodes-graph-function.md) | New article. |
-| [Title not found in: #6635](/azure/data-explorer/kusto/query/map-graph-function.md) | New article. |
-| [Title not found in: #6612](/azure/data-explorer/kusto/query/node-degree-in.md) | New article. |
-| [Title not found in: #6612](/azure/data-explorer/kusto/query/node-degree-out.md) | New article. |
-| [macro-expand operator](/azure/data-explorer/kusto/query/macro-expand-operator.md) | New article. |
-| [Best practices for Kusto Query Language (KQL) graph semantics](/azure/data-explorer/kusto/query/graph-best-practices.md) | Updated article. |
-| [graph-mark-components operator (Preview)](/azure/data-explorer/kusto/query/graph-mark-components-operator.md) | Updated article. |
-| [graph-match operator](/azure/data-explorer/kusto/query/graph-match-operator.md) | Updated article. |
-| [graph-shortest-paths Operator (Preview)](/azure/data-explorer/kusto/query/graph-shortest-paths-operator.md) | Updated article. |
+|Article title | Description|
+|--|--|
+| [all() (graph function)](/azure/data-explorer/kusto/query/all-graph-function.md) | New article. Learn how to use the all() function to evaluate a condition over the elements of a variable length edge. |
+| [inner_nodes() (graph function)](/azure/data-explorer/kusto/query/inner-nodes-graph-function.md) | New article. Learn how to use the inner_nodes() function to access all inner nodes in a variable length path. |
+| [map() (graph function)](/azure/data-explorer/kusto/query/map-graph-function.md) | New article. Learn how to use the map() function to evaluate an expression over the elements of a variable length edge. |
+| [node_degree_in() (graph function)](/azure/data-explorer/kusto/query/node-degree-in.md) | New article. The `node_degree_in` function calculates the *in-degree*, or number of incoming edges, to a node in a directed graph.|
+| [node_degree_out() (graph function)](/azure/data-explorer/kusto/query/node-degree-out.md) | New article. The `node_degree_out` function calculates the *out-degree*, or number of outgoing edges, from  a node in a directed graph.|
+| [macro-expand operator](/azure/data-explorer/kusto/query/macro-expand-operator.md) | New article. Learn how to use the macro-expand operator to run a subquery on a set of entities. |
+| [Best practices for Kusto Query Language (KQL) graph semantics](/azure/data-explorer/kusto/query/graph-best-practices.md) | Updated article. Corrections made to the query syntax. |
+| [graph-mark-components operator (Preview)](/azure/data-explorer/kusto/query/graph-mark-components-operator.md) | Updated article. Corrections made to the query syntax. |
+| [graph-match operator](/azure/data-explorer/kusto/query/graph-match-operator.md) | Updated article. Corrections made to the query syntax. |
+| [graph-shortest-paths Operator (Preview)](/azure/data-explorer/kusto/query/graph-shortest-paths-operator.md) | Updated article. Corrections made to the query syntax. |
 
 ## January 2025
 
@@ -265,28 +266,3 @@ No updates.
 | - [What are common scenarios for using table update policies](/kusto/management/update-policy-common-scenarios?view=azure-data-explorer&preserve-view=true)<br />- [Tutorial: Route data using table update policies](/kusto/management/update-policy-tutorial?view=azure-data-explorer&preserve-view=true)<br />- [Update policy overview](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true) | New and updated articles. Describes common use cases for how to use *update table policies* to perform complex transformations and route results to destination tables. |
 | [Parquet mapping](/kusto/management/parquet-mapping?view=azure-data-explorer&preserve-view=true) | Updated article. Added parquet type conversions table to provide a mapping of Parquet field types, and the table column types they can be converted to. |
 
-## February 2024
-
-**General**
-
-|Article title | Description|
-|--|--|
-|- [Azure Data Explorer web UI query overview](web-ui-query-overview.md)<br/>- [Access the data profile of a table](data-profile.md)| New article that describes how to access the data profile of a table in the Azure Data Explorer web UI, and updated web UI query overview.|
-| [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)| Updated article. Added section on embedding images in dashboard tiles.|
-| [Create an Event Grid data connection for Azure Data Explorer](create-event-grid-connection.md)| Updated article. Refreshed content.|
-| [How to ingest historical data into Azure Data Explorer](ingest-data-historical.md)| Updated article. Refreshed content.|
-
-**Management**
-
-|Article title| Description|
-|--|--|
-| [Apply row-level security on SQL external tables](/kusto/management/row-level-security-external-sql?view=azure-data-explorer&preserve-view=true)| New article. Describes how to create a row-level security solution with Azure Data Explorer SQL external tables.|
-| [.update table command (preview)](/kusto/management/update-table-command?view=azure-data-explorer&preserve-view=true)| New article. Describes how to use the `.update table` command to perform transactional data updates.|
-|- [Stored query results](/kusto/management/stored-query-results?view=azure-data-explorer&preserve-view=true)<br/>- [.set stored_query_result command](/kusto/management/set-stored-query-result-command?view=azure-data-explorer&preserve-view=true)<br/>- [.show stored_query_result command](/kusto/management/show-stored-query-result-command?view=azure-data-explorer&preserve-view=true)<br/>- [.drop stored_query_result command](/kusto/management/drop-stored-query-result-command?view=azure-data-explorer&preserve-view=true)<br/>- [stored_query_result()](/kusto/query/stored-query-result-function?view=azure-data-explorer&preserve-view=true)| New articles. Describe how to manage stored query results.|
-| [Continuous data export overview](/kusto/management/data-export/continuous-data-export?view=azure-data-explorer&preserve-view=true)| Updated article. Added section on continuous export to delta table, and refreshed limitations.|
-
-**Query**
-
-|Article title| Description|
-|--|--|
-| [sort operator](/kusto/query/sort-operator?view=azure-data-explorer&preserve-view=true)| Updated article. Added section on the use of special floating-point values.|
