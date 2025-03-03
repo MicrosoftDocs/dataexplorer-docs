@@ -3,11 +3,62 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/14/2025
+ms.date: 03/03/2025
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and updated content in the Azure Data Explorer documentation.
+
+## February 2025
+
+## API
+
+|Article title | Description|
+|--|--|
+| [Title not found in: #6608](/azure/data-explorer/kusto/api/get-started/app-managed-streaming-ingest.md)| New article. |
+| [Create an app to get data using queued ingestion](/azure/data-explorer/kusto/api/get-started/app-queued-ingestion.md) | Updated article. |
+| [Controlling and suppressing Kusto SDK client-side tracing](/azure/data-explorer/kusto/api/netfx/controlling-tracing.md) | Updated article. |
+
+## Functions library
+
+### Updated articles
+|Article title | Description|
+|--|--|
+| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) | Updated article. |
+| [graph_blast_radius_fl()](/azure/data-explorer/kusto/functions-library/graph-blast-radius-fl.md) | Updated article. |
+| [graph_exposure_perimeter_fl()](/azure/data-explorer/kusto/functions-library/graph-exposure-perimeter-fl.md) | Updated article. |
+| [graph_path_discovery_fl()](/azure/data-explorer/kusto/functions-library/graph-path-discovery-fl.md) |Updated article. |
+
+## Management
+
+|Article title | Description|
+|--|--|
+| [.alter entity_group command](/azure/data-explorer/kusto/management/alter-entity-group.md) | New article. |
+| [.alter-merge entity_group command](/azure/data-explorer/kusto/management/alter-merge-entity-group.md) | New article. |
+| [.create entity_group command](/azure/data-explorer/kusto/management/create-entity-group.md) | New article. |
+| [.drop entity_group command](/azure/data-explorer/kusto/management/drop-entity-group.md) | New article. |
+| [Entity groups](/azure/data-explorer/kusto/management/entity-groups.md) | New article. |
+| [.show entity_group(s) command](/azure/data-explorer/kusto/management/show-entity-group.md) | New article. |
+| [.alter materialized-view lookback](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter-lookback.md) | Updated article. |
+| [.alter materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-alter.md) | Updated article. |
+| [.create-or-alter materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create-or-alter.md) | Updated article. |
+| [.create materialized-view](/azure/data-explorer/kusto/management/materialized-views/materialized-view-create.md) | Updated article. |
+| [Materialized views](/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview.md) | Updated article. |
+| [Materialized views limitations and known issues](/azure/data-explorer/kusto/management/materialized-views/materialized-views-limitations.md) | Updated article. |
+| [Monitor materialized views](/azure/data-explorer/kusto/management/materialized-views/materialized-views-monitoring.md) | Updated article. |
+
+## Query
+
+| [Title not found in: #6635](/azure/data-explorer/kusto/query/all-graph-function.md) | New article. |
+| [Title not found in: #6635](/azure/data-explorer/kusto/query/inner-nodes-graph-function.md) | New article. |
+| [Title not found in: #6635](/azure/data-explorer/kusto/query/map-graph-function.md) | New article. |
+| [Title not found in: #6612](/azure/data-explorer/kusto/query/node-degree-in.md) | New article. |
+| [Title not found in: #6612](/azure/data-explorer/kusto/query/node-degree-out.md) | New article. |
+| [macro-expand operator](/azure/data-explorer/kusto/query/macro-expand-operator.md) | New article. |
+| [Best practices for Kusto Query Language (KQL) graph semantics](/azure/data-explorer/kusto/query/graph-best-practices.md) | Updated article. |
+| [graph-mark-components operator (Preview)](/azure/data-explorer/kusto/query/graph-mark-components-operator.md) | Updated article. |
+| [graph-match operator](/azure/data-explorer/kusto/query/graph-match-operator.md) | Updated article. |
+| [graph-shortest-paths Operator (Preview)](/azure/data-explorer/kusto/query/graph-shortest-paths-operator.md) | Updated article. |
 
 ## January 2025
 
