@@ -33,7 +33,6 @@ with the largest sum, in the input.
 | *SummingExpression* | `string` | | If specified, a numeric expression over the input table *T* whose sum per distinct value of *ValueExpression* establishes which values to emit. If not specified, the count of each distinct value of *ValueExpression*  is used instead.|
 
 > [!NOTE]
->
 > * When you include *SummingExpression* in the syntax, the query is equivalent to:
 > `*T* | summarize S = sum(*SummingExpression*) by *ValueExpression* | top *NumberOfValues* by S desc`
 > * When you don't include *SummingExpression* in the syntax, the query is equivalent to:
