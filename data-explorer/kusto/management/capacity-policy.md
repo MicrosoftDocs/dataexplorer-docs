@@ -136,7 +136,7 @@ You can view the effective value for the current concurrency using the [.show ca
 
 The [.show capacity](show-capacity-command.md) command returns the cluster's stored query results creation capacity based on the following formula:
 
-`Minimum(MaximumConcurrentOperationsPerDbAdmin` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
+`Minimum(MaximumConcurrentOperationsPerDbAdmin` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*` `CoreUtilizationCoefficient))`
 
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in stored query results creation operations, so the *Number of nodes in cluster* is reduced by one.
