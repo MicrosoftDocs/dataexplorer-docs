@@ -786,7 +786,7 @@ items:
           href: ../access-control/provision-entra-id-app.md
       - name: Manage database roles
         href: manage-database-security-roles.md
-        displayName: .show database principals, .show database principal roles, principal access, security roles, roles, rbac, .add database users, .add database viewers, .add database ingestors, .add database restrictedviewers, .add database monitors, .drop database users, .drop database viewers, drop database ingestors,  .drop database restrictedviewers, .drop database monitors, .drop database roles, .drop database admins, .set database roles, .set database admins, .set database viewers, .set database users, .set database ingestors, .set database restrictedviewers, .set database monitors
+        displayName: .show database principals, .show database principal roles, principal access, security roles, roles, rbac, .add database admins, .add database users, .add database viewers, .add database ingestors, .add database restrictedviewers, .add database monitors, .drop database users, .drop database viewers, drop database ingestors,  .drop database restrictedviewers, .drop database monitors, .drop database roles, .drop database admins, .set database roles, .set database admins, .set database viewers, .set database users, .set database ingestors, .set database restrictedviewers, .set database monitors
       - name: Manage table roles
         items:
           - name: Manage table roles
