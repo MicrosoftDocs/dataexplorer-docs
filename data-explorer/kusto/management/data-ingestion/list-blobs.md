@@ -34,7 +34,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 > [!NOTE]
 >
-> * We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for *SourceDataLocators* to scrub credentials in internal traces and error messages.
+> * We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for *SourceDataLocators*.
 >
 > * When used alone, `.list blob` returns up to 1,000 files, regardless of any larger value specified in *MaxFiles*.
 
