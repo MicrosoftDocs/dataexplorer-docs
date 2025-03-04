@@ -775,7 +775,7 @@ items:
     items:
       - name: Security roles overview
         href: security-roles.md
-        displayName: role based access control, rbac, principals, .show database principal roles, .show table principal roles,  .show external table principal roles, .show function principal roles, .show materialized-view principal roles, .show database principals, .show table principals, .show external table principals, .show function principals, .show materialized-view principals
+        displayName: role based access control, rbac, principals, .show cluster principal roles, .show database principal roles, .show table principal roles,  .show external table principal roles, .show function principal roles, .show materialized-view principal roles, .show database principals, .show table principals, .show external table principals, .show function principals, .show materialized-view principals
       - name: Access control
         items:
         - name: Access control overview
