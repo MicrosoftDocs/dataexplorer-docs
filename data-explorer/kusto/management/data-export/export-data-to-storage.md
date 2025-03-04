@@ -3,7 +3,7 @@ title: .export to storage
 description: Learn how to export data to cloud storage.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/06/2025
+ms.date: 03/02/2025
 ---
 # .export to storage
 
@@ -28,7 +28,7 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 | *async*                         | `string` |                    | If specified, the command runs in asynchronous mode. See [asynchronous mode](#asynchronous-mode). |
 | *compressed*                    | `bool`   |                    | If specified, the output storage artifacts are compressed in the format specified by the `compressionType` [supported property](#supported-properties). |
 | *OutputDataFormat*              | `string` | :heavy_check_mark: | The data format of the storage artifacts written by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`. |
-| *StorageConnectionString*       | `string` |                    | One or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md) that specify which storage to write the data to. More than one storage connection string might be specified for scalable writes. Each such connection string must specify the credentials to use when writing to storage. For example, when writing to Azure Blob Storage, the credentials can be the storage account key, or a shared access key (SAS) with the permissions to read, write, and list blobs. |
+| *StorageConnectionString*       | `string` |                    | One or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md) that specify which storage to write the data to. More than one storage connection string might be specified for scalable writes. Each such connection string must specify the credentials to use when writing to storage. For example, when writing to Azure Blob Storage, the credentials can be the storage account key, or a shared access key (SAS) with the permissions to read, write, and list blobs. <br> When you export data to CSV files using a DFS endpoint, the data goes through a DFS managed private endpoint. <br> When you export data to parquet files, the data goes through a blob managed private endpoint.|
 | *PropertyName*, *PropertyValue* | `string` |                    | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!NOTE]
@@ -44,7 +44,7 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 | `encoding`                 | `string` | The encoding for text. Possible values include: `UTF8NoBOM` (default) or `UTF8BOM`. |
 | `compressionType`          | `string` | The type of compression to use. For non-Parquet files, only `gzip` is allowed. For Parquet files, possible values include `gzip`, `snappy`, `lz4_raw`, `brotli`, and `zstd`. Default is `gzip`. |
 | `distribution`             | `string` | Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread writes to storage. Otherwise, export writes from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluate-operator.md). Defaults to `per_shard`. |
-| `persistDetails`           | `bool`   | If `true`,  the command persists its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results. Defaults to `false` in synchronous executions, but can be turned on in those as well. |
+| `persistDetails`           | `bool`   | If `true`,  the command persists its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results. Defaults to `false` in synchronous executions, but can be turned on. |
 | `sizeLimit`                | `long`   | The size limit in bytes of a single storage artifact written before compression. Valid range: 100 MB (default) to 4 GB. |
 | `parquetRowGroupSize`      | `int`    | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
 | `distributed`              | `bool`   | Disable or enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
@@ -116,7 +116,7 @@ Column name labels are added as the first row for each blob.
 
 Export commands can transiently fail during execution. [Continuous export](continuous-data-export.md) automatically retries the command. Regular export commands ([export to storage](export-data-to-storage.md), [export to external table](export-data-to-an-external-table.md)) don't perform any retries.
 
-* When the export command fails, artifacts that were already written to storage aren't deleted. These artifacts remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written.
+* When the export command fails, artifacts already written to storage aren't deleted. These artifacts remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written.
 * The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [`.show operations`](../show-operations.md) and [`.show operation details`](../show-operation-details.md) commands.
 
 ### Storage failures
