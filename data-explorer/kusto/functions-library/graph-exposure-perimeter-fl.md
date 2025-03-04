@@ -3,7 +3,7 @@ title:  graph_exposure_perimeter_fl()
 description: Learn how to use the graph_exposure_perimeter_fl() function to calculate the Exposure Perimeter of target nodes over path or edge data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 02/16/2025
+ms.date: 03/03/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_exposure_perimeter_fl()
@@ -222,7 +222,7 @@ connections
 
 
 
-Running the function takes the connections between and sources and targets, and aggregates the sources by target. For each target, Exposure Perimeter represents the sources that can connect to it as score (regular and weighted) and list.
+Running the function aggregates the connections or paths between sources and targets by target. For each target, Exposure Perimeter represents the sources that can connect to it as score (regular and weighted) and list.
 
 
 Each row in the output contains the following fields:
@@ -237,9 +237,9 @@ In the example above we run the `graph_exposure_perimeter_fl()` function on top 
 
 In case the multi-hop paths aren't available, we can build multi-hop paths between sources and targets (for example, by running 'graph_path_discovery_fl()') and run 'graph_exposure_perimeter_fl()' on top of the results.
 
-The output looks similar, but reflects the Exposure Perimeter calculated over multi-hop paths, thus being a better indicator of target nodes true accessibility from  relevant sources. In order to find the full paths between source and target scenarios (for example, for disruption), [graph_path_discovery_fl()](graph-path-discovery-fl.md) function can be used with filters on relevant source and target nodes.
+The output looks similar, but represents Exposure Perimeter calculated over multi-hop paths, thus being a better indicator of target nodes true accessibility from relevant sources. In order to find the full paths between source and target scenarios (for example, for disruption), [graph_path_discovery_fl()](graph-path-discovery-fl.md) function can be used with filters on relevant source and target nodes.
 
-The function `graph_exposure_perimeter_fl()` can be used to calculate the Exposure Perimeter of target nodes, either over direct edges or longer paths. In cybersecurity domain, it can be used for several insights. Exposure Perimeter scores (regular and weighted), represent target node's importance both from defenders' and attackers' perspectives. Nodes with high Exposure Perimeter, especially critical ones, should be protected accordingly. For example, in terms of access monitoring and hardening. Security signals, such as alerts, should be prioritized on sources that can access these nodes. The Exposure Perimeter list should be monitored for undesired connections between sources and targets and used in disruption scenarios. For example, if there was active compromise of one of the sources, connections between it and important target should be broken.
+The function `graph_exposure_perimeter_fl()` can be used to calculate the Exposure Perimeter of target nodes, either over direct edges or longer paths. In cybersecurity domain, it can be used for several insights. Exposure Perimeter scores (regular and weighted), represent target node's importance both from defenders' and attackers' perspectives. Nodes with high Exposure Perimeter, especially critical ones, should be protected accordingly. For example, in terms of access monitoring and hardening. Security signals, such as alerts, should be prioritized on sources that can access these nodes. The Exposure Perimeter list should be monitored for undesired connections between sources and targets and used in disruption scenarios. For example, if some of the sources were comrpomised, connections between them and the target should be broken.
 
 ## Related content
 

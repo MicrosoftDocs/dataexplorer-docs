@@ -3,7 +3,7 @@ title:  detect_anomalous_new_entity_fl()
 description: Learn how to use the detect_anomalous_new_entity_fl() function to detect the appearance of anomalous new entities.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 11/24/2024
+ms.date: 03/03/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # detect_anomalous_new_entity_fl()
@@ -14,9 +14,9 @@ Detect the appearance of anomalous new entities in timestamped data.
 
 The function `detect_anomalous_new_entity_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that detects the appearance of anomalous new entities - such as IP addresses or users - in timestamped data, such as traffic logs. In cybersecurity context, such events might be suspicious and indicate a potential attack or compromise.
 
-The  anomaly model is based on a Poisson distribution representing the number of new entities appearing per time bin (such as day) for each scope. Poisson distribution parameter is estimated based on the rate of appearance of new entities in training period, with added decay factor reflecting the fact that recent appearances are more important than old ones. Thus we calculate the probability to encounter a new entity in defined detection period per some scope - such as a subscription or an account. The model output is controlled by several optional parameters, such as minimal threshold for anomaly, decay rate parameter, and others. 
+The  anomaly model is based on a Poisson distribution representing the number of new entities appearing per time bin (e.g., a day) for each scope. Poisson distribution parameter is estimated based on the rate of appearance of new entities in training period, with added decay factor reflecting the fact that recent appearances are more important than old ones. Thus we calculate the probability to encounter a new entity in defined detection period per some scope - such as a subscription or an account. The model output is controlled by several optional parameters, such as minimal threshold for anomaly, decay rate parameter, and others. 
 
-The model's direct output is an anomaly score based on the inverse of estimated probability to encounter a new entity. The score is monotonous in the range of [0, 1], with 1 representing something anomalous. In addition to the anomaly score, there's a binary flag for detected anomaly (controlled by a minimal threshold parameter), and other explanatory fields.
+The model's direct output is an anomaly score based on the inverse of estimated probability to encounter a new entity. The score is monotonous in the range of [0, 1]; 1 representing something very anomalous. In addition to the anomaly score, there's a binary flag for detected anomalies (controlled by a minimal threshold parameter), and other explanatory fields.
 
 ## Syntax
 
@@ -90,14 +90,14 @@ let modelData = (
     | join kind = inner (aggregatedCandidateScopeData) on scope 
     | where firstSeenSet == 'trainSet'
     | summarize countAddedEntities = dcount(entity), firstSeenScope = min(firstSeenScope), slicesInTrainingScope = max(slicesInTrainingScope), countEntitiesScope = max(countEntitiesScope)
-        by scope, firstSeenSet, firstSeenEntity
-    | extend diffInDays = datetime_diff(timePeriodBinSize, startDetection, firstSeenEntity)
+        by scope, firstSeenSetOnScope = firstSeenSet, firstSeenEntityOnScope = firstSeenEntity
+    | extend diffInDays = datetime_diff(timePeriodBinSize, startDetection, firstSeenEntityOnScope)
 // adding exponentially decaying weights to counts
     | extend decayingWeight = pow(base = decayParam, exponent = diffInDays)
     | extend decayingValue = countAddedEntities * decayingWeight
     | summarize   newEntityProbability = round(1 - exp(-1.0 * sum(decayingValue)/max(diffInDays)), 4)
-                , countKnownEntities = sum(countAddedEntities), lastNewEntityTimestamp = max(firstSeenEntity), slicesOnScope = max(slicesInTrainingScope)///for explainability
-        by scope, firstSeenSet
+                , countKnownEntities = sum(countAddedEntities), lastNewEntityTimestamp = max(firstSeenEntityOnScope), slicesOnScope = max(slicesInTrainingScope)///for explainability
+        by scope, firstSeenSetOnScope
 // anomaly score is based on probability to get no new entities, calculated using Poisson distribution (P(X=0) = exp(-avg)) with added decay on average
     | extend newEntityAnomalyScore = round(1 - newEntityProbability, 4)
     | extend isAnomalousNewEntity = iff(newEntityAnomalyScore >= anomalyScoreThresh, 1, 0)
@@ -106,7 +106,8 @@ let resultsData = (
     processedData
     | where dataSet == 'detectSet'
     | join kind = inner (modelData) on scope
-	| project-away scope1
+    | join kind = inner (entityData | where firstSeenSet == 'detectSet') on scope, entity, $left.sliceTime == $right.firstSeenEntity
+    | project-away scope1, scope2, entity1
     | where isAnomalousNewEntity == 1
     | summarize arg_min(sliceTime, *) by scope, entity
     | extend anomalyType = strcat('newEntity_', entityColumnName), anomalyExplainability = strcat('The ', entityColumnName, ' ', entity, ' wasn\'t seen on ', scopeColumnName, ' ', scope, ' during the last ',  slicesOnScope, ' ', timePeriodBinSize, 's. Previously, ', countKnownEntities
@@ -167,14 +168,14 @@ let modelData = (
     | join kind = inner (aggregatedCandidateScopeData) on scope 
     | where firstSeenSet == 'trainSet'
     | summarize countAddedEntities = dcount(entity), firstSeenScope = min(firstSeenScope), slicesInTrainingScope = max(slicesInTrainingScope), countEntitiesScope = max(countEntitiesScope)
-        by scope, firstSeenSet, firstSeenEntity
-    | extend diffInDays = datetime_diff(timePeriodBinSize, startDetection, firstSeenEntity)
+        by scope, firstSeenSetOnScope = firstSeenSet, firstSeenEntityOnScope = firstSeenEntity
+    | extend diffInDays = datetime_diff(timePeriodBinSize, startDetection, firstSeenEntityOnScope)
 // adding exponentially decaying weights to counts of 
     | extend decayingWeight = pow(base = decayParam, exponent = diffInDays)
     | extend decayingValue = countAddedEntities * decayingWeight
     | summarize   newEntityProbability = round(1 - exp(-1.0 * sum(decayingValue)/max(diffInDays)), 4)
-                , countKnownEntities = sum(countAddedEntities), lastNewEntityTimestamp = max(firstSeenEntity), slicesOnScope = max(slicesInTrainingScope)///for explainability
-        by scope, firstSeenSet
+                , countKnownEntities = sum(countAddedEntities), lastNewEntityTimestamp = max(firstSeenEntityOnScope), slicesOnScope = max(slicesInTrainingScope)///for explainability
+        by scope, firstSeenSetOnScope
 // anomaly score is based on probability to get no new entities, calculated using Poisson distribution (P(X=0) = exp(-avg)) with added decay on average
     | extend newEntityAnomalyScore = round(1 - newEntityProbability, 4)
     | extend isAnomalousNewEntity = iff(newEntityAnomalyScore >= anomalyScoreThresh, 1, 0)
@@ -183,7 +184,8 @@ let resultsData = (
     processedData
     | where dataSet == 'detectSet'
     | join kind = inner (modelData) on scope
-    | project-away scope1
+    | join kind = inner (entityData | where firstSeenSet == 'detectSet') on scope, entity, $left.sliceTime == $right.firstSeenEntity
+    | project-away scope1, scope2, entity1
     | where isAnomalousNewEntity == 1
     | summarize arg_min(sliceTime, *) by scope, entity
     | extend anomalyType = strcat('newEntity_', entityColumnName), anomalyExplainability = strcat('The ', entityColumnName, ' ', entity, ' wasn\'t seen on ', scopeColumnName, ' ', scope, ' during the last ',  slicesOnScope, ' ', timePeriodBinSize, 's. Previously, ', countKnownEntities
@@ -250,14 +252,14 @@ let modelData = (
     | join kind = inner (aggregatedCandidateScopeData) on scope 
     | where firstSeenSet == 'trainSet'
     | summarize countAddedEntities = dcount(entity), firstSeenScope = min(firstSeenScope), slicesInTrainingScope = max(slicesInTrainingScope), countEntitiesScope = max(countEntitiesScope)
-        by scope, firstSeenSet, firstSeenEntity
-    | extend diffInDays = datetime_diff(timePeriodBinSize, startDetection, firstSeenEntity)
+        by scope, firstSeenSetOnScope = firstSeenSet, firstSeenEntityOnScope = firstSeenEntity
+    | extend diffInDays = datetime_diff(timePeriodBinSize, startDetection, firstSeenEntityOnScope)
 // adding exponentially decaying weights to counts
     | extend decayingWeight = pow(base = decayParam, exponent = diffInDays)
     | extend decayingValue = countAddedEntities * decayingWeight
     | summarize   newEntityProbability =  round(1 - exp(-1.0 * sum(decayingValue)/max(diffInDays)), 4)
-                , countKnownEntities = sum(countAddedEntities), lastNewEntityTimestamp = max(firstSeenEntity), slicesOnScope = max(slicesInTrainingScope)///for explainability
-        by scope, firstSeenSet
+                , countKnownEntities = sum(countAddedEntities), lastNewEntityTimestamp = max(firstSeenEntityOnScope), slicesOnScope = max(slicesInTrainingScope)///for explainability
+        by scope, firstSeenSetOnScope
 // anomaly score is based on probability to get no new entities, calculated using Poisson distribution (P(X=0) = exp(-avg)) with added decay on average
     | extend newEntityAnomalyScore = round(1 - newEntityProbability, 4)
     | extend isAnomalousNewEntity = iff(newEntityAnomalyScore >= anomalyScoreThresh, 1, 0)
@@ -266,7 +268,8 @@ let resultsData = (
     processedData
     | where dataSet == 'detectSet'
     | join kind = inner (modelData) on scope
-    | project-away scope1
+    | join kind = inner (entityData | where firstSeenSet == 'detectSet') on scope, entity, $left.sliceTime == $right.firstSeenEntity
+    | project-away scope1, scope2, entity1
     | where isAnomalousNewEntity == 1
     | summarize arg_min(sliceTime, *) by scope, entity
     | extend anomalyType = strcat('newEntity_', entityColumnName), anomalyExplainability = strcat('The ', entityColumnName, ' ', entity, ' wasn\'t seen on ', scopeColumnName, ' ', scope, ' during the last ',  slicesOnScope, ' ', timePeriodBinSize, 's. Previously, ', countKnownEntities
@@ -335,7 +338,7 @@ testData
 
 **Output**
 
-| scope	| entity	| sliceTime	| t	| timeSlice	| countEvents	| userName	| deviceId	| accountName	| dataSet	| firstSeenSet	| newEntityProbability	| countKnownEntities	| lastNewEntityTimestamp	| slicesOnScope	| newEntityAnomalyScore	| isAnomalousNewEntity	| anomalyType	| anomalyExplainability	| anomalyState |
+| scope	| entity	| sliceTime	| t	| timeSlice	| countEvents	| userName	| deviceId	| accountName	| dataSet	| firstSeenSetOnScope	| newEntityProbability	| countKnownEntities	| lastNewEntityTimestamp	| slicesOnScope	| newEntityAnomalyScore	| isAnomalousNewEntity	| anomalyType	| anomalyExplainability	| anomalyState |
 | ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	| ---	|
 | prodEnvironment	| H4ck3r	| 2022-04-30 05:00:00.0000000	| 1440	| 2022-04-30 05:00:00.0000000	| 1687	| H4ck3r	| abcdefghijklmnoprtuvwxyz012345678	| prodEnvironment	| detectSet	| trainSet	| 0.0031	| 4	| 2022-03-01 09:00:00.0000000	| 60	| 0.9969	| 1	| newEntity_userName	| The userName H4ck3r wasn't seen on accountName prodEnvironment during the last 60 days. Previously, four entities were seen, the last one of them appearing at 2022-03-01 09:00.	| ["IT-support : 2022-03-01 07:00", "Admin : 2022-03-01 08:00", "Dev2 : 2022-03-01 09:00", "Dev1 : 2022-03-01 14:00"] |
 
@@ -343,7 +346,7 @@ testData
 The output of running the function is the first-seen row in test dataset for each entity per scope, filtered for new entities (meaning they didn't appear during the training period) that were tagged as anomalous (meaning that entity anomaly score was above anomalyScoreThresh). Some other fields are added for clarity:
 
 * `dataSet`: current dataset (is always `detectSet`).
-* `firstSeenSet`: dataset in which the scope was first seen (should be 'trainSet').
+* `firstSeenSetOnScope`: dataset in which the scope was first seen (should be 'trainSet').
 * `newEntityProbability`: probability to see any new entity based on Poisson model estimation.
 * `countKnownEntities`: existing entities on scope.
 * `lastNewEntityTimestamp`: last time a new entity was seen before the anomalous one.
@@ -354,9 +357,9 @@ The output of running the function is the first-seen row in test dataset for eac
 * `anomalyExplainability`: textual wrapper for generated anomaly and its explanation.
 * `anomalyState`: bag of existing entities on scope with their first seen times.
 
-Running this function on user per account with default parameters gets a previously unseen and anomalous user ('H4ck3r') with high anomaly score of 0.9969, meaning that this is unexpected (due to small numbers of existing users in training period). 
+Running this function on user per account with default parameters detects a previously unseen and anomalous user ('H4ck3r') with high anomaly score of 0.9969, meaning that this is unexpected (due to small numbers of existing users in training period). 
 
-When we run the function with default parameters on deviceId as entity, we won't see an anomaly, due to large number of existing devices which makes it expected. However, if we lower the parameter anomalyScoreThresh to 0.0001 and raise the parameter to maxEntitiesThresh to 10000, we'll effectively decrease precision in favor of recall, and detect an anomaly (with a low anomaly score) on device 'abcdefghijklmnoprtuvwxyz012345678'.
+When we run the function with default parameters on deviceId as entity, we won't see an anomaly, due to the large number of existing devices - which makes the appearance of a new one expected. However, if we lower the parameter anomalyScoreThresh to 0.0001 and raise the parameter maxEntitiesThresh to 10000, we'll effectively decrease precision in favor of recall, and detect an anomaly (with a low anomaly score) on device 'abcdefghijklmnoprtuvwxyz012345678'.
 
 The output shows the anomalous entities together with explanation fields in standardized format. These fields are useful for investigating the anomaly and for running anomalous entity detection on several entities or running other algorithms together. 
 
