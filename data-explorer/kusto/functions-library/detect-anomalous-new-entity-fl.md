@@ -16,7 +16,7 @@ The function `detect_anomalous_new_entity_fl()` is a [UDF (user-defined function
 
 The anomaly model is based on a Poisson distribution representing the number of new entities appearing per time bin (such as a day) for each scope. Poisson distribution parameter is estimated based on the rate of appearance of new entities in training period, with added decay factor reflecting the fact that recent appearances are more important than old ones. Hence, we calculate the probability to encounter a new entity in defined detection period per some scope - such as a subscription or an account. The model output is controlled by several optional parameters, such as minimal threshold for anomaly, decay rate parameter, and others. 
 
-The model's direct output is an anomaly score based on the inverse of estimated probability to encounter a new entity. The score is monotonous in the range of [0, 1]; 1 representing something very anomalous. In addition to the anomaly score, there's a binary flag for detected anomalies (controlled by a minimal threshold parameter), and other explanatory fields.
+The model's direct output is an anomaly score, calculated based on the inverse of the estimated probability of encountering a new entity. The anomaly score ranges from 0 to 1, where 1 indicates a highly anomalous entity. In addition to the anomaly score, there's a binary flag for detected anomalies (controlled by a minimal threshold parameter), and other explanatory fields.
 
 ## Syntax
 
