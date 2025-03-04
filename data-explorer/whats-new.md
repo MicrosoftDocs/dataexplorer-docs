@@ -35,7 +35,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 |Article title | Description|
 |--|--|
-| - [all() (graph function)](/kusto/query/all-graph-function?view=azure-data-explorer&preserve-view=true)<br/>- [inner_nodes() (graph function)](/kusto/query/inner-nodes-graph-function?view=azure-data-explorer&preserve-view=true)<br/>-  [map() (graph function)](/kusto/query/map-graph-function?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to use the all(), inner nodes, and map functions to evaluate a condition over the elements of a variable length edge. |
+| - [all() (graph function)](/kusto/query/all-graph-function?view=azure-data-explorer&preserve-view=true)<br/>- [inner_nodes() (graph function)](/kusto/query/inner-nodes-graph-function?view=azure-data-explorer&preserve-view=true)<br/>-  [map() (graph function)](/kusto/query/map-graph-function?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to use the all(), inner nodes, and map graph functions to evaluate a condition over the elements of a variable length edge. |
 | - [node_degree_in() (graph function)](/kusto/query/node-degree-in?view=azure-data-explorer&preserve-view=true)<br/>-[node_degree_out() (graph function)](/kusto/query/node-degree-out?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to calculate the number of incoming or outgoing edges in a directed graph.|
 | [macro-expand operator](/kusto/query/macro-expand-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the macro-expand operator to run a subquery on a set of entities. |
 
