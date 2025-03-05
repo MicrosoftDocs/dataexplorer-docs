@@ -62,4 +62,4 @@ The following example cancels the ingestion of operation `00001111;11112222;0000
 
 * [Queued ingestion overview](queued-ingestion-overview.md)
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
-* [.ingest-from-storage-queued into command](ingest-from-storage-queued.md)
+* [.ingest-from-storage-queued command](ingest-from-storage-queued.md)
