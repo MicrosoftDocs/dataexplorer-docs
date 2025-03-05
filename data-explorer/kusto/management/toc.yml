@@ -850,7 +850,7 @@ items:
           - name: Queued ingestion use case
             displayName: Queued ingestion historical data ingestion
             href: data-ingestion/queued-ingestion-use-case.md
-          - name: .ingest-from-storage-queued into command
+          - name: .ingest-from-storage-queued command
             displayName: .ingest-from-storage-queued, ingest from storage command
             href: data-ingestion/ingest-from-storage-queued.md
           - name: .list blobs command
