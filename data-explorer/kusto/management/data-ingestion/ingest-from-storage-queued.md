@@ -36,7 +36,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |*IngestionSourceName* | `string` | :heavy_check_mark: | The ingestion source. The source can be a URL, source file, or a list of blobs using the [`.list blobs`](list-blobs.md) command.|
 
 > [!NOTE]
-> The `.list blobs` command can be used with the `.ingest-from-storage-queued into` command to return the blobs you want to ingest. For detailed information about the command and a full list of its parameters, see [.list blobs command](list-blobs.md).
+> The `.list blobs` command can be used with the `.ingest-from-storage-queued` command to return the blobs you want to ingest. For detailed information about the command and a full list of its parameters, see [.list blobs command](list-blobs.md).
 
 ## Returns
 
