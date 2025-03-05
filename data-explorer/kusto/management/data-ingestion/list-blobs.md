@@ -135,5 +135,5 @@ https://mystorageaccount.blob.core.windows.net/datasets/myfolder/year=2024/month
 
 * [Queued ingestion overview](queued-ingestion-overview.md)
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
-* [.ingest-from-storage-queued into](ingest-from-storage-queued.md)
+* [.ingest-from-storage-queued](ingest-from-storage-queued.md)
 * [.show queued ingestion operations command](show-queued-ingestion-operations.md)
