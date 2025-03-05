@@ -1698,10 +1698,10 @@ items:
         href: sql-cheat-sheet.md
       - name: Splunk to Kusto cheat sheet
         href: splunk-cheat-sheet.md
+      - name: Query data using T-SQL
+        href: t-sql.md
       - name: Timezones
         href: timezone.md
       - name: KQL docs navigation
         href: ../docs-navigation.md
-      - name: Query data using T-SQL
-        href: t-sql.md
 
