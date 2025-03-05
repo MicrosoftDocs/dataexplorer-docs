@@ -97,6 +97,6 @@ The following example shows the queued ingestion operations for multiple operati
 
 * [Queued ingestion overview](queued-ingestion-overview.md)
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
-* [.ingest-from-storage-queued into](ingest-from-storage-queued.md)
+* [.ingest-from-storage-queued](ingest-from-storage-queued.md)
 * [.cancel queued ingestion operation command](cancel-queued-ingestion-operation-command.md)
 * [.list blobs command](list-blobs.md)
