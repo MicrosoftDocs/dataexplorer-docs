@@ -1,10 +1,8 @@
 items:
   - name: Syntax conventions
     href: syntax-conventions.md
-  - name: Add a comment in KQL
+  - name: Add a comment
     href: comment.md
-  - name: Query data using T-SQL
-    href: t-sql.md
   - name: Set timeout limits
     href: ../set-timeout-limits.md
   - name: Database cursors
@@ -1704,3 +1702,6 @@ items:
         href: timezone.md
       - name: KQL docs navigation
         href: ../docs-navigation.md
+      - name: Query data using T-SQL
+        href: t-sql.md
+
