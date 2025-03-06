@@ -775,7 +775,7 @@ items:
     items:
       - name: Security roles overview
         href: security-roles.md
-        displayName: role based access control, rbac, principals
+        displayName: role based access control, rbac, principals, .show cluster principal roles, .show database principal roles, .show table principal roles,  .show external table principal roles, .show function principal roles, .show materialized-view principal roles, .show database principals, .show table principals, .show external table principals, .show function principals, .show materialized-view principals
       - name: Access control
         items:
         - name: Access control overview
@@ -786,23 +786,23 @@ items:
           href: ../access-control/provision-entra-id-app.md
       - name: Manage database roles
         href: manage-database-security-roles.md
-        displayName: .show principal, principal access, security roles, roles, rbac
+        displayName: .show database principals, .show database principal roles, principal access, security roles, roles, rbac, .add database admins, .add database users, .add database viewers, .add database ingestors, .add database restrictedviewers, .add database monitors, .drop database users, .drop database viewers, drop database ingestors,  .drop database restrictedviewers, .drop database monitors, .drop database roles, .drop database admins, .set database roles, .set database admins, .set database viewers, .set database users, .set database ingestors, .set database restrictedviewers, .set database monitors
       - name: Manage table roles
         items:
           - name: Manage table roles
             href: manage-table-security-roles.md
-            displayName: .show principal, principal access, security roles, roles, rbac
+            displayName: .show table principals, principal access, security roles, roles, rbac, .show table principal roles, principal access, security roles, roles, rbac, .add table admins, .add table ingestors, .drop table admins, drop table ingestors,  .drop table roles, .set table roles, .set table admins, .set table ingestors
           - name: Manage table view access
             href: manage-table-view-access.md
       - name: Manage external table roles
         href: manage-external-table-security-roles.md
-        displayName: .show principal, principal access, security roles, roles, rbac
+        displayName: .show external table principal roles, principal access, security roles, roles, rbac, .add external table admins, .drop external table admins, .drop external table roles, .set external table roles, .set external table admins
       - name: Manage materialized view roles
         href: manage-materialized-view-security-roles.md
-        displayName: .show principal, principal access, security roles, roles, rbac
+        displayName: .show materialized-view principal roles, principal access, security roles, roles, rbac, .add materialized-view admins, .drop materialized-view admins, .drop materialized-view roles, .set materialized-view roles, .set materialized-view admins
       - name: Manage function roles
         href: manage-function-security-roles.md
-        displayName: .show principal, principal access, security roles, roles, rbac
+        displayName: .show function principal roles, principal access, security roles, roles, rbac, .add function admins, .drop function admins, .drop function roles, .set function roles, .set function admins
       - name: Reference security principals
         displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
         href: reference-security-principals.md
