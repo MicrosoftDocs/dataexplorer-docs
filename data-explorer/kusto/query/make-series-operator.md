@@ -85,6 +85,7 @@ Finally the rows from the intermediate result arranged into groups having the sa
 |[avgif()](avgif-aggregation-function.md)|Returns an average with the predicate of the group|
 |[count()](count-aggregation-function.md)|Returns a count of the group|
 |[countif()](countif-aggregation-function.md)|Returns a count with the predicate of the group|
+|[covariance()](covariance-aggregation-function.md)|Returns the covariance of two random variables|
 |[dcount()](dcount-aggregation-function.md)|Returns an  approximate distinct count of the group elements|
 |[dcountif()](dcountif-aggregation-function.md)|Returns an approximate distinct count with the predicate of the group|
 |[max()](max-aggregation-function.md)|Returns the maximum value across the group|
