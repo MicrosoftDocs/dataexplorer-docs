@@ -222,6 +222,7 @@ The query is made more compact by applying the following transformation:
 ```csharp
  UrlEncode(Base64Encode(gzip(original query)))
 ```
+
 ## Kusto.Explorer command-line arguments
 
 Command-line arguments are used to configure the tool to perform more functions on start-up. For example, load a script and connect to a cluster. As such, command-line arguments aren't a replacement for any Kusto.Explorer functionality.
