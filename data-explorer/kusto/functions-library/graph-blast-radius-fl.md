@@ -3,7 +3,7 @@ title:  graph_blast_radius_fl()
 description: Learn how to use the graph_blast_radius_fl() function to calculate the Blast Radius of source nodes over path or edge data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 02/24/2025
+ms.date: 03/03/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_blast_radius_fl()
@@ -218,7 +218,7 @@ connections
 | remote_DT | ["backup_prc"] | 1 | 3 | FALSE |
 | sevice_B2 | ["device_A1"] | 1 | 2 | FALSE |
 
-Running the function takes the connections between and sources and targets, and aggregates the targets by source. For each source, Blast Radius represents the connected targets as score (regular and weighted) and list.
+Running the function aggregates the connections or paths between sources and targets by source. For each source, Blast Radius represents the connected targets as score (regular and weighted) and list.
 
 
 Each row in the output contains the following fields:
@@ -233,9 +233,9 @@ In the example above, we run the `graph_blast_radius_fl()` function on top of co
 
 If the multi-hop paths aren't available, we can build multi-hop paths between sources and targets (for example, by running 'graph_path_discovery_fl()') and run 'graph_blast_radius_fl()' on top of the results.
 
-The output looks similar, but reflects the Blast Radius calculated over multi-hop paths, thus being a better indicator of source nodes true connectivity to relevant targets. In order to find the full paths between source and target scenarios (for example, for disruption), [graph_path_discovery_fl()](graph-path-discovery-fl.md) function can be used with filters on relevant source and target nodes.
+The output looks similar, but represents Blast Radius calculated over multi-hop paths, thus being a better indicator of source nodes true connectivity to relevant targets. In order to find the full paths between source and target scenarios (for example, for disruption), [graph_path_discovery_fl()](graph-path-discovery-fl.md) function can be used with filters on relevant source and target nodes.
 
-The function `graph_blast_radius_fl()` can be used to calculate the Blast Radius of source nodes, calculated either over direct edges or longer paths. In cybersecurity domain, it can be used for several insights. Blast Radius scores (regular and weighted), represent source node's importance both from defenders' and attackers' perspectives. Nodes with high Blast Radius should be protected accordingly (for example, in terms of access hardening and vulnerability management); security signals (such as alerts) on such nodes should be prioritized. The Blast Radius list should be monitored for undesired connections between sources and targets and used in disruption scenarios (for example, if there was active compromise of the source, connections between it and important target should be broken).
+The function `graph_blast_radius_fl()` can be used to calculate the Blast Radius of source nodes, calculated either over direct edges or longer paths. In the cybersecurity domain, it can provide several insights. Blast Radius scores, regular and weighted, represent a source node's importance from both defenders' and attackers' perspectives. Nodes with a high Blast Radius should be protected accordingly, for example, in terms of access hardening and vulnerability management. Security signals such as alerts on such nodes should be prioritized. The Blast Radius list should be monitored for undesired connections between sources and targets and used in disruption scenarios. For example, if the source was compromised, connections between it and important targets should be broken.
 
 ## Related content
 
