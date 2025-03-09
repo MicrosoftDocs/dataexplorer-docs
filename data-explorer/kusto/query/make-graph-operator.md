@@ -15,18 +15,18 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 
 *Edges* `|` `make-graph` *SourceNodeId* `-->` *TargetNodeId* [ `with` *Nodes1* `on` *NodeId1* [`,` *Nodes2* `on` *NodeId2* ]]
 
-*Edges* `|` `make-graph` *SourceNodeId* `-->` *TargetNodeId* [ `with_node_id=` *DefaultNodeId* ]
+*Edges* `|` `make-graph` *SourceNodeId* `-->` *TargetNodeId* [ `with_node_id=` *NodeIdPropertyName* ]
 
 ## Parameters
 
-| Name            | Type     | Required           | Description                                                                 |
-|-----------------|----------|--------------------|-----------------------------------------------------------------------------|
-| *Edges*         | `string` | :heavy_check_mark: | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
-| *SourceNodeId*  | `string` | :heavy_check_mark: | The column in *Edges* with the source node IDs of the edges. |
-| *TargetNodeId*  | `string` | :heavy_check_mark: | The column in *Edges* with the target node IDs of the edges. |
-| *Nodes*         | `string` |                    | The tabular expressions containing the properties of the nodes in the graph. |
-| *NodesId*       | `string` |                    | The columns with the node IDs in *Nodes*. |
-| *DefaultNodeId* | `string` |                    | The name of the column for the default node ID. |
+| Name                 | Type     | Required           | Description                                                                 |
+|----------------------|----------|--------------------|-----------------------------------------------------------------------------|
+| *Edges*              | `string` | :heavy_check_mark: | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
+| *SourceNodeId*       | `string` | :heavy_check_mark: | The column in *Edges* with the source node IDs of the edges. |
+| *TargetNodeId*       | `string` | :heavy_check_mark: | The column in *Edges* with the target node IDs of the edges. |
+| *Nodes*              | `string` |                    | The tabular expressions containing the properties of the nodes in the graph. |
+| *NodesId*            | `string` |                    | The columns with the node IDs in *Nodes*. |
+| *NodeIdPropertyName* | `string` |                    | The name of the property for node ID on the nodes of the graph. |
 
 ## Returns
 
