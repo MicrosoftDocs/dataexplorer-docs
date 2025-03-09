@@ -19,14 +19,14 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 
 ## Parameters
 
-| Name                 | Type     | Required           | Description                                                                 |
-|----------------------|----------|--------------------|-----------------------------------------------------------------------------|
-| *Edges*              | `string` | :heavy_check_mark: | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
-| *SourceNodeId*       | `string` | :heavy_check_mark: | The column in *Edges* with the source node IDs of the edges. |
-| *TargetNodeId*       | `string` | :heavy_check_mark: | The column in *Edges* with the target node IDs of the edges. |
-| *Nodes*              | `string` |                    | The tabular expressions containing the properties of the nodes in the graph. |
-| *NodesId*            | `string` |                    | The columns with the node IDs in *Nodes*. |
-| *NodeIdPropertyName* | `string` |                    | The name of the property for node ID on the nodes of the graph. |
+| Name                   | Type     | Required           | Description                                                                 |
+|------------------------|----------|--------------------|-----------------------------------------------------------------------------|
+| *Edges*                | `string` | :heavy_check_mark: | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
+| *SourceNodeId*         | `string` | :heavy_check_mark: | The column in *Edges* with the source node IDs of the edges. |
+| *TargetNodeId*         | `string` | :heavy_check_mark: | The column in *Edges* with the target node IDs of the edges. |
+| *Nodes1*, *Nodes2*     | `string` |                    | The tabular expressions containing the properties of the nodes in the graph. |
+| *NodesId1*, *NodesId2* | `string` |                    | The corresponding columns with the node IDs in *Nodes1*, *Nodes2* respectively. |
+| *NodeIdPropertyName*   | `string` |                    | The name of the property for node ID on the nodes of the graph. |
 
 ## Returns
 
