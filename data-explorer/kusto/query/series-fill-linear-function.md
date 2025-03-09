@@ -3,7 +3,7 @@ title:  series_fill_linear()
 description: Learn how to use the series_fill_linear() function to linearly interpolate missing values in a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # series_fill_linear()
 
@@ -24,8 +24,8 @@ Takes an expression containing dynamic numerical array as input, does linear int
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values.|
-| *missing_value_placeholder* | scalar | | Specifies a placeholder for missing values. The default value is `double(`*null*`)`. The value can be of any type that will be converted to actual element types. `double`(*null*), `long`(*null*) and `int`(*null*) have the same meaning.|
-| *fill_edges* | `bool` | | Indicates whether *missing_value_placeholder* at the start and end of the array should be replaced with nearest value. `true` by default. If set to `false`, then *missing_value_placeholder* at the start and end of the array will be preserved.|
+| *missing_value_placeholder* | scalar | | Specifies a placeholder for missing values. The default value is `double(`*null*`)`. The value can be of any type that can convert to actual element types. `double`(*null*), `long`(*null*), and `int`(*null*) have the same meaning.|
+| *fill_edges* | `bool` | | Indicates whether *missing_value_placeholder* at the start and end of the array should be replaced with nearest value. `true` by default. If set to `false`, then *missing_value_placeholder* at the start and end of the array is preserved.|
 | *constant_value* | scalar | | Relevant only for arrays that entirely consist of *null* values. This parameter specifies a constant value with which to fill the series. Default value is 0. Setting this parameter it to `double(`*null*`)` preserves the *null* values.|
 
 ## Returns
@@ -35,10 +35,12 @@ A series linear interpolation of *series* using the specified parameters. If *se
 > [!NOTE]
 >
 > * If you create *series* using the [make-series](make-series-operator.md) operator, specify *null* as the default value to use interpolation functions like `series_fill_linear()` afterwards. See [explanation](make-series-operator.md#list-of-series-interpolation-functions).
-> * If *missing_value_placeholder* is `double`(*null*), or omitted, then a result may contain *null* values. To fill these *null* values, use other interpolation functions. Only [series_outliers()](series-outliers-function.md) supports *null* values in input arrays.
+> * If *missing_value_placeholder* is `double`(*null*), or omitted, then a result can contain *null* values. To fill these *null* values, use other interpolation functions. Only [series_outliers()](series-outliers-function.md) supports *null* values in input arrays.
 > * `series_fill_linear()` preserves the original type of the array elements.
 
 ## Example
+
+The following example shows how to use use the `series_fill_linear()` function to fill missing values (nulls) in the arrays using linear interpolation. It fills values using the original `arr` without additional arguments, using edge values, and excluding edge values.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -68,3 +70,10 @@ data
 |[null,111.0,null,36.0,41.0,null,null,16.0,61.0,33.0,null,null]|[111.0,111.0,73.5,36.0,41.0,32.667,24.333,16.0,61.0,33.0,33.0,33.0]|[111.0,111.0,73.5,36.0,41.0,32.667,24.333,16.0,61.0,33.0,33.0,33.0]|[null,111.0,73.5,36.0,41.0,32.667,24.333,16.0,61.0,33.0,null,null]|[111.0,111.0,73.5,36.0,41.0,32.667,24.333,16.0,61.0,33.0,33.0,33.0]|
 |[null,111,null,36,41,null,null,16,61,33,null,null]|[111,111,73,36,41,32,24,16,61,33,33,33]|[111,111,73,36,41,32,24,16,61,33,33,33]|[null,111,73,36,41,32,24,16,61,33,null,null]|[111,111,74,38,  41,32,24,16,61,33,33,33]|
 |[null,null,null,null]|[0.0,0.0,0.0,0.0]|[0.0,0.0,0.0,0.0]|[0.0,0.0,0.0,0.0]|[3.14159,3.14159,3.14159,3.14159]|
+
+## Related content
+
+* [Time series analysis](time-series-analysis.md)
+* [make-series operator](make-series-operator.md)
+* [series_fill_const()](series-fill-const-function.md)
+* [series_outliers()](series-outliers-function.md)
