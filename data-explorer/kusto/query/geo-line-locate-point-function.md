@@ -13,7 +13,7 @@ Calculates fraction value as a ratio of a line length from line start till a poi
 
 ## Syntax
 
-`geo_line_locate_point(`*lineString*`, `*longitude*`,`*latitude*`)`
+`geo_line_locate_point(`*lineString*`, `*longitude*`,`*latitude*`,`[ *use_spheroid* ]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -24,6 +24,7 @@ Calculates fraction value as a ratio of a line length from line start till a poi
 | *lineString* | `dynamic` |  :heavy_check_mark: | A line in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 | *longitude* | `real` |  :heavy_check_mark: | The geospatial coordinate longitude value in degrees. A valid value is in the range [-180, +180].|
 | *latitude* | `real` |  :heavy_check_mark: | The geospatial coordinate latitude value in degrees. A valid value is in the range [-90, +90].|
+| *use_spheroid* | `bool` | | If `false` will use a sphere as [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) for measuring distance. If `true` will measure distance using spheroid. If unspecified, the default value `false` is used.
 
 ## Returns
 
@@ -32,7 +33,7 @@ Line fraction value between 0 and 1 (0 - 100%) as a ratio of a line from start t
 > [!NOTE]
 >
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
-> * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used to measure distance on Earth is a sphere. Line edges are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
+> * Line segments are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere, if 'use_spheroid' = false. If 'use_spheroid' = true, line segments will be geodesics on spheroid. Most applications should measure distance using sphere which is more performant
 > * If input line edges are straight cartesian lines, consider using [geo_line_densify()](geo-line-densify-function.md) in order to convert planar edges to geodesics.
 > * The input shouldn't contain more than a single line string.
 > * If the input line string has more than single point on the line at equal distances from the input point, it isn't guaranteed which one is selected.

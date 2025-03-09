@@ -13,7 +13,7 @@ Calculates the shortest distance in meters between two geospatial coordinates on
 
 ## Syntax
 
-`geo_distance_2points(`*p1_longitude*`,`*p1_latitude*`,`*p2_longitude*`,`*p2_latitude*`)`
+`geo_distance_2points(`*p1_longitude*`,`*p1_latitude*`,`*p2_longitude*`,`*p2_latitude*`,`[ *use_spheroid* ]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -25,6 +25,7 @@ Calculates the shortest distance in meters between two geospatial coordinates on
 |*p1_latitude*| `real` |  :heavy_check_mark: | The latitude value in degrees of the first geospatial coordinate. A valid value is in the range [-90, +90].|
 |*p2_longitude*| `real` |  :heavy_check_mark: | The longitude value in degrees of the second geospatial coordinate. A valid value is in the range [-180, +180].|
 |*p2_latitude*| `real` |  :heavy_check_mark: | The latitude value in degrees of the second geospatial coordinate. A valid value is in the range [-90, +90].|
+|*use_spheroid*| `bool` | | If `false` will use a sphere as [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) for measuring distance. If `true` will measure distance using spheroid. If unspecified, the default value `false` is used.
 
 ## Returns
 
@@ -33,7 +34,7 @@ The shortest distance, in meters, between two geographic locations on Earth. If 
 > [!NOTE]
 >
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
-> * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used to measure distance on Earth is a sphere.
+> * Most applications should measure distance using sphere ('use_spheroid' = false) which is more performant. If extra precision is needed, 'use_spheroid' option can be set to 'true', for extra precision, which might be more relevant for bigger distances, which might get impacted due to earth curvature.
 
 ## Examples
 
