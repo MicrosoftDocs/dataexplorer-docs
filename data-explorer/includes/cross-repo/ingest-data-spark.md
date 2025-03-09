@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 02/15/2024
+ms.date: 03/09/2025
 ---
 ## How to build the Spark connector
 
@@ -142,6 +142,9 @@ For more information on principal roles, see [role-based access control](/azure/
     import com.microsoft.kusto.spark.datasink.SparkIngestionProperties
     import com.microsoft.kusto.spark.sql.extension.SparkExtension._
     
+    // Optional, for any extra options:
+    val conf: Map[String, String] = Map()
+
     val sparkIngestionProperties = Some(new SparkIngestionProperties()) // Optional, use None if not needed
     df.write.kusto(cluster, database, table, conf, sparkIngestionProperties)
     ```
@@ -156,12 +159,19 @@ For more information on principal roles, see [role-based access control](/azure/
 
     // Set up a checkpoint and disable codeGen. 
     spark.conf.set("spark.sql.streaming.checkpointLocation", "/FileStore/temp/checkpoint")
-        
+    
+    // Alternative to providing .option by .option you can provide a map:
+    val conf: Map[String, String] = Map
+    (KustoSinkOptions.KUSTO_CLUSTER -> cluster,
+    KustoSinkOptions.KUSTO_TABLE -> table,
+    KustoSinkOptions.KUSTO_DATABASE -> database,
+    KustoSourceOptions.KUSTO_ACCESS_TOKEN -> accessToken)
+     
     // Write to a Kusto table from a streaming source
     val kustoQ = df
       .writeStream
       .format("com.microsoft.kusto.spark.datasink.KustoSinkProvider")
-      .options(conf) 
+      .options(conf)
       .trigger(Trigger.ProcessingTime(TimeUnit.SECONDS.toMillis(10))) // Sync this with the ingestionBatching policy of the database
       .start()
     ```
