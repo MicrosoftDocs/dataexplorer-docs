@@ -3,7 +3,7 @@ title:  toupper()
 description: Learn how to use the toupper() function to convert a string to upper case.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # toupper()
 
@@ -30,6 +30,8 @@ If conversion isn't successful, result is `null`.
 
 ## Example
 
+The following example checks whether the `toupper()` function converted the lowercase input string to uppercase.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJLy0oSC3SUMpIzcnJV9JUsLVVUPJw9fHxVwIAC8jUKyEAAAA=" target="_blank">Run the query</a>
@@ -38,3 +40,9 @@ If conversion isn't successful, result is `null`.
 ```kusto
 toupper("hello") == "HELLO"
 ```
+
+## Related content
+
+* [Scalar function types at a glance](scalar-functions.md)
+* [tostring()](tostring-function.md)
+* [toupper()](toupper-function.md)

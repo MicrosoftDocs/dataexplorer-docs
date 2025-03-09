@@ -3,7 +3,7 @@ title:  tohex()
 description: Learn how to use the tohex() function to convert the input value to a hexadecimal string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # tohex()
 
@@ -21,16 +21,18 @@ Converts input to a hexadecimal string.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | int or long |  :heavy_check_mark: | The value that will be converted to a hex string.|
-| *minLength* | `int` | | The value representing the number of leading characters to include in the output.  Values between 1 and 16 are supported. Values greater than 16 will be truncated to 16. If the string is longer than *minLength* without leading characters, then *minLength* is effectively ignored. Negative numbers may only be represented at minimum by their underlying data size, so for an integer (32-bit) the *minLength* will be at minimum 8, for a long (64-bit) it will be at minimum 16.|
+| *value* | int or long |  :heavy_check_mark: | The value that is converted to a hex string.|
+| *minLength* | `int` | | The value representing the number of leading characters to include in the output. Values between 1 and 16 are supported. Values greater than 16 are truncated to 16. If the string is longer than *minLength* without leading characters, then *minLength* is effectively ignored. Negative numbers are only represented at minimum by their underlying data size, so for an integer (32-bit) the *minLength* is at minimum 8, for a long (64-bit) it's at minimum 16.|
 
 ## Returns
 
-If conversion is successful, result will be a string value.
-If conversion isn't successful, result will be `null`.
+If conversion is successful, result is a string value.
+If conversion isn't successful, result is `null`.
 
 ## Example
 
+The following example checks whether the `tohex()` integer conversion results in the expected hexadecimal value.
+ 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42PsQ7CMAxEdyT+4baAlNIQoGLpyI/Qum2kJqkaD/18EhAliIXb7Ds/29NsHG83iGI/0LLTl2qPuoY4KiVk7hSr1X0p5VCWqM7F3TC0CGi8nUay5Bi+QxrMQezjzhdO4poj36iT/hMVyxWhkn6ufib056WEvy0NURtgjcNIruchsbVE8HnPBJje+ZnawwOAcjs/JwEAAA==" target="_blank">Run the query</a>
@@ -50,3 +52,9 @@ print
 |print_0|print_1|print_2|print_3|print_04|
 |--|--|--|--|--|
 |true|true|true|true|true|
+
+## Related content
+
+* [Scalar function types at a glance](scalar-functions.md)
+* [tostring()](tostring-function.md)
+* [toint()](toint-function.md)

@@ -3,7 +3,7 @@ title:  toreal()
 description: Learn how to use the toreal() function to convert the input expression to a value of type `real`.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # toreal()
 
@@ -30,10 +30,19 @@ Converts the input expression to a value of type [real](scalar-data-types/real.m
 
 ## Returns
 
-If conversion is successful, the result is a value of type `real`. Otherwise, the returned value will be `real(null)`.
+If conversion is successful, the result is a value of type `real`. Otherwise, the returned value is `real(null)`.
 
 ## Example
+
+The following example checks whether the input `"123.4"` was converted to the `real` value.
 
 ```kusto
 toreal("123.4") == 123.4
 ```
+
+## Related content
+
+* [Scalar function types at a glance](scalar-functions.md)
+* [The real data type](scalar-data-types/real.md)
+* [todecimal()](todecimal-function.md)
+* [toint()](toint-function.md)

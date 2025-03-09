@@ -3,7 +3,7 @@ title:  totimespan()
 description: Learn how to use the totimespan() function to convert the input to a `timespan` scalar value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # totimespan()
 
@@ -30,10 +30,12 @@ Converts the input to a [timespan](scalar-data-types/timespan.md) scalar value.
 
 ## Returns
 
-If conversion is successful, result will be a [timespan](scalar-data-types/timespan.md) value.
-Else, result will be null.
+If conversion is successful, result is a [timespan](scalar-data-types/timespan.md) value.
+Else, result is null.
 
 ## Example
+
+The following example checks whether the input matches the defined timespan. 
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -46,5 +48,6 @@ totimespan("0.00:01:00") == time(1min)
 
 ## Related content
 
+* [Scalar function types at a glance](scalar-functions.md)
 * [timespan datatype](scalar-data-types/timespan.md)
 * [make-timespan function](make-timespan-function.md)
