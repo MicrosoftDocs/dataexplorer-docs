@@ -3,7 +3,7 @@ title:  detect_anomalous_spike_fl()
 description: Learn how to use the detect_anomalous_spike_fl() function to detect anomalous spikes in numeric variables.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 12/16/2024
+ms.date: 03/03/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # detect_anomalous_spike_fl()
@@ -14,7 +14,7 @@ Detect the appearance of anomalous spikes in numeric variables in timestamped da
 
 The function `detect_anomalous_spike_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that detects the appearance of anomalous spikes in numeric variables - such as amount of exfiltrated data or failed sign in attempts - in timestamped data, such as traffic logs. In cybersecurity context, such events might be suspicious and indicate a potential attack or compromise.
 
-The anomaly model is based on a combination of two scores: Z-score (the number of standard deviations above average) and Q-score (the number of interquantile ranges above a high quantile). Z-score is a straightforward and common outlier metric; Q-score is based on Tukey's fences - but we extend the definition to any quantiles for more control. Choosing different quantiles (by default, 95th and 25th quantiles are used) allows to detect more significant outliers, thus improving precision. The model is built on top of some numeric variable and is calculated per scope - such as subscription or account - and per entity - such as user or device.
+The anomaly model is based on a combination of two scores: Z-score (the number of standard deviations above average) and Q-score (the number of interquantile ranges above a high quantile). Z-score is a straightforward and common outlier metric; Q-score is based on Tukey's fences - but we extend the definition to any quantiles for more control. Choosing different quantiles (by default, 95th and 25th quantiles are used) allows to detect more significant outliers, thus improving precision. The model is built on top of some numeric variable (such as the number of login attempts or amount of exfiltrated data) and is calculated per scope (such as subscription or account) and per entity (such as user or device).
 
 After calculating the scores for a single-variate numeric datapoint and checking other requirements (for example, the number of active days in training period on scope is above a predefined threshold), we check whether each of the scores is above its predefined threshold. If so, a spike is detected and the datapoint is flagged as anomalous. Two models are built: one for entity level (defined by entityColumnName parameter) - such as user or device per scope (defined by scopeColumnName parameter) - such as account or subscription. The second model is built for the whole scope. The anomaly detection logic is executed for each model and if anomaly is detected in one of them - it is shown. By default, upward spikes are detected; downward spikes ('dips') can also be interesting in some contexts and can be detected by adapting the logic.
 

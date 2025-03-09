@@ -1,12 +1,12 @@
 items:
 - name: Syntax conventions
   href: /kusto/query/syntax-conventions?view=azure-data-explorer&preserve-view=true
-- name: Add a comment in KQL
+- name: Add a comment
   href: /kusto/query/comment?view=azure-data-explorer&preserve-view=true
-- name: Query data using T-SQL
-  href: /kusto/query/t-sql?view=azure-data-explorer&preserve-view=true
 - name: Set timeout limits
   href: /kusto/set-timeout-limits?view=azure-data-explorer&preserve-view=true
+- name: Database cursors
+  href: /kusto/query/database-cursor?view=azure-data-explorer&preserve-view=true
 - name: Debug KQL inline Python
   href: /kusto/debug-inline-python?view=azure-data-explorer&preserve-view=true
 - name: Best practices for KQL queries
@@ -100,6 +100,9 @@ items:
     - name: detect_anomalous_new_entity_fl()
       displayName: functions library, security, cybersecurity, anomaly detection, new entity, novelty, cyber, detect anomalous new entity
       href: /kusto/functions-library/detect-anomalous-new-entity-fl?view=azure-data-explorer&preserve-view=true
+    - name: detect_anomalous_spike_fl()
+      displayName: functions library, security, cybersecurity, anomaly detection, spike, cyber, detect anomalous spike
+      href: /kusto/functions-library/detect-anomalous-spike-fl?view=azure-data-explorer&preserve-view=true
     - name: factorial_fl()
       displayName: functions library, statistics
       href: /kusto/functions-library/factorial-fl?view=azure-data-explorer&preserve-view=true
@@ -109,6 +112,15 @@ items:
     - name: get_packages_version_fl()
       displayName: functions library, python, version, package
       href: /kusto/functions-library/get-packages-version-fl?view=azure-data-explorer&preserve-view=true
+    - name: graph_blast_radius_fl()
+      displayName: functions library, graph, blast radius, cyber, security, cybersecurity
+      href: /kusto/functions-library/graph-blast-radius-fl?view=azure-data-explorer&preserve-view=true
+    - name: graph_exposure_perimeter_fl()
+      displayName: functions library, graph, exposure, perimeter, cyber, security, cybersecurity
+      href: /kusto/functions-library/graph-exposure-perimeter-fl?view=azure-data-explorer&preserve-view=true
+    - name: graph_path_discovery_fl()
+      displayName: functions library, graph, path, discovery, cyber, security, cybersecurity,
+      href: /kusto/functions-library/graph-path-discovery-fl?view=azure-data-explorer&preserve-view=true
     - name: kmeans_fl()
       displayName: functions library, clustering, K-Means
       href: /kusto/functions-library/kmeans-fl?view=azure-data-explorer&preserve-view=true
@@ -342,6 +354,8 @@ items:
       href: /kusto/query/join-time-window?view=azure-data-explorer&preserve-view=true
   - name: lookup operator
     href: /kusto/query/lookup-operator?view=azure-data-explorer&preserve-view=true
+  - name: macro-expand operator
+    href: /kusto/query/macro-expand-operator?view=azure-data-explorer&preserve-view=true
   - name: mv-apply operator
     href: /kusto/query/mv-apply-operator?view=azure-data-explorer&preserve-view=true
     displayName: mv apply mv_apply
@@ -1433,7 +1447,7 @@ items:
     href: /kusto/query/varianceif-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: variancep()
     href: /kusto/query/variancep-aggregation-function?view=azure-data-explorer&preserve-view=true
-- name: Graph operators
+- name: Graph
   items:
   - name: Graph overview
     href: /kusto/query/graph-overview?view=azure-data-explorer&preserve-view=true
@@ -1441,18 +1455,37 @@ items:
     href: /kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true
   - name: Graph scenarios
     href: /kusto/query/graph-scenarios?view=azure-data-explorer&preserve-view=true
-  - name: Graph operators overview
-    href: /kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true
-  - name: make-graph
-    href: /kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true
-  - name: graph-match
-    href: /kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true
-  - name: graph-to-table
-    href: /kusto/query/graph-to-table-operator?view=azure-data-explorer&preserve-view=true
-  - name: graph-shortest-paths
-    href: /kusto/query/graph-shortest-paths-operator?view=azure-data-explorer&preserve-view=true
-  - name: graph-mark-components
-    href: /kusto/query/graph-mark-components-operator?view=azure-data-explorer&preserve-view=true
+  - name: Graph operators
+    items:
+    - name: Graph operators overview
+      href: /kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true
+    - name: make-graph
+      href: /kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true
+    - name: graph-match
+      href: /kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true
+    - name: graph-to-table
+      href: /kusto/query/graph-to-table-operator?view=azure-data-explorer&preserve-view=true
+    - name: graph-shortest-paths
+      href: /kusto/query/graph-shortest-paths-operator?view=azure-data-explorer&preserve-view=true
+    - name: graph-mark-components
+      href: /kusto/query/graph-mark-components-operator?view=azure-data-explorer&preserve-view=true
+  - name: Graph functions
+    items:
+    - name: all()
+      displayName: all() graph function
+      href: /kusto/query/all-graph-function?view=azure-data-explorer&preserve-view=true
+    - name: map()
+      displayName: map() graph function
+      href: /kusto/query/map-graph-function?view=azure-data-explorer&preserve-view=true
+    - name: inner_nodes()
+      displayName: inner nodes() graph function, inner nodes
+      href: /kusto/query/inner-nodes-graph-function?view=azure-data-explorer&preserve-view=true
+    - name: node_degree_in()
+      displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in
+      href: /kusto/query/node-degree-in?view=azure-data-explorer&preserve-view=true
+    - name: node_degree_out()
+      displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
+      href: /kusto/query/node-degree-out?view=azure-data-explorer&preserve-view=true
 - name: Geospatial
   items:
   - name: Geospatial clustering overview
@@ -1854,6 +1887,8 @@ items:
     href: /kusto/query/sql-cheat-sheet?view=azure-data-explorer&preserve-view=true
   - name: Splunk to Kusto cheat sheet
     href: /kusto/query/splunk-cheat-sheet?view=azure-data-explorer&preserve-view=true
+  - name: Query data using T-SQL
+    href: /kusto/query/t-sql?view=azure-data-explorer&preserve-view=true
   - name: Timezones
     href: /kusto/query/timezone?view=azure-data-explorer&preserve-view=true
   - name: KQL docs navigation
