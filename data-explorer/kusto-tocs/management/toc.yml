@@ -46,8 +46,6 @@ items:
   items:
   - name: Best practices for schema management
     href: /kusto/management/management-best-practices?view=azure-data-explorer&preserve-view=true
-  - name: Avrotize k2a tool
-    href: /kusto/tools/avrotize?view=azure-data-explorer&preserve-view=true
   - name: Clusters
     items:
     - name: .execute cluster script command
@@ -123,6 +121,8 @@ items:
       href: /kusto/management/show-table-schema-command?view=azure-data-explorer&preserve-view=true
     - name: .clear table data command
       href: /kusto/management/clear-table-data-command?view=azure-data-explorer&preserve-view=true
+    - name: Avrotize k2a tool
+      href: /kusto/tools/avrotize?view=azure-data-explorer&preserve-view=true
   - name: External tables
     items:
     - name: Azure Storage external tables
@@ -255,23 +255,25 @@ items:
     - name: .alter-merge table column-docstrings command
       displayName: .alter-merge column-docstrings
       href: /kusto/management/alter-merge-table-column?view=azure-data-explorer&preserve-view=true
-  - name: Ingestion mappings
+  - name: Entity Group
     items:
-    - name: Ingestion mappings overview
-      href: /kusto/management/mappings?view=azure-data-explorer&preserve-view=true
-      displayName: schema mappings, data mappings
-    - name: CSV mapping
-      href: /kusto/management/csv-mapping?view=azure-data-explorer&preserve-view=true
-    - name: JSON mapping
-      href: /kusto/management/json-mapping?view=azure-data-explorer&preserve-view=true
-    - name: AVRO mapping
-      href: /kusto/management/avro-mapping?view=azure-data-explorer&preserve-view=true
-    - name: Parquet mapping
-      href: /kusto/management/parquet-mapping?view=azure-data-explorer&preserve-view=true
-    - name: ORC mapping
-      href: /kusto/management/orc-mapping?view=azure-data-explorer&preserve-view=true
-    - name: W3CLOGFILE mapping
-      href: /kusto/management/w3c-log-file-mapping?view=azure-data-explorer&preserve-view=true
+    - name: Entity Group
+      href: /kusto/management/entity-groups?view=azure-data-explorer&preserve-view=true
+    - name: .create entity_group command
+      displayName: create entity_group
+      href: /kusto/management/create-entity-group?view=azure-data-explorer&preserve-view=true
+    - name: .alter entity_group command
+      displayName: alter entity_group
+      href: /kusto/management/alter-entity-group?view=azure-data-explorer&preserve-view=true
+    - name: .alter-merge entity_group command
+      displayName: alter-merge entity_group
+      href: /kusto/management/alter-merge-entity-group?view=azure-data-explorer&preserve-view=true
+    - name: .drop entity_group command
+      displayName: drop entity_group
+      href: /kusto/management/drop-entity-group?view=azure-data-explorer&preserve-view=true
+    - name: .show entity_group command
+      displayName: show entity_group, show entity_groups, .show entity_group
+      href: /kusto/management/show-entity-group?view=azure-data-explorer&preserve-view=true
   - name: Functions
     items:
     - name: Stored functions management overview
@@ -365,8 +367,8 @@ items:
     items:
     - name: Capacity policy
       href: /kusto/management/capacity-policy?view=azure-data-explorer&preserve-view=true
-      displayName: IngestionCapacity, ExtentsMergeCapacity, ExtentsPurgeRebuildCapacity, ExportCapacity, ExtentsPartitionCapacity, MaterializedViewsCapacity, StoredQueryResultsCapacity, QueryAccelerationCapacity, ingestion, extents,
-        purge, partition
+      displayName: IngestionCapacity, ExtentsMergeCapacity, ExtentsPurgeRebuildCapacity, ExportCapacity, ExtentsPartitionCapacity, MaterializedViewsCapacity, StoredQueryResultsCapacity, QueryAccelerationCapacity,
+        ingestion, extents, purge, partition
     - name: .alter cluster policy capacity command
       href: /kusto/management/alter-capacity-policy-command?view=azure-data-explorer&preserve-view=true
       displayName: .alter cluster capacity policy command
@@ -491,6 +493,9 @@ items:
     - name: .delete table policy merge command
       href: /kusto/management/delete-table-merge-policy-command?view=azure-data-explorer&preserve-view=true
       displayName: .delete table merge policy
+    - name: .delete materialized-view policy merge command
+      href: /kusto/management/delete-materialized-view-merge-policy-command?view=azure-data-explorer&preserve-view=true
+      displayName: .delete materialized-view merge policy
     - name: .show database policy merge command
       href: /kusto/management/show-database-merge-policy-command?view=azure-data-explorer&preserve-view=true
       displayName: .show database merge policy
@@ -510,14 +515,14 @@ items:
     - name: .show table policy mirroring command
       href: /kusto/management/show-table-mirroring-policy-command?view=azure-data-explorer&preserve-view=true
       displayName: .show table mirroring policy
-    - name: .show table mirroring operations command
-      href: /kusto/management/show-table-mirroring-operations-command?view=azure-data-explorer&preserve-view=true
-      displayName: .show table mirroring operations
-    - name: .show table mirroring operations exported artifacts command
-      href: /kusto/management/show-table-mirroring-operations-exported-artifacts?view=azure-data-explorer&preserve-view=true
-      displayName: .Show table mirroring operations exported artifacts
-    - name: .show table mirroring operations failures command
-      href: /kusto/management/show-table-mirroring-operations-failures?view=azure-data-explorer&preserve-view=true
+    - name: .show table operations mirroring-status command
+      href: /kusto/management/show-table-operations-mirroring-status-command?view=azure-data-explorer&preserve-view=true
+      displayName: .show table mirroring status operations
+    - name: .show table operations mirroring-exported-artifacts command
+      href: /kusto/management/show-table-operations-mirroring-exported-artifacts-command?view=azure-data-explorer&preserve-view=true
+      displayName: .show table mirroring operations exported artifacts
+    - name: .show table operations mirroring-failures command
+      href: /kusto/management/show-table-operations-mirroring-failures-command?view=azure-data-explorer&preserve-view=true
       displayName: show table mirroring operations failures
   - name: Partitioning
     items:
@@ -770,7 +775,8 @@ items:
   items:
   - name: Security roles overview
     href: /kusto/management/security-roles?view=azure-data-explorer&preserve-view=true
-    displayName: role based access control, rbac, principals
+    displayName: role based access control, rbac, principals, .show cluster principal roles, .show database principal roles, .show table principal roles,  .show external table principal roles, .show function
+      principal roles, .show materialized-view principal roles, .show database principals, .show table principals, .show external table principals, .show function principals, .show materialized-view principals
   - name: Access control
     items:
     - name: Access control overview
@@ -781,23 +787,29 @@ items:
       href: /kusto/access-control/provision-entra-id-app?view=azure-data-explorer&preserve-view=true
   - name: Manage database roles
     href: /kusto/management/manage-database-security-roles?view=azure-data-explorer&preserve-view=true
-    displayName: .show principal, principal access, security roles, roles, rbac
+    displayName: .show database principals, .show database principal roles, principal access, security roles, roles, rbac, .add database admins, .add database users, .add database viewers, .add database
+      ingestors, .add database restrictedviewers, .add database monitors, .drop database users, .drop database viewers, drop database ingestors,  .drop database restrictedviewers, .drop database monitors,
+      .drop database roles, .drop database admins, .set database roles, .set database admins, .set database viewers, .set database users, .set database ingestors, .set database restrictedviewers, .set database
+      monitors
   - name: Manage table roles
     items:
     - name: Manage table roles
       href: /kusto/management/manage-table-security-roles?view=azure-data-explorer&preserve-view=true
-      displayName: .show principal, principal access, security roles, roles, rbac
+      displayName: .show table principals, principal access, security roles, roles, rbac, .show table principal roles, principal access, security roles, roles, rbac, .add table admins, .add table ingestors,
+        .drop table admins, drop table ingestors,  .drop table roles, .set table roles, .set table admins, .set table ingestors
     - name: Manage table view access
       href: /kusto/management/manage-table-view-access?view=azure-data-explorer&preserve-view=true
   - name: Manage external table roles
     href: /kusto/management/manage-external-table-security-roles?view=azure-data-explorer&preserve-view=true
-    displayName: .show principal, principal access, security roles, roles, rbac
+    displayName: .show external table principal roles, principal access, security roles, roles, rbac, .add external table admins, .drop external table admins, .drop external table roles, .set external table
+      roles, .set external table admins
   - name: Manage materialized view roles
     href: /kusto/management/manage-materialized-view-security-roles?view=azure-data-explorer&preserve-view=true
-    displayName: .show principal, principal access, security roles, roles, rbac
+    displayName: .show materialized-view principal roles, principal access, security roles, roles, rbac, .add materialized-view admins, .drop materialized-view admins, .drop materialized-view roles, .set
+      materialized-view roles, .set materialized-view admins
   - name: Manage function roles
     href: /kusto/management/manage-function-security-roles?view=azure-data-explorer&preserve-view=true
-    displayName: .show principal, principal access, security roles, roles, rbac
+    displayName: .show function principal roles, principal access, security roles, roles, rbac, .add function admins, .drop function admins, .drop function roles, .set function roles, .set function admins
   - name: Reference security principals
     displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
     href: /kusto/management/reference-security-principals?view=azure-data-explorer&preserve-view=true
@@ -807,17 +819,34 @@ items:
     href: /kusto/ingestion-supported-formats?view=azure-data-explorer&preserve-view=true
   - name: Ingestion properties
     href: /kusto/ingestion-properties?view=azure-data-explorer&preserve-view=true
-  - name: Ingest from storage
+  - name: Ingestion mappings
+    items:
+    - name: Ingestion mappings overview
+      href: /kusto/management/mappings?view=azure-data-explorer&preserve-view=true
+      displayName: schema mappings, data mappings
+    - name: CSV mapping
+      href: /kusto/management/csv-mapping?view=azure-data-explorer&preserve-view=true
+    - name: JSON mapping
+      href: /kusto/management/json-mapping?view=azure-data-explorer&preserve-view=true
+    - name: AVRO mapping
+      href: /kusto/management/avro-mapping?view=azure-data-explorer&preserve-view=true
+    - name: Parquet mapping
+      href: /kusto/management/parquet-mapping?view=azure-data-explorer&preserve-view=true
+    - name: ORC mapping
+      href: /kusto/management/orc-mapping?view=azure-data-explorer&preserve-view=true
+    - name: W3CLOGFILE mapping
+      href: /kusto/management/w3c-log-file-mapping?view=azure-data-explorer&preserve-view=true
+  - name: .ingest-into
     displayName: .ingest into, pull data, pulling ingestion
-    href: /kusto/management/data-ingestion/ingest-from-storage?view=azure-data-explorer&preserve-view=true
+    href: /kusto/management/data-ingestion/ingest-into-command?view=azure-data-explorer&preserve-view=true
   - name: Ingest from query
     items:
     - name: Ingest from query
       displayName: .set, .append, .set-or-append, .set-or-replace, add row, append
       href: /kusto/management/data-ingestion/ingest-from-query?view=azure-data-explorer&preserve-view=true
-    - name: cancel operation command
+    - name: .cancel operation command
       href: /kusto/management/cancel-operation-command?view=azure-data-explorer&preserve-view=true
-  - name: Inline ingestion
+  - name: .ingest inline command
     displayName: .ingest inline
     href: /kusto/management/data-ingestion/ingest-inline?view=azure-data-explorer&preserve-view=true
   - name: Streaming ingestion
@@ -837,38 +866,36 @@ items:
   - name: .show streamingingestion failures command
     displayName: .show streaming ingestion failures
     href: /kusto/management/streaming-ingestion-failures?view=azure-data-explorer&preserve-view=true
-  - name: Data operations
+  - name: .show data operations command
     displayName: .show data operation command
     href: /kusto/management/show-data-operations?view=azure-data-explorer&preserve-view=true
 - name: Data export
   href: /kusto/management/data-export/index?view=azure-data-explorer&preserve-view=true
   items:
-  - name: To cloud storage
+  - name: .export to storage
     href: /kusto/management/data-export/export-data-to-storage?view=azure-data-explorer&preserve-view=true
-  - name: To an external table
+  - name: .export to table
     href: /kusto/management/data-export/export-data-to-an-external-table?view=azure-data-explorer&preserve-view=true
-  - name: To an SQL table
+  - name: .export to SQL
     href: /kusto/management/data-export/export-data-to-sql?view=azure-data-explorer&preserve-view=true
   - name: Continuous data export
     items:
     - name: Continuous data export overview
       href: /kusto/management/data-export/continuous-data-export?view=azure-data-explorer&preserve-view=true
-    - name: Create or alter continuous export
+    - name: .create or alter continuous-export
       href: /kusto/management/data-export/create-alter-continuous?view=azure-data-explorer&preserve-view=true
     - name: Use a managed identity
       href: /kusto/management/data-export/continuous-export-with-managed-identity?view=azure-data-explorer&preserve-view=true
     - name: Disable or enable continuous export
       href: /kusto/management/data-export/disable-enable-continuous?view=azure-data-explorer&preserve-view=true
-    - name: Drop continuous export
+    - name: .drop continuous-export
       href: /kusto/management/data-export/drop-continuous-export?view=azure-data-explorer&preserve-view=true
-    - name: Show continuous export
+    - name: .show continuous-export
       href: /kusto/management/data-export/show-continuous-export?view=azure-data-explorer&preserve-view=true
-    - name: Show continuous export artifacts
+    - name: .show continuous-export exported-artifacts
       href: /kusto/management/data-export/show-continuous-artifacts?view=azure-data-explorer&preserve-view=true
-    - name: Show continuous export failures
+    - name: .show continuous-export failures
       href: /kusto/management/data-export/show-continuous-failures?view=azure-data-explorer&preserve-view=true
-- name: Database cursors
-  href: /kusto/management/database-cursor?view=azure-data-explorer&preserve-view=true
 - name: Plugin commands
   items:
   - name: .show plugins command
@@ -896,7 +923,7 @@ items:
   items:
   - name: Estimate table size
     href: /kusto/management/estimate-table-size?view=azure-data-explorer&preserve-view=true
-  - name: Journal
+  - name: .show journal commands
     href: /kusto/management/journal?view=azure-data-explorer&preserve-view=true
   - name: Operations
     items:
@@ -925,7 +952,7 @@ items:
       href: /kusto/management/show-table-data-statistics?view=azure-data-explorer&preserve-view=true
 - name: Advanced data management
   items:
-  - name: Clear cached external artifacts
+  - name: .clear cluster cache external-artifacts command
     href: /kusto/management/clear-external-artifacts-cache-command?view=azure-data-explorer&preserve-view=true
   - name: Delete data
     href: /kusto/concepts/delete-data?view=azure-data-explorer&preserve-view=true
@@ -935,7 +962,7 @@ items:
     items:
     - name: Soft delete overview
       href: /kusto/concepts/data-soft-delete?view=azure-data-explorer&preserve-view=true
-    - name: Soft delete command
+    - name: .delete table records - soft delete command
       href: /kusto/management/soft-delete-command?view=azure-data-explorer&preserve-view=true
   - name: Extents (data shards)
     items:

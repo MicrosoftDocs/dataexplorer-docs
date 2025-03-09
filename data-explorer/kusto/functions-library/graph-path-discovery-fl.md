@@ -3,7 +3,7 @@ title:  graph_path_discovery_fl()
 description: Learn how to use the graph_path_discovery_fl() function to detect paths over graph data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 02/16/2025
+ms.date: 03/03/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_path_discovery_fl()
@@ -193,6 +193,47 @@ To use a query-defined function, invoke it after the embedded function definitio
 ::: moniker-end
 
 ```kusto
+let edges = datatable (SourceNodeName:string, EdgeName:string, EdgeType:string, TargetNodeName:string, Region:string)[						
+    'vm-work-1',            'e1',           'can use',	            'webapp-prd', 	          'US',
+    'vm-custom',        	'e2',           'can use',	            'webapp-prd', 	          'US',
+    'webapp-prd',           'e3',           'can access',	        'vm-custom', 	          'US',
+    'webapp-prd',       	'e4',           'can access',	        'test-machine', 	      'US',
+    'vm-custom',        	'e5',           'can access',	        'server-0126', 	          'US',
+    'vm-custom',        	'e6',	        'can access',	        'hub_router', 	          'US',
+    'webapp-prd',       	'e7',	        'can access',	        'hub_router', 	          'US',
+    'test-machine',       	'e8',	        'can access',	        'vm-custom',              'US',
+    'test-machine',        	'e9',	        'can access',	        'hub_router', 	          'US',
+    'hub_router',           'e10',	        'routes traffic to',	'remote_DT', 	          'US',
+    'vm-work-1',            'e11',	        'can access',	        'storage_main_backup', 	  'US',
+    'hub_router',           'e12',	        'routes traffic to',	'vm-work-2', 	          'US',
+    'vm-work-2',        	'e13',          'can access',	        'backup_prc', 	          'US',
+    'remote_DT',            'e14',	        'can access',	        'backup_prc', 	          'US',
+    'backup_prc',           'e15',	        'moves data to',        'storage_main_backup', 	  'US',
+    'backup_prc',           'e16',	        'moves data to',        'storage_DevBox', 	      'US',
+    'device_A1',            'e17',	        'is connected to',      'sevice_B2', 	          'EU',
+    'sevice_B2',            'e18',	        'is connected to',      'device_A1', 	          'EU'
+];
+let nodes = datatable (NodeName:string, NodeType:string, NodeEnvironment:string, Region:string) [
+        'vm-work-1',                'Virtual Machine',      'Production',       'US',
+        'vm-custom',                'Virtual Machine',      'Production',       'US',
+        'webapp-prd',               'Application',          'None',             'US',
+        'test-machine',             'Virtual Machine',      'Test',             'US',
+        'hub_router',               'Traffic Router',       'None',             'US',
+        'vm-work-2',                'Virtual Machine',      'Production',       'US',
+        'remote_DT',                'Virtual Machine',      'Production',       'US',
+        'backup_prc',               'Service',              'Production',       'US',
+        'server-0126',              'Server',               'Production',       'US',
+        'storage_main_backup',      'Cloud Storage',        'Production',       'US',
+        'storage_DevBox',           'Cloud Storage',        'Test',             'US',
+        'device_A1',                'Device',               'Backend',          'EU',
+        'device_B2',                'Device',               'Backend',          'EU'
+];
+let nodesEnriched = (
+    nodes
+    | extend IsValidStart = (NodeType == 'Virtual Machine'),             IsValidEnd = (NodeType == 'Cloud Storage')              // option 1
+    //| extend IsValidStart = (NodeName in('vm-work-1', 'vm-work-2')),     IsValidEnd = (NodeName in('storage_main_backup'))       // option 2
+    //| extend IsValidStart = (NodeEnvironment == 'Test'),                 IsValidEnd = (NodeEnvironment == 'Production')          // option 3
+);
 let graph_path_discovery_fl = (   edgesTableName:string, nodesTableName:string, scopeColumnName:string
 								, isValidPathStartColumnName:string, isValidPathEndColumnName:string
 								, nodeIdColumnName:string, edgeIdColumnName:string, sourceIdColumnName:string, targetIdColumnName:string
@@ -244,48 +285,7 @@ let paths = (
 );
 paths
 };
-let edges = datatable (SourceNodeName:string, EdgeName:string, EdgeType:string, TargetNodeName:string, Region:string)[						
-    'vm-work-1',            'e1',           'can use',	            'webapp-prd', 	          'US',
-    'vm-custom',        	'e2',           'can use',	            'webapp-prd', 	          'US',
-    'webapp-prd',           'e3',           'can access',	        'vm-custom', 	          'US',
-    'webapp-prd',       	'e4',           'can access',	        'test-machine', 	      'US',
-    'vm-custom',        	'e5',           'can access',	        'server-0126', 	          'US',
-    'vm-custom',        	'e6',	        'can access',	        'hub_router', 	          'US',
-    'webapp-prd',       	'e7',	        'can access',	        'hub_router', 	          'US',
-    'test-machine',       	'e8',	        'can access',	        'vm-custom',              'US',
-    'test-machine',        	'e9',	        'can access',	        'hub_router', 	          'US',
-    'hub_router',           'e10',	        'routes traffic to',	'remote_DT', 	          'US',
-    'vm-work-1',            'e11',	        'can access',	        'storage_main_backup', 	  'US',
-    'hub_router',           'e12',	        'routes traffic to',	'vm-work-2', 	          'US',
-    'vm-work-2',        	'e13',          'can access',	        'backup_prc', 	          'US',
-    'remote_DT',            'e14',	        'can access',	        'backup_prc', 	          'US',
-    'backup_prc',           'e15',	        'moves data to',        'storage_main_backup', 	  'US',
-    'backup_prc',           'e16',	        'moves data to',        'storage_DevBox', 	      'US',
-    'device_A1',            'e17',	        'is connected to',      'sevice_B2', 	          'EU',
-    'sevice_B2',            'e18',	        'is connected to',      'device_A1', 	          'EU'
-];
-let nodes = datatable (NodeName:string, NodeType:string, NodeEnvironment:string, Region:string) [
-        'vm-work-1',                'Virtual Machine',      'Production',       'US',
-        'vm-custom',                'Virtual Machine',      'Production',       'US',
-        'webapp-prd',               'Application',          'None',             'US',
-        'test-machine',             'Virtual Machine',      'Test',             'US',
-        'hub_router',               'Traffic Router',       'None',             'US',
-        'vm-work-2',                'Virtual Machine',      'Production',       'US',
-        'remote_DT',                'Virtual Machine',      'Production',       'US',
-        'backup_prc',               'Service',              'Production',       'US',
-        'server-0126',              'Server',               'Production',       'US',
-        'storage_main_backup',      'Cloud Storage',        'Production',       'US',
-        'storage_DevBox',           'Cloud Storage',        'Test',             'US',
-        'device_A1',                'Device',               'Backend',          'EU',
-        'device_B2',                'Device',               'Backend',          'EU'
-];
-let nodesEnriched = (
-    nodes
-    | extend IsValidStart = (NodeType == 'Virtual Machine'),             IsValidEnd = (NodeType == 'Cloud Storage')              // option 1
-    //| extend IsValidStart = (NodeName in('vm-work-1', 'vm-work-2')),     IsValidEnd = (NodeName in('storage_main_backup'))       // option 2
-    //| extend IsValidStart = (NodeEnvironment == 'Test'),                 IsValidEnd = (NodeEnvironment == 'Production')          // option 3
-);
-graph_path_discovery_fl(edgesTableName                = 'edges'
+graph_path_discovery_fl(edgesTableName          = 'edges'
                 , nodesTableName                = 'nodesEnriched'
                 , scopeColumnName               = 'Region'
                 , nodeIdColumnName              = 'NodeName'

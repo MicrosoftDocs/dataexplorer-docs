@@ -2,7 +2,7 @@
 title: Migrate your cluster to support multiple availability zones (Preview)
 description: This guide teaches you how to migrate your cluster to support multiple availability zones.
 ms.reviewer: iriskaminer
-ms.date: 12/18/2023
+ms.date: 03/09/2025
 ms.topic: how-to
 ---
 # Migrate your cluster to support multiple availability zones (Preview)
@@ -158,9 +158,6 @@ To add availability zones to an existing cluster, you must update the cluster `z
 | `resourceGroupName` | The resource group name of the cluster |
 | `clusterName` | The name of the cluster |
 | `apiVersion` | `2023-05-02` or later |
-
-> [!IMPORTANT]
-> Changing the availability zones for an existing cluster only changes the availability zones for the compute. The persistent storage is not changed.
 
 ### [REST API](#tab/config-rest-api)
 
