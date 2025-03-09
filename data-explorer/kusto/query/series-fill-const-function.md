@@ -3,7 +3,7 @@ title:  series_fill_const()
 description: Learn how to use the series_fill_const() function to replace missing values in a series with a specified constant value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # series_fill_const()
 
@@ -25,7 +25,7 @@ Takes an expression containing dynamic numerical array as input, replaces all in
 |--|--|--|--|
 | *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values.|
 | *constant_value* | scalar |  :heavy_check_mark: | The value used to replace the missing values.|
-| *missing_value_placeholder* | scalar | | Specifies a placeholder for missing values. The default value is `double(`*null*`)`. The value can be of any type that will be converted to actual element types. `double`(*null*), `long`(*null*) and `int`(*null*) have the same meaning.|
+| *missing_value_placeholder* | scalar | | Specifies a placeholder for missing values. The default value is `double(`*null*`)`. The value can be of any type that is converted to actual element types. `double`(*null*), `long`(*null*), and `int`(*null*) have the same meaning.|
 
 ## Returns
 
@@ -34,10 +34,12 @@ Takes an expression containing dynamic numerical array as input, replaces all in
 > [!NOTE]
 >
 > * If you create *series* using the [make-series](make-series-operator.md) operator, specify *null* as the default value to use interpolation functions like `series_fill_const()` afterwards. See [explanation](make-series-operator.md#list-of-series-interpolation-functions).
-> * If *missing_value_placeholder* is `double`(*null*), or omitted, then a result may contain *null* values. To fill these *null* values, use other interpolation functions. Only [series_outliers()](series-outliers-function.md) supports *null* values in input arrays.
+> * If *missing_value_placeholder* is `double`(*null*), or omitted, then a result contains *null* values. To fill these *null* values, use other interpolation functions. Only [series_outliers()](series-outliers-function.md) supports *null* values in input arrays.
 > * `series_fill_const()` preserves the original type of the array elements.
 
 ## Example
+
+The following example replaces the missing values in the datatable, `data`, with the value 0.0 in column `fill_const1` and with the value -1 in column `fill_const2`.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -61,3 +63,11 @@ data
 |`arr`|`fill_const1`|`fill_const2`|
 |---|---|---|
 |[111,null,36,41,23,null,16,61,33,null,null]|[111,0.0,36,41,23,0.0,16,61,33,0.0,0.0]|[111,-1,36,41,23,-1,16,61,33,-1,-1]|
+
+## Related content
+
+* [Time series analysis](time-series-analysis.md)
+* [make-series operator](make-series-operator.md)
+* [series_fill_forward()](series-fill-forward-function.md)
+* [series_fill_backward()](series-fill-backward-function.md)
+* [series_fill_linear()](series-fill-linear-function.md)
