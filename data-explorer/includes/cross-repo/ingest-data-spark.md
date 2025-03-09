@@ -160,7 +160,7 @@ For more information on principal roles, see [role-based access control](/azure/
     // Set up a checkpoint and disable codeGen. 
     spark.conf.set("spark.sql.streaming.checkpointLocation", "/FileStore/temp/checkpoint")
     
-    // Alternative to providing .option by .option you can provide a map:
+    // As an alternative to adding .option by .option, you can provide a map:
     val conf: Map[String, String] = Map
     (KustoSinkOptions.KUSTO_CLUSTER -> cluster,
     KustoSinkOptions.KUSTO_TABLE -> table,
