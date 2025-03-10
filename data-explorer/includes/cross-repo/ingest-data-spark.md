@@ -161,11 +161,11 @@ For more information on principal roles, see [role-based access control](/azure/
     spark.conf.set("spark.sql.streaming.checkpointLocation", "/FileStore/temp/checkpoint")
     
     // As an alternative to adding .option by .option, you can provide a map:
-    val conf: Map[String, String] = Map
-    (KustoSinkOptions.KUSTO_CLUSTER -> cluster,
-    KustoSinkOptions.KUSTO_TABLE -> table,
-    KustoSinkOptions.KUSTO_DATABASE -> database,
-    KustoSourceOptions.KUSTO_ACCESS_TOKEN -> accessToken)
+    val conf: Map[String, String] = Map(
+      KustoSinkOptions.KUSTO_CLUSTER -> cluster,
+      KustoSinkOptions.KUSTO_TABLE -> table,
+      KustoSinkOptions.KUSTO_DATABASE -> database,
+      KustoSourceOptions.KUSTO_ACCESS_TOKEN -> accessToken)
      
     // Write to a Kusto table from a streaming source
     val kustoQ = df
