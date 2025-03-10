@@ -3,7 +3,7 @@ title:  tolong()
 description: Learn how to use the tolong() function to convert the input value to a long number representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # tolong()
 
@@ -33,6 +33,8 @@ If conversion isn't successful, the result is `null`.
 
 ## Example
 
+The following example checks if the result of converting the string `"123"` to a long number is equal to the integer 123.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJz8nPS9dQMjQyVtJUsLVVADIAlTTbCRoAAAA=" target="_blank">Run the query</a>
@@ -41,3 +43,10 @@ If conversion isn't successful, the result is `null`.
 ```kusto
 tolong("123") == 123
 ```
+
+## Related content
+
+* [Scalar function types at a glance](scalar-functions.md)
+* [The long data type](scalar-data-types/long.md)
+* [toint()](toint-function.md)
+* [todecimal()](todecimal-function.md)

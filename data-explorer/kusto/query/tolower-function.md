@@ -3,7 +3,7 @@ title:  tolower()
 description: Learn how to use the tolower() function to convert the input string to lower case.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # tolower()
 
@@ -30,6 +30,8 @@ If conversion isn't successful, result is `null`.
 
 ## Example
 
+The following example checks whether the `tolower()` function converted the capitalized input string to lowercase.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJz8kvTy3SUPJIzcnJV9JUsLVVUMoAswH4X1SGIQAAAA==" target="_blank">Run the query</a>
@@ -38,3 +40,9 @@ If conversion isn't successful, result is `null`.
 ```kusto
 tolower("Hello") == "hello"
 ```
+
+## Related content
+
+* [Scalar function types at a glance](scalar-functions.md)
+* [tostring()](tostring-function.md)
+* [toupper()](toupper-function.md)

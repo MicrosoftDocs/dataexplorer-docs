@@ -3,7 +3,7 @@ title:  toint()
 description: Learn how to use the toint() function to convert the input value to an integer number representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/31/2024
+ms.date: 03/09/2025
 ---
 # toint()
 
@@ -31,6 +31,8 @@ Converts the input to an integer value (signed 32-bit) number representation.
 If the conversion is successful, the result is an integer. Otherwise, the result is `null`. If the input includes a decimal value, the result truncate to only the integer portion.
 
 ## Example
+
+The examples in this section show how to use the syntax to help you get started.
 
 ### Convert string to integer
 
@@ -71,3 +73,10 @@ print toint(2.3)
 |Integer|
 |--|
 |2|
+
+## Related content
+
+* [Scalar function types at a glance](scalar-functions.md)
+* [The int data type](scalar-data-types/int.md)
+* [todecimal()](todecimal-function.md)
+* [tostring()](tostring-function.md)

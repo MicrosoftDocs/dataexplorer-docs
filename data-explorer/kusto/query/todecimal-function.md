@@ -3,7 +3,7 @@ title:  todecimal()
 description: Learn how to use the todecimal() function to convert the input expression to a decimal number representation. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # todecimal()
 
@@ -28,10 +28,12 @@ Converts the input to a decimal number representation.
 
 ## Returns
 
-If conversion is successful, result will be a decimal number.
-If conversion isn't successful, result will be `null`.
+If conversion is successful, result is a decimal number.
+If conversion isn't successful, result is `null`.
 
 ## Example
+
+The following example checks if the result of converting the input `"123.45678"` is equal to the decimal 123.45678.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -47,3 +49,9 @@ print todecimal("123.45678") == decimal(123.45678)
 |print_0|
 |--|
 |true|
+
+## Related content
+
+* [Scalar function types at a glance](scalar-functions.md)
+* [The decimal data type](scalar-data-types/decimal.md)
+* [toint()](toint-function.md)

@@ -3,7 +3,7 @@ title:  tostring()
 description: Learn how to use the tostring() function to convert the input value to a string representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # tostring()
 
@@ -30,6 +30,8 @@ If *value* is null, the result is an empty string.
 
 ## Example
 
+The following example changes the input to a string.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJLy4BMtI1DI2MNQE7Y95rEwAAAA==" target="_blank">Run the query</a>
@@ -38,3 +40,8 @@ If *value* is null, the result is an empty string.
 ```kusto
 print tostring(123)
 ```
+
+* [Scalar function types at a glance](scalar-functions.md)
+* [tolower()](tolower-function.md)
+* [toupper()](toupper-function.md)
+* [string_size()](string-size-function.md)
