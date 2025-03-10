@@ -39,7 +39,7 @@ Takes an expression containing dynamic numerical array as input, replaces all in
 
 ## Example
 
-The following example replaces the missing values in the datatable, `data`, with the value 0.0 in column `fill_const1` and with the value -1 in column `fill_const2`.
+The following example replaces the missing values in the datatable, *data*, with the value 0.0 in column `fill_const1` and with the value -1 in column `fill_const2`.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

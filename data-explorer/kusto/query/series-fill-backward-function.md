@@ -38,7 +38,7 @@ An expression containing dynamic numerical array is the input. The function repl
 
 ## Example
 
-The following example performs a backwards fill on missing data in the datatable, `data`.
+The following example performs a backwards fill on missing data in the datatable, *data*.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
