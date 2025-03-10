@@ -31,15 +31,11 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[todatetime()](todatetime-function.md)|Converts input to datetime scalar.|
 |[todecimal()](todecimal-function.md) | Converts input to a decimal number representation. |
 |[todouble()](toreal-function.md)|Converts the input to a value of type real.|
-|[toguid()](toguid-function.md) |Converts input to a `guid` scalar. |
-|[tohex()](tohex-function.md) |Converts input to a hexadecimal string.|
+|[toguid()](toguid-function.md) |Converts input to a value of type guid. |
 |[toint()](toint-function.md)|Converts the input to an integer number representation.|
 |[tolong()](tolong-function.md)|Converts the input to a long number representation.|
-|[tolower()](tolower-function.md)|Converts input to lowercase.|
-|[toscalar()](toscalar-function.md)|Converts input to a constant value of the evaluated expression.|
 |[tostring()](tostring-function.md)|Converts input to a string representation.|
 |[totimespan()](totimespan-function.md)|Converts input to timespan scalar.|
-|[toupper()](toupper-function.md)|Converts input to uppercase.|
 
 ## DateTime/timespan functions
 
@@ -308,6 +304,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[strlen()](strlen-function.md)|Returns the length, in characters, of the input string.|
 |[strrep()](strrep-function.md)|Repeats given string provided number of times (default - 1).|
 |[substring()](substring-function.md)|Extracts a substring from a source string starting from some index to the end of the string.|
+|[tohex()](tohex-function.md) |Converts input to a hexadecimal string.|
+|[tolower()](tolower-function.md)|Converts input to a lowercase string.|
 |[toupper()](toupper-function.md)|Converts a string to upper case.|
 |[translate()](translate-function.md)|Replaces a set of characters ('searchList') with another set of characters ('replacementList') in a given a string.|
 |[trim()](trim-function.md)|Removes all leading and trailing matches of the specified regular expression.|
