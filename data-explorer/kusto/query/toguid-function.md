@@ -3,7 +3,7 @@ title:  toguid()
 description: Learn how to use the toguid() function to convert the input string to a `guid` scalar.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # toguid()
 
@@ -30,9 +30,11 @@ Converts a string to a [`guid`](scalar-data-types/guid.md) scalar.
 
 The conversion process takes the first 32 characters of the input, ignoring properly located hyphens, validates that the characters are between 0-9 or a-f, and then converts the string into a [`guid`](scalar-data-types/guid.md) scalar. The rest of the string is ignored.
 
-If the conversion is successful, the result will be a [`guid`](scalar-data-types/guid.md) scalar. Otherwise, the result will be `null`.
+If the conversion is successful, the result is a [`guid`](scalar-data-types/guid.md) scalar. Otherwise, the result is `null`.
 
 ## Example
+
+The following example converts strings in a datatable that fit the conversion structure requirements, to `guid`.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -56,3 +58,11 @@ datatable(str: string)
 |0123456789abcdef0123456789abcdef|01234567-89ab-cdef-0123-456789abcdef|
 |0123456789ab-cdef-0123-456789abcdef|01234567-89ab-cdef-0123-456789abcdef|
 |a string that isn't a guid||
+
+## Related content
+
+* [Scalar function types at a glance](scalar-functions.md)
+* [The guid data type](scalar-data-types/guid.md)
+* [new_guid()](new-guid-function.md)
+* [base64_decode_toguid()](base64-decode-toguid-function.md)
+* [tobool()](tobool-function.md)

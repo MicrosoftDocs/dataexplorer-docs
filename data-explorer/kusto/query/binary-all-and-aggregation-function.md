@@ -2,13 +2,13 @@
 title:  binary_all_and() (aggregation function)
 description: Learn how to use the binary_all_and() function to aggregate values using the binary AND operation.
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # binary_all_and() (aggregation function)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Accumulates values using the binary `AND` operation for each summarization group, or in total if a group is not specified.
+Accumulates values using the binary `AND` operation for each summarization group, or in total if a group isn't specified.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -26,7 +26,7 @@ Accumulates values using the binary `AND` operation for each summarization group
 
 ## Returns
 
-Returns an aggregated value using the binary `AND` operation over records for each summarization group, or in total if a group is not specified.
+Returns an aggregated value using the binary `AND` operation over records for each summarization group, or in total if a group isn't specified.
 
 ## Example
 
@@ -53,3 +53,10 @@ datatable(num:long)
 |result|
 |---|
 |CAFEF00D|
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [binary_all_or() (aggregation function)](binary-all-or-aggregation-function.md)
+* [binary_all_xor() (aggregation function)](binary-all-xor-aggregation-function.md)
+* [binary_and()](binary-and-function.md)

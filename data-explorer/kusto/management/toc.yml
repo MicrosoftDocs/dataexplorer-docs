@@ -61,7 +61,7 @@ items:
           - name: .alter database prettyname command
             href: alter-database-prettyname.md
           - name: .drop database prettyname command
-            href: drop-database-prettyname.md            
+            href: drop-database-prettyname.md
           - name: .show database schema command
             displayName: .show databases schema
             href: show-schema-database.md
@@ -121,6 +121,8 @@ items:
             href: show-table-schema-command.md
           - name: .clear table data command
             href: clear-table-data-command.md
+          - name: Avrotize k2a tool
+            href: ../tools/avrotize.md
       - name: External tables
         items:
           - name: Azure Storage external tables
@@ -239,7 +241,7 @@ items:
           - name: Columns management
             href: columns.md
           - name: Change column type without data loss
-            href: change-column-type-without-data-loss.md 
+            href: change-column-type-without-data-loss.md
           - name: .alter column command
             href: alter-column.md
           - name: .drop column command
@@ -253,23 +255,25 @@ items:
           - name: .alter-merge table column-docstrings command
             displayName: .alter-merge column-docstrings
             href: alter-merge-table-column.md
-      - name: Ingestion mappings
+      - name: Entity Group
         items:
-          - name: Ingestion mappings overview
-            href: mappings.md
-            displayName: schema mappings, data mappings
-          - name: "CSV mapping"
-            href: csv-mapping.md
-          - name: "JSON mapping"
-            href: json-mapping.md
-          - name: "AVRO mapping"
-            href: avro-mapping.md
-          - name: "Parquet mapping"
-            href: parquet-mapping.md
-          - name: "ORC mapping"
-            href: orc-mapping.md
-          - name: "W3CLOGFILE mapping"
-            href: w3c-log-file-mapping.md
+          - name: Entity Group
+            href: entity-groups.md
+          - name: .create entity_group command
+            displayName: create entity_group
+            href: create-entity-group.md
+          - name: .alter entity_group command
+            displayName: alter entity_group
+            href: alter-entity-group.md
+          - name: .alter-merge entity_group command
+            displayName: alter-merge entity_group
+            href: alter-merge-entity-group.md
+          - name: .drop entity_group command
+            displayName: drop entity_group
+            href: drop-entity-group.md
+          - name: .show entity_group command
+            displayName: show entity_group, show entity_groups, .show entity_group
+            href: show-entity-group.md
       - name: Functions
         items:
           - name: Stored functions management overview
@@ -363,7 +367,7 @@ items:
         items:
           - name: Capacity policy
             href: capacity-policy.md
-            displayName: IngestionCapacity, ExtentsMergeCapacity, ExtentsPurgeRebuildCapacity, ExportCapacity, ExtentsPartitionCapacity, MaterializedViewsCapacity, StoredQueryResultsCapacity, ingestion, extents, purge, partition
+            displayName: IngestionCapacity, ExtentsMergeCapacity, ExtentsPurgeRebuildCapacity, ExportCapacity, ExtentsPartitionCapacity, MaterializedViewsCapacity, StoredQueryResultsCapacity, QueryAccelerationCapacity, ingestion, extents, purge, partition
           - name: .alter cluster policy capacity command
             href: alter-capacity-policy-command.md
             displayName: .alter cluster capacity policy command
@@ -510,15 +514,15 @@ items:
           - name: .show table policy mirroring command
             href: show-table-mirroring-policy-command.md
             displayName: .show table mirroring policy
-          - name: .show table mirroring operations command
-            href: show-table-mirroring-operations-command.md
-            displayName: .show table mirroring operations 
-          - name: .show table mirroring operations exported artifacts command
-            href: show-table-mirroring-operations-exported-artifacts.md
-            displayName: .Show table mirroring operations exported artifacts
-          - name: .show table mirroring operations failures command
-            href: show-table-mirroring-operations-failures.md 
-            displayName: show table mirroring operations failures    
+          - name: .show table operations mirroring-status command
+            href: show-table-operations-mirroring-status-command.md
+            displayName: .show table mirroring status operations
+          - name: .show table operations mirroring-exported-artifacts command
+            href: show-table-operations-mirroring-exported-artifacts-command.md
+            displayName: .show table mirroring operations exported artifacts
+          - name: .show table operations mirroring-failures command
+            href: show-table-operations-mirroring-failures-command.md
+            displayName: show table mirroring operations failures
       - name: Partitioning
         items:
           - name: Partitioning policy
@@ -554,7 +558,7 @@ items:
           - name: Query acceleration policy
             href: query-acceleration-policy.md
             displayName: external table, delta table
-          - name: .alter query acceleration policy command 
+          - name: .alter query acceleration policy command
             href: alter-query-acceleration-policy-command.md
             displayName: external table, delta table
           - name: .delete query acceleration policy command
@@ -562,7 +566,7 @@ items:
             displayName: external table, delta table
           - name: .show external table operations query acceleration statistics command
             href: show-external-table-operations-query-acceleration-statistics.md
-            displayName: external table, delta table 
+            displayName: external table, delta table
           - name: .show query acceleration policy command
             href: show-query-acceleration-policy-command.md
             displayName: external table, delta table
@@ -771,7 +775,7 @@ items:
     items:
       - name: Security roles overview
         href: security-roles.md
-        displayName: role based access control, rbac, principals
+        displayName: role based access control, rbac, principals, .show cluster principal roles, .show database principal roles, .show table principal roles,  .show external table principal roles, .show function principal roles, .show materialized-view principal roles, .show database principals, .show table principals, .show external table principals, .show function principals, .show materialized-view principals
       - name: Access control
         items:
         - name: Access control overview
@@ -782,23 +786,23 @@ items:
           href: ../access-control/provision-entra-id-app.md
       - name: Manage database roles
         href: manage-database-security-roles.md
-        displayName: .show principal, principal access, security roles, roles, rbac
+        displayName: .show database principals, .show database principal roles, principal access, security roles, roles, rbac, .add database admins, .add database users, .add database viewers, .add database ingestors, .add database restrictedviewers, .add database monitors, .drop database users, .drop database viewers, drop database ingestors,  .drop database restrictedviewers, .drop database monitors, .drop database roles, .drop database admins, .set database roles, .set database admins, .set database viewers, .set database users, .set database ingestors, .set database restrictedviewers, .set database monitors
       - name: Manage table roles
         items:
           - name: Manage table roles
             href: manage-table-security-roles.md
-            displayName: .show principal, principal access, security roles, roles, rbac
+            displayName: .show table principals, principal access, security roles, roles, rbac, .show table principal roles, principal access, security roles, roles, rbac, .add table admins, .add table ingestors, .drop table admins, drop table ingestors,  .drop table roles, .set table roles, .set table admins, .set table ingestors
           - name: Manage table view access
             href: manage-table-view-access.md
       - name: Manage external table roles
         href: manage-external-table-security-roles.md
-        displayName: .show principal, principal access, security roles, roles, rbac
+        displayName: .show external table principal roles, principal access, security roles, roles, rbac, .add external table admins, .drop external table admins, .drop external table roles, .set external table roles, .set external table admins
       - name: Manage materialized view roles
         href: manage-materialized-view-security-roles.md
-        displayName: .show principal, principal access, security roles, roles, rbac
+        displayName: .show materialized-view principal roles, principal access, security roles, roles, rbac, .add materialized-view admins, .drop materialized-view admins, .drop materialized-view roles, .set materialized-view roles, .set materialized-view admins
       - name: Manage function roles
         href: manage-function-security-roles.md
-        displayName: .show principal, principal access, security roles, roles, rbac
+        displayName: .show function principal roles, principal access, security roles, roles, rbac, .add function admins, .drop function admins, .drop function roles, .set function roles, .set function admins
       - name: Reference security principals
         displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
         href: reference-security-principals.md
@@ -808,17 +812,34 @@ items:
         href: ../ingestion-supported-formats.md
       - name: Ingestion properties
         href: ../ingestion-properties.md
-      - name: Ingest from storage
+      - name: Ingestion mappings
+        items:
+          - name: Ingestion mappings overview
+            href: mappings.md
+            displayName: schema mappings, data mappings
+          - name: "CSV mapping"
+            href: csv-mapping.md
+          - name: "JSON mapping"
+            href: json-mapping.md
+          - name: "AVRO mapping"
+            href: avro-mapping.md
+          - name: "Parquet mapping"
+            href: parquet-mapping.md
+          - name: "ORC mapping"
+            href: orc-mapping.md
+          - name: "W3CLOGFILE mapping"
+            href: w3c-log-file-mapping.md
+      - name: .ingest-into
         displayName: .ingest into, pull data, pulling ingestion
-        href: data-ingestion/ingest-from-storage.md
+        href: data-ingestion/ingest-into-command.md
       - name: Ingest from query
         items:
           - name: Ingest from query
             displayName: .set, .append, .set-or-append, .set-or-replace, add row, append
             href: data-ingestion/ingest-from-query.md
-          - name: cancel operation command
+          - name: .cancel operation command
             href: cancel-operation-command.md
-      - name: Inline ingestion
+      - name: .ingest inline command
         displayName: .ingest inline
         href: data-ingestion/ingest-inline.md
       - name: Streaming ingestion
@@ -838,38 +859,36 @@ items:
       - name: .show streamingingestion failures command
         displayName: .show streaming ingestion failures
         href: streaming-ingestion-failures.md
-      - name: Data operations
+      - name: .show data operations command
         displayName:  .show data operation command
         href: show-data-operations.md
   - name: Data export
     href: data-export/index.md
     items:
-      - name: To cloud storage
+      - name: .export to storage
         href: data-export/export-data-to-storage.md
-      - name: To an external table
+      - name: .export to table
         href: data-export/export-data-to-an-external-table.md
-      - name: To an SQL table
+      - name: .export to SQL
         href: data-export/export-data-to-sql.md
       - name: Continuous data export
         items:
           - name: Continuous data export overview
             href: data-export/continuous-data-export.md
-          - name: Create or alter continuous export
+          - name: .create or alter continuous-export
             href: data-export/create-alter-continuous.md
           - name: Use a managed identity
             href: data-export/continuous-export-with-managed-identity.md
           - name: Disable or enable continuous export
             href: data-export/disable-enable-continuous.md
-          - name: Drop continuous export
+          - name: .drop continuous-export
             href: data-export/drop-continuous-export.md
-          - name: Show continuous export
+          - name: .show continuous-export
             href: data-export/show-continuous-export.md
-          - name: Show continuous export artifacts
+          - name: .show continuous-export exported-artifacts
             href: data-export/show-continuous-artifacts.md
-          - name: Show continuous export failures
+          - name: .show continuous-export failures
             href: data-export/show-continuous-failures.md
-  - name: Database cursors
-    href: database-cursor.md
   - name: Plugin commands
     items:
       - name: .show plugins command
@@ -897,7 +916,7 @@ items:
     items:
       - name: Estimate table size
         href: estimate-table-size.md
-      - name: Journal
+      - name: .show journal commands
         href: journal.md
       - name: Operations
         items:
@@ -924,9 +943,9 @@ items:
             href: streaming-ingestion-statistics.md
           - name: .show table data statistics
             href: show-table-data-statistics.md
-  - name: Advanced data management 
+  - name: Advanced data management
     items:
-      - name: Clear cached external artifacts
+      - name: .clear cluster cache external-artifacts command
         href: clear-external-artifacts-cache-command.md
       - name: Delete data
         href: ../concepts/delete-data.md
@@ -936,7 +955,7 @@ items:
         items:
           - name: Soft delete overview
             href: ../concepts/data-soft-delete.md
-          - name: Soft delete command
+          - name: .delete table records - soft delete command
             href: soft-delete-command.md
       - name: Extents (data shards)
         items:

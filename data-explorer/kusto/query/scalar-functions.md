@@ -3,7 +3,7 @@ title:  Scalar Functions
 description: Learn how to use scalar functions to perform calculations that return a single value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # Scalar function types at a glance
 
@@ -29,7 +29,11 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[tobool()](tobool-function.md)|Convert inputs to boolean (signed 8-bit) representation.|
 |[todatetime()](todatetime-function.md)|Converts input to datetime scalar.|
+|[todecimal()](todecimal-function.md) | Converts input to a decimal number representation. |
 |[todouble()](toreal-function.md)|Converts the input to a value of type real.|
+|[toguid()](toguid-function.md) |Converts input to a value of type guid. |
+|[toint()](toint-function.md)|Converts the input to an integer number representation.|
+|[tolong()](tolong-function.md)|Converts the input to a long number representation.|
 |[tostring()](tostring-function.md)|Converts input to a string representation.|
 |[totimespan()](totimespan-function.md)|Converts input to timespan scalar.|
 
@@ -193,7 +197,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[case()](case-function.md)|Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.|
-|[coalesce()](coalesce-function.md)|Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.|
+|[coalesce()](coalesce-function.md)|Evaluates a list of expressions and returns the first non-null (or nonempty for string) expression.|
 |[iff()](iff-function.md)|Evaluate the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
 |[max_of()](max-of-function.md)|Returns the maximum value of several evaluated numeric expressions.|
 |[min_of()](min-of-function.md)|Returns the minimum value of several evaluated numeric expressions.|
@@ -267,7 +271,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[base64_decode_tostring()](base64-decode-tostring-function.md)|Decodes a base64 string to a UTF-8 string.|
 |[base64_decode_toarray()](base64-decode-toarray-function.md)|Decodes a base64 string to an array of long values.|
 |[base64_decode_toguid()](base64-decode-toguid-function.md)|Decodes a base64 string to a GUID.|
-|[countof()](countof-function.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
+|[countof()](countof-function.md)|Counts occurrences of a substring in a string. Plain string matches can overlap; regex matches don't.|
 |[extract()](extract-function.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extract-all-function.md)|Get all matches for a regular expression from a text string.|
 |[extract_json()](extract-json-function.md)|Get a specified element out of a JSON text using a path expression.|
@@ -275,7 +279,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[indexof()](indexof-function.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isempty-function.md)|Returns true if the argument is an empty string or is null.|
 |[isnotempty()](isnotempty-function.md)|Returns true if the argument isn't an empty string or a null.|
-|[isnotnull()](isnotnull-function.md)|Returns true if the argument is not null.|
+|[isnotnull()](isnotnull-function.md)|Returns true if the argument isn't null.|
 |[isnull()](isnull-function.md)|Evaluates its sole argument and returns a bool value indicating if the argument evaluates to a null value.|
 |[parse_command_line()](parse-command-line-function.md)|Parses a Unicode command line string and returns an array of the command line arguments.|
 |[parse_csv()](parse-csv-function.md)|Splits a given string representing comma-separated values and returns a string array with these values.|
@@ -300,6 +304,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[strlen()](strlen-function.md)|Returns the length, in characters, of the input string.|
 |[strrep()](strrep-function.md)|Repeats given string provided number of times (default - 1).|
 |[substring()](substring-function.md)|Extracts a substring from a source string starting from some index to the end of the string.|
+|[tohex()](tohex-function.md) |Converts input to a hexadecimal string.|
+|[tolower()](tolower-function.md)|Converts input to a lowercase string.|
 |[toupper()](toupper-function.md)|Converts a string to upper case.|
 |[translate()](translate-function.md)|Replaces a set of characters ('searchList') with another set of characters ('replacementList') in a given a string.|
 |[trim()](trim-function.md)|Removes all leading and trailing matches of the specified regular expression.|
@@ -418,8 +424,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hash_combine()](hash-combine-function.md)|Combines two or more hash values.|
 |[hash_many()](hash-many-function.md)|Returns a combined hash value of multiple values.|
 |[hash_md5()](hash-md5-function.md)|Returns an MD5 hash value for the input value.|
-|[hash_sha1()](hash-sha1-function.md)|Returns a SHA1 hash value for the input value.|
-|[hash_sha256()](hash-sha256-function.md)|Returns a SHA256 hash value for the input value.|
+|[hash_sha1()](hash-sha1-function.md)|Returns an SHA1 hash value for the input value.|
+|[hash_sha256()](hash-sha256-function.md)|Returns an SHA256 hash value for the input value.|
 |[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|
 
 ## Units conversion functions

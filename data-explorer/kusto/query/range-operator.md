@@ -3,7 +3,7 @@ title:  range operator
 description: Learn how to use the range operator to generate a single-column table of values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/22/2025
 ---
 # range operator
 
@@ -26,7 +26,7 @@ Generates a single-column table of values.
 |--|--|--|--|
 |*columnName*| `string` | :heavy_check_mark:| The name of the single column in the output table.|
 |*start*|int, long, real, datetime, or timespan| :heavy_check_mark:| The smallest value in the output.|
-|*stop*|int, long, real, datetime, or timespan| :heavy_check_mark:| The highest value being generated in the output or a bound on the highest value if *step* steps over this value.|
+|*stop*|int, long, real, datetime, or timespan| :heavy_check_mark:| The highest value being generated in the output or a bound on the highest value if *step* is over this value.|
 |*step*|int, long, real, datetime, or timespan| :heavy_check_mark:| The difference between two consecutive values.|
 
 > [!NOTE]
@@ -38,6 +38,12 @@ A table with a single column called *columnName*,
 whose values are *start*, *start* `+` *step*, ... up to and until *stop*.
 
 ## Examples
+
+The example in this section shows how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
+### Range over the past seven days
 
 The following example creates a table with entries for the current time stamp extended over the past seven days, once a day.
 
@@ -58,6 +64,37 @@ range LastWeek from ago(7d) to now() step 1d
 |2015-12-06 09:10:04.627|
 |...|
 |2015-12-12 09:10:04.627|
+
+### Combine different stop times
+
+The following example shows how to extend ranges to use multiple stop times by using the `union` operator.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEISsxLTzVUsFUoAjEUQjJzUxXSivJzFVISS1JLgDwNIwMjE10DQyDSVCjJxyJuqqlQXJJaoGCYYs2VAzPSiCgjzbAbaWiAZGRpXmZ%2BHtSdOlDDuWoU8otSUosUkioh5icWJwMApY0GNM4AAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+let Range1 = range Time from datetime(2024-01-01) to datetime(2024-01-05) step 1d;
+let Range2 = range Time from datetime(2024-01-06) to datetime(2024-01-10) step 1d;
+union Range1, Range2
+| order by Time asc
+
+```
+
+**Output**
+
+| Time |
+|--|
+| 2024-01-04 00:00:00.0000000 |
+| 2024-01-05 00:00:00.0000000 |
+| 2024-01-06 00:00:00.0000000 |
+| 2024-01-07 00:00:00.0000000 |
+| 2024-01-08 00:00:00.0000000 |
+| 2024-01-09 00:00:00.0000000 |
+| 2024-01-10 00:00:00.0000000 |
+
+### Range using parameters
 
 The following example shows how to use the `range` operator with parameters, which are then extended and consumed as a table.  
 
@@ -81,16 +118,18 @@ let MyTimeline = range MyMonthHour from MyMonthStart to now() step StepBy
 
 **Output**
 
-| MyMonthHour | MyMonthHourinUnixTime | DateOnly     | TimeOnly                    |
-|--------------|------------------------|---------------|------------------------------|
-| 2023-02-01  | 00:00:00.0000000      | 1675209600   | 2023-02-01 00:00:00.0000000 |
-| 2023-02-01  | 04:32:02.4000000      | 1675225922.4 | 2023-02-01 00:00:00.0000000 |
-| 2023-02-01  | 09:04:04.8000000      | 1675242244.8 | 2023-02-01 00:00:00.0000000 |
-| 2023-02-01  | 13:36:07.2000000      | 1675258567.2 | 2023-02-01 00:00:00.0000000 |
-| ...         | ...                   | ...          | ...                         |
+| MyMonthHour | MyMonthHourinUnixTime | DateOnly | TimeOnly |
+|--|--|--|--|
+| 2023-02-01 | 00:00:00.0000000 | 1675209600 | 2023-02-01 00:00:00.0000000 |
+| 2023-02-01 | 04:32:02.4000000 | 1675225922.4 | 2023-02-01 00:00:00.0000000 |
+| 2023-02-01 | 09:04:04.8000000 | 1675242244.8 | 2023-02-01 00:00:00.0000000 |
+| 2023-02-01 | 13:36:07.2000000 | 1675258567.2 | 2023-02-01 00:00:00.0000000 |
+| ... | ... | ... | ... |
+
+### Incremented steps
 
 The following example creates a table with a single column called `Steps`
-whose type is `long` and whose values are `1`, `4`, and `7`.
+whose type is `long` and results in values from one to eight incremented by three.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -101,7 +140,17 @@ whose type is `long` and whose values are `1`, `4`, and `7`.
 range Steps from 1 to 8 step 3
 ```
 
-The following example shows how the `range` operator can be used to create a small, ad-hoc, dimension table that is then used to introduce zeros where the source data has no values.
+**Output**
+
+| Steps |
+|--|
+| 1 |
+| 4 |
+| 7 |
+
+### Traces over a time range
+
+The following example shows how the `range` operator can be used to create a dimension table that is used to introduce zeros where the source data has no values. It takes timestamps from the last four hours and counts traces for each one-minute interval. When there are no traces for a specific interval, the count is zero.
 
 ```kusto
 range TIMESTAMP from ago(4h) to now() step 1m

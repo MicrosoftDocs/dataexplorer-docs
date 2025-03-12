@@ -401,6 +401,8 @@ items:
             href: dashboard-visuals.md
           - name: Visualize sample data dashboards
             href: web-ui-samples-dashboards.md
+          - name: Share dashboards
+            href: azure-data-explorer-dashboard-share.md
       - name: Power BI
         items:
           - name: Use data in Power BI
@@ -504,11 +506,11 @@ items:
                 href: dealing-with-duplicates.md
       - name: Monitor
         items:
-          - name: Monitor Azure Data Explorer with metrics
+          - name: Monitor Azure Data Explorer
             displayName: health, performance
-            href: using-metrics.md
-          - name: Use diagnostic logs to monitor ingestion, commands, queries, and tables
-            href: using-diagnostic-logs.md
+            href: monitor-data-explorer.md
+          - name: Monitoring data reference
+            href: monitor-data-explorer-reference.md
           - name: Use resource health to monitor cluster health
             href: monitor-with-resource-health.md
           - name: Use Azure Data Explorer Clusters Insights
@@ -572,6 +574,8 @@ items:
             href: /kusto/api/get-started/app-management-commands?view=azure-data-explorer&preserve-view=true
           - name: Queue data for ingestion
             href: /kusto/api/get-started/app-queued-ingestion?view=azure-data-explorer&preserve-view=true
+          - name: Ingest data using the managed streaming ingestion client 
+            href: /kusto/api/get-started/app-managed-streaming-ingest?view=azure-data-explorer&preserve-view=true
       - name: Connection strings
         items:
           - name: Connection strings overview

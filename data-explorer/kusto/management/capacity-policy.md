@@ -1,9 +1,9 @@
 ---
 title: Capacity policy
 description: Learn how to use the capacity policy to control the compute resources of data management operations on a cluster.
-ms.reviewer: orspodek
+ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 02/11/2025
 monikerRange: "azure-data-explorer"
 ---
 # Capacity policy
@@ -26,6 +26,7 @@ The capacity policy is made of the following components:
 * [StreamingIngestionPostProcessingCapacity](#streaming-ingestion-post-processing-capacity)
 * [PurgeStorageArtifactsCleanupCapacity](#purge-storage-artifacts-cleanup-capacity)
 * [PeriodicStorageArtifactsCleanupCapacity](#periodic-storage-artifacts-cleanup-capacity)
+* [QueryAccelerationCapacity](#query-acceleration-capacity)
 
 To view the capacity of your cluster, use the [.show capacity](show-capacity-command.md) command.
 
@@ -51,17 +52,21 @@ The [.show capacity](show-capacity-command.md) command returns the cluster's ing
 |--|--|--|
 | `MinimumConcurrentOperationsPerNode` | `long` | The minimal number of concurrent extents merge/rebuild operations on a single node. Default is `1`. |
 | `MaximumConcurrentOperationsPerNode` |`long` | The maximum number of concurrent extents merge/rebuild operations on a single node. Default is `5`. |
+| `ClusterMaximumConcurrentOperations`  | `long` | The maximum number of concurrent extents merge/rebuild operations allowed in a cluster. This value caps the total merge capacity. |
 
 **Formula**
 
 The [.show capacity](show-capacity-command.md) command returns the cluster's extents merge capacity based on the following formula:
 
-*Number of nodes in cluster* `*` *Concurrent operations per node*
+`Minimum(`*Number of nodes in cluster* `*` *Concurrent operations per node*`,` `ClusterMaximumConcurrentOperations)`
 
 The effective value for *Concurrent operations per node* is automatically adjusted by the system in the range [`MinimumConcurrentOperationsPerNode`,`MaximumConcurrentOperationsPerNode`], as long as the success rate of the merge operations is 90% or higher.
 
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in merge operations, so *Number of nodes in cluster* is reduced by one.
+
+> [!WARNING]
+> Due to the complexity of the extents merge policy, we recommend that you [consult with support](https://ms.portal.azure.com/#create/Microsoft.Support) before making any changes.
 
 ### Extents purge rebuild capacity
 
@@ -114,7 +119,7 @@ The policy can be used to change concurrency settings for [materialized views](m
 | `ClusterMinimumConcurrentOperations` | `long` | The minimal number of concurrent materialization operations in a cluster. Default is `1`. |
 | `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent materialization operations in a cluster. Default is `10`. |
 
-By default, only a single materialization runs concurrently (see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work)). The system adjusts the current concurrency in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU. You can increase/decrease concurrency by altering this policy. For example, if the cluster has ten materialized views, setting the `ClusterMinimumConcurrentOperations` to five ensures that at least five of them can materialize concurrently.
+By default, only a single materialization runs concurrently (see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work)). The system adjusts the current concurrency in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU. You can increase/decrease concurrency by altering this policy. For example, if the cluster has 10 materialized views, setting the `ClusterMinimumConcurrentOperations` to five ensures that at least five of them can materialize concurrently.
 You can view the effective value for the current concurrency using the [.show capacity command](show-capacity-command.md)
 
 > [!WARNING]
@@ -131,7 +136,7 @@ You can view the effective value for the current concurrency using the [.show ca
 
 The [.show capacity](show-capacity-command.md) command returns the cluster's stored query results creation capacity based on the following formula:
 
-*Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*` `CoreUtilizationCoefficient)`
+`Minimum(MaximumConcurrentOperationsPerDbAdmin` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*` `CoreUtilizationCoefficient))`
 
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in stored query results creation operations, so the *Number of nodes in cluster* is reduced by one.
@@ -174,6 +179,19 @@ The [.show capacity](show-capacity-command.md) command returns the cluster's pur
 The [.show capacity](show-capacity-command.md) command returns the cluster's periodic storage artifacts cleanup capacity based on the following formula:
 
 `MaximumConcurrentOperationsPerCluster`
+
+### Query Acceleration capacity
+
+| Property | Type | Description |
+|--|--|--|
+| `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent query acceleration caching operations in a cluster. This value caps the total query acceleration caching capacity, as shown in the following formula. |
+| `CoreUtilizationCoefficient` | `long` | Determines the percentage of cores to use in the query acceleration caching capacity calculation. |
+
+**Formula**
+
+The [.show capacity](show-capacity-command.md) command returns the cluster's query acceleration caching capacity based on the following formula:
+
+`Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
 ## Defaults
 
@@ -219,6 +237,10 @@ The default capacity policy has the following JSON representation:
   },
   "PeriodicStorageArtifactsCleanupCapacity": {
     "MaximumConcurrentOperationsPerCluster": 2
+  },
+  "QueryAccelerationCapacity": {
+    "ClusterMaximumConcurrentOperations": 100,
+    "CoreUtilizationCoefficient": 0.5
   }
 }
 ```
@@ -226,7 +248,7 @@ The default capacity policy has the following JSON representation:
 ## Management commands
 
 > [!WARNING]
-> Consult with the support team before altering a capacity policy.
+> Given the complexity of the capacity policy, we recommend that you [consult with support](https://ms.portal.azure.com/#create/Microsoft.Support) before making any changes.
 
 * Use [`.show cluster policy capacity`](show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
 * Use [`.alter-merge cluster policy capacity`](alter-merge-capacity-policy-command.md) to alter the capacity policy of the cluster.
@@ -236,24 +258,26 @@ The default capacity policy has the following JSON representation:
 Kusto limits the number of concurrent requests for the following user-initiated commands:
 
 * **Ingestions**
-  * This category includes commands that [ingest from storage](data-ingestion/ingest-from-storage.md), [ingest from a query](data-ingestion/ingest-from-query.md), and [ingest inline](data-ingestion/ingest-inline.md).
-  * The limit is as defined by the [ingestion capacity](#ingestion-capacity).
+  * This category includes commands that [ingest from storage](data-ingestion/ingest-into-command.md), [ingest from a query](data-ingestion/ingest-from-query.md), and [ingest inline](data-ingestion/ingest-inline.md).
+  * The [ingestion capacity](#ingestion-capacity) defines the limit.
 * **Purges**
   * The global limit is currently fixed at one per cluster.
-  * The [purge rebuild capacity](#extents-purge-rebuild-capacity) is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands won't be blocked or throttled because of this process, but will complete faster or slower depending on the purge rebuild capacity.
+  * The [purge rebuild capacity](#extents-purge-rebuild-capacity) is used internally to determine the number of concurrent rebuild operations during purge commands. Purge commands aren't blocked or throttled because of this process, but completes faster or slower depending on the purge rebuild capacity.
 * **Exports**
   * The limit is as defined in the [export capacity](#export-capacity).
+* **Query Acceleration**
+  * The limit is as defined in the [query acceleration capacity](#query-acceleration-capacity).
 
-When the cluster detects that an operation has exceeded the limit on concurrent requests:
+When the cluster detects that an operation exceeded the limit on concurrent requests:
 
 * The command's state, as presented by [System information commands](system-info.md), is `Throttled`.
-* The error message includes the *command type*, the *origin* of the throttling and the *capacity* that's been exceeded. For example:
+* The error message includes the *command type*, the *origin* of the throttling and the *capacity* that exceeded. For example:
   * For example: `The management command was aborted due to throttling. Retrying after some backoff might succeed. CommandType: 'TableSetOrAppend', Capacity: 18, Origin: 'CapacityPolicy/Ingestion'`.
 * The HTTP response code is `429`. The subcode is `TooManyRequests`.
 * The exception type is `ControlCommandThrottledException`.
 
 > [!NOTE]
-> Management commands may also be throttled as a result of exceeding the limit defined by a workload group's [Request rate limit policy](request-rate-limit-policy.md).
+> Management commands can also be throttled if they exceed the limits set by a workload group's [Request rate limit policy](request-rate-limit-policy.md).
 
 ## Related content
 

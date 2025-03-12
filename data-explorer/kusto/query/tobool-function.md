@@ -3,7 +3,7 @@ title:  tobool()
 description: Learn how to use the tobool() function to convert an input to a boolean representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 03/09/2025
 ---
 # tobool()
 
@@ -41,3 +41,10 @@ tobool("false") == false
 tobool(1) == true
 tobool(123) == true
 ```
+
+## Related content
+
+* [Scalar function types at a glance](scalar-functions.md)
+* [The bool data type](scalar-data-types/bool.md)
+* [todatetime()](todatetime-function.md)
+* [tostring()](tostring-function.md)

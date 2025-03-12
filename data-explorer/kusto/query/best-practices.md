@@ -74,10 +74,7 @@ In order of importance:
 * When using the `where` query operator, the order in which you place the predicates, whether you use a single `where` operator, or multiple consecutive `where` operators,
   can have a significant effect on the query performance.
 
-* Apply whole-shard predicates first. This means that predicates that use the [extent_id() function](extent-id-function.md) and [extent_tags() function](extent-tags-function.md)
-  should be applied first. Also, when you have selective predicates that narrow the data down to specific partitions, they should be applied first.
-
-* Then apply predicates that act upon `datetime` table columns. Kusto includes an efficient index on such columns,
+* Apply predicates that act upon `datetime` table columns first. Kusto includes an efficient index on such columns,
   often completely eliminating whole data shards without needing to access those shards.
 
 * Then apply predicates that act upon `string` and `dynamic` columns, especially such predicates

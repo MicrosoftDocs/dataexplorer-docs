@@ -3,7 +3,7 @@ title: .show tables command
 description: Learn how to use the `.show tables` command to show a set that contains the specified tables in the database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/09/2024
 ---
 # .show tables command
 
@@ -32,6 +32,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Returns
 
+
 |Output parameter |Type |Description
 |---|---|---
 |TableName  | `string` |The name of the table.
@@ -39,18 +40,52 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |Folder | `string` |The table's folder.
 |DocString | `string` |A string documenting the table.
 
-## Example
+## Examples
+
+### Show all tables in the database
+
+The following example shows information about all tables in the current database.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrzsgvVyhJTMpJLQYAHfJS8AwAAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 .show tables
-.show tables (T1, ..., Tn)
 ```
 
-**Output example**
+**Output**
+
+|Table Name|Database Name|Folder|DocString|
+|---|---|---|---|
+|StormEvents|Samples|Storm_Events|US storm events. Data source: https://www.ncdc.noaa.gov/stormevents|
+|demo_make_series1|Samples|TimeSeries_and_ML||
+|demo_series2|Samples|TimeSeries_and_ML||
+|demo_series3|Samples|TimeSeries_and_ML||
+|demo_many_series1|Samples|TimeSeries_and_ML||
+|ConferenceSessions|Samples|ADX_Conferences||
+
+
+### Show specific tables
+
+The following example shows information about the specified tables.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrzsgvVyhJTMpJLVbQCMgvKM1JLMnMz3NJLEnUUQguyS%2FKdS1LzSsp1lEIKcosAFLuqflBqelAJcWaAMjc30o9AAAA" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+.show tables (PopulationData, StormEvents, Trips, GeoRegions)
+```
+
+**Output**
 
 |Table Name |Database Name |Folder | DocString
 |---|---|---|---
-|Table1 |DB1 |Logs |Contains services logs
-|Table2 |DB1 | Reporting |
-|Table3 |DB1 | | Extended info |
-|Table4 |DB2 | Metrics| Contains services performance information
+|StormEvents|	Samples	|Storm_Events|	US storm events. Data source: https://www.ncdc.noaa.gov/stormevents|
+|PopulationData|Samples|	Storm_Events|	
+|GeoRegions|	Samples|	NYC Taxi	|
+|Trips|	Samples|	NYC Taxi	|
+

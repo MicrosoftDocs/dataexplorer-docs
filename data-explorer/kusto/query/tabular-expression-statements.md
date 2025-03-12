@@ -3,7 +3,7 @@ title:  Tabular expression statements
 description: Learn how to use tabular expression statements to produce tabular datasets.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/13/2025
 ---
 # Tabular expression statements
 
@@ -41,9 +41,13 @@ A tabular data source produces sets of records, to be further processed by tabul
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ### Filter rows by condition
 
-The following query counts the number of records in the `StormEvents` table that have a value of "FLORIDA" in the `State` column.
+This query counts the number of records in the `StormEvents` table that have a value of "FLORIDA" in the `State` column.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -64,7 +68,7 @@ StormEvents
 
 ### Combine data from two tables
 
-In the following example, the [join](join-operator.md) operator is used to combine records from two tabular data sources: the `StormEvents` table and the `PopulationData` table.
+In this example, the [join](join-operator.md) operator is used to combine records from two tabular data sources: the `StormEvents` table and the `PopulationData` table.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -81,7 +85,7 @@ StormEvents
 **Output**
 
 | State | Population | TotalInjuries |
-|---|---|---|
+|--|--|--|
 | ALABAMA | 4918690 | 60 |
 | CALIFORNIA | 39562900 | 61 |
 | KANSAS | 2915270 | 63 |

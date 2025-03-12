@@ -1,12 +1,12 @@
 items:
   - name: Syntax conventions
     href: syntax-conventions.md
-  - name: Add a comment in KQL
+  - name: Add a comment
     href: comment.md
-  - name: Query data using T-SQL
-    href: t-sql.md
   - name: Set timeout limits
     href: ../set-timeout-limits.md
+  - name: Database cursors
+    href: database-cursor.md
   - name: Debug KQL inline Python
     href: ../debug-inline-python.md  
   - name: Best practices for KQL queries
@@ -165,6 +165,8 @@ items:
             href: join-time-window.md
       - name: lookup operator
         href: lookup-operator.md
+      - name: macro-expand operator
+        href: macro-expand-operator.md
       - name: mv-apply operator
         href: mv-apply-operator.md
         displayName: mv apply mv_apply
@@ -1256,7 +1258,7 @@ items:
         href: varianceif-aggregation-function.md
       - name: variancep()
         href: variancep-aggregation-function.md
-  - name: Graph operators
+  - name: Graph
     items:
       - name: Graph overview
         href: graph-overview.md
@@ -1264,18 +1266,37 @@ items:
         href: graph-best-practices.md
       - name: Graph scenarios
         href: graph-scenarios.md
-      - name: Graph operators overview
-        href: graph-operators.md
-      - name: make-graph
-        href: make-graph-operator.md
-      - name: graph-match
-        href: graph-match-operator.md
-      - name: graph-to-table
-        href: graph-to-table-operator.md
-      - name: graph-shortest-paths
-        href: graph-shortest-paths-operator.md
-      - name: graph-mark-components
-        href: graph-mark-components-operator.md
+      - name: Graph operators 
+        items: 
+          - name: Graph operators overview
+            href: graph-operators.md
+          - name: make-graph
+            href: make-graph-operator.md
+          - name: graph-match
+            href: graph-match-operator.md
+          - name: graph-to-table
+            href: graph-to-table-operator.md
+          - name: graph-shortest-paths
+            href: graph-shortest-paths-operator.md
+          - name: graph-mark-components
+            href: graph-mark-components-operator.md
+      - name: Graph functions
+        items:
+          - name: all()
+            displayName: all() graph function 
+            href: all-graph-function.md
+          - name: map()
+            displayName: map() graph function 
+            href: map-graph-function.md
+          - name: inner_nodes()
+            displayName: inner nodes() graph function, inner nodes 
+            href: inner-nodes-graph-function.md
+          - name: node_degree_in()
+            displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in 
+            href: node-degree-in.md
+          - name: node_degree_out()
+            displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
+            href: node-degree-out.md
   - name: Geospatial
     items:
       - name: Geospatial clustering overview
@@ -1677,7 +1698,10 @@ items:
         href: sql-cheat-sheet.md
       - name: Splunk to Kusto cheat sheet
         href: splunk-cheat-sheet.md
+      - name: Query data using T-SQL
+        href: t-sql.md
       - name: Timezones
         href: timezone.md
       - name: KQL docs navigation
         href: ../docs-navigation.md
+

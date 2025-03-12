@@ -3,7 +3,7 @@ title:  todatetime()
 description: Learn how to use the todatetime() function to convert the input expression to a datetime value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/16/2024
+ms.date: 03/09/2025
 ---
 # todatetime()
 
@@ -30,8 +30,8 @@ Converts the input to a [datetime](scalar-data-types/datetime.md) scalar value.
 
 ## Returns
 
-If the conversion is successful, the result will be a [datetime](scalar-data-types/datetime.md) value.
-Else, the result will be `null`.
+If the conversion is successful, the result is a [datetime](scalar-data-types/datetime.md) value.
+Else, the result is `null`.
 
 ## Example
 
@@ -66,3 +66,8 @@ print todatetime('12-02-2022') == datetime('12-02-2022')
 ## Related content
 
 * [make-datetime function](./make-datetime-function.md)
+* [Scalar function types at a glance](scalar-functions.md)
+* [The datetime data type](scalar-data-types/datetime.md)
+* [datetime_add()](datetime-add-function.md)
+* [Datetime / timespan arithmetic](datetime-timespan-arithmetic.md)
+* [totimespan()](totimespan-function.md)

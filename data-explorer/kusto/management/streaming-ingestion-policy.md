@@ -3,7 +3,7 @@ title: Streaming ingestion policy
 description: Learn how to use the streaming ingestion policy to optimize operational processing of many tables where the stream of data is small.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/18/2024
 monikerRange: "azure-data-explorer"
 ---
 # Streaming ingestion policy
@@ -41,6 +41,18 @@ Defining this policy at the database level applies the same settings to all exis
 
 ## Set the data rate hint
 
-The streaming ingestion policy can provide a hint about the hourly volume of data expected for the table. This hint will help the system adjust the amount of resources allocated for this table in support of streaming ingestion.
-Set the hint if the rate of streaming data ingress into the table will exceed 1 Gb/hour.
-If setting _HintAllocatedRate_ in the streaming ingestion policy for the database, set it by the table with the highest expected data rate. It isn't recommended to set the effective hint for a table to a value much higher than the expected peak hourly data rate. This setting may have an adverse effect on the query performance.
+The streaming ingestion policy can provide a hint about the hourly volume of data expected for the table. This hint helps the system adjust the amount of resources allocated for this table in support of streaming ingestion.
+Set the hint if the rate of streaming data ingresses into the table exceeds 1 Gb/hour.
+If setting _HintAllocatedRate_ in the streaming ingestion policy for the database, set it by the table with the highest expected data rate. It isn't recommended to set the effective hint for a table to a value much higher than the expected peak hourly data rate. This setting might have an adverse effect on the query performance.
+
+## Related content
+
+* [.show database policy streamingingestion command](show-database-streaming-ingestion-policy-command.md)
+* [.show table policy streamingingestion command](show-table-streaming-ingestion-policy-command.md)
+* [.alter database policy streamingingestion command](alter-database-streaming-ingestion-policy-command.md)
+* [.alter-merge database policy streamingingestion command](alter-merge-database-streaming-ingestion-policy-command.md)
+* [.alter table policy streamingingestion command](alter-table-streaming-ingestion-policy-command.md)
+* [.alter-merge table policy streamingingestion command](alter-merge-table-streaming-ingestion-policy-command.md)
+* [.delete database policy streamingingestion command](delete-database-streaming-ingestion-policy-command.md)
+* [.delete table policy streamingingestion command](delete-table-streaming-ingestion-policy-command.md)
+* [Streaming ingestion and schema changes](data-ingestion/streaming-ingestion-schema-changes.md)

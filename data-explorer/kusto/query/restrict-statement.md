@@ -3,7 +3,7 @@ title:  Restrict statement
 description: Learn how to use the restrict statement to limit tabular views that are visible to subsequent query statements.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/20/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Restrict statement
@@ -14,10 +14,10 @@ The restrict statement limits the set of table/view entities which are visible t
 
 The restrict statement's main scenario is for middle-tier applications that accept queries from users and want to
 apply a row-level security mechanism over those queries.
-The middle-tier application can prefix the user's query with a **logical model**, a set of let statements defining views that restrict the user's access to data, for example ( `T | where UserId == "..."`). As the last statement being added, it restricts the user's access to the logical model only.
+The middle-tier application can prefix the user's query with a **logical model**, a set of let statements to define views that restrict the user's access to data, for example ( `T | where UserId == "..."`). As the last statement being added, it restricts the user's access to the logical model only.
 
 > [!NOTE]
-> The restrict statement can be used to restrict access to entities in another database or cluster (wildcards are not supported in cluster names).
+> The restrict statement can be used to restrict access to entities in another database or cluster (wildcards aren't supported in cluster names).
 
 ## Syntax
 
@@ -34,13 +34,17 @@ The middle-tier application can prefix the user's query with a **logical model**
 > [!NOTE]
 >
 > * All tables, tabular views, or patterns that aren't specified by the restrict statement become "invisible" to the rest of the query.
-> * Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they won't be considered part of the same query.
+> * Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they aren't considered part of the same query.
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
 ### Let statement
 
-The following example uses a [let statement](let-statement.md) appearing before `restrict` statement.
+The example uses a [let statement](let-statement.md) appearing before `restrict` statement.
 
 ```kusto
 // Limit access to 'Test' let statement only
@@ -50,7 +54,7 @@ restrict access to (Test);
 
 ### Tables or functions
 
-The following example uses references to [tables](../management/tables.md) or [functions](../management/functions.md) that are defined in the database metadata.
+The example uses references to [tables](../management/tables.md) or [functions](../management/functions.md) that are defined in the database metadata.
 
 ```kusto
 // Assuming the database that the query uses has table Table1 and Func1 defined in the metadata, 
@@ -61,7 +65,7 @@ restrict access to (database().Table1, database().Func1, database('DB2').Table2)
 
 ### Patterns
 
-The following example uses wildcard patterns that can match multiples of [let statements](let-statement.md) or tables/functions.
+The example uses wildcard patterns that can match multiples of [let statements](let-statement.md) or tables/functions.
 
 ```kusto
 let Test1 = () { print x=1 };
@@ -82,7 +86,7 @@ restrict access to (database('DB2').*);
 
 ### Prevent user from querying other user data
 
-The following example shows how a middle-tier application can prepend a user's query
+The example shows how a middle-tier application can prepend a user's query
 with a logical model that prevents the user from querying any other user's data.
 
 ```kusto

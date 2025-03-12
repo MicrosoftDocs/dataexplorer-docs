@@ -3,7 +3,7 @@ title:  Query parameters declaration statement
 description: Learn how to use the query parameters declaration statement to parameterize queries and protect against injection attacks.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/13/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Query parameters declaration statement
@@ -34,7 +34,7 @@ To reference query parameters, the query text, or functions it uses, must first 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*Name1*| `string` | :heavy_check_mark:|The name of a query parameter used in the query.|
-|*Type1*| `string` | :heavy_check_mark:|The corresponding type, such as `string` or `datetime`. The values provided by the user are encoded as strings. The appropriate parse method is applied to the query parameter to get a strongly-typed value.|
+|*Type1*| `string` | :heavy_check_mark:|The corresponding type, such as `string` or `datetime`. The values provided by the user are encoded as strings. The appropriate parse method is applied to the query parameter to get a strongly typed value.|
 |*DefaultValue1*| `string` ||A default value for the parameter. This value must be a literal of the appropriate scalar type.|
 
 > [!NOTE]
@@ -43,6 +43,14 @@ To reference query parameters, the query text, or functions it uses, must first 
 > * Let, set, and tabular statements are strung together/separated by a semicolon, otherwise they will not be considered part of the same query.
 
 ## Example
+
+The examples in this section show how to use the syntax to help you get started.
+
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
+### Declare query parameters
+
+ This query retrieves storm events from the *StormEvents* table where the total number of direct and indirect injuries exceeds a specified threshold (default is 90). It then projects the *EpisodeId*, *EventType*, and the total number of injuries for each of these events.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

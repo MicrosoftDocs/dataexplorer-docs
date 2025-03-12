@@ -1,12 +1,12 @@
 ---
-title: .show table mirroring operations command
-description: Learn how to use the `.show table mirroring operations` command to check the mirroring policy operations.
+title: .show table operations mirroring command
+description: Learn how to use the `.show table operations mirroring` command to check the mirroring policy operations.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 09/23/2024
+ms.date: 12/10/2024
 monikerRange: "microsoft-fabric"
 ---
-# .show table mirroring operations command
+# .show table operations mirroring command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)]
 

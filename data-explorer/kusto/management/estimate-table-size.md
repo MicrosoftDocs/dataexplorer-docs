@@ -2,7 +2,7 @@
 title: Estimate table size
 description:  Learn how to estimate table size.
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/13/2025
 ---
 # Estimate table size
 
@@ -69,9 +69,6 @@ The following query estimates the original data size of the `StormEvents` table 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSK0oSc1LUSjOrEp1LS7JzE0sSfVPc87PKc3NU7BVSIUKxackliTGgxRpaGkCdRWX5uYmFgG5CiX5JYk5wUCWLVBMA5sxmgAfUpgYcQAAAA==" target="_blank">Run the query</a>
 ::: moniker-end
-
-::: moniker-end
-
 
 ```kusto
 StormEvents

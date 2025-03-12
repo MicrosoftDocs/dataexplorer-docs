@@ -3,7 +3,7 @@ title:  inner join
 description: Learn how to use the inner join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/20/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 
@@ -30,6 +30,8 @@ The `inner` join flavor is like the standard inner join from the SQL world. An o
 **Rows**: Only matching rows from both tables.
 
 ## Example
+
+The example query combines rows from tables X and Y where the keys match, showing only the rows that exist in both tables.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

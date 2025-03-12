@@ -3,7 +3,7 @@ title:  Let statement
 description: Learn how to use the Let statement to set a variable name to define an expression or a function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/28/2025
 ms.localizationpriority: high
 ---
 # Let statement
@@ -65,6 +65,12 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
+The query examples show the syntax and example usage of the operator, statement, or function.
+
 ### Define scalar values
 
 The following example uses a scalar expression statement.
@@ -91,6 +97,16 @@ let ['some number'] = 20;
 range y from 0 to ['some number'] step 5
 ```
 
+**Output**
+
+| y |
+|--|
+| 0 |
+| 5 |
+| 10 |
+| 15 |
+| 20 |
+
 ### Create a user defined function with scalar calculation
 
 This example uses the let statement with arguments for scalar calculation. The query defines function `MultiplyByN` for multiplying two numbers.
@@ -108,13 +124,13 @@ range x from 1 to 5 step 1
 
 **Output**
 
-|x|result|
-|---|---|
-|1|5|
-|2|10|
-|3|15|
-|4|20|
-|5|25|
+| x | result |
+|--|--|
+| 1 | 5 |
+| 2 | 10 |
+| 3 | 15 |
+| 4 | 20 |
+| 5 | 25 |
 
 ### Create a user defined function that trims input
 
@@ -133,14 +149,14 @@ range x from 10 to 15 step 1
 
 **Output**
 
-|x|result|
-|---|---|
-|10|0|
-|11||
-|12|2|
-|13|3|
-|14|4|
-|15|5|
+| x | result |
+|--|--|
+| 10 | 0 |
+| 11 |  |
+| 12 | 2 |
+| 13 | 3 |
+| 14 | 4 |
+| 15 | 5 |
 
 ### Use multiple let statements
 
@@ -159,9 +175,9 @@ foo2(2) | count
 
 **Output**
 
-|result|
-|---|
-|50|
+| result |
+|--|
+| 50 |
 
 ### Create a view or virtual table
 
@@ -180,10 +196,10 @@ search MyColumn == 5
 
 **Output**
 
-|$table|MyColumn|
-|---|---|
-|Range10|5|
-|Range20|5|
+| $table | MyColumn |
+|--|--|
+| Range10 | 5 |
+| Range20 | 5 |
 
 ### Use a materialize function
 
@@ -214,11 +230,11 @@ on $left.Day1 == $right.Day
 
 **Output**
 
-|Day1|Day2|Percentage|
-|---|---|---|
-|2016-05-01 00:00:00.0000000|2016-05-02 00:00:00.0000000|34.0645725975255|
-|2016-05-01 00:00:00.0000000|2016-05-03 00:00:00.0000000|16.618368960101|
-|2016-05-02 00:00:00.0000000|2016-05-03 00:00:00.0000000|14.6291376489636|
+| Day1 | Day2 | Percentage |
+|--|--|--|
+| 2016-05-01 00:00:00.0000000 | 2016-05-02 00:00:00.0000000 | 34.0645725975255 |
+| 2016-05-01 00:00:00.0000000 | 2016-05-03 00:00:00.0000000 | 16.618368960101 |
+| 2016-05-02 00:00:00.0000000 | 2016-05-03 00:00:00.0000000 | 14.6291376489636 |
 
 ### Using nested let statements
 
@@ -249,13 +265,13 @@ StormEvents
 **Output**
 
 | State | s_s |
-|---|---|
+|--|--|
 | ATLANTIC SOUTH | ATLANTIC SOUTHATLANTIC SOUTH |
 | FLORIDA | FLORIDAFLORIDA |
 | FLORIDA | FLORIDAFLORIDA |
 | GEORGIA | GEORGIAGEORGIA |
 | MISSISSIPPI | MISSISSIPPIMISSISSIPPI |
-|...|...|
+| ... | ... |
 
 ### Tabular argument with wildcard
 

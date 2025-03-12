@@ -3,7 +3,7 @@ title: .create function command
 description: Learn how to use the `.create function` command to create a stored function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/19/2024
 ---
 # .create function command
 
@@ -71,7 +71,7 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 ## Examples
 
-### Simple demo function
+### Simple function
 
 The following example creates the `MyFunction1` function with a description (`docstring`), a folder named `Demo`, and defines the function.
 
@@ -86,20 +86,21 @@ MyFunction1()
 |---|---|---|---|---|
 |MyFunction1|()|{StormEvents &#124; take 100}|Demo|Simple demo function|
 
-### Demo function with parameter
+### Function with a parameter
 
-The following example creates the *MyFunction2* function with a description (`docstring`), folder named `Demo`, and defines the `MyLimit` parameter.
+The following example creates the `MyFunction2` function with a description (`docstring`), folder named `Demo`, and defines the `Mytimestamp` parameter.
 
 ```kusto
-.create function
-with (docstring = 'Demo function with parameter', folder='Demo')
- MyFunction2(myLimit: long)
-{StormEvents | take myLimit}
+.create function with (docstring = "Demo function with date parameter",folder = "Demo") 
+ MyFunction2(Mytimestamp:datetime) {
+    StormEvents
+    | where EndTime <= Mytimestamp
+ }
 ```
 
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
-|MyFunction2|(myLimit:long)|{StormEvents &#124; take myLimit}|Demo|Demo function with parameter|
+|MyFunction2|(Mytimestamp:datetime)|{StormEvents &#124; where EndTime <= Mytimestamp}|Demo|Demo function with date parameter|
 
 ## Related content
 

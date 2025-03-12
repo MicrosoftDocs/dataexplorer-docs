@@ -1,11 +1,11 @@
 ---
-title:  Kusto.ingest into command (pull data from storage)
+title:  .ingest into command (pull data from storage)
 description:  This article describes The .ingest into command (pull data from storage).
-ms.reviewer: orspodek
+ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/25/2024
 ---
-# Ingest from storage
+# .ingest into
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -123,7 +123,7 @@ properties.
 The following example ingests a single file from Amazon S3 using an [access key ID and a secret access key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
 
 ```kusto
-.ingest into table T ('https://bucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AKIAIOSFODNN7EXAMPLE,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY')
+.ingest into table T ('https://bucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=EXAMPLEKEY')
   with (format='csv')
 ```
 
@@ -139,7 +139,7 @@ The following example ingests a single file from Amazon S3 using a [preSigned UR
 ## Related content
 
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
-* [Inline ingestion](ingest-inline.md)
+* [.ingest inline](ingest-inline.md)
 * [Ingest from query (.set, .append, .set-or-append, .set-or-replace)](ingest-from-query.md)
 * [.show ingestion failures command](../ingestion-failures.md)
 * [.show ingestion mapping](../show-ingestion-mapping-command.md)

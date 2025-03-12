@@ -23,7 +23,7 @@ Reorders columns in the output table.
 |--|--|--|--|
 | *T* | `string` |  :heavy_check_mark: | The input tabular data.|
 | *ColumnNameOrPattern* | `string` |  :heavy_check_mark: | The name of the column or column wildcard pattern by which to order the columns. |
-| `asc`, `desc`, `granny-asc`, `granny-desc` | `string` | | Indicates how to order the columns when a wildcard pattern is used. `asc` or `desc` orders columns by column name in ascending or descending manner, respectively. `granny-asc` or `granny-desc` orders by ascending or descending, respectively, while secondarily sorting by the next numeric value. For example, `a100` comes before `a20` when `granny-asc` is specified.|
+| `asc`, `desc`, `granny-asc`, `granny-desc` | `string` | | Indicates how to order the columns when a wildcard pattern is used. `asc` or `desc` orders columns by column name in ascending or descending manner, respectively. `granny-asc` or `granny-desc` orders by ascending or descending, respectively, while secondarily sorting by the next numeric value. For example, `a20` comes before `a100` when `granny-asc` is specified.|
 
 > [!NOTE]
 >
@@ -40,6 +40,12 @@ A table that contains columns in the order specified by the operator arguments. 
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+	
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+
+### Reorder with b first
+
 Reorder a table with three columns (a, b, c) so the second column (b) will appear first.
 
 :::moniker range="azure-data-explorer"
@@ -54,9 +60,11 @@ print a='a', b='b', c='c'
 
 **Output**
 
-|b|a|c|
-|---|---|---|
-|b|a|c|
+| b | a | c |
+|--|--|--|
+| b | a | c |
+
+### Reorder with a first
 
 Reorder columns of a table so that columns starting with `a` will appear before other columns.
 
@@ -72,6 +80,6 @@ print b = 'b', a2='a2', a3='a3', a1='a1'
 
 **Output**
 
-|a1|a2|a3|b|
-|---|---|---|---|
-|a1|a2|a3|b|
+| a1 | a2 | a3 | b |
+|--|--|--|--|
+| a1 | a2 | a3 | b |

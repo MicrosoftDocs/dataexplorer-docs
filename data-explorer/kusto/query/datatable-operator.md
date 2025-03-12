@@ -3,7 +3,7 @@ title:  datatable operator
 description: Learn how to use the datatable operator to define a table with given schema and data.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/21/2025
 ---
 # datatable operator
 
@@ -16,7 +16,7 @@ Returns a table whose schema and values are defined in the query itself.
 
 ## Syntax
 
-`datatable(` *ColumnName* `:` *ColumnType* [`,` ...]`)` `[` *ScalarValue* [`,` *ScalarValue* ...] `]`
+`datatable(` *ColumnName* `:` *ColumnType* [`,` ...]`)` `[` *ScalarValue* [`,` ...] `]`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -26,7 +26,7 @@ Returns a table whose schema and values are defined in the query itself.
 |--|--|--|--|
 | *ColumnName*| `string` |  :heavy_check_mark: | The name for a column. |
 | *ColumnType* | `string` |  :heavy_check_mark: | The type of data in the column.|
-| *ScalarValue* | scalar |  :heavy_check_mark: | The value to insert into the table. The number of values must be an integer multiple of the columns in the table. The *n*'th value must have a type that corresponds to column *n* % *NumColumns*. |
+| *ScalarValue* | scalar |  :heavy_check_mark: | The value to insert into the table. The total number of values must be a multiple of the number of columns in the table. Each value is assigned to a column based on its position. Specifically, the *n*'th value is assigned to the column at position *n* % *NumColumns*, where *NumColumns* is the total number of columns. |
 
 > [!NOTE]
 > The column name and column value pairs define the schema for the table.
@@ -36,6 +36,8 @@ Returns a table whose schema and values are defined in the query itself.
 This operator returns a data table of the given schema and data.
 
 ## Example
+
+This example creates a table with *Date*, *Event*, and *MoreData* columns, filters rows with Event descriptions longer than 4 characters, and adds a new column *key2* to each row from the MoreData dynamic object.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -55,7 +57,7 @@ datatable(Date:datetime, Event:string, MoreData:dynamic) [
 
 **Output**
 
-|Date|Event|MoreData|key2|
-|---|---|---|---|
-|1930-01-01 00:00:00.0000000|Enters Ecole Navale|{<br>  "key1": "value3",<br>  "key2": "value4"<br>}|value4|
-|1953-01-01 00:00:00.0000000|Published first book|{<br>  "key1": "value5",<br>  "key2": "value6"<br>}|value6|
+| Date | Event | MoreData | key2 |
+|--|--|--|--|
+| 1930-01-01 00:00:00.0000000 | Enters Ecole Navale | {<br>  "key1": "value3",<br>  "key2": "value4"<br>} | value4 |
+| 1953-01-01 00:00:00.0000000 | Published first book | {<br>  "key1": "value5",<br>  "key2": "value6"<br>} | value6 |

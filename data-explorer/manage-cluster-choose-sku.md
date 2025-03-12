@@ -95,7 +95,7 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 |--|--|--|--|
 | [Lasv3](/azure/virtual-machines/lasv3-series) | 8, 16 , 32| AMD | No |
 | [Lsv3](/azure/virtual-machines/lsv3-series) | 8, 16 , 32| Intel | No |
-|  [Easv4](/azure/virtual-machines/eav4-easv4-series), [Easv5](/azure/virtual-machines/easv5-eadsv5-series), ECasv5| 8, 16 | AMD | Yes |
+| [Easv4](/azure/virtual-machines/eav4-easv4-series), [Easv5](/azure/virtual-machines/sizes/memory-optimized/eadsv5-series), [ECadsv5](/azure/virtual-machines/ecasv5-ecadsv5-series#ecasv5-series)| 8, 16 | AMD | Yes |
 | [Esv4](/azure/virtual-machines/ev4-esv4-series), [Esv5](/azure/virtual-machines/ev5-esv5-series) | 8, 16 | Intel | Yes |
 | [DSv2](/azure/virtual-machines/dv2-dsv2-series) | 8, 16 | Intel | Yes |
 
@@ -103,7 +103,7 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 
 | SKU Series | Available vCPU config | SKU type | Supports premium storage |
 |--|--|--|--|
-| [Eadsv5](/azure/virtual-machines/easv5-eadsv5-series), [ECadsv5](/azure/virtual-machines/ecasv5-ecadsv5-series)| 2, 4, 8, 16 | AMD | No |
+| [Eadsv5](/azure/virtual-machines/sizes/memory-optimized/eadsv5-series), [ECadsv5](/azure/virtual-machines/ecasv5-ecadsv5-series#ecasv5-series)| 2, 4, 8, 16 | AMD | No |
 | [Edv4](/azure/virtual-machines/edv4-edsv4-series), [Edv5](/azure/virtual-machines/edv5-edsv5-series) | 2, 4, 8, 16 | Intel | No |
 | [Eav4](/azure/virtual-machines/eav4-easv4-series) | 2, 4, 8, 16 | AMD | No |
 | [Dv2](/azure/virtual-machines/dv2-dsv2-series) | 2, 4, 8, 16 | Intel | No |

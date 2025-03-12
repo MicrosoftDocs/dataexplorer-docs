@@ -15,18 +15,18 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 
 *Edges* `|` `make-graph` *SourceNodeId* `-->` *TargetNodeId* [ `with` *Nodes1* `on` *NodeId1* [`,` *Nodes2* `on` *NodeId2* ]]
 
-*Edges* `|` `make-graph` *SourceNodeId* `-->` *TargetNodeId* [ `with_node_id=` *DefaultNodeId* ]
+*Edges* `|` `make-graph` *SourceNodeId* `-->` *TargetNodeId* [ `with_node_id=` *NodeIdPropertyName* ]
 
 ## Parameters
 
-| Name            | Type     | Required           | Description                                                                 |
-|-----------------|----------|--------------------|-----------------------------------------------------------------------------|
-| *Edges*         | `string` | :heavy_check_mark: | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
-| *SourceNodeId*  | `string` | :heavy_check_mark: | The column in *Edges* with the source node IDs of the edges. |
-| *TargetNodeId*  | `string` | :heavy_check_mark: | The column in *Edges* with the target node IDs of the edges. |
-| *Nodes*         | `string` |                    | The tabular expressions containing the properties of the nodes in the graph. |
-| *NodesId*       | `string` |                    | The columns with the node IDs in *Nodes*. |
-| *DefaultNodeId* | `string` |                    | The name of the column for the default node ID. |
+| Name                   | Type     | Required           | Description                                                                 |
+|------------------------|----------|--------------------|-----------------------------------------------------------------------------|
+| *Edges*                | `string` | :heavy_check_mark: | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
+| *SourceNodeId*         | `string` | :heavy_check_mark: | The column in *Edges* with the source node IDs of the edges. |
+| *TargetNodeId*         | `string` | :heavy_check_mark: | The column in *Edges* with the target node IDs of the edges. |
+| *Nodes1*, *Nodes2*     | `string` |                    | The tabular expressions containing the properties of the nodes in the graph. |
+| *NodesId1*, *NodesId2* | `string` |                    | The corresponding columns with the node IDs in *Nodes1*, *Nodes2* respectively. |
+| *NodeIdPropertyName*   | `string` |                    | The name of the property for node ID on the nodes of the graph. |
 
 ## Returns
 
@@ -49,7 +49,7 @@ The following example builds a graph from edges and nodes tables. The nodes repr
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42SXUvDMBSG7wf7D4debdAO5i5kygZTvBQEBS/GkKwNbVyTjOTMMfDHe5qmTToRbKFt+p6v501qjqB0wS2soGBI977mE8UkvwOLRqgyBbwcoxUraSEUTmE8Arq2/p1sapHzJIXkhRurFX3dLFLo1Ae9H2iLedCevoZ589ugPbO61uYyrLsM+pvhChv19WKRS/paLknb3dOjJjhelFdwVp9MHgERPArFUGgVfjZpHzH437ieLNdSnpTIGXL7LrBKwox9aD8smpNFm/yypw+omCVcKawVDvnKqr4iQ2T5Ia4UGfa/KN+6i4HOvda58egbJDvwrDTsWEFrHmTZOvYNzgTszxGtmuPjEl1OJhnmFUxk23KabX2rXbaekGtHo4mTFyQMqBsZGz86688VNxx8mZlrsloFFGCqAJcQtNZPp/ims35nXUBP3YQM2l8FDjfET0Sjf/IcYeOqcEPnLB4vhceAR1oE6/X20JIU5v4BuRhhNpIDAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAI2STWvDMAyG74X%2bB5FTC0mh62G0I4Xu4zgYdLBDKcNNROI1toutrhT246c432WHERLsvLKk57UKJNAmRQcxpIL4ORQ40ULhypGVOguBrqduIzJcSU1TGI92%2fAIEm0ImGIQQvKF1RvPqbhFCpT2aw0BZzBvl5Xt4Zn7fKK%2biKIy9DjMuG%2fXdoqZS214doeLVcsnK%2foE%2fBbNgmt2wbM3ZJh3AMzqSWpA0uv1XHvrsYf5FV6MkRqmzlokgdB%2bS8qBprA1sOyR7duSCGy9aOReO%2bZR0TnrGgS9tNkEkkmOXpefOf2Lqok0ENFZVNo1HP6DEEaPMilMOlVMQReu%2bS3BhzHpGeFeOhj%2foz0RKUJLDRFUlp9GuLrWP1hP26mQNE2LKwoC3lKl0YupbvuRoEeokM18ijjsQEDoFH95plY9eqUvO2mv0AS1zGTIofhM4vAjfD7f9hQnBxudAywPVby6Epw6NtR5orVfTyVLX9S8y3HEIagMAAA==" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -61,7 +61,7 @@ let nodes = datatable(name:string, type:string, age:int)
   "Mallory", "Person", 29,  
   "Trent", "System", 99 
 ]; 
-let edges = datatable(source:string, destination:string, edge_type:string) 
+let edges = datatable(Source:string, Destination:string, edge_type:string) 
 [ 
   "Alice", "Bob", "communicatesWith",  
   "Alice", "Trent", "trusts",  
@@ -71,7 +71,7 @@ let edges = datatable(source:string, destination:string, edge_type:string)
   "Mallory", "Bob", "attacks"  
 ]; 
 edges 
-| make-graph source --> destination with nodes on name 
+| make-graph Source --> Destination with nodes on name 
 | graph-match (mallory)-[attacks]->(compromised)-[hasPermission]->(trent) 
   where mallory.name == "Mallory" and trent.name == "Trent" and attacks.edge_type == "attacks" and hasPermission.edge_type == "hasPermission" 
   project Attacker = mallory.name, Compromised = compromised.name, System = trent.name

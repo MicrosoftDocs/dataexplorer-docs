@@ -3,7 +3,7 @@ title:  minif() (aggregation function)
 description: Learn how to use the minif() function to return the minimum value of an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/15/2025
 ---
 # minif() (aggregation function)
 
@@ -52,16 +52,23 @@ StormEvents
 
 The results table shown includes only the first 10 rows.
 
-| State          | MinDamageWithCasualties |
-| -------------- | ----------------------- |
-| TEXAS          | 8000                    |
-| KANSAS         | 5000                    |
-| IOWA           | 45000                   |
-| ILLINOIS       | 100000                  |
-| MISSOURI       | 10000                   |
-| GEORGIA        | 500000                  |
-| MINNESOTA      | 200000                  |
-| WISCONSIN      | 10000                   |
-| NEW YORK       | 25000                   |
-| NORTH CAROLINA | 15000                   |
+| State | MinDamageWithCasualties |
+|--|--|
+| TEXAS | 8000 |
+| KANSAS | 5000 |
+| IOWA | 45000 |
+| ILLINOIS | 100000 |
+| MISSOURI | 10000 |
+| GEORGIA | 500000 |
+| MINNESOTA | 200000 |
+| WISCONSIN | 10000 |
+| NEW YORK | 25000 |
+| NORTH CAROLINA | 15000 |
 | ... | ... |
+
+## Related content
+
+* [Aggregation function types at a glance](aggregation-functions.md)
+* [maxif() (aggregation function)](maxif-aggregation-function.md)
+* [min_of()](min-of-function.md)
+* [arg_max() (aggregation function)](arg-max-aggregation-function.md)

@@ -3,7 +3,7 @@ title:  .alter database policy sharding command
 description: Learn how to use the `.alter database policy sharding` command to change the database's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 12/22/2024
 monikerRange: "azure-data-explorer"
 ---
 # .alter database policy sharding command
@@ -43,9 +43,18 @@ The following command returns the updated extents sharding policy for the databa
 .alter database MyDatabase policy sharding
 ```
 {
-    "MaxRowCount" : 750000,
-    "MaxExtentSizeInMb" : 1024,
-    "MaxOriginalSizeInMb": 2048
+    "ShardEngineMaxRowCount" : 750000,
+    "ShardEngineMaxExtentSizeInMb" : 1024,
+    "ShardEngineMaxOriginalSizeInMb": 2048
 }
 ```
 ````
+
+## Related content
+
+* [Data sharding policy](sharding-policy.md)
+* [.alter table policy sharding command](alter-table-sharding-policy-command.md)
+* [.show database policy sharding command](show-database-sharding-policy-command.md)
+* [.alter-merge database policy sharding command](alter-merge-database-sharding-policy-command.md)
+* [.delete database policy sharding command](delete-database-sharding-policy-command.md)
+* [Extents (data shards)](extents-overview.md)
