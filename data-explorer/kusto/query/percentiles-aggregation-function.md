@@ -31,8 +31,8 @@ To calculate weighted percentiles, see [percentilesw()](percentilesw-aggregation
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*expr* | `string` |  :heavy_check_mark: | The expression to use for aggregation calculation.|
-|*percentile*| int or long |  :heavy_check_mark:| A constant that specifies the percentile.|
-|*percentiles* | int or long |  :heavy_check_mark: | One or more comma-separated percentiles.|
+|*percentile*| int, long or real |  :heavy_check_mark:| A constant that specifies the percentile.|
+|*percentiles* | int, long or real |  :heavy_check_mark: | One or more comma-separated percentiles.|
 
 ## Returns
 
