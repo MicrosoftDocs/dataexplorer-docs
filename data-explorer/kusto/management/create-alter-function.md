@@ -59,3 +59,7 @@ TestFunction(myLimit:int)
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
 |TestFunction|(myLimit:int)|{ StormEvents &#124; take myLimit }|MyFolder|Demo function with parameter|
+
+## Related content
+
+* [.create function](./create-function.md)

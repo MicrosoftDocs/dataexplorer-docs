@@ -62,3 +62,7 @@ print todatetime('12-02-2022') == datetime('12-02-2022')
 |print_0|
 |--|
 |true|
+
+## Related content
+
+* [make-datetime function](./make-datetime-function.md)

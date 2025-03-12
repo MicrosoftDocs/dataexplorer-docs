@@ -100,3 +100,7 @@ with (docstring = 'Demo function with parameter', folder='Demo')
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
 |MyFunction2|(myLimit:long)|{StormEvents &#124; take myLimit}|Demo|Demo function with parameter|
+
+## Related content
+
+* [.create-or-alter function](./create-alter-function.md)
