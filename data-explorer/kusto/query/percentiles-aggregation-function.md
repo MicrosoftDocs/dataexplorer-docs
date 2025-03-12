@@ -117,7 +117,7 @@ Instead of returning the values in individual columns, use the `percentiles_arra
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*expr* | `string` |  :heavy_check_mark: | The expression to use for aggregation calculation.|
-|*percentiles*| int, long, or dynamic |  :heavy_check_mark:| One or more comma-separated percentiles or a dynamic array of percentiles. Each percentile can be an integer or long value.|
+|*percentiles*| int, long, real or dynamic |  :heavy_check_mark:| One or more comma-separated percentiles or a dynamic array of percentiles. Each percentile can be an integer, long or real value.|
 
 ### Returns
 
