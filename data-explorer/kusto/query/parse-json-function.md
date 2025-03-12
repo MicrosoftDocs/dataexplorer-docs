@@ -92,3 +92,5 @@ print d_b_c=parse_json(tostring(parse_json(d).b)).c
 ## Related content
 
 * [parse operator](parse-operator.md)
+* [bag_unpack plugin](./bag-unpack-plugin.md)
+* [mv-expand operator](./mv-expand-operator.md)

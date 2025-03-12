@@ -65,6 +65,7 @@ print todatetime('12-02-2022') == datetime('12-02-2022')
 
 ## Related content
 
+* [make-datetime function](./make-datetime-function.md)
 * [Scalar function types at a glance](scalar-functions.md)
 * [The datetime data type](scalar-data-types/datetime.md)
 * [datetime_add()](datetime-add-function.md)

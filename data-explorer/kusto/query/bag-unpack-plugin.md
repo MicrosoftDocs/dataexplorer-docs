@@ -241,3 +241,8 @@ datatable(d:dynamic, Description: string)
 |Student|John|20|
 |Teacher|Dave|40|
 |Student|Jasmine|30|
+
+## Related content
+
+* [parse_json function](./parse-json-function.md)
+* [mv-expand operator](./mv-expand-operator.md)

@@ -37,3 +37,9 @@ All rows with a timestamp in the past hour:
 ```kusto
 T | where Timestamp > ago(1h)
 ```
+
+## Related content
+
+* [timespan datatype](scalar-data-types/timespan.md)
+* [totimespan datatype](./totimespan-function.md)
+* [make-timespan function](make-timespan-function.md)

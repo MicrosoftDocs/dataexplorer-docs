@@ -82,3 +82,7 @@ print year_month_day_hour_minute_second = make_datetime(2017,10,01,12,11,0.12345
 |year_month_day_hour_minute_second|
 |---|
 |2017-10-01 12:11:00.1234567|
+
+## Related content
+
+* [todatetime function](./todatetime-function.md)
