@@ -15,7 +15,7 @@ Sets a mechanism that stores a query result on the service for up to 24 hours.
 If a stored query result name already exists, `.set` fails. Instead, use `.set-or-replace`, which deletes the existing stored query result and creates a new one with the same name.
 
 > [!NOTE]
-> This command cannot be cancelled. The [.cancel operation](cancel-operation-command.md) command is only supported for *ingest from query* commands and can't be used to cancel any other commands.
+> This command can't be canceled. The [.cancel operation](cancel-operation-command.md) command is only supported for *ingest from query* commands and can't be used to cancel any other commands.
 
 ## Permissions
 
