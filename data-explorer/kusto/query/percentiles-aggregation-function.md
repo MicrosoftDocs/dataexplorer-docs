@@ -3,7 +3,7 @@ title:  percentile(), percentiles()
 description:  Learn how to use the percentile(), percentiles() functions to calculate estimates for nearest rank percentiles.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/15/2025
+ms.date: 03/13/2025
 ---
 # percentile(), percentiles() (aggregation function)
 
@@ -31,8 +31,8 @@ To calculate weighted percentiles, see [percentilesw()](percentilesw-aggregation
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*expr* | `string` |  :heavy_check_mark: | The expression to use for aggregation calculation.|
-|*percentile*| int or long |  :heavy_check_mark:| A constant that specifies the percentile.|
-|*percentiles* | int or long |  :heavy_check_mark: | One or more comma-separated percentiles.|
+|*percentile*| real |  :heavy_check_mark:| A constant that specifies the percentile.|
+|*percentiles* | real |  :heavy_check_mark: | One or more comma-separated percentiles.|
 
 ## Returns
 
@@ -42,6 +42,10 @@ Returns a table with the estimates for *expr* of the specified percentiles in th
 > To return the percentiles in a single column, see [Return percentiles as an array](#return-percentiles-as-an-array).
 
 ## Examples
+
+The examples in this section show how to use the syntax to help you get started.
+
+[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Calculate single percentile
 
@@ -117,7 +121,7 @@ Instead of returning the values in individual columns, use the `percentiles_arra
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*expr* | `string` |  :heavy_check_mark: | The expression to use for aggregation calculation.|
-|*percentiles*| int, long, or dynamic |  :heavy_check_mark:| One or more comma-separated percentiles or a dynamic array of percentiles. Each percentile can be an integer or long value.|
+|*percentiles*| real or dynamic |  :heavy_check_mark:| One or more comma-separated percentiles or a dynamic array of percentiles. Each percentile must be a real value.|
 
 ### Returns
 
