@@ -8,14 +8,15 @@ monikerRange: "azure-data-explorer"
 ---
 # ai_embed_text plugin (Preview)
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The `ai_embed_text` plugin allows embedding of text using language models, enabling various AI-related scenarios such as Retrieval Augmented Generation (RAG) applications and semantic search. The plugin supports Azure OpenAI Service embedding models accessed using managed identity.
+The `ai_embed_text` plugin allows embedding of text using language models, enabling various AI-related scenarios such as Retrieval Augmented Generation (RAG) applications and semantic search. The plugin supports Azure OpenAI Service embedding models accessed using managed identity and impersonation.
 
 ## Prerequisites
 
-* An Azure OpenAI Service configured with [managed identity](/azure/ai-services/openai/how-to/managed-identity)
-* [Managed identity and callout policies](#configure-managed-identity-and-callout-policies) configured to allow communication with Azure OpenAI services
+* An Azure Open AI Service with the correct role ([Cognitive Services OpenAI User](/azure/ai-services/openai/how-to/role-based-access-control)) assinged for the identity to be used.
+* A callout policy in place allowing calls to AI services [Callout Policy](#configure-callout-policy).
+* Optional: If Managed Identity is to be used, configure [Managed Identity Policy](#configure-managed-identity) configured to allow communication with Azure OpenAI services.
 
 ## Syntax
 
@@ -45,31 +46,12 @@ The following table describes the options that control the way the requests are 
 | `ModelParameters` | `dynamic` | Parameters specific to the embedding model, such as embedding dimensions or user identifiers for monitoring purposes. Default value: `null`. |
 | `ReturnSuccessfulOnly` | `bool` | Indicates whether to return only the successfully processed items. Default value: `false`. If the *IncludeErrorMessages* parameter is set to `true`, this option is always set to `false`. |
 
-## Configure managed identity and callout policies
+## Configure Callout Policy
+We need to allow the cluster to make callouts with the specific type for AI services.
 
-To use the `ai_embed_text` plugin, you must configure the following policies:
+[Callout](../management/callout-policy.md): Authorize the AI model endpoint domain.
 
-* [managed identity](../management/managed-identity-policy.md): Allow the system-assigned managed identity to authenticate to Azure OpenAI services.
-* [callout](../management/callout-policy.md): Authorize the AI model endpoint domain.
-
-To configure these policies, use the commands in the following steps:
-
-1. Configure the managed identity:
-
-    <!-- csl -->
-    ~~~kusto
-    .alter-merge cluster policy managed_identity
-    ```
-    [
-      {
-        "ObjectId": "system",
-        "AllowedUsages": "AzureAI"
-      }
-    ]
-    ```
-    ~~~
-
-1. Configure the callout policy:
+Configure the callout policy:
 
     <!-- csl -->
     ~~~kusto
@@ -81,6 +63,27 @@ To configure these policies, use the commands in the following steps:
             "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
             "CanCall": true
         }
+    ]
+    ```
+    ~~~
+
+## Configure Managed Identity
+Optionally, we can use managed identities for authentication.
+To do that, we need to allow the use of managed identities with this specific intent.
+
+[Managed Identity](../management/managed-identity-policy.md): Allow the system-assigned managed identity to authenticate to Azure OpenAI services.
+
+Configure the managed identity:
+
+    <!-- csl -->
+    ~~~kusto
+    .alter-merge cluster policy managed_identity
+    ```
+    [
+      {
+        "ObjectId": "system",
+        "AllowedUsages": "AzureAI"
+      }
     ]
     ```
     ~~~
@@ -107,6 +110,14 @@ let expression = 'Embed this text using AI';
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;managed_identity=system';
 evaluate ai_embed_text(expression, connectionString)
 ```
+
+Or, using the user's identity (impersonation)
+<!-- csl -->
+```kusto
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
+evaluate ai_embed_text(expression, connectionString)
+```
+
 
 The following example embeds multiple texts using the Azure OpenAI Embedding model.
 
