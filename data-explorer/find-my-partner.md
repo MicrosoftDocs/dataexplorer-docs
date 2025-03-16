@@ -998,7 +998,7 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 
 - [https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization](https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization)
 - [https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion](https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion)
-- [https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring](https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring)
+- [Davey Textile bolsters loom productivity with downtime monitoring](https://static1.squarespace.com/static/63a1c6a2415f98749634e9ea/t/63b6f7f9037a7a152a204676/1672935417666/Uptake%20Case%20Study-%20Davey%20Textiles%20(1).pdf)
 
 ## Zure Ltd
 
