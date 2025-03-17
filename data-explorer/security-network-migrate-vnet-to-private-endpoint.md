@@ -25,7 +25,7 @@ Following the migration, you can still connect to your cluster using the `privat
 - (Optional) You have the necessary permissions to establish and oversee private endpoints and private DNS zones within your subscription and resource group.
 
 > [!Tip]
-> Alternatively, while performing the migration, you could temporarily have at least Contributor permissions on the Resource Group containing your cluster.
+> Alternatively, while performing the migration, you can temporarily have at least Contributor permissions on the resource group containing your cluster.
 
 ## Find clusters that use Virtual Network injection
 
