@@ -101,3 +101,7 @@ The following example creates the `MyFunction2` function with a description (`do
 |Name|Parameters|Body|Folder|DocString|
 |---|---|---|---|---|
 |MyFunction2|(Mytimestamp:datetime)|{StormEvents &#124; where EndTime <= Mytimestamp}|Demo|Demo function with date parameter|
+
+## Related content
+
+* [.create-or-alter function](./create-alter-function.md)

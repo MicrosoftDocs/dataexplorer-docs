@@ -39,12 +39,19 @@ The following example checks whether the input matches the defined timespan.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJL8nMTS0uSMzTUDLQMzCwMjC0MjBQ0lSwtVUAyWgY5mbmaQIAkicpMSwAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoS8wpTbU1teblKijKzCtRyM3MKw4uKbItyS%2FJzE0tLkjM01Ay0DMwsDIwtjIwUNLUUUhJrCxGljZJAQpm5Jei6AEbq6ClYJgBlASZiU3SKBcoWZyanJ%2BXgiJvCpQzKQbKwUR8M%2FNs4bJGpkDzNAFFa0mAvAAAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-totimespan("0.00:01:00") == time(1min)
+let value=5;
+print minsStr=totimespan("0.00:03:00"), days=totimespan(4d), hour=totimespan(value * 1h), mins=totimespan(value * 2m), seconds=totimespan(5 * 4s), timespanMin=timespan(25min)
 ```
+
+**Output**
+
+|minsStr|days|hour|mins|seconds|timespanMin|
+|---|---|---|---|---|---|
+|00:03:00|4.00:00:00|05:00:00|00:10:00|00:00:20|00:25:00|
 
 ## Related content
 
