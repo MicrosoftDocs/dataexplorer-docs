@@ -41,16 +41,16 @@ When embedding the web UI, the hosting page is responsible for authentication. T
 
 Use the following steps to handle authentication:
 
-1. In your application, listen for the **getToken** message.
+1. In your application, listen for the **getToken** message. 
 
     ```javascript
     window.addEventListener('message', (event) => {
-       if (event.data.signature === "queryExplorer" && event.data.type === "getToken") {
+       if (event.origin === "https://dataexplorer.azure.com" && event.data.type === "getToken") {
          // CODE-1: Replace this placeholder with code to get the access token from Microsoft Entra ID and
          //         then post a "postToken" message with an access token and an event.data.scope
        }
     })    
-   ```
+    ```
 
 1. Define a function to map the `event.data.scope` to Microsoft Entra scope. Use the following table to decide how to map `event.data.scope` to Microsoft Entra scopes:
 
@@ -100,7 +100,7 @@ Use the following steps to handle authentication:
             "type": "postToken",
             "message": // the access token your obtained earlier
             "scope": // event.data.scope as passed to the "getToken" message
-        }, '*');
+        }, 'https://dataexplorer.azure.com'); 
       }
     ```
 
