@@ -17,8 +17,15 @@ Following the migration, you can still connect to your cluster using the `privat
 ## Prerequisites
 
 - You have an existing Azure Data Explorer cluster that uses Virtual Network injection and you want to migrate it. For more information, see [Find clusters that use Virtual Network injection](#find-clusters-that-use-virtual-network-injection).
+- You must have at least [Contributor](/azure/role-based-access-control/built-in-roles/privileged#contributor) permissions to manage the cluster.
+- You must have at least [Contributor](/azure/role-based-access-control/built-in-roles/privileged#contributor) permissions to manage the Virtual Network where the cluster is located.
+- You must have at least [Contributor](/azure/role-based-access-control/built-in-roles/privileged#contributor) permissions to manage the Private IP attached to your cluster.
+- For other resources, such as Azure Storage or Event Hubs, you must have at least Owner permissions.
 - (Optional) You have a virtual network and a subnet where you want to create the private endpoint for the Azure Data Explorer cluster.
-- You have the necessary permissions to establish and oversee private endpoints and private DNS zones within your subscription and resource group. For the Azure Data Explorer cluster, Contributor access is required, while other resources like Azure Storage or Event Hubs require Owner permissions.
+- (Optional) You have the necessary permissions to establish and oversee private endpoints and private DNS zones within your subscription and resource group.
+
+> [!Tip]
+> Alternatively, while performing the migration, you can temporarily have at least Contributor permissions on the resource group containing your cluster.
 
 ## Find clusters that use Virtual Network injection
 
