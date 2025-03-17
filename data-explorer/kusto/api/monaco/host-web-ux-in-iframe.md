@@ -41,7 +41,7 @@ When embedding the web UI, the hosting page is responsible for authentication. T
 
 Use the following steps to handle authentication:
 
-1. In your application, listen for the **getToken** message. If your domain is not `https://dataexplorer.azure.com`, replace the `event.origin` value with the domain you use. 
+1. In your application, listen for the **getToken** message. 
 
     ```javascript
     window.addEventListener('message', (event) => {
@@ -100,7 +100,7 @@ Use the following steps to handle authentication:
             "type": "postToken",
             "message": // the access token your obtained earlier
             "scope": // event.data.scope as passed to the "getToken" message
-        }, '*');
+        }, 'https://dataexplorer.azure.com'); 
       }
     ```
 
