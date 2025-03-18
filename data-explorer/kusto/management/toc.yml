@@ -842,6 +842,23 @@ items:
       - name: .ingest inline command
         displayName: .ingest inline
         href: data-ingestion/ingest-inline.md
+      - name: Queued ingestion
+        items:
+          - name: Queued ingestion overview
+            displayName: Queued ingestion, ingest from folders, ingest from files, ingest from storage
+            href: data-ingestion/queued-ingestion-overview.md
+          - name: Queued ingestion use case
+            displayName: Queued ingestion historical data ingestion
+            href: data-ingestion/queued-ingestion-use-case.md
+          - name: .ingest-from-storage-queued into command
+            displayName: .ingest-from-storage-queued, ingest from storage command
+            href: data-ingestion/ingest-from-storage-queued.md
+          - name: .list blobs command
+            href: data-ingestion/list-blobs.md
+          - name: .cancel queued ingestion operation command
+            href: data-ingestion/cancel-queued-ingestion-operation-command.md
+          - name: .show queued ingestion operation command
+            href: data-ingestion/show-queued-ingestion-operations.md
       - name: Streaming ingestion
         items:
           - name: Streaming ingestion and schema changes
