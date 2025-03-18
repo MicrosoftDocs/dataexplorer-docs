@@ -33,7 +33,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |*SkipBatching*| `boolean` | | If set to  `true`, the blobs are ingested individually rather than batched together with other blobs. The default value is `false`.|
 |*CompressionFactor*| `real` | |The compression factor (ratio) between the original size and the compressed size of blobs. Compression factor is used to estimate the original size of the data for batching purposes, when blobs are provided in a compressed format.|
 |*IngestionPropertyName*, *IngestionPropertyValue* | `string` | |Optional ingestion properties. For more information about ingestion properties, see [Data ingestion properties](../../ingestion-properties.md).|
-|*IngestionSource* | table | :heavy_check_mark: | The ingestion source. The source is a list of blobs returned using the [`.list blobs`](list-blobs.md) command. |
+|*IngestionSource* | table | :heavy_check_mark: | The ingestion source. The source is a list of blobs returned using the [.list blobs](list-blobs.md) command. |
 
 > [!NOTE]
 > The `.list blobs` command can be used with the `.ingest-from-storage-queued` command to return the blobs you want to ingest. For detailed information about the command and a full list of its parameters, see [.list blobs command](list-blobs.md).
