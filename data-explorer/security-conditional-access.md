@@ -42,9 +42,12 @@ Using this feature requires a Microsoft Entra ID P1 or P2 license. To find the r
 
 1. Under **Cloud apps or actions**, select **Cloud apps**. Under **Include**, select **Select apps** to see a list of all apps available for Conditional Access. Select **Azure Data Explorer** > **Select**.
 
+    > [!NOTE]
+    > In some cases, the application name might be displayed as **KustoService**.
+
     > [!TIP]
     > Please make sure you select the Azure Data Explorer app with the following GUID: 2746ea77-4702-4b45-80ca-3c97e680e8b7.
-
+    
     :::image type="content" source="media/conditional-access/configure-select-apps.png" alt-text="Screenshot of the cloud apps section, showing the selection of the Azure Data Explorer app.":::
 
 1. Under **Conditions**, set the conditions you want to apply for all device platforms and then select **Done**. For more information, see [Microsoft Entra Conditional Access : Conditions](/azure/active-directory/conditional-access/concept-conditional-access-conditions).
