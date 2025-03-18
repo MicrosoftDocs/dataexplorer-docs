@@ -95,7 +95,7 @@ The following example creates a graph to represent the hierarchical relationship
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QzU7DMBCE734KK6dGShC0IEQhSBRx6ZFrVUVusooN%2FokcQ0Hi4fEmthOQL7P2zO7nleAoqF6ab4CBVrRlzp%2BThJVmCraDs0J3BWUdbKXRXU4OJHuSooGsoJt1QbKdOaG88vLlE2%2FXt17uzSjvvHzmVgy%2BuL4pMApfaEe9A42ejZevouHMtviCkb1QGPDtj%2FdEekILvbHuL1%2BkToyKaY9pQz2STnAReGaZbybmyRiRoi1%2BY3bPnDERdzEyI25AJT%2Be5x3KzrKepw3TsnyMnPQsHF%2Fs3miKK%2FfBMVMq5hpOV8GdP5SH0PpYpr%2Fn5MzBAtWmhbqFzgLU5sOlEK0qekl6a96gcXHwBY4p0uRQhrTQtaqW7YRO3ZLJj%2FjnWg79BbnOHEdTAgAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QzU7DMBCE734KK6dGShC0IEQhSBRx6ZFrVUVusooN%2FokcQ0Hi4fEmthOQL7P2zO7nleAoqF6ab4CBVrRlzp%2BThJVmCraDs0J3BWUdbKXRXU4OJHuSooGsoJt1QbKdOaG88vLlE2%2FXt17uzSjvvHzmVgy%2BuL4pMApfaEe9A42ejZevouHMtviCkb1QGPDtj%2FdEekILvbHuL1%2BkToyKaY9pQz2STnAReGaZbybmyRiRoi1%2BY3bPnDERdzEyI25AJT%2Be5x3KzrKepw3TsnyMnPQsHF%2Fs3miKK%2FfBMVMq5hpOV8GdP5SH0PpYpr%2Fn5MzBAtWmhbqFzgLU5sOlEK0qekl6a96gcXHwBY4p0uRQhrTQtaqW7YRO3ZLJj%2FjnWg79BbnOHEdTAgAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
