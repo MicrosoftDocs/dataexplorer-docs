@@ -37,7 +37,7 @@ For zero length paths, the condition evaluates to `false`.
 
 The examples in this section show how to use the syntax to help you get started.
 
-### Find any round-trip paths between two train stations using different lines for each direction
+### Find any round-trip paths between two train stations using different lines in each direction
 
 The following example uses the `Locations` and `Routes` data tables to construct a graph that finds paths from a source location to a destination location through a `route`. It uses `any()` function to find paths that uses `"Train"` transportation method at least once. It returns the source location name, destination location name and transportation methods along the route.
 

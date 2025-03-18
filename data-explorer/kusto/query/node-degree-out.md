@@ -40,7 +40,7 @@ The following example uses the `Locations` and `Routes` data tables to construct
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32TUWuDMBSF3%2F0VF590aGV73FhhtAwGXQdbYYxSShYvmlUTSVJKYT9%2BiVYbtV0e77n3S87xmiSwEJRoJrgCTb4LhICLFFXoFagd7RFSokndEbTVJSnxHpSWjGdR17s6Vl01hLUH5vhLPMCXkDs%2FAn%2FG9NGPmvoH4fAsCadMUTEUZzmjJBuVF0LBE8%2BwQDXCIdG6QFv%2BJBJzsVfoe5sHL0ngXew1diYxzVqTJ8F1%2BCZZxnjr6GV%2BdjlHpRmvy5fklfGiKiH1qwnx3xRGzldyT3etkV5e5xgMnvGr2Q2C6QEdiBNSjzcYd5%2FQQznzF0xYoE28SdX7hZLsMM4kqXIYxgpxPL2cKByYzp31ExzcrTPYmhiXRNMcAiVpGK%2BlvfLmdjK528TTwCyxDr1Kih%2BkGkzHxCVEUJuxxzZe0%2By%2FsE0xk4hbQ68vijq1vnDb%2B%2BZ2j0pSBbU02IfRZP2nOfjTLOMcZSM2nDAaPSQM%2FwCR5KUquwMAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32TUWuDMBSF3%2F0VF590aGV73FhhtAwGXQdbYYxSShYvmlUTSVJKYT9%2BiVYbtV0e77n3S87xmiSwEJRoJrgCTb4LhICLFFXoFagd7RFSokndEbTVJSnxHpSWjGdR17s6Vl01hLUH5vhLPMCXkDs%2FAn%2FG9NGPmvoH4fAsCadMUTEUZzmjJBuVF0LBE8%2BwQDXCIdG6QFv%2BJBJzsVfoe5sHL0ngXew1diYxzVqTJ8F1%2BCZZxnjr6GV%2BdjlHpRmvy5fklfGiKiH1qwnx3xRGzldyT3etkV5e5xgMnvGr2Q2C6QEdiBNSjzcYd5%2FQQznzF0xYoE28SdX7hZLsMM4kqXIYxgpxPL2cKByYzp31ExzcrTPYmhiXRNMcAiVpGK%2BlvfLmdjK528TTwCyxDr1Kih%2BkGkzHxCVEUJuxxzZe0%2By%2FsE0xk4hbQ68vijq1vnDb%2B%2BZ2j0pSBbU02IfRZP2nOfjTLOMcZSM2nDAaPSQM%2FwCR5KUquwMAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -89,7 +89,7 @@ project src.LocationName,
 | Los Angeles | San Francisco | 1|  ["Truck","Truck"] | [2] |
 | Los Angeles | Chicago | 1 | ["Truck","Train"] | [2] |
 
-## Find employee with no managers
+### Find employee with no managers
 
 The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to find employees who report to a top-level manager who doesn't report to anyone else. It uses the `node_degree_out` function to identify the managers who don't report to any other manager.
 

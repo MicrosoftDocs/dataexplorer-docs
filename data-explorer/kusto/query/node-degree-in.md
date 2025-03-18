@@ -24,11 +24,11 @@ The `node_degree_in` function calculates the *in-degree*, or number of incoming 
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| *node* | `string` |  | The reference to a graph node variable in a graph pattern. <br> No parameters should be passed when used inside [all()](all-graph-function.md), [any()](any-graph-function.md) and [map()](map-graph-function.md) graph functions, in conjunction with [inner_nodes()](inner-nodes-graph-function.md).|
+| *node* | `string` |  | The reference to a graph node variable in a graph pattern. <br>Do not pass any parameters when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) graph functions, in conjunction with [inner_nodes()](inner-nodes-graph-function.md).|
 
 ## Returns
 
-Returns the in-degree of the input node or of all inner nodes, when used inside [all()](all-graph-function.md), [any()](any-graph-function.md) and [map()](map-graph-function.md) functions in conjunction with [inner_nodes()](inner-nodes-graph-function.md).
+Returns the in-degree of the input node or of all inner nodes, when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) functions in conjunction with [inner_nodes()](inner-nodes-graph-function.md).
 
 ## Example
 
@@ -36,7 +36,7 @@ The following example creates a graph to represent the hierarchical relationship
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WRX2uDMBTF3%2F0UF590aKF1Y6ybhXX0ZY97LUVSvahbTCRm6wr78LvRRPuHJggnyTk3P284asCm5fKI2EEKBdM09xwDwRpcdlrVooyAlbjkUpSht%2FX8V17n6EeQLCLPX8u9kXOSmx%2Bzu3gk%2BS57%2BUTyrVJ1R4v7h8hE8dfYjV6jMJ6E5EedV0wV5sRENpz3Z0ni7Z49TogKW6n0OaDDHiEbJohT2XWPOtA54glm2hmgB6Njcjb3H5N7AnUJx9oXMrgW1fsjni%2BMS8XaamwxxPHKccKh1tVJ86UA03MK9pm4YTqvILDu8CXe2tJ389ks2cVjA0IPaBwqVAhCFpgVWCrErBZjGNIUEmCioO8Y1EKgyoy1C2zNMLqMhrCC%2BVC6VfITc%2B3AZwYzGsntsne6YatmdGN2cttUnl6yYe0NEnrAnOlgqOtDxTrwr%2FnMkc34YRid3T%2Fasia90ZILYmuQ3zrDswjtTJ3%2BBxQIrhUvAwAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WRX2uDMBTF3%2F0UF590aKF1Y6ybhXX0ZY97LUVSvahbTCRm6wr78LvRRPuHJggnyTk3P284asCm5fKI2EEKBdM09xwDwRpcdlrVooyAlbjkUpSht%2FX8V17n6EeQLCLPX8u9kXOSmx%2Bzu3gk%2BS57%2BUTyrVJ1R4v7h8hE8dfYjV6jMJ6E5EedV0wV5sRENpz3Z0ni7Z49TogKW6n0OaDDHiEbJohT2XWPOtA54glm2hmgB6Njcjb3H5N7AnUJx9oXMrgW1fsjni%2BMS8XaamwxxPHKccKh1tVJ86UA03MK9pm4YTqvILDu8CXe2tJ389ks2cVjA0IPaBwqVAhCFpgVWCrErBZjGNIUEmCioO8Y1EKgyoy1C2zNMLqMhrCC%2BVC6VfITc%2B3AZwYzGsntsne6YatmdGN2cttUnl6yYe0NEnrAnOlgqOtDxTrwr%2FnMkc34YRid3T%2Fasia90ZILYmuQ3zrDswjtTJ3%2BBxQIrhUvAwAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
