@@ -12,6 +12,10 @@ ms.date: 03/19/2025
 
 Displays the queued ingestion operations. Ingestion operations are tracked once the [.ingest-from-storage-queued](ingest-from-storage-queued.md) command begins.
 
+> [!NOTE]
+>
+> Queued ingestion commands are executed on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
+
 ## Permissions
 
 You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions on the table that the `IngestionOperationId` or IDs belong to.

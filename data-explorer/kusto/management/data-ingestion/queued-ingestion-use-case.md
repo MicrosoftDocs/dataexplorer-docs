@@ -22,6 +22,10 @@ The queued ingestion commands allow you to test how the historical data is inges
 1. [Perform your full ingestion](#perform-your-full-ingestion)
 1. [Cancel ingestion](#cancel-ingestion)
 
+> [!NOTE]
+>
+> Queued ingestion commands are executed on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
+
 ### List blobs in a folder
 
 To understand the historical data better, you list a maximum of 10 blobs from the Azure blob storage container.

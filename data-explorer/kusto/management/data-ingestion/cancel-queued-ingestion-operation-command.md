@@ -13,6 +13,10 @@ The `.cancel queued ingestion operation` command cancels an ingestion operation.
 
 The cancel operation command is done on a best effort basis. For example, ongoing ingestion processes or in-flight ingestion, might not get canceled.
 
+> [!NOTE]
+>
+> Queued ingestion commands are executed on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
+
 ## Permissions
 
 You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions to run this command.
