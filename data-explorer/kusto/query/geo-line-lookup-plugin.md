@@ -24,7 +24,7 @@ The `geo_line_lookup` plugin looks up a Line value in a lookup table and returns
 | *SourceLongitude* | `real` |  :heavy_check_mark: | The column of *T* with longitude value to be looked up in *LookupTable*. Longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
 | *SourceLatitude* | `real` |  :heavy_check_mark: | The column of *T* with latitude value to be looked up in *LookupTable*. Latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
 | *LookupLineKey* | `dynamic` |  :heavy_check_mark: | The column of *LookupTable* with line or multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of dynamic type that is matched against each *SourceLongitude*, *SourceLatitudes* values.|
-| *Radius* | `real` | :heavy_check_mark: | Radius value defines the length from the line where the location is considered a match.|
+| *Radius* | `real` | :heavy_check_mark: | Length from the line where the location is considered a match.|
 | *return_unmatched* | `bool` | | An optional boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
 | *join_hint* | `real` | | An optional join hint distance in meters value that may help in matching locations to their respective lines.|
 
