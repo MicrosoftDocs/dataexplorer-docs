@@ -276,3 +276,4 @@ datatable(SourceNumber: string, TargetNumber: string, CharsCount: long)
 ## Related content
 
 * [mv-expand](mv-expand-operator.md) operator
+* [array_iff](./array-iff-function.md) function

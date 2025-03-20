@@ -109,3 +109,8 @@ print condition=dynamic([true,true,true]), if_true=dynamic([1,2]), if_false=dyna
 |condition|if_true|if_false|res|
 |---|---|---|---|
 |[true, true, true]|[1, 2]|[3, 4]|[1, 2, null]|
+
+## Related content
+
+* [mv-apply](./mv-apply-operator.md) operator
+* [mv-expand](./mv-expand-operator.md) operator

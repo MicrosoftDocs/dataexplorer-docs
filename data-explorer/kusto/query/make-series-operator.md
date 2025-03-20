@@ -250,3 +250,36 @@ data
 |avg_metric|timestamp|
 |---|---|
 |[<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0,<br>  1.0<br>]|[<br>  "2017-01-01T00:00:00.0000000Z",<br>  "2017-01-02T00:00:00.0000000Z",<br>  "2017-01-03T00:00:00.0000000Z",<br>  "2017-01-04T00:00:00.0000000Z",<br>  "2017-01-05T00:00:00.0000000Z",<br>  "2017-01-06T00:00:00.0000000Z",<br>  "2017-01-07T00:00:00.0000000Z",<br>  "2017-01-08T00:00:00.0000000Z",<br>  "2017-01-09T00:00:00.0000000Z"<br>]|
+
+Using `make-series` and `mv-expand` to fill values for missing records:
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22QwW7DIAyG7zyFj0ECCZjaaq1y2yNMu0w7sOFq2UiIwJl62MPPSVA0bQEhjP3Z%2FnFEgkI%2B04MnhBYCX9T12DjjDtpYbY7yIiJTOIR9xmlzXxmO%2BBXg%2FRqxeWTsvCUoePJxYkc3kIJE75jPbErxLIDX%2F94nqcAaPlbtE%2FbIhGPC7ROszTJxx8RBvFzErEx8Q%2B8%2FURfMHZZVUlumvlksWYW12kLAq58itdpBGmD%2BC1xz6n8NjNI2l0I4winM1b803kY%2FhLW2WjJrWQ7jjThncbaUNsHzW9YJsZ%2Fn8kfQ6ltsyWXGnD7wjXTGlAPm2qR2XKgfzvzoJNwBAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+let startDate = datetime(2025-01-06);
+let endDate = datetime(2025-02-09);
+let data = datatable(Time: datetime, Value: int, other:int)
+[
+    datetime(2025-01-07), 10, 11,
+    datetime(2025-01-16), 20, 21,
+    datetime(2025-02-01), 30, 5
+];
+data
+| make-series Value=sum(Value), other=-1 default=-2 on Time from startDate to endDate step 7d
+| mv-expand Value, Time, other
+| extend Time=todatetime(Time), Value=toint(Value), other=toint(other)
+| project-reorder Time, Value, other 
+```
+
+**Output**
+
+|Time|Value|other|
+|---|---|---|
+|2025-01-06T00:00:00Z|10|-1|
+|2025-01-13T00:00:00Z|20|-1|
+|2025-01-20T00:00:00Z|0|-2|
+|2025-01-27T00:00:00Z|30|-1|
+|2025-02-03T00:00:00Z|0|-2|
