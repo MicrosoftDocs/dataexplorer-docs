@@ -15,7 +15,7 @@ The cancel operation command is done on a best effort basis. For example, ongoin
 
 > [!NOTE]
 >
-> Queued ingestion commands are executed on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
+> Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
 
 ## Permissions
 

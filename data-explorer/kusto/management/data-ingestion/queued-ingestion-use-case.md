@@ -24,7 +24,7 @@ The queued ingestion commands allow you to test how the historical data is inges
 
 > [!NOTE]
 >
-> Queued ingestion commands are executed on the Data Management endpoint https://ingest-[YourClusterName].[Region].kusto.windows.net.
+> Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
 
 ### List blobs in a folder
 
