@@ -3,10 +3,10 @@ title: Queued ingestion use case
 description: Learn how to ingest historical data using the queued ingestion commands.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 02/23/2025
+ms.date: 03/19/2025
 ---
 
-# Queued ingestion use case
+# Queued ingestion use case (Preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -21,6 +21,10 @@ The queued ingestion commands allow you to test how the historical data is inges
 1. [Track follow up ingestion status](#track-follow-up-ingestion-status)
 1. [Perform your full ingestion](#perform-your-full-ingestion)
 1. [Cancel ingestion](#cancel-ingestion)
+
+> [!NOTE]
+>
+> Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
 
 ### List blobs in a folder
 
