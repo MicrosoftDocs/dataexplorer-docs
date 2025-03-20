@@ -1577,6 +1577,12 @@ items:
             href: preview-plugin.md
           - name: schema_merge plugin
             href: schema-merge-plugin.md
+      - name: Geospatial plugins
+        items:
+          - name: geo_line_lookup plugin
+            href: geo-line-lookup-plugin.md
+          - name: geo_polygon_lookup plugin
+            href: geo-polygon-lookup-plugin.md
       - name: Data reshaping plugins
         items:
           - name: bag_unpack plugin

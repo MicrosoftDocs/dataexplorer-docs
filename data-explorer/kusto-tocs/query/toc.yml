@@ -1766,6 +1766,12 @@ items:
       href: /kusto/query/preview-plugin?view=azure-data-explorer&preserve-view=true
     - name: schema_merge plugin
       href: /kusto/query/schema-merge-plugin?view=azure-data-explorer&preserve-view=true
+  - name: Geospatial plugins
+    items:
+    - name: geo_line_lookup plugin
+      href: /kusto/query/geo-line-lookup-plugin?view=azure-data-explorer&preserve-view=true
+    - name: geo_polygon_lookup plugin
+      href: /kusto/query/geo-polygon-lookup-plugin?view=azure-data-explorer&preserve-view=true
   - name: Data reshaping plugins
     items:
     - name: bag_unpack plugin
