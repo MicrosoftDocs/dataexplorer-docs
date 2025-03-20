@@ -3,15 +3,19 @@ title: .cancel queued ingestion operation command
 description: Learn how to use the `.cancel queued operation` command to cancel a long-running operation.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/25/2025
+ms.date: 03/19/2025
 ---
-# .cancel queued ingestion operation command
+# .cancel queued ingestion operation command (Preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 The `.cancel queued ingestion operation` command cancels an ingestion operation. This command is useful for aborting an ingestion operation that is taking too long to complete.
 
 The cancel operation command is done on a best effort basis. For example, ongoing ingestion processes or in-flight ingestion, might not get canceled.
+
+> [!NOTE]
+>
+> Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
 
 ## Permissions
 

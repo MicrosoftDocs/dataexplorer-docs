@@ -3,15 +3,19 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/05/2025
+ms.date: 03/19/2025
 ---
-# .list blobs command
+# .list blobs command (Preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 The `.list blobs` command lists blobs under a specified container path.
 
 This command is typically used with [.ingest-from-storage-queued](ingest-from-storage-queued.md) to ingest data. You can also use it on its own to better understand folder contents and parameterize ingestion commands.
+
+> [!NOTE]
+>
+> Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
 
 ## Permissions
 
