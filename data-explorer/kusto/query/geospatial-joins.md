@@ -46,7 +46,7 @@ let locations1 = datatable(name: string, longitude: real, latitude: real)
     "a", -0.12433080766874127, 51.51115841361647,
     "b", -0.12432651341458723, 51.511160848670585,
     "c", -0.12432466939637266, 51.51115959669167,
-    "d",1,1,
+    "d", 1,                    1,
 ];
 let locations2 = datatable(id: string, longitude: real, latitude: real)
 [
@@ -80,7 +80,7 @@ let locations1 = datatable(name: string, longitude: real, latitude: real)
     "a", -0.12433080766874127, 51.51115841361647,
     "b", -0.12432651341458723, 51.511160848670585,
     "c", -0.12432466939637266, 51.51115959669167,
-    "d", 1,1,
+    "d", 1,                    1,
 ];
 let locations2 = datatable(id: string, longitude: real, latitude: real)
 [
@@ -109,7 +109,7 @@ locations1
 |-|-|-|-|
 |a|1|-0.124330807668741|51.5111584136165|
 |b|1|-0.124330807668741|51.5111584136165|
-|c|1|-0.124324669396373|	51.5111595966917
+|c|1|-0.124324669396373|51.5111595966917|
 
 
 The following example illustrates join of locations from locations1 table with locations from locations2 table if the points from locations1 are within 300 meters of points from locations2 table.
@@ -123,8 +123,8 @@ The following example illustrates join of locations from locations1 table with l
 ```kusto
 let locations1 = datatable(name: string, longitude: real, latitude: real)
 [
-    "O2 Entrance", 0.005889454501716321, 51.50238626916584,
-    "O2 Entrance", 0.0009625704125020596,51.50385432770013,
+    "O2 Entrance",    0.005889454501716321,  51.50238626916584,
+    "O2 Entrance",    0.0009625704125020596, 51.50385432770013,
     "Greenwich Park", 0.0009395106042404677, 51.47700456557013,
 ];
 let locations2 = datatable(id: string, longitude: real, latitude: real)
