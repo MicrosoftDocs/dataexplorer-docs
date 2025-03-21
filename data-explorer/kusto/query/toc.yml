@@ -1302,6 +1302,8 @@ items:
       - name: Geospatial clustering overview
         displayName: H3, S2, Geohash
         href: geospatial-grid-systems.md
+      - name: Geospatial joins
+        href: geospatial-joins.md
       - name: Geospatial visualizations
         href: geospatial-visualizations.md
       - name: geo_angle()
