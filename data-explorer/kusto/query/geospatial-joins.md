@@ -31,7 +31,7 @@ The following tools and capabilities are useful:
 >
 > * Read more about [join operator](join-operator.md) and its flavors.
 
-# Examples
+## Examples
 
 The following example illustrates join on locations using [S2](geo-point-to-s2cell-function.md).
 
