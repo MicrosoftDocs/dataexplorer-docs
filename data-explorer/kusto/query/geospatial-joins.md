@@ -29,7 +29,7 @@ The following tools and capabilities are useful:
 >
 > * If there are too many nearby locations, use one of the supported geo hashes [S2](geo-point-to-s2cell-function.md), [H3](geo-point-to-h3cell-function.md) or [Geohash](geo-point-to-geohash-function.md) to aggregate near by locations.
 >
-> * Read more about [join operator](join-operator) and its flavors.
+> * Read more about [join operator](join-operator.md) and its flavors.
 
 # Examples
 
