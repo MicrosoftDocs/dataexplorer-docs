@@ -1299,7 +1299,7 @@ items:
             href: node-degree-out.md
   - name: Geospatial
     items:
-      - name: Geospatial clustering overview
+      - name: Geospatial clustering
         displayName: H3, S2, Geohash
         href: geospatial-grid-systems.md
       - name: Geospatial joins
