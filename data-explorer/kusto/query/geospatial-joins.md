@@ -14,10 +14,10 @@ Kusto Query Language (KQL) provides tools for geospatial joins.
 
 The following tools and capabilities are useful:
 
-* Converting points (longitude, latitude) to one of the supported geo hashes [S2](geo-point-to-s2cell-function.md), [H3](geo-point-to-h3cell-function.md) or [Geohash](geo-point-to-geohash-function.md). Geo hash can be used as a join key. Two nearby points are converted to the same hash value or they are neigbors, which can be accounted for as well. Learn more about different [geo hash algorithms](geospatial-grid-systems.md). See examples below.
+* Converting points (longitude, latitude) to one of the supported geo hashes [S2](geo-point-to-s2cell-function.md), [H3](geo-point-to-h3cell-function.md) or [Geohash](geo-point-to-geohash-function.md). Geo hash can be used as a join key. Two nearby points are converted to the same hash value or they are neighbors, which can be accounted for as well. Learn more about different [geo hash algorithms](geospatial-grid-systems.md). See examples below.
 
 
-* Buffer capabilities [geo_point_buffer()](geo-point-buffer-function.md), [geo_polygon_buffer()](geo-polygon-buffer-function.md) and [geo_line_buffer()](geo-line-buffer-function.md) can help geospatial conditional joins whenever match is a proximity condition. See example below.
+* Buffer capabilities [geo_point_buffer()](geo-point-buffer-function.md), [geo_polygon_buffer()](geo-polygon-buffer-function.md), and [geo_line_buffer()](geo-line-buffer-function.md) can help geospatial conditional joins whenever match is a proximity condition. See example below.
 
 
 * Polygon\Line lookup plugin capabilities [geo_polygon_lookup()](geo-polygon-lookup-plugin.md) and [geo_line_lookup()](geo-line-lookup-plugin.md) allow easy classification of locations to their respective polygons\lines based on containment and\or proximity.
@@ -66,7 +66,7 @@ locations1
 |b|1|
 |c|1|
 
-The following example illustrates join on locations using [H3](geo-point-to-h3cell-function.md) while accounting for a case where two nearby locations may be neigbors.
+The following example illustrates join on locations using [H3](geo-point-to-h3cell-function.md) while accounting for a case where two nearby locations may be neighbors.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
