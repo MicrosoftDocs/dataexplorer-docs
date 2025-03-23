@@ -95,7 +95,7 @@ The request results in an error if either of these conditions aren't met.
 
 To reevaluate the current principal's membership of a group, run the following command:
 
-> In the following example, replace <GroupFQN> with your own values, such as `group='aadGroup=MyGroup@MyOrg.com'`.
+> In the following example, replace `<GroupFQN>` with your own values, such as `group='aadGroup=MyGroup@MyOrg.com'`.
 
 ```kusto
 .clear cluster cache groupmembership with (group='<GroupFQN>')
