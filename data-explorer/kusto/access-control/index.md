@@ -96,6 +96,7 @@ The request results in an error if either of these conditions aren't met.
 To reevaluate the current principal's membership of a group, run the following command:
 
 ```kusto
+// e.g. (group='aadGroup=MyGroup@MyOrg.com')
 .clear cluster cache groupmembership with (group='<GroupFQN>')
 ```
 
@@ -110,6 +111,7 @@ To refresh another principal’s group membership, run the following command:
 > In the following command, replace `<PrincipalFQN>` with your own principal fully qualified name (FQN) and `<GroupFQN>` with your own group FQN. For more information, see [Referencing Microsoft Entra principals and groups](../management/reference-security-principals.md#referencing-microsoft-entra-principals-and-groups).
 
 ```kusto
+// e.g. (principal='aadUser=UserUpn@MyOrg.com', group='aadGroup=MyGroup@MyOrg.com')
 .clear cluster cache groupmembership with (principal='<PrincipalFQN>', group='<GroupFQN>')
 ```
 
