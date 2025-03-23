@@ -117,7 +117,7 @@ await producerClient.SendAsync(events);
 ## Event Hubs system properties mapping
 
 System properties are fields set by the Event Hubs service, at the time the event is enqueued.
-Azuer Data Explorer Event Hubs data connection can embed a predefined set of system properties into the data ingested into a table based on a given mapping.
+Azure Data Explorer Event Hubs data connection can embed a predefined set of system properties into the data ingested into a table based on a given mapping.
 
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
