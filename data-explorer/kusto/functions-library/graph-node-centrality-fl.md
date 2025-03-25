@@ -467,27 +467,27 @@ graph_node_centrality_fl(edgesTableName         = 'edges'
 | US	| backup_prc	| backup_prc	| Service	| Production	| US	| False	| False	| True	| False	| False	| True	| 2	| 2	| 4	| 0	| 0	| 9	| 0.9	| 14	| 9 |
 
 
-Running the function finds all shortest paths that connect between source nodes flagged as valid start points (isSourceValidPathStart == True) to all targets flagged as valid end points (isTargetValidPathEnd == True). Various centrality metrics are calculated on top of these paths as well as original edges for all nodes flagged as valid connectors (isValidConnector == True). The output is a table where each row correspond to a valid connector node. Each row contains the following fields:
+Running the function finds all shortest paths that connect between source nodes flagged as valid start points (isSourceValidPathStart == True) to all targets flagged as valid end points (isTargetValidPathEnd == True). Various centrality metrics are calculated on top of these paths as well as original edges for all nodes flagged as valid connectors (isValidConnector == True). The output is a table where each row corresponds to a valid connector node. Each row contains the following fields:
 
 * `nodeId`: NodeId of the connector node.
-* `isValidConnector`: Boolean flag for the node being a valid conector for which we want to calculate centrality; should be equal to True.
+* `isValidConnector`: Boolean flag for the node being a valid connector for which we want to calculate centrality; should be equal to True.
 * `isSourceValidPathStart`: Boolean flag for the node being a valid path start.
 * `isTargetValidPathEnd`: Boolean flag for the node being a valid path end.
 * `scope`: The scope containing the node and the paths.
 * `outDegree`: [OutDegree](https://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree) of the node - number of distinct targets on outcoming edges adjacent to the node.
 * `inDegree`: [InDegree](https://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree) of the node - number of distinct sources on incoming edges of the node.
-* `totalDegree`: TotalDegree - indegree multiplied by outdegree; representing the potential number of paths that the node can create (since all the incoming edges will be connected to all the outcoming ones).
+* `totalDegree`: TotalDegree - indegree multiplied by outdegree; representing the potential number of paths that the node can create (since all the incoming edges are connected to all the outcoming ones).
 * `sourceOutFlow`: The number of targets that can be reached via paths starting with the node - similar to [BlastRadius](graph-blast-radius-fl.md).
 * `sinkInFlow`: The number of sources that can reach the node via paths - similar to [ExposurePerimeter](graph-exposure-perimeter-fl.md).
 * `betweenness`: [Betweenness centrality](https://en.wikipedia.org/wiki/Betweenness_centrality) - the fraction of shortest paths that pass through the node out of all shortest paths.
 * `relativePrestige`: [Prestige centrality](https://en.wikipedia.org/wiki/Eigenvector_centrality) is the count of source/target pairs connected by shortest paths passing through the node. Relative prestige normalizes this count by the number of  all potential source/target pairs. The calculation can be adapted to penalize the score for longer paths.
 * `countShortestPathsThroughNode`: The number of shortest paths (perhaps with recurring source/target pairs) that pass through the node.
-* `countPairsConnectedByNode`: The number of of distinct source/target pairs from paths that pass through the node.
+* `countPairsConnectedByNode`: The number of distinct source/target pairs from paths that pass through the node.
 
 
-In the example above we calculate centrality metrics for all assets that are either applications, traffic routers or services, based on paths connecting virtual machines to storage accounts. In the first row of the output (if sorted by descending betweenness), we can see the service 'backup_prc'. It has in/out degrees of 2, betweenness of 9, etc. Note that different centrality metrics represent different aspects of importance, so they are not perfectly aligned - for example, node 'backup_prc' has high betweenness and relativePrestige, but low degrees (which highlights it as a node that doesn't have lots of direct edges, but is placed strategically and plays an important role in global relativePrestige of its scope).
+In the example above we calculate centrality metrics for all assets that are either applications, traffic routers or services, based on paths connecting virtual machines to storage accounts. In the first row of the output (if sorted by descending betweenness), we can see the service 'backup_prc'. It has in/out degrees of 2, betweenness of 9, etc. Different centrality metrics represent different aspects of importance, so they are not perfectly aligned - for example, node 'backup_prc' has high betweenness and relativePrestige, but low degrees (which highlights it as a node that doesn't have lots of direct edges, but is placed strategically and plays an important role in global relativePrestige of its scope).
 
-The function `graph_node_centrality_fl()` can be used in cybersecurity domain to discover important nodes, such as well connected tokens or users, over data modeled as a graph. Various available centrlity metrics provide a better understanding of node's posture and allow acting accordingly (e.g., prioritizing related signals, hardening the node or disrupting unneccessary connections).
+The function `graph_node_centrality_fl()` can be used in cybersecurity domain to discover important nodes, such as well connected tokens or users, over data modeled as a graph. Various available centrality metrics provide a better understanding of node's posture and allow acting accordingly (for example, by prioritizing related signals, hardening the node or disrupting unnecessary connections).
 
 ## Related content
 
