@@ -480,7 +480,7 @@ Running the function finds all shortest paths that connect between source nodes 
 * `sourceOutFlow`: The number of targets that can be reached via paths starting with the node - similar to [BlastRadius](graph-blast-radius-fl.md).
 * `sinkInFlow`: The number of sources that can reach the node via paths - similar to [ExposurePerimeter](graph-exposure-perimeter-fl.md).
 * `betweenness`: [Betweenness centrality](https://en.wikipedia.org/wiki/Betweenness_centrality) - the fraction of shortest paths that pass through the node out of all shortest paths.
-* `relativePrestige`: [Prestige centrality] (https://en.wikipedia.org/wiki/Eigenvector_centrality) is the count of source/target pairs connected by shortest paths passing through the node. Relative prestige normalizes this count by the number of  all potential source/target pairs. The calculation can be adapted to penalize the score for longer paths.
+* `relativePrestige`: [Prestige centrality](https://en.wikipedia.org/wiki/Eigenvector_centrality) is the count of source/target pairs connected by shortest paths passing through the node. Relative prestige normalizes this count by the number of  all potential source/target pairs. The calculation can be adapted to penalize the score for longer paths.
 * `countShortestPathsThroughNode`: The number of shortest paths (perhaps with recurring source/target pairs) that pass through the node.
 * `countPairsConnectedByNode`: The number of of distinct source/target pairs from paths that pass through the node.
 
