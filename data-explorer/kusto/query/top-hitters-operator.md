@@ -47,6 +47,12 @@ The examples in this section show how to use the syntax to help you get started.
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
+```kusto
+StormEvents
+| summarize TotalEventId = sum(EventId) by EventType
+| top 2 by TotalEventId desc
+```
+
 ### Get most frequent items
 
 This example shows how to find the top-5 types of storms.
