@@ -13,7 +13,7 @@ The `geo_polygon_lookup` plugin looks up a Polygon value in a lookup table and r
 
 ## Syntax
 
-*T* `|` `evaluate` `geo_polygon_lookup(` *LookupTable* `,` *SourceLongitude* `,` *SourceLatitude* `,` *LookupPolygonKey* `,` [ *radius* ] `,` [ *return_unmatched* ] `,` [ *join_hint* ] `)`
+*T* `|` `evaluate` `geo_polygon_lookup(` *LookupTable* `,` *LookupPolygonKey* `,` *SourceLongitude* `,` *SourceLatitude* `,` [ *radius* ] `,` [ *return_unmatched* ] `,` [ *lookup_area_radius* ] `)`
 
 ## Parameters
 
@@ -21,12 +21,12 @@ The `geo_polygon_lookup` plugin looks up a Polygon value in a lookup table and r
 |--|--|--|--|
 | *T* | `string` |  :heavy_check_mark: | The tabular input whose columns *SourceLongitude* and *SourceLatitude* are used for polygon matching.|
 | *LookupTable* | `string` |  :heavy_check_mark: | Table or tabular expression with polygons lookup data, whose column *LookupPolygonKey* is used for polygon matching.|
+| *LookupPolygonKey* | `dynamic` |  :heavy_check_mark: | The column of *LookupTable* with Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of dynamic type that is matched against each *SourceLongitude*, *SourceLatitudes* values.|
 | *SourceLongitude* | `real` |  :heavy_check_mark: | The column of *T* with longitude value to be looked up in *LookupTable*. Longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
 | *SourceLatitude* | `real` |  :heavy_check_mark: | The column of *T* with latitude value to be looked up in *LookupTable*. Latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
-| *LookupPolygonKey* | `dynamic` |  :heavy_check_mark: | The column of *LookupTable* with Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of dynamic type that is matched against each *SourceLongitude*, *SourceLatitudes* values.|
 | *radius* | `real` | | An optional radius value that defines the length from the polygon borders where the location is considered a match.|
 | *return_unmatched* | `bool` | | An optional boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
-| *join_hint* | `real` | | An optional join hint distance in meters value that may help in matching locations to their respective polygons.|
+| *lookup_area_radius* | `real` | | An optional lookup area radius distance in meters value that may help in matching locations to their respective polygons.|
 
 ## Returns
 
@@ -38,7 +38,7 @@ If the *return_unmatched* argument is set to `true`, the resulting table include
 
 If the *return_unmatched* argument is set to `false`, or omitted (the default value of `false` is used), the resulting table has as many records as matching results. This variant of lookup has better performance compared to `return_unmatched=true` execution.
 
-Setting *join_hint* length overrides internal matching mechanism and may improve or worsen the performance. Read more below.
+Setting *lookup_area_radius* length overrides internal matching mechanism and may or may not improve performance. Read more below.
 
 > [!NOTE]
 >
@@ -47,6 +47,7 @@ Setting *join_hint* length overrides internal matching mechanism and may improve
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
 > * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
 > * If input polygon edges are straight cartesian lines, consider using [geo_polygon_densify()](geo-polygon-densify-function.md) to convert planar edges to geodesics.
+> * Input polygons should be valid.
 
 **Polygon definition and constraints**
 
@@ -66,15 +67,16 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 >
 > * Polygon doesn't necessarily contain its vertices. Point containment in polygon is defined so that if the Earth is subdivided into polygons, every point is contained by exactly one polygon. Hence, setting Radius = 0 is not equal to not setting it.
 
-**Setting join_hint (if needed)**
+**Setting lookup_area_radius (if needed)**
 
-Join hint overrides internal mechanism for matching locations to their respective polygons. Ideally, join hint value should represent a distance length that fits a point to its polygon in one-to-one manner, such that within such distance the point belongs to exactly one polygon. Because the polygons data might be big, polygons may vary greatly in size compared to each other and the proximity of the shapes one to another, it might be hard to come up with join hint distance that perform the best. If needed, here is a sample that may help.
+Setting lookup area radius overrides internal mechanism for matching locations to their respective polygons. The value is a distance in meters. Ideally, lookup area radius should represent a distance from polygon center, such that within that distance a point matches to exactly one polygon in one-to-one manner and within that distance, there are no more than a single polygon.
+Because the polygons data might be big, polygons may vary greatly in size and shape compared to each other and the proximity of the polygon one to another, it might be challenging to come up with the radius that performs the best. If needed, here is a sample that may help.
 
-Shapes
-| project value = sqrt(geo_polygon_area(shape))
+PolygonsTable
+| project value = sqrt(geo_polygon_area(polygon))
 | summarize min = min(value), avg = avg(value), max = max(value)
 
-Try join hints starting from avg toward either min (If the shapes are close to each other) or max by multiples of 2.
+Try using lookup radius starting from average value towards either minimum (If the polygons are close to each other) or maximum by multiples of 2.
 
 > [!TIP]
 >
@@ -88,7 +90,7 @@ Try join hints starting from avg toward either min (If the shapes are close to e
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTTW%2FbMAy951cIPrWAa4gSRUoZdhnQW1sU2C5DEBRuomRGnSjwx4pg238fHSfeF7DaF4t%2BJN%2Fjo%2BrYqUOqj9u0b9V7tS47eZ%2FreHUOPu3LXZy3XVPtt%2FkFOV8fJVytrmeLmZIne4iv6nNqXrJcnX9dfcu64yFm8%2BxxzJFf2SqlZl3tyy622XyxWNywLQJbdsgaAJkoR10wWq01ezBIgMt8hHlyNhjQgCbgCeZQYhosgQ8TLATQZIy1IF9jNQBDwSGR9hPsrabL5Y%2FrfNT2WDZV%2B19h%2F%2BgyhWNH0jF4T9YID1%2BwcCBmQhFh7UDEFGi0FmHCIgTrRVUotAOyNqAPJFxOKNFM7C1AAHJs7FDNC3XLAZGdyD3B3m45ilq%2Bm9Viep1WZVf97fol%2Bqftddpvq65fx3kTy1rOgpmO0xLc7g5VE9VHqRXVh76qZSRbGdxonzCxlv3w4XJ1mrhHQyYEFjP4POyHU%2FeyVvd9G%2FudSht1X3Zf4k7iq3YqxuzFeQxkgM%2FFrNQ11jCDQ3eudlttNrFWn9JrbCTXFLI6Mllpq8kHPaTKKJ03ZGUPgAL4S%2Bpd2q9PS3ujC7AGnQvBsNEQSGOuHBQoNAKSeOgt%2BXPaIL6PA%2B276jk23VEqCGcsNKKspRDUFsTCgbNQADHIsJMFZRydubgy%2B67i17Luh1luY3q6XMc6pZf%2BcLmd7W%2Fe%2FLJluqfXPwEJixhT3gMAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTTW%2FbMAy951cIPrWAa4gSRUoZdhnQW1sU2C5DEBRuomRGnSjwx4pg238fHSfeF7DaF4t%2BJN%2Fjo%2BrYqUOqj9u0b9V7tS47eZ%2FreHUOPu3LXZy3XVPtt%2FkFOV8fJVytrmeLmZIne4iv6nNqXrJcnX9dfcu64yFm8%2BxxzJFf2SqlZl3tyy622XyxWNywLQJbdsgaAJkoR10wWq01ezBIgMt8hHlyNhjQgCbgCeZQYhosgQ8TLATQZIy1IF9jNQBDwSGR9hPsrabL5Y%2FrfNT2WDZV%2B19h%2F%2BgyhWNH0jF4T9YID1%2BwcCBmQhFh7UDEFGi0FmHCIgTrRVUotAOyNqAPJFxOKNFM7C1AAHJs7FDNC3XLAZGdyD3B3m45ilq%2Bm9Viep1WZVf97fol%2Bqftddpvq65fx3kTy1rOgpmO0xLc7g5VE9VHqRXVh76qZSRbGdxonzCxlv3w4XJ1mrhHQyYEFjP4POyHU%2FeyVvd9G%2FudSht1X3Zf4k7iq3YqxuzFeQxkgM%2FFrNQ11jCDQ3eudlttNrFWn9JrbCTXFLI6Mllpq8kHPaTKKJ03ZGUPgAL4S%2Bpd2q9PS3ujC7AGnQvBsNEQSGOuHBQoNAKSeOgt%2BXPaIL6PA%2B276jk23VEqCGcsNKKspRDUFsTCgbNQADHIsJMFZRydubgy%2B67i17Luh1luY3q6XMc6pZf%2BcLmd7XQlfzPplz%2FXPwGFbZi43gMAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -106,7 +108,7 @@ let locations = datatable(location_name:string, longitude:real, latitude:real)
     "Statue of Liberty",  -74.04462223203123, 40.689195627512674,
 ];
 locations
-| evaluate geo_polygon_lookup(polygons, longitude, latitude, polygon)
+| evaluate geo_polygon_lookup(polygons, polygon, longitude, latitude)
 ```
 
 **Output**
@@ -122,7 +124,7 @@ locations
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTS2%2FbMAy%2B51cIPrWAa4gSRUoZdhnQW1sU2C5FEBRuoqZGHSvwY0Ww7b%2BPjpPsBaz2RaJI6ntQdezVLtX7TWo69VGty17%2BpzpeHIOPTbmN865vq2aTnzLn672Eq9XlbDFT8mV38U09pPY1y9Xx6OJb1u93MZtn91ONHGWrlNp11ZR97LL5YrG4YlsEtuyQNQAyUY66YLRaa%2FZgkACX%2BZTmydlgQAOagIc0hxLTYAl8OKeFAJqMsRZkNXUDMBQcEml%2FTnvv0uXyx2U%2Bcbsv26r7L7F%2FeJnCsSO5MXhP1ggOX7BgIGZCIWHtCMQUaLQWYoIiBOuFVSi0A7I2oA8kWA5ZwpnYW4AA5NjYsZsX6JYDIjuhe0h7%2F8qJ1PLDrBbT67Qq%2B%2Bpv10%2FRP22vU7Op%2BmEd520sa9lLznl7HoLr7a5qo%2FosvaL6NFS1SLIR4Sb7BIm17MeFy9VBcY%2BGTAgsZvBR7LsHdXcAUNbqdujisFXpWd2W%2FUvcSnzVnfsxezEfAxngYz8rrY01zODQHRteV8%2FPsVZf0ltspdYUMj0irtysyQc9loqazhuyMgpAAfyp9CY168PcXukCrEHnQjBsNATSmCsHBQqMgCQ2ekv%2BWDbyH%2BII%2B6Z6im2%2Flw6CGQuNKJMpALUFcXHELBBAPDLsZEYZJ3NOxsy%2Bq%2Fi1rIdRzk1Mj6cXWaf0OuxOD7T7zZ5fzpyfaq7a2A9t8zg0IuDqJa7F774d4uVPmrvM4foDAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTS2%2FbMAy%2B51cIPrWAa4gSRUoZdhnQW1sU2C5FEBRuoqZGHSvwY0Ww7b%2BPjpPsBaz2RaJI6ntQdezVLtX7TWo69VGty17%2BpzpeHIOPTbmN865vq2aTnzLn672Eq9XlbDFT8mV38U09pPY1y9Xx6OJb1u93MZtn91ONHGWrlNp11ZR97LL5YrG4YlsEtuyQNQAyUY66YLRaa%2FZgkACX%2BZTmydlgQAOagIc0hxLTYAl8OKeFAJqMsRZkNXUDMBQcEml%2FTnvv0uXyx2U%2Bcbsv26r7L7F%2FeJnCsSO5MXhP1ggOX7BgIGZCIWHtCMQUaLQWYoIiBOuFVSi0A7I2oA8kWA5ZwpnYW4AA5NjYsZsX6JYDIjuhe0h7%2F8qJ1PLDrBbT67Qq%2B%2Bpv10%2FRP22vU7Op%2BmEd520sa9lLznl7HoLr7a5qo%2FosvaL6NFS1SLIR4Sb7BIm17MeFy9VBcY%2BGTAgsZvBR7LsHdXcAUNbqdujisFXpWd2W%2FUvcSnzVnfsxezEfAxngYz8rrY01zODQHRteV8%2FPsVZf0ltspdYUMj0irtysyQc9loqazhuyMgpAAfyp9CY168PcXukCrEHnQjBsNATSmCsHBQqMgCQ2ekv%2BWDbyH%2BII%2B6Z6im2%2Flw6CGQuNKJMpALUFcXHELBBAPDLsZEYZJ3NOxsy%2Bq%2Fi1rIdRzk1Mj6cXWaf0OuxOD7Q7v8rffPplUa7a2A9t8zg0IuDqJa7F774d4uVPe7lNOPoDAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -140,7 +142,7 @@ let locations = datatable(location_name:string, longitude:real, latitude:real)
     "Statue of Liberty",  -74.04462223203123, 40.689195627512674,
 ];
 locations
-| evaluate geo_polygon_lookup(polygons, longitude, latitude, polygon, return_unmatched = true)
+| evaluate geo_polygon_lookup(polygons, polygon, longitude, latitude, return_unmatched = true)
 ```
 
 **Output**
@@ -158,7 +160,7 @@ locations
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTTW%2FbMAy951cIPjWAa4gSJUoZdhnQWxsU2C5FEARurKRGHSvwx4pg238fHSfeF7DaF4kin97jo6rQiWOsTvtYt%2BKjKPKO%2F%2Bcq3FyCmzo%2FhEXbNWW9T6%2BZi%2BLE4XI7n61mgr9kGd7EU2xek1Rcjm6%2BJd3pGJJF8jjW8FGyjbEpyjrvQpssVqvVLenMkyaDJAGQrE1RZoRaSkkOFFrAdTqmOWu0VyABlcdzmkGOSdAWnJ%2FSvAdpldIaeDWiASjrDVor3ZT23qXr9Y95Omp7zJuy%2Fa%2Bwf3SpzJCxfKN3zmrFPFxGzMESWWQRWg9EVIZKShbGLLzXjlX5TBqwWnt03jKXcxZrtuQ0gAdrSOkBzTF1TR6RDMs9p71%2F5Shq%2FWFWselV3OZd%2Bbfr1%2Biftlex3pddX4RFE%2FKK95wzbachuDscyyaIz4wVxKe%2BrLgle27caB8z0ZrcsDCpOHfcobLKe2Iz6NLs5ZNYngnklXjo29AfRNyJh7x7CQeOb9sJj8ix%2BeitArrgaYZWWhGBQXMBvCt3u1CJL%2FEtNFyrMp4ebi7fLK3zcijlbhqnrOZRAOvBXUvvY12c5%2FZWZqAVGuO9IiXBW4mpMJAh0%2FBo2UanrbuUDfr7MNC%2BL59D050YgTljJhF5Mpmg1MAuDpyZArBHigzPKOFoztWY2XcRvuZVP7RzH%2BLm%2BiKrGF%2F74%2FWBtr%2FZ88uZ6ammosmLsh9cJh5w3oaub%2BpNX3M%2Fty%2Bh4IOu6cP8J7WCVfkJBAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTTW%2FbMAy951cIPjWAa4gSJUoZdhnQWxsU2C5FEARurKRGHSvwx4pg238fHSfeF7DaF4kin97jo6rQiWOsTvtYt%2BKjKPKO%2F%2Bcq3FyCmzo%2FhEXbNWW9T6%2BZi%2BLE4XI7n61mgr9kGd7EU2xek1Rcjm6%2BJd3pGJJF8jjW8FGyjbEpyjrvQpssVqvVLenMkyaDJAGQrE1RZoRaSkkOFFrAdTqmOWu0VyABlcdzmkGOSdAWnJ%2FSvAdpldIaeDWiASjrDVor3ZT23qXr9Y95Omp7zJuy%2Fa%2Bwf3SpzJCxfKN3zmrFPFxGzMESWWQRWg9EVIZKShbGLLzXjlX5TBqwWnt03jKXcxZrtuQ0gAdrSOkBzTF1TR6RDMs9p71%2F5Shq%2FWFWselV3OZd%2Bbfr1%2Biftlex3pddX4RFE%2FKK95wzbachuDscyyaIz4wVxKe%2BrLgle27caB8z0ZrcsDCpOHfcobLKe2Iz6NLs5ZNYngnklXjo29AfRNyJh7x7CQeOb9sJj8ix%2BeitArrgaYZWWhGBQXMBvCt3u1CJL%2FEtNFyrMp4ebi7fLK3zcijlbhqnrOZRAOvBXUvvY12c5%2FZWZqAVGuO9IiXBW4mpMJAh0%2FBo2UanrbuUDfr7MNC%2BL59D050YgTljJhF5Mpmg1MAuDpyZArBHigzPKOFoztWY2XcRvuZVP7RzH%2BLm%2BiKrGF%2F74%2FWBttOr%2FM2nXxalosmLsh9cJh5w3oaub%2BpNX3M%2Fty%2Bh4IOu6cP8J0fbkBEJBAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -176,7 +178,7 @@ let locations = datatable(location_name:string, longitude:real, latitude:real)
     "Statue of Liberty",  -74.04462223203123, 40.689195627512674,
 ];
 locations
-| evaluate geo_polygon_lookup(polygons, longitude, latitude, polygon, radius = 7000, return_unmatched = true)
+| evaluate geo_polygon_lookup(polygons, polygon, longitude, latitude, radius = 7000, return_unmatched = true)
 ```
 
 **Output**
@@ -193,7 +195,7 @@ locations
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTTW%2FbMAy951cIPiWAa4gSJUoZdhnQWxsU2C5FEBROomRGHSvwx4rs47%2BPjhO324DVvkgU%2BfQeH1WGVhxjedrHqhEfxTZv%2BV%2BXYXoJPlX5Icybti6qfXrNnG9PHC42s8lyIvhLFuFFPMb6OUnF5Wj6I2lPx5DMk4ehho%2BSTYz1tqjyNjTJfLlc3pDOPGkySBIAydoUZUaopZTkQKEFXKVDmrNGewUSUHk8pxnkmARtwfkxzXuQVimtgVcDGoCy3qC10o1p7126Wv2apYO2h7wumv8K%2B0eXygwZyzd656xWzMNlxBwskUUWoXVPRGWopGRhzMJ77ViVz6QBq7VH5y1zOWexZktOA3iwhpTu0RxT1%2BQRybDcc9r7Vw6iVh8mJZtexk3eFn%2B7fo3%2BaXsZq33Rdtswr0Ne8p5zxu04BLeHY1EH8ZmxgvjUFSW3ZM%2BNG%2BxjJlqT6xcmFeeOO1RWeU9sBl2avXgUizOBvBT3XRO6g4g7cZ%2B3X8OB45tmxCNybD56q4AueJqhlVZEYNBcAG%2BL3S6U4kt8CTXXqoynh5vLN0vrvOxLuZvGKat5FMB6cNfSu1htz3N7IzPQCo3xXpGS4K3EVBjIkGl4tGyj09Zdynr9Xehp3xXrULcnRmDOmElEnkwmKDWwiz1npgDskSLDM0o4mHM1ZvJThG952fXt3If4dH2RZYzP3fH6QJs39rw6Mz7VGaM03eHAQ%2Fw9iE3sqnY6E%2BuTePu%2BfwM7mMgABQQAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTTW%2FbMAy951cIPiWAa4gSJUoZdhnQWxsU2C5FEBROomRGHSvwx4rs47%2BPjhO324DVvkgU%2BfQeH1WGVhxjedrHqhEfxTZv%2BV%2BXYXoJPlX5Icybti6qfXrNnG9PHC42s8lyIvhLFuFFPMb6OUnF5Wj6I2lPx5DMk4ehho%2BSTYz1tqjyNjTJfLlc3pDOPGkySBIAydoUZUaopZTkQKEFXKVDmrNGewUSUHk8pxnkmARtwfkxzXuQVimtgVcDGoCy3qC10o1p7126Wv2apYO2h7wumv8K%2B0eXygwZyzd656xWzMNlxBwskUUWoXVPRGWopGRhzMJ77ViVz6QBq7VH5y1zOWexZktOA3iwhpTu0RxT1%2BQRybDcc9r7Vw6iVh8mJZtexk3eFn%2B7fo3%2BaXsZq33Rdtswr0Ne8p5zxu04BLeHY1EH8ZmxgvjUFSW3ZM%2BNG%2BxjJlqT6xcmFeeOO1RWeU9sBl2avXgUizOBvBT3XRO6g4g7cZ%2B3X8OB45tmxCNybD56q4AueJqhlVZEYNBcAG%2BL3S6U4kt8CTXXqoynh5vLN0vrvOxLuZvGKat5FMB6cNfSu1htz3N7IzPQCo3xXpGS4K3EVBjIkGl4tGyj09Zdynr9Xehp3xXrULcnRmDOmElEnkwmKDWwiz1npgDskSLDM0o4mHM1ZvJThG952fXt3If4dH2RZYzP3fH6QJvxVb7x6dWiGaM03eHAQ%2Fw9iE3sqnY6E%2BuTePu%2BfwNaTfqKBQQAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -211,7 +213,7 @@ let locations = datatable(location_name:string, longitude:real, latitude:real)
     "Statue of Liberty",  -74.04462223203123, 40.689195627512674,
 ];
 locations
-| evaluate geo_polygon_lookup(polygons, longitude, latitude, polygon)
+| evaluate geo_polygon_lookup(polygons, polygon, longitude, latitude)
 | summarize count() by polygon_name
 ```
 

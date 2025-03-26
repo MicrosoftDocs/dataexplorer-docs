@@ -71,7 +71,7 @@ The following example illustrates join on locations using [H3](geo-point-to-h3ce
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5VT246bMBB95yusfSISBIzBOImifkG%2FoKqQA07wxrGzxqSbXv69g0mA7Uu18MT4XObMGCUcUqbmThrdYbRHDXfwHpQINb%2BILeqclfoUAUifpOsbKFnBFRSAM3%2Bvgm8BgueFv0QoTtc4ywlJWVpSysocZ2WECrwuMMYFyzGhmOZlNDIOMyOjBSY5zgtWZmRi0JTljJZpwYoHpV5Qcko3ZENJmVE6m2yKDdQxfZo0wMARjoLvu0AtM2cfMsvm84nxsn%2FKcFpkLN9QvGiGMJZmjGRPd2eqy71qedeCe6j0aWHxVP%2Fl1Qd0Szy0UuImFBBwvkNJgr4aKxA%2FmN6hVyM18sfdFrXOXbttkijBrV5fZG1NZ45uXZtLInTcd8m575xJ3nph78lJmPgKdBc7E7ekFkrFx17Xw3C%2B3KT4sec%2FeyviYUaxeL8qcLX%2FtgZNgU7ldSoIN%2BoMwXyk6GOE1c7zubX8XtVGwybCK6%2FPla%2BED%2Bwq8pqjVKWFPLUHY7vpeBX8gWFOVzf4jcS7E7pBj4bmGYfTJucdrgB%2FuQ2B%2BJPiDHL3qzDHcLwBA8QP9iwBskdSa2FROGafro%2F%2F%2FKz3yPmf%2F4gz2h9DM43snITNoOHPjJBsFnd0Vv8Lpkv0ydIDAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5VT246bMBB95ytG%2BwQSBIzBOImifkG%2FoKqQA05w49jUmHTTy7%2FXmFzYVaVqzZNnzjkzc8ZIbkHqhlmh1YBgBy2z7ttLHip25hsYrBHqGDuQOgo7ti5kOJMu4DjPexR8CcCdF%2FYSQ5KtUF5gnNGsIoRWBcqrGEq0KhFCJS0QJogUVTwz9k9GTkqEC1SUtMrxg0EyWlBSZSUtb5RmQSkIWeM1wVVOyLPIuly7OCL3Iq1joBj%2BcVAcfN0GculD%2FsYH0X7cBbSciVCUlTkt1gQtGsSUZjnF%2Bb261XXHhs6VDqU6LvTv0r%2B89ATtsIfWkl%2B4dARUbCFN4bM2HNhejxa%2BaaHAp4cNdNb2wyZNJWdGrc6iMXrQB7tq9DnlKhmH9DQOVqffR26u6ZHrpHd0m1iddLjhUiaHUTWTM58ugv%2FYsZ%2Bj4clkUMJfe%2BmqmvetuaacTu116mkyrzMN5keK344QbT2fGcOudaOVW0PYs%2BZU%2B0h4w0ax15ylasXFsdtrMzzSUfDHOfl4y8Fv4K%2BWqxZuDd0MDh87fG4vcuDzZZqG3fFWg732XB%2FCefcTxLt6Eg6yA6EUNxDOgz8ejr9%2BqPBM%2BF%2FxGaeVT7tOWjFY4XYC008ag2gXT%2FOp%2FheAdK1d3QMAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -86,18 +86,18 @@ let locations2 = datatable(id: string, longitude: real, latitude: real)
 [
     "1", -0.12432668105284961, 51.51115938802832
 ];
-let to_my_hash = (lng: real, lat: real)
+let to_hash = (lng: real, lat: real)
 {
     let h3_hash_level = 14; // More about join levels: https://learn.microsoft.com/en-us/kusto/query/geo-point-to-h3cell-function?view=azure-data-explorer
     let h3_hash = geo_point_to_h3cell(lng, lat, h3_hash_level);
     array_concat(pack_array(h3_hash), geo_h3cell_neighbors(h3_hash))
 };
 locations1
-| extend hash = to_my_hash(longitude, latitude)
+| extend hash = to_hash(longitude, latitude)
 | mv-expand hash to typeof(string)
 | join kind = inner (
     locations2
-    | extend hash = to_my_hash(longitude, latitude)
+    | extend hash = to_hash(longitude, latitude)
     | mv-expand hash to typeof(string))
     on hash
 | distinct name, id, longitude, latitude
@@ -117,14 +117,14 @@ The following example illustrates join of locations from locations1 table with l
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52STUvDQBCG7%2FkVQ08thHa%2Fk7V4EBGPepdStskkxqa7ZbPxA%2FzxbtraKCiIO6cd5pl552VaDNC6woTG2Y7CJZQmxNi0OLVmhxfQBd%2FYOo1Ftm5CX8aUR9PGRGTG%2Fyx5SCC%2ByR2DGxu8sQVOUiBzQmSeayGFJDSjijOagqRzSRjPFVOaKpmL9DeWaMVkRgRlESBSq%2FTA8lwKzrKMEMpP7K1HtC9N8Qj3xm%2FPONeSEkUEE0SoLDvMFgMopJKx88Cvlkn71Qb2zYam%2FJcJVx6tOcngVGoeVdCMS0Z49umAjsHibjnXIlkl74CvAW0Jm76q0EcVNbr13jU2rI%2Bp6V%2B7pcAJGYbT2RIWC7iO8gKCAW%2FKpu%2FAVUMB7DCg76DybgdRc4E2%2Fs9GJONhDNqeTdsPTY6i2rfa2XXr3LbfT0frvng0upOeNprFNnvvnrAIMFxXCk35I%2FABkBiw35YCAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52STUvDQBCG7%2FkVQ08thHa%2Fk7V4EBGPepdStskkxqa7ZbPxA%2FzxbtraKCiIO6cZ5p159mVaDNC6woTG2Y7CJZQmxNi0OLVmhxfQBd%2FYOo1Ntm5CX8aSR9PGQtSM%2BSx5SCC%2ByR2DGxu8sQVOUiBzQmSeayGFJDSjijOagqRzSRjPFVOaKpmL9Dct0YrJjAjKooBIrdKDludScJZlhFB%2B0t56RPvSFI9wb%2Fz2LOdaUqKIYIIIlWWH3WIQCqlknDzoV8uk%2FWoD%2B2ZDU%2F7LhCuP1pwwOJWaRwqacckIzz4d0DFY%2FFvOtUhWyTvga0BbwqavKvSRoka33rvGhvWxNP3rtBQ4IcNyOlvCYgHXES8gGPCmbPoOXDU0wA4D%2Bg4q73YQmQu0MT8bkYyHMbA9m7Yfhhyh2rfa2XXr3LbfT0fr0hP8F69Gl2ZxzN67JywCDNeVQlP%2B2PgBZxDMbZYCAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 let locations1 = datatable(name: string, longitude: real, latitude: real)
 [
-    "O2 Entrance",    0.005889454501716321,  51.50238626916584,
-    "O2 Entrance",    0.0009625704125020596, 51.50385432770013,
+    "O2 Entrance", 0.005889454501716321, 51.50238626916584,
+    "O2 Entrance", 0.0009625704125020596,51.50385432770013,
     "Greenwich Park", 0.0009395106042404677, 51.47700456557013,
 ];
 let locations2 = datatable(id: string, longitude: real, latitude: real)
@@ -133,7 +133,7 @@ let locations2 = datatable(id: string, longitude: real, latitude: real)
 ]
 | extend buffer = geo_point_buffer(0.003159306017352037, 51.502929224128394, 300, 0.1); // Create a radius of 300 meters from O2 center location
 locations1
-| evaluate geo_polygon_lookup(locations2, longitude, latitude, buffer)
+| evaluate geo_polygon_lookup(locations2, buffer, longitude, latitude)
 | project name, id, longitude, latitude
 ```
 
