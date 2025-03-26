@@ -38,7 +38,7 @@ If the *return_unmatched* argument is set to `true`, the resulting table include
 
 If the *return_unmatched* argument is set to `false`, or omitted (the default value of `false` is used), the resulting table has as many records as matching results. This variant of lookup has better performance compared to `return_unmatched=true` execution.
 
-Setting *lookup_area_radius* length overrides internal matching mechanism and may or may not improve performance. Read more below.
+Setting *lookup_area_radius* length overrides internal matching mechanism and may improve or worsen run time and\or memory consumption. It does not affect query correctness. Read more below on how to set this optional value.
 
 > [!NOTE]
 >
