@@ -36,7 +36,11 @@ An object of type `dynamic` that is determined by the value of *json*:
 * If *json* is of type `string`, and is a [properly formatted JSON string](https://json.org/), then the string is parsed, and the value produced is returned.
 * If *json* is of type `string`, but it isn't a [properly formatted JSON string](https://json.org/), then the returned value is an object of type `dynamic` that holds the original `string` value.
 
-## Example
+## Examples
+
+The examples in this section show how to use the syntax to help you get started.
+
+### Duration metrics parsing ###
 
 In the following example, when `context_custom_metrics` is a `string` that looks like this:
 
@@ -44,7 +48,7 @@ In the following example, when `context_custom_metrics` is a `string` that looks
 {"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}}
 ```
 
-then the following query retrieves the value of the `duration` slot in the object, and from that it retrieves two slots, `duration.value` and `duration.min` (`118.0` and `110.0`, respectively).
+Then the following query retrieves the value of the `duration` slot in the object, and from that it retrieves two slots, `duration.value` and `duration.min` (`118.0` and `110.0`, respectively).
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -60,7 +64,13 @@ datatable(context_custom_metrics:string)
 | extend duration_value = d.duration.value, duration_min = d.duration.min
 ```
 
-**Notes**
+**Output**
+
+| context_custom_metrics | d | duration_value | duration_min |
+|--|--|--|--|
+| {"duration":{"value":118.0,"count":5.0,"min":100.0,"max":150.0,"stdDev":0.0,"sampledValue":118.0,"sum":118.0}} | {"duration":{"value":118,"count":5,"min":100,"max":150,"stdDev":0,"sampledValue":118,"sum":118}} | 118 | 100 |
+
+### Nested JSON parsing ###
 
 It's common to have a JSON string describing a property bag in which one of the "slots" is another JSON string.
 
@@ -75,19 +85,29 @@ For example:
 let d='{"a":123, "b":"{\\"c\\":456}"}';
 print d
 ```
+ **Output**
 
-In such cases, it isn't only necessary to invoke `parse_json` twice, but also to make sure that in the second call, `tostring` is used. Otherwise, the second call to `parse_json` will just pass on the input to the output as-is, because its declared type is `dynamic`.
+| print_0 |
+|--|
+| {"a":123, "b":"{\"c\":456}"} |
+
+In such cases, it isn't only necessary to invoke `parse_json` twice, but also to make sure that in the second call, `tostring` is used. Otherwise, the second call to `parse_json` just passes on the input to the output as-is, because its declared type is `dynamic`.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIsVWvVkpUsjI0MtZRUEpSslKqjolRSgZiKxNTs1qlWnVrroKizDygyvik%2BGTbgsSi4tT4rOL8PI2S%2FOISoEy6BpJYiqZekqamXjIAxeS%2BXVsAAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
-
 ```kusto
 let d='{"a":123, "b":"{\\"c\\":456}"}';
 print d_b_c=parse_json(tostring(parse_json(d).b)).c
 ```
+
+**Ouput**
+
+| d_b_c |
+|--|
+| 456 |
 
 ## Related content
 
