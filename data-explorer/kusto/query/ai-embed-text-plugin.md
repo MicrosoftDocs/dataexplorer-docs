@@ -16,7 +16,7 @@ The `ai_embed_text` plugin allows embedding of text using language models, enabl
 
 * An Azure Open AI Service with the correct role ([Cognitive Services OpenAI User](/azure/ai-services/openai/how-to/role-based-access-control)) assinged for the identity to be used.
 * A callout policy in place allowing calls to AI services [Callout Policy](#configure-callout-policy).
-* Optional: If Managed Identity is to be used, configure [Managed Identity Policy](#configure-managed-identity) configured to allow communication with Azure OpenAI services.
+* Optional: If Managed Identity is used, configure [Managed Identity Policy](#configure-managed-identity) to allow communication with Azure OpenAI services.
 
 ## Syntax
 
@@ -47,9 +47,8 @@ The following table describes the options that control the way the requests are 
 | `ReturnSuccessfulOnly` | `bool` | Indicates whether to return only the successfully processed items. Default value: `false`. If the *IncludeErrorMessages* parameter is set to `true`, this option is always set to `false`. |
 
 ## Configure Callout Policy
-We need to allow the cluster to make callouts with the specific type for AI services.
+The `azure_openai` [callout policy](../management/callout-policy.md) allows the cluster to make external calls to Azure AI services.
 
-[Callout](../management/callout-policy.md): Authorize the AI model endpoint domain.
 
 Configure the callout policy:
 
@@ -69,9 +68,8 @@ Configure the callout policy:
 
 ## Configure Managed Identity
 Optionally, we can use managed identities for authentication.
-To do that, we need to allow the use of managed identities with this specific intent.
 
-[Managed Identity](../management/managed-identity-policy.md): Allow the system-assigned managed identity to authenticate to Azure OpenAI services.
+[Managed Identity](../management/managed-identity-policy.md) allows the system-assigned managed identity to authenticate to Azure OpenAI services.
 
 Configure the managed identity:
 
@@ -111,7 +109,7 @@ let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/te
 evaluate ai_embed_text(expression, connectionString)
 ```
 
-Or, using the user's identity (impersonation)
+Or, use the user's identity (impersonation)
 <!-- csl -->
 ```kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
