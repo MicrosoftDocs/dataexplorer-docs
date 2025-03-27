@@ -2,7 +2,7 @@
 title: 'Share queries from Azure Data Explorer web UI'
 description: This guide teaches you how to share queries from the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 01/14/2025
+ms.date: 03/03/2025
 ---
 
 # Share queries from Azure Data Explorer web UI
@@ -80,6 +80,9 @@ To copy a link to share with others and the text of the query, follow these step
 > [!NOTE]
 > The query link request is generated with `request_readonly_hardline` set to `true`, ensuring it operates in strict read-only mode for enhanced security in protected mode. The **Protected mode** banner displays above the query and an icon appears in the query tab when protected mode is enabled. For more information about this request property, see [Request properties](/azure/data-explorer/kusto/api/rest/request-properties).
 
+> [!TIP]
+> You can open the shared query as a [Fabric Real-Time Intelligence](/fabric/real-time-intelligence/overview) link. This feature allows you to experiment with a trial Fabric Real-Time Intelligence account using your own data, without the need to move any data.
+
 ## Link, query, results to clipboard
 
 To copy a link to share with others, the text of the query, and the results of the query, follow these steps:
@@ -94,6 +97,9 @@ To copy a link to share with others, the text of the query, and the results of t
 
 > [!NOTE]
 > The query link request is generated with `request_readonly_hardline` set to `true`, ensuring it operates in strict read-only mode for enhanced security in protected mode. The **Protected mode** banner displays above the query and an icon appears in the query tab when protected mode is enabled. For more information about this request property, see [Request properties](/azure/data-explorer/kusto/api/rest/request-properties).
+
+> [!TIP]
+> You can open the shared query as a [Fabric Real-Time Intelligence](/fabric/real-time-intelligence/overview) link. This feature allows you to experiment with a trial Fabric Real-Time Intelligence account using your own data, without the need to move any data.
 
 ## Download
 
