@@ -88,4 +88,5 @@ reports
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)
 * [node-degree-out](node-degree-out.md)
+* [any()](any-graph-function.md)
 * [map()](map-graph-function.md)
