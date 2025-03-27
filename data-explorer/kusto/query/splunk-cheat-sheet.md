@@ -184,7 +184,7 @@ In Kusto, you can use `summarize arg_min()` to reverse the order of which record
 
 ### Timechart
 
-Kusto and Splunk both use the `timechart` operator to visualize data over time. In Splunk, it aggregates data over specified time intervals and can be used with various statistical functions. In Kusto, the equivalent is achieved using the `summarize` and `bin` functions, followed by the `render [timechart](visualization-timechart.md)` operator.
+Kusto and Splunk both use the `timechart` operator to visualize data over time. In Splunk, it aggregates data over specified time intervals and can be used with various statistical functions. In Kusto, the equivalent is achieved using the `summarize` and `bin` functions, followed by the [render timechart](visualization-timechart.md) operator.
 
 | Product | Operator | Example |
 |:---|:---|:---| 
