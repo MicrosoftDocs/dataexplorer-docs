@@ -32,7 +32,11 @@ Returns the in-degree of the input node or of all inner nodes, when used inside 
 
 ## Example
 
-The following example creates a graph to represent the hierarchical relationships between employees and their managers. It uses the `graph-match` operator to identify where a manager node has an incoming edge from an employee node. Then, it uses the `node_degree_in` function to find managers with exactly three direct reports, who has at least one report with more than one direct reports. The query returns the manager, the name of each direct report, the in-degree to the manager, and the number of direct reports for each employee.
+The following example creates a graph to analyze a hierarchical structure of employees and their managers. 
+
+The graph-match operator looks for managers who have exactly 3 direct reports (node_degree_in(manager) == 3) and where any of the inner nodes (employees) have at least one report (node_degree_in() > 1).
+
+The query returns the manager, the name of each direct report, the in-degree to the manager, and the number of direct reports for each employee.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
