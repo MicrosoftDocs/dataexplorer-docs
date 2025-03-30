@@ -474,7 +474,7 @@ Running the function finds all shortest paths that connect between source nodes 
 * `isSourceValidPathStart`: A boolean flag for the node being a valid path start.
 * `isTargetValidPathEnd`: A boolean flag for the node being a valid path end.
 * `scope`: The scope containing the node and the paths.
-* `outDegree`: The [OutDegree](https://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree) of the node. This the number of distinct targets on outcoming edges adjacent to the node.
+* `outDegree`: The [OutDegree](https://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree) of the node. This is the number of distinct targets on outcoming edges adjacent to the node.
 * `inDegree`: The [InDegree](https://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree) of the node. This is the number of distinct sources on incoming edges of the node.
 * `totalDegree`: The `inDegree` multiplied by `outDegree`. The value represents the potential number of paths that the node can create since all the incoming edges are connected to all the outcoming ones.
 * `sourceOutFlow`: The number of targets that can be reached via paths starting with the node, similar to [BlastRadius](graph-blast-radius-fl.md).
