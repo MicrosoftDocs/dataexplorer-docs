@@ -1,6 +1,6 @@
 ---
 title:  graph_node_centrality_fl()
-description: Learn how to use the graph_node_centrality_fl() function to calculate various metrics of node centrality over graph data.
+description: Learn how to use the graph_node_centrality_fl() function to calculate  metrics of node centrality over graph data.
 ms.reviewer: andkar
 ms.topic: reference
 ms.date: 03/25/2025
@@ -10,13 +10,13 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Calculate various metrics of node centrality (such as degree and betweenness) over graph data (edge and nodes).
+Calculate metrics of node centrality, such as degree and betweenness, over graph edge and node data.
 
-The function `graph_node_centrality_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows you to calculate various metrics of node centrality over graph data. Graph data consists of nodes (for example - resources, applications or users) and edges (for example - existing access permissions or connections). The centrality of a node represents its importance in the graph structure and can be defined and measured in several ways. In cybersecurity context, centrality represents node's value for attackers: compromising a node with high centrality (such as well-connected token) provides more possibilities. For defenders, high-centrality nodes are also important and should be protected accordingly. We calculate the centrality directly over edges, as well as over discovered shortest paths. Various centrality metrics can be useful in different security contexts. 
+The function `graph_node_centrality_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that allows you to calculate various metrics of node centrality over graph data. Graph data consists of nodes, such as resources, applications or users, and edges such as existing access permissions or connections. The centrality of a node represents its importance in the graph structure and can be defined and measured in several ways. In cybersecurity, centrality represents a node's value to attackers; compromising a node with high centrality, such as a well-connected token, offers more opportunities. For defenders, high-centrality nodes are also important and should be protected accordingly. Centrality is calculated directly over edges, as well as over discovered shortest paths. Various centrality metrics can be useful in different security contexts. 
 
-The input data for this function should include a table of edges in the format 'SourceId, EdgeId, TargetId' and a list of nodes with optional relevant nodes' properties. Alternatively, graph input can be extracted from other types of data. For example, traffic logs with entries of type 'User A logged in to resource B' can be modeled as edges of type '(User A)-[logged in to]->(resource B)'. The list of distinct users and resources can be modeled as nodes. As part of the function, shortest paths are calculated and used as input for centrality calculations.
+The input data for this function should include a table of edges in the format `SourceId, EdgeId, TargetId` and a list of nodes with optional relevant node properties. Alternatively, graph input can be extracted from other types of data. For example, traffic logs with entries of type *User A logged in to resource B* can be modeled as edges of type *(User A)-[logged in to]->(resource B)*. The list of distinct users and resources can be modeled as nodes. As part of the function, shortest paths are calculated and used as input for centrality calculations.
 
-We make several assumptions:
+The following assumptions are made:
 
 * All edges are valid for path discovery. Edges that are irrelevant should be filtered out before calculating centrality.
 * Edges are unweighted, independent, and unconditional, meaning that all edges have the same probability and moving from B to C isn't dependent on previous move from A to B.
@@ -24,7 +24,7 @@ We make several assumptions:
 
 These assumptions can be adapted as needed by changing the internal logic of the function.
 
-The function discovers all possible shortest paths between valid sources to valid targets, under optional constraints such as path length limits, maximum output size, etc. Various centrality metrics are calculated over resulting paths as well as original edges, representing different aspects of node importance. The output is a list of nodes that are flagged as relevant (using the 'isValidConnectorColumnName' column), with additional columns containing the centrality metrics for each node. The function uses only the required fields, such as node Ids and edge Ids. In case other relevant fields - such as types, property lists, security-related scores, or external signals - are available in input data, they can be added to logic and output by changing the function definition.
+The function discovers all possible shortest paths between valid sources to valid targets, under optional constraints such as path length limits, maximum output size, and more. Various centrality metrics are calculated over resulting paths as well as original edges, representing different aspects of node importance. The output is a list of nodes that are flagged as relevant using the **isValidConnectorColumnName** column, with additional columns containing the centrality metrics for each node. The function only uses the required fields, such as node IDs and edge IDs. Other relevant fields, such as types, property lists, security-related scores, or external signals, can be added to logic and output by changing the function definition.
 
 ## Syntax
 
@@ -46,9 +46,9 @@ The function discovers all possible shortest paths between valid sources to vali
 | *edgeIdColumnName* | `string` | :heavy_check_mark: | The name of the column in edges table containing the edge ID. |
 | *sourceIdColumnName* | `string` | :heavy_check_mark: | The name of the column in edges table containing edge's source node ID. |
 | *targetIdColumnName* | `string` | :heavy_check_mark: | The name of the column in edges table containing edge's target node ID. |
-| *minPathLength* | `long` |  | The minimum number of steps (edges) in the path. The default value is 1. |
-| *maxPathLength* | `long` |  | The maximum number of steps (edges) in the path. The default value is 8. |
-| *resultCountLimit* | `long` |  | The maximum number of paths returned for output. The default value is 100000. |
+| *minPathLength* | `long` |  | The minimum number of steps (edges) in the path. Default value: 1. |
+| *maxPathLength* | `long` |  | The maximum number of steps (edges) in the path. Default value: 8. |
+| *resultCountLimit* | `long` |  | The maximum number of paths returned for output. Default value: 100000. |
 
 ## Function definition
 
@@ -467,27 +467,27 @@ graph_node_centrality_fl(edgesTableName         = 'edges'
 | US	| backup_prc	| backup_prc	| Service	| Production	| US	| False	| False	| True	| False	| False	| True	| 2	| 2	| 4	| 0	| 0	| 9	| 0.9	| 14	| 9 |
 
 
-Running the function finds all shortest paths that connect between source nodes flagged as valid start points (isSourceValidPathStart == True) to all targets flagged as valid end points (isTargetValidPathEnd == True). Various centrality metrics are calculated on top of these paths as well as original edges for all nodes flagged as valid connectors (isValidConnector == True). The output is a table where each row corresponds to a valid connector node. Each row contains the following fields:
+Running the function finds all shortest paths that connect between source nodes flagged as valid start points (isSourceValidPathStart == True) to all targets flagged as valid end points (isTargetValidPathEnd == True). Various centrality metrics are calculated on top of these paths and original edges for all nodes flagged as valid connectors (isValidConnector == True). The output is a table where each row corresponds to a valid connector node. Each row contains the following fields:
 
-* `nodeId`: NodeId of the connector node.
-* `isValidConnector`: Boolean flag for the node being a valid connector for which we want to calculate centrality; should be equal to True.
-* `isSourceValidPathStart`: Boolean flag for the node being a valid path start.
-* `isTargetValidPathEnd`: Boolean flag for the node being a valid path end.
+* `nodeId`: The ID of the connector node.
+* `isValidConnector`: A boolean flag for the node being a valid connector for which we want to calculate centrality; should be equal to True.
+* `isSourceValidPathStart`: A boolean flag for the node being a valid path start.
+* `isTargetValidPathEnd`: A boolean flag for the node being a valid path end.
 * `scope`: The scope containing the node and the paths.
-* `outDegree`: [OutDegree](https://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree) of the node - number of distinct targets on outcoming edges adjacent to the node.
-* `inDegree`: [InDegree](https://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree) of the node - number of distinct sources on incoming edges of the node.
-* `totalDegree`: TotalDegree - indegree multiplied by outdegree; representing the potential number of paths that the node can create (since all the incoming edges are connected to all the outcoming ones).
-* `sourceOutFlow`: The number of targets that can be reached via paths starting with the node - similar to [BlastRadius](graph-blast-radius-fl.md).
-* `sinkInFlow`: The number of sources that can reach the node via paths - similar to [ExposurePerimeter](graph-exposure-perimeter-fl.md).
-* `betweenness`: [Betweenness centrality](https://en.wikipedia.org/wiki/Betweenness_centrality) - the fraction of shortest paths that pass through the node out of all shortest paths.
-* `relativePrestige`: [Prestige centrality](https://en.wikipedia.org/wiki/Eigenvector_centrality) is the count of source/target pairs connected by shortest paths passing through the node. Relative prestige normalizes this count by the number of  all potential source/target pairs. The calculation can be adapted to penalize the score for longer paths.
-* `countShortestPathsThroughNode`: The number of shortest paths (perhaps with recurring source/target pairs) that pass through the node.
-* `countPairsConnectedByNode`: The number of distinct source/target pairs from paths that pass through the node.
+* `outDegree`: The [OutDegree](https://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree) of the node. This the number of distinct targets on outcoming edges adjacent to the node.
+* `inDegree`: The [InDegree](https://en.wikipedia.org/wiki/Directed_graph#Indegree_and_outdegree) of the node. This is the number of distinct sources on incoming edges of the node.
+* `totalDegree`: The `inDegree` multiplied by `outDegree`. The value represents the potential number of paths that the node can create since all the incoming edges are connected to all the outcoming ones.
+* `sourceOutFlow`: The number of targets that can be reached via paths starting with the node, similar to [BlastRadius](graph-blast-radius-fl.md).
+* `sinkInFlow`: The number of sources that can reach the node via paths, similar to [ExposurePerimeter](graph-exposure-perimeter-fl.md).
+* `betweenness`: The [Betweenness centrality](https://en.wikipedia.org/wiki/Betweenness_centrality), the fraction of shortest paths that pass through the node out of all shortest paths.
+* `relativePrestige`: The [Prestige centrality](https://en.wikipedia.org/wiki/Eigenvector_centrality) is the count of source/target pairs connected by shortest paths passing through the node. Relative prestige normalizes this count by the number of  all potential source and target pairs. The calculation can be adapted to penalize the score for longer paths.
+* `countShortestPathsThroughNode`: The number of shortest paths that pass through the node, including those with recurring source and target pairs.
+* `countPairsConnectedByNode`: The number of distinct source and target pairs from paths that pass through the node.
 
 
-In the example above we calculate centrality metrics for all assets that are either applications, traffic routers or services, based on paths connecting virtual machines to storage accounts. In the first row of the output (if sorted by descending betweenness), we can see the service 'backup_prc'. It has in/out degrees of 2, betweenness of 9, etc. Different centrality metrics represent different aspects of importance, so they are not perfectly aligned - for example, node 'backup_prc' has high betweenness and relativePrestige, but low degrees (which highlights it as a node that doesn't have lots of direct edges, but is placed strategically and plays an important role in global relativePrestige of its scope).
+The example calculated the centrality metrics for all assets that are either applications, traffic routers, or services, based on paths connecting virtual machines to storage accounts. In the first row of the output, if sorted by descending betweenness, you can see the service *backup_prc*. It has an in and out degrees of 2, betweenness of 9, and so on. Different centrality metrics represent different aspects of importance, so they are not perfectly aligned. For example, node *backup_prc* has high `betweenness` and `relativePrestige`, but low degrees which highlights it as a node that doesn't have lots of direct edges, but is placed strategically and plays an important role in global relativePrestige of its scope.
 
-The function `graph_node_centrality_fl()` can be used in cybersecurity domain to discover important nodes, such as well connected tokens or users, over data modeled as a graph. Various available centrality metrics provide a better understanding of node's posture and allow acting accordingly (for example, by prioritizing related signals, hardening the node or disrupting unnecessary connections).
+The function `graph_node_centrality_fl()` can be used in the cybersecurity domain to discover important nodes, such as well connected tokens or users, over data modeled as a graph. Various available centrality metrics provide a better understanding of node's posture and allow you to act accordingly. For example, by prioritizing related signals, hardening the node or disrupting unnecessary connections.
 
 ## Related content
 
