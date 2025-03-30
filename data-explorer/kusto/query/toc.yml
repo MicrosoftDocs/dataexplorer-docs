@@ -8,7 +8,7 @@ items:
   - name: Database cursors
     href: database-cursor.md
   - name: Debug KQL inline Python
-    href: ../debug-inline-python.md  
+    href: ../debug-inline-python.md
   - name: Best practices for KQL queries
     items:
       - name: Best practices for KQL queries
@@ -1192,6 +1192,10 @@ items:
       - name: countif()
         displayName: count(predicate)
         href: countif-aggregation-function.md
+      - name: covariance()
+        href: covariance-aggregation-function.md
+      - name: covariancep()
+        href: covariancep-aggregation-function.md
       - name: dcount()
         href: dcount-aggregation-function.md
       - name: dcountif()
@@ -1266,8 +1270,8 @@ items:
         href: graph-best-practices.md
       - name: Graph scenarios
         href: graph-scenarios.md
-      - name: Graph operators 
-        items: 
+      - name: Graph operators
+        items:
           - name: Graph operators overview
             href: graph-operators.md
           - name: make-graph
@@ -1283,16 +1287,16 @@ items:
       - name: Graph functions
         items:
           - name: all()
-            displayName: all() graph function 
+            displayName: all() graph function
             href: all-graph-function.md
           - name: map()
-            displayName: map() graph function 
+            displayName: map() graph function
             href: map-graph-function.md
           - name: inner_nodes()
-            displayName: inner nodes() graph function, inner nodes 
+            displayName: inner nodes() graph function, inner nodes
             href: inner-nodes-graph-function.md
           - name: node_degree_in()
-            displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in 
+            displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in
             href: node-degree-in.md
           - name: node_degree_out()
             displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
@@ -1704,4 +1708,3 @@ items:
         href: timezone.md
       - name: KQL docs navigation
         href: ../docs-navigation.md
-
