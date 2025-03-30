@@ -3,7 +3,7 @@ title:  Kusto connection strings
 description: This article describes Kusto connection strings.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/08/2025
+ms.date: 03/30/2025
 ---
 # Kusto connection strings
 
@@ -71,7 +71,6 @@ The following tables list all the possible properties that can be included in a 
 |--|--|--|
 | Microsoft Entra ID Federated Security </br></br>**Aliases:** Federated Security, Federated, Fed, AADFed | FederatedSecurity | A boolean value that instructs the client to perform Microsoft Entra authentication.|
 | Authority ID </br></br>**Alias:** TenantId | Authority | A string value that provides the name or ID of the user's tenant. The default value is `microsoft.com`. For more information, see [Microsoft Entra authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
-| Enforce MFA </br></br>**Alias:** MFA, EnforceMFA | EnforceMfa | An optional boolean value that instructs the client to acquire a multifactor authentication token. |
 | User ID </br></br>**Aliases:** UID, User | UserID | A string value that instructs the client to perform user authentication with the indicated user name. |
 | User Name for Tracing | TraceUserName | An optional string value that reports to the service which user name to use when tracing the request internally. |
 | User Token </br></br>**Aliases:** UsrToken, UserToken | UserToken | A string value that instructs the client to perform user authentication with the specified bearer token. </br></br>Overrides `ApplicationClientId`, `ApplicationKey`, and `ApplicationToken`. If specified, skips the actual client authentication flow in favor of the provided token. |
@@ -82,8 +81,8 @@ For user authentication, specify `AAD Federated Security` as `true`. Then, choos
 
 | Authentication mode | Property names |
 |--|--|
-| Microsoft Entra user Prompt Authentication | - User ID (optional)</br>- Authority ID (optional)</br>- Enforce MFA (optional)</br>- User Name for Tracing (optional)|
-| Microsoft Entra user Token Authentication | - User Token</br>- Enforce MFA (optional)</br>- User Name for Tracing (optional)|
+| Microsoft Entra user Prompt Authentication | - User ID (optional)</br>- Authority ID (optional)</br>- User Name for Tracing (optional)|
+| Microsoft Entra user Token Authentication | - User Token</br>- User Name for Tracing (optional)|
 
 ### Application authentication properties
 
