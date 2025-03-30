@@ -36,10 +36,13 @@ items:
   displayName: functions library, graph, blast radius, cyber, security, cybersecurity
   href: graph-blast-radius-fl.md
 - name: graph_exposure_perimeter_fl()
-  displayName: functions library, graph, exposure, perimeter, cyber, security, cybersecurity
+  displayName: functions library, graph, exposure perimeter, cyber, security, cybersecurity
   href: graph-exposure-perimeter-fl.md
+- name: graph_node_centrality_fl()
+  displayName: functions library, graph, centrality, cyber, security, cybersecurity
+  href: graph-node-centrality-fl.md
 - name: graph_path_discovery_fl()
-  displayName: functions library, graph, path, discovery, cyber, security, cybersecurity,
+  displayName: functions library, graph, path discovery, cyber, security, cybersecurity
   href: graph-path-discovery-fl.md
 - name: kmeans_fl()
   displayName: functions library, clustering, K-Means
