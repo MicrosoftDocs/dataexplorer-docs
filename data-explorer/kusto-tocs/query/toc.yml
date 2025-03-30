@@ -1854,7 +1854,7 @@ items:
     href: /kusto/query/row-cumsum-function?view=azure-data-explorer&preserve-view=true
   - name: row_number()
     href: /kusto/query/row-number-function?view=azure-data-explorer&preserve-view=true
-  - name: row_rank_dense()S
+  - name: row_rank_dense()
     href: /kusto/query/row-rank-dense-function?view=azure-data-explorer&preserve-view=true
   - name: row_rank_min()
     href: /kusto/query/row-rank-min-function?view=azure-data-explorer&preserve-view=true
