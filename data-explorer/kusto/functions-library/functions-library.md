@@ -22,6 +22,7 @@ The user-defined functions code is given in the articles. It can be used within 
 | [detect_anomalous_spike_fl()](detect-anomalous-spike-fl.md) | Detect the appearance of anomalous spikes in numeric variables in timestamped data. |
 | [graph_blast_radius_fl()](graph-blast-radius-fl.md) | Calculate the Blast Radius (list and score) of source nodes over path or edge data. |
 | [graph_exposure_perimeter_fl()](graph-exposure-perimeter-fl.md) | Calculate the Exposure Perimeter (list and score) of target nodes over path or edge data.|
+| [graph_node_centrality_fl()](graph-node-centrality-fl.md) |  Calculate various metrics of node centrality (such as degree and betweenness) over graph data (edge and nodes).|
 | [graph_path_discovery_fl()](graph-path-discovery-fl.md) |  Discover valid paths between relevant endpoints (sources and targets) over graph data (edge and nodes).|
 
 ## General functions
