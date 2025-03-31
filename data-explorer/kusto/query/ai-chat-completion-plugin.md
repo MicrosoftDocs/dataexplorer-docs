@@ -39,8 +39,6 @@ The following table describes the options that control the way the requests are 
 
 | Name | Type | Description |
 |--|--|--|
-| `RecordsPerRequest` | `int` | Specified the number of concurrent requests to send to the Azure OpenAI service per query execution node (between `1` and `10`). Default: `1`. |
-| `CharsPerRequest` | `int` | Limits the total number of input tokens used across concurrent requests on a single node. Default: `0` (unlimited). Azure OpenAI counts tokens, with each token approximately translating to four characters. |
 | `RetriesOnThrottling` | `int` | Specifies the number of retry attempts when throttling occurs. Default value: `0`. |
 | `GlobalTimeout` | `timespan` | Specifies the maximum time to wait for a response from the AI chat model. Default value: `null`. |
 | `ModelParameters` | `dynamic` | Parameters specific to the AI chat model. Model parameters that can be specified are: `temperature`, `top_p`, `stop`, `max_tokens`, `max_completion_tokens`, `presence_penalty`, `frequency_penalty`, `user`, `seed`. Other supplied model parameters will be ignored. Default value: `null`. |
@@ -48,23 +46,38 @@ The following table describes the options that control the way the requests are 
 
 ## Configure Callout Policy
 
-The `azure_openai` [callout policy](../management/callout-policy.md) allows the cluster to make external calls to Azure AI services.
+The `azure_openai` [callout policy](../management/callout-policy.md) allows the cluster to make external calls to Azure AI services.
 
-Configure the callout policy to authorize the AI model endpoint domain:
 
-<!-- csl -->
-~~~kusto
-.alter-merge cluster policy callout
-```
-[
-    {
-        "CalloutType": "azure_openai",
-        "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
-        "CanCall": true
-    }
-]
-```
-~~~
+Configure the callout policy to authorize the AI model endpoint domain:
+
+
+<!-- csl -->
+
+~~~kusto
+
+.alter-merge cluster policy callout
+
+```
+
+[
+
+    {
+
+        "CalloutType": "azure_openai",
+
+        "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
+
+        "CanCall": true
+
+    }
+
+]
+
+```
+
+~~~
+
 
 ## Configure Managed Identity
 Optionally, we can use managed identities for authentication.
@@ -118,15 +131,6 @@ let messages = dynamic([{'role':'system', 'content': 'You are a KQL writing assi
 evaluate ai_chat_completion(messages, connectionString);
 ```
 
-## Best practices
-
-Azure OpenAI chat models are subject to heavy throttling, and frequent calls to this plugin can quickly reach throttling limits.
-
-To efficiently use the `ai_chat_completion` plugin while minimizing throttling and costs, follow these best practices:
-
-* **Control request size**: Adjust the number of records (`RecordsPerRequest`) and characters per request (`CharsPerRequest`).
-* **Control query timeout**: Set `GlobalTimeout` to a value lower than the query [timeout](../set-timeout-limits.md) to ensure progress isn't lost on successful calls up to that point.
-* **Handle rate limits more gracefully**: Set retries on throttling (`RetriesOnThrottling`).
 
 ## Related content
 
