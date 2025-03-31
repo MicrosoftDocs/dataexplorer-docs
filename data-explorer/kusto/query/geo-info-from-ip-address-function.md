@@ -38,7 +38,7 @@ A dynamic object containing the information on IP address whereabouts (if the in
 > [!NOTE]
 >
 > * IP geolocation is inherently imprecise; locations are often near the center of the population. Any location provided by this function should not be used to identify a particular address or household.
-> * This function uses GeoLite2 data created by MaxMind, available from [https://www.maxmind.com](https://www.maxmind.com).
+> * This function uses **free** `GeoLite2-City` data created by MaxMind, available from [https://www.maxmind.com](https://www.maxmind.com). Please be aware that the demo version on MaxMind's website utilizes their commercial service, which may provide higher-quality results than those supported by the `geo_info_from_ip_address()` function.
 > * The function is also built on the [MaxMind DB Reader](https://github.com/oschwald/maxminddb-rust) library provided under [ISC license](https://github.com/oschwald/maxminddb-rust/blob/main/LICENSE).
 
 [!INCLUDE [dynamic-access](../includes/dynamic-access.md)]
