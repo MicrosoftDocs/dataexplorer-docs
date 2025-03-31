@@ -18,7 +18,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ## Syntax
 
-`.create` `entity_group` [`ifnotexists`] *EntityGroupName* `(`[*EntityReference*`,` ...]`)`
+`.create` `entity_group` *EntityGroupName* [`ifnotexists`] `(`[*EntityReference*`,` ...]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
