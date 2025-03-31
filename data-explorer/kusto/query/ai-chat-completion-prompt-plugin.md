@@ -43,25 +43,23 @@ The following table describes the options that control the way the requests are 
 | `ReturnSuccessfulOnly` | `bool` | Indicates whether to return only the successfully processed items. Default value: `false`. If the *IncludeErrorMessages* parameter is set to `true`, this option is always set to `false`. |
 
 ## Configure Callout Policy
-We need to allow the cluster to make callouts with the specific type for AI services.
+The `azure_openai` [callout policy](../management/callout-policy.md) allows the cluster to make external calls to Azure AI services.
 
-[Callout](../management/callout-policy.md): Authorize the AI model endpoint domain.
+Configure the callout policy to authorize the AI model endpoint domain:
 
-Configure the callout policy:
-
-    <!-- csl -->
-    ~~~kusto
-    .alter-merge cluster policy callout
-    ```
-    [
-        {
-            "CalloutType": "azure_openai",
-            "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
-            "CanCall": true
-        }
-    ]
-    ```
-    ~~~
+<!-- csl -->
+~~~kusto
+.alter-merge cluster policy callout
+```
+[
+    {
+        "CalloutType": "azure_openai",
+        "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
+        "CanCall": true
+    }
+]
+```
+~~~
 
 ## Configure Managed Identity
 Optionally, we can use managed identities for authentication.

@@ -48,35 +48,22 @@ The following table describes the options that control the way the requests are 
 
 The `azure_openai` [callout policy](../management/callout-policy.md) allows the cluster to make external calls to Azure AI services.
 
-
 Configure the callout policy to authorize the AI model endpoint domain:
 
-
 <!-- csl -->
-
 ~~~kusto
-
 .alter-merge cluster policy callout
-
 ```
-
 [
-
     {
-
         "CalloutType": "azure_openai",
-
         "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
-
         "CanCall": true
-
     }
-
 ]
-
 ```
-
 ~~~
+
 
 
 ## Configure Managed Identity
