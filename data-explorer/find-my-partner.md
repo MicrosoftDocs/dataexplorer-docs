@@ -994,12 +994,6 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 - [Uptake Technologies Inc. website](https://www.uptakefusion.com/)
 - [Microsoft partner site for Uptake Technologies Inc.](https://appsource.microsoft.com/marketplace/partner-dir/b3e8ad26-068f-40c8-81ff-1deba19b820a/overview)
 
-**Success stories**
-
-- [https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization](https://www.uptake.com/resources/capital-power-optimizes-asset-performance-and-utilization)
-- [https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion](https://www.uptake.com/resources/chevron-unlocks-time-series-data-with-uptake-fusion)
-- [https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring](https://www.uptake.com/resources/davey-textile-bolsters-loom-productivity-with-downtime-monitoring)
-
 ## Zure Ltd
 
 :::image type="icon" source="media/findmypartner/zure-ltd-logo.jpg":::
