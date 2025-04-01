@@ -24,17 +24,17 @@ The `node_degree_in` function calculates the *in-degree*, or number of incoming 
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| *node* | `string` |  | The reference to a graph node variable in a graph pattern. <br>Do not pass any parameters when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) graph functions, in conjunction with [inner_nodes()](inner-nodes-graph-function.md).|
+| *node* | `string` |  | The reference to a graph node variable in a graph pattern. <br>Don't pass any parameters when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) graph functions, with [inner_nodes()](inner-nodes-graph-function.md).|
 
 ## Returns
 
-Returns the in-degree of the input node or of all inner nodes, when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) functions in conjunction with [inner_nodes()](inner-nodes-graph-function.md).
+Returns the in-degree of the input node or of all inner nodes, when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) functions with [inner_nodes()](inner-nodes-graph-function.md).
 
 ## Example
 
 The following example creates a graph to analyze a hierarchical structure of employees and their managers. 
 
-The graph-match operator looks for managers who have exactly 3 direct reports (node_degree_in(manager) == 3) and where any of the inner nodes (employees) have at least one report (node_degree_in() > 1).
+The graph-match operator looks for managers who have exactly three direct reports (node_degree_in(manager) == 3) and where any of the inner nodes (employees) have at least one report (node_degree_in() > 1).
 
 The query returns the manager, the name of each direct report, the in-degree to the manager, and the number of direct reports for each employee.
 
