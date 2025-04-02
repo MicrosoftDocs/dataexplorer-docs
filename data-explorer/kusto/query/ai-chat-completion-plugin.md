@@ -1,22 +1,24 @@
 ---
 title: ai_chat_completion plugin (Preview)
-description: Learn how to use the ai_chat_completion plugin to chat with large language models, enabling AI-related scenarios such as RAG application and semantic search.
+description: Learn how to use the ai_chat_completion plugin to chat with large language models, enabling AI-related scenarios such as RAG application and semantic search.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/04/2025
+ms.date: 02/04/2025
 monikerRange: "azure-data-explorer"
 ---
 # ai_chat_completion plugin (Preview)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The `ai_chat_completion` plugin enables generating chat completions using language models, supporting AI-related scenarios such as conversational AI and interactive systems. The plugin uses the in Azure OpenAI Service chat endpoint and can be accessed using either a managed identity or the user's identity (impersonation).
+The `ai_chat_completion` plugin enables generating chat completions using language models, supporting AI-related scenarios such as conversational AI and interactive systems. The plugin uses the in Azure OpenAI Service chat endpoint and can be accessed using either a managed identity or the user's identity (impersonation).
 
 ## Prerequisites
 
-* An Azure Open AI Service configured with at least the ([Cognitive Services OpenAI User](/azure/ai-services/openai/how-to/role-based-access-control)) role assigned to the identity being used.
-* A [Callout Policy](#configure-callout-policy) configured to allow calls to AI services.
-* When using managed identity to access Azure OpenAI Service, configure the [Managed Identity Policy](#configure-managed-identity) to allow communication with the service.
+* An Azure Open AI Service configured with at least the ([Cognitive Services OpenAI User](/azure/ai-services/openai/how-to/role-based-access-control)) role assigned to the identity being used.
+
+* A [Callout Policy](#configure-callout-policy) configured to allow calls to AI services.
+
+* When using managed identity to access Azure OpenAI Service, configure the [Managed Identity Policy](#configure-managed-identity) to allow communication with the service.
 
 ## Syntax
 
@@ -41,47 +43,48 @@ The following table describes the options that control the way the requests are 
 |--|--|--|
 | `RetriesOnThrottling` | `int` | Specifies the number of retry attempts when throttling occurs. Default value: `0`. |
 | `GlobalTimeout` | `timespan` | Specifies the maximum time to wait for a response from the AI chat model. Default value: `null`. |
-| `ModelParameters` | `dynamic` | Parameters specific to the AI chat model. Possible values: `temperature`, `top_p`, `stop`, `max_tokens`, `max_completion_tokens`, `presence_penalty`, `frequency_penalty`, `user`, `seed`. Any other specified model parameters are ignored. Default value: `null`. |
+| `ModelParameters` | `dynamic` | Parameters specific to the AI chat model. Possible values: `temperature`, `top_p`, `stop`, `max_tokens`, `max_completion_tokens`, `presence_penalty`, `frequency_penalty`, `user`, `seed`. Any other specified model parameters are ignored. Default value: `null`. |
 | `ReturnSuccessfulOnly` | `bool` | Indicates whether to return only the successfully processed items. Default value: `false`. If the *IncludeErrorMessages* parameter is set to `true`, this option is always set to `false`. |
 
 ## Configure Callout Policy
 
 The `azure_openai` [callout policy](../management/callout-policy.md) allows the cluster to make external calls to Azure AI services.
 
-To configure the callout policy to authorize the AI model endpoint domain:
+To configure the callout policy to authorize the AI model endpoint domain:
 
 <!-- csl -->
 ~~~kusto
 .alter-merge cluster policy callout
 ```
 [
-    {
-        "CalloutType": "azure_openai",
-        "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
-        "CanCall": true
-    }
+  {
+    "CalloutType": "azure_openai",
+    "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
+    "CanCall": true
+  }
 ]
 ```
 ~~~
 
 ## Configure Managed Identity
 
-When using managed identity to access Azure OpenAI Service, you must configure the [Managed Identity policy](../management/managed-identity-policy.md) to allow the system-assigned managed identity to authenticate to Azure OpenAI Service.
+When using managed identity to access Azure OpenAI Service, you must configure the [Managed Identity policy](../management/managed-identity-policy.md) to allow the system-assigned managed identity to authenticate to Azure OpenAI Service.
 
-To configure the managed identity:
+To configure the managed identity:
 
-<!-- csl -->
-~~~kusto
-.alter-merge cluster policy managed_identity
-```
-[
-  {
-    "ObjectId": "system",
-    "AllowedUsages": "AzureAI"
-  }
-]
-```
-~~~
+<!-- csl -->
+
+~~~kusto
+.alter-merge cluster policy managed_identity
+```
+[
+  {
+    "ObjectId": "system",
+    "AllowedUsages": "AzureAI"
+  }
+]
+```
+~~~
 
 ## Returns
 
@@ -97,10 +100,10 @@ Depending on the input type, the plugin returns different results:
 
 ## Examples
 
-The following example uses a *system prompt* to set the context for all subsequent chat messages in the input to the Azure OpenAI chat completion model.
+The following example uses a *system prompt* to set the context for all subsequent chat messages in the input to the Azure OpenAI chat completion model.
 
-### [Managed Identity](#tab/managed-identity)
-
+### [Managed Identity](#tab/managed-identity)
+
 <!-- csl -->
 ```kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;managed_identity=system';
@@ -108,8 +111,8 @@ let messages = dynamic([{'role':'system', 'content': 'You are a KQL writing assi
 evaluate ai_chat_completion(messages, connectionString);
 ```
 
-### [Impersonation](#tab/impersonation)
-
+### [Impersonation](#tab/impersonation)
+
 <!-- csl -->
 ```kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
@@ -117,9 +120,9 @@ let messages = dynamic([{'role':'system', 'content': 'You are a KQL writing assi
 evaluate ai_chat_completion(messages, connectionString);
 ```
 
----
+---
 
 ## Related content
 
 * [ai_embed_text()](ai-embed-text-plugin.md)
-* [ai_chat_completion_prompt()](ai-chat-completion-prompt-plugin.md)
+* [ai_chat_completion_prompt()](ai-chat-completion-prompt-plugin.md)
