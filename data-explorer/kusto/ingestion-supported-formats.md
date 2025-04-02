@@ -16,7 +16,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 > Before you ingest data, make sure that your data is properly formatted and defines the expected fields. We recommend using your preferred validator to confirm the format is valid. For example, you may find the following validators useful to check CSV or JSON files:
 >
 > * CSV: http://csvlint.io/
-> * JSON: https://jsonlint.com/
+> * JSON: https://json-validate.com/
 
 For more information about why ingestion might fail, see [Ingestion failures](management/ingestion-failures.md) 
 ::: moniker range="azure-data-explorer"
