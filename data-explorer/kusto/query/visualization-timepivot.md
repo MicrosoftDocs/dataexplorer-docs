@@ -1,6 +1,6 @@
 ---
 title:  Time pivot visualization
-description:  This article describes the time pivot visualization.
+description:  This article describes the time pivot visualization and iteractivity.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/02/2025
@@ -16,6 +16,19 @@ The time pivot visualization is an interactive navigation over the events time-l
 >
 > * This visualization can only be used in the context of the [render operator](render-operator.md).
 > * This visualization can be used in Kusto.Explorer but isn't available in the Azure Data Explorer web UI.
+
+## Interactive display
+
+After you render the time pivot, you can further investigate and interact with the data by adding slice levels, and by drilling into specific time slices. The data in the table updates interactively according to the slice options you configure. The interactive options that are available are:
+
+* Change, add, and remove multiple slice levels
+* Expand rows to view details of each level
+* Toggle to view by start time or by end time
+* Select specific rows, or specific time slices, and view their data in the table.
+
+> [!TIP]
+>
+> * Time pivots have built-in support for the OpenTelemetry schema. When interacting with the first-level of the slice options, the OpenTelemtry spans and their nested hierarchy display in the list.
 
 ## Syntax
 
@@ -36,35 +49,48 @@ All properties are optional.
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
-|`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
-|`legend`      |Whether to display a legend or not (`visible` or `hidden`).                       |
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
-|`ymin`        |The minimum value to be displayed on Y-axis.                                      |
-|`ymax`        |The maximum value to be displayed on Y-axis.                                      |
-|`title`       |The title of the visualization (of type `string`).                                |
-|`xaxis`       |How to scale the x-axis (`linear` or `log`).                                      |
-|`xcolumn`     |Which column in the result is used for the x-axis.                                |
-|`xtitle`      |The title of the x-axis (of type `string`).                                       |
-|`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
-|`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
-|`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
-## Example
+## Examples
+
+The examples in this section show how to use the syntax to help you get started.
+
+### Visualize flood events per state ###
 
 This query outputs a visualization of flood events in the specified Midwestern states, displayed as a time pivot chart.
 
-[!INCLUDE [help-cluster-note-data-explorer-only](../includes/help-cluster-note-data-explorer-only.md)]
-
 ```kusto
 let midwesternStates = dynamic([
-    "ILLINOIS", "INDIANA", "IOWA", "KANSAS", "MICHIGAN", "MINNESOTA",
-    "MISSOURI", "NEBRASKA", "NORTH DAKOTA", "OHIO", "SOUTH DAKOTA", "WISCONSIN"
+  "ILLINOIS", "INDIANA", "IOWA", "KANSAS", "MICHIGAN", "MINNESOTA",
+  "MISSOURI", "NEBRASKA", "NORTH DAKOTA", "OHIO", "SOUTH DAKOTA", "WISCONSIN"
 ]);
 StormEvents
 | where EventType == "Flood" and State in (midwesternStates)
-| render timepivot with (xcolumn=State)
-```
+| render timepivot with (series=State)
+ ```
 
 **Output**
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
+
+### Modify slice options ###
+
+Select a new slice option to change the data displayed in the time pivot. The data in the table below the time pivot updates to reflect the new series.
+
+:::image type="content" source="media/visualization-timepivot/time-pivot-slice-options.png" lightbox="media/visualization-timepivot/time-pivot-slice-options.png" alt-text="Screenshot of timepivot slice options in Kusto.Explorer.":::
+
+### Add slice levels ###
+
+Add slice option levels to further investigate and interact with the data. Expand each row to see the levels added.
+
+:::image type="content" source="media/visualization-timepivot/time-pivot-add-levels.png" lightbox="media/visualization-timepivot/time-pivot-add-levels.png" alt-text="Screenshot of timepivot with multiple levels expanded in Kusto.Explorer.":::
+
+### View specific time slice data ###
+
+To display the data relevant for a specific slice, select one or more time slices in a row of the time pivot.
+
+:::image type="content" source="media/visualization-timepivot/time-pivot-slice-specific.png" lightbox="media/visualization-timepivot/time-pivot-slice-specific.png" alt-text="Screenshot of specific time slicein Kusto.Explorer.":::
+
+### View and slice OpenTelemetry data
+
+OpenTelemetry data slice options reflect its nested hierarchy. In this example,....
