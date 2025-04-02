@@ -19,7 +19,7 @@ The time pivot visualization is an interactive navigation over the events time-l
 
 ## Interactive display
 
-After you render the time pivot, you can further investigate and interact with the data by adding slice levels, and by drilling into specific time slices. The data in the table updates interactively according to the slice options you configure. The interactive options that are available are:
+After you render the time pivot, you can further investigate and interact with the data by adding slice levels, and by drilling into specific time slices. The data in the table updates interactively according to the slice options you configure. The slice options that are available are:
 
 * Change, add, and remove multiple slice levels
 * Expand rows to view details of each level
@@ -73,19 +73,19 @@ StormEvents
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
 
-### Modify slice options ###
+### Modify slice options to view flood events ###
 
 Select a new slice option to change the data displayed in the time pivot. The data in the table below the time pivot updates to reflect the new series.
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-slice-options.png" lightbox="media/visualization-timepivot/time-pivot-slice-options.png" alt-text="Screenshot of timepivot slice options in Kusto.Explorer.":::
 
-### Add slice levels ###
+### Add slice levels to view flood events per state and per source ###
 
 Add slice option levels to further investigate and interact with the data. Expand each row to see the levels added.
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-add-levels.png" lightbox="media/visualization-timepivot/time-pivot-add-levels.png" alt-text="Screenshot of timepivot with multiple levels expanded in Kusto.Explorer.":::
 
-### View specific time slice data ###
+### View time slice data for a specific flood in Ohio  ###
 
 To display the data relevant for a specific slice, select one or more time slices in a row of the time pivot.
 
