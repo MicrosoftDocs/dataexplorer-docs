@@ -3,7 +3,7 @@ title: ai_embed_text plugin (Preview)
 description: Learn how to use the ai_embed_text plugin to embed text via language models, enabling various AI-related scenarios such as RAG application and semantic search.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/12/2024
+ms.date: 02/04/2025
 monikerRange: "azure-data-explorer"
 ---
 # ai_embed_text plugin (Preview)
@@ -57,11 +57,11 @@ To configure the callout policy to authorize the AI model endpoint domain:
 .alter-merge cluster policy callout
 ```
 [
-    {
-        "CalloutType": "azure_openai",
-        "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
-        "CanCall": true
-    }
+  {
+    "CalloutType": "azure_openai",
+    "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
+    "CanCall": true
+  }
 ]
 ```
 ~~~
@@ -128,10 +128,10 @@ The following example embeds multiple texts using the Azure OpenAI Embedding mod
 ~~~kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;managed_identity=system';
 let options = dynamic({
-    "RecordsPerRequest": 10,
-    "CharsPerRequest": 10000,
-    "RetriesOnThrottling": 1,
-    "GlobalTimeout": 2m
+  "RecordsPerRequest": 10,
+  "CharsPerRequest": 10000,
+  "RetriesOnThrottling": 1,
+  "GlobalTimeout": 2m
 });
 datatable(TextData: string)
 [
@@ -148,16 +148,16 @@ datatable(TextData: string)
 ~~~kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
 let options = dynamic({
-    "RecordsPerRequest": 10,
-    "CharsPerRequest": 10000,
-    "RetriesOnThrottling": 1,
-    "GlobalTimeout": 2m
+  "RecordsPerRequest": 10,
+  "CharsPerRequest": 10000,
+  "RetriesOnThrottling": 1,
+  "GlobalTimeout": 2m
 });
 datatable(TextData: string)
 [
-    "First text to embed",
-    "Second text to embed",
-    "Third text to embed"
+  "First text to embed",
+  "Second text to embed",
+  "Third text to embed"
 ]
 | evaluate ai_embed_text(TextData, connectionString, options , true)
 ~~~
