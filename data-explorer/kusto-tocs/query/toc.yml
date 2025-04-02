@@ -1381,6 +1381,18 @@ items:
   - name: countif()
     displayName: count(predicate)
     href: /kusto/query/countif-aggregation-function?view=azure-data-explorer&preserve-view=true
+  - name: covariance()
+    displayName: covariance()
+    href: /kusto/query/covariance-aggregation-function?view=azure-data-explorer&preserve-view=true
+  - name: covarianceif()
+    displayName: covarianceif()
+    href: /kusto/query/covarianceif-aggregation-function?view=azure-data-explorer&preserve-view=true
+  - name: covariancep()
+    displayName: covariancep()
+    href: /kusto/query/covariancep-aggregation-function?view=azure-data-explorer&preserve-view=true
+  - name: covariancepif()
+    displayName: covariancepif()
+    href: /kusto/query/covariancepif-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: dcount()
     href: /kusto/query/dcount-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: dcountif()
@@ -1447,6 +1459,8 @@ items:
     href: /kusto/query/varianceif-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: variancep()
     href: /kusto/query/variancep-aggregation-function?view=azure-data-explorer&preserve-view=true
+  - name: variancepif()
+    href: /kusto/query/variancepif-aggregation-function?view=azure-data-explorer&preserve-view=true
 - name: Graph
   items:
   - name: Graph overview
