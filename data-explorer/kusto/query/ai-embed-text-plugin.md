@@ -10,7 +10,7 @@ monikerRange: "azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The `ai_embed_text` plugin allows embedding of text using language models, enabling various AI-related scenarios such as Retrieval Augmented Generation (RAG) applications and semantic search. The plugin supports Azure OpenAI Service embedding models accessed using managed identity and impersonation.
+The `ai_embed_text` plugin allows embedding of text using language models, enabling various AI-related scenarios such as Retrieval Augmented Generation (RAG) applications and semantic search. The plugin uses the Azure OpenAI Service embedding models and can be accessed using either a managed identity or the user's identity (impersonation).
 
 ## Prerequisites
 
@@ -47,44 +47,43 @@ The following table describes the options that control the way the requests are 
 | `ReturnSuccessfulOnly` | `bool` | Indicates whether to return only the successfully processed items. Default value: `false`. If the *IncludeErrorMessages* parameter is set to `true`, this option is always set to `false`. |
 
 ## Configure Callout Policy
+
 The `azure_openai` [callout policy](../management/callout-policy.md) allows the cluster to make external calls to Azure AI services.
 
+To configure the callout policy to authorize the AI model endpoint domain:
 
-Configure the callout policy:
-
-    <!-- csl -->
-    ~~~kusto
-    .alter-merge cluster policy callout
-    ```
-    [
-        {
-            "CalloutType": "azure_openai",
-            "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
-            "CanCall": true
-        }
-    ]
-    ```
-    ~~~
+<!-- csl -->
+~~~kusto
+.alter-merge cluster policy callout
+```
+[
+    {
+        "CalloutType": "azure_openai",
+        "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
+        "CanCall": true
+    }
+]
+```
+~~~
 
 ## Configure Managed Identity
-Optionally, we can use managed identities for authentication.
 
-[Managed Identity](../management/managed-identity-policy.md) allows the system-assigned managed identity to authenticate to Azure OpenAI services.
+When using managed identity to access Azure OpenAI Service, you must configure the [Managed Identity policy](../management/managed-identity-policy.md) to allow the system-assigned managed identity to authenticate to Azure OpenAI Service.
 
-Configure the managed identity:
+To configure the managed identity:
 
-    <!-- csl -->
-    ~~~kusto
-    .alter-merge cluster policy managed_identity
-    ```
-    [
-      {
-        "ObjectId": "system",
-        "AllowedUsages": "AzureAI"
-      }
-    ]
-    ```
-    ~~~
+<!-- csl -->
+~~~kusto
+.alter-merge cluster policy managed_identity
+```
+[
+  {
+    "ObjectId": "system",
+    "AllowedUsages": "AzureAI"
+  }
+]
+```
+~~~
 
 ## Returns
 
@@ -102,6 +101,8 @@ Depending on the input type, the plugin returns different results:
 
 The following example embeds the text `Embed this text using AI` using the Azure OpenAI Embedding model.
 
+### [Managed Identity](#tab/managed-identity)
+
 <!-- csl -->
 ```kusto
 let expression = 'Embed this text using AI';
@@ -109,15 +110,19 @@ let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/te
 evaluate ai_embed_text(expression, connectionString)
 ```
 
-Or, use the user's identity (impersonation)
+### [Impersonation](#tab/impersonation)
+
 <!-- csl -->
 ```kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
 evaluate ai_embed_text(expression, connectionString)
 ```
 
+---
 
 The following example embeds multiple texts using the Azure OpenAI Embedding model.
+
+### [Managed Identity](#tab/managed-identity)
 
 <!-- csl -->
 ~~~kusto
@@ -136,6 +141,28 @@ datatable(TextData: string)
 ]
 | evaluate ai_embed_text(TextData, connectionString, options , true)
 ~~~
+
+### [Impersonation](#tab/impersonation)
+
+<!-- csl -->
+~~~kusto
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
+let options = dynamic({
+    "RecordsPerRequest": 10,
+    "CharsPerRequest": 10000,
+    "RetriesOnThrottling": 1,
+    "GlobalTimeout": 2m
+});
+datatable(TextData: string)
+[
+    "First text to embed",
+    "Second text to embed",
+    "Third text to embed"
+]
+| evaluate ai_embed_text(TextData, connectionString, options , true)
+~~~
+
+---
 
 ## Best practices
 
