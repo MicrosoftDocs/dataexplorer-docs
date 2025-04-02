@@ -3,7 +3,7 @@ title:  Time pivot visualization
 description:  This article describes the time pivot visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/21/2025
+ms.date: 04/02/2025
 monikerRange: "azure-data-explorer"
 ---
 # Time pivot
