@@ -1289,6 +1289,9 @@ items:
           - name: all()
             displayName: all() graph function
             href: all-graph-function.md
+          - name: any()
+            displayName: any() graph function 
+            href: any-graph-function.md
           - name: map()
             displayName: map() graph function
             href: map-graph-function.md
