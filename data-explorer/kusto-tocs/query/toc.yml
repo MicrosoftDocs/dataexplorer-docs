@@ -1803,7 +1803,7 @@ items:
     - name: ai_chat_completion plugin
       href: /kusto/query/ai-chat-completion-plugin?view=azure-data-explorer&preserve-view=true
     - name: ai_chat_completion_prompt plugin
-      href: /kusto/query/ai-chat-completion-prompt?view=azure-data-explorer&preserve-view=true
+      href: /kusto/query/ai-chat-completion-prompt-plugin?view=azure-data-explorer&preserve-view=true
     - name: azure_digital_twins_query_request plugin
       href: /kusto/query/azure-digital-twins-query-request-plugin?view=azure-data-explorer&preserve-view=true
     - name: cosmosdb_sql_request plugin
