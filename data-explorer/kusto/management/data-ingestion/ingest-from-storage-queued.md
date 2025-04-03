@@ -65,12 +65,12 @@ The following example queues all blobs within a folder for ingestion using the c
 
 ```kusto
 .ingest-from-storage-queued into table database('LogDb').RawLogs
+EnableTracking=true
 with (
   format='csv',
   ingestionMappingReference='LogMapping',
   ignoreFirstRecord=false  
 )
-EnableTracking=true
 <|
   .list blobs (
       "https://mystorageaccount.blob.core.windows.net/datasets/myfolder;managed_identity=system"
