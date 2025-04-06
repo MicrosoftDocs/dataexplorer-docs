@@ -47,11 +47,28 @@ The examples in this section show how to use the syntax to help you get started.
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
+
+### Get top 2 events by totals ###
+
+This example summarizes storm event data by calculating the total number of events for each event type. The query then selects the top two event types with the highest total number of events.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKC7NzU0syqxKVQjJL0nMAYt7pijYgiQ0oDxNhaRKBTA7pLIgFaipJL9AwQgkiKInJbU4GQAdfFzEXQAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+ 
 ```kusto
 StormEvents
 | summarize TotalEventId = sum(EventId) by EventType
 | top 2 by TotalEventId desc
 ```
+
+**Output**
+
+| EventType | TotalEventId |
+|---|---|
+| Thunderstorm Wind | 562,509,013 |
+| Hail | 474,690,007 |
 
 ### Get most frequent items
 
