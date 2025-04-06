@@ -15,9 +15,9 @@ This command is typically used with [.ingest-from-storage-queued](ingest-from-st
 
 > [!NOTE]
 >
-> Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
+> - Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
 >
-> When the command is used on its own, the results might be truncated to limit the number of blobs.  When it is used with [.ingest-from-storage-queued](ingest-from-storage-queued.md), .  When used with [.ingest-from-storage-queued](ingest-from-storage-queued.md), no truncation is done.
+> - When the command is used on its own, the results might be truncated to limit the number of blobs. However, when used with [.ingest-from-storage-queued](ingest-from-storage-queued.md), no truncation is applied.
 
 ## Permissions
 
