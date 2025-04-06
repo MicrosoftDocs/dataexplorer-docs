@@ -3,7 +3,8 @@ title: ai_chat_completion_prompt plugin (Preview)
 description: Learn how to use the ai_chat_completion_prompt plugin to chat with large language models, enabling AI-related scenarios such as RAG application and semantic search.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/04/2025
+ms.date: 04/06/2025
+
 monikerRange: "azure-data-explorer"
 ---
 # ai_chat_completion_prompt plugin (Preview)
