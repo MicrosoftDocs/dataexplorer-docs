@@ -66,7 +66,7 @@ StormEvents
 **Output**
 
 | EventType | TotalEventId |
-| -- | -- |
+|---|---|
 | Thunderstorm Wind | 562,509,013 |
 | Hail | 474,690,007 |
 
