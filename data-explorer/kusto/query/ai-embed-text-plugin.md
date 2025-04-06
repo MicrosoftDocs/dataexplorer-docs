@@ -14,7 +14,7 @@ The `ai_embed_text` plugin allows embedding of text using language models, enabl
 
 ## Prerequisites
 
-* An Azure Open AI Service configured with at least the ([Cognitive Services OpenAI User](/azure/ai-services/openai/how-to/role-based-access-control)) role assigned to the identity being used.
+* An Azure OpenAI Service configured with at least the ([Cognitive Services OpenAI User](/azure/ai-services/openai/how-to/role-based-access-control)) role assigned to the identity being used.
 * A [Callout Policy](#configure-callout-policy) configured to allow calls to AI services.
 * When using managed identity to access Azure OpenAI Service, configure the [Managed Identity Policy](#configure-managed-identity) to allow communication with the service.
 
