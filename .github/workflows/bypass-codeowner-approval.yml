@@ -1,4 +1,5 @@
 name: Bypass Code Owner Approval
+
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -14,16 +15,22 @@ jobs:
         id: check-author
         run: |
           echo "Check if PR author is a code owner"
+          
+          # Fetch team members from both teams
           TEAM_MEMBERS=$(curl -s -H "Authorization: token $ACTION_TOKEN_SS" https://api.github.com/orgs/MicrosoftDocs/teams/kusto-doc-writers/members)
           TEAM_MEMBERS="$TEAM_MEMBERS $(curl -s -H \"Authorization: token $ACTION_TOKEN_SS\" https://api.github.com/orgs/MicrosoftDocs/teams/apex-docs-pr-reviewers/members)"
-          echo "Checking if login in team -- ${{ github.actor }}"
+          echo "Team members: $TEAM_MEMBERS"
+          
+          # Check if the PR author is a code owner
+          echo "Checking if login is codeowner in team -- ${{ github.actor }}"
           IS_CODEOWNER=false
           if echo "$TEAM_MEMBERS" | grep -q "\"login\": \"${{ github.actor }}\""; then
             echo "Login Found"
             IS_CODEOWNER=true
           fi
-          echo "is_codeowner -- $IS_CODEOWNER"
+          echo "is_codeowner == $IS_CODEOWNER"
 
+          # Bypass approval if the author is a code owner
           if $IS_CODEOWNER; then
             echo "Bypassing approval for code owner"
             if [ "${{ github.actor }}" == "shsagir" ]; then
