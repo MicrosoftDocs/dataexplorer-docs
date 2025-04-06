@@ -3,7 +3,7 @@ title: Azure Data Explorer Kusto emulator overview
 description: In this article, you learn about the Azure Data Explorer Kusto emulator.
 ms.reviewer: vplauzon
 ms.topic: conceptual
-ms.date: 02/06/2025
+ms.date: 04/05/2025
 ---
 # Azure Data Explorer Kusto emulator
 
