@@ -117,8 +117,8 @@ The following table describes the permissions required for each ingestion method
 | [One-time ingestion](#one-time-data-ingestion) | Table Ingestor or higher  |
 | [Continuous streaming ingestion](#continuous-data-ingestion) | Table Ingestor or higher |
 | [Continuous queued ingestion](#continuous-data-ingestion) | Table Ingestor or higher |
-| [Direct inline ingestion](#direct-ingestion-with-management-commands) | Table Ingestor or higher </br>Database Viewer or higher |
-| [Direct ingestion from query](#direct-ingestion-with-management-commands) | Table Ingestor or higher </br>Database Viewer or higher |
+| [Direct inline ingestion](#direct-ingestion-with-management-commands) | Table Ingestor or higher, and </br>Database Viewer or higher |
+| [Direct ingestion from query](#direct-ingestion-with-management-commands) | Table Ingestor or higher, and </br>Database Viewer or higher |
 | [Direct ingestion from storage](#direct-ingestion-with-management-commands) | Table Ingestor or higher |
 
 For more information, see [Kusto role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true).
