@@ -19,6 +19,7 @@ jobs:
           # Fetch team members from both teams
           TEAM_MEMBERS=$(curl -s -H "Authorization: token $ACTION_TOKEN_SS" https://api.github.com/orgs/MicrosoftDocs/teams/kusto-doc-writers/members)
           TEAM_MEMBERS="$TEAM_MEMBERS $(curl -s -H "Authorization: token $ACTION_TOKEN_SS" https://api.github.com/orgs/MicrosoftDocs/teams/apex-docs-pr-reviewers/members)"
+          TEAM_MEMBERS="$TEAM_MEMBERS $(curl -s -H "Authorization: token $ACTION_TOKEN_SS" https://api.github.com/orgs/MicrosoftDocs/teams/pubdesk/members)"
           echo "Team members: $TEAM_MEMBERS"
           
           # Check if the PR author is a code owner
