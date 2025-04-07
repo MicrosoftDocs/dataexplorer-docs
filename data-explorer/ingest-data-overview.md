@@ -81,7 +81,6 @@ Azure Data Explorer offers the following ingestion management commands, which in
 > [!NOTE]
 > In the event of a failure, ingestion is performed again and is retried for up to 48 hours using the exponential backoff method for wait time between tries.
 
-
 ## Compare ingestion methods
 
 The following table compares the main ingestion methods:
@@ -96,7 +95,7 @@ The following table compares the main ingestion methods:
 | [IoT Hub](ingest-data-iot-hub-overview.md) | [Supported data formats](ingest-data-iot-hub-overview.md#data-format) | N/A | Queued, streaming | IoT messages, IoT events, IoT properties |  |
 | [Kafka connector](ingest-data-kafka.md) | Avro, ApacheAvro, JSON, CSV, Parquet, and ORC | Unlimited. Inherits Java restrictions. | Queued, streaming | Existing pipeline, high volume consumption from the source. | Preference can be determined by the existing use of a multiple producers or consumer service or the desired level of service management. |
 | [Kusto client libraries](/kusto/api/client-libraries?view=azure-data-explorer&preserve-view=true) | [Supported data formats](ingestion-supported-formats.md) | 1 GB uncompressed | Queued, streaming, direct | Write your own code according to organizational needs | Programmatic ingestion is optimized for reducing ingestion costs (COGs) by minimizing storage transactions during and following the ingestion process. |
-| [LightIngest](lightingest.md) | [Supported data formats](ingestion-supported-formats.md) | 1 GB uncompressed | Queued or direct ingestion | Data migration, historical data with adjusted ingestion timestamps, bulk ingestion | Case-sensitive and space-sensitive |
+| [LightIngest](lightingest.md) | [Supported data formats](ingestion-supported-formats.md) | 1 GB uncompressed | Queued or direct ingestion | Data migration, historical data with adjusted ingestion timestamps, bulk ingestion | Case-sensitive, and space-sensitive |
 | [Logic Apps](/kusto/tools/logicapps?view=azure-data-explorer&preserve-view=true) | [Supported data formats](ingestion-supported-formats.md) | 1 GB uncompressed | Queued | Used to automate pipelines | |
 | [LogStash](ingest-data-logstash.md) | JSON | Unlimited. Inherits Java restrictions. | Queued | Existing pipeline, use the mature, open source nature of Logstash for high volume consumption from the input(s). | Preference can be determined by the existing use of a multiple producers or consumer service or the desired level of service management. |
 | [Power Automate](flow.md) | [Supported data formats](ingestion-supported-formats.md) | 1 GB uncompressed | Queued | Ingestion commands as part of flow. Used to automate pipelines. | |
@@ -110,6 +109,17 @@ The following list describes the permissions required for various ingestion scen
 * To create a new table requires at least Database User permissions.
 * To ingest data into an existing table, without changing its schema, requires at least Database Ingestor permissions.
 * To change the schema of an existing table requires at least Table Admin or Database Admin permissions.
+
+The following table describes the permissions required for each ingestion method:
+
+| Ingestion method | Scope and Role |
+|--|--|
+| [One-time ingestion](#one-time-data-ingestion) | Table Ingestor or higher  |
+| [Continuous streaming ingestion](#continuous-data-ingestion) | Table Ingestor or higher |
+| [Continuous queued ingestion](#continuous-data-ingestion) | Table Ingestor or higher |
+| [Direct inline ingestion](#direct-ingestion-with-management-commands) | Table Ingestor or higher </br>Database Viewer or higher |
+| [Direct ingestion from query](#direct-ingestion-with-management-commands) | Table Ingestor or higher </br>Database Viewer or higher |
+| [Direct ingestion from storage](#direct-ingestion-with-management-commands) | Table Ingestor or higher |
 
 For more information, see [Kusto role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true).
 
