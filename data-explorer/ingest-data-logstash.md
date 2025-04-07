@@ -21,7 +21,7 @@ ms.date: 09/22/2022
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* Logstash version 8.7.0 or higher [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html).
+* Logstash version 8.7.or higher [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html).
 
 ## Create a table
 
