@@ -1290,7 +1290,7 @@ items:
             displayName: all() graph function
             href: all-graph-function.md
           - name: any()
-            displayName: any() graph function 
+            displayName: any() graph function
             href: any-graph-function.md
           - name: map()
             displayName: map() graph function
@@ -1542,6 +1542,9 @@ items:
       - name: series_pow()
         displayName: element-wise, elementwise
         href: series-pow-function.md
+      - name: series_product()
+        displayName: element-wise, elementwise
+        href: series-product-function.md
       - name: series_seasonal()
         displayName: periods
         href: series-seasonal-function.md

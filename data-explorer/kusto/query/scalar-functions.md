@@ -257,6 +257,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[series_pearson_correlation()](series-pearson-correlation-function.md)|Calculates the Pearson correlation coefficient of two series.|
 |[series_periods_detect()](series-periods-detect-function.md)|Finds the most significant periods that exist in a time series.|
 |[series_periods_validate()](series-periods-validate-function.md)|Checks whether a time series contains periodic patterns of given lengths.|
+|[series_product()](series-product-function.md)|Calculates the product of numeric series elements.|
 |[series_seasonal()](series-seasonal-function.md)|Finds the seasonal component of the series.|
 |[series_stats()](series-stats-function.md)|Returns statistics for a series in multiple columns.|
 |[series_stats_dynamic()](series-stats-dynamic-function.md)|Returns statistics for a series in dynamic object.|
