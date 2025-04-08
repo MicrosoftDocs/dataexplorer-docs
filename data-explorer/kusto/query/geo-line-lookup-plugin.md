@@ -77,6 +77,8 @@ Try using lookup radius starting from average value towards either minimum (If t
 
 ## Examples
 
+The examples in this section shows how to use the syntax to help you get started.
+
 ###  Matching rows only
 
 :::moniker range="azure-data-explorer"
