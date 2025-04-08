@@ -3,7 +3,7 @@ title:  geo_polygon_lookup plugin
 description: Learn how to use the geo_polygon_lookup plugin to look up a polygon value in a lookup table.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/20/2025
+ms.date: 04/08/2025
 ---
 # geo_polygon_lookup plugin (preview)
 
