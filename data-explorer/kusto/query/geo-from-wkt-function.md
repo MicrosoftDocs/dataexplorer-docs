@@ -88,7 +88,7 @@ print polygon = geo_from_wkt("POLYGON ((0 0, 2 0, 2 2, 0 0))");
 |---|
 |{"type": "Polygon","coordinates": [[[0,0],[2,0],[2,2],[0,0]]]}|
 
-The following example converts multipoint from WKT format to GeoJSON format
+The following example converts multipoint from WKT format to GeoJSON format.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
