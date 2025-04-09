@@ -4,8 +4,7 @@ description: Learn how to use the ai_chat_completion plugin to chat with large l
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/06/2025
-
-monikerRange: "azure-data-explorer"
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # ai_chat_completion plugin (preview)
 
