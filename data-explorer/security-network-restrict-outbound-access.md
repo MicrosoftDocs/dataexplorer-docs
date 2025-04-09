@@ -75,11 +75,21 @@ To disable restricted outbound access, set the `restrictOutboundNetworkAccess` p
 }
 ```
 
+### Example: Enable restricted outbound access using the Azure Portal
+
+1. Go to your cluster in the [Azure portal](https://portal.azure.com/).
+1. Navigate to **Security + networking** > **Networking** > **Restrict outbound access**.
+1. Select **Enabled** to enable the restricted outbound access.
+
+    :::image type="content" source="media/security-network-restricted-outbound-access/security-network-roa-enabled-noFQDN.png" lightbox="media/security-network-restricted-outbound-access/security-network-roa-enabled-noFQDN.png" alt-text="Screenshot of the network configuration page, showing the restricted outbound access configuration without FQDNs configured.":::
+
+1. Select **Save** to submit the configuration.
+
 ## Configure FQDN-based allow lists
 
 When restricted outbound access is enabled, you can allow specific FQDNs by adding them to the `allowedFqdnList` property in your cluster's ARM template.
 
-### Example: Allow specific FQDNs
+### Example: Allow specific FQDNs using ARM templates
 
 The following ARM template allows outbound access to specific FQDNs while keeping restricted outbound access enabled:
 
@@ -105,9 +115,22 @@ The following ARM template allows outbound access to specific FQDNs while keepin
 }
 ```
 
-## Configure callout policies
+### Example: Allow specific FQDNs using the Azure Portal
+
+1. Go to your cluster in the [Azure portal](https://portal.azure.com/).
+1. Navigate to **Security + networking** > **Networking** > **Restrict outbound access**.
+1. Select **Enabled** to enable the restricted outbound access and configure the FQDNs.
+
+    :::image type="content" source="media/security-network-restricted-outbound-access/security-network-roa-enabled.png" lightbox="media/security-network-restricted-outbound-access/security-network-roa-enabled.png" alt-text="Screenshot of the network configuration page, showing the restricted outbound access configuration with FQDNs configured.":::
+
+1. Select **Save** to submit the configuration.
+
+## Configure callout policies (Preview)
 
 Alternatively, you can configure **callout policies** directly in the ARM template or using the Azure CLI. Callout policies allow you to define specific rules for outbound access to SQL, storage, or other endpoints.
+
+> [!NOTE]
+> At the moment it is not possible to configure the callout policy based restricted outbound access using the Azure portal.
 
 ### Example: Configure callout policies using ARM template
 
@@ -177,9 +200,10 @@ This command will display the current callout policies or any allowed FQDNs.
 
 While restricted outbound access provides robust security, there are some limitations to be aware of:
 
-- FQDN-based allow lists do not support Random HTTPS endpoints.
+- FQDN-based allow lists do not support **webapi** callouts.
 - You can configure either FQDN-based allow lists or callout policies, but not both simultaneously. Attempting to configure both will result in a configuration error.
 - Azure Data Explorer has a set of default policies for internal communication with its storage layer. These policies cannot be changed but pose no risk for data exfiltration.
+- There is no support to configure the callout policy based restricted outbound access using the Azure portal.
 
 ## Related content
 
