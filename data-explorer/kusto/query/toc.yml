@@ -1626,6 +1626,10 @@ items:
         items:
           - name: ai_embed_text plugin
             href: ai-embed-text-plugin.md
+          - name: ai_chat_completion plugin
+            href: ai-chat-completion-plugin.md
+          - name: ai_chat_completion_prompt plugin
+            href: ai-chat-completion-prompt-plugin.md
           - name: azure_digital_twins_query_request plugin
             href: azure-digital-twins-query-request-plugin.md
           - name: cosmosdb_sql_request plugin
