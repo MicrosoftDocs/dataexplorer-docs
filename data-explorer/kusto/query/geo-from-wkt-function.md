@@ -139,7 +139,7 @@ print multipolygon = geo_from_wkt("MULTIPOLYGON (((0 0, 2 0, 2 2, 0 0)),((10 10,
 |---|
 |{"type": "MultiPolygon","coordinates": [[[[0,0],[2,0],[2,2],[0,0]]],[[[10,10],[12,10],[12,12],[10,10]]]]}|
 
-The following example converts geometry collection from WKT format to GeoJSON format
+The following example converts geometry collection from WKT format to GeoJSON format.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
