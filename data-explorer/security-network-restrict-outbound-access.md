@@ -29,6 +29,8 @@ By implementing restricted outbound access, enterprises can ensure that their Az
 
 You can enable or disable restricted outbound access at the ARM layer by configuring the `restrictOutboundNetworkAccess` property in your Azure Data Explorer cluster's ARM template.
 
+Once restricted outbound access is enabled, you cannot make any changes to the callout policy on the [data plane]((kusto/management/callout-policy.md#alter-callout-policy-command)). Any modifications to the callout policy must be made at the control plane level by updating the `allowedFqdnList` or the `allowedCallout` property in the ARM template or through the Azure CLI.
+
 ### Example: Enable restricted outbound access
 
 The following ARM template enables restricted outbound access for your cluster:
@@ -167,6 +169,9 @@ After enabling restricted outbound access or configuring callout policies, you c
 ```
 
 This command will display the current callout policies or any allowed FQDNs.
+
+> [!NOTE]
+> There is a set of default policies set for Azure Data Explorer to communicate with its internal storage layer. They expose no risk for data exfiltration.
 
 ## Related content
 
