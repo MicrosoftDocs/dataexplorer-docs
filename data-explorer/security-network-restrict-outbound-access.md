@@ -173,6 +173,14 @@ This command will display the current callout policies or any allowed FQDNs.
 > [!NOTE]
 > There is a set of default policies set for Azure Data Explorer to communicate with its internal storage layer. They expose no risk for data exfiltration.
 
+## Limitations
+
+While restricted outbound access provides robust security, there are some limitations to be aware of:
+
+- FQDN-based allow lists do not support Random HTTPS endpoints.
+- You can configure either FQDN-based allow lists or callout policies, but not both simultaneously. Attempting to configure both will result in a configuration error.
+- Azure Data Explorer has a set of default policies for internal communication with its storage layer. These policies cannot be changed but pose no risk for data exfiltration.
+
 ## Related content
 
 - [Callout Policy documentation](kusto/management/callout-policy.md)
