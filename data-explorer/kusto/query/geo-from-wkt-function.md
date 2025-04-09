@@ -37,7 +37,7 @@ Shape in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic
 
 ## Examples
 
-The following example converts point from WKT format to GeoJSON format
+The following example converts point from WKT format to GeoJSON format.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
