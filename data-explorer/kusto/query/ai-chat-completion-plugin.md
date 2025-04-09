@@ -7,7 +7,8 @@ ms.date: 04/06/2025
 
 monikerRange: "azure-data-explorer"
 ---
-# ai_chat_completion plugin (Preview)
+# ai_chat_completion plugin (preview)
+
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -15,7 +16,8 @@ The `ai_chat_completion` plugin enables generating chat completions using langua
 
 ## Prerequisites
 
-* An Azure Open AI Service configured with at least the ([Cognitive Services OpenAI User](/azure/ai-services/openai/how-to/role-based-access-control)) role assigned to the identity being used.
+* An Azure OpenAI Service configured with at least the ([Cognitive Services OpenAI User](/azure/ai-services/openai/how-to/role-based-access-control)) role assigned to the identity being used.
+
 
 * A [Callout Policy](#configure-callout-policy) configured to allow calls to AI services.
 
