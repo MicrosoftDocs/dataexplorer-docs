@@ -24,7 +24,7 @@ A reservation discount is applied to Azure Data Explorer markup consumption on a
 
 > [!NOTE]
 >
-> * It is **highly recommended** to purchase [reservation capacity](/azure/virtual-machines/prepay-reserved-vm-instances) for the virtual machines used for the Azure Data Explorer cluster to maximize the reserved capacity savings.
+> * It is **highly recommended** to purchase [savings plan](https://learn.microsoft.com/en-us/azure/cost-management-billing/savings-plan/savings-plan-compute-overview) for the virtual machines used for the Azure Data Explorer cluster to maximize the reserved capacity savings.
 > * The reservation purchase will apply discounts to all regions.
 
 ## Examples
