@@ -119,7 +119,7 @@ locations
 |Empire State Building|-73.9856733789857|40.7484262997738|New York|{"type":"Polygon","coordinates":[[[-73.97375470114766,40.74300078124614],[-73.98653921014294,40.75486501361894],[-73.99910622331992,40.74112695466084],[-73.97375470114766,40.74300078124614]]]}|
 |Eiffel Tower|2.29448942606891|48.8582634761692|Paris|{"type":"Polygon","coordinates":[[[2.57564669886321,48.769567764921337],[2.420098611499384,49.05163394896812],[2.1016783119165725,48.80113794475062],[2.57564669886321,48.769567764921337]]]}|
 
-The following example returns both matching and nonmatching rows
+The following example returns both matching and nonmatching rows.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
