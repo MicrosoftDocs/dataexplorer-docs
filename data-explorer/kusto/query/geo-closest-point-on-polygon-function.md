@@ -3,7 +3,7 @@ title:  geo_closest_point_on_polygon()
 description: Learn how to use the geo_closest_point_on_polygon() function to calculate a point on a polygon or a multipolygon, which is closest to a given point on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 02/23/2025
+ms.date: 04/09/2025
 ---
 # geo_closest_point_on_polygon()
 

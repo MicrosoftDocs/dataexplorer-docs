@@ -3,7 +3,7 @@ title:  geo_line_interpolate_point()
 description: Learn how to use the geo_line_interpolate_point() function to calculate a point at fraction on a line on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 02/23/2025
+ms.date: 04/09/2025
 ---
 # geo_line_interpolate_point()
 

@@ -3,7 +3,7 @@ title:  geo_line_locate_point()
 description: Learn how to use the geo_line_locate_point() function to calculate fraction value as a ratio of a line length from line start till a point on a line which is closest to a given point and a whole line length on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 02/23/2025
+ms.date: 04/09/2025
 ---
 # geo_line_locate_point()
 

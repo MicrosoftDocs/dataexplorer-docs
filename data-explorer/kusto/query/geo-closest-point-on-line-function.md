@@ -3,7 +3,7 @@ title:  geo_closest_point_on_line()
 description: Learn how to use the geo_closest_point_on_line() function to calculate a point on a line or a multiline, which is closest to a given point on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 02/23/2025
+ms.date: 04/09/2025
 ---
 # geo_closest_point_on_line()
 
@@ -52,8 +52,6 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 
 ## Examples
 
-### A point on road which is the closest to airport
-
 The following example finds the point on a road which is the closest to North Las Vegas Airport.
 
 :::image type="content" source="media/geo-distance-point-to-line-function/distance-point-to-line.png" alt-text="Screenshot of a map showing the distance between North Las Vegas Airport and a specific road.":::
@@ -73,9 +71,6 @@ print point_on_line = geo_closest_point_on_line(-115.199625, 36.210419, dynamic(
 |--------------------|
 | { "type": "Point", "coordinates": [ -115.192612, 36.176736]} |
 
-
-### Invalid LineString
-
 The following example returns a null result because of the invalid LineString input.
 
 :::moniker range="azure-data-explorer"
@@ -92,8 +87,6 @@ print isnull(geo_closest_point_on_line(1,1, dynamic({ "type":"LineString"})))
 | result |
 |--------|
 |  true  |
-
-### Invalid coordinate
 
 The following example returns a null result because of the invalid coordinate input.
 

@@ -3,7 +3,7 @@ title:  geo_from_wkt()
 description: Learn how to use the geo_from_wkt() function to convert WKT string into GeoJSON shapes.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 02/23/2025
+ms.date: 04/09/2025
 ---
 # geo_from_wkt()
 
@@ -32,7 +32,7 @@ Shape in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic
 > The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
 
 > [!TIP]
-> 
+>
 > * Using converted and stored GeoJSON shapes may result in better performance in geospatial analysis.
 
 ## Examples
