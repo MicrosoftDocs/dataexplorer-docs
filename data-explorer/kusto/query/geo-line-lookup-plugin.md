@@ -77,9 +77,7 @@ Try using lookup radius starting from average value towards either minimum (If t
 
 ## Examples
 
-The examples in this section shows how to use the syntax to help you get started.
-
-###  Matching rows only
+The following example returns only matching rows
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -110,8 +108,7 @@ locations
 |Empire State Building|-73.9856733789857|40.7484262997738|5th Avenue NY|{"type":"LineString","coordinates":[[-73.97291864770574,40.76428551254824],[-73.99708638113894,40.73145135821781]]}|
 |Kensington Palace|-0.188527250123286|51.5049061596723|Palace Ave|{"type":"LineString","coordinates":[[-0.18756982045002247,51.50245944666557],[-0.18908519740253383,51.50544952706903]]}|
 
-
-### Both matching and nonmatching rows
+The following example returns both matching and nonmatching rows
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -144,7 +141,7 @@ locations
 |Statue of Liberty|-74.04462223203123|40.689195627512674|||
 |Grand Central Terminal|-73.97713140725149|40.752730320824895|||
 
-### Both matching and nonmatching rows with 350m radius
+The following example returns both matching and nonmatching rows, with radius set to 350m
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -175,7 +172,7 @@ locations
 |Grand Central Terminal|-73.97713140725149|40.752730320824895|5th Avenue NY|{"type":"LineString","coordinates":[[-73.97291864770574,40.76428551254824],[-73.99708638113894,40.73145135821781]]}|
 |Statue of Liberty|-74.04462223203123|40.689195627512674|||
 
-### Count locations by road
+The following example counts locations by proximity to road
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
