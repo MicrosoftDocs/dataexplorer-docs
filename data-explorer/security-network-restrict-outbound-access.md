@@ -8,16 +8,14 @@ ms.date: 09/04/2025
 
 # Restrict outbound access from your Azure Data Explorer cluster
 
-Restricting outbound access of your cluster is important to mitigate risks like data exfiltration. A malicious actor could potentially create an external table to a storage account and extract large amounts of data. You can control outbound access at the cluster level by enabling **restricted outbound access** and configuring either **FQDN-based allow lists** or **callout policies**.
+Restricting outbound access of your cluster is important to mitigate risks like data exfiltration. A malicious actor could potentially create an external table to a storage account and extract large amounts of data. You can control outbound access at the cluster level by enabling [**restricted outbound access**](#enable-or-disable-restricted-outbound-access) and configuring either [**FQDN-based allow lists**](#configure-fqdn-based-allow-lists) or [**callout policies**](#configure-callout-policies).
 
 > [!IMPORTANT]
 > You can configure **either** the FQDN-based allow list **or** callout policies for restricted outbound access. Configuring both simultaneously will result in an error.
 
----
-
 ## Data Exfiltration Protection
 
-Data exfiltration is a significant concern for large enterprises, especially when sensitive or proprietary data is stored in Azure Data Explorer clusters. Without proper controls, malicious actors or misconfigured systems could potentially transfer data to unauthorized external destinations.
+Data exfiltration is a significant concern for enterprises, especially when sensitive or proprietary data is stored in Azure Data Explorer clusters. Without proper controls, malicious actors or misconfigured systems could potentially transfer data to unauthorized external destinations.
 
 The **restricted outbound access** feature helps mitigate this risk by allowing you to:
 
@@ -26,8 +24,6 @@ The **restricted outbound access** feature helps mitigate this risk by allowing 
 - **Enforce callout policies**: Define granular rules for specific types of outbound traffic, such as SQL or external data calls, to allow or deny access based on your organization's security requirements.
 
 By implementing restricted outbound access, enterprises can ensure that their Azure Data Explorer clusters are protected against data exfiltration risks, aligning with compliance and security standards.
-
----
 
 ## Enable or disable restricted outbound access
 
@@ -77,8 +73,6 @@ To disable restricted outbound access, set the `restrictOutboundNetworkAccess` p
 }
 ```
 
----
-
 ## Configure FQDN-based allow lists
 
 When restricted outbound access is enabled, you can allow specific FQDNs by adding them to the `allowedFqdnList` property in your cluster's ARM template.
@@ -108,8 +102,6 @@ The following ARM template allows outbound access to specific FQDNs while keepin
   ]
 }
 ```
-
----
 
 ## Configure callout policies
 
@@ -166,8 +158,6 @@ az resource update --resource-group <resource-group-name> \
 ]'
 ```
 
----
-
 ## Verify restricted outbound access and policies
 
 After enabling restricted outbound access or configuring callout policies, you can verify the configuration by running the following KQL command in the Azure Data Explorer web UI:
@@ -178,9 +168,6 @@ After enabling restricted outbound access or configuring callout policies, you c
 
 This command will display the current callout policies or any allowed FQDNs.
 
----
-
 ## Related content
 
-- [Callout Policy documentation](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/callout-policy)
-- [Azure Data Explorer security overview](https://learn.microsoft.com/en-us/azure/data-explorer/security-overview)
+- [Callout Policy documentation](kusto/management/callout-policy.md)
