@@ -54,7 +54,7 @@ print point = geo_from_wkt("POINT (1 2)");
 |---|
 |{"type": "Point","coordinates": [1,2]}|
 
-The following example converts line from WKT format to GeoJSON format
+The following example converts line from WKT format to GeoJSON format.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
