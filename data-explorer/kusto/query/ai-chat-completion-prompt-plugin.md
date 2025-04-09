@@ -4,8 +4,7 @@ description: Learn how to use the ai_chat_completion_prompt plugin to chat with 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/06/2025
-
-monikerRange: "azure-data-explorer"
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # ai_chat_completion_prompt plugin (preview)
 
@@ -50,7 +49,7 @@ The following table describes the options that control the way the requests are 
 
 ## Configure Callout Policy
 
-The `azure_openai` [callout policy](../management/callout-policy.md) allows the cluster to make external calls to Azure AI services.
+The `azure_openai` [callout policy](../management/callout-policy.md) enables external calls to Azure AI services.
 
 To configure the callout policy to authorize the AI model endpoint domain:
 

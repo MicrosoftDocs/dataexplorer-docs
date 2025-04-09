@@ -4,6 +4,7 @@ description: Learn how to use the ai_embed_text plugin to embed text via languag
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/04/2025
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # ai_embed_text plugin (Preview)
 
