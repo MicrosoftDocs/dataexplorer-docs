@@ -141,7 +141,7 @@ locations
 |Statue of Liberty|-74.04462223203123|40.689195627512674|||
 |Grand Central Terminal|-73.97713140725149|40.752730320824895|||
 
-The following example returns both matching and nonmatching rows, with radius set to 350m
+The following example returns both matching and nonmatching rows, with radius set to 350m.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
