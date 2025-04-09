@@ -28,7 +28,7 @@ The `http_request_post` plugin sends an HTTP POST request and converts the respo
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Uri* | `string` |  :heavy_check_mark: | The destination URI for the HTTP or HTTPS request. |
+| *Uri* | `string` |  :heavy_check_mark: | The destination URI for the HTTPS request. |
 | *RequestHeaders* | `dynamic` |  | A property bag containing [HTTP headers](#headers) to send with the request. |
 | *Options* | `dynamic` |  | A property bag containing additional properties of the request. |
 | *Content* | `string` |  | The body content to send with the request. The content is encoded in `UTF-8` and the media type for the `Content-Type` attribute is `application/json`. |
@@ -36,7 +36,7 @@ The `http_request_post` plugin sends an HTTP POST request and converts the respo
 > [!NOTE]
 >
 > * To specify an optional parameter that follows an optional parameter, make sure to provide a value for the preceding optional parameter. For more information, see [Working with optional parameters](syntax-conventions.md#working-with-optional-parameters).
-> * If you're using authentication, use the HTTPS protocol. Attempts to use HTTP with authentication results in an error.
+> * Always use the HTTPS protocol. Attempts to use HTTP with authentication results in an error.
 
 ## Authentication and authorization
 
