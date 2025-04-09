@@ -105,7 +105,7 @@ print multipoint = geo_from_wkt("MULTIPOINT (1 1, 2 2, 3 3)");
 |---|
 |{"type": "MultiPoint","coordinates": [[1,1],[2,2],[3,3]]}|
 
-The following example converts multiline from WKT format to GeoJSON format
+The following example converts multiline from WKT format to GeoJSON format.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
