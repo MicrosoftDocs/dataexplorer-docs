@@ -28,14 +28,14 @@ The `http_request` plugin sends an HTTP GET request and converts the response in
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Uri* | `string` |  :heavy_check_mark: | The destination URI for the HTTP or HTTPS request. |
+| *Uri* | `string` |  :heavy_check_mark: | The destination URI for the HTTPS request. |
 | *RequestHeaders* | `dynamic` |  | A property bag containing [HTTP headers](#headers) to send with the request. |
 | *Options* | `dynamic` |  | A property bag containing additional properties of the request. |
 
 > [!NOTE]
 >
 > * To specify an optional parameter that follows an optional parameter, make sure to provide a value for the preceding optional parameter. For more information, see [Working with optional parameters](syntax-conventions.md#working-with-optional-parameters).
-> * If you're using authentication, use the HTTPS protocol. Attempts to use HTTP with authentication results in an error.
+> * Use only HTTPS requests. Attempts to use HTTP with authentication results in an error.
 
 ## Authentication and authorization
 
