@@ -122,7 +122,7 @@ print multiline = geo_from_wkt("MULTILINESTRING ((1 1, 2 2, 3 3), (4 4, 5 5))");
 |---|
 |{"type":"MultiLineString","coordinates":[[[1,1],[2,2],[3,3]],[[4,4],[5,5]]]}|
 
-The following example converts multipolygon from WKT format to GeoJSON format
+The following example converts multipolygon from WKT format to GeoJSON format.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
