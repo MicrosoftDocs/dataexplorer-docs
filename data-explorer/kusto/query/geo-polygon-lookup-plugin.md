@@ -189,7 +189,7 @@ locations
 |Statue of Liberty|-74.04462223203123|40.689195627512674|New York|{"type":"Polygon","coordinates":[[[-73.97375470114766,40.74300078124614],[-73.98653921014294,40.75486501361894],[-73.99910622331992,40.74112695466084],[-73.97375470114766,40.74300078124614]]]}|	
 |London|-0.13245599272019604|51.498794642083681|||	
 
-The following example counts locations by polygon
+The following example counts locations by polygon.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
