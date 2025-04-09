@@ -4,7 +4,7 @@ description: Learn how to use the ai_embed_text plugin to embed text via languag
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/04/2025
-monikerRange: "azure-data-explorer"
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # ai_embed_text plugin (Preview)
 
@@ -48,7 +48,7 @@ The following table describes the options that control the way the requests are 
 
 ## Configure Callout Policy
 
-The `azure_openai` [callout policy](../management/callout-policy.md) allows the cluster to make external calls to Azure AI services.
+The `azure_openai` [callout policy](../management/callout-policy.md) enables external calls to Azure AI services.
 
 To configure the callout policy to authorize the AI model endpoint domain:
 
