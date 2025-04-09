@@ -108,7 +108,7 @@ locations
 |Empire State Building|-73.9856733789857|40.7484262997738|5th Avenue NY|{"type":"LineString","coordinates":[[-73.97291864770574,40.76428551254824],[-73.99708638113894,40.73145135821781]]}|
 |Kensington Palace|-0.188527250123286|51.5049061596723|Palace Ave|{"type":"LineString","coordinates":[[-0.18756982045002247,51.50245944666557],[-0.18908519740253383,51.50544952706903]]}|
 
-The following example returns both matching and nonmatching rows
+The following example returns both matching and nonmatching rows.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
