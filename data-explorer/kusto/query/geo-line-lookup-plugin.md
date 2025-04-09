@@ -172,7 +172,7 @@ locations
 |Grand Central Terminal|-73.97713140725149|40.752730320824895|5th Avenue NY|{"type":"LineString","coordinates":[[-73.97291864770574,40.76428551254824],[-73.99708638113894,40.73145135821781]]}|
 |Statue of Liberty|-74.04462223203123|40.689195627512674|||
 
-The following example counts locations by proximity to road
+The following example counts locations by proximity to road.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
