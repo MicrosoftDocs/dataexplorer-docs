@@ -154,7 +154,7 @@ locations
 |Statue of Liberty|-74.04462223203123|40.689195627512674|||
 |London|-0.13245599272019604|51.498794642083681|||
 
-The following example returns both matching and nonmatching rows where radius is set to 7km
+The following example returns both matching and nonmatching rows where radius is set to 7km.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
