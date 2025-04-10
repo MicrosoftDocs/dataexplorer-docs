@@ -3,12 +3,12 @@ title: Restrict outbound access from your Azure Data Explorer cluster
 description: In this article, you'll learn how to restrict the outbound access from your Azure Data Explorer cluster to other services.
 ms.reviewer: herauch
 ms.topic: how-to
-ms.date: 09/04/2025
+ms.date: 04/10/2025
 ---
 
 # Restrict outbound access from your Azure Data Explorer cluster
 
-Restricting outbound access of your cluster is important to mitigate risks like data exfiltration. A malicious actor could potentially create an external table to a storage account and extract large amounts of data. You can control outbound access at the cluster level by enabling [**restricted outbound access**](#enable-or-disable-restricted-outbound-access) and configuring either [**FQDN-based allow lists**](#configure-fqdn-based-allow-lists) or [**callout policies**](#configure-callout-policies).
+Restricting outbound access of your cluster is important to mitigate risks like data exfiltration. A malicious actor could potentially create an external table to a storage account and extract large amounts of data. You can control outbound access at the cluster level by enabling [**restricted outbound access**](#enable-or-disable-restricted-outbound-access) and configuring either [**FQDN-based allow lists**](#configure-fqdn-based-allow-lists) or [**callout policies**](#configure-callout-policies-preview).
 
 > [!IMPORTANT]
 > You can configure **either** the FQDN-based allow list **or** callout policies for restricted outbound access. Configuring both simultaneously will result in an error.
@@ -29,7 +29,7 @@ By implementing restricted outbound access, enterprises can ensure that their Az
 
 You can enable or disable restricted outbound access at the ARM layer by configuring the `restrictOutboundNetworkAccess` property in your Azure Data Explorer cluster's ARM template.
 
-Once restricted outbound access is enabled, you cannot make any changes to the callout policy on the [data plane]((kusto/management/callout-policy.md#alter-callout-policy-command)). Any modifications to the callout policy must be made at the control plane level by updating the `allowedFqdnList` or the `allowedCallout` property in the ARM template or through the Azure CLI.
+Once restricted outbound access is enabled, you cannot make any changes to the callout policy on the [data plane](kusto/management/alter-callout-policy-command.md). Any modifications to the callout policy must be made at the control plane level by updating the `allowedFqdnList` or the `allowedCallout` property in the ARM template or through the Azure CLI.
 
 ### Example: Enable restricted outbound access
 
