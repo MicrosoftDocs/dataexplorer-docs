@@ -1317,12 +1317,18 @@ items:
         href: geo-angle-function.md
       - name: geo_azimuth()
         href: geo-azimuth-function.md
+      - name: geo_closest_point_on_line()
+        href: geo-closest-point-on-line-function.md
+      - name: geo_closest_point_on_polygon()
+        href: geo-closest-point-on-polygon-function.md
       - name: geo_distance_2points()
         href: geo-distance-2points-function.md
       - name: geo_distance_point_to_line()
         href: geo-distance-point-to-line-function.md
       - name: geo_distance_point_to_polygon()
         href: geo-distance-point-to-polygon-function.md
+      - name: geo_from_wkt()
+        href: geo-from-wkt-function.md
       - name: geo_intersects_2lines()
         href: geo-intersects-2lines-function.md
       - name: geo_intersects_2polygons()
@@ -1341,8 +1347,12 @@ items:
         href: geo-line-centroid-function.md
       - name: geo_line_densify()
         href: geo-line-densify-function.md
+      - name: geo_line_interpolate_point()
+        href: geo-line-interpolate-point-function.md
       - name: geo_line_length()
         href: geo-line-length-function.md
+      - name: geo_line_locate_point()
+        href: geo-line-locate-point-function.md
       - name: geo_line_simplify()
         href: geo-line-simplify-function.md
       - name: geo_line_to_s2cells()
