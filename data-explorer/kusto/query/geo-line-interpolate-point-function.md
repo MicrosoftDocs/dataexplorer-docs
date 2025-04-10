@@ -96,7 +96,7 @@ print point = geo_line_interpolate_point(line, 0.9)
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="media/geo-line-interpolate-point-function/line_interpolate_point.png" alt-text="Screenshot of an interpolated point at the New York City Central Park.":::
+:::image type="content" source="media/geo-line-interpolate-point-function/line-interpolate-point.png" alt-text="Screenshot of an interpolated point at the New York City Central Park.":::
 
 The following example returns `true` because of the invalid line.
 
