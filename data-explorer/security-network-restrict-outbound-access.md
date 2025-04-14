@@ -29,11 +29,13 @@ By implementing restricted outbound access, enterprises can ensure that their Az
 
 You can enable or disable restricted outbound access at the ARM layer by configuring the `restrictOutboundNetworkAccess` property in your Azure Data Explorer cluster's ARM template.
 
-Once restricted outbound access is enabled, you cannot make any changes to the callout policy on the [data plane](kusto/management/alter-callout-policy-command.md). Any modifications to the callout policy must be made at the control plane level by updating the `allowedFqdnList` or the `allowedCallout` property in the ARM template or through the Azure CLI.
+Once restricted outbound access is enabled, you can't make changes to the callout policy using the [.alter](kusto/management/alter-callout-policy-command.md) or [.alter-merge](kusto/management/alter-merge-callout-policy-command.md) cluster policy callout command. To make changes to the callout policy, update the `allowedFqdnList` or the `allowedCallout` property in the ARM template or using the Azure CLI.
 
 ### Example: Enable restricted outbound access
 
 The following ARM template enables restricted outbound access for your cluster:
+
+> In the following examples, replace <ClusterName> and <ClusterRegion> with your own values.
 
 ```json
 {
@@ -43,8 +45,8 @@ The following ARM template enables restricted outbound access for your cluster:
     {
       "type": "Microsoft.Kusto/Clusters",
       "apiVersion": "2021-02-01",
-      "name": "<cluster_name>",
-      "location": "<region>",
+      "name": "<ClusterName>",
+      "location": "<ClusterRegion>",
       "properties": {
         "restrictOutboundNetworkAccess": "Enabled"
       }
@@ -57,6 +59,8 @@ The following ARM template enables restricted outbound access for your cluster:
 
 To disable restricted outbound access, set the `restrictOutboundNetworkAccess` property to `Disabled`:
 
+> In the following examples, replace <ClusterName> and <ClusterRegion> with your own values.
+
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -65,8 +69,8 @@ To disable restricted outbound access, set the `restrictOutboundNetworkAccess` p
     {
       "type": "Microsoft.Kusto/Clusters",
       "apiVersion": "2021-02-01",
-      "name": "<cluster_name>",
-      "location": "<region>",
+      "name": "<ClusterName>",
+      "location": "<ClusterRegion>",
       "properties": {
         "restrictOutboundNetworkAccess": "Disabled"
       }
