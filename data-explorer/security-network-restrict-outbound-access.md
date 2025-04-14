@@ -89,7 +89,7 @@ To disable restricted outbound access, set the `restrictOutboundNetworkAccess` p
 
 1. Select **Save** to submit the configuration.
 
-## Configure FQDN-based allow lists
+## Configure FQDN-based allowlists
 
 When restricted outbound access is enabled, you can allow specific FQDNs by adding them to the `allowedFqdnList` property in your cluster's ARM template.
 
