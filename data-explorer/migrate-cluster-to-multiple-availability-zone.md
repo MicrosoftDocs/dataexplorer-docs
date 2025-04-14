@@ -277,6 +277,10 @@ When an existing cluster that was deployed without any availability zones is con
     > - Following the migration request, there might be a delay of up to several minutes before all new data begins to be written in the ZRS configuration.
     > - If a cluster has streaming ingestion, then the recycling of new data to be written as ZRS data, can take up to 30 days.
 
+- Zone status updated
+
+    Once the request for migration to availability zones is completed, the zone's status is updated with the list of supported zones. If the status is **Zonal Inconsistency**, it means that not all compute or storage resources migrated successfully and are zonal. This usually occurs due to insufficient zonal capacity for some resources. We recommend re-running the migration command at a later time when capacity becomes available.
+
 ### Considerations
 
 The request for migration to availability zones might not be successful due to capacity constraints. For a successful migration, there must be sufficient compute and storage capacity to support the migration. If there are capacity limitations, you'll get an error message indicating the issue.
