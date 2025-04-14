@@ -70,17 +70,18 @@ You can configure the selected IP addresses either through the Azure portal or b
 
 #### [Azure portal](#tab/portal)
 
-> [!CAUTION]
-> To configure [service tags](/azure/virtual-network/service-tags-overview#available-service-tags) use the **ARM template**.
-
 1. Go to your cluster in the [Azure portal](https://portal.azure.com/).
 1. Under **Security + networking** > **Networking** > **Public access**, select **Enabled from selected IP addresses**.
 
-    :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses.png" lightbox="media/security-network-restrict-access/networking-public-access-selectedIpAddresses.png" alt-text="Screenshot of the network configuration page, showing the enabled from selected IP addresses option without any address range configured.":::
+    :::image type="content" source="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag.png" lightbox="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag.png" alt-text="Screenshot of the network configuration page, showing the enabled from selected IP addresses option without any address range or service tag configured.":::
 
-1. Configure the IP addresses or CIDR ranges that you want to allow to connect to the cluster. 
+1. Configure the Service Tags you want to allow to connect to the cluster.
 
-    :::image type="content" source="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" lightbox="media/security-network-restrict-access/networking-public-access-selectedIpAddresses-configured.png" alt-text="Screenshot of the network configuration page, showing the selected IP addresses specified for Enabled from selected IP addresses. They are specified as individual IP address and in CIDR notation.":::
+    :::image type="content" source="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag-search.png" lightbox="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag-search.png" alt-text="Screenshot of the network configuration page, showing the Service Tag search bar to configure the allowed service tags.":::
+
+1. Configure the IP addresses or CIDR ranges that you want to allow to connect to the cluster.
+
+    :::image type="content" source="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag-configured.png" lightbox="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag-configured.png" alt-text="Screenshot of the network configuration page, showing the selected IP addresses specified for Enabled from selected IP addresses. They are specified as individual IP address and in CIDR notation. Additionally the selected Service tags are shown.":::
 
 1. Select **Save** to submit the configuration.
 
