@@ -1,6 +1,6 @@
 ---
 title: Restrict outbound access from your Azure Data Explorer cluster
-description: In this article, you'll learn how to restrict the outbound access from your Azure Data Explorer cluster to other services.
+description: Learn how to restrict the outbound access from your Azure Data Explorer cluster to other services.
 ms.reviewer: herauch
 ms.topic: how-to
 ms.date: 04/10/2025
@@ -11,11 +11,11 @@ ms.date: 04/10/2025
 Restricting outbound access of your cluster is important to mitigate risks like data exfiltration. A malicious actor could potentially create an external table to a storage account and extract large amounts of data. You can control outbound access at the cluster level by enabling [**restricted outbound access**](#enable-or-disable-restricted-outbound-access) and configuring either [**FQDN-based allow lists**](#configure-fqdn-based-allow-lists) or [**callout policies**](#configure-callout-policies-preview).
 
 > [!IMPORTANT]
-> You can configure **either** the FQDN-based allow list **or** callout policies for restricted outbound access. Configuring both simultaneously results in an error.
+> You can configure **either** the FQDN-based allow list **or** callout policies for restricted outbound access. Configuring both results in an error.
 
 ## Data Exfiltration Protection
 
-Data exfiltration is a significant concern for enterprises, especially when sensitive or proprietary data is stored in Azure Data Explorer clusters. Without proper controls, malicious actors or misconfigured systems could potentially transfer data to unauthorized external destinations.
+Data exfiltration is a significant concern for enterprises, especially when sensitive or proprietary data is stored in clusters. Without proper controls, malicious actors or misconfigured systems could potentially transfer data to unauthorized external destinations.
 
 The **restricted outbound access** feature helps mitigate this risk by allowing you to:
 
@@ -176,7 +176,7 @@ The following ARM template configures callout policies along with restricted out
 
 ### Example: Configure callout policies using Azure CLI
 
-You can also configure callout policies using the Azure CLI. The following command sets the callout policies for an cluster:
+You can also configure callout policies using the Azure CLI. The following command sets the callout policies for a cluster:
 
 > In the following example, replace \<ResourceGroupName\> and \<ClusterName\> with your own values.
 
@@ -195,7 +195,7 @@ az resource update --resource-group <ResourceGroupName> \
 
 ## Verify restricted outbound access and policies
 
-After enabling restricted outbound access or configuring callout policies, you can verify the configuration by running the following KQL command in the Azure Data Explorer web UI:
+After enabling restricted outbound access or configuring callout policies, you can verify the configuration by running the following management command in the Azure Data Explorer web UI:
 
 ```kusto
 .show cluster policy callout
@@ -204,14 +204,14 @@ After enabling restricted outbound access or configuring callout policies, you c
 This command displays the current callout policies and allowed FQDNs.
 
 > [!NOTE]
-> There are default policies set for a cluster to communicate with its internal storage layer, which expose no risk of data exfiltration.
+> There are default policies set for a cluster to communicate with its internal storage layer, which exposes no risk of data exfiltration.
 
 ## Limitations
 
 While restricted outbound access offers robust security, it's important to be aware of some limitations:
 
-- FQDN-based allow lists do not support **webapi** callouts.
-- You can configure either FQDN-based allow lists or callout policies, but not both simultaneously. Attempting to configure both results in a configuration error.
+- FQDN-based allow lists don't support **webapi** callouts.
+- You can configure either FQDN-based allow lists or callout policies, but not both. Attempting to configure both results in a configuration error.
 - Clusters have a set of default policies for internal communication with its storage layer. These policies can't be changed and don't pose a risk for data exfiltration.
 - You can't configure callout policies with restricted outbound access directly through the Azure portal.
 
