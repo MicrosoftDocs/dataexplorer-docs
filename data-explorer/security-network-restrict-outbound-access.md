@@ -11,7 +11,7 @@ ms.date: 04/10/2025
 Restricting outbound access of your cluster is important to mitigate risks like data exfiltration. A malicious actor could potentially create an external table to a storage account and extract large amounts of data. You can control outbound access at the cluster level by enabling [**restricted outbound access**](#enable-or-disable-restricted-outbound-access) and configuring either [**FQDN-based allow lists**](#configure-fqdn-based-allow-lists) or [**callout policies**](#configure-callout-policies-preview).
 
 > [!IMPORTANT]
-> You can configure **either** the FQDN-based allow list **or** callout policies for restricted outbound access. Configuring both results in an error.
+> You can configure **either** the FQDN-based allowlist **or** callout policies for restricted outbound access. Configuring both results in an error.
 
 ## Data Exfiltration Protection
 
@@ -20,7 +20,7 @@ Data exfiltration is a significant concern for enterprises, especially when sens
 The **restricted outbound access** feature helps mitigate this risk by allowing you to:
 
 - **Restrict outbound traffic**: Prevent unauthorized data transfers by blocking all outbound traffic except to explicitly allowed destinations.
-- **Control access with FQDN-based allow lists**: Specify the exact Fully Qualified Domain Names (FQDNs) that the cluster can communicate with, ensuring data is only sent to trusted endpoints.
+- **Control access with FQDN-based allowlists**: Specify the exact Fully Qualified Domain Names (FQDNs) that the cluster can communicate with, ensuring data is only sent to trusted endpoints.
 - **Enforce callout policies**: Define granular rules for specific types of outbound traffic, such as SQL or external data calls, to allow or deny access based on your organization's security requirements.
 
 By implementing restricted outbound access, enterprises can ensure that their Azure Data Explorer clusters are protected against data exfiltration risks, aligning with compliance and security standards.
@@ -79,7 +79,7 @@ To disable restricted outbound access, set the `restrictOutboundNetworkAccess` p
 }
 ```
 
-### Example: Enable restricted outbound access using the Azure Portal
+### Example: Enable restricted outbound access using the Azure portal
 
 1. Go to your cluster in the [Azure portal](https://portal.azure.com/).
 1. Navigate to **Security + networking** > **Networking** > **Restrict outbound access**.
@@ -121,7 +121,7 @@ The following ARM template allows outbound access to specific FQDNs while keepin
 }
 ```
 
-### Example: Allow specific FQDNs using the Azure Portal
+### Example: Allow specific FQDNs using the Azure portal
 
 1. Go to your cluster in the [Azure portal](https://portal.azure.com/).
 1. Navigate to **Security + networking** > **Networking** > **Restrict outbound access**.
@@ -210,8 +210,8 @@ This command displays the current callout policies and allowed FQDNs.
 
 While restricted outbound access offers robust security, it's important to be aware of some limitations:
 
-- FQDN-based allow lists don't support **webapi** callouts.
-- You can configure either FQDN-based allow lists or callout policies, but not both. Attempting to configure both results in a configuration error.
+- FQDN-based allowlists don't support **webapi** callouts.
+- You can configure either FQDN-based allowlists or callout policies, but not both. Attempting to configure both results in a configuration error.
 - Clusters have a set of default policies for internal communication with its storage layer. These policies can't be changed and don't pose a risk for data exfiltration.
 - You can't configure callout policies with restricted outbound access directly through the Azure portal.
 
