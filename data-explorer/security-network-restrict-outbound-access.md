@@ -85,7 +85,7 @@ To disable restricted outbound access, set the `restrictOutboundNetworkAccess` p
 1. Navigate to **Security + networking** > **Networking** > **Restrict outbound access**.
 1. Select **Enabled** to enable the restricted outbound access.
 
-    :::image type="content" source="media/security-network-restricted-outbound-access/security-network-roa-enabled-noFQDN.png" lightbox="media/security-network-restricted-outbound-access/security-network-roa-enabled-noFQDN.png" alt-text="Screenshot of the network configuration page, showing the restricted outbound access configuration without FQDNs configured.":::
+    :::image type="content" source="media/security-network-restricted-outbound-access/security-network-restricted-outbound-access-enabled-no-fqdn.png" lightbox="media/security-network-restricted-outbound-access/security-network-restricted-outbound-access-enabled-no-fqdn.png" alt-text="Screenshot of the network configuration page, showing the restricted outbound access configuration without FQDNs configured.":::
 
 1. Select **Save** to submit the configuration.
 
@@ -127,7 +127,7 @@ The following ARM template allows outbound access to specific FQDNs while keepin
 1. Navigate to **Security + networking** > **Networking** > **Restrict outbound access**.
 1. Select **Enabled** to enable the restricted outbound access and configure the FQDNs.
 
-    :::image type="content" source="media/security-network-restricted-outbound-access/security-network-roa-enabled.png" lightbox="media/security-network-restricted-outbound-access/security-network-roa-enabled.png" alt-text="Screenshot of the network configuration page, showing the restricted outbound access configuration with FQDNs configured.":::
+    :::image type="content" source="media/security-network-restricted-outbound-access/security-network-restricted-outbound-access-enabled.png" lightbox="media/security-network-restricted-outbound-access/security-network-restricted-outbound-access-enabled.png" alt-text="Screenshot of the network configuration page, showing the restricted outbound access configuration with FQDNs configured.":::
 
 1. Select **Save** to submit the configuration.
 
