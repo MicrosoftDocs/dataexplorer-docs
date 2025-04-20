@@ -1,5 +1,5 @@
 ---
-title: ai_chat_completion plugin (Preview)
+title: ai_chat_completion plugin (preview)
 description: Learn how to use the ai_chat_completion plugin to chat with large language models, enabling AI-related scenarios such as RAG application and semantic search.
 ms.reviewer: alexans
 ms.topic: reference
@@ -124,8 +124,6 @@ evaluate ai_chat_completion(messages, connectionString);
 
 ### [Impersonation](#tab/impersonation)
 
-::: moniker-end
-
 <!-- csl -->
 ```kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
@@ -133,8 +131,15 @@ let messages = dynamic([{'role':'system', 'content': 'You are a KQL writing assi
 evaluate ai_chat_completion(messages, connectionString);
 ```
 
-::: moniker range="azure-data-explorer"
 ---
+::: moniker-end
+::: moniker range="microsoft-fabric"
+<!-- csl -->
+```kusto
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
+let messages = dynamic([{'role':'system', 'content': 'You are a KQL writing assistant'},{'role':'user', 'content': 'How can I restrict results to just 10 records?'}]);
+evaluate ai_chat_completion(messages, connectionString);
+```
 ::: moniker-end
 
 ## Related content
