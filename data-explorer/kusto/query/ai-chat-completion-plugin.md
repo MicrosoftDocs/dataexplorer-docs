@@ -134,7 +134,9 @@ evaluate ai_chat_completion(messages, connectionString);
 ```
 
 ::: moniker range="azure-data-explorer"
+
 ---
+
 ::: moniker-end
 
 ## Related content
