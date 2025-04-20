@@ -279,7 +279,7 @@ When an existing cluster that was deployed without any availability zones is con
 
 - Zone status updated
 
-    Once the migration request to availability zones is completed, the zone status is updated to reflect the supported zones. If the zone status is **Zonal Inconsistency**, it indicates that some compute or storage resources failed to migrate and are zonal. This generally occurs when there is insufficient zonal capacity available for some resources. In such cases, we recommend retrying the migration later when capacity is available.
+    Once the migration request to availability zones is completed, the zone status is updated to reflect the supported zones. If the zone status is **Zonal Inconsistency**, it indicates that some compute or storage resources failed to migrate and aren't zonal. This generally occurs when there is insufficient zonal capacity available for some resources. In such cases, we recommend retrying the migration later when capacity is available.
 
 ### Considerations
 
