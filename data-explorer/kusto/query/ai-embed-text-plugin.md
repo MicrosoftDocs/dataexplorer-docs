@@ -1,5 +1,5 @@
 ---
-title: ai_embed_text plugin (Preview)
+title: ai_embed_text plugin (preview)
 description: Learn how to use the ai_embed_text plugin to embed text via language models, enabling various AI-related scenarios such as RAG application and semantic search.
 ms.reviewer: alexans
 ms.topic: reference
