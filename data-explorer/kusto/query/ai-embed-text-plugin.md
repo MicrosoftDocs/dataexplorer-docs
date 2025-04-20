@@ -125,16 +125,20 @@ evaluate ai_embed_text(expression, connectionString)
 
 ### [Impersonation](#tab/impersonation)
 
-::: moniker-end
-
 <!-- csl -->
 ```kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
 evaluate ai_embed_text(expression, connectionString)
 ```
 
-::: moniker range="azure-data-explorer"
 ---
+::: moniker-end
+::: moniker range="microsoft-fabric"
+<!-- csl -->
+```kusto
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
+evaluate ai_embed_text(expression, connectionString)
+```
 ::: moniker-end
 
 The following example embeds multiple texts using the Azure OpenAI Embedding model.
@@ -163,8 +167,6 @@ datatable(TextData: string)
 
 ### [Impersonation](#tab/impersonation)
 
-::: moniker-end
-
 <!-- csl -->
 ~~~kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
@@ -183,8 +185,26 @@ datatable(TextData: string)
 | evaluate ai_embed_text(TextData, connectionString, options , true)
 ~~~
 
-::: moniker range="azure-data-explorer"
 ---
+::: moniker-end
+::: moniker range="microsoft-fabric"
+<!-- csl -->
+~~~kusto
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
+let options = dynamic({
+  "RecordsPerRequest": 10,
+  "CharsPerRequest": 10000,
+  "RetriesOnThrottling": 1,
+  "GlobalTimeout": 2m
+});
+datatable(TextData: string)
+[
+  "First text to embed",
+  "Second text to embed",
+  "Third text to embed"
+]
+| evaluate ai_embed_text(TextData, connectionString, options , true)
+~~~
 ::: moniker-end
 
 ## Best practices
