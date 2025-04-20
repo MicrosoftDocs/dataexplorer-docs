@@ -3,20 +3,27 @@ title: ai_embed_text plugin (Preview)
 description: Learn how to use the ai_embed_text plugin to embed text via language models, enabling various AI-related scenarios such as RAG application and semantic search.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/04/2025
+ms.date: 04/20/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # ai_embed_text plugin (Preview)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
+::: moniker range="azure-data-explorer"
 The `ai_embed_text` plugin allows embedding of text using language models, enabling various AI-related scenarios such as Retrieval Augmented Generation (RAG) applications and semantic search. The plugin uses the Azure OpenAI Service embedding models and can be accessed using either a managed identity or the user's identity (impersonation).
+::: moniker-end
+::: moniker range="microsoft-fabric"
+The `ai_embed_text` plugin allows embedding of text using language models, enabling various AI-related scenarios such as Retrieval Augmented Generation (RAG) applications and semantic search. The plugin uses the Azure OpenAI Service embedding models and can be accessed using either the user's identity (impersonation).
+::: moniker-end
 
 ## Prerequisites
 
 * An Azure OpenAI Service configured with at least the ([Cognitive Services OpenAI User](/azure/ai-services/openai/how-to/role-based-access-control)) role assigned to the identity being used.
 * A [Callout Policy](#configure-callout-policy) configured to allow calls to AI services.
+::: moniker range="azure-data-explorer"
 * When using managed identity to access Azure OpenAI Service, configure the [Managed Identity Policy](#configure-managed-identity) to allow communication with the service.
+::: moniker-end
 
 ## Syntax
 
@@ -66,6 +73,8 @@ To configure the callout policy to authorize the AI model endpoint domain:
 ```
 ~~~
 
+::: moniker range="azure-data-explorer"
+
 ## Configure Managed Identity
 
 When using managed identity to access Azure OpenAI Service, you must configure the [Managed Identity policy](../management/managed-identity-policy.md) to allow the system-assigned managed identity to authenticate to Azure OpenAI Service.
@@ -85,6 +94,8 @@ To configure the managed identity:
 ```
 ~~~
 
+::: moniker-end
+
 ## Returns
 
 Returns the following new embedding columns:
@@ -101,6 +112,8 @@ Depending on the input type, the plugin returns different results:
 
 The following example embeds the text `Embed this text using AI` using the Azure OpenAI Embedding model.
 
+::: moniker range="azure-data-explorer"
+
 ### [Managed Identity](#tab/managed-identity)
 
 <!-- csl -->
@@ -112,15 +125,21 @@ evaluate ai_embed_text(expression, connectionString)
 
 ### [Impersonation](#tab/impersonation)
 
+::: moniker-end
+
 <!-- csl -->
 ```kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
 evaluate ai_embed_text(expression, connectionString)
 ```
 
+::: moniker range="azure-data-explorer"
 ---
+::: moniker-end
 
 The following example embeds multiple texts using the Azure OpenAI Embedding model.
+
+::: moniker range="azure-data-explorer"
 
 ### [Managed Identity](#tab/managed-identity)
 
@@ -144,6 +163,8 @@ datatable(TextData: string)
 
 ### [Impersonation](#tab/impersonation)
 
+::: moniker-end
+
 <!-- csl -->
 ~~~kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
@@ -162,7 +183,9 @@ datatable(TextData: string)
 | evaluate ai_embed_text(TextData, connectionString, options , true)
 ~~~
 
+::: moniker range="azure-data-explorer"
 ---
+::: moniker-end
 
 ## Best practices
 
