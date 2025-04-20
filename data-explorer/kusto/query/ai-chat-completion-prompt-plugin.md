@@ -124,8 +124,6 @@ evaluate ai_chat_completion_prompt(prompt, connectionString)
 
 ### [Impersonation](#tab/impersonation)
 
-::: moniker-end
-
 <!-- csl -->
 ```kusto
 let prompt = 'Provide a summary of AI capabilities';
@@ -133,10 +131,15 @@ let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gp
 evaluate ai_chat_completion_prompt(prompt, connectionString)
 ```
 
-::: moniker range="azure-data-explorer"
-
 ---
-
+::: moniker-end
+::: moniker range="microsoft-fabric"
+<!-- csl -->
+```kusto
+let prompt = 'Provide a summary of AI capabilities';
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
+evaluate ai_chat_completion_prompt(prompt, connectionString)
+```
 ::: moniker-end
 
 The following example sends a separate prompt for each row to the Azure OpenAI chat completion model.
@@ -163,8 +166,6 @@ datatable(Prompt: string)
 
 ### [Impersonation](#tab/impersonation)
 
-::: moniker-end
-
 <!-- csl -->
 ~~~kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
@@ -181,7 +182,6 @@ datatable(Prompt: string)
 | evaluate ai_chat_completion_prompt(prompt, connectionString, options , true)
 ~~~
 
-::: moniker range="azure-data-explorer"
 ---
 ::: moniker-end
 
