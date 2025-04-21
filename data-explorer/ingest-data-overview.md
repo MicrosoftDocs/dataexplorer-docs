@@ -106,7 +106,7 @@ For information on other connectors, see [Connectors overview](integrate-data-ov
 
 The following list describes the [permissions](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) required for various ingestion scenarios:
 
-* To create a new table, you must have at least [Database User](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) permissions.
+* To create a new table, you must have at least Database User permissions.
 * To ingest data into an existing table, without changing its schema, you must have at least Table Ingestor permissions.
 * To change the schema of an existing table, you must have at least Table Admin or Database Admin permissions.
 
