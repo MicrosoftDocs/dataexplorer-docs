@@ -89,7 +89,7 @@ You can further interact with the time pivot, for example:
 
 ### View and slice hierarchical OpenTelemetry data
 
-OpenTelemetry data slice options reflect its nested hierarchy. 
+OpenTelemetry data slice options reflect its nested hierarchy.
 
 In this example, a time pivot is rendered according to a specific *TraceID* in the *datatable*. The query shown in this example contains the first two rows of data from a large table.
 
