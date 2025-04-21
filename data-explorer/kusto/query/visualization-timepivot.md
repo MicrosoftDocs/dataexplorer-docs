@@ -1,9 +1,9 @@
 ---
 title:  Time pivot visualization
-description:  This article describes the time pivot visualization and iteractivity.
+description:  This article describes the time pivot visualization and interactivity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/02/2025
+ms.date: 04/21/2025
 monikerRange: "azure-data-explorer"
 ---
 # Time pivot
@@ -71,19 +71,19 @@ StormEvents
 
 **Output**
 
-:::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
+:::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of time pivot in Kusto.Explorer.":::
 
 ### Modify slice options to view flood events ###
 
 Select a new slice option to change the data displayed in the time pivot. The data in the table below the time pivot updates to reflect the new series.
 
-:::image type="content" source="media/visualization-timepivot/time-pivot-slice-options.png" lightbox="media/visualization-timepivot/time-pivot-slice-options.png" alt-text="Screenshot of timepivot slice options in Kusto.Explorer.":::
+:::image type="content" source="media/visualization-timepivot/time-pivot-slice-options.png" lightbox="media/visualization-timepivot/time-pivot-slice-options.png" alt-text="Screenshot of time pivot slice options in Kusto.Explorer.":::
 
 ### Add slice levels to view flood events per state and per source ###
 
 Add slice option levels to further investigate and interact with the data. Expand each row to see the levels added.
 
-:::image type="content" source="media/visualization-timepivot/time-pivot-add-levels.png" lightbox="media/visualization-timepivot/time-pivot-add-levels.png" alt-text="Screenshot of timepivot with multiple levels expanded in Kusto.Explorer.":::
+:::image type="content" source="media/visualization-timepivot/time-pivot-add-levels.png" lightbox="media/visualization-timepivot/time-pivot-add-levels.png" alt-text="Screenshot of time pivot with multiple levels expanded in Kusto.Explorer.":::
 
 ### View time slice data for a specific flood in Ohio  ###
 
@@ -91,9 +91,9 @@ To display the data relevant for a specific slice, select one or more time slice
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-slice-specific.png" lightbox="media/visualization-timepivot/time-pivot-slice-specific.png" alt-text="Screenshot of specific time slicein Kusto.Explorer.":::
 
-### View and slice heirarchical OpenTelemetry data
+### View and slice hierarchical OpenTelemetry data
 
-OpenTelemetry data slice options reflect its nested hierarchy. In this example, a timepivot is rendered according to a specific *TraceID* in the *datatable*.
+OpenTelemetry data slice options reflect its nested hierarchy. In this example, a time pivot is rendered according to a specific *TraceID* in the *datatable*.
 
 ```kusto
 datatable(TraceID:string, SpanID:string, ParentID:string, SpanName:string, SpanStatus:string, SpanKind:string, StartTime:datetime, EndTime:datetime, ResourceAttributes:dynamic, TraceAttributes:dynamic, Events:dynamic, Links:dynamic)
@@ -108,14 +108,16 @@ datatable(TraceID:string, SpanID:string, ParentID:string, SpanName:string, SpanS
 
 **Output**
 
-:::image type="content" source="media/visualization-timepivot/telemetry-SpanKind.png" alt-text="Time pivot rendered with a telemetry data source.":::
-
 In the time pivot, the **Slice options** are automatically set to **SpanKind** as the column to pivot by.
 
-:::image type="content" source="media/visualization-timepivot/telemetry-change-slice.png" alt-text="Time pivot rendered with the telemetry slice options displayed.":::
+:::image type="content" source="media/visualization-timepivot/telemetry-SpanKind.png" alt-text="Time pivot rendered with an OpenTelemetry data source.":::
 
 Change the **Slice options** to **(SpanID)**.
 
-OpenTelemetry uses SpanID to indicate individual spans in the same *trace*. The time pivot now reflects the hierarchy of the **(SpanID)** column. The hierarchy is expandable to display the spans that make up the entire trace. For each span you can see the span kind, span name, and span ID as the span header. In the image, the header in the first line is **[SPAN_KIND_CLIENT/POST]: 3275d2b91035ce2e**.
+:::image type="content" source="media/visualization-timepivot/telemetry-change-slice.png" alt-text="Time pivot rendered with the telemetry slice options displayed.":::
+
+OpenTelemetry uses SpanID to indicate individual spans in the same *trace*. The time pivot now reflects the hierarchy of the **(SpanID)** column. The hierarchy is expandable to display the spans that make up the entire trace. For each span you can see the span kind, span name, and span ID as the span header.
+
+In the image, the header in the first line is **[SPAN_KIND_CLIENT/POST]: 3275d2b91035ce2e**, and is expanded to show the hierarchy.
 
 :::image type="content" source="media/visualization-timepivot/telemetry-time-pivot.png" alt-text="Time pivot with expanded heirarchy":::
