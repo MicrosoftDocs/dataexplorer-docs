@@ -55,7 +55,7 @@ All properties are optional.
 
 The examples in this section show how to use the syntax to help you get started.
 
-### Visualize flood events per state ###
+### Visualize flood events per state
 
 This query outputs a visualization of flood events in the specified Midwestern states, displayed as a time pivot chart.
 
@@ -73,19 +73,19 @@ StormEvents
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of time pivot in Kusto.Explorer.":::
 
-### Modify slice options to view flood events ###
+### Modify slice options to view flood events
 
 Select a new slice option to change the data displayed in the time pivot. The data in the table below the time pivot updates to reflect the new series.
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-slice-options.png" lightbox="media/visualization-timepivot/time-pivot-slice-options.png" alt-text="Screenshot of time pivot slice options in Kusto.Explorer.":::
 
-### Add slice levels to view flood events per state and per source ###
+### Add slice levels to view flood events per state and per source
 
 Add slice option levels to further investigate and interact with the data. Expand each row to see the levels added.
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-add-levels.png" lightbox="media/visualization-timepivot/time-pivot-add-levels.png" alt-text="Screenshot of time pivot with multiple levels expanded in Kusto.Explorer.":::
 
-### View time slice data for a specific flood in Ohio  ###
+### View time slice data for a specific flood in Ohio
 
 To display the data relevant for a specific slice, select one or more time slices in a row of the time pivot.
 
