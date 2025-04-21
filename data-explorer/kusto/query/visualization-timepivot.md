@@ -91,7 +91,7 @@ To display the data relevant for a specific slice, select one or more time slice
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-slice-specific.png" lightbox="media/visualization-timepivot/time-pivot-slice-specific.png" alt-text="Screenshot of specific time slicein Kusto.Explorer.":::
 
-### View and slice OpenTelemetry data
+### View and slice heirarchical OpenTelemetry data
 
 OpenTelemetry data slice options reflect its nested hierarchy. In this example, a timepivot is rendered according to a specific *TraceID* in the *datatable*.
 
@@ -115,6 +115,6 @@ In the time pivot, the **Slice options** are automatically set to **SpanKind** a
 
 Change the **Slice options** to *** (SpanID)**.
 
-Open Telemetry uses SpanID to indicate individual “spans” in the same *trace*. The time pivot now reflects the hierarchy of the “SpanID” column. The hierarchy is expandable to display the spans that make up the whole trace. For each span you can see the span kind, span name, and span ID as the “header” of the span (the first line for example has the header “[SPAN_KIND_CLIENT/POST]: 3275d2b91035ce2e”)
+OpenTelemetry uses SpanID to indicate individual “spans” in the same *trace*. The time pivot now reflects the hierarchy of the “SpanID” column. The hierarchy is expandable to display the spans that make up the whole trace. For each span you can see the span kind, span name, and span ID as the “header” of the span (the first line for example has the header “[SPAN_KIND_CLIENT/POST]: 3275d2b91035ce2e”)
 
 :::image type="content" source="media/visualization-timepivot/telemetry-time-pivot.png" alt-text="Time pivot with expanded heirarchy":::
