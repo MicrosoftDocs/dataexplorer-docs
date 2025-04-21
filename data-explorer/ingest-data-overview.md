@@ -104,22 +104,22 @@ For information on other connectors, see [Connectors overview](integrate-data-ov
 
 ## Permissions
 
-The following list describes the permissions required for various ingestion scenarios:
+The following list describes the [permissions](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) required for various ingestion scenarios:
 
-* To create a new table requires Database User permissions, or higher.
-* To ingest data into an existing table, without changing its schema, requires Table Ingestor permissions, or higher.
-* To change the schema of an existing table requires Table Admin or Database Admin permissions.
+* To create a new table, you must have at least [Database User](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) permissions.
+* To ingest data into an existing table, without changing its schema, you must have at least Table Ingestor permissions.
+* To change the schema of an existing table, you must have at least Table Admin or Database Admin permissions.
 
 The following table describes the permissions required for each ingestion method:
 
-| Ingestion method | Scope and Role |
+| Ingestion method | Permissions |
 |--|--|
-| [One-time ingestion](#one-time-data-ingestion) | Table Ingestor or higher  |
-| [Continuous streaming ingestion](#continuous-data-ingestion) | Table Ingestor or higher |
-| [Continuous queued ingestion](#continuous-data-ingestion) | Table Ingestor or higher |
-| [Direct inline ingestion](#direct-ingestion-with-management-commands) | Database Viewer in addition to Table Ingestor or higher |
-| [Direct ingestion from query](#direct-ingestion-with-management-commands) | Database Viewer in addition to Table Ingestor or higher |
-| [Direct ingestion from storage](#direct-ingestion-with-management-commands) | Table Ingestor or higher |
+| [One-time ingestion](#one-time-data-ingestion) | At least Table Ingestor |
+| [Continuous streaming ingestion](#continuous-data-ingestion) | At least Table Ingestor |
+| [Continuous queued ingestion](#continuous-data-ingestion) | At least Table Ingestor |
+| [Direct inline ingestion](#direct-ingestion-with-management-commands) | At least Table Ingestor and also Database Viewer |
+| [Direct ingestion from query](#direct-ingestion-with-management-commands) | At least Table Ingestor and also Database Viewer |
+| [Direct ingestion from storage](#direct-ingestion-with-management-commands) | At least Table Ingestor |
 
 For more information, see [Kusto role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true).
 
