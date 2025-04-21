@@ -50,6 +50,7 @@ After you render the time pivot, you can further investigate and interact with t
 > [!TIP]
 >
 > * Time pivots have built-in support for the OpenTelemetry schema. When interacting with the first-level of the slice options, the OpenTelemtry spans and their nested hierarchy display in the list.
+> * OpenTelemetry is a cross-platform, open standard for collecting and emitting telemetry data. OpenTelemetry Integration with Azure services allows for efficient monitoring and diagnostics, improving application observability and performance.
 
 ## Examples
 
