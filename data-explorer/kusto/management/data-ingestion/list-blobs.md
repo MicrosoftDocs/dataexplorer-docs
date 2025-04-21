@@ -3,7 +3,7 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 03/19/2025
+ms.date: 04/04/2025
 ---
 # .list blobs command (Preview)
 
@@ -15,7 +15,9 @@ This command is typically used with [.ingest-from-storage-queued](ingest-from-st
 
 > [!NOTE]
 >
-> Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
+> - Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
+>
+> - When the command is used on its own, the results might be truncated to limit the number of blobs. However, when used with [.ingest-from-storage-queued](ingest-from-storage-queued.md), no truncation is applied.
 
 ## Permissions
 
