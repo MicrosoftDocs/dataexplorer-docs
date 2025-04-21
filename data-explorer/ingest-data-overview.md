@@ -79,7 +79,7 @@ Azure Data Explorer offers the following ingestion management commands, which in
 * **Ingest from storage**: The [.ingest into command](/kusto/management/data-ingestion/ingest-from-storage?view=azure-data-explorer&preserve-view=true) gets the data to ingest from external storage, such as Azure Blob Storage, accessible by your cluster and pointed-to by the command.
 
 > [!NOTE]
-> In the event of a failure, ingestion is performed again and is retried for up to 48 hours using the exponential backoff method for wait time between tries.
+> In the event of a failure, ingestion is performed again, and is retried for up to 48 hours using the exponential backoff method for wait time between tries.
 
 ## Compare ingestion methods
 
@@ -88,7 +88,7 @@ The following table compares the main ingestion methods:
 | Ingestion name | Data type | Maximum file size | Streaming, queued, direct | Most common scenarios | Considerations |
 |--|--|--|--|--|--|
 | [Apache Spark connector](spark-connector.md) | Every format supported by the Spark environment | Unlimited | Queued | Existing pipeline, preprocessing on Spark before ingestion, fast way to create a safe (Spark) streaming pipeline from the various sources the Spark environment supports. | Consider cost of Spark cluster. For batch write, compare with Azure Data Explorer data connection for Event Grid. For Spark streaming, compare with the data connection for event hub. |
-| [Azure Data Factory (ADF)](data-factory-integration.md) | [Supported data formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | Unlimited. Inherits ADF restrictions. | Queued or per ADF trigger | Supports formats that are unsupported, such as Excel and XML, and can copy large files from over 90 sources, from on perm to cloud | This method takes relatively more time until data is ingested. ADF uploads all data to memory and then begins ingestion. |
+| [Azure Data Factory (ADF)](data-factory-integration.md) | [Supported data formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | Unlimited. Inherits ADF restrictions. | Queued or per ADF trigger | Supports formats that are unsupported, such as Excel and XML, and can copy large files from over 90 sources, from on prem to cloud | This method takes relatively more time until data is ingested. ADF uploads all data to memory and then begins ingestion. |
 | [Event Grid](ingest-data-event-grid-overview.md) | [Supported data formats](ingest-data-event-grid-overview.md#data-format) | 1 GB uncompressed | Queued | Continuous ingestion from Azure storage, external data in Azure storage | Ingestion can be triggered by blob renaming or blob creation actions |
 | [Event Hub](ingest-data-event-hub-overview.md) | [Supported data formats](ingest-data-event-hub-overview.md#data-format) | N/A | Queued, streaming | Messages, events |  |
 | [Get data experience](get-data-file.md) | *SV, JSON | 1 GB uncompressed | Queued or direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
@@ -106,9 +106,9 @@ For information on other connectors, see [Connectors overview](integrate-data-ov
 
 The following list describes the permissions required for various ingestion scenarios:
 
-* To create a new table requires at least Database User permissions.
-* To ingest data into an existing table, without changing its schema, requires at least Database Ingestor permissions.
-* To change the schema of an existing table requires at least Table Admin or Database Admin permissions.
+* To create a new table requires Database User permissions, or higher.
+* To ingest data into an existing table, without changing its schema, requires Table Ingestor permissions, or higher.
+* To change the schema of an existing table requires Table Admin or Database Admin permissions.
 
 The following table describes the permissions required for each ingestion method:
 
@@ -117,8 +117,8 @@ The following table describes the permissions required for each ingestion method
 | [One-time ingestion](#one-time-data-ingestion) | Table Ingestor or higher  |
 | [Continuous streaming ingestion](#continuous-data-ingestion) | Table Ingestor or higher |
 | [Continuous queued ingestion](#continuous-data-ingestion) | Table Ingestor or higher |
-| [Direct inline ingestion](#direct-ingestion-with-management-commands) | Table Ingestor or higher, and </br>Database Viewer or higher |
-| [Direct ingestion from query](#direct-ingestion-with-management-commands) | Table Ingestor or higher, and </br>Database Viewer or higher |
+| [Direct inline ingestion](#direct-ingestion-with-management-commands) | Database Viewer in addition to Table Ingestor or higher |
+| [Direct ingestion from query](#direct-ingestion-with-management-commands) | Database Viewer in addition to Table Ingestor or higher |
 | [Direct ingestion from storage](#direct-ingestion-with-management-commands) | Table Ingestor or higher |
 
 For more information, see [Kusto role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true).
