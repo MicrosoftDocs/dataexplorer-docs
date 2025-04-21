@@ -34,7 +34,7 @@ The following limits are configurable:
 
 ## Example
 
-This policy set query consistency to weak and the maximum age for cached resulted to 5 minutes.
+This policy configuration sets query consistency to weak and the maximum age for cached results to 5 minutes.
 
 ```json
 "QueryConsistencyPolicy": {
