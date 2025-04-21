@@ -93,4 +93,26 @@ To display the data relevant for a specific slice, select one or more time slice
 
 ### View and slice OpenTelemetry data
 
-OpenTelemetry data slice options reflect its nested hierarchy. In this example,....
+OpenTelemetry data slice options reflect its nested hierarchy. In this example, a timepivot 
+
+```kusto
+datatable(TraceID:string, SpanID:string, ParentID:string, SpanName:string, SpanStatus:string, SpanKind:string, StartTime:datetime, EndTime:datetime, ResourceAttributes:dynamic, TraceAttributes:dynamic, Events:dynamic, Links:dynamic)
+    [
+    "c339bbae48eb8426f9a63c4eee55284c", "d1265cecd4c291ee", "", "POST", "STATUS_CODE_UNSET", "SPAN_KIND_CLIENT", datetime(2025-04-07T04:15:52.1657810Z), datetime(2025-04-07T04:16:01.6616919Z), dynamic({"k8s.namespace.name":"otel-demo","k8s.pod.start_time":"2025-04-06T00:19:47.0000000Z","k8s.deployment.name":"opentelemetry-demo-loadgenerator","k8s.node.name":"aks-userpool-31567306-vmss000003","service.name":"loadgenerator","service.version":"1.12.0","k8s.pod.uid":"d2fbaf5d-b5c2-4dac-af08-b92d56573899","k8s.pod.name":"opentelemetry-demo-loadgenerator-6994f5db8-lq4qs","service.instance.id":"d2fbaf5d-b5c2-4dac-af08-b92d56573899","service.namespace":"opentelemetry-demo","k8s.pod.ip":"10.244.0.57","telemetry.sdk.language":"python","telemetry.sdk.version":"1.25.0","telemetry.sdk.name":"opentelemetry"}), dynamic({"http.status_code":200,"http.url":"http://opentelemetry-demo-frontendproxy:8080/api/checkout","http.method":"POST","scope.name":"opentelemetry.instrumentation.requests","scope.version":"0.46b0"}), dynamic([]), dynamic([]), 
+    ......
+    ]
+    | where TraceID == '081a007d3b7deaf32ca43a554c5058bd'
+    | render timepivot
+ ```
+
+:::image type="content" source="media/visualization-timepivot/telemetry-SpanKind.png" alt-text="Time pivot rendered with a telemetry data source.":::
+
+In the time pivot, the **Slice options** are automatically set to **SpanKind** as the column to pivot by.
+
+:::image type="content" source="media/visualization-timepivot/telemetry-change-slice.png" alt-text="Time pivot rendered with the telemetry slice options displayed.":::
+
+Change the **Slice options** to **SpanID**. Open Telemetry uses SpanID to indicate individual “spans” in the same *trace*.
+
+This option reflects the Telemetry hierarchy of the “SpanID” column in the time pivot. It gives us an expandable hierarchy of the spans that make up the whole trace. For each span we show the span kind, span name, and span ID as the “header” of the span (the first line for example has the header “[SPAN_KIND_CLIENT/POST]: 3275d2b91035ce2e”)
+
+:::image type="content" source="media/visualization-timepivot/telemetry-time-pivot.png" alt-text="Time pivot with expanded heirarchy":::
