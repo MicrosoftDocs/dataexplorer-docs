@@ -34,6 +34,8 @@ The following limits are configurable:
 
 ## Example
 
+This policy set query consistency to weak and the maximum age for cached resulted to 5 minutes.
+
 ```json
 "QueryConsistencyPolicy": {
   "QueryConsistency": {
@@ -42,7 +44,7 @@ The following limits are configurable:
   },
   "CachedResultsMaxAge": {
     "IsRelaxable": true,
-    "Value": "05:00:00"
+    "Value": "00:05:00"
   }
 }
 ```
