@@ -169,7 +169,7 @@ datatable(TextData: string)
 
 <!-- csl -->
 ~~~kusto
-let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate'';
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
 let options = dynamic({
   "RecordsPerRequest": 10,
   "CharsPerRequest": 10000,
@@ -190,7 +190,7 @@ datatable(TextData: string)
 ::: moniker range="microsoft-fabric"
 <!-- csl -->
 ~~~kusto
-let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate'';
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
 let options = dynamic({
   "RecordsPerRequest": 10,
   "CharsPerRequest": 10000,
