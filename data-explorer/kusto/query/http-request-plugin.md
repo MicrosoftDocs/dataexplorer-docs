@@ -35,7 +35,7 @@ The `http_request` plugin sends an HTTP GET request and converts the response in
 > [!NOTE]
 >
 > * To specify an optional parameter that follows an optional parameter, make sure to provide a value for the preceding optional parameter. For more information, see [Working with optional parameters](syntax-conventions.md#working-with-optional-parameters).
-> * Use only HTTPS requests. Attempts to use HTTP with authentication results in an error.
+> * Always use the HTTPS protocol. Attempts to use HTTP with authentication results in an error.
 
 ## Authentication and authorization
 
