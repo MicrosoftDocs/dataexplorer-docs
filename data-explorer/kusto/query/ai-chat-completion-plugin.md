@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # ai_chat_completion plugin (preview)
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 ::: moniker range="azure-data-explorer"
 The `ai_chat_completion` plugin enables generating chat completions using language models, supporting AI-related scenarios such as conversational AI and interactive systems. The plugin uses the in Azure OpenAI Service chat endpoint and can be accessed using either a managed identity or the user's identity (impersonation).
