@@ -184,7 +184,7 @@ Arithmetic and logical operations can be done on a time series. Using [series_su
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
 let max_t = toscalar(demo_make_series1 | summarize max(TimeStamp));
 demo_make_series1
-| make-series num=count() default=0 on TimeStamp in from min_t to max_t step 1h by OsVer
+| make-series num=count() default=0 on TimeStamp in range min_t to max_t step 1h by OsVer
 | extend ma_num=series_fir(num, repeat(1, 5), true, true)
 | extend residual_num=series_subtract(num, ma_num) //to calculate residual time series
 | where OsVer == "Windows 10"   // filter on Win 10 to visualize a cleaner chart 
