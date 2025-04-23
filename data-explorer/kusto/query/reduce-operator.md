@@ -102,7 +102,7 @@ The result includes only those groups where the MyText value appears in at least
 
 ### Behavior of `Characters` parameter
 
-If the *Characters* parameter is unspecified, the operator treats all non-alphanumeric characters (including spaces and punctuation) as term separators by default.
+If the *Characters* parameter is unspecified, by default the operator treats all non-alphanumeric characters (including spaces and punctuation) as term separators.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
