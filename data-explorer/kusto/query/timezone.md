@@ -394,7 +394,7 @@ Related functions:
 | Canada/Central                   |
 | Canada/Eastern                   |
 | Canada/Mountain                  |
-| Canada/Newfoundland              |
+| Canada/Newfoundland and Labrador |
 | Canada/Pacific                   |
 | Canada/Saskatchewan              |
 | Canada/Yukon                     |
