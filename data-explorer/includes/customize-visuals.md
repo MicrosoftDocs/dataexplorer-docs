@@ -26,7 +26,7 @@ The following table describes the available customization properties, categorize
 |  | **Text size** | Determines the size of the text: **Recommended**, **Small**, or **Large**. | Multi Stat, Stat |
 |  | **Visual format** | Determines the format for the chart. For area, bar, and column charts, the format can be standard, stacked, or stacked 100%. For pie charts, the format can be pie or donut. | Area chart, Bar chart, Column chart, Pie chart |
 | **Layout** | **Slot configuration** | Customizes the grid layout with options ranging from 1 column by 1 row (1 slot) to 5 columns by 5 rows (25 slots). | Multi Stat |
-| **Legend** | **Hide** or **Show** | Hides or shows a legend explaining data series in the chart. | Anomaly chart, Area chart, Bar chart, Column chart, Multi Stat, Scatter chart, Time chart |
+| **[Legend](../azure-data-explorer-dashboards.md#tile-legend)** | **Hide** or **Show** | Hides or shows a legend explaining data series in the chart. | Anomaly chart, Area chart, Bar chart, Column chart, Multi Stat, Scatter chart, Time chart |
 | **Size** | **Hide** or **Show** | Toggles sizing for the map points on or off. | Map |
 |  | **Size column** | The column used to determine the size of the map point. | Map |
 | **URLs** | **Apply link on column** | When enabled, selecting a value in this column directs to the URL specified in the **URL column**. | Table |
