@@ -1706,6 +1706,8 @@ items:
         href: ../concepts/query-consistency.md
       - name: Query limits
         href: ../concepts/query-limits.md
+      - name: Query resource consumption
+        href: ../concepts/query-resource-consumption.md
       - name: Partial query failures
         href: ../concepts/partial-query-failures.md
         items:
