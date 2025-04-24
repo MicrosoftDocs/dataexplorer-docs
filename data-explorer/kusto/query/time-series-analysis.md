@@ -48,7 +48,7 @@ Since there are no metrics, we can only build a set of time series representing 
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPsQrCQBAE0D5fMWVSCFpLvsFCsQ1rsiGHt3dhbw%2Bi5ONNMAhiZTkw%2B5j1bBAXGkMNi6klT1p2LLERunOTWB2nA2akLELqnrzWy4sTPhvJWFXHwq8GTX8ZNH0bP%2FVixhp374iQpW5jDlZW6Lin7K3eIwZ8FPQaZfvF4jYoGY84DLg9cEpX1kVVDh0rbLlrB1J7AQhHbUsCAQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -85,7 +85,7 @@ Filtering is a common practice in signal processing and useful for time series p
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPwWrEMAxE7%2FsVc7QhhebQ05Jv6KGlV6MmCmsa2UGWIVv24%2BuQZaH01Itg0MzTaGGDxBQMAyyXkRZSN7HkIPTFobBGLj1uKFWENH7zbnfvUfjNSFbvz6dlZ9D2LwZtvxl%2F7Kcbdvl0SKQqw5hrMucx8Ux1seEZOeFBwaxZ7r9Yvhcqxiv6Cz6veC0frI3Km3Ga2j7szAMf5qiuyQ7KK5O5vsOL72Ba%2BZi%2BJbXlWGHt4nghtR%2FaGr7%2BPAEAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -177,14 +177,14 @@ Arithmetic and logical operations can be done on a time series. Using [series_su
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQzU4DMQyE732KUU%2B7UlG7B05on4EDFRxX7q5XjcjPKnFoQX14HFIVECcukcb2fBnbssAZPwh6SEgjWYrNxC4Mjl55SBwNpw4XpOwcRfPBZbzZG8dPQm5p24eVLQw6%2F4tB59%2BMP%2BOrC4q8qxI%2Bu34M2UvTYuKZspV%2Bh%2BBxo2COwV13kXANlIQXdEcc3vGYnjkqlc%2FCftL%2BUJgVP8wmNio3iLwwSdNtcN9uIDFzfdtvZ%2BRkpkz2pz%2Flg0QapUIqu8V2q0H0HGO2JHwzQjQzqlOxpyNHrvHQ91i%2FGD%2BFU0K3WwPKwGysaE%2BX1ZaWy3pvJimpnJIwWiavA%2BORokCJUWOqLt981T4BEhxSG%2BUBAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
 let max_t = toscalar(demo_make_series1 | summarize max(TimeStamp));
 demo_make_series1
-| make-series num=count() default=0 on TimeStamp in from min_t to max_t step 1h by OsVer
+| make-series num=count() default=0 on TimeStamp from min_t to max_t step 1h by OsVer
 | extend ma_num=series_fir(num, repeat(1, 5), true, true)
 | extend residual_num=series_subtract(num, ma_num) //to calculate residual time series
 | where OsVer == "Windows 10"   // filter on Win 10 to visualize a cleaner chart 
@@ -238,7 +238,7 @@ Building a time series in 1-hour bins of the read metric (total four days * 24 h
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBCF9%2F6KG5NBsLN0EHRwKIh2D0d72mCTyOXUVvrjTbE46OT44Hsf73Uk4Kw3AgVIiDV2yKohF4xDP5hIbCnmMEK8OYdsnzThqtqV22O1LvdarwCybrJg%2F5cF%2B2%2FLTyEbE3ahxTsCEzaxwPtZbVDwkJKG4OFjgRMHN7%2BRMA%2BKQlfI26Ri8g0xiHVUt8gCDyutGhJfLPULu%2Bat2AgBAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -274,7 +274,7 @@ Now, we're going to create a set of 18339 time series of the read count metric. 
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvU4DMRCE%2BzzFdLGlUBxpQCgFKBRIREEk%2FWlx9hKLs32s90KC8vA4P6KAinJWM9%2FstKwIPtaKCTRlRy2JWXFIdaC4rzOL51zhgNyHQOK%2F%2BGg3y6fZ42J5P3ux9g4YtEcK7f5Fod1vyp%2FA4FBs73x1lhCmVZ7Qdm2mpPRalEWK%2BKGgkRQuazRdHsrKHaoN3vZ4Tm6EeTfC9KGQeaccVzCSP3oSHiG3qWNbFpzr6sZr3frI5tRrS0RTh%2Bsj6WQFZYdylYJhgfrAbkOi%2BPS6Meq15clwwbL1jrEUahrvMO%2BV1owmSSH5mJWiK9NM6hWpQXUzHt%2Faof0G4rlHgJcBAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
