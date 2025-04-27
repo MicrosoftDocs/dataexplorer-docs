@@ -293,7 +293,7 @@ Display the instances:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPzU4CQRCE7zxFHWeS9YBXwwGDBxOJRrlP2t1GR%2BfPmYYshIdnFjaG4Mljdaq%2B6nIs8DYYwQwSS0uOsurYR%2BMp7EzhbLlMcUDZeE%2FZ7nmwq9Xj8uFtNV%2B%2BaH0HTNxAof5fFOqvKX8Ck0O1ffPNWSIzdWVG2w%2B1IKHXqjRiwC8F6xz9uEbi%2BFARTph%2B4n2Hp9g2eE4NFveVzL1w6KBy%2BdlQ5gbFxcS6LjjXmbUV42xgderVNSIx4XYgnayg0tZjyvGLW7mkj6wjdnlJdFwBAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
