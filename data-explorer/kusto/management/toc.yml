@@ -842,12 +842,12 @@ items:
       - name: .ingest inline command
         displayName: .ingest inline
         href: data-ingestion/ingest-inline.md
-      - name: Queued ingestion
+      - name: Queued ingestion commands
         items:
-          - name: Queued ingestion overview
-            displayName: Queued ingestion, ingest from folders, ingest from files, ingest from storage
+          - name: Queued ingestion commands overview
+            displayName: Queued ingestion commands, ingest from folders, ingest from files, ingest from storage
             href: data-ingestion/queued-ingestion-overview.md
-          - name: Queued ingestion use case
+          - name: Queued ingestion commands use case
             displayName: Queued ingestion historical data ingestion
             href: data-ingestion/queued-ingestion-use-case.md
           - name: .ingest-from-storage-queued command

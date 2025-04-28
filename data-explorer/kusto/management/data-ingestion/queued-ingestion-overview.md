@@ -1,11 +1,11 @@
 ---
-title: Queued ingestion overview
+title: Queued ingestion overview commands
 description: Learn about queued ingestion and its commands.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 03/19/2025
+ms.date: 04/25/2025
 ---
-# Queued ingestion overview (Preview)
+# Queued ingestion commands overview (Preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
