@@ -31,16 +31,17 @@ You must have at least [Database monitor or Database viewer](../access-control/r
 
 The command returns a table with a record per external table that has a non-null policy, with the following columns:
 
-| Column                          | Type       | Description                                                                                          |
-| ------------------------------- | ---------- | ---------------------------------------------------------------------------------------------------- |
-| ExternalTableName               | `string`   | The name of the external table                                                                       |
-| IsEnabled                       | `bool`     | Indicates whether the external has a query acceleration policy enabled                               |
-| Hot                             | `timespan` | The hot period defined in the query acceleration policy                                              |
-| HotSize                         | `long`     | The total size on disk (in bytes) of artifacts accelerated due to the query acceleration policy           |
-| LastUpdatedDateTime             | `datetime` | Indicates the last datetime when the internal representation of the table was successfully refreshed |
-| AccelerationPendingArtifactSize | `long`     | The total size of artifacts that are pending acceleration                                            |
-|AccelerationCompletePercentage | `double`  | The percentage of artifacts that are accelerated, out of the total artifacts that are able to be accelerated           |
-|NotHealthyReason               | `string`  | Describes the reason for query acceleration not being healthy. Empty if healthy                      |
+| Column                            | Type       | Description                                                                                                  |
+| --------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------ |
+| ExternalTableName                 | `string`   | The name of the external table                                                                               |
+| IsEnabled                         | `bool`     | Indicates whether the external has a query acceleration policy enabled                                       |
+| Hot                               | `timespan` | The hot period defined in the query acceleration policy                                                      |
+| HotSize                           | `long`     | The total size on disk (in bytes) of data files accelerated due to the query acceleration policy             |
+| LastUpdatedDateTime               | `datetime` | Indicates the last datetime when the internal representation of the table was successfully refreshed         |
+| AccelerationPendingDataFilesCount | `long`     | The total number of data files that are pending acceleration                                                 |
+| AccelerationPendingDataFilesSize  | `long`     | The total size of data files that are pending acceleration                                                   |
+| AccelerationCompletePercentage    | `double`   | The percentage of artifacts that are accelerated, out of the total artifacts that are able to be accelerated |
+| NotHealthyReason                  | `string`   | Describes the reason for query acceleration not being healthy. Empty if healthy                              |
 
 ## Example
 
@@ -50,10 +51,10 @@ The command returns a table with a record per external table that has a non-null
 
 **Output**
 
-| ExternalTableName | IsEnabled | Hot | HotSize | LastUpdatedDateTime | AccelerationPendingArtifactSize | AccelerationCompletePercentage | NotHealthyReason |
-| --- | --- | --- | --- | --- | --- | --- |
-| MyExternalTable | True | 1.00:00:00 | 56877928187 | 2024-08-13 19:54:47.5868860 | 0 | 100 | |
-| MyExternalTable2 | True | 1.00:00:00 | 60467660293 | 2024-08-13 19:54:47.5868860 | 0 | 100 | |
+| ExternalTableName | IsEnabled | Hot | HotSize | LastUpdatedDateTime | AccelerationPendingDataFilesCount | AccelerationPendingDataFilesSize | AccelerationCompletePercentage | NotHealthyReason |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| MyExternalTable | True | 1.00:00:00 | 37 | 56877928187 | 2024-08-13 19:54:47.5868860 | 0 | 100 | |
+| MyExternalTable2 | True | 1.00:00:00 | 104 | 60467660293 | 2024-08-13 19:54:47.5868860 | 0 | 100 | |
 
 ## Related content
 
