@@ -155,14 +155,35 @@ For more detailed information about working with graph snapshots, see [Graph sna
 
 ## Querying Graph models
 
-Graph models can be queried using the same graph operators as transient graphs, but without the need to construct the graph first:
+Graph models are queried using the `graph()` function, which enables access to the graph entity. The function supports retrieving either the most recent snapshot of the graph or creating the graph at query time if snapshots are not available:
 
 ```kusto
-.query graph <graph_model_name>
+// Query the latest snapshot of a graph model
+graph("MyGraph") 
 | graph-match (person)-[comments]->(employee)
   where person.age > 30 and comments.CreateTime > ago(7d)
   project person.Name, employee.UserName
 ```
+
+The `graph()` function provides a consistent way to access graph data without needing to explicitly construct the graph for each query. If a snapshot exists, it will be used; otherwise, the function will create a graph similar to the `make-graph` operator during query execution.
+
+## Frequently Asked Questions
+
+### Who is responsible for refreshing the graph?
+
+Users or processes must refresh the graph themselves. Initially, no automatic refresh policies exist for new graph entities. However, the graph remains queryable even if the snapshot is being created or hasn't been created yet.
+
+### How can a graph be refreshed?
+
+To refresh a graph:
+1. Create a new snapshot using an asynchronous operation (`.create graph snapshot`)
+2. Once created, incoming graph queries will automatically use the new snapshot
+3. Optional: Drop the old snapshot to free up resources (`.drop graph snapshot`)
+
+### What if different steps create duplicate edges or nodes?
+
+* **Edges**: Duplicates remain as duplicates by default (edges don't have unique identifiers)
+* **Nodes**: "Duplicates" are merged - the system assumes they represent the same entity. In case of conflicting property values, the last value processed takes precedence
 
 ## Related content
 

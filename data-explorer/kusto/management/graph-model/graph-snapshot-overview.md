@@ -68,14 +68,27 @@ To create and manage graph snapshots, use these commands:
 
 ## Querying graph snapshots
 
-Graph snapshots can be queried using the graph operators directly on the snapshot:
+Graph snapshots are queried using the `graph()` function, which enables access to the graph entity:
 
 ```kusto
-.query graph snapshot <snapshot_name>
+// Query the latest snapshot of a graph model
+graph("MyGraph") 
 | graph-match (person)-[knows]->(friend)
   where person.age > 30
   project person.name, friend.name
 ```
+
+You can also specify a particular snapshot by name:
+
+```kusto
+// Query a specific snapshot of a graph model
+graph("MyGraph", "MySnapshot") 
+| graph-match (person)-[knows]->(friend)
+  where person.age > 30
+  project person.name, friend.name
+```
+
+If no snapshots are available for a graph model, the `graph()` function will create the graph at query time, similar to using the `make-graph` operator but with the advantage that the entity is already well-defined and doesn't require construction within the query.
 
 For complex graph traversals and pattern matching, see [Graph operators](../../query/graph-operators.md).
 
