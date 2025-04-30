@@ -27,12 +27,12 @@ If you need to frequently delete records for deduplication or updates, we recomm
 
 The soft delete process is performed using the following steps:
 
-1. **Run predicate query**: The table is scanned to identify data extents that contain records to be deleted. The extents identified are those with one or more records returned by the predicate query.
+1. **Run predicate query**: The table is scanned to identify data extents that contain records to be deleted. The extents identified have one or more records returned by the predicate query.
 1. **Extents replacement**: The identified extents are replaced with new extents that point to the original data blobs, and also have a new hidden column of type `bool` that indicates per record whether it was deleted or not. Once completed, if no new data is ingested, the predicate query won't return any records if run again.
 
 ## Limitations and considerations
 
-* The deletion process is final and irreversible. It isn't possible to undo this process or recover data that has been deleted, even though the storage artifacts aren't necessarily deleted following the operation.
+* The deletion process is final and irreversible. It isn't possible to undo this process or recover data that was deleted, even though the storage artifacts aren't necessarily deleted following the operation.
 
 * Soft delete is supported for native tables and materialized views. It isn't supported for external tables.
 
@@ -44,12 +44,12 @@ The soft delete process is performed using the following steps:
 
 * Soft delete is executed against your cluster URI: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../access-control/role-based-access-control.md) permissions on the relevant database.
 
-* Deleting records from a table that is a source table of a [materialized view](../management/materialized-views/materialized-view-overview.md), can have an impact on the materialized view. If records being deleted were not yet processed by the [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work), these records will be missing in the view, since they will never be processed. Similarly, the deletion will not have an impact on the materialized view if the records have already been processed.
+* Deleting records from a table that is a source table of a [materialized view](../management/materialized-views/materialized-view-overview.md), can have an impact on the materialized view. If records being deleted were not yet processed by the [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work), these records will be missing in the view, since they will never be processed. Similarly, the deletion won't have an impact on the materialized view if the records have already been processed.
 
 * Limitations on the predicate:
   * It must contain at least one `where` operator.
   * It can only reference the table from which records are to be deleted.
-  * Only the following operators are allowed: `extend`, `order`, `project`, `take` and `where`. Within `toscalar()`, the `summarize` operator is also allowed.
+  * Only the following operators are allowed: `extend`, `order`, `project`, `take`, and `where`. Within `toscalar()`, the `summarize` operator is also allowed.
 
 ## Deletion performance
 
@@ -77,3 +77,8 @@ In most cases, the deletion of records won't result in a change of COGS.
 * There will be no decrease, because no records are actually deleted. Records are only marked as deleted using a hidden column of type `bool`, the size of which is negligible.
 * In most cases, there will be no increase because the `.delete` operation doesn't require the provisioning of extra resources.
 * In some cases, extents in which the majority of the records are deleted are periodically compacted by replacing them with new extents that only contain the records that haven't been deleted. This causes the deletion of the old storage artifacts that contain a large number of deleted records. The new extents are smaller and therefore consume less space in both the Storage account and in the hot cache. However, in most cases, the effect of this on COGS is negligible.
+
+## Related content
+
+* [.delete table records - soft delete command](../management/soft-delete-command.md)
+* [Delete data](./delete-data.md)
