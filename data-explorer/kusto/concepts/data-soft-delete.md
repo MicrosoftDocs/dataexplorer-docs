@@ -15,7 +15,7 @@ The ability to delete individual records is supported. Record deletion is common
 * To delete records with a system guarantee that the storage artifacts containing these records are deleted as well, use [`.purge`](data-purge.md)
 * To delete records without such a guarantee, use `.delete` as described in this article - this command marks records as deleted but doesn't necessarily delete the data from storage artifacts. This deletion method is faster than purge.
 
-For information on how to use the command, see [Syntax](../management/soft-delete-command.md)
+For information on how to use the command, see [Syntax and Example](../management/soft-delete-command.md)
 
 ## Use cases
 
