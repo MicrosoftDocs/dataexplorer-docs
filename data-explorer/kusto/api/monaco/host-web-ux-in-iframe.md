@@ -199,7 +199,6 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-ShowNavigation | IF true, shows the navigation pane on the left | true |
 | f-DisableDashboardTopBar | IF true, hides the top bar in the dashboard | false |
 | f-DisableNewDashboard | IF true, hides the option to add a new dashboard | false |
-| f-DisableNewDashboard | IF true, hides the option to search in the dashboards list | false |
 | f-DisableDashboardEditMenu | IF true, hides the option to edit a dashboard | false |
 | f-DisableDashboardFileMenu | IF true, hides the file menu button in a dashboard | false |
 | f-DisableDashboardShareMenu | IF true, hides the share menu button in a dashboard | false |
