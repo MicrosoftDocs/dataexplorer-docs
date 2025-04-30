@@ -12,7 +12,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 ::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 
-Functions are reusable queries or query parts. Functions can be stored as database entities, similar to tables, called *stored functions*. Alternatively, functions can be created in an ad-hoc fashion with a [let statement](../let-statement.md), called *query-defined functions*. For more information, see [user-defined functions](../functions/user-defined-functions.md) and [invoke operator](../../query/invoke-operator.md).
+Functions are reusable queries or query parts. Functions can be stored as database entities, similar to tables, called *stored functions*. Alternatively, functions can be created in an ad-hoc fashion with a [let statement](../let-statement.md), called *query-defined functions*. You can use all standard query operators in the function body, such as the [in operator](../../query/in-operator.md) for filtering based on a set of values. For more information, see [user-defined functions](../functions/user-defined-functions.md) and [invoke operator](../../query/invoke-operator.md).
 
 To create and manage stored functions, see the [Stored functions management overview](../../management/functions.md).
 
