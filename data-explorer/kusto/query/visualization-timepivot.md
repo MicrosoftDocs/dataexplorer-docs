@@ -108,7 +108,7 @@ datatable(TraceID:string, SpanID:string, ParentID:string, SpanName:string, SpanS
 
 In the time pivot, the **Slice options** are automatically set to **SpanKind** as the column to pivot by.
 
-:::image type="content" source="media/visualization-timepivot/telemetry-spankind1.png" lightbox="media/visualization-timepivot/telemetry-spankind1.png" alt-text="Screenshot of the time pivot rendered with an OpenTelemetry data source.":::
+:::image type="content" source="media/visualization-timepivot/telemetry-spankind.png" lightbox="media/visualization-timepivot/telemetry-spankind.png" alt-text="Screenshot of the time pivot rendered with an OpenTelemetry data source.":::
 
 You can show the hierarchy of the individual spans in the same OpenTelemetry *trace*, by changing the **Slice options** to **(SpanID)**. The hierarchy is expandable to display the spans that make up the entire trace. For each span you can see the span kind, span name, and span ID as the span header.
 
@@ -116,4 +116,4 @@ You can show the hierarchy of the individual spans in the same OpenTelemetry *tr
 
 The header in the first line is **[SPAN_KIND_CLIENT/POST]: 3275d2b91035ce2e** and is expanded to show the hierarchy.
 
-:::image type="content" source="media/visualization-timepivot/telemetry-time-pivot.png" lightbox="media/visualization-timepivot/telemetry-time-pivot.png" alt-text="Screenshot of the time pivot with expanded heirarchy":::
+:::image type="content" source="media/visualization-timepivot/telemetry-time-pivot.png" lightbox="media/visualization-timepivot/telemetry-time-pivot.png" alt-text="Screenshot of the time pivot with expanded heirarchy.":::
