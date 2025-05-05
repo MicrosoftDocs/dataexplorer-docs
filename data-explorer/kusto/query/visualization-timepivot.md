@@ -114,6 +114,6 @@ You can show the hierarchy of the individual spans in the same OpenTelemetry *tr
 
 :::image type="content" source="media/visualization-timepivot/telemetry-change-slice.png" alt-text="Time pivot rendered with the telemetry slice options displayed.":::
 
-In the image, the header in the first line is **[SPAN_KIND_CLIENT/POST]: 3275d2b91035ce2e**, and is expanded to show the hierarchy.
+The header in the first line is **[SPAN_KIND_CLIENT/POST]: 3275d2b91035ce2e** and is expanded to show the hierarchy.
 
 :::image type="content" source="media/visualization-timepivot/telemetry-time-pivot.png" lightbox="media/visualization-timepivot/telemetry-time-pivot.png" alt-text="Time pivot with expanded heirarchy":::
