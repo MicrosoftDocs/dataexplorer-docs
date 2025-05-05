@@ -47,10 +47,9 @@ After you render the time pivot, you can further investigate and interact with t
 * Toggle to view by start time or by end time
 * Select specific rows, or specific time slices, and view their data in the table.
 
-> [!TIP]
+> [!NOTE]
 >
-> * Time pivots have built-in support for the OpenTelemetry schema. When interacting with the first-level of the slice options, the OpenTelemtry spans and their nested hierarchy display in the list.
-> * OpenTelemetry is a cross-platform, open standard for collecting and emitting telemetry data. The standardized and structured format of OpenTelemetry data facilitates efficient data pivoting and analysis.
+> * Time pivots have built-in support for the OpenTelemetry schema, a cross-platform, open standard for collecting and emitting telemetry data. The standardized and structured format of OpenTelemetry data facilitates efficient data pivoting and analysis. When interacting with the first-level of the slice options, the OpenTelemtry spans and their nested hierarchy display in the list.
 
 ## Examples
 
