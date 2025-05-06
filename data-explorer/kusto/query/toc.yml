@@ -1634,8 +1634,8 @@ items:
             href: diffpatterns-text-plugin.md
       - name: Query connectivity plugins
         items:
-          - name: ai_embed_text plugin
-            href: ai-embed-text-plugin.md
+          - name: ai_embeddings plugin
+            href: ai-embeddings-plugin.md
           - name: ai_chat_completion plugin
             href: ai-chat-completion-plugin.md
           - name: ai_chat_completion_prompt plugin
