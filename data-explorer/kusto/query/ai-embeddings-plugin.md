@@ -100,7 +100,7 @@ To configure the managed identity:
 
 Returns the following new embedding columns:
 
-* A column with the **_embedding** suffix that contains the embedding values
+* A column with the **_embeddings** suffix that contains the embedding values
 * If configured to return errors, a column with the **_embedding_error** suffix, which contains error strings or is left empty if the operation is successful.
 
 Depending on the input type, the plugin returns different results:
