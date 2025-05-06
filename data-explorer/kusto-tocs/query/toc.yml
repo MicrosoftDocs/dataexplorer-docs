@@ -1807,8 +1807,8 @@ items:
       href: /kusto/query/diffpatterns-text-plugin?view=azure-data-explorer&preserve-view=true
   - name: Query connectivity plugins
     items:
-    - name: ai_embed_text plugin
-      href: /kusto/query/ai-embed-text-plugin?view=azure-data-explorer&preserve-view=true
+    - name: ai_embeddings plugin
+      href: /kusto/query/ai-embeddings-plugin?view=azure-data-explorer&preserve-view=true
     - name: ai_chat_completion plugin
       href: /kusto/query/ai-chat-completion-plugin?view=azure-data-explorer&preserve-view=true
     - name: ai_chat_completion_prompt plugin

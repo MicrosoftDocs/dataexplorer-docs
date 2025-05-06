@@ -187,5 +187,5 @@ datatable(Prompt: string)
 
 ## Related content
 
-* [ai_embed_text()](ai-embed-text-plugin.md)
+* [ai_embeddings()](ai-embeddings-plugin.md)
 * [ai_chat_completion()](ai-chat-completion-plugin.md)
