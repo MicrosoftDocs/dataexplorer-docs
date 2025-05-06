@@ -56,7 +56,7 @@ The following values specify authentication to a `usage` using the configured ma
 |---|---|
 | `All` | All current and future usages are allowed. |
 | `AutomatedFlows`| Run a [Continuous Export](data-export/continuous-data-export.md) or [Update Policy](update-policy.md) automated flow on behalf of a managed identity. |
-| `AzureAI`| Authenticate to an Azure OpenAI service using the *ai_embed_text* plugin with a managed identity. |
+| `AzureAI`| Authenticate to an Azure OpenAI service using the [ai_embeddings plugin](../query/ai-embeddings-plugin.md) with a managed identity. |
 | `DataConnection` | Authenticate to data connections to an Event Hub or an Event Grid. |
 |`ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
 | `NativeIngestion` |  Authenticate to an SDK for native ingestion from an external source. |
