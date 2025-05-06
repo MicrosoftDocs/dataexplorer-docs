@@ -144,5 +144,5 @@ evaluate ai_chat_completion(messages, connectionString);
 
 ## Related content
 
-* [ai_embed_text()](ai-embed-text-plugin.md)
+* [ai_embeddings()](ai-embeddings-plugin.md)
 * [ai_chat_completion_prompt()](ai-chat-completion-prompt-plugin.md)
