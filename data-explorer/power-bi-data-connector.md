@@ -64,7 +64,7 @@ In the following steps, we'll be using the StormEvents table from our [help clus
 
 1. Paste the query in the **Navigator** pane.
 
-    :::image type="content" source="media/power-bi-data-connector/paste-query.png" alt-text="Screenshot of the Power BI Desktop Navigator pane, showing the drop-down menu of the right mouse button with the Paste option highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/paste-query.png" alt-text="Screenshot of the Power BI Desktop Navigator pane, showing the dropdown menu of the right mouse button with the Paste option highlighted.":::
 
 1. Optionally, you can change the connectivity mode from *DirectQuery* to *Import*. In the **Query Settings** window, under **Applied steps**, select the settings cog. For more information, see [Connectivity modes](#connectivity-modes).
 
@@ -79,7 +79,7 @@ In the following steps, we'll be using the StormEvents table from our [help clus
 1. Launch Power BI Desktop.
 1. On the **Home** tab, select **Get Data** > **More**.
 
-    :::image type="content" source="media/power-bi-data-connector/get-data.png" alt-text="Screenshot of the Home tab in Power BI Desktop, showing the drop-down menu of the Home tab entry titled Get data with the More option highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/get-data.png" alt-text="Screenshot of the Home tab in Power BI Desktop, showing the dropdown menu of the Home tab entry titled Get data with the More option highlighted.":::
 
 1. Search for *Azure Data Explorer*, select **Azure Data Explorer (Kusto)**, and then select **Connect**.
 

@@ -73,7 +73,7 @@ Choosing Parquet opens a Parquet Settings tab, to select the Parquet schema.
 |Setting  |Value| Description  |
 |---------|---------|---------|
 |Automatic schema|**On** or **Off** | Select **On** to generate a Parquet schema based on the events of each Parquet file that Cribl Stream writes.|
-|*Parquet schema*|drop-down | Displays when *Automatic schema* is set to **Off** to allow you to select your parquet schema.|
+|*Parquet schema*|dropdown | Displays when *Automatic schema* is set to **Off** to allow you to select your parquet schema.|
 | *Parquet version*|1.0, 2.4, 2.6 (default) | The version determines the supported data types and how they're represented. |
 |*Data page version*|V1, V2 (default) |The data page serialization format. If your Parquet reader doesn't support Parquet V2, use V1.|
 |*Group row limit*|1000 (default) |The maximum number of rows that every group can contain. |
