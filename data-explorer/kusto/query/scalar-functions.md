@@ -370,9 +370,12 @@ This article lists all available scalar functions grouped by type. For aggregati
 |--------------------------------------------------------------------------|--------------------------------------------------------|
 |[geo_angle()](geo-angle-function.md)|Calculates clockwise angle in radians between two lines on Earth.|
 |[geo_azimuth()](geo-azimuth-function.md)|Calculates clockwise angle in radians between the line from point1 to true north and a line from point1 to point2 on Earth.|
+|[geo_closest_point_on_line()](geo-closest-point-on-line-function.md)|Calculates a point on a line or a multiline, which is closest to a given point on Earth.|
+|[geo_closest_point_on_polygon()](geo-closest-point-on-polygon-function.md)|Calculates a point on a polygon or a multipolygon, which is closest to a given point on Earth.|
 |[geo_distance_2points()](geo-distance-2points-function.md)|Calculates the shortest distance between two geospatial coordinates on Earth.|
 |[geo_distance_point_to_line()](geo-distance-point-to-line-function.md)|Calculates the shortest distance between a coordinate and a line or multiline on Earth.|
 |[geo_distance_point_to_polygon()](geo-distance-point-to-polygon-function.md)|Calculates the shortest distance between a coordinate and a polygon or multipolygon on Earth.|
+|[geo_from_wkt()](geo-from-wkt-function.md)|Converts WKT string to GeoJSON shape.|
 |[geo_intersects_2lines()](geo-intersects-2lines-function.md)|Calculates whether the two lines or multilines intersects.|
 |[geo_intersects_2polygons()](geo-intersects-2polygons-function.md)|Calculates whether the two polygons or multipolygons intersects.|
 |[geo_intersects_line_with_polygon()](geo-intersects-line-with-polygon-function.md)|Calculates whether the line or multiline intersects with polygon or multipolygon.|
@@ -388,7 +391,9 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[geo_line_buffer()](geo-line-buffer-function.md)|Calculates polygon or multipolygon that contains all points within the given radius of the input line or multiline on Earth.|
 |[geo_line_centroid()](geo-line-centroid-function.md)|Calculates the centroid of line or a multiline on Earth.|
 |[geo_line_densify()](geo-line-densify-function.md)|Converts planar line edges to geodesics by adding intermediate points.|
+|[geo_line_interpolate_point()](geo-line-interpolate-point-function.md)|Calculates a point at fraction value on a line on Earth.|
 |[geo_line_length()](geo-line-length-function.md)|Calculates the total length of line or a multiline on Earth.|
+|[geo_line_locate_point()](geo-line-locate-point-function.md)|fraction value as a ratio of a line length from line start till a point on a line which is closest to a given point and a whole line length on Earth.|
 |[geo_line_simplify()](geo-line-simplify-function.md)|Simplifies line or a multiline by replacing nearly straight chains of short edges with a single long edge on Earth.|
 |[geo_line_to_s2cells()](geo-line-to-s2cells-function.md)|Calculates S2 cell tokens that cover a line or multiline on Earth. Useful geospatial join tool.|
 |[geo_polygon_area()](geo-polygon-area-function.md)|Calculates the area of polygon or a multipolygon on Earth.|

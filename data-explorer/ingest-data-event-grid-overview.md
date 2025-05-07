@@ -26,6 +26,10 @@ Setup of an Event Grid data connection using managed identity requires the follo
   1. Set a [managed identity policy](/kusto/management/managed-identity-policy?view=azure-data-explorer&preserve-view=true) on the target databases.
   1. Create a data connection using managed identity authentication to fetch data.
 
+    > [!Note]
+    >
+    > * The event hub consumer group *must* be unique per consumer. Create a dedicated consumer group for every Azure Data Explorer data connection.
+
     > [!CAUTION]
     >
     > * If the managed identity permissions are removed from the data source, the data connection will no longer work and will be unable to fetch data from the data source.

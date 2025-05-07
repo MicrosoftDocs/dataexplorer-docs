@@ -3,23 +3,27 @@ title: ai_chat_completion_prompt plugin (preview)
 description: Learn how to use the ai_chat_completion_prompt plugin to chat with large language models, enabling AI-related scenarios such as RAG application and semantic search.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/06/2025
+ms.date: 04/20/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # ai_chat_completion_prompt plugin (preview)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
-
+::: moniker range="azure-data-explorer"
 The `ai_chat_completion_prompt` plugin enables generating chat completions using language models, supporting AI-related scenarios such as conversational AI and interactive systems. The plugin uses the in Azure OpenAI Service chat endpoint and can be accessed using either a managed identity or the user's identity (impersonation).
+::: moniker-end
+::: moniker range="microsoft-fabric"
+The `ai_chat_completion_prompt` plugin enables generating chat completions using language models, supporting AI-related scenarios such as conversational AI and interactive systems. The plugin uses the in Azure OpenAI Service chat endpoint and can be accessed using the user's identity (impersonation).
+::: moniker-end
 
 ## Prerequisites
 
 * An Azure OpenAI Service configured with at least the ([Cognitive Services OpenAI User](/azure/ai-services/openai/how-to/role-based-access-control)) role assigned to the identity being used.
-
 * A [Callout Policy](#configure-callout-policy) configured to allow calls to AI services.
+::: moniker range="azure-data-explorer"
 * When using managed identity to access Azure OpenAI Service, configure the [Managed Identity Policy](#configure-managed-identity) to allow communication with the service.
+::: moniker-end
 
 ## Syntax
 
@@ -67,6 +71,8 @@ To configure the callout policy to authorize the AI model endpoint domain:
 ```
 ~~~
 
+::: moniker range="azure-data-explorer"
+
 ## Configure Managed Identity
 
 When using managed identity to access Azure OpenAI Service, you must configure the [Managed Identity policy](../management/managed-identity-policy.md) to allow the system-assigned managed identity to authenticate to Azure OpenAI Service.
@@ -87,6 +93,8 @@ To configure the managed identity:
 ```
 ~~~
 
+::: moniker-end
+
 ## Returns
 
 Returns the following new chat completion columns:
@@ -102,6 +110,8 @@ Depending on the input type, the plugin returns different results:
 ## Examples
 
 The following example generates a chat completion for the prompt `Provide a summary of AI capabilities` using the Azure OpenAI chat completion model.
+
+::: moniker range="azure-data-explorer"
 
 ### [Managed Identity](#tab/managed-identity)
 
@@ -122,8 +132,19 @@ evaluate ai_chat_completion_prompt(prompt, connectionString)
 ```
 
 ---
+::: moniker-end
+::: moniker range="microsoft-fabric"
+<!-- csl -->
+```kusto
+let prompt = 'Provide a summary of AI capabilities';
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
+evaluate ai_chat_completion_prompt(prompt, connectionString)
+```
+::: moniker-end
 
 The following example sends a separate prompt for each row to the Azure OpenAI chat completion model.
+
+::: moniker range="azure-data-explorer"
 
 ### [Managed Identity](#tab/managed-identity)
 
@@ -162,8 +183,9 @@ datatable(Prompt: string)
 ~~~
 
 ---
+::: moniker-end
 
 ## Related content
 
-* [ai_embed_text()](ai-embed-text-plugin.md)
+* [ai_embeddings()](ai-embeddings-plugin.md)
 * [ai_chat_completion()](ai-chat-completion-plugin.md)

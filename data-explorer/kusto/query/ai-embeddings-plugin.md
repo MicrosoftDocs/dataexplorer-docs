@@ -1,26 +1,33 @@
 ---
-title: ai_embed_text plugin (preview)
-description: Learn how to use the ai_embed_text plugin to embed text via language models, enabling various AI-related scenarios such as RAG application and semantic search.
+title: ai_embeddings plugin (preview)
+description: Learn how to use the ai_embeddings plugin to embed text via language models, enabling various AI-related scenarios such as RAG application and semantic search.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/04/2025
+ms.date: 05/06/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
-# ai_embed_text plugin (preview)
+# ai_embeddings plugin (Preview)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The `ai_embed_text` plugin allows embedding of text using language models, enabling various AI-related scenarios such as Retrieval Augmented Generation (RAG) applications and semantic search. The plugin uses the Azure OpenAI Service embedding models and can be accessed using either a managed identity or the user's identity (impersonation).
+::: moniker range="azure-data-explorer"
+The `ai_embeddings` plugin allows embedding of text using language models, enabling various AI-related scenarios such as Retrieval Augmented Generation (RAG) applications and semantic search. The plugin uses the Azure OpenAI Service embedding models and can be accessed using either a managed identity or the user's identity (impersonation).
+::: moniker-end
+::: moniker range="microsoft-fabric"
+The `ai_embeddings` plugin allows embedding of text using language models, enabling various AI-related scenarios such as Retrieval Augmented Generation (RAG) applications and semantic search. The plugin uses the Azure OpenAI Service embedding models and can be accessed using either the user's identity (impersonation).
+::: moniker-end
 
 ## Prerequisites
 
 * An Azure OpenAI Service configured with at least the ([Cognitive Services OpenAI User](/azure/ai-services/openai/how-to/role-based-access-control)) role assigned to the identity being used.
 * A [Callout Policy](#configure-callout-policy) configured to allow calls to AI services.
+::: moniker range="azure-data-explorer"
 * When using managed identity to access Azure OpenAI Service, configure the [Managed Identity Policy](#configure-managed-identity) to allow communication with the service.
+::: moniker-end
 
 ## Syntax
 
-`evaluate` `ai_embed_text` `(`*text*, *connectionString* [`,` *options* [`,` *IncludeErrorMessages*]]`)`
+`evaluate` `ai_embeddings` `(`*text*, *connectionString* [`,` *options* [`,` *IncludeErrorMessages*]]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -66,6 +73,8 @@ To configure the callout policy to authorize the AI model endpoint domain:
 ```
 ~~~
 
+::: moniker range="azure-data-explorer"
+
 ## Configure Managed Identity
 
 When using managed identity to access Azure OpenAI Service, you must configure the [Managed Identity policy](../management/managed-identity-policy.md) to allow the system-assigned managed identity to authenticate to Azure OpenAI Service.
@@ -85,11 +94,13 @@ To configure the managed identity:
 ```
 ~~~
 
+::: moniker-end
+
 ## Returns
 
 Returns the following new embedding columns:
 
-* A column with the **_embedding** suffix that contains the embedding values
+* A column with the **_embeddings** suffix that contains the embedding values
 * If configured to return errors, a column with the **_embedding_error** suffix, which contains error strings or is left empty if the operation is successful.
 
 Depending on the input type, the plugin returns different results:
@@ -101,13 +112,15 @@ Depending on the input type, the plugin returns different results:
 
 The following example embeds the text `Embed this text using AI` using the Azure OpenAI Embedding model.
 
+::: moniker range="azure-data-explorer"
+
 ### [Managed Identity](#tab/managed-identity)
 
 <!-- csl -->
 ```kusto
 let expression = 'Embed this text using AI';
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;managed_identity=system';
-evaluate ai_embed_text(expression, connectionString)
+evaluate ai_embeddings(expression, connectionString)
 ```
 
 ### [Impersonation](#tab/impersonation)
@@ -115,12 +128,22 @@ evaluate ai_embed_text(expression, connectionString)
 <!-- csl -->
 ```kusto
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
-evaluate ai_embed_text(expression, connectionString)
+evaluate ai_embeddings(expression, connectionString)
 ```
 
 ---
+::: moniker-end
+::: moniker range="microsoft-fabric"
+<!-- csl -->
+```kusto
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
+evaluate ai_embeddings(expression, connectionString)
+```
+::: moniker-end
 
 The following example embeds multiple texts using the Azure OpenAI Embedding model.
+
+::: moniker range="azure-data-explorer"
 
 ### [Managed Identity](#tab/managed-identity)
 
@@ -139,14 +162,14 @@ datatable(TextData: string)
     "Second text to embed",
     "Third text to embed"
 ]
-| evaluate ai_embed_text(TextData, connectionString, options , true)
+| evaluate ai_embeddings(TextData, connectionString, options , true)
 ~~~
 
 ### [Impersonation](#tab/impersonation)
 
 <!-- csl -->
 ~~~kusto
-let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
 let options = dynamic({
   "RecordsPerRequest": 10,
   "CharsPerRequest": 10000,
@@ -159,16 +182,36 @@ datatable(TextData: string)
   "Second text to embed",
   "Third text to embed"
 ]
-| evaluate ai_embed_text(TextData, connectionString, options , true)
+| evaluate ai_embeddings(TextData, connectionString, options , true)
 ~~~
 
 ---
+::: moniker-end
+::: moniker range="microsoft-fabric"
+<!-- csl -->
+~~~kusto
+let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2024-06-01;impersonate';
+let options = dynamic({
+  "RecordsPerRequest": 10,
+  "CharsPerRequest": 10000,
+  "RetriesOnThrottling": 1,
+  "GlobalTimeout": 2m
+});
+datatable(TextData: string)
+[
+  "First text to embed",
+  "Second text to embed",
+  "Third text to embed"
+]
+| evaluate ai_embeddings(TextData, connectionString, options , true)
+~~~
+::: moniker-end
 
 ## Best practices
 
 Azure OpenAI embedding models are subject to heavy throttling, and frequent calls to this plugin can quickly reach throttling limits.
 
-To efficiently use the `ai_embed_text` plugin while minimizing throttling and costs, follow these best practices:
+To efficiently use the `ai_embeddings` plugin while minimizing throttling and costs, follow these best practices:
 
 * **Control request size**: Adjust the number of records (`RecordsPerRequest`) and characters per request (`CharsPerRequest`).
 * **Control query timeout**: Set `GlobalTimeout` to a value lower than the query [timeout](../set-timeout-limits.md) to ensure progress isn't lost on successful calls up to that point.
