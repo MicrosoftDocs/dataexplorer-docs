@@ -1,12 +1,12 @@
 ---
-title: ai_embed_text plugin (Preview)
+title: ai_embed_text plugin (preview)
 description: Learn how to use the ai_embed_text plugin to embed text via language models, enabling various AI-related scenarios such as RAG application and semantic search.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/04/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
-# ai_embed_text plugin (Preview)
+# ai_embed_text plugin (preview)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 

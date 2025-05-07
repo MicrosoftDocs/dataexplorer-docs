@@ -1,5 +1,5 @@
 ---
-title: ai_chat_completion_prompt plugin (Preview)
+title: ai_chat_completion_prompt plugin (preview)
 description: Learn how to use the ai_chat_completion_prompt plugin to chat with large language models, enabling AI-related scenarios such as RAG application and semantic search.
 ms.reviewer: alexans
 ms.topic: reference

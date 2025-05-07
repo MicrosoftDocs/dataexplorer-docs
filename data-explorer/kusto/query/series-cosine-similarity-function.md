@@ -59,4 +59,4 @@ datatable(s1:dynamic, s2:dynamic)
 
 ## Related content
 
-* [ai_embed_text plugin (Preview)](ai-embed-text-plugin.md)
+* [ai_embed_text plugin (preview)](ai-embed-text-plugin.md)

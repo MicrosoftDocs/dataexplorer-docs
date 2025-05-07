@@ -288,7 +288,7 @@ Kusto.Explorer.exe c:\temp\script.kql "uri=https://<baseaddress>/groups/<GroupID
 
 1. To view the list of authorized principals, right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab) and select **Manage Database Authorized Principals**. (You can also select this option from the Management Menu.)
 
-    :::image type="content" source="media/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity drop-down menu. The option titled Manage Database Authorized Principals is highlighted.":::
+    :::image type="content" source="media/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity dropdown menu. The option titled Manage Database Authorized Principals is highlighted.":::
 
 1. Select **Add principal** to add an authorized principal.
     :::image type="content" source="media/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Screenshot of the Manage authorized principals window. The options titled Drop principal and Add principal are highlighted.":::

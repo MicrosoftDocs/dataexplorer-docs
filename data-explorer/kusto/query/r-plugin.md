@@ -1,12 +1,12 @@
 ---
-title:  R plugin (Preview)
-description: Learn how to use the R plugin (Preview) to run a user-defined function using an R script.
+title:  R plugin (preview)
+description: Learn how to use the R plugin (preview) to run a user-defined function using an R script.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
-# R plugin (Preview)
+# R plugin (preview)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
@@ -44,7 +44,7 @@ The following variables are reserved for interaction between Kusto Query Languag
 ## Enable the plugin
 
 * The plugin is disabled by default.
-* Enable or disable the plugin in the Azure portal in the **Configuration** tab of your cluster. For more information, see [Manage language extensions in your Azure Data Explorer cluster (Preview)](/azure/data-explorer/language-extensions)
+* Enable or disable the plugin in the Azure portal in the **Configuration** tab of your cluster. For more information, see [Manage language extensions in your Azure Data Explorer cluster (preview)](/azure/data-explorer/language-extensions)
 
 ## R sandbox image
 

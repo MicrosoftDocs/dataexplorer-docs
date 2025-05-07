@@ -49,7 +49,7 @@ A single dashboard can show visuals from one or more clusters.
 1. In the **Create new data source** pane:
     1. Enter a **Data source name**.
     1. Enter the **Cluster URI** region and then select **Connect**.
-    1. Select the **Database** from the drop-down list.
+    1. Select the **Database** from the dropdown list.
     1. Enter a value for  **Query results cache max age** to enable query results cache on all queries of this data source. The max age can be in units of seconds, hours, or days.
     1. Select **Create**.
 
@@ -64,7 +64,7 @@ Dashboard tiles use Kusto Query Language snippets to retrieve data and render vi
     :::image type="content" source="media/adx-dashboards/empty-dashboard-new-query.png" alt-text="New query.":::
 
 1. In the **Query** pane,
-    1. Select the data source from the drop-down menu.
+    1. Select the data source from the dropdown menu.
     1. Type the query, and the select **Run**. For more information about generating queries that use parameters, see [Use parameters in your query](dashboard-parameters.md#use-parameters-in-your-query).
 
     1. Select **Visual**.
