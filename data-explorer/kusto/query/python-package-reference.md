@@ -15,7 +15,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](python-plugin.md).
 
-## [3.11.7 (Preview)](#tab/python3-11-7)
+## [3.11.7 (preview)](#tab/python3-11-7)
 
 Python engine 3.11.7 + common data science and ML packages
 
@@ -152,7 +152,7 @@ Python engine 3.11.7 + common data science and ML packages
 | zipp | 3.18.1 |
 | zstandard | 0.22.0 |
 
-## [3.11.7 DL (Preview)](#tab/python3-11-7-DL)
+## [3.11.7 DL (preview)](#tab/python3-11-7-DL)
 
 Python engine 3.11.7 + common data science and ML packages + deep learning packages (tensorflow & torch)
 
@@ -517,7 +517,7 @@ This article lists the available managed Python packages in the Python plugin. F
 
 To create a custom image, see [Create a custom image](/azure/data-explorer/language-extensions#create-a-custom-image).
 
-## [3.11.7 (Preview)](#tab/python3-11-7)
+## [3.11.7 (preview)](#tab/python3-11-7)
 
 Python engine 3.11.7 + common data science and ML packages
 
@@ -655,7 +655,7 @@ Python engine 3.11.7 + common data science and ML packages
 | zipp | 3.18.1 |
 | zstandard | 0.22.0 |
 
-## [3.11.7 DL (Preview)](#tab/python3-11-7-DL)
+## [3.11.7 DL (preview)](#tab/python3-11-7-DL)
 
 Python engine 3.11.7 + common data science and ML packages + deep learning packages (tensorflow & torch)
 

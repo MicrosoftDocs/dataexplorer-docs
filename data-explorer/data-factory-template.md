@@ -66,11 +66,11 @@ If your ControlTableDataset is in a different format, create a comparable Contro
 
 1.  In the **Bulk Copy from Database to Azure Data Explorer** pane, under **User Inputs**, specify your datasets by doing the following: 
 
-    a. In the **ControlTableDataset** drop-down list, select the linked service to the control table that indicates what data is copied from the source to the destination and where it will be placed in the destination. 
+    a. In the **ControlTableDataset** dropdown list, select the linked service to the control table that indicates what data is copied from the source to the destination and where it will be placed in the destination. 
 
-    b. In the **SourceDataset** drop-down list, select the linked service to the source database. 
+    b. In the **SourceDataset** dropdown list, select the linked service to the source database. 
 
-    c. In the **AzureDataExplorerTable** drop-down list, select the Azure Data Explorer table. If the dataset doesn't exist, [create the Azure Data Explorer linked service](data-factory-load-data.md#create-the-azure-data-explorer-linked-service) to add the dataset.
+    c. In the **AzureDataExplorerTable** dropdown list, select the Azure Data Explorer table. If the dataset doesn't exist, [create the Azure Data Explorer linked service](data-factory-load-data.md#create-the-azure-data-explorer-linked-service) to add the dataset.
 
     d. Select **Use this template**.
 

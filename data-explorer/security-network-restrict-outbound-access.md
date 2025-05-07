@@ -131,7 +131,7 @@ The following ARM template allows outbound access to specific FQDNs while keepin
 
 1. Select **Save** to submit the configuration.
 
-## Configure callout policies (Preview)
+## Configure callout policies (preview)
 
 Alternatively, you can configure **callout policies** directly in the ARM template or using the Azure CLI. Callout policies allow you to define specific rules for outbound access to SQL, storage, or other endpoints.
 

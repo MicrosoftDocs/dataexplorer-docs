@@ -165,7 +165,7 @@ In the **Data preparation** window, all three steps are marked with green check 
     > * To enable access between a cluster and a storage account without public access, see [Create a Managed Private Endpoint](security-network-private-endpoint-create.md).
     > * The cluster and event hub should be associated with the same tenants. If not, use one of the SDK options, such as C# or Python.
 
-1. The **Ingest data** side pane opens with the **Destination** tab selected. Select the **Cluster** and **Database** fields from the drop-downs. Make sure you select a cluster that is running. Otherwise, you won't be able to select Database and proceed with the ingestion process. 
+1. The **Ingest data** side pane opens with the **Destination** tab selected. Select the **Cluster** and **Database** fields from the dropdowns. Make sure you select a cluster that is running. Otherwise, you won't be able to select Database and proceed with the ingestion process. 
 
 1. Under **Table**, select **New table** and enter a name for the new table. Alternatively, use an **Existing table**.
 
