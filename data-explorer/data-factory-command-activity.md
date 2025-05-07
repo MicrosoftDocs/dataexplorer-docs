@@ -22,7 +22,7 @@ ms.date: 09/13/2023
 ## Create a new pipeline
 
 1. Select the **Author** pencil tool.
-1. Create a new pipeline by selecting **+** and then select **Pipeline** from the drop-down.
+1. Create a new pipeline by selecting **+** and then select **Pipeline** from the dropdown.
 
    ![create new pipeline.](media/data-factory-command-activity/create-pipeline.png)
 
@@ -58,7 +58,7 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
 1. The **AzureDataExplorerTable** new tab opens in the main canvas.
     * Select **General** and edit the dataset name.
     * Select **Connection** to edit the dataset properties.
-    * Select the **Linked service** from the drop-down, or select **+ New** to create a new linked service.
+    * Select the **Linked service** from the dropdown, or select **+ New** to create a new linked service.
 
     ![Edit Azure Data Explorer dataset properties.](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
 
@@ -69,7 +69,7 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
    * Select **Name** for Azure Data Explorer linked service. Add **Description** if needed.
    * In **Connect via integration runtime**, change current settings, if needed.
    * In **Account selection method** select your cluster using one of two methods:
-        * Select the **From Azure subscription** radio button and select your **Azure subscription** account. Then, select your **Cluster**. Note the drop-down will only list clusters that belong to the user.
+        * Select the **From Azure subscription** radio button and select your **Azure subscription** account. Then, select your **Cluster**. Note the dropdown will only list clusters that belong to the user.
         * Instead, select **Enter manually** radio button and enter your **Endpoint** (cluster URL).
     * Specify the **Tenant**.
     * Enter **Service principal ID**. This value can be found in the [Azure portal](https://ms.portal.azure.com/) under **App Registrations** > **Overview** > **Application (client) ID**. The principal must have the adequate permissions, according to the permission level required by the command being used.

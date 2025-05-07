@@ -163,7 +163,7 @@ The [Azure Cosmos DB](/azure/cosmos-db/) change feed data connection is an inges
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Change feed
-* **Documentation:** [Ingest data from Azure Cosmos DB (Preview)](ingest-data-cosmos-db-connection.md)
+* **Documentation:** [Ingest data from Azure Cosmos DB (preview)](ingest-data-cosmos-db-connection.md)
 
 ### Azure Data Factory
 

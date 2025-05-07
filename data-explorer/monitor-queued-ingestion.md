@@ -102,7 +102,7 @@ In this example, we'll use these metrics to see how much data passed through the
 1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
 1. Select *Blobs Processed* as the **Metric** value and *Sum* as the **Aggregation** value.
 1. Select the **Apply splitting** button and choose *Component Type* to segment the chart by the different ingestion components.
-1. To focus on a specific database in your cluster, select the **Add filter** button above the chart and then choose which database values to include when plotting the chart. In this example, we filter on the blobs sent to the *GitHub* database by selecting *Database* as the **Property**, *=* as the **Operator**, and *GitHub* in the **Values** drop-down. After selecting the filter values, click away from the filter selector to close it.
+1. To focus on a specific database in your cluster, select the **Add filter** button above the chart and then choose which database values to include when plotting the chart. In this example, we filter on the blobs sent to the *GitHub* database by selecting *Database* as the **Property**, *=* as the **Operator**, and *GitHub* in the **Values** dropdown. After selecting the filter values, click away from the filter selector to close it.
 
 Now the chart shows how many blobs that were sent to the *GitHub* database were processed at each of the ingestion components over time.
 

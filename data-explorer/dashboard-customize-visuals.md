@@ -44,7 +44,7 @@ For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown 
 1. Open a [dashboard](azure-data-explorer-dashboards.md#create-a-new-dashboard).
 1. In the top menu, select **+Add** > **Add text** to open a text tile.
 
-    :::image type="content" source="media/dashboard-customize-visuals/add-tile.png" alt-text="Screenshot of dashboard ribbon showing the drop-down menu of the Add button.":::
+    :::image type="content" source="media/dashboard-customize-visuals/add-tile.png" alt-text="Screenshot of dashboard ribbon showing the dropdown menu of the Add button.":::
 
 1. In the query pane, paste the URL of an image located in an image hosting service using the following syntax:
 

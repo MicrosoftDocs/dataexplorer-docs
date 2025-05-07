@@ -1,11 +1,11 @@
 ---
-title: graph-mark-components operator (Preview)
+title: graph-mark-components operator (preview)
 description: Learn how to use the graph-mark-components operator to find and mark all connected components of a graph.
 ms.reviewer: royo
 ms.topic: reference
 ms.date: 02/17/2025
 ---
-# graph-mark-components operator (Preview)
+# graph-mark-components operator (preview)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
