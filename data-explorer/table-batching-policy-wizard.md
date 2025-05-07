@@ -29,9 +29,9 @@ In this article, you can define and assign an ingestion batching policy for a ta
 
 :::image type="content" source="media/one-click-table-policies/table-batch-policy-update.png" alt-text="Screen shot of Update table batch policy window. Cluster, Database, Table, and Policy fields must be filled out before proceeding to Update.":::
 
-1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus, or add a cluster connection.
+1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the dropdown menus, or add a cluster connection.
 
-1. Under **Table**, select a table from the drop-down menus.
+1. Under **Table**, select a table from the dropdown menus.
 
 1. Under **Inherit values from database**, toggle **On** to apply the batching policy values from the database to the table. To create or update a separate policy for the table, toggle to **Off**.
 

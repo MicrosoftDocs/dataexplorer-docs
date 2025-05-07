@@ -33,7 +33,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 The **Create table** window opens with the **Destination** tab selected.
 
-1. The **Cluster** and **Database** fields are prepopulated. You can select different values from the drop-down menu.
+1. The **Cluster** and **Database** fields are prepopulated. You can select different values from the dropdown menu.
 1. In **Table name**, enter a name for your table.
 
     > [!TIP]

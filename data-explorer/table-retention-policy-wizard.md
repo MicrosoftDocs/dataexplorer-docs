@@ -32,9 +32,9 @@ The **Table retention policy** window opens with the **Policy update** tab selec
 
 :::image type="content" source="media/one-click-table-policies/one-click-retention.png" alt-text="Screen shot of Update table retention policy page. Cluster, Database, Table and Policy fields must be filled out before proceeding to Update.":::
 
-1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the drop-down menus, or [add a cluster connection](create-cluster-and-database.md).
+1. The **Cluster** and **Database** fields are auto-populated. You may select a different cluster or database from the dropdown menus, or [add a cluster connection](create-cluster-and-database.md).
 
-1. Under **Table**, select a table from the drop-down menus.
+1. Under **Table**, select a table from the dropdown menus.
 
 1. Under **Retention policy**, toggle **On** to apply the retention policy values from the database to the table. To create or update a separate policy for the table, toggle to **Off**.
 
