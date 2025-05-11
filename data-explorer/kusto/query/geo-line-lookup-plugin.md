@@ -13,7 +13,7 @@ The `geo_line_lookup` plugin looks up a `Line` value in a lookup table and retur
 
 ## Syntax
 
-*T* `|` `evaluate` `geo_line_lookup(` *LookupTable* `,` *LookupLineKey* `,` *SourceLongitude* `,` *SourceLatitude* `,` *Radius* `,` [ *return_unmatched* ] `,` [ *lookup_area_radius* ] `)`
+*T* `|` `evaluate` `geo_line_lookup(` *LookupTable* `,` *LookupLineKey* `,` *SourceLongitude* `,` *SourceLatitude* `,` *Radius* `,` [ *return_unmatched* ] `,` [ *lookup_area_radius* ] `,` [ *return_lookup_key* ] `)`
 
 ## Parameters
 
@@ -27,6 +27,7 @@ The `geo_line_lookup` plugin looks up a `Line` value in a lookup table and retur
 | *Radius* | `real` | :heavy_check_mark: | Length from the line where the source location is considered a match.|
 | *return_unmatched* | `bool` | | An optional boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
 | *lookup_area_radius* | `real` | | An optional lookup area radius distance in meters value that may help in matching locations to their respective lines.|
+| *return_lookup_key* | `bool` | | An optional boolean flag that defines if the result should include column *LookupLineKey* (default: `false`).|
 
 ## Returns
 
@@ -81,7 +82,7 @@ The following example returns only matching rows.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WSQY%2FTMBCF7%2F0VVk5bKVT22OOxu%2BIACHFghZB2L6iqKm%2FjLRGuU6XuShXw35kk7cIeiS%2Fx%2BOXl%2BZtJsYi%2BC81RvBVNKLweU7wZKpsc9nF5LH2bd%2FWoWTZnrrXb%2BWw1E%2FxUWL6Ld88xn6L48q2qxeX85mdVzodYLau7Nsf70aGqq23X9U2bQ4nHarlavSG98AReOWuIJJKpjVyQNeAQFaBxYNb1JPMkndVOKe38JNPKoNLoQJFT6%2FXveT1F%2BhpS2MYh1X%2FnkQvlCK13IA1KCWBsjWqBEgx6Y6y1iDQkGoReOlSejATU2sEkRGM8AknrpZ4yrW9niQmnbhtK2%2BXXlK%2FV16RTl3dtOTVx2ceQeM%2Bal%2B0L%2Bo%2F7Q9tHcc9eUbw%2FtakZLyVGXA4taU1ueMFaDLyMM2CBQZImurD61IfciA8xlz4k8RD7PdNIVxMixZAlASrjJxO%2Bm5YaJHfGeby4DBF4ALoncdc%2Bxr6c2YAdzEIyMwBgvVagRwfrvPJogbjBlhs%2BOXyO%2BcjpS5fF1L4hwgDZ8Q8BJX8NzgLbjpSNl1ahtwRa2ZHwle7sl4jPIZ0GJrvYbRK3e5O67sfpMI70cZrjfxj%2FxVsLJeX8DxDDhhwPAwAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WST4%2FTMBDF7%2F0UVk5bKVT22OM%2FRRwAIQ6sENJyQVVVeRtTonXtleusVAHfnUnSLuyR5BKPn1%2BefzMxVFay707sDet8pfc%2Bhpuxskv%2BGNanWvp0aCfNujtTrd8vF5sFo6fB%2BoO9fQppCOzzt6Zll%2F2bn009P4Zm3dz2KdxNDk3b7HMuXZ98Dadmvdm8MnLlDDhhtTKGo1Gt4iujFVhEAagsqG07y5zhVksrhLRulkmhUEi0IIwV2%2B3vZTtH%2BuKj34cx1X%2Fn4SthDWpngSvkHEDpFsUKOSh0SmmtEc2YaBQ6blE4oziglBZmISrlEAzXjss50%2Fb1IhLhmPe%2B9jm9pHytviQdczr0dejCugQfaU2a5%2BUz%2Bg%2FHx74Edkdegb0b%2BthNl2ITLovaSGns%2BIEtG3kpq0ADgTTSmAurj8Wnjr0PqRYf2ddQjkQjXk2MEQSZG0Ch3GxCd5NcAqfOWIcXlzECDUD%2Bzm77%2B1DqmQzIQa04MQMA0ksBcnLQ1gmHGgw1WFPDZ4dPIZ0ofc2Jze0bI4yQLf0QkNNpsBrIdqKsHNcCnTYghZ4IX%2BkufrHw5OMwMjmEvIvU7l3M%2BWF4nEb6NM%2FxP4z%2F4m2Z4Jz2Qx1KuhzaPYQzdayWISz%2FALFdWv0pAwAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -98,7 +99,7 @@ let locations = datatable(location_name:string, longitude:real, latitude:real)
     "Kensington Palace", -0.1885272501232862,  51.504906159672316
 ];
 locations
-| evaluate geo_line_lookup(roads, road, longitude, latitude, 100)
+| evaluate geo_line_lookup(roads, road, longitude, latitude, 100, return_lookup_key = true)
 ```
 
 **Output**
@@ -112,7 +113,7 @@ The following example returns both matching and nonmatching rows.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WST4%2FTMBDF7%2F0UVk5bKVT22OM%2FRRwAIQ6sENJyQVVVeRvTjXDtynVWWgHfnUnSLuyR5BKPn1%2BefzMxVFay787sDet8pfc%2Bhpuxskv%2BGNbnWvp0aCfNunuiWr9fLjYLRk%2BD9YG9fQxpCOzzt6Zll%2F2bn019OoVm3dz2KdxNDk3b7HMuXZ98Dedmvdm8MnLlDDhhtTKGo1Gt4iujFVhEAagsqG07y5zhVksrhLRulkmhUEi0IIwV2%2B3vZTtH%2BuKj34cx1X%2Fn4SthDWpngSvkHEDpFsUKOSh0SmmtEc2YaBQ6blE4oziglBZmISrlEAzXjss50%2Fb1IhLhmPe%2B9jm9pHytviQdczr0dejCugQfaU2a5%2BUz%2Bg%2FHU18CuyOvwN4NfeymS7EJl0VtpDR2%2FMCWjbyUVaCBQBppzIXVx%2BJTx96HVIuP7GsoR6IRrybGCILMDaBQbjahu0kugVNnrMOLyxiBBiB%2FZ7f9fSj1iQzIQa04MQMA0ksBcnLQ1gmHGgw1WFPDZ4dPIZ0pfc2Jze0bI4yQLf0QkNNpsBrIdqKsHNcCnTYghZ4IX%2BkufrHw6OMwMjmEvIvU7l3M%2Bcdwmkb6PM%2FxP4z%2F4m2Z4Jz2Qx1K2g3p6Ov%2BIXTUsFqGsPwD1vs0ECgDAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WST4vbMBDF7%2FkUwqcNuEEaafQnpYe2lB66lMLupSwhaOPprllFDo68ENp%2B947tZNs91r5YM0%2FPT79RoiL6LjZH8U40sfB7n%2BhqrGxz3NP6WPo2P9STZt2cuNbulou7heCnwvIo3j9THkh8%2FV7V4ty%2F%2BlmV04GqdXXdZrqZHKq62nVd37Q5FjpW67u7N06vgoOgvDXOSXSmNnLlrAGPqACNB7OpZ1lw0lvtldI%2BzDKtDCqNHpTzarP5vaznSN9iijsaU%2F13HrlS3qENHqRBKQGMrVGtUILBYIy1FtGNiUZhkB5VcEYCau1hFqIxAcFJG6SeM23eLhITTt0ulrbLrylfqq9Jpy4%2FtGVoaN1TTLxmzcvyBf2n%2FaHtSdywF4kPQ5ua6VBiwuXROq2dHz%2BwFiMv4w1YYJBOO3dm9bmPuREfKZc%2BJnFL%2FZ5ppIuJc4ohSweoTJhN%2BGxaapA8GR%2Fw7DJG4AvQ%2FRDX7T315cQG7GBWkpkBAOu1Aj05WB9UQAuOB2x54LPDF8pHTl%2B6LObxjRFGyJ5%2FCCh5N3gLbDtRNkFahcE60MpOhC90F78EPcc0jEweqNsmHvc2dd3TcJiu9HG%2Bx%2F8w%2Fou3FkpK7lMZ%2Brwd8j6W3SM1PLDSD%2FTSmN22T3Q6d5Z%2FALaPc4VCAwAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -129,7 +130,7 @@ let locations = datatable(location_name:string, longitude:real, latitude:real)
     "Kensington Palace", -0.1885272501232862,  51.504906159672316
 ];
 locations
-| evaluate geo_line_lookup(roads, road, longitude, latitude, 100, return_unmatched = true)
+| evaluate geo_line_lookup(roads, road, longitude, latitude, 100, return_unmatched = true, return_lookup_key = true)
 ```
 
 **Output**
@@ -145,7 +146,7 @@ The following example returns both matching and nonmatching rows, with radius se
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WST4%2FTMBDF7%2F0UVk5bKVT22OM%2FRRwAIQ6sENJyQVVVeRvTjXDtynVWWgHfnUnSLuyR5BKPn1%2BefzMxVFay787sDet8pfc%2Bhpuxskv%2BGNbnWvp0aCfNunuiWr9fLjYLRk%2BD9YG9fQxpCOzzt6Zll%2F2bn019OoVm3dz2KdxNDk3b7HMuXZ98Dedmvdm8MnLlDDhhtTKGo1Gt4iujFVhEAagsqG07y5zhVksrhLRulkmhUEi0IIwV2%2B3vZTtH%2BuKj34cx1X%2Fn4SthDWpngSvkHEDpFsUKOSh0SmmtEc2YaBQ6blE4oziglBZmISrlEAzXjss50%2Fb1IhLhmPe%2B9jm9pHytviQdczr0dejCugQfaU2a5%2BUz%2Bg%2FHU18CuyOvwN4NfeymS7EJl0VtpDR2%2FMCWjbyUVaCBQBppzIXVx%2BJTx96HVIuP7GsoR6IRrybGCILMDaBQbjahu0kugVNnrMOLyxiBBiB%2FZ7f9fSj1iQzIQa04MQMA0ksBcnLQ1gmHGgw1WFPDZ4dPIZ0pfc2Jze0bI4yQLf0QkNNpsBrIdqKsHNcCnTYghZ4IX%2BkufrHw6OMwMjmEvIvU7l3M%2Bcdwmkb6PM%2FxP4z%2F4m2ZRE77oQ4l7YZ09HX%2FEDpqWC1DWP4B90BZ0SgDAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WST4vbMBDF7%2FkUwqcNuEEaafQnpYe2lB66lMLupSwhaOPprllFDo68ENp%2B947tZNs91r5YM0%2FPT79RoiL6LjZH8U40sfB7n%2BhqrGxz3NP6WPo2P9STZt2cuNbulou7heCnwvIo3j9THkh8%2FV7V4ty%2F%2BlmV04GqdXXdZrqZHKq62nVd37Q5FjpW67u7N06vgoOgvDXOSXSmNnLlrAGPqACNB7OpZ1lw0lvtldI%2BzDKtDCqNHpTzarP5vaznSN9iijsaU%2F13HrlS3qENHqRBKQGMrVGtUILBYIy1FtGNiUZhkB5VcEYCau1hFqIxAcFJG6SeM23eLhITTt0ulrbLrylfqq9Jpy4%2FtGVoaN1TTLxmzcvyBf2n%2FaHtSdywF4kPQ5ua6VBiwuXROq2dHz%2BwFiMv4w1YYJBOO3dm9bmPuREfKZc%2BJnFL%2FZ5ppIuJc4ohSweoTJhN%2BGxaapA8GR%2Fw7DJG4AvQ%2FRDX7T315cQG7GBWkpkBAOu1Aj05WB9UQAuOB2x54LPDF8pHTl%2B6LObxjRFGyJ5%2FCCh5N3gLbDtRNkFahcE60MpOhC90F78EPcc0jEweqNsmHvc2dd3TcJiu9HG%2Bx%2F8w%2Fou3Fhol96kMfd4OeR%2FL7pEaHljpB3ppzG7bJzqdO8s%2F%2BOZHxkIDAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -162,7 +163,7 @@ let locations = datatable(location_name:string, longitude:real, latitude:real)
     "Kensington Palace", -0.1885272501232862,  51.504906159672316
 ];
 locations
-| evaluate geo_line_lookup(roads, road, longitude, latitude, 350, return_unmatched = true)
+| evaluate geo_line_lookup(roads, road, longitude, latitude, 350, return_unmatched = true, return_lookup_key = true)
 ```
 
 |location_name|longitude|latitude|road_name|road
