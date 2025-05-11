@@ -18,8 +18,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 | - [ai_chat_completion plugin (preview)](/azure/data-explorer/kusto/query/ai-chat-completion-plugin.md)<br/>- [ai_chat_completion_prompt plugin (preview)](/azure/data-explorer/kusto/query/ai-chat-completion-prompt-plugin.md) | New articles. Learn how to use the ai_chat plugins to chat with large language models, enabling AI-related scenarios such as RAG application and semantic search. |
 | - [geo_line_lookup plugin (preview)](/azure/data-explorer/kusto/query/geo-line-lookup-plugin.md)<br/>- [geo_polygon_lookup plugin (preview)](/azure/data-explorer/kusto/query/geo-polygon-lookup-plugin.md) | New articles. Learn how to use the geo line/polygon plugin to look up line/polygon value in a lookup table. |
 | - [Geospatial joins](/azure/data-explorer/kusto/query/geospatial-joins.md) | New article. Learn how to use KQL tools for geospatial joins, including examples. |
-| - [geo_closest_point_on_line()](/azure/data-explorer/kusto/query/geo-closest-point-on-line-function.md)<br/>- [geo_closest_point_on_polygon()](/azure/data-explorer/kusto/query/geo-closest-point-on-polygon-function.md)<br/>- [geo_from_wkt()](/azure/data-explorer/kusto/query/geo-from-wkt-function.md)<br>
-- [geo_line_interpolate_point()](/azure/data-explorer/kusto/query/geo-line-interpolate-point-function.md)<br/>- [geo_line_locate_point()](/azure/data-explorer/kusto/query/geo-line-locate-point-function.md) | New articles. Learn how to use new geospatial line functions. |
+| - [geo_closest_point_on_line()](/azure/data-explorer/kusto/query/geo-closest-point-on-line-function.md)<br/>- [geo_closest_point_on_polygon()](/azure/data-explorer/kusto/query/geo-closest-point-on-polygon-function.md)<br/>- [geo_from_wkt()](/azure/data-explorer/kusto/query/geo-from-wkt-function.md)<br>- [geo_line_interpolate_point()](/azure/data-explorer/kusto/query/geo-line-interpolate-point-function.md)<br/>- [geo_line_locate_point()](/azure/data-explorer/kusto/query/geo-line-locate-point-function.md) | New articles. Learn how to use new geospatial line functions. |
 | - [any() (graph function)](/azure/data-explorer/kusto/query/any-graph-function.md) | New article. Learn how to use the any() function to evaluate a condition over the elements of a variable length edge. |
 | [graph-match operator](/azure/data-explorer/kusto/query/graph-match-operator.md)<br/>- [inner_nodes() (graph function)](/azure/data-explorer/kusto/query/inner-nodes-graph-function.md)<br/>- [node_degree_in() (graph function)](/azure/data-explorer/kusto/query/node-degree-in.md)<br/>- [node_degree_out() (graph function)](/azure/data-explorer/kusto/query/node-degree-out.md) | Updated articles. The functions can be used with the any() graph function . |
 | [geo_distance_2points()](/azure/data-explorer/kusto/query/geo-distance-2points-function.md) | Updated article. Updated the syntax to include *use_spheroid* |
@@ -65,8 +64,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 |--|--|
 | - [Functions library](/kusto/functions-library/functions-library?view=azure-data-explorer&preserve-view=true)<br/>- [graph_blast_radius_fl()](/kusto/functions-library/graph-blast-radius-fl?view=azure-data-explorer&preserve-view=true) <br/>- [graph_exposure_perimeter_fl()](/kusto/functions-library/graph-exposure-perimeter-fl?view=azure-data-explorer&preserve-view=true) | Updated articles. Refreshed with clearer content.|
 
-**Management**141068
-
+**Management**
 
 |Article title | Description|
 |--|--|
