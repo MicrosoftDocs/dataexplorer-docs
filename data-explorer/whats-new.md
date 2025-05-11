@@ -9,6 +9,53 @@ ms.date: 05/11/2025
 
 Welcome to what's new in Azure Data Explorer. This article details new and updated content in the Azure Data Explorer documentation.
 
+## April 2025
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [ai_chat_completion plugin (preview)](/azure/data-explorer/kusto/query/ai-chat-completion-plugin.md)<br/>- [ai_chat_completion_prompt plugin (preview)](/azure/data-explorer/kusto/query/ai-chat-completion-prompt-plugin.md) | New articles. Learn how to use the ai_chat plugins to chat with large language models, enabling AI-related scenarios such as RAG application and semantic search. |
+| - [geo_line_lookup plugin (preview)](/azure/data-explorer/kusto/query/geo-line-lookup-plugin.md)<br/>- [geo_polygon_lookup plugin (preview)](/azure/data-explorer/kusto/query/geo-polygon-lookup-plugin.md) | New articles. Learn how to use the geo line/polygon plugin to look up line/polygon value in a lookup table. |
+| - [Geospatial joins](/azure/data-explorer/kusto/query/geospatial-joins.md) | New article. Learn how to use KQL tools for geospatial joins, including examples. |
+| - [geo_closest_point_on_line()](/azure/data-explorer/kusto/query/geo-closest-point-on-line-function.md)<br/>- [geo_closest_point_on_polygon()](/azure/data-explorer/kusto/query/geo-closest-point-on-polygon-function.md)<br/>- [geo_from_wkt()](/azure/data-explorer/kusto/query/geo-from-wkt-function.md)<br>
+- [geo_line_interpolate_point()](/azure/data-explorer/kusto/query/geo-line-interpolate-point-function.md)<br/>- [geo_line_locate_point()](/azure/data-explorer/kusto/query/geo-line-locate-point-function.md) | New articles. Learn how to use new geospatial line functions. |
+| - [any() (graph function)](/azure/data-explorer/kusto/query/any-graph-function.md) | New article. Learn how to use the any() function to evaluate a condition over the elements of a variable length edge. |
+| [graph-match operator](/azure/data-explorer/kusto/query/graph-match-operator.md)<br/>- [inner_nodes() (graph function)](/azure/data-explorer/kusto/query/inner-nodes-graph-function.md)<br/>- [node_degree_in() (graph function)](/azure/data-explorer/kusto/query/node-degree-in.md)<br/>- [node_degree_out() (graph function)](/azure/data-explorer/kusto/query/node-degree-out.md) | Updated articles. The functions can be used with the any() graph function . |
+| [geo_distance_2points()](/azure/data-explorer/kusto/query/geo-distance-2points-function.md) | Updated article. Updated the syntax to include *use_spheroid* |
+| - [Scalar function types at a glance](/azure/data-explorer/kusto/query/scalar-functions.md) | Updated article. Added the new geospatial functions to the table. |
+
+## March 2025
+
+**Functions library**
+
+|Article title | Description|
+|--|--|
+| [graph_node_centrality_fl()](/azure/data-explorer/kusto/functions-library/graph-node-centrality-fl.md) | New article.  .|
+| [Functions library](/azure/data-explorer/kusto/functions-library/functions-library.md) - add node centrality function to kcl | Updated articles. Refreshed with clearer content.|
+
+**Management**
+
+
+| Article title | Description |
+|--|--|
+| - [Queued ingestion overview (Preview)](/azure/data-explorer/kusto/management/data-ingestion/queued-ingestion-overview.md) | New article. Learn about queued ingestion and its commands. |
+| - [Queued ingestion use case (Preview)](/azure/data-explorer/kusto/management/data-ingestion/queued-ingestion-use-case.md) | New article. Learn how to ingest historical data using the queued ingestion commands. |
+| - [.cancel queued ingestion operation command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/cancel-queued-ingestion-operation-command.md) | New article. Learn how to use the `.cancel queued operation` command to cancel a long-running operation. . |
+| - [.ingest-from-storage-queued command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-storage-queued.md) | New article. Learn how to use the the `.ingest-from-storage-queued` `into` command used to ingest a storage folder in Azure Data Explorer. . |
+| - [.list blobs command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/list-blobs.md) | New article. Learn how to use the list blobs from storage command. |
+| - [.show queued ingestion operations command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/show-queued-ingestion-operations.md) | New article. Learn how to use the `.show queued ingestion operations` command to view a log of the queued ingestion operations that are currently running or completed. |
+| [.alter-merge table policy mirroring command](/azure/data-explorer/kusto/management/alter-merge-mirroring-policy-command.md) | Updated article. Added Onelake Backfill and EffectiveDateTime properties, to add support for mirroring from a specified time. |
+| - [.show table policy mirroring command](/azure/data-explorer/kusto/management/show-table-mirroring-policy-command.md) | Updated article. Refreshed with an example. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [covariance() (aggregation function)](/azure/data-explorer/kusto/query/covariance-aggregation-function.md)<br/>- [covariancep() (aggregation function)](/azure/data-explorer/kusto/query/covariancep-aggregation-function.md) | New articles. Learn how to use the covariance()/covariancep() aggregation functions to calculate the sample covariance of two random variables. |
+| - [make-series operator](/azure/data-explorer/kusto/query/make-series-operator.md)<br/> - [Null values](/azure/data-explorer/kusto/query/scalar-data-types/null-values.md) | Updated articles.  Added covariance()/covariancep() aggregation functions to the list of operators that cause null values to be ignored. |
+| [Splunk to Kusto cheat sheet](/azure/data-explorer/kusto/query/splunk-cheat-sheet.md) | Updated articles. Added timechart Splunk to Kusto comparison. |
+
 ## February 2025
 
 **API**
@@ -24,17 +71,18 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 |--|--|
 | - [Functions library](/kusto/functions-library/functions-library?view=azure-data-explorer&preserve-view=true)<br/>- [graph_blast_radius_fl()](/kusto/functions-library/graph-blast-radius-fl?view=azure-data-explorer&preserve-view=true) <br/>- [graph_exposure_perimeter_fl()](/kusto/functions-library/graph-exposure-perimeter-fl?view=azure-data-explorer&preserve-view=true) | Updated articles. Refreshed with clearer content.|
 
-**Management**
+**Management**141068
+
 
 |Article title | Description|
 |--|--|
-| - [Entity groups](/kusto/management/entity-groups?view=azure-data-explorer&preserve-view=true)<br/>- [.alter entity_group command](/kusto/management/alter-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.alter-merge entity_group command](/kusto/management/alter-merge-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.create entity_group command](/kusto/management/create-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.drop entity_group command](/kusto/management/drop-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.show entity_group(s) command](/kusto/management/show-entity-group?view=azure-data-explorer&preserve-view=true)<br/>  [macro-expand operator](/kusto/query/macro-expand-operator?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to use entity group commands to store entity groups in the database, and how to use the macro-expand operator to run a subquery on a set of entities within the entity group and combining the results. |
+| - [Entity groups](/kusto/management/entity-groups?view=azure-data-explorer&preserve-view=true)<br/>- [.alter entity_group command](/kusto/management/alter-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.alter-merge entity_group command](/kusto/management/alter-merge-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.create entity_group command](/kusto/management/create-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.drop entity_group command](/kusto/management/drop-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.show entity_group(s) command](/kusto/management/show-entity-group?view=azure-data-explorer&preserve-view=true)<br/>  [macro-expand operator](/kusto/query/macro-expand-operator?view=azure-data-explorer&preserve-view=true) | Updated articles. Refreshed with clearer content.|
 | - [.alter materialized-view lookback](/kusto/management/materialized-views/materialized-view-alter-lookback?view=azure-data-explorer&preserve-view=true)<br/>- [.alter materialized-view](/kusto/management/materialized-views/materialized-view-alter?view=azure-data-explorer&preserve-view=true)<br/>- [.create-or-alter materialized-view](/kusto/management/materialized-views/materialized-view-create-or-alter?view=azure-data-explorer&preserve-view=true)<br/>- [.create materialized-view](/kusto/management/materialized-views/materialized-view-create?view=azure-data-explorer&preserve-view=true)<br/>- [Materialized views](/kusto/management/materialized-views/materialized-view-overview?view=azure-data-explorer&preserve-view=true)<br/>- [Materialized views limitations and known issues](/kusto/management/materialized-views/materialized-views-limitations?view=azure-data-explorer&preserve-view=true)<br/>- [Monitor materialized views](/kusto/management/materialized-views/materialized-views-monitoring?view=azure-data-explorer&preserve-view=true) | Updated articles. Refreshed with clearer content, examples, and troubleshooting. |
 
 **Query**
 
 |Article title | Description|
-|--|--|
+|--|--|HNJHLKL
 | - [all() (graph function)](/kusto/query/all-graph-function?view=azure-data-explorer&preserve-view=true)<br/>- [inner_nodes() (graph function)](/kusto/query/inner-nodes-graph-function?view=azure-data-explorer&preserve-view=true)<br/>- [map() (graph function)](/kusto/query/map-graph-function?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to use the all(), inner nodes, and map graph functions to evaluate a condition over the elements of a variable length edge. |
 | - [node_degree_in() (graph function)](/kusto/query/node-degree-in?view=azure-data-explorer&preserve-view=true)<br/>- [node_degree_out() (graph function)](/kusto/query/node-degree-out?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to calculate the number of incoming or outgoing edges in a directed graph.|
 
@@ -77,7 +125,6 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 |Article title | Description|
 |--|--|
 |- [series_periods_detect()](/kusto/query/series-periods-detect-function?view=azure-data-explorer&preserve-view=true) <br/> - [extract()](/kusto/query/extract-function?view=azure-data-explorer&preserve-view=true) <br/> - [max_of()](/kusto/query/max-of-function?view=azure-data-explorer&preserve-view=true) <br/> - [iff()](/kusto/query/iff-function?view=azure-data-explorer&preserve-view=true) <br/> - [parse_version()](/kusto/query/parse-version-function?view=azure-data-explorer&preserve-view=true) <br/>- [not()](/kusto/query/not-function?view=azure-data-explorer&preserve-view=true) <br/> - [Tutorial: Learn common operators](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true) <br/> - [sum() (aggregation function)](/kusto/query/sum-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [arg_max() (aggregation function)](/kusto/query/arg-max-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [arg_min() (aggregation function)](/kusto/query/arg-min-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [max() (aggregation function)](/kusto/query/max-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [min() (aggregation function)](/kusto/query/min-aggregation-function?view=azure-data-explorer&preserve-view=true) | Updated topics. Refreshed with clearer content and enhances examples. <br/> Added examples for the iff() and arg_min() functions. Added example outputs for extract().  |
-
 
 ## November 2024
 
