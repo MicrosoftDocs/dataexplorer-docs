@@ -36,16 +36,10 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 **Management**
 
-
 | Article title | Description |
 |--|--|
-| - [Queued ingestion overview (Preview)](/azure/data-explorer/kusto/management/data-ingestion/queued-ingestion-overview.md) | New article. Learn about queued ingestion and its commands. |
-| - [Queued ingestion use case (Preview)](/azure/data-explorer/kusto/management/data-ingestion/queued-ingestion-use-case.md) | New article. Learn how to ingest historical data using the queued ingestion commands. |
-| - [.cancel queued ingestion operation command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/cancel-queued-ingestion-operation-command.md) | New article. Learn how to use the `.cancel queued operation` command to cancel a long-running operation. . |
-| - [.ingest-from-storage-queued command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-storage-queued.md) | New article. Learn how to use the the `.ingest-from-storage-queued` `into` command used to ingest a storage folder in Azure Data Explorer. . |
-| - [.list blobs command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/list-blobs.md) | New article. Learn how to use the list blobs from storage command. |
-| - [.show queued ingestion operations command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/show-queued-ingestion-operations.md) | New article. Learn how to use the `.show queued ingestion operations` command to view a log of the queued ingestion operations that are currently running or completed. |
-| [.alter-merge table policy mirroring command](/azure/data-explorer/kusto/management/alter-merge-mirroring-policy-command.md) | Updated article. Added Onelake Backfill and EffectiveDateTime properties, to add support for mirroring from a specified time. |
+| - [Queued ingestion overview (Preview)](/azure/data-explorer/kusto/management/data-ingestion/queued-ingestion-overview.md)<br/>- [Queued ingestion use case (Preview)](/azure/data-explorer/kusto/management/data-ingestion/queued-ingestion-use-case.md)<br/>- [.cancel queued ingestion operation command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/cancel-queued-ingestion-operation-command.md)<br/>- [.list blobs command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/list-blobs.md)- <br/>[.ingest-from-storage-queued command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-storage-queued.md)<br/>- [.show queued ingestion operations command (Preview)](/azure/data-explorer/kusto/management/data-ingestion/show-queued-ingestion-operations.md)<br/>| New articles.<br/> Learn about queued ingestion and its commands. <br/>Learn how to ingest historical data using the queued ingestion commands. Learn how to use the `.cancel queued operation` command to cancel a long-running operation. <br/>Learn how to use the the `.ingest-from-storage-queued` `into` command used to ingest a storage folder in Azure Data Explorer. <br/>Learn how to use the list blobs from storage command. <br/>Learn how to use the `.show queued ingestion operations` command to view a log of the queued ingestion operations that are currently running or completed.|
+| - [.alter-merge table policy mirroring command](/azure/data-explorer/kusto/management/alter-merge-mirroring-policy-command.md) | Updated article. Added Onelake Backfill and EffectiveDateTime properties, to add support for mirroring from a specified time. |
 | - [.show table policy mirroring command](/azure/data-explorer/kusto/management/show-table-mirroring-policy-command.md) | Updated article. Refreshed with an example. |
 
 **Query**
