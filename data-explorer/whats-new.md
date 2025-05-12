@@ -3,11 +3,44 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/03/2025
+ms.date: 05/11/2025
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and updated content in the Azure Data Explorer documentation.
+
+## April 2025
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [ai_chat_completion plugin (preview)](/kusto/query/ai-chat-completion-plugin?view=azure-data-explorer&preserve-view=true)<br/> - [ai_chat_completion_prompt plugin (preview)](/kusto/query/ai-chat-completion-prompt-plugin?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to use the ai_chat plugins to chat with large language models, enabling AI-related scenarios such as RAG application and semantic search. |
+| - [geo_line_lookup plugin (preview)](/kusto/query/geo-line-lookup-plugin?view=azure-data-explorer&preserve-view=true)<br/> - [geo_polygon_lookup plugin (preview)](/kusto/query/geo-polygon-lookup-plugin?view=azure-data-explorer&preserve-view=true)<br/> [Geospatial joins](/kusto/query/geospatial-joins?view=azure-data-explorer&preserve-view=true)<br/>  - [geo_closest_point_on_line()](/kusto/query/geo-closest-point-on-line-function?view=azure-data-explorer&preserve-view=true)<br/> - [geo_closest_point_on_polygon()](/kusto/query/geo-closest-point-on-polygon-function?view=azure-data-explorer&preserve-view=true)<br/> - [geo_from_wkt()](/kusto/query/geo-from-wkt-function?view=azure-data-explorer&preserve-view=true)<br> - [geo_line_interpolate_point()](/kusto/query/geo-line-interpolate-point-function?view=azure-data-explorer&preserve-view=true)<br/> - [geo_line_locate_point()](/kusto/query/geo-line-locate-point-function?view=azure-data-explorer&preserve-view=true)| New articles. Learn how to use new geospatial line functions. Learn how to use KQL tools for geospatial joins, including examples. Learn how to use the geo line/polygon plugin to look up line/polygon value in a lookup table. |
+| - [any() (graph function)](/kusto/query/any-graph-function?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to use the any() function to evaluate a condition over the elements of a variable length edge.|
+
+## March 2025
+
+**Functions library**
+
+|Article title | Description|
+|--|--|
+| [graph_node_centrality_fl()](/kusto/functions-library/graph-node-centrality-fl?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the graph_node_centrality_fl() function to calculate metrics of node centrality over graph data. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| - [Queued ingestion overview (preview)](/kusto/management/data-ingestion/queued-ingestion-overview?view=azure-data-explorer&preserve-view=true)<br/> - [Queued ingestion use case (preview)](/kusto/management/data-ingestion/queued-ingestion-use-case?view=azure-data-explorer&preserve-view=true)<br/>- [.cancel queued ingestion operation command (preview)](/kusto/management/data-ingestion/cancel-queued-ingestion-operation-command?view=azure-data-explorer&preserve-view=true)<br/>- [.list blobs command (preview)](/kusto/management/data-ingestion/list-blobs?view=azure-data-explorer&preserve-view=true)<br/>- [.ingest-from-storage-queued command (preview)](/kusto/management/data-ingestion/ingest-from-storage-queued?view=azure-data-explorer&preserve-view=true)<br/>- [.show queued ingestion operations command (preview)](/kusto/management/data-ingestion/show-queued-ingestion-operations?view=azure-data-explorer&preserve-view=true)<br/>| New articles. Learn about queued ingestion and its commands.|
+| [.alter-merge table policy mirroring command](/kusto/management/alter-merge-mirroring-policy-command?view=azure-data-explorer&preserve-view=true) | Updated article. Added Onelake backfill and EffectiveDateTime properties, to support for mirroring from a specified time. |
+| [.show table policy mirroring command](/kusto/management/show-table-mirroring-policy-command?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed with an example. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [covariance()](/kusto/query/covariance-aggregation-function?view=azure-data-explorer&preserve-view=true)<br/>- [covariancep()](/kusto/query/covariancep-aggregation-function?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to use the covariance()/covariancep() aggregation functions to calculate the sample covariance of two random variables. |
+| [Splunk to Kusto cheat sheet](/kusto/query/splunk-cheat-sheet?view=azure-data-explorer&preserve-view=true) | Updated article. Added timechart Splunk to Kusto comparison. |
 
 ## February 2025
 
@@ -28,7 +61,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 |Article title | Description|
 |--|--|
-| - [Entity groups](/kusto/management/entity-groups?view=azure-data-explorer&preserve-view=true)<br/>- [.alter entity_group command](/kusto/management/alter-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.alter-merge entity_group command](/kusto/management/alter-merge-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.create entity_group command](/kusto/management/create-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.drop entity_group command](/kusto/management/drop-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.show entity_group(s) command](/kusto/management/show-entity-group?view=azure-data-explorer&preserve-view=true)<br/>  [macro-expand operator](/kusto/query/macro-expand-operator?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to use entity group commands to store entity groups in the database, and how to use the macro-expand operator to run a subquery on a set of entities within the entity group and combining the results. |
+| - [Entity groups](/kusto/management/entity-groups?view=azure-data-explorer&preserve-view=true)<br/>- [.alter entity_group command](/kusto/management/alter-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.alter-merge entity_group command](/kusto/management/alter-merge-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.create entity_group command](/kusto/management/create-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.drop entity_group command](/kusto/management/drop-entity-group?view=azure-data-explorer&preserve-view=true)<br/>- [.show entity_group(s) command](/kusto/management/show-entity-group?view=azure-data-explorer&preserve-view=true)<br/>  [macro-expand operator](/kusto/query/macro-expand-operator?view=azure-data-explorer&preserve-view=true) | Updated articles. Refreshed with clearer content.|
 | - [.alter materialized-view lookback](/kusto/management/materialized-views/materialized-view-alter-lookback?view=azure-data-explorer&preserve-view=true)<br/>- [.alter materialized-view](/kusto/management/materialized-views/materialized-view-alter?view=azure-data-explorer&preserve-view=true)<br/>- [.create-or-alter materialized-view](/kusto/management/materialized-views/materialized-view-create-or-alter?view=azure-data-explorer&preserve-view=true)<br/>- [.create materialized-view](/kusto/management/materialized-views/materialized-view-create?view=azure-data-explorer&preserve-view=true)<br/>- [Materialized views](/kusto/management/materialized-views/materialized-view-overview?view=azure-data-explorer&preserve-view=true)<br/>- [Materialized views limitations and known issues](/kusto/management/materialized-views/materialized-views-limitations?view=azure-data-explorer&preserve-view=true)<br/>- [Monitor materialized views](/kusto/management/materialized-views/materialized-views-monitoring?view=azure-data-explorer&preserve-view=true) | Updated articles. Refreshed with clearer content, examples, and troubleshooting. |
 
 **Query**
@@ -77,7 +110,6 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 |Article title | Description|
 |--|--|
 |- [series_periods_detect()](/kusto/query/series-periods-detect-function?view=azure-data-explorer&preserve-view=true) <br/> - [extract()](/kusto/query/extract-function?view=azure-data-explorer&preserve-view=true) <br/> - [max_of()](/kusto/query/max-of-function?view=azure-data-explorer&preserve-view=true) <br/> - [iff()](/kusto/query/iff-function?view=azure-data-explorer&preserve-view=true) <br/> - [parse_version()](/kusto/query/parse-version-function?view=azure-data-explorer&preserve-view=true) <br/>- [not()](/kusto/query/not-function?view=azure-data-explorer&preserve-view=true) <br/> - [Tutorial: Learn common operators](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true) <br/> - [sum() (aggregation function)](/kusto/query/sum-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [arg_max() (aggregation function)](/kusto/query/arg-max-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [arg_min() (aggregation function)](/kusto/query/arg-min-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [max() (aggregation function)](/kusto/query/max-aggregation-function?view=azure-data-explorer&preserve-view=true) <br/> - [min() (aggregation function)](/kusto/query/min-aggregation-function?view=azure-data-explorer&preserve-view=true) | Updated topics. Refreshed with clearer content and enhances examples. <br/> Added examples for the iff() and arg_min() functions. Added example outputs for extract().  |
-
 
 ## November 2024
 
@@ -213,33 +245,4 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 No updates.
 
-## April 2024
-
-**Management**
-
-|Article title | Description|
-|--|--|
-| [.execute cluster script command](/kusto/management/execute-cluster-script?view=azure-data-explorer&preserve-view=true) | New article. Describes how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a cluster. |
-
-## March 2024
-
-**API**
-
-|Article title | Description|
-|--|--|
-| [Use Kusto cmdlets in Azure PowerShell](/kusto/api/powershell/azure-powershell?view=azure-data-explorer&preserve-view=true) | New article. Describes how to use Kusto cmdlets in Azure PowerShell. |
-
-**General**
-
-|Article title | Description|
-|--|--|
-| [Create an Azure Data Explorer cluster and database](create-cluster-database.md) | Updated article. Refreshed steps on how to set up Azure PowerShell to run Kusto cmdlets. |
-| [Migrate your cluster to support multiple availability zones (preview)](migrate-cluster-to-multiple-availability-zone.md) | Updated article. Refreshed steps on how to get the list of availability zones for your cluster's region in Azure portal. |
-
-**Management**
-
-| Article title | Description|
-|--|--|
-| - [What are common scenarios for using table update policies](/kusto/management/update-policy-common-scenarios?view=azure-data-explorer&preserve-view=true)<br />- [Tutorial: Route data using table update policies](/kusto/management/update-policy-tutorial?view=azure-data-explorer&preserve-view=true)<br />- [Update policy overview](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true) | New and updated articles. Describes common use cases for how to use *update table policies* to perform complex transformations and route results to destination tables. |
-| [Parquet mapping](/kusto/management/parquet-mapping?view=azure-data-explorer&preserve-view=true) | Updated article. Added parquet type conversions table to provide a mapping of Parquet field types, and the table column types they can be converted to. |
 
