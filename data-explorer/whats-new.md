@@ -44,6 +44,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 ## February 2025
 
+|Article title | Description|
+|--|--|
 | - [covariance()](/kusto/query/covariance-aggregation-function?view=azure-data-explorer&preserve-view=true)<br/>- [covariancep()](/kusto/query/covariancep-aggregation-function?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to use the covariance()/covariancep() aggregation functions to calculate the sample covariance of two random variables. |
 
 |Article title | Description|
