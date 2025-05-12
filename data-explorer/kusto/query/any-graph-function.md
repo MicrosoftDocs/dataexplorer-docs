@@ -35,10 +35,6 @@ For zero length paths, the condition evaluates to `false`.
 
 ## Examples
 
-The examples in this section show how to use the syntax to help you get started.
-
-### Find any round-trip paths between two train stations using different lines in each direction
-
 The following example uses the `Locations` and `Routes` data tables to construct a graph that finds paths from a source location to a destination location through a `route`. It uses `any()` function to find paths that uses `"Train"` transportation method at least once. It returns the source location name, destination location name and transportation methods along the route.
 
 :::moniker range="azure-data-explorer"
@@ -85,7 +81,6 @@ Routes
 | New York | Seattle | [<br> "Train", <br> "Train"<br>] |
 | Los Angeles | Chicago | [<br> "Truck", <br> "Train"<br>]|
 
-### Find the shortest path between two stations with Wi-Fi available
 
 The following example shows how to use the `graph-shortest-paths` operator  with the `any()` and `inner_nodes` functions to find a path between two stations in a transportation network. The query constructs a graph from the `connections` data and finds the shortest path from the `"South-West"` station to the `"North"` station, passing through at least one station where Wi-Fi is available.
 

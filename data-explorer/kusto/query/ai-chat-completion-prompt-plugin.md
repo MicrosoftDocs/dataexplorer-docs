@@ -142,11 +142,11 @@ evaluate ai_chat_completion_prompt(prompt, connectionString)
 ```
 ::: moniker-end
 
-The following example sends a separate prompt for each row to the Azure OpenAI chat completion model.
 
 ::: moniker range="azure-data-explorer"
 
 ### [Managed Identity](#tab/managed-identity)
+The following example sends a separate prompt for each row to the Azure OpenAI chat completion model.
 
 <!-- csl -->
 ~~~kusto
