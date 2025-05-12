@@ -27,7 +27,7 @@ Encodes a [GUID](scalar-data-types/guid.md) to a base64 string.
 
 Returns a base64 string encoded from a GUID.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

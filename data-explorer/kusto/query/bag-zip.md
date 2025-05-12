@@ -55,7 +55,6 @@ Data
 |--|--|--|
 | ['a','b','c'] | [1,'2',3.4] | {'a': 1,'b': '2','c': 3.4} |
 
-### More keys than values
 
 In the following example, the array of keys is longer than the array of values. The missing values are filled with nulls.
 
@@ -76,7 +75,6 @@ Data
 |--|--|--|
 | ['a','b','c'] | [1,'2'] | {'a': 1,'b': '2','c': null} |
 
-### More values than keys
 
 In the following example, the array of values is longer than the array of keys. Values with no matching keys are ignored.
 
@@ -97,7 +95,6 @@ Data
 |--|--|--|
 | ['a','b'] | [1,'2',2.5] | {'a': 1,'b': '2'} |
 
-### Non-string keys
 
 In the following example, there are some values in they keys array that aren't of type string. The non-string values are ignored.
 
@@ -118,7 +115,6 @@ Data
 |--|--|--|
 | ['a',8,'b'] | [1,'2',2.5] | {'a': 1,'b': 2.5} |
 
-### Fill values with null
 
 In the following example, the parameter that is supposed to be an array of values isn't an array, so all values are filled with nulls.
 
@@ -139,7 +135,6 @@ Data
 |--|--|--|
 | ['a',8,'b'] | 1 | {'a': null,'b': null} |
 
-### Null property-bag
 
 In the following example, the parameter that is supposed to be an array of keys isn't an array, so the resulting property-bag is null.
 

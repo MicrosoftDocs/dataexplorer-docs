@@ -27,7 +27,7 @@ Decodes a base64 string to an array of long values.
 
 Returns an array of long values decoded from a base64 string.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

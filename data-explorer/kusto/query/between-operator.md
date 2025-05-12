@@ -34,7 +34,7 @@ Rows in *T* for which the predicate of (*expr* >= *leftRange* and *expr* <= *rig
 
 ## Examples
 
-### Filter numeric values
+In the following example, the rows are filtered by numeric values.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -57,7 +57,7 @@ range x from 1 to 100 step 1
 |54|
 |55|
 
-### Filter by date
+In the following example, the rows are filtered by date.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -76,7 +76,7 @@ StormEvents
 |---|
 |476|
 
-### Filter by date and time
+In the following example, the rows are filtered by date and time.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -95,7 +95,7 @@ StormEvents
 |---|
 |301|
 
-### Filter using a timespan range
+In the following example, the rows are filtered using a timespan range.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

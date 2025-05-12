@@ -29,7 +29,7 @@ Encodes a string as base64 string.
 
 Returns *string* encoded as a base64 string.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

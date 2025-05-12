@@ -29,7 +29,7 @@ Decodes a base64 string to a UTF-8 string.
 
 Returns UTF-8 string decoded from base64 string.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
