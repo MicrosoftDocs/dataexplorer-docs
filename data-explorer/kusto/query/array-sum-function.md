@@ -33,7 +33,7 @@ Returns a double type value with the sum of the elements of the array.
 
 ## Example
 
-This following example shows the sum of an array.
+The following example shows the sum of an array.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

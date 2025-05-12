@@ -27,7 +27,7 @@ Calculates the angle whose sine is the specified number, or the arc sine. This i
 
 Returns the value of the arc sine of `x`. Returns `null` if `x` < -1 or `x` > 1.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

@@ -51,7 +51,7 @@ datatable(input: dynamic)
 |{<br>  "key1": 123,<br>  "key2": "abc"<br>}|true<br>|
 |{<br>  "key1": 123,<br>  "key3": "abc"<br>}|false<br>|
 
-### Search using a JSONPath key
+The following example searches using a JSONPath key.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
