@@ -9,10 +9,6 @@ ms.date: 05/11/2025
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
-## May 2024
-
-No updates.
-
 ## April 2024
 
 **Management**
