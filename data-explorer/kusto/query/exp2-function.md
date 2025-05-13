@@ -25,7 +25,22 @@ The base-2 exponential function of x, which is 2 raised to the power x: 2^x.
 
 ## Returns
 
-The exponential value of x.
+Returns the exponential value of x.
+
+
+## Examples
+
+```kusto
+print result = exp2(3)
+```
+
+_Output:_
+
+```
+result
+--------
+8
+```
 
 ## Related content
 

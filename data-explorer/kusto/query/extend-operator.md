@@ -32,7 +32,7 @@ Creates calculated columns and append them to the result set.
 
 ## Returns
 
-A copy of the input tabular result set, such that:
+Returns a copy of the input tabular result set, such that:
 
 1. Column names noted by `extend` that already exist in the input are removed
    and appended as their new calculated values.
@@ -48,7 +48,7 @@ A copy of the input tabular result set, such that:
   not done. In such cases, if the goal is to rename a column, use the [`project-rename` operator](project-rename-operator.md) instead.
 ::: moniker-end
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

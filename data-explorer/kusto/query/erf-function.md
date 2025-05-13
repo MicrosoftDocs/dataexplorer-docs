@@ -25,9 +25,9 @@ Returns the [error function](https://en.wikipedia.org/wiki/Error_function) of th
 
 ## Returns
 
-Error function of x.
+Returns the error function of x.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
