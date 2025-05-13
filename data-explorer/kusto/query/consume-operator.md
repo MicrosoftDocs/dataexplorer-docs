@@ -31,3 +31,18 @@ data between the nodes of the cluster.)
 |Name|Type|Required|Description|
 |--|--|--|--|
 | *DecodeBlocks* | `bool` | | If set to `true`, or if the request property `perftrace` is set to `true`, the `consume` operator won't just enumerate the records at its input, but actually force each value in those records to be decompressed and decoded.|
+
+## Example
+
+The following example consumes the results of a query without returning any data to the client.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUApxjXAMVgJKJOfnFZfmpgIAUnD8ni4AAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+StormEvents
+| where State == "TEXAS"
+| consume
+```

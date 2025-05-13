@@ -27,7 +27,7 @@ Use the two slashes (//) to add comments. The following table lists the keyboard
 | `Ctrl`+`K`+`C`  | Comment current line or selected lines.  |
 | `Ctrl`+`K`+`U`  | Uncomment current line or selected lines.  |
 
-## Example
+## Examples
 
 This example returns a count of events in the New York state:
 

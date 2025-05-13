@@ -32,7 +32,7 @@ Evaluates a list of expressions and returns the first non-null (or non-empty for
 
 The value of the first *arg* whose value isn't null (or not-empty for string expressions).
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

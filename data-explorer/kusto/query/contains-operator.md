@@ -39,7 +39,7 @@ If you're looking for a [term](datatypes-string-operators.md#what-is-a-term), us
 
 Rows in *T* for which *string* is in *col*.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
