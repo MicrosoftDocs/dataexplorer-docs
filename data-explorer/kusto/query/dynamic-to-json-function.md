@@ -40,7 +40,7 @@ according to the following rules:
    of the properties. The pairs are sorted by the names, and the values
    are in the canonical representation described here of each array element.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

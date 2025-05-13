@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns the end of the year containing the date, shifted by an offset, if provided.
+Provides the end of the year containing the date, shifted by an offset, if provided.
 
 ## Syntax
 
@@ -26,9 +26,9 @@ Returns the end of the year containing the date, shifted by an offset, if provid
 
 ## Returns
 
-A datetime representing the end of the year for the given *date* value, with the &*offset*, if specified.
+Returns a datetime representing the end of the year for the given *date* value, with the &*offset*, if specified.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

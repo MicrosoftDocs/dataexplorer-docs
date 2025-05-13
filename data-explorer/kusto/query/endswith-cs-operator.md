@@ -33,9 +33,9 @@ Filters a record set for data with a case-sensitive ending string.
 
 ## Returns
 
-Rows in *T* for which the predicate is `true`.
+Returns the rows in *T* for which the predicate is `true`.
 
-## Example
+## Examplea
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

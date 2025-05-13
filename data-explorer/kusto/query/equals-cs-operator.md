@@ -42,9 +42,9 @@ For more information about other operators and to determine which operator is mo
 
 ## Returns
 
-Rows in *T* for which the predicate is `true`.
+Returns the rows in *T* for which the predicate is `true`.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

@@ -35,9 +35,9 @@ For faster results, use the case-sensitive version of an operator. For example, 
 
 ## Returns
 
-Rows in *T* for which the predicate is `true`.
+Returns the rows in *T* for which the predicate is `true`.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
