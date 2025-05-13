@@ -28,7 +28,6 @@ The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL ne
 | *OutputSchema* | | | The names and types of the expected columns of the `cosmosdb_sql_request` plugin output. Use the following syntax: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`. Specifying this parameter enables multiple query optimizations. |
 | *Options* | `dynamic` | | A property bag object of advanced settings. If an `AccountKey` isn't provided in the *ConnectionString*, then the `armResourceId` field of this parameter is required. For more information, see [Supported options](#supported-options). |
 
-### Supported options
 
 The following table describes the supported fields of the *Options* parameter.
 
@@ -38,7 +37,6 @@ The following table describes the supported fields of the *Options* parameter.
 | `token` | `string` | A Microsoft Entra access token of a principal with access to the Cosmos DB database. This token is used along with the `armResourceId` to authenticate with the Azure Resource Manager. If unspecified, the token of the principal that made the query is used. </br></br>If `armResourceId` isn't specified, the token is used directly to access the Cosmos DB database. For more information about the token authentication method, see [Authentication and authorization](#authentication-and-authorization). |
 | `preferredLocations` | `string` | The region from which to query the data. </br>**Example:** `['East US']` |
 
-## Authentication and authorization
 
 To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the authorization information. The following table provides the supported authentication methods and the description for how to use that method.
 
@@ -49,7 +47,6 @@ To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the
 |Account key|You can add the account key directly to the *ConnectionString* argument. However, this approach is less secure as it involves including the secret in the query text, and is less resilient to future changes in the account key. To enhance security, hide the secret as an [obfuscated string literal](scalar-data-types/string.md#obfuscated-string-literals).|
 |Token|You can add a token value in the plugin [options](#supported-options). The token must belong to a principal with relevant permissions. To enhance security, hide the token as an [obfuscated string literal](scalar-data-types/string.md#obfuscated-string-literals).|
 
-## Set callout policy
 
 The plugin makes callouts to the Azure Cosmos DB instance. Make sure that the cluster's [callout policy](../management/callout-policy.md) enables calls of type `cosmosdb` to the target *CosmosDbUri*.
 
@@ -79,7 +76,6 @@ The following example shows an alter callout policy command for `cosmosdb` *Call
 ## Examples
 The following examples use placeholder text, in brackets.
 
-### Query Azure Cosmos DB with a query-defined output schema
 
 The following example uses the *cosmosdb_sql_request* plugin to send a SQL query while selecting only specific columns.
 This query uses explicit schema definitions that allow various optimizations before the actual query is run against Cosmos DB.
@@ -90,8 +86,6 @@ evaluate cosmosdb_sql_request(
   'SELECT c.Id, c.Name from c') : (Id:long, Name:string) 
 ```
 
-### Query Azure Cosmos DB
-
 The following example uses the *cosmosdb_sql_request* plugin to send a SQL query to fetch data from Azure Cosmos DB using its Azure Cosmos DB for NoSQL.
 
 ```kusto
@@ -99,8 +93,6 @@ evaluate cosmosdb_sql_request(
   'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=<MyDatabase>;Collection=<MyCollection>;AccountKey='h'<AccountKey>',
   'SELECT * from c') // OutputSchema is unknown, so it is not specified. This may harm the performance of the query.
 ```
-
-### Query Azure Cosmos DB with parameters
 
 The following example uses SQL query parameters and queries the data from an alternate region. For more information, see [`preferredLocations`](/azure/cosmos-db/tutorial-global-distribution-sql-api?tabs=dotnetv2%2Capi-async#preferred-locations).
 
@@ -113,8 +105,6 @@ evaluate cosmosdb_sql_request(
 | where lastName == 'Smith'
 ```
 
-### Query Azure Cosmos DB and join data with a database table
-
 The following example joins partner data from an Azure Cosmos DB with partner data in a database using the `Partner` field. It results in a list of partners with their phone numbers, website, and contact email address sorted by partner name.
 
 ```kusto
@@ -126,8 +116,6 @@ evaluate cosmosdb_sql_request(
 | sort by Partner
 ```
 
-### Query Azure Cosmos DB using token authentication
-
 The following example joins partner data from an Azure Cosmos DB with partner data in a database using the `Partner` field. It results in a list of partners with their phone numbers, website, and contact email address sorted by partner name.
 
 ```kusto
@@ -138,8 +126,6 @@ evaluate cosmosdb_sql_request(
     dynamic({'token': h'abc123...'})
 ) : (Id:long, Name:string, City:string)
 ```
-
-### Query Azure Cosmos DB using Azure Resource Manager resource ID for authentication
 
 The following example uses the Azure Resource Manager resource ID for authentication and the Microsoft Entra token of the requesting principal, since a token isn't specified. It sends a SQL query while selecting only specific columns and specifies explicit schema definitions.
 
