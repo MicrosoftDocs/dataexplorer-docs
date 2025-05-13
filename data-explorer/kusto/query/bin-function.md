@@ -36,8 +36,7 @@ The nearest multiple of *roundTo* below *value*. Null values, a null bin size, o
 
 ## Examples
 
-### Numeric bin
-
+The following example demonstrates the `bin()` function with numeric data.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzNMw0TPVUTDUBACk1J4hEQAAAA==" target="_blank">Run the query</a>
@@ -53,7 +52,7 @@ print bin(4.5, 1)
 |--|
 |4|
 
-### Timespan bin
+The following example demonstrates the `bin()` function with timespan data.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -70,7 +69,7 @@ print bin(time(16d), 7d)
 |--|
 |14:00:00:00|
 
-### Datetime bin
+The following example demonstrates the `bin()` function with datetime data.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -86,8 +85,6 @@ print bin(datetime(1970-05-11 13:45:07), 1d)
 |print_0|
 |--|
 |1970-05-11T00:00:00Z|
-
-### Pad a table with null bins
 
 When there are rows for bins with no corresponding row in the table, we recommend to pad the table with those bins. The following query looks at strong wind storm events in California for a week in April. However, there are no events on some of the days.
 
