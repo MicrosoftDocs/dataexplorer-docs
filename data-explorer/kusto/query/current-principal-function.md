@@ -10,7 +10,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns the current principal name that runs the query.
+Provies the current principal name that runs the query.
 
 ## Syntax
 
@@ -24,7 +24,7 @@ The current principal fully qualified name (FQN) as a `string`.
 The string format is:  
 *PrinciplaType*`=`*PrincipalId*`;`*TenantId*
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -35,7 +35,7 @@ The string format is:
 print fqn=current_principal()
 ```
 
-**Example output**
+**Output**
 
 |fqn|
 |---|

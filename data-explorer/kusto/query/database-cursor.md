@@ -62,7 +62,8 @@ Querying a table based on database cursors is only guaranteed to "work" (providi
 
 When the extents are moved into the target table, the assigned cursor value might already have been processed, and the next query by the database cursor will miss the new records.
 
-## Example: Processing records exactly once
+## Examples: 
+The following examples demonstrates how to process records exactly once.
 
 For a table `Employees` with schema `[Name, Salary]`, to continuously process new records as they're ingested into the table, use the following process:
 

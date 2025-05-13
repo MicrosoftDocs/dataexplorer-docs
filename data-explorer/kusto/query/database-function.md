@@ -42,7 +42,7 @@ Changes the reference of the query to a specific database within the Eventhouse 
 
 ## Examples
 
-### Use database() to access table of other database
+The following example uses the database() function to access table of other database.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -59,7 +59,6 @@ database('Samples').StormEvents | count
 |---|
 |59066|
 
-### Use database() inside let statements
 
 The query above can be rewritten as a query-defined function (let statement) that
 receives a parameter `dbName` - which is passed into the database() function.
@@ -78,7 +77,6 @@ foo('help')
 |---|
 |59066|
 
-### Use database() inside stored functions
 
 The same query as above can be rewritten to be used in a function that
 receives a parameter `dbName` - which is passed into the database() function.

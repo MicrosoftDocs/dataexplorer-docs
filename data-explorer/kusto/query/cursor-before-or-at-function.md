@@ -10,7 +10,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-A predicate function run over the records of a table to compare their ingestion time against the database cursor time.
+A predicate function runs over the records of a table to compare their ingestion time against the database cursor time.
 
 > [!NOTE]
 > This function can only be invoked on records of a table that has the
@@ -30,10 +30,20 @@ A predicate function run over the records of a table to compare their ingestion 
 
 ## Returns
 
-A scalar value of type `bool` that indicates whether the record was ingested
+Returns a scalar value of type `bool` that indicates whether the record was ingested
 before or at the database cursor *RHS* (`true`) or not (`false`).
 
-## Related content
+## Examples
 
+Suppose you have a table named `MyTable` with an ingestion time policy enabled. To filter records ingested before or at a given database cursor value (`'2024-08-01T12:00:00Z'`), use:
+
+```kusto
+MyTable
+| where cursor_before_or_at('2024-08-01T12:00:00Z')
+```
+
+This query returns only the records ingested before or at the specified cursor time.
+
+## Related content
 * [database cursors](../management/database-cursor.md)
 

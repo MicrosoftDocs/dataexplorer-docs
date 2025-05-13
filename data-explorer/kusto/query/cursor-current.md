@@ -25,6 +25,13 @@ Retrieves the current value of the cursor of the database in scope.
 Returns a single value of type `string` that encodes the current value of the
 cursor of the database in scope.
 
+## Examples
+
+```kusto
+// Retrieve the current cursor value for the database
+print CurrentCursor = cursor_current() 
+```
+
 ## Related content
 
 * [database cursors](../management/database-cursor.md)
