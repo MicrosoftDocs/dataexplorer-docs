@@ -26,9 +26,9 @@ Converts UTC [datetime](scalar-data-types/datetime.md) to local datetime using a
 
 ## Returns
 
-A local datetime in the *timezone* that corresponds the UTC datetime.
+Returns a local datetime in the *timezone* that corresponds the UTC datetime.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

@@ -35,9 +35,9 @@ Calculates an estimate of the number of distinct values that are taken by a scal
 
 Returns an estimate of the number of distinct values of *expr* in the group.
 
-## Example
+## Examples
 
-This example shows how many types of storm events happened in each state.
+The following example shows how many types of storm events happened in each state.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

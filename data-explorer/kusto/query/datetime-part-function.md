@@ -43,12 +43,12 @@ Extracts the requested date part as an integer value.
 
 ## Returns
 
-An integer representing the extracted part.
+Returns an integer representing the extracted part.
 
 > [!NOTE]
 > `week_of_year` returns an integer which represents the week number. The week number is calculated from the first week of a year, which is the one that includes the first Thursday.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

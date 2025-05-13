@@ -25,7 +25,7 @@ Converts angle value in radians into value in degrees, using the formula `degree
 
 ## Returns
 
-The corresponding angle in degrees for an angle specified in radians.
+Returns the corresponding angle in degrees for an angle specified in radians.
 
 ## Examples
 
