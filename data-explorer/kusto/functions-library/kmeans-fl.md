@@ -126,8 +126,6 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
     tbl
     | evaluate python(typeof(*), code, kwargs)
 };
-OccupancyDetection
-| extend cluster_id=int(null)
 union
 (range x from 1 to 100 step 1 | extend x=rand()+3, y=rand()+2),
 (range x from 101 to 200 step 1 | extend x=rand()+1, y=rand()+4),
