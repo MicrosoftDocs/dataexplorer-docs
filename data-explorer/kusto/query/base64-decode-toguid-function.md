@@ -29,6 +29,8 @@ Returns a [GUID](scalar-data-types/guid.md) decoded from a base64 string.
 
 ## Examples
 
+The following example shows how to use `base64_decode_toguid()` to decode a base64 string into a GUID.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQgszcxLVbBVSEosTjUziU9JTc5PSY0vyU8vzUzRUPIqSCpwdS61SAmtNA8oM01PSvWKcHS0tVXSBAA/Uk1CPgAAAA==" target="_blank">Run the query</a>

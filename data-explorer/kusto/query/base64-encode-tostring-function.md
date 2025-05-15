@@ -31,6 +31,8 @@ Returns *string* encoded as a base64 string.
 
 ## Examples
 
+The following example shows how to use `base64_encode_tostring()` to encode a string into a base64 string.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQgszcxLtU1KLE41M4lPzUvOT0mNL8kvLgFKpmsoeZcWl+QraQIAKEgGNSsAAAA=" target="_blank">Run the query</a>

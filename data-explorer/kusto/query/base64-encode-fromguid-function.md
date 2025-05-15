@@ -29,6 +29,8 @@ Returns a base64 string encoded from a GUID.
 
 ## Examples
 
+The following example shows how to use `base64_encode_fromguid()` to encode a GUID into a base64 string.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3FQQqAIBAF0KuIq1oIOcqAiw7RCWLMX7hIw/T+QW/znpZLV9vIBWpVUV6w31GOmrCfrd7XyGnq9U8LnHXuJMMgMj4ITFxYjGWwhEiWEPU8fxrJzt9UAAAA" target="_blank">Run the query</a>

@@ -40,6 +40,8 @@ Each pattern is represented by a row in the results. The first column is the seg
 
 ## Examples
 
+The following example uses the `basket` plugin to find frequent patterns in the data.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVOuw6CQBDs/YoJFURiiInl2SitmkBjeeqeoN4dWVaUxI/3AK1mJzuvQjzbvCMn7eyDV0VMsN5J5U1PmuNCNEtZW0qgFFZBQ28hd8FWW30lKNTGxBPZsG9azH+vQ2DE0mONDCmiY15EA+72URJiGvY3OgtCgVCKcULZN+Gc7H8cQ4faTj+eQYqTbu8kcbZYJl8ixlvuvQAAAA==" target="_blank">Run the query</a>
@@ -66,7 +68,7 @@ StormEvents
 |6|1310|22.3|||YES|
 |7|1291|21.9||Thunderstorm Wind||
 
-The following example includes custom wildcards.
+The following example demonstrates using the `basket` plugin with a weight column and custom wildcards to find frequent patterns.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

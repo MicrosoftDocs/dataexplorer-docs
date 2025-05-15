@@ -31,6 +31,8 @@ Returns UTF-8 string decoded from base64 string.
 
 ## Examples
 
+The following example shows how to use `base64_decode_tostring()` to decode a base64 string into a UTF-8 string.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQgszcxLtU1KLE41M4lPSU3OT0mNL8kvLgFKpmsoBRuHVaW4W9gqaQIAN0l1sy4AAAA=" target="_blank">Run the query</a>

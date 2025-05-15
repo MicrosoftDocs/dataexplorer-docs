@@ -36,7 +36,7 @@ Returns a [dynamic](scalar-data-types/dynamic.md) property-bag.
 
 ## Examples
 
-In the following example, the array of keys and the array of values are the same length and are zipped together into a dynamic property bag.
+The following example shows how to use `bag_zip()` to create a property-bag from two arrays. The first array contains the keys, and the second array contains the values. The resulting property-bag contains the keys and values zipped together.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -55,8 +55,7 @@ Data
 |--|--|--|
 | ['a','b','c'] | [1,'2',3.4] | {'a': 1,'b': '2','c': 3.4} |
 
-
-In the following example, the array of keys is longer than the array of values. The missing values are filled with nulls.
+The following example shows how to use `bag_zip()` when the arrays have different lengths. In this case, the resulting property-bag contains null values for the missing keys.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -75,8 +74,7 @@ Data
 |--|--|--|
 | ['a','b','c'] | [1,'2'] | {'a': 1,'b': '2','c': null} |
 
-
-In the following example, the array of values is longer than the array of keys. Values with no matching keys are ignored.
+The following example shows how to use `bag_zip()` when the arrays have different lengths. In this case, the resulting property-bag contains null values for the missing keys.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -95,8 +93,7 @@ Data
 |--|--|--|
 | ['a','b'] | [1,'2',2.5] | {'a': 1,'b': '2'} |
 
-
-In the following example, there are some values in they keys array that aren't of type string. The non-string values are ignored.
+The following example demonstrates how `bag_zip()` handles cases where the keys array contains non-string values. Any key that isn't a string is excluded from the resulting property-bag.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -115,8 +112,7 @@ Data
 |--|--|--|
 | ['a',8,'b'] | [1,'2',2.5] | {'a': 1,'b': 2.5} |
 
-
-In the following example, the parameter that is supposed to be an array of values isn't an array, so all values are filled with nulls.
+The following example demonstrates how `bag_zip()` behaves when the parameter intended to be an array of values is not actually an array. In this case, all resulting property values are set to null.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -135,8 +131,7 @@ Data
 |--|--|--|
 | ['a',8,'b'] | 1 | {'a': null,'b': null} |
 
-
-In the following example, the parameter that is supposed to be an array of keys isn't an array, so the resulting property-bag is null.
+The following example demonstrates how `bag_zip()` behaves when the parameter intended to be an array of keys is not actually an array. In this case, the resulting property-bag is null.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

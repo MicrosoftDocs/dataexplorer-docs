@@ -29,6 +29,8 @@ Returns the base64 string encoded from the bytes array. Note that byte is an int
 
 ## Examples
 
+The following example shows how to use `base64_encode_fromarray()` to encode a bytes array into a base64 string.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIqixJLY5PLCpKrFSwVSjJL05OzEks0igoyswDSiYWp5qZxKekJuenpMaX5IOVaSgFG4dVpbhb2CppalpzQVRClKTEQ3UUlwBF04EGQvmpeWAT0orycyFmIFmrCQCPOEFEhwAAAA==" target="_blank">Run the query</a>
