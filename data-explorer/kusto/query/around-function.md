@@ -30,7 +30,7 @@ Creates a `bool` value indicating if the first argument is within a range around
 Returns `true` if the value is within the range, `false` if the value is outside the range.
 Returns `null` if any of the arguments is `null`.
 
-## Example: Filtering values around a specific timestamp
+## Examples
 
 The following example filters rows around specific timestamp.
 

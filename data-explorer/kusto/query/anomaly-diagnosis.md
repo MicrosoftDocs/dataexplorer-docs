@@ -126,7 +126,6 @@ demo_clustering1
 | 2016-08-23 15:00:58.2222707 | scus   | su5       | 9dbd1b161d5b4779a73cf19a7836ebd6 | 10007007   | 8215dcf6-2de0-42bd-9c90-181c70486c9c |
 | 2016-08-23 15:00:59.9382620 | scus   | su3       | 90d3d2fc7ecc430c9621ece335651a01 | 10007006   | 451e3c4c-0808-4566-a64d-84d85cf30978 |
 
-### Use autocluster() for single record set clustering
 
 Even though there are less than a thousand exceptions, it's still hard to find common segments, since there are multiple values in each column. You can use the [`autocluster()`](autocluster-plugin.md) plugin to instantly extract a short list of common segments and find the interesting clusters within the spike's two minutes, as seen in the following query:
 
@@ -155,7 +154,6 @@ You can see from the results above that the most dominant segment contains 65.74
 
 Autocluster uses a proprietary algorithm for mining multiple dimensions and extracting interesting segments. "Interesting" means that each segment has significant coverage of both the records set and the features set. The segments are also diverged, meaning that each one is different from the others. One or more of these segments might be relevant for the RCA process. To minimize segment review and assessment, autocluster extracts only a small segment list.
 
-### Use basket() for single record set clustering
 
 You can also use the [`basket()`](basket-plugin.md) plugin as seen in the following query:
 

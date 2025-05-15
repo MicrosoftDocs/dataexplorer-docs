@@ -27,9 +27,9 @@ Reverses the order of the elements in a dynamic array.
 
 Returns an array that contains the same elements as the input array in reverse order.
 
-## Example
+## Examples
 
-This example shows an array of words reversed.
+The following example shows an array of words reversed.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
