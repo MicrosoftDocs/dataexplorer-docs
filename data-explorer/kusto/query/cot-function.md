@@ -27,7 +27,7 @@ Calculates the trigonometric cotangent of the specified angle, in radians.
 
 The cotangent function value for *number*.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

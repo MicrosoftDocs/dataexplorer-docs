@@ -43,7 +43,7 @@ To count only records for which a predicate returns `true`, use the [count_disti
 
 Long integer value indicating the number of unique values of *expr* per summary group.
 
-## Example
+## Examples
 
 The following example shows how many types of storm events happened in each state.
 
