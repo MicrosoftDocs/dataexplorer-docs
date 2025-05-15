@@ -46,3 +46,6 @@ StormEvents
 | where State == "TEXAS"
 | consume
 ```
+
+**Output**
+No rows to show.

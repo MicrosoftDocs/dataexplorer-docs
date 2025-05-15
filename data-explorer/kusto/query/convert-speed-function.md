@@ -66,6 +66,8 @@ Converts a speed value from one unit to another.
 
 ## Examples
 
+The following example demonstrates how to use the `convert_speed()` function.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJLy5ITU3RMNQz0lFQ900tSS0KSC0KTgXKpqgDRZxT80oyc6HCHvmlReqaAK/HOJBIAAAA" target="_blank">Run the query</a>

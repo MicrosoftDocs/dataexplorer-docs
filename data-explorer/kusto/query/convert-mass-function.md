@@ -59,6 +59,8 @@ Converts a mass value from one unit to another.
 
 ## Examples
 
+The following example demonstrates how to use the `convert_mass()` function.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJz00sLtYw1DPSUVD3zszJTy9KzFUHsgPyS/NS1DUBemVMijUAAAA=" target="_blank">Run the query</a>

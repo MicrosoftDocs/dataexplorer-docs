@@ -30,6 +30,8 @@ The cosine of *number* of radians.
 
 ## Examples
 
+The following example demonstrates how to use the `cos()` function.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOL9Yw1AQAT2Uc+QwAAAA=" target="_blank">Run the query</a>
