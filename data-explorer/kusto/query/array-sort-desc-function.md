@@ -43,10 +43,6 @@ An array which contains elements of different types, is sorted in the following 
 
 ## Examples
 
-The examples in this section show how to use the syntax to help you get started.
-
-### Sort two arrays
-
 The following example sorts the initial array, `array1`, in descending order. It then sorts `array2` to match the new order of `array1`.
 
 :::moniker range="azure-data-explorer"
@@ -69,7 +65,6 @@ print array_sort_desc(array1,array2)
 > [!NOTE]
 > The output column names are generated automatically, based on the arguments to the function. To assign different names to the output columns, use the following syntax: `... | extend (out1, out2) = array_sort_desc(array1,array2)`.
 
-## Sort substrings
 
 The following example sorts a list of names in descending order. It saves a list of names to a variable, `Names`, which is then splits into an array and sorted in descending order. The query returns the names in descending order.
 
@@ -90,7 +85,6 @@ print result = SortedNames
 |---|
 |Paul,Kayo,John,Jane|
 
-### Combine summarize and array_sort_desc
 
 The following example uses the `summarize` operator and the `array_sort_asc` function to organize and sort commands by user in descending chronological order.
 
@@ -125,7 +119,6 @@ datatable(command:string, command_time:datetime, user_id:string)
 > [!NOTE]
 > If your data can contain `null` values, use [make_list_with_nulls](make-list-with-nulls-aggregation-function.md) instead of [make_list](make-list-aggregation-function.md).
 
-### Control location of `null` values
 
 By default, `null` values are put last in the sorted array. However, you can control it explicitly by adding a `bool` value as the last argument to `array_sort_asc()`.
 
