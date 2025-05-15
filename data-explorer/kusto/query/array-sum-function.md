@@ -31,7 +31,7 @@ Returns a double type value with the sum of the elements of the array.
 > [!NOTE]
 > If the array contains elements of non-numeric types, the result is `null`.
 
-## Example
+## Examples
 
 The following example shows the sum of an array.
 
