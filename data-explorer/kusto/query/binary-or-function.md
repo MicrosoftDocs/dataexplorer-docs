@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns a result of the bitwise `or` operation of the two values.
+Performs a bitwise `or` operation on two values.
 
 ## Syntax
 
@@ -27,3 +27,20 @@ Returns a result of the bitwise `or` operation of the two values.
 ## Returns
 
 Returns logical OR operation on a pair of numbers: value1 | value2.
+
+## Examples
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjKzEssqozPL9Iw1VEw1gQA%2Fnvaph4AAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+print result = binary_or(5, 3)
+```
+
+**Output**
+
+| result |
+|--------|
+| 7      |

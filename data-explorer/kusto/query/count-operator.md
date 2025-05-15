@@ -9,7 +9,7 @@ ms.date: 01/15/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
 
-Returns the number of records in the input record set.
+Calculates the number of records in the input record set.
 
 ## Syntax
 
@@ -28,7 +28,7 @@ Returns the number of records in the input record set.
 This function returns a table with a single record and column of type
 `long`. The value of the only cell is the number of records in *T*.
 
-## Example
+## Examples
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 

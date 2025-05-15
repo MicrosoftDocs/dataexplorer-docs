@@ -42,7 +42,7 @@ If you only need an estimation of unique values count, we recommend using the le
 
 Integer value indicating the number of unique values of *expr* per summary group, for all records for which the *predicate* evaluates to `true`.
 
-## Example
+## Examples
 
 The following example shows how many types of death-causing storm events happened in each state. Only storm events with a nonzero count of deaths are counted.
 

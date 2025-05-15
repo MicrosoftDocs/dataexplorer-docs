@@ -31,7 +31,7 @@ Returns a dynamic array containing the same amount of the elements as in the ori
 
 ## Examples
 
-Shifting to the right by two positions:
+The following example shows shifting to the right by two positions:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -49,7 +49,7 @@ print arr=dynamic([1,2,3,4,5])
 |---|---|
 |[1,2,3,4,5]|[null,null,1,2,3]|
 
-Shifting to the right by two positions and adding a default value:
+The following example shows shifting to the right by two positions and adding a default value:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -67,7 +67,7 @@ print arr=dynamic([1,2,3,4,5])
 |---|---|
 |[1,2,3,4,5]|[-1,-1,1,2,3]|
 
-Shifting to the left by two positions by using a negative shift_count value:
+The following example shows shifting to the left by two positions by using a negative shift_count value:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
