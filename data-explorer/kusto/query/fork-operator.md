@@ -64,10 +64,8 @@ Multiple result tables, one for each of the *subquery* arguments.
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
-The examples output multiple tables, with named and umnamed columns.
 
-### Unnamed subqueries
-
+The following example returns two tables with unnamed columns. 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVBy8/EP8nRxVALJpeUXZfNyKQCBBlSdS2piSUaxS2ZRanKJgjaU65mXAhGwUzDURFXvmZdVWpSZitABE0DRAwCWU8oSkwAAAA==" target="_blank">Run the query</a>
