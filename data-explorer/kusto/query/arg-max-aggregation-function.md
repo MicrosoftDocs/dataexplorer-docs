@@ -37,8 +37,6 @@ Returns a row in the table that maximizes the specified expression *ExprToMaximi
 
 ## Examples
 
-### Find maximum latitude
-
 The following example finds the maximum latitude of a storm event in each state.
 
 :::moniker range="azure-data-explorer"
@@ -69,7 +67,6 @@ The results table displays only the first 10 rows.
 | TEXAS                | 36.4607  | DARROUZETT           |
 | ...             | ...    | ...            |
 
-### Find last state fatal event
 
 The following example finds the last time an event with a direct death happened in each state, showing all the columns.
 
@@ -104,7 +101,6 @@ The results table displays only the first 10 rows and first three columns.
 | LAKE MICHIGAN | 2007-06-07T13:00:00Z | 2007-06-07T13:00:00Z | ... |
 | ... | ... | ... | ... |
 
-### Handle nulls
 
 The following example demonstrates null handling.
 
@@ -141,7 +137,7 @@ The arg_max() function differs from the [max() function](max-aggregation-functio
 
 #### arg_max()
 
-Find the last time an event with a direct death happened, showing all the columns in the table.
+The following example finds the last time an event with a direct death happened, showing all the columns in the table.
 
 The query first filters the events to only include events where there was at least one direct death. Then the query returns the entire row with the most recent (maximum) StartTime.
 

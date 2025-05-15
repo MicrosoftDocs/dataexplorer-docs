@@ -36,7 +36,7 @@ The following formula is used:
 
 Returns the covariance value of *expr1* and *expr2*.
 
-## Example
+## Examples
 
 The example in this section shows how to use the syntax to help you get started.
 

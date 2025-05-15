@@ -28,9 +28,9 @@ Accumulates values using the binary `AND` operation for each summarization group
 
 Returns an aggregated value using the binary `AND` operation over records for each summarization group, or in total if a group isn't specified.
 
-## Example
+## Examples
 
-The following example produces `CAFEF00D` using binary `AND` operations:
+The following example produces `CAFEF00D` using binary `AND` operations.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

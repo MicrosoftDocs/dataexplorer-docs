@@ -29,9 +29,9 @@ Accumulates values using the binary `XOR` operation for each summarization group
 
 Returns a value that is aggregated using the binary `XOR` operation over records for each summarization group, or in total if a group isn't specified.
 
-## Example
+## Examples
 
-The following example produces `CAFEF00D` using binary `XOR` operations:
+The following example produces `CAFEF00D` using binary `XOR` operations.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
