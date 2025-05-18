@@ -327,10 +327,9 @@ find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e' project pack_all()
 |EventsTable2|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Information", "EventText":"Some Other Text2", "EventName":"Event2"}|
 |EventsTable2|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error", "EventText":"Some Other Text3", "EventName":"Event3"}|
 
-## Examples of cases where `find` acts as `union`
+## Examples
 
 The `find` operator in Kusto can sometimes act like a `union` operator, mainly when it's used to search across multiple tables.
-
 
 The following example first creates a view that filters *EventsTable1* to only include error-level records. Then, it searches within this filtered view and the EventsTable2 table for records with a specific *Session_Id*.
 
@@ -340,7 +339,7 @@ find in (PartialEventsTable1, EventsTable2)
      where Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
 ```
 
-The following queries demonstrates how the `find` operator can act as a `union` when a column appears in multiple tables with different types. In this case, the `ProcessId` column is present in both *Table1* and *Table2*, but with different types.
+The following examples demonstrate how the `find` operator can act as a `union` when a column appears in multiple tables with different types. In this case, the `ProcessId` column is present in both *Table1* and *Table2*, but with different types.
 For this example, create two tables by running:
 
 ```kusto
