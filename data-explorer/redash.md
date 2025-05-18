@@ -45,7 +45,7 @@ ms.date: 11/04/2019
 
     ![Save and execute query.](media/redash/save-and-execute-query.png)
 
-    In the left pane, you can see the data source connection name (**Github connector** in our flow) in the drop-down menu, and the tables in the selected database. 
+    In the left pane, you can see the data source connection name (**Github connector** in our flow) in the dropdown menu, and the tables in the selected database. 
 
 1. View the query results in the bottom central pane. Create a visualization to go with the query by selecting the **New Visualization** button.
 

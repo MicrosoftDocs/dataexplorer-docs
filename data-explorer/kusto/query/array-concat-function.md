@@ -27,7 +27,7 @@ Concatenates many dynamic arrays to a single array.
 
 Returns a dynamic array of all input arrays.
 
-## Example
+## Examples
 
 The following example shows concatenated arrays.
 

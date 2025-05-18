@@ -117,7 +117,7 @@ await producerClient.SendAsync(events);
 ## Event Hubs system properties mapping
 
 System properties are fields set by the Event Hubs service, at the time the event is enqueued.
-Azuer Data Explorer Event Hubs data connection can embed a predefined set of system properties into the data ingested into a table based on a given mapping.
+Azure Data Explorer Event Hubs data connection can embed a predefined set of system properties into the data ingested into a table based on a given mapping.
 
 [!INCLUDE [event-hub-system-mapping](includes/event-hub-system-mapping.md)]
 
@@ -197,7 +197,7 @@ If you don't already have one, [Create an event hub](/azure/event-hubs/event-hub
 > [!Note]
 >
 > * The ability to dynamically add partitions after creating an event hub is only available with Event Hubs Premium and Dedicated tiers. Consider the long-term scale when setting partition count.
-> * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
+> * Consumer group *must* be unique per consumer. Create a dedicated consumer group for every Azure Data Explorer data connection.
 
 ### Cross-region Event Hubs data connection
 

@@ -1,184 +1,220 @@
 ---
 title: Restrict outbound access from your Azure Data Explorer cluster
-description: In this article, you'll learn how to restrict the outbound access from your Azure Data Explorer cluster to other services.
-ms.reviewer: eladb
+description: Learn how to restrict the outbound access from your Azure Data Explorer cluster to other services.
+ms.reviewer: herauch
 ms.topic: how-to
-ms.date: 11/13/2022
+ms.date: 04/10/2025
 ---
 
 # Restrict outbound access from your Azure Data Explorer cluster
 
-Restricting outbound access of your cluster is important to mitigate risks like data exfiltration. A malicious actor could potentially create an external table to a storage account and extract large amounts of data. You can control outbound access at the cluster level by defining [callout policies](/kusto/management/callout-policy?view=azure-data-explorer&preserve-view=true). Managing callout policies enables you to allow outbound access to specified SQL, storage, or other endpoints.
+Restricting outbound access of your cluster is important to mitigate risks like data exfiltration. A malicious actor could potentially create an external table to a storage account and extract large amounts of data. You can control outbound access at the cluster level by enabling [**restricted outbound access**](#enable-or-disable-restricted-outbound-access) and configuring either [**FQDN-based allowlists**](#configure-fqdn-based-allowlists) or [**callout policies**](#configure-callout-policies-preview).
 
-In this article, you'll learn how about an extension to callout policies that enables you to further restrict call outs from your cluster.
+> [!IMPORTANT]
+> You can configure **either** the FQDN-based allowlist **or** callout policies for restricted outbound access. Configuring both results in an error.
 
-## Types of callout policies
+## Data Exfiltration Protection
 
-Callout policies can be divided, as follows:
+Data exfiltration is a significant concern for enterprises, especially when sensitive or proprietary data is stored in clusters. Without proper controls, malicious actors or misconfigured systems could potentially transfer data to unauthorized external destinations.
 
-* **Immutable callout policies**: These are the standard policies of a cluster. They're preconfigured and can't be modified.
-* **Cluster callout policies**: These are policies that you can modify using callout policy commands.
+The **restricted outbound access** feature helps mitigate this risk by allowing you to:
 
-## Prerequisites
+- **Restrict outbound traffic**: Prevent unauthorized data transfers by blocking all outbound traffic except to explicitly allowed destinations.
+- **Control access with FQDN-based allowlists**: Specify the exact Fully Qualified Domain Names (FQDNs) that the cluster can communicate with, ensuring data is only sent to trusted endpoints.
+- **Enforce callout policies**: Define granular rules for specific types of outbound traffic, such as SQL or external data calls, to allow or deny access based on your organization's security requirements.
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+By implementing restricted outbound access, enterprises can ensure that their Azure Data Explorer clusters are protected against data exfiltration risks, aligning with compliance and security standards.
 
-## Run callout policy commands
+## Enable or disable restricted outbound access
 
-1. Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
+You can enable or disable restricted outbound access at the ARM layer by configuring the `restrictOutboundNetworkAccess` property in your cluster's ARM template.
 
-1. On the left menu, select **Query**, and then connect to your cluster.
-1. In the query window, run the following query to inspect the list of immutable callout policies on your cluster:
+Once restricted outbound access is enabled, you can't make changes to the callout policy using the [.alter](/kusto/management/alter-callout-policy-command?view=azure-data-explorer&preserve-view=true) or [.alter-merge](/kusto/management/alter-merge-callout-policy-command?view=azure-data-explorer&preserve-view=true) cluster policy callout commands. To make changes to the callout policy, update the `allowedFqdnList` or the `allowedCallout` property in the ARM template or using the Azure CLI.
 
-    ```kusto
-    .show cluster policy callout
-    ```
+### Example: Enable restricted outbound access
 
-    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access.png" alt-text="Screenshot of the restricted query page, showing the immutable callout policies.":::
+The following ARM template enables restricted outbound access for your cluster:
 
-The following shows an example of immutable callout policies. Notice that in the list there are a few default rules that allow making calls out to other services, such as external data.
+> In the following example, replace \<ClusterName\> and \<ClusterRegion\> with your own values.
 
 ```json
-[
-   {
-      "CalloutType":"kusto",
-      "CalloutUriRegex":"[a-z0-9]{3,22}\\.(\\w+\\.)?kusto(mfa)?\\.windows\\.net/?$",
-      "CanCall":true
-   },
-   {
-      "CalloutType":"kusto",
-      "CalloutUriRegex":"//[a-z0-9]{3,22}\\.[a-z0-9-]{1,50}\\.(kusto\\.azuresynapse|kustodev\\.azuresynapse-dogfood)\\.net/?$",
-      "CanCall":true
-   },
-   {
-      "CalloutType":"kusto",
-      "CalloutUriRegex":"^https://([A-Za-z0-9]+\\.)?(ade|adx)\\.(int\\.)?(applicationinsights|loganalytics|monitor)\\.(io|azure(\\.com|\\.us|\\.cn))/",
-      "CanCall":true
-   },
-   {
-      "CalloutType":"sql",
-      "CalloutUriRegex":"[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.windows\\.net/?$",
-      "CanCall":true
-   },
-   {
-      "CalloutType":"sql",
-      "CalloutUriRegex":"[a-z0-9-]{0,61}?(-ondemand)?\\.sql\\.azuresynapse(-dogfood)?\\.net/?$",
-      "CanCall":true
-   },
-   {
-      "CalloutType":"external_data",
-      "CalloutUriRegex":".*",
-      "CanCall":true
-   },
-   {
-      "CalloutType":"azure_digital_twins",
-      "CalloutUriRegex":"[A-Za-z0-9\\-]{3,63}\\.api\\.[A-Za-z0-9]+\\.digitaltwins\\.azure\\.net/?$",
-      "CanCall":true
-   }
-]
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Kusto/Clusters",
+      "apiVersion": "2021-02-01",
+      "name": "<ClusterName>",
+      "location": "<ClusterRegion>",
+      "properties": {
+        "restrictOutboundNetworkAccess": "Enabled"
+      }
+    }
+  ]
+}
 ```
 
-## Empty the list of immutable callout policies
+### Example: Disable restricted outbound access
 
-To restrict outbound access to from your cluster, you must empty the list of immutable callout policies. You can do this by running the following command using the Azure CLI or any other tools by calling the Azure Data Explorer APIs.
+To disable restricted outbound access, set the `restrictOutboundNetworkAccess` property to `Disabled`:
 
-1. Trigger an ARM deployment using the Azure CLI with an updated ARM template:
+> In the following example, replace \<ClusterName\> and \<ClusterRegion\> with your own values.
 
-    Example ARM template file named "template.json" with the property **restrictOutboundNetworkAccess** set to **Enabled**:
-
-    ```javascript
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
     {
-      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-      "contentVersion": "1.0.0.0",
-      ...
-      "resources": [
-          {
-              "type": "Microsoft.Kusto/Clusters",
-              "apiVersion": "2021-02-01",
-              ...
-              "properties": {
-                  ...
-                  "restrictOutboundNetworkAccess": "Enabled",
-                  ...
-              }
-          }
-          ...
-      ]
+      "type": "Microsoft.Kusto/Clusters",
+      "apiVersion": "2021-02-01",
+      "name": "<ClusterName>",
+      "location": "<ClusterRegion>",
+      "properties": {
+        "restrictOutboundNetworkAccess": "Disabled"
+      }
     }
-    ```
+  ]
+}
+```
 
-    Example call using the Azure CLI referring to the template above.
+### Example: Enable restricted outbound access using the Azure portal
 
-    ```bash
-    # Replace the <...> placeholders with the correct values
-    az deployment group create   --name RestrictOutboundAccess   --resource-group <resource group>   --template-file ./template.json
-    ```
+1. Go to your cluster in the [Azure portal](https://portal.azure.com/).
+1. Navigate to **Security + networking** > **Networking** > **Restrict outbound access**.
+1. Select **Enabled** to enable the restricted outbound access.
 
-    Updating the `restrictOutboundNetworkAccess` cluster property removes all the immutable policies on your cluster. This prevents initiating call outs to other services as shown in the following example.
+    :::image type="content" source="media/security-network-restricted-outbound-access/security-network-restricted-outbound-access-enabled-no-fqdn.png" lightbox="media/security-network-restricted-outbound-access/security-network-restricted-outbound-access-enabled-no-fqdn.png" alt-text="Screenshot of the network configuration page, showing the restricted outbound access configuration without FQDNs configured.":::
 
-    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-error-data-plane.png" alt-text="Screenshot of the restricted query page, showing an immutable callout policies error.":::
+1. Select **Save** to submit the configuration.
 
-1. Run the following command again and verify that it returns an empty list:
+## Configure FQDN-based allowlists
 
-    ```kusto
-    .show cluster policy callout 
-    | where EntityType == "Cluster immutable policy"
-    ```
+When restricted outbound access is enabled, you can allow specific FQDNs by adding them to the `allowedFqdnList` property in your cluster's ARM template.
 
-    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-no-immutable-callout-policies.png" alt-text="Screenshot of the restricted query page, showing no immutable callout policies.":::
+### Example: Allow specific FQDNs using ARM templates
 
-## Add FQDNs to the callouts under restricted conditions
+The following ARM template allows outbound access to specific FQDNs while keeping restricted outbound access enabled:
 
-If you want to allow outbound access to a specific FQDN, you can add it to the `allowedFqdnList` list for your cluster. You can do this by running by making changes to the ARM template of the Azure Data Explorer cluster.
+> In the following example, replace \<ClusterName\> and \<ClusterRegion\> with your own values.
 
-1. Trigger an ARM deployment using the Azure CLI with an updated ARM template:
-
-    Example ARM template file named "template.json" with the property **allowedFqdnList** set to **["some.sql.azuresynapse.net", "..."]**:
-
-    ```javascript
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
     {
-      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-      "contentVersion": "1.0.0.0",
-      ...
-      "resources": [
-          {
-              "type": "Microsoft.Kusto/Clusters",
-              "apiVersion": "2021-02-01",
-              ...
-              "properties": {
-                  ...
-                  "restrictOutboundNetworkAccess": "Enabled",
-                  "allowedFqdnList": ["some.sql.azuresynapse.net", "..."]
-                  ...
-              }
-          }
-          ...
-      ]
+      "type": "Microsoft.Kusto/Clusters",
+      "apiVersion": "2021-02-01",
+      "name": "<ClusterName>",
+      "location": "<ClusterRegion>",
+      "properties": {
+        "restrictOutboundNetworkAccess": "Enabled",
+        "allowedFqdnList": [
+          "example.sql.azuresynapse.net",
+          "example.blob.core.windows.net"
+        ]
+      }
     }
-    ```
+  ]
+}
+```
 
-    Example call using the Azure CLI referring to the template above.
+### Example: Allow specific FQDNs using the Azure portal
 
-    ```bash
-    # Replace the <...> placeholders with the correct values
-    az deployment group create   --name ConfigureAllowedFqdnList   --resource-group <resource group>   --template-file ./template.json
-    ```
+1. Go to your cluster in the [Azure portal](https://portal.azure.com/).
+1. Navigate to **Security + networking** > **Networking** > **Restrict outbound access**.
+1. Select **Enabled** to enable the restricted outbound access and configure the FQDNs.
 
-1. By adding the FQDN to the allowed list, you'll be able to make call outs to the specified FQDN. You can check the result of the deployment by executing the following command:
+    :::image type="content" source="media/security-network-restricted-outbound-access/security-network-restricted-outbound-access-enabled.png" lightbox="media/security-network-restricted-outbound-access/security-network-restricted-outbound-access-enabled.png" alt-text="Screenshot of the network configuration page, showing the restricted outbound access configuration with FQDNs configured.":::
 
-    ```kusto
-    .show cluster policy callout 
-    | project Policy=parse_json(Policy)
-    | mv-expand Policy
-    | where Policy.CalloutType == "sql" 
-    ```
+1. Select **Save** to submit the configuration.
 
-    :::image type="content" source="media/security-network-restrict-access/restrict-outbound-access-enabled-allowed-fqdn-set.png" alt-text="Screenshot of the restricted query page, showing a configured callout policy.":::
+## Configure callout policies (preview)
 
-    > [!NOTE]
-    > There is a set of default policies set for Azure Data Explorer to communicate with its internal storage layer. They expose no risk for data exfiltration.
+Alternatively, you can configure **callout policies** directly in the ARM template or using the Azure CLI. Callout policies allow you to define specific rules for outbound access to SQL, storage, or other endpoints.
+
+> [!NOTE]
+> You can't configure callout policies with restricted outbound access directly through the Azure portal.
+
+### Example: Configure callout policies using ARM template
+
+The following ARM template configures callout policies along with restricted outbound access:
+
+> In the following example, replace \<ClusterName\> and \<ClusterRegion\> with your own values.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Kusto/Clusters",
+      "apiVersion": "2021-02-01",
+      "name": "<ClusterName>",
+      "location": "<ClusterRegion>",
+      "properties": {
+        "restrictOutboundNetworkAccess": "Enabled",
+        "calloutPolicies": [
+          {
+            "calloutType": "sql",
+            "calloutUriRegex": "[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.windows\\.net/?$",
+            "outboundAccess": "Allow"
+          },
+          {
+            "calloutType": "external_data",
+            "calloutUriRegex": ".*",
+            "outboundAccess": "Deny"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+### Example: Configure callout policies using Azure CLI
+
+You can also configure callout policies using the Azure CLI. The following command sets the callout policies for a cluster:
+
+> In the following example, replace \<ResourceGroupName\> and \<ClusterName\> with your own values.
+
+```bash
+az resource update --resource-group <ResourceGroupName> \
+  --name <ClusterName> \
+  --resource-type Microsoft.Kusto/clusters \
+  --set properties.calloutPolicies='[
+  {
+    "calloutType": "sql",
+    "calloutUriRegex": "sqlname\\.database\\.azure\\.com/?$",
+    "outboundAccess": "Allow"
+  }
+]'
+```
+
+## Verify restricted outbound access and policies
+
+After enabling restricted outbound access or configuring callout policies, you can verify the configuration by running the following management command in the Azure Data Explorer web UI:
+
+```kusto
+.show cluster policy callout
+```
+
+This command displays the current callout policies and allowed FQDNs.
+
+> [!NOTE]
+> There are default policies set for a cluster to communicate with its internal storage layer, which exposes no risk of data exfiltration.
+
+## Limitations
+
+While restricted outbound access offers robust security, it's important to be aware of some limitations:
+
+- FQDN-based allowlists don't support **webapi** callouts.
+- You can configure either FQDN-based allowlists or callout policies, but not both. Attempting to configure both results in a configuration error.
+- Clusters have a set of default policies for internal communication with its storage layer. These policies can't be changed and don't pose a risk for data exfiltration.
+- You can't configure callout policies with restricted outbound access directly through the Azure portal.
 
 ## Related content
 
-* [Troubleshoot Private Endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)
+- [Callout Policy](/kusto/management/callout-policy?view=azure-data-explorer&preserve-view=true)

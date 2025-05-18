@@ -1,11 +1,11 @@
 ---
-title: Migrate your cluster to support multiple availability zones (Preview)
+title: Migrate your cluster to support multiple availability zones (preview)
 description: This guide teaches you how to migrate your cluster to support multiple availability zones.
 ms.reviewer: iriskaminer
 ms.date: 03/09/2025
 ms.topic: how-to
 ---
-# Migrate your cluster to support multiple availability zones (Preview)
+# Migrate your cluster to support multiple availability zones (preview)
 
 Many Azure regions provide availability zones, which are separated groups of datacenters within a region. Availability zones are close enough to have low-latency connections to other availability zones. They're connected by a high-performance network with a round-trip latency of less than 2 ms. However, availability zones are far enough apart to reduce the likelihood that more than one will be affected by local outages or weather. Availability zones have independent power, cooling, and networking infrastructure. They're designed so that if one zone experiences an outage, then regional services, capacity, and high availability are supported by the remaining zones. For more information, see [Azure Availability Zones](/azure/availability-zones/az-overview).
 
@@ -276,6 +276,10 @@ When an existing cluster that was deployed without any availability zones is con
     >
     > - Following the migration request, there might be a delay of up to several minutes before all new data begins to be written in the ZRS configuration.
     > - If a cluster has streaming ingestion, then the recycling of new data to be written as ZRS data, can take up to 30 days.
+
+- Zone status updated
+
+    Once the migration request to availability zones is completed, the zone status is updated to reflect the supported zones. If the zone status is **Zonal Inconsistency**, it indicates that some compute or storage resources failed to migrate and aren't zonal. This generally occurs when there is insufficient zonal capacity available for some resources. In such cases, we recommend retrying the migration later when capacity is available.
 
 ### Considerations
 

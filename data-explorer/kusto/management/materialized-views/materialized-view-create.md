@@ -99,7 +99,7 @@ The lookback period is always relative to a `datetime` column in the materialize
 * **Default:** Relative to the record's [ingestion_time()](../../query/ingestion-time-function.md) in the source table. Records are deduplicated only against records which are ingested to the source table after a lookback period relative to the current records. This kind of lookback is valid only for `arg_max`, `arg_min`, or `take_any` materialized views, and only for views that preserve ingestion time. For more information, see [Materialized views limitations and known issues](materialized-views-limitations.md).
 You can configure the default option by setting the `lookback` property without the `lookback_column` property.
 
-* **lookback_column (Preview):** Relative to a `datetime` column in the materialized view. The lookback is explicitly specified in the materialized view definition, using the `lookback_column` property. For more information, see [Known limitations](#known-limitations). You can configure the lookback column option by setting both the `lookback` and the `lookback_column` properties.
+* **lookback_column (preview):** Relative to a `datetime` column in the materialized view. The lookback is explicitly specified in the materialized view definition, using the `lookback_column` property. For more information, see [Known limitations](#known-limitations). You can configure the lookback column option by setting both the `lookback` and the `lookback_column` properties.
 
 #### Known limitations
 

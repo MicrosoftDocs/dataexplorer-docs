@@ -19,7 +19,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ## Syntax
 
-`.alter` `entity_group` [`ifnotexists`] *EntityGroupName* `(`*EntityReference* [`,` ...]`)`
+`.alter` `entity_group` *EntityGroupName* `(`*EntityReference* [`,` ...]`)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -27,7 +27,6 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| `ifnotexists` | `string` | | If specified, the entity group is only created if the entity group doesn't exist yet.|
 |*EntityGroupName*| `string` | :heavy_check_mark:|The name of the entity group. |
 |*EntityReference*| `string` | :heavy_check_mark:|An entity included in the entity group. |
 

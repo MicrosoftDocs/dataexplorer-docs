@@ -44,8 +44,6 @@ Output table schema is:
 
 ## Examples
 
-### DAU/WAU calculation
-
 The following example calculates DAU/WAU (Daily Active Users / Weekly Active Users ratio) over a randomly generated data.
 
 :::moniker range="azure-data-explorer"
@@ -70,8 +68,6 @@ range _day from _start to _end  step 1d
 
 :::image type="content" source="media/activity-engagement-plugin/activity-engagement-dau-wau.png" border="false" alt-text="Graph displaying the ratio of daily active users to weekly active users as specified in the query.":::
 
-### DAU/MAU calculation
-
 The following example calculates DAU/WAU (Daily Active Users / Weekly Active Users ratio) over a randomly generated data.
 
 :::moniker range="azure-data-explorer"
@@ -95,9 +91,7 @@ range _day from _start to _end  step 1d
 ```
 
 :::image type="content" source="media/activity-engagement-plugin/activity-engagement-dau-mau.png" border="false" alt-text="Graph displaying the ratio of daily active users to monthly active users as specified in the query.":::
-
-### DAU/MAU calculation with additional dimensions
-
+                                                                                                                                                                       
 The following example calculates DAU/WAU (Daily Active Users / Weekly Active Users ratio) over a randomly generated data with additional dimension (`mod3`).
 
 :::moniker range="azure-data-explorer"

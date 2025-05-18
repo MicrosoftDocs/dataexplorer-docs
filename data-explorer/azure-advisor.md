@@ -28,7 +28,7 @@ There are two ways to access the Azure Advisor recommendations:
 
 1. In the Azure portal, go to the [Advisor resource](https://ms.portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview). 
 1. In **Overview**, select one or more subscriptions for which you want recommendations. 
-1. Select **Azure Data Explorer Clusters** and **Azure Data Explorer Databases** in the second drop-down.
+1. Select **Azure Data Explorer Clusters** and **Azure Data Explorer Databases** in the second dropdown.
  
     :::image type="content" source="media/azure-advisor/advisor-resource.png" alt-text="Azure Advisor resource.":::
 

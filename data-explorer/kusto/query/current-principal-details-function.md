@@ -9,7 +9,7 @@ ms.date: 11/03/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns details of the principal running the query.
+Provides details of the principal running the query.
 
 ## Syntax
 
@@ -19,7 +19,7 @@ Returns details of the principal running the query.
 
 ## Returns
 
-The details of the current principal as a [dynamic](../query/scalar-data-types/dynamic.md). The following table describes the returned fields.
+Returns the details of the current principal as a [dynamic](../query/scalar-data-types/dynamic.md). The following table describes the returned fields.
 
 |Field|Description|
 |--|--|
@@ -35,7 +35,7 @@ The details of the current principal as a [dynamic](../query/scalar-data-types/d
 |TenantCountry|The resource tenant's country or region, set at a tenant level by an admin. This property is returned if the information is present. The value is a standard two-letter country or region code, for example, FR, JP, and SZ. |
 |TenantRegion|The region of the resource tenant. This property is returned if the information is present. The value is a standard two-letter country or region code, for example, FR, JP, and SZ. |
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -46,7 +46,7 @@ The details of the current principal as a [dynamic](../query/scalar-data-types/d
 print details=current_principal_details()
 ```
 
-**Example output**
+**Output**
 
 |details|
 |---|

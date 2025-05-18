@@ -84,6 +84,11 @@
       "source_path": "query/kusto-sentinel-overview.md",
       "redirect_url": "/kusto/query/",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "query/ai-embed-text-plugin.md",
+      "redirect_url": "/kusto/query/ai-embeddings-plugin",
+      "redirect_document_id": false
     }
   ]
 }

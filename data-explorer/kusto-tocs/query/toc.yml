@@ -1474,6 +1474,9 @@ items:
     - name: all()
       displayName: all() graph function
       href: /kusto/query/all-graph-function?view=azure-data-explorer&preserve-view=true
+    - name: any()
+      displayName: any() graph function
+      href: /kusto/query/any-graph-function?view=azure-data-explorer&preserve-view=true
     - name: map()
       displayName: map() graph function
       href: /kusto/query/map-graph-function?view=azure-data-explorer&preserve-view=true
@@ -1766,6 +1769,12 @@ items:
       href: /kusto/query/preview-plugin?view=azure-data-explorer&preserve-view=true
     - name: schema_merge plugin
       href: /kusto/query/schema-merge-plugin?view=azure-data-explorer&preserve-view=true
+  - name: Geospatial plugins
+    items:
+    - name: geo_line_lookup plugin
+      href: /kusto/query/geo-line-lookup-plugin?view=azure-data-explorer&preserve-view=true
+    - name: geo_polygon_lookup plugin
+      href: /kusto/query/geo-polygon-lookup-plugin?view=azure-data-explorer&preserve-view=true
   - name: Data reshaping plugins
     items:
     - name: bag_unpack plugin
@@ -1798,8 +1807,12 @@ items:
       href: /kusto/query/diffpatterns-text-plugin?view=azure-data-explorer&preserve-view=true
   - name: Query connectivity plugins
     items:
-    - name: ai_embed_text plugin
-      href: /kusto/query/ai-embed-text-plugin?view=azure-data-explorer&preserve-view=true
+    - name: ai_embeddings plugin
+      href: /kusto/query/ai-embeddings-plugin?view=azure-data-explorer&preserve-view=true
+    - name: ai_chat_completion plugin
+      href: /kusto/query/ai-chat-completion-plugin?view=azure-data-explorer&preserve-view=true
+    - name: ai_chat_completion_prompt plugin
+      href: /kusto/query/ai-chat-completion-prompt-plugin?view=azure-data-explorer&preserve-view=true
     - name: azure_digital_twins_query_request plugin
       href: /kusto/query/azure-digital-twins-query-request-plugin?view=azure-data-explorer&preserve-view=true
     - name: cosmosdb_sql_request plugin

@@ -3,11 +3,41 @@ title: What's new in Azure Data Explorer documentation archive
 description: In this article, you'll find an archive of new and significant changes in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/11/2024
+ms.date: 05/11/2025
 ---
 # What's new in Azure Data Explorer documentation archive
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
+
+## April 2024
+
+**Management**
+
+|Article title | Description|
+|--|--|
+| [.execute cluster script command](/kusto/management/execute-cluster-script?view=azure-data-explorer&preserve-view=true) | New article. Describes how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a cluster. |
+
+## March 2024
+
+**API**
+
+|Article title | Description|
+|--|--|
+| [Use Kusto cmdlets in Azure PowerShell](/kusto/api/powershell/azure-powershell?view=azure-data-explorer&preserve-view=true) | New article. Describes how to use Kusto cmdlets in Azure PowerShell. |
+
+**General**
+
+|Article title | Description|
+|--|--|
+| [Create an Azure Data Explorer cluster and database](create-cluster-database.md) | Updated article. Refreshed steps on how to set up Azure PowerShell to run Kusto cmdlets. |
+| [Migrate your cluster to support multiple availability zones (preview)](migrate-cluster-to-multiple-availability-zone.md) | Updated article. Refreshed steps on how to get the list of availability zones for your cluster's region in Azure portal. |
+
+**Management**
+
+| Article title | Description|
+|--|--|
+| - [What are common scenarios for using table update policies](/kusto/management/update-policy-common-scenarios?view=azure-data-explorer&preserve-view=true)<br/>- [Tutorial: Route data using table update policies](/kusto/management/update-policy-tutorial?view=azure-data-explorer&preserve-view=true)<br />- [Update policy overview](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true) | New and updated articles. Describes common use cases for how to use *update table policies* to perform complex transformations and route results to destination tables. |
+| [Parquet mapping](/kusto/management/parquet-mapping?view=azure-data-explorer&preserve-view=true) | Updated article. Added parquet type conversions table to provide a mapping of Parquet field types, and the table column types they can be converted to. |
 
 ## February 2024
 
@@ -65,7 +95,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Migrate a Virtual Network injected cluster to private endpoints (Preview)](security-network-migrate-vnet-to-private-endpoint.md)| New article. Describes how to migrate a Virtual Network injected Azure Data Explorer Cluster to private endpoints.|
+| [Migrate a Virtual Network injected cluster to private endpoints (preview)](security-network-migrate-vnet-to-private-endpoint.md)| New article. Describes how to migrate a Virtual Network injected Azure Data Explorer Cluster to private endpoints.|
 | - [Ingest data from Splunk Universal Forwarder](ingest-data-splunk-uf.md) <br/> - [Ingest data with Apache Flink](ingest-data-flink.md) <br/> - [Data connectors overview](integrate-data-overview.md)| New articles that describe how to ingest data with Splunk Universal Forwarder and Apache Flink, and updated data connector overview.|
 | [Use follower databases](follower.md)| Updated article. Update limitations for clusters using customer-managed keys.|
 | [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md)| Updated article. Refreshed content.|
@@ -92,7 +122,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|- [KQL graph semantics overview (Preview)](graph-overview.md) <br/> - [KQL graph semantics best practices (Preview)](graph-best-practices.md) <br/> - [Common scenarios for using KQL graph semantics (Preview)?](graph-scenarios.md) | New articles. Describes how to use Kusto Query Language (KQL) graph semantics.|
+|- [KQL graph semantics overview (preview)](graph-overview.md) <br/> - [KQL graph semantics best practices (preview)](graph-best-practices.md) <br/> - [Common scenarios for using KQL graph semantics (preview)?](graph-scenarios.md) | New articles. Describes how to use Kusto Query Language (KQL) graph semantics.|
 | [How to ingest historical data](ingest-data-historical.md)| New article. Describes how to use LightIngest to ingest historical or ad hoc data into Azure Data Explorer.|
 |- [Ingest data from Splunk to Azure Data Explorer](ingest-data-splunk.md) <br/> - [Data connectors overview](integrate-data-overview.md)| New article that describes how to ingest data into Azure Data Explorer from Splunk, and updated data connector overview with additional capabilities.|
 | [KQL learning resources](kql-learning-resources.md)| New article. Describes the different learning resources for ramping up on KQL.|
@@ -109,7 +139,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|- [Graph operators (Preview)](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true) <br/> - [graph-match operator (Preview)](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) <br/> - [graph-to-table operator (Preview)](/kusto/query/graph-to-table-operator?view=azure-data-explorer&preserve-view=true) <br/> - [make-graph operator (Preview)](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to use graph operators. |
+|- [Graph operators (preview)](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true) <br/> - [graph-match operator (preview)](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) <br/> - [graph-to-table operator (preview)](/kusto/query/graph-to-table-operator?view=azure-data-explorer&preserve-view=true) <br/> - [make-graph operator (preview)](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to use graph operators. |
 | [Plotly (preview)](/kusto/query/visualization-plotly?view=azure-data-explorer&preserve-view=true) | New article. Describes how to visualize data using the Plotly graphics library.|
 
 ## August 2023
@@ -348,7 +378,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |[Manage Azure Data Explorer cluster permissions](manage-cluster-permissions.md)| New article. Describes how to manage role-based access controls for clusters.|
 |[Ingestion behavior of invalid data](ingest-invalid-data.md) | New article. Describes the possible outcomes of ingesting invalid data|
 |[Use data from Azure Data Explorer in Power BI](power-bi-data-connector.md)| New article. Describes how to use data from Azure Data Explorer in Power BI.|
-| - [Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)](ingest-data-cosmos-db-connection.md) <br/> - [Get latest versions of Azure Cosmos DB documents (Preview)](ingest-data-cosmos-db-queries.md) | New articles. Describes how to load data and get the latest versions of Azure Cosmos DB documents.|
+| - [Ingest data from Azure Cosmos DB into Azure Data Explorer (preview)](ingest-data-cosmos-db-connection.md) <br/> - [Get latest versions of Azure Cosmos DB documents (preview)](ingest-data-cosmos-db-queries.md) | New articles. Describes how to load data and get the latest versions of Azure Cosmos DB documents.|
 |[Configure a database using a Kusto Query Language script](database-script.md)| Updated article. Database scripts supports `.add` verb.|
 
 ## November 2022
@@ -447,7 +477,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Ingest data from Azure Stream Analytics (Preview)](stream-analytics-connector.md) | New Article. Describes how to ingest (load) data from Azure Stream Analytics. |
+| [Ingest data from Azure Stream Analytics (preview)](stream-analytics-connector.md) | New Article. Describes how to ingest (load) data from Azure Stream Analytics. |
 | [Azure Data Explorer web UI overview](web-query-data.md) | New Article. Describes the elements of web UI home page and the data analytics journey. |
 | [Explore the Azure Data Explorer web UI samples gallery](web-ui-samples-dashboards.md) | New Article. Describes how to use the samples gallery in the web UI. |
 | [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) | Updated Article. New SKU list and refreshed content. |
@@ -480,7 +510,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 | [Create a free cluster](start-for-free-web-ui.md) | New article. Describes how to create a free cluster, ingest data, and run queries. |
-| - [Create an Event Grid data connection using C\#](create-event-grid-connection-sdk.md?tabs=c-sharp)<br />- [Create an Event Grid data connection using Python](create-event-grid-connection-sdk.md?tabs=python)<br />- [Create an Event Grid data connection using Azure Resource Manager template](create-event-grid-connection.md?tabs=arm-template)<br />- [Create an Event Hubs data connection using C\#](create-event-hubs-connection-sdk.md?tabs=c-sharp)<br />- [Create an Event Hubs data connection using Python](create-event-hubs-connection-sdk.md?tabs=python)<br />- [Create an Event Hubs data connection using Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template)<br />- [Create an IoT Hub data connection using C\# (Preview)](create-iot-hub-connection-sdk.md?tabs=c-sharp)<br />- [Create an IoT Hub data connection using Python (Preview)](create-iot-hub-connection-sdk.md?tabs=c-python)<br />- [Create an IoT Hub data connection using Azure Resource Manager template](create-iot-hub-connection.md?tabs=arm-template) | Updated articles. Added `databaseRouting` parameter and setting. |
+| - [Create an Event Grid data connection using C\#](create-event-grid-connection-sdk.md?tabs=c-sharp)<br />- [Create an Event Grid data connection using Python](create-event-grid-connection-sdk.md?tabs=python)<br />- [Create an Event Grid data connection using Azure Resource Manager template](create-event-grid-connection.md?tabs=arm-template)<br />- [Create an Event Hubs data connection using C\#](create-event-hubs-connection-sdk.md?tabs=c-sharp)<br />- [Create an Event Hubs data connection using Python](create-event-hubs-connection-sdk.md?tabs=python)<br />- [Create an Event Hubs data connection using Azure Resource Manager template](create-event-hubs-connection.md?tabs=arm-template)<br />- [Create an IoT Hub data connection using C\# (preview)](create-iot-hub-connection-sdk.md?tabs=c-sharp)<br />- [Create an IoT Hub data connection using Python (preview)](create-iot-hub-connection-sdk.md?tabs=c-python)<br />- [Create an IoT Hub data connection using Azure Resource Manager template](create-iot-hub-connection.md?tabs=arm-template) | Updated articles. Added `databaseRouting` parameter and setting. |
 | - [Event Grid data connection](ingest-data-event-grid-overview.md)<br />- [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid-overview.md) | Updated articles. Added events routing setting. |
 | - [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)<br />- [Ingest data from event hub into Azure Data Explorer](create-event-hubs-connection.md?tabs=portalADX) | Updated articles. Added new Events Routing features including alternative databases and tables. |
 | - [IoT Hub data connection](ingest-data-iot-hub-overview.md)<br />- [Ingest data from IoT Hub into Azure Data Explorer](create-iot-hub-connection.md?tabs=portal) | Updated articles. Added new sections on target databases (multi-database data connection). |
@@ -737,7 +767,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 | - [Auto delete policy command](/kusto/management/show-auto-delete-policy-command?view=azure-data-explorer&preserve-view=true)<br />- [Auto delete policy](/kusto/management/auto-delete-policy?view=azure-data-explorer&preserve-view=true) | New articles. An auto delete policy on a table sets an expiry date for the table. |
-| [Stored query results (Preview)](/kusto/management/stored-query-results?view=azure-data-explorer&preserve-view=true) | Updated article. Added async mode. |
+| [Stored query results (preview)](/kusto/management/stored-query-results?view=azure-data-explorer&preserve-view=true) | Updated article. Added async mode. |
 
 **Functions library**
 
@@ -777,7 +807,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |[.alter materialized-view folder](/kusto/management/materialized-views/materialized-view-alter-folder?view=azure-data-explorer&preserve-view=true) | New article. Alters the folder value of an existing materialized view.|
 |[.create-or-alter materialized-view](/kusto/management/materialized-views/materialized-view-create-or-alter?view=azure-data-explorer&preserve-view=true) | New article. Creates a materialized view or alters an existing materialized view.|
 |[Materialized views policies](/kusto/management/materialized-views/materialized-view-policies?view=azure-data-explorer&preserve-view=true) | New article. Includes information about policies that can be set on a materialized view.|
-|[Request queuing policy (Preview)](/kusto/management/request-queuing-policy?view=azure-data-explorer&preserve-view=true) | New article. A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.|
+|[Request queuing policy (preview)](/kusto/management/request-queuing-policy?view=azure-data-explorer&preserve-view=true) | New article. A workload group's request queuing policy controls queueing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.|
 
 **Functions library**
 
@@ -797,10 +827,10 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |Article title | Description|
 |--|--|
 [Clean extent containers commands](/azure/data-explorer/kusto/management/extents-overview) | New article. Describes the `.clean databases extentcontainers` and `.show database extentcontainers clean operations` commands.
-[Request classification policy (Preview)](/kusto/management/request-classification-policy?view=azure-data-explorer&preserve-view=true)<br>[Request classification policy (Preview) - Management commands](/kusto/management/show-cluster-policy-request-classification-command?view=azure-data-explorer&preserve-view=true) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
-[Request limits policy (Preview)](/kusto/management/request-limits-policy?view=azure-data-explorer&preserve-view=true) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
-[Request rate limit policy (Preview)](/kusto/management/request-rate-limit-policy?view=azure-data-explorer&preserve-view=true) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
-[Workload groups (Preview)](/kusto/management/workload-groups?view=azure-data-explorer&preserve-view=true)<br>[Workload groups (Preview) - Management commands](/kusto/management/show-workload-group-command?view=azure-data-explorer&preserve-view=true) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
+[Request classification policy (preview)](/kusto/management/request-classification-policy?view=azure-data-explorer&preserve-view=true)<br>[Request classification policy (preview) - Management commands](/kusto/management/show-cluster-policy-request-classification-command?view=azure-data-explorer&preserve-view=true) | New articles. The classification process assigns incoming requests to a workload group, based on the characteristics of the requests.
+[Request limits policy (preview)](/kusto/management/request-limits-policy?view=azure-data-explorer&preserve-view=true) | New article. A workload group's request limits policy allows limiting the resources used by the request during its execution.
+[Request rate limit policy (preview)](/kusto/management/request-rate-limit-policy?view=azure-data-explorer&preserve-view=true) | New article. The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group.
+[Workload groups (preview)](/kusto/management/workload-groups?view=azure-data-explorer&preserve-view=true)<br>[Workload groups (preview) - Management commands](/kusto/management/show-workload-group-command?view=azure-data-explorer&preserve-view=true) | New articles. A workload group serves as a container for requests (queries, commands) that have similar classification criteria. A workload allows for aggregate monitoring of the requests, and defines policies for the requests.
 [Queries management](/kusto/management/show-queries-command?view=azure-data-explorer&preserve-view=true) | Updated article. Syntax updated
 
 ## December 2020
@@ -814,7 +844,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |Article title | Description|
 |--|--|
 [.create table based-on](/kusto/management/create-table-based-on-command?view=azure-data-explorer&preserve-view=true)  | New article. Creates a new empty table based on existing table.
-[Stored query results (Preview)](/kusto/management/stored-query-results?view=azure-data-explorer&preserve-view=true) | New article. Stored query results is a mechanism that temporarily stores the result of a query on the service.
+[Stored query results (preview)](/kusto/management/stored-query-results?view=azure-data-explorer&preserve-view=true) | New article. Stored query results is a mechanism that temporarily stores the result of a query on the service.
 [Create and alter Azure Storage external tables](/kusto/management/external-tables-azure-storage?view=azure-data-explorer&preserve-view=true) | Updated article. Document `filesPreview` and `dryRun` external table definition options
 [Export data to an external table](/kusto/management/data-export/export-data-to-an-external-table?view=azure-data-explorer&preserve-view=true) | Updated article. New external table syntax in export docs
 
@@ -842,7 +872,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 |Article title | Description|
 |--|--|
-[mysql_request plugin (Preview)](/kusto/query/mysql-request-plugin?view=azure-data-explorer&preserve-view=true) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
+[mysql_request plugin (preview)](/kusto/query/mysql-request-plugin?view=azure-data-explorer&preserve-view=true) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
 [ipv4_lookup plugin](/kusto/query/ipv4-lookup-plugin?view=azure-data-explorer&preserve-view=true) | New article. The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values.
 [ipv4_is_private()](/kusto/query/ipv4-is-private-function?view=azure-data-explorer&preserve-view=true) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
 [Splunk to Kusto Query Language map](/kusto/query/splunk-cheat-sheet?view=azure-data-explorer&preserve-view=true) | New article. This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto.

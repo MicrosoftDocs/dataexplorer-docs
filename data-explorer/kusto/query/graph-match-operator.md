@@ -192,5 +192,6 @@ Actions
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
 * [all()](all-graph-function.md)
+* [any()](any-graph-function.md)
 * [map()](map-graph-function.md)
 * [inner_nodes()](inner-nodes-graph-function.md)
