@@ -45,6 +45,8 @@ A dynamic object containing the information on IP address whereabouts (if the in
 
 ## Examples
 
+The following example retrieves geolocation information about the specified IPv4 address.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgsiM/JT04syczPs01PzY/PzEvLj08rys+NB8okpqQUpRYXa6gbGeiZGusZGRjrmRqoawIAlfxqOjoAAAA=" target="_blank">Run the query</a>
@@ -60,6 +62,7 @@ print ip_location=geo_info_from_ip_address('20.53.203.50')
 |--|
 |`{"country": "Australia", "state": "New South Wales", "city": "Sydney", "latitude": -33.8715, "longitude": 151.2006}`|
 
+The following example retrieves geolocation information about the specified IPv6 address.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

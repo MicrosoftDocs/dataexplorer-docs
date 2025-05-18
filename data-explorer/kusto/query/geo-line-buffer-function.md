@@ -49,7 +49,7 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 
 ## Examples
 
-The following query calculates polygon around line, with radius of 4 meters and 0.1 meter tolerance
+The following example calculates polygon around line, with radius of 4 meters and 0.1 meter tolerance
 
 ```kusto
 let line = dynamic({"type":"LineString","coordinates":[[-80.66634997047466,24.894526340592122],[-80.67373241820246,24.890808090321286]]});

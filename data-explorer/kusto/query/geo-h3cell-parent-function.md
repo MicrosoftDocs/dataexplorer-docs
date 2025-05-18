@@ -32,6 +32,8 @@ H3 Cell parent token `string`. If the H3 Cell is invalid or parent resolution is
 
 ## Examples
 
+The following example calculates H3 cell parent.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShILErNK4lPTs3JUbBVSE/Nj88wBnHiIRIa6hZmRomGBuZGaRCgrgkAkZ+TCTgAAAA=" target="_blank">Run the query</a>
@@ -64,6 +66,8 @@ print parent_cell = geo_h3cell_parent('862a1072fffffff', 1)
 |---|
 |812a3ffffffffff|
 
+The following example calculates an array of input H3 cell with its parent.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShILErNK4kvSi1WsFVIT82PzzBOTs3Jic9JLUvN0UASgCjUAAsV5AO1xpfA5DQMdYDQQBMIAJou0OFVAAAA" target="_blank">Run the query</a>
@@ -78,6 +82,8 @@ print parent_res = geo_h3cell_level(geo_h3cell_parent((geo_point_to_h3cell(1,1,1
 |parent_res|
 |---|
 |9|
+
+The following example calculates H3 cell level.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
