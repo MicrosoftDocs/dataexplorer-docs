@@ -56,9 +56,8 @@ Returns three output tables, which are useful for constructing a sankey diagram 
 
 ## Examples
 
-### Exploring storm events
-
-The following query looks at the table StormEvents (weather statistics for 2007) and shows which events happened before/after all Tornado events occurred in 2007.
+The following examples show how to use the `funnel_sequence` plugin to analyze storm events.
+The query looks at the table StormEvents (weather statistics for 2007) and shows which events happened before/after all Tornado events occurred in 2007.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

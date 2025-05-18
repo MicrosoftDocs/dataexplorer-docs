@@ -42,9 +42,8 @@ Returns a single table useful for constructing a funnel diagram for the analyzed
 
 ## Examples
 
-### Exploring Storm Events
-
-The following query checks the completion funnel of the sequence: `Hail` -> `Tornado` -> `Thunderstorm Wind`
+The following examples show how to use the `funnel_sequence_completion` plugin to analyze storm events. 
+The query checks the completion funnel of the sequence: `Hail` -> `Tornado` -> `Thunderstorm Wind`
 in "overall" time of 1hour, 4hours, 1day.
 
 :::moniker range="azure-data-explorer"

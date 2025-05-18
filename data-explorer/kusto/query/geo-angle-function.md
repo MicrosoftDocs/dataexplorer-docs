@@ -95,4 +95,3 @@ print is_null = isnull(geo_angle(0, 10, 0, 10, 3, -10))
 |is_null|
 |---|
 |True|
-

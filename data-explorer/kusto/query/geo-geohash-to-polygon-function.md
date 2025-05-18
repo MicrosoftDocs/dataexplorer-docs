@@ -34,6 +34,8 @@ Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynam
 
 ## Examples
 
+The following example calculates the polygon that represents the geohash rectangular area.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXBPzc9ILM4IyM+pTM/PU7BVSE/Nj0+HCMaX5McXQCQ0lFKKTItKlTStAWzxQVs3AAAA" target="_blank">Run the query</a>
