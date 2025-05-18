@@ -37,7 +37,7 @@ Decodes the input string from base64 and performs gzip decompression.
 
 ## Examples
 
-### Valid input
+The following example shows how to decode a base64 string and decompress it using gzip and valid input.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -52,7 +52,7 @@ print res=gzip_decompress_from_base64_string("H4sIAAAAAAAA/wEUAOv/MTIzNDU2Nzg5MH
 |--|
 |"1234567890qwertyuiop"|
 
-### Invalid input
+The following example shows how to decode a base64 string and decompress it using gzip and invalid input.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

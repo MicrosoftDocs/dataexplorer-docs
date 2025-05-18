@@ -40,8 +40,6 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples
 
-### List of scalars
-
 The following query shows how to use `has_any` with a comma-separated list of scalar values.
 
 :::moniker range="azure-data-explorer"
@@ -67,8 +65,6 @@ StormEvents
 |NORTH DAKOTA|905|
 |NEW MEXICO|527|
 |NEW HAMPSHIRE|394|
-
-### Dynamic array
 
 The following query shows how to use `has_any` with a dynamic array.
 
@@ -118,8 +114,6 @@ StormEvents
 |NORTH DAKOTA|905|
 |ATLANTIC SOUTH|193|
 |ATLANTIC NORTH|188|
-
-### Tabular expression
 
 The following query shows how to use `has_any` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parentheses.
 
