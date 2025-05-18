@@ -496,3 +496,7 @@ Console.WriteLine($"Memory peak: {resourceConsumption.ResourceUsage.Memory.PeakP
   "cross_cluster_resource_usage": {}
 }
 ```
+
+## Related content
+
+* [Best practices for Kusto Query Language queries](../query/best-practices.md)
