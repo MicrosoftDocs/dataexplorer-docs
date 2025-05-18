@@ -32,10 +32,6 @@ The `graph-mark-components` operator returns a *graph* result, where each node h
 
 ## Examples
 
-The examples in this section show how to use the syntax to help you get started.
-
-### Find families by their relationships
-
 The following example creates a graph from a set of child-parent pairs and identifies connected components using a `family` identifier.
 
 :::moniker range="azure-data-explorer"
@@ -77,8 +73,6 @@ ChildOf
 |Frank|1|
 |Mallory|1|
 |Kirk|1|
-
-### Find a greatest common ancestor for each family
 
 The following example uses the connected component `family` identifier and the `graph-match` operator to identify the greatest ancestor of each family in a set of child-parent data.
 

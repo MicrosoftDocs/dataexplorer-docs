@@ -14,11 +14,7 @@ Geospatial data can be visualized as part of your query using the [render operat
 
 For more information about geospatial clustering, see [Geospatial clustering](geospatial-grid-systems.md).
 
-## Visualize points on a map
-
-You can visualize points either using [Longitude, Latitude] columns, or GeoJSON column. Using a series column is optional. The [Longitude, Latitude] pair defines each point, in that order.
-
-### Example: Visualize points on a map
+## Examples
 
 The following example finds storm events and visualizes 100 on a map.
 
@@ -36,8 +32,6 @@ StormEvents
 
 :::image type="content" source="media/geo-visualizations/storm-events-sample.png" alt-text="Screenshot of sample storm events on a map.":::
 
-### Example: Visualize multiple series of points on a map
-
 The following example visualizes multiple series of points, where the [Longitude, Latitude] pair defines each point, and a third column defines the series. In this example, the series is `EventType`.
 
 :::moniker range="azure-data-explorer"
@@ -54,8 +48,6 @@ StormEvents
 
 :::image type="content" source="media/geo-visualizations/storm-events-series-sample.png" alt-text="Screenshot of sample storm series events on a map.":::
 
-### Example: Visualize series of points on data with multiple columns
-
 The following example visualizes a series of points on a map. If you have multiple columns in the result, you must specify the columns to be used for xcolumn (Longitude), ycolumn (Latitude), and series.
 
 > [!NOTE]
@@ -68,8 +60,6 @@ StormEvents
 ```
 
 :::image type="content" source="media/geo-visualizations/storm-events-series-sample.png" alt-text="Screenshot of sample storm series events using arguments.":::
-
-### Example: Visualize points on a map defined by GeoJSON dynamic values
 
 The following example visualizes points on the map using GeoJSON dynamic values to define the points.
 
@@ -88,11 +78,6 @@ StormEvents
 
 :::image type="content" source="media/geo-visualizations/storm-events-s2cell.png" alt-text="Screenshot of sample storm GeoJSON events.":::
 
-## Visualization of pies or bubbles on a map
-
-You can visualize pies or bubbles either using [Longitude, Latitude] columns, or GeoJSON column. These visualizations can be created with color or numeric axes.
-
-### Example: Visualize pie charts by location
 
 The following example shows storm events aggregated by S2 cells. The chart aggregates events in bubbles by location in one color.
 
@@ -112,8 +97,6 @@ StormEvents
 ```
 
 :::image type="content" source="media/geo-visualizations/storm-events-bubble.png" alt-text="Screenshot of storm events on a bubble map.":::
-
-### Example: Visualize bubbles using a color axis
 
 The following example shows storm events aggregated by S2 cells. The chart aggregates events by event type in pie charts by location.
 

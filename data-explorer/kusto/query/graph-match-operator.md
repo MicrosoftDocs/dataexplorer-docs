@@ -59,10 +59,6 @@ The returned columns are defined in the operator's `project` clause using proper
 
 ## Examples
 
-The examples in this section show how to use the syntax to help you get started.
-
-### All employees in a manager's organization
-
 The following example represents an organizational hierarchy. It demonstrates how a variable length edge could be used to find employees of different levels of the hierarchy in a single query. The nodes in the graph represent employees and the edges are from an employee to their manager. After we build the graph using `make-graph`, we search for employees in `Alice`'s organization that are younger than `30`.
 
 :::moniker range="azure-data-explorer"
@@ -106,8 +102,6 @@ reports
 |Eve|27|[<br>  "Alice",<br>  "Bob"<br>]|
 |Ben|23|[<br>  "Alice",<br>  "Chris"<br>]|
 
-### Attack path
-
 The following example builds a graph from the `Actions` and `Entities` tables. The entities are people and systems, and the actions describe different relations between entities. Following the `make-graph` operator that builds the graph is a call to `graph-match` with a graph pattern that searches for attack paths to the `"Apollo"` system.
 
 :::moniker range="azure-data-explorer"
@@ -146,8 +140,6 @@ Actions
 |---|---|---|
 |Mallory|Bob|Apollo|
 
-### Star pattern
-
 The following example is similar to the previous attack path example, but with an extra constraint: we want the compromised entity to also communicate with *Alice*. The `graph-match` pattern prefix is the same as the previous example and we add another sequence with the *compromised* as a link between the sequences.
 
 :::moniker range="azure-data-explorer"
@@ -185,7 +177,6 @@ Actions
 |Attacker|Compromised|System|
 |---|---|---|
 |Mallory|Bob|Apollo|
-
 
 ## Related content
 
