@@ -35,7 +35,9 @@ Filters a record set for data with a case-sensitive ending string.
 
 Returns the rows in *T* for which the predicate is `true`.
 
-## Examplea
+## Examples
+
+The following example returns the rows in the *StormEvents* table where the *State* column ends with "NA". This is a case-sensitive search.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

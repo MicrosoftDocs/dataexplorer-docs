@@ -32,6 +32,8 @@ Returns datetime representing the end of the week for the given *date* value, wi
 
 ## Examples
 
+The following example returns the end of the week for the specified date.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy3MMQqAMBBE0d5TTKmgkLURBEsPImYiKmYlLth4eA0Ir/nNT1NcCA3hoiEkPdAITCG4jCekwIMz6cbZcJP7GD0GMHoNOUs/GW09WLZOusbJB+L6rKvqf1y9enVBc2YAAAA=" target="_blank">Run the query</a>

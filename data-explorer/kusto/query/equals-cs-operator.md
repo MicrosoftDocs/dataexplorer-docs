@@ -46,6 +46,8 @@ Returns the rows in *T* for which the predicate is `true`.
 
 ## Examples
 
+The following example returns the rows in the *StormEvents* table where the *State* column equals "kansas". This is a case-sensitive search.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5lIAghqF8ozUolSF4JLEklQFW1sFpezEvOLEYiWobHJ+aV4JACj9bS01AAAA" target="_blank">Run the query</a>
@@ -60,6 +62,8 @@ StormEvents
 |Count|
 |---|
 |0|  
+
+The following example returns the rows in the *StormEvents* table where the *State* column equals "KANSAS". This is a case-sensitive search.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

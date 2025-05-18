@@ -44,6 +44,8 @@ The result of diffpatterns_text returns the following columns:
 
 ## Examples
 
+The following example shows how to use the `diffpatterns_text` plugin to find patterns in the `EpisodeNarrative` column of the `StormEvents` table. The example compares the text patterns of the `EpisodeNarrative` column when the `EventType` is "Extreme Cold/Wind Chill" and when it is not.
+
 :::moniker range="azure-data-explorer"
 The following example uses data from the StormEvents table in the help cluster. To access this data, sign in to [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples). In the left menu, browse to **help** > **Samples** > **Tables** > **Storm_Events**.
 

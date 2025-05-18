@@ -30,6 +30,8 @@ Returns a datetime representing the end of the day for the given *date* value, w
 
 ## Examples
 
+The following example returns the end of the day for the specified date.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy3MMQqAMAxG4d1T/GMLCo2LIDh6kGITUbCRmkXw8FYQvuUtr8S8MlTkYoMUPdARTEG4jE9Qgwdn0Z0XQ4r3nBMmcE4qtVyKxrYd7PpAQxeoAoXxM/j23/oXglVNRWQAAAA=" target="_blank">Run the query</a>

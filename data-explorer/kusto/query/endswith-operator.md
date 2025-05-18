@@ -39,6 +39,8 @@ Returns the rows in *T* for which the predicate is `true`.
 
 ## Examples
 
+The following example returns the rows in the *StormEvents* table where the *State* column ends with "SAS".
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVYAI2Sbnl+aVaGgqJFUqBJcklqQC1ZRnpBalQngKqXkpxeWZJRkKSsWJxUpwSYhmBTsFQwOgWEFRflZqcglEiw5UEgBi2Q64eAAAAA==" target="_blank">Run the query</a>

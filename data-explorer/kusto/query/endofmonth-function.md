@@ -30,6 +30,8 @@ Returns a datetime representing the end of the month for the given *date* value,
 
 ## Examples
 
+The following example returns the end of the month for the specified date.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy3MOwqAMBBF0d5VvFJBIWMjCJYuJJgZP5CMJFO6eD8Ip7nNzT6tDBUpbJCsER3BFIRifIIqXDizHrwYoibb5hQwgVNQ+boO3tj2yHXvaOgcPUBufA1N+6+bGwOSY4VoAAAA" target="_blank">Run the query</a>

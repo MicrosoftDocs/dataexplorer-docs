@@ -42,6 +42,8 @@ according to the following rules:
 
 ## Examples
 
+The following example converts a `dynamic` value to a canonical string representation.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFISkw3VLBVSKnMS8zNTI4vyY/PKs7P0+BSgAlpVAPZCgrqkYYG6lZwsVpNHYhwhIW6FZpSoGiysbqVoQ6MlwJUYwrnJZqoW5mBOXBDXAyByg1NoDxHEM8IynECcmBsZyDbGK4IaEy0oamOgqExEFvEctVqalpz5UC8ZESUl7C7Hew+HTw+QXU7hkOwOBbZE+BwVMAMSKiv4YHBBbID6KOCosy8EgXHolTXwtLEHFtIfNmCPamjEJRaXJpTAhYEAM5EMCHNAQAA" target="_blank">Run the query</a>

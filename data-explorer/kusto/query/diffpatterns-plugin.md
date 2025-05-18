@@ -65,6 +65,8 @@ For each pattern, columns that aren't set in the pattern (that is, without restr
 
 ## Examples
 
+The following example shows how to use the `diffpatterns` plugin to analyze the StormEvents dataset. It compares events that occurred in May, focusing on the differences between events with and without damage. The query uses the `diffpatterns` plugin to identify patterns that distinguish between these two groups based on the columns State, EventType, Source, and DamageCrops.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVNvQ6CYAzcfYoLE0QHGBxxUXcTeIEvUATj95NSUBIf3n6gQ9u79npXiWd7ncnJiN0Hr56YYL2T3ncLGU4rMSz1YClDWeKoGnoLuRYXY82dUGLounQjZ/ZhxP53uikjlgUn5Dig0Moz/Q/sH9QI1FlIl2t6vYSIKz9xE8Fm8Z+rcYyezXOKX62GBiNC7Mb0r03yRFuRIPsCQuCK6dYAAAA=" target="_blank">Run the query</a>
