@@ -27,10 +27,20 @@ cursor of the database in scope.
 
 ## Examples
 
+The following example retrieves the current cursor value for the database.
+
 ```kusto
 // Retrieve the current cursor value for the database
 print CurrentCursor = cursor_current() 
 ```
+
+**Output**
+
+|CurrentCursor|
+|---|
+|2024-08-01T12:00:00Z|
+
+The output includes the current cursor value for the database, which is `2024-08-01T12:00:00Z`.
 
 ## Related content
 

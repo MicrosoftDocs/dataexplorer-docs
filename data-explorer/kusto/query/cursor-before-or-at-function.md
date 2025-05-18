@@ -35,14 +35,16 @@ before or at the database cursor *RHS* (`true`) or not (`false`).
 
 ## Examples
 
-Suppose you have a table named `MyTable` with an ingestion time policy enabled. To filter records ingested before or at a given database cursor value (`'2024-08-01T12:00:00Z'`), use:
+The following example retrieves records ingested before or at a specific database cursor.
 
 ```kusto
 MyTable
 | where cursor_before_or_at('2024-08-01T12:00:00Z')
 ```
+**Output**
+The output includes all records from `MyTable` that were ingested before or at the specified date, August 1, 2024, at 12:00 PM UTC.
 
-This query returns only the records ingested before or at the specified cursor time.
+This filters 'MyTable' to only include the records ingested before or at the specified cursor time.
 
 ## Related content
 * [database cursors](../management/database-cursor.md)

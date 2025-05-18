@@ -23,6 +23,8 @@ Returns a list of timezones supported by the [Internet Assigned Numbers Authorit
 
 ## Examples
 
+The following example shows how to get a list of all supported timezones.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJLEktycxNjc%2FJLC6JB7Gq8vNSizU0AQnW1vofAAAA" target="_blank">Run the query</a>

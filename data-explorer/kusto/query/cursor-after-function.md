@@ -33,17 +33,17 @@ A predicate runs over the records of a table to compare their ingestion time aga
 Returns a scalar value of type `bool` that indicates whether the record was ingested
 after the database cursor *RHS* (`true`) or not (`false`).
 
-
 ## Examples
 
-The following query returns records ingested after a specific database cursor:
+The following example retrieves records ingested after a specific database cursor.
 
 ```kusto
 MyTable
 | where cursor_after('2024-08-01T00:00:00Z')
 ```
 
-This filters `MyTable` to only include records ingested after August 1, 2024.
+**Output**
+The output includes all records from `MyTable` that were ingested after the specified date, August 1, 2024.
 
 ## Related content
 
