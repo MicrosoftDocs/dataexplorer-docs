@@ -29,6 +29,8 @@ Returns the complementary error function of x.
 
 ## Examples
 
+The following example shows how to use the `erfc()` function to calculate the complementary error function for a range of values from -3 to 3.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?query=H4sIAAAAAAAEACtKzEtPVahQSCvKz1XQNVYoyVcwViguSS1QMOTlqlFIrShJzUtRSC1KS46vULAFMzQqNHm5ALKG5EY4AAAA" target="_blank">Run the query</a>

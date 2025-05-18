@@ -48,8 +48,7 @@ Returns the rows in *T* for which the predicate is `true`.
 
 ## Examples
 
-The `State` values in the `StormEvents` table are capitalized. The following query matches
-columns with the value "KANSAS".
+The following example shows how to use the `=~` operator to filter a record set for data with a case-insensitive string.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

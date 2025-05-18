@@ -29,6 +29,8 @@ The exponential value of x.
 
 ## Examples
 
+The following example shows how to use the `exp()` function to calculate the exponential value of 2.
+
 ```kusto
 print result = exp(2)
 ```

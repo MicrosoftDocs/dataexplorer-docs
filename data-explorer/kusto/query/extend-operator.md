@@ -50,6 +50,8 @@ Returns a copy of the input tabular result set, such that:
 
 ## Examples
 
+The following example shows how to use the `extend` operator to create a new column called `Duration` that calculates the difference between the `EndTime` and `StartTime` columns in the `StormEvents` table.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlFwzUsJycxN1VEILkksKgExgZKpFSWpeSkKLqVFiSWZ+XkKtjBlCroIdQCqSrMYUAAAAA==" target="_blank">Run the query</a>

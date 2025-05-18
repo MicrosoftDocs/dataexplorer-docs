@@ -30,13 +30,15 @@ Returns the exponential value of x.
 
 ## Examples
 
+The following example shows how to use the `exp2()` function to calculate the exponential value of 3.
+
 ```kusto
 print result = exp2(3)
 ```
 
-_Output:_
+**Output:**
 
-```
+```Kusto
 result
 --------
 8

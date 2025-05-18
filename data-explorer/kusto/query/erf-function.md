@@ -29,6 +29,8 @@ Returns the error function of x.
 
 ## Examples
 
+The following example shows how to use the `erf()` function to calculate the error function for a range of values from -3 to 3.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?query=H4sIAAAAAAAEACtKzEtPVahQSCvKz1XQNVYoyVcwViguSS1QMOTlqlFIrShJzUtRSC1Ki69QsAXRGhWavFwAxUmYIzYAAAA%3d" target="_blank">Run the query</a>
