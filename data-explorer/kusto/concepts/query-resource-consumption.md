@@ -282,9 +282,7 @@ Console.WriteLine($"Memory peak: {resourceConsumption.ResourceUsage.Memory.PeakP
 }
 ```
 
-**Data from Cold Cache**
-
-This example shows a query that retrieved data from the cold cache (`cold.hitbytes`: 127209). Note that out of 1,250 total extents, only 1 was scanned, and out of 50,000 total rows, only 40 were scanned. This suggests an efficient query that uses appropriate filtering. Cold cache access is typically slower than hot cache but faster than retrieving data directly from storage.
+**Data from Cold Cache**: This example shows a query that retrieved data from the cold cache (`cold.hitbytes`: 127209). Note that out of 1,250 total extents, only 1 was scanned, and out of 50,000 total rows, only 40 were scanned. This suggests an efficient query that uses appropriate filtering. Cold cache access is typically slower than hot cache but faster than retrieving data directly from storage.
 
 ```json
 {
@@ -498,4 +496,3 @@ This example shows a query that retrieved data from the cold cache (`cold.hitbyt
   "cross_cluster_resource_usage": {}
 }
 ```
-
