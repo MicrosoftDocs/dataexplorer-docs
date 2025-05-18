@@ -83,7 +83,7 @@ A string with *date* formatted as specified by *format*.
 
 ## Examples
 
-The following example shows how to use the `format_datetime()` function to format a datetime value. The output is formatted with two digits for the day, hour, minute, and second. 
+The following example shows how to use the `format_datetime()` function to format a datetime value. The output is formatted with two digits for the day, hour, minute, and second.
 
 ```kusto
 :::moniker range="azure-data-explorer"
