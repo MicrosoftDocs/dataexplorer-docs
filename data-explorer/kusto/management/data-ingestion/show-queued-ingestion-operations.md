@@ -45,6 +45,7 @@ The command returns a table with the latest update information for each ID.
 |LastUpdatedOn | `datetime` |Date/time, in UTC, when the status was updated.|
 |State | `string` |The state of the operation.|
 |Discovered | `long` |Count of the blobs that were listed from storage and queued for ingestion.|
+|DiscoveredSize | `long` |The total size (in bytes) of all blobs that were listed from storage and queued for ingestion.|
 |Pending | `long` |Count of the blobs to be ingested.|
 |Canceled | `long` |Count of the blobs that were canceled due to a call to the [.cancel queued ingestion operation](cancel-queued-ingestion-operation-command.md) command.|
 |Ingested | `long` |Count of the blobs that have been ingested.|
@@ -78,9 +79,9 @@ The following example shows the queued ingestion operations for a specific opera
 
 **Output**
 
-|IngestionOperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
+|IngestionOperationId|Started On |Last Updated On |State |Discovered |DiscoveredSize |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
 |--|--|--|--|--|--|--|--|--|--|--|--|
-|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 14:57:41.0000000 |2025-01-10 14:57:41.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 14:57:41.0000000 |2025-01-10 14:57:41.0000000|InProgress | 10387 | 100547 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable|
 
 ### Multiple operation IDs
 
@@ -92,10 +93,10 @@ The following example shows the queued ingestion operations for multiple operati
 
 **Output**
 
-|IngestionOperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
+|IngestionOperationId|Started On |Last Updated On |State |Discovered |DiscoveredSize |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
 |--|--|--|--|--|--|--|--|--|--|--|--|
-|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 14:57:41.0000000 |2025-01-10 15:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable|
-|11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444 |2025-01-10 15:12:23.0000000 |2025-01-10 15:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|MyDatabase|MyOtherTable|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 14:57:41.0000000 |2025-01-10 15:15:04.0000000|InProgress | 10387 | 100547 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable|
+|11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444 |2025-01-10 15:12:23.0000000 |2025-01-10 15:15:16.0000000|InProgress | 25635 | 3545613 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|MyDatabase|MyOtherTable|
 
 ## Related content
 
