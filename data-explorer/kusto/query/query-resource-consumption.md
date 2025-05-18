@@ -3,21 +3,21 @@ title:  Query Resource Consumption
 description: Learn how to analyze resource consumption of Kusto queries to optimize performance.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 04/23/2025
+ms.date: 05/18/2025
 ---
 # Query Resource Consumption
 
 This document describes the resource consumption information returned as part of a Kusto query response.
 
-## Overview
+When executing a query in Azure Data Explorer (Kusto), the service returns not only the query results but also detailed information about the resources consumed during query execution.
 
-When executing a query in Azure Data Explorer (Kusto), the service returns not only the query results but also detailed information about the resources consumed during query execution. This information can be valuable for understanding query performance, optimization opportunities, and resource utilization patterns.
+Understanding query resource consumption data helps in optimizing query performance, identifying bottlenecks, and planning for appropriate resource allocation. By monitoring these metrics over time, you can make informed decisions about query design, cluster configuration, and data organization to ensure optimal performance and cost-efficiency of your Kusto queries.
 
 The resource consumption data is returned in the `QueryResourceConsumption` object as part of the query response, typically in JSON format.
 
 ## Structure of QueryResourceConsumption
 
-The QueryResourceConsumption object typically includes the following main sections:
+The `QueryResourceConsumption` object typically includes the following main sections:
 
 - `QueryHash`: A unique identifier for the query structure. This hash represents the query without its literal values, allowing for identification of similar query patterns even when the specific literal values differ. For example, queries like `Events | where Timestamp > datetime(2023-01-01)` and `Events | where Timestamp > datetime(2023-02-01)` would have the same QueryHash, as they share the same structure, only differing in the literal datetime values.
 - `ExecutionTime`: Total execution time in seconds
@@ -27,6 +27,14 @@ The QueryResourceConsumption object typically includes the following main sectio
 - `cross_cluster_resource_usage`: Information about resources used across clusters (if applicable)
 
 ## Resource Usage Details
+
+The resource usage section provides detailed information about the resources consumed during query execution. It includes the following subsections:
+
+- `resource_usage.cache.shards`: Information about [cache usage](#cache-usage)
+- `resource_usage.cpu`: Information about [CPU usage](#cpu-usage)
+- `resource_usage.memory`: Information about [memory usage](#memory-usage)
+- `resource_usage.network`: Information about [network usage](#network-usage)
+- `input_dataset_statistics`: Information about the [input dataset](#input-dataset-statistics)
 
 ### Cache Usage
 
@@ -103,9 +111,11 @@ The `input_dataset_statistics` section provides details about the source data pr
   - `downloaded_bytes`: Number of bytes downloaded
   - `iterated_artifacts`: Number of artifacts iterated
 
-## Query Scenarios and Examples
+## Examples
 
 ### Example 1: Data in Hot Cache
+
+This example shows a query that was served entirely from the hot cache (`hitbytes`: 517324, `missbytes`: 0) and had minimal execution time (0.0045931 seconds). All data was found in the hot cache, resulting in very fast query execution.
 
 ```json
 {
@@ -174,9 +184,9 @@ The `input_dataset_statistics` section provides details about the source data pr
 }
 ```
 
-This example shows a query that was served entirely from the hot cache (`hitbytes`: 517324, `missbytes`: 0) and had minimal execution time (0.0045931 seconds). All data was found in the hot cache, resulting in very fast query execution.
-
 ### Example 2: Data from External Tables
+
+This example shows a query that processed external data. Note the high execution time (159.88 seconds) and significant CPU utilization (over 1 hour total CPU time). The external data section shows that 6,709 items were downloaded, totaling approximately 87.7 GB. This is typical for queries that need to fetch large amounts of data from external sources, which is significantly slower than querying data in Kusto's internal storage.
 
 ```json
 {
@@ -250,9 +260,9 @@ This example shows a query that was served entirely from the hot cache (`hitbyte
 }
 ```
 
-This example shows a query that processed external data. Note the high execution time (159.88 seconds) and significant CPU utilization (over 1 hour total CPU time). The external data section shows that 6,709 items were downloaded, totaling approximately 87.7 GB. This is typical for queries that need to fetch large amounts of data from external sources, which is significantly slower than querying data in Kusto's internal storage.
-
 ### Example 3: Data from Cold Cache
+
+This example shows a query that retrieved data from the cold cache (`cold.hitbytes`: 127209). Note that out of 1,250 total extents, only 1 was scanned, and out of 50,000 total rows, only 40 were scanned. This suggests an efficient query that uses appropriate filtering. Cold cache access is typically slower than hot cache but faster than retrieving data directly from storage.
 
 ```json
 {
@@ -321,9 +331,9 @@ This example shows a query that processed external data. Note the high execution
 }
 ```
 
-This example shows a query that retrieved data from the cold cache (`cold.hitbytes`: 127209). Note that out of 1,250 total extents, only 1 was scanned, and out of 50,000 total rows, only 40 were scanned. This suggests an efficient query that uses appropriate filtering. Cold cache access is typically slower than hot cache but faster than retrieving data directly from storage.
-
 ### Example 4: Results from Query Cache
+
+This example demonstrates a query served from the query results cache. Note the presence of the `results_cache_origin` section, which indicates the results were retrieved from a previously cached query result. The extremely fast execution time (0.0039999 seconds) shows the benefit of query results caching, as no data processing was needed. The cache contains information about the original request that populated the cache (`client_request_id`) and when it was initially executed (`started_on`). Notice that no data was scanned from extents or rows as indicated by zeros in the `input_dataset_statistics` section, confirming that the results were retrieved directly from the query cache.
 
 ```json
 {
@@ -395,9 +405,10 @@ This example shows a query that retrieved data from the cold cache (`cold.hitbyt
 }
 ```
 
-This example demonstrates a query served from the query results cache. Note the presence of the `results_cache_origin` section, which indicates the results were retrieved from a previously cached query result. The extremely fast execution time (0.0039999 seconds) shows the benefit of query results caching, as no data processing was needed. The cache contains information about the original request that populated the cache (`client_request_id`) and when it was initially executed (`started_on`). Notice that no data was scanned from extents or rows as indicated by zeros in the `input_dataset_statistics` section, confirming that the results were retrieved directly from the query cache.
-
 ### Example 5: Results from Partial Query Cache (Per-Shard)
+
+This example illustrates a query that benefited from per-shard level caching, as indicated by the `partial_query_results` section. The cache shows 1 hit and 0 misses, meaning the query was able to retrieve pre-computed results for the shard without having to reprocess the data. Unlike the full query cache example (Example 4), the `input_dataset_statistics` shows that data was technically "scanned" (59,066 rows), but this was likely just a metadata operation since the actual computation was retrieved from cache. Note the very fast execution time (0.0047499 seconds), demonstrating the performance advantage of partial query caching. Per-shard caching is particularly useful for queries that repeatedly access the same data partitions with the same filtering conditions.
+
 
 ```json
 {
@@ -470,8 +481,6 @@ This example demonstrates a query served from the query results cache. Note the 
 }
 ```
 
-This example illustrates a query that benefited from per-shard level caching, as indicated by the `partial_query_results` section. The cache shows 1 hit and 0 misses, meaning the query was able to retrieve pre-computed results for the shard without having to reprocess the data. Unlike the full query cache example (Example 4), the `input_dataset_statistics` shows that data was technically "scanned" (59,066 rows), but this was likely just a metadata operation since the actual computation was retrieved from cache. Note the very fast execution time (0.0047499 seconds), demonstrating the performance advantage of partial query caching. Per-shard caching is particularly useful for queries that repeatedly access the same data partitions with the same filtering conditions.
-
 ## Integration with Monitoring Tools
 
 The QueryResourceConsumption data can be collected and analyzed over time to identify trends and anomalies in query performance. This data is available through:
@@ -493,7 +502,3 @@ var resourceConsumption = GetQueryResourceConsumption(dataSet.Tables[2], false);
 Console.WriteLine($"Execution time: {resourceConsumption.ExecutionTime}");
 Console.WriteLine($"Memory peak: {resourceConsumption.ResourceUsage.Memory.PeakPerNode}");
 ```
-
-## Conclusion
-
-Understanding query resource consumption data helps in optimizing query performance, identifying bottlenecks, and planning for appropriate resource allocation. By monitoring these metrics over time, you can make informed decisions about query design, cluster configuration, and data organization to ensure optimal performance and cost-efficiency of your Kusto queries.
