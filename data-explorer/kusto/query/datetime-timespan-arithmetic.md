@@ -46,7 +46,7 @@ is a system for describing a point in time as the number of seconds that have el
 If your data includes representation of Unix time as an integer, or you require converting to it,
 the following functions are available.
 
-The following function converts Unix time to UTC datetime.
+The following example converts Unix time to UTC datetime.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -66,8 +66,7 @@ print result = fromUnixTime(1546897531)
 |---|
 | 2019-01-07 21:45:31.0000000 |
 
-
-The following function converts UTC datetime to Unix time.
+The following example converts UTC datetime to Unix time.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

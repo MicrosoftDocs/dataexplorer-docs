@@ -30,6 +30,8 @@ Returns a UTC [datetime](scalar-data-types/datetime.md) that corresponds the loc
 
 ## Examples
 
+The following example shows how to convert a local datetime to UTC datetime.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42PTQsCIRCG7/6KubmCseJR6BDRPYhOEWI6bYK7hjsLEf34jMBrMS9zmI935gmOalwSdil7l2wgA8ERUhxRAj0NzFTiNAh2avVOK61WSleBVkZpo5WQwI+Hfu98vEbPJTD4Ob8ZsUTv+u2t5iH/t7RbSr5jPVTizM/sBfggnAIs5OvzsG4G9gtE2dZWo/swiTePz2vZ9QAAAA==" target="_blank">Run the query</a>
@@ -56,14 +58,13 @@ datatable(local_dt: datetime, tz: string)
 > Normally there is a 1:1 mapping between UTC and local time, however there is a time ambiguity near the DST transition.
 > Translating from local to UTC and then back to local may produce an hour offset between two local datetime values if the clocks were advanced due to DST.
 
-
 ```kusto
 range Local from datetime(2022-03-27 01:00:00.0000000) to datetime(2022-03-27 04:00:00.0000000) step 1h
 | extend UTC=datetime_local_to_utc(Local, 'Europe/Brussels')
 | extend BackToLocal=datetime_utc_to_local(UTC, 'Europe/Brussels')
 | extend diff=Local-BackToLocal
 ```
- 
+
 |Local|UTC|BackToLocal|diff|
 |---|---|---|---|
 |2022-03-27 02:00:00.0000000|2022-03-27 00:00:00.0000000|2022-03-27 01:00:00.0000000|01:00:00|

@@ -50,6 +50,8 @@ Returns an integer representing the extracted part.
 
 ## Examples
 
+The following example extracts the year, quarter, month, week of year, day, day of year, hour, minute, second, millisecond, microsecond, and nanosecond from a specified datetime value.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XPTQqDMBAF4L2nCK4UtCTaVrD0DF13JcGMGKqJTSPF29efRgPG7XvfzDANaMQ0uiNGNWjeQpBgksUExylGmOQ4yXF6yq6Xc5qQ8Ia8TnGhkTcAVdZU0VGlA39K/WhcGEbeux8jcKB/YVwrha73ao6N+QK8HtXTeXPqClkV9m1Ghz0cQ6s/WrdWxtayd7ApXT/gotfgeGHOjfpAKQXbqyXfdjUNP6JWuflSyWO/lsYLKg751i36B5qEtWAcAgAA" target="_blank">Run the query</a>

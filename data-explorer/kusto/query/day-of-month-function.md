@@ -29,6 +29,8 @@ Returns an integer representing the day number of the given datetime.
 
 ## Examples
 
+The following example shows how to extract the day of the month from a specified datetime value.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAysoyswrUUhJrMxPy83PK8nQSEksSS3JzE3VMDIwNNU1NNI1NNHUBAAj3TtIJgAAAA==" target="_blank">Run the query</a>

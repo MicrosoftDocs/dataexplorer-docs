@@ -31,7 +31,7 @@ Returns the `timespan` since midnight at the beginning of the preceding Sunday, 
 
 ## Examples
 
-The following example returns 0, indicating that the specified datetime is a Sunday.
+The follow example shows how to extract the day of the week from a specified datetime value.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
