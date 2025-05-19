@@ -25,7 +25,7 @@ For each such group, the operator returns a `pattern`, `count`, and `representat
 |--|--|--|--|
 | *Expr* | `string` |  :heavy_check_mark: | The value by which to reduce.|
 | *Threshold* | `real` | | A value between 0 and 1 that determines the minimum fraction of rows required to match the grouping criteria in order to trigger a reduction operation. The default value is 0.1.<br/><br/> The threshold parameter determines the minimum level of similarity required for values to be grouped together. A smaller threshold value (closer to 0) means that only similar values are grouped, resulting in fewer, larger groups. A larger threshold (closer to 1) allows less similar values to be grouped, resulting in more, smaller groups. We recommend setting a small threshold value for large inputs. See [Examples](#examples).|
-| *Characters* | `string` | | A list of characters that separate between terms. The default is every non-ascii numeric character. For examples, see [Behavior of Characters parameter](#behavior-of-characters-parameter).|
+| *Characters* | `string` | | A list of characters that separate between terms. The default is every non-ascii numeric character. For examples, see [Examples](#examples).|
 | *ReduceKind* | `string` | | The only valid value is `source`. If `source` is specified, the operator appends the `Pattern` column to the existing rows in the table instead of aggregating by `Pattern`.|
 
 ## Returns
