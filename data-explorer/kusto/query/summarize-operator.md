@@ -27,15 +27,15 @@ Produces a table that aggregates the content of the input table.
 |--|--|--|--|
 |*Column*| `string` ||The name for the result column. Defaults to a name derived from the expression.|
 |*Aggregation*| `string` | :heavy_check_mark:|A call to an [aggregation function](aggregation-functions.md) such as `count()` or `avg()`, with column names as arguments.|
-|*GroupExpression*|scalar| :heavy_check_mark:|A scalar expression that can reference the input data. The output will have as many records as there are distinct values of all the group expressions.|
+|*GroupExpression*|scalar| :heavy_check_mark:|A scalar expression that can reference the input data. The output has as many records as there are distinct values of all the group expressions.|
 |*SummarizeParameters*| `string` ||Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior. See [supported parameters](#supported-parameters).|
 
 > [!NOTE]
 > When the input table is empty, the output depends on whether *GroupExpression*
 > is used:
 >
-> * If *GroupExpression* is not provided, the output will be a single (empty) row.
-> * If *GroupExpression* is provided, the output will have no rows.
+> * If *GroupExpression* isn't provided, the output is a single (empty) row.
+> * If *GroupExpression* is provided, the output has no rows.
 
 ### Supported parameters
 
@@ -43,14 +43,14 @@ Produces a table that aggregates the content of the input table.
   |---|---|
   |`hint.num_partitions` |Specifies the number of partitions used to share the query load on cluster nodes. See [shuffle query](shuffle-query.md)  |
   |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shuffle-query.md) |
-  |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. See [shuffle query](shuffle-query.md)  |
+  |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. See [shuffle query](shuffle-query.md)  |
 
 ## Returns
 
 The input rows are arranged into groups having the same values of the `by` expressions. Then the specified aggregation functions are computed over each group, producing a row for each group. The result contains the `by` columns and also at least one column for each computed aggregate. (Some aggregation functions return multiple columns.)
 
 The result has as many rows as there are distinct combinations of `by` values
-(which may be zero). If there are no group keys provided, the result has a single
+(which might be zero). If there are no group keys provided, the result has a single
 record.
 
 To summarize over ranges of numeric values, use `bin()` to reduce ranges to discrete values.
@@ -58,7 +58,7 @@ To summarize over ranges of numeric values, use `bin()` to reduce ranges to disc
 > [!NOTE]
 >
 > * Although you can provide arbitrary expressions for both the aggregation and grouping expressions, it's more efficient to use simple column names, or apply `bin()` to a numeric column.
-> * The automatic hourly bins for datetime columns is no longer supported. Use explicit binning instead. For example, `summarize by bin(timestamp, 1h)`.
+> * The automatic hourly bins for datetime columns are no longer supported. Use explicit binning instead. For example, `summarize by bin(timestamp, 1h)`.
 
 ## Default values of aggregations
 
@@ -75,15 +75,9 @@ The following table summarizes the default values of aggregations:
 
 ## Examples
 
-The example in this section shows how to use the syntax to help you get started.
-	
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
-:::image type="content" source="media/summarizeoperator/summarize-price-by-supplier.png" alt-text="Summarize price by fruit and supplier.":::
-
-### Unique combination
-
-The following query determines what unique combinations of `State` and `EventType` there are for storms that resulted in direct injury. There are no aggregation functions, just group-by keys. The output will just show the columns for those results.
+The following example determines what unique combinations of `State` and `EventType` there are for storms that resulted in direct injury. There are no aggregation functions, just group-by keys. The output displays only the columns for those results.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -109,9 +103,7 @@ The following table shows only the first 5 rows. To see the full output, run the
 | TEXAS | Flood |
 |...|...|
 
-### Minimum and maximum timestamp
-
-Finds the minimum and maximum heavy rain storms in Hawaii. There's no group-by clause, so there's just one row in the output.
+The following example finds the minimum and maximum heavy rain storms in Hawaii. There's no group-by clause, so there's just one row in the output.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -133,9 +125,7 @@ StormEvents
 
 ::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 
-### Distinct count
-
-The following query calculates the number of unique storm event types for each state and sorts the results by the number of unique storm types:
+The following example calculates the number of unique storm event types for each state and sorts the results by the number of unique storm types:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIqSxILfZPCwbJF9umJOeX5pVogBWCZDQVkioVgksSS1LBuvKLSkACKHoALe01bFoAAAA=" target="_blank">Run the query</a>
@@ -158,8 +148,6 @@ The following table shows only the first 5 rows. To see the full output, run the
 | GEORGIA | 24 |
 | ILLINOIS | 23 |
 |...|...|
-
-### Histogram
 
 The following example calculates a histogram storm event types that had storms lasting longer than 1 day. Because `Duration` has many values, use `bin()` to group its values into 1-day intervals.
 
@@ -185,8 +173,7 @@ StormEvents
 | Heavy Rain | 29.00:00:00 | 42 |
 | ... | ... | ... |
 
-### Aggregates default values
-
+The following example shows the default values of aggregates when the input table is empty. The `summarize` operator is used to calculate the default values of the aggregates.
 When the input of `summarize` operator has at least one empty group-by key, its result is empty, too.
 
 When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize` For more information, see [Default values of aggregations](#default-values-of-aggregations).
@@ -235,12 +222,10 @@ datatable(x:long)[]
 |---|---|
 |[]|[]|
 
-The aggregate avg sums all the non-nulls and counts only those which participated in the calculation (won't take nulls into account).
-
+The avg aggregate sums only the non-null values and counts only those values in its calculation, ignoring any nulls.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2KTQqAIBQG953iWyq0EWrpYYSeIvgTTw2NDp9BqxmYYZMcocNyjlCoGRtKpRNqeUC9UjowoOGtFR1aQ61gMkGkFoL8fZdy3qXFaNjf9JkYM5rLTb7y45THYwAAAA==" target="_blank">Run the query</a>
-
 
 ```kusto
 range x from 1 to 4 step 1
@@ -254,7 +239,7 @@ range x from 1 to 4 step 1
 |---|---|
 |15|5|
 
-The regular count will count nulls:
+The standard count function includes null values in its count:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy3KTQqAIBAG0H3QHb6lA20MWnoYqTEEf2JU0OjwEbR7iyc2nYwOJzlCo2asKJUv6Hl6wL1yOjBg4J1THcZALxC2QaUWAv3eiL5eWoxW/M3Yc0tVDXoBSiga018AAAA=" target="_blank">Run the query</a>
