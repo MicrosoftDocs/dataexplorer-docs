@@ -24,7 +24,7 @@ For each such group, the operator returns a `pattern`, `count`, and `representat
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *Expr* | `string` |  :heavy_check_mark: | The value by which to reduce.|
-| *Threshold* | `real` | | A value between 0 and 1 that determines the minimum fraction of rows required to match the grouping criteria in order to trigger a reduction operation. The default value is 0.1.<br/><br/> The threshold parameter determines the minimum level of similarity required for values to be grouped together. A smaller threshold value (closer to 0) means that only similar values are grouped, resulting in fewer, larger groups. A larger threshold (closer to 1) allows less similar values to be grouped, resulting in more, smaller groups. We recommend setting a small threshold value for large inputs. See [Examples](#examples).|
+| *Threshold* | `real` | | A value between 0 and 1 that determines the minimum fraction of rows required to match the grouping criteria in order to trigger a reduction operation. The default value is 0.1.<br/><br/> The threshold parameter determines the minimum level of similarity required for values to be grouped together. With a smaller threshold value (closer to 0), more similar values are grouped together, resulting in fewer but more similar groups. A larger threshold value (closer to 1) requires less similarity, resulting in more groups that are less similar. We recommend setting a small threshold value for large inputs. See [Examples](#examples).|
 | *Characters* | `string` | | A list of characters that separate between terms. The default is every non-ascii numeric character. For examples, see [Examples](#examples).|
 | *ReduceKind* | `string` | | The only valid value is `source`. If `source` is specified, the operator appends the `Pattern` column to the existing rows in the table instead of aggregating by `Pattern`.|
 
@@ -49,7 +49,7 @@ The example in this section shows how to use the syntax to help you get started.
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 The following example generates a range of numbers, creates a new column with concatenated strings and random integers, and then groups the rows by the new column with specific reduction parameters.
-The threshold is set to 0.001, which means that the operator groups values that are similar to each other.
+The threshold is set to 0.001, which means that the operator groups values that are very similar to each other.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -69,7 +69,7 @@ range x from 1 to 1000 step 1
 |MachineLearning*|1000 |MachineLearningX4|
 
 The following example generates a range of numbers, creates a new column with concatenated strings and random integers, and then groups the rows by the new column with specific reduction parameters.
-The threshold is set to 0.9, which means that the operator groups values that aren't similar to each other.
+The threshold is set to 0.9, which means that the operator groups together values less stricly and allows more variance.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
