@@ -24,7 +24,7 @@ For each such group, the operator returns a `pattern`, `count`, and `representat
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *Expr* | `string` |  :heavy_check_mark: | The value by which to reduce.|
-| *Threshold* | `real` | | A value between 0 and 1 that determines the minimum fraction of rows required to match the grouping criteria in order to trigger a reduction operation. The default value is 0.1.<br/><br/>We recommend setting a small threshold value for large inputs. With a smaller threshold value, more similar values are grouped together, resulting in fewer but more similar groups. A larger threshold value requires less similarity, resulting in more groups that are less similar. See [Examples](#examples).|
+| *Threshold* | `real` | | A value between 0 and 1 that determines the minimum fraction of rows required to match the grouping criteria in order to trigger a reduction operation. The default value is 0.1.<br/><br/> The threshold parameter determines the minimum level of similarity required for values to be grouped together. A smaller threshold value (closer to 0) means that only very similar values are grouped, resulting in fewer, larger groups. A larger threshold (closer to 1) allows less similar values to be grouped, resulting in more, smaller groups. We recommend setting a small threshold value for large inputs. See [Examples](#examples).|
 | *Characters* | `string` | | A list of characters that separate between terms. The default is every non-ascii numeric character. For examples, see [Behavior of Characters parameter](#behavior-of-characters-parameter).|
 | *ReduceKind* | `string` | | The only valid value is `source`. If `source` is specified, the operator appends the `Pattern` column to the existing rows in the table instead of aggregating by `Pattern`.|
 
@@ -45,12 +45,11 @@ For example, the result of `reduce by city` might include:
 ## Examples
 
 The example in this section shows how to use the syntax to help you get started.
-	
+
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
-### Small threshold value
-
-This query generates a range of numbers, creates a new column with concatenated strings and random integers, and then groups the rows by the new column with specific reduction parameters.
+The following example generates a range of numbers, creates a new column with concatenated strings and random integers, and then groups the rows by the new column with specific reduction parameters.
+The threshold is set to 0.001, which means that the operator will only group values that are very similar to each other.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -69,9 +68,8 @@ range x from 1 to 1000 step 1
 |----------------|-----|-----------------|
 |MachineLearning*|1000 |MachineLearningX4|
 
-### Large threshold value
-
-This query generates a range of numbers, creates a new column with concatenated strings and random integers, and then groups the rows by the new column with specific reduction parameters. 
+The following example generates a range of numbers, creates a new column with concatenated strings and random integers, and then groups the rows by the new column with specific reduction parameters.
+The threshold is set to 0.9, which means that the operator will also group values that are not very similar to each other. 
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -100,9 +98,8 @@ The result includes only those groups where the MyText value appears in at least
 | MachineLearning* | 104 | MachineLearningX7 |
 | MachineLearning* | 106 | MachineLearningX2 |
 
-### Behavior of `Characters` parameter
-
 If the *Characters* parameter is unspecified, by default the operator treats all non-alphanumeric characters (including spaces and punctuation) as term separators.
+The following example shows how the `reduce` operator behaves when the *Characters* parameter is not specified.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -135,8 +132,6 @@ range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | re
 |Pattern|Count|Representative|
 |--|--|--|
 |foo*|10|fooZ1|
-
-### Apply `reduce` to sanitized input
 
 The following example shows how one might apply the `reduce` operator to a "sanitized"
 input, in which GUIDs in the column being reduced are replaced before reducing:
