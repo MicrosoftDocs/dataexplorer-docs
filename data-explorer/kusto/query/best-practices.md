@@ -72,8 +72,8 @@ In order of importance:
 * Apply the `where` query operator immediately following table references.
 
 * When using the `where` query operator, the order in which you place the predicates, whether you use a single `where` operator, or multiple consecutive `where` operators,
-  can have a significant effect on the query performance.
-
+  can have a significant effect on the query performance, In many cases, the query optimizer will automatically arrange the predicates in an efficient order. However, this is not always guaranteed—so when it doesn't, you should manually order the predicates according to the guidelines in the next points.
+  
 * Apply predicates that act upon `datetime` table columns first. Kusto includes an efficient index on such columns,
   often completely eliminating whole data shards without needing to access those shards.
 
