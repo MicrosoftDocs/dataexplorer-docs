@@ -71,7 +71,7 @@ The following table summarizes the default values of aggregations:
 | All others | null |
 
 > [!NOTE]
-> When applying these aggregates to entities that include null values, the null values are ignored and don't factor into the calculation. For examples, see [Aggregates default values](#aggregates-default-values).
+> When applying these aggregates to entities that include null values, the null values are ignored and don't factor into the calculation. See [Examples](#examples).
 
 ## Examples
 
