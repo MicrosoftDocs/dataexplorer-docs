@@ -41,6 +41,7 @@ Returns the covariance value of *expr1* and *expr2* in records for which *predic
 
 The example in this section shows how to use the syntax to help you get started.
 
+This query calculates the covariance of x and y for the subset of numbers where x is divisible by 3.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXLsQ6DIBhF4d2nOIuJNg6gMw9D9McwAA3SBk0fvtRO9w7nyzbuQsXlFNCUhFaKo8gT3X2QWiRunBi8c0OlZ8YY1NTMg%2Fk%2Fy9jS4xWCzf4S1vRux8ZVfCMT56%2FqWW44fgFVekM5cgAAAA==" target="_blank">Run the query</a>

@@ -34,6 +34,8 @@ Returns the variance value of *expr* in records for which *predicate* evaluates 
 
 ## Example
 
+This query generates a sequence of numbers from 1 to 100 and then calculates the variance of the even numbers within that sequence. 
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDkqlEoLs3NTSzKrEpVKANSiXnJqQWZaRoVOgoVqkYKtrYKBpoAMtNHI0EAAAA=" target="_blank">Run the query</a>

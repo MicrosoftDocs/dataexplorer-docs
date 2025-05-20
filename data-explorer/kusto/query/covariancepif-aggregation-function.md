@@ -41,6 +41,7 @@ Returns the covariance value of *expr1* and *expr2* in records for which *predic
 
 The example in this section shows how to use the syntax to help you get started.
 
+This query creates a new variable y based on whether x is even or odd and then calculates the covariance of x and y for the subset of numbers where x is divisible by 3. 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXLsQ6DIBhF4d2nOItJbRxAZx6G6E%2FDABikBo0PX9pO9w7nyza%2BhIrLKaApCa0Ue5EN3d1ILRJXTgzeuUelZ8IY1NjMk%2Bk%2F89DS%2FR2Czf4SlnS0Y%2BMim29m5PxmPfNPDh%2B38u9%2BcwAAAA==" target="_blank">Run the query</a>
