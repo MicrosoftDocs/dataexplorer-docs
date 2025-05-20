@@ -1746,6 +1746,9 @@ items:
   - name: series_pow()
     displayName: element-wise, elementwise
     href: /kusto/query/series-pow-function?view=azure-data-explorer&preserve-view=true
+  - name: series_product()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-product-function?view=azure-data-explorer&preserve-view=true
   - name: series_seasonal()
     displayName: periods
     href: /kusto/query/series-seasonal-function?view=azure-data-explorer&preserve-view=true

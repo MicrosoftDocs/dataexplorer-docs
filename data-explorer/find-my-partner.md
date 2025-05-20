@@ -358,7 +358,7 @@ Development and design of cloud native solutions based on the latest Microsoft t
 - Sweden
 - Norway
 - Iceland
-- Holland
+- Netherlands
 - Belgium
 - Luxembourg
 
