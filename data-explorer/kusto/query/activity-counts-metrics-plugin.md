@@ -45,8 +45,6 @@ The following table describes the output table schema.
 
 ## Examples
 
-### Daily activity counts
-
 The next query calculates daily activity counts for the provided input table.
 
 :::moniker range="azure-data-explorer"

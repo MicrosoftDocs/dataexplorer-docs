@@ -100,7 +100,7 @@ The following keyboard shortcuts can be used when editing a query in the query e
 | <kbd>Ctrl</kbd>+<kbd>F5</kbd> | Preview results of the selected query (shows few results and total count) |
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> | Insert data cell selections as filters into the query |
 | <kbd>Ctrl</kbd>+<kbd>Space</kbd> | Force IntelliSense rules check. Possible options will be shown in any rule matched |
-| <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Adds `pipe` symbol and moves to a new line |
+| <kbd>Ctrl</kbd>+<kbd>Enter</kbd> | Moves to new line and adds `pipe` symbol |
 | <kbd>Ctrl</kbd>+<kbd>Z</kbd> | Undo |
 | <kbd>Ctrl</kbd>+<kbd>Y</kbd> | Redo |
 | <kbd>Ctrl</kbd>+<kbd>L</kbd> | Deletes current line |

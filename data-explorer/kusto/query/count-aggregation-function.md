@@ -28,7 +28,7 @@ To only count records for which a predicate returns `true`, use [countif()](coun
 
 Returns a count of the records per summarization group, or in total if summarization is done without grouping.
 
-## Example
+## Examples
 
 The following example returns a count of events in states:
 

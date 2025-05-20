@@ -29,9 +29,9 @@ Accumulates values using the binary `OR` operation for each summarization group,
 
 Returns an aggregated value using the binary `OR` operation over records for each summarization group, or in total if a group isn't specified.
 
-## Example
+## Examples
 
-The following example produces `CAFEF00D` using binary `OR` operations:
+The following example produces `CAFEF00D` using binary `OR` operations.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

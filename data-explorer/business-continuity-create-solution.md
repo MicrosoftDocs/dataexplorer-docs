@@ -80,7 +80,7 @@ In the image below, only one cluster is ingesting data from the event hub. The p
 
 You can start and stop the secondary replicas using one of the following methods:
 
-* [Azure Data Explorer connector to Power Automate (Preview)](flow.md)
+* [Azure Data Explorer connector to Power Automate (preview)](flow.md)
 
 * The **Stop** button in the **Overview** tab in the Azure portal. For more information, see [Stop and restart the cluster](create-cluster-and-database.md#stop-and-restart-the-cluster).
 

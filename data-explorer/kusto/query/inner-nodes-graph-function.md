@@ -9,10 +9,10 @@ ms.date: 02/16/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-The `inner_nodes()` graph function allows access to the inner nodes of a [variable length edge](graph-match-operator.md#variable-length-edge). It can only be used as the first parameter of the [all() graph](all-graph-function.md) and [map()](map-graph-function.md) functions.
+The `inner_nodes()` graph function allows access to the inner nodes of a [variable length edge](graph-match-operator.md#variable-length-edge). It can only be used as the first parameter of the [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) graph functions.
 
 > [!NOTE]
-> This function is used with the [graph-match](graph-match-operator.md) operator, [graph-shortest-paths](graph-shortest-paths-operator.md) operator, [all()](all-graph-function.md) function, and [map()](map-graph-function.md) function.
+> This function is used with the [graph-match](graph-match-operator.md) operator, [graph-shortest-paths](graph-shortest-paths-operator.md) operator, [all()](all-graph-function.md) graph function, [any()](any-graph-function.md) graph function, and [map()](map-graph-function.md) graph function.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ The `inner_nodes()` graph function allows access to the inner nodes of a [variab
 
 ## Returns
 
-Sets the execution scope of the `all` or `map` expression to the inner node of a variable length edge.
+Sets the execution scope of the `all`, `any` or `map` expression to the inner node of a variable length edge.
 
 ## Examples
 
@@ -85,4 +85,5 @@ Richard|Alice|["Bob"]|
 * [graph-match operator](graph-match-operator.md)
 * [graph-shortest-paths operator](graph-shortest-paths-operator.md)
 * [all()](all-graph-function.md)
+* [any()](any-graph-function.md)
 * [map()](map-graph-function.md)

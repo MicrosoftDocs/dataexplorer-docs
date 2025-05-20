@@ -197,7 +197,7 @@ If you don't already have one, [Create an event hub](/azure/event-hubs/event-hub
 > [!Note]
 >
 > * The ability to dynamically add partitions after creating an event hub is only available with Event Hubs Premium and Dedicated tiers. Consider the long-term scale when setting partition count.
-> * Consumer group *must* be unique per consumer. Create a consumer group dedicated to Azure Data Explorer connection.
+> * Consumer group *must* be unique per consumer. Create a dedicated consumer group for every Azure Data Explorer data connection.
 
 ### Cross-region Event Hubs data connection
 

@@ -24,9 +24,9 @@ In general, dashboards are shared in two steps: Grant permissions, and share the
 
 1. Browse to your [Azure Data Explorer dashboards](azure-data-explorer-dashboards.md) and toggle mode from **Viewing** to **Editing**.
 1. Select the **Share** menu item in the top bar of the dashboard.
-1. Select **Manage permissions** from the drop-down.
+1. Select **Manage permissions** from the dropdown.
 
-    :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Screenshot of the share dashboard drop-down.":::
+    :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Screenshot of the share dashboard dropdown.":::
 
 ## Grant permissions
 

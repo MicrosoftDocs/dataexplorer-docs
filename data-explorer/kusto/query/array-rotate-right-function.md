@@ -30,7 +30,7 @@ Dynamic array containing the same elements as the original array with each eleme
 
 ## Examples
 
-Rotating to the right by two positions:
+The following example shows rotating to the right by two positions:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -48,7 +48,7 @@ print arr=dynamic([1,2,3,4,5])
 |---|---|
 |[1,2,3,4,5]|[4,5,1,2,3]|
 
-Rotating to the left by two positions by using negative rotate_count value:
+The following example shows rotating to the left by two positions by using negative rotate_count value:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

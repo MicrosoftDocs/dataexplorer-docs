@@ -76,15 +76,14 @@ where the `# of customer lost in the period` is defined as:
 The higher score means the larger number of users are NOT returning to the service.
 
 ***Churn vs. Retention Rate***
+
 The churn vs. retention Rate is derived from the definition of `Churn Rate` and `Retention Rate`. The following calculation is always true:
 
 > [`Retention Rate`] = 100.0% - [`Churn Rate`]
 
 ## Examples
 
-### Weekly retention rate and churn rate
-
-The next query calculates retention and churn rate for week-over-week window.
+The following example calculates retention and churn rate for week-over-week window.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -135,9 +134,8 @@ range _day from _start to _end  step 1d
 
 :::image type="content" source="media/activity-metrics-plugin/activity-metrics-churn-and-retention.png" border="false" alt-text="Table showing the calculated retention and churn rates per seven days as specified in the query.":::
 
-### Distinct values and distinct 'new' values
 
-The next query calculates distinct values and 'new' values (IDs that didn't appear in previous time window) for week-over-week window.
+The following example calculates distinct values and 'new' values (IDs that didn't appear in previous time window) for week-over-week window.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

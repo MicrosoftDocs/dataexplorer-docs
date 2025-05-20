@@ -1295,6 +1295,9 @@ items:
           - name: all()
             displayName: all() graph function
             href: all-graph-function.md
+          - name: any()
+            displayName: any() graph function 
+            href: any-graph-function.md
           - name: map()
             displayName: map() graph function
             href: map-graph-function.md
@@ -1309,21 +1312,29 @@ items:
             href: node-degree-out.md
   - name: Geospatial
     items:
-      - name: Geospatial clustering overview
+      - name: Geospatial clustering
         displayName: H3, S2, Geohash
         href: geospatial-grid-systems.md
+      - name: Geospatial joins
+        href: geospatial-joins.md
       - name: Geospatial visualizations
         href: geospatial-visualizations.md
       - name: geo_angle()
         href: geo-angle-function.md
       - name: geo_azimuth()
         href: geo-azimuth-function.md
+      - name: geo_closest_point_on_line()
+        href: geo-closest-point-on-line-function.md
+      - name: geo_closest_point_on_polygon()
+        href: geo-closest-point-on-polygon-function.md
       - name: geo_distance_2points()
         href: geo-distance-2points-function.md
       - name: geo_distance_point_to_line()
         href: geo-distance-point-to-line-function.md
       - name: geo_distance_point_to_polygon()
         href: geo-distance-point-to-polygon-function.md
+      - name: geo_from_wkt()
+        href: geo-from-wkt-function.md
       - name: geo_intersects_2lines()
         href: geo-intersects-2lines-function.md
       - name: geo_intersects_2polygons()
@@ -1342,8 +1353,12 @@ items:
         href: geo-line-centroid-function.md
       - name: geo_line_densify()
         href: geo-line-densify-function.md
+      - name: geo_line_interpolate_point()
+        href: geo-line-interpolate-point-function.md
       - name: geo_line_length()
         href: geo-line-length-function.md
+      - name: geo_line_locate_point()
+        href: geo-line-locate-point-function.md
       - name: geo_line_simplify()
         href: geo-line-simplify-function.md
       - name: geo_line_to_s2cells()
@@ -1587,6 +1602,12 @@ items:
             href: preview-plugin.md
           - name: schema_merge plugin
             href: schema-merge-plugin.md
+      - name: Geospatial plugins
+        items:
+          - name: geo_line_lookup plugin
+            href: geo-line-lookup-plugin.md
+          - name: geo_polygon_lookup plugin
+            href: geo-polygon-lookup-plugin.md
       - name: Data reshaping plugins
         items:
           - name: bag_unpack plugin
@@ -1619,8 +1640,12 @@ items:
             href: diffpatterns-text-plugin.md
       - name: Query connectivity plugins
         items:
-          - name: ai_embed_text plugin
-            href: ai-embed-text-plugin.md
+          - name: ai_embeddings plugin
+            href: ai-embeddings-plugin.md
+          - name: ai_chat_completion plugin
+            href: ai-chat-completion-plugin.md
+          - name: ai_chat_completion_prompt plugin
+            href: ai-chat-completion-prompt-plugin.md
           - name: azure_digital_twins_query_request plugin
             href: azure-digital-twins-query-request-plugin.md
           - name: cosmosdb_sql_request plugin

@@ -33,7 +33,7 @@ Returns a zero-based index position of lookup.
 Returns -1 if the value isn't found in the array.
 Returns *null* for irrelevant inputs (*occurrence* < 0 or  *length* < -1).
 
-## Example
+## Examples
 
 The following example shows the position number of specific words within the array.
 

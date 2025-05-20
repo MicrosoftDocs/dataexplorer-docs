@@ -73,7 +73,7 @@ You can then explore your data without affecting the visualization shown in the 
 
 * From the **Visual type** dropdown, select other visual types to visualize your data in different ways.
 
-    :::image type="content" source="media/dashboard-explore-data/select-visual-type.png" alt-text="Screenshot of the visual pane, showing the drop down selector options.":::
+    :::image type="content" source="media/dashboard-explore-data/select-visual-type.png" alt-text="Screenshot of the visual pane, showing the dropdown selector options.":::
 
 * Select the **Results** and **KQL** tabs to view the tabular query results and the underlying query respectively. As you explore, you see the changes you make updated in these tabs.
 
