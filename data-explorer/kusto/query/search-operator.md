@@ -54,8 +54,6 @@ You can also restrict the search to a specific column, look for an exact match i
 
 Use boolean expressions to combine conditions and create more complex searches. For example, `"error" and x==123` would result in a search for records that have the term `error` in any columns and the value `123` in the `x` column.
 
-
-
 ### Search predicate syntax examples
 
   |# |Syntax                                 |Meaning (equivalent `where`)           |Comments|
@@ -78,22 +76,18 @@ Use boolean expressions to combine conditions and create more complex searches. 
 
 Unlike the [find operator](find-operator.md), the `search` operator doesn't support the following syntax:
 
-1. `withsource=`: The output always includes a column called `$table` of type `string` whose value
-   is the table name from which each record was retrieved (or some system-generated name if the source
+1. `withsource=`: The output always includes a column called `$table` of type `string` whose value is the table name from which each record was retrieved (or some system-generated name if the source
    isn't a table but a composite expression).
-2. `project=`, `project-smart`: The output schema is equivalent to `project-smart` output schema.
+2. `project=`, `project-smart`: The `search` operator doesn't support these options for customizing the output columns. Instead, it automatically selects a relevant set of columns for the output, which is equivalent to the set of columns retrieved by the `project-smart` option in the `find` operator.
 
 ## Examples
 
-The example in this section shows how to use the syntax to help you get started.
-	
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
-### Global term search
-
+The followiwing example shows how to execute a global term search.
 Search for the term Green in all the tables of the *ContosoSales* database.
 
-The output finds records with the term *Green* as a last name or a color in the `Customers`, `Products`, and `SalesTable` tables. 
+The output finds records with the term *Green* as a last name or a color in the `Customers`, `Products`, and `SalesTable` tables.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -115,8 +109,7 @@ The output finds records with the term *Green* as a last name or a color in the 
 | Customers | Beverly Hills | North America | 7674 | Graduate Degree | James | M | Green |
 | Customers | Burbank | North America | 5241 | Graduate Degree | Madeline | F | Green |
 
-### Conditional global term search
-
+The following example shows how to execute a conditional global term search.
 Search for records that contain the term *Green* and one of either terms *Deluxe* or *Proseware* in the *ContosoSales* database.
 
 :::moniker range="azure-data-explorer"
@@ -140,8 +133,7 @@ search "Green" and ("Deluxe" or "Proseware")
 | Products | Proseware Desk Jet All-in-One Printer, Scanner, Copier M350 Green | Proseware, Inc. | Green | Regular | Computers |
 | Products | Proseware Duplex Scanner M200 Green | Proseware, Inc. | Green | Regular | Computers |
 
-### Search a specific table
-
+The following example demonstrates how to search for a term within a specific table.
 Search for the term *Green* only in the `Customers` table.
 
 :::moniker range="azure-data-explorer"
@@ -164,8 +156,7 @@ search in (Products) "Green"
 | Products | NT Wireless Bluetooth Stereo Headphones M402 Green | Northwind Traders | Green |
 | Products | NT Wireless Transmitter and Bluetooth Headphones M150 Green | Northwind Traders | Green |
 
-### Case-sensitive search
-
+The following example demonstrates how to search for a case-sensitive term.
 Search for records that match the case-sensitive term in the *ContosoSales* database.
 
 :::moniker range="azure-data-explorer"
@@ -189,8 +180,7 @@ search kind=case_sensitive "blue"
 | NewSales | Litware 120mm Blue LED Case Fan E901 blue | Litware, Inc. | blue | Economy |
 | NewSales | Litware 120mm Blue LED Case Fan E901 blue | Litware, Inc. | blue | Economy |
 
-### Search specific columns
-
+The following example demonstrates how to search for a term in specific columns.
 Search for the terms  *Aaron* and *Hughes*, in the "FirstName" and "LastName" columns respectively, in the *ContosoSales* database.
 
 :::moniker range="azure-data-explorer"
@@ -213,8 +203,7 @@ search FirstName:"Aaron" or LastName:"Hughes"
 | Customers | 13436 | Graduate Degree | Mariah | F | Hughes |
 | Customers | 10152 | Graduate Degree | Aaron | M | Campbell |
 
-### Limit search by timestamp
-
+The following example demonstrates how to search for a term with a timestamp.
 Search for the term *Hughes* in the *ContosoSales* database, if the term appears in a record with a date greater than the given date in 'datetime'.
 
 :::moniker range="azure-data-explorer"
