@@ -76,14 +76,12 @@ Use boolean expressions to combine conditions and create more complex searches. 
 
 Unlike the [find operator](find-operator.md), the `search` operator doesn't support the following syntax:
 
-1. `withsource=`: The output always includes a column called `$table` of type `string` whose value
-   is the table name from which each record was retrieved (or some system-generated name if the source
+1. `withsource=`: The output always includes a column called `$table` of type `string` whose value is the table name from which each record was retrieved (or some system-generated name if the source
    isn't a table but a composite expression).
-2. `project=`, `project-smart`: The `search` operator doesn't support these options for customizing the output columns.
-    Instead, it automatically selects a relevant set of columns for the output, which is equivalent to the set of columns retrieved by the `project-smart` option in the `find` operator.
+2. `project=`, `project-smart`: The `search` operator doesn't support these options for customizing the output columns. Instead, it automatically selects a relevant set of columns for the output, which is equivalent to the set of columns retrieved by the `project-smart` option in the `find` operator.
 
 ## Examples
-	
+
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 The followiwing example shows how to execute a global term search.
@@ -135,7 +133,6 @@ search "Green" and ("Deluxe" or "Proseware")
 | Products | Proseware Desk Jet All-in-One Printer, Scanner, Copier M350 Green | Proseware, Inc. | Green | Regular | Computers |
 | Products | Proseware Duplex Scanner M200 Green | Proseware, Inc. | Green | Regular | Computers |
 
-### Search a specific table
 The following example demonstrates how to search for a term within a specific table.
 Search for the term *Green* only in the `Customers` table.
 
