@@ -69,7 +69,7 @@ range x from 1 to 1000 step 1
 |MachineLearning*|1000 |MachineLearningX4|
 
 The following example generates a range of numbers, creates a new column with concatenated strings and random integers, and then groups the rows by the new column with specific reduction parameters.
-The threshold is set to 0.9, which means that the operator groups together values less stricly and allows more variance.
+The threshold is set to 0.9, which means that the operator groups together values less strictly and allows more variance.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
