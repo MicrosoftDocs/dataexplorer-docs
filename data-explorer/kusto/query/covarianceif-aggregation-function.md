@@ -15,7 +15,7 @@ Calculates the sample covariance of two random variables *expr1* and *expr2* in 
 
 The following formula is used:
 
-:::image type="content" source="media/covariance-aggfunction/covariance-sample.png" alt-text="Image showing a covariance sample formula.":::
+:::image type="content" source="media/covariance-aggfunction/covariance-sample.png" alt-text="Equation showing a covariance sample formula.":::
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
