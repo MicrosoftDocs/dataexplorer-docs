@@ -3,7 +3,7 @@ title: Reservation discount for Azure Data Explorer
 description: Learn how the reservation discount is applied to Azure Data Explorer markup meter.
 ms.reviewer: avneraa
 ms.topic: concept-article
-ms.date: 06/18/2024
+ms.date: 05/21/2025
 ---
 
 # How the reservation discount is applied to Azure Data Explorer
@@ -24,7 +24,7 @@ A reservation discount is applied to Azure Data Explorer markup consumption on a
 
 > [!NOTE]
 >
-> * We **highly recommend** purchasing [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview) for virtual machines used in your cluster to maximize reserved capacity savings.
+> * We **highly recommend** purchasing a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview) for virtual machines used in your cluster to maximize reserved capacity savings.
 > * The reservation purchase will apply discounts to all regions.
 
 ## Examples
