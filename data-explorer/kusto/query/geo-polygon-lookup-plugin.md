@@ -3,7 +3,7 @@ title:  geo_polygon_lookup plugin
 description: Learn how to use the geo_polygon_lookup plugin to look up a polygon value in a lookup table.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/08/2025
+ms.date: 05/21/2025
 ---
 # geo_polygon_lookup plugin (preview)
 
@@ -26,7 +26,7 @@ The `geo_polygon_lookup` plugin looks up a `Polygon` value in a lookup table and
 | *SourceLatitude* | `real` |  :heavy_check_mark: | The column of *T* with latitude value to be looked up in *LookupTable*. Latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
 | *radius* | `real` | | An optional radius value that defines the length from the polygon borders where the location is considered a match.|
 | *return_unmatched* | `bool` | | An optional boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
-| *lookup_area_radius* | `real` | | An optional lookup area radius distance in meters value that may help in matching locations to their respective polygons.|
+| *lookup_area_radius* | `real` | | An optional lookup area radius distance in meters value that might help in matching locations to their respective polygons.|
 | *return_lookup_key* | `bool` | | An optional boolean flag that defines if the result should include column *LookupPolygonKey* (default: `false`).|
 
 ## Returns
@@ -39,12 +39,12 @@ If the *return_unmatched* argument is set to `true`, the resulting table include
 
 If the *return_unmatched* argument is set to `false`, or omitted (the default value of `false` is used), the resulting table has as many records as matching results. This variant of lookup has better performance compared to `return_unmatched=true` execution.
 
-Setting *lookup_area_radius* length overrides internal matching mechanism and may improve or worsen run time and\or memory consumption. It does not affect query correctness. Read more below on how to set this optional value.
+Setting *lookup_area_radius* length overrides internal matching mechanism and might improve or worsen run time and\or memory consumption. It doesn't affect query correctness. Read more below on how to set this optional value.
 
 > [!NOTE]
 >
 > * This plugin covers the scenario of classifying locations to polygons, assuming a small lookup table size, with the input table optionally having a larger size.
-> * The performance of the plugin will depend on the sizes of the lookup and data source tables, the number of columns, and number of matching records.
+> * The performance of the plugin depends on the sizes of the lookup and data source tables, the number of columns, and number of matching records.
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
 > * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
 > * If input polygon edges are straight cartesian lines, consider using [geo_polygon_densify()](geo-polygon-densify-function.md) to convert planar edges to geodesics.
@@ -66,12 +66,12 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 
 > [!NOTE]
 >
-> * Polygon doesn't necessarily contain its vertices. Point containment in polygon is defined so that if the Earth is subdivided into polygons, every point is contained by exactly one polygon. Hence, setting Radius = 0 is not equal to not setting it.
+> * Polygon doesn't necessarily contain its vertices. Point containment in polygon is defined so that if the Earth is subdivided into polygons, every point is contained by exactly one polygon. Hence, setting Radius = 0 isn't equal to not setting it.
 
 **Setting lookup_area_radius (if needed)**
 
 Setting lookup area radius overrides internal mechanism for matching locations to their respective polygons. The value is a distance in meters. Ideally, lookup area radius should represent a distance from polygon center, such that within that distance a point matches to exactly one polygon in one-to-one manner and within that distance, there are no more than a single polygon.
-Because the polygons data might be big, polygons may vary greatly in size and shape compared to each other and the proximity of the polygon one to another, it might be challenging to come up with the radius that performs the best. If needed, here is a sample that may help.
+Because the polygons data might be large, polygons might vary greatly in size and shape compared to each other and the proximity of the polygon one to another, it might be challenging to come up with the radius that performs the best. If needed, here's a sample that might help.
 
 PolygonsTable
 | project value = sqrt(geo_polygon_area(polygon))
@@ -81,9 +81,9 @@ Try using lookup radius starting from average value towards either minimum (If t
 
 > [!TIP]
 >
-> * If Locations table has too many coordinates that are close to each other, consider aggregating them using [geo_point_to_s2cell()](geo-point-to-s2cell-function.md).
-> * If you want to know if any of the polygons contains a point, try the following steps: Fold the collection of polygons into one multipolygon. Then query this multipolygon. This may improve performance. See the following example.
-> * It's might be possible to build a more personalized (or performant) join functionality using [geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md).
+> * If the Locations table has too many coordinates that are close to each other, consider aggregating them using [geo_point_to_s2cell()](geo-point-to-s2cell-function.md).
+> * If you want to know if any of the polygons contains a point, try the following steps: Fold the collection of polygons into one multipolygon. Then query this multipolygon. This method might improve performance. See the following example.
+> * It might be possible to build a more personalized (or performant) join functionality using [geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md).
 
 ## Examples
 
@@ -155,7 +155,7 @@ locations
 |Statue of Liberty|-74.04462223203123|40.689195627512674|||
 |London|-0.13245599272019604|51.498794642083681|||
 
-The following example returns both matching and nonmatching rows where radius is set to 7km.
+The following example returns both matching and nonmatching rows where radius is set to 7 km.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

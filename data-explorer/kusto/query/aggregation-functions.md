@@ -63,4 +63,4 @@ An aggregation function performs a calculation on a set of values, and returns a
 | [tdigest()](tdigest-aggregation-function.md) | Returns an intermediate result for the percentiles approximation, the weighted percentile approximate of the group. |
 | [tdigest_merge()](tdigest-merge-aggregation-function.md) | Returns the merged `tdigest` value across the group. |
 | [variance()](variance-aggregation-function.md), [varianceif()](varianceif-aggregation-function.md) | Returns the variance across the group without/with a predicate. |
-| [variancep()](variancep-aggregation-function.md) | Returns the variance across the group for a population that is considered representative. |
+| [variancep()](variancep-aggregation-function.md), [variancepif()](variancepif-aggregation-function.md) | Returns the variance across the group for a population that is considered representative. |
