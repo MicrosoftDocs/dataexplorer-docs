@@ -99,7 +99,7 @@ The table shows only the first 10 results.
 | Ignite 2019 | Jie Feng | `https://myignite.techcommunity.microsoft.com/sessions/81057` | 300 | 2019-11-06T20:30:00Z | 45 | Wed, Nov 6, 3:30 PM-4:15 PM | Mention |
 | Ignite 2019 | Manoj Raheja |  | `https://myignite.techcommunity.microsoft.com/sessions/83939` | 300 | 2019-11-07T18:15:00Z | 20 | Thu, Nov 7, 1:15 PM-1:35 PM | Focused |
 | Ignite 2019 | Uri Barash |  | `https://myignite.techcommunity.microsoft.com/sessions/81060` | 300 | 2019-11-08T17:30:00Z | 45 | Fri, Nov8,  10:30 AM-11:15 AM | Focused |
-| Ignite 2018 | Manoj Raheja |  | <https://azure.microsoft.com/resources/videos/ignite-2018-azure-data-explorer-%E2%80%93-query-billions-of-records-in-seconds/> | 200 |  | 20 |  | Focused |
+| Ignite 2018 | Manoj Raheja |  | <https://learn.microsoft.com/shows/ignite-2018/> | 200 |  | 20 |  | Focused |
 | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ## Related content
