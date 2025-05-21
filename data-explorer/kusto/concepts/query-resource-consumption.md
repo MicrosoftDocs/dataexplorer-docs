@@ -19,7 +19,7 @@ Understanding query resource consumption data helps in optimizing query performa
 
 The resource consumption data is returned in the `QueryResourceConsumption` object as part of the query response, typically in JSON format.
 
-## Structure of QueryResourceConsumption
+## Structure of the QueryResourceConsumption object
 
 The `QueryResourceConsumption` object typically includes the following main sections:
 
