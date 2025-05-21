@@ -3,7 +3,7 @@ title:  geo_line_lookup plugin
 description: Learn how to use the geo_line_lookup plugin to look up a line value in a lookup table.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/08/2025
+ms.date: 05/21/2025
 ---
 # geo_line_lookup plugin (preview)
 
@@ -26,7 +26,7 @@ The `geo_line_lookup` plugin looks up a `Line` value in a lookup table and retur
 | *SourceLatitude* | `real` |  :heavy_check_mark: | The column of *T* with latitude value to be looked up in *LookupTable*. Latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
 | *Radius* | `real` | :heavy_check_mark: | Length from the line where the source location is considered a match.|
 | *return_unmatched* | `bool` | | An optional boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
-| *lookup_area_radius* | `real` | | An optional lookup area radius distance in meters value that may help in matching locations to their respective lines.|
+| *lookup_area_radius* | `real` | | An optional lookup area radius distance in meters value that might help in matching locations to their respective lines.|
 | *return_lookup_key* | `bool` | | An optional boolean flag that defines if the result should include column *LookupLineKey* (default: `false`).|
 
 ## Returns
@@ -39,12 +39,12 @@ If the *return_unmatched* argument is set to `true`, the resulting table include
 
 If the *return_unmatched* argument is set to `false`, or omitted (the default value of `false` is used), the resulting table has as many records as matching results. This variant of lookup has better performance compared to `return_unmatched=true` execution.
 
-Setting *lookup_area_radius* length overrides internal matching mechanism and may improve or worsen run time and\or memory consumption. It does not affect query correctness. Read more below on how to set this optional value.
+Setting *lookup_area_radius* length overrides internal matching mechanism and might improve or worsen run time and\or memory consumption. It doesn't affect query correctness. Read more below on how to set this optional value.
 
 > [!NOTE]
 >
 > * This plugin covers the scenario of classifying locations to lines within a radius from the line, assuming a small lookup table size, with the input table optionally having a larger size.
-> * The performance of the plugin will depend on the sizes of the lookup and data source tables, the number of columns, and number of matching records.
+> * The performance of the plugin depends on the sizes of the lookup and data source tables, the number of columns, and number of matching records.
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
 > * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used to measure distance on Earth is a sphere. Line edges are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
 > * If input line edges are straight cartesian lines, consider using [geo_line_densify()](geo-line-densify-function.md) in order to convert planar edges to geodesics.
@@ -63,7 +63,7 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 **Setting lookup_area_radius (if needed)**
 
 Setting lookup area radius overrides internal mechanism for matching locations to their respective lines. The value is a distance in meters. Ideally, lookup area radius should represent a distance from line center, such that within that distance a point matches to exactly one line in one-to-one manner and within that distance, there are no more than a single line.
-Because the lines data might be big, lines may vary greatly in size and shape compared to each other and the proximity of the line one to another, it might be challenging to come up with the radius that performs the best. If needed, here is a sample that may help.
+Because the lines data might be big, lines might vary greatly in size and shape compared to each other and the proximity of the line one to another, it might be challenging to come up with the radius that performs the best. If needed, here's a sample that might help.
 
 LinesTable
 | project value = geo_line_length(line)
@@ -73,8 +73,8 @@ Try using lookup radius starting from average value towards either minimum (If t
 
 > [!TIP]
 >
-> * If Locations table has too many coordinates that are close to each other, consider aggregating them using [geo_point_to_s2cell()](geo-point-to-s2cell-function.md).
-> * It's might be possible to build a more personalized (or performant) join functionality using [geo_line_to_s2cells()](geo-line-to-s2cells-function.md).
+> * If the Locations table has too many coordinates that are close to each other, consider aggregating them using [geo_point_to_s2cell()](geo-point-to-s2cell-function.md).
+> * It might be possible to build a more personalized (or performant) join functionality using [geo_line_to_s2cells()](geo-line-to-s2cells-function.md).
 
 ## Examples
 
