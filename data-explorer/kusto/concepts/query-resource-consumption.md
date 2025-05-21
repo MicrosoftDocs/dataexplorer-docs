@@ -7,17 +7,17 @@ ms.date: 05/18/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 
-# Query Resource Consumption
+# Query resource consumption
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 This document describes the resource consumption information returned as part of a Kusto query response.
 
-When executing a query in Azure Data Explorer (Kusto), the service returns not only the query results but also detailed information about the resources consumed during query execution.
+When executing a query, the service returns not only the query results but also detailed information about the resources consumed during query execution.
 
 Understanding query resource consumption data helps in optimizing query performance, identifying bottlenecks, and planning for appropriate resource allocation. By monitoring these metrics over time, you can make informed decisions about query design, cluster configuration, and data organization to ensure optimal performance and cost-efficiency of your Kusto queries.
 
-The resource consumption data is returned in the `QueryResourceConsumption` object as part of the query response, typically in JSON format.
+The resource consumption data is returned in the `QueryResourceConsumption` object as part of the query response, typically in JSON format. You can find the object in  [Monitoring tools](#integration-with-monitoring-tools) or by [Programmatic access](#programmatic-access).
 
 ## Structure of the QueryResourceConsumption object
 
@@ -25,12 +25,12 @@ The `QueryResourceConsumption` object typically includes the following main sect
 
 - `QueryHash`: A unique identifier for the query structure. This hash represents the query without its literal values, allowing for identification of similar query patterns even when the specific literal values differ. For example, queries like `Events | where Timestamp > datetime(2023-01-01)` and `Events | where Timestamp > datetime(2023-02-01)` would have the same QueryHash, as they share the same structure, only differing in the literal datetime values.
 - `ExecutionTime`: Total execution time in seconds
-- `resource_usage`: Detailed breakdown of resources used
-- `input_dataset_statistics`: Statistics about the data inputs processed
+- [`resource_usage`](#resource-usage-details): Detailed breakdown of resources used
+- [`input_dataset_statistics`](#input-dataset-statistics): Statistics about the data inputs processed
 - `dataset_statistics`: Statistics about the resulting dataset
-- `cross_cluster_resource_usage`: Information about resources used across clusters (if applicable)
+- `cross_cluster_resource_usage`: Information about resources used across clusters where relevant
 
-## Resource Usage Details
+## Resource usage details
 
 The resource usage section provides detailed information about the resources consumed during query execution. It includes the following subsections:
 
@@ -40,31 +40,31 @@ The resource usage section provides detailed information about the resources con
 - `resource_usage.network`: Information about [network usage](#network-usage)
 - `input_dataset_statistics`: Information about the [input dataset](#input-dataset-statistics)
 
-### Cache Usage
+### Cache usage
 
 The `resource_usage.cache.shards` section provides information about how the query utilized the cache:
 
 - `hot`: Data served from the hot cache
-  - `hitbytes`: Amount of data (in bytes) successfully retrieved from hot cache
-  - `missbytes`: Amount of data (in bytes) not found in hot cache
-  - `retrievebytes`: Amount of data (in bytes) retrieved from storage to satisfy misses
+  - `hitbytes`: Amount of data successfully retrieved from hot cache in bytes
+  - `missbytes`: Amount of data not found in hot cache in bytes
+  - `retrievebytes`: Amount of data retrieved from storage to satisfy misses in bytes
 
 - `cold`: Data served from the cold cache
-  - `hitbytes`: Amount of data (in bytes) successfully retrieved from cold cache
-  - `missbytes`: Amount of data (in bytes) not found in cold cache
-  - `retrievebytes`: Amount of data (in bytes) retrieved from storage to satisfy misses
+  - `hitbytes`: Amount of data successfully retrieved from cold cache in bytes
+  - `missbytes`: Amount of data in bytes not found in cold cache in bytes
+  - `retrievebytes`: Amount of data retrieved from storage to satisfy misses in bytes
 
-- `bypassbytes`: Amount of data (in bytes) that bypassed the cache
+- `bypassbytes`: Amount of data that bypassed the cache  in bytes
 
 - `results_cache_origin`: Information about the original query whose results were cached and reused
   - `client_request_id`: Unique identifier of the original request that populated the cache
   - `started_on`: Timestamp when the original query that populated the cache was executed
 
-- `partial_query_results`: Statistics of per-shard level caching (if enabled)
-  - `hits`: The number of shard-level query results found in the cache
-  - `misses`: The number of shard-level query results missing from the cache
+- `partial_query_results`: Statistics of per-shard level caching, if enabled
+  - `hits`: Number of shard-level query results found in the cache
+  - `misses`: Number of shard-level query results missing from the cache
 
-### CPU Usage
+### CPU usage
 
 The `resource_usage.cpu` section provides information about CPU consumption:
 
@@ -75,20 +75,20 @@ The `resource_usage.cpu` section provides information about CPU consumption:
   - `query execution`: CPU time for query execution
   - `query planning`: CPU time for query planning
 
-### Memory Usage
+### Memory usage
 
 The `resource_usage.memory` section provides information about memory consumption:
 
 - `peak_per_node`: Peak memory usage per node in bytes
 
-### Network Usage
+### Network usage
 
 The `resource_usage.network` section provides information about network usage:
 
 - `inter_cluster_total_bytes`: Total bytes transferred within the cluster
 - `cross_cluster_total_bytes`: Total bytes transferred across clusters
 
-## Input Dataset Statistics
+## Input dataset statistics
 
 The `input_dataset_statistics` section provides details about the source data processed:
 
@@ -115,7 +115,7 @@ The `input_dataset_statistics` section provides details about the source data pr
   - `downloaded_bytes`: Number of bytes downloaded
   - `iterated_artifacts`: Number of artifacts iterated
 
-## Integration with Monitoring Tools
+## Integration with monitoring tools
 
 The QueryResourceConsumption data can be collected and analyzed over time to identify trends and anomalies in query performance. This data is available through:
 
@@ -125,7 +125,17 @@ The QueryResourceConsumption data can be collected and analyzed over time to ide
 
 Monitoring this data can help identify query optimization opportunities and track the impact of changes to your data models or query patterns.
 
-## Programmatic Access
+### Query execution results
+
+You can access the QueryResourceConsumption data directly from the query execution results. The information is displayed in the results grid located below the query editor.
+
+1. Run a query in the Kusto Query Explorer.
+1. Browse to the **Stats** tab of the query results.
+1. View the **Raw JSAN Preview** section and select the **View full JSON** option to scroll through the raw JSON.
+
+:::image type="content" source="media/query-results-stats-raw-json.png" alt-text="Screenshot of sample query results with the Raw JSAON preview area highlighted." :::
+
+## Programmatic access
 
 In client applications, you can access the QueryResourceConsumption information programmatically:
 
@@ -136,6 +146,8 @@ var resourceConsumption = GetQueryResourceConsumption(dataSet.Tables[2], false);
 Console.WriteLine($"Execution time: {resourceConsumption.ExecutionTime}");
 Console.WriteLine($"Memory peak: {resourceConsumption.ResourceUsage.Memory.PeakPerNode}");
 ```
+
+For more information, see [Create an app to run management commands](kusto/api/get-started/app-management-commands?view=azure-data-explorer).
 
 ## Examples
 
