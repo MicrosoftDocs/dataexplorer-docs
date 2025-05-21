@@ -150,7 +150,7 @@ Console.WriteLine($"Execution time: {resourceConsumption.ExecutionTime}");
 Console.WriteLine($"Memory peak: {resourceConsumption.ResourceUsage.Memory.PeakPerNode}");
 ```
 
-For more information, see [[Create an app to run management commands](../api/get-started/app-management-commands.md)].
+For more information, see [Create an app to run management commands](../api/get-started/app-management-commands.md).
 
 ## Examples
 
