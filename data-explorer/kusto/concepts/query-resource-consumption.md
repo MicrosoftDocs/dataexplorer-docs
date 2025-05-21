@@ -131,9 +131,12 @@ You can access the raw JSON file of QueryResourceConsumption data directly from 
 
 1. Run a query in the query pane.
 1. Browse to the **Stats** tab of the query results.
-    :::image type="content" source="media/query-results-stats-tab.png" alt-text="Screenshot of the query results tabs, with the Stats tab highlighted.":::
+
+   :::image type="content" source="media/query-results-stats-tab.png" alt-text="Screenshot of the query results tabs, with the Stats tab highlighted.":::
+
 1. View the **Raw JSAN Preview** section and select the **View full JSON** option to scroll through the raw JSON.
-    :::image type="content" source="media/query-results-stats-raw-json.png" alt-text="Screenshot of sample query results with the Raw JSAON preview area highlighted." :::
+
+   :::image type="content" source="media/query-results-stats-raw-json.png" alt-text="Screenshot of sample query results with the Raw JSAON preview area highlighted." :::
 
 ## Programmatic access
 
