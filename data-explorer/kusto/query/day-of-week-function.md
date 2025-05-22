@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns the number of days since the preceding Sunday, as a `timespan`.
+Provides the number of days since the preceding Sunday, as a `timespan`.
 
 To convert `timespan` to `int`, see [Convert timespan to integer](#convert-timespan-to-integer).
 
@@ -27,11 +27,11 @@ To convert `timespan` to `int`, see [Convert timespan to integer](#convert-times
 
 ## Returns
 
-The `timespan` since midnight at the beginning of the preceding Sunday, rounded down to an integer number of days.
+Returns the `timespan` since midnight at the beginning of the preceding Sunday, rounded down to an integer number of days.
 
 ## Examples
 
-The following example returns 0, indicating that the specified datetime is a Sunday.
+The follow example shows how to extract the day of the week from a specified datetime value.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
