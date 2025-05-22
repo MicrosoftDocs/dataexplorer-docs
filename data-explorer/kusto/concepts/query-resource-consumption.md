@@ -454,7 +454,6 @@ For more information, see [Create an app to run management commands](../api/get-
 
 **Results from Partial Query Cache (Per-Shard)**: This example illustrates a query that benefited from per-shard level caching, as indicated by the `partial_query_results` section. The cache shows 1 hit and 0 misses, meaning the query was able to retrieve pre-computed results for the shard without having to reprocess the data. Unlike the full query cache example, the `input_dataset_statistics` shows that data was technically "scanned" (59,066 rows), but this was likely just a metadata operation since the actual computation was retrieved from cache. Note the very fast execution time (0.0047499 seconds), demonstrating the performance advantage of partial query caching. Per-shard caching is particularly useful for queries that repeatedly access the same data partitions with the same filtering conditions.
 
-
 ```json
 {
   "QueryHash": "da3c6dc30e7b203d",
@@ -528,4 +527,4 @@ For more information, see [Create an app to run management commands](../api/get-
 
 ## Related content
 
-* [Best practices for Kusto Query Language queries](../query/best-practices.md)
+- [Best practices for Kusto Query Language queries](../query/best-practices.md)
