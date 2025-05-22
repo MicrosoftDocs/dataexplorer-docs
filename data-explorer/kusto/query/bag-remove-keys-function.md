@@ -51,7 +51,7 @@ datatable(input:dynamic)
 |{<br>  "key1": 123,<br>  "key2": "abc"<br>}|{<br>  "key1": 123<br>}|
 |{<br>  "key1": "value",<br>  "key3": 42.0<br>}|{<br>  "key1": "value",<br>  "key3": 42.0<br>}|
 
-### Remove inner properties of dynamic values using JSONPath notation
+The following example removes inner properties of dynamic values using JSONPath notation.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
