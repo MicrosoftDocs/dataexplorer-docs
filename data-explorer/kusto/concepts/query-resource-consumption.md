@@ -3,7 +3,7 @@ title:  Query Resource Consumption
 description: Learn how to analyze resource consumption of Kusto queries to optimize performance.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 05/18/2025
+ms.date: 05/22/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 
@@ -25,8 +25,8 @@ The `QueryResourceConsumption` object typically includes the following main sect
 
 - `QueryHash`: A unique identifier for the query structure. This hash represents the query without its literal values, allowing for identification of similar query patterns even when the specific literal values differ. For example, queries like `Events | where Timestamp > datetime(2023-01-01)` and `Events | where Timestamp > datetime(2023-02-01)` would have the same QueryHash, as they share the same structure, only differing in the literal datetime values.
 - `ExecutionTime`: Total execution time in seconds
-- [`resource_usage`](#resource-usage-details): Detailed breakdown of resources used
-- [`input_dataset_statistics`](#input-dataset-statistics): Statistics about the data inputs processed
+- `resource_usage`: Detailed breakdown of [resources used](#resource-usage-details)
+- `input_dataset_statistics`: Statistics about the [data inputs](#input-dataset-statistics) processed
 - `dataset_statistics`: Statistics about the resulting dataset
 - `cross_cluster_resource_usage`: Information about resources used across clusters where relevant
 
@@ -44,25 +44,35 @@ The resource usage section provides detailed information about the resources con
 
 The `resource_usage.cache.shards` section provides information about how the query utilized the cache:
 
-- `hot`: Data served from the hot cache
-  - `hitbytes`: Amount of data successfully retrieved from hot cache in bytes
-  - `missbytes`: Amount of data not found in hot cache in bytes
-  - `retrievebytes`: Amount of data retrieved from storage to satisfy misses in bytes
+| Object | Property | Description |
+|--|--|--|
+| `hot` | Data served from the hot cache |  |
+|  | `hitbytes` | Amount of data successfully retrieved from hot cache in bytes |
+|  | `missbytes` | Amount of data not found in hot cache in bytes |
+|  | `retrievebytes` | Amount of data retrieved from storage to satisfy misses in bytes |
 
-- `cold`: Data served from the cold cache
-  - `hitbytes`: Amount of data successfully retrieved from cold cache in bytes
-  - `missbytes`: Amount of data in bytes not found in cold cache in bytes
-  - `retrievebytes`: Amount of data retrieved from storage to satisfy misses in bytes
+| Property | Child Property | Description |
+|--|--|--|
+| - `cold` | Data served from the cold cache |  |
+|  | `hitbytes` | Amount of data successfully retrieved from cold cache in bytes |
+|  | `missbytes` | Amount of data in bytes not found in cold cache in bytes |
+|  | `retrievebytes` | Amount of data retrieved from storage to satisfy misses in bytes |
 
-- `bypassbytes`: Amount of data that bypassed the cache  in bytes
+| Property | Child Property | Description |
+|--|--|
+| `bypassbytes` | Amount of data that bypassed the cache  in bytes |  |
 
-- `results_cache_origin`: Information about the original query whose results were cached and reused
-  - `client_request_id`: Unique identifier of the original request that populated the cache
-  - `started_on`: Timestamp when the original query that populated the cache was executed
+| Property | Child Property | Description |
+|--|--|--|
+| `results_cache_origin` | Information about the original query whose results were cached and reused |  |
+|  | `client_request_id` | Unique identifier of the original request that populated the cache |
+|  | `started_on` | Timestamp when the original query that populated the cache was executed |
 
-- `partial_query_results`: Statistics of per-shard level caching, if enabled
-  - `hits`: Number of shard-level query results found in the cache
-  - `misses`: Number of shard-level query results missing from the cache
+| Property | Child Property | Description |
+|--|--|--|
+| `partial_query_results` | Statistics of per-shard level caching, if enabled |  |
+|  | `hits` | Number of shard-level query results found in the cache |
+|  | `misses` | Number of shard-level query results missing from the cache |
 
 ### CPU usage
 
@@ -438,7 +448,7 @@ For more information, see [Create an app to run management commands](../api/get-
 }
 ```
 
-**Results from Partial Query Cache (Per-Shard)**: This example illustrates a query that benefited from per-shard level caching, as indicated by the `partial_query_results` section. The cache shows 1 hit and 0 misses, meaning the query was able to retrieve pre-computed results for the shard without having to reprocess the data. Unlike the full query cache example (Example 4), the `input_dataset_statistics` shows that data was technically "scanned" (59,066 rows), but this was likely just a metadata operation since the actual computation was retrieved from cache. Note the very fast execution time (0.0047499 seconds), demonstrating the performance advantage of partial query caching. Per-shard caching is particularly useful for queries that repeatedly access the same data partitions with the same filtering conditions.
+**Results from Partial Query Cache (Per-Shard)**: This example illustrates a query that benefited from per-shard level caching, as indicated by the `partial_query_results` section. The cache shows 1 hit and 0 misses, meaning the query was able to retrieve pre-computed results for the shard without having to reprocess the data. Unlike the full query cache example, the `input_dataset_statistics` shows that data was technically "scanned" (59,066 rows), but this was likely just a metadata operation since the actual computation was retrieved from cache. Note the very fast execution time (0.0047499 seconds), demonstrating the performance advantage of partial query caching. Per-shard caching is particularly useful for queries that repeatedly access the same data partitions with the same filtering conditions.
 
 
 ```json
