@@ -50,26 +50,18 @@ The `resource_usage.cache.shards` section provides information about how the que
 |  | `hitbytes` | Amount of data successfully retrieved from hot cache in bytes |
 |  | `missbytes` | Amount of data not found in hot cache in bytes |
 |  | `retrievebytes` | Amount of data retrieved from storage to satisfy misses in bytes |
-
-| Object | Property | Description |
-|--|--|--|
+|  |  |  |
 | `cold` |  | Data served from the cold cache |
 |  | `hitbytes` | Amount of data successfully retrieved from cold cache in bytes |
 |  | `missbytes` | Amount of data in bytes not found in cold cache in bytes |
 |  | `retrievebytes` | Amount of data retrieved from storage to satisfy misses in bytes |
-
-| Object | Property | Description |
-|--|--|--|
+|  |  |  |
 | `bypassbytes` |  | Amount of data that bypassed the cache  in bytes |
-
-| Object | Property | Description |
-|--|--|--|
+|  |  |  |
 | `results_cache_origin` |  | Information about the original query whose results were cached and reused |
 |  | `client_request_id` | Unique identifier of the original request that populated the cache |
 |  | `started_on` | Timestamp when the original query that populated the cache was executed |
-
-| Object | Property | Description |
-|--|--|--|
+|  |  |  |
 | `partial_query_results` |  | Statistics of per-shard level caching, if enabled |
 |  | `hits` | Number of shard-level query results found in the cache |
 |  | `misses` | Number of shard-level query results missing from the cache |
@@ -115,15 +107,19 @@ The `input_dataset_statistics` section provides details about the source data pr
 |  | `scanned` | Number of extents scanned (examined by query nodes) |
 |  | `scanned_min_datetime` | Minimum datetime of scanned data |
 |  | `scanned_max_datetime` | Maximum datetime of scanned data |
+|  |  |  |
 | `rows` |  | Information about data rows |
 |  | `total` | Total number of rows in all tables referenced by the query |
 |  | `scanned` | Number of rows scanned (examined by query nodes) |
+|  |  |  |
 | `rowstores` |  | Information about rowstore data |
 |  | `scanned_rows` | Number of rows scanned from rowstores |
 |  | `scanned_values_size` | Size of values scanned from rowstores |
+|  |  |  |
 | `shards` |  | Information about shard queries |
 |  | `total` | Total number of shards in all tables referenced by the query |
 |  | `scanned` | Number of shards scanned (examined by query nodes) |
+|  |  |  |
 | `external_data` |  | Information about external data (if applicable) |
 |  | `downloaded_items` | Number of items downloaded from external data sources |
 |  | `downloaded_bytes` | Number of bytes downloaded from external data sources |
