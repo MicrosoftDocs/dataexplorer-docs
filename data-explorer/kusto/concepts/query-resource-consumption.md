@@ -51,24 +51,24 @@ The `resource_usage.cache.shards` section provides information about how the que
 |  | `missbytes` | Amount of data not found in hot cache in bytes |
 |  | `retrievebytes` | Amount of data retrieved from storage to satisfy misses in bytes |
 
-| Property | Child Property | Description |
+| Object | Property | Description |
 |--|--|--|
 | - `cold` | Data served from the cold cache |  |
 |  | `hitbytes` | Amount of data successfully retrieved from cold cache in bytes |
 |  | `missbytes` | Amount of data in bytes not found in cold cache in bytes |
 |  | `retrievebytes` | Amount of data retrieved from storage to satisfy misses in bytes |
 
-| Property | Child Property | Description |
+| Object | Property | Description |
 |--|--|
 | `bypassbytes` | Amount of data that bypassed the cache  in bytes |  |
 
-| Property | Child Property | Description |
+| Object | Property | Description |
 |--|--|--|
 | `results_cache_origin` | Information about the original query whose results were cached and reused |  |
 |  | `client_request_id` | Unique identifier of the original request that populated the cache |
 |  | `started_on` | Timestamp when the original query that populated the cache was executed |
 
-| Property | Child Property | Description |
+| Object | Property | Description |
 |--|--|--|
 | `partial_query_results` | Statistics of per-shard level caching, if enabled |  |
 |  | `hits` | Number of shard-level query results found in the cache |
