@@ -27,7 +27,7 @@ Enumerates all the root keys in a dynamic property bag object.
 
 An array of keys, order is undetermined.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

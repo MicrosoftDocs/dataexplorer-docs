@@ -30,7 +30,7 @@ Calculates the [average](avg-aggregation-function.md) of *expr* in records for w
 
 Returns the average value of *expr* in records where *predicate* evaluates to `true`.
 
-## Example
+## Examples
 
 The following example calculates the average damage by state in cases where there was any damage.
 

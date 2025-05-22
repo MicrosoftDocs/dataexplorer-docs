@@ -36,9 +36,9 @@ Returns an estimate of the number of distinct values of *expr* for rows in which
 > [!TIP]
 > `dcountif()` might return an error in cases where all, or none of the rows pass the `Predicate` expression.
 
-## Example
+## Examples
 
-This example shows how many types of fatal storm events happened in each state.
+The following example shows how many types of fatal storm events happened in each state.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
