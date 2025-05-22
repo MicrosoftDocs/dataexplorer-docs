@@ -46,31 +46,31 @@ The `resource_usage.cache.shards` section provides information about how the que
 
 | Object | Property | Description |
 |--|--|--|
-| `hot` | Data served from the hot cache |  |
+| `hot` |  | Data served from the hot cache |
 |  | `hitbytes` | Amount of data successfully retrieved from hot cache in bytes |
 |  | `missbytes` | Amount of data not found in hot cache in bytes |
 |  | `retrievebytes` | Amount of data retrieved from storage to satisfy misses in bytes |
 
 | Object | Property | Description |
 |--|--|--|
-| - `cold` | Data served from the cold cache |  |
+| `cold` |  | Data served from the cold cache |
 |  | `hitbytes` | Amount of data successfully retrieved from cold cache in bytes |
 |  | `missbytes` | Amount of data in bytes not found in cold cache in bytes |
 |  | `retrievebytes` | Amount of data retrieved from storage to satisfy misses in bytes |
 
 | Object | Property | Description |
-|--|--|
-| `bypassbytes` | Amount of data that bypassed the cache  in bytes |  |
+|--|--|--|
+| `bypassbytes` |  | Amount of data that bypassed the cache  in bytes |
 
 | Object | Property | Description |
 |--|--|--|
-| `results_cache_origin` | Information about the original query whose results were cached and reused |  |
+| `results_cache_origin` |  | Information about the original query whose results were cached and reused |
 |  | `client_request_id` | Unique identifier of the original request that populated the cache |
 |  | `started_on` | Timestamp when the original query that populated the cache was executed |
 
 | Object | Property | Description |
 |--|--|--|
-| `partial_query_results` | Statistics of per-shard level caching, if enabled |  |
+| `partial_query_results` |  | Statistics of per-shard level caching, if enabled |
 |  | `hits` | Number of shard-level query results found in the cache |
 |  | `misses` | Number of shard-level query results missing from the cache |
 
@@ -78,6 +78,7 @@ The `resource_usage.cache.shards` section provides information about how the que
 
 The `resource_usage.cpu` section provides information about CPU consumption:
 
+| Object | Property | Description |
 - `user`: User-mode CPU time
 - `kernel`: Kernel-mode CPU time
 - `total cpu`: Total CPU time consumed
