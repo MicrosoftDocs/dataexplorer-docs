@@ -79,52 +79,55 @@ The `resource_usage.cache.shards` section provides information about how the que
 The `resource_usage.cpu` section provides information about CPU consumption:
 
 | Object | Property | Description |
-- `user`: User-mode CPU time
-- `kernel`: Kernel-mode CPU time
-- `total cpu`: Total CPU time consumed
-- `breakdown`: Further breakdown of CPU usage
-  - `query execution`: CPU time for query execution
-  - `query planning`: CPU time for query planning
+|--|--|--|
+| `user` |  | User-mode CPU time |
+|  | `kernel` | Kernel-mode CPU time |
+|  | `total cpu` | Total CPU time consumed |
+|  | `breakdown` | Further breakdown of CPU usage |
+|  | `query execution` | CPU time for query execution |
+|  | `query planning` | CPU time for query planning |
 
 ### Memory usage
 
 The `resource_usage.memory` section provides information about memory consumption:
 
-- `peak_per_node`: Peak memory usage per node in bytes
+| Object | Property | Description |
+|--|--|--|
+| `peak_per_node` |  | Peak memory usage per node in bytes |
 
 ### Network usage
 
 The `resource_usage.network` section provides information about network usage:
 
-- `inter_cluster_total_bytes`: Total bytes transferred within the cluster
-- `cross_cluster_total_bytes`: Total bytes transferred across clusters
+| Object | Property | Description |
+|--|--|--|
+| `inter_cluster_total_bytes` |  | Total bytes transferred within the cluster |
+| `cross_cluster_total_bytes` |  | Total bytes transferred across clusters |
 
 ## Input dataset statistics
 
 The `input_dataset_statistics` section provides details about the source data processed:
 
-- `extents`: Information about data extents
-  - `total`: Total number of extents in all tables referenced by the query
-  - `scanned`: Number of extents scanned (examined by query nodes)
-  - `scanned_min_datetime`: Minimum datetime of scanned data
-  - `scanned_max_datetime`: Maximum datetime of scanned data
-
-- `rows`: Information about data rows
-  - `total`: Total number of rows in all tables referenced by the query
-  - `scanned`: Number of rows scanned (examined by query nodes)
-
-- `rowstores`: Information about rowstore data
-  - `scanned_rows`: Number of rows scanned from rowstores
-  - `scanned_values_size`: Size of values scanned from rowstores
-
-- `shards`: Information about shard queries
-  - `queries_generic`: Number of generic shard queries
-  - `queries_specialized`: Number of specialized shard queries
-
-- `external_data`: Information about external data (if applicable)
-  - `downloaded_items`: Number of items downloaded
-  - `downloaded_bytes`: Number of bytes downloaded
-  - `iterated_artifacts`: Number of artifacts iterated
+| Object | Property | Description |
+|--|--|--|
+| `extents` |  | Information about data extents |
+|  | `total` | Total number of extents in all tables referenced by the query |
+|  | `scanned` | Number of extents scanned (examined by query nodes) |
+|  | `scanned_min_datetime` | Minimum datetime of scanned data |
+|  | `scanned_max_datetime` | Maximum datetime of scanned data |
+| `rows` |  | Information about data rows |
+|  | `total` | Total number of rows in all tables referenced by the query |
+|  | `scanned` | Number of rows scanned (examined by query nodes) |
+| `rowstores` |  | Information about rowstore data |
+|  | `scanned_rows` | Number of rows scanned from rowstores |
+|  | `scanned_values_size` | Size of values scanned from rowstores |
+| `shards` |  | Information about shard queries |
+|  | `total` | Total number of shards in all tables referenced by the query |
+|  | `scanned` | Number of shards scanned (examined by query nodes) |
+| `external_data` |  | Information about external data (if applicable) |
+|  | `downloaded_items` | Number of items downloaded from external data sources |
+|  | `downloaded_bytes` | Number of bytes downloaded from external data sources |
+|  | `iterated_artifacts` | Number of artifacts iterated from external data sources |
 
 ## Integration with monitoring tools
 
