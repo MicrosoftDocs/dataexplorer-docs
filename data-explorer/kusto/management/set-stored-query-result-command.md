@@ -43,7 +43,7 @@ You must have [Database Viewer](../access-control/role-based-access-control.md) 
 | Property | Type | Description |
 |--|--|--|
 | `expiresAfter` | `timespan` | Determines when the stored query result expires. Maximum is 24 hours. |
-| `previewCount` | `int` | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. The property is ignored when the command is invoked using `async` mode. |
+| `previewCount` | `int` | The number of rows to return in a preview (the default is 10K). Setting this property to `0` makes the command return all the query result rows. The property is ignored when the command is invoked using `async` mode. |
 
 ## Returns
 
