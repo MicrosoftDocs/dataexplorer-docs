@@ -4,12 +4,12 @@ description: Learn how to analyze resource consumption of Kusto queries to optim
 ms.reviewer: herauch
 ms.topic: reference
 ms.date: 05/22/2025
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 
 # Query resource consumption
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 This document describes the resource consumption information returned as part of a Kusto query response.
 
