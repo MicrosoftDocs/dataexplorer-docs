@@ -1467,15 +1467,17 @@ items:
 - name: Graph
   items:
   - name: Graph overview
-    href: /kusto/query/graph-overview?view=azure-data-explorer&preserve-view=true
+    href: /graph-overview?view=azure-data-explorer&preserve-view=true
   - name: Graph best practices
-    href: /kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true
+    href: /graph-best-practices?view=azure-data-explorer&preserve-view=true
   - name: Graph scenarios
-    href: /kusto/query/graph-scenarios?view=azure-data-explorer&preserve-view=true
+    href: /graph-scenarios?view=azure-data-explorer&preserve-view=true
   - name: Graph operators
     items:
     - name: Graph operators overview
       href: /kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true
+    - name: graph
+      href: /kusto/query/graph-operator?view=azure-data-explorer&preserve-view=true
     - name: make-graph
       href: /kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true
     - name: graph-match
