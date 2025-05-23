@@ -35,10 +35,6 @@ For zero length paths, the condition evaluates to `true`.
 
 ## Examples
 
-The examples in this section show how to use the syntax to help you get started.
-
-### Find all round-trip paths between two train stations using different lines for each direction
-
 The following example shows how to use the `graph-match` operator with the `all()` function to find all round-trip paths between two stations in a transportation network. It uses a different line for each direction. The query constructs a graph from the `connections` data, finding all paths up to five connections long that use the `"red"` line for the outward route, and the `"blue"` line for the return route. The `all()` function ensures that all edges in the variable length edge are part of the same line, either `"red"` or `"blue"`.
 
 :::moniker range="azure-data-explorer"
@@ -88,7 +84,6 @@ connections
 |Central|South->South-West|West|Central->East|Central|
 |West|South-West->South|Central|East->Central|West|
 
-### Find the shortest path between two stations with Wi-Fi available
 
 The following example shows how to use the `graph-shortest-paths` operator  with the `all()` and `inner_nodes` functions to find a path between two stations in a transportation network. The query constructs a graph from the `connections` data and finds the shortest path from the `"South-West"` station to the `"North"` station, passing through stations where Wi-Fi is available.
 

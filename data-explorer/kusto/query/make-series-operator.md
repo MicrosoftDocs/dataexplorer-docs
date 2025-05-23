@@ -85,7 +85,10 @@ Finally the rows from the intermediate result arranged into groups having the sa
 |[avgif()](avgif-aggregation-function.md)|Returns an average with the predicate of the group|
 |[count()](count-aggregation-function.md)|Returns a count of the group|
 |[countif()](countif-aggregation-function.md)|Returns a count with the predicate of the group|
-|[covariance()](covariance-aggregation-function.md)|Returns the covariance of two random variables|
+|[covariance()](covariance-aggregation-function.md)|Returns the sample covariance of two random variables|
+|[covarianceif()](covarianceif-aggregation-function.md)|Returns the sample covariance of two random variables with predicate|
+|[covariancep()](covariancep-aggregation-function.md)|Returns the population covariance of two random variables|
+|[covariancepif()](covariancepif-aggregation-function.md)|Returns the population covariance of two random variables with predicate|
 |[dcount()](dcount-aggregation-function.md)|Returns an  approximate distinct count of the group elements|
 |[dcountif()](dcountif-aggregation-function.md)|Returns an approximate distinct count with the predicate of the group|
 |[max()](max-aggregation-function.md)|Returns the maximum value across the group|
@@ -97,7 +100,10 @@ Finally the rows from the intermediate result arranged into groups having the sa
 |[stdev()](stdev-aggregation-function.md)|Returns the standard deviation across the group|
 |[sum()](sum-aggregation-function.md)|Returns the sum of the elements within the group|
 |[sumif()](sumif-aggregation-function.md)|Returns the sum of the elements with the predicate of the group|
-|[variance()](variance-aggregation-function.md)|Returns the variance across the group|
+|[variance()](variance-aggregation-function.md)|Returns the sample variance across the group|
+|[varianceif()](varianceif-aggregation-function.md)|Returns the sample variance across the group with predicate|
+|[variancep()](variancep-aggregation-function.md)|Returns the population variance across the group|
+|[variancepif()](variancepif-aggregation-function.md)|Returns the population variance across the group with predicate|
 
 ## List of series analysis functions
 

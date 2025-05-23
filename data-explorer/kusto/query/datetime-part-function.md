@@ -43,12 +43,14 @@ Extracts the requested date part as an integer value.
 
 ## Returns
 
-An integer representing the extracted part.
+Returns an integer representing the extracted part.
 
 > [!NOTE]
 > `week_of_year` returns an integer which represents the week number. The week number is calculated from the first week of a year, which is the one that includes the first Thursday.
 
-## Example
+## Examples
+
+The following example extracts the year, quarter, month, week of year, day, day of year, hour, minute, second, millisecond, microsecond, and nanosecond from a specified datetime value.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

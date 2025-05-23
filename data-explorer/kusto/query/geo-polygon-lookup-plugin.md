@@ -3,7 +3,7 @@ title:  geo_polygon_lookup plugin
 description: Learn how to use the geo_polygon_lookup plugin to look up a polygon value in a lookup table.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/08/2025
+ms.date: 05/21/2025
 ---
 # geo_polygon_lookup plugin (preview)
 
@@ -13,7 +13,7 @@ The `geo_polygon_lookup` plugin looks up a `Polygon` value in a lookup table and
 
 ## Syntax
 
-*T* `|` `evaluate` `geo_polygon_lookup(` *LookupTable* `,` *LookupPolygonKey* `,` *SourceLongitude* `,` *SourceLatitude* `,` [ *radius* ] `,` [ *return_unmatched* ] `,` [ *lookup_area_radius* ] `)`
+*T* `|` `evaluate` `geo_polygon_lookup(` *LookupTable* `,` *LookupPolygonKey* `,` *SourceLongitude* `,` *SourceLatitude* `,` [ *radius* ] `,` [ *return_unmatched* ] `,` [ *lookup_area_radius* ] `,` [ *return_lookup_key* ] `)`
 
 ## Parameters
 
@@ -26,7 +26,8 @@ The `geo_polygon_lookup` plugin looks up a `Polygon` value in a lookup table and
 | *SourceLatitude* | `real` |  :heavy_check_mark: | The column of *T* with latitude value to be looked up in *LookupTable*. Latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
 | *radius* | `real` | | An optional radius value that defines the length from the polygon borders where the location is considered a match.|
 | *return_unmatched* | `bool` | | An optional boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
-| *lookup_area_radius* | `real` | | An optional lookup area radius distance in meters value that may help in matching locations to their respective polygons.|
+| *lookup_area_radius* | `real` | | An optional lookup area radius distance in meters value that might help in matching locations to their respective polygons.|
+| *return_lookup_key* | `bool` | | An optional boolean flag that defines if the result should include column *LookupPolygonKey* (default: `false`).|
 
 ## Returns
 
@@ -38,12 +39,12 @@ If the *return_unmatched* argument is set to `true`, the resulting table include
 
 If the *return_unmatched* argument is set to `false`, or omitted (the default value of `false` is used), the resulting table has as many records as matching results. This variant of lookup has better performance compared to `return_unmatched=true` execution.
 
-Setting *lookup_area_radius* length overrides internal matching mechanism and may improve or worsen run time and\or memory consumption. It does not affect query correctness. Read more below on how to set this optional value.
+Setting *lookup_area_radius* length overrides internal matching mechanism and might improve or worsen run time and\or memory consumption. It doesn't affect query correctness. Read more below on how to set this optional value.
 
 > [!NOTE]
 >
 > * This plugin covers the scenario of classifying locations to polygons, assuming a small lookup table size, with the input table optionally having a larger size.
-> * The performance of the plugin will depend on the sizes of the lookup and data source tables, the number of columns, and number of matching records.
+> * The performance of the plugin depends on the sizes of the lookup and data source tables, the number of columns, and number of matching records.
 > * The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.
 > * The [geodetic datum](https://en.wikipedia.org/wiki/Geodetic_datum) used for measurements on Earth is a sphere. Polygon edges are [geodesics](https://en.wikipedia.org/wiki/Geodesic) on the sphere.
 > * If input polygon edges are straight cartesian lines, consider using [geo_polygon_densify()](geo-polygon-densify-function.md) to convert planar edges to geodesics.
@@ -65,12 +66,12 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 
 > [!NOTE]
 >
-> * Polygon doesn't necessarily contain its vertices. Point containment in polygon is defined so that if the Earth is subdivided into polygons, every point is contained by exactly one polygon. Hence, setting Radius = 0 is not equal to not setting it.
+> * Polygon doesn't necessarily contain its vertices. Point containment in polygon is defined so that if the Earth is subdivided into polygons, every point is contained by exactly one polygon. Hence, setting Radius = 0 isn't equal to not setting it.
 
 **Setting lookup_area_radius (if needed)**
 
 Setting lookup area radius overrides internal mechanism for matching locations to their respective polygons. The value is a distance in meters. Ideally, lookup area radius should represent a distance from polygon center, such that within that distance a point matches to exactly one polygon in one-to-one manner and within that distance, there are no more than a single polygon.
-Because the polygons data might be big, polygons may vary greatly in size and shape compared to each other and the proximity of the polygon one to another, it might be challenging to come up with the radius that performs the best. If needed, here is a sample that may help.
+Because the polygons data might be large, polygons might vary greatly in size and shape compared to each other and the proximity of the polygon one to another, it might be challenging to come up with the radius that performs the best. If needed, here's a sample that might help.
 
 PolygonsTable
 | project value = sqrt(geo_polygon_area(polygon))
@@ -80,9 +81,9 @@ Try using lookup radius starting from average value towards either minimum (If t
 
 > [!TIP]
 >
-> * If Locations table has too many coordinates that are close to each other, consider aggregating them using [geo_point_to_s2cell()](geo-point-to-s2cell-function.md).
-> * If you want to know if any of the polygons contains a point, try the following steps: Fold the collection of polygons into one multipolygon. Then query this multipolygon. This may improve performance. See the following example.
-> * It's might be possible to build a more personalized (or performant) join functionality using [geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md).
+> * If the Locations table has too many coordinates that are close to each other, consider aggregating them using [geo_point_to_s2cell()](geo-point-to-s2cell-function.md).
+> * If you want to know if any of the polygons contains a point, try the following steps: Fold the collection of polygons into one multipolygon. Then query this multipolygon. This method might improve performance. See the following example.
+> * It might be possible to build a more personalized (or performant) join functionality using [geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md).
 
 ## Examples
 
@@ -90,7 +91,7 @@ The following example returns only matching rows.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTTW%2FbMAy951cIPrWAa4gSRUoZdhnQW1sU2C5DEBRuomRGnSjwx4pg238fHSfeF7DaF4t%2BJN%2Fjo%2BrYqUOqj9u0b9V7tS47eZ%2FreHUOPu3LXZy3XVPtt%2FkFOV8fJVytrmeLmZIne4iv6nNqXrJcnX9dfcu64yFm8%2BxxzJFf2SqlZl3tyy622XyxWNywLQJbdsgaAJkoR10wWq01ezBIgMt8hHlyNhjQgCbgCeZQYhosgQ8TLATQZIy1IF9jNQBDwSGR9hPsrabL5Y%2FrfNT2WDZV%2B19h%2F%2BgyhWNH0jF4T9YID1%2BwcCBmQhFh7UDEFGi0FmHCIgTrRVUotAOyNqAPJFxOKNFM7C1AAHJs7FDNC3XLAZGdyD3B3m45ilq%2Bm9Viep1WZVf97fol%2Bqftddpvq65fx3kTy1rOgpmO0xLc7g5VE9VHqRXVh76qZSRbGdxonzCxlv3w4XJ1mrhHQyYEFjP4POyHU%2FeyVvd9G%2FudSht1X3Zf4k7iq3YqxuzFeQxkgM%2FFrNQ11jCDQ3eudlttNrFWn9JrbCTXFLI6Mllpq8kHPaTKKJ03ZGUPgAL4S%2Bpd2q9PS3ujC7AGnQvBsNEQSGOuHBQoNAKSeOgt%2BXPaIL6PA%2B276jk23VEqCGcsNKKspRDUFsTCgbNQADHIsJMFZRydubgy%2B67i17Luh1luY3q6XMc6pZf%2BcLmd7XQlfzPplz%2FXPwGFbZi43gMAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTTW%2FbMAy951cIPrWAa4gSRUoZdhnQW1sU2C5DEARuomZGnSjwx4pg238fHcfZF7DaF4t%2BJN%2Fjo%2BrYqUOqj9u0b9V7tSk7eZ%2FqeHUOrvblLs7brqn223xCzjdHCVfr69lipuTJHuKr%2BpyalyxX519X37LueIjZPHscc%2BRXtk6p2VT7sottNl8sFjdsi8CWHbIGQCbKUReMVmvNHgwS4DIfYZ6cDQY0oAl4gjmUmAZL4MMFFgJoMsZakK%2BxGoCh4JBI%2BwvsrabL5Y%2FrfNT2WDZV%2B19h%2F%2BgyhWNH0jF4T9YID1%2BwcCBmQhFh7UDEFGi0FmHCIgTrRVUotAOyNqAPJFxOKNFM7C1AAHJs7FDNC3XLAZGdyD3B3m45ilq%2Bm9Viep3WZVf97foU%2FdP2Ou23Vddv4ryJZS1nwVyOlyW43R2qJqqPUiuqD31Vy0i2MrjRPmFiLfvhw%2BXqNHGPhkwILGbwedgPp%2B5lre77NvY7lZ7Vfdl9iTuJr9tLMWYvzmMgA3wuZqWusYYZHLpztdvq%2BTnW6lN6jY3kmkJWRyYrbTX5oIdUGaXzhqzsAVAAP6Xepf3mtLQ3ugBr0LkQDBsNgTTmykGBQiMgiYfekj%2BnDeL7ONC%2Bq55i0x2lgnDGQiPKWgpBbUEsHDgLBRCDDDtZUMbRmcmV2XcVv5Z1P8xyG9Nquo51Si%2F9Ybqd7eVK%2FmbSL39y1cSub6as1Us8ittd08frn0Hw5ob4AwAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -108,7 +109,7 @@ let locations = datatable(location_name:string, longitude:real, latitude:real)
     "Statue of Liberty",  -74.04462223203123, 40.689195627512674,
 ];
 locations
-| evaluate geo_polygon_lookup(polygons, polygon, longitude, latitude)
+| evaluate geo_polygon_lookup(polygons, polygon, longitude, latitude, return_lookup_key = true)
 ```
 
 **Output**
@@ -123,7 +124,7 @@ The following example returns both matching and nonmatching rows.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTS2%2FbMAy%2B51cIPrWAa4gSRUoZdhnQW1sU2C5FEBRuoqZGHSvwY0Ww7b%2BPjpPsBaz2RaJI6ntQdezVLtX7TWo69VGty17%2BpzpeHIOPTbmN865vq2aTnzLn672Eq9XlbDFT8mV38U09pPY1y9Xx6OJb1u93MZtn91ONHGWrlNp11ZR97LL5YrG4YlsEtuyQNQAyUY66YLRaa%2FZgkACX%2BZTmydlgQAOagIc0hxLTYAl8OKeFAJqMsRZkNXUDMBQcEml%2FTnvv0uXyx2U%2Bcbsv26r7L7F%2FeJnCsSO5MXhP1ggOX7BgIGZCIWHtCMQUaLQWYoIiBOuFVSi0A7I2oA8kWA5ZwpnYW4AA5NjYsZsX6JYDIjuhe0h7%2F8qJ1PLDrBbT67Qq%2B%2Bpv10%2FRP22vU7Op%2BmEd520sa9lLznl7HoLr7a5qo%2FosvaL6NFS1SLIR4Sb7BIm17MeFy9VBcY%2BGTAgsZvBR7LsHdXcAUNbqdujisFXpWd2W%2FUvcSnzVnfsxezEfAxngYz8rrY01zODQHRteV8%2FPsVZf0ltspdYUMj0irtysyQc9loqazhuyMgpAAfyp9CY168PcXukCrEHnQjBsNATSmCsHBQqMgCQ2ekv%2BWDbyH%2BII%2B6Z6im2%2Flw6CGQuNKJMpALUFcXHELBBAPDLsZEYZJ3NOxsy%2Bq%2Fi1rIdRzk1Mj6cXWaf0OuxOD7Q7v8rffPplUa7a2A9t8zg0IuDqJa7F774d4uVPe7lNOPoDAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTTW%2FbMAy951cIPjWAa4gSJUoZdhnQWxsU2C5FEARuoqRGHCvwx4pg238fHTtptwGrfZEo8uk9PqoMrTjG8rSLVSM%2Bi03e8v9chpsxuKryQ5g1bV1Uu%2FSSOducOFysp5PFRPCXzMOreIr1PknFeHTzI2lPx5DMksehho%2BSdYz1pqjyNjTJbLFY3JLOPGkySBIAydoUZUaopZTkQKEFXKZDmrNGewUSUHk8pxnkmARtwflrmvcgrVJaA68GNABlvUFrpbumfXTpcvlrmg7aHvO6aP4r7B9dKjNkLN%2FonbNaMQ%2BXEXOwRBZZhNY9EZWhkpKFMQvvtWNVPpMGrNYenbfM5ZzFmi05DeDBGlK6R3NMXZNHJMNyz2kfXzmIWn6alGx6Gdd5W%2Fzt%2BiX6p%2B1lrHZF223CrA55yXvOuW6vQ3B3OBZ1EF8ZK4gvXVFyS3bcuME%2BZqI1uX5hUnHuuENllffEZtDY7PmTmJ8J5KV46JrQHUTcioe8fQkHjq%2BbKx6RY%2FPRWwU04mmGVloRgUEzAt4V220oxbf4GmquVRlPDzeXb5bWedmXcjeNU1bzKID14C6l97HanOf2VmagFRrjvSIlwVuJqTCQIdPwaNlGp60by3r9Xehp3xfPoW5PjMCcMZOIPJlMUGpgF3vOTAHYI0WGZ5RwMOdizOSnCN%2FzsuvbuQtxdXmRZYz77nh5oM31Vb7z6c2iVNSh7epq1VXcwPVL2LDfbd29HQxwq304jSfT34Q6nR0UBAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -141,7 +142,7 @@ let locations = datatable(location_name:string, longitude:real, latitude:real)
     "Statue of Liberty",  -74.04462223203123, 40.689195627512674,
 ];
 locations
-| evaluate geo_polygon_lookup(polygons, polygon, longitude, latitude, return_unmatched = true)
+| evaluate geo_polygon_lookup(polygons, polygon, longitude, latitude, return_unmatched = true, return_lookup_key = true)
 ```
 
 **Output**
@@ -154,11 +155,11 @@ locations
 |Statue of Liberty|-74.04462223203123|40.689195627512674|||
 |London|-0.13245599272019604|51.498794642083681|||
 
-The following example returns both matching and nonmatching rows where radius is set to 7km.
+The following example returns both matching and nonmatching rows where radius is set to 7 km.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTTW%2FbMAy951cIPjWAa4gSJUoZdhnQWxsU2C5FEARurKRGHSvwx4pg238fHSfeF7DaF4kin97jo6rQiWOsTvtYt%2BKjKPKO%2F%2Bcq3FyCmzo%2FhEXbNWW9T6%2BZi%2BLE4XI7n61mgr9kGd7EU2xek1Rcjm6%2BJd3pGJJF8jjW8FGyjbEpyjrvQpssVqvVLenMkyaDJAGQrE1RZoRaSkkOFFrAdTqmOWu0VyABlcdzmkGOSdAWnJ%2FSvAdpldIaeDWiASjrDVor3ZT23qXr9Y95Omp7zJuy%2Fa%2Bwf3SpzJCxfKN3zmrFPFxGzMESWWQRWg9EVIZKShbGLLzXjlX5TBqwWnt03jKXcxZrtuQ0gAdrSOkBzTF1TR6RDMs9p71%2F5Shq%2FWFWselV3OZd%2Bbfr1%2Biftlex3pddX4RFE%2FKK95wzbachuDscyyaIz4wVxKe%2BrLgle27caB8z0ZrcsDCpOHfcobLKe2Iz6NLs5ZNYngnklXjo29AfRNyJh7x7CQeOb9sJj8ix%2BeitArrgaYZWWhGBQXMBvCt3u1CJL%2FEtNFyrMp4ebi7fLK3zcijlbhqnrOZRAOvBXUvvY12c5%2FZWZqAVGuO9IiXBW4mpMJAh0%2FBo2UanrbuUDfr7MNC%2BL59D050YgTljJhF5Mpmg1MAuDpyZArBHigzPKOFoztWY2XcRvuZVP7RzH%2BLm%2BiKrGF%2F74%2FWBttOr%2FM2nXxalosmLsh9cJh5w3oaub%2BpNX3M%2Fty%2Bh4IOu6cP8J0fbkBEJBAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VTyW7bMBC9%2BysInRJAEbgMZ0gXvRTILQkCtJfAMAzFoh0hsmhoaWC0%2FfeOLFndgMa%2BiLM8vjdvWIVOHGN12se6FR9FkXf8f67C1RTc1PkhLNuuKet9eqlcFicOl9vrxWoh%2BJc8hDfxFJvXJBVT6upb0p2OIVkmj2MPp5JtjE1R1nkX2mS5Wq1uyGSeDFkgqRQQYgoyIzBSSnJKAypYp2OZQ2u8VlKB9nAus8AxqQwq5%2Bcy75VErY1R%2FDWiKaXRW0CUbi5779L1%2Bsd1Omp7zJuy%2Fa%2Bwf3TpzJJFvtE7h0YzD5cRc0AiBBZhzEBEZ6ClZGHMwnvjWJXPpFVojAfnkbmcq1gzkjNKeYWWtBnQHFM35AHIstxz2ftXjqLWHxYVm17Fbd6Vf7t%2Bif5pexXrfdn1RVg2Ia%2F4zDXzcV6C28OxbIL4zFhBfOrLikey58GN9jETY8gNHzYV54k70Ki9JzaDpmE%2FPImHM4G8Evd9G%2FqDiDtxn3cv4cDxbTvjETk2HzxqRROeYWhtNJGyYCfA23K3C5X4Et9Cw7064%2B3h4fLNEp2XQytP0zqNhldBoVfu0noX6%2BK8tzcyU0aDtd5r0lJ5lJAKqzJgGh6QbXQG3dQ26O%2FDQPuufA5Nd2IE5gyZBODNZILSKHZx4MwUFHukyfKOEozmXIxZfBfha171wzj3IW4uL7KK8bU%2FXh5oO7%2FK33z6ZVEqmrwo%2B8Fl4gXnY%2Bj6pt70Nc9z%2BxIKTnRNH%2BbEiL55Dacpc%2F0TGYvNayMEAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -176,7 +177,7 @@ let locations = datatable(location_name:string, longitude:real, latitude:real)
     "Statue of Liberty",  -74.04462223203123, 40.689195627512674,
 ];
 locations
-| evaluate geo_polygon_lookup(polygons, polygon, longitude, latitude, radius = 7000, return_unmatched = true)
+| evaluate geo_polygon_lookup(polygons, polygon, longitude, latitude, radius = 7000, return_unmatched = true, return_lookup_key = true)
 ```
 
 **Output**

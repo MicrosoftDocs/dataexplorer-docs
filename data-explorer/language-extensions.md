@@ -49,7 +49,7 @@ Do the following steps to edit the **image** of your **Python** language extensi
 
 1. In the Azure portal, go to your Azure Data Explorer cluster.
 1. Select **Settings**.
-1. Under **Configurations**, select **+ Add Custom Image (Preview)**
+1. Under **Configurations**, select **+ Add Custom Image (preview)**
 1. In the pane that opens, provide the following information:
     * **Custom image name**: The name of the custom image.
     * **Start from**: Choose either **Python engine** or **Existing image**.

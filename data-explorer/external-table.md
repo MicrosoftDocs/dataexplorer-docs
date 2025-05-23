@@ -28,7 +28,7 @@ The **Create external table** window opens with the **Destination** tab selected
 
 ### Destination tab
 
-1. The **Cluster** and **Database** fields are prepopulated. You may select a different destination from the drop-down menu.
+1. The **Cluster** and **Database** fields are prepopulated. You may select a different destination from the dropdown menu.
 1. In **Table name**, enter a name for your table.
     > [!TIP]
     >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.

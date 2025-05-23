@@ -116,10 +116,13 @@ items:
       displayName: functions library, graph, blast radius, cyber, security, cybersecurity
       href: /kusto/functions-library/graph-blast-radius-fl?view=azure-data-explorer&preserve-view=true
     - name: graph_exposure_perimeter_fl()
-      displayName: functions library, graph, exposure, perimeter, cyber, security, cybersecurity
+      displayName: functions library, graph, exposure perimeter, cyber, security, cybersecurity
       href: /kusto/functions-library/graph-exposure-perimeter-fl?view=azure-data-explorer&preserve-view=true
+    - name: graph_node_centrality_fl()
+      displayName: functions library, graph, centrality, cyber, security, cybersecurity
+      href: /kusto/functions-library/graph-node-centrality-fl?view=azure-data-explorer&preserve-view=true
     - name: graph_path_discovery_fl()
-      displayName: functions library, graph, path, discovery, cyber, security, cybersecurity,
+      displayName: functions library, graph, path discovery, cyber, security, cybersecurity
       href: /kusto/functions-library/graph-path-discovery-fl?view=azure-data-explorer&preserve-view=true
     - name: kmeans_fl()
       displayName: functions library, clustering, K-Means
@@ -1381,6 +1384,18 @@ items:
   - name: countif()
     displayName: count(predicate)
     href: /kusto/query/countif-aggregation-function?view=azure-data-explorer&preserve-view=true
+  - name: covariance()
+    displayName: covariance()
+    href: /kusto/query/covariance-aggregation-function?view=azure-data-explorer&preserve-view=true
+  - name: covarianceif()
+    displayName: covarianceif()
+    href: /kusto/query/covarianceif-aggregation-function?view=azure-data-explorer&preserve-view=true
+  - name: covariancep()
+    displayName: covariancep()
+    href: /kusto/query/covariancep-aggregation-function?view=azure-data-explorer&preserve-view=true
+  - name: covariancepif()
+    displayName: covariancepif()
+    href: /kusto/query/covariancepif-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: dcount()
     href: /kusto/query/dcount-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: dcountif()
@@ -1447,6 +1462,8 @@ items:
     href: /kusto/query/varianceif-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: variancep()
     href: /kusto/query/variancep-aggregation-function?view=azure-data-explorer&preserve-view=true
+  - name: variancepif()
+    href: /kusto/query/variancepif-aggregation-function?view=azure-data-explorer&preserve-view=true
 - name: Graph
   items:
   - name: Graph overview
@@ -1491,21 +1508,29 @@ items:
       href: /kusto/query/node-degree-out?view=azure-data-explorer&preserve-view=true
 - name: Geospatial
   items:
-  - name: Geospatial clustering overview
+  - name: Geospatial clustering
     displayName: H3, S2, Geohash
     href: /kusto/query/geospatial-grid-systems?view=azure-data-explorer&preserve-view=true
+  - name: Geospatial joins
+    href: /kusto/query/geospatial-joins?view=azure-data-explorer&preserve-view=true
   - name: Geospatial visualizations
     href: /kusto/query/geospatial-visualizations?view=azure-data-explorer&preserve-view=true
   - name: geo_angle()
     href: /kusto/query/geo-angle-function?view=azure-data-explorer&preserve-view=true
   - name: geo_azimuth()
     href: /kusto/query/geo-azimuth-function?view=azure-data-explorer&preserve-view=true
+  - name: geo_closest_point_on_line()
+    href: /kusto/query/geo-closest-point-on-line-function?view=azure-data-explorer&preserve-view=true
+  - name: geo_closest_point_on_polygon()
+    href: /kusto/query/geo-closest-point-on-polygon-function?view=azure-data-explorer&preserve-view=true
   - name: geo_distance_2points()
     href: /kusto/query/geo-distance-2points-function?view=azure-data-explorer&preserve-view=true
   - name: geo_distance_point_to_line()
     href: /kusto/query/geo-distance-point-to-line-function?view=azure-data-explorer&preserve-view=true
   - name: geo_distance_point_to_polygon()
     href: /kusto/query/geo-distance-point-to-polygon-function?view=azure-data-explorer&preserve-view=true
+  - name: geo_from_wkt()
+    href: /kusto/query/geo-from-wkt-function?view=azure-data-explorer&preserve-view=true
   - name: geo_intersects_2lines()
     href: /kusto/query/geo-intersects-2lines-function?view=azure-data-explorer&preserve-view=true
   - name: geo_intersects_2polygons()
@@ -1524,8 +1549,12 @@ items:
     href: /kusto/query/geo-line-centroid-function?view=azure-data-explorer&preserve-view=true
   - name: geo_line_densify()
     href: /kusto/query/geo-line-densify-function?view=azure-data-explorer&preserve-view=true
+  - name: geo_line_interpolate_point()
+    href: /kusto/query/geo-line-interpolate-point-function?view=azure-data-explorer&preserve-view=true
   - name: geo_line_length()
     href: /kusto/query/geo-line-length-function?view=azure-data-explorer&preserve-view=true
+  - name: geo_line_locate_point()
+    href: /kusto/query/geo-line-locate-point-function?view=azure-data-explorer&preserve-view=true
   - name: geo_line_simplify()
     href: /kusto/query/geo-line-simplify-function?view=azure-data-explorer&preserve-view=true
   - name: geo_line_to_s2cells()
@@ -1727,6 +1756,9 @@ items:
   - name: series_pow()
     displayName: element-wise, elementwise
     href: /kusto/query/series-pow-function?view=azure-data-explorer&preserve-view=true
+  - name: series_product()
+    displayName: element-wise, elementwise
+    href: /kusto/query/series-product-function?view=azure-data-explorer&preserve-view=true
   - name: series_seasonal()
     displayName: periods
     href: /kusto/query/series-seasonal-function?view=azure-data-explorer&preserve-view=true
@@ -1807,8 +1839,8 @@ items:
       href: /kusto/query/diffpatterns-text-plugin?view=azure-data-explorer&preserve-view=true
   - name: Query connectivity plugins
     items:
-    - name: ai_embed_text plugin
-      href: /kusto/query/ai-embed-text-plugin?view=azure-data-explorer&preserve-view=true
+    - name: ai_embeddings plugin
+      href: /kusto/query/ai-embeddings-plugin?view=azure-data-explorer&preserve-view=true
     - name: ai_chat_completion plugin
       href: /kusto/query/ai-chat-completion-plugin?view=azure-data-explorer&preserve-view=true
     - name: ai_chat_completion_prompt plugin

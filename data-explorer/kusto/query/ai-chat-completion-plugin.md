@@ -35,7 +35,7 @@ The `ai_chat_completion` plugin enables generating chat completions using langua
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Messages* | `dynamic` | :heavy_check_mark: | An array of messages comprising the conversation so far. The value can be a column reference or a constant scalar. |
+| *Chat* | `dynamic` | :heavy_check_mark: | An array of messages comprising the conversation so far. The value can be a column reference or a constant scalar. |
 | *ConnectionString* | `string` | :heavy_check_mark: | The connection string for the language model in the format `<ModelDeploymentUri>;<AuthenticationMethod>`; replace `<ModelDeploymentUri>` and `<AuthenticationMethod>` with the AI model deployment URI and the authentication method respectively. |
 | *Options* | `dynamic` |  | The options that control calls to the chat model endpoint. See [Options](#options). |
 | *IncludeErrorMessages* | `bool` |  | Indicates whether to output errors in a new column in the output table. Default value: `false`. |
@@ -144,5 +144,5 @@ evaluate ai_chat_completion(messages, connectionString);
 
 ## Related content
 
-* [ai_embed_text()](ai-embed-text-plugin.md)
+* [ai_embeddings()](ai-embeddings-plugin.md)
 * [ai_chat_completion_prompt()](ai-chat-completion-prompt-plugin.md)

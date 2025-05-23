@@ -47,7 +47,7 @@ For example, if your domain is *contoso.com*, the URL is: [https://login.microso
 "authorization_endpoint":"https://login.microsoftonline.com/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
-The tenant ID in this case is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
+The tenant ID in this case is `aaaabbbb-0000-cccc-1111-dddd2222eeee`.
 
 This example uses an interactive Microsoft Entra user authentication to access the cluster. You can also use Microsoft Entra application authentication with certificate or application secret. Make sure to set the correct values for `tenantId` and `clusterUri` before running this code. 
 

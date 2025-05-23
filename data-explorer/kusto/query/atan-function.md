@@ -27,7 +27,7 @@ Returns the angle whose tangent is the specified number. This is the inverse ope
 
 The value of the arc tangent of `x`.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

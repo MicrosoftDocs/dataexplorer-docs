@@ -76,7 +76,9 @@ datatable(val:int)[5, int(null)]
 When applying the following operators to entities that include null values, the null values are ignored and don't factor into the calculation:
 
 * [covariance()](../covariance-aggregation-function.md)
+* [covarianceif()](../covarianceif-aggregation-function.md)
 * [covariancep()](../covariancep-aggregation-function.md)
+* [covariancepif()](../covariancepif-aggregation-function.md)
 * [dcount()](../dcount-aggregation-function.md)
 * [dcountif()](../dcountif-aggregation-function.md)
 * [make_bag()](../make-bag-aggregation-function.md)
@@ -90,8 +92,9 @@ When applying the following operators to entities that include null values, the 
 * [sum()](../sum-aggregation-function.md)
 * [sumif()](../sumif-aggregation-function.md)
 * [variance()](../variance-aggregation-function.md)
-* [variancep()](../variancep-aggregation-function.md)
 * [varianceif()](../varianceif-aggregation-function.md)
+* [variancep()](../variancep-aggregation-function.md)
+* [variancepif()](../variancepif-aggregation-function.md)
 
 ## Null values and the `where` operator
 

@@ -52,10 +52,10 @@ In this article, you use the Data Factory Copy Data tool to load data from Amazo
    | Setting  | Value to enter  |
    |---|---|
    | **Name** | In the box, enter a globally unique name for your data factory. If you receive an error, *Data factory name \"LoadADXDemo\" is not available*, enter a different name for the data factory. For rules about naming Data Factory artifacts, see [Data Factory naming rules](/azure/data-factory/naming-rules).|
-   | **Subscription** | In the drop-down list, select the Azure subscription in which to create the data factory. |
+   | **Subscription** | In the dropdown list, select the Azure subscription in which to create the data factory. |
    | **Resource Group** | Select **Create new**, and then enter the name of a new resource group. If you already have a resource group, select **Use existing**. |
-   | **Version** | In the drop-down list, select **V2**. |
-   | **Location** | In the drop-down list, select the location for the data factory. Only supported locations are displayed in the list. The data stores that are used by the data factory can exist in other locations or regions. |
+   | **Version** | In the dropdown list, select **V2**. |
+   | **Location** | In the dropdown list, select the location for the data factory. Only supported locations are displayed in the list. The data stores that are used by the data factory can exist in other locations or regions. |
 
 1. Select **Create**.
 
@@ -100,7 +100,7 @@ You can load your data in either of the following ways:
 
     a. In the **Name** box, enter the name of your new linked service.
 
-    b. In the **Connect via integration runtime** drop-down list, select the value.
+    b. In the **Connect via integration runtime** dropdown list, select the value.
 
     c. In the **Access Key ID** box, enter the value.
 
@@ -173,15 +173,15 @@ To create the Azure Data Explorer linked service, do the following steps:
 
    1. Under **Account selection method**, choose one of the following options:
 
-        * Select **From Azure subscription** and then, in the drop-down lists, select your **Azure subscription** and your **Cluster**.
+        * Select **From Azure subscription** and then, in the dropdown lists, select your **Azure subscription** and your **Cluster**.
 
             > [!NOTE]
-            > * The **Cluster** drop-down control lists only clusters that are associated with your subscription.
+            > * The **Cluster** dropdown control lists only clusters that are associated with your subscription.
             > * Your cluster must have the appropriate [SKU](manage-cluster-choose-sku.md) for [best performance](data-factory-integration.md#performance).
 
         * Select **Enter manually**, and then enter your **Endpoint**.
 
-   1. In the **Database** drop-down list, select your database name. Alternatively, select the **Edit** check box, and then enter the database name.
+   1. In the **Database** dropdown list, select your database name. Alternatively, select the **Edit** check box, and then enter the database name.
    1. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
    1. Select **Create** to complete the linked service creation.
 

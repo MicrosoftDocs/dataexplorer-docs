@@ -34,10 +34,6 @@ The `azure_digital_twins_query_request` plugin uses the Microsoft Entra account 
 
 ## Examples
 
-The following examples show how you can run various Azure Digital Twins queries, including queries that use additional Kusto expressions.
-
-### Retrieval of all twins within an Azure Digital Twins instance
-
 The following example returns all digital twins within an Azure Digital Twins instance.
 
 ```kusto
@@ -48,7 +44,6 @@ evaluate azure_digital_twins_query_request(
 
 :::image type="content" source="media/azure-digital-twins-query-request-plugin/adt-twins.png" alt-text="Screenshot of the twins present in the Azure Digital Twins instance.":::
 
-### Projection of twin properties as columns along with additional Kusto expressions
 
 The following example returns the result from the plugin as separate columns, and then performs additional operations using Kusto expressions.
 

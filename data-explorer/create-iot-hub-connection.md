@@ -56,7 +56,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
     > [!NOTE]
     >
     > * Event system properties are supported for single-record events.
-    > * For CSV mapping, properties are added at the beginning of the record. For JSON mapping, properties are added according to the name that appears in the drop-down list.
+    > * For CSV mapping, properties are added at the beginning of the record. For JSON mapping, properties are added according to the name that appears in the dropdown list.
 
 1. Depending on your use case, you may want to turn on multi-database routing. For more information about database routing, see [Events routing](ingest-data-iot-hub-overview.md#events-routing).
 

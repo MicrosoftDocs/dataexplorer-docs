@@ -87,13 +87,13 @@ Following is an example of an Azure Data Explorer [diagnostic ingestion log](usi
     "operationVersion": "1.0",
     "category": "FailedIngestion",
     "resultType": "Failed",
-    "correlationId": "d59882f1-ad64-4fc4-b2ef-d663b6cc1cc5",
+    "correlationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
     "properties": {
         "OperationId": "00000000-0000-0000-0000-000000000000",
         "Database": "Kusto",
         "Table": "Table_13_20_prod",
         "FailedOn": "2019-08-26T13:22:36.8804326Z",
-        "IngestionSourceId": "d59882f1-ad64-4fc4-b2ef-d663b6cc1cc5",
+        "IngestionSourceId": "aaaa0000-bb11-2222-33cc-444444dddddd",
         "Details":
         {
             "error":
@@ -149,7 +149,7 @@ Azure activity logs are subscription-level logs that provide insight into the op
         "resultSignature": "Started.",
         "durationMs": 0,
         "callerIpAddress": "13.66.225.188",
-        "correlationId": "0de9f4bc-4adc-4209-a774-1b4f4ae573ed",
+        "correlationId": "bbbb1111-cc22-3333-44dd-555555eeeeee",
         "identity": {
             "authorization": {
                 ...
@@ -173,7 +173,7 @@ Azure activity logs are subscription-level logs that provide insight into the op
         "resultSignature": "Succeeded.OK",
         "durationMs": 194,
         "callerIpAddress": "13.66.225.188",
-        "correlationId": "0de9f4bc-4adc-4209-a774-1b4f4ae573ed",
+        "correlationId": "bbbb1111-cc22-3333-44dd-555555eeeeee",
         "identity": {
             "authorization": {
                 ...

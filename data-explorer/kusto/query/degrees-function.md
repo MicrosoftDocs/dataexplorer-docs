@@ -25,9 +25,11 @@ Converts angle value in radians into value in degrees, using the formula `degree
 
 ## Returns
 
-The corresponding angle in degrees for an angle specified in radians.
+Returns the corresponding angle in degrees for an angle specified in radians.
 
 ## Examples
+
+The following example shows how to convert radians to degrees.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

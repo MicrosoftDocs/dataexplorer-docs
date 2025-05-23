@@ -1,13 +1,13 @@
 ---
 ms.topic: include
-ms.date: 09/17/2024
+ms.date: 05/19/2025
 ---
 
 The Python plugin runs a user-defined function (UDF) using a Python script. The Python script gets tabular data as its input, and produces tabular output. The plugin's runtime is hosted in [sandboxes](../concepts/sandboxes.md), running on the cluster's nodes.
 
 ## Syntax
 
-*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] [`hint.remote` `=` (`auto` | `local`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*] [`,` *external_artifacts*][`,` *spill_to_disk*]`)`
+*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] [`hint.remote` `=` (`auto` | `local`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*] [`,` *external_artifacts*] [`,` *spill_to_disk*]`)`
 
 [!INCLUDE [syntax-conventions-note](syntax-conventions-note.md)]
 
@@ -49,11 +49,11 @@ To see the list of packages for the different Python images, see [Python package
 ## Use ingestion from query and update policy
 
 * Use the plugin in queries that are:
-  * Defined as part of an [update policy](../management/update-policy.md), whose source table is ingested to using *non-streaming* ingestion.
+  * Defined as part of an [update policy](../management/update-policy.md), whose source table is ingested by [queued ingestion](/azure/data-explorer/ingest-data-overview#continuous-data-ingestion).
   * Run as part of a command that [ingests from a query](../management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
 * You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](/azure/data-explorer/ingest-data-streaming).
 
-## Examples
+## Example
 
 ~~~kusto
 range x from 1 to 360 step 1
@@ -74,31 +74,6 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
 
 :::image type="content" source="../query/media/plugin/sine-demo.png" alt-text="Screenshot of sine demo showing query result." border="false":::
 
-~~~kusto
-print "This is an example for using 'external_artifacts'"
-| evaluate python(
-    typeof(File:string, Size:string), ```if 1:
-    import os
-    result = pd.DataFrame(columns=['File','Size'])
-    sizes = []
-    path = '.\\\\Temp'
-    files = os.listdir(path)
-    result['File']=files
-    for file in files:
-        sizes.append(os.path.getsize(path + '\\\\' + file))
-    result['Size'] = sizes
-    ```,
-    external_artifacts = 
-        dynamic({"this_is_my_first_file":"https://kustoscriptsamples.blob.core.windows.net/samples/R/sample_script.r",
-                 "this_is_a_script":"https://kustoscriptsamples.blob.core.windows.net/samples/python/sample_script.py"})
-)
-~~~
-
-| File   | Size |
-|--------|------|
-| this_is_a_script      | 120  |
-| this_is_my_first_file | 105  |
-
 ## Performance tips
 
 * Reduce the plugin's input dataset to the minimum amount required (columns/rows).
@@ -116,9 +91,9 @@ print "This is an example for using 'external_artifacts'"
     ` ``` `  
     ` python code`  
     ` ``` `
-* Use the [`externaldata` operator](../query/externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
+* Use the [externaldata operator](../query/externaldata-operator.md) to obtain the content of a script that you've stored in an external location, such as Azure Blob storage.
   
-### Example
+### Example reading the Python script external data
 
 ```kusto
     let script = 
@@ -145,7 +120,7 @@ The URLs referenced by the external artifacts property must be:
 > [!NOTE]
 > When authenticating external artifacts using Managed Identities, the `SandboxArtifacts` usage must be defined on the cluster level [managed identity policy](../management/managed-identity-policy.md).
 
-The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Examples](#examples).
+The artifacts are made available for the script to be read from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Example](#example-using-external-artifacts).
 
 For information regarding referencing external packages, see [Install packages for the Python plugin](#install-packages-for-the-python-plugin).
 
@@ -188,24 +163,24 @@ download the package and its dependencies.
     pip wheel [-w download-dir] package-name.
     ```
 
-1. Create a ZIP file that contains the required package and its dependencies.
+1. Create a zip file containing the required package and its dependencies.
 
     * For private packages, zip the folder of the package and the folders of its dependencies.
     * For public packages, zip the files that were downloaded in the previous step.
 
     > [!NOTE]
     >
-    > * Make sure to download the package that is compatible to the Python engine and the platform of the sandbox runtime (currently 3.6.5 on Windows)
+    > * Make sure to download the package that is compatible to the Python engine and the platform of the sandbox runtime (currently 3.10.8 or 3.11.7 on Windows)
     > * Make sure to zip the `.whl` files themselves, and not their parent folder.
     > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
 
-1. Upload the zipped file to a blob in the artifacts location (from step 1).
+1. Upload the zip file to a blob in the artifacts location (from step 1 of the prerequisites).
 
 1. Call the `python` plugin.
-    * Specify the `external_artifacts` parameter with a property bag of name and reference to the ZIP file (the blob's URL, including a SAS token).
-    * In your inline python code, import `Zipackage` from `sandbox_utils` and call its `install()` method with the name of the ZIP file.
+    * Specify the `external_artifacts` parameter with a property bag of local name and blob URL of the zip file (including a SAS token).
+    * In your inline python code, import `Zipackage` from `sandbox_utils` and call its `install()` method with the local name of the ZIP file.
 
-### Example
+### Example using external artifacts
 
 Install the [Faker](https://pypi.org/project/Faker/) package that generates fake data.
 
@@ -221,7 +196,7 @@ range ID from 1 to 3 step 1
     for i in range(df.shape[0]):
         result.loc[i, "Name"] = fake.name()
     ```,
-    external_artifacts=bag_pack('faker.zip', 'https://artifacts.blob.core.windows.net/Faker.zip?*** REPLACE WITH YOUR SAS TOKEN ***'))
+    external_artifacts=bag_pack('faker.zip', 'https://artifacts.blob.core.windows.net/Faker.zip;impersonate'))
 ~~~
 
 | ID | Name |
