@@ -515,7 +515,7 @@ using (var response = kustoClient.ExecuteQuery(database, query, crp)) {
 
 ```python
 from azure.kusto.data import ClientRequestProperties
-from datetime import datetime
+import datetime
 import uuid;
 
 crp = ClientRequestProperties()
