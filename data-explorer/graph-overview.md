@@ -10,89 +10,53 @@ ms.date: 05/23/2025
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-Graph semantics in Kusto enables you to model and query data as interconnected graphs, unlocking powerful analytical capabilities for complex relationship analysis. This approach transforms your existing tabular data into graph representations without requiring data migration or additional infrastructure.
-
-## What are graph semantics?
-
 Graph semantics in Kusto allows you to model and query data as graphs. The structure of a graph comprises nodes and edges that connect them. Both nodes and edges can have properties that describe them, creating a rich data model for complex relationships.
 
 Graphs are useful for representing complex and dynamic data that involve many-to-many, hierarchical, or networked relationships, such as social networks, recommendation systems, connected assets, or knowledge graphs. Graphs store data differently from relational databases, which use tables and need indexes and joins to connect related data. In graphs, each node has a direct pointer to its neighbors (adjacency), so there's no need to index or join anything, making it easy and fast to traverse the graph.
 
-### Example: Social Network Graph
-
-The following graph illustrates a social network that consists of four nodes and three edges. Each node has a property for its name, such as *Bob*, and each edge has a property for its type, such as *reportsTo*.
+The following graph illustrates a security attack path scenario. Nodes represent different entities such as external sources, users, and critical assets, while edges represent actions or relationships relevant to a potential attack sequence.
 
 ```mermaid
 graph TD
-    A[👤 Alice] -->|reportsTo| B[👤 Bob]
-    C[👤 Eve] -->|friendsWith| A
-    B -->|reportsTo| D[👤 Trent]
+    EXT[🌐 External IP] -->|phishing email| U1[👤 User: Alice]
+    U1 -->|compromised credentials| S1[🖥️ Workstation]
+    S1 -->|lateral movement| FS[🗄️ File Server]
+    FS -->|accesses| DB[🗄️ Sensitive Database]
     
-    style A fill:#e1f5fe,stroke:#0277bd,color:#000
-    style B fill:#f3e5f5,stroke:#7b1fa2,color:#000
-    style C fill:#e8f5e8,stroke:#2e7d32,color:#000
-    style D fill:#fff3e0,stroke:#ef6c00,color:#000
+    style EXT fill:#ff6b6b,stroke:#d63031,color:#fff
+    style U1 fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style S1 fill:#e8f5e8,stroke:#2e7d32,color:#000
+    style FS fill:#fff3e0,stroke:#ef6c00,color:#000
+    style DB fill:#ffd93d,stroke:#fdcb6e,color:#000
 ```
 
-Graph queries can use the graph structure and meaning to perform complex and powerful operations, such as finding paths, patterns, shortest distances, communities, or centrality measures. In security contexts, graphs are particularly powerful for modeling attack paths, user access patterns, network communications, threat actor relationships, and asset dependencies that form the foundation of modern cybersecurity analysis.
+Graph queries can use the graph structure and meaning to perform complex and powerful operations, such as finding paths, patterns, shortest distances, communities, or centrality measures. Across domains, graphs are powerful for modeling relationships, interactions, dependencies, and flows—whether in social networks, supply chains, IoT device networks, digital twins, recommendation systems, or organizational structures.
 
-### Example: Security Investigation Graph
-
-The following graph illustrates a simple security investigation scenario with nodes representing different entity types (users, systems, external sources) and edges representing security-relevant relationships. This demonstrates how graphs can model attack paths and security relationships.
+The following graph illustrates a supply chain scenario, with nodes representing suppliers, manufacturers, and distributors, and edges representing supply relationships. This demonstrates how graphs can model flows and dependencies in a non-security context.
 
 ```mermaid
 graph TD
-    A[🌐 External IP<br/>192.168.1.100] -->|suspicious_login| B[👤 User: Alice<br/>Security Analyst]
-    B -->|accesses| C[🗄️ FileServer<br/>Critical Asset]
-    A -->|communicates_with| D[☠️ Command & Control<br/>malicious.domain.com]
+    S1[🏭 Supplier A] -->|supplies| M1[🏢 Manufacturer X]
+    S2[🏭 Supplier B] -->|supplies| M1
+    M1 -->|ships to| D1[🚚 Distributor Y]
     
-    style A fill:#ff6b6b,stroke:#d63031,color:#fff
-    style D fill:#ff6b6b,stroke:#d63031,color:#fff
-    style C fill:#ffd93d,stroke:#fdcb6e,color:#000
+    style S1 fill:#e1f5fe,stroke:#0277bd,color:#000
+    style S2 fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style M1 fill:#e8f5e8,stroke:#2e7d32,color:#000
+    style D1 fill:#fff3e0,stroke:#ef6c00,color:#000
 ```
 
 ## Why use graph semantics in Kusto?
 
-Kusto's graph capabilities provide unique advantages by leveraging existing data investments while adding sophisticated relationship analysis. You can build graph models directly from your current data without migrations or duplications, eliminating the cost and complexity of dedicated graph databases. As a time-series database, Kusto naturally supports temporal graph analysis, allowing you to examine graph evolution over time rather than just the last known state of a graph. The event-based modeling approach treats graphs as series of relationship events, aligning perfectly with Kusto's core strength in event processing. Graph queries integrate seamlessly into KQL with full intellisense support and access to all existing KQL operators.
+Kusto's graph capabilities offer significant advantages by **leveraging your existing data investments** while adding sophisticated contextualization capabilities:
 
-This approach provides enterprise-grade relationship modeling while maintaining the performance, scale, and familiarity of the Kusto environment. Organizations can analyze attack paths in security investigations, track supply chain dependencies, model organizational hierarchies, or explore any complex interconnected data without additional tooling investments.
+- **No data migration required** - Build graph models directly from your current data without duplications
+- **Cost-effective solution** - Eliminates the complexity and expense of dedicated graph databases
+- **Temporal analysis support** - As a time-series database, Kusto naturally lets you examine how graphs evolve over time
+- **Event-based modeling** - Treats graphs as series of relationship events, aligning with Kusto's core strength in event processing
+- **Seamless KQL integration** - Graph operators work alongside all existing KQL capabilities with full intellisense support
 
-Graph semantics in Kusto allows you to model and query data as graphs. The structure of a graph comprises nodes and edges that connect them. Both nodes and edges can have properties that describe them, creating a rich data model for complex relationships.
-
-Graphs are useful for representing complex and dynamic data that involve many-to-many, hierarchical, or networked relationships, such as social networks, recommendation systems, connected assets, or knowledge graphs. Graphs store data differently from relational databases, which use tables and need indexes and joins to connect related data. In graphs, each node has a direct pointer to its neighbors (adjacency), so there's no need to index or join anything, making it easy and fast to traverse the graph.
-
-### Example: Social Network Graph
-
-The following graph illustrates a social network that consists of four nodes and three edges. Each node has a property for its name, such as *Bob*, and each edge has a property for its type, such as *reportsTo*.
-
-```mermaid
-graph TD
-    A[👤 Alice] -->|reportsTo| B[👤 Bob]
-    C[👤 Eve] -->|friendsWith| A
-    B -->|reportsTo| D[👤 Trent]
-    
-    style A fill:#e1f5fe,stroke:#0277bd,color:#000
-    style B fill:#f3e5f5,stroke:#7b1fa2,color:#000
-    style C fill:#e8f5e8,stroke:#2e7d32,color:#000
-    style D fill:#fff3e0,stroke:#ef6c00,color:#000
-```
-
-Graph queries can use the graph structure and meaning to perform complex and powerful operations, such as finding paths, patterns, shortest distances, communities, or centrality measures. In security contexts, graphs are particularly powerful for modeling attack paths, user access patterns, network communications, threat actor relationships, and asset dependencies that form the foundation of modern cybersecurity analysis.
-
-### Example: Security Investigation Graph
-
-The following graph illustrates a simple security investigation scenario with nodes representing different entity types (users, systems, external sources) and edges representing security-relevant relationships. This demonstrates how graphs can model attack paths and security relationships.
-
-```mermaid
-graph TD
-    A[🌐 External IP<br/>192.168.1.100] -->|suspicious_login| B[👤 User: Alice<br/>Security Analyst]
-    B -->|accesses| C[🗄️ FileServer<br/>Critical Asset]
-    A -->|communicates_with| D[☠️ Command & Control<br/>malicious.domain.com]
-    
-    style A fill:#ff6b6b,stroke:#d63031,color:#fff
-    style D fill:#ff6b6b,stroke:#d63031,color:#fff
-    style C fill:#ffd93d,stroke:#fdcb6e,color:#000
-```
+This approach delivers **enterprise-grade relationship modeling** while maintaining Kusto's performance, scale, and familiarity. Organizations can analyze complex interconnected data across domains—from supply chains and organizational hierarchies to IoT device networks and social relationships—without additional tooling investments.
 
 ## Graph creation approaches in Kusto
 
@@ -112,7 +76,7 @@ Ad hoc analysis and exploratory data analysis benefit from this approach, partic
 
 ### 2. Persistent graphs
 
-Persistent graphs are created using a combination of [graph models](graph-model-overview.md) and [graph snapshots](graph-snapshot-overview.md). This approach provides a more robust solution for enterprise security operations requiring repeated access to large, complex graphs representing organizational networks, threat landscapes, and security relationships.
+Persistent graphs are created using a combination of [graph models](graph-model-overview.md) and [graph snapshots](graph-snapshot-overview.md). This approach provides a robust solution for scenarios requiring repeated access to large, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, or any domain with interconnected data.
 
 #### Key characteristics for persistent graphs
 
@@ -124,26 +88,25 @@ Schema support makes persistent graphs particularly valuable when working with m
 
 Enterprise analytics benefit significantly from persistent graphs through continuous monitoring workflows and comprehensive analysis procedures that track relationships across complex networks. Large-scale data analysis becomes feasible when working with enterprise-scale graphs spanning millions of events, activities, and connections across multiple domains. Collaborative analysis enables multiple teams to work with the same comprehensive graph structure, sharing insights and building upon each other's investigations.
 
-##### Cybersecurity Persistent Graph
+##### Example: Digital Twin Persistent Graph
 
 ```mermaid
 graph TD
-	FW[🛡️ Firewall] -->|protects| DC[💻 Data Center]
-	INT[🌐 Internet] -->|traffic| FW
-	DC -->|stores| DB[🗄️ Database]
-	EM[📧 Email Server] -->|connects to| DC
-	ATT[⚠️ Attacker] -->|probes| FW
-	ATT -->|targets| EM
-	US1[👤 Admin] -->|accesses| DC
-	US1 -->|monitors| FW
-	
-	style ATT fill:#ff6b6b,stroke:#d63031,color:#000
-	style FW fill:#a3cfbb,stroke:#1b6e3c,color:#000
-	style DC fill:#74c0fc,stroke:#1864ab,color:#000
-	style DB fill:#ffe066,stroke:#e67700,color:#000
+    DT1[🏭 Digital Twin: Factory] -->|monitors| EQ1[⚙️ Equipment 1]
+    DT1 -->|monitors| EQ2[⚙️ Equipment 2]
+    EQ1 -->|connected to| S1[🔌 Sensor 1]
+    EQ2 -->|connected to| S2[🔌 Sensor 2]
+    DT1 -->|reports to| CL1[☁️ Cloud Analytics]
+    
+    style DT1 fill:#e1f5fe,stroke:#0277bd,color:#000
+    style EQ1 fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style EQ2 fill:#e8f5e8,stroke:#2e7d32,color:#000
+    style S1 fill:#fff3e0,stroke:#ef6c00,color:#000
+    style S2 fill:#ffd93d,stroke:#fdcb6e,color:#000
+    style CL1 fill:#a3cfbb,stroke:#1b6e3c,color:#000
 ```
 
-In security operations, persistent graphs support regular analysis of network topology changes, access pattern evolution, and security control effectiveness across organizational infrastructure. Historical security analysis allows comparing security postures across different time periods, tracking the evolution of threats, and conducting long-term trend analysis.
+In digital twin and IoT scenarios, persistent graphs support regular analysis of device relationships, equipment dependencies, and system evolution over time. Historical analysis allows comparing system states across different periods, tracking the evolution of assets, and conducting long-term trend analysis.
 
 ##### Example: IoT and Digital Twin Persistent Graph
 
@@ -151,11 +114,11 @@ In IoT and digital twin applications, persistent graphs excel at modeling comple
 
 ## Graph querying capabilities
 
-Regardless of the creation method, once a graph is established (either through `make-graph` or from a snapshot), analysts can leverage the full suite of KQL graph operators for comprehensive threat analysis.
+Regardless of the creation method, once a graph is established (either through `make-graph` or from a snapshot), analysts can leverage the full suite of KQL graph operators for comprehensive analysis across any domain.
 
-The [`graph-match`](../../query/graph-match-operator.md) operator enables sophisticated pattern matching and traversal operations, allowing analysts to identify complex patterns, relationship sequences, and multi-stage connections across any networked data. The [`graph-shortest-paths`](../../query/graph-shortest-paths-operator.md) operator proves invaluable for finding optimal paths between entities, helping prioritize connections and identify critical relationships whether in supply chains, social networks, or infrastructure dependencies. The [`graph-to-table`](../../query/graph-to-table-operator.md) operator facilitates converting graph analysis results back to tabular format for integration with existing reporting systems and data visualization tools.
+The [`graph-match`](../../query/graph-match-operator.md) operator enables sophisticated pattern matching and traversal operations, allowing analysts to identify complex patterns, relationship sequences, and multi-stage connections across any networked data. The [`graph-shortest-paths`](../../query/graph-shortest-paths-operator.md) operator is invaluable for finding optimal paths between entities, helping prioritize connections and identify critical relationships whether in supply chains, IoT networks, social networks, or infrastructure dependencies. The [`graph-to-table`](../../query/graph-to-table-operator.md) operator facilitates converting graph analysis results back to tabular format for integration with existing reporting systems and data visualization tools.
 
-Analysts can perform time-based analysis to examine how relationships and patterns evolve over time, tracking the progression of changes and identifying emerging trends across domains. Geospatial integration capabilities allow combining graph data with location-based intelligence, enabling analysis of geographic patterns and location-based anomalies. Machine learning integration supports applying algorithms for entity clustering, pattern classification, and anomaly detection within any graph context - from customer journey analysis to product recommendation systems, IoT networks, or knowledge graphs.
+Analysts can perform time-based analysis to examine how relationships and patterns evolve over time, tracking the progression of changes and identifying emerging trends across domains. Geospatial integration capabilities allow combining graph data with location-based intelligence, enabling analysis of geographic patterns and location-based anomalies. Machine learning integration supports applying algorithms for entity clustering, pattern classification, and anomaly detection within any graph context—such as customer journey analysis, product recommendation systems, IoT networks, digital twins, or knowledge graphs.
 
 ## Choosing the right approach
 
@@ -212,21 +175,21 @@ Persistent graphs are essential when working with large-scale graph structures c
 
 ### Memory usage
 
-Transient graphs are limited by single cluster node memory, which constrains their use to smaller security datasets that can fit within available RAM resources. Persistent graphs can leverage distributed storage and optimized access patterns, enabling security teams to work with enterprise-scale threat data that spans multiple nodes and exceeds single-machine memory limitations.
+Transient graphs are limited by single cluster node memory, which constrains their use to smaller datasets that can fit within available RAM resources. Persistent graphs can leverage distributed storage and optimized access patterns, enabling organizations to work with enterprise-scale data that spans multiple nodes and exceeds single-machine memory limitations.
 
 ### Query latency
 
-Transient graphs include graph construction time in each query execution, which can introduce delays when analyzing large security datasets or complex network topologies during time-critical incident response scenarios. This latency significantly increases when transient graphs are built from tabular expressions that call external services (Kusto, SQL, CosmosDB), as each query must wait for these external data sources to respond before constructing the graph. Persistent graphs eliminate construction latency through pre-built snapshots, enabling rapid security analysis and real-time threat detection workflows that require immediate access to comprehensive organizational security data, regardless of whether the underlying data spans multiple services or data stores.
+Transient graphs include graph construction time in each query execution, which can introduce delays when analyzing large datasets or complex topologies during time-critical scenarios. This latency significantly increases when transient graphs are built from tabular expressions that call external services (Kusto, SQL, CosmosDB), as each query must wait for these external data sources to respond before constructing the graph. Persistent graphs eliminate construction latency through pre-built snapshots, enabling rapid analysis and real-time workflows that require immediate access to comprehensive organizational data, regardless of whether the underlying data spans multiple services or data stores.
 
 ### Data freshness
 
-Transient graphs always reflect the current data state, making them ideal for analyzing live security events and real-time threat intelligence where the most recent information is crucial for accurate threat assessment. Persistent graphs reflect the data state at snapshot creation time, which provides consistency for collaborative investigations and historical analysis but may require periodic refresh cycles to incorporate the latest security events and threat indicators.
+Transient graphs always reflect the current data state, making them ideal for analyzing live events and real-time information where the most recent data is crucial for accurate assessment. Persistent graphs reflect the data state at snapshot creation time, which provides consistency for collaborative analysis and historical review but may require periodic refresh cycles to incorporate the latest events and indicators.
 
 ## Integration with KQL ecosystem
 
-Graph semantics integrate seamlessly with the broader KQL ecosystem, enabling security analysts to combine graph queries with time-series analysis for tracking threat evolution and attack progression over time. Security teams can apply geospatial functions to graph data for analyzing location-based threat patterns and identifying geographic anomalies in access patterns or network communications. Machine learning operators can be used on graph results to detect sophisticated attack patterns, classify threat behaviors, and identify previously unknown security anomalies through advanced analytics. The full power of KQL scalar and tabular operators enhances graph analysis capabilities, allowing for complex data transformations, aggregations, and enrichment with external threat intelligence sources.
+Graph semantics integrate seamlessly with the broader KQL ecosystem, enabling analysts to combine graph queries with time-series analysis for tracking the evolution of relationships and patterns over time. Teams can apply geospatial functions to graph data for analyzing location-based patterns and identifying geographic anomalies in access or communication. Machine learning operators can be used on graph results to detect patterns, classify behaviors, and identify previously unknown anomalies through advanced analytics. The full power of KQL scalar and tabular operators enhances graph analysis capabilities, allowing for complex data transformations, aggregations, and enrichment with external data sources.
 
-This integration enables sophisticated security analysis scenarios such as tracking the evolution of network attack surfaces over time, analyzing the geographical distribution of threat actors and their targets, applying clustering algorithms to identify coordinated attack campaigns, and correlating graph-based security insights with traditional log analysis and threat intelligence feeds. Security operations centers can leverage these combined capabilities to build comprehensive threat detection and response workflows that span multiple data types and analytical approaches.
+This integration enables sophisticated analysis scenarios such as tracking the evolution of supply chains, analyzing the geographical distribution of assets or interactions, applying clustering algorithms to identify communities or coordinated activities, and correlating graph-based insights with traditional log analysis and external intelligence feeds. Organizations can leverage these combined capabilities to build comprehensive analytical workflows that span multiple data types and approaches.
 
 ## Related content
 
