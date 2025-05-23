@@ -26,6 +26,7 @@ The following table describes the supported graph operators.
 | Operator | Description |
 |--|--|
 | [make-graph](make-graph-operator.md) | Builds a graph from tabular data. |
+| [graph](graph-operator.md) | References a persisted graph entity and retrieves the latest or a specific snapshot. |
 | [graph-match](graph-match-operator.md) | Searches for patterns in a graph. |
 | [graph-to-table](graph-to-table-operator.md) | Builds nodes or edges tables from a graph. |
 | [graph-shortest-paths](graph-shortest-paths-operator.md) | Finds the shortest paths from a given set of source nodes to a set of target nodes. |
