@@ -14,34 +14,39 @@ Modifies an existing graph model in the database.
 
 ## Syntax
 
-`.alter` `graph` `model` *GraphModelName* [`with` `(`*Property* `=` *Value* [`,` ...]`)`] *GraphModelDefinition*
+`.alter` `graph` `model` *GraphModelName* *GraphModelDefinition*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*GraphModelName*|String|Yes|The name of the existing graph model to modify.|
-|*Property*|String|No|A property of the graph model. See [Properties](#properties).|
-|*Value*|String|No|The value of the corresponding property.|
 |*GraphModelDefinition*|String|Yes|A valid JSON document that defines the updated graph model. See [Graph model definition](#graph-model-definition).|
-
-### Properties
-
-|Name|Type|Required|Description|
-|--|--|--|--|
-|`folder`|String|No|The folder that the graph model will be placed in. This property is useful for organizing graph models.|
-|`docstring`|String|No|A string documenting the graph model.|
 
 ### Graph model definition
 
 The graph model definition follows the same format as in the [.create graph model](graph-model-create.md#graph-model-definition) command.
+
+## Returns
+
+This command returns a table with the following columns:
+
+|Column|Type|Description|
+|--|--|--|
+|*Name*|String|The name of the graph model that was created or altered.|
+|*CreationTime*|DateTime|The timestamp when the graph model was created or altered.|
+|*Id*|String|The unique identifier of the graph model.|
+|*SnapshotsCount*|Int|The number of snapshots created from this graph model.|
+|*Model*|String (JSON)|The JSON definition of the graph model, including schema and processing steps.|
+|*AuthorizedPrincipals*|String (JSON)|Array of principals that have access to the graph model, including their identifiers and role assignments.|
+|*RetentionPolicy*|String (JSON)|The retention policy configured for the graph model.|
 
 ## Examples
 
 ### Update a social network graph model
 
 ```kusto
-.alter graph model SocialNetwork with (docstring = "An updated graph model representing user interactions with content") 
+.alter graph model SocialNetwork
 {
     "Schema": {
         "Nodes": {
@@ -112,59 +117,19 @@ The graph model definition follows the same format as in the [.create graph mode
 }
 ```
 
-### Only update the folder property
+**Output**
 
-```kusto
-.alter graph model NetworkTraffic with (folder = "Security/NetworkAnalysis") 
-{
-    // Original graph model definition is kept the same
-    "Schema": {
-        "Nodes": {
-            "Device": {
-                "DeviceId": "string",
-                "IpAddress": "string",
-                "DeviceType": "string"
-            }
-        },
-        "Edges": {
-            "Connects": {
-                "Timestamp": "datetime",
-                "Protocol": "string",
-                "Port": "int"
-            }
-        }
-    },
-    "Definition": {
-        "Steps": [
-            {
-                "Kind": "AddNodes",
-                "Query": "Devices | project DeviceId, IpAddress, DeviceType",
-                "NodeIdColumn": "DeviceId",
-                "Labels": ["Device"]
-            },
-            {
-                "Kind": "AddEdges",
-                "Query": "NetworkLogs | project SourceDeviceId, DestinationDeviceId, Timestamp, Protocol, Port",
-                "SourceColumn": "SourceDeviceId",
-                "TargetColumn": "DestinationDeviceId",
-                "Labels": ["Connects"]
-            }
-        ]
-    }
-}
-```
+|Name|CreationTime|Id|SnapshotsCount|Model|AuthorizedPrincipals|RetentionPolicy|
+|---|---|---|---|---|---|---|
+|SocialNetwork|2025-05-23 14:42:37.5128901|b709fec8-d821-45ab-9312-55e82c4f9203|0|model from above|[<br>  {<br>    "Type": "AAD User",<br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",<br>    "ObjectId": "83a7b95c-e0fd-4278-9ab9-c21435ea2673",<br>    "FQN": "aaduser=83a7b95c-e0fd-4278-9ab9-c21435ea2673;f5d01e3b-9a77-4970-b372-e38a3761c3c0",<br>    "Notes": "",<br>    "RoleAssignmentIdentifier": "ca831e09-f37d-48bf-9f6c-25038372019a"<br>  }<br>]|{<br>  "SoftDeletePeriod": "3650.00:00:00"<br>}|
 
 ## Notes
 
 - When you alter a graph model, you need to provide the complete graph model definition, not just the parts you want to change. The entire definition will replace the existing one.
-- Changes to the graph model schema or definition will be applied the next time the graph model is refreshed.
-- To refresh the graph model immediately after altering it, use the [.refresh graph model](graph-model-refresh.md) command.
-- To modify only the properties of a graph model (like folder or docstring) without changing the definition, use the [.alter graph model properties](graph-model-alter-properties.md) command.
 
 ## Related content
 
-* [Graph model overview](graph-model-overview.md)
-* [.create graph model](graph-model-create.md)
-* [.show graph models](graph-model-show.md)
-* [.drop graph model](graph-model-drop.md)
-* [.refresh graph model](graph-model-refresh.md)
+- [Graph model overview](graph-model-overview.md)
+- [.create graph model](graph-model-create.md)
+- [.show graph models](graph-model-show.md)
+- [.drop graph model](graph-model-drop.md)

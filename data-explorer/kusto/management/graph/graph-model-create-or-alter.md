@@ -14,24 +14,14 @@ Creates a new graph model or alters an existing one using the provided model def
 
 ## Syntax
 
-`.create-or-alter` `graph_model` *GraphModelName* [`with` `(`*Property* `=` *Value* [`,` ...]`)`] *GraphModelDefinitionPayload*
+`.create-or-alter` `graph_model` *GraphModelName* *GraphModelDefinitionPayload*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*GraphModelName*|String|Yes|The name of the graph model to create or alter. The name must be unique within the database and follow the [entity naming rules](../../query/schema-entities/entity-names.md).|
-|*Property*|String|No|A property of the graph model. See [Properties](#properties).|
-|*Value*|String|No|The value of the corresponding property.|
 |*GraphModelDefinitionPayload*|String|Yes|A valid JSON document that defines the graph model. The payload should be prefixed with the `@` symbol. See [Graph model definition payload](#graph-model-definition-payload).|
-
-### Properties
-
-|Name|Type|Required|Description|
-|--|--|--|--|
-|`folder`|String|No|The folder that the graph model will be placed in. This property is useful for organizing graph models.|
-|`docstring`|String|No|A string documenting the graph model.|
-|`version`|String|No|A version identifier for the graph model. If not specified, a system-generated version will be assigned.|
 
 ### Graph model definition payload
 
@@ -43,9 +33,13 @@ This command returns a table with the following columns:
 
 |Column|Type|Description|
 |--|--|--|
-|*GraphModelName*|String|The name of the graph model that was created or altered.|
-|*Version*|String|The version identifier of the created or altered graph model.|
-|*Result*|String|The result of the operation. If successful, the message indicates the graph model was created or altered.|
+|*Name*|String|The name of the graph model that was created or altered.|
+|*CreationTime*|DateTime|The timestamp when the graph model was created or altered.|
+|*Id*|String|The unique identifier of the graph model.|
+|*SnapshotsCount*|Int|The number of snapshots created from this graph model.|
+|*Model*|String (JSON)|The JSON definition of the graph model, including schema and processing steps.|
+|*AuthorizedPrincipals*|String (JSON)|Array of principals that have access to the graph model, including their identifiers and role assignments.|
+|*RetentionPolicy*|String (JSON)|The retention policy configured for the graph model.|
 
 ## Examples
 
@@ -102,67 +96,9 @@ This command returns a table with the following columns:
 
 **Output**
 
-|GraphModelName|Version|Result|
-|---|---|---|
-|SocialNetwork|v1|Graph model 'SocialNetwork' (version 'v1') was created successfully|
-
-### Create a specific version of a graph model
-
-```kusto
-.create-or-alter graph_model ProductRecommendations with (version = "v2.0") @'
-{
-    "Schema": {
-        "Nodes": {
-            "Customer": {
-                "CustomerId": "string",
-                "CustomerName": "string",
-                "CustomerSegment": "string"
-            },
-            "Product": {
-                "ProductId": "string",
-                "ProductName": "string",
-                "Category": "string"
-            }
-        },
-        "Edges": {
-            "Purchases": {
-                "TransactionId": "string",
-                "PurchaseDate": "datetime",
-                "Quantity": "int"
-            }
-        }
-    },
-    "Definition": {
-        "Steps": [
-            {
-                "Kind": "AddNodes",
-                "Query": "Customers | project CustomerId, CustomerName, CustomerSegment",
-                "NodeIdColumn": "CustomerId",
-                "Labels": ["Customer"]
-            },
-            {
-                "Kind": "AddNodes",
-                "Query": "Products | project ProductId, ProductName, Category",
-                "NodeIdColumn": "ProductId",
-                "Labels": ["Product"]
-            },
-            {
-                "Kind": "AddEdges",
-                "Query": "Transactions | project CustomerId, ProductId, TransactionId, PurchaseDate, Quantity",
-                "SourceColumn": "CustomerId",
-                "TargetColumn": "ProductId",
-                "Labels": ["Purchases"]
-            }
-        ]
-    }
-}'
-```
-
-**Output**
-
-|GraphModelName|Version|Result|
-|---|---|---|
-|ProductRecommendations|v2.0|Graph model 'ProductRecommendations' (version 'v2.0') was created successfully|
+|Name|CreationTime|Id|SnapshotsCount|Model|AuthorizedPrincipals|RetentionPolicy|
+|---|---|---|---|---|---|---|
+|SocialNetwork|2025-05-23 14:42:37.5128901|b709fec8-d821-45ab-9312-55e82c4f9203|0|model from above|[<br>  {<br>    "Type": "AAD User",<br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",<br>    "ObjectId": "83a7b95c-e0fd-4278-9ab9-c21435ea2673",<br>    "FQN": "aaduser=83a7b95c-e0fd-4278-9ab9-c21435ea2673;f5d01e3b-9a77-4970-b372-e38a3761c3c0",<br>    "Notes": "",<br>    "RoleAssignmentIdentifier": "ca831e09-f37d-48bf-9f6c-25038372019a"<br>  }<br>]|{<br>  "SoftDeletePeriod": "3650.00:00:00"<br>}|
 
 ## Notes
 
@@ -176,8 +112,8 @@ To run this command, the user needs [Database Admin permissions](../../managemen
 
 ## Related content
 
-* [Graph model overview](graph-model-overview.md)
-* [.show graph_model](graph-model-show.md)
-* [.show graph_models](graph-models-show.md)
-* [.drop graph_model](graph-model-drop.md)
-* [.make graph_snapshot](graph-snapshot-make.md)
+- [Graph model overview](graph-model-overview.md)
+- [.show graph_model](graph-model-show.md)
+- [.show graph_models](graph-models-show.md)
+- [.drop graph_model](graph-model-drop.md)
+- [.make graph_snapshot](graph-snapshot-make.md)

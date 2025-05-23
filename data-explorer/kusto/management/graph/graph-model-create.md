@@ -14,65 +14,53 @@ Creates a new graph model in the database.
 
 ## Syntax
 
-`.create` [`or` `alter`] `graph` `model` *GraphModelName* [`with` `(`*Property* `=` *Value* [`,` ...]`)`] *GraphModelDefinition*
+`.create` [`or` `alter`] `graph` `model` *GraphModelName* *GraphModelDefinition*
 
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*GraphModelName*|String|Yes|The name of the graph model to create. The name must be unique within the database and follow the [entity naming rules](../../query/schema-entities/entity-names.md).|
-|*Property*|String|No|A property of the graph model. See [Properties](#properties).|
-|*Value*|String|No|The value of the corresponding property.|
 |*GraphModelDefinition*|String|Yes|A valid JSON document that defines the graph model. See [Graph model definition](#graph-model-definition).|
 
-### Properties
+## Returns
 
-|Name|Type|Required|Description|
-|--|--|--|--|
-|`folder`|String|No|The folder that the graph model will be placed in. This property is useful for organizing graph models.|
-|`docstring`|String|No|A string documenting the graph model.|
+This command returns a table with the following columns:
+
+|Column|Type|Description|
+|--|--|--|
+|*Name*|String|The name of the graph model that was created or altered.|
+|*CreationTime*|DateTime|The timestamp when the graph model was created or altered.|
+|*Id*|String|The unique identifier of the graph model.|
+|*SnapshotsCount*|Int|The number of snapshots created from this graph model.|
+|*Model*|String (JSON)|The JSON definition of the graph model, including schema and processing steps.|
+|*AuthorizedPrincipals*|String (JSON)|Array of principals that have access to the graph model, including their identifiers and role assignments.|
+|*RetentionPolicy*|String (JSON)|The retention policy configured for the graph model.|
 
 ### Graph model definition
 
-The graph model definition is a JSON document that describes the structure and data sources of the graph. It contains two main sections:
+For details about the graph model definition and structure, see [Graph model in Kusto - Overview](graph-model-overview.md).
 
-1. **Schema**: Defines the node and edge types with their properties
-2. **Definition**: Specifies the steps to build the graph from tabular data sources
+## Returns
 
-#### Schema section
+This command returns a table with the following columns:
 
-The schema section contains two subsections:
-
-* **Nodes**: A dictionary mapping node type names to their property definitions
-* **Edges**: A dictionary mapping edge type names to their property definitions
-
-Each property definition is a dictionary mapping property names to their Kusto data types.
-
-#### Definition section
-
-The definition section contains an array of steps that define how to build the graph:
-
-* **AddNodes** steps: Define how to create nodes from tabular data
-* **AddEdges** steps: Define how to create edges between existing nodes
-
-Each step contains:
-
-* **Kind**: Either "AddNodes" or "AddEdges"
-* **Query**: A KQL query that produces the data for nodes or edges
-* For AddNodes steps:
-  * **NodeIdColumn**: The column that provides the unique identifier for each node
-  * **Labels**: An array of node types that apply to the nodes created by this step
-* For AddEdges steps:
-  * **SourceColumn**: The column that identifies the source node
-  * **TargetColumn**: The column that identifies the target node
-  * **Labels**: An array of edge types that apply to the edges created by this step
+|Column|Type|Description|
+|--|--|--|
+|*Name*|String|The name of the graph model that was created or altered.|
+|*CreationTime*|DateTime|The timestamp when the graph model was created or altered.|
+|*Id*|String|The unique identifier of the graph model.|
+|*SnapshotsCount*|Int|The number of snapshots created from this graph model.|
+|*Model*|String (JSON)|The JSON definition of the graph model, including schema and processing steps.|
+|*AuthorizedPrincipals*|String (JSON)|Array of principals that have access to the graph model, including their identifiers and role assignments.|
+|*RetentionPolicy*|String (JSON)|The retention policy configured for the graph model.|
 
 ## Examples
 
 ### Create a simple social network graph model
 
 ```kusto
-.create graph model SocialNetwork with (docstring = "A graph model representing user interactions") 
+.create graph model SocialNetwork
 {
     "Schema": {
         "Nodes": {
@@ -120,55 +108,31 @@ Each step contains:
 }
 ```
 
-### Create or alter a product recommendation graph model
+### Create a graph model with dynamic labels and without explicit schema
 
 ```kusto
-.create or alter graph model ProductRecommendations with (folder = "Recommendations", docstring = "Product purchase relationships for recommendation engine") 
+.create graph model DynamicLabelGraph
 {
-    "Schema": {
-        "Nodes": {
-            "Customer": {
-                "CustomerId": "string",
-                "CustomerName": "string",
-                "CustomerSegment": "string",
-                "RegisteredDate": "datetime"
-            },
-            "Product": {
-                "ProductId": "string",
-                "ProductName": "string",
-                "Category": "string",
-                "Price": "decimal"
-            }
-        },
-        "Edges": {
-            "Purchases": {
-                "TransactionId": "string",
-                "PurchaseDate": "datetime",
-                "Quantity": "int",
-                "TotalAmount": "decimal"
-            }
-        }
-    },
     "Definition": {
         "Steps": [
             {
                 "Kind": "AddNodes",
-                "Query": "Customers | project CustomerId, CustomerName, CustomerSegment, RegisteredDate",
-                "NodeIdColumn": "CustomerId",
-                "Labels": ["Customer"]
+                "Query": "Entities | project EntityId, EntityType, Properties",
+                "NodeIdColumn": "EntityId",
+                "LabelsColumn": "EntityType"
             },
             {
                 "Kind": "AddNodes",
-                "Query": "Products | project ProductId, ProductName, Category, Price",
-                "NodeIdColumn": "ProductId",
-                "Labels": ["Product"]
+                "Query": "MultiLabelEntities | project Id, Labels=todynamic(['Person', 'Customer'])",
+                "NodeIdColumn": "Id",
+                "LabelsColumn": "Labels"
             },
             {
                 "Kind": "AddEdges",
-                "Query": "Transactions | project CustomerId, ProductId, TransactionId, PurchaseDate, Quantity, TotalAmount",
-                "SourceColumn": "CustomerId",
-                "TargetColumn": "ProductId",
-                "Labels": ["Purchases"]
+                "Query": "Relationships | project SourceId, TargetId, RelationshipType",
+                "SourceColumn": "SourceId",
+                "TargetColumn": "TargetId",
+                "LabelsColumn": "RelationshipType"
             }
         ]
     }
@@ -177,7 +141,7 @@ Each step contains:
 
 ## Related content
 
-* [Graph model overview](graph-model-overview.md)
-* [.alter graph model](graph-model-alter.md)
-* [.show graph models](graph-model-show.md)
-* [.drop graph model](graph-model-drop.md)
+- [Graph model overview](graph-model-overview.md)
+- [.alter graph model](graph-model-alter.md)
+- [.show graph models](graph-model-show.md)
+- [.drop graph model](graph-model-drop.md)
