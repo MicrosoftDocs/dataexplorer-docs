@@ -369,9 +369,9 @@ items:
             href: python-query-data.md
           - name: Debug Kusto Query Language inline Python
             href: debug-inline-python.md
-      - name: Graph analysis
+      - name: Graph semnatics
         items:
-          - name: Graph analysis overview
+          - name: Graph semnatics overview
             href: graph-overview.md
           - name: Graph analysis scenarios
             href: graph-scenarios.md
