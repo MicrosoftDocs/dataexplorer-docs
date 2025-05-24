@@ -24,13 +24,7 @@ Deletes all graph snapshots associated with a specific graph model.
 
 ## Returns
 
-This command returns a table with the following columns:
-
-|Column|Type|Description|
-|--|--|--|
-|GraphModelName|String|The name of the graph model.|
-|SnapshotsDropped|Integer|The number of snapshots that were dropped.|
-|Result|String|The result of the operation. If successful, the message is "All snapshots for graph model 'GraphModelName' were dropped".|
+This command doesn't return any output upon successful completion.
 
 ## Examples
 
@@ -40,16 +34,11 @@ This command returns a table with the following columns:
 .drop graph_snapshots SocialNetwork
 ```
 
-**Output**
-
-|GraphModelName|SnapshotsDropped|Result|
-|---|---|---|
-|SocialNetwork|3|All snapshots for graph model 'SocialNetwork' were dropped|
+The command completes successfully without returning any output.
 
 ## Notes
 
 - The `.drop graph_snapshots` command permanently deletes all snapshots associated with a graph model. This operation cannot be undone.
-- Before dropping all snapshots, ensure that no queries or processes are currently using any of them.
 - Dropping snapshots doesn't affect the graph model itself.
 - To drop a specific snapshot instead of all snapshots, use the [.drop graph_snapshot](graph-snapshot-drop.md) command.
 

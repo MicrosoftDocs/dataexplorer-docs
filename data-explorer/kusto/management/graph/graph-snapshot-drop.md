@@ -29,9 +29,11 @@ This command returns a table with the following columns:
 
 |Column|Type|Description|
 |--|--|--|
-|GraphModelName|String|The name of the graph model.|
-|SnapshotName|String|The name of the dropped snapshot.|
-|Result|String|The result of the operation. If successful, the message is "Graph snapshot 'GraphModelName.SnapshotName' was dropped".|
+|Name|String|The name of the dropped snapshot.|
+|SnapshotTime|DateTime|The time when the snapshot was created.|
+|ModelName|String|The name of the graph model.|
+|ModelId|String|The unique identifier of the graph model.|
+|ModelCreationTime|DateTime|The time when the graph model was created.|
 
 ## Examples
 
@@ -43,9 +45,9 @@ This command returns a table with the following columns:
 
 **Output**
 
-|GraphModelName|SnapshotName|Result|
-|---|---|---|
-|SocialNetwork|OldSnapshot|Graph snapshot 'SocialNetwork.OldSnapshot' was dropped|
+|Name|SnapshotTime|ModelName|ModelId|ModelCreationTime|
+|---|---|---|---|---|
+|Latest|2025-05-21 10:47:05.9122575|SomeGraph|55953ea5-e03e-47b1-9126-35d8271bed90|2025-05-21 10:47:05.8611670|
 
 ## Notes
 

@@ -1,6 +1,6 @@
 ---
 title: Graph snapshots in Kusto - Overview
-description: This article describes graph snapshots in Kusto
+description: Learn about graph snapshots in Kusto, including their structure, benefits, and how to create and query them for efficient graph data analysis.
 ms.reviewer: herauch
 ms.topic: reference
 ms.date: 04/28/2025
@@ -10,94 +10,97 @@ ms.date: 04/28/2025
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-A graph snapshot is a database entity that represents an instance of a graph model materialized at a specific point in time. While a [graph model](graph-model-overview.md) defines the structure and data sources for a graph, a snapshot is the actual graph that can be queried.
+A graph snapshot is a database entity that represents a materialized instance of a graph model at a specific point in time. While a [graph model](graph-model-overview.md) defines the structure and data sources, a snapshot is the queryable graph implementation.
 
 ## What is a graph snapshot?
 
-A graph snapshot:
-* Is linked to a specific graph model
-* Represents the materialized graph based on the model's definition at creation time
-* Persists in the database until explicitly dropped
-* Can be queried directly without rebuilding the graph each time
-* Contains metadata such as creation time and model information
+Graph snapshots provide:
 
-You can create multiple snapshots from the same graph model to represent the state of data at different points in time. This allows for historical analysis and comparison of graph data over time.
+* **Model linkage**: Connected to a specific graph model
+* **Point-in-time materialization**: Represents the graph state at creation time
+* **Persistence**: Stored in the database until explicitly dropped
+* **Direct querying**: Enables queries without rebuilding the graph
+* **Metadata storage**: Contains creation time and model information
+
+Multiple snapshots from the same graph model enable historical analysis and temporal comparison of graph data.
 
 ## Graph snapshot structure
 
-A graph snapshot consists of:
+Each graph snapshot contains two primary components:
 
-### 1. Metadata
+### Metadata
 
-* **Name**: The unique name of the snapshot
-* **SnapshotTime**: The timestamp when the snapshot was created
+* **Name**: Unique snapshot identifier
+* **SnapshotTime**: Creation timestamp
 * **Model information**:
-  * **ModelName**: The name of the graph model this snapshot is based on
-  * **ModelVersion**: The version of the graph model used
-  * **ModelCreationTime**: When the source model was created
+  * **ModelName**: Source graph model name
+  * **ModelVersion**: Model version at snapshot creation
+  * **ModelCreationTime**: Source model creation timestamp
 
-### 2. Graph data
+### Graph data
 
-* **Nodes**: All nodes materialized from the model's AddNodes steps
-* **Edges**: All relationships materialized from the model's AddEdges steps
-* **Properties**: All node and edge properties as defined in the model
+* **Nodes**: Materialized nodes from the model's `AddNodes` operations
+* **Edges**: Materialized relationships from the model's `AddEdges` operations
+* **Properties**: Node and edge properties as defined in the model
 
-## Example of a graph snapshot configuration
+## Example snapshot configuration
 
 ```json
 {
   "Metadata": {
-    "Name": "MySnapshot",
+    "Name": "UserInteractionsSnapshot",
     "SnapshotTime": "2025-04-28T10:15:30Z"
   },
   "ModelInformation": {
-    "ModelName": "MyGraph",
+    "ModelName": "SocialNetworkGraph",
     "ModelVersion": "v1.2",
     "ModelCreationTime": "2025-04-15T08:20:10Z"
   }
 }
 ```
 
-## Creating and managing graph snapshots
+## Management commands
 
-To create and manage graph snapshots, use these commands:
+Use these commands to manage graph snapshots:
 
-* [.create graph snapshot](graph-snapshot-create.md): Create a new graph snapshot from an existing graph model
-* [.drop graph snapshot](graph-snapshot-drop.md): Remove a graph snapshot from the database
-* [.show graph snapshots](graph-snapshot-show.md): List available graph snapshots in the database
+| Command | Purpose |
+|---------|---------|
+| [.create graph snapshot](graph-snapshot-create.md) | Create a snapshot from an existing graph model |
+| [.drop graph snapshot](graph-snapshot-drop.md) | Remove a snapshot from the database |
+| [.show graph snapshots](graph-snapshot-show.md) | List available snapshots in the database |
 
-## Querying graph snapshots
+## Querying snapshots
 
-Graph snapshots are queried using the `graph()` function, which enables access to the graph entity:
+Query graph snapshots using the `graph()` function:
+
+### Query the latest snapshot
 
 ```kusto
-// Query the latest snapshot of a graph model
-graph("MyGraph") 
+graph("SocialNetworkGraph") 
 | graph-match (person)-[knows]->(friend)
   where person.age > 30
   project person.name, friend.name
 ```
 
-You can also specify a particular snapshot by name:
+### Query a specific snapshot
 
 ```kusto
-// Query a specific snapshot of a graph model
-graph("MyGraph", "MySnapshot") 
+graph("SocialNetworkGraph", "UserInteractionsSnapshot") 
 | graph-match (person)-[knows]->(friend)
   where person.age > 30
   project person.name, friend.name
 ```
 
-If no snapshots are available for a graph model, the `graph()` function will create the graph at query time, similar to using the `make-graph` operator but with the advantage that the entity is already well-defined and doesn't require construction within the query.
+For advanced pattern matching and traversals, see [Graph operators](../../query/graph-operators.md).
 
-For complex graph traversals and pattern matching, see [Graph operators](../../query/graph-operators.md).
+## Key benefits
 
-## Benefits of using graph snapshots
+Graph snapshots provide:
 
-* **Performance**: Avoid rebuilding the graph for each query
-* **Consistency**: Ensure all queries operate on the same graph state
-* **Historical analysis**: Keep snapshots from different time periods for comparison
-* **Resource efficiency**: Reduce CPU and memory usage for repeated graph queries
+* **Enhanced performance**: Eliminates graph rebuilding for each query
+* **Data consistency**: Ensures all queries operate on identical graph state
+* **Temporal analysis**: Enables historical comparison across time periods
+* **Resource optimization**: Reduces CPU and memory consumption for repeated operations
 
 ## Related content
 

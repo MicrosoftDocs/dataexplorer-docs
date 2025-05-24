@@ -30,9 +30,14 @@ If run synchronously, this command returns a table with the following columns:
 
 |Column|Type|Description|
 |--|--|--|
-|*GraphModelName*|String|The name of the graph model.|
-|*SnapshotName*|String|The name of the created snapshot.|
-|*Result*|String|The result of the operation. If successful, the message is "Graph snapshot 'GraphModelName.SnapshotName' was created".|
+|*Name*|String|The name of the created snapshot.|
+|*SnapshotTime*|DateTime|The timestamp when the snapshot was created.|
+|*ModelName*|String|The name of the graph model.|
+|*ModelId*|String|The unique identifier of the graph model.|
+|*ModelCreationTime*|DateTime|The timestamp when the graph model was created.|
+|*NodesCount*|Long|The number of nodes in the snapshot.|
+|*EdgesCount*|Long|The number of edges in the snapshot.|
+|*RetentionPolicy*|String|The retention policy applied to the snapshot in JSON format.|
 
 If run asynchronously, the command returns an operation ID that can be used to check the status of the operation.
 
@@ -46,9 +51,9 @@ If run asynchronously, the command returns an operation ID that can be used to c
 
 **Output**
 
-|GraphModelName|SnapshotName|Result|
-|---|---|---|
-|SocialNetwork|WeeklySnapshot|Graph snapshot 'SocialNetwork.WeeklySnapshot' was created|
+|Name|SnapshotTime|ModelName|ModelId|ModelCreationTime|NodesCount|EdgesCount|RetentionPolicy|
+|---|---|---|---|---|---|---|---|
+|WeeklySnapshot|2025-05-24 05:26:35.1495944|SocialNetwork|55953ea5-e03e-47b1-9126-35d8271bed90|2025-05-21 10:47:05.8611670|2|1|{<br>  "SoftDeletePeriod": "365000.00:00:00"<br>}|
 
 ### Create a graph snapshot asynchronously
 
@@ -68,7 +73,6 @@ If run asynchronously, the command returns an operation ID that can be used to c
 - For large graphs, it's recommended to use the `async` option to run the operation in the background.
 - A graph model can have multiple snapshots, each representing the state of the graph at different points in time.
 - Snapshots are immutable. To update a snapshot with fresh data, you need to create a new snapshot.
-- To query a graph snapshot, use the [.query graph_snapshot](graph-snapshot-query.md) command.
 
 ## Required permissions
 
@@ -80,4 +84,3 @@ To run this command, the user needs [Database Admin permissions](../../managemen
 * [.show graph_snapshot](graph-snapshot-show.md)
 * [.show graph_snapshots](graph-snapshots-show.md)
 * [.drop graph_snapshot](graph-snapshot-drop.md)
-* [.query graph_snapshot](graph-snapshot-query.md)
