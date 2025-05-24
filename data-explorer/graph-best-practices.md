@@ -13,7 +13,7 @@ Kusto supports two primary approaches for working with graphs: transient graphs,
 
 ## Approaches to graph modeling in Kusto
 
-Transient graphs are created dynamically using the [`make-graph`](kusto/query/make-graph-operator.md) operator. These graphs exist only for the duration of a query and are best suited for ad hoc or exploratory analysis on small to medium datasets. In contrast, persistent graphs are defined using [graph models](kusto/management/graph/graph-model-overview.md) and [graph snapshots](kusto/management/graph/graph-snapshot-overview.md). Persistent graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
+Transient graphs are created dynamically using the [`make-graph`](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) operator. These graphs exist only for the duration of a query and are best suited for ad hoc or exploratory analysis on small to medium datasets. In contrast, persistent graphs are defined using [graph models](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true). Persistent graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
 
 The following sections describe best practices for each approach.
 
@@ -319,7 +319,7 @@ The projection in `graph-match` shows that the temperature sensor exhibited an a
 
 ## Best practices for persistent graphs
 
-Persistent graphs, defined using [graph models](kusto/management/graph/graph-model-overview.md) and [graph snapshots](kusto/management/graph/graph-snapshot-overview.md), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
+Persistent graphs, defined using [graph models](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
 
 ### Use schema and definition for consistency and performance
 
