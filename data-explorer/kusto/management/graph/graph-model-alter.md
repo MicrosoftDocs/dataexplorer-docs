@@ -1,9 +1,9 @@
 ---
 title: .alter graph model command
-description: Learn how to modify an existing graph model
+description: Learn how to modify an existing graph model using the .alter graph model command with syntax, parameters, and examples.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 04/27/2025
+ms.date: 05/24/2025
 ---
 
 # .alter graph model (Preview)
@@ -20,8 +20,8 @@ Modifies an existing graph model in the database.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*GraphModelName*|String|Yes|The name of the existing graph model to modify.|
-|*GraphModelDefinition*|String|Yes|A valid JSON document that defines the updated graph model. See [Graph model definition](#graph-model-definition).|
+|*GraphModelName*|String|✅|The name of the existing graph model to modify.|
+|*GraphModelDefinition*|String|✅|A valid JSON document that defines the updated graph model. See [Graph model definition](#graph-model-definition).|
 
 ### Graph model definition
 

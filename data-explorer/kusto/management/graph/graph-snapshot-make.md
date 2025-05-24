@@ -1,9 +1,9 @@
 ---
 title: .make graph_snapshot command
-description: Learn how to create a graph snapshot from a graph model
+description: Learn how to create a graph snapshot from a graph model using the .make graph_snapshot command with syntax, parameters, and examples.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 04/27/2025
+ms.date: 05/24/2025
 ---
 
 # .make graph_snapshot (Preview)
@@ -20,9 +20,9 @@ Creates a new graph snapshot from a specified graph model. A graph snapshot is a
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|`async`|Keyword|No|If specified, the command will run asynchronously and return immediately.|
-|*SnapshotName*|String|Yes|The name of the snapshot to create. The name must be unique within the scope of the graph model.|
-|*GraphModelName*|String|Yes|The name of the graph model from which to create the snapshot.|
+|`async`|Keyword|❌|If specified, the command runs asynchronously and returns immediately.|
+|*SnapshotName*|String|✅|The name of the snapshot to create. The name must be unique within the scope of the graph model.|
+|*GraphModelName*|String|✅|The name of the graph model from which to create the snapshot.|
 
 ## Returns
 

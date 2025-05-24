@@ -1,9 +1,9 @@
 ---
 title: .create graph model command
-description: Learn how to create a graph model
+description: Learn how to create a graph model in Kusto using the .create graph model command with syntax, parameters, and examples.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 04/27/2025
+ms.date: 05/24/2025
 ---
 
 # .create graph model (Preview)
@@ -20,8 +20,8 @@ Creates a new graph model in the database.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*GraphModelName*|String|Yes|The name of the graph model to create. The name must be unique within the database and follow the [entity naming rules](../../query/schema-entities/entity-names.md).|
-|*GraphModelDefinition*|String|Yes|A valid JSON document that defines the graph model. See [Graph model definition](#graph-model-definition).|
+|*GraphModelName*|String|✅|The name of the graph model to create. The name must be unique within the database and follow the [entity naming rules](../../query/schema-entities/entity-names.md).|
+|*GraphModelDefinition*|String|✅|A valid JSON document that defines the graph model. See [Graph model definition](#graph-model-definition).|
 
 ## Returns
 
@@ -40,20 +40,6 @@ This command returns a table with the following columns:
 ### Graph model definition
 
 For details about the graph model definition and structure, see [Graph model in Kusto - Overview](graph-model-overview.md).
-
-## Returns
-
-This command returns a table with the following columns:
-
-|Column|Type|Description|
-|--|--|--|
-|*Name*|String|The name of the graph model that was created or altered.|
-|*CreationTime*|DateTime|The timestamp when the graph model was created or altered.|
-|*Id*|String|The unique identifier of the graph model.|
-|*SnapshotsCount*|Int|The number of snapshots created from this graph model.|
-|*Model*|String (JSON)|The JSON definition of the graph model, including schema and processing steps.|
-|*AuthorizedPrincipals*|String (JSON)|Array of principals that have access to the graph model, including their identifiers and role assignments.|
-|*RetentionPolicy*|String (JSON)|The retention policy configured for the graph model.|
 
 ## Examples
 

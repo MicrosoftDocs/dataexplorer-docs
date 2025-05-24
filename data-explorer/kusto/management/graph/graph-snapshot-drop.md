@@ -1,9 +1,9 @@
 ---
 title: .drop graph_snapshot command
-description: Learn how to delete a specific graph snapshot
+description: Learn how to delete a specific graph snapshot using the .drop graph_snapshot command with syntax, parameters, and examples.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 04/27/2025
+ms.date: 05/24/2025
 ---
 
 # .drop graph_snapshot (Preview)
@@ -20,8 +20,8 @@ Deletes a specific graph snapshot from a graph model.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*GraphModelName*|String|Yes|The name of the graph model that the snapshot belongs to.|
-|*SnapshotName*|String|Yes|The name of the graph snapshot to drop.|
+|*GraphModelName*|String|✅|The name of the graph model that the snapshot belongs to.|
+|*SnapshotName*|String|✅|The name of the graph snapshot to drop.|
 
 ## Returns
 

@@ -1,9 +1,9 @@
 ---
 title: .show graph_model command
-description: Learn how to display specific graph model versions
+description: Learn how to display specific graph model versions using the .show graph_model command with syntax and examples.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 04/27/2025
+ms.date: 05/24/2025
 ---
 
 # .show graph_model (Preview)
@@ -22,16 +22,16 @@ Shows the details of a specific graph model, including its versions.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*GraphModelName*|String|Yes|The name of the graph model to show.|
-|*Property*|String|No|A property to control which version(s) to show. See [Properties](#properties).|
-|*Value*|String|No|The value of the corresponding property.|
-|`details`|Keyword|No|When specified, returns more detailed information about the graph model.|
+|*GraphModelName*|String|✅|The name of the graph model to show.|
+|*Property*|String|❌|A property to control which version(s) to show. See [Properties](#properties).|
+|*Value*|String|❌|The value of the corresponding property.|
+|`details`|Keyword|❌|When specified, returns more detailed information about the graph model.|
 
 ### Properties
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|`id`|String|No|The specific version identifier (GUID) of the graph model to show. Use `*` to show all versions. If not specified, the latest version is shown.|
+|`id`|String|❌|The specific version identifier (GUID) of the graph model to show. Use `*` to show all versions. If not specified, the latest version is shown.|
 
 ## Returns
 

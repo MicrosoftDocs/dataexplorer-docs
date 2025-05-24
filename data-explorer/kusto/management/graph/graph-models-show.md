@@ -1,9 +1,9 @@
 ---
 title: .show graph_models command
-description: Learn how to list all graph models in a database
+description: Learn how to list all graph models in a database using the .show graph_models command with syntax, parameters, and examples.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 04/27/2025
+ms.date: 05/24/2025
 ---
 
 # .show graph_models (Preview)
@@ -22,14 +22,14 @@ Lists all graph models in the database, showing the latest version for each mode
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Property*|String|No|A property to control which versions to show. See [Properties](#properties).|
-|*Value*|String|No|The value of the corresponding property.|
+|*Property*|String|❌|A property to control which versions to show. See [Properties](#properties).|
+|*Value*|String|❌|The value of the corresponding property.|
 
 ### Properties
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|`showAll`|Boolean|No|If set to `true`, returns all versions of every graph model. If set to `false` or not specified, returns only the latest version of each graph model.|
+|`showAll`|Boolean|❌|If set to `true`, returns all versions of every graph model. If set to `false` or not specified, returns only the latest version of each graph model.|
 
 ## Returns
 

@@ -1,9 +1,9 @@
 ---
 title: .show graph_snapshot command
-description: Learn how to display information about a specific graph snapshot
+description: Learn how to display information about a specific graph snapshot using the .show graph_snapshot command.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 04/27/2025
+ms.date: 05/24/2025
 ---
 
 # .show graph_snapshot (Preview)
@@ -20,9 +20,9 @@ Shows detailed information about a specific graph snapshot.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*GraphModelName*|String|Yes|The name of the graph model that the snapshot belongs to.|
-|*SnapshotName*|String|Yes|The name of the graph snapshot to show.|
-|`details`|String|No|Optional parameter to show additional detailed information about the snapshot, including node count, edge count, and retention policy.|
+|*GraphModelName*|String|✅|The name of the graph model that the snapshot belongs to.|
+|*SnapshotName*|String|✅|The name of the graph snapshot to show.|
+|`details`|String|❌|Optional parameter to show additional detailed information about the snapshot, including node count, edge count, and retention policy.|
 
 ## Returns
 

@@ -1,53 +1,55 @@
 ---
 title: Graph models in Azure Data Explorer - Overview and usage
-description: Learn how to define, manage, and efficiently query persistent graph structures in Azure Data Explorer using the Graph model feature
+description: Learn how to define, manage, and query persistent graph structures in Azure Data Explorer using graph models.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 05/23/2025
+ms.date: 05/24/2025
 ---
 
 # Graph models in Azure Data Explorer (Preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The Graph model feature in Azure Data Explorer enables you to define, manage, and efficiently query persistent graph structures within your database. Unlike the transient graphs created using the [make-graph](../../query/make-graph-operator.md) operator, graph models are stored representations that can be queried repeatedly without rebuilding the graph for each query, significantly improving performance for complex relationship-based analysis.
+Graph models in Azure Data Explorer enable you to define, manage, and efficiently query persistent graph structures within your database. Unlike transient graphs created using the [make-graph](../../query/make-graph-operator.md) operator, graph models are stored representations that can be queried repeatedly without rebuilding the graph for each query, significantly improving performance for complex relationship-based analysis.
 
-## What is a Graph model?
+## Overview
 
-A Graph model is a database object that represents a labeled property graph (LPG) within Azure Data Explorer. It consists of nodes (vertices) and edges (relationships), both of which can have properties that describe them. The model defines both the schema of the graph (node and edge types with their properties) and the process for constructing the graph from tabular data stored in Kusto tables.
+A graph model is a database object that represents a labeled property graph (LPG) within Azure Data Explorer. It consists of nodes (vertices) and edges (relationships), both of which can have properties that describe them. The model defines both the schema of the graph (node and edge types with their properties) and the process for constructing the graph from tabular data stored in Kusto tables.
 
-Key characteristics of Graph models in Kusto:
+## Key characteristics
 
-* **Metadata persistence**: Graph models store graph specifications in the metadata of a Kusto database, making them durable and reusable.
-* **Materialized snapshots**: Model snapshots eliminate the need to rebuild the graph for each query, dramatically improving query performance for complex graph operations.
-* **Schema definition**: Graph models support an optional but recommended defined schema for nodes and edges, ensuring data consistency and enabling validation.
-* **Deep KQL integration**: Graph models seamlessly integrate with Kusto Query Language (KQL) graph semantics, allowing you to leverage your existing KQL knowledge.
-* **Optimized traversals**: Graph models include specialized indexing for efficient graph traversal operations, making complex pattern matching and path-finding queries significantly faster.
+Graph models in Kusto offer:
 
-## When to use Graph models
+- **Metadata persistence**: Store graph specifications in database metadata for durability and reusability
+- **Materialized snapshots**: Eliminate the need to rebuild graphs for each query, dramatically improving query performance
+- **Schema definition**: Support optional but recommended defined schemas for nodes and edges, ensuring data consistency
+- **Deep KQL integration**: Seamlessly integrate with Kusto Query Language (KQL) graph semantics
+- **Optimized traversals**: Include specialized indexing for efficient graph traversal operations, making complex pattern matching and path-finding queries significantly faster
 
-Graph models provide significant advantages for relationship-based analysis but require additional setup compared to ad-hoc graph queries. Consider using Graph models when:
+## When to use graph models
 
-* **Performance is critical**: You repeatedly run graph queries on the same underlying data and need optimized performance
-* **Complex relationship data**: You have data with many interconnected relationships that benefit from a graph representation
-* **Stable structure**: Your graph structure is relatively stable, with periodic but not constant updates
-* **Advanced graph operations**: You need to perform complex traversals, path finding, pattern matching, or community detection on your data
-* **Consistent schema**: Your graph analysis requires a well-defined structure with consistent node and edge types
+Graph models provide significant advantages for relationship-based analysis but require additional setup compared to ad-hoc graph queries. Consider using graph models when:
+
+- **Performance is critical**: You repeatedly run graph queries on the same underlying data and need optimized performance
+- **Complex relationship data**: You have data with many interconnected relationships that benefit from a graph representation
+- **Stable structure**: Your graph structure is relatively stable, with periodic but not constant updates
+- **Advanced graph operations**: You need to perform complex traversals, path finding, pattern matching, or community detection on your data
+- **Consistent schema**: Your graph analysis requires a well-defined structure with consistent node and edge types
 
 For simpler, one-time graph analysis on smaller datasets, the [make-graph](../../query/make-graph-operator.md) operator may be more appropriate.
 
 ## Graph model components
 
-A Graph model consists of two main components:
+A graph model consists of two main components:
 
-### 1. Schema (optional)
+### Schema (optional)
 
-The Schema defines the structure of the nodes and edges in the graph:
+The schema defines the structure of the nodes and edges in the graph:
 
-* **Nodes**: Defines the types of nodes in the graph and their properties
-* **Edges**: Defines the types of relationships between nodes and their properties
+- **Nodes**: Defines the types of nodes in the graph and their properties
+- **Edges**: Defines the types of relationships between nodes and their properties
 
-### 2. Definition
+### Definition
 
 The Definition specifies how to build the graph from tabular data:
 

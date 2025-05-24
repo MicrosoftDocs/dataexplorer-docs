@@ -1,46 +1,46 @@
 ---
 title: Persistent graphs in Kusto - Overview
-description: This article provides an overview of persistent graphs in Kusto, explaining models, snapshots, and management concepts
+description: Learn about persistent graphs in Kusto, including graph models, snapshots, and management commands for scalable graph analytics.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 05/23/2025
+ms.date: 05/24/2025
 ---
 
 # Persistent graphs in Kusto (Preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-Persistent graphs in Kusto provide a robust solution for storing, managing, and querying graph data structures. Unlike transient graphs created with the [make-graph](../../query/make-graph-operator.md) operator, persistent graphs are durable database objects that exist beyond individual query executions, enabling scalable graph analytics for enterprise scenarios.
+Persistent graphs in Kusto enable you to store, manage, and query graph data structures at scale. Unlike transient graphs created with the [make-graph](../../query/make-graph-operator.md) operator, persistent graphs are durable database objects that persist beyond individual query executions, providing enterprise-grade graph analytics capabilities.
 
-## What are persistent graphs?
+## Overview
 
-Persistent graphs in Kusto are implemented through two primary components:
+Persistent graphs consist of two primary components:
 
-1. **[Graph models](graph-model-overview.md)**: Database objects that define the structure and schema of a graph
-2. **[Graph snapshots](graph-snapshot-overview.md)**: Materialized instances of graph models that can be queried
+1. **[Graph models](graph-model-overview.md)**: Define the structure and schema of your graph
+2. **[Graph snapshots](graph-snapshot-overview.md)**: Materialized instances of graph models that you can query
 
-This two-tier architecture provides both flexibility in defining graph schemas and efficiency in querying graph data at scale.
+This architecture provides both flexibility in defining graph schemas and efficiency in querying graph data at scale.
 
-### Key characteristics of persistent graphs
+## Key benefits
 
-Persistent graphs offer several significant advantages for enterprise-scale graph analytics:
+Persistent graphs offer significant advantages for enterprise-scale graph analytics:
 
-* **Durable storage**: Graph models and snapshots are stored in database metadata for consistent, long-term availability
-* **Scalability**: Capable of handling large graphs that exceed single-node memory limitations
-* **Reusability**: Multiple users and applications can query the same graph structure without reconstructing it
-* **Performance optimization**: Eliminates graph construction overhead for repeated queries
-* **Schema support**: Structured definitions for different node and edge types with their properties
-* **Version control**: Multiple snapshots allow representation of graphs at different points in time
+- **Durable storage**: Graph models and snapshots persist in database metadata for long-term availability
+- **Scalability**: Handle large graphs that exceed single-node memory limitations
+- **Reusability**: Multiple users and applications can query the same graph structure without reconstruction
+- **Performance optimization**: Eliminate graph construction overhead for repeated queries
+- **Schema support**: Structured definitions for different node and edge types with their properties
+- **Version control**: Multiple snapshots enable representation of graphs at different points in time
 
 ## Graph models
 
-A graph model defines the specifications of a graph stored in the metadata of a Kusto database. It includes:
+A graph model defines the specifications of a graph stored in your database metadata. It includes:
 
-* **Schema definition**: Node and edge types with their properties
-* **Data source mappings**: How to build the graph from tabular data
-* **Labels**: Both static (predefined) and dynamic (generated at runtime) labels for nodes and edges
+- **Schema definition**: Node and edge types with their properties
+- **Data source mappings**: Instructions for building the graph from tabular data
+- **Labels**: Both static (predefined) and dynamic (generated at runtime) labels for nodes and edges
 
-Graph models do not contain the actual graph data but provide the blueprint for creating graph snapshots.
+Graph models contain the blueprint for creating graph snapshots, not the actual graph data.
 
 ### Managing graph models
 
@@ -59,11 +59,11 @@ The following commands are available for managing graph models:
 
 A graph snapshot is the actual graph instance materialized from a graph model. It represents:
 
-* A specific time point's view of the data as defined by the model
-* The nodes, edges, and their properties in a queryable format
-* A self-contained entity that persists until explicitly removed
+- A specific point-in-time view of the data as defined by the model
+- The nodes, edges, and their properties in a queryable format
+- A self-contained entity that persists until explicitly removed
 
-Snapshots are the entities that you query when working with persistent graphs.
+Snapshots are the entities you query when working with persistent graphs.
 
 ### Managing graph snapshots
 
@@ -77,14 +77,14 @@ The following commands are available for managing graph snapshots:
 | [.drop graph snapshot](graph-snapshot-drop.md) | Removes a single graph snapshot |
 | [.drop graph snapshots](graph-snapshots-drop.md) | Removes multiple graph snapshots based on criteria |
 
-## Workflow for persistent graphs
+## Workflow
 
-The typical workflow for creating and using persistent graphs involves:
+The typical workflow for creating and using persistent graphs follows these steps:
 
 1. **Create a graph model** - Define the structure and data sources for your graph
-1. **Create a graph snapshot** - Materialize the graph model into a queryable snapshot
-1. **Query the graph snapshot** - Use KQL graph operators to analyze the graph data
-1. **Manage lifecycle** - Create new snapshots as needed and drop old ones
+2. **Create a graph snapshot** - Materialize the graph model into a queryable snapshot
+3. **Query the graph snapshot** - Use KQL graph operators to analyze the graph data
+4. **Manage lifecycle** - Create new snapshots as needed and drop old ones
 
 ## Querying persistent graphs
 

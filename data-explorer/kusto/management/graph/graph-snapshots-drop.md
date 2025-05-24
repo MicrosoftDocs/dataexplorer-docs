@@ -1,9 +1,9 @@
 ---
 title: .drop graph_snapshots command
-description: Learn how to delete all graph snapshots for a specific graph model
+description: Learn how to delete all graph snapshots for a specific graph model using the .drop graph_snapshots command.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 04/27/2025
+ms.date: 05/24/2025
 ---
 
 # .drop graph_snapshots (Preview)
@@ -20,7 +20,7 @@ Deletes all graph snapshots associated with a specific graph model.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*GraphModelName*|String|Yes|The name of the graph model for which to drop all snapshots.|
+|*GraphModelName*|String|✅|The name of the graph model for which to drop all snapshots.|
 
 ## Returns
 
@@ -36,7 +36,7 @@ This command doesn't return any output upon successful completion.
 
 The command completes successfully without returning any output.
 
-## Notes
+## Important notes
 
 - The `.drop graph_snapshots` command permanently deletes all snapshots associated with a graph model. This operation cannot be undone.
 - Dropping snapshots doesn't affect the graph model itself.
@@ -44,11 +44,11 @@ The command completes successfully without returning any output.
 
 ## Required permissions
 
-To run this command, the user needs [Database Admin permissions](../../management/access-control/role-based-access-control.md).
+To run this command, you need [Database Admin permissions](../../management/access-control/role-based-access-control.md).
 
-## Related content
+## Next steps
 
-* [Graph model overview](graph-model-overview.md)
+- [Graph model overview](graph-model-overview.md)
 * [.make graph_snapshot](graph-snapshot-make.md)
 * [.show graph_snapshot](graph-snapshot-show.md)
 * [.show graph_snapshots](graph-snapshots-show.md)

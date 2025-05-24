@@ -1,9 +1,9 @@
 ---
 title: .create-or-alter graph_model command
-description: Learn how to create or alter a graph model
+description: Learn how to create or alter a graph model using the .create-or-alter graph_model command with syntax, parameters, and examples.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 04/27/2025
+ms.date: 05/24/2025
 ---
 
 # .create-or-alter graph_model (Preview)
@@ -20,8 +20,8 @@ Creates a new graph model or alters an existing one using the provided model def
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*GraphModelName*|String|Yes|The name of the graph model to create or alter. The name must be unique within the database and follow the [entity naming rules](../../query/schema-entities/entity-names.md).|
-|*GraphModelDefinitionPayload*|String|Yes|A valid JSON document that defines the graph model. The payload should be prefixed with the `@` symbol. See [Graph model definition payload](#graph-model-definition-payload).|
+|*GraphModelName*|String|✅|The name of the graph model to create or alter. The name must be unique within the database and follow the [entity naming rules](../../query/schema-entities/entity-names.md).|
+|*GraphModelDefinitionPayload*|String|✅|A valid JSON document that defines the graph model. The payload should be prefixed with the `@` symbol. See [Graph model definition payload](#graph-model-definition-payload).|
 
 ### Graph model definition payload
 
