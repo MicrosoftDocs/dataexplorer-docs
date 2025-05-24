@@ -8,7 +8,7 @@ ms.date: 05/23/2025
 
 # Graph semantics in Kusto - Overview
 
-> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](kusto/includes/applies-to-version/applies.md)] [!INCLUDE [fabric](kusto/includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](kusto/includes/applies-to-version/azure-data-explorer.md)]
 
 Graph semantics in Kusto allows you to model and query data as graphs. The structure of a graph comprises nodes and edges that connect them. Both nodes and edges can have properties that describe them, creating a rich data model for complex relationships.
 
@@ -64,7 +64,7 @@ Kusto provides two distinct approaches for creating and working with graphs, eac
 
 ### 1. Transient graphs
 
-Transient graphs are created dynamically using the [`make-graph`](../../query/make-graph-operator.md) operator. These graphs are constructed in memory during query execution and exist only for the duration of the query.
+Transient graphs are created dynamically using the [`make-graph`](kusto/query/make-graph-operator.md) operator. These graphs are constructed in memory during query execution and exist only for the duration of the query.
 
 #### Key characteristics
 
@@ -76,7 +76,7 @@ Ad hoc analysis and exploratory data analysis benefit from this approach, partic
 
 ### 2. Persistent graphs
 
-Persistent graphs are created using a combination of [graph models](graph-model-overview.md) and [graph snapshots](graph-snapshot-overview.md). This approach provides a robust solution for scenarios requiring repeated access to large, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, or any domain with interconnected data.
+Persistent graphs are created using a combination of [graph models](kusto/management/graph/graph-model-overview.md) and [graph snapshots](kusto/management/graph/graph-snapshot-overview.md). This approach provides a robust solution for scenarios requiring repeated access to large, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, or any domain with interconnected data.
 
 #### Key characteristics for persistent graphs
 
@@ -116,7 +116,7 @@ In IoT and digital twin applications, persistent graphs excel at modeling comple
 
 Regardless of the creation method, once a graph is established (either through `make-graph` or from a snapshot), analysts can leverage the full suite of KQL graph operators for comprehensive analysis across any domain.
 
-The [`graph-match`](../../query/graph-match-operator.md) operator enables sophisticated pattern matching and traversal operations, allowing analysts to identify complex patterns, relationship sequences, and multi-stage connections across any networked data. The [`graph-shortest-paths`](../../query/graph-shortest-paths-operator.md) operator is invaluable for finding optimal paths between entities, helping prioritize connections and identify critical relationships whether in supply chains, IoT networks, social networks, or infrastructure dependencies. The [`graph-to-table`](../../query/graph-to-table-operator.md) operator facilitates converting graph analysis results back to tabular format for integration with existing reporting systems and data visualization tools.
+The [`graph-match`](kusto/query/graph-match-operator.md) operator enables sophisticated pattern matching and traversal operations, allowing analysts to identify complex patterns, relationship sequences, and multi-stage connections across any networked data. The [`graph-shortest-paths`](kusto/query/graph-shortest-paths-operator.md) operator is invaluable for finding optimal paths between entities, helping prioritize connections and identify critical relationships whether in supply chains, IoT networks, social networks, or infrastructure dependencies. The [`graph-to-table`](kusto/query/graph-to-table-operator.md) operator facilitates converting graph analysis results back to tabular format for integration with existing reporting systems and data visualization tools.
 
 Analysts can perform time-based analysis to examine how relationships and patterns evolve over time, tracking the progression of changes and identifying emerging trends across domains. Geospatial integration capabilities allow combining graph data with location-based intelligence, enabling analysis of geographic patterns and location-based anomalies. Machine learning integration supports applying algorithms for entity clustering, pattern classification, and anomaly detection within any graph context—such as customer journey analysis, product recommendation systems, IoT networks, digital twins, or knowledge graphs.
 
@@ -193,8 +193,8 @@ This integration enables sophisticated analysis scenarios such as tracking the e
 
 ## Related content
 
-- [Graph model overview](graph-model-overview.md)
-- [Graph snapshots overview](graph-snapshot-overview.md)
-- [make-graph operator](../../query/make-graph-operator.md)
-- [Graph operators](../../query/graph-operators.md)
-- [Graph best practices](../../query/graph-best-practices.md)
+- [Graph model overview](kusto/management/graph/graph-model-overview.md)
+- [Graph snapshots overview](kusto/management/graph/graph-snapshot-overview.md)
+- [make-graph operator](kusto/query/make-graph-operator.md)
+- [Graph operators](kusto/query/graph-operators.md)
+- [Graph best practices](graph-best-practices.md)
