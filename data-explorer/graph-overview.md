@@ -10,11 +10,11 @@ ms.date: 05/23/2025
 
 > [!INCLUDE [applies](kusto/includes/applies-to-version/applies.md)] [!INCLUDE [fabric](kusto/includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](kusto/includes/applies-to-version/azure-data-explorer.md)]
 
-Graph semantics in Kusto allows you to model and query data as graphs. The structure of a graph comprises nodes and edges that connect them. Both nodes and edges can have properties that describe them, creating a rich data model for complex relationships.
+Graph semantics in Kusto enables you to model and query data as interconnected networks. A graph consists of nodes (entities) and edges (relationships) that connect them. Both nodes and edges can contain properties, creating a rich data model for complex relationships.
 
-Graphs are useful for representing complex and dynamic data that involve many-to-many, hierarchical, or networked relationships, such as social networks, recommendation systems, connected assets, or knowledge graphs. Graphs store data differently from relational databases, which use tables and need indexes and joins to connect related data. In graphs, each node has a direct pointer to its neighbors (adjacency), so there's no need to index or join anything, making it easy and fast to traverse the graph.
+Graphs excel at representing complex data with many-to-many relationships, hierarchical structures, or networked connections—such as social networks, recommendation systems, connected assets, and knowledge graphs. Unlike relational databases that require indexes and joins to connect data across tables, graphs use direct adjacency between nodes, enabling fast and intuitive traversal of relationships.
 
-The following graph illustrates a security attack path scenario. Nodes represent different entities such as external sources, users, and critical assets, while edges represent actions or relationships relevant to a potential attack sequence.
+The following graph illustrates a cybersecurity attack path scenario. Nodes represent entities such as external sources, users, and critical assets, while edges represent actions or relationships that form a potential attack sequence.
 
 ```mermaid
 graph TD
@@ -30,9 +30,9 @@ graph TD
     style DB fill:#ffd93d,stroke:#fdcb6e,color:#000
 ```
 
-Graph queries can use the graph structure and meaning to perform complex and powerful operations, such as finding paths, patterns, shortest distances, communities, or centrality measures. Across domains, graphs are powerful for modeling relationships, interactions, dependencies, and flows—whether in social networks, supply chains, IoT device networks, digital twins, recommendation systems, or organizational structures.
+Graph queries leverage graph structure to perform sophisticated operations such as finding paths, patterns, shortest distances, communities, and centrality measures. These capabilities make graphs powerful for modeling relationships, interactions, dependencies, and flows across domains—including social networks, supply chains, IoT device networks, digital twins, recommendation systems, and organizational structures.
 
-The following graph illustrates a supply chain scenario, with nodes representing suppliers, manufacturers, and distributors, and edges representing supply relationships. This demonstrates how graphs can model flows and dependencies in a non-security context.
+The following graph shows a supply chain scenario where nodes represent suppliers, manufacturers, and distributors, and edges represent supply relationships. This example demonstrates how graphs model flows and dependencies across different business contexts.
 
 ```mermaid
 graph TD
@@ -48,15 +48,15 @@ graph TD
 
 ## Why use graph semantics in Kusto?
 
-Kusto's graph capabilities offer significant advantages by **leveraging your existing data investments** while adding sophisticated contextualization capabilities:
+Kusto's graph capabilities offer significant advantages by **leveraging existing data investments** while adding sophisticated relationship modeling:
 
-- **No data migration required** - Build graph models directly from your current data without duplications
+- **No data migration required** - Build graph models directly from current data without duplication
 - **Cost-effective solution** - Eliminates the complexity and expense of dedicated graph databases
-- **Temporal analysis support** - As a time-series database, Kusto naturally lets you examine how graphs evolve over time
-- **Event-based modeling** - Treats graphs as series of relationship events, aligning with Kusto's core strength in event processing
-- **Seamless KQL integration** - Graph operators work alongside all existing KQL capabilities with full intellisense support
+- **Temporal analysis support** - As a time-series database, Kusto naturally enables analysis of graph evolution over time
+- **Event-based modeling** - Treats graphs as sequences of relationship events, aligning with Kusto's strength in event processing
+- **Seamless KQL integration** - Graph operators work alongside all existing KQL capabilities with full IntelliSense support
 
-This approach delivers **enterprise-grade relationship modeling** while maintaining Kusto's performance, scale, and familiarity. Organizations can analyze complex interconnected data across domains—from supply chains and organizational hierarchies to IoT device networks and social relationships—without additional tooling investments.
+This approach delivers **enterprise-grade relationship modeling** while maintaining Kusto's performance, scale, and familiar interface. Organizations can analyze complex interconnected data across domains—from supply chains and organizational hierarchies to IoT device networks and social relationships—without additional infrastructure investments.
 
 ## Graph creation approaches in Kusto
 
@@ -64,29 +64,53 @@ Kusto provides two distinct approaches for creating and working with graphs, eac
 
 ### 1. Transient graphs
 
-Transient graphs are created dynamically using the [`make-graph`](/kusto/query/make-graph-operator.md) operator. These graphs are constructed in memory during query execution and exist only for the duration of the query.
+Transient graphs are created dynamically using the [`make-graph`](/kusto/query/make-graph-operator.md) operator. These graphs exist in memory during query execution and are automatically discarded when the query completes.
 
 #### Key characteristics
 
-Dynamic creation allows graphs to be built from tabular data using KQL queries, with the entire graph structure residing in memory. The graph exists only during query execution, providing immediate availability without any pre-processing or setup requirements. However, graph size is constrained by available memory on any Kusto cluster node. The drivers for the graph size are the actual topology of the graph and the size of the properties, making this approach suitable for smaller to medium-sized datasets.
+- **Dynamic creation** - Built from tabular data using KQL queries with the entire structure residing in memory
+- **Immediate availability** - No pre-processing or setup requirements
+- **Memory constraints** - Graph size is limited by available memory on cluster nodes
+- **Performance factors** - Graph topology and property sizes determine memory requirements
 
-#### Use cases for Transient Graphs
+This approach is optimal for smaller to medium-sized datasets where immediate analysis is needed.
 
-Ad hoc analysis and exploratory data analysis benefit from this approach, particularly for one-time investigations where you need to quickly examine patterns or connections in your data. Small to medium datasets work well with in-memory graphs, especially when analyzing recent events or performing focused analyses on specific subsets of data. Rapid prototyping allows you to test graph patterns and query logic before committing to persistent models. Dynamic data analysis is ideal for frequently changing data that doesn't justify persistent storage, such as real-time monitoring scenarios across IoT networks, supply chain relationships, customer journey mapping, or any domain where relationships between entities need quick visualization and analysis.
+#### Use cases for transient graphs
+
+Transient graphs excel in several scenarios:
+
+- **Ad hoc analysis** - One-time investigations requiring quick pattern examination
+- **Exploratory data analysis** - Testing hypotheses and validating analytical approaches
+- **Small to medium datasets** - Real-time analysis of recent events or focused data subsets
+- **Rapid prototyping** - Testing graph patterns before implementing persistent models
+- **Dynamic data analysis** - Frequently changing data that doesn't justify persistent storage
+
+Common applications include real-time IoT monitoring, supply chain relationship analysis, customer journey mapping, and any scenario requiring immediate visualization of entity relationships.
 
 ### 2. Persistent graphs
 
-Persistent graphs are created using a combination of [graph models](/kusto/management/graph/graph-model-overview.md) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview.md). This approach provides a robust solution for scenarios requiring repeated access to large, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, or any domain with interconnected data.
+Persistent graphs use [graph models](/kusto/management/graph/graph-model-overview.md) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview.md) to provide robust solutions for large-scale, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, and other interconnected data domains.
 
 #### Key characteristics for persistent graphs
 
-Persistent storage ensures that graph models and snapshots are stored in database metadata, providing durability and consistency across operations. Scalability allows handling larger graphs that exceed main memory limitations, enabling enterprise-wide analysis across millions of nodes and relationships. Reusability enables multiple users to query the same graph structure without rebuilding, fostering collaborative analysis and insight discovery. Performance optimization eliminates graph construction latency for repeated queries, crucial for time-sensitive operations. Version control through multiple snapshots allows representing graphs at different points in time, essential for tracking changes and conducting historical analysis.
+- **Persistent storage** - Graph models and snapshots are stored in database metadata for durability and consistency
+- **Scalability** - Handle graphs exceeding memory limitations with enterprise-scale analysis capabilities
+- **Reusability** - Multiple users can query the same structure without rebuilding, enabling collaborative analysis
+- **Performance optimization** - Eliminate graph construction latency for repeated queries
+- **Version control** - Multiple snapshots represent graphs at different time points for historical analysis
+- **Schema support** - Structured definitions for different entity types and their properties
 
-Schema support makes persistent graphs particularly valuable when working with multiple node and edge types, as they provide structured definitions for different entity types and their properties. The schema capability enables both static labels that are predefined in the graph model and dynamic labels that are generated at runtime from the underlying data, offering flexibility for complex environments with diverse entity types and relationship categories.
+The schema capability supports both static labels (predefined in the graph model) and dynamic labels (generated at runtime from data), providing flexibility for complex environments with diverse entity types.
 
-#### Use cases for Persistent Graphs
+#### Use cases for persistent graphs
 
-Enterprise analytics benefit significantly from persistent graphs through continuous monitoring workflows and comprehensive analysis procedures that track relationships across complex networks. Large-scale data analysis becomes feasible when working with enterprise-scale graphs spanning millions of events, activities, and connections across multiple domains. Collaborative analysis enables multiple teams to work with the same comprehensive graph structure, sharing insights and building upon each other's investigations.
+Persistent graphs are essential for:
+
+- **Enterprise analytics** - Continuous monitoring workflows across complex networks
+- **Large-scale data analysis** - Enterprise-scale graphs with millions of nodes and relationships
+- **Collaborative analysis** - Multiple teams working with shared graph structures
+- **Production workflows** - Automated systems requiring consistent graph access
+- **Historical comparison** - Time-based analysis of graph evolution and changes
 
 ##### Example: Digital Twin Persistent Graph
 
@@ -108,17 +132,35 @@ graph TD
 
 In digital twin and IoT scenarios, persistent graphs support regular analysis of device relationships, equipment dependencies, and system evolution over time. Historical analysis allows comparing system states across different periods, tracking the evolution of assets, and conducting long-term trend analysis.
 
-##### Example: IoT and Digital Twin Persistent Graph
+##### Example: IoT and digital twin persistent graph
 
-In IoT and digital twin applications, persistent graphs excel at modeling complex relationships between physical devices and their virtual representations across distributed systems. These graphs enable organizations to create comprehensive models of IoT deployments and connected assets, supporting real-time monitoring, predictive maintenance, and performance optimization. Maintenance teams can analyze equipment dependencies, identify potential failure points in connected systems, and optimize sensor placements by understanding both physical and logical topology. The persistent nature maintains digital representations throughout their lifecycle, tracking configuration changes, device communications, and performance characteristics over time. Engineers can detect anomalies in communication patterns, visualize the evolution of smart environments, and simulate operating conditions before implementing changes to physical infrastructure, making persistent graphs invaluable for managing complex IoT ecosystems at scale.
+IoT and digital twin applications benefit significantly from persistent graphs when modeling complex relationships between physical devices and their virtual representations across distributed systems. These graphs enable organizations to:
+
+- Create comprehensive models of IoT deployments and connected assets
+- Support real-time monitoring, predictive maintenance, and performance optimization
+- Analyze equipment dependencies and identify potential failure points
+- Optimize sensor placements through physical and logical topology understanding
+- Track device configurations, communications, and performance characteristics over time
+- Detect communication pattern anomalies and visualize smart environment evolution
+- Simulate operating conditions before implementing physical infrastructure changes
+
+This persistent approach proves invaluable for managing complex IoT ecosystems at scale.
 
 ## Graph querying capabilities
 
-Regardless of the creation method, once a graph is established (either through `make-graph` or from a snapshot), analysts can leverage the full suite of KQL graph operators for comprehensive analysis across any domain.
+Once a graph is established (through `make-graph` or from a snapshot), you can leverage the full suite of KQL graph operators for comprehensive analysis:
 
-The [`graph-match`](/kusto/query/graph-match-operator.md) operator enables sophisticated pattern matching and traversal operations, allowing analysts to identify complex patterns, relationship sequences, and multi-stage connections across any networked data. The [`graph-shortest-paths`](/kusto/query/graph-shortest-paths-operator.md) operator is invaluable for finding optimal paths between entities, helping prioritize connections and identify critical relationships whether in supply chains, IoT networks, social networks, or infrastructure dependencies. The [`graph-to-table`](/kusto/query/graph-to-table-operator.md) operator facilitates converting graph analysis results back to tabular format for integration with existing reporting systems and data visualization tools.
+**Core operators:**
+- [`graph-match`](/kusto/query/graph-match-operator.md) - Enables sophisticated pattern matching and traversal operations for identifying complex relationship sequences
+- [`graph-shortest-paths`](/kusto/query/graph-shortest-paths-operator.md) - Finds optimal paths between entities, helping prioritize connections and identify critical relationships
+- [`graph-to-table`](/kusto/query/graph-to-table-operator.md) - Converts graph analysis results to tabular format for integration with existing systems
 
-Analysts can perform time-based analysis to examine how relationships and patterns evolve over time, tracking the progression of changes and identifying emerging trends across domains. Geospatial integration capabilities allow combining graph data with location-based intelligence, enabling analysis of geographic patterns and location-based anomalies. Machine learning integration supports applying algorithms for entity clustering, pattern classification, and anomaly detection within any graph context—such as customer journey analysis, product recommendation systems, IoT networks, digital twins, or knowledge graphs.
+**Advanced analysis capabilities:**
+- **Time-based analysis** - Examine how relationships and patterns evolve over time
+- **Geospatial integration** - Combine graph data with location-based intelligence for geographic pattern analysis
+- **Machine learning integration** - Apply algorithms for entity clustering, pattern classification, and anomaly detection
+
+These capabilities support diverse use cases including customer journey analysis, product recommendation systems, IoT networks, digital twins, and knowledge graphs.
 
 ## Choosing the right approach
 
@@ -145,56 +187,65 @@ flowchart TD
 
 ### Use transient graphs when
 
-Transient graphs are ideal when working with smaller datasets for ad hoc analysis and exploration. One-time or exploratory analysis benefits from this approach, particularly when investigating specific patterns or validating hypotheses across various domains such as social networks, supply chains, or organizational structures. Rapidly changing data that doesn't justify persistent storage, such as real-time IoT sensor networks, dynamic user interactions, or live transaction flows, works well with transient graphs. Rapid prototyping allows analysts to test graph patterns and query logic before committing to persistent models across any analytical domain.
+Choose transient graphs for:
 
-Note that while transient graphs can handle larger datasets (beyond 10M nodes/edges), query execution will take longer as the graph must be constructed for every query. This trade-off between convenience and performance should be considered based on your specific use case.
+- **Graph size under 10 million nodes and edges** (for optimal performance)
+- **Single user or small team analysis** with minimal collaboration requirements
+- **One-time or exploratory investigations** where immediate results are needed
+- **Real-time data analysis** requiring current state information
+- **Rapid prototyping and testing** of graph patterns and query logic
 
-**Key indicators for transient graphs:**
-
-- Graph size under 10 million nodes and edges (for optimal performance)
-- Single user or small team analysis
-- One-time or exploratory investigations
-- Real-time data analysis requirements
-- Rapid prototyping and testing
+While transient graphs can handle larger datasets, query execution time increases as the graph must be reconstructed for every query. Consider this performance trade-off when working with larger datasets.
 
 ### Use persistent graphs when
 
-Persistent graphs are essential when working with large-scale graph structures containing millions of nodes and edges, representing comprehensive organizational networks, complex systems, or extensive historical data across any domain. Multiple analysts and teams from different departments need access to the same comprehensive graph structure, enabling collaborative analysis, shared insights, and coordinated operations. Repeated analysis on stable graph data, such as baseline network topology, established relationship patterns, or known infrastructure dependencies, benefits significantly from persistent storage. Production workflows and automated analysis systems require consistent graph access without reconstruction delays, ensuring reliable operations and real-time pattern detection. Memory limitations affecting query performance indicate the need for persistent graphs, particularly when dealing with enterprise-scale data monitoring. Historical state comparison requirements, essential for forensic analysis and long-term trend tracking across any field, necessitate persistent graph snapshots. Collaborative investigation workflows across multiple teams and time zones benefit from shared persistent graph access, enabling continuous operations and knowledge sharing in domains ranging from supply chain management to customer relationship analysis, infrastructure monitoring, and organizational dynamics.
+Choose persistent graphs for:
 
-**Key indicators for persistent graphs:**
+- **Graph size exceeding 10 million nodes and edges** where distributed storage is beneficial
+- **Multiple teams requiring shared access** for collaborative analysis
+- **Repeated analysis on stable datasets** where construction latency impacts productivity
+- **Production workflow integration** requiring consistent, reliable graph access
+- **Historical comparison requirements** for tracking changes over time
+- **Memory capacity limitations** affecting query performance
+- **Collaborative investigation workflows** across teams and time zones
 
-- Graph size exceeding 10 million nodes and edges
-- Multiple teams requiring shared access
-- Repeated analysis on stable datasets
-- Production workflow integration
-- Historical comparison requirements
-- Memory capacity limitations
-- Collaborative investigation needs
+Persistent graphs are essential when working with enterprise-scale data or when memory limitations affect performance.
 
 ## Performance considerations
 
 ### Memory usage
 
-Transient graphs are limited by single cluster node memory, which constrains their use to smaller datasets that can fit within available RAM resources. Persistent graphs can leverage distributed storage and optimized access patterns, enabling organizations to work with enterprise-scale data that spans multiple nodes and exceeds single-machine memory limitations.
+- **Transient graphs** - Limited by single cluster node memory, constraining use to datasets within available RAM
+- **Persistent graphs** - Leverage distributed storage and optimized access patterns for enterprise-scale data
 
 ### Query latency
 
-Transient graphs include graph construction time in each query execution, which can introduce delays when analyzing large datasets or complex topologies during time-critical scenarios. This latency significantly increases when transient graphs are built from tabular expressions that call external services (Kusto, SQL, CosmosDB), as each query must wait for these external data sources to respond before constructing the graph. Persistent graphs eliminate construction latency through pre-built snapshots, enabling rapid analysis and real-time workflows that require immediate access to comprehensive organizational data, regardless of whether the underlying data spans multiple services or data stores.
+- **Transient graphs** - Include construction time in each query, with delays increasing for large datasets or external data sources
+- **Persistent graphs** - Eliminate construction latency through pre-built snapshots, enabling rapid analysis
+
+External data source dependencies (Kusto, SQL, CosmosDB) can significantly impact transient graph construction time, as each query must wait for external responses.
 
 ### Data freshness
 
-Transient graphs always reflect the current data state, making them ideal for analyzing live events and real-time information where the most recent data is crucial for accurate assessment. Persistent graphs reflect the data state at snapshot creation time, which provides consistency for collaborative analysis and historical review but may require periodic refresh cycles to incorporate the latest events and indicators.
+- **Transient graphs** - Always reflect current data state, ideal for real-time analysis
+- **Persistent graphs** - Reflect data at snapshot creation time, providing consistency for collaborative analysis but requiring periodic refreshes
 
 ## Integration with KQL ecosystem
 
-Graph semantics integrate seamlessly with the broader KQL ecosystem, enabling analysts to combine graph queries with time-series analysis for tracking the evolution of relationships and patterns over time. Teams can apply geospatial functions to graph data for analyzing location-based patterns and identifying geographic anomalies in access or communication. Machine learning operators can be used on graph results to detect patterns, classify behaviors, and identify previously unknown anomalies through advanced analytics. The full power of KQL scalar and tabular operators enhances graph analysis capabilities, allowing for complex data transformations, aggregations, and enrichment with external data sources.
+Graph semantics integrate seamlessly with KQL's broader capabilities:
 
-This integration enables sophisticated analysis scenarios such as tracking the evolution of supply chains, analyzing the geographical distribution of assets or interactions, applying clustering algorithms to identify communities or coordinated activities, and correlating graph-based insights with traditional log analysis and external intelligence feeds. Organizations can leverage these combined capabilities to build comprehensive analytical workflows that span multiple data types and approaches.
+- **Time-series analysis** - Track relationship evolution over time
+- **Geospatial functions** - Analyze location-based patterns and geographic anomalies
+- **Machine learning operators** - Detect patterns, classify behaviors, and identify anomalies
+- **Scalar and tabular operators** - Enable complex transformations, aggregations, and data enrichment
+
+This integration enables sophisticated workflows including supply chain evolution tracking, geographical asset distribution analysis, community detection through clustering algorithms, and correlation of graph insights with traditional log analysis and external intelligence.
 
 ## Related content
 
+- [Common scenarios for using KQL graph semantics](graph-scenarios.md)
+- [Best practices for KQL graph semantics](graph-best-practices.md)
+- [Graph operators](/kusto/query/graph-operators.md)
+- [make-graph operator](/kusto/query/make-graph-operator.md)
 - [Graph model overview](/kusto/management/graph/graph-model-overview.md)
 - [Graph snapshots overview](/kusto/management/graph/graph-snapshot-overview.md)
-- [make-graph operator](/kusto/query/make-graph-operator.md)
-- [Graph operators](/kusto/query/graph-operators.md)
-- [Graph best practices](graph-best-practices.md)

@@ -3,26 +3,26 @@ title: Scenarios for using Kusto Query Language (KQL) graph semantics
 description: Learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 09/03/2023
+ms.date: 05/25/2025
 # Customer intent: As a data analyst, I want to learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ---
 
-# What are common scenarios for using Kusto Query Language (KQL) graph semantics?
+# Common scenarios for using Kusto Query Language (KQL) graph semantics
 
-Graph semantics in Kusto Query Language (KQL) enables modeling and querying data as interconnected networks. This approach is particularly effective for representing complex data involving many-to-many relationships, hierarchical structures, and networked systems—including social networks, recommendation engines, connected assets, and knowledge graphs.
+Graph semantics in Kusto Query Language (KQL) enables modeling and querying data as interconnected networks. This approach excels at representing complex data with many-to-many relationships, hierarchical structures, and networked systems—including social networks, recommendation engines, connected assets, and knowledge graphs.
 
-In this article, you learn about the following common scenarios for using KQL graph semantics:
+This article explores the following common scenarios for using KQL graph semantics:
 
-- [Friends of a friend](#friends-of-a-friend)
-- [Insights from log data](#insights-from-log-data)
+- [Social network analysis](#social-network-analysis)
+- [Log data insights](#log-data-insights)
 - [Resource graph exploration](#resource-graph-exploration)
-- [Graph of graph for security analysis](#graph-of-graph-for-security-analysis)
-- [Combining time series and graph analytics](#combining-time-series-and-graph-analytics)
+- [Multi-domain security analysis](#multi-domain-security-analysis)
+- [Time series and graph analytics](#time-series-and-graph-analytics)
 - [Digital twins and graph historization](#digital-twins-and-graph-historization)
 
-## Friends of a friend
+## Social network analysis
 
-Social network analysis represents a fundamental graph use case where nodes are users and edges represent friendships or interactions. Consider a data model with a *Users* table containing user attributes (name, organization) and a *Knows* table documenting relationships between users, as illustrated in the following diagram:
+Social network analysis represents a fundamental graph use case where nodes are users and edges represent relationships or interactions. Consider a data model with a *Users* table containing user attributes (name, organization) and a *Knows* table documenting relationships between users:
 
 ```mermaid
 flowchart LR
@@ -42,7 +42,9 @@ flowchart LR
     class FriendOfFriend fof
 ```
 
-Without graph semantics, finding friends-of-friends requires multiple complex joins:
+### Traditional approach challenges
+
+Without graph semantics, finding "friends-of-friends" requires multiple complex joins:
 
 ```kusto
 let Users = datatable (UserId: string, name: string, org: string)[]; // nodes
@@ -57,7 +59,9 @@ Users
 | project name, name1, name2
 ```
 
-KQL graph semantics enables the same query with significantly improved readability and efficiency. The following query uses the [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) to create a directed graph from *FirstUser* to *SecondUser* and enriches nodes with properties from the *Users* table. The [graph-match operator](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) then expresses the friend-of-a-friend pattern concisely with appropriate filters and projections:
+### Graph semantics solution
+
+KQL graph semantics simplifies this significantly. The [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) creates a directed graph, while the [graph-match operator](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) expresses the pattern concisely:
 
 ```kusto
 let Users = datatable (UserId:string , name:string , org:string)[]; // nodes
@@ -69,11 +73,9 @@ Knows
     project contoso_person = user.name, middle_man = middle_man.name, kusto_friend_of_friend = friendOfAFriend.name
 ```
 
-## Insights from log data
+## Log data insights
 
-Log data analysis often requires extracting insights from flat tables containing time series information. Converting this data to a graph structure first requires identifying the relevant entities and relationships. Consider a table called *rawLogs* containing web server request information such as timestamps, source IP addresses, and destination resources.
-
-The following table shows an example of the raw data:
+Log data analysis often requires extracting insights from flat tables containing time-series information. Converting this data to a graph structure requires identifying relevant entities and relationships. Consider a table called *rawLogs* containing web server request information:
 
 ```kusto
 let rawLogs = datatable (rawLog: string) [
@@ -83,9 +85,9 @@ let rawLogs = datatable (rawLog: string) [
 ];
 ```
 
-One possible way to model a graph from this table is to treat the source IP addresses as nodes and the web requests to resources as edges. You can use the [parse operator](/kusto/query/parse-operator?view=azure-data-explorer&preserve-view=true) to extract the columns you need for the graph and then you can create a graph that represents the network traffic and interactions between different sources and destinations. To create the graph, you can use the [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) specifying the source and destination columns as the edge endpoints, and optionally providing additional columns as edge or node properties.
+### Creating a graph from log data
 
-The following query creates a graph from the raw logs:
+Model the graph by treating source IP addresses as nodes and web requests to resources as edges. Use the [parse operator](/kusto/query/parse-operator?view=azure-data-explorer&preserve-view=true) to extract required columns:
 
 ```kusto
 let parsedLogs = rawLogs
@@ -102,7 +104,7 @@ let graph = edges
     | make-graph ipAddress --> resource with nodes on nodeId;
 ```
 
-This query parses the raw logs and creates a directed graph where the nodes are either IP addresses or resources and each edge is a request from the source to the destination, with the timestamp and HTTP verb as edge properties.
+This creates a directed graph where nodes are IP addresses or resources, and edges represent requests with timestamp and HTTP verb properties:
 
 ```mermaid
 flowchart LR
@@ -117,7 +119,9 @@ flowchart LR
     class Prod1,Prod2 product
 ```
 
-Once the graph is created, you can use the [graph-match operator](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) to query the graph data using patterns, filters, and projections. For example, you can create a pattern that makes a simple recommendation based on the resources that other IP addresses requested within the last five minutes, as follows:
+### Query patterns for recommendations
+
+Use [graph-match](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) to create simple recommendations based on resources requested by other IP addresses:
 
 ```kusto
 graph
@@ -129,17 +133,17 @@ graph
     project Recommendation=otherResource.nodeId
 ```
 
-### Output
+**Output:**
 
 | Recommendation |
 | -------------- |
 | /product/42    |
 
-The query returns "/product/42" as a recommendation based on a raw text-based log.
+This demonstrates how graph semantics can extract meaningful insights from raw log data.
 
 ## Resource graph exploration
 
-Resource graphs enable efficient exploration and querying of resources at scale, supporting governance, management, and security requirements. These activity graphs continuously update as resources change, providing dynamic tracking of your resource inventory. For sample code and detailed examples, see the [Resource Graph samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples/tree/main/resource%20graph).
+Resource graphs enable efficient exploration and querying of resources at scale, supporting governance, management, and security requirements. These graphs continuously update as resources change, providing dynamic tracking of your resource inventory.
 
 ```mermaid
 flowchart TD
@@ -158,15 +162,31 @@ flowchart TD
     class MG,RG,VM,DB resource
 ```
 
-Consider an enterprise with complex cloud infrastructure spanning multiple environments, containing virtual machines, databases, storage accounts, networking components, and user identities with varying permissions. The key challenge lies in efficiently managing and querying this extensive resource inventory for security compliance and access control.
+### Enterprise resource management challenges
 
-With KQL graph semantics, security administrators can model complex resource hierarchies and permission structures as graphs. This approach enables powerful queries that can trace access paths from users through groups to resources, identify overprivileged accounts, detect potential security vulnerabilities in resource configurations, and validate compliance with organizational policies.
+Consider an enterprise with complex cloud infrastructure containing:
+- Virtual machines, databases, storage accounts, and networking components
+- User identities with varying permissions across multiple environments
+- Complex resource hierarchies spanning different organizational units
 
-For enterprise-scale resource graphs, materialized views can represent the last known state of nodes and edges, enabling both current state analysis and point-in-time historical queries of how resources and permissions have changed over time.
+The key challenge lies in efficiently managing and querying this extensive resource inventory for security compliance and access control.
 
-## Graph of graph for security analysis
+### Graph-based solutions
 
-Security operations often require analyzing relationships across multiple domains simultaneously. The "Graph of Graph" approach enables you to model and analyze interconnected data structures by combining and querying across separate graph domains: identity, network, and asset graphs. For sample code and detailed examples, see the [Graph of Graph samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples/tree/main/graph%20of%20graph).
+KQL graph semantics enables security administrators to model complex resource hierarchies and permission structures as graphs. This approach supports powerful queries that can:
+
+- Trace access paths from users through groups to resources
+- Identify overprivileged accounts and potential security vulnerabilities
+- Detect configuration issues in resource permissions
+- Validate compliance with organizational policies
+
+For enterprise-scale resource graphs, materialized views can represent the current state of nodes and edges, enabling both real-time analysis and historical queries of how resources and permissions have evolved over time.
+
+For detailed examples and sample code, see the [Resource Graph samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples/tree/main/resource%20graph).
+
+## Multi-domain security analysis
+
+Security operations often require analyzing relationships across multiple domains simultaneously. The "Graph of Graph" approach enables modeling and analyzing interconnected data structures by combining separate graph domains: identity, network, and asset graphs.
 
 ```mermaid
 flowchart TD
@@ -199,22 +219,28 @@ flowchart TD
     class Resource1,Resource2 asset
 ```
 
-The "Graph of Graph" methodology maintains separation between domain-specific graphs while enabling sophisticated cross-domain analysis through query composition. Consider a scenario where an organization needs to detect sophisticated attackers using a combination of:
+### Multi-domain analysis methodology
+
+This methodology maintains separation between domain-specific graphs while enabling sophisticated cross-domain analysis through query composition. Consider a scenario where an organization needs to detect sophisticated attacks using:
 
 1. **Identity graph** - Modeling users, groups, and permissions to understand access rights
-2. **Network graph** - Representing devices and their connections to detect unusual network patterns
-3. **Asset graph** - Cataloging resources and their sensitivity levels to assess potential impact
+2. **Network graph** - Representing devices and connections to detect unusual network patterns
+3. **Asset graph** - Cataloging resources and sensitivity levels to assess potential impact
 
-By traversing relationships across these domains, security analysts can identify attack paths that would remain invisible when examining each domain in isolation. This approach is particularly valuable for:
+### Advanced security insights
 
-- Detecting lateral movement across network segments
-- Identifying privilege escalation attempts via group membership changes
-- Discovering data exfiltration from high-sensitivity resources
-- Correlating unusual authentication patterns with resource access
+By traversing relationships across these domains, security analysts can identify attack paths invisible when examining each domain separately. This approach excels at:
 
-## Combining time series and graph analytics
+- **Detecting lateral movement** across network segments
+- **Identifying privilege escalation** attempts via group membership changes
+- **Discovering data exfiltration** from high-sensitivity resources
+- **Correlating authentication patterns** with resource access
 
-Combining graph analysis with time series analytics creates a powerful analytical framework. This integration enables detection of temporal anomalies while understanding their impact across interconnected systems. The approach delivers significant value for security analytics, IoT monitoring, and operational intelligence. For sample code and detailed examples, see the [Time Series and Graph samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples/blob/main/graph%20of%20graph/timeseriesAndGraph.kql).
+For detailed examples and implementation guidance, see the [Graph of Graph samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples/tree/main/graph%20of%20graph).
+
+## Time series and graph analytics
+
+Combining graph analysis with time-series analytics creates a powerful framework for detecting temporal anomalies while understanding their impact across interconnected systems. This integration delivers significant value for security analytics, IoT monitoring, and operational intelligence.
 
 ```mermaid
 flowchart TD
@@ -246,25 +272,33 @@ flowchart TD
     class Resource001 resource
 ```
 
-Time series data often contains temporal patterns that can indicate normal or anomalous behavior. When combined with graph structures, these patterns become more meaningful by providing the context of relationships and access paths.
+### Temporal anomaly detection with context
 
-In security contexts, this integration can identify potentially malicious activities through:
+Time-series data often contains temporal patterns indicating normal or anomalous behavior. When combined with graph structures, these patterns gain meaningful context through relationship and access path analysis.
 
-1. **Authentication anomaly detection** - Flagging logins that deviate from usual patterns (time of day, location, frequency)
+### Security applications
+
+In security contexts, this integration identifies potentially malicious activities through:
+
+1. **Authentication anomaly detection** - Flagging logins deviating from usual patterns (time, location, frequency)
 2. **Access path analysis** - Determining what sensitive resources anomalous users can reach through permission chains
-3. **Impact assessment** - Evaluating the potential blast radius of an unusual activity
+3. **Impact assessment** - Evaluating the potential blast radius of unusual activity
 
-Beyond security, this approach can also be applied to:
+### Broader applications
 
-- IoT systems to correlate device anomalies with the connected infrastructure
-- Business operations to link transaction anomalies with organizational structures
-- IT infrastructure to connect performance anomalies with service dependencies
+Beyond security, this approach applies to:
 
-By combining time series and graph analytics, KQL enables analysts to understand both the nature of anomalies and their contextual impact across interconnected systems.
+- **IoT systems** - Correlating device anomalies with connected infrastructure
+- **Business operations** - Linking transaction anomalies with organizational structures
+- **IT infrastructure** - Connecting performance anomalies with service dependencies
+
+By combining time-series and graph analytics, KQL enables analysts to understand both the nature of anomalies and their contextual impact across interconnected systems.
+
+For implementation examples and detailed code samples, see the [Time Series and Graph samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples/blob/main/graph%20of%20graph/timeseriesAndGraph.kql).
 
 ## Digital twins and graph historization
 
-Digital twins provide virtual representations of physical objects or systems, enabling precise modeling and simulation of real-world entities. Graph semantics in KQL excels in digital twin scenarios because relationships between entities—such as facilities, equipment, sensors, and people—inherently form graph structures. For sample code and detailed examples, see the [Digital Twins samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples/tree/main/digital%20twins).
+Digital twins provide virtual representations of physical objects or systems, enabling precise modeling and simulation of real-world entities. Graph semantics in KQL excels in digital twin scenarios because relationships between entities—facilities, equipment, sensors, and people—naturally form graph structures.
 
 ```mermaid
 flowchart TD
@@ -290,20 +324,41 @@ flowchart TD
     class Alice,Bob person
 ```
 
-A critical aspect of digital twin management is capturing and analyzing temporal changes. By historizing graph changes in Kusto, organizations can track historical trends, conduct time-based analysis, and implement predictive analytics for their digital twin models.
+### Digital twin capabilities with KQL
 
-By historizing digital twin graph changes in Azure Data Explorer, organizations can:
+Graph semantics enables comprehensive digital twin modeling through:
 
-1. Track physical space and system evolution over time
-1. Conduct historical analysis to identify patterns and trends
-1. Compare historical states to detect anomalies or measure improvements
-1. Develop predictive models based on historical utilization patterns
+- **Hierarchical modeling** - Representing complex facility and equipment hierarchies
+- **Multi-entity relationships** - Connecting physical assets, virtual representations, and human operators
+- **Real-time state tracking** - Monitoring occupancy, equipment status, and environmental conditions
+- **Cross-domain analysis** - Correlating physical space utilization with operational metrics
+
+### Graph historization for temporal analysis
+
+A critical aspect of digital twin management is capturing and analyzing temporal changes. By historizing graph changes in Kusto, organizations can:
+
+1. **Track evolution over time** - Monitor how physical spaces and systems change
+2. **Conduct historical analysis** - Identify patterns and trends in utilization and performance
+3. **Compare historical states** - Detect anomalies or measure improvements across time periods
+4. **Develop predictive models** - Use historical utilization patterns for future planning and optimization
+
+### Implementation benefits
+
+This approach enables organizations to:
+
+- Monitor space utilization patterns and optimize facility management
+- Track equipment performance and predict maintenance needs
+- Analyze environmental conditions and their impact on operations
+- Correlate human behavior patterns with physical infrastructure usage
+
+For detailed implementation examples and code samples, see the [Digital Twins samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples/tree/main/digital%20twins).
 
 ## Related content
 
-- [Best practices](graph-best-practices.md)
+- [Graph semantics in Kusto - Overview](graph-overview.md)
+- [Best practices for KQL graph semantics](graph-best-practices.md)
 - [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true)
+- [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true)
 - [Azure Kusto Graph Samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples)
 - [Advanced KQL graph capabilities for security analysis](https://github.com/Azure/azure-kusto-graph-samples/blob/main/graph%20of%20graph/advanced-kql-capabilities.md)
 - [Digital twins with KQL graph semantics](https://github.com/Azure/azure-kusto-graph-samples/tree/main/digital%20twins)
-- [Azure Digital Twins documentation](/azure/digital-twins/)
