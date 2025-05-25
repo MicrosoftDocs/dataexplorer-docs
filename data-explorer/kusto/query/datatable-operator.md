@@ -9,7 +9,7 @@ ms.date: 01/21/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns a table whose schema and values are defined in the query itself.
+Creates a table whose schema and values are defined in the query itself.
 
 > [!NOTE]
 > This operator doesn't have a pipeline input.
@@ -33,11 +33,11 @@ Returns a table whose schema and values are defined in the query itself.
 
 ## Returns
 
-This operator returns a data table of the given schema and data.
+Returns a data table of the given schema and data.
 
-## Example
+## Examples
 
-This example creates a table with *Date*, *Event*, and *MoreData* columns, filters rows with Event descriptions longer than 4 characters, and adds a new column *key2* to each row from the MoreData dynamic object.
+The following example creates a table with *Date*, *Event*, and *MoreData* columns, filters rows with Event descriptions longer than 4 characters, and adds a new column *key2* to each row from the MoreData dynamic object.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
