@@ -1194,8 +1194,12 @@ items:
         href: countif-aggregation-function.md
       - name: covariance()
         href: covariance-aggregation-function.md
+      - name: covarianceif()
+        href: covarianceif-aggregation-function.md
       - name: covariancep()
         href: covariancep-aggregation-function.md
+      - name: covariancepif()
+        href: covariancepif-aggregation-function.md
       - name: dcount()
         href: dcount-aggregation-function.md
       - name: dcountif()
@@ -1262,6 +1266,8 @@ items:
         href: varianceif-aggregation-function.md
       - name: variancep()
         href: variancep-aggregation-function.md
+      - name: variancepif()
+        href: variancepif-aggregation-function.md
   - name: Graph
     items:
       - name: Graph overview
@@ -1290,7 +1296,7 @@ items:
             displayName: all() graph function
             href: all-graph-function.md
           - name: any()
-            displayName: any() graph function 
+            displayName: any() graph function
             href: any-graph-function.md
           - name: map()
             displayName: map() graph function
@@ -1554,6 +1560,9 @@ items:
       - name: series_pow()
         displayName: element-wise, elementwise
         href: series-pow-function.md
+      - name: series_product()
+        displayName: element-wise, elementwise
+        href: series-product-function.md
       - name: series_seasonal()
         displayName: periods
         href: series-seasonal-function.md

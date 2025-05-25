@@ -13,7 +13,7 @@ The function merges multiple `dynamic` property bags into a single `dynamic` pro
 
 ## Syntax
 
-`bag_merge(`*bag1*`,`*bag2*`[`,`*bag3*, ...])`
+`bag_merge(`*bag1*`,`*bag2*`,`*bag3*`, ...])`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -27,7 +27,7 @@ The function merges multiple `dynamic` property bags into a single `dynamic` pro
 
 A `dynamic` property bag containing the merged results of all input property bags. If a key is present in multiple input bags, the value associated with the key from the leftmost argument takes precedence.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

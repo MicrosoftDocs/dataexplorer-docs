@@ -58,7 +58,7 @@ For example, if your domain is *contoso.com*, the URL is: [https://login.microso
 "authorization_endpoint":"https://login.microsoftonline.com/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
-The tenant ID in this case is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Set the values for AAD_TENANT_ID, KUSTO_URI, KUSTO_INGEST_URI, and KUSTO_DATABASE before running this code.
+The tenant ID in this case is `aaaabbbb-0000-cccc-1111-dddd2222eeee`. Set the values for AAD_TENANT_ID, KUSTO_URI, KUSTO_INGEST_URI, and KUSTO_DATABASE before running this code.
 
 ```python
 AAD_TENANT_ID = "<TenantId>"

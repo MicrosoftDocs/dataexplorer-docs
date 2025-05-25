@@ -17,7 +17,7 @@ You can change the compute SKU for the cluster at any time by [scaling up the cl
 You can use the [Pricing calculator](https://aka.ms/adx.cost) to estimate the pricing of your Azure Data Explorer cluster, based on your workloads and data volume.
 
 > [!TIP]
-> By purchasing a reservation, you can pre-pay for the cluster, the virtual machines used in the cluster, and storage resources costs for a period of one or three years. These reserved instances (RI) are bought separately and can save a significant amount of money securing the best rates for your Azure Data Explorer cluster. For more information, see [Prepay for Azure Data Explorer markup units with Azure Data Explorer reserved capacity](pricing-reserved-capacity.md).
+> By combining savings plans and reserved instances, you can save a significant amount of money securing the best rates for your cluster. Savings plans are recommended for the virtual machines used in the cluster, while reserved instances are recommended for storage resources costs. Both of these options can be purchased for a period of one or three years and are purchased separately. For more information, see [Prepay for Azure Data Explorer markup units with Azure Data Explorer reserved capacity](pricing-reserved-capacity.md).
 
 ## Select a cluster type
 

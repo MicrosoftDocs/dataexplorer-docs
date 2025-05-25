@@ -11,7 +11,7 @@ ms.date: 11/18/2024
 Managed private endpoints are an optional method to connect to Azure resources that are highly protected. They're one-way private connections that allow Azure Data Explorer to connect to other protected services. In this article, you'll learn how to create a managed private endpoint and connect it to your data source.
 
 > [!NOTE]
-> We recommend using Managed Identity connect to [Azure Storage](/azure/storage/common/storage-network-security?tabs=azure-portal#grant-access-to-trusted-azure-services) and [Azure Event Hubs](/azure/event-hubs/event-hubs-ip-filtering#trusted-microsoft-services) instead of managed private endpoints. To connect using managed identities, configure the Azure Storage or Event Hubs resources to recognize Azure Data Explorer as a trusted service. Then, use [Managed Identity](/azure/data-explorer/managed-identities-overview) to grant access by creating a network rule exception for trusted Azure services.
+> We recommend using a managed identity to connect to [Azure Storage](/azure/storage/common/storage-network-security?tabs=azure-portal#grant-access-to-trusted-azure-services) (except the Event Grid flow) and [Azure Event Hubs](/azure/event-hubs/event-hubs-ip-filtering#trusted-microsoft-services), instead of managed private endpoints. To connect by using a managed identity, configure the Azure Storage or Event Hubs resource to recognize Azure Data Explorer as a trusted service. Then, use [Managed Identity](/azure/data-explorer/managed-identities-overview) to grant access by creating a network rule exception for trusted Azure services.
 
 ## Prerequisites
 

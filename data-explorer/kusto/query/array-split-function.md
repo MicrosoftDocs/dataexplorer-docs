@@ -30,8 +30,6 @@ Returns a dynamic array containing N+1 arrays with the values in the range `[0..
 
 ## Examples
 
-This following example shows how to split and array.
-
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUsBKYkvLsjJLLEFshIrIWwNIFtHwUgTAB7YikBGAAAA" target="_blank">Run the query</a>

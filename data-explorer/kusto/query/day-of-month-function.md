@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns an integer representing the day number of the given datetime.
+Provides the day of the month as an integer from a specified datetime value.
 
 ## Syntax
 
@@ -25,9 +25,11 @@ Returns an integer representing the day number of the given datetime.
 
 ## Returns
 
-An integer representing the day number of the given datetime.
+Returns an integer representing the day number of the given datetime.
 
-## Example
+## Examples
+
+The following example shows how to extract the day of the month from a specified datetime value.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
