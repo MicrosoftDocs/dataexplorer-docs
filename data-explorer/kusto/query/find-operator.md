@@ -319,7 +319,7 @@ find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e' project pack_all()
 |EventsTable2|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Information", "EventText":"Some Other Text2", "EventName":"Event2"}|
 |EventsTable2|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error", "EventText":"Some Other Text3", "EventName":"Event3"}|
 
-### Examples of cases where `find` acts as a `union`
+### Examples of cases where `find` acts as union
 
 The `find` operator in Kusto can sometimes act like a `union` operator, mainly when it's used to search across multiple tables.
 
