@@ -263,40 +263,7 @@ For detailed examples and implementation guidance, see the [Graph of Graph sampl
 
 Combining graph analysis with time-series analytics creates a powerful framework for detecting temporal anomalies while understanding their impact across interconnected systems. This integration delivers significant value for security analytics, IoT monitoring, and operational intelligence.
 
-```mermaid
----
-config:
-  look: neo
-  theme: default
----
-flowchart TD
-    subgraph "Authentication Timeseries"
-        User001T["User001 Logins<br>9am-5pm Seattle<br>Regular Pattern"]
-        User002T["User002 Logins<br>⚠️ 3am Bangkok<br>Anomalous Pattern"]
-    end
-    
-    subgraph "Access Graph"
-        User001["User001<br>Finance"] -- "memberOf" --> Group001["Group001<br>Finance Security Group"]
-        User002["User002<br>IT"] -- "memberOf" --> Group002["Group002<br>IT Security Group"]
-        Group001 -- "canAccess" --> Resource001["Resource001<br>Finance Database"]
-        Group002 -- "canAdminister" --> Resource001
-    end
-    
-    User001T -.- User001
-    User002T -.- User002
-    
-    classDef anomaly fill:#f66,stroke:#333,stroke-width:2px
-    classDef normal fill:#6f6,stroke:#333,stroke-width:2px
-    classDef user fill:#f9f,stroke:#333,stroke-width:2px
-    classDef group fill:#bbf,stroke:#333,stroke-width:2px
-    classDef resource fill:#dfd,stroke:#333,stroke-width:2px
-    
-    class User001T normal
-    class User002T anomaly
-    class User001,User002 user
-    class Group001,Group002 group
-    class Resource001 resource
-```
+:::image type="content" source="media/graphs/Time-series-graph-analytics.png" alt-text="Example image of a workflow diagram using time series and graph analytics":::
 
 ### Temporal anomaly detection with context
 
@@ -326,34 +293,7 @@ For implementation examples and detailed code samples, see the [Time Series and 
 
 Digital twins provide virtual representations of physical objects or systems, enabling precise modeling and simulation of real-world entities. Graph semantics in KQL excels in digital twin scenarios because relationships between entities—facilities, equipment, sensors, and people—naturally form graph structures.
 
-```mermaid
----
-config:
-  look: neo
-  theme: default
----
-flowchart TD
-    Site["site-1<br>Main Campus"] --> Building["building-1<br>Building A"]
-    Building --> Floor["floor-1<br>First Floor"]
-    Floor --> Room1["room-101<br>Conference Room"]
-    Floor --> Room2["room-102<br>Office Space"]
-    Room1 --> Desk1["desk-1<br>Window Location"]
-    Room2 --> Desk2["desk-2<br>Interior Location"]
-    Desk1 --> Sensor1["occupancy-1<br>Status: Occupied"]
-    Desk2 --> Sensor2["occupancy-2<br>Status: Vacant"]
-    Alice["Alice<br>Engineer"] -- "isLocatedIn" --> Room1
-    Bob["Bob<br>Manager"] -- "isLocatedIn" --> Room2
-    
-    classDef facility fill:#dfd,stroke:#333,stroke-width:2px
-    classDef furniture fill:#ffd,stroke:#333,stroke-width:2px
-    classDef sensor fill:#bbf,stroke:#333,stroke-width:2px
-    classDef person fill:#f9f,stroke:#333,stroke-width:2px
-    
-    class Site,Building,Floor,Room1,Room2 facility
-    class Desk1,Desk2 furniture
-    class Sensor1,Sensor2 sensor
-    class Alice,Bob person
-```
+:::image type="content" source="media/graphs/digital-twins-graph-historization.png" alt-text="Example image of a workflow diagram using  digital twins and graph historization":::
 
 ### Digital twin capabilities with KQL
 
