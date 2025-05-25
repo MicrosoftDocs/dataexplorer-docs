@@ -20,6 +20,8 @@ items:
         href: query/tutorials/create-geospatial-visualizations.md
       - name: 5 - Learn about common tasks for Microsoft Sentinel
         href: query/tutorials/common-tasks-microsoft-sentinel.md
+      - name: 6 - Create your first graph
+        href: query/tutorials/your-first-graph.md
       - name: Train me
         items:
           - name: "Explore the fundamentals of data analysis using Kusto Query Language"

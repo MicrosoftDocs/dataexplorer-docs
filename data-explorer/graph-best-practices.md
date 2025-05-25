@@ -21,6 +21,8 @@ This guidance covers:
 
 ## Graph modeling approaches in Kusto
 
+Kusto provides two approaches for working with graphs: transient and persistent.
+
 ### Transient graphs
 
 Created dynamically using the [`make-graph`](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) operator. These graphs exist only during query execution and are optimal for ad hoc or exploratory analysis on small to medium datasets.
