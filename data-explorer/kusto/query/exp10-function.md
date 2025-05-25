@@ -25,7 +25,23 @@ The base-10 exponential function of x, which is 10 raised to the power x: 10^x.
 
 ## Returns
 
-The exponential value of x.
+Returns the exponential value of x.
+
+## Examples
+
+The following example shows how to use the `exp10()` function to calculate the exponential value of 2.
+
+```kusto
+print result = exp10(2)
+```
+
+**Output**
+
+```Kusto
+result
+-------
+100
+```
 
 ## Related content
 

@@ -43,9 +43,11 @@ These values are case insensitive:
 
 ## Returns
 
-An integer that represents the amount of *periods* in the result of subtraction (*datetime1* - *datetime2*).
+Returns an integer that represents the amount of *periods* in the result of subtraction (*datetime1* - *datetime2*).
 
-## Example
+## Examples
+
+The following example shows how to calculate the period between two [datetime](scalar-data-types/datetime.md) values with the `datetime_diff` function.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

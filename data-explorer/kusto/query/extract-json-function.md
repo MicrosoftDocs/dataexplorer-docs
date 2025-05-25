@@ -40,7 +40,9 @@ Optionally convert the extracted string to a specific type.
 
 This function performs a [JSONPath](jsonpath.md) query into dataSource, which contains a valid JSON string, optionally converting that value to another type depending on the third argument.
 
-## Example
+## Examples
+
+The following example extracts the name from a JSON string and returns a table with the name.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

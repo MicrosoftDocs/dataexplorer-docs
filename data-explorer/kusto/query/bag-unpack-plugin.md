@@ -60,7 +60,7 @@ The `bag_unpack` plugin returns a table with as many records as its tabular inpu
 
 ## Examples
 
-### Expand a bag
+The following example demonstrates how to expand a bag.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -85,9 +85,7 @@ datatable(d:dynamic)
 |40 |Dave   |
 |30 |Jasmine|
 
-### Expand a bag with OutputColumnPrefix
-
-Expand a bag and use the `OutputColumnPrefix` option to produce column names that begin with the prefix 'Property_'.
+The following example demonstrates how to expand a bag and use the `OutputColumnPrefix` option to produce column names that begin with the prefix 'Property_'.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -112,9 +110,7 @@ datatable(d:dynamic)
 |40          |Dave         |
 |30          |Jasmine      |
 
-### Expand a bag with columnsConflict
-
-Expand a bag and use the `columnsConflict` option to resolve conflicts between existing columns and columns produced by the `bag_unpack()` operator.
+The following example demonstrates how to expand a bag and use the `columnsConflict` option to resolve conflicts between existing columns and columns produced by the `bag_unpack()` operator.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -162,9 +158,8 @@ datatable(Name:string, d:dynamic)
 |40 |Old_name |
 |30 |Old_name |
 
-### Expand a bag with ignoredProperties
 
-Expand a bag and use the `ignoredProperties` option to ignore certain properties in the property bag.
+The following example demonstrates how to expand a bag and use the `ignoredProperties` option to ignore certain properties in the property bag.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -190,9 +185,7 @@ datatable(d:dynamic)
 |Dave|
 |Jasmine|
 
-### Expand a bag with a query-defined OutputSchema
-
-Expand a bag and use the `OutputSchema` option to allow various optimizations to be evaluated before running the actual query.
+The following example demonstrates how to expand a bag and use the `OutputSchema` option to allow various optimizations to be evaluated before running the actual query.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -217,7 +210,7 @@ datatable(d:dynamic)
 |Dave     |  40  |
 |Jasmine  |  30  |
 
-Expand a bag and use the `OutputSchema` option to allow various optimizations to be evaluated before running the actual query. Use a wildcard `*` to return all columns of the input table.
+The following example demonstrates how to expand a bag and use the `OutputSchema` option to allow various optimizations to be evaluated before running the actual query. Use a wildcard `*` to return all columns of the input table.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

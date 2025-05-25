@@ -35,7 +35,7 @@ All `then` arguments and the `else` argument must be of the same type.
 
 The value of the first *then_i* whose *predicate_i* evaluates to `true`, or the value of *else* if neither of the predicates are satisfied.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

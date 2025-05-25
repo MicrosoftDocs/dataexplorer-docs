@@ -29,7 +29,9 @@ Searches the string for items specified in the array and returns the position in
 Zero-based index position of the first item in *values* that is found in *source*.
 Returns -1 if none of the array items were found in the string or if *values* is empty.
 
-## Example
+## Examples
+
+The following example shows how to use `has_any_index` with a comma-separated set of scalar values.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

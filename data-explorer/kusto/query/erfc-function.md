@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns the [complementary error function](https://en.wikipedia.org/wiki/Error_function) of the input.
+Provides the [complementary error function](https://en.wikipedia.org/wiki/Error_function) of the input.
 
 ## Syntax
 
@@ -25,9 +25,11 @@ Returns the [complementary error function](https://en.wikipedia.org/wiki/Error_f
 
 ## Returns
 
-Complementary error function of x.
+Returns the complementary error function of x.
 
-## Example
+## Examples
+
+The following example shows how to use the `erfc()` function to calculate the complementary error function for a range of values from -3 to 3.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

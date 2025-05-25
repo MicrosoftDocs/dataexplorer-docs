@@ -31,6 +31,9 @@ A string of *size* formatted as data size in bytes.
 
 ## Examples
 
+The following example shows how to use the `format_bytes()` function to format a number as a string representing data size in bytes.
+
+```kusto
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUeAqM1SwVUjLL8pNLIlPqixJLdYwNTPR1OEqM0IXNzQwNjbSUTAESRqjSxoZGIDlQZImuCR1FMDyprjlDXQUlLydlDQBI/ZQzZ0AAAA=" target="_blank">Run the query</a>

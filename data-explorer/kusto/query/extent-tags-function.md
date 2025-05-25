@@ -10,7 +10,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns a dynamic array with the [extent tags](../management/extent-tags.md) of the [extent](../management/extents-overview.md) that the current record is in.
+Provides a dynamic array with the [extent tags](../management/extent-tags.md) of the [extent](../management/extents-overview.md) that the current record is in.
 
 If you apply this function to calculated data, which isn't attached to a data shard, returns an empty value.
 
@@ -22,7 +22,7 @@ If you apply this function to calculated data, which isn't attached to a data sh
 
 ## Returns
 
-A value of type `dynamic` that is an array holding the current record's extent tags,
+Returns a value of type `dynamic` that is an array holding the current record's extent tags,
 or an empty value.
 
 ## Examples

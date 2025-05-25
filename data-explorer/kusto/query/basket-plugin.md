@@ -38,7 +38,9 @@ Each pattern is represented by a row in the results. The first column is the seg
 > [!NOTE]
 > The algorithm uses sampling to determine the initial frequent values. Therefore, the results could slightly differ between multiple runs for patterns whose frequency is close to the threshold.
 
-## Example
+## Examples
+
+The following example uses the `basket` plugin to find frequent patterns in the data.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -66,7 +68,7 @@ StormEvents
 |6|1310|22.3|||YES|
 |7|1291|21.9||Thunderstorm Wind||
 
-### Example with custom wildcards
+The following example demonstrates using the `basket` plugin with a weight column and custom wildcards to find frequent patterns.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

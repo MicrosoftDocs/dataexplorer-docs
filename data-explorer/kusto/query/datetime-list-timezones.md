@@ -7,7 +7,7 @@ ms.date: 08/11/2024
 ---
 # datetime_list_timezones()
 
-Returns a list of supported timezones [a time-zone specification](timezone.md).
+Provides a list of supported timezones [a time-zone specification](timezone.md).
 
 ## Syntax
 
@@ -19,9 +19,11 @@ None, the function doesn't have any parameters.
 
 ## Returns
 
-A list of timezones supported by the [Internet Assigned Numbers Authority (IANA) Time Zone Database](https://www.iana.org/time-zones).
+Returns a list of timezones supported by the [Internet Assigned Numbers Authority (IANA) Time Zone Database](https://www.iana.org/time-zones).
 
-## Example
+## Examples
+
+The following example shows how to get a list of all supported timezones.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

@@ -58,7 +58,7 @@ If any of the following:  line, level, radius is invalid, or the cell count exce
 
 ## Examples
 
-The following query finds all tube stations within 500 meters of streets and aggregates tubes count by street name.
+The following example finds all tube stations within 500 meters of streets and aggregates tubes count by street name.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

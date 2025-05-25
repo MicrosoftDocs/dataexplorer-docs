@@ -41,11 +41,12 @@ Possible values of *period*:
 
 ## Returns
 
-A [datetime](scalar-data-types/datetime.md) after a certain time/date interval has been added.
+Returns a [datetime](scalar-data-types/datetime.md) after a certain time/date interval has been added.
 
 ## Examples
 
-### Period
+The following example shows how to add a period to a [datetime](scalar-data-types/datetime.md) value with the `datetime_add` function.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4XPuw6DMAyF4b1PkQ2QMjRdmPosyMKWiFASmjqqeHsIl8mSu/5H33CW7CMbsxJk8zYITOwDDYDYNjU21tkAMw331L6ert+j6zr7+BTITFJeXcchRZ4EPaoOf0SzcDXqDGEVam86mlKR92r8883HwiTPHVmnXxpTREHPrNENq0hHU8sBAAA=" target="_blank">Run the query</a>
@@ -68,7 +69,7 @@ second = datetime_add('second',1,make_datetime(2017,1,1))
 |---|---|---|---|---|---|---|---|
 |2018-01-01 00:00:00.0000000|2017-04-01 00:00:00.0000000|2017-02-01 00:00:00.0000000|2017-01-08 00:00:00.0000000|2017-01-02 00:00:00.0000000|2017-01-01 01:00:00.0000000|2017-01-01 00:01:00.0000000|2017-01-01 00:00:01.0000000|
 
-### Amount
+The following example demonstrates how to use the `datetime_add` function to add or subtract time intervals from a specific date.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
