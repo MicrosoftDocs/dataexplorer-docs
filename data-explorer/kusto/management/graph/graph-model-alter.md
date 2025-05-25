@@ -8,7 +8,7 @@ ms.date: 05/24/2025
 
 # .alter graph model (Preview)
 
-> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fa/bric](../../includes/applies-to-version/fa/bric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Modifies an existing graph model in the database.
 
@@ -119,13 +119,13 @@ This command returns a table with the following columns:
 
 **Output**
 
-|Name|CreationTime|Id|SnapshotsCount|Model|AuthorizedPrincipals|RetentionPolicy|
+|Name|CreationTime|ID|SnapshotsCount|Model|AuthorizedPrincipals|RetentionPolicy|
 |---|---|---|---|---|---|---|
-|SocialNetwork|2025-05-23 14:42:37.5128901|b709fec8-d821-45ab-9312-55e82c4f9203|0|model from above|[<br>  {<br>    "Type": "AAD User",<br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",<br>    "ObjectId": "83a7b95c-e0fd-4278-9ab9-c21435ea2673",<br>    "FQN": "aaduser=83a7b95c-e0fd-4278-9ab9-c21435ea2673;f5d01e3b-9a77-4970-b372-e38a3761c3c0",<br>    "Notes": "",<br>    "RoleAssignmentIdentifier": "ca831e09-f37d-48bf-9f6c-25038372019a"<br>  }<br>]|{<br>  "SoftDeletePeriod": "3650.00:00:00"<br>}|
+|SocialNetwork|2025-05-23 14:42:37.5128901|b709fec8-d821-45ab-9312-55e82c4f9203|0|model from above|[</br>  {</br>    "Type": "AAD User",</br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",</br>    "ObjectId": "83a7b95c-e0fd-4278-9ab9-c21435ea2673",</br>    "FQN": "aaduser=83a7b95c-e0fd-4278-9ab9-c21435ea2673;f5d01e3b-9a77-4970-b372-e38a3761c3c0",</br>    "Notes": "",</br>    "RoleAssignmentIdentifier": "ca831e09-f37d-48bf-9f6c-25038372019a"</br>  }</br>]|{</br>  "SoftDeletePeriod": "3650.00:00:00"</br>}|
 
 ## Notes
 
-- When you alter a graph model, you need to provide the complete graph model definition, not just the parts you want to change. The entire definition will replace the existing one.
+- When you alter a graph model, you need to provide the complete graph model definition, not just the parts you want to change. The entire definition replaces the existing one.
 
 ## Related content
 

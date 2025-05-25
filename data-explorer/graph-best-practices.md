@@ -12,6 +12,7 @@ ms.date: 05/25/2025
 Kusto supports two primary approaches for working with graphs: transient graphs created in-memory for each query, and persistent graphs defined as graph models and snapshots within the database. This article provides best practices for both methods, enabling you to select the optimal approach and use KQL graph semantics efficiently.
 
 This guidance covers:
+
 - Graph creation and optimization strategies
 - Querying techniques and performance considerations
 - Schema design for persistent graphs
@@ -21,9 +22,11 @@ This guidance covers:
 ## Graph modeling approaches in Kusto
 
 ### Transient graphs
+
 Created dynamically using the [`make-graph`](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) operator. These graphs exist only during query execution and are optimal for ad hoc or exploratory analysis on small to medium datasets.
 
 ### Persistent graphs
+
 Defined using [graph models](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true). These graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
 
 ## Best practices for transient graphs
@@ -436,9 +439,11 @@ tenantReports
 The most cost-effective strategy combines both transient and persistent graphs based on tenant characteristics:
 
 #### Small to medium tenants (99.9% of tenants)
+
 Use **transient graphs** for the majority of tenants:
 
 **Advantages:**
+
 - **Always up-to-date data** - No snapshot maintenance required
 - **Lower operational overhead** - No graph model or snapshot management
 - **Cost-effective** - No additional storage costs for graph structures
@@ -469,9 +474,11 @@ getTenantGraph("small_tenant_456")
 ```
 
 #### Large tenants (0.1% of tenants)
+
 Use **persistent graphs** for the largest tenants:
 
 **Advantages:**
+
 - **Scalability** - Handle graphs exceeding memory limitations
 - **Performance optimization** - Eliminate construction latency for complex queries
 - **Advanced analytics** - Support sophisticated graph algorithms and analysis

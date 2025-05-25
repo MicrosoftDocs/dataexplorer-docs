@@ -165,6 +165,7 @@ flowchart TD
 ### Enterprise resource management challenges
 
 Consider an enterprise with complex cloud infrastructure containing:
+
 - Virtual machines, databases, storage accounts, and networking components
 - User identities with varying permissions across multiple environments
 - Complex resource hierarchies spanning different organizational units

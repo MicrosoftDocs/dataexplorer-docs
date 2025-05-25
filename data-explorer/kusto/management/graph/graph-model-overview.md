@@ -36,7 +36,7 @@ Graph models provide significant advantages for relationship-based analysis but 
 - **Advanced graph operations**: You need to perform complex traversals, path finding, pattern matching, or community detection on your data
 - **Consistent schema**: Your graph analysis requires a well-defined structure with consistent node and edge types
 
-For simpler, one-time graph analysis on smaller datasets, the [make-graph](../../query/make-graph-operator.md) operator may be more appropriate.
+For simpler, one-time graph analysis on smaller datasets, the [make-graph](../../query/make-graph-operator.md) operator might be more appropriate.
 
 ## Graph model components
 
@@ -93,7 +93,7 @@ AddNodes steps define how to create nodes in the graph from tabular data:
 |-----------|----------|-------------|
 | Kind | Yes | Must be set to "AddNodes" |
 | Query | Yes | A KQL query that retrieves the data for nodes. The query result must include all columns required for node properties and identifiers |
-| NodeIdColumn | Yes | The column from the query result that will be used as the unique identifier for each node |
+| NodeIdColumn | Yes | The column from the query result used as the unique identifier for each node |
 | Labels | No | An array of static label names defined in the Schema section to apply to these nodes |
 | LabelsColumn | No | A column from the query result that provides dynamic labels for each node. Can be a string column (single label) or dynamic array column (multiple labels) |
 
@@ -206,7 +206,7 @@ For more detailed information about working with graph snapshots, see [Graph sna
 
 ## Querying Graph models
 
-Graph models are queried using the `graph()` function, which provides access to the graph entity. This function supports retrieving either the most recent snapshot of the graph or creating the graph at query time if snapshots are not available.
+Graph models are queried using the `graph()` function, which provides access to the graph entity. This function supports retrieving either the most recent snapshot of the graph or creating the graph at query time if snapshots aren't available.
 
 ### Basic query structure
 
@@ -219,7 +219,7 @@ graph("GraphModelName")
 
 ### Query examples
 
-#### 1. Basic node-edge-node pattern:
+#### 1. Basic node-edge-node pattern
 
 ```kusto
 // Find people who commented on posts by employees in the last week
@@ -230,7 +230,7 @@ graph("SocialNetwork")
     project person.name, post.title, employee.userName
 ```
 
-#### 2. Multiple relationship patterns:
+#### 2. Multiple relationship patterns
 
 ```kusto
 // Find people who both work with and are friends with each other
@@ -239,7 +239,7 @@ graph("ProfessionalNetwork")
     project p1.name, p2.name, p1.department
 ```
 
-#### 3. Variable-length paths:
+#### 3. Variable-length paths
 
 ```kusto
 // Find potential influence paths up to 3 hops away
@@ -251,7 +251,7 @@ graph("InfluenceNetwork")
          target.name
 ```
 
-The `graph()` function provides a consistent way to access graph data without needing to explicitly construct the graph for each query. If a snapshot exists, it will be used; otherwise, the function will create a graph similar to the `make-graph` operator during query execution.
+The `graph()` function provides a consistent way to access graph data without needing to explicitly construct the graph for each query. If a snapshot exists, it is used; otherwise, the function creates a graph similar to the `make-graph` operator during query execution.
 
 > [!NOTE]
 > See [Graph operators](../../query/graph-operators.md) for the complete reference on graph query syntax and capabilities.
@@ -260,35 +260,39 @@ The `graph()` function provides a consistent way to access graph data without ne
 
 ### Who is responsible for refreshing the graph?
 
-Users or processes must refresh the graph themselves. Initially, no automatic refresh policies exist for new graph entities. However, the graph remains queryable even if the snapshot is being created or hasn't been created yet.
+Users or processes must refresh the graph themselves. Initially, no automatic refresh policies exist for new graph entities. However, the graph remains queryable even if the snapshot is being created or has not yet been created yet.
 
 ### How can a graph be refreshed?
 
 To refresh a graph:
+
 1. Create a new snapshot using an asynchronous operation (`.create graph snapshot`)
-1. Once created, incoming graph queries will automatically use the new snapshot
+1. Once created, incoming graph queries automatically use the new snapshot
 1. Optional: Drop the old snapshot to free up resources (`.drop graph snapshot`)
 
 ### What if different steps create duplicate edges or nodes?
 
 - **Edges**: Duplicates remain as duplicates by default (edges don't have unique identifiers)
-- **Nodes**: "Duplicates" are merged - the system assumes they represent the same entity. In case of conflicting property values, the last value processed takes precedence
+- **Nodes**: "Duplicates" are merged - the system assumes they represent the same entity. If there are conflicting property values, the last value processed takes precedence
 
 ### How do graph models handle schema changes?
 
 When the schema of your underlying data changes:
+
 1. Alter your graph model using the `.alter graph model` command to update its schema or definition
-1. Create a new snapshot to materialize these changes
-1. Older snapshots will remain accessible until explicitly dropped
+1. To materialize these changes, create a new snapshot
+1. Older snapshots remain accessible until explicitly dropped
 
 ### Can I query across multiple graph models?
 
 Yes, you can query multiple graph models within a single query using composition:
+
 - Use the output of one `graph()` operator as input to another `graph()` operator
 - Process and transform results from one graph before feeding into another graph query
 - Chain multiple graph operations for cross-domain analysis without creating a unified model
 
 Example:
+
 ```kusto
 // Query the first graph model
 graph("EmployeeNetwork") 

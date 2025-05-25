@@ -96,13 +96,13 @@ This command returns a table with the following columns:
 
 **Output**
 
-|Name|CreationTime|Id|SnapshotsCount|Model|AuthorizedPrincipals|RetentionPolicy|
+|Name|CreationTime|ID|SnapshotsCount|Model|AuthorizedPrincipals|RetentionPolicy|
 |---|---|---|---|---|---|---|
-|SocialNetwork|2025-05-23 14:42:37.5128901|b709fec8-d821-45ab-9312-55e82c4f9203|0|model from above|[<br>  {<br>    "Type": "AAD User",<br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",<br>    "ObjectId": "83a7b95c-e0fd-4278-9ab9-c21435ea2673",<br>    "FQN": "aaduser=83a7b95c-e0fd-4278-9ab9-c21435ea2673;f5d01e3b-9a77-4970-b372-e38a3761c3c0",<br>    "Notes": "",<br>    "RoleAssignmentIdentifier": "ca831e09-f37d-48bf-9f6c-25038372019a"<br>  }<br>]|{<br>  "SoftDeletePeriod": "3650.00:00:00"<br>}|
+|SocialNetwork|2025-05-23 14:42:37.5128901|b709fec8-d821-45ab-9312-55e82c4f9203|0|model from above|[</br>  {</br>    "Type": "AAD User",</br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",</br>    "ObjectId": "83a7b95c-e0fd-4278-9ab9-c21435ea2673",</br>    "FQN": "aaduser=83a7b95c-e0fd-4278-9ab9-c21435ea2673;f5d01e3b-9a77-4970-b372-e38a3761c3c0",</br>    "Notes": "",</br>    "RoleAssignmentIdentifier": "ca831e09-f37d-48bf-9f6c-25038372019a"</br>  }</br>]|{</br>  "SoftDeletePeriod": "3650.00:00:00"</br>}|
 
 ## Notes
 
-- When using `.create-or-alter graph_model`, if a graph model with the specified name doesn't exist, a new one is created. If one already exists, it's updated with the new definition.
+- If a graph model with the specified name doesn't exist, a new one is created when using `.create-or-alter graph_model`. If one already exists, it's updated with the new definition.
 - Each time a graph model is altered, a new version is created, allowing you to track changes over time and revert to previous versions if needed.
 - To generate a graph snapshot from the model, use the [.make graph_snapshot](graph-snapshot-make.md) command.
 

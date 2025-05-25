@@ -34,7 +34,6 @@ The function outputs a list of connected targets for each source and also a scor
 | *resultCountLimit* | `long` |   | The maximum number of returned rows (sorted by descending score). The default value is 100000. |
 | *listedIdsLimit* | `long` |   | The maximum number of targets listed for each source. The default value is 50. |
 
-
 ## Function definition
 
 You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
@@ -173,30 +172,30 @@ connections
 > For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
 ```kusto
-let connections = datatable (SourceNodeName:string, TargetNodeName:string, TargetNodeCriticality:int)[						
-    'vm-work-1',            'webapp-prd', 	          3,
-    'vm-custom',        	'webapp-prd', 	          3,
-    'webapp-prd',           'vm-custom', 	          1,
-    'webapp-prd',       	'test-machine', 	      1,
-    'vm-custom',        	'server-0126', 	          1,
-    'vm-custom',        	'hub_router', 	          2,
-    'webapp-prd',       	'hub_router', 	          2,
-    'test-machine',       	'vm-custom',              1,
-    'test-machine',        	'hub_router', 	          2,
-    'hub_router',           'remote_DT', 	          1,
-    'vm-work-1',            'storage_main_backup', 	  5,
-    'hub_router',           'vm-work-2', 	          1,
-    'vm-work-2',        	'backup_prc', 	          3,
-    'remote_DT',            'backup_prc', 	          3,
-    'backup_prc',           'storage_main_backup', 	  5,
-    'backup_prc',           'storage_DevBox', 	      1,
-    'device_A1',            'sevice_B2', 	          2,
-    'sevice_B2',            'device_A1', 	          2
+let connections = datatable (SourceNodeName:string, TargetNodeName:string, TargetNodeCriticality:int)[
+    'vm-work-1',            'webapp-prd',           3,
+    'vm-custom',            'webapp-prd',           3,
+    'webapp-prd',           'vm-custom',            1,
+    'webapp-prd',          'test-machine',          1,
+    'vm-custom',           'server-0126',           1,
+    'vm-custom',           'hub_router',            2,
+    'webapp-prd',          'hub_router',            2,
+    'test-machine',        'vm-custom',             1,
+    'test-machine',        'hub_router',            2,
+    'hub_router',           'remote_DT',            1,
+    'vm-work-1',            'storage_main_backup',  5,
+    'hub_router',           'vm-work-2',            1,
+    'vm-work-2',            'backup_prc',           3,
+    'remote_DT',            'backup_prc',           3,
+    'backup_prc',           'storage_main_backup',  5,
+    'backup_prc',           'storage_DevBox',       1,
+    'device_A1',            'sevice_B2',            2,
+    'sevice_B2',            'device_A1',            2
 ];
 connections
-| invoke graph_blast_radius_fl(sourceIdColumnName 		= 'SourceNodeName'
-                            , targetIdColumnName 		= 'TargetNodeName'
-                            , targetWeightColumnName 	= 'TargetNodeCriticality'
+| invoke graph_blast_radius_fl(sourceIdColumnName       = 'SourceNodeName'
+                            , targetIdColumnName        = 'TargetNodeName'
+                            , targetWeightColumnName    = 'TargetNodeCriticality'
 )
 ```
 

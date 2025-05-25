@@ -51,7 +51,7 @@ This command returns a table with the following columns:
 
 ## Notes
 
-- The `.drop graph_snapshot` command permanently deletes a specific graph snapshot. This operation cannot be undone.
+- The `.drop graph_snapshot` command permanently deletes a specific graph snapshot. This operation can't be undone.
 - Before dropping a snapshot, ensure that no queries or processes are currently using it.
 - Dropping a snapshot doesn't affect the graph model from which it was created.
 - To drop all snapshots for a specific graph model, use the [.drop graph_snapshots](graph-snapshots-drop.md) command.

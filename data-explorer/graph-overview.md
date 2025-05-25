@@ -56,7 +56,7 @@ Kusto's graph capabilities offer significant advantages by **leveraging existing
 - **Event-based modeling** - Treats graphs as sequences of relationship events, aligning with Kusto's strength in event processing
 - **Seamless KQL integration** - Graph operators work alongside all existing KQL capabilities with full IntelliSense support
 
-This approach delivers **enterprise-grade relationship modeling** while maintaining Kusto's performance, scale, and familiar interface. Organizations can analyze complex interconnected data across domains—from supply chains and organizational hierarchies to IoT device networks and social relationships—without additional infrastructure investments.
+This approach delivers **enterprise-grade relationship modeling** while maintaining Kusto's performance, scale, and familiar interface. Organizations can analyze complex interconnected data across domains—from supply chains and organizational hierarchies to IoT device networks and social relationships—without extra infrastructure investments.
 
 ## Graph creation approaches in Kusto
 
@@ -69,7 +69,7 @@ Transient graphs are created dynamically using the [`make-graph`](/kusto/query/m
 #### Key characteristics
 
 - **Dynamic creation** - Built from tabular data using KQL queries with the entire structure residing in memory
-- **Immediate availability** - No pre-processing or setup requirements
+- **Immediate availability** - No preprocessing or setup requirements
 - **Memory constraints** - Graph size is limited by available memory on cluster nodes
 - **Performance factors** - Graph topology and property sizes determine memory requirements
 
@@ -151,11 +151,13 @@ This persistent approach proves invaluable for managing complex IoT ecosystems a
 Once a graph is established (through `make-graph` or from a snapshot), you can leverage the full suite of KQL graph operators for comprehensive analysis:
 
 **Core operators:**
+
 - [`graph-match`](/kusto/query/graph-match-operator.md) - Enables sophisticated pattern matching and traversal operations for identifying complex relationship sequences
 - [`graph-shortest-paths`](/kusto/query/graph-shortest-paths-operator.md) - Finds optimal paths between entities, helping prioritize connections and identify critical relationships
 - [`graph-to-table`](/kusto/query/graph-to-table-operator.md) - Converts graph analysis results to tabular format for integration with existing systems
 
 **Advanced analysis capabilities:**
+
 - **Time-based analysis** - Examine how relationships and patterns evolve over time
 - **Geospatial integration** - Combine graph data with location-based intelligence for geographic pattern analysis
 - **Machine learning integration** - Apply algorithms for entity clustering, pattern classification, and anomaly detection
@@ -221,9 +223,9 @@ Persistent graphs are essential when working with enterprise-scale data or when 
 ### Query latency
 
 - **Transient graphs** - Include construction time in each query, with delays increasing for large datasets or external data sources
-- **Persistent graphs** - Eliminate construction latency through pre-built snapshots, enabling rapid analysis
+- **Persistent graphs** - Eliminate construction latency through prebuilt snapshots, enabling rapid analysis
 
-External data source dependencies (Kusto, SQL, CosmosDB) can significantly impact transient graph construction time, as each query must wait for external responses.
+External data source dependencies (Kusto, SQL, Cosmos DB) can significantly affect transient graph construction time, as each query must wait for external responses.
 
 ### Data freshness
 

@@ -48,7 +48,7 @@ To run this command, you need [Database Admin permissions](../../management/acce
 
 ## Next steps
 
-- [Graph model overview](graph-model-overview.md)
+* [Graph model overview](graph-model-overview.md)
 * [.make graph_snapshot](graph-snapshot-make.md)
 * [.show graph_snapshot](graph-snapshot-show.md)
 * [.show graph_snapshots](graph-snapshots-show.md)
