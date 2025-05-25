@@ -42,9 +42,11 @@ For more information about other operators and to determine which operator is mo
 
 ## Returns
 
-Rows in *T* for which the predicate is `true`.
+Returns the rows in *T* for which the predicate is `true`.
 
-## Example
+## Examples
+
+The following example returns the rows in the *StormEvents* table where the *State* column equals "kansas". This is a case-sensitive search.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -60,6 +62,8 @@ StormEvents
 |Count|
 |---|
 |0|  
+
+The following example returns the rows in the *StormEvents* table where the *State* column equals "KANSAS". This is a case-sensitive search.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
