@@ -112,7 +112,7 @@ For information about the current limitations of persistent graphs in Kusto, see
 
 ## Next steps
 
-* [Graph model overview](graph-model-overview.md)
-* [Graph snapshot overview](graph-snapshot-overview.md)
-* [Graph operators in Kusto](../../query/graph-operators.md)
-* [Graph best practices](../../../graph-best-practices.md)
+* [Graph model overview](graph-model-overview?view=azure-data-explorer&preserve-view=true)
+* [Graph snapshot overview](graph-snapshot-overview?view=azure-data-explorer&preserve-view=true)
+* [Graph operators in Kusto](../../query/graph-operators?view=azure-data-explorer&preserve-view=true)
+* [Graph best practices](../../../graph-best-practices?view=azure-data-explorer&preserve-view=true)

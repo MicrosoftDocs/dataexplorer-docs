@@ -132,6 +132,6 @@ connections
 
 ## Related content
 
-* [Best practices for Kusto Query Language (KQL) graph semantics](../../graph-best-practices.md)
-* [Graph operators](graph-operators.md)
-* [make-graph operator](make-graph-operator.md)
+* [Best practices for Kusto Query Language (KQL) graph semantics](../../graph-best-practices?view=azure-data-explorer&preserve-view=true)
+* [Graph operators](graph-operators?view=azure-data-explorer&preserve-view=true)
+* [make-graph operator](make-graph-operator?view=azure-data-explorer&preserve-view=true)
