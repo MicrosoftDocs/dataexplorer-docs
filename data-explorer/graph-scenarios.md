@@ -24,28 +24,7 @@ This article explores the following common scenarios for using KQL graph semanti
 
 Social network analysis represents a fundamental graph use case where nodes are users and edges represent relationships or interactions. Consider a data model with a *Users* table containing user attributes (name, organization) and a *Knows* table documenting relationships between users:
 
-```mermaid
----
-config:
-  look: neo
-  theme: default
----
-flowchart LR
-    You((You)) -- "knows" --> Friend((Friend))
-    Friend -- "knows" --> FriendOfFriend((Friend of a friend))
-    
-    subgraph "Contoso organization"
-        FriendOfFriend
-    end
-    
-    classDef you fill:#4a86e8,stroke:#333,color:white
-    classDef friend fill:white,stroke:#333
-    classDef fof fill:#e67c37,stroke:#333,color:white
-    
-    class You you
-    class Friend friend
-    class FriendOfFriend fof
-```
+:::image type="content" source="media/graphs/social-network-analysis.png" alt-text="Example diagram using social network analysis":::
 
 ### Traditional approach challenges
 
@@ -111,23 +90,7 @@ let graph = edges
 
 This creates a directed graph where nodes are IP addresses or resources, and edges represent requests with timestamp and HTTP verb properties:
 
-```mermaid
----
-config:
-  look: neo
-  theme: default
----
-flowchart LR
-    IP1["31.56.96.51"] -- "Requests (GET)<br>timestamp: 2019-01-22 00:26:16" --> Prod1["/product/27"]
-    IP1 -- "Requests (GET)<br>timestamp: 2019-01-22 00:26:17" --> Prod2["/product/42"]
-    IP2["54.36.149.41"] -- "Requests (GET)<br>timestamp: 2019-01-22 00:26:14" --> Prod1
-    
-    classDef ip fill:#4a86e8,stroke:#333,color:white
-    classDef product fill:#4a86e8,stroke:#333,color:white
-    
-    class IP1,IP2 ip
-    class Prod1,Prod2 product
-```
+:::image type="content" source="media/graphs/create-graph-from-log-data.png" alt-text="Example graph created from log data":::
 
 ### Query patterns for recommendations
 
@@ -155,27 +118,7 @@ This demonstrates how graph semantics can extract meaningful insights from raw l
 
 Resource graphs enable efficient exploration and querying of resources at scale, supporting governance, management, and security requirements. These graphs continuously update as resources change, providing dynamic tracking of your resource inventory.
 
-```mermaid
----
-config:
-  look: neo
-  theme: default
----
-flowchart TD
-    MG["Management Group<br>MG001"] --> RG["Resource Group<br>RG001"]
-    RG --> VM["Virtual Machine<br>VM001"]
-    RG --> DB["Database<br>DB001"]
-    ITAdmins["Group<br>IT_Admins"] -- "authorized_on" --> RG
-    Alice["User<br>Alice"] -- "has_member" --> ITAdmins
-    
-    classDef user fill:#f9f,stroke:#333,stroke-width:2px
-    classDef group fill:#bbf,stroke:#333,stroke-width:2px
-    classDef resource fill:#dfd,stroke:#333,stroke-width:2px
-    
-    class Alice user
-    class ITAdmins group
-    class MG,RG,VM,DB resource
-```
+:::image type="content" source="media/graphs/resource-graph-exploration.png" alt-text="Example graph created using resource exploration":::
 
 ### Enterprise resource management challenges
 
@@ -204,41 +147,7 @@ For detailed examples and sample code, see the [Resource Graph samples on GitHub
 
 Security operations often require analyzing relationships across multiple domains simultaneously. The "Graph of Graph" approach enables modeling and analyzing interconnected data structures by combining separate graph domains: identity, network, and asset graphs.
 
-```mermaid
----
-config:
-  look: neo
-  theme: default
----
-flowchart TD
-    subgraph Asset Graph
-        Resource1["Resource1<br>Database<br>High Sensitivity"]
-        Resource2["Resource2<br>FileShare<br>Medium Sensitivity"]
-    end
-
-    subgraph Identity Graph
-        User1["User1<br>Finance"] -- "MemberOf" --> Group1["Group1<br>Finance-Users"]
-        User2["User2<br>IT"] -- "MemberOf" --> Group2["Group2<br>IT-Admins"]
-        Group1 -- "HasAccess" --> Resource1
-        Group2 -- "HasAccess" --> Resource2
-    end
-    
-    subgraph Network Graph
-        Device1["Device1<br>Workstation"] -- "RDP" --> Device2["Device2<br>Server"]
-        Device2 -- "SSH" --> Device3["Device3<br>Database"]
-        Device1 -- "HTTPS" --> Resource1
-    end
-
-    User1 -.- Device1
-    
-    classDef identity fill:#f9f,stroke:#333,stroke-width:2px
-    classDef network fill:#bbf,stroke:#333,stroke-width:2px
-    classDef asset fill:#dfd,stroke:#333,stroke-width:2px
-    
-    class User1,User2,Group1,Group2 identity
-    class Device1,Device2,Device3 network
-    class Resource1,Resource2 asset
-```
+:::image type="content" source="media/graphs/multi-domain-security-analysis.png" alt-text="Example of a multi-domain security analysis graph":::
 
 ### Multi-domain analysis methodology
 
