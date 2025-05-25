@@ -29,4 +29,4 @@ The following table describes the supported graph operators.
 ## Related content
 
 * [Graph overview](../../graph-overview.md)
-* [Graph best practices](graph-best-practices.md)
+* [Graph best practices](../../graph-best-practices.md)
