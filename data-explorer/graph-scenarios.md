@@ -25,6 +25,11 @@ This article explores the following common scenarios for using KQL graph semanti
 Social network analysis represents a fundamental graph use case where nodes are users and edges represent relationships or interactions. Consider a data model with a *Users* table containing user attributes (name, organization) and a *Knows* table documenting relationships between users:
 
 ```mermaid
+---
+config:
+  look: neo
+  theme: default
+---
 flowchart LR
     You((You)) -- "knows" --> Friend((Friend))
     Friend -- "knows" --> FriendOfFriend((Friend of a friend))
@@ -107,6 +112,11 @@ let graph = edges
 This creates a directed graph where nodes are IP addresses or resources, and edges represent requests with timestamp and HTTP verb properties:
 
 ```mermaid
+---
+config:
+  look: neo
+  theme: default
+---
 flowchart LR
     IP1["31.56.96.51"] -- "Requests (GET)<br>timestamp: 2019-01-22 00:26:16" --> Prod1["/product/27"]
     IP1 -- "Requests (GET)<br>timestamp: 2019-01-22 00:26:17" --> Prod2["/product/42"]
@@ -146,6 +156,11 @@ This demonstrates how graph semantics can extract meaningful insights from raw l
 Resource graphs enable efficient exploration and querying of resources at scale, supporting governance, management, and security requirements. These graphs continuously update as resources change, providing dynamic tracking of your resource inventory.
 
 ```mermaid
+---
+config:
+  look: neo
+  theme: default
+---
 flowchart TD
     MG["Management Group<br>MG001"] --> RG["Resource Group<br>RG001"]
     RG --> VM["Virtual Machine<br>VM001"]
@@ -190,6 +205,11 @@ For detailed examples and sample code, see the [Resource Graph samples on GitHub
 Security operations often require analyzing relationships across multiple domains simultaneously. The "Graph of Graph" approach enables modeling and analyzing interconnected data structures by combining separate graph domains: identity, network, and asset graphs.
 
 ```mermaid
+---
+config:
+  look: neo
+  theme: default
+---
 flowchart TD
     subgraph Asset Graph
         Resource1["Resource1<br>Database<br>High Sensitivity"]
@@ -244,6 +264,11 @@ For detailed examples and implementation guidance, see the [Graph of Graph sampl
 Combining graph analysis with time-series analytics creates a powerful framework for detecting temporal anomalies while understanding their impact across interconnected systems. This integration delivers significant value for security analytics, IoT monitoring, and operational intelligence.
 
 ```mermaid
+---
+config:
+  look: neo
+  theme: default
+---
 flowchart TD
     subgraph "Authentication Timeseries"
         User001T["User001 Logins<br>9am-5pm Seattle<br>Regular Pattern"]
@@ -302,6 +327,11 @@ For implementation examples and detailed code samples, see the [Time Series and 
 Digital twins provide virtual representations of physical objects or systems, enabling precise modeling and simulation of real-world entities. Graph semantics in KQL excels in digital twin scenarios because relationships between entities—facilities, equipment, sensors, and people—naturally form graph structures.
 
 ```mermaid
+---
+config:
+  look: neo
+  theme: default
+---
 flowchart TD
     Site["site-1<br>Main Campus"] --> Building["building-1<br>Building A"]
     Building --> Floor["floor-1<br>First Floor"]
