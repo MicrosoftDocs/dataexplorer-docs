@@ -30,7 +30,9 @@ An additional table can be created by using the `with` clause. Facet result tabl
 
 Multiple tables: one for the `with` clause, and one for each column.
 
-## Example
+## Examples
+
+The following example shows how to use the `facet` operator to return a table for each specified column.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

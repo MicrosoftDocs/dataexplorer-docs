@@ -37,7 +37,7 @@ Polygon around the input point. If the coordinates or radius or tolerance is inv
 
 ## Examples
 
-The following query calculates polygon around [-115.1745008278, 36.1497251277] coordinates, with 20km radius.
+The following example calculates polygon around [-115.1745008278, 36.1497251277] coordinates, with 20km radius.
 
 ```kusto
 print buffer = geo_point_buffer(-115.1745008278, 36.1497251277, 20000)

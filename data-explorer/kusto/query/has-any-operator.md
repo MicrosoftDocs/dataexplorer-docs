@@ -32,15 +32,13 @@ For more information about other operators and to determine which operator is mo
 | *expression* | scalar or tabular |  :heavy_check_mark: | An expression that specifies the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabular-expression-statements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 10,000 distinct values.|
 
 > [!NOTE]
-> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
+> An inline tabular expression must be enclosed with double parentheses.
 
 ## Returns
 
 Rows in *T* for which the predicate is `true`.
 
 ## Examples
-
-### List of scalars
 
 The following query shows how to use `has_any` with a comma-separated list of scalar values.
 
@@ -67,8 +65,6 @@ StormEvents
 |NORTH DAKOTA|905|
 |NEW MEXICO|527|
 |NEW HAMPSHIRE|394|
-
-### Dynamic array
 
 The following query shows how to use `has_any` with a dynamic array.
 
@@ -118,8 +114,6 @@ StormEvents
 |NORTH DAKOTA|905|
 |ATLANTIC SOUTH|193|
 |ATLANTIC NORTH|188|
-
-### Tabular expression
 
 The following query shows how to use `has_any` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parentheses.
 

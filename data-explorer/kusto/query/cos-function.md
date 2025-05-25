@@ -9,7 +9,8 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns the cosine function value of the specified angle. The angle is specified in radians.
+Performs a cosine operation on the input value.
+The angle is specified in radians.
 
 ## Syntax
 
@@ -27,7 +28,9 @@ Returns the cosine function value of the specified angle. The angle is specified
 
 The cosine of *number* of radians.
 
-## Example
+## Examples
+
+The following example demonstrates how to use the `cos()` function.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

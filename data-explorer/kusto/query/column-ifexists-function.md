@@ -30,7 +30,7 @@ Displays the column, if the column exists. Otherwise, it returns the default col
 
 If *columnName* exists, then returns the column. Otherwise, it returns the *defaultValue* column.
 
-## Example
+## Examples
 
 This example returns the default **State** column, because a column named Capital doesn't exist in the *StormEvents* table.
 

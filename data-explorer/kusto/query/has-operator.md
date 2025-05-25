@@ -37,7 +37,9 @@ When possible, use the case-sensitive [has_cs](has-cs-operator.md).
 
 Rows in *T* for which the predicate is `true`.
 
-## Example
+## Examples
+
+The following example demonstrates using `has` with a case-insensitive search string.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

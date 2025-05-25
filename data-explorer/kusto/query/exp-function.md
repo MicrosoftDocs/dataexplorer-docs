@@ -27,6 +27,20 @@ The base-e exponential function of x, which is e raised to the power x: e^x.
 
 The exponential value of x.
 
+## Examples
+
+The following example shows how to use the `exp()` function to calculate the exponential value of 2.
+
+```kusto
+print result = exp(2)
+```
+
+**Output**
+
+| result   |
+|----------|
+| 7.389056 |
+
 ## Related content
 
 * For natural (base-e) logarithms, see [log()](log-function.md).

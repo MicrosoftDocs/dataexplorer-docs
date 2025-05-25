@@ -113,7 +113,7 @@ evaluate cosmosdb_sql_request(
 | where lastName == 'Smith'
 ```
 
-### Query Azure Cosmos DB and join data with a database table
+### Query Azure Cosmos DB with a database table
 
 The following example joins partner data from an Azure Cosmos DB with partner data in a database using the `Partner` field. It results in a list of partners with their phone numbers, website, and contact email address sorted by partner name.
 
