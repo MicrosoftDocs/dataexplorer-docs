@@ -39,7 +39,7 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 ## Examples
 
-### IP addresses as list of strings
+The following example demonstrates using `has_any_ipv4_prefix` with multiple scalar values, where each IP address is provided as a separate string argument. The IP addresses in the text are properly delimited by non-alphanumeric characters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -55,7 +55,7 @@ print result=has_any_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127
 |--|
 |true|
 
-### IP addresses as dynamic array
+The following example demonstrates using `has_any_ipv4_prefix` with a dynamic array of IP addresses. The IP addresses in the text are properly delimited by non-alphanumeric characters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -70,7 +70,7 @@ print result=has_any_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', dyna
 |--|
 |true|
 
-### Invalid IPv4 prefix
+The following example demonstrates using `has_any_ipv4_prefix` with an invalid IPv4 address. The IP addresses in the text are properly delimited by non-alphanumeric characters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -85,7 +85,7 @@ print result=has_any_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127
 |--|
 |false|
 
-### Improperly deliminated IP address
+The following example demonstrates using `has_any_ipv4_prefix` with an improperly delimited IP address. The IP addresses in the text are not properly delimited by non-alphanumeric characters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
