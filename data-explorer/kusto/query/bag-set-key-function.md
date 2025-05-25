@@ -34,7 +34,7 @@ Returns a `dynamic` property-bag with specified key-value pairs. If the input ba
 
 ## Examples
 
-### Use a root-level key
+The following example demonstrates how to set a root-level key in a property bag.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -54,7 +54,8 @@ datatable(input: dynamic) [
 |{<br>  "key1": 1,<br>  "key2": 2<br>}|{<br>  "key1": 1,<br>  "key2": 2,<br>  "key3": 3<br>}|
 |{<br>  "key1": 1,<br>  "key3": "abc"<br>}|{<br>  "key1": 1,<br>  "key3": 3<br>}|
 
-### Use a JSONPath key
+The following example demonstrates how to set a JSONPath key in a property bag.
+
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

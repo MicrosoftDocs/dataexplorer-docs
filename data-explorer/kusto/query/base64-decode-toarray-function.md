@@ -27,7 +27,9 @@ Decodes a base64 string to an array of long values.
 
 Returns an array of long values decoded from a base64 string.
 
-## Example
+## Examples
+
+The following example shows how to use `base64_decode_toarray()` to decode a base64 string into an array of long values.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
