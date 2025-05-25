@@ -124,13 +124,11 @@ For example, see [examples of cases where `find` acts as a union](find-operator.
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+### General examples
 
 ::: moniker range="microsoft-fabric  || azure-data-explorer"
 
-### Term lookup across all tables
-
-The query finds all rows from all tables in the current database in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). The output includes rows from the `Customers` table and the `SalesTable` table of the `ContosoSales` database.
+The following example finds all rows from all tables in the current database in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). The output includes rows from the `Customers` table and the `SalesTable` table of the `ContosoSales` database.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAA0vLzEtRUPJILcpLzEtJrVICAAv0zUwQAAAA" target="_blank">Run the query</a>
@@ -150,9 +148,7 @@ This table shows the first three rows of the output.
 | Customers |{"CityName":"Ballard","CompanyName":"NULL","ContinentName":"North America","CustomerKey":7888,"Education":"Partial High School","FirstName":"Kari","Gender":"F","LastName":"Hernandez","MaritalStatus":"S","Occupation":"Clerical","RegionCountryName":"United States","StateProvinceName":"Washington"} |
 |...|...|
 
-### Term lookup across all tables matching a name pattern
-
-The query finds all rows from all tables in the current database whose name starts with `C`, and in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). Now, the output only contains records from the `Customers` table.
+The following example finds all rows from all tables in the current database whose name starts with `C`, and in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). Now, the output only contains records from the `Customers` table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAA0vLzEtRyMxT0HDW0lQoz0gtSlXQUshILFZQ8kgtykvMS0mtUgIA+50LFCQAAAA=" target="_blank">Run the query</a>
@@ -172,9 +168,8 @@ This table shows the first three rows of the output.
 | ConferenceSessions | {"conference":"Build 2021","sessionid":"CON-PRT103","session_title":"Roundtable: Advanced Kusto query language topics","session_type":"Roundtable","owner":"Avner Aharoni","participants":"Alexander Sloutsky, Tzvia Gitlin-Troyna","URL":"https://sessions.mybuild.microsoft.com/sessions/details/4d4887e9-f08d-4f88-99ac-41e5feb869e7","level":200,"session_location":"Online","starttime":"2021-05-26T08:30:00.0000000Z","duration":60,"time_and_duration":"Wednesday, May 26\n8:30 AM - 9:30 AM GMT","kusto_affinity":"Focused"} |
 |...|...|
 
-### Term lookup across the cluster
 
-The query finds all rows from all tables in all databases in the cluster in which any column includes the word `Kusto`.
+The following example finds all rows from all tables in all databases in the cluster in which any column includes the word `Kusto`.
 This query is a [cross-database](cross-cluster-or-database-queries.md) query.
 The resulting records are transformed according to the [output schema](#output-schema).
 
@@ -196,14 +191,11 @@ This table shows the first three rows of the output.
 | database("Samples").ConferenceSessions | {"conference":"Build 2021","sessionid":"CON-PRT103","session_title":"Roundtable: Advanced Kusto query language topics","session_type":"Roundtable","owner":"Avner Aharoni","participants":"Alexander Sloutsky, Tzvia Gitlin-Troyna","URL":"https://sessions.mybuild.microsoft.com/sessions/details/4d4887e9-f08d-4f88-99ac-41e5feb869e7","level":200,"session_location":"Online","starttime":"2021-05-26T08:30:00.0000000Z","duration":60,"time_and_duration":"Wednesday, May 26\n8:30 AM - 9:30 AM GMT","kusto_affinity":"Focused"} 
 |...|...|
 
-### Term lookup matching a name pattern in the cluster
-
-The query finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and in which any column includes the word `Kusto`.
+The following example finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0vLzEtRyMxT0EhJLElMSixO1VAK1lLS1HPW0lQoz0gtSlXQUshILFZQ8i4tLslXAgCcXznPLwAAAA=" target="_blank">Run the query</a>
-
 
 ```kusto
 find in (database("S*").C*) where * has "Kusto"
@@ -220,9 +212,7 @@ This table shows the first three rows of the output.
 | ConferenceSessions | {"conference":"Build 2021","sessionid":"CON-PRT103","session_title":"Roundtable: Advanced Kusto query language topics","session_type":"Roundtable","owner":"Avner Aharoni","participants":"Alexander Sloutsky, Tzvia Gitlin-Troyna","URL":"https://sessions.mybuild.microsoft.com/sessions/details/4d4887e9-f08d-4f88-99ac-41e5feb869e7","level":200,"session_location":"Online","starttime":"2021-05-26T08:30:00.0000000Z","duration":60,"time_and_duration":"Wednesday, May 26\n8:30 AM - 9:30 AM GMT","kusto_affinity":"Focused"} |
 |...|...|
 
-### Term lookup in several clusters
-
-The query finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and in which any column includes the word `Kusto`.
+The following example finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
 
 ```kusto
@@ -234,9 +224,8 @@ where * has "Kusto"
 
 ::: moniker range="azure-monitor || microsoft-sentinel"
 
-### Term lookup across all tables
 
-The query finds all rows from all tables in which any column includes the word `Kusto`.
+The following example finds all rows from all tables in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
 
 ```kusto
@@ -245,12 +234,11 @@ find "Kusto"
 
 ::: moniker-end
 
-## Examples of `find` output results  
+### Examples of `find` output results  
 
-The following examples show how `find` can be used over two tables: *EventsTable1* and *EventsTable2*.
 Assume we have the next content of these two tables:
 
-### EventsTable1
+EventsTable1
 
 |Session_Id|Level|EventText|Version
 |---|---|---|---|
@@ -259,7 +247,7 @@ Assume we have the next content of these two tables:
 |28b8e46e-3c31-43cf-83cb-48921c3986fc|Error|Some Text3|v1.0.1
 |8f057b11-3281-45c3-a856-05ebb18a3c59|Information|Some Text4|v1.1.0
 
-### EventsTable2
+EventsTable2
 
 |Session_Id|Level|EventText|EventName
 |---|---|---|---|
@@ -268,9 +256,7 @@ Assume we have the next content of these two tables:
 |acbd207d-51aa-4df7-bfa7-be70eb68f04e|Error|Some Other Text3|Event3
 |15eaeab5-8576-4b58-8fc6-478f75d8fee4|Error|Some Other Text4|Event4
 
-### Search in common columns, project common, and uncommon columns, and pack the rest  
-
-The query searches for specific records in *EventsTable1* and *EventsTable2* based on a given *Session_Id* and an *Error* Level. It then projects three specific columns: *EventText*, *Version*, and *EventName*, and packs all other remaining columns into a dynamic object.
+The following example searches for specific records in *EventsTable1* and *EventsTable2* based on a given *Session_Id* and an *Error* Level. It then projects three specific columns: *EventText*, *Version*, and *EventName*, and packs all other remaining columns into a dynamic object.
 
 ```kusto
 find in (EventsTable1, EventsTable2) 
@@ -285,9 +271,8 @@ find in (EventsTable1, EventsTable2)
 |EventsTable1|Some Text2|v1.0.0||{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error"}
 |EventsTable2|Some Other Text3||Event3|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error"}
 
-### Search in common and uncommon columns
 
-The query searches for records that either have *Version* as 'v1.0.0' or *EventName* as 'Event1', and then it projects (selects) four specific columns: *Session_Id*, *EventText*, *Version*, and *EventName* from those filtered results.
+The following example searches for records that either have *Version* as 'v1.0.0' or *EventName* as 'Event1', and then it projects (selects) four specific columns: *Session_Id*, *EventText*, *Version*, and *EventName* from those filtered results.
 
 ```kusto
 find Version == 'v1.0.0' or EventName == 'Event1' project Session_Id, EventText, Version, EventName
@@ -304,9 +289,7 @@ find Version == 'v1.0.0' or EventName == 'Event1' project Session_Id, EventText,
 > [!NOTE]
 > In practice, *EventsTable1* rows are filtered with ```Version == 'v1.0.0'``` predicate and *EventsTable2* rows are filtered with ```EventName == 'Event1'``` predicate.
 
-### Use abbreviated notation to search across all tables in the current database
-
-This query searches the database for any records with a *Session_Id* that matches 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'. It retrieves records from all tables and columns that contain this specific *Session_Id*.
+The following example searches the database for any records with a *Session_Id* that matches 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'. It retrieves records from all tables and columns that contain this specific *Session_Id*.
 
 ```kusto
 find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
@@ -321,9 +304,7 @@ find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
 |EventsTable2|acbd207d-51aa-4df7-bfa7-be70eb68f04e|Information|Some Other Text2|{"EventName":"Event2"}|
 |EventsTable2|acbd207d-51aa-4df7-bfa7-be70eb68f04e|Error|Some Other Text3|{"EventName":"Event3"}|
 
-### Return the results from each row as a property bag
-
-This query searches the database for records with the specified *Session_Id* and returns all columns of those records as a single dynamic object.
+The following example searches the database for records with the specified *Session_Id* and returns all columns of those records as a single dynamic object.
 
 ```kusto
 find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e' project pack_all()
@@ -338,13 +319,11 @@ find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e' project pack_all()
 |EventsTable2|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Information", "EventText":"Some Other Text2", "EventName":"Event2"}|
 |EventsTable2|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error", "EventText":"Some Other Text3", "EventName":"Event3"}|
 
-## Examples of cases where `find` acts as `union`
+### Examples of cases where `find` acts as union
 
 The `find` operator in Kusto can sometimes act like a `union` operator, mainly when it's used to search across multiple tables.
 
-### Using a nontabular expression as find operand
-
-The query first creates a view that filters *EventsTable1* to only include error-level records. Then, it searches within this filtered view and the EventsTable2 table for records with a specific *Session_Id*.
+The following example first creates a view that filters *EventsTable1* to only include error-level records. Then, it searches within this filtered view and the EventsTable2 table for records with a specific *Session_Id*.
 
 ```kusto
 let PartialEventsTable1 = view() { EventsTable1 | where Level == 'Error' };
@@ -352,8 +331,7 @@ find in (PartialEventsTable1, EventsTable2)
      where Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
 ```
 
-### Referencing a column that appears in multiple tables and has multiple types
-
+The following examples demonstrate how the `find` operator can act as a `union` when a column appears in multiple tables with different types. In this case, the `ProcessId` column is present in both *Table1* and *Table2*, but with different types.
 For this example, create two tables by running:
 
 ```kusto

@@ -61,11 +61,7 @@ The `externaldata` operator returns a data table of the given schema whose data 
 
 ## Examples
 
-The examples query data in an external storage file.
-
-### Fetch a list of user IDs stored in Azure Blob Storage
-
-The following example shows how to find all records in a table whose `UserID` column falls into a known set of IDs, held (one per line) in an external storage file. Since the data format isn't specified, the detected data format is `TXT`.
+The following example shows how to find all records in a table whose `UserID` column falls into a known set of IDs, held (one per line) in an external storage file stored in Azure Blob Storage. Since the data format isn't specified, the detected data format is `TXT`.
 
 ```kusto
 Users
@@ -75,8 +71,6 @@ Users
     ]))
 | ...
 ```
-
-### Query multiple data files
 
 The following example queries multiple data files stored in external storage.
 
@@ -96,7 +90,6 @@ The above example can be thought of as a quick way to query multiple data files 
 > [!NOTE]
 > Data partitioning isn't recognized by the `externaldata` operator.
 
-### Query hierarchical data formats
 
 To query hierarchical data format, such as `JSON`, `Parquet`, `Avro`, or `ORC`, `ingestionMapping` must be specified in the operator properties.
 In this example, there's a JSON file stored in Azure Blob Storage with the following contents:
