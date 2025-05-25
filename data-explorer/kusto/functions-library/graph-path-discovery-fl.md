@@ -393,7 +393,7 @@ The function `graph_path_discovery_fl()` can be used in cybersecurity domain to 
 ## Related content
 
 * [Functions library](functions-library.md)
-* [Kusto Query Language (KQL) graph semantics overview](../../graph-overview.md)
+* [Graph semantics in Kusto - overview](../../graph-overview.md)
 * [Graph operators](../query/graph-operators.md)
 * [Scenarios](../../graph-scenarios.md)
 * [Best practices](../../graph-best-practices.md)

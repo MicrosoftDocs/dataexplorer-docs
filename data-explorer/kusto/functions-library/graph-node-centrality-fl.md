@@ -492,7 +492,7 @@ The function `graph_node_centrality_fl()` can be used in the cybersecurity domai
 ## Related content
 
 * [Functions library](functions-library.md)
-* [Kusto Query Language (KQL) graph semantics overview](../../graph-overview.md)
+* [Graph semantics in Kusto - overview](../../graph-overview.md)
 * [Graph operators](../query/graph-operators.md)
 * [Scenarios](../../graph-scenarios.md)
 * [Best practices](../../graph-best-practices.md)

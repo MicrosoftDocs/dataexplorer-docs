@@ -6,7 +6,7 @@ ms.topic: conceptual
 ms.date: 05/23/2025
 ---
 
-# Graph semantics in Kusto - Overview
+# Graph semantics in Kusto - overview
 
 > [!INCLUDE [applies](kusto/includes/applies-to-version/applies.md)] [!INCLUDE [fabric](kusto/includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](kusto/includes/applies-to-version/azure-data-explorer.md)]
 

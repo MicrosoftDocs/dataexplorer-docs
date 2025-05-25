@@ -3,7 +3,7 @@ title:  graph_blast_radius_fl()
 description: Learn how to use the graph_blast_radius_fl() function to calculate the Blast Radius of source nodes over path or edge data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 03/03/2025
+ms.date: 05/25/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_blast_radius_fl()
@@ -239,7 +239,7 @@ The function `graph_blast_radius_fl()` can be used to calculate the Blast Radius
 ## Related content
 
 * [Functions library](functions-library.md)
-* [Kusto Query Language (KQL) graph semantics overview](../../graph-overview.md)
+* [Graph semantics in Kusto - overview](../../graph-overview.md)
 * [Graph operators](../query/graph-operators.md)
 * [Scenarios](../../graph-scenarios.md)
 * [Best practices](../../graph-best-practices.md)
