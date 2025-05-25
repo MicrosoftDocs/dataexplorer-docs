@@ -34,6 +34,8 @@ The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html
 
 ## Examples
 
+The following example produces the geospatial coordinates that represent the center of an H3 cell.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgwTk7NyVGwVUhPzY+HcOJL8uOTU/NKihJz4gvygYo0lCzMjBINDcyN0iBASRMA4+TrCj0AAAA=" target="_blank">Run the query</a>
