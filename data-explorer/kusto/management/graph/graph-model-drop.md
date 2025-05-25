@@ -12,6 +12,10 @@ ms.date: 05/24/2025
 
 Deletes an existing graph model and all its versions from the database, including any associated snapshots.
 
+## Permissions
+
+To run this command, you need [Database admin permissions](../../access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.drop` `graph_model` *GraphModelName*
@@ -34,15 +38,11 @@ This command doesn't return any output.
 .drop graph_model SocialNetwork
 ```
 
-## Important notes
+## Notes
 
 - The `.drop graph_model` command permanently deletes the graph model and all its versions. This operation cannot be undone.
 - This command also deletes all snapshots associated with the graph model.
 - Dropping a graph model doesn't affect the source data that was used to create it.
-
-## Required permissions
-
-To run this command, you need [Database admin permissions](../../access-control/role-based-access-control.md).
 
 ## Next steps
 

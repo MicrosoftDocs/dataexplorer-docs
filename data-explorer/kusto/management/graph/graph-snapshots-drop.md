@@ -12,6 +12,10 @@ ms.date: 05/24/2025
 
 Deletes all graph snapshots associated with a specific graph model.
 
+## Permissions
+
+To run this command, you need [Database admin permissions](../../access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.drop` `graph_snapshots` *GraphModelName*
@@ -41,10 +45,6 @@ The command completes successfully without returning any output.
 - The `.drop graph_snapshots` command permanently deletes all snapshots associated with a graph model. This operation cannot be undone.
 - Dropping snapshots doesn't affect the graph model itself.
 - To drop a specific snapshot instead of all snapshots, use the [.drop graph_snapshot](graph-snapshot-drop.md) command.
-
-## Required permissions
-
-To run this command, you need [Database admin permissions](../../access-control/role-based-access-control.md).
 
 ## Next steps
 

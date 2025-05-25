@@ -12,6 +12,10 @@ ms.date: 05/24/2025
 
 Shows detailed information about a specific graph snapshot.
 
+## Permissions
+
+To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.show` `graph_snapshot` *GraphModelName*`.`*SnapshotName* [`details`]
@@ -83,10 +87,6 @@ This command returns a table with different columns depending on whether the `de
 - Use the basic format to get essential snapshot information including creation time and model details.
 - Use the `details` parameter to get additional information including node count, edge count, and retention policy.
 - The retention policy shows the soft delete period, which determines how long the snapshot is retained before being permanently deleted.
-
-## Required permissions
-
-To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
 
 ## Related content
 

@@ -12,6 +12,10 @@ ms.date: 05/24/2025
 
 Creates a new graph snapshot from a specified graph model. A graph snapshot is a materialized instance of a graph model that can be efficiently queried.
 
+## Permissions
+
+To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.make` [`async`] `graph_snapshot` *SnapshotName* `from` *GraphModelName*
@@ -73,10 +77,6 @@ If run asynchronously, the command returns an operation ID that can be used to c
 - For large graphs, it's recommended to use the `async` option to run the operation in the background.
 - A graph model can have multiple snapshots, each representing the state of the graph at different points in time.
 - Snapshots are immutable. To update a snapshot with fresh data, you need to create a new snapshot.
-
-## Required permissions
-
-To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
 
 ## Related content
 

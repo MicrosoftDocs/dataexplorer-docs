@@ -12,6 +12,10 @@ ms.date: 05/24/2025
 
 Shows the details of a specific graph model, including its versions.
 
+## Permissions
+
+To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.show` `graph_model` *GraphModelName* [`with` `(`*Property* `=` *Value* [`,` ...]`)`]
@@ -118,10 +122,6 @@ When using the `.show graph_model` command with the `details` keyword, the comma
 - Use the `details` keyword when you need to see the complete model definition and additional metadata.
 - The `Model` column in the detailed output contains the complete JSON definition of the graph model, which might be large for complex models.
 - Use the basic command (without `details`) for a more concise overview when you don't need the full model definition.
-
-## Required permissions
-
-To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
 
 ## Related content
 

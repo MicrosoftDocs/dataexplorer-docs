@@ -10,7 +10,11 @@ ms.date: 05/24/2025
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-Lists all graph models in the database, showing the latest version for each model by default.
+Lists all graph models in the database, showing the latest version for each model by default.v
+
+## Permissions
+
+To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
 
 ## Syntax
 
@@ -130,10 +134,6 @@ When using `.show graph_models details`, the command returns a table with the fo
 - The basic output format (without `details`) provides a quick overview of available graph models.
 - The detailed output format (with `details`) provides comprehensive information about the graph models, useful for administrative and audit purposes.
 - The results are ordered alphabetically by graph model name, and then by creation date within each model when showing all versions.
-
-## Required permissions
-
-To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
 
 ## Related content
 

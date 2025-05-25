@@ -12,6 +12,10 @@ ms.date: 05/24/2025
 
 Lists all graph snapshots for a specific graph model or for all graph models.
 
+## Permissions
+
+To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.show` `graph_snapshots` *GraphModelName*
@@ -76,10 +80,6 @@ This command returns a table with the following columns:
 - The `.show graph_snapshots` command is useful for listing all available snapshots, which can be queried or managed.
 - The results are ordered alphabetically by snapshot name, and then by creation time within each snapshot name.
 - To get more detailed information about a specific snapshot, use the [.show graph_snapshot](graph-snapshot-show.md) command.
-
-## Required permissions
-
-To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
 
 ## Related content
 

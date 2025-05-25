@@ -125,7 +125,7 @@ This command returns a table with the following columns:
 
 ## Notes
 
-- When you alter a graph model, you need to provide the complete graph model definition, not just the parts you want to change. The entire definition replaces the existing one.
+When you alter a graph model, you need to provide the complete graph model definition, not just the parts you want to change. The entire definition replaces the existing one.
 
 ## Related content
 

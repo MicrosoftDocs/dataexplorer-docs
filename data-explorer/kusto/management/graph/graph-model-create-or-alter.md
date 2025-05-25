@@ -12,6 +12,10 @@ ms.date: 05/24/2025
 
 Creates a new graph model or alters an existing one using the provided model definition payload.
 
+## Permissions
+
+To run this command, the user needs [Database Admin permissions](../../access-control/role-based-access-control.md).
+
 ## Syntax
 
 `.create-or-alter` `graph_model` *GraphModelName* *GraphModelDefinitionPayload*
@@ -102,13 +106,9 @@ This command returns a table with the following columns:
 
 ## Notes
 
-- If a graph model with the specified name doesn't exist, a new one is created when using `.create-or-alter graph_model`. If one already exists, it's updated with the new definition.
-- Each time a graph model is altered, a new version is created, allowing you to track changes over time and revert to previous versions if needed.
-- To generate a graph snapshot from the model, use the [.make graph_snapshot](graph-snapshot-make.md) command.
-
-## Required permissions
-
-To run this command, the user needs [Database Admin permissions](../../access-control/role-based-access-control.md).
+* If a graph model with the specified name doesn't exist, a new one is created when using `.create-or-alter graph_model`. If one already exists, it's updated with the new definition.
+* Each time a graph model is altered, a new version is created, allowing you to track changes over time and revert to previous versions if needed.
+* To generate a graph snapshot from the model, use the [.make graph_snapshot](graph-snapshot-make.md) command.
 
 ## Related content
 
