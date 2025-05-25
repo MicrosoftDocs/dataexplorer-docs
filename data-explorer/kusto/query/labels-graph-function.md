@@ -11,7 +11,7 @@ ms.date: 05/24/2025
 
 The `labels()` graph function retrieves the labels associated with nodes or edges in a graph. It can be used both for filtering elements based on their labels and for projecting label information in query results.
 
-Labels are defined within [Graph models](../management/graph/graph-model-overview.md) and can be either static (fixed labels assigned to node or edge types) or dynamic (labels derived from data properties during graph construction). The `labels()` function accesses these predefined labels to enable efficient filtering and analysis of graph elements.
+Labels are defined within [Graph models](../management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) and can be either static (fixed labels assigned to node or edge types) or dynamic (labels derived from data properties during graph construction). The `labels()` function accesses these predefined labels to enable efficient filtering and analysis of graph elements.
 
 > [!NOTE]
 > This function is used with the [graph-match](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md) operators.
@@ -32,7 +32,7 @@ Returns a dynamic array containing the labels associated with the specified node
 
 ## Label sources
 
-Labels are defined in [Graph models](../management/graph/graph-model-overview.md) and can originate from two sources:
+Labels are defined in [Graph models](../management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) and can originate from two sources:
 
 - **Static labels**: Fixed labels assigned to specific node or edge types during graph model definition. These labels remain constant for all instances of a particular type.
 - **Dynamic labels**: Labels derived from data properties during graph construction. These labels can vary based on the actual data values and computed expressions.
@@ -139,4 +139,4 @@ Dependencies
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)
 * [graph-shortest-paths operator](graph-shortest-paths-operator.md)
-* [Graph models overview](../management/graph/graph-model-overview.md)
+* [Graph models overview](../management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true)

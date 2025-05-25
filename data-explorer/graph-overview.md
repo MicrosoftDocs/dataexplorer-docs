@@ -245,9 +245,9 @@ This integration enables sophisticated workflows including supply chain evolutio
 
 ## Related content
 
-- [Common scenarios for using KQL graph semantics](graph-scenarios.md)
-- [Best practices for KQL graph semantics](graph-best-practices.md)
-- [Graph operators](/kusto/query/graph-operators.md)
-- [make-graph operator](/kusto/query/make-graph-operator.md)
-- [Graph model overview](/kusto/management/graph/graph-model-overview.md)
-- [Graph snapshots overview](/kusto/management/graph/graph-snapshot-overview.md)
+- [Common scenarios for using KQL graph semantics](graph-scenarios?view=azure-data-explorer&preserve-view=true)
+- [Best practices for KQL graph semantics](graph-best-practices?view=azure-data-explorer&preserve-view=true)
+- [Graph operators](/kusto/query/graph-operator?view=azure-data-explorer&preserve-view=true)
+- [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true)
+- [Graph model overview](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true)
+- [Graph snapshots overview](/kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true)

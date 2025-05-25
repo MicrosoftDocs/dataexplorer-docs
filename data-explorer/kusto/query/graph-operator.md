@@ -67,7 +67,7 @@ graph("SecurityGraph", snapshot="Snapshot_2025_05_01")
 
 ## Related content
 
-* [Graph overview](../../graph-overview.md)
-* [Graph model overview](../management/graph-model/graph-model-overview.md)
+* [Graph overview](../../graph-overview?view=azure-data-explorer&preserve-view=true)
+* [Graph model overview](../management/graph-model/graph-model-overview?view=azure-data-explorer&preserve-view=true)
 * [Graph snapshots overview](../management/graph-model/graph-snapshot-overview.md)
-* [Graph operators](../../graph-operators.md)
+* [Graph operators](../../graph-operator?view=azure-data-explorer&preserve-view=true)
