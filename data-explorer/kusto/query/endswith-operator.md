@@ -35,9 +35,11 @@ For faster results, use the case-sensitive version of an operator. For example, 
 
 ## Returns
 
-Rows in *T* for which the predicate is `true`.
+Returns the rows in *T* for which the predicate is `true`.
 
-## Example
+## Examples
+
+The following example returns the rows in the *StormEvents* table where the *State* column ends with "SAS".
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

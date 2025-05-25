@@ -9,7 +9,8 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns the number of set bits in the binary representation of a number.
+Performs a bitwise operation on the binary representation of a number.
+
 
 ## Syntax
 
@@ -27,7 +28,7 @@ Returns the number of set bits in the binary representation of a number.
 
 Returns the number of set bits in the binary representation of a number.
 
-## Example
+## Examples
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

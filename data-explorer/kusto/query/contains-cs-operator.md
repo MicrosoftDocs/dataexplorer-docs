@@ -37,7 +37,9 @@ If you're looking for a [term](datatypes-string-operators.md#what-is-a-term), us
 
 Rows in *T* for which *string* is in *col*.
 
-## Example
+## Examples
+
+The following example demonstrates how to use the `contains_cs` operator.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

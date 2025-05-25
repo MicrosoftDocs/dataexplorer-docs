@@ -33,8 +33,6 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples
 
-### Set of scalars
-
 The following query shows how to use `has_all` with a comma-separated set of scalar values.
 
 :::moniker range="azure-data-explorer"
@@ -56,8 +54,6 @@ StormEvents
 |Thunderstorm Wind|517|
 |Hail|392|
 |Flash Flood|24|
-
-### Dynamic array
 
 The same result can be achieved using a dynamic array notation.
 

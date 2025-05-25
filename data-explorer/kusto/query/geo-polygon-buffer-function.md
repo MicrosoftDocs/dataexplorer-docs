@@ -52,7 +52,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 
 ## Examples
 
-The following query calculates polygon around input polygon, with radius of 10km.
+The following example calculates polygon around input polygon, with radius of 10km.
 
 ```kusto
 let polygon = dynamic({"type":"Polygon","coordinates":[[[139.813757,35.719666],[139.72558,35.71813],[139.727471,35.653231],[139.818721,35.657264],[139.813757,35.719666]]]});
@@ -80,7 +80,6 @@ datatable(polygon:dynamic, radius:real )
 |---|
 |{"type": "Polygon","coordinates": [ ... ]}|
 
-
 The following example will return true, due to invalid polygon.
 
 ```kusto
@@ -100,4 +99,3 @@ print buffer = isnull(geo_polygon_buffer(dynamic({"type":"Polygon","coordinates"
 |buffer|
 |---|
 |True|
-

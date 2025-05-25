@@ -35,7 +35,9 @@ Filters a record set for data with a case-sensitive search string. `has_cs` sear
 
 Rows in *T* for which the predicate is `true`.
 
-## Example
+## Examples
+
+The following example demonstrates using `has_cs` with a case-sensitive search string.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

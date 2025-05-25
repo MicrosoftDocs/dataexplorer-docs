@@ -32,7 +32,7 @@ Returns the minimal schema that admits all values of *DynamicExpr*.
 > [!TIP]
 > If the input is a JSON string, use the [parse_json()](parse-json-function.md) function to convert the JSON to a [dynamic](scalar-data-types/dynamic.md) value. Otherwise, an error might occur.
 
-## Example
+## Examples
 
 The following example builds a schema based on:
 
@@ -54,7 +54,7 @@ datatable(value: dynamic) [
 | summarize buildschema(value)
 ```
 
-**Results**
+**Output**
 
 |schema_value|
 |--|

@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Convert a length value from one unit to another.
+Converts a length value from one unit to another.
 
 ## Syntax
 
@@ -68,7 +68,9 @@ Convert a length value from one unit to another.
 
  Returns the input value converted from one length unit to another. Invalid units return `null`.
 
-## Example
+## Examples
+
+The following example demonstrates how to use the `convert_length()` function.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

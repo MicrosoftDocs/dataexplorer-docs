@@ -29,7 +29,9 @@ Encodes a string as base64 string.
 
 Returns *string* encoded as a base64 string.
 
-## Example
+## Examples
+
+The following example shows how to use `base64_encode_tostring()` to encode a string into a base64 string.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

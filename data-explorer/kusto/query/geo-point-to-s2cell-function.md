@@ -81,8 +81,6 @@ For comparison with other available grid systems, see [geospatial clustering wit
 
 ## Examples
 
-### US storm events aggregated by S2 cell
-
 The following example finds US storm events aggregated by S2 cells.
 
 :::moniker range="azure-data-explorer"
@@ -119,7 +117,6 @@ print s2cell = geo_point_to_s2cell(-80.195829, 25.802215, 8)
 |--------|
 | 88d9b  |
 
-### Find a group of coordinates
 
 The following example finds groups of coordinates. Every pair of coordinates in the group resides in the S2 cell with a maximum area of 1632.45 km².
 
@@ -146,8 +143,6 @@ datatable(location_id:string, longitude:real, latitude:real)
 |--------|-------|-----------|
 | 47b1d  | 2     | ["A","B"] |
 | 47ae3  | 1     | ["C"]     |
-
-### Empty results
 
 The following example produces an empty result because of the invalid coordinate input.
 

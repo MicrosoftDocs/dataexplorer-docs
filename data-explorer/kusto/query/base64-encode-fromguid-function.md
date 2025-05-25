@@ -27,7 +27,9 @@ Encodes a [GUID](scalar-data-types/guid.md) to a base64 string.
 
 Returns a base64 string encoded from a GUID.
 
-## Example
+## Examples
+
+The following example shows how to use `base64_encode_fromguid()` to encode a GUID into a base64 string.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
