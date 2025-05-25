@@ -65,7 +65,7 @@ Use these commands to manage graph snapshots:
 
 | Command | Purpose |
 |---------|---------|
-| [.create graph snapshot](graph-snapshot-create.md) | Create a snapshot from an existing graph model |
+| [.make graph_snapshot](graph-snapshot-make.md) | Create a snapshot from an existing graph model |
 | [.drop graph snapshot](graph-snapshot-drop.md) | Remove a snapshot from the database |
 | [.show graph snapshots](graph-snapshot-show.md) | List available snapshots in the database |
 
@@ -105,7 +105,7 @@ Graph snapshots provide:
 ## Related content
 
 * [Graph model overview](graph-model-overview.md)
-* [.create graph snapshot](graph-snapshot-create.md)
+* [.make graph_snapshot](graph-snapshot-make.md)
 * [.drop graph snapshot](graph-snapshot-drop.md)
 * [.show graph snapshots](graph-snapshot-show.md)
 * [Graph operators](../../query/graph-operators.md)

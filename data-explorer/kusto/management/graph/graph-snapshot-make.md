@@ -76,7 +76,7 @@ If run asynchronously, the command returns an operation ID that can be used to c
 
 ## Required permissions
 
-To run this command, the user needs [Database Admin permissions](../../management/access-control/role-based-access-control.md).
+To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
 
 ## Related content
 

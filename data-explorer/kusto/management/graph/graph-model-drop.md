@@ -42,7 +42,7 @@ This command doesn't return any output.
 
 ## Required permissions
 
-To run this command, you need [Database Admin permissions](../../management/access-control/role-based-access-control.md).
+To run this command, you need [Database admin permissions](../../access-control/role-based-access-control.md).
 
 ## Next steps
 

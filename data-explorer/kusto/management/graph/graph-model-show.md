@@ -121,7 +121,7 @@ When using the `.show graph_model` command with the `details` keyword, the comma
 
 ## Required permissions
 
-To run this command, the user needs [Database Viewer permissions](../../management/access-control/role-based-access-control.md).
+To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
 
 ## Related content
 
