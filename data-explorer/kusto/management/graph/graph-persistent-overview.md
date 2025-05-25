@@ -115,4 +115,4 @@ For information about the current limitations of persistent graphs in Kusto, see
 * [Graph model overview](graph-model-overview.md)
 * [Graph snapshot overview](graph-snapshot-overview.md)
 * [Graph operators in Kusto](../../query/graph-operators.md)
-* [Graph best practices](../../query/graph-best-practices.md)
+* [Graph best practices](../../../graph-best-practices.md)

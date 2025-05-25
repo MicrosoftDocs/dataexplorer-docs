@@ -244,7 +244,7 @@ The function `graph_exposure_perimeter_fl()` can be used to calculate the Exposu
 ## Related content
 
 * [Functions library](functions-library.md)
-* [Kusto Query Language (KQL) graph semantics overview](../../graph-overview.md)
+* [Graph semantics in Kusto - Overview](../../graph-overview.md)
 * [Graph operators](../query/graph-operators.md)
 * [Scenarios](../../graph-scenarios.md)
 * [Best practices](../../graph-best-practices.md)

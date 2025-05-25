@@ -230,8 +230,8 @@ items:
             href: graph/graph-persistent-limitations.md
           - name: Graph model overview
             href: graph/graph-model-overview.md
-          - name: Graph model policies
-            href: graph/graph-model-policies.md
+          - name: Graph model scenarios
+            href: graph/graph-scenarios.md
           - name: .alter graph model
             href: graph/graph-model-alter.md
           - name: .create graph model

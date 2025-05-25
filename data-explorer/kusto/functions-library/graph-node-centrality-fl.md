@@ -3,7 +3,7 @@ title:  graph_node_centrality_fl()
 description: Learn how to use the graph_node_centrality_fl() function to calculate  metrics of node centrality over graph data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 03/25/2025
+ms.date: 05/25/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_node_centrality_fl()
