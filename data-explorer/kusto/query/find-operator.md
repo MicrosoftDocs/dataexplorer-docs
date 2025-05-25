@@ -124,10 +124,9 @@ For example, see [examples of cases where `find` acts as a union](find-operator.
 
 ## Examples
 
-[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
+### General examples
 
 ::: moniker range="microsoft-fabric  || azure-data-explorer"
-
 
 The following example finds all rows from all tables in the current database in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). The output includes rows from the `Customers` table and the `SalesTable` table of the `ContosoSales` database.
 
@@ -148,7 +147,6 @@ This table shows the first three rows of the output.
 | Customers |{"CityName":"Ballard","CompanyName":"NULL","ContinentName":"North America","CustomerKey":7814,"Education":"Partial College","FirstName":"Kristy","Gender":"F","LastName":"Hernandez","MaritalStatus":"S","Occupation":"Professional","RegionCountryName":"United States","StateProvinceName":"Washington"} |
 | Customers |{"CityName":"Ballard","CompanyName":"NULL","ContinentName":"North America","CustomerKey":7888,"Education":"Partial High School","FirstName":"Kari","Gender":"F","LastName":"Hernandez","MaritalStatus":"S","Occupation":"Clerical","RegionCountryName":"United States","StateProvinceName":"Washington"} |
 |...|...|
-
 
 The following example finds all rows from all tables in the current database whose name starts with `C`, and in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). Now, the output only contains records from the `Customers` table.
 
@@ -193,13 +191,11 @@ This table shows the first three rows of the output.
 | database("Samples").ConferenceSessions | {"conference":"Build 2021","sessionid":"CON-PRT103","session_title":"Roundtable: Advanced Kusto query language topics","session_type":"Roundtable","owner":"Avner Aharoni","participants":"Alexander Sloutsky, Tzvia Gitlin-Troyna","URL":"https://sessions.mybuild.microsoft.com/sessions/details/4d4887e9-f08d-4f88-99ac-41e5feb869e7","level":200,"session_location":"Online","starttime":"2021-05-26T08:30:00.0000000Z","duration":60,"time_and_duration":"Wednesday, May 26\n8:30 AM - 9:30 AM GMT","kusto_affinity":"Focused"} 
 |...|...|
 
-
 The following example finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0vLzEtRyMxT0EhJLElMSixO1VAK1lLS1HPW0lQoz0gtSlXQUshILFZQ8i4tLslXAgCcXznPLwAAAA=" target="_blank">Run the query</a>
-
 
 ```kusto
 find in (database("S*").C*) where * has "Kusto"
@@ -215,7 +211,6 @@ This table shows the first three rows of the output.
 | ConferenceSessions | {"conference":"Build 2021","sessionid":"CON-PRT103","session_title":"Roundtable: Advanced Kusto query language topics","session_type":"Roundtable","owner":"Avner Aharoni","participants":"Alexander Sloutsky, Tzvia Gitlin-Troyna","URL":"https://sessions.mybuild.microsoft.com/sessions/details/4d4887e9-f08d-4f88-99ac-41e5feb869e7","level":200,"session_location":"Online","starttime":"2021-05-26T08:30:00.0000000Z","duration":60,"time_and_duration":"Wednesday, May 26\n8:30 AM - 9:30 AM GMT","kusto_affinity":"Focused"} |
 | ConferenceSessions | {"conference":"Build 2021","sessionid":"CON-PRT103","session_title":"Roundtable: Advanced Kusto query language topics","session_type":"Roundtable","owner":"Avner Aharoni","participants":"Alexander Sloutsky, Tzvia Gitlin-Troyna","URL":"https://sessions.mybuild.microsoft.com/sessions/details/4d4887e9-f08d-4f88-99ac-41e5feb869e7","level":200,"session_location":"Online","starttime":"2021-05-26T08:30:00.0000000Z","duration":60,"time_and_duration":"Wednesday, May 26\n8:30 AM - 9:30 AM GMT","kusto_affinity":"Focused"} |
 |...|...|
-
 
 The following example finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
@@ -239,11 +234,11 @@ find "Kusto"
 
 ::: moniker-end
 
-## Examples of `find` output results  
+### Examples of `find` output results  
 
 Assume we have the next content of these two tables:
 
-### EventsTable1
+EventsTable1
 
 |Session_Id|Level|EventText|Version
 |---|---|---|---|
@@ -252,7 +247,7 @@ Assume we have the next content of these two tables:
 |28b8e46e-3c31-43cf-83cb-48921c3986fc|Error|Some Text3|v1.0.1
 |8f057b11-3281-45c3-a856-05ebb18a3c59|Information|Some Text4|v1.1.0
 
-### EventsTable2
+EventsTable2
 
 |Session_Id|Level|EventText|EventName
 |---|---|---|---|
@@ -260,7 +255,6 @@ Assume we have the next content of these two tables:
 |acbd207d-51aa-4df7-bfa7-be70eb68f04e|Information|Some Other Text2|Event2
 |acbd207d-51aa-4df7-bfa7-be70eb68f04e|Error|Some Other Text3|Event3
 |15eaeab5-8576-4b58-8fc6-478f75d8fee4|Error|Some Other Text4|Event4
-
 
 The following example searches for specific records in *EventsTable1* and *EventsTable2* based on a given *Session_Id* and an *Error* Level. It then projects three specific columns: *EventText*, *Version*, and *EventName*, and packs all other remaining columns into a dynamic object.
 
@@ -295,7 +289,6 @@ find Version == 'v1.0.0' or EventName == 'Event1' project Session_Id, EventText,
 > [!NOTE]
 > In practice, *EventsTable1* rows are filtered with ```Version == 'v1.0.0'``` predicate and *EventsTable2* rows are filtered with ```EventName == 'Event1'``` predicate.
 
-
 The following example searches the database for any records with a *Session_Id* that matches 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'. It retrieves records from all tables and columns that contain this specific *Session_Id*.
 
 ```kusto
@@ -310,7 +303,6 @@ find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e'
 |EventsTable1|acbd207d-51aa-4df7-bfa7-be70eb68f04e|Error|Some Text2|{"Version":"v1.0.0"}|
 |EventsTable2|acbd207d-51aa-4df7-bfa7-be70eb68f04e|Information|Some Other Text2|{"EventName":"Event2"}|
 |EventsTable2|acbd207d-51aa-4df7-bfa7-be70eb68f04e|Error|Some Other Text3|{"EventName":"Event3"}|
-
 
 The following example searches the database for records with the specified *Session_Id* and returns all columns of those records as a single dynamic object.
 
@@ -327,7 +319,7 @@ find Session_Id == 'acbd207d-51aa-4df7-bfa7-be70eb68f04e' project pack_all()
 |EventsTable2|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Information", "EventText":"Some Other Text2", "EventName":"Event2"}|
 |EventsTable2|{"Session_Id":"acbd207d-51aa-4df7-bfa7-be70eb68f04e", "Level":"Error", "EventText":"Some Other Text3", "EventName":"Event3"}|
 
-## Examples
+### Examples of cases where `find` acts as a `union`
 
 The `find` operator in Kusto can sometimes act like a `union` operator, mainly when it's used to search across multiple tables.
 
