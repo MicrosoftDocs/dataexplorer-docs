@@ -88,7 +88,7 @@ The typical workflow for creating and using persistent graphs follows these step
 
 ## Querying persistent graphs
 
-Once a graph snapshot is created, it can be queried using the [`graph`](../../query/graph-operator.md) operator followed by other KQL graph operators:
+Once a graph snapshot is created, it can be queried using the [`graph`](../../query/graph-function.md) function followed by other KQL graph operators:
 
 ```kusto
 graph("MyGraphModel")

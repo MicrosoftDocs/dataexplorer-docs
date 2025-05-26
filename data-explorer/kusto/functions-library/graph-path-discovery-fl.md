@@ -394,6 +394,6 @@ The function `graph_path_discovery_fl()` can be used in cybersecurity domain to 
 
 * [Functions library](functions-library.md)
 * [Graph semantics overview](../query/graph-semantics-overview.md)
-* [Graph operator](../query/graph-operator.md)
+* [Graph function](../query/graph-function.md)
 * [Graph scenarios](../query/graph-scenarios.md)
 * [Best practices](../query/graph-best-practices.md)
