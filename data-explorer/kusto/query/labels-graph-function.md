@@ -55,7 +55,8 @@ The following example shows how to use the `labels()` function to filter nodes b
 
 #### Graph model definition
 
-```json
+````kusto
+.create-or-alter graph_model AppProcessGraph ```
 {
   "Schema": {
     "Nodes": {
@@ -92,6 +93,7 @@ The following example shows how to use the `labels()` function to filter nodes b
   }
 }
 ```
+````
 
 #### Query example
 
@@ -118,7 +120,8 @@ The following example demonstrates how to use the `labels()` function in the pro
 
 #### Graph model definition
 
-```json
+````kusto
+.create-or-alter graph_model NetworkGraph ```
 {
   "Schema": {
     "Nodes": {
@@ -149,6 +152,7 @@ The following example demonstrates how to use the `labels()` function in the pro
   }
 }
 ```
+````
 
 #### Query example
 
@@ -176,7 +180,8 @@ The following example shows how to combine multiple label conditions to find com
 
 #### Graph model definition
 
-```json
+````kusto
+.create-or-alter graph_model AppComponentGraph ```
 {
   "Schema": {
     "Nodes": {
@@ -208,6 +213,7 @@ The following example shows how to combine multiple label conditions to find com
   }
 }
 ```
+````
 
 #### Query example
 
@@ -237,7 +243,8 @@ The following example demonstrates how to use the `labels()` function without pa
 
 #### Graph model definition
 
-```json
+````
+.create-or-alter graph_model ServiceMeshGraph ```
 {
   "Schema": {
     "Nodes": {
@@ -268,6 +275,7 @@ The following example demonstrates how to use the `labels()` function without pa
   }
 }
 ```
+````
 
 #### Query example
 

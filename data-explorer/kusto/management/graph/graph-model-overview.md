@@ -119,7 +119,8 @@ AddEdges steps define how to create relationships between nodes in the graph:
 
 The following example creates a professional network graph model that combines static schema definitions with dynamic labeling:
 
-```json
+````kusto
+.create-or-alter graph_model ProfessionalNetwork ```
 {
   "Schema": {
     "Nodes": {
@@ -165,6 +166,7 @@ The following example creates a professional network graph model that combines s
   }
 }
 ```
+````
 
 This model would enable queries such as finding colleagues connected through multiple degrees of separation, identifying people working in the same industry, or analyzing organizational relationships.
 

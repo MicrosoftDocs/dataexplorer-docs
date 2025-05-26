@@ -324,7 +324,8 @@ When modeling your graph, you can utilize both static and dynamic labeling appro
 
 The following example demonstrates an effective implementation of dynamic labels in a graph representing professional relationships. In this scenario, the graph contains people and companies as nodes, with employment relationships forming the edges between them. The flexibility of this model comes from determining node and edge types directly from columns in the source data, allowing the graph structure to adapt organically to the underlying information.
 
-```json
+````
+.create-or-alter graph_model ProfessionalNetwork ```
 {
   "Schema": {
     "Nodes": {
@@ -356,6 +357,7 @@ The following example demonstrates an effective implementation of dynamic labels
   }
 }
 ```
+````
 
 This dynamic labeling approach provides exceptional flexibility when modeling graphs with numerous node and edge types, eliminating the need to modify your schema each time a new entity type appears in your data. By decoupling the logical model from the physical implementation, your graph can continuously evolve to represent new relationships without requiring structural changes to the underlying schema.
 
