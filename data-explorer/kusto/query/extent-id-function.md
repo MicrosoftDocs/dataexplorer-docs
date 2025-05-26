@@ -10,7 +10,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Returns a unique identifier that identifies the data shard ("extent") that the current record resides in at the time the query was run.
+Provides a unique identifier for the data shard ("extent") containing the current record at the time the query was run.
 
 Applying this function to calculated data that isn't attached to a data shard returns an empty guid (all zeros).
 
@@ -29,10 +29,10 @@ Applying this function to calculated data that isn't attached to a data shard re
 
 ## Returns
 
-A value of type `guid` that identifies the current record's data shard at the time the query was run,
+Returns a value of type `guid` that identifies the current record's data shard at the time the query was run,
 or an empty guid (all zeros).
 
-## Example
+## Examples
 
 The following example shows how to get a list of all the data shards
 that currently have records from an hour ago with a specific value for the

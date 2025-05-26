@@ -41,9 +41,7 @@ print extract_all(@"(\d+)", "a set of numbers: 123, 567 and 789") // results wit
 
 ## Examples
 
-### Extract a single capture group
-
-The following query returns hex-byte representation (two hex-digits) of the GUID.
+The following example extracts a single group capture, returning a hex-byte representation (two hex-digits) of the GUID.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -61,9 +59,7 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|["82","b8","be","2d","df","a7","4b","d1","8f","63","24","ad","26","d3","14","49"]|
 
-### Extract several capture groups
-
-The following query uses a regular expression with three capturing groups to split each GUID part into first letter, last letter, and whatever is in the middle.
+The following example uses a regular expression with three capturing groups to split each GUID part into first letter, last letter, and whatever is in the middle.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -81,9 +77,7 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|[["8","2b8be2","d"],["d","fa","7"],["4","bd","1"],["8","f6","3"],["2","4ad26d3144","9"]]|
 
-### Extract a subset of capture groups
-
-The following query selects a subset of capturing groups.
+The following example selects a subset of capturing groups.
 
 The regular expression matches the first letter, last letter, and all the rest.
 
@@ -105,9 +99,7 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|[["8","d"],["d","7"],["4","1"],["8","3"],["2","9"]]|
 
-### Using named capture groups
-
-The *captureGroups* in the following query uses both capture group indexes and named capture group references to fetch matching values.
+The following example shows how *captureGroups* uses both capture group indexes and named capture group references to fetch matching values.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

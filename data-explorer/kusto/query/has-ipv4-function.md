@@ -40,7 +40,7 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 ## Examples
 
-### Properly formatted IP address
+The following example demonstrates using `has_ipv4` with multiple scalar values, where each IP address is provided as a separate string argument. The IP addresses in the text are properly delimited by non-alphanumeric characters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -57,7 +57,7 @@ print result=has_ipv4('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.0.1')
 |--|
 |true|
 
-### Invalid IP address
+The following example demonstrates using `has_ipv4` with an invalid IP address. The IP address in the text is properly delimited by non-alphanumeric characters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -74,7 +74,7 @@ print result=has_ipv4('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0.0.256'
 |--|
 |false|
 
-### Improperly delimited IP
+The following example demonstrates using `has_ipv4` with an improperly delimited IP address. The IP address in the text is improperly delimited by non-alphanumeric characters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

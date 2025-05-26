@@ -25,9 +25,11 @@ Returns the [error function](https://en.wikipedia.org/wiki/Error_function) of th
 
 ## Returns
 
-Error function of x.
+Returns the error function of x.
 
-## Example
+## Examples
+
+The following example shows how to use the `erf()` function to calculate the error function for a range of values from -3 to 3.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

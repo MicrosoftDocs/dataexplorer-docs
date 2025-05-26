@@ -63,7 +63,9 @@ For each pattern, columns that aren't set in the pattern (that is, without restr
 > * Use [where](where-operator.md) and [project](project-operator.md) in the input pipe to reduce the data to just what you're interested in.
 > * When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
-## Example
+## Examples
+
+The following example shows how to use the `diffpatterns` plugin to analyze the StormEvents dataset. It compares events that occurred in May, focusing on the differences between events with and without damage. The query uses the `diffpatterns` plugin to identify patterns that distinguish between these two groups based on the columns State, EventType, Source, and DamageCrops.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

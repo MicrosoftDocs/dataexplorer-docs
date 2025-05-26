@@ -40,7 +40,7 @@ IP address entrances in a text must be properly delimited with nonalphanumeric c
 
 ## Examples
 
-### Properly formatted IPv4 prefix
+The following example shows how to use the `has_ipv4_prefix` function to search for a specific IPv4 address prefix within text.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -55,7 +55,7 @@ print result=has_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.'
 |--|
 |true|
 
-### Invalid IPv4 prefix
+The following example demonstrates using `has_ipv4_prefix` with an invalid IP address prefix. The IP address in the text is properly delimited by nonalphanumeric characters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -70,7 +70,7 @@ print result=has_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0')
 |--|
 |false|
 
-### Invalid IPv4 address
+The following example demonstrates using `has_ipv4_prefix` with an invalid IP address. The IP address in the text is properly delimited by nonalphanumeric characters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -85,7 +85,7 @@ print result=has_ipv4_prefix('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0
 |--|
 |false|
 
-### Improperly delimited IPv4 address
+The following example demonstrates using `has_ipv4_prefix` with an improperly delimited IP address. The IP address in the text is improperly delimited by nonalphanumeric characters.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

@@ -73,6 +73,8 @@ For comparison with other available grid systems. see [geospatial clustering wit
 
 ## Examples
 
+The following example calculates the H3 Cell token string value of a geographic location.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgwTk7NyVGwVUhPzY8vyAcKxZfkx0NENXTNTfQMTExMgdjMwNjSwtxER8HEQM/MwtLI1MDC1NLY0MQSJGamCQB924YeTQAAAA==" target="_blank">Run the query</a>

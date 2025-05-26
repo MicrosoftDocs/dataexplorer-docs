@@ -34,6 +34,8 @@ Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynam
 
 ## Examples
 
+The following example produces the polygon that represents the H3 Cell rectangular area.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzY/PME5OzcmJL8mPL8jPqUzPz9NQsjAzSjQ0MDdKgwAlTQDHS0haLgAAAA==" target="_blank">Run the query</a>

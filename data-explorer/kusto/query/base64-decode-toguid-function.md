@@ -27,7 +27,9 @@ Decodes a base64 string to a [GUID](scalar-data-types/guid.md).
 
 Returns a [GUID](scalar-data-types/guid.md) decoded from a base64 string.
 
-## Example
+## Examples
+
+The following example shows how to use `base64_decode_toguid()` to decode a base64 string into a GUID.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

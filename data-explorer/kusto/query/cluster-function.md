@@ -42,9 +42,8 @@ Changes the reference of the query to a remote Eventhouse. To access a database 
 ## Examples
 
 :::moniker range="azure-data-explorer"
-### Use cluster() to access remote cluster
-
-The following query can be run on any cluster.
+The following example shows how to use the `cluster()` function to access a remote cluster.
+The query can be run on any cluster.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAA0vOKS0uSS3SUM9IzSlQ19RLSSxJTEosTtVQD07MLchJLQaKBZfkF+W6lqXmlRQr1Cgk55fmlQAAayjLjjcAAAA=" target="_blank">Run the query</a>
@@ -57,9 +56,9 @@ cluster('help.kusto.windows.net').database('Samples').StormEvents | count
 :::moniker-end
 
 :::moniker range="microsoft-fabric"
-### Use cluster() to access remote Eventhouse
 
-The following query can be run on any Eventhouse.
+The following example shows how to use the `cluster()` function to access a remote Eventhouse.
+The query can be run on any Eventhouse.
 
 ```kusto
 cluster('help').database('Samples').StormEvents | count
@@ -74,7 +73,6 @@ cluster('help.kusto.windows.net').database('Samples').StormEvents | count
 |---|
 |59066|
 
-### Use cluster() inside let statements
 
 The previous query can be rewritten to use a query-defined function (`let` statement) that takes a parameter called `clusterName` and passes it to the `cluster()` function.
 
@@ -97,7 +95,6 @@ foo('help')
 |---|
 |59066|
 
-### Use cluster() inside Functions
 
 The same query as above can be rewritten to be used in a function that receives a parameter `clusterName` - which is passed into the cluster() function.
 

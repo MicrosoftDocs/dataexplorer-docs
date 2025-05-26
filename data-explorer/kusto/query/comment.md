@@ -27,9 +27,9 @@ Use the two slashes (//) to add comments. The following table lists the keyboard
 | `Ctrl`+`K`+`C`  | Comment current line or selected lines.  |
 | `Ctrl`+`K`+`U`  | Uncomment current line or selected lines.  |
 
-## Example
+## Examples
 
-This example returns a count of events in the New York state:
+The following example illustrates two styles of comments: a nested comment at the end of a line and a standalone comment on its own line. The query counts the number of events in the state of New York.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
