@@ -51,28 +51,7 @@ In this section, you'll create your first graph using sample organizational data
 
 You'll work with a simple company structure where employees report to managers. This organizational hierarchy provides an intuitive example for understanding graph relationships:
 
-```mermaid
-graph TD
-    Alice[👤 Alice<br/>CEO, Age 45]
-    Bob[👤 Bob<br/>Engineering Manager, Age 35] 
-    Carol[👤 Carol<br/>Marketing Manager, Age 38]
-    Dave[👤 Dave<br/>Developer, Age 28]
-    Eve[👤 Eve<br/>Developer, Age 26]
-    Frank[👤 Frank<br/>Marketing Specialist, Age 30]
-
-    Alice -->|manages| Bob
-    Alice -->|manages| Carol
-    Bob -->|manages| Dave
-    Bob -->|manages| Eve
-    Carol -->|manages| Frank
-
-    style Alice fill:#ff6b6b,stroke:#d63031,color:#fff
-    style Bob fill:#4ecdc4,stroke:#00b894,color:#fff
-    style Carol fill:#4ecdc4,stroke:#00b894,color:#fff
-    style Dave fill:#a8e6cf,stroke:#00b894,color:#000
-    style Eve fill:#a8e6cf,stroke:#00b894,color:#000
-    style Frank fill:#a8e6cf,stroke:#00b894,color:#000
-```
+:::image type="content" source="../media/graphs/tutorial-first-graph.png" alt-text="A diagram showing the organization heirarchy.":::
 
 Create the organizational graph structure using employee and reporting relationship data:
 
