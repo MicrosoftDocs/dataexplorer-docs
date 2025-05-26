@@ -28,7 +28,7 @@ To run this command, the user needs [Database Admin permissions](../../access-co
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*GraphModelName*|String|✅|The name of the graph model to create or alter. The name must be unique within the database and follow the [entity naming rules](../../query/schema-entities/entity-names.md).|
-|*GraphModelDefinitionPayload*|String|✅|A valid JSON document that defines the graph model. The payload should be prefixed with the `@` symbol. See [Graph model definition payload](#graph-model-definition-payload).|
+|*GraphModelDefinitionPayload*|String|✅|A valid JSON document that defines the graph model. See [Graph model definition payload](#graph-model-definition-payload).|
 
 ### Graph model definition payload
 
