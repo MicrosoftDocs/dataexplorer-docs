@@ -16,19 +16,24 @@ Labels are defined within [Graph models](../management/graph/graph-model-overvie
 > [!NOTE]
 > This function is used with the [graph-match](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md) operators.
 
+> [!IMPORTANT]
+> When the `labels()` function is used on a graph created with the `make-graph` operator (that is, a transient graph rather than a persistent graph model), it always returns an empty array (of dynamic data type) for all nodes and edges, because transient graphs do not have label metadata.
+
 ## Syntax
 
-`labels(`*element*`)`
+`labels([element])`
 
 ## Parameters
 
 | Name | Type | Required | Description |
-|--|--|--|--|
-| *element* | `string` |  :heavy_check_mark: | A node or edge variable from the [graph-match operator](graph-match-operator.md) or [graph-shortest-paths operator](graph-shortest-paths-operator.md) pattern. For more information, see [Graph pattern notation](graph-match-operator.md#graph-pattern-notation). |
+|---|---|---|---|
+| *element* | `string` |  | The reference to a graph node or edge variable in a graph pattern.<br>Don't pass any parameters when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) graph functions, with [inner_nodes()](inner-nodes-graph-function.md) or [inner_edges()](inner-edges-graph-function.md). For more information, see [Graph pattern notation](graph-match-operator.md#graph-pattern-notation). |
 
 ## Returns
 
 Returns a dynamic array containing the labels associated with the specified node or edge. For nodes and edges without labels, returns an empty array.
+
+When used inside [all()](all-graph-function.md), [any()](any-graph-function.md), or [map()](map-graph-function.md) with [inner_nodes()](inner-nodes-graph-function.md) or [inner_edges()](inner-edges-graph-function.md), call `labels()` without parameters to return the labels for all inner nodes or edges, respectively.
 
 ## Label sources
 
@@ -43,10 +48,52 @@ The `labels()` function retrieves both static and dynamic labels that have been 
 
 ### Filter nodes by labels
 
-The following example shows how to use the `labels()` function to filter nodes based on their assigned labels. The query finds applications that connect to nginx processes within 1-3 hops, where the source nodes are specifically labeled as "Application".
+The following example shows how to use the `labels()` function to filter nodes based on their assigned labels. The example includes the full graph model definition to clarify how static and dynamic labels are assigned.
+
+#### Graph model definition
+
+```json
+{
+  "Schema": {
+    "Nodes": {
+      "Application": {"AppName": "string", "Type": "string"},
+      "Process": {"ProcessName": "string"}
+    },
+    "Edges": {
+      "CONNECTS_TO": {}
+    }
+  },
+  "Definition": {
+    "Steps": [
+      {
+        "Kind": "AddNodes",
+        "Query": "Applications | project AppId, AppName, Type, NodeLabels",
+        "NodeIdColumn": "AppId",
+        "Labels": ["Application"],
+        "LabelsColumn": "NodeLabels"
+      },
+      {
+        "Kind": "AddNodes",
+        "Query": "Processes | project ProcId, ProcessName",
+        "NodeIdColumn": "ProcId",
+        "Labels": ["Process"]
+      },
+      {
+        "Kind": "AddEdges",
+        "Query": "AppConnections | project SourceAppId, TargetProcId",
+        "SourceColumn": "SourceAppId",
+        "TargetColumn": "TargetProcId",
+        "Labels": ["CONNECTS_TO"]
+      }
+    ]
+  }
+}
+```
+
+#### Query example
 
 ```kusto
-graph('YaccGraph')
+graph('AppProcessGraph')
 | graph-match cycles=none (app)-[e*1..3]->(process)
     where process.ProcessName contains "nginx" and labels(app) has "Application"
     project app=app.AppName
@@ -66,20 +113,44 @@ graph('YaccGraph')
 
 The following example demonstrates how to use the `labels()` function in the project clause to include label information in the query results. This query finds connections between different types of network components and includes their labels for analysis.
 
+#### Graph model definition
+
+```json
+{
+  "Schema": {
+    "Nodes": {
+      "NetworkComponent": {"ComponentName": "string", "ComponentType": "string"}
+    },
+    "Edges": {
+      "CONNECTED_TO": {"ConnectionType": "string"}
+    }
+  },
+  "Definition": {
+    "Steps": [
+      {
+        "Kind": "AddNodes",
+        "Query": "NetworkComponentsTable | project Id, ComponentName, ComponentType, NodeLabels",
+        "NodeIdColumn": "Id",
+        "Labels": ["NetworkComponent"],
+        "LabelsColumn": "NodeLabels"
+      },
+      {
+        "Kind": "AddEdges",
+        "Query": "ConnectionsTable | project SourceId, TargetId, ConnectionType, EdgeLabels",
+        "SourceColumn": "SourceId",
+        "TargetColumn": "TargetId",
+        "Labels": ["CONNECTED_TO"],
+        "LabelsColumn": "EdgeLabels"
+      }
+    ]
+  }
+}
+```
+
+#### Query example
+
 ```kusto
-// Network components table (nodes)
-let NetworkComponents = datatable(ComponentName: string, ComponentType: string, Labels: dynamic) [
-    "Router1", "Router", dynamic(["Network", "Infrastructure"]),
-    "Switch1", "Switch", dynamic(["Network", "Access"]),
-    "Server1", "Server", dynamic(["Compute", "Production"])
-];
-// Connections table (edges)
-let Connections = datatable(SourceComponent: string, TargetComponent: string, ConnectionType: string) [
-    "Router1", "Switch1", "Ethernet",
-    "Switch1", "Server1", "Ethernet"
-];
-Connections
-| make-graph SourceComponent --> TargetComponent with NetworkComponents on ComponentName
+graph('NetworkGraph')
 | graph-match (source)-[conn]->(target)
     where labels(source) has "Network" and labels(target) has "Compute"
     project 
@@ -100,22 +171,45 @@ Connections
 
 The following example shows how to combine multiple label conditions to find complex patterns in a network topology. This query identifies paths from frontend components to backend components through middleware layers.
 
+#### Graph model definition
+
+```json
+{
+  "Schema": {
+    "Nodes": {
+      "Frontend": {"ComponentName": "string"},
+      "Middleware": {"ComponentName": "string"},
+      "Backend": {"ComponentName": "string"}
+    },
+    "Edges": {
+      "DEPENDS_ON": {"DependencyType": "string"}
+    }
+  },
+  "Definition": {
+    "Steps": [
+      {
+        "Kind": "AddNodes",
+        "Query": "ComponentsTable | project Id, ComponentName, NodeLabels",
+        "NodeIdColumn": "Id",
+        "LabelsColumn": "NodeLabels"
+      },
+      {
+        "Kind": "AddEdges",
+        "Query": "DependenciesTable | project SourceId, TargetId, DependencyType, EdgeLabels",
+        "SourceColumn": "SourceId",
+        "TargetColumn": "TargetId",
+        "Labels": ["DEPENDS_ON"],
+        "LabelsColumn": "EdgeLabels"
+      }
+    ]
+  }
+}
+```
+
+#### Query example
+
 ```kusto
-// Application components table (nodes)
-let Components = datatable(ComponentName: string, ComponentType: string, Labels: dynamic) [
-    "WebUI", "Frontend", dynamic(["Frontend", "UserInterface"]),
-    "APIGateway", "Middleware", dynamic(["Middleware", "API"]),
-    "Database", "Backend", dynamic(["Backend", "Storage"]),
-    "Cache", "Backend", dynamic(["Backend", "Cache"])
-];
-// Dependencies table (edges)
-let Dependencies = datatable(Source: string, Target: string, DependencyType: string) [
-    "WebUI", "APIGateway", "HTTP",
-    "APIGateway", "Database", "SQL",
-    "APIGateway", "Cache", "Redis"
-];
-Dependencies
-| make-graph Source --> Target with Components on ComponentName
+graph('AppComponentGraph')
 | graph-match (frontend)-[dep1]->(middleware)-[dep2]->(backend)
     where labels(frontend) has "Frontend" 
           and labels(middleware) has "Middleware" 
