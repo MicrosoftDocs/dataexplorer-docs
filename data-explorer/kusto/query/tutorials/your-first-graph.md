@@ -1,75 +1,59 @@
 ---
 title: 'Tutorial: Create your first graphs in Kusto Query Language'
-description: This tutorial introduces graph semantics in Kusto Query Language (KQL) and demonstrates how to create and query both transient and persistent graphs.
+description: Learn how to model and query interconnected data using graph semantics in Kusto Query Language (KQL). Build transient and persistent graphs to analyze organizational hierarchies.
+author: cosh
+ms.author: herauch
+ms.service: azure-data-explorer
 ms.topic: tutorial
+ms.custom: mvc
 ms.date: 05/26/2025
 ---
 
-# Tutorial: Create your first graph
+# Tutorial: Create your first graphs in Kusto Query Language
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
-Graph semantics in Kusto enables you to model and query data as interconnected networks. A graph consists of nodes (entities) and edges (relationships) that connect them. This tutorial introduces the essential concepts and shows you how to create and query your first graphs using Kusto Query Language (KQL).
+Graph semantics in Kusto enables you to model and query data as interconnected networks, making it intuitive to analyze complex relationships like organizational hierarchies, social networks, and attack paths. Unlike traditional relational queries that rely on joins, graphs use direct relationships between entities to traverse connections efficiently.
 
-## What are graph semantics in Kusto?
-
-Graph semantics represent data as a network of connected entities. Unlike traditional relational data that uses tables and joins, graphs use direct relationships between entities, making it intuitive to model and traverse complex connections such as:
-
-- Social networks (users following each other)
-- Organizational hierarchies (employees reporting to managers)  
-- Attack paths in cybersecurity (threat actors targeting systems)
-- Supply chains (suppliers providing to manufacturers)
-
-::: moniker range="azure-data-explorer || microsoft-fabric"
-Kusto provides two approaches for working with graphs:
-
-1. **Transient graphs** - Created dynamically during query execution using the `make-graph` operator
-2. **Persistent graphs** - Stored models that can be queried repeatedly without reconstruction
-::: moniker-end
-
-In this tutorial, you'll learn how to:
+In this tutorial, you learn how to:
 
 > [!div class="checklist"]
->
-> * [Create a transient graph](#create-a-transient-graph)
-> * [Query graphs with graph-match](#query-graphs-with-graph-match)
-::: moniker range="azure-data-explorer || microsoft-fabric"
-> * [Create a persistent graph](#create-a-persistent-graph)
-> * [Query persistent graphs](#query-persistent-graphs)
-::: moniker-end
+> * Create a transient graph using the make-graph operator
+> * Query graphs to find relationships using graph-match
+> * Build persistent graph models for reusable analysis
+> * Compare transient versus persistent graph approaches
 
-::: moniker range="azure-data-explorer"
-The examples in this tutorial use sample data that you can run in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](/azure/data-explorer/start-for-free-web-ui).
-::: moniker-end
-
-::: moniker range="microsoft-fabric"
-The examples in this tutorial use sample data that you can create and run in your **Microsoft Fabric** environment.
-::: moniker-end
+If you don't have an Azure Data Explorer cluster, [create a free cluster](/azure/data-explorer/start-for-free-web-ui) before you begin the tutorial.
 
 ## Prerequisites
 
-To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
+* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
 
-:::moniker range="azure-data-explorer"
-* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
-::: moniker-end
+::: moniker range="microsoft-fabric"
 
-:::moniker range="microsoft-fabric"
-* A Microsoft account or Microsoft Entra user identity 
 * A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses#capacity)
+
 ::: moniker-end
 
-## Create a transient graph
+## Access your query environment
 
-Let's start with a simple organizational hierarchy to understand the basics. First, we'll create our sample data and then visualize it as a graph.
+::: moniker range="azure-data-explorer"
+Open the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/clusters/help) to access the help cluster for this tutorial.
+::: moniker-end
 
-### Sample data for our organizational hierarchy
+::: moniker range="microsoft-fabric"
+Navigate to your Microsoft Fabric workspace and open a KQL database to run the queries.
+::: moniker-end
 
-We'll work with a small company structure where employees report to managers:
+## Create a transient graph with organizational data
+
+In this section, you'll create your first graph using sample organizational data. Transient graphs are created dynamically during query execution using the `make-graph` operator, making them perfect for ad-hoc analysis and exploration.
+
+You'll work with a simple company structure where employees report to managers. This organizational hierarchy provides an intuitive example for understanding graph relationships:
 
 :::image type="content" source="../media/graphs/tutorial-first-graph.png" alt-text="A diagram showing the organization heirarchy.":::
 
-Now let's create this graph using the `make-graph` operator:
+Create the organizational graph structure using employee and reporting relationship data:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -102,7 +86,7 @@ reports
 | graph-to-table nodes 
 ```
 
-**Output**
+### Output
 
 |name|role|age|
 |---|---|---|
@@ -113,11 +97,11 @@ reports
 |Eve|Developer|26|
 |Frank|Marketing Specialist|30|
 
-## Query graphs with graph-match
+## Query relationships with graph-match patterns
 
-Now let's use the `graph-match` operator to find patterns in our organizational graph. The `graph-match` operator searches for specific patterns and relationships within the graph.
+Now you'll learn to use the `graph-match` operator to find specific patterns in your organizational graph. The `graph-match` operator searches for relationships and connections within the graph structure.
 
-### Find all employees who report to Alice
+First, find all employees who directly report to Alice by matching the immediate reporting relationship pattern:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -145,20 +129,18 @@ let reports = datatable(employee:string, manager:string)
 reports 
 | make-graph employee --> manager with employees on name 
 | graph-match (alice)<-[reports]-(employee)
-  where alice.name == "Alice"
+  where alice.name == "Alice"  
   project employee = employee.name, role = employee.role, age = employee.age
 ```
 
-**Output**
+### Direct reports output
 
 |employee|role|age|
 |---|---|---|
 |Bob|Engineering Manager|35|
 |Carol|Marketing Manager|38|
 
-### Find all employees in Alice's organization (including indirect reports)
-
-Using variable length edges with `*1..3`, we can find employees at multiple levels of the hierarchy:
+Next, find all employees in Alice's entire organization, including indirect reports, using variable length edges with `*1..3` to traverse multiple levels of the hierarchy:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -186,11 +168,11 @@ let reports = datatable(employee:string, manager:string)
 reports 
 | make-graph employee --> manager with employees on name 
 | graph-match (alice)<-[reports*1..3]-(employee)
-  where alice.name == "Alice" 
+  where alice.name == "Alice"
   project employee = employee.name, role = employee.role, reportingLevels = array_length(reports)
 ```
 
-**Output**
+### All organization members output
 
 |employee|role|reportingLevels|
 |---|---|---|
@@ -200,16 +182,16 @@ reports
 |Eve|Developer|2|
 |Frank|Marketing Specialist|2|
 
-## Create a persistent graph
+::: moniker range="azure-data-explorer || microsoft-fabric"
+
+## Create a persistent graph model
 
 > [!NOTE]
 > This feature is currently in Public Preview. Functionality and syntax are subject to change before General Availability.
 
-Now let's create the same organizational structure as a persistent graph. Persistent graphs are stored in the database and can be queried repeatedly without rebuilding the graph structure.
+Persistent graphs are stored in the database and can be queried repeatedly without rebuilding the graph structure. You'll now create the same organizational structure as a persistent graph for better performance and reusability.
 
-### Step 1: Create the graph model
-
-First, we need to create functions that return our sample data, then define a graph model:
+Create functions that return your sample data, then define a graph model structure:
 
 ```kusto
 // Create a function that returns employee data
@@ -238,7 +220,7 @@ First, we need to create functions that return our sample data, then define a gr
 }
 ```
 
-Now create the graph model:
+Define the graph model with node and edge schemas:
 
 ```kusto
 .create graph model OrganizationGraph
@@ -256,7 +238,8 @@ Now create the graph model:
             }
         }
     },
-    "Definition": {        "Steps": [
+    "Definition": {
+        "Steps": [
             {
                 "Kind": "AddNodes",
                 "Query": "Employees()",
@@ -275,19 +258,15 @@ Now create the graph model:
 }
 ```
 
-### Step 2: Create a graph snapshot
-
-A graph snapshot materializes the graph model into a queryable structure:
+Create a graph snapshot to materialize the model into a queryable structure:
 
 ```kusto
 .make graph snapshot OrganizationGraph_v1 from model OrganizationGraph
 ```
 
-## Query persistent graphs
+## Query your persistent graph
 
-Now we can query our persistent graph using the same patterns as with transient graphs:
-
-### Find all employees who report to Alice
+Query the persistent graph using the same patterns as transient graphs. Find all employees who report to Alice:
 
 ```kusto
 graph("OrganizationGraph")
@@ -296,7 +275,7 @@ graph("OrganizationGraph")
   project employee = employee.name, role = employee.role, age = employee.age
 ```
 
-### Find all employees in Alice's organization (including indirect reports)
+Find all employees in Alice's organization including indirect reports:
 
 ```kusto
 graph("OrganizationGraph")
@@ -305,9 +284,7 @@ graph("OrganizationGraph")
   project employee = employee.name, role = employee.role, reportingLevels = array_length(reports)
 ```
 
-### Query a specific snapshot
-
-If you want to query a specific snapshot instead of the latest one:
+Query a specific snapshot version if needed:
 
 ```kusto
 graph("OrganizationGraph", "OrganizationGraph_v1")
@@ -316,25 +293,53 @@ graph("OrganizationGraph", "OrganizationGraph_v1")
   project employee = employee.name, role = employee.role
 ```
 
-## Key differences: Transient vs Persistent graphs
+::: moniker-end
+
+## Compare transient and persistent graphs
+
+Understanding when to use each approach helps you choose the right method for your analysis needs:
 
 | Aspect | Transient Graphs | Persistent Graphs |
 |--------|------------------|-------------------|
 | **Creation** | `make-graph` operator during query | `.create graph model` + `.make graph snapshot` |
-| **Storage** | In-memory during query execution | Stored in database metadata |
+| **Storage** | In-memory during query execution | Stored in database |
 | **Reusability** | Must rebuild for each query | Query repeatedly without rebuilding |
 | **Performance** | Good for smaller datasets | Optimized for large, complex graphs |
 | **Use cases** | Ad-hoc analysis, exploration | Production analytics, repeated queries |
 | **Memory limits** | Limited by node memory | Can handle larger datasets |
 
+## Clean up resources
+
+::: moniker range="azure-data-explorer || microsoft-fabric"
+If you're not going to continue using the persistent graph models, delete them with the following commands:
+
+1. Drop the graph model:
+
+   ```kusto
+   .drop graph model OrganizationGraph
+   ```
+
+2. Drop the helper functions:
+
+   ```kusto
+   .drop function Employees
+   .drop function Reports
+   ```
+
+::: moniker-end
+
+The transient graphs are automatically cleaned up when the query completes, so no additional cleanup is needed for those examples.
+
 ## Next steps
 
-Now that you understand the basics of graph semantics in Kusto, you can explore more advanced topics:
+Now that you understand the basics of graph semantics in Kusto, advance to more complex scenarios and optimizations:
 
-- [Best practices for graph semantics](../graph-best-practices.md)
-- Learn optimization techniques and best practices
-- [Graph operators](../graph-operators.md) - Explore all available graph operators
-- [Graph model overview](../../management/graph/graph-model-overview.md) - Deep dive into persistent graph models
-- [Graph shortest paths](../graph-shortest-paths-operator.md) - Find optimal paths between entities
+> [!div class="nextstepaction"]
+> [Graph best practices](../graph-best-practices.md)
 
-You're now ready to model your own complex relationship data using Kusto's powerful graph capabilities!
+You can also explore these related topics:
+
+* [Graph operators reference](../graph-operators.md) - Complete guide to all available graph operators
+* [Graph model management](../../management/graph/graph-model-overview.md) - Deep dive into persistent graph models  
+* [Graph shortest paths](../graph-shortest-paths-operator.md) - Find optimal paths between entities
+* [Advanced graph queries](../graph-advanced-scenarios.md) - Complex analysis patterns and use cases
