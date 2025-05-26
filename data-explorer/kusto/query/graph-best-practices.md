@@ -459,7 +459,7 @@ Use **persistent graphs** for the largest tenants:
 
 ```kusto
 // Create graph model for large tenant (example: Contoso)
-.create-or-alter graph model ContosoOrgChart
+.create-or-alter graph_model ContosoOrgChart
 {
     "Schema": {
         "Nodes": {

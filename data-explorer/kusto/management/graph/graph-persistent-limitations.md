@@ -26,4 +26,4 @@ Persistent graphs in Kusto have the following limitations:
 ## Next steps
 
 - [Graph model overview](graph-model-overview.md)
-- [.create-or-alter graph model](graph-model-create-or-alter.md)
+- [.create-or-alter graph_model](graph-model-create-or-alter.md)
