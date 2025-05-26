@@ -228,6 +228,66 @@ graph('AppComponentGraph')
 | WebUI -> APIGateway -> Database | ["Frontend", "UserInterface"] | ["Middleware", "API"] | ["Backend", "Storage"] |
 | WebUI -> APIGateway -> Cache | ["Frontend", "UserInterface"] | ["Middleware", "API"] | ["Backend", "Cache"] |
 
+### Use labels() with all() and any() functions
+
+The following example demonstrates how to use the `labels()` function without parameters inside `all()` and `any()` functions with variable-length paths. This query finds paths in a service mesh where all intermediate services have "Production" labels and at least one intermediate service has "Critical" labels.
+
+#### Graph model definition
+
+```json
+{
+  "Schema": {
+    "Nodes": {
+      "Service": {"ServiceName": "string", "Environment": "string"}
+    },
+    "Edges": {
+      "CALLS": {"Protocol": "string"}
+    }
+  },
+  "Definition": {
+    "Steps": [
+      {
+        "Kind": "AddNodes",
+        "Query": "ServicesTable | project Id, ServiceName, Environment, NodeLabels",
+        "NodeIdColumn": "Id",
+        "Labels": ["Service"],
+        "LabelsColumn": "NodeLabels"
+      },
+      {
+        "Kind": "AddEdges",
+        "Query": "ServiceCallsTable | project SourceId, TargetId, Protocol, EdgeLabels",
+        "SourceColumn": "SourceId",
+        "TargetColumn": "TargetId",
+        "Labels": ["CALLS"],
+        "LabelsColumn": "EdgeLabels"
+      }
+    ]
+  }
+}
+```
+
+#### Query example
+
+```kusto
+graph('ServiceMeshGraph')
+| graph-match (source)-[calls*2..4]->(destination)
+    where source.ServiceName == "UserService" and
+          destination.ServiceName == "DatabaseService" and
+          all(inner_nodes(calls), labels() has "Production") and
+          any(inner_nodes(calls), labels() has "Critical")
+    project 
+        Path = strcat_array(map(inner_nodes(calls), ServiceName), " -> "),
+        IntermediateLabels = map(inner_nodes(calls), labels()),
+        CallProtocols = map(calls, Protocol)
+```
+
+**Output**
+
+| Path | IntermediateLabels | CallProtocols |
+|---|---|---|
+| AuthService -> PaymentService | [["Production", "Auth"], ["Production", "Critical", "Payment"]] | ["HTTPS", "gRPC"] |
+| CacheService -> PaymentService | [["Production", "Cache"], ["Production", "Critical", "Payment"]] | ["Redis", "gRPC"] |
+
 ## Related content
 
 * [Graph operators](graph-operators.md)
