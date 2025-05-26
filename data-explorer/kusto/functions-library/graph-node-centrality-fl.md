@@ -494,6 +494,6 @@ The function `graph_node_centrality_fl()` can be used in the cybersecurity domai
 * [Functions library](functions-library.md)
 * [Graph semantics overview](../query/graph-semantics-overview.md)
 * [Graph operators](../query/graph-function.md)
-* [Graph Scenarios](../query/graph-scenarios.md)
+* [Graph scenarios](../query/graph-scenarios.md)
 * [Best practices](../query/graph-best-practices.md)
 * [graph-path-discovery-fl()](graph-path-discovery-fl.md)
