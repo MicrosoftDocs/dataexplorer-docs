@@ -68,5 +68,5 @@ graph("SecurityGraph", snapshot="Snapshot_2025_05_01")
 ## Related content
 
 * [Graph semantics overview](graph-semantics-overview.md)
-* [Graph snapshots overview](../management/graph-model/graph-snapshot-overview.md)
-* [Graph operator](graph-operator.md)
+* [Graph snapshots overview](../management/graph/graph-snapshot-overview.md)
+* [Graph operators](graph-operators.md)

@@ -249,4 +249,3 @@ The function `graph_exposure_perimeter_fl()` can be used to calculate the Exposu
 * [Graph Scenarios](../query/graph-scenarios.md)
 * [Best practices](../query/graph-best-practices.md)
 * [graph-path-discovery-fl()](graph-path-discovery-fl.md)
-
