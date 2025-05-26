@@ -230,10 +230,6 @@ items:
             href: graph/graph-persistent-limitations.md
           - name: Graph model overview
             href: graph/graph-model-overview.md
-          - name: .alter graph model
-            href: graph/graph-model-alter.md
-          - name: .create graph model
-            href: graph/graph-model-create.md
           - name: .create-or-alter graph model
             href: graph/graph-model-create-or-alter.md
           - name: .drop graph model

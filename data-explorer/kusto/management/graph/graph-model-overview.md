@@ -1,6 +1,6 @@
 ---
 title: Graph models in Azure Data Explorer - Overview and usage
-description: Learn how to define, manage, and query persistent graph structures in Azure Data Explorer using graph models.
+description: Learn how to define, manage, and query persistent graph structures in Kusto
 ms.reviewer: herauch
 ms.topic: reference
 ms.date: 05/24/2025
@@ -176,8 +176,7 @@ Azure Data Explorer provides a comprehensive set of management commands for work
 
 | Command | Purpose | Key parameters |
 |---------|---------|---------------|
-| [.create graph model](graph-model-create.md) | Create a new graph model | Database, Name, Schema, Definition |
-| [.alter graph model](graph-model-alter.md) | Modify an existing graph model | Database, Name, Schema, Definition |
+| [.create-or-alter graph model](graph-model-create-or-alter.md) | Create a new graph model or modify an existing one | Database, Name, Schema, Definition |
 | [.drop graph model](graph-model-drop.md) | Remove a graph model | Database, Name |
 | [.show graph models](graph-model-show.md) | List available graph models | Database [optional] |
 
@@ -282,7 +281,7 @@ To refresh a graph:
 
 When the schema of your underlying data changes:
 
-1. Alter your graph model using the `.alter graph model` command to update its schema or definition
+1. Alter your graph model using the `.create-or-alter graph model` command to update its schema or definition
 1. To materialize these changes, create a new snapshot
 1. Older snapshots remain accessible until explicitly dropped
 
@@ -316,8 +315,7 @@ graph("EmployeeNetwork")
 
 ## Related content
 
-* [.create graph model](graph-model-create.md)
-* [.alter graph model](graph-model-alter.md)
+* [.create-or-alter graph model](graph-model-create-or-alter.md)
 * [.drop graph model](graph-model-drop.md)
 * [.show graph models](graph-model-show.md)
 * [Persistent graph limitations](graph-persistent-limitations.md)

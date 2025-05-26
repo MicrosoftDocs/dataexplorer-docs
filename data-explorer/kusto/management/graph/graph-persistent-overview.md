@@ -51,9 +51,7 @@ The following commands are available for managing graph models:
 
 | Command | Description |
 |---------|-------------|
-| [.create graph model](graph-model-create.md) | Creates a new graph model |
 | [.create-or-alter graph model](graph-model-create-or-alter.md) | Creates a new graph model or alters an existing one |
-| [.alter graph model](graph-model-alter.md) | Modifies an existing graph model |
 | [.show graph model](graph-model-show.md) | Displays details of a specific graph model |
 | [.show graph models](graph-models-show.md) | Lists all graph models in the database |
 | [.drop graph model](graph-model-drop.md) | Removes a graph model |

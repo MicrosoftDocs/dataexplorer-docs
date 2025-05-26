@@ -224,7 +224,7 @@ Create functions that return your sample data, then define a graph model structu
 Define the graph model with node and edge schemas:
 
 ```kusto
-.create graph model OrganizationGraph
+.create-or-alter graph model OrganizationGraph
 {
     "Schema": {
         "Nodes": {
@@ -302,7 +302,7 @@ Understanding when to use each approach helps you choose the right method for yo
 
 | Aspect | Transient Graphs | Persistent Graphs |
 |--------|------------------|-------------------|
-| **Creation** | `make-graph` operator during query | `.create graph model` + `.make graph snapshot` |
+| **Creation** | `make-graph` operator during query | `.create-or-alter graph model` + `.make graph snapshot` |
 | **Storage** | In-memory during query execution | Stored in database |
 | **Reusability** | Must rebuild for each query | Query repeatedly without rebuilding |
 | **Performance** | Good for smaller datasets | Optimized for large, complex graphs |
