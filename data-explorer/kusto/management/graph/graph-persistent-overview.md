@@ -6,7 +6,7 @@ ms.topic: reference
 ms.date: 05/24/2025
 ---
 
-# Persistent graphs in Kusto (Preview)
+# Persistent graphs overview (Preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 

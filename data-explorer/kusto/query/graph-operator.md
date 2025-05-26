@@ -7,7 +7,7 @@ ms.date: 05/23/2025
 ---
 # graph operator
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 The `graph` operator enables querying of a persisted graph entity. It supports retrieving either the most recent snapshot of the graph or a specific snapshot.
 
@@ -67,7 +67,6 @@ graph("SecurityGraph", snapshot="Snapshot_2025_05_01")
 
 ## Related content
 
-* [Graph overview](../../graph-overview?view=azure-data-explorer&preserve-view=true)
-* [Graph model overview](../management/graph-model/graph-model-overview?view=azure-data-explorer&preserve-view=true)
+* [Graph semantics overview](graph-semantics-overview.md)
 * [Graph snapshots overview](../management/graph-model/graph-snapshot-overview.md)
-* [Graph operators](../../graph-operator?view=azure-data-explorer&preserve-view=true)
+* [Graph operator](graph-operator.md)
