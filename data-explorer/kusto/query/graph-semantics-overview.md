@@ -202,7 +202,7 @@ External data source dependencies (Kusto, SQL, Cosmos DB) can significantly affe
 
 - **Transient graphs** - Always reflect current data state, ideal for real-time analysis
 - **Persistent graphs** - Reflect data at snapshot creation time, providing consistency for collaborative analysis but requiring periodic refreshes
-::::moniker-end
+:::moniker-end
 
 ## Integration with KQL ecosystem
 
