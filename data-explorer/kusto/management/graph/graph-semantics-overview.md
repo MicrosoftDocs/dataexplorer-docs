@@ -1,14 +1,14 @@
 ---
-title: Graph semantics in Kusto - Overview
+title: Graph semantics overview
 description: Learn about graph semantics in Kusto and the different approaches to create and query graphs
 ms.reviewer: herauch
 ms.topic: conceptual
 ms.date: 05/23/2025
 ---
 
-# Graph semantics in Kusto - overview
+# Graph semantics overview
 
-> [!INCLUDE [applies](kusto/includes/applies-to-version/applies.md)] [!INCLUDE [fabric](kusto/includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](kusto/includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Graph semantics in Kusto enables you to model and query data as interconnected networks. A graph consists of nodes (entities) and edges (relationships) that connect them. Both nodes and edges can contain properties, creating a rich data model for complex relationships.
 
@@ -64,7 +64,7 @@ Kusto provides two distinct approaches for creating and working with graphs, eac
 
 ### 1. Transient graphs
 
-Transient graphs are created dynamically using the [`make-graph`](/kusto/query/make-graph-operator.md) operator. These graphs exist in memory during query execution and are automatically discarded when the query completes.
+Transient graphs are created dynamically using the [`make-graph`](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) operator. These graphs exist in memory during query execution and are automatically discarded when the query completes.
 
 #### Key characteristics
 
@@ -89,7 +89,7 @@ Common applications include real-time IoT monitoring, supply chain relationship 
 
 ### 2. Persistent graphs
 
-Persistent graphs use [graph models](/kusto/management/graph/graph-model-overview.md) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview.md) to provide robust solutions for large-scale, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, and other interconnected data domains.
+Persistent graphs use [graph models](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true) to provide robust solutions for large-scale, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, and other interconnected data domains.
 
 #### Key characteristics for persistent graphs
 
@@ -152,9 +152,9 @@ Once a graph is established (through `make-graph` or from a snapshot), you can l
 
 **Core operators:**
 
-- [`graph-match`](/kusto/query/graph-match-operator.md) - Enables sophisticated pattern matching and traversal operations for identifying complex relationship sequences
-- [`graph-shortest-paths`](/kusto/query/graph-shortest-paths-operator.md) - Finds optimal paths between entities, helping prioritize connections and identify critical relationships
-- [`graph-to-table`](/kusto/query/graph-to-table-operator.md) - Converts graph analysis results to tabular format for integration with existing systems
+- [`graph-match`](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) - Enables sophisticated pattern matching and traversal operations for identifying complex relationship sequences
+- [`graph-shortest-paths`](/kusto/query/graph-shortest-paths-operator?view=azure-data-explorer&preserve-view=true) - Finds optimal paths between entities, helping prioritize connections and identify critical relationships
+- [`graph-to-table`](/kusto/query/graph-to-table-operator?view=azure-data-explorer&preserve-view=true) - Converts graph analysis results to tabular format for integration with existing systems
 
 **Advanced analysis capabilities:**
 
@@ -245,8 +245,8 @@ This integration enables sophisticated workflows including supply chain evolutio
 
 ## Related content
 
-- [Common scenarios for using KQL graph semantics](graph-scenarios?view=azure-data-explorer&preserve-view=true)
-- [Best practices for KQL graph semantics](graph-best-practices?view=azure-data-explorer&preserve-view=true)
+- [Common scenarios for using KQL graph semantics](graph-scenarios.md)
+- [Best practices for KQL graph semantics](graph-best-practices.md)
 - [Graph operators](/kusto/query/graph-operator?view=azure-data-explorer&preserve-view=true)
 - [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true)
 - [Graph model overview](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true)

@@ -224,9 +224,9 @@ items:
             href: materialized-views/materialized-view-show-details-command.md
       - name: Graphs
         items:
-          - name: Graph overview
+          - name: Persistent graph overview
             href: graph/graph-persistent-overview.md
-          - name: Graph limitations
+          - name: Persistent graph limitations
             href: graph/graph-persistent-limitations.md
           - name: Graph model overview
             href: graph/graph-model-overview.md

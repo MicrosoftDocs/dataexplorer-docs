@@ -3,11 +3,13 @@ title: Best practices for Kusto Query Language (KQL) graph semantics
 description: Learn about the best practices for Kusto Query Language (KQL) graph semantics.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 05/25/2025
+ms.date: 05/26/2025
 # Customer intent: As a data analyst, I want to learn about best practices for KQL graph semantics.
 ---
 
-# Best practices for Kusto Query Language (KQL) graph semantics
+# Best practices for graph semantics
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Kusto supports two primary approaches for working with graphs: transient graphs created in-memory for each query, and persistent graphs defined as graph models and snapshots within the database. This article provides best practices for both methods, enabling you to select the optimal approach and use KQL graph semantics efficiently.
 
@@ -25,11 +27,11 @@ Kusto provides two approaches for working with graphs: transient and persistent.
 
 ### Transient graphs
 
-Created dynamically using the [`make-graph`](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) operator. These graphs exist only during query execution and are optimal for ad hoc or exploratory analysis on small to medium datasets.
+Created dynamically using the [`make-graph`](../../query/make-graph-operator.md) operator. These graphs exist only during query execution and are optimal for ad hoc or exploratory analysis on small to medium datasets.
 
 ### Persistent graphs
-
-Defined using [graph models](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true). These graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
+S
+Defined using [graph models](graph-model-overview.md) and [graph snapshots](graph-snapshot-overview?.md). These graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
 
 ## Best practices for transient graphs
 
@@ -37,7 +39,7 @@ Transient graphs, created in-memory using the `make-graph` operator, are ideal f
 
 ### Optimize graph size for performance
 
-The [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) creates an in-memory representation including both structure and properties. Optimize performance by:
+The [`make-graph`](../../query/make-graph-operator.md) creates an in-memory representation including both structure and properties. Optimize performance by:
 
 - **Apply filters early** - Select only relevant nodes, edges, and properties before graph creation
 - **Use projections** - Remove unnecessary columns to minimize memory consumption
@@ -100,7 +102,7 @@ Create tables with a versioning mechanism for graph time series:
 
 **Step 2: Create materialized views**
 
-Use the [arg_max aggregation](/kusto/query/arg-max-aggregation-function?view=azure-data-explorer&preserve-view=true) function to determine the latest state:
+Use the [arg_max aggregation](../../query/arg-max-aggregation-function.md) function to determine the latest state:
 
 ```kusto
 .create materialized-view employees_MV on table employees
@@ -280,7 +282,7 @@ let assetHierarchy = datatable(source:string, destination:string)
 ];
 ```
 
-The employees, sensors, and other entities and relationships do not share a canonical data model. The [union operator](/kusto/query/union-operator?view=azure-data-explorer&preserve-view=true) can be used to combine and standardize the data.
+The employees, sensors, and other entities and relationships do not share a canonical data model. The [union operator](../../query/union-operator.md) can be used to combine and standardize the data.
 
 The following query joins the sensor data with the time series data to identify sensors with abnormal readings, then uses a projection to create a common model for the graph nodes.
 
@@ -309,14 +311,15 @@ let edges =
         ( operates | project source = employee, destination = machine, properties = pack_all(true), label = "operates" );
 ```
 
-With the standardized nodes and edges data, you can create a graph using the [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true):
+With the standardized nodes and edges data, you can create a graph using the [make-graph operator](../../query/make-graph-operator.md)
+
 
 ```kusto
 let graph = edges
 | make-graph source --> destination with nodes on nodeId;
 ```
 
-Once the graph is created, define the path pattern and project the required information. The pattern begins at a tag node, followed by a variable-length edge to an asset. That asset is operated by an operator who reports to a top manager via a variable-length edge called *reportsTo*. The constraints section of the [graph-match operator](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true), in this case the **where** clause, filters the tags to those with an anomaly that were operated on a specific day.
+Once the graph is created, define the path pattern and project the required information. The pattern begins at a tag node, followed by a variable-length edge to an asset. That asset is operated by an operator who reports to a top manager via a variable-length edge called *reportsTo*. The constraints section of the [graph-match operator](../../query/graph-match-operator.md), in this case the **where** clause, filters the tags to those with an anomaly that were operated on a specific day.
 
 ```kusto
 graph
@@ -341,7 +344,7 @@ The projection in `graph-match` shows that the temperature sensor exhibited an a
 
 ## Best practices for persistent graphs
 
-Persistent graphs, defined using [graph models](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
+Persistent graphs, defined using [graph models](graph-model-overview.md) and [graph snapshots](graph-snapshot-overview.md), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
 
 ### Use schema and definition for consistency and performance
 
@@ -550,9 +553,9 @@ This hybrid approach enables organizations to provide always-current data analys
 
 ## Related content
 
-- [Graph semantics in Kusto - Overview](graph-overview.md)
-- [Common scenarios for using KQL graph semantics](graph-scenarios.md)
-- [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true)
+- [Graph semantics overview](graph-overview.md)
+- [Common scenarios for using graph semantics](graph-scenarios.md)
+- [Graph operators](/.../query/graph-operators.md)
 - [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true)
-- [Graph model overview](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true)
+- [Graph model overview](graph-model-overview.md)
 - [Graph snapshots overview](/kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true)

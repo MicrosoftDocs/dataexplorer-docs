@@ -7,7 +7,9 @@ ms.date: 05/25/2025
 # Customer intent: As a data analyst, I want to learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ---
 
-# Common scenarios for using Kusto Query Language (KQL) graph semantics
+# Common scenarios for using graph semantics
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Graph semantics in Kusto Query Language (KQL) enables modeling and querying data as interconnected networks. This approach excels at representing complex data with many-to-many relationships, hierarchical structures, and networked systems—including social networks, recommendation engines, connected assets, and knowledge graphs.
 

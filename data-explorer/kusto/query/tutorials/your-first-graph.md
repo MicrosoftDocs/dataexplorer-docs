@@ -1,11 +1,11 @@
 ---
-title: 'Tutorial: Your first graphs in Kusto Query Language'
+title: 'Tutorial: Create your first graphs in Kusto Query Language'
 description: This tutorial introduces graph semantics in Kusto Query Language (KQL) and demonstrates how to create and query both transient and persistent graphs.
 ms.topic: tutorial
-ms.date: 11/25/2024
+ms.date: 05/26/2025
 ---
 
-# Tutorial: Your first graph
+# Tutorial: Create your first graph
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 

@@ -392,8 +392,8 @@ The function `graph_path_discovery_fl()` can be used in cybersecurity domain to 
 
 ## Related content
 
-* [Functions library](functions-library?view=azure-data-explorer&preserve-view=true)
-* [Graph semantics in Kusto - overview](../../graph-overview?view=azure-data-explorer&preserve-view=true
-* [Graph operators](../query/graph-operators?view=azure-data-explorer&preserve-view=true)
-* [Scenarios](../../graph-scenarios?view=azure-data-explorer&preserve-view=true)
-* [Best practices](../../graph-best-practices?view=azure-data-explorer&preserve-view=true)
+* [Functions library](functions-library.md)
+* [Graph semantics overview](../management/graph/graph-semantics-overview.md)
+* [Graph operators](../query/graph-operator.md)
+* [Graph Scenarios](../management/graph/graph-scenarios.md)
+* [Best practices](../management/graph/graph-best-practices.md)
