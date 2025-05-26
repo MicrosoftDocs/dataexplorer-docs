@@ -133,5 +133,5 @@ connections
 ## Related content
 
 * [Best practices for graph semantics](graph-best-practices.md)
-* [Graph operator](graph-operator.md)
+* [Graph operator](graph-function.md)
 * [make-graph operator](../query/make-graph-operator.md)

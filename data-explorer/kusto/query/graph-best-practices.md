@@ -555,6 +555,6 @@ This hybrid approach enables organizations to provide always-current data analys
 
 - [Graph semantics overview](graph-semantics-overview.md)
 - [Common scenarios for using graph semantics](graph-scenarios.md)
-- [Graph operator](graph-operator.md)
+- [Graph function](graph-function.md)
 - [make-graph operator](make-graph-operator.md)
 - [Graph models overview](../management/graph/graph-model-overview.md)

@@ -304,6 +304,8 @@ items:
       - name: external_table()
         href: external-table-function.md
         displayName: external table external-table
+      - name: graph()
+        href: graph-function.md
       - name: materialize()
         href: materialize-function.md
       - name: materialized_view()

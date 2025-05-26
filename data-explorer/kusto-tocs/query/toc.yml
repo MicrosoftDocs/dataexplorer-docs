@@ -496,6 +496,8 @@ items:
   - name: external_table()
     href: /kusto/query/external-table-function?view=azure-data-explorer&preserve-view=true
     displayName: external table external-table
+  - name: graph()
+    href: /kusto/query/graph-function?view=azure-data-explorer&preserve-view=true
   - name: materialize()
     href: /kusto/query/materialize-function?view=azure-data-explorer&preserve-view=true
   - name: materialized_view()

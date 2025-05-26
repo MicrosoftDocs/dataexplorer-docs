@@ -11,7 +11,7 @@ ms.date: 11/05/2024
 
 Kusto Query Language (KQL) graph operators enable graph analysis of data by representing tabular data as a graph with nodes and edges, or by referencing persistent graph entities. This setup lets you use graph operations to study the connections and relationships between different data points.
 
-Graph analysis can be performed using either transient graphs (created dynamically from tabular data using [make-graph](make-graph-operator.md)) or persistent graphs (referenced using the [graph](graph-operator.md) operator). Once a graph is established, you can use graph operators such as [graph-match](graph-match-operator.md), [graph-shortest-paths](graph-shortest-paths-operator.md), and [graph-to-table](graph-to-table-operator.md) to analyze relationships, find patterns, and transform results back into tabular form for further processing.
+Graph analysis can be performed using either transient graphs (created dynamically from tabular data using [make-graph](make-graph-operator.md)) or persistent graphs (referenced using the [graph](graph-function.md) function). Once a graph is established, you can use graph operators such as [graph-match](graph-match-operator.md), [graph-shortest-paths](graph-shortest-paths-operator.md), and [graph-to-table](graph-to-table-operator.md) to analyze relationships, find patterns, and transform results back into tabular form for further processing.
 
 ## Supported graph operators
 
@@ -20,7 +20,7 @@ The following table describes the supported graph operators.
 | Operator | Description |
 |--|--|
 | [make-graph](make-graph-operator.md) | Builds a graph from tabular data. |
-| [graph](graph-operator.md) | References a persisted graph entity and retrieves the latest or a specific snapshot. |
+| [graph](graph-function.md) | References a persisted graph entity and retrieves the latest or a specific snapshot. |
 | [graph-match](graph-match-operator.md) | Searches for patterns in a graph. |
 | [graph-to-table](graph-to-table-operator.md) | Builds nodes or edges tables from a graph. |
 | [graph-shortest-paths](graph-shortest-paths-operator.md) | Finds the shortest paths from a given set of source nodes to a set of target nodes. |
