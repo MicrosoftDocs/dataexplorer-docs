@@ -232,23 +232,23 @@ items:
             href: graph/graph-model-overview.md
           - name: .create-or-alter graph_model
             href: graph/graph-model-create-or-alter.md
-          - name: .drop graph model
+          - name: .drop graph_model
             href: graph/graph-model-drop.md
-          - name: .show graph model
+          - name: .show graph_model
             href: graph/graph-model-show.md
-          - name: .show graph models 
+          - name: .show graph_models 
             href: graph/graph-models-show.md
           - name: Graph snapshot overview
             href: graph/graph-snapshot-overview.md
-          - name: Graph snapshot make
+          - name: .make graph_snapshot
             href: graph/graph-snapshot-make.md
-          - name: Graph snapshot drop
+          - name: .drop graph_snapshot
             href: graph/graph-snapshot-drop.md
-          - name: Graph snapshots drop
+          - name: .drop graph_snapshots
             href: graph/graph-snapshot-drop.md
-          - name : Graph snapshot show
+          - name : .show graph_snapshot
             href: graph/graph-snapshot-show.md
-          - name: Graph snapshots show
+          - name: .show graph_snapshots
             href: graph/graph-snapshots-show.md
       - name: Stored query results
         items:

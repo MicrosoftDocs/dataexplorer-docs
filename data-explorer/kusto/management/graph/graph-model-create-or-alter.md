@@ -52,8 +52,8 @@ This command returns a table with the following columns:
 
 ### Create a new graph model
 
-```kusto
-.create-or-alter graph_model SocialNetwork @'
+````kusto
+.create-or-alter graph_model SocialNetwork ```
 {
     "Schema": {
         "Nodes": {
@@ -98,8 +98,9 @@ This command returns a table with the following columns:
             }
         ]
     }
-}'
+}
 ```
+````
 
 **Output**
 

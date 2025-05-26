@@ -177,8 +177,8 @@ Azure Data Explorer provides a comprehensive set of management commands for work
 | Command | Purpose | Key parameters |
 |---------|---------|---------------|
 | [.create-or-alter graph_model](graph-model-create-or-alter.md) | Create a new graph model or modify an existing one | Database, Name, Schema, Definition |
-| [.drop graph model](graph-model-drop.md) | Remove a graph model | Database, Name |
-| [.show graph models](graph-model-show.md) | List available graph models | Database [optional] |
+| [.drop graph_model](graph-model-drop.md) | Remove a graph model | Database, Name |
+| [.show graph_models](graph-model-show.md) | List available graph models | Database [optional] |
 
 ### Graph model lifecycle
 
@@ -316,8 +316,8 @@ graph("EmployeeNetwork")
 ## Related content
 
 * [.create-or-alter graph_model](graph-model-create-or-alter.md)
-* [.drop graph model](graph-model-drop.md)
-* [.show graph models](graph-model-show.md)
+* [.drop graph_model](graph-model-drop.md)
+* [.show graph_models](graph-model-show.md)
 * [Persistent graph limitations](graph-persistent-limitations.md)
 * [Graph operators](../../query/graph-operators.md)
 * [Graph best practices](../../query/graph-best-practices.md)

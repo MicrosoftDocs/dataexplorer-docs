@@ -457,9 +457,9 @@ Use **persistent graphs** for the largest tenants:
 
 **Implementation pattern:**
 
-```kusto
+````kusto
 // Create graph model for large tenant (example: Contoso)
-.create-or-alter graph_model ContosoOrgChart
+.create-or-alter graph_model ContosoOrgChart ```
 {
     "Schema": {
         "Nodes": {
@@ -495,6 +495,7 @@ Use **persistent graphs** for the largest tenants:
         ]
     }
 }
+```
 
 // Create snapshot for Contoso
 .create graph snapshot ContosoSnapshot from ContosoOrgChart
@@ -504,7 +505,7 @@ graph("ContosoOrgChart")
 | graph-match (employee)-[reports*1..10]-(executive)
   where employee.Department == "Engineering"
   project employee = employee.Name, executive = executive.Name, pathLength = array_length(reports)
-```
+````
 
 ### Best practices for ISV scenarios
 

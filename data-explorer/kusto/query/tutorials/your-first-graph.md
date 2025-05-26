@@ -223,8 +223,8 @@ Create functions that return your sample data, then define a graph model structu
 
 Define the graph model with node and edge schemas:
 
-```kusto
-.create-or-alter graph_model OrganizationGraph
+````kusto
+.create-or-alter graph_model OrganizationGraph ```
 {
     "Schema": {
         "Nodes": {
@@ -258,11 +258,12 @@ Define the graph model with node and edge schemas:
     }
 }
 ```
+````
 
 Create a graph snapshot to materialize the model into a queryable structure:
 
 ```kusto
-.make graph snapshot OrganizationGraph_v1 from model OrganizationGraph
+.make graph_snapshot OrganizationGraph_v1 from OrganizationGraph
 ```
 
 ## Query your persistent graph
@@ -302,7 +303,7 @@ Understanding when to use each approach helps you choose the right method for yo
 
 | Aspect | Transient Graphs | Persistent Graphs |
 |--------|------------------|-------------------|
-| **Creation** | `make-graph` operator during query | `.create-or-alter graph_model` + `.make graph snapshot` |
+| **Creation** | `make-graph` operator during query | `.create-or-alter graph_model` + `.make graph_snapshot` |
 | **Storage** | In-memory during query execution | Stored in database |
 | **Reusability** | Must rebuild for each query | Query repeatedly without rebuilding |
 | **Performance** | Good for smaller datasets | Optimized for large, complex graphs |
@@ -317,7 +318,7 @@ If you're not going to continue using the persistent graph models, delete them w
 1. Drop the graph model:
 
    ```kusto
-   .drop graph model OrganizationGraph
+   .drop graph_model OrganizationGraph
    ```
 
 2. Drop the helper functions:

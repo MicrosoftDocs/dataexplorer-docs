@@ -72,7 +72,7 @@ The following commands are available for managing graph snapshots:
 
 | Command | Description |
 |---------|-------------|
-| [.make graph snapshot](graph-snapshot-make.md) | Creates a new graph snapshot from a graph model |
+| [.make graph_snapshot](graph-snapshot-make.md) | Creates a new graph snapshot from a graph model |
 | [.show graph snapshot](graph-snapshot-show.md) | Displays details of a specific graph snapshot |
 | [.show graph snapshots](graph-snapshots-show.md) | Lists all graph snapshots in the database |
 | [.drop graph snapshot](graph-snapshot-drop.md) | Removes a single graph snapshot |
