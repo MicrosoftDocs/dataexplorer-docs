@@ -9,7 +9,7 @@ ms.date: 05/26/2025
 
 # Best practices for graph semantics
 
-> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Kusto supports two primary approaches for working with graphs: transient graphs created in-memory for each query, and persistent graphs defined as graph models and snapshots within the database. This article provides best practices for both methods, enabling you to select the optimal approach and use KQL graph semantics efficiently.
 
@@ -27,11 +27,11 @@ Kusto provides two approaches for working with graphs: transient and persistent.
 
 ### Transient graphs
 
-Created dynamically using the [`make-graph`](../../query/make-graph-operator.md) operator. These graphs exist only during query execution and are optimal for ad hoc or exploratory analysis on small to medium datasets.
+Created dynamically using the [`make-graph`](make-graph-operator.md) operator. These graphs exist only during query execution and are optimal for ad hoc or exploratory analysis on small to medium datasets.
 
 ### Persistent graphs
-S
-Defined using [graph models](graph-model-overview.md) and [graph snapshots](graph-snapshot-overview?.md). These graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
+
+Defined using [graph models](../management/graph/graph-model-overview.mdd) and [graph snapshots](../management/graph/graph-snapshot-overview.md). These graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
 
 ## Best practices for transient graphs
 
@@ -39,7 +39,7 @@ Transient graphs, created in-memory using the `make-graph` operator, are ideal f
 
 ### Optimize graph size for performance
 
-The [`make-graph`](../../query/make-graph-operator.md) creates an in-memory representation including both structure and properties. Optimize performance by:
+The [`make-graph`](make-graph-operator.md) creates an in-memory representation including both structure and properties. Optimize performance by:
 
 - **Apply filters early** - Select only relevant nodes, edges, and properties before graph creation
 - **Use projections** - Remove unnecessary columns to minimize memory consumption
@@ -344,7 +344,7 @@ The projection in `graph-match` shows that the temperature sensor exhibited an a
 
 ## Best practices for persistent graphs
 
-Persistent graphs, defined using [graph models](graph-model-overview.md) and [graph snapshots](graph-snapshot-overview.md), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
+Persistent graphs, defined using [graph models](../management/graph-model-overview.md) and [graph snapshots](graph-snapshot-overview.md), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
 
 ### Use schema and definition for consistency and performance
 
@@ -553,9 +553,8 @@ This hybrid approach enables organizations to provide always-current data analys
 
 ## Related content
 
-- [Graph semantics overview](graph-overview.md)
+- [Graph semantics overview](graph-semantics-overview.md)
 - [Common scenarios for using graph semantics](graph-scenarios.md)
-- [Graph operators](/.../query/graph-operators.md)
-- [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true)
-- [Graph model overview](graph-model-overview.md)
-- [Graph snapshots overview](/kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true)
+- [Graph operator](graph-operator.md)
+- [make-graph operator](make-graph-operator.md)
+- [Graph models overview](graph-model-overview.md)

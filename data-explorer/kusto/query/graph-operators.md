@@ -28,5 +28,5 @@ The following table describes the supported graph operators.
 
 ## Related content
 
-* [Graph overview](../../graph-overview?view=azure-data-explorer&preserve-view=true)
-* [Graph best practices](../../graph-best-practices?view=azure-data-explorer&preserve-view=true)
+* [Graph semantics overview](graph-semantics-overview.md)
+* [Graph best practices](graph-best-practices.md)

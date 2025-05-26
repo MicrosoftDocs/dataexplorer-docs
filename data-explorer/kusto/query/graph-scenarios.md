@@ -9,7 +9,7 @@ ms.date: 05/25/2025
 
 # Common scenarios for using graph semantics
 
-> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Graph semantics in Kusto Query Language (KQL) enables modeling and querying data as interconnected networks. This approach excels at representing complex data with many-to-many relationships, hierarchical structures, and networked systems—including social networks, recommendation engines, connected assets, and knowledge graphs.
 
@@ -237,10 +237,10 @@ For detailed implementation examples and code samples, see the [Digital Twins sa
 
 ## Related content
 
-- [Graph semantics in Kusto - Overview](graph-overview.md)
+- [Graph semantics overview](graph-semantics-overview.md)
 - [Best practices for KQL graph semantics](graph-best-practices.md)
-- [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true)
-- [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true)
+- [Graph operator](graph-operator.md)
+- [make-graph operator](make-graph-operator.md)
 - [Azure Kusto Graph Samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples)
 - [Advanced KQL graph capabilities for security analysis](https://github.com/Azure/azure-kusto-graph-samples/blob/main/graph%20of%20graph/advanced-kql-capabilities.md)
 - [Digital twins with KQL graph semantics](https://github.com/Azure/azure-kusto-graph-samples/tree/main/digital%20twins)

@@ -1,12 +1,12 @@
 ---
-title: Graph snapshots in Kusto - Overview
+title: Graph snapshots veorview
 description: Learn about graph snapshots in Kusto, including their structure, benefits, and how to create and query them for efficient graph data analysis.
 ms.reviewer: herauch
 ms.topic: reference
 ms.date: 05/24/2025
 ---
 
-# Graph snapshots in Kusto (Preview)
+# Graph snapshots overview (Preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 

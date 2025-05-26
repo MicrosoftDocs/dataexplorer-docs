@@ -244,8 +244,9 @@ The function `graph_exposure_perimeter_fl()` can be used to calculate the Exposu
 ## Related content
 
 * [Functions library](functions-library.md)
-* [Graph semantics overview](../management/graph/graph-semantics-overview.md)
+* [Graph semantics overview](../query/graph-semantics-overview.md)
 * [Graph operators](../query/graph-operator.md)
-* [Graph Scenarios](../management/graph/graph-scenarios.md)
-* [Best practices](../management/graph/graph-best-practices.md)
+* [Graph Scenarios](../query/graph-scenarios.md)
+* [Best practices](../query/graph-best-practices.md)
 * [graph-path-discovery-fl()](graph-path-discovery-fl.md)
+
