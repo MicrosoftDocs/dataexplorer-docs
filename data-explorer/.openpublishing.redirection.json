@@ -12,7 +12,7 @@
     },
     {
       "source_path": "graph-scenarios.md",
-      "r edirect_url": "/kusto/query/graph-scenarios.md",
+      "redirect_url": "/kusto/query/graph-scenarios.md",
       "redirect_document_id": false
     },
     {
