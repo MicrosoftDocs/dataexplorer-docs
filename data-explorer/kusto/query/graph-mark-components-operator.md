@@ -118,8 +118,8 @@ ChildOf
 
 ## Related content
 
-* [Graph best practices](../../graph-best-practices?view=azure-data-explorer&preserve-view=true)
-* [Graph operators](graph-operators?view=azure-data-explorer&preserve-view=true)
-* [make-graph operator](make-graph-operator?view=azure-data-explorer&preserve-view=true)
-* [graph-match operator](graph-match-operator?view=azure-data-explorer&preserve-view=true)
-* [graph-to-table operator](graph-to-table-operator?view=azure-data-explorer&preserve-view=true)
+* [Graph best practices](graph-best-practices.md)
+* [Graph operators](graph-operators.md)
+* [make-graph operator](make-graph-operator.md)
+* [graph-match operator](graph-match-operator.md)
+* [graph-to-table operator](graph-to-table-operator.md)

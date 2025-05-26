@@ -31,7 +31,7 @@ Created dynamically using the [`make-graph`](make-graph-operator.md) operator. T
 
 ### Persistent graphs
 
-Defined using [graph models](../management/graph/graph-model-overview.mdd) and [graph snapshots](../management/graph/graph-snapshot-overview.md). These graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
+Defined using [graph models](../management/graph/graph-model-overview.md) and [graph snapshots](../management/graph/graph-snapshot-overview.md). These graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
 
 ## Best practices for transient graphs
 
@@ -102,7 +102,7 @@ Create tables with a versioning mechanism for graph time series:
 
 **Step 2: Create materialized views**
 
-Use the [arg_max aggregation](../../query/arg-max-aggregation-function.md) function to determine the latest state:
+Use the [arg_max aggregation](arg-max-aggregation-function.md) function to determine the latest state:
 
 ```kusto
 .create materialized-view employees_MV on table employees
@@ -282,7 +282,7 @@ let assetHierarchy = datatable(source:string, destination:string)
 ];
 ```
 
-The employees, sensors, and other entities and relationships do not share a canonical data model. The [union operator](../../query/union-operator.md) can be used to combine and standardize the data.
+The employees, sensors, and other entities and relationships do not share a canonical data model. The [union operator](union-operator.md) can be used to combine and standardize the data.
 
 The following query joins the sensor data with the time series data to identify sensors with abnormal readings, then uses a projection to create a common model for the graph nodes.
 
@@ -311,7 +311,7 @@ let edges =
         ( operates | project source = employee, destination = machine, properties = pack_all(true), label = "operates" );
 ```
 
-With the standardized nodes and edges data, you can create a graph using the [make-graph operator](../../query/make-graph-operator.md)
+With the standardized nodes and edges data, you can create a graph using the [make-graph operator](make-graph-operator.md)
 
 
 ```kusto
@@ -319,7 +319,7 @@ let graph = edges
 | make-graph source --> destination with nodes on nodeId;
 ```
 
-Once the graph is created, define the path pattern and project the required information. The pattern begins at a tag node, followed by a variable-length edge to an asset. That asset is operated by an operator who reports to a top manager via a variable-length edge called *reportsTo*. The constraints section of the [graph-match operator](../../query/graph-match-operator.md), in this case the **where** clause, filters the tags to those with an anomaly that were operated on a specific day.
+Once the graph is created, define the path pattern and project the required information. The pattern begins at a tag node, followed by a variable-length edge to an asset. That asset is operated by an operator who reports to a top manager via a variable-length edge called *reportsTo*. The constraints section of the [graph-match operator](graph-match-operator.md), in this case the **where** clause, filters the tags to those with an anomaly that were operated on a specific day.
 
 ```kusto
 graph
@@ -344,7 +344,7 @@ The projection in `graph-match` shows that the temperature sensor exhibited an a
 
 ## Best practices for persistent graphs
 
-Persistent graphs, defined using [graph models](../management/graph-model-overview.md) and [graph snapshots](graph-snapshot-overview.md), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
+Persistent graphs, defined using [graph models](../management/graph/graph-model-overview.md) and [graph snapshots](../management/graph/graph-snapshot-overview.md), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
 
 ### Use schema and definition for consistency and performance
 
@@ -557,4 +557,4 @@ This hybrid approach enables organizations to provide always-current data analys
 - [Common scenarios for using graph semantics](graph-scenarios.md)
 - [Graph operator](graph-operator.md)
 - [make-graph operator](make-graph-operator.md)
-- [Graph models overview](graph-model-overview.md)
+- [Graph models overview](../management/graph/graph-model-overview.md)

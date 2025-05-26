@@ -3,7 +3,7 @@ title: labels() (graph function in Preview)
 description: Learn how to use the labels() function to filter nodes and edges based on their labels or project label information in graph queries.
 ms.reviewer: michalfaktor
 ms.topic: reference
-ms.date: 05/24/2025
+ms.date: 05/26/2025
 ---
 # labels() (graph function in Preview)
 
@@ -11,7 +11,7 @@ ms.date: 05/24/2025
 
 The `labels()` graph function retrieves the labels associated with nodes or edges in a graph. It can be used both for filtering elements based on their labels and for projecting label information in query results.
 
-Labels are defined within [Graph models](../management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) and can be either static (fixed labels assigned to node or edge types) or dynamic (labels derived from data properties during graph construction). The `labels()` function accesses these predefined labels to enable efficient filtering and analysis of graph elements.
+Labels are defined within [Graph models](../management/graph/graph-model-overview.md) and can be either static (fixed labels assigned to node or edge types) or dynamic (labels derived from data properties during graph construction). The `labels()` function accesses these predefined labels to enable efficient filtering and analysis of graph elements.
 
 > [!NOTE]
 > This function is used with the [graph-match](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md) operators.
@@ -27,7 +27,7 @@ Labels are defined within [Graph models](../management/graph/graph-model-overvie
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| *element* | `string` |  | The reference to a graph node or edge variable in a graph pattern.<br>Don't pass any parameters when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) graph functions, with [inner_nodes()](inner-nodes-graph-function.md) or [inner_edges()](inner-edges-graph-function.md). For more information, see [Graph pattern notation](graph-match-operator.md#graph-pattern-notation). |
+| *element* | `string` |  | The reference to a graph node or edge variable in a graph pattern.</br>Don't pass any parameters when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) graph functions, with [inner_nodes()](inner-nodes-graph-function.md) or [inner_edges()](inner-edges-graph-function.md). For more information, see [Graph pattern notation](graph-match-operator.md#graph-pattern-notation). |
 
 ## Returns
 
@@ -37,7 +37,7 @@ When used inside [all()](all-graph-function.md), [any()](any-graph-function.md),
 
 ## Label sources
 
-Labels are defined in [Graph models](../management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) and can originate from two sources:
+Labels are defined in [Graph models](../management/graph/graph-model-overview.md) and can originate from two sources:
 
 - **Static labels**: Fixed labels assigned to specific node or edge types during graph model definition. These labels remain constant for all instances of a particular type.
 - **Dynamic labels**: Labels derived from data properties during graph construction. These labels can vary based on the actual data values and computed expressions.

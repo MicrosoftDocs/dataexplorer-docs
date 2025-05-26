@@ -345,7 +345,8 @@ graph("OrganizationGraph", "OrganizationGraph_v1")
 
 Now that you understand the basics of graph semantics in Kusto, you can explore more advanced topics:
 
-- [Graph best practices](../../graph-best-practices.md) - Learn optimization techniques and best practices
+- [Best practices for graph semantics](../graph-best-practices.md)
+- Learn optimization techniques and best practices
 - [Graph operators](../graph-operators.md) - Explore all available graph operators
 - [Graph model overview](../../management/graph/graph-model-overview.md) - Deep dive into persistent graph models
 - [Graph shortest paths](../graph-shortest-paths-operator.md) - Find optimal paths between entities
