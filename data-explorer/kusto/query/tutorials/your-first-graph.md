@@ -20,10 +20,12 @@ Graph semantics represent data as a network of connected entities. Unlike tradit
 - Attack paths in cybersecurity (threat actors targeting systems)
 - Supply chains (suppliers providing to manufacturers)
 
+::: moniker range="azure-data-explorer || microsoft-fabric"
 Kusto provides two approaches for working with graphs:
 
 1. **Transient graphs** - Created dynamically during query execution using the `make-graph` operator
 2. **Persistent graphs** - Stored models that can be queried repeatedly without reconstruction
+::: moniker-end
 
 In this tutorial, you'll learn how to:
 
@@ -31,8 +33,10 @@ In this tutorial, you'll learn how to:
 >
 > * [Create a transient graph](#create-a-transient-graph)
 > * [Query graphs with graph-match](#query-graphs-with-graph-match)
+::: moniker range="azure-data-explorer || microsoft-fabric"
 > * [Create a persistent graph](#create-a-persistent-graph)
 > * [Query persistent graphs](#query-persistent-graphs)
+::: moniker-end
 
 ::: moniker range="azure-data-explorer"
 The examples in this tutorial use sample data that you can run in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](/azure/data-explorer/start-for-free-web-ui).

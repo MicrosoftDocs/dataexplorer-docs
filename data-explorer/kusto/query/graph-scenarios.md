@@ -96,7 +96,7 @@ This creates a directed graph where nodes are IP addresses or resources, and edg
 
 ### Query patterns for recommendations
 
-Use [graph-match](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) to create simple recommendations based on resources requested by other IP addresses:
+Use [graph-match](graph-match-operator.md) to create simple recommendations based on resources requested by other IP addresses:
 
 ```kusto
 graph

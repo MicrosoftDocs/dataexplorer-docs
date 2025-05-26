@@ -21,6 +21,8 @@ This guidance covers:
 - Integration with other KQL features
 - Common pitfalls to avoid
 
+:::moniker range="azure-data-explorer || microsoft-fabric"
+
 ## Graph modeling approaches in Kusto
 
 Kusto provides two approaches for working with graphs: transient and persistent.
@@ -32,6 +34,8 @@ Created dynamically using the [`make-graph`](make-graph-operator.md) operator. T
 ### Persistent graphs
 
 Defined using [graph models](../management/graph/graph-model-overview.md) and [graph snapshots](../management/graph/graph-snapshot-overview.md). These graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
+
+:::moniker-end
 
 ## Best practices for transient graphs
 
@@ -193,47 +197,7 @@ When working with complex graphs containing multiple node types, use a canonical
 
 Consider a factory manager investigating equipment issues and responsible personnel. The scenario combines asset graphs of production equipment with maintenance staff hierarchy:
 
-```mermaid
-graph TD
-	%% People nodes in blue
-	Dave((Dave)):::person
-	Mallory((Mallory)):::person
-	Alice((Alice)):::person
-	Bob((Bob)):::person
-	Eve((Eve)):::person
-	Alex((Alex)):::person
-	
-	%% Equipment nodes in green
-	Conveyorbelt((Conveyor belt)):::equipment
-	Pump((Pump)):::equipment
-	Press((Press)):::equipment
-	
-	%% Measurement nodes in orange
-	Speed((Speed)):::measurement
-	temperature((temperature)):::measurement
-	pressure((pressure)):::measurement
-
-	Bob -->|reportsTo| Alice
-	Alice -->|reportsTo| Dave
-	Alex -->|reportsTo| Dave
-	Eve -->|reportsTo| Mallory
-
-	Bob -->|operates| Pump
-	Eve -->|operates| Pump
-	Mallory -->|operates| Press
-	Alex -->|operates| Conveyorbelt
-
-	Conveyorbelt -->|hasParent| Speed
-	Pump -->|hasParent| temperature
-	Pump -->|hasParent| pressure
-	Pump -->|hasParent| Conveyorbelt
-	Press -->|hasParent| Pump
-	
-	%% Define node styles
-	classDef person fill:#9699F3,stroke:#333,stroke-width:1px;
-	classDef equipment fill:#79EC87,stroke:#333,stroke-width:1px;
-	classDef measurement fill:#E62828,stroke:#333,stroke-width:1px;
-```
+:::image type="content" source="media/graphs/factory-maintenance-analysis.png" alt-text="A graph of factory people, equiptment, and measurements":::
 
 The data for those entities can be stored directly in your cluster or acquired using query federation to a different service. To illustrate the example, the following tabular data is created as part of the query:
 
@@ -341,6 +305,8 @@ graph
 | temperature    | Pump          | Eve          | Mallory            |
 
 The projection in `graph-match` shows that the temperature sensor exhibited an anomaly on the specified day. The sensor was operated by Eve, who ultimately reports to Mallory. With this information, the factory manager can contact Eve and, if necessary, Mallory to better understand the anomaly.
+
+:::moniker range="azure-data-explorer || microsoft-fabric"
 
 ## Best practices for persistent graphs
 
@@ -550,6 +516,8 @@ graph("ContosoOrgChart")
 6. **Cost optimization** - Regularly review and optimize the persistent/transient threshold based on actual usage patterns
 
 This hybrid approach enables organizations to provide always-current data analysis for the majority of tenants while delivering enterprise-scale analytics capabilities for the largest tenants, optimizing both cost and performance across the entire customer base.
+
+:::moniker-end
 
 ## Related content
 

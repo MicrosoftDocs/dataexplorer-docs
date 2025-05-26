@@ -87,7 +87,7 @@ Common applications include real-time IoT monitoring, supply chain relationship 
 
 ## Persistent graph creation approach
 
-Persistent graphs use [graph models](/kusto/management/graph/graph-model-overview.md) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview.md) to provide robust solutions for large-scale, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, and other interconnected data domains.
+Persistent graphs use [graph models](../management/graph/graph-model-overview.md) and [graph snapshots](../management/graph/graph-snapshot-overview.md) to provide robust solutions for large-scale, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, and other interconnected data domains.
 
 #### Key characteristics for persistent graphs
 
@@ -112,21 +112,7 @@ Persistent graphs are essential for:
 
 ##### Example: Digital Twin Persistent Graph
 
-```mermaid
-graph TD
-    DT1[🏭 Digital Twin: Factory] -->|monitors| EQ1[⚙️ Equipment 1]
-    DT1 -->|monitors| EQ2[⚙️ Equipment 2]
-    EQ1 -->|connected to| S1[🔌 Sensor 1]
-    EQ2 -->|connected to| S2[🔌 Sensor 2]
-    DT1 -->|reports to| CL1[☁️ Cloud Analytics]
-    
-    style DT1 fill:#e1f5fe,stroke:#0277bd,color:#000
-    style EQ1 fill:#f3e5f5,stroke:#7b1fa2,color:#000
-    style EQ2 fill:#e8f5e8,stroke:#2e7d32,color:#000
-    style S1 fill:#fff3e0,stroke:#ef6c00,color:#000
-    style S2 fill:#ffd93d,stroke:#fdcb6e,color:#000
-    style CL1 fill:#a3cfbb,stroke:#1b6e3c,color:#000
-```
+:::image type="content" source="media/graphs/digital-twin-persistent-graph.png" alt-text="A graph showing the digital twin factory example with device relationships and  equipment dependencies,":::
 
 In digital twin and IoT scenarios, persistent graphs support regular analysis of device relationships, equipment dependencies, and system evolution over time. Historical analysis allows comparing system states across different periods, tracking the evolution of assets, and conducting long-term trend analysis.
 
@@ -151,9 +137,9 @@ Once a graph is established (through `make-graph` or from a snapshot), you can l
 
 **Core operators:**
 
-- [`graph-match`](/kusto/query/graph-match-operator?view=azure-data-explorer&preserve-view=true) - Enables sophisticated pattern matching and traversal operations for identifying complex relationship sequences
-- [`graph-shortest-paths`](/kusto/query/graph-shortest-paths-operator?view=azure-data-explorer&preserve-view=true) - Finds optimal paths between entities, helping prioritize connections and identify critical relationships
-- [`graph-to-table`](/kusto/query/graph-to-table-operator?view=azure-data-explorer&preserve-view=true) - Converts graph analysis results to tabular format for integration with existing systems
+- [`graph-match`](graph-match-operator.md) - Enables sophisticated pattern matching and traversal operations for identifying complex relationship sequences
+- [`graph-shortest-paths`](graph-shortest-paths-operator.md) - Finds optimal paths between entities, helping prioritize connections and identify critical relationships
+- [`graph-to-table`](graph-to-table-operator.md) - Converts graph analysis results to tabular format for integration with existing systems
 
 **Advanced analysis capabilities:**
 
@@ -163,28 +149,14 @@ Once a graph is established (through `make-graph` or from a snapshot), you can l
 
 These capabilities support diverse use cases including customer journey analysis, product recommendation systems, IoT networks, digital twins, and knowledge graphs.
 
+:::moniker range="azure-data-explorer || microsoft-fabric"
 ## Choosing the right approach
 
 The following decision tree helps you select the most appropriate graph creation approach based on your specific requirements and constraints.
 
 ### Decision Tree: Transient vs Persistent Graphs
 
-```mermaid
-flowchart TD
-    Start([Which graph approach should I use?]) --> Size{Graph size > 10M nodes/edges?}
-    
-    Size -->|Yes| Persistent[🏛️ Use Persistent Graphs]
-    Size -->|No| Teams{Multiple teams or<br/>repeated analysis?}
-    
-    Teams -->|Yes| Persistent
-    Teams -->|No| Transient[⚡ Use Transient Graphs]
-    
-    style Start fill:#e1f5fe,stroke:#0277bd,color:#000
-    style Persistent fill:#c8e6c9,stroke:#2e7d32,color:#000
-    style Transient fill:#fff3e0,stroke:#ef6c00,color:#000
-    style Size fill:#f3e5f5,stroke:#7b1fa2,color:#000
-    style Teams fill:#f3e5f5,stroke:#7b1fa2,color:#000
-```
+:::image type="content" source="media/graphs/decision-matrix-persistent-or-transient.png" alt-text="Flowchart showing a decision tree when to use persistent or transient graphs":::
 
 ### When to use transient graphs?
 
@@ -230,6 +202,7 @@ External data source dependencies (Kusto, SQL, Cosmos DB) can significantly affe
 
 - **Transient graphs** - Always reflect current data state, ideal for real-time analysis
 - **Persistent graphs** - Reflect data at snapshot creation time, providing consistency for collaborative analysis but requiring periodic refreshes
+::::moniker-end
 
 ## Integration with KQL ecosystem
 
