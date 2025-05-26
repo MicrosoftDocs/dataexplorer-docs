@@ -16,7 +16,7 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "/kusto/query/graph-overview.md",
+      "source_path": "kusto/query/graph-overview.md",
       "redirect_url": "/kusto/query/graph-semantics-overview.md",
       "redirect_document_id": false
     },

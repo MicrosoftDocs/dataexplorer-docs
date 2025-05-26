@@ -18,6 +18,7 @@ Graph semantics in Kusto enables you to model and query data as interconnected n
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
+>
 > * Create a transient graph using the make-graph operator
 > * Query graphs to find relationships using graph-match
 > * Build persistent graph models for reusable analysis
@@ -342,4 +343,4 @@ You can also explore these related topics:
 * [Graph operators reference](../graph-operators.md) - Complete guide to all available graph operators
 * [Graph model management](../../management/graph/graph-model-overview.md) - Deep dive into persistent graph models  
 * [Graph shortest paths](../graph-shortest-paths-operator.md) - Find optimal paths between entities
-* [Advanced graph queries](../graph-advanced-scenarios.md) - Complex analysis patterns and use cases
+* [Advanced graph queries](../graph-scenarios.md) - Complex analysis patterns and use cases

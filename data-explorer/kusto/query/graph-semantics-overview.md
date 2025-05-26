@@ -16,35 +16,13 @@ Graphs excel at representing complex data with many-to-many relationships, hiera
 
 The following graph illustrates a cybersecurity attack path scenario. Nodes represent entities such as external sources, users, and critical assets, while edges represent actions or relationships that form a potential attack sequence.
 
-```mermaid
-graph TD
-    EXT[🌐 External IP] -->|phishing email| U1[👤 User: Alice]
-    U1 -->|compromised credentials| S1[🖥️ Workstation]
-    S1 -->|lateral movement| FS[🗄️ File Server]
-    FS -->|accesses| DB[🗄️ Sensitive Database]
-    
-    style EXT fill:#ff6b6b,stroke:#d63031,color:#fff
-    style U1 fill:#f3e5f5,stroke:#7b1fa2,color:#000
-    style S1 fill:#e8f5e8,stroke:#2e7d32,color:#000
-    style FS fill:#fff3e0,stroke:#ef6c00,color:#000
-    style DB fill:#ffd93d,stroke:#fdcb6e,color:#000
-```
+:::image type="content" source="media/graphs/graph-scenario-cybersecurity.png" alt-text="Graph showing the cybersecurity scenario including  phishing email and path to accessing a sensitive database.":::
 
 Graph queries leverage graph structure to perform sophisticated operations such as finding paths, patterns, shortest distances, communities, and centrality measures. These capabilities make graphs powerful for modeling relationships, interactions, dependencies, and flows across domains—including social networks, supply chains, IoT device networks, digital twins, recommendation systems, and organizational structures.
 
 The following graph shows a supply chain scenario where nodes represent suppliers, manufacturers, and distributors, and edges represent supply relationships. This example demonstrates how graphs model flows and dependencies across different business contexts.
 
-```mermaid
-graph TD
-    S1[🏭 Supplier A] -->|supplies| M1[🏢 Manufacturer X]
-    S2[🏭 Supplier B] -->|supplies| M1
-    M1 -->|ships to| D1[🚚 Distributor Y]
-    
-    style S1 fill:#e1f5fe,stroke:#0277bd,color:#000
-    style S2 fill:#f3e5f5,stroke:#7b1fa2,color:#000
-    style M1 fill:#e8f5e8,stroke:#2e7d32,color:#000
-    style D1 fill:#fff3e0,stroke:#ef6c00,color:#000
-```
+:::image type="content" source="media/graphs/graph-supply-chain.png" alt-text="Graph of two suppliers, manufacturer, and distributor, and the supply relationship":::
 
 ## Why use graph semantics in Kusto?
 
