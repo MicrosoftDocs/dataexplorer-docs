@@ -223,6 +223,9 @@ reports
 
 ## Create a persistent graph
 
+> [!NOTE]
+> This feature is currently in Public Preview. Functionality and syntax are subject to change before General Availability.
+
 Now let's create the same organizational structure as a persistent graph. Persistent graphs are stored in the database and can be queried repeatedly without rebuilding the graph structure.
 
 ### Step 1: Create the graph model
