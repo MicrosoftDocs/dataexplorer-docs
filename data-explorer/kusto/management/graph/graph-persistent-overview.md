@@ -10,6 +10,9 @@ ms.date: 05/24/2025
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
+> [!NOTE]
+> This feature is currently in Public Preview. Functionality and syntax are subject to change before General Availability.
+
 Persistent graphs in Kusto enable you to store, manage, and query graph data structures at scale. Unlike transient graphs created with the [make-graph](../../query/make-graph-operator.md) operator, persistent graphs are durable database objects that persist beyond individual query executions, providing enterprise-grade graph analytics capabilities.
 
 ## Overview

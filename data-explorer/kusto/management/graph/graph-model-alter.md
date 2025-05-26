@@ -10,6 +10,9 @@ ms.date: 05/24/2025
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
+> [!NOTE]
+> This feature is currently in Public Preview. Functionality and syntax are subject to change before General Availability.
+
 Modifies an existing graph model in the database.
 
 ## Syntax
