@@ -58,11 +58,7 @@ Kusto's graph capabilities offer significant advantages by **leveraging existing
 
 This approach delivers **enterprise-grade relationship modeling** while maintaining Kusto's performance, scale, and familiar interface. Organizations can analyze complex interconnected data across domains—from supply chains and organizational hierarchies to IoT device networks and social relationships—without extra infrastructure investments.
 
-## Graph creation approaches in Kusto
-
-Kusto provides two distinct approaches for creating and working with graphs, each optimized for different scenarios and requirements.
-
-### 1. Transient graphs
+## Transient graph creation approach
 
 Transient graphs are created dynamically using the [`make-graph`](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) operator. These graphs exist in memory during query execution and are automatically discarded when the query completes.
 
@@ -87,9 +83,11 @@ Transient graphs excel in several scenarios:
 
 Common applications include real-time IoT monitoring, supply chain relationship analysis, customer journey mapping, and any scenario requiring immediate visualization of entity relationships.
 
-### 2. Persistent graphs
+:::moniker range="azure-data-explorer || microsoft-fabric"
 
-Persistent graphs use [graph models](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true) to provide robust solutions for large-scale, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, and other interconnected data domains.
+## Persistent graph creation approach
+
+Persistent graphs use [graph models](/kusto/management/graph/graph-model-overview.md) and [graph snapshots](/kusto/management/graph/graph-snapshot-overview.md) to provide robust solutions for large-scale, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, and other interconnected data domains.
 
 #### Key characteristics for persistent graphs
 
@@ -145,6 +143,7 @@ IoT and digital twin applications benefit significantly from persistent graphs w
 - Simulate operating conditions before implementing physical infrastructure changes
 
 This persistent approach proves invaluable for managing complex IoT ecosystems at scale.
+:::moniker-end
 
 ## Graph querying capabilities
 
@@ -187,7 +186,7 @@ flowchart TD
     style Teams fill:#f3e5f5,stroke:#7b1fa2,color:#000
 ```
 
-### Use transient graphs when
+### When to use transient graphs?
 
 Choose transient graphs for:
 
@@ -199,7 +198,7 @@ Choose transient graphs for:
 
 While transient graphs can handle larger datasets, query execution time increases as the graph must be reconstructed for every query. Consider this performance trade-off when working with larger datasets.
 
-### Use persistent graphs when
+### When to use persistent graphs?
 
 Choose persistent graphs for:
 
@@ -247,7 +246,6 @@ This integration enables sophisticated workflows including supply chain evolutio
 
 - [Common scenarios for using KQL graph semantics](graph-scenarios.md)
 - [Best practices for KQL graph semantics](graph-best-practices.md)
-- [Graph operators](/kusto/query/graph-operator?view=azure-data-explorer&preserve-view=true)
-- [make-graph operator](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true)
-- [Graph model overview](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true)
-- [Graph snapshots overview](/kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true)
+- [Graph operators](make-graph-operator.md)
+- [Graph model overview](../management/graph/graph-model-overview.md)
+- [Graph snapshots overview](../management/graph/graph-snapshot-overview.md)
