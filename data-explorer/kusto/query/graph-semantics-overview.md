@@ -40,7 +40,7 @@ This approach delivers **enterprise-grade relationship modeling** while maintain
 
 Transient graphs are created dynamically using the [`make-graph`](/kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true) operator. These graphs exist in memory during query execution and are automatically discarded when the query completes.
 
-#### Key characteristics
+### Key characteristics
 
 - **Dynamic creation** - Built from tabular data using KQL queries with the entire structure residing in memory
 - **Immediate availability** - No preprocessing or setup requirements
@@ -49,7 +49,7 @@ Transient graphs are created dynamically using the [`make-graph`](/kusto/query/m
 
 This approach is optimal for smaller to medium-sized datasets where immediate analysis is needed.
 
-#### Use cases for transient graphs
+### Use cases for transient graphs
 
 Transient graphs excel in several scenarios:
 
@@ -67,7 +67,7 @@ Common applications include real-time IoT monitoring, supply chain relationship 
 
 Persistent graphs use [graph models](../management/graph/graph-model-overview.md) and [graph snapshots](../management/graph/graph-snapshot-overview.md) to provide robust solutions for large-scale, complex graphs representing organizational networks, supply chains, IoT ecosystems, digital twins, and other interconnected data domains.
 
-#### Key characteristics for persistent graphs
+### Key characteristics for persistent graphs
 
 - **Persistent storage** - Graph models and snapshots are stored in database metadata for durability and consistency
 - **Scalability** - Handle graphs exceeding memory limitations with enterprise-scale analysis capabilities
@@ -78,7 +78,7 @@ Persistent graphs use [graph models](../management/graph/graph-model-overview.md
 
 The schema capability supports both static labels (predefined in the graph model) and dynamic labels (generated at runtime from data), providing flexibility for complex environments with diverse entity types.
 
-#### Use cases for persistent graphs
+### Use cases for persistent graphs
 
 Persistent graphs are essential for:
 

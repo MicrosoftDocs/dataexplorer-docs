@@ -26,7 +26,7 @@ The `graph` function is an intrinsic function that enables querying of a persist
 
 | Name           | Type     | Required           | Description                                                                 |
 |----------------|----------|--------------------|-----------------------------------------------------------------------------|
-| *GraphName*    | `string` | :heavy_check_mark: | The name of the persisted graph model to query. |
+| *GraphName*    | `string` | :heavy_check_mark: | The name of the [graph model](../management/graph/graph-model-overview.md) to query. |
 | *SnapshotName* | `string` |                    | The name of a specific snapshot to retrieve. If not specified, the most recent snapshot is used. |
 
 ## Returns
@@ -71,5 +71,7 @@ graph("SecurityGraph", snapshot="Snapshot_2025_05_01")
 ## Related content
 
 * [Graph semantics overview](graph-semantics-overview.md)
+* [Persistent graphs overview](../management/graph/graph-persistent-overview.md)
+* [Graph model overview](../management/graph/graph-model-overview.md)
 * [Graph snapshots overview](../management/graph/graph-snapshot-overview.md)
 * [Graph operators](graph-operators.md)
