@@ -1306,6 +1306,9 @@ items:
           - name: inner_nodes()
             displayName: inner nodes() graph function, inner nodes
             href: inner-nodes-graph-function.md
+          - name: labels()
+            displayName: labels() graph function, labels
+            href: labels-graph-function.md
           - name: node_degree_in()
             displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in
             href: node-degree-in.md
