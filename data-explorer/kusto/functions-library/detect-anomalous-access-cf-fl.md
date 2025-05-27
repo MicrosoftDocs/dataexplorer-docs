@@ -31,7 +31,7 @@ The model outputs an access anomaly score in the range [0, 1], where 0 indicates
 | *entityColumnName* | `string` |  :heavy_check_mark: | The name of the input table column containing entity names or IDs for which the cf model is calculated. |
 | *resourceColumnName* | `string` |  :heavy_check_mark: | The name of the input table column containing resource names or IDs for which the model is calculated. |
 | *scopeColumnName* | `string` |  :heavy_check_mark: | The name of the input table column containing the partition or scope, so that a different anomaly model is built for each scope. |
-| *timeColumnName* | `string` |  :heavy_check_mark: | The name of the input table column containing the timestamps, that are used to define the training and detection periods. |
+| *timeColumnName* | `string` |  :heavy_check_mark: | The name of the input table column containing the timestamps that are used to define the training and detection periods. |
 | *startTraining* | `datetime` |  :heavy_check_mark: | The beginning of the training period for the anomaly model. Its end is defined by the beginning of detection period. |
 | *startDetection* | `datetime` |  :heavy_check_mark: | The beginning of the detection period for anomaly detection. |
 | *endDetection* | `datetime` |  :heavy_check_mark: | The end of the detection period for anomaly detection. |
