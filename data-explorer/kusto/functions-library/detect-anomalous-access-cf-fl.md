@@ -3,7 +3,7 @@ title: detect_anomalous_access_cf_fl()
 description: Learn how to use the detect_anomalous_access_cf_fl() function to detect anomalous access using collaborative filtering.
 ms.reviewer: shaysakazi
 ms.topic: reference
-ms.date: 28/04/2025
+ms.date: 05/26/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # detect_anomalous_access_cf_fl()
