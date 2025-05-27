@@ -1,26 +1,6 @@
 {
   "redirections": [
     {
-      "source_path": "graph-best-practices.md",
-      "redirect_url": "/kusto/query/graph-best-practices",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "graph-overview.md",
-      "redirect_url": "/kusto/query/graph-semantics-overview.md",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "graph-scenarios.md",
-      "redirect_url": "/kusto/query/graph-scenarios.md",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "kusto/query/graph-overview.md",
-      "redirect_url": "/kusto/query/graph-semantics-overview.md",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "security-baseline.md",
       "redirect_url": "/security/benchmark/azure/baselines/data-explorer-security-baseline",
       "redirect_document_id": false
