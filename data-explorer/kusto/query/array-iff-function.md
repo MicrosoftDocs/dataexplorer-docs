@@ -40,6 +40,8 @@ Returns a dynamic array of the values taken either from the *when_true* or *when
 
 ## Examples
 
+The following example shows how to use the `array_iff()` function to evaluate elements in an array.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOz0vJLMnMz7NNqcxLzM1M1oguKSpN1UlLzClO1QExYzV1FHIQsoY6RjrGILEihJiJjqmOWaymAi9XjUJqRUlqXopCUWqxbWJRUWJlfGZmmgbcFqBRQJ2aACda2uZ8AAAA" target="_blank">Run the query</a>
@@ -56,7 +58,7 @@ print condition=dynamic([true,false,true]), if_true=dynamic([1,2,3]), if_false=d
 |---|---|---|---|
 |[true, false, true]|[1, 2, 3]|[4, 5, 6]|[1, 5, 3]|
 
-### Numeric condition values
+The following example shows how numeric condition values are treated as boolean values.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -74,7 +76,7 @@ print condition=dynamic([1,0,50]), if_true="yes", if_false="no"
 |---|---|---|---|
 |[1, 0, 50]|yes|no|[yes, no, yes]|
 
-### Non-numeric and non-boolean condition values
+The following example shows how to use the `array_iff()` function with non-numeric and non-boolean condition values.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -92,7 +94,7 @@ print condition=dynamic(["some string value", datetime("01-01-2022"), null]), if
 |---|---|---|---|
 |[true, false, true]|1|0|[null, null, null]|
 
-### Mismatched array lengths
+The following example shows how the function handles mismatched array lengths.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
