@@ -74,18 +74,32 @@ To configure Fluent Bit to send logs to your table in Kusto, create a [classic m
 | tenant_id | The tenant ID from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). | :heavy_check_mark: |  |
 | client_id | The application ID from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). | :heavy_check_mark: |  |
 | client_secret | The client secret key value (password) from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). | :heavy_check_mark: |  |
+| managed_identity_client_id | The client ID of the managed identity to use for authentication. | :heavy_check_mark:  |  |
 | ingestion_endpoint | Enter the value as described for [Ingestion_Endpoint](#ingestion-uri). | :heavy_check_mark: |  |
 | database_name | The name of the database that contains your logs table. | :heavy_check_mark: |  |
 | table_name | The name of the table from [Create a target table](#create-a-target-table). | :heavy_check_mark: |  |
 | ingestion_mapping_reference | The name of the ingestion mapping from [Create a target table](#create-a-target-table). If you didn't create an ingestion mapping, remove the property from the configuration file. |  |  |
 | log_key | Key name of the log content. For instance, `log`. |  | `log` |
+| include_tag_key | If enabled, a tag is appended to output.|  | `On` |
 | tag_key | The key name of tag. Ignored if `include_tag_key` is false. |  | `tag` |
-| include_time_key | A timestamp is appended to output, if enabled. Uses the `time_key` property. |  | `true` |
+| include_time_key | A timestamp is appended to output, if enabled. Uses the `time_key` property. |  | `On` |
 | time_key | The key name for the timestamp in the log records. Ignored if `include_time_key` false. |  | `timestamp` |
-| ingestion_endpoint_connect_timeout | The connection timeout of various Kusto endpoints in seconds. |   | `60s` |
+| ingestion_endpoint_connect_timeout | The connection timeout of various Kusto endpoints in seconds. |   | `60` |
 | compression_enabled | Sends compressed HTTP payload (gzip) to Kusto, if enabled. |  | `true` |
-| ingestion_resources_refresh_interval | The ingestion resources refresh interval of Kusto endpoint in seconds. |  | `3600` |
+| ingestion_resources_refresh_interval | The ingestion resources refresh interval of Kusto endpoint in seconds. |  |  |
 | workers | The number of [workers](https://docs.fluentbit.io/manual/administration/multithreading#outputs) to perform flush operations for this output. |  | `0` |
+| buffering_enabled | If enabled, buffers data into disk before ingesting into Kusto. |  | `Off` |
+| buffer_path | Specifies the location of the directory where the buffered data will be stored if `buffering_enabled` is `On`. |  | `/tmp/fluent-bit/azure-kusto/` |
+| upload_timeout | Specifies the timeout for uploads if `buffering_enabled` is `On`. Files older than this are ingested even if below size limit. | | `30m` |
+| upload_file_size | Specifies the maximum size of a file to be uploaded if `buffering_enabled` is `On`. | | `200MB` |
+| azure_kusto_buffer_key | Azure Kusto buffer key to identify plugin instances when `buffering_enabled` is `On`. Required for multiple Azure Kusto outputs with buffering. |  | `key` |
+| store_dir_limit_size | The maximum size of the directory where buffered data is stored if `buffering_enabled` is `On`. |  | `8GB` |
+| buffer_file_delete_early| When `buffering_enabled` is `On`, whether to delete the buffered file early after successful blob creation. |  | `Off` |
+| unify_tag | Creates a single buffer file when `buffering_enabled` is `On`. | | `On` |
+| blob_uri_length | Set the length of generated blob URI before ingesting to Kusto. | | `64` |
+| scheduler_max_retries | When `buffering_enabled` is `On`, set the maximum number of retries for ingestion using the scheduler. | | `3` |
+| delete_on_max_upload_error | When `buffering_enabled` is `On`, whether to delete the buffer file on maximum upload errors. | | `Off` |
+| IO_timeout | Configure the HTTP IO timeout for uploads. | | `60s` |
 
 To see an example configuration file, select the relevant tab:
 
@@ -110,18 +124,31 @@ To see an example configuration file, select the relevant tab:
     Refresh_Interval 10
 
 [OUTPUT]
-    match *
-    name azure_kusto
-    tenant_id <TenantId>
-    client_id <ClientId>
-    client_secret <AppSecret>
-    ingestion_endpoint <IngestionEndpoint>
-    database_name <DatabaseName>
-    table_name <TableName>
-    ingestion_mapping_reference <MappingName>
-    ingestion_endpoint_connect_timeout <IngestionEndpointConnectTimeout>
-    compression_enabled <CompressionEnabled>
-    ingestion_resources_refresh_interval <IngestionResourcesRefreshInterval>
+    [OUTPUT]
+    Match *
+    Name azure_kusto
+    Tenant_Id <app_tenant_id>
+    Client_Id <app_client_id>
+    Client_Secret <app_secret>
+    Ingestion_Endpoint https://ingest-<cluster>.<region>.kusto.windows.net
+    Database_Name <database_name>
+    Table_Name <table_name>
+    Ingestion_Mapping_Reference <mapping_name>
+    ingestion_endpoint_connect_timeout <ingestion_endpoint_connect_timeout>
+    compression_enabled <compression_enabled>
+    ingestion_resources_refresh_interval <ingestion_resources_refresh_interval>
+    buffering_enabled On
+    upload_timeout 2m
+    upload_file_size 125M
+    azure_kusto_buffer_key kusto1
+    buffer_file_delete_early Off
+    unify_tag On
+    buffer_dir /var/log/
+    store_dir_limit_size 16GB
+    blob_uri_length 128
+    scheduler_max_retries 3
+    delete_on_max_upload_error Off
+    io_timeout 60s
 ```
 
 ### [YAML mode](#tab/yaml)
@@ -160,18 +187,31 @@ config:
 
   outputs: |
     [OUTPUT]
-        match *
-        name azure_kusto
-        tenant_id <TenantId>
-        client_id <ClientId>
-        client_secret <AppSecret>
-        ingestion_endpoint <IngestionEndpoint>
-        database_name <DatabaseName>
-        table_name <TableName>
-        ingestion_mapping_reference <MappingName>
-        ingestion_endpoint_connect_timeout <IngestionEndpointConnectTimeout>
-        compression_enabled <CompressionEnabled>
-        ingestion_resources_refresh_interval <IngestionResourcesRefreshInterval>
+        [OUTPUT]
+    Match *
+    Name azure_kusto
+    Tenant_Id <app_tenant_id>
+    Client_Id <app_client_id>
+    Client_Secret <app_secret>
+    Ingestion_Endpoint https://ingest-<cluster>.<region>.kusto.windows.net
+    Database_Name <database_name>
+    Table_Name <table_name>
+    Ingestion_Mapping_Reference <mapping_name>
+    ingestion_endpoint_connect_timeout <ingestion_endpoint_connect_timeout>
+    compression_enabled <compression_enabled>
+    ingestion_resources_refresh_interval <ingestion_resources_refresh_interval>
+    buffering_enabled On
+    upload_timeout 2m
+    upload_file_size 125M
+    azure_kusto_buffer_key kusto1
+    buffer_file_delete_early Off
+    unify_tag On
+    buffer_dir /var/log/
+    store_dir_limit_size 16GB
+    blob_uri_length 128
+    scheduler_max_retries 3
+    delete_on_max_upload_error Off
+    io_timeout 60s
 ```
 
 ---
