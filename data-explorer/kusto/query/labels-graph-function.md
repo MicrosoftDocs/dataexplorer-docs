@@ -10,7 +10,7 @@ ms.date: 05/26/2025
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 > [!NOTE]
-> This feature is currently in Public Preview. Functionality and syntax are subject to change before General Availability.
+> This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
 
 The `labels()` graph function retrieves the labels associated with nodes or edges in a graph. It can be used both for filtering elements based on their labels and for projecting label information in query results.
 

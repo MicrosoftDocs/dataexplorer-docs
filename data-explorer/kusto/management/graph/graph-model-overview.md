@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 05/24/2025
 ---
 
-# Graph models overview (Preview)
+# Graph models overview (preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 > [!NOTE]
-> This feature is currently in Public Preview. Functionality and syntax are subject to change before General Availability.
+> This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
 
 Graph models in Azure Data Explorer enable you to define, manage, and efficiently query persistent graph structures within your database. Unlike transient graphs created using the [make-graph](../../query/make-graph-operator.md) operator, graph models are stored representations that can be queried repeatedly without rebuilding the graph for each query, significantly improving performance for complex relationship-based analysis.
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 05/24/2025
 ---
 
-# Graph snapshots overview (Preview)
+# Graph snapshots overview (preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 > [!NOTE]
-> This feature is currently in Public Preview. Functionality and syntax are subject to change before General Availability.
+> This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
 
 A graph snapshot is a database entity that represents a materialized instance of a graph model at a specific point in time. While a [graph model](graph-model-overview.md) defines the structure and data sources, a snapshot is the queryable graph implementation.
 
