@@ -10,7 +10,7 @@ ms.date: 02/26/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Geospatial data can be visualized as part of your query using the [render operator](render-operator.md) as [points](#example-visualize-points-on-a-map), [pies, or bubbles](#visualization-of-pies-or-bubbles-on-a-map) on a map.
+Geospatial data can be visualized as part of your query using the [render operator](render-operator.md) as points, pies, or bubbles on a map.
 
 For more information about geospatial clustering, see [Geospatial clustering](geospatial-grid-systems.md).
 
