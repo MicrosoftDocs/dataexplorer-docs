@@ -28,9 +28,9 @@ Produces a table with the distinct combination of the provided columns of the in
 > [!NOTE]
 > The `distinct` operator supports providing an asterisk `*` as the group key to denote all columns, which is helpful for wide tables.
 
-## Example
+## Examples
 
-Shows distinct combination of states and type of events that led to over 45 direct injuries.
+The following example shows how to use the `distinct` operator to create a table with the distinct combination of the columns of the input table.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
