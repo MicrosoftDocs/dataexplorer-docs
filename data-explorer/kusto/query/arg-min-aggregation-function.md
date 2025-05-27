@@ -41,7 +41,7 @@ Returns a row in the table that minimizes *ExprToMinimize*, and the values of co
 
 ## Examples
 
-Find the minimum latitude of a storm event in each state.
+The following example finds the maximum latitude of a storm event in each state.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -137,11 +137,7 @@ The arg_min() function differs from the [min() function](min-aggregation-functio
 
 ### Examples
 
-#### arg_min()
-
-Find the first time an event with a direct death happened, showing all the columns in the table.
-
-The query first filters the events to only include those where there was at least one direct death. Then the query returns the entire row with the lowest value for StartTime.
+The following example uses arg_min() to find the last time an event with a direct death happened in each state, showing all the columns.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -160,11 +156,7 @@ The results table returns all the columns for the row containing the lowest valu
 |--|--|--|--|
 | 2007-01-01T00:00:00Z | 2007-01-22T18:49:00Z | 2408 | 11929 | INDIANA | Flood | ... |
 
-#### min()
-
-Find the first time an event with a direct death happened.
-
-The query filters events to only include those where there is at least one direct death, and then returns the minimum value for StartTime.
+The following example uses the min() function to find the last time an event with a direct death happened in each state, but only returns the minimum value of StartTime.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

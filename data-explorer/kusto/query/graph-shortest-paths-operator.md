@@ -51,10 +51,6 @@ The `graph-shortest-paths` operator returns a tabular result, where each record 
 
 ## Examples
 
-This section provides practical examples demonstrating how to use the `graph-shortest-paths` operator in different scenarios.
-
-### Find `any` shortest path between two train stations
-
 The following example demonstrates how to use the `graph-shortest-paths` operator to find the shortest path between two stations in a transportation network. The query constructs a graph from the data in `connections` and finds the shortest path from the `"South-West"` to the `"North"` station, considering paths up to five connections long. Since the default output is `any`, it finds any shortest path.
 
 :::moniker range="azure-data-explorer"
@@ -90,8 +86,6 @@ connections
 |from|path|line|to|
 |---|---|---|---|
 |South-West|[<br>  "South",<br>  "Central",<br>  "North"<br>]|[<br>  "red",<br>  "red",<br>  "red"<br>]|North|
-
-### Find all shortest paths between two train stations
 
 The following example, like the previous example, finds the shortest paths in a transportation network. However, it uses `output=all`, so returns all shortest paths.
 

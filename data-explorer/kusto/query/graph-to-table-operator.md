@@ -53,11 +53,7 @@ The `graph-to-table` operator returns two tabular results, matching the previous
 
 ## Examples
 
-The following examples use the `make-graph` operator to build a graph from edges and nodes tables. The nodes represent people and systems, and the edges are different relations between nodes. Then, each example shows a different usage of `graph-to-table`.
-
-### Get edges
-
-In this example, the `graph-to-table` operator exports the edges from a graph to a table. The `with_source_id` and `with_target_id` parameters export the node hash for source and target nodes of each edge.
+The following example denonstrates how the `graph-to-table` operator exports the edges from a graph to a table. The `with_source_id` and `with_target_id` parameters export the node hash for source and target nodes of each edge.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -100,7 +96,7 @@ edges
 
 ### Get nodes
 
-In this example, the `graph-to-table` operator exports the nodes from a graph to a table. The `with_node_id` parameter exports the node hash.
+The following example shows how the `graph-to-table` operator exports the nodes from a graph to a table. The `with_node_id` parameter exports the node hash.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -139,9 +135,7 @@ edges
 |2533909231875758225|Trent|System|99|
 |3855580634910899594|Mallory|||
 
-### Get nodes and edges
-
-In this example, the `graph-to-table` operator exports the nodes and edges from a graph to a table.
+The following example uses the `graph-to-table` operator to export the nodes and edges from a graph to a table.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
