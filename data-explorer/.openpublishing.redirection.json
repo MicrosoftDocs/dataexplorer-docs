@@ -5,7 +5,7 @@
       "redirect_url": "/kusto/query/graph-best-practices",
       "redirect_document_id": false
     },
-   {
+    {
       "source_path": "graph-overview.md",
       "redirect_url": "/kusto/query/graph-semantics-overview.md",
       "redirect_document_id": false
