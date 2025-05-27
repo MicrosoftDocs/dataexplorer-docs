@@ -37,6 +37,8 @@ Returns a row in the table that maximizes the specified expression *ExprToMaximi
 
 ## Examples
 
+### General examples
+
 The following example finds the maximum latitude of a storm event in each state.
 
 :::moniker range="azure-data-explorer"
@@ -66,7 +68,6 @@ The results table displays only the first 10 rows.
 | SOUTH CAROLINA       | 35.18    | LANDRUM              |
 | TEXAS                | 36.4607  | DARROUZETT           |
 | ...             | ...    | ...            |
-
 
 The following example finds the last time an event with a direct death happened in each state, showing all the columns.
 
@@ -101,7 +102,6 @@ The results table displays only the first 10 rows and first three columns.
 | LAKE MICHIGAN | 2007-06-07T13:00:00Z | 2007-06-07T13:00:00Z | ... |
 | ... | ... | ... | ... |
 
-
 The following example demonstrates null handling.
 
 :::moniker range="azure-data-explorer"
@@ -129,16 +129,11 @@ datatable(Fruit: string, Color: string, Version: int) [
 | Banana |  | Yellow |
 | Pear | 2 | Green |
 
-## Comparison to max()
+### Examples comparing arg_max() and max()
 
 The arg_max() function differs from the [max() function](max-aggregation-function.md). The arg_max() function allows you to return other columns along with the maximum value, and [max()](max-aggregation-function.md) only returns the maximum value itself.
 
-### Examples
-
-#### arg_max()
-
-The following example finds the last time an event with a direct death happened, showing all the columns in the table.
-
+The following example uses arg_max() to find the last time an event with a direct death happened in each state, showing all the columns.
 The query first filters the events to only include events where there was at least one direct death. Then the query returns the entire row with the most recent (maximum) StartTime.
 
 :::moniker range="azure-data-explorer"
@@ -158,11 +153,7 @@ The results table returns all the columns for the row containing the highest val
 |--|--|--|--|
 | 2007-12-31T15:00:00Z | 2007-12-31T15:00:00 | 	12688 | 69700 | UTAH | Avalanche | ... |
 
-#### max()
-
-Find the last time an event with a direct death happened.
-
-The query filters events to only include events where there is at least one direct death, and then returns the maximum value for StartTime.
+The following example uses the max() function to find the last time an event with a direct death happened in each state, but only returns the maximum value of StartTime.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

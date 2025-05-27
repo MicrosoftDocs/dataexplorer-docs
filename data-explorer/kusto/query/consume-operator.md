@@ -14,11 +14,8 @@ Consumes the tabular data stream handed to the operator.
 The `consume` operator is mostly used for triggering the query side-effect without actually returning
 the results back to the caller.
 
-The `consume` operator can be used for estimating the
-cost of a query without actually delivering the results back to the client.
-(The estimation isn't exact for various reasons; for example, `consume`
-is calculated distributively, so `T | consume` won't transmit the table's
-data between the nodes of the cluster.)
+The `consume` operator can be used for estimating the cost of a query without actually delivering the results back to the client.
+(The estimation isn't exact for various reasons; for example, `consume` is calculated distributively, so `T | consume` won't transmit the table's data between the nodes of the cluster.)
 
 ## Syntax
 
@@ -32,9 +29,13 @@ data between the nodes of the cluster.)
 |--|--|--|--|
 | *DecodeBlocks* | `bool` | | If set to `true`, or if the request property `perftrace` is set to `true`, the `consume` operator won't just enumerate the records at its input, but actually force each value in those records to be decompressed and decoded.|
 
-## Example
+### Returns
 
-The following example consumes the results of a query without returning any data to the client.
+The `consume` operator returns the same tabular data stream as its input, but it doesn't return the data to the client.
+
+## Examples
+
+The following example shows how to use the `consume` operator to trigger the query side-effect without actually returning the results back to the caller.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -47,5 +48,7 @@ StormEvents
 | consume
 ```
 
+In this example, the query filters the `StormEvents` table for rows where the `State` is "TEXAS" and then applies the `consume` operator. The data is processed, but no results are returned to the client.
+
 **Output**
-No rows to show.
+The results table is empty, as the `consume` operator does not return any data to the client.
