@@ -122,7 +122,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|- [KQL graph semantics overview (preview)](graph-overview.md) <br/> - [KQL graph semantics best practices (preview)](graph-best-practices.md) <br/> - [Common scenarios for using KQL graph semantics (preview)?](graph-scenarios.md) | New articles. Describes how to use Kusto Query Language (KQL) graph semantics.|
+|- [KQL graph semantics overview (preview)](/kusto/query/graph-semantics-overview?view=azure-data-explorer&preserve-view=true) <br/> - [KQL graph semantics best practices (preview)](/kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true) <br/> - [Common scenarios for using KQL graph semantics (preview)?](/kusto/query/graph-scenarios?view=azure-data-explorer&preserve-view=true) | New articles. Describes how to use Kusto Query Language (KQL) graph semantics.|
 | [How to ingest historical data](ingest-data-historical.md)| New article. Describes how to use LightIngest to ingest historical or ad hoc data into Azure Data Explorer.|
 |- [Ingest data from Splunk to Azure Data Explorer](ingest-data-splunk.md) <br/> - [Data connectors overview](integrate-data-overview.md)| New article that describes how to ingest data into Azure Data Explorer from Splunk, and updated data connector overview with additional capabilities.|
 | [KQL learning resources](kql-learning-resources.md)| New article. Describes the different learning resources for ramping up on KQL.|
