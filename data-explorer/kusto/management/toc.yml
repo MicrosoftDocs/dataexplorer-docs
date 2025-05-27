@@ -226,8 +226,6 @@ items:
         items:
           - name: Persistent graph overview
             href: graph/graph-persistent-overview.md
-          - name: Persistent graph limitations
-            href: graph/graph-persistent-limitations.md
           - name: Graph model overview
             href: graph/graph-model-overview.md
           - name: .create-or-alter graph_model

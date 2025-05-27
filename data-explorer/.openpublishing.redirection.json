@@ -11,6 +11,21 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "graph-best-practices.md",
+      "redirect_url": "/kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "graph-overview.md",
+      "redirect_url": "/kusto/query/graph-semantics-overview?view=azure-data-explorer&preserve-view=true",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "graph-scenarios.md",
+      "redirect_url": "/kusto/query/graph-scenarios?view=azure-data-explorer&preserve-view=true",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "net-standard-ingest-data.md",
       "redirect_url": "/azure/data-explorer/net-sdk-ingest-data",
       "redirect_document_id": false

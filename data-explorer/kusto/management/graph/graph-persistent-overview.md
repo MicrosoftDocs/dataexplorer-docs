@@ -107,9 +107,17 @@ graph("MyGraphModel", "MyGraphSnapshot")
 
 The [`graph-match`](../../query/graph-match-operator.md) operator enables pattern matching and traversal operations, while [`graph-shortest-paths`](../../query/graph-shortest-paths-operator.md) helps find optimal connections between entities. The [`graph-to-table`](../../query/graph-to-table-operator.md) operator converts graph results back to tabular format.
 
-## Limitations
+## Key considerations
 
-For information about the current limitations of persistent graphs in Kusto, see [Graph persistent limitations](graph-persistent-limitations.md).
+This section describes key considerations and current limitations of graph models and snapshots in Kusto.
+
+### Snapshot limitations
+
+Persistent graphs in Kusto have the following limitations:
+
+- **Regular database limit**: Maximum of 5,000 graph snapshots per database
+- **Free virtual cluster limit**: Maximum of 500 graph snapshots per database
+- **Snapshot creation time**: Limited to 1 hour
 
 ## Next steps
 
