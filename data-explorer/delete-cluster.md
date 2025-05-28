@@ -32,11 +32,11 @@ To delete your Azure Data Explorer cluster:
 1. In the **Delete cluster** window, type in the name of the cluster. Then, select **Delete**.
 
     > [!CAUTION]
-    > Deleting a cluster is a permanent action and cannot be undone. All cluster content will be lost. To recover the cluster in the initial 14 days soft-delete period, please open a support ticket.
+    > Deleting a cluster is a permanent action and can't be undone. All cluster content is lost. To recover the cluster in the initial 14 days soft-delete period, open a support ticket.
 
 ## Opt out of soft delete
 
-You can opt out of the soft delete period by setting a tag on your cluster. Once you've set the tag, a deleted cluster won't enter the soft delete period and is permanently deleted immediately.
+You can opt out of the soft delete period by setting a tag on your cluster. Once you set the tag, a deleted cluster doesn't enter the soft delete period and is permanently deleted immediately.
 
 Tags can be set on Azure resources through the portal, PowerShell, Azure CLI, or ARM templates. For more information on these different methods, see [Use tags to organize your Azure resources](/azure/azure-resource-manager/management/tag-resources).
 
