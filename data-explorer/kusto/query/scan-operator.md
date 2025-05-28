@@ -230,6 +230,44 @@ Events
 |00:41:00|E|00:32:00|1|
 |01:15:00|A|01:15:00|2|
 
+### Calculating Session Length per User
+
+Calculate the session start time, end time, and duration for each user's session using the `scan` operator. A session is defined as a period between a user's login and the subsequent logout. By combining `partition` and `scan` with `output=none` and `output=all`, this pattern ensures that a **single row is returned per session** (i.e., per login/logout pair), rather than a row per event.
+
+The logic works by:
+- In step s1: Capturing the login timestamp using a scan step with `output=none`
+- In step s2: Emitting a row only when a matching logout is found using `output=all`
+
+```kusto
+let LogsEvents = datatable(Timestamp:datetime, userID:int, EventType:string)
+[
+    datetime(2024-05-28 08:15:23), 1, "login",
+    datetime(2024-05-28 08:30:15), 2, "login",
+    datetime(2024-05-28 09:10:27), 3, "login",
+    datetime(2024-05-28 12:30:45), 1, "logout",
+    datetime(2024-05-28 11:45:32), 2, "logout",
+    datetime(2024-05-28 13:25:19), 3, "logout"
+];
+LogsEvents
+| sort by userID, Timestamp
+| partition hint.strategy=native by userID (
+    sort by Timestamp asc 
+    | scan declare (start: datetime, end: datetime, sessionDuration: timespan) with (
+        step s1 output=none: EventType == "login" => start = Timestamp;
+        step s2 output=all: EventType == "logout" => start = s1.start, end = Timestamp, sessionDuration = Timestamp - s1.start;
+    )
+)
+| project start, end, userID, sessionDuration
+```
+
+**Output**
+|start                |end                  |userID|sessionDuration|
+|---------------------|---------------------|------|----------------|
+|2024-05-28 08:15:23.0000000|2024-05-28 12:30:45.0000000|1     |04:15:22        |
+|2024-05-28 09:10:27.0000000|2024-05-28 13:25:19.0000000|3     |04:14:52        |
+|2024-05-28 08:30:15.0000000|2024-05-28 11:45:32.0000000|2     |03:15:17        |
+
+
 ### Events between Start and Stop
 
 Find all sequences of events between the event `Start` and the event `Stop` that occur within 5 minutes. Assign a match ID for each sequence.
