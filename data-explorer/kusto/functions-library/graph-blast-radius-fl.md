@@ -28,8 +28,8 @@ The function outputs a list of connected targets for each source and also a scor
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *sourceIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the source node Ids (either for edges or paths). |
-| *targetIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the target node Ids (either for edges or paths). |
+| *sourceIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the source node IDs (either for edges or paths). |
+| *targetIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the target node IDs (either for edges or paths). |
 | *targetWeightColumnName* | `string` |   | The name of the column containing the target nodes' weights (such as criticality). If no relevant weights are present, the weighted score is equal to 0. The default column name is *noWeightsColumn*. |
 | *resultCountLimit* | `long` |   | The maximum number of returned rows (sorted by descending score). The default value is 100000. |
 | *listedIdsLimit* | `long` |   | The maximum number of targets listed for each source. The default value is 50. |
@@ -223,7 +223,7 @@ Running the function aggregates the connections or paths between sources and tar
 Each row in the output contains the following fields:
 
 * `sourceId`: ID of the source node taken from relevant column.
-* `blastRadiusList`: a list of target nodes Ids (taken from relevant column) that the source node is connected to. The list is capped to maximum length limit of listedIdsLimit parameter.
+* `blastRadiusList`: a list of target nodes IDs (taken from relevant column) that the source node is connected to. The list is capped to maximum length limit of listedIdsLimit parameter.
 * `blastRadiusScore`: the score is the count of target nodes that the source is connected to. High Blast Radius score indicates that the source node can potentially access lots of targets, and should be treated accordingly.
 * `blastRadiusScoreWeighted`: the weighted score is the sum of the optional target nodes' weight column, representing their value - such as criticality or cost. If such weight exists, weighted Blast Radius score might be a more accurate metric of source node value due to potential access to high value targets.
 * `isBlastRadiusListCapped`: boolean flag whether the list of targets was capped by listedIdsLimit parameter. If it's true, then other targets can be accessed from the source in addition to the listed one (up to the number of blastRadiusScore).

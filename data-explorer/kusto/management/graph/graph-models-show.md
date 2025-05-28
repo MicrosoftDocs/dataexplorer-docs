@@ -13,7 +13,7 @@ ms.date: 05/24/2025
 > [!NOTE]
 > This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
 
-Lists all graph models in the database, showing the latest version for each model by default.v
+Lists all graph models in the database, showing the latest version for each model by default.
 
 ## Permissions
 

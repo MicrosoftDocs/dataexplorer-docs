@@ -1,5 +1,5 @@
 ---
-title: Graph snapshots veorview
+title: Graph snapshots overview
 description: Learn about graph snapshots in Kusto, including their structure, benefits, and how to create and query them for efficient graph data analysis.
 ms.reviewer: herauch
 ms.topic: reference

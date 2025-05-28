@@ -19,8 +19,8 @@ Persistent graphs in Kusto enable you to store, manage, and query graph data str
 
 Persistent graphs consist of two primary components:
 
-1. **[Graph models](graph-model-overview.md)**: Define the structure and schema of your graph
-2. **[Graph snapshots](graph-snapshot-overview.md)**: Materialized instances of graph models that you can query
+- **[Graph models](graph-model-overview.md)**: Define the structure and schema of your graph
+- **[Graph snapshots](graph-snapshot-overview.md)**: Persistent instances of graph models that you can query
 
 This architecture provides both flexibility in defining graph schemas and efficiency in querying graph data at scale.
 
