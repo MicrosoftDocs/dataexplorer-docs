@@ -50,7 +50,7 @@ Navigate to your Microsoft Fabric workspace and open a KQL database to run the q
 Navigate to the advanced hunting page to start querying Microsoft Sentinel data.
 ::: moniker-end
 
-::: moniker range ="azure-monitor"
+::: moniker range="azure-monitor"
 Navigate to Logs or to a Logs Analytics workspace in the Azure portal to start querying Azure Monitor data.
 ::: moniker-end
 
