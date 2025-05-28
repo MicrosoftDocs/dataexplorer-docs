@@ -243,11 +243,18 @@ The function `graph_exposure_perimeter_fl()` can be used to calculate the Exposu
 
 ## Related content
 
+:::moniker range="microsoft-fabric || azure-data-explorer"
 * [Functions library](functions-library.md)
 * [Graph semantics overview](../query/graph-semantics-overview.md)
-:::moniker range="microsoft-fabric || azure-data-explorer"
-* [Graph function](graph-function.md)
-:::moniker-end
+* [Graph function](../query/graph-function.md)
 * [Graph scenarios](../query/graph-scenarios.md)
 * [Best practices](../query/graph-best-practices.md)
 * [graph-path-discovery-fl()](graph-path-discovery-fl.md)
+:::moniker-end
+:::moniker range="azure-monitor || microsoft-sentinel"
+* [Functions library](functions-library.md)
+* [Graph semantics overview](../query/graph-semantics-overview.md)
+* [Graph scenarios](../query/graph-scenarios.md)
+* [Best practices](../query/graph-best-practices.md)
+* [graph-path-discovery-fl()](graph-path-discovery-fl.md)
+:::moniker-end

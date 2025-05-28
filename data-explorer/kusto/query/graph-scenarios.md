@@ -3,7 +3,7 @@ title: Scenarios for using Kusto Query Language (KQL) graph semantics
 description: Learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 05/25/2025
+ms.date: 05/28/2025
 # Customer intent: As a data analyst, I want to learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ---
 
@@ -237,12 +237,20 @@ For detailed implementation examples and code samples, see the [Digital Twins sa
 
 ## Related content
 
+:::moniker range="microsoft-fabric || azure-data-explorer"
 - [Graph semantics overview](graph-semantics-overview.md)
 - [Best practices for KQL graph semantics](graph-best-practices.md)
-:::moniker range="microsoft-fabric || azure-data-explorer"
 - [Graph function](graph-function.md)
-:::moniker-end
 - [make-graph operator](make-graph-operator.md)
 - [Azure Kusto Graph Samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples)
 - [Advanced KQL graph capabilities for security analysis](https://github.com/Azure/azure-kusto-graph-samples/blob/main/graph%20of%20graph/advanced-kql-capabilities.md)
 - [Digital twins with KQL graph semantics](https://github.com/Azure/azure-kusto-graph-samples/tree/main/digital%20twins)
+:::moniker-end
+:::moniker range="azure-monitor || microsoft-sentinel"
+- [Graph semantics overview](graph-semantics-overview.md)
+- [Best practices for KQL graph semantics](graph-best-practices.md)
+- [make-graph operator](make-graph-operator.md)
+- [Azure Kusto Graph Samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples)
+- [Advanced KQL graph capabilities for security analysis](https://github.com/Azure/azure-kusto-graph-samples/blob/main/graph%20of%20graph/advanced-kql-capabilities.md)
+- [Digital twins with KQL graph semantics](https://github.com/Azure/azure-kusto-graph-samples/tree/main/digital%20twins)
+:::moniker-end

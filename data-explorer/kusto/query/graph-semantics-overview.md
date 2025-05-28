@@ -198,8 +198,17 @@ This integration enables sophisticated workflows including supply chain evolutio
 
 ## Related content
 
+:::moniker range="microsoft-fabric || azure-data-explorer"
 - [Common scenarios for using KQL graph semantics](graph-scenarios.md)
 - [Best practices for KQL graph semantics](graph-best-practices.md)
 - [Graph operators](make-graph-operator.md)
 - [Graph model overview](../management/graph/graph-model-overview.md)
 - [Graph snapshots overview](../management/graph/graph-snapshot-overview.md)
+:::moniker-end
+
+:::moniker range="azure-monitor || microsoft-sentinel"
+- [Common scenarios for using KQL graph semantics](graph-scenarios.md)
+- [Best practices for KQL graph semantics](graph-best-practices.md)
+- [Graph operators](make-graph-operator.md)
+- [Graph snapshots overview](../management/graph/graph-snapshot-overview.md)
+:::moniker-end

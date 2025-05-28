@@ -349,9 +349,14 @@ Now that you understand the basics of graph semantics in Kusto, advance to more 
 
 You can also explore these related articles:
 
-* [Graph operators reference](../graph-operators.md) - Complete guide to all available graph operators
 ::: moniker range="azure-data-explorer || microsoft-fabric"
+* [Graph operators reference](../graph-operators.md) - Complete guide to all available graph operators
 * [Graph model management](../../management/graph/graph-model-overview.md) - Deep dive into persistent graph models
-::: moniker-end
 * [Graph shortest paths](../graph-shortest-paths-operator.md) - Find optimal paths between entities
 * [Advanced graph queries](../graph-scenarios.md) - Complex analysis patterns and use cases
+::: moniker-end
+::: moniker range="microsoft-sentinel || azure-monitor"
+* [Graph operators reference](../graph-operators.md) - Complete guide to all available graph operators
+* [Graph shortest paths](../graph-shortest-paths-operator.md) - Find optimal paths between entities
+* [Advanced graph queries](../graph-scenarios.md) - Complex analysis patterns and use cases
+::: moniker-end
