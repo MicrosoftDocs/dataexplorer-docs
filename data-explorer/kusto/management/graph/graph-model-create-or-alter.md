@@ -106,7 +106,7 @@ This command returns a table with the following columns:
 
 |Name|CreationTime|ID|SnapshotsCount|Model|AuthorizedPrincipals|RetentionPolicy|
 |---|---|---|---|---|---|---|
-|SocialNetwork|2025-05-23 14:42:37.5128901|b709fec8-d821-45ab-9312-55e82c4f9203|0|model from above|[</br>  {</br>    "Type": "AAD User",</br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",</br>    "ObjectId": "83a7b95c-e0fd-4278-9ab9-c21435ea2673",</br>    "FQN": "aaduser=83a7b95c-e0fd-4278-9ab9-c21435ea2673;f5d01e3b-9a77-4970-b372-e38a3761c3c0",</br>    "Notes": "",</br>    "RoleAssignmentIdentifier": "ca831e09-f37d-48bf-9f6c-25038372019a"</br>  }</br>]|{</br>  "SoftDeletePeriod": "3650.00:00:00"</br>}|
+|SocialNetwork|2025-05-23 14:42:37.5128901|b709fec8-d821-45ab-9312-55e82c4f9203|0|model from above|[</br>  {</br>    "Type": "AAD User",</br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",</br>    "ObjectId": "aaaaaaaa-bbbb-cccc-1111-22222222222",</br>    "FQN": "aaduser=aaaaaaaa-bbbb-cccc-1111-22222222222;aaaabbbb-0000-cccc-1111-dddd2222eeee",</br>    "Notes": "",</br>    "RoleAssignmentIdentifier": "a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"</br>  }</br>]|{</br>  "SoftDeletePeriod": "3650.00:00:00"</br>}|
 
 ## Notes
 
