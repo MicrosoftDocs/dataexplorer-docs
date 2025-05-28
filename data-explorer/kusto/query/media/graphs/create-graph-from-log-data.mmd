@@ -1,0 +1,15 @@
+---
+config:
+  look: neo
+  theme: default
+---
+flowchart LR
+    IP1["31.56.96.51"] -- "Requests (GET)<br>timestamp: 2019-01-22 00:26:16" --> Prod1["/product/27"]
+    IP1 -- "Requests (GET)<br>timestamp: 2019-01-22 00:26:17" --> Prod2["/product/42"]
+    IP2["54.36.149.41"] -- "Requests (GET)<br>timestamp: 2019-01-22 00:26:14" --> Prod1
+    
+    classDef ip fill:#4a86e8,stroke:#333,color:white
+    classDef product fill:#4a86e8,stroke:#333,color:white
+    
+    class IP1,IP2 ip
+    class Prod1,Prod2 product

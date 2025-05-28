@@ -3,7 +3,7 @@ title: graph-mark-components operator (preview)
 description: Learn how to use the graph-mark-components operator to find and mark all connected components of a graph.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 02/17/2025
+ms.date: 05/25/2025
 ---
 # graph-mark-components operator (preview)
 
@@ -112,7 +112,7 @@ ChildOf
 
 ## Related content
 
-* [Best practices for Kusto Query Language (KQL) graph semantics](graph-best-practices.md)
+* [Graph best practices](graph-best-practices.md)
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
 * [graph-match operator](graph-match-operator.md)

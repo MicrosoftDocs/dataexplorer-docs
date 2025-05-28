@@ -1,0 +1,26 @@
+---
+config:
+  look: neo
+  theme: default
+---
+flowchart TD
+    Site["site-1<br>Main Campus"] --> Building["building-1<br>Building A"]
+    Building --> Floor["floor-1<br>First Floor"]
+    Floor --> Room1["room-101<br>Conference Room"]
+    Floor --> Room2["room-102<br>Office Space"]
+    Room1 --> Desk1["desk-1<br>Window Location"]
+    Room2 --> Desk2["desk-2<br>Interior Location"]
+    Desk1 --> Sensor1["occupancy-1<br>Status: Occupied"]
+    Desk2 --> Sensor2["occupancy-2<br>Status: Vacant"]
+    Alice["Alice<br>Engineer"] -- "isLocatedIn" --> Room1
+    Bob["Bob<br>Manager"] -- "isLocatedIn" --> Room2
+    
+    classDef facility fill:#dfd,stroke:#333,stroke-width:2px
+    classDef furniture fill:#ffd,stroke:#333,stroke-width:2px
+    classDef sensor fill:#bbf,stroke:#333,stroke-width:2px
+    classDef person fill:#f9f,stroke:#333,stroke-width:2px
+    
+    class Site,Building,Floor,Room1,Room2 facility
+    class Desk1,Desk2 furniture
+    class Sensor1,Sensor2 sensor
+    class Alice,Bob person
