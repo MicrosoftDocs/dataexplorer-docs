@@ -3,7 +3,7 @@ title:  SQL to Kusto query translation
 description: Learn about the Kusto Query Language equivalent of SQL queries.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 05/28/2025
 ---
 # SQL to Kusto Query Language cheat sheet
 
@@ -45,7 +45,7 @@ The following table shows sample queries in SQL and their KQL equivalents.
 | -- | `-- wildcard`<br>`SELECT * FROM dependencies`<br>`WHERE type like "Azure%"` | `// wildcard`<br>`dependencies`<br>`| where type startswith "Azure"`<br>`// or`<br>`dependencies`<br>`| where type matches regex "^Azure.*"` | [`startswith`](startswith-operator.md)</br>[matches regex](matches-regex-operator.md) |
 | Comparison (boolean) | `SELECT * FROM dependencies`<br>`WHERE !(success)` | `dependencies`<br>`| where success == False` | [Logical operators](logical-operators.md) |
 | Grouping, Aggregation | `SELECT name, AVG(duration) FROM dependencies`<br>`GROUP BY name` | `dependencies`<br>`| summarize avg(duration) by name` | [summarize](summarize-operator.md)</br>[avg()](avg-aggregation-function.md) |
-| Distinct | `SELECT DISTINCT name, type  FROM dependencies` | `dependencies`<br>`| summarize by name, type` | [summarize](summarize-operator.md)</br>[distinct](distinct-operator.md) |
+| Distinct | `SELECT DISTINCT name, type  FROM dependencies` | `dependencies`<br>`| distinct name, type` | [summarize](summarize-operator.md)</br>[distinct](distinct-operator.md) |
 | -- | `SELECT name, COUNT(DISTINCT type) `<br>` FROM dependencies `<br>` GROUP BY name` | ` dependencies `<br>`| summarize by name, type | summarize count() by name `<br>`// or approximate for large sets `<br>` dependencies `<br>` | summarize dcount(type) by name  ` | [count()](count-aggregation-function.md)</br>[dcount()](dcount-aggregation-function.md) |
 | Column aliases, Extending | `SELECT operationName as Name, AVG(duration) as AvgD FROM dependencies`<br>`GROUP BY name` | `dependencies`<br>`| summarize AvgD = avg(duration) by Name=operationName` | [Alias statement](alias-statement.md) |
 | -- | `SELECT conference, CONCAT(sessionid, ' ' , session_title) AS session FROM ConferenceSessions` | `ConferenceSessions`<br>`| extend session=strcat(sessionid, " ", session_title)`<br>`| project conference, session` | [strcat()](strcat-function.md)</br>[project](project-operator.md) |

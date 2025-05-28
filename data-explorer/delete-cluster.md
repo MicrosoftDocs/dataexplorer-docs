@@ -2,7 +2,7 @@
 title: Delete an Azure Data Explorer cluster
 description: Learn how to delete an Azure Data Explorer cluster.
 ms.topic: how-to
-ms.date: 10/08/2024
+ms.date: 05/28/2025
 ---
 
 # Delete an Azure Data Explorer cluster
@@ -46,3 +46,4 @@ The key for the tag is `opt-out-of-soft-delete` and the value is `true`.
 
 * [Troubleshoot: Failure to create or delete a database or table](troubleshoot-database-table.md)
 * [Quickstart: Create a cluster and database](create-cluster-and-database.md)
+* [Create Support Ticket: Create an Azure support request](azure/azure-portal/supportability/how-to-create-azure-support-request)
