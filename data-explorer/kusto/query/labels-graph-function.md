@@ -30,7 +30,7 @@ Labels are defined within [Graph models](../management/graph/graph-model-overvie
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| *element* | `string` |  | The reference to a graph node or edge variable in a graph pattern.</br>Don't pass any parameters when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) graph functions, with [inner_nodes()](inner-nodes-graph-function.md). For more information, see [Graph pattern notation](graph-match-operator.md#graph-pattern-notation). |
+| *element* | `string` |  | The reference to a graph node or edge variable in a graph pattern. Don't pass any parameters when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) graph functions, with [inner_nodes()](inner-nodes-graph-function.md). For more information, see [Graph pattern notation](graph-match-operator.md#graph-pattern-notation). |
 
 ## Returns
 

@@ -26,7 +26,7 @@ This article explores the following common scenarios for using KQL graph semanti
 
 Social network analysis represents a fundamental graph use case where nodes are users and edges represent relationships or interactions. Consider a data model with a *Users* table containing user attributes (name, organization) and a *Knows* table documenting relationships between users:
 
-:::image type="content" source="media/graphs/social-network-analysis.png" alt-text="Example diagram using social network analysis":::
+:::image type="content" source="media/graphs/social-network-analysis.png" alt-text="Example diagram using social network analysis.":::
 
 ### Traditional approach challenges
 
@@ -92,7 +92,7 @@ let graph = edges
 
 This creates a directed graph where nodes are IP addresses or resources, and edges represent requests with timestamp and HTTP verb properties:
 
-:::image type="content" source="media/graphs/create-graph-from-log-data.png" alt-text="Example graph created from log data":::
+:::image type="content" source="media/graphs/create-graph-from-log-data.png" alt-text="Example graph created from log data.":::
 
 ### Query patterns for recommendations
 
@@ -120,7 +120,7 @@ This demonstrates how graph semantics can extract meaningful insights from raw l
 
 Resource graphs enable efficient exploration and querying of resources at scale, supporting governance, management, and security requirements. These graphs continuously update as resources change, providing dynamic tracking of your resource inventory.
 
-:::image type="content" source="media/graphs/resource-graph-exploration.png" alt-text="Example graph created using resource exploration":::
+:::image type="content" source="media/graphs/resource-graph-exploration.png" alt-text="Example graph created using resource exploration.":::
 
 ### Enterprise resource management challenges
 
@@ -149,15 +149,15 @@ For detailed examples and sample code, see the [Resource Graph samples on GitHub
 
 Security operations often require analyzing relationships across multiple domains simultaneously. The "Graph of Graph" approach enables modeling and analyzing interconnected data structures by combining separate graph domains: identity, network, and asset graphs.
 
-:::image type="content" source="media/graphs/multi-domain-security-analysis.png" alt-text="Example of a multi-domain security analysis graph":::
+:::image type="content" source="media/graphs/multi-domain-security-analysis.png" alt-text="Example of a multi-domain security analysis graph.":::
 
 ### Multi-domain analysis methodology
 
 This methodology maintains separation between domain-specific graphs while enabling sophisticated cross-domain analysis through query composition. Consider a scenario where an organization needs to detect sophisticated attacks using:
 
-1. **Identity graph** - Modeling users, groups, and permissions to understand access rights
-2. **Network graph** - Representing devices and connections to detect unusual network patterns
-3. **Asset graph** - Cataloging resources and sensitivity levels to assess potential impact
+- **Identity graph** - Modeling users, groups, and permissions to understand access rights
+- **Network graph** - Representing devices and connections to detect unusual network patterns
+- **Asset graph** - Cataloging resources and sensitivity levels to assess potential impact
 
 ### Advanced security insights
 
@@ -174,7 +174,7 @@ For detailed examples and implementation guidance, see the [Graph of Graph sampl
 
 Combining graph analysis with time-series analytics creates a powerful framework for detecting temporal anomalies while understanding their impact across interconnected systems. This integration delivers significant value for security analytics, IoT monitoring, and operational intelligence.
 
-:::image type="content" source="media/graphs/Time-series-graph-analytics.png" alt-text="Example image of a workflow diagram using time series and graph analytics":::
+:::image type="content" source="media/graphs/Time-series-graph-analytics.png" alt-text="Example image of a workflow diagram using time series and graph analytics.":::
 
 ### Temporal anomaly detection with context
 
@@ -204,7 +204,7 @@ For implementation examples and detailed code samples, see the [Time Series and 
 
 Digital twins provide virtual representations of physical objects or systems, enabling precise modeling and simulation of real-world entities. Graph semantics in KQL excels in digital twin scenarios because relationships between entities—facilities, equipment, sensors, and people—naturally form graph structures.
 
-:::image type="content" source="media/graphs/digital-twins-graph-historization.png" alt-text="Example image of a workflow diagram using  digital twins and graph historization":::
+:::image type="content" source="media/graphs/digital-twins-graph-historization.png" alt-text="Example image of a workflow diagram using  digital twins and graph historization.":::
 
 ### Digital twin capabilities with KQL
 

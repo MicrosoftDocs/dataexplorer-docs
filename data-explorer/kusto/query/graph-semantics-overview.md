@@ -22,7 +22,7 @@ Graph queries leverage graph structure to perform sophisticated operations such 
 
 The following graph shows a supply chain scenario where nodes represent suppliers, manufacturers, and distributors, and edges represent supply relationships. This example demonstrates how graphs model flows and dependencies across different business contexts.
 
-:::image type="content" source="media/graphs/graph-supply-chain.png" alt-text="Graph of two suppliers, manufacturer, and distributor, and the supply relationship":::
+:::image type="content" source="media/graphs/graph-supply-chain.png" alt-text="Graph of two suppliers, manufacturer, and distributor, and the supply relationship.":::
 
 ## Why use graph semantics in Kusto?
 
@@ -90,7 +90,7 @@ Persistent graphs are essential for:
 
 ##### Example: Digital Twin Persistent Graph
 
-:::image type="content" source="media/graphs/digital-twin-persistent-graph.png" alt-text="A graph showing the digital twin factory example with device relationships and  equipment dependencies,":::
+:::image type="content" source="media/graphs/digital-twin-persistent-graph.png" alt-text="A graph showing the digital twin factory example with device relationships and equipment dependencies.":::
 
 In digital twin and IoT scenarios, persistent graphs support regular analysis of device relationships, equipment dependencies, and system evolution over time. Historical analysis allows comparing system states across different periods, tracking the evolution of assets, and conducting long-term trend analysis.
 
@@ -134,9 +134,9 @@ The following decision tree helps you select the most appropriate graph creation
 
 ### Decision Tree: Transient vs Persistent Graphs
 
-:::image type="content" source="media/graphs/decision-matrix-persistent-or-transient.png" alt-text="Flowchart showing a decision tree when to use persistent or transient graphs":::
+:::image type="content" source="media/graphs/decision-matrix-persistent-or-transient.png" alt-text="Flowchart showing a decision tree for when to use persistent or transient graphs.":::
 
-### When to use transient graphs?
+### When to use transient graphs
 
 Choose transient graphs for:
 
@@ -148,7 +148,7 @@ Choose transient graphs for:
 
 While transient graphs can handle larger datasets, query execution time increases as the graph must be reconstructed for every query. Consider this performance trade-off when working with larger datasets.
 
-### When to use persistent graphs?
+### When to use persistent graphs
 
 Choose persistent graphs for:
 

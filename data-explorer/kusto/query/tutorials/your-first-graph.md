@@ -52,7 +52,7 @@ In this section, you'll create your first graph using sample organizational data
 
 You'll work with a simple company structure where employees report to managers. This organizational hierarchy provides an intuitive example for understanding graph relationships:
 
-:::image type="content" source="../media/graphs/tutorial-first-graph.png" alt-text="A diagram showing the organization heirarchy.":::
+:::image type="content" source="../media/graphs/tutorial-first-graph.png" alt-text="A diagram showing the organization hierarchy.":::
 
 Create the organizational graph structure using employee and reporting relationship data:
 
