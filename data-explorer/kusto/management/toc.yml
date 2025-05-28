@@ -226,7 +226,7 @@ items:
         items:
           - name: Persistent graph overview
             href: graph/graph-persistent-overview.md
-          - name: Graph model overview
+          - name: Graph models overview
             href: graph/graph-model-overview.md
           - name: .create-or-alter graph_model
             href: graph/graph-model-create-or-alter.md
@@ -243,7 +243,7 @@ items:
           - name: .drop graph_snapshot
             href: graph/graph-snapshot-drop.md
           - name: .drop graph_snapshots
-            href: graph/graph-snapshot-drop.md
+            href: graph/graph-snapshots-drop.md
           - name : .show graph_snapshot
             href: graph/graph-snapshot-show.md
           - name: .show graph_snapshots
