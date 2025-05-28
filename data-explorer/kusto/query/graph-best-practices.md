@@ -361,13 +361,13 @@ The following example demonstrates an effective implementation of dynamic labels
 
 This dynamic labeling approach provides exceptional flexibility when modeling graphs with numerous node and edge types, eliminating the need to modify your schema each time a new entity type appears in your data. By decoupling the logical model from the physical implementation, your graph can continuously evolve to represent new relationships without requiring structural changes to the underlying schema.
 
-## Multi-tenant partitioning strategies for large-scale ISV scenarios
+## Multitenant partitioning strategies for large-scale ISV scenarios
 
 In large organizations, particularly ISV scenarios, graphs can consist of multiple billions of nodes and edges. This scale presents unique challenges that require strategic partitioning approaches to maintain performance while managing costs and complexity.
 
 ### Understanding the challenge
 
-Large-scale multi-tenant environments often exhibit the following characteristics:
+Large-scale multitenant environments often exhibit the following characteristics:
 
 - **Billions of nodes and edges** - Enterprise-scale graphs that exceed traditional graph database capabilities
 - **Tenant size distribution** - Typically follows a power law where 99.9% of tenants have small to medium graphs, while 0.1% have massive graphs
@@ -385,7 +385,7 @@ The most effective approach for managing large-scale graphs is partitioning by n
 - **Temporal partitioning** - Separate by time periods for historical analysis
 - **Functional partitioning** - Split by business domain or application area
 
-**Example: Multi-tenant organizational structure**
+**Example: Multitenant organizational structure**
 
 ```kusto
 // Partition employees and reports by tenant
@@ -528,4 +528,6 @@ This hybrid approach enables organizations to provide always-current data analys
 - [Common scenarios for using graph semantics](graph-scenarios.md)
 - [Graph function](graph-function.md)
 - [make-graph operator](make-graph-operator.md)
+:::moniker range="microsoft-fabric || azure-data-explorer"
 - [Graph models overview](../management/graph/graph-model-overview.md)
+:::moniker-end
