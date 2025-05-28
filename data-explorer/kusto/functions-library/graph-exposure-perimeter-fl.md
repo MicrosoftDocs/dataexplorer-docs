@@ -28,8 +28,8 @@ The function outputs a list of connected sources that can reach each target and 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *sourceIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the source node Ids (either for edges or paths). |
-| *targetIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the target node Ids (either for edges or paths). |
+| *sourceIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the source node IDs (either for edges or paths). |
+| *targetIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the target node IDs (either for edges or paths). |
 | *sourceWeightColumnName* | `string` |   | The name of the column containing the source nodes' weights (such as vulnerability). If no relevant weights are present, the weighted score is equal to 0. The default column name is 'noWeightsColumn'. |
 | *resultCountLimit* | `long` |   | The maximum number of returned rows (sorted by descending score). The default value is 100000. |
 | *listedIdsLimit* | `long` |   | The maximum number of targets listed for each source. The default value is 50. |
@@ -228,7 +228,7 @@ Running the function aggregates the connections or paths between sources and tar
 Each row in the output contains the following fields:
 
 * `targetId`: ID of the target node taken from relevant column.
-* `exposurePerimeterList`: a list of source nodes Ids (taken from relevant column) that can connect to the target node. The list is capped to maximum length limit of listedIdsLimit parameter.
+* `exposurePerimeterList`: a list of source nodes IDs (taken from relevant column) that can connect to the target node. The list is capped to maximum length limit of listedIdsLimit parameter.
 * `exposurePerimeterScore`: the score is the count of source nodes that can connect to the target. High Exposure Perimeter score indicates that the target node can be potentially accessed from lots of sources, and should be treated accordingly.
 * `exposurePerimeterScoreWeighted`: the weighted score is the sum of the optional source nodes' weight column, representing their value - such as vulnerability or exposedness. If such weight exists, weighted Exposure Perimeter score might be a more accurate metric of target node value due to potential access from highly vulnerable or exposed sources.
 * `isExposurePerimeterCapped`: boolean flag whether the list of sources was capped by listedIdsLimit parameter. If it's true, then other sources can access the target in addition to the listed ones (up to the number of exposurePerimeterScore).
@@ -239,13 +239,13 @@ In case the multi-hop paths aren't available, we can build multi-hop paths betwe
 
 The output looks similar, but represents Exposure Perimeter calculated over multi-hop paths, thus being a better indicator of target nodes true accessibility from relevant sources. In order to find the full paths between source and target scenarios (for example, for disruption), [graph_path_discovery_fl()](graph-path-discovery-fl.md) function can be used with filters on relevant source and target nodes.
 
-The function `graph_exposure_perimeter_fl()` can be used to calculate the Exposure Perimeter of target nodes, either over direct edges or longer paths. In the cybersecurity domain, it can be used for several insights. Exposure Perimeter scores (regular and weighted), represent target node's importance both from defenders' and attackers' perspectives. Nodes with high Exposure Perimeter, especially critical ones, should be protected accordingly. For example, in terms of access monitoring and hardening. Security signals, such as alerts, should be prioritized on sources that can access these nodes. The Exposure Perimeter list should be monitored for undesired connections between sources and targets and used in disruption scenarios. For example, if some of the sources were comrpomised, connections between them and the target should be broken.
+The function `graph_exposure_perimeter_fl()` can be used to calculate the Exposure Perimeter of target nodes, either over direct edges or longer paths. In the cybersecurity domain, it can be used for several insights. Exposure Perimeter scores (regular and weighted), represent target node's importance both from defenders' and attackers' perspectives. Nodes with high Exposure Perimeter, especially critical ones, should be protected accordingly. For example, in terms of access monitoring and hardening. Security signals, such as alerts, should be prioritized on sources that can access these nodes. The Exposure Perimeter list should be monitored for undesired connections between sources and targets and used in disruption scenarios. For example, if some of the sources were compromised, connections between them and the target should be broken.
 
 ## Related content
 
 * [Functions library](functions-library.md)
-* [Kusto Query Language (KQL) graph semantics overview](../query/graph-overview.md)
-* [Graph operators](../query/graph-operators.md)
-* [Scenarios](../query/graph-scenarios.md)
+* [Graph semantics overview](../query/graph-semantics-overview.md)
+* [Graph operators](../query/graph-function.md)
+* [Graph scenarios](../query/graph-scenarios.md)
 * [Best practices](../query/graph-best-practices.md)
-* [graph_path_discovery_fl()](graph-path-discovery-fl.md)
+* [graph-path-discovery-fl()](graph-path-discovery-fl.md)

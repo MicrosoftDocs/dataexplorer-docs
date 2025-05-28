@@ -1,0 +1,33 @@
+---
+config:
+  look: neo
+  theme: default
+---
+flowchart TD
+    subgraph Asset Graph
+        Resource1["Resource1<br>Database<br>High Sensitivity"]
+        Resource2["Resource2<br>FileShare<br>Medium Sensitivity"]
+    end
+
+    subgraph Identity Graph
+        User1["User1<br>Finance"] -- "MemberOf" --> Group1["Group1<br>Finance-Users"]
+        User2["User2<br>IT"] -- "MemberOf" --> Group2["Group2<br>IT-Admins"]
+        Group1 -- "HasAccess" --> Resource1
+        Group2 -- "HasAccess" --> Resource2
+    end
+    
+    subgraph Network Graph
+        Device1["Device1<br>Workstation"] -- "RDP" --> Device2["Device2<br>Server"]
+        Device2 -- "SSH" --> Device3["Device3<br>Database"]
+        Device1 -- "HTTPS" --> Resource1
+    end
+
+    User1 -.- Device1
+    
+    classDef identity fill:#f9f,stroke:#333,stroke-width:2px
+    classDef network fill:#bbf,stroke:#333,stroke-width:2px
+    classDef asset fill:#dfd,stroke:#333,stroke-width:2px
+    
+    class User1,User2,Group1,Group2 identity
+    class Device1,Device2,Device3 network
+    class Resource1,Resource2 asset

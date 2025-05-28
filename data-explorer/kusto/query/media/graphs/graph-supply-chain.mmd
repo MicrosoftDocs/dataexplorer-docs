@@ -1,0 +1,14 @@
+---
+config:
+  look: neo
+  theme: default
+---
+graph TD
+    S1[🏭 Supplier A] -->|supplies| M1[🏢 Manufacturer X]
+    S2[🏭 Supplier B] -->|supplies| M1
+    M1 -->|ships to| D1[🚚 Distributor Y]
+    
+    style S1 fill:#e1f5fe,stroke:#0277bd,color:#000
+    style S2 fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style M1 fill:#e8f5e8,stroke:#2e7d32,color:#000
+    style D1 fill:#fff3e0,stroke:#ef6c00,color:#000

@@ -24,7 +24,7 @@ We make several assumptions:
 
 These assumptions can be adapted as needed by changing the internal logic of the function.
 
-The function discovers all possible paths between valid sources to valid targets, under optional constraints such as path length limits, maximum output size, etc. The output is a list of discovered paths with source and target Ids, as well as list of connecting edges and nodes. The function uses only the required fields, such as node Ids and edge Ids. In case other relevant fields - such as types, property lists, security-related scores, or external signals - are available in input data, they can be added to logic and output by changing the function definition.
+The function discovers all possible paths between valid sources to valid targets, under optional constraints such as path length limits, maximum output size, etc. The output is a list of discovered paths with source and target IDs, as well as list of connecting edges and nodes. The function uses only the required fields, such as node IDs and edge IDs. In case other relevant fields - such as types, property lists, security-related scores, or external signals - are available in input data, they can be added to logic and output by changing the function definition.
 
 ## Syntax
 
@@ -393,7 +393,7 @@ The function `graph_path_discovery_fl()` can be used in cybersecurity domain to 
 ## Related content
 
 * [Functions library](functions-library.md)
-* [Kusto Query Language (KQL) graph semantics overview](../query/graph-overview.md)
-* [Graph operators](../query/graph-operators.md)
-* [Scenarios](../query/graph-scenarios.md)
+* [Graph semantics overview](../query/graph-semantics-overview.md)
+* [Graph function](../query/graph-function.md)
+* [Graph scenarios](../query/graph-scenarios.md)
 * [Best practices](../query/graph-best-practices.md)

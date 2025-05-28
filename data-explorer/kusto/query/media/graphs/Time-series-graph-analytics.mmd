@@ -1,0 +1,32 @@
+---
+config:
+  look: neo
+  theme: default
+---
+flowchart TD
+    subgraph "Authentication Timeseries"
+        User001T["User001 Logins<br>9am-5pm Seattle<br>Regular Pattern"]
+        User002T["User002 Logins<br>⚠️ 3am Bangkok<br>Anomalous Pattern"]
+    end
+    
+    subgraph "Access Graph"
+        User001["User001<br>Finance"] -- "memberOf" --> Group001["Group001<br>Finance Security Group"]
+        User002["User002<br>IT"] -- "memberOf" --> Group002["Group002<br>IT Security Group"]
+        Group001 -- "canAccess" --> Resource001["Resource001<br>Finance Database"]
+        Group002 -- "canAdminister" --> Resource001
+    end
+    
+    User001T -.- User001
+    User002T -.- User002
+    
+    classDef anomaly fill:#f66,stroke:#333,stroke-width:2px
+    classDef normal fill:#6f6,stroke:#333,stroke-width:2px
+    classDef user fill:#f9f,stroke:#333,stroke-width:2px
+    classDef group fill:#bbf,stroke:#333,stroke-width:2px
+    classDef resource fill:#dfd,stroke:#333,stroke-width:2px
+    
+    class User001T normal
+    class User002T anomaly
+    class User001,User002 user
+    class Group001,Group002 group
+    class Resource001 resource

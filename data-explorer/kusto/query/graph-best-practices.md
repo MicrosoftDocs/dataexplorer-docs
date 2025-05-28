@@ -3,21 +3,55 @@ title: Best practices for Kusto Query Language (KQL) graph semantics
 description: Learn about the best practices for Kusto Query Language (KQL) graph semantics.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 02/17/2025
+ms.date: 05/26/2025
 # Customer intent: As a data analyst, I want to learn about best practices for KQL graph semantics.
 ---
 
-# Best practices for Kusto Query Language (KQL) graph semantics
+# Best practices for graph semantics
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-This article explains how to use the graph semantics feature in KQL effectively and efficiently for different use cases and scenarios. It shows how to create and query graphs with the syntax and operators, and how to integrate them with other KQL features and functions. It also helps users avoid common pitfalls or errors. For instance, creating graphs that exceed memory or performance limits, or applying unsuitable or incompatible filters, projections, or aggregations.
+Kusto supports two primary approaches for working with graphs: transient graphs created in-memory for each query, and persistent graphs defined as graph models and snapshots within the database. This article provides best practices for both methods, enabling you to select the optimal approach and use KQL graph semantics efficiently.
 
-## Size of graph
+This guidance covers:
 
-The [make-graph operator](make-graph-operator.md) creates an in-memory representation of a graph. It consists of the graph structure itself and its properties. When making a graph, use appropriate filters, projections, and aggregations to select only the relevant nodes and edges and their properties.
+- Graph creation and optimization strategies
+- Querying techniques and performance considerations
+- Schema design for persistent graphs
+- Integration with other KQL features
+- Common pitfalls to avoid
 
-The following example shows how to reduce the number of nodes and edges and their properties. In this scenario, Bob changed manager from Alice to Eve and the user only wants to see the latest state of the graph for their organization. To reduce the size of the graph, the nodes are first filtered by the organization property and then the property is removed from the graph using the [project-away operator](project-away-operator.md). The same happens for edges. Then [summarize operator](summarize-operator.md) together with [arg_max](arg-max-aggregation-function.md) is used to get the last known state of the graph.
+:::moniker range="azure-data-explorer || microsoft-fabric"
+
+## Graph modeling approaches in Kusto
+
+Kusto provides two approaches for working with graphs: transient and persistent.
+
+### Transient graphs
+
+Created dynamically using the [`make-graph`](make-graph-operator.md) operator. These graphs exist only during query execution and are optimal for ad hoc or exploratory analysis on small to medium datasets.
+
+### Persistent graphs
+
+Defined using [graph models](../management/graph/graph-model-overview.md) and [graph snapshots](../management/graph/graph-snapshot-overview.md). These graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
+
+:::moniker-end
+
+## Best practices for transient graphs
+
+Transient graphs, created in-memory using the `make-graph` operator, are ideal for ad hoc analysis, prototyping, and scenarios where graph structure changes frequently or requires only a subset of available data.
+
+### Optimize graph size for performance
+
+The [`make-graph`](make-graph-operator.md) creates an in-memory representation including both structure and properties. Optimize performance by:
+
+- **Apply filters early** - Select only relevant nodes, edges, and properties before graph creation
+- **Use projections** - Remove unnecessary columns to minimize memory consumption
+- **Apply aggregations** - Summarize data where appropriate to reduce graph complexity
+
+**Example: Reducing graph size through filtering and projection**
+
+In this scenario, Bob changed managers from Alice to Eve. To view only the latest organizational state while minimizing graph size:
 
 ```kusto
 let allEmployees = datatable(organization: string, name:string, age:long)
@@ -50,57 +84,61 @@ filteredReports
   project employee = employee.name, topManager = manager.name
 ```
 
-**Output**
+**Output:**
 
 | employee | topManager |
 | -------- | ---------- |
 | Bob      | Mallory    |
 
-## Last known state of the graph
+### Maintain current state with materialized views
 
-The [Size of graph](#size-of-graph) example demonstrated how to get the last known state of the edges of a graph by using `summarize` operator and the `arg_max` aggregation function. Obtaining the last known state is a compute-intensive operation.
+The previous example showed how to obtain the last known state using `summarize` and `arg_max`. This operation can be compute-intensive, so consider using materialized views for improved performance.
 
-Consider creating a materialized view to improve the query performance, as follows:
+**Step 1: Create tables with versioning**
 
-1. Create tables that have some notion of version as part of their model. We recommend using a `datetime` column that you can later use to create a graph time series.
+Create tables with a versioning mechanism for graph time series:
 
-    ```kusto
-    .create table employees (organization: string, name:string, stateOfEmployment:string, properties:dynamic, modificationDate:datetime)
+```kusto
+.create table employees (organization: string, name:string, stateOfEmployment:string, properties:dynamic, modificationDate:datetime)
 
-    .create table reportsTo (employee:string, manager:string, modificationDate: datetime)
-    ```
+.create table reportsTo (employee:string, manager:string, modificationDate: datetime)
+```
 
-1. Create a materialized view for each table and use the [arg_max aggregation](arg-max-aggregation-function.md) function to determine the *last known state* of employees and the *reportsTo* relation.
+**Step 2: Create materialized views**
 
-    ```kusto
-    .create materialized-view employees_MV on table employees
-    {
-        employees
-        | summarize arg_max(modificationDate, *) by name
-    }
+Use the [arg_max aggregation](arg-max-aggregation-function.md) function to determine the latest state:
 
-    .create materialized-view reportsTo_MV on table reportsTo
-    {
-        reportsTo
-        | summarize arg_max(modificationDate, *) by employee
-    }
-    ```
+```kusto
+.create materialized-view employees_MV on table employees
+{
+    employees
+    | summarize arg_max(modificationDate, *) by name
+}
 
-1. Create two functions that ensure that only the materialized component of the materialized view is used and other filters and projections are applied.
+.create materialized-view reportsTo_MV on table reportsTo
+{
+    reportsTo
+    | summarize arg_max(modificationDate, *) by employee
+}
+```
 
-    ```kusto
-    .create function currentEmployees () {
-        materialized_view('employees_MV')
-        | where stateOfEmployment == "employed"
-    }
+**Step 3: Create helper functions**
 
-    .create function reportsTo_lastKnownState () {
-        materialized_view('reportsTo_MV')
-        | project-away modificationDate
-    }
-    ```
+Ensure only the materialized component is used and apply additional filters:
 
-The resulting query using materialized makes the query faster and more efficient for larger graphs. It also enables higher concurrency and lower latency queries for the latest state of the graph. The user can still query the graph history based on the employees and *reportsTo* tables, if needed
+```kusto
+.create function currentEmployees () {
+    materialized_view('employees_MV')
+    | where stateOfEmployment == "employed"
+}
+
+.create function reportsTo_lastKnownState () {
+    materialized_view('reportsTo_MV')
+    | project-away modificationDate
+}
+```
+
+This approach provides faster queries, higher concurrency, and lower latency for current state analysis while preserving access to historical data.
 
 ```kusto
 let filteredEmployees =
@@ -111,14 +149,12 @@ reportsTo_lastKnownState
 | make-graph employee --> manager with filteredEmployees on name
 | graph-match (employee)-[hasManager*2..5]-(manager)
   where employee.name == "Bob"
-  project employee = employee.name, reportingPath = map(hasManager, manager)
+  project employee = employee.name, reportingPath = hasManager.manager
 ```
 
-## Graph time travel
+### Implement graph time travel
 
-Some scenarios require you to analyze data based on the state of a graph at a specific point in time. Graph time travel uses a combination of time filters and summarizes using the arg_max aggregation function.
-
-The following KQL statement creates a function with a parameter that defines the interesting point in time for the graph. It returns a ready-made graph.
+Analyzing data based on historical graph states provides valuable temporal context. Implement this "time travel" capability by combining time filters with `summarize` and `arg_max`:
 
 ```kusto
 .create function graph_time_travel (interestingPointInTime:datetime ) {
@@ -136,49 +172,37 @@ The following KQL statement creates a function with a parameter that defines the
 }
 ```
 
-With the function in place, the user can craft a query to get the top manager of Bob based on the graph in June 2022.
+**Usage example:**
+
+Query Bob's top manager based on June 2022 graph state:
 
 ```kusto
 graph_time_travel(datetime(2022-06-01))
 | graph-match (employee)-[hasManager*2..5]-(manager)
   where employee.name == "Bob"
-  project employee = employee.name, reportingPath = map(hasManager, manager)
+  project employee = employee.name, reportingPath = hasManager.manager
 ```
 
-**Output**
+**Output:**
 
 | employee | topManager |
 | -------- | ---------- |
 | Bob      | Dave       |
 
-## Dealing with multiple node and edge types
+### Handle multiple node and edge types
 
-Sometimes it's required to contextualize time series data with a graph that consists of multiple node types. One way of handling this scenario is creating a general-purpose property graph that is represented by a canonical model.
+When working with complex graphs containing multiple node types, use a canonical property graph model. Define nodes with attributes like `nodeId` (string), `label` (string), and `properties` (dynamic), while edges include `source` (string), `destination` (string), `label` (string), and `properties` (dynamic) fields.
 
-Occasionally, you might need to contextualize time series data with a graph that has multiple node types. You could approach the problem by creating a general-purpose property graph that is based on a canonical model, such as the following.
+**Example: Factory maintenance analysis**
 
-- nodes
-  - nodeId (string)
-  - label (string)
-  - properties (dynamic)
-- edges
-  - source (string)
-  - destination (string)
-  - label (string)
-  - properties (dynamic)
+Consider a factory manager investigating equipment issues and responsible personnel. The scenario combines asset graphs of production equipment with maintenance staff hierarchy:
 
-The following example shows how to transform the data into a canonical model and how to query it. The base tables for the nodes and edges of the graph have different schemas.
+:::image type="content" source="media/graphs/factory-maintenance-analysis.png" alt-text="A graph of factory people, equiptment, and measurements":::
 
-This scenario involves a factory manager who wants to find out why equipment isn't working well and who is responsible for fixing it. The manager decides to use a graph that combines the asset graph of the production floor and the maintenance staff hierarchy which changes every day.
-
-The following graph shows the relations between assets and their time series, such as speed, temperature, and pressure. The operators and the assets, such as *pump*, are connected via the *operates* edge. The operators themselves report up to management.
-
-:::image type="content" source="media/graph/graph-property-graph.png" alt-text="Infographic on the property graph scenario." lightbox="media/graph/graph-property-graph.png":::
-
-The data for those entities can be stored directly in your cluster or acquired using query federation to a different service, such as Azure Cosmos DB, Azure SQL, or Azure Digital Twin. To illustrate the example, the following tabular data is created as part of the query:
+The data for those entities can be stored directly in your cluster or acquired using query federation to a different service. To illustrate the example, the following tabular data is created as part of the query:
 
 ```kusto
-let sensors = datatable(sensorId:string, tagName:string, unitOfMeasuree:string)
+let sensors = datatable(sensorId:string, tagName:string, unitOfMeasure:string)
 [
   "1", "temperature", "°C",
   "2", "pressure", "Pa",
@@ -222,9 +246,9 @@ let assetHierarchy = datatable(source:string, destination:string)
 ];
 ```
 
-The *employees*, *sensors*, and other entities and relationships don't share a canonical data model. You can use the [union operator](union-operator.md) to combine and canonize the data.
+The employees, sensors, and other entities and relationships do not share a canonical data model. The [union operator](union-operator.md) can be used to combine and standardize the data.
 
-The following query joins the sensor data with the time series data to find the sensors that have abnormal readings. Then, it uses a projection to create a common model for the graph nodes.
+The following query joins the sensor data with the time series data to identify sensors with abnormal readings, then uses a projection to create a common model for the graph nodes.
 
 ```kusto
 let nodes =
@@ -241,7 +265,7 @@ let nodes =
         ( employees | project nodeId = name, label = "employee", properties = pack_all(true));
 ```
 
-The edges are transformed in a similar way.
+The edges are transformed in a similar manner.
 
 ```kusto
 let edges =
@@ -251,14 +275,15 @@ let edges =
         ( operates | project source = employee, destination = machine, properties = pack_all(true), label = "operates" );
 ```
 
-With the canonized nodes and edges data, you can create a graph using the [make-graph operator](make-graph-operator.md), as follows:
+With the standardized nodes and edges data, you can create a graph using the [make-graph operator](make-graph-operator.md)
+
 
 ```kusto
 let graph = edges
 | make-graph source --> destination with nodes on nodeId;
 ```
 
-Once created, define the path pattern and project the information required. The pattern starts at a tag node followed by a variable length edge to an asset. That asset is operated by an operator that reports to a top manager via a variable length edge, called *reportsTo*. The constraints section of the [graph-match operator](graph-match-operator.md), in this instance **where**, reduces the tags to the ones that have an anomaly and were operated on a specific day.
+Once the graph is created, define the path pattern and project the required information. The pattern begins at a tag node, followed by a variable-length edge to an asset. That asset is operated by an operator who reports to a top manager via a variable-length edge called *reportsTo*. The constraints section of the [graph-match operator](graph-match-operator.md), in this case the **where** clause, filters the tags to those with an anomaly that were operated on a specific day.
 
 ```kusto
 graph
@@ -279,9 +304,228 @@ graph
 | -------------- | ------------- | ------------ | ------------------ |
 | temperature    | Pump          | Eve          | Mallory            |
 
-The projection in graph-match outputs the information that the temperature sensor showed an anomaly on the specified day. It was operated by Eve who ultimately reports to Mallory. With this information, the factory manager can reach out to Eve and potentially Mallory to get a better understanding of the anomaly.
+The projection in `graph-match` shows that the temperature sensor exhibited an anomaly on the specified day. The sensor was operated by Eve, who ultimately reports to Mallory. With this information, the factory manager can contact Eve and, if necessary, Mallory to better understand the anomaly.
+
+:::moniker range="azure-data-explorer || microsoft-fabric"
+
+## Best practices for persistent graphs
+
+Persistent graphs, defined using [graph models](../management/graph/graph-model-overview.md) and [graph snapshots](../management/graph/graph-snapshot-overview.md), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
+
+### Use schema and definition for consistency and performance
+
+A clear schema for your graph model is essential, as it specifies node and edge types along with their properties. This approach ensures data consistency and enables efficient querying. Utilize the `Definition` section to specify how nodes and edges are constructed from your tabular data through `AddNodes` and `AddEdges` steps.
+
+### Leverage static and dynamic labels for flexible modeling
+
+When modeling your graph, you can utilize both static and dynamic labeling approaches for optimal flexibility. Static labels are ideal for well-defined node and edge types that rarely change—define these in the `Schema` section and reference them in the `Labels` array of your steps. For cases where node or edge types are determined by data values (for example, when the type is stored in a column), use dynamic labels by specifying a `LabelsColumn` in your step to assign labels at runtime. This approach is especially useful for graphs with heterogeneous or evolving schemas. Both mechanisms can be effectively combined—you can define a `Labels` array for static labels and also specify a `LabelsColumn` to incorporate additional labels from your data, providing maximum flexibility when modeling complex graphs with both fixed and data-driven categorization.
+
+#### Example: Using dynamic labels for multiple node and edge types
+
+The following example demonstrates an effective implementation of dynamic labels in a graph representing professional relationships. In this scenario, the graph contains people and companies as nodes, with employment relationships forming the edges between them. The flexibility of this model comes from determining node and edge types directly from columns in the source data, allowing the graph structure to adapt organically to the underlying information.
+
+````
+.create-or-alter graph_model ProfessionalNetwork ```
+{
+  "Schema": {
+    "Nodes": {
+      "Person": {"Name": "string", "Age": "long"},
+      "Company": {"Name": "string", "Industry": "string"}
+    },
+    "Edges": {
+      "WORKS_AT": {"StartDate": "datetime", "Position": "string"}
+    }
+  },
+  "Definition": {
+    "Steps": [
+      {
+        "Kind": "AddNodes",
+        "Query": "Employees | project Id, Name, Age, NodeType",
+        "NodeIdColumn": "Id",
+        "Labels": ["Person"],
+        "LabelsColumn": "NodeType"
+      },
+      {
+        "Kind": "AddEdges",
+        "Query": "EmploymentRecords | project EmployeeId, CompanyId, StartDate, Position, RelationType",
+        "SourceColumn": "EmployeeId",
+        "TargetColumn": "CompanyId",
+        "Labels": ["WORKS_AT"],
+        "LabelsColumn": "RelationType"
+      }
+    ]
+  }
+}
+```
+````
+
+This dynamic labeling approach provides exceptional flexibility when modeling graphs with numerous node and edge types, eliminating the need to modify your schema each time a new entity type appears in your data. By decoupling the logical model from the physical implementation, your graph can continuously evolve to represent new relationships without requiring structural changes to the underlying schema.
+
+## Multi-tenant partitioning strategies for large-scale ISV scenarios
+
+In large organizations, particularly ISV scenarios, graphs can consist of multiple billions of nodes and edges. This scale presents unique challenges that require strategic partitioning approaches to maintain performance while managing costs and complexity.
+
+### Understanding the challenge
+
+Large-scale multi-tenant environments often exhibit the following characteristics:
+
+- **Billions of nodes and edges** - Enterprise-scale graphs that exceed traditional graph database capabilities
+- **Tenant size distribution** - Typically follows a power law where 99.9% of tenants have small to medium graphs, while 0.1% have massive graphs
+- **Performance requirements** - Need for both real-time analysis (current data) and historical analysis capabilities
+- **Cost considerations** - Balance between infrastructure costs and analytical capabilities
+
+### Partitioning by natural boundaries
+
+The most effective approach for managing large-scale graphs is partitioning by natural boundaries, typically tenant identifiers or organizational units:
+
+**Key partitioning strategies:**
+
+- **Tenant-based partitioning** - Separate graphs by customer, organization, or business unit
+- **Geographic partitioning** - Divide by region, country, or datacenter location
+- **Temporal partitioning** - Separate by time periods for historical analysis
+- **Functional partitioning** - Split by business domain or application area
+
+**Example: Multi-tenant organizational structure**
+
+```kusto
+// Partition employees and reports by tenant
+let tenantEmployees = 
+    allEmployees
+    | where tenantId == "tenant_123"
+    | project-away tenantId;
+    
+let tenantReports = 
+    allReports
+    | where tenantId == "tenant_123"
+    | summarize arg_max(modificationDate, *) by employee
+    | project-away modificationDate, tenantId;
+
+tenantReports
+| make-graph employee --> manager with tenantEmployees on name
+| graph-match (employee)-[hasManager*1..5]-(manager)
+  where employee.name == "Bob"
+  project employee = employee.name, reportingChain = hasManager.manager
+```
+
+### Hybrid approach: Transient vs. persistent graphs by tenant size
+
+The most cost-effective strategy combines both transient and persistent graphs based on tenant characteristics:
+
+#### Small to medium tenants (99.9% of tenants)
+
+Use **transient graphs** for the majority of tenants:
+
+**Advantages:**
+
+- **Always up-to-date data** - No snapshot maintenance required
+- **Lower operational overhead** - No graph model or snapshot management
+- **Cost-effective** - No additional storage costs for graph structures
+- **Immediate availability** - No pre-processing delays
+
+**Implementation pattern:**
+
+```kusto
+.create function getTenantGraph(tenantId: string) {
+    let tenantEmployees = 
+        employees
+        | where tenant == tenantId and stateOfEmployment == "employed"
+        | project-away tenant, stateOfEmployment;
+    let tenantReports = 
+        reportsTo
+        | where tenant == tenantId
+        | summarize arg_max(modificationDate, *) by employee
+        | project-away modificationDate, tenant;
+    tenantReports
+    | make-graph employee --> manager with tenantEmployees on name
+}
+
+// Usage for small tenant
+getTenantGraph("small_tenant_456")
+| graph-match (employee)-[reports*1..3]-(manager)
+  where employee.name == "Alice"
+  project employee = employee.name, managerChain = reports.manager
+```
+
+#### Large tenants (0.1% of tenants)
+
+Use **persistent graphs** for the largest tenants:
+
+**Advantages:**
+
+- **Scalability** - Handle graphs exceeding memory limitations
+- **Performance optimization** - Eliminate construction latency for complex queries
+- **Advanced analytics** - Support sophisticated graph algorithms and analysis
+- **Historical analysis** - Multiple snapshots for temporal comparison
+
+**Implementation pattern:**
+
+````kusto
+// Create graph model for large tenant (example: Contoso)
+.create-or-alter graph_model ContosoOrgChart ```
+{
+    "Schema": {
+        "Nodes": {
+            "Employee": {
+                "Name": "string",
+                "Department": "string",
+                "Level": "int",
+                "JoinDate": "datetime"
+            }
+        },
+        "Edges": {
+            "ReportsTo": {
+                "Since": "datetime",
+                "Relationship": "string"
+            }
+        }
+    },
+    "Definition": {
+        "Steps": [
+            {
+                "Kind": "AddNodes",
+                "Query": "employees | where tenant == 'Contoso' and stateOfEmployment == 'employed' | project Name, Department, Level, JoinDate",
+                "NodeIdColumn": "Name",
+                "Labels": ["Employee"]
+            },
+            {
+                "Kind": "AddEdges", 
+                "Query": "reportsTo | where tenant == 'Contoso' | summarize arg_max(modificationDate, *) by employee | project employee, manager, modificationDate as Since | extend Relationship = 'DirectReport'",
+                "SourceColumn": "employee",
+                "TargetColumn": "manager",
+                "Labels": ["ReportsTo"]
+            }
+        ]
+    }
+}
+```
+
+// Create snapshot for Contoso
+.create graph snapshot ContosoSnapshot from ContosoOrgChart
+
+// Query Contoso's organizational graph
+graph("ContosoOrgChart")
+| graph-match (employee)-[reports*1..10]-(executive)
+  where employee.Department == "Engineering"
+  project employee = employee.Name, executive = executive.Name, pathLength = array_length(reports)
+````
+
+### Best practices for ISV scenarios
+
+1. **Start with transient graphs** - Begin all new tenants with transient graphs for simplicity
+2. **Monitor growth patterns** - Implement automatic detection of tenants requiring persistent graphs
+3. **Batch snapshot creation** - Schedule snapshot updates during low-usage periods
+4. **Tenant isolation** - Ensure graph models and snapshots are properly isolated between tenants
+5. **Resource management** - Use workload groups to prevent large tenant queries from affecting smaller tenants
+6. **Cost optimization** - Regularly review and optimize the persistent/transient threshold based on actual usage patterns
+
+This hybrid approach enables organizations to provide always-current data analysis for the majority of tenants while delivering enterprise-scale analytics capabilities for the largest tenants, optimizing both cost and performance across the entire customer base.
+
+:::moniker-end
 
 ## Related content
 
-* [Kusto Query Language (KQL) graph semantics overview](graph-overview.md)
-* [Graph operators](graph-operators.md)
+- [Graph semantics overview](graph-semantics-overview.md)
+- [Common scenarios for using graph semantics](graph-scenarios.md)
+- [Graph function](graph-function.md)
+- [make-graph operator](make-graph-operator.md)
+- [Graph models overview](../management/graph/graph-model-overview.md)
