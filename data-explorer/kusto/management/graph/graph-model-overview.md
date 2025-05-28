@@ -202,7 +202,7 @@ Key aspects of graph snapshots:
 
 * Each snapshot is linked to a specific graph model
 * A single graph model can have multiple snapshots associated with it
-* Snapshots are created with the `.create graph snapshot` command
+* Snapshots are created with the `.make graph_snapshot` command
 * Snapshots include metadata such as creation time and the source graph model
 * Snapshots enable querying the graph as it existed at a specific point in time
 
@@ -255,7 +255,7 @@ graph("InfluenceNetwork")
          target.name
 ```
 
-The `graph()` function provides a consistent way to access graph data without needing to explicitly construct the graph for each query. If a snapshot exists, it is used; otherwise, the function creates a graph similar to the `make-graph` operator during query execution.
+The `graph()` function provides a consistent way to access graph data without needing to explicitly construct the graph for each query.
 
 > [!NOTE]
 > See [Graph operators](../../query/graph-operators.md) for the complete reference on graph query syntax and capabilities.
@@ -270,9 +270,9 @@ Users or processes must refresh the graph themselves. Initially, no automatic re
 
 To refresh a graph:
 
-1. Create a new snapshot using an asynchronous operation (`.create graph snapshot`)
+1. Create a new snapshot using an asynchronous operation (`.make graph_snapshot`)
 1. Once created, incoming graph queries automatically use the new snapshot
-1. Optional: Drop the old snapshot to free up resources (`.drop graph snapshot`)
+1. Optional: Drop the old snapshot to free up resources (`.drop graph_snapshot`)
 
 ### What if different steps create duplicate edges or nodes?
 

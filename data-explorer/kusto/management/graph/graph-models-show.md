@@ -17,13 +17,13 @@ Lists all graph models in the database, showing the latest version for each mode
 
 ## Permissions
 
-To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
+To run this command, the user needs [Database viewer permissions](../../access-control/role-based-access-control.md).
 
 ## Syntax
 
 `.show` `graph_models` [`with` `(`*Property* `=` *Value* [`,` ...]`)`]
 
-`.show` `graph_models` [`with` `(`*Property* `=` *Value* [`,` ...]`)`] `details`
+`.show` `graph_models` `details` [`with` `(`*Property* `=` *Value* [`,` ...]`)`]
 
 ## Parameters
 
