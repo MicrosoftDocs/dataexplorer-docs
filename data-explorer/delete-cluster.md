@@ -46,4 +46,4 @@ The key for the tag is `opt-out-of-soft-delete` and the value is `true`.
 
 * [Troubleshoot: Failure to create or delete a database or table](troubleshoot-database-table.md)
 * [Quickstart: Create a cluster and database](create-cluster-and-database.md)
-* [Create Support Ticket: Create an Azure support request](azure/azure-portal/supportability/how-to-create-azure-support-request)
+* [Create Support Ticket: Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request?branch=main)
