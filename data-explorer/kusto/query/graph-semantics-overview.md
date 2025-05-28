@@ -107,6 +107,7 @@ IoT and digital twin applications benefit significantly from persistent graphs w
 - Simulate operating conditions before implementing physical infrastructure changes
 
 This persistent approach proves invaluable for managing complex IoT ecosystems at scale.
+
 :::moniker-end
 
 ## Graph querying capabilities
@@ -128,6 +129,7 @@ Once a graph is established (through `make-graph` or from a snapshot), you can l
 These capabilities support diverse use cases including customer journey analysis, product recommendation systems, IoT networks, digital twins, and knowledge graphs.
 
 :::moniker range="azure-data-explorer || microsoft-fabric"
+
 ## Choosing the right approach
 
 The following decision tree helps you select the most appropriate graph creation approach based on your specific requirements and constraints.
@@ -180,6 +182,7 @@ External data source dependencies (Kusto, SQL, Cosmos DB) can significantly affe
 
 - **Transient graphs** - Always reflect current data state, ideal for real-time analysis
 - **Persistent graphs** - Reflect data at snapshot creation time, providing consistency for collaborative analysis but requiring periodic refreshes
+
 :::moniker-end
 
 ## Integration with KQL ecosystem

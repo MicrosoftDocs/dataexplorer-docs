@@ -347,7 +347,7 @@ Now that you understand the basics of graph semantics in Kusto, advance to more 
 > [!div class="nextstepaction"]
 > [Graph best practices](../graph-best-practices.md)
 
-You can also explore these related topics:
+You can also explore these related articles:
 
 * [Graph operators reference](../graph-operators.md) - Complete guide to all available graph operators
 ::: moniker range="azure-data-explorer || microsoft-fabric"
