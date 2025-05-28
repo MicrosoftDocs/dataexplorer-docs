@@ -174,7 +174,7 @@ For detailed examples and implementation guidance, see the [Graph of Graph sampl
 
 Combining graph analysis with time-series analytics creates a powerful framework for detecting temporal anomalies while understanding their impact across interconnected systems. This integration delivers significant value for security analytics, IoT monitoring, and operational intelligence.
 
-:::image type="content" source="media/graphs/Time-series-graph-analytics.png" alt-text="Example image of a workflow diagram using time series and graph analytics.":::
+:::image type="content" source="media/graphs/time-series-graph-analytics.png" alt-text="Example image of a workflow diagram using time series and graph analytics.":::
 
 ### Temporal anomaly detection with context
 
