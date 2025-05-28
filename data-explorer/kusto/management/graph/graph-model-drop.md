@@ -3,7 +3,7 @@ title: .drop graph_model command
 description: Learn how to delete an existing graph model and all its versions using the .drop graph_model command.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 05/24/2025
+ms.date: 05/28/2025
 ---
 
 # .drop graph_model (preview)
@@ -43,11 +43,11 @@ This command doesn't return any output.
 
 ## Notes
 
-- The `.drop graph_model` command permanently deletes the graph model and all its versions. This operation cannot be undone.
+- The `.drop graph_model` command permanently deletes the graph model and all its versions. This operation can't be undone.
 - This command also deletes all snapshots associated with the graph model.
 - Dropping a graph model doesn't affect the source data that was used to create it.
 
-## Next steps
+## Related content
 
 - [Graph model overview](graph-model-overview.md)
 - [.create-or-alter graph_model](graph-model-create-or-alter.md)

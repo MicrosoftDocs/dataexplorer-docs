@@ -3,11 +3,11 @@ title: graph function
 description: Learn how to use the graph function to reference a persisted graph entity for querying.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 05/23/2025
+ms.date: 05/28/2025
 ---
 # graph function (preview)
 
->[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 > [!NOTE]
 > This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
