@@ -70,7 +70,7 @@ This command returns a table with different columns depending on whether the `de
 
 |Name|SnapshotTime|ModelName|ModelId|ModelCreationTime|
 |---|---|---|---|---|
-|Latest2|2025-05-24 06:34:51.6518833|SomeGraph|55953ea5-e03e-47b1-9126-35d8271bed90|2025-05-21 10:47:05.8611670|
+|Latest2|2025-05-24 06:34:51.6518833|SomeGraph|eeeeeeee-4f4f-5a5a-6b6b-777777777777|2025-05-21 10:47:05.8611670|
 
 ### Show detailed graph snapshot information
 
@@ -82,7 +82,7 @@ This command returns a table with different columns depending on whether the `de
 
 |Name|SnapshotTime|ModelName|ModelId|ModelCreationTime|NodesCount|EdgesCount|RetentionPolicy|
 |---|---|---|---|---|---|---|---|
-|Latest2|2025-05-24 06:34:51.6518833|SomeGraph|55953ea5-e03e-47b1-9126-35d8271bed90|2025-05-21 10:47:05.8611670|2|1|{<br>  "SoftDeletePeriod": "365000.00:00:00"<br>}|
+|Latest2|2025-05-24 06:34:51.6518833|SomeGraph|eeeeeeee-4f4f-5a5a-6b6b-777777777777|2025-05-21 10:47:05.8611670|2|1|{<br>  "SoftDeletePeriod": "365000.00:00:00"<br>}|
 
 ## Notes
 

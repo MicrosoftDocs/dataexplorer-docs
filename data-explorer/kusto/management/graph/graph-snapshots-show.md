@@ -56,9 +56,9 @@ This command returns a table with the following columns:
 
 |Name|SnapshotTime|ModelName|ModelId|ModelCreationTime|
 |---|---|---|---|---|
-|DailySnapshot|2025-04-25T08:15:30Z|SocialNetwork|12345678-1234-5678-9abc-123456789012|2025-03-01T10:00:00Z|
-|WeeklySnapshot|2025-04-18T09:20:45Z|SocialNetwork|12345678-1234-5678-9abc-123456789012|2025-03-01T10:00:00Z|
-|MonthlySnapshot|2025-03-28T14:10:22Z|SocialNetwork|12345678-1234-5678-9abc-123456789012|2025-03-01T10:00:00Z|
+|DailySnapshot|2025-04-25T08:15:30Z|SocialNetwork|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|2025-03-01T10:00:00Z|
+|WeeklySnapshot|2025-04-18T09:20:45Z|SocialNetwork|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|2025-03-01T10:00:00Z|
+|MonthlySnapshot|2025-03-28T14:10:22Z|SocialNetwork|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|2025-03-01T10:00:00Z|
 
 ### Show snapshots for all graph models
 
@@ -70,13 +70,13 @@ This command returns a table with the following columns:
 
 |Name|SnapshotTime|ModelName|ModelId|ModelCreationTime|
 |---|---|---|---|---|
-|DailySnapshot|2025-04-25T08:15:30Z|SocialNetwork|12345678-1234-5678-9abc-123456789012|2025-03-01T10:00:00Z|
-|WeeklySnapshot|2025-04-18T09:20:45Z|SocialNetwork|12345678-1234-5678-9abc-123456789012|2025-03-01T10:00:00Z|
-|MonthlySnapshot|2025-03-28T14:10:22Z|SocialNetwork|12345678-1234-5678-9abc-123456789012|2025-03-01T10:00:00Z|
-|DailySnapshot|2025-04-26T07:05:18Z|ProductRecommendations|87654321-4321-8765-dcba-987654321098|2025-02-15T14:30:00Z|
-|WeeklySnapshot|2025-04-19T06:30:42Z|ProductRecommendations|87654321-4321-8765-dcba-987654321098|2025-02-15T14:30:00Z|
-|HourlySnapshot|2025-04-26T14:00:05Z|NetworkTraffic|abcdef12-3456-7890-abcd-ef1234567890|2025-01-20T09:15:00Z|
-|DailySnapshot|2025-04-25T08:00:15Z|NetworkTraffic|abcdef12-3456-7890-abcd-ef1234567890|2025-01-20T09:15:00Z|
+|DailySnapshot|2025-04-25T08:15:30Z|SocialNetwork|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|2025-03-01T10:00:00Z|
+|WeeklySnapshot|2025-04-18T09:20:45Z|SocialNetwork|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|2025-03-01T10:00:00Z|
+|MonthlySnapshot|2025-03-28T14:10:22Z|SocialNetwork|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|2025-03-01T10:00:00Z|
+|DailySnapshot|2025-04-26T07:05:18Z|ProductRecommendations|bbbbbbbb-1c1c-2d2d-3e3e-444444444444|2025-02-15T14:30:00Z|
+|WeeklySnapshot|2025-04-19T06:30:42Z|ProductRecommendations|bbbbbbbb-1c1c-2d2d-3e3e-444444444444|2025-02-15T14:30:00Z|
+|HourlySnapshot|2025-04-26T14:00:05Z|NetworkTraffic|cccccccc-2d2d-3e3e-4f4f-555555555555|2025-01-20T09:15:00Z|
+|DailySnapshot|2025-04-25T08:00:15Z|NetworkTraffic|cccccccc-2d2d-3e3e-4f4f-555555555555|2025-01-20T09:15:00Z|
 
 ## Notes
 

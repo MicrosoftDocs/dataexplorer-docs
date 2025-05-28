@@ -106,7 +106,7 @@ This command returns a table with the following columns:
 
 |Name|CreationTime|ID|SnapshotsCount|Model|AuthorizedPrincipals|RetentionPolicy|
 |---|---|---|---|---|---|---|
-|SocialNetwork|2025-05-23 14:42:37.5128901|b709fec8-d821-45ab-9312-55e82c4f9203|0|model from above|[</br>  {</br>    "Type": "AAD User",</br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",</br>    "ObjectId": "aaaaaaaa-bbbb-cccc-1111-22222222222",</br>    "FQN": "aaduser=aaaaaaaa-bbbb-cccc-1111-22222222222;aaaabbbb-0000-cccc-1111-dddd2222eeee",</br>    "Notes": "",</br>    "RoleAssignmentIdentifier": "a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"</br>  }</br>]|{</br>  "SoftDeletePeriod": "3650.00:00:00"</br>}|
+|SocialNetwork|2025-05-23 14:42:37.5128901|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|0|model from above|[</br>  {</br>    "Type": "AAD User",</br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",</br>    "ObjectId": "aaaaaaaa-bbbb-cccc-1111-22222222222",</br>    "FQN": "aaduser=aaaaaaaa-bbbb-cccc-1111-22222222222;aaaabbbb-0000-cccc-1111-dddd2222eeee",</br>    "Notes": "",</br>    "RoleAssignmentIdentifier": "a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"</br>  }</br>]|{</br>  "SoftDeletePeriod": "3650.00:00:00"</br>}|
 
 ## Notes
 

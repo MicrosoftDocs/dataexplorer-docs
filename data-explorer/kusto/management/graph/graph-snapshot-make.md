@@ -60,7 +60,7 @@ If run asynchronously, the command returns an operation ID that can be used to c
 
 |Name|SnapshotTime|ModelName|ModelId|ModelCreationTime|NodesCount|EdgesCount|RetentionPolicy|
 |---|---|---|---|---|---|---|---|
-|WeeklySnapshot|2025-05-24 05:26:35.1495944|SocialNetwork|55953ea5-e03e-47b1-9126-35d8271bed90|2025-05-21 10:47:05.8611670|2|1|{</br>  "SoftDeletePeriod": "365000.00:00:00"<//br>}|
+|WeeklySnapshot|2025-05-24 05:26:35.1495944|SocialNetwork|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|2025-05-21 10:47:05.8611670|2|1|{</br>  "SoftDeletePeriod": "365000.00:00:00"<//br>}|
 
 ### Create a graph snapshot asynchronously
 
@@ -72,7 +72,7 @@ If run asynchronously, the command returns an operation ID that can be used to c
 
 |OperationId|Status|
 |---|---|
-|fe4a1358-ce9c-4512-9425-3f6d028565e2|InProgress|
+|bbbbbbbb-1c1c-2d2d-3e3e-444444444444|InProgress|
 
 ## Notes
 

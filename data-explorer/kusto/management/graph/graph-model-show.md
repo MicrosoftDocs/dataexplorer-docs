@@ -78,19 +78,19 @@ When using the `.show graph_model` command with the `details` keyword, the comma
 
 |Name|CreationTime|Id|
 |---|---|---|
-|SocialNetwork|2025-04-23T14:32:18Z|d78f3a29-3508-4d05-9c5a-16f8a5674e92|
+|SocialNetwork|2025-04-23T14:32:18Z|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|
 
 ### Show a specific version of a graph model
 
 ```kusto
-.show graph_model ProductRecommendations with (id = "a1b2c3d4-e5f6-4a3b-8c7d-9e0f1a2b3c4d")
+.show graph_model ProductRecommendations with (id = "cccccccc-2d2d-3e3e-4f4f-555555555555")
 ```
 
 **Output**
 
 |Name|CreationTime|Id|
 |---|---|---|
-|ProductRecommendations|2025-04-15T09:45:12Z|a1b2c3d4-e5f6-4a3b-8c7d-9e0f1a2b3c4d|
+|ProductRecommendations|2025-04-15T09:45:12Z|cccccccc-2d2d-3e3e-4f4f-555555555555|
 
 ### Show all versions of a graph model
 
@@ -102,9 +102,9 @@ When using the `.show graph_model` command with the `details` keyword, the comma
 
 |Name|CreationTime|Id|
 |---|---|---|
-|NetworkTraffic|2025-03-10T13:24:56Z|f1e2d3c4-b5a6-4b3c-8d7e-9f0e1d2c3b4a|
-|NetworkTraffic|2025-03-25T10:15:22Z|c7d8e9f0-a1b2-4c3d-9e0f-1a2b3c4d5e6f|
-|NetworkTraffic|2025-04-12T15:42:18Z|b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e|
+|NetworkTraffic|2025-03-10T13:24:56Z|bbbbbbbb-1c1c-2d2d-3e3e-444444444444|
+|NetworkTraffic|2025-03-25T10:15:22Z|cccccccc-2d2d-3e3e-4f4f-555555555555|
+|NetworkTraffic|2025-04-12T15:42:18Z|dddddddd-3e3e-4f4f-5a5a-666666666666|
 
 ### Show detailed information about a graph model
 
@@ -116,7 +116,7 @@ When using the `.show graph_model` command with the `details` keyword, the comma
 
 |Name|CreationTime|Id|SnapshotCount|Model|
 |---|---|---|---|---|
-|SocialNetwork|2025-04-23T14:32:18Z|d78f3a29-3508-4d05-9c5a-16f8a5674e92|12|{}|
+|SocialNetwork|2025-04-23T14:32:18Z|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|12|{}|
 
 ## Notes
 

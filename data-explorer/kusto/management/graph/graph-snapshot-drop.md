@@ -54,7 +54,7 @@ This command returns a table with the following columns:
 
 |Name|SnapshotTime|ModelName|ModelId|ModelCreationTime|
 |---|---|---|---|---|
-|Latest|2025-05-21 10:47:05.9122575|SomeGraph|55953ea5-e03e-47b1-9126-35d8271bed90|2025-05-21 10:47:05.8611670|
+|Latest|2025-05-21 10:47:05.9122575|SomeGraph|eeeeeeee-4f4f-5a5a-6b6b-777777777777|2025-05-21 10:47:05.8611670|
 
 ## Notes
 

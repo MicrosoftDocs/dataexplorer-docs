@@ -76,9 +76,9 @@ When using `.show graph_models details`, the command returns a table with the fo
 
 |Name|CreationTime|Id|
 |---|---|---|
-|SocialNetwork|2025-04-23T14:32:18Z|f8d7a45b-3c76-4d92-a814-9e3f62e18209|
-|ProductRecommendations|2025-04-15T09:45:12Z|a1b2c3d4-e5f6-4a3b-8c7d-9e0f1a2b3c4d|
-|NetworkTraffic|2025-04-12T15:42:18Z|b72a9c14-5e83-47df-b1c5-23e791d568fa|
+|SocialNetwork|2025-04-23T14:32:18Z|bbbbbbbb-1c1c-2d2d-3e3e-444444444444|
+|ProductRecommendations|2025-04-15T09:45:12Z|cccccccc-2d2d-3e3e-4f4f-555555555555|
+|NetworkTraffic|2025-04-12T15:42:18Z|dddddddd-3e3e-4f4f-5a5a-666666666666|
 
 ### Show all versions of all graph models
 
@@ -90,14 +90,14 @@ When using `.show graph_models details`, the command returns a table with the fo
 
 |Name|CreationTime|Id|
 |---|---|---|
-|SocialNetwork|2025-03-05T11:23:45Z|e4c8a743-1d2f-48e9-b7a5-96c31e2b4f0d|
-|SocialNetwork|2025-03-28T09:18:32Z|7b29e4f6-5d81-42ab-93c7-8d615f0a92e3|
-|SocialNetwork|2025-04-23T14:32:18Z|f8d7a45b-3c76-4d92-a814-9e3f62e18209|
-|ProductRecommendations|2025-03-10T14:25:38Z|c6e9f875-2d3a-41b7-8c5e-9f1a2b3c4d5e|
-|ProductRecommendations|2025-04-15T09:45:12Z|a1b2c3d4-e5f6-4a3b-8c7d-9e0f1a2b3c4d|
-|NetworkTraffic|2025-03-10T13:24:56Z|5a9b8c7d-6e5f-4321-ba98-7c6d5e4f3a21|
-|NetworkTraffic|2025-03-25T10:15:22Z|1f2e3d4c-5b6a-4897-ae32-1b2c3d4e5f67|
-|NetworkTraffic|2025-04-12T15:42:18Z|b72a9c14-5e83-47df-b1c5-23e791d568fa|
+|SocialNetwork|2025-03-05T11:23:45Z|eeeeeeee-4f4f-5a5a-6b6b-777777777777|
+|SocialNetwork|2025-03-28T09:18:32Z|ffffffff-5a5a-6b6b-7c7c-888888888888|
+|SocialNetwork|2025-04-23T14:32:18Z|bbbbbbbb-1c1c-2d2d-3e3e-444444444444|
+|ProductRecommendations|2025-03-10T14:25:38Z|aaaaaaaa-6b6b-7c7c-8d8d-999999999999|
+|ProductRecommendations|2025-04-15T09:45:12Z|cccccccc-2d2d-3e3e-4f4f-555555555555|
+|NetworkTraffic|2025-03-10T13:24:56Z|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|
+|NetworkTraffic|2025-03-25T10:15:22Z|bbbbbbbb-1c1c-2d2d-3e3e-444444444444|
+|NetworkTraffic|2025-04-12T15:42:18Z|dddddddd-3e3e-4f4f-5a5a-666666666666|
 
 ### Show detailed information for the latest version of all graph models
 
@@ -109,9 +109,9 @@ When using `.show graph_models details`, the command returns a table with the fo
 
 |Name|CreationTime|Id|SnapshotsCount|Model|AuthorizedPrincipals|RetentionPolicy|
 |---|---|---|---|---|---|---|
-|SocialNetwork|2025-04-23T14:32:18Z|f8d7a45b-3c76-4d92-a814-9e3f62e18209|3|{}|[{"Type":"AAD User", "DisplayName":"Alex Johnson (upn: alex.johnson@contoso.com)", "ObjectId":"aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb", "FQN":"aaduser=aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
-|ProductRecommendations|2025-04-15T09:45:12Z|a1b2c3d4-e5f6-4a3b-8c7d-9e0f1a2b3c4d|2|{}|[{"Type":"AAD User", "DisplayName":"Maria Garcia (upn: maria.garcia@contoso.com)", "ObjectId":"bbbbbbbb-1111-2222-3333-cccccccccccc", "FQN":"aaduser=bbbbbbbb-1111-2222-3333-cccccccccccc;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
-|NetworkTraffic|2025-04-12T15:42:18Z|b72a9c14-5e83-47df-b1c5-23e791d568fa|3|{}|[{"Type":"AAD User", "DisplayName":"Sam Wilson (upn: sam.wilson@contoso.com)", "ObjectId":"cccccccc-2222-3333-4444-dddddddddddd", "FQN":"aaduser=cccccccc-2222-3333-4444-dddddddddddd;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
+|SocialNetwork|2025-04-23T14:32:18Z|bbbbbbbb-1c1c-2d2d-3e3e-444444444444|3|{}|[{"Type":"AAD User", "DisplayName":"Alex Johnson (upn: alex.johnson@contoso.com)", "ObjectId":"aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb", "FQN":"aaduser=aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
+|ProductRecommendations|2025-04-15T09:45:12Z|cccccccc-2d2d-3e3e-4f4f-555555555555|2|{}|[{"Type":"AAD User", "DisplayName":"Maria Garcia (upn: maria.garcia@contoso.com)", "ObjectId":"bbbbbbbb-1111-2222-3333-cccccccccccc", "FQN":"aaduser=bbbbbbbb-1111-2222-3333-cccccccccccc;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
+|NetworkTraffic|2025-04-12T15:42:18Z|dddddddd-3e3e-4f4f-5a5a-666666666666|3|{}|[{"Type":"AAD User", "DisplayName":"Sam Wilson (upn: sam.wilson@contoso.com)", "ObjectId":"cccccccc-2222-3333-4444-dddddddddddd", "FQN":"aaduser=cccccccc-2222-3333-4444-dddddddddddd;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
 
 ### Show detailed information for all versions of all graph models
 
@@ -123,11 +123,11 @@ When using `.show graph_models details`, the command returns a table with the fo
 
 |Name|CreationTime|Id|SnapshotsCount|Model|AuthorizedPrincipals|RetentionPolicy|
 |---|---|---|---|---|---|---|
-|SocialNetwork|2025-03-05T11:23:45Z|e4c8a743-1d2f-48e9-b7a5-96c31e2b4f0d|3|{}|[{"Type":"AAD User", "DisplayName":"Alex Johnson (upn: alex.johnson@contoso.com)", "ObjectId":"aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb", "FQN":"aaduser=aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
-|SocialNetwork|2025-03-28T09:18:32Z|7b29e4f6-5d81-42ab-93c7-8d615f0a92e3|3|{}|[{"Type":"AAD User", "DisplayName":"Alex Johnson (upn: alex.johnson@contoso.com)", "ObjectId":"aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb", "FQN":"aaduser=aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}, {"Type":"AAD Group", "DisplayName":"Data Scientists (upn: data.scientists@contoso.com)", "ObjectId":"dddddddd-3333-4444-5555-eeeeeeeeeeee", "FQN":"aadgroup=dddddddd-3333-4444-5555-eeeeeeeeeeee;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"Read-only access", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
-|SocialNetwork|2025-04-23T14:32:18Z|f8d7a45b-3c76-4d92-a814-9e3f62e18209|3|{}|[{"Type":"AAD User", "DisplayName":"Alex Johnson (upn: alex.johnson@contoso.com)", "ObjectId":"aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb", "FQN":"aaduser=aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}, {"Type":"AAD Group", "DisplayName":"Data Scientists (upn: data.scientists@contoso.com)", "ObjectId":"dddddddd-3333-4444-5555-eeeeeeeeeeee", "FQN":"aadgroup=dddddddd-3333-4444-5555-eeeeeeeeeeee;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"Read-only access", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
-|ProductRecommendations|2025-03-10T14:25:38Z|c6e9f875-2d3a-41b7-8c5e-9f1a2b3c4d5e|2|{}|[{"Type":"AAD User", "DisplayName":"Maria Garcia (upn: maria.garcia@contoso.com)", "ObjectId":"bbbbbbbb-1111-2222-3333-cccccccccccc", "FQN":"aaduser=bbbbbbbb-1111-2222-3333-cccccccccccc;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
-|ProductRecommendations|2025-04-15T09:45:12Z|a1b2c3d4-e5f6-4a3b-8c7d-9e0f1a2b3c4d|2|{}|[{"Type":"AAD User", "DisplayName":"Maria Garcia (upn: maria.garcia@contoso.com)", "ObjectId":"bbbbbbbb-1111-2222-3333-cccccccccccc", "FQN":"aaduser=bbbbbbbb-1111-2222-3333-cccccccccccc;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}, {"Type":"AAD Service Principal", "DisplayName":"ProductAnalytics App (app: product.analytics@contoso.com)", "ObjectId":"eeeeeeee-4444-5555-6666-ffffffffffff", "FQN":"aadapp=eeeeeeee-4444-5555-6666-ffffffffffff;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"Automated reporting", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
+|SocialNetwork|2025-03-05T11:23:45Z|eeeeeeee-4f4f-5a5a-6b6b-777777777777|3|{}|[{"Type":"AAD User", "DisplayName":"Alex Johnson (upn: alex.johnson@contoso.com)", "ObjectId":"aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb", "FQN":"aaduser=aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
+|SocialNetwork|2025-03-28T09:18:32Z|ffffffff-5a5a-6b6b-7c7c-888888888888|3|{}|[{"Type":"AAD User", "DisplayName":"Alex Johnson (upn: alex.johnson@contoso.com)", "ObjectId":"aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb", "FQN":"aaduser=aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}, {"Type":"AAD Group", "DisplayName":"Data Scientists (upn: data.scientists@contoso.com)", "ObjectId":"dddddddd-3333-4444-5555-eeeeeeeeeeee", "FQN":"aadgroup=dddddddd-3333-4444-5555-eeeeeeeeeeee;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"Read-only access", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
+|SocialNetwork|2025-04-23T14:32:18Z|bbbbbbbb-1c1c-2d2d-3e3e-444444444444|3|{}|[{"Type":"AAD User", "DisplayName":"Alex Johnson (upn: alex.johnson@contoso.com)", "ObjectId":"aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb", "FQN":"aaduser=aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}, {"Type":"AAD Group", "DisplayName":"Data Scientists (upn: data.scientists@contoso.com)", "ObjectId":"dddddddd-3333-4444-5555-eeeeeeeeeeee", "FQN":"aadgroup=dddddddd-3333-4444-5555-eeeeeeeeeeee;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"Read-only access", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
+|ProductRecommendations|2025-03-10T14:25:38Z|aaaaaaaa-6b6b-7c7c-8d8d-999999999999|2|{}|[{"Type":"AAD User", "DisplayName":"Maria Garcia (upn: maria.garcia@contoso.com)", "ObjectId":"bbbbbbbb-1111-2222-3333-cccccccccccc", "FQN":"aaduser=bbbbbbbb-1111-2222-3333-cccccccccccc;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
+|ProductRecommendations|2025-04-15T09:45:12Z|cccccccc-2d2d-3e3e-4f4f-555555555555|2|{}|[{"Type":"AAD User", "DisplayName":"Maria Garcia (upn: maria.garcia@contoso.com)", "ObjectId":"bbbbbbbb-1111-2222-3333-cccccccccccc", "FQN":"aaduser=bbbbbbbb-1111-2222-3333-cccccccccccc;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}, {"Type":"AAD Service Principal", "DisplayName":"ProductAnalytics App (app: product.analytics@contoso.com)", "ObjectId":"eeeeeeee-4444-5555-6666-ffffffffffff", "FQN":"aadapp=eeeeeeee-4444-5555-6666-ffffffffffff;aaaabbbb-0000-cccc-1111-dddd2222eeee", "Notes":"Automated reporting", "RoleAssignmentIdentifier":"a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"}]|{"SoftDeletePeriod":"365000.00:00:00"}|
 
 ## Notes
 
