@@ -72,8 +72,6 @@ graph("SecurityGraph", snapshot="Snapshot_2025_05_01")
 
 * [Graph semantics overview](graph-semantics-overview.md)
 * [Persistent graphs overview](../management/graph/graph-persistent-overview.md)
-:::moniker range="microsoft-fabric || azure-data-explorer"
 * [Graph model overview](../management/graph/graph-model-overview.md)
 * [Graph snapshots overview](../management/graph/graph-snapshot-overview.md)
-:::moniker-end
 * [Graph operators](graph-operators.md)

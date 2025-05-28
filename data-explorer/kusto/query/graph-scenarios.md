@@ -239,7 +239,9 @@ For detailed implementation examples and code samples, see the [Digital Twins sa
 
 - [Graph semantics overview](graph-semantics-overview.md)
 - [Best practices for KQL graph semantics](graph-best-practices.md)
+:::moniker range="microsoft-fabric || azure-data-explorer"
 - [Graph function](graph-function.md)
+:::moniker-end
 - [make-graph operator](make-graph-operator.md)
 - [Azure Kusto Graph Samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples)
 - [Advanced KQL graph capabilities for security analysis](https://github.com/Azure/azure-kusto-graph-samples/blob/main/graph%20of%20graph/advanced-kql-capabilities.md)

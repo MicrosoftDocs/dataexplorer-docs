@@ -394,6 +394,8 @@ The function `graph_path_discovery_fl()` can be used in cybersecurity domain to 
 
 * [Functions library](functions-library.md)
 * [Graph semantics overview](../query/graph-semantics-overview.md)
-* [Graph function](../query/graph-function.md)
+:::moniker range="microsoft-fabric || azure-data-explorer"
+* [Graph function](graph-function.md)
+:::moniker-end
 * [Graph scenarios](../query/graph-scenarios.md)
 * [Best practices](../query/graph-best-practices.md)

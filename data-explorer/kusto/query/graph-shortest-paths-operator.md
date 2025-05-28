@@ -127,5 +127,7 @@ connections
 ## Related content
 
 * [Best practices for graph semantics](graph-best-practices.md)
-* [Graph operator](graph-function.md)
 * [make-graph operator](../query/make-graph-operator.md)
+:::moniker range="microsoft-fabric || azure-data-explorer"
+* [Graph function](graph-function.md)
+:::moniker-end
