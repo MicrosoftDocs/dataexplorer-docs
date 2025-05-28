@@ -3,7 +3,7 @@ title:  graph_node_centrality_fl()
 description: Learn how to use the graph_node_centrality_fl() function to calculate  metrics of node centrality over graph data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 03/25/2025
+ms.date: 05/25/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_node_centrality_fl()
@@ -492,7 +492,8 @@ The function `graph_node_centrality_fl()` can be used in the cybersecurity domai
 ## Related content
 
 * [Functions library](functions-library.md)
-* [Kusto Query Language (KQL) graph semantics overview](../query/graph-overview.md)
-* [Graph operators](../query/graph-operators.md)
-* [Scenarios](../query/graph-scenarios.md)
+* [Graph semantics overview](../query/graph-semantics-overview.md)
+* [Graph operators](../query/graph-function.md)
+* [Graph scenarios](../query/graph-scenarios.md)
 * [Best practices](../query/graph-best-practices.md)
+* [graph-path-discovery-fl()](graph-path-discovery-fl.md)

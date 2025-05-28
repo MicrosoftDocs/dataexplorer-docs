@@ -126,6 +126,6 @@ connections
 
 ## Related content
 
-* [Best practices for Kusto Query Language (KQL) graph semantics](graph-best-practices.md)
-* [Graph operators](graph-operators.md)
-* [make-graph operator](make-graph-operator.md)
+* [Best practices for graph semantics](graph-best-practices.md)
+* [Graph operator](graph-function.md)
+* [make-graph operator](../query/make-graph-operator.md)

@@ -11,6 +11,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "query/graph-overview.md",
+      "redirect_url": "/kusto/query/graph-semantics-overview",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "management/show-cluster-database.md",
       "redirect_url": "/kusto/management/show-databases",
       "redirect_document_id": false
