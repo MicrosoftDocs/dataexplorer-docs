@@ -1,0 +1,16 @@
+---
+config:
+  look: neo
+  theme: default
+---
+graph TD
+    EXT[🌐 External IP] -->|phishing email| U1[👤 User: Alice]
+    U1 -->|compromised credentials| S1[🖥️ Workstation]
+    S1 -->|lateral movement| FS[🗄️ File Server]
+    FS -->|access| DB[🗄️ Sensitive Database]
+    
+    style EXT fill:#ff6b6b,stroke:#d63031,color:#fff
+    style U1 fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style S1 fill:#e8f5e8,stroke:#2e7d32,color:#000
+    style FS fill:#fff3e0,stroke:#ef6c00,color:#000
+    style DB fill:#ffd93d,stroke:#fdcb6e,color:#000
