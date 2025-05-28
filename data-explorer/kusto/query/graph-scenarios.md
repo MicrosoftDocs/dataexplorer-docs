@@ -3,7 +3,7 @@ title: Scenarios for using Kusto Query Language (KQL) graph semantics
 description: Learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 05/25/2025
+ms.date: 05/28/2025
 # Customer intent: As a data analyst, I want to learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ---
 
@@ -174,7 +174,7 @@ For detailed examples and implementation guidance, see the [Graph of Graph sampl
 
 Combining graph analysis with time-series analytics creates a powerful framework for detecting temporal anomalies while understanding their impact across interconnected systems. This integration delivers significant value for security analytics, IoT monitoring, and operational intelligence.
 
-:::image type="content" source="media/graphs/Time-series-graph-analytics.png" alt-text="Example image of a workflow diagram using time series and graph analytics.":::
+:::image type="content" source="media/graphs/time-series-graph-analytics.png" alt-text="Example workflow diagram using time series and graph analytics.":::
 
 ### Temporal anomaly detection with context
 
@@ -237,6 +237,7 @@ For detailed implementation examples and code samples, see the [Digital Twins sa
 
 ## Related content
 
+:::moniker range="microsoft-fabric || azure-data-explorer"
 - [Graph semantics overview](graph-semantics-overview.md)
 - [Best practices for KQL graph semantics](graph-best-practices.md)
 - [Graph function](graph-function.md)
@@ -244,3 +245,12 @@ For detailed implementation examples and code samples, see the [Digital Twins sa
 - [Azure Kusto Graph Samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples)
 - [Advanced KQL graph capabilities for security analysis](https://github.com/Azure/azure-kusto-graph-samples/blob/main/graph%20of%20graph/advanced-kql-capabilities.md)
 - [Digital twins with KQL graph semantics](https://github.com/Azure/azure-kusto-graph-samples/tree/main/digital%20twins)
+:::moniker-end
+:::moniker range="azure-monitor || microsoft-sentinel"
+- [Graph semantics overview](graph-semantics-overview.md)
+- [Best practices for KQL graph semantics](graph-best-practices.md)
+- [make-graph operator](make-graph-operator.md)
+- [Azure Kusto Graph Samples on GitHub](https://github.com/Azure/azure-kusto-graph-samples)
+- [Advanced KQL graph capabilities for security analysis](https://github.com/Azure/azure-kusto-graph-samples/blob/main/graph%20of%20graph/advanced-kql-capabilities.md)
+- [Digital twins with KQL graph semantics](https://github.com/Azure/azure-kusto-graph-samples/tree/main/digital%20twins)
+:::moniker-end
