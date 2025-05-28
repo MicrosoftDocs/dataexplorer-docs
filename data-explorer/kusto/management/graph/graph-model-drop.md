@@ -47,7 +47,7 @@ This command doesn't return any output.
 - This command also deletes all snapshots associated with the graph model.
 - Dropping a graph model doesn't affect the source data that was used to create it.
 
-## Next steps
+## Related content
 
 - [Graph model overview](graph-model-overview.md)
 - [.create-or-alter graph_model](graph-model-create-or-alter.md)

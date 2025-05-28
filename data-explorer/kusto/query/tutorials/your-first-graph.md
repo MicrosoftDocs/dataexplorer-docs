@@ -46,6 +46,14 @@ Open the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/clusters/he
 Navigate to your Microsoft Fabric workspace and open a KQL database to run the queries.
 ::: moniker-end
 
+::: moniker range="microsoft-sentinel"
+Navigate to the advanced hunting page to start querying Microsoft Sentinel data.
+::: moniker-end
+
+::: moniker range ="azure-monitor"
+Navigate to Logs or to a Logs Analytics workspace in the Azure portal to start querying Azure Monitor data.
+::: moniker-end
+
 ## Create a transient graph with organizational data
 
 In this section, you'll create your first graph using sample organizational data. Transient graphs are created dynamically during query execution using the `make-graph` operator, making them perfect for ad-hoc analysis and exploration.
@@ -342,6 +350,8 @@ Now that you understand the basics of graph semantics in Kusto, advance to more 
 You can also explore these related topics:
 
 * [Graph operators reference](../graph-operators.md) - Complete guide to all available graph operators
-* [Graph model management](../../management/graph/graph-model-overview.md) - Deep dive into persistent graph models  
+::: moniker range="azure-data-explorer || microsoft-fabric"
+* [Graph model management](../../management/graph/graph-model-overview.md) - Deep dive into persistent graph models
+::: moniker-end
 * [Graph shortest paths](../graph-shortest-paths-operator.md) - Find optimal paths between entities
 * [Advanced graph queries](../graph-scenarios.md) - Complex analysis patterns and use cases
