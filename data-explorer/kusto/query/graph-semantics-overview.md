@@ -1,16 +1,16 @@
 ---
 title: Graph semantics overview
-description: Learn about graph semantics in Kusto and the different approaches to create and query graphs
+description: Learn about KQL graph semantics and the different approaches to create and query graphs
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 05/23/2025
+ms.date: 05/29/2025
 ---
 
 # Graph semantics overview
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Graph semantics in Kusto enables you to model and query data as interconnected networks. A graph consists of nodes (entities) and edges (relationships) that connect them. Both nodes and edges can contain properties, creating a rich data model for complex relationships.
+Graph semantics enables you to model and query data as interconnected networks. A graph consists of nodes (entities) and edges (relationships) that connect them. Both nodes and edges can contain properties, creating a rich data model for complex relationships.
 
 Graphs excel at representing complex data with many-to-many relationships, hierarchical structures, or networked connections—such as social networks, recommendation systems, connected assets, and knowledge graphs. Unlike relational databases that require indexes and joins to connect data across tables, graphs use direct adjacency between nodes, enabling fast and intuitive traversal of relationships.
 
@@ -24,7 +24,7 @@ The following graph shows a supply chain scenario where nodes represent supplier
 
 :::image type="content" source="media/graphs/graph-supply-chain.png" alt-text="Graph of two suppliers, manufacturer, and distributor, and the supply relationship.":::
 
-## Why use graph semantics in Kusto?
+## Why use graph semantics?
 
 Kusto's graph capabilities offer significant advantages by **leveraging existing data investments** while adding sophisticated relationship modeling:
 
