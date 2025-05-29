@@ -32,7 +32,7 @@ To run this command, the user needs [Database Admin permissions](../../access-co
 
 ### Graph model definition payload
 
-The graph model definition payload is a JSON document that defines the structure and processing steps for the graph model. For detailed information about the graph model definition format, see [Graph model in Kusto - Overview](graph-model-overview.md).
+The graph model definition payload is a JSON document that defines the structure and processing steps for the graph model. For detailed information about the graph model definition format, see [Graph model overview](graph-model-overview.md).
 
 ## Returns
 
