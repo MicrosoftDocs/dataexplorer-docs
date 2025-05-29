@@ -1,16 +1,16 @@
 ---
 title: Graph semantics overview
-description: Learn about graph semantics in Kusto and the different approaches to create and query graphs
+description: Learn about graph semantics and the different approaches to create and query graphs
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 05/23/2025
+ms.date: 05/29/2025
 ---
 
 # Graph semantics overview
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Graph semantics in Kusto enables you to model and query data as interconnected networks. A graph consists of nodes (entities) and edges (relationships) that connect them. Both nodes and edges can contain properties, creating a rich data model for complex relationships.
+Graph semantics enables you to model and query data as interconnected networks. A graph consists of nodes (entities) and edges (relationships) that connect them. Both nodes and edges can contain properties, creating a rich data model for complex relationships.
 
 Graphs excel at representing complex data with many-to-many relationships, hierarchical structures, or networked connections—such as social networks, recommendation systems, connected assets, and knowledge graphs. Unlike relational databases that require indexes and joins to connect data across tables, graphs use direct adjacency between nodes, enabling fast and intuitive traversal of relationships.
 
@@ -24,17 +24,17 @@ The following graph shows a supply chain scenario where nodes represent supplier
 
 :::image type="content" source="media/graphs/graph-supply-chain.png" alt-text="Graph of two suppliers, manufacturer, and distributor, and the supply relationship.":::
 
-## Why use graph semantics in Kusto?
+## Why use graph semantics?
 
-Kusto's graph capabilities offer significant advantages by **leveraging existing data investments** while adding sophisticated relationship modeling:
+Graph capabilities offer significant advantages by **leveraging existing data investments** while adding sophisticated relationship modeling:
 
-- **No data migration required** - Build graph models directly from current data without duplication
-- **Cost-effective solution** - Eliminates the complexity and expense of dedicated graph databases
-- **Temporal analysis support** - As a time-series database, Kusto naturally enables analysis of graph evolution over time
-- **Event-based modeling** - Treats graphs as sequences of relationship events, aligning with Kusto's strength in event processing
-- **Seamless KQL integration** - Graph operators work alongside all existing KQL capabilities with full IntelliSense support
+- **No data migration required** - Build graph models directly from current data without duplication.
+- **Cost-effective solution** - Eliminates the complexity and expense of dedicated graph databases.
+- **Temporal analysis support** - As a time-series database, you can naturally analyze how graphs evolve over time.
+- **Event-based modeling** - Models graphs as sequences of relationship events, aligning with strong event processing capabilities.
+- **Seamless KQL integration** - Graph operators work alongside all existing KQL capabilities with full IntelliSense support.
 
-This approach delivers **enterprise-grade relationship modeling** while maintaining Kusto's performance, scale, and familiar interface. Organizations can analyze complex interconnected data across domains—from supply chains and organizational hierarchies to IoT device networks and social relationships—without extra infrastructure investments.
+This approach delivers **enterprise-grade relationship modeling** while maintaining performance, scale, and a familiar interface. Organizations can analyze complex interconnected data across domains—from supply chains and organizational hierarchies to IoT device networks and social relationships—without extra infrastructure investments.
 
 ## Transient graph creation approach
 
@@ -176,7 +176,7 @@ Persistent graphs are essential when working with enterprise-scale data or when 
 - **Transient graphs** - Include construction time in each query, with delays increasing for large datasets or external data sources
 - **Persistent graphs** - Eliminate construction latency through prebuilt snapshots, enabling rapid analysis
 
-External data source dependencies (Kusto, SQL, Cosmos DB) can significantly affect transient graph construction time, as each query must wait for external responses.
+External data source dependencies, such as cross cluster queries or external tables to SQL and CosmosDB, can significantly affect transient graph construction time because each query must wait for external responses.
 
 ### Data freshness
 

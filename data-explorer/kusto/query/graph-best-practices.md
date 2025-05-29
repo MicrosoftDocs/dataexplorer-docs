@@ -3,7 +3,7 @@ title: Best practices for Kusto Query Language (KQL) graph semantics
 description: Learn about the best practices for Kusto Query Language (KQL) graph semantics.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 05/26/2025
+ms.date: 05/29/2025
 # Customer intent: As a data analyst, I want to learn about best practices for KQL graph semantics.
 ---
 
@@ -11,7 +11,7 @@ ms.date: 05/26/2025
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Kusto supports two primary approaches for working with graphs: transient graphs created in-memory for each query, and persistent graphs defined as graph models and snapshots within the database. This article provides best practices for both methods, enabling you to select the optimal approach and use KQL graph semantics efficiently.
+Graph semanitcs supports two primary approaches for working with graphs: transient graphs created in-memory for each query, and persistent graphs defined as graph models and snapshots within the database. This article provides best practices for both methods, enabling you to select the optimal approach and use KQL graph semantics efficiently.
 
 This guidance covers:
 
@@ -23,9 +23,9 @@ This guidance covers:
 
 :::moniker range="azure-data-explorer || microsoft-fabric"
 
-## Graph modeling approaches in Kusto
+## Graph modeling approaches
 
-Kusto provides two approaches for working with graphs: transient and persistent.
+There are two approaches for working with graphs: transient and persistent.
 
 ### Transient graphs
 
