@@ -11,7 +11,7 @@ ms.date: 05/28/2025
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Graph semantics in Kusto Query Language (KQL) enables modeling and querying data as interconnected networks. This approach excels at representing complex data with many-to-many relationships, hierarchical structures, and networked systems—including social networks, recommendation engines, connected assets, and knowledge graphs.
+Graph semantics enables modeling and querying data as interconnected networks. This approach excels at representing complex data with many-to-many relationships, hierarchical structures, and networked systems—including social networks, recommendation engines, connected assets, and knowledge graphs.
 
 This article explores the following common scenarios for using KQL graph semantics:
 
@@ -217,7 +217,7 @@ Graph semantics enables comprehensive digital twin modeling through:
 
 ### Graph historization for temporal analysis
 
-A critical aspect of digital twin management is capturing and analyzing temporal changes. By historizing graph changes in Kusto, organizations can:
+A critical aspect of digital twin management is capturing and analyzing temporal changes. By historizing graph changes, organizations can:
 
 1. **Track evolution over time** - Monitor how physical spaces and systems change
 2. **Conduct historical analysis** - Identify patterns and trends in utilization and performance

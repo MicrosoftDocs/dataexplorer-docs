@@ -1387,16 +1387,12 @@ items:
     displayName: count(predicate)
     href: /kusto/query/countif-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: covariance()
-    displayName: covariance()
     href: /kusto/query/covariance-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: covarianceif()
-    displayName: covarianceif()
     href: /kusto/query/covarianceif-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: covariancep()
-    displayName: covariancep()
     href: /kusto/query/covariancep-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: covariancepif()
-    displayName: covariancepif()
     href: /kusto/query/covariancepif-aggregation-function?view=azure-data-explorer&preserve-view=true
   - name: dcount()
     href: /kusto/query/dcount-aggregation-function?view=azure-data-explorer&preserve-view=true
@@ -1468,7 +1464,7 @@ items:
     href: /kusto/query/variancepif-aggregation-function?view=azure-data-explorer&preserve-view=true
 - name: Graph
   items:
-  - name: Graph semantics overview
+  - name: Graph overview
     href: /kusto/query/graph-semantics-overview?view=azure-data-explorer&preserve-view=true
   - name: Graph best practices
     href: /kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true
@@ -1478,8 +1474,6 @@ items:
     items:
     - name: Graph operators overview
       href: /kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true
-    - name: graph
-      href: /kusto/query/graph-operator?view=azure-data-explorer&preserve-view=true
     - name: make-graph
       href: /kusto/query/make-graph-operator?view=azure-data-explorer&preserve-view=true
     - name: graph-match
@@ -1504,6 +1498,9 @@ items:
     - name: inner_nodes()
       displayName: inner nodes() graph function, inner nodes
       href: /kusto/query/inner-nodes-graph-function?view=azure-data-explorer&preserve-view=true
+    - name: labels()
+      displayName: labels() graph function, labels
+      href: /kusto/query/labels-graph-function?view=azure-data-explorer&preserve-view=true
     - name: node_degree_in()
       displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in
       href: /kusto/query/node-degree-in?view=azure-data-explorer&preserve-view=true
@@ -1915,6 +1912,8 @@ items:
     href: /kusto/concepts/query-consistency?view=azure-data-explorer&preserve-view=true
   - name: Query limits
     href: /kusto/concepts/query-limits?view=azure-data-explorer&preserve-view=true
+  - name: Query resource consumption
+    href: /kusto/concepts/query-resource-consumption?view=azure-data-explorer&preserve-view=true
   - name: Partial query failures
     href: /kusto/concepts/partial-query-failures?view=azure-data-explorer&preserve-view=true
     items:

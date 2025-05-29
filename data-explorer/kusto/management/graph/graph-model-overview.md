@@ -1,6 +1,6 @@
 ---
 title: Graph models in Azure Data Explorer - Overview and usage
-description: Learn how to define, manage, and query persistent graph structures in Kusto
+description: Learn how to define, manage, and query persistent graph structures
 ms.reviewer: herauch
 ms.topic: reference
 ms.date: 05/24/2025
@@ -17,16 +17,16 @@ Graph models in Azure Data Explorer enable you to define, manage, and efficientl
 
 ## Overview
 
-A graph model is a database object that represents a labeled property graph (LPG) within Azure Data Explorer. It consists of nodes (vertices) and edges (relationships), both of which can have properties that describe them. The model defines both the schema of the graph (node and edge types with their properties) and the process for constructing the graph from tabular data stored in Kusto tables.
+A graph model is a database object that represents a labeled property graph (LPG) within Azure Data Explorer. It consists of nodes, also called vertices, and edges, also called relationships. Both nodes and edges can have properties that describe them. The model defines the schema of the graph, including node and edge types with their properties. It also defines the process for constructing the graph from tabular data stored in KQL Database tables and from tabular expressions.
 
 ## Key characteristics
 
-Graph models in Kusto offer:
+Graph models offer:
 
 - **Metadata persistence**: Store graph specifications in database metadata for durability and reusability
 - **Materialized snapshots**: Eliminate the need to rebuild graphs for each query, dramatically improving query performance
 - **Schema definition**: Support optional but recommended defined schemas for nodes and edges, ensuring data consistency
-- **Deep KQL integration**: Seamlessly integrate with Kusto Query Language (KQL) graph semantics
+- **Deep KQL integration**: Seamlessly integrate with graph semantics
 - **Optimized traversals**: Include specialized indexing for efficient graph traversal operations, making complex pattern matching and path-finding queries significantly faster
 
 ## When to use graph models
@@ -206,7 +206,7 @@ Key aspects of graph snapshots:
 * Snapshots include metadata such as creation time and the source graph model
 * Snapshots enable querying the graph as it existed at a specific point in time
 
-For more detailed information about working with graph snapshots, see [Graph snapshots in Kusto](graph-snapshot-overview.md).
+For more detailed information about working with graph snapshots, see [Graph snapshots overview](graph-snapshot-overview.md).
 
 ## Querying Graph models
 

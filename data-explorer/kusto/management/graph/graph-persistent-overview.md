@@ -1,6 +1,6 @@
 ---
-title: Persistent graphs in Kusto - Overview
-description: Learn about persistent graphs in Kusto, including graph models, snapshots, and management commands for scalable graph analytics.
+title: Persistent graphs overview
+description: Learn about persistent graphs, including graph models, snapshots, and management commands for scalable graph analytics.
 ms.reviewer: herauch
 ms.topic: reference
 ms.date: 05/24/2025
@@ -13,7 +13,7 @@ ms.date: 05/24/2025
 > [!NOTE]
 > This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
 
-Persistent graphs in Kusto enable you to store, manage, and query graph data structures at scale. Unlike transient graphs created with the [make-graph](../../query/make-graph-operator.md) operator, persistent graphs are durable database objects that persist beyond individual query executions, providing enterprise-grade graph analytics capabilities.
+Persistent graphs enable you to store, manage, and query graph data structures at scale. Unlike transient graphs created with the [make-graph](../../query/make-graph-operator.md) operator, persistent graphs are durable database objects that persist beyond individual query executions, providing enterprise-grade graph analytics capabilities.
 
 ## Overview
 
@@ -109,11 +109,11 @@ The [`graph-match`](../../query/graph-match-operator.md) operator enables patter
 
 ## Key considerations
 
-This section describes key considerations and current limitations of graph models and snapshots in Kusto.
+This section describes key considerations and current limitations of graph models and snapshots.
 
 ### Snapshot limitations
 
-Persistent graphs in Kusto have the following limitations:
+Persistent graphs have the following limitations:
 
 - **Regular database limit**: Maximum of 5,000 graph snapshots per database
 - **Free virtual cluster limit**: Maximum of 500 graph snapshots per database
@@ -123,5 +123,5 @@ Persistent graphs in Kusto have the following limitations:
 
 * [Graph model overview](graph-model-overview.md)
 * [Graph snapshot overview](graph-snapshot-overview.md)
-* [Graph operators in Kusto](../../query/graph-operators.md)
+* [Graph operators](../../query/graph-operators.md)
 * [Graph best practices](../../query/graph-best-practices.md)
