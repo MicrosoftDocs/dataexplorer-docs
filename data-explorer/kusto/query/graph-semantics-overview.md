@@ -1,6 +1,6 @@
 ---
 title: Graph semantics overview
-description: Learn about KQL graph semantics and the different approaches to create and query graphs
+description: Learn about graph semantics and the different approaches to create and query graphs
 ms.reviewer: herauch
 ms.topic: conceptual
 ms.date: 05/29/2025
@@ -174,7 +174,7 @@ Persistent graphs are essential when working with enterprise-scale data or when 
 - **Transient graphs** - Include construction time in each query, with delays increasing for large datasets or external data sources
 - **Persistent graphs** - Eliminate construction latency through prebuilt snapshots, enabling rapid analysis
 
-External data source dependencies (KQL, SQL, Cosmos DB) can significantly affect transient graph construction time, as each query must wait for external responses.
+External data source dependencies, such as cross cluster queries or external tables to SQL and CosmosDB, can significantly affect transient graph construction time because each query must wait for external responses.
 
 ### Data freshness
 
