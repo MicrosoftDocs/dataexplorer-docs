@@ -237,7 +237,13 @@ Calculate the session start time, end time, and duration for each user's session
 The logic works by:
 - In step s1: Capturing the login timestamp using a scan step with `output=none`
 - In step s2: Emitting a row only when a matching logout is found using `output=all`
+- 
 
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA41Sz2%2BCMBS%2Bk%2FA%2FvHiCBA0tkmkNO7nDkh29LTtUbLALFkIfLib74%2FdAoWYuTjhA%2B74fr19fqRDeqsK%2BHJVBCxnsJNK7LVWw0QdlUR5qQXsKaRVBa1XzuhbaYAQ9ZXOqlbDYaFOEvvfue0DPgA94zOfTOJ3yBcQLwVLBkzACFsGkrAptJtFdfBIThfD8IfxSsFjwJ8Inj%2BAZ7%2FTnqeunavEugRFaJNw19B8hETwVbOk66gi%2B97HyPRe5732DrRqE7emSbgRj8l2xlg1q1JWBPcU%2Bo6zJqzhlRqI%2BKkeD4NzKIDaKgLQ5nGtklUsDO5WXslEQUL1BAe5%2BldldL62ylpzXLXnSV0C3bWtpQvjSuB8se1tUNVgGdMa6xcxURgk3IpBlw51A9gy9Lw3b2OPqtxAfhGRZ%2FqHTJXktZNms%2F%2B1PcC18c4brIkxH4qUBmuGwD72pPlWO44048RvBH%2FdgF3BCAwAA" target="_blank">Run the query</a>
+::: moniker-end
 ```kusto
 let LogsEvents = datatable(Timestamp:datetime, userID:int, EventType:string)
 [
@@ -262,11 +268,11 @@ LogsEvents
 
 **Output**
 
-|start                |end                  |userID|sessionDuration|
-|---------------------|---------------------|------|----------------|
-|2024-05-28 08:15:23.0000000|2024-05-28 12:30:45.0000000|1     |04:15:22        |
-|2024-05-28 09:10:27.0000000|2024-05-28 13:25:19.0000000|3     |04:14:52        |
-|2024-05-28 08:30:15.0000000|2024-05-28 11:45:32.0000000|2     |03:15:17        |
+| userID | start                    | end                      | sessionDuration |
+|--------|--------------------------|---------------------------|-----------------|
+| 1      | 2024-05-28 08:15:23.0000 | 2024-05-28 12:30:45.0000  | 04:15:22        |
+| 3      | 2024-05-28 09:10:27.0000 | 2024-05-28 13:25:19.0000  | 04:14:52        |
+| 2      | 2024-05-28 08:30:15.0000 | 2024-05-28 11:45:32.0000  | 03:15:17        |
 
 
 ### Events between Start and Stop
