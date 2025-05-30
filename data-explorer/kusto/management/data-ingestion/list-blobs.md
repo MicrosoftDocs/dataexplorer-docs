@@ -118,25 +118,6 @@ Suffix=".parquet"
 MaxFiles=10
 ```
 
-### Capture date from blob path (Spark style)
-
-The following command lists a maximum of 10 blobs of type `.parquet` from a folder, using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication, and extracts the date from the URL path.
-
-```kusto
-.list blobs (
-    "https://mystorageaccount.blob.core.windows.net/datasets/myfolder;managed_identity=system"
-)
-Suffix=".parquet"
-MaxFiles=10
-PathFormat=("myfolder/year=" datetime_pattern("yyyy'/month='MM'/day='dd", creationTime) "/")
-```
-
-The `PathFormat` in the example can extract dates from a path such as the following path:
-
-```
-https://mystorageaccount.blob.core.windows.net/datasets/myfolder/year=2024/month=03/day=16/myblob.parquet
-```
-
 ### Capture date from blob path
 
 The following command lists a maximum of 10 blobs of type `.parquet` from a folder, using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication, and extracts the date from the URL path.
