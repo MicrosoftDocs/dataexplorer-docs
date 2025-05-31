@@ -16,7 +16,7 @@ Kusto Query Language (KQL) is a powerful tool for exploring your data and discov
 
 KQL is a simple yet powerful language to query structured, semi-structured, and unstructured data. The language is expressive, easy to read and understand the query intent, and optimized for authoring experiences. KQL is optimal for querying telemetry, metrics, and logs with deep support for text search and parsing, time-series operators and functions, analytics and aggregation, geospatial, vector similarity searches, and many other language constructs that provide the most optimal language for data analysis. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
 
-If you have a background in scripting or working with databases, much the content of this article should feel familiar. If not, don't worry, as the intuitive nature of the language quickly enables you to start writing your own queries and driving value for your organization.
+If you have a background in scripting or working with databases, much of the content of this article should feel familiar. If not, don't worry, as the intuitive nature of the language quickly enables you to start writing your own queries and driving value for your organization.
 
 ::: moniker range="azure-data-explorer"
 This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). To learn how to use KQL, see [Tutorial: Learn common operators](tutorials/learn-common-operators.md).
