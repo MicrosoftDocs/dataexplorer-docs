@@ -138,7 +138,6 @@ Reliability recommendations include the following:
 
 * [Cluster uses subnet without delegation](#cluster-uses-subnet-without-delegation)
 * [Cluster uses subnet with invalid IP configuration](#cluster-uses-subnet-with-invalid-ip-configuration)
-* [Cluster failed to install or resume due to virtual network issues](#cluster-failed-to-install-or-resume-due-to-virtual-network-issues)
 
 #### Cluster uses subnet without delegation
 
