@@ -79,7 +79,7 @@ items:
                 href: cross-tenant-query-and-commands.md
           - name: Isolated compute
             href: isolated-compute.md
-          - name: Network isolation (VNet)
+          - name: Network security
             items:
               - name: Network security overview
                 href: security-network-overview.md
@@ -96,19 +96,8 @@ items:
                     displayName: restrict, prevent, limit, IP addresses, allowlist, whitelist, VNET, private endpoint, virtual network
                   - name: Troubleshoot private endpoints
                     href: security-network-private-endpoint-troubleshoot.md
-              - name: Virtual network injection
-                items:
-                  - name: Migrate VNet injected cluster to private endpoints
-                    href: security-network-migrate-vnet-to-private-endpoint.md
-                  - name: Create a cluster in your VNet - Portal
-                    href: vnet-create-cluster-portal.md
-                  - name: Deploy your cluster to your VNet
-                    href: vnet-deployment.md
-                  - name: Create a private or service endpoint to resources used by data connections
-                    displayName: VNet, private endpoint, Azure Storage, event hub
-                    href: vnet-endpoint-storage-event-hub.md
-                  - name: Troubleshoot VNet cluster creation, connectivity, and operation
-                    href: vnet-deploy-troubleshoot.md
+              - name: Migrate VNet injected cluster to private endpoints
+                href: security-network-migrate-vnet-to-private-endpoint.md
               - name: Restrict outbound requests
                 href: security-network-restrict-outbound-access.md
           - name: Encryption

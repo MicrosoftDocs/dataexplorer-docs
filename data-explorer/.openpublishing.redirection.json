@@ -459,8 +459,7 @@
       "source_path": "query-exported-azure-monitor-data.md",
       "redirect_url": "/azure/data-explorer/query-monitor-data",
       "redirect_document_id": false
-    },
-    {
+    },    {
       "source_path": "using-metrics.md",
       "redirect_url": "/azure/data-explorer/monitor-data-explorer",
       "redirect_document_id": true
@@ -468,6 +467,26 @@
     {
       "source_path": "using-diagnostic-logs.md",
       "redirect_url": "/azure/data-explorer/monitor-data-explorer",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "vnet-create-cluster-portal.md",
+      "redirect_url": "/azure/data-explorer/security-network-private-endpoint-create",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "vnet-deploy-troubleshoot.md",
+      "redirect_url": "/azure/data-explorer/security-network-private-endpoint-troubleshoot",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "vnet-deployment.md",
+      "redirect_url": "/azure/data-explorer/security-network-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "vnet-endpoint-storage-event-hub.md",
+      "redirect_url": "/azure/data-explorer/security-network-managed-private-endpoint-create",
       "redirect_document_id": false
     }
   ]
