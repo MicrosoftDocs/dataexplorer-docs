@@ -14,12 +14,11 @@ For more resources regarding compliance for your business or organization, see t
 
 ## Network security
 
-Network security is a requirement shared by many of our security-conscious enterprise customers. The intent is to isolate the network traffic and limit the attack surface for Azure Data Explorer and corresponding communications. You can therefore block traffic originating from non-Azure Data Explorer network segments and assure that only traffic from known sources reach Azure Data Explorer end points. This includes traffic originating on-premises or outside of Azure, with an Azure destination and vice versa. Azure Data Explorer supports the following features to achieve this goal:
+Network security is a requirement shared by many of our security-conscious enterprise customers. The intent is to isolate the network traffic and limit the attack surface for Azure Data Explorer and corresponding communications. You can therefore block traffic originating from non-Azure Data Explorer network segments and assure that only traffic from known sources reach Azure Data Explorer end points. This includes traffic originating on-premises or outside of Azure, with an Azure destination and vice versa.
 
-* [Private endpoint](security-network-overview.md#private-endpoint) (recommended)
-* [Virtual network (VNet) injection](security-network-overview.md#virtual-network-injection)
+Azure Data Explorer supports private endpoints to achieve network isolation and security. Private endpoints provide a secure way to connect to your Azure Data Explorer cluster by using a private IP address from your virtual network, effectively bringing the service into your VNet. This ensures that traffic between your VNet and the service travels over the Microsoft backbone network, eliminating exposure from the public internet.
 
-We highly recommended using private endpoints to secure network access to your cluster. This option has many advantages over virtual network injection that results in lower maintenance overhead, including a simpler deployment process and being more robust to virtual network changes.
+For more information about configuring private endpoints for your cluster, see [Private endpoint](security-network-overview.md#private-endpoint).
 
 ## Identity and access control
 

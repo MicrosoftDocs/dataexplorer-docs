@@ -148,10 +148,6 @@ The strong recommendation is given to a virtual network cluster that uses a subn
 
 The recommendation is given to a virtual network cluster where the subnet is also used by other services. The recommendation is to remove all other services from the subnet and only use it for your cluster.
 
-#### Cluster failed to install or resume due to virtual network issues
-
-The recommendation is given to a cluster that failed to install or resume due to virtual network issues. The recommendation is to use the [virtual network troubleshooting guide](vnet-deploy-troubleshoot.md) to resolve the issue.
-
 ## Related content
 
 * [Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand](manage-cluster-horizontal-scaling.md)
