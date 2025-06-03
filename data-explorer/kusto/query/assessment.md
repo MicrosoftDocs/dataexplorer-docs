@@ -68,7 +68,7 @@ KQL is used by many other Microsoft services. For specific information on the us
 [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview)
 [Kusto Query Language in Microsoft Sentinel](/azure/sentinel/kusto-overview)
 [Understanding the Azure Resource Graph query language](/azure/governance/resource-graph/concepts/query-language)
-[Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview)
+[Proactively hunt for threats with advanced hunting in Microsoft Defender XDR](/microsoft-365/security/defender/advanced-hunting-overview)
 [CMPivot queries](/mem/configmgr/core/servers/manage/cmpivot-overview#queries)
 
 ## Related stuff
