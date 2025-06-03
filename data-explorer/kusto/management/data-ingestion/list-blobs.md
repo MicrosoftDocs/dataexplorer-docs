@@ -3,7 +3,7 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 03/30/2025
+ms.date: 06/03/2025
 ---
 # .list blobs command (preview)
 
@@ -131,21 +131,11 @@ MaxFiles=10
 PathFormat=("myfolder/year=" datetime_pattern("yyyy'/month='MM'/day='dd", creationTime) "/")
 ```
 
-The `PathFormat` in the example can extract dates from a path such as the following path:
+The `PathFormat` parameter can extract dates from various folder hierarchies, such as:
 
-```
-https://mystorageaccount.blob.core.windows.net/spark/myfolder/year=2024/month=03/day=16/myblob.parquet
-```
+* *Spark* folder paths, for example: `https://mystorageaccount.blob.core.windows.net/spark/myfolder/year=2024/month=03/day=16/myblob.parquet`
 
-That is a *Spark* style of folder hierarchy.
-
-Another common hierarchy would be:
-
-```
-https://mystorageaccount.blob.core.windows.net/datasets/export/2024/03/16/03/myblob.parquet
-```
-
-(Here the hour `03` is included in the path)
+* Common folder paths, for example: `https://mystorageaccount.blob.core.windows.net/datasets/export/2024/03/16/03/myblob.parquet` where the hour `03` is included in the path.
 
 You can extract the creation time with the following command:
 
