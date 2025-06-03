@@ -50,7 +50,8 @@ Continuous data ingestion involves setting up an ingestion pipeline with either 
 > For most scenarios, we recommend using queued ingestion as it is the more performant option.
 
 > [!NOTE]
-> Queued ingestion queues data reliably but will be data is dropped after 7 days.  Ensure your cluster has enough capacity to ingest data within 7 days.
+> Queued ingestion ensures reliable data buffering for up to 7 days. However, if the cluster lacks sufficient capacity to complete ingestion within this retention window, data will be dropped once the 7-day limit is exceeded.
+To avoid data loss and ingestion delays, please ensure your cluster has enough resources to process the queued data within the 7-day period.
 
 There are multiple ways to configure continuous data ingestion. Use the following decision tree to determine the most suitable option for your use case:
 
