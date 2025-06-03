@@ -3,7 +3,7 @@ title: Azure Data Explorer data ingestion overview
 description: Learn about the different ways you can ingest (load) data in Azure Data Explorer
 ms.reviewer: akshay.dixit
 ms.topic: conceptual
-ms.date: 04/07/2025
+ms.date: 05/29/2025
 ---
 
 # Azure Data Explorer data ingestion overview
@@ -48,6 +48,10 @@ Continuous data ingestion involves setting up an ingestion pipeline with either 
 
 > [!NOTE]
 > For most scenarios, we recommend using queued ingestion as it is the more performant option.
+
+> [!NOTE]
+> Queued ingestion ensures reliable data buffering for up to 7 days. However, if the cluster lacks sufficient capacity to complete ingestion within this retention window, data will be dropped once the 7-day limit is exceeded.
+To avoid data loss and ingestion delays, please ensure your cluster has enough resources to process the queued data within the 7-day period.
 
 There are multiple ways to configure continuous data ingestion. Use the following decision tree to determine the most suitable option for your use case:
 
