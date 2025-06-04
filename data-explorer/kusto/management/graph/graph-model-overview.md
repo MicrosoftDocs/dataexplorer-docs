@@ -239,7 +239,9 @@ graph("SocialNetwork")
 ```kusto
 // Find people who both work with and are friends with each other
 graph("ProfessionalNetwork") 
-| graph-match (p1:Person)-[:WORKS_WITH]->(p2:Person)-[:FRIENDS_WITH]->(p1)
+| graph-match (p1)-[worksWith]->(p2)-[friendsWith]->(p1)
+    where labels(worksWith) has "WORKS_WITH" and labels(friendsWith) has "FRIENDS_WITH" and
+      labels(p1) has "Person" and labels(p2) has "Person"
     project p1.name, p2.name, p1.department
 ```
 
@@ -248,10 +250,10 @@ graph("ProfessionalNetwork")
 ```kusto
 // Find potential influence paths up to 3 hops away
 graph("InfluenceNetwork") 
-| graph-match (influencer)-[:INFLUENCES*1..3]->(target)
-    where influencer.id == "user123"
-    project influencePath = INFLUENCES, 
-         pathLength = array_length(INFLUENCES), 
+| graph-match (influencer)-[influences*1..3]->(target)
+    where influencer.id == "user123" and all(influences, labels() has "INFLUENCES")
+    project influencePath = influences, 
+         pathLength = array_length(influences), 
          target.name
 ```
 
@@ -300,13 +302,15 @@ Example:
 ```kusto
 // Query the first graph model
 graph("EmployeeNetwork") 
-| graph-match (person:Employee)-[:MANAGES]->(team)
-| project manager=person.name, teamId=team.id
+| graph-match (person)-[manages]->(team)
+    where labels(manages) has "MANAGES" and labels(person) has "Employee"
+    project manager=person.name, teamId=team.id
 // Use these results to query another graph model
 | join (
 	graph("ProjectNetwork")
-	| graph-match (project)-[:ASSIGNED_TO]->(team)
-	| project projectName=project.name, teamId=team.id
+	| graph-match (project)-[assignedTo]->(team)
+        where labels(assignedTo) has "ASSIGNED_TO"
+	    project projectName=project.name, teamId=team.id
 ) on teamId
 ```
 
