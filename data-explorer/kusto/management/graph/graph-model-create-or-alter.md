@@ -1,6 +1,6 @@
 ---
 title: .create-or-alter graph_model command
-description: Learn how to create or alter a graph model using the .create-or-alter graph_model command with syntax, parameters, and examples.
+description: Learn how to create or alter a graph model using the create-or-alter graph_model command with syntax, parameters, and examples.
 ms.reviewer: herauch
 ms.topic: reference
 ms.date: 05/24/2025
@@ -106,13 +106,13 @@ This command returns a table with the following columns:
 
 |Name|CreationTime|ID|SnapshotsCount|Model|AuthorizedPrincipals|RetentionPolicy|
 |---|---|---|---|---|---|---|
-|SocialNetwork|2025-05-23 14:42:37.5128901|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|0|model from above|[</br>  {</br>    "Type": "AAD User",</br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",</br>    "ObjectId": "aaaaaaaa-bbbb-cccc-1111-22222222222",</br>    "FQN": "aaduser=aaaaaaaa-bbbb-cccc-1111-22222222222;aaaabbbb-0000-cccc-1111-dddd2222eeee",</br>    "Notes": "",</br>    "RoleAssignmentIdentifier": "a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"</br>  }</br>]|{</br>  "SoftDeletePeriod": "3650.00:00:00"</br>}|
+|SocialNetwork|2025-05-23 14:42:37.5128901|aaaaaaaa-0b0b-1c1c-2d2d-333333333333|0|model from above|[</br>  {</br>    "Type": "Microsoft Entra ID User",</br>    "DisplayName": "Alex Johnson (upn: alex.johnson@contoso.com)",</br>    "ObjectId": "aaaaaaaa-bbbb-cccc-1111-22222222222",</br>    "FQN": "aaduser=aaaaaaaa-bbbb-cccc-1111-22222222222;aaaabbbb-0000-cccc-1111-dddd2222eeee",</br>    "Notes": "",</br>    "RoleAssignmentIdentifier": "a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1"</br>  }</br>]|{</br>  "SoftDeletePeriod": "3650.00:00:00"</br>}|
 
 ## Notes
 
 * If a graph model with the specified name doesn't exist, a new one is created when using `.create-or-alter graph_model`. If one already exists, it's updated with the new definition.
 * Each time a graph model is altered, a new version is created, allowing you to track changes over time and revert to previous versions if needed.
-* To generate a graph snapshot from the model, use the [.make graph_snapshot](graph-snapshot-make.md) command.
+* To generate a graph snapshot from the model, use the [`.make graph_snapshot`](graph-snapshot-make.md) command.
 
 ## Related content
 
