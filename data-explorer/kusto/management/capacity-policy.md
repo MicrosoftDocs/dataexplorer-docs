@@ -27,6 +27,7 @@ The capacity policy is made of the following components:
 * [PurgeStorageArtifactsCleanupCapacity](#purge-storage-artifacts-cleanup-capacity)
 * [PeriodicStorageArtifactsCleanupCapacity](#periodic-storage-artifacts-cleanup-capacity)
 * [QueryAccelerationCapacity](#query-acceleration-capacity)
+* [GraphSnapshotsCapacity](#graph-snapshots-capacity)
 
 To view the capacity of your cluster, use the [.show capacity](show-capacity-command.md) command.
 
@@ -193,6 +194,18 @@ The [.show capacity](show-capacity-command.md) command returns the cluster's que
 
 `Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
+### Graph Snapshots capacity
+
+| Property | Type | Description |
+|--|--|--|
+| `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent snapshot creation operations on cluster. |
+
+**Formula**
+
+The [.show capacity](show-capacity-command.md) command returns the cluster's periodic storage artifacts cleanup capacity based on the following formula:
+
+`ClusterMaximumConcurrentOperations`
+
 ## Defaults
 
 The default capacity policy has the following JSON representation:
@@ -241,6 +254,9 @@ The default capacity policy has the following JSON representation:
   "QueryAccelerationCapacity": {
     "ClusterMaximumConcurrentOperations": 100,
     "CoreUtilizationCoefficient": 0.5
+  },
+  "GraphSnapshotsCapacity": {
+    "ClusterMaximumConcurrentOperations": 5
   }
 }
 ```
