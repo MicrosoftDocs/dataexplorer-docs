@@ -17,7 +17,7 @@ Creates a new graph snapshot from a specified graph model. A graph snapshot is a
 
 ## Permissions
 
-To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
+To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md) or [Graph admin permissions](../../access-control/role-based-access-control.md).
 
 ## Syntax
 

@@ -17,7 +17,7 @@ Deletes an existing graph model and all its versions from the database, includin
 
 ## Permissions
 
-To run this command, you need [Database admin permissions](../../access-control/role-based-access-control.md).
+To run this command, you need [Database admin permissions](../../access-control/role-based-access-control.md) or [Graph admin permissions](../../access-control/role-based-access-control.md).
 
 ## Syntax
 

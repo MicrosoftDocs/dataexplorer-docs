@@ -14,6 +14,10 @@ ms.date: 05/28/2025
 
 The `graph` function is an intrinsic function that enables querying of a persisted graph entity, similar to the `cluster()`, `database()`, `external_table()`, and `table()` functions. It supports retrieving either the most recent snapshot of the graph or a specific snapshot.
 
+## Permissions
+
+To run this function, the user needs [Database viewer permissions](../../access-control/role-based-access-control.md).
+
 ## Syntax
 
 `graph(` *GraphName* `)`

@@ -17,7 +17,7 @@ Creates a new graph model or alters an existing one using the provided model def
 
 ## Permissions
 
-To run this command, the user needs [Database Admin permissions](../../access-control/role-based-access-control.md).
+To run this command, the user needs [Database User permissions](../../access-control/role-based-access-control.md).
 
 ## Syntax
 
