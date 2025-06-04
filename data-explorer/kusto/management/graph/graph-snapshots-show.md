@@ -17,7 +17,7 @@ Lists all graph snapshots for a specific graph model or for all graph models.
 
 ## Permissions
 
-To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
+To run this command, the user needs [Database viewer permissions](../../access-control/role-based-access-control.md).
 
 ## Syntax
 

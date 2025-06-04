@@ -47,18 +47,56 @@ A graph model consists of two main components:
 
 ### Schema (optional)
 
-The schema defines the structure of the nodes and edges in the graph:
+The schema defines the structure and properties of nodes and edges in the graph model. While optional, the schema serves several important purposes:
 
-- **Nodes**: Defines the types of nodes in the graph and their properties
-- **Edges**: Defines the types of relationships between nodes and their properties
+- **Type safety**: Schema properties define the expected data types for node and edge properties, ensuring type consistency during graph queries
+- **Property validation**: All properties defined in the schema become valid properties for nodes/edges with the corresponding labels, regardless of whether these properties appear in the step query columns
+- **Query compatibility**: Schema properties can be safely referenced in graph-match queries without type collisions with step query columns
+
+#### Schema structure
+
+- **Nodes**: Defines node label types and their typed properties (e.g., `"Person": {"Name": "string", "Age": "long"}`)
+- **Edges**: Defines edge label types and their typed properties (e.g., `"WORKS_AT": {"StartDate": "datetime", "Position": "string"}`)
 
 ### Definition
 
-The Definition specifies how to build the graph from tabular data:
+The Definition specifies how to build the graph from tabular data through a series of sequential operations. This section is the core of the graph model, as it transforms your relational data into a graph structure.
 
-* **Steps**: A sequence of operations to add nodes and edges to the graph
-  * **AddNodes**: Steps that define how to create nodes from tabular data
-  * **AddEdges**: Steps that define how to create edges from tabular data
+#### Key characteristics of the Definition:
+
+* **Sequential execution**: Steps are executed in the exact order they appear in the Definition array. This order is critical because:
+  - Nodes must typically be created before edges that reference them
+  - Later steps can build upon or modify the results of earlier steps
+  - The sequence affects performance and memory usage during graph construction
+
+* **Incremental construction**: Each step adds to the graph being built, allowing you to:
+  - Combine data from multiple tables or sources
+  - Apply different logic for different types of nodes or edges
+  - Build complex graph structures incrementally
+
+#### Step types:
+
+* **AddNodes**: Steps that define how to create nodes from tabular data
+  - Can be used multiple times to add different types of nodes
+  - Each step can pull from different data sources or apply different filters
+  - Node properties are derived from the columns in the query result
+
+* **AddEdges**: Steps that define how to create edges from tabular data
+  - Can reference nodes that don't yet exist (the system will create placeholder nodes and update them when AddNodes steps are processed later)
+  - Can create relationships between nodes from the same or different AddNodes steps
+  - Edge properties are derived from the columns in the query result
+  - While it's possible to add edges before nodes, it's recommended to add nodes first for better readability and understanding
+
+#### Execution flow example:
+
+```
+Step 1 (AddNodes): Create Person nodes from Employees table
+Step 2 (AddNodes): Create Company nodes from Organizations table  
+Step 3 (AddEdges): Create WORKS_AT edges between Person and Company nodes
+Step 4 (AddEdges): Create KNOWS edges between Person nodes
+```
+
+This sequential approach ensures that when Step 3 creates WORKS_AT edges, both the Person nodes (from Step 1) and Company nodes (from Step 2) already exist in the graph.
 
 ## Labels in Graph models
 
@@ -239,7 +277,9 @@ graph("SocialNetwork")
 ```kusto
 // Find people who both work with and are friends with each other
 graph("ProfessionalNetwork") 
-| graph-match (p1:Person)-[:WORKS_WITH]->(p2:Person)-[:FRIENDS_WITH]->(p1)
+| graph-match (p1)-[worksWith]->(p2)-[friendsWith]->(p1)
+    where labels(worksWith) has "WORKS_WITH" and labels(friendsWith) has "FRIENDS_WITH" and
+      labels(p1) has "Person" and labels(p2) has "Person"
     project p1.name, p2.name, p1.department
 ```
 
@@ -248,10 +288,10 @@ graph("ProfessionalNetwork")
 ```kusto
 // Find potential influence paths up to 3 hops away
 graph("InfluenceNetwork") 
-| graph-match (influencer)-[:INFLUENCES*1..3]->(target)
-    where influencer.id == "user123"
-    project influencePath = INFLUENCES, 
-         pathLength = array_length(INFLUENCES), 
+| graph-match (influencer)-[influences*1..3]->(target)
+    where influencer.id == "user123" and all(influences, labels() has "INFLUENCES")
+    project influencePath = influences, 
+         pathLength = array_length(influences), 
          target.name
 ```
 
@@ -276,8 +316,16 @@ To refresh a graph:
 
 ### What if different steps create duplicate edges or nodes?
 
-- **Edges**: Duplicates remain as duplicates by default (edges don't have unique identifiers)
-- **Nodes**: "Duplicates" are merged - the system assumes they represent the same entity. If there are conflicting property values, the last value processed takes precedence
+The Definition steps execute sequentially, and duplicate handling differs between nodes and edges:
+
+- **Edges**: Duplicates remain as duplicates by default since edges don't have unique identifiers. If multiple steps create identical source-target relationships, each one becomes a separate edge in the graph. This behavior is intentional as multiple relationships between the same nodes can represent different interactions or events over time.
+
+- **Nodes**: "Duplicates" are automatically merged based on the NodeIdColumn value - the system assumes they represent the same entity. When multiple steps create nodes with the same identifier:
+  - All properties from different steps are combined into a single node
+  - If there are conflicting property values for the same property name, the value from the step that executed last takes precedence
+  - Properties that exist in one step but not another are preserved
+  
+This merge behavior allows you to build nodes incrementally across steps, such as adding basic information in one step and enriching with additional properties in subsequent steps.
 
 ### How do graph models handle schema changes?
 
@@ -300,13 +348,15 @@ Example:
 ```kusto
 // Query the first graph model
 graph("EmployeeNetwork") 
-| graph-match (person:Employee)-[:MANAGES]->(team)
-| project manager=person.name, teamId=team.id
+| graph-match (person)-[manages]->(team)
+    where labels(manages) has "MANAGES" and labels(person) has "Employee"
+    project manager=person.name, teamId=team.id
 // Use these results to query another graph model
 | join (
 	graph("ProjectNetwork")
-	| graph-match (project)-[:ASSIGNED_TO]->(team)
-	| project projectName=project.name, teamId=team.id
+	| graph-match (project)-[assignedTo]->(team)
+        where labels(assignedTo) has "ASSIGNED_TO"
+	    project projectName=project.name, teamId=team.id
 ) on teamId
 ```
 
