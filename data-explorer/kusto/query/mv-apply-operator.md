@@ -3,7 +3,7 @@ title:  mv-apply operator
 description: Learn how to use the mv-apply operator to apply a subquery to each record and union the results of each subquery.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/28/2025
+ms.date: 06/04/2025
 ---
 # mv-apply operator
 
@@ -14,7 +14,7 @@ all subqueries.
 
 For example, assume a table `T` has a column `Metric` of type `dynamic`
 whose values are arrays of `real` numbers. The following query locates the
-two biggest values in each `Metric` value, and return the records corresponding
+two biggest values in each `Metric` value, and returns the records corresponding
 to these values.
 
 ```kusto
@@ -43,10 +43,10 @@ The `mv-apply` operator gets the following inputs:
    If not specified, the original name of the column is used when the expression is a column reference. A random name is used otherwise.
 
    > [!NOTE]
-   > It is recommended to use the default column names.
+   > We recommend that you use the default column names.
 
 1. The data types of the elements of those dynamic arrays, after expansion.
-   These become the column types of the columns in the subtables.
+   These data types become the column types of the columns in the subtables.
    If not specified, `dynamic` is used.
 
 1. Optionally, the name of a column to add to the subtables that specifies the
@@ -74,7 +74,7 @@ Where *ItemIndex* has the syntax:
 
 `limit` *RowLimit*
 
-and *SubQuery* has the same syntax of any query statement.
+*SubQuery* has the same syntax of any query statement.
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -82,15 +82,15 @@ and *SubQuery* has the same syntax of any query statement.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ItemIndex*| `string` ||Indicates the name of a column of type `long` that's appended to the input as part of the array-expansion phase and indicates the 0-based array index of the expanded value.|
-|*Name*| `string` ||The name to assign the array-expanded values of each array-expanded expression. If not specified, the name of the column is used if available. A random name is generated if *ArrayExpression* isn't a simple column name.|
-|*ArrayExpression*| `dynamic` | :heavy_check_mark:|The array whose values are array-expanded. If the expression is the name of a column in the input, the input column is removed from the input and a new column of the same name, or *ColumnName* if specified, appears in the output.|
-|*Typename*| `string` ||The name of the type that the individual elements of the `dynamic` array *ArrayExpression* take. Elements that don't conform to this type are replaced by a null value. If unspecified, `dynamic` is used by default.|
-|*RowLimit*| `int` ||A limit on the number of records to generate from each record of the input. If unspecified, 2147483647 is used.|
-|*SubQuery*| `string` ||A tabular query expression with an implicit tabular source that gets applied to each array-expanded subtable.|
+|`ItemIndex`| `string` ||Indicates the name of a column of type `long` that's appended to the input as part of the array-expansion phase and indicates the 0-based array index of the expanded value.|
+|`Name`| `string` ||The name to assign the array-expanded values of each array-expanded expression. If not specified, the name of the column is used if available. A random name is generated if *ArrayExpression* isn't a simple column name.|
+|`ArrayExpression`| `dynamic` | :heavy_check_mark:|The array whose values are array-expanded. If the expression is the name of a column in the input, the input column is removed from the input and a new column of the same name, or *ColumnName* if specified, appears in the output.|
+|`Typename`| `string` ||The name of the type that the individual elements of the `dynamic` array *ArrayExpression* take. Elements that don't conform to this type are replaced by a null value. If unspecified, `dynamic` is used by default.|
+|`RowLimit`| `int` ||A limit on the number of records to generate from each record of the input. If unspecified, 2147483647 is used.|
+|`SubQuery`| `string` ||A tabular query expression with an implicit tabular source that gets applied to each array-expanded subtable.|
 
 >[!NOTE]
-> Unlike the [`mv-expand`](mv-expand-operator.md) operator, the `mv-apply` operator doesn't support `bagexpand=array` expansion. If the expression to be expanded is a property bag and not an array, you can use an inner `mv-expand` operator (see example below).
+> Unlike the [`mv-expand`](mv-expand-operator.md) operator, the `mv-apply` operator doesn't support `bagexpand=array` expansion. If the expression to be expanded is a property bag and not an array, you can use an inner `mv-expand` operator (see the following example).
 
 ## Examples
 
@@ -126,7 +126,7 @@ _data
 
 ### Calculating the sum of the largest two elements in an array
 
-The query outputs the sum of the top 2 even numbers (6 + 8 = 14) and the sum of the top 2 odd numbers (5 + 7 = 12).
+The query outputs the sum of the top two even numbers (6 + 8 = 14) and the sum of the top two odd numbers (5 + 7 = 12).
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -154,7 +154,7 @@ _data
 
 ### Select elements in arrays
 
-The query identifies the top 2 elements from each dynamic array based on the Arr2 values and summarizes them into new lists.
+The query identifies the top two elements from each dynamic array based on the Arr2 values and summarizes them into new lists.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -177,9 +177,9 @@ datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
 
 | Val1 | Arr1 | Arr2 | `NewArr1` | `NewArr2` |
 |--|--|--|--|--|
-| 1 | ["A1","A2","A3"] | [10,30,7] | ["A2',"A1"] | [30,10] |
-| 7 | ["B1","B2","B5"] | [15,11,50] | ["B5","B1"] | [50,15] |
-| 3 | ["C1","C2","C3","C4"] | [6,40,20,8] | ["C2","C3"] | [40,20] |
+| 1 | `["A1","A2","A3"]` | `[10,30,7]` | `["A2',"A1"]` | `[30,10]` |
+| 7 | `["B1","B2","B5"]` | `[15,11,50]` | `["B5","B1"]` | `[50,15]` |
+| 3 | `["C1","C2","C3","C4"]` | `[6,40,20,8]` | `["C2","C3"]` | `[40,20]` |
 
 ### Using `with_itemindex` for working with a subset of the array
 
@@ -212,7 +212,7 @@ _data
 | 3 | 8 |
 | 4 | 10 |
 
-### Using mutiple columns to join element of 2 arrays
+### Using multiple columns to join element of two arrays
 
 The query combines elements from two dynamic arrays into a new concatenated format and then summarizes them into lists.
 
@@ -242,7 +242,7 @@ datatable (Val: int, Arr1: dynamic, Arr2: dynamic)
 
 ### Applying mv-apply to a property bag
 
-This query dynamically removes properties from the packed values object based on the criteria that their values do not start with "555". The final result contains the original columns with unwanted properties removed.
+This query dynamically removes properties from the packed values object based on the criteria that their values don't start with 555. The final result contains the original columns with unwanted properties removed.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -276,3 +276,4 @@ datatable(SourceNumber: string, TargetNumber: string, CharsCount: long)
 ## Related content
 
 * [mv-expand](mv-expand-operator.md) operator
+* [array_iff](./array-iff-function.md) function
