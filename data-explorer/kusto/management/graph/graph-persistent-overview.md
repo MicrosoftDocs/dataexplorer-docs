@@ -94,7 +94,7 @@ Once a graph snapshot is created, it can be queried using the [`graph`](../../qu
 ```kusto
 graph("MyGraphModel")
 | graph-match (n)-[e]->(m)
-| project n, e, m
+    project n, e, m
 ```
 
 To query a specific snapshot, provide the snapshot name:
@@ -102,7 +102,7 @@ To query a specific snapshot, provide the snapshot name:
 ```kusto
 graph("MyGraphModel", "MyGraphSnapshot")
 | graph-match (n)-[e]->(m)
-| project n, e, m
+    project n, e, m
 ```
 
 The [`graph-match`](../../query/graph-match-operator.md) operator enables pattern matching and traversal operations, while [`graph-shortest-paths`](../../query/graph-shortest-paths-operator.md) helps find optimal connections between entities. The [`graph-to-table`](../../query/graph-to-table-operator.md) operator converts graph results back to tabular format.
