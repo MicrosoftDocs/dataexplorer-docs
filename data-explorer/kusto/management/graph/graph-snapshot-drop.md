@@ -17,7 +17,7 @@ Deletes a specific graph snapshot from a graph model.
 
 ## Permissions
 
-To run this command, the user needs [Database Admin permissions](../../access-control/role-based-access-control.md).
+To run this command, the user needs [Database Admin permissions](../../access-control/role-based-access-control.md) or [Graph admin permissions](../../access-control/role-based-access-control.md).
 
 ## Syntax
 

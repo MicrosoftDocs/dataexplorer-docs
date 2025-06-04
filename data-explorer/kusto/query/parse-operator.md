@@ -314,7 +314,7 @@ Traces
 
 ## Related content
 
-* [parse-json function](parse-json-function.md)
-* [extract function](extract-function.md)
-* [extract-all function](extract-all-function.md)
-* [extract-json function](extract-json-function.md)
+* [parse-json](parse-json-function.md) function
+* [extract](extract-function.md) function
+* [extract-all](extract-all-function.md) function
+* [extract-json](extract-json-function.md) function
