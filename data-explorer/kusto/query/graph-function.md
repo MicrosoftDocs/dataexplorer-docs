@@ -63,9 +63,9 @@ The following example uses the named parameter syntax to specify a snapshot:
 
 ```kusto
 graph("SecurityGraph", snapshot="Snapshot_2025_05_01")
-| graph-shortest-paths (start)-[*]->(end)
+| graph-shortest-paths (start)-[e*1..20]->(end)
   where start.name == "Alice" and end.name == "Database"
-  project PathLength = path_length, Path = path_nodes
+  project PathLength = array_length(e), Path = e
 ```
 
 ## Related content
