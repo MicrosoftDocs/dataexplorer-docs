@@ -3,7 +3,7 @@ title: print operator
 description: Learn how to use the print operator to output a single row with one or more scalar expression results as columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/20/2025
+ms.date: 06/04/2025
 ---
 # print operator
 
@@ -51,7 +51,7 @@ print 0 + 1 + 2 + 3 + 4 + 5, x = "Wow!"
 
 |print_0|x|
 |--|--|
-|15| Wow!|
+|15| `Wow!`|
 
 ### Print concatenated string
 
@@ -70,4 +70,4 @@ print banner=strcat("Hello", ", ", "World!")
 
 |banner|
 |--|
-|Hello, World!|
+|`Hello, World!`|

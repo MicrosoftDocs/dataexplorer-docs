@@ -3,7 +3,7 @@ title:  todatetime()
 description: Learn how to use the todatetime() function to convert the input expression to a datetime value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2025
+ms.date: 06/04/2025
 ---
 # todatetime()
 
