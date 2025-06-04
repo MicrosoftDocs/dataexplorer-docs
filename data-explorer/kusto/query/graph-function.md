@@ -16,7 +16,7 @@ The `graph` function is an intrinsic function that enables querying of a persist
 
 ## Permissions
 
-To run this function, the user needs [Database viewer permissions](../../access-control/role-based-access-control.md).
+To run this function, the user needs [Database viewer permissions](../access-control/role-based-access-control.md).
 
 ## Syntax
 
