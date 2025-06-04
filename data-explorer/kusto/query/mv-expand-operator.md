@@ -3,7 +3,7 @@ title:  mv-expand operator
 description: Learn how to use the mv-expand operator to expand multi-value dynamic arrays or property bags into multiple records.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/20/2025
+ms.date: 06/04/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # mv-expand operator
@@ -144,14 +144,14 @@ datatable (a: int, b: dynamic)
 
 | a | b | key | val |
 |--|--|--|--|
-| 1 | ["prop1","a1"] | prop1 | a1 |
-| 1 | ["prop2","b1"] | prop2 | b1 |
-| 2 | ["prop1","a2"] | prop1 | a2 |
-| 2 | ["prop2","b2"] | prop2 | b2 |
+| 1 | `["prop1","a1"]` | prop1 | a1 |
+| 1 | `["prop2","b1"]` | prop2 | b1 |
+| 2 | `["prop1","a2"]` | prop1 | a2 |
+| 2 | `["prop2","b2"]` | prop2 | b2 |
 
 ### Zipped two columns
 
-Expanding two columns will first 'zip' the applicable columns and then expand them:
+Expanding two columns first 'zip' the applicable columns and then expand them:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -221,9 +221,9 @@ datatable (a: string, b: dynamic, c: dynamic)[
 
 | ColumnName | ColumnOrdinal | DateType | ColumnType |
 |--|--|--|--|
-| a | 0 | System.String | `string` |
-| b | 1 | System.Object | `dynamic` |
-| c | 2 | System.Int32 | `int` |
+| a | 0 | `System.String` | `string` |
+| b | 1 | `System.Object` | `dynamic` |
+| c | 2 | `System.Int32` | `int` |
 
 Notice column `b` is returned as `dynamic` while `c` is returned as `int`.
 
