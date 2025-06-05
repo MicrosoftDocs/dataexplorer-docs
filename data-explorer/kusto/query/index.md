@@ -4,7 +4,7 @@ description: Learn about how to use Kusto Query Language (KQL) to explore data, 
 ms.reviewer: alexans
 ms.topic: reference
 ms.custom: build-2023, build-2023-dataai
-ms.date: 08/11/2024
+ms.date: 06/03/2025
 adobe-target: true
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
@@ -117,7 +117,7 @@ KQL is used by many other Microsoft services. For specific information on the us
 
 * [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview)
 * [Understanding the Azure Resource Graph query language](/azure/governance/resource-graph/concepts/query-language)
-* [Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview)
+* [Proactively hunt for threats with advanced hunting in Microsoft Defender](/microsoft-365/security/defender/advanced-hunting-overview)
 * [CMPivot queries](/mem/configmgr/core/servers/manage/cmpivot-overview#queries)
 
 ## Related content
