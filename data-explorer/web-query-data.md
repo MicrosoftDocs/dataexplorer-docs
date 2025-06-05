@@ -111,7 +111,7 @@ Do the following to provide feedback:
 ## Clean up resources
 
 You didn't create any resources in this quickstart, but if you'd like to remove one or both clusters from the application, right-click the cluster and select **Remove connection**.
-Another option is to select **Clear local state** from the **Settings** > **General** tab. This action removes all cluster connections and close all open query tabs.
+Another option is to select **Clear local state** from the **Settings** > **General** tab. This action removes all cluster connections and closes all open query tabs.
 
 ## Related content
 
