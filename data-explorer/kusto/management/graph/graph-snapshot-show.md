@@ -17,7 +17,7 @@ Shows detailed information about a specific graph snapshot.
 
 ## Permissions
 
-To run this command, the user needs [Database admin permissions](../../access-control/role-based-access-control.md).
+To run this command, the user needs [Database viewer permissions](../../access-control/role-based-access-control.md).
 
 ## Syntax
 

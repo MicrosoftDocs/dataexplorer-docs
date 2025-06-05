@@ -35,16 +35,17 @@ Else, result is null.
 
 ## Example
 
-The following example checks whether the input matches the defined timespan. 
+The following example shows different usage of totimespan:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoS8wpTbU1teblKijKzCtRyM3MKw4uKbItyS%2FJzE0tLkjM01Ay0DMwsDIwtjIwUNLUUUhJrCxGljZJAQpm5Jei6AEbq6ClYJgBlASZiU3SKBcoWZyanJ%2BXgiJvCpQzKQbKwUR8M%2FNs4bJGpkDzNAFFa0mAvAAAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoS8wpTbU1teYqKMrMK1HIzcwrDi4psi3JL8nMTS0uSMzTUDLQMzCwMjC2MjBQ0tRRSEmsLEaWNkkBCmbkl6LoAZuqoKVgmAGU5FIAA5DR2NQY5QLVFKcm5%2BeloMibAuVMioFyMBHfzDxbuKyRKdA8TQCp83l9wgAAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 let value=5;
-print minsStr=totimespan("0.00:03:00"), days=totimespan(4d), hour=totimespan(value * 1h), mins=totimespan(value * 2m), seconds=totimespan(5 * 4s), timespanMin=timespan(25min)
+print minsStr=totimespan("0.00:03:00"), days=totimespan(4d), hour=totimespan(value * 1h), 
+      mins=totimespan(value * 2m), seconds=totimespan(5 * 4s), timespanMin=timespan(25min)
 ```
 
 **Output**
