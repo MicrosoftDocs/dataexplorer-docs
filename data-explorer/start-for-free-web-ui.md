@@ -39,7 +39,7 @@ Quick actions make it easy to get started with your cluster. You can create a da
 To start a quick action, under **Actions**, select the action you want to perform:
 
 * **Ingest data**: Use this action to load data into your cluster. For more information, see the [ingestion overview](ingest-data-overview.md).
-* **Query data**: Use this action to run a query against data in your cluster. For more information, see [Run queries](web-query-data.md#run-queries).
+* **Query data**: Use this action to run a query against data in your cluster. For more information, see [Run a query](web-query-data.md#run-a-query).
 * **Create database**: Use this action if you want to create a new database in your cluster.
     1. In the **Create new database** card, select **Create**.
     1. On the **Create database** page, enter a name for the database, and then select **Create Database**.
