@@ -3,7 +3,7 @@ title:  scan operator
 description: Learn how to use the scan operator to scan data, match, and build sequences based on the predicates.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2025
+ms.date: 05/30/2025
 ---
 # scan operator
 
@@ -71,7 +71,7 @@ Each input record is evaluated against all of the steps in reverse order, from t
 
 * **Check 2:** If the state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*, then a match occurs. The match leads to the following actions:
     1. The assignments of *s_k* are calculated and extend *r*.
-    2. The values that represent *s_k* in the state of *s_k* are replaced with the values of the extended *r*.
+    1. The values that represent *s_k* in the state of *s_k* are replaced with the values of the extended *r*.
     1. If *s_k* is defined as `output=all`, the extended *r* is added to the output.
     1. If *s_k* is the first step, a new sequence begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.
 
@@ -82,7 +82,7 @@ For a detailed example of this logic, see the [scan logic walkthrough](#scan-log
 ## Examples
 
 The example in this section shows how to use the syntax to help you get started.
-	
+
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 ### Cumulative sum
@@ -230,6 +230,50 @@ Events
 |00:41:00|E|00:32:00|1|
 |01:15:00|A|01:15:00|2|
 
+### Calculating Session Length per User
+
+Calculate the session start time, end time, and duration for each user's session using the `scan` operator. A session is defined as a period between a user's login and the subsequent logout. By combining `partition` and `scan` with `output=none` and `output=all`, this pattern ensures that a **single row is returned per session** (i.e., per login/logout pair), rather than a row per event.
+
+The logic works by:
+
+* In step s1: Capturing the login timestamp using a scan step with `output=none`
+* In step s2: Emitting a row only when a matching logout is found using `output=all`
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA41Sz2%2BCMBS%2Bk%2FA%2FvHiCBA0tkmkNO7nDkh29LTtUbLALFkIfLib74%2FdAoWYuTjhA%2B74fr19fqRDeqsK%2BHJVBCxnsJNK7LVWw0QdlUR5qQXsKaRVBa1XzuhbaYAQ9ZXOqlbDYaFOEvvfue0DPgA94zOfTOJ3yBcQLwVLBkzACFsGkrAptJtFdfBIThfD8IfxSsFjwJ8Inj%2BAZ7%2FTnqeunavEugRFaJNw19B8hETwVbOk66gi%2B97HyPRe5732DrRqE7emSbgRj8l2xlg1q1JWBPcU%2Bo6zJqzhlRqI%2BKkeD4NzKIDaKgLQ5nGtklUsDO5WXslEQUL1BAe5%2BldldL62ylpzXLXnSV0C3bWtpQvjSuB8se1tUNVgGdMa6xcxURgk3IpBlw51A9gy9Lw3b2OPqtxAfhGRZ%2FqHTJXktZNms%2F%2B1PcC18c4brIkxH4qUBmuGwD72pPlWO44048RvBH%2FdgF3BCAwAA" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+let LogsEvents = datatable(Timestamp:datetime, userID:int, EventType:string)
+[
+    datetime(2024-05-28 08:15:23), 1, "login",
+    datetime(2024-05-28 08:30:15), 2, "login",
+    datetime(2024-05-28 09:10:27), 3, "login",
+    datetime(2024-05-28 12:30:45), 1, "logout",
+    datetime(2024-05-28 11:45:32), 2, "logout",
+    datetime(2024-05-28 13:25:19), 3, "logout"
+];
+LogsEvents
+| sort by userID, Timestamp
+| partition hint.strategy=native by userID (
+    sort by Timestamp asc 
+    | scan declare (start: datetime, end: datetime, sessionDuration: timespan) with (
+        step s1 output=none: EventType == "login" => start = Timestamp;
+        step s2 output=all: EventType == "logout" => start = s1.start, end = Timestamp, sessionDuration = Timestamp - s1.start;
+    )
+)
+| project start, end, userID, sessionDuration
+```
+
+**Output**
+
+| userID | start                    | end                      | sessionDuration |
+|--------|--------------------------|---------------------------|-----------------|
+| 1      | 2024-05-28 08:15:23.0000 | 2024-05-28 12:30:45.0000  | 04:15:22        |
+| 3      | 2024-05-28 09:10:27.0000 | 2024-05-28 13:25:19.0000  | 04:14:52        |
+| 2      | 2024-05-28 08:30:15.0000 | 2024-05-28 11:45:32.0000  | 03:15:17        |
+
 ### Events between Start and Stop
 
 Find all sequences of events between the event `Start` and the event `Stop` that occur within 5 minutes. Assign a match ID for each sequence.
@@ -369,7 +413,7 @@ The "X" indicates that a specific field is irrelevant for that step.
 This section follows the [matching logic](#matching-logic) through each record of the `Events` table, explaining the transformation of the state and output at each step.
 
 > [!NOTE]
-> An input record is evaluated against the steps in reverse order, from the last step (`s3`) to the first step (`s1`). 
+> An input record is evaluated against the steps in reverse order, from the last step (`s3`) to the first step (`s1`).
 
 #### Record 1
 
@@ -431,7 +475,7 @@ This section follows the [matching logic](#matching-logic) through each record o
 |s2|0|00:01:00|"Start"|00:02:00|"B"|X|X|
 |s3||||||||
 
-#### Record 4 
+#### Record 4
 
 |Ts|Event|
 |---|---|
@@ -462,7 +506,6 @@ This section follows the [matching logic](#matching-logic) through each record o
 * `s3`: **Check 1** is passed because `s2` is nonempty and it meets the `s3` condition of `Event == "Stop"`. This match causes the state of `s2` to be cleared and the sequence in `s2` to be promoted to `s3`. **Record 5** and its `m_id` (`0`) are added to the state and the output.
 * `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
 * `s1`: **Check 1** is irrelevant because there's no previous step. **Check 2** isn't passed because the record doesn't meet the condition of `Event == "Start"`.
-
 
 **State:**
 
@@ -502,7 +545,7 @@ This section follows the [matching logic](#matching-logic) through each record o
 
 * `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because it doesn't meet the condition of `Event == "Stop"`.
 * `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
-* `s1`: **Check 1** isn't passed because there's no previous step. it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence in `s1` with a new `m_id`. **Record 7** and its `m_id` (`1`) are added to the state and the output. 
+* `s1`: **Check 1** isn't passed because there's no previous step. it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence in `s1` with a new `m_id`. **Record 7** and its `m_id` (`1`) are added to the state and the output.
 
 **State:**
 
