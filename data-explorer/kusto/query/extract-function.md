@@ -36,7 +36,27 @@ If there's no match, or the type conversion fails: `null`.
 
 ## Examples
 
-The following example extracts the month from the string `Dates` and returns a table with the date string and the month.
+The following example extract the username, email, age from the string. The regular expressions are used to extract the information.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEISa0oUbBVUAotTi2yUvDKz8hzyU%2FVUXDNTczMsVLIAvJT8lMdUisScwtyUvWS83N1FBzTU60UjCyVrLkKijLzShRAWv0Sc1OBxgANK0pMLtGAGqcRHacTq62ppKNgqAO2SVOHC2yyZwqSYgclqG0aMcHamjooqoF2oaiMSdEGyhtA5QFR4bA2wQAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+let Text = "User: JohnDoe, Email: johndoe@example.com, Age: 29";
+print UserName = extract("User: ([^,]+)", 1, Text),
+EmailId = extract(@"Email: (\S+),", 1, Text),
+Age = extract(@"\d+", 0, Text)
+```
+
+**Output**
+
+| UserName | EmailId | Age |
+| --- | --- | --- |
+| JohnDoe | johndoe@example.com	| 29 |
+
+The following example extracts the month from the string `Dates` and returns a table with the date string and the month as int type.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -62,24 +82,6 @@ Dates
 | 15-12-2024 | 12 |
 | 21-07-2023 | 7 |
 | 10-03-2022 | 3 |
-
-The following example returns the username from the string. The regular expression `([^,]+)` matches the text following "User: " up to the next comma, effectively extracting the username.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEISa0oUbBVUAotTi2yUvDKz8hzyU%2FVUXDNTczMsVLIAvJT8lMdUisScwtyUvWS83N1FBzTU60UjCyVrLkKijLzShRAWv0Sc1OBxgANK0pMLtGAGqcRHacTq62ppKNgqAO2SRMAAQTyB3MAAAA%3D" target="_blank">Run the query</a>
-::: moniker-end
-
-```kusto
-let Text = "User: JohnDoe, Email: johndoe@example.com, Age: 29";
-print UserName = extract("User: ([^,]+)", 1, Text)
-```
-
-**Output**
-
-| UserName |
-| --- |
-| JohnDoe |
 
 ## Related content
 
