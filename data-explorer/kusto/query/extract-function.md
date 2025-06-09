@@ -36,7 +36,7 @@ If there's no match, or the type conversion fails: `null`.
 
 ## Examples
 
-The following example extract the username, email, age from the string. The regular expressions are used to extract the information.
+The following example extract the username, email, age from the string. The [regular expression](regex.md) are used to extract the information.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
