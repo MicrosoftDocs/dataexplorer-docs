@@ -131,7 +131,11 @@ MaxFiles=10
 PathFormat=("myfolder/year=" datetime_pattern("yyyy'/month='MM'/day='dd", creationTime) "/")
 ```
 
-The `PathFormat` in the example can extract dates from a path such as the following path:
+The `PathFormat` parameter can extract dates from various folder hierarchies, such as:
+
+* *Spark* folder paths, for example: `https://mystorageaccount.blob.core.windows.net/spark/myfolder/year=2024/month=03/day=16/myblob.parquet`
+
+* Common folder paths, for example: `https://mystorageaccount.blob.core.windows.net/datasets/export/2024/03/16/03/myblob.parquet` where the hour `03` is included in the path.
 
 ```
 https://mystorageaccount.blob.core.windows.net/spark/myfolder/year=2024/month=03/day=16/myblob.parquet
