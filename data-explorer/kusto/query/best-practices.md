@@ -55,7 +55,7 @@ reduces the amount of data being processed.
 > [!NOTE]
 > In the following discussion, it is important to have in mind the concept of **filter selectivity**.
 > Selectivity is what percentage of the records get filtered-out when filtering by some predicate.
-> A highly-selective predicate means that only a handful of records remain after applying
+> A highly selective predicate means that only a handful of records remain after applying
 > the predicate, reducing the amount of data that needs to then be processed effectively.
 
 In order of importance:
