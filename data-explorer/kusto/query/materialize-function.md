@@ -28,7 +28,7 @@ Captures the value of a tabular expression for the duration of the query executi
 The `materialize()` function is useful in the following scenarios:
 
 * To speed up queries that perform *heavy* calculations whose results are used multiple times in the query.
-* To evaluate a tabular expression only once and use it many times in a query. This is commonly required if the tabular expression is non-deterministic. For example, if the expression uses the `rand()` or the `dcount()` functions.
+* To evaluate a tabular expression only once and use it many times in a query. This is commonly required if the tabular expression is nondeterministic. For example, if the expression uses the `rand()` or the `dcount()` functions.
 
 > [!NOTE]
 > Materialize has a cache size limit of **5 GB**. This limit is per cluster node and is mutual for all queries running concurrently. If a query uses `materialize()` and the cache can't hold any more data, the query will abort with an error.
