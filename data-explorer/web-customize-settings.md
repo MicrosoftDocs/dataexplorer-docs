@@ -7,7 +7,7 @@ ms.date: 05/13/2025
 
 # Customize settings in the Azure Data Explorer web UI
 
-This article guides you through the process of customizing settings in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home). You learn how to export and import environment settings, highlight error levels, and change datetime to specific time zone. This can help you protect your work environment and relocate it to other browsers and devices, as well as make it easier to identify errors.
+This article guides you through the process of customizing settings in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home). You learn how to export and import environment settings, highlight error levels, and change datetime to specific time zone. It can help you protect your work environment and relocate it to other browsers and devices, as well as make it easier to identify errors.
 
 ## Prerequisites
 
@@ -34,24 +34,24 @@ The query editor provides suggestions and warnings as you write your queries. Th
 
 1. Select **Apply** to save the changes.
 
-## Adjust time-out limits
+## Adjust timeout limits
 
-Query and admin commands have a default time-out limit. To extend or reduce these limits, do the following steps:
+Query and admin commands have a default timeout limit. To extend or reduce these limits, do the following steps:
 
 1. In the **Settings** > **Connection** window, adjust the **Query timeout** or the **Admin command timeout**.
 
-    :::image type="content" source="media/web-customize-settings/set-timeout-setting.png" alt-text="Screenshot of the setting menu option to set time-out limits." lightbox="media/web-customize-settings/set-timeout-setting.png":::
+    :::image type="content" source="media/web-customize-settings/set-timeout-setting.png" alt-text="Screenshot of the setting menu option to set timeout limits." lightbox="media/web-customize-settings/set-timeout-setting.png":::
 
 1. The changes are automatically saved.
 
-To learn how to set time out limits outside of the web UI, see [Set time-out limits](/kusto/set-timeout-limits?view=azure-data-explorer&preserve-view=true).
+To learn how to set timeout limits outside of the web UI, see [Set timeout limits](/kusto/set-timeout-limits?view=azure-data-explorer&preserve-view=true).
 
 ## Export and import environment settings
 
 The export and import actions help you protect your work environment and relocate it to other browsers and devices. The export action exports all your settings, cluster connections, and query tabs to a JSON file that can be imported into a different browser or device.
 
 > [!NOTE]
-> To sync your profile data to the cloud, see [Access your Azure Data Explorer web UI data anywhere](web-sync.md). Once enabled, exporting and importing is no longer available.
+> To sync your profile data to the cloud, see [Access your Azure Data Explorer web UI data anywhere](web-sync.md). Once enabled, exporting, and importing is no longer available.
 
 ### Export environment settings
 
@@ -78,7 +78,7 @@ The export and import actions help you protect your work environment and relocat
 
 ## Highlight error levels
 
-Azure Data Explorer tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does so by matching the distinct values of each column with a set of known patterns ("Warning", "Error", and so on).
+Azure Data Explorer tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does so by matching the distinct values of each column with a set of known patterns (Warning, Error, and so on).
 
 ### Turn on error level highlighting
 
