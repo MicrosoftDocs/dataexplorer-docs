@@ -3,7 +3,7 @@ title:  materialize()
 description: Learn how to use the materialize() function to capture the value of a tabular expression for reuse.
 ms.reviewer: zivc
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 06/09/2025
 ---
 # materialize()
 
@@ -28,7 +28,7 @@ Captures the value of a tabular expression for the duration of the query executi
 The `materialize()` function is useful in the following scenarios:
 
 * To speed up queries that perform *heavy* calculations whose results are used multiple times in the query.
-* To evaluate a tabular expression only once and use it many times in a query. This is commonly required if the tabular expression is non-deterministic. For example, if the expression uses the `rand()` or the `dcount()` functions.
+* To evaluate a tabular expression only once and use it many times in a query. This is commonly required if the tabular expression is nondeterministic. For example, if the expression uses the `rand()` or the `dcount()` functions.
 
 > [!NOTE]
 > Materialize has a cache size limit of **5 GB**. This limit is per cluster node and is mutual for all queries running concurrently. If a query uses `materialize()` and the cache can't hold any more data, the query will abort with an error.
@@ -125,7 +125,7 @@ Result set 3:
 ## Examples of using materialize()
 
 > [!TIP]
-> Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows.
+> Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows. In this scenario, use the [Update policy overview](../management/update-policy.md).
 
 To use the `let` statement with a value that you use more than once, use the [materialize() function](materialize-function.md). Try to push all possible operators that will reduce the materialized dataset and still keep the semantics of the query. For example, use filters, or project only required columns.
 

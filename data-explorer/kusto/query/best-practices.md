@@ -3,7 +3,7 @@ title: Best practices for Kusto Query Language queries
 description:  This article describes Query best practices.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/11/2024
+ms.date: 06/09/2025
 adobe-target: true
 ---
 # Best practices for Kusto Query Language queries
@@ -24,7 +24,7 @@ Here are several best practices to follow to make your query run faster.
 |  | Use `in`. | Don't use `in~`. |
 |  | Use `contains_cs`. | Don't use `contains`. | Using `has`/`has_cs` is preferred to `contains`/`contains_cs`. |
 | **Searching text** | Look in a specific column. | Don't use  `*`. | `*` does a full text search across all columns. |
-| **Extract fields from [dynamic objects](scalar-data-types/dynamic.md) across millions of rows** | Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows. |  | With this method you only pay once for column extraction. |
+| **Extract fields from [dynamic objects](scalar-data-types/dynamic.md) across millions of rows** | Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows, using an [Update policy](../management/update-policy.md). |  | With this method you only pay once for column extraction. |
 | **Lookup for rare keys/values in [dynamic objects](scalar-data-types/dynamic.md)** | Use `MyTable | where DynamicColumn has "Rare value" | where DynamicColumn.SomeKey == "Rare value"`. | Don't use `MyTable | where DynamicColumn.SomeKey == "Rare value"`. | With this method you filter out most records and only do JSON parsing on the remainder. |
 | **`let` statement with a value that you use more than once** | Use the [materialize() function](materialize-function.md). |  | For more information on how to use `materialize()`, see [materialize()](materialize-function.md). For more information, see [Optimize queries that use named expressions](named-expressions.md).|
 | **Apply type conversions on more than one billion records** | Reshape your query to reduce the amount of data fed into the conversion. | Don't convert large amounts of data if it can be avoided. |  |
@@ -55,7 +55,7 @@ reduces the amount of data being processed.
 > [!NOTE]
 > In the following discussion, it is important to have in mind the concept of **filter selectivity**.
 > Selectivity is what percentage of the records get filtered-out when filtering by some predicate.
-> A highly-selective predicate means that only a handful of records remain after applying
+> A highly selective predicate means that only a handful of records remain after applying
 > the predicate, reducing the amount of data that needs to then be processed effectively.
 
 In order of importance:
