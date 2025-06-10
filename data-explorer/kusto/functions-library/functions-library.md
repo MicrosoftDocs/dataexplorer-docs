@@ -18,6 +18,7 @@ The user-defined functions code is given in the articles. It can be used within 
 
 | Function Name | Description |
 |--|--|
+| [detect_anomalous_access_cf_fl()](detect-anomalous-access-cf-fl.md) | Detect anomalous access using collaborative filtering over timestamped data. |
 | [detect_anomalous_new_entity_fl()](detect-anomalous-new-entity-fl.md) | Detect the appearance of anomalous new entities in timestamped data. |
 | [detect_anomalous_spike_fl()](detect-anomalous-spike-fl.md) | Detect the appearance of anomalous spikes in numeric variables in timestamped data. |
 | [graph_blast_radius_fl()](graph-blast-radius-fl.md) | Calculate the Blast Radius (list and score) of source nodes over path or edge data. |
