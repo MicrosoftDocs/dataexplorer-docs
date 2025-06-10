@@ -17,6 +17,9 @@ items:
 - name: dbscan_dynamic_fl()
   displayName: functions library, clustering, DBSCAN
   href: dbscan-dynamic-fl.md
+- name: detect_anomalous_access_cf_fl()
+  displayName: functions library, security, cybersecurity, anomaly detection, access pattern, collaborative filtering, cyber, detect anomalous access
+  href: detect-anomalous-access-cf-fl.md
 - name: detect_anomalous_new_entity_fl()
   displayName: functions library, security, cybersecurity, anomaly detection, new entity, novelty, cyber, detect anomalous new entity
   href: detect-anomalous-new-entity-fl.md
