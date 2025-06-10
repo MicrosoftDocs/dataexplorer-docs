@@ -11,7 +11,7 @@ ms.date: 08/11/2024
 
 Use the `.dup-next-ingest` command for on-demand troubleshooting of your data ingestion pull flow.
 
-Run `.dup-next-ingest` before the ingestion you wish to watch. After running the command, the successfully downloaded ingestion source file(s) and a file containing metadata on the ingestion request will be uploaded to the specified storage container. Since this command only watches one subsequent ingestion, run this command each time you want to watch the next ingestion.
+Run `.dup-next-ingest` before starting the ingestion you want to monitor. After running the command, the successfully downloaded ingestion source file(s) and a file containing metadata on the ingestion request will be uploaded to the specified storage container. Since this command only watches one subsequent ingestion, run this command each time you want to watch the next ingestion.
 
 The file uploads to the storage container and the ingestion are performed by the same node. If there are admin node changes between running the command and the next ingestion, you'll need to rerun the command since the duplication configuration isn't persisted. Watch the storage container to know when the duplication is completed.
 
