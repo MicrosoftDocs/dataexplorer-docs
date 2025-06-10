@@ -12,7 +12,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 Detect anomalous access using a collaborative filtering (CF) model that identifies anomalous access patterns in timestamped data.
 
-The `detect_anomalous_access_cf_fl()` function is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies a collaborative filtering (CF) model to detect anomalous interactions, such as entity-resource. For example, a UPN accessing a Storage account, based on timestamped data like access logs. In a cybersecurity context, this function helps detect abnormal or unauthorized access patterns.
+The `detect_anomalous_access_cf_fl()` function is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies a collaborative filtering (CF) model to detect anomalous interactions, such as entity-resource. For example, a User Principal Name (UPN) accessing a Storage account, based on timestamped data like access logs. In a cybersecurity context, this function helps detect abnormal or unauthorized access patterns.
 
 The CF-based model predicts access scores using item similarity, leveraging historical access patterns and the cosine similarity between entities and resources. It estimates the probability of an entity accessing a resource during a defined detection period within a given scope, such as a subscription or an account. Several optional parameters, including a minimal threshold, allow customization of the model’s behavior.
 
