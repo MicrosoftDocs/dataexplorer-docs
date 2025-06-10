@@ -45,7 +45,7 @@ The command returns a table with the latest update information for each ID.
 |LastUpdatedOn | `datetime` |Date/time, in UTC, when the status was updated.|
 |State | `string` |The state of the operation.|
 |Discovered | `long` |Count of the blobs that were listed from storage and queued for ingestion.|
-|DiscoveredSize | `long` |The total size (in bytes) of all blobs that were listed from storage and queued for ingestion.|
+|DiscoveredSize | `long` |The total data size in bytes of all blobs that were listed from storage and queued for ingestion.|
 |Pending | `long` |Count of the blobs to be ingested.|
 |Canceled | `long` |Count of the blobs that were canceled due to a call to the [.cancel queued ingestion operation](cancel-queued-ingestion-operation-command.md) command.|
 |Ingested | `long` |Count of the blobs that have been ingested.|
