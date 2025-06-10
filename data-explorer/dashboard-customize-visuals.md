@@ -3,7 +3,7 @@ title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 06/10/2025
 ---
 
 # Customize Azure Data Explorer dashboard visuals
@@ -13,6 +13,8 @@ Azure Data Explorer dashboards are a collection of tiles that feature a visual r
 All visualizations that are created in the context of the [render operator](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true#visualization) are available in dashboard visualizations, along with some [dashboard-specific visuals](dashboard-visuals.md).
 
 ## Prerequisites
+
+Review the following prerequisites:
 
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
 * Editor permissions on an Azure Data Explorer dashboard
