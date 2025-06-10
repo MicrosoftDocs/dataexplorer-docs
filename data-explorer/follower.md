@@ -4,18 +4,21 @@ description: Learn about how to attach databases in Azure Data Explorer using th
 ms.reviewer: gabilehner
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 05/17/2023
+ms.date: 06/10/2025
 ---
 
 # Use follower databases
 
-The **follower database** feature allows you to attach a database located in a different cluster to your Azure Data Explorer cluster. The **follower database** is attached in *read-only* mode, making it possible to view the data and run queries on the data that was ingested into the **leader database**. The follower database synchronizes changes in the leader databases. Because of the synchronization, there's a data lag of a few seconds to a few minutes in data availability. The length of the time lag depends on the overall size of the leader database metadata. The leader and follower databases use the same storage account to fetch the data. The storage is owned by the leader database. The follower database views the data without needing to ingest it. Since the attached database is a read-only database, the data, tables, and policies in the database can't be modified except for [caching policy](#configure-caching-policy), [principals](#manage-principals), and [permissions](#manage-permissions). Attached databases can't be deleted. They must be detached by the leader or follower and only then they can be deleted.
+The **follower database** feature allows you to attach a database located in a different cluster to your Azure Data Explorer cluster. The **follower database** is attached in *read-only* mode, making it possible to view the data and run queries on the data that was ingested into the **leader database**. The follower database synchronizes changes in the leader databases. Because of the synchronization, there's a data lag of a few seconds to a few minutes in data availability. The length of the time lag depends on the overall size of the leader database metadata. The leader and follower databases use the same storage account to fetch the data. The leader database owns the storage. The follower database views the data without needing to ingest it. Since the attached database is a read-only database, the data, tables, and policies in the database can't be modified except for [caching policy](#configure-caching-policy), [principals](#manage-principals), and [permissions](#manage-permissions). Attached databases can't be deleted. The leader or follower must detach databases before deletion.
 
 Attaching a database to a different cluster using the follower capability is used as the infrastructure to share data between organizations and teams. The feature is useful to segregate compute resources to protect a production environment from non-production use cases. Follower can also be used to associate the cost of Azure Data Explorer cluster to the party that runs queries on the data.
 
+>[!NOTE]
 > For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/follower).
 
 ## Which databases are followed?
+
+The following apply to clusters:
 
 * A cluster can follow one database, several databases, or all databases of a leader cluster.
 * A single cluster can follow databases from multiple leader clusters.
@@ -37,13 +40,13 @@ To attach a database, you must have user, group, service principal, or managed i
 
 ### Table level sharing
 
-When attaching the database all tables, external tables and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'.
+When you attach databases, all tables, external tables, and materialized views are followed as well. You can share specific tables/external tables/materialized views by configuring the '*TableLevelSharingProperties*'.
 
 '*TableLevelSharingProperties*' contains eight arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, `materializedViewsToExclude`, `functionsToInclude`, and `functionsToExclude`. The maximum number of entries in all arrays together is 100.
 
 > [!NOTE]
 >
-> * Table level sharing is not supported when using '*' all databases notation.
+> * Table level sharing isn't supported when using '*' all databases notation.
 > * When materialized views are included, their source tables are included as well.
 
 #### Examples
@@ -251,7 +254,7 @@ Use the following steps to attach a database:
 
     | **Parameter** | **Description** | **Example** |
     |--|--|--|
-    | *followerClusterName* | The name of the follower cluster; where the template will be deployed. |  |
+    | *followerClusterName* | The name of the follower cluster; where the template is deployed. |  |
     | *attachedDatabaseConfigurationsName* | The name of the attached database configurations object. The name can be any string that is unique at the cluster level. |  |
     | *databaseName* | The name of the database to be followed. To follow all the leader's databases, use '*'. |  |
     | *leaderClusterResourceId* | The resource ID of the leader cluster. |  |
@@ -416,7 +419,7 @@ To verify that the database was successfully attached, find your attached databa
 
     You can also view this list in the database overview page:
 
-    :::image type="content" source="media/follower/read-only-follower-database-overview.png" alt-text="Screenshot of databases overview page with list of follower clusters.":::    
+    :::image type="content" source="media/follower/read-only-follower-database-overview.png" alt-text="Screenshot of databases overview page with list of follower clusters.":::
 
 ### Check your leader cluster
 
@@ -430,12 +433,12 @@ To verify that the database was successfully attached, find your attached databa
 
    :::image type="content" source="media/follower/read-write-databases-shared-overview.png" alt-text="Screenshot of overview with list of databases shared with others.":::
 
-## Detach the follower database
+### Detach the follower database
 
 > [!NOTE]
-> To detach a database from the follower or leader side, you must have user, group, service principal, or managed identity with at least contributor role on the cluster from which you are detaching the database. In the example below, we use service principal.
+> To detach a database from the follower or leader side, you must have user, group, service principal, or managed identity with at least contributor role on the cluster from which you're detaching the database. In the example below, we use service principal.
 
-## [C#](#tab/csharp)
+### [C#](#tab/csharp)
 
 ### Detach the attached follower database from the follower cluster using C#**
 
@@ -611,27 +614,31 @@ Managing read-only database permission is the same as for all database types. To
 
 The follower database administrator can modify the [caching policy](/kusto/management/show-table-cache-policy-command?view=azure-data-explorer&preserve-view=true) of the attached database or any of its tables on the hosting cluster. The default is to combine the source database in the leader cluster database and table-level caching policies with the policies defined in the database and table-level override policies. You can, for example, have a 30 day caching policy on the leader database for running monthly reporting and a three day caching policy on the follower database to query only the recent data for troubleshooting. For more information about using management commands to configure the caching policy on the follower database or table, see [Management commands for managing a follower cluster](/kusto/management/cluster-follower?view=azure-data-explorer&preserve-view=true).
 
-## Notes
+### Notes
+
+Review the following notes:
 
 * If there are conflicts between databases of leader/follower clusters, when all databases are followed by the follower cluster, they're resolved as follows:
   * A database named *DB* created on the follower cluster takes precedence over a database with the same name that was created on the leader cluster. That's why database *DB* in the follower cluster needs to be removed or renamed for the follower cluster to include the leader's database *DB*.
   * A database named *DB* followed from two or more leader clusters will be arbitrarily chosen from *one* of the leader clusters, and won't be followed more than once.
-* Commands for showing [cluster activity log and history](/kusto/management/system-info?view=azure-data-explorer&preserve-view=true) run on a follower cluster will show the activity and history on the follower cluster, and their result sets won't include those results of the leader cluster or clusters.
-  * For example: a `.show queries` command run on the follower cluster will only show queries run on databases followed by follower cluster, and not queries run against the same database in the leader cluster.
+* Commands for showing [cluster activity log and history](/kusto/management/system-info?view=azure-data-explorer&preserve-view=true) run on a follower cluster show the activity and history on the follower cluster, and their result sets don't include those results of the leader cluster or clusters.
+  * For example: a `.show queries` command run on the follower cluster show only queries run on databases followed by follower cluster, and not queries run against the same database in the leader cluster.
 
-## Limitations
+### Limitations
+
+Review the following limitations:
 
 * The follower and the leader clusters must be in the same region.
 * If [Streaming ingestion](ingest-data-streaming.md) is used on a database that is being followed, the follower cluster should be enabled for Streaming Ingestion to allow following of streaming ingestion data.
 * Following a cluster with data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) (CMK) is supported with the following limitations:
-    * Neither the follower cluster nor the leader cluster is following other clusters.
-    * If a follower cluster is following a leader cluster with CMK enabled, and the leader's access to the key is revoked, both the leader and the follower clusters will be suspended. In this situation, you can either resolve the CMK issue and then resume the follower cluster, or you can detach the follower databases from the follower cluster and resume independent of the leader cluster.
+  * The follower cluster or the leader cluster is not following other clusters.
+  * If a follower cluster is following a leader cluster with CMK enabled, and the leader's access to the key is revoked, both the leader and the follower clusters will be suspended. In this situation, you can either resolve the CMK issue and then resume the follower cluster, or you can detach the follower databases from the follower cluster and resume independent of the leader cluster.
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
 * Table level sharing properties aren't supported when following all databases.
 * In follower databases, to query external tables that use a Managed Identity as the authentication method, the Managed Identity must be added to the follower cluster. This capability doesn't work when the leader and follower clusters are provisioned in different tenants.
 
-## Next step
+### Next step
 
 > [!div class="nextstepaction"]
 > [Run follower commands](/kusto/management/cluster-follower?view=azure-data-explorer&preserve-view=true)
