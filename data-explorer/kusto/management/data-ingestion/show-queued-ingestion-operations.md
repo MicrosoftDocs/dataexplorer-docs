@@ -3,7 +3,7 @@ title:  .show queued ingestion operations command
 description: Learn how to use the `.show queued ingestion operations` command to view a log of the queued ingestion operations that are currently running or completed.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 03/19/2025
+ms.date: 06/10/2025
 ---
 
 # .show queued ingestion operations command (preview)
