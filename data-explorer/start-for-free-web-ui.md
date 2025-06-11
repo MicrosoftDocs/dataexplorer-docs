@@ -24,7 +24,7 @@ A Microsoft account or a Microsoft Entra user identity to create a free cluster.
 
 :::image type="content" source="media/start-for-free-web-ui/start-for-free-overview-page.png" alt-text="Screenshot of a free cluster, showing the overview page." lightbox="media/start-for-free-web-ui/start-for-free-overview-page.png":::
 
-On your cluster's overview page, you the following:
+On your cluster's overview page, you see the following:
 
 1. Your cluster's name, the option to upgrade to a full cluster, and the option to delete the cluster.
 1. Your cluster's location, policies, and URI links for connecting to your cluster via our [APIs](/kusto/api/index?view=azure-data-explorer&preserve-view=true) or other tools.
