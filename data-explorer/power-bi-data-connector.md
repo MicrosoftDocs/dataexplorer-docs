@@ -3,7 +3,7 @@ title: Use data from Azure Data Explorer in Power BI
 description: Learn how to use Azure Data Explorer data in Power BI.
 ms.reviewer: danyhoter
 ms.topic: how-to
-ms.date: 12/29/2022
+ms.date: 06/05/2025
 
 #Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario.
 ---

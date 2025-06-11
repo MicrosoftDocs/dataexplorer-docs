@@ -3,7 +3,7 @@ title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 06/10/2025
 ---
 
 # Customize Azure Data Explorer dashboard visuals
@@ -14,6 +14,9 @@ All visualizations that are created in the context of the [render operator](/kus
 
 ## Prerequisites
 
+Review Visualize data with Azure Data Explorer dashboards.
+
+* Ensure that you have the editor permission on an Azure Data Explorer dashboard.
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
 * Editor permissions on an Azure Data Explorer dashboard
 
