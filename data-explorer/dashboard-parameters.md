@@ -385,7 +385,7 @@ To create a drillthrough, you must first turn on drillthroughs in the visual and
 
 1. In the right pane, select **Interactions**, then turn on drillthrough.
 
-    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-create.png" alt-text="Screenshot of drillthrough page, showing the turn on option.":::
+    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-create.png" alt-text="Screenshot of drillthrough page, showing the turn-on option.":::
 
 1. Under **Drillthrough**, select **Create new**, and specify the following information. Optionally select **Add another pair** to add multiple parameters for a target page. Repeat this step to add drillthroughs to other pages in the current dashboard using different parameters.
 

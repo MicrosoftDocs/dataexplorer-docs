@@ -621,8 +621,8 @@ Review the following notes:
 * If there are conflicts between databases of leader/follower clusters, when all databases are followed by the follower cluster, they're resolved as follows:
   * A database named *DB* created on the follower cluster takes precedence over a database with the same name that was created on the leader cluster. That's why database *DB* in the follower cluster needs to be removed or renamed for the follower cluster to include the leader's database *DB*.
   * A database named *DB* followed from two or more leader clusters will be arbitrarily chosen from *one* of the leader clusters, and won't be followed more than once.
-* Commands for showing [cluster activity log and history](/kusto/management/system-info?view=azure-data-explorer&preserve-view=true) run on a follower cluster show the activity and history on the follower cluster, and their result sets don't include those results of the leader cluster or clusters.
-  * For example: a `.show queries` command run on the follower cluster show only queries run on databases followed by follower cluster, and not queries run against the same database in the leader cluster.
+* Commands for showing [cluster activity log and history](/kusto/management/system-info?view=azure-data-explorer&preserve-view=true) run on a follower cluster shows the activity and history on the follower cluster, and their result sets don't include those results of the leader cluster or clusters.
+  * For example: a `.show queries` command run on the follower cluster shows only queries run on databases followed by follower cluster, and not queries run against the same database in the leader cluster.
 
 ### Limitations
 
@@ -631,7 +631,7 @@ Review the following limitations:
 * The follower and the leader clusters must be in the same region.
 * If [Streaming ingestion](ingest-data-streaming.md) is used on a database that is being followed, the follower cluster should be enabled for Streaming Ingestion to allow following of streaming ingestion data.
 * Following a cluster with data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) (CMK) is supported with the following limitations:
-  * The follower cluster or the leader cluster is not following other clusters.
+  * The follower cluster or the leader cluster isn't following other clusters.
   * If a follower cluster is following a leader cluster with CMK enabled, and the leader's access to the key is revoked, both the leader and the follower clusters will be suspended. In this situation, you can either resolve the CMK issue and then resume the follower cluster, or you can detach the follower databases from the follower cluster and resume independent of the leader cluster.
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
