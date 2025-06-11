@@ -638,7 +638,7 @@ Review the following limitations:
 * Table level sharing properties aren't supported when following all databases.
 * In follower databases, to query external tables that use a Managed Identity as the authentication method, the Managed Identity must be added to the follower cluster. This capability doesn't work when the leader and follower clusters are provisioned in different tenants.
 
-### Next step
+## Next step
 
 > [!div class="nextstepaction"]
 > [Run follower commands](/kusto/management/cluster-follower?view=azure-data-explorer&preserve-view=true)
