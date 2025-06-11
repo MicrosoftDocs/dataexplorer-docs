@@ -3,7 +3,7 @@ title: Query data in Azure Data Lake using Azure Data Explorer
 description: Learn how to query data in Azure Data Lake using Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 08/25/2022
+ms.date: 06/10/2025
 ---
 # Query data in Azure Data Lake using Azure Data Explorer
 
@@ -26,7 +26,7 @@ Let's say you have lots of CSV files containing historical info on products stor
 
 The files are stored in Azure Blob storage `mycompanystorage` under a container named `archivedproducts`, partitioned by date:
 
-```
+```text
 https://mycompanystorage.blob.core.windows.net/archivedproducts/2019/01/01/part-00000-7e967c99-cf2b-4dbb-8c53-ce388389470d.csv.gz
 https://mycompanystorage.blob.core.windows.net/archivedproducts/2019/01/01/part-00001-ba356fa4-f85f-430a-8b5a-afd64f128ca4.csv.gz
 https://mycompanystorage.blob.core.windows.net/archivedproducts/2019/01/01/part-00002-acb644dc-2fc6-467c-ab80-d1590b23fc31.csv.gz
@@ -51,7 +51,9 @@ The external table is now visible in the left pane of the Azure Data Explorer we
 
 :::image type="content" source="media/data-lake-query-data/external-tables-web-ui.png" alt-text="Screenshot that shows external table in Azure Data Explorer web UI.":::
 
-### External table permissions
+## External table permissions
+
+Review the following table permissions:
 
 * The database user can create an external table. The table creator automatically becomes the table administrator.
 * The cluster, database, or table administrator can edit an existing table.
@@ -72,7 +74,7 @@ external_table("ArchivedProducts")
 
 You can query both external tables and ingested data tables within the same query. You can [`join`](/kusto/query/join-operator?view=azure-data-explorer&preserve-view=true) or [`union`](/kusto/query/union-operator?view=azure-data-explorer&preserve-view=true) the external table with other data from Azure Data Explorer, SQL servers, or other sources. Use a [`let( ) statement`](/kusto/query/let-statement?view=azure-data-explorer&preserve-view=true) to assign a shorthand name to an external table reference.
 
-In the example below, *Products* is an ingested data table and *ArchivedProducts* is an external table that we've defined previously:
+In the example below, *Products* is an ingested data table and *ArchivedProducts* is an external table that we've defined:
 
 ```kusto
 let T1 = external_table("ArchivedProducts") |  where TimeStamp > ago(100d);
@@ -80,7 +82,7 @@ let T = Products; //T is an internal table
 T1 | join T on ProductId | take 10
 ```
 
-## Querying hierarchical data formats
+### Querying hierarchical data formats
 
 Azure Data Explorer allows querying hierarchical formats, such as `JSON`, `Parquet`, `Avro`, and `ORC`. To map hierarchical data schema to an external table schema (if it's different), use [external table mappings commands](/kusto/management/external-table-mapping-create?view=azure-data-explorer&preserve-view=true). For instance, if you want to query JSON log files with the following format:
 
@@ -88,14 +90,14 @@ Azure Data Explorer allows querying hierarchical formats, such as `JSON`, `Parqu
 {
   "timestamp": "2019-01-01 10:00:00.238521",
   "data": {
-    "tenant": "e1ef54a6-c6f2-4389-836e-d289b37bcfe0",
+    "tenant": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
     "method": "RefreshTableMetadata"
   }
 }
 {
   "timestamp": "2019-01-01 10:00:01.845423",
   "data": {
-    "tenant": "9b49d0d7-b3e6-4467-bb35-fa420a25d324",
+    "tenant": "bbbbcccc-1111-dddd-2222-eeee3333ffff",
     "method": "GetFileList"
   }
 }
@@ -119,7 +121,7 @@ Define a JSON mapping that maps data fields to external table definition fields:
 .create external table ApiCalls json mapping 'MyMapping' '[{"Column":"Timestamp","Properties":{"Path":"$.timestamp"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]'
 ```
 
-When you query the external table, the mapping will be invoked, and relevant data will be mapped to the external table columns:
+When you query the external table, the mapping is invoked, and relevant data mapped to the external table columns:
 
 ```kusto
 external_table('ApiCalls') | take 10
@@ -127,13 +129,13 @@ external_table('ApiCalls') | take 10
 
 For more info on mapping syntax, see [data mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true).
 
-## Query *TaxiRides* external table in the help cluster
+### Query *TaxiRides* external table in the help cluster
 
 Use the test cluster called *help* to try out different Azure Data Explorer capabilities. The *help* cluster contains an external table definition for a [New York City taxi dataset](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page) containing billions of taxi rides.
 
 ### Create external table *TaxiRides*
 
-This section shows the query used to create the *TaxiRides* external table in the *help* cluster. Since this table has already been created, you can skip this section and go directly to [query *TaxiRides* external table data](#query-taxirides-external-table-data).
+This section shows the query used to create the *TaxiRides* external table in the *help* cluster. Since you already created this table, you can skip this section and go directly to [query *TaxiRides* external table data](#query-taxirides-external-table-data).
 
 ```kusto
 .create external table TaxiRides
@@ -206,7 +208,7 @@ You can find the created **TaxiRides** table by looking at the left pane of the 
 
 Sign in to [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples).
 
-#### Query *TaxiRides* external table without partitioning
+### Query *TaxiRides* external table without partitioning
 
 [Run this query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3LSwqAMAwFwL3gHYKreh1xL7F9YrCtElP84OEV9zM4DZo5DsZjhGt6PqWTgL1p6+qhvaTEKjeI/FqyuZbGiwJf63QAi9vEL2UbAhtMEv6jyAH6+VhS9jOr1dULfUgAm2cAAAA=) on the external table *TaxiRides* to show rides for each day of the week, across the entire dataset.
 
@@ -220,7 +222,7 @@ This query shows the busiest day of the week. Since the data isn't partitioned, 
 
 :::image type="content" source="media/data-lake-query-data/taxirides-no-partition.png" alt-text="Graph representation to render non-partitioned query.":::
 
-#### Query TaxiRides external table with partitioning
+### Query TaxiRides external table with partitioning
 
 [Run this query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13NQQqDMBQE0L3gHT6ukkVF3fQepXv5SQYMNWmIP6ilh68WuinM6jHMYBPkyPMobGao5s6bv3mHpdF19aZ1QgYlbx8ljY4F4gPIQFYgkvqJGrr+eun6I5ralv58OP27t5QQOPsXiOyzRFGazE6WzSh7wtnIiA75uISdOEtdfQDLWmP+ogAAAA==) on the external table *TaxiRides*  to show taxi cab types (yellow or green) used in January of 2017.
 
@@ -237,7 +239,7 @@ This query uses partitioning, which optimizes query time and performance. The qu
 
 You can write other queries to run on the external table *TaxiRides* and learn more about the data.
 
-## Optimize your query performance
+### Optimize your query performance
 
 Optimize your query performance in the lake by using the following best practices for querying external data.
 
@@ -268,6 +270,6 @@ Organize your data using "folder" partitions that enable the query to skip irrel
 
 Select VM SKUs with more cores and higher network throughput (memory is less important). For more information, see [Select the correct VM SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md).
 
-## Related content
+### Related content
 
 * [Tutorial: Learn common KQL operators](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true)

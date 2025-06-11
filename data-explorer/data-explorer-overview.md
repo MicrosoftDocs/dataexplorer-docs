@@ -3,7 +3,7 @@ title: What is Azure Data Explorer?
 description: Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data.
 ms.reviewer: mblythe
 ms.topic: overview
-ms.date: 06/03/2025
+ms.date: 06/10/2025
 adobe-target: true
 
 # Customer intent: As a data analyst, I want to understand Azure Data Explorer, so I can decide if it's suitable for my analytics workloads.
@@ -13,7 +13,7 @@ adobe-target: true
 
 Azure Data Explorer is a fully managed, high-performance, big data analytics platform that makes it easy to analyze high volumes of data in near real time. The Azure Data Explorer toolbox gives you an end-to-end solution for data ingestion, query, visualization, and management.
 
-By analyzing structured, semi-structured, and unstructured data across time series, and by using Machine Learning, Azure Data Explorer makes it simple to extract key insights, spot patterns and trends, and create forecasting models. Azure Data Explorer uses a traditional relational model, organizing data into tables with strongly-typed schemas. Tables are stored within databases, and a cluster can manage multiple databases. Azure Data Explorer is scalable, secure, robust, and enterprise-ready, and is useful for log analytics, time series analytics, IoT, and general-purpose exploratory analytics.
+By analyzing structured, semi-structured, and unstructured data across time series, and by using Machine Learning, Azure Data Explorer makes it simple to extract key insights, spot patterns and trends, and create forecasting models. Azure Data Explorer uses a traditional relational model, organizing data into tables with strongly typed schemas. Tables are stored within databases, and a cluster can manage multiple databases. Azure Data Explorer is scalable, secure, robust, and enterprise-ready, and is useful for log analytics, time series analytics, IoT, and general-purpose exploratory analytics.
 
 Azure Data Explorer capabilities are extended by other services built on its query language: [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true). These services include [Azure Monitor logs](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/), and [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint).
 
@@ -68,7 +68,7 @@ Generally speaking, when you interact with Azure Data Explorer, you're going to 
 > [!NOTE]
 > You can access your Azure Data Explorer resources either in the [Azure Data Explorer web UI](web-query-data.md) or by using [SDKs](/kusto/api/index?view=azure-data-explorer&preserve-view=true).
 
-1. **Create database:** Create a *cluster* and then create one or more *databases* in that cluster. Each Azure Data Explorer cluster can hold up to 10,000 databases and each database up to 10,000 tables. The data in each table is stored in data shards also called "extents". All data is automatically indexed and partitioned based on the ingestion time. This means you can store a large ammount of varied data and because of the way it's stored, you get fast access to querying it. [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
+1. **Create database:** Create a *cluster* and then create one or more *databases* in that cluster. Each Azure Data Explorer cluster can hold up to 10,000 databases and each database up to 10,000 tables. The data in each table is stored in data shards also called "extents". All data is automatically indexed and partitioned based on the ingestion time. This means you can store a large amount of varied data and because of the way it's stored, you get fast access to querying it. [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
 
 1. **Ingest data:** Load data into database tables so that you can run queries against it. Azure Data Explorer supports several [ingestion methods](ingest-data-overview.md), each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion. Get started with the [get data experience](ingest-data-overview.md).
 
