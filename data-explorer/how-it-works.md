@@ -3,7 +3,7 @@ title: How Azure Data Explorer works
 description: 'Learn more about how Azure Data Explorer works.'
 ms.reviewer: avnera
 ms.topic: conceptual
-ms.date: 09/26/2023
+ms.date: 06/10/2025
 ---
 # How Azure Data Explorer works
 
