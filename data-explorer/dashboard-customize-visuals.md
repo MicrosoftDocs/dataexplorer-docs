@@ -14,8 +14,9 @@ All visualizations that are created in the context of the [render operator](/kus
 
 ## Prerequisites
 
-Review the following prerequisites:
+Review Visualize data with Azure Data Explorer dashboards.
 
+* Ensure that you have the editor permission on an Azure Data Explorer dashboard.
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
 * Editor permissions on an Azure Data Explorer dashboard
 
