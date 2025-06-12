@@ -53,6 +53,7 @@ If the table only contained one CSV formatted mapping named "mapping1", the foll
 
 ```kusto
 .show table MyTable ingestion csv mappings 
+```
 
 ```kusto
 .show database MyDatabase ingestion csv mappings
