@@ -44,3 +44,10 @@ Returns an integer that represents the week number. The week number is calculate
 > [!NOTE]
 > `weekofyear()` is an obsolete variant of this function. `weekofyear()` was not ISO 8601 compliant; the first week of a year was defined as the week with the year's first Wednesday in it.
 The current version of this function, `week_of_year()`, is ISO 8601 compliant; the first week of a year is defined as the week with the year's first Thursday in it.
+
+## Related content
+
+* [startofweek function](./startofweek-function.md)
+* [endofweek function](./endofweek-function.md)
+* [dayofweek function](./day-of-week-function.md)
+* [ago function](./ago-function.md)
