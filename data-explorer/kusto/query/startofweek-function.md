@@ -49,3 +49,10 @@ range offset from -1 to 1 step 1
 |2016-12-25 00:00:00.0000000|
 |2017-01-01 00:00:00.0000000|
 |2017-01-08 00:00:00.0000000|
+
+## Related content
+
+* [dayofweek function](./day-of-week-function.md)
+* [endofweek function](./endofweek-function.md)
+* [week_of_year function](./week-of-year-function.md)
+* [ago function](./ago-function.md)
