@@ -51,3 +51,13 @@ The following example returns the end of the week for the specified date.
 |2016-12-31 23:59:59.9999999|
 |2017-01-07 23:59:59.9999999|
 |2017-01-14 23:59:59.9999999|
+
+## Related content
+
+* [startofweek function](./startofweek-function.md)
+* [endofday function](./endofday-function.md)
+* [endofmonth function](./endofmonth-function.md)
+* [endofyear function](./endofyear-function.md)
+* [dayofweek function](./day-of-week-function.md)
+* [week_of_year function](./week-of-year-function.md)
+* [ago function](./ago-function.md)

@@ -47,3 +47,13 @@ range offset from -1 to 1 step 1
 |2016-01-01 00:00:00.0000000|
 |2017-01-01 00:00:00.0000000|
 |2018-01-01 00:00:00.0000000|
+
+## Related content
+
+* [startofday function](./startofday-function.md)
+* [startofweek function](./startofweek-function.md)
+* [startofmonth function](./startofmonth-function.md)
+* [endofday function](./endofday-function.md)
+* [endofweek function](./endofweek-function.md)
+* [endofmonth function](./endofmonth-function.md)
+* [endofyear function](./endofyear-function.md)
