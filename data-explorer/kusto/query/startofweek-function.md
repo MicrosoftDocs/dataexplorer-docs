@@ -50,11 +50,11 @@ range offset from -1 to 1 step 1
 |2017-01-01 00:00:00.0000000|
 |2017-01-08 00:00:00.0000000|
 
-The following cane be used to find the starting of the week from Monday.
+The following example returns the start of the week as Monday for the specified date.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://help.kusto.windows.net/Samples?query=H4sIAAAAAAAEAHXQwQrCMAwA0Huh%2fxB2WQsVVJyCsoMg3jwpeBCRSqOIWwddh4r676ZT0cPWQynpS9ImQw%2bl184Xhwviee6KfFFYo2%2bQgjDa49QdxxAO%2fpSjhDtnQOsb2GljREw8VtBT%2f5VEE%2bmQ%2bRSVUnL2nHCW0QsoptOweb3PUMyI%2fJqGlNuYaruTPVLShrPvleh3%2b4mCITUfSAXRUvvKkY5Uo0lqU9l2MQziPYAWMQpiVWEZCGfbSa00cPYAvHq0Bt75axpC2jja%2bn%2f0kRfTIdOifAEAAA%3d%3d&web=0" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XQwQrCMAwA0Hu%2FIuxiCxV0uAmTHQTx5knBg4hUGsdwdlA7dKj%2Fbro59DB7KE37kpAW6ODqlHXl6YZ4XtrysiqNVjWkwLVyOLdZAv7g8gsKeDCg1cUHpTUfkB5IGMvfQryPDMl8agoh2GvGCmpPNyr1m1PHAvmCwLejT6gTqmxzkwm2Y90DD0dhJCGmxhMhIVgrV1mygewjUUMq8xfEHrST94OpB5sKr16w%2FcwbBewJeHdoNLS5Wxo97f3PZi7xBi07C4NvAQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
