@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 02/28/2022
 ---
 
-# Use Azure Data Share to share data with Azure Data Explorer
+# Sharing Data with Azure Data Explorer
 
 There are many traditional ways to share data, such as through file shares, FTP, e-mail, and APIs. These methods require both parties to build and maintain a data pipeline that moves data between teams and organizations. With Azure Data Explorer, you can easily and securely share your data with people in your company or external partners. Sharing occurs in near-real-time, with no need to build or maintain a data pipeline. All database changes, including schema and data, on the provider side are instantly available on the consumer side.
 
@@ -46,7 +46,7 @@ The data provider can share the data at the database level or at the cluster lev
 1. The receiver opens the email invite and selects their Azure Data Share resource.
 1. The receiver uses Azure Data Share to map the shared database or table to the appropriate cluster.
 
-## Data provider - shares data
+## Data provider
 
 The data provider can share a full database or a specific table with the receiver.
 
@@ -63,14 +63,26 @@ Use the following steps to share tables:
 
 1. Create a template and set the appropriate parameters on the dataset, table restrictions, and specify the invite recipient. Use the information in the following table to help you configure the template.
 
+General Parameters 
+
     | **Parameter** | **Description** | **Example** |
     |--|--|--|
     | *accountName* | The name of the provider's Azure Data Share account. |  |
     | *location* | The location of all the resources. The leader and the follower must be in the same location. |  |
     | *shareName* | The name of the share that will be created on the data share account. |  |
     | *recipientEmail* | The email of the Azure Data Share receiver. |  |
+
+Database Parameters
+    
+    | **Parameter** | **Description** | **Example** |
+    |--|--|--|
     | *databaseName* | The name of provider's database. |  |
     | *databaseResourceId* | The resource ID of the provider's database. |  |
+
+Table and View Parameters
+    
+    | **Parameter** | **Description** | **Example** |
+    |--|--|--|
     | *externalTablesToExclude* | The list of external tables to exclude. To exclude all external tables, use ["*"]. | `["ExternalTable1ToExclude", "ExternalTable2ToExclude"]` |
     | *externalTablesToInclude* | The list of external tables to include. To include all external tables starting with 'Logs', use ["Logs*"]. | `["ExternalTable1ToInclude", "ExternalTable2ToInclude"]` |
     | *materializedViewsToExclude* | The list of materialized views to exclude. To exclude all materialized views, use ["*"]. | `["Mv11ToExclude", "Mv22ToExclude"]` |
