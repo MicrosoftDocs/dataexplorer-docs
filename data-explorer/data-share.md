@@ -90,7 +90,7 @@ Use the following steps to share tables:
 | *tablesToExclude* | The list of tables to exclude. To exclude all tables, use ["*"]. | `["table1ToExclude", "table2ToExclude"]` |
 | *tablesToInclude* | The list of tables to include. To include all tables, use ["*"]. | `["table1ToInclude", "table2ToInclude"]` |
 
-    ```json
+```json
     {
       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
@@ -168,7 +168,7 @@ Use the following steps to share tables:
         }
       ]
     }
-    ```
+```
 
 1. Deploy the Azure Resource Manager template using the [Azure portal](https://ms.portal.azure.com/#create/Microsoft.Template) or PowerShell.
 
