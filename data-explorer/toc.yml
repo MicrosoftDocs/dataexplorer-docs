@@ -304,6 +304,8 @@ items:
             href: add-query-visualization.md
           - name: Customize settings in the web UI
             href: web-customize-settings.md
+          - name: Access the web UI anywhere
+            href: web-sync.md
           - name: Explore the sample gallery
             href: web-ui-samples-query.md
           - name: Explore the results grid
