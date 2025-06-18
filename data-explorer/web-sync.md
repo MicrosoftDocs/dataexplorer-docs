@@ -20,7 +20,7 @@ Before enabling sync, consider the following points:
 
 * The first browser where syncing is enabled becomes the primary data source, overriding data in other browsers.
 * Data is account-specific and can't be shared across different user accounts on the same machine.
-* Syncing uploads your current device's data to the cloud, replacing local data on other browsers or devices with the cloud-stored version.
+* Syncing uploads your current device's data to the cloud, replacing local data on other browsers or devices with the cloud-stored version. However, user accounts that haven’t enabled Sync can still access the local profile as it existed before the Sync was turned on. If you need to access the replaced queries, use [`.show queries`](/kusto/management/show-queries-command). 
 * Synced data is stored in your tenant's region. If no Azure region exists in the tenant's region, data is stored in an Azure region in Europe.
 * Syncing is irreversible; once enabled:
     * Data is no longer stored exclusively on your device
