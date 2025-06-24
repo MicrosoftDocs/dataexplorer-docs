@@ -58,12 +58,17 @@ There are several ways to specify the entity group used by the `macro-expand` op
 > [!NOTE]
 > A query can only reference entity groups defined in the query text or in the current database. Entity groups in other databases or clusters can't be referenced directly or indirectly.
 
-### Subquery contextual functions
+### Subquery contextual scalars
 
-The `macro-expand` subquery can reference two specialized scalar functions as if they're part of the entity being referenced:
+The `macro-expand` subquery can reference two specialized scalar values as if they're part of the entity being referenced:
 
-* `$current_database` - Returns the database name of the entity reference.
-* `$current_cluster_endpoint` - Returns the URL of the cluster of the entity reference.
+* `$current_database` - Returns the database name of the entity reference (a `string`).
+* `$current_cluster_endpoint` - Returns the URL of the cluster of the entity reference (a `string`).
+
+> [!NOTE]
+> These values can only be used when they are scoped by the *EntityReference*.
+> For example, if *EntityReference* is a database and the `macro-expand` is using `DB` to reference the database,
+> use `DB.$current_cluster_endpoint` to retrieve the URL of the cluster which hosts the database.
 
 ## Examples
 
