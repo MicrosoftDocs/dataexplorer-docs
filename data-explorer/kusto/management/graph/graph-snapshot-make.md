@@ -87,4 +87,4 @@ If run asynchronously, the command returns an operation ID that can be used to c
 * [.show graph_snapshot](graph-snapshot-show.md)
 * [.show graph_snapshots](graph-snapshots-show.md)
 * [.drop graph_snapshot](graph-snapshot-drop.md)
-* [.show operations command](show-operations.md)
+* [.show operations command](../show-operations.md)
