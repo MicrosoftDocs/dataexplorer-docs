@@ -70,9 +70,9 @@ If run asynchronously, the command returns an operation ID that can be used to c
 
 **Output**
 
-|OperationId|Status|
-|---|---|
-|bbbbbbbb-1c1c-2d2d-3e3e-444444444444|InProgress|
+|OperationId|
+|---|
+|bbbbbbbb-1c1c-2d2d-3e3e-444444444444|
 
 ## Notes
 
@@ -87,3 +87,4 @@ If run asynchronously, the command returns an operation ID that can be used to c
 * [.show graph_snapshot](graph-snapshot-show.md)
 * [.show graph_snapshots](graph-snapshots-show.md)
 * [.drop graph_snapshot](graph-snapshot-drop.md)
+* [.show operations command](../show-operations.md)
