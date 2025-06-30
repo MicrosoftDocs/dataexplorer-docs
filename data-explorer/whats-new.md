@@ -17,6 +17,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 |--|--|
 | - [Query resource consumption](kusto/concepts/query-resource-consumption.md) | New article. Learn about the resource consumption information returned as part of a Kusto query response. |
 | - [Time pivot](/kusto/query/visualization-timepivot?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed with new images. |
+| - [scan operator](kusto/query/scan-operator.md) | Updated article. Added an example for calculating session length per user |
 
 **Cross-repo**
 
@@ -28,6 +29,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 | Article title | Description |
 |--|--|
+| - 
 | - [Mirroring policy](/kusto/management/mirroring-policy?view=microsoft-fabric&preserve-view=true)<br> - [.alter-merge table policy mirroring command](/kusto/management/alter-merge-mirroring-policy-command?view=microsoft-fabric) | Updated articles.  Refreshed with clearer content. |
 
 ## April 2025
