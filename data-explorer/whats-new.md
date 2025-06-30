@@ -15,6 +15,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 | Article title | Description |
 |--|--|
+| - [Graph semantics overview](kusto/query/graph-semantics-overview.md) </br> - [Graph function](kusto/query/graph-function.md) </br>- [Graph scenarios](kusto/query/graph-scenarios.md) </br> - [Best practices](kusto/query/graph-best-practices.md) </br> - [Graph operators reference](kusto/graph-operators.md) <br/> data-explorer/kusto/query/tutorials/your-first-graph.md | New articles.  |
 | - [Query resource consumption](kusto/concepts/query-resource-consumption.md) | New article. Learn about the resource consumption information returned as part of a Kusto query response. |
 | - [Time pivot](/kusto/query/visualization-timepivot?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed with new images. |
 | - [scan operator](kusto/query/scan-operator.md) | Updated article. Added an example for calculating session length per user |
@@ -29,8 +30,10 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 | Article title | Description |
 |--|--|
-| - 
+| - [Graph model overview](kusto/management/graph-model/graph-model-overview.md) <br/>- Persistent graphs overview (preview) | New articles. New persistent graph models and graph snapshots, including new operators. |
+| - .show external table details | New article. Learn how to use the `.show external table details` command to show details of the specified external tables in the database. |
 | - [Mirroring policy](/kusto/management/mirroring-policy?view=microsoft-fabric&preserve-view=true)<br> - [.alter-merge table policy mirroring command](/kusto/management/alter-merge-mirroring-policy-command?view=microsoft-fabric) | Updated articles.  Refreshed with clearer content. |
+| - .show database operations mirroring-statistics <br/> - .show table operations mirroring-statistics | New articles. Learn how to use the `.show database operations mirroring statistics` and the `.show table operations mirroring-statistics` command to check the mirroring policy operations. |
 
 ## April 2025
 
