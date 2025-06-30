@@ -4,7 +4,7 @@ description: Learn how to use the mirroring policy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 09/23/2024
-monikerRange: "microsoft-fabric | azure-data-explorer"
+monikerRange: "microsoft-fabric"
 ---
 # Mirroring policy
 
