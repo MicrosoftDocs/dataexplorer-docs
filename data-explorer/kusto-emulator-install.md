@@ -62,11 +62,11 @@ The following steps are for using a shell to start the emulator using the [Kusto
     docker ps
     ```
 
-    The command returns a list of running container instances. Verify that the emulator image *mcr.microsoft.com/azuredataexplorer/kustainer:latest* appears in the list.
+    The command returns a list of running container instances. Verify that the emulator image *mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest* appears in the list.
 
     ```powershell
     CONTAINER ID   IMAGE                                                  COMMAND                  CREATED          STATUS          PORTS                    NAMES
-    a8b51bce21ad   mcr.microsoft.com/azuredataexplorer/kustainer:latest   "powershell -Command¦"   11 minutes ago   Up 10 minutes   0.0.0.0:8080->8080/tcp   contoso
+    a8b51bce21ad   mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest   "powershell -Command¦"   11 minutes ago   Up 10 minutes   0.0.0.0:8080->8080/tcp   contoso
     ```
 
 1. Run the following command to verify that Kusto emulator is running.  This command is for PowerShell, you could do something similar using `curl` in a Linux environment. The command runs the `.show cluster` query against the management API and it should return a *StatusCode* with value *200*.
