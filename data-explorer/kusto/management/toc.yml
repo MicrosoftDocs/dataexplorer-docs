@@ -540,9 +540,11 @@ items:
           - name: .show table policy mirroring command
             href: show-table-mirroring-policy-command.md
             displayName: .show table mirroring policy
-          - name: .show table operations mirroring-status command
-            href: show-table-operations-mirroring-status-command.md
-            displayName: .show table mirroring status operations
+          - name: .show database operations mirroring-statistics
+            href: show-database-operations-mirroring-statistics.md
+          - name: .show table operations mirroring-statistics
+            href: show-table-operations-mirroring-statistics.md
+
           - name: .show table operations mirroring-exported-artifacts command
             href: show-table-operations-mirroring-exported-artifacts-command.md
             displayName: .show table mirroring operations exported artifacts
