@@ -3,7 +3,7 @@ title: Install the Azure Data Explorer Kusto emulator
 description: In this article, you learn how to install the Azure Data Explorer Kusto emulator and run your first query.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 02/09/2025
+ms.date: 06/30/2026
 ---
 
 # Install the Azure Data Explorer Kusto emulator
@@ -33,19 +33,12 @@ This article focuses on how to install the Linux Docker container on a Windows c
   - Windows 11
   - Any Linux distro that supports Docker Client for Linux
 
-    > [!IMPORTANT]
-    > Linux distros only support Linux container images.
-
 - 2 gigabytes (GB) of RAM minimum; we recommend using 4 GB or more
-- Docker Client for [Linux](https://docs.docker.com/desktop/install/linux-install/) or [Windows](https://docs.docker.com/desktop/windows/install/)
+- Docker Client for [Linux](https://docs.docker.com/desktop/install/linux-install/)
 
 ## Install the Kusto emulator
 
-The following steps are for using PowerShell to start the emulator using the [Kusto emulator container image](https://aka.ms/adx.emulator.image). For other options, see [Run emulator options](#run-emulator-options).
-
-1. **For Windows container only**: Switch Docker to run with Windows containers. You might need to enable the feature in the Docker settings.
-
-    :::image type="content" source="media/kusto-emulator/kusto-emulator-docker-windows-container.png" alt-text="Screenshot of the Docker settings, showing the Switch to Windows containers option.":::
+The following steps are for using a shell to start the emulator using the [Kusto emulator container image](https://aka.ms/adx.emulator.image). For other options, see [Run emulator options](#run-emulator-options).
 
 1. Run the following command to start the emulator.
 
@@ -55,31 +48,13 @@ The following steps are for using PowerShell to start the emulator using the [Ku
     > [!NOTE]
     >
     > - The first time this command is run, Docker pulls the container image which is several GBs in size and might take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
-    > - **For Windows container only**: The container must run in process-isolation mode. This is the default on some versions of Docker. For other versions, you can start the container in Hyper-V isolation mode by adding `--isolation=hyperv` to the run command.
 
-    # [Linux container](#tab/linux-container)
-
-    To start the Linux container, make sure you use the `latest` or `stable` tag:
+1. To start the Linux container, make sure you use the `latest` or `stable` tag:
 
     ```powershell
     docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
     ```
 
-    # [Windows container](#tab/windowscontainer)
-
-    - To start the Windows container on Windows Server operating system, make sure you use the `latest` or `stable` tag:
-
-        ```powershell
-        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
-        ```
-
-    - To start the Windows container on Windows 11, make sure you use the `windows11` tag:
-
-        ```powershell
-        docker run -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:windows11
-        ```
-
-    ---
 
 1. Run the following command to verify that the container is running.
 
@@ -94,7 +69,7 @@ The following steps are for using PowerShell to start the emulator using the [Ku
     a8b51bce21ad   mcr.microsoft.com/azuredataexplorer/kustainer:latest   "powershell -Command¦"   11 minutes ago   Up 10 minutes   0.0.0.0:8080->8080/tcp   contoso
     ```
 
-1. Run the following command to verify that Kusto emulator is running. The command runs the `.show cluster` query against the management API and it should return a *StatusCode* with value *200*.
+1. Run the following command to verify that Kusto emulator is running.  This command is for PowerShell, you could do something similar using `curl` in a Linux environment. The command runs the `.show cluster` query against the management API and it should return a *StatusCode* with value *200*.
 
     ```powershell
     Invoke-WebRequest -Method post -ContentType 'application/json' -Body '{"csl":".show cluster"}' http://localhost:8080/v1/rest/mgmt
@@ -128,22 +103,11 @@ You can use any of the following options when running the emulator:
 
 - Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a database persistent between container runs](#create-a-database) and [ingesting data](#ingest-data).
 
-    # [Linux container](#tab/linux-container)
-
     For example, to mount the folder "D:\host\local" on the host to the folder "/kustodatadata" in the container, use the following command on Windows Server:
 
     ```powershell
     docker run -v d:\host\local:/kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
     ```
-
-    # [Windows container](#tab/windowscontainer)
-    For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodata" in the container, use the following command on Windows Server:
-
-    ```powershell
-    docker run -v d:\host\local:c:\kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
-    ```
-
-    ---
 
 - Run on a different port: The Kusto emulator exposes access to the Kusto Query Engine on port 8080; hence in other examples you mapped the host port 8080 to the emulator port 8080. You can use this option to map a different host to the engine.
 
@@ -187,24 +151,12 @@ In this example, we keep the data on the container.
 
 In the [Kusto.Explorer Query mode](/kusto/tools/kusto-explorer-using?view=azure-data-explorer&preserve-view=true#query-mode), run the following command to create a persistent database:
 
-# [Linux container](#tab/linux-container)
-
 ```kusto
 .create database <YourDatabaseName> persist (
   @"/kustodata/dbs/<YourDatabaseName>/md",
   @"/kustodata/dbs/<YourDatabaseName>/data"
   )
 ```
-
-# [Windows container](#tab/windowscontainer)
-
-```kusto
-.create database <YourDatabaseName> persist (
-  @"c:\kustodata\dbs\<YourDatabaseName>\md",
-  @"c:\kustodata\dbs\<YourDatabaseName>\data"
-  )
-```
----
 
 This command requires that the folders don't already exist, to prevent over-writing existing information. To attach to an existing database, use the following command instead, specifying the path that ends with `md`:
 
