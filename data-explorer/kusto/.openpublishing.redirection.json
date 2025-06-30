@@ -62,7 +62,7 @@
     },
     {
       "source_path": "management/show-table-mirroring-operations-command.md",
-      "redirect_url": "redirect_url": "/kusto/management/show-database-operations-mirroring-statistics",
+      "redirect_url": "/kusto/management/show-database-operations-mirroring-statistics",
       "redirect_document_id": true
     },
     {
