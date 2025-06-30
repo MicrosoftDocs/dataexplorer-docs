@@ -34,7 +34,7 @@ This article focuses on how to install the Linux Docker container on a Windows c
   - Any Linux distro that supports Docker Client for Linux
 
 - 2 gigabytes (GB) of RAM minimum; we recommend using 4 GB or more
-- Docker Client for [Linux](https://docs.docker.com/desktop/install/linux-install/)
+- Docker Client for [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) or [Linux](https://docs.docker.com/desktop/install/linux-install/)
 
 ## Install the Kusto emulator
 
