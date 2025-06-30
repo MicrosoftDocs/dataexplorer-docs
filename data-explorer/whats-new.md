@@ -9,6 +9,26 @@ ms.date: 05/11/2025
 
 Welcome to what's new in Azure Data Explorer. This article details new and updated content in the Azure Data Explorer documentation.
 
+## May 2025
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [Time pivot](/kusto/query/visualization-timepivot?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed with new images. |
+
+**Cross-repo**
+
+| Article title | Description |
+|--|--|
+| - [Get data with fluent bit](/fabric/real-time-intelligence/get-data-fluent?tabs=default%2Cclassic) | Updated article. Refreshed the configuration parameters table. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| - [Mirroring policy](/kusto/management/mirroring-policy?view=microsoft-fabric&preserve-view=true)<br> - [.alter-merge table policy mirroring command](/kusto/management/alter-merge-mirroring-policy-command?view=microsoft-fabric) | Updated articles.  Refreshed with clearer content. |
+
 ## April 2025
 
 **Query**
