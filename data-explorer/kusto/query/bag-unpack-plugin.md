@@ -38,11 +38,9 @@ Use a use a wildcard `*` as the first parameter to include all columns of the so
 
 ## Performance considerations
 
-> [!IMPORTANT]
->
 * Using the plugin without an *OutputSchema* can have severe performance implications in large datasets and should be avoided.
->
-> * Using the wildcard `*` in the *OutputSchema* can lead to significant performance improvements, as the query engine doesn't have to retrieve the input schema.
+
+* Using the wildcard `*` in the *OutputSchema* can lead to significant performance improvements, as the query engine doesn't have to retrieve the input schema.
 
 ## Returns
 
