@@ -61,9 +61,9 @@ Tabular schema rules apply to the input data. In particular:
 
 * An output column name can't be the same as an existing column in the tabular input *T*, unless it's the column to unpack (*Column*). Otherwise, the output includes two columns with the same name.
 
-All slot names, when prefixed by *OutputColumnPrefix*, must be valid entity names and follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
+* All slot names, when prefixed by *OutputColumnPrefix*, must be valid entity names and follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
 
-* The plugin ignores null values.
+The plugin ignores null values.
 
 ## Examples
 
