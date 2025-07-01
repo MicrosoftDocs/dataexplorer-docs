@@ -36,25 +36,13 @@ Use a use a wildcard `*` as the first parameter to include all columns of the so
 
 `(` `*` `,` *ColumnName* `:` *ColumnType* [`,` ...] `)`
 
+## Performance considerations
+
 > [!IMPORTANT]
 >
-> Performance considerations:
+* Using the plugin without an *OutputSchema* can have severe performance implications in large datasets and should be avoided.
 >
-> * Using the plugin without an *OutputSchema* can have severe performance implications in large datasets and should be avoided.
->
-> * Using the wildcard `*` in the `OutputSchema` can lead to significant performance improvements, as the query engine doesn't have to retrieve the input schema.
-
-### Remarks
-
-If you don't specify the *OutputSchema*, the plugin output schema varies based on the input data values. Multiple executions of the plugin with different data inputs can produce different output schemas.
-
-Tabular schema rules apply to the input data. In particular:
-
-* An output column name can't be the same as an existing column in the tabular input *T*, unless it's the column to unpack (*Column*). Otherwise, the output includes two columns with the same name.
-
-All slot names, when prefixed by *OutputColumnPrefix*, must be valid entity names and follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
-
-* The plugin ignores null values.
+> * Using the wildcard `*` in the *OutputSchema* can lead to significant performance improvements, as the query engine doesn't have to retrieve the input schema.
 
 ## Returns
 
@@ -67,9 +55,21 @@ The `bag_unpack` plugin returns a table with as many records as its tabular inpu
   type is either the type of the slot, if all values of the same slot have the
   same type, or `dynamic`, if the values differ in type.
 
+## Remarks
+
+If you don't specify the *OutputSchema*, the plugin output schema varies based on the input data values. Multiple executions of the plugin with different data inputs can produce different output schemas.
+
+Tabular schema rules apply to the input data. In particular:
+
+* An output column name can't be the same as an existing column in the tabular input *T*, unless it's the column to unpack (*Column*). Otherwise, the output includes two columns with the same name.
+
+All slot names, when prefixed by *OutputColumnPrefix*, must be valid entity names and follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
+
+* The plugin ignores null values.
+
 ## Examples
 
-### Example: Expand a bag
+### Expand a bag
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -94,7 +94,7 @@ datatable(d:dynamic)
 |40 |Dave   |
 |30 |Jasmine|
 
-### Example: Expand a bag with `OutputColumnPrefix`
+### Expand a bag with `OutputColumnPrefix`
 
 Expand a bag to produce column names that begin with the prefix 'Property_'.
 
@@ -121,7 +121,7 @@ datatable(d:dynamic)
 |40          |Dave         |
 |30          |Jasmine      |
 
-### Example: Expand a bag with `columnsConflict`
+### Expand a bag with `columnsConflict`
 
 Expand a bag that resolves conflicts between existing columns and columns produced by the `bag_unpack()` operator.
 
@@ -171,7 +171,7 @@ datatable(Name:string, d:dynamic)
 |40 |Old_name |
 |30 |Old_name |
 
-### Example: Expand a bag with `ignoredProperties`
+### Expand a bag with `ignoredProperties`
 
 Expand a bag and ignore certain properties in the property bag.
 
@@ -199,9 +199,9 @@ datatable(d:dynamic)
 |Dave|
 |Jasmine|
 
-### Example: Expand a bag with an `OutputSchema`
+### Expand a bag with an *OutputSchema*
 
-Expand a bag and define the `OutputSchema` to evaluate various query optimizations.
+Expand a bag and define the *OutputSchema* to evaluate various query optimizations.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -226,9 +226,9 @@ datatable(d:dynamic)
 |Dave     |  40  |
 |Jasmine  |  30  |
 
-### Example: Expand a bag using a wildcard `*` in the `OutputSchema`
+### Expand a bag using a wildcard `*` in the *OutputSchema*
 
- To return all columns of the input table, use a wildcard `*` in the `OutputSchema`.
+ To return all columns of the input table, use a wildcard `*` in the *OutputSchema*.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -253,11 +253,11 @@ datatable(d:dynamic, Description: string)
 |Teacher|Dave|40|
 |Student|Jasmine|30|
 
-### Example: Performance comparison of expanding a bag
+### Performance comparison of expanding a bag
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
-#### No wildcard `*` in the `OutputSchema`
+#### No wildcard `*` in the *OutputSchema*
 
 This query uses 0.25 seconds of CPU and scans 8.92 MB of data.
 
@@ -282,7 +282,7 @@ StormEvents
 | Location | 0 | System.String | string |
 | sum_TotalDamages | 1 | System.Int64 | long |
 
-#### With wildcard `*` in the `OutputSchema`
+#### With wildcard `*` in the *OutputSchema*
 
 This query uses 0.0156 seconds of CPU and scans 2.97 MB of data.
 
