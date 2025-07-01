@@ -26,15 +26,35 @@ The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating e
 | *OutputColumnPrefix* | `string` | | A common prefix to add to all columns produced by the plugin. |
 | *columnsConflict* | `string` | | The direction for column conflict resolution. Valid values: <br />`error` - Query produces an error (default)<br />`replace_source` - Source column is replaced<br />`keep_source` - Source column is kept |
 | *ignoredProperties* | `dynamic` | | An optional set of bag properties to be ignored. } |
-| *OutputSchema* | | | The names and types for the expected columns of the `bag_unpack` plugin output. Specifying the expected schema optimizes query execution by not having to first run the actual query to explore the schema. For syntax information, see [Output schema syntax](#output-schema-syntax). |
+| *OutputSchema* | | | Specify the column names and types for the `bag_unpack` plugin output. For syntax information, see [Output schema syntax](#output-schema-syntax). |
 
 ### Output schema syntax
 
 `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`
 
-To add all columns of the input table to the plugin output, use a wildcard `*` as the first parameter, as follows:
+Use a use a wildcard `*` as the first parameter to include all columns of the source table in the output, as follows:
 
 `(` `*` `,` *ColumnName* `:` *ColumnType* [`,` ...] `)`
+
+> [!IMPORTANT]
+>
+> Performance considerations:
+>
+> * Using the plugin without an *OutputSchema* can have severe performance implications in large datasets and should be avoided.
+>
+> * Using the wildcard `*` in the `OutputSchema` can lead to significant performance improvements, as the query engine doesn't have to retrieve the input schema.
+
+### Remarks
+
+If you don't specify the *OutputSchema*, the plugin output schema varies based on the input data values. Multiple executions of the plugin with different data inputs can produce different output schemas.
+
+Tabular schema rules apply to the input data. In particular:
+
+* An output column name can't be the same as an existing column in the tabular input *T*, unless it's the column to unpack (*Column*). Otherwise, the output includes two columns with the same name.
+
+All slot names, when prefixed by *OutputColumnPrefix*, must be valid entity names and follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
+
+* The plugin ignores null values.
 
 ## Returns
 
@@ -47,20 +67,9 @@ The `bag_unpack` plugin returns a table with as many records as its tabular inpu
   type is either the type of the slot, if all values of the same slot have the
   same type, or `dynamic`, if the values differ in type.
 
-> [!NOTE]
-> * If the *OutputSchema* isn't specified, the plugin's output schema varies according to the input data values. Therefore, multiple executions of the plugin using different data inputs, may produce different output schema.
->
-> * The input data to the plugin must be such that the output schema follows all the rules for a tabular schema. In particular:
->
->   * An output column name can't be the same as an existing column in the tabular input *T*, unless it's the column to be unpacked (*Column*), since that will produce two columns with the same name.
->
->   * All slot names, when prefixed by *OutputColumnPrefix*, must be valid entity names and follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
->
-> * Null values are ignored.
-
 ## Examples
 
-The following example demonstrates how to expand a bag.
+### Example: Expand a bag
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -85,7 +94,9 @@ datatable(d:dynamic)
 |40 |Dave   |
 |30 |Jasmine|
 
-The following example demonstrates how to expand a bag and use the `OutputColumnPrefix` option to produce column names that begin with the prefix 'Property_'.
+### Example: Expand a bag with `OutputColumnPrefix`
+
+Expand a bag to produce column names that begin with the prefix 'Property_'.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -110,7 +121,9 @@ datatable(d:dynamic)
 |40          |Dave         |
 |30          |Jasmine      |
 
-The following example demonstrates how to expand a bag and use the `columnsConflict` option to resolve conflicts between existing columns and columns produced by the `bag_unpack()` operator.
+### Example: Expand a bag with `columnsConflict`
+
+Expand a bag that resolves conflicts between existing columns and columns produced by the `bag_unpack()` operator.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -158,8 +171,9 @@ datatable(Name:string, d:dynamic)
 |40 |Old_name |
 |30 |Old_name |
 
+### Example: Expand a bag with `ignoredProperties`
 
-The following example demonstrates how to expand a bag and use the `ignoredProperties` option to ignore certain properties in the property bag.
+Expand a bag and ignore certain properties in the property bag.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -185,7 +199,9 @@ datatable(d:dynamic)
 |Dave|
 |Jasmine|
 
-The following example demonstrates how to expand a bag and use the `OutputSchema` option to allow various optimizations to be evaluated before running the actual query.
+### Example: Expand a bag with an `OutputSchema`
+
+Expand a bag and define the `OutputSchema` to evaluate various query optimizations.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -210,7 +226,9 @@ datatable(d:dynamic)
 |Dave     |  40  |
 |Jasmine  |  30  |
 
-The following example demonstrates how to expand a bag and use the `OutputSchema` option to allow various optimizations to be evaluated before running the actual query. Use a wildcard `*` to return all columns of the input table.
+### Example: Expand a bag using a wildcard `*` in the `OutputSchema`
+
+ To return all columns of the input table, use a wildcard `*` in the `OutputSchema`.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -234,6 +252,70 @@ datatable(d:dynamic, Description: string)
 |Student|John|20|
 |Teacher|Dave|40|
 |Student|Jasmine|30|
+
+### Example: Performance comparison of expanding a bag
+
+[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+
+#### No wildcard `*` in the `OutputSchema`
+
+This query uses 0.25 seconds of CPU and scans 8.92 MB of data.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WNsQ7CMAxEd74iW1OJX%2BhE2djKXrnBhKiJXcVORREfT1sJNrbT6e69Tjmn84ykYg5vgzPEAopmAN8XmsCNttsmXUkJ8nI0jmNJJCemewxOm2pEnHrhkh1W9R9EiwohSr0rnop0Mxd2oIGpURbNgbz9NhtEdl144ZbslRViCwk8roxh%2BZ3XpUcV98AEH51zzT%2FKAAAA" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+StormEvents 
+| evaluate bag_unpack(StormSummary, columnsConflict='keep_source')
+| evaluate bag_unpack(Details) 
+| extend Location=tostring(Location)
+| summarize sum(TotalDamages) by Location
+| getschema
+```
+
+**Output**
+
+| ColumnName | ColumnOrdinal | DataType | ColumnType |
+|--|--|--|--|
+| Location | 0 | System.String | string |
+| sum_TotalDamages | 1 | System.Int64 | long |
+
+#### With wildcard `*` in the `OutputSchema`
+
+This query uses 0.0156 seconds of CPU and scans 2.97 MB of data.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOMQ7CMAxFd06RrUVC3KATZWMre%2BUGE0VN7Cp2qhZxeAgSqGyW3%2Fv275RTPM9IKmb3NDhDyKBoBnB9pgnsWHdF6XKMkNaDsRxyJDkx3YO32lQj4tQL52Sx2pcTiyLdzIUtqGdqlEWTJ1e3qOCDHL9kI19ZIbQQwaG8Awkh1NtdUeXTwD%2BwTP%2FUDOvv3wv5ySPz0QAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+StormEvents
+| evaluate bag_unpack(StormSummary, columnsConflict='keep_source')
+| extend Location=tostring(Details.Location)
+| extend TotalDamages=toreal(TotalDamages)
+| summarize sum(TotalDamages) by Location
+```
+
+**Output**
+
+The output shows the first 10 rows of the result set.
+
+| Location | sum_TotalDamages |
+|--|--|
+| ATLANTIC SOUTH | 0 |
+| FLORIDA | 379,455,260 |
+| GEORGIA | 1,190,448,750 |
+| MISSISSIPPI | 802,890,160 |
+| AMERICAN SAMOA | 520,000 |
+| KENTUCKY | 111,727,200 |
+| OHIO | 417,989,500 |
+| KANSAS | 738,830,000 |
+| MICHIGAN | 168,351,500 |
+| ALABAMA | 299,875,250 |
+| ... | ... |
 
 ## Related content
 
