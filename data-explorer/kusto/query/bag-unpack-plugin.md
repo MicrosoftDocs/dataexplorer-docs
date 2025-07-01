@@ -69,7 +69,7 @@ All slot names, when prefixed by *OutputColumnPrefix*, must be valid entity name
 
 ## Examples
 
-### Expand a bag
+#### Expand a bag
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -94,9 +94,7 @@ datatable(d:dynamic)
 |40 |Dave   |
 |30 |Jasmine|
 
-### Expand a bag with `OutputColumnPrefix`
-
-Expand a bag to produce column names that begin with the prefix 'Property_'.
+### Expand a bag with `OutputColumnPrefix` to add the prefix 'Property_'
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -121,9 +119,7 @@ datatable(d:dynamic)
 |40          |Dave         |
 |30          |Jasmine      |
 
-### Expand a bag with `columnsConflict`
-
-Expand a bag that resolves conflicts between existing columns and columns produced by the `bag_unpack()` operator.
+#### Expand a bag with `columnsConflict` to resolve column conflicts
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -171,9 +167,7 @@ datatable(Name:string, d:dynamic)
 |40 |Old_name |
 |30 |Old_name |
 
-### Expand a bag with `ignoredProperties`
-
-Expand a bag and ignore certain properties in the property bag.
+#### Expand a bag with `ignoredProperties` to ignore certain properties in the property bag.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -199,9 +193,7 @@ datatable(d:dynamic)
 |Dave|
 |Jasmine|
 
-### Expand a bag with an *OutputSchema*
-
-Expand a bag and define the *OutputSchema* to evaluate various query optimizations.
+#### Expand a bag with an *OutputSchema* to evaluate query optimization
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -226,9 +218,7 @@ datatable(d:dynamic)
 |Dave     |  40  |
 |Jasmine  |  30  |
 
-### Expand a bag using a wildcard `*` in the *OutputSchema*
-
- To return all columns of the input table, use a wildcard `*` in the *OutputSchema*.
+#### Expand a bag using a wildcard `*` in the *OutputSchema* to return all columns of the input table
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -253,13 +243,11 @@ datatable(d:dynamic, Description: string)
 |Teacher|Dave|40|
 |Student|Jasmine|30|
 
-### Performance comparison of expanding a bag
+#### Expand a bag and compare performance implications with and without an *OutputSchema*
 
 [!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
 
-#### No wildcard `*` in the *OutputSchema*
-
-This query uses 0.25 seconds of CPU and scans 8.92 MB of data.
+This query gets the input schema.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -282,7 +270,9 @@ StormEvents
 | Location | 0 | System.String | string |
 | sum_TotalDamages | 1 | System.Int64 | long |
 
-#### With wildcard `*` in the *OutputSchema*
+This query uses 0.25 seconds of CPU and scans 8.92 MB of data.
+
+XXXX
 
 This query uses 0.0156 seconds of CPU and scans 2.97 MB of data.
 
