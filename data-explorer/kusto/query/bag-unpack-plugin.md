@@ -3,7 +3,7 @@ title:  bag_unpack plugin
 description: Learn how to use the bag_unpack plugin to unpack a dynamic column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/21/2024
+ms.date: 07/01/2025
 ---
 # bag_unpack plugin
 

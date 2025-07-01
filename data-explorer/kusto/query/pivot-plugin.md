@@ -3,7 +3,7 @@ title:  pivot plugin
 description: Learn how to use the pivot plugin to rotate a table with specified columns and aggregates the remaining columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 07/01/2025
 ---
 # pivot plugin
 
