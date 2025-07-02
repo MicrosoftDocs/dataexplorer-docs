@@ -26,9 +26,7 @@ The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating e
 | *OutputColumnPrefix* | `string` | | A common prefix to add to all columns produced by the plugin. |
 | *columnsConflict* | `string` | | The direction for column conflict resolution. Valid values: <br />`error` - Query produces an error (default)<br />`replace_source` - Source column is replaced<br />`keep_source` - Source column is kept |
 | *ignoredProperties* | `dynamic` | | An optional set of bag properties to be ignored. } |
-| *OutputSchema* | | | Specify the column names and types for the `bag_unpack` plugin output. For syntax information, see [Output schema syntax](#output-schema-syntax). |
-
-* Using the wildcard `*` in the *OutputSchema* can lead to significant performance improvements,
+| *OutputSchema* | | | Specify the column names and types for the `bag_unpack` plugin output. For syntax information, see [Output schema syntax](#output-schema-syntax), and to understand the implications, see [Performance considerations](#performance-considerations). |
 
 ### Output schema syntax
 
@@ -40,40 +38,37 @@ Use a use a wildcard `*` as the first parameter to include all columns of the so
 
 ## Performance considerations
 
-Using the plugin without an *OutputSchema* can have severe performance implications in large datasets and should be avoided. Providing an *OutputSchema* allows the query engine to optimize the query execution, as it can determine the output schema without needing to analyze the input data. This is particularly beneficial when the input data is large or complex.
+Using the plugin without an *OutputSchema* can have severe performance implications in large datasets and should be avoided.
+
+Providing an *OutputSchema* allows the query engine to optimize the query execution, as it can determine the output schema without needing to parse and analyze the input data. This is beneficial when the input data is large or complex. See the [example](#examples) that compares performance implications of using the plugin with and without a defined *OutputSchema*.
 
 ## Returns
 
 The `bag_unpack` plugin returns a table with as many records as its tabular input (*T*). The schema of the table is the same as the schema of its tabular input with the following modifications:
 
 * The specified input column (*Column*) is removed.
+* The name of each column corresponds to the name of each slot, optionally prefixed by *OutputColumnPrefix*.
+* The type of each column is either the type of the slot, if all values of the same slot have the same type, or `dynamic`, if the values differ in type.
+* The schema is extended with as many columns as there are distinct slots in the top-level property bag values of *T*.
 
-* The schema is extended with as many columns as there are distinct slots in
-  the top-level property bag values of *T*.
-
-* If the output schema is specified, the plugin returns only the columns defined in the *OutputSchema*.
-
-* To include all columns of the source table in the output, as well as the columns defined in the *OutputSchema*, use a wildcard `*` in the *OutputSchema*. 
-
-* The name of each column corresponds to the name of each slot, optionally prefixed by *OutputColumnPrefix*. Its
-  type is either the type of the slot, if all values of the same slot have the
-  same type, or `dynamic`, if the values differ in type.
-
-## Remarks
-
-If you don't specify the *OutputSchema*, the plugin output schema varies based on the input data values. Multiple executions of the plugin with different data inputs can produce different output schemas.
+> [!NOTE]
+>
+> * If you don't specify the *OutputSchema*, the plugin output schema varies based on the input data values. Multiple executions of the plugin with different data inputs can produce different output schemas.
+> * If an *OutputSchema* is specified, the plugin returns only the columns defined in the [Output schema syntax](#output-schema-syntax), unless a wildcard `*` is used.
+> * To return all columns of the input data, and the columns defined in the *OutputSchema*, use a wildcard `*` in the *OutputSchema*.
 
 Tabular schema rules apply to the input data. In particular:
 
 * An output column name can't be the same as an existing column in the tabular input *T*, unless it's the column to unpack (*Column*). Otherwise, the output includes two columns with the same name.
-
 * All slot names, when prefixed by *OutputColumnPrefix*, must be valid entity names and follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
 
 The plugin ignores null values.
 
 ## Examples
 
-#### Expand a bag
+The examples in this section show how to use the syntax to help you get started.
+
+**Expand a bag**:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -98,7 +93,7 @@ datatable(d:dynamic)
 |40 |Dave   |
 |30 |Jasmine|
 
-### Expand a bag with `OutputColumnPrefix` to add the prefix 'Property_'
+**Expand a bag and use the `OutputColumnPrefix` option to produce column names with a prefix**:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -123,7 +118,7 @@ datatable(d:dynamic)
 |40          |Dave         |
 |30          |Jasmine      |
 
-#### Expand a bag with `columnsConflict` to resolve column conflicts
+**Expand a bag and use the `columnsConflict` option to resolve a column conflict between the dynamic column and the existing column**:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -171,7 +166,7 @@ datatable(Name:string, d:dynamic)
 |40 |Old_name |
 |30 |Old_name |
 
-#### Expand a bag with `ignoredProperties` to ignore certain properties in the property bag.
+**Expand a bag and use the `ignoredProperties` option to ignore 2 of the properties in the property bag**:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -197,7 +192,7 @@ datatable(d:dynamic)
 |Dave|
 |Jasmine|
 
-#### Expand a bag with an *OutputSchema* to evaluate query optimization
+**Expand a bag and use the *OutputSchema* option**:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -222,7 +217,7 @@ datatable(d:dynamic)
 |Dave     |  40  |
 |Jasmine  |  30  |
 
-#### Expand a bag using a wildcard `*` in the *OutputSchema* to return all columns of the input table
+**Expand a bag with an *OutputSchema* and use it with the  wildcard `*` option**:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -232,14 +227,16 @@ datatable(d:dynamic)
 ```kusto
 datatable(d:dynamic, Description: string)
 [
-    dynamic({"Name": "John", "Age":20}), "Student",
-    dynamic({"Name": "Dave", "Age":40}), "Teacher",
-    dynamic({"Name": "Jasmine", "Age":30}), "Student",
+    dynamic({"Name": "John", "Age":20, "height":180}), "Student",
+    dynamic({"Name": "Dave", "Age":40, "height":160}), "Teacher",
+    dynamic({"Name": "Jasmine", "Age":30, "height":172}), "Student",
 ]
 | evaluate bag_unpack(d) : (*, Name:string, Age:long)
 ```
 
 **Output**
+
+This query returns the original slot *Description* and the columns defined in the *OutputSchema*.
 
 |Description|Name|Age|
 |---|---|---|
@@ -247,69 +244,56 @@ datatable(d:dynamic, Description: string)
 |Teacher|Dave|40|
 |Student|Jasmine|30|
 
-#### Expand a bag and compare performance implications with and without an *OutputSchema*
+**Expand a bag with and without a defined *OutputSchema* to compare performance implications**:
 
-[!INCLUDE [help-cluster-note](../includes/help-cluster-note.md)]
+ This example uses a publicly available table in the [help cluster](https://dataexplorer.azure.com/clusters/help/).
 
-This query gets the input schema.
+In the *ContosoSales* database, there's a table called *SalesDynamic*. The table contains sales data and includes a dynamic column *Customer_Properties*.
+
+:::image type="content" source="media/plugin/salesdynamic-unpack-bag-plugin.png" alt-text="A screenshot of the SalesDynamic table with the customer properties column highlighted":::
+
+* The first query doesn't define an *OutputSchema*. The query takes **5.84** seconds of CPU and scans **36.39** MB of data.
+
+* The second query does provide an *OutputSchema*. The query takes **0.45** seconds of CPU and scans **19.31** MB of data. The query doesn't have to analyze the input table, saving on processing time.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WNsQ7CMAxEd74iW1OJX%2BhE2djKXrnBhKiJXcVORREfT1sJNrbT6e69Tjmn84ykYg5vgzPEAopmAN8XmsCNttsmXUkJ8nI0jmNJJCemewxOm2pEnHrhkh1W9R9EiwohSr0rnop0Mxd2oIGpURbNgbz9NhtEdl144ZbslRViCwk8roxh%2BZ3XpUcV98AEH51zzT%2FKAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAx2MwQmAMAwA%2F06Rp4Ir%2BBAdQOgAEiVI0bSSJkLF4a3%2B7uA4hwelMQdkv1YP0IWHoRIsuM0WTlz3erCkkUnmSeJJop5SA6VNxozibwL3Tbri9U89RwvawJJh%2BEhyC07L9QVtLQjnbQAAAA%3D%3D">Run the query</a>
 ::: moniker-end
 
 ```kusto
-StormEvents 
-| evaluate bag_unpack(StormSummary, columnsConflict='keep_source')
-| evaluate bag_unpack(Details) 
-| extend Location=tostring(Location)
-| summarize sum(TotalDamages) by Location
-| getschema
+SalesDynamic
+| evaluate bag_unpack(Customer_Properties) 
+| summarize Sales=sum(SalesAmount) by Country, State
+```
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAz2NQQrDMAwE732FjnbJCwI9BPcBBT8gKEEE09gOklxw6ePrlCa3HZad9biS3GvCGObLB%2BiFa0ElmHAZS9pwfhpXRHMkHh%2BcN2INJBZ6AHPtwOWSlGsvyiEtHXht45Nc0KOyTS4lRuTwJvD7662x%2BaUh7hoLUz2Ef9MXJDzTMp4AAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+SalesDynamic
+| evaluate bag_unpack(Customer_Properties) :  (*, Country:string, State:string, City:string)
+| summarize Sales=sum(SalesAmount) by Country, State
 ```
 
 **Output**
 
-| ColumnName | ColumnOrdinal | DataType | ColumnType |
-|--|--|--|--|
-| Location | 0 | System.String | string |
-| sum_TotalDamages | 1 | System.Int64 | long |
+The output is the same for both queries. The first 10 rows of the output are shown below.
 
-This query uses 0.25 seconds of CPU and scans 8.92 MB of data.
-
-XXXX
-
-This query uses 0.0156 seconds of CPU and scans 2.97 MB of data.
-
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOMQ7CMAxFd06RrUVC3KATZWMre%2BUGE0VN7Cp2qhZxeAgSqGyW3%2Fv275RTPM9IKmb3NDhDyKBoBnB9pgnsWHdF6XKMkNaDsRxyJDkx3YO32lQj4tQL52Sx2pcTiyLdzIUtqGdqlEWTJ1e3qOCDHL9kI19ZIbQQwaG8Awkh1NtdUeXTwD%2BwTP%2FUDOvv3wv5ySPz0QAAAA%3D%3D" target="_blank">Run the query</a>
-::: moniker-end
-
-```kusto
-StormEvents
-| evaluate bag_unpack(StormSummary, columnsConflict='keep_source')
-| extend Location=tostring(Details.Location)
-| extend TotalDamages=toreal(TotalDamages)
-| summarize sum(TotalDamages) by Location
-```
-
-**Output**
-
-The output shows the first 10 rows of the result set.
-
-| Location | sum_TotalDamages |
-|--|--|
-| ATLANTIC SOUTH | 0 |
-| FLORIDA | 379,455,260 |
-| GEORGIA | 1,190,448,750 |
-| MISSISSIPPI | 802,890,160 |
-| AMERICAN SAMOA | 520,000 |
-| KENTUCKY | 111,727,200 |
-| OHIO | 417,989,500 |
-| KANSAS | 738,830,000 |
-| MICHIGAN | 168,351,500 |
-| ALABAMA | 299,875,250 |
-| ... | ... |
+| Canada | British Columbia | 56,101,083 |
+|--|--|--|
+| United Kingdom | England | 77,288,747 |
+| Australia | Victoria | 31,242,423 |
+| Australia | Queensland | 27,617,822 |
+| Australia | South Australia | 8,530,537 |
+| Australia | New South Wales | 54,765,786 |
+| Australia | Tasmania | 3,704,648 |
+| Canada | Alberta | 375,061 |
+| Canada | Ontario | 38,282 |
+| United States | Washington | 80,544,870 |
+| ... | ... | ... |
 
 ## Related content
 
