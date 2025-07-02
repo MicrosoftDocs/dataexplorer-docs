@@ -28,6 +28,8 @@ The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating e
 | *ignoredProperties* | `dynamic` | | An optional set of bag properties to be ignored. } |
 | *OutputSchema* | | | Specify the column names and types for the `bag_unpack` plugin output. For syntax information, see [Output schema syntax](#output-schema-syntax). |
 
+* Using the wildcard `*` in the *OutputSchema* can lead to significant performance improvements,
+
 ### Output schema syntax
 
 `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`
@@ -38,18 +40,22 @@ Use a use a wildcard `*` as the first parameter to include all columns of the so
 
 ## Performance considerations
 
-* Using the plugin without an *OutputSchema* can have severe performance implications in large datasets and should be avoided.
-
-* Using the wildcard `*` in the *OutputSchema* can lead to significant performance improvements, as the query engine doesn't have to retrieve the input schema.
+Using the plugin without an *OutputSchema* can have severe performance implications in large datasets and should be avoided. Providing an *OutputSchema* allows the query engine to optimize the query execution, as it can determine the output schema without needing to analyze the input data. This is particularly beneficial when the input data is large or complex.
 
 ## Returns
 
 The `bag_unpack` plugin returns a table with as many records as its tabular input (*T*). The schema of the table is the same as the schema of its tabular input with the following modifications:
 
 * The specified input column (*Column*) is removed.
+
 * The schema is extended with as many columns as there are distinct slots in
-  the top-level property bag values of *T*. The name of each column corresponds
-  to the name of each slot, optionally prefixed by *OutputColumnPrefix*. Its
+  the top-level property bag values of *T*.
+
+* If the output schema is specified, the plugin returns only the columns defined in the *OutputSchema*.
+
+* To include all columns of the source table in the output, as well as the columns defined in the *OutputSchema*, use a wildcard `*` in the *OutputSchema*. 
+
+* The name of each column corresponds to the name of each slot, optionally prefixed by *OutputColumnPrefix*. Its
   type is either the type of the slot, if all values of the same slot have the
   same type, or `dynamic`, if the values differ in type.
 
