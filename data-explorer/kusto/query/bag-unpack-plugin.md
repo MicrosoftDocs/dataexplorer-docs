@@ -217,7 +217,9 @@ datatable(d:dynamic)
 |Dave     |  40  |
 |Jasmine  |  30  |
 
-**Expand a bag with an *OutputSchema* and use it with the  wildcard `*` option**:
+**Expand a bag with an *OutputSchema* and use the wildcard `*` option**:
+
+This query returns the original slot *Description* and the columns defined in the *OutputSchema*.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -236,8 +238,6 @@ datatable(d:dynamic, Description: string)
 
 **Output**
 
-This query returns the original slot *Description* and the columns defined in the *OutputSchema*.
-
 |Description|Name|Age|
 |---|---|---|
 |Student|John|20|
@@ -246,37 +246,35 @@ This query returns the original slot *Description* and the columns defined in th
 
 **Expand a bag with and without a defined *OutputSchema* to compare performance implications**:
 
- This example uses a publicly available table in the [help cluster](https://dataexplorer.azure.com/clusters/help/).
-
-In the *ContosoSales* database, there's a table called *SalesDynamic*. The table contains sales data and includes a dynamic column *Customer_Properties*.
+ This example uses a publicly available table in the [help cluster](https://dataexplorer.azure.com/clusters/help/). In the *ContosoSales* database, there's a table called *SalesDynamic*. The table contains sales data and includes a dynamic column named **Customer_Properties**.
 
 :::image type="content" source="media/plugin/salesdynamic-unpack-bag-plugin.png" alt-text="A screenshot of the SalesDynamic table with the customer properties column highlighted":::
 
-* The first query doesn't define an *OutputSchema*. The query takes **5.84** seconds of CPU and scans **36.39** MB of data.
+* **Example with no output schema**: The first query doesn't define an *OutputSchema*. The query takes **5.84** seconds of CPU and scans **36.39** MB of data.
 
-* The second query does provide an *OutputSchema*. The query takes **0.45** seconds of CPU and scans **19.31** MB of data. The query doesn't have to analyze the input table, saving on processing time.
+    :::moniker range="azure-data-explorer"
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAx2MwQmAMAwA%2F06Rp4Ir%2BBAdQOgAEiVI0bSSJkLF4a3%2B7uA4hwelMQdkv1YP0IWHoRIsuM0WTlz3erCkkUnmSeJJop5SA6VNxozibwL3Tbri9U89RwvawJJh%2BEhyC07L9QVtLQjnbQAAAA%3D%3D">Run the query</a>
+    ::: moniker-end
 
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAx2MwQmAMAwA%2F06Rp4Ir%2BBAdQOgAEiVI0bSSJkLF4a3%2B7uA4hwelMQdkv1YP0IWHoRIsuM0WTlz3erCkkUnmSeJJop5SA6VNxozibwL3Tbri9U89RwvawJJh%2BEhyC07L9QVtLQjnbQAAAA%3D%3D">Run the query</a>
-::: moniker-end
+    ```kusto
+    SalesDynamic
+    | evaluate bag_unpack(Customer_Properties) 
+    | summarize Sales=sum(SalesAmount) by Country, State
+    ```
 
-```kusto
-SalesDynamic
-| evaluate bag_unpack(Customer_Properties) 
-| summarize Sales=sum(SalesAmount) by Country, State
-```
+* **Example with output schema**: The second query does provide an *OutputSchema*. The query takes **0.45** seconds of CPU and scans **19.31** MB of data. The query doesn't have to analyze the input table, saving on processing time.
 
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAz2NQQrDMAwE732FjnbJCwI9BPcBBT8gKEEE09gOklxw6ePrlCa3HZad9biS3GvCGObLB%2BiFa0ElmHAZS9pwfhpXRHMkHh%2BcN2INJBZ6AHPtwOWSlGsvyiEtHXht45Nc0KOyTS4lRuTwJvD7662x%2BaUh7hoLUz2Ef9MXJDzTMp4AAAA%3D" target="_blank">Run the query</a>
-::: moniker-end
+    :::moniker range="azure-data-explorer"
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAAz2NQQrDMAwE732FjnbJCwI9BPcBBT8gKEEE09gOklxw6ePrlCa3HZad9biS3GvCGObLB%2BiFa0ElmHAZS9pwfhpXRHMkHh%2BcN2INJBZ6AHPtwOWSlGsvyiEtHXht45Nc0KOyTS4lRuTwJvD7662x%2BaUh7hoLUz2Ef9MXJDzTMp4AAAA%3D" target="_blank">Run the query</a>
+    ::: moniker-end
 
-```kusto
-SalesDynamic
-| evaluate bag_unpack(Customer_Properties) :  (*, Country:string, State:string, City:string)
-| summarize Sales=sum(SalesAmount) by Country, State
-```
+    ```kusto
+    SalesDynamic
+    | evaluate bag_unpack(Customer_Properties) :  (*, Country:string, State:string, City:string)
+    | summarize Sales=sum(SalesAmount) by Country, State
+    ```
 
 **Output**
 
