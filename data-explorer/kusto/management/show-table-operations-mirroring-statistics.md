@@ -29,7 +29,7 @@ Displays [mirroring policy](mirroring-policy.md) operations statistics for a tab
 |-----|-----|-----|
 |TableName | `string` | The name of the table. |
 |IsEnabled | `bool` |Indicates whether or not the mirroring policy is enabled. |
-|ManagedIdentityIdentifier |`string`  The identifier of the managed identity |
+|ManagedIdentityIdentifier |`string` | The identifier of the managed identity |
 |IsExportRunning | `bool` | Indicates whether or not the mirroring policy is running. |
 |LastExportStartTime | `datetime`| The start time of the last export. |
 |LastExportResult | `string` | The status of the last export result. |
