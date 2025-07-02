@@ -35,6 +35,8 @@ Pivot returns the rotated table with specified columns (*column1*, *column2*, ..
 
 ## Examples
 
+The examples in this section show how to use the syntax to help you get started.
+
 ### Pivot by a column
 
 For each EventType and State starting with 'AL', count the number of events of this type in this state.

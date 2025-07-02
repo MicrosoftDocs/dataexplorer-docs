@@ -40,7 +40,7 @@ Use a use a wildcard `*` as the first parameter to include all columns of the so
 
 Using the plugin without an *OutputSchema* can have severe performance implications in large datasets and should be avoided.
 
-Providing an *OutputSchema* allows the query engine to optimize the query execution, as it can determine the output schema without needing to parse and analyze the input data. This is beneficial when the input data is large or complex. See the [example](#examples) that compares performance implications of using the plugin with and without a defined *OutputSchema*.
+Providing an *OutputSchema* allows the query engine to optimize the query execution, as it can determine the output schema without needing to parse and analyze the input data. This is beneficial when the input data is large or complex. See the [Examples with performance implications](#examples-with-performance-implications) of using the plugin with and without a defined *OutputSchema*.
 
 ## Returns
 
@@ -243,6 +243,8 @@ datatable(d:dynamic, Description: string)
 |Student|John|20|
 |Teacher|Dave|40|
 |Student|Jasmine|30|
+
+### Examples with performance implications
 
 **Expand a bag with and without a defined *OutputSchema* to compare performance implications**:
 
