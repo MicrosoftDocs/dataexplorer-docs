@@ -15,7 +15,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 | Article title | Description |
 |--|--|
-| - [[Graph model overview](kusto/management/graph-model/graph-model-overview?view=azure-data-explorer&preserve-view=true)](kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) <br/>- [Persistent graphs overview (preview)](kusto/management/graph/graph-persistent-overview?view=azure-data-explorer&preserve-view=true) | New articles. New persistent graph models and graph snapshots, including new operators. |
+| - [Graph model overview](kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) <br/>- [Persistent graphs overview (preview)](kusto/management/graph/graph-persistent-overview?view=azure-data-explorer&preserve-view=true) | New articles. New persistent graph models and graph snapshots, including new operators. |
 
 **Query**
 
