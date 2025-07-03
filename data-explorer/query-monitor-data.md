@@ -17,7 +17,7 @@ The Azure Data Explorer cross-service queries flow:
 :::image type="content" source="media/query-monitor-data/query-monitor-workflow.png" alt-text="Diagram showing the Azure Data Explorer cross-service query flow."  lightbox="media/query-monitor-data/query-monitor-workflow.png":::
 
 > [!IMPORTANT]
-> Starting July 1, 2025, querying log data and events requires TLS 1.2 or higher when using [query API endpoints for Log Analytics or Application Insights](../fundamentals/azure-monitor-network-access.md#logs-query-api-endpoints). For more information, see [Secure data in transit](../fundamentals/best-practices-security.md#secure-logs-data-in-transit).
+> Starting July 1, 2025, querying log data and events requires TLS 1.2 or higher when using [query API endpoints for Log Analytics or Application Insights](/azure/azure-monitor/fundamentals/azure-monitor-network-access#logs-query-api-endpoints). For more information, see [Secure data in transit](/azure/azure-monitor/fundamentals/best-practices-security#secure-logs-data-in-transit).
 
 ## Add a Log Analytics workspace/Application Insights resource to Azure Data Explorer client tools
 
