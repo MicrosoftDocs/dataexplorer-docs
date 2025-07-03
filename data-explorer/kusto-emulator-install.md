@@ -36,8 +36,12 @@ This article focuses on how to install the Linux Docker container on a Windows c
     > [!IMPORTANT]
     > Linux distros only support Linux container images.
 
-- 2 gigabytes (GB) of RAM minimum; we recommend using 4 GB or more
+- A processor that supports SSE4.2/AVX2 instruction sets
+- At least 2 GB of RAM (4 GB or more recommended)
 - Docker Client for [Linux](https://docs.docker.com/desktop/install/linux-install/) or [Windows](https://docs.docker.com/desktop/windows/install/)
+
+    > [!IMPORTANT]
+    > ARM processors are not supported.
 
 ## Install the Kusto emulator
 
