@@ -3,7 +3,7 @@ title:  pivot plugin
 description: Learn how to use the pivot plugin to rotate a table with specified columns and aggregates the remaining columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/01/2025
+ms.date: 08/11/2024
 ---
 # pivot plugin
 
@@ -34,8 +34,6 @@ Rotates a table by turning the unique values from one column in the input table 
 Pivot returns the rotated table with specified columns (*column1*, *column2*, ...) plus all unique values of the pivot columns. Each cell for the pivoted columns will contain the aggregate function computation.
 
 ## Examples
-
-The examples in this section show how to use the syntax to help you get started.
 
 ### Pivot by a column
 
