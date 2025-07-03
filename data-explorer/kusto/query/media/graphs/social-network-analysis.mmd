@@ -1,0 +1,20 @@
+---
+config:
+  look: neo
+  theme: default
+---
+flowchart LR
+    You((You)) -- "knows" --> Friend((Friend))
+    Friend -- "knows" --> FriendOfFriend((Friend of a friend))
+    
+    subgraph "Contoso organization"
+        FriendOfFriend
+    end
+    
+    classDef you fill:#4a86e8,stroke:#333,color:white
+    classDef friend fill:white,stroke:#333
+    classDef fof fill:#e67c37,stroke:#333,color:white
+    
+    class You you
+    class Friend friend
+    class FriendOfFriend fof

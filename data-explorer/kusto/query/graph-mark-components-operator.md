@@ -3,7 +3,7 @@ title: graph-mark-components operator (preview)
 description: Learn how to use the graph-mark-components operator to find and mark all connected components of a graph.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 02/17/2025
+ms.date: 05/25/2025
 ---
 # graph-mark-components operator (preview)
 
@@ -31,10 +31,6 @@ The `graph-mark-components` operator finds all connected components of a graph a
 The `graph-mark-components` operator returns a *graph* result, where each node has a component identifier in the *ComponentId* property. The identifier is a zero-based consecutive index of the components. Each component index is chosen arbitrarily and might not be consistent across runs.
 
 ## Examples
-
-The examples in this section show how to use the syntax to help you get started.
-
-### Find families by their relationships
 
 The following example creates a graph from a set of child-parent pairs and identifies connected components using a `family` identifier.
 
@@ -78,8 +74,6 @@ ChildOf
 |Mallory|1|
 |Kirk|1|
 
-### Find a greatest common ancestor for each family
-
 The following example uses the connected component `family` identifier and the `graph-match` operator to identify the greatest ancestor of each family in a set of child-parent data.
 
 :::moniker range="azure-data-explorer"
@@ -118,7 +112,7 @@ ChildOf
 
 ## Related content
 
-* [Best practices for Kusto Query Language (KQL) graph semantics](graph-best-practices.md)
+* [Graph best practices](graph-best-practices.md)
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
 * [graph-match operator](graph-match-operator.md)

@@ -11,20 +11,17 @@ ms.date: 08/11/2024
 
 The `graph-to-table` operator exports nodes or edges from a graph to tables.
 
-> [!NOTE]
-> This operator is used in conjunction with the [make-graph operator](make-graph-operator.md).
-
 ## Syntax
 
-#### Nodes
+### Nodes
 
 *G* `|` `graph-to-table` `nodes` [ `with_node_id=`*ColumnName* ]
 
-#### Edges
+### Edges
 
 *G* `|` `graph-to-table` `edges` [ `with_source_id=`*ColumnName* ] [ `with_target_id=`*ColumnName* ] [ `as` *TableName* ]
 
-#### Nodes and edges
+### Nodes and edges
 
 *G* `|` `graph-to-table` `nodes` `as` *NodesTableName* [ `with_node_id=`*ColumnName* ]`,` `edges` `as` *EdgesTableName* [ `with_source_id=`*ColumnName* ] [ `with_target_id=`*ColumnName* ]
 
@@ -39,25 +36,21 @@ The `graph-to-table` operator exports nodes or edges from a graph to tables.
 
 ## Returns
 
-#### Nodes
+### Nodes
 
 The `graph-to-table` operator returns a tabular result, in which each row corresponds to a node in the source graph. The returned columns are the node's properties. When `with_node_id` is provided, the node hash column is of `long` type.
 
-#### Edges
+### Edges
 
 The `graph-to-table` operator returns a tabular result, in which each row corresponds to an edge in the source graph. The returned columns are the node's properties. When `with_source_id` or `with_target_id` are provided, the node hash column is of `long` type.
 
-#### Nodes and edges
+### Nodes and edges
 
 The `graph-to-table` operator returns two tabular results, matching the previous descriptions.  
 
 ## Examples
 
-The following examples use the `make-graph` operator to build a graph from edges and nodes tables. The nodes represent people and systems, and the edges are different relations between nodes. Then, each example shows a different usage of `graph-to-table`.
-
-### Get edges
-
-In this example, the `graph-to-table` operator exports the edges from a graph to a table. The `with_source_id` and `with_target_id` parameters export the node hash for source and target nodes of each edge.
+The following example denonstrates how the `graph-to-table` operator exports the edges from a graph to a table. The `with_source_id` and `with_target_id` parameters export the node hash for source and target nodes of each edge.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -100,7 +93,7 @@ edges
 
 ### Get nodes
 
-In this example, the `graph-to-table` operator exports the nodes from a graph to a table. The `with_node_id` parameter exports the node hash.
+The following example shows how the `graph-to-table` operator exports the nodes from a graph to a table. The `with_node_id` parameter exports the node hash.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -139,9 +132,7 @@ edges
 |2533909231875758225|Trent|System|99|
 |3855580634910899594|Mallory|||
 
-### Get nodes and edges
-
-In this example, the `graph-to-table` operator exports the nodes and edges from a graph to a table.
+The following example uses the `graph-to-table` operator to export the nodes and edges from a graph to a table.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

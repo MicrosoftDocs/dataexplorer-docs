@@ -79,7 +79,7 @@ items:
                 href: cross-tenant-query-and-commands.md
           - name: Isolated compute
             href: isolated-compute.md
-          - name: Network isolation (VNet)
+          - name: Network security
             items:
               - name: Network security overview
                 href: security-network-overview.md
@@ -96,19 +96,8 @@ items:
                     displayName: restrict, prevent, limit, IP addresses, allowlist, whitelist, VNET, private endpoint, virtual network
                   - name: Troubleshoot private endpoints
                     href: security-network-private-endpoint-troubleshoot.md
-              - name: Virtual network injection
-                items:
-                  - name: Migrate VNet injected cluster to private endpoints
-                    href: security-network-migrate-vnet-to-private-endpoint.md
-                  - name: Create a cluster in your VNet - Portal
-                    href: vnet-create-cluster-portal.md
-                  - name: Deploy your cluster to your VNet
-                    href: vnet-deployment.md
-                  - name: Create a private or service endpoint to resources used by data connections
-                    displayName: VNet, private endpoint, Azure Storage, event hub
-                    href: vnet-endpoint-storage-event-hub.md
-                  - name: Troubleshoot VNet cluster creation, connectivity, and operation
-                    href: vnet-deploy-troubleshoot.md
+              - name: Migrate VNet injected cluster to private endpoints
+                href: security-network-migrate-vnet-to-private-endpoint.md
               - name: Restrict outbound requests
                 href: security-network-restrict-outbound-access.md
           - name: Encryption
@@ -315,6 +304,8 @@ items:
             href: add-query-visualization.md
           - name: Customize settings in the web UI
             href: web-customize-settings.md
+          - name: Access the web UI anywhere
+            href: web-sync.md
           - name: Explore the sample gallery
             href: web-ui-samples-query.md
           - name: Explore the results grid
@@ -369,14 +360,6 @@ items:
             href: python-query-data.md
           - name: Debug Kusto Query Language inline Python
             href: debug-inline-python.md
-      - name: Graph analysis
-        items:
-          - name: Graph analysis overview
-            href: graph-overview.md
-          - name: Graph analysis scenarios
-            href: graph-scenarios.md
-          - name: Best practices for graph analysis
-            href: graph-best-practices.md
   - name: Visualize data
     items:
       - name: Visualization integrations overview

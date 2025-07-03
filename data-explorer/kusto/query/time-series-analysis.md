@@ -146,7 +146,11 @@ demo_series3
 
 :::image type="content" source="media/time-series-analysis/time-series-seasonality.png" alt-text="Time series seasonality.":::
 
-- Use [series_periods_detect()](series-periods-detect-function.md) to automatically detect the periods in the time series.
+- Use [series_periods_detect()](series-periods-detect-function.md) to automatically detect the periods in the time series, where:
+  - `num`: the time series to analyze
+  - `0.`: the minimum period length in days (0 means no minimum)
+  - `14d/2h`: the maximum period length in days, which is 14 days divided into 2-hour bins
+  - `2`: the number of periods to detect
 - Use [series_periods_validate()](series-periods-validate-function.md) if we know that a metric should have specific distinct period(s) and we want to verify that they exist.
 
 > [!NOTE]

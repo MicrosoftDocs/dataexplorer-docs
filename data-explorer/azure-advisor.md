@@ -138,7 +138,6 @@ Reliability recommendations include the following:
 
 * [Cluster uses subnet without delegation](#cluster-uses-subnet-without-delegation)
 * [Cluster uses subnet with invalid IP configuration](#cluster-uses-subnet-with-invalid-ip-configuration)
-* [Cluster failed to install or resume due to virtual network issues](#cluster-failed-to-install-or-resume-due-to-virtual-network-issues)
 
 #### Cluster uses subnet without delegation
 
@@ -147,10 +146,6 @@ The strong recommendation is given to a virtual network cluster that uses a subn
 #### Cluster uses subnet with invalid IP configuration
 
 The recommendation is given to a virtual network cluster where the subnet is also used by other services. The recommendation is to remove all other services from the subnet and only use it for your cluster.
-
-#### Cluster failed to install or resume due to virtual network issues
-
-The recommendation is given to a cluster that failed to install or resume due to virtual network issues. The recommendation is to use the [virtual network troubleshooting guide](vnet-deploy-troubleshoot.md) to resolve the issue.
 
 ## Related content
 

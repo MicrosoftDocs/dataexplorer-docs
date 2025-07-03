@@ -9,7 +9,7 @@ ms.date: 08/11/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Calculates the polygon that represents the S2 Cell rectangular area. 
+Calculates the polygon that represents the S2 Cell rectangular area.
 
 Read more about [S2 Cells](http://s2geometry.io/devguide/s2cell_hierarchy).
 
@@ -33,6 +33,8 @@ Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynam
 > S2 Cell edges are spherical geodesics.
 
 ## Examples
+
+The following example calculates the polygon that represents the S2 Cell rectangular area.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

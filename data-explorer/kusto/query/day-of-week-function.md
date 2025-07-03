@@ -89,4 +89,8 @@ print Timespan = dow, Integer = toint(dow/1d)
 
 ## Related content
 
-[The timespan data type](scalar-data-types/timespan.md)
+* [The timespan data type](scalar-data-types/timespan.md)
+* [startofweek function](./startofweek-function.md)
+* [endofweek function](./endofweek-function.md)
+* [week_of_year function](./week-of-year-function.md)
+* [ago function](./ago-function.md)

@@ -1,0 +1,19 @@
+---
+config:
+  look: neo
+  theme: default
+---
+flowchart TD
+    Start([Which graph approach should I use?]) --> Size{Graph size > 10M nodes/edges?}
+    
+    Size -->|Yes| Persistent[🏛️ Use Persistent Graphs]
+    Size -->|No| Teams{Multiple teams or<br/>repeated analysis?}
+    
+    Teams -->|Yes| Persistent
+    Teams -->|No| Transient[⚡ Use Transient Graphs]
+    
+    style Start fill:#e1f5fe,stroke:#0277bd,color:#000
+    style Persistent fill:#c8e6c9,stroke:#2e7d32,color:#000
+    style Transient fill:#fff3e0,stroke:#ef6c00,color:#000
+    style Size fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style Teams fill:#f3e5f5,stroke:#7b1fa2,color:#000
