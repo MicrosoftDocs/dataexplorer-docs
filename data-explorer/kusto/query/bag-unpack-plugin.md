@@ -250,7 +250,7 @@ datatable(d:dynamic, Description: string)
 
  This example uses a publicly available table in the [help cluster](https://dataexplorer.azure.com/clusters/help/). In the *ContosoSales* database, there's a table called *SalesDynamic*. The table contains sales data and includes a dynamic column named **Customer_Properties**.
 
-:::image type="content" source="media/plugin/sample-table-to-unpack-bag.png" alt-text="Screenshot of the SalesDynamic table with the customer properties column highlighted":::
+:::image type="content" source="media/plugin/sample-table-to-unpack-bag.png" alt-text="Screenshot of the SalesDynamic table with the customer properties column highlighted.":::
 
 * **Example with no output schema**: The first query doesn't define an *OutputSchema*. The query takes **5.84** seconds of CPU and scans **36.39** MB of data.
 
