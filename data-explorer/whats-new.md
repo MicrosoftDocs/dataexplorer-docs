@@ -3,13 +3,19 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/02/2025
+ms.date: 07/03/2025
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and updated content in the Azure Data Explorer documentation.
 
 ## June 2025
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| - [Graph model overview](kusto/management/graph-model/graph-model-overview.md) <br/>- Persistent graphs overview (preview) | New articles. New persistent graph models and graph snapshots, including new operators. |
 
 **Data Connectors**
 
@@ -38,7 +44,6 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 | Article title | Description |
 |--|--|
-| - [Graph model overview](kusto/management/graph-model/graph-model-overview.md) <br/>- Persistent graphs overview (preview) | New articles. New persistent graph models and graph snapshots, including new operators. |
 | - .show external table details | New article. Learn how to use the `.show external table details` command to show details of the specified external tables in the database. |
 | - [.alter-merge table policy mirroring command](/kusto/management/alter-merge-mirroring-policy-command?view=microsoft-fabric) | Updated articles.  Refreshed with clearer content. |
 | - .show database operations mirroring-statistics <br/> - .show table operations mirroring-statistics | New articles. Learn how to use the `.show database operations mirroring statistics` and the `.show table operations mirroring-statistics` command to check the mirroring policy operations. |
