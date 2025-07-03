@@ -3,7 +3,7 @@ title: "Quickstart: Create an Azure Data Explorer cluster and database"
 description: In this quickstart, you learn how to create an Azure Data Explorer cluster and database.
 ms.reviewer: mblythe
 ms.topic: quickstart
-ms.date: 07/02/2023
+ms.date: 06/05/2025
 ms.custom: mode-portal
 adobe-target: true
 
@@ -69,7 +69,7 @@ Create an Azure Data Explorer cluster with a defined set of compute and storage 
     | Region | *West US* or *West US 2* | Select *West US* or *West US 2* (if using availability zones) for this quickstart. For a production system, select the region that best meets your needs.
     | Workload | *Dev/Test* | Select *Dev/Test* for this quickstart. For a production system, select the specification that best meets your needs.
     | Compute specifications | *Dev(No SLA)_Standard_E2a_v4* | Select *Dev(No SLA)_Standard_E2a_v4* for this quickstart. For a production system, select the specification that best meets your needs.
-    | Availability zones | On | Turning on this feature distributes the cluster storage and compute resources across multiple physical zones within a region for added protection and availability. By default, this feature is turned on if zones are supported in the region. If fewer than 3 zones are available for the compute instances, the portal displays the number of supported zones. Deployment to availability zones is possible when creating the cluster or [can be migrated later](migrate-cluster-to-multiple-availability-zone.md). Read more about [Azure Availability Zones](/azure/availability-zones/az-overview).|
+    | Availability zones | On | Turning on this feature distributes the cluster storage and compute resources across multiple physical zones within a region for added protection and availability. By default, this feature is turned on if zones are supported in the region. If fewer than three zones are available for the compute instances, the portal displays the number of supported zones. Deployment to availability zones is possible when creating the cluster or [can be migrated later](migrate-cluster-to-multiple-availability-zone.md). Read more about [Azure Availability Zones](/azure/availability-zones/az-overview).|
 
 1. Select **Review + create** to review your cluster details, and on the next screen select **Create** to provision the cluster. Provisioning typically takes about 10 minutes.
 
@@ -120,7 +120,7 @@ To create a database in your full cluster:
     |---|---|---|
     | Admin | *Default selected* | The admin field is disabled. New admins can be added after database creation. |
     | Database name | *TestDatabase* | The name of database to create. The name must be unique within the cluster. |
-    | Retention period | *365* | The number of days that data is guaranteed to be kept available for querying. The period is measured from the time data is ingested. |
+    | Retention period | *365* | The number of days that data is available for querying. The period is measured from the time data is ingested. |
     | Cache period | *31* | The number of days to keep frequently queried data available in SSD storage or RAM to optimize querying. |
 
     :::image type="content" source="media/create-cluster-and-database/create-test-database.png" alt-text="Create database form." lightbox="media/create-cluster-and-database/create-test-database.png":::
@@ -170,7 +170,7 @@ You can stop and restart a cluster depending on business needs. Stopping the clu
     :::image type="content" source="media/create-cluster-and-database/stop-button.png" alt-text="Screenshot of the Azure portal and cluster stop button." lightbox="media/create-cluster-and-database/stop-button.png":::
 
     > [!NOTE]
-    > When the cluster is stopped, data is not available for queries, and you can't ingest new data.
+    > When the cluster is stopped, data isn't available for queries, and you can't ingest new data.
 
 1. To restart the cluster, at the top of the **Overview** tab, select **Start**.
 

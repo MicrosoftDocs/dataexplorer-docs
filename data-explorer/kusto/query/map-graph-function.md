@@ -16,7 +16,7 @@ The `map()` graph function calculates an expression for each *edge* or *inner no
 
 ## Syntax
 
-`map``(`*edge*`,` *expression*`)`
+`map`(`*edge*`,` *expression*`)`
 
 `map(inner_nodes(`*edge*`),` *expression*`)`
 

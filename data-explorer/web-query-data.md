@@ -1,20 +1,22 @@
 ---
-title: 'Quickstart: Query sample data in the Azure Data Explorer web UI'
-description: In this quickstart, you'll learn how to query and share sample data in the Azure Data Explorer web UI.
+title: 'Quickstart: Learn How to Query Sample Data in the Azure Data Explorer Web UI'
+description: In this quickstart, you learn how to query and share sample data in the Azure Data Explorer web UI.
 ms.reviewer: olgolden
 ms.topic: quickstart
-ms.date: 02/01/2021
+ms.date: 06/03/2025
 ms.custom: mode-portal
 
 #Customer intent: As a user of Azure Data Explorer, I want to query data in the Web UI and share data. This will allow me to understand my data and share analysis with colleagues.
 ---
-# Quickstart: Query sample data
+# Quickstart: learn how to Query sample data
 
-Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer web UI](https://dataexplorer.azure.com). In this quickstart, you'll learn how to query data in the stand-alone Azure Data Explorer web UI.
-
+In this Quickstart, you'll learn how to query data in the stand-alone Azure Data Explorer web UI.
+Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) commands and queries. The web experience is available in the Azure portal and as a stand-alone web application, the [Azure Data Explorer web UI](https://dataexplorer.azure.com).
 In the Azure Data Explorer web UI, the query editor provides suggestions and warnings as you write your queries. To customize which suggestions and warnings you receive, see [Set query recommendations](web-customize-settings.md#set-query-recommendations).
 
 ## Prerequisites
+
+Before you begin, make sure you have the following items:
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-and-database.md).
@@ -24,29 +26,25 @@ In the Azure Data Explorer web UI, the query editor provides suggestions and war
 
 When you first open the web UI, in the **Query** page, you should see a connection to the **help** cluster. The examples in this quickstart use the `StormEvents` table in the `Samples` database of the **help** cluster.
 
-If you want to run queries on a different cluster, you must add a connection to that cluster.
-
-To add a new cluster connection, do the following:
+If you want to run queries on a different cluster, you must add a connection to that cluster. To add a new cluster connection, do the following:
 
 1. On the left menu, select **Query**.
 1. In the upper left pane, select **Add connection**.
 1. In the **Add connection** dialog box, enter the cluster **Connection URI** and **Display name**.
 1. Select **Add** to add the connection.
 
-If you don't see the **help** cluster, add it using the previous steps. Use "help" as the **Connection URI**.
+If you don't see the **help** cluster, add it using the previous steps and use "help" as the **Connection URI**.
 
-## Run queries
+## Run a query
 
 To run a query, you must select the database on which you want to run the query in order to set the query context.
 
 1. In the **Cluster connection** pane, under the **help** cluster, select the **Samples** database.
-
     :::image type="content" source="media/web-query-data/samples-db-context.png" alt-text="Screenshot of the Samples database selected.":::
-
 1. Copy and paste the following query into the query window. At the top of the window, select **Run**.
 
     > [!div class="nextstepaction"]
-    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM4vKlFIqlQILkksKgnJzE1VSEktTgZKlCRmpyoYGgAAl2udPi4AAAA=" target="_blank">Run the query</a>
+    > [Run the query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM4vKlFIqlQILkksKgnJzE1VSEktTgZKlCRmpyoYGgAAl2udPi4AAAA=)
 
     ```kusto
     StormEvents
@@ -61,7 +59,7 @@ To run a query, you must select the database on which you want to run the query 
 1. Copy and paste the following query into the query window, below the first query. Notice how it isn't formatted on separate lines like the first query.
 
     > [!div class="nextstepaction"]
-    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WMQQrDMBAD73mFHtBD+4fmWgrJB7bxUtzirFmLgCGP74YeotNIA5poXsZNVzbsaObEq2OiOOdcFEnbggGRHdXtowtPe8G4pj/ExqMfT3OvgXcp8tanW1VnD1Vzs6QPcRfmTeOQ8lXcrj+ZB1DRhAAAAA==" target="_blank">Run the query</a>
+    > [Run the query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WMQQrDMBAD73mFHtBD+4fmWgrJB7bxUtzirFmLgCGP74YeotNIA5poXsZNVzbsaObEq2OiOOdcFEnbggGRHdXtowtPe8G4pj/ExqMfT3OvgXcp8tanW1VnD1Vzs6QPcRfmTeOQ8lXcrj+ZB1DRhAAAAA==)
 
     ```kusto
     StormEvents | sort by StartTime desc 
@@ -82,7 +80,7 @@ To run a query, you must select the database on which you want to run the query 
 1. Let's run one more query to see a different type of output.
 
     > [!div class="nextstepaction"]
-    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMsQ7CQAxDd74iYyt1KBtLGZDY2PoBKFyj9hBJUJprBeLjuYMFFkv2s927Gh8XEp83L5gTM1p8ElCJzkGTePfRqm6A4wAd4DJWBxqjnNBruDygd3QqazUvPteyWyeyvx/Yw3bXthndTa8U/DtsfjsZGslABkFviSVMaP4GmKtNLqQAAAA=" target="_blank">Run the query</a>
+    > [Run the query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMsQ7CQAxDd74iYyt1KBtLGZDY2PoBKFyj9hBJUJprBeLjuYMFFkv2s927Gh8XEp83L5gTM1p8ElCJzkGTePfRqm6A4wAd4DJWBxqjnNBruDygd3QqazUvPteyWyeyvx/Yw3bXthndTa8U/DtsfjsZGslABkFviSVMaP4GmKtNLqQAAAA=)
 
     ```kusto
     StormEvents
@@ -105,14 +103,15 @@ To run a query, you must select the database on which you want to run the query 
 
 ## Provide feedback
 
-1. In the upper right of the application, select the feedback icon :::image type="icon" source="media/web-query-data/icon-feedback.png" border="false":::.
+Do the following to provide feedback:
 
+1. In the upper right of the application, select the feedback icon :::image type="icon" source="media/web-query-data/icon-feedback.png" border="false":::.
 1. Enter your feedback, then select **Submit**.
 
 ## Clean up resources
 
 You didn't create any resources in this quickstart, but if you'd like to remove one or both clusters from the application, right-click the cluster and select **Remove connection**.
-Another option is to select **Clear local state** from the **Settings** > **General** tab. This action will remove all cluster connections and close all open query tabs.
+Another option is to select **Clear local state** from the **Settings** > **General** tab. This action removes all cluster connections and closes all open query tabs.
 
 ## Related content
 

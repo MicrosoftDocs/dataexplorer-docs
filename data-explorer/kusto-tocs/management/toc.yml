@@ -222,6 +222,32 @@ items:
     - name: .show materialized-view(s) details
       displayName: show materialized view details
       href: /kusto/management/materialized-views/materialized-view-show-details-command?view=azure-data-explorer&preserve-view=true
+  - name: Graphs
+    items:
+    - name: Persistent graph overview
+      href: /kusto/management/graph/graph-persistent-overview?view=azure-data-explorer&preserve-view=true
+    - name: Graph models overview
+      href: /kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true
+    - name: .create-or-alter graph_model
+      href: /kusto/management/graph/graph-model-create-or-alter?view=azure-data-explorer&preserve-view=true
+    - name: .drop graph_model
+      href: /kusto/management/graph/graph-model-drop?view=azure-data-explorer&preserve-view=true
+    - name: .show graph_model
+      href: /kusto/management/graph/graph-model-show?view=azure-data-explorer&preserve-view=true
+    - name: .show graph_models
+      href: /kusto/management/graph/graph-models-show?view=azure-data-explorer&preserve-view=true
+    - name: Graph snapshot overview
+      href: /kusto/management/graph/graph-snapshot-overview?view=azure-data-explorer&preserve-view=true
+    - name: .make graph_snapshot
+      href: /kusto/management/graph/graph-snapshot-make?view=azure-data-explorer&preserve-view=true
+    - name: .drop graph_snapshot
+      href: /kusto/management/graph/graph-snapshot-drop?view=azure-data-explorer&preserve-view=true
+    - name: .drop graph_snapshots
+      href: /kusto/management/graph/graph-snapshots-drop?view=azure-data-explorer&preserve-view=true
+    - name: .show graph_snapshot
+      href: /kusto/management/graph/graph-snapshot-show?view=azure-data-explorer&preserve-view=true
+    - name: .show graph_snapshots
+      href: /kusto/management/graph/graph-snapshots-show?view=azure-data-explorer&preserve-view=true
   - name: Stored query results
     items:
     - name: Stored query results

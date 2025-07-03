@@ -84,7 +84,7 @@ reports
 
 ## Related content
 
-* [Graph overview](graph-overview.md)
+* [Graph overview](graph-semantics-overview.md)
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)
 * [node-degree-out](node-degree-out.md)

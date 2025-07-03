@@ -8,7 +8,10 @@ ms.date: 10/07/2024
 
 # Migrate a Virtual Network injected cluster to private endpoints
 
-This article describes the migration of a Microsoft Azure Virtual Network injected Azure Data Explorer cluster to an Azure Private Endpoints network security model. For a detailed comparison, see [Private endpoint vs. virtual network injection](security-network-overview.md#private-endpoint-vs-virtual-network-injection).
+> [!WARNING]
+> Virtual Network Injection was retired for Azure Data Explorer by 1 February 2025.
+
+This article describes the migration of a Microsoft Azure Virtual Network injected Azure Data Explorer cluster to an Azure Private Endpoints network security model.
 
 The process of the migration takes several minutes. The migration creates a new cluster for the engine and data management services, which reside in a virtual network managed by Microsoft. The connection is switched to the newly created services for you. This process results in a minimal downtime for querying the cluster.
 

@@ -1,0 +1,18 @@
+---
+config:
+  look: neo
+  theme: default
+---
+graph TD
+    DT1[🏭 Digital Twin: Factory] -->|monitors| EQ1[⚙️ Equipment 1]
+    DT1 -->|monitors| EQ2[⚙️ Equipment 2]
+    EQ1 -->|connected to| S1[🔌 Sensor 1]
+    EQ2 -->|connected to| S2[🔌 Sensor 2]
+    DT1 -->|reports to| CL1[☁️ Cloud Analytics]
+    
+    style DT1 fill:#e1f5fe,stroke:#0277bd,color:#000
+    style EQ1 fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    style EQ2 fill:#e8f5e8,stroke:#2e7d32,color:#000
+    style S1 fill:#fff3e0,stroke:#ef6c00,color:#000
+    style S2 fill:#ffd93d,stroke:#fdcb6e,color:#000
+    style CL1 fill:#a3cfbb,stroke:#1b6e3c,color:#000

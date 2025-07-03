@@ -53,17 +53,22 @@ There are several ways to specify the entity group used by the `macro-expand` op
 | *EntityGroup* |  |  :heavy_check_mark: | A set of one or more entities that *EntityIdentifier* expands into when a query is run. The entity group can be a stored entity group or a defined group. It denotes one or more entities of the same type that *EntityIdentifier* expands to. |
 | *EntityIdentifier* | `string` |  :heavy_check_mark: |  An identifier that serves as a placeholder for an entity in the subquery, and which is expanded into the actual entity when the query is run. Entities that aren't explicitly scoped in *EntityIdentifier* are assumed to be part of the current in scope database. Any specific identifiers included in the query override the default assumption. |
 |*EntityReference*| `string` | |An entity included in the entity group. One or more *EntityReference* is required if an *EntityGroup* isn't specified. |
-| *Subquery* | `string` |  :heavy_check_mark: | A single tabular expression that doesn’t take input data directly. It might include references to entities through an *EntityIdentifier*, and use expressions such as let statements, stored functions, or other elements from the database in scope. *Subquery* can be preceded by one or more `let` statements. It can also reference [Subquery contextual functions](#subquery-contextual-functions).|
+| *Subquery* | `string` |  :heavy_check_mark: | A single tabular expression that doesn’t take input data directly. It might include references to entities through an *EntityIdentifier*, and use expressions such as let statements, stored functions, or other elements from the database in scope. *Subquery* can be preceded by one or more `let` statements. It can also reference [Subquery contextual functions](#subquery-contextual-scalars).|
 
 > [!NOTE]
 > A query can only reference entity groups defined in the query text or in the current database. Entity groups in other databases or clusters can't be referenced directly or indirectly.
 
-### Subquery contextual functions
+### Subquery contextual scalars
 
-The `macro-expand` subquery can reference two specialized scalar functions as if they're part of the entity being referenced:
+The `macro-expand` subquery can reference two specialized scalar values as if they're part of the entity being referenced:
 
-* `$current_database` - Returns the database name of the entity reference.
-* `$current_cluster_endpoint` - Returns the URL of the cluster of the entity reference.
+* `$current_database` - Returns the database name of the entity reference (a `string`).
+* `$current_cluster_endpoint` - Returns the URL of the cluster of the entity reference (a `string`).
+
+> [!NOTE]
+> These values can only be used when they are scoped by the *EntityReference*.
+> For example, if *EntityReference* is a database and the `macro-expand` is using `DB` to reference the database,
+> use `DB.$current_cluster_endpoint` to retrieve the URL of the cluster which hosts the database.
 
 ## Examples
 

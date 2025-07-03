@@ -11,6 +11,21 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "graph-best-practices.md",
+      "redirect_url": "/kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "graph-overview.md",
+      "redirect_url": "/kusto/query/graph-semantics-overview?view=azure-data-explorer&preserve-view=true",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "graph-scenarios.md",
+      "redirect_url": "/kusto/query/graph-scenarios?view=azure-data-explorer&preserve-view=true",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "net-standard-ingest-data.md",
       "redirect_url": "/azure/data-explorer/net-sdk-ingest-data",
       "redirect_document_id": false
@@ -444,8 +459,7 @@
       "source_path": "query-exported-azure-monitor-data.md",
       "redirect_url": "/azure/data-explorer/query-monitor-data",
       "redirect_document_id": false
-    },
-    {
+    },    {
       "source_path": "using-metrics.md",
       "redirect_url": "/azure/data-explorer/monitor-data-explorer",
       "redirect_document_id": true
@@ -453,6 +467,26 @@
     {
       "source_path": "using-diagnostic-logs.md",
       "redirect_url": "/azure/data-explorer/monitor-data-explorer",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "vnet-create-cluster-portal.md",
+      "redirect_url": "/azure/data-explorer/security-network-private-endpoint-create",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "vnet-deploy-troubleshoot.md",
+      "redirect_url": "/azure/data-explorer/security-network-private-endpoint-troubleshoot",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "vnet-deployment.md",
+      "redirect_url": "/azure/data-explorer/security-network-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "vnet-endpoint-storage-event-hub.md",
+      "redirect_url": "/azure/data-explorer/security-network-managed-private-endpoint-create",
       "redirect_document_id": false
     }
   ]

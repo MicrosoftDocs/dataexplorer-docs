@@ -42,9 +42,8 @@ To `.create`, `.alter`, or `.create-or-alter` an external table using managed id
 |--|--|--|--|
 |*TableName* | `string` |  :heavy_check_mark: | The name of the external table. The name must follow the rules for [entity names](../query/schema-entities/entity-names.md), and an external table can't have the same name as a regular table in the same database.|
 |*Schema* | `string` |  :heavy_check_mark: | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
-|*SqlTableName*| `string` | | The name of the SQL table not including the database name. For example, "MySqlTable" and not "db1.MySqlTable". If the name of the table contains a period ("."), use ['Name.of.the.table'] notation.
-</br></br>This specification is required for all types of tables except for Cosmos DB, as for Cosmos DB the collection name is part of the connection string. |
 |*SqlConnectionString*| `string` | :heavy_check_mark:| The connection string to the SQL server. |
+|*SqlTableName*| `string` | | The name of the SQL table not including the database name. If the name of the table contains a period ("."), use ['Name.of.the.table'] notation. If the table isn't in the default SQL database schema, use ['SchemaName.TableName'] notation. For example, for a table "T1" in schema "S1": ['S1.T1'] <br><br>This specification is required for all types of tables except for Cosmos DB, as for Cosmos DB the collection name is part of the connection string. |
 |*SqlDialect*| `string` | |Indicates the type of Azure SQL external table. SQL Server is the default. For MySQL, specify `MySQL`. For PostgreSQL, specify `PostgreSQL`. For Cosmos DB, specify `CosmosDbSql`.|
 |*Property*| `string` ||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
 

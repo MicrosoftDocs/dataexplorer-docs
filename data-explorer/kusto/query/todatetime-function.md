@@ -3,7 +3,7 @@ title:  todatetime()
 description: Learn how to use the todatetime() function to convert the input expression to a datetime value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2025
+ms.date: 06/04/2025
 ---
 # todatetime()
 
@@ -65,9 +65,9 @@ print todatetime('12-02-2022') == datetime('12-02-2022')
 
 ## Related content
 
-* [make-datetime function](./make-datetime-function.md)
+* [make-datetime](./make-datetime-function.md) function
 * [Scalar function types at a glance](scalar-functions.md)
 * [The datetime data type](scalar-data-types/datetime.md)
-* [datetime_add()](datetime-add-function.md)
+* [datetime_add](datetime-add-function.md) function
 * [Datetime / timespan arithmetic](datetime-timespan-arithmetic.md)
-* [totimespan()](totimespan-function.md)
+* [totimespan](totimespan-function.md) function

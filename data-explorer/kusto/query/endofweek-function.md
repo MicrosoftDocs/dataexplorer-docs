@@ -51,3 +51,44 @@ The following example returns the end of the week for the specified date.
 |2016-12-31 23:59:59.9999999|
 |2017-01-07 23:59:59.9999999|
 |2017-01-14 23:59:59.9999999|
+
+The following example returns the end of the week as Sunday for the specified date.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XQzwuCMBQH8Pv%2BikcXN1hQ0i8UD0Edo4NBh4hY7CmSKeikpPrfe7NECNth7Mdn7%2FFdigYw03l0Q7yEVaZVDQFwrQwui9gDuzDJFQU8GNBo9yelNXdIOxLGsivB%2B8BwIeFbUQjBXj5LqS2dqMBORp1T5CsCXT%2F7oPagNEWSxYIdWHvB3ZE7lTCjthMhYRAqUxVkB7KPTBvSxOoHMws2%2BX8wt2BXYWkFO%2FrWKGBPwLuh1PApvs70NtpT%2FuDnM5tY4g0tAMSOZgEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+let endofweekSunday = (dateArg: datetime) {
+    datetime_add('day', 1, endofweek(datetime_add('day', -8, dateArg)))
+};
+let data=datatable(Date: datetime, day: string)
+[
+datetime(2025, 6, 14), "Saturday",
+datetime(2025, 6, 15), "Sunday",
+datetime(2025, 6, 16), "Monday",
+datetime(2025, 6, 17), "Tuesday"
+];
+data 
+| extend SundayEndOfWeek=endofweekSunday(Date)
+```
+
+**Output**
+
+|Date|day|SundayEndOfWeek|
+|---|---|---|
+|2025-06-14 00:00:00.0000000|Saturday|2025-06-08 23:59:59.9999999|
+|2025-06-15 00:00:00.0000000|Sunday|2025-06-08 23:59:59.9999999|
+|2025-06-16 00:00:00.0000000|Monday|2025-06-15 23:59:59.9999999|
+|2025-06-17 00:00:00.0000000|Tuesday|2025-06-15 23:59:59.9999999|
+
+## Related content
+
+* [startofweek function](./startofweek-function.md)
+* [endofday function](./endofday-function.md)
+* [endofmonth function](./endofmonth-function.md)
+* [endofyear function](./endofyear-function.md)
+* [dayofweek function](./day-of-week-function.md)
+* [week_of_year function](./week-of-year-function.md)
+* [ago function](./ago-function.md)

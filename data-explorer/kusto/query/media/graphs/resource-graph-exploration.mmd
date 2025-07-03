@@ -1,0 +1,19 @@
+---
+config:
+  look: neo
+  theme: default
+---
+flowchart TD
+    MG["Management Group<br>MG001"] --> RG["Resource Group<br>RG001"]
+    RG --> VM["Virtual Machine<br>VM001"]
+    RG --> DB["Database<br>DB001"]
+    ITAdmins["Group<br>IT_Admins"] -- "authorized_on" --> RG
+    Alice["User<br>Alice"] -- "has_member" --> ITAdmins
+    
+    classDef user fill:#f9f,stroke:#333,stroke-width:2px
+    classDef group fill:#bbf,stroke:#333,stroke-width:2px
+    classDef resource fill:#dfd,stroke:#333,stroke-width:2px
+    
+    class Alice user
+    class ITAdmins group
+    class MG,RG,VM,DB resource

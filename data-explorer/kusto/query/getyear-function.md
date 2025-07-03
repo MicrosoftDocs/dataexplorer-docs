@@ -27,7 +27,9 @@ Returns the year part of the `datetime` argument.
 
 The year that contains the given *date*.
 
-## Example
+## Examples
+
+The following example returns the year of the given date.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
