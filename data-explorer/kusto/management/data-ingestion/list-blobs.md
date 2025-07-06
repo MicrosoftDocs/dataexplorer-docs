@@ -60,7 +60,7 @@ The following table lists the supported authentication methods and the permissio
 
 > [!NOTE]
 >
-> * When authenticating with Keys or SAS tokens, protect sensitive data by using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+> When authenticating with Keys or SAS tokens, protect sensitive data by using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
 >
 > e.g.:
 >```kusto
