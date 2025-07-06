@@ -71,6 +71,11 @@ To see your own roles on the eventhouse, run the following command:
 .show cluster principal roles
 ```
 
+> [!IMPORTANT]
+>
+> When listing principals, the service will **only** resolve principal FQNs (fully qualified names) into display names for principals are members of the caller tenant.
+> Principals in tenants other then the caller's will have a display name value of the following format `[User/Group/Application] from AAD Tenant [Tenant Id]`.
+
 ### Show your roles on a resource
 
 To check the roles assigned to you on a specific resource, run the following command within the relevant database or the database that contains the resource:
