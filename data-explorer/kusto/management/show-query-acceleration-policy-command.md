@@ -49,7 +49,7 @@ The command returns a table with a record per external table with the following 
 
 | PolicyName              | EntityName                     | Policy                                                                             | ChildEntities | EntityType    |
 | ----------------------- | ------------------------------ | ---------------------------------------------------------------------------------- | ------------- | ------------- |
-| QueryAccelerationPolicy | [MyDatabase].[MyExternalTable] | {<br>  "IsEnabled": true,<br>  "Hot": "1.00:00:00"}                || ExternalTable |
+| QueryAccelerationPolicy | [MyDatabase].[MyExternalTable] | {<br>  "IsEnabled": true,<br>  "Hot": "1.00:00:00",<br> "HotWindows":[{"MinValue":"2025-07-06 07:53:55.0192810","MaxValue":"2025-07-06 07:53:55.0192814"}]}                || ExternalTable |
 
 ## Related content
 
