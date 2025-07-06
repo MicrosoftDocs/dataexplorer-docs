@@ -21,13 +21,13 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 | Article title | Description |
 |--|--|
-| - [Graph semantics overview](/kusto/query/graph-semantics-overview?view=azure-data-explorer&preserve-view=true) </br> - [Graph function](kusto/query/graph-function?view=azure-data-explorer&preserve-view=true) </br>- [Common scenarios for using graph semantics](/kusto/query/graph-scenarios?view=azure-data-explorer&preserve-view=true) </br> - [Best practices for graph semantics](/kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true) </br> - [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true)<br/>- [Tutorial: Create your first graphs in Kusto Query Language](/kusto/query/tutorials/your-first-graph?view=azure-data-explorer&preserve-view=true) | New and updated articles.  Updated the information on graph semantics, when to use transient vs persistent graphs, and added a new tutorial for creating your first graph. |
+| - [Graph semantics overview](/kusto/query/graph-semantics-overview?view=azure-data-explorer&preserve-view=true) </br> - [Graph function](/kusto/query/graph-function?view=azure-data-explorer&preserve-view=true) </br>- [Common scenarios for using graph semantics](/kusto/query/graph-scenarios?view=azure-data-explorer&preserve-view=true) </br> - [Best practices for graph semantics](/kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true) </br> - [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true)<br/>- [Tutorial: Create your first graphs in Kusto Query Language](/kusto/query/tutorials/your-first-graph?view=azure-data-explorer&preserve-view=true) | New and updated articles.  Updated the information on graph semantics, when to use transient vs persistent graphs, and added a new tutorial for creating your first graph. |
 
 **Data Connectors**
 
 | Article title | Description |
 |--|--|
-| - [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink?view=azure-data-explorer&preserve-view=true) | Updated article. Updated instructions for Managed identity authentication. |
+| - [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md) | Updated article. Updated instructions for Managed identity authentication. |
 
 ## May 2025
 
