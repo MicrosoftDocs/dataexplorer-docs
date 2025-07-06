@@ -28,19 +28,16 @@ This article focuses on how to install the Linux Docker container on a Windows c
 ## Prerequisites
 
 - The host operating system must be one of:
-  - Windows Server 2022
-  - Windows Server 2019 Version 10.0.17763.2928 or newer
-  - Windows 11
-  - Any Linux distro that supports Docker Client for Linux
-
-    > [!IMPORTANT]
-    > Linux distros only support Linux container images.
-
+    - Windows Server 2022
+    - Windows Server 2019 Version 10.0.17763.2928 or newer
+    - Windows 11
+    - Any Linux distribution that supports Docker Client for Linux
 - A processor that supports SSE4.2/AVX2 instruction sets
 - At least 2 GB of RAM (4 GB or more recommended)
-- Docker Client for [Linux](https://docs.docker.com/desktop/install/linux-install/) or [Windows](https://docs.docker.com/desktop/windows/install/)
+- [Docker Client for Linux](https://docs.docker.com/desktop/install/linux-install/) or [Docker Client for Windows](https://docs.docker.com/desktop/windows/install/)
 
-    > [!IMPORTANT]
+> [!IMPORTANT]
+    > Linux distros only support Linux container images.
     > ARM processors are not supported.
 
 ## Install the Kusto emulator
