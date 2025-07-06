@@ -56,12 +56,12 @@ The following example returns the end of the week as Sunday for the specified da
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XQzwuCMBQH8Pv%2BikcXN1hQ0i8UD0Edo4NBh4hY7CmSKeikpPrfe7NECNth7Mdn7%2FFdigYw03l0Q7yEVaZVDQFwrQwui9gDuzDJFQU8GNBo9yelNXdIOxLGsivB%2B8BwIeFbUQjBXj5LqS2dqMBORp1T5CsCXT%2F7oPagNEWSxYIdWHvB3ZE7lTCjthMhYRAqUxVkB7KPTBvSxOoHMws2%2BX8wt2BXYWkFO%2FrWKGBPwLuh1PApvs70NtpT%2FuDnM5tY4g0tAMSOZgEAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XQzwuCMBQH8Pv%2BikcXN1hQ0i8UD0Edo4NBh4hY7CmSKeikpPrfe7NECNth7Mdn7%2FFdigYw03l0Q7yEVaZVDQFwrQwui9gDuzDJFQU8GNBo9yelNXdIOxIWsivB%2B8CQxLeiEIK9fJZSWzpRgZ2MOqfIVwS6fvZB7UFpiiSLBTuw9oK7I3cqYSZhPBESBqEyVUF2IPvItCFNrH4ws2CT%2FwdzC3YVllawo2%2BNAvYEvBtKDZ%2Fi60xvoz3lD34%2Bs4kl3jG4Z9ZmAQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 let endofweekSunday = (dateArg: datetime) {
-    datetime_add('day', 1, endofweek(datetime_add('day', -8, dateArg)))
+    datetime_add('day', 8, endofweek(datetime_add('day', -8, dateArg)))
 };
 let data=datatable(Date: datetime, day: string)
 [
@@ -78,10 +78,10 @@ data
 
 |Date|day|SundayEndOfWeek|
 |---|---|---|
-|2025-06-14 00:00:00.0000000|Saturday|2025-06-08 23:59:59.9999999|
-|2025-06-15 00:00:00.0000000|Sunday|2025-06-08 23:59:59.9999999|
-|2025-06-16 00:00:00.0000000|Monday|2025-06-15 23:59:59.9999999|
-|2025-06-17 00:00:00.0000000|Tuesday|2025-06-15 23:59:59.9999999|
+|2025-06-14 00:00:00.0000000|Saturday|2025-06-15 23:59:59.9999999|
+|2025-06-15 00:00:00.0000000|Sunday|2025-06-15 23:59:59.9999999|
+|2025-06-16 00:00:00.0000000|Monday|2025-06-22 23:59:59.9999999|
+|2025-06-17 00:00:00.0000000|Tuesday|2025-06-22 23:59:59.9999999|
 
 ## Related content
 
