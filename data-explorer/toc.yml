@@ -612,7 +612,7 @@ items:
             href: sync-kusto.md
       - name: Notebooks
         items:
-          - name: Jupyter Notebooks with Kqlmagic
+          - name: Notebooks with Kqlmagic
             href: kqlmagic.md
           - name: Azure Data Studio
             items:

@@ -1,25 +1,26 @@
 ---
-title: Use a Jupyter Notebook to analyze data in Azure Data Explorer
-description: This article shows you how to analyze data in Azure Data Explorer using a Jupyter Notebook and the kqlmagic extension.
+title: Use a Notebook and Kqlmagic to Analyze Data in Azure Data Explorer
+description: Learn how to use the Kqlmagic extension in a Notebook to connect to and query data stored in Azure Data Explorer.
 ms.reviewer: maraheja
+ms.author: spelleru
 ms.topic: how-to
-ms.date: 05/28/2024
+ms.date: 07/06/2025
 
-# Customer intent: I want to analyze data using Jupyter Notebooks and kqlmagic.
+# Customer intent: I want to analyze data using Notebooks and Kqlmagic.
 ---
 
-# Use a Jupyter Notebook and kqlmagic extension to analyze data in Azure Data Explorer
+# Use a Notebook and kqlmagic to analyze data in Azure Data Explorer
 
 [Jupyter Notebook](https://jupyter.org/) is an open-source web application that allows you to create and share documents containing live code, equations, visualizations, and narrative text. It's useful for a wide range of tasks, such as data cleaning and transformation, numerical simulation, statistical modeling, data visualization, and machine learning.
 
-[Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true) operator. The kqlmagic extension is compatible with Jupyter Lab, Visual Studio Code Jupyter extension, and Azure Data Studio, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
+[Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true) operator. The Kqlmagic extension is compatible with Jupyter Lab, Visual Studio Code Jupyter extension, and Azure Data Studio, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
 
-In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to connect to and query data stored in [Azure Data Explorer](https://dataexplorer.azure.com/home).
+In this article, learn how to use the Kqlmagic extension in a Notebook to connect to and query data stored in [Azure Data Explorer](https://dataexplorer.azure.com/home).
 
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
-* Jupyter Notebook installed on your local machine. Otherwise, use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic).
+* A Notebook installed on your local machine. Otherwise, use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic).
 * Python 3.6. To change the Jupyter Notebook kernel version to Python 3.6, select **Kernel** > **Change Kernel** > **Python 3.6**.
 
 ## Install kqlmagic
@@ -55,7 +56,7 @@ The Microsoft Entra certificate should be stored in a file accessible from the n
 
 ### [Code](#tab/code)
 
-The Microsoft Entra code method prompts MSAL interactive sign-in. You'll receive a code to enter for authentication.
+The Microsoft Entra code method prompts Microsoft Authentication Library (MSAL) interactive sign-in. You receive a code to enter for authentication.
 
 ```python
 %kql AzureDataExplorer://code;cluster='<cluster-name>';database='<database-name>'
@@ -71,7 +72,7 @@ The Microsoft Entra application method allows for a non-interactive sign-in usin
 
 ### [Username and password](#tab/userpass)
 
-The Microsoft Entra username and password method only works on corporate network. If a username is provided without a password, the user is prompted to provide the password.
+The Microsoft Entra username and password method only work on corporate network. If a username is provided without a password, the user is prompted to provide the password.
 
 ```python
 %kql AzureDataExplorer://username='<username>';password='<password>';cluster='<cluster-name>';database='<database-name>'
@@ -89,10 +90,10 @@ Anonymous authentication is equivalent to no authentication, which is only suppo
 
 > [!TIP]
 >
-> * To parameterize the connection string, use unquoted values as they are interpreted as Python expressions.
+> * To parameterize the connection string, use unquoted values as they're interpreted as Python expressions.
 > * To simplify the process of getting credentials, see [Connection options](#connection-options).
 
-### Example of cluster connection
+### Example of a cluster connection
 
 The following command uses the Microsoft Entra code method to authenticate to the `Samples` database hosted on the `help` cluster. For non-Microsoft Entra users, replace the tenant name `Microsoft.com` with your Microsoft Entra tenant.
 
@@ -106,19 +107,23 @@ To simplify the process of getting credentials, you can add one of the following
 
 |Option|Description|Example syntax|
 |--|--|--|
-|try_azcli_login|Attempt to get authentication credentials from Azure CLI.|`-try_azcli_login`|
+|try_azcli_login|Attempt to get authentication credentials from Azure CLI.  Expects that you are logged in using Azure CLI. See the [example](#example-of-connection-option-using-azure-cli).|`-try_azcli_login`|
 |try_azcli_login_subscription|Attempt to get authentication credentials from Azure CLI based on the specified subscription.|`-try_azcli_login_subscription=<subscription_id>`|
 |try_vscode_login|Attempt to get authentication credentials from Visual Studio Code Azure account sign-in.|`-try_vscode_login`|
 |try_msi|Attempt to get authentication credentials from the MSI local endpoint. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`-try_msi={"client_id":<id>}`|
 |try_token|Authenticate with a specified token. Expects a dictionary with Azure AD v1 or v2 token properties.|`-try_token={"tokenType":"bearer","accessToken":"<token>"}`
 
-### Example of connection option
+### Example of a connection using Azure CLI
 
-Any of the options described in the previous table can be added after a connection string. The following example uses the Azure CLI sign-in option:
+Any of the options described in the previous table can be added after a connection string. The following example uses the Azure CLI sign-in option as the authentication method:
 
 ```python
 %kql azureDataExplorer://code;cluster='help';database='Samples' -try_azcli_login
 ```
+
+>[!NOTE]
+> This option assumes you're logged in to Azure using Azure CLI.
+> If you are not logged in, a pop-up window prompts you to log in to Azure.
 
 ## Display connection information
 
@@ -136,7 +141,9 @@ To check the details of a specific connection, run the following command:
 
 ## Query and visualize
 
-Query data using the [render operator](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true) and visualize data using the ploy.ly library. This query and visualization supplies an integrated experience that uses native KQL. Kqlmagic supports most charts except `timepivot`, `pivotchart`, and `ladderchart`. Render is supported with all attributes except `kind`, `ysplit`, and `accumulate`.
+Query data using the [render operator](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true) and visualize data using the ploy.ly library. This query and visualization supplies an integrated experience that uses native KQL. 
+
+Kqlmagic supports most charts except `timepivot`, `pivotchart`, and `ladderchart`. Render is supported with all attributes except `kind`, `ysplit`, and `accumulate`.
 
 ### Query and render piechart
 
@@ -252,7 +259,8 @@ In many analytics scenarios, you may want to create reusable notebooks that cont
     ```
 
 > [!TIP]
-> To receive information about all available configurations use `%config Kqlmagic`. To troubleshoot and capture Kusto errors, such as connection issues and incorrect queries, use `%config Kqlmagic.short_errors=False`
+> - To receive information about all available configurations use `%config Kqlmagic`. 
+> - To troubleshoot and capture Kusto errors, such as connection issues and incorrect queries, use `%config Kqlmagic.short_errors=False`
 
 ## Sample notebooks
 

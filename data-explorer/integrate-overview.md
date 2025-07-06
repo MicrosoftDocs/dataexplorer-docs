@@ -444,7 +444,7 @@ Delta Kusto is a Command-line interface (CLI) enabling Continuous Integration / 
 [Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true) operator. The kqlmagic extension is compatible with Jupyter Lab, Visual Studio Code Jupyter extension, and Azure Data Studio, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
 
 * **Functionality:** Query, Visualization
-* **Documentation:** [Jupyter Notebooks](kqlmagic.md)
+* **Documentation:** [Notebooks with Kqlmagic](kqlmagic.md)
 * **Community Blog:** [Analyze data in Azure Data Explorer using KQL magic for Jupyter Notebook](https://techcommunity.microsoft.com/t5/azure-data-explorer/analyze-data-in-azure-data-explorer-using-kql-magic-for-jupyter/m-p/325835)
 
 ### KQL Parser
