@@ -73,8 +73,10 @@ To see your own roles on the eventhouse, run the following command:
 
 > [!IMPORTANT]
 >
-> When listing principals, the service will **only** resolve principal FQNs (fully qualified names) into display names for principals are members of the caller tenant.
+> When listing principals, the service will **only** resolve principal FQNs (fully qualified names) into display names for principals that are members of the caller tenant.
 > Principals in tenants other then the caller's will have a display name value of the following format `[User/Group/Application] from AAD Tenant [Tenant Id]`.
+>
+> When granting permissions to principals from other tenants, it's advised to use the `Description` parameter to note information about the principal that can help identify it even though it's true Display Name is not shown.
 
 ### Show your roles on a resource
 
