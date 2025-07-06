@@ -1,8 +1,7 @@
 ---
 title: Use a Notebook and Kqlmagic to Analyze Data in Azure Data Explorer
 description: Learn how to use the Kqlmagic extension in a Notebook to connect to and query data stored in Azure Data Explorer.
-ms.reviewer: maraheja
-ms.author: spelleru
+ms.reviewer: ramacg
 ms.topic: how-to
 ms.date: 07/06/2025
 
@@ -107,7 +106,7 @@ To simplify the process of getting credentials, you can add one of the following
 
 |Option|Description|Example syntax|
 |--|--|--|
-|try_azcli_login|Attempt to get authentication credentials from Azure CLI.  Expects that you are logged in using Azure CLI. See the [example](#example-of-connection-option-using-azure-cli).|`-try_azcli_login`|
+|try_azcli_login|Attempt to get authentication credentials from Azure CLI.  Expects that you are logged in using Azure CLI. See the [example](#example-of-connection-using-azure-cli).|`-try_azcli_login`|
 |try_azcli_login_subscription|Attempt to get authentication credentials from Azure CLI based on the specified subscription.|`-try_azcli_login_subscription=<subscription_id>`|
 |try_vscode_login|Attempt to get authentication credentials from Visual Studio Code Azure account sign-in.|`-try_vscode_login`|
 |try_msi|Attempt to get authentication credentials from the MSI local endpoint. Expects a dictionary with the optional MSI parameters: `resource`, `client_id`/`object_id`/`mis_res_id`, `cloud_environment`, `timeout`.|`-try_msi={"client_id":<id>}`|
