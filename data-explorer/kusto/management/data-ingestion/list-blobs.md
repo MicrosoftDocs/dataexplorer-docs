@@ -40,7 +40,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 > [!NOTE]
 >
-> * We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for *SourceDataLocators*.
+> * To safeguard sensitive information, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for *SourceDataLocators*.
 >
 > * When used alone, `.list blob` returns up to 1,000 files, regardless of any larger value specified in *MaxFiles*.
 
@@ -57,6 +57,18 @@ The following table lists the supported authentication methods and the permissio
 |[Shared Access (SAS) token](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
 |[Storage account access key](../../api/connection-strings/storage-connection-strings.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
 |[Managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity)|Storage Blob Data Reader|Reader|
+
+> [!NOTE]
+>
+> When authenticating with Keys or SAS tokens, protect sensitive data by using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+>
+> e.g.:
+>```kusto
+>.list blobs (
+>    h"https://mystorageaccount.blob.core.windows.net/datasets/myfolder?sv=..."
+>)
+>MaxFiles=20
+>```
 
 The primary use of `.list blobs` is for queued ingestion which is done asynchronously with no user context. Therefore, [Impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) isn't supported.
 
