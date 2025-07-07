@@ -34,6 +34,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 | --------- | ---------- | ------------------ | ---------------------------------------------------------------------------- |
 | IsEnabled | `Boolean`  | :heavy_check_mark: | Indicates whether the policy is enabled.                                     |
 | Hot       | `Timespan` | :heavy_check_mark: | The hot period defined in the query acceleration policy. Minimum value = 1 d. |
+| HotWindows       | `DateTime` |  | One or more optional time windows. Delta data files created within these time windows are accelerated. |
 
 > [!NOTE]
 > Query acceleration is applied to data within a specific time period, defined as `timespan`, starting from the `modificationTime` as stated for each file in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file). 
@@ -59,7 +60,7 @@ The command returns a table with one record that includes the modified policy ob
 ## Example
 
 ```Kusto
-.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00"}'
+.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00", "HotWindows":[{"MinValue":"2025-07-06 07:53:55.0192810","MaxValue":"2025-07-06 07:53:55.0192814"}]}'
 ```
 
 ## Related content
