@@ -2,7 +2,7 @@
 title:  Kusto Query Language (KQL) overview
 description: Learn about how to use Kusto Query Language (KQL) to explore data, discover patterns, identify anomalies, and create statistical models.
 ms.reviewer: alexans
-ms.topic: reference
+ms.topic: landing-page
 ms.custom: build-2023, build-2023-dataai
 ms.date: 06/03/2025
 adobe-target: true
