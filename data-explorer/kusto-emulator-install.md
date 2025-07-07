@@ -37,8 +37,8 @@ This article focuses on how to install the Linux Docker container on a Windows c
 - [Docker Client for Linux](https://docs.docker.com/desktop/install/linux-install/) or [Docker Client for Windows](https://docs.docker.com/desktop/windows/install/)
 
 > [!IMPORTANT]
-    > Linux distros only support Linux container images.
-    > ARM processors are not supported.
+> Linux distros only support Linux container images.
+> ARM processors are not supported.
 
 ## Install the Kusto emulator
 
