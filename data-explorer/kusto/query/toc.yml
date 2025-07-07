@@ -178,6 +178,9 @@ items:
       - name: project-away operator
         href: project-away-operator.md
         displayName: project away project_away
+      - name: project-by-names operator
+        href: project-by-names-operator.md
+        displayName: project by names project_by_names
       - name: project-keep operator
         href: project-keep-operator.md
         displayName: project keep project_keep
