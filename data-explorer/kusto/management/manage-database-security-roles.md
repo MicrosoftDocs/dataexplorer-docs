@@ -72,6 +72,8 @@ The following command lists all security principals that have access to the `Sam
 |---|---|---|---|---|
 |Database Samples Admin |Microsoft Entra user |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
 
+[!INCLUDE [show-display-name-other-tenant](../includes/show-display-name-other-tenant.md)]
+
 ## Add and drop principal association to security roles
 
 This section provides syntax, parameters, and examples for adding and removing principals to and from security roles.
@@ -81,8 +83,6 @@ This section provides syntax, parameters, and examples for adding and removing p
 *Action* `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
-
-[!INCLUDE [show-display-name-other-tenant](../includes/show-display-name-other-tenant.md)]
 
 ### Parameters
 
