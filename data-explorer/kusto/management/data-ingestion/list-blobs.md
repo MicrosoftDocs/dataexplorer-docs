@@ -3,7 +3,7 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 06/03/2025
+ms.date: 07/07/2025
 ---
 # .list blobs command (preview)
 
