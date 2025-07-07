@@ -52,6 +52,8 @@ To show your roles:
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
+[!INCLUDE [show-display-name-other-tenant](../includes/show-display-name-other-tenant.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
@@ -71,8 +73,6 @@ The following command lists all security principals that have access to the `Sam
 |Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN|
 |---|---|---|---|---|
 |Database Samples Admin |Microsoft Entra user |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
-
-[!INCLUDE [show-display-name-other-tenant](../includes/show-display-name-other-tenant.md)]
 
 ## Add and drop principal association to security roles
 
