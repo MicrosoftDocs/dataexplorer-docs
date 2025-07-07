@@ -82,6 +82,8 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
+[!INCLUDE [show-display-name-other-tenant](../includes/show-display-name-other-tenant.md)]
+
 ### Parameters
 
 ::: moniker range="azure-data-explorer"
