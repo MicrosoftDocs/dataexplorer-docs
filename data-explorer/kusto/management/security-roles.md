@@ -3,7 +3,7 @@ title: Security roles
 description: Learn how to use security roles to provide principals access to resources.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 07/07/2025
 ---
 # Security roles overview
 
