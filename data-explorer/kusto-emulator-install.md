@@ -13,7 +13,7 @@ You can install the Azure Data Explorer Kusto emulator in the following ways:
 - **On your own device**: Consider using this option if you need to provision a local development environment
 - **On a CI/CD agent virtual machine (VM)**: Use this option if you require a CI/CD pipeline for running automated tests
 
-The emulator is available as a *Linux* and *Windows* Docker container image.
+The emulator is available as a *Linux* Docker container image.
 
 In this article, you learn how to:
 
@@ -28,13 +28,17 @@ This article focuses on how to install the Linux Docker container on a Windows c
 ## Prerequisites
 
 - The host operating system must be one of:
-  - Windows Server 2022
-  - Windows Server 2019 Version 10.0.17763.2928 or newer
-  - Windows 11
-  - Any Linux distro that supports Docker Client for Linux
+    - Windows Server 2022
+    - Windows Server 2019 Version 10.0.17763.2928 or newer
+    - Windows 11
+    - Any Linux distribution that supports Docker Client for Linux
+- A processor that supports SSE4.2/AVX2 instruction sets
+- At least 2 GB of RAM (4 GB or more recommended)
+- [Docker Client for Linux](https://docs.docker.com/desktop/install/linux-install/) or [Docker Client for Windows](https://docs.docker.com/desktop/windows/install/)
 
-- 2 gigabytes (GB) of RAM minimum; we recommend using 4 GB or more
-- Docker Client for [Windows](https://docs.docker.com/desktop/setup/install/windows-install/) or [Linux](https://docs.docker.com/desktop/install/linux-install/)
+> [!IMPORTANT]
+> Linux distros only support Linux container images.
+> ARM processors are not supported.
 
 ## Install the Kusto emulator
 
