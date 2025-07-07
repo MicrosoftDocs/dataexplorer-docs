@@ -31,6 +31,9 @@ A string representing the runtime type of *value*.
 
 ## Examples
 
+The following example shows the runtime type of various expressions.
+
+
 |Expression                          |Returns      |
 |------------------------------------|-------------|
 |`gettype("a")`                      |`string`     |

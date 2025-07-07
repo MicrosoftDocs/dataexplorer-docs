@@ -3,7 +3,7 @@ title: Kusto Query Language learning resources
 description: This article provides a list of different types of learning resources for ramping up on KQL.
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 09/28/2023
+ms.date: 06/10/2025
 ---
 # Kusto Query Language learning resources
 
@@ -12,7 +12,7 @@ For more information on KQL, see [KQL overview](/kusto/query/index?view=azure-da
 
 ## General training
 
-This training is not product-specific, and provides basic KQL learning:
+This training isn't product-specific, and provides basic KQL learning:
 
 * [Pluralsight: KQL from scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)
 * [Kusto Detective Agency](https://detective.kusto.io/)

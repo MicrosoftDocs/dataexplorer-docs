@@ -3,7 +3,7 @@ title: Create an app to run basic queries
 description: Learn how to create an app to run basic queries using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 08/11/2024
+ms.date: 05/28/2025
 monikerRange: "azure-data-explorer"
 #customer intent: To learn about creating an app to run basic queries using Kusto client libraries.
 ---
@@ -515,7 +515,7 @@ using (var response = kustoClient.ExecuteQuery(database, query, crp)) {
 
 ```python
 from azure.kusto.data import ClientRequestProperties
-from datetime import datetime
+import datetime
 import uuid;
 
 crp = ClientRequestProperties()
