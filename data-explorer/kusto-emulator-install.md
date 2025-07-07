@@ -13,7 +13,7 @@ You can install the Azure Data Explorer Kusto emulator in the following ways:
 - **On your own device**: Consider using this option if you need to provision a local development environment
 - **On a CI/CD agent virtual machine (VM)**: Use this option if you require a CI/CD pipeline for running automated tests
 
-The emulator is available as a *Linux* and *Windows* Docker container image.
+The emulator is available as a *Linux* Docker container image.
 
 In this article, you learn how to:
 
