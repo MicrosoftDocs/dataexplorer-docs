@@ -66,7 +66,7 @@ Grant the service principal from [Create a Microsoft Entra service principal](#c
 
 ## Configure Fluent Bit to send logs to your table
 
-To configure Fluent Bit to send logs to your table in Kusto, create a [classic mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file) or [YAML mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/yaml/configuration-file) configuration file with the following output properties:
+To configure Fluent Bit to send logs to your table in Kusto, create a [classic mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file) or [YAML mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file) configuration file with the following output properties:
 
 | Field | Description | Required | Default |
 |--|--|--|--|
