@@ -28,11 +28,11 @@ Select and reorder a subset of columns from the input table by their names, dyna
 | *ColumnSpecifier* | `string` |  :heavy_check_mark: | The name of the column, dynamic array of column names, or column wildcard pattern to keep and reorder.|
 
 > [!NOTE]
-> * Columns in the result are ordered based on the sequence in which they are specified or matched.
+> * Columns in the result are ordered based on the sequence in which they're specified or matched.
 > * Column names that don't match any existing column are safely ignored.
-> * Wildcard characters (e.g., *) can be used to match multiple columns by name pattern.
+> * Wildcard characters (*) can be used to match multiple columns by name pattern.
 > * ColumnSpecifier can include the result of a column_names_of(Table) expression, which returns a dynamic array of column names from the specified table.
-> * Subqueries or scalar expressions like toscalar() are not supported in the *ColumnSpecifier* parameter.
+> * Subqueries or scalar expressions like toscalar() aren't supported in the *ColumnSpecifier* parameter.
 > * For related functionality:
 >   * Use [`project-away`](project-away-operator.md) to exclude specific columns from the result.
 >   * Use [`project-keep`](project-keep-operator.md) to retain columns without changing their order.
@@ -44,8 +44,8 @@ A table containing only the columns specified in the *ColumnSpecifier* parameter
 
 ## Examples
 
-The examples below demonstrate how to use the `project-by-names` operator to select and reorder columns from a table.
-The input table has 4 columns: `Name`, `Age`, `City`, and `Country`.
+The following examples demonstrate how to use the `project-by-names` operator to select and reorder columns from a table.
+The input table has four columns: `Name`, `Age`, `City`, and `Country`.
 
 ### Keep and reorder specific columns
 
@@ -139,9 +139,9 @@ datatable(Name:string, Data:string)
 |--|--|--|
 | Peter | Source-data | USA |
 
-### Ignore non-existing columns
+### Ignore nonexisting columns
 
-Same as above, but with a non-existent column in the dynamic array.
+Use the operator to keep columns from a table after performing a lookup, specifying which columns to retain using a dynamic array that includes a nonexisting column name.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
