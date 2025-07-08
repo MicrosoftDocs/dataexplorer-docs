@@ -27,7 +27,7 @@ Select and reorder a subset of columns from the input table by their names, dyna
 | *T* | `string` |  :heavy_check_mark: | The tabular input from which to remove columns. |
 | *ColumnSpecifier* | `string` |  :heavy_check_mark: | The name of the column, dynamic array of column names, or column wildcard pattern to keep and reorder.|
 
-> [|!NOTE]
+> [!NOTE]
 > * Columns in the result are ordered based on the sequence in which they are specified or matched.
 > * Column names that don't match any existing column are safely ignored.
 > * Wildcard characters (e.g., *) can be used to match multiple columns by name pattern.
