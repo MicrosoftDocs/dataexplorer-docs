@@ -3,7 +3,7 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 06/03/2025
+ms.date: 07/07/2025
 ---
 # .list blobs command (preview)
 
@@ -60,15 +60,7 @@ The following table lists the supported authentication methods and the permissio
 
 > [!NOTE]
 >
-> When authenticating with Keys or SAS tokens, protect sensitive data by using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
->
-> e.g.:
->```kusto
->.list blobs (
->    h"https://mystorageaccount.blob.core.windows.net/datasets/myfolder?sv=..."
->)
->MaxFiles=20
->```
+> To safeguard sensitive information when using SAS tokens or storage account access keys, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals). See the [example](#list-blobs-with-obfuscated-sas-token) for more information.
 
 The primary use of `.list blobs` is for queued ingestion which is done asynchronously with no user context. Therefore, [Impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) isn't supported.
 
@@ -114,6 +106,17 @@ The following command lists a maximum of 20 blobs from the `myfolder` folder usi
 ```kusto
 .list blobs (
     "https://mystorageaccount.blob.core.windows.net/datasets/myfolder;managed_identity=system"
+)
+MaxFiles=20
+```
+
+### List blobs with obfuscated SAS token
+
+The following command lists a maximum of 20 blobs from the `myfolder` folder using a [Shared Access Signature (SAS) token](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token) for authentication. The SAS token is obfuscated to safeguard sensitive information.
+
+```kusto
+.list blobs (
+    h"https://mystorageaccount.blob.core.windows.net/datasets/myfolder?sv=..."
 )
 MaxFiles=20
 ```
