@@ -36,7 +36,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 | IsEnabled  | `Boolean`  | :heavy_check_mark: | Indicates whether the policy is enabled.                                                                                                                                                                                  |
 | Hot        | `Timespan` | :heavy_check_mark: | The hot period defined in the query acceleration policy. Minimum value = 1 d.                                                                                                                                             |
 | HotWindows | `DateTime` |                    | One or more optional time windows. Delta data files created within these time windows are accelerated.                                                                                                                    |
-| MaxAge     | `Timespan` |                    | The external table will return accelerated data if the last index refresh time is greater than @now - max_age. Otherwise, external table will operate in non-accelerated mode. Default is 5 minutes. Minimum is 1 minute. |
+| MaxAge     | `Timespan` |                    | The external table will return accelerated data if the last index refresh time is greater than @now - MaxAge. Otherwise, external table will operate in non-accelerated mode. Default is 5 minutes. Minimum is 1 minute. |
 
 > [!NOTE]
 > Query acceleration is applied to data within a specific time period, defined as `timespan`, starting from the `modificationTime` as stated for each file in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file).
@@ -44,7 +44,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 ### Example
 
 ```json
-{ "IsEnabled": true, "Hot": "1.00:00:00", "MaxAge": "5m" }
+{ "IsEnabled": true, "Hot": "1.00:00:00" }
 ```
 
 ## Returns
@@ -62,7 +62,7 @@ The command returns a table with one record that includes the modified policy ob
 ## Example
 
 ```Kusto
-.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1d", "HotWindows":[{"MinValue":"2025-07-06 07:53:55.0192810","MaxValue":"2025-07-06 07:53:55.0192814"}], "MaxAge" : "5m"}'
+.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00", "HotWindows":[{"MinValue":"2025-07-06 07:53:55.0192810","MaxValue":"2025-07-06 07:53:55.0192814"}], "MaxAge" : "00:05:00"}'
 ```
 
 ## Related content
