@@ -48,12 +48,12 @@ Similarly, you can call `column_names_of()` with functions:
 
 ```kusto
 let MyFunction1 = () { print A="", B=1 };
-print column_names_of(MyFunction1())
+print Columns=column_names_of(MyFunction1())
 ```
 
 **Output:**
 
-| print_0 |
+| Columns |
 |---------|
 | [<br>  "A",<br>  "B"<br>] |
 
@@ -63,13 +63,11 @@ If the function has arguments, they can be used when calling `column_names_of()`
 
 ```kusto
 let MyFunction1 = (param1:int) { print A="", B=1 };
-print column_names_of(MyFunction1(1))
+print Columns=column_names_of(MyFunction1(1))
 ```
 
 **Output:**
 
-| print_0 |
+| Columns |
 |---------|
 | [<br>  "A",<br>  "B"<br>] |
-
-
