@@ -606,6 +606,9 @@ items:
       - name: column_ifexists()
         displayName: columnifexists() column if exists
         href: column-ifexists-function.md
+      - name: column_names_of()
+        displayName: columnnamesof() column names of
+        href: column-names-of-function.md
       - name: convert_angle()
         displayName: convert_angle() convert angle
         href: convert-angle-function.md
