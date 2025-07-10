@@ -72,7 +72,7 @@ The following table overviews the supported request properties.
 | `request_description` | `string` | Allows inclusion of arbitrary text as the request description. |
 | `request_external_data_disabled` | `bool` | If set to `true`, prevents the request from accessing external data using the [externaldata](../../query/externaldata-operator.md) operator or external tables. |
 | `request_external_table_disabled` | `bool` | If set to `true`, prevents the request from accessing external tables. |
-| `request_impersonation_disabled` | `bool` | If set to `true`, indicates that the service shouldn't impersonate the caller's identity. |
+| `request_impersonation_disabled` | `bool` | If set to `true`, prevents the service from using the caller's identity to access downstream services on behalf of the caller, including cross-cluster queries. |
 | `request_readonly` | `bool` | If set to `true`, prevents write access for the request. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `request_readonly_hardline` |  `bool` | If set to `true`, then the request operates in a strict read-only mode. The request isn't able to write anything, and any noncompliant functionality, such as plugins, are disabled. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `request_remote_entities_disabled` | `bool` | If set to `true`, prevents the request from accessing remote databases and remote entities. |
