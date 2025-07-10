@@ -307,6 +307,8 @@ items:
       - name: external_table()
         href: external-table-function.md
         displayName: external table external-table
+      - name: graph()
+        href: graph-function.md
       - name: materialize()
         href: materialize-function.md
       - name: materialized_view()
@@ -1273,8 +1275,8 @@ items:
         href: variancepif-aggregation-function.md
   - name: Graph
     items:
-      - name: Graph overview
-        href: graph-overview.md
+      - name: Graph semantics overview
+        href: graph-semantics-overview.md
       - name: Graph best practices
         href: graph-best-practices.md
       - name: Graph scenarios
@@ -1307,6 +1309,9 @@ items:
           - name: inner_nodes()
             displayName: inner nodes() graph function, inner nodes
             href: inner-nodes-graph-function.md
+          - name: labels()
+            displayName: labels() graph function, labels
+            href: labels-graph-function.md
           - name: node_degree_in()
             displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in
             href: node-degree-in.md

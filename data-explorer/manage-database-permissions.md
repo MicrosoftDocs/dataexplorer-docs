@@ -3,7 +3,7 @@ title: Manage database permissions in Azure Data Explorer
 description: This article describes role-based access controls for databases and tables in Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: how-to
-ms.date: 05/28/2023
+ms.date: 06/06/2025
 ---
 
 # Manage Azure Data Explorer database permissions in the Azure portal

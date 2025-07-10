@@ -3,7 +3,7 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 04/25/2025
+ms.date: 07/07/2025
 ---
 # .list blobs command (preview)
 
@@ -40,7 +40,7 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 
 > [!NOTE]
 >
-> * We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for *SourceDataLocators*.
+> * To safeguard sensitive information, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for *SourceDataLocators*.
 >
 > * When used alone, `.list blob` returns up to 1,000 files, regardless of any larger value specified in *MaxFiles*.
 
@@ -57,6 +57,10 @@ The following table lists the supported authentication methods and the permissio
 |[Shared Access (SAS) token](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
 |[Storage account access key](../../api/connection-strings/storage-connection-strings.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
 |[Managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity)|Storage Blob Data Reader|Reader|
+
+> [!NOTE]
+>
+> To safeguard sensitive information when using SAS tokens or storage account access keys, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals). See the [example](#list-blobs-with-obfuscated-sas-token) for more information.
 
 The primary use of `.list blobs` is for queued ingestion which is done asynchronously with no user context. Therefore, [Impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) isn't supported.
 
@@ -106,6 +110,17 @@ The following command lists a maximum of 20 blobs from the `myfolder` folder usi
 MaxFiles=20
 ```
 
+### List blobs with obfuscated SAS token
+
+The following command lists a maximum of 20 blobs from the `myfolder` folder using a [Shared Access Signature (SAS) token](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token) for authentication. The SAS token is obfuscated to safeguard sensitive information.
+
+```kusto
+.list blobs (
+    h"https://mystorageaccount.blob.core.windows.net/datasets/myfolder?sv=..."
+)
+MaxFiles=20
+```
+
 ### List Parquet blobs
 
 The following command lists a maximum of 10 blobs of type `.parquet` from a folder, using [system-assigned managed identity](../../api/connection-strings/storage-connection-strings.md#managed-identity) authentication.
@@ -124,17 +139,28 @@ The following command lists a maximum of 10 blobs of type `.parquet` from a fold
 
 ```kusto
 .list blobs (
-    "https://mystorageaccount.blob.core.windows.net/datasets/myfolder;managed_identity=system"
+    "https://mystorageaccount.blob.core.windows.net/spark/myfolder;managed_identity=system"
 )
 Suffix=".parquet"
 MaxFiles=10
 PathFormat=("myfolder/year=" datetime_pattern("yyyy'/month='MM'/day='dd", creationTime) "/")
 ```
 
-The `PathFormat` in the example can extract dates from a path such as the following path:
+The `PathFormat` parameter can extract dates from various folder hierarchies, such as:
 
-```
-https://mystorageaccount.blob.core.windows.net/datasets/myfolder/year=2024/month=03/day=16/myblob.parquet
+* *Spark* folder paths, for example: `https://mystorageaccount.blob.core.windows.net/spark/myfolder/year=2024/month=03/day=16/myblob.parquet`
+
+* Common folder paths, for example: `https://mystorageaccount.blob.core.windows.net/datasets/export/2024/03/16/03/myblob.parquet` where the hour `03` is included in the path.
+
+You can extract the creation time with the following command:
+
+```kusto
+.list blobs (
+    "https://mystorageaccount.blob.core.windows.net/datasets/export;managed_identity=system"
+)
+Suffix=".parquet"
+MaxFiles=10
+PathFormat=("datasets/export/" datetime_pattern("yyyy'/'MM'/'dd'/'HH", creationTime) "/")
 ```
 
 ## Related content

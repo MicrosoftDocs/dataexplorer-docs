@@ -3,7 +3,7 @@ title:  graph_blast_radius_fl()
 description: Learn how to use the graph_blast_radius_fl() function to calculate the Blast Radius of source nodes over path or edge data.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 03/03/2025
+ms.date: 05/25/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # graph_blast_radius_fl()
@@ -28,12 +28,11 @@ The function outputs a list of connected targets for each source and also a scor
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *sourceIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the source node Ids (either for edges or paths). |
-| *targetIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the target node Ids (either for edges or paths). |
+| *sourceIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the source node IDs (either for edges or paths). |
+| *targetIdColumnName* | `string` |  :heavy_check_mark: | The name of the column containing the target node IDs (either for edges or paths). |
 | *targetWeightColumnName* | `string` |   | The name of the column containing the target nodes' weights (such as criticality). If no relevant weights are present, the weighted score is equal to 0. The default column name is *noWeightsColumn*. |
 | *resultCountLimit* | `long` |   | The maximum number of returned rows (sorted by descending score). The default value is 100000. |
 | *listedIdsLimit* | `long` |   | The maximum number of targets listed for each source. The default value is 50. |
-
 
 ## Function definition
 
@@ -173,30 +172,30 @@ connections
 > For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
 ```kusto
-let connections = datatable (SourceNodeName:string, TargetNodeName:string, TargetNodeCriticality:int)[						
-    'vm-work-1',            'webapp-prd', 	          3,
-    'vm-custom',        	'webapp-prd', 	          3,
-    'webapp-prd',           'vm-custom', 	          1,
-    'webapp-prd',       	'test-machine', 	      1,
-    'vm-custom',        	'server-0126', 	          1,
-    'vm-custom',        	'hub_router', 	          2,
-    'webapp-prd',       	'hub_router', 	          2,
-    'test-machine',       	'vm-custom',              1,
-    'test-machine',        	'hub_router', 	          2,
-    'hub_router',           'remote_DT', 	          1,
-    'vm-work-1',            'storage_main_backup', 	  5,
-    'hub_router',           'vm-work-2', 	          1,
-    'vm-work-2',        	'backup_prc', 	          3,
-    'remote_DT',            'backup_prc', 	          3,
-    'backup_prc',           'storage_main_backup', 	  5,
-    'backup_prc',           'storage_DevBox', 	      1,
-    'device_A1',            'sevice_B2', 	          2,
-    'sevice_B2',            'device_A1', 	          2
+let connections = datatable (SourceNodeName:string, TargetNodeName:string, TargetNodeCriticality:int)[
+    'vm-work-1',            'webapp-prd',           3,
+    'vm-custom',            'webapp-prd',           3,
+    'webapp-prd',           'vm-custom',            1,
+    'webapp-prd',          'test-machine',          1,
+    'vm-custom',           'server-0126',           1,
+    'vm-custom',           'hub_router',            2,
+    'webapp-prd',          'hub_router',            2,
+    'test-machine',        'vm-custom',             1,
+    'test-machine',        'hub_router',            2,
+    'hub_router',           'remote_DT',            1,
+    'vm-work-1',            'storage_main_backup',  5,
+    'hub_router',           'vm-work-2',            1,
+    'vm-work-2',            'backup_prc',           3,
+    'remote_DT',            'backup_prc',           3,
+    'backup_prc',           'storage_main_backup',  5,
+    'backup_prc',           'storage_DevBox',       1,
+    'device_A1',            'sevice_B2',            2,
+    'sevice_B2',            'device_A1',            2
 ];
 connections
-| invoke graph_blast_radius_fl(sourceIdColumnName 		= 'SourceNodeName'
-                            , targetIdColumnName 		= 'TargetNodeName'
-                            , targetWeightColumnName 	= 'TargetNodeCriticality'
+| invoke graph_blast_radius_fl(sourceIdColumnName       = 'SourceNodeName'
+                            , targetIdColumnName        = 'TargetNodeName'
+                            , targetWeightColumnName    = 'TargetNodeCriticality'
 )
 ```
 
@@ -224,7 +223,7 @@ Running the function aggregates the connections or paths between sources and tar
 Each row in the output contains the following fields:
 
 * `sourceId`: ID of the source node taken from relevant column.
-* `blastRadiusList`: a list of target nodes Ids (taken from relevant column) that the source node is connected to. The list is capped to maximum length limit of listedIdsLimit parameter.
+* `blastRadiusList`: a list of target nodes IDs (taken from relevant column) that the source node is connected to. The list is capped to maximum length limit of listedIdsLimit parameter.
 * `blastRadiusScore`: the score is the count of target nodes that the source is connected to. High Blast Radius score indicates that the source node can potentially access lots of targets, and should be treated accordingly.
 * `blastRadiusScoreWeighted`: the weighted score is the sum of the optional target nodes' weight column, representing their value - such as criticality or cost. If such weight exists, weighted Blast Radius score might be a more accurate metric of source node value due to potential access to high value targets.
 * `isBlastRadiusListCapped`: boolean flag whether the list of targets was capped by listedIdsLimit parameter. If it's true, then other targets can be accessed from the source in addition to the listed one (up to the number of blastRadiusScore).
@@ -240,8 +239,8 @@ The function `graph_blast_radius_fl()` can be used to calculate the Blast Radius
 ## Related content
 
 * [Functions library](functions-library.md)
-* [Kusto Query Language (KQL) graph semantics overview](../query/graph-overview.md)
+* [Graph semantics overview](../query/graph-semantics-overview.md)
 * [Graph operators](../query/graph-operators.md)
-* [Scenarios](../query/graph-scenarios.md)
+* [Graph scenarios](../query/graph-scenarios.md)
 * [Best practices](../query/graph-best-practices.md)
-* [graph_path_discovery_fl()](graph-path-discovery-fl.md)
+* [graph-path-discovery-fl()](graph-path-discovery-fl.md)

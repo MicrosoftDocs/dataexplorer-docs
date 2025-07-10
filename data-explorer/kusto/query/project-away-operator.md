@@ -96,10 +96,10 @@ The table shows only the first 10 results.
 | Ignite 2019 | Jie Feng |  | `https://myignite.techcommunity.microsoft.com/sessions/83940` | 100 | 2019-11-06T14:35:00Z | 20 | Wed, Nov 6, 9:35 AM - 9:55 AM | Mention |
 | Ignite 2019 | Bernhard Rode | Le Hai Dang, Ricardo Niepel | `https://myignite.techcommunity.microsoft.com/sessions/81596` | 200 | 2019-11-06T16:45:00Z | 45 | Wed, Nov 6, 11:45 AM-12:30 PM | Mention |
 | Ignite 2019 | Tzvia Gitlin | Troyna | `https://myignite.techcommunity.microsoft.com/sessions/83933` | 400 | 2019-11-06T17:30:00Z | 75 | Wed, Nov 6, 12:30 PM-1:30 PM | Focused |
-| Ignite 2019 | Jie Feng | `https://myignite.techcommunity.microsoft.com/sessions/81057` | 300 | 2019-11-06T20:30:00Z | 45 | Wed, Nov 6, 3:30 PM-4:15 PM | Mention |
+| Ignite 2019 | Jie Feng | Troyna | `https://myignite.techcommunity.microsoft.com/sessions/81057` | 300 | 2019-11-06T20:30:00Z | 45 | Wed, Nov 6, 3:30 PM-4:15 PM | Mention |
 | Ignite 2019 | Manoj Raheja |  | `https://myignite.techcommunity.microsoft.com/sessions/83939` | 300 | 2019-11-07T18:15:00Z | 20 | Thu, Nov 7, 1:15 PM-1:35 PM | Focused |
 | Ignite 2019 | Uri Barash |  | `https://myignite.techcommunity.microsoft.com/sessions/81060` | 300 | 2019-11-08T17:30:00Z | 45 | Fri, Nov8,  10:30 AM-11:15 AM | Focused |
-| Ignite 2018 | Manoj Raheja |  | <https://learn.microsoft.com/shows/ignite-2018/> | 200 |  | 20 |  | Focused |
+| Ignite 2018 | Manoj Raheja |  | `https://learn.microsoft.com/shows/ignite-2018/` | 200 |  | 20 |  | Focused |
 | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 ## Related content

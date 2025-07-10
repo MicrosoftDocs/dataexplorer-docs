@@ -34,6 +34,8 @@ The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html
 
 ## Examples
 
+The following example calculates the geospatial coordinates that represent the center of an S2 cell.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjIB5G2Cump+fHFRsmpOTnxJfnxyal5JUWJOfFgWQ0lQyNjE1MzcyVNrhqF1IqS1LwUheT8/KKUzLzEktRioG6wOj0kMYTCnPy89MyS0pRUoDIkBdEGsToKOYkl2KQMYwEypEkCnAAAAA==" target="_blank">Run the query</a>

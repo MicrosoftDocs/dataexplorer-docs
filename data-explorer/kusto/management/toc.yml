@@ -131,6 +131,8 @@ items:
                 href: external-tables-azure-storage.md
               - name: Create or alter delta external table
                 href: external-tables-delta-lake.md
+              - name: .show external table details
+                href: show-external-tables-details.md
               - name: Manage external table mappings
                 items:
                   - name: .alter external table mapping command
@@ -222,6 +224,32 @@ items:
           - name: .show materialized-view(s) details
             displayName: show materialized view details
             href: materialized-views/materialized-view-show-details-command.md
+      - name: Graphs
+        items:
+          - name: Persistent graph overview
+            href: graph/graph-persistent-overview.md
+          - name: Graph models overview
+            href: graph/graph-model-overview.md
+          - name: .create-or-alter graph_model
+            href: graph/graph-model-create-or-alter.md
+          - name: .drop graph_model
+            href: graph/graph-model-drop.md
+          - name: .show graph_model
+            href: graph/graph-model-show.md
+          - name: .show graph_models 
+            href: graph/graph-models-show.md
+          - name: Graph snapshot overview
+            href: graph/graph-snapshot-overview.md
+          - name: .make graph_snapshot
+            href: graph/graph-snapshot-make.md
+          - name: .drop graph_snapshot
+            href: graph/graph-snapshot-drop.md
+          - name: .drop graph_snapshots
+            href: graph/graph-snapshots-drop.md
+          - name : .show graph_snapshot
+            href: graph/graph-snapshot-show.md
+          - name: .show graph_snapshots
+            href: graph/graph-snapshots-show.md
       - name: Stored query results
         items:
           - name: Stored query results
@@ -514,9 +542,11 @@ items:
           - name: .show table policy mirroring command
             href: show-table-mirroring-policy-command.md
             displayName: .show table mirroring policy
-          - name: .show table operations mirroring-status command
-            href: show-table-operations-mirroring-status-command.md
-            displayName: .show table mirroring status operations
+          - name: .show database operations mirroring-statistics
+            href: show-database-operations-mirroring-statistics.md
+          - name: .show table operations mirroring-statistics
+            href: show-table-operations-mirroring-statistics.md
+
           - name: .show table operations mirroring-exported-artifacts command
             href: show-table-operations-mirroring-exported-artifacts-command.md
             displayName: .show table mirroring operations exported artifacts

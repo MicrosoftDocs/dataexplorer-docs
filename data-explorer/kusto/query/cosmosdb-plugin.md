@@ -120,7 +120,7 @@ The following example joins partner data from an Azure Cosmos DB with partner da
 ```kusto
 evaluate cosmosdb_sql_request(
     'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=<MyDatabase>;Collection=<MyCollection>;AccountKey='h'<AccountKey>',
-    "SELECT c.id, c.Partner, c. phoneNumber FROM c') : (Id:long, Partner:string, phoneNumber:string) 
+    "SELECT c.id, c.Partner, c. phoneNumber FROM c") : (Id:long, Partner:string, phoneNumber:string) 
 | join kind=innerunique Partner on Partner
 | project id, Partner, phoneNumber, website, Contact
 | sort by Partner

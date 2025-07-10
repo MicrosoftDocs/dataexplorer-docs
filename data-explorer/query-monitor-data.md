@@ -3,7 +3,7 @@ title: 'Query data in Azure Monitor with Azure Data Explorer'
 description: 'In this article, query data in Azure Monitor (Application Insights resource and Log Analytics workspace) by creating Azure Data Explorer cross product queries.'
 ms.reviewer: guywi-ms
 ms.topic: how-to
-ms.date: 07/25/2024
+ms.date: 05/28/2025
 
 #Customer intent: I want to query data in Azure Monitor using Azure Data Explorer.
 ---
@@ -15,6 +15,9 @@ The Azure Data Explorer supports cross-service queries between Azure Data Explor
 The Azure Data Explorer cross-service queries flow:
 
 :::image type="content" source="media/query-monitor-data/query-monitor-workflow.png" alt-text="Diagram showing the Azure Data Explorer cross-service query flow."  lightbox="media/query-monitor-data/query-monitor-workflow.png":::
+
+> [!IMPORTANT]
+> Starting July 1, 2025, querying log data and events requires TLS 1.2 or higher when using [query API endpoints for Log Analytics or Application Insights](/azure/azure-monitor/fundamentals/azure-monitor-network-access#logs-query-api-endpoints). For more information, see [Secure data in transit](/azure/azure-monitor/fundamentals/best-practices-security#secure-logs-data-in-transit).
 
 ## Add a Log Analytics workspace/Application Insights resource to Azure Data Explorer client tools
 
@@ -115,6 +118,10 @@ If the Azure Data Explorer resource is in *tenant-name-a* and Log Analytics work
 
 Kusto Explorer automatically signs you into the tenant to which the user account originally belongs. To access resources in other tenants with the same user account, the `tenantId` has to be explicitly specified in the connection string:
 `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=<TenantId>`
+
+>[!NOTE]
+>
+> The `tenantId` parameter is not directly configurable in the Azure Data Explorer web UI. For the `tenantId` use the Microsoft Entra identity.
 
 ## Function supportability
 

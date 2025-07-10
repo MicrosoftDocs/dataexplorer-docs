@@ -11,6 +11,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "query/graph-overview.md",
+      "redirect_url": "/kusto/query/graph-semantics-overview",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "management/show-cluster-database.md",
       "redirect_url": "/kusto/management/show-databases",
       "redirect_document_id": false
@@ -57,7 +62,7 @@
     },
     {
       "source_path": "management/show-table-mirroring-operations-command.md",
-      "redirect_url": "/kusto/management/show-table-operations-mirroring-status-command",
+      "redirect_url": "/kusto/management/show-database-operations-mirroring-statistics",
       "redirect_document_id": true
     },
     {

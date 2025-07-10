@@ -1,0 +1,44 @@
+---
+config:
+  look: neo
+  theme: default
+---
+graph TD
+	%% People nodes in blue
+	Dave((Dave)):::person
+	Mallory((Mallory)):::person
+	Alice((Alice)):::person
+	Bob((Bob)):::person
+	Eve((Eve)):::person
+	Alex((Alex)):::person
+	
+	%% Equipment nodes in green
+	Conveyorbelt((Conveyor belt)):::equipment
+	Pump((Pump)):::equipment
+	Press((Press)):::equipment
+	
+	%% Measurement nodes in orange
+	Speed((Speed)):::measurement
+	temperature((temperature)):::measurement
+	pressure((pressure)):::measurement
+
+	Bob -->|reportsTo| Alice
+	Alice -->|reportsTo| Dave
+	Alex -->|reportsTo| Dave
+	Eve -->|reportsTo| Mallory
+
+	Bob -->|operates| Pump
+	Eve -->|operates| Pump
+	Mallory -->|operates| Press
+	Alex -->|operates| Conveyorbelt
+
+	Conveyorbelt -->|hasParent| Speed
+	Pump -->|hasParent| temperature
+	Pump -->|hasParent| pressure
+	Pump -->|hasParent| Conveyorbelt
+	Press -->|hasParent| Pump
+	
+	%% Define node styles
+	classDef person fill:#9699F3,stroke:#333,stroke-width:1px;
+	classDef equipment fill:#79EC87,stroke:#333,stroke-width:1px;
+	classDef measurement fill:#E62828,stroke:#333,stroke-width:1px;

@@ -17,7 +17,9 @@ Produce a table that represents a tabular schema of the input.
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
-## Example
+## Examples
+
+The following example creates a tabular schema of the input.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

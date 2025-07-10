@@ -18,7 +18,9 @@ items:
         href: query/tutorials/join-data-from-multiple-tables.md
       - name: 4 - Create geospatial visualizations
         href: query/tutorials/create-geospatial-visualizations.md
-      - name: 5 - Learn about common tasks for Microsoft Sentinel
+      - name: 5 - Create your first graph
+        href: query/tutorials/your-first-graph.md
+      - name: 6 - Learn about common tasks for Microsoft Sentinel
         href: query/tutorials/common-tasks-microsoft-sentinel.md
       - name: Train me
         items:

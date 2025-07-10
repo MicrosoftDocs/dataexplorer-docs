@@ -3,7 +3,7 @@ title: Configure streaming ingestion on your Azure Data Explorer cluster
 description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion.
 ms.reviewer: alexefro
 ms.topic: how-to
-ms.date: 05/17/2023
+ms.date: 06/10/2025
 ---
 
 # Configure streaming ingestion on your Azure Data Explorer cluster
@@ -25,8 +25,8 @@ Two streaming ingestion types are supported:
 
 | Ingestion type | Description |
 | -- | -- |
-| Data connection | Event Hubs, IoT Hub, and Event Grid data connections can use streaming ingestion, provided it is enabled on the cluster level. The decision to use streaming ingestion is done according to the streaming ingestion policy configured on the target table.<br />For information on managing data connections, see [**Event Hub**](create-event-hubs-connection.md?tabs=portalADX), [**IoT Hub**](create-iot-hub-connection.md?tabs=portal) and [**Event Grid**](create-event-grid-connection.md). |
-| Custom ingestion | Custom ingestion requires you to write an application that uses one of the Azure Data Explorer [client libraries](/kusto/api/client-libraries).<br />Use the information in this topic to configure custom ingestion. You may also find the [C?view=azure-data-explorer&preserve-view=true# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) helpful. |
+| Data connection | Event Hubs, IoT Hub, and Event Grid data connections can use streaming ingestion, provided it's enabled on the cluster level. The decision to use streaming ingestion is done according to the streaming ingestion policy configured on the target table.<br />For information on managing data connections, see [**Event Hub**](create-event-hubs-connection.md?tabs=portalADX), [**IoT Hub**](create-iot-hub-connection.md?tabs=portal) and [**Event Grid**](create-event-grid-connection.md). |
+| Custom ingestion | Custom ingestion requires you to write an application that uses one of the Azure Data Explorer [client libraries](/kusto/api/client-libraries).<br />Use the information in this article to configure custom ingestion. You may also find the [C?view=azure-data-explorer&preserve-view=true# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) helpful. |
 
 Use the following table to help you choose the ingestion type that's appropriate for your environment:
 
@@ -36,7 +36,7 @@ Use the following table to help you choose the ingestion type that's appropriate
 |Development overhead | Fast and easy setup, no development overhead | High development overhead to create an application ingest the data, handle errors, and ensure data consistency |
 
 > [!NOTE]
-> You can manage the process to [enable](#enable-streaming-ingestion-on-your-cluster) and [disable](#disable-streaming-ingestion-on-your-cluster) streaming ingestion on your cluster using the Azure portal or programmatically in C\#. If you are using C\# for your [custom application](#create-a-streaming-ingestion-application-to-ingest-data-to-your-cluster), you may find it more convenient using the programmatic approach.
+> You can manage the process to [enable](#enable-streaming-ingestion-on-your-cluster) and [disable](#disable-streaming-ingestion-on-your-cluster) streaming ingestion on your cluster using the Azure portal or programmatically in C\#. If you're using C\# for your [custom application](#create-a-streaming-ingestion-application-to-ingest-data-to-your-cluster), you may find it more convenient using the programmatic approach.
 
 ## Prerequisites
 
@@ -179,7 +179,7 @@ Create a table to receive the streaming ingestion data and define its related po
 1. Copy one of the following commands into the **Query pane** and select **Run**. This defines the [streaming ingestion policy](/kusto/management/streaming-ingestion-policy?view=azure-data-explorer&preserve-view=true) on the table you created or on the database that contains the table.
 
     > [!TIP]
-    > A policy that is defined at the database level applies to all existing and future tables in the database. When you enable the policy at the database level, there is no need to enable it per table.
+    > A policy that is defined at the database level applies to all existing and future tables in the database. When you enable the policy at the database level, there's no need to enable it per table.
 
     * To define the policy on the table you created, use:
 
@@ -557,7 +557,7 @@ class Program
 * [Data mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) must be [pre-created](/kusto/management/create-ingestion-mapping-command?view=azure-data-explorer&preserve-view=true) for use in streaming ingestion. Individual streaming ingestion requests don't accommodate inline data mappings.
 * [Extent tags](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) can't be set on the streaming ingestion data.
 * [Update policy](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true). The update policy can reference only the newly ingested data in the source table and not any other data or tables in the database.
-* When an update policy with a [transactional policy](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true#handling-failures) fails, the retries will fall back to batch ingestion.
+* When an update policy with a [transactional policy](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true#handling-failures) fails, the retries fall back to batch ingestion.
 * If streaming ingestion is enabled on a cluster used as a leader for [follower databases](follower.md), streaming ingestion must be enabled on the following clusters as well to follow streaming ingestion data. Same applies whether the cluster data is shared via [Data Share](data-share.md).
 
 ## Related content

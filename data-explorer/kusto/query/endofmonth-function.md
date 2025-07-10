@@ -49,3 +49,10 @@ The following example returns the end of the month for the specified date.
 |2016-12-31 23:59:59.9999999|
 |2017-01-31 23:59:59.9999999|
 |2017-02-28 23:59:59.9999999|
+
+## Related content
+
+* [startofmonth function](./startofmonth-function.md)
+* [endofday function](./endofday-function.md)
+* [endofweek function](./endofweek-function.md)
+* [endofyear function](./endofyear-function.md)
