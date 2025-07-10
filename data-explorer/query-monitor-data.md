@@ -57,7 +57,7 @@ Add a Log Analytics workspace or Application Insights resource to Azure Data Exp
 
 ## Run queries
 
-You can run the queries using client tools that support Kusto queries, such as: Kusto Explorer, Azure Data Explorer web UI, Jupyter Kqlmagic, Flow, PowerQuery, PowerShell, Lens, REST API.
+You can run the queries using client tools that support Kusto queries, such as: Kusto Explorer, Azure Data Explorer web UI, Notebooks with Kqlmagic, Flow, PowerQuery, PowerShell, Lens, REST API.
 
 > [!NOTE]
 > Cross-service querying is used for data retrieval only. For more information, see [Function supportability](#function-supportability).
