@@ -75,15 +75,31 @@ The query examples show the syntax and example usage of the operator, statement,
 
 The following example uses a scalar expression statement.
 
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
-let n = 10;  // number
-let place = "Dallas";  // string
-let cutoff = ago(62d); // datetime 
-Events 
-| where timestamp > cutoff 
-    and city == place 
-| take n
+let threshold = 50;
+let region = "West";
+datatable(Name:string, Score:int, Region:string)
+[
+    "Alice", 45, "West",
+    "Bob", 60, "East",
+    "Charlie", 55, "West",
+    "Dana", 70, "North"
+]
+| where Score > threshold and Region == region
 ```
+
+**Output**
+
+| Name | Score | Region |
+|--|--|--|
+| Charlie | 55 | West |
+
+### Define tabular expressions
 
 The following example binds the name `some number` using the `['name']` notation, and then uses it in a tabular expression statement.
 
