@@ -97,7 +97,7 @@ System.Net.Http.HttpRequestException: The SSL connection could not be establishe
 System.Security.Authentication.AuthenticationException: The remote certificate is invalid because of errors in the certificate chain: RevocationStatusUnknown
 ```
 
-You can reolve this issue by allowing access the [list of remote certificatre verification uris](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-connectors#allow-access-to-urls) from the [azure private network configuration guide](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-connectors).
+You can reolve this issue by allowing access the [list of remote certificatre verification uris](/entra/global-secure-access/how-to-configure-connectors#allow-access-to-urls) from the [azure private network configuration guide](/entra/global-secure-access/how-to-configure-connectors).
 
 Alternatively (less recommanded), you can disable the remote certificate revocation validation using one of the following options:
 
