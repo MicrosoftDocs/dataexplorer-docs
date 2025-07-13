@@ -63,7 +63,6 @@ You must have at least Database User, Database Viewer, Database Monitor to run t
 ## Example
 
 ```kusto
-.show external tables details
 .show external table deltatable details
 ```
 
