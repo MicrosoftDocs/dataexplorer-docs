@@ -88,26 +88,26 @@ Pong! IP address: 'IPv6IPaddress2'
 
 A successful result must return **Pong!** and an IPv6 address.
 
-### Check Remote Cretificate Revocation List 
+### Check remote certificate revocation list 
 
-If you get an exception saying the remote certificate can not be validated when using the C# SDK, your network may be configured to block checking the remote certificate revocation list.
+If you get an exception saying the remote certificate cannot be validated when using the C# SDK, your network may be configured to block checking the remote certificate revocation list.
 
 ```
 System.Net.Http.HttpRequestException: The SSL connection could not be established, see inner exception. --->
 System.Security.Authentication.AuthenticationException: The remote certificate is invalid because of errors in the certificate chain: RevocationStatusUnknown
 ```
 
-You can reolve this issue by allowing access the [list of remote certificatre verification uris](/entra/global-secure-access/how-to-configure-connectors#allow-access-to-urls) from the [azure private network configuration guide](/entra/global-secure-access/how-to-configure-connectors).
+You can resolve this issue by allowing access to the [list of remote certificate verification URLs](/entra/global-secure-access/how-to-configure-connectors#allow-access-to-urls) from the [Azure private network configuration guide](/entra/global-secure-access/how-to-configure-connectors).
 
-Alternatively (less recommanded), you can disable the remote certificate revocation validation using one of the following options:
+Alternatively (less recommended), you can disable the remote certificate revocation validation by using one of the following options:
 
-* Using Command Line Args: Add the following arguemnt to your C# process:
+* Using Command Line Args: Add the following argument to your C# process:
 
 ```
 -tweaks:Kusto.Cloud.Platform.Net.ExtendedServicePointManager.DisableCertificateRevocationListValidation=true
 ```
 
-* Using Environment Variables: set the following environment variable in the context of your machine process:
+* Using Environment Variables: Set the following environment variable in the context of your machine process:
 
 ```
 tweaks="Kusto.Cloud.Platform.Net.ExtendedServicePointManager.DisableCertificateRevocationListValidation=true"
