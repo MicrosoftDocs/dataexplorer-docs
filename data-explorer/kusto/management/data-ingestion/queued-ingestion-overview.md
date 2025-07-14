@@ -7,7 +7,7 @@ ms.date: 04/25/2025
 ---
 # Queued ingestion commands overview (preview)
 
-> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Queued ingestion commands allow you to ingest specific folders, or an entire container and manage the operations related to queued ingestion. You can also ingest multiple or individual blobs by URL and from a source file. The ingestion commands are useful for preparing and testing distinct ingestion scenarios before the final ingestion. Using them helps to ensure that fields, columns, partitioning, and other needs are handled properly during ingestion.
 
