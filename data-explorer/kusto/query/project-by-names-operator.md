@@ -31,7 +31,7 @@ Select and reorder a subset of columns from the input table by their names, dyna
 > * Columns in the result are ordered based on the sequence in which they're specified or matched.
 > * Column names that don't match any existing column are safely ignored.
 > * Wildcard characters (*) can be used to match multiple columns by name pattern.
-> * ColumnSpecifier can include the result of a column_names_of(Table) expression, which returns a dynamic array of column names from the specified table.
+> * ColumnSpecifier can include the result of a [column_names_of(Table)](column-names-of-function.md) expression, which returns a dynamic array of column names from the specified table.
 > * Subqueries or scalar expressions like toscalar() aren't supported in the *ColumnSpecifier* parameter.
 > * For related functionality:
 >   * Use [`project-away`](project-away-operator.md) to exclude specific columns from the result.
