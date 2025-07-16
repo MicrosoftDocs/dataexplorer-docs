@@ -25,7 +25,7 @@ The following sections shows the main results from the analysis, explain what dr
 
 The chart below shows **median daily GB ingested** in original size (Y-axis) vs. **median cost per GB ingested** (X-axis) for each cost group. Bubble size represents the group’s share of total data ingested into the service.
 
-:::image type="content" source="media/cost-drivers/cost graph.png" alt-text="Bubble chart showing cost per GB ingested.":::
+:::image type="content" source="media/cost-drivers/cost-graph.png" alt-text="Bubble chart showing cost per GB ingested.":::
 
 **Cost per GB ingested varies across clusters, but several patterns stand out**:
 
@@ -86,7 +86,7 @@ Each ingestion method has different cost, latency, and functionality characteris
 
 ---
 
-> [!TIP] > **Tips for Optimizing Cost per GB Ingested**
+> [!TIP] **Tips for Optimizing Cost per GB Ingested**
 > Review the configurations of the parameters listed in this document to ensure they align with your cluster’s needs and workload requirements for optimal efficiency. In particular:
 > 1. Ensure that query over cold data is minimized, to reduce read transaction.
 > 2. Enable autoscale to dynamically match cluster size to demand.
