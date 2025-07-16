@@ -3,7 +3,6 @@ title: Azure Data Explorer cost per GB ingested
 description: Discover how Azure Data Explorer calculates cost per GB ingested, what drives costs, and how to optimize your cluster.
 ms.reviewer: avnera
 ms.author: spelluru
-ms.service: rti-core
 ms.topic: concept-article
 ms.date: 07/14/2025
 
@@ -12,19 +11,17 @@ ms.date: 07/14/2025
 
 # Cost breakdown of Azure Data Explorer
 
-Azure Data Explorer (ADX) is a fully managed analytics platform for real-time analysis of large-scale telemetry and log data. This article explains how cost per GB ingested is calculated in Azure Data Explorer, what factors drive it, and how you can optimize your cluster for cost efficiency.
+Azure Data Explorer (ADX) is a fully managed analytics platform for real-time analysis of large-scale telemetry and log data. This article explains how cost per GB ingested is calculated in Azure Data Explorer, what factors drive it, and how you can optimize your cluster for cost efficiency. Big data analytics platforms use different pricing models. Many platforms base pricing on factors like query volume, data ingestion, storage duration, and compute resources. This complexity makes it hard to compare pricing across products.
 
-Big data analytics platforms use different pricing models. Many platforms base pricing on factors like query volume, data ingestion, storage duration, and compute resources. This complexity makes it hard to compare pricing across products.
+To help understand the cost of using Azure Data Explorer, this article uses the metric **cost per GB ingested**. This metric is the **total cluster cost** (compute, storage, networking, and service markup) divided by the **total original sized data ingested** during that period.
 
-To help you understand the cost of using Azure Data Explorer, this article uses the metric **cost per GB ingested**. This metric is the **total cluster cost** (compute, storage, networking, and service markup) divided by the **total original sized data ingested** during that period.
+A representative snapshot of ADX clusters in **June 2025** is used to ground the analysis. The following sections show the main results from the [analysis](#cost-per-gb-ingested-analysis), explain [what drives](#what-drives-cost-per-gb-ingested) the cost variations, and how users can [optimize cost per GB ingested](#a-closer-look-at-key-cost-drivers) without compromising performance.
 
 > [!NOTE]
 >
-> * All cost figures in this article show list prices and don't include discounts or commitment-based savings.
+> All cost figures in this article show list prices and don't include discounts or commitment-based savings.
 
 ## Cost per GB ingested analysis
-
-This analysis uses a representative snapshot of ADX clusters in **June 2025** to ground the analysis. The following sections show the main results from the [analysis](#cost-per-gb-ingested-analysis), explain [what drives](#what-drives-cost-per-gb-ingested) the cost variations, and how users can [optimize cost per GB ingested](#a-closer-look-at-key-cost-drivers) without compromising performance.
 
 The chart below shows **median daily GB ingested** in original size (Y-axis) vs. **median cost per GB ingested** (X-axis) for each cost group. Bubble size represents the group’s share of total data ingested into the service.
 
@@ -43,7 +40,8 @@ Cost per GB ingested varies across clusters, but several patterns stand out:
 > [!IMPORTANT]
 >
 > The bubble graph shows that cost per GB ingested varies across clusters. This variation doesn't indicate good or bad practices. It reflects different scenarios, configurations, and usage patterns for the service.
-For example, one cluster might retain data longer for compliance, which increases storage costs. Another might use update policies that process data during ingestion, which raises compute usage. These scenarios are intentional design choices aligned with specific goals, and they naturally affect cost per GB.
+>
+> For example, one cluster might retain data longer for compliance, which increases storage costs. Another might use update policies that process data during ingestion, which raises compute usage. These scenarios are intentional design choices aligned with specific goals, and they naturally affect cost per GB.
 
 ## What drives cost per GB ingested
 
@@ -102,8 +100,8 @@ When queries frequently access cold data stored on disk, they cause read transac
 Each ingestion method has different cost, latency, and functionality characteristics, so each is better for different scenarios. For cost, **streaming ingestion** is cheaper when you ingest many small tables with trickling data, while **queued ingestion** is more cost-effective for large tables.
 
 > [!TIP]
-
-> **Tips to optimize Cost per GB Ingested**
+>
+> **Optimize Cost per GB Ingested**
 >
 > Check the configurations of the [key cost drivers](#a-closer-look-at-key-cost-drivers) to ensure they fit your cluster’s needs and service requirements for efficiency. In particular:
 >
