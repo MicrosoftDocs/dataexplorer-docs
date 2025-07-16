@@ -683,7 +683,7 @@ items:
           - name: Pricing page
             href: https://azure.microsoft.com/pricing/details/data-explorer/
           - name: Cost drivers
-            href: cost-drivers.md
+            href: pricing-cost-drivers.md
           - name: Pricing calculator
             href: pricing-calculator.md
           - name: Reserved capacity
