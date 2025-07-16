@@ -22,9 +22,9 @@ To help you understand the cost of using Azure Data Explorer, this article uses 
 >
 > * All cost figures in this article show list prices and don't include discounts or commitment-based savings.
 
-This article uses a representative snapshot of ADX clusters in **June 2025** to ground the analysis. The following sections show the main results from the [analysis](#cost-per-gb-ingested-analysis), explain [what drives](#what-drives-cost-per-gb-ingested) the cost variations, and how users can [optimize cost per GB ingested](#a-closer-look-at-key-cost-drivers) without compromising performance.
-
 ## Cost per GB ingested analysis
+
+This analysis uses a representative snapshot of ADX clusters in **June 2025** to ground the analysis. The following sections show the main results from the [analysis](#cost-per-gb-ingested-analysis), explain [what drives](#what-drives-cost-per-gb-ingested) the cost variations, and how users can [optimize cost per GB ingested](#a-closer-look-at-key-cost-drivers) without compromising performance.
 
 The chart below shows **median daily GB ingested** in original size (Y-axis) vs. **median cost per GB ingested** (X-axis) for each cost group. Bubble size represents the group’s share of total data ingested into the service.
 
@@ -38,16 +38,16 @@ Cost per GB ingested varies across clusters, but several patterns stand out:
 
 * Even within the same usage category (or "bubble"), you see significant variation. For example, in the largest bubble, one cluster ingests at **$0.02 per GB**, while another reaches **$0.10 per GB**. That's a **5X difference**. The next sections explain the key reasons for this variation.
 
-* Clusters with **higher cost per GB are less common** and usually have **lower ingestion volumes**. In general, smaller data volumes mean higher cost per GB (see below).
+* Clusters with **higher cost per GB are less common** and usually have **lower ingestion volumes**. In general, smaller data volumes mean higher cost per GB.
   
 > [!IMPORTANT]
 >
 > The bubble graph shows that cost per GB ingested varies across clusters. This variation doesn't indicate good or bad practices. It reflects different scenarios, configurations, and usage patterns for the service.
-For example, one cluster might retain data longer for compliance, which increases storage costs. Another might use update policies that process data during ingestion, which raises compute usage. These are intentional design choices aligned with specific goals, and they naturally affect cost per GB. The next section explains the key drivers behind these differences.
+For example, one cluster might retain data longer for compliance, which increases storage costs. Another might use update policies that process data during ingestion, which raises compute usage. These scenarios are intentional design choices aligned with specific goals, and they naturally affect cost per GB.
 
 ## What drives cost per GB ingested
 
-Below are the key factors behind the variation in cost per GB ingested per cluster:
+These key factors are behind the variations in cost per GB ingested per cluster:
 
 * **Storage duration**: The longer you store data, the higher the cost. See [retention policy](/kusto/management/show-table-retention-policy-command?view=azure-data-explorer&preserve-view=true).
 
@@ -67,7 +67,7 @@ Below are the key factors behind the variation in cost per GB ingested per clust
 
 * **Advanced features**: Options like followers, private endpoints, and Python sandboxes consume more resources and can add to cost.
 
-* **Data pipeline choice**: Some ingestion paths cost less. For example, Event Grid ingestion is usually cheaper than Event Hub.
+* **Data pipeline choice**: Some ingestion paths cost less. For example, [Event Grid](ingest-data-event-grid-overview.md) ingestion is usually cheaper than [Event Hub](ingest-data-event-hub-overview.md).
 
 * **Autoscale**: Clusters without autoscale often cost more because they don't adjust their size based on demand.
 
