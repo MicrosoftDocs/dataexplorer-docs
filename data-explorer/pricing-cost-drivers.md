@@ -5,8 +5,9 @@ ms.reviewer: avnera
 ms.author: spelluru
 ms.topic: concept-article
 ms.date: 07/14/2025
+ms.search: Cost, pricing, Cost per GB, optimize, 
 
-#CustomerIntent: As a <type of user>, I want <what?> so that <why?>.
+#CustomerIntent: As a Azure Data Explorer admin, I want to understand what drives the costs and how to optimize the costs.
 ---
 
 # Cost breakdown of Azure Data Explorer
@@ -83,7 +84,7 @@ In ADX, all ingested data is stored in persistent storage. Each table and materi
 
 * Cluster size is the number of machines (nodes) in the cluster. Each machine adds cost, depending on its type (SKU). **Autoscale** adjusts the cluster size based on CPU usage, so the system can optimize cost and performance by avoiding idle or redundant resources.
 
-* Autoscale adjusts the cluster size to ensure cached data fits within the available SSD space. As a result, a large cache can increase cluster size and if CPU usage is low, this may lead to a higher cost per GB. See the [Cluster Insight tool](data-explorer-insights#cache-tab) for more information on optimizing the cache size.
+* Autoscale adjusts the cluster size to ensure cached data fits within the available SSD space. As a result, a large cache can increase cluster size and if CPU usage is low, this may lead to a higher cost per GB. See the [Cache tab](data-explorer-insights.md#cache-tab) [Clusters Insight tool](data-explorer-insights.md#cache-tab) for more information on optimizing the cache size.
 
 * Clusters that run many queries or do CPU-heavy tasks like Materialized Views, Update Policies, or Partitioning can scale the cluster, raising the cost per GB. Note that these features can significantly increase query performance and reduce query CPU usage and thus improve overall efficiency.
 
