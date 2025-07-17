@@ -83,9 +83,9 @@ In ADX, all ingested data is stored in persistent storage. Each table and materi
 
 * Cluster size is the number of machines (nodes) in the cluster. Each machine adds cost, depending on its type (SKU). **Autoscale** adjusts the cluster size based on CPU usage, so the system can optimize cost and performance by avoiding idle or redundant resources.
 
-* A **large cache** with low ingestion volume often leads to a higher cost per GB, since you're paying for capacity that isn't fully used. Cache size can affect autoscale because large caches need more SSD space, which can cause the cluster to scale up and increase costs.
+* Autoscale adjusts the cluster size to ensure cached data fits within the available SSD space. As a result, a large cache can increase cluster size and if CPU usage is low, this may lead to a higher cost per GB. See the [Cluster Insight tool](data-explorer-insights#cache-tab) for more information on optimizing the cache size.
 
-* Clusters that run many queries or do CPU-heavy tasks like Materialized Views, Update Policies, or Partitioning can scale up, raising the cost per GB. These features can reduce query CPU usage and improve overall efficiency.
+* Clusters that run many queries or do CPU-heavy tasks like Materialized Views, Update Policies, or Partitioning can scale the cluster, raising the cost per GB. Note that these features can significantly increase query performance and reduce query CPU usage and thus improve overall efficiency.
 
 ### Volume of data ingested
 
