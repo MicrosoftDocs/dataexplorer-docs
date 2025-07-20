@@ -43,9 +43,10 @@ You must have at least Database User, Database Viewer, Database Monitor to run t
 
 | Column | Type | Description |
 |--|--|--|
-| TableName | `string` | The name of the external table. |
 | IsEnabled | `bool` | Indicates whether the external table has a query acceleration policy enabled. |
 | Hot | `timespan` | The hot period defined in the query acceleration policy. |
+| MaxAge | `timespan` | The maximum timespan from the last index refresh time that enables the external table to operate in accelerated mode. |
+| HotWindows | `datetime` | One or more optional time windows. Delta data files created within these time windows are accelerated. |
 
 ### Query acceleration state
 
@@ -63,7 +64,6 @@ You must have at least Database User, Database Viewer, Database Monitor to run t
 ## Example
 
 ```kusto
-.show external tables details
 .show external table deltatable details
 ```
 
@@ -71,5 +71,4 @@ You must have at least Database User, Database Viewer, Database Monitor to run t
 
 | TableName | QueryAccelerationPolicy | QueryAccelerationState        |
 |-----------|-----------|----------------|
-| deltatable        | {
-  "IsEnabled": true,  "Hot": "365000.00:00:00"}      | {  "HotSize": 29454192,  "CompletionPercentage": 75.0,  "PendingArtifactSize": 21162035,  "PendingArtifactCount": 3,  "IsHealthy": false,  "NotHealthyReason": "InaccessibleDeltaTable : Delta table does not exist",  "LastUpdatedDateTime": "2025-04-03 13:38:00.1541537",  "Latency": "26.00:58:12.8941033"} |
+| deltatable        | {"IsEnabled": true,  "Hot": "365000.00:00:00", "MaxAge": "5m", "HotWindows":[{"MinValue":"2025-07-04","MaxValue":"2025-07-06"}]}      | {  "HotSize": 29454192,  "CompletionPercentage": 75.0,  "PendingArtifactSize": 21162035,  "PendingArtifactCount": 3,  "IsHealthy": false,  "NotHealthyReason": "InaccessibleDeltaTable : Delta table does not exist",  "LastUpdatedDateTime": "2025-04-03 13:38:00.1541537",  "Latency": "26.00:58:12.8941033"} |

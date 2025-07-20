@@ -5,6 +5,7 @@ ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 11/19/2024
 ---
+
 # .show query acceleration policy command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
@@ -17,15 +18,15 @@ You must have at least [Database monitor or Database viewer](../access-control/r
 
 ## Syntax
 
-`.show` `external` `table` *ExternalTableName* `policy` `query_acceleration`
+`.show` `external` `table` _ExternalTableName_ `policy` `query_acceleration`
 
 `.show` `external` `table` `*` `policy` `query_acceleration`
 
 ## Parameters
 
-| Name                | Type     | Required           | Description                     |
-| ------------------- | -------- | ------------------ | ------------------------------- |
-| *ExternalTableName* | `string` |  | The name of the external delta table. |
+| Name                | Type     | Required | Description                           |
+| ------------------- | -------- | -------- | ------------------------------------- |
+| _ExternalTableName_ | `string` |          | The name of the external delta table. |
 
 ## Returns
 
@@ -47,13 +48,13 @@ The command returns a table with a record per external table with the following 
 
 **Output**
 
-| PolicyName              | EntityName                     | Policy                                                                             | ChildEntities | EntityType    |
-| ----------------------- | ------------------------------ | ---------------------------------------------------------------------------------- | ------------- | ------------- |
-| QueryAccelerationPolicy | [MyDatabase].[MyExternalTable] | {<br>  "IsEnabled": true,<br>  "Hot": "1.00:00:00",<br> "HotWindows": [{"MinValue":"2025-07-06 07:53:55.0192810","MaxValue":"2025-07-06 07:53:55.0192814"}]}                || ExternalTable |
+| PolicyName              | EntityName                     | Policy                                                                                                                                                                     | ChildEntities | EntityType    |
+| ----------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------- |
+| QueryAccelerationPolicy | [MyDatabase].[MyExternalTable] | {<br> "IsEnabled": true,<br> "Hot": "1.00:00:00",<br> "HotWindows": [{"MinValue":"2025-07-06 07:53:55.0192810","MaxValue":"2025-07-06 07:53:55.0192814"}], "MaxAge": "5m"} |               | ExternalTable |
 
 ## Related content
 
-* [Query acceleration policy](query-acceleration-policy.md)
-* [.alter query acceleration policy command](alter-query-acceleration-policy-command.md)
-* [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
-* [.show external table operations query_acceleration statistics](show-external-table-operations-query-acceleration-statistics.md)
+- [Query acceleration policy](query-acceleration-policy.md)
+- [.alter query acceleration policy command](alter-query-acceleration-policy-command.md)
+- [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
+- [.show external table operations query_acceleration statistics](show-external-table-operations-query-acceleration-statistics.md)
