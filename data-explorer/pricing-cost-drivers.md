@@ -16,11 +16,12 @@ Azure Data Explorer (ADX) is a fully managed analytics platform for real-time an
 
 To help understand the cost of using Azure Data Explorer, this article uses the metric **cost per GB ingested**. This metric is the **total cluster cost** (compute, storage, networking, and service markup) divided by the **total original sized data ingested** during that period.
 
-A representative snapshot of ADX clusters in **June 2025** is used to ground the analysis. The following sections show the main results from the [analysis](#cost-per-gb-ingested-analysis), explain [what drives](#what-drives-cost-per-gb-ingested) the cost variations, and how users can [optimize cost per GB ingested](#a-closer-look-at-key-cost-drivers) without compromising performance.
+A representative snapshot of ADX clusters in **June 2025** is used to ground the example analysis. The following sections show the main results from the [analysis](#cost-per-gb-ingested-analysis), explain [what drives](#what-drives-cost-per-gb-ingested) the cost variations, and how users can [optimize cost per GB ingested](#a-closer-look-at-key-cost-drivers) without compromising performance.
 
 > [!NOTE]
 >
-> All cost figures in this article show list prices and don't include discounts or commitment-based savings.
+> For the purpose of this example analysis, cost per GB is expressed in **Sample Cost Units (SCUs)**.
+> For list prices and how to calculate them, see [Cost breakdown of Azure Data Explorer](pricing-cost-drivers.md).
 
 ## Cost per GB ingested analysis
 
@@ -30,11 +31,11 @@ The chart below shows **median daily GB ingested** in original size (Y-axis) vs.
 
 Cost per GB ingested varies across clusters, but several patterns stand out:
 
-* **Most data (78%)** is ingested at a cost between **$0.02 and $0.10 per GB** (before discounts).
+* **Most data (>75%)** is ingested at a cost between **2 and 10 SCUs per GB** (before discounts).
 
-* **3% of the data** is ingested at **less than $0.02 per GB**.
+* **Less than 5% of the data** is ingested at **less than 2 SCUs per GB**.
 
-* Even within the same usage category (or "bubble"), you see significant variation. For example, in the largest bubble, one cluster ingests at **$0.02 per GB**, while another reaches **$0.10 per GB**. That's a **5X difference**. The next sections explain the key reasons for this variation.
+* Even within the same usage category (or "bubble"), you see significant variation. For example, in the largest bubble, one cluster ingests at **2 SCUs per GB**, while another reaches **10 SCUs per GB**. That's a **5X difference**. The next sections explain the key reasons for this variation.
 
 * Clusters with **higher cost per GB are less common** and usually have **lower ingestion volumes**. In general, smaller data volumes mean higher cost per GB.
   
@@ -66,7 +67,7 @@ These key factors are behind the variations in cost per GB ingested per cluster:
 
 * **Advanced features**: Options like followers, private endpoints, and Python sandboxes consume more resources and can add to cost.
 
-* **Data pipeline choice**: Some ingestion paths cost less. For example, [Event Grid](ingest-data-event-grid-overview.md) ingestion is usually cheaper than [Event Hub](ingest-data-event-hub-overview.md).
+* **Data pipeline choice**: Some ingestion paths cost less. For example, [Event Grid](ingest-data-event-grid-overview.md) ingestion is usually cheaper than [Event Hubs](ingest-data-event-hub-overview.md).
 
 * **Autoscale**: Clusters without autoscale often cost more because they don't adjust their size based on demand.
 
