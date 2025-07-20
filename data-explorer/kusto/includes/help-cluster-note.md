@@ -8,6 +8,4 @@ ms.date: 01/22/2025
 ::: moniker-end
 :::moniker range="microsoft-fabric"
 > The examples in this article use publicly available tables, such as the `Weather` table in the Weather analytics [sample gallery](/fabric/real-time-intelligence/sample-gallery). You may need to modify the the table name in the example query to match the table in your workspace.
-
-Note
 ::: moniker-end

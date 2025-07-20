@@ -3,7 +3,7 @@ title:  Let statement
 description: Learn how to use the Let statement to set a variable name to define an expression or a function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/08/2025
+ms.date: 07/20/2025
 ms.localizationpriority: high
 ---
 # Let statement
@@ -65,11 +65,9 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 ## Examples
 
-The examples in this section show how to use the syntax to help you get started.
+The query examples show the syntax and example usage of the operator, statement, or function.
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
-
-The query examples show the syntax and example usage of the operator, statement, or function.
 
 ### Define scalar values
 
@@ -77,7 +75,7 @@ The following example uses a scalar expression statement.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WPPQvCMBCG90D%2Bw5FJIUMHq1Cp4NfaQQcHcUjbownEBK4BF3%2B8V81Q8G57Xp7jXo8JkiUcbfQ91FAWWyk8Q8LBxcBE3XBMimlvEm%2FrcdGYJ1ZjIhcGDdcuElYuJA2Xr5OTpRR3KYBH7b3rUGlYlTqf0zk5xJb5umB%2BNjN%2BtIa8m5zyzzmZYDjYTFITKVklxUOKN7wsEv7%2Bgd2slQl9fg3qOhf7AKmU5Sz4AAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -221,36 +219,42 @@ search MyColumn == 5
 
 The [`materialize()`](materialize-function.md) function lets you cache subquery results during the time of query execution. When you use the `materialize()` function, the data is cached, and any subsequent invocation of the result uses cached data.
 
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4VSwU7DMAy9R8o%2FmGmHFlWjnFEvm3bjgNh%2BIEtNm5EmVZoydeLjcTqNZjBGLlGe7fee7Wj0sLVe6PUHGt%2FthmcrhVfWQAEbb11zwjn7hK5vGuHUEU8FK9sbT1ky3EkKuwGi2iVWypzfT5xp0mmER6eEJopyI22LtzSIboS3Q4tZzLw25Q9eKWSN5St2vQ6GIpnkl2RKNXF%2BEG2d3aP01%2FRCeG%2BVgXdlSuJWxqDjLOEM6FwSBeQfspQz6uE7FNgPNTqc%2BrsrYDa7nMSYfmPaf3gMdq5udvQw1%2FjmF9NYC5g7VdUTFA%2FmjGWRlyz6BRm8oJMUEVXYaWT4Hh7zfJHDQ5T9BV1xZJVzAgAA" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
-let totalPagesPerDay = PageViews
-| summarize by Page, Day = startofday(Timestamp)
-| summarize count() by Day;
-let materializedScope = PageViews
-| summarize by Page, Day = startofday(Timestamp);
+let TotalEventsbyLocation = StormEvents
+| summarize TotalCount = count() by Location = BeginLocation;
+let materializedScope = StormEvents
+| summarize by EventType, Location = EndLocation;
 let cachedResult = materialize(materializedScope);
 cachedResult
-| project Page, Day1 = Day
+| project EventType, Location
 | join kind = inner
 (
     cachedResult
-    | project Page, Day2 = Day
+    | project EventType, Location
 )
-on Page
-| where Day2 > Day1
-| summarize count() by Day1, Day2
+on EventType
+| where Location != ""
+| summarize EventCount = count() by Location
 | join kind = inner
-    totalPagesPerDay
-on $left.Day1 == $right.Day
-| project Day1, Day2, Percentage = count_*100.0/count_1
+    TotalEventsbyLocation
+on $left.Location == $right.Location
+| project Location, EventCount, TotalCount, Percentage = EventCount * 100.0 / TotalCount
 ```
 
 **Output**
 
-| Day1 | Day2 | Percentage |
-|--|--|--|
-| 2016-05-01 00:00:00.0000000 | 2016-05-02 00:00:00.0000000 | 34.0645725975255 |
-| 2016-05-01 00:00:00.0000000 | 2016-05-03 00:00:00.0000000 | 16.618368960101 |
-| 2016-05-02 00:00:00.0000000 | 2016-05-03 00:00:00.0000000 | 14.6291376489636 |
+| Location | EventCount | TotalCount | Percentage |
+|--|--|--|--|
+| MELBOURNE BEACH | 112 | 1 | 11,200 |
+| EUSTIS | 13,854 | 12 | 115,450 |
+| LOTTS | 6,910 | 1 | 691,000 |
+| SERVICE | 997 | 1 | 99,700 |
+| ... | ... | ... | ... |
 
 ### Using nested let statements
 
