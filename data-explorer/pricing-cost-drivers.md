@@ -4,7 +4,7 @@ description: Discover how Azure Data Explorer calculates cost per GB ingested, w
 ms.reviewer: avnera
 ms.author: spelluru
 ms.topic: concept-article
-ms.date: 07/14/2025
+ms.date: 07/21/2025
 ms.search: Cost, pricing, Cost per GB, optimize, 
 
 #CustomerIntent: As a Azure Data Explorer admin, I want to understand what drives the costs and how to optimize the costs.
@@ -19,9 +19,9 @@ To help understand the cost of using Azure Data Explorer, this article uses the 
 A representative snapshot of ADX clusters in **June 2025** is used to ground the example analysis. The following sections show the main results from the [analysis](#cost-per-gb-ingested-analysis), explain [what drives](#what-drives-cost-per-gb-ingested) the cost variations, and how users can [optimize cost per GB ingested](#a-closer-look-at-key-cost-drivers) without compromising performance.
 
 > [!NOTE]
->
-> For the purpose of this example analysis, cost per GB is expressed in **Sample Cost Units (SCUs)**.
-> For list prices and how to calculate them, see [Cost breakdown of Azure Data Explorer](pricing-cost-drivers.md).
+> All cost figures in this article show list prices and don't include discounts or commitment-based savings.
+> For the purpose of this example analysis, cost per GB is expressed in **Sample Cost Units (SCUs)**, where each SCU represents a generic cost unit, for example, one US cent.
+> For list prices and how to calculate them, see [Azure Data Explorer pricing calculator](pricing-calculator.md).
 
 ## Cost per GB ingested analysis
 
