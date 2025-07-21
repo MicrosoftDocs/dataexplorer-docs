@@ -22,7 +22,7 @@ A representative snapshot of ADX clusters in **June 2025** is used to ground the
 >
 > * All cost figures in this article show list prices and don't include discounts or commitment-based savings.
 > * For the purpose of this example analysis, cost per GB is expressed in **Sample Cost Units (SCUs)**, where each SCU represents a generic cost unit, for example, one US cent.
-> For list prices and how to calculate them, see [Azure Data Explorer pricing calculator](pricing-calculator.md).
+> * For list prices and how to calculate them, see [Azure Data Explorer pricing calculator](pricing-calculator.md).
 
 ## Cost per GB ingested analysis
 
