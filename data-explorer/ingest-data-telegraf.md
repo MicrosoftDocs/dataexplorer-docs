@@ -1,9 +1,9 @@
 ---
-title: 'Ingest data from Telegraf into Azure Data Explorer'
+title: Ingest Data from Telegraf into Azure Data Explorer or into Fabric RTI
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Telegraf.
 ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 04/07/2022
+ms.date: 07/21/2025
 
 #Customer intent: As an integration developer, I want to build integration pipelines from Telegraf into Azure Data Explorer, so I can make data available for near real-time analytics.
 ---
