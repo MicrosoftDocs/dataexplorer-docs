@@ -3,7 +3,7 @@ title: Ingest Data from Telegraf into Azure Data Explorer or into Fabric RTI
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Telegraf.
 ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 07/21/2025
+ms.date: 07/22/2025
 
 #Customer intent: As an integration developer, I want to build integration pipelines from Telegraf into Azure Data Explorer, so I can make data available for near real-time analytics.
 ---
@@ -103,13 +103,14 @@ To enable the Azure Data Explorer output plugin, you must uncomment the followin
   ## Skips table and mapping creation if set to false, this is useful for running telegraf with the least possible access permissions i.e. table ingestor role.
   # create_tables = true
 ```
+
 ## Supported ingestion types
 
 The plugin supports managed (streaming) and queued (batching) [ingestion](ingest-data-overview.md#continuous-data-ingestion). The default ingestion type is *queued*.
 
 > [!IMPORTANT]
 > To use managed ingestion, you must enable [streaming ingestion](ingest-data-streaming.md) on your cluster.
-    
+
 To configure the ingestion type for the plugin, modify the automatically generated configuration file, as follows:
 
 ```ini
