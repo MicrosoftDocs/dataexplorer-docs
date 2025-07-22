@@ -3,14 +3,14 @@ title: Queued ingestion commands use case
 description: Learn how to ingest historical data using the queued ingestion commands.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 04/25/2025
+ms.date: 07/22/2025
 ---
 
 # Queued ingestion commands use case (preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The queued ingestion commands allow you to test how the historical data is ingested and fix any problems before ingesting that data. This article describes a common use for queued ingestion commands, the fine-tuning the ingestion of historical data. The following tasks are completed to fine-tune the historical data queued ingestion:
+Queued ingestion commands let you test how historical data is ingested and fix problems before you ingest that data. This article describes how to use queued ingestion commands to fine-tune historical data ingestion. Complete the following tasks to fine-tune historical data queued ingestion:
 
 1. [List blobs in a folder](#list-blobs-in-a-folder)
 1. [Ingest folder](#ingest-folder)

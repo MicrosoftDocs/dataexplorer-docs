@@ -36,18 +36,19 @@ Request properties aren't formally a part of the Kusto Query Language and may be
 
 ## Example
 
-This query enables query tracing and then fetches the first 100 records from the StormEvents table.
+This query uses `query_take_max_records` to limit the number of records retrieved from the `StormEvents` table.
+(This is somewhat equivalent to using a `| take 100` operator.)
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytOLVEoLE0tqiwpSkxOteYKLskvynUtS80rKVaoUShJzE5VMDQwAAD531xtJgAAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEACtOLVEoLE0tqowvScxOjc9NrIgvSk3OL0optjU0MLDm5QouyS%2fKdS1LzSsp5uICAIDZW8IuAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-set querytrace;
-StormEvents | take 100
+set query_take_max_records=100;
+StormEvents
 ```
 
 **Output**
