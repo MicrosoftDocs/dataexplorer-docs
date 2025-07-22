@@ -11,7 +11,11 @@ ms.date: 07/21/2025
 
 [!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
 
-Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/). Telegraf is an open source, lightweight, minimal memory foot print agent for collecting, processing and writing telemetry data including logs, metrics, and IoT data. Telegraf supports hundreds of input and output plugins. It's widely used and well supported by the open source community. The Azure Data Explorer [output plugin](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) serves as the connector from Telegraf and supports ingestion of data from many types of [input plugins](https://github.com/influxdata/telegraf/tree/master/plugins/inputs) into Azure Data Explorer.
+Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/). Telegraf is an open source, lightweight, minimal memory foot print agent for collecting, processing and writing telemetry data including logs, metrics, and IoT data. Telegraf supports hundreds of input and output plugins. It's widely used and well supported by the open source community. 
+
+The Azure Data Explorer [ADX output plugin](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) serves as the connector from Telegraf and supports ingestion of data from many types of [input plugins](https://github.com/influxdata/telegraf/tree/master/plugins/inputs) into Azure Data Explorer.
+
+The Fabric Real-Time Intelligence [RTI output plugin](https://github.com/influxdata/telegraf/blob/release-1.35/plugins/outputs/microsoft_fabric/README.md) serves as the connector from Telegraf and supports ingestion of data from many types of [input plugins](https://github.com/influxdata/telegraf/tree/master/plugins/inputs) into Real-Time Intelligence.
 
 ## Prerequisites
 
@@ -183,6 +187,7 @@ There are multiple ways to flatten dynamic columns by using the [extend](/kusto/
 
     ```kusto
     Tablename
+
     | extend facility_code=toint(fields.facility_code), message=tostring(fields.message), procid= tolong(fields.procid), severity_code=toint(fields.severity_code),
     SysLogTimestamp=unixtime_nanoseconds_todatetime(tolong(fields.timestamp)), version= todouble(fields.version),
     appname= tostring(tags.appname), facility= tostring(tags.facility),host= tostring(tags.host), hostname=tostring(tags.hostname), severity=tostring(tags.severity)
