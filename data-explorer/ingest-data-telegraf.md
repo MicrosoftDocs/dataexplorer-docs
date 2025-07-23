@@ -1,9 +1,9 @@
 ---
-title: 'Ingest data from Telegraf into Azure Data Explorer'
+title: Ingest Data from Telegraf into Azure Data Explorer or into Fabric Real-Time Intelligence
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Telegraf.
 ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 04/07/2022
+ms.date: 07/22/2025
 
 #Customer intent: As an integration developer, I want to build integration pipelines from Telegraf into Azure Data Explorer, so I can make data available for near real-time analytics.
 ---
@@ -11,7 +11,13 @@ ms.date: 04/07/2022
 
 [!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
 
-Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/). Telegraf is an open source, lightweight, minimal memory foot print agent for collecting, processing and writing telemetry data including logs, metrics, and IoT data. Telegraf supports hundreds of input and output plugins. It's widely used and well supported by the open source community. The Azure Data Explorer [output plugin](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) serves as the connector from Telegraf and supports ingestion of data from many types of [input plugins](https://github.com/influxdata/telegraf/tree/master/plugins/inputs) into Azure Data Explorer.
+Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/). Telegraf is an open source, lightweight, and minimal memory foot print agent for collecting, processing, and writing telemetry data including logs, metrics, and IoT data.
+
+Telegraf supports hundreds of input and output plugins. It's widely used and the open source community supports it.
+
+The Azure Data Explorer [ADX output plugin](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) serves as the connector from Telegraf and supports ingestion of data from many types of [input plugins](https://github.com/influxdata/telegraf/tree/master/plugins/inputs) into Azure Data Explorer.
+
+The Fabric Real-Time Intelligence [RTI output plugin](https://github.com/influxdata/telegraf/blob/release-1.35/plugins/outputs/microsoft_fabric/README.md) serves as the connector from Telegraf and supports ingestion of data from many types of [input plugins](https://github.com/influxdata/telegraf/tree/master/plugins/inputs) into Real-Time Intelligence artifacts, namely Eventhouse and Eventstream.
 
 ## Prerequisites
 
@@ -30,7 +36,7 @@ The plugin supports the following authentication methods:
 
 * Microsoft Entra user tokens
 
-    * Allows the plugin to authenticate like a user. We only recommend using this method for development purposes.
+    * Allows the plugin to authenticate like a user. Use this method only for development.
 
 * Azure Managed Service Identity (MSI) token
 
@@ -61,9 +67,9 @@ To configure authentication for the plugin, set the appropriate environment vari
     * `AZURE_TENANT_ID`: The Microsoft Entra tenant ID used for authentication.
     * `AZURE_CLIENT_ID`: The client ID of an App Registration in the tenant.
     * `AZURE_USERNAME`: The username, also known as upn, of a Microsoft Entra user account.
-    * `AZURE_PASSWORD`: The password of the Microsoft Entra user account. Note this doesn't support accounts with MFA enabled.
+    * `AZURE_PASSWORD`: The password of the Microsoft Entra user account. Note: This feature doesn't support accounts with multifactor authentication (MFA) enabled.
 
-* **Azure Managed Service Identity**: Delegate credential management to the platform. This method requires that code is run in Azure, for example, VM. All configuration is handled by Azure. For more information, see [Azure Managed Service Identity](/azure/active-directory/msi-overview). This method is only available when using [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview).
+* **Azure Managed Service Identity**: Delegate credential management to the platform. Run code in Azure, such as on a VM. Azure handles all configuration. For more information, see [Azure Managed Service Identity](/azure/active-directory/msi-overview). This method is only available when using [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview).
 
 ## Configure Telegraf
 
@@ -99,13 +105,14 @@ To enable the Azure Data Explorer output plugin, you must uncomment the followin
   ## Skips table and mapping creation if set to false, this is useful for running telegraf with the least possible access permissions i.e. table ingestor role.
   # create_tables = true
 ```
+
 ## Supported ingestion types
 
 The plugin supports managed (streaming) and queued (batching) [ingestion](ingest-data-overview.md#continuous-data-ingestion). The default ingestion type is *queued*.
 
 > [!IMPORTANT]
 > To use managed ingestion, you must enable [streaming ingestion](ingest-data-streaming.md) on your cluster.
-    
+
 To configure the ingestion type for the plugin, modify the automatically generated configuration file, as follows:
 
 ```ini
@@ -148,7 +155,8 @@ Since the collected metrics object is a complex type, the *fields* and *tags* co
     ```
 
     > [!NOTE]
-    > This approach could impact performance when using large volumes of data. In such cases, use the update policy approach.
+    > 
+    > This approach can affect performance with large volumes of data. In these cases, use the update policy approach.
 
 * **Use an [update policy](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true)**: Transform dynamic data type columns using an update policy. We recommend this approach for querying large volumes of data.
 
@@ -177,12 +185,13 @@ The following table shows sample metrics data collected by Syslog input plugin:
 | syslog | {"appname":"azsecmond","facility":"user","host":"adx-linux-vm","hostname":"adx-linux-vm","severity":"info"} | 2021-09-20T14:36:44Z | {"facility_code":1,"message":" 2021/09/20 14:36:44.890110 Failed to connect to mdsd: dial unix /var/run/mdsd/default_djson.socket: connect: no such file or directory","procid":"2184","severity_code":6,"timestamp":"1632148604890477000","version":1} |
 | syslog | {"appname":"CRON","facility":"authpriv","host":"adx-linux-vm","hostname":"adx-linux-vm","severity":"info"} | 2021-09-20T14:37:01Z | {"facility_code":10,"message":" pam_unix(cron:session): session opened for user root by (uid=0)","procid":"26446","severity_code":6,"timestamp":"1632148621120781000","version":1} |
 
-There are multiple ways to flatten dynamic columns by using the [extend](/kusto/query/extend-operator?view=azure-data-explorer&preserve-view=true) operator or [bag_unpack()](/kusto/query/bag-unpack-plugin?view=azure-data-explorer&preserve-view=true) plugin. You can use either of them in the update policy *Transform_TargetTableName()* function.
+There are multiple ways to flatten dynamic columns by using the [extended](/kusto/query/extend-operator?view=azure-data-explorer&preserve-view=true) operator or [bag_unpack()](/kusto/query/bag-unpack-plugin?view=azure-data-explorer&preserve-view=true) plugin. You can use either of them in the update policy *Transform_TargetTableName()* function.
 
-* **Use the extend operator**: We recommend using this approach as it's faster and robust. Even if the schema changes, it will not break queries or dashboards.
+* **Use the extend operator**: Use this approach because it's faster and robust. Even if the schema changes, it doesn't break queries or dashboards.
 
     ```kusto
     Tablename
+
     | extend facility_code=toint(fields.facility_code), message=tostring(fields.message), procid= tolong(fields.procid), severity_code=toint(fields.severity_code),
     SysLogTimestamp=unixtime_nanoseconds_todatetime(tolong(fields.timestamp)), version= todouble(fields.version),
     appname= tostring(tags.appname), facility= tostring(tags.facility),host= tostring(tags.host), hostname=tostring(tags.hostname), severity=tostring(tags.severity)
