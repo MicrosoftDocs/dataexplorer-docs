@@ -3,7 +3,7 @@ title:  series_moving_avg_fl()
 description:  This article describes series_moving_avg_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 07/23/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_moving_avg_fl()
@@ -66,7 +66,7 @@ series_moving_avg_fl(y_series:dynamic, n:int, center:bool=false)
 
 ## Example
 
-The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
+The following example uses the function.
 
 ### [Query-defined](#tab/query-defined)
 
