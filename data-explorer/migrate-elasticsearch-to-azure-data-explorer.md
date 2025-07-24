@@ -58,7 +58,7 @@ To create a table schema and ingestion mapping in your cluster:
 1. Run the following command to create an ingestion mapping.
 
     ```Kusto
-    .create table Vehicle ingestion json mapping 'VechicleMapping'
+    .create table Vehicle ingestion json mapping 'VehicleMapping'
       '['
       '  {"column":"Manufacturer", "path":"$.manufacturer"},'
       '  {"column":"Model", "path":"$.model"},'
