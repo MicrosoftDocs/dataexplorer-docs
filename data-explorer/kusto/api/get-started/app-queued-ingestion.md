@@ -84,48 +84,47 @@ Add the following code:
     ### [C\#](#tab/csharp)
 
     ```csharp
+    using System.Data;
+
+    using Azure.Identity;
+
     using Kusto.Data;
     using Kusto.Data.Net.Client;
 
-    namespace BatchIngest {
-      class BatchIngest {
-        static void Main(string[] args) {
-          string clusterUri = "<your_cluster_uri>";
-          var clusterKcsb = new KustoConnectionStringBuilder(clusterUri)
-            .WithAadUserPromptAuthentication();
-
-          using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb)) {
-            string database = "<your_database>";
-            string table = "MyStormEvents";
-
-            string query = table + " | count";
-            using (var response = kustoClient.ExecuteQuery(database, query, null)) {
-              Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
-              PrintResultsAsValueList(response);
+    namespace BatchIngest;
+    
+    class BatchIngest
+    {
+        static async Task Main()
+        {
+            var clusterUri = "<your cluster>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
+            var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadUserPromptAuthentication();
+    
+            using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
+    
+            var database = "<your database>";
+            var table = "MyStormEvents";
+    
+            var query = table + " | count";
+    
+            using var response = await kustoClient.ExecuteQueryAsync(database, query, null);
+    
+            Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
+            PrintResultsAsValueList(response);
+        }
+    
+        static void PrintResultsAsValueList(IDataReader response)
+        {
+            while (response.Read())
+            {
+                for (var i = 0; i < response.FieldCount; i++)
+                {
+                    object val = response.GetValue(i);
+                    string value = val.ToString() ?? "None";
+                    Console.WriteLine("\t{0} - {1}", response.GetName(i), value);
+                }
             }
-          }
         }
-
-        static void PrintResultsAsValueList(IDataReader response) {
-          string value;
-          while (response.Read()) {
-            for (int i = 0; i < response.FieldCount; i++) {
-              value = "";
-              if (response.GetDataTypeName(i) == "Int32")
-                  value = response.GetInt32(i).ToString();
-              else if (response.GetDataTypeName(i) == "Int64")
-                value = response.GetInt64(i).ToString();
-              else if (response.GetDataTypeName(i) == "DateTime")
-                value = response.GetDateTime(i).ToString();
-              else if (response.GetDataTypeName(i) == "Object")
-                value = response.GetValue(i).ToString() ?? "{}";
-              else
-                value = response.GetString(i);
-
-              Console.WriteLine("\t{0} - {1}", response.GetName(i), value ?? "None");
-          }
-        }
-      }
     }
     ```
 
@@ -243,17 +242,13 @@ Add the following code:
     ---
 
 1. Create a connection string builder object that defines the data ingestion URI, where possible, using the sharing the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
-
+    ##  [Ingest V1](#tab/ingest-v1)
     ### [C\#](#tab/csharp)
 
     ```csharp
-    using Kusto.Data.Common;
-    using Kusto.Ingest;
-    using System.Data;
+    using Kusto.Ingest; // Add this import
 
-    string ingestUri = "<your_ingestion_uri>";
-    var ingestKcsb = new KustoConnectionStringBuilder(ingestUri)
-      .WithAadUserPromptAuthentication();
+    // No need to use a different connection string builder - the ingestion client can auto-correct to the ingestion URI
     ```
 
     ### [Python](#tab/python)
@@ -290,8 +285,19 @@ Add the following code:
     ```
 
     ---
+    ##  [Ingest V2](#tab/ingest-v2)
+    ### [C\#](#tab/csharp)
+    
+        ```csharp
+        using Kusto.Ingest.V2; // Add this import
 
-1. Ingest the *stormevent.csv* file by adding it to the batch queue. You use the following objects and properties:
+        // No need to use a different connection string builder - the ingestion client can auto-correct to the ingestion URI
+        ```
+
+1. Ingest the *stormevent.csv* file by adding it to the batch queue. 
+    ##  [Ingest V1](#tab/ingest-v1)
+
+    You use the following objects and properties:
 
     - **QueuedIngestClient** to create the ingest client.
     - **IngestionProperties** to set the ingestion properties.
@@ -305,16 +311,16 @@ Add the following code:
     ### [C\#](#tab/csharp)
 
     ```csharp
-    using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
+      using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(clusterKcsb);
+  
       string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
   
       Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
       var ingestProps = new KustoIngestionProperties(database, table) {
-        Format = DataSourceFormat.csv,
-        AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
+          Format = DataSourceFormat.csv,
+          AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
       };
-      _= ingestClient.IngestFromStorageAsync(filePath, ingestProps).Result;
-    }
+      await ingestClient.IngestFromStorageAsync(filePath, ingestProps);
     ```
 
     ### [Python](#tab/python)
@@ -366,6 +372,19 @@ Add the following code:
     }
     ```
 
+    ##  [Ingest V2](#tab/ingest-v2)
+    ```csharp
+    using var ingestClient = QueuedIngestClientBuilder.Create(new Uri(clusterUri)).WithAuthentication(tokenCredential).Build();
+
+    string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
+    
+    var fileSource = new FileSource(filePath, DataSourceFormat.csv);
+    var props = new IngestProperties() { IgnoreFirstRecord = true };
+
+    Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
+    
+    await ingestClient.IngestAsync(fileSource, database, table, props);
+    ```
     ---
 
 1. Query the number of rows in the table after ingesting the file, and show the last row ingested.
