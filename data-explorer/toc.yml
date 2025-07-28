@@ -630,7 +630,7 @@ items:
       - name: Connect from Azure Synapse Apache Spark
         href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
       - name: Build AI agents with MCP servers
-      - href: integrate-mcp-servers.md
+        href: integrate-mcp-servers.md
       - name: Linked server
         href: linked-server.md
         displayName: SQL Server, ODBC
