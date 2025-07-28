@@ -175,6 +175,10 @@ landingContent:
             url: flow.md
           - text: Azure DevOps
             url: devops.md
+      - linkListType: concept
+        links:
+          - text: Build AI agents
+            url: integrate-mcp-servers.md
 
   # Card
   - title: Manage and monitor resources and data

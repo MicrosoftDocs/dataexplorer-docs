@@ -17,7 +17,9 @@ Integrating Model Context Protocol (MCP) with Azure Data Explorer (ADX) clusters
 
 [Model Context Protocol](https://modelcontextprotocol.io/introduction) (MCP) is a protocol that lets AI models, like Azure OpenAI models, interact with external tools and resources. MCP makes it easier for agents to find, connect to, and use enterprise data.
 
-[!INCLUDE [feature-preview-note](../includes/feature-preview-note.md)]
+> [!NOTE]
+>
+> This feature is in preview.
 
 The most common scenario for using the RTI or Azure MCP Server is to connect to it from an existing AI client, such as Cline, Claude, and GitHub copilot. The AI client can then use the available tools to access and interact with ADX resources using natural language.
 
@@ -59,7 +61,6 @@ This architecture lets you build modular, scalable, and secure intelligent appli
 
 ## Related content
 
-* [Use MCP with Fabric RTI Eventhouse](mcp-eventhouse.md)
 * [RTI MCP server](https://github.com/microsoft/fabric-rti-mcp/)
 * [Azure MCP Server](/azure/developer/azure-mcp-server/)
 * [Model Context Protocol (MCP) overview](https://modelcontextprotocol.io/introduction)
