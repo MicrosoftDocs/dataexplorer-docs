@@ -11,7 +11,7 @@ ms.search.form: MCP, AI, agents
 #CustomerIntent: As an ADX AI developer, I want to use the RTI MCP server or Azure MCP server to create AI agents and AI applications.
 ---
 
-# Integrate Azure Data Explorer with MCP Server (preview)
+# Use MCP Servers with Azure Data Explorer (preview)
 
 Integrating Model Context Protocol (MCP) with Azure Data Explorer (ADX) clusters lets you get AI-driven insights and actions in real time. The MCP server lets AI agents or AI applications interact with ADX by providing tools through the MCP interface, so you can query and analyze data easily.
 

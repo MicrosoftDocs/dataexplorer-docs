@@ -175,9 +175,9 @@ landingContent:
             url: flow.md
           - text: Azure DevOps
             url: devops.md
-      - linkListType: concept
+      - linkListType: deploy
         links:
-          - text: Build AI agents
+          - text: Use MCP servers to build AI agents
             url: integrate-mcp-servers.md
 
   # Card
