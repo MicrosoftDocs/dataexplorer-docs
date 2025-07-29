@@ -399,7 +399,11 @@ Add the following code:
     }
     ```
 
-    ##  [Ingest V2](#tab/ingest-v2)
+    
+    ### Ingest V2
+    
+   ### [C\#](#tab/csharp)
+    
     ```csharp
     using var ingestClient = QueuedIngestClientBuilder.Create(new Uri(clusterUri)).WithAuthentication(tokenCredential).Build();
 
@@ -412,6 +416,20 @@ Add the following code:
     
     await ingestClient.IngestAsync(fileSource, database, table, props);
     ```
+
+ ### [Python](#tab/python)
+
+    Not applicable
+
+    ### [TypeScript](#tab/typescript)
+
+    Not applicable
+
+    <!-- ### [Go](#tab/go) -->
+
+    ### [Java](#tab/java)
+
+    Not applicable
     ---
 
 1. Query the number of rows in the table after ingesting the file, and show the last row ingested.
