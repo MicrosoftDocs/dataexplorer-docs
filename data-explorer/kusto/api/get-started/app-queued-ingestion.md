@@ -60,8 +60,8 @@ In this article, you learn how to:
 
  ---
 
-    > [!NOTE]
-    > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
+ > [!NOTE]
+ > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
 
 - Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file. The file contains 1,000 storm event records.
 
@@ -288,7 +288,8 @@ Add the following code:
     ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
     ```
 
-   ### Ingest V2
+---
+### Ingest V2
 
    #### [C\#](#tab/csharp)
 
@@ -331,9 +332,9 @@ Add the following code:
 
     ```csharp
       using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(clusterKcsb);
-  
+
       string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
-  
+
       Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
       var ingestProps = new KustoIngestionProperties(database, table) {
           Format = DataSourceFormat.csv,
@@ -391,46 +392,47 @@ Add the following code:
     }
     ```
 
-   ### Ingest V2
-   You use the following objects and properties:
+---
+### Ingest V2
+      You use the following objects and properties:
 
-   - `QueuedIngestClientBuilder` to create the ingest client.
-   - `IngestProperties` is optional in most cases, but here is used to set `IgnoreFirstRecord`.
-   - `DataFormat` to specify the file format as `DataSourceFormat.csv`.
-   - `IgnoreFirstRecord` to specify whether the first row in CSV and similar file types is ignored, using the following logic:
-      - `True`: The first row is ignored. Use this option to drop the header row from tabular textual data.
-      - `False`: The first row is ingested as a regular row.
+      - `QueuedIngestClientBuilder` to create the ingest client.
+      - `IngestProperties` is optional in most cases, but here is used to set `IgnoreFirstRecord`.
+      - `DataFormat` to specify the file format as `DataSourceFormat.csv`.
+      - `IgnoreFirstRecord` to specify whether the first row in CSV and similar file types is ignored, using the following logic:
+         - `True`: The first row is ignored. Use this option to drop the header row from tabular textual data.
+         - `False`: The first row is ingested as a regular row.
 
-   [!INCLUDE [ingestion-size-limit](../../../includes/cross-repo/ingestion-size-limit.md)]
+      [!INCLUDE [ingestion-size-limit](../../../includes/cross-repo/ingestion-size-limit.md)]
 
-   #### [C\#](#tab/csharp)
+      #### [C\#](#tab/csharp)
 
-    ```csharp
-    using var ingestClient = QueuedIngestClientBuilder.Create(new Uri(clusterUri)).WithAuthentication(tokenCredential).Build();
+       ```csharp
+       using var ingestClient = QueuedIngestClientBuilder.Create(new Uri(clusterUri)).WithAuthentication(tokenCredential).Build();
 
-    string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
+       string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
     
-    var fileSource = new FileSource(filePath, DataSourceFormat.csv);
-    var props = new IngestProperties() { IgnoreFirstRecord = true };
+       var fileSource = new FileSource(filePath, DataSourceFormat.csv);
+       var props = new IngestProperties() { IgnoreFirstRecord = true };
 
-    Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
+       Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
     
-    await ingestClient.IngestAsync(fileSource, database, table, props);
-    ```
+       await ingestClient.IngestAsync(fileSource, database, table, props);
+       ```
 
-   #### [Python](#tab/python)
+      #### [Python](#tab/python)
 
-   Not applicable
+      Not applicable
 
-   #### [TypeScript](#tab/typescript)
+      #### [TypeScript](#tab/typescript)
 
-   Not applicable
+      Not applicable
 
-    <!-- #### [Go](#tab/go) -->
+       <!-- #### [Go](#tab/go) -->
 
-   #### [Java](#tab/java)
+      #### [Java](#tab/java)
 
-   Not applicable
+      Not applicable
 
  ---
 
@@ -785,6 +787,7 @@ public class BatchIngestion {
 }
 ```
 
+---
 ### Ingest V2
 
 #### [C\#](#tab/csharp)
@@ -1050,7 +1053,8 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ingestProps.setIgnoreFirstRecord(false);
     ```
 
-   ### Ingest V2
+---
+### Ingest V2
 
    #### [C\#](#tab/csharp)
 
@@ -1076,6 +1080,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
 1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
 
+### Ingest V1
    #### [C\#](#tab/csharp)
 
     ```csharp
@@ -1103,7 +1108,8 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ```java
     ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
     ```
-   ### Ingest V2
+---
+### Ingest V2
 
    #### [C\#](#tab/csharp)
 
@@ -1289,6 +1295,7 @@ public class BatchIngestion {
 }
 ```
 
+---
 ### Ingest V2
 
 #### [C\#](#tab/csharp)
@@ -1444,6 +1451,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
    ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
    ```
 
+---
 ### Ingest V2
 
 #### [C\#](#tab/csharp)
@@ -1621,7 +1629,9 @@ public class BatchIngestion {
 }
 ```
 
+---
 ### Ingest V2
+
 #### [C\#](#tab/csharp)
 
 ```csharp
