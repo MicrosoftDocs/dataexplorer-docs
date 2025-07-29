@@ -391,7 +391,7 @@ Add the following code:
     }
     ```
     
-    ### Ingest V2
+   ### Ingest V2
    You use the following objects and properties:
 
    - `QueuedIngestClientBuilder` to create the ingest client.
