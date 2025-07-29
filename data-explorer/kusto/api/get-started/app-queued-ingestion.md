@@ -60,8 +60,8 @@ In this article, you learn how to:
 
  ---
 
-    > [!NOTE]
-    > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
+   > [!NOTE]
+   > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
 
 - Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file. The file contains 1,000 storm event records.
 
