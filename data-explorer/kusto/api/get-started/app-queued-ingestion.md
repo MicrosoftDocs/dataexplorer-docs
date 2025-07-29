@@ -311,14 +311,7 @@ Add the following code:
     ### [Java](#tab/java)
 
     Not applicable
-    ##  [Ingest V2](#tab/ingest-v2)
-    ### [C\#](#tab/csharp)
-    
-        ```csharp
-        using Kusto.Ingest.V2; // Add this import
-
-        // No need to use a different connection string builder - the ingestion client can auto-correct to the ingestion URI
-        ```
+   
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue. 
     
