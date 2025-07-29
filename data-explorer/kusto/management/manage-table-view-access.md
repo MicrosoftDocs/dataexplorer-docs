@@ -27,6 +27,8 @@ The [Row Level Security (RLS) policy](row-level-security-policy.md) allows you t
 
 
 ::: moniker range="microsoft-fabric"
+## Create a follower database
+
 Create a [database shortcut](/fabric/real-time-intelligence/database-shortcut) in Fabric and follow only the relevant tables that you'd like to share with the specific principal or set of principals.
 ::: moniker-end
 
