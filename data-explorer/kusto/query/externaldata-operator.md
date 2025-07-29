@@ -41,6 +41,19 @@ The `externaldata` operator returns a table whose schema is defined in the query
 | *storageConnectionString* | `string` |  :heavy_check_mark:| A [storage connection string](../api/connection-strings/storage-connection-strings.md) of the storage artifact to query. |
 | *propertyName*, *propertyValue* | `string` | | A list of optional [supported properties](#supported-properties) that determines how to interpret the data retrieved from storage.
 
+> [!WARN]
+> For security reasons, make sure that no credential is specified by  the *storageConnectionString* property.
+> If the query needs to specify credentials, use [query parameters](./query-parameters-statement.md) to specify the whole connection string.
+>
+> For example, assuming that the query includes a query parameter called `URI` whose value points at Blob Storage, the query would look like this:
+> ```kusto
+> declare query_parameters(URI:string);
+> externaldata(x:string)[URI]
+> ```
+>
+> If this is not possible (for example, you're using a client that does not support setting query parameters),
+> be sure to use [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals).
+
 ### Supported properties
 
 | Property | Type | Description |
