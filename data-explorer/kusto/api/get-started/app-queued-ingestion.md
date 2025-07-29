@@ -242,7 +242,9 @@ Add the following code:
     ---
 
 1. Create a connection string builder object that defines the data ingestion URI, where possible, using the sharing the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
-    ##  [Ingest V1](#tab/ingest-v1)
+   
+    ### Ingest V1
+    
     ### [C\#](#tab/csharp)
 
     ```csharp
