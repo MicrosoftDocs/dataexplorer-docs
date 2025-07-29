@@ -58,7 +58,7 @@ In this article, you learn how to:
         .alter-merge table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:10" }'
         ```
 
-    ---
+ ---
 
     > [!NOTE]
     > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
@@ -86,19 +86,21 @@ Add the following code:
     ```csharp
     using System.Data;
 
-    using Azure.Identity;
-
     using Kusto.Data;
+    using Kusto.Data.Common;
     using Kusto.Data.Net.Client;
 
+    using Azure.Identity;
+    
     namespace BatchIngest;
     
     class BatchIngest
     {
         static async Task Main()
         {
-            var clusterUri = "<your cluster>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
-            var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadUserPromptAuthentication();
+           var tokenCredential = new InteractiveBrowserCredential();
+           var clusterUri = "<your cluster>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
+           var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadAzureTokenCredentialsAuthentication(tokenCredential);
     
             using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
     
@@ -107,10 +109,11 @@ Add the following code:
     
             var query = table + " | count";
     
-            using var response = await kustoClient.ExecuteQueryAsync(database, query, null);
-    
-            Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
-            PrintResultsAsValueList(response);
+            using (var response = await kustoClient.ExecuteQueryAsync(database, query, null))
+            {
+                Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
+                PrintResultsAsValueList(response);
+            }
         }
     
         static void PrintResultsAsValueList(IDataReader response)
@@ -195,7 +198,6 @@ Add the following code:
 
     [!INCLUDE [node-vs-browser-auth](../../includes/node-vs-browser-auth.md)]
 
-
     <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
@@ -239,11 +241,11 @@ Add the following code:
     }
     ```
 
-    ---
+ ---
 
 1. Create a connection string builder object that defines the data ingestion URI, where possible, using the sharing the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
    
-    ### Ingest V1
+    ## Ingest V1
     
     ### [C\#](#tab/csharp)
 
@@ -286,9 +288,7 @@ Add the following code:
     ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
     ```
 
-  ---
-
-    ###  Ingest V2
+    ##  Ingest V2
 
     ### [C\#](#tab/csharp)
 
@@ -311,11 +311,10 @@ Add the following code:
     ### [Java](#tab/java)
 
     Not applicable
-   
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue. 
     
-    ### Ingest V1
+    ## Ingest V1
     
     You use the following objects and properties:
 
@@ -391,10 +390,19 @@ Add the following code:
       ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
     }
     ```
+    
+    ## Ingest V2
+   You use the following objects and properties:
 
-    
-    ### Ingest V2
-    
+   - `QueuedIngestClientBuilder` to create the ingest client.
+   - `IngestProperties` is optional in most cases, but here is used to set `IgnoreFirstRecord`.
+   - `DataFormat` to specify the file format as `DataSourceFormat.csv`.
+   - `IgnoreFirstRecord` to specify whether the first row in CSV and similar file types is ignored, using the following logic:
+      - `True`: The first row is ignored. Use this option to drop the header row from tabular textual data.
+      - `False`: The first row is ingested as a regular row.
+
+   [!INCLUDE [ingestion-size-limit](../../../includes/cross-repo/ingestion-size-limit.md)]
+
    ### [C\#](#tab/csharp)
     
     ```csharp
@@ -410,7 +418,7 @@ Add the following code:
     await ingestClient.IngestAsync(fileSource, database, table, props);
     ```
 
- ### [Python](#tab/python)
+    ### [Python](#tab/python)
 
     Not applicable
 
@@ -423,7 +431,8 @@ Add the following code:
     ### [Java](#tab/java)
 
     Not applicable
-    ---
+
+ ---
 
 1. Query the number of rows in the table after ingesting the file, and show the last row ingested.
 
@@ -433,19 +442,19 @@ Add the following code:
     ### [C\#](#tab/csharp)
 
     ```csharp
-    Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
-    Thread.Sleep(TimeSpan.FromSeconds(60));
-
-    using (var response = kustoClient.ExecuteQuery(database, query, null)) {
+   Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
+   await Task.Delay(TimeSpan.FromSeconds(60));
+   
+   using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
       Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
       PrintResultsAsValueList(response);
-    }
-
-    query = table + " | top 1 by ingestion_time()";
-    using (var response = kustoClient.ExecuteQuery(database, query, null)) {
+   }
+   
+   query = table + " | top 1 by ingestion_time()";
+   using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
       Console.WriteLine("\nLast ingested row:");
       PrintResultsAsValueList(response);
-    }
+   }
     ```
 
     ### [Python](#tab/python)
@@ -509,77 +518,82 @@ Add the following code:
     printResultsAsValueList(primaryResults);
     ```
 
-    ---
+ ---
 
 The complete code should look like this:
+
+## Ingest V1
 
 ### [C\#](#tab/csharp)
 
 ```csharp
-using Kusto.Data;
-using Kusto.Data.Net.Client;
-using Kusto.Data.Common;
-using Kusto.Ingest;
 using System.Data;
 
-namespace BatchIngest {
-  class BatchIngest {
-    static void Main(string[] args) {
-      string clusterUri = "<your_cluster_uri>";
-      var clusterKcsb = new KustoConnectionStringBuilder(clusterUri)
-        .WithAadUserPromptAuthentication();
-      string ingestUri = "<your_ingestion_uri>";
-      var ingestKcsb = new KustoConnectionStringBuilder(ingestUri)
-        .WithAadUserPromptAuthentication();
+using Kusto.Data;
+using Kusto.Data.Common;
+using Kusto.Data.Net.Client;
+using Kusto.Ingest;
 
+namespace BatchIngest;
+    
+class BatchIngest
+{
+    static async Task Main()
+    {
+        var clusterUri = "<your cluster>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
+        var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadUserPromptAuthentication();
+    
+        using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
+    
+        var database = "<your database>";
+        var table = "MyStormEvents";
+    
+        var query = table + " | count";
 
-      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
-      using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
-        string database = "<your_database>";
-        string table = "MyStormEvents";
-        string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
-
-        string query = table + " | count";
-        using (var response = kustoClient.ExecuteQuery(database, query, null)) {
-          Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
-          PrintResultsAsValueList(response);
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null))
+        {
+            Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
+            PrintResultsAsValueList(response);
         }
-
+        
+        using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(clusterKcsb);
+  
+        string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
+  
         Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
         var ingestProps = new KustoIngestionProperties(database, table) {
-          Format = DataSourceFormat.csv,
-          AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
+            Format = DataSourceFormat.csv,
+            AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
         };
-        _= ingestClient.IngestFromStorageAsync(filePath, ingestProps).Result;
-
+        await ingestClient.IngestFromStorageAsync(filePath, ingestProps);
+        
         Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
-        Thread.Sleep(TimeSpan.FromSeconds(60));
+        await Task.Delay(TimeSpan.FromSeconds(60));
 
-        using (var response = kustoClient.ExecuteQuery(database, query, null)) {
-          Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
-          PrintResultsAsValueList(response);
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
+            Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
+            PrintResultsAsValueList(response);
         }
 
         query = table + " | top 1 by ingestion_time()";
-        using (var response = kustoClient.ExecuteQuery(database, query, null))
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
+            Console.WriteLine("\nLast ingested row:");
+            PrintResultsAsValueList(response);
+        }
+    }
+    
+    static void PrintResultsAsValueList(IDataReader response)
+    {
+        while (response.Read())
         {
-          Console.WriteLine("\nLast ingested row:");
-          PrintResultsAsValueList(response);
+            for (var i = 0; i < response.FieldCount; i++)
+            {
+                object val = response.GetValue(i);
+                string value = val.ToString() ?? "None";
+                Console.WriteLine("\t{0} - {1}", response.GetName(i), value);
+            }
         }
-      }
     }
-
-    static void PrintResultsAsValueList(IDataReader response) {
-      while (response.Read()) {
-        for (int i = 0; i < response.FieldCount; i++) {
-          if (response.GetDataTypeName(i) == "Int64")
-            Console.WriteLine("\t{0} - {1}", response.GetName(i), response.IsDBNull(i) ? "None" : response.GetInt64(i));
-          else
-            Console.WriteLine("\t{0} - {1}", response.GetName(i), response.IsDBNull(i) ? "None" : response.GetString(i));
-        }
-      }
-    }
-  }
 }
 ```
 
@@ -771,6 +785,96 @@ public class BatchIngestion {
 }
 ```
 
+## Ingest V2
+
+### [C\#](#tab/csharp)
+
+ ```csharp
+using System.Data;
+using Azure.Identity;
+using Kusto.Data;
+using Kusto.Data.Common;
+using Kusto.Data.Net.Client;
+using Kusto.Ingest.V2;
+
+namespace BatchIngest;
+    
+class BatchIngest
+{
+    static async Task Main()
+    {
+        var tokenCredential = new InteractiveBrowserCredential();
+        var clusterUri = "<your_cluster_uri>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
+        var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadAzureTokenCredentialsAuthentication(tokenCredential);
+    
+        using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
+    
+        var database = "<your_database>";
+        var table = "MyStormEvents";
+    
+        var query = table + " | count";
+
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null))
+        {
+            Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
+            PrintResultsAsValueList(response);
+        }
+        
+        using var ingestClient = QueuedIngestClientBuilder.Create(new Uri(clusterUri)).WithAuthentication(tokenCredential).Build();
+
+        string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
+    
+        var fileSource = new FileSource(filePath, DataSourceFormat.csv);
+        var props = new IngestProperties() { IgnoreFirstRecord = true };
+
+        Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
+    
+        await ingestClient.IngestAsync(fileSource, database, table, props);
+        
+        Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
+        await Task.Delay(TimeSpan.FromSeconds(60));
+
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
+            Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
+            PrintResultsAsValueList(response);
+        }
+
+        query = table + " | top 1 by ingestion_time()";
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
+            Console.WriteLine("\nLast ingested row:");
+            PrintResultsAsValueList(response);
+        }
+    }
+    
+    static void PrintResultsAsValueList(IDataReader response)
+    {
+        while (response.Read())
+        {
+            for (var i = 0; i < response.FieldCount; i++)
+            {
+                object val = response.GetValue(i);
+                string value = val.ToString() ?? "None";
+                Console.WriteLine("\t{0} - {1}", response.GetName(i), value);
+            }
+        }
+    }
+}
+ ```
+
+ ### [Python](#tab/python)
+
+ Not applicable
+
+ ### [TypeScript](#tab/typescript)
+
+ Not applicable
+
+ <!-- ### [Go](#tab/go) -->
+
+ ### [Java](#tab/java)
+
+ Not applicable
+
 ---
 
 ## Run your app
@@ -877,7 +981,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     import com.microsoft.azure.kusto.ingest.source.StreamSourceInfo;
     ```
 
-    ---
+ ---
 
 1. Add an in-memory string with the data to ingest.
 
@@ -914,9 +1018,11 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     StreamSourceInfo streamSourceInfo = new StreamSourceInfo(stream);
     ```
 
-    ---
+ ---
 
 1. Set the ingestion properties to not ignore the first record as the in-memory string doesn't have a header row.
+
+   ## Ingest V1
 
     ### [C\#](#tab/csharp)
 
@@ -944,14 +1050,36 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ingestProps.setIgnoreFirstRecord(false);
     ```
 
-    ---
+   ## Ingest V2
+
+   ### [C\#](#tab/csharp)
+   
+    ```csharp
+      // Remove the IngestionProperties object `props`
+    ```
+   
+   ### [Python](#tab/python)
+   
+   Not applicable
+   
+   ### [TypeScript](#tab/typescript)
+   
+   Not applicable
+   
+   <!-- ### [Go](#tab/go) -->
+   
+   ### [Java](#tab/java)
+   
+   Not applicable
+
+ ---
 
 1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
 
     ### [C\#](#tab/csharp)
 
     ```csharp
-    _= ingestClient.IngestFromStreamAsync(stringStream, ingestProps, new StreamSourceOptions {Size = stringStream.Length}).Result;
+    _= await ingestClient.IngestFromStreamAsync(stringStream, ingestProps, new StreamSourceOptions {Size = stringStream.Length});
     ```
 
     ### [Python](#tab/python)
@@ -975,46 +1103,64 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ```java
     ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
     ```
+   ## Ingest V2
 
-    ---
+   ### [C\#](#tab/csharp)
+
+    ```csharp
+        var streamSource = new StreamSource(stringStream, DataSourceCompressionType.None, DataSourceFormat.csv);
+
+        await ingestClient.IngestAsync(streamSource, database, table);
+    ```
+
+   ### [Python](#tab/python)
+
+   Not applicable
+
+   ### [TypeScript](#tab/typescript)
+
+   Not applicable
+
+   <!-- ### [Go](#tab/go) -->
+
+   ### [Java](#tab/java)
+
+   Not applicable
+
+ ---
 
 An outline of the updated code should look like this:
+
+## Ingest V1
 
 ### [C\#](#tab/csharp)
 
 ```csharp
-using Kusto.Data;
-using Kusto.Data.Net.Client;
-using Kusto.Data.Common;
-using Kusto.Ingest;
 using System.Data;
+using Azure.Identity;
+using Kusto.Data;
+using Kusto.Data.Common;
+using Kusto.Data.Net.Client;
+using Kusto.Ingest.V2;
 
-namespace BatchIngest {
-  class BatchIngest {
-    static void Main(string[] args) {
-      ...
-      string singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
-      var stringStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(singleLine));
-
-      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
-      using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
-        string database = "<your_database>";
-        string table = "MyStormEvents";
-
+namespace BatchIngest;
+    
+class BatchIngest
+{
+    static async Task Main()
+    {
+        string singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
+        var stringStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(singleLine));
         ...
-
-        Console.WriteLine("\nIngesting data from memory:");
-        ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
-        _= ingestClient.IngestFromStreamAsync(stringStream, ingestProps, new StreamSourceOptions {Size = stringStream.Length}).Result;
-
+            
+        _= await ingestClient.IngestFromStreamAsync(stringStream, ingestProps, new StreamSourceOptions {Size = stringStream.Length});
         ...
-      }
     }
-
-    static void PrintResultsAsValueList(IDataReader response) {
-      ...
+    
+    static void PrintResultsAsValueList(IDataReader response)
+    {
+        ...
     }
-  }
 }
 ```
 
@@ -1143,6 +1289,56 @@ public class BatchIngestion {
 }
 ```
 
+## Ingest V2
+
+### [C\#](#tab/csharp)
+
+ ```csharp
+using System.Data;
+using Azure.Identity;
+using Kusto.Data;
+using Kusto.Data.Common;
+using Kusto.Data.Net.Client;
+using Kusto.Ingest.V2;
+
+namespace BatchIngest;
+    
+class BatchIngest
+{
+    static async Task Main()
+    {
+        string singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,\"{}\"";
+        var stringStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(singleLine));
+        ...
+        
+        var streamSource = new StreamSource(stringStream, DataSourceCompressionType.None, DataSourceFormat.csv);
+
+        await ingestClient.IngestAsync(streamSource, database, table);
+        
+        ...
+    }
+    
+    static void PrintResultsAsValueList(IDataReader response)
+    {
+        ...
+    }
+}
+ ```
+
+### [Python](#tab/python)
+
+Not applicable
+
+### [TypeScript](#tab/typescript)
+
+Not applicable
+
+   <!-- ### [Go](#tab/go) -->
+
+### [Java](#tab/java)
+
+Not applicable
+
 ---
 
 When you run the app, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by one.
@@ -1202,55 +1398,83 @@ For example, you can modify the app replacing the *ingest from memory* code with
     import com.microsoft.azure.kusto.ingest.source.BlobSourceInfo;
     ```
 
-    ---
+ ---
 
 1. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
 
-    ### [C\#](#tab/csharp)
+## Ingest V1
 
-    ```csharp
-    string blobUri = "<your_blob_uri>";
+   ### [C\#](#tab/csharp)
+   
+   ```csharp
+   string blobUri = "<your_blob_uri>";
+   
+   ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
+   _= ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
+   ```
+   
+   ### [Python](#tab/python)
+   
+   ```python
+   blob_uri = "<your_blob_uri>"
+   
+   ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+   blob_descriptor = BlobDescriptor(blob_uri)
+   ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
+   ```
+   
+   ### [TypeScript](#tab/typescript)
+   
+   ```typescript
+   const blobUri = "<your_blob_uri>";
+   
+   ingestProps.ignoreFirstRecord = true;
+   await ingestClient.ingestFromBlob(blobUri, ingestProps);
+   ```
+   
+   <!-- ### [Go](#tab/go) -->
+   
+   ### [Java](#tab/java)
+   
+   ```java
+   String blobUri = "<your_blob_uri>";
+   
+   ingestProps.setIgnoreFirstRecord(true);
+   BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
+   ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
+   ```
 
-    ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
-    _= ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
-    ```
+## Ingest V2
 
-    ### [Python](#tab/python)
+   ### [C\#](#tab/csharp)
+   
+   ```csharp
+   var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
+   
+   await ingestClient.IngestAsync(blobSource, database, table);
+   ```
+   
+   ### [Python](#tab/python)
+   
+   Not applicable
+   
+   ### [TypeScript](#tab/typescript)
+   
+   Not applicable
+   
+   <!-- ### [Go](#tab/go) -->
+   
+   ### [Java](#tab/java)
+   
+   Not applicable
 
-    ```python
-    blob_uri = "<your_blob_uri>"
-
-    ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
-    blob_descriptor = BlobDescriptor(blob_uri)
-    ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
-    ```
-
-    ### [TypeScript](#tab/typescript)
-
-    ```typescript
-    const blobUri = "<your_blob_uri>";
-
-    ingestProps.ignoreFirstRecord = true;
-    await ingestClient.ingestFromBlob(blobUri, ingestProps);
-    ```
-
-    <!-- ### [Go](#tab/go) -->
-
-    ### [Java](#tab/java)
-
-    ```java
-    String blobUri = "<your_blob_uri>";
-
-    ingestProps.setIgnoreFirstRecord(true);
-    BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
-    ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
-    ```
-
-    ---
+ ---
 
 An outline of the updated code should look like this:
 
 ### [C\#](#tab/csharp)
+
+## Ingest V1
 
 ```csharp
 using Kusto.Data;
@@ -1259,32 +1483,26 @@ using Kusto.Data.Common;
 using Kusto.Ingest;
 using System.Data;
 
-namespace BatchIngest {
-  class BatchIngest {
-    static void Main(string[] args) {
-      ...
-      string blobUri = "<your_blob_uri>";
-
-
-      using (var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb))
-      using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestKcsb)) {
-        string database = "<your_database>";
-        string table = "MyStormEvents";
-
+namespace BatchIngest;
+    
+class BatchIngest
+{
+    static async Task Main()
+    {
+        string blobUri = "<your_blob_uri>";
         ...
-
+        
         Console.WriteLine("\nIngesting data from memory:");
         ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
-        _=_ ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
-
+        await ingestClient.IngestFromStorageAsync(blobUri, ingestProps);
+        
         ...
-      }
     }
-
-    static void PrintResultsAsValueList(IDataReader response) {
-      ...
+    
+    static void PrintResultsAsValueList(IDataReader response)
+    {
+        ...
     }
-  }
 }
 ```
 
@@ -1402,6 +1620,57 @@ public class BatchIngestion {
   }
 }
 ```
+
+## Ingest V2
+### [C\#](#tab/csharp)
+
+```csharp
+using Kusto.Data;
+using Kusto.Data.Net.Client;
+using Kusto.Data.Common;
+using Kusto.Ingest;
+using System.Data;
+
+namespace BatchIngest;
+    
+class BatchIngest
+{
+    static async Task Main()
+    {
+        string blobUri = "<your_blob_uri>";
+        ...
+        
+        Console.WriteLine("\nIngesting data from memory:");
+        var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
+        var props = new IngestProperties() { IgnoreFirstRecord = true };
+
+        await ingestClient.IngestAsync(blobSource, database, table, props);
+        
+        ...
+    }
+    
+    static void PrintResultsAsValueList(IDataReader response)
+    {
+        ...
+    }
+}
+```
+
+### [Python](#tab/python)
+
+Not applicable
+
+### [TypeScript](#tab/typescript)
+
+Not applicable
+
+   <!-- ### [Go](#tab/go) -->
+
+### [Java](#tab/java)
+
+Not applicable
+
+
 
 ---
 
