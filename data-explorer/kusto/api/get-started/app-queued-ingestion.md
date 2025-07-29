@@ -321,8 +321,9 @@ Add the following code:
         ```
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue. 
-    ##  [Ingest V1](#tab/ingest-v1)
-
+    
+    ### Ingest V1
+    
     You use the following objects and properties:
 
     - **QueuedIngestClient** to create the ingest client.
