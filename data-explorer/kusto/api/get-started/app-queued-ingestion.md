@@ -1494,7 +1494,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
     Not applicable
 
-  ---
+   ---
 
 An outline of the updated code should look like this:
 
