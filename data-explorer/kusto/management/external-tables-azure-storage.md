@@ -3,7 +3,7 @@ title:  Create and alter Azure Storage external tables
 description: This article describes how to create and alter external tables based on Azure Blob Storage or Azure Data Lake
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 07/30/2025
 ---
 
 # Create and alter Azure Storage external tables
@@ -54,6 +54,8 @@ The authentication method to access an external table is based on the connection
 
 The following table lists the supported authentication methods for Azure Storage external tables and the permissions needed to read or write to the table.
 
+::: moniker range="azure-data-explorer"
+
 | Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | Data Lake Storage Gen1 |
 |--|--|--|
 |[Impersonation](../api/connection-strings/storage-connection-strings.md#impersonation)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
@@ -61,6 +63,18 @@ The following table lists the supported authentication methods for Azure Storage
 |[Shared Access (SAS) token](../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|**Read permissions:** List + Read<br/>**Write permissions:** Write|This authentication method isn't supported in Gen1.|
 |[Microsoft Entra access token](../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No additional permissions required.|No additional permissions required.|
 |[Storage account access key](../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No additional permissions required.|This authentication method isn't supported in Gen1.|
+
+::: moniker-end
+::: moniker range="microsoft-fabric"
+
+| Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | Data Lake Storage Gen1 |
+|--|--|--|
+|[Impersonation](../api/connection-strings/storage-connection-strings.md#impersonation)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
+|[Shared Access (SAS) token](../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|**Read permissions:** List + Read<br/>**Write permissions:** Write|This authentication method isn't supported in Gen1.|
+|[Microsoft Entra access token](../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No additional permissions required.|No additional permissions required.|
+|[Storage account access key](../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No additional permissions required.|This authentication method isn't supported in Gen1.|
+
+::: moniker-end
 
 [!INCLUDE [partitions-formatting](../includes/partitions-formatting.md)]
 
@@ -250,8 +264,15 @@ external_table("ExternalTable")
 ## Related content
 
 ::: moniker range="azure-data-explorer"
-* [Query external tables](/azure/data-explorer/data-lake-query-data).
-::: moniker-end
-* [Export data to an external table](data-export/export-data-to-an-external-table.md).
 
+* [Query external tables](/azure/data-explorer/data-lake-query-data).
+* [Export data to an external table](data-export/export-data-to-an-external-table.md).
 * [Continuous data export to an external table](data-export/continuous-data-export.md).
+
+::: moniker-end
+::: moniker range="microsoft-fabric"
+
+* [Export data to an external table](data-export/export-data-to-an-external-table.md).
+* [Continuous data export to an external table](data-export/continuous-data-export.md).
+
+::: moniker-end

@@ -3,7 +3,7 @@ title:  cosmosdb_sql_request plugin
 description: Learn how to use the cosmosdb_sql_request plugin to send a SQL query to an Azure Cosmos DB SQL network endpoint to query small datasets.
 ms.reviewer: miwalia
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 07/30/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cosmosdb_sql_request plugin
@@ -42,12 +42,25 @@ The following table describes the supported fields of the *Options* parameter.
 
 To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the authorization information. The following table provides the supported authentication methods and the description for how to use that method.
 
+::: moniker range="azure-data-explorer"
+
 |Authentication method|Description|
 |--|--|
 |Managed identity (Recommended)|Append `Authentication="Active Directory Managed Identity";User Id={object_id};` to the connection string. The request is made on behalf of a managed identity which must have the appropriate permissions to the database.<br/>To enable managed identity authentication, you must add the managed identity to your cluster and alter the managed identity policy. For more information, see [Managed Identity policy](/azure/data-explorer/kusto/management/managed-identity-policy). |
 |Azure Resource Manager resource ID |This authentication method requires specifying the `armResourceId` and optionally the `token` in the [options](#supported-options). The `armResourceId` identifies the Cosmos DB database account, and the `token` must be a valid Microsoft Entra bearer token for a principal with access permissions to the Cosmos DB database. If no `token` is provided, the Microsoft Entra token of the requesting principal will be used for authentication. |
 |Account key|You can add the account key directly to the *ConnectionString* argument. However, this approach is less secure as it involves including the secret in the query text, and is less resilient to future changes in the account key. To enhance security, hide the secret as an [obfuscated string literal](scalar-data-types/string.md#obfuscated-string-literals).|
 |Token|You can add a token value in the plugin [options](#supported-options). The token must belong to a principal with relevant permissions. To enhance security, hide the token as an [obfuscated string literal](scalar-data-types/string.md#obfuscated-string-literals).|
+
+::: moniker-end
+::: moniker range="microsoft-fabric"
+
+|Authentication method|Description|
+|--|--|
+|Azure Resource Manager resource ID |This authentication method requires specifying the `armResourceId` and optionally the `token` in the [options](#supported-options). The `armResourceId` identifies the Cosmos DB database account, and the `token` must be a valid Microsoft Entra bearer token for a principal with access permissions to the Cosmos DB database. If no `token` is provided, the Microsoft Entra token of the requesting principal will be used for authentication. |
+|Account key|You can add the account key directly to the *ConnectionString* argument. However, this approach is less secure as it involves including the secret in the query text, and is less resilient to future changes in the account key. To enhance security, hide the secret as an [obfuscated string literal](scalar-data-types/string.md#obfuscated-string-literals).|
+|Token|You can add a token value in the plugin [options](#supported-options). The token must belong to a principal with relevant permissions. To enhance security, hide the token as an [obfuscated string literal](scalar-data-types/string.md#obfuscated-string-literals).|
+
+::: moniker-end
 
 ## Set callout policy
 
@@ -113,14 +126,14 @@ evaluate cosmosdb_sql_request(
 | where lastName == 'Smith'
 ```
 
-### Query Azure Cosmos DB with a database table
+### Query Azure Cosmos DB and join data with a database table
 
 The following example joins partner data from an Azure Cosmos DB with partner data in a database using the `Partner` field. It results in a list of partners with their phone numbers, website, and contact email address sorted by partner name.
 
 ```kusto
 evaluate cosmosdb_sql_request(
     'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=<MyDatabase>;Collection=<MyCollection>;AccountKey='h'<AccountKey>',
-    "SELECT c.id, c.Partner, c. phoneNumber FROM c") : (Id:long, Partner:string, phoneNumber:string) 
+    "SELECT c.id, c.Partner, c. phoneNumber FROM c') : (Id:long, Partner:string, phoneNumber:string) 
 | join kind=innerunique Partner on Partner
 | project id, Partner, phoneNumber, website, Contact
 | sort by Partner

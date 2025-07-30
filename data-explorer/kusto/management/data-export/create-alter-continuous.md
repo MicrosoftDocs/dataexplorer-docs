@@ -3,7 +3,7 @@ title:  .create or alter continuous-export
 description:  This article describes how to create or alter continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 12/08/2024
+ms.date: 07/30/2025
 ---
 # .create or alter continuous-export
 
@@ -36,6 +36,8 @@ You must have at least [Database Admin](../../access-control/role-based-access-c
 
 ## Supported properties
 
+::: moniker range="azure-data-explorer"
+
 | Property | Type | Description |
 |--|--|--|
 | `intervalBetweenRuns` | `Timespan` | The time span between continuous export executions. Must be greater than 1 minute. |
@@ -45,6 +47,20 @@ You must have at least [Database Admin](../../access-control/role-based-access-c
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
 | `managedIdentity` | `string` | The managed identity for which the continuous export job runs. The managed identity can be an object ID, or the `system` reserved word. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md#use-a-managed-identity-to-run-a-continuous-export-job). |
 | `isDisabled` | `bool` | Disable or enable the continuous export. Default is false. |
+
+::: moniker-end
+::: moniker range="microsoft-fabric"
+
+| Property | Type | Description |
+|--|--|--|
+| `intervalBetweenRuns` | `Timespan` | The time span between continuous export executions. Must be greater than 1 minute. |
+| `forcedLatency` | `Timespan` | An optional period of time to limit the query to records ingested before a specified period relative to the current time. This property is useful if, for example, the query performs some aggregations or joins, and you want to make sure all relevant records have been ingested before running the export. |
+| `sizeLimit` | `long` | The size limit in bytes of a single storage artifact written before compression. Valid range: 100 MB (default) to 1 GB. |
+| `distributed` | `bool` | Disable or enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
+| `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
+| `isDisabled` | `bool` | Disable or enable the continuous export. Default is false. |
+
+::: moniker-end
 
 ## Example
 
