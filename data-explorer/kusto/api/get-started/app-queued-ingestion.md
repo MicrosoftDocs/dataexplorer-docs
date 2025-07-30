@@ -1067,7 +1067,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
     ---
 
-  **Ingest V2 (preview)**
+   **Ingest V2 (preview)**
 
    #### [C\#](#tab/csharp)
 
@@ -1092,6 +1092,8 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
    ---
 
 1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
+
+    **Ingest V1**
 
    #### [C\#](#tab/csharp)
 
@@ -1146,7 +1148,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
    Not applicable
 
- ---
+   ---
 
 An outline of the updated code should look like this:
 
@@ -1308,6 +1310,8 @@ public class BatchIngestion {
 }
 ```
 
+---
+
 **Ingest V2 (preview)**
 
 #### [C\#](#tab/csharp)
@@ -1417,7 +1421,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
     import com.microsoft.azure.kusto.ingest.source.BlobSourceInfo;
     ```
 
- ---
+  ---
 
 1. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
 
@@ -1463,6 +1467,8 @@ For example, you can modify the app replacing the *ingest from memory* code with
    ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
    ```
 
+  ---
+
     **Ingest V2 (preview)**
 
     #### [C\#](#tab/csharp)
@@ -1487,7 +1493,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
     Not applicable
 
-    ---
+  ---
 
 An outline of the updated code should look like this:
 
