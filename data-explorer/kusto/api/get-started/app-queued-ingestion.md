@@ -5,6 +5,7 @@ ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 07/30/2025
 monikerRange: "azure-data-explorer"
+
 #customer intent: To learn about creating an app to get data using queued ingestion.
 ---
 # Create an app to get data using queued ingestion
@@ -28,7 +29,7 @@ In this article, you learn how to:
 >
 > The Ingest API now has two versions: V1 and V2. The V1 API is the original API, while the V2 API is a reimagined version that simplifies the ingest API while offering more customization.
 >
-> Ingest Version 2 is in *preview* and is available in the following languages: C#
+> Ingest Version 2 is in **preview** and is available in the following languages: C#
  
 
 ## Prerequisites
@@ -1473,11 +1474,11 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
     #### [C\#](#tab/csharp)
 
-      ```csharp
-      var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
+    ```csharp
+    var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
       
-      await ingestClient.IngestAsync(blobSource, database, table);
-      ```
+    await ingestClient.IngestAsync(blobSource, database, table);
+    ```
 
     #### [Python](#tab/python)
 
