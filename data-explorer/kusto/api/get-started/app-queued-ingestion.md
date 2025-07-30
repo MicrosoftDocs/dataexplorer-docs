@@ -3,7 +3,7 @@ title: Create an app to get data using queued ingestion
 description: Learn how to create an app to get data using queued ingestion of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 08/11/2024
+ms.date: 07/30/2025
 monikerRange: "azure-data-explorer"
 #customer intent: To learn about creating an app to get data using queued ingestion.
 ---
@@ -23,6 +23,13 @@ In this article, you learn how to:
 > - [Queue a file for ingestion and query the results](#queue-a-file-for-ingestion-and-query-the-results)
 > - [Queue in-memory data for ingestion and query the results](#queue-in-memory-data-for-ingestion-and-query-the-results)
 > - [Queue a blob for ingestion and query the results](#queue-a-blob-for-ingestion-and-query-the-results)
+
+> [!IMPORTANT]
+>
+> The Ingest API now has two versions: V1 and V2. The V1 API is the original API, while the V2 API is a reimagined version that simplifies the ingest API while offering more customization.
+>
+> Ingest Version 2 is in *preview* and is available in the following languages: C#
+ 
 
 ## Prerequisites
 
@@ -58,16 +65,18 @@ In this article, you learn how to:
        .alter-merge table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:10" }'
        ```
 
- ---
+  ---
 
-> [!NOTE]
-> It may take a few minutes for the new batching policy settings to propagate to the batching manager.
+   > [!NOTE]
+   >
+   > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
 
 - Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file. The file contains 1,000 storm event records.
 
 > [!NOTE]
 >
 > The following examples assume a trivial match between the columns of the ingested data and the schema of the target table.
+>
 > If the ingested data doesn't trivially match the table schema, you must use an ingestion mapping to align the columns of the data with the table schema.
 
 ## Queue a file for ingestion and query the results
@@ -243,7 +252,7 @@ Add the following code:
 
 1. Create a connection string builder object that defines the data ingestion URI, where possible, using the sharing the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
 
-    ### Ingest V1
+    **Ingest V1**
 
     #### [C\#](#tab/csharp)
 
@@ -287,7 +296,7 @@ Add the following code:
     ```
     ---
 
-   ### Ingest V2
+   **Ingest V2 (preview)**
 
    #### [C\#](#tab/csharp)
 
@@ -315,7 +324,7 @@ Add the following code:
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue.
 
-   ### Ingest V1
+   **Ingest V1**
 
    You use the following objects and properties:
 
@@ -391,9 +400,11 @@ Add the following code:
       ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
     }
     ```
+
     ---
 
-   ### Ingest V2
+    **Ingest V2 (preview)**
+
    You use the following objects and properties:
 
    - `QueuedIngestClientBuilder` to create the ingest client.
@@ -434,7 +445,7 @@ Add the following code:
 
    Not applicable
 
- ---
+    ---
 
 1. Query the number of rows in the table after ingesting the file, and show the last row ingested.
 
@@ -524,7 +535,7 @@ Add the following code:
 
 The complete code should look like this:
 
-### Ingest V1
+**Ingest V1**
 
 #### [C\#](#tab/csharp)
 
@@ -789,7 +800,7 @@ public class BatchIngestion {
 
 ---
 
-### Ingest V2
+**Ingest V2 (preview)**
 
 #### [C\#](#tab/csharp)
 
@@ -985,7 +996,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     import com.microsoft.azure.kusto.ingest.source.StreamSourceInfo;
     ```
 
- ---
+    ---
 
 1. Add an in-memory string with the data to ingest.
 
@@ -1022,11 +1033,11 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     StreamSourceInfo streamSourceInfo = new StreamSourceInfo(stream);
     ```
 
- ---
+    ---
 
 1. Set the ingestion properties to not ignore the first record as the in-memory string doesn't have a header row.
 
-   ### Ingest V1
+   **Ingest V1**
 
    #### [C\#](#tab/csharp)
 
@@ -1054,7 +1065,9 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ingestProps.setIgnoreFirstRecord(false);
     ```
 
-   ### Ingest V2
+    ---
+
+  **Ingest V2 (preview)**
 
    #### [C\#](#tab/csharp)
 
@@ -1076,7 +1089,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
    Not applicable
 
- ---
+   ---
 
 1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
 
@@ -1107,7 +1120,9 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ```java
     ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
     ```
-   ### Ingest V2
+   ---
+
+     **Ingest V2 (preview)**
 
    #### [C\#](#tab/csharp)
 
@@ -1135,7 +1150,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
 An outline of the updated code should look like this:
 
-### Ingest V1
+**Ingest V1**
 
 #### [C\#](#tab/csharp)
 
@@ -1293,7 +1308,7 @@ public class BatchIngestion {
 }
 ```
 
-### Ingest V2
+**Ingest V2 (preview)**
 
 #### [C\#](#tab/csharp)
 
@@ -1396,7 +1411,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
     <!-- #### [Go](#tab/go) -->
 
-   #### [Java](#tab/java)
+    #### [Java](#tab/java)
 
     ```java
     import com.microsoft.azure.kusto.ingest.source.BlobSourceInfo;
@@ -1406,9 +1421,9 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
 1. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
 
-### Ingest V1
+    **Ingest V1**
 
-#### [C\#](#tab/csharp)
+    #### [C\#](#tab/csharp)
 
    ```csharp
    string blobUri = "<your_blob_uri>";
@@ -1417,7 +1432,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
    _= ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
    ```
 
-#### [Python](#tab/python)
+    #### [Python](#tab/python)
 
    ```python
    blob_uri = "<your_blob_uri>"
@@ -1427,7 +1442,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
    ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
    ```
 
-#### [TypeScript](#tab/typescript)
+    #### [TypeScript](#tab/typescript)
 
    ```typescript
    const blobUri = "<your_blob_uri>";
@@ -1438,7 +1453,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
    <!-- #### [Go](#tab/go) -->
 
-#### [Java](#tab/java)
+    #### [Java](#tab/java)
 
    ```java
    String blobUri = "<your_blob_uri>";
@@ -1448,37 +1463,37 @@ For example, you can modify the app replacing the *ingest from memory* code with
    ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
    ```
 
-### Ingest V2
+    **Ingest V2 (preview)**
 
-#### [C\#](#tab/csharp)
+    #### [C\#](#tab/csharp)
 
-   ```csharp
-   var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
-   
-   await ingestClient.IngestAsync(blobSource, database, table);
-   ```
+      ```csharp
+      var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
+      
+      await ingestClient.IngestAsync(blobSource, database, table);
+      ```
 
-#### [Python](#tab/python)
+    #### [Python](#tab/python)
 
-Not applicable
+    Not applicable
 
-#### [TypeScript](#tab/typescript)
+    #### [TypeScript](#tab/typescript)
 
-Not applicable
+    Not applicable
 
-   <!-- #### [Go](#tab/go) -->
+       <!-- #### [Go](#tab/go) -->
 
-#### [Java](#tab/java)
+    #### [Java](#tab/java)
 
-Not applicable
+    Not applicable
 
- ---
+    ---
 
 An outline of the updated code should look like this:
 
 #### [C\#](#tab/csharp)
 
-### Ingest V1
+**Ingest V1**
 
 ```csharp
 using Kusto.Data;
@@ -1625,7 +1640,10 @@ public class BatchIngestion {
 }
 ```
 
-### Ingest V2
+---
+
+**Ingest V2 (preview)**
+
 #### [C\#](#tab/csharp)
 
 ```csharp
@@ -1673,8 +1691,6 @@ Not applicable
 #### [Java](#tab/java)
 
 Not applicable
-
-
 
 ---
 

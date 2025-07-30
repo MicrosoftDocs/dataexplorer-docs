@@ -3,7 +3,7 @@ title: Configure streaming ingestion on your Azure Data Explorer cluster
 description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion.
 ms.reviewer: alexefro
 ms.topic: how-to
-ms.date: 06/10/2025
+ms.date: 07/30/2025
 ---
 
 # Configure streaming ingestion on your Azure Data Explorer cluster
@@ -243,6 +243,10 @@ class Program
 ## Create a streaming ingestion application to ingest data to your cluster
 
 Create your application for ingesting data to your cluster using your preferred language.
+
+> [NOTE!]
+>
+> For batched queued ingestion, see the instructions for the Kusto Ingest  the [Create an app to get data using queued ingestion](kusto/api/get-started/app-queued-ingestion.md)
 
 ### [C#](#tab/csharp)
 
