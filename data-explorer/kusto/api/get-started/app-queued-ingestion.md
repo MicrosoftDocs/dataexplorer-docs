@@ -241,13 +241,11 @@ Add the following code:
     }
     ```
 
- ---
-
 1. Create a connection string builder object that defines the data ingestion URI, where possible, using the sharing the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
 
-   ### Ingest V1
+    ### Ingest V1
 
-   #### [C\#](#tab/csharp)
+    #### [C\#](#tab/csharp)
 
     ```csharp
     using Kusto.Ingest; // Add this import
@@ -287,6 +285,7 @@ Add the following code:
     String ingestUri = "<your_ingestion_uri>";
     ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
     ```
+    ---
 
    ### Ingest V2
 
@@ -311,6 +310,8 @@ Add the following code:
    #### [Java](#tab/java)
 
    Not applicable
+
+    ---
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue.
 
@@ -390,6 +391,7 @@ Add the following code:
       ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
     }
     ```
+    ---
 
    ### Ingest V2
    You use the following objects and properties:
@@ -518,7 +520,7 @@ Add the following code:
     printResultsAsValueList(primaryResults);
     ```
 
- ---
+    ---
 
 The complete code should look like this:
 
@@ -784,6 +786,8 @@ public class BatchIngestion {
   }
 }
 ```
+
+---
 
 ### Ingest V2
 
