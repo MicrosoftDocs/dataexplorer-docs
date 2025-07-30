@@ -19,7 +19,9 @@ The commands in this article can be used to create or alter an Azure Storage [ex
 
 To `.create` requires at least [Database User](../access-control/role-based-access-control.md) permissions, and to `.alter` requires at least [Table Admin](../access-control/role-based-access-control.md) permissions.
 
+:::moniker range="azure-data-explorer"
 To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions.
+:::moniker-end
 
 ## Syntax
 

@@ -31,8 +31,10 @@ You must have at least [Database Admin](../../access-control/role-based-access-c
 | *T1*, *T2* | `string` | | A comma-separated list of fact tables in the query. If not specified, all tables referenced in the query are assumed to be fact tables. If specified, tables *not* in this list are treated as dimension tables and aren't scoped, so all records participate in all exports. See [continuous data export overview](continuous-data-export.md) for details. |
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of optional [properties](#supported-properties).|
 
+::: moniker range="azure-data-explorer"
 > [!NOTE]
 > If the target external table uses [impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) authentication, you must specify a managed identity to run the continuous export. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
+::: moniker-end
 
 ## Supported properties
 
