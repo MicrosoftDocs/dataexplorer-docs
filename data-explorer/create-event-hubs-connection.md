@@ -3,7 +3,7 @@ title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: Learn how to ingest data from Event Hubs into Azure Data Explorer.
 ms.topic: how-to
 ms.custom:
-ms.date: 11/16/2023
+ms.date: 07/31/2025
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer
@@ -15,6 +15,10 @@ In this article, you connect to an event hub and ingest data into Azure Data Exp
 To learn how to create the connection using the Kusto SDKs, see [Create an Event Hubs data connection with SDKs](create-event-hubs-connection-sdk.md).
 
 > For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-event-hubs-connection).
+
+> [!WARNING]
+>
+> Event hub data connection doesn't support private endpoints or managed private endpoints.
 
 ## Create an event hub data connection
 
