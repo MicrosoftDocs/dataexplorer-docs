@@ -1424,83 +1424,83 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
   ---
 
-1. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
+3. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
 
-    **Ingest V1**
-
-    #### [C\#](#tab/csharp)
-
-   ```csharp
-   string blobUri = "<your_blob_uri>";
+   **Ingest V1**
    
-   ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
-   _= ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
-   ```
-
-    #### [Python](#tab/python)
-
-   ```python
-   blob_uri = "<your_blob_uri>"
+      #### [C\#](#tab/csharp)
+      
+      ```csharp
+      string blobUri = "<your_blob_uri>";
+      
+      ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
+      _= ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
+      ```
+      
+      #### [Python](#tab/python)
+      
+      ```python
+      blob_uri = "<your_blob_uri>"
+      
+      ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+      blob_descriptor = BlobDescriptor(blob_uri)
+      ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
+      ```
+      
+      #### [TypeScript](#tab/typescript)
+      
+      ```typescript
+      const blobUri = "<your_blob_uri>";
+      
+      ingestProps.ignoreFirstRecord = true;
+      await ingestClient.ingestFromBlob(blobUri, ingestProps);
+      ```
+      
+      <!-- #### [Go](#tab/go) -->
+      
+      #### [Java](#tab/java)
+      
+      ```java
+      String blobUri = "<your_blob_uri>";
+      
+      ingestProps.setIgnoreFirstRecord(true);
+      BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
+      ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
+      ```
    
-   ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
-   blob_descriptor = BlobDescriptor(blob_uri)
-   ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
-   ```
-
-    #### [TypeScript](#tab/typescript)
-
-   ```typescript
-   const blobUri = "<your_blob_uri>";
+     ---
    
-   ingestProps.ignoreFirstRecord = true;
-   await ingestClient.ingestFromBlob(blobUri, ingestProps);
-   ```
-
-   <!-- #### [Go](#tab/go) -->
-
-    #### [Java](#tab/java)
-
-   ```java
-   String blobUri = "<your_blob_uri>";
-   
-   ingestProps.setIgnoreFirstRecord(true);
-   BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
-   ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
-   ```
-
-  ---
-
    **Ingest V2 (preview)**
+      
+      #### [C\#](#tab/csharp)
+      
+      ```csharp
+      var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
+      
+      await ingestClient.IngestAsync(blobSource, database, table);
+      ```
+      
+      #### [Python](#tab/python)
+      
+      Not applicable
+      
+      #### [TypeScript](#tab/typescript)
+      
+      Not applicable
+      
+       <!-- #### [Go](#tab/go) -->
+      
+      #### [Java](#tab/java)
+      
+      Not applicable
    
-   #### [C\#](#tab/csharp)
-   
-   ```csharp
-   var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
-   
-   await ingestClient.IngestAsync(blobSource, database, table);
-   ```
-   
-   #### [Python](#tab/python)
-   
-   Not applicable
-   
-   #### [TypeScript](#tab/typescript)
-   
-   Not applicable
-   
-    <!-- #### [Go](#tab/go) -->
-   
-   #### [Java](#tab/java)
-   
-   Not applicable
-
    ---
 
 An outline of the updated code should look like this:
 
-#### [C\#](#tab/csharp)
-
 **Ingest V1**
+
+#### [C\#](#tab/csharp)
 
 ```csharp
 using Kusto.Data;
