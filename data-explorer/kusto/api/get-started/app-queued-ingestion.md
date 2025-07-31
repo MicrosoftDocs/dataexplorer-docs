@@ -1163,7 +1163,7 @@ using Azure.Identity;
 using Kusto.Data;
 using Kusto.Data.Common;
 using Kusto.Data.Net.Client;
-using Kusto.Ingest.V2;
+using Kusto.Ingest;
 
 namespace BatchIngest;
     
@@ -1470,29 +1470,29 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
   ---
 
-    **Ingest V2 (preview)**
-
-    #### [C\#](#tab/csharp)
-
-    ```csharp
-    var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
-      
-    await ingestClient.IngestAsync(blobSource, database, table);
-    ```
-
-    #### [Python](#tab/python)
-
-    Not applicable
-
-    #### [TypeScript](#tab/typescript)
-
-    Not applicable
-
-       <!-- #### [Go](#tab/go) -->
-
-    #### [Java](#tab/java)
-
-    Not applicable
+   **Ingest V2 (preview)**
+   
+   #### [C\#](#tab/csharp)
+   
+   ```csharp
+   var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
+   
+   await ingestClient.IngestAsync(blobSource, database, table);
+   ```
+   
+   #### [Python](#tab/python)
+   
+   Not applicable
+   
+   #### [TypeScript](#tab/typescript)
+   
+   Not applicable
+   
+    <!-- #### [Go](#tab/go) -->
+   
+   #### [Java](#tab/java)
+   
+   Not applicable
 
    ---
 
