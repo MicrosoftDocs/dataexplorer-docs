@@ -3,7 +3,7 @@ title:  sql_request plugin
 description: Learn how to use the sql_request plugin to send an SQL query to an SQL server network endpoint. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 07/30/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # sql_request plugin
@@ -40,12 +40,25 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 The sql_request plugin supports the following three methods of authentication to the
 SQL Server endpoint.
 
+::: moniker range="azure-data-explorer"
+
 |Authentication method|Syntax|How|Description|
 |--|--|--|
 |Microsoft Entra integrated|`Authentication="Active Directory Integrated"`|Add to the *ConnectionString* parameter.| The user or application authenticates via Microsoft Entra ID to your cluster, and the same token is used to access the SQL Server network endpoint.<br/>The principal must have the appropriate permissions on the SQL resource to perform the requested action. For example, to read from the database the principal needs table SELECT permissions, and to write to an existing table the principal needs UPDATE and INSERT permissions. To write to a new table, CREATE permissions are also required.|
 |Managed identity|`Authentication="Active Directory Managed Identity";User Id={object_id}`|Add to the *ConnectionString* parameter.| The request is executed on behalf of a managed identity. The managed identity must have the appropriate permissions on the SQL resource to perform the requested action.<br/>To enable managed identity authentication, you must add the managed identity to your cluster and alter the managed identity policy. For more information, see [Managed Identity policy](/azure/data-explorer/kusto/management/managed-identity-policy). | 
 |Username and password|`User ID=...; Password=...;`|Add to the *ConnectionString* parameter.|When possible, avoid this method as it may be less secure.|
 |Microsoft Entra access token|`dynamic({'token': h"eyJ0..."})`|Add in the *Options* parameter.|The access token is passed as `token` property in the *Options* argument of the plugin.|
+
+::: moniker-end
+::: moniker range="microsoft-fabric"
+
+|Authentication method|Syntax|How|Description|
+|--|--|--|
+|Microsoft Entra integrated|`Authentication="Active Directory Integrated"`|Add to the *ConnectionString* parameter.| The user or application authenticates via Microsoft Entra ID to your cluster, and the same token is used to access the SQL Server network endpoint.<br/>The principal must have the appropriate permissions on the SQL resource to perform the requested action. For example, to read from the database the principal needs table SELECT permissions, and to write to an existing table the principal needs UPDATE and INSERT permissions. To write to a new table, CREATE permissions are also required.|
+|Username and password|`User ID=...; Password=...;`|Add to the *ConnectionString* parameter.|When possible, avoid this method as it may be less secure.|
+|Microsoft Entra access token|`dynamic({'token': h"eyJ0..."})`|Add in the *Options* parameter.|The access token is passed as `token` property in the *Options* argument of the plugin.|
+
+::: moniker-end
 
 > [!NOTE]
 > Connection strings and queries that include confidential information or information that should be guarded should be obfuscated to be omitted from any Kusto tracing. For more information, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
