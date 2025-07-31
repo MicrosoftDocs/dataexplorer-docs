@@ -180,7 +180,7 @@ Copy *stormevents.csv* file to the same location as your script. Since our input
 Add and ingestion section using the following lines to the end of `Main()`.
 
 ```csharp
-using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(clusterKcsb);
+using var ingestClient = KustoIngestFactory.CreateManagedStreamingIngestClient(clusterKcsb);
 var ingestProperties = new KustoIngestionProperties(databaseName, tableName) 
     {
         Format = DataSourceFormat.csv
@@ -539,7 +539,7 @@ Copy *stormevents.csv* file to the same location as your script. Since our input
 Add and ingestion section using the following lines to the end of `Main()`.
 
 ```csharp
-using var ingestClient = QueuedIngestClientBuilder.Create(new Uri(clusterUri)).WithAuthentication(tokenCredential).Build();
+using var ingestClient = ManagedStreamingIngestClientBuilder.Create(new Uri(clusterUri)).WithAuthentication(tokenCredential).Build();
 var fileSource = new FileSource(.\\stormevents.csv, DataSourceFormat.csv);
 await ingestClient.IngestAsync(fileSource, database, table);
 ```
