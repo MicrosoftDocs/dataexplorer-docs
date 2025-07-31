@@ -3,7 +3,7 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/18/2024
+ms.date: 07/30/2025
 ---
 # Update policy overview
 
@@ -24,12 +24,23 @@ An update policy is subject to the same restrictions and best practices as regul
 An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the Eventhouse size, and is more efficient when handling bulk ingestion.
 ::: moniker-end
 
+::: moniker range="azure-data-explorer"
+
 > [!NOTE]
 >
 > * The source and target table must be in the same database.
 > * The update policy function schema and the target table schema must match in their column types, and order.
 > * The update policy function can reference tables in other databases. To do this, the update policy must be defined with a `ManagedIdentity` property, and the managed identity must have `viewer` [role](security-roles.md) on the referenced databases.
 Ingesting formatted data improves performance, and CSV is preferred because of it's a well-defined format. Sometimes, however, you have no control over the format of the data, or you want to enrich ingested data, for example, by joining records with a static dimension table in your database.
+
+::: moniker-end
+::: moniker range="microsoft-fabric"
+> [!NOTE]
+>
+> * The source and target table must be in the same database.
+> * The update policy function schema and the target table schema must match in their column types, and order.
+
+::: moniker-end
 
 ## Update policy query
 
@@ -76,7 +87,9 @@ When referencing the `Source` table in the `Query` part of the policy, or in fun
 A table can have zero or more update policy objects associated with it.
 Each such object is represented as a JSON property bag, with the following properties defined.
 
-|Property |Type |Description  |
+::: moniker range="azure-data-explorer"
+
+|Property |Type | Description  |
 |---------|---------|----------------|
 |IsEnabled  |`bool` |States if update policy is *true* - enabled, or *false* - disabled|
 |Source |`string` |Name of the table that triggers invocation of the update policy |
@@ -84,6 +97,19 @@ Each such object is represented as a JSON property bag, with the following prope
 |IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*. If the policy is transactional and the update policy fails, the source table isn't updated. |
 |PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as [extent tags](extent-tags.md) and creation time, apply to the target table. |
 |ManagedIdentity | `string` | The managed identity on behalf of which the update policy runs. The managed identity can be an object ID, or the `system` reserved word. The update policy must be configured with a managed identity when the query references tables in other databases or tables with an enabled [row level security policy](row-level-security-policy.md). For more information, see [Use a managed identity to run a update policy](update-policy-with-managed-identity.md). |
+
+::: moniker-end
+::: moniker range="microsoft-fabric"
+
+|Property |Type |Description  |
+|---------|---------|----------------|
+|IsEnabled  |`bool` |States if update policy is *true* - enabled, or *false* - disabled|
+|Source |`string` |Name of the table that triggers invocation of the update policy |
+|Query |`string` |A query used to produce data for the update |
+|IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*. If the policy is transactional and the update policy fails, the source table isn't updated. |
+|PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as [extent tags](extent-tags.md) and creation time, apply to the target table. |
+
+::: moniker-end
 
 > [!NOTE]
 > In production systems, set `IsTransactional`:*true* to ensure that the target table doesn't lose data in transient failures.
