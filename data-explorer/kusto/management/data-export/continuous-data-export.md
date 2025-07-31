@@ -3,7 +3,7 @@ title:  Continuous data export
 description:  This article describes Continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 12/08/2024
+ms.date: 07/30/2025
 ---
 # Continuous data export overview
 
@@ -101,12 +101,14 @@ Followed by:
 <| T | where cursor_before_or_at("636751928823156645")
 ```
 
+::: moniker range="azure-data-explorer"
 ## Continuous export from a table with Row Level Security
 
 To create a continuous export job with a query that references a table with [Row Level Security policy](../../management/row-level-security-policy.md), you must:
 
 * Provide a managed identity as part of the continuous export configuration. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
 * Use [impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) authentication for the external table to which the data is exported.
+::: moniker-end
 
 ## Continuous export to delta table - Preview
 
