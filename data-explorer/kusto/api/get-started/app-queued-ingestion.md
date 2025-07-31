@@ -1488,8 +1488,6 @@ For example, you can modify the app replacing the *ingest from memory* code with
       
       Not applicable
       
-       <!-- #### [Go](#tab/go) -->
-      
       #### [Java](#tab/java)
       
       Not applicable

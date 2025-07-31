@@ -46,7 +46,7 @@ When ingesting with the `ManagedStreamingIngestionClient` API, failures and retr
 
 Data Streaming has some limitations compared to queuing data for ingestion.
 + Tags can’t be set on data.
-+ Mapping can only be provided using [`ingestionMappingReference`](/kusto/management/mappings?view=azure-data-explorer#mapping-with-ingestionmappingreference). Inline mapping isn't supported.
++ Mapping can only be provided using [`ingestionMappingReference`](/kusto/management/mappings?view=azure-data-explorer#mapping-with-ingestionmappingreference&preserve-view=true). Inline mapping isn't supported.
 + The payload sent in the request can’t exceed 10 MB, regardless of format or compression.
 + The `ignoreFirstRecord` property isn't supported for managed streaming ingestion, so ingested data must not contain a header row.
 
@@ -56,7 +56,7 @@ For more information, see [Streaming Limitations](/azure/data-explorer/ingest-da
 
 + Fabric or an Azure Data Explorer cluster where you have database User or higher rights. Provision a free cluster at <https://dataexplorer.azure.com/freecluster>.
 
-+ [Set up your development environment](/kusto/api/get-started/app-set-up?view=azure-data-explorer) to use the Kusto client library.
++ [Set up your development environment](/kusto/api/get-started/app-set-up?view=azure-data-explorer&preserve-view=true) to use the Kusto client library.
 
 ## Before you begin
 
@@ -171,7 +171,7 @@ class BatchIngest
 }
 ```
 
-## Stream a file for ingestion
+### Stream a file for ingestion
 
 Use the `IngestFromStorageAsync` method to ingest the *stormevents.csv* file.
 
@@ -251,7 +251,7 @@ def main():
 main()
 ```
 
-## Stream a file for ingestion
+### Stream a file for ingestion
 
 Use the `ingest_from_file()` API to ingest the *stormevents.csv* file.
 Place the *stormevents.csv* file in the same location as your script. Since our input is a CSV file, use `DataFormat.CSV` in the ingestion properties.
@@ -565,8 +565,6 @@ Not applicable
 
 Not applicable
 
-    <!-- #### [Go](#tab/go) -->
-
 ### [Java](#tab/java)
 
 Not applicable
@@ -702,8 +700,6 @@ Not applicable
 ### [TypeScript](#tab/typescript)
 
 Not applicable
-
-    <!-- #### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
 
