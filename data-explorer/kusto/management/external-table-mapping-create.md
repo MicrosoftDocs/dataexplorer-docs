@@ -11,6 +11,9 @@ ms.date: 08/11/2024
 
 Create a new external table data mapping. For more information, see [Data mappings](mappings.md).
 
+> [!NOTE]
+> External table mappings apply only to reading data from external tables, not for exporting data.
+
 ## Syntax
 
 `.create` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
