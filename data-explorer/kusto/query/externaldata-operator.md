@@ -15,8 +15,12 @@ The `externaldata` operator returns a table whose schema is defined in the query
 > The `externaldata` operator supports:
 >
 > * a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
+::: moniker range="azure-data-explorer"
+> * shared Access Signature (SAS) key, Access key, Microsoft Entra Token, and Managed Identity authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md#storage-authentication-methods).
+::: moniker-end
+::: moniker range="microsoft-fabric"
 > * shared Access Signature (SAS) key, Access key, and Microsoft Entra Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md#storage-authentication-methods).
-
+::: moniker-end
 ::: moniker range="azure-monitor || microsoft-sentinel"
 
 > [!NOTE]
@@ -79,8 +83,7 @@ The following example shows how to find all records in a table whose `UserID` co
 ```kusto
 Users
 | where UserID in ((externaldata (UserID:string) [
-    @"https://storageaccount.blob.core.windows.net/storagecontainer/users.txt" 
-      h@"?...SAS..." // Secret token needed to access the blob
+    @"https://storageaccount.blob.core.windows.net/storagecontainer/users.txt;managed_identity=..."
     ]))
 | ...
 ```

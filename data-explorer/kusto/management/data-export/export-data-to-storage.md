@@ -55,13 +55,23 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 The authentication method is based on the connection string provided, and the permissions required vary depending on the authentication method.
 
 The following table lists the supported authentication methods and the permissions needed for exporting data to external storage by storage type.
-
+::: moniker range="microsoft-fabric"
 |Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
 |--|--|--|
 |[Impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation)|Storage Blob Data Contributor|Contributor|
 |[Shared Access (SAS) token](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|Write|Write|
 |[Microsoft Entra access token](../../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No extra permissions required|No extra permissions required|
 |[Storage account access key](../../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No extra permissions required|No extra permissions required|
+::: moniker-end
+::: moniker range="azure-data-explorer"
+|Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
+|--|--|--|
+|[Impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation)|Storage Blob Data Contributor|Contributor|
+|[Managed Identity](../api/connection-strings/storage-connection-strings.md#managed-identity)|Storage Blob Data Contributor|Contributor|
+|[Shared Access (SAS) token](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|Write|Write|
+|[Microsoft Entra access token](../../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No extra permissions required|No extra permissions required|
+|[Storage account access key](../../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No extra permissions required|No extra permissions required|
+::: moniker-end
 
 ## Returns
 
