@@ -18,7 +18,7 @@ To learn how to create the connection using the Kusto SDKs, see [Create an Event
 
 > [!WARNING]
 >
-> The Get Data Wizard doesn't support creating a data connection to Event Hubs through [private endpoints](security-network-private-endpoint.md) or [managed private endpoints](security-network-private-endpoint.md#managed-private-endpoints). To create a data connection from the Azure Portal, follow these [instructions](#portal---azure-data-explorer-pagetabportaladx).
+> The Get Data Wizard doesn't support creating a data connection to Event Hubs through [private endpoints](security-network-private-endpoint.md) or [managed private endpoints](security-network-private-endpoint.md#managed-private-endpoints). To create a data connection from the Azure Portal, select the **Portal - Azure Data Explorer page** tab or [jump to the instructions](#portal---azure-data-explorer-page).
 
 ## Create an event hub data connection
 
