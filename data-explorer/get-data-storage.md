@@ -16,7 +16,7 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
 > [!WARNING]
 >
-> Get data from Azure Storage doesn't support private endpoints or managed private endpoints.
+> The Get Data Wizard doesn't support creating a data connection to Event Hubs through [private endpoints](security-network-private-endpoint.md) or [managed private endpoints](security-network-private-endpoint.md#managed-private-endpoints). Follow the instructions to get data using the [.ingest](/kusto/management/data-ingestion/ingest-from-storage-queued?view=azure-data-explorer&preserve-view=true) command.
 
 ## Prerequisites
 
