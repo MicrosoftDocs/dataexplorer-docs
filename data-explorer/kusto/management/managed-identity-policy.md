@@ -58,7 +58,9 @@ The following values specify authentication to a `usage` using the configured ma
 | `AutomatedFlows`| Run a [Continuous Export](data-export/continuous-data-export.md) or [Update Policy](update-policy.md) automated flow on behalf of a managed identity. |
 | `AzureAI`| Authenticate to an Azure OpenAI service using the [ai_embeddings plugin](../query/ai-embeddings-plugin.md) with a managed identity. |
 | `DataConnection` | Authenticate to data connections to an Event Hub or an Event Grid. |
-|`ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
+| `ExportRequest` | Authenticate to an external storage export destination. |
+| `ExternalDataRequest` | Authenticate to an external data source using the externaldata operator / infer storage schema plugin. |
+| `ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
 | `NativeIngestion` |  Authenticate to an SDK for native ingestion from an external source. |
 | `SandboxArtifacts`| Authenticate to external artifacts referenced in sandboxed plugins (e.g., Python) with a managed identity. This usage needs to be defined on the cluster level managed identity policy. |
 | `SqlRequest`| Authenticate to an external database using the *sql_request* or *cosmosdb_request* plugin with a managed identity. |

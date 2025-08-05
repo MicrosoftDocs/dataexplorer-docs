@@ -17,12 +17,23 @@ In the [properties of the request](#supported-properties-of-the-request), you sp
 
 The following table lists the supported authentication methods and any required permissions by storage type.
 
+::: moniker range="azure-data-explorer"
+|Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
+|--|--|--|
+|[Impersonation](../api/connection-strings/storage-connection-strings.md#impersonation)|Storage Blob Data Reader|Reader|
+|[Managed Identity](../api/connection-strings/storage-connection-strings.md#managed-identity)|Storage Blob Data Reader|Reader|
+|[Shared Access (SAS) token](../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
+|[Microsoft Entra access token](../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)||
+|[Storage account access key](../api/connection-strings/storage-connection-strings.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
+::: moniker-end
+::: moniker range="microsoft-fabric"
 |Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
 |--|--|--|
 |[Impersonation](../api/connection-strings/storage-connection-strings.md#impersonation)|Storage Blob Data Reader|Reader|
 |[Shared Access (SAS) token](../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
 |[Microsoft Entra access token](../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)||
 |[Storage account access key](../api/connection-strings/storage-connection-strings.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
+::: moniker-end
 
 ## Syntax
 
