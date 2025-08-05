@@ -14,9 +14,7 @@ The `externaldata` operator returns a table whose schema is defined in the query
 ::: moniker range="azure-data-explorer"
 > [!NOTE]
 > The `externaldata` operator supports:
->
 > * a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
-
 > * shared Access Signature (SAS) key, Access key, Microsoft Entra Token, and Managed Identity authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md#storage-authentication-methods).
 
 ::: moniker-end
@@ -24,9 +22,7 @@ The `externaldata` operator returns a table whose schema is defined in the query
 ::: moniker range="microsoft-fabric"
 > [!NOTE]
 > The `externaldata` operator supports:
->
 > * a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
-
 > * shared Access Signature (SAS) key, Access key, and Microsoft Entra Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md#storage-authentication-methods).
 
 ::: moniker-end
