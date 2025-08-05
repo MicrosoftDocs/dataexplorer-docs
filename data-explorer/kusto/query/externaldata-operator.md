@@ -11,11 +11,21 @@ ms.date: 01/27/2025
 
 The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in Azure Blob Storage or a file in Azure Data Lake Storage.
 
+::: moniker range="azure-data-explorer"
 > [!NOTE]
 > The `externaldata` operator supports:
->
+> * a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
+> * shared Access Signature (SAS) key, Access key, Microsoft Entra Token, and Managed Identity authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md#storage-authentication-methods).
+
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+> [!NOTE]
+> The `externaldata` operator supports:
 > * a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
 > * shared Access Signature (SAS) key, Access key, and Microsoft Entra Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md#storage-authentication-methods).
+
+::: moniker-end
 
 ::: moniker range="azure-monitor || microsoft-sentinel"
 
@@ -79,8 +89,7 @@ The following example shows how to find all records in a table whose `UserID` co
 ```kusto
 Users
 | where UserID in ((externaldata (UserID:string) [
-    @"https://storageaccount.blob.core.windows.net/storagecontainer/users.txt" 
-      h@"?...SAS..." // Secret token needed to access the blob
+    @"https://storageaccount.blob.core.windows.net/storagecontainer/users.txt;managed_identity=..."
     ]))
 | ...
 ```
