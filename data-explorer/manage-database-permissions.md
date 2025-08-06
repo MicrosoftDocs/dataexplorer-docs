@@ -13,7 +13,7 @@ Azure Data Explorer allows you to control access to databases and tables using a
 This article describes the available roles and how to assign principals to those roles using the Azure portal. For information on how to set database permissions with management commands, see [Manage database security roles](/kusto/management/manage-database-security-roles?view=azure-data-explorer&preserve-view=true).
 
 > [!NOTE]
-> To Create and delete a database, you need at least **Contributor** Azure Resource Manager (ARM) permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
+> To create and delete a database, you need at least **Contributor** Azure Resource Manager (ARM) permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## Add database principals
 
