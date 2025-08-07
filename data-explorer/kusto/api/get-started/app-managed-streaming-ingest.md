@@ -253,7 +253,7 @@ main()
 
 ### Stream a file for ingestion
 
-Use the `ingest_from_file()` API to ingest the *stormevents.csv* file.
+Ingest the *stormevents.csv* file.
 Place the *stormevents.csv* file in the same location as your script. Since our input is a CSV file, use `DataFormat.CSV` in the ingestion properties.
 
 Add and ingestion section using the following lines to the end of `main()`.
