@@ -32,6 +32,9 @@ In this article, you’ll learn how to ingest data to Kusto using the managed st
 
 Kusto SDKs provide two flavors of Streaming Ingestion Clients, `StreamingIngestionClient` and `ManagedStreamingIngestionClient` where Managed Streaming has built-in retry and failover logic.
 
+> [!NOTE]
+> This article shows how to use `ManagedStreamingIngestionClient`. If you wish to use plain Streaming ingestion instead of Managed Streaming, simply change the instantiated client type to `StreamingIngestionClient`.
+
 When ingesting with the `ManagedStreamingIngestionClient` API, failures and retries are handled automatically as follows:
 
 + Streaming requests that fail due to server-side size limitations are moved to queued ingestion.
