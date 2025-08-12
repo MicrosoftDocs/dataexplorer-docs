@@ -50,6 +50,9 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |Database | `string` |The database where the ingestion process is occurring.|
 |Table | `string` | The table where the ingestion process is occurring.|
 
+>[!NOTE]
+>  If the ingestion operation was initiated with tracking disabled, cancellation commands execute on a best‑effort basis. The returned state may indicate: "Cancellation request received – service will attempt best effort cancellation (tracking isn't enabled on operation)"
+
 ## Example
 
 The following example cancels the ingestion of operation `00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444`.
