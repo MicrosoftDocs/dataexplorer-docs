@@ -51,6 +51,7 @@ The result of the command is a table with one row and one column.
 | IngestionOperationId | `string` | A unique ID used to track the set of blobs, whether or not tracking is enabled. |
 | ClientRequestId | `string` | The client request ID of the command. |
 | OperationInfo | `string` | Displays the command to run to retrieve the current status of the operation. |
+| CancelationInfo | `string` | Displays the command to run to cancel the operation. |
 
 >[!NOTE]
 > This command doesn't modify the schema of the target table. If necessary, the data is converted to fit the table's schema during ingestion. Extra columns are ignored and missing columns are treated as null values.
