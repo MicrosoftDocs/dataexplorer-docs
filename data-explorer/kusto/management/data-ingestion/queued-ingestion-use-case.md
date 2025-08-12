@@ -77,6 +77,8 @@ with (format='parquet')
 
 The `OperationInfo`, which includes the `IngestionOperationId`, is then used to [track the ingestion status](#track-ingestion-status).
 
+The `CancelationInfo`, which includes the `IngestionOperationId`, is then used to [cancel the ingestion operation](#cancel-ingestion).
+
 ### Track ingestion status
 
 You run the `.show queued ingestion operations` command to check whether the ingestion is complete or if there are any errors.
@@ -169,9 +171,9 @@ with (format='parquet')
 
 **Output**
 
-| IngestionOperationId | ClientRequestId | OperationInfo |
-|----------------------|-----------------|---------------|
-|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555|Kusto.Web.KWE,Query;22223333;22223333;33334444-dddd-4444-eeee-5555eeee5555|.show queued ingestion operations "22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555" |
+| IngestionOperationId | ClientRequestId | OperationInfo | CancelationInfo |
+|----------------------|-----------------|---------------|---------------|
+|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555|Kusto.Web.KWE,Query;22223333;22223333;33334444-dddd-4444-eeee-5555eeee5555|.show queued ingestion operations "22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555" |.cancel queued ingestion operations "22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555" |
 
 The `OperationInfo` is then used to [track the ingestion status](#track-ingestion-status).
 
