@@ -27,8 +27,11 @@ Regardless of the authentication method used, the principal must have the necess
 
 The following table shows the supported authentication methods for each type of database acting as the source for the external table.
 
+::: moniker range="azure-data-explorer"
 > [!NOTE]
 > Where possible, the preferred authentication method is managed identity.
+
+::: moniker-end
 
 ::: moniker range="microsoft-fabric"
 
