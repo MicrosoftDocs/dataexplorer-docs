@@ -22,16 +22,16 @@ Azure Data Explorer implements GQL, so you get standardized graph pattern matchi
 
 GQL in Azure Data Explorer builds on the existing [graph operators](graph-operators.md) functionality. It gives you a standardized way to write graph queries that focus on relationships and patterns between entities.
 
-## Getting started
+## Prerequisites
 
 To use GQL in Azure Data Explorer, you need:
 
-- A graph data source that's either a [graph snapshot](graph-operators.md) or a function with a `make-graph` statement.
-- Set specific client request properties (see step 2 below).
+- A graph data source that's either a [graph snapshot](graph-operators.md) or a function with a `make-graph` statement (see step 1).
+- Set specific client request properties (see step 2).
 
 ## Step 1: Create a graph reference
 
-Before you use GQL, create a graph data source. For this article, we use an in-memory make-graph operator, but it's recommended to use a graph snapshot in production scenarios:
+Before you use GQL, create a graph data source. For this article, we use an in-memory make-graph operator, but it's recommended to use a graph snapshop for production scenarios.
 
 <!-- csl -->
 ```gql
@@ -78,11 +78,11 @@ Before you use GQL, create a graph data source. For this article, we use an in-m
 }
 ```
 
-## Step 2: Configure GQL client request properties
+## Step 2: Configure client request properties
 
-To run GQL queries, set three client request properties. Set these properties through the SDK, API, or directly in the query interface by using directives.
+To run GQL queries, set three client request properties. Set these properties through the SDK, API, or directly in the ADX query interface by using directives.
 
-### Using directives in the query interface
+### Use Azure Data Explorer to set client request properties
 
 > [!IMPORTANT]
 > Run each directive separately before running your GQL query. The directives set up the query environment for GQL execution.
@@ -107,9 +107,10 @@ To use labels in GQL, define the label column name:
 > [!TIP]
 > Labels are optional in GQL, but they're often used to filter nodes and edges by type. Setting the label column name lets you use labels in your GQL queries.
 
-### Using SDK/API
+### Use SDK/API  to set client request properties
 
 For programmatic access, set these client request properties:
+
 - `query_language`: Set to `"gql"`
 - `query_graph_reference`: Set to your graph function name (for example, `"G()"`)
 - `query_graph_label_name`: Set to your label column name (for example, `"lbl"`)
@@ -118,9 +119,7 @@ For programmatic access, set these client request properties:
 
 After you finish setup, run GQL queries using standard GQL syntax. Start with the examples below to explore basic and advanced GQL features.
 
-## Example GQL queries
-
-This section shows examples of GQL queries that use the graph created in step 1. These examples cover basic and advanced GQL syntax and features. The queries use graph sample data in the help cluster.
+## Examples
 
 > [!TIP]
 > GQL queries in Azure Data Explorer use standard GQL syntax and translate to KQL with graph operators. Start with simple patterns and build complexity gradually.
@@ -139,8 +138,6 @@ This table shows the result of the query.
 | CNT |
 |-----|
 | 20  |
-
----
 
 ### Example GQL query with labels
 
@@ -827,105 +824,119 @@ This query returns node names along with their labels and the labels of connecti
 > [!TIP]
 > Use GQL for standardized graph pattern matching, and combine it with KQL operators for more data processing options.
 
-## Common patterns
+## Common use cases for graph queries
 
 This section shows common real-world use cases for GQL in Azure Data Explorer using realistic graph schemas and queries.
 
-### Security: Attack path analysis
+### Security use case - attack path analysis
 
 Security analysts use GQL to find potential attack paths in network infrastructure and access control systems.
 
-Create a security graph function:
+1. Create a security graph function:
 
-<!-- csl -->
-```gql
-.create-or-alter function SecurityGraph() {
-    let entities = datatable(id:string, lbl:string, name:string, type:string, criticality:string)
-    [
-        "u1", "User", "john.doe", "StandardUser", "Low",
-        "u2", "User", "admin.user", "Administrator", "High", 
-        "s1", "System", "web-server", "WebServer", "Medium",
-        "s2", "System", "database", "Database", "Critical",
-        "s3", "System", "domain-controller", "DomainController", "Critical"
-    ];
-    let relationships = datatable(source:string, target:string, lbl:string, access_type:string)
-    [
-        "u1", "s1", "CAN_ACCESS", "HTTP",
-        "s1", "s2", "CAN_ACCESS", "SQL",
-        "u2", "s3", "CAN_ACCESS", "RDP",
-        "s3", "s2", "CAN_ACCESS", "Direct"
-    ];
-    relationships
-    | make-graph source --> target with entities on id
-}
-```
+    <!-- csl -->
+    ```gql
+    .create-or-alter function SecurityGraph() {
+        let entities = datatable(id:string, lbl:string, name:string, type:string, criticality:string)
+        [
+            "u1", "User", "john.doe", "StandardUser", "Low",
+            "u2", "User", "admin.user", "Administrator", "High", 
+            "s1", "System", "web-server", "WebServer", "Medium",
+            "s2", "System", "database", "Database", "Critical",
+            "s3", "System", "domain-controller", "DomainController", "Critical"
+        ];
+        let relationships = datatable(source:string, target:string, lbl:string, access_type:string)
+        [
+            "u1", "s1", "CAN_ACCESS", "HTTP",
+            "s1", "s2", "CAN_ACCESS", "SQL",
+            "u2", "s3", "CAN_ACCESS", "RDP",
+            "s3", "s2", "CAN_ACCESS", "Direct"
+        ];
+        relationships
+        | make-graph source --> target with entities on id
+    }
+    ```
 
-Set up the security graph:
+1. Set up the security graph:
 
-<!-- csl -->
-```gql
-#crp query_graph_reference=SecurityGraph()
-```
+    <!-- csl -->
+    ```gql
+    #crp query_graph_reference=SecurityGraph()
+    ```
 
-Find potential attack paths to critical systems.
+1. Find potential attack paths to critical systems.
 
-<!-- csl -->
-```gql
-MATCH (user:User)-[]->{1,3}(critical:System)
-WHERE critical.criticality = 'Critical'
-RETURN user.name AS AttackOrigin, critical.name AS CriticalTarget, COUNT(*) AS PathCount
-```
+    <!-- csl -->
+    ```gql
+    MATCH (user:User)-[]->{1,3}(critical:System)
+    WHERE critical.criticality = 'Critical'
+    RETURN user.name AS AttackOrigin, critical.name AS CriticalTarget, COUNT(*) AS PathCount
+    ```
+
+**Output**
 
 This query finds users who can reach critical systems within three hops, so security teams can prioritize access reviews.
 
-### Social networks: Friend recommendations
+| AttackOrigin | CriticalTarget | PathCount |
+|--|--|--|
+| admin.user | domain-controller | 1 |
+| john.doe | database | 1 |
+| admin.user | database | 1 |
+
+### Social networks use case: Friend recommendations
 
 Social media platforms use GQL to find potential friend connections based on mutual relationships.
 
-Create a social network graph.
+1. Create a social network graph.
 
-<!-- csl -->
-```gql
-.create-or-alter function SocialGraph() {
-    let entities = datatable(id:string, lbl:string, name:string, location:string, interests:string)
-    [
-        "p1", "Person", "Alice Johnson", "Seattle", "Technology,Travel",
-        "p2", "Person", "Bob Smith", "Seattle", "Sports,Technology", 
-        "p3", "Person", "Carol Davis", "Portland", "Travel,Photography",
-        "p4", "Person", "David Wilson", "Seattle", "Technology,Gaming",
-        "p5", "Person", "Emma Brown", "Portland", "Photography,Art"
-    ];
-    let relationships = datatable(source:string, target:string, lbl:string, strength:string)
-    [
-        "p1", "p2", "FRIENDS_WITH", "Close",
-        "p1", "p3", "FRIENDS_WITH", "Medium",
-        "p2", "p4", "FRIENDS_WITH", "Close",
-        "p3", "p5", "FRIENDS_WITH", "Medium"
-    ];
-    relationships
-    | make-graph source --> target with entities on id
-}
-```
+    <!-- csl -->
+    ```gql
+    .create-or-alter function SocialGraph() {
+        let entities = datatable(id:string, lbl:string, name:string, location:string, interests:string)
+        [
+            "p1", "Person", "Alice Johnson", "Seattle", "Technology,Travel",
+            "p2", "Person", "Bob Smith", "Seattle", "Sports,Technology", 
+            "p3", "Person", "Carol Davis", "Portland", "Travel,Photography",
+            "p4", "Person", "David Wilson", "Seattle", "Technology,Gaming",
+            "p5", "Person", "Emma Brown", "Portland", "Photography,Art"
+        ];
+        let relationships = datatable(source:string, target:string, lbl:string, strength:string)
+        [
+            "p1", "p2", "FRIENDS_WITH", "Close",
+            "p1", "p3", "FRIENDS_WITH", "Medium",
+            "p2", "p4", "FRIENDS_WITH", "Close",
+            "p3", "p5", "FRIENDS_WITH", "Medium"
+        ];
+        relationships
+        | make-graph source --> target with entities on id
+    }
+    ```
 
-Set up the social graph:
+1. Set up the social graph:
 
-<!-- csl -->
-```gql
-#crp query_graph_reference=SocialGraph()
-```
+    <!-- csl -->
+    ```gql
+    #crp query_graph_reference=SocialGraph()
+    ```
 
-Find potential friends through mutual connections.
+1. Find potential friends through mutual connections.
 
-<!-- csl -->
-```gql
-MATCH (person:Person)-[:FRIENDS_WITH]->(mutual:Person)-[:FRIENDS_WITH]->(potential:Person)
-WHERE person.name = 'Alice Johnson' AND person.location = potential.location
-RETURN potential.name AS SuggestedFriend, mutual.name AS MutualFriend, potential.interests AS CommonInterests
-```
+    <!-- csl -->
+    ```gql
+    MATCH (person:Person)-[:FRIENDS_WITH]->(mutual:Person)-[:FRIENDS_WITH]->(potential:Person)
+    WHERE person.name = 'Alice Johnson' AND person.location = potential.location
+    RETURN potential.name AS SuggestedFriend, mutual.name AS MutualFriend, potential.interests AS CommonInterests
+    ```
+
+**Output**
 
 This query suggests friends for Alice who have mutual connections and live in the same location.
 
-### Organization: Management hierarchy
+| SuggestedFriend | MutualFriend | CommonInterests |
+|--|--|--|
+| David Wilson | Bob Smith | Technology,Gaming |
+
+### Organization use case: Management hierarchy
 
 Organizations use GQL to analyze reporting structures and find management chains.
 
@@ -983,13 +994,16 @@ This query finds all employees within three management levels of the CEO, which 
 
 When you work with GQL queries in production environments, use these performance optimization strategies:
 
-### Limit path matching scope
+> [!TIP]
+> Start with simple patterns, then increase complexity as needed. Monitor query performance, and adjust path lengths and filters to improve results.
+
+**Limit path matching scope**:
 
 - Use specific label filters to reduce the search space: `MATCH (start:SpecificType)` instead of `MATCH (start)`
 - Limit variable length paths with reasonable bounds: `MATCH (a)-[]->{1,3}(b)` instead of unbounded paths
 - Apply `WHERE` clauses early to filter results before expensive operations
 
-### Use COUNT(*) for existence checks
+**Use COUNT(*) for existence checks**:
 
 If you only need to check if a pattern exists, use `COUNT(*)` instead of returning full results:
 
@@ -999,25 +1013,16 @@ WHERE user.id = 'user123'
 RETURN COUNT(*) > 0 AS HasSuspiciousActivity
 ```
 
-> [!TIP]
-> Start with simple patterns, then increase complexity as needed. Monitor query performance, and adjust path lengths and filters to improve results.
+## Limitations
 
-## Implementation limitations
+- **Reserved keywords**: GQL has reserved keywords that can't be used as identifiers in queries. Some of these reserved keywords might not be immediately obvious to users (for example, `DATE` is a reserved keyword). If your graph data has properties with names that conflict with GQL reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
 
-### Reserved keywords
+    > [!IMPORTANT]
+    > When designing your graph schema, certain common property names might conflict with GQL reserved keywords and should be avoided or renamed.
 
-> [!IMPORTANT]
-> When designing your graph schema, certain common property names might conflict with GQL reserved keywords and should be avoided or renamed.
+- **No `INSERT`/`CREATE` support**: GQL in Azure Data Explorer doesn't support `INSERT` or `CREATE` operations to modify graph structures. Instead, use KQL's [`make-graph`](make-graph-operator.md) operator or [graph snapshots](graph-operators.md) to create and manage graph structures. Use KQL for all graph creation, change, and management tasks.
 
-GQL has reserved keywords that can't be used as identifiers in queries. Some of these reserved keywords might not be immediately obvious to users (for example, `DATE` is a reserved keyword). If your graph data has properties with names that conflict with GQL reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
-
-### No INSERT/CREATE support
-
-GQL in Azure Data Explorer doesn't support INSERT and CREATE operations. Create graph structures using KQL's [`make-graph`](make-graph-operator.md) operator or [graph snapshots](graph-operators.md). Use KQL for all graph creation, change, and management tasks.
-
-### Optional matches not supported
-
-GQL's `OPTIONAL MATCH` clause isn't supported in Azure Data Explorer. All pattern matches are required. To get similar results, use separate queries or KQL operators for optional relationships.
+- **Optional matches not supported**: GQL's `OPTIONAL MATCH` clause isn't supported in Azure Data Explorer. All pattern matches are required. To get similar results, use separate queries or KQL operators for optional relationships.
 
 ## Related content
 
