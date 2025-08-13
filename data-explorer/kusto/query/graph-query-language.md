@@ -119,8 +119,6 @@ For programmatic access, set these client request properties:
 
 After you finish setup, run GQL queries using standard GQL syntax. Start with the examples below to explore basic and advanced GQL features.
 
-## Examples
-
 > [!TIP]
 > GQL queries in Azure Data Explorer use standard GQL syntax and translate to KQL with graph operators. Start with simple patterns and build complexity gradually.
 
@@ -162,11 +160,17 @@ This table shows the result of the query.
 
 GQL in Azure Data Explorer implements the standard GQL syntax for graph pattern matching. The following examples show the GQL syntax supported in Azure Data Explorer, building from simple to complex patterns.
 
-### `MATCH`
+* [MATCH](#match-examples): The `MATCH` clause defines the graph patterns you want to find. Let's start with the most basic patterns and build complexity gradually. Similar functionality is achieved using the `graph-match` operator in KQL.
 
-The `MATCH` clause defines the graph patterns you want to find. Let's start with the most basic patterns and build complexity gradually.
+* [WHERE](#where-examples): Uses standard comparison and logical operators similar to KQL `where` clauses. WHERE clauses filter patterns based on node and edge properties.  They work similarly to KQL or SQL WHERE clauses but operate on graph patterns.
 
-#### Basic pattern matching without variables
+* [RETURN](#return-examples): `RETURN` statements project results from matched patterns. They specify what data to output from your graph query.
+
+* [Advanced patterns](#advanced-pattern-examples): Advanced patterns provide powerful ways to match complex graph structures and label combinations.
+
+## MATCH examples
+
+### Basic pattern matching without variables
 
 The simplest pattern matches any relationship without referencing the matched values:
 
@@ -178,7 +182,7 @@ RETURN COUNT(*)
 
 This query finds all relationships in the graph. The empty parentheses `()` represent anonymous nodes, and `[]` represents anonymous edges. Since we don't assign variables, we can only count the matches but not access their properties.
 
-#### Pattern matching with variables
+### Pattern matching with variables
 
 To access the matched nodes and edges, assign them to variables:
 
@@ -190,11 +194,10 @@ RETURN COUNT(*)
 
 Now `n` represents the source node, `e` represents the _directed_ edge, and `n2` represents the target node. We can reference these variables to access properties, but in this example we're still just counting matches.
 
-#### Accessing node properties
+### Access node properties
 
 Once you have variables, you can access properties of matched nodes:
 
-#### Example: Accessing node properties
 <!-- csl -->
 ```gql
 MATCH (person)-[e]->(target)
@@ -203,17 +206,17 @@ ORDER BY person.name
 LIMIT 2
 ```
 
+**Output**
+
 This query returns the names of connected entities and the type of relationship between them, ordered by person.name and limited to two results to manage output size.
 Although we name those entities `person` and `target`, we don't have any restriction in place that makes sure that they are, in fact, a person.
 
-#### Output
 | person.name | target.name | e.lbl |
 |-------------|-------------|------------------|
 | Alice       | TechCorp    | works_at        |
 | Alice       | Seattle     | located_at      |
 
-
-#### Filtering by node labels
+### Filter by node labels
 
 Use labels to match specific types of nodes. Labels are specified with a colon after the variable name:
 
@@ -224,9 +227,9 @@ RETURN person.name
 LIMIT 5
 ```
 
-This query matches **only nodes with the "Person" label** and returns their names, limited to 5 results to avoid large result sets.
-
 **Output**
+
+This query matches **only nodes with the "Person" label** and returns their names, limited to 5 results to avoid large result sets.
 
 | person.name |
 |-------------|
@@ -236,9 +239,7 @@ This query matches **only nodes with the "Person" label** and returns their name
 | David      |
 | Emma       |
 
-#### Filtering by edge labels
-
-#### Example: Filtering by edge labels
+### Filtering by edge labels
 
 <!-- csl -->
 ```gql
@@ -246,7 +247,7 @@ MATCH (person:Person)-[works:works_at]->(company:Company)
 RETURN person.name, company.name
 ```
 
-#### Filtering by edge labels without variables
+### Filtering by edge labels without variables
 
 For this example, let's switch back to our original G() graph, which contains the "knows" relationship:
 
@@ -255,18 +256,19 @@ For this example, let's switch back to our original G() graph, which contains th
 #crp query_graph_reference=G()
 ```
 
-You can filter by edge labels without assigning the edge to a variable when you don't need to access its properties:
-
 #### Example: Filtering by edge labels without variables
+
+You can filter by edge labels without assigning the edge to a variable when you don't need to access its properties.
+
 <!-- csl -->
 ```gql
 MATCH (p1:Person)-[:knows]->(p2:Person)
 RETURN p1.name, p2.name
 ```
 
-This query finds Person nodes connected to other Person nodes through "knows" relationships. The edge is filtered by its label but not assigned to a variable since we only need the connected nodes.
-
 **Output**
+
+This query finds Person nodes connected to other Person nodes through "knows" relationships. The edge is filtered by its label but not assigned to a variable since we only need the connected nodes.
 
 | p1.name | p2.name |
 |----------|----------|
@@ -275,7 +277,7 @@ This query finds Person nodes connected to other Person nodes through "knows" re
 | Carol    | David    |
 | David    | Emma     |
 
-#### Filtering by properties with WHERE
+### Filtering by properties with WHERE
 
 Use WHERE clauses to filter based on property values:
 
@@ -288,7 +290,7 @@ RETURN person.name, person.age
 
 This query finds people over 25 years old and returns their names and ages. The WHERE clause filters the matched nodes based on the age property.
 
-#### Inline property filtering
+### Inline property filtering
 
 You can also filter by properties directly in the pattern using inline conditions:
 
@@ -300,7 +302,7 @@ RETURN person.age
 
 This query finds the specific person named "Bob" and returns their age. The `{name: 'Bob'}` syntax filters for nodes where the name property equals 'Bob'.
 
-#### Multiple inline conditions
+### Multiple inline conditions
 
 You can specify multiple property conditions inline:
 
@@ -324,7 +326,7 @@ RETURN s.name, e.name
 
 This query finds paths that include between 1 to 3 hops. The `{1,3}` quantifier specifies the minimum and maximum path length.
 
-#### Unbounded variable length paths
+### Unbounded variable length paths
 
 For paths of variable length, you can specify open ranges:
 
@@ -337,17 +339,11 @@ RETURN DISTINCT connected.name
 
 This query finds all nodes reachable from Alice through paths of one or more hops. The `{1,}` quantifier means "one or more hops".
 
-**Comparable KQL:** Similar functionality is achieved using the `graph-match` operator in KQL.
+## WHERE examples
 
-### 3.2 WHERE
-
-WHERE clauses filter patterns based on node and edge properties. They work similarly to KQL or SQL WHERE clauses but operate on graph patterns.
-
-#### Basic property filtering
+### Basic property filtering
 
 Filter nodes based on a single property condition:
-
-#### Example: Basic property filtering
 
 <!-- csl -->
 ```gql
@@ -356,15 +352,15 @@ WHERE person.age > 26
 RETURN person.name, person.age
 ```
 
-This query finds all Person nodes where the age property is greater than 26.
-
 **Output**
+
+This query finds all Person nodes where the age property is greater than 26.
 
 | person.name | person.age |
 |--------------|-------------|
 | Bob          | 30          |
 
-#### Range filtering with AND
+### Range filtering with AND
 
 To create ranges, cCombine multiple conditions:
 
@@ -377,7 +373,7 @@ RETURN person.name, person.age
 
 This query finds people with ages between 28 and 35 (inclusive).
 
-#### Edge property filtering
+### Edge property filtering
 
 Filter based on edge properties to find specific types of relationships:
 
@@ -390,7 +386,7 @@ RETURN person.name, c.name, wa.since
 
 This query finds people who started working at companies since 2022 or later, filtering based on the `since` property of the `works_at` relationship.
 
-#### String pattern matching
+### String pattern matching
 
 Use string functions to match text patterns:
 
@@ -403,7 +399,7 @@ RETURN COUNT(*)
 
 This query counts how many people have names that start with 'Al', providing a quick summary without returning potentially large result sets.
 
-#### String contains matching
+### String contains matching
 
 Check if a string contains a specific substring:
 
@@ -417,7 +413,7 @@ RETURN person.name
 This query finds all people whose names contain 'i' anywhere in the string.
 This is case-sensitive.
 
-#### Inequality comparisons
+### Inequality comparisons
 
 Use comparison operators to exclude specific values:
 
@@ -430,7 +426,7 @@ RETURN person.name, company.name
 
 This query finds people over 25 who work at companies other than 'TechCorp'.
 
-#### Null value checking
+### Null value checking
 
 Check for the presence or absence of property values:
 
@@ -443,7 +439,7 @@ RETURN person.name, person.age
 
 This query finds all people who have an age recorded (non-null age property).
 
-#### Logical OR operations
+### Logical OR operations
 
 Use OR to match multiple conditions:
 
@@ -456,13 +452,9 @@ RETURN person.name, person.age
 
 This query finds people who are either over 30 years old OR have 'a' in their name.
 
-**Comparable KQL:** Uses standard comparison and logical operators similar to KQL `where` clauses.
+## RETURN Examples
 
-### 3.3 RETURN
-
-RETURN statements project results from matched patterns. They specify what data to output from your graph query.
-
-#### Return specific properties
+### Return specific properties
 
 Return individual properties from matched nodes:
 
@@ -474,7 +466,7 @@ RETURN person.name, person.age
 
 This query returns the name and age properties of all Person nodes. Each row in the result contains these two values.
 
-#### Return with aliases
+### Return with aliases
 
 Use aliases to rename output columns for clarity:
 
@@ -486,9 +478,7 @@ RETURN person.name AS Employee, company.name AS Company, employment.since AS Wor
 
 This query returns actor names, movie titles, and character names with descriptive column headers.
 
-#### Return entire nodes and edges
-
-#### Example: Return entire nodes and edges
+### Return entire nodes and edges
 
 <!-- csl -->
 ```gql
@@ -497,15 +487,15 @@ WHERE person.name = 'Kevin Bacon'
 RETURN person, e, movie
 ```
 
-This query returns the complete node and edge objects for Kevin Bacon's relationships, including all properties.
-
 **Output**
+
+This query returns the complete node and edge objects for Kevin Bacon's relationships, including all properties.
 
 | person | e | movie |
 |--------|------|-------|
 {"id":"2","lbl":"Person","name":"Kevin Bacon","title":"","born":1958} |	{"source":"2","target":"3","lbl":"ACTED_IN","Role":"Jack Swigert"} | {"id":"3","lbl":"Movie","name":"","title":"Apollo 13","born":1995}
 
-#### Count matching patterns
+### Count matching patterns
 
 Use COUNT(*) to count the number of pattern matches:
 
@@ -517,7 +507,7 @@ RETURN person.name, COUNT(*) AS MovieCount
 
 This query counts how many movies each person acted in and groups the results by person name.
 
-#### Aggregate with MIN and MAX
+### Aggregate with MIN and MAX
 
 Find minimum and maximum values across all matches:
 
@@ -529,7 +519,7 @@ RETURN MIN(person.age) AS Youngest, MAX(person.age) AS Oldest
 
 This query finds the earliest and latest birth years among all people in the graph.
 
-#### Collect values into arrays
+### Collect values into arrays
 
 Use COLLECT_LIST to gather multiple values into arrays:
 
@@ -541,7 +531,7 @@ RETURN COLLECT_LIST(person.name) AS AllNames
 
 This query collects all person names into a single array result.
 
-#### Return distinct values
+### Return distinct values
 
 Remove duplicates from your results:
 
@@ -553,7 +543,7 @@ RETURN DISTINCT company.name
 
 This query returns each unique movie title only once, even if multiple people are connected to the same movie.
 
-#### Order results
+### Order results
 
 Sort your results using ORDER BY:
 
@@ -566,7 +556,7 @@ ORDER BY person.age DESC
 
 This query returns people sorted by age in descending order (oldest first).
 
-#### Limit result count
+### Limit result count
 
 Restrict the number of results returned:
 
@@ -583,11 +573,11 @@ This query returns only the first five people over 25 years old, ordered by age.
 
 **Comparable KQL:** Similar to KQL `project`, `summarize`, `sort`, and `take` operators.
 
-### 3.4 Advanced patterns
+## Advanced pattern examples
 
 Advanced patterns provide powerful ways to match complex graph structures and label combinations.
 
-#### Label unions (OR)
+### Label unions (OR)
 
 Match nodes that have any of the specified labels:
 
@@ -599,7 +589,7 @@ RETURN entity
 
 This query matches nodes that have either the "Person" OR "Movie" label. The pipe symbol `|` represents logical OR for labels.
 
-#### Label intersections (AND)
+### Label intersections (AND)
 
 Match nodes that have all of the specified labels:
 
@@ -611,7 +601,7 @@ RETURN person.name
 
 This query matches nodes that have both the "Person" AND "Male" labels. The ampersand `&` represents logical AND for labels.
 
-#### Label negation (NOT)
+### Label negation (NOT)
 
 Match nodes that do NOT have the specified label:
 
@@ -623,7 +613,7 @@ RETURN person.name
 
 This query matches all nodes that do NOT have the "Female" label. The exclamation mark `!` represents logical NOT for labels.
 
-#### Variable length paths with exact range
+### Variable length paths with exact range
 
 Match paths with a specific number of hops:
 
@@ -635,7 +625,7 @@ RETURN s, es, e
 
 This query finds paths that are exactly two hops long. The `{2,2}` quantifier specifies both minimum and maximum path length as 2.
 
-#### Variable length paths with open range
+### Variable length paths with open range
 
 Match paths with a minimum number of hops but no maximum:
 
@@ -647,7 +637,7 @@ RETURN s, e, p
 
 This query finds paths that are 1 or more hops long. The `{1,}` quantifier means "one or more hops" with no upper limit.
 
-#### Zero-length paths
+### Zero-length paths
 
 Match nodes with themselves (identity relationships):
 
@@ -659,7 +649,7 @@ RETURN n
 
 This query matches each node with itself through a zero-length path. The `{0,0}` quantifier specifies exactly zero hops, effectively returning each node paired with itself.
 
-#### Named path variables
+### Named path variables
 
 Assign entire paths to variables for later use:
 
@@ -671,7 +661,7 @@ RETURN p
 
 This query assigns the entire pattern to the variable `p`, which can then be returned or used in other parts of the query. The path variable contains the complete sequence of nodes and edges.
 
-#### Multi-hop named paths
+### Multi-hop named paths
 
 Create named paths that span multiple relationships:
 
