@@ -141,7 +141,7 @@ Logic build into the Azure Data Explorer won't delete the blobs after ingestion.
 
 ## Handling duplicate data (preview)
 
-The ingestion of duplicated data is prevented at the Event Grid  data connection point. The duplications are detected and prevented by the blob metadata property `EventGridBlobsDeduplication`. It's designed to prevent duplicate ingestion in the Event Grid pipeline, particularly when Event Grid sends multiple notifications for the same blob. This is a common scenario when rename operations or retries occur, or when multiple subscribers are configured for the same event. Azure Data Explorer identifies the dedupe event, and sends notifications to the user. When a duplicate event is detected, the ingestion process is skipped, one of the following errors is logged:
+Event Grid prevents duplicate data ingestion at the data connection point. Duplicate notifications for the same blob can happen during rename operations, retries, or when multiple subscribers use the same event. Azure Data Explorer identifies duplicate events and notifies you. When it detects a duplicate event, it skips ingestion and logs one of the following errors:
 
 * **BlobAlreadyReceived_DuplicateEventGridNotification**: This error is triggered when the ingestion system detects that a blob has already been processed.
 
