@@ -166,11 +166,11 @@ GQL in Azure Data Explorer implements the standard GQL syntax for graph pattern 
 
 * [RETURN](#return-specific-properties): `RETURN` statements project results from matched patterns. They specify what data to output from your graph query.
 
-* [Advanced patterns](#advanced-pattern-examples): Advanced patterns provide powerful ways to match complex graph structures and label combinations.
+[Advanced patterns](#examples-advanced-patterns-and-complex-multi-patterns)
 
 * [Complex multi-pattern queries](#complex-multi-pattern-queries): Complex multi-pattern queries let you combine multiple patterns and filters in a single statement, enabling sophisticated graph analysis.
 
-## Examples
+## Examples: Core GQL query patters
 
 ### Basic pattern matching without variables
 
@@ -241,7 +241,7 @@ This query matches **only nodes with the "Person" label** and returns their name
 | David      |
 | Emma       |
 
-### Filtering by edge labels
+### Filter by edge labels
 
 <!-- csl -->
 ```gql
@@ -249,7 +249,7 @@ MATCH (person:Person)-[works:works_at]->(company:Company)
 RETURN person.name, company.name
 ```
 
-### Filtering by edge labels without variables
+### Filter by edge labels without variables
 
 For this example, let's switch back to our original G() graph, which contains the "knows" relationship:
 
@@ -257,8 +257,6 @@ For this example, let's switch back to our original G() graph, which contains th
 ```gql
 #crp query_graph_reference=G()
 ```
-
-#### Example: Filtering by edge labels without variables
 
 You can filter by edge labels without assigning the edge to a variable when you don't need to access its properties.
 
@@ -279,7 +277,7 @@ This query finds Person nodes connected to other Person nodes through "knows" re
 | Carol    | David    |
 | David    | Emma     |
 
-### Filtering by properties with WHERE
+### Filter by properties with WHERE
 
 Use WHERE clauses to filter based on property values:
 
@@ -292,7 +290,7 @@ RETURN person.name, person.age
 
 This query finds people over 25 years old and returns their names and ages. The WHERE clause filters the matched nodes based on the age property.
 
-### Inline property filtering
+### Inline property filters
 
 You can also filter by properties directly in the pattern using inline conditions:
 
@@ -571,7 +569,7 @@ This query returns only the first five people over 25 years old, ordered by age.
 
 **Comparable KQL:** Similar to KQL `project`, `summarize`, `sort`, and `take` operators.
 
-## Advanced pattern examples
+## Examples: Advanced patterns and complex multi-patterns
 
 Advanced patterns provide powerful ways to match complex graph structures and label combinations.
 
@@ -673,8 +671,6 @@ This query creates a named path variable `full_path` that captures a 2-hop patte
 
 **Comparable KQL:** Uses advanced `graph-match` operator features for complex pattern matching.
 
-## Complex multi-pattern queries
-
 ### Complex example – cross-town "likes" with company filter
 
 This query ties together multiple patterns and filters in a single statement:
@@ -770,9 +766,7 @@ This table lists core GQL functions and operators in Azure Data Explorer, with t
 | `|` (OR) | Label union | Label alternatives | `MATCH (n:Person | Movie)` |
 | `!` (NOT) | Label negation | Negative label filter | `MATCH (p:!Female)` |
 
-## Graph functions
-
-### labels() function
+## Custom graph function: labels()
 
 The `labels()` function shows the labels for a node or edge as an array.
 
