@@ -3,7 +3,7 @@ title: Ingest from storage using Event Grid subscription - Azure Data Explorer
 description: This article describes Ingest from storage using Event Grid subscription in Azure Data Explorer.
 ms.reviewer: leshalev
 ms.topic: how-to
-ms.date: 06/10/2025
+ms.date: 08/11/2025
 ms.custom: devx-track-azurepowershell
 ---
 # Event Grid data connection
@@ -21,7 +21,7 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 * [Managed Identity](managed-identities-overview.md) based data connection (recommended): Using a managed identity-based data connection is the most secure way to connect to data sources. It provides full control over the ability to fetch data from a data source.
 
   Setup of an Event Grid data connection using managed identity requires the following steps and permissions:
-  1. Make sure you have [EventGrid Contributor](/azure/role-based-access-control/built-in-roles/integration#eventgrid-contributor) role assignment on the Azure subscribtion of the source data storage account.
+  1. Make sure you have [EventGrid Contributor](/azure/role-based-access-control/built-in-roles/integration#eventgrid-contributor) role assignment on the Azure subscription of the source data storage account.
   1. [Add a managed identity to your cluster](configure-managed-identities-cluster.md).
   1. [Grant permissions to the managed identity on the data source](ingest-data-managed-identity.md#grant-permissions-to-the-managed-identity). To fetch data from Azure Storage, the managed identity must have at least  [Storage Blob Data Reader](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) permissions on the Azure Storage account.
   1. Grant permissions to the managed identity on the event hub. To fetch blob notifications from the event hub, the managed identity must have [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions on the Azure Event Hubs.
@@ -76,7 +76,7 @@ Routing data to an alternate database is off by default. To send the data to a d
 To specify an alternate database, set the *Database* [ingestion property](#ingestion-properties).
 
 > [!WARNING]
-> Specifying an alternate database without setting the connection as a multi-database data connection will cause the ingestion to fail.
+> Specifying an alternate database without setting the connection as a multi-database data connection causes the ingestion to fail.
 
 ### Route event data to an alternate table
 
@@ -122,9 +122,10 @@ You can create a blob from a local file, set ingestion properties to the blob me
 >
 > * We highly recommend using `BlockBlob` to generate data, as using `AppendBlob` may result in unexpected behavior.
 > * Using Azure Data Lake Gen2 storage SDK requires using `CreateFile` for uploading files and `Flush` at the end with the close parameter set to `true`. For a detailed example of Data Lake Gen2 SDK correct usage, see [Use the Event Grid data connection](create-event-grid-connection.md?tabs=azure-data-lake#use-the-event-grid-data-connection).
-> * Triggering ingestion following a `CopyBlob` operation is not supported for storage accounts that have the hierarchical namespace feature enabled on them.
+> * Triggering ingestion following a `CopyBlob` operation isn't supported for storage accounts that have the hierarchical namespace feature enabled on them.
 > * When the event hub endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid can deliver the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).
-> * Using the "OpenWrite" API to write to a blob is not recommended, as it triggers a notification for an empty blob and causes an empty-blob error. Additionally, flush the stream only once to prevent duplicate notifications and multiple ingestions of the same blob.   
+> * Using the "OpenWrite" API to write to a blob isn't recommended, as it triggers a notification for an empty blob and causes an empty-blob error. Additionally, flush the stream only once to prevent duplicate notifications and multiple ingestions of the same blob.
+> * Azure Data Explorer tries to filter out duplicate notifications for the same blob sent by upstream services like Event Grid or Storage. When it detects a duplicate event, it skips ingestion and logs the error `BlobAlreadyReceived_DuplicateEventGridNotification`, which means the blob is already processed.
 
 ## Rename blobs
 
@@ -137,7 +138,7 @@ When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data
 
 ## Delete blobs using storage lifecycle
 
-Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It's recommended to keep the blobs for three to five days.
+Logic build into the Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It's recommended to keep the blobs for three to five days.
 
 ## Known Event Grid issues
 
@@ -145,14 +146,13 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 
 If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly from storage to the event hub using managed identities:
 
-  #### [Steps](#tab/steps)
+#### [Steps](#tab/steps)
 
 1. Assign a system-assigned managed identity to the Event Grid system topic of the storage account. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics).
 1. Grant the managed identity sender permissions by assigning it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Add identity to Azure roles on destinations](/azure/event-grid/add-identity-roles).
 1. Make sure that the Event Grid subscription uses managed identity for event delivery. For more information, see [Create event subscriptions that use an identity](/azure/event-grid/managed-service-identity).
 
-
-  #### [PowerShell script](#tab/powershell)
+#### [PowerShell script](#tab/powershell)
 
   ```powershell
   $eventGridSubscriptionId = "<AZURE SUBSCRIPTION ID OF EVENTGRID SYSTEM TOPIC>"
@@ -230,7 +230,7 @@ When using Azure Data Explorer to [export](/kusto/management/data-export/export-
 
 ### Emulating Storage events from custom components
 
-When using custom components to emulate Azure Storage events, the emulated events must strictly comply with [Azure Blob Storage event schema](/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema), as Azure Data Explorer will discard events that cannot be parsed by the Event Grid SDK.
+When using custom components to emulate Azure Storage events, the emulated events must strictly comply with [Azure Blob Storage event schema](/azure/event-grid/event-schema-blob-storage?tabs=cloud-event-schema), as Azure Data Explorer will discard events that can't be parsed by the Event Grid SDK.
 
 ## Related content
 
