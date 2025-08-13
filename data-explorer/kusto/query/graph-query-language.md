@@ -206,8 +206,8 @@ ORDER BY person.name
 LIMIT 2
 ```
 
-This query returns the names of connected entities and the type of relationship between them, ordered by person.name and limited to 2 results to manage output size.
-Note that, although we name those entities `person` and `target`, we don't have any restriction in place that makes sure that they are, infact, a person.
+This query returns the names of connected entities and the type of relationship between them, ordered by person.name and limited to two results to manage output size.
+Although we name those entities `person` and `target`, we don't have any restriction in place that makes sure that they are, in fact, a person.
 
 #### Output
 | person.name | target.name | e.lbl |
@@ -229,7 +229,8 @@ LIMIT 5
 
 This query matches **only nodes with the "Person" label** and returns their names, limited to 5 results to avoid large result sets.
 
-#### Output
+**Output**
+
 | person.name |
 |-------------|
 | Alice       |
@@ -240,7 +241,6 @@ This query matches **only nodes with the "Person" label** and returns their name
 
 #### Filtering by edge labels
 
-
 #### Example: Filtering by edge labels
 
 <!-- csl -->
@@ -249,11 +249,9 @@ MATCH (person:Person)-[works:works_at]->(company:Company)
 RETURN person.name, company.name
 ```
 
-
-
 #### Filtering by edge labels without variables
 
-For this example, let's switch back to our original G() graph which contains the "knows" relationship:
+For this example, let's switch back to our original G() graph, which contains the "knows" relationship:
 
 <!-- csl -->
 ```gql
@@ -271,7 +269,8 @@ RETURN p1.name, p2.name
 
 This query finds Person nodes connected to other Person nodes through "knows" relationships. The edge is filtered by its label but not assigned to a variable since we only need the connected nodes.
 
-#### Output
+**Output**
+
 | p1.name | p2.name |
 |----------|----------|
 | Alice    | Bob      |
@@ -339,7 +338,7 @@ WHERE center.name = 'Alice'
 RETURN DISTINCT connected.name
 ```
 
-This query finds all nodes reachable from Alice through paths of 1 or more hops. The `{1,}` quantifier means "1 or more hops".
+This query finds all nodes reachable from Alice through paths of one or more hops. The `{1,}` quantifier means "one or more hops".
 
 **Comparable KQL:** Similar functionality is achieved using the `graph-match` operator in KQL.
 
@@ -370,7 +369,7 @@ This query finds all Person nodes where the age property is greater than 26.
 
 #### Range filtering with AND
 
-Combine multiple conditions to create ranges:
+To create ranges, cCombine multiple conditions:
 
 <!-- csl -->
 ```gql
@@ -419,7 +418,7 @@ RETURN person.name
 ```
 
 This query finds all people whose names contain 'i' anywhere in the string.
-Note that this is case-sensitive.
+This is case-sensitive.
 
 #### Inequality comparisons
 
@@ -583,7 +582,7 @@ ORDER BY person.age
 LIMIT 5
 ```
 
-This query returns only the first 5 people over 25 years old, ordered by age.
+This query returns only the first five people over 25 years old, ordered by age.
 
 **Comparable KQL:** Similar to KQL `project`, `summarize`, `sort`, and `take` operators.
 
@@ -637,7 +636,7 @@ MATCH (s)-[es]->{2,2}(e)
 RETURN s, es, e
 ```
 
-This query finds paths that are exactly 2 hops long. The `{2,2}` quantifier specifies both minimum and maximum path length as 2.
+This query finds paths that are exactly two hops long. The `{2,2}` quantifier specifies both minimum and maximum path length as 2.
 
 #### Variable length paths with open range
 
@@ -649,7 +648,7 @@ MATCH (s)-[p]->{1,}(e)
 RETURN s, e, p
 ```
 
-This query finds paths that are 1 or more hops long. The `{1,}` quantifier means "1 or more hops" with no upper limit.
+This query finds paths that are 1 or more hops long. The `{1,}` quantifier means "one or more hops" with no upper limit.
 
 #### Zero-length paths
 
@@ -661,7 +660,7 @@ MATCH (n)-[]->{0,0}(same_n)
 RETURN n
 ```
 
-This query matches each node with itself through a zero-length path. The `{0,0}` quantifier specifies exactly 0 hops, effectively returning each node paired with itself.
+This query matches each node with itself through a zero-length path. The `{0,0}` quantifier specifies exactly zero hops, effectively returning each node paired with itself.
 
 #### Named path variables
 
@@ -674,7 +673,7 @@ RETURN p
 ```
 
 This query assigns the entire pattern to the variable `p`, which can then be returned or used in other parts of the query. The path variable contains the complete sequence of nodes and edges.
-k
+
 #### Multi-hop named paths
 
 Create named paths that span multiple relationships:
@@ -1008,7 +1007,7 @@ RETURN COUNT(*) > 0 AS HasSuspiciousActivity
 ### Reserved keywords
 
 > [!IMPORTANT]
-> When designing your graph schema, be aware that certain common property names may conflict with GQL reserved keywords and should be avoided or renamed.
+> When designing your graph schema, certain common property names might conflict with GQL reserved keywords and should be avoided or renamed.
 
 GQL has reserved keywords that can't be used as identifiers in queries. Some of these reserved keywords might not be immediately obvious to users (for example, `DATE` is a reserved keyword). If your graph data has properties with names that conflict with GQL reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
 
