@@ -160,15 +160,17 @@ This table shows the result of the query.
 
 GQL in Azure Data Explorer implements the standard GQL syntax for graph pattern matching. The following examples show the GQL syntax supported in Azure Data Explorer, building from simple to complex patterns.
 
-* [MATCH](#match-examples): The `MATCH` clause defines the graph patterns you want to find. Let's start with the most basic patterns and build complexity gradually. Similar functionality is achieved using the `graph-match` operator in KQL.
+* [MATCH](#basic-pattern-matching-without-variables): The `MATCH` clause defines the graph patterns you want to find. Let's start with the most basic patterns and build complexity gradually. Similar functionality is achieved using the `graph-match` operator in KQL.
 
-* [WHERE](#where-examples): Uses standard comparison and logical operators similar to KQL `where` clauses. WHERE clauses filter patterns based on node and edge properties.  They work similarly to KQL or SQL WHERE clauses but operate on graph patterns.
+* [WHERE](#basic-property-filtering): Uses standard comparison and logical operators similar to KQL `where` clauses. `WHERE` clauses filter patterns based on node and edge properties.  They work similarly to KQL or SQL WHERE clauses but operate on graph patterns.
 
-* [RETURN](#return-examples): `RETURN` statements project results from matched patterns. They specify what data to output from your graph query.
+* [RETURN](#return-specific-properties): `RETURN` statements project results from matched patterns. They specify what data to output from your graph query.
 
 * [Advanced patterns](#advanced-pattern-examples): Advanced patterns provide powerful ways to match complex graph structures and label combinations.
 
-## MATCH examples
+* [Complex multi-pattern queries](#complex-multi-pattern-queries): Complex multi-pattern queries let you combine multiple patterns and filters in a single statement, enabling sophisticated graph analysis.
+
+## Examples
 
 ### Basic pattern matching without variables
 
@@ -339,8 +341,6 @@ RETURN DISTINCT connected.name
 
 This query finds all nodes reachable from Alice through paths of one or more hops. The `{1,}` quantifier means "one or more hops".
 
-## WHERE examples
-
 ### Basic property filtering
 
 Filter nodes based on a single property condition:
@@ -451,8 +451,6 @@ RETURN person.name, person.age
 ```
 
 This query finds people who are either over 30 years old OR have 'a' in their name.
-
-## RETURN Examples
 
 ### Return specific properties
 
@@ -674,6 +672,8 @@ RETURN full_path, s.name, e.name
 This query creates a named path variable `full_path` that captures a 2-hop pattern, while also returning specific properties from the s and e nodes.
 
 **Comparable KQL:** Uses advanced `graph-match` operator features for complex pattern matching.
+
+## Complex multi-pattern queries
 
 ### Complex example – cross-town "likes" with company filter
 
