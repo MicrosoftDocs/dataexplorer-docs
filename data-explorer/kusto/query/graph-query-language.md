@@ -725,54 +725,54 @@ This example demonstrates GQL's ability to express complex multi-pattern queries
 
 This table lists core GQL functions and operators in Azure Data Explorer, with their comparable KQL operators:
 
-| GQL Function/Operator | Description | Comparable KQL Operator | Example |
+| GQL Function/Operator | Description | Comparable KQL Operator | GQL Example |
 |---|---|---|---|
 | **Pattern Matching** |
-| [`MATCH`](#31-match-patterns) | Find graph patterns | `graph-match` | `MATCH (a)-[r]->(b)` |
+| `MATCH` | Find graph patterns | `graph-match` | `MATCH (a)-[r]->(b)` |
 | **Filtering** |
-| [`WHERE`](#32-where-clauses) | Filter patterns and properties | `where` | `WHERE person.age > 25` |
-| [`IS NULL`](#32-where-clauses) | Check for null values | `isnull()` | `WHERE person.age IS NULL` |
-| [`IS NOT NULL`](#32-where-clauses) | Check for non-null values | `isnotnull()` | `WHERE person.age IS NOT NULL` |
+| `WHERE` | Filter patterns and properties | `where` | `WHERE person.age > 25` |
+| `IS NULL` | Check for null values | `isnull()` | `WHERE person.age IS NULL` |
+| `IS NOT NULL` | Check for non-null values | `isnotnull()` | `WHERE person.age IS NOT NULL` |
 | **Projection** |
-| [`RETURN`](#33-return-statements) | Project results | `project` | `RETURN person.name, person.age` |
-| [`DISTINCT`](#33-return-statements) | Return unique values | `distinct` | `RETURN DISTINCT person.name` |
+| `RETURN` | Project results | `project` | `RETURN person.name, person.age` |
+| `DISTINCT` | Return unique values | `distinct` | `RETURN DISTINCT person.name` |
 | **Aggregation Functions** |
-| [`COUNT(*)`](#33-return-statements) | Count all rows | `count()` | `RETURN COUNT(*)` |
-| [`COUNT()`](#33-return-statements) | Count non-null values | `count()` | `RETURN COUNT(person.name)` |
-| [`SUM()`](#33-return-statements) | Sum numeric values | `sum()` | `RETURN SUM(person.age)` |
-| [`MIN()`](#33-return-statements) | Minimum value | `min()` | `RETURN MIN(person.age)` |
-| [`MAX()`](#33-return-statements) | Maximum value | `max()` | `RETURN MAX(person.age)` |
-| [`AVG()`](#33-return-statements) | Average value | `avg()` | `RETURN AVG(person.age)` |
-| [`COLLECT_LIST()`](#33-return-statements) | Collect values into array | `make_list()` | `RETURN COLLECT_LIST(person.name)` |
+| `COUNT(*)` | Count all rows | `count()` | `RETURN COUNT(*)` |
+| `COUNT()` | Count non-null values | `count()` | `RETURN COUNT(person.name)` |
+| `SUM()` | Sum numeric values | `sum()` | `RETURN SUM(person.age)` |
+| `MIN()` | Minimum value | `min()` | `RETURN MIN(person.age)` |
+| `MAX()` | Maximum value | `max()` | `RETURN MAX(person.age)` |
+| `AVG()` | Average value | `avg()` | `RETURN AVG(person.age)` |
+| `COLLECT_LIST()` | Collect values into array | `make_list()` | `RETURN COLLECT_LIST(person.name)` |
 | **Graph Functions** |
-| [`labels()`](#graph-functions) | Get labels of a node or edge | Custom graph function | `RETURN labels(person)` |
+| `labels()` | Get labels of a node or edge | Custom graph function | `RETURN labels(person)` |
 | **String Functions** |
-| [`UPPER()`](#32-where-clauses) | Convert to uppercase | `toupper()` | `RETURN UPPER(person.name)` |
-| [`LOWER()`](#32-where-clauses) | Convert to lowercase | `tolower()` | `RETURN LOWER(person.name)` |
-| [`LEFT()`](#32-where-clauses) | Extract left substring | `substring()` | `WHERE LEFT(person.name, 3) = 'Tom'` |
-| [`RIGHT()`](#32-where-clauses) | Extract right substring | `substring()` | `WHERE RIGHT(person.name, 5) = 'Hanks'` |
-| [`STARTS WITH`](#32-where-clauses) | String starts with pattern | `startswith()` | `WHERE person.name STARTS WITH 'Tom'` |
-| [`ENDS WITH`](#32-where-clauses) | String ends with pattern | `endswith()` | `WHERE person.name ENDS WITH 'Hanks'` |
-| [`CONTAINS`](#32-where-clauses) | String contains pattern | `contains()` | `WHERE person.name CONTAINS 'Tom'` |
+| `UPPER()` | Convert to uppercase | `toupper()` | `RETURN UPPER(person.name)` |
+| `LOWER()` | Convert to lowercase | `tolower()` | `RETURN LOWER(person.name)` |
+| `LEFT()` | Extract left substring | `substring()` | `WHERE LEFT(person.name, 3) = 'Tom'` |
+| `RIGHT()` | Extract right substring | `substring()` | `WHERE RIGHT(person.name, 5) = 'Hanks'` |
+| `STARTS WITH` | String starts with pattern | `startswith()` | `WHERE person.name STARTS WITH 'Tom'` |
+| `ENDS WITH` | String ends with pattern | `endswith()` | `WHERE person.name ENDS WITH 'Hanks'` |
+| `CONTAINS` | String contains pattern | `contains()` | `WHERE person.name CONTAINS 'Tom'` |
 | **Type Conversion** |
-| [`CAST()`](#32-where-clauses) | Convert data types | `tostring()`, `toint()`, etc. | `CAST(person.age AS STRING)` |
+| `CAST()` | Convert data types | `tostring()`, `toint()`, etc. | `CAST(person.age AS STRING)` |
 | **Date/Time Functions** |
-| [`ZONED_DATETIME()`](#32-where-clauses) | Create datetime from string | `todatetime()` | `ZONED_DATETIME('2024-01-01')` |
-| [`CURRENT_TIMESTAMP`](#32-where-clauses) | Current timestamp | `now()` | `WHERE created < CURRENT_TIMESTAMP` |
+| `ZONED_DATETIME()` | Create datetime from string | `todatetime()` | `ZONED_DATETIME('2024-01-01')` |
+| `CURRENT_TIMESTAMP` | Current timestamp | `now()` | `WHERE created < CURRENT_TIMESTAMP` |
 | **Path Operations** |
-| [Variable length paths](#31-match-patterns) | Multi-hop traversal | `graph-match` with quantifiers | `MATCH (a)-[*1..3]->(b)` |
-| [Path variables](#34-advanced-patterns) | Named path assignment | Path variables in `graph-match` | `MATCH p = (a)-[]->(b)` |
+| Variable length paths | Multi-hop traversal | `graph-match` with quantifiers | `MATCH (a)-[*1..3]->(b)` |
+| Path variables | Named path assignment | Path variables in `graph-match` | `MATCH p = (a)-[]->(b)` |
 | **Ordering and Limiting** |
-| [`ORDER BY`](#33-return-statements) | Sort results | `sort` | `ORDER BY person.age DESC` |
-| [`LIMIT`](#33-return-statements) | Limit result count | `take` | `LIMIT 10` |
+| `ORDER BY` | Sort results | `sort` | `ORDER BY person.age DESC` |
+| `LIMIT` | Limit result count | `take` | `LIMIT 10` |
 | **Label Operations** |
-| [`&` (AND)](#34-advanced-patterns) | Label intersection | Multiple label filters | `MATCH (p:Person & Male)` |
-| [`\|` (OR)](#34-advanced-patterns) | Label union | Label alternatives | `MATCH (n:Person \| Movie)` |
-| [`!` (NOT)](#34-advanced-patterns) | Label negation | Negative label filter | `MATCH (p:!Female)` |
+| `&` (AND) | Label intersection | Multiple label filters | `MATCH (p:Person & Male)` |
+| `|` (OR) | Label union | Label alternatives | `MATCH (n:Person | Movie)` |
+| `!` (NOT) | Label negation | Negative label filter | `MATCH (p:!Female)` |
 
-### Graph functions
+## Graph functions
 
-#### labels() function
+### labels() function
 
 The `labels()` function shows the labels for a node or edge as an array.
 
