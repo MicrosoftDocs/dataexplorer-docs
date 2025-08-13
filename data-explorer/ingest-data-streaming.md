@@ -246,7 +246,7 @@ Create your application for ingesting data to your cluster using your preferred 
 
 > [NOTE!]
 >
-> For batched queued ingestion, see the instructions for the Kusto Ingest  the [Create an app to get data using queued ingestion](/kusto/api/get-started/app-queued-ingestion?view=azure-data-explorer&preserve-view=true)
+> For batched queued ingestion, see the instructions to [Create an app to get data using queued ingestion](/kusto/api/get-started/app-queued-ingestion?view=azure-data-explorer&preserve-view=true)
 
 ### [C#](#tab/csharp)
 

@@ -321,7 +321,31 @@ Add the following code:
 
    Not applicable
 
-    ---
+  ---
+
+    ###  Ingest V2
+
+    ### [C\#](#tab/csharp)
+
+    ```csharp
+    using Kusto.Ingest.V2; // Add this import
+
+    // No need to use a different connection string builder - the ingestion client can auto-correct to the ingestion URI
+    ```
+
+    ### [Python](#tab/python)
+
+    Not applicable
+
+    ### [TypeScript](#tab/typescript)
+
+    Not applicable
+
+    <!-- ### [Go](#tab/go) -->
+
+    ### [Java](#tab/java)
+
+    Not applicable
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue.
 
