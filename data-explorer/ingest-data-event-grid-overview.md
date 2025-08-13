@@ -125,6 +125,7 @@ You can create a blob from a local file, set ingestion properties to the blob me
 > * Triggering ingestion following a `CopyBlob` operation isn't supported for storage accounts that have the hierarchical namespace feature enabled on them.
 > * When the event hub endpoint doesn't acknowledge receipt of an event, Azure Event Grid activates a retry mechanism. If this retry delivery fails, Event Grid can deliver the undelivered events to a storage account using a process of *dead-lettering*. For more information, see [Event Grid message delivery and retry](/azure/event-grid/delivery-and-retry#retry-schedule-and-duration).
 > * Using the "OpenWrite" API to write to a blob isn't recommended, as it triggers a notification for an empty blob and causes an empty-blob error. Additionally, flush the stream only once to prevent duplicate notifications and multiple ingestions of the same blob.
+> * Azure Data Explorer tries to filter out duplicate notifications for the same blob sent by upstream services like Event Grid or Storage. When it detects a duplicate event, it skips ingestion and logs the error `BlobAlreadyReceived_DuplicateEventGridNotification`, which means the blob is already processed.
 
 ## Rename blobs
 
@@ -138,16 +139,6 @@ When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data
 ## Delete blobs using storage lifecycle
 
 Logic build into the Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It's recommended to keep the blobs for three to five days.
-
-## Handling duplicate data (preview)
-
-Event Grid prevents duplicate data ingestion at the data connection point. Duplicate notifications for the same blob can happen during rename operations, retries, or when multiple subscribers use the same event. Azure Data Explorer identifies duplicate events and notifies you. When it detects a duplicate event, it skips ingestion and logs one of the following errors:
-
-* **BlobAlreadyReceived_DuplicateEventGridNotification**: This error is triggered when the ingestion system detects that a blob has already been processed.
-
-* **Event ID Matching**: The system compares incoming blob events using unique identifiers, for example, event IDs or blob URLs. If the same blob URL is received across different Event Hub partitions within a short time window, it's flagged as a duplicate.
-
-<!--  To further prevent duplicate data ingestion, you can use the [ingestion deduplication feature](ingestion-deduplication.md). For infomation on how to handle duplicate data, see [Handle duplicate data in Azure Data Explorer](dealing-with-duplicates.md).-->
 
 ## Known Event Grid issues
 
