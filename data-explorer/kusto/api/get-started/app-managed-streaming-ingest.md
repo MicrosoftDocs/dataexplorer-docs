@@ -503,14 +503,10 @@ class BatchIngest
        var tokenCredential = new InteractiveBrowserCredential();
        var clusterUri = "<your cluster>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
        var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadAzureTokenCredentialsAuthentication(tokenCredential);
-
-        using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
-
         var database = "<your database>";
         var table = "MyStormEvents";
-
         var query = table + " | count";
-
+        using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
         using (var response = await kustoClient.ExecuteQueryAsync(database, query, null))
         {
             Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
@@ -535,9 +531,9 @@ class BatchIngest
 
 ## Stream a file for ingestion
 
-Use the `IngestFromStorageAsync` method to ingest the *stormevents.csv* file.
+Use the `IngestAsync` method to ingest the *stormevents.csv* file.
 
-Copy *stormevents.csv* file to the same location as your script. Since our input is a CSV file, use `Format = DataSourceFormat.csv` in the ingestion properties.
+Copy *stormevents.csv* file to the same location as your script. Since our input is a CSV file, use `DataSourceFormat.csv` as the format in the `FileSource`.
 
 Add and ingestion section using the following lines to the end of `Main()`.
 
