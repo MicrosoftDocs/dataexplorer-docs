@@ -13,12 +13,6 @@ ms.date: #Required; mm/dd/yyyy format.
 
 Graph Query Language (GQL) is a powerful language for querying graph data in Azure Data Explorer. It provides a rich set of functions and operators to work with graph patterns, nodes, edges, and properties.
 
-> [!NOTE]
-> GQL uses standardized syntax for graph operations. Many GQL functions work like KQL functions but use different syntax and operators.
-
-> [!TIP]
-> Use GQL for standardized graph pattern matching, and combine it with KQL operators for more data processing options.
-
 This table lists the core GQL functions and operators, along with their Kusto Query Language (KQL) equivalents and examples.
 
 | GQL Function/Operator | Description | Comparable KQL Operator | GQL Example |
@@ -120,3 +114,9 @@ This query returns node names along with their labels and the labels of connecti
 | admin.user | ["User"] | ["CAN_ACCESS"] | domain-controller |
 | web-server | ["System"] | ["CAN_ACCESS"] | database |
 | domain-controller | ["System"] | ["CAN_ACCESS"] | database |
+
+> [!NOTE]
+> GQL uses standardized syntax for graph operations. Many GQL functions work like KQL functions but use different syntax and operators.
+
+> [!TIP]
+> Use GQL for standardized graph pattern matching, and combine it with KQL operators for more data processing options.

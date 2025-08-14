@@ -9,21 +9,27 @@ ms.date: #Required; mm/dd/yyyy format.
 
 #CustomerIntent: As a <type of user>, I want <what?> so that <why?>.
 ---
-# Core GQL query patterns and examples
+# GQL examples and common use cases
+
+This article provides Graph Query Language examples focing on the core query patters, and shows common real-world use cases for GQL in Azure Data Explorer using realistic graph schemas and queries.
 
 GQL in Azure Data Explorer implements the standard GQL syntax for graph pattern matching. The following examples show the GQL syntax supported in Azure Data Explorer, building from simple to complex patterns.
 
-* [MATCH](#basic-pattern-matching-without-variables): The `MATCH` clause defines the graph patterns you want to find. Let's start with the most basic patterns and build complexity gradually. Similar functionality is achieved using the `graph-match` operator in KQL.
+## Core GQL query patterns
 
-* [WHERE](#basic-property-filtering): Uses standard comparison and logical operators similar to KQL `where` clauses. `WHERE` clauses filter patterns based on node and edge properties.  They work similarly to KQL or SQL WHERE clauses but operate on graph patterns.
+* [MATCH](#examples-with-match): The `MATCH` clause defines the graph patterns you want to find. Let's start with the most basic patterns and build complexity gradually. Similar functionality is achieved using the `graph-match` operator in KQL.
 
-* [RETURN](#return-specific-properties): `RETURN` statements project results from matched patterns. They specify what data to output from your graph query.
+* [WHERE](#examples-with-where): Uses standard comparison and logical operators similar to KQL `where` clauses. `WHERE` clauses filter patterns based on node and edge properties.  They work similarly to KQL or SQL WHERE clauses but operate on graph patterns.
 
-* [Advanced patterns](#examples-advanced-patterns-and-complex-multi-patterns)
+* [RETURN](#examples-with-return): `RETURN` statements project results from matched patterns. They specify what data to output from your graph query.
 
-* [Complex multi-pattern queries](#complex-multi-pattern-queries): Complex multi-pattern queries let you combine multiple patterns and filters in a single statement, enabling sophisticated graph analysis.
+* [Advanced patterns](#examples-with-advanced-patterns)
 
-## Example: Basic pattern matching without variables
+* [Complex multi-pattern queries](#examples-with-complex-multi-pattern-queries): Complex multi-pattern queries let you combine multiple patterns and filters in a single statement, enabling sophisticated graph analysis.
+
+## Examples with MATCH
+
+### Basic pattern matching without variables
 
 The simplest pattern matches any relationship without referencing the matched values:
 
@@ -35,7 +41,7 @@ RETURN COUNT(*)
 
 This query finds all relationships in the graph. The empty parentheses `()` represent anonymous nodes, and `[]` represents anonymous edges. Since we don't assign variables, we can only count the matches but not access their properties.
 
-## Example: Pattern matching with variables
+### Pattern matching with variables
 
 To access the matched nodes and edges, assign them to variables:
 
@@ -47,7 +53,7 @@ RETURN COUNT(*)
 
 Now `n` represents the source node, `e` represents the _directed_ edge, and `n2` represents the target node. We can reference these variables to access properties, but in this example we're still just counting matches.
 
-## Example: Access node properties
+### Access node properties
 
 Once you have variables, you can access properties of matched nodes:
 
@@ -69,7 +75,7 @@ Although we name those entities `person` and `target`, we don't have any restric
 | Alice       | TechCorp    | works_at        |
 | Alice       | Seattle     | located_at      |
 
-## Example: Filter by node labels
+### Filter by node labels
 
 Use labels to match specific types of nodes. Labels are specified with a colon after the variable name:
 
@@ -92,7 +98,7 @@ This query matches **only nodes with the "Person" label** and returns their name
 | David      |
 | Emma       |
 
-## Example: Filter by edge labels
+### Filter by edge labels
 
 <!-- csl -->
 ```gql
@@ -128,7 +134,7 @@ This query finds Person nodes connected to other Person nodes through "knows" re
 | Carol    | David    |
 | David    | Emma     |
 
-## Example: Filter by properties with WHERE
+### Filter by properties with WHERE
 
 Use WHERE clauses to filter based on property values:
 
@@ -141,7 +147,7 @@ RETURN person.name, person.age
 
 This query finds people over 25 years old and returns their names and ages. The WHERE clause filters the matched nodes based on the age property.
 
-## Example: Inline property filters
+#### Inline property filters
 
 You can also filter by properties directly in the pattern using inline conditions:
 
@@ -153,7 +159,7 @@ RETURN person.age
 
 This query finds the specific person named "Bob" and returns their age. The `{name: 'Bob'}` syntax filters for nodes where the name property equals 'Bob'.
 
-## Example: Multiple inline conditions
+### Multiple inline conditions
 
 You can specify multiple property conditions inline:
 
@@ -165,7 +171,7 @@ RETURN person as Bob
 
 This query finds the person with both the specified name and age. It returns the person node as "Bob".
 
-## Example: Variable length paths
+## Variable length paths
 
 For multi-hop relationships, use variable length path patterns with quantifiers:
 
@@ -177,7 +183,7 @@ RETURN s.name, e.name
 
 This query finds paths that include between 1 to 3 hops. The `{1,3}` quantifier specifies the minimum and maximum path length.
 
-## Example: Unbounded variable length paths
+### Unbounded variable length paths
 
 For paths of variable length, you can specify open ranges:
 
@@ -190,7 +196,9 @@ RETURN DISTINCT connected.name
 
 This query finds all nodes reachable from Alice through paths of one or more hops. The `{1,}` quantifier means "one or more hops".
 
-## Example: Basic property filtering
+## Examples with WHERE
+
+### Basic property filtering
 
 Filter nodes based on a single property condition:
 
@@ -301,7 +309,9 @@ RETURN person.name, person.age
 
 This query finds people who are either over 30 years old OR have 'a' in their name.
 
-## Example: Return specific properties
+## Examples with RETURN
+
+### Return specific properties
 
 Return individual properties from matched nodes:
 
@@ -342,7 +352,7 @@ This query returns the complete node and edge objects for Kevin Bacon's relation
 |--------|------|-------|
 {"id":"2","lbl":"Person","name":"Kevin Bacon","title":"","born":1958} |	{"source":"2","target":"3","lbl":"ACTED_IN","Role":"Jack Swigert"} | {"id":"3","lbl":"Movie","name":"","title":"Apollo 13","born":1995}
 
-## Example: Count matching patterns
+### Count matching patterns
 
 Use COUNT(*) to count the number of pattern matches:
 
@@ -378,7 +388,7 @@ RETURN COLLECT_LIST(person.name) AS AllNames
 
 This query collects all person names into a single array result.
 
-## Example: Return distinct values
+### Return distinct values
 
 Remove duplicates from your results:
 
@@ -390,7 +400,7 @@ RETURN DISTINCT company.name
 
 This query returns each unique movie title only once, even if multiple people are connected to the same movie.
 
-### Order results
+### Return ordered results
 
 Sort your results using ORDER BY:
 
@@ -420,7 +430,7 @@ This query returns only the first five people over 25 years old, ordered by age.
 
 **Comparable KQL:** Similar to KQL `project`, `summarize`, `sort`, and `take` operators.
 
-## Examples: Advanced patterns
+## Examples with advanced patterns
 
 Advanced patterns provide powerful ways to match complex graph structures and label combinations.
 
@@ -522,7 +532,9 @@ This query creates a named path variable `full_path` that captures a 2-hop patte
 
 **Comparable KQL:** Uses advanced `graph-match` operator features for complex pattern matching.
 
-## Examples: Complex multi-pattern – cross-town "likes" with company filter
+## Examples with complex multi-patterns
+
+#### Cross-town "likes" with company filter
 
 This query ties together multiple patterns and filters in a single statement:
 
@@ -568,11 +580,7 @@ RETURN AVG(p2.age) AS AvgAgeLikedAcrossTowns
 
 This example demonstrates GQL's ability to express complex multi-pattern queries with cross-variable filtering, inline property matching, string pattern matching, and aggregation—all in a single, readable statement.
 
-## Common GQL use case examples 
-
-This section shows common real-world use cases for GQL in Azure Data Explorer using realistic graph schemas and queries.
-
-### Security use case - attack path analysis
+## Security use case - attack path analysis
 
 Security analysts use GQL to find potential attack paths in network infrastructure and access control systems.
 
@@ -627,7 +635,7 @@ This query finds users who can reach critical systems within three hops, so secu
 | john.doe | database | 1 |
 | admin.user | database | 1 |
 
-### Social networks use case: Friend recommendations
+## Social networks use case: Friend recommendations
 
 Social media platforms use GQL to find potential friend connections based on mutual relationships.
 
@@ -680,7 +688,7 @@ This query suggests friends for Alice who have mutual connections and live in th
 |--|--|--|
 | David Wilson | Bob Smith | Technology,Gaming |
 
-### Organization use case: Management hierarchy
+## Organization use case: Management hierarchy
 
 Organizations use GQL to analyze reporting structures and find management chains.
 

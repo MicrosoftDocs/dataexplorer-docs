@@ -122,7 +122,10 @@ After you finish setup, run GQL queries using standard GQL syntax. Start with th
 > [!TIP]
 > GQL queries in Azure Data Explorer use standard GQL syntax and translate to KQL with graph operators. Start with simple patterns and build complexity gradually.
 
-## Example GQL query for basic pattern matching
+## Examples
+
+
+### Example GQL query for basic pattern matching
 <!-- csl -->
 ```gql
 MATCH (n)-[e]->(n2)
@@ -137,7 +140,7 @@ This table shows the result of the query.
 |-----|
 | 20  |
 
-## Example GQL query with labels
+### Example GQL query with labels
 
 <!-- csl -->
 ```gql
@@ -196,4 +199,4 @@ RETURN COUNT(*) > 0 AS HasSuspiciousActivity
 * [make-graph operator](make-graph-operator.md)
 * [graph-match operator](graph-match-operator.md)
 * [Tutorial: Create your first graph](tutorials/your-first-graph.md)
-* [Graph functions reference](graph-functions.md)
+* [Graph functions reference](graph-function.md)
