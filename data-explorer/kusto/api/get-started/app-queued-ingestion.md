@@ -323,42 +323,18 @@ Add the following code:
 
   ---
 
-    ###  Ingest V2
-
-    ### [C\#](#tab/csharp)
-
-    ```csharp
-    using Kusto.Ingest.V2; // Add this import
-
-    // No need to use a different connection string builder - the ingestion client can auto-correct to the ingestion URI
-    ```
-
-    ### [Python](#tab/python)
-
-    Not applicable
-
-    ### [TypeScript](#tab/typescript)
-
-    Not applicable
-
-    <!-- ### [Go](#tab/go) -->
-
-    ### [Java](#tab/java)
-
-    Not applicable
-
 1. Ingest the *stormevent.csv* file by adding it to the batch queue.
 
    **Ingest V1**
 
    You use the following objects and properties:
 
-   - **QueuedIngestClient** to create the ingest client.
-   - **IngestionProperties** to set the ingestion properties.
-   - **DataFormat** to specify the file format as *CSV*.
-   - **ignore_first_record** to specify whether the first row in CSV and similar file types is ignored, using the following logic:
-      - **True**: The first row is ignored. Use this option to drop the header row from tabular textual data.
-      - **False**: The first row is ingested as a regular row.
+   - `QueuedIngestClient` to create the ingest client.
+   - `IngestionProperties` to set the ingestion properties.
+   - `DataFormat` to specify the file format as *CSV*.
+   - `ignore_first_record` to specify whether the first row in CSV and similar file types is ignored, using the following logic:
+      - `True`: The first row is ignored. Use this option to drop the header row from tabular textual data.
+      - `False`: The first row is ingested as a regular row.
 
    [!INCLUDE [ingestion-size-limit](../../../includes/cross-repo/ingestion-size-limit.md)]
 
@@ -428,7 +404,7 @@ Add the following code:
 
     ---
 
-    **Ingest V2 (preview)**
+      **Ingest V2 (preview)**
 
    You use the following objects and properties:
 
