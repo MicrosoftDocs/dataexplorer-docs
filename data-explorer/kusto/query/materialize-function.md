@@ -34,15 +34,13 @@ The `materialize()` function is useful in the following scenarios:
 > Materialize has a cache size limit of **5 GB**. This limit is per cluster node and is mutual for all queries running concurrently. If a query uses `materialize()` and the cache can't hold any more data, the query will abort with an error.
 
 >[!TIP]
-> Another way to perform materialization of tabular expression is by using the `hint.materialized` flag
-> of the [as operator](as-operator.md) and [partition operator](partition-operator.md). They all share a
-> single materialization cache.
-
->[!TIP]
->
+>* Another way to perform materialization of tabular expression is by using the `hint.materialized` flag of the [as operator](as-operator.md) and [partition operator](partition-operator.md). They all share a single materialization cache.
 >* Push all possible operators that reduce the materialized dataset and keep the semantics of the query. For example, use common filters on top of the same materialized expression.
 >* Use materialize with join or union when their operands have mutual subqueries that can be executed once. For example, join/union fork legs. See [example of using join operator](#examples-of-query-performance-improvement).
 >* Materialize can only be used in let statements if you give the cached result a name. See [example of using let statements](#examples-of-using-materialize)).
+
+>[!CAUTION]
+> Using `materialize()` can be counterproductive in some cases. The memory usage might grow significantly while providing only minimal performance gains from result reuse. Always benchmark your queries with and without `materialize()` to determine if it actually improves performance for your specific data and query patterns.
 
 ## Examples of query performance improvement
 
