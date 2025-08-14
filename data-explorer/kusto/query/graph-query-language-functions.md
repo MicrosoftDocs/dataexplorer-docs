@@ -14,6 +14,8 @@ Graph Query Language (GQL) is a powerful language for querying graph data in Azu
 > [!NOTE]
 > GQL support in Azure Data Explorer is currently in preview. Features and syntax can change based on feedback and ongoing development.
 
+## Core GQL functions and operators
+
 This table lists the core GQL functions and operators, along with their Kusto Query Language (KQL) equivalents and examples.
 
 | GQL Function/Operator | Description | Comparable KQL Operator | GQL Example |
@@ -61,7 +63,7 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `|` (OR) | Label union | Label alternatives | `MATCH (n:Person | Movie)` |
 | `!` (NOT) | Label negation | Negative label filter | `MATCH (p:!Female)` |
 
-## Labels() (GQL function)
+## Labels() (Custom GQL function)
 
 The `labels()` function shows the labels for a node or edge as an array.
 

@@ -175,7 +175,7 @@ RETURN person as Bob
 
 This query finds the person with both the specified name and age. It returns the person node as "Bob."
 
-## Variable length paths
+### Variable length paths
 
 Use variable length path patterns with quantifiers for multi-hop relationships:
 
@@ -221,7 +221,7 @@ This query finds all `Person` nodes where the `age` property is greater than 26.
 |--------------|-------------|
 | Bob          | 30          |
 
-## Example: Range filtering with AND
+### Range filtering with AND
 
 To create a range, combine multiple conditions:
 
@@ -234,7 +234,7 @@ RETURN person.name, person.age
 
 This query shows people whose ages are between 28 and 35, inclusive.
 
-## Example: Edge property filtering
+### Edge property filtering
 
 Filter by edge properties to find specific types of relationships.
 
@@ -247,7 +247,7 @@ RETURN person.name, c.name, wa.since
 
 This query shows people who start working at companies in 2022 or later. It filters by the `since` property of the `works_at` relationship.
 
-## Example: String pattern matching
+### String pattern matching
 
 Use string functions to match text patterns.
 
@@ -273,7 +273,7 @@ RETURN person.name
 
 This query finds people whose names have 'i' anywhere in the string. This match is case sensitive.
 
-## Example: Inequality comparisons
+### Inequality comparisons
 
 Use comparison operators to exclude specific values:
 
@@ -286,7 +286,7 @@ RETURN person.name, company.name
 
 This query shows people over 25 who work at companies other than 'TechCorp'.
 
-## Example: Null value checking
+### Null value checking
 
 Check for the presence or absence of property values.
 
@@ -299,7 +299,7 @@ RETURN person.name, person.age
 
 This query finds all people who have an age recorded (non-null age property).
 
-## Example: Logical OR operations
+### Logical OR operations
 
 Use OR to match multiple conditions
 
