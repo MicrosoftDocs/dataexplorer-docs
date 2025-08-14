@@ -40,7 +40,7 @@ The `materialize()` function is useful in the following scenarios:
 >* Materialize can only be used in let statements if you give the cached result a name. See [example of using let statements](#examples-of-using-materialize)).
 
 >[!CAUTION]
-> Using `materialize()` can be counterproductive in some cases. The memory usage might grow significantly while providing only minimal performance gains from result reuse. Always benchmark your queries with and without `materialize()` to determine if it actually improves performance for your specific data and query patterns.
+> Benchmark your queries with and without materialize() to see if it improves performance for your data and query patterns. In some cases, materialize() can increase memory usage without providing significant performance gains, so testing helps you choose the best approach.
 
 ## Examples of query performance improvement
 
