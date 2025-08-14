@@ -1,15 +1,13 @@
 ---
-title: #Required; Keep the title body to 60-65 chars max including spaces and brand
-description: #Required; Keep the description within 100- and 165-characters including spaces 
-author: #Required; your GitHub user alias, with correct capitalization
-ms.author: #Required; microsoft alias of author
-ms.service: #Required; use the name-string related to slug in ms.product/ms.service
-ms.topic: concept-article #Required; leave this attribute/value as-is.
-ms.date: #Required; mm/dd/yyyy format.
+title: Graph Query Language Functions in Azure Data Explorer
+description: Leaern Azure Data Explorer graph query language (GQL) functions and operators for working with nodes, edges, and properties. Find practical examples and KQL equivalents.
+ms.reviewer: hraunch 
+ms.topic: concept-article
+ms.date: 08/14/2025
 
-#CustomerIntent: As a <type of user>, I want <what?> so that <why?>.
+#CustomerIntent: As a data engineer, I want to learn GQL functions in Azure Data Explorer so that I can query graph data efficiently.
 ---
-# Graph query language (GQL) functions, operators, and examples
+# Graph query language (GQL) functions and operators
 
 Graph Query Language (GQL) is a powerful language for querying graph data in Azure Data Explorer. It provides a rich set of functions and operators to work with graph patterns, nodes, edges, and properties.
 

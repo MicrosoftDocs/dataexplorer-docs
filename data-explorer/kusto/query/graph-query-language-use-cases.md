@@ -1,15 +1,13 @@
 ---
-title: #Required; Keep the title body to 60-65 chars max including spaces and brand
-description: #Required; Keep the description within 100- and 165-characters including spaces 
-author: #Required; your GitHub user alias, with correct capitalization
-ms.author: #Required; microsoft alias of author
-ms.service: #Required; use the name-string related to slug in ms.product/ms.service
-ms.topic: concept-article #Required; leave this attribute/value as-is.
-ms.date: #Required; mm/dd/yyyy format.
+title: GQL Query Patterns, Examples, and Use Cases in Azure Data Explorer
+description: GQL query patterns for Azure Data Explorer. Find out how to use MATCH, WHERE, and RETURN clauses to analyze graph relationships. GQL use cases in Azure Data Explorer. See how to build queries for security, social networks, and organizational analysis with step-by-step examples.
+ms.reviewer: herauch
+ms.topic: concept-article
+ms.date: 08/14/2025
 
 #CustomerIntent: As a <type of user>, I want <what?> so that <why?>.
 ---
-# GQL examples and common use cases
+# GQL query patterns, examples, and common use cases
 
 This article provides Graph Query Language examples focing on the core query patters, and shows common real-world use cases for GQL in Azure Data Explorer using realistic graph schemas and queries.
 
@@ -25,7 +23,7 @@ GQL in Azure Data Explorer implements the standard GQL syntax for graph pattern 
 
 * [Advanced patterns](#examples-with-advanced-patterns)
 
-* [Complex multi-pattern queries](#examples-with-complex-multi-pattern-queries): Complex multi-pattern queries let you combine multiple patterns and filters in a single statement, enabling sophisticated graph analysis.
+* [Complex multi-pattern queries](#Examples-with-complex-multi-patterns): Complex multi-pattern queries let you combine multiple patterns and filters in a single statement, enabling sophisticated graph analysis.
 
 ## Examples with MATCH
 

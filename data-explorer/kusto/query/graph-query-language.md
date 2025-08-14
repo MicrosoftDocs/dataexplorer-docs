@@ -9,7 +9,7 @@ ms.date: 08/13/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Graph Query Language (GQL) lets you use standardized graph pattern matching in Azure Data Explorer. GQL follows the emerging ISO GQL standard for graph database queries.
+Graph Query Language (GQL) lets you use standardized graph pattern matching in Azure Data Explorer (ADX). GQL follows the emerging ISO GQL standard for graph database queries.
 
 > [!NOTE]
 > GQL support in Azure Data Explorer is currently in preview. Features and syntax can change based on feedback and ongoing development.
@@ -31,7 +31,7 @@ To use GQL in Azure Data Explorer, you need:
 
 ## Step 1: Create a graph reference
 
-Before you use GQL, create a graph data source. For this article, we use an in-memory make-graph operator, but it's recommended to use a graph snapshop for production scenarios.
+Before you use GQL, create a graph data source. For this article, we use an in-memory make-graph operator, but it's recommended to use a graph snapshot for production scenarios.
 
 <!-- csl -->
 ```gql
@@ -184,10 +184,10 @@ RETURN COUNT(*) > 0 AS HasSuspiciousActivity
 
 ## Limitations
 
-- **Reserved keywords**: GQL has reserved keywords that can't be used as identifiers in queries. Some of these reserved keywords might not be immediately obvious to users (for example, `DATE` is a reserved keyword). If your graph data has properties with names that conflict with GQL reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
+- **Reserved keywords**: There are reserved GQL keywords that can't be used as identifiers in queries. Some of these reserved keywords might not be immediately obvious to users (for example, `DATE` is a reserved keyword). If your graph data has properties with names that conflict with GQL reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
 
     > [!IMPORTANT]
-    > When designing your graph schema, certain common property names might conflict with GQL reserved keywords and should be avoided or renamed.
+    > When upi design your graph schema, certain common property names might conflict with GQL reserved keywords and should be avoided or renamed.
 
 - **No `INSERT`/`CREATE` support**: GQL in Azure Data Explorer doesn't support `INSERT` or `CREATE` operations to modify graph structures. Instead, use KQL's [`make-graph`](make-graph-operator.md) operator or [graph snapshots](graph-operators.md) to create and manage graph structures. Use KQL for all graph creation, change, and management tasks.
 
