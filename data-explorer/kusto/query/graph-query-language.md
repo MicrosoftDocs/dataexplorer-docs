@@ -1,5 +1,5 @@
 ---
-title: GQL - Azure Data Explorer
+title: GQL Graph Query Language in Azure Data Explorer (preview)
 description: This article describes Graph Query Language (GQL) in Azure Data Explorer.
 ms.reviewer: herauch
 ms.topic: reference
@@ -9,20 +9,20 @@ ms.date: 08/13/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Graph Query Language (GQL) lets you use standardized graph pattern matching in Azure Data Explorer (ADX). GQL follows the emerging ISO GQL standard for graph database queries.
+Graph Query Language (GQL) lets you use standardized graph pattern matching in Azure Data Explorer (ADX). GQL follows the ISO GQL standard for graph database queries.
 
 > [!NOTE]
-> GQL support in Azure Data Explorer is currently in preview. Features and syntax can change based on feedback and ongoing development.
+> GQL support in Azure Data Explorer is in preview. Features and syntax can change based on feedback and ongoing development.
 
 ## Introduction
 
-Graph Query Language (GQL) is an emerging ISO standard for querying graph databases. GQL lets you use SQL-like syntax for graph pattern matching in Azure Data Explorer, making it easier to analyze relationships in your data. This article explains how to use GQL in Azure Data Explorer, its benefits, and key features.
+Graph Query Language (GQL) is an emerging ISO standard for querying graph databases. GQL lets you use SQL-like syntax for graph pattern matching in Azure Data Explorer, so it's easier to analyze relationships in your data. This article explains how to use GQL in Azure Data Explorer, its benefits, and key features.
 
-Azure Data Explorer implements GQL, so you get standardized graph pattern matching capabilities. You can analyze relationships in your data using the ISO standard syntax.
+Azure Data Explorer implements GQL, so you get standardized graph pattern matching capabilities. Analyze relationships in your data using the ISO standard syntax.
 
 GQL in Azure Data Explorer builds on the existing [graph operators](graph-operators.md) functionality. It gives you a standardized way to write graph queries that focus on relationships and patterns between entities.
 
-## Getting Started
+## Getting started
 
 To use GQL in Azure Data Explorer, you need:
 
@@ -31,7 +31,7 @@ To use GQL in Azure Data Explorer, you need:
 
 ## Step 1: Create a graph reference
 
-Before you use GQL, create a graph data source. For this article, we use an in-memory make-graph operator, but it's recommended to use a graph snapshot for production scenarios.
+Before you use GQL, create a graph data source. This article uses an in-memory make-graph operator, but we recommend using a graph snapshot for production scenarios.
 
 <!-- csl -->
 ```gql
@@ -85,7 +85,7 @@ To run GQL queries, set three client request properties. Set these properties th
 ### Use Azure Data Explorer to set client request properties
 
 > [!IMPORTANT]
-> Run each directive separately before running your GQL query. The directives set up the query environment for GQL execution.
+> Run each directive separately before you run your GQL query. The directives set up the query environment for GQL execution.
 
 <!-- csl -->
 ```kql
@@ -97,7 +97,7 @@ To run GQL queries, set three client request properties. Set these properties th
 #crp query_graph_reference=G()
 ```
 
-To use labels in GQL, define the label column name:
+To use labels in GQL, set the label column name:
 
 <!-- csl -->
 ```kql
@@ -105,25 +105,26 @@ To use labels in GQL, define the label column name:
 ```
 
 > [!TIP]
-> Labels are optional in GQL, but they're often used to filter nodes and edges by type. Setting the label column name lets you use labels in your GQL queries.
+> Labels are optional in GQL, but they're often used to filter nodes and edges by type. Set the label column name to use labels in your GQL queries.
 
-### Use SDK/API  to set client request properties
+### Use SDK or API to set client request properties
 
 For programmatic access, set these client request properties:
 
-- `query_language`: Set to `"gql"`
-- `query_graph_reference`: Set to your graph function name (for example, `"G()"`)
-- `query_graph_label_name`: Set to your label column name (for example, `"lbl"`)
+- `query_language`: Set to `"gql"`.
+- `query_graph_reference`: Set to your graph function name (for example, `"G()"`).
+- `query_graph_label_name`: Set to your label column name (for example, `"lbl"`).
 
-## Step 3: Execute GQL queries
+## Step 3: Run GQL queries
 
-After you finish setup, run GQL queries using standard GQL syntax. Start with the examples below to explore basic and advanced GQL features.
+After you finish setup, run GQL queries using standard GQL syntax. Use the examples below to explore basic and advanced GQL features.
 
 > [!TIP]
-> GQL queries in Azure Data Explorer use standard GQL syntax and translate to KQL with graph operators. Start with simple patterns and build complexity gradually.
+> GQL queries in Azure Data Explorer use standard GQL syntax and translate to KQL with graph operators. Start with simple patterns, and build complexity gradually.
 
 ## Examples
 
+Find basic examples for pattern matching and labels here. For more complex examples, see [GQL query patterns, examples, and common scenarios](graph-query-language-use-cases.md).
 
 ### Example GQL query for basic pattern matching
 <!-- csl -->
@@ -134,7 +135,7 @@ RETURN COUNT(*) as CNT
 
 **Output**
 
-This table shows the result of the query.
+The following table shows the result of the query.
 
 | CNT |
 |-----|
@@ -152,7 +153,7 @@ LIMIT 2
 
 **Output**
 
-This table shows the result of the query.
+The following table shows the result of the query.
 
 | p.name | target.name | e.lbl |
 |--------|-------------|-------|
@@ -161,20 +162,20 @@ This table shows the result of the query.
 
 ## Performance optimization
 
-When you work with GQL queries in production environments, use these performance optimization strategies:
+Use these strategies to optimize GQL query performance in production environments:
 
 > [!TIP]
-> Start with simple patterns, then increase complexity as needed. Monitor query performance, and adjust path lengths and filters to improve results.
+> Start with simple patterns, then increase complexity if needed. Monitor query performance, and adjust path lengths and filters to improve results.
 
 **Limit path matching scope**:
 
 - Use specific label filters to reduce the search space: `MATCH (start:SpecificType)` instead of `MATCH (start)`
 - Limit variable length paths with reasonable bounds: `MATCH (a)-[]->{1,3}(b)` instead of unbounded paths
-- Apply `WHERE` clauses early to filter results before expensive operations
+- Apply `WHERE` clauses early to filter results before expensive operations.
 
 **Use COUNT(*) for existence checks**:
 
-If you only need to check if a pattern exists, use `COUNT(*)` instead of returning full results:
+If you only need to check if a pattern exists, use `COUNT(*)` instead of returning full results.
 
 ```gql
 MATCH (user:User)-[:SUSPICIOUS_ACTIVITY]->(target)
@@ -184,12 +185,12 @@ RETURN COUNT(*) > 0 AS HasSuspiciousActivity
 
 ## Limitations
 
-- **Reserved keywords**: There are reserved GQL keywords that can't be used as identifiers in queries. Some of these reserved keywords might not be immediately obvious to users (for example, `DATE` is a reserved keyword). If your graph data has properties with names that conflict with GQL reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
+- **Reserved keywords**: Some GQL keywords can't be used as identifiers in queries. Some reserved keywords aren't immediately obvious (for example, `DATE` is a reserved keyword). If your graph data has property names that conflict with GQL reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
 
     > [!IMPORTANT]
-    > When upi design your graph schema, certain common property names might conflict with GQL reserved keywords and should be avoided or renamed.
+    > When you design your graph schema, some common property names might conflict with GQL reserved keywords. Avoid or rename these property names.
 
-- **No `INSERT`/`CREATE` support**: GQL in Azure Data Explorer doesn't support `INSERT` or `CREATE` operations to modify graph structures. Instead, use KQL's [`make-graph`](make-graph-operator.md) operator or [graph snapshots](graph-operators.md) to create and manage graph structures. Use KQL for all graph creation, change, and management tasks.
+- **No `INSERT`/`CREATE` support**: GQL in Azure Data Explorer doesn't support `INSERT` or `CREATE` operations to change graph structures. Instead, use KQL's [`make-graph`](make-graph-operator.md) operator or [graph snapshots](graph-operators.md) to create and manage graph structures. Use KQL for all graph creation, change, and management tasks.
 
 - **Optional matches not supported**: GQL's `OPTIONAL MATCH` clause isn't supported in Azure Data Explorer. All pattern matches are required. To get similar results, use separate queries or KQL operators for optional relationships.
 

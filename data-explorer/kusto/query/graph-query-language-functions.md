@@ -2,14 +2,17 @@
 title: Graph Query Language Functions in Azure Data Explorer
 description: Leaern Azure Data Explorer graph query language (GQL) functions and operators for working with nodes, edges, and properties. Find practical examples and KQL equivalents.
 ms.reviewer: hraunch 
-ms.topic: concept-article
+ms.topic: reference
 ms.date: 08/14/2025
 
 #CustomerIntent: As a data engineer, I want to learn GQL functions in Azure Data Explorer so that I can query graph data efficiently.
 ---
-# Graph query language (GQL) functions and operators
+# Graph query language (GQL) functions and operators (preview)
 
 Graph Query Language (GQL) is a powerful language for querying graph data in Azure Data Explorer. It provides a rich set of functions and operators to work with graph patterns, nodes, edges, and properties.
+
+> [!NOTE]
+> GQL support in Azure Data Explorer is currently in preview. Features and syntax can change based on feedback and ongoing development.
 
 This table lists the core GQL functions and operators, along with their Kusto Query Language (KQL) equivalents and examples.
 
@@ -85,7 +88,7 @@ RETURN entity.name, labels(entity)
 
 **Output**
 
-This query returns the name and all labels for each node in the graph.
+This query shows the name and all labels for each node in the graph.
 
 | entity.name | labels(entity) |
 |--|--|
@@ -104,7 +107,7 @@ RETURN n.name, labels(n) AS n_labels, labels(e) AS edge_labels, target.name
 
 **Output**
 
-This query returns node names along with their labels and the labels of connecting edges.
+This query shows node names, their labels, and the labels of connecting edges.
 
 | n.name | n_labels | edge_labels | target.name |
 |--|--|--|--|
@@ -114,7 +117,12 @@ This query returns node names along with their labels and the labels of connecti
 | domain-controller | ["System"] | ["CAN_ACCESS"] | database |
 
 > [!NOTE]
-> GQL uses standardized syntax for graph operations. Many GQL functions work like KQL functions but use different syntax and operators.
+> GQL uses standardized syntax for graph operations. Many GQL functions work like KQL functions, but use different syntax and operators.
 
 > [!TIP]
 > Use GQL for standardized graph pattern matching, and combine it with KQL operators for more data processing options.
+
+## Related Context
+
+* [Graph Query Language (GQL) in Azure Data Explorer](graph-query-language.md)
+* [Graph Query Language (GQL) use cases](graph-query-language-use-cases.md)
