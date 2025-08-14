@@ -1,13 +1,11 @@
 ---
-title: #Required; Keep the title body to 60-65 chars max including spaces and brand
-description: #Required; Keep the description within 100- and 165-characters including spaces 
-author: #Required; your GitHub user alias, with correct capitalization
-ms.author: #Required; microsoft alias of author
-ms.service: #Required; use the name-string related to slug in ms.product/ms.service
-ms.topic: concept-article #Required; leave this attribute/value as-is.
-ms.date: #Required; mm/dd/yyyy format.
+title: Graph Query Language Functions in Azure Data Explorer
+description: Leaern Azure Data Explorer graph query language (GQL) functions and operators for working with nodes, edges, and properties. Find practical examples and KQL equivalents.
+ms.reviewer: hraunch 
+ms.topic: concept-article
+ms.date: 08/14/2025
 
-#CustomerIntent: As a <type of user>, I want <what?> so that <why?>.
+#CustomerIntent: As a data engineer, I want to learn GQL functions in Azure Data Explorer so that I can query graph data efficiently.
 ---
 # Graph query language (GQL) functions and operators
 
@@ -35,7 +33,7 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `AVG()` | Average value | `avg()` | `RETURN AVG(person.age)` |
 | `COLLECT_LIST()` | Collect values into array | `make_list()` | `RETURN COLLECT_LIST(person.name)` |
 | **Graph Functions** |
-| `labels()` | Get labels of a node or edge | Custom graph function | `RETURN labels(person)` |
+| `labels()` | Get labels of a node or edge | Custom graph function. See the details in [Labels() (GQL function)](#labels-gql-function) | `RETURN labels(person)` |
 | **String Functions** |
 | `UPPER()` | Convert to uppercase | `toupper()` | `RETURN UPPER(person.name)` |
 | `LOWER()` | Convert to lowercase | `tolower()` | `RETURN LOWER(person.name)` |
@@ -60,29 +58,63 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `|` (OR) | Label union | Label alternatives | `MATCH (n:Person | Movie)` |
 | `!` (NOT) | Label negation | Negative label filter | `MATCH (p:!Female)` |
 
-## Labels() function
+## Labels() (GQL function)
 
+The `labels()` function shows the labels for a node or edge as an array.
 
-## Prerequisites
-TODO: [List the prerequisites if appropriate]
+**Syntax:**
 
+`labels(`*entity*`)
 
+**Parameters:**
 
+- `entity`: A node or edge variable from a matched pattern.
 
+**Returns:**
 
-## Next step
-TODO: Add your next step link(s)
-> [!div class="nextstepaction"]
-> [Write concepts](article-concept.md)
+Returns an array of strings with all labels for the specified entity.
 
-<!-- OR -->
+**Examples:**
 
-## Related content
-TODO: Add your next step link(s)
-- [Write concepts](article-concept.md)
+Show labels for matched nodes:
+<!-- csl -->
+```gql
+MATCH (entity)
+RETURN entity.name, labels(entity)
+```
 
-<!--
-Remove all the comments in this template before you sign-off or merge to the 
-main branch.
+**Output**
 
--->
+This query returns the name and all labels for each node in the graph.
+
+| entity.name | labels(entity) |
+|--|--|
+| john.doe | ["User"] |
+| admin.user | ["User"] |
+| web-server | ["System"] |
+| database | ["System"] |
+| domain-controller | ["System"] |
+
+Show labels in projections with aliases:
+<!-- csl -->
+```gql
+MATCH (n)-[e]->(target)
+RETURN n.name, labels(n) AS n_labels, labels(e) AS edge_labels, target.name
+```
+
+**Output**
+
+This query returns node names along with their labels and the labels of connecting edges.
+
+| n.name | n_labels | edge_labels | target.name |
+|--|--|--|--|
+| john.doe | ["User"] | ["CAN_ACCESS"] | web-server |
+| admin.user | ["User"] | ["CAN_ACCESS"] | domain-controller |
+| web-server | ["System"] | ["CAN_ACCESS"] | database |
+| domain-controller | ["System"] | ["CAN_ACCESS"] | database |
+
+> [!NOTE]
+> GQL uses standardized syntax for graph operations. Many GQL functions work like KQL functions but use different syntax and operators.
+
+> [!TIP]
+> Use GQL for standardized graph pattern matching, and combine it with KQL operators for more data processing options.
