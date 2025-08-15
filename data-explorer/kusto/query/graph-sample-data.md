@@ -22,6 +22,17 @@ Use `graph("ModelName")` with the model name to reference existing graphs.
 
 **Description**: A small educational graph containing people, companies, and cities with various relationships. Perfect for learning graph traversals and understanding basic patterns. This compact dataset includes 11 nodes (5 people, 3 companies, and 3 cities) connected through 20 relationships, making it ideal for understanding graph fundamentals without the complexity of larger datasets. The graph demonstrates common real-world scenarios like employment relationships, geographic locations, social connections, and personal preferences.
 
+**Use Cases**:
+
+- Learning graph query fundamentals
+- Testing graph algorithms
+- Understanding relationship patterns
+- Educational examples for graph concepts
+
+**Schema Relationships**:
+
+:::image type="content" source="media/graphs/graph-example-simple-schema.png" alt-text="A schema of a graph containing people, companies, and cities with various relationships":::
+
 **Schema and Counts**:
 
 - **Node Types**:
@@ -35,19 +46,7 @@ Use `graph("ModelName")` with the model name to reference existing graphs.
   - `knows` - Social connections between people (4 edges)
   - `likes` - Personal preferences and interests (3 edges)
 
-**Schema Relationships**:
-
-:::image type="content" source="media/graphs/graph-example-simple-schema.png" alt-text="A schema of a graph containing people, companies, and cities with various relationships":::
-
 **Sample Data Structure**:
-
-:::image type="content" source="media/graphs/graph-example-simple-instances.png" alt-text="A graph containing instances of people, companies, and cities with various relationships":::
-
-**Use Cases**:
-
-- Learning graph query fundamentals
-- Testing graph algorithms
-- Understanding relationship patterns
 - Educational examples for graph concepts
 
 **Example Queries**:
@@ -90,6 +89,19 @@ graph("Simple")
 
 **Description**: The Linked Data Benchmark Council (LDBC) [Social Network Benchmark Interactive](https://ldbcouncil.org/benchmarks/snb/) workload dataset represents a comprehensive social network modeling real-world social media platforms. This benchmark captures the complexity of modern social networks with over 327,000 nodes and multiple relationship types, including hierarchical geographic data, multi-level organizational structures, and rich content interactions. The dataset models realistic social media ecosystems with people creating posts and comments, participating in forums, working at organizations, and living in geographic locations across a detailed hierarchy from continents to cities.
 
+**Use Cases**:
+
+- Social network analysis and recommendation systems
+- Community detection algorithms
+- Influence propagation studies
+- Content recommendation based on social connections
+- Friend-of-friend discovery
+- Social graph mining research
+
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-ldbc-snb-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC SNB dataset":::
+
 **Schema and Counts**:
 
 - **Core Social Entity Types**:
@@ -118,7 +130,7 @@ graph("Simple")
   - `HAS_INTEREST` - Personal interests (35,475 edges)
   - Additional relationships: `HAS_MODERATOR`, `IS_PART_OF`, `CONTAINER_OF`, `HAS_TYPE`, `IS_SUBCLASS_OF`
 
-**Graph Schema Overview**:
+**Graph Instance Example**:
 
 :::image type="content" source="media/graphs/graph-example-ldbc-snb-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC SNB dataset":::
 
@@ -195,6 +207,21 @@ graph("LDBC_SNB_Interactive")
 > This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Financial Benchmark datasets are created by the Linked Data Benchmark Council (LDBC).
 
 **Description**: LDBC Financial Benchmark dataset representing a comprehensive financial network with companies, persons, accounts, loans, and various financial transactions. This dataset models realistic financial ecosystems with 5,580 total nodes and over 31,000 financial transactions and relationships. Designed specifically for fraud detection, anti-money laundering (AML) analysis, and financial crime investigation scenarios, it captures complex patterns including account ownership, loan applications, guarantees, and multi-step transaction chains that are common in financial crime scenarios.
+
+**Use Cases**:
+
+- Financial fraud detection
+- Anti-money laundering (AML) analysis
+- Transaction pattern analysis
+- Risk assessment and credit scoring
+- Suspicious activity monitoring
+- Financial network analysis
+
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-ldbc-financial-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC Financial dataset":::
+
+**Schema and Counts**:
 
 **Schema and Counts**:
 
@@ -291,6 +318,26 @@ graph("LDBC_Financial")
 ## BloodHound_Entra
 
 **Purpose**: Azure Active Directory privilege escalation and attack path analysis.
+
+> [!NOTE]
+> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the BloodHound Community Edition project.
+
+**Description**: BloodHound Community Edition dataset for Azure Active Directory environments. This comprehensive security dataset contains 13,526 Azure AD objects including users, groups, applications, service principals, devices, and various cloud resources. With over 800,000 permission relationships and security edges, it models complex Azure AD environments typical of enterprise organizations. The dataset captures detailed Azure AD permissions, role assignments, group memberships, and resource ownership patterns essential for identifying privilege escalation paths and attack vectors in cloud environments.
+
+**Use Cases**:
+
+- Entra ID security assessments
+- Privilege escalation path discovery
+- Attack path visualization
+- Identity governance analysis
+- Risk-based security controls
+- Compliance auditing for cloud environments
+
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-bloodhound-entra-schema.png" alt-text="A schema of a graph containing nodes and relations from the BloodHound Entra dataset":::
+
+**Schema and Counts**:
 
 > [!NOTE]
 > This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the BloodHound Community Edition project.
@@ -412,7 +459,16 @@ graph("BloodHound_Entra")
 
 **Description**: BloodHound Community Edition dataset for on-premises Active Directory environments. This dataset contains 1,495 Active Directory objects representing a typical enterprise AD deployment with complex permission structures and attack paths. The dataset includes users, computers, groups, organizational units, group policy objects, and certificate authority components across multiple domains. With over 18,000 permission relationships and security edges, it captures realistic AD attack scenarios including privilege escalation paths, ACL-based permissions, group memberships, and certificate-based authentication vulnerabilities common in Windows domain environments.
 
-**Schema and Counts**:
+**Use Cases**:
+
+- Active Directory security assessments
+- Attack path analysis and penetration testing
+- Domain privilege mapping
+- Group policy security analysis
+- Kerberoasting and ASREPRoasting target identification
+- Security control gap analysis
+
+**Graph Schema Overview**:
 
 - **Core AD Object Types**:
   - `User` - Domain users (99 nodes)
