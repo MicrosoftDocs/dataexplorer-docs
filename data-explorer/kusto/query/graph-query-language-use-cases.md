@@ -112,11 +112,11 @@ RETURN person.name, company.name
 
 ### Filter by edge labels without variables
 
-For this example, switch back to the original G() graph, which has the "knows" relationship:
+For this example, switch back to the original G_Doc_Transient() graph, which has the "knows" relationship:
 
 <!-- csl -->
 ```gql
-#crp query_graph_reference=G()
+#crp query_graph_reference=G_Doc_Transient()
 ```
 
 Filter by edge labels without assigning the edge to a variable when you don't need to access its properties.
@@ -145,8 +145,8 @@ Use WHERE clauses to filter based on property values.
 <!-- csl -->
 ```gql
 MATCH (person:Person)
-WHERE person.age > 25
-RETURN person.name, person.age
+WHERE person.properties.age > 25
+RETURN person.name, person.properties.age
 ```
 
 This query finds people over 25 years old and returns their names and ages. The WHERE clause filters the matched nodes by the age property.
@@ -158,7 +158,7 @@ Filter by properties directly in the pattern using inline conditions.
 <!-- csl -->
 ```gql
 MATCH (person:Person {name: 'Bob'})
-RETURN person.age
+RETURN person.properties.age
 ```
 
 This query finds the person named "Bob" and returns their age. The `{name: 'Bob'}` syntax filters nodes where the name property equals 'Bob'.
@@ -169,7 +169,8 @@ Specify multiple property conditions inline.
 
 <!-- csl -->
 ```gql
-MATCH (person:Person {name: 'Bob', age: 30})
+MATCH (person:Person {name: 'Bob'})
+WHERE person.properties.age = 30
 RETURN person as Bob
 ```
 
@@ -209,17 +210,19 @@ Filter nodes based on a single property condition:
 <!-- csl -->
 ```gql
 MATCH (person:Person)
-WHERE person.age > 26
-RETURN person.name, person.age
+WHERE person.properties.age > 26
+RETURN person.name, person.properties.age
 ```
 
 **Output**
 
 This query finds all `Person` nodes where the `age` property is greater than 26.
 
-| person.name | person.age |
+| person.name | person.properties.age |
 |--------------|-------------|
 | Bob          | 30          |
+| Carol        | 28          |
+| David        | 35          |
 
 ### Range filtering with AND
 
@@ -228,8 +231,8 @@ To create a range, combine multiple conditions:
 <!-- csl -->
 ```gql
 MATCH (person:Person)
-WHERE person.age >= 28 AND person.age <= 35
-RETURN person.name, person.age
+WHERE person.properties.age >= 28 AND person.properties.age <= 35
+RETURN person.name, person.properties.age
 ```
 
 This query shows people whose ages are between 28 and 35, inclusive.
@@ -280,7 +283,7 @@ Use comparison operators to exclude specific values:
 <!-- csl -->
 ```gql
 MATCH (person:Person)-[wa:works_at]->(company:Company)
-WHERE person.age > 25 AND company.name <> 'TechCorp'
+WHERE person.properties.age > 25 AND company.name <> 'TechCorp'
 RETURN person.name, company.name
 ```
 
@@ -293,8 +296,8 @@ Check for the presence or absence of property values.
 <!-- csl -->
 ```gql
 MATCH (person:Person)
-WHERE person.age IS NOT NULL
-RETURN person.name, person.age
+WHERE person.properties.age IS NOT NULL
+RETURN person.name, person.properties.age
 ```
 
 This query finds all people who have an age recorded (non-null age property).
@@ -306,8 +309,8 @@ Use OR to match multiple conditions
 <!-- csl -->
 ```gql
 MATCH (person:Person)
-WHERE person.age > 30 OR person.name CONTAINS 'a'
-RETURN person.name, person.age
+WHERE person.properties.age > 30 OR person.name CONTAINS 'a'
+RETURN person.name, person.properties.age
 ```
 
 This query finds people who are over 30 years old or have 'a' in their name.
@@ -321,7 +324,7 @@ Return individual properties from matched nodes.
 <!-- csl -->
 ```gql
 MATCH (person:Person)
-RETURN person.name, person.age
+RETURN person.name, person.properties.age
 ```
 
 This query returns the name and age properties for each Person node. Each row in the result shows these two values.
@@ -342,18 +345,18 @@ This query returns employee names, company names, and employment start dates wit
 
 <!-- csl -->
 ```gql
-MATCH (person:Person)-[e]->(movie:Movie)
-WHERE person.name = 'Kevin Bacon'
-RETURN person, e, movie
+MATCH (person:Person)-[e]->(company:Company)
+WHERE person.name = 'Alice'
+RETURN person, e, company
 ```
 
 **Output**
 
-This query returns the complete node and edge objects for Kevin Bacon relationships, including all properties.
+This query returns the complete node and edge objects for Alice's relationship with companies, including all properties.
 
-| person | e | movie |
+| person | e | company |
 |--------|------|-------|
-{"id":"2","lbl":"Person","name":"Kevin Bacon","title":"","born":1958} |	{"source":"2","target":"3","lbl":"ACTED_IN","Role":"Jack Swigert"} | {"id":"3","lbl":"Movie","name":"","title":"Apollo 13","born":1995}
+{"id":"p1","lbl":"Person","name":"Alice","properties":{"age": 25}} |{"source":"p1","target":"c1","lbl":"works_at","since":2020} | {"id":"c1","lbl":"Company","name":"TechCorp","properties":{"revenue": 1000000}}
 
 ### Count matching patterns
 
@@ -361,11 +364,11 @@ Use COUNT(*) to count the number of pattern matches.
 
 <!-- csl -->
 ```gql
-MATCH (person:Person)-[:ACTED_IN]->(movie:Movie)
-RETURN person.name, COUNT(*) AS MovieCount
+MATCH (person:Person)-[:likes]->(p2:Person)
+RETURN person.name, COUNT(*) AS LikesGiven
 ```
 
-This query counts how many movies each person acted in, and groups the results by person name.
+This query counts how many people each person likes and groups the results by person name.
 
 ### Aggregate with MIN and MAX
 
@@ -374,7 +377,7 @@ Find minimum and maximum values across all matches.
 <!-- csl -->
 ```gql
 MATCH (person:Person)
-RETURN MIN(person.age) AS Youngest, MAX(person.age) AS Oldest
+RETURN MIN(cast(person.properties.age as int)) AS Youngest, MAX(cast(person.properties.age as int)) AS Oldest
 ```
 
 This query finds the youngest and oldest ages among all people in the graph.
@@ -410,8 +413,8 @@ Sort your results using ORDER BY.
 <!-- csl -->
 ```gql
 MATCH (person:Person)
-RETURN person.name, person.age
-ORDER BY person.age DESC
+RETURN person.name, person.properties.age
+ORDER BY cast(person.properties.age as int) DESC
 ```
 
 This query returns people sorted by age in descending order, oldest first.
@@ -423,9 +426,9 @@ Restrict the number of results returned.
 <!-- csl -->
 ```gql
 MATCH (person:Person)
-WHERE person.age > 25
+WHERE person.properties.age > 25
 RETURN person.name
-ORDER BY person.age
+ORDER BY cast(person.properties.age as int)
 LIMIT 5
 ```
 
@@ -443,11 +446,11 @@ Match nodes that have any of the specified labels:
 
 <!-- csl -->
 ```gql
-MATCH (entity:Person | Movie)
+MATCH (entity:Person | Company)
 RETURN entity
 ```
 
-This query matches nodes that have either the "Person" or "Movie" label. The pipe symbol `|` means logical OR for labels.
+This query matches nodes that have either the "Person" or "Company" label. The pipe symbol `|` means logical OR for labels.
 
 ### Label intersections (AND)
 
@@ -515,7 +518,7 @@ Assign entire paths to variables for later use:
 
 <!-- csl -->
 ```gql
-MATCH p = (person:Person)-[:DIRECTED]->(movie:Movie)
+MATCH p = (person:Person)-[:works_at]->(company:Company)
 RETURN p
 ```
 
@@ -555,7 +558,7 @@ MATCH  (p1:Person)-[:likes]->(p2:Person),
        (p1)-[:located_at]->(home:City),
        (p2)-[:located_at]->(home2:City),
        (p2)-[:works_at]->(work:Company {name: 'TechCorp'})
-WHERE  p1.age <> p2.age and home.name <> home2.name and home.name starts with 'San'
+WHERE  cast(p1.properties.age as int) <> cast(p2.properties.age as int) and home.name <> home2.name and home.name starts with 'San'
 RETURN p1.name, p2.name, home.name, work.name, home2.name
 ```
 
@@ -571,8 +574,8 @@ MATCH  (p1:Person)-[:likes]->(p2:Person),
        (p1)-[:located_at]->(home:City),
        (p2)-[:located_at]->(home2:City),
        (p2)-[:works_at]->(work:Company {name: 'TechCorp'})
-WHERE  p1.age <> p2.age and home.name <> home2.name and home.name starts with 'San'
-RETURN AVG(p2.age) AS AvgAgeLikedAcrossTowns
+WHERE  cast(p1.properties.age as int) <> cast(p2.properties.age as int) and home.name <> home2.name and home.name starts with 'San'
+RETURN AVG(cast(p2.properties.age as int)) AS AvgAgeLikedAcrossTowns
 ```
 
 **Output**
@@ -678,18 +681,22 @@ Social media platforms use GQL to suggest potential friends based on mutual rela
 
     <!-- csl -->
     ```gql
-    MATCH (person:Person)-[:FRIENDS_WITH]->(mutual:Person)-[:FRIENDS_WITH]->(potential:Person)
-    WHERE person.name = 'Alice Johnson' AND person.location = potential.location
-    RETURN potential.name AS SuggestedFriend, mutual.name AS MutualFriend, potential.interests AS CommonInterests
+    MATCH (p1:PERSON {firstName: 'Karl', lastName: 'Muller'})-[:KNOWS]-(p2:PERSON)-[:KNOWS]-(p3:PERSON),
+          (p1)-[:IS_LOCATED_IN]-(c1:PLACE),
+          (p3)-[:IS_LOCATED_IN]-(c1)
+    WHERE p1.id <> p3.id
+    RETURN DISTINCT p3.firstName, p3.lastName
     ```
 
 **Output**
 
-This query suggests friends for Alice who have mutual connections and live in the same location.
+This query suggests friends for Karl who have mutual connections and live in the same location.
 
-| SuggestedFriend | MutualFriend | CommonInterests |
-|--|--|--|
-| David Wilson | Bob Smith | Technology, Gaming |
+| p3.firstName | p3.lastName |
+|---------------|--------------|
+| Alfred       | Hoffmann     |
+| Hans         | Becker       |
+| Wilhelm     | Muller       |
 
 ## Organization use case: Management hierarchy
 

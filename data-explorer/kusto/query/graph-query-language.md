@@ -35,20 +35,20 @@ Before you use GQL, create a graph data source. This article uses an in-memory m
 
 <!-- csl -->
 ```gql
-.create-or-alter function G() {
-    let nodes = datatable(id:string, lbl:string, name:string, age:int)
+.create-or-alter function G_Doc_Transient() {
+    let nodes = datatable(id:string, lbl:string, name:string, properties:dynamic)
     [
-        "p1","Person","Alice",25,
-        "p2","Person","Bob",30,
-        "p3","Person","Carol",28,
-        "p4","Person","David",35,
-        "p5","Person","Emma",26,
-        "c1","Company","TechCorp",0,
-        "c2","Company","DataSoft",0,
-        "c3","Company","CloudInc",0,
-        "ct1","City","Seattle",0,
-        "ct2","City","Portland",0,
-        "ct3","City","San Francisco",0
+        "p1","Person","Alice",dynamic({"age": 25}),
+        "p2","Person","Bob",dynamic({"age": 30}),
+        "p3","Person","Carol",dynamic({"age": 28}),
+        "p4","Person","David",dynamic({"age": 35}),
+        "p5","Person","Emma",dynamic({"age": 26}),
+        "c1","Company","TechCorp",dynamic({"revenue": 1000000}),
+        "c2","Company","DataSoft",dynamic({"revenue": 2000000}),
+        "c3","Company","CloudInc",dynamic({"revenue": 1500000}),
+        "ct1","City","Seattle",dynamic({"population": 750000}),
+        "ct2","City","Portland",dynamic({"population": 650000}),
+        "ct3","City","San Francisco",dynamic({"population": 870000})
     ];
     let edges = datatable(source:string, target:string, lbl:string, since:int)
     [
@@ -94,7 +94,7 @@ To run GQL queries, set three client request properties. Set these properties th
 
 <!-- csl -->
 ```kql
-#crp query_graph_reference=G()
+#crp query_graph_reference=G_Doc_Transient()
 ```
 
 To use labels in GQL, set the label column name:
@@ -112,7 +112,7 @@ To use labels in GQL, set the label column name:
 For programmatic access, set these client request properties:
 
 - `query_language`: Set to `"gql"`.
-- `query_graph_reference`: Set to your graph function name (for example, `"G()"`).
+- `query_graph_reference`: Set to your graph function name (for example, `"G_Doc_Transient()"`).
 - `query_graph_label_name`: Set to your label column name (for example, `"lbl"`).
 
 ## Step 3: Run GQL queries
