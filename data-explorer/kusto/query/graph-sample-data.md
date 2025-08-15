@@ -22,7 +22,7 @@ Use `graph("ModelName")` with the model name to reference existing graphs.
 
 **Description**: A small educational graph containing people, companies, and cities with various relationships. Perfect for learning graph traversals and understanding basic patterns. This compact dataset includes 11 nodes (5 people, 3 companies, and 3 cities) connected through 20 relationships, making it ideal for understanding graph fundamentals without the complexity of larger datasets. The graph demonstrates common real-world scenarios like employment relationships, geographic locations, social connections, and personal preferences.
 
-**Tables and Counts**:
+**Schema and Counts**:
 
 - **Node Types**:
   - `Person` - Individual people (5 nodes)
@@ -34,11 +34,6 @@ Use `graph("ModelName")` with the model name to reference existing graphs.
   - `located_at` - Geographic location assignments (8 edges)
   - `knows` - Social connections between people (4 edges)
   - `likes` - Personal preferences and interests (3 edges)
-
-**Schema**:
-
-- **Nodes**: Person, Company, City
-- **Edges**: works_at, located_at, knows, likes
 
 **Schema Relationships**:
 
@@ -95,7 +90,11 @@ graph("Simple")
 
 **Description**: The Linked Data Benchmark Council (LDBC) [Social Network Benchmark Interactive](https://ldbcouncil.org/benchmarks/snb/) workload dataset represents a comprehensive social network modeling real-world social media platforms. This benchmark captures the complexity of modern social networks with over 327,000 nodes and multiple relationship types, including hierarchical geographic data, multi-level organizational structures, and rich content interactions. The dataset models realistic social media ecosystems with people creating posts and comments, participating in forums, working at organizations, and living in geographic locations across a detailed hierarchy from continents to cities.
 
-**Node and Relationship Counts**:
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-ldbc-snb-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC SNB dataset":::
+
+**Schema and Counts**:
 
 - **Core Social Entity Types**:
   - `PERSON` - Social network users (1,528 nodes)
@@ -121,11 +120,7 @@ graph("Simple")
   - `REPLY_OF` - Comment threading: comment-to-comment (76,787) + comment-to-post (74,256) = 151,043 edges
   - `WORK_AT` / `STUDY_AT` - Professional/educational history (4,522 edges)
   - `HAS_INTEREST` - Personal interests (35,475 edges)
-
-**Schema**:
-
-- **Nodes**: PERSON, POST, COMMENT, FORUM, ORGANISATION, PLACE, TAG, TAGCLASS
-- **Edges**: KNOWS, LIKES, HAS_CREATOR, REPLY_OF, HAS_MEMBER, HAS_MODERATOR, STUDY_AT, WORK_AT, IS_LOCATED_IN, HAS_INTEREST, HAS_TAG, IS_PART_OF, CONTAINER_OF, HAS_TYPE, IS_SUBCLASS_OF
+  - Additional relationships: `HAS_MODERATOR`, `IS_PART_OF`, `CONTAINER_OF`, `HAS_TYPE`, `IS_SUBCLASS_OF`
 
 **Use Cases**:
 
@@ -135,6 +130,24 @@ graph("Simple")
 - Content recommendation based on social connections
 - Friend-of-friend discovery
 - Social graph mining research
+
+**Graph Instance Example**:
+
+Based on real validated data from the SNB dataset, here's an example showing social interactions around content:
+
+:::image type="content" source="media/graphs/graph-example-ldbc-snb-instances.png" alt-text="A graph containing a sample subgraph of the LDBC SNB dataset":::
+
+This example demonstrates:
+
+- **Social Engagement**: Mahinda likes both Abdullah's post and a comment on that post
+- **Content Threading**: The comment (about Gloria Macapagal-Arroyo) replies to the post (about Aurangzeb)
+- **Content Creation**: Abdullah creates posts in his own forum wall
+- **Community Participation**: Mahinda is a member of Abdullah's forum where the content appears
+- **Content Classification**: Both posts and comments are tagged with relevant topics from their content
+- **Geographic Context**: All entities have location relationships for geographic analysis
+
+> [!NOTE]
+> All relationships shown in this diagram have been validated against the actual dataset using specific queries to ensure accuracy.
 
 **Example Queries**:
 
@@ -183,7 +196,7 @@ graph("LDBC_SNB_Interactive")
 
 **Description**: LDBC Financial Benchmark dataset representing a comprehensive financial network with companies, persons, accounts, loans, and various financial transactions. This dataset models realistic financial ecosystems with 5,580 total nodes and over 31,000 financial transactions and relationships. Designed specifically for fraud detection, anti-money laundering (AML) analysis, and financial crime investigation scenarios, it captures complex patterns including account ownership, loan applications, guarantees, and multi-step transaction chains that are common in financial crime scenarios.
 
-**Tables and Counts**:
+**Schema and Counts**:
 
 - **Node Types**:
   - `COMPANY` - Business entities (386 nodes)
@@ -202,11 +215,6 @@ graph("LDBC_SNB_Interactive")
   - `INVEST` - Investment transactions (1,983 edges)
   - `REPAY` - Loan repayments (2,747 edges)
   - `SIGN_IN` - Authentication events (2,489 edges)
-
-**Schema**:
-
-- **Nodes**: COMPANY, PERSON, ACCOUNT, LOAN, MEDIUM
-- **Edges**: TRANSFER, WITHDRAW, DEPOSIT, OWN, APPLY, GUARANTEE, INVEST, SIGN_IN, REPAY
 
 **Use Cases**:
 
@@ -279,7 +287,7 @@ graph("LDBC_Financial")
 
 **Description**: BloodHound Community Edition dataset for Azure Active Directory environments. This comprehensive security dataset contains 13,526 Azure AD objects including users, groups, applications, service principals, devices, and various cloud resources. With over 800,000 permission relationships and security edges, it models complex Azure AD environments typical of enterprise organizations. The dataset captures detailed Azure AD permissions, role assignments, group memberships, and resource ownership patterns essential for identifying privilege escalation paths and attack vectors in cloud environments.
 
-**Tables and Counts**:
+**Schema and Counts**:
 
 - **Primary Node Types**:
   - `AZUser` - Azure AD users (230 nodes)
@@ -303,11 +311,6 @@ graph("LDBC_Financial")
   - `AZRunsAs` - Service execution permissions (6,269 edges)
   - `AZMemberOf` - Group membership relationships (4,439 edges)
   - `AZOwns` - Resource ownership (2,870 edges)
-
-**Schema**:
-
-- **Nodes**: Various Azure AD object types (Users, Groups, Applications, Service Principals, etc.)
-- **Edges**: Permission and relationship types (Member, Owner, various Azure AD privileges)
 
 **Security Analysis Example**:
 
@@ -400,7 +403,7 @@ graph("BloodHound_Entra")
 
 **Description**: BloodHound Community Edition dataset for on-premises Active Directory environments. This dataset contains 1,495 Active Directory objects representing a typical enterprise AD deployment with complex permission structures and attack paths. The dataset includes users, computers, groups, organizational units, group policy objects, and certificate authority components across multiple domains. With over 18,000 permission relationships and security edges, it captures realistic AD attack scenarios including privilege escalation paths, ACL-based permissions, group memberships, and certificate-based authentication vulnerabilities common in Windows domain environments.
 
-**Tables and Counts**:
+**Schema and Counts**:
 
 - **Core AD Object Types**:
   - `User` - Domain users (99 nodes)
