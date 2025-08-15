@@ -148,9 +148,6 @@ This example demonstrates:
 - **Content Classification**: Both posts and comments are tagged with relevant topics from their content
 - **Geographic Context**: All entities have location relationships for geographic analysis
 
-> [!NOTE]
-> All relationships shown in this diagram have been validated against the actual dataset using specific queries to ensure accuracy.
-
 **Use Cases**:
 
 - Social network analysis and recommendation systems
@@ -368,9 +365,6 @@ graph("LDBC_Financial")
 This example demonstrates Azure Active Directory and Entra identity relationships with complex privilege structures and potential attack paths in a cloud environment.
 
 :::image type="content" source="media/graphs/graph-example-bloodhound-entra-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound Entra dataset":::
-
-> [!NOTE]
-> All relationships shown in this diagram have been validated against the actual BloodHound_Entra dataset using specific queries to ensure accuracy.
 
 **Use Cases**:
 
