@@ -196,6 +196,10 @@ graph("LDBC_SNB_Interactive")
 
 **Description**: LDBC Financial Benchmark dataset representing a comprehensive financial network with companies, persons, accounts, loans, and various financial transactions. This dataset models realistic financial ecosystems with 5,580 total nodes and over 31,000 financial transactions and relationships. Designed specifically for fraud detection, anti-money laundering (AML) analysis, and financial crime investigation scenarios, it captures complex patterns including account ownership, loan applications, guarantees, and multi-step transaction chains that are common in financial crime scenarios.
 
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-ldbc-financial-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC Financial dataset":::
+
 **Schema and Counts**:
 
 - **Node Types**:
@@ -224,6 +228,12 @@ graph("LDBC_SNB_Interactive")
 - Risk assessment and credit scoring
 - Suspicious activity monitoring
 - Financial network analysis
+
+**Graph Instance Example**:
+
+Based on real validated data from the LDBC Financial dataset, here's a connected financial subgraph:
+
+:::image type="content" source="media/graphs/graph-example-ldbc-financial-instance.png" alt-text="A graph containing a sample subgraph of the LDBC Financial dataset":::
 
 **Example Queries**:
 
@@ -278,7 +288,7 @@ graph("LDBC_Financial")
 |Company::4398046511208|366243272|8|
 |Person::19791209300551|338838223|6|
 
-## BloodHound Entra
+## BloodHound_Entra
 
 **Purpose**: Azure Active Directory privilege escalation and attack path analysis.
 
@@ -312,19 +322,18 @@ graph("LDBC_Financial")
   - `AZMemberOf` - Group membership relationships (4,439 edges)
   - `AZOwns` - Resource ownership (2,870 edges)
 
-**Security Analysis Example**:
+**Graph Schema Overview**:
 
-```mermaid
-graph TD
-    A[Regular User] -->|MemberOf| B[Security Group]
-    B -->|CanAddMember| C[High Privilege Group]
-    C -->|Member| D[Global Admin]
-    D -->|Owner| E[Sensitive Application]
-    
-    style A fill:#ffcccc
-    style E fill:#ff9999
-    style D fill:#ff6666
-```
+:::image type="content" source="media/graphs/graph-example-bloodhound-entra-schema.png" alt-text="A schema of a graph containing nodes and relations from the BloodHound Entra dataset":::
+
+**Graph Instance Example**:
+
+Based on real validated data from the BloodHound_Entra dataset, here's a connected Azure AD subgraph:
+
+:::image type="content" source="media/graphs/graph-example-bloodhound-entra-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound Entra dataset":::
+
+> [!NOTE]
+> All relationships shown in this diagram have been validated against the actual BloodHound_Entra dataset using specific queries to ensure accuracy.
 
 **Use Cases**:
 
@@ -429,19 +438,15 @@ graph("BloodHound_Entra")
   - `GenericWrite` - Write permissions (579 edges)
   - `MemberOf` - Group memberships (301 edges)
 
-**Attack Path Visualization Example**:
+**Graph Schema Overview**:
 
-```mermaid
-graph TD
-    A[Domain User] -->|GenericWrite| B[Service Account]
-    B -->|MemberOf| C[Backup Operators]
-    C -->|SeBackupPrivilege| D[Domain Controller]
-    D -->|DCSync| E[Domain Admin Hash]
-    
-    style A fill:#ccffcc
-    style E fill:#ff6666
-    style D fill:#ffcc99
-```
+:::image type="content" source="media/graphs/graph-example-bloodhound-ad-schema.png" alt-text="A schema of a graph containing nodes and relations from the BloodHound AD dataset":::
+
+**Graph Instance Example**:
+
+Based on real validated data from the BloodHound_AD dataset, here's a connected Active Directory attack path:
+
+:::image type="content" source="media/graphs/graph-example-bloodhound-ad-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound Entra dataset":::
 
 **Use Cases**:
 
