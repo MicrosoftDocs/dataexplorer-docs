@@ -20,7 +20,20 @@ Use `graph("ModelName")` with the model name to reference existing graphs.
 
 **Purpose**: Basic graph operations and learning fundamental graph query patterns.
 
-**Description**: A small educational graph containing people, companies, and cities with various relationships. Perfect for learning graph traversals and understanding basic patterns.
+**Description**: A small educational graph containing people, companies, and cities with various relationships. Perfect for learning graph traversals and understanding basic patterns. This compact dataset includes 11 nodes (5 people, 3 companies, and 3 cities) connected through 20 relationships, making it ideal for understanding graph fundamentals without the complexity of larger datasets. The graph demonstrates common real-world scenarios like employment relationships, geographic locations, social connections, and personal preferences.
+
+**Tables and Counts**:
+
+- **Node Types**:
+  - `Person` - Individual people (5 nodes)
+  - `Company` - Business organizations (3 nodes)
+  - `City` - Geographic locations (3 nodes)
+
+- **Relationship Types**:
+  - `works_at` - Employment relationships (5 edges)
+  - `located_at` - Geographic location assignments (8 edges)
+  - `knows` - Social connections between people (4 edges)
+  - `likes` - Personal preferences and interests (3 edges)
 
 **Schema**:
 
@@ -80,51 +93,34 @@ graph("Simple")
 > [!NOTE]
 > This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Social Network Benchmark datasets are created by the Linked Data Benchmark Council (LDBC).
 
-**Description**: The Linked Data Benchmark Council (LDBC) [Social Network Benchmark Interactive](https://ldbcouncil.org/benchmarks/snb/) workload dataset represents a comprehensive social network modeling real-world social media platforms. This benchmark captures the complexity of modern social networks with over 300,000 nodes and multiple relationship types, including hierarchical geographic data, multi-level organizational structures, and rich content interactions. The dataset includes people, posts, comments, forums, universities, companies, geographic locations (continents, countries, cities), tags, and tag classifications, making it ideal for testing complex graph traversals, recommendation algorithms, and social network analysis patterns.
+**Description**: The Linked Data Benchmark Council (LDBC) [Social Network Benchmark Interactive](https://ldbcouncil.org/benchmarks/snb/) workload dataset represents a comprehensive social network modeling real-world social media platforms. This benchmark captures the complexity of modern social networks with over 327,000 nodes and multiple relationship types, including hierarchical geographic data, multi-level organizational structures, and rich content interactions. The dataset models realistic social media ecosystems with people creating posts and comments, participating in forums, working at organizations, and living in geographic locations across a detailed hierarchy from continents to cities.
 
-**Tables and Location**:
-All LDBC SNB Interactive tables are located in the **`Graph/LDBC/SnbInteractive`** folder and include:
+**Node and Relationship Counts**:
 
-- **Core Entity Tables**:
-  - `LDBC_SNB_Person` - Social network users (1,528 persons)
-  - `LDBC_SNB_Post` - User posts (135,701 posts)  
-  - `LDBC_SNB_Comment` - Comments on posts (151,043 comments)
-  - `LDBC_SNB_Forum` - Discussion forums (13,750 forums)
+- **Core Social Entity Types**:
+  - `PERSON` - Social network users (1,528 nodes)
+  - `POST` - User posts (135,701 nodes)
+  - `COMMENT` - Comments on posts (151,043 nodes)
+  - `FORUM` - Discussion forums (13,750 nodes)
 
-- **Organizational Tables**:
-  - `LDBC_SNB_Organisation` - Universities and companies (7,955 total)
+- **Organizational and Geographic Types**:
+  - `ORGANISATION` - Universities and companies (7,955 nodes)
+  - `PLACE` - Geographic locations: continents (6), countries (111), cities (1,343) - total 1,460 nodes
 
-- **Geographic Tables**:
-  - `LDBC_SNB_Place` - Geographic locations including continents (6), countries (111), and cities (1,343) - total 1,460 places
+- **Content Classification Types**:
+  - `TAG` - Content tags (16,080 nodes)
+  - `TAGCLASS` - Tag categories (71 nodes)
 
-- **Content Classification Tables**:
-  - `LDBC_SNB_Tag` - Content tags (16,080 tags)
-  - `LDBC_SNB_TagClass` - Tag categories (71 classes)
-
-- **Relationship Tables** (contain edge data):
-  - `LDBC_SNB_Person_knows_Person` - Friend relationships (14,073 edges)
-  - `LDBC_SNB_Person_likes_Post` - Post likes (47,215 edges)
-  - `LDBC_SNB_Person_likes_Comment` - Comment likes (62,225 edges)  
-  - `LDBC_SNB_Forum_hasMember_Person` - Forum memberships (123,268 edges)
-  - `LDBC_SNB_Forum_hasModerator_Person` - Forum moderation (13,750 edges)
-  - `LDBC_SNB_Person_studyAt_Organization` - Educational history (1,209 edges)
-  - `LDBC_SNB_Person_workAt_Organization` - Employment history (3,313 edges)
-  - `LDBC_SNB_Post_hasTag_Tag` - Post tagging (51,118 edges)
-  - `LDBC_SNB_Comment_hasTag_Tag` - Comment tagging (191,303 edges)
-  - `LDBC_SNB_Forum_hasTag_Tag` - Forum tagging (47,697 edges)
-  - `LDBC_SNB_Place_isPartOf_Place` - Geographic hierarchy (1,454 edges)
-  - `LDBC_SNB_Comment_hasCreator_Person` - Comment authorship (151,043 edges)
-  - `LDBC_SNB_Post_hasCreator_Person` - Post authorship (135,701 edges)
-  - `LDBC_SNB_Comment_replyOf_Comment` - Comment replies (76,787 edges)
-  - `LDBC_SNB_Comment_replyOf_Post` - Post replies (74,256 edges)
-  - `LDBC_SNB_Forum_containerOf_Post` - Forum post containment (135,701 edges)
-  - `LDBC_SNB_Person_hasInterest_Tag` - Person interests (35,475 edges)
-  - `LDBC_SNB_Person_isLocatedIn_Place` - Person location (1,528 edges)
-  - `LDBC_SNB_Organisation_isLocatedIn_Place` - Organization location (7,955 edges)
-  - `LDBC_SNB_Post_isLocatedIn_Place` - Post location (135,701 edges)
-  - `LDBC_SNB_Comment_isLocatedIn_Place` - Comment location (151,043 edges)
-  - `LDBC_SNB_Tag_hasType_TagClass` - Tag classification (16,080 edges)
-  - `LDBC_SNB_TagClass_isSubclassOf_TagClass` - Tag class hierarchy (70 edges)
+- **Key Relationship Types**:
+  - `KNOWS` - Friend relationships (14,073 edges)
+  - `LIKES` - Content likes: posts (47,215) + comments (62,225) = 109,440 total edges
+  - `HAS_CREATOR` - Content authorship: posts (135,701) + comments (151,043) = 286,744 edges
+  - `HAS_MEMBER` - Forum memberships (123,268 edges)
+  - `HAS_TAG` - Content tagging: posts (51,118) + comments (191,303) + forums (47,697) = 290,118 edges
+  - `IS_LOCATED_IN` - Location relationships: people (1,528) + organizations (7,955) + posts (135,701) + comments (151,043) = 296,227 edges
+  - `REPLY_OF` - Comment threading: comment-to-comment (76,787) + comment-to-post (74,256) = 151,043 edges
+  - `WORK_AT` / `STUDY_AT` - Professional/educational history (4,522 edges)
+  - `HAS_INTEREST` - Personal interests (35,475 edges)
 
 **Schema**:
 
@@ -185,7 +181,27 @@ graph("LDBC_SNB_Interactive")
 > [!NOTE]
 > This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Financial Benchmark datasets are created by the Linked Data Benchmark Council (LDBC).
 
-**Description**: LDBC Financial Benchmark dataset representing a financial network with companies, persons, accounts, loans, and various financial transactions. Designed for fraud detection and financial crime investigation scenarios.
+**Description**: LDBC Financial Benchmark dataset representing a comprehensive financial network with companies, persons, accounts, loans, and various financial transactions. This dataset models realistic financial ecosystems with 5,580 total nodes and over 31,000 financial transactions and relationships. Designed specifically for fraud detection, anti-money laundering (AML) analysis, and financial crime investigation scenarios, it captures complex patterns including account ownership, loan applications, guarantees, and multi-step transaction chains that are common in financial crime scenarios.
+
+**Tables and Counts**:
+
+- **Node Types**:
+  - `COMPANY` - Business entities (386 nodes)
+  - `PERSON` - Individual customers (785 nodes)
+  - `ACCOUNT` - Financial accounts (2,055 nodes)
+  - `LOAN` - Loan products (1,376 nodes)
+  - `MEDIUM` - Transaction mediums/channels (978 nodes)
+
+- **Relationship Types**:
+  - `TRANSFER` - Money transfers between accounts (8,132 edges)
+  - `WITHDRAW` - Cash withdrawals from accounts (9,182 edges)
+  - `DEPOSIT` - Money deposits into accounts (2,758 edges)
+  - `OWN` - Account ownership relationships (2,055 edges)
+  - `APPLY` - Loan applications (1,376 edges)
+  - `GUARANTEE` - Loan guarantees (579 edges)
+  - `INVEST` - Investment transactions (1,983 edges)
+  - `REPAY` - Loan repayments (2,747 edges)
+  - `SIGN_IN` - Authentication events (2,489 edges)
 
 **Schema**:
 
@@ -261,7 +277,32 @@ graph("LDBC_Financial")
 > [!NOTE]
 > This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the BloodHound Community Edition project.
 
-**Description**: BloodHound Community Edition dataset for Azure Active Directory environments. Contains nodes representing Azure AD objects (users, groups, applications, service principals) and edges representing various permissions and relationships.
+**Description**: BloodHound Community Edition dataset for Azure Active Directory environments. This comprehensive security dataset contains 13,526 Azure AD objects including users, groups, applications, service principals, devices, and various cloud resources. With over 800,000 permission relationships and security edges, it models complex Azure AD environments typical of enterprise organizations. The dataset captures detailed Azure AD permissions, role assignments, group memberships, and resource ownership patterns essential for identifying privilege escalation paths and attack vectors in cloud environments.
+
+**Tables and Counts**:
+
+- **Primary Node Types**:
+  - `AZUser` - Azure AD users (230 nodes)
+  - `AZServicePrincipal` - Service principals and applications (6,270 nodes)
+  - `AZApp` - Azure applications (6,648 nodes)
+  - `AZGroup` - Azure AD groups (58 nodes)
+  - `AZDevice` - Managed devices (47 nodes)
+
+- **Azure Resource Types**:
+  - `AZResourceGroup` - Resource groups (59 nodes)
+  - `AZVM` - Virtual machines (66 nodes)
+  - `AZRole` - Azure roles (116 nodes)
+  - `AZSubscription` - Azure subscriptions (3 nodes)
+  - `AZTenant` - Azure tenant (1 node)
+
+- **Key Relationship Types** (Top permissions by volume):
+  - `AZMGAddOwner` - Management group owner permissions (403,412 edges)
+  - `AZMGAddSecret` - Secret management permissions (345,324 edges)
+  - `AZAddSecret` - Application secret permissions (24,666 edges)
+  - `AZContains` - Resource containment relationships (12,924 edges)
+  - `AZRunsAs` - Service execution permissions (6,269 edges)
+  - `AZMemberOf` - Group membership relationships (4,439 edges)
+  - `AZOwns` - Resource ownership (2,870 edges)
 
 **Schema**:
 
@@ -357,7 +398,33 @@ graph("BloodHound_Entra")
 > [!NOTE]
 > This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the BloodHound Community Edition project.
 
-**Description**: BloodHound Community Edition dataset for on-premises Active Directory environments. Contains comprehensive information about AD objects, group memberships, ACLs, and various attack paths in traditional Windows domains.
+**Description**: BloodHound Community Edition dataset for on-premises Active Directory environments. This dataset contains 1,495 Active Directory objects representing a typical enterprise AD deployment with complex permission structures and attack paths. The dataset includes users, computers, groups, organizational units, group policy objects, and certificate authority components across multiple domains. With over 18,000 permission relationships and security edges, it captures realistic AD attack scenarios including privilege escalation paths, ACL-based permissions, group memberships, and certificate-based authentication vulnerabilities common in Windows domain environments.
+
+**Tables and Counts**:
+
+- **Core AD Object Types**:
+  - `User` - Domain users (99 nodes)
+  - `Computer` - Domain computers (34 nodes)
+  - `Group` - Security and distribution groups (219 nodes)
+  - `ADLocalGroup` - Local groups on computers (28 nodes)
+  - `GPO` - Group Policy Objects (32 nodes)
+
+- **AD Infrastructure Types**:
+  - `Domain` - Active Directory domains (5 nodes)
+  - `OU` - Organizational Units (20 nodes)
+  - `Container` - AD containers (939 nodes)
+  - `CertTemplate` - Certificate templates (106 nodes)
+  - `EnterpriseCA` - Certificate Authorities (4 nodes)
+  - `RootCA` - Root Certificate Authorities (5 nodes)
+
+- **Key Permission Types** (Top attack vectors):
+  - `GenericAll` - Full control permissions (3,292 edges)
+  - `WriteDacl` - Modify permissions (2,221 edges)
+  - `WriteOwner` - Change ownership (2,187 edges)
+  - `Owns` - Object ownership (1,439 edges)
+  - `Contains` - Containment relationships (1,416 edges)
+  - `GenericWrite` - Write permissions (579 edges)
+  - `MemberOf` - Group memberships (301 edges)
 
 **Attack Path Visualization Example**:
 
