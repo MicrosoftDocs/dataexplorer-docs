@@ -3,21 +3,18 @@ title: Graph sample datasets and examples
 description: Graph examples with detailed descriptions, use cases, and visualizations
 ms.topic: conceptual
 ms.service: azure-data-explorer
-ms.author: <alias>
-author: <github>
+ms.author: herauch
+author: cosh
 ms.date: 08/14/2025
 ---
 
 # Graph sample datasets and examples
 
-This page lists existing persistent graphs and shows how to query them with KQL. These examples demonstrate querying pre-built graph models without requiring any creation or setup steps.
-
-> [!NOTE]
-> All the graph models described in this document are available on our help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) in the "Samples" database. You can use this cluster to try out the queries and explore the graph data.
+This page lists existing graphs on our help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) in the "Samples" database and shows how to query them with KQL. These examples demonstrate querying pre-built graph models without requiring any creation or setup steps.
 
 ## Usage notes
 
-Use `graph("ModelName")` with the model name to reference existing persistent graphs. All examples assume the graphs already exist in your environment and are accessible through their model names.
+Use `graph("ModelName")` with the model name to reference existing graphs.
 
 ## Simple
 
@@ -28,23 +25,15 @@ Use `graph("ModelName")` with the model name to reference existing persistent gr
 **Schema**:
 
 - **Nodes**: Person, Company, City
-- **Edges**: works_at, located_at, knows
+- **Edges**: works_at, located_at, knows, likes
+
+**Schema Relationships**:
+
+:::image type="content" source="media/graphs/graph-example-simple-schema.png" alt-text="A schema of a graph containing people, companies, and cities with various relationships":::
 
 **Sample Data Structure**:
 
-**Sample Data Structure**:
-
-```mermaid
-graph TD
-    A[Person: Alice] -->|works_at| B[Company: TechCorp]
-    C[Person: Bob] -->|works_at| B
-    D[Person: Carol] -->|works_at| E[Company: DataSoft]
-    A -->|located_at| F[City: Seattle]
-    C -->|located_at| F
-    B -->|located_at| F
-    A -->|knows| C
-    C -->|knows| D
-```
+:::image type="content" source="media/graphs/graph-example-simple-instances.png" alt-text="A graph containing instances of people, companies, and cities with various relationships":::
 
 **Use Cases**:
 
@@ -91,12 +80,56 @@ graph("Simple")
 > [!NOTE]
 > This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Social Network Benchmark datasets are created by the Linked Data Benchmark Council (LDBC).
 
-**Description**: The Linked Data Benchmark Council (LDBC) Social Network Benchmark Interactive workload dataset. This graph represents a realistic social network with people, posts, comments, forums, organizations, and places.
+**Description**: The Linked Data Benchmark Council (LDBC) [Social Network Benchmark Interactive](https://ldbcouncil.org/benchmarks/snb/) workload dataset represents a comprehensive social network modeling real-world social media platforms. This benchmark captures the complexity of modern social networks with over 300,000 nodes and multiple relationship types, including hierarchical geographic data, multi-level organizational structures, and rich content interactions. The dataset includes people, posts, comments, forums, universities, companies, geographic locations (continents, countries, cities), tags, and tag classifications, making it ideal for testing complex graph traversals, recommendation algorithms, and social network analysis patterns.
+
+**Tables and Location**:
+All LDBC SNB Interactive tables are located in the **`Graph/LDBC/SnbInteractive`** folder and include:
+
+- **Core Entity Tables**:
+  - `LDBC_SNB_Person` - Social network users (1,528 persons)
+  - `LDBC_SNB_Post` - User posts (135,701 posts)  
+  - `LDBC_SNB_Comment` - Comments on posts (151,043 comments)
+  - `LDBC_SNB_Forum` - Discussion forums (13,750 forums)
+
+- **Organizational Tables**:
+  - `LDBC_SNB_Organisation` - Universities and companies (7,955 total)
+
+- **Geographic Tables**:
+  - `LDBC_SNB_Place` - Geographic locations including continents (6), countries (111), and cities (1,343) - total 1,460 places
+
+- **Content Classification Tables**:
+  - `LDBC_SNB_Tag` - Content tags (16,080 tags)
+  - `LDBC_SNB_TagClass` - Tag categories (71 classes)
+
+- **Relationship Tables** (contain edge data):
+  - `LDBC_SNB_Person_knows_Person` - Friend relationships (14,073 edges)
+  - `LDBC_SNB_Person_likes_Post` - Post likes (47,215 edges)
+  - `LDBC_SNB_Person_likes_Comment` - Comment likes (62,225 edges)  
+  - `LDBC_SNB_Forum_hasMember_Person` - Forum memberships (123,268 edges)
+  - `LDBC_SNB_Forum_hasModerator_Person` - Forum moderation (13,750 edges)
+  - `LDBC_SNB_Person_studyAt_Organization` - Educational history (1,209 edges)
+  - `LDBC_SNB_Person_workAt_Organization` - Employment history (3,313 edges)
+  - `LDBC_SNB_Post_hasTag_Tag` - Post tagging (51,118 edges)
+  - `LDBC_SNB_Comment_hasTag_Tag` - Comment tagging (191,303 edges)
+  - `LDBC_SNB_Forum_hasTag_Tag` - Forum tagging (47,697 edges)
+  - `LDBC_SNB_Place_isPartOf_Place` - Geographic hierarchy (1,454 edges)
+  - `LDBC_SNB_Comment_hasCreator_Person` - Comment authorship (151,043 edges)
+  - `LDBC_SNB_Post_hasCreator_Person` - Post authorship (135,701 edges)
+  - `LDBC_SNB_Comment_replyOf_Comment` - Comment replies (76,787 edges)
+  - `LDBC_SNB_Comment_replyOf_Post` - Post replies (74,256 edges)
+  - `LDBC_SNB_Forum_containerOf_Post` - Forum post containment (135,701 edges)
+  - `LDBC_SNB_Person_hasInterest_Tag` - Person interests (35,475 edges)
+  - `LDBC_SNB_Person_isLocatedIn_Place` - Person location (1,528 edges)
+  - `LDBC_SNB_Organisation_isLocatedIn_Place` - Organization location (7,955 edges)
+  - `LDBC_SNB_Post_isLocatedIn_Place` - Post location (135,701 edges)
+  - `LDBC_SNB_Comment_isLocatedIn_Place` - Comment location (151,043 edges)
+  - `LDBC_SNB_Tag_hasType_TagClass` - Tag classification (16,080 edges)
+  - `LDBC_SNB_TagClass_isSubclassOf_TagClass` - Tag class hierarchy (70 edges)
 
 **Schema**:
 
 - **Nodes**: PERSON, POST, COMMENT, FORUM, ORGANISATION, PLACE, TAG, TAGCLASS
-- **Edges**: KNOWS, LIKES, HAS_CREATOR, REPLY_OF, HAS_MEMBER, HAS_MODERATOR, STUDY_AT, WORK_AT, IS_LOCATED_IN, HAS_INTEREST, HAS_TAG, IS_PART_OF
+- **Edges**: KNOWS, LIKES, HAS_CREATOR, REPLY_OF, HAS_MEMBER, HAS_MODERATOR, STUDY_AT, WORK_AT, IS_LOCATED_IN, HAS_INTEREST, HAS_TAG, IS_PART_OF, CONTAINER_OF, HAS_TYPE, IS_SUBCLASS_OF
 
 **Use Cases**:
 
