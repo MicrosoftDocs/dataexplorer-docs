@@ -88,7 +88,7 @@ graph("Simple")
 **Purpose**: Social network traversals and friend-of-friend exploration.
 
 > [!NOTE]
-> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Social Network Benchmark datasets are created by the Linked Data Benchmark Council (LDBC).
+> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Social Network Benchmark datasets are created by the [Linked Data Benchmark Council (LDBC)](https://ldbcouncil.org/).
 
 **Description**: The Linked Data Benchmark Council (LDBC) [Social Network Benchmark Interactive](https://ldbcouncil.org/benchmarks/snb/) workload dataset represents a comprehensive social network modeling real-world social media platforms. This benchmark captures the complexity of modern social networks with over 327,000 nodes and multiple relationship types, including hierarchical geographic data, multi-level organizational structures, and rich content interactions. The dataset models realistic social media ecosystems with people creating posts and comments, participating in forums, working at organizations, and living in geographic locations across a detailed hierarchy from continents to cities.
 
@@ -203,7 +203,7 @@ graph("LDBC_SNB_Interactive")
 **Purpose**: Financial transaction analysis and fraud detection patterns.
 
 > [!NOTE]
-> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Financial Benchmark datasets are created by the Linked Data Benchmark Council (LDBC).
+> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Financial Benchmark datasets are created by the [Linked Data Benchmark Council (LDBC)](https://ldbcouncil.org/).
 
 **Description**: LDBC Financial Benchmark dataset representing a comprehensive financial network with companies, persons, accounts, loans, and various financial transactions. This dataset models realistic financial ecosystems with 5,580 total nodes and over 31,000 financial transactions and relationships. Designed specifically for fraud detection, anti-money laundering (AML) analysis, and financial crime investigation scenarios, it captures complex patterns including account ownership, loan applications, guarantees, and multi-step transaction chains that are common in financial crime scenarios.
 
@@ -310,7 +310,7 @@ graph("LDBC_Financial")
 **Purpose**: Azure Active Directory privilege escalation and attack path analysis.
 
 > [!NOTE]
-> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the BloodHound Community Edition project.
+> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the [BloodHound project](https://bloodhound.specterops.io/).
 
 **Description**: BloodHound Community Edition dataset for Azure Active Directory environments. This comprehensive security dataset contains 13,526 Azure AD objects including users, groups, applications, service principals, devices, and various cloud resources. With over 800,000 permission relationships and security edges, it models complex Azure AD environments typical of enterprise organizations. The dataset captures detailed Azure AD permissions, role assignments, group memberships, and resource ownership patterns essential for identifying privilege escalation paths and attack vectors in cloud environments.
 
@@ -445,7 +445,7 @@ graph("BloodHound_Entra")
 **Purpose**: On-premises Active Directory security analysis and privilege mapping.
 
 > [!NOTE]
-> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the BloodHound Community Edition project.
+> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the [BloodHound project](https://bloodhound.specterops.io/).
 
 **Description**: BloodHound Community Edition dataset for on-premises Active Directory environments. This dataset contains 1,495 Active Directory objects representing a typical enterprise AD deployment with complex permission structures and attack paths. The dataset includes users, computers, groups, organizational units, group policy objects, and certificate authority components across multiple domains. With over 18,000 permission relationships and security edges, it captures realistic AD attack scenarios including privilege escalation paths, ACL-based permissions, group memberships, and certificate-based authentication vulnerabilities common in Windows domain environments.
 
