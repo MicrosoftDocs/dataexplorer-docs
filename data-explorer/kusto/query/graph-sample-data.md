@@ -90,10 +90,6 @@ graph("Simple")
 
 **Description**: The Linked Data Benchmark Council (LDBC) [Social Network Benchmark Interactive](https://ldbcouncil.org/benchmarks/snb/) workload dataset represents a comprehensive social network modeling real-world social media platforms. This benchmark captures the complexity of modern social networks with over 327,000 nodes and multiple relationship types, including hierarchical geographic data, multi-level organizational structures, and rich content interactions. The dataset models realistic social media ecosystems with people creating posts and comments, participating in forums, working at organizations, and living in geographic locations across a detailed hierarchy from continents to cities.
 
-**Graph Schema Overview**:
-
-:::image type="content" source="media/graphs/graph-example-ldbc-snb-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC SNB dataset":::
-
 **Schema and Counts**:
 
 - **Core Social Entity Types**:
@@ -122,14 +118,9 @@ graph("Simple")
   - `HAS_INTEREST` - Personal interests (35,475 edges)
   - Additional relationships: `HAS_MODERATOR`, `IS_PART_OF`, `CONTAINER_OF`, `HAS_TYPE`, `IS_SUBCLASS_OF`
 
-**Use Cases**:
+**Graph Schema Overview**:
 
-- Social network analysis and recommendation systems
-- Community detection algorithms
-- Influence propagation studies
-- Content recommendation based on social connections
-- Friend-of-friend discovery
-- Social graph mining research
+:::image type="content" source="media/graphs/graph-example-ldbc-snb-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC SNB dataset":::
 
 **Graph Instance Example**:
 
@@ -148,6 +139,15 @@ This example demonstrates:
 
 > [!NOTE]
 > All relationships shown in this diagram have been validated against the actual dataset using specific queries to ensure accuracy.
+
+**Use Cases**:
+
+- Social network analysis and recommendation systems
+- Community detection algorithms
+- Influence propagation studies
+- Content recommendation based on social connections
+- Friend-of-friend discovery
+- Social graph mining research
 
 **Example Queries**:
 
@@ -196,10 +196,6 @@ graph("LDBC_SNB_Interactive")
 
 **Description**: LDBC Financial Benchmark dataset representing a comprehensive financial network with companies, persons, accounts, loans, and various financial transactions. This dataset models realistic financial ecosystems with 5,580 total nodes and over 31,000 financial transactions and relationships. Designed specifically for fraud detection, anti-money laundering (AML) analysis, and financial crime investigation scenarios, it captures complex patterns including account ownership, loan applications, guarantees, and multi-step transaction chains that are common in financial crime scenarios.
 
-**Graph Schema Overview**:
-
-:::image type="content" source="media/graphs/graph-example-ldbc-financial-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC Financial dataset":::
-
 **Schema and Counts**:
 
 - **Node Types**:
@@ -220,6 +216,16 @@ graph("LDBC_SNB_Interactive")
   - `REPAY` - Loan repayments (2,747 edges)
   - `SIGN_IN` - Authentication events (2,489 edges)
 
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-ldbc-financial-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC Financial dataset":::
+
+**Graph Instance Example**:
+
+Based on real validated data from the LDBC Financial dataset, here's a connected financial subgraph:
+
+:::image type="content" source="media/graphs/graph-example-ldbc-financial-instance.png" alt-text="A graph containing a sample subgraph of the LDBC Financial dataset":::
+
 **Use Cases**:
 
 - Financial fraud detection
@@ -228,12 +234,6 @@ graph("LDBC_SNB_Interactive")
 - Risk assessment and credit scoring
 - Suspicious activity monitoring
 - Financial network analysis
-
-**Graph Instance Example**:
-
-Based on real validated data from the LDBC Financial dataset, here's a connected financial subgraph:
-
-:::image type="content" source="media/graphs/graph-example-ldbc-financial-instance.png" alt-text="A graph containing a sample subgraph of the LDBC Financial dataset":::
 
 **Example Queries**:
 
@@ -446,7 +446,7 @@ graph("BloodHound_Entra")
 
 Based on real validated data from the BloodHound_AD dataset, here's a connected Active Directory attack path:
 
-:::image type="content" source="media/graphs/graph-example-bloodhound-ad-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound Entra dataset":::
+:::image type="content" source="media/graphs/graph-example-bloodhound-ad-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound AD dataset":::
 
 **Use Cases**:
 
@@ -517,5 +517,5 @@ graph("BloodHound_AD")
 
 - [Graph semantics overview](./graph-semantics-overview.md)
 - [Graph operators](./graph-operators.md)
-- [Graph best practices](./graph-best-practices.md) - includes common analysis queries that work across all graph datasets
+- [Graph best practices](./graph-best-practices.md)
 - [Persistent graph overview](../management/graph/graph-persistent-overview.md)
