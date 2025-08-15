@@ -46,8 +46,11 @@ Use `graph("ModelName")` with the model name to reference existing graphs.
   - `knows` - Social connections between people (4 edges)
   - `likes` - Personal preferences and interests (3 edges)
 
-**Sample Data Structure**:
-- Educational examples for graph concepts
+**Graph Instance Example**:
+
+This example demonstrates basic graph relationships in a small, easy-to-understand network showing how people connect to companies and cities through various relationship types.
+
+:::image type="content" source="media/graphs/graph-example-simple-instances.png" alt-text="A graph containing instances of people, companies, and cities with various relationships":::
 
 **Example Queries**:
 
@@ -132,11 +135,7 @@ graph("Simple")
 
 **Graph Instance Example**:
 
-:::image type="content" source="media/graphs/graph-example-ldbc-snb-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC SNB dataset":::
-
-**Graph Instance Example**:
-
-Based on real validated data from the SNB dataset, here's an example showing social interactions around content:
+This example demonstrates complex social network interactions in a realistic social media environment, showing how users engage with content, participate in forums, and form social connections.
 
 :::image type="content" source="media/graphs/graph-example-ldbc-snb-instances.png" alt-text="A graph containing a sample subgraph of the LDBC SNB dataset":::
 
@@ -249,18 +248,9 @@ graph("LDBC_SNB_Interactive")
 
 **Graph Instance Example**:
 
-Based on real validated data from the LDBC Financial dataset, here's a connected financial subgraph:
+This example illustrates a complex financial network with multiple entity types and transaction patterns, demonstrating how financial institutions can model relationships between customers, accounts, loans, and transaction flows for fraud detection and risk assessment.
 
 :::image type="content" source="media/graphs/graph-example-ldbc-financial-instance.png" alt-text="A graph containing a sample subgraph of the LDBC Financial dataset":::
-
-**Use Cases**:
-
-- Financial fraud detection
-- Anti-money laundering (AML) analysis
-- Transaction pattern analysis
-- Risk assessment and credit scoring
-- Suspicious activity monitoring
-- Financial network analysis
 
 **Example Queries**:
 
@@ -375,7 +365,7 @@ graph("LDBC_Financial")
 
 **Graph Instance Example**:
 
-Based on real validated data from the BloodHound_Entra dataset, here's a connected Azure AD subgraph:
+This example demonstrates Azure Active Directory and Entra identity relationships with complex privilege structures and potential attack paths in a cloud environment.
 
 :::image type="content" source="media/graphs/graph-example-bloodhound-entra-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound Entra dataset":::
 
@@ -500,7 +490,7 @@ graph("BloodHound_Entra")
 
 **Graph Instance Example**:
 
-Based on real validated data from the BloodHound_AD dataset, here's a connected Active Directory attack path:
+This example demonstrates on-premises Active Directory attack paths and potential security vulnerabilities in a traditional Windows domain environment.
 
 :::image type="content" source="media/graphs/graph-example-bloodhound-ad-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound AD dataset":::
 
