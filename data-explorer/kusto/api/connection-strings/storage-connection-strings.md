@@ -13,7 +13,7 @@ The Kusto service can interact with external storage services. For example, you 
 
 The following types of external storage services are supported:
 
-* Azure Blob Storage (block blobs for read/write, append blobs for write)
+* Azure Blob Storage (block blobs for read/write, append blobs for read)
 * Azure Data Lake Storage Gen2
 * Azure Data Lake Storage Gen1
 * Amazon S3
