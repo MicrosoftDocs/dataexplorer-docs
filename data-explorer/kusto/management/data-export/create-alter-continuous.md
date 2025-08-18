@@ -3,7 +3,7 @@ title:  .create or alter continuous-export
 description:  This article describes how to create or alter continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 07/30/2025
+ms.date: 08/18/2025
 ---
 # .create or alter continuous-export
 
