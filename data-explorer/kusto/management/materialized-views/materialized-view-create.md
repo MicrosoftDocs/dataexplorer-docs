@@ -3,7 +3,7 @@ title:  Create materialized view
 description:  This article describes how to create materialized views.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/11/2025
+ms.date: 08/18/2025
 ---
 
 # .create materialized-view
@@ -99,12 +99,10 @@ The lookback period is always relative to a `datetime` column in the materialize
 * **Default:** Relative to the record's [ingestion_time()](../../query/ingestion-time-function.md) in the source table. Records are deduplicated only against records which are ingested to the source table after a lookback period relative to the current records. This kind of lookback is valid only for `arg_max`, `arg_min`, or `take_any` materialized views, and only for views that preserve ingestion time. For more information, see [Materialized views limitations and known issues](materialized-views-limitations.md).
 You can configure the default option by setting the `lookback` property without the `lookback_column` property.
 
-* **lookback_column (preview):** Relative to a `datetime` column in the materialized view. The lookback is explicitly specified in the materialized view definition, using the `lookback_column` property. For more information, see [Known limitations](#known-limitations). You can configure the lookback column option by setting both the `lookback` and the `lookback_column` properties.
-
-#### Known limitations
-
-* Once a `lookback_column` is defined, you can't change its value.
-* Using a `lookback_column` can lead to duplicates if the column has `datetime(null)` values. In such cases, for a given combination of group-by keys, the view might end up with one record having a `datetime(null)` value and another with a non-null value.
+* **lookback_column:** Relative to a `datetime` column in the materialized view. The lookback is explicitly specified in the materialized view definition, using the `lookback_column` property. You can configure the lookback column option by setting both the `lookback` and the `lookback_column` properties.
+  * There is no need to define a `lookback_column` on a `datetime` column, which is one of the group-by keys of the materialized view aggregation. A `lookback_column` is only helpful if it references another `datetime` column, which is not part of group-by keys.
+  * Once a `lookback_column` is defined, you can't change its value.
+  * Using a `lookback_column` can lead to duplicates if the column has `datetime(null)` values. In such cases, for a given combination of group-by keys, the view might end up with one record having a `datetime(null)` value and another with a non-null value.
 
 ### Create materialized view over materialized view
 
@@ -309,7 +307,7 @@ The following aggregation functions are supported:
   >
   > If such late arriving records aren't expected, we recommend that in the materialized view query. Either filter these records out or normalize their timestamp values to the current time.
 
-* **Define a lookback period**: If applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [Supported properties](#supported-properties).  
+* **Define a lookback period**: If applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [Lookback period](#lookback-period).  
 
 * **Add columns frequently used for filtering as group-by keys**: Materialized view queries are optimized when they're filtered by one of the materialized view's group-by keys. If you know that your query pattern will often filter by a column that's immutable according to a unique entity in the materialized view, include it in the materialized view's group-by keys.
 
