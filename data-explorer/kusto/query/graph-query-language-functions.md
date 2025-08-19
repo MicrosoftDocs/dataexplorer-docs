@@ -1,18 +1,18 @@
 ---
-title: Graph Query Language Functions in Azure Data Explorer
-description: Leaern Azure Data Explorer graph query language (GQL) functions and operators for working with nodes, edges, and properties. Find practical examples and KQL equivalents.
+title: Graph Query Language Functions
+description: Learn graph query language (GQL) functions and operators for working with nodes, edges, and properties. Find practical examples and KQL equivalents.
 ms.reviewer: hraunch 
 ms.topic: reference
 ms.date: 08/14/2025
 
-#CustomerIntent: As a data engineer, I want to learn GQL functions in Azure Data Explorer so that I can query graph data efficiently.
+#CustomerIntent: As a data engineer, I want to learn GQL functions so that I can query graph data efficiently.
 ---
 # Graph query language (GQL) functions and operators (preview)
 
-Graph Query Language (GQL) is a powerful language for querying graph data in Azure Data Explorer. It provides a rich set of functions and operators to work with graph patterns, nodes, edges, and properties.
+Graph Query Language (GQL) is a powerful language for querying graph data alongside KQL. It provides a rich set of functions and operators to work with graph patterns, nodes, edges, and properties.
 
 > [!NOTE]
-> GQL support in Azure Data Explorer is currently in preview. Features and syntax can change based on feedback and ongoing development.
+> GQL support is currently in preview. Features and syntax can change based on feedback and ongoing development.
 
 > [!TIP]
 >
@@ -105,9 +105,9 @@ RETURN COUNT(*) > 0 AS HasSuspiciousActivity
     > [!IMPORTANT]
     > When you design your graph schema, some common property names might conflict with GQL reserved keywords. Avoid or rename these property names.
 
-- **No `INSERT`/`CREATE` support**: GQL in Azure Data Explorer doesn't support `INSERT` or `CREATE` operations to change graph structures. Instead, use KQL's [`make-graph`](make-graph-operator.md) operator or [graph snapshots](graph-operators.md) to create and manage graph structures. Use KQL for all graph creation, change, and management tasks.
+- **No `INSERT`/`CREATE` support**: GQL doesn't support `INSERT` or `CREATE` operations to change graph structures. Instead, use KQL's [`make-graph`](make-graph-operator.md) operator or [graph models](graph-operators.md) to create and manage graph structures. Use KQL for all graph creation, change, and management tasks.
 
-- **Optional matches not supported**: GQL's `OPTIONAL MATCH` clause isn't supported in Azure Data Explorer. All pattern matches are required. To get similar results, use separate queries or KQL operators for optional relationships.
+- **Optional matches**: TODO
 
 - **Entity equivalence checks not supported**: GQL's`(MATCH (n)-[]-(n2) WHERE n1 <> n2)` is not supported. Use explicit field comparisons instead, for example, `n.id <> n2.id`.
 
