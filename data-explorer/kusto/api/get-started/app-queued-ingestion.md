@@ -32,7 +32,6 @@ In this article, you learn how to:
 >
 > Ingest Version 2 is in **preview** and is available in the following languages: C#
  
-
 ## Prerequisites
 
 - [Set up your development environment](app-set-up.md) to use the Kusto client library.
