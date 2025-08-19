@@ -10,13 +10,11 @@ ms.date: 08/14/2025
 
 # Graph sample datasets and examples
 
-This page lists existing graphs on our help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) in the **Samples** database and shows how to query them with KQL. These examples demonstrate querying pre-built graph models without requiring any creation or setup steps. In the help cluster, browse to **help** > **Samples** > **Tables** > **Graphs**.
+This page lists existing graphs on our help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) in the **Samples** database and shows how to query them with KQL. These examples demonstrate querying pre-built graph models without requiring any creation or setup steps.
 
-## Usage notes
+## Simple educational graph for learning fundamentals
 
-Use `graph("ModelName")` with the model name to reference existing graphs.
-
-## Simple
+Usage: `graph("Simple")`
 
 **Purpose**: Basic graph operations and learning fundamental graph query patterns.
 
@@ -56,6 +54,11 @@ This example demonstrates basic graph relationships in a small, easy-to-understa
 
 Find all employees of a specific company:
 
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NTQrCMBCF9z3FkFUCtjeoG4%2BgO5EyhCGpmswwCZSChze2gr7V8L2fCYoSrTnPSZ5kXPeC8CF9wuojWCEtnF1%2FXVgfZcJ664%2FWcxLMq%2BugaYmkBF80ZEwE4wjmQj6eWMVsIVG%2Bk69A7QuvRNOeg31%2Bax1%2BJoY%2Fr1XbVWcqQ%2BNvXu8It68AAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 graph("Simple")
 | graph-match (person)-[works_at]->(company)
@@ -71,6 +74,11 @@ graph("Simple")
 
 Find colleagues (people working at the same company):
 
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WPPQ7CMAxG957CZEokgtTOlIUj9AQmtZJC%2FpQEISQOT1tC68nfs%2FUs64TRcDZMLlpiovmAXoh0WJQBHinl4Fsh5YWr4CL6tzhLWXknGpjrZSgR1NXTNMKhr6lbEvoRLN7I5k0BBjOw6y%2BxVRJTuJMqoIK1hPpJLfSb06Oj4z7qYD%2FwH62qmddu5fM3BR8E7RdkdfEm5gAAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 graph("Simple")
 | graph-match (person1)-->(company)<--(person2)
@@ -83,7 +91,9 @@ graph("Simple")
 |---|---|---|
 |Alice|Bob|TechCorp|
 
-## LDBC_SNB_Interactive
+## LDBC SNB interactive
+
+Usage: `graph("LDBC_SNB_Interactive")`
 
 **Purpose**: Social network traversals and friend-of-friend exploration.
 
@@ -163,6 +173,11 @@ Find direct friendships with similar ages:
 
 This query identifies pairs of people who are directly connected through a "KNOWS" relationship and have similar ages (birthdays within 30 days of each other). It traverses the LDBC social network graph to find existing friendships between people of similar age groups. The query returns the total count of such age-similar friendship pairs in the network, which can be useful for analyzing age-based social patterns or validating friend recommendation algorithms.
 
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA23QwQqCQBAG4HtPMexJIaPsWh2sDlFY5KFDhIw6tZatsrslQQ%2BfymYIzfGfj39gLhILbrHNwpuHge%2BFK6FJYqzTJzG794ZLvXfuqGMOVkFS5WJkO8ebyEt1cmYmcu0eVFNykgQZRpSpFgNHBWy33AdbnwGKpAvcP6Apq8fI5ppxa397CFitMGqPDKJUap7gCxwwtW1kwwTGw6TpLGR%2BpVgbEwq8E0zhW3JOpdJ%2BlfXhLFMSSRe4P1A9Js4fQn8Au%2FqLOT4BAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 graph("LDBC_SNB_Interactive")
 | graph-match (person1)-[knows]->(person2)
@@ -180,6 +195,11 @@ Find popular posts by likes:
 
 This query analyzes social engagement by identifying the most popular content creators based on how many unique people have liked their posts. It traverses the social network graph through the path: person → likes → post → has_creator → creator. The query aggregates the data to show each creator's total number of unique likers and distinct posts, then returns the top 3 creators with the most likes. This is useful for identifying influential content creators, understanding engagement patterns, and discovering viral content in the social network.
 
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QT0sDMRDF7%2F0Uw5424PbiWaGtBQullW5vIkuaDN3obhKSqVLxw5vNH6jmNPPe5PeGOTtu%2B7raPi1XXbtbdhtN6Lgg9YkVm%2F3AefKbkZPoobbovNGseR3UB%2Fq35rG2xlPoe%2B474ZCTcZOaSzaD8L56dAgDP%2BHgCwHCB6heYlMB17L4EIHZ3rfHP%2BZNSh55XrTd6rBeHPeHNKm8NoSjpWtZYj5wTzs%2BYtrGOvOOgiAtspHwkMu5kncxPWmhiEqmBOk%2FLxzHX8aRO%2FWNsJ0OEoakMBdNdaGzhLx1YgKD07UAA4eMhftJShiJXvwCbI%2F3gJgBAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 graph("LDBC_SNB_Interactive")
 | graph-match (person)-[likes]->(post)-[has_creator]->(creator)
@@ -195,7 +215,9 @@ graph("LDBC_SNB_Interactive")
 |Hoffmann|340|9|
 |Singh|338|268|
 
-## LDBC_Financial
+## LDBC Financial
+
+Usage: `graph("LDBC_Financial")`
 
 **Purpose**: Financial transaction analysis and fraud detection patterns.
 
@@ -253,6 +275,11 @@ Detect potential money laundering through circular transfers:
 
 This query identifies suspicious circular transaction patterns that could indicate money laundering activities. It searches for accounts that send money to another account and then receive it back through a chain of 1 to 3 transfers, creating a circular flow. The query specifically looks for large initial transfers (over 10,000) and returns details about the suspicious accounts, including the transfer amount and the length of the circular chain. This pattern detection is useful for anti-money laundering (AML) systems and financial fraud investigations.
 
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WQQU%2FDMAyF7%2FsVTz21QDsyzpvEgJ0mDoMbQpFJTZPRuVWSCiHx40mnVsC7%2BVn29%2BzGU2%2FzbH%2B%2FvdM7JyTGUZsVi280Y6c8UTQWORnTDRJVUb5E9VpuZmM1GqsLVVU3f1xVLJD0adkzWnrjNuTJhKWA7Plw%2B%2Fi0ezhkIKkRVUWncQYbqOskYLnEnnzDcOJiSoPoScI7%2B%2FPS3ndHNhFhCL0zrhuCnqhYY%2BZX0tWsXX11Hpk1gda%2F0P%2F9maONJSe6ZWmiHbd6T19TmaeTcQmVHhTpg1PmHzjsEW5CAQAA" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 graph("LDBC_Financial")
 | graph-match (account1)-[t1]->(account2)-[t2*1..3]->(account1)
@@ -280,6 +307,11 @@ Find high-risk loan guarantors:
 
 This query identifies individuals or companies who guarantee multiple loans totaling significant amounts, which could indicate financial risk exposure. It traverses the financial network graph following the path: guarantor → guarantee → borrower → apply → loan. The query aggregates the total amount guaranteed and number of loans for each guarantor, then filters for those guaranteeing over 100,000 in total and returns the top 5 by total guaranteed amount. This analysis is useful for risk assessment, identifying over-leveraged guarantors, and evaluating systemic financial risks in lending networks.
 
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22QTUvEMBCG7%2FsrhpwS2C568OhC1dXLIovoQUTKNB3aSpqENGVZ8cebpB8q6xySzDvvPEymdmgbzvZ3N7fFfatRyxYVE6svqGMl69DLBng9oEPtjRPZ2%2FQmes%2B2vDTOmSNFHa1Vp6gpg1qsIMSxIUegsCTV86VPQIM9sIeX%2FCl%2FfN7tGKCuZleiTI78cNi%2FskSyznyQ9LAMUrQVXP%2BkG20qCto6ueeYpxvNc%2Fa%2FN05dYGcG7YM3Zpt45EkJ%2B%2BiHrkPXfhJ441EVy3ciOhT5L4BYjzg50dLNBZSnPx8I1HFDZ8QtXF7ECA5vLFzFzjNTRb38BsUbZq7AAQAA" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 graph("LDBC_Financial")
 | graph-match (guarantor)-[guarantee]->(borrower)-[apply]->(loan)
@@ -300,7 +332,9 @@ graph("LDBC_Financial")
 |Company::4398046511208|366243272|8|
 |Person::19791209300551|338838223|6|
 
-## BloodHound_Entra
+## BloodHound Entra ID dataset
+
+Usage: `graph("BloodHound_Entra")`
 
 **Purpose**: Azure Active Directory privilege escalation and attack path analysis.
 
@@ -377,7 +411,12 @@ This example demonstrates Azure Active Directory and Entra identity relationship
 
 Find paths to administrative privileges:
 
-This query identifies privilege escalation paths from regular users to administrative groups in Azure AD environments. It searches for users who can reach admin groups (like AAD DC Administrators, DnsAdmins, etc.) through 1-5 relationship hops, helping security teams understand potential attack paths and privilege escalation risks.
+This query identifies privilege escalation paths from regular users to administrative groups in Azure AD environments. It searches for users who can reach admin groups (like AAD DC Administrators, DnsAdmins, etc.) through 1-3 relationship hops, helping security teams understand potential attack paths and privilege escalation risks.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22RQUsGIRCG79%2BvGDxp7C59dC4oiupQty5FLJMO65ari7rEQj8%2BXQtk%2BebijPM%2B46sOHmfN2Y1xTj24xar%2BzkaPTBx%2BYMi9dsIoNfAlkBft24xRnx277uK9veKoptEO3i2zOECKb02ewOAHmVAA0Bh6tCtw9pJq1gC7ft0yARtSAq36x6qZFXyfNwpdUrGjK66zOBFIZyOONiTk9unxmYHzUGnUGGaD60lpmT1790kyQnCLl9Tn68Al5GU7oKkMZHV6l96QHaJOKvQe17%2BS55bYyTcn%2FWYlyaVDQ0ESP22wgd3l8udE%2FCI4nv8CMf%2BWI8ABAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 graph("BloodHound_Entra")
@@ -388,7 +427,6 @@ graph("BloodHound_Entra")
     project source_user = user.name,
              path_length = array_length(path),
              admin_group = coalesce(admingroup.displayname, admingroup.name)
-| order by path_length asc
 | take 10
 ```
 
@@ -408,6 +446,11 @@ graph("BloodHound_Entra")
 Identify high-value targets (Tier 0 assets):
 
 This query identifies critical administrative assets marked as "admin_tier_0" in the environment. These are the most sensitive and powerful accounts, service principals, and resources that pose the highest risk if compromised. Understanding these assets helps prioritize security monitoring and protection efforts.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31Qy2rDQAy85yuETza4dvIBOaRQ2mOh9JJSFmUt7G29DyQ1wdCP79oJIbl0bpJmRhr1jGkoi8cxxu4l%2FoTOPAVlLKrVL%2FTz7MGj2gFKFCGtVpBxGogJlkaTOCZidSSNTKLkjWIvYGNQdEGgwM67YDKBzbpY5FnyRVbPBiagJ9he3OaiXkhXnFk6pZmlUZRd6MsRDzTK5aiPzWdVA7QtPJNme%2BeRJ1gk5W7%2FLsQ17PZvxEdn6TXrrUs41kBqm%2Bp%2B222G7b8R838Uvwk26z%2FDp%2FyOQwEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 graph("BloodHound_Entra")
@@ -432,7 +475,9 @@ graph("BloodHound_Entra")
 |31E3B75F-PRIVILEGED AUTHENTICATION ADMINISTRATOR@PHANTOMCORP|AZServicePrincipal|admin_tier_0|
 |31E3B75F-PRIVILEGED ROLE ADMINISTRATOR@PHANTOMCORP|AZServicePrincipal|admin_tier_0|
 
-## BloodHound_AD
+## BloodHound Active Directory dataset
+
+Usage: `graph("BloodHound_AD")`
 
 **Purpose**: On-premises Active Directory security analysis and privilege mapping.
 
@@ -501,6 +546,11 @@ Find potential privilege escalation:
 
 This query counts how many non-admin users can potentially escalate to admin in Azure AD. It traverses up to 10 MemberOf group hops (no cycles) from each user to groups that grant dangerous permissions (GenericAll, WriteDacl, WriteOwner, ForceChangePassword) over admin users (admincount=true), then returns the distinct number of such “potential attacker” users.
 
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VRy2rDMBC85yuELrFLYtIPcCFtaHopyaX0EELYyGtbrR5mJRNS%2BvGVLZsEQ3Xax%2BzszKoiaOqEPytrizfbmuK03vB09suqrrHU4EXNxFUodLmxBlnSOqR0edCoz0i2fFhl2ePquHxKKrJtEzoNkpbOSWu6qgeq0KczFt6lRkKm4IzKRR5Wg2P8I4Sc9ZD4wBQjLLJG3LaL%2BQQHSiWjmMU4NQy89%2FVdydPJULc8a8gGrV6iy6DQ0ojg37M8ZyUoh5OJZGC%2Buet3nMBcWcK3aJCkWCvFF4x%2FkvS4AXFLdpfQ77JXSwJfajAV7sG5i6WCp1N1467hdvdH6tqx%2FL98Ty1GygD5QuEDq%2Fcgvk%2BdbZZH9wY0hn92rdZA8gfZYb63Ho2XoAY8kpsfA77oqZM7kvQP8YnSXTgCAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
 ```kusto
 graph("BloodHound_AD")
 | graph-match cycles=none (user)-[memberof*0..10]->(group)-[permission]->(target)
@@ -521,6 +571,11 @@ graph("BloodHound_AD")
 Find Golden Certificate attack paths:
 
 This query identifies entities that can perform Golden Certificate attacks, which allow attackers to forge certificates as any user in the domain. These are extremely critical vulnerabilities as they enable complete domain compromise by allowing the attacker to impersonate any user, including domain administrators, through forged certificates.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WS3U7CQBCF73mKyV61CfgGmtRClIQLA2hMjDHDdmhXtrtkOoAkPrzbFkGBBJ2LTbpzzvx825xxWUTq1nqf3fuVy96Svoo7n5DXiV6JoguIUAT1gjjuveTeZuQ0sbz2biJBzkniDoTYFMQEFmdkq%2Bggi6HACtRdc5GGC9Wol%2BzfSQs0H3Ukux5wDd%2FtrhyW1D1RTLdLCiqNFUX7ZB2%2FfG3bfqq64fQlGgepd8LeWmLVvWRMk9pYz2vmRqMQJCspPBvZhsQl92T8VNsnxOuTZurRLZzfOJhsK6FS7ZPxQTdtuIYlW8BHIMamWoxoTTYIVDoeTodpMlLHoFJc4szYMPD%2FYD2wKZG3kLXQ9B4abIwUoH8gqcJ%2BRlN1GefgedoSHXwIsUMLZ9G2Ldh7AdSh8B8q71Cnvgy%2FVGkqypqxzo2bkyNGMd4Bm7yQ4%2BqqfZFT49xzblweKO6QmrDz4d2%2BAA43e%2FhFAwAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 graph("BloodHound_AD")
