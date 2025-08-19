@@ -29,7 +29,7 @@ GQL in Azure Data Explorer uses standard GQL syntax for graph pattern matching. 
 
 * [Advanced patterns](#examples-with-advanced-patterns)
 
-* [Complex multi-pattern queries](#Examples-with-complex-multi-patterns): Use complex multi-pattern queries to combine multiple patterns and filters in a single statement, so you can do sophisticated graph analysis.
+* [Complex multi-pattern queries](#examples-with-complex-multi-patterns): Use complex multi-pattern queries to combine multiple patterns and filters in a single statement, so you can do sophisticated graph analysis.
 
 ## Examples with MATCH
 
