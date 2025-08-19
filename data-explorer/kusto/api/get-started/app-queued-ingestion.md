@@ -3,7 +3,7 @@ title: Create an app to get data using queued ingestion
 description: Learn how to create an app to get data using queued ingestion of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 07/30/2025
+ms.date: 08/19/2025
 monikerRange: "azure-data-explorer"
 zone_pivot_groups: ingest-api
 
@@ -330,7 +330,7 @@ Add the following code:
    Not applicable
 
   ---
-    :::zone-end
+    ::: zone-end
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue.
 

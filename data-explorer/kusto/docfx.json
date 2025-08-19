@@ -134,6 +134,9 @@
         "query/**": "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel",
         "api/**": "microsoft-fabric || azure-data-explorer"
       }
+       "zone_pivot_group_filename":  {
+        "articles/data-explorer/kusto/api/*.md": "data-explorer/zone-pivot-groups.json"
+      }
     },
     "template": [],
     "dest": "kusto-docs",
