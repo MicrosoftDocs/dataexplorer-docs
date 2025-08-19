@@ -329,7 +329,8 @@ Add the following code:
    Not applicable
 
   ---
-    ::: zone-end
+
+   ::: zone-end
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue.
 
@@ -1062,7 +1063,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
 1. Set the ingestion properties to not ignore the first record as the in-memory string doesn't have a header row.
 
-::: zone pivot="latest"
+   ::: zone pivot="latest"
    **Ingest V1**
 
    #### [C\#](#tab/csharp)
@@ -1155,6 +1156,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ```java
     ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
     ```
+
    ---
 
     ::: zone-end
@@ -1190,7 +1192,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
 An outline of the updated code should look like this:
 
-::: zone pivot="latest" 
+::: zone pivot="latest"
 
 **Ingest V1**
 
@@ -1354,7 +1356,7 @@ public class BatchIngestion {
 ::: zone-end
 
 ::: zone pivot="preview"
- 
+
 **Ingest V2 (preview)**
 
 #### [C\#](#tab/csharp)
@@ -1472,18 +1474,18 @@ For example, you can modify the app replacing the *ingest from memory* code with
    ::: zone pivot="latest"
 
    **Ingest V1**
-   
+
       #### [C\#](#tab/csharp)
-      
+
       ```csharp
       string blobUri = "<your_blob_uri>";
       
       ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
       _= ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
       ```
-      
+
       #### [Python](#tab/python)
-      
+
       ```python
       blob_uri = "<your_blob_uri>"
       
@@ -1491,20 +1493,20 @@ For example, you can modify the app replacing the *ingest from memory* code with
       blob_descriptor = BlobDescriptor(blob_uri)
       ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
       ```
-      
+
       #### [TypeScript](#tab/typescript)
-      
+
       ```typescript
       const blobUri = "<your_blob_uri>";
       
       ingestProps.ignoreFirstRecord = true;
       await ingestClient.ingestFromBlob(blobUri, ingestProps);
       ```
-      
+
       <!-- #### [Go](#tab/go) -->
-      
+
       #### [Java](#tab/java)
-      
+
       ```java
       String blobUri = "<your_blob_uri>";
       
@@ -1512,7 +1514,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
       BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
       ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
       ```
-   
+
      ---
 
    ::: zone-end
@@ -1520,29 +1522,29 @@ For example, you can modify the app replacing the *ingest from memory* code with
    ::: zone pivot="preview"
 
    **Ingest V2 (preview)**
-      
+
       #### [C\#](#tab/csharp)
-      
+
       ```csharp
       var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
       
       await ingestClient.IngestAsync(blobSource, database, table);
       ```
-      
+
       #### [Python](#tab/python)
-      
+
       Not applicable
-      
+
       #### [TypeScript](#tab/typescript)
-      
+
       Not applicable
-      
+
       #### [Java](#tab/java)
-      
+
       Not applicable
-   
+
    ---
- 
+
     ::: zone-end
 
 An outline of the updated code should look like this:
