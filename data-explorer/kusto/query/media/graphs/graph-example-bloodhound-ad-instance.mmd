@@ -1,0 +1,35 @@
+%%{ init: { 'flowchart': {'defaultRenderer': 'elk' } } }%%
+graph TD
+    %% Real Entities from BloodHound_AD dataset
+    ALICE["ALICE@PHANTOM\.CORP<br/>User<br/>Domain User"]
+    
+    %% Her Computer
+    LAPTOP["ALICE-LAPTOP\.PHANTOM\.CORP<br/>Computer<br/>Workstation"]
+    
+    %% Administrative Groups
+    DOMAINUSERS["DOMAIN USERS@PHANTOM\.CORP<br/>Group<br/>Default Domain Group"]
+    
+    %% Domain Infrastructure
+    USERS["USERS@PHANTOM\.CORP<br/>Container<br/>AD Container"]
+    PHANTOM["PHANTOM\.CORP<br/>Domain<br/>AD Domain"]
+    
+    %% Validated Attack Path Relationships
+    ALICE -->|AdminTo| LAPTOP
+    ALICE -->|MemberOf| DOMAINUSERS
+    
+    %% Container Hierarchy
+    USERS -->|Contains| ALICE
+    PHANTOM -->|Contains| USERS
+    
+    %% Styling
+    classDef user fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
+    classDef computer fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef group fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+    classDef admingroup fill:#ffebee,stroke:#d32f2f,stroke-width:3px
+    classDef infrastructure fill:#f1f8e9,stroke:#689f38,stroke-width:2px
+    classDef certificate fill:#fce4ec,stroke:#c2185b,stroke-width:3px
+    
+    class ALICE user
+    class LAPTOP computer
+    class DOMAINUSERS,DOMAINADMINS group
+    class USERS,PHANTOM infrastructure

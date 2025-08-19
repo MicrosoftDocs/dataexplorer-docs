@@ -3,48 +3,24 @@ title: Graph sample datasets and examples
 description: Graph examples with detailed descriptions, use cases, and visualizations
 ms.topic: conceptual
 ms.service: azure-data-explorer
-ms.author: <alias>
-author: <github>
+ms.author: herauch
+author: cosh
 ms.date: 08/14/2025
 ---
 
 # Graph sample datasets and examples
 
-This page lists existing persistent graphs and shows how to query them with KQL. These examples demonstrate querying pre-built graph models without requiring any creation or setup steps.
-
-> [!NOTE]
-> All the graph models described in this document are available on our help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) in the "Samples" database. You can use this cluster to try out the queries and explore the graph data.
+This page lists existing graphs on our help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) in the "Samples" database and shows how to query them with KQL. These examples demonstrate querying pre-built graph models without requiring any creation or setup steps.
 
 ## Usage notes
 
-Use `graph("ModelName")` with the model name to reference existing persistent graphs. All examples assume the graphs already exist in your environment and are accessible through their model names.
+Use `graph("ModelName")` with the model name to reference existing graphs.
 
 ## Simple
 
 **Purpose**: Basic graph operations and learning fundamental graph query patterns.
 
-**Description**: A small educational graph containing people, companies, and cities with various relationships. Perfect for learning graph traversals and understanding basic patterns.
-
-**Schema**:
-
-- **Nodes**: Person, Company, City
-- **Edges**: works_at, located_at, knows
-
-**Sample Data Structure**:
-
-**Sample Data Structure**:
-
-```mermaid
-graph TD
-    A[Person: Alice] -->|works_at| B[Company: TechCorp]
-    C[Person: Bob] -->|works_at| B
-    D[Person: Carol] -->|works_at| E[Company: DataSoft]
-    A -->|located_at| F[City: Seattle]
-    C -->|located_at| F
-    B -->|located_at| F
-    A -->|knows| C
-    C -->|knows| D
-```
+**Description**: A small educational graph containing people, companies, and cities with various relationships. Perfect for learning graph traversals and understanding basic patterns. This compact dataset includes 11 nodes (5 people, 3 companies, and 3 cities) connected through 20 relationships, making it ideal for understanding graph fundamentals without the complexity of larger datasets. The graph demonstrates common real-world scenarios like employment relationships, geographic locations, social connections, and personal preferences.
 
 **Use Cases**:
 
@@ -52,6 +28,29 @@ graph TD
 - Testing graph algorithms
 - Understanding relationship patterns
 - Educational examples for graph concepts
+
+**Schema Relationships**:
+
+:::image type="content" source="media/graphs/graph-example-simple-schema.png" alt-text="A schema of a graph containing people, companies, and cities with various relationships":::
+
+**Schema and Counts**:
+
+- **Node Types**:
+  - `Person` - Individual people (5 nodes)
+  - `Company` - Business organizations (3 nodes)
+  - `City` - Geographic locations (3 nodes)
+
+- **Relationship Types**:
+  - `works_at` - Employment relationships (5 edges)
+  - `located_at` - Geographic location assignments (8 edges)
+  - `knows` - Social connections between people (4 edges)
+  - `likes` - Personal preferences and interests (3 edges)
+
+**Graph Instance Example**:
+
+This example demonstrates basic graph relationships in a small, easy-to-understand network showing how people connect to companies and cities through various relationship types.
+
+:::image type="content" source="media/graphs/graph-example-simple-instances.png" alt-text="A graph containing instances of people, companies, and cities with various relationships":::
 
 **Example Queries**:
 
@@ -89,14 +88,65 @@ graph("Simple")
 **Purpose**: Social network traversals and friend-of-friend exploration.
 
 > [!NOTE]
-> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Social Network Benchmark datasets are created by the Linked Data Benchmark Council (LDBC).
+> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Social Network Benchmark datasets are created by the [Linked Data Benchmark Council (LDBC)](https://ldbcouncil.org/).
 
-**Description**: The Linked Data Benchmark Council (LDBC) Social Network Benchmark Interactive workload dataset. This graph represents a realistic social network with people, posts, comments, forums, organizations, and places.
+**Description**: The Linked Data Benchmark Council (LDBC) [Social Network Benchmark Interactive](https://ldbcouncil.org/benchmarks/snb/) workload dataset represents a comprehensive social network modeling real-world social media platforms. This benchmark captures the complexity of modern social networks with over 327,000 nodes and multiple relationship types, including hierarchical geographic data, multi-level organizational structures, and rich content interactions. The dataset models realistic social media ecosystems with people creating posts and comments, participating in forums, working at organizations, and living in geographic locations across a detailed hierarchy from continents to cities.
 
-**Schema**:
+**Use Cases**:
 
-- **Nodes**: PERSON, POST, COMMENT, FORUM, ORGANISATION, PLACE, TAG, TAGCLASS
-- **Edges**: KNOWS, LIKES, HAS_CREATOR, REPLY_OF, HAS_MEMBER, HAS_MODERATOR, STUDY_AT, WORK_AT, IS_LOCATED_IN, HAS_INTEREST, HAS_TAG, IS_PART_OF
+- Social network analysis and recommendation systems
+- Community detection algorithms
+- Influence propagation studies
+- Content recommendation based on social connections
+- Friend-of-friend discovery
+- Social graph mining research
+
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-ldbc-snb-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC SNB dataset":::
+
+**Schema and Counts**:
+
+- **Core Social Entity Types**:
+  - `PERSON` - Social network users (1,528 nodes)
+  - `POST` - User posts (135,701 nodes)
+  - `COMMENT` - Comments on posts (151,043 nodes)
+  - `FORUM` - Discussion forums (13,750 nodes)
+
+- **Organizational and Geographic Types**:
+  - `ORGANISATION` - Universities and companies (7,955 nodes)
+  - `PLACE` - Geographic locations: continents (6), countries (111), cities (1,343) - total 1,460 nodes
+
+- **Content Classification Types**:
+  - `TAG` - Content tags (16,080 nodes)
+  - `TAGCLASS` - Tag categories (71 nodes)
+
+- **Key Relationship Types**:
+  - `KNOWS` - Friend relationships (14,073 edges)
+  - `LIKES` - Content likes: posts (47,215) + comments (62,225) = 109,440 total edges
+  - `HAS_CREATOR` - Content authorship: posts (135,701) + comments (151,043) = 286,744 edges
+  - `HAS_MEMBER` - Forum memberships (123,268 edges)
+  - `HAS_TAG` - Content tagging: posts (51,118) + comments (191,303) + forums (47,697) = 290,118 edges
+  - `IS_LOCATED_IN` - Location relationships: people (1,528) + organizations (7,955) + posts (135,701) + comments (151,043) = 296,227 edges
+  - `REPLY_OF` - Comment threading: comment-to-comment (76,787) + comment-to-post (74,256) = 151,043 edges
+  - `WORK_AT` / `STUDY_AT` - Professional/educational history (4,522 edges)
+  - `HAS_INTEREST` - Personal interests (35,475 edges)
+  - Additional relationships: `HAS_MODERATOR`, `IS_PART_OF`, `CONTAINER_OF`, `HAS_TYPE`, `IS_SUBCLASS_OF`
+
+**Graph Instance Example**:
+
+This example demonstrates complex social network interactions in a realistic social media environment, showing how users engage with content, participate in forums, and form social connections.
+
+:::image type="content" source="media/graphs/graph-example-ldbc-snb-instances.png" alt-text="A graph containing a sample subgraph of the LDBC SNB dataset":::
+
+This example demonstrates:
+
+- **Social Engagement**: Mahinda likes both Abdullah's post and a comment on that post
+- **Content Threading**: The comment (about Gloria Macapagal-Arroyo) replies to the post (about Aurangzeb)
+- **Content Creation**: Abdullah creates posts in his own forum wall
+- **Community Participation**: Mahinda is a member of Abdullah's forum where the content appears
+- **Content Classification**: Both posts and comments are tagged with relevant topics from their content
+- **Geographic Context**: All entities have location relationships for geographic analysis
 
 **Use Cases**:
 
@@ -150,14 +200,9 @@ graph("LDBC_SNB_Interactive")
 **Purpose**: Financial transaction analysis and fraud detection patterns.
 
 > [!NOTE]
-> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Financial Benchmark datasets are created by the Linked Data Benchmark Council (LDBC).
+> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The LDBC Financial Benchmark datasets are created by the [Linked Data Benchmark Council (LDBC)](https://ldbcouncil.org/).
 
-**Description**: LDBC Financial Benchmark dataset representing a financial network with companies, persons, accounts, loans, and various financial transactions. Designed for fraud detection and financial crime investigation scenarios.
-
-**Schema**:
-
-- **Nodes**: COMPANY, PERSON, ACCOUNT, LOAN, MEDIUM
-- **Edges**: TRANSFER, WITHDRAW, DEPOSIT, OWN, APPLY, GUARANTEE, INVEST, SIGN_IN, REPAY
+**Description**: LDBC Financial Benchmark dataset representing a comprehensive financial network with companies, persons, accounts, loans, and various financial transactions. This dataset models realistic financial ecosystems with 5,580 total nodes and over 31,000 financial transactions and relationships. Designed specifically for fraud detection, anti-money laundering (AML) analysis, and financial crime investigation scenarios, it captures complex patterns including account ownership, loan applications, guarantees, and multi-step transaction chains that are common in financial crime scenarios.
 
 **Use Cases**:
 
@@ -167,6 +212,42 @@ graph("LDBC_SNB_Interactive")
 - Risk assessment and credit scoring
 - Suspicious activity monitoring
 - Financial network analysis
+
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-ldbc-financial-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC Financial dataset":::
+
+**Schema and Counts**:
+
+**Schema and Counts**:
+
+- **Node Types**:
+  - `COMPANY` - Business entities (386 nodes)
+  - `PERSON` - Individual customers (785 nodes)
+  - `ACCOUNT` - Financial accounts (2,055 nodes)
+  - `LOAN` - Loan products (1,376 nodes)
+  - `MEDIUM` - Transaction mediums/channels (978 nodes)
+
+- **Relationship Types**:
+  - `TRANSFER` - Money transfers between accounts (8,132 edges)
+  - `WITHDRAW` - Cash withdrawals from accounts (9,182 edges)
+  - `DEPOSIT` - Money deposits into accounts (2,758 edges)
+  - `OWN` - Account ownership relationships (2,055 edges)
+  - `APPLY` - Loan applications (1,376 edges)
+  - `GUARANTEE` - Loan guarantees (579 edges)
+  - `INVEST` - Investment transactions (1,983 edges)
+  - `REPAY` - Loan repayments (2,747 edges)
+  - `SIGN_IN` - Authentication events (2,489 edges)
+
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-ldbc-financial-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC Financial dataset":::
+
+**Graph Instance Example**:
+
+This example illustrates a complex financial network with multiple entity types and transaction patterns, demonstrating how financial institutions can model relationships between customers, accounts, loans, and transaction flows for fraud detection and risk assessment.
+
+:::image type="content" source="media/graphs/graph-example-ldbc-financial-instance.png" alt-text="A graph containing a sample subgraph of the LDBC Financial dataset":::
 
 **Example Queries**:
 
@@ -221,33 +302,69 @@ graph("LDBC_Financial")
 |Company::4398046511208|366243272|8|
 |Person::19791209300551|338838223|6|
 
-## BloodHound Entra
+## BloodHound_Entra
 
 **Purpose**: Azure Active Directory privilege escalation and attack path analysis.
 
 > [!NOTE]
+> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the [BloodHound project](https://bloodhound.specterops.io/).
+
+**Description**: BloodHound Community Edition dataset for Azure Active Directory environments. This comprehensive security dataset contains 13,526 Azure AD objects including users, groups, applications, service principals, devices, and various cloud resources. With over 800,000 permission relationships and security edges, it models complex Azure AD environments typical of enterprise organizations. The dataset captures detailed Azure AD permissions, role assignments, group memberships, and resource ownership patterns essential for identifying privilege escalation paths and attack vectors in cloud environments.
+
+**Use Cases**:
+
+- Entra ID security assessments
+- Privilege escalation path discovery
+- Attack path visualization
+- Identity governance analysis
+- Risk-based security controls
+- Compliance auditing for cloud environments
+
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-bloodhound-entra-schema.png" alt-text="A schema of a graph containing nodes and relations from the BloodHound Entra dataset":::
+
+**Schema and Counts**:
+
+> [!NOTE]
 > This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the BloodHound Community Edition project.
 
-**Description**: BloodHound Community Edition dataset for Azure Active Directory environments. Contains nodes representing Azure AD objects (users, groups, applications, service principals) and edges representing various permissions and relationships.
+**Description**: BloodHound Community Edition dataset for Azure Active Directory environments. This comprehensive security dataset contains 13,526 Azure AD objects including users, groups, applications, service principals, devices, and various cloud resources. With over 800,000 permission relationships and security edges, it models complex Azure AD environments typical of enterprise organizations. The dataset captures detailed Azure AD permissions, role assignments, group memberships, and resource ownership patterns essential for identifying privilege escalation paths and attack vectors in cloud environments.
 
-**Schema**:
+**Schema and Counts**:
 
-- **Nodes**: Various Azure AD object types (Users, Groups, Applications, Service Principals, etc.)
-- **Edges**: Permission and relationship types (Member, Owner, various Azure AD privileges)
+- **Primary Node Types**:
+  - `AZUser` - Azure AD users (230 nodes)
+  - `AZServicePrincipal` - Service principals and applications (6,270 nodes)
+  - `AZApp` - Azure applications (6,648 nodes)
+  - `AZGroup` - Azure AD groups (58 nodes)
+  - `AZDevice` - Managed devices (47 nodes)
 
-**Security Analysis Example**:
+- **Azure Resource Types**:
+  - `AZResourceGroup` - Resource groups (59 nodes)
+  - `AZVM` - Virtual machines (66 nodes)
+  - `AZRole` - Azure roles (116 nodes)
+  - `AZSubscription` - Azure subscriptions (3 nodes)
+  - `AZTenant` - Azure tenant (1 node)
 
-```mermaid
-graph TD
-    A[Regular User] -->|MemberOf| B[Security Group]
-    B -->|CanAddMember| C[High Privilege Group]
-    C -->|Member| D[Global Admin]
-    D -->|Owner| E[Sensitive Application]
-    
-    style A fill:#ffcccc
-    style E fill:#ff9999
-    style D fill:#ff6666
-```
+- **Key Relationship Types** (Top permissions by volume):
+  - `AZMGAddOwner` - Management group owner permissions (403,412 edges)
+  - `AZMGAddSecret` - Secret management permissions (345,324 edges)
+  - `AZAddSecret` - Application secret permissions (24,666 edges)
+  - `AZContains` - Resource containment relationships (12,924 edges)
+  - `AZRunsAs` - Service execution permissions (6,269 edges)
+  - `AZMemberOf` - Group membership relationships (4,439 edges)
+  - `AZOwns` - Resource ownership (2,870 edges)
+
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-bloodhound-entra-schema.png" alt-text="A schema of a graph containing nodes and relations from the BloodHound Entra dataset":::
+
+**Graph Instance Example**:
+
+This example demonstrates Azure Active Directory and Entra identity relationships with complex privilege structures and potential attack paths in a cloud environment.
+
+:::image type="content" source="media/graphs/graph-example-bloodhound-entra-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound Entra dataset":::
 
 **Use Cases**:
 
@@ -322,23 +439,54 @@ graph("BloodHound_Entra")
 **Purpose**: On-premises Active Directory security analysis and privilege mapping.
 
 > [!NOTE]
-> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the BloodHound Community Edition project.
+> This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the [BloodHound project](https://bloodhound.specterops.io/).
 
-**Description**: BloodHound Community Edition dataset for on-premises Active Directory environments. Contains comprehensive information about AD objects, group memberships, ACLs, and various attack paths in traditional Windows domains.
+**Description**: BloodHound Community Edition dataset for on-premises Active Directory environments. This dataset contains 1,495 Active Directory objects representing a typical enterprise AD deployment with complex permission structures and attack paths. The dataset includes users, computers, groups, organizational units, group policy objects, and certificate authority components across multiple domains. With over 18,000 permission relationships and security edges, it captures realistic AD attack scenarios including privilege escalation paths, ACL-based permissions, group memberships, and certificate-based authentication vulnerabilities common in Windows domain environments.
 
-**Attack Path Visualization Example**:
+**Use Cases**:
 
-```mermaid
-graph TD
-    A[Domain User] -->|GenericWrite| B[Service Account]
-    B -->|MemberOf| C[Backup Operators]
-    C -->|SeBackupPrivilege| D[Domain Controller]
-    D -->|DCSync| E[Domain Admin Hash]
-    
-    style A fill:#ccffcc
-    style E fill:#ff6666
-    style D fill:#ffcc99
-```
+- Active Directory security assessments
+- Attack path analysis and penetration testing
+- Domain privilege mapping
+- Group policy security analysis
+- Kerberoasting and ASREPRoasting target identification
+- Security control gap analysis
+
+**Graph Schema Overview**:
+
+- **Core AD Object Types**:
+  - `User` - Domain users (99 nodes)
+  - `Computer` - Domain computers (34 nodes)
+  - `Group` - Security and distribution groups (219 nodes)
+  - `ADLocalGroup` - Local groups on computers (28 nodes)
+  - `GPO` - Group Policy Objects (32 nodes)
+
+- **AD Infrastructure Types**:
+  - `Domain` - Active Directory domains (5 nodes)
+  - `OU` - Organizational Units (20 nodes)
+  - `Container` - AD containers (939 nodes)
+  - `CertTemplate` - Certificate templates (106 nodes)
+  - `EnterpriseCA` - Certificate Authorities (4 nodes)
+  - `RootCA` - Root Certificate Authorities (5 nodes)
+
+- **Key Permission Types** (Top attack vectors):
+  - `GenericAll` - Full control permissions (3,292 edges)
+  - `WriteDacl` - Modify permissions (2,221 edges)
+  - `WriteOwner` - Change ownership (2,187 edges)
+  - `Owns` - Object ownership (1,439 edges)
+  - `Contains` - Containment relationships (1,416 edges)
+  - `GenericWrite` - Write permissions (579 edges)
+  - `MemberOf` - Group memberships (301 edges)
+
+**Graph Schema Overview**:
+
+:::image type="content" source="media/graphs/graph-example-bloodhound-ad-schema.png" alt-text="A schema of a graph containing nodes and relations from the BloodHound AD dataset":::
+
+**Graph Instance Example**:
+
+This example demonstrates on-premises Active Directory attack paths and potential security vulnerabilities in a traditional Windows domain environment.
+
+:::image type="content" source="media/graphs/graph-example-bloodhound-ad-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound AD dataset":::
 
 **Use Cases**:
 
@@ -404,164 +552,6 @@ graph("BloodHound_AD")
 |SRV-SHARPHOUND.PHANTOM.CORP|Server|PHANTOM.CORP|CRITICAL|Compromised server with certificate generation rights|
 |EXTCA01.WRAITH.CORP|Unknown System|WRAITH.CORP|CRITICAL|System with certificate forging capabilities|
 |EXTCA02.WRAITH.CORP|Unknown System|WRAITH.CORP|CRITICAL|System with certificate forging capabilities|
-
-## Common Analysis Queries
-
-These queries work across all graph models and help you understand the structure and characteristics of any graph dataset. Use these queries to explore new graphs or perform basic analysis.
-
-### Graph Overview and Statistics
-
-**Count total nodes and edges**:
-
-```kusto
-// Get node count
-graph("GRAPH_NAME")
-| graph-match (node)
-project node
-| summarize NodeCount = count()
-```
-
-```kusto
-// Get edge count
-graph("GRAPH_NAME")
-| graph-match (source)-[edge]->(target)
-project edge
-| summarize EdgeCount = count()
-```
-
-**Get graph summary statistics**:
-
-```kusto
-let nodes = graph("GRAPH_NAME") | graph-match (node) project node | summarize NodeCount = count();
-let edges = graph("GRAPH_NAME") | graph-match (source)-[edge]->(target) project edge | summarize EdgeCount = count();
-union nodes, edges
-```
-
-### Node Analysis
-
-**Discover all node types (labels)**:
-
-```kusto
-graph("GRAPH_NAME")
-| graph-match (node) 
-project labels = labels(node)
-| mv-expand label = labels 
-| summarize count() by tostring(label)
-| order by count_ desc
-```
-
-**Find nodes with multiple labels**:
-
-```kusto
-graph("GRAPH_NAME")
-| graph-match (node) 
-project node_id = node.id, labels = labels(node), label_count = array_length(labels(node))
-| where label_count > 1
-| take 10
-```
-
-**Sample nodes by type**:
-
-```kusto
-graph("GRAPH_NAME")
-| graph-match (node) 
-where labels(node) has "DESIRED_LABEL"  // Replace with actual label
-project node_id = node.id, properties = node.properties
-| take 5
-```
-
-### Edge Analysis
-
-**Discover all edge types** (works with different graph schemas):
-
-```kusto
-// For graphs using 'labels' array (like BloodHound)
-graph("GRAPH_NAME")
-| graph-match (source)-[edge]->(target)
-project edge_labels = labels(edge)
-| mv-expand label = edge_labels 
-| summarize count() by tostring(label)
-| order by count_ desc
-```
-
-```kusto
-// For graphs using 'label' column (like LDBC)
-graph("GRAPH_NAME")
-| graph-match (source)-[edge]->(target)
-project edge_label = edge.label
-| summarize count() by edge_label
-| order by count_ desc
-```
-
-```kusto
-// For graphs using 'lbl' column (like Simple)
-graph("GRAPH_NAME")
-| graph-match (source)-[edge]->(target)
-project edge_label = edge.lbl
-| summarize count() by edge_label
-| order by count_ desc
-```
-
-**Find most connected nodes (highest degree)**:
-
-```kusto
-graph("GRAPH_NAME")
-| graph-match (node)-[edge]-(connected)
-project node_id = node.id
-| summarize degree = count() by node_id
-| order by degree desc
-| take 10
-```
-
-### Relationship Pattern Analysis
-
-**Find nodes with specific relationship patterns**:
-
-```kusto
-// Nodes that have both incoming and outgoing edges
-graph("GRAPH_NAME")
-| graph-match (node)
-where (graph("GRAPH_NAME") | graph-match (other1)-[]->(node) | take 1 | count() > 0)
-  and (graph("GRAPH_NAME") | graph-match (node)-[]->(other2) | take 1 | count() > 0)
-project node_id = node.id, node_labels = labels(node)
-| take 10
-```
-
-**Discover triangular relationships** (nodes connected in a triangle):
-
-```kusto
-graph("GRAPH_NAME")
-| graph-match (a)-[]->(b)-[]->(c)-[]->(a)
-where a.id != b.id and b.id != c.id and c.id != a.id
-project node1 = a.id, node2 = b.id, node3 = c.id
-| take 5
-```
-
-### Property Analysis
-
-**Explore node properties**:
-
-```kusto
-graph("GRAPH_NAME")
-| graph-match (node)
-where labels(node) has "DESIRED_LABEL"  // Replace with actual label
-project properties = node.properties
-| take 1
-| project property_names = bag_keys(properties)
-```
-
-**Find nodes with specific property values**:
-
-```kusto
-graph("GRAPH_NAME")
-| graph-match (node)
-where isnotnull(node.properties.name)  // Replace 'name' with actual property
-project node_id = node.id, property_value = node.properties.name
-| take 10
-```
-
-> [!TIP]
-> Replace `"GRAPH_NAME"` with the actual graph model name (e.g., "Simple", "LDBC_SNB_Interactive", "BloodHound_Entra", etc.). Some queries may need adjustment based on the specific schema of your graph model.
 
 ## Related content
 

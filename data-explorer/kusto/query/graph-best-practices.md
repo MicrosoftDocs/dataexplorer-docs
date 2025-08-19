@@ -522,18 +522,237 @@ This hybrid approach enables organizations to provide always-current data analys
 
 :::moniker-end
 
+## Common analysis queries
+
+These reusable query patterns work across all graph models and help you understand the structure and characteristics of any graph dataset. Use these queries to explore new graphs, perform basic analysis, or as starting points for more complex graph investigations.
+
+### Graph overview and statistics
+
+Understanding the basic characteristics of your graph is essential for analysis planning and performance optimization. These queries provide fundamental metrics about graph size and structure.
+
+**Count total nodes and edges**:
+
+Use these queries to understand the scale of your graph dataset. Node and edge counts help determine appropriate query strategies and identify potential performance considerations.
+
+```kusto
+// Get node count
+graph("GRAPH_NAME")
+| graph-match (node)
+    project node
+| summarize NodeCount = count()
+```
+
+```kusto
+// Get edge count
+graph("GRAPH_NAME")
+| graph-match (source)-[edge]->(target)
+    project edge
+| summarize EdgeCount = count()
+```
+
+**Get graph summary statistics**:
+
+This combined query efficiently provides both metrics in a single result, useful for initial graph assessment and reporting.
+
+```kusto
+let nodes = graph("GRAPH_NAME") | graph-match (node) project node | summarize NodeCount = count();
+let edges = graph("GRAPH_NAME") | graph-match (source)-[edge]->(target) project edge | summarize EdgeCount = count();
+union nodes, edges
+```
+
+**Alternative using graph-to-table**:
+
+For basic counting, the `graph-to-table` operator can be more efficient as it directly exports graph elements without pattern matching overhead.
+
+```kusto
+let nodes = graph("GRAPH_NAME") | graph-to-table nodes | summarize NodeCount = count();
+let edges = graph("GRAPH_NAME") | graph-to-table edges | summarize EdgeCount = count();
+union nodes, edges
+```
+
+### Node analysis
+
+Node analysis helps you understand the entities in your graph, their types, and distribution. These patterns are essential for data quality assessment and schema understanding.
+
+**Discover all node types (labels)**:
+
+This query reveals the different entity types in your graph and their frequencies. Use it to understand your data model, identify the most common entity types, and spot potential data quality issues.
+
+```kusto
+graph("GRAPH_NAME")
+| graph-match (node) 
+    project labels = labels(node)
+| mv-expand label = labels 
+| summarize count() by tostring(label)
+| order by count_ desc
+```
+
+**Find nodes with multiple labels**:
+
+Identifies nodes that belong to multiple categories simultaneously. This is useful for understanding overlapping classifications and complex entity relationships in your data model.
+
+```kusto
+graph("GRAPH_NAME")
+| graph-match (node) 
+    project node_id = node.id, labels = labels(node), label_count = array_length(labels(node))
+| where label_count > 1
+| take 10
+```
+
+**Sample nodes by type**:
+
+Retrieves representative examples of specific node types to understand their structure and properties. Essential for data exploration and query development.
+
+```kusto
+graph("GRAPH_NAME")
+| graph-match (node) 
+    where labels(node) has "DESIRED_LABEL"  // Replace with actual label
+    project node_id = node.id, properties = node.properties
+| sample 5
+```
+
+### Edge analysis
+
+Understanding relationships in your graph is crucial for identifying patterns, data quality issues, and potential analysis directions.
+
+**Discover all edge types** (works with different graph schemas):
+
+This query identifies all relationship types in your graph, helping you understand the connections available for analysis. Different graphs use different property names for edge types, so multiple variations are provided.
+
+```kusto
+// For graphs using 'labels' array (like BloodHound)
+graph("GRAPH_NAME")
+| graph-match (source)-[edge]->(target)
+    project edge_labels = labels(edge)
+| mv-expand label = edge_labels 
+| summarize count() by tostring(label)
+| order by count_ desc
+```
+
+**Find most connected nodes (highest degree)**:
+
+Node degree analysis reveals the most influential or central entities in your graph. High-degree nodes often represent key players, bottlenecks, or important infrastructure components.
+
+```kusto
+// Find nodes with highest total degree (in + out)
+graph("GRAPH_NAME")
+| graph-match (node)
+    project node_id = node.id, 
+            in_degree = node_degree_in(node),
+            out_degree = node_degree_out(node),
+            total_degree = node_degree_in(node) + node_degree_out(node)
+| order by total_degree desc
+| take 10
+```
+
+**Find nodes with highest in-degree (most incoming connections)**:
+
+High in-degree nodes are often targets of influence, popular destinations, or central resources. In social networks, these might be influential people; in infrastructure graphs, these could be critical services.
+
+```kusto
+graph("GRAPH_NAME")
+| graph-match (node)
+    project node_id = node.id, 
+            node_labels = labels(node),
+            in_degree = node_degree_in(node)
+| order by in_degree desc
+| take 10
+```
+
+**Find nodes with highest out-degree (most outgoing connections)**:
+
+High out-degree nodes are often sources of influence, distributors, or connector hubs. These entities typically initiate many relationships or distribute resources to others.
+
+```kusto
+graph("GRAPH_NAME")
+| graph-match (node)
+    project node_id = node.id, 
+            node_labels = labels(node),
+            out_degree = node_degree_out(node)
+| order by out_degree desc
+| take 10
+```
+
+### Relationship pattern analysis
+
+These queries help identify structural patterns and complex relationships that might indicate important behaviors or anomalies in your data.
+
+**Find nodes with specific relationship patterns**:
+
+Identifies nodes that both receive and send connections, indicating entities that act as intermediaries or processing points. These nodes often represent critical components in workflows or communication chains.
+
+```kusto
+// Nodes that have both incoming and outgoing edges
+graph("GRAPH_NAME")
+| graph-match (node)
+where (graph("GRAPH_NAME") | graph-match (other1)-[]->(node) | take 1 | count() > 0)
+  and (graph("GRAPH_NAME") | graph-match (node)-[]->(other2) | take 1 | count() > 0)
+project node_id = node.id, node_labels = labels(node)
+| take 10
+```
+
+**Discover triangular relationships** (nodes connected in a triangle):
+
+Triangular patterns often indicate tight collaboration, mutual dependencies, or closed-loop processes. In social networks, these represent groups of friends; in business processes, they might indicate approval chains or redundancy patterns.
+
+```kusto
+graph("GRAPH_NAME")
+| graph-match (a)-[]->(b)-[]->(c)-[]->(a)
+where a.id != b.id and b.id != c.id and c.id != a.id
+project node1 = a.id, node2 = b.id, node3 = c.id
+| take 5
+```
+
+### Property analysis
+
+Understanding the properties available on your nodes helps you build more sophisticated queries and identify data quality issues.
+
+**Explore node properties**:
+
+This query reveals what information is stored with your nodes, helping you understand the available attributes for filtering and analysis.
+
+```kusto
+graph("GRAPH_NAME")
+| graph-match (node)
+where labels(node) has "DESIRED_LABEL"  // Replace with actual label
+project properties = node.properties
+| take 1
+| project property_names = bag_keys(properties)
+```
+
+**Find nodes with specific property values**:
+
+Use this pattern to locate entities with particular characteristics or to validate data quality by checking for expected property values.
+
+```kusto
+graph("GRAPH_NAME")
+| graph-match (node)
+where isnotnull(node.properties.name)  // Replace 'name' with actual property
+project node_id = node.id, property_value = node.properties.name
+| take 10
+```
+
+> [!TIP]
+> Replace `"GRAPH_NAME"` with the actual graph model name (e.g., "Simple", "LDBC_SNB_Interactive", "BloodHound_Entra", etc.). Some queries may need adjustment based on the specific schema of your graph model.
+
+:::moniker-end
+
 ## Related content
 
 :::moniker range="microsoft-fabric || azure-data-explorer"
+
 - [Graph semantics overview](graph-semantics-overview.md)
 - [Common scenarios for using graph semantics](graph-scenarios.md)
 - [Graph function](graph-function.md)
 - [make-graph operator](make-graph-operator.md)
 - [Graph models overview](../management/graph/graph-model-overview.md)
+
 :::moniker-end
 
 :::moniker range="azure-monitor || microsoft-sentinel"
+
 - [Graph semantics overview](graph-semantics-overview.md)
 - [Common scenarios for using graph semantics](graph-scenarios.md)
 - [make-graph operator](make-graph-operator.md)
+
 :::moniker-end

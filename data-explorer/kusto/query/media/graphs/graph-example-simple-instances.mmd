@@ -1,0 +1,57 @@
+%%{ init: { 'flowchart': {'defaultRenderer': 'elk' } } }%%
+graph TD
+    %% Person nodes (light blue)
+    Alice[Person: Alice] 
+    Bob[Person: Bob]
+    Carol[Person: Carol] 
+    David[Person: David]
+    Emma[Person: Emma]
+    
+    %% Company nodes (light green)
+    TechCorp[Company: TechCorp]
+    DataSoft[Company: DataSoft]
+    CloudInc[Company: CloudInc]
+    
+    %% City nodes (light orange)
+    Seattle[City: Seattle]
+    Portland[City: Portland] 
+    SanFrancisco[City: San Francisco]
+    
+    %% Employment relationships
+    Alice -->|works_at| TechCorp
+    Bob -->|works_at| TechCorp
+    Emma -->|works_at| TechCorp
+    Carol -->|works_at| DataSoft
+    David -->|works_at| CloudInc
+    
+    %% Location relationships - People
+    Alice -->|located_at| Seattle
+    Bob -->|located_at| Seattle
+    Carol -->|located_at| Portland
+    David -->|located_at| SanFrancisco
+    Emma -->|located_at| Portland
+    
+    %% Location relationships - Companies
+    TechCorp -->|located_at| Seattle
+    DataSoft -->|located_at| Portland
+    CloudInc -->|located_at| SanFrancisco
+    
+    %% Social relationships
+    Alice -->|knows| Bob
+    Bob -->|knows| Carol
+    Carol -->|knows| David
+    David -->|knows| Emma
+    
+    %% Likes relationships
+    Alice -.->|likes| David
+    David -.->|likes| Alice
+    Emma -.->|likes| Bob
+    
+    %% Node styling by type
+    classDef personStyle fill:#E1F5FE,stroke:#01579B,stroke-width:2px,color:#000
+    classDef companyStyle fill:#E8F5E8,stroke:#2E7D32,stroke-width:2px,color:#000  
+    classDef cityStyle fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#000
+    
+    class Alice,Bob,Carol,David,Emma personStyle
+    class TechCorp,DataSoft,CloudInc companyStyle
+    class Seattle,Portland,SanFrancisco cityStyle
