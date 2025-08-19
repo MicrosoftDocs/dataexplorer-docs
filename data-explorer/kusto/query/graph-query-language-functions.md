@@ -44,7 +44,7 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `AVG()` | Average value | `avg()` | `RETURN AVG(person.age)` |
 | `COLLECT_LIST()` | Collect values into array | `make_list()` | `RETURN COLLECT_LIST(person.name)` |
 | **Graph Functions** |
-[Labels()](#best-practices)
+| `Labels()` | Show labels for a node or edge | `labels()` | `RETURN labels(entity)` |
 | **String Functions** |
 | `UPPER()` | Convert to uppercase | `toupper()` | `RETURN UPPER(person.name)` |
 | `LOWER()` | Convert to lowercase | `tolower()` | `RETURN LOWER(person.name)` |
