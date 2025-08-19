@@ -27,11 +27,11 @@ groups:
     title: Azure Data Explorer
   - id: azuremonitor
     title: Azure Monitor
-- id: ingest-api-adx-fabric
-  title: Kusto Query Language flavors
+- id: ingest-api
+  title: Ingest API version
   prompt: Select your Ingest API version
   pivots:
   - id: v1
-    title: Ingest v
+    title: Ingest-v1
   - id: v2
-    title: Ingest v2
+    title: Ingest-v2

@@ -5,6 +5,7 @@ ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 07/30/2025
 monikerRange: "azure-data-explorer"
+zone_pivot_groups: ingest-api
 
 #customer intent: To learn about creating an app to get data using queued ingestion.
 ---
@@ -253,6 +254,7 @@ Add the following code:
 
 1. Create a connection string builder object that defines the data ingestion URI, where possible, using the sharing the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
 
+::: zone pivot="Ingest-v1"  
     **Ingest V1**
 
     #### [C\#](#tab/csharp)
@@ -296,7 +298,8 @@ Add the following code:
     ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
     ```
     ---
-
+::: zone-end
+::: zone pivot="Ingest-v2"  
    **Ingest V2 (preview)**
 
    #### [C\#](#tab/csharp)
@@ -322,10 +325,12 @@ Add the following code:
    Not applicable
 
   ---
+:::zone-end
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue.
 
-   **Ingest V1**
+   ::: zone pivot="Ingest-v1"  
+    **Ingest V1**
 
    You use the following objects and properties:
 
@@ -404,6 +409,8 @@ Add the following code:
 
     ---
 
+::: zone-end
+::: zone pivot="Ingest-v2"  
       **Ingest V2 (preview)**
 
    You use the following objects and properties:
@@ -447,6 +454,8 @@ Add the following code:
    Not applicable
 
     ---
+
+:::zone-end
 
 1. Query the number of rows in the table after ingesting the file, and show the last row ingested.
 
@@ -536,6 +545,7 @@ Add the following code:
 
 The complete code should look like this:
 
+::: zone pivot="Ingest-v1"
 **Ingest V1**
 
 #### [C\#](#tab/csharp)
@@ -800,7 +810,8 @@ public class BatchIngestion {
 ```
 
 ---
-
+::: zone-end
+::: zone pivot="Ingest-v2"  
 **Ingest V2 (preview)**
 
 #### [C\#](#tab/csharp)
@@ -892,6 +903,7 @@ Not applicable
 Not applicable
 
 ---
+::: zone-end
 
 ## Run your app
 
@@ -1038,6 +1050,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
 1. Set the ingestion properties to not ignore the first record as the in-memory string doesn't have a header row.
 
+::: zone pivot="Ingest-v1"
    **Ingest V1**
 
    #### [C\#](#tab/csharp)
@@ -1067,7 +1080,8 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ```
 
     ---
-
+::: zone-end
+::: zone pivot="Ingest-v2"  
    **Ingest V2 (preview)**
 
    #### [C\#](#tab/csharp)
@@ -1091,9 +1105,11 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
    Not applicable
 
    ---
+::: zone-end
 
 1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
 
+::: zone pivot="Ingest-v1"  
     **Ingest V1**
 
    #### [C\#](#tab/csharp)
@@ -1125,6 +1141,8 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ```
    ---
 
+::: zone-end
+::: zone pivot="Ingest-v2" 
      **Ingest V2 (preview)**
 
    #### [C\#](#tab/csharp)
@@ -1150,9 +1168,10 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
    Not applicable
 
    ---
+::: zone-end
 
 An outline of the updated code should look like this:
-
+::: zone pivot="Ingest-v1"  
 **Ingest V1**
 
 #### [C\#](#tab/csharp)
@@ -1312,7 +1331,8 @@ public class BatchIngestion {
 ```
 
 ---
-
+::: zone-end
+::: zone pivot="Ingest-v2"  
 **Ingest V2 (preview)**
 
 #### [C\#](#tab/csharp)
@@ -1364,6 +1384,7 @@ Not applicable
 Not applicable
 
 ---
+::: zone-end
 
 When you run the app, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by one.
 
@@ -1426,6 +1447,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
 3. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
 
+    ::: zone pivot="Ingest-v1"
    **Ingest V1**
    
       #### [C\#](#tab/csharp)
@@ -1469,7 +1491,9 @@ For example, you can modify the app replacing the *ingest from memory* code with
       ```
    
      ---
-   
+
+    ::: zone-end
+   ::: zone pivot="Ingest-v2"  
    **Ingest V2 (preview)**
       
       #### [C\#](#tab/csharp)
@@ -1496,6 +1520,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
 An outline of the updated code should look like this:
 
+::: zone pivot="Ingest-v1"  
 **Ingest V1**
 
 #### [C\#](#tab/csharp)
@@ -1647,6 +1672,8 @@ public class BatchIngestion {
 
 ---
 
+::: zone-end
+::: zone pivot="Ingest-v2"  
 **Ingest V2 (preview)**
 
 #### [C\#](#tab/csharp)
@@ -1698,6 +1725,7 @@ Not applicable
 Not applicable
 
 ---
+::: zone-end
 
 When you run the app, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by 1,000.
 

@@ -5,6 +5,7 @@ ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 02/03/2025
 monikerRange: "azure-data-explorer"
+zone_pivot_groups: ingest-api
 
 # customer intent: To learn about creating an app to ingest data using Kusto’s managed streaming ingestion client.
 
