@@ -10,13 +10,13 @@ ms.date: 08/14/2025
 
 # Graph sample datasets and examples
 
-This page lists existing graphs on our help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) in the "Samples" database and shows how to query them with KQL. These examples demonstrate querying pre-built graph models without requiring any creation or setup steps.
+This page lists existing graphs on our help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) in the **Samples** database and shows how to query them with KQL. These examples demonstrate querying pre-built graph models without requiring any creation or setup steps. In the help cluster, browse to **help** > **Samples** > **Tables** > **Graphs**.
 
 ## Usage notes
 
 Use `graph("ModelName")` with the model name to reference existing graphs.
 
-## Simple
+## Simple sample graph
 
 **Purpose**: Basic graph operations and learning fundamental graph query patterns.
 
@@ -216,8 +216,6 @@ graph("LDBC_SNB_Interactive")
 **Graph Schema Overview**:
 
 :::image type="content" source="media/graphs/graph-example-ldbc-financial-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC Financial dataset":::
-
-**Schema and Counts**:
 
 **Schema and Counts**:
 

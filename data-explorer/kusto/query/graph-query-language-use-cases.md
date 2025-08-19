@@ -1,6 +1,6 @@
 ---
-title: GQL Query Patterns, Examples, and Use Cases in Azure Data Explorer
-description: GQL query patterns for Azure Data Explorer. Find out how to use MATCH, WHERE, and RETURN clauses to analyze graph relationships. GQL use cases in Azure Data Explorer. See how to build queries for security, social networks, and organizational analysis with step-by-step examples.
+title: GQL Query Patterns, Examples, and Use Cases
+description: GQL query patterns, examples, and common use case scenarios. Find out how to use MATCH, WHERE, and RETURN clauses to analyze graph relationships. GQL use cases in Azure Data Explorer. See how to build queries for security, social networks, and organizational analysis with step-by-step examples.
 ms.reviewer: herauch
 ms.topic: reference
 ms.date: 08/14/2025
@@ -11,13 +11,13 @@ ms.date: 08/14/2025
 
 This article gives Graph Query Language examples focusing on core query patterns, and shows common real world use cases for GQL in Azure Data Explorer using realistic graph schemas and queries.
 
-GQL in Azure Data Explorer uses standard GQL syntax for graph pattern matching. The following examples show the GQL syntax supported in Azure Data Explorer, from simple to complex patterns.
+The following examples show the GQL syntax supported in KQL, from simple to complex patterns.
 
 > [NOTE!]
 > 
-> Before you try these examples, set up your environment to use GQL. See [Getting Started](graph-query-language.md#getting-started) for details.
+> Before you try these examples, set up your environment to use GQL. See [Getting Started](graph-query-language.md#getting-started) for details. Ensure you set the client request properties to use GQL, and set the graph reference function to your graph data source.
 > 
-> GQL support in Azure Data Explorer is in preview. Features and syntax can change based on feedback and ongoing development.
+> GQL support is in **preview**. Features and syntax can change based on feedback and ongoing development.
 
 ## Core GQL query patterns
 
@@ -31,9 +31,11 @@ GQL in Azure Data Explorer uses standard GQL syntax for graph pattern matching. 
 
 * [Complex multi-pattern queries](#examples-with-complex-multi-patterns): Use complex multi-pattern queries to combine multiple patterns and filters in a single statement, so you can do sophisticated graph analysis.
 
-## Examples with MATCH
+For a full list of supported GQL functions and operators, see [Graph Query Language Functions in Azure Data Explorer](graph-query-language-functions.md).
 
-### Basic pattern matching without variables
+## Basic pattern matching
+
+## Basic pattern matching without variables
 
 The simplest pattern matches any relationship without referencing the matched values.
 
@@ -56,6 +58,8 @@ RETURN COUNT(*)
 ```
 
 `n` represents the source node, `e` represents the _directed_ edge, and `n2` represents the target node. You reference these variables to access properties, but in this example you're still just counting matches.
+
+## Node properties
 
 ### Access node properties
 
@@ -102,6 +106,8 @@ This query matches only nodes with the "Person" label and returns their names, l
 | David      |
 | Emma       |
 
+## Edge properties
+
 ### Filter by edge labels
 
 <!-- csl -->
@@ -138,7 +144,7 @@ This query finds Person nodes connected to other Person nodes through "knows" re
 | Carol    | David    |
 | David    | Emma     |
 
-### Filter by properties with WHERE
+## Filter by properties with WHERE
 
 Use WHERE clauses to filter based on property values.
 
@@ -151,7 +157,7 @@ RETURN person.name, person.properties.age
 
 This query finds people over 25 years old and returns their names and ages. The WHERE clause filters the matched nodes by the age property.
 
-#### Inline property filters
+### Inline property filters
 
 Filter by properties directly in the pattern using inline conditions.
 
@@ -201,9 +207,7 @@ RETURN DISTINCT connected.name
 
 This query finds all nodes you can reach from Alice through paths of one or more hops. The `{1,}` quantifier means "one or more hops."
 
-## Examples with WHERE
-
-### Basic property filtering
+## Basic property filtering
 
 Filter nodes based on a single property condition:
 
@@ -315,9 +319,7 @@ RETURN person.name, person.properties.age
 
 This query finds people who are over 30 years old or have 'a' in their name.
 
-## Examples with RETURN
-
-### Return specific properties
+## Return specific properties
 
 Return individual properties from matched nodes.
 
@@ -436,7 +438,7 @@ This query returns only the first five people over 25 years old, ordered by age.
 
 **Comparable KQL:** Similar to KQL `project`, `summarize`, `sort`, and `take` operators.
 
-## Examples with advanced patterns
+## Advanced patterns examples
 
 Advanced patterns let you match complex graph structures and label combinations.
 
@@ -538,7 +540,7 @@ This query creates a named path variable `full_path` that captures a two-hop pat
 
 **Comparable KQL:** Uses advanced `graph-match` operator features for complex pattern matching.
 
-## Examples with complex multi-patterns
+## Complex multi-pattern examples
 
 #### Cross-town *likes* with company filter
 

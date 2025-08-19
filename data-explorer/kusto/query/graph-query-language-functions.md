@@ -14,6 +14,12 @@ Graph Query Language (GQL) is a powerful language for querying graph data in Azu
 > [!NOTE]
 > GQL support in Azure Data Explorer is currently in preview. Features and syntax can change based on feedback and ongoing development.
 
+> [!TIP]
+>
+> GQL uses standardized syntax for graph operations. Many GQL functions work like KQL functions, but use different syntax and operators.
+>
+> Use GQL for standardized graph pattern matching, and combine it with KQL operators for more data processing options.
+
 ## Core GQL functions and operators
 
 This table lists the core GQL functions and operators, along with their Kusto Query Language (KQL) equivalents and examples.
@@ -38,7 +44,7 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `AVG()` | Average value | `avg()` | `RETURN AVG(person.age)` |
 | `COLLECT_LIST()` | Collect values into array | `make_list()` | `RETURN COLLECT_LIST(person.name)` |
 | **Graph Functions** |
-| `labels()` | Get labels of a node or edge | Custom graph function. See the details in [Labels() (GQL function)](#labels-gql-function) | `RETURN labels(person)` |
+| `labels()` | Get labels of a node or edge | Custom graph function. See the details in [Labels()](#labels-custom-gql-function) | `RETURN labels(person)` |
 | **String Functions** |
 | `UPPER()` | Convert to uppercase | `toupper()` | `RETURN UPPER(person.name)` |
 | `LOWER()` | Convert to lowercase | `tolower()` | `RETURN LOWER(person.name)` |
@@ -63,7 +69,49 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `|` (OR) | Label union | Label alternatives | `MATCH (n:Person | Movie)` |
 | `!` (NOT) | Label negation | Negative label filter | `MATCH (p:!Female)` |
 
-## Labels() (Custom GQL function)
+## Best practices
+
+- KQL supports dynamic types, but GQL does not clearly define how these should be handled. To avoid runtime errors, explicitly cast nested fields to their expected type (see `CAST`).
+
+- Because GQL runs on KQL, some operations inherit KQL semantics. For instance, `COLLECT_LIST` (the GQL equivalent of `make_list`) will flatten arrays if the field is already an array. If results differ from expectations, consult the KQL documentation for the equivalent function.
+
+## Performance optimization
+
+Use these strategies to optimize GQL query performance in production environments:
+
+> [!TIP]
+> Start with simple patterns, then increase complexity if needed. Monitor query performance, and adjust path lengths and filters to improve results.
+
+**Limit path matching scope**:
+
+- Use specific label filters to reduce the search space: `MATCH (start:SpecificType)` instead of `MATCH (start)`
+- Limit variable length paths with reasonable bounds: `MATCH (a)-[]->{1,3}(b)` instead of unbounded paths
+- Apply `WHERE` clauses early to filter results before expensive operations.
+
+**Use COUNT(*) for existence checks**:
+
+If you only need to check if a pattern exists, use `COUNT(*)` instead of returning full results.
+
+```gql
+MATCH (user:User)-[:SUSPICIOUS_ACTIVITY]->(target)
+WHERE user.id = 'user123'
+RETURN COUNT(*) > 0 AS HasSuspiciousActivity
+```
+
+## Limitations
+
+- **Reserved keywords**: Some GQL keywords can't be used as identifiers in queries. Some reserved keywords aren't immediately obvious (for example, `DATE` is a reserved keyword). If your graph data has property names that conflict with GQL reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
+
+    > [!IMPORTANT]
+    > When you design your graph schema, some common property names might conflict with GQL reserved keywords. Avoid or rename these property names.
+
+- **No `INSERT`/`CREATE` support**: GQL in Azure Data Explorer doesn't support `INSERT` or `CREATE` operations to change graph structures. Instead, use KQL's [`make-graph`](make-graph-operator.md) operator or [graph snapshots](graph-operators.md) to create and manage graph structures. Use KQL for all graph creation, change, and management tasks.
+
+- **Optional matches not supported**: GQL's `OPTIONAL MATCH` clause isn't supported in Azure Data Explorer. All pattern matches are required. To get similar results, use separate queries or KQL operators for optional relationships.
+
+- **Entity equivalence checks not supported**: GQL's`(MATCH (n)-[]-(n2) WHERE n1 <> n2)` is not supported. Use explicit field comparisons instead, for example, `n.id <> n2.id`.
+ 
+## Labels() custom GQL function
 
 The `labels()` function shows the labels for a node or edge as an array.
 
@@ -118,13 +166,7 @@ This query shows node names, their labels, and the labels of connecting edges.
 | web-server | ["System"] | ["CAN_ACCESS"] | database |
 | domain-controller | ["System"] | ["CAN_ACCESS"] | database |
 
-> [!NOTE]
-> GQL uses standardized syntax for graph operations. Many GQL functions work like KQL functions, but use different syntax and operators.
-
-> [!TIP]
-> Use GQL for standardized graph pattern matching, and combine it with KQL operators for more data processing options.
-
 ## Related Context
 
-* [Graph Query Language (GQL) in Azure Data Explorer](graph-query-language.md)
+* [Graph Query Language (GQL)](graph-query-language.md)
 * [Graph Query Language (GQL) use cases](graph-query-language-use-cases.md)
