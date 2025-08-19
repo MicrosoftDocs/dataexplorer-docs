@@ -29,9 +29,9 @@ groups:
     title: Azure Monitor
 - id: ingest-api
   title: Ingest API version
-  prompt: Select your Ingest API version
+  prompt: Select Ingest API version
   pivots:
-  - id: v1
-    title: Ingest-v1
-  - id: v2
-    title: Ingest-v2
+  - id: latest
+    title: latest
+  - id: preview
+    title: preview
