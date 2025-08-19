@@ -16,7 +16,7 @@ This page lists existing graphs on our help cluster at [https://help.kusto.windo
 
 Use `graph("ModelName")` with the model name to reference existing graphs.
 
-## Simple sample graph
+## Simple
 
 **Purpose**: Basic graph operations and learning fundamental graph query patterns.
 
