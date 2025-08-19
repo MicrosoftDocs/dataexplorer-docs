@@ -110,7 +110,7 @@ RETURN COUNT(*) > 0 AS HasSuspiciousActivity
 - **Optional matches not supported**: GQL's `OPTIONAL MATCH` clause isn't supported in Azure Data Explorer. All pattern matches are required. To get similar results, use separate queries or KQL operators for optional relationships.
 
 - **Entity equivalence checks not supported**: GQL's`(MATCH (n)-[]-(n2) WHERE n1 <> n2)` is not supported. Use explicit field comparisons instead, for example, `n.id <> n2.id`.
- 
+
 ## Labels() custom GQL function
 
 The `labels()` function shows the labels for a node or edge as an array.

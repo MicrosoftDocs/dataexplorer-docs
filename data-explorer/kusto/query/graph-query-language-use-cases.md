@@ -21,15 +21,15 @@ The following examples show the GQL syntax supported in KQL, from simple to comp
 
 ## Core GQL query patterns
 
-* [MATCH](#examples-with-match): The `MATCH` clause defines the graph patterns you want to find. Start with basic patterns and build complexity gradually. Similar functionality is available using the `graph-match` operator in KQL.
+* [MATCH](#basic-pattern-matching): The `MATCH` clause defines the graph patterns you want to find. Start with basic patterns and build complexity gradually. Similar functionality is available using the `graph-match` operator in KQL.
 
-* [WHERE](#examples-with-where): Use standard comparison and logical operators similar to KQL `where` clauses. `WHERE` clauses filter patterns based on node and edge properties. They work like KQL or SQL WHERE clauses but operate on graph patterns.
+* [WHERE](#filter-by-properties-with-where): Use standard comparison and logical operators similar to KQL `where` clauses. `WHERE` clauses filter patterns based on node and edge properties. They work like KQL or SQL WHERE clauses but operate on graph patterns.
 
-* [RETURN](#examples-with-return): Use `RETURN` statements to project results from matched patterns. They specify what data to output from your graph query.
+* [RETURN](#return-specific-properties)): Use `RETURN` statements to project results from matched patterns. They specify what data to output from your graph query.
 
-[Advanced patterns](#advanced-patterns-examples)
+* [Advanced patterns](#advanced-patterns-examples)
 
-[Complex multi-pattern queries](#complex-multi-pattern-examples)
+* [Complex multi-pattern queries](#complex-multi-pattern-examples)
 
 For a full list of supported GQL functions and operators, see [Graph Query Language Functions in Azure Data Explorer](graph-query-language-functions.md).
 
@@ -58,8 +58,6 @@ RETURN COUNT(*)
 ```
 
 `n` represents the source node, `e` represents the _directed_ edge, and `n2` represents the target node. You reference these variables to access properties, but in this example you're still just counting matches.
-
-## Node properties
 
 ### Access node properties
 
@@ -105,8 +103,6 @@ This query matches only nodes with the "Person" label and returns their names, l
 | Carol      |
 | David      |
 | Emma       |
-
-## Edge properties
 
 ### Filter by edge labels
 
@@ -542,7 +538,7 @@ This query creates a named path variable `full_path` that captures a two-hop pat
 
 ## Complex multi-pattern examples
 
-#### Cross-town *likes* with company filter
+### Cross-town *likes* with company filter
 
 This example combines multiple patterns and filters in one statement:
 
