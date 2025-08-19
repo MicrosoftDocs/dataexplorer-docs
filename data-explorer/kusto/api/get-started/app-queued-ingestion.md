@@ -254,7 +254,7 @@ Add the following code:
 
 1. Create a connection string builder object that defines the data ingestion URI, where possible, using the sharing the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
 
-::: zone pivot="Ingest-v1"  
+::: zone pivot="v1"  
     **Ingest V1**
 
     #### [C\#](#tab/csharp)
@@ -299,7 +299,7 @@ Add the following code:
     ```
     ---
 ::: zone-end
-::: zone pivot="Ingest-v2"  
+::: zone pivot="v2"  
    **Ingest V2 (preview)**
 
    #### [C\#](#tab/csharp)
@@ -329,7 +329,7 @@ Add the following code:
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue.
 
-   ::: zone pivot="Ingest-v1"  
+   ::: zone pivot="v1"  
     **Ingest V1**
 
    You use the following objects and properties:
@@ -410,7 +410,7 @@ Add the following code:
     ---
 
 ::: zone-end
-::: zone pivot="Ingest-v2"  
+::: zone pivot="v2"  
       **Ingest V2 (preview)**
 
    You use the following objects and properties:
@@ -811,7 +811,7 @@ public class BatchIngestion {
 
 ---
 ::: zone-end
-::: zone pivot="Ingest-v2"  
+::: zone pivot="v2"  
 **Ingest V2 (preview)**
 
 #### [C\#](#tab/csharp)
@@ -1081,7 +1081,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
     ---
 ::: zone-end
-::: zone pivot="Ingest-v2"  
+::: zone pivot="v2"  
    **Ingest V2 (preview)**
 
    #### [C\#](#tab/csharp)
@@ -1109,7 +1109,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
 1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
 
-::: zone pivot="Ingest-v1"  
+::: zone pivot="v1"  
     **Ingest V1**
 
    #### [C\#](#tab/csharp)
@@ -1171,7 +1171,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 ::: zone-end
 
 An outline of the updated code should look like this:
-::: zone pivot="Ingest-v1"  
+::: zone pivot="v1"  
 **Ingest V1**
 
 #### [C\#](#tab/csharp)
@@ -1332,7 +1332,7 @@ public class BatchIngestion {
 
 ---
 ::: zone-end
-::: zone pivot="Ingest-v2"  
+::: zone pivot="v2"  
 **Ingest V2 (preview)**
 
 #### [C\#](#tab/csharp)
@@ -1493,7 +1493,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
      ---
 
     ::: zone-end
-   ::: zone pivot="Ingest-v2"  
+   ::: zone pivot="v2"  
    **Ingest V2 (preview)**
       
       #### [C\#](#tab/csharp)
@@ -1520,7 +1520,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
 An outline of the updated code should look like this:
 
-::: zone pivot="Ingest-v1"  
+::: zone pivot="v1"  
 **Ingest V1**
 
 #### [C\#](#tab/csharp)
@@ -1673,7 +1673,7 @@ public class BatchIngestion {
 ---
 
 ::: zone-end
-::: zone pivot="Ingest-v2"  
+::: zone pivot="v2"  
 **Ingest V2 (preview)**
 
 #### [C\#](#tab/csharp)
