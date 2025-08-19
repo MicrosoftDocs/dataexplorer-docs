@@ -27,9 +27,9 @@ The following examples show the GQL syntax supported in KQL, from simple to comp
 
 * [RETURN](#examples-with-return): Use `RETURN` statements to project results from matched patterns. They specify what data to output from your graph query.
 
-* [Advanced patterns](#examples-with-advanced-patterns)
+[Advanced patterns](#advanced-patterns-examples)
 
-* [Complex multi-pattern queries](#examples-with-complex-multi-patterns): Use complex multi-pattern queries to combine multiple patterns and filters in a single statement, so you can do sophisticated graph analysis.
+[Complex multi-pattern queries](#complex-multi-pattern-examples)
 
 For a full list of supported GQL functions and operators, see [Graph Query Language Functions in Azure Data Explorer](graph-query-language-functions.md).
 
