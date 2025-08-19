@@ -366,7 +366,7 @@ if (dataReaderSource.HasDataRemaining)
 await client.IngestAsync(successes, database, table, props);
 ```
 
-Related content:
+## Related content:
 
 * [Create an app to get data using queued ingestion](../get-started/app-queued-ingestion.md)
 * [Stream data for ingestion](../get-started/app-managed-streaming-ingest.md)
