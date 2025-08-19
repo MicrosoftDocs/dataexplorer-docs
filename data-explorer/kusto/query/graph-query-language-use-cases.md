@@ -13,7 +13,7 @@ This article gives Graph Query Language examples focusing on core query patterns
 
 The following examples show the GQL syntax supported in KQL, from simple to complex patterns.
 
-> [NOTE!]
+> [!NOTE]
 > 
 > Before you try these examples, set up your environment to use GQL. See [Getting Started](graph-query-language.md#getting-started) for details. Ensure you set the client request properties to use GQL, and set the graph reference function to your graph data source.
 > 
@@ -21,7 +21,7 @@ The following examples show the GQL syntax supported in KQL, from simple to comp
 
 ## Core GQL query patterns
 
-* [MATCH](#basic-pattern-matching): The `MATCH` clause defines the graph patterns you want to find. Start with basic patterns and build complexity gradually. Similar functionality is available using the `graph-match` operator in KQL.
+[MATCH](#basic-pattern-matching-examples)
 
 * [WHERE](#filter-by-properties-with-where): Use standard comparison and logical operators similar to KQL `where` clauses. `WHERE` clauses filter patterns based on node and edge properties. They work like KQL or SQL WHERE clauses but operate on graph patterns.
 
@@ -33,9 +33,9 @@ The following examples show the GQL syntax supported in KQL, from simple to comp
 
 For a full list of supported GQL functions and operators, see [Graph Query Language Functions in Azure Data Explorer](graph-query-language-functions.md).
 
-## Basic pattern matching
+## Basic pattern matching examples
 
-## Basic pattern matching without variables
+### Basic pattern matching without variables
 
 The simplest pattern matches any relationship without referencing the matched values.
 
@@ -140,7 +140,7 @@ This query finds Person nodes connected to other Person nodes through "knows" re
 | Carol    | David    |
 | David    | Emma     |
 
-## Filter by properties with WHERE
+### Filter by properties with WHERE
 
 Use WHERE clauses to filter based on property values.
 
@@ -315,7 +315,7 @@ RETURN person.name, person.properties.age
 
 This query finds people who are over 30 years old or have 'a' in their name.
 
-## Return specific properties
+### Return specific properties
 
 Return individual properties from matched nodes.
 
