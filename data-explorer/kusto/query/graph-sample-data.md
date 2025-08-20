@@ -2,7 +2,6 @@
 title: Graph sample datasets and examples
 description: Graph examples with detailed descriptions, use cases, and visualizations
 ms.topic: conceptual
-ms.service: azure-data-explorer
 ms.author: herauch
 author: cosh
 ms.date: 08/14/2025
@@ -10,7 +9,7 @@ ms.date: 08/14/2025
 
 # Graph sample datasets and examples
 
-This page lists existing graphs on our help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) in the **Samples** database and shows how to query them with KQL. These examples demonstrate querying pre-built graph models without requiring any creation or setup steps.
+This page lists existing graphs on our help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) in the **Samples** database and shows how to query them using the Kusto Query Language (KQL). These examples demonstrate querying prebuilt graph models without requiring any creation or setup steps.
 
 ## Simple educational graph for learning fundamentals
 
@@ -141,7 +140,7 @@ Usage: `graph("LDBC_SNB_Interactive")`
   - `REPLY_OF` - Comment threading: comment-to-comment (76,787) + comment-to-post (74,256) = 151,043 edges
   - `WORK_AT` / `STUDY_AT` - Professional/educational history (4,522 edges)
   - `HAS_INTEREST` - Personal interests (35,475 edges)
-  - Additional relationships: `HAS_MODERATOR`, `IS_PART_OF`, `CONTAINER_OF`, `HAS_TYPE`, `IS_SUBCLASS_OF`
+  - Other relationships: `HAS_MODERATOR`, `IS_PART_OF`, `CONTAINER_OF`, `HAS_TYPE`, `IS_SUBCLASS_OF`
 
 **Graph Instance Example**:
 
@@ -259,10 +258,6 @@ Usage: `graph("LDBC_Financial")`
   - `REPAY` - Loan repayments (2,747 edges)
   - `SIGN_IN` - Authentication events (2,489 edges)
 
-**Graph Schema Overview**:
-
-:::image type="content" source="media/graphs/graph-example-ldbc-financial-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC Financial dataset":::
-
 **Graph Instance Example**:
 
 This example illustrates a complex financial network with multiple entity types and transaction patterns, demonstrating how financial institutions can model relationships between customers, accounts, loans, and transaction flows for fraud detection and risk assessment.
@@ -332,16 +327,16 @@ graph("LDBC_Financial")
 |Company::4398046511208|366243272|8|
 |Person::19791209300551|338838223|6|
 
-## BloodHound Entra ID dataset
+## BloodHound Entra dataset
 
 Usage: `graph("BloodHound_Entra")`
 
-**Purpose**: Azure Active Directory privilege escalation and attack path analysis.
+**Purpose**: Microsoft Entra privilege escalation and attack path analysis.
 
 > [!NOTE]
 > This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the [BloodHound project](https://bloodhound.specterops.io/).
 
-**Description**: BloodHound Community Edition dataset for Azure Active Directory environments. This comprehensive security dataset contains 13,526 Azure AD objects including users, groups, applications, service principals, devices, and various cloud resources. With over 800,000 permission relationships and security edges, it models complex Azure AD environments typical of enterprise organizations. The dataset captures detailed Azure AD permissions, role assignments, group memberships, and resource ownership patterns essential for identifying privilege escalation paths and attack vectors in cloud environments.
+**Description**: BloodHound dataset for Microsoft Entra environments. This comprehensive security dataset contains 13,526 Microsoft Entra objects including users, groups, applications, service principals, devices, and various cloud resources. With over 800,000 permission relationships and security edges, it models complex Microsoft Entra environments typical of enterprise organizations. The dataset captures detailed Microsoft Entra permissions, role assignments, group memberships, and resource ownership patterns essential for identifying privilege escalation paths and attack vectors in cloud environments.
 
 **Use Cases**:
 
@@ -361,15 +356,15 @@ Usage: `graph("BloodHound_Entra")`
 > [!NOTE]
 > This dataset is provided under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The BloodHound datasets are created by the BloodHound Community Edition project.
 
-**Description**: BloodHound Community Edition dataset for Azure Active Directory environments. This comprehensive security dataset contains 13,526 Azure AD objects including users, groups, applications, service principals, devices, and various cloud resources. With over 800,000 permission relationships and security edges, it models complex Azure AD environments typical of enterprise organizations. The dataset captures detailed Azure AD permissions, role assignments, group memberships, and resource ownership patterns essential for identifying privilege escalation paths and attack vectors in cloud environments.
+**Description**: BloodHound Community Edition dataset for Microsoft Entra environments. This comprehensive security dataset contains 13,526 Microsoft Entra objects including users, groups, applications, service principals, devices, and various cloud resources. With over 800,000 permission relationships and security edges, it models complex Microsoft Entra environments typical of enterprise organizations. The dataset captures detailed Microsoft Entra permissions, role assignments, group memberships, and resource ownership patterns essential for identifying privilege escalation paths and attack vectors in cloud environments.
 
 **Schema and Counts**:
 
 - **Primary Node Types**:
-  - `AZUser` - Azure AD users (230 nodes)
+  - `AZUser` - Microsoft Entra users (230 nodes)
   - `AZServicePrincipal` - Service principals and applications (6,270 nodes)
   - `AZApp` - Azure applications (6,648 nodes)
-  - `AZGroup` - Azure AD groups (58 nodes)
+  - `AZGroup` - Microsoft Entra groups (58 nodes)
   - `AZDevice` - Managed devices (47 nodes)
 
 - **Azure Resource Types**:
@@ -388,13 +383,9 @@ Usage: `graph("BloodHound_Entra")`
   - `AZMemberOf` - Group membership relationships (4,439 edges)
   - `AZOwns` - Resource ownership (2,870 edges)
 
-**Graph Schema Overview**:
-
-:::image type="content" source="media/graphs/graph-example-bloodhound-entra-schema.png" alt-text="A schema of a graph containing nodes and relations from the BloodHound Entra dataset":::
-
 **Graph Instance Example**:
 
-This example demonstrates Azure Active Directory and Entra identity relationships with complex privilege structures and potential attack paths in a cloud environment.
+This example demonstrates Microsoft Entra and Entra identity relationships with complex privilege structures and potential attack paths in a cloud environment.
 
 :::image type="content" source="media/graphs/graph-example-bloodhound-entra-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound Entra dataset":::
 
@@ -411,7 +402,7 @@ This example demonstrates Azure Active Directory and Entra identity relationship
 
 Find paths to administrative privileges:
 
-This query identifies privilege escalation paths from regular users to administrative groups in Azure AD environments. It searches for users who can reach admin groups (like AAD DC Administrators, DnsAdmins, etc.) through 1-3 relationship hops, helping security teams understand potential attack paths and privilege escalation risks.
+This query identifies privilege escalation paths from regular users to administrative groups in Microsoft Entra environments. It searches for users who can reach admin groups (like Microsoft Entra DC Administrators, DnsAdmins, etc.) through 1-3 relationship hops, helping security teams understand potential attack paths and privilege escalation risks.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -544,7 +535,7 @@ This example demonstrates on-premises Active Directory attack paths and potentia
 
 Find potential privilege escalation:
 
-This query counts how many non-admin users can potentially escalate to admin in Azure AD. It traverses up to 10 MemberOf group hops (no cycles) from each user to groups that grant dangerous permissions (GenericAll, WriteDacl, WriteOwner, ForceChangePassword) over admin users (admincount=true), then returns the distinct number of such “potential attacker” users.
+This query counts how many non-admin users can potentially escalate to admin in Microsoft Entra. It traverses up to 10 MemberOf group hops (no cycles) from each user to groups that grant dangerous permissions (GenericAll, WriteDacl, WriteOwner, ForceChangePassword) over admin users (admincount=true), then returns the distinct number of such “potential attacker” users.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -570,7 +561,7 @@ graph("BloodHound_AD")
 
 Find Golden Certificate attack paths:
 
-This query identifies entities that can perform Golden Certificate attacks, which allow attackers to forge certificates as any user in the domain. These are extremely critical vulnerabilities as they enable complete domain compromise by allowing the attacker to impersonate any user, including domain administrators, through forged certificates.
+This query identifies entities that can perform Golden Certificate attacks, which allow attackers to forge certificates as any user in the domain. These are critical vulnerabilities as they enable complete domain compromise by allowing the attacker to impersonate any user, including domain administrators, through forged certificates.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
