@@ -1,5 +1,5 @@
 ---
-title: Graph sample queries
+title: Graph exploration basics
 description: Reusable Kusto Query Language (KQL) query patterns for exploring and analyzing graphs with graph semantics.
 ms.reviewer: herauch
 ms.topic: how-to
@@ -7,7 +7,7 @@ ms.date: 08/21/2025
 # Customer intent: As a data analyst, I want ready-to-run KQL graph queries to explore graph datasets quickly.
 ---
 
-# Graph sample queries
+# Graph exploration basics
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 

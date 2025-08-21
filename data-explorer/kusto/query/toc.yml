@@ -1282,8 +1282,8 @@ items:
         href: graph-semantics-overview.md
       - name: Graph sample data
         href: graph-sample-data.md
-      - name: Graph sample queries
-        href: graph-sample-queries.md
+      - name: Graph exploration basics
+        href: graph-exploration-basics.md
       - name: Graph operators
         items:
           - name: Graph operators overview
