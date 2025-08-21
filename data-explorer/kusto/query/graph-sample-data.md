@@ -599,6 +599,7 @@ graph("BloodHound_AD")
 
 ## Related content
 
+- [Graph exploration basics](./graph-exploration-basics.md)
 - [Graph semantics overview](./graph-semantics-overview.md)
 - [Graph operators](./graph-operators.md)
 - [Graph best practices](./graph-best-practices.md)
