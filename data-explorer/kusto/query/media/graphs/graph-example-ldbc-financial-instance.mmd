@@ -1,0 +1,42 @@
+%%{ init: { 'flowchart': {'defaultRenderer': 'elk' } } }%%
+graph TD
+    %% Connected Financial Network - Real People and Entities
+    HOUSE[House<br/>Person ID: 467<br/>Female, Born 1995]
+    BARKER[Barker<br/>Person ID: 6597069767083<br/>Transfer Recipient]
+    
+    %% Real Accounts (fully connected)
+    ACC1[Renato Holness<br/>Account: 4619004367821865972<br/>House's Main Account]
+    ACC2[Luis Thies<br/>Account: 4687121312185844640<br/>Barker's Account]
+    ACC3[Daniel Joye<br/>Account: 4786200503987995554<br/>Barker's Second Account]
+    
+    %% Real Loan and Mediums
+    LOAN1[Debt Consolidation Loan<br/>ID: 4843058449283547765<br/>Amount: $63.5M]
+    MEDIUM1[IPv6 Medium<br/>ID: 4398046511850<br/>Risk: Very High]
+    MEDIUM2[Phone Medium<br/>ID: 30786325577800<br/>Risk: Severe]
+    
+    %% Validated Connected Relationships
+    HOUSE -->|OWN| ACC1
+    BARKER -->|OWN| ACC2
+    BARKER -->|OWN| ACC3
+    HOUSE -->|APPLY| LOAN1
+    
+    %% Financial Transaction Flow
+    ACC1 -->|TRANSFER<br/>$4.3M| ACC2
+    ACC1 -->|TRANSFER<br/>$9.7M| ACC3
+    LOAN1 -->|DEPOSIT<br/>$7.2M| ACC1
+    ACC1 -->|REPAY<br/>$7.4M| LOAN1
+    
+    %% Authentication Access
+    MEDIUM1 -->|SIGN_IN| ACC2
+    MEDIUM2 -->|SIGN_IN| ACC3
+    
+    %% Styling
+    classDef person fill:#e1f5fe,stroke:#0277bd,stroke-width:3px
+    classDef account fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef loan fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef medium fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    
+    class HOUSE,BARKER person
+    class ACC1,ACC2,ACC3 account
+    class LOAN1 loan
+    class MEDIUM1,MEDIUM2 medium
