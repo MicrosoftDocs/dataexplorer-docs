@@ -28,7 +28,7 @@ Usage: `graph("Simple")`
 
 **Schema Relationships**:
 
-:::image type="content" source="media/graphs/graph-example-simple-schema.png" alt-text="A schema of a graph containing people, companies, and cities with various relationships":::
+:::image type="content" source="media/graphs/graph-example-simple-schema.png" alt-text="A schema of a graph containing people, companies, and cities with various relationships.":::
 
 **Schema and Counts**:
 
@@ -47,7 +47,7 @@ Usage: `graph("Simple")`
 
 This example demonstrates basic graph relationships in a small, easy-to-understand network showing how people connect to companies and cities through various relationship types.
 
-:::image type="content" source="media/graphs/graph-example-simple-instances.png" alt-text="A graph containing instances of people, companies, and cities with various relationships":::
+:::image type="content" source="media/graphs/graph-example-simple-instances.png" alt-text="A graph containing instances of people, companies, and cities with various relationships.":::
 
 **Example Queries**:
 
@@ -112,7 +112,7 @@ Usage: `graph("LDBC_SNB_Interactive")`
 
 **Graph Schema Overview**:
 
-:::image type="content" source="media/graphs/graph-example-ldbc-snb-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC SNB dataset":::
+:::image type="content" source="media/graphs/graph-example-ldbc-snb-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC SNB dataset.":::
 
 **Schema and Counts**:
 
@@ -146,7 +146,7 @@ Usage: `graph("LDBC_SNB_Interactive")`
 
 This example demonstrates complex social network interactions in a realistic social media environment, showing how users engage with content, participate in forums, and form social connections.
 
-:::image type="content" source="media/graphs/graph-example-ldbc-snb-instances.png" alt-text="A graph containing a sample subgraph of the LDBC SNB dataset":::
+:::image type="content" source="media/graphs/graph-example-ldbc-snb-instances.png" alt-text="A graph containing a sample subgraph of the LDBC SNB dataset.":::
 
 This example demonstrates:
 
@@ -236,7 +236,7 @@ Usage: `graph("LDBC_Financial")`
 
 **Graph Schema Overview**:
 
-:::image type="content" source="media/graphs/graph-example-ldbc-financial-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC Financial dataset":::
+:::image type="content" source="media/graphs/graph-example-ldbc-financial-schema.png" alt-text="A schema of a graph containing nodes and relations from the LDBC Financial dataset.":::
 
 **Schema and Counts**:
 
@@ -262,7 +262,7 @@ Usage: `graph("LDBC_Financial")`
 
 This example illustrates a complex financial network with multiple entity types and transaction patterns, demonstrating how financial institutions can model relationships between customers, accounts, loans, and transaction flows for fraud detection and risk assessment.
 
-:::image type="content" source="media/graphs/graph-example-ldbc-financial-instance.png" alt-text="A graph containing a sample subgraph of the LDBC Financial dataset":::
+:::image type="content" source="media/graphs/graph-example-ldbc-financial-instance.png" alt-text="A graph containing a sample subgraph of the LDBC Financial dataset.":::
 
 **Example Queries**:
 
@@ -349,7 +349,7 @@ Usage: `graph("BloodHound_Entra")`
 
 **Graph Schema Overview**:
 
-:::image type="content" source="media/graphs/graph-example-bloodhound-entra-schema.png" alt-text="A schema of a graph containing nodes and relations from the BloodHound Entra dataset":::
+:::image type="content" source="media/graphs/graph-example-bloodhound-entra-schema.png" alt-text="A schema of a graph containing nodes and relations from the BloodHound Entra dataset.":::
 
 **Schema and Counts**:
 
@@ -514,13 +514,13 @@ Usage: `graph("BloodHound_AD")`
 
 **Graph Schema Overview**:
 
-:::image type="content" source="media/graphs/graph-example-bloodhound-ad-schema.png" alt-text="A schema of a graph containing nodes and relations from the BloodHound AD dataset":::
+:::image type="content" source="media/graphs/graph-example-bloodhound-ad-schema.png" alt-text="A schema of a graph containing nodes and relations from the BloodHound AD dataset.":::
 
 **Graph Instance Example**:
 
 This example demonstrates on-premises Active Directory attack paths and potential security vulnerabilities in a traditional Windows domain environment.
 
-:::image type="content" source="media/graphs/graph-example-bloodhound-ad-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound AD dataset":::
+:::image type="content" source="media/graphs/graph-example-bloodhound-ad-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound AD dataset.":::
 
 **Use Cases**:
 
