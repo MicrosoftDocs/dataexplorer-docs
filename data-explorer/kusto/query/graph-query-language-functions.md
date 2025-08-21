@@ -1,18 +1,18 @@
 ---
-title: Graph Query Language Functions in Azure Data Explorer
-description: Leaern Azure Data Explorer graph query language (GQL) functions and operators for working with nodes, edges, and properties. Find practical examples and KQL equivalents.
+title: Graph Query Language Functions
+description: Learn graph query language (GQL) functions and operators for working with nodes, edges, and properties. Find practical examples and KQL equivalents.
 ms.reviewer: hraunch 
 ms.topic: reference
 ms.date: 08/14/2025
 
-#CustomerIntent: As a data engineer, I want to learn GQL functions in Azure Data Explorer so that I can query graph data efficiently.
+#CustomerIntent: As a data engineer, I want to learn GQL functions so that I can query graph data efficiently.
 ---
 # Graph query language (GQL) functions and operators (preview)
 
-Graph Query Language (GQL) is a powerful language for querying graph data in Azure Data Explorer. It provides a rich set of functions and operators to work with graph patterns, nodes, edges, and properties.
+Graph Query Language (GQL) is a powerful language for querying graph data alongside KQL. It provides a rich set of functions and operators to work with graph patterns, nodes, edges, and properties.
 
 > [!NOTE]
-> GQL support in Azure Data Explorer is currently in preview. Features and syntax can change based on feedback and ongoing development.
+> GQL support is currently in preview. Features and syntax can change based on feedback and ongoing development.
 
 > [!TIP]
 >
@@ -43,8 +43,9 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `MAX()` | Maximum value | `max()` | `RETURN MAX(person.age)` |
 | `AVG()` | Average value | `avg()` | `RETURN AVG(person.age)` |
 | `COLLECT_LIST()` | Collect values into array | `make_list()` | `RETURN COLLECT_LIST(person.name)` |
+| `SIZE()` | Array length | `array_length()` | `RETURN SIZE(COLLECT_LIST(n.firstName))` |
 | **Graph Functions** |
-[Labels()](#best-practices)
+| `Labels()` | Show labels for a node or edge | `labels()` | `RETURN labels(entity)` |
 | **String Functions** |
 | `UPPER()` | Convert to uppercase | `toupper()` | `RETURN UPPER(person.name)` |
 | `LOWER()` | Convert to lowercase | `tolower()` | `RETURN LOWER(person.name)` |
@@ -53,11 +54,13 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `STARTS WITH` | String starts with pattern | `startswith()` | `WHERE person.name STARTS WITH 'Tom'` |
 | `ENDS WITH` | String ends with pattern | `endswith()` | `WHERE person.name ENDS WITH 'Hanks'` |
 | `CONTAINS` | String contains pattern | `contains()` | `WHERE person.name CONTAINS 'Tom'` |
+| `\|\|` | String concatenation | `strcat()` | `RETURN n.firstName \|\| ' ' \|\| n.lastName` |
 | **Type Conversion** |
 | `CAST()` | Convert data types | `tostring()`, `toint()`, etc. | `CAST(person.age AS STRING)` |
 | **Date/Time Functions** |
 | `ZONED_DATETIME()` | Create datetime from string | `todatetime()` | `ZONED_DATETIME('2024-01-01')` |
 | `CURRENT_TIMESTAMP` | Current timestamp | `now()` | `WHERE created < CURRENT_TIMESTAMP` |
+| `DURATION()` | Construct a duration (timespan) | `make_timespan()` | `DURATION({days:3})` |
 | **Path Operations** |
 | Variable length paths | Multi-hop traversal | `graph-match` with quantifiers | `MATCH (a)-[*1..3]->(b)` |
 | Path variables | Named path assignment | Path variables in `graph-match` | `MATCH p = (a)-[]->(b)` |
@@ -105,11 +108,18 @@ RETURN COUNT(*) > 0 AS HasSuspiciousActivity
     > [!IMPORTANT]
     > When you design your graph schema, some common property names might conflict with GQL reserved keywords. Avoid or rename these property names.
 
-- **No `INSERT`/`CREATE` support**: GQL in Azure Data Explorer doesn't support `INSERT` or `CREATE` operations to change graph structures. Instead, use KQL's [`make-graph`](make-graph-operator.md) operator or [graph snapshots](graph-operators.md) to create and manage graph structures. Use KQL for all graph creation, change, and management tasks.
+- **No `INSERT`/`CREATE` support**: GQL doesn't support `INSERT` or `CREATE` operations to change graph structures. Instead, use KQL's [`make-graph`](make-graph-operator.md) operator or [graph models](graph-operators.md) to create and manage graph structures. Use KQL for all graph creation, change, and management tasks.
 
-- **Optional matches not supported**: GQL's `OPTIONAL MATCH` clause isn't supported in Azure Data Explorer. All pattern matches are required. To get similar results, use separate queries or KQL operators for optional relationships.
+- **Optional matches**: Supported only for node patterns (not edges) and only on persistent graphs. Optional matching isn't available for transient, in-query graphs.
 
 - **Entity equivalence checks not supported**: GQL's`(MATCH (n)-[]-(n2) WHERE n1 <> n2)` is not supported. Use explicit field comparisons instead, for example, `n.id <> n2.id`.
+
+- **Time and timezone**: The engine operates in UTC. Datetime literals must use zoned datetime; only the UTC zone is supported via `ZONED_DATETIME("2011-12-31 23:59:59.9")`.
+
+- **Duration granularity**: Durations support up to days and smaller units down to nanoseconds. Larger-than-day units (for example, weeks, months, years) aren't supported.
+
+- **Traversal modes**: GQL defines configurable traversal modes for matching and paths. For `MATCH`, the modes are `'DIFFERENT EDGES'` and `'REPEATABLE EDGES'`; for `PATH`, the modes are `'WALK'`, `'TRAIL'`, `'ACYCLIC'`, and `'SIMPLE'`. The current implementation defaults to `'DIFFERENT EDGES'` and `'WALK'`, respectively.
+Some combinations are not supported.
 
 ## Labels() custom GQL function
 

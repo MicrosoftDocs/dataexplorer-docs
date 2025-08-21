@@ -1,6 +1,6 @@
 ---
 title: GQL Query Patterns, Examples, and Use Cases
-description: GQL query patterns, examples, and common use case scenarios. Find out how to use MATCH, WHERE, and RETURN clauses to analyze graph relationships. GQL use cases in Azure Data Explorer. See how to build queries for security, social networks, and organizational analysis with step-by-step examples.
+description: GQL query patterns, examples, and common use case scenarios. Find out how to use MATCH, WHERE, and RETURN clauses to analyze graph relationships. GQL use cases alongside KQL. See how to build queries for security, social networks, and organizational analysis with step-by-step examples.
 ms.reviewer: herauch
 ms.topic: reference
 ms.date: 08/14/2025
@@ -9,7 +9,7 @@ ms.date: 08/14/2025
 ---
 # GQL query patterns, examples, and common scenarios (preview)
 
-This article gives Graph Query Language examples focusing on core query patterns, and shows common real world use cases for GQL in Azure Data Explorer using realistic graph schemas and queries.
+This article gives Graph Query Language examples focusing on core query patterns, and shows common real world use cases for GQL alongside KQL using realistic graph schemas and queries.
 
 The following examples show the GQL syntax supported in KQL, from simple to complex patterns.
 
@@ -31,7 +31,7 @@ The following examples show the GQL syntax supported in KQL, from simple to comp
 
 * [Complex multi-pattern queries](#complex-multi-pattern-examples)
 
-For a full list of supported GQL functions and operators, see [Graph Query Language Functions in Azure Data Explorer](graph-query-language-functions.md).
+For a full list of supported GQL functions and operators, see [Graph Query Language Functions](graph-query-language-functions.md).
 
 ## Basic pattern matching examples
 
@@ -752,5 +752,5 @@ This query finds all employees within three management levels of the CEO. Use th
 
 ## Related topics
 
-* [Graph Query Language (GQL) in Azure Data Explorer](graph-query-language.md)
+* [Graph Query Language (GQL)](graph-query-language.md)
 * [Graph Query Language (GQL) reference](graph-query-language-functions.md)

@@ -9,24 +9,22 @@ ms.date: 08/13/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Graph Query Language (GQL) lets you use standardized graph pattern matching. GQL follows the ISO GQL standard for graph database queries.
+Graph Query Language (GQL) lets you use standardized graph pattern matching alongside KQL. GQL follows the ISO GQL standard for graph database queries.
 
 > [!NOTE]
 > GQL support is in preview. Features and syntax can change based on feedback and ongoing development.
 
 ## Introduction
 
-Graph Query Language (GQL) is an emerging ISO standard for querying graph databases. GQL lets you use SQL-like syntax for graph pattern matching in Azure Data Explorer, so it's easier to analyze relationships in your data. This article explains how to use GQL in Azure Data Explorer, its benefits, and key features.
+Graph Query Language (GQL) is an emerging ISO standard for querying graph databases. GQL lets you use SQL-like syntax for graph pattern matching, so it's easier to analyze relationships in your data. This article explains how to use GQL, its benefits, and key features.
 
-Azure Data Explorer implements GQL, so you get standardized graph pattern matching capabilities. Analyze relationships in your data using the ISO standard syntax.
-
-GQL in Azure Data Explorer builds on the existing [graph operators](graph-operators.md) functionality. It gives you a standardized way to write graph queries that focus on relationships and patterns between entities.
+GQL provides standardized graph pattern matching capabilities as an alternative query language to KQL. Analyze relationships in your data using the ISO standard syntax.
 
 ## Getting started
 
-To use GQL with KQL, you need:
+To use GQL, you need:
 
-- A graph data source that's either a [graph snapshot](graph-operators.md) or a function with a `make-graph` statement (see step 1).
+- A graph data source that's either a [graph model](graph-operators.md) or a function returning a transient graph ending with a [make-graph](make-graph-operator.md) operator (see step 1).
 - Set specific client request properties (see step 2).
 
 ## Step 1: Create a graph reference
@@ -80,9 +78,13 @@ Before you use GQL, create a graph data source. This article uses an in-memory m
 
 ## Step 2: Configure client request properties
 
-To run GQL queries, set three client request properties. Set these properties through the SDK, API, or directly in the ADX query interface by using directives.
+To run GQL queries, set three client request properties. Set these properties through the SDK, API, or directly in the Kusto Explorer by using directives.
 
-### Use Azure Data Explorer to set client request properties
+### Use Kusto Web Explorer to set client request properties
+
+TODO
+
+### Use Kusto Explorer to set client request properties
 
 > [!IMPORTANT]
 > Run each directive separately before you run your GQL query. The directives set up the query environment for GQL execution.
@@ -118,9 +120,6 @@ For programmatic access, set these client request properties:
 ## Step 3: Run GQL queries
 
 After you finish setup, run GQL queries using standard GQL syntax. Use the examples below to explore basic and advanced GQL features.
-
-> [!TIP]
-> GQL queries in Azure Data Explorer use standard GQL syntax and translate to KQL with graph operators. Start with simple patterns, and build complexity gradually.
 
 ## Examples
 
