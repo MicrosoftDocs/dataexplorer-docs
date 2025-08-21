@@ -524,7 +524,7 @@ This hybrid approach enables organizations to provide always-current data analys
 
 ## Common analysis queries
 
-These reusable query patterns work across all graph models and help you understand the structure and characteristics of any graph dataset. Use these queries to explore new graphs, perform basic analysis, or as starting points for more complex graph investigations.
+These reusable query patterns work across all graph models and help you understand the structure and characteristics of any graph dataset. The examples below use sample graphs available on our [help cluster](https://help.kusto.windows.net) in the **Samples** database. For detailed information about these graphs, see [Graph sample datasets and examples](graph-sample-data.md). Use these queries to explore new graphs, perform basic analysis, or as starting points for more complex graph investigations.
 
 ### Graph overview and statistics
 
@@ -532,7 +532,7 @@ Understanding the basic characteristics of your graph is essential for analysis 
 
 **Count total nodes and edges**:
 
-Use these queries to understand the scale of your graph dataset. Node and edge counts help determine appropriate query strategies and identify potential performance considerations.
+Use these queries to understand the scale of your graph dataset. Node and edge counts help determine appropriate query strategies and identify potential performance considerations. These examples use the [`Simple` graph](graph-sample-data.md#simple-educational-graph-for-learning-fundamentals), which is ideal for learning basic graph operations.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -570,7 +570,7 @@ graph('Simple')
 
 **Get graph summary statistics**:
 
-This combined query efficiently provides both metrics in a single result, useful for initial graph assessment and reporting.
+This combined query efficiently provides both metrics in a single result, useful for initial graph assessment and reporting. This example demonstrates the technique using the [`Simple` graph](graph-sample-data.md#simple-educational-graph-for-learning-fundamentals).
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -590,7 +590,7 @@ union withsource=['Graph element'] nodes, edges
 
 **Alternative using graph-to-table**:
 
-For basic counting, the `graph-to-table` operator can be more efficient as it directly exports graph elements without pattern matching overhead.
+For basic counting, the `graph-to-table` operator can be more efficient as it directly exports graph elements without pattern matching overhead. This example shows the alternative approach using the same [`Simple` graph](graph-sample-data.md#simple-educational-graph-for-learning-fundamentals).
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -614,7 +614,7 @@ Node analysis helps you understand the entities in your graph, their types, and 
 
 **Discover all node types (labels)**:
 
-This query reveals the different entity types in your graph and their frequencies. Use it to understand your data model, identify the most common entity types, and spot potential data quality issues.
+This query reveals the different entity types in your graph and their frequencies. Use it to understand your data model, identify the most common entity types, and spot potential data quality issues. This example uses the [`Simple` graph](graph-sample-data.md#simple-educational-graph-for-learning-fundamentals) which contains Person, Company, and City entities.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -638,7 +638,7 @@ graph('Simple')
 
 **Find nodes with multiple labels**:
 
-Identifies nodes that belong to multiple categories simultaneously. This is useful for understanding overlapping classifications and complex entity relationships in your data model.
+Identifies nodes that belong to multiple categories simultaneously. This is useful for understanding overlapping classifications and complex entity relationships in your data model. This example uses the [`BloodHound_Entra` graph](graph-sample-data.md#bloodhound-entra-dataset) which contains Microsoft Entra objects with multiple label classifications.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -661,7 +661,7 @@ graph('BloodHound_Entra')
 
 **Sample nodes by type**:
 
-Retrieves representative examples of specific node types to understand their structure and properties. Essential for data exploration and query development.
+Retrieves representative examples of specific node types to understand their structure and properties. Essential for data exploration and query development. This example uses the [`BloodHound_Entra` graph](graph-sample-data.md#bloodhound-entra-dataset) to explore AZUser node properties in Microsoft Entra environments.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -687,7 +687,7 @@ Understanding relationships in your graph is crucial for identifying patterns, d
 
 **Discover all edge types** (works with different graph schemas):
 
-This query identifies all relationship types in your graph, helping you understand the connections available for analysis. Different graphs use different property names for edge types, so multiple variations are provided.
+This query identifies all relationship types in your graph, helping you understand the connections available for analysis. Different graphs use different property names for edge types, so multiple variations are provided. This example uses the [`BloodHound_Entra` graph](graph-sample-data.md#bloodhound-entra-dataset) to show permission relationships in Microsoft Entra environments.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -713,7 +713,7 @@ graph('BloodHound_Entra')
 
 **Find most connected nodes (highest degree)**:
 
-Node degree analysis reveals the most influential or central entities in your graph. High-degree nodes often represent key players, bottlenecks, or important infrastructure components.
+Node degree analysis reveals the most influential or central entities in your graph. High-degree nodes often represent key players, bottlenecks, or important infrastructure components. This example uses the [`LDBC_SNB_Interactive` graph](graph-sample-data.md#ldbc-snb-interactive), a social network dataset ideal for analyzing connection patterns and influence.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -742,7 +742,7 @@ graph('LDBC_SNB_Interactive')
 
 **Find nodes with highest in-degree (most incoming connections)**:
 
-High in-degree nodes are often targets of influence, popular destinations, or central resources. In social networks, these might be influential people; in infrastructure graphs, these could be critical services.
+High in-degree nodes are often targets of influence, popular destinations, or central resources. In social networks, these might be influential people; in infrastructure graphs, these could be critical services. This example uses the [`LDBC_Financial` graph](graph-sample-data.md#ldbc-financial) to identify accounts receiving the most transactions.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -767,7 +767,7 @@ graph('LDBC_Financial')
 
 **Find nodes with highest out-degree (most outgoing connections)**:
 
-High out-degree nodes are often sources of influence, distributors, or connector hubs. These entities typically initiate many relationships or distribute resources to others.
+High out-degree nodes are often sources of influence, distributors, or connector hubs. These entities typically initiate many relationships or distribute resources to others. This example uses the [`LDBC_Financial` graph](graph-sample-data.md#ldbc-financial) to identify accounts making the most transactions.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -796,7 +796,7 @@ These queries help identify structural patterns and complex relationships that m
 
 **Discover triangular relationships** (nodes connected in a triangle):
 
-Triangular patterns often indicate tight collaboration, mutual dependencies, or closed-loop processes. In social networks, these represent groups of friends; in business processes, they might indicate approval chains or redundancy patterns.
+Triangular patterns often indicate tight collaboration, mutual dependencies, or closed-loop processes. In social networks, these represent groups of friends; in business processes, they might indicate approval chains or redundancy patterns. This example uses the [`BloodHound_AD` graph](graph-sample-data.md#bloodhound-active-directory-dataset) to identify circular privilege relationships in Active Directory environments.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -823,7 +823,7 @@ Understanding the properties available on your nodes helps you build more sophis
 
 **Explore node properties**:
 
-This query reveals what information is stored with your nodes, helping you understand the available attributes for filtering and analysis.
+This query reveals what information is stored with your nodes, helping you understand the available attributes for filtering and analysis. This example uses the [`BloodHound_Entra` graph](graph-sample-data.md#bloodhound-entra-dataset) to explore the schema of AZUser nodes and understand what properties are available for Microsoft Entra user objects.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -850,7 +850,7 @@ graph('BloodHound_Entra')
 
 **Find nodes with specific property values**:
 
-Use this pattern to locate entities with particular characteristics or to validate data quality by checking for expected property values.
+Use this pattern to locate entities with particular characteristics or to validate data quality by checking for expected property values. This example uses the [`BloodHound_Entra` graph](graph-sample-data.md#bloodhound-entra-dataset) to find nodes with specific name properties in Microsoft Entra environments.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -876,6 +876,7 @@ graph('BloodHound_Entra')
 :::moniker range="microsoft-fabric || azure-data-explorer"
 - [Graph semantics overview](graph-semantics-overview.md)
 - [Common scenarios for using graph semantics](graph-scenarios.md)
+- [Graph sample datasets and examples](graph-sample-data.md)
 - [Graph function](graph-function.md)
 - [make-graph operator](make-graph-operator.md)
 - [Graph models overview](../management/graph/graph-model-overview.md)
@@ -884,5 +885,6 @@ graph('BloodHound_Entra')
 :::moniker range="azure-monitor || microsoft-sentinel"
 - [Graph semantics overview](graph-semantics-overview.md)
 - [Common scenarios for using graph semantics](graph-scenarios.md)
+- [Graph sample datasets and examples](graph-sample-data.md)
 - [make-graph operator](make-graph-operator.md)
 :::moniker-end
