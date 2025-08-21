@@ -11,7 +11,7 @@ ms.date: 05/29/2025
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Graph semanitcs supports two primary approaches for working with graphs: transient graphs created in-memory for each query, and persistent graphs defined as graph models and snapshots within the database. This article provides best practices for both methods, enabling you to select the optimal approach and use KQL graph semantics efficiently.
+Graph semantics supports two primary approaches for working with graphs: transient graphs created in-memory for each query, and persistent graphs defined as graph models and snapshots within the database. This article provides best practices for both methods, enabling you to select the optimal approach and use KQL graph semantics efficiently.
 
 This guidance covers:
 
@@ -29,7 +29,7 @@ There are two approaches for working with graphs: transient and persistent.
 
 ### Transient graphs
 
-Created dynamically using the [`make-graph`](make-graph-operator.md) operator. These graphs exist only during query execution and are optimal for ad hoc or exploratory analysis on small to medium datasets.
+Created dynamically using the [`make-graph`](make-graph-operator.md) operator. These graphs exist only during query execution and are optimal for ad-hoc or exploratory analysis on small to medium datasets.
 
 ### Persistent graphs
 
@@ -124,7 +124,7 @@ Use the [arg_max aggregation](arg-max-aggregation-function.md) function to deter
 
 **Step 3: Create helper functions**
 
-Ensure only the materialized component is used and apply additional filters:
+Ensure only the materialized component is used and apply another filters:
 
 ```kusto
 .create function currentEmployees () {
@@ -246,7 +246,7 @@ let assetHierarchy = datatable(source:string, destination:string)
 ];
 ```
 
-The employees, sensors, and other entities and relationships do not share a canonical data model. The [union operator](union-operator.md) can be used to combine and standardize the data.
+The employees, sensors, and other entities and relationships don't share a canonical data model. The [union operator](union-operator.md) can be used to combine and standardize the data.
 
 The following query joins the sensor data with the time series data to identify sensors with abnormal readings, then uses a projection to create a common model for the graph nodes.
 
@@ -310,15 +310,15 @@ The projection in `graph-match` shows that the temperature sensor exhibited an a
 
 ## Best practices for persistent graphs
 
-Persistent graphs, defined using [graph models](../management/graph/graph-model-overview.md) and [graph snapshots](../management/graph/graph-snapshot-overview.md), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
+Persistent graphs, defined using [graph models](../management/graph/graph-model-overview.md), and [graph snapshots](../management/graph/graph-snapshot-overview.md), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
 
 ### Use schema and definition for consistency and performance
 
 A clear schema for your graph model is essential, as it specifies node and edge types along with their properties. This approach ensures data consistency and enables efficient querying. Utilize the `Definition` section to specify how nodes and edges are constructed from your tabular data through `AddNodes` and `AddEdges` steps.
 
-### Leverage static and dynamic labels for flexible modeling
+### Use static and dynamic labels for flexible modeling
 
-When modeling your graph, you can utilize both static and dynamic labeling approaches for optimal flexibility. Static labels are ideal for well-defined node and edge types that rarely change—define these in the `Schema` section and reference them in the `Labels` array of your steps. For cases where node or edge types are determined by data values (for example, when the type is stored in a column), use dynamic labels by specifying a `LabelsColumn` in your step to assign labels at runtime. This approach is especially useful for graphs with heterogeneous or evolving schemas. Both mechanisms can be effectively combined—you can define a `Labels` array for static labels and also specify a `LabelsColumn` to incorporate additional labels from your data, providing maximum flexibility when modeling complex graphs with both fixed and data-driven categorization.
+When modeling your graph, you can utilize both static and dynamic labeling approaches for optimal flexibility. Static labels are ideal for well-defined node and edge types that rarely change—define these in the `Schema` section and reference them in the `Labels` array of your steps. For cases where node or edge types are determined by data values (for example, when the type is stored in a column), use dynamic labels by specifying a `LabelsColumn` in your step to assign labels at runtime. This approach is especially useful for graphs with heterogeneous or evolving schemas. Both mechanisms can be effectively combined—you can define a `Labels` array for static labels and also specify a `LabelsColumn` to incorporate labels from your data, providing maximum flexibility when modeling complex graphs with both fixed and data-driven categorization.
 
 #### Example: Using dynamic labels for multiple node and edge types
 
@@ -376,7 +376,7 @@ Large-scale multitenant environments often exhibit the following characteristics
 
 ### Partitioning by natural boundaries
 
-The most effective approach for managing large-scale graphs is partitioning by natural boundaries, typically tenant identifiers or organizational units:
+The most effective approach for managing large-scale graphs is partitioning by natural boundaries, typically tenant identifiers, or organizational units:
 
 **Key partitioning strategies:**
 
@@ -413,14 +413,14 @@ The most cost-effective strategy combines both transient and persistent graphs b
 
 #### Small to medium tenants (99.9% of tenants)
 
-Use **transient graphs** for the majority of tenants:
+Use **transient graphs** for most tenants:
 
 **Advantages:**
 
 - **Always up-to-date data** - No snapshot maintenance required
 - **Lower operational overhead** - No graph model or snapshot management
-- **Cost-effective** - No additional storage costs for graph structures
-- **Immediate availability** - No pre-processing delays
+- **Cost-effective** - No extra storage costs for graph structures
+- **Immediate availability** - No preprocessing delays
 
 **Implementation pattern:**
 
@@ -518,13 +518,13 @@ graph("ContosoOrgChart")
 5. **Resource management** - Use workload groups to prevent large tenant queries from affecting smaller tenants
 6. **Cost optimization** - Regularly review and optimize the persistent/transient threshold based on actual usage patterns
 
-This hybrid approach enables organizations to provide always-current data analysis for the majority of tenants while delivering enterprise-scale analytics capabilities for the largest tenants, optimizing both cost and performance across the entire customer base.
+This hybrid approach enables organizations to provide always-current data analysis for most tenants while delivering enterprise-scale analytics capabilities for the largest tenants, optimizing both cost and performance across the entire customer base.
 
 :::moniker-end
 
 ## Common analysis queries
 
-These reusable query patterns work across all graph models and help you understand the structure and characteristics of any graph dataset. The examples below use sample graphs available on our [help cluster](https://help.kusto.windows.net) in the **Samples** database. For detailed information about these graphs, see [Graph sample datasets and examples](graph-sample-data.md). Use these queries to explore new graphs, perform basic analysis, or as starting points for more complex graph investigations.
+These reusable query patterns work across all graph models and help you understand the structure and characteristics of any graph dataset. The example below use sample graphs available on our [help cluster](https://help.kusto.windows.net) in the **Samples** database. For detailed information about these graphs, see [Graph sample datasets and examples](graph-sample-data.md). Use these queries to explore new graphs, perform basic analysis, or as starting points for more complex graph investigations.
 
 ### Graph overview and statistics
 
@@ -614,7 +614,7 @@ Node analysis helps you understand the entities in your graph, their types, and 
 
 **Discover all node types (labels)**:
 
-This query reveals the different entity types in your graph and their frequencies. Use it to understand your data model, identify the most common entity types, and spot potential data quality issues. This example uses the [`Simple` graph](graph-sample-data.md#simple-educational-graph-for-learning-fundamentals) which contains Person, Company, and City entities.
+This query reveals the different entity types in your graph and their frequencies. Use it to understand your data model, identify the most common entity types, and spot potential data quality issues. This example uses the [`Simple` graph](graph-sample-data.md#simple-educational-graph-for-learning-fundamentals), which contains Person, Company, and City entities.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -638,7 +638,7 @@ graph('Simple')
 
 **Find nodes with multiple labels**:
 
-Identifies nodes that belong to multiple categories simultaneously. This is useful for understanding overlapping classifications and complex entity relationships in your data model. This example uses the [`BloodHound_Entra` graph](graph-sample-data.md#bloodhound-entra-dataset) which contains Microsoft Entra objects with multiple label classifications.
+Identifies nodes that belong to multiple categories simultaneously. This is useful for understanding overlapping classifications and complex entity relationships in your data model. This example uses the [`BloodHound_Entra` graph](graph-sample-data.md#bloodhound-entra-dataset), which contains Microsoft Entra objects with multiple label classifications.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
