@@ -1187,7 +1187,8 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
    Not applicable
 
    ---
-    ::: zone-end
+
+   ::: zone-end
 
 An outline of the updated code should look like this:
 
@@ -1544,7 +1545,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
    ---
 
-    ::: zone-end
+   ::: zone-end
 
 An outline of the updated code should look like this:
 
