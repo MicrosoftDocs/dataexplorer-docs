@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 08/19/2025
 monikerRange: "azure-data-explorer"
 zone_pivot_groups: ingest-api
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 
 #customer intent: To learn about creating an app to get data using queued ingestion.
 ---
@@ -303,7 +304,7 @@ Add the following code:
     ::: zone-end
 
     ::: zone pivot="preview"
- 
+
    **Ingest V2 (preview)**
 
    #### [C\#](#tab/csharp)
@@ -1063,40 +1064,39 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
 1. Set the ingestion properties to not ignore the first record as the in-memory string doesn't have a header row.
 
-   ::: zone pivot="latest"
+  ::: zone pivot="latest"
    **Ingest V1**
 
-   #### [C\#](#tab/csharp)
+  #### [C\#](#tab/csharp)
 
-    ```csharp
-    ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
-    ```
+   ```csharp
+  ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
+  ```
 
-   #### [Python](#tab/python)
+  #### [Python](#tab/python)
 
-    ```python
-    ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
-    ```
+  ```python
+  ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
+  ```
 
-   #### [TypeScript](#tab/typescript)
+  #### [TypeScript](#tab/typescript)
 
-    ```typescript
-    ingestProps.ignoreFirstRecord = false;
-    ```
+  ```typescript
+  ingestProps.ignoreFirstRecord = false;
+   ```
 
-    <!-- #### [Go](#tab/go) -->
+  <!-- #### [Go](#tab/go) -->
 
-   #### [Java](#tab/java)
+  #### [Java](#tab/java)
 
-    ```java
-    ingestProps.setIgnoreFirstRecord(false);
-    ```
+  ```java
+  ingestProps.setIgnoreFirstRecord(false);
+  ```
+  
+ ---
 
-    ---
-
-    ::: zone-end
-
-    ::: zone pivot="preview"   
+  ::: zone-end
+  ::: zone pivot="preview"
 
    **Ingest V2 (preview)**
 
@@ -1121,8 +1121,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
    Not applicable
 
    ---
-
-    ::: zone-end
+  ::: zone-end
 
 1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
 
