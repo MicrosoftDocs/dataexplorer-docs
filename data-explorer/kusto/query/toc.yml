@@ -1284,8 +1284,6 @@ items:
         href: graph-best-practices.md
       - name: Graph scenarios
         href: graph-scenarios.md
-      - name: Graph sample data
-        href: graph-sample-data.md
       - name: Graph operators
         items:
           - name: Graph operators overview
