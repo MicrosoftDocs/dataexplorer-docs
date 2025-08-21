@@ -1,0 +1,22 @@
+%%{ init: { 'flowchart': {'defaultRenderer': 'elk' } } }%%
+graph LR
+    %% Node type definitions
+    Person[Person]
+    Company[Company] 
+    City[City]
+    
+    %% Relationship patterns
+    Person -->|works_at| Company
+    Person -->|located_at| City
+    Company -->|located_at| City
+    Person -->|knows| Person
+    Person -->|likes| Person
+    
+    %% Node styling by type
+    classDef personStyle fill:#E1F5FE,stroke:#01579B,stroke-width:3px,color:#000
+    classDef companyStyle fill:#E8F5E8,stroke:#2E7D32,stroke-width:3px,color:#000  
+    classDef cityStyle fill:#FFF3E0,stroke:#E65100,stroke-width:3px,color:#000
+    
+    class Person personStyle
+    class Company companyStyle
+    class City cityStyle
