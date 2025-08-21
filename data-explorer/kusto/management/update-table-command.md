@@ -9,7 +9,11 @@ ms.date: 11/18/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The `.update table` command performs data updates in a specified table by deleting and appending records atomically.
+The `.update table` command performs data updates in a specified table by appending and deleting records atomically.
+There are 2 options for appending the records:
+
+1. Ingest the records based on a provided query. The query is noted using the *AppendIdentifier*.
+1. Move extents containing the records to append from another table to the target table. See [Update using move extents](#update-using-move-extents) for more details.
 
 > [!WARNING]
 > This command is unrecoverable.
@@ -27,9 +31,16 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
+**Update using newly ingested records:**
+
 `.update` `[async]` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
 `let` *DeleteIdentifier*`=` *DeletePredicate*`;` <br>
 `let` *AppendIdentifier*`=` *AppendPredicate*`;`
+
+**Update using move extents:**
+
+`.update` `[async]` `table` *TableName* `delete` *DeleteIdentifier* `move` *SourceTableName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
+`let` *DeleteIdentifier*`=` *DeletePredicate*`;` <br>
 
 ### Parameters
 
@@ -39,10 +50,12 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.
 | *DeleteIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.                                                                                                                                                              |
 | *DeletePredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to delete. The predicate has the same [limitations as the soft delete predicate](../concepts/data-soft-delete.md#limitations-and-considerations). |
-| *AppendIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.                                                                                                                                                              |
-| *AppendPredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to append.                                                                                                                                                               |
+| *AppendIdentifier* | `string` || The identifier name used to specify the append predicate applied to the updated table. Required if using update based on ingest from query.  |
+| *AppendPredicate*  | `string` || The text of a query whose results are used as data to append. Required if using update based on ingest from query. |
+| *SourceTableName*  | `string` || The name of the table to move extents from. Must be a local table in current database. Required if using [Update using move extents](#update-using-move-extents).|
 
 > [!IMPORTANT]
+>
 > * Both delete and append predicates can't use remote entities, cross-db, and cross-cluster entities. Predicates can't reference an external table or use the `externaldata` operator.
 > * Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
 >    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
@@ -53,7 +66,8 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | Name     | Type | Description                                                                                                                                                |
 | -------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | *whatif* | bool | If `true`, returns the number of records that will be appended / deleted in every shard, without appending / deleting any records. The default is `false`. |
-| *distributed* | bool | If `true`, the command ingests from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips). |
+| *distributed* | bool | If `true`, the command ingests from all nodes executing the query in parallel. This option is relevant only for update based on ingest from query. Default is `false`. See [performance tips](#performance-tips). |
+| *tags* | string | Optional [Extent tags](extent-tags.md) to filter only specific extents, when using update using move extents. The tags are provided as an array, in the same format as in [Ingestion properties](../includes/ingestion-properties.md). See examples in [Update using move extents](#update-using-move-extents).|
 
 > [!IMPORTANT]
 > We recommend running in `whatif` mode first before executing the update to validate the predicates before deleting or appending data.
@@ -68,6 +82,11 @@ The result of the command is a table where each record represents an [extent](ex
 | Action   | `string` | *Create* or *Delete* depending on the action performed on the extent.            |
 | ExtentId | `guid`   | The unique identifier for the extent created or deleted by the command. |
 | RowCount | `long`   | The number of rows created or deleted in the specified extent by the command.    |
+
+## Update using move extents
+
+When using this option, the records to append to target table are moved from the provided *SourceTableName* using [move extents](move-extents.md). The update moves *all* extents from the table, or only those that match the provided *tags*, if *tags* are specified in the command properties. The source table must be a local table in the current database and must the same schema as the target table.
+The move extents option is useful when the records to append are already ingested to a staging table in the database, and should replace existing records in the target table. When this is the case, then using the move extents option is more efficient than ingest from query, as this option doesn't require re-ingesting the records. See examples in [Update rows from a staging table using move extents](#update-rows-from-a-staging-table-using-move-extents).
 
 ## Choose between `.update table` and materialized views
 
@@ -163,7 +182,6 @@ The following example updates multiple columns on all rows with color gray.
       | extend Color="";
 ```
 
-
 ### Update rows using another table (reference values)
 
 In this example, the first step is to create the following mapping table:
@@ -206,7 +224,7 @@ Sometimes values to update are known without being stored in a table, and the [d
       | where true;
 ```
 
-### Update rows with a staging table
+### Update rows from a staging table using move extents
 
 A popular pattern is to first land data in a staging table before updating the main table.
 
@@ -220,17 +238,47 @@ The first command creates a staging table:
     | extend Color = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
 ```
 
-The next command updates the main table with the data in the staging table:
+The next command updates the main table with the data in the staging table, by moving all  extents from staging table to main table:
 
 ```kusto
-.update table Employees delete D append A <|
-    let A = MyStagingTable;
+.update table Employees delete D move MyStagingTable <|
     let D = Employees
         | join kind=leftsemi MyStagingTable on Id
         | where true;
 ```
 
-Some records in the staging table didn't exist in the main table (that is, had `Id>100`) but were still inserted in the main table (upsert behavior).
+Some records in the staging table didn't exist in the main table (that is, had `Id>100`) but were still inserted in the main table (upsert behavior). Note that since the command uses move extents, MyStagingTable will be empty after the update.
+
+#### Update from a staging table using move extents with extent tags
+
+In this example, the extents in the staging table include extent tags, and we're only interested in updating based on a subset of the tags:
+
+```kusto
+.set-or-replace MyStagingTable tags='["drop-by:tag1"]'<|
+    range i from 70 to 100 step 5
+    | project Id=i
+    | extend Code = tostring(dynamic(["Customer", "Employee"])[Id %2])
+    | extend Color = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
+
+.set-or-replace MyStagingTable tags='["drop-by:tag2"]'<|
+    range i from 100 to 150 step 5
+    | project Id=i
+    | extend Code = tostring(dynamic(["Customer", "Employee"])[Id %2])
+    | extend Color = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
+```
+
+The following command updates the main table with the data from the first ingestion ("drop-by:tag1") in the staging table.
+Note that the delete part must filter on the extent tags as well, if you would like to only delete records based on this tag.
+The entire MyStagingTable is considered for the delete query, not only the records in the extents with "drop-by:tag1" so the filter
+must be explicitly added to the delete query.
+
+```kusto
+.update table Employees delete D move MyStagingTable with (tags='["drop-by:tag1"]') <|
+    let D = Employees | where Id in (MyStagingTable | where extent_tags() has "drop-by:tag1" | project Id);
+```
+
+At the end of the command, MyStagingTable will include only the records from the 2nd ingestion ("drop-by:tag2"), as the command 
+moves the extents with "drop-by:tag1".
 
 ### Compound key
 
