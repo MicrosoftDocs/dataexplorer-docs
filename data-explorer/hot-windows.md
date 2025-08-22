@@ -39,7 +39,7 @@ After changing the cache policy, the cluster automatically caches the relevant d
 
 Now you can expect optimal performance during the use of hot windows.
 
-[!INCLUDE [set-hot-windows](includes/set-hot-windows.md)]
+[!INCLUDE [set-hot-windows](includes/cross-repo/set-hot-windows.md)]
 
 ## Related content
 
