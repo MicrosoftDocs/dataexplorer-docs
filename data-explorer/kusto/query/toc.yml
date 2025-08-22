@@ -1280,10 +1280,10 @@ items:
     items:
       - name: Graph semantics overview
         href: graph-semantics-overview.md
-      - name: Graph best practices
-        href: graph-best-practices.md
-      - name: Graph scenarios
-        href: graph-scenarios.md
+      - name: Graph sample data
+        href: graph-sample-data.md
+      - name: Graph exploration basics
+        href: graph-exploration-basics.md
       - name: Graph operators
         items:
           - name: Graph operators overview
@@ -1292,12 +1292,12 @@ items:
             href: make-graph-operator.md
           - name: graph-match
             href: graph-match-operator.md
-          - name: graph-to-table
-            href: graph-to-table-operator.md
           - name: graph-shortest-paths
             href: graph-shortest-paths-operator.md
           - name: graph-mark-components
             href: graph-mark-components-operator.md
+          - name: graph-to-table
+            href: graph-to-table-operator.md
       - name: Graph functions
         items:
           - name: all()
@@ -1321,6 +1321,10 @@ items:
           - name: node_degree_out()
             displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
             href: node-degree-out.md
+      - name: Graph scenarios
+        href: graph-scenarios.md
+      - name: Graph best practices
+        href: graph-best-practices.md
       - name: Additional query languages
         items:
           - name: Graph query language (GQL)

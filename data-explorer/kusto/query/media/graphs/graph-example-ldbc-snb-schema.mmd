@@ -1,0 +1,53 @@
+%%{ init: { 'flowchart': {'defaultRenderer': 'elk' } } }%%
+graph TD
+    %% Core Social Entities
+    PERSON[PERSON<br/>Social Users<br/>1,528 nodes]
+    POST[POST<br/>User Posts<br/>135,701 nodes]
+    COMMENT[COMMENT<br/>Comments<br/>151,043 nodes]
+    FORUM[FORUM<br/>Discussion Forums<br/>13,750 nodes]
+    
+    %% Organizational & Geographic
+    ORG[ORGANISATION<br/>Companies/Unis<br/>7,955 nodes]
+    PLACE[PLACE<br/>Locations<br/>1,460 nodes]
+    
+    %% Content Classification
+    TAG[TAG<br/>Content Tags<br/>16,080 nodes]
+    TAGCLASS[TAGCLASS<br/>Tag Categories<br/>71 nodes]
+    
+    %% Core Relationships
+    PERSON -.->|KNOWS<br/>14,073| PERSON
+    PERSON -->|LIKES<br/>109,440| POST
+    PERSON -->|LIKES| COMMENT
+    PERSON -->|HAS_CREATOR<br/>286,744| POST
+    PERSON -->|HAS_CREATOR| COMMENT
+    PERSON -->|HAS_MEMBER<br/>123,268| FORUM
+    PERSON -->|WORK_AT/STUDY_AT<br/>4,522| ORG
+    PERSON -->|HAS_INTEREST<br/>35,475| TAG
+    PERSON -->|IS_LOCATED_IN<br/>296,227| PLACE
+    
+    %% Content Relationships
+    COMMENT -->|REPLY_OF<br/>151,043| POST
+    COMMENT -->|REPLY_OF| COMMENT
+    POST -->|HAS_TAG<br/>290,118| TAG
+    COMMENT -->|HAS_TAG| TAG
+    FORUM -->|HAS_TAG| TAG
+    FORUM -->|CONTAINER_OF| POST
+    POST -->|IS_LOCATED_IN| PLACE
+    COMMENT -->|IS_LOCATED_IN| PLACE
+    ORG -->|IS_LOCATED_IN| PLACE
+    
+    %% Classification Hierarchy
+    TAG -->|HAS_TYPE| TAGCLASS
+    TAGCLASS -->|IS_SUBCLASS_OF| TAGCLASS
+    PLACE -->|IS_PART_OF| PLACE
+    
+    %% Styling
+    classDef socialNode fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef contentNode fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef orgNode fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+    classDef classNode fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    
+    class PERSON,FORUM socialNode
+    class POST,COMMENT contentNode
+    class ORG,PLACE orgNode
+    class TAG,TAGCLASS classNode

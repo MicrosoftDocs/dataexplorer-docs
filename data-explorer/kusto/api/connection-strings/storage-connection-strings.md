@@ -11,9 +11,9 @@ ms.date: 11/19/2024
 
 The Kusto service can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azure-storage.md) in order to query data stored on external storages.
 
-The following types of external storage are supported:
+The following types of external storage services are supported:
 
-* Azure Blob Storage
+* Azure Blob Storage (block blobs for read/write, append blobs for read)
 * Azure Data Lake Storage Gen2
 * Azure Data Lake Storage Gen1
 * Amazon S3
