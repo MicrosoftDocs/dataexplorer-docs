@@ -1278,52 +1278,56 @@ items:
         href: variancepif-aggregation-function.md
   - name: Graph
     items:
-      - name: Graph semantics overview
-        href: graph-semantics-overview.md
-      - name: Graph sample data
-        href: graph-sample-data.md
-      - name: Graph exploration basics
-        href: graph-exploration-basics.md
-      - name: Graph operators
+      - name: Start here
         items:
-          - name: Graph operators overview
-            href: graph-operators.md
-          - name: make-graph
-            href: make-graph-operator.md
-          - name: graph-match
-            href: graph-match-operator.md
-          - name: graph-shortest-paths
-            href: graph-shortest-paths-operator.md
-          - name: graph-mark-components
-            href: graph-mark-components-operator.md
-          - name: graph-to-table
-            href: graph-to-table-operator.md
-      - name: Graph functions
+          - name: Graph semantics overview
+            href: graph-semantics-overview.md
+          - name: Graph sample data
+            href: graph-sample-data.md
+          - name: Graph exploration basics
+            href: graph-exploration-basics.md
+      - name: Reference
         items:
-          - name: all()
-            displayName: all() graph function
-            href: all-graph-function.md
-          - name: any()
-            displayName: any() graph function
-            href: any-graph-function.md
-          - name: map()
-            displayName: map() graph function
-            href: map-graph-function.md
-          - name: inner_nodes()
-            displayName: inner nodes() graph function, inner nodes
-            href: inner-nodes-graph-function.md
-          - name: labels()
-            displayName: labels() graph function, labels
-            href: labels-graph-function.md
-          - name: node_degree_in()
-            displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in
-            href: node-degree-in.md
-          - name: node_degree_out()
-            displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
-            href: node-degree-out.md
-      - name: Graph scenarios
+          - name: Operators
+            items:
+              - name: Graph operators overview
+                href: graph-operators.md
+              - name: make-graph
+                href: make-graph-operator.md
+              - name: graph-match
+                href: graph-match-operator.md
+              - name: graph-to-table
+                href: graph-to-table-operator.md
+              - name: graph-shortest-paths
+                href: graph-shortest-paths-operator.md
+              - name: graph-mark-components
+                href: graph-mark-components-operator.md
+          - name: Functions
+            items:
+              - name: all()
+                displayName: all() graph function
+                href: all-graph-function.md
+              - name: any()
+                displayName: any() graph function
+                href: any-graph-function.md
+              - name: map()
+                displayName: map() graph function
+                href: map-graph-function.md
+              - name: inner_nodes()
+                displayName: inner nodes() graph function, inner nodes
+                href: inner-nodes-graph-function.md
+              - name: labels()
+                displayName: labels() graph function, labels
+                href: labels-graph-function.md
+              - name: node_degree_in()
+                displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in
+                href: node-degree-in.md
+              - name: node_degree_out()
+                displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
+                href: node-degree-out.md
+      - name: Scenarios
         href: graph-scenarios.md
-      - name: Graph best practices
+      - name: Best practices
         href: graph-best-practices.md
   - name: Geospatial
     items:
