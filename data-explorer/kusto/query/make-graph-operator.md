@@ -19,8 +19,6 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 
 *Edges* `|` `make-graph` *SourceNodeId* `-->` *TargetNodeId* [ `with` *Nodes1* `on` *NodeId1* [`,` *Nodes2* `on` *NodeId2* ]] `partitioned-by` *PartitionColumn* `(` *GraphOperator* `)`
 
-*Edges* `|` `make-graph` *SourceNodeId* `-->` *TargetNodeId* [ `with_node_id=` *NodeIdPropertyName* ] `partitioned-by` *PartitionColumn* `(` *GraphOperator* `)`
-
 ## Parameters
 
 | Name                   | Type     | Required           | Description                                                                 |
@@ -39,6 +37,9 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 The `make-graph` operator returns a graph expression and must be followed by a [graph operator](graph-operators.md#supported-graph-operators). Each row in the source *Edges* expression becomes an edge in the graph with properties that are the column values of the row. Each row in the *Nodes* tabular expression becomes a node in the graph with properties that are the column values of the row. Nodes that appear in the *Edges* table but don't have a corresponding row in the *Nodes* table are created as nodes with the corresponding node ID and empty properties.
 
 When using the `partitioned-by` clause, separate graphs are created for each unique value in the specified *PartitionColumn*. The specified *GraphOperator* is then applied to each partitioned graph independently, and the results are combined into a single output. This is particularly useful for multitenant scenarios where you want to analyze each tenant's data separately while maintaining the same graph structure and analysis logic.
+
+> [!IMPORTANT]
+> When using the `partitioned-by` clause, both the *Edges* table and all *Nodes* tables must contain the partition column.
 
 > [!NOTE]
 > Each node has a unique identifier. If the same node ID appears in both the *Nodes1* and *Nodes2* tables, a single node is created by merging their properties. If there are conflicting property values for the same node, one of the values is arbitrarily chosen.
@@ -126,6 +127,8 @@ edges
 ### Multitenant partitioned graph
 
 This example demonstrates using the `partitioned-by` clause to analyze a multitenant social network. The `partitioned-by` clause creates separate graphs for each unique value in the partition column (in this case, `tenantId`), applies the graph operator to each partition independently, and combines the results.
+
+:::image type="content" source="media/graphs/graph-example-make-graph-partitioned.png" alt-text="A graph showing three different companies which are representing three different partitions.":::
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
