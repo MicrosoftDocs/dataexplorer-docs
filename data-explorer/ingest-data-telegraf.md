@@ -9,7 +9,7 @@ ms.date: 08/21/2025
 ---
 # Ingest data from Telegraf into Azure Data Explorer
 
-Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/). Telegraf is an open source, lightweight, and minimal memory foot print agent for collecting, processing, and writing telemetry data including logs, metrics, and IoT data.
+Azure Data Explorer (ADX) supports [data ingestion](ingest-data-overview.md) from [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/). Telegraf is an open source, lightweight, and minimal memory foot print agent. Telegraf is used for collecting, processing, and writing telemetry data including logs, metrics, and IoT data.
 
 Telegraf supports hundreds of input and output plugins. It's widely used and the open source community supports it.
 
@@ -36,13 +36,13 @@ The plugin supports the following authentication methods:
 
 * Azure Managed Service Identity (MSI) token
 
-    * This is the preferred authentication method if you're running Telegraf in a supporting Azure environment, such as Azure Virtual Machines.
+    * The preferred authentication method if you're running Telegraf in a supporting Azure environment, such as Azure Virtual Machines.
 
 Whichever method you use, the designated principal must be assigned the *Database User* role in Azure Data Explorer. This role allows the plugin to create the tables required for ingesting data. If the plugin is configured with `create_tables=false`, the designated principal must at least have the *Database Ingestor* role.
 
 ### Configure authentication method
 
-The plugin checks for specific configurations of environment variables to determine which authentication method to use. The configurations are assessed in the specified order, and the first configuration that detected is used. If a valid configuration isn't detected, the plugin will fail to authenticate.
+The plugin checks for specific configurations of environment variables to determine which authentication method to use. The configurations are assessed in the specified order, and the first configuration that detected is used. If a valid configuration isn't detected, the plugin fails to authenticate.
 
 To configure authentication for the plugin, set the appropriate environment variables for your chosen authentication method:
 
@@ -129,8 +129,8 @@ The following table shows sample metrics data collected by SQL input plugin:
 
 | name | tags | timestamp | fields |
 |--|--|--|--|
-| sqlserver_database_io | {"database_name":"azure-sql-db2","file_type":"DATA","host":"adx-vm","logical_filename":"tempdev","measurement_db_type":"AzureSQLDB","physical_filename":"tempdb.mdf","replica_updateability":"READ_WRITE","sql_instance":"adx-sql-server"} | 2021-09-09T13:51:20Z | {"current_size_mb":16,"database_id":2,"file_id":1,"read_bytes":2965504,"read_latency_ms":68,"reads":47,"rg_read_stall_ms":42,"rg_write_stall_ms":0,"space_used_mb":0,"write_bytes":1220608,"write_latency_ms":103,"writes":149} |
-| sqlserver_waitstats | {"database_name":"azure-sql-db2","host":"adx-vm","measurement_db_type":"AzureSQLDB","replica_updateability":"READ_WRITE","sql_instance":"adx-sql-server","wait_category":"Worker Thread","wait_type":"THREADPOOL"} | 2021-09-09T13:51:20Z | {"max_wait_time_ms":15,"resource_wait_ms":4469,"signal_wait_time_ms":0,"wait_time_ms":4469,"waiting_tasks_count":1464} |
+| sqlserver_database_io | `{"database_name":"azure-sql-db2","file_type":"DATA","host":"adx-vm","logical_filename":"tempdev","measurement_db_type":"AzureSQLDB","physical_filename":"tempdb.mdf","replica_updateability":"READ_WRITE","sql_instance":"adx-sql-server"}` | 2021-09-09T13:51:20Z | `{"current_size_mb":16,"database_id":2,"file_id":1,"read_bytes":2965504,"read_latency_ms":68,"reads":47,"rg_read_stall_ms":42,"rg_write_stall_ms":0,"space_used_mb":0,"write_bytes":1220608,"write_latency_ms":103,"writes":149}` |
+| sqlserver_waitstats | `{"database_name":"azure-sql-db2","host":"adx-vm","measurement_db_type":"AzureSQLDB","replica_updateability":"READ_WRITE","sql_instance":"adx-sql-server","wait_category":"Worker Thread","wait_type":"THREADPOOL"}` | 2021-09-09T13:51:20Z | `{"max_wait_time_ms":15,"resource_wait_ms":4469,"signal_wait_time_ms":0,"wait_time_ms":4469,"waiting_tasks_count":1464}` |
 
 Since the collected metrics object is a complex type, the *fields* and *tags* columns are stored as dynamic data types. There are many ways to query this data, for example:
 
@@ -178,8 +178,8 @@ The following table shows sample metrics data collected by Syslog input plugin:
 
 | name | tags | timestamp | fields |
 |--|--|--|--|
-| syslog | {"appname":"azsecmond","facility":"user","host":"adx-linux-vm","hostname":"adx-linux-vm","severity":"info"} | 2021-09-20T14:36:44Z | {"facility_code":1,"message":" 2021/09/20 14:36:44.890110 Failed to connect to mdsd: dial unix /var/run/mdsd/default_djson.socket: connect: no such file or directory","procid":"2184","severity_code":6,"timestamp":"1632148604890477000","version":1} |
-| syslog | {"appname":"CRON","facility":"authpriv","host":"adx-linux-vm","hostname":"adx-linux-vm","severity":"info"} | 2021-09-20T14:37:01Z | {"facility_code":10,"message":" pam_unix(cron:session): session opened for user root by (uid=0)","procid":"26446","severity_code":6,"timestamp":"1632148621120781000","version":1} |
+| syslog | `{"appname":"azsecmond","facility":"user","host":"adx-linux-vm","hostname":"adx-linux-vm","severity":"info"}` | 2021-09-20T14:36:44Z | `{"facility_code":1,"message":" 2021/09/20 14:36:44.890110 Failed to connect to mdsd: dial unix /var/run/mdsd/default_djson.socket: connect: no such file or directory","procid":"2184","severity_code":6,"timestamp":"1632148604890477000","version":1}` |
+| syslog | `{"appname":"CRON","facility":"authpriv","host":"adx-linux-vm","hostname":"adx-linux-vm","severity":"info"}` | 2021-09-20T14:37:01Z | `{"facility_code":10,"message":" pam_unix(cron:session): session opened for user root by (uid=0)","procid":"26446","severity_code":6,"timestamp":"1632148621120781000","version":1}` |
 
 There are multiple ways to flatten dynamic columns by using the [extended](/kusto/query/extend-operator?view=azure-data-explorer&preserve-view=true) operator or [bag_unpack()](/kusto/query/bag-unpack-plugin?view=azure-data-explorer&preserve-view=true) plugin. You can use either of them in the update policy *Transform_TargetTableName()* function.
 
