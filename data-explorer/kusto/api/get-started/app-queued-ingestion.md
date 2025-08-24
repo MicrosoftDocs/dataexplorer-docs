@@ -297,8 +297,7 @@ Add the following code:
     String ingestUri = "<your_ingestion_uri>";
     ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
     ```
-
-    ---
+  
 
   ::: zone-end
 
@@ -328,9 +327,7 @@ Add the following code:
 
    Not applicable
 
-  ---
-
-::: zone-end
+  ::: zone-end
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue.
 
@@ -818,8 +815,6 @@ public class BatchIngestion {
 }
 ```
 
----
-
 ::: zone-end
 
 ::: zone pivot="preview"
@@ -1064,6 +1059,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 1. Set the ingestion properties to not ignore the first record as the in-memory string doesn't have a header row.
 
 ::: zone pivot="latest"
+
    **Ingest V1**
 
   #### [C\#](#tab/csharp)
@@ -1121,6 +1117,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
    Not applicable
 
    ---
+
 ::: zone-end
 
 1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
@@ -1410,6 +1407,7 @@ Not applicable
 Not applicable
 
 ---
+
 ::: zone-end
 
 When you run the app, you should see a result similar to the following. Notice that after the ingestion, the number of rows in the table increased by one.
