@@ -418,7 +418,7 @@ Add the following code:
 ::: zone-end
 
 ::: zone pivot="preview"
- 
+
       **Ingest V2 (preview)**
 
    You use the following objects and properties:
