@@ -300,9 +300,8 @@ Add the following code:
     ```
   ---
 
-  ::: zone-end
-
-  ::: zone pivot="preview"
+::: zone-end
+::: zone pivot="preview"
 
    **Ingest V2 (preview)**
 
@@ -1475,7 +1474,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
 1. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
 
-  ::: zone pivot="latest"
+::: zone pivot="latest"
 
    **Ingest V1**
 
@@ -1521,9 +1520,8 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
      ---
 
-   ::: zone-end
-
-  ::: zone pivot="preview"
+::: zone-end
+::: zone pivot="preview"
 
    **Ingest V2 (preview)**
 
@@ -1549,7 +1547,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
    ---
 
-   ::: zone-end
+::: zone-end
 
 An outline of the updated code should look like this:
 
