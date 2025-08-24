@@ -3,7 +3,7 @@ title: GQL Query Patterns, Examples, and Use Cases
 description: GQL query patterns, examples, and common use case scenarios. Find out how to use MATCH, WHERE, and RETURN clauses to analyze graph relationships. GQL use cases alongside KQL. See how to build queries for security, social networks, and organizational analysis with step-by-step examples.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 08/14/2025
+ms.date: 08/24/2025
 
 #CustomerIntent: As a <type of user>, I want <what?> so that <why?>.
 ---

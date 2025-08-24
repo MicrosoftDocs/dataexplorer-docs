@@ -3,7 +3,7 @@ title: GQL Graph Query Language (preview)
 description: This article describes Graph Query Language (GQL)
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 08/13/2025
+ms.date: 08/24/2025
 ---
 # Graph Query Language (GQL) (preview)
 
