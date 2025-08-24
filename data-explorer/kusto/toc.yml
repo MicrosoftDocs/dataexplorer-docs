@@ -84,9 +84,6 @@ items:
               - name: Best practices for Kusto Ingest
                 href: api/netfx/kusto-ingest-best-practices.md
                 displayName: kusto.ingest, SDK
-              - name: Migrating to Kusto Ingest v2
-                href: api/netfx/kusto-ingest-migrate.md
-                displayName: kusto.ingest, SDK
       - name: Write code with SDKs
         items:
           - name: Set up your environment
@@ -103,6 +100,9 @@ items:
             href: api/get-started/app-queued-ingestion.md
           - name: Stream data for ingestion 
             href: api/get-started/app-managed-streaming-ingest.md
+          - name: Migrating to Kusto Ingest v2
+            href: api/netfx/kusto-ingest-migrate.md
+            displayName: kusto.ingest, SDK
       - name: Connection strings
         items:
           - name: Connection strings overview
