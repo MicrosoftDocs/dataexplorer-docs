@@ -10,6 +10,7 @@ zone_pivot_group_filename: data-explorer\zone-pivot-groups.json
 
 #customer intent: To learn about creating an app to get data using queued ingestion.
 ---
+<!-- markdownlint-disable MD001 MD023 MD024 MD031 MD046 MD007 -->
 # Create an app to get data using queued ingestion
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
@@ -32,7 +33,7 @@ In this article, you learn how to:
 > The Ingest API now has two versions: V1 and V2. The V1 API is the original API, while the V2 API is a reimagined version that simplifies the ingest API while offering more customization.
 >
 > Ingest Version 2 is in **preview** and is available in the following languages: C#
- 
+
 ## Prerequisites
 
 - [Set up your development environment](app-set-up.md) to use the Kusto client library.
@@ -41,45 +42,45 @@ In this article, you learn how to:
 
 - Use one of the following methods to create the *MyStormEvents* table and, as only a small amount of data is being ingested, set its ingestion batching policy timeout to 10 seconds:
 
-  #### [Run an app](#tab/app)
+#### [Run an app](#tab/app)
 
-   1. Create a target table named *MyStormEvents* in your database by running the first app in [management commands](app-management-commands.md#run-a-management-command-and-process-the-results).
-   1. Set the ingestion batching policy timeout to 10 seconds by running the second app in [management commands](app-management-commands.md#change-the-table-level-ingestion-batching-policy). Before running the app, change the timeout value to `00:00:10`.
+1. Create a target table named *MyStormEvents* in your database by running the first app in [management commands](app-management-commands.md#run-a-management-command-and-process-the-results).
+1. Set the ingestion batching policy timeout to 10 seconds by running the second app in [management commands](app-management-commands.md#change-the-table-level-ingestion-batching-policy). Before running the app, change the timeout value to `00:00:10`.
 
-  #### [Create with command](#tab/command)
+#### [Create with command](#tab/command)
 
-   1. In your query environment, create a target table named *MyStormEvents* in your database by running the following query:
+1. In your query environment, create a target table named *MyStormEvents* in your database by running the following query:
 
-       ```kusto
-       .create table MyStormEvents
-         (StartTime: datetime,
-         EndTime: datetime,
-         State: string,
-         DamageProperty: int,
-         DamageCrops: int,
-         Source: string,
-         StormSummary: dynamic)
-       ```
+```kusto
+.create table MyStormEvents
+  (StartTime: datetime,
+  EndTime: datetime,
+  State: string,
+  DamageProperty: int,
+  DamageCrops: int,
+  Source: string,
+  StormSummary: dynamic)
+```
 
-   1. Set the ingestion batching policy timeout to 10 seconds by running the following query:
+1. Set the ingestion batching policy timeout to 10 seconds by running the following query:
 
-       ```kusto
-       .alter-merge table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:10" }'
-       ```
+```kusto
+.alter-merge table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:10" }'
+```
 
-  ---
+---
 
-   > [!NOTE]
-   >
-   > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
+  > [!NOTE]
+  >
+  > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
 
 - Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file. The file contains 1,000 storm event records.
 
-> [!NOTE]
->
-> The following examples assume a trivial match between the columns of the ingested data and the schema of the target table.
->
-> If the ingested data doesn't trivially match the table schema, you must use an ingestion mapping to align the columns of the data with the table schema.
+  > [!NOTE]
+  >
+  > The following examples assume a trivial match between the columns of the ingested data and the schema of the target table.
+  >
+  > If the ingested data doesn't trivially match the table schema, you must use an ingestion mapping to align the columns of the data with the table schema.
 
 ## Queue a file for ingestion and query the results
 
@@ -92,31 +93,31 @@ Add the following code:
 
 1. Create a client app that connects to your cluster and prints the number of rows in the *MyStormEvents* table. You'll use this count as a baseline for comparison with the number of rows after each method of ingestion. Replace the `<your_cluster_uri>` and `<your_database>` placeholders with your cluster URI and database name respectively.
 
-   #### [C\#](#tab/csharp)
+#### [C\#](#tab/csharp)
 
-    ```csharp
-    using System.Data;
+```csharp
+using System.Data;
 
-    using Kusto.Data;
-    using Kusto.Data.Common;
-    using Kusto.Data.Net.Client;
+using Kusto.Data;
+using Kusto.Data.Common;
+using Kusto.Data.Net.Client;
 
-    using Azure.Identity;
+using Azure.Identity;
     
-    namespace BatchIngest;
+namespace BatchIngest;
     
-    class BatchIngest
-    {
-        static async Task Main()
-        {
-           var tokenCredential = new InteractiveBrowserCredential();
-           var clusterUri = "<your cluster>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
-           var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadAzureTokenCredentialsAuthentication(tokenCredential);
+class BatchIngest
+{
+  static async Task Main()
+  {
+     var tokenCredential = new InteractiveBrowserCredential();
+     var clusterUri = "<your cluster>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
+     var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadAzureTokenCredentialsAuthentication(tokenCredential);
     
-            using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
+    using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
     
-            var database = "<your database>";
-            var table = "MyStormEvents";
+    var database = "<your database>";
+    var table = "MyStormEvents";
     
             var query = table + " | count";
     
@@ -140,11 +141,11 @@ Add the following code:
             }
         }
     }
-    ```
+```
 
-   #### [Python](#tab/python)
+#### [Python](#tab/python)
 
-    ```python
+```python
     from azure.identity import InteractiveBrowserCredential
     from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
 
@@ -171,18 +172,18 @@ Add the following code:
 
     if __name__ == "__main__":
       main()
-    ```
+```
 
-   #### [TypeScript](#tab/typescript)
+#### [TypeScript](#tab/typescript)
 
-    ```typescript
-    import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
+```typescript
+    import { Client, KustoConnectionStringBuilder } from "azure-kusto-data";
     import { InteractiveBrowserCredential } from "@azure/identity";
 
     async function main() {
       const credentials = new InteractiveBrowserCredential();
       const clusterUri = "<your_cluster_uri>";
-      const clusterKcsb = KustoConnectionStringBuilder.withAadUserPromptAuthentication(clusterUri, credentials);
+      const clusterKcsb = KustoConnectionStringBuilder.withTokenCredential(clusterUri, credentials);
 
       const kustoClient = new Client(clusterKcsb);
 
@@ -195,7 +196,7 @@ Add the following code:
       printResultsAsValueList(response);
     }
 
-    function printResultsAsValueList(response) {
+  function printResultsAsValueList(response) {
       let cols = response.primaryResults[0].columns;
 
       for (row of response.primaryResults[0].rows()) {
@@ -204,14 +205,14 @@ Add the following code:
       }
     }
 
-    main();
-    ```
+  main();
+```
 
    [!INCLUDE [node-vs-browser-auth](../../includes/node-vs-browser-auth.md)]
 
     <!-- #### [Go](#tab/go) -->
 
-   #### [Java](#tab/java)
+  #### [Java](#tab/java)
 
    > [!NOTE]
    > The Java SDK doesn't currently support both clients sharing the same user prompt authenticator, resulting in a user prompt for each client.
@@ -254,76 +255,77 @@ Add the following code:
 
 1. Create a connection string builder object that defines the data ingestion URI, where possible, using the sharing the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
 
-::: zone pivot="latest"  
+::: zone pivot="latest"
 
-    **Ingest V1**
+Ingest V1
 
-    #### [C\#](#tab/csharp)
+#### [C\#](#tab/csharp)
 
-    ```csharp
-    using Kusto.Ingest; // Add this import
+```csharp
+using Kusto.Ingest; // Add this import
 
-    // No need to use a different connection string builder - the ingestion client can auto-correct to the ingestion URI
-    ```
+// No need to use a different connection string builder - the ingestion client can auto-correct to the ingestion URI
+```
 
-   #### [Python](#tab/python)
+#### [Python](#tab/python)
 
-    ```python
-    from azure.kusto.data import DataFormat
-    from azure.kusto.ingest import QueuedIngestClient, IngestionProperties
+```python
+from azure.kusto.data import DataFormat
+from azure.kusto.ingest import QueuedIngestClient, IngestionProperties
 
-    ingest_uri = "<your_ingestion_uri>"
-    ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, credentials)
-    ```
+ingest_uri = "<your_ingestion_uri>"
+ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, credentials)
+```
 
-   #### [TypeScript](#tab/typescript)
+#### [TypeScript](#tab/typescript)
 
-    ```typescript
-    import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
+```typescript
+import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
 
-    const ingestUri = "<your_ingestion_uri>";
-    const ingestKcsb = KustoConnectionStringBuilder.withTokenCredential(ingestUri, credentials);
-    ```
+const ingestUri = "<your_ingestion_uri>";
+const ingestKcsb = KustoConnectionStringBuilder.withTokenCredential(ingestUri, credentials);
+```
 
-    <!-- #### [Go](#tab/go) -->
+<!-- #### [Go](#tab/go) -->
 
-   #### [Java](#tab/java)
+#### [Java](#tab/java)
 
-    ```java
-    import com.microsoft.azure.kusto.ingest.IngestClientFactory;
-    import com.microsoft.azure.kusto.ingest.IngestionProperties;
-    import com.microsoft.azure.kusto.ingest.IngestionProperties.DataFormat;
-    import com.microsoft.azure.kusto.ingest.QueuedIngestClient;
+```java
+import com.microsoft.azure.kusto.ingest.IngestClientFactory;
+import com.microsoft.azure.kusto.ingest.IngestionProperties;
+import com.microsoft.azure.kusto.ingest.IngestionProperties.DataFormat;
+import com.microsoft.azure.kusto.ingest.QueuedIngestClient;
 
-    String ingestUri = "<your_ingestion_uri>";
-    ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
-    ```
-  ---
+String ingestUri = "<your_ingestion_uri>";
+ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
+```
+
+---
 
 ::: zone-end
 ::: zone pivot="preview"
 
-   **Ingest V2 (preview)**
+Ingest V2 (preview)
 
-   #### [C\#](#tab/csharp)
+  #### [C\#](#tab/csharp)
 
-    ```csharp
-    using Kusto.Ingest.V2; // Add this import
+```csharp
+using Kusto.Ingest.V2; // Add this import
 
-    // No need to use a different connection string builder - the ingestion client can auto-correct to the ingestion URI
-    ```
+// No need to use a different connection string builder - the ingestion client can auto-correct to the ingestion URI
+```
 
-   #### [Python](#tab/python)
+  #### [Python](#tab/python)
 
    Not applicable
 
-   #### [TypeScript](#tab/typescript)
+  #### [TypeScript](#tab/typescript)
 
    Not applicable
 
     <!-- #### [Go](#tab/go) -->
 
-   #### [Java](#tab/java)
+  #### [Java](#tab/java)
 
    Not applicable
 
@@ -335,90 +337,91 @@ Add the following code:
 
 ::: zone pivot="latest"
 
-    **Ingest V1**
+Ingest V1
 
-   You use the following objects and properties:
+You use the following objects and properties:
 
-   - `QueuedIngestClient` to create the ingest client.
-   - `IngestionProperties` to set the ingestion properties.
-   - `DataFormat` to specify the file format as *CSV*.
-   - `ignore_first_record` to specify whether the first row in CSV and similar file types is ignored, using the following logic:
-      - `True`: The first row is ignored. Use this option to drop the header row from tabular textual data.
-      - `False`: The first row is ingested as a regular row.
+- `QueuedIngestClient` to create the ingest client.
+- `IngestionProperties` to set the ingestion properties.
+- `DataFormat` to specify the file format as CSV.
+- `ignore_first_record` to specify whether the first row in CSV and similar file types is ignored, using the following logic:
+  - `True`: The first row is ignored. Use this option to drop the header row from tabular textual data.
+  - `False`: The first row is ingested as a regular row.
 
    [!INCLUDE [ingestion-size-limit](../../../includes/cross-repo/ingestion-size-limit.md)]
 
-   #### [C\#](#tab/csharp)
+#### [C\#](#tab/csharp)
 
-    ```csharp
-      using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(clusterKcsb);
-  
-      string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
-  
-      Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
-      var ingestProps = new KustoIngestionProperties(database, table) {
-          Format = DataSourceFormat.csv,
-          AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
-      };
-      await ingestClient.IngestFromStorageAsync(filePath, ingestProps);
-    ```
+```csharp
+using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(clusterKcsb);
 
-   #### [Python](#tab/python)
+string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
 
-    ```python
-    import os
+Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
+var ingestProps = new KustoIngestionProperties(database, table) {
+  Format = DataSourceFormat.csv,
+  AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
+};
+await ingestClient.IngestFromStorageAsync(filePath, ingestProps);
+```
 
-    with QueuedIngestClient(ingest_kcsb) as ingest_client:
-        file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
-        print("\nIngesting data from file: \n\t " + file_path)
+#### [Python](#tab/python)
 
-        ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
-        ingest_client.ingest_from_file(file_path, ingest_props)
-    ```
+```python
+import os
 
-   #### [TypeScript](#tab/typescript)
+with QueuedIngestClient(ingest_kcsb) as ingest_client:
+  file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
+  print("\nIngesting data from file: \n\t " + file_path)
 
-    ```typescript
-    import path from 'path';
+  ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+  ingest_client.ingest_from_file(file_path, ingest_props)
+```
 
-    const ingestClient = new IngestClient(ingestKcsb);
-    const filePath = path.join(__dirname, "stormevents.csv");
-    console.log("\nIngesting data from file: \n\t " + filePath);
+#### [TypeScript](#tab/typescript)
 
-    const ingestProps = new IngestionProperties({
-      database: database,
-      table: table,
-      format: DataFormat.CSV,
-      ignoreFirstRecord: true
-    });
-    await ingestClient.ingestFromFile(filePath, ingestProps);
-    ```
+```typescript
+import path from 'path';
+
+const ingestClient = new IngestClient(ingestKcsb);
+const filePath = path.join(__dirname, "stormevents.csv");
+console.log("\nIngesting data from file: \n\t " + filePath);
+
+const ingestProps = new IngestionProperties({
+  database: database,
+  table: table,
+  format: DataFormat.CSV,
+  ignoreFirstRecord: true
+});
+await ingestClient.ingestFromFile(filePath, ingestProps);
+```
 
     <!-- #### [Go](#tab/go) -->
 
-   #### [Java](#tab/java)
+<!-- markdownlint-disable-next-line MD024 -->
+#### [Java](#tab/java)
 
-    ```java
-    import com.microsoft.azure.kusto.ingest.source.FileSourceInfo;
+```java
+import com.microsoft.azure.kusto.ingest.source.FileSourceInfo;
 
-    try (QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
-      FileSourceInfo fileSourceInfo = new FileSourceInfo(System.getProperty("user.dir") + "\\stormevents.csv", 0);
+try (QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
+  FileSourceInfo fileSourceInfo = new FileSourceInfo(System.getProperty("user.dir") + "\\stormevents.csv", 0);
 
-      System.out.println("\nIngesting data from file: \n\t " + fileSourceInfo.toString());
-      IngestionProperties ingestProps = new IngestionProperties(database, table);
-      ingestProps.setDataFormat(DataFormat.CSV);
-      ingestProps.setIgnoreFirstRecord(true);
-      ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
-    }
-    ```
+  System.out.println("\nIngesting data from file: \n\t " + fileSourceInfo.toString());
+  IngestionProperties ingestProps = new IngestionProperties(database, table);
+  ingestProps.setDataFormat(DataFormat.CSV);
+  ingestProps.setIgnoreFirstRecord(true);
+  ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
+}
+```
 
-    ---
+---
 
 ::: zone-end
 
 ::: zone pivot="preview"
 
-      **Ingest V2 (preview)**
+Ingest V2 (preview)
 
    You use the following objects and properties:
 
@@ -454,13 +457,13 @@ Add the following code:
 
    Not applicable
 
-    <!-- #### [Go](#tab/go) -->
+<!-- #### [Go](#tab/go) -->
 
-   #### [Java](#tab/java)
+#### [Java](#tab/java)
 
    Not applicable
 
-  ---
+---
 
 ::: zone-end
 
@@ -532,7 +535,7 @@ Add the following code:
 
    #### [Java](#tab/java)
 
-    ```java
+```java
     System.out.println("\nWaiting 30 seconds for ingestion to complete ...");
     Thread.sleep(30000);
 
@@ -546,15 +549,15 @@ Add the following code:
     primaryResults = response.getPrimaryResults();
     System.out.println("\nLast ingested row:");
     printResultsAsValueList(primaryResults);
-    ```
+```
 
-    ---
+---
 
 The complete code should look like this:
 
 ::: zone pivot="latest"
 
-**Ingest V1**
+Ingest V1
 
 #### [C\#](#tab/csharp)
 
@@ -822,7 +825,7 @@ public class BatchIngestion {
 
 ::: zone pivot="preview"
 
-**Ingest V2 (preview)**
+Ingest V2 (preview)
 
 #### [C\#](#tab/csharp)
 
@@ -1020,7 +1023,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     import com.microsoft.azure.kusto.ingest.source.StreamSourceInfo;
     ```
 
-    ---
+---
 
 1. Add an in-memory string with the data to ingest.
 
@@ -1057,13 +1060,13 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     StreamSourceInfo streamSourceInfo = new StreamSourceInfo(stream);
     ```
 
-    ---
+---
 
 1. Set the ingestion properties to not ignore the first record as the in-memory string doesn't have a header row.
 
 ::: zone pivot="latest"
 
-   **Ingest V1**
+### Ingest V1
 
   #### [C\#](#tab/csharp)
 
@@ -1091,13 +1094,13 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
   ingestProps.setIgnoreFirstRecord(false);
   ```
   
- ---
+---
 
 ::: zone-end
 
 ::: zone pivot="preview"
 
-   **Ingest V2 (preview)**
+Ingest V2 (preview)
 
    #### [C\#](#tab/csharp)
 
@@ -1119,7 +1122,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
    Not applicable
 
-   ---
+---
 
 ::: zone-end
 
@@ -1127,7 +1130,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
 ::: zone pivot="latest"
 
-    **Ingest V1**
+Ingest V1
 
    #### [C\#](#tab/csharp)
 
@@ -1157,13 +1160,13 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
     ```
 
-   ---
+---
 
 ::: zone-end
 
-::: zone pivot="preview"  
+::: zone pivot="preview"
 
-     **Ingest V2 (preview)**
+Ingest V2 (preview)
 
    #### [C\#](#tab/csharp)
 
@@ -1187,7 +1190,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
    Not applicable
 
-   ---
+---
 
 ::: zone-end
 
@@ -1195,7 +1198,7 @@ An outline of the updated code should look like this:
 
 ::: zone pivot="latest"
 
-**Ingest V1**
+Ingest V1
 
 #### [C\#](#tab/csharp)
 
@@ -1359,7 +1362,7 @@ public class BatchIngestion {
 
 ::: zone pivot="preview"
 
-**Ingest V2 (preview)**
+Ingest V2 (preview)
 
 #### [C\#](#tab/csharp)
 
@@ -1470,15 +1473,15 @@ For example, you can modify the app replacing the *ingest from memory* code with
     import com.microsoft.azure.kusto.ingest.source.BlobSourceInfo;
     ```
 
-    ---
+---
 
 1. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
 
 ::: zone pivot="latest"
 
-   **Ingest V1**
+Ingest V1
 
-      #### [C\#](#tab/csharp)
+#### [C\#](#tab/csharp)
 
       ```csharp
       string blobUri = "<your_blob_uri>";
@@ -1487,7 +1490,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
       _= ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
       ```
 
-      #### [Python](#tab/python)
+#### [Python](#tab/python)
 
       ```python
       blob_uri = "<your_blob_uri>"
@@ -1497,7 +1500,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
       ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
       ```
 
-      #### [TypeScript](#tab/typescript)
+#### [TypeScript](#tab/typescript)
 
       ```typescript
       const blobUri = "<your_blob_uri>";
@@ -1508,7 +1511,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
       <!-- #### [Go](#tab/go) -->
 
-      #### [Java](#tab/java)
+#### [Java](#tab/java)
 
       ```java
       String blobUri = "<your_blob_uri>";
@@ -1518,12 +1521,12 @@ For example, you can modify the app replacing the *ingest from memory* code with
       ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
       ```
 
-     ---
+---
 
 ::: zone-end
 ::: zone pivot="preview"
 
-   **Ingest V2 (preview)**
+### Ingest V2 (preview)
 
       #### [C\#](#tab/csharp)
 
@@ -1545,7 +1548,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
       Not applicable
 
-   ---
+---
 
 ::: zone-end
 
@@ -1553,7 +1556,7 @@ An outline of the updated code should look like this:
 
 ::: zone pivot="latest"
 
-**Ingest V1**
+Ingest V1
 
 #### [C\#](#tab/csharp)
 
@@ -1708,7 +1711,7 @@ public class BatchIngestion {
 
 ::: zone pivot="preview"
 
-**Ingest V2 (preview)**
+Ingest V2 (preview)
 
 #### [C\#](#tab/csharp)
 
