@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 08/24/2025
 monikerRange: "azure-data-explorer"
 zone_pivot_groups: ingest-api
+zone_pivot_group_filename: data-explorer\zone-pivot-groups.json
 
 #customer intent: To learn about creating an app to get data using queued ingestion.
 ---
@@ -297,7 +298,7 @@ Add the following code:
     String ingestUri = "<your_ingestion_uri>";
     ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
     ```
-  
+  ---
 
   ::: zone-end
 
@@ -326,6 +327,8 @@ Add the following code:
    #### [Java](#tab/java)
 
    Not applicable
+
+---
 
   ::: zone-end
 
@@ -814,7 +817,7 @@ public class BatchIngestion {
   }
 }
 ```
-
+---
 ::: zone-end
 
 ::: zone pivot="preview"
