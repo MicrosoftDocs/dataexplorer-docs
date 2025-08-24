@@ -41,6 +41,7 @@ The following letters represent letter keys on your keyboard. For example, to us
 | Unfold | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>]</kbd> |  |
 | Unfold all | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd> | <kbd>&#x2318;</kbd>+<kbd>K</kbd> <kbd>&#x2318;</kbd>+<kbd>J</kbd> |
 | Run query | <kbd>Shift</kbd>+<kbd>Enter</kbd> | <kbd>Shift</kbd>+<kbd>Enter</kbd> |
+| Cancel query | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd> (or) <kbd>ESC</kbd> | <kbd>&#x2318;</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd> (or) <kbd>ESC</kbd> |
 | Recall execution result | <kbd>F8</kbd> | <kbd>F8</kbd> |
 | Reopen closed tab | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> | <kbd>&#x2318;</kbd>+<kbd>Shift</kbd>+<kbd>Option</kbd>+<kbd>T</kbd> |
 

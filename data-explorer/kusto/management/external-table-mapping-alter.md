@@ -11,6 +11,9 @@ ms.date: 08/11/2024
 
 Alters an existing external table mapping. For more information, see [Data mappings](mappings.md).
 
+> [!NOTE]
+> External table mappings apply only to reading data from external tables, not for exporting data.
+
 ## Syntax
 
 `.alter` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
