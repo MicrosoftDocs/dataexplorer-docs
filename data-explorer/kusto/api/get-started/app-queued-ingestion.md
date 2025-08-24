@@ -1064,43 +1064,42 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
 1. Set the ingestion properties to not ignore the first record as the in-memory string doesn't have a header row.
 
-::: zone pivot="latest"
+  ::: zone pivot="latest"
 
-### Ingest V1
+  ### Ingest V1
 
-  #### [C\#](#tab/csharp)
+   #### [C\#](#tab/csharp)
 
    ```csharp
-  ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
-  ```
-
-  #### [Python](#tab/python)
-
-  ```python
-  ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
-  ```
-
-  #### [TypeScript](#tab/typescript)
-
-  ```typescript
-  ingestProps.ignoreFirstRecord = false;
+   ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
    ```
 
-  <!-- #### [Go](#tab/go) -->
+   #### [Python](#tab/python)
 
-  #### [Java](#tab/java)
+   ```python
+   ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
+   ```
 
-  ```java
-  ingestProps.setIgnoreFirstRecord(false);
-  ```
+   #### [TypeScript](#tab/typescript)
+ 
+   ```typescript
+   ingestProps.ignoreFirstRecord = false;
+   ```
+
+   <!-- #### [Go](#tab/go) -->
+
+   #### [Java](#tab/java)
+
+   ```java
+    ingestProps.setIgnoreFirstRecord(false);
+   ```
   
----
+  ---
+  ::: zone-end
 
-::: zone-end
+  ::: zone pivot="preview"
 
-::: zone pivot="preview"
-
-Ingest V2 (preview)
+  ### Ingest V2 (preview)
 
    #### [C\#](#tab/csharp)
 
@@ -1122,15 +1121,14 @@ Ingest V2 (preview)
 
    Not applicable
 
----
-
-::: zone-end
+ ---
+ ::: zone-end
 
 1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
 
-::: zone pivot="latest"
+ ::: zone pivot="latest"
 
-Ingest V1
+ ### Ingest V1
 
    #### [C\#](#tab/csharp)
 
@@ -1160,13 +1158,13 @@ Ingest V1
     ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
     ```
 
----
+ ---
 
-::: zone-end
+ ::: zone-end
 
-::: zone pivot="preview"
+ ::: zone pivot="preview"
 
-Ingest V2 (preview)
+ ### Ingest V2 (preview)
 
    #### [C\#](#tab/csharp)
 
