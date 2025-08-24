@@ -9,7 +9,7 @@ ms.date: 08/13/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Graph Query Language (GQL) lets you use standardized graph pattern matching alongside KQL. GQL follows the ISO GQL standard for graph database queries.
+Graph Query Language (GQL) lets you use standardized graph pattern matching. GQL follows the [ISO GQL standard](https://www.iso.org/obp/ui/en/#iso:std:iso-iec:39075:ed-1:v1:en) for graph database queries.
 
 > [!NOTE]
 > GQL support is in preview. Features and syntax can change based on feedback and ongoing development.
@@ -18,7 +18,7 @@ Graph Query Language (GQL) lets you use standardized graph pattern matching alon
 
 Graph Query Language (GQL) is an emerging ISO standard for querying graph databases. GQL lets you use SQL-like syntax for graph pattern matching, so it's easier to analyze relationships in your data. This article explains how to use GQL, its benefits, and key features.
 
-GQL provides standardized graph pattern matching capabilities as an alternative query language to KQL. Analyze relationships in your data using the ISO standard syntax.
+GQL provides standardized graph pattern matching capabilities for analyzing relationships in your data using the ISO standard syntax.
 
 ## Getting started
 

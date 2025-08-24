@@ -9,68 +9,66 @@ ms.date: 08/14/2025
 ---
 # Graph query language (GQL) functions and operators (preview)
 
-Graph Query Language (GQL) is a powerful language for querying graph data alongside KQL. It provides a rich set of functions and operators to work with graph patterns, nodes, edges, and properties.
+Graph Query Language (GQL) is a powerful language for querying graph data. It provides a rich set of functions and operators to work with graph patterns, nodes, edges, and properties.
 
 > [!NOTE]
 > GQL support is currently in preview. Features and syntax can change based on feedback and ongoing development.
 
 > [!TIP]
 >
-> GQL uses standardized syntax for graph operations. Many GQL functions work like KQL functions, but use different syntax and operators.
->
-> Use GQL for standardized graph pattern matching, and combine it with KQL operators for more data processing options.
+> GQL uses standardized syntax for graph operations. Use GQL for standardized graph pattern matching, and combine it with KQL operators for more data processing options.
 
 ## Core GQL functions and operators
 
 This table lists the core GQL functions and operators, along with their Kusto Query Language (KQL) equivalents and examples.
 
-| GQL Function/Operator | Description | Comparable KQL Operator | GQL Example |
-|---|---|---|---|
+| GQL Function/Operator | Description | GQL Example |
+|---|---|---|
 | **Pattern Matching** |
-| `MATCH` | Find graph patterns | `graph-match` | `MATCH (a)-[r]->(b)` |
+| `MATCH` | Find graph patterns | `MATCH (a)-[r]->(b)` |
 | **Filtering** |
-| `WHERE` | Filter patterns and properties | `where` | `WHERE person.age > 25` |
-| `IS NULL` | Check for null values | `isnull()` | `WHERE person.age IS NULL` |
-| `IS NOT NULL` | Check for non-null values | `isnotnull()` | `WHERE person.age IS NOT NULL` |
+| `WHERE` | Filter patterns and properties | `WHERE person.age > 25` |
+| `IS NULL` | Check for null values | `WHERE person.age IS NULL` |
+| `IS NOT NULL` | Check for non-null values | `WHERE person.age IS NOT NULL` |
 | **Projection** |
-| `RETURN` | Project results | `project` | `RETURN person.name, person.age` |
-| `DISTINCT` | Return unique values | `distinct` | `RETURN DISTINCT person.name` |
+| `RETURN` | Project results | `RETURN person.name, person.age` |
+| `DISTINCT` | Return unique values | `RETURN DISTINCT person.name` |
 | **Aggregation Functions** |
-| `COUNT(*)` | Count all rows | `count()` | `RETURN COUNT(*)` |
-| `COUNT()` | Count non-null values | `count()` | `RETURN COUNT(person.name)` |
-| `SUM()` | Sum numeric values | `sum()` | `RETURN SUM(person.age)` |
-| `MIN()` | Minimum value | `min()` | `RETURN MIN(person.age)` |
-| `MAX()` | Maximum value | `max()` | `RETURN MAX(person.age)` |
-| `AVG()` | Average value | `avg()` | `RETURN AVG(person.age)` |
-| `COLLECT_LIST()` | Collect values into array | `make_list()` | `RETURN COLLECT_LIST(person.name)` |
-| `SIZE()` | Array length | `array_length()` | `RETURN SIZE(COLLECT_LIST(n.firstName))` |
+| `COUNT(*)` | Count all rows | `RETURN COUNT(*)` |
+| `COUNT()` | Count non-null values | `RETURN COUNT(person.name)` |
+| `SUM()` | Sum numeric values | `RETURN SUM(person.age)` |
+| `MIN()` | Minimum value | `RETURN MIN(person.age)` |
+| `MAX()` | Maximum value | `RETURN MAX(person.age)` |
+| `AVG()` | Average value | `RETURN AVG(person.age)` |
+| `COLLECT_LIST()` | Collect values into array | `RETURN COLLECT_LIST(person.name)` |
+| `SIZE()` | Array length | `RETURN SIZE(COLLECT_LIST(n.firstName))` |
 | **Graph Functions** |
-| `Labels()` | Show labels for a node or edge | `labels()` | `RETURN labels(entity)` |
+| `Labels()` | Show labels for a node or edge | `RETURN labels(entity)` |
 | **String Functions** |
-| `UPPER()` | Convert to uppercase | `toupper()` | `RETURN UPPER(person.name)` |
-| `LOWER()` | Convert to lowercase | `tolower()` | `RETURN LOWER(person.name)` |
-| `LEFT()` | Extract left substring | `substring()` | `WHERE LEFT(person.name, 3) = 'Tom'` |
-| `RIGHT()` | Extract right substring | `substring()` | `WHERE RIGHT(person.name, 5) = 'Hanks'` |
-| `STARTS WITH` | String starts with pattern | `startswith()` | `WHERE person.name STARTS WITH 'Tom'` |
-| `ENDS WITH` | String ends with pattern | `endswith()` | `WHERE person.name ENDS WITH 'Hanks'` |
-| `CONTAINS` | String contains pattern | `contains()` | `WHERE person.name CONTAINS 'Tom'` |
-| `\|\|` | String concatenation | `strcat()` | `RETURN n.firstName \|\| ' ' \|\| n.lastName` |
+| `UPPER()` | Convert to uppercase | `RETURN UPPER(person.name)` |
+| `LOWER()` | Convert to lowercase | `RETURN LOWER(person.name)` |
+| `LEFT()` | Extract left substring | `WHERE LEFT(person.name, 3) = 'Tom'` |
+| `RIGHT()` | Extract right substring | `WHERE RIGHT(person.name, 5) = 'Hanks'` |
+| `STARTS WITH` | String starts with pattern | `WHERE person.name STARTS WITH 'Tom'` |
+| `ENDS WITH` | String ends with pattern | `WHERE person.name ENDS WITH 'Hanks'` |
+| `CONTAINS` | String contains pattern | `WHERE person.name CONTAINS 'Tom'` |
+| `\|\|` | String concatenation | `RETURN n.firstName \|\| ' ' \|\| n.lastName` |
 | **Type Conversion** |
-| `CAST()` | Convert data types | `tostring()`, `toint()`, etc. | `CAST(person.age AS STRING)` |
+| `CAST()` | Convert data types | `CAST(person.age AS STRING)` |
 | **Date/Time Functions** |
-| `ZONED_DATETIME()` | Create datetime from string | `todatetime()` | `ZONED_DATETIME('2024-01-01')` |
-| `CURRENT_TIMESTAMP` | Current timestamp | `now()` | `WHERE created < CURRENT_TIMESTAMP` |
-| `DURATION()` | Construct a duration (timespan) | `make_timespan()` | `DURATION({days:3})` |
+| `ZONED_DATETIME()` | Create datetime from string | `ZONED_DATETIME('2024-01-01')` |
+| `CURRENT_TIMESTAMP` | Current timestamp | `WHERE created < CURRENT_TIMESTAMP` |
+| `DURATION()` | Construct a duration (timespan) | `DURATION({days:3})` |
 | **Path Operations** |
-| Variable length paths | Multi-hop traversal | `graph-match` with quantifiers | `MATCH (a)-[*1..3]->(b)` |
-| Path variables | Named path assignment | Path variables in `graph-match` | `MATCH p = (a)-[]->(b)` |
+| Variable length paths | Multi-hop traversal | `MATCH (a)-[*1..3]->(b)` |
+| Path variables | Named path assignment | `MATCH p = (a)-[]->(b)` |
 | **Ordering and Limiting** |
-| `ORDER BY` | Sort results | `sort` | `ORDER BY person.age DESC` |
-| `LIMIT` | Limit result count | `take` | `LIMIT 10` |
+| `ORDER BY` | Sort results | `ORDER BY person.age DESC` |
+| `LIMIT` | Limit result count | `LIMIT 10` |
 | **Label Operations** |
-| `&` (AND) | Label intersection | Multiple label filters | `MATCH (p:Person & Male)` |
-| `|` (OR) | Label union | Label alternatives | `MATCH (n:Person | Movie)` |
-| `!` (NOT) | Label negation | Negative label filter | `MATCH (p:!Female)` |
+| `&` (AND) | Label intersection | `MATCH (p:Person & Male)` |
+| `|` (OR) | Label union | `MATCH (n:Person | Movie)` |
+| `!` (NOT) | Label negation | `MATCH (p:!Female)` |
 
 ## Best practices
 
@@ -108,7 +106,7 @@ RETURN COUNT(*) > 0 AS HasSuspiciousActivity
     > [!IMPORTANT]
     > When you design your graph schema, some common property names might conflict with GQL reserved keywords. Avoid or rename these property names.
 
-- **No `INSERT`/`CREATE` support**: GQL doesn't support `INSERT` or `CREATE` operations to change graph structures. Instead, use KQL's [`make-graph`](make-graph-operator.md) operator or [graph models](graph-operators.md) to create and manage graph structures. Use KQL for all graph creation, change, and management tasks.
+- **No `INSERT`/`CREATE` support**: Operations to change graph structures are not supported. Instead, use KQL for all graph creation, change, and management tasks.
 
 - **Optional matches**: Supported only for node patterns (not edges) and only on persistent graphs. Optional matching isn't available for transient, in-query graphs.
 

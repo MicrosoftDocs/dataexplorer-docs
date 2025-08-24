@@ -9,14 +9,14 @@ ms.date: 08/14/2025
 ---
 # GQL query patterns, examples, and common scenarios (preview)
 
-This article gives Graph Query Language examples focusing on core query patterns, and shows common real world use cases for GQL alongside KQL using realistic graph schemas and queries.
+This article gives Graph Query Language examples focusing on core query patterns, and shows common real world use cases for GQL using realistic graph schemas and queries.
 
-The following examples show the GQL syntax supported in KQL, from simple to complex patterns.
+The following examples show the GQL syntax supported, from simple to complex patterns.
 
 > [!NOTE]
-> 
+>
 > Before you try these examples, set up your environment to use GQL. See [Getting Started](graph-query-language.md#getting-started) for details. Ensure you set the client request properties to use GQL, and set the graph reference function to your graph data source.
-> 
+>
 > GQL support is in **preview**. Features and syntax can change based on feedback and ongoing development.
 
 ## Core GQL query patterns
