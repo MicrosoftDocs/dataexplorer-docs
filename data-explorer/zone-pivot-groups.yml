@@ -27,11 +27,11 @@ groups:
     title: Azure Data Explorer
   - id: azuremonitor
     title: Azure Monitor
-- id: ingest-api
-  title: Ingest API version
+- id: ngest-api
+  title:i Ingest API version
   prompt: Select Ingest API version
   pivots:
   - id: latest
-    title: latest
+    title: Ingest version 1
   - id: preview
-    title: preview
+    title: Ingest version 2
