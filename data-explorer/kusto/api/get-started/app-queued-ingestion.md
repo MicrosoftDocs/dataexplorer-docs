@@ -330,7 +330,7 @@ Add the following code:
 
 ---
 
-  ::: zone-end
+::: zone-end
 
 1. Ingest the *stormevent.csv* file by adding it to the batch queue.
 
@@ -461,7 +461,7 @@ Add the following code:
 
    Not applicable
 
-    ---
+  ---
 
 ::: zone-end
 
@@ -817,6 +817,7 @@ public class BatchIngestion {
   }
 }
 ```
+
 ---
 ::: zone-end
 
@@ -1470,11 +1471,11 @@ For example, you can modify the app replacing the *ingest from memory* code with
     import com.microsoft.azure.kusto.ingest.source.BlobSourceInfo;
     ```
 
-  ---
+    ---
 
-3. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
+1. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
 
-::: zone pivot="latest"
+  ::: zone pivot="latest"
 
    **Ingest V1**
 
@@ -1520,7 +1521,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
      ---
 
-  ::: zone-end
+   ::: zone-end
 
   ::: zone pivot="preview"
 
@@ -1548,7 +1549,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
    ---
 
-::: zone-end
+   ::: zone-end
 
 An outline of the updated code should look like this:
 
