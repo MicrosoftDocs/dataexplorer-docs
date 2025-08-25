@@ -1,6 +1,6 @@
 ---
 title: Share Queries From Azure Data Explorer Web UI
-description: 'Share queries from the Azure Data Explorer web UI: learn to copy links, export results, pin to dashboards, or open live in Excel — try it now.'
+description: 'Share queries from the Azure Data Explorer web UI: learn to copy links, export results, pin to dashboards, or open live in Excel.'
 ms.topic: how-to
 ms.date: 08/25/2025
 ms.custom:
@@ -12,9 +12,7 @@ ms.custom:
 
 # Share queries from Azure Data Explorer web UI
 
-Use the Azure Data Explorer web UI to share queries and results with colleagues, pin live visuals to dashboards, or open a refreshable workbook in Excel. This article shows how to copy a runnable query link, copy query text or results, download a KQL file, export results to CSV, and pin queries to dashboards.
-
-After reading this article, you’ll be able to:
+This article shows you how to use [Azure Data Explorer web UI](https://dataexplorer.azure.com/) to:
 
 - Copy a link that runs the query in protected (read-only) mode.
 - Copy the query text or the query results to the clipboard.
