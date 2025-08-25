@@ -1,0 +1,13 @@
+{
+  "groups": [
+    {
+      "id": "ingest-api",
+      "title": "Ingest API version",
+      "prompt": "Select the Ingest API version",
+      "pivots": [
+        { "id": "latest", "title": "Ingest v1" },
+        { "id": "preview", "title": "Ingest v2 (preview)" }
+      ]
+    }
+  ]
+}

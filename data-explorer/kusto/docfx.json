@@ -135,7 +135,7 @@
         "api/**": "microsoft-fabric || azure-data-explorer"
       },
       "zone_pivot_group_filename": {
-        "/*.md": "../zone-pivot-groups.json"
+        "**/*.md": "zone-pivot-groups.json"
       }
      }
     },
