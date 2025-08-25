@@ -72,7 +72,7 @@ To copy a link to the query to the clipboard, follow these steps:
 1. In the query window, select the query that you want to share.
 1. Select **Copy** on the toolbar. 
 
-    :::image type="content" source="media/web-share-query/select-copy.png" alt-text="Screenshot of the pin query window with the copy button on the toolbar highlighted." lightbox="media/web-share-query/select-query.png":::    
+    :::image type="content" source="media/web-share-query/select-copy.png" alt-text="Screenshot of the pin query window with the copy button on the toolbar highlighted." lightbox="media/web-share-query/select-copy.png":::    
 1. In the **Copy Query** window, select the **Copy Link** option, and then select **Copy**.
 
     :::image type="content" source="media/web-share-query/link-to-clipboard.png" alt-text="Screenshot of the link to clipboard button." lightbox="media/web-share-query/link-to-clipboard.png":::
@@ -92,7 +92,7 @@ To copy the text of the query to clipboard, follow these steps:
 1. In the query window, select the query that you want to share.
 1. Select **Copy** on the toolbar. 
 
-    :::image type="content" source="media/web-share-query/select-copy.png" alt-text="Screenshot of the pin query window with the copy button on the toolbar highlighted." lightbox="media/web-share-query/select-query.png":::  
+    :::image type="content" source="media/web-share-query/select-copy.png" alt-text="Screenshot of the pin query window with the copy button on the toolbar highlighted." lightbox="media/web-share-query/select-copy.png":::  
 1. In the **Copy Query** window, select the **Copy Query** option, and then select **Copy**.
 
     :::image type="content" source="media/web-share-query/link-query-to-clipboard.png" alt-text="Screenshot of the link, query to clipboard button." lightbox="media/web-share-query/link-query-to-clipboard.png":::
@@ -111,7 +111,7 @@ To copy results of the query to the clipboard, follow these steps:
 1. In the query window, select the query that you want to share.
 1. Select **Copy** on the toolbar. 
 
-    :::image type="content" source="media/web-share-query/select-copy.png" alt-text="Screenshot of the pin query window with the copy button on the toolbar highlighted." lightbox="media/web-share-query/select-query.png":::  
+    :::image type="content" source="media/web-share-query/select-copy.png" alt-text="Screenshot of the pin query window with the copy button on the toolbar highlighted." lightbox="media/web-share-query/select-copy.png":::  
 1. In the **Copy Query** window, select the **Query Results** option, and then select **Copy**.
 
     :::image type="content" source="media/web-share-query/link-query-results-to-clipboard.png" alt-text="Screenshot of the link, query, results to clipboard button." lightbox="media/web-share-query/link-query-results-to-clipboard.png":::
