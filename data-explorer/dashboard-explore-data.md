@@ -53,7 +53,7 @@ You can then explore your data without affecting the visualization shown in the 
 
     To add a filter:
 
-    1. Select **+ Add** > **Aggregation**.
+    1. Select **+ Add** > **Filter**.
 
         :::image type="content" source="media/dashboard-explore-data/filters-filter.png" alt-text="Screenshot of the filters dropdown with filters highlighted." lightbox="media/dashboard-explore-data/filters-filter.png":::
 
