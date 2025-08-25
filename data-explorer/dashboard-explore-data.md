@@ -33,7 +33,7 @@ This exploration can provide additional insights into your data, enhancing your 
 
 When you open the explore data window, you start with the same visualization as shown in the tile.
 
-:::image type="content" source="media/dashboard-explore-data/explore-data-areas.png" alt-text="Screenshot of a dashboard explore data window with the different areas highlighted." lightbox="media/dashboard-explore-data/explore-data-page.png":::
+:::image type="content" source="media/dashboard-explore-data/explore-data-page.png" alt-text="Screenshot of a dashboard explore data window with the different areas highlighted." lightbox="media/dashboard-explore-data/explore-data-page.png":::
 
 In the explore data window, you see the following areas:
 
