@@ -1,5 +1,5 @@
 ---
-title: Configure streaming ingestion on your Azure Data Explorer cluster
+title: Configure Streaming Ingestion on Your Azure Data Explorer Cluster
 description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion.
 ms.reviewer: alexefro
 ms.topic: how-to

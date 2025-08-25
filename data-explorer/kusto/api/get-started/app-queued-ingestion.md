@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 08/24/2025
 monikerRange: "azure-data-explorer"
 zone_pivot_groups: ingest-api
-zone_pivot_group_filename: data-explorer\zone-pivot-groups.json
+zone_pivot_group_filename: ../zone-pivot-groups.json
 
 #customer intent: To learn about creating an app to get data using queued ingestion.
 ---
