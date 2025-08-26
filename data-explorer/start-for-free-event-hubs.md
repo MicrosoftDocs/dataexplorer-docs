@@ -34,7 +34,7 @@ Use the following steps to create an Event Hubs data connection in your free clu
 1. Select the **Data connections** tab, and then select **Ingest from Event Hubs**.  
     The **Ingest data** window opens with the **Destination** tab selected.
 
-    :::image type="content" source="media/start-for-free-event-hubs/start-for-free-create-event-hubs-data-connection.png" alt-text="Screenshot of the data connections tab, showing the ingest from Event Hubs option." lightbox="media/start-for-free-event-hubs/start-for-free-create-event-hubs-data-connection.png":::
+    :::image type="content" source="media/start-for-free-event-hubs/start-for-free-create-event-hubs-data-connection.png" alt-text="Screenshot of the data connections tab, showing the ingestion from Event Hubs option." lightbox="media/start-for-free-event-hubs/start-for-free-create-event-hubs-data-connection.png":::
 
 1. Fill out the destination details using the information in [Destination tab](create-event-hubs-connection.md?tabs=portalEH#create-an-event-hub-data-connection), and then select **Next**.
 1. Fill out the source details using the information in Source tab, and then select **Next**.
@@ -43,7 +43,7 @@ Use the following steps to create an Event Hubs data connection in your free clu
 1. Select **Close** to return to the **My cluster** page.
 1. Select the **Data connections** tab, and verify that the connection appears and the status is **Connected**.
 
-    :::image type="content" source="media/start-for-free-event-hubs/start-for-free-verify-event-hubs-data-connection.png" alt-text="Screenshot of the data connections tab, showing the ingest from Event Hubs connection is connected." lightbox="media/start-for-free-event-hubs/start-for-free-verify-event-hubs-data-connection.png":::
+    :::image type="content" source="media/start-for-free-event-hubs/start-for-free-verify-event-hubs-data-connection.png" alt-text="Screenshot of the data connections tab, showing the ingestion from Event Hubs connection is connected." lightbox="media/start-for-free-event-hubs/start-for-free-verify-event-hubs-data-connection.png":::
 
 ## View data connection details
 
@@ -51,14 +51,14 @@ To view data connection details:
 
 1. In the **Data connections** tab, select the data connection name.
 
-    :::image type="content" source="media/start-for-free-event-hubs/start-for-free-view-event-hubs-data-connection-details.png" alt-text="Screenshot of the data connections tab, showing the ingest from Event Hubs connection details pane." lightbox="media/start-for-free-event-hubs/start-for-free-view-event-hubs-data-connection-details.png":::
+    :::image type="content" source="media/start-for-free-event-hubs/start-for-free-view-event-hubs-data-connection-details.png" alt-text="Screenshot of the data connections tab, showing the ingestion from Event Hubs connection details pane." lightbox="media/start-for-free-event-hubs/start-for-free-view-event-hubs-data-connection-details.png":::
 
-1. Optionally, select field dropdowns to view additional details.
+1. Optionally, select field dropdowns to view more details.
 1. Select **Close** to return to the **Data connections** tab.
 
 ## Reconnect a data connection
 
-If there is a connectivity issue with a connecting, its status in the **Data connections** tab will be **Disconnected**. The issue can result from the regeneration of the event hub account keys, or the deletion of the event hub.
+If there's a connectivity issue with a connecting, its status in the **Data connections** tab is set to **Disconnected**. The issue can result from the regeneration of the event hub account keys, or the deletion of the event hub.
 
 Use the following tab to determine how to resolve the issue:
 
