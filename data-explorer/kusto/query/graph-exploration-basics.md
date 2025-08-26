@@ -342,6 +342,64 @@ graph('BloodHound_Entra')
 |---|
 |{<br>  "onpremsyncenabled": "bool",<br>  "system_tags": "string",<br>  "lastcollected": "string",<br>  "pwdlastset": "string",<br>  "usertype": "string",<br>  "userprincipalname": "string",<br>  "email": "string",<br>  "tenantid": "guid",<br>  "name": "string",<br>  "lastseen": "string",<br>  "displayname": "string",<br>  "enabled": "bool",<br>  "title": "string",<br>  "onpremid": "string",<br>  "objectid": "guid",<br>  "whencreated": "string"<br>}|
 
+**Find all properties of all nodes by label**:
+
+This advanced schema discovery query identifies all property names that exist across nodes of each label type. Unlike the previous query that shows the schema structure, this query aggregates property names across all nodes of the same type, helping you understand which properties are consistently available and which might be optional or rare. This example uses the [`LDBC_SNB_Interactive` graph](graph-sample-data.md#ldbc-snb-interactive) to explore the complete property landscape of different entity types in the social network dataset.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PP2%2BDQAzF93wKbzmkIKXqnCXpUinKkjGqkAMOXOH%2ByOempeLDlwOUUAkvd9b7Pfu5ZPSVWh%2Ff9ofsfNpn71aIMRd9p3Wy6qCMempQ8gqUdQUlK%2BjLs%2FukXOLriUVTgB1EeQMNXqmJ7fiZTB2Ye4reN%2B3c4yyoYV6sHqAfj7aAWttih8w4hx9cB98VMYEO1gkZL616UpeXj2RGhi9jkPUv%2FU9qsKYskMyN28k4ZZ2iDEc8jgFxIK0nd1NBWNsywss7FlYkcG3HQb1Leh1e%2FwDFz22ZfwEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+graph('LDBC_SNB_Interactive')
+| graph-match (node)
+    project properties = node, labels = labels(node)
+| mv-apply properties on (
+        mv-expand kind=array properties
+        | where isnotempty(properties[1])
+        | summarize properties = make_set(properties[0])
+    )
+| mv-expand label = labels to typeof(string)
+| summarize properties =make_set(properties) by label
+| take 3
+```
+
+|label|properties|
+|---|---|
+|TAGCLASS|[<br>  "id",<br>  "node_id",<br>  "lbl",<br>  "name",<br>  "url"<br>]|
+|TAG|[<br>  "id",<br>  "node_id",<br>  "lbl",<br>  "name",<br>  "url"<br>]|
+|FORUM|[<br>  "id",<br>  "creationDate",<br>  "node_id",<br>  "lbl",<br>  "title"<br>]|
+
+**Find all properties of all edges by label**:
+
+This query performs schema discovery for edge (relationship) properties, showing what information is stored with each type of relationship in your graph. Understanding edge properties is crucial for analyzing relationship metadata such as timestamps, weights, confidence scores, or other attributes that provide context about connections. This example uses the [`BloodHound_AD` graph](graph-sample-data.md#bloodhound-active-directory-dataset) to explore the properties available on different types of Active Directory privilege relationships.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PywrCQAxF9%2F2K7JwBC4rrLhQX%2FoOIpG1sx3YezMRHpR9vR4tWMJsEcu7NTeXR1WK2aa0td%2FZiyuN6O5NJD1VcpBq5qEHIdE%2BHVMgEhnLenqng2B15VhQgA5pDizm1cX4PgqKNvqboXNtNaWtAvJxiDQDdHZoSGmXKDL3HKfzherjV5AlUMJZJO%2B7El9ovD3JChovW6NWDfjNqbOgYiKfCxSgcs45RXh98PgG2wJ0jexKBvTJVhP%2Ff%2BHNCQt69jQYVD3tYPQGByglydQEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+graph('BloodHound_AD')
+| graph-match ()-[e]-()
+    project properties = e, labels = labels(e)
+| mv-apply properties on (
+        mv-expand kind=array properties
+        | where isnotempty(properties[1])
+        | summarize properties = make_set(properties[0])
+    )
+| mv-expand label = labels to typeof(string)
+| summarize properties =make_set(properties) by label
+| take 3
+```
+
+|label|properties|
+|---|---|
+|GetChangesAll|[<br>  "id",<br>  "lbl",<br>  "src",<br>  "dst",<br>  "properties",<br>  "lastseen"<br>]|
+|OwnsRaw|[<br>  "id",<br>  "lbl",<br>  "src",<br>  "dst",<br>  "properties",<br>  "lastseen"<br>]|
+|AddKeyCredentialLink|[<br>  "id",<br>  "lbl",<br>  "src",<br>  "dst",<br>  "properties",<br>  "lastseen"<br>]|
+
 **Find nodes with specific property values**:
 
 Use this pattern to locate entities with particular characteristics or to validate data quality by checking for expected property values. This example uses the [`BloodHound_Entra` graph](graph-sample-data.md#bloodhound-entra-dataset) to find nodes with specific name properties in Microsoft Entra environments.
@@ -364,6 +422,42 @@ graph('BloodHound_Entra')
 |1|JJACOB@PHANTOMCORP.ONMICROSOFT.COM|
 |10|CJACKSON@PHANTOMCORP.ONMICROSOFT.COM|
 |12|RHALL@PHANTOMCORP.ONMICROSOFT.COM|
+
+### Topology of the graph
+
+Understanding the overall topology of your graph reveals the types of connections that exist between different entity types. This analysis helps you understand the data model, identify the most common relationship patterns, and discover potential paths for traversal queries. The topology query shows which node labels connect to which other node labels through specific edge types, providing a comprehensive view of your graph's structure.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32QwW7CMAyG730K35pKi3gCNgnYTtxA4oAmFFLTZmrjKHHZinj4me6wQqf5Esv29%2FuPZ7MtBWqo6oFOwDVCFU2oQcOuNpwnsOQ9WsYSmOBTai%2FZMKHy9WqxPLw5b7x1psmL7PrD6tawrUGlaAu9x3f9rMrERQYSIdKHqMGGumhxbY7YJJhDMyQD8QSvZTXpoNRXmFi2sSP%2F2B70r9CeNX4F48tfDZkZ6ckXuA9IJ5U4Ol%2FdQyNTgt1Z%2FB98dCb01OxfEqlrWxPdBWFJnWfh7O1VBRz7sYHRUaZ3%2BAY9FMKWwwEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+//Topology of the graph - What's connected to what?
+graph('LDBC_Financial')
+| graph-match (src)-[e]->(dst)
+    project SourceLabels = labels(src), EdgeLabels = labels(e), DestinationLabels = labels(dst)
+| mv-expand EdgeLabel = EdgeLabels to typeof(string)
+| mv-expand SourceLabel = SourceLabels to typeof(string)
+| mv-expand DestinationLabel = DestinationLabels to typeof(string)
+| summarize Count = count() by SourceLabel, EdgeLabel, DestinationLabel
+```
+
+|SourceLabel|EdgeLabel|DestinationLabel|Count|
+|---|---|---|---|
+|COMPANY|GUARANTEE|COMPANY|202|
+|COMPANY|APPLY|LOAN|449|
+|PERSON|APPLY|LOAN|927|
+|ACCOUNT|REPAY|LOAN|2747|
+|LOAN|DEPOSIT|ACCOUNT|2758|
+|ACCOUNT|TRANSFER|ACCOUNT|8132|
+|ACCOUNT|WITHDRAW|ACCOUNT|9182|
+|PERSON|GUARANTEE|PERSON|377|
+|COMPANY|OWN|ACCOUNT|671|
+|COMPANY|INVEST|COMPANY|679|
+|PERSON|OWN|ACCOUNT|1384|
+|MEDIUM|SIGN_IN|ACCOUNT|2489|
+|PERSON|INVEST|COMPANY|1304|
 
 ## Related content
 
