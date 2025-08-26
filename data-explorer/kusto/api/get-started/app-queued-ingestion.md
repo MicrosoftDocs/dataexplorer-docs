@@ -1428,8 +1428,6 @@ For example, you can modify the app replacing the *ingest from memory* code with
     import com.microsoft.azure.kusto.ingest.source.BlobSourceInfo;
     ```
 
-   ---
-
 1. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
     ::: zone pivot="latest"
     
