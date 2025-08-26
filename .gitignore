@@ -7,3 +7,5 @@ _repo.*/
 .devcontainer/
 
 .openpublishing.buildcore.ps1
+
+out/
