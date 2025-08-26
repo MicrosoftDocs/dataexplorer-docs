@@ -590,9 +590,10 @@ This example shows how GQL lets you express complex multi-pattern queries with c
 
 ## Social networks use case: Friend recommendations
 
-Social media platforms use GQL to suggest potential friends based on mutual relationships.
+Social media platforms use GQL to suggest potential friends based on mutual relationships.  
+We will be using the LDBC Social Network Benchmark dataset (see [GQL Sample Data](graph-sample-data.md#ldbc-snb-interactive)).  
 
-1. Set up the social graph.
+1. Set up the graph reference to point to the LDBC dataset.
 
     <!-- csl -->
     ```gql

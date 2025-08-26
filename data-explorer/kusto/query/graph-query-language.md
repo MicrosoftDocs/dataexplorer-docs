@@ -80,11 +80,7 @@ Before you use GQL, create a graph data source. This article uses an in-memory m
 
 To run GQL queries, set three client request properties. Set these properties through the SDK, API, or directly in the Kusto Explorer by using directives.
 
-### Use Kusto Web Explorer to set client request properties
-
-TODO
-
-### Use Kusto Explorer to set client request properties
+### Set client request properties in Kusto's UI
 
 > [!IMPORTANT]
 > Run each directive separately before you run your GQL query. The directives set up the query environment for GQL execution.
@@ -109,7 +105,7 @@ To use labels in GQL, set the label column name:
 > [!TIP]
 > Labels are optional in GQL, but they're often used to filter nodes and edges by type. Set the label column name to use labels in your GQL queries.
 
-### Use SDK or API to set client request properties
+### Set client request properties in Kusto's SDKs or API
 
 For programmatic access, set these client request properties:
 
