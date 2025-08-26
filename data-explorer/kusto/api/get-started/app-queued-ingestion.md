@@ -1004,8 +1004,6 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     import com.microsoft.azure.kusto.ingest.source.StreamSourceInfo;
     ```
 
-   ---
-
 1. Add an in-memory string with the data to ingest.
 
    #### [C\#](#tab/csharp)
@@ -1041,136 +1039,122 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     StreamSourceInfo streamSourceInfo = new StreamSourceInfo(stream);
     ```
 
-    ---
-
 1. Set the ingestion properties to not ignore the first record as the in-memory string doesn't have a header row.
 
-  ::: zone pivot="latest"
+    ::: zone pivot="latest"
 
-  #### [C\#](#tab/csharp)
-
-  ```csharp
-  ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
-  ```
-
-  #### [Python](#tab/python)
-
-  ```python
-  ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
-  ```
-
-  #### [TypeScript](#tab/typescript)
-
-  ```typescript
-  ingestProps.ignoreFirstRecord = false;
-  ```
-
-  <!-- #### [Go](#tab/go) -->
-
-  #### [Java](#tab/java)
-
-  ```java
-  ingestProps.setIgnoreFirstRecord(false);
-  ```
-
-  ---
-
-::: zone-end
-
-::: zone pivot="preview"
-
-  #### [C\#](#tab/csharp)
-  
-  ```csharp
-  // Remove the IngestionProperties object `props`
-  ```
-  
-  #### [Python](#tab/python)
-  
-  Not applicable
-  
-  #### [TypeScript](#tab/typescript)
-  
-  Not applicable
-  
-  <!-- #### [Go](#tab/go) -->
-  
-  #### [Java](#tab/java)
-  
-  Not applicable
-  
-  ---
-  
-  ::: zone-end
-
+    #### [C\#](#tab/csharp)
+    
+    ```csharp
+    ingestProps.AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "False" }};
+    ```
+    
+    #### [Python](#tab/python)
+    
+    ```python
+    ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
+    ```
+    
+    #### [TypeScript](#tab/typescript)
+    
+    ```typescript
+    ingestProps.ignoreFirstRecord = false;
+    ```
+    
+    <!-- #### [Go](#tab/go) -->
+    
+    #### [Java](#tab/java)
+    
+    ```java
+    ingestProps.setIgnoreFirstRecord(false);
+    ```
+    
+    ::: zone-end
+    
+    ::: zone pivot="preview"
+    
+    #### [C\#](#tab/csharp)
+    
+    ```csharp
+    // Remove the IngestionProperties object `props`
+    ```
+    
+    #### [Python](#tab/python)
+    
+    Not applicable
+    
+    #### [TypeScript](#tab/typescript)
+    
+    Not applicable
+    
+    <!-- #### [Go](#tab/go) -->
+    
+    #### [Java](#tab/java)
+    
+    Not applicable
+    
+    ::: zone-end
+    
 1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
-
   ::: zone pivot="latest"
 
-  #### [C\#](#tab/csharp)
-
-  ```csharp
-  _= await ingestClient.IngestFromStreamAsync(stringStream, ingestProps, new StreamSourceOptions {Size = stringStream.Length});
-  ```
-  
-  #### [Python](#tab/python)
-  
-  ```python
-  stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
-  ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
-  ```
-  
-  #### [TypeScript](#tab/typescript)
-  
-  ```typescript
-  stringStream.size = singleLine.length;
-  await ingestClient.ingestFromStream(stringStream, ingestProps);
-  ```
-  
-  <!-- #### [Go](#tab/go) -->
-  
-  #### [Java](#tab/java)
-  
-  ```java
-  ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
-  ```
-
-  ---
-
+      #### [C\#](#tab/csharp)
+    
+      ```csharp
+      _= await ingestClient.IngestFromStreamAsync(stringStream, ingestProps, new StreamSourceOptions {Size = stringStream.Length});
+      ```
+      
+      #### [Python](#tab/python)
+      
+      ```python
+      stream_descriptor = StreamDescriptor(string_stream, is_compressed=False, size=len(single_line))
+      ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
+      ```
+      
+      #### [TypeScript](#tab/typescript)
+      
+      ```typescript
+      stringStream.size = singleLine.length;
+      await ingestClient.ingestFromStream(stringStream, ingestProps);
+      ```
+      
+      <!-- #### [Go](#tab/go) -->
+      
+      #### [Java](#tab/java)
+      
+      ```java
+      ingestClient.ingestFromStream(streamSourceInfo, ingestProps);
+      ```
   ::: zone-end
-
   ::: zone pivot="preview"
 
-
-  #### [C\#](#tab/csharp)
-
-  ```csharp
-      var streamSource = new StreamSource(stringStream, DataSourceCompressionType.None, DataSourceFormat.csv);
-
-      await ingestClient.IngestAsync(streamSource, database, table);
-  ```
-
-  #### [Python](#tab/python)
-
-  Not applicable
-
-  #### [TypeScript](#tab/typescript)
-
-  Not applicable
-
-  <!-- #### [Go](#tab/go) -->
-
-  #### [Java](#tab/java)
-
-  Not applicable
-
-  ---
+      #### [C\#](#tab/csharp)
+    
+      ```csharp
+          var streamSource = new StreamSource(stringStream, DataSourceCompressionType.None, DataSourceFormat.csv);
+    
+          await ingestClient.IngestAsync(streamSource, database, table);
+      ```
+    
+      #### [Python](#tab/python)
+    
+      Not applicable
+    
+      #### [TypeScript](#tab/typescript)
+    
+      Not applicable
+    
+      <!-- #### [Go](#tab/go) -->
+    
+      #### [Java](#tab/java)
+    
+      Not applicable
 
   ::: zone-end
 
 An outline of the updated code should look like this:
 
-  ::: zone pivot="latest"
+::: zone pivot="latest"
 
 #### [C\#](#tab/csharp)
 
