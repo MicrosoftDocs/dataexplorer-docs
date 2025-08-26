@@ -889,7 +889,28 @@ plotly_graph_fl(edges, nodes,
 
 ---
 
-## Output
+**Output**
+
+:::image type="content" source="media/plotly-graph-fl/plotly-graph-fl-sample.png" alt-text="A graph containing a sample dataset.":::
+
+## Example 2: BloodHound AD dataset visualization
+
+This example demonstrates visualization of a larger, more complex graph using the BloodHound Active Directory dataset. The BloodHound AD graph contains security relationships and potential attack paths in an Active Directory environment. For more information about this and other available graph datasets, see [Graph sample datasets and examples](../query/graph-sample-data.md).
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
+
+```kusto
+let G = graph('BloodHound_AD');
+let E = G
+    | graph-to-table edges with_source_id=sourceId with_target_id=targetId;
+let V = G
+    | graph-to-table nodes with_node_id=nodeId;
+plotly_graph_fl(E, V, node_id_column="nodeId", source_id_column="sourceId", target_id_column="targetId", diagram_title="BloodHound AD dataset")
+| render plotly
+```
+
+:::image type="content" source="media/plotly-graph-fl/plotly-graph-fl-bloodhound_ad.png" alt-text="A graph containing the BloodHound Active Directory dataset with security relationships and potential attack paths.":::
 
 ::: moniker range="azure-data-explorer"
 The output is a Plotly JSON string that can be rendered using '| render plotly' or in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards](/azure/data-explorer/azure-data-explorer-dashboards).
