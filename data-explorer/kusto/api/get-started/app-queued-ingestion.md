@@ -257,8 +257,6 @@ Add the following code:
       }
     }
     ```
-    
-    ---
 
 1. Create a connection string builder object that defines the data ingestion URI, where possible, using the sharing the same authentication credentials as the cluster URI. Replace the `<your_ingestion_uri>` placeholder with data ingestion URI.
 
@@ -305,8 +303,6 @@ Add the following code:
     ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
     ```
         
-    ---
-        
     ::: zone-end
     ::: zone pivot="preview"
     
@@ -331,9 +327,7 @@ Add the following code:
     #### [Java](#tab/java)
     
     Not applicable
-        
-    ---
-        
+
     ::: zone-end
     
 1. Ingest the *stormevent.csv* file by adding it to the batch queue.
@@ -413,11 +407,8 @@ Add the following code:
       ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
     }
     ```
-    
-    ---
-    
+   
     ::: zone-end
-    
     ::: zone pivot="preview"
 
     You use the following objects and properties:
@@ -459,8 +450,6 @@ Add the following code:
     #### [Java](#tab/java)
     
     Not applicable
-    
-    ---
     
     ::: zone-end
     
@@ -549,367 +538,367 @@ Add the following code:
     ```
     
     ---
+
+The complete code should look like this:
+
+::: zone pivot="latest"
+
+#### [C\#](#tab/csharp)
+
+```csharp
+using System.Data;
+
+using Kusto.Data;
+using Kusto.Data.Common;
+using Kusto.Data.Net.Client;
+using Kusto.Ingest;
+
+namespace BatchIngest;
     
-    The complete code should look like this:
-    
-    ::: zone pivot="latest"
-    
-    #### [C\#](#tab/csharp)
-    
-    ```csharp
-    using System.Data;
-    
-    using Kusto.Data;
-    using Kusto.Data.Common;
-    using Kusto.Data.Net.Client;
-    using Kusto.Ingest;
-    
-    namespace BatchIngest;
-        
-    class BatchIngest
+class BatchIngest
+{
+    static async Task Main()
     {
-        static async Task Main()
+        var clusterUri = "<your cluster>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
+        var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadUserPromptAuthentication();
+    
+        using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
+    
+        var database = "<your database>";
+        var table = "MyStormEvents";
+    
+        var query = table + " | count";
+
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null))
         {
-            var clusterUri = "<your cluster>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
-            var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadUserPromptAuthentication();
-        
-            using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
-        
-            var database = "<your database>";
-            var table = "MyStormEvents";
-        
-            var query = table + " | count";
-    
-            using (var response = await kustoClient.ExecuteQueryAsync(database, query, null))
-            {
-                Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
-                PrintResultsAsValueList(response);
-            }
-            
-            using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(clusterKcsb);
-      
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
-      
-            Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
-            var ingestProps = new KustoIngestionProperties(database, table) {
-                Format = DataSourceFormat.csv,
-                AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
-            };
-            await ingestClient.IngestFromStorageAsync(filePath, ingestProps);
-            
-            Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
-            await Task.Delay(TimeSpan.FromSeconds(60));
-    
-            using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
-                Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
-                PrintResultsAsValueList(response);
-            }
-    
-            query = table + " | top 1 by ingestion_time()";
-            using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
-                Console.WriteLine("\nLast ingested row:");
-                PrintResultsAsValueList(response);
-            }
+            Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
+            PrintResultsAsValueList(response);
         }
         
-        static void PrintResultsAsValueList(IDataReader response)
+        using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(clusterKcsb);
+  
+        string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
+  
+        Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
+        var ingestProps = new KustoIngestionProperties(database, table) {
+            Format = DataSourceFormat.csv,
+            AdditionalProperties = new Dictionary<string, string>() {{ "ignoreFirstRecord", "True" }}
+        };
+        await ingestClient.IngestFromStorageAsync(filePath, ingestProps);
+        
+        Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
+        await Task.Delay(TimeSpan.FromSeconds(60));
+
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
+            Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
+            PrintResultsAsValueList(response);
+        }
+
+        query = table + " | top 1 by ingestion_time()";
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
+            Console.WriteLine("\nLast ingested row:");
+            PrintResultsAsValueList(response);
+        }
+    }
+    
+    static void PrintResultsAsValueList(IDataReader response)
+    {
+        while (response.Read())
         {
-            while (response.Read())
+            for (var i = 0; i < response.FieldCount; i++)
             {
-                for (var i = 0; i < response.FieldCount; i++)
-                {
-                    object val = response.GetValue(i);
-                    string value = val.ToString() ?? "None";
-                    Console.WriteLine("\t{0} - {1}", response.GetName(i), value);
-                }
+                object val = response.GetValue(i);
+                string value = val.ToString() ?? "None";
+                Console.WriteLine("\t{0} - {1}", response.GetName(i), value);
             }
         }
     }
-    ```
-    
-    #### [Python](#tab/python)
-    
-    ```python
-    import os
-    import time
-    from azure.kusto.data import KustoClient, KustoConnectionStringBuilder, DataFormat
-    from azure.kusto.ingest import QueuedIngestClient, IngestionProperties
-    from azure.identity import InteractiveBrowserCredential
-    
-    def main():
-      credentials = InteractiveBrowserCredential()
-      cluster_uri = "<your_cluster_uri>"
-      cluster_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(cluster_uri, credentials)
-      ingest_uri = "<your_ingestion_uri>"
-      ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, credentials)
-    
-    
-      with KustoClient(cluster_kcsb) as kusto_client:
-        with QueuedIngestClient(ingest_kcsb) as ingest_client:
-          database = "<your_database>"
-          table = "MyStormEvents"
-          file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
-    
-          query = table + " | count"
-          response = kusto_client.execute_query(database, query)
-          print("\nNumber of rows in " + table + " BEFORE ingestion:")
-          print_result_as_value_list(response)
-    
-          print("\nIngesting data from file: \n\t " + file_path)
-          ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
-          ingest_client.ingest_from_file(file_path, ingest_props)
-    
-          print("\nWaiting 30 seconds for ingestion to complete ...")
-          time.sleep(30)
-    
-          response = kusto_client.execute_query(database, query)
-          print("\nNumber of rows in " + table + " AFTER ingesting the file:")
-          print_result_as_value_list(response)
-    
-          query = table + " | top 1 by ingestion_time()"
-          response = kusto_client.execute_query(database, query)
-          print("\nLast ingested row:")
-          print_result_as_value_list(response)
-    
-    def print_result_as_value_list(response):
-      cols = (col.column_name for col in response.primary_results[0].columns)
-    
-      for row in response.primary_results[0]:
-        for col in cols:
-          print("\t", col, "-", row[col])
-    
-    if __name__ == "__main__":
-      main()
-    ```
-    
-    #### [TypeScript](#tab/typescript)
-    
-    ```typescript
-    import path from 'path';
-    import { Client, KustoConnectionStringBuilder } from "azure-kusto-data";
-    import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
-    import { InteractiveBrowserCredential } from "@azure/identity";
-    
-    async function main() {
-      const credentials = new InteractiveBrowserCredential();
-      const clusterUri = "<your_cluster_uri>";
-      const clusterKcsb = KustoConnectionStringBuilder.withTokenCredential(clusterUri, credentials);
-      const ingestUri = "<your_ingestion_uri>";
-      const ingestKcsb = KustoConnectionStringBuilder.withTokenCredential(ingestUri, credentials);
-      
-      const kustoClient = new Client(clusterKcsb);
-      const ingestClient = new IngestClient(ingestKcsb);
-    
-      const database = "<your_database>";
-      const table = "MyStormEventsJS";
-    
-      const filePath = path.join(__dirname, "stormevents.csv");
-    
-      const query = table + ` | count`;
-      let response = await kustoClient.execute(database, query);
-      printResultsAsValueList(response);
-    
-      console.log("\nIngesting data from file: \n\t " + filePath);
-      const ingestProps = new IngestionProperties({
-        database: database,
-        table: table,
-        format: DataFormat.CSV,
-        ignoreFirstRecord: true
-      });
-      await ingestClient.ingestFromFile(filePath, ingestProps);
-    
-      console.log("\nWaiting 30 seconds for ingestion to complete ...");
-      await sleep(30000);
-    
-      response = await kustoClient.execute(database, queryCount);
-      console.log("\nNumber of rows in " + table + " AFTER ingesting the file:");
-      printResultsAsValueList(response);
-    
+}
+```
+
+#### [Python](#tab/python)
+
+```python
+import os
+import time
+from azure.kusto.data import KustoClient, KustoConnectionStringBuilder, DataFormat
+from azure.kusto.ingest import QueuedIngestClient, IngestionProperties
+from azure.identity import InteractiveBrowserCredential
+
+def main():
+  credentials = InteractiveBrowserCredential()
+  cluster_uri = "<your_cluster_uri>"
+  cluster_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(cluster_uri, credentials)
+  ingest_uri = "<your_ingestion_uri>"
+  ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, credentials)
+
+
+  with KustoClient(cluster_kcsb) as kusto_client:
+    with QueuedIngestClient(ingest_kcsb) as ingest_client:
+      database = "<your_database>"
+      table = "MyStormEvents"
+      file_path = os.path.join(os.path.dirname(__file__), "stormevents.csv")
+
+      query = table + " | count"
+      response = kusto_client.execute_query(database, query)
+      print("\nNumber of rows in " + table + " BEFORE ingestion:")
+      print_result_as_value_list(response)
+
+      print("\nIngesting data from file: \n\t " + file_path)
+      ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+      ingest_client.ingest_from_file(file_path, ingest_props)
+
+      print("\nWaiting 30 seconds for ingestion to complete ...")
+      time.sleep(30)
+
+      response = kusto_client.execute_query(database, query)
+      print("\nNumber of rows in " + table + " AFTER ingesting the file:")
+      print_result_as_value_list(response)
+
       query = table + " | top 1 by ingestion_time()"
-      response = await kustoClient.execute(database, query);
-      console.log("\nLast ingested row:");
-      printResultsAsValueList(response);
+      response = kusto_client.execute_query(database, query)
+      print("\nLast ingested row:")
+      print_result_as_value_list(response)
+
+def print_result_as_value_list(response):
+  cols = (col.column_name for col in response.primary_results[0].columns)
+
+  for row in response.primary_results[0]:
+    for col in cols:
+      print("\t", col, "-", row[col])
+
+if __name__ == "__main__":
+  main()
+```
+
+#### [TypeScript](#tab/typescript)
+
+```typescript
+import path from 'path';
+import { Client, KustoConnectionStringBuilder } from "azure-kusto-data";
+import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
+import { InteractiveBrowserCredential } from "@azure/identity";
+
+async function main() {
+  const credentials = new InteractiveBrowserCredential();
+  const clusterUri = "<your_cluster_uri>";
+  const clusterKcsb = KustoConnectionStringBuilder.withTokenCredential(clusterUri, credentials);
+  const ingestUri = "<your_ingestion_uri>";
+  const ingestKcsb = KustoConnectionStringBuilder.withTokenCredential(ingestUri, credentials);
+  
+  const kustoClient = new Client(clusterKcsb);
+  const ingestClient = new IngestClient(ingestKcsb);
+
+  const database = "<your_database>";
+  const table = "MyStormEventsJS";
+
+  const filePath = path.join(__dirname, "stormevents.csv");
+
+  const query = table + ` | count`;
+  let response = await kustoClient.execute(database, query);
+  printResultsAsValueList(response);
+
+  console.log("\nIngesting data from file: \n\t " + filePath);
+  const ingestProps = new IngestionProperties({
+    database: database,
+    table: table,
+    format: DataFormat.CSV,
+    ignoreFirstRecord: true
+  });
+  await ingestClient.ingestFromFile(filePath, ingestProps);
+
+  console.log("\nWaiting 30 seconds for ingestion to complete ...");
+  await sleep(30000);
+
+  response = await kustoClient.execute(database, queryCount);
+  console.log("\nNumber of rows in " + table + " AFTER ingesting the file:");
+  printResultsAsValueList(response);
+
+  query = table + " | top 1 by ingestion_time()"
+  response = await kustoClient.execute(database, query);
+  console.log("\nLast ingested row:");
+  printResultsAsValueList(response);
+}
+
+function sleep(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+function printResultsAsValueList(response) {
+  let cols = response.primaryResults[0].columns;
+
+  for (row of response.primaryResults[0].rows()) {
+    for (col of cols)
+      console.log("\t", col.name, "-", row.getValueAt(col.ordinal) != null ? row.getValueAt(col.ordinal).toString() : "None")
+  }
+}
+
+main();
+```
+
+#### [Java](#tab/java)
+
+```java
+import com.microsoft.azure.kusto.data.Client;
+import com.microsoft.azure.kusto.data.ClientFactory;
+import com.microsoft.azure.kusto.data.KustoOperationResult;
+import com.microsoft.azure.kusto.data.KustoResultSetTable;
+import com.microsoft.azure.kusto.data.KustoResultColumn;
+import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
+import com.microsoft.azure.kusto.ingest.IngestClientFactory;
+import com.microsoft.azure.kusto.ingest.IngestionProperties;
+import com.microsoft.azure.kusto.ingest.IngestionProperties.DataFormat;
+import com.microsoft.azure.kusto.ingest.QueuedIngestClient;
+import com.microsoft.azure.kusto.ingest.source.FileSourceInfo;
+
+public class BatchIngestion {
+  public static void main(String[] args) throws Exception {
+    String clusterUri = "<your_cluster_uri>";
+    ConnectionStringBuilder clusterKcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
+    String ingestUri = "<your_ingestion_uri>";
+    ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
+
+    try (Client kustoClient = ClientFactory.createClient(clusterKcsb);
+         QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
+      String database = "<your_database>";
+      String table = "MyStormEvents";
+      FileSourceInfo fileSourceInfo = new FileSourceInfo(System.getProperty("user.dir") + "\\stormevents.csv", 0);
+
+      String query = table + " | count";
+      KustoOperationResult results = kustoClient.execute(database, query);
+      KustoResultSetTable primaryResults = results.getPrimaryResults();
+      System.out.println("\nNumber of rows in " + table + " BEFORE ingestion:");
+      printResultsAsValueList(primaryResults);
+
+      System.out.println("\nIngesting data from file: \n\t " + fileSourceInfo.toString());
+      IngestionProperties ingestProps = new IngestionProperties(database, table);
+      ingestProps.setDataFormat(DataFormat.CSV);
+      ingestProps.setIgnoreFirstRecord(true);
+      ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
+
+      System.out.println("\nWaiting 30 seconds for ingestion to complete ...");
+      Thread.sleep(30000);
+
+      response = kustoClient.execute(database, query);
+      primaryResults = response.getPrimaryResults();
+      System.out.println("\nNumber of rows in " + table + " AFTER ingesting the file:");
+      printResultsAsValueList(primaryResults);
+
+      query = table + " | top 1 by ingestion_time()";
+      response = kustoClient.execute(database, query);
+      primaryResults = response.getPrimaryResults();
+      System.out.println("\nLast ingested row:");
+      printResultsAsValueList(primaryResults);
     }
-    
-    function sleep(time) {
-      return new Promise(resolve => setTimeout(resolve, time));
-    }
-    function printResultsAsValueList(response) {
-      let cols = response.primaryResults[0].columns;
-    
-      for (row of response.primaryResults[0].rows()) {
-        for (col of cols)
-          console.log("\t", col.name, "-", row.getValueAt(col.ordinal) != null ? row.getValueAt(col.ordinal).toString() : "None")
+  }
+
+  public static void printResultsAsValueList(KustoResultSetTable results) {
+    while (results.next()) {
+      KustoResultColumn[] columns = results.getColumns();
+      for (int i = 0; i < columns.length; i++) {
+        System.out.println("\t" + columns[i].getColumnName() + " - " + (results.getObject(i) == null ? "None" : results.getString(i)));
       }
     }
+  }
+}
+```
+
+---
+
+::: zone-end
+
+::: zone pivot="preview"
+
+#### [C\#](#tab/csharp)
+
+ ```csharp
+using System.Data;
+using Azure.Identity;
+using Kusto.Data;
+using Kusto.Data.Common;
+using Kusto.Data.Net.Client;
+using Kusto.Ingest.V2;
+
+namespace BatchIngest;
     
-    main();
-    ```
-    
-    #### [Java](#tab/java)
-    
-    ```java
-    import com.microsoft.azure.kusto.data.Client;
-    import com.microsoft.azure.kusto.data.ClientFactory;
-    import com.microsoft.azure.kusto.data.KustoOperationResult;
-    import com.microsoft.azure.kusto.data.KustoResultSetTable;
-    import com.microsoft.azure.kusto.data.KustoResultColumn;
-    import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
-    import com.microsoft.azure.kusto.ingest.IngestClientFactory;
-    import com.microsoft.azure.kusto.ingest.IngestionProperties;
-    import com.microsoft.azure.kusto.ingest.IngestionProperties.DataFormat;
-    import com.microsoft.azure.kusto.ingest.QueuedIngestClient;
-    import com.microsoft.azure.kusto.ingest.source.FileSourceInfo;
-    
-    public class BatchIngestion {
-      public static void main(String[] args) throws Exception {
-        String clusterUri = "<your_cluster_uri>";
-        ConnectionStringBuilder clusterKcsb = ConnectionStringBuilder.createWithUserPrompt(clusterUri);
-        String ingestUri = "<your_ingestion_uri>";
-        ConnectionStringBuilder ingestKcsb = ConnectionStringBuilder.createWithUserPrompt(ingestUri);
-    
-        try (Client kustoClient = ClientFactory.createClient(clusterKcsb);
-             QueuedIngestClient ingestClient = IngestClientFactory.createClient(ingestKcsb)) {
-          String database = "<your_database>";
-          String table = "MyStormEvents";
-          FileSourceInfo fileSourceInfo = new FileSourceInfo(System.getProperty("user.dir") + "\\stormevents.csv", 0);
-    
-          String query = table + " | count";
-          KustoOperationResult results = kustoClient.execute(database, query);
-          KustoResultSetTable primaryResults = results.getPrimaryResults();
-          System.out.println("\nNumber of rows in " + table + " BEFORE ingestion:");
-          printResultsAsValueList(primaryResults);
-    
-          System.out.println("\nIngesting data from file: \n\t " + fileSourceInfo.toString());
-          IngestionProperties ingestProps = new IngestionProperties(database, table);
-          ingestProps.setDataFormat(DataFormat.CSV);
-          ingestProps.setIgnoreFirstRecord(true);
-          ingestClient.ingestFromFile(fileSourceInfo, ingestProps);
-    
-          System.out.println("\nWaiting 30 seconds for ingestion to complete ...");
-          Thread.sleep(30000);
-    
-          response = kustoClient.execute(database, query);
-          primaryResults = response.getPrimaryResults();
-          System.out.println("\nNumber of rows in " + table + " AFTER ingesting the file:");
-          printResultsAsValueList(primaryResults);
-    
-          query = table + " | top 1 by ingestion_time()";
-          response = kustoClient.execute(database, query);
-          primaryResults = response.getPrimaryResults();
-          System.out.println("\nLast ingested row:");
-          printResultsAsValueList(primaryResults);
-        }
-      }
-    
-      public static void printResultsAsValueList(KustoResultSetTable results) {
-        while (results.next()) {
-          KustoResultColumn[] columns = results.getColumns();
-          for (int i = 0; i < columns.length; i++) {
-            System.out.println("\t" + columns[i].getColumnName() + " - " + (results.getObject(i) == null ? "None" : results.getString(i)));
-          }
-        }
-      }
-    }
-    ```
-    
-    ---
-    
-    ::: zone-end
-    
-    ::: zone pivot="preview"
-    
-    #### [C\#](#tab/csharp)
-    
-     ```csharp
-    using System.Data;
-    using Azure.Identity;
-    using Kusto.Data;
-    using Kusto.Data.Common;
-    using Kusto.Data.Net.Client;
-    using Kusto.Ingest.V2;
-    
-    namespace BatchIngest;
-        
-    class BatchIngest
+class BatchIngest
+{
+    static async Task Main()
     {
-        static async Task Main()
+        var tokenCredential = new InteractiveBrowserCredential();
+        var clusterUri = "<your_cluster_uri>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
+        var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadAzureTokenCredentialsAuthentication(tokenCredential);
+    
+        using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
+    
+        var database = "<your_database>";
+        var table = "MyStormEvents";
+    
+        var query = table + " | count";
+
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null))
         {
-            var tokenCredential = new InteractiveBrowserCredential();
-            var clusterUri = "<your_cluster_uri>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
-            var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadAzureTokenCredentialsAuthentication(tokenCredential);
-        
-            using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
-        
-            var database = "<your_database>";
-            var table = "MyStormEvents";
-        
-            var query = table + " | count";
-    
-            using (var response = await kustoClient.ExecuteQueryAsync(database, query, null))
-            {
-                Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
-                PrintResultsAsValueList(response);
-            }
-            
-            using var ingestClient = QueuedIngestClientBuilder.Create(new Uri(clusterUri)).WithAuthentication(tokenCredential).Build();
-    
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
-        
-            var fileSource = new FileSource(filePath, DataSourceFormat.csv);
-            var props = new IngestProperties() { IgnoreFirstRecord = true };
-    
-            Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
-        
-            await ingestClient.IngestAsync(fileSource, database, table, props);
-            
-            Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
-            await Task.Delay(TimeSpan.FromSeconds(60));
-    
-            using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
-                Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
-                PrintResultsAsValueList(response);
-            }
-    
-            query = table + " | top 1 by ingestion_time()";
-            using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
-                Console.WriteLine("\nLast ingested row:");
-                PrintResultsAsValueList(response);
-            }
+            Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
+            PrintResultsAsValueList(response);
         }
         
-        static void PrintResultsAsValueList(IDataReader response)
+        using var ingestClient = QueuedIngestClientBuilder.Create(new Uri(clusterUri)).WithAuthentication(tokenCredential).Build();
+
+        string filePath = Path.Combine(Directory.GetCurrentDirectory(), "stormevents.csv");
+    
+        var fileSource = new FileSource(filePath, DataSourceFormat.csv);
+        var props = new IngestProperties() { IgnoreFirstRecord = true };
+
+        Console.WriteLine("\nIngesting data from file: \n\t " + filePath);
+    
+        await ingestClient.IngestAsync(fileSource, database, table, props);
+        
+        Console.WriteLine("\nWaiting 60 seconds for ingestion to complete ...");
+        await Task.Delay(TimeSpan.FromSeconds(60));
+
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
+            Console.WriteLine("\nNumber of rows in " + table + " AFTER ingesting the file:");
+            PrintResultsAsValueList(response);
+        }
+
+        query = table + " | top 1 by ingestion_time()";
+        using (var response = await kustoClient.ExecuteQueryAsync(database, query, null)) {
+            Console.WriteLine("\nLast ingested row:");
+            PrintResultsAsValueList(response);
+        }
+    }
+    
+    static void PrintResultsAsValueList(IDataReader response)
+    {
+        while (response.Read())
         {
-            while (response.Read())
+            for (var i = 0; i < response.FieldCount; i++)
             {
-                for (var i = 0; i < response.FieldCount; i++)
-                {
-                    object val = response.GetValue(i);
-                    string value = val.ToString() ?? "None";
-                    Console.WriteLine("\t{0} - {1}", response.GetName(i), value);
-                }
+                object val = response.GetValue(i);
+                string value = val.ToString() ?? "None";
+                Console.WriteLine("\t{0} - {1}", response.GetName(i), value);
             }
         }
     }
-     ```
-    
-    #### [Python](#tab/python)
-    
-    Not applicable
-    
-    #### [TypeScript](#tab/typescript)
-    
-    Not applicable
-    
-     <!-- #### [Go](#tab/go) -->
-    
-    #### [Java](#tab/java)
-    
-    Not applicable
-    
-    ---
-    
-    ::: zone-end
+}
+ ```
+
+#### [Python](#tab/python)
+
+Not applicable
+
+#### [TypeScript](#tab/typescript)
+
+Not applicable
+
+ <!-- #### [Go](#tab/go) -->
+
+#### [Java](#tab/java)
+
+Not applicable
+
+---
+
+::: zone-end
 
 ### Run your app
 
@@ -1457,77 +1446,72 @@ For example, you can modify the app replacing the *ingest from memory* code with
    ---
 
 1. Create a blob descriptor using the blob URI, set the ingestion properties, and then ingest data from the blob. Replace the `<your_blob_uri>` placeholder with the blob URI.
-
-::: zone pivot="latest"
-
-#### [C\#](#tab/csharp)
-
-```csharp
-string blobUri = "<your_blob_uri>";
-
-ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
-_= ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
-```
-
-#### [Python](#tab/python)
-
-```python
-blob_uri = "<your_blob_uri>"
-
-ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
-blob_descriptor = BlobDescriptor(blob_uri)
-ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
-```
-
-#### [TypeScript](#tab/typescript)
-
-```typescript
-const blobUri = "<your_blob_uri>";
-
-ingestProps.ignoreFirstRecord = true;
-await ingestClient.ingestFromBlob(blobUri, ingestProps);
-```
-
-<!-- #### [Go](#tab/go) -->
-
-#### [Java](#tab/java)
-
-```java
-String blobUri = "<your_blob_uri>";
-
-ingestProps.setIgnoreFirstRecord(true);
-BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
-ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
-```
-
----
-
-::: zone-end
-::: zone pivot="preview"
-
-#### [C\#](#tab/csharp)
-
-```csharp
-var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
-
-await ingestClient.IngestAsync(blobSource, database, table);
-```
-
-#### [Python](#tab/python)
-
-Not applicable
-
-#### [TypeScript](#tab/typescript)
-
-Not applicable
-
-#### [Java](#tab/java)
-
-Not applicable
-
----
-
-::: zone-end
+    ::: zone pivot="latest"
+    
+    #### [C\#](#tab/csharp)
+    
+    ```csharp
+    string blobUri = "<your_blob_uri>";
+    
+    ingestProps.AdditionalProperties = new Dictionary<string, string>() { { "ignoreFirstRecord", "True" } };
+    _= ingestClient.IngestFromStorageAsync(blobUri, ingestProps).Result;
+    ```
+    
+    #### [Python](#tab/python)
+    
+    ```python
+    blob_uri = "<your_blob_uri>"
+    
+    ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=True)
+    blob_descriptor = BlobDescriptor(blob_uri)
+    ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
+    ```
+    
+    #### [TypeScript](#tab/typescript)
+    
+    ```typescript
+    const blobUri = "<your_blob_uri>";
+    
+    ingestProps.ignoreFirstRecord = true;
+    await ingestClient.ingestFromBlob(blobUri, ingestProps);
+    ```
+    
+    <!-- #### [Go](#tab/go) -->
+    
+    #### [Java](#tab/java)
+    
+    ```java
+    String blobUri = "<your_blob_uri>";
+    
+    ingestProps.setIgnoreFirstRecord(true);
+    BlobSourceInfo blobSourceInfo = new BlobSourceInfo(blobUri, 100);
+    ingestClient.ingestFromBlob(blobSourceInfo, ingestProps);
+    ```
+    
+    ::: zone-end
+    ::: zone pivot="preview"
+    
+    #### [C\#](#tab/csharp)
+    
+    ```csharp
+    var blobSource = new BlobSource("<your_blob_uri", DataSourceFormat.csv);
+    
+    await ingestClient.IngestAsync(blobSource, database, table);
+    ```
+    
+    #### [Python](#tab/python)
+    
+    Not applicable
+    
+    #### [TypeScript](#tab/typescript)
+    
+    Not applicable
+    
+    #### [Java](#tab/java)
+    
+    Not applicable
+    
+    ::: zone-end
 
 An outline of the updated code should look like this:
 
