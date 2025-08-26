@@ -1,15 +1,28 @@
 ---
-title: 'Share queries from Azure Data Explorer web UI'
-description: This guide teaches you how to share queries from the Azure Data Explorer web UI.
+title: Share Queries From Azure Data Explorer Web UI
+description: 'Share queries from the Azure Data Explorer web UI: learn to copy links, export results, pin to dashboards, or open live in Excel.'
 ms.topic: how-to
-ms.date: 03/03/2025
+ms.date: 08/25/2025
+ms.custom:
+  - ai-gen-docs-bap
+  - ai-gen-title
+  - ai-seo-date:08/25/2025
+  - ai-gen-description
 ---
 
 # Share queries from Azure Data Explorer web UI
 
-This article describes the process of sharing queries from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home). By the end of this article, you'll know how to share a query link, share the query results, or even pin it to a dashboard.
+This article shows you how to use [Azure Data Explorer web UI](https://dataexplorer.azure.com/) to:
 
-To learn how to run queries, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
+- Copy a link that runs the query in protected (read-only) mode.
+- Copy the query text or the query results to the clipboard.
+- Download the query as a KQL file or export results to CSV.
+- Open a live query in Excel and refresh results from the cluster.
+- Pin a query to an Azure Data Explorer dashboard.
+
+> [!NOTE]
+> To learn how to run queries, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
+
 
 ## Prerequisites
 
@@ -23,9 +36,9 @@ The following table outlines the many options for how to share a query.
 |Action|Description|
 |--|--|
 |[Pin to dashboard](#pin-to-dashboard)|Display the query in an [Azure Data Explorer dashboard](azure-data-explorer-dashboards.md).|
-|[Link to clipboard](#link-to-clipboard)|Copy a link that can be used to run the query.|
-|[Link, query to clipboard](#link-query-to-clipboard)|Copy a link that can be used to run the query and the text of the query. For enhanced security, the shared query opens in Azure Data Explorer in **Protected mode**. |
-|[Link, query, results to clipboard](#link-query-results-to-clipboard)|Copy a link that can be used to run the query, the text of the query, and the results of the query. For enhanced security, the shared query opens in Azure Data Explorer in protected mode. |
+|[Copy query link to clipboard](#copy-query-link-to-clipboard)|Copy a link that can be used to run the query to the clipboard. For enhanced security, the shared query opens in Azure Data Explorer in **Protected mode**. |
+|[Copy query text to clipboard](#copy-query-text-to-clipboard)|Copy text of the query to the clipboard. |
+|[Copy query results to clipboard](#copy-query-results-to-clipboard)|Copy results of the query to the clipboard. For enhanced security, the shared query opens in Azure Data Explorer in protected mode. |
 |[Download](#download)|Download a KQL file of the query.|
 |[Open in Excel](#open-in-excel)|Open a live query in an Excel workbook that can be refreshed directly from Excel.|
 |[Export to CSV](#export-to-csv)|Download a CSV of the query results.|
@@ -50,56 +63,59 @@ To pin a query to a dashboard for continuous monitoring, follow these steps:
 > [!NOTE]
 > **Pin to dashboard** only pins the selected query. To create the dashboard data source and translate render commands to a visual in the dashboard, the relevant database must be selected in the database list.
 
-## Link to clipboard
+## Copy query link to clipboard
 
-To copy a link to share with others, follow these steps:
+To copy a link to the query to the clipboard, follow these steps:
 
 1. In the query window, select the query that you want to share.
+1. Select **Copy** on the toolbar. 
 
-1. Under **Copy**, select **Link to clipboard**.
+    :::image type="content" source="media/web-share-query/select-copy.png" alt-text="Screenshot of the pin query window with the copy button on the toolbar highlighted." lightbox="media/web-share-query/select-copy.png":::    
+1. In the **Copy Query** window, select the **Copy Link** option, and then select **Copy**.
 
     :::image type="content" source="media/web-share-query/link-to-clipboard.png" alt-text="Screenshot of the link to clipboard button." lightbox="media/web-share-query/link-to-clipboard.png":::
-
 1. Paste the link into a new browser window to run the query.
 
-> [!NOTE]
-> The user must have access to the cluster to run the query.
+    > [!NOTE]
+    > - The user must have access to the cluster to run the query.
+    > - The query link request is generated with `request_readonly_hardline` set to `true`, ensuring it operates in strict read-only mode for enhanced security in protected mode. The **Protected mode** banner displays above the query and an icon appears in the query tab when protected mode is enabled. For more information about this request property, see [Request properties](/azure/data-explorer/kusto/api/rest/request-properties).
 
-## Link, query to clipboard
+    > [!TIP]
+    > You can open the shared query as a [Fabric Real-Time Intelligence](/fabric/real-time-intelligence/overview) link. This feature allows you to experiment with a trial Fabric Real-Time Intelligence account using your own data, without the need to move any data.
+    
+## Copy query text to clipboard
 
-To copy a link to share with others and the text of the query, follow these steps:
+To copy the text of the query to clipboard, follow these steps:
 
 1. In the query window, select the query that you want to share.
+1. Select **Copy** on the toolbar. 
 
-1. Under **Copy**, select **Link, query to clipboard**.
+    :::image type="content" source="media/web-share-query/select-copy.png" alt-text="Screenshot of the pin query window with the copy button on the toolbar highlighted." lightbox="media/web-share-query/select-copy.png":::  
+1. In the **Copy Query** window, select the **Copy Query** option, and then select **Copy**.
 
     :::image type="content" source="media/web-share-query/link-query-to-clipboard.png" alt-text="Screenshot of the link, query to clipboard button." lightbox="media/web-share-query/link-query-to-clipboard.png":::
+1. Paste to share. The output lists the query text. For example: 
 
-1. Paste to share. The output lists the link followed by the query text.
+    ```kusto
+    StormEvents
+    | take 3    
+    ```
+    
 
-> [!NOTE]
-> The query link request is generated with `request_readonly_hardline` set to `true`, ensuring it operates in strict read-only mode for enhanced security in protected mode. The **Protected mode** banner displays above the query and an icon appears in the query tab when protected mode is enabled. For more information about this request property, see [Request properties](/azure/data-explorer/kusto/api/rest/request-properties).
+## Copy query results to clipboard
 
-> [!TIP]
-> You can open the shared query as a [Fabric Real-Time Intelligence](/fabric/real-time-intelligence/overview) link. This feature allows you to experiment with a trial Fabric Real-Time Intelligence account using your own data, without the need to move any data.
-
-## Link, query, results to clipboard
-
-To copy a link to share with others, the text of the query, and the results of the query, follow these steps:
+To copy results of the query to the clipboard, follow these steps:
 
 1. In the query window, select the query that you want to share.
+1. Select **Copy** on the toolbar. 
 
-1. Under **Copy**, select **Link, query, results to clipboard**.
+    :::image type="content" source="media/web-share-query/select-copy.png" alt-text="Screenshot of the pin query window with the copy button on the toolbar highlighted." lightbox="media/web-share-query/select-copy.png":::  
+1. In the **Copy Query** window, select the **Query Results** option, and then select **Copy**.
 
     :::image type="content" source="media/web-share-query/link-query-results-to-clipboard.png" alt-text="Screenshot of the link, query, results to clipboard button." lightbox="media/web-share-query/link-query-results-to-clipboard.png":::
+1. Paste to share. The output lists the query results.     
 
-1. Paste to share. The output lists the link, query text, and query results.
 
-> [!NOTE]
-> The query link request is generated with `request_readonly_hardline` set to `true`, ensuring it operates in strict read-only mode for enhanced security in protected mode. The **Protected mode** banner displays above the query and an icon appears in the query tab when protected mode is enabled. For more information about this request property, see [Request properties](/azure/data-explorer/kusto/api/rest/request-properties).
-
-> [!TIP]
-> You can open the shared query as a [Fabric Real-Time Intelligence](/fabric/real-time-intelligence/overview) link. This feature allows you to experiment with a trial Fabric Real-Time Intelligence account using your own data, without the need to move any data.
 
 ## Download
 

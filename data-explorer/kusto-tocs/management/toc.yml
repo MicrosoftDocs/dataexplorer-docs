@@ -131,6 +131,8 @@ items:
         href: /kusto/management/external-tables-azure-storage?view=azure-data-explorer&preserve-view=true
       - name: Create or alter delta external table
         href: /kusto/management/external-tables-delta-lake?view=azure-data-explorer&preserve-view=true
+      - name: .show external table details
+        href: /kusto/management/show-external-tables-details?view=azure-data-explorer&preserve-view=true
       - name: Manage external table mappings
         items:
         - name: .alter external table mapping command
@@ -541,9 +543,10 @@ items:
     - name: .show table policy mirroring command
       href: /kusto/management/show-table-mirroring-policy-command?view=azure-data-explorer&preserve-view=true
       displayName: .show table mirroring policy
-    - name: .show table operations mirroring-status command
-      href: /kusto/management/show-table-operations-mirroring-status-command?view=azure-data-explorer&preserve-view=true
-      displayName: .show table mirroring status operations
+    - name: .show database operations mirroring-statistics
+      href: /kusto/management/show-database-operations-mirroring-statistics?view=azure-data-explorer&preserve-view=true
+    - name: .show table operations mirroring-statistics
+      href: /kusto/management/show-table-operations-mirroring-statistics?view=azure-data-explorer&preserve-view=true
     - name: .show table operations mirroring-exported-artifacts command
       href: /kusto/management/show-table-operations-mirroring-exported-artifacts-command?view=azure-data-explorer&preserve-view=true
       displayName: .show table mirroring operations exported artifacts
