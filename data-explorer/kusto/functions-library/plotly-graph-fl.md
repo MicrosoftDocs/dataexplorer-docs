@@ -910,7 +910,7 @@ plotly_graph_fl(E, V, node_id_column="nodeId", source_id_column="sourceId", targ
 | render plotly
 ```
 
-:::image type="content" source="media/plotly-graph-fl/plotly-graph-fl-bloodhound_ad.png" alt-text="A graph containing the BloodHound Active Directory dataset with security relationships and potential attack paths.":::
+:::image type="content" source="media/plotly-graph-fl/plotly-graph-fl-bloodhound-ad.png" alt-text="A graph containing the BloodHound Active Directory dataset with security relationships and potential attack paths.":::
 
 ::: moniker range="azure-data-explorer"
 The output is a Plotly JSON string that can be rendered using '| render plotly' or in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards](/azure/data-explorer/azure-data-explorer-dashboards).
