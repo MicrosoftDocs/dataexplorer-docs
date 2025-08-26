@@ -33,7 +33,7 @@ Before you use GQL, create a graph data source. This article uses an in-memory m
 
 <!-- csl -->
 ```gql
-.create-or-alter function G_Doc_Transient() {
+.create-or-alter function G_doc() {
     let nodes = datatable(id:string, lbl:string, name:string, properties:dynamic)
     [
         "p1","Person","Alice",dynamic({"age": 25}),
@@ -41,12 +41,12 @@ Before you use GQL, create a graph data source. This article uses an in-memory m
         "p3","Person","Carol",dynamic({"age": 28}),
         "p4","Person","David",dynamic({"age": 35}),
         "p5","Person","Emma",dynamic({"age": 26}),
-        "c1","Company","TechCorp",dynamic({"revenue": 1000000}),
-        "c2","Company","DataSoft",dynamic({"revenue": 2000000}),
-        "c3","Company","CloudInc",dynamic({"revenue": 1500000}),
-        "ct1","City","Seattle",dynamic({"population": 750000}),
-        "ct2","City","Portland",dynamic({"population": 650000}),
-        "ct3","City","San Francisco",dynamic({"population": 870000})
+        "c1","Company","TechCorp",,
+        "c2","Company","DataSoft",,
+        "c3","Company","CloudInc",,
+        "ct1","City","Seattle",,
+        "ct2","City","Portland",,
+        "ct3","City","San Francisco",
     ];
     let edges = datatable(source:string, target:string, lbl:string, since:int)
     [
@@ -96,7 +96,7 @@ TODO
 
 <!-- csl -->
 ```kql
-#crp query_graph_reference=G_Doc_Transient()
+#crp query_graph_reference=G_doc()
 ```
 
 To use labels in GQL, set the label column name:
@@ -114,7 +114,7 @@ To use labels in GQL, set the label column name:
 For programmatic access, set these client request properties:
 
 - `query_language`: Set to `"gql"`.
-- `query_graph_reference`: Set to your graph function name (for example, `"G_Doc_Transient()"`).
+- `query_graph_reference`: Set to your graph function name (for example, `"G_doc()"`).
 - `query_graph_label_name`: Set to your label column name (for example, `"lbl"`).
 
 ## Step 3: Run GQL queries

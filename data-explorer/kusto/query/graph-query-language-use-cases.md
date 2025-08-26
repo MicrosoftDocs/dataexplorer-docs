@@ -89,6 +89,7 @@ Use labels to match specific types of nodes. Specify labels with a colon after t
 ```gql
 MATCH (person:Person)
 RETURN person.name
+ORDER BY person.name
 LIMIT 5
 ```
 
@@ -127,6 +128,7 @@ Filter by edge labels without assigning the edge to a variable when you don't ne
 ```gql
 MATCH (p1:Person)-[:knows]->(p2:Person)
 RETURN p1.name, p2.name
+ORDER BY p1.name
 ```
 
 **Output**
@@ -212,6 +214,7 @@ Filter nodes based on a single property condition:
 MATCH (person:Person)
 WHERE person.properties.age > 26
 RETURN person.name, person.properties.age
+ORDER BY person.name
 ```
 
 **Output**
@@ -354,7 +357,7 @@ This query returns the complete node and edge objects for Alice's relationship w
 
 | person | e | company |
 |--------|------|-------|
-{"id":"p1","lbl":"Person","name":"Alice","properties":{"age": 25}} |{"source":"p1","target":"c1","lbl":"works_at","since":2020} | {"id":"c1","lbl":"Company","name":"TechCorp","properties":{"revenue": 1000000}}
+{"id":"p1","lbl":"Person","name":"Alice","properties":{"age": 25}} |{"source":"p1","target":"c1","lbl":"works_at","since":2020} | {"id":"c1","lbl":"Company","name":"TechCorp","properties":{}}
 
 ### Count matching patterns
 
