@@ -26,15 +26,15 @@ To make changes in your dashboard:
 
 1. In the top menu, select **Viewing** and toggle to **Editing** mode.
 
-    :::image type="content" source="media/dashboard-customize-visuals/enter-editing-mode.png" alt-text="Screenshot of entering editing mode in dashboards in Azure Data Explorer web UI.":::
+    :::image type="content" source="media/dashboard-parameters/edit-dashboard.png" alt-text="Screenshot of entering editing mode in dashboards in Azure Data Explorer web UI.":::
 
 1. On the tile that you'd like to customize, select the **Edit** icon. Edit the underlying query or the visualization properties.
 
-    :::image type="content" source="media/dashboard-customize-visuals/edit-tile.png" alt-text="Screenshot of how to edit a tile in dashboards in Azure Data Explorer web UI.":::
+    :::image type="content" source="media/dashboard-customize-visuals/edit-tile-button.png" alt-text="Screenshot of how to edit a tile in dashboards in Azure Data Explorer web UI.":::
 
 1. To save your changes and return to the dashboard, select **Apply changes**.
 
-    :::image type="content" source="media/dashboard-customize-visuals/save-changes-dashboard.png" alt-text="Screenshot of how to save the changes to your dashboard tile in Azure Data Explorer web UI.":::
+    :::image type="content" source="media/dashboard-customize-visuals/save-changes.png" alt-text="Screenshot of how to save the changes to your dashboard tile in Azure Data Explorer web UI.":::
 
 [!INCLUDE [customize-visuals](includes/customize-visuals.md)]
 
@@ -45,7 +45,7 @@ You can embed images in your dashboard tiles using Markdown text.
 For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown Spec](https://github.github.com/gfm/).
 
 1. Open a [dashboard](azure-data-explorer-dashboards.md#create-a-new-dashboard).
-1. In the top menu, select **+Add** > **Add text** to open a text tile.
+1. In the top menu, select **+ Add** > **Add text** to open a text tile.
 
     :::image type="content" source="media/dashboard-customize-visuals/add-tile.png" alt-text="Screenshot of dashboard ribbon showing the dropdown menu of the Add button.":::
 
@@ -60,6 +60,8 @@ For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown 
     :::image type="content" source="media/dashboard-customize-visuals/embed-image.png" alt-text="Screenshot of dashboard query pane showing image syntax in markdown text. ":::
 
 1. In the top menu, select **Apply changes** to save the tile.
+
+    :::image type="content" source="media/dashboard-customize-visuals/-image.png" alt-text="Screenshot of dashboard query pane showing the rendered image. ":::
 
 For more information on image syntax in GitHub Flavored Markdown, see [Images](https://github.github.com/gfm/#images).
 
