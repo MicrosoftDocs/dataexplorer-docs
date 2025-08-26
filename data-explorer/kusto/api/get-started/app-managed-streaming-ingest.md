@@ -114,7 +114,7 @@ Create a basic client application which connects to the Kusto Help cluster.
 Enter the cluster query and ingest URI and database name in the relevant variables.
 The app uses two clients: one for querying and one for ingestion. Each client brings up a browser window to authenticate the user.
 
-**Ingest V1**
+:::zone pivot="latest"
 ### [C#](#tab/c-sharp)
 
 The code sample includes a service function `PrintResultAsValueList()` for printing query results.
@@ -473,8 +473,8 @@ printResultsAsValueList(primaryResults);
 ```
 
 ---
-
-**Ingest V2 (preview)**
+:::zone-end
+:::zone pivot="preview"
 
 ### [C#](#tab/c-sharp)
 
@@ -575,6 +575,8 @@ Not applicable
 
 ---
 
+:::zone-end
+
 The first time you run the application the results are as follows:
 
 ```plaintext
@@ -600,7 +602,7 @@ row 1 :
 
 To ingest data from memory, create a stream containing the data for ingestion.
 
-**Ingest V1**
+:::zone pivot="latest"
 ### [C#](#tab/c-sharp)
 
 To ingest the stream from memory, call the `IngestFromStreamAsync()` method.
@@ -678,7 +680,8 @@ try (
 ```
 ---
 
-**Ingest V2 (preview)**
+:::zone-end
+:::zone pivot="preview"
 
 ### [C#](#tab/c-sharp)
 ```csharp
@@ -709,6 +712,7 @@ Not applicable
 Not applicable
 
 ---
+::zone-end
 
 The results are as follows:
 

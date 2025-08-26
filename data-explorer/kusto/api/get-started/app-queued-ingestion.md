@@ -1056,7 +1056,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
 1. Set the ingestion properties to not ignore the first record as the in-memory string doesn't have a header row.
 
-  ::: zone pivot="latest
+  ::: zone pivot="latest"
 
   #### [C\#](#tab/csharp)
 
@@ -1116,7 +1116,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
 1. Ingest the in-memory data by adding it to the batch queue. Where possible, provide the size of the raw data.
 
-  ::: zone pivot="latest
+  ::: zone pivot="latest"
 
   #### [C\#](#tab/csharp)
 
