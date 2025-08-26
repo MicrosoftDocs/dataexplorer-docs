@@ -587,100 +587,21 @@ RETURN AVG(cast(p2.properties.age as int)) AS AvgAgeLikedAcrossTowns
 
 This example shows how GQL lets you express complex multi-pattern queries with cross-variable filtering, inline property matching, string pattern matching, and aggregation—all in one readable statement.
 
-## Security use case - attack path analysis
-
-Security analysts use GQL to find potential attack paths in network infrastructure and access control systems.
-
-1. Create a security graph function.
-
-    <!-- csl -->
-    ```gql
-    .create-or-alter function SecurityGraph() {
-        let entities = datatable(id:string, lbl:string, name:string, type:string, criticality:string)
-        [
-            "u1", "User", "john.doe", "StandardUser", "Low",
-            "u2", "User", "admin.user", "Administrator", "High", 
-            "s1", "System", "web-server", "WebServer", "Medium",
-            "s2", "System", "database", "Database", "Critical",
-            "s3", "System", "domain-controller", "DomainController", "Critical"
-        ];
-        let relationships = datatable(source:string, target:string, lbl:string, access_type:string)
-        [
-            "u1", "s1", "CAN_ACCESS", "HTTP",
-            "s1", "s2", "CAN_ACCESS", "SQL",
-            "u2", "s3", "CAN_ACCESS", "RDP",
-            "s3", "s2", "CAN_ACCESS", "Direct"
-        ];
-        relationships
-        | make-graph source --> target with entities on id
-    }
-    ```
-
-1. Set up the security graph.
-
-    <!-- csl -->
-    ```gql
-    #crp query_graph_reference=SecurityGraph()
-    ```
-
-1. Find potential attack paths to critical systems.
-
-    <!-- csl -->
-    ```gql
-    MATCH (user:User)-[]->{1,3}(critical:System)
-    WHERE critical.criticality = 'Critical'
-    RETURN user.name AS AttackOrigin, critical.name AS CriticalTarget, COUNT(*) AS PathCount
-    ```
-
-**Output**
-
-This query shows users who can reach critical systems within three hops, so security teams can prioritize access reviews.
-
-| AttackOrigin | CriticalTarget | PathCount |
-|--|--|--|
-| admin.user | domain-controller | 1 |
-| john.doe | database | 1 |
-| admin.user | database | 1 |
 
 ## Social networks use case: Friend recommendations
 
 Social media platforms use GQL to suggest potential friends based on mutual relationships.
 
-1. Create a social network graph.
-
-    <!-- csl -->
-    ```gql
-    .create-or-alter function SocialGraph() {
-        let entities = datatable(id:string, lbl:string, name:string, location:string, interests:string)
-        [
-            "p1", "Person", "Alice Johnson", "Seattle", "Technology,Travel",
-            "p2", "Person", "Bob Smith", "Seattle", "Sports,Technology", 
-            "p3", "Person", "Carol Davis", "Portland", "Travel,Photography",
-            "p4", "Person", "David Wilson", "Seattle", "Technology,Gaming",
-            "p5", "Person", "Emma Brown", "Portland", "Photography,Art"
-        ];
-        let relationships = datatable(source:string, target:string, lbl:string, strength:string)
-        [
-            "p1", "p2", "FRIENDS_WITH", "Close",
-            "p1", "p3", "FRIENDS_WITH", "Medium",
-            "p2", "p4", "FRIENDS_WITH", "Close",
-            "p3", "p5", "FRIENDS_WITH", "Medium"
-        ];
-        relationships
-        | make-graph source --> target with entities on id
-    }
-    ```
-
 1. Set up the social graph.
 
     <!-- csl -->
     ```gql
-    #crp query_graph_reference=SocialGraph()
+    #crp query_graph_reference=graph('LDBC_SNB_Interactive')
     ```
 
 1. Find potential friends through mutual connections.
 
-    <!-- csl -->
+    <!-- csl: https://help.kusto.windows.net/database/Samples?graph_reference=graph('LDBC_SNB_Interactive') -->
     ```gql
     MATCH (p1:PERSON {firstName: 'Karl', lastName: 'Muller'})-[:KNOWS]-(p2:PERSON)-[:KNOWS]-(p3:PERSON),
           (p1)-[:IS_LOCATED_IN]-(c1:PLACE),
@@ -698,60 +619,6 @@ This query suggests friends for Karl who have mutual connections and live in the
 | Alfred       | Hoffmann     |
 | Hans         | Becker       |
 | Wilhelm     | Muller       |
-
-## Organization use case: Management hierarchy
-
-Organizations use GQL to analyze reporting structures and identify management chains.
-
-Create an organizational graph to visualize reporting relationships.
-
-<!-- csl -->
-```gql
-.create-or-alter function OrgChart() {
-    let entities = datatable(id:string, lbl:string, name:string, title:string, department:string, level:int)
-    [
-        "e1", "Employee", "Satya Nadella", "CEO", "Executive", 1,
-        "e2", "Employee", "Amy Hood", "CFO", "Finance", 2,
-        "e3", "Employee", "Brad Smith", "President", "Legal", 2,
-        "e4", "Employee", "Scott Guthrie", "EVP", "Cloud", 2,
-        "e5", "Employee", "Finance Director", "Director", "Finance", 3,
-        "e6", "Employee", "Cloud Architect", "Principal", "Cloud", 3,
-        "e7", "Employee", "Senior Engineer", "Senior", "Cloud", 4,
-        "e8", "Employee", "Software Engineer", "L63", "Cloud", 5
-    ];
-    let relationships = datatable(source:string, target:string, lbl:string)
-    [
-        "e2", "e1", "REPORTS_TO", 
-        "e3", "e1", "REPORTS_TO",
-        "e4", "e1", "REPORTS_TO", 
-        "e5", "e2", "REPORTS_TO",
-        "e6", "e4", "REPORTS_TO",
-        "e7", "e6", "REPORTS_TO",
-        "e8", "e7", "REPORTS_TO"
-    ];
-    relationships
-    | make-graph source --> target with entities on id
-}
-```
-
-Set up the org chart
-
-<!-- csl -->
-```gql
-#crp query_graph_reference=OrgChart()
-```
-
-Find all managers three levels down from the CEO.
-
-<!-- csl -->
-```gql
-MATCH (ceo:Employee)-[:REPORTS_TO]-{0,3}(manager:Employee)
-WHERE ceo.title = 'CEO' AND manager.level <= 4
-RETURN manager.name AS ManagerName, manager.title AS Title, manager.department AS Department
-ORDER BY manager.level
-```
-
-This query finds all employees within three management levels of the CEO. Use this information for organizational analysis and communication planning.
 
 ## Related topics
 
