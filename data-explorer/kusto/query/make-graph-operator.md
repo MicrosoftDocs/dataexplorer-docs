@@ -124,7 +124,7 @@ edges
 |---|---|---|
 |Mallory|Bob|Trent|
 
-### Multitenant partitioned graph
+### Partitioned graph
 
 This example demonstrates using the `partitioned-by` clause to analyze a multitenant social network. The `partitioned-by` clause creates separate graphs for each unique value in the partition column (in this case, `tenantId`), applies the graph operator to each partition independently, and combines the results.
 
@@ -132,7 +132,7 @@ This example demonstrates using the `partitioned-by` clause to analyze a multite
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA62XbW%2FiOBDH3%2FMp5ngFJ6AkhKfesRLQ7kOv7VYLq9WpqlZuMiK%2BBjtyTCt27777jUPCgxO0W%2B4iVY2NPf%2Bfx%2BPx5OwMbmWACWj2GCEojBUmKDQXC1glqBJgvpJJAstVpHlMQzQKJnQCNakWTPBvTHMpknolQg0iNTWCgGmWGqwZGx%2BC80QrstjIJu91CLbEbSPAmCm9JPltl5LR7vdI%2BqnaebCmedyvQ%2BW%2BAvScncE8tXwOU7mMmViPoQkzJuCtYsLniS9hwtYwVsjSCdVVu%2B1UG1DNh5v3ccR9hCsZikQK03EpFlwgGnHTnKHgUsEFPmMkY1TUl4HUvlf1OsbqOVTvJBfajPalVAEXTGNC%2FfdNx3VbnjP0GtDpt%2Fp9b%2FjwT72xhXFtmIl8hNmS67AEZI5sCdfIghMI2jnBwCLo2ATTkKmII0yUfEndccPUE%2BqM4YYJtjjJB25O0LMIPJvggpMI3NGyfTTt9582vQp9LU%2BQ7gxz6aEl3bWlL58RvvCoPBCuVv85EDo5SXePpBjGEwrjW3yBP6V6SqMXYMvc22OemHcT609ww6MoRarOWESSJrB9X66EhpP2rO%2B1SKvdAK%2Fd6jvu4MBvfZvhnWJ0hq4R%2F%2FfzYzicnMO1OAY2x3sUag0X7JknhdCdxehzFvFEv5Kg0xoOc4K2RTC0CT48r2EaYln8nHh%2BjQfcXL9zqO%2B0bf0r5j%2FBPKSeLIg%2Fkss3yfrk82s8MMgIesM9gmLkTilyx6uEfH6QdZ39rDs173%2BQdRiLgO6aDedbEswO%2FFiwaP3abRrSqfI6Dh2vdsvt9d0DN7m2%2FDWnvbhZqThcl%2BzUWPkh15RuXo%2FQyRH6FkLHRrhha8pyNDkyrTslg1UqeNoeGe1urt21tD1b%2B1ayEN4xRQeiZPknHlWD0MsRPAuhayN8jPgzZ%2FBJBoovVvitcF5PS%2FgGws0hBilE5eG3CkXqZbAoL3gURpsDEvI4OSO7dGD8tAMeUb8gik1NlNY6mFrZr3USuVI%2BfrYqHqYWqO1OuwzaV57TyrY%2F0H8UCx2eE019V%2B1sq5wD5MPSpqyqoOVKpZO5pMbQuv5%2BNH5gVStlNYMvo4g9SpXuQgN6jQJS4aY15Z5UZnTfKkbKSgJLoFsUKGFaLunC9rMpXsNy4uSIE%2FuZwUJmP%2BLE3mZ8MRMfceIgs1%2B4x487cXhMwlpjt1FYReGGLPV7tobivV7OtHPi9NCJuzJlk3LKMm%2B5G50stopp0kLYUTvOT07pWUm4LBuVb9aWqjD%2BqOe3VIWcu%2FN8z2SkNJFU%2FoYle8LmQrE4hP1MAs3mm4MsAi%2F0VZB9aslNRqJO8%2BXEjf8xaD6utxkGailPara5ZNoPwV%2F7VBeOBA2FmnDqzXv81W21vIfmm5pw6%2Bl487yEqBCE08oUfhmBcPMGE%2FQXRTUs5i4YjSzP183wrd2UB%2BXXgAowc9F%2FdWOTw5OaloFcmURKmvmnXmsvrd%2B3H%2BqUO380ynnIbpujz86E%2B1NCR0aRUB1%2BB6dNz1YwVvIvuq1gRlum6XqgBE5TDaz51KXdhxptPDXzHaKuepXk5tl39YgCITZ%2BzQfQb5fk7Z0p99CUa5mq1P8FZTuk0NUPAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA62XbW%2FiOBDH3yPxHeZ4BSugJDz3risB7T702t1q6el0qqqVm4yIr8GOHEPFPXz3G4cEghNut9ylqogd2%2FPLzPjvSYgahPQxhgvwmaa%2FpxDrqxjVR%2F881oqLRRM0CiZ0rkOwJe4aPkZM6SUKvetSMtw%2FD6XHNJfi3N%2FQPO41oFp5qFaArrMzuE%2FWPoeZXEZMbCbQgjkT8E4x4fHYkzBlG5goZNsZtVWn49SaUMvGm%2FtJyD2EaxmIWArTcSUWXCAa%2B6Y5R8GlgktcYygjVNSXstT%2FrOlNhLVzqN1JLrQZ7UmpfC6Yxpj6H1qO67Z7zrjXhO6wPRz2xo9%2FN5p7GtemmconmC%2B5DkpI7pEt4QaZfwJCJ0MY2QhdG2EWMBVyhGnIvGfTccvUM%2BoU4pYJtjjJC26GMLARejbCJScr8I4LL%2FHDhy%2FbToWelieY7o4z02PbdN82fbVG%2BJWH5blwvfrPudDNUPp5lGIuTymXP%2BEL%2FCbVc5LCAHvqQY56au5Nxj%2FDLQ%2FDBKo2ZyEZNdnteXIlNJwUtmGvTbY6Teh12kPHHR26bmhDvFeMdtIN4v%2B%2BiwyIk4G4NsjIBvmAQm3gkq15XMjfeYQeZyGP9SsRuu3xOEPo2AhjG%2BHjegOzAMuS6MRtbHzgZgBdC8Dp2ADXtHnhPqCeNJU%2Fk9cTKY1P3sbGB6MUYTDOIxTzd0b5O1nF5PZDAXbyAjwz9z%2FT%2BjARPqqUlPY96XeSRRPBws1rQzWm3dXrOrTNOm13MHQPPeXa9m84xeN2paJgUxKtifICrkl4Xs%2FQzRiGNkPXZrhlGwZ3NDs0rTsl%2FVVi8bQ4GeP9zHjfNt6zjX%2BSLID3TNG%2BKHHAiVvWMAwyhp7N0LcZPod8zRl8kb7iixX%2BUdi3p6m%2FoXAzilFCUa08%2FlitUMJe%2BQuqXJKaBRRGCmOqQsgaNcLtRgl4FJ%2FRyrRxvKQDnlC%2FIAowNU5crYRUAGGyTL4AiuVKefiLVQYxtUBtd9q1Ud70Pb3c7gH9oljo4JxwGvkSaFf6HFBb9U5ZpUGvLJWO7yU1xvaJ%2BK0JI7uGKSskPBmG7EmqJBpNGDSLVIXj11SCUpnhQ7tGKSsULBP9EhMlWMslneNeOqfXtH05PebLYbpkQe2P%2BXKwnVBU52O%2BHKUWCgf8v%2FhyfMyI9aJ9%2B%2BwuOzrL%2FZ%2B%2BR%2FHIP4K19%2BXs0Je5ImarQ2WCfMSbTppoRfW0KHLkjvOdcwa2OpeJ1JGo7cAKE45HYAdWUON9BAZbqUoEplr5C5bsGVsLxaIA8hIDrdbbA3mBF%2Fp%2BSD%2FM5FarqNN8Z3ETCPRbT5ud9EB9y5Ss21oy7QXgbTwqHy8EjYW6cBqtB3zjttu9x9bbunAb2wnmeglQIQinndr44QKEmzWYoP8wrGNR1uDiwopAwwzfL5wQofzqU51maoGvbmQkPq5r6cuVEVkymn0btnOq%2F9B5bJCufmuU85idRkev%2FRrud1k6MoosNeAncDp07S1GSv5OxxnMKW6aDg%2BSd5prcM3XMWUB1CkBqJmFiboaNbK3rbLMebNkkXFtNoCeXZHD90u5h0u51lLVSuMfDsaDr78PAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -142,8 +142,8 @@ let nodes = datatable(userId:string, tenantId:string, name:string, department:st
     // Tenant: CompanyA - San Francisco Bay Area
     "u001", "CompanyA", "Alice Johnson", "Engineering", "Senior Developer", dynamic({"type": "Point", "coordinates": [-122.4194, 37.7749]}),
     "u002", "CompanyA", "Bob Smith", "Engineering", "Team Lead", dynamic({"type": "Point", "coordinates": [-122.4094, 37.7849]}),
-    "u003", "CompanyA", "Charlie Brown", "Marketing", "Manager", dynamic({"type": "Point", "coordinates": [-122.4294, 37.7649]}),
-    "u004", "CompanyA", "Diana Prince", "HR", "Director", dynamic({"type": "Point", "coordinates": [-122.3994, 37.7949]}),
+    "u003", "CompanyA", "Charlie Black", "Marketing", "Manager", dynamic({"type": "Point", "coordinates": [-122.4294, 37.7649]}),
+    "u004", "CompanyA", "Diana Finch", "HR", "Director", dynamic({"type": "Point", "coordinates": [-122.3994, 37.7949]}),
     "u005", "CompanyA", "Eve Wilson", "Engineering", "Junior Developer", dynamic({"type": "Point", "coordinates": [-122.4394, 37.7549]}),
     // Tenant: CompanyB - New York Area  
     "u006", "CompanyB", "Frank Miller", "Sales", "Account Manager", dynamic({"type": "Point", "coordinates": [-74.0060, 40.7128]}),
@@ -195,7 +195,7 @@ edges
 
 |Start|Tenants|End|
 |---|---|---|
-|Bob Smith (CompanyA)|[<br>  "CompanyA",<br>  "CompanyA"<br>]|Diana Prince (CompanyA)|
+|Bob Smith (CompanyA)|[<br>  "CompanyA",<br>  "CompanyA"<br>]|Diana Finch (CompanyA)|
 |Henry Davis (CompanyB)|[<br>  "CompanyB",<br>  "CompanyB"<br>]|Grace Lee (CompanyB)|
 
 ## Related content
