@@ -3,7 +3,7 @@ title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: Learn how to ingest data from Event Hubs into Azure Data Explorer.
 ms.topic: how-to
 ms.custom:
-ms.date: 08/04/2025
+ms.date: 08/26/2025
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer
@@ -12,13 +12,13 @@ Azure Data Explorer offers ingestion from [Event Hubs](/azure/event-hubs/event-h
 
 In this article, you connect to an event hub and ingest data into Azure Data Explorer. For an overview on ingesting from Event Hubs, see [Azure Event Hubs data connection](ingest-data-event-hub-overview.md).
 
-To learn how to create the connection using the Kusto SDKs, see [Create an Event Hubs data connection with SDKs](create-event-hubs-connection-sdk.md).
+To learn how to create the connection using the Kusto software developer kits (SDKs), see [Create an Event Hubs data connection with SDKs](create-event-hubs-connection-sdk.md).
 
 > For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-event-hubs-connection).
 
 > [!WARNING]
 >
-> The Get Data Wizard doesn't support creating a data connection to Event Hubs through [private endpoints](security-network-private-endpoint.md) or [managed private endpoints](security-network-private-endpoint.md#managed-private-endpoints). To create a data connection from the Azure Portal, follow the instructions in the **Portal - Azure Event Hubs page** tab.
+> The Get Data Wizard doesn't support creating a data connection to Event Hubs through [private endpoints](security-network-private-endpoint.md) or [managed private endpoints](security-network-private-endpoint.md#managed-private-endpoints). To create a data connection from the Azure portal, follow the instructions in the **Portal - Azure Event Hubs page** tab.
 
 ## Create an event hub data connection
 
@@ -53,7 +53,7 @@ Select the data source from the available list. In this example, you're ingestin
 1. Select a target database and table. If you want to ingest data into a new table, select **+ New table** and enter a table name.
 
     > [!NOTE]
-    > Table names can be up to 1024 characters including spaces, alphanumeric, hyphens, and underscores. Special characters aren't supported.
+    > Table names can be up to 1,024 characters including spaces, alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
     :::image type="content" source="media/get-data-event-hubs/configure-tab.png" alt-text="Screenshot of configure tab with fields for configuring the data source of Event Hubs in Azure Data Explorer." lightbox="media/get-data-event-hubs/configure-tab.png":::
 
@@ -139,11 +139,11 @@ In the **Data preparation** window, all three steps are marked with green check 
     | Event hub | *test-hub* | The event hub you created. |
     | Consumer group | *test-group* | The consumer group defined in the event hub you created. |
     | Event system properties | Select relevant properties | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first record. When adding system properties, [create](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or [update](/kusto/management/alter-table-command?view=azure-data-explorer&preserve-view=true) table schema and [mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) to include the selected properties. |
-    | Compression | *None* | The compression type of the event hub messages payload. Supported compression types: *None, gzip*.|
+    | Compression | *None* | The compression type of the event hub messages payload. Supported compression types: `None`, `gzip`.|
     | Managed Identity (recommended) | System-assigned | The managed identity used by the Data Explorer cluster for access to read from the event hub. We recommend using managed identities to control access to your event hub.<br /><br />**Note**:<br />When the data connection is created:<br/>\* *System-assigned* identities are automatically created if they don't exist<br />\* The managed identity is automatically assigned the *Azure Event Hubs Data Receiver* role and is added to your Data Explorer cluster. We recommend verifying that the role was assigned and that the identity was added to the cluster. |
 
     > [!NOTE]
-    > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
+    > If you have an existing data connection that isn't using managed identities, we recommend updating it to use managed identities.
 
 ### [Portal - Azure Event Hubs page](#tab/portalEH)
 
@@ -161,7 +161,7 @@ In the **Data preparation** window, all three steps are marked with green check 
 1. Under the **Features** side menu, select **Analyze data with Kusto**.
 1. Select **Start** to open the ingestion wizard to Azure Data Explorer.
 
-    :::image type="content" source="media/create-event-hubs-connection/access-from-portal-event-hubs.png" alt-text="Screenshot of the Azure portal with the analyze data with Kusto feature selected." lightbox="media/create-event-hubs-connection/access-from-portal-event-hubs.png":::
+    :::image type="content" source="media/create-event-hubs-connection/access-from-portal-event-hubs.png" alt-text="Screenshot of the Azure portal with the Analyze data with Kusto feature selected." lightbox="media/create-event-hubs-connection/access-from-portal-event-hubs.png":::
 
     > [!NOTE]
     >
@@ -169,7 +169,7 @@ In the **Data preparation** window, all three steps are marked with green check 
     > * To enable access between a cluster and a storage account without public access, see [Create a Managed Private Endpoint](security-network-private-endpoint-create.md).
     > * The cluster and event hub should be associated with the same tenants. If not, use one of the SDK options, such as C# or Python.
 
-1. The **Ingest data** side pane opens with the **Destination** tab selected. Select the **Cluster** and **Database** fields from the dropdowns. Make sure you select a cluster that is running. Otherwise, you won't be able to select Database and proceed with the ingestion process. 
+1. The **Ingest data** side pane opens with the **Destination** tab selected. Select the **Cluster** and **Database** fields from the dropdowns. Make sure you select a cluster that is running. Otherwise, you can't select Database and proceed with the ingestion process. 
 
 1. Under **Table**, select **New table** and enter a name for the new table. Alternatively, use an **Existing table**.
 
@@ -351,7 +351,7 @@ Remove the data connection through the Azure portal as explained in the portal t
 
 ### [Portal](#tab/portal-2)
 
-To remove the event hub connection from the Azure portal, do the following:
+To remove the event hub connection from the Azure portal, do the following steps:
 
 1. Go to your cluster. From the left menu, select **Databases**. Then, select the database that contains the target table.
 1. From the left menu, select **Data connections**. Then, select the checkbox next to the relevant event hub data connection.
