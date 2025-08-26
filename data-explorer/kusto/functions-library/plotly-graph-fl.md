@@ -23,7 +23,7 @@ The function accepts separate nodes and edges tables with customizable column ma
 The function accepts separate nodes and edges tables with customizable column mappings and appearance settings, and returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in a [Real-Time dashboard](/fabric/real-time-intelligence/dashboard-real-time-create) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
 ::: moniker-end
 
-The function is particularly useful for visualizing network relationships, cybersecurity attack paths, organizational structures, or any connected data that can be represented as a graph. The resulting visualization includes hover information, node sizing based on connectivity, and customizable color schemes using Python's NetworkX library for graph layout calculations and Plotly for rendering the interactive visualization.
+The function is useful for visualizing network relationships, cybersecurity attack paths, organizational structures, or any connected data that can be represented as a graph. The resulting visualization includes hover information, node sizing based on connectivity, and customizable color schemes using Python's NetworkX library for graph layout calculations and Plotly for rendering the interactive visualization.
 
 ## Syntax
 
@@ -40,7 +40,7 @@ The function is particularly useful for visualizing network relationships, cyber
 | *node_id_column* | `string` |   | The name of the column containing unique node identifiers in the nodes table. The default value is `"nodeId"`. |
 | *source_id_column* | `string` |   | The name of the column containing source node identifiers in the edges table. The default value is `"sourceId"`. |
 | *target_id_column* | `string` |   | The name of the column containing target node identifiers in the edges table. The default value is `"targetId"`. |
-| *colorscale_id* | `string` |   | The Plotly colorscale to use for node colors. Available options include "Viridis", "Plasma", "Inferno", "Magma", "Cividis", "YlGnBu", etc. The default value is `"Cividis"`. |
+| *colorscale_id* | `string` |   | The Plotly color scale to use for node colors. Available options include "Viridis", "Plasma", "Inferno", "Magma", "Cividis", "YlGnBu", etc. The default value is `"Cividis"`. |
 | *diagram_title* | `string` |   | The title to display at the top of the graph visualization. The default value is `"Simple Graph for educational purposes"`. |
 
 ## Function definition
@@ -910,7 +910,7 @@ plotly_graph_fl(E, V, node_id_column="nodeId", source_id_column="sourceId", targ
 | render plotly
 ```
 
-:::image type="content" source="media/plotly-graph-fl/plotly-graph-fl-bloodhound-ad.png" alt-text="A graph containing the BloodHound Active Directory dataset with security relationships and potential attack paths.":::
+:::image type="content" source="media/plotly-graph-fl/plotly-graph-fl-bloodhound-active-directory.png" alt-text="A graph containing the BloodHound Active Directory dataset with security relationships and potential attack paths.":::
 
 ::: moniker range="azure-data-explorer"
 The output is a Plotly JSON string that can be rendered using '| render plotly' or in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards](/azure/data-explorer/azure-data-explorer-dashboards).
@@ -919,12 +919,12 @@ The output is a Plotly JSON string that can be rendered using '| render plotly' 
 The output is a Plotly JSON string that can be rendered in a Real-Time dashboard tile. For more information on creating dashboard tiles, see [Real-Time dashboards](/fabric/real-time-intelligence/dashboard-real-time-create).
 ::: moniker-end
 
-The function returns a single-column table with the `plotly` column containing the JSON representation of the interactive graph visualization. When rendered in a Kusto environment that supports Plotly visualizations, this will display as an interactive network graph showing:
+The function returns a single-column table with the `plotly` column containing the JSON representation of the interactive graph visualization. When rendered in a Kusto environment that supports Plotly visualizations, this displays as an interactive network graph showing:
 
 - Nodes represented as colored circles, with size proportional to their connectivity
 - Edges drawn as lines connecting related nodes
 - Interactive hover tooltips showing node and edge properties
-- Customizable color schemes based on the specified colorscale
+- Customizable color schemes based on the specified color scale
 - A spring-force layout that automatically positions nodes for optimal visualization
 
 The visualization includes node properties (such as `nodeType` and `importance` from the example) and edge properties (such as `connectionType`) in the hover tooltips, making it easy to explore the relationships and attributes within your graph data.
@@ -933,7 +933,7 @@ The visualization includes node properties (such as `nodeType` and `importance` 
 
 - [Functions library](functions-library.md)
 - [Plotly (preview)](../query/visualization-plotly.md)
-- [Plotly built-in colorscales](https://plotly.com/python/builtin-colorscales/)
+- [Plotly built-in color scales](https://plotly.com/python/builtin-colorscales/)
 - [Plotly network graphs](https://plotly.com/python/network-graphs/)
 - [Graph semantics overview](../query/graph-semantics-overview.md)
 - [Graph operators](../query/graph-operators.md)
