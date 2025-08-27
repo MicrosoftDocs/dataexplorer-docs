@@ -2,13 +2,13 @@
 title: Kusto Ingest - Migrate V1 to V2
 description: Guide to migrating Kusto ingestion from Ingest V1 to Ingest V2. Covers client builders, sources, uploaders, ingestion properties, and status tracking with examples.
 ms.topic: concept-article
-ms.date: 08/19/2025
+ms.date: 08/27/2025
 ms.reviewer: yogilad
 ---
 
 # Migrating from Ingest V1 to Ingest V2
 
-This guide explains the key differences and improvements when migrating from the Ingest V1 API to the Ingest V2 API, with code examples and best practices.
+This guide provides code migration steps from Ingest V1 SDK to the Ingest V2 SDK. The guide walks through key differences and improvements and includes detailed code examples and best practice recommendations.
 
 ## Creating the Ingest Client
 
@@ -31,7 +31,7 @@ This pattern allows for more flexible and readable configuration, supports metho
 Connection strings are no longer used to create clients.  
 Instead, you provide a `Uri` for the cluster and an authentication provider.
 
-An authentication provider can be any of `Azure.Identity.TokenCredential` or any of Kusto's `IKustoTokenCredentialsProvider`.
+An authentication provider can be any implementation of `Azure.Identity.TokenCredential`, Kusto's `IKustoTokenCredentialsProvider`, or a delegate function of the format `Func<string, Task<KustoTokenCredentials>>`.
 
 **Example (V2):**
 
@@ -57,10 +57,7 @@ var client = QueuedIngestClientBuilder.Create(new Uri(clusterUrl))
 
 Managed Streaming Ingest client is similar to the one in V1 - it tries to stream the data first, and if it fails after a few retries, it falls back to queued ingestion.
 
-The main differences are:
-
-- By default, V2 streams. If streaming fails three times with transient errors, it falls back to queued ingestion.
-- The `ManagedStreamingPolicy` was expanded to allow more control. It's now an interface - `IManagedStreamingPolicy`, and provides methods for a more fine-grained control over the managed streaming process.
+In V2, `ManagedStreamingPolicy` becomes the `IManagedStreamingPolicy` interface, which provides methods for finer control of managed streaming.
 
 ## Sources
 
@@ -89,7 +86,6 @@ There's one method to ingest a single source: the `IngestAsync` method. The clie
 - `BlobSource` (cloud storage)
 - `DataReaderSource` (.NET data readers)
 
-
 The "database" and "table" properties are now parameters of the `IngestAsync` method, rather than properties of the ingestion properties.  This means that for most cases, you don't need to create `IngestProperties`.
 
 **Example (V2):**
@@ -99,14 +95,17 @@ var source = new FileSource(filePath, DataSourceFormat.csv);
 await client.IngestAsync(source, database, table);
 ```
 
-> [!WARNING]  
-> Since each call to IngestAsync now operates against the service, try to limit the amount of calls you make, or wait between them, to avoid throttling.
-
 ## Uploaders
 
-In V1, uploading local data to the cloud for ingestion was an internal process handled by the SDK.  
-It had several limitations:
-- It was done without any knowledge of the client.
+> [!IMPORTANT]  
+>
+> * The V1 Ingest SDK operated almost entirely with Azure Storage and Azure Queue and calls to Kusto were fairly limited in quantity.
+> 
+> * The V2 ingest SDK replaces Azure Queue operations with calls to REST calls Kusto. This means the ingest client is more sensitive to Kusto maintenance windows and request rates. Please be mindful of this an incorporate retries and throttle backoffs in your applications that meet your scale and volume of ingestion needs.
+
+V1 had several limitations:
+
+- It was done implicitly without any control by the SDK user.
 - It always used Kusto's internal storage
   - It had hidden costs for the user.
   - Couldn't be monitored or scaled by the user.
@@ -115,9 +114,7 @@ It had several limitations:
 
 In V2, uploaders are introduced to provide more flexibility and control over the upload process.
 
-The `IUploader` interface defines the contract for uploaders, and the SDK provides several implementations:
-
-- `UserContainersUploader` - **preferred** - Uploads data to a list of user-defined Azure Blob Storage containers.
+- `UserContainersUploader` - Uploads data to a list of user-defined Azure Blob Storage containers.
 - `ManagedUploader` - Uploads data to Kusto's internal storage, similar to V1.
 
 You can also implement your own uploader by implementing the `IUploader` interface.
@@ -143,14 +140,18 @@ var client = QueuedIngestClientBuilder.Create(new Uri(clusterUrl))
     .WithUploader(uploader)
     .Build();
 
-// Preferred:
+// Or, with user provided upload containers:
 var uploader = UserContainersUploaderBuilder.Create()
     .AddContainer("<address>")
     .AddContainer("<address2>", tokenCredential)
     .Build();
 ```
 
-You can use the uploader to convert local sources to `BlobSource`:
+### Manual Uploads
+
+You can use the uploader to convert local and data reader sources to `BlobSource`, and follow by ingesting them with the V2 client.
+
+This allows for greater control of retry and failure behaviors, building ingestion pipelines where upload and ingestion are handled in parallel, and leveraging the Multi-Ingestion API provided by V2 (see advanced topics below).
 
 ```csharp
 var source = new FileSource(filePath, DataSourceFormat.csv);
@@ -235,10 +236,11 @@ blob.Details // Additional details about the ingestion
 blob.Exception // If the ingestion failed, this will contain the exception details
 ```
 
-> **Warning:**  
-> Each call to `GetOperationSummaryAsync` or `GetIngestionDetailsAsync` will make an HTTP request to the Kusto service.  
-> Too frequent calls may lead to throttling or performance issues.  
-> Consider waiting a few seconds between calls, or using a backoff strategy.
+> [!IMPORTANT]
+>
+> - Each call to `GetOperationSummaryAsync` or `GetIngestionDetailsAsync` will make an HTTP request to the Kusto service.  
+> - Too frequent calls may lead to throttling or performance issues.  
+> - Consider waiting a few seconds between calls, or using a backoff strategy.
 
 ### Streaming Ingestion
 
