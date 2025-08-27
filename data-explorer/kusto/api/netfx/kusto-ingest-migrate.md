@@ -36,7 +36,7 @@ An authentication provider can be any implementation of `Azure.Identity.TokenCre
 **Example (V2):**
 
 ```csharp
-using Kusto.Cloud.Platform.Msal;
+using using Azure.Identity;
 using Kusto.Ingest.V2;
 
 var auth = new InteractiveBrowserCredential();
