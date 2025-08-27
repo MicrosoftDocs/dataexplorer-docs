@@ -2,12 +2,12 @@
 title: 'Create an IoT Hub data connection with SDKs - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from IoT Hub using SDKs.'
 ms.topic: how-to
-ms.date: 07/16/2023
+ms.date: 08/26/2025
 ---
 
 # Create an IoT Hub data connection for Azure Data Explorer with SDKs
 
-This article shows you how to ingest data into Azure Data Explorer from IoT Hub, a big data streaming platform and IoT ingestion service.
+This article shows you how to ingest data into Azure Data Explorer from IoT Hub, a big data streaming platform, and IoT ingestion service.
 
 To learn how to create the connection using the Kusto SDKs, see [Create an IoT Hub data connection with SDKs](create-iot-hub-connection-sdk.md).
 
@@ -28,13 +28,13 @@ For general information about ingesting into Azure Data Explorer from IoT Hub, s
 
 ## Create an IoT Hub data connection
 
-In this section, you'll establish a connection between the IoT Hub and your Azure Data Explorer table. As long as this connection is in place, data is transmitted from the IoT Hub into your target table.
+In this section, you establish a connection between the IoT Hub and your Azure Data Explorer table. As long as this connection is in place, data is transmitted from the IoT Hub into your target table.
 
 ### [C#](#tab/c-sharp)
 
 1. Install the [Microsoft.Azure.Management.Kusto NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
-1. [Create a Microsoft Entra application principal](/azure/active-directory/develop/howto-create-service-principal-portal) to use for authentication. You'll need the directory (tenant) ID, application ID, and client secret.
+1. [Create a Microsoft Entra application principal](/azure/active-directory/develop/howto-create-service-principal-portal) to use for authentication. You need the directory (tenant) ID, application ID, and client secret.
 
 1. Run the following code.
 
@@ -101,7 +101,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
     pip install azure-mgmt-kusto
     ```
 
-1. [Create a Microsoft Entra application principal](/azure/active-directory/develop/howto-create-service-principal-portal) to use for authentication. You'll need the directory (tenant) ID, application ID, and client secret.
+1. [Create a Microsoft Entra application principal](/azure/active-directory/develop/howto-create-service-principal-portal) to use for authentication. You need the directory (tenant) ID, application ID, and client secret.
 
 1. Run the following code.
 
