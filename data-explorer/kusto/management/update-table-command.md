@@ -9,7 +9,7 @@ ms.date: 11/18/2024
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The `.update table` command performs data updates in a specified table by appending and deleting records atomically.
+The `.update table` command performs data updates in a specified table by deleting and appending records atomically.
 There are 2 options for appending the records:
 
 1. Ingest the records based on a provided query. The query is noted using the *AppendIdentifier*.
@@ -57,9 +57,10 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 > [!IMPORTANT]
 >
 > * Both delete and append predicates can't use remote entities, cross-db, and cross-cluster entities. Predicates can't reference an external table or use the `externaldata` operator.
-> * Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
+> * Append and delete queries are expected to produce deterministic results. Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
 >    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
 > * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
+> * The delete and append predicates are based on the same snapshot of the table, and therefore they cannot depend on each other. In other words, the append predicate executes on a snapshot of the source table *before* the deletion and vice versa - the delete predicate executes on a snapshot of the source table *before* the append.
 
 ## Supported properties
 
