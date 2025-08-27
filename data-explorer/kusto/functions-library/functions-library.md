@@ -52,7 +52,7 @@ The following section contains functions for rendering interactive [Plotly chart
 |--|--|
 | [plotly_anomaly_fl()](plotly-anomaly-fl.md) | Render anomaly chart using a Plotly template. |
 | [plotly_gauge_fl()](plotly-gauge-fl.md) | Render gauge chart using a Plotly template. |
-| [plotly_graph_fl()](graph-visualization-plotly-fl.md) | Render interactive graph visualizations using a Plotly template. |
+| [plotly_graph_fl()](plotly-graph-fl.md) | Render interactive graph visualizations using a Plotly template. |
 | [plotly_scatter3d_fl()](plotly-scatter3d-fl.md) | Render 3D scatter chart using a Plotly template. |
 
 ## PromQL functions

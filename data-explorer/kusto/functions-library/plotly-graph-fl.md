@@ -580,22 +580,6 @@ bag_pack(
 To use a query-defined function, invoke it after the embedded function definition.
 
 ```kusto
-let nodes = datatable (nodeId:string, nodeType:string, importance:int)[
-    'A', 'server', 5,
-    'B', 'database', 3,
-    'C', 'workstation', 1,
-    'D', 'router', 4,
-    'E', 'firewall', 5,
-    'F', 'workstation', 1
-];
-let edges = datatable (sourceId:string, targetId:string, connectionType:string)[
-    'A', 'B', 'sql',
-    'A', 'D', 'network',
-    'B', 'C', 'query',
-    'C', 'D', 'network',
-    'D', 'E', 'security',
-    'E', 'F', 'network'
-];
 let plotly_graph_fl = (
     edges:(*), nodes:(*), 
     node_id_column:string="nodeId",
@@ -847,6 +831,22 @@ bag_pack(
     'diagram_title', diagram_title    // Title displayed at the top of the graph visualization
 ))
 };
+let nodes = datatable (nodeId:string, nodeType:string, importance:int)[
+    'A', 'server', 5,
+    'B', 'database', 3,
+    'C', 'workstation', 1,
+    'D', 'router', 4,
+    'E', 'firewall', 5,
+    'F', 'workstation', 1
+];
+let edges = datatable (sourceId:string, targetId:string, connectionType:string)[
+    'A', 'B', 'sql',
+    'A', 'D', 'network',
+    'B', 'C', 'query',
+    'C', 'D', 'network',
+    'D', 'E', 'security',
+    'E', 'F', 'network'
+];
 plotly_graph_fl(edges, nodes, 
                     node_id_column="nodeId", 
                     source_id_column="sourceId", 
