@@ -274,6 +274,9 @@ var summary = await client.GetOperationSummaryAsync(deserializedOperation);
 
 `QueuedIngestClient` in V2 implements the `IMultiIngest` interface, which allows you to ingest multiple sources in a single call.
 
+The number of sources possible per call is limited.   
+You can get the limit via the method `int GetMaxSourcesPerMultiIngest()` on `IMultiIngest`. 
+
 Currently, only a list of `BlobSource` is supported.  
 This means you might need to use an uploader to convert your local files or streams to `BlobSource` before using this method.
 
