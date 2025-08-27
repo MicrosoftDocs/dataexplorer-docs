@@ -39,7 +39,7 @@ An authentication provider can be any implementation of `Azure.Identity.TokenCre
 using Kusto.Cloud.Platform.Msal;
 using Kusto.Ingest.V2;
 
-var auth = new AadUserPromptCredentialsProvider("myclient");
+var auth = new InteractiveBrowserCredential();
 var client = QueuedIngestClientBuilder.Create(new Uri(clusterUrl))
     .WithAuthentication(auth)
     .Build();
