@@ -67,7 +67,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | -------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | *whatif* | bool | If `true`, returns the number of records that will be appended / deleted in every shard, without appending / deleting any records. The default is `false`. |
 | *distributed* | bool | If `true`, the command ingests from all nodes executing the query in parallel. This option is relevant only for update based on ingest from query. Default is `false`. See [performance tips](#performance-tips). |
-| *tags* | string | Optional [Extent tags](extent-tags.md) to filter only specific extents, when using update using move extents. The tags are provided as an array, in the same format as in [Ingestion properties](../includes/ingestion-properties.md). See examples in [Update using move extents](#update-using-move-extents).|
+| *extentTagsToMove* | string | Optional [Extent tags](extent-tags.md) to filter only specific extents, when using update using move extents. The tags are provided as an array, in the same format as in [Ingestion properties](../includes/ingestion-properties.md). See examples in [Update using move extents](#update-using-move-extents).|
 
 > [!IMPORTANT]
 > We recommend running in `whatif` mode first before executing the update to validate the predicates before deleting or appending data.
@@ -85,7 +85,7 @@ The result of the command is a table where each record represents an [extent](ex
 
 ## Update using move extents
 
-When using this option, the records to append to target table are moved from the provided *SourceTableName* using [move extents](move-extents.md). The update moves *all* extents from the table, or only those that match the provided *tags*, if *tags* are specified in the command properties. The source table must be a local table in the current database and must the same schema as the target table.
+When using this option, the records to append to target table are moved from the provided *SourceTableName* using [move extents](move-extents.md). The update moves *all* extents from the table, or only those that match the provided *extentTagsToMove*, if *extentTagsToMove* are specified in the command properties. The source table must be a local table in the current database and must the same schema as the target table.
 The move extents option is useful when the records to append are already ingested to a staging table in the database, and should replace existing records in the target table. When this is the case, then using the move extents option is more efficient than ingest from query, as this option doesn't require re-ingesting the records. See examples in [Update rows from a staging table using move extents](#update-rows-from-a-staging-table-using-move-extents).
 
 ## Choose between `.update table` and materialized views
@@ -254,13 +254,13 @@ Some records in the staging table didn't exist in the main table (that is, had `
 In this example, the extents in the staging table include extent tags, and we're only interested in updating based on a subset of the tags:
 
 ```kusto
-.set-or-replace MyStagingTable tags='["drop-by:tag1"]'<|
+.set-or-replace MyStagingTable with(tags='["drop-by:tag1"]')<|
     range i from 70 to 100 step 5
     | project Id=i
     | extend Code = tostring(dynamic(["Customer", "Employee"])[Id %2])
     | extend Color = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
 
-.set-or-replace MyStagingTable tags='["drop-by:tag2"]'<|
+.set-or-replace MyStagingTable with(tags='["drop-by:tag2"]')<|
     range i from 100 to 150 step 5
     | project Id=i
     | extend Code = tostring(dynamic(["Customer", "Employee"])[Id %2])
@@ -273,11 +273,11 @@ The entire MyStagingTable is considered for the delete query, not only the recor
 must be explicitly added to the delete query.
 
 ```kusto
-.update table Employees delete D move MyStagingTable with (tags='["drop-by:tag1"]') <|
+.update table Employees delete D move MyStagingTable with (extentTagsToMove='["drop-by:tag1"]') <|
     let D = Employees | where Id in (MyStagingTable | where extent_tags() has "drop-by:tag1" | project Id);
 ```
 
-At the end of the command, MyStagingTable will include only the records from the 2nd ingestion ("drop-by:tag2"), as the command 
+At the end of the command, MyStagingTable will include only the records from the 2nd ingestion ("drop-by:tag2"), as the command
 moves the extents with "drop-by:tag1".
 
 ### Compound key
