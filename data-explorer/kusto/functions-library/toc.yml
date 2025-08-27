@@ -98,6 +98,9 @@ items:
 - name: plotly_gauge_fl()
   displayName: functions library, Plotly, gauge, speed, chart, render
   href: plotly-gauge-fl.md
+- name: plotly_graph_fl()
+  displayName: functions library, Plotly, graph, chart, render
+  href: plotly-graph-fl.md
 - name: plotly_scatter3d_fl()
   displayName: functions library, Plotly, scatter, chart, render
   href: plotly-scatter3d-fl.md
