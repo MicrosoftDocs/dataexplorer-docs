@@ -31,13 +31,13 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
-**Update using newly ingested records:**
+**Update using append and delete:**
 
 `.update` `[async]` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
 `let` *DeleteIdentifier*`=` *DeletePredicate*`;` <br>
 `let` *AppendIdentifier*`=` *AppendPredicate*`;`
 
-**Update using move extents:**
+**Update using move extents and delete:**
 
 `.update` `[async]` `table` *TableName* `delete` *DeleteIdentifier* `move` *SourceTableName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
 `let` *DeleteIdentifier*`=` *DeletePredicate*`;` <br>
