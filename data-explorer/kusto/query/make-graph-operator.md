@@ -128,7 +128,7 @@ edges
 
 This example demonstrates using the `partitioned-by` clause to analyze a multitenant social network. The `partitioned-by` clause creates separate graphs for each unique value in the partition column (in this case, `tenantId`), applies the graph operator to each partition independently, and combines the results.
 
-:::image type="content" source="media/graphs/graph-example-make-graph-partitioned.png" alt-text="A graph showing three different companies which are representing three different partitions.":::
+:::image type="content" source="media/graphs/graph-example-make-graph-partitioned.png" alt-text="A diagram showing three different companies which are representing three different partitions.":::
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
