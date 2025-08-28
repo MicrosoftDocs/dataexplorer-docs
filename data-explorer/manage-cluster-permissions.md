@@ -1,15 +1,23 @@
 ---
-title: Manage cluster permissions in Azure Data Explorer
-description: Learn how to manage role-based access controls for clusters in Azure Data Explorer.
+title: Manage Azure Data Explorer Cluster Permissions
+description: Learn how to configure Azure Data Explorer cluster permissions through role-based access control. Discover how to assign security roles to users, groups, and apps for optimal database access management.
+#customer intent: As a database administrator, I want to assign cluster-level permissions to users and groups so that I can control who has access to my Azure Data Explorer cluster resources.
 ms.topic: how-to
-ms.date: 12/18/2023
+ms.date: 08/27/2025
+ms.custom:
+  - ai-gen-docs-bap
+  - ai-gen-title
+  - ai-seo-date:08/27/2025
+  - ai-gen-description
 ---
 
 # Manage Azure Data Explorer cluster permissions
 
-Azure Data Explorer enables you to control access to resources in your cluster using a role-based access control model. Under this model, [principals](/kusto/management/reference-security-principals?view=azure-data-explorer&preserve-view=true)—users, groups, and apps—are mapped to [security roles](/kusto/management/security-roles?view=azure-data-explorer&preserve-view=true). Principals are granted access to cluster resources according to the roles they're assigned.
+Azure Data Explorer uses role-based access control (RBAC) to manage who can access cluster resources. This security model maps [principals](/kusto/management/reference-security-principals?view=azure-data-explorer&preserve-view=true)—such as users, groups, and applications—to specific [security roles](/kusto/management/security-roles?view=azure-data-explorer&preserve-view=true) that determine their level of access.
 
-This article describes the available cluster level roles and how to assign principals to those roles using the Azure portal.
+Use cluster-level permissions to control access across all databases in your cluster. You can assign three types of cluster roles: **AllDatabasesAdmin** for full administrative access, **AllDatabasesViewer** for read-only access to all data and metadata, and **AllDatabasesMonitor** for monitoring capabilities.
+
+This article shows you how to assign cluster-level permissions to principals using the Azure portal.
 
 > [!NOTE]
 > * To configure cluster level permissions with C#, Python, and ARM templates, see [Add cluster principals](add-cluster-principal.md).
@@ -19,7 +27,7 @@ This article describes the available cluster level roles and how to assign princ
 
 |Role |Permissions |
 |---|---|
-|`AllDatabasesAdmin` | Full access in the scope of any database. May show and alter certain cluster-level policies. Includes all lower level `All Databases` permissions. |
+|`AllDatabasesAdmin` | Full access in the scope of any database. Might show and alter certain cluster-level policies. Includes all lower level `All Databases` permissions. |
 |`AllDatabasesViewer` | Read all data and metadata of any database. |
 |`AllDatabasesMonitor` | Execute `.show` commands in the context of any database and its child entities. |
 
@@ -35,7 +43,7 @@ This article describes the available cluster level roles and how to assign princ
 
 1. Select **Add**, and select the role you want to assign.
 
-    :::image type="content" source="media/manage-cluster-permissions/add-widget.png" alt-text="Screenshot of the add widget for adding permissions.":::
+    :::image type="content" source="media/manage-cluster-permissions/add-widget.png" alt-text="Screenshot of the Add widget for adding permissions.":::
 
 1. In the **New principals** window, search for and select one or more principals.
 
