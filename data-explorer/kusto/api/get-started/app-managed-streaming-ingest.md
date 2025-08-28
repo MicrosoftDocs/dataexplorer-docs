@@ -20,18 +20,17 @@ Streaming Ingestion allows writing data to Kusto with near-real-time latencies. 
 
 In this article, you’ll learn how to ingest data to Kusto using the managed streaming ingestion client. You'll ingest a data stream in the form of a file or in-memory stream.
 
-::: zone pivot="latest"
 > [!NOTE]  
+::: zone pivot="latest"  
 > Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion with a `KustoStreamingIngestClient` isn't the same as using `IngestFromStream`.  
 > The type of client refers to the _way_ data is ingested - in `KustoStreamingIngestClient` it will be via Streaming Ingestion - which uses a RowStore to ingest small amounts of data with low latency.  
-> `IngestFromX` methods specify what kind of data to stream. `IngestFromStream` takes in a stream (like a C# `MemoryStream`) and sends it for ingestion via the specified ingestion client. `IngestFromStream` is available for all ingestion client implementations including queued and streaming clients.
-::: zone-end
-::: zone pivot="preview"
-> [!NOTE]  [ManagedStreamingIngestPolicy.cs](../../../../../Azure-Kusto-Service/Src/Client/Kusto.Ingest/Clients/StreamingIngestClient/ManagedStreamingIngestPolicy.cs)
+> `IngestFromX` methods specify what kind of data to stream. `IngestFromStream` takes in a stream (like a C# `MemoryStream`) and sends it for ingestion via the specified ingestion client. `IngestFromStream` is available for all ingestion client implementations including queued and streaming clients.  
+::: zone-end  
+::: zone pivot="preview"   
 > Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion with a `StreamingIngestClient` isn't the same as using `StreamSource` for ingestion.  
 > The type of client refers to the _way_ data is ingested - in `StreamingIngestClient` it will be via Streaming Ingestion - which uses a RowStore to ingest small amounts of data with low latency.  
-> The source type specifies what kind of data to stream. `StreamSource` takes in a stream (like a C# `MemoryStream`) and sends it for ingestion via the specified ingestion client. `StreamSource` is available for all ingestion client implementations including queued and streaming clients.
-::: zone-end
+> The source type specifies what kind of data to stream. `StreamSource` takes in a stream (like a C# `MemoryStream`) and sends it for ingestion via the specified ingestion client. `StreamSource` is available for all ingestion client implementations including queued and streaming clients.  
+::: zone-end  
 
 > [!IMPORTANT]
 >
@@ -618,7 +617,7 @@ row 1 :
          StormSummary - {'TotalDamages': 0, 'StartTime': '2007-12-31T11:15:00.0000000Z', 'EndTime': '2007-12-31T13:21:00.0000000Z', 'Details': {'Description': 'Heavy showers caused flash flooding in the eastern part of Molokai.  Water was running over the bridge at Halawa Valley.', 'Location': 'HAWAII'}}
 ```
 
-### Stream in-memory data for ingestion[KustoIngestFactory.cs](../../../../../Azure-Kusto-Service/Src/Client/Kusto.Ingest/Api/KustoIngestFactory.cs)
+### Stream in-memory data for ingestion
 
 To ingest data from memory, create a stream containing the data for ingestion.
 
