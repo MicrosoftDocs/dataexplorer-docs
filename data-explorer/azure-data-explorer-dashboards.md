@@ -250,7 +250,7 @@ Auto refresh keeps your dashboard data up-to-date without requiring manual updat
 1. Select values for **Minimum time interval** and **Default refresh rate**.
 1. Select **Apply** and then **Save** the dashboard.
 
-    :::image type="content" source="media/adx-dashboards/enable-auto-refresh.png" alt-text="Enable auto refresh.":::
+    :::image type="content" source="media/adx-dashboards/enable-auto-refresh.png" alt-text="Screenshot showing enable auto refresh.":::
 
 ## Related content
 

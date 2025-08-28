@@ -24,7 +24,7 @@ In general, dashboards are shared in two steps: Grant permissions, and share the
 
 1. Browse to your [Azure Data Explorer dashboards](azure-data-explorer-dashboards.md) and toggle mode from **Viewing** to **Editing**.
 
-    :::image type="content" source="media/dashboard-parameters/edit-dashboard.png" alt-text="Screenshot of the Dashboard's homepage" lightbox="media/dashboard-explore-data/dashboards.png":::
+    :::image type="content" source="media/dashboard-parameters/edit-dashboard.png" alt-text="Screenshot of the Dashboard's homepage." lightbox="media/dashboard-explore-data/dashboards.png":::
 
 1. Select the **Share** menu item in the top bar of the dashboard.
 1. Select **Manage access** from the dropdown.
@@ -103,7 +103,7 @@ To change a user permission level in the **Dashboard permissions** pane:
 1. Change the **Permission** level as needed.
 1. To remove a user, select the trash icon next to the user.
 
-:::image type="content" source="media/adx-dashboards/view-dashboard-permissions.png" alt-text="Screenshot of dashboard permissions dialog":::
+:::image type="content" source="media/adx-dashboards/view-dashboard-permissions.png" alt-text="Screenshot of the dashboard permissions dialog.":::
 
 ## Share the dashboard link
 

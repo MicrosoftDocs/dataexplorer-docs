@@ -77,7 +77,7 @@ You can then explore your data without affecting the visualization shown in the 
 
 * Select the **Results** and **KQL** tabs to view the tabular query results and the underlying query respectively. As you explore, you see the changes you make updated in these tabs.
 
-    :::image type="content" source="media/dashboard-explore-data/results-kql.png" alt-text="Schreenshot of the query pane, showing the query for the visual." lightbox="media/dashboard-explore-data/results-kql.png":::
+    :::image type="content" source="media/dashboard-explore-data/results-kql.png" alt-text="Screenshot of the query pane, showing the query for the visual." lightbox="media/dashboard-explore-data/results-kql.png":::
 
 * In the **Columns** pane, you can browse the table schema by looking at the columns or finding a particular column. You can also choose columns to see their top values, value distributions, and sample values depending on their data type, as follows:
 

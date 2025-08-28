@@ -26,7 +26,7 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 
 1. Toggle the dashboard mode from **Viewing** to **Editing**.
 
-    :::image type="content" source="media/dashboard-parameters/edit-dashboard.png" alt-text="Screenshot of the Dashboard's homepage" lightbox="media/dashboard-explore-data/dashboards.png":::
+    :::image type="content" source="media/dashboard-parameters/edit-dashboard.png" alt-text="Screenshot of the Dashboard's homepage." lightbox="media/dashboard-explore-data/dashboards.png":::
 
 1. At the top of the dashboard, select **Base queries**.
 
