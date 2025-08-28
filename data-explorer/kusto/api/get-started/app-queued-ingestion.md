@@ -116,12 +116,12 @@ Add the following code:
       static async Task Main()
       {
         var tokenCredential = new InteractiveBrowserCredential();
-        var clusterUri = "<your cluster>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
+        var clusterUri = "<your_cluster_uri>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
         var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadAzureTokenCredentialsAuthentication(tokenCredential);
         
         using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
         
-        var database = "<your database>";
+        var database = "<your_database>";
         var table = "MyStormEvents";
         
         var query = table + " | count";

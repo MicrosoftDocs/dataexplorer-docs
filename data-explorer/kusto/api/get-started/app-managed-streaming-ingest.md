@@ -14,15 +14,24 @@ zone_pivot_groups: ingest-api
 
 # Create an app to get data using the managed streaming ingestion client
 
-> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explo[KustoStreamingIngestClient.cs](../../../../../Service-2/Src/Client/Kusto.Ingest/Clients/StreamingIngestClient/KustoStreamingIngestClient.cs)rer.md)]
 
 Streaming Ingestion allows writing data to Kusto with near-real-time latencies. It’s also useful when writing small amounts of data to a large number of tables, making batching inefficient.
 
 In this article, you’ll learn how to ingest data to Kusto using the managed streaming ingestion client. You'll ingest a data stream in the form of a file or in-memory stream.
 
-> [!NOTE]
-> Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion isn't the same as `IngestFromStream`.
-> `IngestFromStream` is an API that takes in a memory stream and sends it for ingestion. `IngestFromStream` is available for all ingestion client implementations including queued and streaming ingestion.
+::: zone pivot="latest"
+> [!NOTE]  
+> Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion with a `KustoStreamingIngestClient` isn't the same as using `IngestFromStream`.  
+> The type of client refers to the _way_ data is ingested - in `KustoStreamingIngestClient` it will be via Streaming Ingestion - which uses a RowStore to ingest small amounts of data with low latency.  
+> `IngestFromX` methods specify what kind of data to stream. `IngestFromStream` takes in a stream (like a C# `MemoryStream`) and sends it for ingestion via the specified ingestion client. `IngestFromStream` is available for all ingestion client implementations including queued and streaming clients.
+::: zone-end
+::: zone pivot="preview"
+> [!NOTE]  [ManagedStreamingIngestPolicy.cs](../../../../../Azure-Kusto-Service/Src/Client/Kusto.Ingest/Clients/StreamingIngestClient/ManagedStreamingIngestPolicy.cs)
+> Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion with a `StreamingIngestClient` isn't the same as using `StreamSource` for ingestion.  
+> The type of client refers to the _way_ data is ingested - in `StreamingIngestClient` it will be via Streaming Ingestion - which uses a RowStore to ingest small amounts of data with low latency.  
+> The source type specifies what kind of data to stream. `StreamSource` takes in a stream (like a C# `MemoryStream`) and sends it for ingestion via the specified ingestion client. `StreamSource` is available for all ingestion client implementations including queued and streaming clients.
+::: zone-end
 
 > [!IMPORTANT]
 >
@@ -32,15 +41,30 @@ In this article, you’ll learn how to ingest data to Kusto using the managed st
 
 ## Streaming and Managed Streaming
 
-Kusto SDKs provide two flavors of Streaming Ingestion Clients, `StreamingIngestionClient` and `ManagedStreamingIngestionClient` where Managed Streaming has built-in retry and failover logic.
+Kusto SDKs provide two flavors of Streaming Ingestion Clients, A `Streaming Ingestion Client` and `Managed Streaming Ingestion Client` where Managed Streaming has built-in retry and failover logic
 
+::: zone pivot="latest"
 > [!NOTE]
-> This article shows how to use `ManagedStreamingIngestionClient`. If you wish to use plain Streaming ingestion instead of Managed Streaming, simply change the instantiated client type to `StreamingIngestionClient`.
+> This article shows how to use `KustoManagedStreamingIngestClient`. If you wish to use plain Streaming ingestion instead of Managed Streaming, simply change the factory method to `CreateStreamingIngestClient`.
 
-When ingesting with the `ManagedStreamingIngestionClient` API, failures and retries are handled automatically as follows:
+When ingesting with A `KustoManagedStreamingIngestClient` API, failures and retries are handled automatically as follows:
+::: zone-end
+::: zone pivot="preview"
+> [!NOTE]
+> This article shows how to use `ManagedStreamingIngestionClient`. If you wish to use plain Streaming ingestion instead of Managed Streaming, simply change the builder to `StreamingIngestClientBuilder`.
+
+When ingesting with A `ManagedStreamingIngestionClient` API, failures and retries are handled automatically as follows:
+::: zone-end
 
 + Streaming requests that fail due to server-side size limitations are moved to queued ingestion.
-+ Data that's larger than 4 MB is automatically sent to queued ingestion, regardless of format or compression.
++ Data that's larger than the limit is automatically sent to queued ingestion.
+  + The size of the limit depends on the format and compression of the data.
+  ::: zone pivot="latest"
+  + It's possible to change the limit by setting the `StreamingSizeLimitFactor` property in `ManagedStreamingIngestPolicy`, passed via the constructor.
+  ::: zone-end
+  ::: zone pivot="preview"
++ It's possible to change the limit by setting the `DataSizeFactor` property in `IManagedStreamingPolicy`, passed via the builder.
+  ::: zone-end
 + Transient failure, for example throttling, are retried three times, then moved to queued ingestion.
 + Permanent failures aren't retried.
 
@@ -73,7 +97,7 @@ Before creating the app, the following steps are required. Each step is detailed
 1. Enable the streaming ingestion policy on the table.
 1. Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-managed-streaming-ingestion/stormevents.csv) sample data file containing 1,000 storm event records.
 
-## Configure streaming ingestion
+### Configure streaming ingestion
 
 To configure streaming ingestion, see [Configure streaming ingestion on your Azure Data Explorer cluster](/azure/data-explorer/ingest-data-streaming?tabs=azure-portal%2Ccsharp). It can take several minutes for the configuration to take effect. If you're using Fabric or a free cluster, streaming ingestion is automatically enabled.  
 
@@ -147,14 +171,10 @@ class BatchIngest
        var tokenCredential = new InteractiveBrowserCredential();
        var clusterUri = "<your cluster>"; // e.g., "https://<your_cluster_name>.<region>.kusto.windows.net"
        var clusterKcsb = new KustoConnectionStringBuilder(clusterUri).WithAadAzureTokenCredentialsAuthentication(tokenCredential);
-
         using var kustoClient = KustoClientFactory.CreateCslQueryProvider(clusterKcsb);
-
         var database = "<your database>";
         var table = "MyStormEvents";
-
         var query = table + " | count";
-
         using (var response = await kustoClient.ExecuteQueryAsync(database, query, null))
         {
             Console.WriteLine("\nNumber of rows in " + table + " BEFORE ingestion:");
@@ -598,7 +618,7 @@ row 1 :
          StormSummary - {'TotalDamages': 0, 'StartTime': '2007-12-31T11:15:00.0000000Z', 'EndTime': '2007-12-31T13:21:00.0000000Z', 'Details': {'Description': 'Heavy showers caused flash flooding in the eastern part of Molokai.  Water was running over the bridge at Halawa Valley.', 'Location': 'HAWAII'}}
 ```
 
-### Stream in-memory data for ingestion
+### Stream in-memory data for ingestion[KustoIngestFactory.cs](../../../../../Azure-Kusto-Service/Src/Client/Kusto.Ingest/Api/KustoIngestFactory.cs)
 
 To ingest data from memory, create a stream containing the data for ingestion.
 
@@ -614,7 +634,7 @@ Replace the ingestion section with the following code:
     Console.WriteLine("Ingesting data from memory");
     var singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,'{}'";
     byte[] byteArray = Encoding.UTF8.GetBytes(singleLine);
-    using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(clusterKcsb);
+    using var ingestClient = KustoIngestFactory.CreateManagedStreamingIngestClient(clusterKcsb);
     using var stream = new MemoryStream(byteArray);
     
     var streamSourceOptions = new StreamSourceOptions
@@ -690,10 +710,8 @@ try (
     var singleLine = "2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,'{}'";
     byte[] byteArray = Encoding.UTF8.GetBytes(singleLine);
     using var ingestClient = QueuedIngestClientBuilder.Create(new Uri(clusterUri)).WithAuthentication(tokenCredential).Build();
-
-    using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(clusterKcsb);
+    using var ingestClient = KustoIngestFactory.CreateManagedStreamingIngestClient(clusterKcsb);
     using var stream = new MemoryStream(byteArray);
-    
     var streamSource = new StreamSource(.\\stormevents.csv, DataSourceCompressionType.None, DataSourceFormat.csv);
     await ingestClient.IngestAsync(streamSource, database, table);
 ```
