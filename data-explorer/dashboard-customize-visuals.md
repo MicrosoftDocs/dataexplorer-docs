@@ -3,7 +3,7 @@ title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 06/10/2025
+ms.date: 08/26/2025
 ---
 
 # Customize Azure Data Explorer dashboard visuals
@@ -61,7 +61,7 @@ For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown 
 
 1. In the top menu, select **Apply changes** to save the tile.
 
-    :::image type="content" source="media/dashboard-customize-visuals/-image.png" alt-text="Screenshot of dashboard query pane showing the rendered image. ":::
+    :::image type="content" source="media/dashboard-customize-visuals/image.png" alt-text="Screenshot of dashboard query pane showing the rendered image. ":::
 
 For more information on image syntax in GitHub Flavored Markdown, see [Images](https://github.github.com/gfm/#images).
 

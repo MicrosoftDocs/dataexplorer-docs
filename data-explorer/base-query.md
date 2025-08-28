@@ -3,7 +3,7 @@ title: Create a dashboard base query
 description: Learn how to create a base query for an Azure Data Explorer dashboard.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 04/30/2024
+ms.date: 08/26/2025
 ---
 # Create a dashboard base query
 
@@ -25,13 +25,16 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 ## Create a base query
 
 1. Toggle the dashboard mode from **Viewing** to **Editing**.
+
+    :::image type="content" source="media/dashboard-explore-data/dashboards.png" alt-text="Screenshot of the Dashboard's homepage" lightbox="media/dashboard-explore-data/dashboards.png":::
+
 1. At the top of the dashboard, select **Base queries**.
 
     :::image type="content" source="media/base-query/base-query-menu.png" alt-text="Screenshot of dashboard menu in Azure Data Explorer with the base queries option highlighted by a red box." lightbox="media/base-query/base-query-menu.png":::
 
     The base query pane opens to the right.
 
-1. Select **+ New base query**.
+1. Select **+ Add**.
 
     :::image type="content" source="media/base-query/new-base-query.png" alt-text="Screenshot of new base query in Azure Data Explorer dashboards." lightbox="media/base-query/new-base-query.png":::
 

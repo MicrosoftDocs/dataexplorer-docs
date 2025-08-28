@@ -3,7 +3,7 @@ title: Apply conditional formatting to Azure Data Explorer dashboard visuals
 description: Learn how to apply conditional formatting to Azure Data Explorer dashboard visuals.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 09/21/2023
+ms.date: 08/26/2025
 ---
 
 # Apply conditional formatting to Azure Data Explorer dashboard visuals
