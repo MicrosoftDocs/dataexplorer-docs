@@ -12,8 +12,6 @@ Parameters are used as building blocks for filters in Azure Data Explorer dashbo
 
 This document describes the creation and use of parameters and linked filters in dashboards. Parameters can be used to filter dashboard visuals either by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#cross-filters-parameters).
 
-The query examples used in this article are based on the `StormEvents` table in the [samples gallery](web-ui-samples-query.md).
-
 > [!NOTE]
 > Parameter management is available in **Editing** mode to dashboard editors.
 
@@ -23,31 +21,35 @@ The query examples used in this article are based on the `StormEvents` table in 
 * Editor permissions on an Azure Data Explorer dashboard
 * A dashboard with visuals
 
-## View parameters list
-
-To view the list of all dashboard parameters, select the **Parameters** button at the top of the dashboard.
-
-:::image type="content" source="media/dashboard-parameters/parameters-widget.png" alt-text="Screenshot of the parameters button at the top of dashboard.":::
-
 ## Create a parameter
 
 To create a parameter:
 
 1. Switch from **Viewing** to **Editing** mode.
 
-    :::image type="content" source="media/dashboard-parameters/edit-dashboard.png" alt-text="Screenshot of the editing button at the top of dashboard.":::
+    :::image type="content" source="media/dashboard-parameters/edit-dashboard.png" alt-text="Screenshot of the editing button in the upper toolbar.":::
 
-1. Select the **Parameters** button at the top of the dashboard.
+1. Select the **Parameters** button in the upper toolbar.
 
-    :::image type="content" source="media/dashboard-parameters/parameters-widget.png" alt-text="Screenshot of the parameters button at the top of dashboard.":::
+    :::image type="content" source="media/dashboard-parameters/parameters-widget.png" alt-text="Screenshot of the parameters button in the upper toolbar.":::
 
-1. Select the **+ New parameter** button at the top of the right pane.
+1. Select the **+ Add** button in the **Add parameter** side pane.
+
+    :::image type="content" source="media/dashboard-parameters/parameters-pane.png" alt-text="Screenshot of the add parameter button in the side pane.":::
 
 1. Fill in the relevant [properties](#supported-properties) for your parameter.
 
+    :::image type="content" source="media/dashboard-parameters/create-parameter.png" alt-text="Screenshot of the add parameter configuration side pane.":::
+
+## View parameters list
+
+To view the list of all dashboard parameters, select the **Parameters** button in the upper toolbar.
+
+:::image type="content" source="media/dashboard-parameters/parameters-list.png" alt-text="Screenshot of the parameters button highlighted and the list of parameters in the side pane.":::
+
 ### Supported properties
 
-In the **Add parameter** pane, configure the following properties:
+In the **Add parameter** side pane, configure the following properties:
 
 |Field  |Description |
 |---------|---------|
@@ -62,7 +64,9 @@ In the **Add parameter** pane, configure the following properties:
 
 ## Manage parameters
 
-After selecting **Parameters** from the top bar, you can [view the list of existing parameters](#view-parameters-list). In each parameter card, select the pencil widget to edit the parameter or select the **More [...]** menu to **Duplicate**, **Delete**, or move the parameter.
+After selecting **Parameters** from the upper toolbar, you can [view the list of existing parameters](#view-parameters-list). In each parameter card, select the pencil widget to edit the parameter, the trash bin to delete, or select the **More [...]** menu to **Duplicate** or move the parameter. Alternatively, the cards can be reordered by drag and drop.
+
+:::image type="content" source="media/dashboard-parameters/edit-parameter.png" alt-text="Screenshot of sample parameters cards and their editing options.":::
 
 The following indicators can be viewed in the parameter card:
 
@@ -70,10 +74,6 @@ The following indicators can be viewed in the parameter card:
 * Variable names
 * Number of queries in which the parameter was used
 * Pages the parameter is pinned to
-
-The parameter cards can be ordered by drag and drop or by using the **Move to >** option and selecting the new location.
-
-:::image type="content" source="media/dashboard-parameters/parameters-cards.png" alt-text="Screenshot of sample parameters cards.":::
 
 ## Use parameters in your query
 

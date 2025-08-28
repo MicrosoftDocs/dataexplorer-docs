@@ -3,7 +3,7 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 01/14/2025
+ms.date: 08/25/2025
 ---
 
 # Visualize data with Azure Data Explorer dashboards
@@ -41,11 +41,11 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 
 A single dashboard can show visuals from one or more clusters.
 
-1. Select the **More menu** [...] > **Data sources**
+1. In the upper toolbar, select **Data sources**.
 
-    :::image type="content" source="media/adx-dashboards/data-source-more-menu.png" alt-text="Screenshot of adding a data source through the more menu.":::
+    :::image type="content" source="media/adx-dashboards/data-source.png" alt-text="Screenshot of adding a data source through the more menu.":::
 
-1. In the **Data sources** pane, select **+ New data source**.
+1. In the **Data sources** pane, select **+ Add**.
 1. In the **Create new data source** pane:
     1. Enter a **Data source name**.
     1. Enter the **Cluster URI** region and then select **Connect**.
@@ -59,26 +59,25 @@ A single dashboard can show visuals from one or more clusters.
 
 Dashboard tiles use Kusto Query Language snippets to retrieve data and render visuals. Each tile/query can support a single visual.
 
-1. Select **Add tile** from the dashboard canvas or the top menu bar.
+1. Select **Add tile** from the dashboard canvas or the upper toolbar.
 
-    :::image type="content" source="media/adx-dashboards/empty-dashboard-new-query.png" alt-text="New query.":::
+    :::image type="content" source="media/adx-dashboards/add-tile.png" alt-text="New query.":::
 
 1. In the **Query** pane,
     1. Select the data source from the dropdown menu.
     1. Type the query, and the select **Run**. For more information about generating queries that use parameters, see [Use parameters in your query](dashboard-parameters.md#use-parameters-in-your-query).
 
+         :::image type="content" source="media/adx-dashboards/run-query.png" alt-text="Execute query.":::
+
     1. Select **Visual**.
+    1. In the visual pane, select **Visual type** to choose the type of visual.
+    1. Select **Apply changes** to pin the visual to the dashboard.
 
-    :::image type="content" source="media/adx-dashboards/initial-query.png" alt-text="Execute query.":::
-
-1. In the visual tab, select **Visual type** to choose the type of visual.
-1. Select **Apply changes** to pin the visual to the dashboard.
-
-    :::image type="content" source="media/adx-dashboards/add-visual.png" alt-text="Add visual to query.":::
+    :::image type="content" source="media/adx-dashboards/visual.png" alt-text="Add visual to query.":::
 
 1. You can resize the visual and then select the **Save** icon.
 
-    :::image type="content" source="media/adx-dashboards/save-dashboard.png" alt-text="save dashboard.":::
+    :::image type="content" source="media/adx-dashboards/resize-and-save.png" alt-text="Resize and save dashboard.":::
 
 ## Pin tile from query
 
@@ -111,6 +110,9 @@ You can change the position of the legend in your tiles and use the legend to in
 
 If you have edit rights on a dashboard, you can change the location of the legend in your tile. Toggle to **Edit** mode and select the **Edit tile** pencil icon. In the **Visual formatting** pane, under **Legend**, you can select your location preference.
 
+:::image type="content" source="media/adx-dashboards/legend.png" alt-text="Screenshot of the legend settings in the Visual Formatting pane":::
+
+
 ### Interact with your data
 
 You can use the legend to interact with the data in your tile. You can change what data you view by selecting the specific item in the legend. Use <kbd>Ctrl</kbd> to add or remove items from the selection, hold <kbd>shift</kbd> to select a range. Items not selected are greyed out.
@@ -123,7 +125,7 @@ The **Up** and **Down** arrows navigate through the list in the following ways:
 * When one item is selected, the up and down arrows select the previous or next item.
 * When more than one item is selected, the up and down arrows change which item is highlighted on the tile. 
 
-:::image type="content" source="media/adx-dashboards/interactive-legend.png" alt-text="Screenshot showing the buttons to use the legend to interact with your data.":::
+:::image type="content" source="media/adx-dashboards/interactive-tile.png" alt-text="Screenshot showing the buttons to use the legend to interact with your data.":::
 
 ## View query
 
@@ -132,10 +134,11 @@ You can view the query in either editing or viewing mode. Editing the underlying
 1. Browse to your dashboard.
 1. On the tile you want to explore, select the **More menu [...]** > **View query**.
 
-    A pane opens with the query and results table.
-1. Select **New query tab**. Proceed to edit the query in the [Azure Data Explorer web UI query pane](web-ui-query-overview.md).
+:::image type="content" source="media/adx-dashboards/view-query.png" alt-text="Screenshot of the tile's dropdown menu with the View query option highlighted.":::
 
-:::image type="content" source="media/adx-dashboards/view-query.png" alt-text="Screenshot of view query pane with the query in the top half of the screen and results in the bottom half.":::
+1. In the **View Area** pane, select **New query tab** to edit the query in the [Azure Data Explorer web UI query pane](web-ui-query-overview.md). To edit the query within the tile, select the **Edit tile** button.
+
+:::image type="content" source="media/adx-dashboards/edit-query-pane.png" alt-text="Screenshot of view query pane with the query in the top half of the screen and results in the bottom half.":::
 
 > [!NOTE]
 > Any edits made to the query using this flow won't be reflected in the original dashboard.
@@ -148,9 +151,9 @@ Use the file menu to export a dashboard to a JSON file. Exporting dashboard can 
 * **Dashboard template**: You can use the file as template for creating new dashboards.
 * **Manual editing**: You can edit the file to modify the dashboard. The file can be imported back to the dashboard.
 
-To export a dashboard, in the dashboard, select **File** > **Export to file**.
+To export a dashboard, in the upper toolbar, select **File** > **Download dashboard to file**.
 
-:::image type="content" source="media/adx-dashboards/export-dashboard-file.png" alt-text="Screenshot of dashboard, showing the export to file option.":::
+:::image type="content" source="media/adx-dashboards/export-dashboard.png" alt-text="Screenshot of dashboard, showing the export to file option.":::
 
 The file contains the dashboard data in JSON format, an outline of which is shown in the following snippet.
 
@@ -205,9 +208,9 @@ The file contains the dashboard data in JSON format, an outline of which is show
 
 You can use a dashboard file to create a new dashboard, as follows:
 
-1. In the main dashboard page, select **New dashboard** > **Import from file**.
+1. In the main **Dashboards** page, select **New dashboard** > **Import dashboard from file**.
 
-    :::image type="content" source="media/adx-dashboards/import-dashboard-file.png" alt-text="Screenshot of dashboard, showing the import from file option.":::
+    :::image type="content" source="media/adx-dashboards/new-dashboard-from-file.png" alt-text="Screenshot of dashboard, showing the import from file option.":::
 
 1. Select the file to import.
 1. Enter a dashboard name, and then select **Create**.
@@ -216,9 +219,9 @@ You can use a dashboard file to create a new dashboard, as follows:
 
 You can update an existing dashboard, or restore a previous version, as follows:
 
-1. In the dashboard, select **File** > **Replace with file**.
+1. In the upper toolbar, select **File** > **Replace dashboard with file**.
 
-    :::image type="content" source="media/adx-dashboards/replace-dashboard-file.png" alt-text="Screenshot of dashboard, showing the option to replace with file.":::
+    :::image type="content" source="media/adx-dashboards/existing-dashboard-from-file.png" alt-text="Screenshot of dashboard, showing the option to replace with file.":::
 
 1. Select the file to update the dashboard.
 1. Select **Save changes**.
@@ -229,30 +232,25 @@ Pages are optional containers for tiles. You can use pages to organize tiles int
 
 1. On the left **Pages** pane, select **+ Add page**.
 
+:::image type="content" source="media/adx-dashboards/add-page.png" alt-text="Screenshot of the add page button.":::
+
 1. To name the page, select the vertical **More menu [...]** > **Rename page**.
 
 1. [Add tiles](#add-tile) to the page.
 
-## Enable auto refresh
+## Enable Auto Refresh
 
-Auto refresh is a feature that allows you to automatically update the data on a dashboard without manually reloading the page or clicking a refresh button.
+Auto refresh keeps your dashboard data up-to-date without requiring manual updates. Database editors can configure a default refresh rate and set a minimum refresh interval to manage cluster load. Dashboard viewers can adjust the refresh rate within the allowed range to suit their needs.
 
-The default auto refresh rate can be set by a database editor. Both editors and viewers can change the actual rate of auto refresh while viewing a dashboard.
-
-:::image type="content" source="media/adx-dashboards/auto-refresh-times.png" alt-text="Screenshot of the different time intervals available in auto refresh in dashboards.":::
-
-However, database editors might want to limit the minimum refresh rate that any viewer can set so as to reduce the cluster load. When the minimum refresh rate is set, database users can't set a refresh rate lower than the minimum.
-
-1. Select the **More menu [...]** > **Auto refresh**.
+1. In the upper toolbar, select **Settings** > **Auto refresh**.
 
     :::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh.":::
 
 1. Toggle the option so auto refresh is **Enabled**.
 1. Select values for **Minimum time interval** and **Default refresh rate**.
-
-    :::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Enable auto refresh.":::
-
 1. Select **Apply** and then **Save** the dashboard.
+
+    :::image type="content" source="media/adx-dashboards/enable-auto-refresh.png" alt-text="Screenshot showing enable auto refresh.":::
 
 ## Related content
 
