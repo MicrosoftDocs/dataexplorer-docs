@@ -103,7 +103,7 @@ To change a user permission level in the **Dashboard permissions** pane:
 1. Change the **Permission** level as needed.
 1. To remove a user, select the trash icon next to the user.
 
-:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Screenshot of dashboard permissions dialog":::
+:::image type="content" source="media/adx-dashboards/view-dashboard-permissions.png" alt-text="Screenshot of dashboard permissions dialog":::
 
 ## Share the dashboard link
 
