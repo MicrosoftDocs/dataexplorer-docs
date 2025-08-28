@@ -14,7 +14,7 @@ zone_pivot_groups: ingest-api
 
 # Create an app to get data using the managed streaming ingestion client
 
-> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explo[KustoStreamingIngestClient.cs](../../../../../Service-2/Src/Client/Kusto.Ingest/Clients/StreamingIngestClient/KustoStreamingIngestClient.cs)rer.md)]
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 Streaming Ingestion allows writing data to Kusto with near-real-time latencies. It’s also useful when writing small amounts of data to a large number of tables, making batching inefficient.
 
