@@ -113,7 +113,7 @@ For highlighted error levels, the column must be of [data type](/kusto/query/sca
 
 To enable cross-tenant sharing, a tenant admin must enable it in the Azure Data Explorer WebUI settings. This setting allows you to share dashboards with users in a different tenant.
 
-For more information, see [Grant permissions to users in a different tenant](azure-data-explorer-dashboard-share.md#grant-permissions-to-users-in-a-different-tenant).
+For more information, see [Grant access to users in a different tenant](azure-data-explorer-dashboard-share.md#grant-access-to-users-in-a-different-tenant).
 
 Under **Settings** > **Share Dashboards Across Tenants**, toggle to **On**.
 

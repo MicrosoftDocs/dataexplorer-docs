@@ -3,7 +3,7 @@ title: Apply conditional formatting to Azure Data Explorer dashboard visuals
 description: Learn how to apply conditional formatting to Azure Data Explorer dashboard visuals.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 09/21/2023
+ms.date: 08/26/2025
 ---
 
 # Apply conditional formatting to Azure Data Explorer dashboard visuals
@@ -21,18 +21,18 @@ For each visual, you have the flexibility to define one or more conditional form
 
 1. On the tile that you'd like to customize, select the **Edit** icon.
 
+    :::image type="content" source="media/dashboard-customize-visuals/edit-tile-button.png" alt-text="Screenshot of how to edit a tile in dashboards in Azure Data Explorer web UI.":::
+
 1. In the **Visual formatting** pane, scroll to the bottom and toggle **Conditional formatting** from **Hide** to **Show**.
-
-    :::image type="content" source="media/dashboard-customize-visuals/add-conditional-formatting.png" alt-text="Screenshot of adding conditional formatting in dashboards in Azure Data Explorer web UI.":::
-
 1. Select **Add rule**. A new rule appears with default values.
+
+    :::image type="content" source="media/dashboard-customize-visuals/enable-formatting.png" alt-text="Screenshot of adding conditional formatting in dashboards in Azure Data Explorer web UI.":::
 
 1. On the new rule, select the **Edit** icon.
 
-    :::image type="content" source="media/dashboard-customize-visuals/edit-new-rule.png" alt-text="Screenshot of editing new rule in dashboards in Azure Data Explorer.":::
+    :::image type="content" source="media/dashboard-customize-visuals/edit-rule.png" alt-text="Screenshot of editing new rule in dashboards in Azure Data Explorer.":::
 
     The **Conditional formatting** pane opens. For table visuals, you can either [color by condition](#color-by-condition) or [color by value](#color-by-value). For stat and multi stat visuals, you can only [color by condition](#color-by-condition).
-
 
 ## Color by condition
 
@@ -66,9 +66,9 @@ To color your results by condition:
     > [!NOTE]
     > To define more than one condition, select **Add condition** at the end of the **Conditions** section.
 
-1. Select **Save**. In the following example, the `State` column is highlighted when the `Damage` column is greater than zero.
+1. Select **Save**. In the following example, the `avg_Value` column is highlighted when the value is greater than 1,000.
 
-    :::image type="content" source="media/dashboard-customize-visuals/color-by-condition.png" alt-text="Screenshot of resulting graph from color by condition.":::
+    :::image type="content" source="media/dashboard-customize-visuals/condition.png" alt-text="Screenshot of resulting graph from color by condition.":::
 
 ## Color by value
 
@@ -90,9 +90,9 @@ To color your results by value:
     | **Reverse colors** |  | A toggle option that defines the direction of the gradient. |
     | **Apply options** |  :heavy_check_mark: | Apply the formatting to cells in a specific column or to the entire row. |
 
-1. Select **Save**. In the following example, the color changes based on the value in the `Event` column.
+1. Select **Save**. In the following example, the color changes based on the value in the `MetricType` column.
 
-    :::image type="content" source="media/dashboard-customize-visuals/color-by-value-results.png" alt-text="Screenshot of results for coloring by value.":::
+    :::image type="content" source="media/dashboard-customize-visuals/value.png" alt-text="Screenshot of results for coloring by value.":::
 
 ## Related content
 
