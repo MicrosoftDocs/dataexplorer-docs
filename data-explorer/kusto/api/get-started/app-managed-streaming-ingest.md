@@ -20,18 +20,20 @@ Streaming Ingestion allows writing data to Kusto with near-real-time latencies. 
 
 In this article, you’ll learn how to ingest data to Kusto using the managed streaming ingestion client. You'll ingest a data stream in the form of a file or in-memory stream.
 
-> [!NOTE]  
-::: zone pivot="latest"  
+::: zone pivot="latest"
+> [!NOTE]
 > Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion with a `KustoStreamingIngestClient` isn't the same as using `IngestFromStream`.  
 > The type of client refers to the _way_ data is ingested - in `KustoStreamingIngestClient` it will be via Streaming Ingestion - which uses a RowStore to ingest small amounts of data with low latency.  
 > `IngestFromX` methods specify what kind of data to stream. `IngestFromStream` takes in a stream (like a C# `MemoryStream`) and sends it for ingestion via the specified ingestion client. `IngestFromStream` is available for all ingestion client implementations including queued and streaming clients.  
-::: zone-end  
+
+::: zone-end
 ::: zone pivot="preview"   
+> [!NOTE]
 > Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion with a `StreamingIngestClient` isn't the same as using `StreamSource` for ingestion.  
 > The type of client refers to the _way_ data is ingested - in `StreamingIngestClient` it will be via Streaming Ingestion - which uses a RowStore to ingest small amounts of data with low latency.  
-> The source type specifies what kind of data to stream. `StreamSource` takes in a stream (like a C# `MemoryStream`) and sends it for ingestion via the specified ingestion client. `StreamSource` is available for all ingestion client implementations including queued and streaming clients.  
-::: zone-end  
+> The source type specifies what kind of data to stream. `StreamSource` takes in a stream (like a C# `MemoryStream`) and sends it for ingestion via the specified ingestion client. `StreamSource` is available for all ingestion client implementations including queued and streaming clients.
 
+::: zone-end
 > [!IMPORTANT]
 >
 > The Ingest API now has two versions: V1 and V2. The V1 API is the original API, while the V2 API is a reimagined version that simplifies the ingest API while offering more customization.
@@ -47,25 +49,25 @@ Kusto SDKs provide two flavors of Streaming Ingestion Clients, A `Streaming Inge
 > This article shows how to use `KustoManagedStreamingIngestClient`. If you wish to use plain Streaming ingestion instead of Managed Streaming, simply change the factory method to `CreateStreamingIngestClient`.
 
 When ingesting with A `KustoManagedStreamingIngestClient` API, failures and retries are handled automatically as follows:
++ Streaming requests that fail due to server-side size limitations are moved to queued ingestion.
++ Data that's larger than the limit is automatically sent to queued ingestion.
+    + The size of the limit depends on the format and compression of the data.
+    + It's possible to change the limit by setting the `StreamingSizeLimitFactor` property in `ManagedStreamingIngestPolicy`, passed via the constructor.
++ Transient failure, for example throttling, are retried three times, then moved to queued ingestion.
++ Permanent failures aren't retried.
 ::: zone-end
 ::: zone pivot="preview"
 > [!NOTE]
 > This article shows how to use `ManagedStreamingIngestionClient`. If you wish to use plain Streaming ingestion instead of Managed Streaming, simply change the builder to `StreamingIngestClientBuilder`.
 
 When ingesting with A `ManagedStreamingIngestionClient` API, failures and retries are handled automatically as follows:
-::: zone-end
-
 + Streaming requests that fail due to server-side size limitations are moved to queued ingestion.
 + Data that's larger than the limit is automatically sent to queued ingestion.
   + The size of the limit depends on the format and compression of the data.
-  ::: zone pivot="latest"
-  + It's possible to change the limit by setting the `StreamingSizeLimitFactor` property in `ManagedStreamingIngestPolicy`, passed via the constructor.
-  ::: zone-end
-  ::: zone pivot="preview"
-+ It's possible to change the limit by setting the `DataSizeFactor` property in `IManagedStreamingPolicy`, passed via the builder.
-  ::: zone-end
+  + It's possible to change the limit by setting the `DataSizeFactor` property in `IManagedStreamingPolicy`, passed via the builder.
 + Transient failure, for example throttling, are retried three times, then moved to queued ingestion.
 + Permanent failures aren't retried.
+::: zone-end
 
 > [!NOTE]
 > If the streaming ingestion fails and the data is moved to queued ingestion, some delay is expected before the data is visible in the table.
@@ -359,7 +361,7 @@ main().catch((err) => {
 
 ```
 
-## Stream a file for ingestion
+### Stream a file for ingestion
 
 
 Use the `ingestFromFile()` API to ingest the *stormevents.csv* file.
@@ -449,7 +451,7 @@ public class BatchIngestion {
 }
 ```
 
-## Stream a file for ingestion
+### Stream a file for ingestion
 
 Use the `ingestFromFile()` method to ingest the *stormevents.csv* file.
 Place the *stormevents.csv* file in the same location as your script. Since our input is a CSV file, use `ingestionProperties.setDataFormat(DataFormat.CSV)` in the ingestion properties.
@@ -552,7 +554,7 @@ class BatchIngest
 }
 ```
 
-## Stream a file for ingestion
+### Stream a file for ingestion
 
 Use the `IngestAsync` method to ingest the *stormevents.csv* file.
 
