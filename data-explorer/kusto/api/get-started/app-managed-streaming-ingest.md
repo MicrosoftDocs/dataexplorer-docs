@@ -62,7 +62,7 @@ When ingesting with A `KustoManagedStreamingIngestClient` API, failures and retr
 
 When ingesting with A `ManagedStreamingIngestionClient` API, failures and retries are handled automatically as follows:
 + Streaming requests that fail due to server-side size limitations are moved to queued ingestion.
-+ Data that's larger than the limit is automatically sent to queued ingestion.
++ Data that's larger than the streaming limit is automatically sent to queued ingestion.
   + The size of the limit depends on the format and compression of the data.
   + It's possible to change the limit by setting the `DataSizeFactor` property in `IManagedStreamingPolicy`, passed via the builder.
 + Transient failure, for example throttling, are retried three times, then moved to queued ingestion.
