@@ -29,6 +29,7 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `OPTIONAL MATCH` | Find patterns that might not exist | `OPTIONAL MATCH (p)->(c:City)` |
 | **Filtering** |
 | `WHERE` | Filter patterns and properties | `WHERE person.age > 25` |
+| `FILTER` | Equivalent to WHERE but used without MATCH clauses | `FILTER p.name = 'Carol' OR c.name = 'Seattle'` |
 | `IS NULL` | Check for null values | `WHERE person.age IS NULL` |
 | `IS NOT NULL` | Check for non-null values | `WHERE person.age IS NOT NULL` |
 | **Projection** |

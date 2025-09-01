@@ -608,6 +608,30 @@ This query creates a named path variable `full_path` that captures a two-hop pat
 
 ## Complex multi-pattern examples
 
+### Cross product filtering with FILTER
+
+When using multiple separate `MATCH` patterns, GQL creates a cross product of all matching combinations. The `FILTER` keyword allows you to filter this cross product based on conditions involving variables from different patterns.
+
+This example shows how to filter the cross product of persons and cities:
+
+<!-- csl -->
+```gql
+MATCH (p:Person)
+MATCH (c:City)
+FILTER p.name = 'Carol' or c.name = 'Seattle'
+RETURN p.name as Person, c.name as City
+LIMIT 2
+```
+
+**Output**
+
+| Person | City |
+|---|---|
+| Carol | Portland |
+| David | Seattle |
+
+This query demonstrates how the `FILTER` keyword operates on the cross product of all Person nodes and all City nodes, returning only the combinations where either the person's name is 'Carol' or the city's name is 'Seattle'.
+
 ### Cross-town *likes* with company filter
 
 This example combines multiple patterns and filters in one statement:
