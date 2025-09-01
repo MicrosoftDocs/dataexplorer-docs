@@ -59,7 +59,8 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | **Date/Time Functions** |
 | `ZONED_DATETIME()` | Create datetime from string | `ZONED_DATETIME('2024-01-01')` |
 | `CURRENT_TIMESTAMP` | Current timestamp | `WHERE created < CURRENT_TIMESTAMP` |
-| `DURATION()` | Construct a duration (timespan) | `DURATION({days:3})` |
+| `DURATION()` | Create timespan from time units (days to nanoseconds) | `DURATION({days: 3, hours: 2})` |
+| `DURATION_BETWEEN()` | Calculate duration between two datetime values | `DURATION_BETWEEN(start_time, end_time)` |
 | **Path Functions** |
 | `NODES()` | Extract nodes from a path | `RETURN NODES(path_variable)` |
 | `RELATIONSHIPS()` | Extract edges from a path | `RETURN RELATIONSHIPS(path_variable)` |

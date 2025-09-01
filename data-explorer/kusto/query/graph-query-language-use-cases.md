@@ -31,6 +31,8 @@ The following examples show the GQL syntax supported, from simple to complex pat
 
 * [Complex multi-pattern queries](#complex-multi-pattern-examples)
 
+* [Temporal data analysis with DURATION functions](#temporal-data-analysis-with-duration-functions)
+
 For a full list of supported GQL functions and operators, see [Graph Query Language Functions](graph-query-language-functions.md).
 
 ## Basic pattern matching examples
@@ -604,8 +606,6 @@ This query creates a named path variable `full_path` that captures a two-hop pat
 
 **Comparable KQL:** Uses advanced `graph-match` operator features for complex pattern matching.
 
-
-
 ## Complex multi-pattern examples
 
 ### Cross-town *likes* with company filter
@@ -654,6 +654,52 @@ RETURN AVG(cast(p2.properties.age as int)) AS AvgAgeLikedAcrossTowns
 
 This example shows how GQL lets you express complex multi-pattern queries with cross-variable filtering, inline property matching, string pattern matching, and aggregation—all in one readable statement.
 
+## Temporal data analysis with DURATION functions
+
+GQL provides comprehensive support for temporal data analysis using duration functions. These functions enable you to perform time-based filtering, calculations, and comparisons on graph data with timestamps.
+
+### Supported duration units
+
+The `DURATION()` function supports a wide range of time units with flexible, case-insensitive syntax and returns a `timespan` object:
+
+| Time Unit | Supported Names | Example | Timespan Output |
+|-----------|----------------|---------|-----------------|
+| **Days** | `days`, `day` | `DURATION({days: 7})` | `7.00:00:00` |
+| **Hours** | `hours`, `hour`, `HOURS` | `DURATION({hours: 24})` | `1.00:00:00` |
+| **Minutes** | `minutes`, `minute`, `MINUTES` | `DURATION({minutes: 30})` | `00:30:00` |
+| **Seconds** | `seconds`, `second`, `SECONDS`, `secOnd` | `DURATION({seconds: 45})` | `00:00:45` |
+| **Milliseconds** | `milliseconds`, `millisecond` | `DURATION({milliseconds: 500})` | `00:00:00.5000000` |
+| **Microseconds** | `microseconds`, `microsecond`, `micRosecond` | `DURATION({microseconds: 1000})` | `00:00:00.0010000` |
+| **Nanoseconds** | `nanoseconds`, `nanosecond`, `nanoSecond` | `DURATION({nanoseconds: 1000000})` | `00:00:00.0010000` |
+
+You can combine multiple units in a single duration object: `DURATION({days: 1.8, minutes: 8, seconds: 7})` returns `1.00:08:07`.
+
+### Complex temporal boundary analysis
+
+Combine duration functions with timestamp arithmetic for precise temporal filtering:
+
+<!-- csl -->
+```gql
+MATCH (system:System)-[event:generated]->(alert:Alert)
+WHERE event.event_timestamp <= zoned_datetime("2012-01-01 08:00:00.0") + DURATION({days: 3})
+    AND event.event_timestamp > zoned_datetime("2012-01-01 08:00:00.0") + DURATION({minutes: 1})
+RETURN 
+    system.name,
+    alert.severity,
+    event.event_timestamp,
+    DURATION_BETWEEN(zoned_datetime("2012-01-01 08:00:00.0"), event.event_timestamp) AS time_since_baseline
+ORDER BY event.event_timestamp
+```
+
+This query finds alerts generated within a specific time window (between 1 minute and 3 days after a baseline date) and calculates the duration between the baseline and each event.
+
+**Output**
+
+| system.name | alert.severity | event_timestamp | time_since_baseline |
+|-------------|----------------|-----------------|---------------------|
+| WebServer01 | Warning | 2012-01-01T08:01:30.0Z | 00:01:30 |
+| Database02 | Critical | 2012-01-02T20:15:45.0Z | 1.12:15:45 |
+| LoadBalancer | Info | 2012-01-04T16:30:00.0Z | 3.08:30:00 |
 
 ## Social networks use case: Friend recommendations
 
