@@ -60,9 +60,9 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `ZONED_DATETIME()` | Create datetime from string | `ZONED_DATETIME('2024-01-01')` |
 | `CURRENT_TIMESTAMP` | Current timestamp | `WHERE created < CURRENT_TIMESTAMP` |
 | `DURATION()` | Construct a duration (timespan) | `DURATION({days:3})` |
-| **Path Operations** |
-| Variable length paths | Multi-hop traversal | `MATCH (a)-[*1..3]->(b)` |
-| Path variables | Named path assignment | `MATCH p = (a)-[]->(b)` |
+| **Path Functions** |
+| `NODES()` | Extract nodes from a path | `RETURN NODES(path_variable)` |
+| `RELATIONSHIPS()` | Extract edges from a path | `RETURN RELATIONSHIPS(path_variable)` |
 | **Ordering and Limiting** |
 | `ORDER BY` | Sort results | `ORDER BY person.age DESC` |
 | `LIMIT` | Limit result count | `LIMIT 10` |

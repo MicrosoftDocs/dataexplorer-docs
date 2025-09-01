@@ -205,6 +205,25 @@ RETURN DISTINCT connected.name
 
 This query finds all nodes you can reach from Alice through paths of one or more hops. The `{1,}` quantifier means "one or more hops."
 
+### Path functions
+
+Use path functions to extract information about the matched paths, including the nodes and relationships that make up the path:
+
+<!-- csl -->
+```gql
+MATCH fof = (person)-[:knows]->{2,2}()
+RETURN fof, NODES(fof) AS NodesOfPath, RELATIONSHIPS(fof) AS EdgesOfPath
+LIMIT 1
+```
+
+This query finds paths exactly 2 hops long using the "knows" relationship. The path variable `fof` contains the entire path as an array of alternating nodes and edges. The `NODES()` function extracts just the nodes from the path, and `RELATIONSHIPS()` extracts just the edges.
+
+**Output**
+
+| fof | NodesOfPath | EdgesOfPath |
+|-----|-------------|-------------|
+| `[{"id": "p3", "lbl": "Person", "name": "Carol", "properties": {"age": 28}, "$labels": ["Person"]}, {"source": "p3", "target": "p4", "lbl": "knows", "since": 2022, "$labels": ["knows"]}, {"id": "p4", "lbl": "Person", "name": "David", "properties": {"age": 35}, "$labels": ["Person"]}, {"source": "p4", "target": "p5", "lbl": "knows", "since": 2023, "$labels": ["knows"]}, {"id": "p5", "lbl": "Person", "name": "Emma", "properties": {"age": 26}, "$labels": ["Person"]}]` | `[{"id": "p3", "lbl": "Person", "name": "Carol", "properties": {"age": 28}, "$labels": ["Person"]}, {"id": "p4", "lbl": "Person", "name": "David", "properties": {"age": 35}, "$labels": ["Person"]}, {"id": "p5", "lbl": "Person", "name": "Emma", "properties": {"age": 26}, "$labels": ["Person"]}]` | `[{"source": "p3", "target": "p4", "lbl": "knows", "since": 2022, "$labels": ["knows"]}, {"source": "p4", "target": "p5", "lbl": "knows", "since": 2023, "$labels": ["knows"]}]` |
+
 ## Basic property filtering
 
 Filter nodes based on a single property condition:
@@ -549,6 +568,8 @@ The optional match ensures that people without city connections are still return
 |Carol|Portland|
 |Emma|Portland|
 |Alice||
+
+
 
 ### Multi-hop named paths
 
