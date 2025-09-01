@@ -26,6 +26,7 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 |---|---|---|
 | **Pattern Matching** |
 | `MATCH` | Find graph patterns | `MATCH (a)-[r]->(b)` |
+| `OPTIONAL MATCH` | Find patterns that might not exist | `OPTIONAL MATCH (p)->(c:City)` |
 | **Filtering** |
 | `WHERE` | Filter patterns and properties | `WHERE person.age > 25` |
 | `IS NULL` | Check for null values | `WHERE person.age IS NULL` |

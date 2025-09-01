@@ -525,6 +525,31 @@ RETURN p
 
 This query assigns the entire pattern to the variable `p`, which you can return or use in other parts of the query. The path variable has the complete sequence of nodes and edges.
 
+### Optional matching
+
+Use `OPTIONAL MATCH` to find patterns that might not exist, returning empty values when patterns don't match:
+
+<!-- csl -->
+```gql
+MATCH (p:Person)
+    WHERE p.properties.age < 30
+OPTIONAL MATCH (p)->(c:City)
+    WHERE c.name <> 'Seattle' 
+RETURN p.name as Person, c.name as City
+```
+
+This query finds all `Person` nodes where age is less than 30, and optionally matches cities they're connected to (excluding Seattle). If a person isn't connected to any city (or only to Seattle), the City column returns empty, but the person is still included in the results.
+
+**Output**
+
+The optional match ensures that people without city connections are still returned:
+
+|Person|City|
+|---|---|
+|Carol|Portland|
+|Emma|Portland|
+|Alice||
+
 ### Multi-hop named paths
 
 Create named paths that span multiple relationships:
@@ -538,6 +563,8 @@ RETURN full_path, s.name, e.name
 This query creates a named path variable `full_path` that captures a two-hop pattern and returns specific properties from the s and e nodes.
 
 **Comparable KQL:** Uses advanced `graph-match` operator features for complex pattern matching.
+
+
 
 ## Complex multi-pattern examples
 
