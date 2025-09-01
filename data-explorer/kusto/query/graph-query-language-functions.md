@@ -63,6 +63,7 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | **Path Functions** |
 | `NODES()` | Extract nodes from a path | `RETURN NODES(path_variable)` |
 | `RELATIONSHIPS()` | Extract edges from a path | `RETURN RELATIONSHIPS(path_variable)` |
+| `PATH_LENGTH()` | Get the length of a path | `RETURN PATH_LENGTH(path_variable)` |
 | **Ordering and Limiting** |
 | `ORDER BY` | Sort results | `ORDER BY person.age DESC` |
 | `LIMIT` | Limit result count | `LIMIT 10` |
