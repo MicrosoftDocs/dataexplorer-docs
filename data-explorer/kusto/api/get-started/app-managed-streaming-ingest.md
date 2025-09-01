@@ -20,54 +20,33 @@ Streaming Ingestion allows writing data to Kusto with near-real-time latencies. 
 
 In this article, you’ll learn how to ingest data to Kusto using the managed streaming ingestion client. You'll ingest a data stream in the form of a file or in-memory stream.
 
-::: zone pivot="latest"
 > [!NOTE]
-> Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion with a `KustoStreamingIngestClient` isn't the same as using `IngestFromStream`.  
-> The type of client refers to the _way_ data is ingested - in `KustoStreamingIngestClient` it will be via Streaming Ingestion - which uses a RowStore to ingest small amounts of data with low latency.  
-> `IngestFromX` methods specify what kind of data to stream. `IngestFromStream` takes in a stream (like a C# `MemoryStream`) and sends it for ingestion via the specified ingestion client. `IngestFromStream` is available for all ingestion client implementations including queued and streaming clients.  
+> Streaming ingestion is a high velocity ingestion protocol. Ingesting with a *Managed Streaming Ingestion* or *Streaming Ingestion* client isn't the same as ingesting with a *Stream Source*.  
+> The type of client refers to the _way_ data is ingested - When ingesting with a *Managed Streaming Ingestion* or *Streaming Ingestion* client, data is sent to Kusto using the streaming ingestion protocol - it uses a Row Store to allow for low latency ingestion.  
+> Ingesting from a *Stream Source* refers to how the data is stored. For example, in C# a *Stream Source* can be created from a `MemoryStream` object. The way this source will be ingested depends on the type of client used - if it's ingested using queued ingestion, it will be uploaded to blob storage and then queued for ingestion, while if it's ingested using streaming ingestion, it will be sent directly to Kusto via the body of a streaming HTTP request.
 
-::: zone-end
-::: zone pivot="preview"   
-> [!NOTE]
-> Streaming ingestion is a high velocity ingestion protocol. Streaming Ingestion with a `StreamingIngestClient` isn't the same as using `StreamSource` for ingestion.  
-> The type of client refers to the _way_ data is ingested - in `StreamingIngestClient` it will be via Streaming Ingestion - which uses a RowStore to ingest small amounts of data with low latency.  
-> The source type specifies what kind of data to stream. `StreamSource` takes in a stream (like a C# `MemoryStream`) and sends it for ingestion via the specified ingestion client. `StreamSource` is available for all ingestion client implementations including queued and streaming clients.
-
-::: zone-end
 > [!IMPORTANT]
 >
 > The Ingest API now has two versions: V1 and V2. The V1 API is the original API, while the V2 API is a reimagined version that simplifies the ingest API while offering more customization.
 >
 > Ingest Version 2 is in **preview** and is available in the following languages: C#
+> 
+> Also note, that the Query V2 api is not related to the Ingest V2 api.
 
 ## Streaming and Managed Streaming
 
-Kusto SDKs provide two flavors of Streaming Ingestion Clients, A `Streaming Ingestion Client` and `Managed Streaming Ingestion Client` where Managed Streaming has built-in retry and failover logic
+Kusto SDKs provide two flavors of Streaming Ingestion Clients, A *Streaming Ingestion Client* and *Managed Streaming Ingestion Client* where Managed Streaming has built-in retry and failover logic
 
-::: zone pivot="latest"
 > [!NOTE]
-> This article shows how to use `KustoManagedStreamingIngestClient`. If you wish to use plain Streaming ingestion instead of Managed Streaming, simply change the factory method to `CreateStreamingIngestClient`.
+> This article shows how to use *Managed Streaming Ingestion*. If you wish to use plain *Streaming Ingestion* instead of *Managed Streaming*, simply change the instantiated client type to be *Streaming Ingestion Client*.
 
-When ingesting with A `KustoManagedStreamingIngestClient` API, failures and retries are handled automatically as follows:
+When ingesting with a *Managed Streaming Ingestion* API, failures and retries are handled automatically as follows:
 + Streaming requests that fail due to server-side size limitations are moved to queued ingestion.
 + Data that's larger than the limit is automatically sent to queued ingestion.
     + The size of the limit depends on the format and compression of the data.
-    + It's possible to change the limit by setting the `StreamingSizeLimitFactor` property in `ManagedStreamingIngestPolicy`, passed via the constructor.
-+ Transient failure, for example throttling, are retried three times, then moved to queued ingestion.
+    + It's possible to change the limit by setting the *Size Factor* in the *Managed Streaming Ingest Policy*, passed in initialization.
++ Transient failures, for example throttling, are retried three times, then moved to queued ingestion.
 + Permanent failures aren't retried.
-::: zone-end
-::: zone pivot="preview"
-> [!NOTE]
-> This article shows how to use `ManagedStreamingIngestionClient`. If you wish to use plain Streaming ingestion instead of Managed Streaming, simply change the builder to `StreamingIngestClientBuilder`.
-
-When ingesting with A `ManagedStreamingIngestionClient` API, failures and retries are handled automatically as follows:
-+ Streaming requests that fail due to server-side size limitations are moved to queued ingestion.
-+ Data that's larger than the streaming limit is automatically sent to queued ingestion.
-  + The size of the limit depends on the format and compression of the data.
-  + It's possible to change the limit by setting the `DataSizeFactor` property in `IManagedStreamingPolicy`, passed via the builder.
-+ Transient failure, for example throttling, are retried three times, then moved to queued ingestion.
-+ Permanent failures aren't retried.
-::: zone-end
 
 > [!NOTE]
 > If the streaming ingestion fails and the data is moved to queued ingestion, some delay is expected before the data is visible in the table.
