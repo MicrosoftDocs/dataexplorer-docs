@@ -78,7 +78,7 @@ Before you use GQL, create a graph data source. This article uses an in-memory m
 
 ## Step 2: Configure client request properties
 
-To run GQL queries, set three client request properties. Set these properties through the SDK, API, or directly in the Kusto Explorer by using directives.
+To run GQL queries, set three client request properties. Set these properties through the SDK, API, or directly in the [Kusto Explorer](../tools/kusto-explorer.md) by using directives.
 
 ### Set client request properties in Kusto's UI
 
