@@ -50,7 +50,7 @@ When ingesting with a *Managed Streaming Ingestion* API, failures and retries ar
 + Permanent failures aren't retried.
 
 > [!NOTE]
-> If the streaming ingestion fails and the data is moved to queued ingestion, then the data will take longer to be ingested, due to it being batched and queued for ingestion. You can control it via the [batching policy](/kusto/management/batching-policy?view=microsoft-fabric).
+> If the streaming ingestion fails and the data is moved to queued ingestion, then the data will take longer to be ingested, due to it being batched and queued for ingestion. You can control it via the [batching policy](/kusto/management/batching-policy).
 
 ## Limitations
 
