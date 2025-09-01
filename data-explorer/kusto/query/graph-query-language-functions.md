@@ -123,7 +123,7 @@ RETURN COUNT(*) > 0 AS HasSuspiciousActivity
 
 - **No `INSERT`/`CREATE` support**: Operations to change graph structures are not supported. Instead, use KQL for all graph creation, change, and management tasks.
 
-- **Optional matches**: Supported only for node patterns (not edges) and only on persistent graphs. Optional matching isn't available for transient, in-query graphs.
+- **Optional matches**: Supported only for node patterns (not edges).
 
 - **Entity equivalence checks not supported**: GQL's`(MATCH (n)-[]-(n2) WHERE n1 <> n2)` is not supported. Use explicit field comparisons instead, for example, `n.id <> n2.id`.
 
