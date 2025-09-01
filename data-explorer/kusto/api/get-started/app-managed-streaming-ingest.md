@@ -22,8 +22,9 @@ In this article, you’ll learn how to ingest data to Kusto using the managed st
 
 > [!NOTE]
 > Streaming ingestion is a high velocity ingestion protocol. Ingesting with a *Managed Streaming Ingestion* or *Streaming Ingestion* client isn't the same as ingesting with a *Stream Source*.  
-> The type of client refers to the _way_ data is ingested - When ingesting with a *Managed Streaming Ingestion* or *Streaming Ingestion* client, data is sent to Kusto using the streaming ingestion protocol - it uses a Row Store to allow for low latency ingestion.  
-> Ingesting from a *Stream Source* refers to how the data is stored. For example, in C# a *Stream Source* can be created from a `MemoryStream` object. The way this source will be ingested depends on the type of client used - if it's ingested using queued ingestion, it will be uploaded to blob storage and then queued for ingestion, while if it's ingested using streaming ingestion, it will be sent directly to Kusto via the body of a streaming HTTP request.
+> The type of client refers to the _way_ data is ingested - When ingesting with a *Managed Streaming Ingestion* or *Streaming Ingestion* client, data is sent to Kusto using the streaming ingestion protocol - it uses a *Streaming Service* to allow for low latency ingestion.  
+> Ingesting from a *Stream Source* refers to how the data is stored. For example, in C# a *Stream Source* can be created from a `MemoryStream` object.  
+> The way this source will be ingested depends on the type of client used - if it's ingested using queued ingestion, it will be uploaded to blob storage and then queued for ingestion, while if it's ingested using streaming ingestion, it will be sent directly to Kusto via the body of a streaming HTTP request.
 
 > [!IMPORTANT]
 >
@@ -42,14 +43,14 @@ Kusto SDKs provide two flavors of Streaming Ingestion Clients, A *Streaming Inge
 
 When ingesting with a *Managed Streaming Ingestion* API, failures and retries are handled automatically as follows:
 + Streaming requests that fail due to server-side size limitations are moved to queued ingestion.
-+ Data that's larger than the limit is automatically sent to queued ingestion.
-    + The size of the limit depends on the format and compression of the data.
++ Data that's estimated to be larger than the streaming limit is automatically sent to queued ingestion.
+    + The size of the streaming limit depends on the format and compression of the data.
     + It's possible to change the limit by setting the *Size Factor* in the *Managed Streaming Ingest Policy*, passed in initialization.
 + Transient failures, for example throttling, are retried three times, then moved to queued ingestion.
 + Permanent failures aren't retried.
 
 > [!NOTE]
-> If the streaming ingestion fails and the data is moved to queued ingestion, some delay is expected before the data is visible in the table.
+> If the streaming ingestion fails and the data is moved to queued ingestion, then the data will take longer to be ingested, due to it being batched and queued for ingestion. You can control it via the [batching policy](https://learn.microsoft.com/en-us/kusto/management/batching-policy?view=microsoft-fabric).
 
 ## Limitations
 
@@ -58,7 +59,7 @@ Data Streaming has some limitations compared to queuing data for ingestion.
 + Tags can’t be set on data.
 + Mapping can only be provided using [`ingestionMappingReference`](/kusto/management/mappings?view=azure-data-explorer#mapping-with-ingestionmappingreference&preserve-view=true). Inline mapping isn't supported.
 + The payload sent in the request can’t exceed 10 MB, regardless of format or compression.
-+ The `ignoreFirstRecord` property isn't supported for managed streaming ingestion, so ingested data must not contain a header row.
++ The `ignoreFirstRecord` property isn't supported for streaming ingestion, so ingested data must not contain a header row.
 
 For more information, see [Streaming Limitations](/azure/data-explorer/ingest-data-streaming#limitations).
 
