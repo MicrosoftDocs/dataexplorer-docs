@@ -54,7 +54,19 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `ENDS WITH` | String ends with pattern | `WHERE person.name ENDS WITH 'Hanks'` |
 | `CONTAINS` | String contains pattern | `WHERE person.name CONTAINS 'Tom'` |
 | `\|\|` | String concatenation | `RETURN n.firstName \|\| ' ' \|\| n.lastName` |
-| **Type Conversion** |
+| `TRIM()` | Remove whitespace from both ends | `RETURN TRIM('   abc   ')` |
+| `BTRIM()` | Remove whitespace from both ends (alias for TRIM) | `RETURN BTRIM('   abc   ')` |
+| `LTRIM()` | Remove whitespace from left end | `RETURN LTRIM('   abc   ')` |
+| `RTRIM()` | Remove whitespace from right end | `RETURN RTRIM('   abc   ')` |
+| `TRIM(BOTH FROM)` | Remove whitespace from both ends (explicit) | `RETURN TRIM(BOTH FROM '   abc   ')` |
+| `TRIM(LEADING FROM)` | Remove whitespace from left end (explicit) | `RETURN TRIM(LEADING FROM '   abc')` |
+| `TRIM(TRAILING FROM)` | Remove whitespace from right end (explicit) | `RETURN TRIM(TRAILING FROM 'abc   ')` |
+| `TRIM(chars FROM)` | Remove specified characters from both ends | `RETURN TRIM('_' FROM '_abc_')` |
+| `TRIM(BOTH chars FROM)` | Remove specified characters from both ends (explicit) | `RETURN TRIM(BOTH '_' FROM '_abc_')` |
+| `TRIM(LEADING chars FROM)` | Remove specified characters from left end | `RETURN TRIM(LEADING 'd' FROM 'dddabc')` |
+| `TRIM(TRAILING chars FROM)` | Remove specified characters from right end | `RETURN TRIM(TRAILING 't' FROM 'abcttt')` |
+| `STRING_JOIN()` | Join array elements with delimiter | `RETURN STRING_JOIN(["a", "b" \|\| "c"], "-")` |
+| **Type Conversion** | | |
 | `CAST()` | Convert data types | `CAST(person.age AS STRING)` |
 | **Date/Time Functions** |
 | `ZONED_DATETIME()` | Create datetime from string | `ZONED_DATETIME('2024-01-01')` |
