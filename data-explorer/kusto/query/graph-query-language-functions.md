@@ -70,7 +70,7 @@ This table lists the core GQL functions and operators, along with their Kusto Qu
 | `LIMIT` | Limit result count | `LIMIT 10` |
 | **Label Operations** |
 | `&` (AND) | Label intersection | `MATCH (p:Person & Male)` |
-| `|` (OR) | Label union | `MATCH (n:Person | Movie)` |
+| `\|` (OR) | Label union | `MATCH (n:Person \| Movie)` |
 | `!` (NOT) | Label negation | `MATCH (p:!Female)` |
 
 ## Best practices
