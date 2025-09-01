@@ -361,6 +361,25 @@ RETURN person.name AS Employee, company.name AS Company, employment.since AS Wor
 
 This query returns employee names, company names, and employment start dates with descriptive column headers.
 
+### Return property bags (JSON objects)
+
+Create custom JSON objects by combining multiple properties in the RETURN clause.
+
+<!-- csl -->
+```gql
+MATCH (person:Person)
+RETURN {age: person.properties.age, name: person.name} AS myPropertyBag
+LIMIT 1
+```
+
+**Output**
+
+This query creates a custom JSON object (property bag) containing selected properties from matched Person nodes. The property bag combines the person's age and name into a single structured object.
+
+| myPropertyBag |
+|---|
+| { "age": 28, "name": "Carol" } |
+
 ### Return entire nodes and edges
 
 <!-- csl -->
