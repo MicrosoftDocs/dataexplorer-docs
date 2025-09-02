@@ -3,7 +3,7 @@ title: Connect to Azure Data Explorer with ODBC
 description: In this article, you learn how to set up an Open Database Connectivity (ODBC) connection to Azure Data Explorer.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 05/26/2024
+ms.date: 09/02/2025
 ---
 
 # Connect to Azure Data Explorer with ODBC
@@ -12,18 +12,18 @@ Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a wide
 
 Consequently, you can establish a connection to Azure Data Explorer from any application that is equipped with support for the ODBC driver for SQL Server.
 
-Watch the following video to learn to create an ODBC connection.
+Watch the following video to learn how to create an ODBC connection.
 
 > [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
 
 Alternatively, follow the steps to [connect to your cluster with ODBC](#connect-to-your-cluster-with-odbc).
 
 > [!NOTE]
-> We recommend using dedicated connectors whenever possible. For a list of available connectors, see [Connectors overview](integrate-data-overview.md).
+> Use dedicated connectors when possible. For a list of available connectors, see [Connectors overview](integrate-data-overview.md).
 
 ## Prerequisites
 
-* [Microsoft ODBC Driver for SQL Server version 17.2.0.1 or later](/sql/connect/odbc/download-odbc-driver-for-sql-server) for your operating system.
+* [Microsoft ODBC Driver for SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server) version 17.2.0.1 or later for your operating system.
 
 ## Connect to your cluster with ODBC
 
@@ -45,41 +45,41 @@ To configure an ODBC data source using the ODBC driver for SQL Server:
 
 1. Select **Add**.
 
-:::image type="content" source="media/connect-odbc/add-data-source.png" alt-text="Add data source.":::
+:::image type="content" source="media/connect-odbc/add-data-source.png" alt-text="Screenshot of the ODBC Data Sources dialog showing the Add Data Source option and fields for creating a new DSN.":::
 
 1. Select **ODBC Driver 17 for SQL Server** then **Finish**.
 
-    :::image type="content" source="media/connect-odbc/select-driver.png" alt-text="Select driver.":::
+    :::image type="content" source="media/connect-odbc/select-driver.png" alt-text="Screenshot of the ODBC driver selection dialog showing ODBC Driver 17 for SQL Server selected.":::
 
-1. Enter a name and description for the connection and the cluster you want to connect to, then select **Next**. The cluster URL should be in the form *\<ClusterName\>.\<Region\>.kusto.windows.net*.
+1. Enter a name and description for the connection and the cluster you want to connect to, then select **Next**. The cluster URL should be in the form `\<ClusterName\>.\<Region\>.kusto.windows.net`.
 
     >[!NOTE]
-    > When entering the cluster URL, do not include the prefix "https://".
+    > When entering the cluster URL, don't include the prefix `https://`.
 
-    :::image type="content" source="media/connect-odbc/select-server.png" alt-text="Select server.":::
+    :::image type="content" source="media/connect-odbc/select-server.png" alt-text="Screenshot of the Data Source Configuration window showing the Server field and an example cluster URL format.":::
 
 1. Select **Active Directory Integrated** then **Next**.
 
-    :::image type="content" source="media/connect-odbc/active-directory-integrated.png" alt-text="Active directory integrated.":::
+    :::image type="content" source="media/connect-odbc/active-directory-integrated.png" alt-text="Screenshot of the authentication method dropdown showing Active Directory Integrated selected.":::
 
 1. Select the database with the sample data then **Next**.
 
-    :::image type="content" source="media/connect-odbc/change-default-database.png" alt-text="Cahnge default database.":::
+    :::image type="content" source="media/connect-odbc/change-default-database.png" alt-text="Screenshot of the default database selection dialog showing the sample data database chosen.":::
 
 1. On the next screen, leave all options as defaults then select **Finish**.
 
 1. Select **Test Data Source**.
 
-    :::image type="content" source="media/connect-odbc/test-data-source.png" alt-text="Test data source.":::
+    :::image type="content" source="media/connect-odbc/test-data-source.png" alt-text="Screenshot of the Test Data Source dialog showing the Test Data Source button and connection status fields.":::
 
 1. Verify that the test succeeded then select **OK**. If the test didn't succeed, check the values that you specified in previous steps, and ensure you have sufficient permissions to connect to the cluster.
 
-    :::image type="content" source="media/connect-odbc/test-succeeded.png" alt-text="Test succeeded.":::
+    :::image type="content" source="media/connect-odbc/test-succeeded.png" alt-text="Screenshot of the Test Data Source results showing a successful connection confirmation message.":::
 
 ---
 
 > [!NOTE]
-> Azure Data Explorer considers string values as `NVARCHAR(MAX)`, which may not work well with some ODBC applications. Cast the data to `NVARCHAR(`*n*`)` using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`. For more information, see [tuning options](sql-server-emulation-overview.md#tuning-options).
+> Azure Data Explorer treats string values as `NVARCHAR(MAX)`, which can cause issues with some ODBC applications. Cast strings to `NVARCHAR(\<n\>)` by using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` encodes strings as `NVARCHAR(5000)`. For more information, see [tuning options](sql-server-emulation-overview.md#tuning-options).
 
 ## Application authentication
 
@@ -120,4 +120,4 @@ Language = any@AadAuthority:<aad_tenant_id>
 ## Related content
 
 * [SQL Server emulation in Azure Data Explorer](sql-server-emulation-overview.md)
-* [Run KQL queries and call stored functions](sql-kql-queries-and-stored-functions.md)
+* [Run Kusto Query Language (KQL) queries and call stored functions](sql-kql-queries-and-stored-functions.md)

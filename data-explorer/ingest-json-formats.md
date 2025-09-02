@@ -3,7 +3,7 @@ title: Ingest JSON formatted data into Azure Data Explorer
 description: Learn about how to ingest JSON formatted data into Azure Data Explorer.
 ms.reviewer: kerend
 ms.topic: how-to
-ms.date: 09/14/2022
+ms.date: 09/02/2025
 ---
 
 # Ingest JSON formatted sample data into Azure Data Explorer
