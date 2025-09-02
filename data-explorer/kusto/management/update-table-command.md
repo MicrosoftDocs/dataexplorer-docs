@@ -68,7 +68,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | -------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | *whatif* | bool | If `true`, returns the number of records that will be appended / deleted in every shard, without appending / deleting any records. The default is `false`. |
 | *distributed* | bool | If `true`, the command ingests from all nodes executing the query in parallel. This option is relevant only for update based on ingest from query. Default is `false`. See [performance tips](#performance-tips). |
-| *extentTagsToMove* | string | Optional [Extent tags](extent-tags.md) to filter only specific extents, when using update using move extents. The tags are provided as an array, in the same format as in [Ingestion properties](../includes/ingestion-properties.md). See examples in [Update using move extents](#update-using-move-extents).|
+| *extentTagsToMove* | string | Optional [Extent tags](extent-tags.md) to filter only specific extents, when using update using move extents. The tags are provided as an array, in the same format as in [Ingestion properties](../ingestion-properties.md). See examples in [Update using move extents](#update-using-move-extents).|
 
 > [!IMPORTANT]
 > We recommend running in `whatif` mode first before executing the update to validate the predicates before deleting or appending data.
