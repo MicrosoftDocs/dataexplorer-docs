@@ -1,22 +1,28 @@
 ---
-title: Explore sample data in the Azure Data Explorer web UI samples gallery
-description: In this how-to article, you learn how to query data in the samples gallery in the Azure Data Explorer web UI.
+title: "Azure Data Explorer: Explore Sample Data"
+description: "Azure Data Explorer: Learn how to query sample data in the free help cluster using Kusto Query Language (KQL). Follow step-by-step tutorials and try queries now."
+#customer intent: As a developer, I want to run sample KQL queries in the free help cluster so that I can learn query syntax and see results quickly.
 ms.topic: how-to
-ms.date: 05/17/2023
+ms.date: 09/02/2025
+ms.custom:
+  - ai-gen-docs-bap
+  - ai-gen-title
+  - ai-seo-date:09/02/2025
+  - ai-gen-description
 ---
 # Explore the samples gallery
 
-The Azure Data Explorer web UI has a samples gallery for you to practice writing [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries and commands. This gallery provides sample data with guided tutorials in a free and publicly accessible [**help** cluster](https://dataexplorer.azure.com/clusters/help).
+Use the Azure Data Explorer samples gallery to learn and practice [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) with curated datasets in the free, public [**help** cluster](https://dataexplorer.azure.com/clusters/help). Run ready-made tutorials, edit queries, and see results immediately—no Azure subscription required. Sign in with a Microsoft account or a Microsoft Entra identity and start exploring sample databases, tables, stored functions, external tables, and materialized views.
 
 ## Prerequisites
 
-A Microsoft account or a Microsoft Entra user identity to sign in to the [**help** cluster](https://dataexplorer.azure.com/clusters/help). An Azure subscription isn't required.
+Sign in to the [**help** cluster](https://dataexplorer.azure.com/clusters/help) with a Microsoft account or a Microsoft Entra user identity. You don't need an Azure subscription.
 
 ## Get started
 
 The following diagram is a high-level view of the databases available in the samples gallery.
 
-:::image type="content" source="media/web-ui-samples-gallery/samples-high-level-diagram.png" alt-text="Flow chart showing the Azure Data Explorer divided into sample databases." border="false":::
+:::image type="content" source="media/web-ui-samples-gallery/samples-high-level-diagram.png" alt-text="Diagram that shows a flow chart of the databases available in the samples gallery for Azure Data Explorer." border="false":::
 
 ## Take action on sample data
 
@@ -28,7 +34,7 @@ Get started learning about KQL queries with a dataset from the samples gallery.
 
     :::image type="content" source="media/web-ui-samples-gallery/web-ui-home-full-box.png" alt-text="Screenshot of the Azure Data Explorer web U I showing the home page." lightbox="media/web-ui-samples-gallery/web-ui-home-full-box.png":::
 
-1. In the **Explore data samples** dialog box, select a sample dataset and then select **Explore**.
+1. In the **Explore data samples** dialog box, select a sample dataset, and then select **Explore**.
 
     :::image type="content" source="media/web-ui-samples-gallery/explore-dashboards-dialog.png" alt-text="Screenshot of Explore data samples dialog box showing sample database options.":::
 
@@ -44,7 +50,7 @@ Get started learning about KQL queries with a dataset from the samples gallery.
 
 The query editor window, located to the right of the cluster connections pane, provides useful tutorials in the form of commonly used queries along with detailed explanations.
 
-We'll take a look at the **Metrics** database, labeled as **SampleMetrics** in the cluster connections pane.
+We take a look at the **Metrics** database, labeled as **SampleMetrics** in the cluster connections pane.
 
 The **SampleMetrics** dataset consists of the following tables:
 
@@ -61,7 +67,7 @@ The **SampleMetrics** dataset consists of the following tables:
 
 In the query edit window, place your cursor in a query and select **Run** at the top of the window, or press *Shift* + *Enter* to run a query. Results are displayed in the query results pane, directly below the query editor window.
 
-Before running any query or command, take a moment to read the comments above it. The comments include important information. For example, why certain management commands won't work in the **help** cluster due to lack of permissions. The query editor provides suggestions and warnings as you write queries. To customize which suggestions and warnings you receive, see [Set query recommendations](web-customize-settings.md#set-query-recommendations).
+Before running any query or command, take a moment to read the comments above it. The comments include important information. For example, why certain management commands don't work in the **help** cluster due to lack of permissions. The query editor provides suggestions and warnings as you write queries. To customize which suggestions and warnings you receive, see [Set query recommendations](web-customize-settings.md#set-query-recommendations).
 
 :::image type="content" source="media/web-ui-samples-gallery/web-ui-query-window.png" alt-text="Screenshot showing the query editor window with sample tutorials." lightbox="media/web-ui-samples-gallery/web-ui-query-window.png":::
 
