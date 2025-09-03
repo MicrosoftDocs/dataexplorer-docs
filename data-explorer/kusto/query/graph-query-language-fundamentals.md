@@ -47,10 +47,10 @@ Node patterns specify how to match individual nodes in your graph:
 Edge patterns define how nodes connect to each other:
 
 ```gql
--[e]->                -- Directed edge, any type
--[e:works_at]->       -- Directed edge, works_at type
+-[e]->                -- Directed outgoing edge, any label
+-[e:works_at]->       -- Directed edge, works_at label
 -[e:knows|likes]->    -- knows OR likes edge
-<-[e]-                -- Incoming edge
+<-[e]-                -- Directed incoming edge
 -[e]-                 -- Undirected (any direction)
 ```
 
