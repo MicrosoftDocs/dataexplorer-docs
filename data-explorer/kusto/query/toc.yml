@@ -1335,8 +1335,8 @@ items:
             items:
               - name: Query data using GQL
                 href: graph-query-language.md
-              - name: GQL functions and operators
-                href: graph-query-language-functions.md
+              - name: GQL reference
+                href: graph-query-language-reference.md
               - name: GQL examples and use cases
                 href: graph-query-language-use-cases.md
   - name: Geospatial
