@@ -162,6 +162,7 @@ The following table shows the result of the query.
 
 ## Related content
 
+* [Graph Query Language (GQL) fundamentals](graph-query-language-fundamentals.md)
 * [Graph operators overview](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
 * [graph-match operator](graph-match-operator.md)
