@@ -3,7 +3,7 @@ title: 'Azure Data Explorer integration with Azure Data Factory'
 description: 'In this article, integrate Azure Data Explorer with Azure Data Factory to use the copy, lookup, and command activities.'
 ms.reviewer: tomersh26
 ms.topic: how-to
-ms.date: 08/30/2023
+ms.date: 09/02/2025
 
 #Customer intent: I want to use Azure Data Factory to integrate with Azure Data Explorer.
 ---
@@ -18,7 +18,7 @@ Various integrations with Azure Data Factory are available for Azure Data Explor
 
 ### Copy activity
  
-Azure Data Factory Copy activity is used to transfer data between data stores. Azure Data Explorer is supported as a source, where data is copied from Azure Data Explorer to any supported data store, and a sink, where data is copied from any supported data store to Azure Data Explorer. For more information, see [copy data to or from Azure Data Explorer using Azure Data Factory](/azure/data-factory/connector-azure-data-explorer). For a detailed walk-through see [load data from Azure Data Factory into Azure Data Explorer](data-factory-load-data.md).
+Azure Data Factory Copy activity is used to transfer data between data stores. Azure Data Explorer is supported as a source, where data is copied from Azure Data Explorer to any supported data store, and a sink, where data is copied from any supported data store to Azure Data Explorer. For more information, see [copy data to or from Azure Data Explorer using Azure Data Factory](/azure/data-factory/connector-azure-data-explorer). For a detailed walk-through, see [load data from Azure Data Factory into Azure Data Explorer](data-factory-load-data.md).
 Azure Data Explorer is supported by Azure IR (Integration Runtime), used when data is copied within Azure, and self-hosted IR, used when copying data from/to data stores located on-premises or in a network with access control, such as an Azure Virtual Network. For more information, see [which IR to use.](/azure/data-factory/concepts-integration-runtime#determining-which-ir-to-use)
  
 > [!TIP]
@@ -33,7 +33,7 @@ In addition to the response size limit of 5,000 rows and 2 MB, the activity also
 ### Command activity
 
 The Command activity allows the execution of Azure Data Explorer [management commands](/kusto/query/index?view=azure-data-explorer&preserve-view=true#management-commands). Unlike queries, the management commands can potentially modify data or metadata. Some of the management commands are targeted to ingest data into Azure Data Explorer, using commands such as `.ingest`or `.set-or-append`) or copy data from Azure Data Explorer to external data stores using commands such as `.export`.
-For a detailed walk-through of the command activity, see [use Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md).  Using a management command to copy data can, at times, be a faster and cheaper option than the Copy activity. To determine when to use the Command activity versus the Copy activity, see [select between Copy and Command activities when copying data](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data).
+For a detailed walk-through of the command activity, see [use Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md). Using a management command to copy data can, at times, be a faster and cheaper option than the Copy activity. To determine when to use the Command activity versus the Copy activity, see [select between Copy and Command activities when copying data](#select-between-copy-and-azure-data-explorer-command-activities-when-copy-data).
 
 ### Copy in bulk from a database template
 
@@ -51,7 +51,7 @@ The [Copy in bulk from a database to Azure Data Explorer by using the Azure Data
 
 This section assists you in selecting the correct activity for your data copying needs.
 
-When copying data from or to Azure Data Explorer, there are two available options in Azure Data Factory:
+When you copy data from or to Azure Data Explorer, there are two available options in Azure Data Factory:
 * Copy activity.
 * Azure Data Explorer Command activity, which executes one of the management commands that transfer data in Azure Data Explorer. 
 
@@ -80,13 +80,13 @@ See the following table for a comparison of the Copy activity, and ingestion com
 | | Copy activity | Ingest from query<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | Ingest from storage <br> `.ingest` |
 |---|---|---|---|
 | **Flow description** | ADF gets the data from the source data store, converts it into a tabular format, and does the required schema-mapping changes. ADF then uploads the data to Azure blobs, splits it into chunks, then downloads the blobs to ingest them into the Azure Data Explorer table. <br> (**Source data store > ADF > Azure blobs > Azure Data Explorer**) | These commands can execute a query or a `.show` command, and ingest the results of the query into a table (**Azure Data Explorer > Azure Data Explorer**). | This command ingests data into a table by "pulling" the data from one or more cloud storage artifacts. |
-| **Supported source data stores** |  [variety of options](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL (using the [sql_request() plugin](/kusto/query/sql-request-plugin?view=azure-data-explorer&preserve-view=true)), Azure Cosmos DB (using the [cosmosdb_sql_request plugin](/kusto/query/mysql-request-plugin?view=azure-data-explorer&preserve-view=true)), and any other data store that provides HTTP or Python APIs. | Filesystem, Azure Blob Storage, ADLS Gen 1, ADLS Gen 2 |
+| **Supported source data stores** |  [variety of options](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | Azure Data Lake Storage (ADLS) Gen 2, Azure Blob, SQL (using the [sql_request() plugin](/kusto/query/sql-request-plugin?view=azure-data-explorer&preserve-view=true)), Azure Cosmos DB (using the [cosmosdb_sql_request plugin](/kusto/query/mysql-request-plugin?view=azure-data-explorer&preserve-view=true)), and any other data store that provides HTTP or Python APIs. | Filesystem, Azure Blob Storage, ADLS Gen 1, ADLS Gen 2 |
 | **Performance** | Ingestions are queued and managed, which ensures small-size ingestions and assures high availability by providing load balancing, retries and error handling. | <ul><li>Those commands weren't designed for high volume data importing.</li><li>Works as expected and cheaper. But for production scenarios and when traffic rates and data sizes are large, use the Copy activity.</li></ul> |
 | **Server Limits** | <ul><li>No size limit.</li><li>Max timeout limit: One hour per ingested blob. |<ul><li>There's only a size limit on the query part, which can be skipped by specifying `noTruncation=true`.</li><li>Max timeout limit: One hour.</li></ul> | <ul><li>No size limit.</li><li>Max timeout limit: One hour.</li></ul>|
 
 > [!TIP]
 >
-> * When copying data from ADF to Azure Data Explorer use the `ingest from query` commands.  
+> * To copy data from Azure Data Factor to Azure Data Explorer, use the `ingest from query` commands.  
 > * For large datasets (>1GB), use the Copy activity.  
 
 ## Required permissions
@@ -115,8 +115,8 @@ This section addresses the use of copy activity where Azure Data Explorer is the
 | Parameter | Notes |
 |---|---|
 | **Components geographical proximity** | Place all components in the same region:<ul><li>source and sink data stores.</li><li>ADF integration runtime.</li><li>Your Azure Data Explorer cluster.</li></ul>Make sure that at least your integration runtime is in the same region as your Azure Data Explorer cluster. |
-| **Number of DIUs** | One VM for every four DIUs used by ADF. <br>Increasing the DIUs helps only if your source is a file-based store with multiple files. Each VM will then process a different file in parallel. Therefore, copying a single large file has a higher latency than copying multiple smaller files.|
-|**Amount and SKU of your Azure Data Explorer cluster** | High number of Azure Data Explorer nodes boosts ingestion processing time. Use of dev SKUs will severely limit performance|
+| **Number of DIUs** | One virtual machine (VM) for every four DIUs used by ADF. <br>Increasing the DIUs helps only if your source is a file-based store with multiple files. Each VM then processes a different file in parallel. Therefore, copying a single large file has a higher latency than copying multiple smaller files.|
+|**Amount and SKU of your Azure Data Explorer cluster** | High number of Azure Data Explorer nodes boosts ingestion processing time. Use of dev SKUs severely limits performance. |
 | **Parallelism** |    To copy a large amount of data from a database, partition your data and then use a ForEach loop that copies each partition in parallel or use the [Bulk Copy from Database to Azure Data Explorer Template](data-factory-template.md). Note: **Settings** > **Degree of Parallelism** in the Copy activity isn't relevant to Azure Data Explorer. |
 | **Data processing complexity** | Latency varies according to source file format, column mapping, and compression.|
 | **The VM running your integration runtime** | <ul><li>For Azure copy, ADF VMs and machine SKUs can't be changed.</li><li> For on-premises to Azure copy, determine that the VM hosting your self-hosted IR is strong enough.</li></ul>|
@@ -125,10 +125,10 @@ This section addresses the use of copy activity where Azure Data Explorer is the
 
 ### Monitor activity progress
 
-* When monitoring the activity progress, the *Data written* property may be larger than the *Data read* property
+* When you monitor the activity progress, the *Data written* property can be larger than the *Data read* property
 because *Data read* is calculated according to the binary file size, while *Data written* is calculated according to the in-memory size, after data is deserialized and decompressed.
 
-* When monitoring the activity progress, you can see that data is written to the Azure Data Explorer sink. When querying the Azure Data Explorer table, you see that data hasn't arrived. This is because there are two stages when copying to Azure Data Explorer. 
+* When you monitor the activity progress, you can see that data is written to the Azure Data Explorer sink. When querying the Azure Data Explorer table, you see that data hasn't arrived. It's is because there are two stages when copying to Azure Data Explorer. 
     * First stage reads the source data, splits it to 900-MB chunks, and uploads each chunk to an Azure Blob. The first stage is seen by the ADF activity progress view.
     * The second stage begins once all the data is uploaded to Azure Blobs. The nodes of your cluster download the blobs and ingest the data into the sink table. The data is then seen in your Azure Data Explorer table.
 
@@ -136,36 +136,37 @@ because *Data read* is calculated according to the binary file size, while *Data
 
 Azure Data Explorer expects CSV files to align with [RFC 4180](https://www.ietf.org/rfc/rfc4180.txt).
 It expects:
-* Fields that contain characters that require escaping (such as " and new lines) should start and end with a **"** character, without whitespace. All **"** characters *inside* the field are escaped by using a double **"** character (**""**). For example, _"Hello, ""World"""_ is a valid CSV file with a single record having a single column or field with the content _Hello, "World"_.
+* Fields that contain characters that require escaping (such as " and new lines) should start and end with a **"** character, without whitespace. All **"** characters *inside* the field are escaped by using a double **"** character (**""**). For example, `_"Hello, ""World"""_` is a valid CSV file with a single record having a single column or field with the content `_Hello, "World"_`.
 * All records in the file must have the same number of columns and fields.
 
-Azure Data Factory allows the backslash (escape) character. If you generate a CSV file with a backslash character using Azure Data Factory, ingestion of the file to Azure Data Explorer will fail.
+Azure Data Factory allows the backslash (escape) character. If you generate a CSV file with a backslash character using Azure Data Factory, ingestion of the file to Azure Data Explorer fails.
 
 #### Example
 
 The following text values:
-Hello, "World"<br/>
-ABC   DEF<br/>
-"ABC\D"EF<br/>
-"ABC DEF<br/>
+`Hello, "World"`<br/>
+`ABC   DEF`<br/>
+`"ABC\D"EF`<br/>
+`"ABC DEF`<br/>
 
 Should appear in a proper CSV file as follows:
-"Hello, ""World"""<br/>
-"ABC   DEF"<br/>
-"""ABC\D""EF"<br/>
- """ABC DEF"<br/>
+`"Hello, ""World"""`<br/>
+`"ABC   DEF"`<br/>
+`"""ABC\D""EF"`<br/>
+ `"""ABC DEF"`<br/>
 
-By using the default escape character (backslash), the following CSV won't work with Azure Data Explorer:
-"Hello, \"World\""<br/>
-"ABC   DEF"<br/>
-"\"ABC\D\"EF"<br/>
- "\"ABC DEF"<br/>
+When you use the default escape character (backslash), the following CSV doesn't work with Azure Data Explorer:
+`"Hello, \"World\""`<br/>
+`"ABC   DEF"`<br/>
+`"\"ABC\D\"EF"`<br/>
+`"\"ABC DEF"`<br/>
 
 ### Nested JSON objects
 
-When copying a JSON file to Azure Data Explorer, note that:
+When copying a JSON file to Azure Data Explorer, note the following points:
+
 * Arrays aren't supported.
-* If your JSON structure contains object data types, Azure Data Factory will flatten the object's child items, and try to map each child item to a different column in your Azure Data Explorer table. If you want the entire object item to be mapped to a single column in Azure Data Explorer:
+* If your JSON structure contains object data types, Azure Data Factory flattens the object's child items, and try to map each child item to a different column in your Azure Data Explorer table. If you want the entire object item to be mapped to a single column in Azure Data Explorer:
     * Ingest the entire JSON row into a single dynamic column in Azure Data Explorer.
     * Manually edit the pipeline definition by using Azure Data Factory's JSON editor. In **Mappings**
        * Remove the multiple mappings that were created for each child item, and add a single mapping that maps your object type to your table column.
@@ -184,7 +185,7 @@ You can add additional [ingestion properties](/kusto/ingestion-properties?view=a
 1. In the **Activities** canvas, select the **Copy data** activity.
 1. In the activity details, select **Sink**, and then expand **Additional properties**.
 1. Select **New**, select either **Add node** or **Add array** as required, and then specify the ingestion property name and value. Repeat this step to add more properties.
-1. Once complete save and publish your pipeline.
+1. Once completed, save and publish your pipeline.
 
 ## Next step
 
