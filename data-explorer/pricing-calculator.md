@@ -2,7 +2,7 @@
 title: Azure Data Explorer Pricing Calculator
 description: Explore different pricing options based on your specific cluster needs with Azure Data Explorer pricing calculator.
 ms.topic: how-to
-ms.date: 11/21/2022
+ms.date: 09/02/2025
 ---
 
 # Azure Data Explorer pricing calculator
@@ -29,7 +29,7 @@ At the bottom of the form, the individual component estimates are added together
 1. Scroll down the page until you see a tab titled **Your Estimate**.
 1. Verify that **Azure Data Explorer** appears in the tab. If it doesn't, do the following:
     1. Scroll back to the top of the page.
-    1. In the search box, type “Azure Data Explorer”.
+    1. In the search box, type **Azure Data Explorer**.
     1. Select the **Azure Data Explorer** widget.
 1. Start the configuration.
 
@@ -41,19 +41,19 @@ The sections of this article correspond to the components in the calculator and 
 
 The region and environment you choose for your cluster will affect the cost of each component. This is because the different regions and environments don't provide exactly the same services or capacity.
 
-1. Select the desired **Region** for your cluster.
-
-    Use the [regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions) to find the right region for you. Your choice may depend on requirements such as:
-
-    * [Availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support)
-    * [Disaster recovery](/azure/reliability/cross-region-replication-azure)
-    * [Data residency and protection](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)
-
 1. Choose the **Environment** for your cluster.
 
      * **Production** clusters contain two or more nodes for engine and data management and operate under the Azure Data Explorer SLA.
 
      * **Dev/test** clusters are the lowest cost option, which makes them great for service evaluation, conducting PoCs, and scenario validations. They're limited in size and can't grow beyond a single node. There's no Azure Data Explorer markup charge or product SLA for these clusters.
+1. Select the desired **Region** for your cluster.
+
+    Use the [regions decision guide](/azure/cloud-adoption-framework/migrate/azure-best-practices/multiple-regions) to find the right region for you. Your choice might depend on requirements such as:
+
+    * [Availability zone support](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support)
+    * [Disaster recovery](/azure/reliability/cross-region-replication-azure)
+    * [Data residency and protection](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)
+
 
 ## Estimated data ingestion
 
@@ -71,7 +71,7 @@ In the calculator, enter estimates for the following fields:
 
 ### Auto-select engine instances
 
-If you want to individually configure the remaining components, turn off **AUTO-SELECT ENGINE INSTANCES**. When turned on, the calculator selects the most optimal SKU based on the ingestion inputs.
+If you want to individually configure the remaining components, turn off **AUTO-SELECT ENGINE INSTANCES**. When turned on, the calculator selects the most optimal Stock Keeping Unit (SKU) based on the ingestion inputs.
 
 :::image type="content" source="media/pricing/auto-select-engine-instances.png" alt-text="Screenshot of the auto select engine instances toggle.":::
 
@@ -102,7 +102,7 @@ To get an estimate for **Engine instances**:
 The **Premium Managed Disk** component is based on the SKU selected.
 
 > [!NOTE]
-> Not all **VM Series** are offered in each region. If you are looking for a SKU that is not listed in the selected region, choose a different region.
+> Not all **VM Series** are offered in each region. If you're looking for a SKU that isn't listed in the selected region, choose a different region.
 
 ### Data management instances
 
