@@ -33,7 +33,7 @@ The following examples show the GQL syntax supported, from simple to complex pat
 
 * [Temporal data analysis with DURATION functions](#temporal-data-analysis-with-duration-functions)
 
-For a full list of supported GQL functions and operators, see [Graph Query Language Functions](graph-query-language-functions.md).
+For a full list of supported GQL functions and operators, see [Graph Query Language (GQL) reference](graph-query-language-reference.md).
 
 ## Basic pattern matching examples
 
@@ -761,4 +761,4 @@ This query suggests friends for Karl who have mutual connections and live in the
 ## Related topics
 
 * [Graph Query Language (GQL)](graph-query-language.md)
-* [Graph Query Language (GQL) reference](graph-query-language-functions.md)
+* [Graph Query Language (GQL) reference](graph-query-language-reference.md)

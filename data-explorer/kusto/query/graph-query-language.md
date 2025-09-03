@@ -124,7 +124,7 @@ After you finish setup, run GQL queries using standard GQL syntax. Use the examp
 
 ## Examples
 
-Find basic examples for pattern matching and labels here. For more complex examples, see [GQL query patterns, examples, and common scenarios](graph-query-language-use-cases.md).
+Find basic examples for pattern matching and labels here. For more complex examples, see [GQL query patterns, examples, and common scenarios](graph-query-language-use-cases.md). For reference documentation including fundamentals and function details, see [Graph Query Language (GQL) reference](graph-query-language-reference.md).
 
 ### Example GQL query for basic pattern matching
 <!-- csl -->
@@ -162,9 +162,10 @@ The following table shows the result of the query.
 
 ## Related content
 
-* [Graph Query Language (GQL) fundamentals](graph-query-language-fundamentals.md)
-* [Graph operators overview](graph-operators.md)
-* [make-graph operator](make-graph-operator.md)
-* [graph-match operator](graph-match-operator.md)
-* [Tutorial: Create your first graph](tutorials/your-first-graph.md)
-* [Graph functions reference](graph-function.md)
+- [Graph Query Language (GQL) reference](graph-query-language-reference.md)
+- [GQL query patterns, examples, and use cases](graph-query-language-use-cases.md)
+- [Graph operators overview](graph-operators.md)
+- [make-graph operator](make-graph-operator.md)
+- [graph-match operator](graph-match-operator.md)
+- [Tutorial: Create your first graph](tutorials/your-first-graph.md)
+- [Graph functions reference](graph-function.md)
