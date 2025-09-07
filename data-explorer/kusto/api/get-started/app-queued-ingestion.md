@@ -44,40 +44,34 @@ In this article, you learn how to:
 
 - Use one of the following methods to create the *MyStormEvents* table and, as only a small amount of data is being ingested, set its ingestion batching policy timeout to 10 seconds:
 
-<!-- markdownlint-disable MD001 -->
-#### [Run an app](#tab/app)
+  ### [Run an app](#tab/app)
 
-1. Create a target table named *MyStormEvents* in your database by running the first app in [management commands](app-management-commands.md#run-a-management-command-and-process-the-results).
-1. Set the ingestion batching policy timeout to 10 seconds by running the second app in [management commands](app-management-commands.md#change-the-table-level-ingestion-batching-policy). Before running the app, change the timeout value to `00:00:10`.
+    1. Create a target table named *MyStormEvents* in your database by running the first app in [management commands](app-management-commands.md#run-a-management-command-and-process-the-results).
+    2. Set the ingestion batching policy timeout to 10 seconds by running the second app in [management commands](app-management-commands.md#change-the-table-level-ingestion-batching-policy). Before running the app, change the timeout value to `00:00:10`.
 
-#### [Create with command](#tab/command)
+  ### [Create with command](#tab/command)
 
-1. In your query environment, create a target table named *MyStormEvents* in your database by running the following query:
+    1. In your query environment, create a target table named *MyStormEvents* in your database by running the following query:
 
-```kusto
-.create table MyStormEvents
-  (StartTime: datetime,
-  EndTime: datetime,
-  State: string,
-  DamageProperty: int,
-  DamageCrops: int,
-  Source: string,
-  StormSummary: dynamic)
-```
+        ```kusto
+        .create table MyStormEvents
+          (StartTime: datetime,
+          EndTime: datetime,
+          State: string,
+          DamageProperty: int,
+          DamageCrops: int,
+          Source: string,
+          StormSummary: dynamic)
+        ```
 
-1. Set the ingestion batching policy timeout to 10 seconds by running the following query:
+    2. Set the ingestion batching policy timeout to 10 seconds by running the following query:
 
-```kusto
-.alter-merge table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:10" }'
-```
+        ```kusto
+        .alter-merge table MyStormEvents policy ingestionbatching '{ "MaximumBatchingTimeSpan":"00:00:10" }'
+        ```
 
----
-
-<!-- markdownlint-enable MD001 -->
-
-> [!NOTE]
->
-> It may take a few minutes for the new batching policy settings to propagate to the batching manager.
+  > [!NOTE]
+  > It may take a few minutes for the new batching policy settings to propagate to the batching manager.
 
 - Download the [stormevent.csv](https://github.com/MicrosoftDocs/dataexplorer-docs-samples/blob/main/docs/resources/app-basic-ingestion/stormevents.csv) sample data file. The file contains 1,000 storm event records.
 

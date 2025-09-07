@@ -244,8 +244,7 @@ class Program
 
 Create your application for ingesting data to your cluster using your preferred language.
 
-> [NOTE!]
->
+> [!NOTE]
 > For queued ingestion, see the instructions to [Create an app to get data using queued ingestion](/kusto/api/get-started/app-queued-ingestion?view=azure-data-explorer&preserve-view=true)
 
 ### [C#](#tab/csharp)

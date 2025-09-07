@@ -21,10 +21,13 @@ Streaming Ingestion allows writing data to Kusto with near-real-time latencies. 
 In this article, you’ll learn how to ingest data to Kusto using the managed streaming ingestion client. You'll ingest a data stream in the form of a file or in-memory stream.
 
 > [!NOTE]
-> Streaming ingestion is a high velocity ingestion protocol. Ingesting with a *Managed Streaming Ingestion* or *Streaming Ingestion* client isn't the same as ingesting with a *Stream Source*.  
+> Streaming ingestion is a high-velocity ingestion protocol. Ingesting with a *Managed Streaming Ingestion* or *Streaming Ingestion* client isn't the same as ingesting with a *Stream Source*.  
+> 
 > The type of client refers to the _way_ data is ingested - When ingesting with a *Managed Streaming Ingestion* or *Streaming Ingestion* client, data is sent to Kusto using the streaming ingestion protocol - it uses a *Streaming Service* to allow for low latency ingestion.  
-> Ingesting from a *Stream Source* refers to how the data is stored. For example, in C# a *Stream Source* can be created from a `MemoryStream` object.  
-> The way this source will be ingested depends on the type of client used - if it's ingested using queued ingestion, it will be uploaded to blob storage and then queued for ingestion, while if it's ingested using streaming ingestion, it will be sent directly to Kusto via the body of a streaming HTTP request.
+> 
+> Ingesting from a *Stream Source* refers to how the data is stored. For example, in C# a *Stream Source* can be created from a `MemoryStream` object. This is as opposed to a *File Source* which is created from a file on disk.
+> 
+> The ingestion method depends on the client used: with queued ingestion, the data from the source is first uploaded to blob storage and then queued for ingestion; with streaming ingestion, the data is sent directly to Kusto in the body of a streaming HTTP request.
 
 > [!IMPORTANT]
 >
@@ -32,7 +35,7 @@ In this article, you’ll learn how to ingest data to Kusto using the managed st
 >
 > Ingest Version 2 is in **preview** and is available in the following languages: C#
 > 
-> Also note, that the Query V2 api is not related to the Ingest V2 api.
+> Also note, that the Query V2 API is not related to the Ingest V2 API.
 
 ## Streaming and Managed Streaming
 

@@ -10,9 +10,9 @@ ms.reviewer: yogilad
 
 This guide provides code migration steps from Ingest V1 SDK to the Ingest V2 SDK. The guide walks through key differences and improvements and includes detailed code examples and best practice recommendations.
 
-## Creating the Ingest Client
+## Creating the Ingest client
 
-### V1: Factory Methods
+### Ingest V1 - Factory methods
 
 In Ingest V1, clients are created using static factory methods, built from a connection string.
 
@@ -23,20 +23,18 @@ var kcsb = new KustoConnectionStringBuilder(clusterUrl).WithAadUserPromptAuthent
 var client = KustoIngestFactory.CreateQueuedIngestClient(kcsb);
 ```
 
-### V2: Builder Pattern
+### Ingest V2: Builder pattern
 
-In Ingest V2, clients are created using builder classes.  
-This pattern allows for more flexible and readable configuration, supports method chaining, and makes it easier to add new options in the future.
+In Ingest V2, clients are created using builder classes. This pattern allows for more flexible and readable configuration, supports method chaining, and makes it easier to add new options in the future.
 
-Connection strings are no longer used to create clients.  
-Instead, you provide a `Uri` for the cluster and an authentication provider.
+Connection strings are no longer used to create clients. Instead, you provide a `Uri` for the cluster and an authentication provider.
 
 An authentication provider can be any implementation of `Azure.Identity.TokenCredential`, Kusto's `IKustoTokenCredentialsProvider`, or a delegate function of the format `Func<string, Task<KustoTokenCredentials>>`.
 
-**Example (V2):**
+**Example - Ingest V2:**
 
 ```csharp
-using using Azure.Identity;
+using Azure.Identity;
 using Kusto.Ingest.V2;
 
 var auth = new InteractiveBrowserCredential();
@@ -45,7 +43,7 @@ var client = QueuedIngestClientBuilder.Create(new Uri(clusterUrl))
     .Build();
 ```
 
-**Other V2 Clients (similar to V1):**
+**Other V2 clients (similar to V1):**
 
 - `StreamingIngestClientBuilder`
 - `ManagedStreamingIngestClientBuilder`
@@ -53,7 +51,7 @@ var client = QueuedIngestClientBuilder.Create(new Uri(clusterUrl))
 > [!NOTE]
 > In both V1 and V2, you can now pass the cluster URL to a client without the "ingest-" prefix. The constructor converts the URL to the correct format automatically.
 
-## Managed Streaming Ingestion
+## Managed Streaming ingestion
 
 Managed Streaming Ingest client is similar to the one in V1 - it tries to stream the data first, and if it fails after a few retries, it falls back to queued ingestion.
 
@@ -61,34 +59,32 @@ In V2, `ManagedStreamingPolicy` becomes the `IManagedStreamingPolicy` interface,
 
 ## Sources
 
-### V1: Multiple Methods for Different Sources
+### Ingest V1: Multiple methods for different sources
 
-V1 exposes different methods for each source type, such as `IngestFromStorage`, `IngestFromStreamAsync`, etc.  
-Format and compression are provided in `ingestionProperties`.
+V1 exposes different methods for each source type, such as `IngestFromStorage`, `IngestFromStreamAsync`, etc. Format and compression are provided in `ingestionProperties`.
 
 **Example (V1):**
 
 ```csharp
 var ingestionProperties = new KustoIngestionProperties(database, table) { Format = DataSourceFormat.csv };
-client.IngestFromStorageAsync(filePath, ingestionProperties);
-client.IngestFromStreamAsync(stream, ingestionProperties);
+await client.IngestFromStorageAsync(filePath, ingestionProperties);
+await client.IngestFromStreamAsync(stream, ingestionProperties);
 ```
 
-### V2: Unified Source Abstractions
+### Ingest V2: Unified source abstractions
 
-V2 introduces source classes that encapsulate all relevant information, including format and compression.  
-There's one method to ingest a single source: the `IngestAsync` method. The client and source types determine the ingestion behavior.
+V2 introduces source classes that encapsulate all relevant information, including format and compression. There's one method to ingest a single source: the `IngestAsync` method. The client and source types determine the ingestion behavior.
 
-**Source Types:**
+**Source types:**
 
 - `FileSource` (local files)
 - `StreamSource` (.NET streams)
 - `BlobSource` (cloud storage)
 - `DataReaderSource` (.NET data readers)
 
-The "database" and "table" properties are now parameters of the `IngestAsync` method, rather than properties of the ingestion properties.  This means that for most cases, you don't need to create `IngestProperties`.
+The "database" and "table" properties are now parameters of the `IngestAsync` method, rather than properties of the ingestion properties. This means that for most cases, you don't need to create `IngestProperties`.
 
-**Example (V2):**
+**Example - Ingest V2:**
 
 ```csharp
 var source = new FileSource(filePath, DataSourceFormat.csv);
@@ -97,7 +93,7 @@ await client.IngestAsync(source, database, table);
 
 ## Uploaders
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 >
 > * The V1 Ingest SDK operated almost entirely with Azure Storage and Azure Queue and calls to Kusto were fairly limited in quantity.
 > 
@@ -120,12 +116,13 @@ In V2, uploaders are introduced to provide more flexibility and control over the
 You can also implement your own uploader by implementing the `IUploader` interface.
 
 > [!NOTE]
-> Uploaders are only relevant for queued ingestion, done from `QueuedIngestClient` or `ManagedStreamingIngestClient`.  
+> Uploaders are only relevant for queued ingestion, done from `QueuedIngestClient` or `ManagedStreamingIngestClient`.
+> 
 > Streaming ingestion sends the data directly in the HTTP request, so it doesn't use uploaders.
 
 By default, the clients create a `ManagedUploader` instance, but you can specify a different uploader using the `WithUploader` method in the builder.
 
-**Example (V2):**
+**Example - Ingest V2:**
 
 ```csharp
 var client = QueuedIngestClientBuilder.Create(new Uri(clusterUrl))
@@ -147,7 +144,7 @@ var uploader = UserContainersUploaderBuilder.Create()
     .Build();
 ```
 
-### Manual Uploads
+### Manual uploads
 
 You can use the uploader to convert local and data reader sources to `BlobSource`, and follow by ingesting them with the V2 client.
 
@@ -166,7 +163,7 @@ BlobSource source2 = new StreamSource(stream, DataSourceFormat.json);
 (IEnumerable<BlobSource> successes, IEnumerable<IngestResult> failures) = await uploader.UploadAsync(new[] { source1, source2 });
 ```
 
-## Ingestion Properties
+## Ingestion properties
 
 As mentioned before, in V2, these properties are no longer part of the ingestion properties class:
 
@@ -192,7 +189,7 @@ var properties = new IngestProperties
 await client.IngestAsync(source, database, table, properties);
 ```
 
-## Status Tracking
+## Status tracking
 
 In V1, status tracking was done using the `ReportLevel` and `ReportMethod` properties in the ingestion properties.
 
@@ -200,7 +197,8 @@ Tracking was reimplemented in V2 and is now simpler.
 
 ### Queued Ingestion
 
-When data is queued for ingestion (via a `QueuedIngestClient` or `ManagedStreamingIngestClient`), the ingestion is asynchronous, and the result isn't immediate.  
+When data is queued for ingestion (via a `QueuedIngestClient` or `ManagedStreamingIngestClient`), the ingestion is asynchronous, and the result isn't immediate.
+
 The method returns an `IngestionOperation` object:
 
 ```csharp
@@ -209,7 +207,7 @@ var operation = await client.IngestAsync(source, database, table);
 Assert.IsTrue(operation.IngestionMethod == IngestionMethod.Queued);
 ```
 
-If `IngestAsync` returns successfully, the data was queued for ingestion, but it can still fail later in the ingestion pipeline.  
+If `IngestAsync` returns successfully, the data was queued for ingestion, but it can still fail later in the ingestion pipeline.
 If you need to track the status of the ingestion, enable tracking by setting `EnableTracking` to true in the `IngestProperties`:
 
 ```csharp
@@ -238,29 +236,29 @@ blob.Exception // If the ingestion failed, this will contain the exception detai
 
 > [!IMPORTANT]
 >
-> - Each call to `GetOperationSummaryAsync` or `GetIngestionDetailsAsync` will make an HTTP request to the Kusto service.  
-> - Too frequent calls may lead to throttling or performance issues.  
+> - Each call to `GetOperationSummaryAsync` or `GetIngestionDetailsAsync` will make an HTTP request to the Kusto service.
+> - Too frequent calls may lead to throttling or performance issues.
 > - Consider waiting a few seconds between calls, or using a backoff strategy.
 
 ### Streaming Ingestion
 
-For streaming ingestion, the result of the ingestion is immediate.  
-If the method returns successfully, the data was ingested successfully.  
-Still, the interface of the methods are the same, and `GetOperationSummaryAsync` and `GetOperationDetailsAsync` return the expected results.
+For streaming ingestion, the result of the ingestion is immediate.
+If the method returns successfully, the data was ingested successfully.
+
+Still, the interfaces of the methods are the same, and `GetOperationSummaryAsync` and `GetOperationDetailsAsync` return the expected results.
 
 ### Managed Streaming Ingestion
 
-Managed streaming ingestion can resolve to either queued or streaming ingestion.  
+Managed streaming ingestion can resolve to either queued or streaming ingestion.
 Either way, if tracking is enabled, you may use the same methods to track the status of the ingestion operation.
 
 ### Serializing Ingestion Operations
 
 After running an operation with tracking enabled, you may not want to track it immediately.
 
-In V2, you can serialize and deserialize ingestion operations using the `ToJsonString` and `FromJsonString` methods.  
+In V2, you can serialize and deserialize ingestion operations using the `ToJsonString` and `FromJsonString` methods.
 
-This allows you to store the operation in a database or file, and later retrieve it to continue monitoring the ingestion status.  
-You need to use a client that matches the address and type of the client that created the operation, and has tracking enabled.
+This allows you to store the operation in a database or file, and later retrieve it to continue monitoring the ingestion status. You need to use a client that matches the address and type of the client that created the operation, and has tracking enabled.
 
 ```csharp
 var serialized = operation.ToJsonString();
@@ -268,17 +266,15 @@ var deserializedOperation = IngestionOperation.FromJsonString(serialized, client
 var summary = await client.GetOperationSummaryAsync(deserializedOperation);
 ```
 
-## Advanced Topics
+## Advanced topics
 
 ### Multi-Ingestion
 
 `QueuedIngestClient` in V2 implements the `IMultiIngest` interface, which allows you to ingest multiple sources in a single call.
 
-The number of sources possible per call is limited.   
-You can get the limit via the method `int GetMaxSourcesPerMultiIngest()` on `IMultiIngest`. 
+The number of sources possible per call is limited. You can get the limit via the method `int GetMaxSourcesPerMultiIngest()` on `IMultiIngest`.
 
-Currently, only a list of `BlobSource` is supported.  
-This means you might need to use an uploader to convert your local files or streams to `BlobSource` before using this method.
+Currently, only a list of `BlobSource` is supported. You might need to use an uploader to convert your local files or streams to `BlobSource` before using this method.
 
 **Example (V2):**
 
@@ -331,13 +327,11 @@ foreach (var blob in details.IngestResults)
 
 ### DataReaderSource
 
-In V2, you can use `DataReaderSource` to ingest data from a .NET `IDataReader` implementation.  
-Unlike other sources, DataReaders can be partially ingested, meaning they can ingest some of the data or be ingested in batches.
+In V2, you can use `DataReaderSource` to ingest data from a .NET `IDataReader` implementation. Unlike other sources, DataReaders can be partially ingested, meaning they can ingest some of the data or be ingested in batches.
 
 When using `IngestAsync` with a `DataReaderSource`, its internal `MaxBytesPerFragment` and `MaxRecordsPerFragment` properties are used to determine how much data to ingest.
 
-Any data beyond that will remain in the reader for the next ingestion call.  
-You can know if the reader has more data to ingest by checking the `HasDataRemaining` property of the `DataReaderSource`.
+Any data beyond that will remain in the reader for the next ingestion call. You can know if the reader has more data to ingest by checking the `HasDataRemaining` property of the `DataReaderSource`.
 
 **Example (V2):**
 
@@ -371,7 +365,7 @@ if (dataReaderSource.HasDataRemaining)
 await client.IngestAsync(successes, database, table, props);
 ```
 
-## Related content:
+## Related content
 
 * [Create an app to get data using queued ingestion](../get-started/app-queued-ingestion.md)
 * [Stream data for ingestion](../get-started/app-managed-streaming-ingest.md)
