@@ -134,9 +134,9 @@
         "query/**": "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel",
         "api/**": "microsoft-fabric || azure-data-explorer"
       }
-     }
     },
     "template": [],
     "dest": "kusto-docs",
     "markdownEngineName": "markdig"
+  }
 }
