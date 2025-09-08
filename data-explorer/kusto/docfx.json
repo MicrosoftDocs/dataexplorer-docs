@@ -133,9 +133,6 @@
         "tools/**": "microsoft-fabric || azure-data-explorer",
         "query/**": "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel",
         "api/**": "microsoft-fabric || azure-data-explorer"
-      },
-      "zone_pivot_group_filename": {
-        "**/*.md": "zone-pivot-groups.json"
       }
      }
     },
