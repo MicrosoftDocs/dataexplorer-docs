@@ -85,7 +85,7 @@ In ADX, all ingested data is stored in persistent storage. Each table and materi
 In addition to the extent size reported by the cluster, there are two additional cost drivers:
 
 * **Retention buffer**: An extra 7 days of data is stored by default to protect against accidental data loss.
-* **Recoverability overhead**: For tables where the [recoverability setting](kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true#the-policy-object) is enabled (default), data is retained for an additional 14 days. This includes intermediate blobs generated during merge and rebuild operations.
+* **Recoverability overhead**: For tables where the [recoverability setting](/kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true#the-policy-object) is enabled (default), data is retained for an additional 14 days. This includes intermediate blobs generated during merge and rebuild operations.
 
 ### Cluster size
 
