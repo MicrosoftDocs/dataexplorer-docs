@@ -98,8 +98,11 @@ items:
             href: api/get-started/app-management-commands.md
           - name: Queue data for ingestion
             href: api/get-started/app-queued-ingestion.md
-          - name: Managed streaming ingestion 
+          - name: Stream data for ingestion 
             href: api/get-started/app-managed-streaming-ingest.md
+          - name: Migrating to Kusto Ingest v2
+            href: api/netfx/kusto-ingest-migrate.md
+            displayName: kusto.ingest, SDK
       - name: Connection strings
         items:
           - name: Connection strings overview
