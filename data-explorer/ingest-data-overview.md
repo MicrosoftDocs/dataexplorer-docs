@@ -13,7 +13,9 @@ Data ingestion involves loading data into a table in your cluster. Azure Data Ex
 Azure Data Explorer offers one-time ingestion or the establishment of a continuous ingestion pipeline, using either streaming or queued ingestion. To determine which is right for you, see [One-time data ingestion](#one-time-data-ingestion) and [Continuous data ingestion](#continuous-data-ingestion).
 
 > [!NOTE]
-> Data is persisted in storage according to the set [retention policy](/kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true).
+>
+> * Data is persisted in storage according to the set [retention policy](/kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true).
+> * If a single string value in a record, or the entire record, exceeds the allowed data limit of 64MB, ingestion fails.
 
 ## One-time data ingestion
 
