@@ -3,7 +3,8 @@ title: IngestionBatching policy
 description: Learn how to use the IngestionBatching policy to optimize batching for ingestion.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/21/2024
+ms.date: 09/10/2025
+Search Keywords: IngestionBatching, ingestion batching, batching policy, ingestion optimization, data ingestion settings, Azure Data Explorer ingestion, Kusto ingestion, data batching, ingestion performance 
 ---
 # Ingestion batching policy
 

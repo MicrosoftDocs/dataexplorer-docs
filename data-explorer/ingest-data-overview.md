@@ -1,9 +1,10 @@
 ---
 title: Azure Data Explorer data ingestion overview
-description: Learn about the different ways you can ingest (load) data in Azure Data Explorer
+description: Discover Azure Data Explorer's data ingestion options, including streaming, batch queues, and direct ingestion, for real-time analytics and historical data needs.
 ms.reviewer: akshay.dixit
 ms.topic: conceptual
 ms.date: 09/10/2025
+Search Keywords: Azure Data Explorer, Kusto, data ingestion, streaming ingestion, queued ingestion, batched ingestion, direct ingestion, data formats, ingestion methods, data pipelines, real-time analytics, historical data
 ---
 
 # Azure Data Explorer data ingestion overview
