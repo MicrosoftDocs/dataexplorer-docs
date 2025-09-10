@@ -250,6 +250,12 @@ items:
             href: graph/graph-snapshot-show.md
           - name: .show graph_snapshots
             href: graph/graph-snapshots-show.md
+          - name: .show graph_snapshot statistics
+            href: graph/graph-snapshot-statistics-show.md
+          - name: .show graph_snapshots statistics
+            href: graph/graph-snapshots-statistics-show.md
+          - name: .show graph_snapshots failures
+            href: graph/graph-snapshots-failures-show.md
       - name: Stored query results
         items:
           - name: Stored query results
