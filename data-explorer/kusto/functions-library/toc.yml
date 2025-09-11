@@ -17,6 +17,9 @@ items:
 - name: dbscan_dynamic_fl()
   displayName: functions library, clustering, DBSCAN
   href: dbscan-dynamic-fl.md
+- name: entropy_fl()
+  displayName: functions library, information theory, Shannon entropy
+  href: entropy-fl.md
 - name: factorial_fl()
   displayName: functions library, statistics
   href: factorial-fl.md

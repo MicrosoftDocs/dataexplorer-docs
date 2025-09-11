@@ -87,6 +87,7 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [bartlett_test_fl()](bartlett-test-fl.md) | Perform the Bartlett test. |
 | [binomial_test_fl()](binomial-test-fl.md) | Perform the binomial test. |
 | [comb_fl()](comb-fl.md) | Calculate *C(n, k)*, the number of combinations for selection of k items out of n. |
+| [entropy_fl()](entropy-fl.md) | Calculate Shannon Entropy of multiple probability vectors. |
 | [factorial_fl()](factorial-fl.md) | Calculate *n!*, the factorial of n. |
 | [ks_test_fl()](ks-test-fl.md) | Perform a Kolmogorov Smirnov test. |
 | [levene_test_fl()n](levene-test-fl.md) | Perform a Levene test. |
