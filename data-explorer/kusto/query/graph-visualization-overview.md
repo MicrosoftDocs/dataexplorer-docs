@@ -12,100 +12,41 @@ ms.date: 08/27/2025
 
 Graph visualization is essential for understanding complex relationships within your data. When working with graph data in KQL, you have several visualization options depending on your requirements, technical constraints, and use cases. This article provides an overview of the three main approaches for visualizing graph data.
 
-## Visualization options comparison
-
-The following table summarizes the key characteristics of each visualization option:
-
-| Feature | Kusto Explorer | Plotly-based | Graphistry |
-|---------|----------------|--------------|------------|
-| **Target audience** | Data analysts, developers | Dashboard users, analysts | Large-scale graph analysts |
-| **Data size** | Small to medium graphs | Small to medium graphs | Large graphs (millions of nodes) |
-| **Deployment** | Desktop client | Cloud/on-premises | Third-party cloud service |
-| **Interactivity** | High | Medium | High |
-| **Customization** | Medium | High | Medium |
-| **Performance** | Good | Good | Excellent (GPU-accelerated) |
-| **Cost** | Free | Included | Commercial license required |
-
 ## Option 1: Kusto Explorer graph visualization
 
-[Kusto Explorer](graph-visualization-kusto-explorer.md) is a free desktop application that provides built-in graph visualization capabilities. It's ideal for interactive data exploration and analysis.
+[Kusto Explorer](graph-visualization-kusto-explorer.md) is a free desktop application that provides built-in graph visualization capabilities. It's ideal for KQL-savvy users who want to quickly visualize graph data without leaving their analysis environment.
 
 **Best for:**
 
-- Data analysts who need immediate visualization
-- Interactive exploration of graph structures
-- Schema visualization and database entity relationships
-- Development and testing scenarios
+KQL users who need immediate graph insights during data exploration, interactive analysis of graph structures and relationships, development and testing scenarios requiring rapid iteration, and schema visualization of database entity relationships.
 
 **Key features:**
 
-- Automatic graph rendering when queries end with `make-graph` operator or use the `graph()` function
-- Interactive graph manipulation with zoom, pan, and node selection
-- Timeline playback for temporal graph data
-- Database schema visualization
+Kusto Explorer automatically renders graphs when queries end with the `make-graph` operator or `graph()` function. Users can interact with the visualization through zoom, pan, and node selection capabilities. The contextual menu provides exploration options including expanding connected nodes, hiding specific elements, reducing graph complexity, and focusing on selected areas. Additional features include graph styling customization and timeline playback for temporal data analysis.
 
-## Option 2: Plotly-based graph visualization
+## Option 2: Custom programmatic graph visualization
 
-[Plotly-based visualization](graph-visualization-plotly.md) uses Python and the Plotly library to create interactive web-based graph visualizations that can be embedded in dashboards.
+Custom programmatic visualization approaches allow you to build tailored graph visualizations using popular libraries and frameworks. The main options include [Plotly-based visualization](graph-visualization-plotly.md) using Python and the Plotly library, or handcrafted D3-based visualizations using JavaScript. This approach is ideal for users who want to craft their own tools and have special domain-specific needs.
 
 **Best for:**
 
-- Dashboard integration and sharing
-- Custom styling and branding requirements
-- Web-based applications
-- Programmatic graph generation
+Users requiring dashboard integration and sharing capabilities, custom styling and branding requirements, web-based applications, programmatic graph generation, and specific user experience requirements tailored to domain-specific use cases.
 
 **Key features:**
 
-- Integration with Azure Data Explorer dashboards and Real-Time Intelligence dashboards
-- Customizable appearance with color schemes and layouts
-- Web-based interactivity with hover information
-- Python-based extensibility
+Custom programmatic solutions offer maximum flexibility for specialized requirements. Plotly-based approaches provide seamless integration with Azure Data Explorer dashboards and Real-Time Intelligence dashboards, along with Python-based extensibility. D3-based solutions deliver maximum customization flexibility through direct DOM manipulation and access to a rich ecosystem of examples. Both approaches support customizable appearance with color schemes and layouts, web-based interactivity with hover information and custom behaviors, and full control over visualization logic and presentation.
 
 ## Option 3: Graphistry
 
-[Graphistry](graph-visualization-graphistry.md) is a third-party GPU-accelerated graph visualization platform optimized for large-scale graph analysis.
+[Graphistry](graph-visualization-graphistry.md) is a third-party GPU-accelerated graph visualization platform optimized for large-scale graph analysis. It's best for users who need to visualize the entirety of large graphs with millions of nodes and edges.
 
 **Best for:**
 
-- Large graphs with millions of nodes and edges
-- Performance-critical applications
-- Advanced graph analytics and pattern detection
-- Commercial deployments requiring high-performance visualization
+Organizations working with large graphs containing millions of nodes and edges, performance-critical applications requiring real-time visualization, advanced graph analytics and pattern detection scenarios, and commercial deployments requiring high-performance visualization capabilities.
 
 **Key features:**
 
-- GPU acceleration for handling massive graphs
-- Advanced filtering and search capabilities
-- Professional-grade performance and scalability
-- Available through Azure Marketplace
-
-## Choosing the right option
-
-Consider the following factors when selecting a graph visualization approach:
-
-### Data size and performance requirements
-
-- **Small graphs (< 10,000 nodes)**: Any option works well
-- **Medium graphs (10,000 - 100,000 nodes)**: Kusto Explorer or Plotly
-- **Large graphs (> 100,000 nodes)**: Graphistry recommended
-
-### Deployment and accessibility
-
-- **Desktop analysis**: Kusto Explorer
-- **Web dashboards**: Plotly-based visualization
-- **Enterprise-scale deployments**: Graphistry
-
-### Technical requirements
-
-- **No additional dependencies**: Kusto Explorer
-- **Python support available**: Plotly-based visualization
-- **High-performance requirements**: Graphistry
-
-### Budget considerations
-
-- **Free options**: Kusto Explorer, Plotly-based (with existing infrastructure)
-- **Commercial solutions**: Graphistry
+Graphistry leverages GPU acceleration to handle massive graphs that would be impractical with other visualization tools. The platform provides advanced filtering and search capabilities for navigating complex data structures, along with professional-grade performance and scalability designed for enterprise environments. The solution is readily available through Azure Marketplace for streamlined deployment and integration.
 
 ## Getting started
 
