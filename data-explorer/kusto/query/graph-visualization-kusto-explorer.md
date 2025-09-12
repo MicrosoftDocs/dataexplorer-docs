@@ -58,14 +58,73 @@ edges
 | make-graph sourceId --> targetId with nodes on nodeId
 ```
 
-:::image type="content" source="media/graphs/graph-viz-ke-techcorp-1.png" alt-text="Screenshot of TechCorp organizational graph in Kusto Explorer showing temporal relationships between employees (Alice, Bob, Carol, David), company, projects (WebApp, MobileApp), and Engineering department with nodes sized by importance and edges labeled with relationship types.":::
+:::image type="content" source="media/graphs/graph-viz-ke-techcorp-1.png" alt-text="TechCorp organizational graph visualization in Kusto Explorer showing temporal relationships and project assignments.":::
+
+The visualization clearly shows the organizational structure with TechCorp (purple node) at the center, connected to employees Alice, Bob, Carol, and David (green nodes) through various employment relationships. The graph displays two projects - WebApp and MobileApp (cyan nodes) - with labeled edges showing how employees interact with these projects ("develops", "oversees", "works on", "assists with"). The Engineering department (purple node) connects to team members, and the temporal timeline at the bottom allows navigation through different time periods to see how relationships evolve. The Graph Layers panel on the right provides controls for customizing the visualization, including node labeling, coloring, and timeline navigation.
 
 ### Example with graph function
 
+This example demonstrates how to visualize a persisted graph using the `graph()` function. The BloodHound Active Directory dataset contains 1,495 Active Directory objects representing a typical enterprise AD deployment with users, computers, groups, and security relationships.
+
 ```kusto
 // Query using the graph function
-graph("Simple")
+graph("BloodHound_AD")
 ```
+
+This query loads the entire BloodHound Active Directory graph, which Kusto Explorer will automatically render as an interactive visualization. The graph shows security relationships and potential attack paths in an Active Directory environment, making it useful for security assessments and privilege escalation analysis.
+
+For detailed information about this dataset and other available sample graphs, see [Graph sample datasets and examples](graph-sample-data.md).
+
+:::image type="content" source="media/graphs/graph-viz-ke-bloodhound-1.png" alt-text="BloodHound Active Directory graph visualization in Kusto Explorer with clustered nodes and Graph Layers panel.":::
+
+The visualization shows the complex structure of an Active Directory environment with distinct clusters of related objects. The blue cluster on the left represents one group of AD objects (likely computers or organizational units), while the purple clusters on the right show different types of security principals and groups. The interconnecting edges reveal the security relationships and potential attack paths between these entities. The Graph Layers panel on the right provides interactive controls to explore the data, including search functionality, node/edge customization options, and timeline controls for temporal analysis.
+
+### Example with database entity graph
+
+Kusto Explorer provides a powerful capability to visualize the entity relationships within a KQL database. This feature helps you understand the database schema, data dependencies, and relationships between different database objects.
+
+To generate the entity graph:
+
+1. In the **Connections** panel, right-click on the database name
+2. Select **Show Entities Graph** from the context menu
+3. Kusto Explorer automatically executes a statement and renders the database entities as an interactive graph
+
+This automatically generates and executes a query that analyzes the database schema and creates a visualization showing:
+
+- **Tables** as the foundation data entities
+- **Graph models** representing persistent graph structures
+- **Functions** including user-defined and system functions
+- **Materialized views** for data aggregation and optimization
+- **External tables** for data export and external connectivity
+- **Dependencies** shown as labeled edges indicating relationships between entities
+
+:::image type="content" source="media/graphs/graph-viz-ke-entities-1.png" alt-text="Database entity graph in Kusto Explorer showing table dependencies, graph models, functions, materialized views, and export relationships.":::
+
+The visualization reveals the database architecture at a glance, showing the complete data flow and dependencies. In this example, you can trace the data processing pipeline step by step:
+
+**Data ingestion and transformation**
+
+First, a raw table populates the `sensorData` table using an [update policy](../management/update-policy.md) that triggers the `updateSensorData` function whenever new data arrives.
+
+**Data optimization with materialized views**
+
+Next, there are [materialized views](../management/materialized-views/materialized-view-overview.md) for data optimization - one for deduplication (`SensorDeduplicated`) defined on the `sensorData` table, and another for downsampling of timeseries data (`SensorDownsampled`) that runs on top of the `SensorDeduplicated` view.
+
+**Function dependencies**
+
+The system also includes function dependencies where `SensorDataFunction1` (yellow node) references the `sensorData` table, and `SensorDataFunction2` (yellow node) uses `SensorDataFunction1`, creating a chain of function dependencies.
+
+**Data export**
+
+Additionally, there's a [continuous export](../management/data-export/continuous-data-export.md) operation defined that exports data from the `sensorData` table to an external table called `ExternalTable` (cyan node).
+
+**Graph modeling**
+
+Finally, the "Simple" graph model (blue node) depends on two underlying tables, with reference relationships clearly marked.
+
+**Visualization insights**
+
+The purple edges indicate various relationship types like "definition", "reference", "export", and "update-policy". This capability to track interdependencies between functions is particularly valuable for debugging performance issues, understanding data lineage, and optimizing query execution paths. Database administrators and developers can use this comprehensive view to understand data flow, identify bottlenecks, and maintain database integrity.
 
 ## Interactive graph features
 
