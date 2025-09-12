@@ -26,29 +26,45 @@ Kusto Explorer automatically detects and visualizes graph data when:
 
 ### Example with make-graph operator
 
+This example demonstrates TechCorp's organizational dynamics over 2023-2024, showing how team composition and project assignments evolve over time. Alice (engineer) joins early but leaves mid-2024, Bob (manager) arrives in March to lead the Engineering department, Carol (developer) joins in June and becomes lead developer on MobileApp, and David (intern) has a short tenure. Two overlapping projects run concurrently: WebApp (March 2023 - August 2024) and MobileApp (July 2023 - December 2024).
+
 ```kusto
-// Create a simple graph from tabular data
-let nodes = datatable(nodeId:string, nodeType:string, name:string)[
-    "1", "Person", "Alice",
-    "2", "Person", "Bob", 
-    "3", "Company", "TechCorp"
+// Create a temporal graph with node/edge lifetimes and labels
+let nodes = datatable(nodeId:string, nodeType:string, name:string, from:datetime, to:datetime)[
+    "1", "Person", "Alice", datetime(2023-01-01), datetime(2024-12-31),
+    "2", "Person", "Bob", datetime(2023-03-15), datetime(2024-12-31),
+    "3", "Person", "Carol", datetime(2023-06-01), datetime(2024-12-31),
+    "4", "Person", "David", datetime(2023-09-01), datetime(2024-03-31),
+    "5", "Company", "TechCorp", datetime(2022-01-01), datetime(2025-12-31),
+    "6", "Project", "WebApp", datetime(2023-03-01), datetime(2024-08-31),
+    "7", "Project", "MobileApp", datetime(2023-07-01), datetime(2024-12-31),
+    "8", "Department", "Engineering", datetime(2022-01-01), datetime(2025-12-31)
 ];
-let edges = datatable(sourceId:string, targetId:string, relationship:string)[
-    "1", "3", "works_at",
-    "2", "3", "works_at"
+let edges = datatable(sourceId:string, targetId:string, label:string, from:datetime, to:datetime)[
+    "1", "5", "employed by", datetime(2023-02-01), datetime(2024-06-30),
+    "2", "5", "manages at", datetime(2023-04-01), datetime(2024-12-31),
+    "3", "5", "employed by", datetime(2023-06-15), datetime(2024-12-31),
+    "4", "5", "intern at", datetime(2023-09-15), datetime(2024-03-15),
+    "1", "8", "member of", datetime(2023-02-01), datetime(2024-06-30),
+    "2", "8", "leads", datetime(2023-04-01), datetime(2024-12-31),
+    "3", "8", "member of", datetime(2023-06-15), datetime(2024-12-31),
+    "1", "6", "works on", datetime(2023-03-15), datetime(2024-06-30),
+    "3", "6", "develops", datetime(2023-07-01), datetime(2024-08-31),
+    "4", "6", "assists with", datetime(2023-10-01), datetime(2024-03-15),
+    "2", "7", "oversees", datetime(2023-08-01), datetime(2024-12-31),
+    "3", "7", "lead developer", datetime(2023-08-15), datetime(2024-12-31)
 ];
 edges
 | make-graph sourceId --> targetId with nodes on nodeId
 ```
 
+:::image type="content" source="media/graphs/graph-viz-ke-techcorp-1.png" alt-text="Screenshot of TechCorp organizational graph in Kusto Explorer showing temporal relationships between employees (Alice, Bob, Carol, David), company, projects (WebApp, MobileApp), and Engineering department with nodes sized by importance and edges labeled with relationship types.":::
+
 ### Example with graph function
 
 ```kusto
-// Query a persisted graph
+// Query using the graph function
 graph("Simple")
-| graph-match (person)-[works_at]->(company)
-  where company.name == "TechCorp"
-  project employee = person.name, company = company.name
 ```
 
 ## Interactive graph features
