@@ -62,6 +62,8 @@ After assigning the managed identity to your cluster and configuring the relevan
 
 * **Sql request plugins**: Use a managed identity to authenticate to an external database when using the *sql_request* or *cosmosdb_request* plugins.
 
+* **Query acceleration policy** Use a managed identity to authenticate to storage accounts of query accelerated external tables.  A managed identity is required if the external table uses impersonation authentication. To use a managed identity, add the managed identity identifier in the external table [`alter policy query-acceleration` command](/kusto/management/alter-query-acceleration-policy-command?view=azure-data-explorer&preserve-view=true). Please note that the `AutomatedFlows` usage needs to be enabled in the cluster / database level managed identity policy.
+
 ## Related content
 
 * [Configure managed identities for your cluster](configure-managed-identities-cluster.md)
