@@ -39,7 +39,7 @@ You can use the following MCP Servers to integrate and build AI agents with Azur
 
 The MCP Server is at the core of the system and acts as a bridge between AI agents and ADX data sources. Agents send requests to the MCP server, which translates them into ADX queries.
 
-:::image type="content" source="media/model-context-protocol/ADX-MCP-server-architecture.png" alt-text="Diagram that shows the MCP architecture.":::
+:::image type="content" source="media/model-context-protocol/model-context-protocol-server-architecture.png" alt-text="Diagram that shows the MCP architecture.":::
 
 This architecture lets you build modular, scalable, and secure intelligent applications that respond to real-time signals. MCP uses a client-server architecture, so AI applications can interact with external tools efficiently. The architecture includes the following components:
 
