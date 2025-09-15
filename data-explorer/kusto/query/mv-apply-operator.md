@@ -252,27 +252,27 @@ The query combines elements from two dynamic arrays into a new concatenated form
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OPQuDMBCG9/yKo0sSsIMpXYQOfuzduohIqhlCEysaSy3++KaXtog5CLwf93CtdH6uRgG7SJOA7lwE6TDECbRzJ61uUIq/5KQk4F8c/RxW0jSmEdBU4H+gFV+HGYYZhlkIkXBcl3Is5WKzW6BdfGxSAVnAPvay782MN4bT4N4BQ6J6OtW1cJ4cnGB0QyMdC71dvQtljsUFxslaOeiXQpCvW3lTtdFj2OBf9MYX3vf0tetlYPI3W/swT0sBAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OMQuDMBCF9%2FyKh4sJ2CEpXQQHtXsX6SIiqWaQGisaSy3%2B%2BCaBFukdHPfefXdcK43NW69Ar7KP0Q0mQjpNPEa7DlJ3jZfiJxkpCWzw6OvQMkx5GCFMRVixvZ15OxO%2BHv3Q7572UO6h%2FH%2F3zK1BKpAN%2BnmQ49ivKHjiXotQCNcIPAZQf1G9jBpaXBaDBLOZGmloYcGgDhzNPLRhXrSWU%2FdWjkyg5V3VfTcbaqVj2Afoyn8xDwEAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 datatable (Val: int, Arr1: dynamic, Arr2: dynamic)
 [
-    1, dynamic(['A1', 'A2', 'A3']), dynamic(['B1', 'B2', 'B3']), 
-    5, dynamic(['C1', 'C2']), dynamic(['D1', 'D2'])
+    1, dynamic(['A1', 'A2']), dynamic(['B1', 'B2', 'B3']), 
+    5, dynamic(['C1', 'C2']), dynamic(['D1'])
 ] 
-| mv-apply Arr1, Arr2 on (
-    extend Out = strcat(Arr1, "_", Arr2)
-    | summarize Arr1 = make_list(Arr1), Arr2 = make_list(Arr2), Out= make_list(Out)
-    )
+| mv-apply T1=Arr1, T2=Arr2 on (
+    extend Out = strcat(T1, "_", T2)
+    | summarize Out= make_list(Out)
+  )
 ```
 
 **Output**
 
 | Val | Arr1 | Arr2 | `Out` |
 |--|--|--|--|
-| 1 | ["A1","A2","A3"] | ["B1","B2","B3"] | ["A1_B1","A2_B2","A3_B3"] |
-| 5 | ["C1","C2"] | ["D1","D2"] | ["C1_D1","C2_D2"] |
+| 1 | ["A1","A2"] | ["B1","B2","B3"] | ["A1_B1","A2_B2","_B3"] |
+| 5 | ["C1","C2"] | ["D1"] | ["C1_D1","C2_"] |
 
 ### Applying mv-apply to a property bag
 
