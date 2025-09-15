@@ -3,7 +3,7 @@ title: Kusto Query Language learning resources
 description: This article provides a list of various learning resources to help you ramp up on Kusto Query Language (KQL) effectively.
 ms.reviewer: alexans
 ms.topic: concept-article
-ms.date: 08/11/2024
+ms.date: 09/15/2025
 #customerIntent: As a data analyst, I want to access various learning resources for Kusto Query Language (KQL), so that I can effectively explore and analyze data using KQL.
 ---
 # Kusto Query Language learning resources
