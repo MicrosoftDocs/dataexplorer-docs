@@ -21,8 +21,8 @@ Kusto Explorer is a free desktop application that provides built-in graph visual
 
 Kusto Explorer automatically detects and visualizes graph data when:
 
-1. Your query ends with the `make-graph` operator
-2. Your query uses the `graph()` function to access persisted graphs
+1. Your query ends with the [`make-graph`](make-graph-operator.md) operator
+2. Your query ends with the [`graph()`](graph-function.md) function
 
 ### Example with make-graph operator
 
@@ -128,9 +128,11 @@ The purple edges indicate various relationship types like "definition", "referen
 
 ## Interactive graph features
 
-When Kusto Explorer renders a graph, it provides several interactive features through the Graph Layers panel on the right side of the interface:
+When Kusto Explorer renders a graph, it provides several interactive features through the Graph Layers panel on the right side of the interface. The features described below are demonstrated using the [TechCorp organizational graph](#example-with-make-graph-operator) shown earlier:
 
 ### Graph Layers panel
+
+
 
 The Graph Layers panel contains several sections for interacting with your graph:
 
@@ -177,6 +179,79 @@ Kusto Explorer provides intuitive graph manipulation:
 - **Node selection**: Click on nodes to select and highlight them
 - **Node dragging**: Drag nodes to rearrange the layout manually
 - **Layout algorithms**: Right-click to access different layout options
+
+### Interactive node actions
+
+You can interact with graph nodes in two ways: write KQL graph queries manually, or simply right-click on any node to execute several predefined actions. Each action provides a different way to explore and manipulate the graph visualization:
+
+:::image type="content" source="media/graphs/graph-viz-ke-techcorp-rightclick.png" alt-text="Graph node action in Kusto Explorer showing a context menu on the selected node.":::
+
+#### Expand
+
+The **Expand** action generates a statement that allows you to selectively visualize graphs which start or end at the interesting node, revealing connected nodes and relationships.
+
+:::image type="content" source="media/graphs/graph-viz-ke-expand-1.png" alt-text="Graph node expand action in Kusto Explorer showing additional connected nodes revealed from the selected node.":::
+
+When you right-click on a node and select "Expand", Kusto Explorer first presents you with options to customize the expansion:
+
+1. **Select expansion levels**: Choose how many levels (hops) you want to expand from the selected node (1 level, 2 levels, 3 levels, or 4 levels)
+2. **Select paths of interest**: After choosing the levels, you can select specific paths or relationship types that you want to include in the expansion
+
+This two-step process allows for precise control over graph exploration. Rather than expanding everything connected to a node, you can focus on specific relationship patterns and limit the expansion depth to avoid overwhelming visualizations. This is particularly useful for exploring large graphs where you want to focus on the immediate neighborhood of a specific entity without being overwhelmed by the entire graph structure.
+
+#### Hide Others
+
+The **Hide Others** action hides all other nodes except the selected one and its direct connections, creating a focused view of the selected node's immediate environment.
+
+:::image type="content" source="media/graphs/graph-viz-ke-hide-others-1.png" alt-text="Graph hide others action in Kusto Explorer showing only the selected node and its direct connections.":::
+
+When you right-click on a node and select "Hide Others", you can choose how many levels should be left in the graph:
+
+- **Leave only me**: Shows only the selected node, hiding all others
+- **Leave 1 more level**: Shows the selected node plus nodes that are 1 hop away
+- **Leave 2 more levels**: Shows the selected node plus nodes that are 1-2 hops away
+- **Leave 3 more levels**: Shows the selected node plus nodes that are 1-3 hops away
+- **Leave 4 more levels**: Shows the selected node plus nodes that are 1-4 hops away
+
+This action is ideal when you want to isolate a specific node and examine only its relationships within a defined radius. It effectively filters out the visual noise from the rest of the graph, allowing you to concentrate on understanding how the selected node connects to its neighbors at various distances.
+
+#### Hide Node
+
+The **Hide Node** action removes the selected node from the current view along with all edges connected to it.
+
+:::image type="content" source="media/graphs/graph-viz-ke-hide-node-1.png" alt-text="Graph hide node action in Kusto Explorer showing the graph with the selected node removed from view.":::
+
+When you click on a node you want to hide, it removes both the node itself and all edges connected to it from the visualization. This creates a cleaner graph by eliminating dangling connections that would otherwise point to nowhere. For example, if you hide the MobileApp node, all relationships like "lead developer", "oversees", and other connections to that project are also removed from the view.
+
+Use this action when you want to temporarily remove a node that might be cluttering your visualization or when you want to see how the graph looks without a particular entity. This is especially useful for removing central hub nodes that have many connections, allowing you to better see the relationships between other nodes without the visual distraction of orphaned edges.
+
+#### Reduce Graph
+
+The **Reduce Graph** action simplifies the graph by automatically generating a statement that shows nodes within a specific range of hops from the selected node.
+
+:::image type="content" source="media/graphs/graph-viz-ke-reduce-1.png" alt-text="Graph reduce action in Kusto Explorer showing nodes 1-4 hops away from the MobileApp node with the generated KQL statement.":::
+
+When you click "Reduce Graph" on a node (such as the MobileApp node), Kusto Explorer automatically generates a statement that reduces the graph to show all nodes which are 1 to 4 hops away from the selected node. This default behavior helps manage complex graphs by focusing on the most relevant neighborhood around your point of interest.
+
+You can customize the generated statement to adjust the hop range according to your needs. For example, you can modify the statement to show only nodes that are 1 to 2 hops away, creating an even more focused view:
+
+:::image type="content" source="media/graphs/graph-viz-ke-reduce-2.png" alt-text="Graph reduce action in Kusto Explorer showing a more focused view with nodes 1-2 hops away from the MobileApp node after manual statement modification.":::
+
+This action is particularly valuable when working with large, dense graphs where you want to focus on the most significant relationships and entities within a specific distance from your selected node. The ability to customize the hop range gives you precise control over the level of detail in your reduced graph visualization.
+
+#### Zoom on me
+
+The **Zoom on me** action is very helpful to focus visually on a specific node. It centers and zooms the view to focus specifically on the selected node, making it the focal point of the visualization.
+
+:::image type="content" source="media/graphs/graph-viz-ke-zoom-1.png" alt-text="Graph showing the context menu with Zoom on me option visible for focusing on a specific node in Kusto Explorer.":::
+
+When you right-click on a node and select "Zoom on me", Kusto Explorer automatically adjusts both the zoom level and centers the view so that the selected node becomes the primary focus. This visual transformation makes it much easier to examine the node's properties and relationships without distractions from other parts of the graph.
+
+:::image type="content" source="media/graphs/graph-viz-ke-zoom-2.png" alt-text="Graph view after Zoom on me action in Kusto Explorer showing the selected node centered and zoomed for detailed examination.":::
+
+This action is particularly useful for navigation in large graphs where you might lose track of a specific node or when you want to focus your analysis on a particular entity and its immediate connections. The zoom and centering functionality ensures that the selected node is prominently displayed and easy to examine in detail.
+
+These interactive actions provide quick graph exploration without requiring manual KQL query writing, making it easy to focus on specific parts of complex graphs or discover hidden relationships in your data.
 
 ## Schema visualization
 
