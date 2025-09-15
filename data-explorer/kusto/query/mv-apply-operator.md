@@ -96,61 +96,95 @@ Where *ItemIndex* has the syntax:
 
 Review the examples and run them in your Data Explorer query page.
 
+### Internal mv-expand done by  mv-apply
+
+The query helps in understanding the mv-expand done internally by mv-apply
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02MwQrCMBBE7%2FmKOSYQIfGgUOnB7yg9rCZKME1CWYoBP940IDiHWeYtvOgZjpgw9sN0ix4yJOffA0Jijeu6DnA10RLuSkwCLUb%2FiJzOs9Id2j940rBtt5%2BYL2I3iw%2BW7UClxLorj2MrcAbX4vNDxpyeCjmhq2TvFqaXhzWmb%2FUFxRAwu60AAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+let data = datatable (index: int, Arr: dynamic)
+[
+    0, dynamic([7]),
+    1, dynamic([6, 11, 7])
+];
+data
+| mv-apply Arr2=Arr to typeof(long) on 
+    (
+       take 100
+    )
+```
+
+**Output**
+
+| index | Arr | Arr2 |
+|--|--|--|
+| 0 | [7] | 7 |
+| 1 | [6, 11, 7] | 6 |
+| 1 | [6, 11, 7] | 11|
+| 1 | [6, 11, 7] | 7 |
+
 ### Getting the largest element from the array
 
-The query outputs the smallest even number (2) and the smallest odd number (1).
-<!-- //the query and header do not match. Is the query wrong?// -->
+The query creates a new column having the largest element of an array.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2NsQrDMBBD93yFlkIydEimQvEn9BuCSy4h9M5nkmuxSz6+jqkGDRJ6YjKMkzcP16Bo82EhJMybCnqY4obdKKKv9YH9LeK39UtgJ/5FI6+7tanDMyM9dBrgyvyC4d5UbnNAPlcfI2cQk1AwxyfXciSdW9awdNCAym+rm5a/E/gf1LD7ASAFbUCrAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NwQoCMQxE7%2F2KObZQwSoirOzBg1%2Bx9NC1VQrdtixBLPjx1oBiDkmYN8mkQPCOHEYe5OYUIGP24TkgZtI4r%2BsA37Jb4lWJSaDXVn8VORmNg8beKs3I%2FKPu2zE%2BWiXsSXwixAvLY%2BNqTQ1U6iWFZewZfQe1GspNppLvCiWDH0ru3QmD%2BXfConoD3WN%2F8L4AAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let _data =
-    range x from 1 to 8 step 1
-    | summarize l=make_list(x) by xMod2 = x % 2;
-_data
-| mv-apply element=l to typeof(long) on 
+let data = datatable (index: int, Arr: dynamic)
+[
+    0, dynamic([1, 5, 3]),
+    1, dynamic([10, 2, 5, 7])
+];
+data
+| mv-apply topElem=Arr to typeof(long) on 
     (
-    top 1 by element
+    top 1 by topElem
     )
 ```
 
 **Output**
 
-| `xMod2` | l | element |
+| index | Arr | topElem |
 |--|--|--|
-| 1 | [1, 3, 5, 7] | 7 |
-| 0 | [2, 4, 6, 8] | 8 |
+| 0 | [1, 5, 3] | 5 |
+| 1 | [10, 2, 5, 7] | 10 |
 
-### Calculating the sum of the largest two elements in an array
+### Find top two elements in an array
 
-The query outputs the sum of the top two even numbers (6 + 8 = 14) and the sum of the top two odd numbers (5 + 7 = 12).
+The query saves the top two elements of an array in a new array column Top2.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQ7CMBBD936FF6RkYGgmJJRPQAywV0FNq4pLLmqvKEH9eNqsePBw9j2TF3S9EwfbYNfs4uiRMcwc0EIYFyziE9oab1jWENw8fT3IBvf2HU2LqKzxKsg37g3s/n6CuTaV22wIn7NLiQro4ElJngdFHEcNjhWrqgsnmINDf1uPNdyHJydj95siXQv6B6sP8Fq9AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NzQrCMBCE73mKOSYQwVZFUXrwHbyVIqmNEswf7SpW%2BvCmEcE9zMLMx4zVhE6RQpUfqdZqcOM7%2FdrDeJI49v0e3eiVMxfBaoZ0S%2FlzeL2RKCRWjZA5Kv6idYoSupPYNoI1BzZPsAnuuVAx2nHuLqskoAAaow5XboO%2FCQSP3MazUogo0X757EwYHs6p3rw1TiGWlVN3fbZmID4zIkPiA06i8CLdAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let _data =
-    range x from 1 to 8 step 1
-    | summarize l=make_list(x) by xMod2 = x % 2;
-_data
-| mv-apply l to typeof(long) on
+let data = datatable (index: int, Arr: dynamic)
+[
+    0, dynamic([5, 1, 3]),
+    1, dynamic([4, 10, 8, 7])
+];
+data
+| mv-apply Arr2=Arr to typeof(long) on 
     (
-    top 2 by l
-    | summarize SumOfTop2=sum(l)
+    top 2 by Arr2
+    | summarize Top2=make_list(Arr2)
     )
 ```
 
 **Output**
 
-| `xMod2` | l | SumOfTop2 |
+| index | Arr | Top2 |
 |--|--|--|
-| 1 | [1,3,5,7] | 12 |
-| 0 | [2,4,6,8] | 14 |
+| 0 | [5, 1, 3] | [5, 3] |
+| 1 | [4, 10, 8, 7] | [10, 8] |
 
 ### Select elements in arrays
 
@@ -218,27 +252,27 @@ The query combines elements from two dynamic arrays into a new concatenated form
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OPQuDMBCG9/yKo0sSsIMpXYQOfuzduohIqhlCEysaSy3++KaXtog5CLwf93CtdH6uRgG7SJOA7lwE6TDECbRzJ61uUIq/5KQk4F8c/RxW0jSmEdBU4H+gFV+HGYYZhlkIkXBcl3Is5WKzW6BdfGxSAVnAPvay782MN4bT4N4BQ6J6OtW1cJ4cnGB0QyMdC71dvQtljsUFxslaOeiXQpCvW3lTtdFj2OBf9MYX3vf0tetlYPI3W/swT0sBAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OMQuDMBCF9%2FyKh4sJ2CEpXQQHtXsX6SIiqWaQGisaSy3%2B%2BCaBFukdHPfefXdcK43NW69Ar7KP0Q0mQjpNPEa7DlJ3jZfiJxkpCWzw6OvQMkx5GCFMRVixvZ15OxO%2BHv3Q7572UO6h%2FH%2F3zK1BKpAN%2BnmQ49ivKHjiXotQCNcIPAZQf1G9jBpaXBaDBLOZGmloYcGgDhzNPLRhXrSWU%2FdWjkyg5V3VfTcbaqVj2Afoyn8xDwEAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 datatable (Val: int, Arr1: dynamic, Arr2: dynamic)
 [
-    1, dynamic(['A1', 'A2', 'A3']), dynamic(['B1', 'B2', 'B3']), 
-    5, dynamic(['C1', 'C2']), dynamic(['D1', 'D2'])
+    1, dynamic(['A1', 'A2']), dynamic(['B1', 'B2', 'B3']), 
+    5, dynamic(['C1', 'C2']), dynamic(['D1'])
 ] 
-| mv-apply Arr1, Arr2 on (
-    extend Out = strcat(Arr1, "_", Arr2)
-    | summarize Arr1 = make_list(Arr1), Arr2 = make_list(Arr2), Out= make_list(Out)
-    )
+| mv-apply T1=Arr1, T2=Arr2 on (
+    extend Out = strcat(T1, "_", T2)
+    | summarize Out= make_list(Out)
+  )
 ```
 
 **Output**
 
 | Val | Arr1 | Arr2 | `Out` |
 |--|--|--|--|
-| 1 | ["A1","A2","A3"] | ["B1","B2","B3"] | ["A1_B1","A2_B2","A3_B3"] |
-| 5 | ["C1","C2"] | ["D1","D2"] | ["C1_D1","C2_D2"] |
+| 1 | ["A1","A2"] | ["B1","B2","B3"] | ["A1_B1","A2_B2","_B3"] |
+| 5 | ["C1","C2"] | ["D1"] | ["C1_D1","C2_"] |
 
 ### Applying mv-apply to a property bag
 
