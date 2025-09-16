@@ -66,9 +66,9 @@ StormEvents | count
 
 Run each line with <kbd>F5</kbd>.
 
-## Work folders pane
+## Work Documents pane
 
-:::image type="content" source="media/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work folders pane showing Unsaved work and Tracked folders.":::
+:::image type="content" source="media/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work docuemnts pane showing Unsaved work and Tracked folders.":::
 
 The Work folders pane organizes your work folders for quick navigation. It includes two types:
 
@@ -250,6 +250,8 @@ For more visualization options, see the [render operator](../query/render-operat
 |Analytical Reports| Opens a dashboard with prebuilt data analysis reports.|
 ||---------*Translate*---------|
 |Query to Power BI| Converts a query to a Power BI format.|
+|Query to WPA| Converts a query to a WPA format.|
+|Query to WPA (Clipboard) | Converts a query to a WPA format and copies it to the clipboard.|
 ||---------*Options*---------|
 |Reset Options| Resets app settings to default values.|
 |Options| Opens the options tool to configure app settings. For details, see [Kusto.Explorer options](kusto-explorer-options.md).|
@@ -263,6 +265,7 @@ To change the output color scheme or turn off this behavior, select **Tools** > 
 :::image type="content" source="media/kusto-explorer/ke-color-scheme.png" alt-text="Screenshot of Kusto Explorer color scheme modification.":::
 
 **Excel** color scheme legend | **Vivid** color scheme legend
+
 |---|---
 | :::image type="content" source="media/kusto-explorer/excel-color-scheme.png" alt-text="Screenshot of the Excel color scheme legend in Kusto Explorer." border="false"::: | :::image type="content" source="media/kusto-explorer/vivid-color-scheme.png" alt-text="Screenshot of vivid color scheme legend in Kusto Explorer." border="false":::
 
@@ -276,7 +279,6 @@ To change the output color scheme or turn off this behavior, select **Tools** > 
 |**Cluster Diagnostics** | Shows a health summary for the Server Group currently selected in Connections Panel. |
 |**Latest data: All tables**| Shows a summary of the latest data in all tables of the currently selected database.|
 |**Latest data: Selected table**| Shows the latest data for the selected table in the status bar.|
-
 
 ## Management tab
 
