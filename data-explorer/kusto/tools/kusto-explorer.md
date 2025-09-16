@@ -1,62 +1,61 @@
 ---
-title: Kusto.Explorer installation and user interface
+title: Kusto.Explorer Installation and User Interface
 description: Learn about the features of Kusto.Explorer and how it can help you to explore your data
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 08/11/2024
+ms.date: 09/15/2025
 ---
 
 # Kusto.Explorer installation and user interface
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Kusto.Explorer is free software for download and use on your Windows desktop. Kusto.Explorer allows you to query and analyze your data with Kusto Query Language (KQL) in a user-friendly interface. This overview explains how to set up Kusto.Explorer, and describes the user interface you'll use.
+Kusto.Explorer is a free Windows desktop tool. Use it to query and analyze data with Kusto Query Language (KQL) in a friendly interface. This article describes how to set up Kusto.Explorer and its user interface.
 
-With Kusto.Explorer, you can:
+Use Kusto.Explorer to:
 
-* [Query your data](kusto-explorer-using.md#query-mode).
+* [Query your data](kusto-explorer-using.md#query-mode)
 * [Search your data](kusto-explorer-using.md#search-mode) across tables.
-* [Visualize your data](#visualizations-section) in a wide variety of graphs.
-* [Share queries and results](kusto-explorer-using.md#share-queries-and-results) by email or using deep links.
+* [Visualize your data](#visualizations-section) in charts.
+* [Share queries and results](kusto-explorer-using.md#share-queries-and-results) by email or deep link.
 
-## Installing Kusto.Explorer
+## Install Kusto.Explorer
 
-* Download and install the Kusto.Explorer tool from:
+* Download and install Kusto.Explorer from:
   * [https://aka.ms/ke](https://aka.ms/ke)
 
-* Alternatively, access your Kusto cluster with a ClickOnce-enabled browser at:
+* Or use a ClickOnce-enabled browser to access your Kusto cluster at:
 `https://<your_cluster>/?web=0`
-     Replace &lt;your_cluster&gt; with your cluster URI (for example, `help.kusto.windows.net`.)
+Replace the `<your_cluster>` placeholder with your cluster URI (for example, `help.kusto.windows.net`).
 
-### Using Google Chrome and Kusto.Explorer
+### Use Google Chrome with Kusto.Explorer
 
-If Google Chrome is your default browser, installing the ClickOnce extension for Chrome is required.
-[https://chromewebstore.google.com/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb?hl=en-US](https://chromewebstore.google.com/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb?hl=en-US)
+If Google Chrome is your default browser, install the ClickOnce extension.
+[ClickOnce extension for Chrome](https://chromewebstore.google.com/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb?hl=en-US)
 
-If your default browser is the Microsoft Edge, installing this extension *isn't* required.
-Validate your ClickOnce settings in [Microsoft Edge flag settings](edge://flags/#edge-click-once).
+If Microsoft Edge is your default browser, you don't need this extension.
+Check ClickOnce settings in [Microsoft Edge flags](edge://flags/#edge-click-once).
 
 ## Overview of the user interface
 
-The Kusto.Explorer user interface is designed with a layout based on tabs and panels, similar to that of other Microsoft products:
+Kusto.Explorer uses tabs and panels:
 
-* Navigate through the tabs on the [menu panel](#menu-panel) to perform various operations
-* Manage your connections in the [connections panel](#connections-panel)
-* Create scripts to run in the script panel
-* View the results of the scripts in the results panel
+* Use the [menu panel](#menu-panel) to perform tasks.
+* Manage connections in the [connections panel](#connections-panel).
+* Create and run scripts in the script panel.
+* View script results in the results panel.
 
-:::image type="content" source="media/kusto-explorer/ke-start.png" alt-text="Screenshot of Kusto Explorer user interface that shows an overview of the interface's four panels.":::
+:::image type="content" source="media/kusto-explorer/ke-start.png" alt-text="Screenshot of Kusto.Explorer showing four main panels: menu, connections, script, and results." lightbox="media/kusto-explorer/ke-start.png":::
 
 ## Connections panel
 
-:::image type="content" source="media/kusto-explorer/connections-panel.png" alt-text="Screenshot of the Connections panel that shows the Help cluster's databases.":::
+:::image type="content" source="media/kusto-explorer/connections-panel.png" alt-text="Screenshot of the Connections panel that shows the Help cluster's databases." lightbox="media/kusto-explorer/connections-panel.png":::
 
-The Connections pane shows all the configured cluster connections. For each cluster the databases, tables, and attributes (columns) that they store are shown. Select items (which sets an implicit context
-for the search/query in the main panel), or double-click items to copy the name to the search/query panel.
+The **Connections** panel lists all configured cluster connections. For each cluster, it lists databases, tables, and columns. Select an item to set context for the search or query in the main panel. To copy a name to the search or query panel, double-click the item.
 
-If the actual schema is large (such as a database with hundreds of tables), you can search it by pressing **CTRL+F** and entering a substring (case-insensitive) of the entity name you're looking for.
+If the schema is large (for example, a database with hundreds of tables), select <kbd>Ctrl</kbd>+<kbd>F</kbd> and enter a case-insensitive part of the entity name to search.
 
-Kusto.Explorer supports controlling the Connection panel from the query window, which is useful for scripts. For example, you can start a script file with a command that instructs Kusto.Explorer to connect to the cluster/database the script queries, using the following syntax:
+Control the **Connections** panel from the query window to support scripted workflows. Start the script with a command that tells Kusto.Explorer to connect to the cluster and database that the script queries:
 
 <!-- csl -->
 ```kusto
@@ -65,33 +64,33 @@ Kusto.Explorer supports controlling the Connection panel from the query window, 
 StormEvents | count
 ```
 
-Run each line using `F5`, or similar.
+Run each line with <kbd>F5</kbd>.
 
-## Work Documents panel
+## Work Documents pane
 
-:::image type="content" source="media/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work Folders panel showing Unsaved work and Tracked Folders.":::
+:::image type="content" source="media/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work documents pane showing Unsaved work and Tracked folders." lightbox="media/kusto-explorer/work-folders-pane.png":::
 
-The Work folders pane organizes your work folders in one place to make navigating your work easier. There are two types of work folders:
+The Work folders pane organizes your work folders for quick navigation. It includes two types:
 
-* **Unsaved work**: lists folders for open query tabs that you may still be working on.
-* **Tracked folders**: lists folders from your local device that you can add as KQL libraries for easier access and management.
+* **Unsaved work**: Folders for open query tabs you're still editing
+* **Tracked folders**: Device folders you add as KQL libraries for easier access and management
 
 ## Menu panel
 
 ### Home tab
 
-:::image type="content" source="media/kusto-explorer/home-tab.png" alt-text="Screenshot of the Home tab that shows the Home tab's five sections.":::
+:::image type="content" source="media/kusto-explorer/home-tab.png" alt-text="Screenshot of the Home tab that shows the Home tab's five sections." lightbox="media/kusto-explorer/home-tab.png":::
 
 The Home tab shows the most frequently used operations. It includes:
 
 ### Query section
 
-:::image type="content" source="media/kusto-explorer/home-query-menu.png" alt-text="Screenshot of the Home tab section titled Tabs that shows an option for creating a new tab for queries.":::
+:::image type="content" source="media/kusto-explorer/home-query-menu.png" alt-text="Screenshot of the Home tab section titled Tabs that shows an option for creating a new tab for queries." lightbox="media/kusto-explorer/home-query-menu.png":::
 
 |Menu|    Behavior|
 |----|----------|
-|Mode dropdown | <ul><li>Query mode: Switches the query editor into a [query mode](kusto-explorer-using.md#query-mode). Commands can be written and saved as queries (default)</li> <li> Search mode: A single query mode where each command entered is processed immediately and presents a result in the result panel</li> <li>Search++ mode: Allows searching for a term using search syntax across one or more tables. Learn more about using [Search++ Mode](kusto-explorer-using.md#search-mode)</li></ul> |
-|New Tab| Opens a new tab for querying Kusto Query Language. |
+|Mode dropdown | <ul><li>Query mode: Switches the query editor to [query mode](kusto-explorer-using.md#query-mode). Writes and saves commands as queries (default).</li><li>Search mode: Processes each command immediately and shows a result in the result panel.</li><li>Search++ mode: Lets you search for a term across one or more tables by using search syntax. Learn more about using [Search++ mode](kusto-explorer-using.md#search-mode).</li></ul> |
+|New Tab| Opens a new query tab for Kusto Query Language (KQL). |
 
 ### Share section
 
@@ -99,30 +98,30 @@ The Home tab shows the most frequently used operations. It includes:
 
 |Menu|    Behavior|
 |----|----------|
-|Data To Clipboard|    Exports Query and dataset to a clipboard. If a chart is presented, it exports the chart as bitmap|
-|Result To Clipboard| Exports the dataset to a clipboard. If a chart is presented, it exports the chart as bitmap|
-|Query to Clipboard| Exports the Query to a clipboard|
+|Data To Clipboard| Copies the query and dataset to the clipboard. If a chart is shown, also copies the chart as a bitmap.|
+|Result To Clipboard| Copies the dataset to the clipboard. If a chart is shown, also copies the chart as a bitmap.|
+|Query to Clipboard| Copies the query to the clipboard.|
 
 ### Visualizations section
 
 :::image type="content" source="media/kusto-explorer/home-visualizations-menu.png" alt-text="Screenshot of the Home tab section titled Visualizations that shows the different options for visualizing data.":::
 
-For variable visualizations, see the [render operator](../query/render-operator.md).
+For more visualization options, see the [render operator](../query/render-operator.md).
 
 |Menu         | Behavior|
 |-------------|---------|
-|Area chart   | Displays an area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis). |
-|Column Chart | Displays a column chart where all numeric columns are mapped to different series (Y-axis). The text column before numeric is the X-axis (can be controlled in the UI).|
-|Bar Chart    | Displays a bar chart where all numeric columns are mapped to different series (X-axis). The text column before numeric is the Y-axis (can be controlled in the UI).|
-|Stacked Area Chart      | Displays a stacked area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis). |
-|Time Chart   | Displays a time chart in which the X-axis is the first column (must be datetime). All numeric columns are mapped to different series (Y-axis).|
-|Line Chart   | Displays a line chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
-|Anomaly Chart| Similar to Time Chart, but finds anomalies in time series data, using a machine learning anomaly detection algorithm. The data must be in fixed interval buckets. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomalies-function.md) function.
-|Pie Chart    |    Displays a pie chart in which the color-axis is the first column. The theta-axis (must be a measure, converted to percent) is the second column.|
-|Time Ladder |    Displays a ladder chart in which the X-axis is the last two columns (must be datetime). The Y-axis is a composite of the other columns.|
-|Scatter Chart| Displays a point graph in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
-|Pivot Chart  | Displays a pivot table and pivot chart that gives the full flexibility of selecting data, columns, rows, and various chart types.| 
-|Time Pivot   | Interactive navigation over the events time-line (pivoting on time axis)|
+|Area chart   | Shows an area chart where the first column (numeric) is the X-axis. Maps each numeric column to a separate Y-axis series. |
+|Column Chart | Shows a column chart where all numeric columns are mapped to different series (Y-axis). The text column before numeric is the X-axis (can be controlled in the UI).|
+|Bar Chart    | Shows a bar chart where all numeric columns are mapped to different series (X-axis). The text column before numeric is the Y-axis (can be controlled in the UI).|
+|Stacked Area Chart      | Shows a stacked area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis). |
+|Time Chart   | Shows a time chart in which the X-axis is the first column (must be datetime). All numeric columns are mapped to different series (Y-axis).|
+|Line Chart   | Shows a line chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
+|Anomaly Chart| Similar to Time Chart but detects anomalies in time series data by using a machine learning algorithm. Data must use fixed interval buckets. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomalies-function.md) function.|
+|Pie Chart    |    Shows a pie chart in which the color axis is the first column. The theta axis (must be a measure, converted to percent) is the second column.|
+|Time Ladder |    Shows a ladder chart in which the X-axis is the last two columns (must be datetime). The Y-axis is a composite of the other columns.|
+|Scatter Chart| Shows a point graph in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
+|Pivot Chart  | Shows a pivot table and chart that lets you select data, columns, rows, and chart types.| 
+|Time Pivot   | Lets you navigate the event timeline interactively (pivots on the time axis).|
 
 ### View section
 
@@ -130,17 +129,17 @@ For variable visualizations, see the [render operator](../query/render-operator.
 
 |Menu           | Behavior|
 |---------------|---------|
-|Full View Mode | Maximizes the work space by hiding the ribbon menu and Connection Panel. Exit Full View Mode by selecting **Home** > **Full View Mode**, or by pressing **F11**.|
+|Full View Mode | Maximizes the workspace by hiding the ribbon menu and Connection Panel. Exit Full View Mode by selecting **Home** > **Full View Mode**, or by pressing <kbd>F11</kbd>.|
 |Hide Empty Columns| Removes empty columns from the data grid.|
 |Collapse Singular Columns| Collapses columns with singular values.|
-|Explore Column Values| Shows column values distribution|
-|Increase Font  | Increases the font size of the query tab and of the results data grid.|  
-|Decrease Font  | Decreases the font size of the query tab and of the results data grid.|
+|Explore Column Values| Shows the distribution of column values.|
+|**Increase Font**| Increases font size in the query tab and results grid.|  
+|**Decrease Font**| Decreases font size in the query tab and results grid.|
 
 >[!NOTE]
-> Data View Settings:
+> Data view settings:
 >
-> Kusto.Explorer keeps track of what settings are used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**.
+> Kusto.Explorer tracks settings for each unique set of columns. When you reorder or remove columns, it saves the data view and reuses it when you retrieve data with the same columns. To reset the view to its defaults, on the **View** tab, select **Reset View**.
 
 ## File tab
 
@@ -148,31 +147,31 @@ For variable visualizations, see the [render operator](../query/render-operator.
 
 |Menu| Behavior|
 |---------------|---------|
-||---------*Query Script*---------|
+| **Query script** |  |
 |New Tab | Opens a new tab window for querying Kusto. |
-|Open File| Loads data from a *.kql file to the active script panel.|
-|Save To File| Saves the content of the active script panel to *.kql file.|
-|Close Tab| Closes the current tab window|
-||---------*Profiles*---------|
-|Import Profile| Import a Kusto.Explorer profile. |
-|Export Profile| Export a Kusto.Explorer profile.|
-||---------*Save Data*---------|
+|Open File| Loads a .kql script into the active query pane.|
+|Save To File| Saves the active script to a .kql file.|
+|Close Tab| Closes the current tab.|
+| **Profiles** |  |
+|Import Profile| Imports a Kusto.Explorer profile.|
+|Export Profile| Exports a Kusto.Explorer profile.|
+| **Save data** |  |
 |Data To CSV       | Exports data to a CSV (comma-separated-values) file.|
 |Data To JSON      | Exports data to a JSON formatted file.|
 |Data To Excel     | Exports data to an XLSX (Excel) file.|
 |Data To Text      | Exports data to a TXT (text) file.|
-|Data To KQL Script| Exports Query to a script file.|
-|Data To Results   | Exports Query and data to a Results (QRES) file.|
-|Run Query Into CSV |Runs a query and saves the results to a local CSV file.|
-||---------*Load Data*---------|
-|From Results|    Loads Query and data from a Results (QRES) file.|
-||---------*Clipboard*---------|
-|Query and Results To Clipboard|    Exports Query and dataset to a clipboard. If a chart is presented, it exports the chart as a bitmap.|
-|Result To Clipboard| Exports dataset to a clipboard. If a chart is presented, it exports the chart as a bitmap.|
-|Query To Clipboard| Exports the Query to a clipboard.|
-|Results To Clipboard (datatable())| Exports query results to a clipboard. Maximal allowed cell value is 30000.|
-||---------*Results*---------|
-|Clear results cache| Clears cached results of previously executed queries.|
+|Data To KQL Script| Exports the query to a script file.|
+|Data To Results   | Exports the query and data to a results (QRES) file.|
+|Run Query Into CSV | Runs the query and saves the results to a local CSV file.|
+| **Load data** |  |
+|From Results| Loads the query and data from a results (QRES) file.|
+| **Clipboard** |  |
+|Query and Results To Clipboard| Copies the query and dataset to the clipboard. If a chart is shown, copies the chart as a bitmap.|
+|Result To Clipboard| Copies the dataset to the clipboard. If a chart is shown, copies the chart as a bitmap.|
+|Query To Clipboard| Copies the query to the clipboard.|
+|Results To Clipboard (datatable())| Copies the query results to the clipboard. The maximum allowed cell value is 30,000.|
+| **Results** | |
+|Clear results cache| Clears cached results of previously run queries.|
 
 ## Connections tab
 
@@ -180,114 +179,116 @@ For variable visualizations, see the [render operator](../query/render-operator.
 
 |Menu|Behavior|
 |----|----------|
-||---------*Groups*---------|
-|Add Group| Adds a new Kusto Server group.|
-||---------*Clusters*---------|
-|Import Connections| Imports connections from a file specifying connections.|
-|Export Connections| Exports connections to a file.|
-|Add Connection| Adds a new Kusto Server connection.|
-|Edit Connection| Opens a dialog for Kusto Server connection properties editing.|
-|Remove Connection| Removes the existing connection to Kusto Server.|
-|Refresh| Refreshes properties of a Kusto server connection.|
-||---------*Profiles*---------|
+| **Groups**| |
+|Add Group| Add a Kusto server group.|
+| **Clusters**| |
+|Import Connections| Import connections from a file.|
+|Export Connections| Export connections to a file.|
+|Add Connection| Add a Kusto server connection.|
+|Edit Connection| Open the connection properties dialog.|
+|Remove Connection| Remove the Kusto server connection.|
+|Refresh| Refresh the connection properties.|
+| **Profiles** | |
 |Import Profile| Import a Kusto.Explorer profile.|
 |Export Profile| Export a Kusto.Explorer profile.|
-||---------*Security*---------|
-|Inspect Your ADD Principal| Shows currents active user details.|
-|Sign-out| Signs-out the current user from the connection to Microsoft Entra ID.|
-||---------*Data Scope*---------|
-|Caching scope|<ul><li>Hot DataExecute queries only on [hot data cache](../management/cache-policy.md)</li><li>All Data: Execute queries on all available data (default).</li></ul> |
-|DateTime Column| Name of a column that may be used for time pre-filter.|
-|Time Filter| Value of time pre-filter.|
+|**Security**| |
+|Inspect Your ADD Principal| Show current signed-in user details.|
+|Sign-out| Sign out the current user from Microsoft Entra ID.|
+|**Data scope**| |
+|Caching scope|<ul><li>Hot data: Run queries only on the [hot data cache](../management/cache-policy.md).</li><li>All data: Run queries on all available data (default).</li></ul> |
+|DateTime Column| Name of a column you can use for a time prefilter.|
+|Time Filter| Value of the time prefilter.|
 
 ## View tab
 
-:::image type="content" source="media/kusto-explorer/view-tab.png" alt-text="Screenshot of the View tab that shows the View tab's four sections.":::
+:::image type="content" source="media/kusto-explorer/view-tab.png" alt-text="Screenshot of the View tab showing four sections: Appearance, Data View, Data Filtering, and Visualizations.":::
 
 |Menu|Behavior|
 |----|----------|
-||---------*Appearance*---------|
-|Full View Mode | Maximizes the work space by hiding the ribbon menu and Connection Panel. Exit Full View Mode by selecting **Home** > **Full View Mode**, or by pressing **F11**.|
+| **Appearance** |  |
+|Full View Mode | Maximizes the work space by hiding the ribbon menu and Connection Panel. Exit Full View Mode by selecting **Home** > **Full View Mode**, or by pressing **F11 .|
 |Increase Font  | Increases the font size of the query tab and of the results data grid.|  
 |Decrease Font  | Decreases the font size of the query tab and of the results data grid.|
-|Reset Layout|Resets the layout of the tool's docking controls and windows.|
-|Rename Document Tab |Rename the selected tab. |
-||---------*Data View*---------|
-|Reset View| Resets [data view settings](#dvs) to its defaults. |
-|Explore Column Values|Shows column values distribution.|
-|Focus on Query Statistics|Changes the focus to query statistics instead of query results upon query completion.|
-|Hide Duplicates|Toggles removal of the duplicate rows from the query results.|
-|Hide Empty Columns|Removes empty columns from the query results.|
-|Collapse Singular Columns|Collapses columns with singular values.|
-|Row Selection| Enables selection of specific rows in the Results panel|
-|Color By Column| Groups identical records in the first column by color.|
-|Wrap Text| Formats cells to wrap the data to fit the column width.|
-||---------*Data Filtering*---------|
-|Filter Rows In Search|Toggles the option to show only matching rows in query results search (**Ctrl+F**).|
-||---------*Visualizations*---------|
-|Visualizations|See [Visualizations](#visualizations-section). |
+| Reset Layout |Resets the docking layout and windows.|
+| Rename Document Tab |Renames the selected tab.|
+| **Data View** |  |
+| Reset View | Resets the [data view settings](#dvs) to their defaults.|
+| Explore Column Values |Shows the distribution of column values.|
+| Focus on Query Statistics |Shows query statistics instead of results when the query finishes.|
+| Hide Duplicates |Toggles removal of duplicate rows from results.|
+| Hide Empty Columns |Removes empty columns from the results.|
+| Collapse Singular Columns |Collapses columns that contain a single value.|
+| Row Selection |Enables selecting specific rows in the Results panel.|
+| Color By Column |Colors identical values in the first column.|
+| Wrap Text |Wraps cell content to fit the column width.|
+| **Data Filtering** |  |
+| Filter Rows In Search |Toggles showing only matching rows when you search ( **Ctrl+F** ).|
+| **Visualizations** |  |
+| Visualizations |See [Visualizations](#visualizations-section).|
 
 > [!NOTE]
 > <a id="dvs">Data View Settings:</a>
 >
-> Kusto.Explorer keeps track of the settings used per unique set of columns. When columns are reordered or removed, the data view is saved and will be reused whenever the data with the same columns is retrieved. To reset the view to its defaults, in the **View** tab, select **Reset View**.
+> Kusto.Explorer tracks settings per unique set of columns. When you reorder or remove columns, it saves the data view and reuses it when it retrieves data with the same columns. To reset to defaults, in the **View** tab, select **Reset View**.
 
 ## Tools tab
 
-:::image type="content" source="media/kusto-explorer/tools-tab.png" alt-text="Screenshot of the Tool tab that shows the Tool tab's six sections.":::
+:::image type="content" source="media/kusto-explorer/tools-tab.png" alt-text="Screenshot of the Tools tab that shows its six sections.":::
 
 |Menu|Behavior|
 |----|----------|
-||---------*IntelliSense*---------|
-|Enable IntelliSense| Enables and disables IntelliSense on the Script Panel.|
+| IntelliSense ||
+|Enable IntelliSense| Enables or disables IntelliSense in the Script panel.|
 |Issues List| Lists issues in the Script panel.|
-||---------*Automation*---------|
-|Add New Automation| Produces an analysis report that provides insights about the query.|
-||---------*Utilities*---------|
-|Command-line tools|Opens the command prompt on your computer.|
-|Compress LZ4 file|Compresses files using the LZ4 algorithm.|
-|Decompress LZ4 file| Decompresses files using the LZ4 algorithm.|
-||---------*Analytics*---------|
-|Analytical Reports| Opens a dashboard with multiple pre-built reports for data analysis.|
-||---------*Translate*---------|
-|Query to Power BI| Translates a query to a format suitable for using in Power BI.|
-||---------*Options*---------|
-|Reset Options| Sets application settings to default values.|
-|Options| Opens a tool for configuring application settings. To learn more, see [Kusto.Explorer options](kusto-explorer-options.md).|
+| Automation ||
+|Add New Automation| Generates a report with query insights.|
+| Utilities ||
+|Command-line tools| Opens a command prompt.|
+|Compress LZ4 file| Compresses files with the LZ4 algorithm.|
+|Decompress LZ4 file| Decompresses files with the LZ4 algorithm.|
+| Analytics ||
+|Analytical Reports| Opens a dashboard with prebuilt data analysis reports.|
+| Translate ||
+|Query to Power BI| Converts a query to a Power BI format.|
+|Query to WPA| Converts a query to a WPA format.|
+|Query to WPA (Clipboard) | Converts a query to a WPA format and copies it to the clipboard.|
+| Options ||
+|Reset Options| Resets app settings to default values.|
+|Options| Opens the options tool to configure app settings. For details, see [Kusto.Explorer options](kusto-explorer-options.md).|
 
 ## Table row colors
 
-Kusto.Explorer tries to interpret the severity or verbosity level of each row in the results panel and color them accordingly. It does this by matching the distinct values of each column with a set of known patterns ("Warning," "Error," and so on).
+Kusto.Explorer interprets each row's severity or verbosity level in the results panel and colors rows accordingly. It matches distinct column values to known patterns (for example, "Warning", "Error").
 
-To modify the output color scheme, or turn off this behavior, from the **Tools** menu, select **Options** > **Results Viewer** > **Verbosity color scheme**.
+To change the output color scheme or turn off this behavior, select **Tools** > **Options** > **Results Viewer** > **Verbosity color scheme**.
 
 :::image type="content" source="media/kusto-explorer/ke-color-scheme.png" alt-text="Screenshot of Kusto Explorer color scheme modification.":::
 
-**Excel** color scheme legend| **Vivid** color scheme legend
-|---|---
-| :::image type="content" source="media/kusto-explorer/excel-color-scheme.png" alt-text="Screenshot of the Excel color scheme legend in Kusto Explorer." border="false"::: |:::image type="content" source="media/kusto-explorer/vivid-color-scheme.png" alt-text="Screenshot vivid color scheme legend in Kusto Explorer." border="false":::
+**Excel** color scheme legend | **Vivid** color scheme legend
+|---|---|
+|:::image type="content" source="media/kusto-explorer/excel-color-scheme.png" alt-text="Screenshot of the Excel color scheme legend in Kusto Explorer." border="false"::: | :::image type="content" source="media/kusto-explorer/vivid-color-scheme.png" alt-text="Screenshot of vivid color scheme legend in Kusto Explorer." border="false":::|
 
 ## Monitoring tab
 
-:::image type="content" source="media/kusto-explorer/monitoring-tab.png" alt-text="Screenshot of the Monitoring tab that shows two options for monitoring data.":::
+:::image type="content" source="media/kusto-explorer/monitoring-tab.png" alt-text="Screenshot of the Monitoring tab with two options for monitoring data.":::
 
 |Menu             | Behavior|
 |-----------------|---------|
-||---------*Monitor*---------|
-|Cluster Diagnostics | Shows a health summary for the Server Group currently selected in Connections Panel. |
-|Latest data: All tables| Shows a summary of the latest data in all tables of the currently selected database.|
-|Latest data: Selected table|Shows in the status bar the latest data in the selected table.|
+| **Monitor** | |
+| Cluster Diagnostics  | Shows a health summary for the Server Group currently selected in Connections Panel. |
+| Latest data: All tables | Shows a summary of the latest data in all tables of the currently selected database.|
+| Latest data: Selected table | Shows the latest data for the selected table in the status bar.|
 
 ## Management tab
 
-:::image type="content" source="media/kusto-explorer/management-tab.png" alt-text="Screenshot of the Management tab that shows options for managing Authorized Principals. ":::
+:::image type="content" source="media/kusto-explorer/management-tab.png" alt-text="Screenshot of the Management tab that shows options for managing authorized principals.":::
 
-|Menu             | Behavior|
+| Menu             | Behavior|
 |-----------------|---------|
-||---------*Authorized Principals*---------|
-|Manage Database Authorized Principals | Enables managing a database's principals for authorized users.|
-|Manage Table Authorized Principals | Enables managing a table's principals for authorized users.|
-|Manage Function Authorized Principals | Enables managing a function's principals for authorized users.|
+| **Authorized Principals** | |
+| Manage Database Authorized Principals | Lets authorized users manage database principals.|
+| Manage Table Authorized Principals | Lets authorized users manage table principals.|
+| Manage Function Authorized Principals | Lets authorized users manage function principals.|
 
 ## Help tab
 
@@ -295,35 +296,33 @@ To modify the output color scheme, or turn off this behavior, from the **Tools**
 
 |Menu             | Behavior|
 |-----------------|---------|
-||---------*Documentation*---------|
-|Help             | Opens a link to the Kusto online documentation.  |
-|What's new       | Opens a document that lists all Kusto.Explorer changes.|
-|Report Issue      |Opens a dialog with two options: <ul><li>Report issues related to service</li><li>Report issues in the client application</li></ul>. |
-|Keyboard Shortcuts| Opens a link to the [list of Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md).|
-|Show EULA| Opens a link to the Microsoft Azure Legal Information article.|
+| **Documentation** | |
+| Help  | Opens the Kusto online documentation.|
+| What's new  | Opens the Kusto.Explorer release notes.|
+| Keyboard Shortcuts | Opens the [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md).|
+| Show EULA | Opens the Microsoft Azure Legal Information article.|
+| Support and Feedback| |
+| Issue Report   | Opens a dialog with two options: .|
+| Suggest Feature   | Opens a page to share your ideas.|
+| Kusto Support (KAI Bot)  | Opens KAI for self-service, proactive guidance, and autonomous troubleshooting. |
 
 ### Control the user identity connecting to Kusto.Explorer
 
-The default security model for new connections is Microsoft Entra ID-Federated security. Authentication is done through the Microsoft Entra ID using the default Microsoft Entra user experience.
+The default security model for new connections is Microsoft Entra ID federated security. Authentication uses Microsoft Entra ID with the default Microsoft Entra sign-in experience.
 
-If you need finer control over the authentication parameters, you can expand the
-"Advanced: Connection Strings" edit box and provide a valid
-[Kusto connection string](../api/connection-strings/kusto.md) value.
+For finer control over authentication parameters, expand the **Advanced: Connection Strings** box and enter a valid [Kusto connection string](../api/connection-strings/kusto.md).
 
-For example, users with a presence in
-multiple Microsoft Entra tenants sometimes need to use a particular "projection"
-of their identities to a specific Microsoft Entra tenant, which can be done through
-the connection string (replace words IN CAPITALS with specific values):
+For example, users in multiple Microsoft Entra tenants sometimes need to select a specific identity in a target tenant. Use the connection string to specify it. Replace the placeholder values in angle brackets with your own values:
 
 ```kusto
-Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME;AAD Federated Security=True;Authority Id=AAD_TENANT_OF_CLUSTER;User=USER_DOMAIN
+Data Source=https://<ClusterName>.kusto.windows.net;Initial Catalog=<DatabaseName>;AAD Federated Security=True;Authority Id=<TenantId>;User=<UserIdentity>
 ```
 
-* `AAD_TENANT_OF_CLUSTER` is a domain name or Microsoft Entra tenant ID (a GUID) of the tenant in which the cluster is hosted. For example, `contoso.com`.
-* USER_DOMAIN is the identity of the user invited into that tenant (for example, `user@example.com`).
+* `<TenantId>` is the domain name or Microsoft Entra tenant ID (a GUID) of the tenant that hosts the cluster (for example, contoso.com).
+* `<UserIdentity>` is the user identity invited into that tenant (for example, user@example.com).
 
 >[!NOTE]
-> The domain name of the user is not necessarily the same as that of the tenant hosting the cluster.
+> The user's domain name might differ from the tenant that hosts the cluster.
 
 :::image type="content" source="media/kusto-explorer/advanced-connection-string.png" alt-text="Screenshot of the Add Connection pane showing the option titled Advanced Connection String.":::
 
