@@ -1,6 +1,6 @@
 ---
-title: KQL quick reference
-description: A list of useful KQL functions and their definitions with syntax examples.
+title: KQL Quick Reference
+description: Learn how to use KQL functions like `where`, `summarize`, and `render` with syntax examples to streamline your data queries.
 ms.reviewer: 
 ms.topic: conceptual
 ms.date: 09/15/2025

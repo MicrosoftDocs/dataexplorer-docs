@@ -1,44 +1,45 @@
 ---
-title: Kusto Query Language learning resources
-description: This article provides a list of various learning resources to help you ramp up on Kusto Query Language (KQL) effectively.
+title: Kusto Query Language Learning Resources
+description: Learn KQL from scratch with curated resources, including tutorials, demos, and training programs for data analysts and professionals.
 ms.reviewer: alexans
 ms.topic: concept-article
 ms.date: 09/15/2025
 #customerIntent: As a data analyst, I want to access various learning resources for Kusto Query Language (KQL), so that I can effectively explore and analyze data using KQL.
 ---
+
 # Kusto Query Language learning resources
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Kusto Query Language (KQL) is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. Are you new to KQL or want to improve your KQL skills? Take a look at the following learning resources.
+Use Kusto Query Language (KQL) to explore your data, discover patterns, identify anomalies and outliers, build statistical models, and more. New to KQL or want to improve your skills? Use the following learning resources.
 
-For more information on KQL, see [KQL overview](index.md).
+For more information, see [KQL overview](index.md).
 
-::: moniker range="microsoft-sentinel || azure-monitor"
+:::moniker range="microsoft-sentinel || azure-monitor"
 
 ## Demo environment
 
-You can practice Kusto Query Language statements in a [Log Analytics demo environment](https://aka.ms/lademo) in the Azure portal. There's no charge to use this practice environment, but you do need an Azure account to access it.
+Practice Kusto Query Language statements in the [Log Analytics demo environment](https://aka.ms/lademo) in the Azure portal. It's free, but you need an Azure account.
 
-Like Log Analytics in your production environment, it can be used in many ways:
+Like your production Log Analytics workspace, the demo environment lets you:
 
-* **Choose a table on which to build a query.** From the default **Tables** tab (shown in the red rectangle at the upper left), select a table from the list of tables grouped by topics (shown at the lower left). Expand the topics to see the individual tables, and you can further expand each table to see all its fields (columns). Double-clicking on a table or a field name places it at the point of the cursor in the query window. Type the rest of your query following the table name, as directed below.
+* **Choose a table on which to build a query.** From the **Tables** tab, select a table from the list grouped by topic. Expand a topic to see its tables. Expand a table to see its fields (columns). Double-click a table or field name to insert it at the cursor in the query window. Type the rest of the query after the table name.
 
-* **Find an existing query to study or modify.** Select the **Queries** tab (shown in the red rectangle at the upper left) to see a list of queries available out-of-the-box. Or, select **Queries** from the button bar at the top right. Double-click a query to place it in the query window at the point of the cursor.
+* **Find an existing query to study or modify.** Select the **Queries** tab to see the list of queries available by default. Alternatively, select **Queries** from the button bar. Double-click a query to insert it at the cursor in the query window.
 
 ::: moniker-end
 
 ::: moniker range="microsoft-sentinel"
 
-Like in this demo environment, you can query and filter data in the Microsoft Sentinel **Logs** page. You can select a table and drill down to see columns. You can modify the default columns shown using the **Column chooser**, and you can set the default time range for queries. If the time range is explicitly defined in the query, the time filter is unavailable (grayed out).
+As in the demo environment, query and filter data on the Microsoft Sentinel **Logs** page. Select a table and drill down to see its columns. Use the **Column chooser** to modify the default columns, and set the default time range for queries. If the time range is explicitly defined in the query, the time filter is unavailable (grayed out).
 
-If Microsoft Sentinel is [onboarded to the Defender portal](/azure/sentinel/microsoft-sentinel-defender-portal), you can also query and filter data in the Microsoft Defender **Advanced hunting** page. For more information, see [Advanced hunting with Microsoft Sentinel data in Microsoft Defender portal](/defender-xdr/advanced-hunting-microsoft-defender?toc=%2Fazure%2Fsentinel%2FTOC.json&bc=%2Fazure%2Fsentinel%2Fbreadcrumb%2Ftoc.json&branch=main).
+If Microsoft Sentinel is [onboarded to the Defender portal](/azure/sentinel/microsoft-sentinel-defender-portal), query and filter data on the Microsoft Defender **Advanced hunting** page. For more information, see [Advanced hunting with Microsoft Sentinel data in Microsoft Defender portal](/defender-xdr/advanced-hunting-microsoft-defender?toc=%2Fazure%2Fsentinel%2FTOC.json&bc=%2Fazure%2Fsentinel%2Fbreadcrumb%2Ftoc.json&branch=main).
 
 ::: moniker-end
 
-## General training
+## KQL training
 
-For general information about KQL, see:
+Learn more about KQL:
 
 * [Pluralsight: KQL from scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)
 * [Kusto Detective Agency](https://detective.kusto.io/)

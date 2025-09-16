@@ -1,6 +1,6 @@
 ---
 title:  'Tutorial: Use aggregation functions in Kusto Query Language'
-description: This tutorial describes how to use aggregation functions in the Kusto Query Language.
+description: Learn how to use aggregation functions in Kusto Query Language (KQL) to summarize and analyze data effectively in this step-by-step tutorial.
 ms.topic: tutorial
 ms.date: 09/15/2025
 ---
@@ -25,7 +25,6 @@ In this tutorial, you'll learn how to:
 > * [Bucket data by condition](#bucket-data-by-condition)
 > * [Perform aggregation over a sliding window](#perform-aggregations-over-a-sliding-window)
 
-
 ::: moniker range="azure-data-explorer"
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](/azure/data-explorer/start-for-free-web-ui).
 ::: moniker-end
@@ -36,6 +35,7 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 This tutorial builds on the foundation from the first tutorial, [Learn common operators](learn-common-operators.md).
 
 ## Prerequisites
+
 To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
 :::moniker range="azure-data-explorer"
 * A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 

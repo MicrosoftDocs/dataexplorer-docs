@@ -1,18 +1,18 @@
 ---
-title:  'Tutorial: Join data from multiple tables'
+title:  'Tutorial: Join Data from Multiple Tables'
 description: This tutorial shows how to join data from multiple tables using the Kusto Query Language.
 ms.topic: tutorial
 ms.date: 09/15/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || microsoft-sentinel || azure-monitor"
 ---
 
-# Tutorial: Join data from multiple tables
+# Tutorial: join data from multiple tables
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
-Joining data from multiple tables allows for a more comprehensive analysis by combining information from different sources and creating new relationships between data points. In the [Kusto Query Language (KQL)](../index.md), the [join](../join-operator.md) and [lookup](../lookup-operator.md) operators are used to combine data across tables.
+Joining data from multiple tables lets you analyze data across sources and create relationships between data points. In the [Kusto Query Language (KQL)](../index.md), use the [join](../join-operator.md) and [lookup](../lookup-operator.md) operators to combine data across tables.
 
-In this tutorial, you'll learn how to:
+In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 >
@@ -30,19 +30,19 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 
 ## Prerequisites
 
-To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
+Run the queries in a query environment that has access to the sample data. Use one of the following:
 :::moniker range="azure-data-explorer"
-* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
+* Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
 ::: moniker-end
 
 :::moniker range="microsoft-fabric"
 * A Microsoft account or Microsoft Entra user identity 
-* A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses#capacity)
+* [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses#capacity)
 ::: moniker-end
 
 ## Use the join operator
 
-There are two tables in the [Samples database](https://dataexplorer.azure.com/clusters/help/databases/Samples) related to storm events. One is called `StormEvents` and the other is called `PopulationData`. In this section, you'll join the tables to perform data analysis that wouldn't be possible with one table alone.
+The [Samples database](https://dataexplorer.azure.com/clusters/help/databases/Samples) has two related storm event tables: `StormEvents` and `PopulationData`. In this section, you join them to analyze data that's not possible with one table alone.
 
 ### Understand the data
 
@@ -58,7 +58,7 @@ StormEvents
 | take 5
 ```
 
-The following table shows only 6 of the 22 returned columns.
+The following table shows only six of the 22 returned columns.
 
 |StartTime|EndTime|EpisodeId|EventId|State|EventType|...|
 |--|--|--|--|--|--|--|
@@ -88,11 +88,11 @@ PopulationData
 |ARKANSAS|3025880|
 |CALIFORNIA|39562900|
 
-Both tables contain a `State` column. The `StormEvents` table has many more columns, and the `PopulationData` has only one other column that contains the population of the given state.
+Both tables have a `State` column. `StormEvents` has many more columns, and `PopulationData` has one other column with the state's population.
 
 ### Join the tables
 
-Join the `PopulationData` table with `StormEvents` on the common `State` column to find the total property damage caused by storms per capita by state.  
+Join `PopulationData` with `StormEvents` on `State` to calculate total property damage per capita by state.  
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -116,23 +116,23 @@ Add `| render columnchart` to the query to visualize the result.
 
 :::image type="content" source="../media/kql-tutorials/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
-If the columns have different names, for example `StormEvents` has `State` and `PopulationData` has `StateName`,  specify the join as follows:
+If the columns have different names (for example, `StormEvents` has `State` and `PopulationData` has `StateName`), specify the join as:
 
-```kusto 
+```kusto
 StormEvents
 | join kind=innerunique PopulationData on $left.State == $right.StateName  
 ```
 
-`$left` is the table on the left, or outer side of the join operator, in this case `StormEvents`. `$right` is the table on the right, or inner side of the join operator, in this case `PopulationData`.  
+`$left` refers to the left (outer) table in the join: `StormEvents`. `$right` refers to the right (inner) table: `PopulationData`.  
 
 > [!TIP]
-> There are many types of joins that you can perform with the `join` operator. See a [list of join flavors](../join-operator.md#returns).
+> Use the `join` operator for many join types. See the [list of join flavors](../join-operator.md#returns).
 
 ## Use the lookup operator
 
-The [lookup](../lookup-operator.md) operator optimizes the performance of queries where a fact table is enriched with data from a dimension table. It extends the fact table with values that are looked up in a dimension table. For best performance, the system by default assumes that the left table is the larger fact table, and the right table is the smaller dimension table. This is exactly opposite to the assumption that's used by the `join` operator.  
+The [lookup](../lookup-operator.md) operator optimizes queries that enrich a fact table with data from a dimension table. It extends the fact table with values from the dimension table. By default, the system assumes the left table is the larger fact table and the right table is the smaller dimension table. This default is the opposite of the `join` operator's assumption.  
 
-In the help cluster, there's another database called `ContosoSales` that contains sales data. The following query uses `lookup` to merge the `SalesFact` and `Products` tables from this database to get the total sales by product category.
+The help cluster includes a database named `ContosoSales` with sales data. The following query uses `lookup` to merge the `SalesFact` and `Products` tables to return total sales by product category.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -152,7 +152,7 @@ SalesFact
 |--|--|
 |Games and Toys|966782|
 |TV and Video|715024|
-|Cameras and camcorders |323003|
+|Cameras and camcorders|323003|
 |Computers|313487|
 |Home Appliances|237508|
 |Audio|192671|
@@ -160,13 +160,13 @@ SalesFact
 |Music, Movies and Audio Books|33376|
 
 > [!NOTE]
-> The `lookup` operator only supports two join flavors: `leftouter` and `inner`.
+> The `lookup` operator supports only two join flavors: `leftouter` and `inner`.
 
 ## Join query-generated tables
 
-Joins can also be done based on query results from the same table.
+Join results from the same table.
 
-Say you want to create a list of states in which both lightning and avalanche events occurred. Use the join operator to merge the rows of two tables—one containing data on lightning events and the other containing data on avalanche events—based on the `State` column.
+Suppose you want a list of states that have both lightning and avalanche events. Use the join operator to merge rows from two queries that return distinct states for each event type on the `State` column.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -199,6 +199,6 @@ StormEvents
 |NEVADA|
 
 ## Related content
-* Learn about different kinds of [join-operator](../join-operator.md)
-* Learn how to perform [cross-database and cross-cluster queries](../cross-cluster-or-database-queries.md)
-* Follow the [create geospatial visualizations](create-geospatial-visualizations.md) tutorial
+* Learn about different kinds of [join operator](../join-operator.md).
+* Perform [cross-database and cross-cluster queries](../cross-cluster-or-database-queries.md).
+* Follow the [Create geospatial visualizations](create-geospatial-visualizations.md) tutorial.
