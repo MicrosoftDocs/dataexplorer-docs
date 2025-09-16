@@ -90,7 +90,7 @@ StormEvents
 | render barchart
 ```
 
-:::image type="content" source="../media/kql-tutorials/total-storms-by-state-bar-chart.png" alt-text="Screenshot of total storms by state bar chart created with the render operator.":::
+:::image type="content" source="../media/kql-tutorials/total-storms-by-state-bar-chart.png" alt-text="Screenshot of total storms by state bar chart created with the render operator."  lightbox="../media/kql-tutorials/total-storms-by-state-bar-chart.png":::
 
 ## Conditionally count rows
 
@@ -155,7 +155,7 @@ Add `| render timechart` to the end of the query to visualize the results.
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQ6CMBBF95ziL9tESIsLVroBT4AXKHQiXbSYYZBoPLzFhYmTSSZ5P5P3e5k5Xh6UZCne2CZiQi+O5RoiYSDZiBKUd0KSiaqNaUpj82pUFf65rcuj1RoF8rjk0bnobtTyfF9whsmGZY3RcXgRvtJ2XpPghHG/SmN4YghJ/Roc0Hid35iSJ8auGqecfQAkVosYtwAAAA==" target="_blank">Run the query</a>
 ::: moniker-end
 
-:::image type="content" source="../media/kql-tutorials/crop-damage-by-week-time-chart.png" alt-text="Screenshot of the crop damage by week time chart rendered by the previous query.":::
+:::image type="content" source="../media/kql-tutorials/crop-damage-by-week-time-chart.png" alt-text="Screenshot of the crop damage by week time chart rendered by the previous query." lightbox="../media/kql-tutorials/crop-damage-by-week-time-chart.png":::
 
 > [!NOTE]
 > `bin()` is similar to the `floor()` function in other programming languages. It reduces every value to the nearest multiple of the modulus that you supply and allows `summarize` to assign the rows to groups.
@@ -210,7 +210,7 @@ StormEvents
 | render timechart
 ```
 
-:::image type="content" source="../media/kql-tutorials/sum-crop-damage-by-week.png" alt-text="Screenshot of time chart showing crop damage by week.":::
+:::image type="content" source="../media/kql-tutorials/sum-crop-damage-by-week.png" alt-text="Screenshot of time chart showing crop damage by week."  lightbox="../media/kql-tutorials/sum-crop-damage-by-week.png":::
 
 Now you can see a peak in crop damage in January, which probably was due to Frost/Freeze.
 
@@ -255,7 +255,6 @@ StormEvents
 |NORTH CAROLINA|1721|82|4.76|
 |MISSOURI|2016|78|3.87|
 |...|...|...|...|
-
 
 > [!NOTE]
 > When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../toreal-function.md). This will ensure that you don't get truncated results due to integer division. For more information, see [Type rules for arithmetic operations](../numerical-operators.md#type-rules-for-arithmetic-operations).
@@ -380,7 +379,7 @@ StormEvents
 | render piechart 
 ```
 
-:::image type="content" source="../media/kql-tutorials/injuries-bucket-pie-chart.png" alt-text="Screenshot of web UI pie chart rendered by the previous query.":::
+:::image type="content" source="../media/kql-tutorials/injuries-bucket-pie-chart.png" alt-text="Screenshot of web UI pie chart rendered by the previous query." lightbox="../media/kql-tutorials/injuries-bucket-pie-chart.png":::
 
 ## Perform aggregations over a sliding window
 

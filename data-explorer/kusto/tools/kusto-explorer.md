@@ -45,11 +45,11 @@ Kusto.Explorer uses tabs and panels:
 * Create and run scripts in the script panel.
 * View script results in the results panel.
 
-:::image type="content" source="media/kusto-explorer/ke-start.png" alt-text="Screenshot of Kusto.Explorer showing four main panels: menu, connections, script, and results.":::
+:::image type="content" source="media/kusto-explorer/ke-start.png" alt-text="Screenshot of Kusto.Explorer showing four main panels: menu, connections, script, and results." lightbox="media/kusto-explorer/ke-start.png":::
 
 ## Connections panel
 
-:::image type="content" source="media/kusto-explorer/connections-panel.png" alt-text="Screenshot of the Connections panel that shows the Help cluster's databases.":::
+:::image type="content" source="media/kusto-explorer/connections-panel.png" alt-text="Screenshot of the Connections panel that shows the Help cluster's databases." lightbox="media/kusto-explorer/connections-panel.png":::
 
 The **Connections** panel lists all configured cluster connections. For each cluster, it lists databases, tables, and columns. Select an item to set context for the search or query in the main panel. To copy a name to the search or query panel, double-click the item.
 
@@ -68,7 +68,7 @@ Run each line with <kbd>F5</kbd>.
 
 ## Work Documents pane
 
-:::image type="content" source="media/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work documents pane showing Unsaved work and Tracked folders.":::
+:::image type="content" source="media/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work documents pane showing Unsaved work and Tracked folders." lightbox="media/kusto-explorer/work-folders-pane.png":::
 
 The Work folders pane organizes your work folders for quick navigation. It includes two types:
 
@@ -79,13 +79,13 @@ The Work folders pane organizes your work folders for quick navigation. It inclu
 
 ### Home tab
 
-:::image type="content" source="media/kusto-explorer/home-tab.png" alt-text="Screenshot of the Home tab that shows the Home tab's five sections.":::
+:::image type="content" source="media/kusto-explorer/home-tab.png" alt-text="Screenshot of the Home tab that shows the Home tab's five sections." lightbox="media/kusto-explorer/home-tab.png":::
 
 The Home tab shows the most frequently used operations. It includes:
 
 ### Query section
 
-:::image type="content" source="media/kusto-explorer/home-query-menu.png" alt-text="Screenshot of the Home tab section titled Tabs that shows an option for creating a new tab for queries.":::
+:::image type="content" source="media/kusto-explorer/home-query-menu.png" alt-text="Screenshot of the Home tab section titled Tabs that shows an option for creating a new tab for queries." lightbox="media/kusto-explorer/home-query-menu.png":::
 
 |Menu|    Behavior|
 |----|----------|
