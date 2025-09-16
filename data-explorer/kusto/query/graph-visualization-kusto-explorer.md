@@ -239,7 +239,7 @@ You can customize the generated statement to adjust the hop range according to y
 
 This action is particularly valuable when working with large, dense graphs where you want to focus on the most significant relationships and entities within a specific distance from your selected node. The ability to customize the hop range gives you precise control over the level of detail in your reduced graph visualization.
 
-#### Zoom on me
+#### Zoom on me (Node)
 
 The **Zoom on me** action is very helpful to focus visually on a specific node. It centers and zooms the view to focus specifically on the selected node, making it the focal point of the visualization.
 
@@ -252,6 +252,53 @@ When you right-click on a node and select "Zoom on me", Kusto Explorer automatic
 This action is particularly useful for navigation in large graphs where you might lose track of a specific node or when you want to focus your analysis on a particular entity and its immediate connections. The zoom and centering functionality ensures that the selected node is prominently displayed and easy to examine in detail.
 
 These interactive actions provide quick graph exploration without requiring manual KQL query writing, making it easy to focus on specific parts of complex graphs or discover hidden relationships in your data.
+
+### Interactive edge actions
+
+In addition to node actions, you can also interact with graph edges by right-clicking on them. Edge actions provide complementary functionality for exploring and manipulating connections within your graph visualization.
+
+:::image type="content" source="media/graphs/graph-viz-ke-techcorp-edge-rightclick.png" alt-text="Graph node action in Kusto Explorer showing a context menu on the selected edge.":::
+
+#### Hide Edges
+
+The **Hide Edges** action provides multiple options for removing edges and related nodes from the current view. This allows you to simplify the visualization by removing specific relationships that might be cluttering the graph.
+
+When you right-click on an edge and select "Hide Edges", you can choose from several hiding options:
+
+- **Hide Edges Only**: Removes only the selected edges while keeping all connected nodes visible
+- **Hide Edges and Source Nodes**: Removes the edges and their source nodes from the visualization
+- **Hide Edges and Target Nodes**: Removes the edges and their target nodes from the visualization  
+- **Hide Edges and Nodes**: Removes both the edges and all connected nodes (source and target)
+
+The edges that are hidden are determined by the edge **Label** configuration in the **Edges** section of the Graph Layers panel on the right. You can specify which edge labels should be affected by the hide operation, allowing you to hide all edges with a specific relationship type rather than just individual connections.
+
+:::image type="content" source="media/graphs/graph-viz-ke-edge-hide-1.png" alt-text="Graph view after selecting 'Hide Edges Only' in Kusto Explorer showing the 'manages at' edge removed while keeping TechCorp and Bob nodes visible.":::
+
+The first image shows what happens after clicking "Hide Edges Only". In this case, the "manages at" edge between Bob and TechCorp is removed from the visualization, but both the source node (Bob) and target node (TechCorp) remain visible along with their other connections.
+
+:::image type="content" source="media/graphs/graph-viz-ke-edge-hide-2.png" alt-text="Graph view after selecting 'Hide Edges and Nodes' in Kusto Explorer showing the 'manages at' edge, TechCorp and Bob nodes, and all their connected edges removed.":::
+
+The second image demonstrates the result of clicking "Hide Edges and Nodes". In this case, not only is the "manages at" edge removed, but both the source node (Bob) and target node (TechCorp) are also removed from the visualization, along with all edges connected to those nodes. This creates a much more dramatic simplification of the graph structure.
+
+This functionality is particularly useful when you want to focus on specific types of relationships by removing others, or when certain edge types are not relevant to your current analysis. The ability to hide edges based on their labels provides powerful filtering capabilities for complex graphs with multiple relationship types.
+
+#### Zoom on me (Edge)
+
+The **Zoom on me** action for edges centers the visualization of the graph on the selected edge, making the relationship the focal point of the view.
+
+:::image type="content" source="media/graphs/graph-viz-ke-edge-zoom-1.png" alt-text="Graph edge zoom action in Kusto Explorer showing the 'manages at' edge near the border of the visualization with the context menu visible.":::
+
+The first image shows an edge (the "manages at" relationship between Bob and TechCorp) that is positioned close to the border of the visualization, making it harder to focus on and examine.
+
+When you right-click on this edge and select "Zoom on me", Kusto Explorer automatically adjusts the view to center the selected edge in the visualization. This repositioning makes it much easier to examine the relationship details and the properties of both connected entities.
+
+:::image type="content" source="media/graphs/graph-viz-ke-edge-zoom-2.png" alt-text="Graph view after edge zoom action in Kusto Explorer showing the 'manages at' edge centered in the visualization for detailed examination.":::
+
+The second image demonstrates how the same "manages at" edge is now centered in the view, providing a much clearer focus on this specific relationship and its connected nodes (Bob and TechCorp).
+
+This action is particularly valuable when working with dense graphs where specific relationships might be positioned at the edges of the view or partially obscured. It helps you focus on important connections and examine edge properties, labels, and the context of how two specific entities are related without having to manually navigate or zoom to find the relationship.
+
+These edge-focused interactive actions complement the node actions, providing comprehensive control over graph exploration and allowing you to manipulate both entities and relationships according to your analysis needs.
 
 ## Schema visualization
 
