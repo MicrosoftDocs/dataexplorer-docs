@@ -37,8 +37,9 @@ Every time you open Kusto.Explorer, you're prompted to install a new version. Ku
 This symptom could be a result of corruption in your local ClickOnce store. You can clear the local ClickOnce store, by running the following command, in an elevated command prompt.
 
 > [!IMPORTANT]
+>
 > 1. If there are any other instances of ClickOnce applications or of `dfsvc.exe`, terminate them before running this command.
-> 1. All ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts won't be deleted.
+> 1. All ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts aren't deleted.
 
 ```kusto
 rd /q /s %userprofile%\appdata\local\apps\2.0
@@ -89,7 +90,7 @@ Following errors were detected during this operation.
 
     Install Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#install-kustoexplorer).
 
-1. If the application still doesn't start, delete the local ClickOnce store. All ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts won't be deleted.
+1. If the application still doesn't start, delete the local ClickOnce store. All ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts aren't deleted.
 
     From an elevated command-prompt:
 
@@ -126,20 +127,22 @@ Following errors were detected during this operation.
         ```kusto
         HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment
         ```
-    
+
     1. Repro it again.
     1. Send the verbose output to KEBugReport@microsoft.com. 
 
 ### ClickOnce error: Your administrator has blocked this application because it potentially poses a security risk to your computer
 
 #### Symptom 
+
 The application fails to install with either of the following errors:
 * `Your administrator has blocked this application because it potentially poses a security risk to your computer`.
 * `Your security settings do not allow this application to be installed on your computer.`
 
 #### Solution
 
-This symptom could be because another application is overriding the default ClickOnce trust prompt behavior. 
+This symptom could be because another application is overriding the default ClickOnce trust prompt behavior.
+
 1. View your default configuration settings.
 1. Compare your configuration settings to the actual ones on your machine.
 1. Reset your configuration settings as necessary, as explained [in this how-to article](/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior).
@@ -151,7 +154,7 @@ Sometimes, when previous troubleshooting steps didn't help with getting Kusto.Ex
 Data stored by Kusto.Explorer application can be found here: `C:\Users\[your username]\AppData\Local\Kusto.Explorer`.
 
 > [!NOTE]
-> Cleaning the data will lead to a loss of opened tabs (Recovery folder), saved connections (Connections folder), and application settings (UserSettings folder).
+> Cleaning the data leads to a loss of opened tabs (Recovery folder), saved connections (Connections folder), and application settings (UserSettings folder).
 
 ## Reset Kusto.Explorer
 
