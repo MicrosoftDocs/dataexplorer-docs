@@ -45,6 +45,7 @@ To enable query acceleration in the Fabric UI, see [Query acceleration over OneL
 ## Commands for query acceleration
 
 * [.alter query acceleration policy command](alter-query-acceleration-policy-command.md)
+* [.alter-merge query acceleration policy command](alter-merge-query-acceleration-policy-command.md)
 * [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
 * [.show query acceleration policy command](show-query-acceleration-policy-command.md)
 * [.show external table operations query_acceleration statistics](show-external-table-operations-query-acceleration-statistics.md)

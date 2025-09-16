@@ -1,16 +1,16 @@
 ---
-title: .alter query acceleration policy command
-description: Learn how to use the ".alter query acceleration policy command" to accelerate queries over external delta tables.
+title: .alter-merge query acceleration policy command
+description: Learn how to use the ".alter-merge query acceleration policy command" to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 11/19/2024
 ---
 
-# .alter query acceleration policy command
+# .alter-merge query acceleration policy command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Alters the [query acceleration policy](query-acceleration-policy.md) of a specific external delta table.
+Alters the [query acceleration policy](query-acceleration-policy.md) properties of a specific external delta table.
 
 For limitations, see [Limitations](query-acceleration-policy.md#limitations).
 
@@ -20,7 +20,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ## Syntax
 
-`.alter` `external` `table` _ExternalTableName_ `policy` `query_acceleration` '_JSON-serialized policy_'
+`.alter-merge` `external` `table` _ExternalTableName_ `policy` `query_acceleration` '_JSON-serialized policy_'
 
 ## Parameters
 
@@ -33,8 +33,8 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 | Property   | Type       | Required           | Description                                                                                                                                                                                                               |
 | ---------- | ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| IsEnabled  | `Boolean`  | :heavy_check_mark: | Indicates whether the policy is enabled.                                                                                                                                                                                  |
-| Hot        | `Timespan` | :heavy_check_mark: | The hot period defined in the query acceleration policy. Minimum value = 1 d.                                                                                                                                             |
+| IsEnabled  | `Boolean`  |                    | Indicates whether the policy is enabled. This property is required if no query acceleration policy is defined on the external table.                                                                                                                                                                                   |
+| Hot        | `Timespan` |                    | The hot period defined in the query acceleration policy. Minimum value = 1 d. This property is required if no query acceleration policy is defined on the external table.                                                                                                                                             |
 | HotWindows | `DateTime` |                    | One or more optional time windows. Delta data files created within these time windows are accelerated.                                                                                                                    |
 | MaxAge     | `Timespan` |                    | The external table will return accelerated data if the last index refresh time is greater than @now - MaxAge. Otherwise, external table will operate in non-accelerated mode. Default is 5 minutes. Minimum is 1 minute. |
 
@@ -43,9 +43,18 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ### Example
 
+In case the external table has query acceleration policy defined:
+
+```json
+{ "Hot": "1.00:00:00" }
+```
+
+In case the external table doesn't have query acceleration policy defined:
+
 ```json
 { "IsEnabled": true, "Hot": "1.00:00:00" }
 ```
+
 
 ## Returns
 
@@ -61,14 +70,22 @@ The command returns a table with one record that includes the modified policy ob
 
 ## Example
 
+In case the external table has query acceleration policy defined:
+
 ```Kusto
-.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00", "HotWindows":[{"MinValue":"2025-07-06 07:53:55.0192810","MaxValue":"2025-07-06 07:53:55.0192814"}], "MaxAge" : "00:05:00"}'
+.alter-merge external table MyExternalTable policy query_acceleration '{"Hot": "1.00:00:00", "MaxAge" : "00:05:00"}'
+```
+
+In case the external table doesn't have query acceleration policy defined:
+
+```Kusto
+.alter-merge external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00", "MaxAge" : "00:05:00"}'
 ```
 
 ## Related content
 
 - [Query acceleration policy](query-acceleration-policy.md)
-- [.alter-merge query acceleration policy command](alter-merge-query-acceleration-policy-command.md)
+- [.alter query acceleration policy command](alter-query-acceleration-policy-command.md)
 - [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
 - [.show query acceleration policy command](show-query-acceleration-policy-command.md)
 - [.show external table operations query_acceleration statistics](show-external-table-operations-query-acceleration-statistics.md)

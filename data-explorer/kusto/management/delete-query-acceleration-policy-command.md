@@ -35,5 +35,6 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 * [Query acceleration policy](query-acceleration-policy.md)
 * [.alter query acceleration policy command](alter-query-acceleration-policy-command.md)
+* [.alter-merge query acceleration policy command](alter-merge-query-acceleration-policy-command.md)
 * [.show query acceleration policy command](show-query-acceleration-policy-command.md)
 * [.show external table operations query_acceleration statistics](show-external-table-operations-query-acceleration-statistics.md)
