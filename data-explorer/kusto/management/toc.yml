@@ -591,6 +591,9 @@ items:
           - name: .alter query acceleration policy command
             href: alter-query-acceleration-policy-command.md
             displayName: external table, delta table
+          - name: .alter-merge query acceleration policy command
+            href: alter-merge-query-acceleration-policy-command.md
+            displayName: external table, delta table
           - name: .delete query acceleration policy command
             href: delete-query-acceleration-policy-command.md
             displayName: external table, delta table
