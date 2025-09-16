@@ -51,7 +51,8 @@ Try installing Kusto.Explorer again from one of the [installation mirrors](kusto
 
 #### Symptoms
 
-The program fails to start and displays one of the following errors: 
+The program fails to start and displays one of the following errors:
+
 * `External component has thrown an exception`
 * `Value does not fall within the expected range`
 * `The application binding data format is invalid.` 
@@ -83,7 +84,7 @@ Following errors were detected during this operation.
 
 1. Try running `CleanOnlineAppCache`, and then try installing Kusto.Explorer again. 
     From an elevated command-prompt: 
-    
+
     ```kusto
     rundll32 %windir%\system32\dfshim.dll CleanOnlineAppCache
     ```
@@ -136,6 +137,7 @@ Following errors were detected during this operation.
 #### Symptom 
 
 The application fails to install with either of the following errors:
+
 * `Your administrator has blocked this application because it potentially poses a security risk to your computer`.
 * `Your security settings do not allow this application to be installed on your computer.`
 
