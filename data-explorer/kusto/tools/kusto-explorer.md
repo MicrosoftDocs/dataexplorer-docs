@@ -147,15 +147,15 @@ For more visualization options, see the [render operator](../query/render-operat
 
 |Menu| Behavior|
 |---------------|---------|
-| | Query script |
+| **Query script** |  |
 |New Tab | Opens a new tab window for querying Kusto. |
 |Open File| Loads a .kql script into the active query pane.|
 |Save To File| Saves the active script to a .kql file.|
 |Close Tab| Closes the current tab.|
-| | Profiles |
+| **Profiles** |  |
 |Import Profile| Imports a Kusto.Explorer profile.|
 |Export Profile| Exports a Kusto.Explorer profile.|
-| | Save data |
+| **Save data** |  |
 |Data To CSV       | Exports data to a CSV (comma-separated-values) file.|
 |Data To JSON      | Exports data to a JSON formatted file.|
 |Data To Excel     | Exports data to an XLSX (Excel) file.|
@@ -163,14 +163,14 @@ For more visualization options, see the [render operator](../query/render-operat
 |Data To KQL Script| Exports the query to a script file.|
 |Data To Results   | Exports the query and data to a results (QRES) file.|
 |Run Query Into CSV | Runs the query and saves the results to a local CSV file.|
-| | Load data |
+| **Load data** |  |
 |From Results| Loads the query and data from a results (QRES) file.|
-| | Clipboard |
+| **Clipboard** |  |
 |Query and Results To Clipboard| Copies the query and dataset to the clipboard. If a chart is shown, copies the chart as a bitmap.|
 |Result To Clipboard| Copies the dataset to the clipboard. If a chart is shown, copies the chart as a bitmap.|
 |Query To Clipboard| Copies the query to the clipboard.|
 |Results To Clipboard (datatable())| Copies the query results to the clipboard. The maximum allowed cell value is 30,000.|
-| | Results |
+| **Results** | |
 |Clear results cache| Clears cached results of previously run queries.|
 
 ## Connections tab
@@ -179,22 +179,22 @@ For more visualization options, see the [render operator](../query/render-operat
 
 |Menu|Behavior|
 |----|----------|
-||*Groups*|
+| **Groups**| |
 |Add Group| Add a Kusto server group.|
-||*Clusters*|
+| **Clusters**| |
 |Import Connections| Import connections from a file.|
 |Export Connections| Export connections to a file.|
 |Add Connection| Add a Kusto server connection.|
 |Edit Connection| Open the connection properties dialog.|
 |Remove Connection| Remove the Kusto server connection.|
 |Refresh| Refresh the connection properties.|
-||---------*Profiles*---------|
+| **Profiles** | |
 |Import Profile| Import a Kusto.Explorer profile.|
 |Export Profile| Export a Kusto.Explorer profile.|
-||*Security*|
+|**Security**| |
 |Inspect Your ADD Principal| Show current signed-in user details.|
 |Sign-out| Sign out the current user from Microsoft Entra ID.|
-||*Data scope*|
+|**Data scope**| |
 |Caching scope|<ul><li>Hot data: Run queries only on the [hot data cache](../management/cache-policy.md).</li><li>All data: Run queries on all available data (default).</li></ul> |
 |DateTime Column| Name of a column you can use for a time prefilter.|
 |Time Filter| Value of the time prefilter.|
@@ -205,26 +205,26 @@ For more visualization options, see the [render operator](../query/render-operat
 
 |Menu|Behavior|
 |----|----------|
-| | Appearance |
-|Full View Mode | Maximizes the work space by hiding the ribbon menu and Connection Panel. Exit Full View Mode by selecting **Home** > **Full View Mode**, or by pressing **F11**.|
+| **Appearance** |  |
+|Full View Mode | Maximizes the work space by hiding the ribbon menu and Connection Panel. Exit Full View Mode by selecting **Home** > **Full View Mode**, or by pressing **F11 .|
 |Increase Font  | Increases the font size of the query tab and of the results data grid.|  
 |Decrease Font  | Decreases the font size of the query tab and of the results data grid.|
-|**Reset Layout**|Resets the docking layout and windows.|
-|**Rename Document Tab**|Renames the selected tab.|
-| | Data View |
-|**Reset View**| Resets the [data view settings](#dvs) to their defaults.|
-|**Explore Column Values**|Shows the distribution of column values.|
-|**Focus on Query Statistics**|Shows query statistics instead of results when the query finishes.|
-|**Hide Duplicates**|Toggles removal of duplicate rows from results.|
-|**Hide Empty Columns**|Removes empty columns from the results.|
-|**Collapse Singular Columns**|Collapses columns that contain a single value.|
-|**Row Selection**|Enables selecting specific rows in the Results panel.|
-|**Color By Column**|Colors identical values in the first column.|
-|**Wrap Text**|Wraps cell content to fit the column width.|
-| | Data Filtering |
-|**Filter Rows In Search**|Toggles showing only matching rows when you search (**Ctrl+F**).|
-| | Visualizations |
-|**Visualizations**|See [Visualizations](#visualizations-section).|
+| Reset Layout |Resets the docking layout and windows.|
+| Rename Document Tab |Renames the selected tab.|
+| **Data View** |  |
+| Reset View | Resets the [data view settings](#dvs) to their defaults.|
+| Explore Column Values |Shows the distribution of column values.|
+| Focus on Query Statistics |Shows query statistics instead of results when the query finishes.|
+| Hide Duplicates |Toggles removal of duplicate rows from results.|
+| Hide Empty Columns |Removes empty columns from the results.|
+| Collapse Singular Columns |Collapses columns that contain a single value.|
+| Row Selection |Enables selecting specific rows in the Results panel.|
+| Color By Column |Colors identical values in the first column.|
+| Wrap Text |Wraps cell content to fit the column width.|
+| **Data Filtering** |  |
+| Filter Rows In Search |Toggles showing only matching rows when you search ( **Ctrl+F** ).|
+| **Visualizations** |  |
+| Visualizations |See [Visualizations](#visualizations-section).|
 
 > [!NOTE]
 > <a id="dvs">Data View Settings:</a>
@@ -237,22 +237,22 @@ For more visualization options, see the [render operator](../query/render-operat
 
 |Menu|Behavior|
 |----|----------|
-||---------*IntelliSense*---------|
+| IntelliSense ||
 |Enable IntelliSense| Enables or disables IntelliSense in the Script panel.|
 |Issues List| Lists issues in the Script panel.|
-||---------*Automation*---------|
+| Automation ||
 |Add New Automation| Generates a report with query insights.|
-||---------*Utilities*---------|
+| Utilities ||
 |Command-line tools| Opens a command prompt.|
 |Compress LZ4 file| Compresses files with the LZ4 algorithm.|
 |Decompress LZ4 file| Decompresses files with the LZ4 algorithm.|
-||---------*Analytics*---------|
+| Analytics ||
 |Analytical Reports| Opens a dashboard with prebuilt data analysis reports.|
-||---------*Translate*---------|
+| Translate ||
 |Query to Power BI| Converts a query to a Power BI format.|
 |Query to WPA| Converts a query to a WPA format.|
 |Query to WPA (Clipboard) | Converts a query to a WPA format and copies it to the clipboard.|
-||---------*Options*---------|
+| Options ||
 |Reset Options| Resets app settings to default values.|
 |Options| Opens the options tool to configure app settings. For details, see [Kusto.Explorer options](kusto-explorer-options.md).|
 
@@ -264,10 +264,8 @@ To change the output color scheme or turn off this behavior, select **Tools** > 
 
 :::image type="content" source="media/kusto-explorer/ke-color-scheme.png" alt-text="Screenshot of Kusto Explorer color scheme modification.":::
 
-**Excel** color scheme legend | **Vivid** color scheme legend
-
-|---|---
-| :::image type="content" source="media/kusto-explorer/excel-color-scheme.png" alt-text="Screenshot of the Excel color scheme legend in Kusto Explorer." border="false"::: | :::image type="content" source="media/kusto-explorer/vivid-color-scheme.png" alt-text="Screenshot of vivid color scheme legend in Kusto Explorer." border="false":::
+| **Excel** color scheme legend | **Vivid** color scheme legend
+|:::image type="content" source="media/kusto-explorer/excel-color-scheme.png" alt-text="Screenshot of the Excel color scheme legend in Kusto Explorer." border="false"::: | :::image type="content" source="media/kusto-explorer/vivid-color-scheme.png" alt-text="Screenshot of vivid color scheme legend in Kusto Explorer." border="false":::|
 
 ## Monitoring tab
 
@@ -275,21 +273,21 @@ To change the output color scheme or turn off this behavior, select **Tools** > 
 
 |Menu             | Behavior|
 |-----------------|---------|
-||---------*Monitor*---------|
-|**Cluster Diagnostics** | Shows a health summary for the Server Group currently selected in Connections Panel. |
-|**Latest data: All tables**| Shows a summary of the latest data in all tables of the currently selected database.|
-|**Latest data: Selected table**| Shows the latest data for the selected table in the status bar.|
+| **Monitor** | |
+| Cluster Diagnostics  | Shows a health summary for the Server Group currently selected in Connections Panel. |
+| Latest data: All tables | Shows a summary of the latest data in all tables of the currently selected database.|
+| Latest data: Selected table | Shows the latest data for the selected table in the status bar.|
 
 ## Management tab
 
 :::image type="content" source="media/kusto-explorer/management-tab.png" alt-text="Screenshot of the Management tab that shows options for managing authorized principals.":::
 
-|Menu             | Behavior|
+| Menu             | Behavior|
 |-----------------|---------|
-||---------*Authorized Principals*---------|
-|**Manage Database Authorized Principals** | Lets authorized users manage database principals.|
-|**Manage Table Authorized Principals** | Lets authorized users manage table principals.|
-|**Manage Function Authorized Principals** | Lets authorized users manage function principals.|
+| **Authorized Principals** | |
+| Manage Database Authorized Principals | Lets authorized users manage database principals.|
+| Manage Table Authorized Principals | Lets authorized users manage table principals.|
+| Manage Function Authorized Principals | Lets authorized users manage function principals.|
 
 ## Help tab
 
@@ -297,15 +295,15 @@ To change the output color scheme or turn off this behavior, select **Tools** > 
 
 |Menu             | Behavior|
 |-----------------|---------|
-||---------*Documentation*---------|
-|**Help**             | Opens the Kusto online documentation.|
-|**What's new**       | Opens the Kusto.Explorer release notes.|
-|**Keyboard Shortcuts**| Opens the [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md).|
-|**Show EULA**| Opens the Microsoft Azure Legal Information article.|
-||---------*Support and Feedback*---------|
-|**Issue Report**             | Opens a dialog with two options: .|
-|**Suggest Feature**       | Opens a page to share your ideas.|
-|**Kusto Support (KAI Bot)**      | Opens KAI for self-service, proactive guidance, and autonomous troubleshooting, |
+| **Documentation** | |
+| Help  | Opens the Kusto online documentation.|
+| What's new  | Opens the Kusto.Explorer release notes.|
+| Keyboard Shortcuts | Opens the [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md).|
+| Show EULA | Opens the Microsoft Azure Legal Information article.|
+| Support and Feedback| |
+| Issue Report   | Opens a dialog with two options: .|
+| Suggest Feature   | Opens a page to share your ideas.|
+| Kusto Support (KAI Bot)  | Opens KAI for self-service, proactive guidance, and autonomous troubleshooting. |
 
 ### Control the user identity connecting to Kusto.Explorer
 
