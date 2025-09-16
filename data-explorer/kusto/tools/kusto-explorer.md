@@ -264,7 +264,8 @@ To change the output color scheme or turn off this behavior, select **Tools** > 
 
 :::image type="content" source="media/kusto-explorer/ke-color-scheme.png" alt-text="Screenshot of Kusto Explorer color scheme modification.":::
 
-| **Excel** color scheme legend | **Vivid** color scheme legend
+**Excel** color scheme legend | **Vivid** color scheme legend
+|---|---|
 |:::image type="content" source="media/kusto-explorer/excel-color-scheme.png" alt-text="Screenshot of the Excel color scheme legend in Kusto Explorer." border="false"::: | :::image type="content" source="media/kusto-explorer/vivid-color-scheme.png" alt-text="Screenshot of vivid color scheme legend in Kusto Explorer." border="false":::|
 
 ## Monitoring tab
