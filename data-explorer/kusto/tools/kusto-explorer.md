@@ -68,7 +68,7 @@ Run each line with <kbd>F5</kbd>.
 
 ## Work Documents pane
 
-:::image type="content" source="media/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work docuemnts pane showing Unsaved work and Tracked folders.":::
+:::image type="content" source="media/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work documents pane showing Unsaved work and Tracked folders.":::
 
 The Work folders pane organizes your work folders for quick navigation. It includes two types:
 
@@ -300,9 +300,12 @@ To change the output color scheme or turn off this behavior, select **Tools** > 
 ||---------*Documentation*---------|
 |**Help**             | Opens the Kusto online documentation.|
 |**What's new**       | Opens the Kusto.Explorer release notes.|
-|**Report Issue**      | Opens a dialog with two options: report issues related to the service, or report issues in the client application. |
 |**Keyboard Shortcuts**| Opens the [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md).|
 |**Show EULA**| Opens the Microsoft Azure Legal Information article.|
+||---------*Support and Feedback*---------|
+|**Issue Report**             | Opens a dialog with two options: .|
+|**Suggest Feature**       | Opens a page to share your ideas.|
+|**Kusto Support (KAI Bot)**      | Opens KAI for self-service, proactive guidance, and autonomous troubleshooting, |
 
 ### Control the user identity connecting to Kusto.Explorer
 

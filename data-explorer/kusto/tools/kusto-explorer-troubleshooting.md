@@ -44,7 +44,7 @@ This symptom could be a result of corruption in your local ClickOnce store. You 
 rd /q /s %userprofile%\appdata\local\apps\2.0
 ```
 
-Try installing Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#installing-kustoexplorer).
+Try installing Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#install-kustoexplorer).
 
 ### ClickOnce error: Cannot Start Application
 
@@ -87,7 +87,7 @@ Following errors were detected during this operation.
     rundll32 %windir%\system32\dfshim.dll CleanOnlineAppCache
     ```
 
-    Install Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#installing-kustoexplorer).
+    Install Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#install-kustoexplorer).
 
 1. If the application still doesn't start, delete the local ClickOnce store. All ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts won't be deleted.
 
@@ -97,7 +97,7 @@ Following errors were detected during this operation.
     rd /q /s %userprofile%\appdata\local\apps\2.0
     ```
 
-    Install Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#installing-kustoexplorer)
+    Install Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#install-kustoexplorer)
 
 1. If the application still doesn't start:
     1. Remove temporary deployment files.
@@ -110,7 +110,7 @@ Following errors were detected during this operation.
         ren %LOCALAPPDATA%\Kusto.Explorer Kusto.Explorer.bak
         ```
 
-    1. Install Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#installing-kustoexplorer)
+    1. Install Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#install-kustoexplorer)
 
     1. To restore your connections from Kusto.Explorer.bak, from an elevated command-prompt:
 
