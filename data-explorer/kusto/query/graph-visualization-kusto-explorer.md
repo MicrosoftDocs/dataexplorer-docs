@@ -130,56 +130,6 @@ The purple edges indicate various relationship types like "definition", "referen
 
 When Kusto Explorer renders a graph, it provides several interactive features through the Graph Layers panel on the right side of the interface. The features described below are demonstrated using the [TechCorp organizational graph](#example-with-make-graph-operator) shown earlier:
 
-### Graph Layers panel
-
-
-
-The Graph Layers panel contains several sections for interacting with your graph:
-
-#### Find section
-
-The **Find** section allows you to search for specific nodes within the graph:
-
-- **Search field**: Enter node names, IDs, or properties to locate specific nodes
-- **Find Next**: Navigate through search results
-- **Highlight**: Nodes matching your search criteria are highlighted in the visualization
-
-#### Nodes section
-
-The **Nodes** section provides control over node appearance and behavior:
-
-- **Labels**: Configure which node properties to display as labels
-- **Color**: Choose color schemes for different node types or properties
-- **Size**: Adjust node sizes based on properties like degree centrality or custom attributes
-- **Density**: Control the spacing and layout density of nodes
-
-#### Edges section
-
-The **Edges** section controls edge visualization:
-
-- **Labels**: Display edge properties as labels on connections
-- **Color**: Color-code edges by relationship type or properties
-- **Thickness**: Vary edge thickness based on weight or importance
-
-#### Timeline section
-
-The **Timeline** section is particularly useful for temporal graphs:
-
-- **Play controls**: Navigate through different time periods in your graph
-- **Speed control**: Adjust playback speed for temporal evolution
-- **Time range**: Select specific time windows to analyze
-- **Frame-by-frame**: Step through individual time points
-
-### Graph manipulation
-
-Kusto Explorer provides intuitive graph manipulation:
-
-- **Zoom**: Use mouse wheel or zoom controls to focus on specific areas
-- **Pan**: Click and drag to move around the graph
-- **Node selection**: Click on nodes to select and highlight them
-- **Node dragging**: Drag nodes to rearrange the layout manually
-- **Layout algorithms**: Right-click to access different layout options
-
 ### Interactive node actions
 
 You can interact with graph nodes in two ways: write KQL graph queries manually, or simply right-click on any node to execute several predefined actions. Each action provides a different way to explore and manipulate the graph visualization:
@@ -300,77 +250,90 @@ This action is particularly valuable when working with dense graphs where specif
 
 These edge-focused interactive actions complement the node actions, providing comprehensive control over graph exploration and allowing you to manipulate both entities and relationships according to your analysis needs.
 
-## Schema visualization
+## Graph styling
 
-In addition to data graphs, Kusto Explorer can visualize database schemas as graphs:
+The Graph Layers panel provides comprehensive styling and configuration options for customizing your graph visualization. This panel offers a rich set of controls that allow you to modify the appearance, behavior, and interactive features of your graph.
 
-### Viewing database schema
+:::image type="content" source="media/graphs/graph-viz-ke-graph-style.png" alt-text="Graph styling panel in Kusto Explorer showing all configuration sections including style selection, graph layers, find, layout, nodes, edges, timeline, and properties.":::
 
-1. In the **Connections** panel, right-click on a database
-2. Select **Show entities** from the context menu
-3. Kusto Explorer renders a graph showing:
-   - **Tables** as nodes
-   - **Relationships** between tables (foreign keys, joins)
-   - **Update policies** as directed edges
-   - **Materialized views** and their dependencies
-   - **Functions** and their table dependencies
+### Style selection
 
-### Schema graph features
+The **Style** dropdown at the top allows you to define and manage multiple styles for a graph. When you select or create a style, all subsequent configurations (nodes, edges, layout, etc.) will be stored based on that specific style. This enables you to quickly switch between different visualization configurations for the same graph data, making it easy to create multiple views optimized for different analysis purposes.
 
-The schema graph includes the same interactive features as data graphs:
+### Graph Layers
 
-- **Entity filtering**: Hide or show specific types of entities
-- **Relationship visualization**: See how tables connect to each other
-- **Dependency tracking**: Understand data flow and dependencies
-- **Layout customization**: Organize the schema for better understanding
+The **Graph Layers** section provides a notebook-like experience where you can run a sequence of operations on the graph. Each operation starts with a graph object "G" and there can be multiple operations, where each one is built on top of the result of the previous step. This allows you to create complex graph transformations and filtering operations that are applied sequentially, similar to how you would work with cells in a Jupyter notebook.
 
-## Best practices
+When adding a new operation to the Graph Layers, you can choose from various operation types:
 
-### Query optimization
+- **Hide Not Matching**: Hides nodes and edges that don't match specified criteria, keeping only elements that meet your filtering conditions
+- **Color**: Applies color coding to nodes or edges based on properties or conditions. You can use categorical colors for discrete values (node types, departments) or gradient colors for numeric properties (rankings, metrics). The operation preserves visibility while adding visual enhancement and works well when combined with other filtering operations.
+- **Color And Show**: Combines coloring with visibility control, both applying colors and showing/hiding elements based on specified criteria
+- **Hide Matching**: Hides nodes and edges that match specified criteria, removing elements that meet your filtering conditions from the visualization
+- **Show Matching**: Shows only nodes and edges that match specified criteria, making this the primary visible content in your graph
 
-- **Limit result size**: Use `take` or `where` clauses to limit large graphs for better performance
-- **Index usage**: Ensure your graph queries use appropriate indexes
-- **Property selection**: Only project necessary node and edge properties
+Each operation can be configured with specific parameters and conditions, and operations are executed in sequence from top to bottom. This layered approach allows you to build complex filtering and styling logic by combining multiple operations, where each step refines the results of the previous operations.
 
-### Visualization tips
+### Find
 
-- **Color coding**: Use consistent color schemes to represent node types or categories
-- **Node sizing**: Size nodes by importance metrics like degree centrality
-- **Edge filtering**: Hide less important relationships to reduce visual clutter
-- **Layout selection**: Choose appropriate layout algorithms for your graph structure
+The **Find** section provides a powerful search capability that searches through the properties of all nodes and edges in your graph visualization. You can enter search terms to locate particular entities or relationships based on their property values. After entering your search term and pressing Enter, the search will highlight matching elements in the graph. You can then click **Find Next** to navigate through all the search results sequentially, making it easy to examine each match in large graphs and focus on specific elements of interest.
 
-### Performance considerations
+### Layout
 
-- **Graph size**: Kusto Explorer works best with graphs containing fewer than 10,000 nodes
-- **Property count**: Limit the number of properties displayed to improve rendering speed
-- **Interactive features**: Disable timeline features for static graphs to improve performance
+The **Layout** section controls how the graph should be rendered and provides theme options:
 
-## Troubleshooting
+- **Layout algorithms**: Choose between different layout options such as:
+  - **Grouped**: Organizes nodes into logical clusters
+  - **Grouped3D**: Provides a three-dimensional grouped layout
+  - **Circular**: Arranges nodes in a circular pattern
+- **Theme**: Select your preferred visual theme, with options like:
+  - **Light**: Standard light background theme
+  - **Dark**: Dark background theme for users who prefer darker interfaces
 
-### Graph not rendering
+:::image type="content" source="media/graphs/graph-viz-ke-layout-grouped-dark.png" alt-text="Graph visualization in Kusto Explorer using Grouped layout with Dark theme showing nodes organized into logical clusters in the TechCorp organizational structure.":::
 
-If your graph doesn't render automatically:
+The Grouped layout with Dark theme organizes nodes into logical clusters based on their relationships and properties, making it easier to identify different groups within your graph data while providing a dark interface that some users prefer.
 
-1. **Check query syntax**: Ensure your query ends with `make-graph` or uses `graph()` function
-2. **Verify data format**: Confirm your edge and node data has the correct schema
-3. **Check permissions**: Ensure you have read access to the underlying data
-4. **Update Kusto Explorer**: Use the latest version for best compatibility
+:::image type="content" source="media/graphs/graph-viz-ke-layout-circular-light.png" alt-text="Graph visualization in Kusto Explorer using Circular layout with Light theme showing nodes arranged in a circular pattern around the graph center.":::
 
-### Performance issues
+The Circular layout with Light theme arranges nodes in a circular pattern, providing a symmetrical view that can be particularly useful for understanding the overall structure and balance of relationships in your graph.
 
-For slow graph rendering:
+:::image type="content" source="media/graphs/graph-viz-ke-layout-grouped3d-dark.png" alt-text="Graph visualization in Kusto Explorer using Grouped3D layout with Dark theme showing nodes organized in a three-dimensional clustered arrangement.":::
 
-1. **Reduce data size**: Apply filters to limit the number of nodes and edges
-2. **Simplify properties**: Remove unnecessary node and edge properties
-3. **Use sampling**: Apply `sample` operator for exploratory analysis
-4. **Consider alternatives**: For very large graphs, consider [Graphistry](graph-visualization-graphistry.md)
+The Grouped3D layout with Dark theme provides a three-dimensional perspective of grouped nodes, offering additional depth and spatial organization that can help visualize complex hierarchical relationships within your graph data.
 
-## Limitations
+### Nodes
 
-- **Graph size**: Performance degrades with graphs larger than 10,000 nodes
-- **Real-time updates**: Graphs are static snapshots, not live updates
-- **Export options**: Limited options for exporting visualizations
-- **Platform**: Available only on Windows desktop
+The **Nodes** section provides comprehensive control over node appearance and behavior:
+
+- **Labels**: Define which property should be displayed as the label on each node
+- **Density**: Control whether more or fewer node labels should be shown in the visualization
+- **Color**: Set node colors based on a specific property of the node, allowing for categorical or value-based color coding
+- **Size**: Configure node sizing with several options:
+  - **Fixed**: All nodes have the same size
+  - **Incoming/Outgoing edges**: Size based on the number of incoming or outgoing connections
+  - **Numeric property**: Size based on a specific numeric property value
+
+### Edges
+
+The **Edges** section controls the appearance of connections between nodes:
+
+- **Labels**: Define what text should be displayed on the edge
+- **Color**: Set edge colors based on a specific property of the edge, useful for distinguishing different types of relationships
+
+### Timeline
+
+The **Timeline** section is crucial for temporal graph analysis and determines when nodes and edges appeared and disappeared:
+
+- **From**: Specifies when nodes and edges first appeared in the timeline
+- **To**: Specifies when nodes and edges disappeared or became inactive
+- This configuration is particularly useful for the timeline visualization shown in the lower portion of the interface, allowing you to see how your graph evolves over time
+
+### Properties
+
+The **Properties** section displays detailed information about the nodes and edges you have selected in the graph. This provides a detailed view of all attributes and metadata associated with the selected graph elements, making it easy to inspect and understand the data behind your visualization.
+
+These styling and configuration options work together to provide a powerful and flexible graph visualization environment that can be tailored to your specific analysis needs and visual preferences.
 
 ## Related content
 
