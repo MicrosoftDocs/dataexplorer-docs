@@ -29,7 +29,7 @@ To enable query acceleration in the Fabric UI, see [Query acceleration over OneL
 * The feature assumes delta tables with static advanced features, for example column mapping doesn't change, partitions don't change, and so on. To change advanced features, first disable the policy, and once the change is made, re-enable the policy.
 * Schema changes on the delta table must also be followed with the respective `.alter` external delta table schema, which might result in acceleration starting from scratch if there was breaking schema change.
 * Parquet files larger than 1 GB won't be cached.
-* Manual / out of protocol changes to accelerated delta tables aren't supported (for example manually editing _delta_log directory / files or Parquet data files). The feature assumes the delta table complies with the delta protocol and was created and altered through well-known delta operations.
+* Manual edits to the delta table are not allowed and can lead to unexpected results.
 
 > [!NOTE]
 > The query acceleration caching operations are limited by the available query acceleration capacity of your cluster. Run the [.show capacity command](show-capacity-command.md) to view the total, consumed, and remaining query acceleration capacity.
