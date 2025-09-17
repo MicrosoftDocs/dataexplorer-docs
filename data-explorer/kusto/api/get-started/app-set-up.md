@@ -168,7 +168,7 @@ The Kusto SDKs contain quick start sample applications. These applications showc
 
 ### [Python](#tab/python)
 
-[Python Quickstart App](https://github.com/Azure/azure-kusto-python/tree/master/quick_start)
+[Python Quickstart App](https://github.com/Azure/azure-kusto-python/tree/master/quick-start)
 
 ### [TypeScript](#tab/typescript)
 
