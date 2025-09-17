@@ -85,7 +85,6 @@ A string with *date* formatted as specified by *format*.
 
 The following example shows how to use the `format_datetime()` function to format a datetime value. The output is formatted with two digits for the day, hour, minute, and second.
 
-```kusto
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLEktycxN1TAyMDTXNTDUNbJUMLC0MjCwMjDVtOblKijKzCtR4OUqM7RNyy/KTSyJh+tIKdFRr6zU9fXVTUlRiPbwsMrNtSoujlXXBAC5cbYnXQAAAA" target="_blank">Run the query</a>
@@ -105,7 +104,6 @@ v1=format_datetime(dt,'yy-MM-dd [HH:mm:ss]')
 
 The following example shows how to use the `format_datetime()` function to format a datetime value. The output is formatted with a single digit for the month and hour, and with four digits for the year.
 
-```kusto
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLEktycxN1TAyMDTXNTDUNbJUMLC0MjCwMjDVtOblKijKzCtR4OUqM7JNyy/KTSyJh+tIKdFRUK8EAl1f3ZQUhWgPq9xcq+LiWHVNAPGQ6QdeAAAA" target="_blank">Run the query</a>
@@ -125,7 +123,6 @@ v2=format_datetime(dt, 'yyyy-M-dd [H:mm:ss]')
 
 The following example shows how to use the `format_datetime()` function to format a datetime value. The output is formatted with a single digit for the month and hour, and with four digits for the year.
 
-```kusto
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIKVGwVUhJLEktycxN1TAyMDTXNTDUNbJUMLC0MjCwMjDVtOblKijKzCtR4OUqM7ZNyy/KTSyJh+tIKdFRUK+s1PX11U1JUYjOyLDKzbUqLlYoKYlV1wQA0Nc3NmEAAAA" target="_blank">Run the query</a>
