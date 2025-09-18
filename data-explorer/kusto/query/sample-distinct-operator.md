@@ -11,7 +11,7 @@ ms.date: 01/21/2025
 
 Returns a single column that contains up to the specified number of distinct values of the requested column.
 
-The operator tries to return an answer as quickly as possible rather than trying to make a fair sample.
+The operator is optimized for performance rather than fairness; the results may be heavily biased and should not be used for any purpose requiring statistical accuracy.
 
 ## Syntax
 
