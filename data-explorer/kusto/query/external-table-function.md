@@ -30,7 +30,7 @@ To accelerate queries over external delta tables, see [Query acceleration policy
 |--|--|--|--|
 | *TableName* | `string` |  :heavy_check_mark: | The name of the external table being queried. Must reference an external table of kind `blob`, `adl`, or `sql`.|
 | *MappingName* | `string` | | A name of a mapping object that maps fields in the external data shards to columns output.|
-| *MaxAgeOverride* | `TimeSpan` | | When [Query Acceleration Policy](../management/query-acceleration-policy.md) is enabled, override the policy's [MaxAge](../management/alter-query-acceleration-policy-command.md) property for this query. This means requireing that the query acceleration last index refresh time is greater than @now - MaxAgeOverride. Minimum: 1s|
+| *MaxAgeOverride* | `TimeSpan` | | When [Query Acceleration Policy](../management/query-acceleration-policy.md) is enabled, override the policy's [MaxAge](../management/alter-query-acceleration-policy-command.md) property for this query. If you use this property, the external table returns accelerated data if the last index refresh time is greater than @now - MaxAgeOverride. Minimum: 1s|
 
 
 ## Authentication and authorization
