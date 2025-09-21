@@ -24,21 +24,19 @@ To enable query acceleration in the Fabric UI, see [Query acceleration over OneL
 ## Limitations
 
 * The number of columns in the external table can't exceed 900.
-* Delta tables with checkpoint V2 are not supported.
+* Delta tables with checkpoint V2 aren't supported.
 * Query performance over accelerated external delta tables which have more than 2.5 million data files may not be optimal.
 * The feature assumes delta tables with static advanced features, for example column mapping doesn't change, partitions don't change, and so on. To change advanced features, first disable the policy, and once the change is made, re-enable the policy.
 * Schema changes on the delta table must also be followed with the respective `.alter` external delta table schema, which might result in acceleration starting from scratch if there was breaking schema change.
 * Parquet files larger than 1 GB won't be cached.
-::: moniker range="azure-data-explorer"
-* Query acceleration isn't supported for external tables with impersonation authentication.
-::: moniker-end
+* Manual edits to the delta table are not allowed and can lead to unexpected results.
 
 > [!NOTE]
 > The query acceleration caching operations are limited by the available query acceleration capacity of your cluster. Run the [.show capacity command](show-capacity-command.md) to view the total, consumed, and remaining query acceleration capacity.
 
 ## Known issues
 
-* Data in the external delta table that is optimized with the [OPTIMIZE](/azure/databricks/sql/language-manual/delta-optimize) function will need to be reaccelearted.
+* Data in the external delta table that's optimized with the [OPTIMIZE](/azure/databricks/sql/language-manual/delta-optimize) function will need to be reaccelearted.
 * If you run frequent MERGE/UPDATE/DELETE operations in delta, the underlying parquet files may be rewritten with changes and Kusto will skip accelerating such files, causing retrieval during query time.
 * The system assumes that all artifacts under the delta table directory have the same access level to the selected users. Different files having different access permissions under the delta table directory might result with unexpected behavior.
 

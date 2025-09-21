@@ -26,6 +26,9 @@ items:
 - name: detect_anomalous_spike_fl()
   displayName: functions library, security, cybersecurity, anomaly detection, spike, cyber, detect anomalous spike
   href: detect-anomalous-spike-fl.md
+- name: entropy_fl()
+  displayName: functions library, information theory, Shannon entropy
+  href: entropy-fl.md
 - name: factorial_fl()
   displayName: functions library, statistics
   href: factorial-fl.md
