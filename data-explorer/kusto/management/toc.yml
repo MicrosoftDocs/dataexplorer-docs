@@ -888,7 +888,9 @@ items:
           - name: .cancel queued ingestion operation command
             href: data-ingestion/cancel-queued-ingestion-operation-command.md
           - name: .show queued ingestion operation command
-            href: data-ingestion/show-queued-ingestion-operations.md        
+            href: data-ingestion/show-queued-ingestion-operations.md 
+          - name: Queued ingestion via REST API
+            href: data-ingestion/queued-ingest-using-HTTP.md       
       - name: Streaming ingestion
         items:
           - name: Streaming ingestion and schema changes

@@ -40,12 +40,11 @@ The request must be a JSON object with the following structure.
 
 |Field|Type|Required|Description|
 |--|--|--|--|
-|`blobs`|`array`|✔️|A list of blob objects to be ingested. See #blob-object for details.|
-|`properties`|`object`|✔️|An object containing ingestion properties. See #supported-ingestion-properties.|
+[#Blob object](#blob-object)
+|`properties`|`object`|✔️|An object containing ingestion properties. See [Supported ingestion properties](#supported-ingestion-properties) |
 |`timestamp`|`datetime`|No|Optional timestamp indicating when the ingestion request was created.|
----
 
-### Blob Object
+### Blob object
 
 Each item in the `blobs` array must follow this structure:
 
@@ -99,7 +98,8 @@ Authorization: Bearer <access_token>
 }
 ```
 
-> **Note**: Setting `"enableTracking": true` will return a non-empty `ingestionOperationId` in the response, which can be used to monitor ingestion status via the rest-api-status.md.
+> [!NOTE]
+> Setting `"enableTracking": true` will return a non-empty `ingestionOperationId` in the response, which can be used to monitor ingestion status via the rest-api-status.md.
 
 ## Response
 
@@ -129,4 +129,3 @@ Authorization: Bearer <access_token>
 - Submit up to **20 blobs** per request for optimal performance.
 - Use `enableTracking` to monitor ingestion status via the status endpoint.
 - Avoid setting `skipBatching` unless ingestion latency is critical.
-- 
