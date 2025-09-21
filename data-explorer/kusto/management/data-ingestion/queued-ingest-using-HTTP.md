@@ -1,5 +1,5 @@
 ---
-title: Queued ingestion via REST API
+title: Queued Ingestion via REST API
 description: Learn how to use the REST API to submit blobs for ingestion into Azure Data Explorer tables.
 ms.reviewer: 
 ms.topic: reference
@@ -10,7 +10,7 @@ ms.date: 09/15/2025
 
 The queued ingestion REST API allows you to programmatically submit one or more blobs for ingestion into a specified database and table. This method is ideal for automated workflows and external systems that need to trigger ingestion dynamically.
 
-### Permissions
+## Permissions
 
 To use the REST API for queued ingestion, you need:
 
@@ -18,7 +18,7 @@ To use the REST API for queued ingestion, you need:
 - **Database User** role to access the target database.
 - **Storage Blob Data Reader** role on the blob storage container.
 
-For more details, see ../../access-control/role-based-access-control.md.
+For more information, see [Role-based access control](../../access-control/role-based-access-control.md).
 
 ## HTTP Endpoint
 
@@ -45,7 +45,7 @@ The request must be a JSON object with the following structure.
 |`timestamp`|`datetime`|No|Optional timestamp indicating when the ingestion request was created.|
 ---
 
-#### Blob Object
+### Blob Object
 
 Each item in the `blobs` array must follow this structure:
 
@@ -55,11 +55,11 @@ Each item in the `blobs` array must follow this structure:
 |`sourceId`|`string`|No|An identifier for the source blob.|
 |`rawSize`|`integer`|No|The size of the blob before compression (nullable).|
 
-#### Supported ingestion properties
+### Supported ingestion properties
 
 |Property|Type|Description|
 |--|--|--|
-|`format`|`string`|Data format (e.g., `csv`, `json`).|
+|`format`|`string`|Data format (for example, `csv`, `json`).|
 |`enableTracking`|`bool`|If `true`, returns an `ingestionOperationId` for status tracking.|
 |`tags`|`array`|List of tags to associate with the ingested data.|
 |`skipBatching`|`bool`|If `true`, disables batching of blobs.|
@@ -67,11 +67,11 @@ Each item in the `blobs` array must follow this structure:
 |`ingestionMappingReference`|`string`|Reference to a predefined ingestion mapping.|
 |`creationTime`|`string`|ISO8601 timestamp for the ingested data extents.|
 |`ingestIfNotExists`|`array`|Prevents ingestion if data with matching tags already exists.|
-|`ignoreFirstRecord`|`bool`|If `true`, skips the first record (e.g., header row).|
+|`ignoreFirstRecord`|`bool`|If `true`, skips the first record (for example, header row).|
 |`validationPolicy`|`string`|JSON string defining validation behavior.|
 |`zipPattern`|`string`|Regex pattern for extracting files from zipped blobs.|
 
-### Example
+## Example
 
 ```http
 POST /v1/rest/ingestion/queued/MyDatabase/MyTable
@@ -101,16 +101,15 @@ Authorization: Bearer <access_token>
 
 > **Note**: Setting `"enableTracking": true` will return a non-empty `ingestionOperationId` in the response, which can be used to monitor ingestion status via the rest-api-status.md.
 
-
-### Response
+## Response
 
 |Condition|Response|
 |--|--|
-|Tracking enabled (`enableTracking: true`)|Returns a non-empty `ingestionOperationId`.|
+|Tracking enabled (`enableTracking: true`)|Returns a nonempty `ingestionOperationId`.|
 |Tracking disabled or omitted|Returns an empty `ingestionOperationId`.|
 
-
 **Tracking enabled:**
+
 ```json
 {
   "ingestionOperationId": "ingest_op_12345"
@@ -118,6 +117,7 @@ Authorization: Bearer <access_token>
 ```
 
 **Tracking disabled:**
+
 ```json
 {
   "ingestionOperationId": ""
@@ -129,3 +129,4 @@ Authorization: Bearer <access_token>
 - Submit up to **20 blobs** per request for optimal performance.
 - Use `enableTracking` to monitor ingestion status via the status endpoint.
 - Avoid setting `skipBatching` unless ingestion latency is critical.
+- 
