@@ -153,7 +153,10 @@ The following example sends a separate prompt for each row to the Azure OpenAI c
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completion?api-version=2024-06-01;managed_identity=system';
 let options = dynamic({
   "RetriesOnThrottling": 1,
-  "GlobalTimeout": 2m
+  "GlobalTimeout": 2m,
+  "ModelParameters": {
+    "temperature: 0.7
+  }
 });
 datatable(Prompt: string)
 [
@@ -171,7 +174,10 @@ datatable(Prompt: string)
 let connectionString = 'https://myaccount.openai.azure.com/openai/deployments/gpt4o/chat/completions?api-version=2024-06-01;impersonate';
 let options = dynamic({
   "RetriesOnThrottling": 1,
-  "GlobalTimeout": 2m
+  "GlobalTimeout": 2m,
+  "ModelParameters": {
+    "temperature: 0.7
+  }
 });
 datatable(Prompt: string)
 [
@@ -189,3 +195,4 @@ datatable(Prompt: string)
 
 * [ai_embeddings()](ai-embeddings-plugin.md)
 * [ai_chat_completion()](ai-chat-completion-plugin.md)
+
