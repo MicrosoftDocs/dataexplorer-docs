@@ -2,7 +2,7 @@
 title:  'Tutorial: Create geospatial visualizations'
 description: This tutorial gives examples of geospatial visualizations in the Kusto Query Language.
 ms.topic: tutorial
-ms.date: 08/11/2024
+ms.date: 09/21/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 

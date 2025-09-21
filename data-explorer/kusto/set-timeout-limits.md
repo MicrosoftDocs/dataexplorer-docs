@@ -2,7 +2,7 @@
 title: Set timeouts
 description: Learn how to set the query timeout length in various tools, such as Kusto.Explorer and the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 08/11/2024
+ms.date: 09/21/2025
 monikerRange: "azure-data-explorer"
 ---
 # Set timeout limits

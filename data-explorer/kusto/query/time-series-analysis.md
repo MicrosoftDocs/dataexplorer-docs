@@ -3,7 +3,7 @@ title: Analyze time series data
 description: Learn how to analyze time series data.
 ms.reviewer: adieldar
 ms.topic: how-to
-ms.date: 08/11/2024
+ms.date: 09/21/2025
 ---
 # Time series analysis
 
