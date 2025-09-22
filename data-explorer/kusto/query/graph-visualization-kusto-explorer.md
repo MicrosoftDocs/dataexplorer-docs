@@ -300,9 +300,9 @@ The Grouped layout with Dark theme organizes nodes into logical clusters based o
 
 The Circular layout with Light theme arranges nodes in a circular pattern, providing a symmetrical view that can be particularly useful for understanding the overall structure and balance of relationships in your graph.
 
-:::image type="content" source="media/graphs/graph-viz-ke-layout-grouped3d-dark.png" alt-text="Graph visualization in Kusto Explorer using Grouped3D layout with Dark theme showing nodes organized in a three-dimensional clustered arrangement.":::
+:::image type="content" source="media/graphs/graph-viz-ke-layout-grouped-3d-dark.png" alt-text="Graph visualization in Kusto Explorer using Grouped 3D layout with Dark theme showing nodes organized in a three-dimensional clustered arrangement.":::
 
-The Grouped3D layout with Dark theme provides a three-dimensional perspective of grouped nodes, offering additional depth and spatial organization that can help visualize complex hierarchical relationships within your graph data.
+The Grouped 3D layout with Dark theme provides a three-dimensional perspective of grouped nodes, offering additional depth and spatial organization that can help visualize complex hierarchical relationships within your graph data.
 
 ### Nodes
 
