@@ -1332,7 +1332,7 @@ items:
           - name: Kusto Explorer
             href: graph-visualization-kusto-explorer.md
           - name: Plotly-based visualization
-            href: graph-visualization-plotly-python.md
+            href: graph-visualization-python-interactive.md
           - name: Graphistry
             href: graph-visualization-graphistry.md
       - name: Scenarios

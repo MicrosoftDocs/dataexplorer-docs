@@ -26,7 +26,7 @@ Kusto Explorer automatically renders graphs when queries end with the `make-grap
 
 ## Option 2: Custom programmatic graph visualization
 
-Custom programmatic visualization approaches allow you to build tailored graph visualizations using popular libraries and frameworks. The main options include [Plotly-based visualization](graph-visualization-plotly-python.md) using Python and the Plotly library, or handcrafted D3-based visualizations using JavaScript. This approach is ideal for users who want to craft their own tools and have special domain-specific needs.
+Custom programmatic visualization approaches allow you to build tailored graph visualizations using popular libraries and frameworks. The main options include [Python-based interactive visualization](graph-visualization-python-interactive.md) using Python and the Plotly library, or handcrafted D3-based visualizations using JavaScript. This approach is ideal for users who want to craft their own tools and have special domain-specific needs.
 
 **Best for:**
 
@@ -53,7 +53,7 @@ Graphistry leverages GPU acceleration to handle massive graphs that would be imp
 Each visualization option has different setup requirements and capabilities:
 
 1. **[Kusto Explorer](graph-visualization-kusto-explorer.md)**: Download and install the desktop client, then run graph queries
-2. **[Plotly-based](graph-visualization-plotly-python.md)**: Set up Python plugin and use the `plotly_graph_fl()` function
+2. **[Python-based interactive](graph-visualization-python-interactive.md)**: Set up Python plugin and use the `plotly_graph_fl()` function
 3. **[Graphistry](graph-visualization-graphistry.md)**: Deploy from Azure Marketplace and configure data connections
 
 ## Related content
