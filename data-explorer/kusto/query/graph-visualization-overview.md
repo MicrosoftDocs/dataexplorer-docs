@@ -1,65 +1,35 @@
 ---
-title: Graph visualization overview
-description: Learn about different options for visualizing graph data in KQL, including Kusto Explorer, Plotly-based visualizations, and Graphistry.
+title: Custom graph visualization approaches
+description: Learn how to create custom graph visualizations from KQL graph data using Plotly and D3.js for tailored, interactive network visualizations.
 ms.reviewer: royo
 ms.topic: conceptual
-ms.date: 08/27/2025
+ms.date: 09/22/2025
 ---
 
-# Graph visualization overview
+# Custom graph visualization approaches
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Graph visualization is essential for understanding complex relationships within your data. When working with graph data in KQL, you have several visualization options depending on your requirements, technical constraints, and use cases. This article provides an overview of the three main approaches for visualizing graph data.
+Custom graph visualizations enable you to create tailored, interactive network visualizations that meet specific domain requirements and user experience needs. When working with graph data from KQL queries, you can leverage powerful visualization libraries to build custom solutions that go beyond standard charting capabilities. Custom graph visualizations involve coding and offer many different options for implementation.
 
-## Option 1: Kusto Explorer graph visualization
+This article covers two primary approaches for creating custom graph visualizations: **Plotly-based visualizations** using Python integration, and **D3.js-based visualizations** using JavaScript. Both approaches provide complete control over the visualization appearance, interaction patterns, and integration with your applications.
 
-[Kusto Explorer](graph-visualization-kusto-explorer.md) is a free desktop application that provides built-in graph visualization capabilities. It's ideal for KQL-savvy users who want to quickly visualize graph data without leaving their analysis environment.
+## Plotly-based graph visualizations
 
-**Best for:**
+[Plotly](https://plotly.com/) is a powerful visualization library that provides interactive graphing capabilities with excellent integration into KQL environments through the `evaluate python()` operator in Azure Data Explorer and Microsoft Fabric. You can create sophisticated graph visualizations directly from your query results using the `plotly_graph_fl()` function from the [functions library](../functions-library/plotly-graph-fl.md), or implement custom Python scripts with complete control over visualization logic, layouts, styling, and interactive behaviors using NetworkX for graph processing and Plotly for rendering, with support for performance optimization techniques, colorblind-friendly palettes, various layout algorithms, and dashboard integration.
 
-KQL users who need immediate graph insights during data exploration, interactive analysis of graph structures and relationships, development and testing scenarios requiring rapid iteration, and schema visualization of database entity relationships.
+## D3.js-based graph visualizations
 
-**Key features:**
-
-Kusto Explorer automatically renders graphs when queries end with the `make-graph` operator or `graph()` function. Users can interact with the visualization through zoom, pan, and node selection capabilities. The contextual menu provides exploration options including expanding connected nodes, hiding specific elements, reducing graph complexity, and focusing on selected areas. Additional features include graph styling customization and timeline playback for temporal data analysis.
-
-## Option 2: Custom programmatic graph visualization
-
-Custom programmatic visualization approaches allow you to build tailored graph visualizations using popular libraries and frameworks. The main options include [Python-based interactive visualization](graph-visualization-python-interactive.md) using Python and the Plotly library, or handcrafted D3-based visualizations using JavaScript. This approach is ideal for users who want to craft their own tools and have special domain-specific needs.
-
-**Best for:**
-
-Users requiring dashboard integration and sharing capabilities, custom styling and branding requirements, web-based applications, programmatic graph generation, and specific user experience requirements tailored to domain-specific use cases.
-
-**Key features:**
-
-Custom programmatic solutions offer maximum flexibility for specialized requirements. Plotly-based approaches provide seamless integration with Azure Data Explorer dashboards and Real-Time Intelligence dashboards, along with Python-based extensibility. D3-based solutions deliver maximum customization flexibility through direct DOM manipulation and access to a rich ecosystem of examples. Both approaches support customizable appearance with color schemes and layouts, web-based interactivity with hover information and custom behaviors, and full control over visualization logic and presentation.
-
-## Option 3: Graphistry
-
-[Graphistry](graph-visualization-graphistry.md) is a third-party GPU-accelerated graph visualization platform optimized for large-scale graph analysis. It's best for users who need to visualize the entirety of large graphs with millions of nodes and edges.
-
-**Best for:**
-
-Organizations working with large graphs containing millions of nodes and edges, performance-critical applications requiring real-time visualization, advanced graph analytics and pattern detection scenarios, and commercial deployments requiring high-performance visualization capabilities.
-
-**Key features:**
-
-Graphistry leverages GPU acceleration to handle massive graphs that would be impractical with other visualization tools. The platform provides advanced filtering and search capabilities for navigating complex data structures, along with professional-grade performance and scalability designed for enterprise environments. The solution is readily available through Azure Marketplace for streamlined deployment and integration.
-
-## Getting started
-
-Each visualization option has different setup requirements and capabilities:
-
-1. **[Kusto Explorer](graph-visualization-kusto-explorer.md)**: Download and install the desktop client, then run graph queries
-2. **[Python-based interactive](graph-visualization-python-interactive.md)**: Set up Python plugin and use the `plotly_graph_fl()` function
-3. **[Graphistry](graph-visualization-graphistry.md)**: Deploy from Azure Marketplace and configure data connections
+[D3.js](https://d3js.org/) is a powerful JavaScript library for creating custom, interactive visualizations with complete control over the DOM. D3.js graph visualizations typically involve setting up an SVG container, creating force simulations for node positioning, rendering nodes and edges as scalable vector graphics, and implementing interactive behaviors like drag, zoom, and hover effects. The library provides specialized layouts for hierarchical data structures, dynamic filtering and search capabilities, smooth zooming and panning, and supports integration with KQL graph data by exporting query results using [`graph-to-table`](graph-to-table-operator.md) operators and formatting the data as JSON structures compatible with D3.js requirements.
 
 ## Related content
 
+- [plotly_graph_fl() function](../functions-library/plotly-graph-fl.md)
+- [Plotly (preview)](visualization-plotly.md)
 - [Graph semantics overview](graph-semantics-overview.md)
-- [Graph sample data](graph-sample-data.md)
 - [Graph operators](graph-operators.md)
 - [Graph scenarios](graph-scenarios.md)
 - [Graph best practices](graph-best-practices.md)
+- [D3.js documentation](https://d3js.org/)
+- [Plotly JavaScript documentation](https://plotly.com/javascript/)
+- [NetworkX documentation](https://networkx.org/)
