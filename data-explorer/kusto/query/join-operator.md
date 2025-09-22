@@ -3,7 +3,7 @@ title:  join operator
 description: Learn how to use the join operator to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 09/22/2025
 ms.localizationpriority: high 
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
@@ -91,7 +91,7 @@ In the following example, a placeholder key is added to both tables and then use
 
 ## Related content
 
-* [Write multi-table queries](https://learn.microsoft.com/en-us/kusto/query/tutorials/join-data-from-multiple-tables?view=microsoft-fabric)
+* [Write multi-table queries](data-explorer/kusto/query/tutorials/join-data-from-multiple-tables.md)
 * [Cross-cluster join](join-cross-cluster.md)
 * [Broadcast join](broadcast-join.md)
 * [Shuffle query](shuffle-query.md)
