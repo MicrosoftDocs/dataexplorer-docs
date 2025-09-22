@@ -366,6 +366,10 @@ The timeline interface provides several interactive controls for navigating thro
 
 :::image type="content" source="media/graphs/graph-viz-ke-timeline-period.png" alt-text="Timeline view in Kusto Explorer showing a marked time period selection on the timeline visualization at the bottom, with the graph displaying the state during the selected timeframe.":::
 
+## Known limitations
+
+- **Graph function compatibility**: The combination of rendering graphs using the [`graph()`](graph-function.md) function and configuring statements in the "Graph layers" panel is currently not supported. When using the `graph()` function, the layer configuration options may not work as expected with the visualization.
+
 ## Related content
 
 - [Kusto Explorer installation and user interface](../tools/kusto-explorer.md)
