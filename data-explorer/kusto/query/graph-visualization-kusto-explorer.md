@@ -58,7 +58,7 @@ edges
 | make-graph sourceId --> targetId with nodes on nodeId
 ```
 
-:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-techcorp-organizational-overview.png" alt-text="TechCorp organizational graph visualization in Kusto Explorer showing temporal relationships and project assignments.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-company-organizational-overview.png" alt-text="Company organizational graph visualization in Kusto Explorer showing temporal relationships and project assignments.":::
 
 The visualization clearly shows the organizational structure with TechCorp (purple node) at the center, connected to employees Alice, Bob, Carol, and David (green nodes) through various employment relationships. The graph displays two projects - WebApp and MobileApp (cyan nodes) - with labeled edges showing how employees interact with these projects ("develops", "oversees", "works on", "assists with"). The Engineering department (purple node) connects to team members, and the temporal timeline at the bottom allows navigation through different time periods to see how relationships evolve. The Graph Layers panel on the right provides controls for customizing the visualization, including node labeling, coloring, and timeline navigation.
 
@@ -300,7 +300,7 @@ The Grouped layout with Dark theme organizes nodes into logical clusters based o
 
 The Circular layout with Light theme arranges nodes in a circular pattern, providing a symmetrical view that can be particularly useful for understanding the overall structure and balance of relationships in your graph.
 
-:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-layout-grouped-3d-dark.png" alt-text="Graph visualization in Kusto Explorer using Grouped 3D layout with Dark theme showing nodes organized in a three-dimensional clustered arrangement.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-layout-grouped-3d-dark-theme.png" alt-text="Graph visualization in Kusto Explorer using Grouped 3D layout with Dark theme showing nodes organized in a three-dimensional clustered arrangement.":::
 
 The Grouped 3D layout with Dark theme provides a three-dimensional perspective of grouped nodes, offering additional depth and spatial organization that can help visualize complex hierarchical relationships within your graph data.
 
