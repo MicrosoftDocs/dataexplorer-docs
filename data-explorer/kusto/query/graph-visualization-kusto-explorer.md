@@ -130,6 +130,8 @@ The purple edges indicate various relationship types like "definition", "referen
 
 When Kusto Explorer renders a graph, it provides several interactive features through the Graph Layers panel on the right side of the interface. The features described below are demonstrated using the [TechCorp organizational graph](#example-with-make-graph-operator) shown earlier:
 
+:::image type="content" source="media/graphs/graph-viz-ke-interactive.png" alt-text="Kusto Explorer graph visualization interface showing the TechCorp organizational graph with the comprehensive Graph Layers panel on the right, featuring interactive controls for styling, filtering, and exploring graph data.":::
+
 ### Interactive node actions
 
 You can interact with graph nodes in two ways: write KQL graph queries manually, or simply right-click on any node to execute several predefined actions. Each action provides a different way to explore and manipulate the graph visualization:
@@ -267,8 +269,8 @@ The **Graph Layers** section provides a notebook-like experience where you can r
 When adding a new operation to the Graph Layers, you can choose from various operation types:
 
 - **Hide Not Matching**: Hides nodes and edges that don't match specified criteria, keeping only elements that meet your filtering conditions
-- **Color**: Applies color coding to nodes or edges based on properties or conditions. You can use categorical colors for discrete values (node types, departments) or gradient colors for numeric properties (rankings, metrics). The operation preserves visibility while adding visual enhancement and works well when combined with other filtering operations.
-- **Color And Show**: Combines coloring with visibility control, both applying colors and showing/hiding elements based on specified criteria
+- **Color**: Applies color coding to nodes or edges that are currently visible based on properties or conditions. You can use categorical colors for discrete values (node types, departments) or gradient colors for numeric properties (rankings, metrics). This operation only colors elements that are already visible and doesn't show previously hidden elements.
+- **Color And Show**: Combines coloring with visibility control, making elements visible (unhiding them) and applying colors based on specified criteria. This operation turns the visibility of matching elements to on and colors them simultaneously.
 - **Hide Matching**: Hides nodes and edges that match specified criteria, removing elements that meet your filtering conditions from the visualization
 - **Show Matching**: Shows only nodes and edges that match specified criteria, making this the primary visible content in your graph
 
