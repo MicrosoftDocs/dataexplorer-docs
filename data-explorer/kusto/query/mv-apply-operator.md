@@ -217,34 +217,34 @@ datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
 
 ### Using `with_itemindex` for working with a subset of the array
 
-The query results in a table with rows where the index is 3 or greater, including the index and element values from the original lists of even and odd numbers.
+The query results in a table with rows where the index is 2 or greater, including the index and element values from the original lists.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVOS27CMBDd5xRvU5FIRRC6rMwNOENkkoG4tT2WMyEJ4vCEQcziLeZ9PQmazoqFKbBetvFKmHHJHFBDGPUeg1BCrfwDwxiCze5O8CbYf2q8G6ScK5wXzCfuDjCr/wuH30KDiwfCbWtT8gsmJ33jhIKLHc1GEeQpUBTjX22yJOJL6TleK3CElpaKux16yoSFR/T2Rtiof4OW/RiiaiZVvHOPBj/6rNYJKfMftfKmvj+dT34iokT+AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02N2wrCMBBE3%2FMV89YGIrVeUCoV%2FI5SJLarDeRSStpa8OONEcF92IWZ2TmaPFrpJcp4vLxpQjq4uYCyXuAyDAXaxUqjGs4qhjBr8VPSai%2BQC2xrLqKV%2F1m7YIXoUeBQc1af2AfAXjDTSva9XjAr312VJ6NsS88ybkxSj1QGLLyDX3py91Q7%2B%2BBwFoGRRk6WoaOBsLgRnZwISfxO0Dg9Ghszc0x8W88lNkHkb%2BM%2FJCbvAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let _data =
-    range x from 1 to 10 step 1
-    | summarize l=make_list(x) by xMod2 = x % 2;
-_data
-| mv-apply with_itemindex=index element=l to typeof(long) on 
-    (
+let data = datatable (row: int, Arr: dynamic)
+[
+    0, dynamic([5, 1, 3]),
+    1, dynamic([4, 10, 8, 7])
+];
+data
+| mv-apply with_itemindex=index value=Arr to typeof(long) on 
+  (
     // here you have 'index' column
-    where index >= 3
-    )
-| project index, element
+    where index >= 2
+  )
 ```
 
 **Output**
 
-| index | element |
-|--|--|
-| 3 | 7 |
-| 4 | 9 |
-| 3 | 8 |
-| 4 | 10 |
+| row | Arr | value | index |
+|--|--|--|--|
+| 0 | [5, 1, 3] | 3 | 2 |
+| 1 | [4, 10, 8, 7] | 8 | 2 |
+| 1 | [4, 10, 8, 7] | 7 | 3 |
 
 ### Using multiple columns to join element of two arrays
 
