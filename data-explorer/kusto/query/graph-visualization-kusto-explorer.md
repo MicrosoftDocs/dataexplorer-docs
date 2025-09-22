@@ -75,7 +75,7 @@ This query loads the entire BloodHound Active Directory graph, which Kusto Explo
 
 For detailed information about this dataset and other available sample graphs, see [Graph sample datasets and examples](graph-sample-data.md).
 
-:::image type="content" source="media/graphs/graph-viz-ke-bloodhound-1.png" alt-text="BloodHound Active Directory graph visualization in Kusto Explorer with clustered nodes and Graph Layers panel.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-bloodhound-active-directory-overview.png" alt-text="BloodHound Active Directory graph visualization in Kusto Explorer with clustered nodes and Graph Layers panel.":::
 
 The visualization shows the complex structure of an Active Directory environment with distinct clusters of related objects. The blue cluster on the left represents one group of AD objects (likely computers or organizational units), while the purple clusters on the right show different types of security principals and groups. The interconnecting edges reveal the security relationships and potential attack paths between these entities. The Graph Layers panel on the right provides interactive controls to explore the data, including search functionality, node/edge customization options, and timeline controls for temporal analysis.
 
@@ -98,7 +98,7 @@ This automatically generates and executes a query that analyzes the database sch
 - **External tables** for data export and external connectivity
 - **Dependencies** shown as labeled edges indicating relationships between entities
 
-:::image type="content" source="media/graphs/graph-viz-ke-entities-1.png" alt-text="Database entity graph in Kusto Explorer showing table dependencies, graph models, functions, materialized views, and export relationships.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-database-entities-overview.png" alt-text="Database entity graph in Kusto Explorer showing table dependencies, graph models, functions, materialized views, and export relationships.":::
 
 The visualization reveals the database architecture at a glance, showing the complete data flow and dependencies. In this example, you can trace the data processing pipeline step by step:
 
@@ -142,7 +142,7 @@ You can interact with graph nodes in two ways: write KQL graph queries manually,
 
 The **Expand** action generates a statement that allows you to selectively visualize graphs which start or end at the interesting node, revealing connected nodes and relationships.
 
-:::image type="content" source="media/graphs/graph-viz-ke-expand-1.png" alt-text="Graph node expand action in Kusto Explorer showing additional connected nodes revealed from the selected node.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-node-expand-action.png" alt-text="Graph node expand action in Kusto Explorer showing additional connected nodes revealed from the selected node.":::
 
 When you right-click on a node and select "Expand", Kusto Explorer first presents you with options to customize the expansion:
 
@@ -155,7 +155,7 @@ This two-step process allows for precise control over graph exploration. Rather 
 
 The **Hide Others** action hides all other nodes except the selected one and its direct connections, creating a focused view of the selected node's immediate environment.
 
-:::image type="content" source="media/graphs/graph-viz-ke-hide-others-1.png" alt-text="Graph hide others action in Kusto Explorer showing only the selected node and its direct connections.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-node-hide-others-action.png" alt-text="Graph hide others action in Kusto Explorer showing only the selected node and its direct connections.":::
 
 When you right-click on a node and select "Hide Others", you can choose how many levels should be left in the graph:
 
@@ -171,7 +171,7 @@ This action is ideal when you want to isolate a specific node and examine only i
 
 The **Hide Node** action removes the selected node from the current view along with all edges connected to it.
 
-:::image type="content" source="media/graphs/graph-viz-ke-hide-node-1.png" alt-text="Graph hide node action in Kusto Explorer showing the graph with the selected node removed from view.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-node-hide-action.png" alt-text="Graph hide node action in Kusto Explorer showing the graph with the selected node removed from view.":::
 
 When you click on a node you want to hide, it removes both the node itself and all edges connected to it from the visualization. This creates a cleaner graph by eliminating dangling connections that would otherwise point to nowhere. For example, if you hide the MobileApp node, all relationships like "lead developer", "oversees", and other connections to that project are also removed from the view.
 
@@ -224,11 +224,11 @@ When you right-click on an edge and select "Hide Edges", you can choose from sev
 
 The edges that are hidden are determined by the edge **Label** configuration in the **Edges** section of the Graph Layers panel on the right. You can specify which edge labels should be affected by the hide operation, allowing you to hide all edges with a specific relationship type rather than just individual connections.
 
-:::image type="content" source="media/graphs/graph-viz-ke-edge-hide-1.png" alt-text="Graph view after selecting 'Hide Edges Only' in Kusto Explorer showing the 'manages at' edge removed while keeping TechCorp and Bob nodes visible.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-edge-hide-edges-only.png" alt-text="Graph view after selecting 'Hide Edges Only' in Kusto Explorer showing the 'manages at' edge removed while keeping TechCorp and Bob nodes visible.":::
 
 The first image shows what happens after clicking "Hide Edges Only". In this case, the "manages at" edge between Bob and TechCorp is removed from the visualization, but both the source node (Bob) and target node (TechCorp) remain visible along with their other connections.
 
-:::image type="content" source="media/graphs/graph-viz-ke-edge-hide-2.png" alt-text="Graph view after selecting 'Hide Edges and Nodes' in Kusto Explorer showing the 'manages at' edge, TechCorp and Bob nodes, and all their connected edges removed.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-edge-hide-edges-and-nodes.png" alt-text="Graph view after selecting 'Hide Edges and Nodes' in Kusto Explorer showing the 'manages at' edge, TechCorp and Bob nodes, and all their connected edges removed.":::
 
 The second image demonstrates the result of clicking "Hide Edges and Nodes". In this case, not only is the "manages at" edge removed, but both the source node (Bob) and target node (TechCorp) are also removed from the visualization, along with all edges connected to those nodes. This creates a much more dramatic simplification of the graph structure.
 
@@ -238,13 +238,13 @@ This functionality is particularly useful when you want to focus on specific typ
 
 The **Zoom on me** action for edges centers the visualization of the graph on the selected edge, making the relationship the focal point of the view.
 
-:::image type="content" source="media/graphs/graph-viz-ke-edge-zoom-1.png" alt-text="Graph edge zoom action in Kusto Explorer showing the 'manages at' edge near the border of the visualization with the context menu visible.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-edge-zoom-before.png" alt-text="Graph edge zoom action in Kusto Explorer showing the 'manages at' edge near the border of the visualization with the context menu visible.":::
 
 The first image shows an edge (the "manages at" relationship between Bob and TechCorp) that is positioned close to the border of the visualization, making it harder to focus on and examine.
 
 When you right-click on this edge and select "Zoom on me", Kusto Explorer automatically adjusts the view to center the selected edge in the visualization. This repositioning makes it much easier to examine the relationship details and the properties of both connected entities.
 
-:::image type="content" source="media/graphs/graph-viz-ke-edge-zoom-2.png" alt-text="Graph view after edge zoom action in Kusto Explorer showing the 'manages at' edge centered in the visualization for detailed examination.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-edge-zoom-after.png" alt-text="Graph view after edge zoom action in Kusto Explorer showing the 'manages at' edge centered in the visualization for detailed examination.":::
 
 The second image demonstrates how the same "manages at" edge is now centered in the view, providing a much clearer focus on this specific relationship and its connected nodes (Bob and TechCorp).
 
@@ -256,7 +256,7 @@ These edge-focused interactive actions complement the node actions, providing co
 
 The Graph Layers panel provides comprehensive styling and configuration options for customizing your graph visualization. This panel offers a rich set of controls that allow you to modify the appearance, behavior, and interactive features of your graph.
 
-:::image type="content" source="media/graphs/graph-viz-ke-graph-style.png" alt-text="Graph styling panel in Kusto Explorer showing all configuration sections including style selection, graph layers, find, layout, nodes, edges, timeline, and properties.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-styling-panel-overview.png" alt-text="Graph styling panel in Kusto Explorer showing all configuration sections including style selection, graph layers, find, layout, nodes, edges, timeline, and properties.":::
 
 ### Style selection
 
