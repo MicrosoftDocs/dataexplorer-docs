@@ -369,6 +369,7 @@ The timeline interface provides several interactive controls for navigating thro
 ## Known limitations
 
 - **Graph function compatibility**: The combination of rendering graphs using the [`graph()`](graph-function.md) function and configuring statements in the "Graph layers" panel is currently not supported. When using the `graph()` function, the layer configuration options may not work as expected with the visualization.
+- **Large graph performance**: This visualization is not designed for large graphs. The number of nodes and edges that can be effectively visualized depends on the hardware capabilities of the client machine, including available memory and processing power. Performance may degrade significantly with graphs containing thousands of nodes or edges.
 
 ## Related content
 
