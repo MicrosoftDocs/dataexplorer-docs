@@ -325,17 +325,46 @@ The **Edges** section controls the appearance of connections between nodes:
 
 ### Timeline
 
-The **Timeline** section is crucial for temporal graph analysis and determines when nodes and edges appeared and disappeared:
+The **Timeline** section is crucial for temporal graph analysis and determines when nodes and edges appeared and disappeared. It provides separate configuration for nodes and edges:
 
-- **From**: Specifies when nodes and edges first appeared in the timeline
-- **To**: Specifies when nodes and edges disappeared or became inactive
-- This configuration is particularly useful for the timeline visualization shown in the lower portion of the interface, allowing you to see how your graph evolves over time
+**Nodes Lifetime**:
+
+- **From**: Specifies when nodes first appeared in the timeline
+- **To**: Specifies when nodes disappeared or became inactive
+
+**Edges Lifetime**:
+
+- **From**: Specifies when edges first appeared in the timeline  
+- **To**: Specifies when edges disappeared or became inactive
+
+This configuration is particularly useful for the timeline visualization shown in the lower portion of the interface, allowing you to see how your graph evolves over time. For detailed information about using timeline functionality, see the [Timeline view](#timeline-view) section
 
 ### Properties
 
 The **Properties** section displays detailed information about the nodes and edges you have selected in the graph. This provides a detailed view of all attributes and metadata associated with the selected graph elements, making it easy to inspect and understand the data behind your visualization.
 
 These styling and configuration options work together to provide a powerful and flexible graph visualization environment that can be tailored to your specific analysis needs and visual preferences.
+
+## Timeline view
+
+The Timeline view provides a powerful capability to visualize how your graph evolves over time by playing back the creation, modification, and deletion of nodes and edges based on temporal properties in your data. This feature is particularly valuable for understanding the historical development of relationships, tracking changes in network structures, and analyzing temporal patterns in your graph data.
+
+:::image type="content" source="media/graphs/graph-viz-ke-timeline.png" alt-text="Timeline view in Kusto Explorer showing temporal controls for playing back graph evolution over time with timeline visualization at the bottom.":::
+
+### Timeline controls
+
+The timeline interface provides several interactive controls for navigating through time and focusing on specific periods of interest:
+
+**Playback controls**:
+
+- **Play/Pause**: Automatically plays through the timeline, showing how the graph evolves chronologically. You can pause at any point to examine the graph state at that specific time
+- **Step forward/backward**: Navigate through the timeline one step at a time, allowing for detailed examination of each temporal change in the graph structure
+- **Jump to beginning**: Instantly return to the earliest time point in your dataset, showing the initial state of the graph
+- **Jump to end**: Move directly to the latest time point, displaying the final state of the graph with all temporal changes applied
+
+**Period selection**: You can select specific time periods on the timeline by clicking and dragging to create temporal selections, which automatically updates the graph to show only the nodes and edges that existed during that timeframe. This allows you to focus on critical periods, compare different time windows, and see how the graph structure evolved, with real-time updates as you adjust the marked period boundaries.
+
+:::image type="content" source="media/graphs/graph-viz-ke-timeline-period.png" alt-text="Timeline view in Kusto Explorer showing a marked time period selection on the timeline visualization at the bottom, with the graph displaying the state during the selected timeframe.":::
 
 ## Related content
 
