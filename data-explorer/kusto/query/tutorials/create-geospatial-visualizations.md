@@ -59,7 +59,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="../media/kql-tutorials/geospatial-storm-events-scatterchart.png" alt-text="Screenshot of sample storm events on a map.":::
+:::image type="content" source="../media/kql-tutorials/geospatial-storm-events-scatterchart.png" alt-text="Screenshot of sample storm events on a map." lightbox="../media/kql-tutorials/geospatial-storm-events-scatterchart.png":::
 
 ## Plot multiple series of points
 
@@ -79,7 +79,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="../media/kql-tutorials/geospatial-storm-events-by-type.png" alt-text="Screenshot of sample storm events on a map by type.":::
+:::image type="content" source="../media/kql-tutorials/geospatial-storm-events-by-type.png" alt-text="Screenshot of sample storm events on a map by type." lightbox="../media/kql-tutorials/geospatial-storm-events-by-type.png":::
 
 When the result has more columns than the longitude, latitude, and series columns, you can also explicitly specify the `xcolumn` (longitude), `ycolumn` (latitude), and `series` in the `render` operator.
 
@@ -114,7 +114,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="../media/kql-tutorials/geospatial-storm-events-centered.png" alt-text="Screenshot of sample storm events displayed using GeoJSON.":::
+:::image type="content" source="../media/kql-tutorials/geospatial-storm-events-centered.png" alt-text="Screenshot of sample storm events displayed using GeoJSON." lightbox="../media/kql-tutorials/geospatial-storm-events-centered.png":::
 
 ## Represent data points with variable sized bubbles
 
@@ -138,7 +138,7 @@ StormEvents
 | render piechart with (kind = map)
 ```
 
-:::image type="content" source="../media/kql-tutorials/tornado-geospatial-map.png" alt-text="Screenshot of Azure Data Explorer showing a geospatial map of tornado events.":::
+:::image type="content" source="../media/kql-tutorials/tornado-geospatial-map.png" alt-text="Screenshot of Azure Data Explorer showing a geospatial map of tornado events." lightbox="../media/kql-tutorials/tornado-geospatial-map.png":::
 
 ## Display points within a specific area
 
@@ -165,7 +165,7 @@ StormEvents
 | render piechart with (kind = map)
 ```
 
-:::image type="content" source="../media/kql-tutorials/geospatial-southern-california-polygon.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of southern California storms.":::
+:::image type="content" source="../media/kql-tutorials/geospatial-southern-california-polygon.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of southern California storms." lightbox="../media/kql-tutorials/geospatial-southern-california-polygon.png":::
 
 ## Show nearby points on a LineString
 
