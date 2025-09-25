@@ -91,7 +91,7 @@ In the following example, a placeholder key is added to both tables and then use
 
 ## Related content
 
-* [Write multi-table queries](data-explorer/kusto/query/tutorials/join-data-from-multiple-tables.md)
+* [Write multi-table queries](tutorials/join-data-from-multiple-tables.md)
 * [Cross-cluster join](join-cross-cluster.md)
 * [Broadcast join](broadcast-join.md)
 * [Shuffle query](shuffle-query.md)
