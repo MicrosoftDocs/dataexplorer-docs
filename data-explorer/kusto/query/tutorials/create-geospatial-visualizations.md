@@ -1,18 +1,18 @@
 ---
 title:  'Tutorial: Create geospatial visualizations'
-description: This tutorial gives examples of geospatial visualizations in the Kusto Query Language.
+description: Discover how to represent geospatial data with maps, bubbles, and polygons using KQL's powerful visualization tools.
 ms.topic: tutorial
-ms.date: 09/21/2025
+ms.date: 09/25/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 
-# Tutorial: Create geospatial visualizations
+# Tutorial: create geospatial visualizations
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
-This tutorial is for those who want to use [Kusto Query Language (KQL)](../index.md) for geospatial visualization. Geospatial clustering is a way to organize and analyze data based on geographical location. KQL offers multiple methods for performing [geospatial clustering](../geospatial-grid-systems.md) and tools for [geospatial visualizations](../geospatial-visualizations.md).
+Use the [Kusto Query Language (KQL)](../index.md) to create geospatial visualizations. Geospatial clustering organizes data by location. KQL provides multiple [geospatial clustering](../geospatial-grid-systems.md) methods and [geospatial visualization](../geospatial-visualizations.md) tools.
 
-In this tutorial, you'll learn how to:
+In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 >
@@ -27,19 +27,25 @@ In this tutorial, you'll learn how to:
 
 ## Prerequisites
 
-To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
+To run the queries, you need a query environment that has access to the sample data. Use one of the following:
 :::moniker range="azure-data-explorer"
-* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
-::: moniker-end
 
-:::moniker range="microsoft-fabric"
-* A Microsoft account or Microsoft Entra user identity 
-* A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses#capacity)
+* Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
+* Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
+
 ::: moniker-end
+:::moniker range="microsoft-fabric"
+
+* [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses#capacity)
+* A Microsoft account or Microsoft Entra user identity
+* [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses#capacity)
+
+::: moniker-end
+Use [project](../project-operator.md) to select the longitude column, then the latitude column. Use [render](../render-operator.md) to show the points on a map (scatter chart with `kind` set to `map`).
 
 ## Plot points on a map
 
-To visualize points on a map, use [project](../project-operator.md) to select the column containing the longitude and then the column containing the latitude. Then, use [render](../render-operator.md) to see your results in a scatter chart with `kind` set to `map`.
+Use [project](../project-operator.md) to select the longitude column, then the latitude column. Use [render](../render-operator.md) to show the points on a map (scatter chart with `kind` set to `map`).
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -57,9 +63,9 @@ StormEvents
 
 ## Plot multiple series of points
 
-To visualize multiple series of points, use [project](../project-operator.md) to select the longitude and latitude along with a third column, which defines the series.
+To visualize multiple point series, use [project](../project-operator.md) to select the longitude, latitude, and a third column that defines the series.
 
-In the following query, the series is `EventType`. The points are colored differently according to their `EventType`, and when selected display the content of the `EventType` column.
+In the following query, the series is `EventType`. The points use different colors by `EventType` and, when selected, display the `EventType` value.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -75,7 +81,7 @@ StormEvents
 
 :::image type="content" source="../media/kql-tutorials/geospatial-storm-events-by-type.png" alt-text="Screenshot of sample storm events on a map by type.":::
 
-You may also explicitly specify the `xcolumn` (Longitude), `ycolumn` (Latitude), and `series` when performing the `render`. This specification is necessary when there are more columns in the result than just the longitude, latitude, and series columns.
+When the result has more columns than the longitude, latitude, and series columns, you can also explicitly specify the `xcolumn` (longitude), `ycolumn` (latitude), and `series` in the `render` operator.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -90,9 +96,9 @@ StormEvents
 
 ## Use GeoJSON values to plot points on a map
 
-A dynamic GeoJSON value can change or be updated and are often used for real-time mapping applications. Mapping points using dynamic GeoJSON values allows for more flexibility and control over the representation of the data on the map that may not be possible with plain latitude and longitude values.
+Dynamic GeoJSON values update frequently and are used in real-time mapping. Mapping points with dynamic GeoJSON values gives you flexibility and control that plain latitude and longitude can't provide.
 
-The following query uses the [geo_point_to_s2cell](../geo-point-to-s2cell-function.md) and [geo_s2cell_to_central_point](../geo-s2cell-to-central-point-function.md) to map storm events in a scatter chart.
+The following query uses the [geo_point_to_s2cell](../geo-point-to-s2cell-function.md) and [geo_s2cell_to_central_point](../geo-s2cell-to-central-point-function.md) functions to map storm events on a scatter chart.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -108,13 +114,13 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="../media/kql-tutorials/geospatial-storm-events-centered.png" alt-text="Screenshot of sample storm events displayed using geojson.":::
+:::image type="content" source="../media/kql-tutorials/geospatial-storm-events-centered.png" alt-text="Screenshot of sample storm events displayed using GeoJSON.":::
 
-## Represent data points with variable-sized bubbles
+## Represent data points with variable sized bubbles
 
-Visualize the distribution of data points by performing an aggregation in each cluster and then plotting the central point of the cluster.
+Visualize data distribution by aggregating each cluster and plotting its central point.
 
-For example, the following query filters for all storm events of the "Tornado" event type. It then groups the events into clusters based on their longitude and latitude, counts the number of events in each cluster, and projects the central point of the cluster, and renders a map to visualize the result. The regions with the most tornados become clearly detected based on their large bubble size.
+For example, the following query filters storm events where EventType is `Tornado`. It groups events into longitude and latitude clusters, counts events in each cluster, projects each cluster's central point, and renders a map. Regions with the most tornadoes stand out by their larger bubble size.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -132,10 +138,9 @@ StormEvents
 | render piechart with (kind = map)
 ```
 
-:::image type="content" source="../media/kql-tutorials/tornado-geospatial-map.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of tornado storms.":::
+:::image type="content" source="../media/kql-tutorials/tornado-geospatial-map.png" alt-text="Screenshot of Azure Data Explorer showing a geospatial map of tornado events.":::
 
 ## Display points within a specific area
-
 
 Use a polygon to define the region and the [geo_point_in_polygon](../geo-point-in-polygon-function.md) function to filter for events that occur within that region.
 
