@@ -97,7 +97,7 @@ demo_make_series1
 | render timechart
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-filtering.png" alt-text="Time series filtering."ightbox="media/time-series-analysis/time-series-filtering.png":::
+:::image type="content" source="media/time-series-analysis/time-series-filtering.png" alt-text="Time series filtering."lightbox="media/time-series-analysis/time-series-filtering.png":::
 
 ### Regression analysis
 
@@ -119,7 +119,7 @@ demo_series2
 | render linechart with(xcolumn=x)
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-regression.png" alt-text="Time series regression."ightbox="media/time-series-analysis/time-series-regression.png":::
+:::image type="content" source="media/time-series-analysis/time-series-regression.png" alt-text="Time series regression."lightbox="media/time-series-analysis/time-series-regression.png":::
 
 - Blue: original time series
 - Green: fitted line
@@ -144,7 +144,7 @@ demo_series3
 | render timechart 
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-seasonality.png" alt-text="Time series seasonality."ightbox="media/time-series-analysis/time-series-seasonality.png":::
+:::image type="content" source="media/time-series-analysis/time-series-seasonality.png" alt-text="Time series seasonality."lightbox="media/time-series-analysis/time-series-seasonality.png":::
 
 - Use [series_periods_detect()](series-periods-detect-function.md) to automatically detect the periods in the time series, where:
   - `num`: the time series to analyze
@@ -195,7 +195,7 @@ demo_make_series1
 | render timechart
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-operations.png" alt-text="Time series operations.":::
+:::image type="content" source="media/time-series-analysis/time-series-operations.png" alt-text="Time series operations." lightbox="media/time-series-analysis/time-series-operations.png":::
 
 - Blue: original time series
 - Red: smoothed time series
@@ -234,7 +234,7 @@ demo_many_series1
 | summarize num=count(), min_t=min(TIMESTAMP), max_t=max(TIMESTAMP) 
 ```
 
-| num | min\_t | max\_t |
+| num | min_t | max_t |
 | --- | --- | --- |
 | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
@@ -253,7 +253,7 @@ demo_many_series1
 | render timechart with(ymin=0) 
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-at-scale.png" alt-text="Time series at scale.":::
+:::image type="content" source="media/time-series-analysis/time-series-at-scale.png" alt-text="Time series at scale." lightbox="media/time-series-analysis/time-series-at-scale.png":::
 
 The above behavior is misleading, since the single normal time series is aggregated from thousands of different instances that may have abnormal patterns. Therefore, we create a time series per instance. An instance is defined by Loc (location), Op (operation), and DB (specific machine).
 
@@ -312,8 +312,8 @@ demo_many_series1
 
 | Loc | Op | DB | slope |
 | --- | --- | --- | --- |
-| Loc 15 | 37 | 1151 | -102743.910227889 |
-| Loc 13 | 37 | 1249 | -86303.2334644601 |
+| Loc 15 | 37 | 1151 | -104498.46510358342|
+| Loc 13 | 37 | 1249 | -86,614.02919932814 |
 
 In less than two minutes, close to 20,000 time series were analyzed and two abnormal time series in which the read count suddenly dropped were detected.
 
