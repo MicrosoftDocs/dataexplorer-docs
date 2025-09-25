@@ -66,9 +66,9 @@ demo_make_series1
   - `by OsVer`:  partition by OS
 - The actual time series data structure is a numeric array of the aggregated value per each time bin. We use `render timechart` for visualization.
 
-In the table above, we have three partitions. We can create a separate time series: Windows 10 (red), 7 (blue) and 8.1 (green) for each OS version as seen in the graph:
+In the table above, we have three partitions. We can create a separate time series: Windows 10, 7, and 8.1 for each OS version as seen in the graph:
 
-:::image type="content" source="media/time-series-analysis/time-series-partition.png" alt-text="Time series partition.":::
+:::image type="content" source="media/time-series-analysis/time-series-partition.png" alt-text="Time series partition."  lightbox="media/time-series-analysis/time-series-partition.png":::
 
 ## Time series analysis functions
 
@@ -97,7 +97,7 @@ demo_make_series1
 | render timechart
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-filtering.png" alt-text="Time series filtering.":::
+:::image type="content" source="media/time-series-analysis/time-series-filtering.png" alt-text="Time series filtering."ightbox="media/time-series-analysis/time-series-filtering.png":::
 
 ### Regression analysis
 
@@ -119,7 +119,7 @@ demo_series2
 | render linechart with(xcolumn=x)
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-regression.png" alt-text="Time series regression.":::
+:::image type="content" source="media/time-series-analysis/time-series-regression.png" alt-text="Time series regression."ightbox="media/time-series-analysis/time-series-regression.png":::
 
 - Blue: original time series
 - Green: fitted line
@@ -144,7 +144,7 @@ demo_series3
 | render timechart 
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-seasonality.png" alt-text="Time series seasonality.":::
+:::image type="content" source="media/time-series-analysis/time-series-seasonality.png" alt-text="Time series seasonality."ightbox="media/time-series-analysis/time-series-seasonality.png":::
 
 - Use [series_periods_detect()](series-periods-detect-function.md) to automatically detect the periods in the time series, where:
   - `num`: the time series to analyze
