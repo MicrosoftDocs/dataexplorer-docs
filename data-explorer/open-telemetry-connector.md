@@ -1,7 +1,7 @@
 ---
 title: Ingest data from OpenTelemetry to Azure Data Explorer
 description: Learn how to use Azure Data Explorer as an OpenTelemetry sink.
-ms.date: 10/03/2022
+ms.date: 09/28/2025
 ms.topic: how-to
 ms.reviewer: ramacg
 ---

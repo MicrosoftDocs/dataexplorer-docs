@@ -3,7 +3,7 @@ title: 'Ingest data using the Azure Data Explorer Python library'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Python.
 ms.reviewer: vladikbr
 ms.topic: how-to
-ms.date: 05/08/2023
+ms.date: 09/28/2025
 
 # Customer intent: As a Python developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
