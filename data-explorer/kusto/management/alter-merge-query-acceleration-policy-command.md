@@ -12,6 +12,10 @@ ms.date: 09/16/2025
 
 Alters the [query acceleration policy](query-acceleration-policy.md) properties of a specific external delta table.
 
+> [!TIP]
+> Use `.alter-merge` to add or update properties without replacing the whole policy. Array properties are merged (new elements are added, existing values preserved).
+> Use `.alter` to fully replace the policy, including overwriting arrays.
+
 For limitations, see [Limitations](query-acceleration-policy.md#limitations).
 
 ## Permissions
