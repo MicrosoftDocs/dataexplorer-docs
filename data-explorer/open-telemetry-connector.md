@@ -99,22 +99,22 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
 
     |Field | Description | Suggested setting|
     |---|---|---|
-    | Exporters| Type of exporter | Azure Data Explorer | 
+    | Exporters| Type of exporter | Azure Data Explorer |
     |  cluster_uri |   URI of the Azure Data Explorer cluster that holds the database and tables |  https:// &lt;cluster>.kusto.windows.net |
     | application_id |  Client ID|  &lt;application id> |
     | application_key| Client secret |  &lt;application key> |
     | tenant_id | Tenant |  &lt;application tenant>|
-    | db_name | Database that receives the logs | oteldb, or other database you created.
-    | metrics_table_name | The target table in the database db_name that stores exported metric data. | OTELMetrics
-    | logs_table_name | The target table in the database db_name that stores exported logs data. | OTELLogs
-    | traces_table_name | The target table in the database db_name that stores exported traces data. | OTELTraces
-    | ingestion_type | Type of ingestion: managed (streaming) or batched | managed
-    | metrics_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [metrics attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#metrics). The default mapping can be changed using this parameter. | &lt;json metrics_table_name mapping>
-    | logs_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [logs attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#logs). The default mapping can be changed using this parameter. | &lt;json logs_table_name mapping>
-    | traces_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [trace attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#traces). The default mapping can be changed using this parameter. |&lt;json traces_table_name mapping>
-    | traces | Services: traces components to enable   |  receivers: [otlp] <br> processors: [batch] <br> exporters: [azuredataexplorer]
-    | metrics | Services: metrics components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [azuredataexplorer]
-    | logs | Services: logs components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [ azuredataexplorer]
+    | db_name | Database that receives the logs | oteldb, or other database you created. |
+    | metrics_table_name | The target table in the database db_name that stores exported metric data. | OTELMetrics |
+    | logs_table_name | The target table in the database db_name that stores exported logs data. | OTELLogs |
+    | traces_table_name | The target table in the database db_name that stores exported traces data. | OTELTraces |
+    | ingestion_type | Type of ingestion: managed (streaming) or batched | managed |
+    | metrics_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [metrics attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#metrics). The default mapping can be changed using this parameter. | &lt;json metrics_table_name mapping> |
+    | logs_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [logs attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#logs). The default mapping can be changed using this parameter. | &lt;json logs_table_name mapping> |
+    | traces_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [trace attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#traces). The default mapping can be changed using this parameter. |&lt;json traces_table_name mapping> |
+    | traces | Services: traces components to enable   |  receivers: [otlp] </br> processors: [batch] </br> exporters: [azuredataexplorer] |
+    | metrics | Services: metrics components to enable | receivers: [otlp] </br> processors: [batch] </br> exporters: [azuredataexplorer] |
+    | logs | Services: logs components to enable | receivers: [otlp] </br> processors: [batch] </br> exporters: [ azuredataexplorer] |
 
 1. To run the Azure Data Explorer exporter, use the "--config" flag.
 
