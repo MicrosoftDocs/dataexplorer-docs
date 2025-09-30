@@ -120,7 +120,7 @@ data
 
 **Output**
 
-| index | Arr | Arr2 |
+| index | Arr | `Arr2` |
 |--|--|--|
 | 0 | [7] | 7 |
 | 1 | [6, 11, 7] | 6 |
@@ -151,7 +151,7 @@ data
 
 **Output**
 
-| index | Arr | topElem |
+| index | Arr | `topElem` |
 |--|--|--|
 | 0 | [1, 5, 3] | 5 |
 | 1 | [10, 2, 5, 7] | 10 |
@@ -181,7 +181,7 @@ data
 
 **Output**
 
-| index | Arr | Top2 |
+| index | Arr | `Top2` |
 |--|--|--|
 | 0 | [5, 1, 3] | [5, 3] |
 | 1 | [4, 10, 8, 7] | [10, 8] |
@@ -240,7 +240,7 @@ data
 
 **Output**
 
-| row | Arr | value | index |
+| row | Arr | `value` | `index` |
 |--|--|--|--|
 | 0 | [5, 1, 3] | 3 | 2 |
 | 1 | [4, 10, 8, 7] | 8 | 2 |
