@@ -1,6 +1,6 @@
 ---
 title: Visualize data from Azure Data Explorer by using Grafana
-description: In this article, you learn to set up Azure Data Explorer as a data source for Grafana, and then visualize data from a sample cluster.
+description: Discover how to configure Azure Data Explorer for Grafana and create insightful dashboards using sample data.
 ms.reviewer: gabil
 ms.topic: how-to
 ms.date: 09/28/2025
@@ -8,15 +8,15 @@ ms.date: 09/28/2025
 
 # Visualize data from Azure Data Explorer in Grafana
 
-Grafana is an analytics platform where you can query and visualize data, and then create and share dashboards based on your visualizations. Grafana provides an Azure Data Explorer *plug-in*, which enables you to connect to and visualize data from Azure Data Explorer. The plug-in works with both [Azure Managed Grafana](/azure/managed-grafana/overview) and self-hosted Grafana.
+Grafana is an analytics platform where you can query and visualize data, and then create and share dashboards based on your visualizations. Grafana provides an Azure Data Explorer *plugin*, which lets you connect to and visualize data from Azure Data Explorer. The plug-in works with both [Azure Managed Grafana](/azure/managed-grafana/overview) and self-hosted Grafana.
 
-In this article, you learn how to [configure your cluster as a data source for Grafana](#configure-the-data-source) and [visualize data in Grafana](#visualize-data) for Azure Managed Grafana and self-hosted Grafana. To follow along with the examples in this article, [ingest the StormEvents sample data](web-ui-samples-query.md). [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
+This article shows you how to [configure your cluster as a data source for Grafana](#configure-the-data-source) and [visualize data in Grafana](#visualize-data) for Azure Managed Grafana and self-hosted Grafana. To follow the examples in this article, [ingest the StormEvents sample data](web-ui-samples-query.md). [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
 ## Prerequisites
 
-* For Azure Managed Grafana, an Azure account and [Azure Managed Grafana](/azure/managed-grafana/quickstart-managed-grafana-portal) instance.
-* For self-hosted Grafana, [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system and the [Azure Data Explorer plug-in](https://grafana.com/grafana/plugins/grafana-azure-data-explorer-datasource/) for Grafana. You need plug-in version 3.0.5 or later to use the Grafana query builder.
-* An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-and-database.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
+* For Azure Managed Grafana, you need an Azure account and an [Azure Managed Grafana](/azure/managed-grafana/quickstart-managed-grafana-portal) instance.
+* For self-hosted Grafana, install [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system and the [Azure Data Explorer plug-in](https://grafana.com/grafana/plugins/grafana-azure-data-explorer-datasource/) for Grafana. Use plug-in version 3.0.5 or later to access the Grafana query builder.
+* Set up an Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-and-database.md). To decide which option works best, review the [feature comparison](start-for-free.md#feature-comparison).
 
 ## Configure the data source
 
@@ -26,11 +26,11 @@ To configure Azure Data Explorer as a data source, follow the steps for your Gra
 
 #### Add the managed identity to the Viewer role
 
-Managed Grafana creates a system-assigned managed identity for each new workspace, by default. You can use it to access your Azure Data Explorer cluster.
+Managed Grafana creates a system-assigned managed identity for each new workspace by default. You can use it to access your Azure Data Explorer cluster.
 
-1. In the Azure portal, go to your Azure Data Explorer cluster.
+1. In the Azure portal, open your Azure Data Explorer cluster.
 
-1. In the **Overview** section, select the database that has the *StormEvents* sample data.
+1. In the **Overview** section, select the database with the *StormEvents* sample data.
 
     :::image type="content" source="includes/media/data-explorer-configure-data-source/select-database.png" alt-text="Screenshot of the Azure Data Explorer overview page and the selection of a sample database.":::
 
@@ -52,7 +52,7 @@ Managed Grafana workspaces come with the Azure Data Explorer plug-in preinstalle
 
 1. Under **Overview**, select the **Endpoint** link to open the Grafana UI.
 
-1. In Grafana, on the left menu, select the gear icon. Then select **Data Sources**.
+1. In Grafana, on the left menu, select the gear icon, and then select **Data Sources**.
 
     :::image type="content" source="media/grafana/data-sources.png" alt-text="Screenshot of the Grafana settings menu and the option for data sources.":::
 
@@ -64,7 +64,7 @@ Managed Grafana workspaces come with the Azure Data Explorer plug-in preinstalle
 
     :::image type="content" source="media/grafana/input-cluster-uri.png" alt-text="Screenshot of the pane for connection details with the box for cluster URL highlighted.":::
 
-1. Select **Save & Test**.
+1. Select **Save & test**.
 
 ### [Self-hosted Grafana](#tab/self-hosted-grafana)
 
@@ -86,7 +86,7 @@ You can create the service principal in the [Azure portal](#azure-portal) or by 
 
 ##### Azure CLI
 
-1. Use the following command to create a service principal. Set an appropriate scope and a role type of `reader`.
+1. Run the following command to create a service principal. Specify an appropriate scope and set the role type to `reader`.
 
     ```azurecli
     az ad sp create-for-rbac --name "https://{UrlToYourDashboard}:{PortNumber}" --role "reader" \
@@ -215,19 +215,19 @@ To enable results cache rendering, do the following on the **Query Optimizations
 
 ##### Enable weak consistency
 
-Clusters are configured with strong consistency. This default configuration guarantees that query results are up to date with all changes in the cluster.
+Clusters use strong consistency by default, which guarantees that query results are up to date with all changes in the cluster.
 
 When you enable weak consistency, query results can have a lag of 1 to 2 minutes after cluster alterations. However, weak consistency might boost visual rendering time. If immediate consistency isn't critical and performance is marginal, enable weak consistency to improve performance. For more information, see [Query consistency](/kusto/concepts/query-consistency?view=azure-data-explorer&preserve-view=true).
 
-To enable weak consistency, on the **Query Optimizations** pane, select **Data consistency** > **Weak**.
+To enable weak consistency, in the **Query Optimizations** pane, select **Data consistency** > **Weak**.
 
 ---
 
 ## Visualize data
 
-You finished configuring Azure Data Explorer as a data source for Grafana. Now it's time to visualize data.
+You've configured Azure Data Explorer as a data source for Grafana. Now it's time to visualize data.
 
-The following basic example uses both the query builder mode and the raw mode of the query editor. We recommend that you view [write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) for examples of other queries to run against the dataset.
+The following basic example uses both the query builder mode and the raw mode of the query editor. View [write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) for examples of other queries to run against the dataset.
 
 1. In Grafana, on the left menu, select the plus icon. Then select **Dashboard**.
 
@@ -237,17 +237,17 @@ The following basic example uses both the query builder mode and the raw mode of
 
     :::image type="content" source="media/grafana/add-graph.png" alt-text="Screenshot of the page for adding a panel, with the graph option highlighted.":::
 
-1. On the graph pane, select **Panel Title** > **Edit**.
+1. On the graph pane, select **Panel title** > **Edit**.
 
     :::image type="content" source="media/grafana/edit-panel.png" alt-text="Screenshot of the Grafana panel menu, with the edit option highlighted.":::
 
-1. At the bottom of the pane, select **Data Source**, and then select the data source that you configured.
+1. At the bottom of the pane, select **Data source**, and then select the data source you configured.
 
     :::image type="content" source="media/grafana/select-data-source.png" alt-text="Screenshot of the menu for selecting a data source.":::
 
 ### Query builder mode
 
-Use query builder mode to define your query.
+Use the query builder mode to define your query.
 
 1. Below the data source, select **Database** and choose your database from the dropdown list.
 1. Select **From** and choose your table from the dropdown list.
@@ -256,8 +256,8 @@ Use query builder mode to define your query.
 
 1. Now that the table is defined, filter the data:
 
-    1. Select **+** to the right of **Where (filter)** to select one or more columns in your table.
-    1. For each filter, define the values by using the applicable operator. This selection is similar to using the [where operator](/kusto/query/where-operator?view=azure-data-explorer&preserve-view=true) in Kusto Query Language.
+    1. Select **+** to the right of **Where (filter)** to choose one or more columns in your table.
+    1. For each filter, define the values by using the applicable operator. This step is similar to using the [where operator](/kusto/query/where-operator?view=azure-data-explorer&preserve-view=true) in Kusto Query Language.
 
 1. Select the values to present in the table:
 
@@ -296,7 +296,7 @@ Use raw mode to edit your query.
 
     :::image type="content" source="media/grafana/last-six-hours.png" alt-text="Screenshot of the default time filter of last six hours.":::
 
-1. Specify a custom range that covers 2007, the year included in the StormEvents sample dataset. Then select **Apply**.
+1. Enter a custom range that covers 2007, the year included in the StormEvents sample dataset. Then select **Apply**.
 
     :::image type="content" source="media/grafana/custom-date-range.png" alt-text="Screenshot of the custom range control, with a custom date range selected.":::
 
@@ -306,30 +306,30 @@ Use raw mode to edit your query.
 
 1. On the top menu, select the save icon: :::image type="icon" source="media/grafana/save-icon.png":::.
 
-To switch to the query builder mode, select **Switch to builder**. Grafana will convert the query to the available logic in the query builder. The query builder logic is limited, so you might lose manual changes that you made to the query.
+To switch to query builder mode, select **Switch to builder**. Grafana will convert the query to the available logic in the query builder. The query builder logic is limited, so you might lose manual changes that you made to the query.
 
 :::image type="content" source="media/grafana/raw-mode.png" alt-text="Screenshot of the query window, with the button for switching to the builder highlighted.":::
 
 ## Create alerts
 
-1. In **Home Dashboard**, select **Alerting** > **Notification channels** to create a new notification channel.
+1. In **Home Dashboard**, select **Alerting** > **Notification channels** to create a notification channel.
 
-    :::image type="content" source="media/grafana/create-notification-channel.png" alt-text="Screenshot of the dashboard, with the option for creating a notification channel highlighted.":::
+    :::image type="content" source="media/grafana/create-notification-channel.png" alt-text="Screenshot of the dashboard with the option for creating a notification channel highlighted.":::
 
-1. Enter a name and type under **New Notification Channel**, and then select **Save**.
+1. Enter a name and type under **New Notification Channel**, then select **Save**.
 
-    :::image type="content" source="media/grafana/new-notification-channel-adx.png" alt-text="Screenshot of the window for creating a new notification channel.":::
+    :::image type="content" source="media/grafana/new-notification-channel-adx.png" alt-text="Screenshot of the window for creating a notification channel.":::
 
-1. On the dashboard, select **Edit** from the dropdown list.
+1. On the dashboard, select **Edit** from the drop-down list.
 
-    :::image type="content" source="media/grafana/edit-panel-4-alert.png" alt-text="Screenshot of the dashboard panel, with the Edit menu command highlighted.":::
+    :::image type="content" source="media/grafana/edit-panel-4-alert.png" alt-text="Screenshot of the dashboard panel with the Edit menu command highlighted.":::
 
-1. Select the alert bell icon to open the **Alert** pane. Select **Create Alert**, and then complete the properties for the alert.
+1. Select the alert bell icon to open the **Alert** pane. Select **Create Alert**, then complete the properties for the alert.
 
-    :::image type="content" source="media/grafana/alert-properties.png" alt-text="Screenshot of the pane for selecting alert properties.":::
+    :::image type="content" source="media/grafana/alert-properties.png" alt-text="Screenshot of the pane for selecting the alert properties.":::
 
-1. Select the **Save dashboard** icon to save your changes.
+1. Select the **Save dashboard** icon to save the changes.
 
 ## Related content
 
-* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* Learn how to [write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators).
