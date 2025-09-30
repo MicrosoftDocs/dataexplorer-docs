@@ -6,25 +6,25 @@ ms.topic: reference
 ms.date: 09/30/2025
 ---
 
-# .show queued ingestion operations command (preview)
+# .show queued ingestion operations command (Preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-Displays the queued ingestion operations. Ingestion operations are tracked once the [.ingest-from-storage-queued](ingest-from-storage-queued.md) command begins.
+Shows the queued ingestion operations. Ingestion operations are tracked after the [.ingest-from-storage-queued](ingest-from-storage-queued.md) command starts.
 
 > [!NOTE]
 >
-> Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
+> Queued ingestion commands run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
 
 ## Permissions
 
-You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions on the table that the `IngestionOperationId` or IDs belong to.
+You need [Table Ingestor](../../access-control/role-based-access-control.md) permissions on the table associated with the `IngestionOperationId` or IDs.
 
 ## Syntax
 
 `.show queued ingestion operations` `"`*IngestionOperationId*`"`
 
-`.show queued ingestion operations` `(` `"`*IngestionOperationId*`"` [`,` ... ] `)`
+`.show queued ingestion operations` `("`*IngestionOperationId*`"` [`,` ... ])`
 
 `.show queued ingestion operations` `"`*IngestionOperationId*`"` `details`
 
