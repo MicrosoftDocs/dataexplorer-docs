@@ -3,15 +3,16 @@ title: Queued ingestion commands use case
 description: Learn how to ingest historical data using the queued ingestion commands.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 07/22/2025
+ms.date: 04/25/2025
 ---
 
 # Queued ingestion commands use case (preview)
 
-> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-Queued ingestion commands let you test how historical data is ingested and fix problems before you ingest that data. This article describes how to use queued ingestion commands to fine-tune historical data ingestion. Complete the following tasks to fine-tune historical data queued ingestion:
+The queued ingestion commands allow you to ingest individual blobs by URL or ingest batches of data by listing folders or containers. This article walks through a common use case: fine-tuning the ingestion of historical data. You can use these commands to test how historical data is ingested and resolve any issues before performing full ingestion. The following tasks demonstrate how to use queued ingestion commands effectively:
 
+1. [Ingest single blobs](#ingest-single-blobs)
 1. [List blobs in a folder](#list-blobs-in-a-folder)
 1. [Ingest folder](#ingest-folder)
 1. [Track ingestion status](#track-ingestion-status)
@@ -25,6 +26,25 @@ Queued ingestion commands let you test how historical data is ingested and fix p
 > [!NOTE]
 >
 > Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
+
+### Ingest single blobs
+You can start by ingesting a single blob directly using its URL. 
+Make sure to include a SAS token or use a managed identity to grant the service permission to access and download the blob.
+
+```kusto
+.ingest-from-storage-queued into table database('TestDatabase').Logs
+EnableTracking=true
+with (format='csv')
+<|
+'https://https://sample.blob.core.windows.net/sample/test_1.csv?...'
+ ```
+
+**Output**
+
+| IngestionOperationId | ClientRequestId | OperationInfo |
+|----------------------|-----------------|---------------|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444|Kusto.Web.KWE,Query;11112222;11112222;22223333-bbbb-3333-cccc-4444cccc5555|.show queued ingestion operations "00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444" |
+
 
 ### List blobs in a folder
 
@@ -76,8 +96,6 @@ with (format='parquet')
 |00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444|Kusto.Web.KWE,Query;11112222;11112222;22223333-bbbb-3333-cccc-4444cccc5555|.show queued ingestion operations "00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444" |
 
 The `OperationInfo`, which includes the `IngestionOperationId`, is then used to [track the ingestion status](#track-ingestion-status).
-
-The `CancelationInfo`, which includes the `IngestionOperationId`, is then used to [cancel the ingestion operation](#cancel-ingestion).
 
 ### Track ingestion status
 
@@ -171,9 +189,9 @@ with (format='parquet')
 
 **Output**
 
-| IngestionOperationId | ClientRequestId | OperationInfo | CancelationInfo |
-|----------------------|-----------------|---------------|---------------|
-|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555|Kusto.Web.KWE,Query;22223333;22223333;33334444-dddd-4444-eeee-5555eeee5555|.show queued ingestion operations "22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555" |.cancel queued ingestion operations "22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555" |
+| IngestionOperationId | ClientRequestId | OperationInfo |
+|----------------------|-----------------|---------------|
+|22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555|Kusto.Web.KWE,Query;22223333;22223333;33334444-dddd-4444-eeee-5555eeee5555|.show queued ingestion operations "22223333;22223333;11110000-bbbb-2222-cccc-4444dddd5555" |
 
 The `OperationInfo` is then used to [track the ingestion status](#track-ingestion-status).
 

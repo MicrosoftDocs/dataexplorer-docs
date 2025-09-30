@@ -7,7 +7,7 @@ ms.date: 03/19/2025
 ---
 # .cancel queued ingestion operation command (preview)
 
-> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 The `.cancel queued ingestion operation` command cancels an ingestion operation. This command is useful for aborting an ingestion operation that is taking too long to complete.
 
@@ -50,9 +50,6 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |Database | `string` |The database where the ingestion process is occurring.|
 |Table | `string` | The table where the ingestion process is occurring.|
 
->[!NOTE]
->  If the ingestion operation was initiated with tracking disabled, cancellation commands execute on a best‑effort basis. The returned state may indicate: "Cancellation request received – service will attempt best effort cancellation (tracking isn't enabled on operation)"
-
 ## Example
 
 The following example cancels the ingestion of operation `00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444`.
@@ -69,4 +66,4 @@ The following example cancels the ingestion of operation `00001111;11112222;0000
 
 * [Queued ingestion overview](queued-ingestion-overview.md)
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
-* [.ingest-from-storage-queued command](ingest-from-storage-queued.md)
+* [.ingest-from-storage-queued into command](ingest-from-storage-queued.md)
