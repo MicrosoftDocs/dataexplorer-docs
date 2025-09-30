@@ -1,5 +1,5 @@
 ---
-title: .alter-merge query acceleration policy command
+title: .alter-merge query acceleration policy Command
 description: Learn how to use the .alter-merge query acceleration policy command to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
