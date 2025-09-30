@@ -1,32 +1,32 @@
 ---
-title: Time series anomaly detection & forecasting
-description: Learn how to analyze time series data for anomaly detection and forecasting.
+title: Detect and Forecast Anomalies Using KQL Time Series
+description: Learn how to analyze time series data for anomaly detection and forecasting using KQL. Explore decomposition models for trend, seasonal, and residual analysis.
 ms.reviewer: adieldar
 ms.topic: how-to
-ms.date: 08/11/2024
+ms.date: 09/25/2025
 ---
 
 # Anomaly detection and forecasting
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Cloud services and IoT devices generate telemetry data that can be used to gain insights such as monitoring service health, physical production processes, and usage trends. Performing time series analysis is one way to identify deviations in the pattern of these metrics compared to their typical baseline pattern.
+Cloud services and IoT devices generate telemetry you use to monitor service health, production processes, and usage trends. Time series analysis helps you spot deviations from each metric's baseline pattern.
 
-Kusto Query Language (KQL) contains native support for creation, manipulation, and analysis of multiple time series. With KQL, you can create and analyze thousands of time series in seconds, enabling near real time monitoring solutions and workflows.
+Kusto Query Language (KQL) includes native support for creating, manipulating, and analyzing multiple time series. Use KQL to create and analyze thousands of time series in seconds for near real time monitoring.
 
-This article details time series anomaly detection and forecasting capabilities of KQL. The applicable time series functions are based on a robust well-known decomposition model, where each original time series is decomposed into seasonal, trend, and residual components. Anomalies are detected by outliers on the residual component, while forecasting is done by extrapolating the seasonal and trend components. The KQL implementation significantly enhances the basic decomposition model by automatic seasonality detection, robust outlier analysis, and vectorized implementation to process thousands of time series in seconds.
+This article describes KQL time series anomaly detection and forecasting capabilities. The functions use a robust, well known decomposition model that splits each time series into seasonal, trend, and residual components. Detect anomalies by finding outliers in the residual component. Forecast by extrapolating the seasonal and trend components. KQL adds automatic seasonality detection, robust outlier analysis, and a vectorized implementation that processes thousands of time series in seconds.
 
 ## Prerequisites
 
-* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
-* Read [Time series analysis](time-series-analysis.md) for an overview of time series capabilities.
+* Use a Microsoft account or a Microsoft Entra user identity. You don't need an Azure subscription.
+* Read about time series capabilities in [Time series analysis](time-series-analysis.md).
 
 ## Time series decomposition model
 
-The KQL native implementation for time series prediction and anomaly detection uses a well-known decomposition model. This model is applied to time series of metrics expected to manifest periodic and trend behavior, such as service traffic, component heartbeats, and IoT periodic measurements to forecast future metric values and detect anomalous ones. The assumption of this regression process is that other than the previously known seasonal and trend behavior, the time series is randomly distributed. You can then forecast future metric values from the seasonal and trend components, collectively named baseline, and ignore the residual part. You can also detect anomalous values based on outlier analysis using only the residual portion.
-To create a decomposition model, use the function [`series_decompose()`](series-decompose-function.md). The `series_decompose()` function takes a set of time series and automatically decomposes each time series to its seasonal, trend, residual, and baseline components. 
+The KQL native implementation for time series prediction and anomaly detection uses a well known decomposition model. Use this model for time series with periodic and trend behavior—like service traffic, component heartbeats, and periodic IoT measurements—to forecast future values and detect anomalies. The regression assumes the remainder is random after removing the seasonal and trend components. Forecast future values from the seasonal and trend components (the baseline) and ignore the residual. Detect anomalies by running outlier analysis on the residual component.
+Use the [`series_decompose()`](series-decompose-function.md) function to create a decomposition model. It decomposes each time series into seasonal, trend, residual, and baseline components.
 
-For example, you can decompose traffic of an internal web service by using the following query:
+Example: Decompose internal web service traffic:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -39,18 +39,18 @@ let max_t = datetime(2017-02-03 22:00);
 let dt = 2h;
 demo_make_series2
 | make-series num=avg(num) on TimeStamp from min_t to max_t step dt by sid 
-| where sid == 'TS1'   //  select a single time series for a cleaner visualization
-| extend (baseline, seasonal, trend, residual) = series_decompose(num, -1, 'linefit')  //  decomposition of a set of time series to seasonal, trend, residual, and baseline (seasonal+trend)
-| render timechart with(title='Web app. traffic of a month, decomposition', ysplit=panels)
+| where sid == 'TS1'   // Select a single time series for cleaner visualization
+| extend (baseline, seasonal, trend, residual) = series_decompose(num, -1, 'linefit')  // Decompose each time series into seasonal, trend, residual, and baseline (seasonal + trend)
+| render timechart with(title='Web app traffic for one month, decomposition', ysplit=panels)
 ```
 
-![Time series decomposition.](media/anomaly-detection/series-decompose-timechart.png)
+![Screenshot of time series decomposition showing original series and panels for seasonal, trend, residual, and baseline components in a timechart.](media/anomaly-detection/series-decompose-timechart.png)
 
 * The original time series is labeled **num** (in red). 
-* The process starts by auto detection of the seasonality by using the function [`series_periods_detect()`](series-periods-detect-function.md) and extracts the **seasonal** pattern (in purple).
-* The seasonal pattern is subtracted from the original time series and a linear regression is run using the function [`series_fit_line()`](series-fit-line-function.md) to find the **trend** component (in light blue).
-* The function subtracts the trend and the remainder is the **residual** component (in green).
-* Finally, the function adds the seasonal and trend components to generate the **baseline** (in blue).
+* The process autodetects seasonality using the [`series_periods_detect()`](series-periods-detect-function.md) function and extracts the **seasonal** pattern (purple).
+* Subtract the seasonal pattern from the original time series, then run a linear regression with the [`series_fit_line()`](series-fit-line-function.md) function to find the **trend** component (light blue).
+* The function subtracts the trend, and the remainder is the **residual** component (green).
+* Finally, add the seasonal and trend components to generate the **baseline** (blue).
 
 ## Time series anomaly detection
 
@@ -139,7 +139,7 @@ demo_make_series2
 
 ## Summary
 
-This document details native KQL functions for time series anomaly detection and forecasting. Each original time series is decomposed into seasonal, trend and residual components for detecting anomalies and/or forecasting. These functionalities can be used for near real-time monitoring scenarios, such as fault detection, predictive maintenance, and demand and load forecasting.
+This document details native KQL functions for time series anomaly detection and forecasting. Each original time series is decomposed into seasonal, trend, and residual components for detecting anomalies and/or forecasting. These functionalities can be used for near real-time monitoring scenarios, such as fault detection, predictive maintenance, and demand and load forecasting.
 
 ## Related content
 

@@ -1,22 +1,22 @@
 ---
-title: Analyze time series data
-description: Learn how to analyze time series data.
+title: Time Series Analysis - Trends, Anomalies, and Monitoring
+description: Gain insights into time series analysis with KQL, from creating time series to advanced anomaly detection and trend analysis for monitoring solutions.
 ms.reviewer: adieldar
 ms.topic: how-to
-ms.date: 08/11/2024
+ms.date: 09/25/2025
 ---
 # Time series analysis
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Cloud services and IoT devices generate telemetry data that can be used to gain insights such as monitoring service health, physical production processes, and usage trends. Performing time series analysis is one way to identify deviations in the pattern of these metrics compared to their typical baseline pattern.
+Cloud services and IoT devices generate telemetry you can use to gain insights into service health, production processes, and usage trends. Time series analysis helps you identify deviations from typical baseline patterns.
 
-Kusto Query Language (KQL) contains native support for creation, manipulation, and analysis of multiple time series. In this article, learn how KQL is used to create and analyze thousands of time series in seconds, enabling near real-time monitoring solutions and workflows.
+Kusto Query Language (KQL) has native support for creating, manipulating, and analyzing multiple time series. This article shows how to use KQL to create and analyze thousands of time series in seconds to enable near real-time monitoring solutions and workflows.
 
 ## Time series creation
 
-In this section, we'll create a large set of regular time series simply and intuitively using the `make-series` operator, and fill-in missing values as needed.
-The first step in time series analysis is to partition and transform the original telemetry table to a set of time series. The table usually contains a timestamp column, contextual dimensions, and optional metrics. The dimensions are used to partition the data. The goal is to create thousands of time series per partition at regular time intervals.
+Create a large set of regular time series using the `make-series` operator and fill in missing values as needed.
+Partition and transform the telemetry table into a set of time series. The table usually contains a timestamp column, contextual dimensions, and optional metrics. The dimensions are used to partition the data. The goal is to create thousands of time series per partition at regular time intervals.
 
 The input table *demo_make_series1* contains 600K records of arbitrary web service traffic. Use the following command to sample 10 records:
 
@@ -29,7 +29,7 @@ The input table *demo_make_series1* contains 600K records of arbitrary web servi
 demo_make_series1 | take 10 
 ```
 
-The resulting table contains a timestamp column, three contextual dimensions columns, and no metrics:
+The resulting table contains a timestamp column, three contextual dimension columns, and no metrics:
 
 | TimeStamp | BrowserVer | OsVer | Country/Region |
 | --- | --- | --- | --- |
@@ -44,7 +44,7 @@ The resulting table contains a timestamp column, three contextual dimensions col
 | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | United Kingdom |
 | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | India |
 
-Since there are no metrics, we can only build a set of time series representing the traffic count itself, partitioned by OS using the following query:
+Because there are no metrics, build time series representing the traffic count, partitioned by OS:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -59,16 +59,16 @@ demo_make_series1
 | render timechart 
 ```
 
-- Use the [`make-series`](make-series-operator.md) operator to create a set of three time series, where:
-  - `num=count()`: time series of traffic
-  - `from min_t to max_t step 1h`: time series is created in 1-hour bins in the time range (oldest and newest timestamps of table records)
-  - `default=0`: specify fill method for missing bins to create regular time series. Alternatively use [`series_fill_const()`](series-fill-const-function.md), [`series_fill_forward()`](series-fill-forward-function.md), [`series_fill_backward()`](series-fill-backward-function.md) and [`series_fill_linear()`](series-fill-linear-function.md) for changes
-  - `by OsVer`:  partition by OS
-- The actual time series data structure is a numeric array of the aggregated value per each time bin. We use `render timechart` for visualization.
+- Use the [`make-series`](make-series-operator.md) operator to create three time series, where:
+  - `num=count()`: traffic count.
+  - `from min_t to max_t step 1h`: creates the time series in one hour bins from the table's oldest to newest timestamp.
+  - `default=0`: specifies the fill method for missing bins to create regular time series. Alternatively, use [`series_fill_const()`](series-fill-const-function.md), [`series_fill_forward()`](series-fill-forward-function.md), [`series_fill_backward()`](series-fill-backward-function.md), and [`series_fill_linear()`](series-fill-linear-function.md) for different fill behavior.
+  - `by OsVer`: partitions by OS.
+- The time series data structure is a numeric array of aggregated values for each time bin. Use `render timechart` for visualization.
 
-In the table above, we have three partitions. We can create a separate time series: Windows 10 (red), 7 (blue) and 8.1 (green) for each OS version as seen in the graph:
+The table above has three partitions (Windows 10, Windows 7, and Windows 8.1). The chart shows a separate time series for each OS version:
 
-:::image type="content" source="media/time-series-analysis/time-series-partition.png" alt-text="Time series partition.":::
+:::image type="content" source="media/time-series-analysis/time-series-partition.png" alt-text="Screenshot of a time series chart with separate lines for Windows 10, Windows 7, and Windows 8.1." lightbox="media/time-series-analysis/time-series-partition.png":::
 
 ## Time series analysis functions
 
@@ -97,7 +97,7 @@ demo_make_series1
 | render timechart
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-filtering.png" alt-text="Time series filtering.":::
+:::image type="content" source="media/time-series-analysis/time-series-filtering.png" alt-text="Time series filtering."lightbox="media/time-series-analysis/time-series-filtering.png":::
 
 ### Regression analysis
 
@@ -119,7 +119,7 @@ demo_series2
 | render linechart with(xcolumn=x)
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-regression.png" alt-text="Time series regression.":::
+:::image type="content" source="media/time-series-analysis/time-series-regression.png" alt-text="Time series regression."lightbox="media/time-series-analysis/time-series-regression.png":::
 
 - Blue: original time series
 - Green: fitted line
@@ -144,14 +144,14 @@ demo_series3
 | render timechart 
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-seasonality.png" alt-text="Time series seasonality.":::
+:::image type="content" source="media/time-series-analysis/time-series-seasonality.png" alt-text="Time series seasonality."lightbox="media/time-series-analysis/time-series-seasonality.png":::
 
 - Use [series_periods_detect()](series-periods-detect-function.md) to automatically detect the periods in the time series, where:
   - `num`: the time series to analyze
   - `0.`: the minimum period length in days (0 means no minimum)
   - `14d/2h`: the maximum period length in days, which is 14 days divided into 2-hour bins
   - `2`: the number of periods to detect
-- Use [series_periods_validate()](series-periods-validate-function.md) if we know that a metric should have specific distinct period(s) and we want to verify that they exist.
+- Use [series_periods_validate()](series-periods-validate-function.md) if we know that a metric should have specific distinct periods and we want to verify that they exist.
 
 > [!NOTE]
 > It's an anomaly if specific distinct periods don't exist
@@ -195,7 +195,7 @@ demo_make_series1
 | render timechart
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-operations.png" alt-text="Time series operations.":::
+:::image type="content" source="media/time-series-analysis/time-series-operations.png" alt-text="Time series operations." lightbox="media/time-series-analysis/time-series-operations.png":::
 
 - Blue: original time series
 - Red: smoothed time series
@@ -203,7 +203,7 @@ demo_make_series1
 
 ## Time series workflow at scale
 
-The example below shows how these functions can run at scale on thousands of time series in seconds for anomaly detection. To see a few sample telemetry records of a DB service's read count metric over four days run the following query:
+This example shows anomaly detection running at scale on thousands of time series in seconds. To see sample telemetry records for a DB service read count metric over four days, run the following query:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -222,7 +222,7 @@ demo_many_series1
 | 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862   |
 | 2016-09-11 21:00:00.0000000 | Loc 9 | 371921734563783410  | 255 | 0        |
 
-And simple statistics:
+View simple statistics:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -234,11 +234,11 @@ demo_many_series1
 | summarize num=count(), min_t=min(TIMESTAMP), max_t=max(TIMESTAMP) 
 ```
 
-| num | min\_t | max\_t |
+| num | min_t | max_t |
 | --- | --- | --- |
 | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
-Building a time series in 1-hour bins of the read metric (total four days * 24 hours = 96 points), results in normal pattern fluctuation:
+A time series in 1-hour bins of the read metric (four days × 24 hours = 96 points) shows normal hourly fluctuation:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -253,11 +253,11 @@ demo_many_series1
 | render timechart with(ymin=0) 
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-at-scale.png" alt-text="Time series at scale.":::
+:::image type="content" source="media/time-series-analysis/time-series-at-scale.png" alt-text="Screenshot of a time series chart showing average reads over four days with normal hourly fluctuations." lightbox="media/time-series-analysis/time-series-at-scale.png":::
 
-The above behavior is misleading, since the single normal time series is aggregated from thousands of different instances that may have abnormal patterns. Therefore, we create a time series per instance. An instance is defined by Loc (location), Op (operation), and DB (specific machine).
+This behavior is misleading because the single normal time series is aggregated from thousands of instances that can have abnormal patterns. Create a time series per instance defined by Loc (location), Op (operation), and DB (specific machine).
 
-How many time series can we create?
+How many time series can you create?
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -274,7 +274,7 @@ demo_many_series1
 | --- |
 | 18339 |
 
-Now, we're going to create a set of 18339 time series of the read count metric. We add the `by` clause to the make-series statement, apply linear regression, and select the top two time series that had the most significant decreasing trend:
+Create 18,339 time series for the read count metric. Add the `by` clause to the make-series statement, apply linear regression, and select the top two time series with the most significant decreasing trend:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -291,7 +291,7 @@ demo_many_series1
 | render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
-:::image type="content" source="media/time-series-analysis/time-series-top-2.png" alt-text="Time series top two.":::
+:::image type="content" source="media/time-series-analysis/time-series-top-2.png" alt-text="Screenshot of two time series with sharply declining read counts compared to normal traffic.":::
 
 Display the instances:
 
@@ -312,14 +312,14 @@ demo_many_series1
 
 | Loc | Op | DB | slope |
 | --- | --- | --- | --- |
-| Loc 15 | 37 | 1151 | -102743.910227889 |
-| Loc 13 | 37 | 1249 | -86303.2334644601 |
+| Loc 15 | 37 | 1151 | -104,498.46510358342|
+| Loc 13 | 37 | 1249 | -86,614.02919932814 |
 
-In less than two minutes, close to 20,000 time series were analyzed and two abnormal time series in which the read count suddenly dropped were detected.
+In under two minutes, the query analyzes nearly 20,000 time series and detects two with a sudden read count drop.
 
-These advanced capabilities combined with fast performance supply a unique and powerful solution for time series analysis.
+These capabilities and the platform performance provide a powerful solution for time series analysis.
 
 ## Related content
 
-- Learn about [Anomaly detection and forecasting](anomaly-detection.md) with KQL.
-- Learn about [Machine learning capabilities](anomaly-diagnosis.md) with KQL.
+- [Anomaly detection and forecasting](anomaly-detection.md) with KQL.
+- [Machine learning capabilities](anomaly-diagnosis.md) with KQL.
