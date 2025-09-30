@@ -1,11 +1,13 @@
 ---
-title: Azure Data Explorer connector for Power Automate
+title: Azure Data Explorer Connector for Power Automate
 description: Learn about using Azure Data Explorer connector for Power Automate to create flows of automatically scheduled or triggered tasks.
+#customer intent: As a Power Automate user, I want to create flows using the Azure Data Explorer connector so that I can automate tasks and send notifications based on query results.
 ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 08/15/2024
+ms.date: 09/24/2025
 no-loc: [Power Automate]
 ---
+
 
 # Azure Data Explorer connector for Microsoft Power Automate
 
@@ -59,7 +61,7 @@ To use the connector, you must first add a trigger. You can define a trigger bas
 
 When you select the Azure Data Explorer connector, you can choose one of the following actions to add to your flow:
 
-- [Run KQL query](#run-kql-query)
+- [Run Kusto Query Language (KQL) query](#run-kql-query)
 - [Run KQL query and render a chart](#run-kql-query-and-render-a-chart)
 - [Run async management command](#run-async-management-command)
 - [Run management command and render a chart](#run-management-command-and-render-a-chart)
@@ -74,7 +76,7 @@ This section describes the capabilities and parameters for each action and provi
 
 Use this action to query the specified cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
-If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](/kusto/query/best-practices?view=azure-data-explorer&preserve-view=true).
+If the query takes more than 8 minutes to run, it fails with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](/kusto/query/best-practices?view=azure-data-explorer&preserve-view=true).
 
 #### Example
 
@@ -89,23 +91,23 @@ The following flow triggers a query every minute. The query checks the number of
 
 Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email.
 
-If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](/kusto/query/best-practices?view=azure-data-explorer&preserve-view=true).
+If the query takes more than 8 minutes to run, it fails with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](/kusto/query/best-practices?view=azure-data-explorer&preserve-view=true).
 
 #### Example
 
-The following flow will present the query results as a timechart.
+The following flow presents the query results as a timechart.
 
 :::image type="content" source="media/flow/flow-run-query.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query and render a chart action.":::
 
 ### Run async management command
 
-Use this action to run a [management command](/kusto/management/index?view=azure-data-explorer&preserve-view=true) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](/kusto/management/show-operations?view=azure-data-explorer&preserve-view=true) command with the ID returned by this action.
+Use this action to run a [management command](/kusto/management/index?view=azure-data-explorer&preserve-view=true) asynchronously, which means it continues to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [`.show operations`](/kusto/management/show-operations?view=azure-data-explorer&preserve-view=true) command with the ID returned by this action.
 
-If the async management command takes more than 60 minutes to run, it will fail with a "RequestTimeout" exception.
+If the async management command takes more than 60 minutes to run, it fails with a "RequestTimeout" exception.
 
 #### Example
 
-The following flow triggers an async command to copy 10 records from the 'TransformedSysLogs' table to the 'TargetTable'. Note that the 'async' keyword is required in the query.
+The following flow triggers an async command to copy 10 records from the TransformedSysLogs table to the TargetTable. The `async` keyword is required in the query.
 
 :::image type="content" source="media/flow/flow-run-async-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async management command action.":::
 
@@ -113,7 +115,7 @@ The following flow triggers an async command to copy 10 records from the 'Transf
 
 Use this action to run a [management command](/kusto/management/index?view=azure-data-explorer&preserve-view=true) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
 
-If the management command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
+If the management command takes more than 8 minutes to run, it fails with a "RequestTimeout" exception.
 
 :::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run management command and render a chart in recurrence pane.":::
 
@@ -121,11 +123,11 @@ If the management command takes more than 8 minutes to run, it will fail with a 
 
 This action runs the show management command and returns the result that can be used in the following connectors.
 
-If the management command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
+If the management command takes more than 8 minutes to run, it fails with a "RequestTimeout" exception.
 
 #### Example
 
-The following flow runs the [.show operation](/kusto/management/show-operations?view=azure-data-explorer&preserve-view=true) command to find the status of an async command using an operation ID returned by an async command execution.
+The following flow runs the [`.show operation`](/kusto/management/show-operations?view=azure-data-explorer&preserve-view=true) command to find the status of an async command using an operation ID returned by an async command execution.
 
 :::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show management command action.":::
 
@@ -157,7 +159,7 @@ To run a flow that contains an Azure Data Explorer connector, you must use a val
 
 The following steps show how to create a connection from within a flow.
 
-1. In **Run KQL query**, select the three dots at the top right of the power automate connector.
+1. In **Run KQL query**, select the three dots at the top right of the Power Automate connector.
 
     :::image type="content" source="media/flow/flow-add-connection.png" alt-text="Screenshot of Azure Data Explorer connection, showing the authentication option.":::
 
@@ -174,7 +176,7 @@ To authenticate with a Service Principal:
 1. Select **Connect with Service Principal**.
 1. Fill out the form with the following information:
 
-    - **Connection Name**: A descriptive and meaningful name for the new connection. In this example, we've used "MyApplication".
+    - **Connection Name**: A descriptive and meaningful name for the new connection. In this example, we've used **MyApplication**.
     - **Client ID**: Your application ID.
     - **Client Secret**: Your application key.
     - **Tenant**: The ID of the Microsoft Entra directory in which you created the application.
@@ -210,7 +212,7 @@ To check if your flow works, check the flow's run history:
 
     :::image type="content" source="media/flow/flow-full-details.png" alt-text="Screenshot of Run history full results page.":::
 
-To see why a run failed, select the run start time. The flow appears, and the step of the flow that failed is indicated by a red exclamation point. Expand the failed step to view its details. The **Details** pane on the right contains information about the failure so that you can troubleshoot it.
+To see why a run failed, select the run start time. The flow appears, and the step of the flow that failed is indicated by a red exclamation point. Expand the failed step to view its details. The **Details** pane to the right contains information about the failure so that you can troubleshoot it.
 
 :::image type="content" source="media/flow/flow-error.png" alt-text="Screenshot of flow run, showing an error message.":::
 
