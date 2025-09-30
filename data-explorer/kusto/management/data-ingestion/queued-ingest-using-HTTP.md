@@ -51,7 +51,7 @@ Each item in the `blobs` array must follow this structure:
 |Field|Type|Required|Description|
 |--|--|--|--|
 |`url`|`string`|:heavy_check_mark:|The URL of the blob to ingest. The service performs light validation on this field.|
-|`sourceId`|`string`|No|An identifier for the source blob.|
+|`sourceId`|`Guid`|No|An identifier for the source blob.|
 |`rawSize`|`integer`|No|The size of the blob before compression (nullable).|
 
 ### Supported ingestion properties
@@ -84,7 +84,7 @@ Authorization: Bearer <access_token>
   "blobs": [
     {
       "url": "https://example.com/blob1.csv.gz",
-      "sourceId": "source_1",
+      "sourceId": "123a6999-411e-4226-a333-w79992dd9b95",
       "rawSize": 1048576
     }
   ],
@@ -126,6 +126,7 @@ Authorization: Bearer <access_token>
 
 ## Performance tips
 
-- Submit up to **20 blobs** per request for optimal performance.
+- Submit up to **20 blobs** per request.
+- Submitting more than 20 blobs in a single request is not supported.
 - Use `enableTracking` to monitor ingestion status via the status endpoint.
 - Avoid setting `skipBatching` unless ingestion latency is critical.
