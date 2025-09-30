@@ -110,7 +110,7 @@ The following example shows the queued ingestion operations for multiple operati
 |IngestionOperationId|Started On |Last Updated On |State |Discovered |InProgress|Ingested |Failed|Canceled |SampleFailedReasons|Database|Table|
 |--|--|--|--|--|--|--|--|--|--|--|--|
 |00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444 |2025-01-10 14:57:41.0000000 |2025-01-10 15:15:04.0000000|InProgress | 10387 |9391 |995 |1 |0 | Stream with ID '*****.csv' has a malformed CSV format*|MyDatabase|MyTable|
-|11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444 |2025-01-10 15:12:23.0000000 |2025-01-10 15:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception of type 'System.Exception' was thrown|MyDatabase|MyOtherTable|
+|11112222;22223333;11110000-bbbb-2222-cccc-3333dddd4444 |2025-01-10 15:12:23.0000000 |2025-01-10 15:15:16.0000000|InProgress | 25635 |25489 |145 |1 |0 | Unknown error occurred: Exception type 'System.Exception' was thrown|MyDatabase|MyOtherTable|
 
 ### Show details
 
