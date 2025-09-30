@@ -1,12 +1,12 @@
 ---
-title: .show query acceleration policy command
-description: Learn how to use the ".show query acceleration policy command" to accelerate queries over external delta tables.
+title: `.show query acceleration policy` command
+description: Learn how to use the `.show query acceleration policy command` to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 09/16/2025
 ---
 
-# .show query acceleration policy command
+# `.show query acceleration policy` command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -50,7 +50,7 @@ The command returns a table with a record per external table with the following 
 
 | PolicyName              | EntityName                     | Policy                                                                                                                                                                     | ChildEntities | EntityType    |
 | ----------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------- |
-| QueryAccelerationPolicy | [MyDatabase].[MyExternalTable] | {<br> "IsEnabled": true,<br> "Hot": "1.00:00:00",<br> "HotWindows": [{"MinValue":"2025-07-06 07:53:55.0192810","MaxValue":"2025-07-06 07:53:55.0192814"}], "MaxAge": "5m"} |               | ExternalTable |
+| QueryAccelerationPolicy | [MyDatabase].[MyExternalTable] | `{<br> "IsEnabled": true,<br> "Hot": "1.00:00:00",<br> "HotWindows": [{"MinValue":"2025-07-06 07:53:55.0192810","MaxValue":"2025-07-06 07:53:55.0192814"}], "MaxAge": "5m"}` |               | ExternalTable |
 
 ## Related content
 

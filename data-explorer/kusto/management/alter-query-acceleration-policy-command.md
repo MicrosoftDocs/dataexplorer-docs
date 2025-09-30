@@ -1,12 +1,12 @@
 ---
-title: .alter query acceleration policy command
-description: Learn how to use the ".alter query acceleration policy command" to accelerate queries over external delta tables.
+title: `.alter query acceleration policy` command
+description: Learn how to use the `.alter query acceleration policy command` to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 09/16/2025
 ---
 
-# .alter query acceleration policy command
+# `.alter query acceleration policy` command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -36,7 +36,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 | IsEnabled  | `Boolean`  | :heavy_check_mark: | Indicates whether the policy is enabled.                                                                                                                                                                                  |
 | Hot        | `Timespan` | :heavy_check_mark: | The hot period defined in the query acceleration policy. Minimum value = 1 d.                                                                                                                                             |
 | HotWindows | `DateTime` |                    | One or more optional time windows. Delta data files created within these time windows are accelerated.                                                                                                                    |
-| MaxAge     | `Timespan` |                    | The external table will return accelerated data if the last index refresh time is greater than @now - MaxAge. Otherwise, external table will operate in non-accelerated mode. Default is 5 minutes. Minimum is 1 minute. |
+| MaxAge     | `Timespan` |                    | The external table returns accelerated data if the last index refresh time is greater than @now - MaxAge. Otherwise, external table operates in nonaccelerated mode. Default is 5 minutes. Minimum is 1 minute. |
 
 > [!NOTE]
 > Query acceleration is applied to data within a specific time period, defined as `timespan`, starting from the `modificationTime` as stated for each file in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file).
