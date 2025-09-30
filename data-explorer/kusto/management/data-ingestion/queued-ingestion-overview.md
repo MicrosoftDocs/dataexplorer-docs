@@ -3,7 +3,7 @@ title: Queued ingestion overview commands
 description: Learn about queued ingestion and its commands.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 04/25/2025
+ms.date: 09/30/2025
 ---
 # Queued ingestion commands overview (preview)
 

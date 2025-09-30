@@ -3,7 +3,7 @@ title:  .ingest-from-storage-queued into command
 description: This article describes the `.ingest-from-storage-queued` `into` command used to ingest a storage folder in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/18/2025
+ms.date: 09/30/2025
 ---
 # .ingest-from-storage-queued command (preview)
 

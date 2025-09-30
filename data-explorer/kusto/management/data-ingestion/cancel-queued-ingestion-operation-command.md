@@ -3,7 +3,7 @@ title: .cancel queued ingestion operation command
 description: Learn how to use the `.cancel queued operation` command to cancel a long-running operation.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 03/19/2025
+ms.date: 09/30/2025
 ---
 # .cancel queued ingestion operation command (preview)
 
