@@ -108,7 +108,7 @@ Authorization: Bearer <access_token>
 |Tracking enabled (`enableTracking: true`)|Returns a nonempty `ingestionOperationId`.|
 |Tracking disabled or omitted|Returns an empty `ingestionOperationId`.|
 
-**Tracking enabled:**
+### Tracking enabled
 
 ```json
 {
@@ -116,7 +116,7 @@ Authorization: Bearer <access_token>
 }
 ```
 
-**Tracking disabled:**
+### Tracking disabled
 
 ```json
 {
