@@ -872,7 +872,7 @@ items:
       - name: .ingest inline command
         displayName: .ingest inline
         href: data-ingestion/ingest-inline.md
-      - name: Queued ingestion commands
+      - name: Queued ingestion
         items:
           - name: Queued ingestion commands overview
             displayName: Queued ingestion commands, ingest from folders, ingest from files, ingest from storage
