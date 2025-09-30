@@ -1,7 +1,7 @@
 ---
 title: Ingest data from OpenTelemetry to Azure Data Explorer
 description: Learn how to use Azure Data Explorer as an OpenTelemetry sink.
-ms.date: 10/03/2022
+ms.date: 09/28/2025
 ms.topic: how-to
 ms.reviewer: ramacg
 ---
@@ -10,26 +10,28 @@ ms.reviewer: ramacg
 
 [!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
 
-[OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) (OTel) is an open framework for application observability. The instrumentation is hosted by the Cloud Native Computing Foundation (CNCF), which provides standard interfaces for observability data, including [metrics](https://opentelemetry.io/docs/concepts/observability-primer/#reliability--metrics), [logs](https://opentelemetry.io/docs/concepts/observability-primer/#logs), and [traces](https://opentelemetry.io/docs/concepts/observability-primer/#distributed-traces). The OTel Collector is made up of the following three components: **receivers** deal with how to get data into the Collector, **processors** determine what to do with received data, and **exporters** are responsible for where to send the received data.
+[OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) (OTel) is an open framework for application observability. The instrumentation is hosted by the Cloud Native Computing Foundation (CNCF). It provides standard interfaces for observability data, including [metrics](https://opentelemetry.io/docs/concepts/observability-primer/#reliability--metrics), [logs](https://opentelemetry.io/docs/concepts/observability-primer/#logs), and [traces](https://opentelemetry.io/docs/concepts/observability-primer/#distributed-traces). The OTel Collector includes three components: **receivers**, which get data into the Collector; **processors**, which determine what to do with the received data; and **exporters**, which send the received data to a destination.
 
 The [Azure Data Explorer exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) supports ingestion of data from many receivers into Azure Data Explorer. 
 
 > [!NOTE]
-> * The configuration settings are summarized in the [readme documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/azuredataexplorerexporter/README.md).
-> * For the exporter source code, see [Azure Data Explorer exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter). 
+>
+> * Configuration settings are summarized in the [readme documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/azuredataexplorerexporter/README.md).
+> * For the exporter source code, see [Azure Data Explorer exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter).
 
 In this article, you learn how to:
 
 > [!div class="checklist"]
-> * Set up your environment
-> * Configure the Azure Data Explorer exporter
-> * Run the sample application
-> * Query incoming data
+>
+> * Set up your environment.
+> * Configure the Azure Data Explorer exporter.
+> * Run the sample application.
+> * Query incoming data.
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/)
-* A cluster and a database: [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* A cluster and a database. Learn how to [create an Azure Data Explorer cluster and database](create-cluster-and-database.md).
 
 ## Set up your environment
 
@@ -39,21 +41,18 @@ In this section, you prepare your environment to use the OTel exporter.
 
 ### Create a Microsoft Entra app registration
 
-Microsoft Entra application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the OTel exporter, you need to create and register a Microsoft Entra service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+Microsoft Entra application authentication lets applications access Azure Data Explorer without a user present. To ingest data using the OTel exporter, create and register a Microsoft Entra service principal, and authorize this principal to ingest data into an Azure Data Explorer database.
 
-1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create a Microsoft Entra application registration in Azure Data Explorer](provision-entra-id-app.md).
-1. Save the following values to be used in later steps:
-    * Application (client) ID
-    * Directory (tenant) ID
-    * Client secret key value
+1. On your Azure Data Explorer cluster, follow steps 1–7 in [Create a Microsoft Entra application registration in Azure Data Explorer](provision-entra-id-app.md).
+1. Save the following values for later steps:
 
 <a name='grant-the-azure-ad-app-permissions'></a>
 
 ### Grant the Microsoft Entra app permissions
 
-1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
+1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. To learn how to connect, see [Add clusters](web-query-data.md#add-clusters).
 1. Browse to the database in which you want to ingest data.
-1. Run the following management command, replacing the placeholders. Replace *DatabaseName* with the name of the target database and *ApplicationID* with the previously saved value. This command grants the app the [database ingestor](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) role. For more information, see [Manage database security roles](/kusto/management/manage-database-security-roles?view=azure-data-explorer&preserve-view=true).
+1. Run the following management command, replacing the placeholders. Replace *DatabaseName* with the target database name and *ApplicationID* with the saved value.
 
     ```kusto
     .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'Azure Data Explorer App Registration'
@@ -65,9 +64,9 @@ Microsoft Entra application authentication is used for applications that need to
 ### Create target tables
 
 1. Browse to [Azure Data Explorer web UI](https://dataexplorer.azure.com/). 
-1. Select **Query** from the left menu. 
+1. Select **Query** from the left menu.
 1. Expand the target cluster in the left pane.
-1. Select the target database to give your queries the correct context.
+1. Select the target database to give your queries correct context.
 1. Run the following commands to create tables and schema mapping for the incoming data:
 
     ```kusto
@@ -80,11 +79,11 @@ Microsoft Entra application authentication is used for applications that need to
 
 ### Set up streaming ingestion
 
-Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#continuous-data-ingestion). The *streaming* method is called *managed* in the Azure Data Explorer exporter configuration. Streaming ingestion may be a good choice for you if you need the logs and traces are to be available in near real time. However, streaming ingestion uses more resources than batched ingestion. The OTel framework itself batches data, which should be considered when choosing which method to use for ingestion.
+Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#continuous-data-ingestion). The *streaming* method is called *managed* in the Azure Data Explorer exporter configuration. Streaming ingestion might be a good choice if you need logs and traces available in near real time. However, streaming ingestion uses more resources than batched ingestion. The OTel framework batches data, which you should consider when choosing an ingestion method.
 
 > [!NOTE]
-> [Streaming ingestion](ingest-data-streaming.md) must be enabled on Azure Data Explorer cluster to enable the `managed` option.
-> You can check if streaming is enabled using the [.show database streaming ingestion policy](/kusto/management/show-database-streaming-ingestion-policy-command?view=azure-data-explorer&preserve-view=true) command.
+> [Streaming ingestion](ingest-data-streaming.md) must be enabled on the Azure Data Explorer cluster to use the `managed` option.
+> Check if streaming is enabled by running [.show database streaming ingestion policy](/kusto/management/show-database-streaming-ingestion-policy-command?view=azure-data-explorer&preserve-view=true).
 
 Run the following command for each of the three tables to enable streaming ingestion:
 
@@ -100,26 +99,26 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
 
     |Field | Description | Suggested setting|
     |---|---|---|
-    | Exporters| Type of exporter | Azure Data Explorer | 
+    | Exporters| Type of exporter | Azure Data Explorer |
     |  cluster_uri |   URI of the Azure Data Explorer cluster that holds the database and tables |  https:// &lt;cluster>.kusto.windows.net |
     | application_id |  Client ID|  &lt;application id> |
     | application_key| Client secret |  &lt;application key> |
     | tenant_id | Tenant |  &lt;application tenant>|
-    | db_name | Database that receives the logs | oteldb, or other database you have already created
-    | metrics_table_name | The target table in the database db_name that stores exported metric data. | OTELMetrics
-    | logs_table_name | The target table in the database db_name that stores exported logs data. | OTELLogs
-    | traces_table_name | The target table in the database db_name that stores exported traces data. | OTELTraces
-    | ingestion_type | Type of ingestion: managed (streaming) or batched | managed
-    | metrics_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [metrics attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#metrics). The default mapping can be changed using this parameter. | &lt;json metrics_table_name mapping>
-    | logs_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [logs attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#logs). The default mapping can be changed using this parameter. | &lt;json logs_table_name mapping>
-    | traces_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [trace attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#traces). The default mapping can be changed using this parameter. |&lt;json traces_table_name mapping>
-    | traces | Services: traces components to enable   |  receivers: [otlp] <br> processors: [batch] <br> exporters: [azuredataexplorer]
-    | metrics | Services: metrics components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [azuredataexplorer]
-    | logs | Services: logs components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [ azuredataexplorer]
+    | db_name | Database that receives the logs | oteldb, or other database you created. |
+    | metrics_table_name | The target table in the database db_name that stores exported metric data. | OTELMetrics |
+    | logs_table_name | The target table in the database db_name that stores exported logs data. | OTELLogs |
+    | traces_table_name | The target table in the database db_name that stores exported traces data. | OTELTraces |
+    | ingestion_type | Type of ingestion: managed (streaming) or batched | managed |
+    | metrics_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [metrics attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#metrics). The default mapping can be changed using this parameter. | &lt;json metrics_table_name mapping> |
+    | logs_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [logs attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#logs). The default mapping can be changed using this parameter. | &lt;json logs_table_name mapping> |
+    | traces_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [trace attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#traces). The default mapping can be changed using this parameter. |&lt;json traces_table_name mapping> |
+    | traces | Services: traces components to enable   |  receivers: [otlp] </br> processors: [batch] </br> exporters: [azuredataexplorer] |
+    | metrics | Services: metrics components to enable | receivers: [otlp] </br> processors: [batch] </br> exporters: [azuredataexplorer] |
+    | logs | Services: logs components to enable | receivers: [otlp] </br> processors: [batch] </br> exporters: [ azuredataexplorer] |
 
-1. Use the "--config" flag to run the Azure Data Explorer exporter.
+1. To run the Azure Data Explorer exporter, use the "--config" flag.
 
-The following is an example configuration for the Azure Data Explorer exporter:
+This is an example configuration for the Azure Data Explorer exporter:
 
 ```yaml
 ---
@@ -162,7 +161,7 @@ service:
 
 ## Collect data with a sample application
 
-Now that the collector is configured, you need to send data to be ingested. In this example. you use the sample [spring pet clinic](https://github.com/spring-projects/spring-petclinic) application with the java OTeL collector agent.
+Now that the collector is configured, you need to send data to be ingested. In this example. You use the sample [spring pet clinic](https://github.com/spring-projects/spring-petclinic) application with the java OTeL collector agent.
 
 1. Download the collector agent here: [Open telemetry collector agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
 
@@ -198,7 +197,7 @@ Now that the collector is configured, you need to send data to be ingested. In t
 
 ## Query incoming data
 
-Once the sample app has run, your data has been ingested into the defined tables in Azure Data Explorer. These tables were created in a database that was defined in the OTel collector configuration, as *oteldb*. The tables you've created were defined in the OTel collector configuration. In this example, you've created three tables: *OTELMetrics*, *OTELLogs*, and *OTELTraces*. In this section, you query each table separately to get a small selection of the available data.
+Once the sample app has run, your data has been ingested into the defined tables in Azure Data Explorer. These tables are created in a database that was defined in the OTel collector configuration, as *oteldb*. The tables you created are defined in the OTel collector configuration. In this example, you created three tables: *OTELMetrics*, *OTELLogs*, and *OTELTraces*. In this section, you query each table separately to get a small selection of the available data.
 
 1. Browse to [Azure Data Explorer web UI](https://dataexplorer.azure.com/). 
 1. Select **Query** from the left menu. 
@@ -249,13 +248,12 @@ Once the sample app has run, your data has been ingested into the defined tables
       |573c0e4e002a9f7281f6d63eafe4ef87|dab70d0ba8902c5e|        |87d003d6-02c1-4f3d-8972-683243c35642|STATUS_CODE_UNSET|SPAN_KIND_CLIENT         |2022-07-01T13:17:59Z       |2022-07-01T13:17:59Z                                                       |{"telemetry.auto.version":"1.14.0", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "service.name":"my-service", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.language":"java", "telemetry.sdk.name":"opentelemetry", "host.arch":"amd64", "host.name":"DESKTOP-SFS7RUQ", "process.pid":34316, "process.runtime.version":"18.0.1.1+2-6", "os.type":"windows", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "telemetry.sdk.version":"1.14.0"}|{"db.user":"sa", "thread.id":1, "db.name":"87d003d6-02c1-4f3d-8972-683243c35642", "thread.name":"main", "db.system":"h2", "scope.name":"io.opentelemetry.jdbc", "scope.version":"1.14.0-alpha", "db.connection_string":"h2:mem:", "db.statement":"DROP TABLE vet_specialties IF EXISTS"}|[]    |[]   |
       |84a9a8c4009d91476da02dfa40746c13|3cd4c0e91717969a|        |87d003d6-02c1-4f3d-8972-683243c35642|STATUS_CODE_UNSET|SPAN_KIND_CLIENT        |2022-07-01T13:17:59Z       |2022-07-01T13:17:59Z    |{"telemetry.auto.version":"1.14.0", "os.description":"Windows 11 10.0", "process.executable.path":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe", "process.runtime.description":"Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 18.0.1.1+2-6", "service.name":"my-service", "process.runtime.name":"Java(TM) SE Runtime Environment", "telemetry.sdk.language":"java", "telemetry.sdk.name":"opentelemetry", "host.arch":"amd64", "host.name":"DESKTOP-SFS7RUQ", "process.pid":34316, "process.runtime.version":"18.0.1.1+2-6", "os.type":"windows", "process.command_line":"C:\\Program Files\\Java\\jdk-18.0.1.1;bin;java.exe -javaagent:./opentelemetry-javaagent.jar", "telemetry.sdk.version":"1.14.0"}|{"db.user":"sa", "thread.id":1, "db.name":"87d003d6-02c1-4f3d-8972-683243c35642", "thread.name":"main", "db.system":"h2", "scope.name":"io.opentelemetry.jdbc", "scope.version":"1.14.0-alpha", "db.connection_string":"h2:mem:", "db.statement":"DROP TABLE vets IF EXISTS"}           |[]    |[]   |
 
-
 ### Further data processing
 
-Using update policies, the collected data can further be processed as per application need. For more information, see [Update policy overview](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true).
+Use update policies to further process the collected data, as per application need. For more information, see [Update policy overview](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true).
 
 1. The following example exports histogram metrics to a histo-specific table with buckets and aggregates. Run the following command in the query pane of the Azure Data Explorer web UI:
-    
+
     ```kusto
     .create table HistoBucketData (Timestamp: datetime, MetricName: string , MetricType: string , Value: double, LE: double, Host: string , ResourceAttributes: dynamic, MetricAttributes: dynamic )
     
