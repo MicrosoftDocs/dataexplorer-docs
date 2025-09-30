@@ -1,5 +1,5 @@
 ---
-title: Detect & Forecast Anomalies Using KQL Time Series
+title: Detect and Forecast Anomalies Using KQL Time Series
 description: Learn how to analyze time series data for anomaly detection and forecasting using KQL. Explore decomposition models for trend, seasonal, and residual analysis.
 ms.reviewer: adieldar
 ms.topic: how-to

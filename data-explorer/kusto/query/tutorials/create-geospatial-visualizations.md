@@ -1,12 +1,12 @@
 ---
-title:  'Tutorial: Create geospatial visualizations'
+title:  'Tutorial: Create Geospatial Visualizations'
 description: Discover how to represent geospatial data with maps, bubbles, and polygons using KQL's powerful visualization tools.
 ms.topic: tutorial
 ms.date: 09/25/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 
-# Tutorial: create geospatial visualizations
+# Tutorial: Create geospatial visualizations
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 

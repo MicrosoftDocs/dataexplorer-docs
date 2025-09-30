@@ -10,7 +10,7 @@ monikerRange: "azure-data-explorer || microsoft-fabric"
 
 > [!INCLUDE [applies](includes/applies-to-version/applies.md)] [!INCLUDE [fabric](includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](includes/applies-to-version/azure-data-explorer.md)]
 
-Data ingestion adds data to a table and makes it available for query. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that is supported for data ingestion.
+Data ingestion adds data to a table and makes it available for query. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that are supported for data ingestion.
 
 > [!NOTE]
 > Before you ingest data, make sure that your data is properly formatted and defines the expected fields. We recommend using your preferred validator to confirm the format is valid. For example, you may find the following validators useful to check CSV or JSON files:
@@ -25,7 +25,7 @@ and [Ingestion error codes in Azure Data Explorer](/azure/data-explorer/error-co
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
-|ApacheAvro|`.avro`    |An [Avro](https://avro.apache.org/docs/current/) format that supports [logical types](https://avro.apache.org/docs/++version++/specification/#Logical+Types). Supported compression codecs: `null`, `deflate`, and `snappy`. The reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For details on ingesting Event Hub Capture Avro files, see [Ingesting Event Hub Capture Avro files](/azure/data-explorer/ingest-data-event-hub-overview#schema-mapping-for-event-hub-capture-avro-files). |
+|ApacheAvro|`.avro`    |An [Avro](https://avro.apache.org/docs/current/) format that supports [logical types](https://avro.apache.org/docs/++version++/specification/#Logical+Types). Supported compression codecs: `null`, `deflate`, and `snappy`. The reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For details on ingesting Event Hubs Capture Avro files, see [Ingesting Event Hubs Capture Avro files](/azure/data-explorer/ingest-data-event-hub-overview#schema-mapping-for-event-hub-capture-avro-files). |
 |Avro     |`.avro`     |A legacy implementation of the [Avro](https://avro.apache.org/docs/current/) format based on the [.NET library](https://www.nuget.org/packages/Microsoft.Hadoop.Avro). Supported compression codecs: `null` and `deflate`. To use `snappy`, use the `ApacheAvro` data format. |
 |CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
