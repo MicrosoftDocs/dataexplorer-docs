@@ -23,19 +23,19 @@ A Microsoft account or a Microsoft Entra user identity to sign in to the [**help
 
 1. In the **Explore sample dashboards** dialog box, choose a sample dashboard and then select **Explore**. In keeping with the previous example, select the **Metrics sample dashboard**.
 
-    :::image type="content" source="media/web-ui-samples-gallery/sample-dashboards.png" alt-text="Screenshot of Explore dashboards samples dialog box showing sample dashboard options.":::
+    :::image type="content" source="media/adx-dashboards/sample-dashboards.png" alt-text="Screenshot of Explore dashboards samples dialog box showing sample dashboard options.":::
 
 1. The dashboard opens in edit mode and presents various pre-configured tile options for customization.
 
-    :::image type="content" source="media/web-ui-samples-gallery/sample-dash-homepage.png" alt-text="Screenshot showing the samples gallery dashboard from the Metrics data database, with a variety of tiles." lightbox="media/web-ui-samples-gallery/sample-dash-homepage.png":::
+    :::image type="content" source="media/adx-dashboards/sample-dash-homepage.png" alt-text="Screenshot showing the samples gallery dashboard from the Metrics data database, with a variety of tiles." lightbox="media/adx-dashboards/sample-dash-homepage.png":::
 
 1. Select the edit icon on the **CPU Usage** tile to access the underlying KQL query and formatting options. Explore the various tabs that allow you to adjust the visual display and review the results. Take some time to familiarize yourself with the features and options available.
 
-    :::image type="content" source="media/web-ui-samples-gallery/edit-tile.png" alt-text="Screenshot of the CPU usage visualization tile.":::
+    :::image type="content" source="media/adx-dashboards/edit-tile.png" alt-text="Screenshot of the CPU usage visualization tile.":::
 
 1. Select **Apply changes** or **Discard changes** to save or discard your changes. This will take you back to the main dashboard.
 
-   :::image type="content" source="media/web-ui-samples-gallery/save-changes.png" alt-text="Screenshot of CPU usage tile edit window with options to apply or discard changes.":::
+   :::image type="content" source="media/adx-dashboards/save-changes.png" alt-text="Screenshot of CPU usage tile edit window with options to apply or discard changes.":::
 
 1. Learn how to [view parameters](dashboard-parameters.md#view-parameters-list) and [customize visuals](dashboard-customize-visuals.md#customize-visuals).
 
