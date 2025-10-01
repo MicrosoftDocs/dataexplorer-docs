@@ -280,32 +280,32 @@ This query dynamically removes properties from the packed values object based on
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21PwW6DMAy98xVeL4BEpdG1O1Tqqfdp2nqrEDLUooyQICdAmfrxczMOa7VEtuSX955fTujkFoqiT9NzSW99WxBvwTqudZXAAbki94juz8h2b3rttqCMruLgGICccLPZLG+Vrl7WYfJ3Tlcyr1+TR57HQ6lau0j3SsVBFlyBLo70CQZUPVnYQYdlk6NSUSyP7bDErlMTMLVmoHc2HbGrPXFWGA1+U+S7COjSoRg2tbQdIDNOM9czrjCeiWmGjmkGT9YhOzvW7gwLybqYebZvW+T6m6CTvfZgPnwIMW2xodySi2aT5yz2mvif/xRY5b/p84YmO0uSe8+bUIAvKt0SRwl89/oDn62shLsBAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1VPwW6DMAy98xVeLwUJpMGgh0k97QeqrbcKIZdaNCMkURKgTP34edkm1ERxHL%2Fn55cLet5nSfGHHm1Lr%2BC8FapL4Yi2I7%2B%2B3%2FSo%2BCm16pLoFAGvbVVVWV68lNv0P88LzstduuJFWQScj1A%2BVqOUSVRHd6CbJ3WBA7Y97MHw1aCUccLQMGVojFzA0qAnOlhtyHpBjomBrxWECXGITKebQRbrBYc9oLW4BGbA7zBfyVIonPIanpxH690s%2FBU27HHzx3LjMKAVXwSGJ7qjfg%2FjWXDAnhpHPg4Sz3USOpL1FxPKMdg7Y9f8um56WlxoSB%2F1ftq48Emtz3Bmow%2FoNx7hPWmSAQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-datatable(SourceNumber: string, TargetNumber: string, CharsCount: long)
+datatable(Source: string, Target: string, Count: long)
 [
-    '555-555-1234', '555-555-1212', 46,
-    '555-555-1212', '', int(null)
+    '555-1234', '555-1212', 46,
+    '555-2424', '', int(null)
 ]
-| extend values = pack_all()
-| mv-apply removeProperties = values on 
+| extend Pack = pack_all()
+| mv-apply removeProperties = Pack on 
     (
-    mv-expand kind = array values
-    | where values[1] !startswith "555"
-    | summarize propsToRemove = make_set(values[0])
+    mv-expand kind = array Pack
+    | where Pack[1] !startswith "555"
+    | summarize propsToRemove = make_set(Pack[0])
     )
-| extend values = bag_remove_keys(values, propsToRemove)
+| extend values = bag_remove_keys(Pack, propsToRemove)
 | project-away propsToRemove
 ```
 
 **Output**
 
-| SourceNumber | TargetNumber | CharsCount | values |
+| Source | Target | Count | Pack | `values` |
 |--|--|--|--|
-| 555-555-1234 | 555-555-1212 | 46 | {<br> "SourceNumber": "555-555-1234",<br>   "TargetNumber": "555-555-1212"<br> } |
-| 555-555-1212 | &nbsp; | &nbsp; | {<br> "SourceNumber": "555-555-1212"<br> } |
+| 555-1234 | 555-1212 | 46 | {<br>	"Source": "555-1234",<br>	"Target": "555-1212",<br>	"Count": 46<br>} | {<br> "Source": "555-1234",<br>   "Target": "555-1212"<br> } |
+| 555-2424 | &nbsp; | &nbsp; | {<br>	"Source": "555-2424",<br>	"Target": "",<br>	"Count": null<br>} | {<br> "Source": "555-2424"<br> } |
 
 ## Related content
 
