@@ -147,3 +147,8 @@ SmsMessages
 | 555-555-1234 | 555-555-1212 | {"CharsCount":"46","AttachmentSize":"250","AttachmentType":"jpeg","AttachmentName":"Pic2"} |
 | 555-555-1234 | 555-555-1213 | {"CharsCount":"50","AttachmentSize":"300","AttachmentType":"png","AttachmentName":"Pic3"} |
 | 555-555-1234 | 555-555-1212 | {"CharsCount":"46","AttachmentSize":"300","AttachmentType":"png","AttachmentName":"Pic3"} |
+
+## Related content
+
+* [pack-all function](./pack-all-function.md)
+* [bag-unpack plugin](./bag-unpack-plugin.md)

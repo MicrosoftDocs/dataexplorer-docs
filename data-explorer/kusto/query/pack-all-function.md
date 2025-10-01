@@ -30,37 +30,42 @@ Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from all t
 
 The following query will use `pack_all()` to create columns for the below table.
 
-|SourceNumber |TargetNumber| CharsCount
-|---|---|---
-|555-555-1234 |555-555-1212 | 46
-|555-555-1234 |555-555-1213 | 50
-|555-555-1313 | | 42
-| |555-555-3456 | 74
+|Source |Target| CharsCount|
+|---|---|---|
+|555-1234 |555-1212 | 46 |
+|555-1234 |555-1213 | 50 |
+|555-1313 | | 42 |
+| |555-3456 | 74 |
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32PsQrCMBCG9zxFtrRwgm2SCgWn4uAigm4ikrZHFNOkpCko+PCmIFgXOY6f+/j+4VoV4tQGk4MbfYO7savRl0PwN6vhqLzG8Muqq/JD5UYbSuOsTsmJMCnlYtos54LB7MxyBqKAfwZnIJdzg0+IxV4OlLCZzIUsGKwEJWfyovgIaFu6V80d23Uf46KMSVL4oK22zsd/jNl0fXh+jeBHTN/V81O7+AAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22KvQrCMBSF9zxFttvCFWyTVCg4FQcXEXQTkWgvUYxJSRNQ8OGt0OIiZzh%2FX6vjoLOlbOdTuFDdx3BzBvc6GIpTa6469I1PLtbWO5OzAwOl1KwohQQcY1ECygr%2FPQJQzadHfCsMbImcwQgJqSrAheTsyN6cnpFcy7f6cqd22Q120tZmOY7T2jgfaJOsXT26%2BPoRMSTKPx5KvAnUAAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-datatable(SourceNumber:string,TargetNumber:string,CharsCount:long)
+datatable(Source:string,Target:string,CharsCount:long)
 [
-'555-555-1234','555-555-1212',46,
-'555-555-1234','555-555-1213',50,
-'555-555-1313','',42, 
-'','555-555-3456',74 
+'555-1234','555-1212',46,
+'555-1234','555-1213',50,
+'555-1313','',42, 
+'','555-3456',74 
 ]
 | extend Packed=pack_all(), PackedIgnoreNullEmpty=pack_all(true)
 ```
 
 **Output**
 
-|SourceNumber |TargetNumber | CharsCount | Packed |PackedIgnoreNullEmpty
-|---|---|---|---|---
-|555-555-1234 |555-555-1212 | 46 |{"SourceNumber":"555-555-1234", "TargetNumber":"555-555-1212", "CharsCount": 46} | {"SourceNumber":"555-555-1234", "TargetNumber":"555-555-1212", "CharsCount": 46}
-|555-555-1234 |555-555-1213 | 50 |{"SourceNumber":"555-555-1234", "TargetNumber":"555-555-1213", "CharsCount": 50} | {"SourceNumber":"555-555-1234", "TargetNumber":"555-555-1213", "CharsCount": 50}
-|555-555-1313 | | 42 | {"SourceNumber":"555-555-1313", "TargetNumber":"", "CharsCount": 42} | {"SourceNumber":"555-555-1313", "CharsCount": 42}
-| |555-555-3456 | 74 | {"SourceNumber":"", "TargetNumber":"555-555-3456", "CharsCount": 74} | {"TargetNumber":"555-555-3456", "CharsCount": 74}
+|Source |Target | CharsCount | Packed |PackedIgnoreNullEmpty|
+|---|---|---|---|---|
+|555-1234 |555-1212 | 46 |{"Source":"555-1234", "Target":"555-1212", "CharsCount": 46} | {"Source":"555-1234", "Target":"555-1212", "CharsCount": 46}|
+|555-1234 |555-1213 | 50 |{"Source":"555-1234", "Target":"555-1213", "CharsCount": 50} | {"Source":"555-1234", "Target":"555-1213", "CharsCount": 50}|
+|555-1313 | | 42 | {"Source":"555-1313", "Target":"", "CharsCount": 42} | {"Source":"555-1313", "CharsCount": 42}|
+| |555-3456 | 74 | {"Source":"", "Target":"555-3456", "CharsCount": 74} | {"Target":"555-3456", "CharsCount": 74}|
 
 > [!NOTE]
 > There is a difference between the *Packed* and the *PackedIgnoreNullEmpty* columns in the last two rows of the above example. These two rows included empty values that were ignored by *pack_all(true)*.
+
+## Related content
+
+* [bag-pack function](./pack-function.md)
+* [bag-unpack plugin](./bag-unpack-plugin.md)

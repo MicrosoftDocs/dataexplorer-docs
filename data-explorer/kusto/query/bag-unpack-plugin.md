@@ -196,26 +196,26 @@ datatable(d:dynamic)
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjRSrlMq8xNzMZE2uaC4FIIByNaqV/BJzU5WsFJS88jPylHQUlBzTgVwjg1pNHRwKXRLLUuEKTfAo9Eoszs3MQ6g1BquN5apRSC1LzClNLElVSEpMjy/NK0hMztZI0VSwUtAA6bUqLinKzEvXUQDqssrJz0vXBADtklvGyQAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjRSrlMq8xNzMZE2uaC4FIIByNaqV%2FBJzU5WsFJS88jPylHQUlBzTgVwjg1pNHVSFCnCVLollqSCVHqmZ6RklQBFDcwOYRhNMjQgbEotzM%2FNS4ZYYg9XGctUopJYl5pQmlqQqJCWmx5fmFSQmZ2ukaAIA%2Fh1sgL8AAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 datatable(d:dynamic)
 [
     dynamic({"Name": "John", "Age":20}),
-    dynamic({"Name": "Dave", "Age":40}),
+    dynamic({ "Name": "Dave", "Height": 170, "Age":40}),
     dynamic({"Name": "Jasmine", "Age":30}),
 ]
-| evaluate bag_unpack(d) : (Name:string, Age:long)
+| evaluate bag_unpack(d)
 ```
 
 **Output**
 
-|Name  |Age  |
-|---------|---------|
-|John     |  20  |
-|Dave     |  40  |
-|Jasmine  |  30  |
+|Age |Height |Name |
+|--|--|--|
+| 20 | | John |  
+| 40 | 170 | Dave |
+| 30 | | Jasmine |
 
 **Expand a bag with an *OutputSchema* and use the wildcard `*` option**:
 
@@ -299,3 +299,4 @@ The output is the same for both queries. The first 10 rows of the output are sho
 
 * [parse_json function](./parse-json-function.md)
 * [mv-expand operator](./mv-expand-operator.md)
+* [pack-all function](./pack-all-function.md)
