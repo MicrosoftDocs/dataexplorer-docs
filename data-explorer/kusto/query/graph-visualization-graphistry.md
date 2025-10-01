@@ -1,29 +1,25 @@
 ---
 title: Graph visualization with Graphistry
-description: Learn how to use Graphistry for large-scale graph visualization with GPU acceleration.
+description: Overview of Graphistry integration for scalable GPU-accelerated KQL graph visualization.
 ms.reviewer: royo
 ms.topic: conceptual
-ms.date: 08/27/2025
+ms.date: 10/01/2025
 ---
 
 # Graph visualization with Graphistry
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Graphistry provides GPU-accelerated graph visualization and analytics that integrates with KQL graph semantics. This powerful combination enables interactive exploration of complex relationships, pattern detection, and anomaly analysis within large-scale graph datasets.
+Graphistry adds server-side GPU layout and filtering on top of KQL graph semantics for iterative exploration of large or dense connected data: heavy parallel layout/clustering runs on a managed GPU, only light render data streams to the browser for consistent responsiveness across devices, enabling rapid refine–explore cycles on focused KQL results while preserving governance (deploy in your subscription, limit exported attributes, keep stable identifiers, filter early, iterate as needed, and share live views without producing static exports).
 
-The following examples show Graphistry visualizing the BloodHound graph from the [graph sample data](graph-sample-data.md#bloodhound-active-directory-dataset), demonstrating both high-level overview and detailed analysis capabilities:
-
-:::image type="content" source="media/graphs/graph-visualization-graphistry-bloodhound-ad-high-level.png" alt-text="Graphistry high-level view of BloodHound_AD graph showing a large circular cluster with scattered nodes and connecting lines displaying the overall network structure.":::
-
-The next image shows a zoomed-in view revealing the detailed relationship patterns and edge flows within the graph:
-
-:::image type="content" source="media/graphs/graph-visualization-graphistry-bloodhound-ad-zoomed-in.png" alt-text="Graphistry detailed view of BloodHound_AD graph showing flowing edge connections and intricate relationship patterns between nodes with enhanced visual detail.":::
-
-Graphistry Core can be found and deployed via the Azure Marketplace. For more information, see [Graphistry and KQL integration](https://www.graphistry.com/blog/azure-data-explorer-kusto-graph-visual-exploration). To try out this integration, see the [Python Graphistry and KQL demo notebook](https://pygraphistry.readthedocs.io/en/latest/demos/demos_databases_apis/microsoft/kusto/graphistry_ADX_kusto_demo.html).
+Deploy Graphistry Core in your Azure subscription (Azure Marketplace) so GPU processing stays in-boundary. See the [integration blog](https://www.graphistry.com/blog/azure-data-explorer-kusto-graph-visual-exploration) and the concise [demo notebook](https://pygraphistry.readthedocs.io/en/latest/demos/demos_databases_apis/microsoft/kusto/graphistry_ADX_kusto_demo.html) for a hands-on sample.
 
 ## Related content
 
-- [Graph visualization overview](graph-visualization-overview.md)
-- [Graph sample data](graph-sample-data.md)
-- [Graph operators](graph-operators.md)
+* [Graph visualization overview](graph-visualization-overview.md)
+* [Graph sample data](graph-sample-data.md)
+* [Graph operators](graph-operators.md)
+* [graph-match operator](graph-match-operator.md)
+* [make-graph operator](make-graph-operator.md)
+* [Graph semantics overview](graph-semantics-overview.md)
+* [Graph best practices](graph-best-practices.md)
