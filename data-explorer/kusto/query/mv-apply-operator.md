@@ -303,7 +303,7 @@ datatable(Source: string, Target: string, Count: long)
 **Output**
 
 | Source | Target | Count | Pack | `values` |
-|--|--|--|--|
+|--|--|--|--|--|
 | 555-1234 | 555-1212 | 46 | {<br>	"Source": "555-1234",<br>	"Target": "555-1212",<br>	"Count": 46<br>} | {<br> "Source": "555-1234",<br>   "Target": "555-1212"<br> } |
 | 555-2424 | &nbsp; | &nbsp; | {<br>	"Source": "555-2424",<br>	"Target": "",<br>	"Count": null<br>} | {<br> "Source": "555-2424"<br> } |
 
