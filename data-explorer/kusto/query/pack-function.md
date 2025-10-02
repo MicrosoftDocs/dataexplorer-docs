@@ -108,7 +108,7 @@ MmsMessages
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61STW%2BDMAy98yusnFqJSRDKDps4VdqtVSV6m6YpgEVDIaAkaB%2Faj1%2FCh1oo2nYYEcR%2BtmO%2FR0rUEFdqh0qxHBVEkDFtVlIirBwwT1y3MsV9WyUoH0BpyUXudpEjkznqpcj2xKTa1q3QI%2B6s4bkLkTAM7%2Bzr02BD3Gvfp9bf3Jvvr6lB53vEnWf2h8wrA0rAeXl0SkN39%2B90n3iJMf%2FEW%2FT40Syge1bhT8LMOfRsqefZrWgwt%2FuBp%2F4t%2FWVNaTgvpX8o7boGfddGjJUBsUJe3xnnC4qaCzhzkUVcCJQTjWsxEdVk47tGkcGBpWfMooTlr40xV%2BRybUyvi2P6jgobfDQH1Co8oNYcUKvwgFpzbWd8O6HEySgQRTMBTFoj6wJTPUl0Jz%2FfHSb%2FBlHzO108AwAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61SwW6DMAy98xVWTq2USRDKDps4VdqtVSV2m6YpgEXTQlIlQZumffwSCmuhVbfDiAD72c6zX1KjhawxKzSGV2gghZJbt%2FIaYRaAezLV6gLXbZOjfgBjtZAV7SLPXFdor0WWW67NUrXSDngwh5cuRJIkufNvxOIFoed%2BxLy%2FuHffX1Pjzg8JnWYeN5lWxoxA8PoY1G7c1b%2BP%2ByRqzMQnXqJr3uAtCabdHudiYeh%2FG1FElwNeV40lQwn7Q0nHEv%2BwxMRrc34Ngi%2FYKSFhL2SZCilRj2RTcqSTy8YPi7KEDS%2F2WKY5r94OzpyR001wXCfH8Q6iOXwwe9SL1qPenPtu3reocUQKaTqZ0aUdtNphYUeJdHRytO%2FxG%2BX9DGH5AgAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -125,16 +125,15 @@ let MmsMessages = datatable (
     SourceNumber: string,
     TargetNumber: string,
     FileSize: string,
-    FileType: string,
     FileName: string
 ) [
-    "555-555-1212", "555-555-1213", "200", "jpeg", "Pic1",
-    "555-555-1234", "555-555-1212", "250", "jpeg", "Pic2",
-    "555-555-1234", "555-555-1213", "300", "png", "Pic3"
+    "555-555-1212", "555-555-1213", "200", "Pic1",
+    "555-555-1234", "555-555-1212", "250", "Pic2",
+    "555-555-1234", "555-555-1213", "300", "Pic3"
 ];
 SmsMessages 
 | join kind=inner MmsMessages on SourceNumber
-| extend Packed=bag_pack("CharsCount", CharsCount, "FileSize", FileSize, "FileType", FileType, "FileName", FileName) 
+| extend Packed=bag_pack("CharsCount", CharsCount, "FileSize", FileSize, "FileName", FileName) 
 | where SourceNumber == "555-555-1234"
 | project SourceNumber, TargetNumber, Packed
 ```
@@ -143,10 +142,10 @@ SmsMessages
 
 | SourceNumber | TargetNumber | `Packed` |
 |--|--|--|--|
-| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","FileSize":"250","FileType":"jpeg","FileName":"Pic2"} |
-| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","FileSize":"250","FileType":"jpeg","FileName":"Pic2"} |
-| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","FileSize":"300","FileType":"png","FileName":"Pic3"} |
-| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","FileSize":"300","FileType":"png","FileName":"Pic3"} |
+| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","FileSize":"250","FileName":"Pic2"} |
+| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","FileSize":"250","FileName":"Pic2"} |
+| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","FileSize":"300","FileName":"Pic3"} |
+| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","FileSize":"300","FileName":"Pic3"} |
 
 ## Related content
 
