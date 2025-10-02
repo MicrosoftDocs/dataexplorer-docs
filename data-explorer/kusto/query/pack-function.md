@@ -52,7 +52,7 @@ print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url"
 
 |print_0|
 |--|
-|{"Level":"Information","ProcessID":1234,"Data":{"url":"www.bing.com"}}|
+|{"Level": "Information", "ProcessID": 1234, "Data": {"url":"www.bing.com"}}|
 
 **Example 2**
 
@@ -60,7 +60,7 @@ The following example creates a property bag and extract value from property bag
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PXwuCMBTF3wW%2Fw2VPCiv8V0Hgg9qrTz1GyE3HWMUUXZTQh2%2FTBeL2cvjtnHvPGlT63p4MPNcBfc7tq6%2FZEYRUdCYnNighUYlWLnHJhgG5dg6qF5K7jg%2BX%2BSWM4oRCGAQUSJYRCjNOdvsDhWjCeU7o3xxGFOKJFgXR3qvrfIF9FJMNlGOOPL0hrzqsHx4xXfTARSUd0024hraQb%2BJd395ZrTb4xtF%2BaZWy7vWuypjSSW6NpBabHRYb%2BQMdY4ddNwEAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PPwvCMBDF936KI1MLUfpPBaGLOLh00k2kXGsI0ZKUJqIFP7xJzFB6WR4%2F3rt7uaOxr%2B0ZxBHYOavX2LE9CGmoB0emjZBohJIzWjOtkVufNqOQPErg6nmWFyWFLE0pkJMgFDwtN9sdhfxPWd8rQoM7yykUgU8Eolv0BfYxTN6hng7IqxZ5M2D3jIkrYhfO%2BtjUxZotDHUSmx5G9WCdWeEbp%2FCbRSiYF5ca56m8XDtJA3YXAnbyBz3NWFQwAQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -69,22 +69,22 @@ datatable (
     Destination: int,
     Message: string
 ) [
-    1234, 100, "AA", 
-    4567, 200, "BB",
-    1212, 300, "CC" 
+    1234, 100, "Hi", 
+    4567, 200, "Hello",
+    1212, 300, "Hey" 
 ]
-| extend MyBag=bag_pack("Dest", Destination, "Mesg", Message)
+| extend MyBag=bag_pack("Dest", Destination, "Text", Message)
 | project-away Source, Destination, Message
-| extend MyBag_Dest=MyBag.Dest, MyBag_Mesg=MyBag.Mesg
+| extend MyBag_Dest=MyBag.Dest, MyBag_Text=MyBag.Text
 ```
 
 **Results**
 
-|MyBag|MyBag_Dest|MyBag_Mesg|
+|MyBag|MyBag_Dest|MyBag_Text|
 |--|--|--|
-|{"Dest":100,"Mesg":"AA"}|100|AA|
-|{"Dest":200,"Mesg":"BB"}|200|BB|
-|{"Dest":300,"Mesg":"CC"}|300|CC|
+|{"Dest":100,"Text":"Hi" }|100|Hi|
+|{"Dest":200,"Text":"Hello" }|200|Hello|
+|{"Dest":300,"Text":"Hey" }|300|Hey|
 
 **Example 3**
 
@@ -147,3 +147,8 @@ SmsMessages
 | 555-555-1234 | 555-555-1212 | {"CharsCount":"46","AttachmentSize":"250","AttachmentType":"jpeg","AttachmentName":"Pic2"} |
 | 555-555-1234 | 555-555-1213 | {"CharsCount":"50","AttachmentSize":"300","AttachmentType":"png","AttachmentName":"Pic3"} |
 | 555-555-1234 | 555-555-1212 | {"CharsCount":"46","AttachmentSize":"300","AttachmentType":"png","AttachmentName":"Pic3"} |
+
+## Related content
+
+* [pack-all function](./pack-all-function.md)
+* [bag-unpack plugin](./bag-unpack-plugin.md)
