@@ -108,7 +108,7 @@ MmsMessages
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61Sy26DMBC88xUrnxKJSmBCD604VDknikRuVVUZWIEJGGQb9aF+fG1olJgmbQ/FwmZ3Zr3MaBvUkLZqg0qxEhUkUDBtVtYgLDwwT9oNMsft0GYo70BpyUXpj8ieyRL1JWRdManW3SD0Me8t4XGESBzHN/YNabQi/nkcUhuvbs3+KzUa44D4c+Z0ybwyogS8p3uvMXI3/y73QWuWVy0KnfJ3vIbt3/qr2Ja1+JNVc1WTfhoE9qh7LO2543n43ZDLLtN4Xkr/UDp2jaauvThWRsRaez5F3gfUHRdw4KJIuBAoHdc74dhs2PiqURSwY/kBiyRj5XNvPhfkNEim1ykwfV3PDeomHIZ13mHYhMOw/jsMm1haHS8VSnR+F5JkZpKh9bKrMdcO0XdGxv9S9wkokKY3cgMAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61STW%2BDMAy98yusnFqJSRDKDps4VdqtVSV6m6YpgEVDIaAkaB%2Faj1%2FCh1oo2nYYEcR%2BtmO%2FR0rUEFdqh0qxHBVEkDFtVlIirBwwT1y3MsV9WyUoH0BpyUXudpEjkznqpcj2xKTa1q3QI%2B6s4bkLkTAM7%2Bzr02BD3Gvfp9bf3Jvvr6lB53vEnWf2h8wrA0rAeXl0SkN39%2B90n3iJMf%2FEW%2FT40Syge1bhT8LMOfRsqefZrWgwt%2FuBp%2F4t%2FWVNaTgvpX8o7boGfddGjJUBsUJe3xnnC4qaCzhzkUVcCJQTjWsxEdVk47tGkcGBpWfMooTlr40xV%2BRybUyvi2P6jgobfDQH1Co8oNYcUKvwgFpzbWd8O6HEySgQRTMBTFoj6wJTPUl0Jz%2FfHSb%2FBlHzO108AwAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
