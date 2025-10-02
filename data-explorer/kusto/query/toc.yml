@@ -1331,10 +1331,10 @@ items:
             href: graph-visualization-overview.md
           - name: Kusto Explorer
             href: graph-visualization-kusto-explorer.md
-          - name: Custom visualization
-            href: graph-visualization-custom.md
           - name: Graphistry
             href: graph-visualization-graphistry.md
+          - name: Custom visualization
+            href: graph-visualization-custom.md
       - name: Scenarios
         href: graph-scenarios.md
       - name: Best practices
