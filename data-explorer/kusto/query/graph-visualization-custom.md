@@ -28,8 +28,4 @@ This article covers two primary approaches for creating custom graph visualizati
 - [Plotly (preview)](visualization-plotly.md)
 - [Graph semantics overview](graph-semantics-overview.md)
 - [Graph operators](graph-operators.md)
-- [Graph scenarios](graph-scenarios.md)
-- [Graph best practices](graph-best-practices.md)
 - [D3.js documentation](https://d3js.org/)
-- [Plotly JavaScript documentation](https://plotly.com/javascript/)
-- [NetworkX documentation](https://networkx.org/)
