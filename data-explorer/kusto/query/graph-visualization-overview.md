@@ -1,5 +1,6 @@
 ---
-title: Graph visualization overview
+title: Graph Visualization Overview
+titleSuffix: Azure Data Explorer
 description: Learn about different approaches for visualizing graph data from KQL queries, including built-in tools and custom visualization solutions.
 ms.reviewer: royo
 ms.topic: conceptual
@@ -12,7 +13,7 @@ ms.date: 09/22/2025
 
 Graph visualization is essential for understanding complex relationships and patterns within interconnected data. KQL graph semantics provide powerful querying capabilities, and there are several approaches available for visualizing the results.
 
-:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-bloodhound-active-directory-overview.png" alt-text="BloodHound Active Directory graph visualization in Kusto Explorer with clustered nodes and Graph Layers panel showing the complex structure of an Active Directory environment.":::
+:::image type="content" source="media/graphs/graph-visualization-kusto-explorer-bloodhound-active-directory-overview.png" alt-text="Screenshot of BloodHound Active Directory graph visualization in Kusto Explorer with clustered nodes and Graph Layers panel showing the complex structure of an Active Directory environment.":::
 
 ## Kusto Explorer
 

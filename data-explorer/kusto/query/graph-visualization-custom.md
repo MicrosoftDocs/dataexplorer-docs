@@ -1,5 +1,5 @@
 ---
-title: Custom graph visualization approaches
+title: Custom Graph Visualization Approaches
 description: Learn how to create custom graph visualizations from KQL graph data using Plotly and D3.js for tailored, interactive network visualizations.
 ms.reviewer: royo
 ms.topic: conceptual
