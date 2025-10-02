@@ -12,7 +12,7 @@ ms.date: 08/11/2024
 Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from all the columns of the tabular expression.
 
 > [!NOTE]
-> The representation of the returned object isn't guaranteed to be byte-level-compatible between runs. For example, properties that appear in the bag may appear in a different order.
+> The representation of the returned object isn't guaranteed to be byte-level-compatible between runs. For example, properties that appear in the bag might appear in a different order.
 
 ## Syntax
 
@@ -28,14 +28,7 @@ Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from all t
 
 ## Example
 
-The following query will use `pack_all()` to create columns for the below table.
-
-|Source |Target| CharsCount|
-|---|---|---|
-|555-1234 |555-1212 | 46 |
-|555-1234 |555-1213 | 50 |
-|555-1313 | | 42 |
-| |555-3456 | 74 |
+The following query uses `pack_all()` to create packed columns.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -63,7 +56,7 @@ datatable(Source:string,Target:string,CharsCount:long)
 | |555-3456 | 74 | {"Source":"", "Target":"555-3456", "CharsCount": 74} | {"Target":"555-3456", "CharsCount": 74}|
 
 > [!NOTE]
-> There is a difference between the *Packed* and the *PackedIgnoreNullEmpty* columns in the last two rows of the above example. These two rows included empty values that were ignored by *pack_all(true)*.
+> There's a difference between the *Packed* and the *PackedIgnoreNullEmpty* columns in the last two rows of the example. These two rows included empty values that were ignored by *pack_all(true)*.
 
 ## Related content
 
