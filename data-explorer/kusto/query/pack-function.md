@@ -80,7 +80,7 @@ datatable (
 
 **Results**
 
-|MyBag|MyBag_Dest|MyBag_Text|
+|`MyBag`|`MyBag_Dest`|`MyBag_Text`|
 |--|--|--|
 |{"Dest":100,"Text":"Hi" }|100|Hi|
 |{"Dest":200,"Text":"Hello" }|200|Hello|
@@ -100,7 +100,7 @@ SmsMessages
 
 MmsMessages
 
-|SourceNumber |TargetNumber| AttachmentSize | AttachmentType | AttachmentName |
+|SourceNumber |TargetNumber| FileSize | FileType | FileName |
 |---|---|---|---|---|
 |555-555-1212 |555-555-1213 | 200 | jpeg | Pic1 |
 |555-555-1234 |555-555-1212 | 250 | jpeg | Pic2 |
@@ -124,9 +124,9 @@ let SmsMessages = datatable (
 let MmsMessages = datatable (
     SourceNumber: string,
     TargetNumber: string,
-    AttachmentSize: string,
-    AttachmentType: string,
-    AttachmentName: string
+    FileSize: string,
+    FileType: string,
+    FileName: string
 ) [
     "555-555-1212", "555-555-1213", "200", "jpeg", "Pic1",
     "555-555-1234", "555-555-1212", "250", "jpeg", "Pic2",
@@ -134,19 +134,19 @@ let MmsMessages = datatable (
 ];
 SmsMessages 
 | join kind=inner MmsMessages on SourceNumber
-| extend Packed=bag_pack("CharsCount", CharsCount, "AttachmentSize", AttachmentSize, "AttachmentType", AttachmentType, "AttachmentName", AttachmentName) 
+| extend Packed=bag_pack("CharsCount", CharsCount, "FileSize", FileSize, "FileType", FileType, "FileName", FileName) 
 | where SourceNumber == "555-555-1234"
 | project SourceNumber, TargetNumber, Packed
 ```
 
 **Results**
 
-| SourceNumber | TargetNumber | Packed |
+| SourceNumber | TargetNumber | `Packed` |
 |--|--|--|--|
-| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","AttachmentSize":"250","AttachmentType":"jpeg","AttachmentName":"Pic2"} |
-| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","AttachmentSize":"250","AttachmentType":"jpeg","AttachmentName":"Pic2"} |
-| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","AttachmentSize":"300","AttachmentType":"png","AttachmentName":"Pic3"} |
-| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","AttachmentSize":"300","AttachmentType":"png","AttachmentName":"Pic3"} |
+| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","FileSize":"250","FileType":"jpeg","FileName":"Pic2"} |
+| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","FileSize":"250","FileType":"jpeg","FileName":"Pic2"} |
+| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","FileSize":"300","FileType":"png","FileName":"Pic3"} |
+| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","FileSize":"300","FileType":"png","FileName":"Pic3"} |
 
 ## Related content
 
