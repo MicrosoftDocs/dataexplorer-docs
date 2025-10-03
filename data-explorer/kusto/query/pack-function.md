@@ -80,7 +80,7 @@ datatable (
 
 **Results**
 
-|MyBag|MyBag_Dest|MyBag_Text|
+|`MyBag`|`MyBag_Dest`|`MyBag_Text`|
 |--|--|--|
 |{"Dest":100,"Text":"Hi" }|100|Hi|
 |{"Dest":200,"Text":"Hello" }|200|Hello|
@@ -100,7 +100,7 @@ SmsMessages
 
 MmsMessages
 
-|SourceNumber |TargetNumber| AttachmentSize | AttachmentType | AttachmentName |
+|SourceNumber |TargetNumber| FileSize | FileType | FileName |
 |---|---|---|---|---|
 |555-555-1212 |555-555-1213 | 200 | jpeg | Pic1 |
 |555-555-1234 |555-555-1212 | 250 | jpeg | Pic2 |
@@ -108,7 +108,7 @@ MmsMessages
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61Sy26DMBC88xUrnxKJSmBCD604VDknikRuVVUZWIEJGGQb9aF+fG1olJgmbQ/FwmZ3Zr3MaBvUkLZqg0qxEhUkUDBtVtYgLDwwT9oNMsft0GYo70BpyUXpj8ieyRL1JWRdManW3SD0Me8t4XGESBzHN/YNabQi/nkcUhuvbs3+KzUa44D4c+Z0ybwyogS8p3uvMXI3/y73QWuWVy0KnfJ3vIbt3/qr2Ja1+JNVc1WTfhoE9qh7LO2543n43ZDLLtN4Xkr/UDp2jaauvThWRsRaez5F3gfUHRdw4KJIuBAoHdc74dhs2PiqURSwY/kBiyRj5XNvPhfkNEim1ykwfV3PDeomHIZ13mHYhMOw/jsMm1haHS8VSnR+F5JkZpKh9bKrMdcO0XdGxv9S9wkokKY3cgMAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61SwW6DMAy98xVWTq2USRDKDps4VdqtVSV2m6YpgEXTQlIlQZumffwSCmuhVbfDiAD72c6zX1KjhawxKzSGV2gghZJbt%2FIaYRaAezLV6gLXbZOjfgBjtZAV7SLPXFdor0WWW67NUrXSDngwh5cuRJIkufNvxOIFoed%2BxLy%2FuHffX1Pjzg8JnWYeN5lWxoxA8PoY1G7c1b%2BP%2ByRqzMQnXqJr3uAtCabdHudiYeh%2FG1FElwNeV40lQwn7Q0nHEv%2BwxMRrc34Ngi%2FYKSFhL2SZCilRj2RTcqSTy8YPi7KEDS%2F2WKY5r94OzpyR001wXCfH8Q6iOXwwe9SL1qPenPtu3reocUQKaTqZ0aUdtNphYUeJdHRytO%2FxG%2BX9DGH5AgAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -124,29 +124,28 @@ let SmsMessages = datatable (
 let MmsMessages = datatable (
     SourceNumber: string,
     TargetNumber: string,
-    AttachmentSize: string,
-    AttachmentType: string,
-    AttachmentName: string
+    FileSize: string,
+    FileName: string
 ) [
-    "555-555-1212", "555-555-1213", "200", "jpeg", "Pic1",
-    "555-555-1234", "555-555-1212", "250", "jpeg", "Pic2",
-    "555-555-1234", "555-555-1213", "300", "png", "Pic3"
+    "555-555-1212", "555-555-1213", "200", "Pic1",
+    "555-555-1234", "555-555-1212", "250", "Pic2",
+    "555-555-1234", "555-555-1213", "300", "Pic3"
 ];
 SmsMessages 
 | join kind=inner MmsMessages on SourceNumber
-| extend Packed=bag_pack("CharsCount", CharsCount, "AttachmentSize", AttachmentSize, "AttachmentType", AttachmentType, "AttachmentName", AttachmentName) 
+| extend Packed=bag_pack("CharsCount", CharsCount, "FileSize", FileSize, "FileName", FileName) 
 | where SourceNumber == "555-555-1234"
 | project SourceNumber, TargetNumber, Packed
 ```
 
 **Results**
 
-| SourceNumber | TargetNumber | Packed |
+| SourceNumber | TargetNumber | `Packed` |
 |--|--|--|--|
-| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","AttachmentSize":"250","AttachmentType":"jpeg","AttachmentName":"Pic2"} |
-| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","AttachmentSize":"250","AttachmentType":"jpeg","AttachmentName":"Pic2"} |
-| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","AttachmentSize":"300","AttachmentType":"png","AttachmentName":"Pic3"} |
-| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","AttachmentSize":"300","AttachmentType":"png","AttachmentName":"Pic3"} |
+| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","FileSize":"250","FileName":"Pic2"} |
+| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","FileSize":"250","FileName":"Pic2"} |
+| 555-555-1234 | 555-555-1213 | {"CharsCount":"50","FileSize":"300","FileName":"Pic3"} |
+| 555-555-1234 | 555-555-1212 | {"CharsCount":"46","FileSize":"300","FileName":"Pic3"} |
 
 ## Related content
 
