@@ -48,12 +48,12 @@ datatable(Source:string,Target:string,CharsCount:long)
 
 **Output**
 
-|Source |Target | CharsCount | Packed |PackedIgnoreNullEmpty|
+|Source |Target | CharsCount | `Packed` | `PackedIgnoreNullEmpty` |
 |---|---|---|---|---|
-|555-1234 |555-1212 | 46 |{"Source":"555-1234", "Target":"555-1212", "CharsCount": 46} | {"Source":"555-1234", "Target":"555-1212", "CharsCount": 46}|
-|555-1234 |555-1213 | 50 |{"Source":"555-1234", "Target":"555-1213", "CharsCount": 50} | {"Source":"555-1234", "Target":"555-1213", "CharsCount": 50}|
-|555-1313 | | 42 | {"Source":"555-1313", "Target":"", "CharsCount": 42} | {"Source":"555-1313", "CharsCount": 42}|
-| |555-3456 | 74 | {"Source":"", "Target":"555-3456", "CharsCount": 74} | {"Target":"555-3456", "CharsCount": 74}|
+|555-1234 |555-1212 | 46 |{<br> "Source":"555-1234",<br> "Target":"555-1212",<br> "CharsCount": 46<br>} | {<br>"Source":"555-1234",<br> "Target":"555-1212",<br> "CharsCount": 46<br>}|
+|555-1234 |555-1213 | 50 |{<br> "Source":"555-1234",<br> "Target":"555-1213",<br> "CharsCount": 50<br>} | {<br>"Source":"555-1234",<br> "Target":"555-1213",<br> "CharsCount": 50<br>}|
+|555-1313 | | 42 | {<br> "Source":"555-1313",<br> "Target":"",<br> "CharsCount": 42<br>} | {<br>"Source":"555-1313",<br> "CharsCount": 42<br>}|
+| |555-3456 | 74 | {<br> "Source":"",<br> "Target":"555-3456",<br> "CharsCount": 74<br>} | {<br>"Target":"555-3456",<br> "CharsCount": 74<br>}|
 
 > [!NOTE]
 > There's a difference between the *Packed* and the *PackedIgnoreNullEmpty* columns in the last two rows of the example. These two rows included empty values that were ignored by *pack_all(true)*.
