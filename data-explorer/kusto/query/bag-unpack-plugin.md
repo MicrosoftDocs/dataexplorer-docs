@@ -282,7 +282,7 @@ datatable(d:dynamic, Description: string)
 
 The output is the same for both queries. The first 10 rows of the output are shown below.
 
-|`Country`|`State`|`Sales`|
+|`Country/Region`|`State`|`Sales`|
 |--|--|--|
 | Canada | British Columbia | 56,101,083 |
 | United Kingdom | England | 77,288,747 |
