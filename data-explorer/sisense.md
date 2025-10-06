@@ -3,8 +3,10 @@ title: Visualize data from Azure Data Explorer using Sisense
 description: In this article, learn how to set up Azure Data Explorer as a data source for Sisense, and visualize the data.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.custom: has-adal-ref
 ms.date: 07/12/2023
+ms.custom:
+  - has-adal-ref
+  - sfi-image-nochange
 ---
 
 # Visualize data from Azure Data Explorer in Sisense

@@ -4,6 +4,7 @@ description: In this article, you learn how to ingest (load) data into Azure Dat
 ms.reviewer: mblythe
 ms.topic: how-to
 ms.date: 09/14/2022
+ms.custom: sfi-ropc-nochange
 
 # Customer intent: As a Node.js developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---

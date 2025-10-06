@@ -3,8 +3,10 @@ title: 'End-to-end blob ingestion into Azure Data Explorer'
 description: In this article, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example.
 ms.reviewer: lugoldbe
 ms.topic: tutorial
-ms.custom: devx-track-arm-template
 ms.date: 05/10/2023
+ms.custom:
+  - devx-track-arm-template
+  - sfi-ropc-nochange
 ---
 
 # End-to-end blob ingestion into Azure Data Explorer

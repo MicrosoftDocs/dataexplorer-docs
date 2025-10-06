@@ -6,6 +6,7 @@ ms.reviewer: miwalia
 ms.topic: how-to
 ms.date: 09/24/2025
 no-loc: [Power Automate]
+ms.custom: sfi-image-nochange
 ---
 
 

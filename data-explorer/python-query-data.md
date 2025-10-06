@@ -3,6 +3,7 @@ title: 'Query Data Using Azure Data Explorer Python Library'
 description: 'In this article, you learn how to query data from Azure Data Explorer using Python.'
 ms.topic: how-to
 ms.date: 08/27/2025
+ms.custom: sfi-ropc-nochange
 
 # Customer intent: As a Python developer, I want to query data so I can include it in my apps.
 ---

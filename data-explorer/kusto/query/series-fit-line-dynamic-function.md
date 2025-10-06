@@ -4,6 +4,7 @@ description: Learn how to use the series_fit_line_dynamic() function to apply a 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/11/2024
+ms.custom: sfi-image-nochange
 ---
 # series_fit_line_dynamic()
 
