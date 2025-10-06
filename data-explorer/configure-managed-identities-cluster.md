@@ -4,6 +4,7 @@ description: Learn how to configure managed identities for Azure Data Explorer c
 ms.reviewer: itsagui
 ms.topic: how-to
 ms.date: 07/16/2023
+ms.custom: sfi-image-nochange
 ---
 # Configure managed identities for your Azure Data Explorer cluster
 

@@ -4,6 +4,7 @@ description: In this article, you learn how to set up an Open Database Connectiv
 ms.reviewer: gabil
 ms.topic: how-to
 ms.date: 09/02/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Connect to Azure Data Explorer with ODBC

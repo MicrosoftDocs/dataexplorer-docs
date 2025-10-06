@@ -3,6 +3,7 @@ title: Create an Event Grid data connection - Azure Data Explorer
 description: Learn how to create an Event Grid data connection to ingest data into Azure Data Explorer.
 ms.topic: how-to
 ms.date: 06/10/2025
+ms.custom: sfi-ropc-nochange
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer

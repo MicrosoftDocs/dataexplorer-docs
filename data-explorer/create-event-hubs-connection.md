@@ -2,8 +2,9 @@
 title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: Learn how to ingest data from Event Hubs into Azure Data Explorer.
 ms.topic: how-to
-ms.custom:
 ms.date: 08/26/2025
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer

@@ -4,6 +4,7 @@ description: In this article, you learn how to use an Open Database Connectivity
 ms.reviewer: gabil
 ms.topic: how-to
 ms.date: 09/14/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Visualize data from Azure Data Explorer in Tableau

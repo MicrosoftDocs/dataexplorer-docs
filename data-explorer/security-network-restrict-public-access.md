@@ -4,6 +4,7 @@ description: Learn how to Manage public access to your Azure Data Explorer clust
 ms.reviewer: eladb
 ms.topic: how-to
 ms.date: 08/09/2023
+ms.custom: sfi-image-nochange
 ---
 
 # Manage public access to your Azure Data Explorer cluster

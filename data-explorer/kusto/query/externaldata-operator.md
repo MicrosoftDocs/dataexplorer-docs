@@ -4,6 +4,7 @@ description: Learn how to use the externaldata operator to return a data table o
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/27/2025
+ms.custom: sfi-ropc-nochange
 ---
 # externaldata operator
 

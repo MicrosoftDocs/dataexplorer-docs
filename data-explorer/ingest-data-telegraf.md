@@ -4,6 +4,7 @@ description: In this article, you learn how to ingest (load) data into Azure Dat
 ms.reviewer: miwalia
 ms.topic: how-to
 ms.date: 08/21/2025
+ms.custom: sfi-ropc-nochange
 
 #Customer intent: As an integration developer, I want to build integration pipelines from Telegraf into Azure Data Explorer, so I can make data available for near real-time analytics.
 ---
