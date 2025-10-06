@@ -4,6 +4,7 @@ description: Learn how to ingest data into Azure Data Explorer using the Kusto .
 ms.reviewer: vladikb
 ms.topic: how-to
 ms.date: 09/29/2025
+ms.custom: sfi-ropc-nochange
 
 # Customer intent: As a .NET SDK developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---

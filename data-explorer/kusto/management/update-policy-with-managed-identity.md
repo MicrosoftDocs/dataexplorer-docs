@@ -5,6 +5,7 @@ ms.reviewer: atefsawaed
 ms.topic: reference
 ms.date: 11/13/2024
 monikerRange: "azure-data-explorer"
+ms.custom: sfi-image-nochange
 ---
 # Use a managed identity to run an update policy
 

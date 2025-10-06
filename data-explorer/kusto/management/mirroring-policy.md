@@ -5,6 +5,7 @@ ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 09/23/2024
 monikerRange: "microsoft-fabric"
+ms.custom: sfi-ropc-nochange
 ---
 # Mirroring policy
 

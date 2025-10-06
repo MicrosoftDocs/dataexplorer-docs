@@ -4,6 +4,7 @@ description: 'In this article, query data in Azure Monitor (Application Insights
 ms.reviewer: guywi-ms
 ms.topic: how-to
 ms.date: 05/28/2025
+ms.custom: sfi-image-nochange
 
 #Customer intent: I want to query data in Azure Monitor using Azure Data Explorer.
 ---

@@ -4,6 +4,7 @@ description: This article provides an overview of the different mechanisms for a
 ms.reviewer: vplauzon
 ms.topic: how-to
 ms.date: 02/01/2022
+ms.custom: sfi-ropc-nochange
 ---
 
 # Automated provisioning in Azure Data Explorer

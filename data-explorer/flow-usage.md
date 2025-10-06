@@ -5,6 +5,7 @@ ms.reviewer: miwalia
 ms.topic: how-to
 ms.date: 05/04/2022
 no-loc: [Power Automate]
+ms.custom: sfi-image-nochange
 ---
 
 # Usage examples for Azure Data Explorer connector to Power Automate

@@ -4,6 +4,7 @@ description: Discover how private endpoints enhance Azure Data Explorer security
 ms.reviewer: basaba
 ms.topic: how-to
 ms.date: 09/28/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Private endpoints for Azure Data Explorer

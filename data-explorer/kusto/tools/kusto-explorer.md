@@ -4,6 +4,7 @@ description: Learn about the features of Kusto.Explorer and how it can help you 
 ms.reviewer: alexans
 ms.topic: conceptual
 ms.date: 09/15/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Kusto.Explorer installation and user interface

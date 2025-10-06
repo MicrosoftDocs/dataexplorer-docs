@@ -3,6 +3,7 @@ title: 'Azure Data Explorer web UI results grid'
 description: Learn how to work with the results grid in the Azure Data Explorer web UI.
 ms.topic: how-to
 ms.date: 05/28/2023
+ms.custom: sfi-image-nochange
 ---
 
 # Azure Data Explorer web UI results grid

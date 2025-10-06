@@ -4,6 +4,7 @@ description: Learn how to set the query timeout length and the Admin command tim
 ms.topic: how-to
 ms.date: 09/25/2025
 monikerRange: "azure-data-explorer"
+ms.custom: sfi-ropc-nochange
 ---
 # Set timeout limits
 

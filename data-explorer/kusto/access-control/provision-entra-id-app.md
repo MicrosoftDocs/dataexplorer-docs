@@ -4,6 +4,9 @@ description: This article describes how to create a Microsoft Entra app registra
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 08/11/2024
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 # Create Microsoft Entra application registration
 

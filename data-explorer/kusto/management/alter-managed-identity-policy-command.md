@@ -5,6 +5,7 @@ ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
+ms.custom: sfi-image-nochange
 ---
 # .alter policy managed_identity command
 

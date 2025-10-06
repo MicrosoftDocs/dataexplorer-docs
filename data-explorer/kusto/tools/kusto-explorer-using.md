@@ -4,6 +4,7 @@ description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
 ms.date: 10/01/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Using Kusto.Explorer

@@ -4,6 +4,7 @@ description: This article describes connection strings.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 08/11/2024
+ms.custom: sfi-ropc-nochange
 ---
 # Connection strings overview
 

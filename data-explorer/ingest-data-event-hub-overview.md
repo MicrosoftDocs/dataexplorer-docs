@@ -4,6 +4,7 @@ description: This article describes how to ingest data from Azure Event Hubs int
 ms.reviewer: orspodek
 ms.topic: how-to
 ms.date: 08/26/2025
+ms.custom: sfi-ropc-nochange
 ---
 # Azure Event Hubs data connection
 

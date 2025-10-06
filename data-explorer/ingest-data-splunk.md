@@ -4,6 +4,7 @@ description: In this article, you learn how to ingest (load) data into Azure Dat
 ms.reviewer: takamara
 ms.topic: how-to
 ms.date: 09/28/2023
+ms.custom: sfi-image-nochange
 #Customer intent: As a DevOps engineer, I want to use Splunk to pipeline logs and ingest into Azure Data Explorer so that I can analyze them later.
 ---
 

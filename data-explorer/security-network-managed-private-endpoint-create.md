@@ -4,6 +4,7 @@ description: In this article, you learn how to create a managed private endpoint
 ms.reviewer: eladb
 ms.topic: how-to
 ms.date: 11/18/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Create a managed private endpoint for Azure Data Explorer
