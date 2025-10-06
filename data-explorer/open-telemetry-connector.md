@@ -4,6 +4,7 @@ description: Learn how to use Azure Data Explorer as an OpenTelemetry sink.
 ms.date: 09/28/2025
 ms.topic: how-to
 ms.reviewer: ramacg
+ms.custom: sfi-ropc-nochange
 ---
 
 # Ingest data from OpenTelemetry to Azure Data Explorer

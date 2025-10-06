@@ -4,6 +4,7 @@ description: In this article, you learn how to ingest (load) data into Azure Dat
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 07/19/2022
+ms.custom: sfi-image-nochange
 
 #Customer intent: I want to use Azure Data Factory to load data into Azure Data Explorer so that I can analyze it later.
 ---

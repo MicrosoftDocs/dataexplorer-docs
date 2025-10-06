@@ -3,6 +3,7 @@ title: 'Create an Event Grid data connection with SDKs - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Grid using the Kusto SDKs.'
 ms.topic: how-to
 ms.date: 07/16/2023
+ms.custom: sfi-ropc-nochange
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer with SDKs

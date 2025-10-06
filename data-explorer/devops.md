@@ -4,6 +4,9 @@ description: Create a release pipeline and deploy schema changes to your databas
 ms.reviewer: shfeldma
 ms.topic: how-to
 ms.date: 09/28/2025
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 
 #Customer intent: I want to use Azure DevOps to create a release pipeline and deploy
 ---

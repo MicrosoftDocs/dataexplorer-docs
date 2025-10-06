@@ -4,6 +4,7 @@ description: Learn how to ingest (load) data into Azure Data Explorer from Cosmo
 ms.reviewer: vplauzon
 ms.topic: how-to
 ms.date: 01/07/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Ingest data from Azure Cosmos DB into Azure Data Explorer

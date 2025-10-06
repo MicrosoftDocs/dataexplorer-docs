@@ -4,6 +4,7 @@ description: This article describes how to generate a SAS token.
 ms.reviewer: shanisolomon
 ms.topic: how-to
 ms.date: 08/11/2024
+ms.custom: sfi-image-nochange
 ---
 # Generate a SAS token
 

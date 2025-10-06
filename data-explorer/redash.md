@@ -4,6 +4,7 @@ description: In this article, you learn how to visualize data in Azure Data Expl
 ms.reviewer: gabil
 ms.topic: how-to
 ms.date: 11/04/2019
+ms.custom: sfi-image-nochange
 ---
 
 # Visualize data from Azure Data Explorer in Redash

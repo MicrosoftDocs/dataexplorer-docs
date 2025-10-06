@@ -5,6 +5,9 @@ ms.reviewer: shanisolomon
 ms.topic: reference
 ms.date: 12/01/2024
 monikerRange: "azure-data-explorer"
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 # Use a managed identity to run a continuous export job
 

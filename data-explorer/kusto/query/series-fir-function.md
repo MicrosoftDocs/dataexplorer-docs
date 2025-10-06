@@ -4,6 +4,7 @@ description: Learn how to use the series_fir() function to apply a Finite Impuls
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/11/2024
+ms.custom: sfi-image-nochange
 ---
 # series_fir()
 

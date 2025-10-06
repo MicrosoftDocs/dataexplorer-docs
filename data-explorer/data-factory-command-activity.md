@@ -4,6 +4,7 @@ description: 'In this topic, use Azure Data Explorer management commands in Azur
 ms.reviewer: tzgitlin
 ms.topic: how-to
 ms.date: 09/13/2023
+ms.custom: sfi-image-nochange
 
 #Customer intent: I want to use Azure Data Explorer management commands in Azure Data Factory.
 ---
