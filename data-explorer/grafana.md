@@ -4,6 +4,7 @@ description: Discover how to configure Azure Data Explorer for Grafana and creat
 ms.reviewer: gabil
 ms.topic: how-to
 ms.date: 09/28/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Visualize data from Azure Data Explorer in Grafana

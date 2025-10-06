@@ -4,6 +4,7 @@ description: In this tutorial, you learn how to ingest monitoring data to Azure 
 ms.reviewer: kerend
 ms.topic: tutorial
 ms.date: 11/09/2022
+ms.custom: sfi-image-nochange
 
 # Customer intent: I want to ingest monitoring data to Azure Data Explorer without one line of code, so that I can explore and analyze my data by using queries.
 ---

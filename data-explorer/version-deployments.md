@@ -4,6 +4,7 @@ description: Learn how to monitor the version deployments of your Azure Data Exp
 ms.reviewer: bwatts
 ms.topic: how-to
 ms.date: 12/19/2023
+ms.custom: sfi-image-nochange
 ---
 
 # View cluster version deployments

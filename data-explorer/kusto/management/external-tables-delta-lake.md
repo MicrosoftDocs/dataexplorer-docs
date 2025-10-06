@@ -4,6 +4,7 @@ description: This article describes how to create and alter delta external table
 ms.reviewer: igborodi
 ms.topic: reference
 ms.date: 08/11/2024
+ms.custom: sfi-ropc-nochange
 ---
 # Create and alter delta external tables on Azure Storage
 

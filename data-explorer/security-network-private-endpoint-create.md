@@ -4,6 +4,7 @@ description: In this article, you'll learn how to create a private endpoint for 
 ms.reviewer: eladb
 ms.topic: how-to
 ms.date: 04/05/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Create a private endpoint for Azure Data Explorer

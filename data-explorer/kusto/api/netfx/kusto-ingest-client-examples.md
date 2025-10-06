@@ -4,6 +4,7 @@ description: This article describes Kusto.Ingest ingestion code examples.
 ms.reviewer: ohbitton
 ms.topic: reference
 ms.date: 08/11/2024
+ms.custom: sfi-ropc-nochange
 ---
 # Kusto.Ingest ingestion code examples
 

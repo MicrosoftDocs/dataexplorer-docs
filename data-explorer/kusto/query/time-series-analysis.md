@@ -4,6 +4,7 @@ description: Gain insights into time series analysis with KQL, from creating tim
 ms.reviewer: adieldar
 ms.topic: how-to
 ms.date: 09/25/2025
+ms.custom: sfi-image-nochange
 ---
 # Time series analysis
 

@@ -4,8 +4,10 @@ description: In this quickstart, you learn how to create an Azure Data Explorer 
 ms.reviewer: mblythe
 ms.topic: quickstart
 ms.date: 06/05/2025
-ms.custom: mode-portal
 adobe-target: true
+ms.custom:
+  - mode-portal
+  - sfi-image-nochange
 
 # Customer intent: As a database administrator, I want to create an Azure Data Explorer cluster and database so that I can understand whether Azure Data Explorer is suitable for my analytics projects.
 ---

@@ -4,6 +4,7 @@ description: This article describes Kusto connection strings.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/30/2025
+ms.custom: sfi-ropc-nochange
 ---
 # Kusto connection strings
 
