@@ -5,14 +5,17 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/26/2024
 ---
-# .execute database script command
+# `.execute database script` command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Executes a batch of management commands in the scope of a single database.
 
 > [!NOTE]
-> Select the full command text before running it. Otherwise, it will stop at the first empty line in the script.
+> Select the full command text before running it. Otherwise, it stops at the first empty line in the script.
+
+> [!TIP]
+> By default, the `.execute database script` command always succeeds. If you want the command to fail when one of the commands in the script fails, run the command with the `ThrowOnErrors` property set to `True`. For example: `.execute database script with (ThrowOnErrors=true)`.
 
 ## Permissions
 
@@ -24,7 +27,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *ControlCommandsScript*
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
-
+https://microsoft-ce-csi.acrolinx.cloud/htmldata/en/rules/6fba4c0492df38150ba70881e2fae9640d6466a0.html
 ## Parameters
 
 |Name|Type|Required|Description|
@@ -53,10 +56,10 @@ Each command appearing in the script is reported as a separate record in the out
 
 >[!NOTE]
 >
->* The script text may include empty lines and comments between the commands.
+>* The script text can include empty lines and comments between the commands.
 >* Commands are executed sequentially, in the order they appear in the input script.
->* Script execution is sequential, but non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute database script`.
->* Execution of the command requires Database Admin permissions, in addition to permissions that may be required by each specific command.
+>* Script execution is sequential, but non-transactional, and no rollback is performed upon error. We recommend that you use the idempotent form of commands when using `.execute database script`.
+>* Execution of the command requires Database Admin permissions, in addition to the permissions required by each specific command.
 >* Default behavior of the command - fail on the first error, it can be changed using property argument.
 >* Read-only management commands (`.show` commands) aren't executed and are reported with status `Skipped`.
 
@@ -96,6 +99,6 @@ The following example executes a script with multiple operations, continuing to 
 
 |OperationId|CommandType|CommandText|Result|Reason|
 |---|---|---|---|---|
-|1d28531b-58c8-4023-a5d3-16fa73c06cfa|TableCreate|.create-merge table T(a:string, b:string)|Completed||
-|67d0ea69-baa4-419a-93d3-234c03834360|RetentionPolicyAlter|.alter-merge table T policy retention softdelete = 10d|Completed||
-|0b0e8769-d4e8-4ff9-adae-071e52a650c7|FunctionCreateOrAlter|.create-or-alter function  with (skipvalidation = "true")SampleT1(myLimit: long) {T1 \| take myLimit}|Completed||
+|1d28531b-58c8-4023-a5d3-16fa73c06cfa|TableCreate|`.create-merge table T(a:string, b:string)`|Completed||
+|67d0ea69-baa4-419a-93d3-234c03834360|RetentionPolicyAlter|`.alter-merge table T policy retention softdelete = 10d`|Completed||
+|0b0e8769-d4e8-4ff9-adae-071e52a650c7|FunctionCreateOrAlter|`.create-or-alter function  with (skipvalidation = "true")SampleT1(myLimit: long) {T1 \| take myLimit}`|Completed||
