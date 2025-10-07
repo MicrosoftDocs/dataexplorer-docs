@@ -4,6 +4,7 @@ description: In this article, you learn how to install the Azure Data Explorer K
 ms.reviewer: vplauzon
 ms.topic: how-to
 ms.date: 06/30/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Install the Azure Data Explorer Kusto emulator

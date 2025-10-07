@@ -4,6 +4,7 @@ description: Learn how to use managed identities with external tables in Azure D
 ms.reviewer: itsagui
 ms.topic: how-to
 ms.date: 04/20/2023
+ms.custom: sfi-ropc-nochange
 ---
 
 # Authenticate external tables with managed identities

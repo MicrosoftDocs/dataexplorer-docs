@@ -4,6 +4,7 @@ description: Learn how to migrate a Virtual Network injected Azure Data Explorer
 ms.reviewer: cosh, gunjand
 ms.topic: how-to
 ms.date: 10/07/2024
+ms.custom: sfi-image-nochange
 ---
 
 # Migrate a Virtual Network injected cluster to private endpoints

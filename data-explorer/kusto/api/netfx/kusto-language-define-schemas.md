@@ -3,6 +3,7 @@ title:  Define schemas for semantic analysis with Kusto.Language
 description: This article describes how to define schemas for semantic analysis with the Kusto.Language library.
 ms.topic: reference
 ms.date: 08/11/2024
+ms.custom: sfi-ropc-nochange
 ---
 
 # Define schemas for semantic analysis with Kusto.Language

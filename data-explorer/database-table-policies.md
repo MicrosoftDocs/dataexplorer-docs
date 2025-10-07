@@ -4,6 +4,7 @@ description: This article describes how to programmatically create Azure Data Ex
 ms.reviewer: lugoldbe
 ms.topic: how-to
 ms.date: 05/04/2023
+ms.custom: sfi-ropc-nochange
 ---
 
 # Create database and table policies for Azure Data Explorer

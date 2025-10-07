@@ -4,7 +4,9 @@ description: This article describes how to use Azure Data Explorer Clusters Insi
 ms,reviewer: guregini
 ms.topic: conceptual
 ms.date: 05/24/2022
-ms.custom: subject-monitoring
+ms.custom:
+  - subject-monitoring
+  - sfi-image-nochange
 ---
 
 # Azure Data Explorer Clusters Insights

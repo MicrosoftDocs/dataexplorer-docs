@@ -10,6 +10,7 @@ ms.custom:
   - ai-gen-title
   - ai-seo-date:09/02/2025
   - ai-gen-description
+  - sfi-ropc-nochange
 ---
 
 # Ingest JSON formatted sample data into Azure Data Explorer

@@ -4,6 +4,7 @@ description: Learn how to get data from Amazon S3 into Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
 ms.date: 11/16/2023
+ms.custom: sfi-image-nochange
 ---
 # Get data from Amazon S3
 

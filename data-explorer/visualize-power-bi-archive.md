@@ -4,6 +4,7 @@ description: 'In this tutorial, you learn how to connect to Azure Data Explorer 
 ms.reviewer: gabil
 ms.topic: tutorial
 ms.date: 09/14/2022
+ms.custom: sfi-image-nochange
 
 #Customer intent: As a data analyst, I want to connect to Azure Data Explorer with Power BI, so that I can explore and visualize my data.
 ---

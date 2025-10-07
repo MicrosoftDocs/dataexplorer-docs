@@ -5,6 +5,7 @@ ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 09/25/2024
 monikerRange: "azure-data-explorer"
+ms.custom: sfi-ropc-nochange
 #customer intent: To learn about the different authentication methods that can be used in apps.
 ---
 # App authentication methods

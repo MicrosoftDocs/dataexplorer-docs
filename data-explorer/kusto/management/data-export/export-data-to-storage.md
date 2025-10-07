@@ -4,6 +4,7 @@ description: Learn how to export data to cloud storage.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/02/2025
+ms.custom: sfi-ropc-nochange
 ---
 # .export to storage
 

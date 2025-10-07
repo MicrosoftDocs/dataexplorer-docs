@@ -4,6 +4,7 @@ description: In this article, you learn how to set up Azure Data Explorer as a d
 ms.reviewer: guregini
 ms.topic: how-to
 ms.date: 03/12/2020
+ms.custom: sfi-image-nochange
 ---
 
 # Visualize data from Azure Data Explorer in Kibana with the K2Bridge open-source connector
