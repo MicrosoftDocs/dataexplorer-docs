@@ -15,7 +15,9 @@ Executes a batch of management commands in the scope of a single database.
 > Select the full command text before running it. Otherwise, it stops at the first empty line in the script.
 
 > [!TIP]
-> By default, the `.execute database script` command always succeeds. If you want the command to fail when one of the commands in the script fails, run the command with the `ThrowOnErrors` property set to `True`. For example: `.execute database script with (ThrowOnErrors=true)`.
+> By default, the `.execute database script` command always succeeds. If you want the command to fail when one of the commands in the script fails, run the command with the `ThrowOnErrors` property set to `True`
+>
+> `.execute database script with (ThrowOnErrors=true)`.
 
 ## Permissions
 
