@@ -36,7 +36,7 @@ Make sure to include a SAS token or use a managed identity to grant the service 
 EnableTracking=true
 with (format='csv')
 <|
-'https://https://sample.blob.core.windows.net/sample/test_*csv?...'
+'https://sample.blob.core.windows.net/sample/test_*csv?...'
  ```
 
 **Output**
