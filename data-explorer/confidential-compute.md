@@ -13,7 +13,7 @@ ms.custom: references_regions
 
 Confidential compute virtual machines (VMs) provide strong security and confidentiality for tenants. They establish a hardware-enforced boundary between your application and the virtualization stack. Clusters deployed with confidential compute VMs ensure hardware-based security and data confidentiality for sensitive workloads by establishing a trusted execution environment (TEE). For more information, see [confidential compute](/azure/confidential-computing/confidential-vm-overview) and [Azure guidance for isolated compute](/azure/confidential-computing/confidential-vm-faq).
 
-Azure Data Explorer supports confidential compute using the SKU [**ECasv5 and ECadsv5 Series Virtual Machines**](https://learn.microsoft.com/en-us/azure/virtual-machines/ecasv5-ecadsv5-series). This SKU can scale up and down automatically to meet the needs of your application or enterprise.
+Azure Data Explorer supports confidential compute using the SKU [**ECasv5 and ECadsv5 Series Virtual Machines**](https://learn.microsoft.com/azure/virtual-machines/ecasv5-ecadsv5-series). This SKU can scale up and down automatically to meet the needs of your application or enterprise.
 
 Confidential compute VMs are ideal for running sensitive workloads that require a trusted execution environment (TEE). For more information about supported SKUs for Azure Data Explorer, see [Select the correct VM SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md).
 
