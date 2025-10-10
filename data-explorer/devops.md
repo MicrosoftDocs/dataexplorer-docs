@@ -27,7 +27,7 @@ This document describes a simple example of using the **Azure Data Explorer - Pi
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Azure Data Explorer cluster setup:
   * Create Microsoft Entra app by [provisioning a Microsoft Entra application](provision-entra-id-app.md).
