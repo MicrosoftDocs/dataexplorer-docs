@@ -18,7 +18,7 @@ To learn how to create the connection in the Azure Data Explorer web UI, Azure p
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
 * An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.

@@ -40,7 +40,7 @@ Use the following table to help you choose the ingestion type that's appropriate
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ## Performance and operational considerations
 
