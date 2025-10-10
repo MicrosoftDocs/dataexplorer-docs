@@ -15,7 +15,7 @@ To delete only table records, see [Soft delete overview](/kusto/concepts/data-so
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ## Delete a cluster
 

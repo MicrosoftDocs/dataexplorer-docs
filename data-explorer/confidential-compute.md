@@ -9,7 +9,7 @@ ms.custom: references_regions
 #Customer intent: I want to deploy Azure Data Explorer cluster in an confidential compute SKU.
 ---
 
-# Enable confidential compute on your Azure Data Explorer cluster (preview)
+# Enable confidential compute on your Azure Data Explorer cluster
 
 Confidential compute virtual machines (VMs) provide strong security and confidentiality for tenants. They establish a hardware-enforced boundary between your application and the virtualization stack. Clusters deployed with confidential compute VMs ensure hardware-based security and data confidentiality for sensitive workloads by establishing a trusted execution environment (TEE). For more information, see [confidential compute](/azure/confidential-computing/confidential-vm-overview) and [Azure guidance for isolated compute](/azure/confidential-computing/confidential-vm-faq).
 

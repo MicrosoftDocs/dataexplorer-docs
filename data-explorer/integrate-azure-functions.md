@@ -14,7 +14,7 @@ Azure Functions allow you to run serverless code in the cloud on a schedule or i
 
 ## Prerequisites
 
-- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - An Azure Data Explorer cluster and database with sample data. [Create a cluster and database](create-cluster-and-database.md).
 - A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 

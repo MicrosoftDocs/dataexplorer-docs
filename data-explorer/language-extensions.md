@@ -12,7 +12,7 @@ The language extensions feature allows you to use language extension plugins to 
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Review the [limitations](#limitations). Note that language extensions can only be enabled on SKUs that support [nested virtualization](/kusto/concepts/sandboxes?view=azure-data-explorer&preserve-view=true#vm-sizes-supporting-nested-virtualization).
 * Cluster AllDatabasesAdmin permissions. [Manage Azure Data Explorer cluster permissions](manage-cluster-permissions.md).

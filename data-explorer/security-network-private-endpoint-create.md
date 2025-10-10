@@ -15,7 +15,7 @@ Private endpoints use private IP addresses from your virtual network to connect 
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * Sign in to the [Azure portal](https://portal.azure.com/).
 * An [Azure Data Explorer cluster](create-cluster-and-database.md) that isn't injected in a virtual network.
 * A [virtual network](/azure/virtual-network/quick-create-portal).
