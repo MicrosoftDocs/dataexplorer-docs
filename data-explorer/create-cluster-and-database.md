@@ -30,7 +30,7 @@ A Microsoft account or a Microsoft Entra user identity to create a free cluster.
 
 ### [Full cluster](#tab/full)
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * Sign in to the [Azure portal](https://portal.azure.com/).
 
 ---

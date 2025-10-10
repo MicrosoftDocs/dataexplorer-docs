@@ -13,7 +13,7 @@ In this article, you learn how to use PowerShell to create a cross-tenant Event 
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 * Create an Event Hub in *Tenant1*. This is the tenant that hosts the source Event Hubs.
 * Create [a test cluster and database](create-cluster-and-database.md) in *Tenant2*. This is the tenant that hosts the destination cluster.
 * A single Entra account with access to both tenants or a [multitenant service principal](/entra/identity-platform/howto-convert-app-to-be-multi-tenant).

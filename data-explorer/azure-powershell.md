@@ -14,7 +14,7 @@ The steps in this article aren't required if you're running commands in [Azure C
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * Follow the Azure PowerShell prerequisites relevant to your environment. For more information, see [Install Azure PowerShell](/powershell/azure/install-azure-powershell).
 
 ## Install az.Kusto cmdlets

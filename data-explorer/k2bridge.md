@@ -43,7 +43,7 @@ The following image shows a Kibana instance bound to Azure Data Explorer by K2Br
 
 Before you can visualize data from Azure Data Explorer in Kibana, have the following ready:
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An [Azure Data Explorer cluster and database](create-cluster-and-database.md). You will need the cluster's URL and the database name.
 * [Helm v3](https://github.com/helm/helm#install), the Kubernetes package manager.
 * Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Use version 1.21.2 or newer, with a minimum of three Azure Kubernetes Service nodes. Version 1.21.2 has been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/kubernetes-walkthrough) or [using the Azure portal](/azure/aks/kubernetes-walkthrough-portal).
