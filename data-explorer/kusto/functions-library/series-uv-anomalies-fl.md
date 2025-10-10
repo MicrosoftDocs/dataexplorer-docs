@@ -17,7 +17,7 @@ The function `series_uv_anomalies_fl()` is a [user-defined function (UDF)](../qu
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * A cluster and database [Create a cluster and database](/azure/data-explorer/create-cluster-and-database) or a [KQL database](/fabric/real-time-intelligence/create-database) with editing permissions and data.
 * The Python plugin must be [enabled on the cluster](../query/python-plugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 * [Create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.

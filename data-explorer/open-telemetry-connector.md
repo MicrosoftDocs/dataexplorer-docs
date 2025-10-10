@@ -31,7 +31,7 @@ In this article, you learn how to:
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * A cluster and a database. Learn how to [create an Azure Data Explorer cluster and database](create-cluster-and-database.md).
 
 ## Set up your environment
