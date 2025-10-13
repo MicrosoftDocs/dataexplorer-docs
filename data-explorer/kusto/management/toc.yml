@@ -222,6 +222,32 @@ items:
           - name: .show materialized-view(s) details
             displayName: show materialized view details
             href: materialized-views/materialized-view-show-details-command.md
+      - name: Graphs
+        items:
+          - name: Persistent graph overview
+            href: graph/graph-persistent-overview.md
+          - name: Graph models overview
+            href: graph/graph-model-overview.md
+          - name: .create-or-alter graph_model
+            href: graph/graph-model-create-or-alter.md
+          - name: .drop graph_model
+            href: graph/graph-model-drop.md
+          - name: .show graph_model
+            href: graph/graph-model-show.md
+          - name: .show graph_models 
+            href: graph/graph-models-show.md
+          - name: Graph snapshot overview
+            href: graph/graph-snapshot-overview.md
+          - name: .make graph_snapshot
+            href: graph/graph-snapshot-make.md
+          - name: .drop graph_snapshot
+            href: graph/graph-snapshot-drop.md
+          - name: .drop graph_snapshots
+            href: graph/graph-snapshots-drop.md
+          - name : .show graph_snapshot
+            href: graph/graph-snapshot-show.md
+          - name: .show graph_snapshots
+            href: graph/graph-snapshots-show.md
       - name: Stored query results
         items:
           - name: Stored query results
