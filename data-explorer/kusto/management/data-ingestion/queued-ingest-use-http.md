@@ -99,7 +99,7 @@ Authorization: Bearer <access_token>
 ```
 
 > [!NOTE]
-> Setting `"enableTracking": true` will return a non-empty `ingestionOperationId` in the response, which can be used to monitor ingestion status via the rest-api-status.md.
+> Setting `"enableTracking": true` will return a non-empty `ingestionOperationId` in the response, which can be used to monitor ingestion status using [Operations Results - Get](/rest/api/azurerekusto/operations-results/get).
 
 ## Response
 
