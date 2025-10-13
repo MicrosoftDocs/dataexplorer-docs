@@ -13,7 +13,7 @@ Upgrading your free cluster to a full cluster allows you to use [all the feature
 ## Prerequisites
 
 - A [free Azure Data Explorer cluster](start-for-free-web-ui.md)
-- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/)
+- An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 - [Contributor](/azure/role-based-access-control/built-in-roles#contributor) permissions or greater in the Azure subscription
 
 > [!NOTE]

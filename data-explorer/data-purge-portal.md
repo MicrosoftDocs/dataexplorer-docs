@@ -24,7 +24,7 @@ Azure Data Explorer supports both individual record deletion and purging an enti
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
+* If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 * Create [an Azure Data Explorer cluster and database](create-cluster-and-database.md)
 
