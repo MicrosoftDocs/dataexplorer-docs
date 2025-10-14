@@ -40,21 +40,27 @@ The following example extract the username, email, age from the string. The [reg
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEISa0oUbBVUAotTi2yUvDKz8hzyU%2FVUXDNTczMsVLIAvJT8lMdUisScwtyUvWS83N1FBzTU60UjCyVrLkKijLzShRAWv0Sc1OBxgANK0pMLtGAGqcRHacTq62ppKNgqAO2SVOHC2yyZwqSYgclqG0aMcHamjooqoF2oaiMSdEGyhtA5QFR4bA2wQAAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OPwvCMBDF93yKI1NCD%2FEPDlaECjro4KJOrUpsjlJIqrRBOvjhTW0EBW857vF%2B954hBxetnIIFdMupqyFxoNbF0Li6rArJUsaPDdUxbJWlBmFtVWnClVCr7N3QIL9ZhGVBMYxnHD%2FESj1KHfTJlLPTnPVpT%2BYjqNLQ%2BXb%2Bk8%2F3Sq1yJwIr0jOeIskRRghdI4kM%2Bnk32OgvJuGhlcj2kcR%2FkC%2FxA2Q68rZhsL0AlTcJ%2BAkBAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let Text = "User: JohnDoe, Email: johndoe@example.com, Age: 29";
-print UserName = extract("User: ([^,]+)", 1, Text),
-EmailId = extract(@"Email: (\S+),", 1, Text),
-Age = extract(@"\d+", 0, Text)
+let _data = datatable(Text: string)
+[
+"User: James, Email: James@example.com, Age: 29",
+"User: David, Age: 35"
+];
+_data |
+extend UserName = extract("User: ([^,]+)", 1, Text),
+       EmailId = extract(@"Email: (\S+),", 1, Text),
+       Age = extract(@"\d+", 0, Text)
 ```
 
 **Output**
 
-| UserName | EmailId | Age |
-| --- | --- | --- |
-| JohnDoe | johndoe@example.com	| 29 |
+| Text | `UserName` | `EmailId` | `Age` |
+| -- | --- | --- | --- |
+| User: James, Email: James@example.com, Age: 29 | James | James@example.com | 29 |
+| User: David, Age: 35 | David | | 35 |
 
 The following example extracts the month from the string `Dates` and returns a table with the date string and the month as int type.
 
@@ -77,7 +83,7 @@ Dates
 
 **Output**
 
-| DateString | Month |
+| DateString | `Month` |
 | --- | --- |
 | 15-12-2024 | 12 |
 | 21-07-2023 | 7 |
