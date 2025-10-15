@@ -50,7 +50,7 @@ funnelData
 | project Stage, Count
 ```
 
-:::image type="content" source="media/adx-dashboards/funnel.png" alt-text="Screenshot of a funnel chart visualizing server requests"::: 
+:::image type="content" source="media/adx-dashboards/funnel.png" alt-text="Screenshot of a funnel chart visualizing server requests."::: 
 
 ## Heatmap
 
@@ -79,4 +79,4 @@ TransformedServerMetrics
 | project X = MetricType, Y = SQLMetrics, Value = Count
 ```
 
-:::image type="content" source="media/adx-dashboards/heatmap.png" alt-text="Screenshot of a heatmap visualizing server metrics":::
+:::image type="content" source="media/adx-dashboards/heatmap.png" alt-text="Screenshot of a heatmap visualizing server metrics.":::
