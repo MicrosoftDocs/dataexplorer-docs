@@ -34,6 +34,8 @@ The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html
 
 ## Examples
 
+The following example calculates the geospatial coordinates that represent the center of a geohash rectangular area.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjIB5G2Cump+fFAnJFYnBFfkh+fnJpXUpSYEw+W1lAqLs3Lq1TS5KpRSK0oSc1LUUjOzy9KycxLLEktBmoGq9JDEkMozMnPS88sKU1JBSpDUhBtEKujkJNYgk3KMBYAnhfZ4psAAAA=" target="_blank">Run the query</a>
@@ -67,8 +69,6 @@ print geohash = geo_geohash_to_central_point("a")
 |geohash|
 |---|
 ||
-
-### Creating location deep-links for Bing Maps
 
 You can use the geohash value to create a deep-link URL to Bing Maps by pointing to the geohash center point:
 
