@@ -31,6 +31,8 @@ An integer that represents H3 Cell level. Valid level is in range [0, 15]. If th
 
 ## Examples
 
+The following example calculates the H3 cell resolution.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhOzcmJL0otVrBVSE/Nj88wBgvkpJal5mioW5gZJRoamBulQYC6JgA3an62NAAAAA==" target="_blank">Run the query</a>
@@ -45,6 +47,7 @@ print cell_res = geo_h3cell_level('862a1072fffffff')
 |cell_res|
 |---|
 |6|
+
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
