@@ -52,8 +52,6 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 
 ## Examples
 
-### Shortest distance to airport
-
 The following example finds the shortest distance between North Las Vegas Airport and a nearby road.
 
 :::image type="content" source="media/geo-distance-point-to-line-function/distance-point-to-line.png" alt-text="Screenshot of a map showing the distance between North Las Vegas Airport and a specific road.":::
@@ -73,8 +71,6 @@ print distance_in_meters = geo_distance_point_to_line(-115.199625, 36.210419, dy
 |--------------------|
 | 3797.88887253334   |
 
-### Storm events across the south coast
-
 The following example finds storm events along the US south coast filtered by a maximum distance of 5 km from the defined shore line.
 
 :::moniker range="azure-data-explorer"
@@ -93,8 +89,6 @@ StormEvents
 **Output**
 
 :::image type="content" source="media/geo-distance-point-to-line-function/us-south-coast-storm-events.png" alt-text="Screenshot of rendered storm events along the south coast of the US.":::
-
-### New York taxi pickups
 
 The following example finds New York taxi pickups filtered by a maximum distance of 0.1 meters from the defined multiline.
 
@@ -149,8 +143,6 @@ nyc_taxi
 
 :::image type="content" source="media/geo-distance-point-to-line-function/lines-folding.png" alt-text="Screenshot of a query map rendering example of lines folded into a multiline. The example is all taxi pickups 10 km away from all Manhattan roads.":::
 
-### Invalid LineString
-
 The following example returns a null result because of the invalid LineString input.
 
 :::moniker range="azure-data-explorer"
@@ -167,8 +159,6 @@ print distance_in_meters = geo_distance_point_to_line(1,1, dynamic({ "type":"Lin
 | distance_in_meters |
 |--------------------|
 |                    |
-
-### Invalid coordinate
 
 The following example returns a null result because of the invalid coordinate input.
 
