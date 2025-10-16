@@ -16,14 +16,14 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 | Article title | Description |
 |--|--|
 | - [Use a Notebook and Kqlmagic to Analyze Data in Azure Data Explorer](kqlmagic.md)| Updated article, major changes. Learn how to use Kqlmagic in a Jupyter Notebook to run Kusto Query Language (KQL) queries and visualize data from Azure Data Explorer. |
-| - [project-by-names operator](kusto/query/project-by-names-operator.md) | New article. Learn how to use the project-by-names operator to select a subset of columns from the input table. |
-| - [column_names_of() function](kusto/query/column-names-of-function.md) | New article. Learn how to use the column_names_of() function to retrieve the column names of a tabular expression. |
+| - [project-by-names operator](kusto/query/project-by-names-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the project-by-names operator to select a subset of columns from the input table. |
+| - [column_names_of() function](kusto/query/column-names-of-function?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the column_names_of() function to retrieve the column names of a tabular expression. |
 
 **Data Connectors**
 
 | Article title | Description |
 |--|--|
-| - [bag_unpack plugin](kusto/query/bag-unpack-plugin.md) | Updated article. Updated instructions for bag_unpack plugin. |
+| - [bag_unpack plugin](kusto/query/bag-unpack-plugin?view=azure-data-explorer&preserve-view=true) | Updated article. Updated instructions for bag_unpack plugin. |
 | - [Use the Model Content Protocol (MCP) Server with ADX Clusters](integrate-mcp-servers.md)| New article. Learn how to use Model Context Protocol (MCP) with Azure Data Explorer clusters to create AI agents and applications that analyze real-time data. |
 
 ## June 2025
