@@ -4,6 +4,7 @@ description: In this article, you learn how to visualize data in Azure Data Expl
 ms.reviewer: gabil
 ms.topic: how-to
 ms.date: 11/04/2019
+ms.custom: sfi-image-nochange
 ---
 
 # Visualize data from Azure Data Explorer in Redash
@@ -12,7 +13,7 @@ ms.date: 11/04/2019
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Ingest data as explained in [ingest sample data into Azure Data Explorer](web-ui-samples-query.md). For more ingestion options, see [ingestion overview](ingest-data-overview.md).
 

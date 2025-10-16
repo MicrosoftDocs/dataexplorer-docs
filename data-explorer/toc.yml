@@ -79,6 +79,8 @@ items:
                 href: cross-tenant-query-and-commands.md
           - name: Isolated compute
             href: isolated-compute.md
+          - name: Confidential compute
+            href: confidential-compute.md
           - name: Network security
             items:
               - name: Network security overview
@@ -325,6 +327,8 @@ items:
         href: data-lake-query-data.md
       - name: Query data in Azure Monitor
         href: query-monitor-data.md
+      - name: Query data using GQL
+        href: /kusto/query/graph-query-language?view=azure-data-explorer&preserve-view=true
       - name: Query data in MATLAB
         href: query-matlab.md
       - name: Query data using Power Apps
@@ -612,7 +616,7 @@ items:
             href: sync-kusto.md
       - name: Notebooks
         items:
-          - name: Jupyter Notebooks with Kqlmagic
+          - name: Notebooks with Kqlmagic
             href: kqlmagic.md
           - name: Azure Data Studio
             items:
@@ -629,6 +633,8 @@ items:
         href: integrate-azure-functions.md
       - name: Connect from Azure Synapse Apache Spark
         href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
+      - name: Use MCP servers to build AI agents
+        href: integrate-mcp-servers.md
       - name: Linked server
         href: linked-server.md
         displayName: SQL Server, ODBC
@@ -682,6 +688,8 @@ items:
         items:
           - name: Pricing page
             href: https://azure.microsoft.com/pricing/details/data-explorer/
+          - name: Cost drivers
+            href: pricing-cost-drivers.md
           - name: Pricing calculator
             href: pricing-calculator.md
           - name: Reserved capacity

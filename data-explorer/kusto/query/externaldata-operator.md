@@ -4,6 +4,7 @@ description: Learn how to use the externaldata operator to return a data table o
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/27/2025
+ms.custom: sfi-ropc-nochange
 ---
 # externaldata operator
 
@@ -11,11 +12,21 @@ ms.date: 01/27/2025
 
 The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in Azure Blob Storage or a file in Azure Data Lake Storage.
 
+::: moniker range="azure-data-explorer"
 > [!NOTE]
 > The `externaldata` operator supports:
->
+> * a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
+> * shared Access Signature (SAS) key, Access key, Microsoft Entra Token, and Managed Identity authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md#storage-authentication-methods).
+
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+> [!NOTE]
+> The `externaldata` operator supports:
 > * a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
 > * shared Access Signature (SAS) key, Access key, and Microsoft Entra Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md#storage-authentication-methods).
+
+::: moniker-end
 
 ::: moniker range="azure-monitor || microsoft-sentinel"
 
@@ -40,6 +51,19 @@ The `externaldata` operator returns a table whose schema is defined in the query
 | *columnName*, *columnType* | `string` |  :heavy_check_mark:| A list of column names and their types. This list defines the schema of the table. |
 | *storageConnectionString* | `string` |  :heavy_check_mark:| A [storage connection string](../api/connection-strings/storage-connection-strings.md) of the storage artifact to query. |
 | *propertyName*, *propertyValue* | `string` | | A list of optional [supported properties](#supported-properties) that determines how to interpret the data retrieved from storage.
+
+> [!WARN]
+> For security reasons, make sure that no credential is specified by  the *storageConnectionString* property.
+> If the query needs to specify credentials, use [query parameters](./query-parameters-statement.md) to specify the whole connection string.
+>
+> For example, assuming that the query includes a query parameter called `URI` whose value points at Blob Storage, the query would look like this:
+> ```kusto
+> declare query_parameters(URI:string);
+> externaldata(x:string)[URI]
+> ```
+>
+> If this is not possible (for example, you're using a client that does not support setting query parameters),
+> be sure to use [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals).
 
 ### Supported properties
 
@@ -66,8 +90,7 @@ The following example shows how to find all records in a table whose `UserID` co
 ```kusto
 Users
 | where UserID in ((externaldata (UserID:string) [
-    @"https://storageaccount.blob.core.windows.net/storagecontainer/users.txt" 
-      h@"?...SAS..." // Secret token needed to access the blob
+    @"https://storageaccount.blob.core.windows.net/storagecontainer/users.txt;managed_identity=..."
     ]))
 | ...
 ```

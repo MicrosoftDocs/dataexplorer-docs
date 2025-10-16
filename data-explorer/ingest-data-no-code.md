@@ -4,6 +4,7 @@ description: In this tutorial, you learn how to ingest monitoring data to Azure 
 ms.reviewer: kerend
 ms.topic: tutorial
 ms.date: 11/09/2022
+ms.custom: sfi-image-nochange
 
 # Customer intent: I want to ingest monitoring data to Azure Data Explorer without one line of code, so that I can explore and analyze my data by using queries.
 ---
@@ -27,7 +28,7 @@ In this tutorial, you'll learn how to:
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md). In this tutorial, the database name is *TestDatabase*.
 
 ## Azure Monitor data provider: diagnostic metrics and logs and activity logs

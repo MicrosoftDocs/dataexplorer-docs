@@ -178,6 +178,9 @@ items:
       - name: project-away operator
         href: project-away-operator.md
         displayName: project away project_away
+      - name: project-by-names operator
+        href: project-by-names-operator.md
+        displayName: project by names project_by_names
       - name: project-keep operator
         href: project-keep-operator.md
         displayName: project keep project_keep
@@ -606,6 +609,9 @@ items:
       - name: column_ifexists()
         displayName: columnifexists() column if exists
         href: column-ifexists-function.md
+      - name: column_names_of()
+        displayName: columnnamesof() column names of
+        href: column-names-of-function.md
       - name: convert_angle()
         displayName: convert_angle() convert angle
         href: convert-angle-function.md
@@ -1272,49 +1278,77 @@ items:
         href: variancepif-aggregation-function.md
   - name: Graph
     items:
-      - name: Graph semantics overview
-        href: graph-semantics-overview.md
-      - name: Graph best practices
-        href: graph-best-practices.md
-      - name: Graph scenarios
+      - name: Start here
+        items:
+          - name: Graph semantics overview
+            href: graph-semantics-overview.md
+          - name: Graph sample data
+            href: graph-sample-data.md
+          - name: Graph exploration basics
+            href: graph-exploration-basics.md
+      - name: Reference
+        items:
+          - name: Operators
+            items:
+              - name: Graph operators overview
+                href: graph-operators.md
+              - name: make-graph
+                href: make-graph-operator.md
+              - name: graph-match
+                href: graph-match-operator.md
+              - name: graph-to-table
+                href: graph-to-table-operator.md
+              - name: graph-shortest-paths
+                href: graph-shortest-paths-operator.md
+              - name: graph-mark-components
+                href: graph-mark-components-operator.md
+          - name: Functions
+            items:
+              - name: all()
+                displayName: all() graph function
+                href: all-graph-function.md
+              - name: any()
+                displayName: any() graph function
+                href: any-graph-function.md
+              - name: map()
+                displayName: map() graph function
+                href: map-graph-function.md
+              - name: inner_nodes()
+                displayName: inner nodes() graph function, inner nodes
+                href: inner-nodes-graph-function.md
+              - name: labels()
+                displayName: labels() graph function, labels
+                href: labels-graph-function.md
+              - name: node_degree_in()
+                displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in
+                href: node-degree-in.md
+              - name: node_degree_out()
+                displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
+                href: node-degree-out.md
+      - name: Visualization
+        items:
+          - name: Overview
+            href: graph-visualization-overview.md
+          - name: Kusto Explorer
+            href: graph-visualization-kusto-explorer.md
+          - name: Graphistry
+            href: graph-visualization-graphistry.md
+          - name: Custom visualization
+            href: graph-visualization-custom.md
+      - name: Scenarios
         href: graph-scenarios.md
-      - name: Graph operators
+      - name: Best practices
+        href: graph-best-practices.md
+      - name: Additional query languages
         items:
-          - name: Graph operators overview
-            href: graph-operators.md
-          - name: make-graph
-            href: make-graph-operator.md
-          - name: graph-match
-            href: graph-match-operator.md
-          - name: graph-to-table
-            href: graph-to-table-operator.md
-          - name: graph-shortest-paths
-            href: graph-shortest-paths-operator.md
-          - name: graph-mark-components
-            href: graph-mark-components-operator.md
-      - name: Graph functions
-        items:
-          - name: all()
-            displayName: all() graph function
-            href: all-graph-function.md
-          - name: any()
-            displayName: any() graph function
-            href: any-graph-function.md
-          - name: map()
-            displayName: map() graph function
-            href: map-graph-function.md
-          - name: inner_nodes()
-            displayName: inner nodes() graph function, inner nodes
-            href: inner-nodes-graph-function.md
-          - name: labels()
-            displayName: labels() graph function, labels
-            href: labels-graph-function.md
-          - name: node_degree_in()
-            displayName: graph, node, Node degree in node_degree_in, indegree node_degree_in
-            href: node-degree-in.md
-          - name: node_degree_out()
-            displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
-            href: node-degree-out.md
+          - name: Graph query language (GQL)
+            items:
+              - name: Query data using GQL
+                href: graph-query-language.md
+              - name: GQL reference
+                href: graph-query-language-reference.md
+              - name: GQL examples and use cases
+                href: graph-query-language-use-cases.md
   - name: Geospatial
     items:
       - name: Geospatial clustering

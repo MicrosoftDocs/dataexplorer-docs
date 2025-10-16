@@ -81,7 +81,7 @@ The following list of operators can be used in subqueries with the native or shu
 * [count](count-operator.md)
 * [distinct](distinct-operator.md)
 * [extend](extend-operator.md)
-* [make-series](make-series-operator.md)
+* [make-series](make-series-operator.md) (partially supported, see note)
 * [mv-apply](mv-apply-operator.md)
 * [mv-expand](mv-expand-operator.md)
 * [parse](parse-operator.md)
@@ -108,6 +108,7 @@ The following list of operators can be used in subqueries with the native or shu
 > [!NOTE]
 > * Operators that reference a table source other than the subtable partitions aren't compatible with the `native` and `shuffle` strategies. For example, [join](join-operator.md), [union](union-operator.md), [externaldata](externaldata-operator.md), and [evaluate](evaluate-operator.md) (plugins). For such scenarios, resort to the [legacy strategy](#legacy-strategy).
 > * The [fork](fork-operator.md) operator isn't supported for any strategy type, as the subquery must return a single tabular result.
+> * The [make-series](make-series-operator.md) operator is only partially supported within the `partition by` operator. It is supported only when both the `from` and `to` parameters are specified.
 
 ### Legacy strategy
 

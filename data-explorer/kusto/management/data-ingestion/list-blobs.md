@@ -3,7 +3,7 @@ title:  .list blobs command (list blobs from storage)
 description: Learn how to use the list blobs from storage command.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 06/03/2025
+ms.date: 09/30/2025
 ---
 # .list blobs command (preview)
 
@@ -36,11 +36,11 @@ You must have at least [Table Ingestor](../../access-control/role-based-access-c
 |*SourceDataLocators*| `string` | :heavy_check_mark:|One or many [storage connection strings](../../api/connection-strings/storage-connection-strings.md) separated by a comma character. Each connection string can refer to a storage container or a file prefix within a container. Currently, only one storage connection string is supported. |
 |*SuffixValue*| `string` | |The suffix that enables blob filtering.|
 |*MaxFilesValue*| `integer` | | The maximum number of blobs to return. |
-|*PathFormatValue*| `string` | | The pattern in the blob’s path that can be used to retrieve the creation time as an output field. For more information, see [Path format](#path-format). |
+|*PathFormatValue*| `string` | | The pattern in the blob's path that can be used to retrieve the creation time as an output field. For more information, see [Path format](#path-format). |
 
 > [!NOTE]
 >
-> * We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for *SourceDataLocators*.
+> * We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for *SourceDataLocators* to scrub credentials in internal traces and error messages.
 >
 > * When used alone, `.list blob` returns up to 1,000 files, regardless of any larger value specified in *MaxFiles*.
 
@@ -124,33 +124,22 @@ The following command lists a maximum of 10 blobs of type `.parquet` from a fold
 
 ```kusto
 .list blobs (
-    "https://mystorageaccount.blob.core.windows.net/spark/myfolder;managed_identity=system"
+    "https://mystorageaccount.blob.core.windows.net/datasets/myfolder;managed_identity=system"
 )
 Suffix=".parquet"
 MaxFiles=10
 PathFormat=("myfolder/year=" datetime_pattern("yyyy'/month='MM'/day='dd", creationTime) "/")
 ```
 
-The `PathFormat` parameter can extract dates from various folder hierarchies, such as:
+The `PathFormat` in the example can extract dates from a path such as the following path:
 
-* *Spark* folder paths, for example: `https://mystorageaccount.blob.core.windows.net/spark/myfolder/year=2024/month=03/day=16/myblob.parquet`
-
-* Common folder paths, for example: `https://mystorageaccount.blob.core.windows.net/datasets/export/2024/03/16/03/myblob.parquet` where the hour `03` is included in the path.
-
-You can extract the creation time with the following command:
-
-```kusto
-.list blobs (
-    "https://mystorageaccount.blob.core.windows.net/datasets/export;managed_identity=system"
-)
-Suffix=".parquet"
-MaxFiles=10
-PathFormat=("datasets/export/" datetime_pattern("yyyy'/'MM'/'dd'/'HH", creationTime) "/")
+```
+https://mystorageaccount.blob.core.windows.net/datasets/myfolder/year=2024/month=03/day=16/myblob.parquet
 ```
 
 ## Related content
 
 * [Queued ingestion overview](queued-ingestion-overview.md)
 * [Data formats supported for ingestion](../../ingestion-supported-formats.md)
-* [.ingest-from-storage-queued](ingest-from-storage-queued.md)
+* [.ingest-from-storage-queued into](ingest-from-storage-queued.md)
 * [.show queued ingestion operations command](show-queued-ingestion-operations.md)

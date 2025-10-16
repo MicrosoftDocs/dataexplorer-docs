@@ -3,6 +3,7 @@ title: Connect from common apps - Azure Data Explorer
 description: This article describes how to connect to Azure Data Explorer with SQL Server emulation from various apps in Azure Data Explorer.
 ms.topic: reference
 ms.date: 07/04/2023
+ms.custom: sfi-ropc-nochange
 ---
 
 # Connect from common apps

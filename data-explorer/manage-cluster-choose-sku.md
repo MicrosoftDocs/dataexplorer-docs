@@ -1,12 +1,24 @@
 ---
-title: Select correct compute SKU for your Azure Data Explorer cluster
-description: This article describes how to select the optimal compute SKU size for Azure Data Explorer cluster.
+title: Choose Optimal Compute SKU for Azure Data Explorer Cluster
+description: Learn how to select the optimal compute SKU size for your Azure Data Explorer cluster. Compare storage vs compute optimized options, pricing factors, and scaling strategies.
+#customer intent: As a cloud architect evaluating Azure Data Explorer, I want to understand the difference between compute optimized and storage optimized SKUs so that I can choose the right cluster type for my workload requirements.
 ms.reviewer: anshulsharmas
 ms.topic: how-to
-ms.date: 02/04/2024
+ms.date: 08/26/2025
+ms.custom:
+  - ai-gen-docs-bap
+  - ai-gen-title
+  - ai-seo-date:08/26/2025
+  - ai-gen-description
 ---
 
 # Select a SKU for your Azure Data Explorer cluster
+
+Azure Data Explorer provides multiple virtual machine (VM) SKUs designed to optimize cost and performance for different workload types. This article helps you understand the available cluster types and compute SKU options so you can select the most cost-effective configuration for your specific requirements.
+
+Before you begin, consider your workload characteristics, performance requirements, and budget constraints. You can change your compute SKU at any time by scaling up your cluster, so it's recommended to start with the smallest SKU that meets your initial needs.
+
+## Introduction
 
 When you create a new cluster or optimize a cluster for a changing workload, Azure Data Explorer offers multiple virtual machine (VM) SKUs to choose from. These compute SKUs have been carefully chosen to give you the most optimal cost for any workload.
 
@@ -17,7 +29,7 @@ You can change the compute SKU for the cluster at any time by [scaling up the cl
 You can use the [Pricing calculator](https://aka.ms/adx.cost) to estimate the pricing of your Azure Data Explorer cluster, based on your workloads and data volume.
 
 > [!TIP]
-> By combining savings plans and reserved instances, you can save a significant amount of money securing the best rates for your cluster. Savings plans are recommended for the virtual machines used in the cluster, while reserved instances are recommended for storage resources costs. Both of these options can be purchased for a period of one or three years and are purchased separately. For more information, see [Prepay for Azure Data Explorer markup units with Azure Data Explorer reserved capacity](pricing-reserved-capacity.md).
+> By combining savings plans and reserved instances, you can save a significant amount of money securing the best rates for your cluster. Savings plans are recommended for the virtual machines used in the cluster, while reserved instances are recommended for storage resources costs. Both of these options can be purchased for one or three years and are purchased separately. For more information, see [Prepay for Azure Data Explorer markup units with Azure Data Explorer reserved capacity](pricing-reserved-capacity.md).
 
 ## Select a cluster type
 
@@ -70,13 +82,13 @@ Use the following attributes to help you choose the correct SKU for your environ
 To optimize your cluster compute SKU, configure vertical scaling and check Azure Advisor recommendations.
 
 With various compute SKU options to choose from, you can optimize costs for the performance and hot-cache requirements for your scenario.
-Choose a compute optimized SKU for optimal performance when there are high query volumes.
-Choose a storage optimized SKU for the best performance when querying large volumes of data that need to be cached.  
+Choose a compute-optimized SKU for optimal performance when there are high query volumes.
+Choose a storage-optimized SKU for the best performance when querying large volumes of data that need to be cached.  
 
 It's preferable to use a few nodes of larger VMs that use more RAM, than many smaller VMs. More RAM is needed for some query types that put higher demands on RAM, such as queries that use joins. So when scaling the cluster, we recommend scaling up to a larger SKU, and scaling out by adding more nodes as needed.
 
 > [!NOTE]
-> Changing or scaling up the cluster's SKU may cause a one to three minute service disruption. Query performance may be affected during the SKU migration, and the extent of impact may vary depending on usage patterns.
+> Changing or scaling up the cluster's SKU may cause a one to three-minute service disruption. Query performance may be affected during the SKU migration, and the extent of impact may vary depending on usage patterns.
 
 ### SKU Availability
 
@@ -93,8 +105,8 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 
 | SKU Series | Available vCPU config | SKU type | Supports premium storage |
 |--|--|--|--|
-| [Lasv3](/azure/virtual-machines/lasv3-series) | 8, 16 , 32| AMD | No |
-| [Lsv3](/azure/virtual-machines/lsv3-series) | 8, 16 , 32| Intel | No |
+| [Lasv3](/azure/virtual-machines/lasv3-series) | 8, 16, 32| AMD | No |
+| [Lsv3](/azure/virtual-machines/lsv3-series) | 8, 16, 32| Intel | No |
 | [Easv4](/azure/virtual-machines/eav4-easv4-series), [Easv5](/azure/virtual-machines/sizes/memory-optimized/eadsv5-series), [ECadsv5](/azure/virtual-machines/ecasv5-ecadsv5-series#ecasv5-series)| 8, 16 | AMD | Yes |
 | [Esv4](/azure/virtual-machines/ev4-esv4-series), [Esv5](/azure/virtual-machines/ev5-esv5-series) | 8, 16 | Intel | Yes |
 | [DSv2](/azure/virtual-machines/dv2-dsv2-series) | 8, 16 | Intel | Yes |
@@ -111,7 +123,7 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 > [!NOTE]
 > All compute optimized SKUs with 2 cores can be configured as dev clusters.
 > 
-> It is recommended to use L32asv3 / L32sv3 only in uses cases with either very large L16asv3/L16sv3 clusters reaching the 1000 cluster node limit, or clusters with extremely high concurrent request rates.
+> It's recommended to use L32asv3 / L32sv3 only in uses cases with either very large L16asv3/L16sv3 clusters reaching the 1000 cluster node limit, or clusters with extremely high concurrent request rates.
 > ECasv5 and ECadsv5 are confidential computing SKUs. For more details, read about [Confidential Computing VMs](/azure/confidential-computing/confidential-vm-overview). For storage optimized ECasv5 SKUs, in case you [Use your own customer-managed key](/azure/data-explorer/customer-managed-keys-portal) (CMK), CMK encryption is performed on both storage accounts and premium storage disks.
 
 * With Azure Data Explorer compute and storage isolation, you can start with the most optimal cost SKU and move to another SKU after maturing the usage pattern or data loss.

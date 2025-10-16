@@ -4,6 +4,7 @@ description: This article describes how to programmatically create Azure Data Ex
 ms.reviewer: lugoldbe
 ms.topic: how-to
 ms.date: 05/04/2023
+ms.custom: sfi-ropc-nochange
 ---
 
 # Create database and table policies for Azure Data Explorer
@@ -14,7 +15,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [A test table](net-sdk-ingest-data.md#create-a-table-on-your-test-cluster).
 

@@ -3,7 +3,7 @@ title: Share Azure Data Explorer dashboards
 description: Learn how to share Azure Data Explorer dashboards
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 01/14/2025
+ms.date: 08/26/2025
 ---
 # Share dashboards
 
@@ -23,26 +23,29 @@ In general, dashboards are shared in two steps: Grant permissions, and share the
 ## Manage permissions
 
 1. Browse to your [Azure Data Explorer dashboards](azure-data-explorer-dashboards.md) and toggle mode from **Viewing** to **Editing**.
+
+    :::image type="content" source="media/dashboard-parameters/edit-dashboard.png" alt-text="Screenshot of the Dashboard's homepage." lightbox="media/dashboard-explore-data/dashboards.png":::
+
 1. Select the **Share** menu item in the top bar of the dashboard.
-1. Select **Manage permissions** from the dropdown.
+1. Select **Manage access** from the dropdown.
 
     :::image type="content" source="media/adx-dashboards/share-dashboard.png" alt-text="Screenshot of the share dashboard dropdown.":::
 
-## Grant permissions
+## Grant access
 
-Permissions can be granted to users [within your tenant](#grant-permissions-to-users-within-your-tenant) or to [users in a different tenant](#grant-permissions-to-users-in-a-different-tenant).
+Access can be granted to users [within your tenant](#grant-access-to-users-within-your-tenant) or to [users in a different tenant](#grant-access-to-users-in-a-different-tenant).
 
-### Grant permissions to users within your tenant
+### Grant access to users within your tenant
 
-In the **Dashboard permissions** pane:
+In the **Manage access** pane:
 
 1. Enter the Microsoft Entra user or Microsoft Entra group in **Add new members**.
 1. In the **Permission** level, select one of the following values: **Can view** or **Can edit**.
 1. Select **Add**.
 
-:::image type="content" source="media/dashboard-explore-data/dashboard-permissions.png" alt-text="Manage dashboard permissions.":::
+:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Manage dashboard permissions.":::
 
-### Grant permissions to users in a different tenant
+### Grant access to users in a different tenant
 
 > [!IMPORTANT]
 > Cross-tenant sharing is disabled by default. To enable cross-tenant sharing, a tenant admin must enable it in the Azure Data Explorer WebUI [settings](web-customize-settings.md#enable-cross-tenant-dashboard-sharing).
@@ -52,7 +55,7 @@ In the **Dashboard permissions** pane:
 In the **Dashboard permissions** pane:
 
 1. Select the **Share** menu item in the top bar of the dashboard.
-1. Under **Share with external user**, enter the user's email address. 
+1. Under **Share with external user**, enter the user's email address.
 
     > [!NOTE]
     > * You can share with individual Microsoft Entra ID users, security groups, or Microsoft accounts (MSA).
@@ -100,7 +103,7 @@ To change a user permission level in the **Dashboard permissions** pane:
 1. Change the **Permission** level as needed.
 1. To remove a user, select the trash icon next to the user.
 
-:::image type="content" source="media/adx-dashboards/dashboard-permissions.png" alt-text="Screenshot of dashboard permissions dialog":::
+:::image type="content" source="media/adx-dashboards/view-dashboard-permissions.png" alt-text="Screenshot of the dashboard permissions dialog.":::
 
 ## Share the dashboard link
 

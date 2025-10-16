@@ -4,6 +4,7 @@ description: Learn how to add cluster connections for multiple user accounts or 
 ms.reviewer: mibar
 ms.topic: reference
 ms.date: 01/20/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Add a cluster connection in the Azure Data Explorer web UI

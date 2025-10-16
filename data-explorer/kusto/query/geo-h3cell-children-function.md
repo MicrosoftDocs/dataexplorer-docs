@@ -36,6 +36,8 @@ Array of H3 Cell children tokens. If the H3 Cell is invalid or child resolution 
 
 ## Examples
 
+The following example calculates the H3 cell children.
+
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjOyMxJKUrNU7BVSE/Nj88wTk7NyYmHiWqoW5gZJRoamBulQYC6JgDo0XQKNwAAAA==" target="_blank">Run the query</a>

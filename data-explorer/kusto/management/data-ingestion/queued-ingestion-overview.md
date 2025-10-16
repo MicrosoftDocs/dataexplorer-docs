@@ -3,7 +3,7 @@ title: Queued ingestion overview commands
 description: Learn about queued ingestion and its commands.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 04/25/2025
+ms.date: 09/30/2025
 ---
 # Queued ingestion commands overview (preview)
 
@@ -15,8 +15,8 @@ Queued ingestion commands allow you to ingest specific folders, or an entire con
 
 Queued storage commands include:
 
+* [.ingest-from-storage-queued into command](ingest-from-storage-queued.md) queues blobs for ingestion into a table.
 * [.show queued ingestion operations command](show-queued-ingestion-operations.md) shows the queued ingestion operations.
-* [.ingest-from-storage-queued command](ingest-from-storage-queued.md) queues blobs for ingestion into a table.
 * [.cancel queued ingestion operation command](cancel-queued-ingestion-operation-command.md)
 cancels a queued ingestion operation.
 * [.list blobs command](list-blobs.md) lists the blobs for ingestion.

@@ -2,7 +2,7 @@
 title: Manage database security roles
 description: Learn how to use management commands to view, add, and remove security roles on a database level.
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 07/07/2025
 ---
 
 # Manage database security roles
@@ -51,6 +51,8 @@ To show your roles:
 `.show` `database` *DatabaseName* `principal` `roles`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
+
+[!INCLUDE [show-display-name-other-tenant](../includes/show-display-name-other-tenant.md)]
 
 ### Parameters
 

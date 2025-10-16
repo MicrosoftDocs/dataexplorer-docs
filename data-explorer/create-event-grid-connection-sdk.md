@@ -3,6 +3,7 @@ title: 'Create an Event Grid data connection with SDKs - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Grid using the Kusto SDKs.'
 ms.topic: how-to
 ms.date: 07/16/2023
+ms.custom: sfi-ropc-nochange
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer with SDKs
@@ -20,7 +21,7 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
 * An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.

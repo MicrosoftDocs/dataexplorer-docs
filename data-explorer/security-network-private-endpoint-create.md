@@ -4,6 +4,7 @@ description: In this article, you'll learn how to create a private endpoint for 
 ms.reviewer: eladb
 ms.topic: how-to
 ms.date: 04/05/2022
+ms.custom: sfi-image-nochange
 ---
 
 # Create a private endpoint for Azure Data Explorer
@@ -14,7 +15,7 @@ Private endpoints use private IP addresses from your virtual network to connect 
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * Sign in to the [Azure portal](https://portal.azure.com/).
 * An [Azure Data Explorer cluster](create-cluster-and-database.md) that isn't injected in a virtual network.
 * A [virtual network](/azure/virtual-network/quick-create-portal).

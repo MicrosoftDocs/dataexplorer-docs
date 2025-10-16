@@ -832,10 +832,6 @@ We have a Co-sell offering on the Azure Market place: https://azuremarketplace.m
 - [OPTION 4.0 AG website](https://www.option40.com)
 - [Microsoft partner site for OPTION 4.0 AG](https://appsource.microsoft.com/marketplace/partner-dir/1c27a794-233b-4135-91e9-067074be85fd/overview)
 
-**Success stories**
-
-- [https://customers.microsoft.com/story/840041-buhler-group-discrete-manufacturing-azure-en-switzerland](https://customers.microsoft.com/story/840041-buhler-group-discrete-manufacturing-azure-en-switzerland)
-
 ## Orion Systems Integrators, LLC
 
 :::image type="icon" source="media/findmypartner/orion-innovation-logo.jpg":::

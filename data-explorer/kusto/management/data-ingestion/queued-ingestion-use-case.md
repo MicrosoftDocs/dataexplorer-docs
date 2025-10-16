@@ -3,28 +3,47 @@ title: Queued ingestion commands use case
 description: Learn how to ingest historical data using the queued ingestion commands.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 04/25/2025
+ms.date: 09/30/2025
 ---
 
 # Queued ingestion commands use case (preview)
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The queued ingestion commands allow you to test how the historical data is ingested and fix any problems before ingesting that data. This article describes a common use for queued ingestion commands, the fine-tuning the ingestion of historical data. The following tasks are completed to fine-tune the historical data queued ingestion:
+The queued ingestion commands allow you to ingest individual blobs by URL or ingest batches of data by listing folders or containers. This article walks through a common use case: fine-tuning the ingestion of historical data. You can use these commands to test how historical data is ingested and resolve any issues before performing full ingestion. The following tasks demonstrate how to use queued ingestion commands effectively:
 
-1. [List blobs in a folder](#list-blobs-in-a-folder)
-1. [Ingest folder](#ingest-folder)
-1. [Track ingestion status](#track-ingestion-status)
-1. [Filter queued files for ingestion](#filter-queued-files-for-ingestion)
-1. [Capture the creation time](#capture-the-creation-time)
-1. [Ingest 20 files](#ingest-20-files)
-1. [Track follow up ingestion status](#track-follow-up-ingestion-status)
-1. [Perform your full ingestion](#perform-your-full-ingestion)
-1. [Cancel ingestion](#cancel-ingestion)
+* [Ingest single blobs](#ingest-single-blobs)
+* [List blobs in a folder](#list-blobs-in-a-folder)
+* [Ingest folder](#ingest-folder)
+* [Track ingestion status](#track-ingestion-status)
+* [Filter queued files for ingestion](#filter-queued-files-for-ingestion)
+* [Capture the creation time](#capture-the-creation-time)
+* [Ingest 20 files](#ingest-20-files)
+* [Track follow up ingestion status](#track-follow-up-ingestion-status)
+* [Perform your full ingestion](#perform-your-full-ingestion)
+* [Cancel ingestion](#cancel-ingestion)
 
 > [!NOTE]
 >
 > Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
+
+### Ingest single blobs
+You can start by ingesting a single blob directly using its URL. 
+Make sure to include a SAS token or use a managed identity to grant the service permission to access and download the blob.
+
+```kusto
+.ingest-from-storage-queued into table database('TestDatabase').Logs
+EnableTracking=true
+with (format='csv')
+<|
+'https://sample.blob.core.windows.net/sample/test_*csv?...'
+ ```
+
+**Output**
+
+| IngestionOperationId | ClientRequestId | OperationInfo |
+|----------------------|-----------------|---------------|
+|00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444|Kusto.Web.KWE,Query;11112222;11112222;22223333-bbbb-3333-cccc-4444cccc5555|.show queued ingestion operations "00001111;11112222;00001111-aaaa-2222-bbbb-3333cccc4444" |
 
 ### List blobs in a folder
 

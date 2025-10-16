@@ -1,11 +1,11 @@
 ---
 title: .show external table operations query_acceleration statistics command
-description: Learn how to use the ".show external table operations query_acceleration statistics command" to accelerate queries over external delta tables.
+description: Learn how to use the .show external table operations query_acceleration statistics command to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 11/19/2024
+ms.date: 09/16/2025
 ---
-# .show external table operations query_acceleration statistics command
+# `.show external table operations query_acceleration statistics` command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -60,5 +60,6 @@ The command returns a table with a record per external table that has a non-null
 
 * [Query acceleration policy](query-acceleration-policy.md)
 * [.alter query acceleration policy command](alter-query-acceleration-policy-command.md)
+* [.alter-merge query acceleration policy command](alter-merge-query-acceleration-policy-command.md)
 * [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
 * [.show query acceleration policy command](show-query-acceleration-policy-command.md)

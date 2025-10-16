@@ -11,6 +11,14 @@ groups:
     title: Azure Monitor
   - id: fabric
     title: Microsoft Fabric
+- id: ingest-api
+  title: Ingest API version
+  prompt: Select the Ingest API version
+  pivots:
+  - id: latest
+    title: Ingest v1
+  - id: preview
+    title: Ingest v2 (preview)
 - id: kql-flavors-adx-fabric
   title: Kusto Query Language flavors
   prompt: Select your Azure service

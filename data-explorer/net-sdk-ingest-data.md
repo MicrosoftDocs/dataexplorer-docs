@@ -1,9 +1,10 @@
 ---
 title: 'Ingest data with Kusto .NET SDK'
-description: In this article, you learn how to ingest (load) data into Azure Data Explorer using .NET SDK.
+description: Learn how to ingest data into Azure Data Explorer using the Kusto .NET SDK. Follow step-by-step instructions to load, map, and validate your data.
 ms.reviewer: vladikb
 ms.topic: how-to
-ms.date: 05/08/2023
+ms.date: 09/29/2025
+ms.custom: sfi-ropc-nochange
 
 # Customer intent: As a .NET SDK developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -17,13 +18,13 @@ ms.date: 05/08/2023
 > * [Go](go-ingest-data.md)
 > * [Java](java-ingest-data.md)
 
-There are two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and [a data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). For more information on .NET SDK, see [about .NET SDK](/kusto/api/netfx/about-the-sdk?view=azure-data-explorer&preserve-view=true).
-These libraries enable you to ingest (load) data into a cluster and query data from your code. In this article, you first create a table and data mapping in a test cluster. You then queue an ingestion to the cluster and validate the results.
+There are two client libraries for .NET: an [ingest library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/) and a [data library](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/). To learn more about the .NET SDK, see [about .NET SDK](/kusto/api/netfx/about-the-sdk?view=azure-data-explorer&preserve-view=true).
+These libraries let you ingest (load) data into a cluster and query data from your code. In this article, you create a table and data mapping in a test cluster, queue an ingestion to the cluster, and validate the results.
 
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
-* A cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* A cluster and database. Learn how to [create a cluster and database](create-cluster-and-database.md).
 
 ## Install the ingest library
 
@@ -35,13 +36,13 @@ Install-Package Microsoft.Azure.Kusto.Ingest
 
 ### Authentication
 
-To authenticate an application, the SDK uses your Microsoft Entra tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
+To authenticate an application, the SDK uses your Microsoft Entra tenant ID. Use the following URL to find your tenant ID, substituting your domain for *YourDomain*.
 
 ```http
 https://login.microsoftonline.com/<YourDomain>/.well-known/openid-configuration/
 ```
 
-For example, if your domain is *contoso.com*, the URL is: [https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration/](https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows. 
+For example, if your domain is *contoso.com*, the URL is: [https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration/](https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration/). Select this URL to see the results; the first line is as follows.
 
 ```console
 "authorization_endpoint":"https://login.microsoftonline.com/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
@@ -49,16 +50,16 @@ For example, if your domain is *contoso.com*, the URL is: [https://login.microso
 
 The tenant ID in this case is `aaaabbbb-0000-cccc-1111-dddd2222eeee`.
 
-This example uses an interactive Microsoft Entra user authentication to access the cluster. You can also use Microsoft Entra application authentication with certificate or application secret. Make sure to set the correct values for `tenantId` and `clusterUri` before running this code. 
+This example uses interactive Microsoft Entra user authentication to access the cluster. You can also use Microsoft Entra application authentication with certificate or application secret. Set the correct values for `tenantId` and `clusterUri` before running this code.
 
 The SDK provides a convenient way to set up the authentication method as part of the connection string. For complete documentation on connection strings, see [connection strings](/kusto/api/connection-strings/kusto?view=azure-data-explorer&preserve-view=true).
 
 > [!NOTE]
-> The current version of the SDK doesn't support interactive user authentication on .NET Core. If required, use Microsoft Entra username/password or application authentication instead.
+> The current version of the SDK doesn't support interactive user authentication on .NET Core. If needed, use Microsoft Entra username/password or application authentication instead.
 
 ### Construct the connection string
 
-Now you can construct the connection string. You'll create the destination table and mapping in a later step.
+Construct the connection string. You create the destination table and mapping in a later step.
 
 ```csharp
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net/";
@@ -68,7 +69,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri).Wi
 
 ## Set source file information
 
-Set the path for the source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample dataset contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
+Set the path for the source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample dataset includes weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
 
 ```csharp
 var blobPath = "https://kustosamples.blob.core.windows.net/samplefiles/StormEvents.csv";
@@ -79,7 +80,7 @@ var blobPath = "https://kustosamples.blob.core.windows.net/samplefiles/StormEven
 Create a table named `StormEvents` that matches the schema of the data in the `StormEvents.csv` file.
 
 > [!TIP]
-> The following code snippets create an instance of a client for almost every call. This is done to make each snippet individually runnable. In production, the client instances are reentrant, and should be kept as long as needed. A single client instance per URI is sufficient, even when working with multiple databases (database can be specified on a command level).
+> The following code snippets create an instance of a client for almost every call. This approach makes each snippet individually runnable. In production, client instances are reentrant and should be kept as long as needed. A single client instance per URI is sufficient, even when working with multiple databases (the database can be specified at the command level).
 
 ```csharp
 var databaseName = "<DatabaseName>";
@@ -120,8 +121,8 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## Define ingestion mapping
 
-Map the incoming CSV data to the column names used when creating the table.
-Provision a [CSV column mapping object](/kusto/management/create-ingestion-mapping-command?view=azure-data-explorer&preserve-view=true) on that table.
+Map incoming CSV data to the column names used when creating the table.
+Set up a [CSV column mapping object](/kusto/management/create-ingestion-mapping-command?view=azure-data-explorer&preserve-view=true) on that table.
 
 ```csharp
 var tableMappingName = "StormEvents_CSV_Mapping";
@@ -164,7 +165,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## Define batching policy for your table
 
-Batching incoming data optimizes data shard size, which is controlled by the [ingestion batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true). Modify the policy with the [ingestion batching policy management command](/kusto/management/show-table-ingestion-batching-policy?view=azure-data-explorer&preserve-view=true). Use this policy to reduce latency of slowly arriving data.
+Batching incoming data optimizes data shard size. The [ingestion batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true) controls this batching. Modify the policy using the [ingestion batching policy management command](/kusto/management/show-table-ingestion-batching-policy?view=azure-data-explorer&preserve-view=true). This policy reduces latency for slowly arriving data.
 
 ```csharp
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
@@ -182,19 +183,19 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 }
 ```
 
-We recommend defining a `Raw Data Size` value for ingested data and incrementally decreasing the size towards 250 MB, while checking if performance improves.
+Define a `Raw Data Size` value for ingested data and gradually decrease the size to 250 MB to check if performance improves.
 
-You can use the `Flush Immediately` property to skip batching, although this isn't recommended for large-scale ingestion as it can cause poor performance. 
+Use the `Flush Immediately` property to skip batching. However, this isn't recommended for large-scale ingestion because it can cause poor performance. 
 
 ## Queue a message for ingestion
 
-Queue a message to pull data from blob storage and ingest the data. A connection is established to the ingestion cluster, and another client is created to work with that endpoint. 
+Queue a message to pull data from blob storage and ingest it. Establish a connection to the ingestion cluster, and create another client to work with that endpoint. 
 
 > [!TIP]
 > The following code snippets create an instance of a client for almost every call. This is done to make each snippet individually runnable. In production, the client instances are reentrant, and should be kept as long as needed. A single client instance per URI is sufficient, even when working with multiple databases (database can be specified on a command level).
 
 ```csharp
-var ingestUri = "https://ingest-<clusterName>.<region>.kusto.windows.net";
+var ingestUri = "https://ingest-<clusterName>.<region>.kusto.windows.net"; // Replace <clusterName> and <region> with your values
 var ingestConnectionStringBuilder = new KustoConnectionStringBuilder(ingestUri).WithAadUserPromptAuthentication(tenantId);
 using var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConnectionStringBuilder);
 var properties = new KustoQueuedIngestionProperties(databaseName, tableName)
@@ -207,12 +208,12 @@ var properties = new KustoQueuedIngestionProperties(databaseName, tableName)
     },
     IgnoreFirstRecord = true
 };
-await ingestClient.IngestFromStorageAsync(blobPath, properties);
+await ingestClient.IngestFromStorageAsync(blobPath, properties); // Ensure blobPath points to the correct storage location
 ```
 
-## Validate data was ingested into the table
+## Validate data ingestion into the table
 
-Wait five to ten minutes for the queued ingestion to schedule the ingestion and load the data into your cluster. Then run the following code to get the count of records in the `StormEvents` table.
+Wait 5 to 10 minutes for the queued ingestion to schedule and load the data into your cluster. Run the following code to get the record count in the `StormEvents` table.
 
 ```csharp
 using var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder);
@@ -223,14 +224,14 @@ Console.WriteLine(results.Single());
 
 ## Run troubleshooting queries
 
-Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster. Run the following command in your database to see if there were any ingestion failures in the last four hours. Replace the database name before running.
+Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster. Run the following command in your database to check for ingestion failures in the last four hours. Replace the database name before running.
 
 ```kusto
 .show ingestion failures
 | where FailedOn > ago(4h) and Database == "<DatabaseName>"
 ```
 
-Run the following command to view the status of all ingestion operations in the last four hours. Replace the database name before running.
+Run the following command to check the status of all ingestion operations in the last four hours. Replace the database name before running.
 
 ```kusto
 .show operations
@@ -240,7 +241,7 @@ Run the following command to view the status of all ingestion operations in the 
 
 ## Clean up resources
 
-If you plan to follow our other articles, keep the resources you created. If not, run the following command in your database to clean up the `StormEvents` table.
+If you plan to follow other articles, keep the resources you created. If not, run the following command in your database to clean up the `StormEvents` table.
 
 ```kusto
 .drop table StormEvents
@@ -248,4 +249,4 @@ If you plan to follow our other articles, keep the resources you created. If not
 
 ## Related content
 
-* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* Learn more about [writing queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators).

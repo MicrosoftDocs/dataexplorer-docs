@@ -1,9 +1,10 @@
 ---
 title: Azure Data Explorer data ingestion overview
-description: Learn about the different ways you can ingest (load) data in Azure Data Explorer
+description: Discover Azure Data Explorer's data ingestion options, including streaming, batch queues, and direct ingestion, for real-time analytics and historical data needs.
 ms.reviewer: akshay.dixit
 ms.topic: conceptual
-ms.date: 05/29/2025
+ms.date: 09/10/2025
+Search Keywords: Azure Data Explorer, Kusto, data ingestion, streaming ingestion, queued ingestion, batched ingestion, direct ingestion, data formats, ingestion methods, data pipelines, real-time analytics, historical data
 ---
 
 # Azure Data Explorer data ingestion overview
@@ -13,7 +14,9 @@ Data ingestion involves loading data into a table in your cluster. Azure Data Ex
 Azure Data Explorer offers one-time ingestion or the establishment of a continuous ingestion pipeline, using either streaming or queued ingestion. To determine which is right for you, see [One-time data ingestion](#one-time-data-ingestion) and [Continuous data ingestion](#continuous-data-ingestion).
 
 > [!NOTE]
-> Data is persisted in storage according to the set [retention policy](/kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true).
+>
+> * Data is persisted in storage according to the set [retention policy](/kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true).
+> * If a single string value in a record, or the entire record, exceeds the allowed data limit of 64MB, ingestion fails.
 
 ## One-time data ingestion
 
@@ -93,7 +96,7 @@ The following table compares the main ingestion methods:
 |--|--|--|--|--|--|
 | [Apache Spark connector](spark-connector.md) | Every format supported by the Spark environment | Unlimited | Queued | Existing pipeline, preprocessing on Spark before ingestion, fast way to create a safe (Spark) streaming pipeline from the various sources the Spark environment supports. | Consider cost of Spark cluster. For batch write, compare with Azure Data Explorer data connection for Event Grid. For Spark streaming, compare with the data connection for event hub. |
 | [Azure Data Factory (ADF)](data-factory-integration.md) | [Supported data formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | Unlimited. Inherits ADF restrictions. | Queued or per ADF trigger | Supports formats that are unsupported, such as Excel and XML, and can copy large files from over 90 sources, from on-premises to cloud | This method takes relatively more time until data is ingested. ADF uploads all data to memory and then begins ingestion. |
-| [Event Grid](ingest-data-event-grid-overview.md) | [Supported data formats](ingest-data-event-grid-overview.md#data-format) | 1 GB uncompressed | Queued | Continuous ingestion from Azure storage, external data in Azure storage | Ingestion can be triggered by blob renaming or blob creation actions |
+| [Event Grid](ingest-data-event-grid-overview.md) | [Supported data formats](ingest-data-event-grid-overview.md#data-format) | 6 GB uncompressed | Queued | Continuous ingestion from Azure storage, external data in Azure storage | Ingestion can be triggered by blob renaming or blob creation actions |
 | [Event Hub](ingest-data-event-hub-overview.md) | [Supported data formats](ingest-data-event-hub-overview.md#data-format) | N/A | Queued, streaming | Messages, events |  |
 | [Get data experience](get-data-file.md) | *SV, JSON | 1 GB uncompressed | Queued or direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
 | [IoT Hub](ingest-data-iot-hub-overview.md) | [Supported data formats](ingest-data-iot-hub-overview.md#data-format) | N/A | Queued, streaming | IoT messages, IoT events, IoT properties |  |

@@ -4,6 +4,7 @@ description: In this article, you learn how to ingest (load) data into Azure Dat
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 07/19/2022
+ms.custom: sfi-image-nochange
 
 #Customer intent: I want to use Azure Data Factory to load data into Azure Data Explorer so that I can analyze it later.
 ---
@@ -33,7 +34,7 @@ In this article, you use the Data Factory Copy Data tool to load data from Amazo
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A source of data.
 

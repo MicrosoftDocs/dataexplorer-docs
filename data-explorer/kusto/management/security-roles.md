@@ -3,7 +3,7 @@ title: Security roles
 description: Learn how to use security roles to provide principals access to resources.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 07/07/2025
 ---
 # Security roles overview
 
@@ -115,6 +115,8 @@ To see the roles assigned to all principals for a particular resource, run the f
 
 > [!TIP]
 > Use the [where](../query/where-operator.md) operator to filter the results by a specific principal or role.
+
+[!INCLUDE [show-display-name-other-tenant](../includes/show-display-name-other-tenant.md)]
 
 ### Modify the role assignments
 

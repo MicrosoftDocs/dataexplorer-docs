@@ -5,6 +5,7 @@ ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
+ms.custom: sfi-ropc-nochange
 #customer intent: To learn about setting up your development environment to use Kusto client libraries.
 ---
 # Set up your development environment to use Kusto client libraries
@@ -168,7 +169,7 @@ The Kusto SDKs contain quick start sample applications. These applications showc
 
 ### [Python](#tab/python)
 
-[Python Quickstart App](https://github.com/Azure/azure-kusto-python/tree/master/quick_start)
+[Python Quickstart App](https://github.com/Azure/azure-kusto-python/tree/master/quick-start)
 
 ### [TypeScript](#tab/typescript)
 

@@ -3,7 +3,7 @@ title: Get data from Azure storage
 description: Learn how to get data from Azure storage in Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 12/04/2024
+ms.date: 07/31/2025
 ---
 
 # Get data from Azure storage
@@ -13,6 +13,10 @@ Data ingestion is the process used to load data from one or more sources into a 
 Ingestion from an Azure storage account is a one-time operation. To ingest data continuously, see [Configure streaming ingestion](ingest-data-streaming.md).
 
 For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
+
+> [!WARNING]
+>
+> The Get Data Wizard doesn't support ingestion from Azure Storage through [private endpoints](security-network-private-endpoint.md) or [managed private endpoints](security-network-private-endpoint.md#managed-private-endpoints). Follow the instructions to get data using the [.ingest](/kusto/management/data-ingestion/ingest-from-storage-queued?view=azure-data-explorer&preserve-view=true) command.
 
 ## Prerequisites
 

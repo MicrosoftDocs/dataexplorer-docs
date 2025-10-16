@@ -4,6 +4,7 @@ description: 'In this article, query data in Azure Monitor (Application Insights
 ms.reviewer: guywi-ms
 ms.topic: how-to
 ms.date: 05/28/2025
+ms.custom: sfi-image-nochange
 
 #Customer intent: I want to query data in Azure Monitor using Azure Data Explorer.
 ---
@@ -15,6 +16,9 @@ The Azure Data Explorer supports cross-service queries between Azure Data Explor
 The Azure Data Explorer cross-service queries flow:
 
 :::image type="content" source="media/query-monitor-data/query-monitor-workflow.png" alt-text="Diagram showing the Azure Data Explorer cross-service query flow."  lightbox="media/query-monitor-data/query-monitor-workflow.png":::
+
+> [!IMPORTANT]
+> Starting July 1, 2025, querying log data and events requires TLS 1.2 or higher when using [query API endpoints for Log Analytics or Application Insights](/azure/azure-monitor/fundamentals/azure-monitor-network-access#logs-query-api-endpoints). For more information, see [Secure data in transit](/azure/azure-monitor/fundamentals/best-practices-security#secure-logs-data-in-transit).
 
 ## Add a Log Analytics workspace/Application Insights resource to Azure Data Explorer client tools
 
@@ -54,7 +58,7 @@ Add a Log Analytics workspace or Application Insights resource to Azure Data Exp
 
 ## Run queries
 
-You can run the queries using client tools that support Kusto queries, such as: Kusto Explorer, Azure Data Explorer web UI, Jupyter Kqlmagic, Flow, PowerQuery, PowerShell, Lens, REST API.
+You can run the queries using client tools that support Kusto queries, such as: Kusto Explorer, Azure Data Explorer web UI, Notebooks with Kqlmagic, Flow, PowerQuery, PowerShell, Lens, REST API.
 
 > [!NOTE]
 > Cross-service querying is used for data retrieval only. For more information, see [Function supportability](#function-supportability).

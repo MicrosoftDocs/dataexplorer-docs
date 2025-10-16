@@ -17,6 +17,8 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 
 *Edges* `|` `make-graph` *SourceNodeId* `-->` *TargetNodeId* [ `with_node_id=` *NodeIdPropertyName* ]
 
+*Edges* `|` `make-graph` *SourceNodeId* `-->` *TargetNodeId* [ `with` *Nodes1* `on` *NodeId1* [`,` *Nodes2* `on` *NodeId2* ]] `partitioned-by` *PartitionColumn* `(` *GraphOperator* `)`
+
 ## Parameters
 
 | Name                   | Type     | Required           | Description                                                                 |
@@ -27,10 +29,17 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 | *Nodes1*, *Nodes2*     | `string` |                    | The tabular expressions containing the properties of the nodes in the graph. |
 | *NodesId1*, *NodesId2* | `string` |                    | The corresponding columns with the node IDs in *Nodes1*, *Nodes2* respectively. |
 | *NodeIdPropertyName*   | `string` |                    | The name of the property for node ID on the nodes of the graph. |
+| *PartitionColumn*      | `string` |                    | The column to partition the graph by. Creates separate graphs for each unique value in this column. |
+| *GraphOperator*        | `string` |                    | The graph operator to apply to each partitioned graph. |
 
 ## Returns
 
 The `make-graph` operator returns a graph expression and must be followed by a [graph operator](graph-operators.md#supported-graph-operators). Each row in the source *Edges* expression becomes an edge in the graph with properties that are the column values of the row. Each row in the *Nodes* tabular expression becomes a node in the graph with properties that are the column values of the row. Nodes that appear in the *Edges* table but don't have a corresponding row in the *Nodes* table are created as nodes with the corresponding node ID and empty properties.
+
+When using the `partitioned-by` clause, separate graphs are created for each unique value in the specified *PartitionColumn*. The specified *GraphOperator* is then applied to each partitioned graph independently, and the results are combined into a single output. This is particularly useful for multitenant scenarios where you want to analyze each tenant's data separately while maintaining the same graph structure and analysis logic.
+
+> [!IMPORTANT]
+> When using the `partitioned-by` clause, both the *Edges* table and all *Nodes* tables must contain the partition column.
 
 > [!NOTE]
 > Each node has a unique identifier. If the same node ID appears in both the *Nodes1* and *Nodes2* tables, a single node is created by merging their properties. If there are conflicting property values for the same node, one of the values is arbitrarily chosen.
@@ -114,6 +123,80 @@ edges
 |Attacker|Compromised|System|
 |---|---|---|
 |Mallory|Bob|Trent|
+
+### Partitioned graph
+
+This example demonstrates using the `partitioned-by` clause to analyze a multitenant social network. The `partitioned-by` clause creates separate graphs for each unique value in the partition column (in this case, `tenantId`), applies the graph operator to each partition independently, and combines the results.
+
+:::image type="content" source="media/graphs/graph-example-make-graph-partitioned.png" alt-text="A diagram showing three different companies which are representing three different partitions.":::
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA62XbW%2FiOBDH3yPxHeZ4BSugJDz3risB7T702t1q6el0qqqVm4yIr8GOHEPFPXz3G4cEghNut9ylqogd2%2FPLzPjvSYgahPQxhgvwmaa%2FpxDrqxjVR%2F881oqLRRM0CiZ0rkOwJe4aPkZM6SUKvetSMtw%2FD6XHNJfi3N%2FQPO41oFp5qFaArrMzuE%2FWPoeZXEZMbCbQgjkT8E4x4fHYkzBlG5goZNsZtVWn49SaUMvGm%2FtJyD2EaxmIWArTcSUWXCAa%2B6Y5R8GlgktcYygjVNSXstT%2FrOlNhLVzqN1JLrQZ7UmpfC6Yxpj6H1qO67Z7zrjXhO6wPRz2xo9%2FN5p7GtemmconmC%2B5DkpI7pEt4QaZfwJCJ0MY2QhdG2EWMBVyhGnIvGfTccvUM%2BoU4pYJtjjJC26GMLARejbCJScr8I4LL%2FHDhy%2FbToWelieY7o4z02PbdN82fbVG%2BJWH5blwvfrPudDNUPp5lGIuTymXP%2BEL%2FCbVc5LCAHvqQY56au5Nxj%2FDLQ%2FDBKo2ZyEZNdnteXIlNJwUtmGvTbY6Teh12kPHHR26bmhDvFeMdtIN4v%2B%2BiwyIk4G4NsjIBvmAQm3gkq15XMjfeYQeZyGP9SsRuu3xOEPo2AhjG%2BHjegOzAMuS6MRtbHzgZgBdC8Dp2ADXtHnhPqCeNJU%2Fk9cTKY1P3sbGB6MUYTDOIxTzd0b5O1nF5PZDAXbyAjwz9z%2FT%2BjARPqqUlPY96XeSRRPBws1rQzWm3dXrOrTNOm13MHQPPeXa9m84xeN2paJgUxKtifICrkl4Xs%2FQzRiGNkPXZrhlGwZ3NDs0rTsl%2FVVi8bQ4GeP9zHjfNt6zjX%2BSLID3TNG%2BKHHAiVvWMAwyhp7N0LcZPod8zRl8kb7iixX%2BUdi3p6m%2FoXAzilFCUa08%2FlitUMJe%2BQuqXJKaBRRGCmOqQsgaNcLtRgl4FJ%2FRyrRxvKQDnlC%2FIAowNU5crYRUAGGyTL4AiuVKefiLVQYxtUBtd9q1Ud70Pb3c7gH9oljo4JxwGvkSaFf6HFBb9U5ZpUGvLJWO7yU1xvaJ%2BK0JI7uGKSskPBmG7EmqJBpNGDSLVIXj11SCUpnhQ7tGKSsULBP9EhMlWMslneNeOqfXtH05PebLYbpkQe2P%2BXKwnVBU52O%2BHKUWCgf8v%2FhyfMyI9aJ9%2B%2BwuOzrL%2FZ%2B%2BR%2FHIP4K19%2BXs0Je5ImarQ2WCfMSbTppoRfW0KHLkjvOdcwa2OpeJ1JGo7cAKE45HYAdWUON9BAZbqUoEplr5C5bsGVsLxaIA8hIDrdbbA3mBF%2Fp%2BSD%2FM5FarqNN8Z3ETCPRbT5ud9EB9y5Ss21oy7QXgbTwqHy8EjYW6cBqtB3zjttu9x9bbunAb2wnmeglQIQinndr44QKEmzWYoP8wrGNR1uDiwopAwwzfL5wQofzqU51maoGvbmQkPq5r6cuVEVkymn0btnOq%2F9B5bJCufmuU85idRkev%2FRrud1k6MoosNeAncDp07S1GSv5OxxnMKW6aDg%2BSd5prcM3XMWUB1CkBqJmFiboaNbK3rbLMebNkkXFtNoCeXZHD90u5h0u51lLVSuMfDsaDr78PAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+// Nodes table representing users across multiple tenants (organizations)
+let nodes = datatable(userId:string, tenantId:string, name:string, department:string, role:string, location:dynamic) 
+[
+    // Tenant: CompanyA - San Francisco Bay Area
+    "u001", "CompanyA", "Alice Johnson", "Engineering", "Senior Developer", dynamic({"type": "Point", "coordinates": [-122.4194, 37.7749]}),
+    "u002", "CompanyA", "Bob Smith", "Engineering", "Team Lead", dynamic({"type": "Point", "coordinates": [-122.4094, 37.7849]}),
+    "u003", "CompanyA", "Charlie Black", "Marketing", "Manager", dynamic({"type": "Point", "coordinates": [-122.4294, 37.7649]}),
+    "u004", "CompanyA", "Diana Finch", "HR", "Director", dynamic({"type": "Point", "coordinates": [-122.3994, 37.7949]}),
+    "u005", "CompanyA", "Eve Wilson", "Engineering", "Junior Developer", dynamic({"type": "Point", "coordinates": [-122.4394, 37.7549]}),
+    // Tenant: CompanyB - New York Area  
+    "u006", "CompanyB", "Frank Miller", "Sales", "Account Manager", dynamic({"type": "Point", "coordinates": [-74.0060, 40.7128]}),
+    "u007", "CompanyB", "Grace Lee", "Engineering", "Senior Developer", dynamic({"type": "Point", "coordinates": [-74.0160, 40.7228]}),
+    "u008", "CompanyB", "Henry Davis", "Marketing", "Specialist", dynamic({"type": "Point", "coordinates": [-73.9960, 40.7028]}),
+    "u009", "CompanyB", "Ivy Chen", "Engineering", "Team Lead", dynamic({"type": "Point", "coordinates": [-74.0260, 40.7328]}),
+    "u010", "CompanyB", "Jack Thompson", "Operations", "Manager", dynamic({"type": "Point", "coordinates": [-73.9860, 40.6928]}),
+    // Tenant: CompanyC - Austin Area
+    "u011", "CompanyC", "Kate Anderson", "Finance", "Analyst", dynamic({"type": "Point", "coordinates": [-97.7431, 30.2672]}),
+    "u012", "CompanyC", "Liam Murphy", "Engineering", "Architect", dynamic({"type": "Point", "coordinates": [-97.7331, 30.2772]}),
+    "u013", "CompanyC", "Maya Patel", "Product", "Manager", dynamic({"type": "Point", "coordinates": [-97.7531, 30.2572]}),
+    "u014", "CompanyC", "Noah Garcia", "Engineering", "Developer", dynamic({"type": "Point", "coordinates": [-97.7631, 30.2472]}),
+    "u015", "CompanyC", "Olivia Rodriguez", "Marketing", "Director", dynamic({"type": "Point", "coordinates": [-97.7231, 30.2872]})
+];
+// Edges table representing relationships/interactions between users
+let edges = datatable(sourceUserId:string, targetUserId:string, tenantId:string, relationshipType:string, strength:int)
+[
+    // CompanyA relationships
+    "u001", "u002", "CompanyA", "reportsTo", 9,
+    "u005", "u002", "CompanyA", "reportsTo", 8,
+    "u002", "u003", "CompanyA", "collaborates", 6,
+    "u001", "u005", "CompanyA", "mentors", 7,
+    "u003", "u004", "CompanyA", "collaborates", 5,
+    "u001", "u003", "CompanyA", "communicates", 4,
+    // CompanyB relationships
+    "u007", "u009", "CompanyB", "reportsTo", 9,
+    "u006", "u010", "CompanyB", "reportsTo", 8,
+    "u008", "u006", "CompanyB", "collaborates", 6,
+    "u009", "u010", "CompanyB", "communicates", 5,
+    "u007", "u008", "CompanyB", "mentors", 7,
+    "u006", "u007", "CompanyB", "collaborates", 6,
+    // CompanyC relationships  
+    "u014", "u012", "CompanyC", "reportsTo", 9,
+    "u012", "u013", "CompanyC", "collaborates", 7,
+    "u011", "u013", "CompanyC", "collaborates", 6,
+    "u013", "u015", "CompanyC", "reportsTo", 8,
+    "u012", "u015", "CompanyC", "communicates", 5,
+    "u011", "u014", "CompanyC", "mentors", 6
+];
+edges
+| make-graph sourceUserId --> targetUserId with nodes on userId partitioned-by tenantId (
+    graph-match cycles=none (n1)-[e*2..4]->(n2)
+        where n1.userId != n2.userId and all(e, relationshipType == "collaborates") and
+            geo_distance_2points(todouble(n1.location.coordinates[0]), todouble(n1.location.coordinates[1]),
+                             todouble(n2.location.coordinates[0]), todouble(n2.location.coordinates[1])) < 10000
+        project Start = strcat(n1.name, " (", n1.tenantId, ")"), Tenants = map(e, tenantId), End = strcat(n2.name, " (", n2.tenantId, ")")
+)
+```
+
+|Start|Tenants|End|
+|---|---|---|
+|Bob Smith (CompanyA)|[<br>  "CompanyA",<br>  "CompanyA"<br>]|Diana Finch (CompanyA)|
+|Henry Davis (CompanyB)|[<br>  "CompanyB",<br>  "CompanyB"<br>]|Grace Lee (CompanyB)|
 
 ## Related content
 

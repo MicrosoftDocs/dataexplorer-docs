@@ -4,8 +4,10 @@ description: In this quickstart, you learn how to create an Azure Data Explorer 
 ms.reviewer: mblythe
 ms.topic: quickstart
 ms.date: 06/05/2025
-ms.custom: mode-portal
 adobe-target: true
+ms.custom:
+  - mode-portal
+  - sfi-image-nochange
 
 # Customer intent: As a database administrator, I want to create an Azure Data Explorer cluster and database so that I can understand whether Azure Data Explorer is suitable for my analytics projects.
 ---
@@ -28,7 +30,7 @@ A Microsoft account or a Microsoft Entra user identity to create a free cluster.
 
 ### [Full cluster](#tab/full)
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * Sign in to the [Azure portal](https://portal.azure.com/).
 
 ---

@@ -3,8 +3,10 @@ title: 'End-to-end blob ingestion into Azure Data Explorer'
 description: In this article, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example.
 ms.reviewer: lugoldbe
 ms.topic: tutorial
-ms.custom: devx-track-arm-template
 ms.date: 05/10/2023
+ms.custom:
+  - devx-track-arm-template
+  - sfi-ropc-nochange
 ---
 
 # End-to-end blob ingestion into Azure Data Explorer
@@ -17,7 +19,7 @@ You'll learn how to programmatically create a resource group, a storage account 
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * [A Microsoft Entra application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
 ## Install packages
