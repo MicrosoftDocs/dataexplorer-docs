@@ -9,19 +9,42 @@ ms.date: 07/03/2025
 
 Welcome to what's new in Azure Data Explorer. This article details new and updated content in the Azure Data Explorer documentation.
 
+## July 2025
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [Use a Notebook and Kqlmagic to Analyze Data in Azure Data Explorer](kqlmagic.md)| Updated article, major changes. Learn how to use Kqlmagic in a Jupyter Notebook to run Kusto Query Language (KQL) queries and visualize data from Azure Data Explorer. |
+| - [project-by-names operator](kusto/query/project-by-names-operator.md) | New article. Learn how to use the project-by-names operator to select a subset of columns from the input table. |
+| - [column_names_of() function](kusto/query/column-names-of-function.md) | New article. Learn how to use the column_names_of() function to retrieve the column names of a tabular expression. |
+
+**Data Connectors**
+
+| Article title | Description |
+|--|--|
+| - [bag_unpack plugin](kusto/query/bag-unpack-plugin.md) | Updated article. Updated instructions for bag_unpack plugin. |
+| - [Use the Model Content Protocol (MCP) Server with ADX Clusters](integrate-mcp-servers.md)| New article. Learn how to use Model Context Protocol (MCP) with Azure Data Explorer clusters to create AI agents and applications that analyze real-time data. |
+
 ## June 2025
 
 **Management**
 
 | Article title | Description |
 |--|--|
-| - [Graph model overview](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) <br/>- [Persistent graphs overview (preview)](/kusto/management/graph/graph-persistent-overview?view=azure-data-explorer&preserve-view=true) | New articles. New persistent graph models and graph snapshots, including new operators. |
+| - [Graph model overview](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) ||
+| - [Persistent graphs overview (preview)](/kusto/management/graph/graph-persistent-overview?view=azure-data-explorer&preserve-view=true) | New articles. New persistent graph models and graph snapshots, including new operators. |
 
 **Query**
 
 | Article title | Description |
 |--|--|
-| - [Graph semantics overview](/kusto/query/graph-semantics-overview?view=azure-data-explorer&preserve-view=true) </br> - [Graph function](/kusto/query/graph-function?view=azure-data-explorer&preserve-view=true) </br>- [Common scenarios for using graph semantics](/kusto/query/graph-scenarios?view=azure-data-explorer&preserve-view=true) </br> - [Best practices for graph semantics](/kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true) </br> - [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true)<br/>- [Tutorial: Create your first graphs in Kusto Query Language](/kusto/query/tutorials/your-first-graph?view=azure-data-explorer&preserve-view=true) | New and updated articles.  Updated the information on graph semantics, when to use transient vs persistent graphs, and added a new tutorial for creating your first graph. |
+| - [Graph semantics overview](/kusto/query/graph-semantics-overview?view=azure-data-explorer&preserve-view=true) ||
+| - [Graph function](/kusto/query/graph-function?view=azure-data-explorer&preserve-view=true) ||
+| - [Common scenarios for using graph semantics](/kusto/query/graph-scenarios?view=azure-data-explorer&preserve-view=true) ||
+| - [Best practices for graph semantics](/kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true)||
+| - [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true) ||
+| - [Tutorial: Create your first graphs in Kusto Query Language](/kusto/query/tutorials/your-first-graph?view=azure-data-explorer&preserve-view=true) | New and updated articles.  Updated the information on graph semantics, when to use transient vs persistent graphs, and added a new tutorial for creating your first graph. |
 
 **Data Connectors**
 
