@@ -44,22 +44,6 @@ landingContent:
         links:
           - text: "Free Pluralsight training: Azure Data Explorer"
             url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer
-          - text: "Training module: Introduction to Azure Data Explorer"
-            url: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
-          - text: "Training module: Explore the fundamentals of data analysis using Kusto Query Language (KQL)"
-            url: /training/modules/explore-fundamentals-kql/
-          - text: "Training module: Write your first query with Kusto Query Language"
-            url: /training/modules/write-first-query-kusto-query-language/
-          - text: "Training module: Gain insights from your data by using Kusto Query Language"
-            url: /training/modules/gain-insights-data-kusto-query-language/
-          - text: "Training module: Multi-table queries using Kusto Query Language"
-            url: /training/modules/multi-table-queries-with-kusto-query-language/
-          - text: "Training module: Characterize an unfamiliar dataset with Azure Data Explorer"
-            url: /training/modules/characterize-data-azure-data-explorer/
-          - text: "Training module: Create dashboards in Azure Data Explorer"
-            url: /training/modules/create-dashboards-azure-data-explorer/
-          - text: "Learning path: Data analysis in Azure Data Explorer with Kusto Query Language"
-            url: /training/paths/data-analysis-data-explorer-kusto-query-language/
   # Card
   - title: Create cluster and database
     linkLists:
