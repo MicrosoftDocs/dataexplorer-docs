@@ -22,16 +22,6 @@ items:
         href: query/tutorials/your-first-graph.md
       - name: 6 - Learn about common tasks for Microsoft Sentinel
         href: query/tutorials/common-tasks-microsoft-sentinel.md
-      - name: Train me
-        items:
-          - name: "Explore the fundamentals of data analysis using Kusto Query Language"
-            href: /training/paths/kusto-query-language/
-          - name: "Write your first query with Kusto Query Language"
-            href: /training/modules/write-first-query-kusto-query-language/
-          - name: "Gain insights from your data by using Kusto Query Language"
-            href: /training/modules/gain-insights-data-kusto-query-language/
-          - name: "Multi-table queries using Kusto Query Language"
-            href: /training/modules/multi-table-queries-with-kusto-query-language/
   - name: Use queries and commands
     items:
       - name: Kusto.Explorer
