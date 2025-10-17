@@ -40,8 +40,6 @@ landingContent:
             url: https://detective.kusto.io/
           - text: "Free Pluralsight training"
             url: https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch
-          - text: "Learning path: Data analysis with Kusto Query Language"
-            url: /training/paths/kusto-query-language/
           - text: Must learn KQL
             url: https://github.com/rod-trent/MustLearnKQL
 
