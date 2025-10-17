@@ -1,7 +1,7 @@
 items:
   - name: Kusto documentation
     href: index.yml
-  - name: What is Kusto Query Language?
+  - name: What is Kusto Query Language (KQL)?
     href: query/index.md
   - name: Get started with KQL
     expanded: true
@@ -26,18 +26,18 @@ items:
     items:
       - name: Kusto.Explorer
         items:
-          - name: Kusto.Explorer installation and user interface
+          - name: Installation and user interface
             href: tools/kusto-explorer.md
           - name: Using Kusto.Explorer
             href: tools/kusto-explorer-using.md
-          - name: Kusto.Explorer options
+          - name: Options
             href: tools/kusto-explorer-options.md
           - name: Keyboard shortcuts
             href: tools/kusto-explorer-shortcuts.md
-          - name: Kusto.Explorer code features
+          - name: Code features
             displayName: Code Refactoring, Code Navigation, Code Analyzer
             href: tools/kusto-explorer-code-features.md
-          - name: Troubleshooting Kusto.Explorer
+          - name: Troubleshoot
             href: tools/kusto-explorer-troubleshooting.md
       - name: Kusto.Cli
         href: tools/kusto-cli.md
@@ -74,7 +74,7 @@ items:
               - name: Best practices for Kusto Ingest
                 href: api/netfx/kusto-ingest-best-practices.md
                 displayName: kusto.ingest, SDK
-      - name: Write code with SDKs
+      - name: Write code with software development kits (SDKs)
         items:
           - name: Set up your environment
             href: api/get-started/app-set-up.md
