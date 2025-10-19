@@ -13,7 +13,7 @@ The ingestion configuration REST API allows you to programmatically retrieve con
 
 To use the REST API for ingestion configuration, you need:
 
-- **Table Ingestor** role to ingest data into an existing table.
+- **Ingestor** role with **table** scope to ingest data into an existing table.
 
 For more information, see [Role-based access control](../../access-control/role-based-access-control.md).
 

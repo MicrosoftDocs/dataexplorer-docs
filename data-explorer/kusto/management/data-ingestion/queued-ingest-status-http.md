@@ -13,7 +13,7 @@ The ingestion status REST API allows you to monitor the progress and results of 
 
 To use the REST API for ingestion status, you need:
 
-- **Table Ingestor** role to ingest data into an existing table.
+- **Ingestor** role with **table** scope to ingest data into an existing table.
 - **Database User** role to access the target database.
 - **Storage Blob Data Reader** role on the blob storage container.
 

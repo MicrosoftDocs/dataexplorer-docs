@@ -14,7 +14,7 @@ The queued ingestion REST API allows you to programmatically submit one or more 
 
 To use the REST API for queued ingestion, you need:
 
-- **Table Ingestor** role to ingest data into an existing table.
+- **Ingestor** role with **table** scope to ingest data into an existing table.
 - **Database User** role to access the target database.
 - **Storage Blob Data Reader** role on the blob storage container.
 
