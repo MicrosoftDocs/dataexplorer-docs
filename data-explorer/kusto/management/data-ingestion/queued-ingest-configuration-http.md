@@ -7,7 +7,7 @@ ms.date: 10/16/2025
 
 # Ingestion configuration via REST API
 
-The ingestion configuration REST API allows you to programmatically retrieve configuration settings for data ingestion, including storage container URIs, Lake House folder paths from the Microsoft Fabric offering, and ingestion limits. This endpoint enables integration with the Data Management storage resources used for ingestion.
+The ingestion configuration REST API allows you to programmatically retrieve configuration settings for data ingestion, including storage container URIs, Lake folder paths from the Microsoft Fabric offering, and ingestion limits. This endpoint enables integration with the Data Management storage resources used for ingestion.
 
 ## Permissions
 
@@ -53,7 +53,7 @@ The response is a JSON object containing configuration settings for containers a
 |Field|Type|Description|
 |--|--|--|
 |`containers`|`array`|List of container descriptions, each containing a storage path.|
-|`lakeFolders`|`array`|List of Lake House folder paths for OneLake integration.|
+|`lakeFolders`|`array`|List of Lake folder paths for OneLake integration.|
 |`refreshInterval`|`string`|Time interval between configuration refresh calls (duration format).|
 |`preferredUploadMethod`|`string`|The preferred upload method: `Storage`, `Lake`, or `Default`.|
 
@@ -63,11 +63,11 @@ The response is a JSON object containing configuration settings for containers a
 |--|--|--|
 |`path`|`string`|The container URI embedded with credentials (SAS token).|
 
-#### Lake House folder object
+#### Lake folder object
 
 |Field|Type|Description|
 |--|--|--|
-|`path`|`string`|A Lake House folder path for OneLake storage.|
+|`path`|`string`|A Lake folder path for OneLake storage.|
 
 #### Ingestion settings object
 
@@ -98,7 +98,7 @@ Authorization: Bearer <access_token>
     ],
     "lakeFolders": [
       {
-        "path": "https://daily-onelake.dfs.fabric.microsoft.com/workspace/artifact/Files"
+        "path": "https://onelake.dfs.fabric.microsoft.com/workspace/artifact/Files"
       }
     ],
     "refreshInterval": "01:00:00",
@@ -114,7 +114,7 @@ Authorization: Bearer <access_token>
 
 ## Usage tips
 
-- Call this endpoint before initiating ingestion to obtain the correct storage container or Lake House folder URIs.
+- Call this endpoint before initiating ingestion to obtain the correct storage container or Lake folder URIs.
 - The `refreshInterval` indicates how often you should refresh the configuration to get updated credentials.
 - Use the `maxBlobsPerBatch` value to ensure your ingestion requests don't exceed the allowed limit.
 - The container `path` includes embedded SAS credentials that expire based on the token's validity period.
