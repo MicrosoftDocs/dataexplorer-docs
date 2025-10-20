@@ -1,8 +1,9 @@
 ---
+title: Queued Ingestion Status via REST API
 description: Learn how to use the REST API to check the status of queued ingestion operations in Azure Data Explorer.
 ms.reviewer: 
 ms.topic: reference
-ms.date: 10/16/2025
+ms.date: 10/20/2025
 ---
 
 # Ingestion status via REST API
@@ -147,7 +148,7 @@ Only appears when the `details` query parameter is set to `true`.
 ```
 
 > [!NOTE]
-> The `ingestionOperationId` is obtained from the queued ingestion endpoint when `enableTracking` is set to `true`. For more information, see [Queued ingestion via REST API](queued-ingestion-rest-api.md).
+> The `ingestionOperationId` is obtained from the queued ingestion endpoint when `enableTracking` is set to `true`. For more information, see [Queued ingestion via REST API](queued-ingest-use-http.md).
 
 ## Usage tips
 
