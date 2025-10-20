@@ -59,7 +59,7 @@ The following example shows information about all tables in the current database
 
 |Table Name|Database Name|Folder|DocString|
 |---|---|---|---|
-|StormEvents|Samples|Storm_Events|US storm events. Data source: https://www.ncdc.noaa.gov/stormevents|
+|StormEvents|Samples|Storm_Events|US storm events. Data source: <https://www.ncdc.noaa.gov/stormevents>|
 |demo_make_series1|Samples|TimeSeries_and_ML||
 |demo_series2|Samples|TimeSeries_and_ML||
 |demo_series3|Samples|TimeSeries_and_ML||
@@ -84,7 +84,7 @@ The following example shows information about the specified tables.
 
 |Table Name |Database Name |Folder | DocString
 |---|---|---|---
-|StormEvents|	Samples	|Storm_Events|	US storm events. Data source: https://www.ncdc.noaa.gov/stormevents|
+|StormEvents|	Samples	|Storm_Events|	US storm events. Data source: <https://www.ncdc.noaa.gov/stormevents>|
 |PopulationData|Samples|	Storm_Events|	
 |GeoRegions|	Samples|	NYC Taxi	|
 |Trips|	Samples|	NYC Taxi	|
