@@ -50,7 +50,7 @@ Each item in the `blobs` array must follow this structure:
 
 |Field|Type|Required|Description|
 |--|--|--|--|
-|`url`|`string`|:heavy_check_mark:|The URL of the blob to ingest. The service performs light validation on this field.|
+|`url`|`string`|  :heavy_check_mark: |The URL of the blob to ingest. The service performs light validation on this field.|
 |`sourceId`|`Guid`|No|An identifier for the source blob.|
 |`rawSize`|`integer`|No|The size of the blob before compression (nullable).|
 
