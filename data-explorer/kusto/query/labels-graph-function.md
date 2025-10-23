@@ -66,9 +66,9 @@ graph("Simple")
 
 |employee_name|employee_age|employee_labels|
 |---|---|---|
-|Alice|25|[<br>  "Person"<br>]|
-|Bob|30|[<br>  "Person"<br>]|
-|Emma|26|[<br>  "Person"<br>]|
+|Alice|25|["Person"]|
+|Bob|30|["Person"]|
+|Emma|26|["Person"]|
 
 This query uses `labels(person)` [has](has-operator.md) `"Person"` to filter only nodes with the "Person" label, ensuring we're working with person entities rather than other node types in the graph.
 
@@ -98,11 +98,11 @@ graph("LDBC_SNB_Interactive")
 
 |person_name|creator_name|person_labels|post_labels|edge_labels|
 |---|---|---|---|---|
-|Abdullah|Mahinda|[<br>  "PERSON"<br>]|[<br>  "POST"<br>]|[<br>  "HAS_CREATOR"<br>]|
-|Abdullah|Mahinda|[<br>  "PERSON"<br>]|[<br>  "POST"<br>]|[<br>  "HAS_CREATOR"<br>]|
-|Abdullah|Mahinda|[<br>  "PERSON"<br>]|[<br>  "POST"<br>]|[<br>  "HAS_CREATOR"<br>]|
-|Abdullah|Mahinda|[<br>  "PERSON"<br>]|[<br>  "POST"<br>]|[<br>  "HAS_CREATOR"<br>]|
-|Karl|Mahinda|[<br>  "PERSON"<br>]|[<br>  "POST"<br>]|[<br>  "HAS_CREATOR"<br>]|
+|Abdullah|Mahinda|["PERSON"]|["POST"]|["HAS_CREATOR"]|
+|Abdullah|Mahinda|["PERSON"]|["POST"]|["HAS_CREATOR"]|
+|Abdullah|Mahinda|["PERSON"]|["POST"]|["HAS_CREATOR"]|
+|Abdullah|Mahinda|["PERSON"]|["POST"]|["HAS_CREATOR"]|
+|Karl|Mahinda|["PERSON"]|["POST"]|["HAS_CREATOR"]|
 
 This query projects the labels using `labels()` for both nodes and edges, showing how labels help categorize different entity types in a complex social network.
 
@@ -137,8 +137,8 @@ graph("LDBC_Financial")
 |Account::56576470318842045|Account::4652781365027145396|5602050,75|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
 |Account::56576470318842045|Account::4674736413210576584|7542124,31|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
 |Account::4695847036463875613|Account::41939771529888100|2798953,34|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
-|Account::40532396646334920|Account::99079191802151398|1893602,99|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
-|Account::98797716825440579|Account::4675580838140707611|3952004,86|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
+|Account::40532396646334920|Account::99079191802151398|1893602,99|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
+|Account::98797716825440579|Account::4675580838140707611|3952004,86|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
 
 This query chains multiple label conditions to ensure both nodes and edges have the correct types, which is essential for accurate pattern matching in financial networks.
 
@@ -168,11 +168,11 @@ graph("BloodHound_AD")
 
 |attacker|target_group|path_length|permission_chain|
 |---|---|---|---|
-|FABIAN@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[<br>  [<br>    "MemberOf"<br>  ],<br>  [<br>    "GenericWrite"<br>  ]<br>]|
-|DU001@PHANTOM.CORP|ANOTHER ONE@PHANTOM.CORP|2|[<br>  [<br>    "MemberOf"<br>  ],<br>  [<br>    "WriteOwner"<br>  ]<br>]|
-|ADMINISTRATOR@WRAITH.CORP|SCHEMA ADMINS@WRAITH.CORP|2|[<br>  [<br>    "MemberOf"<br>  ],<br>  [<br>    "GenericWrite"<br>  ]<br>]|
-|CHARLIE@PHANTOM.CORP|ENTERPRISE ADMINS@PHANTOM.CORP|2|[<br>  [<br>    "MemberOf"<br>  ],<br>  [<br>    "WriteDacl"<br>  ]<br>]|
-|CERTMAN@PHANTOM.CORP|SUBDAS@PHANTOM.CORP|2|[<br>  [<br>    "MemberOf"<br>  ],<br>  [<br>    "GenericWrite"<br>  ]<br>]|
+|FABIAN@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["GenericWrite"]]|
+|DU001@PHANTOM.CORP|ANOTHER ONE@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|
+|ADMINISTRATOR@WRAITH.CORP|SCHEMA ADMINS@WRAITH.CORP|2|[["MemberOf"], ["GenericWrite"]]|
+|CHARLIE@PHANTOM.CORP|ENTERPRISE ADMINS@PHANTOM.CORP|2|[["MemberOf"], ["WriteDacl"]]|
+|CERTMAN@PHANTOM.CORP|SUBDAS@PHANTOM.CORP|2|[["MemberOf"], ["GenericWrite"]]|
 
 In this query, `labels()` is called without parameters inside the `any()` function to check if at least one edge in the privilege escalation path represents a dangerous permission. The `map()` function with `labels()` shows the specific permission types along each path, revealing how attackers can escalate from regular user accounts to privileged groups.
 
