@@ -47,7 +47,7 @@ These examples use the sample graphs available on the [help cluster](https://hel
 
 ### Example 1: Filter nodes by labels
 
-This example demonstrates filtering nodes based on their labels using the Simple educational graph. The query finds all people who work at companies and filters by the "Person" label.
+This example demonstrates filtering nodes based on their labels using the Simple educational graph. The query finds all people who work at a specific company and filters by the "Person" label.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -134,21 +134,21 @@ graph("LDBC_Financial")
 
 |from_account|to_account|amount|source_labels|target_labels|edge_labels|
 |---|---|---|---|---|---|
-|Account::56576470318842045|Account::4652781365027145396|5602050,75|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
-|Account::56576470318842045|Account::4674736413210576584|7542124,31|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
-|Account::4695847036463875613|Account::41939771529888100|2798953,34|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
+|Account::56576470318842045|Account::4652781365027145396|5602050,75|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
+|Account::56576470318842045|Account::4674736413210576584|7542124,31|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
+|Account::4695847036463875613|Account::41939771529888100|2798953,34|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
 |Account::40532396646334920|Account::99079191802151398|1893602,99|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
 |Account::98797716825440579|Account::4675580838140707611|3952004,86|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
 
 This query chains multiple label conditions to ensure both nodes and edges have the correct types, which is essential for accurate pattern matching in financial networks.
 
-### Example 4: Use labels() with collection functions
+### Example 4: Use labels() with inner_nodes() and collection functions
 
-This example shows how to use `labels()` without parameters inside `any()` and `map()` functions when working with variable-length paths in the BloodHound Active Directory dataset. The query finds privilege escalation paths where at least one edge in the path represents a dangerous permission.
+This example demonstrates using `labels()` without parameters inside `any()` and `map()` functions combined with `inner_nodes()` when working with variable-length paths in the BloodHound Active Directory dataset. The query finds privilege escalation paths where at least one edge along the path has dangerous permission labels, and also filters based on the labels of intermediate nodes.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12RQWvDMAyF7%2F0VwqdkJIExdsygpdDddho7jBE0R8ReEyfICqWwHz87TtetOvnpfbL1cMc4mUzt%2BnFsn8fZtc12r%2FLNN3TRKAcUbSCbPXFevk8o5u6%2Bqh4%2ByqdMkDuSfAOhToaYoMdP6n2CwaAH9RqOChYkFbr2gq3zCTzwOE%2FqBkxENfE4EYslX2E7WKfDmgJ1DcIz3YygO2dxy%2BLyynJ%2FE9qQqQM5Yqu3fa8KUG9shfaor%2BLlFPyoVnBpRh0Mr%2FIUNWzzRVquoVAE9ZEYaojJK4cDFb9uytB0MV8g1kj%2Fmbhw05PrxAQEmfG8yiVL%2FockHqz3dnSNNmhdwAecbhLH3xM8Ejz%2BAFk63VPdAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32STWvDMAyG7%2F0VxqdkpIExduygpdDddho7jBE0R8ReHTvICqWwHz87cdctjOlkSY%2B%2BXtwRDLqQO%2Bt9%2B%2BhH1zbbvSxXn6JLiXUPrLQoxoBUrl8HYH1zW9d3b%2BuHgoE65HIlop00EgoL72jDDAsNQcjn%2BJRiQmYD116wXD%2BDB%2FLjIBfgTNQD%2BQGJDYYa2t44FddksdkIphEXJeDORdqyukyZ%2BjcxLAp5QIdk1NZaWQn5QoZxD%2BrqPJ1iPnkZnILJj4kgy3I5y9rCuEg2zrcYprnln4MnGarLlblRPOsDFV%2FVAWZQRySxEUnC2kGP1Xd2FqPpUotIZG1%2BM2mDxqLrWEcEiOCc3bzclUTqTQjGu0ZpMC7iPQwL6X7wxnGswNYA43RuM0O57h8Z0l9iOKK4%2FwLsFjpuawIAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -158,23 +158,32 @@ graph("BloodHound_AD")
           and labels(target) has "Group"
           and target.properties.admincount == true
           and any(path, labels() has_any ("GenericAll", "WriteDacl", "WriteOwner", "GenericWrite", "Owns"))
+          and all(inner_nodes(path), labels() has_any ("User", "Group"))
     project 
         attacker = user.name,
         target_group = target.name,
         path_length = array_length(path),
-        permission_chain = map(path, labels())
+        permission_chain = map(path, labels()),
+        intermediate_node_labels = map(inner_nodes(path), labels())
 | take 5
 ```
 
-|attacker|target_group|path_length|permission_chain|
-|---|---|---|---|
-|FABIAN@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["GenericWrite"]]|
-|DU001@PHANTOM.CORP|ANOTHER ONE@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|
-|ADMINISTRATOR@WRAITH.CORP|SCHEMA ADMINS@WRAITH.CORP|2|[["MemberOf"], ["GenericWrite"]]|
-|CHARLIE@PHANTOM.CORP|ENTERPRISE ADMINS@PHANTOM.CORP|2|[["MemberOf"], ["WriteDacl"]]|
-|CERTMAN@PHANTOM.CORP|SUBDAS@PHANTOM.CORP|2|[["MemberOf"], ["GenericWrite"]]|
+|attacker|target_group|path_length|permission_chain|intermediate_node_labels|
+|---|---|---|---|---|
+|HACKERDA@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|[["Base", "Group"]]|
+|ROSHI@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|[["Base", "Group"]]|
+|FABIAN@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|[["Base", "Group"]]|
+|ANDY@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|[["Base", "Group"]]|
+|CHARLIE@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|[["Base", "Group"]]|
 
-In this query, `labels()` is called without parameters inside the `any()` function to check if at least one edge in the privilege escalation path represents a dangerous permission. The `map()` function with `labels()` shows the specific permission types along each path, revealing how attackers can escalate from regular user accounts to privileged groups.
+In this query, `labels()` is used in multiple ways:
+
+- With `any(path, labels() has_any (...))` to check edge labels for dangerous permissions
+- With `all(inner_nodes(path), labels() has_any (...))` to filter paths based on intermediate node labels
+- With `map(path, labels())` to show the edge labels along each path
+- With `map(inner_nodes(path), labels())` to display the labels of intermediate nodes in the path
+
+This demonstrates how `labels()` works seamlessly with [inner_nodes()](inner-nodes-graph-function.md) to access both edge and node labels in variable-length paths.
 
 ## Related content
 
