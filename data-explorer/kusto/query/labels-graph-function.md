@@ -17,7 +17,7 @@ Labels are defined in [graph models](../management/graph/graph-model-overview.md
 > Use this function with the [graph-match](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md) operators.
 
 > [!IMPORTANT]
-> The `labels()` function only works with [graph models](../management/graph/graph-model-overview.md). When called on a graph created with the `make-graph` operator, it always returns an empty array because transient graphs don't have label metadata.
+> The `labels()` function only works with [graph models](../management/graph/graph-model-overview.md). When called on a graph created with the [make-graph operator](make-graph-operator.md), it always returns an empty array because transient graphs don't have label metadata.
 
 ## Syntax
 
@@ -33,7 +33,7 @@ Labels are defined in [graph models](../management/graph/graph-model-overview.md
 
 ## Returns
 
-Returns a dynamic array of strings containing the labels associated with the specified node or edge. Returns an empty array for elements without labels or when used with graphs created created with the `make-graph` operator.
+Returns a dynamic array of strings containing the labels associated with the specified node or edge. Returns an empty array for elements without labels or when used with graphs created created with the [make-graph operator](make-graph-operator.md).
 
 When called without parameters inside [all()](all-graph-function.md), [any()](any-graph-function.md), or [map()](map-graph-function.md) with [inner_nodes()](inner-nodes-graph-function.md), returns the labels for each inner node or edge in the path.
 
@@ -43,279 +43,155 @@ The `labels()` function retrieves both static and dynamic labels defined in the 
 
 ## Examples
 
+These examples use the sample graphs available on the [help cluster](https://help.kusto.windows.net) in the **Samples** database. For more information about these datasets, see [Graph sample datasets](graph-sample-data.md).
+
 ### Example 1: Filter nodes by labels
 
-This example demonstrates filtering nodes based on their labels to find applications connected to nginx processes.
+This example demonstrates filtering nodes based on their labels using the Simple educational graph. The query finds all people who work at companies and filters by the "Person" label.
 
-**Graph model definition**
-
-````kusto
-.create-or-alter graph_model AppProcessGraph ```
-{
-  "Schema": {
-    "Nodes": {
-      "Application": {"AppName": "string", "Type": "string"},
-      "Process": {"ProcessName": "string"}
-    },
-    "Edges": {
-      "CONNECTS_TO": {}
-    }
-  },
-  "Definition": {
-    "Steps": [
-      {
-        "Kind": "AddNodes",
-        "Query": "Applications | project AppId, AppName, Type, NodeLabels",
-        "NodeIdColumn": "AppId",
-        "Labels": ["Application"],
-        "LabelsColumn": "NodeLabels"
-      },
-      {
-        "Kind": "AddNodes",
-        "Query": "Processes | project ProcId, ProcessName",
-        "NodeIdColumn": "ProcId",
-        "Labels": ["Process"]
-      },
-      {
-        "Kind": "AddEdges",
-        "Query": "AppConnections | project SourceAppId, TargetProcId",
-        "SourceColumn": "SourceAppId",
-        "TargetColumn": "TargetProcId",
-        "Labels": ["CONNECTS_TO"]
-      }
-    ]
-  }
-}
-```
-````
-
-**Query**
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NTQrCMBCF9z3FkFUCtjeoG4%2BgO5EyhCGpmswwCZSChze2gr7V8L2fCYoSrTnPSZ5kXPeC8CF9wuojWCEtnF1%2FXVgfZcJ664%2FWcxLMq%2BugaYmkBF80ZEwE4wjmQj6eWMVsIVG%2Bk69A7QuvRNOeg31%2Bax1%2BJoY%2Fr1XbVWcqQ%2BNvXu8It68AAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
-graph('AppProcessGraph')
-| graph-match cycles=none (app)-[e*1..3]->(process)
-    where process.ProcessName contains "nginx" 
-          and labels(app) has "Application"
-    project app = app.AppName
-| summarize c = count() by app
-| top 10 by c desc
+graph("Simple")
+| graph-match (person)-[works_at]->(company)
+    where labels(person) has "Person" 
+          and company.name == "TechCorp"
+    project employee_name = person.name, 
+            employee_age = person.properties.age,
+            employee_labels = labels(person)
 ```
 
 **Output**
 
-| app | c |
-|---|---|
-| WebApp1 | 15 |
-| WebApp2 | 12 |
-| APIService | 8 |
+| employee_name | employee_age | employee_labels |
+|---|---|---|
+| Alice | 25 | `["Person"]` |
+| Bob | 30 | `["Person"]` |
+| Emma | 26 | `["Person"]` |
 
-This query uses `labels(app) has "Application"` to filter only nodes with the "Application" label, then counts connections to nginx processes.
+This query uses `labels(person)` [has](has-operator.md) `"Person"` to filter only nodes with the "Person" label, ensuring we're working with person entities rather than other node types in the graph.
 
 ### Example 2: Project labels in results
 
-This example shows how to include label information in query results when analyzing network connections.
+This example shows how to include label information in query results when analyzing social network connections using the LDBC SNB Interactive dataset. The query finds people who like posts and projects their labels.
 
-**Graph model definition**
-
-````kusto
-.create-or-alter graph_model NetworkGraph ```
-{
-  "Schema": {
-    "Nodes": {
-      "NetworkComponent": {"ComponentName": "string", "ComponentType": "string"}
-    },
-    "Edges": {
-      "CONNECTED_TO": {"ConnectionType": "string"}
-    }
-  },
-  "Definition": {
-    "Steps": [
-      {
-        "Kind": "AddNodes",
-        "Query": "NetworkComponentsTable | project Id, ComponentName, ComponentType, NodeLabels",
-        "NodeIdColumn": "Id",
-        "Labels": ["NetworkComponent"],
-        "LabelsColumn": "NodeLabels"
-      },
-      {
-        "Kind": "AddEdges",
-        "Query": "ConnectionsTable | project SourceId, TargetId, ConnectionType, EdgeLabels",
-        "SourceColumn": "SourceId",
-        "TargetColumn": "TargetId",
-        "Labels": ["CONNECTED_TO"],
-        "LabelsColumn": "EdgeLabels"
-      }
-    ]
-  }
-}
-```
-````
-
-**Query**
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQwQrCMAyG73uKkJMKdj6BJ0EFD17Eg4hMY9fNtLWkHUPlw9u6Ihvq3pL8%2BZN%2FC52hVn55nbJ7CdqCj9fJQgwhQOeYrN7L6yqLgtQOSMrp6j4vxD6vpDwvuRxnyMoyLxd1FeAIHRfDACMf5MI9RGgNafiG3hq6LK72DdGE%2BA3ZePjOO31PkM%2BcdEjPqOnoNTjfoOOUKXg3oicWbWAZvmDnYMD3BKOv1%2BCCZwwp1u8U%2Blbir2iIvT8w6YcQJwEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
-graph('NetworkGraph')
-| graph-match (source)-[conn]->(target)
-    where labels(source) has "Network" 
-          and labels(target) has "Compute"
+graph("LDBC_SNB_Interactive")
+| graph-match (person)-[likes]->(post)-[has_creator]->(creator)
+    where labels(person) has "PERSON" 
+          and labels(post) has "POST"
+          and labels(has_creator) has "HAS_CREATOR"
     project 
-        SourceComponent = source.ComponentName,
-        TargetComponent = target.ComponentName,
-        SourceLabels = labels(source),
-        TargetLabels = labels(target),
-        ConnectionType = conn.ConnectionType
+        person_name = person.firstName,
+        creator_name = creator.firstName,
+        person_labels = labels(person),
+        post_labels = labels(post),
+        edge_labels = labels(has_creator)
+| take 5
 ```
 
 **Output**
 
-| SourceComponent | TargetComponent | SourceLabels | TargetLabels | ConnectionType |
+| person_name | creator_name | person_labels | post_labels | edge_labels |
 |---|---|---|---|---|
-| Switch1 | Server1 | ["Network", "Access"] | ["Compute", "Production"] | Ethernet |
+| Abdullah | Mahinda | `["PERSON"]` | `["POST"]` | `["HAS_CREATOR"]` |
+| Abdullah | Mahinda | `["PERSON"]` | `["POST"]` | `["HAS_CREATOR"]` |
+| Abdullah | Mahinda | `["PERSON"]` | `["POST"]` | `["HAS_CREATOR"]` |
+| Abdullah | Mahinda | `["PERSON"]` | `["POST"]` | `["HAS_CREATOR"]` |
+| Karl | Mahinda | `["PERSON"]` | `["POST"]` | `["HAS_CREATOR"]` |
 
-This query projects the labels using `labels(source)` and `labels(target)` to show both the component names and their associated labels in the results.
+This query projects the labels using `labels()` for both nodes and edges, showing how labels help categorize different entity types in a complex social network.
 
 ### Example 3: Filter by multiple label conditions
 
-This example demonstrates using multiple label conditions to identify multi-tier application paths from frontend through middleware to backend components.
+This example demonstrates using multiple label conditions to identify financial transaction patterns in the LDBC Financial dataset. The query finds accounts that transfer money to other accounts and filters by specific node and edge labels.
 
-**Graph model definition**
-
-````kusto
-.create-or-alter graph_model AppComponentGraph ```
-{
-  "Schema": {
-    "Nodes": {
-      "Frontend": {"ComponentName": "string"},
-      "Middleware": {"ComponentName": "string"},
-      "Backend": {"ComponentName": "string"}
-    },
-    "Edges": {
-      "DEPENDS_ON": {"DependencyType": "string"}
-    }
-  },
-  "Definition": {
-    "Steps": [
-      {
-        "Kind": "AddNodes",
-        "Query": "ComponentsTable | project Id, ComponentName, NodeLabels",
-        "NodeIdColumn": "Id",
-        "LabelsColumn": "NodeLabels"
-      },
-      {
-        "Kind": "AddEdges",
-        "Query": "DependenciesTable | project SourceId, TargetId, DependencyType, EdgeLabels",
-        "SourceColumn": "SourceId",
-        "TargetColumn": "TargetId",
-        "Labels": ["DEPENDS_ON"],
-        "LabelsColumn": "EdgeLabels"
-      }
-    ]
-  }
-}
-```
-````
-
-**Query**
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WQwUoDMRBF934Fw6aCtfYLXChapOhCxIUgQshMu0k3M2GStkXEj3dsV7B5m3nvzcwrM4GhLF7HJJ2vKcYhv2%2BeOBLn3yiIaS4Cvt54QK0OYIlR8EWPvhNnLuSjD4P7wuKvW0cPf7qlv%2B8cwmqNQ40oNGqxoD0IsP64oNM%2B6BBuEWIH8U9%2BvXDPYyQRWufjGDvQc5JcIz%2BTrs7Sd5fnkFlT6PwTff2fOdqQBaVbpiYacav3xHzuuqUhcZEOAukDU%2Ba%2FTX0T3UwBAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
-graph('AppComponentGraph')
-| graph-match (frontend)-[dep1]->(middleware)-[dep2]->(backend)
-    where labels(frontend) has "Frontend" 
-          and labels(middleware) has "Middleware" 
-          and labels(backend) has "Backend"
+graph("LDBC_Financial")
+| graph-match (account1)-[transfer]->(account2)
+    where labels(account1) has "ACCOUNT" 
+          and labels(account2) has "ACCOUNT"
+          and labels(transfer) has "TRANSFER"
+          and transfer.amount > 1000000
     project 
-        Path = strcat(
-            frontend.ComponentName, " -> ", 
-            middleware.ComponentName, " -> ", 
-            backend.ComponentName
-        ),
-        FrontendLabels = labels(frontend),
-        MiddlewareLabels = labels(middleware),
-        BackendLabels = labels(backend)
+        from_account = account1.node_id,
+        to_account = account2.node_id,
+        amount = transfer.amount,
+        source_labels = labels(account1),
+        target_labels = labels(account2),
+        edge_labels = labels(transfer)
+| take 5
 ```
 
 **Output**
 
-| Path | FrontendLabels | MiddlewareLabels | BackendLabels |
-|---|---|---|---|
-| WebUI -> APIGateway -> Database | ["Frontend", "UserInterface"] | ["Middleware", "API"] | ["Backend", "Storage"] |
-| WebUI -> APIGateway -> Cache | ["Frontend", "UserInterface"] | ["Middleware", "API"] | ["Backend", "Cache"] |
+| from_account | to_account | amount | source_labels | target_labels | edge_labels |
+|---|---|---|---|---|---|
+| Account::16607023625929101 | Account::4671921663443468288 | 3851891.85 | `["ACCOUNT"]` | `["ACCOUNT"]` | `["TRANSFER"]` |
+| Account::4664321839072281992 | Account::4682617712558473604 | 6608768.38 | `["ACCOUNT"]` | `["ACCOUNT"]` | `["TRANSFER"]` |
+| Account::4651655465120301686 | Account::78531518502273229 | 4408436.11 | `["ACCOUNT"]` | `["ACCOUNT"]` | `["TRANSFER"]` |
+| Account::30962247438172666 | Account::63894819713319622 | 6811824.76 | `["ACCOUNT"]` | `["ACCOUNT"]` | `["TRANSFER"]` |
+| Account::104708691336364238 | Account::99079191802151398 | 6415410.76 | `["ACCOUNT"]` | `["ACCOUNT"]` | `["TRANSFER"]` |
 
-This query chains multiple label conditions with `and` operators to ensure each component in the path has the correct tier label.
+This query chains multiple label conditions to ensure both nodes and edges have the correct types, which is essential for accurate pattern matching in financial networks.
 
 ### Example 4: Use labels() with collection functions
 
-This example shows how to use `labels()` without parameters inside `all()` and `any()` functions when working with variable-length paths. The query finds service mesh paths where all intermediate services are in production and at least one is critical.
+This example shows how to use `labels()` without parameters inside `any()` and `map()` functions when working with variable-length paths in the BloodHound Active Directory dataset. The query finds privilege escalation paths where at least one edge in the path represents a dangerous permission.
 
-**Graph model definition**
-
-````kusto
-.create-or-alter graph_model ServiceMeshGraph ```
-{
-  "Schema": {
-    "Nodes": {
-      "Service": {"ServiceName": "string", "Environment": "string"}
-    },
-    "Edges": {
-      "CALLS": {"Protocol": "string"}
-    }
-  },
-  "Definition": {
-    "Steps": [
-      {
-        "Kind": "AddNodes",
-        "Query": "ServicesTable | project Id, ServiceName, Environment, NodeLabels",
-        "NodeIdColumn": "Id",
-        "Labels": ["Service"],
-        "LabelsColumn": "NodeLabels"
-      },
-      {
-        "Kind": "AddEdges",
-        "Query": "ServiceCallsTable | project SourceId, TargetId, Protocol, EdgeLabels",
-        "SourceColumn": "SourceId",
-        "TargetColumn": "TargetId",
-        "Labels": ["CALLS"],
-        "LabelsColumn": "EdgeLabels"
-      }
-    ]
-  }
-}
-```
-````
-
-**Query**
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction">
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22QQUvDQBCF7%2F6KYU8t2OpPaKFqqIgHxYNgQWRZNpvuks1smJ3Wgv%2F%2BetdS6GFP8773vmEqkmZR3I0x9s%2BhNW%2Fh1SthUSvUK1%2FopNm7Q9YAlgi5LLovZMWFcvTe9%2F4Liz%2BvHT38cpd9%2FWJhscKhRhQcUhaL2DUAz%2BcVne1BhxC%2BIN4g%2Fsnvl85xTCRCS85PsQNdkuQa%2BJl0dZZ95%2FQgMmsKrf8g23%2BZo41JULphaqIRt2pPzFPvTRqS0PQGWfqglfkfvUAI%2FUkBAAA%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
-graph('ServiceMeshGraph')
-| graph-match (source)-[calls*2..4]->(destination)
-    where source.ServiceName == "UserService" 
-          and destination.ServiceName == "DatabaseService" 
-          and all(inner_nodes(calls), labels() has "Production") 
-          and any(inner_nodes(calls), labels() has "Critical")
+graph("BloodHound_AD")
+| graph-match (user)-[path*1..3]->(target)
+    where labels(user) has "User" 
+          and labels(target) has "Group"
+          and target.properties.admincount == true
+          and any(path, labels() has_any ("GenericAll", "WriteDacl", "WriteOwner", "GenericWrite", "Owns"))
     project 
-        Path = strcat_array(
-            map(inner_nodes(calls), ServiceName), 
-            " -> "
-        ),
-        IntermediateLabels = map(inner_nodes(calls), labels()),
-        CallProtocols = map(calls, Protocol)
+        attacker = user.name,
+        target_group = target.name,
+        path_length = array_length(path),
+        permission_chain = map(path, labels())
+| take 5
 ```
 
 **Output**
 
-| Path | IntermediateLabels | CallProtocols |
-|---|---|---|
-| AuthService -> PaymentService | [["Production", "Auth"], ["Production", "Critical", "Payment"]] | ["HTTPS", "gRPC"] |
-| CacheService -> PaymentService | [["Production", "Cache"], ["Production", "Critical", "Payment"]] | ["Redis", "gRPC"] |
+| attacker | target_group | path_length | permission_chain |
+|---|---|---|---|
+| ADMINISTRATOR@WRAITH.CORP | ENTERPRISE ADMINS@WRAITH.CORP | 2 | `[["MemberOf"], ["GenericWrite"]]` |
+| BM@WRAITH.CORP | REPLICATORS@WRAITH.CORP | 2 | `[["MemberOf"], ["WriteDacl"]]` |
+| ADMINISTRATOR@GHOST.CORP | REPLICATORS@GHOST.CORP | 2 | `[["MemberOf"], ["WriteOwner"]]` |
+| FABIAN@PHANTOM.CORP | ACCOUNT OPERATORS@PHANTOM.CORP | 2 | `[["MemberOf"], ["WriteDacl"]]` |
+| BH@GHOST.CORP | REPLICATORS@GHOST.CORP | 2 | `[["MemberOf"], ["GenericWrite"]]` |
 
-In this query, `labels()` is called without parameters inside `all()` and `any()` functions. This syntax automatically applies to each inner node in the variable-length path.
+In this query, `labels()` is called without parameters inside the `any()` function to check if at least one edge in the privilege escalation path represents a dangerous permission. The `map()` function with `labels()` shows the specific permission types along each path, revealing how attackers can escalate from regular user accounts to privileged groups.
 
 ## Related content
 
 - [Graph operators](graph-operators.md)
 - [graph-match operator](graph-match-operator.md)
 - [graph-shortest-paths operator](graph-shortest-paths-operator.md)
+- [make-graph operator](make-graph-operator.md)
 - [Graph models overview](../management/graph/graph-model-overview.md)
+- [Graph sample datasets](graph-sample-data.md)
 - [all() graph function](all-graph-function.md)
 - [any() graph function](any-graph-function.md)
 - [map() graph function](map-graph-function.md)
