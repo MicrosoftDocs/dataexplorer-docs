@@ -51,7 +51,7 @@ This example demonstrates filtering nodes based on their labels using the Simple
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NTQrCMBCF9z3FkFUCtjeoG4%2BgO5EyhCGpmswwCZSChze2gr7V8L2fCYoSrTnPSZ5kXPeC8CF9wuojWCEtnF1%2FXVgfZcJ664%2FWcxLMq%2BugaYmkBF80ZEwE4wjmQj6eWMVsIVG%2Bk69A7QuvRNOeg31%2Bax1%2BJoY%2Fr1XbVWcqQ%2BNvXu8It68AAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OzQrCMBCE732KJacWmr5BvfgCgt6klDUuTTV%2FJIFS8OGNiWIF57Q7fDPM5NHJmh1n7RSxpnrA9HK4xigk1I58sKbh58X6exgxDnxXC6sdmrWpIGmR5AkUXkiFDw4SA7BDfhhkrAjNFd7pzqAm6HtgJxJyb71jGXTe3khEoDTIrkRj4aBU51S7rYQvidMGTD3pijOFLvnt%2F0SZnUK%2F%2B5%2FYByHzFQEAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -64,13 +64,11 @@ graph("Simple")
             employee_labels = labels(person)
 ```
 
-**Output**
-
-| employee_name | employee_age | employee_labels |
+|employee_name|employee_age|employee_labels|
 |---|---|---|
-| Alice | 25 | `["Person"]` |
-| Bob | 30 | `["Person"]` |
-| Emma | 26 | `["Person"]` |
+|Alice|25|[<br>  "Person"<br>]|
+|Bob|30|[<br>  "Person"<br>]|
+|Emma|26|[<br>  "Person"<br>]|
 
 This query uses `labels(person)` [has](has-operator.md) `"Person"` to filter only nodes with the "Person" label, ensuring we're working with person entities rather than other node types in the graph.
 
@@ -80,7 +78,7 @@ This example shows how to include label information in query results when analyz
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQwQrCMAyG73uKkJMKdj6BJ0EFD17Eg4hMY9fNtLWkHUPlw9u6Ihvq3pL8%2BZN%2FC52hVn55nbJ7CdqCj9fJQgwhQOeYrN7L6yqLgtQOSMrp6j4vxD6vpDwvuRxnyMoyLxd1FeAIHRfDACMf5MI9RGgNafiG3hq6LK72DdGE%2BA3ZePjOO31PkM%2BcdEjPqOnoNTjfoOOUKXg3oicWbWAZvmDnYMD3BKOv1%2BCCZwwp1u8U%2Blbir2iIvT8w6YcQJwEAAA%3D%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22RTQ%2BCMAyG7%2F6KZidIxJtHTfwg0cSAAW%2FGLBUqIJ%2FZFr344x0yEaM9re3Tt32zRGCTWmy3Xq546C35tlIkMFLZjZg9ekDS9p0SVZSC1ZCQdWU7xyLLSZ6cudXUUuk8RckjQahq0VbN0x6BjntKgqDAMxXyrQB6ANjeDULfY%2FDCusAq7tFW2oB%2BeGD%2FqcFmA28WIV8F7uLgB91MI%2BorReqzpjuCV1gSzEw2uWRCKk%2BXxj1ndN%2BgSf%2BRRrG7SaPfbgec9vRLtUY%2FDMUJ%2FTBDm%2FpXFOYE0ydGDnvEvAEAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -98,15 +96,13 @@ graph("LDBC_SNB_Interactive")
 | take 5
 ```
 
-**Output**
-
-| person_name | creator_name | person_labels | post_labels | edge_labels |
+|person_name|creator_name|person_labels|post_labels|edge_labels|
 |---|---|---|---|---|
-| Abdullah | Mahinda | `["PERSON"]` | `["POST"]` | `["HAS_CREATOR"]` |
-| Abdullah | Mahinda | `["PERSON"]` | `["POST"]` | `["HAS_CREATOR"]` |
-| Abdullah | Mahinda | `["PERSON"]` | `["POST"]` | `["HAS_CREATOR"]` |
-| Abdullah | Mahinda | `["PERSON"]` | `["POST"]` | `["HAS_CREATOR"]` |
-| Karl | Mahinda | `["PERSON"]` | `["POST"]` | `["HAS_CREATOR"]` |
+|Abdullah|Mahinda|[<br>  "PERSON"<br>]|[<br>  "POST"<br>]|[<br>  "HAS_CREATOR"<br>]|
+|Abdullah|Mahinda|[<br>  "PERSON"<br>]|[<br>  "POST"<br>]|[<br>  "HAS_CREATOR"<br>]|
+|Abdullah|Mahinda|[<br>  "PERSON"<br>]|[<br>  "POST"<br>]|[<br>  "HAS_CREATOR"<br>]|
+|Abdullah|Mahinda|[<br>  "PERSON"<br>]|[<br>  "POST"<br>]|[<br>  "HAS_CREATOR"<br>]|
+|Karl|Mahinda|[<br>  "PERSON"<br>]|[<br>  "POST"<br>]|[<br>  "HAS_CREATOR"<br>]|
 
 This query projects the labels using `labels()` for both nodes and edges, showing how labels help categorize different entity types in a complex social network.
 
@@ -116,7 +112,7 @@ This example demonstrates using multiple label conditions to identify financial 
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WQwUoDMRBF934Fw6aCtfYLXChapOhCxIUgQshMu0k3M2GStkXEj3dsV7B5m3nvzcwrM4GhLF7HJJ2vKcYhv2%2BeOBLn3yiIaS4Cvt54QK0OYIlR8EWPvhNnLuSjD4P7wuKvW0cPf7qlv%2B8cwmqNQ40oNGqxoD0IsP64oNM%2B6BBuEWIH8U9%2BvXDPYyQRWufjGDvQc5JcIz%2BTrs7Sd5fnkFlT6PwTff2fOdqQBaVbpiYacav3xHzuuqUhcZEOAukDU%2Ba%2FTX0T3UwBAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XRPQ%2BCMBAG4N1fcWGCRIySOEqiKJPRxI%2FJGHKWE1BoTalx8ceLfIgpemP79Pr2Gkm8xaaxnM%2B8wE84cpZgali9J0TvHTtDxWIwkTFx52pk2QclkednkkfbbZYdqwdFPWKSBCmeKM3bExBjDsbU89b71c6AUlaFPNS0o%2BnfuElQ491mutr6i42uGzbA7N0bXBgNyyrdTYoLMdXmOUuRBXUOmECTf8BFSEES9j9QiS5zuqy%2BdaLnaEUu7pJRUL2qgPrkvq5EGZH6J50vSWHU7fgZWPGtCq8E4xcGQGM49wEAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -136,15 +132,13 @@ graph("LDBC_Financial")
 | take 5
 ```
 
-**Output**
-
-| from_account | to_account | amount | source_labels | target_labels | edge_labels |
+|from_account|to_account|amount|source_labels|target_labels|edge_labels|
 |---|---|---|---|---|---|
-| Account::16607023625929101 | Account::4671921663443468288 | 3851891.85 | `["ACCOUNT"]` | `["ACCOUNT"]` | `["TRANSFER"]` |
-| Account::4664321839072281992 | Account::4682617712558473604 | 6608768.38 | `["ACCOUNT"]` | `["ACCOUNT"]` | `["TRANSFER"]` |
-| Account::4651655465120301686 | Account::78531518502273229 | 4408436.11 | `["ACCOUNT"]` | `["ACCOUNT"]` | `["TRANSFER"]` |
-| Account::30962247438172666 | Account::63894819713319622 | 6811824.76 | `["ACCOUNT"]` | `["ACCOUNT"]` | `["TRANSFER"]` |
-| Account::104708691336364238 | Account::99079191802151398 | 6415410.76 | `["ACCOUNT"]` | `["ACCOUNT"]` | `["TRANSFER"]` |
+|Account::56576470318842045|Account::4652781365027145396|5602050,75|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
+|Account::56576470318842045|Account::4674736413210576584|7542124,31|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
+|Account::4695847036463875613|Account::41939771529888100|2798953,34|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
+|Account::40532396646334920|Account::99079191802151398|1893602,99|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
+|Account::98797716825440579|Account::4675580838140707611|3952004,86|[<br>  "ACCOUNT"<br>]|[<br>  "ACCOUNT"<br>]|[<br>  "TRANSFER"<br>]|
 
 This query chains multiple label conditions to ensure both nodes and edges have the correct types, which is essential for accurate pattern matching in financial networks.
 
@@ -153,8 +147,8 @@ This query chains multiple label conditions to ensure both nodes and edges have 
 This example shows how to use `labels()` without parameters inside `any()` and `map()` functions when working with variable-length paths in the BloodHound Active Directory dataset. The query finds privilege escalation paths where at least one edge in the path represents a dangerous permission.
 
 :::moniker range="azure-data-explorer"
-> [!div class="nextstepaction">
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22QQUvDQBCF7%2F6KYU8t2OpPaKFqqIgHxYNgQWRZNpvuks1smJ3Wgv%2F%2BetdS6GFP8773vmEqkmZR3I0x9s%2BhNW%2Fh1SthUSvUK1%2FopNm7Q9YAlgi5LLovZMWFcvTe9%2F4Liz%2BvHT38cpd9%2FWJhscKhRhQcUhaL2DUAz%2BcVne1BhxC%2BIN4g%2Fsnvl85xTCRCS85PsQNdkuQa%2BJl0dZZ95%2FQgMmsKrf8g23%2BZo41JULphaqIRt2pPzFPvTRqS0PQGWfqglfkfvUAI%2FUkBAAA%3D" target="_blank">Run the query</a>
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12RQWvDMAyF7%2F0VwqdkJIExdsygpdDddho7jBE0R8ReEyfICqWwHz87TtetOvnpfbL1cMc4mUzt%2BnFsn8fZtc12r%2FLNN3TRKAcUbSCbPXFevk8o5u6%2Bqh4%2ByqdMkDuSfAOhToaYoMdP6n2CwaAH9RqOChYkFbr2gq3zCTzwOE%2FqBkxENfE4EYslX2E7WKfDmgJ1DcIz3YygO2dxy%2BLyynJ%2FE9qQqQM5Yqu3fa8KUG9shfaor%2BLlFPyoVnBpRh0Mr%2FIUNWzzRVquoVAE9ZEYaojJK4cDFb9uytB0MV8g1kj%2Fmbhw05PrxAQEmfG8yiVL%2FockHqz3dnSNNmhdwAecbhLH3xM8Ejz%2BAFk63VPdAQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
@@ -172,15 +166,13 @@ graph("BloodHound_AD")
 | take 5
 ```
 
-**Output**
-
-| attacker | target_group | path_length | permission_chain |
+|attacker|target_group|path_length|permission_chain|
 |---|---|---|---|
-| ADMINISTRATOR@WRAITH.CORP | ENTERPRISE ADMINS@WRAITH.CORP | 2 | `[["MemberOf"], ["GenericWrite"]]` |
-| BM@WRAITH.CORP | REPLICATORS@WRAITH.CORP | 2 | `[["MemberOf"], ["WriteDacl"]]` |
-| ADMINISTRATOR@GHOST.CORP | REPLICATORS@GHOST.CORP | 2 | `[["MemberOf"], ["WriteOwner"]]` |
-| FABIAN@PHANTOM.CORP | ACCOUNT OPERATORS@PHANTOM.CORP | 2 | `[["MemberOf"], ["WriteDacl"]]` |
-| BH@GHOST.CORP | REPLICATORS@GHOST.CORP | 2 | `[["MemberOf"], ["GenericWrite"]]` |
+|FABIAN@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[<br>  [<br>    "MemberOf"<br>  ],<br>  [<br>    "GenericWrite"<br>  ]<br>]|
+|DU001@PHANTOM.CORP|ANOTHER ONE@PHANTOM.CORP|2|[<br>  [<br>    "MemberOf"<br>  ],<br>  [<br>    "WriteOwner"<br>  ]<br>]|
+|ADMINISTRATOR@WRAITH.CORP|SCHEMA ADMINS@WRAITH.CORP|2|[<br>  [<br>    "MemberOf"<br>  ],<br>  [<br>    "GenericWrite"<br>  ]<br>]|
+|CHARLIE@PHANTOM.CORP|ENTERPRISE ADMINS@PHANTOM.CORP|2|[<br>  [<br>    "MemberOf"<br>  ],<br>  [<br>    "WriteDacl"<br>  ]<br>]|
+|CERTMAN@PHANTOM.CORP|SUBDAS@PHANTOM.CORP|2|[<br>  [<br>    "MemberOf"<br>  ],<br>  [<br>    "GenericWrite"<br>  ]<br>]|
 
 In this query, `labels()` is called without parameters inside the `any()` function to check if at least one edge in the privilege escalation path represents a dangerous permission. The `map()` function with `labels()` shows the specific permission types along each path, revealing how attackers can escalate from regular user accounts to privileged groups.
 
