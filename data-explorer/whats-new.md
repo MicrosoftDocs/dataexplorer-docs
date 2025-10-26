@@ -9,6 +9,55 @@ ms.date: 07/03/2025
 
 Welcome to what's new in Azure Data Explorer. This article details new and updated content in the Azure Data Explorer documentation.
 
+## October 2025
+
+**Data Explorer**
+
+| Article title | Description |
+|--|--|
+| - [Enable confidential compute on your Azure Data Explorer cluster](confidential-compute?view=azure-data-explorer&preserve-view=true)| New article. Learn how to deploy Azure Data Explorer clusters with confidential compute SKUs for hardware-based security and sensitive workload protection.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [Custom Graph Visualization Approaches](/kusto/query/graph-visualization-custom?view=azure-data-explorer&preserve-view=true)| New article. Learn how to create custom graph visualizations from KQL graph data using Plotly and D3.js for tailored, interactive network visualizations.|
+| - [Custom Graph Visualization Approaches](/kusto/query/graph-visualization-graphistry?view=azure-data-explorer&preserve-view=true)| New article. Overview of Graphistry integration for scalable GPU-accelerated KQL graph visualization.|
+| - [Graph Visualization with Kusto Explorer](/kusto/query/graph-visualization-kusto-explorer?view=azure-data-explorer&preserve-view=true)| New article. Overview of Kusto Explorer's capabilities for graph visualization.|
+| - [Graph Visualization Overview](/kusto/query/graph-visualization-overview?view=azure-data-explorer&preserve-view=true)| New article. Learn about different approaches for visualizing graph data from KQL queries, including built-in tools and custom visualization solutions.|
+| - [Bag_Unpack Plugin in Azure Data Explorer - Unpack Dynamic Columns](/kusto/query/bag-unpack-plugin?view=azure-data-explorer&preserve-view=true)| Updated article. Examples updated.|
+| - [pack_all()](/kusto/query/pack-all-function?view=azure-data-explorer&preserve-view=true)| Updated article. Examples updated.|
+| - [bag_pack()](/kusto/query/pack-function?view=azure-data-explorer&preserve-view=true)| Updated article. Examples updated.|
+
+## September 2025
+
+**Functions Library**
+
+| Article title | Description |
+|--|--|
+| - [Functions library](/kusto/functions-library/functions-library?view=azure-data-explorer&preserve-view=true)| Updated article. Reference to the new entropy_fl() function article.|
+| - [entropy_fl()](/kusto/functions-library/entropy-fl?view=azure-data-explorer&preserve-view=true)| New article. This article describes entropy_fl() user-defined function.|
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| - [.alter-merge query acceleration policy Command](/kusto/management/alter-merge-query-acceleration-policy-command?view=azure-data-explorer&preserve-view=true)| New article. Learn how to use the .alter-merge query acceleration policy command to accelerate queries over external delta tables.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [external_table()](/kusto/query/external-table-function?view=azure-data-explorer&preserve-view=true)| Updated article. MaxAgeOverride parameter added.|
+
+## August 2025
+
+**Functions Library**
+
+| Article title | Description |
+|--|--|
+| - [Functions library](/kusto/functions-library/functions-library?view=azure-data-explorer&preserve-view=true)| Updated article. Reference to the new plotly_graph_fl() function article.|
+
 ## July 2025
 
 **Query**
