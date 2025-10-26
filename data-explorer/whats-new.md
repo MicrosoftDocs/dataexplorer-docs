@@ -3,7 +3,7 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 26/10/2025
+ms.date: 10/26/2025
 ---
 # What's new in Azure Data Explorer documentation
 
@@ -15,7 +15,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 | Article title | Description |
 |--|--|
-| - [Enable confidential compute on your Azure Data Explorer cluster](confidential-compute?view=azure-data-explorer&preserve-view=true)| New article. Learn how to deploy Azure Data Explorer clusters with confidential compute SKUs for hardware-based security and sensitive workload protection.|
+| - [Enable confidential compute on your Azure Data Explorer cluster](confidential-compute.md)| New article. Learn how to deploy Azure Data Explorer clusters with confidential compute SKUs for hardware-based security and sensitive workload protection.|
 
 **Query**
 
