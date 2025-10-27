@@ -3,11 +3,121 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/11/2025
+ms.date: 10/26/2025
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and updated content in the Azure Data Explorer documentation.
+
+## October 2025
+
+**Data Explorer**
+
+| Article title | Description |
+|--|--|
+| - [Enable confidential compute on your Azure Data Explorer cluster](confidential-compute.md)| New article. Learn how to deploy Azure Data Explorer clusters with confidential compute SKUs for hardware-based security and sensitive workload protection.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [Custom Graph Visualization Approaches](/kusto/query/graph-visualization-custom?view=azure-data-explorer&preserve-view=true)| New article. Learn how to create custom graph visualizations from KQL graph data using Plotly and D3.js for tailored, interactive network visualizations.|
+| - [Custom Graph Visualization Approaches](/kusto/query/graph-visualization-graphistry?view=azure-data-explorer&preserve-view=true)| New article. Overview of Graphistry integration for scalable GPU-accelerated KQL graph visualization.|
+| - [Graph Visualization with Kusto Explorer](/kusto/query/graph-visualization-kusto-explorer?view=azure-data-explorer&preserve-view=true)| New article. Overview of Kusto Explorer's capabilities for graph visualization.|
+| - [Graph Visualization Overview](/kusto/query/graph-visualization-overview?view=azure-data-explorer&preserve-view=true)| New article. Learn about different approaches for visualizing graph data from KQL queries, including built-in tools and custom visualization solutions.|
+| - [Bag_Unpack Plugin in Azure Data Explorer - Unpack Dynamic Columns](/kusto/query/bag-unpack-plugin?view=azure-data-explorer&preserve-view=true)| Updated article. Examples updated.|
+| - [pack_all()](/kusto/query/pack-all-function?view=azure-data-explorer&preserve-view=true)| Updated article. Examples updated.|
+| - [bag_pack()](/kusto/query/pack-function?view=azure-data-explorer&preserve-view=true)| Updated article. Examples updated.|
+
+## September 2025
+
+**Functions Library**
+
+| Article title | Description |
+|--|--|
+| - [Functions library](/kusto/functions-library/functions-library?view=azure-data-explorer&preserve-view=true)| Updated article. Reference to the new entropy_fl() function article.|
+| - [entropy_fl()](/kusto/functions-library/entropy-fl?view=azure-data-explorer&preserve-view=true)| New article. This article describes entropy_fl() user-defined function.|
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| - [.alter-merge query acceleration policy Command](/kusto/management/alter-merge-query-acceleration-policy-command?view=azure-data-explorer&preserve-view=true)| New article. Learn how to use the .alter-merge query acceleration policy command to accelerate queries over external delta tables.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [external_table()](/kusto/query/external-table-function?view=azure-data-explorer&preserve-view=true)| Updated article. MaxAgeOverride parameter added.|
+
+## August 2025
+
+**Functions Library**
+
+| Article title | Description |
+|--|--|
+| - [Functions library](/kusto/functions-library/functions-library?view=azure-data-explorer&preserve-view=true)| Updated article. Reference to the new plotly_graph_fl() function article.|
+
+## July 2025
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [Use a Notebook and Kqlmagic to Analyze Data in Azure Data Explorer](kqlmagic.md)| Updated article, major changes. Learn how to use Kqlmagic in a Jupyter Notebook to run Kusto Query Language (KQL) queries and visualize data from Azure Data Explorer. |
+| - [project-by-names operator](/kusto/query/project-by-names-operator?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the project-by-names operator to select a subset of columns from the input table. |
+| - [column_names_of() function](/kusto/query/column-names-of-function?view=azure-data-explorer&preserve-view=true) | New article. Learn how to use the column_names_of() function to retrieve the column names of a tabular expression. |
+
+**Data Connectors**
+
+| Article title | Description |
+|--|--|
+| - [bag_unpack plugin](/kusto/query/bag-unpack-plugin?view=azure-data-explorer&preserve-view=true) | Updated article. Updated instructions for bag_unpack plugin. |
+| - [Use the Model Content Protocol (MCP) Server with ADX Clusters](integrate-mcp-servers.md)| New article. Learn how to use Model Context Protocol (MCP) with Azure Data Explorer clusters to create AI agents and applications that analyze real-time data. |
+
+## June 2025
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| - [Graph model overview](/kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true) ||
+| - [Persistent graphs overview (preview)](/kusto/management/graph/graph-persistent-overview?view=azure-data-explorer&preserve-view=true) | New articles. New persistent graph models and graph snapshots, including new operators. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [Graph semantics overview](/kusto/query/graph-semantics-overview?view=azure-data-explorer&preserve-view=true) ||
+| - [Graph function](/kusto/query/graph-function?view=azure-data-explorer&preserve-view=true) ||
+| - [Common scenarios for using graph semantics](/kusto/query/graph-scenarios?view=azure-data-explorer&preserve-view=true) ||
+| - [Best practices for graph semantics](/kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true)||
+| - [Graph operators](/kusto/query/graph-operators?view=azure-data-explorer&preserve-view=true) ||
+| - [Tutorial: Create your first graphs in Kusto Query Language](/kusto/query/tutorials/your-first-graph?view=azure-data-explorer&preserve-view=true) | New and updated articles.  Updated the information on graph semantics, when to use transient vs persistent graphs, and added a new tutorial for creating your first graph. |
+
+**Data Connectors**
+
+| Article title | Description |
+|--|--|
+| - [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md) | Updated article. Updated instructions for Managed identity authentication. |
+
+## May 2025
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [Query resource consumption](/kusto/concepts/query-resource-consumption?view=azure-data-explorer&preserve-view=true) | New article. Learn about the resource consumption information returned as part of a Kusto query response. |
+| - [Time pivot](/kusto/query/visualization-timepivot?view=azure-data-explorer&preserve-view=true) | Updated article. Refreshed with new images. |
+| - [scan operator](/kusto/query/scan-operator?view=azure-data-explorer&preserve-view=true) | Updated article. Added an example for calculating session length per user. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| - .show external table details | New article. Learn how to use the `.show external table details` command to show details of the specified external tables in the database. |
+| - [.alter-merge table policy mirroring command](/kusto/management/alter-merge-mirroring-policy-command?view=azure-data-explorer&preserve-view=true) | Updated articles.  Refreshed with clearer content. |
+| - [.show database operations mirroring-statistics](/kusto/management/show-database-operations-mirroring-statistics?view=azure-data-explorer&preserve-view=true) <br/> - [.show table operations mirroring-statistics](/kusto/management/show-database-operations-mirroring-statistics?view=azure-data-explorer&preserve-view=true) | New articles. Learn how to use the `.show database operations mirroring statistics` and the `.show table operations mirroring-statistics` command to check the mirroring policy operations. |
 
 ## April 2025
 
@@ -159,7 +269,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and updat
 
 |Article title | Description|
 |--|--|
-| [Change column type without data loss](/kusto/management/change-column-type-without-data-loss?view=azure-data-explorer&preserve-view=true) | New article. Learn how to preserve pre-existing data by changing column type without data loss. |
+| [Change column type without data loss](/kusto/management/change-column-type-without-data-loss?view=azure-data-explorer&preserve-view=true) | New article. Learn how to preserve preexisting data by changing column type without data loss. |
 | [.alter column command](/kusto/management/alter-column?view=azure-data-explorer&preserve-view=true) | Updated article. Updated information for changing column type without data loss. |
 
 ## September 2024
