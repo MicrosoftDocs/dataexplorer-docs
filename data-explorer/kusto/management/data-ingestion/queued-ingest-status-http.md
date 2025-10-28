@@ -3,7 +3,7 @@ title: Queued Ingestion Status via REST API
 description: Learn how to use the REST API to check the status of queued ingestion operations in Azure Data Explorer.
 ms.reviewer: 
 ms.topic: reference
-ms.date: 10/20/2025
+ms.date: 10/28/2025
 ---
 
 # Ingestion status via REST API
@@ -29,9 +29,9 @@ Method: GET
 
 |Parameter|Type|Required|Description|
 |--|--|--|--|
-|`database`|`string`|:heavy_check_mark:|The name of the target database.|
-|`table`|`string`|:heavy_check_mark:|The name of the target table.|
-|`operationId`|`string`|:heavy_check_mark:|The ingestion operation ID returned from the queued ingestion endpoint.|
+|`database`|`string`|  :heavy_check_mark: | The name of the target database.|
+|`table`|`string`|  :heavy_check_mark: | The name of the target table.|
+|`operationId`|`string`|  :heavy_check_mark: | The ingestion operation ID returned from the queued ingestion endpoint.|
 
 ### Query parameters
 
