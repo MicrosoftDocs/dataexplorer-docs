@@ -889,7 +889,11 @@ items:
           - name: .show queued ingestion operation command
             href: data-ingestion/show-queued-ingestion-operations.md 
           - name: Queued ingestion via REST API
-            href: data-ingestion/queued-ingest-use-http.md       
+            href: data-ingestion/queued-ingest-use-http.md
+          - name: Queued ingestion status via REST API
+            href: data-ingestion/queued-ingest-status-http.md
+          - name: Queued ingestion Configuration via REST API
+            href: data-ingestion/queued-ingest-configuration-http.md
       - name: Streaming ingestion
         items:
           - name: Streaming ingestion and schema changes
