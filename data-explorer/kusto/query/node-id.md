@@ -14,6 +14,9 @@ The `node_id` function calculates the graph node identifier as it was set by the
 > [!NOTE]
 > This function is used with the [`graph-match`](graph-match-operator.md) and [`graph-shortest-paths`](graph-shortest-paths-operator.md) operators.
 
+> [!WARNING]
+> This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
+
 ## Syntax
 
 `node_id([`*node*`])`
