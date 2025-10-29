@@ -1,307 +1,199 @@
 ---
-title: labels() (graph function in Preview)
-description: Learn how to use the labels() function to filter nodes and edges based on their labels or project label information in graph queries.
+title: labels() (graph function)
+description: Learn how to use the labels() function to retrieve, filter, and project label information for nodes and edges in graph queries.
 ms.reviewer: michalfaktor
 ms.topic: reference
-ms.date: 05/28/2025
+ms.date: 10/23/2025
 ---
-# labels() (graph function in Preview)
+# labels()
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-> [!NOTE]
-> This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
+Retrieves the labels associated with nodes or edges in a graph query. Use this function to filter graph elements by their labels or to include label information in query results.
 
-The `labels()` graph function retrieves the labels associated with nodes or edges in a graph. It can be used for both filtering elements based on their labels and for projecting label information in query results.
-
-Labels are defined within [Graph models](../management/graph/graph-model-overview.md) and can be either static (fixed labels assigned to node or edge types) or dynamic (labels derived from data properties during graph construction). The `labels()` function accesses these predefined labels to enable efficient filtering and analysis of graph elements.
+Labels are defined in [graph models](../management/graph/graph-model-overview.md) and can be either static (fixed labels assigned to node or edge types) or dynamic (labels derived from data properties during graph construction).
 
 > [!NOTE]
-> This function is used with the [graph-match](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md) operators.
+> Use this function with the [graph-match](graph-match-operator.md) and [graph-shortest-paths](graph-shortest-paths-operator.md) operators.
 
 > [!IMPORTANT]
-> When the `labels()` function is used on a graph created with the `make-graph` operator (that is, a transient graph rather than a persistent graph model), it always returns an empty array (of dynamic data type) for all nodes and edges, because transient graphs don't have label metadata.
+> The `labels()` function only works with [graph models](../management/graph/graph-model-overview.md). When called on a graph created with the [make-graph operator](make-graph-operator.md), it always returns an empty array because transient graphs don't have label metadata.
 
 ## Syntax
 
-`labels([element])`
+`labels(` *element* `)`
+
+`labels()` <!-- When used with all(), any(), map(), or inner_nodes() -->
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| *element* | `string` |  | The reference to a graph node or edge variable in a graph pattern. Don't pass any parameters when used inside [all()](all-graph-function.md), [any()](any-graph-function.md), and [map()](map-graph-function.md) graph functions, with [inner_nodes()](inner-nodes-graph-function.md). For more information, see [Graph pattern notation](graph-match-operator.md#graph-pattern-notation). |
+| *element* | `string` | :heavy_check_mark: | A node or edge variable reference from a graph pattern. Omit this parameter when using `labels()` inside [all()](all-graph-function.md), [any()](any-graph-function.md), or [map()](map-graph-function.md) graph functions with [inner_nodes()](inner-nodes-graph-function.md). For more information, see [Graph pattern notation](graph-match-operator.md#graph-pattern-notation). |
 
 ## Returns
 
-Returns a dynamic array containing the labels associated with the specified node or edge. For nodes and edges without labels, returns an empty array.
+Returns a dynamic array of strings containing the labels associated with the specified node or edge. Returns an empty array for elements without labels or when used with graphs created created with the [make-graph operator](make-graph-operator.md).
 
-When used inside [all()](all-graph-function.md), [any()](any-graph-function.md), or [map()](map-graph-function.md) with [inner_nodes()](inner-nodes-graph-function.md), call `labels()` without parameters to return the labels for all inner nodes or edges, respectively.
+When called without parameters inside [all()](all-graph-function.md), [any()](any-graph-function.md), or [map()](map-graph-function.md) with [inner_nodes()](inner-nodes-graph-function.md), returns the labels for each inner node or edge in the path.
 
-## Label sources
+## Label types
 
-Labels are defined in [Graph models](../management/graph/graph-model-overview.md) and can originate from two sources:
-
-- **Static labels**: Fixed labels assigned to specific node or edge types during graph model definition. These labels remain constant for all instances of a particular type.
-- **Dynamic labels**: Labels derived from data properties during graph construction. These labels can vary based on the actual data values and computed expressions.
-
-The `labels()` function retrieves both static and dynamic labels that were associated with graph elements through the graph model schema and definition.
+The `labels()` function retrieves both static and dynamic labels defined in the graph model. For detailed information about static and dynamic labels, including when to use each type, see [Labels in Graph models](../management/graph/graph-model-overview.md#labels-in-graph-models).
 
 ## Examples
 
-### Filter nodes by labels
+These examples use the sample graphs available on the [help cluster](https://help.kusto.windows.net) in the **Samples** database. For more information about these datasets, see [Graph sample datasets](graph-sample-data.md).
 
-The following example shows how to use the `labels()` function to filter nodes based on their assigned labels. The example includes the full graph model definition to clarify how static and dynamic labels are assigned.
+### Example 1: Filter nodes by labels
 
-#### Graph model definition
+This example demonstrates filtering nodes based on their labels using the Simple educational graph. The query finds all people who work at a specific company and filters by the "Person" label.
 
-````kusto
-.create-or-alter graph_model AppProcessGraph ```
-{
-  "Schema": {
-    "Nodes": {
-      "Application": {"AppName": "string", "Type": "string"},
-      "Process": {"ProcessName": "string"}
-    },
-    "Edges": {
-      "CONNECTS_TO": {}
-    }
-  },
-  "Definition": {
-    "Steps": [
-      {
-        "Kind": "AddNodes",
-        "Query": "Applications | project AppId, AppName, Type, NodeLabels",
-        "NodeIdColumn": "AppId",
-        "Labels": ["Application"],
-        "LabelsColumn": "NodeLabels"
-      },
-      {
-        "Kind": "AddNodes",
-        "Query": "Processes | project ProcId, ProcessName",
-        "NodeIdColumn": "ProcId",
-        "Labels": ["Process"]
-      },
-      {
-        "Kind": "AddEdges",
-        "Query": "AppConnections | project SourceAppId, TargetProcId",
-        "SourceColumn": "SourceAppId",
-        "TargetColumn": "TargetProcId",
-        "Labels": ["CONNECTS_TO"]
-      }
-    ]
-  }
-}
-```
-````
-
-#### Query example
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OzQrCMBCE732KJacWmr5BvfgCgt6klDUuTTV%2FJIFS8OGNiWIF57Q7fDPM5NHJmh1n7RSxpnrA9HK4xigk1I58sKbh58X6exgxDnxXC6sdmrWpIGmR5AkUXkiFDw4SA7BDfhhkrAjNFd7pzqAm6HtgJxJyb71jGXTe3khEoDTIrkRj4aBU51S7rYQvidMGTD3pijOFLvnt%2F0SZnUK%2F%2B5%2FYByHzFQEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
-graph('AppProcessGraph')
-| graph-match cycles=none (app)-[e*1..3]->(process)
-    where process.ProcessName contains "nginx" and labels(app) has "Application"
-    project app=app.AppName
-| summarize c=count() by app
-| top 10 by c desc
+graph("Simple")
+| graph-match (person)-[works_at]->(company)
+    where labels(person) has "Person" 
+          and company.name == "TechCorp"
+    project employee_name = person.name, 
+            employee_age = person.properties.age,
+            employee_labels = labels(person)
 ```
 
-**Output**
-
-| app | c |
-|---|---|
-| WebApp1 | 15 |
-| WebApp2 | 12 |
-| APIService | 8 |
-
-### Project labels in results
-
-The following example demonstrates how to use the `labels()` function in the project clause to include label information in the query results. This query finds connections between different types of network components and includes their labels for analysis.
-
-#### Graph model definition
-
-````kusto
-.create-or-alter graph_model NetworkGraph ```
-{
-  "Schema": {
-    "Nodes": {
-      "NetworkComponent": {"ComponentName": "string", "ComponentType": "string"}
-    },
-    "Edges": {
-      "CONNECTED_TO": {"ConnectionType": "string"}
-    }
-  },
-  "Definition": {
-    "Steps": [
-      {
-        "Kind": "AddNodes",
-        "Query": "NetworkComponentsTable | project Id, ComponentName, ComponentType, NodeLabels",
-        "NodeIdColumn": "Id",
-        "Labels": ["NetworkComponent"],
-        "LabelsColumn": "NodeLabels"
-      },
-      {
-        "Kind": "AddEdges",
-        "Query": "ConnectionsTable | project SourceId, TargetId, ConnectionType, EdgeLabels",
-        "SourceColumn": "SourceId",
-        "TargetColumn": "TargetId",
-        "Labels": ["CONNECTED_TO"],
-        "LabelsColumn": "EdgeLabels"
-      }
-    ]
-  }
-}
-```
-````
-
-#### Query example
-
-```kusto
-graph('NetworkGraph')
-| graph-match (source)-[conn]->(target)
-    where labels(source) has "Network" and labels(target) has "Compute"
-    project 
-        SourceComponent = source.ComponentName,
-        TargetComponent = target.ComponentName,
-        SourceLabels = labels(source),
-        TargetLabels = labels(target),
-        ConnectionType = conn.ConnectionType
-```
-
-**Output**
-
-| SourceComponent | TargetComponent | SourceLabels | TargetLabels | ConnectionType |
-|---|---|---|---|---|
-| Switch1 | Server1 | ["Network", "Access"] | ["Compute", "Production"] | Ethernet |
-
-### Filter by multiple label conditions
-
-The following example shows how to combine multiple label conditions to find complex patterns in a network topology. This query identifies paths from frontend components to backend components through middleware layers.
-
-#### Graph model definition
-
-````kusto
-.create-or-alter graph_model AppComponentGraph ```
-{
-  "Schema": {
-    "Nodes": {
-      "Frontend": {"ComponentName": "string"},
-      "Middleware": {"ComponentName": "string"},
-      "Backend": {"ComponentName": "string"}
-    },
-    "Edges": {
-      "DEPENDS_ON": {"DependencyType": "string"}
-    }
-  },
-  "Definition": {
-    "Steps": [
-      {
-        "Kind": "AddNodes",
-        "Query": "ComponentsTable | project Id, ComponentName, NodeLabels",
-        "NodeIdColumn": "Id",
-        "LabelsColumn": "NodeLabels"
-      },
-      {
-        "Kind": "AddEdges",
-        "Query": "DependenciesTable | project SourceId, TargetId, DependencyType, EdgeLabels",
-        "SourceColumn": "SourceId",
-        "TargetColumn": "TargetId",
-        "Labels": ["DEPENDS_ON"],
-        "LabelsColumn": "EdgeLabels"
-      }
-    ]
-  }
-}
-```
-````
-
-#### Query example
-
-```kusto
-graph('AppComponentGraph')
-| graph-match (frontend)-[dep1]->(middleware)-[dep2]->(backend)
-    where labels(frontend) has "Frontend" 
-          and labels(middleware) has "Middleware" 
-          and labels(backend) has "Backend"
-    project 
-        Path = strcat(frontend.ComponentName, " -> ", middleware.ComponentName, " -> ", backend.ComponentName),
-        FrontendLabels = labels(frontend),
-        MiddlewareLabels = labels(middleware),
-        BackendLabels = labels(backend)
-```
-
-**Output**
-
-| Path | FrontendLabels | MiddlewareLabels | BackendLabels |
-|---|---|---|---|
-| WebUI -> APIGateway -> Database | ["Frontend", "UserInterface"] | ["Middleware", "API"] | ["Backend", "Storage"] |
-| WebUI -> APIGateway -> Cache | ["Frontend", "UserInterface"] | ["Middleware", "API"] | ["Backend", "Cache"] |
-
-### Use labels() with all() and any() functions
-
-The following example demonstrates how to use the `labels()` function without parameters inside `all()` and `any()` functions with variable-length paths. This query finds paths in a service mesh where all intermediate services have "Production" labels and at least one intermediate service has "Critical" labels.
-
-#### Graph model definition
-
-````
-.create-or-alter graph_model ServiceMeshGraph ```
-{
-  "Schema": {
-    "Nodes": {
-      "Service": {"ServiceName": "string", "Environment": "string"}
-    },
-    "Edges": {
-      "CALLS": {"Protocol": "string"}
-    }
-  },
-  "Definition": {
-    "Steps": [
-      {
-        "Kind": "AddNodes",
-        "Query": "ServicesTable | project Id, ServiceName, Environment, NodeLabels",
-        "NodeIdColumn": "Id",
-        "Labels": ["Service"],
-        "LabelsColumn": "NodeLabels"
-      },
-      {
-        "Kind": "AddEdges",
-        "Query": "ServiceCallsTable | project SourceId, TargetId, Protocol, EdgeLabels",
-        "SourceColumn": "SourceId",
-        "TargetColumn": "TargetId",
-        "Labels": ["CALLS"],
-        "LabelsColumn": "EdgeLabels"
-      }
-    ]
-  }
-}
-```
-````
-
-#### Query example
-
-```kusto
-graph('ServiceMeshGraph')
-| graph-match (source)-[calls*2..4]->(destination)
-    where source.ServiceName == "UserService" and
-          destination.ServiceName == "DatabaseService" and
-          all(inner_nodes(calls), labels() has "Production") and
-          any(inner_nodes(calls), labels() has "Critical")
-    project 
-        Path = strcat_array(map(inner_nodes(calls), ServiceName), " -> "),
-        IntermediateLabels = map(inner_nodes(calls), labels()),
-        CallProtocols = map(calls, Protocol)
-```
-
-**Output**
-
-| Path | IntermediateLabels | CallProtocols |
+|employee_name|employee_age|employee_labels|
 |---|---|---|
-| AuthService -> PaymentService | [["Production", "Auth"], ["Production", "Critical", "Payment"]] | ["HTTPS", "gRPC"] |
-| CacheService -> PaymentService | [["Production", "Cache"], ["Production", "Critical", "Payment"]] | ["Redis", "gRPC"] |
+|Alice|25|["Person"]|
+|Bob|30|["Person"]|
+|Emma|26|["Person"]|
+
+This query uses `labels(person)` [has](has-operator.md) `"Person"` to filter only nodes with the "Person" label, ensuring we're working with person entities rather than other node types in the graph.
+
+### Example 2: Project labels in results
+
+This example shows how to include label information in query results when analyzing social network connections using the LDBC SNB Interactive dataset. The query finds people who like posts and projects their labels.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22RTQ%2BCMAyG7%2F6KZidIxJtHTfwg0cSAAW%2FGLBUqIJ%2FZFr344x0yEaM9re3Tt32zRGCTWmy3Xq546C35tlIkMFLZjZg9ekDS9p0SVZSC1ZCQdWU7xyLLSZ6cudXUUuk8RckjQahq0VbN0x6BjntKgqDAMxXyrQB6ANjeDULfY%2FDCusAq7tFW2oB%2BeGD%2FqcFmA28WIV8F7uLgB91MI%2BorReqzpjuCV1gSzEw2uWRCKk%2BXxj1ndN%2BgSf%2BRRrG7SaPfbgec9vRLtUY%2FDMUJ%2FTBDm%2FpXFOYE0ydGDnvEvAEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+graph("LDBC_SNB_Interactive")
+| graph-match (person)-[likes]->(post)-[has_creator]->(creator)
+    where labels(person) has "PERSON" 
+          and labels(post) has "POST"
+          and labels(has_creator) has "HAS_CREATOR"
+    project 
+        person_name = person.firstName,
+        creator_name = creator.firstName,
+        person_labels = labels(person),
+        post_labels = labels(post),
+        edge_labels = labels(has_creator)
+| take 5
+```
+
+|person_name|creator_name|person_labels|post_labels|edge_labels|
+|---|---|---|---|---|
+|Abdullah|Mahinda|["PERSON"]|["POST"]|["HAS_CREATOR"]|
+|Abdullah|Mahinda|["PERSON"]|["POST"]|["HAS_CREATOR"]|
+|Abdullah|Mahinda|["PERSON"]|["POST"]|["HAS_CREATOR"]|
+|Abdullah|Mahinda|["PERSON"]|["POST"]|["HAS_CREATOR"]|
+|Karl|Mahinda|["PERSON"]|["POST"]|["HAS_CREATOR"]|
+
+This query projects the labels using `labels()` for both nodes and edges, showing how labels help categorize different entity types in a complex social network.
+
+### Example 3: Filter by multiple label conditions
+
+This example demonstrates using multiple label conditions to identify financial transaction patterns in the LDBC Financial dataset. The query finds accounts that transfer money to other accounts and filters by specific node and edge labels.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XRPQ%2BCMBAG4N1fcWGCRIySOEqiKJPRxI%2FJGHKWE1BoTalx8ceLfIgpemP79Pr2Gkm8xaaxnM%2B8wE84cpZgali9J0TvHTtDxWIwkTFx52pk2QclkednkkfbbZYdqwdFPWKSBCmeKM3bExBjDsbU89b71c6AUlaFPNS0o%2BnfuElQ491mutr6i42uGzbA7N0bXBgNyyrdTYoLMdXmOUuRBXUOmECTf8BFSEES9j9QiS5zuqy%2BdaLnaEUu7pJRUL2qgPrkvq5EGZH6J50vSWHU7fgZWPGtCq8E4xcGQGM49wEAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+graph("LDBC_Financial")
+| graph-match (account1)-[transfer]->(account2)
+    where labels(account1) has "ACCOUNT" 
+          and labels(account2) has "ACCOUNT"
+          and labels(transfer) has "TRANSFER"
+          and transfer.amount > 1000000
+    project 
+        from_account = account1.node_id,
+        to_account = account2.node_id,
+        amount = transfer.amount,
+        source_labels = labels(account1),
+        target_labels = labels(account2),
+        edge_labels = labels(transfer)
+| take 5
+```
+
+|from_account|to_account|amount|source_labels|target_labels|edge_labels|
+|---|---|---|---|---|---|
+|Account::56576470318842045|Account::4652781365027145396|5602050,75|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
+|Account::56576470318842045|Account::4674736413210576584|7542124,31|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
+|Account::4695847036463875613|Account::41939771529888100|2798953,34|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
+|Account::40532396646334920|Account::99079191802151398|1893602,99|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
+|Account::98797716825440579|Account::4675580838140707611|3952004,86|["ACCOUNT"]|["ACCOUNT"]|["TRANSFER"]|
+
+This query chains multiple label conditions to ensure both nodes and edges have the correct types, which is essential for accurate pattern matching in financial networks.
+
+### Example 4: Use labels() with inner_nodes() and collection functions
+
+This example demonstrates using `labels()` without parameters inside `any()` and `map()` functions combined with `inner_nodes()` when working with variable-length paths in the BloodHound Active Directory dataset. The query finds privilege escalation paths where at least one edge along the path has dangerous permission labels, and also filters based on the labels of intermediate nodes.
+
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32STWvDMAyG7%2F0VxqdkpIExduygpdDddho7jBE0R8ReHTvICqWwHz87cdctjOlkSY%2B%2BXtwRDLqQO%2Bt9%2B%2BhH1zbbvSxXn6JLiXUPrLQoxoBUrl8HYH1zW9d3b%2BuHgoE65HIlop00EgoL72jDDAsNQcjn%2BJRiQmYD116wXD%2BDB%2FLjIBfgTNQD%2BQGJDYYa2t44FddksdkIphEXJeDORdqyukyZ%2BjcxLAp5QIdk1NZaWQn5QoZxD%2BrqPJ1iPnkZnILJj4kgy3I5y9rCuEg2zrcYprnln4MnGarLlblRPOsDFV%2FVAWZQRySxEUnC2kGP1Xd2FqPpUotIZG1%2BM2mDxqLrWEcEiOCc3bzclUTqTQjGu0ZpMC7iPQwL6X7wxnGswNYA43RuM0O57h8Z0l9iOKK4%2FwLsFjpuawIAAA%3D%3D" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+graph("BloodHound_AD")
+| graph-match (user)-[path*1..3]->(target)
+    where labels(user) has "User" 
+          and labels(target) has "Group"
+          and target.properties.admincount == true
+          and any(path, labels() has_any ("GenericAll", "WriteDacl", "WriteOwner", "GenericWrite", "Owns"))
+          and all(inner_nodes(path), labels() has_any ("User", "Group"))
+    project 
+        attacker = user.name,
+        target_group = target.name,
+        path_length = array_length(path),
+        permission_chain = map(path, labels()),
+        intermediate_node_labels = map(inner_nodes(path), labels())
+| take 5
+```
+
+|attacker|target_group|path_length|permission_chain|intermediate_node_labels|
+|---|---|---|---|---|
+|HACKERDA@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|[["Base", "Group"]]|
+|ROSHI@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|[["Base", "Group"]]|
+|FABIAN@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|[["Base", "Group"]]|
+|ANDY@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|[["Base", "Group"]]|
+|CHARLIE@PHANTOM.CORP|ADMINISTRATORS@PHANTOM.CORP|2|[["MemberOf"], ["WriteOwner"]]|[["Base", "Group"]]|
+
+In this query, `labels()` is used in multiple ways:
+
+- With `any(path, labels() has_any (...))` to check edge labels for dangerous permissions
+- With `all(inner_nodes(path), labels() has_any (...))` to filter paths based on intermediate node labels
+- With `map(path, labels())` to show the edge labels along each path
+- With `map(inner_nodes(path), labels())` to display the labels of intermediate nodes in the path
+
+This demonstrates how `labels()` works seamlessly with [inner_nodes()](inner-nodes-graph-function.md) to access both edge and node labels in variable-length paths.
 
 ## Related content
 
-* [Graph operators](graph-operators.md)
-* [graph-match operator](graph-match-operator.md)
-* [graph-shortest-paths operator](graph-shortest-paths-operator.md)
-* [Graph models overview](../management/graph/graph-model-overview.md)
+- [Graph operators](graph-operators.md)
+- [graph-match operator](graph-match-operator.md)
+- [graph-shortest-paths operator](graph-shortest-paths-operator.md)
+- [make-graph operator](make-graph-operator.md)
+- [Graph models overview](../management/graph/graph-model-overview.md)
+- [Graph sample datasets](graph-sample-data.md)
+- [all() graph function](all-graph-function.md)
+- [any() graph function](any-graph-function.md)
+- [map() graph function](map-graph-function.md)
+- [inner_nodes() graph function](inner-nodes-graph-function.md)
