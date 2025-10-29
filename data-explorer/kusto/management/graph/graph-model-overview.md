@@ -102,22 +102,10 @@ This sequential approach ensures that when Step 3 creates WORKS_AT edges, both t
 
 Labels are critical identifiers that categorize nodes and edges in the graph, enabling efficient filtering and pattern matching. Azure Data Explorer graph models support two complementary types of labels:
 
-### Static labels
-
-* Defined explicitly in the Schema section of the graph model
-* Represent node or edge types with predefined properties
-* Provide a consistent schema for the graph elements
-* Referenced in the "Labels" array in AddNodes and AddEdges steps
-* Ideal for well-known, stable entity and relationship types
-
-### Dynamic labels
-
-* Not predefined in the Schema section
-* Generated at runtime from data in the underlying tables
-* Specified using "LabelsColumn" in the AddNodes or AddEdges steps
-* Can be a single label (string column) or multiple labels (dynamic array column)
-* Allow for more flexible graph structures that adapt to your data
-* Useful for systems where node/edge types evolve over time
+| Label type | Description | Usage |
+|---|---|---|
+| **Static labels** | Fixed labels assigned to specific node or edge types during graph model definition. All instances of a type share the same static labels. Defined explicitly in the Schema section and referenced in the "Labels" array in AddNodes and AddEdges steps. | Use for categorizing nodes by type, such as "User", "Device", or "Service". Ideal for well-known, stable entity and relationship types. |
+| **Dynamic labels** | Labels derived from data properties during graph construction using the `LabelsColumn` parameter. Values can vary per instance based on actual data. Not predefined in the Schema section. Can be a single label (string column) or multiple labels (dynamic array column). | Use for data-driven categorization, such as environment labels ("Production", "Staging") or status indicators. Useful for systems where node/edge types evolve over time. |
 
 > [!TIP]
 > You can combine static and dynamic labels to get the benefits of both approaches: schema validation for core entity types while maintaining flexibility for evolving classifications.
