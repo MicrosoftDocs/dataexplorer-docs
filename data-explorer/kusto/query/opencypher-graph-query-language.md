@@ -9,7 +9,7 @@ ms.date: 10/29/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-openCypher is an open-source specification for querying property graph databases. You can now run openCypher queries on KQL graph semantics, using a declarative syntax with ASCII-art style pattern matching that makes it intuitive to express complex graph patterns and relationships.
+openCypher is an [open-source specification](https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf) for querying property graph databases. You can now run openCypher queries on KQL graph semantics, using a declarative syntax with ASCII-art style pattern matching that makes it intuitive to express complex graph patterns and relationships.
 
 > [!NOTE]
 > openCypher support is in preview. Features and syntax can change based on feedback and ongoing development.
@@ -233,7 +233,34 @@ This query demonstrates aggregation by grouping people by their company and coun
 
 ## Limitations
 
-openCypher support in Kusto has the following limitations:
+openCypher support has the following limitations:
+
+### Unsupported language constructs
+
+The following openCypher language constructs are not currently supported:
+
+- **WITH clause**: Not supported for query composition
+- **Subqueries**: Including `EXISTS` subqueries and pattern predicates
+
+### Unsupported keywords
+
+The following openCypher keywords are not supported:
+
+- `MANDATORY MATCH`
+- `UNWIND`
+- `UNION`
+- `SKIP`
+
+The following openCypher scalar functions are not yet implemented:
+
+- Mathematical functions: `sin()`, `cos()`, `tan()`, `log()`, `round()`, `sign()`, `rand()`
+- Statistical functions: `percentileDisc()`, `percentileCont()`, `stDev()`, `stDevP()`
+- Utility functions: `coalesce()`, `id()`, `properties()`, `type()`, `range()`
+- Case expressions: `CASE` statements
+
+### Partial support
+
+- **CALL procedures**: Only partial support is available
 
 ### Reserved keywords
 
@@ -261,10 +288,6 @@ The engine operates in UTC. Datetime literals must use appropriate formats; only
 ### Duration granularity
 
 Durations support days and smaller units down to nanoseconds. Larger-than-day units (for example, weeks, months, years) aren't supported in duration operations.
-
-### Path semantics
-
-The current implementation defaults to `DIFFERENT EDGES` semantics for path matching. This means that within a single pattern, a matched edge cannot bind to more than one edge variable, but nodes can be reused freely.
 
 ## Related content
 
