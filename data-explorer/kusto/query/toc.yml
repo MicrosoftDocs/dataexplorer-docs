@@ -1325,6 +1325,7 @@ items:
               - name: node_degree_out()
                 displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
                 href: node-degree-out.md
+              - name: node_id()
                 displayName: graph, node, Node Id
                 href: node-id.md
       - name: Visualization
