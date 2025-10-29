@@ -36,34 +36,36 @@ The following example creates a graph to analyze a hierarchical structure of emp
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQUQuCMBSF3%2FcrLj4pzIfsITAKSvoVETH14lZzkzmSoB%2Ff5lSMtqdzds%2F52JVoAdtO6jdiDweomXW3lBgr1mLeWyNUQ4E1mEutmoRcCbgTnaSoMKKwzWgwzrr0cjPJy8u%2FZjtKbnsiHcRgp439RczgBdMy5Uhm0gssdM%2FM4BXciP7PDdgQ8OSJSj6u%2BolpY1jHl%2F9Cmh5nJAzC8tUmtAK%2FABccM2nLbMUhVsnIGTgaBKVrvIvamdBb5jBjR1RE40xn9AMru5r6Aupkq31sAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WQ22rDMAyG7%2F0UwlfxiAtJLwYdK2ylT1FKcRORuPMJx7QM9vBTDs5W%2B0aW9X%2B%2FJIMJ0AbjvxEHeIdWJbpXg4VTFndDitp1JagOd8a7TrAT4x9GN8hL2NYl45%2F%2BOoYVhcf7mK1fS3Z%2BY4bAEYOP6RmbzVa0VY7ocXlPBjMz%2BzB%2B6KMenjKz1Vw4ui1O7IdwXyi7qEK%2FzgVS7rMNPHTq%2F03sHYyDknDSSKtS08PapZCnBf1SbTbbs9wXC0gwoPPoMSI43%2BJFt38qGJIizeTFj3wqDdHfsEm5kYq2knUZuS6jpk%2BrQqGdw3gZy4Zi6YOKskyIX8puk%2By%2BAQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 let employees = datatable(name:string, age:long)
 [
-    "Alice", 32,
-    "Bob", 31,
-    "Eve", 27,
+"Alice", 32,
+"Bob", 31,
+"Eve", 27,
 ];
 let reports = datatable(employee:string, manager:string)
 [
-    "Bob", "Alice",
-    "Chris", "Alice",
-    "Eve", "Bob",
+"Bob", "Alice",
+"Chris", "Alice",
+"Eve", "Bob",
 ];
 reports
 | make-graph employee --> manager with employees on name
-| graph-match (n)
-    where node_id(n) startswith "C"
-    project node_id(n)
+| graph-match (employee)-[reports*1..3]->(manager)
+    where node_id(employee) startswith "E"
+    project manager1 = node_id(manager), manager2 = map(inner_nodes(reports), node_id())
 ```
 
 **Output**
 
-| node_id_n |
-|--|
-| Chris |
+| manager_1 | manager_2 |
+|--|--|
+| Bob | [] |
+| Alice | ["Bob"]
+
 
 ## Related content
 
