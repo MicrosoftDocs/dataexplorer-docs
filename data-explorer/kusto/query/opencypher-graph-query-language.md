@@ -1,15 +1,15 @@
 ---
-title: openCypher Graph Query Language (preview)
-description: This article describes openCypher, an open-source graph query language specification
+title: openCypher (preview)
+description: This article describes openCypher, an open-source graph query language
 ms.reviewer: herauch
 ms.topic: reference
 ms.date: 10/29/2025
 ---
-# openCypher graph query language (preview)
+# openCypher (preview)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-openCypher is an open-source specification for querying property graph databases. It provides a declarative syntax using ASCII-art style pattern matching that makes it intuitive to express complex graph patterns and relationships.
+openCypher is an open-source specification for querying property graph databases. You can now run openCypher queries on KQL graph semantics, using a declarative syntax with ASCII-art style pattern matching that makes it intuitive to express complex graph patterns and relationships.
 
 > [!NOTE]
 > openCypher support is in preview. Features and syntax can change based on feedback and ongoing development.
@@ -26,7 +26,7 @@ To use openCypher, you need:
 Before you use openCypher, create a graph data source. This article uses an in-memory make-graph operator, but we recommend using a graph snapshot for production scenarios.
 
 <!-- csl -->
-```cypher
+```openCypher
 .create-or-alter function G_doc() {
     let nodes = datatable(id:string, lbl:string, name:string, properties:dynamic)
     [
@@ -125,7 +125,7 @@ The following examples demonstrate core openCypher query patterns. openCypher us
 Find all relationships in the graph and count them.
 
 <!-- csl -->
-```cypher
+```openCypher
 MATCH (n)-[e]->(n2)
 RETURN COUNT(*) as CNT
 ```
@@ -145,7 +145,7 @@ This query matches any node `n` connected to another node `n2` through a relatio
 Find people and their connections, filtering by node labels.
 
 <!-- csl -->
-```cypher
+```openCypher
 MATCH (p:Person)-[e]->(target)
 RETURN p.name, target.name, e.lbl
 ORDER BY p.name, target.name
@@ -168,7 +168,7 @@ This query finds all `Person` nodes and returns their names, the names of connec
 Find people over 25 years old and return their details.
 
 <!-- csl -->
-```cypher
+```openCypher
 MATCH (person:Person)
 WHERE person.properties.age > 25
 RETURN person.name, person.properties.age
@@ -182,16 +182,17 @@ ORDER BY person.name
 | Bob         | 30                     |
 | Carol       | 28                     |
 | David       | 35                     |
+| Emma       | 26                     |
 
 This query demonstrates property filtering using the `WHERE` clause to find people whose age property is greater than 25.
 
 ### Example 4: Variable length paths
 
-Find all nodes reachable from Alice through 1 to 3 hops.
+Find all persons reachable from Alice through 1 to 3 hops.
 
 <!-- csl -->
-```cypher
-MATCH (center)-[*1..3]->(connected)
+```openCypher
+MATCH (center)-[*1..3]->(connected:Person)
 WHERE center.name = 'Alice'
 RETURN DISTINCT connected.name
 ORDER BY connected.name
@@ -199,24 +200,22 @@ ORDER BY connected.name
 
 **Output**
 
-| connected.name |
-|----------------|
-| Bob            |
-| Carol          |
-| David          |
-| Emma           |
-| Portland       |
-| Seattle        |
-| TechCorp       |
+|connected.name|
+|---|
+|Alice|
+|Bob|
+|Carol|
+|David|
+|Emma|
 
-This query uses variable length paths `[*1..3]` to find all nodes reachable from Alice through one to three hops. The `DISTINCT` keyword ensures each connected node appears only once.
+This query uses variable length paths `[*1..3]` to find all persons reachable from Alice through one to three hops. The `DISTINCT` keyword ensures each connected node appears only once.
 
 ### Example 5: Aggregation and grouping
 
 Count how many people work at each company.
 
 <!-- csl -->
-```cypher
+```openCypher
 MATCH (person:Person)-[:works_at]->(company:Company)
 RETURN company.name AS Company, COUNT(person) AS EmployeeCount
 ORDER BY EmployeeCount DESC
