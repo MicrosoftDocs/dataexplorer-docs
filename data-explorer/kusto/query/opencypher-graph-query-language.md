@@ -235,59 +235,38 @@ This query demonstrates aggregation by grouping people by their company and coun
 
 openCypher support has the following limitations:
 
-### Unsupported language constructs
+- **Query structure**: All openCypher queries must start with a `MATCH` statement.
 
-The following openCypher language constructs are not currently supported:
+- **Unsupported language constructs**: The following openCypher language constructs are not currently supported:
+  - **WITH clause**: Not supported for query composition
+  - **Subqueries**: Including `EXISTS` subqueries and pattern predicates
 
-- **WITH clause**: Not supported for query composition
-- **Subqueries**: Including `EXISTS` subqueries and pattern predicates
+- **Unsupported keywords**: The following openCypher keywords are not supported:
+  - `MANDATORY MATCH`
+  - `UNWIND`
+  - `UNION`
+  - `SKIP`
 
-### Unsupported keywords
+- **Unsupported scalar functions**: The following openCypher scalar functions are not yet implemented:
+  - Mathematical functions: `sin()`, `cos()`, `tan()`, `log()`, `round()`, `sign()`, `rand()`
+  - Statistical functions: `percentileDisc()`, `percentileCont()`, `stDev()`, `stDevP()`
+  - Utility functions: `coalesce()`, `id()`, `properties()`, `type()`, `range()`
+  - Case expressions: `CASE` statements
 
-The following openCypher keywords are not supported:
+- **Partial support**: `CALL` procedures have only partial support.
 
-- `MANDATORY MATCH`
-- `UNWIND`
-- `UNION`
-- `SKIP`
+- **Reserved keywords**: Some openCypher keywords can't be used as identifiers in queries. Some reserved keywords aren't immediately obvious. If your graph data has property names that conflict with openCypher reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
 
-The following openCypher scalar functions are not yet implemented:
+    > [!IMPORTANT]
+    > When you design your graph schema, some common property names might conflict with openCypher reserved keywords. Avoid or rename these property names.
 
-- Mathematical functions: `sin()`, `cos()`, `tan()`, `log()`, `round()`, `sign()`, `rand()`
-- Statistical functions: `percentileDisc()`, `percentileCont()`, `stDev()`, `stDevP()`
-- Utility functions: `coalesce()`, `id()`, `properties()`, `type()`, `range()`
-- Case expressions: `CASE` statements
+- **No graph modification operations**: Operations to change graph structures (such as `CREATE`, `MERGE`, `DELETE`, `SET`, `REMOVE`) are not supported. Use KQL for all graph creation, change, and management tasks.
 
-### Partial support
+- **Optional pattern matching**: `OPTIONAL MATCH` is supported only for node patterns, not for edge patterns.
 
-- **CALL procedures**: Only partial support is available
+- **Entity equivalence checks**: Entity equivalence checks using operators like `=` or `<>` between nodes or relationships (for example, `MATCH (n)-[]-(m) WHERE n <> m`) are not supported. Use explicit field comparisons instead, such as `n.id <> m.id`.
 
-### Reserved keywords
-
-Some openCypher keywords can't be used as identifiers in queries. Some reserved keywords aren't immediately obvious. If your graph data has property names that conflict with openCypher reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
-
-> [!IMPORTANT]
-> When you design your graph schema, some common property names might conflict with openCypher reserved keywords. Avoid or rename these property names.
-
-### No graph modification operations
-
-Operations to change graph structures (such as `CREATE`, `MERGE`, `DELETE`, `SET`, `REMOVE`) are not supported. Use KQL for all graph creation, change, and management tasks.
-
-### Optional pattern matching
-
-`OPTIONAL MATCH` is supported only for node patterns, not for edge patterns.
-
-### Entity equivalence checks
-
-Entity equivalence checks using operators like `=` or `<>` between nodes or relationships (for example, `MATCH (n)-[]-(m) WHERE n <> m`) are not supported. Use explicit field comparisons instead, such as `n.id <> m.id`.
-
-### Time and timezone
-
-The engine operates in UTC. Datetime literals must use appropriate formats; only the UTC timezone is supported.
-
-### Duration granularity
-
-Durations support days and smaller units down to nanoseconds. Larger-than-day units (for example, weeks, months, years) aren't supported in duration operations.
+- **Time and timezone**: The engine operates in UTC. Datetime literals must use appropriate formats; only the UTC timezone is supported.
 
 ## Related content
 
