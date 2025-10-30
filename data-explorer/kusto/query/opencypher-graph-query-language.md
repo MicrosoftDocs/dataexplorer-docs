@@ -264,7 +264,7 @@ The following openCypher scalar functions are not yet implemented:
 
 ### Reserved keywords
 
-Some openCypher keywords can't be used as identifiers in queries. Some reserved keywords aren't immediately obvious (for example, `DATE` is a reserved keyword). If your graph data has property names that conflict with openCypher reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
+Some openCypher keywords can't be used as identifiers in queries. Some reserved keywords aren't immediately obvious. If your graph data has property names that conflict with openCypher reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
 
 > [!IMPORTANT]
 > When you design your graph schema, some common property names might conflict with openCypher reserved keywords. Avoid or rename these property names.
