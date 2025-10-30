@@ -3,7 +3,7 @@ title: Queued Ingestion via REST API
 description: Learn how to use the REST API to submit blobs for ingestion into Azure Data Explorer tables.
 ms.reviewer: 
 ms.topic: reference
-ms.date: 10/20/2025
+ms.date: 10/28/2025
 ---
 
 # Queued ingestion via REST API
@@ -29,8 +29,8 @@ Method: POST
 
 |Parameter|Type|Required|Description|
 |--|--|--|--|
-|`database`|`string`|  :heavy_check_mark: |The name of the target database.|
-|`table`|`string`|  :heavy_check_mark: |The name of the target table.|
+|`database`|`string`|  :heavy_check_mark: | The name of the target database.|
+|`table`|`string`|  :heavy_check_mark: | The name of the target table.|
 
 ## Request body parameters
 
@@ -40,7 +40,7 @@ The request must be a JSON object with the following structure.
 
 |Field|Type|Required|Description|
 |--|--|--|--|
-|`blobs`|`array`|  :heavy_check_mark: |A list of blob objects to be ingested. See [Blob object](#blob-object) for details.|
+|`blobs`|`array`|  :heavy_check_mark: | A list of blob objects to be ingested. See [Blob object](#blob-object) for details.|
 |`properties`|`object`|  :heavy_check_mark: |An object containing ingestion properties. See [Supported ingestion properties](#supported-ingestion-properties).|
 |`timestamp`|`datetime`|No|Optional timestamp indicating when the ingestion request was created.|
 
@@ -50,7 +50,7 @@ Each item in the `blobs` array must follow this structure:
 
 |Field|Type|Required|Description|
 |--|--|--|--|
-|`url`|`string`|  :heavy_check_mark: |The URL of the blob to ingest. The service performs light validation on this field.|
+|`url`|`string`|  :heavy_check_mark: | The URL of the blob to ingest. The service performs light validation on this field.|
 |`sourceId`|`Guid`|No|An identifier for the source blob.|
 |`rawSize`|`integer`|No|The size of the blob before compression (nullable).|
 
