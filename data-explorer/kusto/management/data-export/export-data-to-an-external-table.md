@@ -3,7 +3,7 @@ title:  .export to table
 description:  This article describes Export data to an external table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/01/2024
+ms.date: 10/30/2025
 ---
 # .export to table
 
