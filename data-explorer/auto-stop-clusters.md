@@ -18,7 +18,7 @@ Cluster behavior isn't automatically resumed. To restart the cluster, do so manu
 > * Clusters deployed in a Virtual Network
 > * [Start-for-free](start-for-free.md) clusters
 > * Clusters where the [Auto-Stop setting](auto-stop-clusters.md#set-auto-stop-settings-while-creating-a-new-cluster) is turned off
-> * Azure Synapse Data Explorer pools
+
 
 ## Manage Automatic stop behavior on your cluster
 

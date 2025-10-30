@@ -88,7 +88,7 @@ In order to export to an external table, you must set up write permissions. For 
 
 * External table columns are mapped to suitable target format data types, according to [data types mapping](export-data-to-storage.md#data-types-mapping) rules.
 
-* Parquet native export is a more performant, resource light export mechanism. An exported `datetime` column is currently unsupported by Synapse SQL `COPY`.
+* Parquet native export is a more performant, resource light export mechanism.
 
 ### Number of files
 

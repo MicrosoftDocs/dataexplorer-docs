@@ -71,7 +71,6 @@ The following table summarizes the available tools and integrations and their ca
 | Name                                                                                | Ingest             | Query              | Share              | Source control     | Secure             | Administrate       | Visualize          |
 | ----------------------------------------------------------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | [Azure CLI](#azure-cli)                                                             |                    |                    |                    |                    |                    | :heavy_check_mark: |                    |
-| [Azure Synapse Analytics](#azure-synapse-analytics)                                 | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
 | [Azure Data Lake](#azure-data-lake)                                                 | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    |                    |
 | [Azure Data Studio](#azure-data-studio)                                             |                    | :heavy_check_mark: |                    |                    |                    |                    |                    |
 | [Azure Data Share](#azure-data-share)                                               |                    |                    | :heavy_check_mark: |                    |                    |                    |                    |
@@ -379,13 +378,6 @@ Azure CLI lets you manage Kusto resources.
 
 * **Functionality:** Administration
 * **Documentation:** [az kusto](/cli/azure/kusto?view=azure-cli-latest&preserve-view=true)
-
-### Azure Synapse Analytics
-
-Azure Synapse Data Explorer provides customers with an interactive query experience to unlock insights from log and telemetry data. To complement existing SQL and Apache Spark analytics runtime engines, the Data Explorer analytics runtime is optimized for efficient log analytics using powerful indexing technology to automatically index free-text and semi-structured data commonly found in telemetry data.
-
-* **Functionality:** Ingestion, Query, Visualization 
-* **Documentation:**  [What is Azure Synapse Data Explorer?](/azure/synapse-analytics/data-explorer/data-explorer-overview)
 
 ### Azure Data Lake
 

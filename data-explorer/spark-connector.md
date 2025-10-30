@@ -14,9 +14,6 @@ The Kusto connector for Spark is an [open source project](https://github.com/Azu
 
 You can write to Azure Data Explorer via queued ingestion or streaming ingestion. Reading from Azure Data Explorer supports column pruning and predicate pushdown, which filters the data in Azure Data Explorer, reducing the volume of transferred data.
 
-> [!NOTE]
-> For information about working with the Synapse Spark connector for Azure Data Explorer, see [Connect to Azure Data Explorer using Apache Spark for Azure Synapse Analytics](/azure/synapse-analytics/quickstart-connect-azure-data-explorer).
-
 This topic describes how to install and configure the Azure Data Explorer Spark connector and move data between Azure Data Explorer and Apache Spark clusters.
 
 > [!NOTE]
@@ -28,7 +25,7 @@ This topic describes how to install and configure the Azure Data Explorer Spark 
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A Spark cluster
 * Install connector library:
-    * Pre-built libraries for [Spark 2.4+Scala 2.11 or Spark 3+scala 2.12](https://github.com/Azure/azure-kusto-spark/releases) 
+    * Pre-built libraries for [Spark 2.4+Scala 2.11 or Spark 3+scala 2.12](https://github.com/Azure/azure-kusto-spark/releases)
     * [Maven repo](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
 * [Maven 3.x](https://maven.apache.org/download.cgi) installed
 

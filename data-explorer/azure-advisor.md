@@ -73,7 +73,7 @@ In some cases, clusters may be [automatically stopped](auto-stop-clusters.md). I
  * Leader clusters. For more information, see [follower databases](follower.md).
  * Clusters deployed in a Virtual Network.
  * Clusters where the [Auto-Stop setting](auto-stop-clusters.md#set-auto-stop-settings-while-creating-a-new-cluster) is turned off
- * Azure Synapse Data Explorer pools
+
  
 The recommendation is to stop the cluster to reduce cost but still preserve the data. If the data isn't needed, consider deleting the cluster to increase your savings.
 

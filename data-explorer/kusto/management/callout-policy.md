@@ -50,7 +50,6 @@ The following table shows a set of predefined callout policies that are preconfi
 | Kusto | Cross cluster queries | `^https://[a-z0-9]{3,22}\\.[a-z0-9-]{1,50}\\.(kusto\\.azuresynapse | kustodev\\.azuresynapse-dogfood)\\.net/?$` |
 | Kusto | Cross cluster queries | `^https://([A-Za-z0-9]+\\.)?(ade | adx)\\.(int\\. | aimon\\.)?(applicationinsights | loganalytics | monitor)\\.(io | azure\\.com)/` |
 | Azure DB | SQL requests | `[a-z0-9][a-z0-9\\-]{0,61}[a-z0-9]?\\.database\\.windows\\.net/?$` |
-| Synapse Analytics | SQL requests | `[a-z0-9-]{0,61}?(-ondemand)?\\.sql\\.azuresynapse(-dogfood)?\\.net/?$` |
 | External Data | External data | `.*` |
 | Azure Digital Twins | Azure Digital Twins | `[A-Za-z0-9\\-]{3,63}\\.api\\.[A-Za-z0-9]+\\.digitaltwins\\.azure\\.net/?$` |
 
