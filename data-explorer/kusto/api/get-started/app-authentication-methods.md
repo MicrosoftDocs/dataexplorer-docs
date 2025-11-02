@@ -22,7 +22,7 @@ In this article, you learn how to authenticate using:
 >
 > **Application principal**
 >
-> - [Managed identity authentication](#managed-identity-authentication)
+[Managed identity authentication](#managed-identity-authentication)
 > - [Certificate-based authentication](#certificate-based-authentication)
 > - [Application key authentication](#application-key-authentication)
 >
