@@ -3,7 +3,7 @@ title: Authentication methods for Kusto client libraries
 description: Learn about the different authentication methods that can be used in apps using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 09/25/2024
+ms.date: 11/02/2025
 monikerRange: "azure-data-explorer"
 ms.custom: sfi-ropc-nochange
 #customer intent: To learn about the different authentication methods that can be used in apps.
@@ -12,44 +12,44 @@ ms.custom: sfi-ropc-nochange
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-This documentation provides an overview of the primary methods of authentication methods available for the Kusto client libraries. The provided code snippets demonstrate different approaches to authenticate users and apps, enabling seamless interaction with Kusto clusters. Each method is suitable for different scenarios and requirements.
+This article provides an overview of the primary authentication methods available for the Kusto client libraries. The code snippets show different ways to authenticate users and apps, enabling seamless interaction with Kusto clusters. Each method suits different scenarios and requirements.
 
-Where possible, we recommend using managed identities instead of username and password authentication or connection strings. Managed identities provide a more secure and streamlined approach to authentication.
+Use managed identities instead of username and password authentication or connection strings whenever possible. Managed identities offer a more secure and streamlined approach to authentication.
 
 In this article, you learn how to authenticate using:
 
 > [!div class="checklist"]
 >
-> **Application Principal**
+> **Application principal**
 >
-> - [Managed Identity authentication](#managed-identity-authentication)
-> - [Certificate-Based Authentication](#certificate-based-authentication)
+> - [Managed identity authentication](#managed-identity-authentication)
+> - [Certificate-based authentication](#certificate-based-authentication)
 > - [Application key authentication](#application-key-authentication)
 >
-> **User Principal**
+> **User principal**
 >
 > - [Interactive user sign-in authentication](#interactive-user-sign-in-authentication)
 > - [Azure Command-Line Interface (CLI) authentication](#azure-command-line-interface-cli-authentication)
 > - [Device code authentication](#device-code-authentication)
 >
-> **Custom Token Provider**
+> **Custom token provider**
 >
-> - [Custom token provider for federated Managed Identity credential authentication](#custom-token-provider-for-federated-managed-identity-credential-authentication)
+> - [Custom token provider for federated managed identity credential authentication](#custom-token-provider-for-federated-managed-identity-credential-authentication)
 > - [Using Azure TokenCredential authentication](#using-azure-tokencredential-authentication)
 
 ## Prerequisites
 
-- [Set up your development environment](app-set-up.md) to use the Kusto client library.
+- [Set up your development environment](app-set-up.md) to use the Kusto client library
 
-## Application Principal authentication methods
+## Application principal authentication methods
 
 This section covers the different methods of authenticating using an application principal.
 
-### Managed Identity authentication
+### Managed identity authentication
 
-There are two types of managed identities: system-assigned and user-assigned. System-assigned managed identities have their lifecycle tied to the resource that created them. This identity is restricted to only one resource. User-assigned managed identities can be used on multiple resources. For more information, see [Managed Identities](/entra/identity/managed-identities-azure-resources/overview).
+There are two types of managed identities: system-assigned and user-assigned. System-assigned managed identities have their lifecycle tied to the resource that creates them. This identity is limited to one resource. User-assigned managed identities can be used on multiple resources. For more information, see [Managed Identities](/entra/identity/managed-identities-azure-resources/overview).
 
-| In the following examples, replace *`<QueryEndpointUri>`* and *`<ManagedIdentityClientId>`* with your own values.
+| In the following examples, replace *`<QueryEndpointUri>`* and *`<ManagedIdentityClientId>`* with your values.
 
 - System-assigned managed identity:
 
@@ -120,12 +120,12 @@ There are two types of managed identities: system-assigned and user-assigned. Sy
 
 > [!IMPORTANT]
 >
-> - The object, or principal, ID of the Managed Identity resource must be assigned a role to access the Kusto cluster. You can do this in the Azure portal in your Kusto cluster resource page under **Security + networking** > **Permissions**. Managed Identity should not be attached directly to the Kusto cluster.
-> - Managed Identity authentication is not supported in local development environments. To test Managed Identity authentication, deploy the application to Azure or use a different authentication method when working locally.
+> - The object or principal ID of the managed identity resource must be assigned a role to access the Kusto cluster. You can assign a role in the Azure portal in your Kusto cluster resource page under **Security + networking** > **Permissions**. Managed Identity shouldn't be attached directly to the Kusto cluster.
+> - Managed Identity authentication isn't supported in local development environments. To test Managed Identity authentication, deploy the application to Azure or use a different authentication method when working locally.
 
 ### Certificate-based authentication
 
-Certificates can serve as secrets to authenticate an application's identity when requesting a token. There are several methods to load the certificate, such as loading it from the machine's local credentials store or from disk.
+Certificates serve as secrets to authenticate an application's identity when requesting a token. There are several methods to load the certificate, such as loading it from the machine's local credentials store or from disk.
 
 | In the following examples, replace *`<QueryEndpointUri>`*, *`<ApplicationId>`*, *`<CertificateSubjectName>`*, *`<CertificateIssuerName>`*, *`<CertificateThumbprint>`*, *`<CertificateObject>`*, *`<AuthorityId>`*, *`<PemPublicCertificate>`*, *`<PemPrivateKey>`*, *`<privateKeyPemFilePath>`*, *`<PemCertificatePath>`*, and *`<EnableSubjectAndIssuerAuth>`* with your own values.
 
@@ -137,7 +137,7 @@ Certificates can serve as secrets to authenticate an application's identity when
     ```
 
     > [!IMPORTANT]
-    > When using subject name and issuer, the certificate must be installed in the local machine's certificate store.
+    > When you use subject name and issuer, the certificate must be installed in the local machine's certificate store.
 
 - Certificate from an arbitrary source, such as a file on disk, cache, or secure store like Azure Key Vault. The certificate object must contain a private key:
 
@@ -213,7 +213,7 @@ Application key, also known as an application password, is a secret string that 
 
 - Application key:
 
-    #### [C\#](#tab/csharp)
+      #### [C\#](#tab/csharp)
 
     ```csharp
     var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
@@ -276,7 +276,7 @@ Application key, also known as an application password, is a secret string that 
     ---
 
 > [!IMPORTANT]
-> Hard-coding secrets in your code is considered a bad practice. Storing sensitive information, such as authentication credentials, in plain text can lead to security vulnerabilities. We recommended that you keep sensitive information encrypted or store them securely in a key vault. By using encryption or a key vault, you can ensure that your secrets are protected and only accessible to authorized users or applications.
+> Hardcoding secrets in your code is bad practice. Storing sensitive information, such as authentication credentials, in plain text leads to security vulnerabilities. Keep sensitive information encrypted or store it securely in a key vault. Using encryption or a key vault ensures that your secrets are protected and accessible only to authorized users or applications.
 
 ## User Principal authentication methods
 
@@ -405,7 +405,7 @@ ConnectionStringBuilder kcsb = ConnectionStringBuilder
 
 > [!IMPORTANT]
 > Device code authentication may be blocked by tenant Conditional Access Policies.
-> If this occurs, select an alternative authentication method.
+> If blocked, select an alternative authentication method.
 
 ## Custom token provider authentication methods
 
