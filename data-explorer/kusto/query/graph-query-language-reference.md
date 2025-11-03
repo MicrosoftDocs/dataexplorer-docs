@@ -352,6 +352,8 @@ RETURN COUNT(*) > 0 AS HasSuspiciousActivity
 
 ### Limitations
 
+- **Query structure**: All openCypher queries must start with a `MATCH` statement.
+
 - **Reserved keywords**: Some GQL keywords can't be used as identifiers in queries. Some reserved keywords aren't immediately obvious (for example, `DATE` is a reserved keyword). If your graph data has property names that conflict with GQL reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
 
     > [!IMPORTANT]
