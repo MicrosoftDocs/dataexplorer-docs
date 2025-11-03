@@ -66,7 +66,7 @@ To configure the callout policy to authorize the AI model endpoint domain:
 [
   {
     "CalloutType": "azure_openai",
-    "CalloutUriRegex": "https://[A-Za-z0-9\\-]{3,63}\\.openai\\.azure\\.com/.*",
+    "CalloutUriRegex": "^https://[A-Za-z0-9-]{3,63}\.(?:openai\.azure\.com|cognitiveservices\.azure\.com|cognitive\.microsoft\.com|services\.ai\.azure\.com)(?:/.*)?$",
     "CanCall": true
   }
 ]
