@@ -78,7 +78,7 @@ Following errors were detected during this operation.
             at System.Deployment.Application.ApplicationActivator.ActivateDeploymentWorker(Object state)
 ```
 
-#### Proposed solution steps
+#### Possible solution
 
 1. Uninstall Kusto.Explorer using `Programs and Features` (`appwiz.cpl`).
 
@@ -122,15 +122,16 @@ Following errors were detected during this operation.
 
 ### Enable ClickOnce verbose logging
 
-1. If the application still doesn't start:
+If the application still doesn't start:
+
 1. [Enable verbose ClickOnce logging](/visualstudio/deployment/how-to-specify-verbose-log-files-for-clickonce-deployments) by creating a `LogVerbosityLevel` string value of 1 under:
 
-        ```kusto
+    ```kusto
         HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment
-        ```
+    ```
 
-    1. Reproduce the issue again.
-    1. Send the verbose output to KEBugReport@microsoft.com. 
+1. Reproduce the issue again.
+1. Send the verbose output to KEBugReport@microsoft.com. 
 
 ## ClickOnce error: your administrator has blocked this application
 

@@ -213,7 +213,7 @@ Application key, also known as an application password, is a secret string that 
 
 - Application key:
 
-      #### [C\#](#tab/csharp)
+    #### [C\#](#tab/csharp)
 
     ```csharp
     var kcsb = new KustoConnectionStringBuilder(<QueryEndpointUri>)
