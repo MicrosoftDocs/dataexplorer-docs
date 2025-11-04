@@ -15,4 +15,4 @@ ms.date: 02/03/2025
 | dimensionTables | array | A dynamic argument that includes an array of dimension tables in the view. See [Query parameter](../management/materialized-views/materialized-view-create.md#query-parameter). |
 | folder | `string` | The materialized view's folder. |
 | docString | `string` | A string that documents the materialized view. |
-| allowMaterializedViewsWithoutRowLevelSecurity | `bool` | Allows creating a materialized view over a table with row level security policy enabled. Only required for views of type `arg_min`/`arg_max`/`arg_any`. |
+| allowMaterializedViewsWithoutRowLevelSecurity | `bool` | Allows creating a materialized view over a table with row level security policy enabled. Only required for views of type `arg_min`/`arg_max`/`arg_any`. See [../management/materialized-views/materialized-view-policies.md#row-level-security-policy](this) for more information |
