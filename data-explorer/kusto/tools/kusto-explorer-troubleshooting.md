@@ -14,11 +14,9 @@ This article describes common difficulties in running and using Kusto.Explorer a
 
 ## Kusto.Explorer fails to start
 
-### Kusto.Explorer shows error dialog during or after startup
-
 #### Symptom
 
-At startup, Kusto.Explorer shows an `InvalidOperationException` error.
+At startup, Kusto.Explorer shows an `InvalidOperationException` error during or after startup.
 
 #### Possible solution
 
