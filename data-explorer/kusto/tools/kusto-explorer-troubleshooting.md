@@ -3,51 +3,51 @@ title: Troubleshoot common problems in Kusto.Explorer
 description: Learn about common problems in installing and running Kusto.Explorer and their solutions
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 08/11/2024
+ms.date: 11/04/2025
 ---
 
 # Troubleshooting
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-This document provides common difficulties in running and using Kusto.Explorer, and offers solutions. This document also describes [how to reset Kusto.Explorer](#reset-kustoexplorer).
+This article describes common difficulties in running and using Kusto.Explorer and offers solutions. It also explains [how to reset Kusto.Explorer](#reset-kustoexplorer).
 
 ## Kusto.Explorer fails to start
 
-### Kusto.Explorer shows error dialog during or after start-up
+### Kusto.Explorer shows error dialog during or after startup
 
 #### Symptom
 
-At start-up, Kusto.Explorer shows an `InvalidOperationException` error.
+At startup, Kusto.Explorer shows an `InvalidOperationException` error.
 
 #### Possible solution
 
-This error may suggest that the operating system became corrupted or is missing some of the essential modules.
-To check missing or corrupted system files, follow the steps described here:   
+This error might suggest that the operating system is corrupted or missing some essential modules.
+To check for missing or corrupted system files, follow the steps described here:  
 [https://support.microsoft.com/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system](https://support.microsoft.com/help/929833/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system)
 
-## Kusto.Explorer always downloads, even when there are no updates
+## Kusto.Explorer always downloads even when there are no updates
 
 #### Symptom
 
-Every time you open Kusto.Explorer, you're prompted to install a new version. Kusto.Explorer downloads the entire package, without updating the already-installed version.
+Every time you open Kusto.Explorer, you're prompted to install a new version. Kusto.Explorer downloads the entire package without updating the already installed version.
 
 #### Possible solution
 
-This symptom could be a result of corruption in your local ClickOnce store. You can clear the local ClickOnce store, by running the following command, in an elevated command prompt.
+This symptom might result from corruption in your local ClickOnce store. Clear the local ClickOnce store by running the following command in an elevated command prompt.
 
 > [!IMPORTANT]
 >
-> 1. If there are any other instances of ClickOnce applications or of `dfsvc.exe`, terminate them before running this command.
+> 1. If there are other instances of ClickOnce applications or `dfsvc.exe`, terminate them before running this command.
 > 1. All ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts aren't deleted.
 
 ```kusto
 rd /q /s %userprofile%\appdata\local\apps\2.0
 ```
 
-Try installing Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#install-kustoexplorer).
+Install Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#install-kustoexplorer).
 
-### ClickOnce error: Cannot Start Application
+## ClickOnce error: cannot start application
 
 #### Symptoms
 
@@ -89,9 +89,9 @@ Following errors were detected during this operation.
     rundll32 %windir%\system32\dfshim.dll CleanOnlineAppCache
     ```
 
-    Install Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#install-kustoexplorer).
+    Install Kusto.Explorer from one of the [installation mirrors](kusto-explorer.md#install-kustoexplorer).
 
-1. If the application still doesn't start, delete the local ClickOnce store. All ClickOnce apps will reinstall automatically the next time you run them, as long as you have access to the original install location stored in the app shortcut. App shortcuts aren't deleted.
+1. All ClickOnce apps reinstall automatically the next time you run them if you have access to the original install location stored in the app shortcut. App shortcuts aren't deleted.
 
     From an elevated command-prompt:
 
@@ -102,7 +102,7 @@ Following errors were detected during this operation.
     Install Kusto.Explorer again from one of the [installation mirrors](kusto-explorer.md#install-kustoexplorer)
 
 1. If the application still doesn't start:
-    1. Remove temporary deployment files.
+    1. Delete temporary deployment files.
     1. Rename the Kusto.Explorer local AppData folder.
 
         From an elevated command-prompt:
@@ -120,19 +120,19 @@ Following errors were detected during this operation.
         copy %LOCALAPPDATA%\Kusto.Explorer.bak\User*.xml %LOCALAPPDATA%\Kusto.Explorer
         ```
 
-#### Enabling ClickOnce verbose logging
+### Enable ClickOnce verbose logging
 
 1. If the application still doesn't start:
-    1. [Enable verbose ClickOnce logging](/visualstudio/deployment/how-to-specify-verbose-log-files-for-clickonce-deployments) by creating a LogVerbosityLevel string value of 1 under:
+1. [Enable verbose ClickOnce logging](/visualstudio/deployment/how-to-specify-verbose-log-files-for-clickonce-deployments) by creating a `LogVerbosityLevel` string value of 1 under:
 
         ```kusto
         HKEY_CURRENT_USER\Software\Classes\Software\Microsoft\Windows\CurrentVersion\Deployment
         ```
 
-    1. Repro it again.
+    1. Reproduce the issue again.
     1. Send the verbose output to KEBugReport@microsoft.com. 
 
-### ClickOnce error: Your administrator has blocked this application because it potentially poses a security risk to your computer
+## ClickOnce error: your administrator has blocked this application
 
 #### Symptom 
 
@@ -143,43 +143,43 @@ The application fails to install with either of the following errors:
 
 #### Solution
 
-This symptom could be because another application is overriding the default ClickOnce trust prompt behavior.
+This issue might occur because another application overrides the default ClickOnce trust prompt behavior.
 
-1. View your default configuration settings.
-1. Compare your configuration settings to the actual ones on your machine.
-1. Reset your configuration settings as necessary, as explained [in this how-to article](/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior).
+1. Check your default configuration settings.
+1. Compare your configuration settings to the ones on your machine.
+1. Reset your configuration settings if needed, as explained [in this how-to article](/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior).
 
-### Cleanup application data
+### Clean up application data
 
-Sometimes, when previous troubleshooting steps didn't help with getting Kusto.Explorer to start, cleaning data stored locally may help.
+If the previous troubleshooting steps don't help Kusto.Explorer start, cleaning locally stored data might help.
 
-Data stored by Kusto.Explorer application can be found here: `C:\Users\[your username]\AppData\Local\Kusto.Explorer`.
+You can find data stored by the Kusto.Explorer application at: `C:\Users\[your username]\AppData\Local\Kusto.Explorer`.
 
 > [!NOTE]
-> Cleaning the data leads to a loss of opened tabs (Recovery folder), saved connections (Connections folder), and application settings (UserSettings folder).
+> Cleaning the data deletes opened tabs (Recovery folder), saved connections (Connections folder), and application settings (UserSettings folder).
 
 ## Reset Kusto.Explorer
 
-If you need to, you can completely reset Kusto.Explorer. The following procedure describes how to progressively reset Kusto.Explorer, until it's removed from your computer and must be installed from scratch.
+You can completely reset Kusto.Explorer. This procedure describes how to progressively reset Kusto.Explorer until it's removed from your computer and needs to be installed from scratch.
 
-1. In Windows, open **Change or remove a program** (also known as **Programs and Features**).
-1. Select every item that starts with `Kusto.Explorer`.
+1. In Windows, open **Change or remove a program** (also called **Programs and Features**).
+1. Select each item that starts with `Kusto.Explorer`.
 1. Select **Uninstall**.
 
-   If this procedure fails to uninstall the application (a known issue with ClickOnce applications), see [this article for instructions](https://stackoverflow.com/questions/10896223/how-do-i-completely-uninstall-a-clickonce-application-from-my-computer).
+   If this procedure doesn't uninstall the application (a known issue with ClickOnce applications), see [this article for instructions](https://stackoverflow.com/questions/10896223/how-do-i-completely-uninstall-a-clickonce-application-from-my-computer).
 
-1. Delete the folder `%LOCALAPPDATA%\Kusto.Explorer`, which removes all connections, history, and so on.
+1. Delete the folder `%LOCALAPPDATA%\Kusto.Explorer`, which removes all connections, history, and other data.
 
-1. Delete the folder `%APPDATA%\Kusto`, which removes the Kusto.Explorer token cache. You'll need to reauthenticate to all clusters.
+1. Delete the folder `%APPDATA%\Kusto`, which removes the Kusto.Explorer token cache. You need to reauthenticate to all clusters.
 
-It's also possible to revert to a specific version of Kusto.Explorer:
+You can also revert to a specific version of Kusto.Explorer:
 
 1. Run `appwiz.cpl`.
-1. Select **Kusto.Explorer** and select **Uninstall/Change**.
+1. Select **Kusto.Explorer**, and then select **Uninstall/Change**.
 1. Select **Restore the application to its previous state**.
 
 ## Related content
 
-* Learn about the [Kusto.Explorer user interface](kusto-explorer.md#overview-of-the-user-interface)
-* Learn about [running Kusto.Explorer from the command line](kusto-explorer-using.md#kustoexplorer-command-line-arguments)
-* Learn about [Kusto Query Language (KQL)](../query/index.md)
+* Learn about the [Kusto.Explorer user interface](kusto-explorer.md#overview-of-the-user-interface).
+* Learn about [running Kusto.Explorer from the command line](kusto-explorer-using.md#kustoexplorer-command-line-arguments).
+* Learn about [Kusto Query Language (KQL)](../query/index.md).
