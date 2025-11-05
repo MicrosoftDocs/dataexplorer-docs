@@ -3,31 +3,31 @@ title: Use Azure Data Share to share data with Azure Data Explorer
 description: Learn about how to share your data with Azure Data Explorer and Azure Data Share.
 ms.reviewer: maraheja
 ms.topic: how-to
-ms.date: 02/28/2022
+ms.date: 11/03/2025
 ---
 
-# Sharing Data with Azure Data Explorer
+# Sharing data with Azure Data Explorer
 
-There are many traditional ways to share data, such as through file shares, FTP, e-mail, and APIs. These methods require both parties to build and maintain a data pipeline that moves data between teams and organizations. With Azure Data Explorer, you can easily and securely share your data with people in your company or external partners. Sharing occurs in near-real-time, with no need to build or maintain a data pipeline. All database changes, including schema and data, on the provider side are instantly available on the consumer side.
+You can share data in many traditional ways, such as through file shares, FTP, email, and APIs. These methods require both parties to build and maintain a data pipeline that moves data between teams and organizations. With Azure Data Explorer, you can easily and securely share your data with people in your company or external partners. Sharing occurs in near-real-time, with no need to build or maintain a data pipeline. All database changes, including schema and data, on the provider side are instantly available on the consumer side.
 
 [![Azure Friday Video.](https://img.youtube.com/vi/Q3MJv90PegE/0.jpg)](https://www.youtube.com/watch?v=Q3MJv90PegE?&autoplay=1)
 
-Azure Data Explorer decouples storage and compute, which allows customers to run multiple compute (read-only) instances on the same underlying storage. You can attach a database as a [follower database](follower.md), which is a read-only database on a remote cluster.
+Azure Data Explorer decouples storage and compute, which allows you to run multiple compute (read-only) instances on the same underlying storage. You can attach a database as a [follower database](follower.md), which is a read-only database on a remote cluster.
 
 ## Configure data sharing
 
 Use [Azure Data Share](/azure/data-share/) to send and manage invitations and shares across the company or with external partners and customers. Azure Data Share uses a [follower database](follower.md) to create a symbolic link between the provider and consumer's Azure Data Explorer cluster. This option provides you with a single pane to view and manage all your data shares across Azure Data Explorer clusters and other data services. Azure Data Share also enables you to share data across organizations in different Microsoft Entra tenants.
 
-> [!Note]
-> An Admin on both the clusters can directly configure the [follower database](follower.md) with various APIS. This is useful in scenarios where you need additional compute to scale out for reporting.
+> [!NOTE]
+> An admin on both the clusters can directly configure the [follower database](follower.md) with various APIs. This configuration is useful in scenarios where you need additional compute to scale out for reporting.
 
-You can configure data sharing for the following:
+You can configure data sharing for the following options:
 
 * The entire database (default).
 * Specific tables - [Table level sharing](#sharing-tables).
 
-> [!Note]
-> When the sharing relationship is established, Azure Data Share creates a symbolic link between the provider and consumer's Azure Data Explorer cluster. If the data provider revokes access, the symbolic link is deleted, and the shared database(s) are no longer available to the data consumer.
+> [!NOTE]
+> When the sharing relationship is established, Azure Data Share creates a symbolic link between the provider and consumer's Azure Data Explorer cluster. If the data provider revokes access, the symbolic link is deleted, and the shared databases are no longer available to the data consumer.
 
 :::image type="content" source="media/data-share/adx-datashare-image.png" alt-text="Azure Data Explorer data sharing.":::
 
@@ -57,7 +57,7 @@ Follow the instructions in the video to create an Azure Data Share account, add 
 
 ### Sharing tables
 
-You can use an [Azure Resource Manager template](/azure/azure-resource-manager/management/overview) to share one or more tables via Azure Data Share.
+You can use an [Azure Resource Manager template](/azure/azure-resource-manager/management/overview) to share one or more tables through Azure Data Share.
 
 Use the following steps to share tables:
 
@@ -69,7 +69,7 @@ Use the following steps to share tables:
 |--|--|--|
 | *accountName* | The name of the provider's Azure Data Share account. |  |
 | *location* | The location of all the resources. The leader and the follower must be in the same location. |  |
-| *shareName* | The name of the share that will be created on the data share account. |  |
+| *shareName* | The name of the share that you create on the data share account. |  |
 | *recipientEmail* | The email of the Azure Data Share receiver. |  |
 
 #### Database Parameters
@@ -170,7 +170,7 @@ Use the following steps to share tables:
     }
 ```
 
-1. Deploy the Azure Resource Manager template using the [Azure portal](https://ms.portal.azure.com/#create/Microsoft.Template) or PowerShell.
+1. Deploy the Azure Resource Manager template by using the [Azure portal](https://ms.portal.azure.com/#create/Microsoft.Template) or PowerShell.
 
     ![template deployment.](media/follower/template-deployment-tls.png)
 
@@ -180,7 +180,7 @@ Follow the instructions in the video to accept the invitation, create a data sha
 
 [![Data Consumer - Receiving Data.](https://img.youtube.com/vi/vBq6iFaCpdA/0.jpg)](https://youtu.be/vBq6iFaCpdA?&autoplay=1)
 
-The data consumer can now go to their Azure Data Explorer cluster to grant user permissions to the shared databases and access the data. Data ingested using queued ingestion into the source Azure Data Explorer cluster will show up on the target cluster within a few seconds to a few minutes.
+The data consumer can now go to their Azure Data Explorer cluster to grant user permissions to the shared databases and access the data. Data ingested by using queued ingestion into the source Azure Data Explorer cluster appears on the target cluster within a few seconds to a few minutes.
 
 ## Limitations
 
