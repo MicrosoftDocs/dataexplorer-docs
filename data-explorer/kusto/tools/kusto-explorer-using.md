@@ -1,6 +1,6 @@
 ---
 title: Using Kusto.Explorer
-description: Learn how to use Kusto.Explorer to query, analyze, and share data. This guide covers query modes, parameterization, and database management.Learn how to use Kusto.Explorer
+description: Learn how to use Kusto.Explorer to query, analyze, and share data. This guide covers query modes, parameterization, and database management. Learn how to use Kusto.Explorer.
 ms.reviewer: alexans
 ms.topic: conceptual
 ms.date: 11/02/2025
@@ -75,7 +75,7 @@ Learn more about Kusto Query Language in [Kusto Query Language](../query/index.m
 > [!NOTE]
 > There are two types of query parameterization techniques in Kusto:
 >
-> * [Language-integrated query parametrization](../query/query-parameters-statement.md) is implemented server-side and is meant to be used by applications that query the service programmatically. This method is not described in this document.
+> * [Language-integrated query parameterization](../query/query-parameters-statement.md) is implemented server-side and is meant to be used by applications that query the service programmatically. This method is not described in this document.
 >
 > * Client-side query parameterization is a feature of the Kusto.Explorer application only. It's equivalent to using string replace operations on the queries before sending them to the service. The syntax is not part of the query language itself and can't be used when sending queries to the service by means other than Kusto.Explorer.
 
