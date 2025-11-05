@@ -3,16 +3,16 @@ title: Ingest historical data into Azure Data Explorer
 description: Learn how to use LightIngest to ingest historical or ad hoc data ingestion into Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 02/13/2024
+ms.date: 11/03/2025
 # CustomerIntent: As a data analyst, I want to learn how to ingest historical data into Azure Data Explorer, so that I can analyze it and gain insights.
 ---
 # How to ingest historical data into Azure Data Explorer
 
 A common scenario when onboarding to Azure Data Explorer is to ingest historical data, sometimes called backfill. The process involves ingesting data from an existing storage system into a table, which is a collection of [extents](/kusto/management/extents-overview?view=azure-data-explorer&preserve-view=true).
 
-We recommend ingesting historical data using the [creationTime ingestion property](/kusto/ingestion-properties?view=azure-data-explorer&preserve-view=true#ingestion-properties) to set the creation time of extents to the time the data was *created*. Using the creation time as the ingestion partitioning criterion can age your data in accordance with your [cache](/kusto/management/cache-policy?view=azure-data-explorer&preserve-view=true) and [retention](/kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true) policies, and make time filters more efficient.
+Ingest historical data by using the [creationTime ingestion property](/kusto/ingestion-properties?view=azure-data-explorer&preserve-view=true#ingestion-properties) to set the creation time of extents to the time the data was *created*. Using the creation time as the ingestion partitioning criterion can age your data in accordance with your [cache](/kusto/management/cache-policy?view=azure-data-explorer&preserve-view=true) and [retention](/kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true) policies, and make time filters more efficient.
 
-By default, the creation time for extents is set to the time when the data is ingested, which might not produce the behavior you're expecting. For example, suppose you have a table that has a cache period of 30 days and a retention period of two years. In the normal flow, data ingested as it's produced is cached for 30 days and then moved to cold storage. After two years, based on it's creation time, older data is removed one day at a time. However, if you ingest two years of historical data where, by default, the data is marked with creation time as the time the data is ingested. This might not produce the desired outcome because:
+By default, the creation time for extents is set to the time when you ingest the data, which might not produce the behavior you're expecting. For example, suppose you have a table that has a cache period of 30 days and a retention period of two years. In the normal flow, data ingested as it's produced is cached for 30 days and then moved to cold storage. After two years, based on its creation time, older data is removed one day at a time. However, if you ingest two years of historical data where, by default, the data is marked with creation time as the time the data is ingested. This behavior might not produce the desired outcome because:
 
 - All the data lands in cache and stays there for 30 days, using more cache than you anticipated.
 - Older data isn't removed one day at a time; hence data is retained in the cluster for longer than necessary and, after two years, is all removed at once.
@@ -24,44 +24,44 @@ In this article, you learn how to partition historical data:
 
 - Using the `creationTime` ingestion property during ingestion (recommended)
 
-    Where possible, ingest historical data using the [`creationTime` ingestion property](/kusto/ingestion-properties?view=azure-data-explorer&preserve-view=true#ingestion-properties), which allows you to set the creation time of the extents by extracting it from the file or blob path. If your folder structure doesn't use a creation date pattern, we recommend that you restructure your file or blob path to reflect the creation time. By using this method, the data is ingested into the table with the correct creation time, and the cache and retention periods are applied correctly.
+    Where possible, ingest historical data by using the [`creationTime` ingestion property](/kusto/ingestion-properties?view=azure-data-explorer&preserve-view=true#ingestion-properties), which allows you to set the creation time of the extents by extracting it from the file or blob path. If your folder structure doesn't use a creation date pattern, restructure your file or blob path to reflect the creation time. By using this method, the data is ingested into the table with the correct creation time, and the cache and retention periods are applied correctly.
 
     > [!NOTE]
     > By default, extents are partitioned by time of creation (ingestion), and in most cases there's no need to set a data partitioning policy.
 
 - Using a partitioning policy post ingestion
 
-    If you can't use the `creationTime` ingestion property, for example if you're [ingesting data using the Azure Cosmos DB connector](ingest-data-cosmos-db-connection.md) where you can't control the creation time or if you can't restructure your folder structure, you can repartition the table post ingestion to achieve the same effect using the [partitioning policy](/kusto/management/partitioning-policy?view=azure-data-explorer&preserve-view=true). However, this method may require some trial and error to optimize policy properties and is less efficient than using the `creationTime` ingestion property. We only recommended this method when using the `creationTime` ingestion property isn't possible.
+    If you can't use the `creationTime` ingestion property, for example if you're [ingesting data using the Azure Cosmos DB connector](ingest-data-cosmos-db-connection.md) where you can't control the creation time or if you can't restructure your folder structure, you can repartition the table post ingestion to achieve the same effect by using the [partitioning policy](/kusto/management/partitioning-policy?view=azure-data-explorer&preserve-view=true). However, this method might require some trial and error to optimize policy properties and is less efficient than using the `creationTime` ingestion property. Use this method only when using the `creationTime` ingestion property isn't possible.
 
 ## Prerequisites
 
-- A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
+- A Microsoft account or a Microsoft Entra user identity. You don't need an Azure subscription.
 - An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 - [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 - For the recommended method of using the `creationTime` ingestion property during ingestion, [install LightIngest](lightingest.md).
 
 ## Ingest historical data
 
-We highly recommend partitioning historical data using the `creationTime` ingestion property during ingestion. However, if you can't use this method, you can repartition the table post ingestion using a partitioning policy.
+Partition historical data by using the `creationTime` ingestion property during ingestion. If you can't use this method, you can repartition the table after ingestion by using a partitioning policy.
 
 ### [During ingestion (recommended)](#tab/during-ingestion)
 
-LightIngest can be useful to load historical data from an existing storage system to Azure Data Explorer. While you can build your own command using the list of [Command-line arguments](lightingest.md#command-line-arguments), this article shows you how to autogenerate this command through an ingestion wizard. In addition to creating the command, you can use this process to create a new table, and create schema mapping. This tool infers schema mapping from your dataset.
+LightIngest is useful to load historical data from an existing storage system to Azure Data Explorer. While you can build your own command by using the list of [Command-line arguments](lightingest.md#command-line-arguments), this article shows you how to autogenerate this command through an ingestion wizard. In addition to creating the command, you can use this process to create a new table and create schema mapping. This tool infers schema mapping from your dataset.
 
 ### Destination
 
 1. In the Azure Data Explorer web UI, from the left menu, select **Query**.
 
-1. Right-click the database in which you want to ingest the data, and then select **LightIngest**.
+1. Right-click the database where you want to ingest the data, then select **LightIngest**.
 
     :::image type="content" source="media/ingest-data-historical/ingest-data-from-query-page.png" alt-text="Screenshot of the Azure Data Explorer web UI showing the database more menu."  lightbox="media/ingest-data-historical/ingest-data-from-query-page.png":::
 
    The **Ingest data** window opens with the **Destination** tab selected. The **Cluster** and **Database** fields are automatically populated.
 
-1. Select a target table. If you want to ingest data into a new table, select **New table**, and then enter a table name.
+1. Select a target table. To ingest data into a new table, select **New table**, then enter a table name.
 
     > [!NOTE]
-    > Table names can be up to 1024 characters including spaces, alphanumeric, hyphens, and underscores. Special characters aren't supported.
+    > Table names can be up to 1,024 characters including spaces, alphanumeric characters, hyphens, and underscores. Special characters aren't supported.
 
     :::image type="content" source="media/ingest-data-historical/ingest-new-data.png" alt-text="Screenshot of the destination tab showing the destination database and table.":::
 
@@ -88,9 +88,9 @@ LightIngest can be useful to load historical data from an existing storage syste
     | Property | Description|
     |---|---|
     | **Creation time pattern** | Specify to override the ingestion time property of the created extent with a pattern, for example, to apply a date based on the folder structure of the container. See also [Creation time pattern](lightingest.md#ingest-historical-data-with-the-creationtime-property). |
-    | **Blob name pattern** | Specify the pattern used to identify the files to be ingested. Ingest all the files that match the blob name pattern in the given container. Supports wildcards. We recommended enclosing in double quotes. |
+    | **Blob name pattern** | Specify the pattern used to identify the files to ingest. Ingest all the files that match the blob name pattern in the given container. Supports wildcards. We recommended enclosing in double quotes. |
     | **Tag** | A [tag](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) assigned to the ingested data. The tag can be any string. |
-    | **Limit amount of files** | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
+    | **Limit amount of files** | Specify the number of files to ingest. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
     | **Don't wait for ingestion to complete** | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
     | **Display only selected items**| List the files in the container, but doesn't ingest them.  |
 
@@ -101,7 +101,7 @@ LightIngest can be useful to load historical data from an existing storage syste
 
         By default, one of the files in the container is randomly selected and used to generate the schema for the table.
 
-    1. Optionally, under **Schema defining file**, you can specify the file to use.
+    1. Optionally, under **Schema defining file**, specify the file to use.
 
 1. Select **Next: Schema** to view and edit your table column configuration.
 
@@ -123,7 +123,7 @@ Optionally:
 
 ### Ingest
 
-1. Once the table, mapping, and LightIngest command are marked with green check marks, select the **copy** icon on the top-right of the **Generated command** box to copy the generated LightIngest command.
+1. When the table, mapping, and LightIngest command show green check marks, select the **copy** icon on the top-right of the **Generated command** box to copy the generated LightIngest command.
 
     :::image type="content" source="media/ingest-data-historical/summary-tab-copy-command.png" alt-text="Screenshot of Summary tab with command generated. You can copy the command using the copy icon above the generated command box." lightbox="media/ingest-data-historical/summary-tab-copy-command.png":::
 
@@ -136,7 +136,7 @@ Optionally:
 
 #### Step 1: Prepare for repartitioning
 
-1. Adjust the retention policy to allow for old data. In the following example, you set retention policy for table **MyTable** to 10 years.
+1. Adjust the retention policy to keep old data. In the following example, you set the retention policy for table **MyTable** to 10 years.
 
     ```kusto
     .alter-merge table MyTable policy retention softdelete = 3650d recoverability = enabled
@@ -149,7 +149,7 @@ Optionally:
     ```
 
     > [!IMPORTANT]
-    > Increasing the caching policy may use considerably more hot cache than in normal operations and may result in increased cost.
+    > Increasing the caching policy might use considerably more hot cache than in normal operations and might result in increased cost.
 
 #### Step 2: Initiate repartitioning
 
@@ -177,9 +177,9 @@ Optionally:
 
     For information about the partitioning policy properties, see [partition properties](/kusto/management/partitioning-policy?view=azure-data-explorer&preserve-view=true#partition-properties-1). For historical ingestion, how you set the following properties is important:
 
-    - The **EffectiveDateTime** property must be set to a date earlier than the start of the ingestion to trigger the repartitioning.
-    - The **RangeSize** is set to one day so that the data is repartitioned into buckets of one day. However, you should set this value to align with your data. For example, if you have less than several GBs of data per day, consider setting a larger value.
-    - The **OverrideCreationTime** must be set to *true* so that after repartitioning the data into day buckets, the extents are marked with that day as the creation time.
+    - Set the **EffectiveDateTime** property to a date earlier than the start of the ingestion to trigger the repartitioning.
+    - Set the **RangeSize** to one day so that the data is repartitioned into buckets of one day. However, you should set this value to align with your data. For example, if you have less than several GBs of data per day, consider setting a larger value.
+    - Set the **OverrideCreationTime** to *true* so that after repartitioning the data into day buckets, the extents are marked with that day as the creation time.
 
 1. Set a merge policy to allow merging of all extents, including extents older than 14 days. Setting this policy is important because the repartitioning process creates extents older than 14 days, which by default are excluded by the merge process.
 
@@ -194,7 +194,7 @@ Optionally:
     ```
     ~~~
 
-1. Monitor the repartitioning progress using the [.show database extents partitioning statistics](/kusto/management/show-database-extents-partitioning-statistics?view=azure-data-explorer&preserve-view=true) command. In the returned results, look for the table you're repartitioning and monitor the **PartitionedRowPercentage** column. When the **PartitionedRowPercentage** column's value is `100`, the repartitioning is complete.
+1. Monitor the repartitioning progress by using the [.show database extents partitioning statistics](/kusto/management/show-database-extents-partitioning-statistics?view=azure-data-explorer&preserve-view=true) command. In the returned results, look for the table you're repartitioning and monitor the **PartitionedRowPercentage** column. When the **PartitionedRowPercentage** column's value is `100`, the repartitioning is complete.
 
 #### Step 3: Clean up post repartitioning
 

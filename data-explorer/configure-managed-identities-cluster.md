@@ -3,42 +3,42 @@ title: Configure managed identities for your Azure Data Explorer cluster
 description: Learn how to configure managed identities for Azure Data Explorer cluster.
 ms.reviewer: itsagui
 ms.topic: how-to
-ms.date: 07/16/2023
+ms.date: 11/03/2025
 ms.custom: sfi-image-nochange
 ---
 # Configure managed identities for your Azure Data Explorer cluster
 
-A [managed identity from Microsoft Entra ID](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to access other Microsoft Entra protected resources such as Azure Key Vault. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets.
+A [managed identity from Microsoft Entra ID](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to access other Microsoft Entra protected resources such as Azure Key Vault. The Azure platform manages the identity and doesn't require you to provision or rotate any secrets.
 
 This article shows you how to add and remove managed identities on your cluster. For more information on managed identities, see [Managed identities overview](managed-identities-overview.md).
 
 > [!NOTE]
-> Managed identities for Azure Data Explorer won't behave as expected if your Azure Data Explorer cluster is migrated across subscriptions or tenants. The app will need to obtain a new identity, which can be done by [removing a system-assigned identity](#remove-a-system-assigned-identity) and then [adding a system-assigned identity](#add-a-system-assigned-identity). Access policies of downstream resources will also need to be updated to use the new identity.
+> Managed identities for Azure Data Explorer don't behave as expected if you migrate your Azure Data Explorer cluster across subscriptions or tenants. The app needs to obtain a new identity, which you can get by [removing a system-assigned identity](#remove-a-system-assigned-identity) and then [adding a system-assigned identity](#add-a-system-assigned-identity). You also need to update the access policies of downstream resources to use the new identity.
 
 > For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/configure-managed-identities-cluster).
 
 ## Types of managed identities
 
-Your Azure Data Explorer cluster can be granted two types of identities:
+You can grant your Azure Data Explorer cluster two types of identities:
 
-* **System-assigned identity**: Tied to your cluster and deleted if your resource is deleted. A cluster can only have one system-assigned identity.
+* **System-assigned identity**: Tied to your cluster and deleted if you delete the resource. A cluster can only have one system-assigned identity.
 
-* **User-assigned identity**: A standalone Azure resource that can be assigned to your cluster. A cluster can have multiple user-assigned identities.
+* **User-assigned identity**: A standalone Azure resource that you can assign to your cluster. A cluster can have multiple user-assigned identities.
 
 ## Add a system-assigned identity
 
-Assign a system-assigned identity that is tied to your cluster, and is deleted if your cluster is deleted. A cluster can only have one system-assigned identity. Creating a cluster with a system-assigned identity requires an additional property to be set on the cluster. Add the system-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
+Assign a system-assigned identity that's tied to your cluster and deleted if you delete the cluster. A cluster can only have one system-assigned identity. When you create a cluster with a system-assigned identity, you need to set an additional property on the cluster. Add the system-assigned identity by using the Azure portal, C#, or Resource Manager template as detailed in the following sections.
 
 # [Azure portal](#tab/portal)
 
-### Add a system-assigned identity using the Azure portal
+### Add a system-assigned identity by using the Azure portal
 
 Sign in to the [Azure portal](https://portal.azure.com/).
 
 #### New Azure Data Explorer cluster
 
 1. [Create an Azure Data Explorer cluster](create-cluster-and-database.md#create-a-cluster) 
-1. In the **Security** tab > **System assigned identity**, select **On**. To remove the system assigned identity, select **Off**.
+1. In the **Security** tab, under **System assigned identity**, select **On**. To remove the system assigned identity, select **Off**.
 1. Select **Next : Tags >** or **Review + create** to create the cluster.
 
     ![Add system assigned identity to new cluster.](media/managed-identities/system-assigned-identity-new-cluster.png)
@@ -46,11 +46,11 @@ Sign in to the [Azure portal](https://portal.azure.com/).
 #### Existing Azure Data Explorer cluster
 
 1. Open an existing Azure Data Explorer cluster.
-1. Select **Settings** > **Identity** in left pane of portal.
-1. In the **Identity** pane > **System assigned** tab:
+1. Select **Settings** > **Identity** in the left pane of the portal.
+1. In the **Identity** pane, under the **System assigned** tab:
    1. Move the **Status** slider to **On**.
-   1. Select **Save**
-   1. In the pop-up window, select **Yes**
+   1. Select **Save**.
+   1. In the pop-up window, select **Yes**.
 
     ![Add system assigned identity.](media/managed-identities/turn-system-assigned-identity-on.png)
 
@@ -74,7 +74,7 @@ To set up a managed identity using the Azure Data Explorer C# client:
 
 #### Create or update your cluster
 
-1. Create or update your cluster using the `Identity` property:
+1. Create or update your cluster by using the `Identity` property:
 
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
@@ -95,13 +95,13 @@ To set up a managed identity using the Azure Data Explorer C# client:
     await clusters.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, clusterData);
     ```
 
-2. Run the following command to check if your cluster was successfully created or updated with an identity:
+1. Run the following command to check if you successfully created or updated your cluster with an identity:
 
     ```csharp
     clusterData = (await clusters.GetAsync(clusterName)).Value.Data;
     ```
 
-    If the result contains `ProvisioningState` with the `Succeeded` value, then the cluster was created or updated, and should have the following properties:
+    If the result contains `ProvisioningState` with the `Succeeded` value, then the cluster was created or updated, and has the following properties:
 
     ```csharp
     var principalGuid = clusterData.Identity.PrincipalId.GetValueOrDefault();
@@ -112,11 +112,11 @@ To set up a managed identity using the Azure Data Explorer C# client:
 
 # [Resource Manager template](#tab/arm)
 
-### Add a system-assigned identity using an Azure Resource Manager template
+### Add a system-assigned identity by using an Azure Resource Manager template
 
-An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database.md?tabs=arm).
+You can use an Azure Resource Manager template to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database.md?tabs=arm).
 
-Adding the system-assigned type tells Azure to create and manage the identity for your cluster. Any resource of type `Microsoft.Kusto/clusters` can be created with an identity by including the following property in the resource definition:
+When you add the system-assigned type, you tell Azure to create and manage the identity for your cluster. You can create any resource of type `Microsoft.Kusto/clusters` with an identity by including the following property in the resource definition:
 
 ```json
 {
@@ -141,7 +141,7 @@ For example:
 > [!NOTE]
 > A cluster can have both system-assigned and user-assigned identities at the same time. The `type` property would be `SystemAssigned,UserAssigned`
 
-When the cluster is created, it has the following additional properties:
+When you create the cluster, it has the following additional properties:
 
 ```json
 {
@@ -159,26 +159,26 @@ When the cluster is created, it has the following additional properties:
 
 ## Remove a system-assigned identity
 
-Removing a system-assigned identity will also delete it from Microsoft Entra ID. System-assigned identities are also automatically removed from Microsoft Entra ID when the cluster resource is deleted. A system-assigned identity can be removed by disabling the feature. Remove the system-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
+When you remove a system-assigned identity, you also delete it from Microsoft Entra ID. System-assigned identities are also automatically removed from Microsoft Entra ID when you delete the cluster resource. You can remove a system-assigned identity by disabling the feature. Use the Azure portal, C#, or Resource Manager template to remove the system-assigned identity as detailed in the following section.
 
 # [Azure portal](#tab/portal)
 
-### Remove a system-assigned identity using the Azure portal
+### Remove a system-assigned identity by using the Azure portal
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-1. Select **Settings** > **Identity** in left pane of portal.
-1. In the **Identity** pane > **System assigned** tab:
+1. Select **Settings** > **Identity** in the left pane of the portal.
+1. In the **Identity** pane, under the **System assigned** tab:
     1. Move the **Status** slider to **Off**.
-    1. Select **Save**
-    1. In the pop-up window, select **Yes** to disable the system-assigned identity. The **Identity** pane reverts to same condition as before the addition of the system-assigned identity.
+    1. Select **Save**.
+    1. In the pop-up window, select **Yes** to disable the system-assigned identity. The **Identity** pane reverts to the same condition as before the addition of the system-assigned identity.
 
     ![System assigned identity off.](media/managed-identities/system-assigned-identity.png)
 
 # [C#](#tab/c-sharp)
 
-### Remove a system-assigned identity using C#
+### Remove a system-assigned identity by using C#
 
-Run the following to remove the system-assigned identity:
+Run the following code to remove the system-assigned identity:
 
 ```csharp
 var cluster = (await clusters.GetAsync(clusterName)).Value;
@@ -191,9 +191,9 @@ await cluster.UpdateAsync(WaitUntil.Completed, clusterPatch);
 
 # [Resource Manager template](#tab/arm)
 
-### Remove a system-assigned identity using an Azure Resource Manager template
+### Remove a system-assigned identity by using an Azure Resource Manager template
 
-Run the following to remove the system-assigned identity:
+Run the following code to remove the system-assigned identity:
 
 ```json
 {
@@ -204,17 +204,17 @@ Run the following to remove the system-assigned identity:
 ```
 
 > [!NOTE]
-> If the cluster had both system-assigned and user-assigned identities at the same time, following system-assigned identity removal, the `type` property will be `UserAssigned`
+> If the cluster has both system-assigned and user-assigned identities at the same time, after you remove the system-assigned identity, the `type` property is `UserAssigned`.
 
 ---
 
 ## Add a user-assigned identity
 
-Assign a user-assigned managed identity to your cluster. A cluster can have more than one user-assigned identity. Creating a cluster with a user-assigned identity requires an additional property to be set on the cluster. Add the user-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
+Assign a user-assigned managed identity to your cluster. A cluster can have more than one user-assigned identity. To create a cluster with a user-assigned identity, you need to set an additional property on the cluster. Add the user-assigned identity by using the Azure portal, C#, or Resource Manager template as detailed in the following sections.
 
 # [Azure portal](#tab/portal)
 
-### Add a user-assigned identity using the Azure portal
+### Add a user-assigned identity by using the Azure portal
 
 [!INCLUDE [user-assigned-identity](includes/user-assigned-identity.md)]
 
@@ -232,7 +232,7 @@ To set up a managed identity using the Azure Data Explorer C# client:
 
 #### Create or update your cluster
 
-1. Create or update your cluster using the `Identity` property:
+1. Create or update your cluster by using the `Identity` property:
 
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
@@ -260,13 +260,13 @@ To set up a managed identity using the Azure Data Explorer C# client:
     await clusters.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, clusterData);
     ```
 
-2. Run the following command to check if your cluster was successfully created or updated with an identity:
+1. Run the following command to check if you successfully created or updated your cluster with an identity:
 
     ```csharp
     clusterData = (await clusters.GetAsync(clusterName)).Value.Data;
     ```
 
-    If the result contains `ProvisioningState` with the `Succeeded` value, then the cluster was created or updated, and should have the following properties:
+    If the result contains `ProvisioningState` with the `Succeeded` value, then the cluster was created or updated, and has the following properties:
 
     ```csharp
     var userIdentity = clusterData.Identity.UserAssignedIdentities[userIdentityResourceId];
@@ -274,15 +274,15 @@ To set up a managed identity using the Azure Data Explorer C# client:
     var clientGuid = userIdentity.ClientId.GetValueOrDefault();
     ```
 
-    The `PrincipalId` is a unique identifier for the identity that's used for Microsoft Entra administration. The `ClientId` is a unique identifier for the application's new identity that's used for specifying which identity to use during runtime calls.
+    The `PrincipalId` is a unique identifier for the identity that Microsoft Entra administration uses. The `ClientId` is a unique identifier for the application's new identity that's used for specifying which identity to use during runtime calls.
 
 # [Resource Manager template](#tab/arm)
 
-### Add a user-assigned identity using an Azure Resource Manager template
+### Add a user-assigned identity by using an Azure Resource Manager template
 
-An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database.md?tabs=arm).
+You can use an Azure Resource Manager template to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database.md?tabs=arm).
 
-Any resource of type `Microsoft.Kusto/clusters` can be created with a user-assigned identity by including the following property in the resource definition, replacing `<RESOURCEID>` with the resource ID of the desired identity:
+You can create any resource of type `Microsoft.Kusto/clusters` with a user-assigned identity by including the following property in the resource definition. Replace `<RESOURCEID>` with the resource ID of the desired identity:
 
 ```json
 {
@@ -315,7 +315,7 @@ For example:
 }
 ```
 
-When the cluster is created, it has the following additional properties:
+When you create the cluster, it has the following additional properties:
 
 ```json
 {
@@ -331,35 +331,35 @@ When the cluster is created, it has the following additional properties:
 }
 ```
 
-The `PrincipalId` is a unique identifier for the identity that's used for Microsoft Entra administration. The `ClientId` is a unique identifier for the application's new identity that's used for specifying which identity to use during runtime calls.
+The `PrincipalId` is a unique identifier for the identity that Microsoft Entra administration uses. The `ClientId` is a unique identifier for the application's new identity that's used for specifying which identity to use during runtime calls.
 
 > [!NOTE]
-> A cluster can have both system-assigned and user-assigned identities at the same time. In this case, the `type` property would be `SystemAssigned,UserAssigned`.
+> A cluster can have both system-assigned and user-assigned identities at the same time. In this case, set the `type` property to `SystemAssigned,UserAssigned`.
 
 ---
 
 ## Remove a user-assigned managed identity from a cluster
 
-Remove the user-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
+Remove the user-assigned identity by using the Azure portal, C#, or Resource Manager template as detailed in the following section.
 
 # [Azure portal](#tab/portal)
 
-### Remove a user-assigned managed identity using the Azure portal
+### Remove a user-assigned managed identity by using the Azure portal
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-1. Select **Settings** > **Identity** in left pane of portal.
+1. Select **Settings** > **Identity** in the left pane of the portal.
 1. Select the **User assigned** tab.
 1. Search for the identity you created earlier and select it. Select **Remove**.
 
     ![Remove user assigned identity.](media/managed-identities/user-assigned-identity-remove.png)
 
-1. In the pop-up window, select **Yes** to remove the user-assigned identity. The **Identity** pane reverts to same condition as before the addition of the user-assigned identity.
+1. In the pop-up window, select **Yes** to remove the user-assigned identity. The **Identity** pane reverts to the same condition as before the addition of the user-assigned identity.
 
 # [C#](#tab/c-sharp)
 
-### Remove a user-assigned identity using C#
+### Remove a user-assigned identity by using C#
 
-Run the following to remove the user-assigned identity:
+Run the following code to remove the user-assigned identity:
 
 ```csharp
 var cluster = (await clusters.GetAsync(clusterName)).Value;
@@ -375,9 +375,9 @@ await cluster.UpdateAsync(WaitUntil.Completed, clusterUpdate);
 
 # [Resource Manager template](#tab/arm)
 
-### Remove a user-assigned identity using an Azure Resource Manager template
+### Remove a user-assigned identity by using an Azure Resource Manager template
 
-Run the following to remove the user-assigned identity:
+Run the following code to remove the user-assigned identity:
 
 ```json
 {
@@ -392,9 +392,9 @@ Run the following to remove the user-assigned identity:
 
 > [!NOTE]
 >
-> * To remove identities, set their values to null. All other existing identities won't be affected.
-> * To remove all user-assigned identities the `type` property would be `None`,
-> * If the cluster had both system-assigned and user-assigned identities at the same time, the `type` property would be `SystemAssigned,UserAssigned` with the identities to remove, or `SystemAssigned` to remove all user-assigned identities.
+> * Set the values of identities to null to remove them. This action doesn't affect other existing identities.
+> * Set the `type` property to `None` to remove all user-assigned identities.
+> * If the cluster has both system-assigned and user-assigned identities, set the `type` property to `SystemAssigned,UserAssigned` with the identities to remove, or set it to `SystemAssigned` to remove all user-assigned identities.
 
 ---
 
