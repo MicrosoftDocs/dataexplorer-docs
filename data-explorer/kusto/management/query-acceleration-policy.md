@@ -36,7 +36,7 @@ To enable query acceleration in the Fabric UI, see [Query acceleration over OneL
 
 ## Known issues
 
-* Data in the external delta table that's optimized with the [OPTIMIZE](/azure/databricks/sql/language-manual/delta-optimize) function will need to be reaccelearted.
+* Data in the external delta table that's optimized with the [OPTIMIZE](/azure/databricks/sql/language-manual/delta-optimize) function will need to be reaccelerated.
 * Frequent MERGE/UPDATE/DELETE operations in delta may result in reacceleration of the updated files. If you run these operations frequently where most of the files in the delta table are touched, this can be equivalent of reacceleration of the entire table.
 * The system assumes that all artifacts under the delta table directory have the same access level to the selected users. Different files having different access permissions under the delta table directory might result with unexpected behavior.
 
