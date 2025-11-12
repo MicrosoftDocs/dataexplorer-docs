@@ -33,7 +33,12 @@ The `workspace=<guid>` query parameter creates a separate workspace for the embe
 
 ### Create an app for authentication
 
-https://learn.microsoft.com/en-us/kusto/api/rest/authenticate-with-msal?view=azure-data-explorer#perform-single-page-application-spa-authentication
+- [Provision an app](https://learn.microsoft.com/en-us/kusto/api/rest/authenticate-with-msal?view=azure-data-explorer#perform-single-page-application-spa-authentication)
+
+
+- [Set up delegated permissions](https://learn.microsoft.com/en-us/kusto/access-control/provision-entra-id-app?view=azure-data-explorer&tabs=portal#configure-delegated-permissions-for-the-application---optional)
+
+<img width="791" height="793" alt="image" src="https://github.com/user-attachments/assets/9ee84c9e-f005-410d-965b-a1c5ec132726" />
 
 ### Handle authentication
 
