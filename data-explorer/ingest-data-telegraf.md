@@ -4,6 +4,7 @@ description: In this article, you learn how to ingest (load) data into Azure Dat
 ms.reviewer: miwalia
 ms.topic: how-to
 ms.date: 08/21/2025
+ms.custom: sfi-ropc-nochange
 
 #Customer intent: As an integration developer, I want to build integration pipelines from Telegraf into Azure Data Explorer, so I can make data available for near real-time analytics.
 ---
@@ -17,7 +18,7 @@ The Azure Data Explorer [ADX output plugin](https://github.com/influxdata/telegr
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Telegraf](https://portal.influxdata.com/downloads/). Host Telegraf in a virtual machine (VM) or container. Telegraf can be hosted locally where the app or service being monitored is deployed, or remotely on a dedicated monitoring compute/container.
 

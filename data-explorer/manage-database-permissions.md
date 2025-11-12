@@ -4,6 +4,7 @@ description: This article describes role-based access controls for databases and
 ms.reviewer: mblythe
 ms.topic: how-to
 ms.date: 06/06/2025
+ms.custom: sfi-image-nochange
 ---
 
 # Manage Azure Data Explorer database permissions in the Azure portal

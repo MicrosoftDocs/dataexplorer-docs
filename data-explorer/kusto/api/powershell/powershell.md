@@ -4,6 +4,7 @@ description: This article describes how to use Kusto .NET Client Libraries from 
 ms.reviewer: salevy
 ms.topic: reference
 ms.date: 02/02/2025
+ms.custom: sfi-ropc-nochange
 ---
 # Use Kusto .NET client libraries from PowerShell
 

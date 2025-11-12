@@ -3,8 +3,10 @@ title: Use follower database feature to attach databases in Azure Data Explorer
 description: Learn about how to attach databases in Azure Data Explorer using the follower database feature.
 ms.reviewer: gabilehner
 ms.topic: how-to
-ms.custom: devx-track-azurepowershell
 ms.date: 06/10/2025
+ms.custom:
+  - devx-track-azurepowershell
+  - sfi-image-nochange
 ---
 
 # Use follower databases
@@ -26,7 +28,7 @@ The following apply to clusters:
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database for the leader and follower. [Create a cluster and database](create-cluster-and-database.md).
 * The leader database should contain data. You can [ingest data](web-ui-samples-query.md) using one of the methods discussed in [ingestion overview](ingest-data-overview.md).
 

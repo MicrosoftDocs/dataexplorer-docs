@@ -1,16 +1,16 @@
 ---
-title: Data formats supported for ingestion
-description: Learn about the various data and compression formats supported for ingestion.
+title: Data Ingestion - Supported Formats and Compression
+description: Explore the various data formats like CSV, JSON, Parquet, and more, supported for ingestion. Understand compression options and best practices for data preparation.
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 08/11/2024
+ms.date: 10/29/2025
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Data formats supported for ingestion
 
 > [!INCLUDE [applies](includes/applies-to-version/applies.md)] [!INCLUDE [fabric](includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](includes/applies-to-version/azure-data-explorer.md)]
 
-Data ingestion is the process by which data is added to a table and is made available for query. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that is supported for data ingestion.
+Data ingestion adds data to a table and makes it available for query. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that are supported for data ingestion.
 
 > [!NOTE]
 > Before you ingest data, make sure that your data is properly formatted and defines the expected fields. We recommend using your preferred validator to confirm the format is valid. For example, you may find the following validators useful to check CSV or JSON files:
@@ -18,22 +18,23 @@ Data ingestion is the process by which data is added to a table and is made avai
 > * CSV: http://csvlint.io/
 > * JSON: https://jsonlint.com/
 
-For more information about why ingestion might fail, see [Ingestion failures](management/ingestion-failures.md) 
+To learn why ingestion might fail, see [Ingestion failures](management/ingestion-failures.md).
 ::: moniker range="azure-data-explorer"
-and  [Ingestion error codes in Azure Data Explorer](/azure/data-explorer/error-codes).
+and [Ingestion error codes in Azure Data Explorer](/azure/data-explorer/error-codes).
 ::: moniker-end
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
-|ApacheAvro|`.avro`    |An [AVRO](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/++version++/specification/#Logical+Types). The following compression codecs are supported: `null`, `deflate`, and `snappy`. Reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For information about ingesting Event Hub Capture Avro files, see [Ingesting Event Hub Capture Avro files](/azure/data-explorer/ingest-data-event-hub-overview#schema-mapping-for-event-hub-capture-avro-files). |
-|Avro     |`.avro`     |A legacy implementation for [AVRO](https://avro.apache.org/docs/current/) format based on [.NET library](https://www.nuget.org/packages/Microsoft.Hadoop.Avro). The following compression codecs are supported: `null`, `deflate` (for `snappy` - use `ApacheAvro` data format). |
+|ApacheAvro|`.avro`    |An [Avro](https://avro.apache.org/docs/current/) format that supports [logical types](https://avro.apache.org/docs/++version++/specification/#Logical+Types). Supported compression codecs: `null`, `deflate`, and `snappy`. The reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For details on ingesting Event Hubs Capture Avro files, see [Ingesting Event Hubs Capture Avro files](/azure/data-explorer/ingest-data-event-hub-overview#schema-mapping-for-event-hub-capture-avro-files). |
+|Avro     |`.avro`     |A legacy implementation of the [Avro](https://avro.apache.org/docs/current/) format based on the [.NET library](https://www.nuget.org/packages/Microsoft.Hadoop.Avro). Supported compression codecs: `null` and `deflate`. To use `snappy`, use the `ApacheAvro` data format. |
+|AzMonStream     |N/A     |Azure Monitor [exports data in this format](/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#data-formats) to Azure Event Hubs.  This format is supported only by Azure Event Hubs. |
 |CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
-|MultiJSON|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n` or `\r\n`. Each property bag can be spread on multiple lines.|
+|MultiJSON|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n`, or `\r\n`. Each property bag can span multiple lines.|
 |ORC      |`.orc`      |An [ORC file](https://en.wikipedia.org/wiki/Apache_ORC).|
 |Parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet). |
 |PSV      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>). |
-|RAW      |`.raw`      |A text file whose entire contents is a single string value. |
+|RAW      |`.raw`      |A text file whose entire contents are a single string value. |
 |SCsv     |`.scsv`     |A text file with semicolon-separated values (`;`).|
 |SOHsv    |`.sohsv`    |A text file with SOH-separated values. (SOH is ASCII codepoint 1; this format is used by Hive on HDInsight.)|
 |TSV      |`.tsv`      |A text file with tab-separated values (`\t`).|
@@ -43,42 +44,42 @@ and  [Ingestion error codes in Azure Data Explorer](/azure/data-explorer/error-c
 
 > [!NOTE]
 >
-> * Ingestion from data storage systems that provide ACID functionality on top of regular Parquet format files (e.g. Apache Iceberg, Apache Hudi, Delta Lake) is not supported.
-> * Schema-less Avro is not supported.
+> * Ingestion from data storage systems that provide ACID functionality on top of regular Parquet format files (for example, Apache Iceberg, Apache Hudi, and Delta Lake) isn't supported.
+> * Schemaless Avro isn't supported.
 
 ::: moniker range="azure-data-explorer"
-For more info on ingesting data using `json` or `multijson` formats, see [ingest json formats](/azure/data-explorer/ingest-json-formats).
+For more information about ingesting data by using the `json` or `multijson` formats, see [Ingest JSON formats](/azure/data-explorer/ingest-json-formats).
 ::: moniker-end
 
 ## Supported data compression formats
 
-Blobs and files can be compressed through any of the following compression algorithms:
+Compress blobs and files with these algorithms:
 
 |Compression|Extension|
 |-----------|---------|
 |gzip       |.gz      |
 |zip        |.zip     |
 
-Indicate compression by appending the extension to the name of the blob or file.
+Indicate compression by appending the extension to the blob or file name.
 
 For example:
 
-* `MyData.csv.zip` indicates a blob or a file formatted as CSV, compressed with zip (archive or a single file)
-* `MyData.json.gz` indicates a blob or a file formatted as JSON, compressed with gzip.
+* `MyData.csv.zip` indicates a blob or file formatted as CSV, compressed with zip (archive or single file).
+* `MyData.json.gz` indicates a blob or file formatted as JSON, compressed with gzip.
 
-Blob or file names that don't include the format extensions but just compression (for example, `MyData.zip`) is also supported. In this case, the file format
-must be specified as an ingestion property because it cannot be inferred.
+Blob or file names that include only the compression extension (for example, `MyData.zip`) are also supported. In this case, specify the file format
+as an ingestion property because it can't be inferred.
 
 > [!NOTE]
 >
-> * Some compression formats keep track of the original file extension as part of the compressed stream. This extension is generally ignored for determining the file format. If the file format can't be determined from the (compressed) blob or file name, it must be specified through the `format` ingestion property.
-> * Not to be confused with internal (chunk level) compression codec used by `Parquet`, `AVRO` and `ORC` formats. Internal compression name is usually added to a file name before file format extension, for example: `file1.gz.parquet`, `file1.snappy.avro`, etc.
-> * [Deflate64/Enhanced Deflate](https://en.wikipedia.org/wiki/Deflate#Deflate64/Enhanced_Deflate) zip compression method is not supported. Please note that Windows built-in zip compressor may choose to use this compression method on files of size over 2GB.
+> * Some compression formats store the original file extension in the compressed stream. Ignore this extension when you determine the file format. If you can't determine the file format from the compressed blob or file name, specify it with the `format` ingestion property.
+> * Don't confuse these with internal chunk-level compression codecs used by `Parquet`, `AVRO`, and `ORC` formats. The internal compression name is usually added before the file format extension (for example, `file1.gz.parquet`, `file1.snappy.avro`).
+> * The [Deflate64/Enhanced Deflate](https://en.wikipedia.org/wiki/Deflate#Deflate64/Enhanced_Deflate) zip compression method isn't supported. Windows built-in zip compressor can use this method on files larger than 2 GB.
 
 ## Related content
 
-* Learn more about [supported data formats](ingestion-supported-formats.md)
-* Learn more about [Data ingestion properties](ingestion-properties.md)
+* [Supported data formats](ingestion-supported-formats.md)
+* [Data ingestion properties](ingestion-properties.md)
 ::: moniker range="azure-data-explorer"
-* Learn more about [data ingestion](/azure/data-explorer/ingest-data-overview)
+* [Data ingestion](/azure/data-explorer/ingest-data-overview)
 ::: moniker-end

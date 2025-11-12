@@ -4,6 +4,7 @@ description: 'In this topic, use Azure Data Explorer management commands in Azur
 ms.reviewer: tzgitlin
 ms.topic: how-to
 ms.date: 09/13/2023
+ms.custom: sfi-image-nochange
 
 #Customer intent: I want to use Azure Data Explorer management commands in Azure Data Factory.
 ---
@@ -14,7 +15,7 @@ ms.date: 09/13/2023
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A source of data.
 * A data factory. [Create a data factory](data-factory-load-data.md#create-a-data-factory).

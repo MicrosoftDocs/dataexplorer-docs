@@ -3,6 +3,7 @@ title: Create an Event Grid data connection - Azure Data Explorer
 description: Learn how to create an Event Grid data connection to ingest data into Azure Data Explorer.
 ms.topic: how-to
 ms.date: 06/10/2025
+ms.custom: sfi-ropc-nochange
 ---
 
 # Create an Event Grid data connection for Azure Data Explorer
@@ -21,7 +22,7 @@ For general information about ingesting into Azure Data Explorer from Event Grid
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
 * An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.

@@ -5,6 +5,7 @@ ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 03/09/2025
 monikerRange: "microsoft-fabric"
+ms.custom: sfi-ropc-nochange
 ---
 # .show table policy mirroring command
 

@@ -5,6 +5,7 @@ ms.reviewer: miwalia
 ms.topic: reference
 ms.date: 07/30/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"
+ms.custom: sfi-ropc-nochange
 ---
 # cosmosdb_sql_request plugin
 

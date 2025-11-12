@@ -4,6 +4,7 @@ description: In this article, you learn to use an Azure Data Factory template to
 ms.reviewer: tzgitlin
 ms.topic: how-to
 ms.date: 09/08/2019
+ms.custom: sfi-image-nochange
 
 #Customer intent: I want to use Azure Data Factory template to copy large amounts of data from a database to Azure Data Explorer.
 ---
@@ -25,7 +26,7 @@ You create the *Bulk Copy from Database to Azure Data Explorer* template by usin
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A data factory. [Create a data factory](data-factory-load-data.md#create-a-data-factory).
 * A source of data.

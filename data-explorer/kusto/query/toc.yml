@@ -1325,6 +1325,16 @@ items:
               - name: node_degree_out()
                 displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
                 href: node-degree-out.md
+      - name: Visualization
+        items:
+          - name: Overview
+            href: graph-visualization-overview.md
+          - name: Kusto Explorer
+            href: graph-visualization-kusto-explorer.md
+          - name: Graphistry
+            href: graph-visualization-graphistry.md
+          - name: Custom visualization
+            href: graph-visualization-custom.md
       - name: Scenarios
         href: graph-scenarios.md
       - name: Best practices
@@ -1339,6 +1349,8 @@ items:
                 href: graph-query-language-reference.md
               - name: GQL examples and use cases
                 href: graph-query-language-use-cases.md
+          - name: openCypher
+            href: opencypher-graph-query-language.md
   - name: Geospatial
     items:
       - name: Geospatial clustering

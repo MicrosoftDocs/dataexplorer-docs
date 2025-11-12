@@ -5,6 +5,7 @@ ms.reviewer: izlisbon
 ms.topic: how-to
 ms.date: 08/11/2024
 monikerRange: "azure-data-explorer || microsoft-fabric"
+ms.custom: sfi-ropc-nochange
 ---
 # Integrate the Monaco Editor with Kusto Query Language support in your app
 

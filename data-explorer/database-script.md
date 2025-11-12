@@ -4,7 +4,7 @@ description: Learn about how to use database script to run a Kusto Query Languag
 ms.reviewer: docohe
 ms.topic: how-to
 ms.custom: devx-track-bicep
-ms.date: 02/16/2024
+ms.date: 09/28/2025
 ---
 # Configure a database using a Kusto Query Language script
 
@@ -47,7 +47,7 @@ Notice the two commands are idempotent. When first run, they create the tables, 
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
 ## Security

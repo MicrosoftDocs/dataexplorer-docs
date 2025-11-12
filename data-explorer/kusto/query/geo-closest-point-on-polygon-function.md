@@ -75,7 +75,6 @@ print geo_closest_point_on_polygon(-73.9839, 40.7705, central_park)
 |---|
 |{"type": "Point","coordinates": [-73.981205580153926, 40.769359452843211] }|
 
-
 The following example returns a null result because of the invalid coordinate input.
 
 :::moniker range="azure-data-explorer"

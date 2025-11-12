@@ -27,7 +27,7 @@ To use GQL, you need:
 - A graph data source that's either a [graph model](graph-operators.md) or a function returning a transient graph ending with a [make-graph](make-graph-operator.md) operator (see step 1).
 - Set specific client request properties (see step 2).
 
-## Step 1: Create a graph reference
+### Step 1: Create a graph reference
 
 Before you use GQL, create a graph data source. This article uses an in-memory make-graph operator, but we recommend using a graph snapshot for production scenarios.
 
@@ -76,7 +76,7 @@ Before you use GQL, create a graph data source. This article uses an in-memory m
 }
 ```
 
-## Step 2: Configure client request properties
+### Step 2: Configure client request properties
 
 ::: moniker range="azure-data-explorer"
 To run GQL queries, set three client request properties. Set these properties through the SDK, API, or directly in the [Kusto Explorer](../tools/kusto-explorer.md) or [Azure Data Explorer web  UI](/azure/data-explorer/web-ui-query-overview) by using directives.
@@ -85,7 +85,7 @@ To run GQL queries, set three client request properties. Set these properties th
 To run GQL queries, set three client request properties. Set these properties through the SDK, API, or directly in the [Kusto Explorer](../tools/kusto-explorer.md) or [KQL queryset](/fabric/real-time-intelligence/kusto-query-set) by using directives.
 ::: moniker-end
 
-### Set client request properties
+#### Set client request properties
 
 > [!IMPORTANT]
 > Run each directive separately before you run your GQL query. The directives set up the query environment for GQL execution.
@@ -110,7 +110,7 @@ To use labels in GQL, set the label column name:
 > [!TIP]
 > Labels are optional in GQL, but they're often used to filter nodes and edges by type. Set the label column name to use labels in your GQL queries.
 
-### Set client request properties in programmatically
+#### Set client request properties in programmatically
 
 For programmatic access, set these client request properties:
 
@@ -118,7 +118,7 @@ For programmatic access, set these client request properties:
 - `query_graph_reference`: Set to your graph function name (for example, `"G_doc()"`).
 - `query_graph_label_name`: Set to your label column name (for example, `"lbl"`).
 
-## Step 3: Run GQL queries
+### Step 3: Run GQL queries
 
 After you finish setup, run GQL queries using standard GQL syntax. Use the examples below to explore basic and advanced GQL features.
 

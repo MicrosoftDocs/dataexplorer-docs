@@ -1,45 +1,48 @@
 ---
 title: Azure DevOps task for Azure Data Explorer
-description: In this article, you learn to create a release pipeline and deploy your schema changes to your database.
+description: Create a release pipeline and deploy schema changes to your database.
 ms.reviewer: shfeldma
 ms.topic: how-to
-ms.date: 07/17/2024
+ms.date: 09/28/2025
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 
 #Customer intent: I want to use Azure DevOps to create a release pipeline and deploy
 ---
 
-# Azure DevOps Task for Azure Data Explorer
+# Azure DevOps task for Azure Data Explorer
 
 [Azure DevOps Services](https://azure.microsoft.com/services/devops/) provides development collaboration tools such as high-performance pipelines, free private Git repositories, configurable Kanban boards, and extensive automated and continuous testing capabilities. [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) is an Azure DevOps capability that enables you to manage CI/CD to deploy your code with high-performance pipelines that work with any language, platform, and cloud.
-[Azure Data Explorer - Pipeline Tools](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
-This extension includes the following basic tasks:
+[Azure Data Explorer - Pipeline Tools](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It is available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
+The extension includes the following basic tasks:
 
-* Azure Data Explorer Command - Run Admin Commands against an Azure Data Explorer cluster
-* Azure Data Explorer Query - Run Queries against an Azure Data Explorer cluster and parse the results
-* Azure Data Explorer Query Server Gate - Agentless task to Gate releases depending on the query outcome
+* Azure Data Explorer command - Run admin commands against an Azure Data Explorer cluster
+* Azure Data Explorer query - Run queries against an Azure Data Explorer cluster and parse the results
+* Azure Data Explorer query server gate - Agentless task to gate releases depending on the query outcome
 
-    :::image type="content" source="media/devops/extension-task-types.png" alt-text="Screenshot of the task types available in the Pipeline Tools extension.":::
+    :::image type="content" source="media/devops/extension-task-types.png" alt-text="Screenshot of task types available in the Pipeline Tools extension.":::
 
-This document describes a simple example on the use of the **Azure Data Explorer - Pipeline Tools** task to deploy your schema changes to your database. For complete CI/CD pipelines, refer to [Azure DevOps documentation](/azure/devops/user-guide/what-is-azure-devops#vsts).
+This document describes a simple example of using the **Azure Data Explorer - Pipeline Tools** task to deploy schema changes to your database. For complete CI/CD pipelines, refer to [Azure DevOps documentation](/azure/devops/user-guide/what-is-azure-devops#vsts).
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Azure Data Explorer cluster setup:
-    * Create Microsoft Entra app by [provisioning a Microsoft Entra application](provision-entra-id-app.md).
-    * Grant access to your Microsoft Entra App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
+  * Create Microsoft Entra app by [provisioning a Microsoft Entra application](provision-entra-id-app.md).
+  * Grant access to your Microsoft Entra App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
 * Azure DevOps setup:
-    * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates).
-    * [Create an organization](/azure/devops/organizations/accounts/create-organization).
-    * [Create a project in Azure DevOps](/azure/devops/organizations/projects/create-project).
-    * [Code with Git](/azure/devops/user-guide/code-with-git).
+  * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates).
+  * [Create an organization](/azure/devops/organizations/accounts/create-organization).
+  * [Create a project in Azure DevOps](/azure/devops/organizations/projects/create-project).
+  * [Code with Git](/azure/devops/user-guide/code-with-git).
 * Extension Installation:
-    * If you're the Azure DevOps instance owner, install the extension from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX), otherwise contact your Azure DevOps instance [owner](/azure/devops/organizations/security/look-up-organization-owner) and ask them to install it.
+  * If you're the Azure DevOps instance owner, install the extension from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX), otherwise contact your Azure DevOps instance [owner](/azure/devops/organizations/security/look-up-organization-owner) and ask them to install it.
 
-        :::image type="content" source="media/devops/get-extension.png" alt-text="Screenshot of getting the Pipeline Tools extension in the Visual Studio Marketplace.":::
+    :::image type="content" source="media/devops/get-extension.png" alt-text="Screenshot of getting the Pipeline Tools extension in the Visual Studio Marketplace.":::
 
-        :::image type="content" source="media/devops/extension-install.png" alt-text="Screenshot of installing the Pipeline Tools extension from the Visual Studio Marketplace.":::
+    :::image type="content" source="media/devops/extension-install.png" alt-text="Screenshot of installing the Pipeline Tools extension from the Visual Studio Marketplace.":::
 
 ## Prepare your content for release
 
@@ -47,29 +50,29 @@ You can use the following methods to execute admin commands against a cluster wi
 
 :::image type="content" source="media/devops/source-control-options.png" alt-text="Screenshot showing the command source control options.":::
 
-* Use a search pattern to get multiple command files from a local agent folder (Build sources or Release artifacts)
+* Use a search pattern to get multiple command files from a local agent folder (build sources or release artifacts).
 
     :::image type="content" source="media/devops/local-folder-option.png" alt-text="Screenshot showing  the local folder option.":::
 
-* Write commands inline
+* Write commands inline.
 
     :::image type="content" source="media/devops/inline-option.png" alt-text="Screenshot showing the inline command option.":::
 
-* Specify a file path to get command files directly from git source control (recommended)
+* Specify a file path to get command files directly from Git source control (recommended).
 
     :::image type="content" source="media/devops/git-option.png" alt-text="Screenshot showing git source control files option.":::
 
-    Create the following sample folders (*Functions*, *Policies*, *Tables*) in your Git repository. Copy the files from [the samples repo](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline) into the respective folders and commit the changes. The sample files are provided to execute the following workflow.
+    Create the following sample folders (*Functions*, *Policies*, *Tables*) in your Git repository. Copy the files from [the samples repo](https://github.com/Azure/azure-kusto-docs-samples/tree/master/DevOps_release_pipeline) into the respective folders, and commit the changes. The sample files are provided to execute the following workflow.
 
     :::image type="content" source="media/devops/create-folders.png" alt-text="Screenshot showing the folders to create in the repo.":::
 
     > [!TIP]
-    > When creating your own workflow, we recommend making your code idempotent. For example, use [`.create-merge table`](/kusto/management/create-merge-table-command?view=azure-data-explorer&preserve-view=true) instead of [`.create table`](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true), and use [`.create-or-alter`](/kusto/management/create-alter-function?view=azure-data-explorer&preserve-view=true) function instead of [`.create`](/kusto/management/create-function?view=azure-data-explorer&preserve-view=true) function.
+    > When creating your own workflow, we recommend making your code idempotent. For example, use [`.create-merge table`](/kusto/management/create-merge-table-command?view=azure-data-explorer&preserve-view=true) instead of [`.create table`](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true), and use the [`.create-or-alter`](/kusto/management/create-alter-function?view=azure-data-explorer&preserve-view=true) function instead of the [`.create`](/kusto/management/create-function?view=azure-data-explorer&preserve-view=true) function.
 
 ## Create a release pipeline
 
 1. Sign in to your [Azure DevOps organization](https://dev.azure.com/).
-1. Select **Pipelines** > **Releases** from left-hand menu and select **New pipeline**.
+1. Select **Pipelines** > **Releases** from the left-hand menu, and then select **New pipeline**.
 
     :::image type="content" source="media/devops/new-pipeline.png" alt-text="Screenshot showing how to start a new pipeline.":::
 
@@ -77,7 +80,7 @@ You can use the following methods to execute admin commands against a cluster wi
 
     :::image type="content" source="media/devops/select-template.png" alt-text="Screenshot showing how to select a template.":::
 
-1. Select **Stage** button. In **Stage** pane, add the **Stage name**. Select **Save** to save your pipeline.
+1. Select the **Stage** button. In the **Stage** pane, add the **Stage name**, and then select **Save** to save your pipeline.
 
     :::image type="content" source="media/devops/stage-name.png" alt-text="Screenshot showing how to name the pipeline stage.":::
 
@@ -85,7 +88,7 @@ You can use the following methods to execute admin commands against a cluster wi
 
     :::image type="content" source="media/devops/add-artifact.png" alt-text="Screenshot showing how to add an artifact.":::
 
-1. In the **Variables** tab, select **+ Add** to create a variable for **Endpoint URL** that is used in the task. Write the **Name** and the **Value** of the endpoint. Select **Save** to save your pipeline.
+1. In the **Variables** tab, select **+ Add** to create a variable for **Endpoint URL** used in the task. Enter the **Name** and **Value** of the endpoint, and then select **Save** to save your pipeline.
 
     :::image type="content" source="media/devops/create-variable.png" alt-text="Screenshot showing how to create a pipeline variable.":::
 
@@ -95,7 +98,7 @@ You can use the following methods to execute admin commands against a cluster wi
 
 ### Create a task deploy the folders
 
-1. In the **Pipeline** tab, select on **1 job, 0 task** to add tasks.
+1. In the **Pipeline** tab, select **1 job, 0 task** to add tasks.
 
     :::image type="content" source="media/devops/add-task.png" alt-text="Screenshot showing adding a task to the pipeline.":::
 
@@ -125,7 +128,7 @@ You can use the following methods to execute admin commands against a cluster wi
 
         :::image type="content" source="media/devops/add-service-endpoint.png" alt-text="Screenshot showing how to add a service connection.":::
 
-1. Select **Save** and then in the **Tasks** tab, verify that there are three tasks: **Deploy Tables**, **Deploy Functions**, and **Deploy Policies**.
+1. Select **Save**, and then in the **Tasks** tab, verify that there are three tasks: **Deploy Tables**, **Deploy Functions**, and **Deploy Policies**.
 
     :::image type="content" source="media/devops/deploy-all-folders.png" alt-text="Screenshot showing how to deploy all folders.":::
 
@@ -186,7 +189,7 @@ If necessary, create a task to run a query against a cluster and gate the releas
 
 ### Run the release
 
-1. Select **+ Release** > **Create release** to create a release.
+1. Select **+ Release** > **Create release** to start a release.
 
     :::image type="content" source="media/devops/create-release.png" alt-text="Screenshot showing how to create a release.":::
 
@@ -198,7 +201,7 @@ Now the creation of a release pipeline for deployment to preproduction is comple
 
 ## Keyless authentication support for Azure Data Explorer DevOps tasks
 
-The extension supports keyless authentication for Azure Data Explorer clusters. Keyless authentication allows you to authenticate to Azure Data Explorer clusters without using a key and is more secure and easier to manage than using a key.
+The extension supports keyless authentication for Azure Data Explorer clusters. Keyless authentication lets you authenticate to Azure Data Explorer clusters without using a key. It's more secure and easier to manage.
 
 ### Use Federated Identity Credentials (FIC) authentication in an Azure Data Explorer service connection
 
@@ -219,7 +222,7 @@ The extension supports keyless authentication for Azure Data Explorer clusters. 
     * **Subject identifier**: `<sc://{DevOps_Org_name}/{Project_Name}/{Service_Connection_Name}>` where `{DevOps_Org_name}` is the Azure DevOps organization name, `{Project_Name}` is the project name, and `{Service_Connection_Name}` is the service connection name you created earlier.
 
         > [!NOTE]
-        > If there is space in your service connection name, you can using it with space in the field. For example: `sc://MyOrg/MyProject/My Service Connection`.
+        > If there is space in your service connection name, you can use it with the space in the field. For example: `sc://MyOrg/MyProject/My Service Connection`.
 
     * **Name**: Enter a name for the credential.
 
@@ -233,17 +236,17 @@ The extension supports keyless authentication for Azure Data Explorer clusters. 
 
     :::image type="content" source="media/devops/resource-new.png" alt-text="Screenshot showing how to add an Azure Resource Monitor service connection.":::
 
-1. Under **Authentication method**, select **Workload Identity Federation (automatic)**. Alternatively, you can use the manual **Workload Identity Federation (manual)** option to specify the Workload Identity Federation details, or use the **Managed Identity** option. For more information about setting up a managed identity using Azure Resource Management, see [Azure Resource Manager (ARM) Service Connections](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops&preserve-view=true).
+1. Under **Authentication method**, select **Workload Identity Federation (automatic)** to proceed. You can also use the manual **Workload Identity Federation (manual)** option to specify the Workload Identity Federation details or the **Managed Identity** option. Learn more about setting up a managed identity using Azure Resource Management in [Azure Resource Manager (ARM) Service Connections](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops&preserve-view=true).
 
     :::image type="content" source="media/devops/resource-types.png" alt-text="Screenshot showing the authentication option for an Azure Resource Monitor service connection":::
 
 1. Fill out the required details, select **Verify**, and then select **Save**.
 
-## Yaml Pipeline configuration
+## Yaml pipeline configuration
 
-The tasks can be configured both via Azure DevOps Web UI and via Yaml code within the [pipeline schema](/azure/devops/pipelines/yaml-schema).
+You can configure tasks using the Azure DevOps web UI or YAML code within the [pipeline schema](/azure/devops/pipelines/yaml-schema).
 
-### Admin command sample usage
+### Admin command sample
 
 ```yaml
 steps:
@@ -257,11 +260,11 @@ steps:
     authType: 'armserviceconn'
     connectedServiceARM: '<ARM Service Endpoint Name>'
     serialDelay: 1000
-  continueOnError: true
+  `continueOnError: true`
   condition: ne(variables['ProductVersion'], '') ## Custom condition Sample
 ```
 
-### Query sample usage
+### Query sample
 
 ```yaml
 steps:
@@ -290,7 +293,7 @@ steps:
      | summarize by Cluster , CmConnectionString , ServiceConnectionString ,DeploymentRing
      | extend ServiceConnectionString = strcat("#connect ", ServiceConnectionString)
      | where DeploymentRing == "$(DeploymentRing)"
-    kustoUrls: 'https://<ClusterName>.kusto.windows.net?DatabaseName=<DataBaneName>'
+    kustoUrls: 'https://<ClusterName>.kusto.windows.net?DatabaseName=<DatabaseName>'
     authType: 'kustoserviceconn'
     connectedServiceName: '<connection service name>'
     minThreshold: '0'

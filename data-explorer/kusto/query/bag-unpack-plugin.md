@@ -40,7 +40,7 @@ Use a wildcard `*` as the first parameter to include all columns of the source t
 
 Using the plugin without an *OutputSchema* can have severe performance implications in large datasets and should be avoided.
 
-Providing an *OutputSchema* allows the query engine to optimize the query execution, as it can determine the output schema without needing to parse and analyze the input data. This is beneficial when the input data is large or complex. See the [Examples with performance implications](#examples-with-performance-implications) of using the plugin with and without a defined *OutputSchema*.
+Providing an *OutputSchema* allows the query engine to optimize the query execution, as it can determine the output schema without needing to parse and analyze the input data. OutputSchema is beneficial when the input data is large or complex. See the [Examples with performance implications](#examples-with-performance-implications) of using the plugin with and without a defined *OutputSchema*.
 
 ## Returns
 
@@ -87,7 +87,7 @@ datatable(d:dynamic)
 
 **Output**
 
-|Age|Name   |
+|`Age`|`Name`|
 |---|-------|
 |20 |John   |
 |40 |Dave   |
@@ -112,7 +112,7 @@ datatable(d:dynamic)
 
 **Output**
 
-|Property_Age|Property_Name|
+|`Property_Age`|`Property_Name`|
 |------------|-------------|
 |20          |John         |
 |40          |Dave         |
@@ -122,49 +122,49 @@ datatable(d:dynamic)
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43NsQrCMBAG4L1PcWRJC4WKOhUcRKcOOjmJlGty1mKalCapiPrupgq69m66/+fjJLqwlaJ4hy3l1vWNrlOQubxrbBuRRMcIwvC9kmVIiIfyW8UPNhqWAyvMRbMU2LoO53z2StIJaIsD/dByIirQto3+u8XHnaIn0IDKoyOosC697lBcY5mCMMq32m6MPqtGuBXvqVMoqLTG94J4AlkGB0ug6Qbj2zdNIgveEgEAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NvQrCQBCE%2BzzFcs0lEIioVcBC1MbCwlZENndrPLyfkEuUoL67pwlq4W61M%2FPNSmzCFpriDRrKfVMrW6Ygc9lZNEok0S6CMHwdbM%2BD0%2Bvxjb0AlgNbu5NlKbB5Gc7x6JGkPbHEi5K%2FxBCZfiMro3T3vxS9UZY%2BvZM3tI%2FuQBfULTYEBZaH1lYozrFMQTjdGusXzh61Es2M11RpFHTwrq0F8QSyDLa9Bk7LAYDXQyg6sHQdpCe%2BP4r7EwEAAA%3D%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 datatable(Name:string, d:dynamic)
 [
-    'Old_name', dynamic({"Name": "John", "Age":20}),
-    'Old_name', dynamic({"Name": "Dave", "Age":40}),
-    'Old_name', dynamic({"Name": "Jasmine", "Age":30}),
+    'James', dynamic({"Name": "John", "Age":20}),
+    'David', dynamic({ "Age":40}),
+    'Emily', dynamic({"Name": "Jasmine", "Age":30}),
 ]
-| evaluate bag_unpack(d, columnsConflict='replace_source') // Use new name
+| evaluate bag_unpack(d, columnsConflict='replace_source') // Replace old column Name by new column
 ```
 
 **Output**
 
-|Age|Name   |
-|---|-------|
-|20 |John   |
-|40 |Dave   |
-|30 |Jasmine|
+|`Name`|`Age`|
+|---|---|
+|John |20 |
+| |40 |
+|Jasmine |30 |
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43NzwqCQBAG8LtPMexlFQSjOgkdok4G9QARMu5OJu4fcV0hqndvLairM6f5Pn6MxCFspSg+oqbcDX1j6hRkLu8GdSOS6BxBGH5SsgwJ8VB+q/jBJsNyYIW9GZYC29bhXC5eSToD7XGkH1rPRAU63Zi/W33cJXoCjag8DgQV1qU3HYo2likIq7w2bmfNVTVi2PCWqCud9b0gnkCWwSEEYJWE6ekb9wh0nRABAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NTQuCQBCG7%2F6KYS8qCEZ1EjpEdTHoD0TIuLvZ4n6IuwpS%2FffWjLw4c5r3mYeXofNbSh5dUPHMulboKgGWsUGjEjQOrgH4CXOPbejJlEdPMgokA5KbhyYJkH3lz%2FXqHSeTccResEXDE%2F43trNxUkIOyx1oldCztPlKt%2BAFvEfZoeNQYlV0ukFaRywBamSntD0YfZeCul1Yc94U1nQt5WEMaQpnH4CR7PcKY9UH85pLnw4BAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 datatable(Name:string, d:dynamic)
 [
-    'Old_name', dynamic({"Name": "John", "Age":20}),
-    'Old_name', dynamic({"Name": "Dave", "Age":40}),
-    'Old_name', dynamic({"Name": "Jasmine", "Age":30}),
+    'James', dynamic({"Name": "John", "Age":20}),
+    'David', dynamic({"Name": "Dave", "Age":40}),
+    'Emily', dynamic({"Name": "Jasmine", "Age":30}),
 ]
-| evaluate bag_unpack(d, columnsConflict='keep_source') // Keep old name
+| evaluate bag_unpack(d, columnsConflict='keep_source') // Keep old column Name
 ```
 
 **Output**
 
-|Age|Name     |
-|---|---------|
-|20 |Old_name |
-|40 |Old_name |
-|30 |Old_name |
+|`Name`|`Age`|
+|---|--|
+|James |20 |
+|David |40 |
+|Emily |30 |
 
 **Expand a bag and use the `ignoredProperties` option to ignore 2 of the properties in the property bag**:
 
@@ -186,7 +186,7 @@ datatable(d:dynamic)
 
 **Output**
 
-|Name|
+|`Name`|
 |---|
 |John|
 |Dave|
@@ -196,26 +196,26 @@ datatable(d:dynamic)
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjRSrlMq8xNzMZE2uaC4FIIByNaqV/BJzU5WsFJS88jPylHQUlBzTgVwjg1pNHRwKXRLLUuEKTfAo9Eoszs3MQ6g1BquN5apRSC1LzClNLElVSEpMjy/NK0hMztZI0VSwUtAA6bUqLinKzEvXUQDqssrJz0vXBADtklvGyQAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjRSrlMq8xNzMZE2uaC4FIIByNaqV%2FBJzU5WsFJS88jPylHQUlBzTgVwjg1pNHVSFCnCVLollqSCVHqmZ6RklQBFDcwOYRhNMjQgbEotzM%2FNS4ZYYg9XGctUopJYl5pQmlqQqJCWmx5fmFSQmZ2ukaAIA%2Fh1sgL8AAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 datatable(d:dynamic)
 [
     dynamic({"Name": "John", "Age":20}),
-    dynamic({"Name": "Dave", "Age":40}),
+    dynamic({ "Name": "Dave", "Height": 170, "Age":40}),
     dynamic({"Name": "Jasmine", "Age":30}),
 ]
-| evaluate bag_unpack(d) : (Name:string, Age:long)
+| evaluate bag_unpack(d)
 ```
 
 **Output**
 
-|Name  |Age  |
-|---------|---------|
-|John     |  20  |
-|Dave     |  40  |
-|Jasmine  |  30  |
+|`Age` |`Height` |`Name` |
+|--|--|--|
+| 20 | | John |  
+| 40 | 170 | Dave |
+| 30 | | Jasmine |
 
 **Expand a bag with an *OutputSchema* and use the wildcard `*` option**:
 
@@ -238,7 +238,7 @@ datatable(d:dynamic, Description: string)
 
 **Output**
 
-|Description|Name|Age|
+|Description|`Name`|`Age`|
 |---|---|---|
 |Student|John|20|
 |Teacher|Dave|40|
@@ -282,8 +282,9 @@ datatable(d:dynamic, Description: string)
 
 The output is the same for both queries. The first 10 rows of the output are shown below.
 
-| Canada | British Columbia | 56,101,083 |
+|`Country/Region`|`State`|`Sales`|
 |--|--|--|
+| Canada | British Columbia | 56,101,083 |
 | United Kingdom | England | 77,288,747 |
 | Australia | Victoria | 31,242,423 |
 | Australia | Queensland | 27,617,822 |
@@ -299,3 +300,4 @@ The output is the same for both queries. The first 10 rows of the output are sho
 
 * [parse_json function](./parse-json-function.md)
 * [mv-expand operator](./mv-expand-operator.md)
+* [pack-all function](./pack-all-function.md)

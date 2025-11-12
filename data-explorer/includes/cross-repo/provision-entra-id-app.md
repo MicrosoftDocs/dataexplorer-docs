@@ -1,6 +1,9 @@
 ---
 ms.topic: include
 ms.date: 02/05/2024
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ---
 ## Create Microsoft Entra application registration
 

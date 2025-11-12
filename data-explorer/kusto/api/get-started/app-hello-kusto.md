@@ -5,6 +5,7 @@ ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 11/28/2024
 monikerRange: "azure-data-explorer"
+ms.custom: sfi-ropc-nochange
 #customer intent: To learn about creating a simple app that prints Hello Kusto using Kusto client libraries.
 ---
 # Hello Kusto: Create your first app

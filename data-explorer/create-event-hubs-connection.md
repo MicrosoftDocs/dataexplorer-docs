@@ -2,8 +2,9 @@
 title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: Learn how to ingest data from Event Hubs into Azure Data Explorer.
 ms.topic: how-to
-ms.custom:
 ms.date: 08/26/2025
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer
@@ -115,7 +116,7 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 ### Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
 * An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.
@@ -149,7 +150,7 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 ### Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
 * An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.
@@ -212,7 +213,7 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 ### Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A destination table. [Create a table](/kusto/management/create-table-command?view=azure-data-explorer&preserve-view=true) or use an existing table.
 * An [ingestion mapping](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) for the table.

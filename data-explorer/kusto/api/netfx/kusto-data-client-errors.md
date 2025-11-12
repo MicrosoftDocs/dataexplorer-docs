@@ -4,6 +4,7 @@ description: This article describes Kusto.Data exceptions.
 ms.reviewer: yogilad
 ms.topic: reference
 ms.date: 08/11/2024
+ms.custom: sfi-ropc-nochange
 ---
 # Kusto.Data exceptions
 
