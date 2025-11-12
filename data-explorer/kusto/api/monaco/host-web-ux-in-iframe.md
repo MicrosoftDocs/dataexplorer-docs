@@ -31,6 +31,10 @@ The `f-IFrameAuth` query parameter tells the web UI *not* to redirect to get an 
 
 The `workspace=<guid>` query parameter creates a separate workspace for the embedded iframe. Workspace is a logic unit that contains tabs, queries, settings and connections. By setting it to a unique value, it prevents data sharing between the embedded and the non-embedded version of `https://dataexplorer.azure.com`.
 
+### Create an app for authentication
+
+https://learn.microsoft.com/en-us/kusto/api/rest/authenticate-with-msal?view=azure-data-explorer#perform-single-page-application-spa-authentication
+
 ### Handle authentication
 
 When embedding the web UI, the hosting page is responsible for authentication. The following diagrams describe the authentication flow.
@@ -150,6 +154,15 @@ To embed a dashboard, a trust relationship must be established between the host'
     If you encounter the `Request_MultipleObjectsWithSameKeyValue` error, it means that the app is already in the tenant indicating it was added successfully.
 
 1. In the **API permissions** page, select **Grant admin consent** to consent for all users.
+
+> [!NOTE]
+> Guests doesn't have graph access by defauly
+>
+
+> [!NOTE]
+> You need to give the Iframe access to to clipboard
+> the sharing URL will be for dashboard.azure.com
+
 
 > [!NOTE]
 > To embed a dashboard without the query area, use the following setup:
