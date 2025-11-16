@@ -4,7 +4,6 @@ description: Learn how to create an app to run basic queries using Kusto client 
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 05/28/2025
-monikerRange: "azure-data-explorer"
 ms.custom: sfi-ropc-nochange
 #customer intent: To learn about creating an app to run basic queries using Kusto client libraries.
 ---

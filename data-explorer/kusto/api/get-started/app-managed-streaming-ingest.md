@@ -4,7 +4,6 @@ description: Learn how to create an app to ingest data from a file or in-memory 
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 02/03/2025
-monikerRange: "azure-data-explorer"
 zone_pivot_groups: ingest-api
  
 
