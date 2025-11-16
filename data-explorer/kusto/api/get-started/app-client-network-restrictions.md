@@ -9,67 +9,68 @@ ms.date: 11/16/2025
 ms.custom: 
 ---
 
-# Client network restrictions
+# Manage client network restrictions
 
-When working with Kusto tools and SDKs, network security is a top priority. To safeguard customer data, queries, and authentication tokens, Kusto enforces DNS restrictions that limit connections to a predefined set of trusted domains. While these restrictions enhance security, certain scenarios might require bypassing them to accommodate custom configurations, such as hosting Kusto behind custom URIs or using older SDK versions. These cases include:
+When you use Kusto tools and SDKs, network security is a top priority. To protect customer data, queries, and authentication tokens, Kusto enforces DNS restrictions that limit connections to a predefined set of trusted domains. While these restrictions improve security, some scenarios might require bypassing them to support custom configurations, like hosting Kusto behind custom URIs or using older SDK versions. These scenarios include:
 
-* Customers hosting Kusto behind custom URIs
-* Customers hosting Kusto behind Azure Front Door for redundancy or high availability
-* Customers running with older version of the SDK where new domains aren't yet allowed
-* Customers running with older version of the SDK in new clouds
+- Customers hosting Kusto behind custom URIs
+- Customers hosting Kusto behind Azure Front Door for redundancy or high availability
+- Customers using an older version of the SDK where new domains aren't yet allowed
+- Customers using an older version of the SDK in new clouds
 
 In these cases, Kusto SDK and Tools allow adding custom allowances to bypass the default restrictions.
 
 > [!IMPORTANT]
 >
-> For the latter two cases, the best course of action to resolve the issue is to update to the latest version of the SDK or tool being used. Adding custom domains and policy overrides should be used as a short term mitigation.
+> For the latter two cases, the best way to resolve the issue is to update to the latest version of the SDK or tool you use. Use custom domains and policy overrides only as a short-term solution.
 
-This article provides step-by-step guidance on managing DNS restrictions in Kusto tools, including adding trusted hosts, disabling DNS validation, and programmatically customizing validation policies.
+This article gives step-by-step guidance on managing DNS restrictions in Kusto tools, including adding trusted hosts, disabling DNS validation, and customizing validation policies programmatically.
 
-## Bypass DNS restrictions using Kusto Explorer
+## Bypass DNS restrictions with Kusto Explorer
 
 1. Open Kusto Explorer.
 1. From the **Tools** ribbon, select **Options**.
 1. Select **Connections**.
-1. In **Additional Trusted Hosts** add the fully qualified hostname or DNS suffix (preceded with an asterisk `*`) you want to work with. You can list multiple FQDNs or DNS suffixes by separating them with a semicolon `;`.
+1. In **Additional Trusted Hosts**, add the fully qualified hostname or DNS suffix (preceded with an asterisk `*`) you want to work with. You can list multiple FQDNs or DNS suffixes by separating them with a semicolon `;`.
 
-:::image type="content" source="../../media/bypass-dns-restrictions/kusto_explorer_options.png" alt-text="Options editor open with the Additional Trusted Hosts field highlighted.":::
+    :::image type="content" source="../../media/bypass-dns-restrictions/kusto-explorer-options.png" alt-text="Screenshot of the Options editor open with the Additional Trusted Hosts field highlighted.":::
 
-## Bypass DNS restrictions using Azure Data Explorer
+## Bypass DNS restrictions with Azure Data Explorer
 
 1. Open Azure Data Explorer.
 1. Select the *Settings* icon in the top-right corner.
 1. Select **Connection**.
-1. In **Additional trusted hosts**, add the fully qualified hostname or DNS suffix (preceded with an asterisk `*`) you want to work with. You can list multiple FQDNs or DNS suffixes by separating them with a semicolon `;`.
+1. In **Additional trusted hosts**, add the fully qualified hostname or DNS suffix (preceded with an asterisk `*`) you want to work with. List multiple FQDNs or DNS suffixes by separating them with a semicolon `;`.
 
-:::image type="content" source="../../media/bypass-dns-restrictions/kusto_web_explorer_settings.png" alt-text="ADX Settings editor open with the Additional trusted hosts field highlighted.":::
+    :::image type="content" source="../../media/bypass-dns-restrictions/kusto-web-explorer-settings.png" alt-text="Screenshot of ADX Settings editor open with the Additional trusted hosts field highlighted.":::
 
-## Bypass DNS restrictions using Command Line Applications and Tools
+## Bypass DNS restrictions with command-line applications and tools
 
-For command line applications and tools, you can disable DNS validation entirely by passing a command line argument, or by setting an environment variable.
+For command-line applications and tools, disable DNS validation entirely by passing a command-line argument or setting an environment variable.
 
 > [!NOTE]
-> Disabling DNS validation using environment variables affects all applications and tools using the C# SDK. That includes Kusto Explorer, Light Ingest, Kusto CLI, Perkus, and any third-party application developed using the C# Kusto SDK.
+> Disabling DNS validation using environment variables affects all applications and tools using the C# SDK, including Kusto Explorer, Light Ingest, Kusto CLI, Perkus, and any third-party application developed with the C# Kusto SDK.
 
-To disable with a command-line argument, add the following argument to the command line of the tool you run.
+To disable using a command-line argument, add the following argument to the tool's command line.
 
 ```shell
 -tweaks:Kusto.Cloud.Platform.Data.EnableWellKnownKustoEndpointsValidation=false
 ```
 
-To disable with an environment variable:
+To disable using an environment variable:
 
 ```shell
 SET TWEAKS="Kusto.Cloud.Platform.Data.EnableWellKnownKustoEndpointsValidation=false"
 ```
 
-## Bypass DNS restrictions using Kusto SDKs
+## Bypass DNS restrictions with Kusto SDKs
 
-When using Kusto SDKs, you can programmatically control DNS validation by adding trusted hosts and DNS domains, or by providing the SDK with a predicate that takes the target hostname and returns *true* or *false* depending on whether the connection is allowed.
+Use Kusto SDKs to programmatically control DNS validation by adding trusted hosts and DNS domains, or by providing the SDK with a predicate that takes the target hostname and returns *true* or *false* depending on whether the connection is allowed.
 
-### [C\#](#tab/csharp)
+### [C#](#tab/csharp)
 
 ```csharp
+
 using Kusto.Data.Common;
  
 // Add a DNS domain
@@ -92,6 +93,7 @@ KustoTrustedEndpoints.SetOverridePolicy(
 ### [Go](#tab/go)
 
 ```go
+
 import (
     "github.com/Azure/azure-kusto-go/azkustodata/trustedEndpoints"
 )
@@ -113,6 +115,7 @@ trustedEndpoints.Instance.SetOverrideMatcher(
             },
     security.KustoTrustedEndpoints.KustoEndpointContext,
 )
+
 ```
 
 ### [Java](#tab/java)
@@ -134,6 +137,7 @@ KustoTrustedEndpoints.addTrustedHosts(
 KustoTrustedEndpoints.setOverridePolicy(
     h -> true,
     KustoTrustedEndpoints.KustoEndpointContext);
+
 ```
 
 ### [JavaScript](#tab/javascript)
@@ -156,19 +160,21 @@ KustoTrustedEndpoints.setOverrideMatcher(
 
 ```
 
-### [ Python](#tab/python)
+### [Python](#tab/python)
 
 ```python
+
 from azure.kusto.data.security import KustoTrustedEndpoints, MatchRule
 
 # Add a DNS domain
-KustoTrustedEndpoints.add_trusted_hosts([MatchRule("*.domain.com", exact=false)])
+KustoTrustedEndpoints.add_trusted_hosts([MatchRule("*.domain.com", exact=False)])
 
 # Add a fully qualified domain name
-KustoTrustedEndpoints.add_trusted_hosts([MatchRule("mykusto.domain.com", exact=true)])
+KustoTrustedEndpoints.add_trusted_hosts([MatchRule("mykusto.domain.com", exact=True)])
 
 # Set a custom validation policy 
 KustoTrustedEndpoints.set_override_matcher(
-    lambda h: true, 
+    lambda h: True, 
     KustoTrustedEndpoints.KustoEndpointContext)
+
 ```
