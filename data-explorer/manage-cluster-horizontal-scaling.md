@@ -3,7 +3,7 @@ title: 'Manage cluster horizontal scaling (scale out) to match demand in Azure D
 description: This article describes steps to scale out and scale in an Azure Data Explorer cluster based on changing demand.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 02/06/2022
+ms.date: 11/03/2025
 ---
 
 # Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand
@@ -22,7 +22,7 @@ By using horizontal scaling, you can scale the instance count automatically, bas
 
 1. In the Azure portal, go to your Azure Data Explorer cluster resource. Under **Settings**, select **Scale out**.
 
-2. In the **Scale out** window, select the autoscale method that you want: **Manual scale**, **Optimized autoscale**, or **Custom autoscale**.
+1. In the **Scale out** window, select the autoscale method that you want: **Manual scale**, **Optimized autoscale**, or **Custom autoscale**.
 
 ### Manual scale
 
@@ -34,8 +34,8 @@ In the manual scale option, the cluster has a static capacity that doesn't chang
 
 Optimized autoscale is the default setting during cluster creation and the recommended scaling method. This method optimizes cluster performance and cost, as follows:
 
-* If the cluster is underutilized, it is scaled in to lower cost without affecting the required performance.
-* If the cluster is overutilized, it is scaled out to maintain optimal performance.
+* If the cluster is underutilized, it scales in to lower cost without affecting the required performance.
+* If the cluster is overutilized, it scales out to maintain optimal performance.
 
 To configure optimized autoscale:
 
@@ -46,11 +46,11 @@ To configure optimized autoscale:
 
    ![Optimized autoscale method.](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
 
-Optimized autoscale starts working. Its actions can be viewed in the cluster's activity log in Azure.
+Optimized autoscale starts working. You can view its actions in the cluster's activity sign in Azure.
 
 #### Logic of optimized autoscale
 
-Optimized autoscale is managed by either predictive or reactive logic.
+Optimized autoscale uses either predictive or reactive logic.
 Predictive logic tracks the usage pattern of the cluster and when it identifies seasonality with high confidence, it manages the cluster's scaling.
 Otherwise, reactive logic that tracks the actual usage of the cluster is used to make decisions on cluster scale operations based on the current level of resource usage.
 
@@ -60,20 +60,20 @@ The main metrics for both predictive and reactive flows are:
 * Cache utilization factor
 * Ingestion utilization
 
-Both predictive and reactive logic are bound to the cluster's size boundaries, the min and max number of instances, as defined in the optimized autoscale configuration.
-Frequent cluster *scale out* and *scale in* operations are undesirable because of the impact on the cluster's resources and the required time for adding or removing instances, as well as rebalancing the hot cache across all nodes.
+Both predictive and reactive logic are bound to the cluster's size boundaries, the minimum and maximum number of instances, as defined in the optimized autoscale configuration.
+Frequent cluster *scale-out* and *scale in* operations are undesirable because of the impact on the cluster's resources and the required time for adding or removing instances, as well as rebalancing the hot cache across all nodes.
 
 ##### Predictive autoscale
 
-Predictive logic forecasts the cluster's usage for the next day based on its usage pattern over the last few weeks. The forecast is used to create a schedule of *scale in* or *scale out* operations to adjust the cluster's size ahead of time. This allows the cluster scaling and data rebalancing to complete in time for when the load changes. This logic is especially effective for seasonal patterns, such as daily or weekly usage spikes.
+Predictive logic forecasts the cluster's usage for the next day based on its usage pattern over the last few weeks. The forecast is used to create a schedule of *scale in* or *scale out* operations to adjust the cluster's size ahead of time. This approach allows the cluster scaling and data rebalancing to complete in time for when the load changes. This logic is especially effective for seasonal patterns, such as daily or weekly usage spikes.
 
-However, in scenarios where there is a unique spike in usage that exceeds the forecast, optimized autoscale will fall back on reactive logic. When this happens, *scale in* or *scale out* operations are performed ad hoc based on the latest level of resource usage.
+However, in scenarios where a unique spike in usage exceeds the forecast, optimized autoscale falls back on reactive logic. When this situation occurs, *scale in* or *scale out* operations happen unplanned based on the latest level of resource usage.
 
 ##### Reactive autoscale
 
 **Scale out**
 
-When the cluster approaches a state of overutilization, a *scale out* operation will take place to maintain optimal performance. A *scale out* operation is performed when at least one of the following conditions occurs:
+When the cluster approaches a state of overutilization, a *scale-out* operation takes place to maintain optimal performance. A *scale-out* operation happens when at least one of the following conditions occurs:
 
 * The cache utilization is high for over an hour
 * The CPU is high for over an hour
@@ -81,7 +81,7 @@ When the cluster approaches a state of overutilization, a *scale out* operation 
 
 **Scale in**
 
-When the cluster is underutilized, a *scale in* operation will take place to lower cost while maintaining optimal performance. Multiple metrics are used to verify that it's safe to *scale in* the cluster.
+When the cluster is underutilized, a *scale in* operation takes place to lower cost while maintaining optimal performance. Multiple metrics verify that it's safe to *scale in* the cluster.
 
 To ensure that there's no overloading of resources, the following metrics are evaluated before *scale in* is performed:
 
@@ -90,11 +90,11 @@ To ensure that there's no overloading of resources, the following metrics are ev
 * Ingestion utilization is below average
 * If streaming ingest is used, streaming ingest utilization isn't high
 * Keep alive metric is above a defined minimum, processed properly, and on time indicating that the cluster is responsive
-* There is no query throttling
-* Number of failed queries are below a defined minimum
+* The service doesn't throttle queries.
+* The number of failed queries stays below a defined minimum.
 
 > [!NOTE]
-> The *scale in* logic requires a 1-day evaluation before implementation of optimized *scale in*. This evaluation takes place once every hour. If an immediate change is needed, use [manual scale](#manual-scale).
+> The *scale in* logic needs a 1-day evaluation before it can implement an optimized *scale in*. This evaluation happens once every hour. If you need an immediate change, use [manual scale](#manual-scale).
 
 ### Custom autoscale
 
@@ -134,8 +134,8 @@ Although [optimized autoscale](#optimized-autoscale-recommended-option) is the r
 
     | Setting | Description and value |
     | --- | --- |
-    | **Minimum** | The number of instances that your cluster won't scale below, regardless of utilization. |
-    | **Maximum** | The number of instances that your cluster won't scale above, regardless of utilization. |
+    | **Minimum** | The number of instances that your cluster doesn't scale below, regardless of utilization. |
+    | **Maximum** | The number of instances that your cluster doesn't scale above, regardless of utilization. |
     | **Default** | The default number of instances. This setting is used if there are problems with reading the resource metrics. |
     |  |  |
 
