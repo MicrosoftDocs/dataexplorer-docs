@@ -1,5 +1,5 @@
 ---
-title: Manage DNS Restrictions
+title: Manage Client Network Restrictions
 description: Resolve DNS validation errors in Kusto tools by adding custom allowances or disabling validation for specific use cases.
 ms.reviewer: yogilad
 ms.author: spelluru
