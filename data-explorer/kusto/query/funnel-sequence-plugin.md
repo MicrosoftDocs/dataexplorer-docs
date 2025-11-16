@@ -3,7 +3,7 @@ title:  funnel_sequence plugin
 description: Learn how to use the funnel_sequence plugin to learn how to calculate the distinct count of users who have taken a sequence of states, and the distribution of previous/next states that have led to/were followed by the sequence.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/16/2025
+ms.date: 08/11/2024
 ---
 # funnel_sequence plugin
 
@@ -33,7 +33,7 @@ Calculates distinct count of users who have taken a sequence of states, and the 
 
 ## Returns
 
-Returns three output tables, which are useful for constructing [sankey diagrams](https://en.wikipedia.org/wiki/Sankey_diagram) for the analyzed sequence:
+Returns three output tables, which are useful for constructing a sankey diagram for the analyzed sequence:
 
 * Table #1 - prev-sequence-next `dcount`
   * TimelineColumn: the analyzed time window
@@ -55,8 +55,6 @@ Returns three output tables, which are useful for constructing [sankey diagrams]
   * samples: an array of IDs (from `IdColumn`) corresponding to the row's sequence (a maximum of 128 IDs are returned).
 
 ## Examples
-
-[!INCLUDE [help-cluster](../includes/help-cluster-note.md)]
 
 The following examples show how to use the `funnel_sequence` plugin to analyze storm events.
 The query looks at the table StormEvents (weather statistics for 2007) and shows which events happened before/after all Tornado events occurred in 2007.
