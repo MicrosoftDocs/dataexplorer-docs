@@ -3,8 +3,7 @@ title: Authentication methods for Kusto client libraries
 description: Learn about the different authentication methods that can be used in apps using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 11/02/2025
-monikerRange: "azure-data-explorer"
+ms.date: 11/16/2025
 ms.custom: sfi-ropc-nochange
 #customer intent: To learn about the different authentication methods that can be used in apps.
 ---
