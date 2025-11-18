@@ -51,7 +51,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 | HotDateTimeColumn | `String`   |					  | Optional. The name of a datetime column in the Delta table whose values will be used to determine hot-cache eligibility. When set, data files whose rows have values within the configured Hot period (and/or HotWindows) are selected for caching. 																									   |
 ::: moniker-end
 > [!NOTE]
-> Query acceleration is applied to data within a specific time period, defined as `timespan`, starting from the `modificationTime` as stated for each file in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file).
+> Query acceleration is applied to data within a specific time period, based on the `modificationTime` as stated for each file in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file) by default. You can override the default behavior, by specifying _HotDateTimeColumn_ property in the policy. 
 
 ### Example
 
