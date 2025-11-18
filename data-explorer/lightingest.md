@@ -3,7 +3,7 @@ title: Use LightIngest to ingest data into Azure Data Explorer
 description: Learn about LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 11/03/2025
+ms.date: 11/18/2025
 ---
 
 # Use LightIngest to ingest data into Azure Data Explorer
@@ -26,6 +26,9 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
       ```
       dotnet tool install -g Microsoft.Azure.Kusto.LightIngest
       ```
+
+> [!NOTE]
+> Consider using the [queued ingestion commands](kusto/management/data-ingestion/queued-ingestion-use-case.md) as they do not require installing software.
 
 ## Run LightIngest
 
