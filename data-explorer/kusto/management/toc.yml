@@ -131,6 +131,8 @@ items:
                 href: external-tables-azure-storage.md
               - name: Create or alter delta external table
                 href: external-tables-delta-lake.md
+              - name: .show external table details
+                href: show-external-table-details
               - name: Manage external table mappings
                 items:
                   - name: .alter external table mapping command
