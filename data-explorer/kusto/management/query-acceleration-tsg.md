@@ -1,5 +1,6 @@
 # Troubleshoot query acceleration over external delta tables
-[!INCLUDE applies] [!INCLUDE fabric] [!INCLUDE azure-data-explorer]
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The [query acceleration policy](query-acceleration-policy.md) enables accelerating queries over external delta tables by caching delta table metadata and data files. The policy defines which data ranges (number of days back and hot windows) are accelerated so that queries over those ranges can run significantly faster.
 
