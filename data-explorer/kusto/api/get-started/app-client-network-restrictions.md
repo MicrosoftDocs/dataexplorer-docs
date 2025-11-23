@@ -75,7 +75,7 @@ using Kusto.Data.Common;
  
 // Add a DNS domain
 KustoTrustedEndpoints.AddTrustedHosts(
-    new[] { new FastSuffixMatcher<EndpointContext>.MatchRule("*.domain.com", exact: false, context: KustoTrustedEndpoints.KustoEndpointContext) },
+    new[] { new FastSuffixMatcher<EndpointContext>.MatchRule(".domain.com", exact: false, context: KustoTrustedEndpoints.KustoEndpointContext) },
     replace:false);
  
 // Add a fully qualified domain name
@@ -100,7 +100,7 @@ import (
 
 // Add a DNS domain
 trustedEndpoints.Instance.AddTrustedHosts([]trustedEndpoints.MatchRule{
-    security.NewMatchRule("*.domain.com", false),
+    security.NewMatchRule(".domain.com", false),
 })
 
 // Add a fully qualified domain name
@@ -127,7 +127,7 @@ import com.microsoft.azure.kusto.data.auth.endpoints.MatchRule;
 
 // Add a DNS domain
 KustoTrustedEndpoints.addTrustedHosts(
-    java.util.Arrays.asList(new MatchRule("*.domain.com", false)));
+    java.util.Arrays.asList(new MatchRule(".domain.com", false)));
 
 // Add a fully qualified domain name
 KustoTrustedEndpoints.addTrustedHosts(
@@ -147,7 +147,7 @@ KustoTrustedEndpoints.setOverridePolicy(
 import { KustoTrustedEndpoints, MatchRule } from "azure.kusto.data";
 
 // Add a DNS domain
-KustoTrustedEndpoints.addTrustedHosts([new MatchRule("*.domain.com", false)]);
+KustoTrustedEndpoints.addTrustedHosts([new MatchRule(".domain.com", false)]);
 
 // Add a fully qualified domain name
 KustoTrustedEndpoints.addTrustedHosts([new MatchRule("mykusto.domain.com", true)]);
@@ -167,7 +167,7 @@ KustoTrustedEndpoints.setOverrideMatcher(
 from azure.kusto.data.security import KustoTrustedEndpoints, MatchRule
 
 # Add a DNS domain
-KustoTrustedEndpoints.add_trusted_hosts([MatchRule("*.domain.com", exact=False)])
+KustoTrustedEndpoints.add_trusted_hosts([MatchRule(".domain.com", exact=False)])
 
 # Add a fully qualified domain name
 KustoTrustedEndpoints.add_trusted_hosts([MatchRule("mykusto.domain.com", exact=True)])
