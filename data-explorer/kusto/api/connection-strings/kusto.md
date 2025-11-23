@@ -52,7 +52,7 @@ KustoTrustedEndpoints.AddTrustedHosts(
 );
 ```
 
-For more information on bypassing restricted networks, see [Manage client network restrictions](../get-started/app-client-network-restrictions.md)
+For more information oh how to bypass restricted networks, see [Manage client network restrictions](../get-started/app-client-network-restrictions.md).
 
 ## Connection string properties
 
