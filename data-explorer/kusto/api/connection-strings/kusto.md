@@ -40,8 +40,6 @@ For instance, endpoints whose DNS hostname ends with `kusto.windows.net`.
 
 By default, the client doesn't establish connections to other endpoints. In order to allow connections to other endpoints, use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add endpoints to the list of trusted endpoints. Use `SetOverridePolicy` to override the default policy, and `AddTrustedHosts` to add new entries to the existing policy.
 
-For more information on bypassing restricted networks, see [Manage client network restrictions](../get-started/app-client-network-restrictions.md)
-
 ```csharp
 KustoTrustedEndpoints.AddTrustedHosts(
     new[]
@@ -53,6 +51,8 @@ KustoTrustedEndpoints.AddTrustedHosts(
     }
 );
 ```
+
+For more information on bypassing restricted networks, see [Manage client network restrictions](../get-started/app-client-network-restrictions.md)
 
 ## Connection string properties
 
