@@ -274,7 +274,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     ---
 
     > [!NOTE]
-    > The query output is returned in the response as an object that contains one or more tables, comprised of one more more rows and columns.
+    > The query output is returned in the response as an object that contains one or more tables, comprised of one or more rows and columns.
     > The format of the object depends on the client library language.
     >
     > The *print kusto* query returns a single table with one row and column.
