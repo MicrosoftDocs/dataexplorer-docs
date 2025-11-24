@@ -1,9 +1,9 @@
 ---
 title:  Kusto connection strings
 description: This article describes Kusto connection strings.
-ms.reviewer: orspodek
+ms.reviewer: ygilad
 ms.topic: reference
-ms.date: 03/30/2025
+ms.date: 11/23/2025
 ms.custom: sfi-ropc-nochange
 ---
 # Kusto connection strings
@@ -38,8 +38,7 @@ A connection with a Kusto endpoint can only be established if that endpoint is t
 The Kusto client trusts all endpoints whose host domain is issued by the service.
 For instance, endpoints whose DNS hostname ends with `kusto.windows.net`.
 
-By default, the client doesn't establish connections to other endpoints. In order to allow connections
-to other endpoints, use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add endpoints to the list of trusted endpoints. Use `SetOverridePolicy` to override the default policy, and `AddTrustedHosts` to add new entries to the existing policy.
+By default, the client doesn't establish connections to other endpoints. In order to allow connections to other endpoints, use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add endpoints to the list of trusted endpoints. Use `SetOverridePolicy` to override the default policy, and `AddTrustedHosts` to add new entries to the existing policy.
 
 ```csharp
 KustoTrustedEndpoints.AddTrustedHosts(
@@ -52,6 +51,8 @@ KustoTrustedEndpoints.AddTrustedHosts(
     }
 );
 ```
+
+For more information on how to bypass restricted networks, see [Manage client network restrictions](../get-started/app-client-network-restrictions.md).
 
 ## Connection string properties
 
