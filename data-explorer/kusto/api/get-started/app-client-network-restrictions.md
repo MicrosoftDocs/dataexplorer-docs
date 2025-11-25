@@ -98,23 +98,10 @@ import (
     "github.com/Azure/azure-kusto-go/azkustodata/trustedEndpoints"
 )
 
-// Add a DNS domain
-trustedEndpoints.Instance.AddTrustedHosts([]trustedEndpoints.MatchRule{
-    security.NewMatchRule(".domain.com", false),
-})
-
-// Add a fully qualified domain name
-trustedEndpoints.Instance.AddTrustedHosts([]trustedEndpoints.MatchRule{
-    security.NewMatchRule("mykusto.domain.com", true),
-})
-
-// Set a custom validation policy
-trustedEndpoints.Instance.SetOverrideMatcher(
-    func(h string) bool {
-        return true
-            },
-    security.KustoTrustedEndpoints.KustoEndpointContext,
-)
+// Due to an issue in Go SDK, the only available bypass option in old versions is to provide a custom policy
+// For simplicity, the suggestion is to blank allow requests, until an SDK upgrade is possible
+// This doc will be updated when a fixed version is available
+trustedEndpoints.Instance.SetOverridePolicy( func(s string) bool { return true} )
 
 ```
 
@@ -144,16 +131,16 @@ KustoTrustedEndpoints.setOverridePolicy(
 
 ```javascript
 
-import { KustoTrustedEndpoints, MatchRule } from "azure.kusto.data";
+import { kustoTrustedEndpoints, MatchRule } from "azure.kusto.data";
 
 // Add a DNS domain
-KustoTrustedEndpoints.addTrustedHosts([new MatchRule(".domain.com", false)]);
+kustoTrustedEndpoints.addTrustedHosts([new MatchRule(".domain.com", false)]);
 
 // Add a fully qualified domain name
-KustoTrustedEndpoints.addTrustedHosts([new MatchRule("mykusto.domain.com", true)]);
+kustoTrustedEndpoints.addTrustedHosts([new MatchRule("mykusto.domain.com", true)]);
 
 // Set a custom validation policy
-KustoTrustedEndpoints.setOverrideMatcher(
+kustoTrustedEndpoints.setOverrideMatcher(
     (h) => true,
     KustoTrustedEndpoints.KustoEndpointContext
 );
@@ -164,16 +151,16 @@ KustoTrustedEndpoints.setOverrideMatcher(
 
 ```python
 
-from azure.kusto.data.security import KustoTrustedEndpoints, MatchRule
+from azure.kusto.data.security import well_known_kusto_endpoints, MatchRule
 
 # Add a DNS domain
-KustoTrustedEndpoints.add_trusted_hosts([MatchRule(".domain.com", exact=False)])
+well_known_kusto_endpoints.add_trusted_hosts([MatchRule(".domain.com", exact=False)])
 
 # Add a fully qualified domain name
-KustoTrustedEndpoints.add_trusted_hosts([MatchRule("mykusto.domain.com", exact=True)])
+well_known_kusto_endpoints.add_trusted_hosts([MatchRule("mykusto.domain.com", exact=True)])
 
 # Set a custom validation policy 
-KustoTrustedEndpoints.set_override_matcher(
+well_known_kusto_endpoints.set_override_matcher(
     lambda h: True, 
     KustoTrustedEndpoints.KustoEndpointContext)
 
