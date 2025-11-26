@@ -7,7 +7,7 @@ The [query acceleration policy](query-acceleration-policy.md) enables accelerati
 The query acceleration feature consists of the following components:
 
 - A background job that maintains a local snapshot (**catalog**) of the delta table metadata.
-- A background job that accelerates delta table data files.
+- A background job that caches delta table data files.
 - Query-time enhancements that utilize the catalog and the cached data.
 
 To understand why things aren't working as expected, it's important to identify which of these components isn't functioning properly.
@@ -15,7 +15,7 @@ To understand why things aren't working as expected, it's important to identify 
 This article helps you troubleshoot scenarios where:
 
 - Queries over accelerated external delta tables return **stale data**, or
-- Queries over accelerated external delta tables are **not significantly faster** than non-accelerated queries.
+- Queries over accelerated external delta tables are **slower than expected**
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ This article helps you troubleshoot scenarios where:
 
     If such operations have been executed on the delta table, first recreate the external table and re-enable the query acceleration policy.
 
-## Troubleshooting tree
+## Troubleshooting flow
 
 Use the following logical flow to identify and mitigate query acceleration issues.
 
@@ -55,10 +55,13 @@ Use the following logical flow to identify and mitigate query acceleration issue
         Align query filters with the hot period or hot windows and verify that data within those ranges is fully cached.
       - **[Understanding and mitigating data acceleration issues](#understanding-and-mitigating-data-acceleration-issues)**  
         Investigate incomplete acceleration due to ongoing caching, large parquet files, or insufficient cluster capacity.
+    - **[Ensure query complies with KQL best practices](../query/best-practices.md)**<br/>
+      Optimize the query as is instructed in the KQL best practices document
 
 ## Query is returning old data
 
-Query acceleration refreshes the accelerated data so that results are no older than the configured `MaxAge` value in the policy. Set `MaxAge` to the maximum data staleness that is acceptable at query time.
+Query acceleration refreshes the accelerated data so that results are no older than the configured `MaxAge` value in the policy. 
+By design, queries over accelerated external tables may return data that lags behind the latest delta table version by up to `MaxAge`. Set `MaxAge` to the maximum data staleness that is acceptable at query time.
 
 You can control the effective `MaxAge` in two ways:
 
@@ -96,14 +99,14 @@ Run:
 
 #### Query acceleration policy was enabled recently
 
-When the query acceleration policy is enabled for the first time, the initial catalog build needs to complete before the catalog becomes usable. During this period, you might see an empty `LastUpdatedDateTime` value:
+When the query acceleration policy is enabled for the first time, building the initial catalog needs to complete before it can be used in queries. During this period, the `LastUpdatedDateTime` value will be empty:
 
 ```kusto
 .show external table [ETName] details
 | project todynamic(QueryAccelerationState).LastUpdatedDateTime
 ```
 
-If `LastUpdatedDateTime` is empty, allow some time for the first update to complete. Subsequent updates are expected to be significantly faster.
+If `LastUpdatedDateTime` is empty, allow some time for the first update to complete. This usually takes several minutes. Subsequent updates are expected to be significantly faster.
 
 #### The delta table is frequently changing
 
@@ -120,20 +123,14 @@ When an external table's query acceleration is unhealthy, you can retrieve the u
 | project todynamic(QueryAccelerationState).NotHealthyReason
 ```
 
-Use the following tables to understand and mitigate common unhealthy states.
+Use the following table to understand and mitigate common unhealthy states.
 
 ::: moniker range="azure-data-explorer"
 
 | Unhealthy reason                                                      | Example `NotHealthyReason`                                              | Action                                                                                                                                                                                                                         |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| External table access is forbidden                                    | `InaccessibleDeltaTable: Access to Delta table is forbidden`            | Alter the external table connection string with a valid authentication method.                                                                                                                                                 |
-| External table connection string doesn't point to a valid delta table | `DeltaTableNotFound: Delta table does not exist`                        | Alter the external table connection string to point to a valid delta table location.                                                                                                                                           |
-| Delta table column mapping mode has changed                           | `ColumnMappingModeChange: Column mapping mode has changed. Previous: 'None', New: 'Name'` | Recreate the external table with the new column mapping mode and re-enable the query acceleration policy.                                                                                                                     |
-| Delta table column mappings have changed                              | `NewColumnMapping: New column mapping was introduced. Column 'Col1' is now mapped to 'Col2'` | Recreate the external table and re-enable the query acceleration policy so that column mappings are aligned with the delta table.                                                                                              |
-| Delta table column type has changed                                   | `ColumnTypeMismatch: Column 'Col1' type has changed. Previous delta type: 'long', New type: 'string'. Respective external table type: long` | Recreate (or alter) the external table so that its schema is aligned with the delta table column types, and then re-enable query acceleration.                                         |
-| Managed identity error                                                | *Managed identity must be specified for external tables with impersonation authentication.* | Ensure that the query acceleration policy contains a valid managed identity that has: <br/>• Appropriate permissions on the delta table <br/>• The `AutomatedFlows` usage type in the cluster or database managed identity policy. |
-| Hot datetime column not found                                         | `HotDateTimeColumn 'Col1' does not exist as a datetime column in the Delta table schema` | Alter the query acceleration policy to include a valid `HotDateTimeColumn`, or leave the property empty if not required.                                                                 |
-| Delta table has unsupported features for query acceleration           | `Unsupported feature: Column mapping of type 'Id'`                       | Recreate the delta table with a supported configuration (for example, using `Name` column mapping type), and then re-enable query acceleration.                                        |
+[!INCLUDE [query-acceleration-unhealthy-reasons-table](query-acceleration-unhealthy-reasons.md)]
+| Managed identity error                                                | *Managed identity must be specified for external tables with impersonation authentication.* | Ensure that the query acceleration policy contains a valid managed identity that has:<br/>• Appropriate permissions on the Delta table<br/>• The `AutomatedFlows` usage type in the cluster or database managed identity policy. |
 
 ::: moniker-end
 
@@ -141,13 +138,7 @@ Use the following tables to understand and mitigate common unhealthy states.
 
 | Unhealthy reason                                                      | Example `NotHealthyReason`                                              | Action                                                                                                                                                                                                                         |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| External table access is forbidden                                    | `InaccessibleDeltaTable: Access to Delta table is forbidden`            | Alter the external table connection string with a valid authentication method.                                                                                                                                                 |
-| External table connection string doesn't point to a valid delta table | `DeltaTableNotFound: Delta table does not exist`                        | Alter the external table connection string to point to a valid delta table location.                                                                                                                                           |
-| Delta table column mapping mode has changed                           | `ColumnMappingModeChange: Column mapping mode has changed. Previous: 'None', New: 'Name'` | Recreate the external table with the new column mapping mode and re-enable the query acceleration policy.                                                                                                                     |
-| Delta table column mappings have changed                              | `NewColumnMapping: New column mapping was introduced. Column 'Col1' is now mapped to 'Col2'` | Recreate the external table and re-enable the query acceleration policy so that column mappings are aligned with the delta table.                                                                                              |
-| Delta table column type has changed                                   | `ColumnTypeMismatch: Column 'Col1' type has changed. Previous delta type: 'long', New type: 'string'. Respective external table type: long` | Recreate (or alter) the external table so that its schema is aligned with the delta table column types, and then re-enable query acceleration.                                         |
-| Hot datetime column not found                                         | `HotDateTimeColumn 'Col1' does not exist as a datetime column in the Delta table schema` | Alter the query acceleration policy to include a valid `HotDateTimeColumn`, or leave the property empty if not required.                                                                 |
-| Delta table has unsupported features for query acceleration           | `Unsupported feature: Column mapping of type 'Id'`                       | Recreate the delta table with a supported configuration (for example, using `Name` column mapping type), and then re-enable query acceleration.                                        |
+[!INCLUDE [query-acceleration-unhealthy-reasons-table](query-acceleration-unhealthy-reasons.md)]
 
 ::: moniker-end
 
@@ -161,10 +152,10 @@ Use the following command and filter on a time frame that includes the relevant 
 ```kusto
 .show queries
 | where StartedOn > ago(1h)
-| extend ExternalDataStats = ['OverallQueryStats']['input_dataset_statistics']['external_data']
+| extend ExternalDataStats = OverallQueryStats.input_dataset_statistics.external_data
 ```
 
-If `ExternalDataStats.iterated_artifacts` or `ExternalDataStats.downloaded_items` are greater than `0`, it means data is being read from the remote delta table (non-accelerated path).
+If `ExternalDataStats.iterated_artifacts` or `ExternalDataStats.downloaded_items` are greater than `0`, it means data was read from the remote delta table (non-accelerated path).
 
 ### Troubleshoot queries over non-accelerated-data
 
@@ -183,11 +174,11 @@ Run the following command to view the hot caching properties and make sure the q
 | project Policy.Hot, Policy.HotWindows
 ```
 
-- Ensure your query's time filter is fully contained within the configured `Hot` period or the defined `HotWindows`.
+Ensure your query's time filter is fully contained within the configured `Hot` period or the defined `HotWindows`.
 
-If the query needs to access data outside the configured hot period or hot windows, alter the policy by:
+If it's a one-time query, policy change is not recommended. However, if you anticipate running multiple queries over the same time range that lies outside the configured `Hot` period or defined `HotWindows` and require improved performance, alter the policy by:
 
-- Increasing the hot period, or
+- Increasing the hot period, and/or
 - Adding additional hot windows that match your query patterns.
 
 #### Data within the hot period isn't fully cached
@@ -214,11 +205,11 @@ Data acceleration might take time, especially when:
 - A query acceleration policy has recently been enabled, or
 - The delta table has undergone an optimization operation such as `OPTIMIZE` that results in many deleted and recreated files.
 
-Frequently running `OPTIMIZE` or `MERGE` operations on the source delta table that cause large-scale rewrites of data files can negatively affect acceleration performance because data files are repeatedly rewritten.
+Frequently running `OPTIMIZE` or `MERGE` operations on the source delta table that cause large-scale rewrites of data files can negatively affect acceleration performance because data files are repeatedly rewritten, and need to be accelerated.
 
 ### Data files aren't eligible for acceleration
 
-Parquet data files with a **compressed size greater than 1 GB** won't be cached.
+Parquet data files larger than **1 GB** won't be cached.
 
 If your delta table includes many large files, consider adjusting your data generation or optimization strategy to produce smaller parquet files.
 If this requires recreating the Delta table, make sure you recreate the external table and reenable query acceleration policy.
@@ -237,5 +228,5 @@ Run the following command to view the remaining capacity:
 
 - If `Remaining == 0` consistently and `CompletionPercentage` isn't increasing, consider:
 
-  - Increasing the `QueryAcceleration` capacity by altering the capacity policy.
+  - Increasing the `QueryAcceleration` capacity by [altering the capacity policy](alter-capacity-policy-command.md).
   - Scaling the cluster out or up to provide more resources.
