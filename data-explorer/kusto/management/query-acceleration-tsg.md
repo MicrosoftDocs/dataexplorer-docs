@@ -136,7 +136,7 @@ Use the following table to understand and mitigate common unhealthy states.
 | Delta table column type has changed                                   | `ColumnTypeMismatch: Column 'Col1' type has changed. Previous delta type: 'long', New type: 'string'. Respective external table type: long` | Recreate (or alter) the external table so that its schema is aligned with the delta table column types, and then re-enable query acceleration.                                         |
 | Hot datetime column not found                                         | `HotDateTimeColumn 'Col1' does not exist as a datetime column in the Delta table schema` | Alter the query acceleration policy to include a valid `HotDateTimeColumn` (a column of type `datetime` in the delta table), or leave the property empty if not required.                                                                 |
 | Delta table has one of the following unsupported features for query acceleration <br/>• Column mapping mode 'Name' <br/>• AddFile transactions referencing files with absoulte path <br/>• deletion vectors with absoulte path      | `Unsupported feature: Column mapping of type 'Id'`                       | Recreate the delta table with a supported configuration (for example, using `Name` column mapping type), and then re-enable query acceleration.                                        |
-| Managed identity error                                                | *Managed identity must be specified for external tables with impersonation authentication.* | Ensure that the query acceleration policy contains a valid managed identity that has:<br/>• Appropriate permissions on the Delta table<br/>• The `AutomatedFlows` usage type in the cluster or database managed identity policy. |
+| Managed identity error                                                | `Managed identity must be specified for external tables with impersonation authentication.` | Ensure that the query acceleration policy contains a valid managed identity that has:<br/>• Appropriate permissions on the Delta table<br/>• The `AutomatedFlows` usage type in the cluster or database managed identity policy. |
 
 ::: moniker-end
 
@@ -168,6 +168,7 @@ Use the following command and filter on a time frame that includes the relevant 
 ```
 
 If `ExternalDataStats.iterated_artifacts` or `ExternalDataStats.downloaded_items` are greater than `0`, it means data was read from the remote delta table (non-accelerated path).
+The following sections will help you troubleshoot this.
 
 ### Troubleshoot queries over non-accelerated-data
 
@@ -215,6 +216,7 @@ Unaccelerated data (`CompletionPercentage < 100`) can stem from several issues.
 Data acceleration might take time, especially when:
 
 - A query acceleration policy has recently been enabled, or
+- A significant amount of data was recently added to the delta table, or
 - The delta table has undergone an optimization operation such as `OPTIMIZE` that results in many deleted and recreated files.
 
 Frequently running `OPTIMIZE` or `MERGE` operations on the source delta table that cause large-scale rewrites of data files can negatively affect acceleration performance because data files are repeatedly rewritten, and need to be accelerated.
