@@ -20,7 +20,7 @@ To accelerate queries over external delta tables, see [Query acceleration policy
 
 ## Syntax
 
-`external_table(` *TableName* [`,` *MappingName* ] `)`
+`external_table(` *TableName* [`,` *MappingName* / *MaxAgeOverride* ] `)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
