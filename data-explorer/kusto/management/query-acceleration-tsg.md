@@ -14,7 +14,7 @@ To understand why things aren't working as expected, it's important to identify 
 
 This article helps you troubleshoot scenarios where:
 
-- Queries over accelerated external delta tables return **old data**, or
+- Queries over accelerated external delta tables return **stale data**, or
 - Queries over accelerated external delta tables are **not significantly faster** than non-accelerated queries.
 
 ## Prerequisites
