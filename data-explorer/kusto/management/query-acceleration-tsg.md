@@ -8,7 +8,7 @@ The query acceleration feature consists of the following components:
 
 - A background job that maintains a local snapshot (**catalog**) of the delta table metadata.
 - A background job that accelerates delta table data files.
-- Query-time enhancements that utilize accelerated data.
+- Query-time enhancements that utilize the catalog and the cached data.
 
 To understand why things aren't working as expected, it's important to identify which of these components isn't functioning properly.
 
