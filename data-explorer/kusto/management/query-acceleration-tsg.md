@@ -14,16 +14,16 @@ To understand why things aren't working as expected, it's important to identify 
 
 This article helps you troubleshoot scenarios where:
 
-- Queries over accelerated external delta tables return **stale data**, or
-- Queries over accelerated external delta tables are **slower than expected**
+- Query over an accelerated external delta table returns **stale data**, or
+- Query over an accelerated external delta table is **slower than expected**
 
-## Prerequisites
+# Prerequisites
 
 1. **Ensure query acceleration is enabled on the external table** by running the following command:
 
     ```kusto
     .show external table <ETName> policy query_acceleration
-    | project todynamic(Policy).IsEnabled
+    | project isnotnull(Policy) and todynamic(Policy).IsEnabled
     ```
 
     If this command returns `false`, enable the query acceleration policy using the [`.alter query acceleration policy` command](alter-query-acceleration-policy-command.md).
@@ -34,31 +34,10 @@ This article helps you troubleshoot scenarios where:
 
     If such operations have been executed on the delta table, first recreate the external table and re-enable the query acceleration policy.
 
-## Troubleshooting flow
 
-Use the following logical flow to identify and mitigate query acceleration issues.
+# Query is returning stale data
 
-- **Query acceleration issues**
-  - **[Query is returning old data](#query-is-returning-old-data)**  
-    Result freshness issue: query results don't reflect the latest data from the underlying delta table.
-  - **Query is not running fast enough**  
-    Performance issue: query is slower than expected, and acceleration doesn't appear to improve performance.
-    - **[Check if catalog is stale](#check-if-catalog-is-stale)**  
-      Is the query acceleration catalog older than the configured `MaxAge` and therefore not used?
-      - **[Troubleshoot stale catalogs](#troubleshoot-stale-catalogs)**  
-        Diagnose why the catalog isn't refreshing (for example, unhealthy state, frequent changes, or recent enablement).
-      - **[Query acceleration unhealthy state – understanding and mitigating](#query-acceleration-unhealthy-state--understanding-and-mitigating)**  
-        Is query acceleration unhealthy due to configuration or schema issues?
-    - **[Check if query is over non-accelerated data](#check-if-query-is-over-non-accelerated-data)**  
-      Is the query reading data directly from the remote delta table?
-      - **[Troubleshoot queries over non-accelerated-data](#troubleshoot-queries-over-non-accelerated-data)**  
-        Align query filters with the hot period or hot windows and verify that data within those ranges is fully cached.
-      - **[Understanding and mitigating data acceleration issues](#understanding-and-mitigating-data-acceleration-issues)**  
-        Investigate incomplete acceleration due to ongoing caching, large parquet files, or insufficient cluster capacity.
-    - **[Ensure query complies with KQL best practices](../query/best-practices.md)**<br/>
-      Optimize the query as is instructed in the KQL best practices document
-
-## Query is returning old data
+This is a data freshness issue: query results don't reflect the latest data from the underlying delta table.
 
 Query acceleration refreshes the accelerated data so that results are no older than the configured `MaxAge` value in the policy. 
 By design, queries over accelerated external tables may return data that lags behind the latest delta table version by up to `MaxAge`. Set `MaxAge` to the maximum data staleness that is acceptable at query time.
@@ -68,23 +47,32 @@ You can control the effective `MaxAge` in two ways:
 1. Configure the `MaxAge` property in the query acceleration policy using the [`.alter query acceleration policy` command](alter-query-acceleration-policy-command.md).
 2. Override `MaxAge` per query by using the [`external_table()` operator's](../query/external-table-function.md) `MaxAgeOverride` parameter.
 
-## Check if catalog is stale
+# Query is not running fast enough
 
-Query acceleration uses a local catalog for the external table containing a snapshot of the delta table metadata. If this catalog hasn't been updated within the configured `MaxAge` (see the query acceleration policy's `MaxAge` property), it's considered **stale** and won't be used at query time. In that case, queries fall back to reading the remote delta table directly, which can be significantly slower.
+This is a performance issue: query is slower than expected, and acceleration doesn't appear to improve performance.
+
+There are a few reasons why this could happen:
+1. The query acceleration catalog is unusable (out-of-date or never built) - see section [Check if catalog is unusable](#check-if-catalog-is-unusable)
+2. The query scans non-accelerated data - see section [Check if query is over non-accelerated data](#check-if-query-is-over-non-accelerated-data)
+3. The query does not comply with KQL best practices - see [KQL best practices](../query/best-practices.md)
+
+## Check if catalog is unusable
+
+Query acceleration uses a local catalog for the external table containing a snapshot of the delta table metadata. If this catalog hasn't been updated within the configured `MaxAge` (see the query acceleration policy's `MaxAge` property), it's considered **unusable** and won't be used at query time. In that case, queries fall back to reading the remote delta table directly, which can be significantly slower.
 
 Fetch the current state of the catalog using the following command:
 
 ```kusto
 .show external table [ETName] details
 | extend MinimumUpdateTime = now() - totimespan(todynamic(QueryAccelerationPolicy).MaxAge)
-| project IsCatalogStale = MinimumUpdateTime < todatetime(todynamic(QueryAccelerationState).LastUpdatedDateTime)
+| project IsCatalogUnusable = MinimumUpdateTime < todatetime(todynamic(QueryAccelerationState).LastUpdatedDateTime)
 ```
 
-`IsCatalogStale == true` indicates the catalog is stale and query acceleration won't be used.
+`IsCatalogUnusable == true` indicates the catalog is stale and query acceleration won't be used.
 
-### Troubleshoot stale catalogs
+### Troubleshoot unusable catalogs
 
-To understand why a catalog is stale, first check whether the query acceleration state is healthy and resolve unhealthy reasons as needed.
+To understand why a catalog is unusable, first check if the query acceleration state is healthy and resolve unhealthy reasons as needed.
 
 Run:
 
@@ -94,8 +82,9 @@ Run:
 | project IsHealthy = state.IsHealthy, UnhealthyReason = state.NotHealthyReason
 ```
 
+- If the state is **healthy** but the catalog is still stale, it could be that the query acceleration policy was enabled recently.
 - If the state is **unhealthy**, refer to [Query acceleration unhealthy state – understanding and mitigating](#query-acceleration-unhealthy-state--understanding-and-mitigating).
-- If the state is **healthy** but the catalog is still stale, consider the following cases.
+
 
 #### Query acceleration policy was enabled recently
 
@@ -108,13 +97,7 @@ When the query acceleration policy is enabled for the first time, building the i
 
 If `LastUpdatedDateTime` is empty, allow some time for the first update to complete. This usually takes several minutes. Subsequent updates are expected to be significantly faster.
 
-#### The delta table is frequently changing
-
-A `MaxAge` value (default is five minutes) that is too low for a frequently changing delta table can result in a constantly stale catalog. For example, if the delta table undergoes frequent `OPTIMIZE` or `MERGE` operations that rewrite a large portion of the underlying parquet files (such as aggressive compaction or large upserts), the catalog might lag behind.
-
-If the queries can tolerate slightly older data, consider increasing the `MaxAge` value using the [`.alter query acceleration policy` command](alter-query-acceleration-policy-command.md).
-
-## Query acceleration unhealthy state – understanding and mitigating
+#### Query acceleration unhealthy state – understanding and mitigating
 
 When an external table's query acceleration is unhealthy, you can retrieve the unhealthy reason using the following command:
 
@@ -168,7 +151,7 @@ Use the following command and filter on a time frame that includes the relevant 
 ```
 
 If `ExternalDataStats.iterated_artifacts` or `ExternalDataStats.downloaded_items` are greater than `0`, it means data was read from the remote delta table (non-accelerated path).
-The following sections will help you troubleshoot this.
+The following section will help you understand why.
 
 ### Troubleshoot queries over non-accelerated-data
 
@@ -207,11 +190,11 @@ Use the following command to check the acceleration progress:
 - If `CompletionPercentage < 100`, allow more time for data to be accelerated.
 - If `CompletionPercentage` doesn't increase over time, follow the guidance in [Understanding and mitigating data acceleration issues](#understanding-and-mitigating-data-acceleration-issues).
 
-## Understanding and mitigating data acceleration issues
+### Understanding and mitigating data acceleration issues
 
 Unaccelerated data (`CompletionPercentage < 100`) can stem from several issues.
 
-### Data is currently being accelerated
+#### Data is currently being accelerated
 
 Data acceleration might take time, especially when:
 
@@ -221,14 +204,14 @@ Data acceleration might take time, especially when:
 
 Frequently running `OPTIMIZE` or `MERGE` operations on the source delta table that cause large-scale rewrites of data files can negatively affect acceleration performance because data files are repeatedly rewritten, and need to be accelerated.
 
-### Data files aren't eligible for acceleration
+#### Data files aren't eligible for acceleration
 
 Parquet data files larger than **1 GB** won't be cached.
 
 If your delta table includes many large files, consider adjusting your data generation or optimization strategy to produce smaller parquet files.
 If this requires recreating the Delta table, make sure you recreate the external table and reenable query acceleration policy.
 
-### Insufficient cluster capacity or resources
+#### Insufficient cluster capacity or resources
 
 Query acceleration operations are restricted by the cluster's available query acceleration capacity.
 
