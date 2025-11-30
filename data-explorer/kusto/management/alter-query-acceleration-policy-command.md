@@ -3,7 +3,7 @@ title: .alter query acceleration policy command
 description: Learn how to use the .alter query acceleration policy command to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 09/16/2025
+ms.date: 11/30/2025
 ---
 
 # `.alter query acceleration policy` command
