@@ -3,11 +3,11 @@ title: Create an app to run management commands
 description: Learn how to create an app to run management commands using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 08/11/2024
-monikerRange: "azure-data-explorer"
+ms.date: 11/16/2025
 ms.custom: sfi-ropc-nochange
 #customer intent: To learn about creating an app to run management commands using Kusto client libraries.
 ---
+
 # Create an app to run management commands
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
