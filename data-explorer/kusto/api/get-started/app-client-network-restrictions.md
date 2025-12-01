@@ -35,9 +35,9 @@ This article gives step-by-step guidance on managing DNS restrictions in Kusto t
 
     :::image type="content" source="../../media/bypass-dns-restrictions/kusto-explorer-options.png" alt-text="Screenshot of the Options editor open with the Additional Trusted Hosts field highlighted.":::
 
-## Bypass DNS restrictions with Azure Data Explorer
+## Bypass DNS restrictions with Azure Data Explorer web UI
 
-1. Open Azure Data Explorer.
+1. Open [Azure Data Explorer](https://dataexplorer.azure.com/home).
 1. Select the *Settings* icon in the top-right corner.
 1. Select **Connection**.
 1. In **Additional trusted hosts**, add the fully qualified hostname or DNS suffix (preceded with an asterisk `*`) you want to work with. List multiple FQDNs or DNS suffixes by separating them with a semicolon `;`.
