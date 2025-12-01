@@ -3,11 +3,11 @@ title: Use LightIngest to ingest data into Azure Data Explorer
 description: Learn about LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 11/03/2025
+ms.date: 11/18/2025
 ---
 
 # Use LightIngest to ingest data into Azure Data Explorer
- 
+
 [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md) is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder, an Azure blob storage container, or an Amazon S3 bucket.
 
 LightIngest is most useful when you want to ingest a large amount of data, because there's no time constraint on ingestion duration. It's also useful when you want to later query records according to the time they were created, and not the time they were ingested.
@@ -20,12 +20,15 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
 
 * LightIngest. Get LightIngest in one of two ways:
   * [Download LightIngest binaries for your operating system](https://github.com/Azure/Kusto-Lightingest/releases). Make sure to unzip the binaries after download.
-  
+
   * [Install LightIngest as a .NET tool](https://www.nuget.org/packages/Microsoft.Azure.Kusto.LightIngest). This method requires that you have the .NET SDK version 6.0 or higher installed on your machine. Then, run the following command:
 
       ```
       dotnet tool install -g Microsoft.Azure.Kusto.LightIngest
       ```
+
+> [!NOTE]
+> Consider using the [queued ingestion commands](/kusto/management/data-ingestion/queued-ingestion-use-case?view=azure-data-explorer&preserve-view=true) as they do not require installing software.
 
 ## Run LightIngest
 
@@ -110,10 +113,10 @@ The argument values must include:
 > [!IMPORTANT]
 > When you specify that the creation time should be overridden, make sure the `Lookback` property in the target table's effective [Extents merge policy](/kusto/management/merge-policy?view=azure-data-explorer&preserve-view=true) aligns with the values in your file or blob paths.
 
-**Examples** 
+**Examples**
 
-* A blob name that contains the datetime as follows: `historicalvalues19840101.parquet` (the timestamp is four digits for the year, two digits for the month, and two digits for the day of month), 
-    
+* A blob name that contains the datetime as follows: `historicalvalues19840101.parquet` (the timestamp is four digits for the year, two digits for the month, and two digits for the day of month),
+
     The value for `-creationTimePattern` argument is part of the filename: *"'historicalvalues'yyyyMMdd'.parquet'"*
 
     ```kusto
@@ -121,7 +124,7 @@ The argument values must include:
      -pattern:"*.parquet" -format:parquet -limit:2 -cr:10.0 -dontWait:true
     ```
 
-* For a blob URI that refers to hierarchical folder structure, like `https://storageaccount/mycontainer/myfolder/2002/12/01/blobname.extension`, 
+* For a blob URI that refers to hierarchical folder structure, like `https://storageaccount/mycontainer/myfolder/2002/12/01/blobname.extension`,
 
     The value for `-creationTimePattern` argument is part of the folder structure: *"'folder/'yyyy/MM/dd'/blob'"*
 
@@ -220,4 +223,3 @@ LightIngest performs three actions that can use managed identity for authenticat
 * **Connect to Azure Storage to download blobs**: Use "-ingestmi" to specify a managed identity installed on the Kusto service that has read privileges on the storage container.
 
 * **Connect to Azure Storage to list container blobs**: Use the "-storageMi" argument to specify a managed identity installed on the client VM that has list privileges on the storage container. If you use this method but not the previous one (connect to Azure storage to download blobs), the managed identity must have read privileges as well and a token is passed to the Kusto service to be used for the ingestion. Set all three arguments.
- 
