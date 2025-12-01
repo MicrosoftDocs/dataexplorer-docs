@@ -49,7 +49,7 @@ This article gives step-by-step guidance on managing DNS restrictions in Kusto t
 For command-line applications and tools, disable DNS validation entirely by passing a command-line argument or setting an environment variable.
 
 > [!NOTE]
-> Disabling DNS validation using environment variables affects all applications and tools using the C# SDK, including Kusto Explorer, Light Ingest, Kusto CLI, Perkus, and any third-party application developed with the C# Kusto SDK.
+> Disabling DNS validation using environment variables affects all applications and tools using the C# SDK, including Kusto Explorer, Light Ingest, Kusto CLI, and any third-party application developed with the C# Kusto SDK.
 
 To disable using a command-line argument, add the following argument to the tool's command line.
 
