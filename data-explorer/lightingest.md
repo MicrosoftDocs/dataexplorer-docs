@@ -28,7 +28,7 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
       ```
 
 > [!NOTE]
-> Consider using the [queued ingestion commands](kusto/management/data-ingestion/queued-ingestion-use-case?view=azure-data-explorer&preserve-view=true) as they do not require installing software.
+> Consider using the [queued ingestion commands](/kusto/management/data-ingestion/queued-ingestion-use-case?view=azure-data-explorer&preserve-view=true) as they do not require installing software.
 
 ## Run LightIngest
 
