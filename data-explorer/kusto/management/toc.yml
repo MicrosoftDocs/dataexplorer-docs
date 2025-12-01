@@ -586,6 +586,9 @@ items:
           - name: Query acceleration policy
             href: query-acceleration-policy.md
             displayName: external table, delta table
+          - name: Query acceleration troubleshooting guide
+            href: query-acceleration-tsg.md
+            displayName: external table, delta table
           - name: .alter query acceleration policy command
             href: alter-query-acceleration-policy-command.md
             displayName: external table, delta table
