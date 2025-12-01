@@ -243,5 +243,6 @@ Run the following command to view the remaining capacity:
 
 - If `Remaining == 0` consistently and `CompletionPercentage` isn't increasing, consider:
 
-  - Increasing the `QueryAcceleration` capacity by [altering the capacity policy](alter-capacity-policy-command.md).
   - Scaling the cluster out or up to provide more resources.
+  - Increasing the `QueryAcceleration` capacity by [altering the capacity policy](alter-capacity-policy-command.md). NOTE: altering the capacity policy may have adverse effects on other operations. Alter the policy as a last resort at your own discretion.
+
