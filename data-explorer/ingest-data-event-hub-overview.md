@@ -3,7 +3,7 @@ title: Ingest from Event Hub - Azure Data Explorer
 description: This article describes how to ingest data from Azure Event Hubs into Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 08/26/2025
+ms.date: 12/01/2025
 ms.custom: sfi-ropc-nochange
 ---
 # Azure Event Hubs data connection

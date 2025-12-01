@@ -3,7 +3,7 @@ title: "Azure Data Explorer POC playbook: Big data analytics"
 description: "A high-level methodology for preparing and running an effective Azure Data Explorer proof of concept (POC) project."
 ms.reviewer: devsha
 ms.topic: conceptual
-ms.date: 11/02/2023
+ms.date: 12/01/2025
 ---
 
 # Azure Data Explorer POC playbook: Big data analytics
@@ -29,7 +29,7 @@ The following scenarios are also good candidates for Azure Data Explorer:
 
 - Low latency data store for real-time telemetry-based alerts
 - [IoT telemetry data storage and analytics](/azure/architecture/solution-ideas/articles/iot-azure-data-explorer)
-- [High speed interactive analytics layer](/azure/architecture/solution-ideas/articles/interactive-azure-data-explorer). Particularly when used with Apache Spark engines such as Synapse Spark, DataBricks, or traditional data warehouses such as Synapse SQL pools.
+- [High speed interactive analytics layer](/azure/architecture/solution-ideas/articles/interactive-azure-data-explorer). Particularly when used with Apache Spark engines such as DataBricks.
 - [Log and observability analytics](/azure/architecture/solution-ideas/articles/monitor-azure-data-explorer)
 
 ## Prepare for the POC

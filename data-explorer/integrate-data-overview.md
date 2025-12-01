@@ -37,7 +37,6 @@ The following tables summarizes the available data connectors, tools, and integr
 | [Apache Flink](integrate-overview.md#apache-flink) | **Ingestion** | :heavy_check_mark: | | [Open source](https://github.com/Azure/flink-connector-kusto/) | Telemetry |
 | [Apache Log4J 2](integrate-overview.md#apache-log4j-2) | **Ingestion** | :heavy_check_mark: | :heavy_check_mark: | First party, [Open source](https://github.com/Azure/azure-kusto-log4j) | Logs |
 | [Apache Spark](integrate-overview.md#apache-spark) | **Export**<br /><br />**Ingestion** | | | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
-| [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics) | **Export**<br /><br />**Ingestion** | | | First party | Telemetry |
 | [Azure Cosmos DB](integrate-overview.md#azure-cosmos-db) | **Ingestion** | :heavy_check_mark: | | First party | Change feed |
 | [Azure Data Factory](integrate-overview.md#azure-data-factory) | **Export**<br /><br />**Ingestion** | | | First party | Data orchestration |
 | [Azure Event Grid](integrate-overview.md#azure-event-grid) | **Ingestion** | :heavy_check_mark: | | First party | Event processing |

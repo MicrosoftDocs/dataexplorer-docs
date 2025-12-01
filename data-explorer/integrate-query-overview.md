@@ -3,7 +3,7 @@ title: Query integrations overview
 description: Learn about the available query integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 01/30/2024
+ms.date: 12/01/2025
 
 # CustomerIntent: As a data ingestor, I want to know what query connectors and tools are available, so that I can choose the right one for my use case.
 ---
@@ -35,7 +35,6 @@ The following tables summarize the available query connectors, tools, and integr
 | Name                                                                                                       | Functionality         | Roles                                | Use cases                                                                                                                           |
 | ---------------------------------------------------------------------------------------------------------- | ----------------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
 | [Apache Spark](integrate-overview.md#apache-spark)                                                         | Query, Ingest, and Export | Data Analyst, Data Scientist         | Machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics scenarios using any Spark cluster                            |
-| [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics) | Query, Ingest, and Export | Data Analyst, Data Scientist         | Machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics scenarios using Synapse Analytics Spark cluster              |
 | [Azure Functions](integrate-overview.md#azure-functions)                                                   | Query, Ingest, and Orchestrate   | Data Engineer, Application Developer | Integrate Azure Data Explorer into your serverless workflows to ingest data and run queries against your cluster                    |
 | [JDBC](integrate-overview.md#jdbc)                                                                         | Query                   | Application Developer                | Use JDBC to connect to Azure Data Explorer databases and execute queries                                                            |
 | [Logic Apps](integrate-overview.md#logic-apps)                                                             | Query and Orchestrate   | Low Code Application Developer       | Run queries and commands automatically as part of a scheduled or triggered task.                                                    |
