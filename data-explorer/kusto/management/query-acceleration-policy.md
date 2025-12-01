@@ -21,6 +21,9 @@ Query acceleration is supported in Eventhouse over OneLake, Azure Data Lake Stor
 To enable query acceleration in the Fabric UI, see [Query acceleration over OneLake shortcuts](https://go.microsoft.com/fwlink/?linkid=2296674).
 ::: moniker-end
 
+> [!IMPORTANT]
+> To troubleshoot problems with query acceleration, see [Troubleshoot query acceleration over external delta tables](query-acceleration-tsg.md).
+
 ## Limitations
 
 * The number of columns in the external table can't exceed 900.
