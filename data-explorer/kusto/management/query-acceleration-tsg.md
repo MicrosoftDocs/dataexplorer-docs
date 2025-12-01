@@ -52,17 +52,18 @@ By design, queries over accelerated external tables may return data that lags be
 
 You can control the effective `MaxAge` in two ways:
 
-1. Configure the `MaxAge` property in the query acceleration policy using the [`.alter query acceleration policy` command](alter-query-acceleration-policy-command.md).
-2. Override `MaxAge` per query by using the [`external_table()` operator's](../query/external-table-function.md) `MaxAgeOverride` parameter.
+- Configure the `MaxAge` property in the query acceleration policy using the [`.alter query acceleration policy` command](alter-query-acceleration-policy-command.md).
+- Override `MaxAge` per query by using the [`external_table()` operator's](../query/external-table-function.md) `MaxAgeOverride` parameter.
 
 ## Query isn't running fast enough
 
 This is a performance issue: query is slower than expected, and acceleration doesn't appear to improve performance.
 
 There are a few reasons why this could happen:
-1. The query acceleration catalog is unusable (out-of-date or never built) - see section [Check if catalog is unusable](#check-if-catalog-is-unusable)
-2. The query scans nonaccelerated data - see section [Check if query is over nonaccelerated data](#check-if-query-is-over-nonaccelerated-data)
-3. The query doesn't comply with KQL best practices - see [KQL best practices](../query/best-practices.md)
+
+- The query acceleration catalog is unusable (out-of-date or never built) - see section [Check if catalog is unusable](#check-if-catalog-is-unusable)
+- The query scans nonaccelerated data - see section [Check if query is over nonaccelerated data](#check-if-query-is-over-nonaccelerated-data)
+- The query doesn't comply with KQL best practices - see [KQL best practices](../query/best-practices.md)
 
 ## Check if catalog is unusable
 
@@ -175,8 +176,8 @@ The following section helps you understand why.
 
 There are two main reasons why a query might read non-accelerated data:
 
-1. The query-time filter isn't fully within the query acceleration hot period or hot windows.
-2. The data within the policy hot period isn't fully cached.
+- The query-time filter isn't fully within the query acceleration hot period or hot windows.
+- The data within the policy hot period isn't fully cached.
 
 #### Query filter isn't fully within the hot period or hot windows
 
