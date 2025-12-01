@@ -5,7 +5,7 @@ ms.reviewer: yogilad
 ms.author: spelluru
 author: spelluru
 ms.topic: how-to
-ms.date: 11/16/2025
+ms.date: 12/01/2025
 ms.custom: 
 ---
 
@@ -35,9 +35,9 @@ This article gives step-by-step guidance on managing DNS restrictions in Kusto t
 
     :::image type="content" source="../../media/bypass-dns-restrictions/kusto-explorer-options.png" alt-text="Screenshot of the Options editor open with the Additional Trusted Hosts field highlighted.":::
 
-## Bypass DNS restrictions with Azure Data Explorer
+## Bypass DNS restrictions with Azure Data Explorer web UI
 
-1. Open Azure Data Explorer.
+1. Open [Azure Data Explorer](https://dataexplorer.azure.com/home).
 1. Select the *Settings* icon in the top-right corner.
 1. Select **Connection**.
 1. In **Additional trusted hosts**, add the fully qualified hostname or DNS suffix (preceded with an asterisk `*`) you want to work with. List multiple FQDNs or DNS suffixes by separating them with a semicolon `;`.
@@ -49,7 +49,7 @@ This article gives step-by-step guidance on managing DNS restrictions in Kusto t
 For command-line applications and tools, disable DNS validation entirely by passing a command-line argument or setting an environment variable.
 
 > [!NOTE]
-> Disabling DNS validation using environment variables affects all applications and tools using the C# SDK, including Kusto Explorer, Light Ingest, Kusto CLI, Perkus, and any third-party application developed with the C# Kusto SDK.
+> Disabling DNS validation using environment variables affects all applications and tools using the C# SDK, including Kusto Explorer, Light Ingest, Kusto CLI, and any third-party application developed with the C# Kusto SDK.
 
 To disable using a command-line argument, add the following argument to the tool's command line.
 
@@ -75,7 +75,7 @@ using Kusto.Data.Common;
  
 // Add a DNS domain
 KustoTrustedEndpoints.AddTrustedHosts(
-    new[] { new FastSuffixMatcher<EndpointContext>.MatchRule("*.domain.com", exact: false, context: KustoTrustedEndpoints.KustoEndpointContext) },
+    new[] { new FastSuffixMatcher<EndpointContext>.MatchRule(".domain.com", exact: false, context: KustoTrustedEndpoints.KustoEndpointContext) },
     replace:false);
  
 // Add a fully qualified domain name
@@ -98,23 +98,10 @@ import (
     "github.com/Azure/azure-kusto-go/azkustodata/trustedEndpoints"
 )
 
-// Add a DNS domain
-trustedEndpoints.Instance.AddTrustedHosts([]trustedEndpoints.MatchRule{
-    security.NewMatchRule("*.domain.com", false),
-})
-
-// Add a fully qualified domain name
-trustedEndpoints.Instance.AddTrustedHosts([]trustedEndpoints.MatchRule{
-    security.NewMatchRule("mykusto.domain.com", true),
-})
-
-// Set a custom validation policy
-trustedEndpoints.Instance.SetOverrideMatcher(
-    func(h string) bool {
-        return true
-            },
-    security.KustoTrustedEndpoints.KustoEndpointContext,
-)
+// Due to an issue in Go SDK, the only available bypass option in old versions is to provide a custom policy
+// For simplicity, the suggestion is to blank allow requests, until an SDK upgrade is possible
+// This doc will be updated when a fixed version is available
+trustedEndpoints.Instance.SetOverridePolicy( func(s string) bool { return true} )
 
 ```
 
@@ -127,7 +114,7 @@ import com.microsoft.azure.kusto.data.auth.endpoints.MatchRule;
 
 // Add a DNS domain
 KustoTrustedEndpoints.addTrustedHosts(
-    java.util.Arrays.asList(new MatchRule("*.domain.com", false)));
+    java.util.Arrays.asList(new MatchRule(".domain.com", false)));
 
 // Add a fully qualified domain name
 KustoTrustedEndpoints.addTrustedHosts(
@@ -144,16 +131,16 @@ KustoTrustedEndpoints.setOverridePolicy(
 
 ```javascript
 
-import { KustoTrustedEndpoints, MatchRule } from "azure.kusto.data";
+import { kustoTrustedEndpoints, MatchRule } from "azure.kusto.data";
 
 // Add a DNS domain
-KustoTrustedEndpoints.addTrustedHosts([new MatchRule("*.domain.com", false)]);
+kustoTrustedEndpoints.addTrustedHosts([new MatchRule(".domain.com", false)]);
 
 // Add a fully qualified domain name
-KustoTrustedEndpoints.addTrustedHosts([new MatchRule("mykusto.domain.com", true)]);
+kustoTrustedEndpoints.addTrustedHosts([new MatchRule("mykusto.domain.com", true)]);
 
 // Set a custom validation policy
-KustoTrustedEndpoints.setOverrideMatcher(
+kustoTrustedEndpoints.setOverrideMatcher(
     (h) => true,
     KustoTrustedEndpoints.KustoEndpointContext
 );
@@ -164,16 +151,16 @@ KustoTrustedEndpoints.setOverrideMatcher(
 
 ```python
 
-from azure.kusto.data.security import KustoTrustedEndpoints, MatchRule
+from azure.kusto.data.security import well_known_kusto_endpoints, MatchRule
 
 # Add a DNS domain
-KustoTrustedEndpoints.add_trusted_hosts([MatchRule("*.domain.com", exact=False)])
+well_known_kusto_endpoints.add_trusted_hosts([MatchRule(".domain.com", exact=False)])
 
 # Add a fully qualified domain name
-KustoTrustedEndpoints.add_trusted_hosts([MatchRule("mykusto.domain.com", exact=True)])
+well_known_kusto_endpoints.add_trusted_hosts([MatchRule("mykusto.domain.com", exact=True)])
 
 # Set a custom validation policy 
-KustoTrustedEndpoints.set_override_matcher(
+well_known_kusto_endpoints.set_override_matcher(
     lambda h: True, 
     KustoTrustedEndpoints.KustoEndpointContext)
 
