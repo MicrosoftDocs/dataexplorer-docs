@@ -1,3 +1,11 @@
+---
+title: query acceleration troubleshooting guide
+description: Learn how to troubleshoot query acceleration issues
+ms.reviewer: urishapira
+ms.topic: reference
+ms.date: 12/01/2025
+---
+
 # Troubleshoot query acceleration over external delta tables
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
@@ -17,7 +25,7 @@ This article helps you troubleshoot scenarios where:
 - Query over an accelerated external delta table returns **stale data**, or
 - Query over an accelerated external delta table is **slower than expected**
 
-# Prerequisites
+## Prerequisites
 
 1. **Ensure query acceleration is enabled on the external table** by running the following command:
 
@@ -35,7 +43,7 @@ This article helps you troubleshoot scenarios where:
     If such operations have been executed on the delta table, recreate the external table and re-enable the query acceleration policy.
 
 
-# Query is returning stale data
+## Query is returning stale data
 
 This is a data freshness issue: query results don't reflect the latest data from the underlying delta table.
 
@@ -47,13 +55,13 @@ You can control the effective `MaxAge` in two ways:
 1. Configure the `MaxAge` property in the query acceleration policy using the [`.alter query acceleration policy` command](alter-query-acceleration-policy-command.md).
 2. Override `MaxAge` per query by using the [`external_table()` operator's](../query/external-table-function.md) `MaxAgeOverride` parameter.
 
-# Query isn't running fast enough
+## Query isn't running fast enough
 
 This is a performance issue: query is slower than expected, and acceleration doesn't appear to improve performance.
 
 There are a few reasons why this could happen:
 1. The query acceleration catalog is unusable (out-of-date or never built) - see section [Check if catalog is unusable](#check-if-catalog-is-unusable)
-2. The query scans nonaccelerated data - see section [Check if query is over nonaccelerated data](#check-if-query-is-over-non-accelerated-data)
+2. The query scans nonaccelerated data - see section [Check if query is over nonaccelerated data](#check-if-query-is-over-nonaccelerated-data)
 3. The query doesn't comply with KQL best practices - see [KQL best practices](../query/best-practices.md)
 
 ## Check if catalog is unusable
@@ -82,7 +90,7 @@ Run:
 | project IsHealthy = state.IsHealthy, UnhealthyReason = state.NotHealthyReason
 ```
 
-- If the state is **healthy** but the catalog is still stale, it could be that the query acceleration policy was enabled recently.
+- If the state is **healthy** but the catalog is still stale, it could be that the query acceleration policy was enabled recently. See [Query acceleration policy was enabled recently](#query-acceleration-policy-was-enabled-recently)
 - If the state is **unhealthy**, refer to [Query acceleration unhealthy state – understanding and mitigating](#query-acceleration-unhealthy-state--understanding-and-mitigating).
 
 
@@ -114,8 +122,6 @@ Use the following table to understand and mitigate common unhealthy states.
 >```kusto
 > .execute database script <|
 > .alter-merge external table [ETName] policy query_acceleration @'{"IsEnabled":false}'
-> .alter-merge external table [ETName] policy query_acceleration @'{"IsEnabled":true}'
->
 > .alter-merge external table [ETName] policy query_acceleration @'{"IsEnabled":true}'
 >```
 
