@@ -2,7 +2,7 @@
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The [query acceleration policy](query-acceleration-policy.md) enables accelerating queries over external delta tables by caching delta table metadata and data files. The policy defines which data ranges (number of days back and hot windows) are accelerated so that queries over those ranges can run faster.
+The [query acceleration policy](query-acceleration-policy.md) enables accelerating queries over external delta tables by caching delta table metadata and data files. The policy defines which date ranges (number of days back and hot windows) are accelerated so that queries over those ranges can run faster.
 
 The query acceleration feature consists of the following components:
 
@@ -32,14 +32,14 @@ This article helps you troubleshoot scenarios where:
 
     The query acceleration feature assumes a delta table that complies with the Delta protocol. Manual operations executed directly on the delta table (for example, editing transaction logs or parquet files) aren't supported and may result in unexpected behavior.
 
-    If such operations have been executed on the delta table, first recreate the external table and re-enable the query acceleration policy.
+    If such operations have been executed on the delta table, recreate the external table and re-enable the query acceleration policy.
 
 
 # Query is returning stale data
 
 This is a data freshness issue: query results don't reflect the latest data from the underlying delta table.
 
-Query acceleration refreshes the accelerated data so that results are no older than the configured `MaxAge` value in the policy. 
+Query acceleration refreshes the accelerated data periodically, so that results are no older than the configured `MaxAge` value in the policy. 
 By design, queries over accelerated external tables may return data that lags behind the latest delta table version by up to `MaxAge`. Set `MaxAge` to the maximum data staleness that is acceptable at query time.
 
 You can control the effective `MaxAge` in two ways:
@@ -65,7 +65,7 @@ Fetch the current state of the catalog using the following command:
 ```kusto
 .show external table [ETName] details
 | extend MinimumUpdateTime = now() - totimespan(todynamic(QueryAccelerationPolicy).MaxAge)
-| project IsCatalogUnusable = MinimumUpdateTime < todatetime(todynamic(QueryAccelerationState).LastUpdatedDateTime)
+| project IsCatalogUnusable = MinimumUpdateTime > todatetime(todynamic(QueryAccelerationState).LastUpdatedDateTime)
 ```
 
 `IsCatalogUnusable == true` indicates the catalog is stale and query acceleration won't be used.
@@ -95,7 +95,7 @@ When the query acceleration policy is enabled for the first time, building the i
 | project todynamic(QueryAccelerationState).LastUpdatedDateTime
 ```
 
-If `LastUpdatedDateTime` is empty, allow some time for the first update to complete. This usually takes several minutes. Subsequent updates are expected to be significantly faster.
+If `LastUpdatedDateTime` is empty, allow some time for the first update to complete. This usually takes up to several minutes. Subsequent updates are expected to be significantly faster.
 
 #### Query acceleration unhealthy state – understanding and mitigating
 
@@ -112,7 +112,9 @@ Use the following table to understand and mitigate common unhealthy states.
 >
 > To re-enable an external table's query acceleration policy, run the following commands:
 >```kusto
+> .execute database script <|
 > .alter-merge external table [ETName] policy query_acceleration @'{"IsEnabled":false}'
+> .alter-merge external table [ETName] policy query_acceleration @'{"IsEnabled":true}'
 >
 > .alter-merge external table [ETName] policy query_acceleration @'{"IsEnabled":true}'
 >```
@@ -167,8 +169,8 @@ The following section helps you understand why.
 
 There are two main reasons why a query might read non-accelerated data:
 
-1. **The query-time filter isn't fully within the query acceleration hot period or hot windows.**
-2. **The data within the policy hot period isn't fully cached.**
+1. The query-time filter isn't fully within the query acceleration hot period or hot windows.
+2. The data within the policy hot period isn't fully cached.
 
 #### Query filter isn't fully within the hot period or hot windows
 
