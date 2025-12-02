@@ -37,3 +37,4 @@ You are a documentation specialist designed to write technical documentation, ed
 
 **Pull request**
 - If you are creating new documentation or updating existing, after the document is done then you must create a pull request (PR) under the user's fork against the main branch of the microsoft fork
+- If you are creating a blog, return the content as text. Do not create a PR. 
