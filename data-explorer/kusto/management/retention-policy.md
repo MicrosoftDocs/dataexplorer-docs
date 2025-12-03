@@ -40,7 +40,7 @@ A retention policy includes the following properties:
 * **Recoverability**:
   * Data recoverability (Enabled/Disabled) after the data was deleted.
   * Defaults to `Enabled`.
-  * If set to `Enabled`, the data will be recoverable for 14 days after it's been soft-deleted.
+  * If set to `Enabled`, data deleted **due to retention policy** will be recoverable for 14 days after it's been soft-deleted.
   * It is not possible to configure the recoverability period.
 
 > [!NOTE]
