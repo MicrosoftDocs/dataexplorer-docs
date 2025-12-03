@@ -58,20 +58,17 @@ You can control the effective `MaxAge` in two ways:
 
 ### Query latency
 
-This issue is a performance problem: the query is slower than expected, and acceleration doesn't seem to improve performance.
+If a query is performing slower than anticipated and query acceleration doesn't seem to enhance performance, consider the following potential causes:
 
-Several reasons can cause this issue:
+- **Unusable query acceleration catalog**: The catalog may be outdated or not yet built. Refer to the [Troubleshoot unusable catalogs](#troubleshoot-unusable-catalogs) section for resolution steps.
+- **Query accessing non-accelerated data**: The query might be scanning data that hasn't been cached. See the [Troubleshoot queries over nonaccelerated data](#troubleshoot-queries-over-nonaccelerated-data) section for guidance.
+- **Non-compliance with KQL best practices**: Ensure the query adheres to KQL best practices. Refer to the [KQL best practices](../query/best-practices.md) guide for optimization techniques.
 
-- The query acceleration catalog is unusable (out-of-date or never built). To resolve this issue see the [Troubleshoot unusable catalogs](#troubleshoot-unusable-catalogs) section.
-- The query scans nonaccelerated data. To resolve this issue see the [Troubleshoot queries over nonaccelerated data
-](#troubleshoot-queries-over-nonaccelerated-data) section.
-- The query doesn't comply with KQL best practices. To resolve this issue see the [KQL best practices](../query/best-practices.md) guide.
-
-## Unusable catalogs
+### Unusable catalogs
 
 Query acceleration uses a local catalog for the external table that contains a snapshot of the delta table metadata. If this catalog isn't updated within the configured `MaxAge` (see the query acceleration policy's `MaxAge` property), it's considered **unusable** and isn't used at query time. In this case, queries fall back to reading the remote delta table directly, which can be significantly slower.
 
-Fetch the current state of the catalog with the following command:
+Retrieve the current state of the catalog with the following command:
 
 ```kusto
 .show external table [ETName] details
@@ -81,9 +78,8 @@ Fetch the current state of the catalog with the following command:
 
 `IsCatalogUnusable == true` indicates the catalog is stale and query acceleration isn't used.
 
-### Nonaccelerated data
 
-To get the full benefit of query acceleration, you must run queries over **accelerated data**. If your query runs over non-accelerated data, it reads data directly from the remote delta table, which can cause significant latency.
+To maximize the benefits of query acceleration, ensure your queries target **accelerated data**. Queries that access non-accelerated data retrieve information directly from the remote delta table, which might result in higher latency.
 
 Use the following command and filter on a time frame that includes the relevant query:
 
@@ -233,5 +229,7 @@ Run the following command to view the remaining capacity:
 - If `Remaining == 0` consistently and `CompletionPercentage` isn't increasing, consider:
 
   - Scaling the cluster out or up to provide more resources.
-  - Increasing the `QueryAcceleration` capacity by [altering the capacity policy](alter-capacity-policy-command.md). NOTE: altering the capacity policy might have adverse effects on other operations. Alter the policy as a last resort at your own discretion.
+  - Increasing the `QueryAcceleration` capacity by [altering the capacity policy](alter-capacity-policy-command.md).
+  > [!NOTE]
+  > Altering the capacity policy might have adverse effects on other operations. Alter the policy as a last resort at your own discretion.
 
