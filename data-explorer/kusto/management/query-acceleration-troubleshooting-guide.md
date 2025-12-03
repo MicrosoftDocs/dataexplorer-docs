@@ -62,8 +62,9 @@ This issue is a performance problem: the query is slower than expected, and acce
 
 Several reasons can cause this issue:
 
-- The query acceleration catalog is unusable (out-of-date or never built). To resolve this issue see the [Check if catalog is unusable](#check-if-catalog-is-unusable) section.
-- The query scans nonaccelerated data. To resolve this issue see the [Check if query is over nonaccelerated data](#check-if-query-is-over-nonaccelerated-data) section.
+- The query acceleration catalog is unusable (out-of-date or never built). To resolve this issue see the [Troubleshoot unusable catalogs](#troubleshoot-unusable-catalogs) section.
+- The query scans nonaccelerated data. To resolve this issue see the [Troubleshoot queries over nonaccelerated data
+](#troubleshoot-queries-over-nonaccelerated-data) section.
 - The query doesn't comply with KQL best practices. To resolve this issue see the [KQL best practices](../query/best-practices.md) guide.
 
 ## Unusable catalogs
