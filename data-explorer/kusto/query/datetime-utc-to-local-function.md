@@ -17,6 +17,9 @@ Converts UTC [datetime](scalar-data-types/datetime.md) to local datetime using a
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
+> [!NOTE]
+> `datetime_utc_to_local()` is a built-in Kusto function and does not require importing any additional libraries. If you receive an error that the function does not exist, confirm that you're running the query in a supported environment (Azure Data Explorer, Microsoft Sentinel, Azure Monitor, Microsoft Fabric).
+
 ## Parameters
 
 | Name | Type | Required | Description |
