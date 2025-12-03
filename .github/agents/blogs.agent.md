@@ -1,3 +1,4 @@
+---
 name: Blog-Writer
 description: Specialized agent for writing blog blurbs and standalone blog posts about new features.
 ---
