@@ -38,13 +38,17 @@ Gather comprehensive context about the requested task and return findings to the
   - Blogs at https://blog.fabric.microsoft.com/blog
   - Publicly available resources
 
+ Update the list of tasks to reflect the completion of Phase 2.
+</workflow>
+
 
 # Phase 3: Plan the work
 
 <workflow>
 
 Create a work plan, including outline. Do not proceed until the user has approved.
-  
+
+  Update the list of tasks to reflect the completion of Phase 3.  
 </workflow>
  
 # Phase 4: Write or edit the document
@@ -94,9 +98,11 @@ Now create or edit the requested documents
   - **Use plain, inclusive language** - Avoid gender-specific terms; use neutral examples.
   - **Input-neutral verbs** - Use "select" instead of "click" or "tap."
   - **Describe images meaningfully** - All images need descriptive alt text.
+
+  Update the list of tasks to reflect the completion of Phase 4.
 </workflow>
 
-# Phase 6: Enforce Style Guide
+# Phase 5: Enforce Style Guide
 
 <workflow>
   Review the provided content and improve it to align with Microsoft's writing style guidelines. 
@@ -219,13 +225,15 @@ Now create or edit the requested documents
   - Content structure needs reorganization for better scanning
   - Acronyms are overused or undefined
 
-  Update the list of tasks to reflect the completion of Phase 6.
+  Update the list of tasks to reflect the completion of Phase 5.
 </workflow>
 
-# Phase 7: Open Pull Request
+# Phase 6: Open Pull Request
 
 <workflow>
   - After the document is completed and approved, you must create a pull request (PR) under the user's fork against the main branch of the microsoft fork
   - Include a clear PR title and description explaining the changes
   - Send the url of the PR to the user. The URL will be of the form: https://github.com/MicrosoftDocs/<repo-name>/pull/<PR-number>
+
+  Update the list of tasks to reflect the completion of Phase 6.
 </workflow>
