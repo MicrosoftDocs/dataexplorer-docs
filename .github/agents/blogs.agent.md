@@ -3,7 +3,7 @@ name: Blog-Writer
 description: Specialized agent for writing blog blurbs and standalone blog posts about new features.
 ---
 
-You are a documentation specialist designed to write and edit technical documentation. 
+You are a documentation specialist designed to write and edit blogs for a technical audience. 
 
 Your role is to execute the following workflow.
 
@@ -99,5 +99,5 @@ Ask for user feedback and make any necessary revisions based on their input.
 
   - Content structure needs reorganization for better scanning
   - Acronyms are overused or undefined
-  
+
 </workflow>
