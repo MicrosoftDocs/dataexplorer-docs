@@ -21,6 +21,11 @@ Gather details about the blog to be created:
   - What is the feature or topic of the blog?
   - Does the user have specifications, related documentation, or other content that can be used for reference?
   - If there are no specifications, can the user describe the feature and the necessary elements for the blog content?
+  - Are there screenshots or images available? If so, where are they located?
+  
+**Target lengths:**
+- Blog blurb: ~110-150 words
+- Standalone blog: ~900-1000 words
   
 Update the list of tasks to reflect the completion of Phase 1.
  </workflow>
@@ -46,24 +51,37 @@ Gather comprehensive context about the requested task and return findings to the
 
 <workflow>
 
-Create an outline specific to the provided subject. Do not proceed until the user has approved. 
+Create a detailed outline specific to the provided subject. Present the plan to the user and do not proceed until the user has explicitly approved.
 
-Take into account the following general structures:
+If the user requests changes, update the outline and seek approval again.
+
+Take into account the following structures:
   
-  **Blog blurb**
-  - What is the feature and why should I care 
-  - Screenshots (if applicable)
-  - Link to learn more in documentation. The link should be absolute (e.g., https://learn.microsoft.com/azure/...)
-  - Do not encourage users to try the feature
-  - The audience is people looking to see what's new in the product
+  **Blog blurb structure (~110-150 words)**
+  - Opening: What is the feature and its primary benefit
+  - Key capabilities: 2-3 main features or improvements
+  - Visual element: Screenshot or diagram (if applicable)
+  - Documentation link: Absolute URL to learn more without language encoding (e.g., https://learn.microsoft.com/fabric/...)
+  - Tone: Concise, informative, punchy
+  - Audience: Users scanning for what's new in the product
+  - Avoid: Calls to "try it now" or "get started today" - use neutral language like "Learn more" or "See documentation"
 
-  **Standalone blog**
-  - An expanded version of the blog blurb
-  - Include scenarios for when to use this feature and how it can be used in conjunction with other parts of the product
-  - Include a next steps section for users to get started, linking to documentation
-  - Do not encourage users to try the feature
-  - The audience is users who are new to this area of the product
-  - Call to action.
+  **Standalone blog structure (~900-1000 words)**
+  - Introduction (1-2 paragraphs): What is the feature and why it matters
+  - Problem/scenario (2-3 paragraphs): What challenges does this address?
+  - How it works (2-4 paragraphs): Explain the feature's functionality
+  - Use cases (2-3 scenarios): Specific examples of when to use this feature
+    - Multi-tenant environments
+    - Department-based access
+    - Role-based permissions
+    - Compliance requirements
+    - Integration with other features
+  - Getting started: Links to documentation with context (not just "click here")
+  - Related features: How this works with other product capabilities
+  - Conclusion: Summary with resource links
+  - Tone: Explanatory, detailed, educational
+  - Audience: Users new to this area of the product
+  - Avoid: Marketing hype or pressure to adopt - focus on education and enablement
 
 Update the list of tasks to reflect the completion of Phase 3.  
 </workflow>
@@ -73,6 +91,24 @@ Update the list of tasks to reflect the completion of Phase 3.
 <workflow>
 Based on the approved outline, the user's requirements, and research findings, create the requested blog content.
 
+## HTML Structure Guidelines
+- Use semantic HTML tags: `<h2>`, `<h3>`, `<p>`, `<ul>`, `<ol>`, `<a>`, `<strong>`, `<code>`
+- Headings: Use `<h2>` for main sections, `<h3>` for subsections
+- Links: Use descriptive link text, not "click here" or "learn more"
+  - ✅ `<a href="https://learn.microsoft.com/...">Learn about row-level security policies</a>`
+  - ❌ `<a href="https://learn.microsoft.com/...">Click here</a>`
+- Lists: Use `<ul>` for unordered, `<ol>` for sequential steps
+- Code: Use `<code>` for inline code, consider `<pre><code>` for blocks
+- Images (if applicable): Include descriptive alt text
+  - `<img src="image-url.png" alt="Screenshot showing the access control configuration panel">`
+
+## Link Requirements
+- All documentation links must be absolute URLs starting with https://learn.microsoft.com/
+- Verify that linked documentation exists in the repository
+- Use descriptive anchor text that explains what the user will find
+
+After completing the content, present it to the user for review before proceeding to Phase 5.
+
   Update the list of tasks to reflect the completion of Phase 4.
 </workflow>
 
@@ -80,35 +116,74 @@ Based on the approved outline, the user's requirements, and research findings, c
 
 <workflow>
   
-  Review the provided content and improve it to align with Microsoft's writing style guidelines. Key guidelines to enforce include:
+  Review the provided content and improve it to align with Microsoft's writing style guidelines. 
+  
+  Mention what changes you made in the chat response.
 
-  - The returned format is HTML only. Do not include any other format or markdown.
+  ## Output Format
+  - The returned format is HTML only. Do not include markdown or other formats.
+  - Present the HTML in a code block for easy copying
+  - Ensure proper HTML formatting with indentation
+
+  ## Content Guidelines
   - Follow Microsoft documentation style guidelines: https://learn.microsoft.com/en-us/style-guide/welcome/
-  - **Use plain, inclusive language**
+  - **Use plain, inclusive language** - Avoid gender-specific terms, use neutral examples
   - **Use present tense** - "This feature lets you..." not "This feature will let you..."
-  - **Be conversational but professional** - Use contractions (it's, you're, don't) for friendliness.
-  - **Avoid marketing language** - No hype, flowery language, or product advertisements. Language should be neutral, functional and instructional. Example of words that should be avoided: "cutting-edge", "state-of-the-art", "industry-leading", "unparalleled", "revolutionary", "strealine", ...
-  - **Avoid idioms and clichés** - Write for a global audience with plain language.
+  - **Be conversational but professional** - Use contractions (it's, you're, don't) for friendliness
+  - **Avoid marketing language** - No hype, flowery language, or product advertisements. Language should be neutral, functional and instructional. 
+  
+  **Avoid these marketing words:**
+  - "cutting-edge", "state-of-the-art", "industry-leading"
+  - "unparalleled", "revolutionary", "game-changing"
+  - "streamline", "leverage", "robust"
+  - "powerful", "innovative", "seamless"
+  
+  **Examples:**
+  - ❌ "This revolutionary feature lets you leverage cutting-edge technology"
+  - ✅ "This feature lets you control access with role-based permissions"
+  
+  - **Avoid idioms and clichés** - Write for a global audience with plain language
+  - **Avoid pressure tactics** - Don't use "Try it now!", "Don't miss out!", "Get started today!"
+    - ✅ Acceptable: "Learn more", "See documentation", "Explore the feature"
 
   Update the list of tasks to reflect the completion of Phase 5.
   </workflow>
 
-# Phase 6: Review and Finalize
+# Phase 6: Validation and Finalization
 
 <workflow>
 
+  Perform final validation checks before delivering the content:
 
-  Review the entire document for clarity, coherence, and completeness. Ensure that:
-  - The returned format is HTML only. Do not include any other format or markdown.
-  - The content meets the user's requirements
-  - The information is accurate and up-to-date
-  - The document flows logically and is easy to read
-  - Content structure needs reorganization for better scanning
+  ## Content Validation
+  - **Word count**: Verify length matches target (blurb: 110-150 words, standalone: 900-1000 words)
+  - **Accuracy**: Ensure all technical information is correct and up-to-date
+  - **Completeness**: All sections from approved outline are included
+  - **Flow**: Content reads logically and transitions smoothly between sections
+  - **Clarity**: Technical concepts are explained clearly for the target audience
 
-Ask for user feedback and make any necessary revisions based on their input.
+  ## Technical Validation
+  - **HTML syntax**: Validate that HTML is properly formed and tags are closed
+  - **Links**: Verify all documentation links are absolute URLs (https://learn.microsoft.com/...)
+  - **Link text**: Ensure links use descriptive anchor text, not generic phrases
+  - **Images**: Check that alt text is meaningful and descriptive (if images included)
+  - **Acronyms**: First use is spelled out, or acronym is widely known
 
-  - Content structure needs reorganization for better scanning
-  - Acronyms are overused or undefined
+  ## Style Validation
+  - **Tone**: Appropriate for blog type (punchy for blurbs, educational for standalone)
+  - **Marketing language**: Scan for and remove any hype words that were missed
+  - **Present tense**: Verify consistent use of present tense
+  - **Pressure tactics**: Ensure no calls to "try it now" or similar language
+
+  ## Final Delivery
+  - Present the final HTML content in a code block
+  - Provide a brief summary of the content
+  - Ask if the user would like any revisions
+  
+  If revisions are requested:
+  - Clarify what needs to be changed
+  - Make the updates
+  - Re-validate before presenting again
 
   Update the list of tasks to reflect the completion of Phase 6.
 </workflow>
