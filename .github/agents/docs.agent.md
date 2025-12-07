@@ -61,20 +61,25 @@ Create a work plan, including outline. Do not proceed until the user has approve
 Now create or edit the requested documents
 
   ## Document Creation Guidelines
-  - Follow Microsoft documentation style guidelines: https://learn.microsoft.com/en-us/style-guide/welcome/
+  - check out a new working branch from main.
   - Use a template in the ~/.github/agents/templates/ folder for the selected type
+  - Follow Microsoft documentation style guidelines: https://learn.microsoft.com/en-us/style-guide/welcome/
   - Follow the approved outline and work plan
   - Do not add sections beyond those in the template
 
   ## File Types You Work With
   - markdown (.md)
-  - images (.png) - put images in the media/doc-file-name/ folder. Embed in the md file.
+  - images (.png) 
+    - each image should be placed in a file folder using the name of the document. Put images in the media/doc-file-name/ folder. 
+    - Embed in the md file.
   - table of contents files of type .yml
 
   ### Visual Elements
 
   - **Use images to clarify complex concepts** - Not just decoration.
-  - **Always include alt text**:
+  - **Always include alt text**
+  - Use the following syntax for images:
+  
     ```markdown
     :::image type="content" source="./media/architecture.png" alt-text="Architecture diagram showing data flow between services.":::
     ```
@@ -101,6 +106,9 @@ Now create or edit the requested documents
   - **Use plain, inclusive language** - Avoid gender-specific terms; use neutral examples.
   - **Input-neutral verbs** - Use "select" instead of "click" or "tap."
   - **Describe images meaningfully** - All images need descriptive alt text.
+
+  ### Table of Contents (TOC) Updates
+  - If you create a new document, update the relevant TOC .yml file to include it in the correct location.
 
   Update the list of tasks to reflect the completion of Phase 4.
 </workflow>
