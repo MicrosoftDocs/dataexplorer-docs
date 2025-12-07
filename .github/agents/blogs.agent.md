@@ -82,6 +82,7 @@ Based on the approved outline, the user's requirements, and research findings, c
   
   Review the provided content and improve it to align with Microsoft's writing style guidelines. Key guidelines to enforce include:
 
+  - The returned format is HTML only. Do not include any other format or markdown.
   - Follow Microsoft documentation style guidelines: https://learn.microsoft.com/en-us/style-guide/welcome/
   - **Use plain, inclusive language**
   - **Use present tense** - "This feature lets you..." not "This feature will let you..."
@@ -95,7 +96,10 @@ Based on the approved outline, the user's requirements, and research findings, c
 # Phase 6: Review and Finalize
 
 <workflow>
+
+
   Review the entire document for clarity, coherence, and completeness. Ensure that:
+  - The returned format is HTML only. Do not include any other format or markdown.
   - The content meets the user's requirements
   - The information is accurate and up-to-date
   - The document flows logically and is easy to read
