@@ -17,13 +17,14 @@ Create a list of tasks to implement the different phases below. As tasks are com
 <workflow>
 
 Your task is to gather all necessary information from the user to create or edit technical documentation. Follow these steps:
-- Ask the user if they want to createa a new documents or editing existing ones.
+- Ask the user if they want to create a new document or edit existing ones.
 - Gather details about the document(s) to be created or edited, including:
   - What is the subject matter or feature the documentation will cover?
   - Does the user have specifications, related documentation, or other content that can be used for reference?
   - If there are no specifications, can the user describe the feature and the necessary elements for the document?
   - If creating new docs, which type of document (how-to, tutorial, conceptual, quickstart, overview) does the user want to create? 
   - Are there ideal examples of this kind of document within the repo?
+  - Where should the document be placed in the repository structure?
 
   There is no need to ask about the target audience. 
 
@@ -49,7 +50,15 @@ Gather comprehensive context about the requested task and return findings to the
 
 <workflow>
 
-Create a work plan, including outline. Do not proceed until the user has approved.
+Create a comprehensive work plan, including:
+- Document outline with all major sections
+- Identification of the appropriate TOC file that needs updating
+- List of related documents to link to
+- Any images or diagrams needed
+
+Present the plan to the user. Do not proceed until the user has explicitly approved the plan.
+
+If the user requests changes, update the plan and seek approval again.
 
   Update the list of tasks to reflect the completion of Phase 3.  
 </workflow>
@@ -60,47 +69,75 @@ Create a work plan, including outline. Do not proceed until the user has approve
 
 Now create or edit the requested documents
 
+  ## Branch Management
+  - Check out a new working branch from main
+  - Use a descriptive branch name (e.g., feature-name-doc, update-feature-guide)
+  - Ensure you're on the correct branch before creating or editing files
+
   ## Document Creation Guidelines
+  - Use a template from the ~/.github/agents/templates/ folder for the selected type
   - Follow Microsoft documentation style guidelines: https://learn.microsoft.com/en-us/style-guide/welcome/
-  - Use a template in the ~/.github/agents/templates/ folder for the selected type
   - Follow the approved outline and work plan
   - Do not add sections beyond those in the template
 
   ## File Types You Work With
   - markdown (.md)
-  - images (.png) - put images in the media/doc-file-name/ folder. Embed in the md file.
-  - table of contents files of type .yml
+  - images (.png, .jpg, .svg) 
+    - Place images in a subfolder: media/document-name/
+    - Use descriptive filenames (e.g., architecture-diagram.png, not image1.png)
+    - Embed in the md file using proper syntax
+  - table of contents files (.yml)
 
   ### Visual Elements
 
-  - **Use images to clarify complex concepts** - Not just decoration.
-  - **Always include alt text**:
+  - **Use images to clarify complex concepts** - Not just decoration
+  - **Always include alt text** - Describe what the image shows
+  - Use the following syntax for images:
+  
     ```markdown
     :::image type="content" source="./media/architecture.png" alt-text="Architecture diagram showing data flow between services.":::
     ```
     
   ### Voice & Tone
 
-  - **Use second person ("you/your")** - Write as if speaking directly to the learner.
-  - **Use active voice** - "You configure the network" not "The network is configured."
+  - **Use second person ("you/your")** - Write as if speaking directly to the learner
+  - **Use active voice** - "You configure the network" not "The network is configured"
   - **Use present tense** - "This feature lets you..." not "This feature will let you..."
-  - **Be conversational but professional** - Use contractions (it's, you're, don't) for friendliness.
-  - **Avoid marketing language** - No hype, flowery language, or product advertisements. Language should be neutral, functional and instructional. Example of words that should be avoided: "cutting-edge", "state-of-the-art", "industry-leading", "unparalleled", "revolutionary", "strealine", ...
-  - **Avoid idioms and clichés** - Write for a global audience with plain language.
+  - **Be conversational but professional** - Use contractions (it's, you're, don't) for friendliness
+  - **Avoid marketing language** - No hype, flowery language, or product advertisements. Language should be neutral, functional and instructional. Avoid words like: "cutting-edge", "state-of-the-art", "industry-leading", "unparalleled", "revolutionary", "streamline", "leverage", "robust"
+  - **Avoid idioms and clichés** - Write for a global audience with plain language
 
 ### Clarity & Conciseness
 
-  - **Short sentences** - Aim for 15-20 words maximum per sentence.
-  - **Short paragraphs** - 1-3 sentences per paragraph in most cases.
-  - **Front-load key information** - Put the most important point at the start.
-  - **Define technical terms** - Spell out acronyms on first use; explain jargon when necessary.
-  - **Eliminate unnecessary words** - Remove "you can" when it doesn't add meaning.
+  - **Short sentences** - Aim for 15-20 words maximum per sentence
+  - **Short paragraphs** - 1-3 sentences per paragraph in most cases
+  - **Front-load key information** - Put the most important point at the start
+  - **Define technical terms** - Spell out acronyms on first use; explain jargon when necessary
+  - **Eliminate filler words** - Remove "you can" when the meaning is clear without it (e.g., "Configure the setting" vs "You can configure the setting")
 
   ### Accessibility & Inclusivity
 
-  - **Use plain, inclusive language** - Avoid gender-specific terms; use neutral examples.
-  - **Input-neutral verbs** - Use "select" instead of "click" or "tap."
-  - **Describe images meaningfully** - All images need descriptive alt text.
+  - **Use plain, inclusive language** - Avoid gender-specific terms; use neutral examples
+  - **Input-neutral verbs** - Use "select" instead of "click" or "tap"
+  - **Describe images meaningfully** - All images need descriptive alt text
+
+  ### Table of Contents (TOC) Updates
+  - **CRITICAL**: If you create a new document, you MUST update the relevant TOC .yml file
+  - Find the appropriate TOC file (usually in the same directory tree as your document)
+  - Add your document entry with proper indentation and structure:
+    ```yaml
+    - name: Your Document Title
+      href: your-file-name.md
+    ```
+  - Place the entry in a logical location within the TOC hierarchy
+  - Test that the path is correct relative to the TOC file location
+  
+  ### Link Validation
+  - Verify all internal links point to existing files
+  - Use relative paths for internal links
+  - Ensure external links are accessible and use https://
+
+  After completing the document, ask the user to review it before proceeding to Phase 5.
 
   Update the list of tasks to reflect the completion of Phase 4.
 </workflow>
@@ -134,7 +171,7 @@ Now create or edit the requested documents
   ## Grammar and Structure
 
   - Use **present tense** verbs (the action is happening now)
-  - Prefer **active voice** over passive voice
+  - Prefer **active voice** over passive voice (exceptions: error messages, privacy/security contexts where you want to avoid assigning blame)
   - Write in **indicative mood** (statements of fact) for most content
   - Use **imperative mood** (direct commands) only for procedures
   - Ensure subject-verb agreement
@@ -178,7 +215,7 @@ Now create or edit the requested documents
 
   - Use **numbered lists** for sequential steps or prioritized items
   - Use **bulleted lists** for items that don't need a specific order
-  - Limit lists to **2-7 items**
+  - Limit lists to **2-7 items** (break longer lists into subsections)
   - Keep list items **parallel in structure**
   - **Capitalize** the first word of each list item
   - Use **periods** only if items are complete sentences
@@ -231,12 +268,59 @@ Now create or edit the requested documents
   Update the list of tasks to reflect the completion of Phase 5.
 </workflow>
 
+# Phase 5.5: Validation and Quality Checks
+
+<workflow>
+  Before creating the pull request, perform these validation checks:
+
+  ## Technical Validation
+  - **Verify all internal links** - Ensure linked files exist in the repository
+  - **Check external links** - Test that external URLs are accessible
+  - **Validate markdown syntax** - Ensure no broken formatting
+  - **Confirm TOC updates** - Verify new documents are properly added to TOC file(s)
+  - **Check image paths** - Ensure all images are in correct media folders and properly referenced
+
+  ## Content Validation
+  - **Review Related content section** - Ensure 3-5 relevant links are included
+  - **Check code samples** - Verify syntax highlighting and formatting
+  - **Validate moniker usage** - Ensure moniker ranges are properly closed
+  - **Cross-reference accuracy** - Check that referenced features/commands exist
+
+  ## Style Validation
+  - **Scan for marketing language** - Remove any hype words that were missed
+  - **Check capitalization** - Ensure sentence-style capitalization in headings
+  - **Verify acronyms** - Confirm first use is spelled out
+  - **Review alt text** - Ensure all images have meaningful descriptions
+
+  Report any issues found and fix them before proceeding to Phase 6.
+
+  Update the list of tasks to reflect the completion of Phase 5.5.
+</workflow>
+
 # Phase 6: Open Pull Request
 
 <workflow>
-  - After the document is completed and approved, you must create a pull request (PR) under the user's fork against the main branch of the microsoft fork
-  - Include a clear PR title and description explaining the changes
-  - Send the url of the PR to the user. The URL will be of the form: https://github.com/MicrosoftDocs/<repo-name>/pull/<PR-number>
+  After all validations pass and the user approves the final document:
+  
+  ## Commit Changes
+  - Stage all modified files (document, TOC, images)
+  - Create a descriptive commit message that explains the changes
+  - Push the branch to your fork
+
+  ## Create Pull Request
+  - Create a PR from your fork's branch against the main branch of the Microsoft fork
+  - Use a clear, descriptive PR title (e.g., "Add access control overview documentation")
+  - Include a comprehensive PR description with:
+    - **Description**: Brief summary of what was added/changed
+    - **Document type**: Conceptual, how-to, tutorial, etc.
+    - **Key topics covered**: Bulleted list of main sections
+    - **Related issues**: Link any related GitHub issues
+    - **Documentation standards**: Note that it follows Microsoft style guide
+  
+  ## Provide PR URL
+  - Send the PR URL to the user in the format: https://github.com/MicrosoftDocs/<repo-name>/pull/<PR-number>
+  - Confirm that all files are included in the PR
+  - Note any follow-up actions needed (reviews, approvals, etc.)
 
   Update the list of tasks to reflect the completion of Phase 6.
 </workflow>
