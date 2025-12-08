@@ -17,7 +17,7 @@
     },
     {
       "source_path": "/azure/synapse-analytics/quickstart-connect-azure-data-explorer",
-      "redirect_url": "/azure/data-explorer/data-explorer-overview",
+      "redirect_url": "/azure/data-explorer/integrate-overview",
       "redirect_document_id": false
     },
     {
