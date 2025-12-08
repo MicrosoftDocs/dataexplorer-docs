@@ -66,7 +66,9 @@ If a query is performing slower than anticipated and query acceleration doesn't 
 
 ## Troubleshooting steps
 
-### Step 1: Check for unusable catalogs
+### Troubleshoot unusable catalogs
+
+#### Step 1: Check for unusable catalogs
 
 Query acceleration uses a local catalog for the external table that contains a snapshot of the delta table metadata. If this catalog isn't updated within the configured `MaxAge` (see the query acceleration policy's `MaxAge` property), it's considered **unusable** and isn't used at query time. In this case, queries fall back to reading the remote delta table directly, which can be significantly slower.
 
@@ -80,7 +82,7 @@ Retrieve the current state of the catalog with the following command:
 
 `IsCatalogUnusable == true` indicates the catalog is stale and query acceleration isn't used.
 
-### Step 2: Check query acceleration state health
+#### Step 2: Check query acceleration state health
 
 To understand why a catalog is unusable, check if the query acceleration state is healthy and resolve unhealthy reasons as needed.
 
@@ -149,7 +151,9 @@ Use the following table to understand and mitigate common unhealthy states.
 
 ::: moniker-end
 
-### Step 3: Check if query is over nonaccelerated data
+### Troubleshoot queries over nonaccelerated data
+
+#### Step 3: Check if query is over nonaccelerated data
 
 To fully benefit from query acceleration, queries must be executed over accelerated data. Non-accelerated data is read directly from the remote delta table, which may result in significant latency.
 Use the following command and filter on a time frame that includes the relevant query:
@@ -159,6 +163,7 @@ Use the following command and filter on a time frame that includes the relevant 
 | where StartedOn > ago(1h)
 | extend ExternalDataStats = OverallQueryStats.input_dataset_statistics.external_data
 ```
+
 If ExternalDataStats.iterated_artifacts or ExternalDataStats.downloaded_items are greater than 0, it means data was read from the remote delta table (non-accelerated path). The following section helps you understand why.
 
 A query might read nonaccelerated data for two main reasons:
@@ -190,7 +195,7 @@ A query might read nonaccelerated data for two main reasons:
     - If `CompletionPercentage < 100`, allow more time for data to be accelerated.
     - If `CompletionPercentage` doesn't increase over time, follow the guidance in [Understanding and mitigating data acceleration issues](#understanding-and-mitigating-data-acceleration-issues).
 
-### Step 4: Understanding and mitigating data acceleration issues
+#### Step 4: Understanding and mitigating data acceleration issues
 
 Unaccelerated data (`CompletionPercentage < 100`) can stem from several issues.
 
