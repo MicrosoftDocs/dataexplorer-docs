@@ -3,7 +3,7 @@ title: Query Acceleration Troubleshooting Guide
 description: Learn how to troubleshoot for common errors encountered in query acceleration.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 12/03/2025
+ms.date: 12/08/2025
 ---
 
 # Troubleshoot query acceleration over external delta tables
@@ -40,7 +40,7 @@ This article helps you troubleshoot scenarios where:
 
     The query acceleration feature assumes a delta table that complies with the Delta protocol. Manual operations executed directly on the delta table (for example, editing transaction logs or parquet files) aren't supported and might result in unexpected behavior.
 
-    If you executed such operations on the delta table, recreate the external table and re-enable the query acceleration policy.
+    If such operations have been executed on the delta table, recreate the external table and re-enable the query acceleration policy.
 
 ## Common errors
 
@@ -56,15 +56,17 @@ You can control the effective `MaxAge` in two ways:
 - Configure the `MaxAge` property in the query acceleration policy by using the [`.alter query acceleration policy` command](alter-query-acceleration-policy-command.md).
 - Override `MaxAge` per query by using the [`external_table()` operator's](../query/external-table-function.md) `MaxAgeOverride` parameter.
 
-### Query latency
+### Query over an accelerated external delta table is *slower* than expected
 
 If a query is performing slower than anticipated and query acceleration doesn't seem to enhance performance, consider the following potential causes:
 
-- **Unusable query acceleration catalog**: The catalog may be outdated or not yet built. Refer to the [Troubleshoot unusable catalogs](#troubleshoot-unusable-catalogs) section for resolution steps.
-- **Query accessing non-accelerated data**: The query might be scanning data that hasn't been cached. See the [Troubleshoot queries over nonaccelerated data](#troubleshoot-queries-over-nonaccelerated-data) section for guidance.
+- **Unusable query acceleration catalog**: The catalog may be outdated or not yet built. Refer to the [Troubleshoot unusable catalogs](#troubleshoot-unusable-catalogs) section to check if this is the case.
+- **Query accessing non-accelerated data**: The query might be scanning data that hasn't been cached. See the [Troubleshoot queries over nonaccelerated data](#troubleshoot-queries-over-nonaccelerated-data) section to check if this is the case.
 - **Non-compliance with KQL best practices**: Ensure the query adheres to KQL best practices. Refer to the [KQL best practices](../query/best-practices.md) guide for optimization techniques.
 
-### Unusable catalogs
+## Troubleshooting steps
+
+### Step 1: Check for unusable catalogs
 
 Query acceleration uses a local catalog for the external table that contains a snapshot of the delta table metadata. If this catalog isn't updated within the configured `MaxAge` (see the query acceleration policy's `MaxAge` property), it's considered **unusable** and isn't used at query time. In this case, queries fall back to reading the remote delta table directly, which can be significantly slower.
 
@@ -78,24 +80,9 @@ Retrieve the current state of the catalog with the following command:
 
 `IsCatalogUnusable == true` indicates the catalog is stale and query acceleration isn't used.
 
+### Step 2: Check query acceleration state health
 
-To maximize the benefits of query acceleration, ensure your queries target **accelerated data**. Queries that access non-accelerated data retrieve information directly from the remote delta table, which might result in higher latency.
-
-Use the following command and filter on a time frame that includes the relevant query:
-
-```kusto
-.show queries
-| where StartedOn > ago(1h)
-| extend ExternalDataStats = OverallQueryStats.input_dataset_statistics.external_data
-```
-
-If `ExternalDataStats.iterated_artifacts` or `ExternalDataStats.downloaded_items` are greater than `0`, the query reads data from the remote delta table (non-accelerated path).
-
-## Troubleshooting
-
-### Troubleshoot unusable catalogs
-
-To understand why a catalog is unusable, first check if the query acceleration state is healthy and resolve unhealthy reasons as needed.
+To understand why a catalog is unusable, check if the query acceleration state is healthy and resolve unhealthy reasons as needed.
 
 Run:
 
@@ -162,11 +149,21 @@ Use the following table to understand and mitigate common unhealthy states.
 
 ::: moniker-end
 
-### Troubleshoot queries over nonaccelerated data
+### Step 3: Check if query is over nonaccelerated data
 
-A query might read non-accelerated data for two main reasons:
+To fully benefit from query acceleration, queries must be executed over accelerated data. Non-accelerated data is read directly from the remote delta table, which may result in significant latency.
+Use the following command and filter on a time frame that includes the relevant query:
 
-- The query-time filter isn't fully within the query acceleration hot period or hot windows.
+```kusto
+.show queries
+| where StartedOn > ago(1h)
+| extend ExternalDataStats = OverallQueryStats.input_dataset_statistics.external_data
+```
+If ExternalDataStats.iterated_artifacts or ExternalDataStats.downloaded_items are greater than 0, it means data was read from the remote delta table (non-accelerated path). The following section helps you understand why.
+
+A query might read nonaccelerated data for two main reasons:
+
+- **The query-time filter isn't fully within the query acceleration hot period or hot windows**.
     Run the following command to view the hot caching properties and make sure the query filters match them:
 
     ```kusto
@@ -179,9 +176,9 @@ A query might read non-accelerated data for two main reasons:
     
     If it's a one-time query, don't change the policy. However, if you anticipate running multiple queries over the same time range that lies outside the configured `Hot` period or defined `HotWindows` and require improved performance, alter the policy by:
     
-    - Increasing the hot period, and/or
-    - Adding additional hot windows that match your query patterns.
-- The data within the policy hot period isn't fully cached.
+  - Increasing the hot period, and/or
+  - Adding additional hot windows that match your query patterns.
+- **The data within the policy hot period isn't fully cached.**
     Use the following command to check the acceleration progress:
     
     ```kusto
@@ -193,7 +190,7 @@ A query might read non-accelerated data for two main reasons:
     - If `CompletionPercentage < 100`, allow more time for data to be accelerated.
     - If `CompletionPercentage` doesn't increase over time, follow the guidance in [Understanding and mitigating data acceleration issues](#understanding-and-mitigating-data-acceleration-issues).
 
-## Understanding and mitigating data acceleration issues
+### Step 4: Understanding and mitigating data acceleration issues
 
 Unaccelerated data (`CompletionPercentage < 100`) can stem from several issues.
 
