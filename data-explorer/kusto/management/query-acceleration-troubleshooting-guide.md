@@ -193,7 +193,7 @@ A query might read nonaccelerated data for two main reasons:
     ```
     
     - If `CompletionPercentage < 100`, allow more time for data to be accelerated.
-    - If `CompletionPercentage` doesn't increase over time, follow the guidance in [Understanding and mitigating data acceleration issues](#understanding-and-mitigating-data-acceleration-issues).
+    - If `CompletionPercentage` doesn't increase over time, follow the guidance in [Understanding and mitigating data acceleration issues](#step-4-understanding-and-mitigating-data-acceleration-issues).
 
 #### Step 4: Understanding and mitigating data acceleration issues
 
