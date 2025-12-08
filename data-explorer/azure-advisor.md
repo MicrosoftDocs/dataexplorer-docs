@@ -8,9 +8,9 @@ ms.date: 03/08/2023
 
 # Use Azure Advisor recommendations to optimize your Azure Data Explorer cluster
 
-Azure Advisor analyzes the Azure Data Explorer cluster configurations and usage telemetry and offers personalized and actionable recommendations to help you optimize your cluster.
+Azure Advisor analyzes Azure Data Explorer cluster configurations and usage telemetry, and offers personalized, actionable recommendations to help you optimize your cluster.
 
-## Access the Azure Advisor recommendations
+## Access Azure Advisor recommendations
 
 There are two ways to access the Azure Advisor recommendations:
 
@@ -19,45 +19,45 @@ There are two ways to access the Azure Advisor recommendations:
 
 ### View Azure Advisor recommendations for your Azure Data Explorer cluster
 
-1. In the Azure portal, go to your Azure Data Explorer cluster page. 
-1. In the left-hand menu, under **Monitoring**, select **Advisor recommendations**. A list of recommendations opens for that cluster.
+1. In the Azure portal, go to your Azure Data Explorer cluster page.
+1. In the left menu, under **Monitoring**, select **Advisor recommendations**. A list of recommendations opens for that cluster.
 
-    :::image type="content" source="media/azure-advisor/resource-group-advisor-recommendations.png" alt-text="Azure Advisor recommendations for your Azure Data Explorer cluster."::: 
+    :::image type="content" source="media/azure-advisor/resource-group-advisor-recommendations.png" alt-text="Screenshot of Azure Advisor recommendations for an Azure Data Explorer cluster."::: 
 
 ### View Azure Advisor recommendations for all clusters in your subscription
 
-1. In the Azure portal, go to the [Advisor resource](https://ms.portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview). 
-1. In **Overview**, select one or more subscriptions for which you want recommendations. 
+1. In the Azure portal, go to the [Advisor resource](https://ms.portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview).
+1. In **Overview**, select one or more subscriptions to get recommendations.
 1. Select **Azure Data Explorer Clusters** and **Azure Data Explorer Databases** in the second dropdown.
  
-    :::image type="content" source="media/azure-advisor/advisor-resource.png" alt-text="Azure Advisor resource.":::
+    :::image type="content" source="media/azure-advisor/advisor-resource.png" alt-text="Screenshot of Azure Advisor resource page.":::
 
-## Use the Azure Advisor recommendations
+## Use Azure Advisor recommendations
 
-There are various Azure Advisor recommendation types. Use the relevant recommendation type to help you optimize your cluster. 
+Azure Advisor offers different recommendation types. Use the relevant type to optimize your cluster. 
 
-1. In **Advisor**, under **Recommendations**, select **Cost** for cost recommendations.
+1. In **Advisor**, under **Recommendations**, select **Cost** to view cost recommendations.
 
-    :::image type="content" source="media/azure-advisor/select-recommendation-type.png" alt-text="Select recommendation type.":::
+    :::image type="content" source="media/azure-advisor/select-recommendation-type.png" alt-text="Screenshot of the Azure Advisor interface showing the selection of recommendation type.":::
 
 1. Select a recommendation from the list. 
 
-    :::image type="content" source="media/azure-advisor/select-recommendation.png" alt-text="Select recommendation.":::
+    :::image type="content" source="media/azure-advisor/select-recommendation.png" alt-text="Screenshot of the Azure Advisor interface showing a list of recommendations.":::
 
-1. The following window contains a list of clusters to which the recommendation is relevant. The recommendation details are different for every cluster and include the recommended action.
+1. The window shows a list of clusters relevant to the recommendation. Recommendation details vary for each cluster and include the recommended action.
 
-    :::image type="content" source="media/azure-advisor/clusters-with-recommendations.png" alt-text="List of clusters with recommendations.":::
+    :::image type="content" source="media/azure-advisor/clusters-with-recommendations.png" alt-text="Screenshot showing a list of clusters with relevant recommendations in Azure Advisor.":::
 
 ## Recommendation types
 
-Cost, performance, reliability, and service excellence recommendations are currently available.
+Cost, performance, reliability, and service excellence recommendations are available.
 
 > [!IMPORTANT]
-> Your actual yearly savings may vary. The yearly savings presented are based on 'pay-as-you-go' prices. These potential saving don't take into account Azure Reserved Virtual Machine Instance (RIs) billing discounts.
+> Your actual yearly savings may vary. The yearly savings presented are based on 'pay-as-you-go' prices. These potential savings don't take into account Azure Reserved Virtual Machine Instance (RIs) billing discounts.
 
 ### Cost recommendations
 
-The **Cost** recommendations are available for clusters that can be changed to reduce cost without compromising performance. 
+The **Cost** recommendations are for clusters that can be changed to reduce cost without compromising performance. 
 Cost recommendations include: 
 
 * [Unused running Azure Data Explorer cluster](#unused-running-azure-data-explorer-cluster)
@@ -75,7 +75,7 @@ In some cases, clusters may be [automatically stopped](auto-stop-clusters.md). I
  * Clusters where the [Auto-Stop setting](auto-stop-clusters.md#set-auto-stop-settings-while-creating-a-new-cluster) is turned off
 
  
-The recommendation is to stop the cluster to reduce cost but still preserve the data. If the data isn't needed, consider deleting the cluster to increase your savings.
+The recommendation is to stop the cluster to reduce cost while preserving the data. If the data isn't needed, consider deleting the cluster to increase your savings.
 
 #### Unused stopped Azure Data Explorer cluster
 
@@ -89,20 +89,20 @@ The recommendation is to delete the cluster to reduce cost.
 
 #### Change Data Explorer clusters to a more cost effective and better performing SKU
 
-The recommendation **Change Data Explorer clusters to a more cost effective and better performing SKU** is given to a cluster whose cluster is operating under a non-optimal SKU. This updated SKU should reduce your costs and improve overall performance. We have calculated the required instance count that meets the cache requirements of your cluster, while ensuring that performance will not be negatively impacted. 
+The recommendation **Change Data Explorer clusters to a more cost effective and better performing SKU** is for a cluster operating under a nonoptimal SKU. This updated SKU should reduce your costs and improve overall performance. We have calculated the required instance count that meets the cache requirements of your cluster, while ensuring that performance won't be negatively impacted. 
 
-As part of the recommendation, we recommend enabling Optimized Autoscale if not yet enabled. Optimized Autoscale will perform a more in-depth analysis of the cluster's performance, and if needed, will further scale-in the cluster. This will result in additional cost reductions. The Optimized Autoscale recommendations include a Min and Max instance count recommendation. The Max value is set to the recommended SKU instance count. If the cluster has plans to organically grow, it is recommended to manually increase this Max number. If Optimized Autoscale is already configured on your cluster, in some cases the recommendation may suggest to increase the Max instance count. 
+As part of the recommendation, we recommend enabling Optimized Autoscale if not yet enabled. Optimized Autoscale will perform a more in-depth analysis of the cluster's performance, and if needed, will further scale-in the cluster. This results in more cost reductions. The Optimized Autoscale recommendations include minimum and maximum instance count recommendations. The Max value is set to the recommended SKU instance count. If the cluster has plans to organically grow, it's recommended to manually increase this Max number. If Optimized Autoscale is already configured on your cluster, in some cases the recommendation may suggest increasing the Max instance count. 
 
-The SKU recommendation takes into account the current zones definitions of a cluster and if the cluster supports zones will only recommend target SKUs that have a minimum of two zones. Adding more compute availability zones does not incur any additional costs.
+The SKU recommendation takes into account the current zones definitions of a cluster and if the cluster supports zones will only recommend target SKUs that have a minimum of two zones. Adding more compute availability zones doesn't incur extra costs.
 
-The advisor SKU recommendation is updated every few hours. The recommendation checks for capacity availability of the selected SKU in the region. However, it is important to note that capacity availability is dynamic and changes over time. 
+The advisor SKU recommendation is updated every few hours. The recommendation checks for capacity availability of the selected SKU in the region. However, it's important to note that capacity availability is dynamic and changes over time. 
 
 > [!NOTE]
-> The advisor SKU recommendation does not currently support clusters with Virtual Network or managed private endpoint configurations.
+> The advisor SKU recommendation doesn't support clusters with Virtual Network or managed private endpoint configurations.
 
 #### Reduce cache for Azure Data Explorer tables
 
-The **reduce Azure Data Explorer table cache period for cluster cost optimization** recommendation is given for a cluster that can reduce its table's [cache policy](/kusto/management/cache-policy?view=azure-data-explorer&preserve-view=true). This recommendation is based on the query look-back period during the last 30 days. To see where savings are possible, you can view the most relevant 5 tables per database for potential cache savings. This recommendation is only offered if the cluster can scale-in or scale-down after a cache policy change. Advisor checks if the cluster is "bounded by data", meaning the cluster has low CPU and low ingestion utilization, but because of high data capacity the cluster can't scale-in or scale-down.
+The **reduce Azure Data Explorer table cache period for cluster cost optimization** recommendation is given for a cluster that can reduce its table's [cache policy](/kusto/management/cache-policy?view=azure-data-explorer&preserve-view=true). This recommendation is based on the query look-back period during the last 30 days. To see where savings are possible, you can view the most relevant five tables per database for potential cache savings. This recommendation is only offered if the cluster can scale-in or scale-down after a cache policy change. Advisor checks if the cluster is "bounded by data," meaning the cluster has low CPU and low ingestion utilization, but because of high data capacity the cluster can't scale-in or scale-down.
 
 #### Enable Optimized autoscale
 
@@ -111,20 +111,20 @@ The recommendation **enable Optimized autoscale** is given when enabling [Optimi
 
 ### Performance recommendations
 
-The **Performance** recommendations help improve the performance of your Azure Data Explorer clusters. 
+The **Performance** recommendations improve the performance of your Azure Data Explorer clusters. 
 Performance recommendations include the following: 
 * [Change Data Explorer clusters to a more cost effective and better performing SKU](#change-data-explorer-clusters-to-a-more-cost-effective-and-better-performing-sku)
 * [Update the cache policy for Azure Data Explorer tables](#update-cache-policy-for-azure-data-explorer-tables)
 
 #### Update cache policy for Azure Data Explorer tables
 
-The **review Azure Data Explorer table cache-period policy for better performance** recommendation is given for a cluster that requires a different look-back period time filter, or a larger [cache policy](/kusto/management/cache-policy?view=azure-data-explorer&preserve-view=true). This recommendation is based on the query look-back period of the last 30 days. Most queries run in the last 30 days accessed data not in the cache, which can increase the query run-time. You can view the top 5 tables per database that accessed out-of-cache data, ordered by querying percentage.
+The **review Azure Data Explorer table cache-period policy for better performance** recommendation is given for a cluster that requires a different look-back period time filter, or a larger [cache policy](/kusto/management/cache-policy?view=azure-data-explorer&preserve-view=true). This recommendation is based on the query look-back period of the last 30 days. Most queries run in the last 30 days accessed data not in the cache, which can increase the query run-time. You can view the top five tables per database that accessed out-of-cache data, ordered by querying percentage.
 
-You may also get a performance recommendation to reduce the cache policy. This can happen if the cluster is data-bound. A cluster is data-bound if the data to be cached according to the caching policy is larger that the total size of the cluster's cache. Reducing the cache policy for data-bound clusters will reduce the number of cache misses and potentially improves performance.
+You may also get a performance recommendation to reduce the cache policy. This can happen if the cluster is data-bound. A cluster is data-bound if the data to be cached according to the caching policy is larger that the total size of the cluster's cache. Reducing the cache policy for data-bound clusters reduce the number of cache misses and potentially improves performance.
 
 ### Operational Excellence recommendations
 
-The **Operational Excellence** or "best practice" recommendations are recommendations whose implementation does not improve cost or performance immediately but can benefit the cluster in the future. This includes [reducing the table cache policy to match usage patterns](#reduce-table-cache-policy-to-match-usage-patterns).
+The **Operational Excellence** or "best practice" recommendations are recommendations whose implementation doesn't improve cost or performance immediately but can benefit the cluster in the future. This includes [reducing the table cache policy to match usage patterns](#reduce-table-cache-policy-to-match-usage-patterns).
 
 #### Reduce table cache policy to match usage patterns
 
@@ -133,7 +133,8 @@ This recommendation can be useful for tables where the actual query lookback bas
 
 ### Reliability recommendations
 
-The **Reliability recommendations** help you ensure and improve the continuity of your business-critical applications. 
+The **Reliability recommendations** help you ensure and improve the continuity of your business-critical applications.
+
 Reliability recommendations include the following:
 
 * [Cluster uses subnet without delegation](#cluster-uses-subnet-without-delegation)
@@ -141,7 +142,7 @@ Reliability recommendations include the following:
 
 #### Cluster uses subnet without delegation
 
-The strong recommendation is given to a virtual network cluster that uses a subnet without delegation for 'Microsoft.Kusto/clusters'. When you delegate a subnet to a cluster, you allow that service to establish basic network configuration rules for the subnet, which helps the cluster operate its instances in a stable manner.
+This recommendation is for a virtual network cluster that uses a subnet without delegation for 'Microsoft.Kusto/clusters'. When you delegate a subnet to a cluster, you allow that service to establish basic network configuration rules for the subnet, which helps the cluster operate its instances in a stable manner.
 
 #### Cluster uses subnet with invalid IP configuration
 
@@ -150,4 +151,4 @@ The recommendation is given to a virtual network cluster where the subnet is als
 ## Related content
 
 * [Manage cluster horizontal scaling (scale out) in Azure Data Explorer to accommodate changing demand](manage-cluster-horizontal-scaling.md)
-* [Manage cluster vertical scaling (scale up) in Azure Data Explorer to accommodate changing demand](manage-cluster-vertical-scaling.md)
+* [Manage cluster vertical scaling (scale up) in Azure Data Explorer to accommodate changing demand](manage-cluster-vertical-scaling.md).
