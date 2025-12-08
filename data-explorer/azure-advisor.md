@@ -29,7 +29,7 @@ There are two ways to access the Azure Advisor recommendations:
 1. In the Azure portal, go to the [Advisor resource](https://ms.portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade/overview).
 1. In **Overview**, select one or more subscriptions to get recommendations.
 1. Select **Azure Data Explorer Clusters** and **Azure Data Explorer Databases** in the second dropdown.
- 
+
     :::image type="content" source="media/azure-advisor/advisor-resource.png" alt-text="Screenshot of Azure Advisor resource page.":::
 
 ## Use Azure Advisor recommendations
@@ -70,11 +70,11 @@ Cost recommendations include:
 
 A cluster is considered unused and running if it is in the running state and has neither ingested data nor run queries in the past five days. 
 In some cases, clusters may be [automatically stopped](auto-stop-clusters.md). In the following cases, the cluster won't automatically stop and a recommendation will be shown:
+
  * Leader clusters. For more information, see [follower databases](follower.md).
  * Clusters deployed in a Virtual Network.
- * Clusters where the [Auto-Stop setting](auto-stop-clusters.md#set-auto-stop-settings-while-creating-a-new-cluster) is turned off
+ * Clusters where the [Auto-Stop setting](auto-stop-clusters.md#configure-auto-stop-while-creating-a-new-cluster) is turned off
 
- 
 The recommendation is to stop the cluster to reduce cost while preserving the data. If the data isn't needed, consider deleting the cluster to increase your savings.
 
 #### Unused stopped Azure Data Explorer cluster
@@ -85,7 +85,6 @@ The recommendation is to delete the cluster to reduce cost.
 
 > [!CAUTION]
 > Stopped clusters may still contain data. Before deleting the cluster, verify that the data is no longer needed. Once the cluster is deleted, the data will no longer be accessible.
-
 
 #### Change Data Explorer clusters to a more cost effective and better performing SKU
 

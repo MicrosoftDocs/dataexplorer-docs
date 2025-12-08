@@ -123,7 +123,7 @@ The **Tables** tab shows the latest and historical properties of tables in the c
 
 The **Cache** tab allows users to analyze their actual queries' lookback window patterns and compare them to the configured cache policy (for each table). You can identify tables used by the most queries and tables that aren't queried at all, and adapt the cache policy accordingly.
 
-You might get cache policy recommendations on specific tables in Azure Advisor. Currently, cache recommendations are available only from the [main Azure Advisor dashboard](azure-advisor.md#use-the-azure-advisor-recommendations). They're based on actual queries' lookback window in the past 30 days and an unoptimized cache policy for at least 95 percent of the queries.
+You might get cache policy recommendations on specific tables in Azure Advisor. Currently, cache recommendations are available only from the [main Azure Advisor dashboard](azure-advisor.md#use-azure-advisor-recommendations). They're based on actual queries' lookback window in the past 30 days and an unoptimized cache policy for at least 95 percent of the queries.
 
 Cache reduction recommendations in Azure Advisor are available for clusters that are "bounded by data." That means the cluster has low CPU and low ingestion utilization, but because of high data capacity, the cluster can't scale in or scale down.
 
