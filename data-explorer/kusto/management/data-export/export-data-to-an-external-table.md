@@ -3,7 +3,7 @@ title:  .export to table
 description:  This article describes Export data to an external table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/01/2025
+ms.date: 12/01/2024
 ---
 # .export to table
 
@@ -88,7 +88,7 @@ In order to export to an external table, you must set up write permissions. For 
 
 * External table columns are mapped to suitable target format data types, according to [data types mapping](export-data-to-storage.md#data-types-mapping) rules.
 
-* Parquet native export is a more performant, resource light export mechanism.
+* Parquet native export is a more performant, resource light export mechanism. An exported `datetime` column is currently unsupported by Synapse SQL `COPY`.
 
 ### Number of files
 
