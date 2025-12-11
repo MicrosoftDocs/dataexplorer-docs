@@ -52,7 +52,7 @@ The following table overviews the supported request properties.
 | `query_fanout_threads_percent` | `int` | Specifies the percentage of threads for executing fan-out. |
 | `query_force_row_level_security` | `bool` | If set to `true`, enforces [row level security](../../management/row-level-security-policy.md) rules, even if the policy is disabled. |
 | `query_language` | `string` | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
-| `query_log_query_parameters` | `bool` | Enables query parameters logging for later viewing in the [.show queries](../../management/show-queries-command.md) journal. |
+| `query_log_query_parameters` | `bool` | Enables query parameters logging for later viewing in the [.show queries](../../management/show-queries-command.md) journal. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `query_max_entities_in_union` | `long` | Overrides the default maximum number of columns a query is allowed to produce. |
 | `query_now` | `datetime` | Overrides the datetime value returned by the [now()](../../query/now-function.md) function. |
 | `query_optimize_fts_at_relop` |  `bool` | When set to `true`, enables an experimental optimization for queries that perform costly free-text search operations. For instance, `\|where * has "pattern"`. |
