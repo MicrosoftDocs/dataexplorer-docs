@@ -3,16 +3,16 @@ title: Queued ingestion commands use case
 description: Learn how to ingest historical data using the queued ingestion commands.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 09/30/2025
+ms.date: 12/10/2025
 ---
 
-# Queued ingestion commands use case (preview)
+# Queued ingestion commands use case
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 The queued ingestion commands allow you to ingest individual blobs by URL or ingest batches of data by listing folders or containers. This article walks through a common use case: fine-tuning the ingestion of historical data. You can use these commands to test how historical data is ingested and resolve any issues before performing full ingestion. The following tasks demonstrate how to use queued ingestion commands effectively:
 
-* [Ingest single blobs](#ingest-single-blobs)
+* [Ingest single blobs](#ingest-single-blobs) (Preview)
 * [List blobs in a folder](#list-blobs-in-a-folder)
 * [Ingest folder](#ingest-folder)
 * [Track ingestion status](#track-ingestion-status)
@@ -27,7 +27,7 @@ The queued ingestion commands allow you to ingest individual blobs by URL or ing
 >
 > Queued ingestion commands are run on the data ingestion URI endpoint `https://ingest-<YourClusterName><Region>.kusto.windows.net`.
 
-### Ingest single blobs
+### Ingest single blobs (Preview)
 You can start by ingesting a single blob directly using its URL. 
 Make sure to include a SAS token or use a managed identity to grant the service permission to access and download the blob.
 
