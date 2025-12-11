@@ -101,6 +101,7 @@ You can set request properties in the following ways:
 > * `norequesttimeout`
 > * `queryconsistency`
 > * `query_language`
+> * `query_log_query_parameters`
 > * `query_weakconsistency_session_id`
 > * `request_app_name`
 > * `request_readonly`
