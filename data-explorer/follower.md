@@ -459,7 +459,7 @@ var leaderClusterId = KustoClusterResource.CreateResourceIdentifier(subscription
 var followerClusterId = KustoClusterResource.CreateResourceIdentifier(subscriptionId: "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx", resourceGroupName: "followerResourceGroup", clusterName: "follower");
 var followerDatabaseDefinition = new KustoFollowerDatabaseDefinition(
     clusterResourceId: followerClusterId,
-    attachedDatabaseConfigurationName: (string?)"attachedDatabaseConfiguration"
+    attachedDatabaseConfigurationName: "attachedDatabaseConfiguration"
 );
 var credentials = new ManagedIdentityCredential();
 var resourceManagementClient = new ArmClient(credentials);
