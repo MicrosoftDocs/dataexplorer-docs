@@ -3,10 +3,10 @@ title: Queued Ingestion Configuration via REST API
 description: Learn how to use the REST API to retrieve ingestion configuration settings for Azure Data Explorer.
 ms.reviewer: 
 ms.topic: reference
-ms.date: 10/20/2025
+ms.date: 12/11/2025
 ---
 
-# Ingestion configuration via REST API
+# Ingestion configuration via REST API (Preview)
 
 The ingestion configuration REST API allows you to programmatically retrieve configuration settings for data ingestion, including storage container URIs, Lake folder paths from the Microsoft Fabric offering, and ingestion limits. This endpoint enables integration with the Data Management storage resources used for ingestion.
 
