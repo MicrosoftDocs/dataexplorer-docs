@@ -12,7 +12,7 @@ ms.date: 12/10/2025
 
 The queued ingestion commands allow you to ingest individual blobs by URL or ingest batches of data by listing folders or containers. This article walks through a common use case: fine-tuning the ingestion of historical data. You can use these commands to test how historical data is ingested and resolve any issues before performing full ingestion. The following tasks demonstrate how to use queued ingestion commands effectively:
 
-* [Ingest single blobs](#ingest-single-blobs) (Preview)
+* [Ingest single blobs](#ingest-single-blobs-preview) (Preview)
 * [List blobs in a folder](#list-blobs-in-a-folder)
 * [Ingest folder](#ingest-folder)
 * [Track ingestion status](#track-ingestion-status)
