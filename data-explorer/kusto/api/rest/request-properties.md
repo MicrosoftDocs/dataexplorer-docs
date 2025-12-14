@@ -83,7 +83,7 @@ The following table overviews the supported request properties.
 | `results_v2_fragment_primary_tables` |  `bool` | Causes primary tables to be sent in multiple fragments, each containing a subset of the rows. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `results_v2_newlines_between_frames` |  `bool` | Adds new lines between frames in the results, in order to make it easier to parse them. |
 | `servertimeout` | `timespan` | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/set-statement.md). Instead, modify the option using the dashboard settings. |
-| `truncation_max_records` | `long` | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
+| `truncationmaxrecords` | `long` | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` | `long` | Overrides the default maximum data size a query is allowed to return to the caller (truncation). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `validatepermissions` | `bool` | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
 
