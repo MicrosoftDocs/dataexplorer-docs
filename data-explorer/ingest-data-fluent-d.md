@@ -122,4 +122,4 @@ Azure Data Explorer (ADX) is a fast, fully managed analytics service optimized f
 ## Related content
 
 - [Data integrations overview](integrate-data-overview.md)
-- [Kusto Query Language (KQL) overview](https://learn.microsoft.com/kusto/query/?view=azure-data-explorer)
+- [Kusto Query Language (KQL) overview](https://learn.microsoft.com/kusto/query/?view=azure-data-explorer&preserve-view=true)
