@@ -19,7 +19,7 @@ This article explains how to send logs from Fluentd to Azure Data Explorer (Kust
 
 Fluentd is an open-source data collector you can use to unify log collection and routing across multiple systems. It supports more than 1,000 plugins and provides flexible options for filtering, buffering, and transforming data. You can use Fluentd in cloud‑native and enterprise environments for centralized log aggregation and forwarding.
 
-### Why use Fluentd with Azure Data Explorer?
+### What is Azure Data Explorer?
 
 Azure Data Explorer (ADX) is a fast, fully managed analytics service optimized for real‑time analysis of large volumes of structured, semi‑structured, and unstructured data. ADX uses Kusto Query Language (KQL) and is widely used for telemetry, monitoring, diagnostics, and interactive data exploration.
 
