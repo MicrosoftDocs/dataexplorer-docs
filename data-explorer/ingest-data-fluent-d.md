@@ -25,9 +25,9 @@ Azure Data Explorer (ADX) is a fast, fully managed analytics service optimized f
 
 ## Prerequisites
 
-- Ruby installed on your machine
-- Access to an Azure Data Explorer cluster and database
-- Azure Active Directory application with permissions to ingest data
+- Ruby installed on your machine.
+- Access to an Azure Data Explorer cluster and database.
+- Azure Active Directory application with permissions to ingest data.
 
 ## How to get started with Fluentd and Azure Data Explorer
 
@@ -88,8 +88,8 @@ Azure Data Explorer (ADX) is a fast, fully managed analytics service optimized f
     1. Create an ADX cluster and database. See [Create an Azure Data Explorer cluster and database](create-cluster-and-database.md).
     1. Create an Azure Active Directory application and grant permissions to ingest data into the ADX database. See [Create a Microsoft Entra application registration in Azure Data Explorer](provision-entra-id-app.md).
 
-    > [!NOTE]
-    > Save the app key and application ID for future use.
+        > [!NOTE]
+        > Save the app key and application ID for future use.
 
     1. Create a table for log ingestion. For example:
 
@@ -122,4 +122,4 @@ Azure Data Explorer (ADX) is a fast, fully managed analytics service optimized f
 ## Related content
 
 - [Data integrations overview](integrate-data-overview.md)
-- [Kusto Query Language (KQL) overview](/kusto/query/index.md)
+- [Kusto Query Language (KQL) overview](https://learn.microsoft.com/kusto/query/?view=azure-data-explorer)
