@@ -1,9 +1,9 @@
 ---
-title: query acceleration troubleshooting guide
-description: Learn how to troubleshoot query acceleration issues
+title: Query Acceleration Troubleshooting Guide
+description: Learn how to troubleshoot for common errors encountered in query acceleration.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 12/01/2025
+ms.date: 12/08/2025
 ---
 
 # Troubleshoot query acceleration over external delta tables
@@ -18,7 +18,7 @@ The query acceleration feature consists of the following components:
 - A background job that caches delta table data files.
 - Query-time enhancements that utilize the catalog and the cached data.
 
-To understand why things aren't working as expected, it's important to identify which of these components isn't functioning properly.
+To understand why things aren't working as expected, you need to identify which of these components isn't functioning properly.
 
 This article helps you troubleshoot scenarios where:
 
@@ -34,41 +34,45 @@ This article helps you troubleshoot scenarios where:
     | project isnotnull(Policy) and todynamic(Policy).IsEnabled
     ```
 
-    If this command returns `false`, enable the query acceleration policy using the [`.alter query acceleration policy` command](alter-query-acceleration-policy-command.md).
+    If this command returns `false`, enable the query acceleration policy by using the [`.alter query acceleration policy` command](alter-query-acceleration-policy-command.md).
 
-2. **Ensure the delta table complies with the Delta protocol.**
+1. **Ensure the delta table complies with the Delta protocol.**
 
-    The query acceleration feature assumes a delta table that complies with the Delta protocol. Manual operations executed directly on the delta table (for example, editing transaction logs or parquet files) aren't supported and may result in unexpected behavior.
+    The query acceleration feature assumes a delta table that complies with the Delta protocol. Manual operations executed directly on the delta table (for example, editing transaction logs or parquet files) aren't supported and might result in unexpected behavior.
 
     If such operations have been executed on the delta table, recreate the external table and re-enable the query acceleration policy.
 
+## Common errors
 
-## Query is returning stale data
+### Query returns stale data
 
-This is a data freshness issue: query results don't reflect the latest data from the underlying delta table.
+This issue occurs when query results don't reflect the latest data from the underlying delta table.
 
 Query acceleration refreshes the accelerated data periodically, so that results are no older than the configured `MaxAge` value in the policy. 
-By design, queries over accelerated external tables may return data that lags behind the latest delta table version by up to `MaxAge`. Set `MaxAge` to the maximum data staleness that is acceptable at query time.
+By design, queries over accelerated external tables might return data that lags behind the latest delta table version by up to `MaxAge`. Set `MaxAge` to the maximum data staleness that is acceptable at query time.
 
 You can control the effective `MaxAge` in two ways:
 
-1. Configure the `MaxAge` property in the query acceleration policy using the [`.alter query acceleration policy` command](alter-query-acceleration-policy-command.md).
-2. Override `MaxAge` per query by using the [`external_table()` operator's](../query/external-table-function.md) `MaxAgeOverride` parameter.
+- Configure the `MaxAge` property in the query acceleration policy by using the [`.alter query acceleration policy` command](alter-query-acceleration-policy-command.md).
+- Override `MaxAge` per query by using the [`external_table()` operator's](../query/external-table-function.md) `MaxAgeOverride` parameter.
 
-## Query isn't running fast enough
+### Query over an accelerated external delta table is *slower* than expected
 
-This is a performance issue: query is slower than expected, and acceleration doesn't appear to improve performance.
+If a query is performing slower than anticipated and query acceleration doesn't seem to enhance performance, consider the following potential causes:
 
-There are a few reasons why this could happen:
-1. The query acceleration catalog is unusable (out-of-date or never built) - see section [Check if catalog is unusable](#check-if-catalog-is-unusable)
-2. The query scans nonaccelerated data - see section [Check if query is over nonaccelerated data](#check-if-query-is-over-nonaccelerated-data)
-3. The query doesn't comply with KQL best practices - see [KQL best practices](../query/best-practices.md)
+- **Unusable query acceleration catalog**: The catalog may be outdated or not yet built. Refer to the [Troubleshoot unusable catalogs](#troubleshoot-unusable-catalogs) section to check if this is the case.
+- **Query accessing non-accelerated data**: The query might be scanning data that hasn't been cached. See the [Troubleshoot queries over nonaccelerated data](#troubleshoot-queries-over-nonaccelerated-data) section to check if this is the case.
+- **Non-compliance with KQL best practices**: Ensure the query adheres to KQL best practices. Refer to the [KQL best practices](../query/best-practices.md) guide for optimization techniques.
 
-## Check if catalog is unusable
+## Troubleshooting steps
 
-Query acceleration uses a local catalog for the external table containing a snapshot of the delta table metadata. If this catalog hasn't been updated within the configured `MaxAge` (see the query acceleration policy's `MaxAge` property), it's considered **unusable** and isn't used at query time. In that case, queries fall back to reading the remote delta table directly, which can be significantly slower.
+### Troubleshoot unusable catalogs
 
-Fetch the current state of the catalog using the following command:
+#### Step 1: Check for unusable catalogs
+
+Query acceleration uses a local catalog for the external table that contains a snapshot of the delta table metadata. If this catalog isn't updated within the configured `MaxAge` (see the query acceleration policy's `MaxAge` property), it's considered **unusable** and isn't used at query time. In this case, queries fall back to reading the remote delta table directly, which can be significantly slower.
+
+Retrieve the current state of the catalog with the following command:
 
 ```kusto
 .show external table [ETName] details
@@ -76,11 +80,11 @@ Fetch the current state of the catalog using the following command:
 | project IsCatalogUnusable = MinimumUpdateTime > todatetime(todynamic(QueryAccelerationState).LastUpdatedDateTime)
 ```
 
-`IsCatalogUnusable == true` indicates the catalog is stale and query acceleration won't be used.
+`IsCatalogUnusable == true` indicates the catalog is stale and query acceleration isn't used.
 
-### Troubleshoot unusable catalogs
+#### Step 2: Check query acceleration state health
 
-To understand why a catalog is unusable, first check if the query acceleration state is healthy and resolve unhealthy reasons as needed.
+To understand why a catalog is unusable, check if the query acceleration state is healthy and resolve unhealthy reasons as needed.
 
 Run:
 
@@ -90,29 +94,22 @@ Run:
 | project IsHealthy = state.IsHealthy, UnhealthyReason = state.NotHealthyReason
 ```
 
-- If the state is **healthy** but the catalog is still stale, it could be that the query acceleration policy was enabled recently. See [Query acceleration policy was enabled recently](#query-acceleration-policy-was-enabled-recently)
-- If the state is **unhealthy**, refer to [Query acceleration unhealthy state – understanding and mitigating](#query-acceleration-unhealthy-state--understanding-and-mitigating).
+- If the state is **healthy** but the catalog is still stale, it could be that the query acceleration policy was enabled recently.
+    When you enable the query acceleration policy for the first time, the initial catalog needs to be built before you can use it in queries. During this period, the `LastUpdatedDateTime` value is empty:
+    
+    ```kusto
+    .show external table [ETName] details
+    | project todynamic(QueryAccelerationState).LastUpdatedDateTime
+    ```
+    
+    If `LastUpdatedDateTime` is empty, allow some time for the first update to complete. This process usually takes up to several minutes. Subsequent updates are significantly faster.
 
+- If the state is **unhealthy**, you can retrieve the unhealthy reason by using the following command:
 
-#### Query acceleration policy was enabled recently
-
-When the query acceleration policy is enabled for the first time, building the initial catalog needs to complete before it can be used in queries. During this period, the `LastUpdatedDateTime` value is empty:
-
-```kusto
-.show external table [ETName] details
-| project todynamic(QueryAccelerationState).LastUpdatedDateTime
-```
-
-If `LastUpdatedDateTime` is empty, allow some time for the first update to complete. This usually takes up to several minutes. Subsequent updates are expected to be significantly faster.
-
-#### Query acceleration unhealthy state – understanding and mitigating
-
-When an external table's query acceleration is unhealthy, you can retrieve the unhealthy reason using the following command:
-
-```kusto
-.show external table [ETName] details
-| project todynamic(QueryAccelerationState).NotHealthyReason
-```
+    ```kusto
+    .show external table [ETName] details
+    | project todynamic(QueryAccelerationState).NotHealthyReason
+    ```
 
 Use the following table to understand and mitigate common unhealthy states.
 
@@ -124,7 +121,6 @@ Use the following table to understand and mitigate common unhealthy states.
 > .alter-merge external table [ETName] policy query_acceleration @'{"IsEnabled":false}'
 > .alter-merge external table [ETName] policy query_acceleration @'{"IsEnabled":true}'
 >```
-
 
 ::: moniker range="azure-data-explorer"
 
@@ -155,11 +151,11 @@ Use the following table to understand and mitigate common unhealthy states.
 
 ::: moniker-end
 
+### Troubleshoot queries over nonaccelerated data
 
-## Check if query is over nonaccelerated data
+#### Step 3: Check if query is over nonaccelerated data
 
-To fully benefit from query acceleration, queries must be executed over **accelerated data**. Non-accelerated data is read directly from the remote delta table, which may result in significant latency.
-
+To fully benefit from query acceleration, queries must be executed over accelerated data. Non-accelerated data is read directly from the remote delta table, which may result in significant latency.
 Use the following command and filter on a time frame that includes the relevant query:
 
 ```kusto
@@ -168,47 +164,38 @@ Use the following command and filter on a time frame that includes the relevant 
 | extend ExternalDataStats = OverallQueryStats.input_dataset_statistics.external_data
 ```
 
-If `ExternalDataStats.iterated_artifacts` or `ExternalDataStats.downloaded_items` are greater than `0`, it means data was read from the remote delta table (non-accelerated path).
-The following section helps you understand why.
+If ExternalDataStats.iterated_artifacts or ExternalDataStats.downloaded_items are greater than 0, it means data was read from the remote delta table (non-accelerated path). The following section helps you understand why.
 
-### Troubleshoot queries over nonaccelerated data
+A query might read nonaccelerated data for two main reasons:
 
-There are two main reasons why a query might read non-accelerated data:
+- **The query-time filter isn't fully within the query acceleration hot period or hot windows**.
+    Run the following command to view the hot caching properties and make sure the query filters match them:
 
-1. The query-time filter isn't fully within the query acceleration hot period or hot windows.
-2. The data within the policy hot period isn't fully cached.
+    ```kusto
+    .show external table [ETName] policy query_acceleration
+    | project Policy = todynamic(Policy)
+    | project Policy.Hot, Policy.HotWindows
+    ```
+    
+    Ensure your query's time filter is fully contained within the configured `Hot` period or the defined `HotWindows`.
+    
+    If it's a one-time query, don't change the policy. However, if you anticipate running multiple queries over the same time range that lies outside the configured `Hot` period or defined `HotWindows` and require improved performance, alter the policy by:
+    
+  - Increasing the hot period, and/or
+  - Adding additional hot windows that match your query patterns.
+- **The data within the policy hot period isn't fully cached.**
+    Use the following command to check the acceleration progress:
+    
+    ```kusto
+    .show external table [ETName] details
+    | project state = todynamic(QueryAccelerationState)
+    | project state.CompletionPercentage, state.PendingDataFilesCount
+    ```
+    
+    - If `CompletionPercentage < 100`, allow more time for data to be accelerated.
+    - If `CompletionPercentage` doesn't increase over time, follow the guidance in [Understanding and mitigating data acceleration issues](#step-4-understanding-and-mitigating-data-acceleration-issues).
 
-#### Query filter isn't fully within the hot period or hot windows
-
-Run the following command to view the hot caching properties and make sure the query filters match them:
-
-```kusto
-.show external table [ETName] policy query_acceleration
-| project Policy = todynamic(Policy)
-| project Policy.Hot, Policy.HotWindows
-```
-
-Ensure your query's time filter is fully contained within the configured `Hot` period or the defined `HotWindows`.
-
-If it's a one-time query, policy change isn't recommended. However, if you anticipate running multiple queries over the same time range that lies outside the configured `Hot` period or defined `HotWindows` and require improved performance, alter the policy by:
-
-- Increasing the hot period, and/or
-- Adding additional hot windows that match your query patterns.
-
-#### Data within the hot period isn't fully cached
-
-Use the following command to check the acceleration progress:
-
-```kusto
-.show external table [ETName] details
-| project state = todynamic(QueryAccelerationState)
-| project state.CompletionPercentage, state.PendingDataFilesCount
-```
-
-- If `CompletionPercentage < 100`, allow more time for data to be accelerated.
-- If `CompletionPercentage` doesn't increase over time, follow the guidance in [Understanding and mitigating data acceleration issues](#understanding-and-mitigating-data-acceleration-issues).
-
-### Understanding and mitigating data acceleration issues
+#### Step 4: Understanding and mitigating data acceleration issues
 
 Unaccelerated data (`CompletionPercentage < 100`) can stem from several issues.
 
@@ -216,18 +203,18 @@ Unaccelerated data (`CompletionPercentage < 100`) can stem from several issues.
 
 Data acceleration might take time, especially when:
 
-- A query acceleration policy has recently been enabled, or
-- A significant amount of data was recently added to the delta table, or
-- The delta table has undergone an optimization operation such as `OPTIMIZE` that results in many deleted and recreated files.
+- You recently enabled a query acceleration policy.
+- You recently added a significant amount of data to the delta table.
+- You ran an optimization operation such as `OPTIMIZE` on the delta table that results in many deleted and recreated files.
 
-Frequently running `OPTIMIZE` or `MERGE` operations on the source delta table that cause large-scale rewrites of data files can negatively affect acceleration performance because data files are repeatedly rewritten, and need to be accelerated.
+Frequently running `OPTIMIZE` or `MERGE` operations on the source delta table that cause large-scale rewrites of data files can negatively affect acceleration performance because data files are repeatedly rewritten and need to be accelerated.
 
 #### Data files aren't eligible for acceleration
 
-Parquet data files larger than **1 GB** won't be cached.
+Parquet data files larger than **1 GB** aren't cached.
 
 If your delta table includes many large files, consider adjusting your data generation or optimization strategy to produce smaller parquet files.
-If this requires recreating the Delta table, make sure you recreate the external table and re-enable query acceleration policy.
+If this adjustment requires recreating the Delta table, make sure you recreate the external table and re-enable the query acceleration policy.
 
 #### Insufficient cluster capacity or resources
 
@@ -244,5 +231,7 @@ Run the following command to view the remaining capacity:
 - If `Remaining == 0` consistently and `CompletionPercentage` isn't increasing, consider:
 
   - Scaling the cluster out or up to provide more resources.
-  - Increasing the `QueryAcceleration` capacity by [altering the capacity policy](alter-capacity-policy-command.md). NOTE: altering the capacity policy may have adverse effects on other operations. Alter the policy as a last resort at your own discretion.
+  - Increasing the `QueryAcceleration` capacity by [altering the capacity policy](alter-capacity-policy-command.md).
+  > [!NOTE]
+  > Altering the capacity policy might have adverse effects on other operations. Alter the policy as a last resort at your own discretion.
 

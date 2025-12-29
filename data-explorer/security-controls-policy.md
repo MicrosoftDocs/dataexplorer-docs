@@ -38,7 +38,7 @@ To review how the available Azure Policy built-ins for all Azure services map to
 standard, see
 [Azure Policy Regulatory Compliance - CMMC Level 3](/azure/governance/policy/samples/cmmc-l3). For
 more information about this compliance standard, see
-[Cybersecurity Maturity Model Certification (CMMC)](https://blogs.oracle.com/site/cloud-infrastructure/post/achieving-cybersecurity-maturity-model-certification-cmmc-on-oracle-cloud).
+[Cybersecurity Maturity Model Certification (CMMC)](https://www.dcsa.mil/Industrial-Security/Controlled-Unclassified-Information-CUI/Cybersecurity-Maturity-Model-Certification-CMMC/).
 
 |Domain |Control ID |Control title |Policy<br /><sub>(Azure portal)</sub> |Policy version<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|

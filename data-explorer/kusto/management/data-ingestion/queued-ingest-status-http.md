@@ -3,10 +3,10 @@ title: Queued Ingestion Status via REST API
 description: Learn how to use the REST API to check the status of queued ingestion operations in Azure Data Explorer.
 ms.reviewer: 
 ms.topic: reference
-ms.date: 10/28/2025
+ms.date: 12/11/2025
 ---
 
-# Ingestion status via REST API
+# Ingestion status via REST API (Preview)
 
 The ingestion status REST API allows you to monitor the progress and results of queued ingestion operations. This endpoint provides detailed information about each blob in an ingestion request, including success, failure, or in-progress status.
 
