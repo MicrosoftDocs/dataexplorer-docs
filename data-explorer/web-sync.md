@@ -50,6 +50,48 @@ To sync your profile data, follow these steps:
     >[!NOTE]
     > If the status doesn't display as expected, ensure that you're logged into the same account used for syncing.
 
+## Turn sync off
+
+If you enabled sync and want to stop syncing your Azure Data Explorer web UI profile, follow these steps:
+
+1. In the tab bar, select **Sync on**.
+2. In the dialog box, select **Turn sync off**.
+3. Confirm the action when prompted.
+
+### Important notes when turning sync off
+- Turning sync off **stops updating cloud data**, but the cloud profile previously uploaded is **not deleted**.
+- Your existing cloud profile remains the version that other browsers use when sync is turned on again.
+- Local browser data will no longer be uploaded or overwritten.
+
+## Turn sync back on
+
+If sync was previously disabled:
+
+1. In the tab bar, select **Sync off**.
+2. Select **Turn sync on**.
+3. Confirm that the browser you are enabling sync on contains the state you want to upload as the cloud profile.
+
+### Warning
+When you turn sync back on, **this browser becomes the primary source again** and will overwrite cloud-stored data.
+
+## Determine the primary source of sync data
+
+The primary sync source is the **first browser/device where sync was turned on**.  
+This browser uploads its current tabs, settings, and connections to the cloud.
+
+To check which environment is used as the primary source:
+
+- Open the browser where sync is currently enabled.
+- Verify that **Sync on** appears in the tab bar.
+- Compare this browser’s state with what you see on other devices.  
+  If other devices match this one, it is the current primary source.
+
+If you want to change the primary source:
+
+1. Turn sync **off**.
+2. Open the browser that contains the data you want to use as the new primary environment.
+3. Turn sync **back on** on that browser.
+
 ## Related content
 
 * [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
