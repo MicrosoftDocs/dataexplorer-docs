@@ -3,10 +3,10 @@ title: Queued Ingestion via REST API
 description: Learn how to use the REST API to submit blobs for ingestion into Azure Data Explorer tables.
 ms.reviewer: 
 ms.topic: reference
-ms.date: 10/28/2025
+ms.date: 12/11/2025
 ---
 
-# Queued ingestion via REST API
+# Queued ingestion via REST API (Preview)
 
 The queued ingestion REST API allows you to programmatically submit one or more blobs for ingestion into a specified database and table. This method is ideal for automated workflows and external systems that need to trigger ingestion dynamically.
 

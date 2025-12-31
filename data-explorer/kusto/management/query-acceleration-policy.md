@@ -22,7 +22,7 @@ To enable query acceleration in the Fabric UI, see [Query acceleration over OneL
 ::: moniker-end
 
 > [!IMPORTANT]
-> To troubleshoot problems with query acceleration, see [Troubleshoot query acceleration over external delta tables](query-acceleration-tsg.md).
+> To troubleshoot problems with query acceleration, see [Troubleshoot query acceleration over external delta tables](query-acceleration-troubleshooting-guide.md).
 
 ## Limitations
 

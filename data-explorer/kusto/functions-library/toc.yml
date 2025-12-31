@@ -182,6 +182,9 @@ items:
 - name: series_uv_change_points_fl()
   displayName: functions library, anomaly detection, univariate, change point
   href: series-uv-change-points-fl.md
+- name: slm_embeddings_fl()
+  displayName: functions library, text embeddings, SLM, vector embeddings, text analytics, NLP, AI
+  href: slm-embeddings-fl.md
 - name: time_weighted_avg_fl()
   displayName: functions library, binning, time weighted, time series, interpolation
   href: time-weighted-avg-fl.md
