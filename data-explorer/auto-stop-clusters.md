@@ -15,9 +15,9 @@ Cluster behavior doesn't resume automatically. Restart the cluster manually.
 > The following cluster types aren't stopped automatically: </br>
 >
 > * Leader clusters. For more information, see [follower databases](follower.md).
-> * Clusters deployed in a virtual network.
-> * [Start-for-free](start-for-free.md) clusters.
-> * Clusters where the [auto-stop setting](auto-stop-clusters.md#configure-auto-stop-while-creating-a-new-cluster) is turned off.
+> * Clusters deployed in a Virtual Network
+> * [Start-for-free](start-for-free.md) clusters
+> * Clusters where the [Auto-Stop setting](auto-stop-clusters.md#set-auto-stop-settings-while-creating-a-new-cluster) is turned off
 
 ## Manage automatic stop behavior on your cluster
 
