@@ -3,7 +3,7 @@ title: Get data from Azure storage
 description: Learn how to get data from Azure storage in Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 07/31/2025
+ms.date: 12/31/2025
 ---
 
 # Get data from Azure storage
