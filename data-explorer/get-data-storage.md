@@ -71,7 +71,7 @@ Select the data source from the available list. In this example, you're ingestin
 
     > [!NOTE]
     > * You can add up to 10 individual blobs. Each blob can be a max of 1 GB uncompressed.
-    > * You can ingest up to 5000 blobs from a single container.
+    > * You can ingest up to 5,000 blobs from a single container.
     > * You can't ingest individual blobs and containers in the same ingestion.
 
 1. Select **Next**
