@@ -124,3 +124,4 @@ The following section contains common [PromQL](https://prometheus.io/docs/promet
 | [log_reduce_predict_fl()](log-reduce-predict-fl.md) | Apply a trained model to find common patterns in textual logs and output a summary table. |
 | [log_reduce_predict_full_fl()](log-reduce-predict-full-fl.md) | Apply a trained model to find common patterns in textual logs and output a full table. |
 | [log_reduce_train_fl()](log-reduce-train-fl.md) | Find common patterns in textual logs and output a model. |
+| [tokenize_fl()](tokenize-fl.md) | Tokenize semi-structured text strings into separate columns. |
