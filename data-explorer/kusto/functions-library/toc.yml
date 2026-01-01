@@ -197,6 +197,9 @@ items:
 - name: time_window_rolling_avg_fl()
   displayName: functions library, rolling, sliding
   href: time-window-rolling-avg-fl.md
+- name: tokenize_fl()
+  displayName: functions library, tokenizer, text analytics, log parsing, regex
+  href: tokenize-fl.md
 - name: two_sample_t_test_fl()
   displayName: functions library, statistical test
   href: two-sample-t-test-fl.md
