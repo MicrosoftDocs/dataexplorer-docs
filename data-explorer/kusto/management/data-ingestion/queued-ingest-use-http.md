@@ -84,7 +84,7 @@ Authorization: Bearer <access_token>
   "blobs": [
     {
       "url": "https://example.com/blob1.csv.gz",
-      "sourceId": "123a6999-411e-4226-a333-w79992dd9b95",
+      "sourceId": "123a6999-411e-4226-a333-a79992dd9b95",
       "rawSize": 1048576
     }
   ],
