@@ -5,7 +5,7 @@ ms.reviewer: ramacg
 ms.author: v-hzargari
 author: hzargari-ms
 ms.topic: article
-ms.date: 12/29/2025
+ms.date: 01/05/2026
 ---
 
 # Ingest log data with Fluentd into Azure Data Explorer
@@ -25,7 +25,7 @@ Azure Data Explorer (ADX) is a fast, fully managed analytics service optimized f
 
 ## Prerequisites
 
-- Ruby installed on your machine.
+- Ruby installed on the node where logs have to be ingested. To install fluentd dependencies using gem package manager, see the [Ruby installation instructions](https://github.com/Azure/azure-kusto-fluentd/?tab=readme-ov-file#requirements)
 - Access to an Azure Data Explorer cluster and database.
 - Azure Active Directory application with permissions to ingest data.
 
@@ -84,6 +84,8 @@ Azure Data Explorer (ADX) is a fast, fully managed analytics service optimized f
     </match>
     ```
 
+For more configuration and authentication details, see the [Fluentd Kusto plugin documentation](https://github.com/Azure/azure-kusto-fluentd/?tab=readme-ov-file#workload-identity-authentication)
+
 1. **Prepare Azure Data Explorer for ingestion**:
     1. Create an ADX cluster and database. See [Create an Azure Data Explorer cluster and database](create-cluster-and-database.md).
     1. Create an Azure Active Directory application and grant permissions to ingest data into the ADX database. See [Create a Microsoft Entra application registration in Azure Data Explorer](provision-entra-id-app.md).
@@ -118,6 +120,8 @@ Azure Data Explorer (ADX) is a fast, fully managed analytics service optimized f
     LogTable
     | take 10
     ```
+
+1. **Ingestion mapping**: Use the pre-defined ingestion mappings in Kusto to transform data the default 3-column  format into your desired schema. For more information, see [Ingestion mappings support](https://github.com/Azure/azure-kusto-fluentd/?tab=readme-ov-file#ingestion-mapping-support).
 
 ## Related content
 
