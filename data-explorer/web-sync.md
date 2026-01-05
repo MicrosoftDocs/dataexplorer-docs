@@ -71,8 +71,8 @@ If sync was previously disabled:
 2. Select **Turn sync on**.
 3. Confirm that the browser you are enabling sync on contains the state you want to upload as the cloud profile.
 
-### Warning
-When you turn sync back on, **this browser becomes the primary source again** and will overwrite cloud-stored data.
+> [!WARNING]
+> When you turn sync back on, **this browser becomes the primary source again** and will overwrite cloud-stored data.
 
 ## Determine the primary source of sync data
 
