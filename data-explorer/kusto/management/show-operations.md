@@ -15,9 +15,7 @@ Entries are appended to the log when operations start and change their state, in
 Users can view the ongoing and past operations they started by using the `.show operations` command.
 Database administrators can view all operations that apply to the databases they administer.
 
-Users can also view the results of an operation by using the [`.show operation details`](show-operation-details.md)
-command. Normally, the results are returned as part of `.show operations` command itself. For asynchronous
-management commands, the `.show operation details` command is the only way to view the command's results.
+The `.show operations` command returns general details about all operations running on the cluster. Some of the operations also support retrieving the operation's results by using the [`.show operation details`](show-operation-details.md) command.
 
 ## Syntax
 
@@ -33,7 +31,8 @@ management commands, the `.show operation details` command is the only way to vi
 
 ## Returns
 
-When an operation ID is omitted, the command returns a table displaying all administrative operations executed in the last two weeks, whether ongoing or completed. It includes entries accessible to the user, with multiple records possible for a single operation. Only one record indicates the terminal state of 'Completed' or 'Failed.' This mode is for checking the history of operations, but note that records may take time to appear in the historic log.
+When an operation ID is omitted, the command returns a table displaying all administrative operations executed in the last two weeks, whether ongoing or completed. It includes entries accessible to the user, with multiple records possible for a single operation. Only one record indicates the terminal state of 'Completed' or 'Failed.' This mode is for checking the history of operations. Records may take a short time to appear in the historical log. 
+You can use [arg_max()](../query/arg-max-aggregation-function.md) over the results of the historical log to view the latest state for each operation id (see example below).
 
 When one or more operation IDs are provided, the command returns the latest update for each ID, given the user's access and the record being less than 6 hours old. This mode helps quickly check the latest status of recently executed operations.
 
@@ -69,17 +68,49 @@ The following table describes the possible values for the result table's *State*
 
 ## Example
 
+The following command returns the latest state per operation id for operations that started after `2026-01-05`:
+
 ```kusto
-.show operations
+.show operations 
+| where StartedOn > datetime(2026-01-05)
+| summarize arg_max(LastUpdatedOn, *) by OperationId
+| project OperationId, Operation, StartedOn, LastUpdatedOn, Duration, State
 ```
 
-|ID |Operation |Node ID |Started On |Last Updated On |Duration |State |Status |
-|--|--|--|--|--|--|--|--|
-|3827def6-0773-4f2a-859e-c02cf395deaf |SchemaShow | |2015-01-06 08:47:01.0000000 |2015-01-06 08:47:01.0000000 |0001-01-01 00:00:00.0000000 |Completed |
-|841fafa4-076a-4cba-9300-4836da0d9c75 |DataIngestPull |Kusto.Azure.Svc_IN_1 |2015-01-06 08:47:02.0000000 |2015-01-06 08:48:19.0000000 |0001-01-01 00:01:17.0000000 |Completed |
-|e198c519-5263-4629-a158-8d68f7a1022f |OperationsShow | |2015-01-06 08:47:18.0000000 |2015-01-06 08:47:18.0000000 |0001-01-01 00:00:00.0000000 |Completed |
-|a9f287a1-f3e6-4154-ad18-b86438da0929 |ExtentsDrop | |2015-01-11 08:41:01.0000000 |0001-01-01 00:00:00.0000000 |0001-01-01 00:00:00.0000000 |InProgress |
-|9edb3ecc-f4b4-4738-87e1-648eed2bd998 |DataIngestPull | |2015-01-10 14:57:41.0000000 |2015-01-10 14:57:41.0000000 |0001-01-01 00:00:00.0000000 |Failed |Collection was modified. Enumeration operation may not execute. |
+|OperationId|Operation|StartedOn|LastUpdatedOn|Duration|State|
+|---|---|---|---|---|---|
+|62e40fad-516c-4133-814f-f509e889d006|DataIngestPull|2026-01-05 18:57:10.4234023|2026-01-05 18:57:53.4074572|00:00:42.9840549|Completed|
+|989b527f-20da-48fe-ae22-deba91e20764|OperationsShow|2026-01-05 18:57:54.1959438|2026-01-05 18:57:54.2036051|00:00:00.0076613|Completed|
+|1671b635-b42c-45c6-928c-ad3f3436cb75|TableAppend|2026-01-05 18:58:13.3479575|2026-01-05 18:58:13.3974038|00:00:00.0494463|InProgress|
+|55bc427e-d576-40dc-bd38-58f9df34d357|DatabasesShow|2026-01-05 18:58:49.4693980|2026-01-05 18:58:49.4697805|00:00:00.0003825|Completed|
+
+The following command returns the entire log (not only latest state) for operation with id = `b152f9da-616a-40a7-8cde-f2390cfc8064`:
+
+```kusto
+.show operations 
+| where LastUpdatedOn >  ago(1h)
+| where OperationId == "b152f9da-616a-40a7-8cde-f2390cfc8064"
+| project OperationId, Operation, StartedOn, LastUpdatedOn, Duration, State, Status
+```
+
+|OperationId|Operation|StartedOn|LastUpdatedOn|Duration|State|Status|
+|---|---|---|---|---|---|---|
+|b152f9da-616a-40a7-8cde-f2390cfc8064|DataIngestPull|2026-01-06 09:33:36.8136476|2026-01-06 09:33:36.8136477|00:00:00.0000758|InProgress||
+|b152f9da-616a-40a7-8cde-f2390cfc8064|DataIngestPull|2026-01-06 09:33:36.8136476|2026-01-06 09:33:36.8143127|00:00:00.0006764|InProgress|Assigned|
+|b152f9da-616a-40a7-8cde-f2390cfc8064|DataIngestPull|2026-01-06 09:33:36.8136476|2026-01-06 09:33:36.8146015|00:00:00.0009574|InProgress|Assigned|
+|b152f9da-616a-40a7-8cde-f2390cfc8064|DataIngestPull|2026-01-06 09:33:36.8136476|2026-01-06 09:33:40.2102817|00:00:03.3966431|InProgress|Extent(s) created; metadata updated; cluster map updated|
+|b152f9da-616a-40a7-8cde-f2390cfc8064|DataIngestPull|2026-01-06 09:33:36.8136476|2026-01-06 09:33:40.2103713|00:00:03.3967237|Completed|Extent(s) created; metadata updated; cluster map updated|
+
+The following command returns only the latest state for the same operation. Operations that completed over 6 hours ago will not be returned using this method. Use the options above to query for entries that are older than 6 hours.
+
+```kusto
+.show operations b152f9da-616a-40a7-8cde-f2390cfc8064
+| project OperationId, Operation, StartedOn, LastUpdatedOn, Duration, State, Status
+```
+
+|OperationId|Operation|StartedOn|LastUpdatedOn|Duration|State|Status|
+|---|---|---|---|---|---|---|
+|b152f9da-616a-40a7-8cde-f2390cfc8064|DataIngestPull|2026-01-06 09:33:36.8136476|2026-01-06 09:33:40.2103713|00:00:03.3967237|Completed|Extent(s) created; metadata updated; cluster map updated|
 
 ## Related content
 
