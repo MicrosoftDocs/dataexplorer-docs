@@ -32,7 +32,7 @@ The `.show operations` command returns general details about all operations runn
 ## Returns
 
 When an operation ID is omitted, the command returns a table displaying all administrative operations executed in the last two weeks, whether ongoing or completed. It includes entries accessible to the user, with multiple records possible for a single operation. Only one record indicates the terminal state of 'Completed' or 'Failed.' This mode is for checking the history of operations. Records may take a short time to appear in the historical log. 
-You can use [arg_max()](../query/arg-max-aggregation-function.md) over the results of the historical log to view the latest state for each operation id (see example below).
+You can use [arg_max()](../query/arg-max-aggregation-function.md) over the results of the historical log to view the latest state for each operation id (see [examples](#example)).
 
 When one or more operation IDs are provided, the command returns the latest update for each ID, given the user's access and the record being less than 6 hours old. This mode helps quickly check the latest status of recently executed operations.
 
