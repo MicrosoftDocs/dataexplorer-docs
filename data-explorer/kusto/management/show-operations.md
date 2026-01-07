@@ -32,7 +32,7 @@ The `.show operations` command returns general details about all operations runn
 ## Returns
 
 When an operation ID is omitted, the command returns a table displaying all administrative operations executed in the last two weeks, whether ongoing or completed. It includes entries accessible to the user, with multiple records possible for a single operation. Only one record indicates the terminal state of 'Completed' or 'Failed.' This mode is for checking the history of operations. Records may take a short time to appear in the historical log. 
-You can use [arg_max()](../query/arg-max-aggregation-function.md) over the results of the historical log to view the latest state for each operation id (see [examples](#example)).
+You can use [arg_max()](../query/arg-max-aggregation-function.md) over the results of the historical log to view the latest state for each operation ID (see [examples](#example)).
 
 When one or more operation IDs are provided, the command returns the latest update for each ID, given the user's access and the record being less than 6 hours old. This mode helps quickly check the latest status of recently executed operations.
 
@@ -68,7 +68,7 @@ The following table describes the possible values for the result table's *State*
 
 ## Example
 
-The following command returns the latest state per operation id for operations that started after `2026-01-05`:
+The following command returns the latest state per operation ID for operations that started after `2026-01-05`:
 
 ```kusto
 .show operations 
@@ -84,7 +84,7 @@ The following command returns the latest state per operation id for operations t
 |1671b635-b42c-45c6-928c-ad3f3436cb75|TableAppend|2026-01-05 18:58:13.3479575|2026-01-05 18:58:13.3974038|00:00:00.0494463|InProgress|
 |55bc427e-d576-40dc-bd38-58f9df34d357|DatabasesShow|2026-01-05 18:58:49.4693980|2026-01-05 18:58:49.4697805|00:00:00.0003825|Completed|
 
-The following command returns the entire log (not only latest state) for operation with id = `b152f9da-616a-40a7-8cde-f2390cfc8064`:
+The following command returns the entire log (not only latest state) for operation with ID `b152f9da-616a-40a7-8cde-f2390cfc8064`:
 
 ```kusto
 .show operations 
