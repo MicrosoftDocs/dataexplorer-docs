@@ -247,6 +247,8 @@ items:
               displayName: ingest data, ingestion, connector
             - name: Fluent Bit
               href: fluent-bit.md
+            - name: Fluentd
+              href: ingest-data-fluentd.md
               displayName: ingest data, ingestion, connector
             - name: Logstash
               displayName: ingest data, ingestion, connector
