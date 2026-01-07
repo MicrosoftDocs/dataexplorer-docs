@@ -135,25 +135,26 @@ let slm_embeddings_fl=(tbl:(*), text_col:string, embeddings_col:string, batch_si
 {
     let kwargs = bag_pack('text_col', text_col, 'embeddings_col', embeddings_col, 'batch_size', batch_size, 'model_name', model_name, 'prefix', prefix);
     let code = ```if 1:
-from sandbox_utils import Zipackage
-Zipackage.install('embedding_engine.zip')
+		from sandbox_utils import Zipackage
+		Zipackage.install('embedding_engine.zip')
+#		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
+		
+		from embedding_factory import create_embedding_engine
+		
+		text_col = kargs["text_col"]
+		embeddings_col = kargs["embeddings_col"]
+		batch_size = kargs["batch_size"]
+		model_name = kargs["model_name"]
+		prefix = kargs["prefix"]
 
-from embedding_factory import create_embedding_engine
+		Zipackage.install(f'{model_name}.zip')
 
-text_col = kargs["text_col"]
-embeddings_col = kargs["embeddings_col"]
-batch_size = kargs["batch_size"]
-model_name = kargs["model_name"]
-prefix = kargs["prefix"]
-
-Zipackage.install(f'{model_name}.zip')
-
-engine = create_embedding_engine(model_name, cache_dir="C:\\Temp")
-embeddings = engine.encode(df[text_col].tolist(), batch_size=batch_size, prefix=prefix)
-
-result = df
-result[embeddings_col] = list(embeddings)
-```;
+		engine = create_embedding_engine(model_name, cache_dir="C:\\Temp")
+		embeddings = engine.encode(df[text_col].tolist(), batch_size=batch_size, prefix=prefix)		#	prefix is used only for E5
+		
+		result = df
+		result[embeddings_col] = list(embeddings)
+	```;
     tbl
     | evaluate hint.distribution=per_node python(typeof(*), code, kwargs, external_artifacts = bag_pack(
     'embedding_engine.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip',
