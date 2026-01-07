@@ -92,8 +92,9 @@ Each such object is represented as a JSON property bag, with the following prope
 |Property |Type | Description  |
 |---------|---------|----------------|
 |IsEnabled  |`bool` |States if update policy is *true* - enabled, or *false* - disabled|
-|Source |`string` |Name of the table that triggers invocation of the update policy |
-|Query |`string` |A query used to produce data for the update |
+|Source |`string` |Name of the table that triggers invocation of the update policy. |
+|SourceIsWildCard |`bool` |If *true*, the `Source` property can be a wildcard pattern. See [Update policy with source table wildcard pattern](#update-policy-with-source-table-wildcard-pattern) |
+|Query |`string` |A query used to produce data for the update. |
 |IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*. If the policy is transactional and the update policy fails, the source table isn't updated. |
 |PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as [extent tags](extent-tags.md) and creation time, apply to the target table. |
 |ManagedIdentity | `string` | The managed identity on behalf of which the update policy runs. The managed identity can be an object ID, or the `system` reserved word. The update policy must be configured with a managed identity when the query references tables in other databases or tables with an enabled [row level security policy](row-level-security-policy.md). For more information, see [Use a managed identity to run a update policy](update-policy-with-managed-identity.md). |
@@ -105,6 +106,7 @@ Each such object is represented as a JSON property bag, with the following prope
 |---------|---------|----------------|
 |IsEnabled  |`bool` |States if update policy is *true* - enabled, or *false* - disabled|
 |Source |`string` |Name of the table that triggers invocation of the update policy |
+|SourceIsWildCard |`bool` |If *true*, the `Source` property can be a wildcard pattern. |
 |Query |`string` |A query used to produce data for the update |
 |IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*. If the policy is transactional and the update policy fails, the source table isn't updated. |
 |PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as [extent tags](extent-tags.md) and creation time, apply to the target table. |
@@ -143,6 +145,14 @@ Update policies take effect when data is ingested or moved to a source table, or
 > When the update policy is invoked as part of a  `.set-or-replace` command, by default data in derived tables is replaced in the same way as in the source table.
 > Data may be lost in all tables with an update policy relationship if the `replace` command is invoked.
 > Consider using `.set-or-append` instead.
+
+## Update policy with source table wildcard pattern
+
+Update policy supports ingesting from multiple source tables that share the same pattern, while using the
+same query as the update policy query. This is useful if you have several source tables, usually sharing the same schema (or a subset of columns that share a common schema), and you would like to trigger ingestion to a
+single target table, when ingesting to either of those tables. In this case, instead of defining multiple
+update policies, each for a single source table, you can define a single update policy with wildcard as `Source`.The `Query` of the update policy must comply with all source tables matching the pattern.
+To reference the source table in the update policy query, you can use a special symbol named `$source_table`. See example in [Example of wild card update policy](#example-of-wild-card-update-policy).
 
 ## Remove data from source table
 
@@ -250,6 +260,86 @@ In this example, use an update policy with a simple function to perform ETL. Fir
     ```kusto
      .alter-merge table MySourceTable policy retention softdelete = 0s
     ```
+
+## Example of wild card update policy
+
+The following example creates an update policy with a single entry on table `TargetTable`. The policy references all tables matching pattern `SourceTable*` as its source.
+Any ingestion to a table which matches the pattern (in local database) will trigger the update policy, and ingest data to `TargetTable`, based on the update policy query.
+
+1. Create two source tables:
+
+    ```kusto
+    .create table SourceTable1(Id:long, Value:string)
+    ```
+
+    ```kusto
+    .create table SourceTable2(Id:long, Value:string)
+    ```
+
+1. Create the target table:
+
+    ```kusto
+    .create table TargetTable(Id:long, Value:string, Source:string)
+    ```
+
+1. Create a function which will serve as the `Query` of the update policy. The function uses the `$source_table` symbol to reference the `Source` of the update policy. Use `skipValidation=true` to skip validation during the create function, since `$source_table` is only known during update policy execution. The function is validated during the next step, when altering the update policy.
+
+    ```kusto
+    .create function with(skipValidation=true) IngestToTarget()
+    {
+        $source_table 
+        | parse Value with "I'm from table " Source
+        | project Id, Value, Source
+    }
+    ```
+
+1. Create the update policy on `TargetTable`. The policy references all tables matching pattern `SourceTable*` as its source.
+
+    ````kusto
+        .alter table TargetTable policy update
+        ```[{ 
+                "IsEnabled": true, 
+                "Source": "SourceTable*", 
+                "SourceIsWildCard" : true,
+                "Query": "IngestToTarget()",
+                "IsTransactional": true,
+                "PropagateIngestionProperties": true
+        }]```
+
+    ````
+
+1. Ingest to source tables. Both ingestions trigger the update policy:
+
+    ```kusto
+    .set-or-append SourceTable1 <| 
+        datatable (Id:long, Value:string)
+        [
+            1, "I'm from table SourceTable1",
+            2, "I'm from table SourceTable1"
+        ]
+    ```
+
+    ```kusto
+    .set-or-append SourceTable2 <| 
+        datatable (Id:long, Value:string)
+        [
+            3, "I'm from table SourceTable2",
+            4, "I'm from table SourceTable2"
+        ]
+    ```
+
+1. Query `TargetTable`:
+
+    ```kusto
+     TargetTable
+    ```
+
+    |Id|Value|Source|
+    |---|---|---|
+    |1|I'm from table SourceTable1|SourceTable1|
+    |2|I'm from table SourceTable1|SourceTable1|
+    |3|I'm from table SourceTable2|SourceTable2|
+    |4|I'm from table SourceTable2|SourceTable2|
 
 ## Related content
 
