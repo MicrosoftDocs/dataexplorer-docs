@@ -3,7 +3,7 @@ title: Data integrations overview
 description: Learn about the available data integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 01/30/2024
+ms.date: 01/06/2026
 # CustomerIntent: As a data ingestor, I want to know what data connectors and tools are available, so that I can choose the right one for my use case.
 ---
 # Data integrations overview
@@ -55,6 +55,7 @@ The following tables summarizes the available data connectors, tools, and integr
 | [Splunk](integrate-overview.md#splunk) | **Ingestion** | | | [Open source](https://github.com/Azure/azure-kusto-splunk/tree/main/splunk-adx-alert-addon) | Logs |
 | [Splunk Universal Forwarder](integrate-overview.md#splunk-universal-forwarder)| **Ingestion** | | | [Open source](https://github.com/Azure/azure-kusto-splunk) | Logs |
 | [Telegraf](integrate-overview.md#telegraf) | **Ingestion** | :heavy_check_mark: | | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
+| [Azure Monitor](integrate-overview.md#azure-monitor) | **Ingestion** | | | First party | 	Azure Monitor Agent can send the following virtual machine data to Azure Data Explorer using a data collection rule: Performance counters, IIS logs, Windows event logs, Linux system logs, Custom text logs, and Custom JSON logs |
 
 ## [Tools and integrations](#tab/integrations)
 
