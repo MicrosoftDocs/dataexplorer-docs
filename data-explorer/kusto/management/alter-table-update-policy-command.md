@@ -12,9 +12,8 @@ ms.date: 08/11/2024
 Use this command to change the table update policy. The [update policy](update-policy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 
 > [!NOTE]
->
-> * The source table and the table for which the update policy is defined must be in the same database.
-> * The update policy function schema and the target table schema must match in their column names, types, and order.
+> The source table and the table for which the update policy is defined must be in the same database.
+> The update policy function schema and the target table schema must match in their column names, types, and order.
 
 ## Permissions
 
@@ -37,11 +36,6 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 ## Returns
 
 Returns a JSON representation of the policy.
-
-> [!WARNING]
-> The alter command *replaces* the current update policy with a new policy. If you would like to *add* a new entry to the array
-> of policy objects, in addition to the current ones, use the
-> [.alter-merge table policy update command](alter-merge-table-update-policy-command.md).
 
 ## Example
 
