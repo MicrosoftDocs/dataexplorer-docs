@@ -3,7 +3,7 @@ title: Data integrations overview
 description: Learn about the available data integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 01/30/2024
+ms.date: 01/06/2026
 # CustomerIntent: As a data ingestor, I want to know what data connectors and tools are available, so that I can choose the right one for my use case.
 ---
 # Data integrations overview
@@ -44,6 +44,7 @@ The following tables summarizes the available data connectors, tools, and integr
 | [Azure Event Hubs](integrate-overview.md#azure-event-hubs) | **Ingestion** | :heavy_check_mark: | | First party | Messaging |
 | [Azure Functions](integrate-overview.md#azure-functions) | **Export**<br /><br />**Ingestion** | | | First party | Workflow integrations |
 | [Azure IoT Hubs](integrate-overview.md#azure-iot-hubs) | **Ingestion** | :heavy_check_mark: | | First party | IoT data |
+| [Azure Monitor](integrate-overview.md#azure-monitor) | **Ingestion** | | | First party | 	Azure Monitor Agent can send the following virtual machine data to Azure Data Explorer using a data collection rule: Performance counters, IIS logs, Windows event logs, Linux system logs, Custom text logs, and Custom JSON logs |
 | [Azure Stream Analytics](integrate-overview.md#azure-stream-analytics) | **Ingestion** | :heavy_check_mark: | | First party | Event processing |
 | [Cribl Stream](integrate-overview.md#cribl-stream) | **Ingestion** | :heavy_check_mark: | | First party | Telemetry, Logs, Metrics, Machine data processing |
 | [Fluent Bit](integrate-overview.md#fluent-bit) | **Ingestion** | | | [Open source](https://github.com/fluent/fluent-bit) | Logs, Metrics, Traces |
