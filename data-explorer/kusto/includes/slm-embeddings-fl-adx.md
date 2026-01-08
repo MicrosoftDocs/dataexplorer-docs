@@ -7,7 +7,13 @@ The function `slm_embeddings_fl()` is a [UDF (user-defined function)](../query/f
 Currently the function supports [jina-v2-small](https://huggingface.co/jinaai/jina-embeddings-v2-small-en) and [e5-small-v2](https://huggingface.co/intfloat/e5-small-v2) models.
 
 [!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
-* More for ADX
+* Alter the cluster's [callout policy](../management/callout-policy.md) to allow access to the external artifacts (which are referenced in the KQL code below):
+
+```kusto
+.alter-merge cluster policy callout @'[ { "CalloutType": "sandbox_artifacts", "CalloutUriRegex": "artifactswestus\\.z22\\.web\\.core\\.windows\\.net/models/SLM/","CanCall": true } ]'
+```
+
+Note that this change requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions (for more details see [Using External Artifacts](python-plugin-adx.md#using-external-artifacts)).
 
 ## Syntax
 
