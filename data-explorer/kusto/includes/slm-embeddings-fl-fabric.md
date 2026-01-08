@@ -27,7 +27,7 @@ Currently the function supports [jina-v2-small](https://huggingface.co/jinaai/ji
 
 ## Function definition
 
-* Download the four artifacts in the KQL code below (at the end of the code block see the external_artifacts parameter that reference artifacts in https://artifactswestus.z22.web.core.windows.net/models/SLM container) and upload them to your lakehouse.
+* Download the four artifacts in the KQL code below (at the end of the code block see the external_artifacts parameter that reference artifacts, e.g https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip) and upload them to your lakehouse.
 * In the KQL code below update the artifacts paths to their one lake paths (e.g. https://msit-onelake.dfs.fabric.microsoft.com/MY_WORKSPACE/MY_LAKEHOUSE.Lakehouse/Files/models/SLM/embedding_engine.zip).
 * You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 

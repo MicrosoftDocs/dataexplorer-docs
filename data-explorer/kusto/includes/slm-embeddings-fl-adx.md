@@ -13,7 +13,7 @@ Currently the function supports [jina-v2-small](https://huggingface.co/jinaai/ji
 .alter-merge cluster policy callout @'[ { "CalloutType": "sandbox_artifacts", "CalloutUriRegex": "artifactswestus\\.z22\\.web\\.core\\.windows\\.net/models/SLM/","CanCall": true } ]'
 ```
 
-Note that this change requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions (for more details see [Using External Artifacts](python-plugin-adx.md#using-external-artifacts)).
+Note that this change requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 
@@ -49,7 +49,7 @@ let slm_embeddings_fl = (tbl:(*), text_col:string, embeddings_col:string, batch_
     let code = ```if 1:
 		from sandbox_utils import Zipackage
 		Zipackage.install('embedding_engine.zip')
-#		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
+		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
 		
 		from embedding_factory import create_embedding_engine
 		
@@ -70,7 +70,7 @@ let slm_embeddings_fl = (tbl:(*), text_col:string, embeddings_col:string, batch_
     tbl
     | evaluate hint.distribution=per_node python(typeof(*), code, kwargs, external_artifacts = bag_pack(
     			'embedding_engine.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip',
-//				'tokenizers-0.22.1.whl', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/tokenizers-0.22.1-cp39-abi3-win_amd64.whl',
+				'tokenizers-0.22.1.whl', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/tokenizers-0.22.1-cp39-abi3-win_amd64.whl',
 				'jina-v2-small.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/jina-v2-small.zip',
 				'e5-small-v2.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/e5-small-v2.zip'))
 };
@@ -92,7 +92,7 @@ slm_embeddings_fl(tbl:(*), text_col:string, embeddings_col:string, batch_size:in
     let code = ```if 1:
 		from sandbox_utils import Zipackage
 		Zipackage.install('embedding_engine.zip')
-#		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
+		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
 		
 		from embedding_factory import create_embedding_engine
 		
@@ -113,7 +113,7 @@ slm_embeddings_fl(tbl:(*), text_col:string, embeddings_col:string, batch_size:in
     tbl
     | evaluate hint.distribution=per_node python(typeof(*), code, kwargs, external_artifacts = bag_pack(
     			'embedding_engine.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip',
-//				'tokenizers-0.22.1.whl', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/tokenizers-0.22.1-cp39-abi3-win_amd64.whl',
+				'tokenizers-0.22.1.whl', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/tokenizers-0.22.1-cp39-abi3-win_amd64.whl',
 				'jina-v2-small.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/jina-v2-small.zip',
 				'e5-small-v2.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/e5-small-v2.zip'))
 }
@@ -138,7 +138,7 @@ let slm_embeddings_fl=(tbl:(*), text_col:string, embeddings_col:string, batch_si
     let code = ```if 1:
 		from sandbox_utils import Zipackage
 		Zipackage.install('embedding_engine.zip')
-#		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
+		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
 		
 		from embedding_factory import create_embedding_engine
 		
@@ -158,9 +158,10 @@ let slm_embeddings_fl=(tbl:(*), text_col:string, embeddings_col:string, batch_si
 	```;
     tbl
     | evaluate hint.distribution=per_node python(typeof(*), code, kwargs, external_artifacts = bag_pack(
-    'embedding_engine.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip',
-    'jina-v2-small.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/jina-v2-small.zip',
-    'e5-small-v2.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/e5-small-v2.zip'))
+    			'embedding_engine.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip',
+				'tokenizers-0.22.1.whl', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/tokenizers-0.22.1-cp39-abi3-win_amd64.whl',
+				'jina-v2-small.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/jina-v2-small.zip',
+				'e5-small-v2.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/e5-small-v2.zip'))
 };
 //
 // Create a sample dataset with text passages
