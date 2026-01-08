@@ -3,7 +3,7 @@ title: Visualize data from Azure Data Explorer using Sisense
 description: In this article, learn how to set up Azure Data Explorer as a data source for Sisense, and visualize the data.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 07/12/2023
+ms.date: 01/08/2026
 ms.custom:
   - has-adal-ref
   - sfi-image-nochange
@@ -22,9 +22,11 @@ You need the following to complete this article:
 
     [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
-## Connect to Sisense dashboards using Azure Data Explorer JDBC connector
+## Connect to Sisense dashboards
 
-1. Download and copy the latest versions of the following jar files to *..\Sisense\DataConnectors\jdbcdrivers\adx*
+Use the Azure Data Explorer JDBC connector to connect to Sisense.
+
+1. Download and copy the latest versions of the following jar files to *..\Sisense\DataConnectors\jdbcdrivers\adx* from a site such as [Maven Repository](https://mvnrepository.com/) or [Microsoft's GitHub repository].
 
     * activation-1.1.jar
     * adal4j-1.6.0.jar
@@ -41,8 +43,9 @@ You need the following to complete this article:
     * oauth2-oidc-sdk-5.24.1.jar
     * slf4j-api-1.7.21.jar
 
-1. Open **Sisense** app.
-1. Select **Data** tab and select **+ElastiCube** to create a new ElastiCube model.
+1. Open the **Sisense** application.
+
+1. Select the **Data** tab and select **+ElastiCube** to create a new ElastiCube model.
 
     ![Select ElastiCube.](media/sisense/data-select-elasticube.png)
 
@@ -70,7 +73,7 @@ You need the following to complete this article:
     |User Name   |    Microsoft Entra user name     |
     |Password     |   Microsoft Entra user password      |
 
-1. In the **Select Data** tab, search **Select Database** to select the relevant database to which you have permissions. In this example, select *test1*.
+1. In the **Select Data** tab, search **Select Database** and select the relevant database to which you have permissions. In this example, select *test1*.
 
     ![select database.](media/sisense/select-database.png)
 
@@ -85,11 +88,11 @@ You need the following to complete this article:
 
     * In the **Build** window, select **Build**.
 
-      ![Build window.](media/sisense/build-window.png)
+    ![Build window.](media/sisense/build-window.png)
 
     * Wait until build process is complete and then select **Build Succeeded**.
 
-      ![Build succeeded.](media/sisense/build-succeeded.png)
+    ![Build succeeded.](media/sisense/build-succeeded.png)
 
 ## Create Sisense dashboards
 
@@ -105,7 +108,7 @@ You need the following to complete this article:
 
     ![Add fields to StormEvents dashboard.](media/sisense/storm-dashboard-add-field.png)
 
-1. Select **+ Add More Data** to add additional columns to your graph.
+1. Select **+ Add More Data** to add extra columns to your graph.
 
     ![Add more data to graph.](media/sisense/add-more-data.png)
 
@@ -113,7 +116,7 @@ You need the following to complete this article:
 
     ![Storm dashboard.](media/sisense/final-dashboard.png)
 
-You can now explore your data with visual analytics, build additional dashboards, and
+You can now explore your data with visual analytics, build more dashboards, and
 transform data into actionable insights to make an impact on your business.
 
 ## Related content
