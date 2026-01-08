@@ -16,6 +16,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure/synapse-analytics/quickstart-connect-azure-data-explorer.md",
+      "redirect_url": "/azure/data-explorer/integrate-overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "graph-overview.md",
       "redirect_url": "/kusto/query/graph-semantics-overview?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
