@@ -1,5 +1,5 @@
 ---
-title: Ingest from Event Hub - Azure Data Explorer
+title: Ingest from Event Hubs - Azure Data Explorer
 description: This article describes how to ingest data from Azure Event Hubs into Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
@@ -214,7 +214,7 @@ See the [sample app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) 
 
 ## Set up Geo-disaster recovery solution
 
-Event hub offers a [Geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr) solution.
+Event hubs offer a [Geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr) solution.
 Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement the Geo-disaster recovery in your solution, create two event hub data connections: one for the primary namespace and one for the secondary namespace. Azure Data Explorer listens to both event hub connections.
 
 > [!NOTE]
