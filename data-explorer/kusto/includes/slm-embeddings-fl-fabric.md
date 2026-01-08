@@ -7,7 +7,7 @@ The function `slm_embeddings_fl()` is a [UDF (user-defined function)](../query/f
 Currently the function supports [jina-v2-small](https://huggingface.co/jinaai/jina-embeddings-v2-small-en) and [e5-small-v2](https://huggingface.co/intfloat/e5-small-v2) models.
 
 [!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
-* Create a lakehouse to host the the external artifacts (which are referenced in the KQL code below), preferably in the same workspace as your eventhouse.
+* Create a lakehouse to host the external artifacts (which are referenced in the KQL code below), preferably in the same workspace as your eventhouse.
 
 ## Syntax
 
