@@ -183,7 +183,7 @@ The following sections will help you diagnose and troubleshoot of some of the co
 
 ### Why don't I see all my subscriptions in the subscription picker?
 
- shows only subscriptions that contain Azure Data Explorer clusters chosen from the selected subscription filter. You select a subscription filter under **Directory + subscription** in the Azure portal.
+Shows only subscriptions that contain Azure Data Explorer clusters chosen from the selected subscription filter. You select a subscription filter under **Directory + subscription** in the Azure portal.
 
 :::image type="content" source="/azure/azure-monitor/insights/media/key-vaults-insights-overview/Subscriptions.png" alt-text="Screenshot of selecting a subscription filter.":::
 
