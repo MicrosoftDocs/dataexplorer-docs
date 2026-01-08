@@ -236,6 +236,9 @@ items:
             - name: Apache Log4J 2
               displayName: ingest data, ingestion, connector
               href: apache-log4j2-connector.md
+            - name: Azure Monitor
+              displayName: ingest data, ingestion, connector
+              href: /azure/azure-monitor/vm/send-fabric-destination?toc=/azure/data-explorer/toc.json
             - name: Apache Spark
               displayName: connector, export, ingest
               href: spark-connector.md
@@ -247,6 +250,8 @@ items:
               displayName: ingest data, ingestion, connector
             - name: Fluent Bit
               href: fluent-bit.md
+            - name: Fluentd
+              href: ingest-data-fluentd.md
               displayName: ingest data, ingestion, connector
             - name: Logstash
               displayName: ingest data, ingestion, connector

@@ -62,6 +62,7 @@ The following table summarizes the available connectors and their capabilities:
 | [Splunk](#splunk)                                                                     | :heavy_check_mark: |                    |                    |                    |
 | [Splunk Universal Forwarder](#splunk-universal-forwarder)                             | :heavy_check_mark: |                    |                    |                    |
 | [Telegraf](#telegraf)                                                                 | :heavy_check_mark: |                    |                    |                    |
+| [Azure Monitor](#azure-monitor)                                                       | :heavy_check_mark: |                    |                    |                    |
 
 ### [Tools and integrations](#tab/integrations)
 
@@ -358,6 +359,19 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 * **Documentation:** [Ingest data from Telegraf](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
+
+### Azure Monitor
+	
+Azure Monitor Agent can send the following virtual machine data to Azure Data Explorer using a data collection rule:
+
+- Performance counters
+- IIS logs
+- Windows event logs
+- Linux system logs
+- Custom text logs
+- Custom JSON logs
+
+For more information, see [Collect data from virtual machines to Azure Data Explorer](/azure/azure-monitor/vm/send-fabric-destination).
 
 ### [Tools and integrations](#tab/integrations)
 
