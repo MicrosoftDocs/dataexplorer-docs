@@ -268,7 +268,7 @@ Use the following settings:
 
 ## Limitations
 
-* Scripts are only supported in Azure Data Explorer
+* Scripts are only supported in Azure Data Explorer.
 * Two scripts can't be added, modified, or removed in parallel on the same cluster. If this occurs, the following error: `Code="ServiceIsInMaintenance"` is raised.  You can work around the issue by placing a dependency between the two scripts so that they're created or updated sequentially.
 * To create functions with [cross-cluster queries](/kusto/query/cross-cluster-or-database-queries?view=azure-data-explorer&preserve-view=true) using scripts, you must set the `skipvalidation` property to `true` in the [.create function command](/kusto/management/create-function?view=azure-data-explorer&preserve-view=true).
 
