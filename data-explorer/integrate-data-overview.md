@@ -27,7 +27,7 @@ Use the following filters to see other connectors, tools, and integrations are a
    :::column-end:::
 :::row-end:::
 
-The following tables summarizes the available data connectors, tools, and integrations.
+The following tables summarize the available data connectors, tools, and integrations.
 
 ## [Connectors](#tab/connectors)
 
