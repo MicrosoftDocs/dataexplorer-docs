@@ -2,8 +2,8 @@
 title: Integrations overview
 description: Learn about the available data connectors, tools, and integrations, and their capabilities.
 ms.reviewer: aksdi
-ms.topic: conceptual
-ms.date: 01/16/2024
+ms.topic: article
+ms.date: 12/01/2025
 ---
 # Integrations overview
 
@@ -40,7 +40,6 @@ The following table summarizes the available connectors and their capabilities:
 | [Apache Flink](#apache-flink)                                                         | :heavy_check_mark: |                    |                    |                    |
 | [Apache Log4J 2](#apache-log4j-2)                                                     | :heavy_check_mark: |                    |                    |                    |
 | [Apache Spark](#apache-spark)                                                         | :heavy_check_mark: | :heavy_check_mark: |                    | :heavy_check_mark: |
-| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | :heavy_check_mark: | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Azure Cosmos DB](#azure-cosmos-db)                                                   | :heavy_check_mark: |                    |                    |                    |
 | [Azure Data Factory](#azure-data-factory)                                             | :heavy_check_mark: |                    | :heavy_check_mark: |                    |
 | [Azure Event Grid](#azure-event-grid)                                                 |                    |                    | :heavy_check_mark: |                    |
@@ -72,7 +71,6 @@ The following table summarizes the available tools and integrations and their ca
 | Name                                                                                | Ingest             | Query              | Share              | Source control     | Secure             | Administrate       | Visualize          |
 | ----------------------------------------------------------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | [Azure CLI](#azure-cli)                                                             |                    |                    |                    |                    |                    | :heavy_check_mark: |                    |
-| [Azure Synapse Analytics](#azure-synapse-analytics)                                 | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
 | [Azure Data Lake](#azure-data-lake)                                                 | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    |                    |
 | [Azure Data Studio](#azure-data-studio)                                             |                    | :heavy_check_mark: |                    |                    |                    |                    |                    |
 | [Azure Data Share](#azure-data-share)                                               |                    |                    | :heavy_check_mark: |                    |                    |                    |                    |
@@ -146,16 +144,6 @@ The following are detailed descriptions of connectors and tools and integrations
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-spark/
 * **Documentation:** [Apache Spark connector](spark-connector.md)
 * **Community Blog:** [Data preprocessing for Azure Data Explorer for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
-
-### Apache Spark for Azure Synapse Analytics
-
-[Apache Spark](https://spark.apache.org/) is a parallel processing framework that supports in-memory processing to boost the performance of big data analytic applications. [Apache Spark in Azure Synapse](/azure/synapse-analytics/spark/apache-spark-overview) Analytics is one of Microsoft's implementations of Apache Spark in the cloud. You can access a database from [Synapse Studio](/azure/synapse-analytics/) with Apache Spark for Azure Synapse Analytics.
-
-* **Functionality:** Ingestion, Export
-* **Ingestion type supported:** Batching
-* **Use cases:** Telemetry
-* **Underlying SDK:** [Java](/kusto/api/java/kusto-java-client-library?view=azure-data-explorer&preserve-view=true)
-* **Documentation:** [Connect to an Azure Synapse workspace](/azure/synapse-analytics/quickstart-connect-azure-data-explorer)
 
 ### Azure Cosmos DB
 
@@ -393,13 +381,6 @@ Azure CLI lets you manage Kusto resources.
 
 * **Functionality:** Administration
 * **Documentation:** [az kusto](/cli/azure/kusto?view=azure-cli-latest&preserve-view=true)
-
-### Azure Synapse Analytics
-
-Azure Synapse Data Explorer provides customers with an interactive query experience to unlock insights from log and telemetry data. To complement existing SQL and Apache Spark analytics runtime engines, the Data Explorer analytics runtime is optimized for efficient log analytics using powerful indexing technology to automatically index free-text and semi-structured data commonly found in telemetry data.
-
-* **Functionality:** Ingestion, Query, Visualization 
-* **Documentation:**  [What is Azure Synapse Data Explorer?](/azure/synapse-analytics/data-explorer/data-explorer-overview)
 
 ### Azure Data Lake
 
