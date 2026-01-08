@@ -3,8 +3,6 @@ ms.topic: include
 ms.date: 01/08/2026
 ---
 
-# slm_embeddings_fl()
-
 The function `slm_embeddings_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that generates text embeddings using local Small Language Models (SLM). This function converts text into numerical vector representations that can be used for semantic search, similarity analysis, and other natural language processing tasks.
 Currently the function supports [jina-v2-small](https://huggingface.co/jinaai/jina-embeddings-v2-small-en) and [e5-small-v2](https://huggingface.co/intfloat/e5-small-v2) models.
 
