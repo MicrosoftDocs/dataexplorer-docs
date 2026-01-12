@@ -3,7 +3,7 @@ title: Data integrations overview
 description: Learn about the available data integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 01/30/2024
+ms.date: 01/06/2026
 # CustomerIntent: As a data ingestor, I want to know what data connectors and tools are available, so that I can choose the right one for my use case.
 ---
 # Data integrations overview
@@ -27,7 +27,7 @@ Use the following filters to see other connectors, tools, and integrations are a
    :::column-end:::
 :::row-end:::
 
-The following tables summarizes the available data connectors, tools, and integrations.
+The following tables summarize the available data connectors, tools, and integrations.
 
 ## [Connectors](#tab/connectors)
 
@@ -37,13 +37,13 @@ The following tables summarizes the available data connectors, tools, and integr
 | [Apache Flink](integrate-overview.md#apache-flink) | **Ingestion** | :heavy_check_mark: | | [Open source](https://github.com/Azure/flink-connector-kusto/) | Telemetry |
 | [Apache Log4J 2](integrate-overview.md#apache-log4j-2) | **Ingestion** | :heavy_check_mark: | :heavy_check_mark: | First party, [Open source](https://github.com/Azure/azure-kusto-log4j) | Logs |
 | [Apache Spark](integrate-overview.md#apache-spark) | **Export**<br /><br />**Ingestion** | | | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
-| [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics) | **Export**<br /><br />**Ingestion** | | | First party | Telemetry |
 | [Azure Cosmos DB](integrate-overview.md#azure-cosmos-db) | **Ingestion** | :heavy_check_mark: | | First party | Change feed |
 | [Azure Data Factory](integrate-overview.md#azure-data-factory) | **Export**<br /><br />**Ingestion** | | | First party | Data orchestration |
 | [Azure Event Grid](integrate-overview.md#azure-event-grid) | **Ingestion** | :heavy_check_mark: | | First party | Event processing |
 | [Azure Event Hubs](integrate-overview.md#azure-event-hubs) | **Ingestion** | :heavy_check_mark: | | First party | Messaging |
 | [Azure Functions](integrate-overview.md#azure-functions) | **Export**<br /><br />**Ingestion** | | | First party | Workflow integrations |
 | [Azure IoT Hubs](integrate-overview.md#azure-iot-hubs) | **Ingestion** | :heavy_check_mark: | | First party | IoT data |
+| [Azure Monitor](integrate-overview.md#azure-monitor) | **Ingestion** | | | First party | 	Azure Monitor Agent can send the following virtual machine data to Azure Data Explorer using a data collection rule: Performance counters, IIS logs, Windows event logs, Linux system logs, Custom text logs, and Custom JSON logs |
 | [Azure Stream Analytics](integrate-overview.md#azure-stream-analytics) | **Ingestion** | :heavy_check_mark: | | First party | Event processing |
 | [Cribl Stream](integrate-overview.md#cribl-stream) | **Ingestion** | :heavy_check_mark: | | First party | Telemetry, Logs, Metrics, Machine data processing |
 | [Fluent Bit](integrate-overview.md#fluent-bit) | **Ingestion** | | | [Open source](https://github.com/fluent/fluent-bit) | Logs, Metrics, Traces |

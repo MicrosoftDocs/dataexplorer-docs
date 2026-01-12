@@ -131,6 +131,8 @@ items:
                 href: external-tables-azure-storage.md
               - name: Create or alter delta external table
                 href: external-tables-delta-lake.md
+              - name: .show external table details
+                href: show-external-tables-details.md
               - name: Manage external table mappings
                 items:
                   - name: .alter external table mapping command
@@ -584,6 +586,9 @@ items:
           - name: Query acceleration policy
             href: query-acceleration-policy.md
             displayName: external table, delta table
+          - name: Query acceleration troubleshooting guide
+            href: query-acceleration-troubleshooting-guide.md
+            displayName: external table, delta table
           - name: .alter query acceleration policy command
             href: alter-query-acceleration-policy-command.md
             displayName: external table, delta table
@@ -889,7 +894,11 @@ items:
           - name: .show queued ingestion operation command
             href: data-ingestion/show-queued-ingestion-operations.md 
           - name: Queued ingestion via REST API
-            href: data-ingestion/queued-ingest-use-http.md       
+            href: data-ingestion/queued-ingest-use-http.md
+          - name: Queued ingestion status via REST API
+            href: data-ingestion/queued-ingest-status-http.md
+          - name: Queued ingestion Configuration via REST API
+            href: data-ingestion/queued-ingest-configuration-http.md
       - name: Streaming ingestion
         items:
           - name: Streaming ingestion and schema changes

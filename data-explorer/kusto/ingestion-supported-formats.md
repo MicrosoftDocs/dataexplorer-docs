@@ -3,7 +3,7 @@ title: Data Ingestion - Supported Formats and Compression
 description: Explore the various data formats like CSV, JSON, Parquet, and more, supported for ingestion. Understand compression options and best practices for data preparation.
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 09/21/2025
+ms.date: 10/29/2025
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Data formats supported for ingestion
@@ -27,6 +27,7 @@ and [Ingestion error codes in Azure Data Explorer](/azure/data-explorer/error-co
 |---------|------------|-----------|
 |ApacheAvro|`.avro`    |An [Avro](https://avro.apache.org/docs/current/) format that supports [logical types](https://avro.apache.org/docs/++version++/specification/#Logical+Types). Supported compression codecs: `null`, `deflate`, and `snappy`. The reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For details on ingesting Event Hubs Capture Avro files, see [Ingesting Event Hubs Capture Avro files](/azure/data-explorer/ingest-data-event-hub-overview#schema-mapping-for-event-hub-capture-avro-files). |
 |Avro     |`.avro`     |A legacy implementation of the [Avro](https://avro.apache.org/docs/current/) format based on the [.NET library](https://www.nuget.org/packages/Microsoft.Hadoop.Avro). Supported compression codecs: `null` and `deflate`. To use `snappy`, use the `ApacheAvro` data format. |
+|AzMonStream     |N/A     |Azure Monitor [exports data in this format](/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#data-formats) to Azure Event Hubs.  This format is supported only by Azure Event Hubs. |
 |CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
 |MultiJSON|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n`, or `\r\n`. Each property bag can span multiple lines.|

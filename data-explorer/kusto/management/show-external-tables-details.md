@@ -40,14 +40,26 @@ You must have at least Database User, Database Viewer, Database Monitor to run t
 | QueryAccelerationState | `string` | A JSON-serialization of the [query acceleration status](#query-acceleration-state) parameters. |
 
 ### Query acceleration policy
-
+::: moniker range="microsoft-fabric"
 | Column | Type | Description |
 |--|--|--|
 | IsEnabled | `bool` | Indicates whether the external table has a query acceleration policy enabled. |
 | Hot | `timespan` | The hot period defined in the query acceleration policy. |
 | MaxAge | `timespan` | The maximum timespan from the last index refresh time that enables the external table to operate in accelerated mode. |
 | HotWindows | `datetime` | One or more optional time windows. Delta data files created within these time windows are accelerated. |
+| HotDateTimeColumn | `string` | The hot datetime column defined in the query acceleration policy. |
+::: moniker-end
 
+::: moniker range="azure-data-explorer"
+| Column | Type | Description |
+|--|--|--|
+| IsEnabled | `bool` | Indicates whether the external table has a query acceleration policy enabled. |
+| Hot | `timespan` | The hot period defined in the query acceleration policy. |
+| MaxAge | `timespan` | The maximum timespan from the last index refresh time that enables the external table to operate in accelerated mode. |
+| HotWindows | `datetime` | One or more optional time windows. Delta data files created within these time windows are accelerated. |
+| ManagedIdentity   | `string`	 |  The managed identity defined in the query acceleration policy. |
+| HotDateTimeColumn | `string` | The hot datetime column defined in the query acceleration policy. |
+::: moniker-end
 ### Query acceleration state
 
 | Column | Type | Description |

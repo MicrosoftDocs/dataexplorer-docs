@@ -47,7 +47,7 @@ To accelerate queries over external delta tables, see [Query acceleration policy
 > [!NOTE]
 >
 > * The maximum limit of external tables per database is 1,000.
-> * External table names are case-sensitive, and can't overlap with Kusto table names. For more information, see [Identifier naming rules](entity-names.md#identifier-naming-rules).
+> * External table names are case-sensitive, and can't overlap with Kusto table names. Column names must also follow Kusto identifier naming rules; tables that contain an asterisk (`*`) in any column name aren't supported, because `*` is a reserved character in Kusto. For more information, see [Identifier naming rules](entity-names.md#identifier-naming-rules).
 > * Azure Data Explorer supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md) to an external table.
 > * [Data purge](../../concepts/data-purge.md) isn't applied on external tables. Records are never deleted from external tables.
 > * [Row level security policy](../../management/row-level-security-policy.md) can't be configured on external tables.

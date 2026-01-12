@@ -3,10 +3,10 @@ title: Queued Ingestion via REST API
 description: Learn how to use the REST API to submit blobs for ingestion into Azure Data Explorer tables.
 ms.reviewer: 
 ms.topic: reference
-ms.date: 09/15/2025
+ms.date: 12/11/2025
 ---
 
-# Queued ingestion via REST API
+# Queued ingestion via REST API (Preview)
 
 The queued ingestion REST API allows you to programmatically submit one or more blobs for ingestion into a specified database and table. This method is ideal for automated workflows and external systems that need to trigger ingestion dynamically.
 
@@ -14,7 +14,7 @@ The queued ingestion REST API allows you to programmatically submit one or more 
 
 To use the REST API for queued ingestion, you need:
 
-- **Table Ingestor** role to ingest data into an existing table.
+- **Ingestor** role with **table** scope to ingest data into an existing table.
 - **Database User** role to access the target database.
 - **Storage Blob Data Reader** role on the blob storage container.
 
@@ -29,8 +29,8 @@ Method: POST
 
 |Parameter|Type|Required|Description|
 |--|--|--|--|
-|`database`|`string`|:heavy_check_mark:|The name of the target database.|
-|`table`|`string`|:heavy_check_mark:|The name of the target table.|
+|`database`|`string`|  :heavy_check_mark: | The name of the target database.|
+|`table`|`string`|  :heavy_check_mark: | The name of the target table.|
 
 ## Request body parameters
 
@@ -40,8 +40,8 @@ The request must be a JSON object with the following structure.
 
 |Field|Type|Required|Description|
 |--|--|--|--|
-|`blobs`|`array`|:heavy_check_mark:|A list of blob objects to be ingested. See [Blob object](#blob-object) for details.|
-|`properties`|`object`|:heavy_check_mark:|An object containing ingestion properties. See [Supported ingestion properties](#supported-ingestion-properties).|
+|`blobs`|`array`|  :heavy_check_mark: | A list of blob objects to be ingested. See [Blob object](#blob-object) for details.|
+|`properties`|`object`|  :heavy_check_mark: |An object containing ingestion properties. See [Supported ingestion properties](#supported-ingestion-properties).|
 |`timestamp`|`datetime`|No|Optional timestamp indicating when the ingestion request was created.|
 
 ### Blob object
@@ -50,7 +50,7 @@ Each item in the `blobs` array must follow this structure:
 
 |Field|Type|Required|Description|
 |--|--|--|--|
-|`url`|`string`|:heavy_check_mark:|The URL of the blob to ingest. The service performs light validation on this field.|
+|`url`|`string`|  :heavy_check_mark: | The URL of the blob to ingest. The service performs light validation on this field.|
 |`sourceId`|`Guid`|No|An identifier for the source blob.|
 |`rawSize`|`integer`|No|The size of the blob before compression (nullable).|
 
@@ -84,7 +84,7 @@ Authorization: Bearer <access_token>
   "blobs": [
     {
       "url": "https://example.com/blob1.csv.gz",
-      "sourceId": "123a6999-411e-4226-a333-w79992dd9b95",
+      "sourceId": "123a6999-411e-4226-a333-a79992dd9b95",
       "rawSize": 1048576
     }
   ],
