@@ -152,7 +152,7 @@ T | where rand() < 0.1 | ...
 T | where hash(UserId, 10) == 1 | ...
 ```
 
-For more information about using mechanisms such as hint.shufflekey for both `summarize` and `join`, see [Best practices for Kusto Query Language queries](../query/best-practices.md)
+For more information about using mechanisms such as hint.shufflekey for both `summarize` and `join`, see [Best practices for Kusto Query Language queries](../query/best-practices.md).
 
 ## Limit on memory per node
 
