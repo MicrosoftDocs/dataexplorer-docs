@@ -109,15 +109,19 @@ The following rules apply when you use `set` statements or specify flags in [cli
 
 ## Limit on memory consumed by query operators
 
-You can increase the **max memory consumption per iterator** limit to control the amount of memory that each query operator consumes, per node.
+**Max memory consumption per iterator** limit can be configured to control the amount of memory that each query operator consumes, per node.
 
-Some query operators, such as `join` and `summarize`, hold significant data in memory. When the query reaches the configured memory per operator limit, a partial query failure message includes the text `E_RUNAWAY_QUERY`. For example:
+Some query operators, such as `join` and `summarize`, hold significant data in memory. When the query reaches the configured memory per operator limit, a partial query failure message displays and includes the text `E_RUNAWAY_QUERY`.
+
+For example:
 
 `The ClusterBy operator has exceeded the memory budget during evaluation. Results might be incorrect or incomplete (E_RUNAWAY_QUERY).`
+
 `The HashJoin operator has exceeded the memory budget during evaluation. Results might be incorrect or incomplete (E_RUNAWAY_QUERY).`
+
 `The Sort operator has exceeded the memory budget during evaluation. Results might be incorrect or incomplete (E_RUNAWAY_QUERY).`
 
-By increasing the request option `maxmemoryconsumptionperiterator`, you can run queries that require more memory per operator.
+By increasing the default of the request option `maxmemoryconsumptionperiterator`, you can run queries that require more memory per operator.
 
 The maximum supported value for this request option is 32212254720 (30 GB). If you set `maxmemoryconsumptionperiterator` multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
 
