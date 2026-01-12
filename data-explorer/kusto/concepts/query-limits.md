@@ -109,9 +109,11 @@ The following rules apply when you use `set` statements or specify flags in [cli
 
 ## Limit on memory consumed by query operators
 
-**Max memory consumption per iterator** limit can be configured to control the amount of memory that each query operator consumes, per node.
+**Max memory consumption per iterator** limit can be configured to control the amount of memory that each query operator consumes, per node. Some query operators, such as `join` and `summarize`, hold significant data in memory. By increasing the default of the request option `maxmemoryconsumptionperiterator`, you can run queries that require more memory per operator.
 
-Some query operators, such as `join` and `summarize`, hold significant data in memory. When the query reaches the configured memory per operator limit, a partial query failure message displays and includes the text `E_RUNAWAY_QUERY`.
+The maximum supported value for this request option is 32212254720 (30 GB). If you set `maxmemoryconsumptionperiterator` multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
+
+When the query reaches the configured memory per operator limit, a partial query failure message displays and includes the text `E_RUNAWAY_QUERY`.
 
 For example:
 
@@ -120,10 +122,6 @@ For example:
 `The HashJoin operator has exceeded the memory budget during evaluation. Results might be incorrect or incomplete (E_RUNAWAY_QUERY).`
 
 `The Sort operator has exceeded the memory budget during evaluation. Results might be incorrect or incomplete (E_RUNAWAY_QUERY).`
-
-By increasing the default of the request option `maxmemoryconsumptionperiterator`, you can run queries that require more memory per operator.
-
-The maximum supported value for this request option is 32212254720 (30 GB). If you set `maxmemoryconsumptionperiterator` multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
 
 For example, this query sets the max memory consumption per iterator to 15 GB:
 
@@ -153,6 +151,8 @@ T | where rand() < 0.1 | ...
 
 T | where hash(UserId, 10) == 1 | ...
 ```
+
+For more information about using mechanisms such as hint.shufflekey for both `summarize` and `join`, see [Best practices for Kusto Query Language queries](../query/best-practices.md)
 
 ## Limit on memory per node
 
