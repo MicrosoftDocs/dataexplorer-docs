@@ -3,7 +3,7 @@ title: .show databases entities command
 description: Learn how to use the `.show databases entities` command to show databases' entities.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 01/12/2026
 ---
 # .show databases entities command
 
@@ -24,7 +24,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |Key|Value|Description|
 |--|--|--|
 |`showObfuscatedStrings`| `bool` | Defaults to `false`. If `true`, [obfuscated strings](../query/scalar-data-types/string.md#obfuscated-string-literals) in database entity bodies are shown. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the obfuscated strings are **not** shown.|
-|`resolveFunctionsSchema`| `bool` | Defaults to `false`. If `true`, returned stored functions have output schema resolved.|
+|`resolveFunctionSchema`| `bool` | Defaults to `false`. If `true`, returned stored functions have output schema resolved.|
 
 ## Returns
 
@@ -76,7 +76,7 @@ The following example returns a list of entities from the `TestDB` database with
 The following example uses the `.show databases entities` command with the function schema resolved to return information about the *MeaningLessFn* function in the `TestDB` database. The output includes function schema.
 
 ```kusto
-.show databases entities with (resolveFunctionsSchema=true)
+.show databases entities with (resolveFunctionSchema=true)
 | where DatabaseName == "TestDB" and EntityType == "Function" and EntityName == "MeaningLessFn"
 ```
 
