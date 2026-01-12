@@ -8,14 +8,9 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # Query limits
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-
-Kusto is an ad-hoc query engine that hosts large datasets and
-attempts to satisfy queries by holding all relevant data in-memory.
-There's an inherent risk that queries will monopolize the service
-resources without bounds. Kusto provides several built-in protections
-in the form of default query limits. If you're considering removing these limits, first determine whether you actually gain any value by doing so.
+Kusto is an ad-hoc query engine that hosts large datasets and attempts to satisfy queries by holding all relevant data in-memory. There's an inherent risk that queries will monopolize the service resources without bounds. Kusto provides several built-in protections in the form of default query limits. If you're considering removing these limits, first determine whether you actually gain any value by doing so.
 
 ## Limit on request concurrency
 
@@ -112,12 +107,21 @@ The following apply when using `set` statements, and/or when specifying flags in
 * If `notruncation` is set, and any of `truncationmaxsize`, `truncationmaxrecords`, or `query_take_max_records` are also set - `notruncation` is ignored.
 * If `truncationmaxsize`, `truncationmaxrecords` and/or `query_take_max_records` are set multiple times - the *lower* value for each property applies.
 
-## Limit on memory consumed by query operators (E_RUNAWAY_QUERY)
+## Limit on memory consumed by query operators
 
-Kusto limits the memory that each query operator can consume to protect against "runaway" queries.
-This limit might be reached by some query operators, such as `join` and `summarize`, that operate by
-holding significant data in memory. By default the limit is 5GB (per node), and it can be increased by setting the request option
-`maxmemoryconsumptionperiterator`:
+You can increase the **max memory consumption per iterator** limit to control the amount of memory that each query operator can consume, per node.
+
+Some query operators, such as `join` and `summarize`, operate by holding significant data in memory. When the configured memory per operator limit is reached, a partial query failure message includes the text `E_RUNAWAY_QUERY`. For example:
+
+`The ClusterBy operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).`
+`The HashJoin operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).`
+`The Sort operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).`
+
+By increasing the request option `maxmemoryconsumptionperiterator`, you can easily run queries that require more memory per operator.
+
+The maximum supported value for this request option is 32212254720 (30 GB). If `maxmemoryconsumptionperiterator` is set multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
+
+For example, this query sets the max memory consumption per iterator to 15 GB:
 
 <!-- csl -->
 ```kusto
@@ -125,43 +129,18 @@ set maxmemoryconsumptionperiterator=16106127360;
 MyTable | summarize count() by Use
 ```
 
-When this limit is reached, a partial query failure is emitted with a message that includes the text `E_RUNAWAY_QUERY`.
-
-```text
-The ClusterBy operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete E_RUNAWAY_QUERY.
-
-The DemultiplexedResultSetCache operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).
-
-The ExecuteAndCache operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).
-
-The HashJoin operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).
-
-The Sort operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).
-
-The Summarize operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).
-
-The TopNestedAggregator operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).
-
-The TopNested operator has exceeded the memory budget during evaluation. Results may be incorrect or incomplete (E_RUNAWAY_QUERY).
-```
-
-If `maxmemoryconsumptionperiterator` is set multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
-
-The maximum supported value for this request option is 32212254720 (30 GB).
-
-An additional limit that might trigger an `E_RUNAWAY_QUERY` partial query failure is a limit on the max accumulated size of
+An additional limit that may trigger an `E_RUNAWAY_QUERY` partial query failure is a limit on the max accumulated size of
 strings held by a single operator. This limit cannot be overridden by the request option above:
 
-```text
-Runaway query (E_RUNAWAY_QUERY). Aggregation over string column exceeded the memory budget of 8GB during evaluation.
-```
+`Runaway query (E_RUNAWAY_QUERY). Aggregation over string column exceeded the memory budget of 8GB during evaluation.`
 
 When this limit is exceeded, most likely the relevant query operator is a `join`, `summarize`, or `make-series`.
-To work-around the limit, one should modify the query to use the [shuffle query](../query/shuffle-query.md) strategy.
-(This is also likely to improve the performance of the query.)
+
+To work-around the limit, modify the query to use the [shuffle query](../query/shuffle-query.md) strategy. This is also likely to improve the performance of the query.
 
 In all cases of `E_RUNAWAY_QUERY`, an additional option (beyond increasing the limit by setting the request option and changing the
-query to use a shuffle strategy) is to switch to sampling.
+query to use a shuffle strategy) is to switch to sampling. Sampling reduces the amount of data processed by the query, and therefore reduces the memory pressure on query operators.
+
 The two queries below show how to do the sampling. The first query is a statistical sampling, using a random number generator. The second query is deterministic sampling, done by hashing some column from the dataset, usually some ID.
 
 <!-- csl -->
@@ -205,7 +184,7 @@ management commands. This value can be increased if needed (capped at one hour).
   property. For example, in .NET SDK this is done through a [client request property](../api/rest/request-properties.md),
   by setting a value of type `System.TimeSpan`.
 
-**Notes about timeouts**
+### Notes about timeouts
 
 * On the client side, the timeout is applied from the request being created
    until the time that the response starts arriving to the client. The time it
