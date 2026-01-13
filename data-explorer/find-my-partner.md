@@ -1,8 +1,7 @@
 ---
 title: Find an Azure Data Explorer partner
 description: Learn about our partners and how they can help you with Azure Data Explorer.
-ms.reviewer: herauch
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/01/2023
 ---
 # Find an Azure Data Explorer partner
