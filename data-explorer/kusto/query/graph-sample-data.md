@@ -1,8 +1,8 @@
 ---
 title: Graph sample datasets and examples
 description: Graph examples with detailed descriptions, use cases, and visualizations
-ms.topic: conceptual
-ms.author: herauch
+ms.topic: article
+ms.author: spelluru
 author: cosh
 ms.date: 08/14/2025
 ---

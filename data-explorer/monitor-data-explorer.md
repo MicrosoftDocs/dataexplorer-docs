@@ -3,7 +3,7 @@ title: Monitor Azure Data Explorer
 description: Learn how to monitor Azure Data Explorer using Azure Monitor, including data collection, analysis, and alerting.
 ms.date: 12/09/2024
 ms.custom: horz-monitor
-ms.topic: conceptual
+ms.topic: how-to
 author: spelluru
 ms.author: spelluru
 ms.service: azure-data-explorer
