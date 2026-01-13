@@ -1,7 +1,6 @@
 ---
 title: Restrict outbound access from your Azure Data Explorer cluster
 description: Learn how to restrict the outbound access from your Azure Data Explorer cluster to other services.
-ms.reviewer: herauch
 ms.topic: how-to
 ms.date: 12/01/2025
 ---

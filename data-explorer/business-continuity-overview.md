@@ -2,7 +2,7 @@
 title: Azure Data Explorer Business Continuity Overview
 description: Learn how Azure Data Explorer ensures business continuity and disaster recovery with high availability and disaster recovery configurations.
 ms.reviewer: ankhanol
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/27/2025
 ms.custom:
   - ai-gen-docs-bap
