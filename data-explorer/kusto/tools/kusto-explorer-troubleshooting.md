@@ -2,7 +2,7 @@
 title: Troubleshoot common problems in Kusto.Explorer
 description: Learn about common problems in installing and running Kusto.Explorer and their solutions
 ms.reviewer: alexans
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/04/2025
 ---
 

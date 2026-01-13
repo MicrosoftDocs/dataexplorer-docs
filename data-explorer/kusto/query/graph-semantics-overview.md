@@ -1,8 +1,7 @@
 ---
 title: Graph semantics overview
 description: Learn about graph semantics and the different approaches to create and query graphs
-ms.reviewer: herauch
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/29/2025
 ---
 

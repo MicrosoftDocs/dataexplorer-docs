@@ -2,7 +2,7 @@
 title: Integrate Azure Functions with Azure Data Explorer using input and output bindings (preview)
 description: Learn how to use Azure Data Explorer bindings for Azure Functions.
 ms.reviewer: ramacg
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/13/2022
 ---
 
