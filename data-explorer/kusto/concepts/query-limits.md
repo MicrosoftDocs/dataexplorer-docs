@@ -1,7 +1,7 @@
 ---
 title:  Query limits
 description: This article describes Query limits.
-ms.reviewer: alexans
+ms.reviewer: zivc
 ms.topic: reference
 ms.date: 01/12/2026
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
