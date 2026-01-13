@@ -2,7 +2,7 @@
 title: Graph Visualization with Graphistry
 description: Overview of Graphistry integration for scalable GPU-accelerated KQL graph visualization.
 ms.reviewer: royo
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/01/2025
 ---
 

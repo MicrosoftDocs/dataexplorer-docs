@@ -2,7 +2,7 @@
 title: Visualization integrations overview
 description: Learn about the available visualize integrations.
 ms.reviewer: aksdi
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/28/2025
 # CustomerIntent: As a data ingestor, I want to know what visualize connectors and tools are available, so that I can choose the right one for my use case.
 ---
