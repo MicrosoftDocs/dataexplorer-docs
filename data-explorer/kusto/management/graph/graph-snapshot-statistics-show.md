@@ -1,7 +1,7 @@
 ---
 title: .show graph_snapshot statistics command
 description: Learn how to display graph snapshot statistics using the .show graph_snapshot statistics command with syntax, parameters, and examples.
-ms.reviewer: herauch
+ms.reviewer: vilauzon
 ms.topic: reference
 ms.date: 09/10/2025
 ---

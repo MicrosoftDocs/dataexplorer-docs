@@ -1,7 +1,7 @@
 ---
 title: .show graph_snapshots failures command
 description: Learn how to display failed graph snapshots using the .show graph_snapshots failures command with syntax, parameters, and examples.
-ms.reviewer: herauch
+ms.reviewer: vilauzon
 ms.topic: reference
 ms.date: 09/10/2025
 ---
