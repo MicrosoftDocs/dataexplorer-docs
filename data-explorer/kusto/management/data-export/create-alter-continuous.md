@@ -51,6 +51,7 @@ You must have at least [Database Admin](../../access-control/role-based-access-c
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
 | `managedIdentity` | `string` | The managed identity for which the continuous export job runs. The managed identity can be an object ID, or the `system` reserved word. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md#use-a-managed-identity-to-run-a-continuous-export-job). |
 | `isDisabled` | `bool` | Disable or enable the continuous export. Default is false. |
+| `managedIdentity` | `string` | The managed identity on behalf of which the continusou export runs. The managed identity can be an object ID, or the `system` reserved word. The continuous export must be configured with a managed identity when the query references tables in other databases or tables with an enabled [row level security policy](row-level-security-policy.md). For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md). |
 
 ::: moniker-end
 ::: moniker range="microsoft-fabric"
