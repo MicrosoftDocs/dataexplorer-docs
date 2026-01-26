@@ -2,7 +2,7 @@
 title: Integrate capabilities in your app.
 description: Learn about the different ways you can integrate capabilities in your apps.
 ms.reviewer: izlisbon
-ms.topic: concept-article
+ms.topic: integration 
 ms.date: 08/11/2024
 ---
 # Integrate query capabilities in your app overview
