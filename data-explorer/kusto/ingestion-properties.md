@@ -2,7 +2,7 @@
 title: Data ingestion properties
 description: Optimize data ingestion by configuring properties that align with your data formats.
 ms.reviewer: tzgitlin
-ms.topic: concept-article
+ms.topic: reference
 ms.date: 09/25/2025
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
