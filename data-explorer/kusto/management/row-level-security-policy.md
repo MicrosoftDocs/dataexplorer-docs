@@ -38,9 +38,9 @@ For more information, see [management commands for managing the Row Level Securi
 * There's no limit on the number of tables on which Row Level Security policy can be configured.
 * Row Level Security policy cannot be configured on [External Tables](../query/schema-entities/external-tables.md).
 * The RLS policy can't be enabled on a table under the following circumstances:
-  * When it's referenced by an [update policy](update-policy.md) query, while the update policy is not configured with a managed identity.
-  * When it's referenced by a [continuous export](../management/data-export/continuous-data-export.md) that uses an authentication method other than impersonation.
-  * When a [restricted view access policy](restricted-view-access-policy.md) is configured for the table.
+  * The table is referenced by an [update policy](update-policy.md) that doesn’t use a managed identity. A managed identity is required so the engine can securely determine which rows from the referenced tables are allowed to be queried.
+  * The table is referenced by a [continuous export](../management/data-export/continuous-data-export.md) that doesn't uss the `impersonate` authentication method. Impersonation ensures that only users who have access to the target storage account can read the exported (and potentially sensitive) data.
+  * The table has [restricted view access policy](restricted-view-access-policy.md) configured.
 * The RLS query can't reference other tables that have Row Level Security policy enabled.
 * The RLS query can't reference tables located in other databases.
 
