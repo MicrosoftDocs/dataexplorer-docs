@@ -179,6 +179,7 @@ To define continuous export to a delta table, do the following steps:
 
 * [.create or alter continuous-export](create-alter-continuous.md)
 * [External tables](../../query/schema-entities/external-tables.md)
+
 :::moniker-end
 
 :::moniker range="azure-data-explorer"
