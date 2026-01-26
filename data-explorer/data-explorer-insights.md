@@ -2,7 +2,7 @@
 title: Azure Data Explorer Clusters insights
 description: This article describes how to use Azure Data Explorer Clusters Insights.
 ms,reviewer: guregini
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2022
 ms.custom:
   - subject-monitoring
