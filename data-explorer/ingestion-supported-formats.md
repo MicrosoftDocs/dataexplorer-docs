@@ -3,7 +3,7 @@ title: Supported Ingestion Formats In Azure Data Explorer
 description: Learn about the various data and compression formats supported by Azure Data Explorer for ingestion.
 #customer intent: As a data engineer, I want to know which file formats Azure Data Explorer supports for ingestion so that I can prepare source files correctly.
 ms.reviewer: tzgitlin
-ms.topic: reference
+ms.topic: concept-article
 ms.date: 09/02/2025
 ms.custom:
   - ai-gen-docs-bap
