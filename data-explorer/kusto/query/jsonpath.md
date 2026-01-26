@@ -50,7 +50,12 @@ Given the following JSON document:
       "User ID": "user123",
       "Username": "kiana_anderson",
       "IP Address": "192.168.1.100"
-    }
+    },
+    "Tags": [
+      "startup",
+      "auth",
+      "performance"
+    ]
   }
 }
 ```
@@ -69,6 +74,7 @@ You can represent each of the fields with JSONPath notation as follows:
 "$.Details.User['User ID']"    // User ID field
 "$.Details.User.Username"      // Username field
 "$.Details.User['IP Address']" // IP Address field
+"$.Tags[0]"                    // First value in the array of the Tags
 ```
 
 ## Related content
