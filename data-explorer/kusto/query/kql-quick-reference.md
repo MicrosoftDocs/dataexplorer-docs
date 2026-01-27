@@ -2,7 +2,7 @@
 title: KQL Quick Reference
 description: Learn how to use KQL functions like `where`, `summarize`, and `render` with syntax examples to streamline your data queries.
 ms.reviewer: 
-ms.topic: article
+ms.topic: reference
 ms.date: 09/15/2025
 adobe-target: true
 ---
