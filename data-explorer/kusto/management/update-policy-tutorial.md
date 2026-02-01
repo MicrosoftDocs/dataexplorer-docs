@@ -1,5 +1,5 @@
 ---
-title: Tutorial: Route data using table update policies
+title: Tutorial- Route Data Using Table Update Policies
 description: "Learn how to use table update policies to perform complex transformations and save the results to one or more destination tables."
 ms.topic: tutorial
 ms.date: 02/01/2026
@@ -7,7 +7,7 @@ ms.date: 02/01/2026
 #customer intent: As a data engineer, I want to learn how to use table update policies to perform complex transformations and save the results to one or more destination tables so that I can route data to different tables based on the data content.
 ---
 
-# Tutorial: Route data using table update policies
+# Tutorial- Route data using table update policies
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -17,9 +17,9 @@ In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 >
-> * [1 - Create tables and update policies](#1---create-tables-and-update-policies)
-> * [2 - Ingest sample data](#2---ingest-sample-data)
-> * [3 - Verify the results](#3---verify-the-results)
+> * [Step 1 - Create tables and update policies](#step-1---create-tables-and-update-policies)
+> * [Step 2 - Ingest sample data](#step-2---ingest-sample-data)
+> * [Step 3 - Verify the results](#step-3---verify-the-results)
 
 The example in this tutorial demonstrates how to use update policies for [data routing](update-policy-common-scenarios.md) to perform complex transformations to enrich, cleanse, and transform data at ingestion time. For a list of other common use cases, see [Common use cases for table update policies](update-policy-common-scenarios.md).
 
