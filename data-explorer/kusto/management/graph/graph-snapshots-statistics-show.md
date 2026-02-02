@@ -3,7 +3,7 @@ title: .show graph_snapshots statistics command
 description: Learn how to display statistics for all graph snapshots using the .show graph_snapshots statistics command with syntax, parameters, and examples.
 ms.reviewer: vilauzon
 ms.topic: reference
-ms.date: 09/10/2025
+ms.date: 02/02/2026
 ---
 
 # .show graph_snapshots statistics (preview)

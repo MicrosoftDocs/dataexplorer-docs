@@ -3,7 +3,7 @@ title: Graph snapshots overview
 description: Learn about graph snapshots, including their structure, benefits, and how to create and query them for efficient graph data analysis.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 05/24/2025
+ms.date: 02/02/2026
 ---
 
 # Graph snapshots overview (preview)
