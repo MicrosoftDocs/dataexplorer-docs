@@ -3,7 +3,7 @@ title: Microsoft Logic Apps and Azure Data Explorer
 description: Learn how to use Logic Apps to run Kusto queries and commands automatically and schedule them.
 ms.reviewer: docohe
 ms.topic: how-to
-ms.date: 0/02/2026
+ms.date: 02/02/2026
 ---
 
 # Microsoft Logic Apps and Azure Data Explorer
@@ -36,7 +36,7 @@ Logic Apps and :::no-loc text="Power Automate"::: are built on the same connecto
 1. When the logic app is created, select **Open resource**.
 1. In the left navigation pane, select **Workflows**, and then select **+ Create**.
 
-    :::image type="content" source="media/logic-apps/creeate-workflow.png" alt-text="Screenshot of the Workflows page, showing the add workflow button.":::
+    :::image type="content" source="media/logic-apps/create-workflow.png" alt-text="Screenshot of the Workflows page, showing the add workflow button.":::
 
 1. In the **New workflow** pane, enter the workflow details, and then select **Create**.
 

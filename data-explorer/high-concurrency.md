@@ -31,7 +31,7 @@ For high concurrency, queries should consume the least possible amount of CPU re
 
 - [Optimized table schema design](#use-table-schema-design-best-practices)
 - [Data partitioning](#partition-data)
-- [Preaggregation](#pre-aggregate-your-data-with-materialized-views)
+- [Preaggregation](#preaggregate-your-data-by-using-materialized-views)
 - [Caching](#configure-the-caching-policy)
 
 ### Use table schema design best practices
