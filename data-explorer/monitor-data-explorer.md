@@ -110,15 +110,15 @@ Diagnostic logs are disabled by default. Use the following steps to enable diagn
 1. In the [Azure portal](https://portal.azure.com), select the cluster resource that you want to monitor.
 1. Under **Monitoring**, select **Diagnostic settings**.
 
-   :::image type="content" source="media/using-metrics/diagnostic-settings.png" alt-text="Screenshot shows the Diagnostic settings page where you can add a setting.":::
+   :::image type="content" source="media/using-metrics/diagnostic-settings.png" alt-text="Screenshot shows the Diagnostic settings tile." lightbox="media/using-metrics/diagnostic-settings.png":::
 
 1. Select **Add diagnostic setting**.
 
-    :::image type="content" source="media/using-metrics/add-diagnostic-settings.png" alt-text="Screenshot shows the Diagnostic settings page where you can add a setting.":::
+    :::image type="content" source="media/using-metrics/add-diagnostic-settings.png" alt-text="Screenshot shows the Diagnostic settings page where you can add a setting." lightbox="media/using-metrics/add-diagnostic-settings.png":::
 
 1. In the **Diagnostic settings** window:
 
-   :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="Screenshot of the Diagnostic settings screen, on which you configure which monitoring data to collect for your Azure Data Explorer cluster.":::
+   :::image type="content" source="media/using-diagnostic-logs/configure-diagnostics-settings.png" alt-text="Screenshot of the Diagnostic settings screen, on which you configure which monitoring data to collect for your Azure Data Explorer cluster." lightbox="media/using-diagnostic-logs/configure-diagnostics-settings.png":::
 
    1. Enter a **Diagnostic setting name**.
    1. Select one or more destination targets: a Log Analytics workspace, a storage account, or an event hub.
