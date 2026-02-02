@@ -40,7 +40,6 @@ The following table summarizes the available connectors and their capabilities:
 | [Apache Flink](#apache-flink)                                                         | :heavy_check_mark: |                    |                    |                    |
 | [Apache Log4J 2](#apache-log4j-2)                                                     | :heavy_check_mark: |                    |                    |                    |
 | [Apache Spark](#apache-spark)                                                         | :heavy_check_mark: | :heavy_check_mark: |                    | :heavy_check_mark: |
-| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | :heavy_check_mark: | :heavy_check_mark: |                    | :heavy_check_mark: |
 | [Azure Cosmos DB](#azure-cosmos-db)                                                   | :heavy_check_mark: |                    |                    |                    |
 | [Azure Data Factory](#azure-data-factory)                                             | :heavy_check_mark: |                    | :heavy_check_mark: |                    |
 | [Azure Event Grid](#azure-event-grid)                                                 |                    |                    | :heavy_check_mark: |                    |
@@ -72,7 +71,6 @@ The following table summarizes the available tools and integrations and their ca
 | Name                                                                                | Ingest             | Query              | Share              | Source control     | Secure             | Administrate       | Visualize          |
 | ----------------------------------------------------------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | [Azure CLI](#azure-cli)                                                             |                    |                    |                    |                    |                    | :heavy_check_mark: |                    |
-| [Azure Synapse Analytics](#azure-synapse-analytics)                                 | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
 | [Azure Data Lake](#azure-data-lake)                                                 | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    |                    |
 | [Azure Data Studio](#azure-data-studio)                                             |                    | :heavy_check_mark: |                    |                    |                    |                    |                    |
 | [Azure Data Share](#azure-data-share)                                               |                    |                    | :heavy_check_mark: |                    |                    |                    |                    |

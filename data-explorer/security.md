@@ -2,7 +2,7 @@
 title: Secure Azure Data Explorer clusters in Azure
 description: Learn about how to secure clusters in Azure Data Explorer.
 ms.reviewer: itsagui
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 12/26/2023
 ---
 

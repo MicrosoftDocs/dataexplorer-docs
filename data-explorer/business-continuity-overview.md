@@ -2,7 +2,7 @@
 title: Azure Data Explorer Business Continuity Overview
 description: Learn how Azure Data Explorer ensures business continuity and disaster recovery with high availability and disaster recovery configurations.
 ms.reviewer: ankhanol
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/27/2025
 ms.custom:
   - ai-gen-docs-bap
@@ -13,7 +13,7 @@ ms.custom:
 
 # Business continuity and disaster recovery overview
 
-Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. This article discusses availability (intra-region) and disaster recovery. It details native capabilities and architectural considerations for a resilient Azure Data Explorer deployment. It details recovery from human errors, high availability, followed by multiple disaster recovery configurations. These configurations depend on resiliency requirements such as Recovery Point Objective (RPO) and Recovery Time Objective (RTO), needed effort, and cost.
+Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. This article discusses availability (intra-region) and disaster recovery. It details native capabilities and architectural considerations for a reliable Azure Data Explorer deployment. It details recovery from human errors, high availability, followed by multiple disaster recovery configurations. These configurations depend on recoverability requirements such as Recovery Point Objective (RPO) and Recovery Time Objective (RTO), needed effort, and cost.
 
 ## Mitigate disruptive events
 
@@ -75,7 +75,7 @@ Azure Data Explorer doesn't provide automatic protection against the outage of a
 
 ## Disaster recovery configurations
 
- This section details multiple disaster recovery configurations depending on resiliency requirements (RPO and RTO), needed effort, and cost.
+ This section details multiple disaster recovery configurations depending on recoverability requirements (RPO and RTO), needed effort, and cost.
 
 Recovery time objective (RTO) refers to the time to recover from a disruption. For example, RTO of 2 hours means the application has to be up and running within two hours of a disruption. Recovery point objective (RPO) refers to the interval of time that might pass during a disruption before the quantity of data lost during that period is greater than the allowable threshold. For example, if the RPO is 24 hours, and an application has data beginning from 15 years ago, they're still within the parameters of the agreed-upon RPO.
 
@@ -119,7 +119,7 @@ The Active-Hot configuration is similar to the [Active-Active configuration](#ac
 
 ### On-demand data recovery configuration
 
-This solution offers the least resiliency (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there's no data recovery cluster. Configure continuous export of curated data (unless raw and intermediate data is also required) to a storage account that is configured GRS (Geo Redundant Storage). A data recovery cluster is spun up if there's a disaster recovery scenario. At that time, DDLs, configuration, policies, and processes are applied. Data is ingested from storage with the ingestion property [kustoCreationTime](ingest-data-event-grid-overview.md) to override the ingestion time that defaults to system time.
+This solution offers the least recoverability (highest RPO and RTO), is the lowest in cost and highest in effort. In this configuration, there's no data recovery cluster. Configure continuous export of curated data (unless raw and intermediate data is also required) to a storage account that is configured GRS (Geo Redundant Storage). A data recovery cluster is spun up if there's a disaster recovery scenario. At that time, DDLs, configuration, policies, and processes are applied. Data is ingested from storage with the ingestion property [kustoCreationTime](ingest-data-event-grid-overview.md) to override the ingestion time that defaults to system time.
 
 :::image type="content" source="media/business-continuity-overview/on-demand-data-recovery-cluster.png" alt-text="On-demand data recovery cluster configuration.":::
 
@@ -129,7 +129,7 @@ This solution offers the least resiliency (highest RPO and RTO), is the lowest i
 
 ### Summary of disaster recovery configuration options
 
-| **Configuration** | **Resiliency** | **RPO** | **RTO** | **Effort** | **Cost** |
+| **Configuration** | **Recoverability** | **RPO** | **RTO** | **Effort** | **Cost** |
 | --- | --- | --- | --- | --- | --- |
 | **Active-Active-Active-n** | Highest | 0 hours | 0 hours | Lower | Highest |
 | **Active-Active** | High | 0 hours | 0 hours | Lower | High |

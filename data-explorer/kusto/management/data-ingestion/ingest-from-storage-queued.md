@@ -77,7 +77,7 @@ with (
 ```
 
 >[!NOTE]
-> Make sure to include a SAS token or use a managed identity to grant the service permission to access and download the blob.
+> Make sure to include a SAS token or use a managed identity to grant the service permission to access and download the blob. See [storage connection strings](../../api/connection-strings/storage-connection-strings.md) for details.
 
 ### Ingest all blobs in a folder
 
