@@ -117,10 +117,11 @@ The `Details` column provides information about completed and failed steps. Each
 
 If there's a retry, finished steps from previous operations are resumed and not executed again.
 
-**Important**: Steps can only be resumed if:
-
-- The graph model definition didn't change since the previous attempt
-- The `FailureKind` is `Transient` (indicating the failure might succeed if retried)
+> [!IMPORTANT]
+> Steps can only be resumed if:
+>
+> - The graph model definition didn't change since the previous attempt
+> - The `FailureKind` is `Transient` (indicating the failure might succeed if retried)
 
 If the graph model was modified or the failure is `Permanent`, all steps must be re-executed from the beginning.
 
