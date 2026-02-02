@@ -1,9 +1,9 @@
 ---
-title: Query integrations overview
+title: Query Integrations Overview
 description: Learn about the available query integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 01/30/2024
+ms.date: 02/02/2026
 
 # CustomerIntent: As a data ingestor, I want to know what query connectors and tools are available, so that I can choose the right one for my use case.
 ---
@@ -53,7 +53,7 @@ The following tables summarize the available query connectors, tools, and integr
 | [Azure Monitor](/azure/data-explorer/integrate-overview?tabs=integrations#azure-monitor)                                                     | Query and Export              | Data Engineer                               | Low cost data retention                                                                                                                                                        |
 | [Jupyter Notebooks](/azure/data-explorer/integrate-overview?tabs=integrations#jupyter-notebooks)                                             | Author Notebooks              | Data Engineer, Data Scientist               | Create and share documents containing live code, equations, visualizations for statistical modeling, data visualization, and machine learning using data stored in Azure Data Explorer. |
 | [Kusto.Explorer](/azure/data-explorer/integrate-overview?tabs=integrations#kustoexplorer)                                                    | Query, Ingest, Admin and Dashboarding | Data Engineer, Data Analyst, Data Scientist | End-to-end data exploration                                                                                                                                                             |
-| [Kusto CLI](/azure/data-explorer/integrate-overview?tabs=integrations#kusto-cli)                                                             | Query and Admin               | Aplication Admin, System Administrator       |     Send queries and control commands to an Azure Data Explorer cluster using command line utility                                                                                      |
+| [Kusto CLI](/azure/data-explorer/integrate-overview?tabs=integrations#kusto-cli)                                                             | Query and Admin               | Application Admin, System Administrator       |     Send queries and control commands to an Azure Data Explorer cluster using command line utility                                                                                      |
 | [Kusto Query Language parser](/azure/data-explorer/integrate-overview?tabs=integrations#kql-parser)                                          | Query and Schema Exploration  | Application Developer                       | Parse queries, perform semantic analysis, check for errors, and optimize your queries.                                                                                                  |
 | [Kusto Query Language Monaco editor](/azure/data-explorer/integrate-overview?tabs=integrations#monaco-editor-pluginembed)                    | Query, Admin, and Dashboarding | Application Developer, Data Engineer | Integrate Monaco Editor in your application                                                                                                                                             |
 | [Real-Time Intelligence in Microsoft Fabric](/azure/data-explorer/integrate-overview?tabs=integrations#real-time-analytics-in-microsoft-fabric) | Query, Ingest, Admin, and Dashboarding | Data Engineer, Data Analyst, Data Scientist | End-to-end data exploration                                                                                                                                                             |
