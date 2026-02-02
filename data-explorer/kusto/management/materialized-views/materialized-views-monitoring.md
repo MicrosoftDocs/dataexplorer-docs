@@ -74,7 +74,7 @@ If the `MaterializedViewAge` metric constantly increases, and the `MaterializedV
     {
       "RequestLimitsPolicy": {
         "MaxMemoryPerQueryPerNode": {
-          "Value": 68719241216
+          "Value": 68718888960
         }
       }
     } 
