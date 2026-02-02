@@ -3,7 +3,7 @@ title: Create a dashboard base query
 description: Learn how to create a base query for an Azure Data Explorer dashboard.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 08/26/2025
+ms.date: 01/12/2026
 ---
 # Create a dashboard base query
 
@@ -43,7 +43,7 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
     > [!NOTE]
     > We suggest starting each base query name with an underscore (_) for easy use later, and so as not to conflict with Kusto-defined names. For more information, see [naming your entities](/kusto/query/schema-entities/entity-names?view=azure-data-explorer&preserve-view=true)
 
-    :::image type="content" source="media/base-query/create-base-query.png" alt-text="Screenshot of create base query in Azure Data Explorer dashboards.":::
+    :::image type="content" source="media/base-query/create-base-query.png" alt-text="Screenshot of create base query in Azure Data Explorer dashboards." lightbox="media/base-query/create-base-query-small.png":::
 
 1. Select a data **Source** from the dropdown.
 1. Enter the KQL query that will be used as the base query. This query can optionally contain other base queries.

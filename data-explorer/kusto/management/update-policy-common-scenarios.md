@@ -1,7 +1,7 @@
 ---
 title: Optimize Data Models with Table Update Policies
 description: Learn how table update policies can streamline data enrichment, routing, and model optimization for medallion architecture and star schema designs.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2025
 ---
 # What are common scenarios for using table update policies

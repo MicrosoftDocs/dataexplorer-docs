@@ -2,7 +2,7 @@
 title: Data Ingestion - Supported Formats and Compression
 description: Explore the various data formats like CSV, JSON, Parquet, and more, supported for ingestion. Understand compression options and best practices for data preparation.
 ms.reviewer: tzgitlin
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/29/2025
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ---

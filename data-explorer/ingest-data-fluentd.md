@@ -4,7 +4,7 @@ description: Learn how to ingest log data with Fluentd into Azure Data Explorer.
 ms.reviewer: ramacg
 ms.author: v-hzargari
 author: hzargari-ms
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/05/2026
 ---
 
@@ -126,4 +126,4 @@ For more configuration and authentication details, see the [Fluentd Kusto plugin
 ## Related content
 
 - [Data integrations overview](integrate-data-overview.md)
-- [Kusto Query Language (KQL) overview](https://learn.microsoft.com/kusto/query/?view=azure-data-explorer&preserve-view=true)
+- [Kusto Query Language (KQL) overview](/kusto/query/?view=azure-data-explorer&preserve-view=true)

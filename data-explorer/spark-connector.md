@@ -3,7 +3,7 @@ title: Use the Azure Data Explorer connector for Apache Spark to move data betwe
 description: This topic shows you how to move data between Azure Data Explorer and Apache Spark clusters.
 ms.reviewer: ohbitton
 ms.topic: how-to
-ms.date: 11/03/2025
+ms.date: 12/01/2025
 ---
 
 # Azure Data Explorer Connector for Apache Spark
@@ -13,9 +13,6 @@ ms.date: 11/03/2025
 The Kusto connector for Spark is an [open source project](https://github.com/Azure/azure-kusto-spark) that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. Using Azure Data Explorer and Apache Spark, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Spark source and sink operations, such as `write`, `read`, and `writeStream`.
 
 You can write to Azure Data Explorer through queued ingestion or streaming ingestion. Reading from Azure Data Explorer supports column pruning and predicate pushdown, which filters the data in Azure Data Explorer, reducing the volume of transferred data.
-
-> [!NOTE]
-> For information about working with the Synapse Spark connector for Azure Data Explorer, see [Connect to Azure Data Explorer using Apache Spark for Azure Synapse Analytics](/azure/synapse-analytics/quickstart-connect-azure-data-explorer).
 
 This article describes how to install and configure the Azure Data Explorer Spark connector and move data between Azure Data Explorer and Apache Spark clusters.
 
