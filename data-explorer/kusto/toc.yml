@@ -41,8 +41,6 @@ items:
             href: tools/kusto-explorer-troubleshooting.md
       - name: Kusto.Cli
         href: tools/kusto-cli.md
-      - name: Kusto extension for Azure Data Studio
-        href: tools/azure-data-studio.md
   - name: Query language
     href: query/toc.yml
   - name: Management commands

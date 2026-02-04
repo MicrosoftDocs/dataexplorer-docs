@@ -356,7 +356,7 @@ items:
             displayName: SQL Server emulation
           - name: Connect from common apps
             href: connect-common-apps.md
-            displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
+            displayName: LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
           - name: Run KQL queries and stored functions
             href: sql-kql-queries-and-stored-functions.md
       - name: Optimize for high concurrency
@@ -623,17 +623,6 @@ items:
         items:
           - name: Notebooks with Kqlmagic
             href: kqlmagic.md
-          - name: Azure Data Studio
-            items:
-              - name: Kusto extension overview
-                displayName: Azure Data Studio
-                href: /sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context
-              - name: Use Kusto extension
-                displayName: Azure Data Studio
-                href: /sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context
-              - name: Use Kqlmagic
-                displayName: Azure Data Studio
-                href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
       - name: Azure Functions
         href: integrate-azure-functions.md
       - name: Use MCP servers to build AI agents
