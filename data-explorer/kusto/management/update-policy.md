@@ -3,7 +3,7 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/30/2025
+ms.date: 02/04/2026
 ---
 # Update policy overview
 
