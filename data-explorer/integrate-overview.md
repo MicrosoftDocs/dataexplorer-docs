@@ -3,7 +3,7 @@ title: Integrations overview
 description: Learn about the available data connectors, tools, and integrations, and their capabilities.
 ms.reviewer: aksdi
 ms.topic: integration 
-ms.date: 12/01/2025
+ms.date: 02/04/2026
 ---
 # Integrations overview
 
@@ -72,10 +72,8 @@ The following table summarizes the available tools and integrations and their ca
 | ----------------------------------------------------------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | [Azure CLI](#azure-cli)                                                             |                    |                    |                    |                    |                    | :heavy_check_mark: |                    |
 | [Azure Data Lake](#azure-data-lake)                                                 | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    |                    |
-| [Azure Data Studio](#azure-data-studio)                                             |                    | :heavy_check_mark: |                    |                    |                    |                    |                    |
 | [Azure Data Share](#azure-data-share)                                               |                    |                    | :heavy_check_mark: |                    |                    |                    |                    |
 | [Azure Monitor](#azure-monitor)                                                     | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
-| [Azure Notebooks](#azure-notebooks)                                                 |                    | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
 | [Azure Pipelines](#azure-pipelines)                                                 |                    |                    |                    | :heavy_check_mark: |                    |                    |                    |
 | [DeltaKusto](#deltakusto)                                                           |                    |                    |                    | :heavy_check_mark: |                    |                    |                    |
 | [Jupyter Notebooks](#jupyter-notebooks)                                             |                    | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
@@ -361,7 +359,7 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
 
 ### Azure Monitor
-	
+    
 Azure Monitor Agent can send the following virtual machine data to Azure Data Explorer using a data collection rule:
 
 - Performance counters
@@ -389,13 +387,6 @@ Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Stora
 * **Functionality:** Query
 * **Documentation:** [Query data in Azure Data Lake using Azure Data Explorer](data-lake-query-data.md)
 
-### Azure Data Studio
-
-The Kusto (KQL) extension for Azure Data Studio enables you to connect and query to Azure Data Explorer clusters. Users can write and run KQL queries and author notebooks with the Kusto kernel complete with IntelliSens
-
-* **Functionality:**  Query
-* **Documentation:** [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
-
 ### Azure Data Share
 
 There are many traditional ways to share data, such as through file shares, FTP, e-mail, and APIs. These methods require both parties to build and maintain a data pipeline that moves data between teams and organizations. With Azure Data Explorer, you can easily and securely share your data with people in your company or external partners. Sharing occurs in near-real-time, with no need to build or maintain a data pipeline. All database changes, including schema and data, on the provider side are instantly available on the consumer side.
@@ -409,13 +400,6 @@ The Azure Data Explorer supports cross-service queries between Azure Data Explor
 
 * **Functionality:** Query
 * **Documentation:** [Azure Monitor](query-monitor-data.md)
-
-### Azure Notebooks
-
-Kqlmagic is a command that extends the capabilities of the Python kernel in Azure Data Studio notebooks. You can combine Python and Kusto query language (KQL) to query and visualize data using rich Plotly library integrated with render commands. Kqlmagic brings you the benefit of notebooks, data analysis, and rich Python capabilities all in the same location. Supported data sources with Kqlmagic include Azure Data Explorer, Application Insights, and Azure Monitor logs.
-
-* **Functionality:** Query, Visualization
-* **Documentation:** [Azure Notebooks](/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext%253fcontext%253d%252fazure%252fdata-explorer%252fcontext%252fcontext) 
 
 ### Azure Pipelines
 
@@ -436,7 +420,7 @@ Delta Kusto is a Command-line interface (CLI) enabling Continuous Integration / 
 
 [Jupyter Notebook](https://jupyter.org/) is an open-source web application that allows you to create and share documents containing live code, equations, visualizations, and narrative text. It's useful for a wide range of tasks, such as data cleaning and transformation, numerical simulation, statistical modeling, data visualization, and machine learning.
 
-[Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true) operator. The kqlmagic extension is compatible with Jupyter Lab, Visual Studio Code Jupyter extension, and Azure Data Studio, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
+[Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true) operator. The kqlmagic extension is compatible with Jupyter Lab, and Visual Studio Code Jupyter extension, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
 
 * **Functionality:** Query, Visualization
 * **Documentation:** [Notebooks with Kqlmagic](kqlmagic.md)

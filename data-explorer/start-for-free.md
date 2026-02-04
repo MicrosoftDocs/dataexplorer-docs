@@ -4,7 +4,7 @@ description: Start exploring Azure Data Explorer with a free cluster—no subscr
 #customer intent: As a new user, I want to create a free Azure Data Explorer cluster so that I can explore its features without needing an Azure subscription.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 09/24/2025
+ms.date: 02/04/2026
 ---
 
 
@@ -42,7 +42,6 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 | Tools (Azure Data Explorer web UI) |  :heavy_check_mark: |  :heavy_check_mark: |
 | Dashboards (PowerBI, Azure Data Explorer web UI, Grafana) |  :heavy_check_mark: |  :heavy_check_mark: |
 | Streaming ingestion |  :heavy_check_mark: | :heavy_check_mark: |
-| Azure Data Studio notebooks |  :heavy_check_mark: |  :heavy_check_mark: |
 | SDKs (all languages) |  :heavy_check_mark: |  :heavy_check_mark: |
 | Time series and Machine Learning functions |  :heavy_check_mark: |  :heavy_check_mark: |
 | Geospatial functions |  :heavy_check_mark: |  :heavy_check_mark: |
