@@ -4,6 +4,6 @@ ms.date: 08/11/2024
 ---
 
 > [!NOTE]
-> Select a service from the drop-down list to view content specific to that service.
+> To view content specific to a service, select the service from the drop-down list to the left.
 
 Applies to:
