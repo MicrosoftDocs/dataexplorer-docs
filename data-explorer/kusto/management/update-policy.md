@@ -74,6 +74,8 @@ If the update policy is defined on the target table, multiple queries can run on
 
 * By default, the [Streaming ingestion policy](streaming-ingestion-policy.md) is enabled for all tables in the Eventhouse. To use functions with the [`join`](../query/join-operator.md) operator in an update policy, the streaming ingestion policy must be disabled. Use the `.alter` `table` *TableName* `policy` `streamingingestion` *PolicyObject* command to disable it.
 
+* For cascading update policies that include a [`join`](../query/join-operator.md) operator, you must disable streaming ingestion on all upstream tables. For example, consider cascading update policies where Table1 updates Table2, Table2 updates Table3, and Table3 updates Table4. If Table4's update policy includes a join, you must disable streaming ingestion on Table1, Table2, and Table3.
+ 
 * The update policy's query shouldn't reference any materialized view whose query uses the update policy's target table. Doing so might produce unexpected results.
 
 ::: moniker-end
