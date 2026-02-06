@@ -2,4 +2,4 @@
 ms.topic: include
 ms.date: 08/11/2024
 ---
-Azure Monitor
+:white_check_mark: Azure Monitor
