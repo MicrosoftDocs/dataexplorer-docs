@@ -3,7 +3,7 @@ title:  Generate a SAS token
 description: This article describes how to generate a SAS token.
 ms.reviewer: shanisolomon
 ms.topic: how-to
-ms.date: 08/11/2024
+ms.date: 02/01/2026
 ms.custom: sfi-image-nochange
 ---
 # Generate a SAS token
@@ -15,9 +15,9 @@ This article shows you how to generate a SAS token to a storage resource. You ca
 ## Azure portal
 
 1. In the [Azure portal](https://portal.azure.com/), open **Storage accounts**.
-1. Select the storage account that contains the resource for which you'd like to create a SAS token.
+1. Select the storage account that contains the resource for which you want to create a SAS token.
 1. From the left menu, select **Containers**.
-1. Navigate to the container, or drill down to the individual blob for which you'd like to create a SAS token.
+1. Navigate to the container, or drill down to the individual blob for which you want to create a SAS token.
 1. Right-click on the container or blob and select **Generate SAS** from the context menu.
 
    :::image type="content" source="storage/generate-sas-storage-account.png" lightbox="storage/generate-sas-storage-account.png" alt-text="Screenshot of Azure portal with Containers selected. Specific container is right-clicked and a menu opens. Generate SAS is selected from this menu.":::

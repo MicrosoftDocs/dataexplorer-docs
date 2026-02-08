@@ -2,14 +2,14 @@
 title:  'Tutorial: Learn common Kusto Query Language operators'
 description: This tutorial describes how to write queries using common operators in the Kusto Query Language to meet common query needs.
 ms.topic: tutorial
-ms.date: 11/25/2024
+ms.date: 02/01/2026
 ---
 
 # Tutorial: Learn common operators
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
-[Kusto Query Language (KQL)](../index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/), and more. This tutorial is an introduction to the essential KQL operators used to access and analyze your data.
+Use [Kusto Query Language (KQL)](../index.md) to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), [Microsoft Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/), and more. This tutorial introduces the essential KQL operators you can use to access and analyze your data.
 
 For more specific guidance on how to query logs in Azure Monitor, see [Get started with log queries](/azure/azure-monitor/logs/get-started-queries).
 
@@ -21,7 +21,7 @@ For more specific guidance on how to query logs in Azure Monitor, see [Get start
 > - [Join data from multiple tables](join-data-from-multiple-tables.md)
 > - [Create geospatial visualizations](create-geospatial-visualizations.md)
 
-In this tutorial, you'll learn how to:
+In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 >
@@ -46,7 +46,7 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 
 ## Prerequisites
 
-To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
+To run the following queries, you need a query environment with access to the sample data. You can use one of the following options:
 :::moniker range="azure-data-explorer"
 * A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
 ::: moniker-end
@@ -127,7 +127,7 @@ StormEvents
 
 ## List unique values
 
-It appears that there are multiple types of storms based on the results of the previous query. Use the [distinct](../distinct-operator.md) operator to list all of the unique storm types.
+The results of the previous query show that there are multiple types of storms. Use the [distinct](../distinct-operator.md) operator to list all of the unique storm types.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -139,7 +139,7 @@ StormEvents
 | distinct EventType
 ```
 
-There are 46 types of storms in the table. Here's a sample of 10 of them.
+The table contains 46 types of storms. Here's a sample of 10 of them.
 
 |EventType|
 |--|
@@ -199,7 +199,7 @@ StormEvents
 | project StartTime, EndTime, State, EventType, DamageProperty
 ```
 
-There are 146 events that match these conditions. Here's a sample of 5 of them.
+There are 146 events that match these conditions. Here's a sample of five of them.
 
 |StartTime|EndTime|State|EventType|DamageProperty|
 |--|--|--|--|--|
@@ -214,7 +214,7 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 
 Use the [between operator](../between-operator.md) to filter data based on a specific time range.
 
-The following query finds all storm events between August 1, 2007 and August 30, 2007, along with their states, event types, start and end times. The results are then sorted in ascending order by start time.
+The following query finds all storm events between August 1, 2007, and August 30, 2007, along with their states, event types, start times, and end times. The query returns results sorted in ascending order by start time.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -273,15 +273,15 @@ StormEvents
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 
 > [!NOTE]
-> The order of the operators is important. If you put `top` before `where` here, you'll get different results. This is because the data is transformed by each operator in order. To learn more, see [tabular expression statements](../tabular-expression-statements.md).
+> The order of the operators is important. If you put `top` before `where` in this example, you get different results. Each operator transforms the data in order. For more information, see [tabular expression statements](../tabular-expression-statements.md).
 
 ## Create calculated columns
 
-The [project](../project-operator.md) and [extend](../extend-operator.md) operators can both create calculated columns.
+You can use the [project](../project-operator.md) and [extend](../extend-operator.md) operators to create calculated columns.
 
-Use `project` to specify only the columns you want to view, and use `extend` to append the calculated column to the end of the table.
+Use `project` to specify only the columns you want to view. Use `extend` to add the calculated column to the end of the table.
 
-The following query creates a calculated `Duration` column with the difference between the `StartTime` and `EndTime`. Since we only want to view a few select columns, using `project` is the better choice in this case.
+The following query creates a calculated `Duration` column with the difference between the `StartTime` and `EndTime`. Since you only want to view a few select columns, using `project` is the better choice in this case.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -305,7 +305,7 @@ StormEvents
 |2007-06-27T00:00:00Z|2007-06-27T08:00:00Z|08:00:00|750000|
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|03:00:00|750000|
 
-If you take a look at the computed `Duration` column, you may notice that the flood that caused the most damage was also the longest flood.
+If you take a look at the computed `Duration` column, you might notice that the flood that caused the most damage was also the longest flood.
 
 Use `extend` to view the calculated `Duration` column along with all of the other columns. The `Duration` column is added as the last column.
 
@@ -333,7 +333,7 @@ StormEvents
 
 ## Map values from one set to another
 
-Static mapping is a useful technique for changing the presentation of your results. In KQL, one way to perform static mapping is by using a dynamic dictionary and accessors to map values from one set to another.
+Static mapping is a useful technique for changing the presentation of your results. In KQL, you can perform static mapping by using a dynamic dictionary and accessors to map values from one set to another.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

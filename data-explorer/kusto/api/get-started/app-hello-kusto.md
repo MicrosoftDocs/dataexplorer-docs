@@ -3,10 +3,11 @@ title: Create your first
 description: Learn how to create your first app to print Hello Kusto using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 11/28/2024
+ms.date: 02/01/2026
 ms.custom: sfi-ropc-nochange
 #customer intent: To learn about creating a simple app that prints Hello Kusto using Kusto client libraries.
 ---
+
 # Hello Kusto: Create your first app
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
@@ -131,7 +132,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ### [TypeScript](#tab/typescript)
 
-    The `clientId` and `redirectUri` are from the Microsoft Entra app registration you created in the **Prerequisites** section of [Set up your development environment](app-set-up.md#prerequisites).
+    The `clientId` and `redirectUri` come from the Microsoft Entra app registration you create in the **Prerequisites** section of [Set up your development environment](app-set-up.md#prerequisites).
 
     ```typescript
     const clusterUri = "https://help.kusto.windows.net";
@@ -157,15 +158,15 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     > [!NOTE]
     > For interactive authentication, you need a Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
     >
-    > In C#, the interactive authentication process may not prompt the user if:
+    > In C#, the interactive authentication process might not prompt the user if:
     >
     > - The user is already authenticated on the device
-    > - There is an existing Kusto.Explorer or Azure Data Explorer web UI authentication on the device
+    > - An existing Kusto.Explorer or Azure Data Explorer web UI authentication exists on the device
 
 1. Create a client object that uses the connection string builder object to connect to the cluster.
 
     > [!NOTE]
-    > We highly recommended that you cache and reuse the Kusto client instance. Frequently recreating Kusto clients may lead to performance degradation in your application and increased load on your cluster.
+    > Cache and reuse the Kusto client instance. Frequently recreating Kusto clients can cause performance problems in your application and increase the load on your cluster.
 
     ### [C\#](#tab/csharp)
 
@@ -274,7 +275,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     ---
 
     > [!NOTE]
-    > The query output is returned in the response as an object that contains one or more tables, comprised of one or more rows and columns.
+    > The query output comes back in the response as an object that contains one or more tables, made up of one or more rows and columns.
     > The format of the object depends on the client library language.
     >
     > The *print kusto* query returns a single table with one row and column.
@@ -288,7 +289,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     >
     > ### [Python / TypeScript](#tab/python+typescript)
     >
-    > The response in the primary results JSON object. The object contains an array of tables, which in turn contains an array of rows. Each row contains data organized into a dictionary of columns. You can reference the result, as follows:
+    > The response is the primary results JSON object. The object contains an array of tables, which in turn contains an array of rows. Each row contains data organized into a dictionary of columns. You can reference the result, as follows:
     >
     > - The first array index `[0]` references the first table
     > - The second array index `[0]` references the first row
@@ -301,8 +302,8 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     > The response is a KustoOperationResult object. You can reference the result, as follows:
     >
     > - Use the getPrimaryResults() method to get the primary results table
-    > - the [next()](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/ListIterator.html#next()) method to read the first row
-    > - the getString() method to get the value of the first column
+    > - Use the [next()](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/util/ListIterator.html#next()) method to read the first row
+    > - Use the getString() method to get the value of the first column
     >
     > ---
 
@@ -435,7 +436,7 @@ python hello_kusto.py
 
 ### [TypeScript](#tab/typescript)
 
-In a Node.js environment:
+In a Node.js environment, use the following command:
 
 ```bash
 node hello-kusto.js
@@ -460,7 +461,7 @@ mvn install exec:java -Dexec.mainClass="<groupId>.HelloKusto"
 
 ---
 
-You should see a result similar to the following:
+You should see a result similar to the following output:
 
 ```bash
 Hello Kusto!

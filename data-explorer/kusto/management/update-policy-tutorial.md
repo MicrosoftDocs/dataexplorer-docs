@@ -1,24 +1,25 @@
 ---
-title: "Tutorial: Route data using table update policies"
+title: 'Tutorial: Route Data Using Table Update Policies'
 description: "Learn how to use table update policies to perform complex transformations and save the results to one or more destination tables."
 ms.topic: tutorial
-ms.date: 08/11/2024
+ms.date: 02/01/2026
 
 #customer intent: As a data engineer, I want to learn how to use table update policies to perform complex transformations and save the results to one or more destination tables so that I can route data to different tables based on the data content.
 ---
+
 # Tutorial: Route data using table update policies
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-When your source data involves simple and quick transformations, it's best to perform them upstream in the pipeline by using an event stream. However, this approach might not work well for other transformations that are complex or require specialized functionality to operate.
+When your source data involves simple and quick transformations, perform them upstream in the pipeline by using an eventstream. However, this approach might not work well for other transformations that are complex or require specialized functionality to operate.
 
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 >
-> * [1 - Create tables and update policies](#1---create-tables-and-update-policies)
-> * [2 - Ingest sample data](#2---ingest-sample-data)
-> * [3 - Verify the results](#3---verify-the-results)
+> * [Step 1 - Create tables and update policies](#step-1---create-tables-and-update-policies)
+> * [Step 2 - Ingest sample data](#step-2---ingest-sample-data)
+> * [Step 3 - Verify the results](#step-3---verify-the-results)
 
 The example in this tutorial demonstrates how to use update policies for [data routing](update-policy-common-scenarios.md) to perform complex transformations to enrich, cleanse, and transform data at ingestion time. For a list of other common use cases, see [Common use cases for table update policies](update-policy-common-scenarios.md).
 
@@ -32,7 +33,7 @@ The example in this tutorial demonstrates how to use update policies for [data r
 * a [KQL database in Real-Time Intelligence in Microsoft Fabric](/fabric/real-time-intelligence/create-database).
 ::: moniker-end
 
-## 1 - Create tables and update policies
+## Step 1 - Create tables and update policies
 
 The following steps guide you through creating a source table, transformation functions, destination tables, and update policies. The tutorial demonstrates how to use table update policies to perform complex transformations and save the results to one or more destination tables. The example uses a single source table named **Raw_Table** and three destination tables named **Device_Telemetry**, **Device_Alarms**, and **Error_Log**.
 
@@ -42,9 +43,9 @@ The following steps guide you through creating a source table, transformation fu
     .create table Raw_Table (RawData: dynamic)
     ```
 
-    The source table is where the ingested data is saved. The table has a single column named **RawData** of type dynamic. The dynamic type is used to store the raw data as is, without any schema. For more information, see [.create table command](/azure/data-explorer/kusto/management/create-table-command).
+    The source table is where the ingested data is saved. The table has a single column named **RawData** of type dynamic. The dynamic type stores the raw data as is, without any schema. For more information, see [.create table command](/azure/data-explorer/kusto/management/create-table-command).
 
-1. Run the following command to create a function named **Get_Telemetry**, **Get_Alarms**, and **Log_Error** functions.
+1. Run the following command to create functions named **Get_Telemetry**, **Get_Alarms**, and **Log_Error**.
 
     ```kusto
     .execute database script <|
@@ -80,7 +81,7 @@ The following steps guide you through creating a source table, transformation fu
       }
     ```
 
-    When creating an update policy, you can specify an in-line script for execution. However, we recommend encapsulating the transformation logic into a function. Using a function improves code maintenance. When new data arrives, the function is executed to transform the data. The function can be reused across multiple update policies. For more information, see [.create function command](/azure/data-explorer/kusto/management/create-function).
+    When creating an update policy, you can specify an inline script for execution. However, encapsulate the transformation logic into a function. Using a function improves code maintenance. When new data arrives, the function executes to transform the data. The function can be reused across multiple update policies. For more information, see [.create function command](/azure/data-explorer/kusto/management/create-function).
 
 1. Run the following command to create the destination tables.
 
@@ -91,12 +92,12 @@ The following steps guide you through creating a source table, transformation fu
       .set-or-append Error_Log <| Log_Error | take 0
     ```
 
-    The destination table must have the same schema as that output of the transformation function. You can create destination tables in the following ways:
+    The destination table must have the same schema as the output of the transformation function. You can create destination tables in the following ways:
 
-    * Using the `.create table` command and manually specifying the schema as demonstrated with the creation of the **Device_Telemetry** table. However, this approach can be error-prone and time-consuming.
-    * Using the `.set-or-append` command if you've already created a function to transform the data. This method creates a new table with the same schema as the output of the function, using `take 0` to make sure the function only returns the schema. For more information, see [.set-or-append command](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query).
+    * Use the `.create table` command and manually specify the schema as demonstrated with the creation of the **Device_Telemetry** table. However, this approach can be error-prone and time-consuming.
+    * Use the `.set-or-append` command if you already created a function to transform the data. This method creates a new table with the same schema as the output of the function, by using `take 0` to make sure the function only returns the schema. For more information, see [.set-or-append command](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query).
 
-1. Run the following command to create the update policies for the destination tables
+1. Run the following command to create the update policies for the destination tables.
 
     ```kusto
     .execute database script <|
@@ -105,11 +106,11 @@ The following steps guide you through creating a source table, transformation fu
       .alter table Error_Log policy update "[{\"IsEnabled\":true,\"Source\":\"Raw_Table\",\"Query\":\"Log_Error\",\"IsTransactional\":false,\"PropagateIngestionProperties\":true,\"ManagedIdentity\":null}]"
     ```
 
-    The `.alter table policy update` command is used to link the source table, the transformation function, and the destination table. The update policy is created on the destination table and specifies to the source table and transformation function. For more information, see [.alter table policy update command](/azure/data-explorer/kusto/management/alter-table-update-policy-command?context=/fabric/context/context-rta&pivots=fabric).
+    Use the `.alter table policy update` command to link the source table, the transformation function, and the destination table. Create the update policy on the destination table and specify the source table and transformation function. For more information, see [.alter table policy update command](/azure/data-explorer/kusto/management/alter-table-update-policy-command?context=/fabric/context/context-rta&pivots=fabric).
 
-## 2 - Ingest sample data
+## Step 2 - Ingest sample data
 
-To test the update policies, you can ingest sample data into the source table using the `.set-or-append` command. For more information, see [Ingest data from a query](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query).
+To test the update policies, ingest sample data into the source table by using the `.set-or-append` command. For more information, see [Ingest data from a query](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query).
 
 ```kusto
 .set-or-append Raw_Table <|
@@ -122,9 +123,9 @@ To test the update policies, you can ingest sample data into the source table us
   Raw_Stream
 ```
 
-## 3 - Verify the results
+## Step 3 - Verify the results
 
-To validate the results, you can run a query to verify that the data was transformed and routed to the destination tables. In the following example, the `union` operator is used to combine the source and the results from the destination tables into a single result set.
+To validate the results, run a query to verify that the data was transformed and routed to the destination tables. In the following example, the `union` operator combines the source and the results from the destination tables into a single result set.
 
 ```kusto
 Raw_Table | summarize Rows=count() by TableName = "Raw_Table"
@@ -145,7 +146,7 @@ You should see the following output where the Raw_Table has three rows and the d
 | Device_Alarms | 1 |
 | Device_Telemetry | 1 |
 
-## Clean up resources
+## Step 4 - Clean up resources
 
 Run the following command in your database to clean up the tables and functions created in this tutorial.
 
