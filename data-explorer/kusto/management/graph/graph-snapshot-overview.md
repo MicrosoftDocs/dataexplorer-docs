@@ -3,7 +3,7 @@ title: Graph snapshots overview
 description: Learn about graph snapshots, including their structure, benefits, and how to create and query them for efficient graph data analysis.
 ms.reviewer: herauch
 ms.topic: reference
-ms.date: 05/24/2025
+ms.date: 02/02/2026
 ---
 
 # Graph snapshots overview (preview)
@@ -79,7 +79,7 @@ Query graph snapshots using the `graph()` function:
 ### Query the latest snapshot
 
 ```kusto
-graph("SocialNetworkGraph") 
+graph("SocialNetworkGraph")
 | graph-match (person)-[knows]->(friend)
   where person.age > 30
   project person.name, friend.name
@@ -88,13 +88,31 @@ graph("SocialNetworkGraph")
 ### Query a specific snapshot
 
 ```kusto
-graph("SocialNetworkGraph", "UserInteractionsSnapshot") 
+graph("SocialNetworkGraph", "UserInteractionsSnapshot")
 | graph-match (person)-[knows]->(friend)
   where person.age > 30
   project person.name, friend.name
 ```
 
 For advanced pattern matching and traversals, see [Graph operators](../../query/graph-operators.md).
+
+## Monitoring and diagnostics commands
+
+Use these commands to analyze the snapshot build process:
+
+| Command | Purpose |
+|---------|---------|
+| [.show graph_snapshot statistics](graph-snapshot-statistics-show.md) | Display detailed statistics for a specific snapshot, including performance metrics and resource utilization |
+| [.show graph_snapshots statistics](graph-snapshots-statistics-show.md) | Display statistics for all snapshots of a graph model |
+| [.show graph_snapshots failures](graph-snapshots-failures-show.md) | Display information about failed snapshot creation attempts with failure reasons and troubleshooting details |
+
+These commands provide insights into:
+
+- **Performance analysis**: CPU time, memory usage, and duration metrics for snapshot creation
+- **Resource monitoring**: Peak memory consumption and processing efficiency
+- **Build process details**: Step-by-step breakdown of the snapshot creation process
+- **Failure investigation**: Detailed error information and retry behavior analysis
+- **Troubleshooting**: Operation IDs for deep-dive analysis and failure classification
 
 ## Key benefits
 
@@ -111,4 +129,7 @@ Graph snapshots provide:
 * [.make graph_snapshot](graph-snapshot-make.md)
 * [.drop graph_snapshot](graph-snapshot-drop.md)
 * [.show graph_snapshots](graph-snapshot-show.md)
+* [.show graph_snapshot statistics](graph-snapshot-statistics-show.md)
+* [.show graph_snapshots statistics](graph-snapshots-statistics-show.md)
+* [.show graph_snapshots failures](graph-snapshots-failures-show.md)
 * [Graph operators](../../query/graph-operators.md)

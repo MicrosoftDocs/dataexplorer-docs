@@ -1,12 +1,12 @@
 ---
-title: Write Kusto Query Language queries in the Azure Data Explorer web UI
+title: Write Kusto Query Language Queries in the Azure Data Explorer Web UI
 description: In this article, you learn how to write Kusto Query Language (KQL) queries in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 05/28/2023
+ms.date: 02/02/2026
 ---
 # Write Kusto Query Language queries in the Azure Data Explorer web UI
 
-The [Azure Data Explorer web UI](https://dataexplorer.azure.com/) query editor offers various features to help you write [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries. Some of these features include built-in KQL Intellisense and autocomplete, inline documentation, and quick fix pop-ups. In this article, we'll highlight what you should know when writing KQL queries in the web UI.
+The [Azure Data Explorer web UI](https://dataexplorer.azure.com/) query editor offers various features to help you write [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries. Some of these features include built-in KQL Intellisense and autocomplete, inline documentation, and quick fix pop-ups. In this article, you learn what you should know when writing KQL queries in the web UI.
 
 ## KQL Intellisense and autocomplete
 
@@ -16,7 +16,7 @@ To use KQL Intellisense and autocomplete:
 
 1. Start typing a query in the query editor.
 
-1. KQL Intellisense activates, presenting dropdown options for entities, operators, functions, and more. Move between these options using the arrow keys on your keyboard, and select one by pressing *Enter* or selecting the option with your mouse.
+1. KQL Intellisense activates, presenting dropdown options for entities, operators, functions, and more. Move between these options by using the arrow keys on your keyboard, and select one by pressing *Enter* or selecting the option by using your mouse.
 
 1. If you notice underlined keywords, hover over them to reveal errors or suggestions that triggered the highlighting.
 
@@ -35,13 +35,13 @@ To view inline documentation:
     :::image type="content" source="media/web-ui-kql/inline-documentation-preview.png" alt-text="Screenshot of inline KQL operator documentation." lightbox="media/web-ui-kql/inline-documentation-preview.png":::
 
     > [!NOTE]
-    > The preview remains active until you close it or end your session, even for other operators and functions.
+    > The preview stays active until you close it or end your session, even for other operators and functions.
 
-1. If you'd like to open the full documentation in your browser, select **view online**.
+1. Select **view online** to open the full documentation in your browser.
 
 ## Quick fix: Query suggestion or warning
 
-The query editor provides suggestions and warnings as you write your queries. The quick fix feature can be used to adjust the query based on these suggestions and warnings.
+The query editor provides suggestions and warnings as you write your queries. Use the quick fix feature to adjust the query based on these suggestions and warnings.
 
 To fix a query based on a suggestion or warning:
 
@@ -58,7 +58,7 @@ To fix a query based on a suggestion or warning:
 
 ## Quick fix: Extract value into a variable
 
-The quick fix feature can also be used to extract out a value into a variable:
+You can also use the quick fix feature to extract a value into a variable:
 
 1. Select the value to extract.
 
@@ -70,7 +70,7 @@ The quick fix feature can also be used to extract out a value into a variable:
 
 ## Quick fix: Define functions inline
 
-The quick fix feature can also be used to define an existing function inline before its use. Adding an inline function definition may be useful to improve readability and maintainability of your queries.
+You can also use the quick fix feature to define an existing function inline before its use. Adding an inline function definition can improve the readability and maintainability of your queries.
 
 To show a function definition:
 
