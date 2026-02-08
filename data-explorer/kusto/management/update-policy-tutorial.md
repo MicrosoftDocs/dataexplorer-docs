@@ -1,5 +1,5 @@
 ---
-title: Tutorial- Route Data Using Table Update Policies
+title: 'Tutorial: Route Data Using Table Update Policies'
 description: "Learn how to use table update policies to perform complex transformations and save the results to one or more destination tables."
 ms.topic: tutorial
 ms.date: 02/01/2026
@@ -7,7 +7,7 @@ ms.date: 02/01/2026
 #customer intent: As a data engineer, I want to learn how to use table update policies to perform complex transformations and save the results to one or more destination tables so that I can route data to different tables based on the data content.
 ---
 
-# Tutorial- Route data using table update policies
+# Tutorial: Route data using table update policies
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
