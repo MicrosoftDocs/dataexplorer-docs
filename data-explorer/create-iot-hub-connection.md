@@ -2,7 +2,7 @@
 title: 'Create an IoT Hub data connection - Azure Data Explorer'
 description: 'In this article, you learn how to ingest data into Azure Data Explorer from IoT Hub.'
 ms.topic: how-to
-ms.date: 07/16/2023
+ms.date: 02/08/2026
 ---
 
 # Create an IoT Hub data connection for Azure Data Explorer
@@ -15,7 +15,7 @@ For general information about ingesting into Azure Data Explorer from IoT Hub, s
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
-
+>
 > For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-iot-hub-connection).
 
 ## Prerequisites
@@ -75,7 +75,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
 
     > [!NOTE]
     >
-    > * JSON data is parsed as multijson by default. Select **Ignore format errors** to ingest the data in strict JSON format.
+    > * JSON data is parsed as multijson by default.
     > * If you selected **Event system properties**, you must include [system properties](ingest-data-iot-hub-overview.md#system-properties) in the table schema and mapping.
 
 1. Select **Create**.
