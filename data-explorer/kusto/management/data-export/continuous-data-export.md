@@ -77,7 +77,11 @@ Use the [`.show continuous export failures`](show-continuous-failures.md) comman
 ### Resource consumption
 
 * The impact of the continuous export on the database depends on the query the continuous export is running. Most resources, such as CPU and memory, are consumed by the query execution.
-* The number of export operations that can run concurrently is limited by the database's data export capacity. For more information, see [Management commands throttling](../../management/capacity-policy.md#management-commands-throttling). If the database doesn't have sufficient capacity to handle all continuous exports, some start lagging behind.
+* The number of export operations that can run concurrently is limited by the database's data export capacity. 
+    :::moniker range="azure-data-explorer"
+    For more information, see [Management commands throttling](../../management/capacity-policy.md#management-commands-throttling). 
+    ::: moniker-end
+    If the database doesn't have sufficient capacity to handle all continuous exports, some start lagging behind.
 * The [show commands-and-queries command](../commands-and-queries.md) can be used to estimate the resources consumption.
   * Filter on `| where ClientActivityId startswith "RunContinuousExports"` to view the commands and queries associated with continuous export.
 
