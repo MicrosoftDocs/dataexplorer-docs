@@ -3,7 +3,7 @@ title:  Continuous data export
 description:  This article describes Continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 07/30/2025
+ms.date: 02/09/2026
 ---
 # Continuous data export overview
 
@@ -27,6 +27,7 @@ All continuous export commands require at least [Database Admin](../../access-co
 
 * **Output schema**:
   * The output schema of the export query must match the schema of the external table to which you export.
+
 * **Frequency**:
   * Continuous export runs according to the time period configured for it in the `intervalBetweenRuns` property. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. The time interval can be as low as one minute, if the ingestion rate is high.
 
@@ -76,7 +77,11 @@ Use the [`.show continuous export failures`](show-continuous-failures.md) comman
 ### Resource consumption
 
 * The impact of the continuous export on the database depends on the query the continuous export is running. Most resources, such as CPU and memory, are consumed by the query execution.
-* The number of export operations that can run concurrently is limited by the database's data export capacity. For more information, see [Management commands throttling](../../management/capacity-policy.md#management-commands-throttling). If the database doesn't have sufficient capacity to handle all continuous exports, some start lagging behind.
+* The number of export operations that can run concurrently is limited by the database's data export capacity. 
+    :::moniker range="azure-data-explorer"
+    For more information, see [Management commands throttling](../../management/capacity-policy.md#management-commands-throttling). 
+    ::: moniker-end
+    If the database doesn't have sufficient capacity to handle all continuous exports, some start lagging behind.
 * The [show commands-and-queries command](../commands-and-queries.md) can be used to estimate the resources consumption.
   * Filter on `| where ClientActivityId startswith "RunContinuousExports"` to view the commands and queries associated with continuous export.
 
@@ -101,15 +106,13 @@ Followed by:
 <| T | where cursor_before_or_at("636751928823156645")
 ```
 
-::: moniker range="azure-data-explorer"
-
 ## Continuous export from a table with Row Level Security
 
-To create a continuous export job with a query that references a table with [Row Level Security policy](../../management/row-level-security-policy.md), you must:
+To create a continuous export job with a query that references a table with [Row level security policy](../row-level-security-policy.md), you must:
 
-* Provide a managed identity as part of the continuous export configuration. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
 * Use [impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) authentication for the external table to which the data is exported.
-
+:::moniker range="azure-data-explorer"
+* Provide a managed identity as part of the continuous export configuration. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
 ::: moniker-end
 
 ## Continuous export to delta table - Preview
@@ -161,7 +164,7 @@ To define continuous export to a delta table, do the following steps:
 
 **Policies**:
 
-* Continuous export can't be enabled on a table with [Row Level Security policy](../../management/row-level-security-policy.md) unless specific conditions are met. For more information, see [Continuous export from a table with Row Level Security](#continuous-export-from-a-table-with-row-level-security).
+* Continuous export can't be enabled on a table with [Row Level Security policy](../row-level-security-policy.md) unless specific conditions are met. For more information, see [Continuous export from a table with Row Level Security](#continuous-export-from-a-table-with-row-level-security).
 * Continuous export can't be configured on a table with [restricted view access policy](../restricted-view-access-policy.md).
 
 ## Related content
@@ -172,7 +175,6 @@ To define continuous export to a delta table, do the following steps:
 * [External tables](../../query/schema-entities/external-tables.md)
 
 :::moniker-end
-
 :::moniker range="azure-data-explorer"
 
 * [.create or alter continuous-export](create-alter-continuous.md)
