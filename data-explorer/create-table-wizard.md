@@ -1,14 +1,15 @@
 ---
-title: Create a table in Azure Data Explorer
+title: Create a Table in Azure Data Explorer
 description: Learn how to easily create a table and manually define the schema in Azure Data Explorer with the table creation wizard.
 ms.reviewer: aksdi
 ms.topic: how-to
-ms.date: 11/13/2024
+ms.date: 02/02/2026
 # Customer intent: As a data engineer, I want to create an empty table in Azure Data Explorer so that I can ingest data and query it.
 ---
+
 # Create a table in Azure Data Explorer
 
-Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) in Azure Data Explorer. The following article shows how to create a table and schema mapping quickly and easily using the Azure Data Explorer web UI.
+Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) in Azure Data Explorer. The following article shows how to create a table and schema mapping quickly and easily by using the Azure Data Explorer web UI.
 
 > [!NOTE]
 > To create a new table based on existing data, see [Get data from file](get-data-file.md) or [Get data from Azure storage](get-data-storage.md).
@@ -21,7 +22,7 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]
-> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
+> To enable access between a cluster and a storage account without public access (restricted to private endpoint or service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 
 ## Create a table
 
@@ -29,31 +30,33 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 1. Select **+ Add** > **Table** or right-click on the database where you want to create the table and select **Create table**.
 
+:::image type="content" source="media/create-table-wizard/add-table.png" alt-text="Screenshot of the Add Table option in the left navigation pane.":::
+
 ## Destination tab
 
 The **Create table** window opens with the **Destination** tab selected.
 
-1. The **Cluster** and **Database** fields are prepopulated. You can select different values from the dropdown menu.
+1. The portal prepopulates the **Cluster** and **Database** fields. You can select different values from the dropdown menu.
 1. In **Table name**, enter a name for your table.
 
     > [!TIP]
-    > Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
+    > Table names can be up to 1,024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
-1. Select **Next: Schema**
+1. Select **Next: Schema**.
 
 ## Schema tab
 
-1. Select **Add new column** and the **Edit columns** panel opens.
+1. Select **Add new column**. The **Edit columns** panel opens.
 1. For each column, enter **Column name** and **Data type**. Create more columns by selecting **Add column**.
 
     :::image type="content" source="media/create-table-wizard/edit-columns.png" alt-text="Screenshot of Edit columns pane, in which you input the column name and data type in Azure Data Explorer.":::
 
-1. Select **Save**. The schema is displayed.
+1. Select **Save**. The portal displays the schema.
 1. Select **Next: Create table**.
 
-    :::image type="content" source="media/create-table-wizard/create-table.png" alt-text="Screenshot of create emptytable wizard with schema input in Azure Data Explorer.":::
+    :::image type="content" source="media/create-table-wizard/create-table.png" alt-text="Screenshot of create empty table wizard with schema input in Azure Data Explorer.":::
 
-A new table is created in your target destination, with the schema you defined.
+The portal creates a new table in your target destination, using the schema you defined.
 
 ## Related content
 
