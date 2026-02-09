@@ -72,10 +72,8 @@ The following table summarizes the available tools and integrations and their ca
 | ----------------------------------------------------------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | [Azure CLI](#azure-cli)                                                             |                    |                    |                    |                    |                    | :heavy_check_mark: |                    |
 | [Azure Data Lake](#azure-data-lake)                                                 | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    |                    |
-| [Azure Data Studio](#azure-data-studio)                                             |                    | :heavy_check_mark: |                    |                    |                    |                    |                    |
 | [Azure Data Share](#azure-data-share)                                               |                    |                    | :heavy_check_mark: |                    |                    |                    |                    |
 | [Azure Monitor](#azure-monitor)                                                     | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
-| [Azure Notebooks](#azure-notebooks)                                                 |                    | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
 | [Azure Pipelines](#azure-pipelines)                                                 |                    |                    |                    | :heavy_check_mark: |                    |                    |                    |
 | [DeltaKusto](#deltakusto)                                                           |                    |                    |                    | :heavy_check_mark: |                    |                    |                    |
 | [Jupyter Notebooks](#jupyter-notebooks)                                             |                    | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
@@ -406,13 +404,6 @@ Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Stora
 
 * **Functionality:** Query
 * **Documentation:** [Query data in Azure Data Lake using Azure Data Explorer](data-lake-query-data.md)
-
-### Azure Data Studio
-
-The Kusto (KQL) extension for Azure Data Studio enables you to connect and query to Azure Data Explorer clusters. Users can write and run KQL queries and author notebooks with the Kusto kernel complete with IntelliSens
-
-* **Functionality:**  Query
-* **Documentation:** [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 
 ### Azure Data Share
 

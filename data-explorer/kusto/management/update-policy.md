@@ -3,8 +3,9 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/30/2025
+ms.date: 02/04/2026
 ---
+
 # Update policy overview
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
@@ -54,16 +55,29 @@ If the update policy is defined on the target table, multiple queries can run on
   * It can't perform cross-cluster queries.
   * It can't access external data or external tables.
   * It can't make callouts (by using a plugin).
+
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
+
 * For update policy limitations in streaming ingestion, see [streaming ingestion limitations](/azure/data-explorer/ingest-data-streaming#limitations).
+
+* The update policy's query shouldn't reference any materialized view whose query uses the update policy's target table. Doing so might produce unexpected results.
+
 ::: moniker-end
 :::moniker range="microsoft-fabric"
+
 * The policy-related query can invoke stored functions, but:
   * It can't perform cross-eventhouse queries.
   * It can't access external data or external tables.
   * It can't make callouts (by using a plugin).
+
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
+
 * By default, the [Streaming ingestion policy](streaming-ingestion-policy.md) is enabled for all tables in the Eventhouse. To use functions with the [`join`](../query/join-operator.md) operator in an update policy, the streaming ingestion policy must be disabled. Use the `.alter` `table` *TableName* `policy` `streamingingestion` *PolicyObject* command to disable it.
+
+* For cascading update policies that include a [`join`](../query/join-operator.md) operator, you must disable streaming ingestion on all upstream tables. For example, consider cascading update policies where Table1 updates Table2, Table2 updates Table3, and Table3 updates Table4. If Table4's update policy includes a join, you must disable streaming ingestion on Table1, Table2, and Table3.
+ 
+* The update policy's query shouldn't reference any materialized view whose query uses the update policy's target table. Doing so might produce unexpected results.
+
 ::: moniker-end
 
 > [!WARNING]
@@ -74,11 +88,15 @@ If the update policy is defined on the target table, multiple queries can run on
 When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
 
 :::moniker range="azure-data-explorer"
+
 * Don't use the qualified name of the table. Instead, use `TableName`.
+
 * Don't use `database("<DatabaseName>").TableName` or `cluster("<ClusterName>").database("<DatabaseName>").TableName`.
 ::: moniker-end
 :::moniker range="microsoft-fabric"
+
 * Don't use the qualified name of the table. Instead, use `TableName`.
+
 * Don't use `database("<DatabaseName>").TableName` or `cluster("<EventhouseName>").database("<DatabaseName>").TableName`.
 ::: moniker-end
 
