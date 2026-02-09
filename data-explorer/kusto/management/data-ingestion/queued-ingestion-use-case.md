@@ -33,8 +33,7 @@ Make sure to include a SAS token or use a managed identity to grant the service 
 
 ```kusto
 .ingest-from-storage-queued into table database('TestDatabase').Logs
-EnableTracking=true
-with (format='csv')
+with (format='csv', enableTracking=true)
 <|
 'https://sample.blob.core.windows.net/sample/test_*csv?...'
  ```
@@ -220,7 +219,7 @@ You can [cancel the ingestion](#cancel-ingestion), if necessary.
 
 ### Perform your full ingestion
 
-By running the queued ingestion commands on a sample, you discovered the problems your ingestion might encounter. Now that you fixed them, you're ready to ingest all your historical data and wait for the full ingestion to complete.
+By running queued ingestion commands on a sample, you can discover problems your ingestion might encounter. Now that you fixed them, you're ready to ingest all your historical data and wait for the full ingestion to complete.
 
 ### Cancel ingestion
 

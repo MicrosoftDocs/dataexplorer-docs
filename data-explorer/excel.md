@@ -1,16 +1,16 @@
 ---
-title: 'Visualize a query in Excel'
+title: 'Visualize a Query in Excel'
 description: 'In this article, you learn how to use a query from the web UI into Excel, by exporting it directly or by using the native connector in Excel.'
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 04/30/2024
+ms.date: 02/08/2026
 
 # Customer intent: As a data analyst, I want to understand how to visualize my Azure Data Explorer data in Excel.
 ---
 
 # Use Excel to visualize data from the web UI
 
-This article shows you how to view your query in Excel, by exporting directly from the web UI or importing into Excel.
+This article shows you how to view your query in Excel by exporting directly from the web UI or importing into Excel.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ This article shows you how to view your query in Excel, by exporting directly fr
 
 ## View data in Excel
 
-You can use the following options to query data in Excel:
+Use the following options to query data in Excel:
 
 ### [Start from the web UI](#tab/azure-data-explorer)
 
@@ -32,7 +32,7 @@ Export the query directly from the web UI.
 
     The query is saved as an Excel workbook in the Downloads folder.
 
-1. Open the downloaded workbook to view your data. Enable editing and enable content if requested in the top ribbon.
+1. Open the downloaded workbook to view your data. Select **Enable editing** and **Enable content** if requested in the top ribbon.
 
 ### [Start from Excel](#tab/excel)
 
@@ -58,7 +58,7 @@ Get data from Azure Data Explorer datasource into Excel.
 
      |Field   |Description |
     |---------|---------|
-    |**Limit query result record number**     |     Limit the number of records loaded into excel  |
+    |**Limit query result record number**     |     Limit the number of records loaded into Excel  |
     |**Limit query result data size (bytes)**    |    Limit the data size      |
     |**Disable result-set truncation**    |         |
     |**Additional Set statements (separated by semicolons)**    |    Add `set` statements to apply to data source     |
@@ -74,7 +74,7 @@ Get data from Azure Data Explorer datasource into Excel.
     :::image type="content" source="media/excel/navigate-table-preview-window.png" alt-text="Screenshot of the Table preview window.":::
 
     > [!TIP]
-    > If **Database** and/or **Table name or Azure Data Explorer query** are already specified, the correct table preview pane will open automatically.
+    > If **Database** and **Table name or Azure Data Explorer query** are already specified, the correct table preview pane opens automatically.
 
 1. If you select **Transform Data**, the **Power Query Editor** window opens. In the window, select **Advanced Editor**.
 
@@ -96,7 +96,7 @@ Get data from Azure Data Explorer datasource into Excel.
 
 ## Analyze and visualize data in Excel
 
-Once the data loads to excel and is available in your Excel sheet, you can analyze, summarize, and visualize the data by creating relationships and visuals.
+After loading data to Excel and making it available in your Excel sheet, you can analyze, summarize, and visualize the data by creating relationships and visuals.
 
 1. In the **Table Design** tab, select **Summarize with PivotTable**. In the **Create PivotTable** window, select the relevant table, and select **OK**.
 

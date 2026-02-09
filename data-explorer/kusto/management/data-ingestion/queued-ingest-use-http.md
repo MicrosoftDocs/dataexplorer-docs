@@ -16,7 +16,6 @@ To use the REST API for queued ingestion, you need:
 
 - **Ingestor** role with **table** scope to ingest data into an existing table.
 - **Database User** role to access the target database.
-- **Storage Blob Data Reader** role on the blob storage container.
 
 For more information, see [Role-based access control](../../access-control/role-based-access-control.md).
 
@@ -50,7 +49,7 @@ Each item in the `blobs` array must follow this structure:
 
 |Field|Type|Required|Description|
 |--|--|--|--|
-|`url`|`string`|  :heavy_check_mark: | The URL of the blob to ingest. The service performs light validation on this field.|
+|`url`|`string`|  :heavy_check_mark: | The URL of the blob to ingest. The service performs light validation on this field. The URL must be accessible by the service. For non-public blobs, include authentication information as part of the URL (for example, SAS token). See [storage connection strings](../../api/connection-strings/storage-connection-strings.md) for details|
 |`sourceId`|`Guid`|No|An identifier for the source blob.|
 |`rawSize`|`integer`|No|The size of the blob before compression (nullable).|
 

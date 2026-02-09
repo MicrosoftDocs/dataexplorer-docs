@@ -2,7 +2,7 @@
 title: Kusto Query Language learning resources
 description: This article provides a list of different types of learning resources for ramping up on KQL.
 ms.reviewer: alexans
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/10/2025
 ---
 # Kusto Query Language learning resources

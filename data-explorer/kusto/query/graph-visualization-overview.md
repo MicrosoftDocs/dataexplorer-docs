@@ -3,7 +3,7 @@ title: Graph Visualization Overview
 titleSuffix: Azure Data Explorer
 description: Learn about different approaches for visualizing graph data from KQL queries, including built-in tools and custom visualization solutions.
 ms.reviewer: royo
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/22/2025
 ---
 
