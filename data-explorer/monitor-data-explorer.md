@@ -44,7 +44,7 @@ In the metrics pane, select specific metrics to track, choose how to aggregate y
 
 The **Resource** and **Metric Namespace** pickers are preselected for your Azure Data Explorer cluster. The numbers in the following image correspond to the numbered list. They guide you through different options in setting up and viewing your metrics.
 
-  :::image type="content" source="media/using-metrics/metrics-pane.png" alt-text="Screenshot shows different options for viewing metrics.":::
+  :::image type="content" source="media/using-metrics/metrics-pane.png" alt-text="Screenshot shows different options for viewing metrics." lightbox="media/using-metrics/metrics-pane.png":::
 
 1. To create a metric chart, select **Metric** name and relevant **Aggregation** per metric. For more information about different metrics, see [supported Azure Data Explorer metrics](monitor-data-explorer-reference.md#metrics).
 1. Select **Add metric** to see multiple metrics plotted in the same chart.
