@@ -3,7 +3,7 @@ title: Get Data From a File
 description: Learn how to get data from a local file in Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 02/02/2026
+ms.date: 02/08/2026
 ms.custom: sfi-image-nochange
 ---
 # Get data from file
