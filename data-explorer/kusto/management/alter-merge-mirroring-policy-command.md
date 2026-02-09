@@ -30,7 +30,15 @@ Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring poli
 |*Partitions*| string| | A comma-separated list of columns used to divide the data into smaller partitions. See [Partitions formatting](#partitions-formatting). |
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-[!INCLUDE [partitions-formatting](../includes/partitions-formatting.md)]
+## Partitions formatting
+
+The partitions list is any combination of partition columns, specified using one of the forms shown in the following table.
+
+|Partition Type|Syntax|Notes|
+|--|--|--|
+|String column value|*PartitionName* `:` `string` `=` *ColumnName*||
+|Truncated datetime column (value)|*PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`|See documentation on [startofyear](../query/startofyear-function.md), [startofmonth](../query/startofmonth-function.md), [startofweek](../query/startofweek-function.md), or [startofday](../query/startofday-function.md) functions.|
+|Truncated Datetime Column Value `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`|Read more about the [bin](../query/bin-function.md) function.||
 
 > [!NOTE]
 > Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
