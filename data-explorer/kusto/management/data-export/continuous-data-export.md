@@ -3,7 +3,7 @@ title:  Continuous data export
 description:  This article describes Continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 07/30/2025
+ms.date: 02/09/2026
 ---
 # Continuous data export overview
 
@@ -27,6 +27,7 @@ All continuous export commands require at least [Database Admin](../../access-co
 
 * **Output schema**:
   * The output schema of the export query must match the schema of the external table to which you export.
+
 * **Frequency**:
   * Continuous export runs according to the time period configured for it in the `intervalBetweenRuns` property. The recommended value for this interval is at least several minutes, depending on the latencies you're willing to accept. The time interval can be as low as one minute, if the ingestion rate is high.
 
@@ -101,14 +102,12 @@ Followed by:
 <| T | where cursor_before_or_at("636751928823156645")
 ```
 
-::: moniker range="azure-data-explorer"
 ## Continuous export from a table with Row Level Security
 
 To create a continuous export job with a query that references a table with [Row Level Security policy](../../management/row-level-security-policy.md), you must:
 
 * Provide a managed identity as part of the continuous export configuration. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
 * Use [impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) authentication for the external table to which the data is exported.
-::: moniker-end
 
 ## Continuous export to delta table - Preview
 
@@ -159,7 +158,7 @@ To define continuous export to a delta table, do the following steps:
 
 **Policies**:
 
-* Continuous export can't be enabled on a table with [Row Level Security policy](../../management/row-level-security-policy.md) unless specific conditions are met. For more information, see [Continuous export from a table with Row Level Security](#continuous-export-from-a-table-with-row-level-security).
+* Continuous export can't be enabled on a table with [Row Level Security policy](../../management/row-level-security-policy.md) unless specific conditions are met. For more information, see [Continuous export from a table with Row Level Security](#continuous-export-from-a-table-with-row-level-security)).
 * Continuous export can't be configured on a table with [restricted view access policy](../restricted-view-access-policy.md).
 
 ## Related content
@@ -168,8 +167,8 @@ To define continuous export to a delta table, do the following steps:
 
 * [.create or alter continuous-export](create-alter-continuous.md)
 * [External tables](../../query/schema-entities/external-tables.md)
-:::moniker-end
 
+:::moniker-end
 :::moniker range="azure-data-explorer"
 
 * [.create or alter continuous-export](create-alter-continuous.md)
