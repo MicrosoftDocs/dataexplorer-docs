@@ -568,4 +568,3 @@ class Program
 ## Related content
 
 * [Query data in Azure Data Explorer](web-query-data.md)
- 
