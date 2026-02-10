@@ -1,6 +1,9 @@
 ---
+author: natinimni
+ms.author: natinimn
 ms.topic: include
 ms.date: 02/09/2026
+ms.service: azure-data-explorer
 ---
 
 ## Partitions formatting
