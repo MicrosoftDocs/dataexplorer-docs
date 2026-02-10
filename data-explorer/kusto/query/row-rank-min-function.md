@@ -3,7 +3,7 @@ title:  row_rank_min()
 description: Learn how to use the row_rank_min() function to return the current row's minimal rank in a serialized row set.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 02/10/2026
 ---
 # row_rank_min()
 
@@ -15,7 +15,7 @@ The rank is the minimal row number that the current row's *Term* appears in.
 
 ## Syntax
 
-`row_rank_min` `(` *Term* `)`
+`row_rank_min` `(` *Term*, [*restart*] `)`
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -30,7 +30,7 @@ The rank is the minimal row number that the current row's *Term* appears in.
 
 Returns the row rank of the current row as a value of type `long`.
 
-## Example
+## Examples
 
 The following query shows how to rank the `Airline` by the number of departures from the SEA `Airport`.
 
@@ -61,3 +61,29 @@ SEA      | LH       | 3           | 2
 SEA      | UA       | 3           | 2
 SEA      | EL       | 3           | 2
 SEA      | LY       | 100         | 5
+
+The following query shows how to calculate the rank of each `Item` partitioned by `Category`.
+
+```kusto
+datatable(Category:string, Item:string, Value:int)
+[
+    "A", "item1", 10,
+    "A","item2", 10,
+    "A", "item3", 5,
+    "A", "item4", 20,
+    "B", "item2", 5,
+    "B", "item1", 7
+]
+| sort by Category asc, Value asc
+| extend rank = row_rank_min(Value, Category != prev(Category))
+```
+**Output**
+
+|Category|Item|Value|rank|
+|---|---|---|---|
+|A|item3|5|1|
+|A|item1|10|2|
+|A|item2|10|2|
+|A|item4|20|4|
+|B|item2|5|1|
+|B|item1|7|2|
