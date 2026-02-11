@@ -1,9 +1,9 @@
 ---
-title: Manage public access to your Azure Data Explorer cluster
+title: Manage Public Access to Your Azure Data Explorer Cluster
 description: Learn how to Manage public access to your Azure Data Explorer cluster.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 08/09/2023
+ms.date: 02/02/2026
 ms.custom: sfi-image-nochange
 ---
 
@@ -19,13 +19,13 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 
 1. From the left-hand menu, under **Security + Networking**, select **Networking**. If you select the *Enabled from selected IP addresses* option, you must specify the IP address or CIDR using the IPv4 address format.
 
-    :::image type="content" source="media/security-network-restrict-access/networking-public-access.png" alt-text="Screenshot of the networking public access page." lightbox="media/security-network-restrict-access/networking-public-access.png":::
+    :::image type="content" source="media/security-network-restrict-access/networking.png" alt-text="Screenshot of the networking public access page." lightbox="media/security-network-restrict-access/networking.png":::
 
 1. Within the **Public network access** area, select one of the following three options:
 
    * **Enabled from all networks**: This option allows access from public networks.
   
-   * **Enabled from selected IP addresses**: This option allows you to define a firewall allowlist of IP addresses, Classless Inter-Domain Routing (CIDR) notation, or [service tags](/azure/virtual-network/service-tags-overview) that can connect to the public endpoint of your cluster. In CIDR notation, the IP address is followed by a slash and a number that represents the subnet mask. For more information, see [Specify selected IP addresses](#specify-selected-ip-addresses).
+   * **Enabled from selected IP addresses**: This option allows you to define a firewall allow list of IP addresses, Classless Inter-Domain Routing (CIDR) notation, or [service tags](/azure/virtual-network/service-tags-overview) that can connect to the public endpoint of your cluster. In CIDR notation, the IP address is followed by a slash and a number that represents the subnet mask. For more information, see [Specify selected IP addresses](#specify-selected-ip-addresses).
   
    * **Disabled**: This option prevents access to the cluster from public networks and instead requires connection through a private endpoint.
 
@@ -33,7 +33,7 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 
 ### Specify selected IP addresses
 
-The **Enabled from selected IP addresses** option provides flexibility in managing network access to your cluster by offering multiple ways to define the IP addresses that can connect. You can specify individual IP addresses, use CIDR notation to define a range of IP addresses, or utilize [service tags](/azure/virtual-network/service-tags-overview), which represent a group of IP address prefixes from specific Azure services. The following [examples](#examples) show how each can be specified.
+The **Enabled from selected IP addresses** option provides flexibility in managing network access to your cluster by offering multiple ways to define the IP addresses that can connect. You can specify individual IP addresses, use CIDR notation to define a range of IP addresses, or use [service tags](/azure/virtual-network/service-tags-overview), which represent a group of IP address prefixes from specific Azure services. The following [examples](#examples) show how you can specify each option.
 
 #### Examples
 
@@ -49,7 +49,7 @@ The following example specifies a single IP address in the format `xxx.xxx.xxx.x
 
 ##### CIDR notation
 
-The following example specifies a range of IP addresses from `192.168.1.0` to `192.168.1.255` using CIDR notation. The `/24` indicates that the first 24 bits, or three octets, represent the network part of the address, while the last eight bits are used for the host addresses within the network from `0` to `255`.
+The following example specifies a range of IP addresses from `192.168.1.0` to `192.168.1.255` using CIDR notation. The `/24` indicates that the first 24 bits, or three octets, represent the network part of the address, while the last 8 bits are used for the host addresses within the network from `0` to `255`.
 
 ```plaintext
 192.168.1.0/24
@@ -76,13 +76,13 @@ You can configure the selected IP addresses either through the Azure portal or b
 
     :::image type="content" source="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag.png" lightbox="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag.png" alt-text="Screenshot of the network configuration page, showing the enabled from selected IP addresses option without any address range or service tag configured.":::
 
-1. Configure the Service Tags you want to allow to connect to the cluster.
+1. Configure the service tags you want to allow to connect to the cluster.
 
     :::image type="content" source="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag-search.png" lightbox="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag-search.png" alt-text="Screenshot of the network configuration page, showing the Service Tag search bar to configure the allowed service tags.":::
 
 1. Configure the IP addresses or CIDR ranges that you want to allow to connect to the cluster.
 
-    :::image type="content" source="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag-configured.png" lightbox="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag-configured.png" alt-text="Screenshot of the network configuration page, showing the selected IP addresses specified for Enabled from selected IP addresses. They are specified as individual IP address and in CIDR notation. Additionally the selected Service tags are shown.":::
+    :::image type="content" source="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag-configured.png" lightbox="media/security-network-restrict-access/networking-public-access-selected-ip-addresses-service-tag-configured.png" alt-text="Screenshot of the network configuration page, showing the selected IP addresses specified for Enabled from selected IP addresses. They're specified as individual IP address and in CIDR notation. Additionally the selected Service tags are shown.":::
 
 1. Select **Save** to submit the configuration.
 

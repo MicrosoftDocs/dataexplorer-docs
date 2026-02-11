@@ -3,25 +3,25 @@ title: Anomaly diagnosis for root cause analysis
 description: Use machine learning clustering for Root Cause Analysis.
 ms.reviewer: adieldar
 ms.topic: how-to
-ms.date: 08/11/2024
+ms.date: 02/01/2026
 ---
 
 # Anomaly diagnosis for root cause analysis
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Kusto Query Language (KQL) has built-in [anomaly detection and forecasting](anomaly-detection.md) functions to check for anomalous behavior. Once such a pattern is detected, a Root Cause Analysis (RCA) can be run to mitigate or resolve the anomaly.
+Kusto Query Language (KQL) has built-in [anomaly detection and forecasting](anomaly-detection.md) functions to check for anomalous behavior. When you detect an anomalous pattern, run a root cause analysis (RCA) to mitigate or resolve the anomaly.
 
-The diagnosis process is complex and lengthy, and done by domain experts. The process includes:
+The diagnosis process is complex and lengthy, and domain experts usually perform it. The process includes:
 
 * Fetching and joining more data from different sources for the same time frame
 * Looking for changes in the distribution of values on multiple dimensions
 * Charting more variables
 * Other techniques based on domain knowledge and intuition
 
-Since these diagnosis scenarios are common, machine learning plugins are available to make the diagnosis phase easier, and shorten the duration of the RCA.
+Because these diagnosis scenarios are common, machine learning plugins are available to make the diagnosis phase easier and shorten the duration of the RCA.
 
-All three of the following Machine Learning plugins implement clustering algorithms: [`autocluster`](autocluster-plugin.md), [`basket`](basket-plugin.md), and [`diffpatterns`](diffpatterns-plugin.md). The `autocluster` and `basket` plugins cluster a single record set, and the `diffpatterns` plugin clusters the differences between two record sets.
+All three of the following machine learning plugins implement clustering algorithms: [`autocluster`](autocluster-plugin.md), [`basket`](basket-plugin.md), and [`diffpatterns`](diffpatterns-plugin.md). The `autocluster` and `basket` plugins cluster a single record set. The `diffpatterns` plugin clusters the differences between two record sets.
 
 ## Clustering a single record set
 
@@ -127,7 +127,7 @@ demo_clustering1
 | 2016-08-23 15:00:59.9382620 | scus   | su3       | 90d3d2fc7ecc430c9621ece335651a01 | 10007006   | 451e3c4c-0808-4566-a64d-84d85cf30978 |
 
 
-Even though there are less than a thousand exceptions, it's still hard to find common segments, since there are multiple values in each column. You can use the [`autocluster()`](autocluster-plugin.md) plugin to instantly extract a short list of common segments and find the interesting clusters within the spike's two minutes, as seen in the following query:
+Even though there are fewer than a thousand exceptions, it's still hard to find common segments, since there are multiple values in each column. You can use the [`autocluster()`](autocluster-plugin.md) plugin to instantly extract a short list of common segments and find the interesting clusters within the spike's two minutes, as seen in the following query:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -190,7 +190,7 @@ Basket implements the *"Apriori"* algorithm for item set mining. It extracts all
 
 Both plugins are powerful and easy to use. Their limitation is that they cluster a single record set in an unsupervised manner with no labels. It's unclear whether the extracted patterns characterize the selected record set, anomalous records, or the global record set.
 
-## Clustering the difference between two records sets
+## Clustering the difference between two record sets
 
 The [`diffpatterns()`](diffpatterns-plugin.md) plugin overcomes the limitation of `autocluster` and `basket`. `Diffpatterns` takes two record sets and extracts the main segments that are different. One set usually contains the anomalous record set being investigated. One is analyzed by `autocluster` and `basket`. The other set contains the reference record set, the baseline.
 
@@ -225,7 +225,7 @@ demo_clustering1
 | 5 | 55 | 252 | 5.66 | 20.45 | 14.8 | weu | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
 | 6 | 57 | 204 | 5.86 | 16.56 | 10.69 |  |  |  |  |
 
-The most dominant segment is the same segment that was extracted by `autocluster`. Its coverage on the two-minute anomalous window is also 65.74%. However, its coverage on the eight-minute baseline window is only 1.7%. The difference is 64.04%. This difference seems to be related to the anomalous spike. To verify this assumption, the following query splits the original chart into the records that belong to this problematic segment, and records from the other segments.
+The most dominant segment is the same segment that `autocluster` extracted. Its coverage on the two-minute anomalous window is also 65.74%. However, its coverage on the eight-minute baseline window is only 1.7%. The difference is 64.04%. This difference seems to be related to the anomalous spike. To verify this assumption, the following query splits the original chart into the records that belong to this problematic segment, and records from the other segments.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -245,10 +245,10 @@ and ServiceHost == "e7f60c5d-4944-42b3-922a-92e98a8e7dec", "Problem", "Normal")
 
 ![Validating `diffpattern` segment timechart.](media/machine-learning-clustering/validating-diffpattern-timechart.png)
 
-This chart allows us to see that the spike on Tuesday afternoon was because of exceptions from this specific segment, discovered by using the `diffpatterns` plugin.
+This chart shows that the spike on Tuesday afternoon was because of exceptions from this specific segment, discovered by using the `diffpatterns` plugin.
 
 ## Summary
 
-The Machine Learning plugins are helpful for many scenarios. The `autocluster` and `basket` implement an unsupervised learning algorithm and are easy to use. `Diffpatterns` implements a supervised learning algorithm and, although more complex, it's more powerful for extracting differentiation segments for RCA.
+The Machine Learning plugins are helpful for many scenarios. The `autocluster` and `basket` plugins implement an unsupervised learning algorithm and are easy to use. The `diffpatterns` plugin implements a supervised learning algorithm and, although more complex, it's more powerful for extracting differentiation segments for RCA.
 
-These plugins are used interactively in ad-hoc scenarios and in automatic near real-time monitoring services. Time series anomaly detection is followed by a diagnosis process. The process is highly optimized to meet necessary performance standards.
+Use these plugins interactively in ad-hoc scenarios and in automatic near real-time monitoring services. Time series anomaly detection is followed by a diagnosis process. The process is highly optimized to meet necessary performance standards.

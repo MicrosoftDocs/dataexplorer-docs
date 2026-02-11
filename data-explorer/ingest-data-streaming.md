@@ -50,6 +50,7 @@ The main contributors that can impact streaming ingestion are:
 * **Data size limit**: The data size limit for a streaming ingestion request is 4 MB. This includes any data created for update policies during the ingestion.
 * **Schema updates**: Schema updates, such as creation and modification of tables and ingestion mappings, may take up to five minutes for the streaming ingestion service. For more information see [Streaming ingestion and schema changes](/kusto/management/data-ingestion/streaming-ingestion-schema-changes?view=azure-data-explorer&preserve-view=true).
 * **SSD capacity**: Enabling streaming ingestion on a cluster, even when data isn't ingested via streaming, uses part of the local SSD disk of the cluster machines for streaming ingestion data and reduces the storage available for hot cache.
+* **Database cursors**: When using streaming ingestion, [database cursor](/kusto/query/database-cursor) updates may lag behind data availability by up to 60 seconds. This delay arises from asynchronous background sealing processes that transition data from the streaming buffer to permanent column-store extents, during which the cursor (used for incremental processing, continuous exports, or materialized views) is updated. If your workload requires immediate cursor consistency for exactly-once semantics, consider using queued ingestion instead or account for this potential lag in your application logic.
 
 ## Enable streaming ingestion on your cluster
 
@@ -563,6 +564,7 @@ class Program
   * The update policy can only reference newly ingested data in the source table and not any other data or tables in the database
   * [Python plugin](/kusto/query/python-plugin.md) isn't supported
   * When an update policy with a [transactional policy](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true#handling-failures) fails, the retries fall back to batch ingestion.
+  * For cascading [update policies](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true) that include a `join` operator, you must disable streaming ingestion on all upstream tables. For example, consider cascading update policies where Table1 updates Table2, Table2 updates Table3, and Table3 updates Table4. If Table4's update policy includes a join, you must disable streaming ingestion on Table1, Table2, and Table3.
 * If streaming ingestion is enabled on a cluster used as a leader for [follower databases](follower.md), streaming ingestion must be enabled on the following clusters as well to follow streaming ingestion data. Same applies whether the cluster data is shared via [Data Share](data-share.md).
 
 ## Related content

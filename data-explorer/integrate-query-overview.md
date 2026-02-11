@@ -1,9 +1,9 @@
 ---
-title: Query integrations overview
+title: Query Integrations Overview
 description: Learn about the available query integrations.
 ms.reviewer: aksdi
-ms.topic: article
-ms.date: 12/01/2025
+ms.topic: conceptual
+ms.date: 02/04/2026
 
 # CustomerIntent: As a data ingestor, I want to know what query connectors and tools are available, so that I can choose the right one for my use case.
 ---
@@ -48,7 +48,6 @@ The following tables summarize the available query connectors, tools, and integr
 | Name                                                                                                                                            | Functionality                 | Roles                                       | Use Cases                                                                                                                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Azure Data Lake](/azure/data-explorer/integrate-overview?tabs=integrations#azure-data-lake)                                                 | Query                         | Data Engineer, Data Analyst                 | Fast access to data stored in external storage                                                                                                                                          |
-| [Azure Data Studio](/azure/data-explorer/integrate-overview?tabs=integrations#azure-data-studio)                                             | Query, Author Notebooks       | Data Engineer, Data Analyst, Data Scientist | Quickly observe trends and anomalies against massive amounts of data stored in Azure Data Explorer                                                                             |
 | [Azure Monitor](/azure/data-explorer/integrate-overview?tabs=integrations#azure-monitor)                                                     | Query and Export              | Data Engineer                               | Low cost data retention                                                                                                                                                        |
 | [Jupyter Notebooks](/azure/data-explorer/integrate-overview?tabs=integrations#jupyter-notebooks)                                             | Author Notebooks              | Data Engineer, Data Scientist               | Create and share documents containing live code, equations, visualizations for statistical modeling, data visualization, and machine learning using data stored in Azure Data Explorer. |
 | [Kusto.Explorer](/azure/data-explorer/integrate-overview?tabs=integrations#kustoexplorer)                                                    | Query, Ingest, Admin and Dashboarding | Data Engineer, Data Analyst, Data Scientist | End-to-end data exploration                                                                                                                                                             |
