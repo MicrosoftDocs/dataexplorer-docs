@@ -3,7 +3,7 @@ title: Configure Streaming Ingestion on Your Azure Data Explorer Cluster
 description: Learn how to configure your Azure Data Explorer cluster and start loading data with streaming ingestion.
 ms.reviewer: alexefro
 ms.topic: how-to
-ms.date: 07/30/2025
+ms.date: 02/10/2026
 ---
 
 # Configure streaming ingestion on your Azure Data Explorer cluster
@@ -560,9 +560,11 @@ class Program
 
 * [Data mappings](/kusto/management/mappings?view=azure-data-explorer&preserve-view=true) must be [pre-created](/kusto/management/create-ingestion-mapping-command?view=azure-data-explorer&preserve-view=true) for use in streaming ingestion. Individual streaming ingestion requests don't accommodate inline data mappings.
 * [Extent tags](/kusto/management/extent-tags?view=azure-data-explorer&preserve-view=true) can't be set on the streaming ingestion data.
-* [Update policy](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true). The update policy can reference only the newly ingested data in the source table and not any other data or tables in the database.
-* For cascading [update policies](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true) that include a `join` operator, you must disable streaming ingestion on all upstream tables. For example, consider cascading update policies where Table1 updates Table2, Table2 updates Table3, and Table3 updates Table4. If Table4's update policy includes a join, you must disable streaming ingestion on Table1, Table2, and Table3.
-* When an update policy with a [transactional policy](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true#handling-failures) fails, the retries fall back to batch ingestion.
+* [Update policy](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true)
+  * The update policy can only reference newly ingested data in the source table and not any other data or tables in the database
+  * [Python plugin](/kusto/query/python-plugin) isn't supported
+  * When an update policy with a [transactional policy](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true#handling-failures) fails, the retries fall back to batch ingestion.
+  * For cascading [update policies](/kusto/management/update-policy?view=azure-data-explorer&preserve-view=true) that include a `join` operator, you must disable streaming ingestion on all upstream tables. For example, consider cascading update policies where Table1 updates Table2, Table2 updates Table3, and Table3 updates Table4. If Table4's update policy includes a join, you must disable streaming ingestion on Table1, Table2, and Table3.
 * If streaming ingestion is enabled on a cluster used as a leader for [follower databases](follower.md), streaming ingestion must be enabled on the following clusters as well to follow streaming ingestion data. Same applies whether the cluster data is shared via [Data Share](data-share.md).
 
 ## Related content
