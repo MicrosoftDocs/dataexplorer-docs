@@ -39,7 +39,7 @@ The mirroring policy includes the following properties:
 
 [!INCLUDE [mirroring-note](../includes/mirroring-note.md)]
 
-[!INCLUDE [partitions-formatting](../includes/partitions-formatting.md)]
+[!INCLUDE [mirroring-partitions-formatting](../includes/mirroring-partitions-formatting.md)]
 
 > [!NOTE]
 > Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
