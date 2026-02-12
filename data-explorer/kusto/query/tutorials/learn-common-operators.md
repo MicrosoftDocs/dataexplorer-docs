@@ -217,7 +217,7 @@ There are 146 events that match these conditions. Here's a sample of five of the
 
 Use the [between operator](../between-operator.md) to filter data based on a specific time range.
 
-The following query finds all storm events between August 1, 2007, and August 30, 2007, along with their states, event types, start times, and end times. The results are then sorted in ascending order by start time.
+The following query finds all storm events between August 1, 2007, and August 30, 2007, along with their states, event types, start times, and end times. The query sorts the results in ascending order by start time.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
