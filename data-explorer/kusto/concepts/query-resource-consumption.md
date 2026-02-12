@@ -1,7 +1,6 @@
 ---
 title:  Query Resource Consumption
 description: Learn how to analyze resource consumption of Kusto queries to optimize performance.
-ms.reviewer: herauch
 ms.topic: reference
 ms.date: 05/22/2025
 monikerRange: "microsoft-fabric || azure-data-explorer"

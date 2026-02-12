@@ -2,8 +2,8 @@
 title: "Azure Data Explorer POC playbook: Big data analytics"
 description: "A high-level methodology for preparing and running an effective Azure Data Explorer proof of concept (POC) project."
 ms.reviewer: devsha
-ms.topic: conceptual
-ms.date: 11/02/2023
+ms.topic: concept-article
+ms.date: 12/01/2025
 ---
 
 # Azure Data Explorer POC playbook: Big data analytics
@@ -29,7 +29,7 @@ The following scenarios are also good candidates for Azure Data Explorer:
 
 - Low latency data store for real-time telemetry-based alerts
 - [IoT telemetry data storage and analytics](/azure/architecture/solution-ideas/articles/iot-azure-data-explorer)
-- [High speed interactive analytics layer](/azure/architecture/solution-ideas/articles/interactive-azure-data-explorer). Particularly when used with Apache Spark engines such as Synapse Spark, DataBricks, or traditional data warehouses such as Synapse SQL pools.
+- [High speed interactive analytics layer](/azure/architecture/solution-ideas/articles/interactive-azure-data-explorer). Particularly when used with Apache Spark engines such as DataBricks.
 - [Log and observability analytics](/azure/architecture/solution-ideas/articles/monitor-azure-data-explorer)
 
 ## Prepare for the POC
@@ -125,7 +125,7 @@ Here are the typical subject areas that are evaluated with Azure Data Explorer:
 > Use the following frequently asked questions to help you plan your POC.
 >
 > - **How do I choose the SKU for my POC cluster?**  
->     Use the [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) guide to help you choose the SKU for your POC cluster. When starting a POC, we recommend starting with a smaller SKUs and scale up SKU as required when you begin testing and capturing results.
+>     Use the [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) guide to help you choose the SKU for your POC cluster. When starting a POC, we recommend starting with a smaller SKU and scale up the SKU as required when you begin testing and capturing results.
 > - **How do I choose the caching period when creating my POC cluster?**  
 >     To provide best query performance, ingested data is cached on the local SSD disk. This level of performance is not always required and less frequently queried data can often be stored on cheaper blob storage. Queries on data in blob storage run slower, but this acceptable in many scenarios. Knowing this can help you identify the number of compute nodes you need to hold your data in local SSD and continue to meet your query performance requirements. For example, if you you want to query *x* days worth of data (based on ingestion age) more frequently and retain data for *y* days and query it less frequently, in your cache retention policy, specify *x* as the value for hot cache retention and *y* as the value for the total retention. For more information, see [Cache policy](/kusto/management/cache-policy?view=azure-data-explorer&preserve-view=true).
 > - **How do I choose the retention period when creating my POC cluster?**  

@@ -3,7 +3,7 @@ title: Solution architectures in Azure
 description: Learn about solution architectures in Azure Data Explorer.
 ms.reviewer: 
 ms.topic: reference
-ms.date: 07/05/2022
+ms.date: 12/01/2025
 ---
 # Solution architectures
 
@@ -15,7 +15,7 @@ This document refers you to all architectures that include Azure Data Explorer.
 
 ## Big data analytics with Azure Data Explorer
 
-Azure Data Explorer and Azure Synapse Analytics work together for near real-time analytics and modern data warehousing use cases.
+Azure Data Explorer works for near real-time analytics and modern data warehousing use cases.
 
 > [!div class="nextstepaction"]
 > [Big data analytics with Azure Data Explorer](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer)
@@ -82,7 +82,7 @@ This solution also uses the following services:
 
 ## Data analytics for automotive test fleets
 
-Automotive OEMs need solutions to minimize the time between doing test drives and getting test drive diagnostic data to R&D engineers. 
+Automotive OEMs need solutions to minimize the time between doing test drives and getting test drive diagnostic data to R&D engineers.
 
 This example workload relates to both telemetry and batch test drive data ingestion scenarios. The workload focuses on the data platform that processes diagnostic data, and the connectors for visualization and reporting.
 
