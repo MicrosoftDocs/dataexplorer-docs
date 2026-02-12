@@ -25,7 +25,7 @@ and [Ingestion error codes in Azure Data Explorer](/azure/data-explorer/error-co
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
-|Avro|`.avro`    |An [Avro](https://avro.apache.org/docs/current/) file format. Supported compression codecs: `snappy`, `zstandard`, `bzip` and `xz`. The reader implementation of the `eavro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For details on ingesting Event Hubs Capture Avro files, see [Ingesting Event Hubs Capture Avro files](/azure/data-explorer/ingest-data-event-hub-overview#schema-mapping-for-event-hub-capture-avro-files). |
+|Avro|`.avro`    |An [Avro](https://avro.apache.org/docs/current/) file format. Supported compression codecs: `snappy`, `zstandard`, `bzip` and `xz`. The reader implementation of the `avro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For details on ingesting Event Hubs Capture Avro files, see [Ingesting Event Hubs Capture Avro files](/azure/data-explorer/ingest-data-event-hub-overview#schema-mapping-for-event-hub-capture-avro-files). |
 |AzMonStream     |N/A     |Azure Monitor [exports data in this format](/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#data-formats) to Azure Event Hubs.  This format is supported only by Azure Event Hubs. |
 |CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
