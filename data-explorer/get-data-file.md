@@ -3,9 +3,10 @@ title: Get Data From a File
 description: Learn how to get data from a local file in Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 02/08/2026
+ms.date: 02/12/2026
 ms.custom: sfi-image-nochange
 ---
+
 # Get data from file
 
 Data ingestion is the process of loading data from one or more sources into a table in Azure Data Explorer. Once ingested, the data is available for query. In this article, you learn how to get data from a local file into either a new or existing table.

@@ -1,15 +1,18 @@
 ---
-title:  'Tutorial: Learn common Kusto Query Language operators'
+title: "Tutorial: Learn Common Kusto Query Language Operators"
 description: This tutorial describes how to write queries using common operators in the Kusto Query Language to meet common query needs.
 ms.topic: tutorial
-ms.date: 02/01/2026
+ms.date: 02/12/2026
+author: hzargari-ms
+ms.author: v-hzargari
+ms.reviewer: v-hzargari
 ---
 
 # Tutorial: Learn common operators
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
-Use [Kusto Query Language (KQL)](../index.md) to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), [Microsoft Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/), and more. This tutorial introduces the essential KQL operators you can use to access and analyze your data.
+You use [Kusto Query Language (KQL)](../index.md) to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), [Microsoft Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/), and more. This tutorial introduces the essential KQL operators you use to access and analyze your data.
 
 For more specific guidance on how to query logs in Azure Monitor, see [Get started with log queries](/azure/azure-monitor/logs/get-started-queries).
 
@@ -127,7 +130,7 @@ StormEvents
 
 ## List unique values
 
-The results of the previous query show that there are multiple types of storms. Use the [distinct](../distinct-operator.md) operator to list all of the unique storm types.
+The results of the previous query show multiple types of storms. Use the [distinct](../distinct-operator.md) operator to list all of the unique storm types.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -214,7 +217,7 @@ There are 146 events that match these conditions. Here's a sample of five of the
 
 Use the [between operator](../between-operator.md) to filter data based on a specific time range.
 
-The following query finds all storm events between August 1, 2007, and August 30, 2007, along with their states, event types, start times, and end times. The query returns results sorted in ascending order by start time.
+The following query finds all storm events between August 1, 2007, and August 30, 2007, along with their states, event types, start times, and end times. The query sorts the results in ascending order by start time.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

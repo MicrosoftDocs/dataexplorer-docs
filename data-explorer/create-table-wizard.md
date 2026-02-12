@@ -3,13 +3,13 @@ title: Create a Table in Azure Data Explorer
 description: Learn how to easily create a table and manually define the schema in Azure Data Explorer with the table creation wizard.
 ms.reviewer: aksdi
 ms.topic: how-to
-ms.date: 02/02/2026
+ms.date: 02/12/2026
 # Customer intent: As a data engineer, I want to create an empty table in Azure Data Explorer so that I can ingest data and query it.
 ---
 
 # Create a table in Azure Data Explorer
 
-Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [query](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) in Azure Data Explorer. The following article shows how to create a table and schema mapping quickly and easily by using the Azure Data Explorer web UI.
+Creating a table is an important step in the process of [data ingestion](ingest-data-overview.md) and [querying](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) in Azure Data Explorer. The following article shows how to create a table and schema mapping quickly and easily by using the Azure Data Explorer web UI.
 
 > [!NOTE]
 > To create a new table based on existing data, see [Get data from file](get-data-file.md) or [Get data from Azure storage](get-data-storage.md).
@@ -46,7 +46,7 @@ The **Create table** window opens with the **Destination** tab selected.
 
 ## Schema tab
 
-1. Select **Add new column**. The **Edit columns** panel opens.
+1. Select **Add new column** to open the **Edit columns** panel.
 1. For each column, enter **Column name** and **Data type**. Create more columns by selecting **Add column**.
 
     :::image type="content" source="media/create-table-wizard/edit-columns.png" alt-text="Screenshot of Edit columns pane, in which you input the column name and data type in Azure Data Explorer.":::
