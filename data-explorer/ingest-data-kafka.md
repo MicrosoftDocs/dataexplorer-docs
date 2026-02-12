@@ -1,12 +1,13 @@
 ---
-title: 'Ingest data from Kafka into Azure Data Explorer'
+title: Ingest data From Kafka Into Azure Data Explorer
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Kafka.
 ms.reviewer: ankhanol
 ms.topic: how-to
-ms.date: 08/21/2024
+ms.date: 02/12/2026
 
 #Customer intent: As an integration developer, I want to build integration pipelines from Kafka into Azure Data Explorer, so I can make data available for near real time analytics.
 ---
+
 # Ingest data from Apache Kafka into Azure Data Explorer
 
 [!INCLUDE [ingest-data-kafka](includes/cross-repo/ingest-data-kafka.md)]
@@ -53,16 +54,16 @@ This file contains the Kusto sink properties file where you update specific conf
 
 ### Managed identity
 
-By default, the Kafka connector uses the application method for authentication during ingestion. To authenticate using managed identity:
+By default, the Kafka connector uses the application method for authentication during ingestion. To authenticate by using managed identity:
 
 1. Assign your cluster a managed identity and grant your storage account read permissions. For more information, see [Ingest data using managed identity authentication](ingest-data-managed-identity.md).
 
 1. In your **adx-sink-config.json** file, set `aad.auth.strategy` to `managed_identity` and ensure that `aad.auth.appid` is set to the managed identity client (application) ID.
 
-1. Use a [private instance metadata service token](/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) instead of the [Microsoft Entra service principal](#create-a-microsoft-entra-service-principal).
+1. Use a [private instance metadata service token](/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) instead of the Microsoft Entra service principal.
 
 > [!NOTE]
-> When using a managed identity, `appId` and `tenant` are deduced from the context of the call site and `password` isn't needed.
+> When using managed identity, the connector automatically retrieves the `appId` and `tenant` from the call context, so you don't need to provide a password.
 
 [!INCLUDE [ingest-data-kafka-4](includes/cross-repo/ingest-data-kafka-4.md)]
 
