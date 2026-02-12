@@ -30,6 +30,8 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 1. Select **+ Add** > **Table** or right-click on the database where you want to create the table and select **Create table**.
 
+:::image type="content" source="media/create-table-wizard/add-table.png" alt-text="Screenshot of the Add Table option in the left navigation pane.":::
+
 ## Destination tab
 
 The **Create table** window opens with the **Destination** tab selected.
@@ -49,12 +51,12 @@ The **Create table** window opens with the **Destination** tab selected.
 
     :::image type="content" source="media/create-table-wizard/edit-columns.png" alt-text="Screenshot of Edit columns pane, in which you input the column name and data type in Azure Data Explorer.":::
 
-1. Select **Save**. The schema is displayed.
+1. Select **Save**. The portal displays the schema.
 1. Select **Next: Create table**.
 
     :::image type="content" source="media/create-table-wizard/create-table.png" alt-text="Screenshot of create empty table wizard with schema input in Azure Data Explorer.":::
 
-A new table is created in your target destination, with the schema you defined.
+The portal creates a new table in your target destination, using the schema you defined.
 
 ## Related content
 

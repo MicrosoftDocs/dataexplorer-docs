@@ -1,7 +1,6 @@
 ---
 title: .create-or-alter graph_model command
 description: Learn how to create or alter a graph model using the create-or-alter graph_model command with syntax, parameters, and examples.
-ms.reviewer: herauch
 ms.topic: reference
 ms.date: 05/24/2025
 ---

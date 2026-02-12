@@ -3,7 +3,7 @@ title:  Cross-cluster join
 description: Learn how to perform the Cross-cluster join operation to join datasets residing on different clusters.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2025
+ms.date: 01/26/2026
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Cross-cluster join
@@ -31,6 +31,9 @@ The cluster that runs the query fetches the data from the other cluster.
 &emsp;`)` on *Conditions*
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
+
+> [!NOTE]
+> join hints (including hint.remote) are order‑independent and can appear before or after the kind parameter.
 
 ## Parameters
 

@@ -1,7 +1,6 @@
 ---
 title: Create a Microsoft Entra Application in Azure Data Explorer
 description: Learn how to create a Microsoft Entra application in Azure Data Explorer.
-ms.reviewer: herauch
 ms.topic: how-to
 ms.date: 02/12/2026
 ---

@@ -4,7 +4,7 @@ description: Learn how to use Model Context Protocol (MCP) with Azure Data Explo
 ms.reviewer: sharmaanshul
 author: spelluru
 ms.author: spelluru
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/14/2025
 ms.search.form: MCP, AI, agents
 

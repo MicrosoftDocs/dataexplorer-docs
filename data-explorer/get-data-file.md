@@ -21,23 +21,23 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
 ## Get data
 
-1. From the left menu, select **Query**.
+1. From the left navigation pane, select **Query**.
 
 1. Right-click on the database where you want to ingest the data. Select **Get data**.
 
     :::image type="content" source="media/get-data-file/get-data.png" alt-text="Screenshot of query tab, with right-click on a database and the get options dialog open." lightbox="media/get-data-file/get-data.png":::
 
-## Source
+## Select data source
 
 In the **Get data** window, the **Source** tab is selected.
 
 Select the data source from the available list. In this example, you're ingesting data from a **Local file**.
 
-:::image type="content" source="media/get-data-file/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/select-data-source.png":::
+:::image type="content" source="media/get-data-file/source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/source.png":::
 
 [!INCLUDE [ingestion-size-limit](includes/cross-repo/ingestion-size-limit.md)]
 
-## Configure
+## Configure data ingestion
 
 1. Select a target database and table. To ingest data into a new table, select **+ New table** and enter a table name.
 
@@ -49,7 +49,7 @@ Select the data source from the available list. In this example, you're ingestin
     > [!NOTE]
     > You can add up to 1,000 files. Each file can be a maximum of 1 GB uncompressed.
 
-    :::image type="content" source="media/get-data-file/configure-tab.png" alt-text="Screenshot of configure tab with new table entered and one sample data file selected." lightbox="media/get-data-file/configure-tab.png":::
+    :::image type="content" source="media/get-data-file/configure.png" alt-text="Screenshot of configure tab with new table entered and one sample data file selected." lightbox="media/get-data-file/configure.png":::
 
 1. Select **Next**.
 
@@ -59,12 +59,10 @@ The **Inspect** tab opens with a preview of the data.
 
 To complete the ingestion process, select **Finish**.
 
-:::image type="content" source="media/get-data-file/inspect-data.png" alt-text="Screenshot of the inspect tab." lightbox="media/get-data-file/inspect-data.png":::
+:::image type="content" source="media/get-data-file/inspect.png" alt-text="Screenshot of the inspect tab." lightbox="media/get-data-file/inspect.png":::
 
 Optionally:
 
-* Select **Command viewer** to view and copy the automatic commands generated from your inputs.
-* Use the **Schema definition file** dropdown to change the file that the schema is inferred from.
 * Change the automatically inferred data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
 * [Edit columns](#edit-columns).
 * Explore [Advanced options based on data type](#advanced-options-based-on-data-type).
