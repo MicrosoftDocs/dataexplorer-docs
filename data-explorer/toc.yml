@@ -236,6 +236,9 @@ items:
             - name: Apache Log4J 2
               displayName: ingest data, ingestion, connector
               href: apache-log4j2-connector.md
+            - name: Azure Monitor
+              displayName: ingest data, ingestion, connector
+              href: /azure/azure-monitor/vm/send-fabric-destination?toc=/azure/data-explorer/toc.json
             - name: Apache Spark
               displayName: connector, export, ingest
               href: spark-connector.md
@@ -353,7 +356,7 @@ items:
             displayName: SQL Server emulation
           - name: Connect from common apps
             href: connect-common-apps.md
-            displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
+            displayName: LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
           - name: Run KQL queries and stored functions
             href: sql-kql-queries-and-stored-functions.md
       - name: Optimize for high concurrency
@@ -620,21 +623,8 @@ items:
         items:
           - name: Notebooks with Kqlmagic
             href: kqlmagic.md
-          - name: Azure Data Studio
-            items:
-              - name: Kusto extension overview
-                displayName: Azure Data Studio
-                href: /sql/azure-data-studio/extensions/kusto-extension?context=/azure/data-explorer/context/context
-              - name: Use Kusto extension
-                displayName: Azure Data Studio
-                href: /sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=/azure/data-explorer/context/context
-              - name: Use Kqlmagic
-                displayName: Azure Data Studio
-                href: /sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=/azure/data-explorer/context/context
       - name: Azure Functions
         href: integrate-azure-functions.md
-      - name: Connect from Azure Synapse Apache Spark
-        href: /azure/synapse-analytics/quickstart-connect-azure-data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json
       - name: Use MCP servers to build AI agents
         href: integrate-mcp-servers.md
       - name: Linked server
