@@ -22,12 +22,22 @@ The types of `.show extents` commands are as follows:
 * Show some or all extents for the entire [cluster](#cluster-scope)
 
 > [!NOTE]
-> The `.show extents` command may consume a lot of resources if it runs on a scope
-> (such as a database or a cluster) with many extents. We recommended
-> using the command variant at the lowest possible scope. Table-scope
-> is preferable over database-scope, and database-scope over cluster-scope. The
-> command variant that includes filtering extents is preferable to filtering the results
-> of the command using another query.
+> The `.show extents` command may consume a lot of resources, and even
+> exceed internal limits if run at a scope (such as a database or a cluster)
+> that has many extents (more than 5 millions.)
+>
+> For purposes of monitoring the number of extents, it's **strongly recommended**
+> that alternative methods (such as using [.show databases datastats](./show-databases.md),
+> [.show database datastats](./show-database.md), or [.show tables details](./show-tables.md),
+> and [.show table details](./show-table-details-command.md)) be used. Another efficient way
+> to retrieve the number of extents is to use a metric exposed through [Azure Monitor](../../monitor-data-explorer-reference.md)
+> ("Total Extents").
+>
+> If detailed listing of extents is required, be sure to use the "smallest"
+> appropriate command scope (table) over the "larger" ones (database, cluster).
+>
+> Also, prefer using the command variant that includes extent filtering capabilities as part of the
+> command's syntax to using the command and processing its results by "piping" them to a query.
 
 ## Permissions
 
