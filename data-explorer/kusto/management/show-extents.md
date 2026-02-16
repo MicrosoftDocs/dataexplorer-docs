@@ -28,10 +28,9 @@ The types of `.show extents` commands are as follows:
 >
 > For purposes of monitoring the number of extents, it's **strongly recommended**
 > that alternative methods (such as using [.show databases datastats](./show-databases.md),
-> [.show database datastats](./show-database.md), or [.show tables details](./show-tables.md),
+> [.show database datastats](./show-database.md), or [.show tables details](./show-tables-command.md),
 > and [.show table details](./show-table-details-command.md)) be used. Another efficient way
-> to retrieve the number of extents is to use a metric exposed through [Azure Monitor](../../monitor-data-explorer-reference.md)
-> ("Total Extents").
+> to retrieve the number of extents is to use a metric exposed through Azure Monitor ("Total Extents").
 >
 > If detailed listing of extents is required, be sure to use the "smallest"
 > appropriate command scope (table) over the "larger" ones (database, cluster).
