@@ -22,6 +22,9 @@ The common extent lifecycle is as follows:
 1. The extent is merged with other extents.
 1. The merged extent (possibly one that tracks its lineage to other extents) is eventually dropped because of a [retention policy](retention-policy.md).
 
+> [!NOTE]
+> The recommended maximum number of extents per cluster is 10,000,000
+
 ## Extent creation time
 
 Two [datetime](../query/scalar-data-types/datetime.md) values are tracked per extent: `MinCreatedOn` and `MaxCreatedOn`. These values are initially the same but may change when the extent is merged with other extents. When the extent is merged with other extents, the new values are according to the original minimum and maximum values of the merged extents.
