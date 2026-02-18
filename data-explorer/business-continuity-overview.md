@@ -67,7 +67,7 @@ Pin an Azure Data Explorer cluster to the same zone as other connected Azure res
 
 ### Outage of an Azure datacenter
 
-Azure availability zones come with a cost and some customers choose to deploy without zonal redundancy. With such an Azure Data Explorer deployment, an Azure datacenter outage results in cluster outage. Handling an Azure datacenter outage is therefore identical to that of an Azure region outage.
+Azure availability zones come with a cost and some customers choose to deploy without zone redundancy. With such an Azure Data Explorer deployment, an Azure datacenter outage results in cluster outage. Handling an Azure datacenter outage is therefore identical to that of an Azure region outage.
 
 ### Outage of an Azure region
 
