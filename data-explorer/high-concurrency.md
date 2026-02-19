@@ -2,7 +2,7 @@
 title: Optimize for High Concurrency with Azure Data Explorer
 description: In this article, you learn to optimize your Azure Data Explorer setup for high concurrency.
 ms.reviewer: miwalia
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/02/2026
 ---
 
