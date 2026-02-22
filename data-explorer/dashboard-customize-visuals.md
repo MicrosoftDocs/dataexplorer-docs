@@ -91,7 +91,7 @@ To configure data series colors:
 
 1. Select **Apply changes** to save your settings.
 
-:::image type="content" source="media/dashboard-custom-visuals/data-colors-series.png" alt-text="Screenshot of dashboard showing data series colors configuration in the visuals side pane." lightbox="media/dashboard-custom-visuals/data-colors-series.png":::
+:::image type="content" source="media/dashboard-customize-visuals/data-color-series.png" alt-text="Screenshot of dashboard showing data series colors configuration in the visuals side pane." lightbox="media/dashboard-customize-visuals/data-color-series.png":::
 
 When you assign colors intentionally, viewers can interpret visuals at a glance without needing to read legends or labels. Consider using colors that align with your organization's standards or that naturally convey the meaning of each series, such as red for critical states or green for healthy metrics.
 
