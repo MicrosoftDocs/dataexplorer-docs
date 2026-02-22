@@ -38,33 +38,6 @@ To make changes to your dashboard:
 
 [!INCLUDE [customize-visuals](includes/customize-visuals.md)]
 
-## Embed images
-
-You can embed images in your dashboard tiles by using Markdown text.
-
-For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown Spec](https://github.github.com/gfm/).
-
-1. Open a [dashboard](azure-data-explorer-dashboards.md#create-a-new-dashboard).
-1. In the top menu, select **+ Add** > **Add text** to open a text tile.
-
-    :::image type="content" source="media/dashboard-customize-visuals/add-tile.png" alt-text="Screenshot of dashboard ribbon showing the dropdown menu of the Add button.":::
-
-1. In the query pane, paste the URL of an image located in an image hosting service by using the following syntax:
-
-    ```md
-    ![](URL)
-    ```
-
-    The image renders in the tile's preview.
-
-    :::image type="content" source="media/dashboard-customize-visuals/embed-image.png" alt-text="Screenshot of dashboard query pane showing image syntax in markdown text. ":::
-
-1. In the top menu, select **Apply changes** to save the tile.
-
-    :::image type="content" source="media/dashboard-customize-visuals/image.png" alt-text="Screenshot of dashboard query pane showing the rendered image. ":::
-
-For more information on image syntax in GitHub Flavored Markdown, see [Images](https://github.github.com/gfm/#images).
-
 ## Data series colors
 
 Data series colors give you direct control over how colors are applied to your visuals. Instead of relying on automatic color assignments, assign specific colors to each data series to convey meaning and maintain consistency across your dashboards.
@@ -94,6 +67,33 @@ To configure data series colors:
 :::image type="content" source="media/dashboard-customize-visuals/data-color-series.png" alt-text="Screenshot of dashboard showing data series colors configuration in the visuals side pane." lightbox="media/dashboard-customize-visuals/data-color-series.png":::
 
 When you assign colors intentionally, viewers can interpret visuals at a glance without needing to read legends or labels. Consider using colors that align with your organization's standards or that naturally convey the meaning of each series, such as red for critical states or green for healthy metrics.
+
+## Embed images
+
+You can embed images in your dashboard tiles by using Markdown text.
+
+For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown Spec](https://github.github.com/gfm/).
+
+1. Open a [dashboard](azure-data-explorer-dashboards.md#create-a-new-dashboard).
+1. In the top menu, select **+ Add** > **Add text** to open a text tile.
+
+    :::image type="content" source="media/dashboard-customize-visuals/add-tile.png" alt-text="Screenshot of dashboard ribbon showing the dropdown menu of the Add button.":::
+
+1. In the query pane, paste the URL of an image located in an image hosting service by using the following syntax:
+
+    ```md
+    ![](URL)
+    ```
+
+    The image renders in the tile's preview.
+
+    :::image type="content" source="media/dashboard-customize-visuals/embed-image.png" alt-text="Screenshot of dashboard query pane showing image syntax in markdown text. ":::
+
+1. In the top menu, select **Apply changes** to save the tile.
+
+    :::image type="content" source="media/dashboard-customize-visuals/image.png" alt-text="Screenshot of dashboard query pane showing the rendered image. ":::
+
+For more information on image syntax in GitHub Flavored Markdown, see [Images](https://github.github.com/gfm/#images).
 
 ## Related content
 
