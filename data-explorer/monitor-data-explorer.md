@@ -1,7 +1,7 @@
 ---
 title: Monitor Azure Data Explorer
 description: Learn how to monitor Azure Data Explorer using Azure Monitor, including data collection, analysis, and alerting.
-ms.date: 02/01/2026
+ms.date: 02/23/2026
 ms.custom: horz-monitor
 ms.topic: how-to
 author: spelluru
@@ -56,29 +56,29 @@ The **Resource** and **Metric Namespace** pickers are preselected for your Azure
 
 ### Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs
 
-Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor diagnostic logs](/azure/azure-monitor/platform/diagnostic-logs-overview) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion, commands, query, and tables. You can export operation logs to Azure Storage, event hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hubs can be routed to a table in your Azure Data Explorer cluster for further analysis.
+Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. [Azure Monitor resource logs](/azure/azure-monitor/platform/resource-logs) provide data about the operation of Azure resources. Azure Data Explorer uses diagnostic logs for insights on ingestion, commands, query, and tables. You can export operation logs to Azure Storage, event hub, or Log Analytics to monitor ingestion, commands, and query status. Logs from Azure Storage and Azure Event Hubs can be routed to a table in your Azure Data Explorer cluster for further analysis.
 
 > [!IMPORTANT]
 > Diagnostic log data might contain sensitive data. Restrict permissions of the logs destination according to your monitoring needs.
 
 [!INCLUDE [azure-monitor-vs-log-analytics](includes/azure-monitor-vs-log-analytics.md)]
 
-Diagnostic logs can be used to configure the collection of the following log data:
+You can use diagnostic logs to configure the collection of the following log data:
 
 ### [Ingestion](#tab/ingestion)
 
 > [!NOTE]
 >
-> - Ingestion logs are supported for queued ingestion to the **Data ingestion URI** using [Kusto client libraries](/kusto/api/client-libraries?view=azure-data-explorer&preserve-view=true) and [data connectors](integrate-data-overview.md).
-> - Ingestion logs aren't supported for streaming ingestion, direct ingestion to the **Cluster URI**, ingestion from query, or `.set-or-append` commands.
+> - Ingestion logs support queued ingestion to the **Data ingestion URI** by using [Kusto client libraries](/kusto/api/client-libraries?view=azure-data-explorer&preserve-view=true) and [data connectors](integrate-data-overview.md).
+> - Ingestion logs don't support streaming ingestion, direct ingestion to the **Cluster URI**, ingestion from query, or `.set-or-append` commands.
 
 > [!NOTE]
 >
-> Failed ingestion logs are only reported for the final state of an ingest operation, unlike the [Ingestion result](using-metrics.md#ingestion-metrics) metric, which is emitted for transient failures that are retried internally.
+> Failed ingestion logs report only the final state of an ingest operation, unlike the [Ingestion result](monitor-data-explorer-reference.md#category-ingestion-health-and-performance) metric, which is emitted for transient failures that are retried internally.
 
-- **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
-- **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details.
-- **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size, blobs count, and [batching types](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true#sealing-a-batch)).
+- **Successful ingestion operations**: These logs contain information about successfully completed ingestion operations.
+- **Failed ingestion operations**: These logs contain detailed information about failed ingestion operations, including error details.
+- **Ingestion batching operations**: These logs contain detailed statistics of batches ready for ingestion, such as duration, batch size, blobs count, and [batching types](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true#sealing-a-batch)).
 
 ### [Commands and Queries](#tab/commands-and-queries)
 
@@ -123,7 +123,7 @@ Diagnostic logs are disabled by default. Use the following steps to enable diagn
    1. Enter a **Diagnostic setting name**.
    1. Select one or more destination targets: a Log Analytics workspace, a storage account, or an event hub.
    1. Select logs to collect: **Succeeded ingestion**, **Failed ingestion**, **Ingestion batching**, **Command**, **Query**, **Table usage statistics**, **Table details**, or **Journal**.
-   1. Select [metrics](using-metrics.md#supported-azure-data-explorer-metrics) to collect (optional).
+   1. Select **metrics** to collect (optional).
    1. Select **Save** to save the new diagnostic logs settings and metrics.
 
 After you create the settings, logs start to appear in the configured destination targets: a storage account, an event hub, or Log Analytics workspace.
