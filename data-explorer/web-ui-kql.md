@@ -2,8 +2,10 @@
 title: Write Kusto Query Language Queries in the Azure Data Explorer Web UI
 description: In this article, you learn how to write Kusto Query Language (KQL) queries in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 02/02/2026
+ms.date: 02/12/2026
+ms.reviewer: v-hzargari
 ---
+
 # Write Kusto Query Language queries in the Azure Data Explorer web UI
 
 The [Azure Data Explorer web UI](https://dataexplorer.azure.com/) query editor offers various features to help you write [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries. Some of these features include built-in KQL Intellisense and autocomplete, inline documentation, and quick fix pop-ups. In this article, you learn what you should know when writing KQL queries in the web UI.
@@ -16,7 +18,7 @@ To use KQL Intellisense and autocomplete:
 
 1. Start typing a query in the query editor.
 
-1. KQL Intellisense activates, presenting dropdown options for entities, operators, functions, and more. Move between these options by using the arrow keys on your keyboard, and select one by pressing *Enter* or selecting the option by using your mouse.
+1. KQL Intellisense activates, presenting dropdown options for entities, operators, functions, and more. Move between these options by using the arrow keys on your keyboard, and select one by pressing *Enter* or select the option by using your mouse.
 
 1. If you notice underlined keywords, hover over them to reveal errors or suggestions that triggered the highlighting.
 
