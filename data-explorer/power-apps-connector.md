@@ -1,10 +1,11 @@
 ---
-title: Use Power Apps to query data in Azure Data Explorer
+title: Use Power Apps to Query Data in Azure Data Explorer
 description: Learn how to create an application in Power Apps to query data in Azure Data Explorer.
 ms.reviewer: olgolden
 ms.topic: how-to
-ms.date: 05/22/2023
+ms.date: 02/23/2026
 ---
+
 # Use :::no-loc text="Power Apps"::: to query data in Azure Data Explorer
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis of large volumes of data streaming from applications, websites, IoT devices, and more.
@@ -54,11 +55,11 @@ For more information on the Azure Data Explorer connector in :::no-loc text="Pow
 
     :::image type="content" source="media/power-apps-connector/data-connectors-adx.png" alt-text="Screenshot of the app page showing a list of data connectors. The connector titled Azure Data Explorer is highlighted.":::
 
-**Azure Data Explorer** is now added as a data source.
+You added **Azure Data Explorer** as a data source.
 
 ### Configure data row limit
 
-Optionally, you can set how many records are retrieved from server-based connections where delegation isn't supported.
+Optionally, set how many records to retrieve from server-based connections where delegation isn't supported.
 
 1. On the menu bar, select **Settings**.
 1. In **General** settings, scroll to **Data row limit**, and then set your returned records limit. The default limit is 500.
@@ -101,7 +102,7 @@ Optionally, you can set how many records are retrieved from server-based connect
 1. Select **+Insert** in the menu bar.
 1. Select **Layout** > **Data table**. Reposition the data table as needed.
 1. In the properties pane, select the **Advanced** tab.
-1. Under **Data**, replace the placeholder text for **Items** with the following formula. The formula specifies the column types to be mapped out according to the formula in [Add Dropdown](#add-dropdown).
+1. Under **Data**, replace the placeholder text for **Items** with the following formula. The formula specifies the column types to map according to the formula in [Add Dropdown](#add-dropdown).
 
     ```kusto
     ForAll( 
@@ -116,7 +117,7 @@ Optionally, you can set how many records are retrieved from server-based connect
 
 1. In the properties pane, select the **Properties** tab.
 
-    The **Data source** is autopopulated with the source specified in the **Items** section of the data table. In this example, the source is `KustoQueryResults`.
+    The **Data source** autopopulates with the source you specified in the **Items** section of the data table. In this example, the source is `KustoQueryResults`.
 
 1. Select **Edit fields**, and then select **+ Add field**.
 
@@ -135,11 +136,11 @@ Optionally, you can set how many records are retrieved from server-based connect
 
 ## Limitations
 
-* :::no-loc text="Power Apps"::: has a limit of up to 2,000 results records returned to the client. The overall memory for those records can't exceed 64 MB and a time of seven minutes to run.
+* :::no-loc text="Power Apps"::: returns up to 2,000 result records to the client. The overall memory for those records can't exceed 64 MB, and the query has a time limit of seven minutes.
 * The connector doesn't support the [fork](/kusto/query/fork-operator?view=azure-data-explorer&preserve-view=true) and [facet](/kusto/query/facet-operator?view=azure-data-explorer&preserve-view=true) operators.
-* **Timeout exceptions**: The connector has a timeout limitation of 7 minutes. To avoid potential timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](/kusto/query/best-practices?view=azure-data-explorer&preserve-view=true).
+* **Timeout exceptions**: The connector has a timeout limitation of seven minutes. To avoid potential timeout problems, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](/kusto/query/best-practices?view=azure-data-explorer&preserve-view=true).
 
-For more information on known issues and limitations for querying data using the Azure Data Explorer connector, see [Known issues and limitations](/connectors/kusto/)
+For more information on known problems and limitations for querying data by using the Azure Data Explorer connector, see [Known issues and limitations](/connectors/kusto/).
 
 ## Related content
 

@@ -1,9 +1,9 @@
 ---
-title: 'Visualize a Query in Excel'
-description: 'In this article, you learn how to use a query from the web UI into Excel, by exporting it directly or by using the native connector in Excel.'
+title: Visualize a Query in Excel
+description: In this article, you learn how to use a query from the web UI into Excel, by exporting it directly or by using the native connector in Excel.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 02/08/2026
+ms.date: 02/23/2026
 
 # Customer intent: As a data analyst, I want to understand how to visualize my Azure Data Explorer data in Excel.
 ---
@@ -30,7 +30,7 @@ Export the query directly from the web UI.
 
     :::image type="content" source="media/excel/web-ui-query-to-excel.png" alt-text="Screenshot that shows Azure Data Explorer web UI query to Open in Excel." lightbox="media/excel/web-ui-query-to-excel.png":::
 
-    The query is saved as an Excel workbook in the Downloads folder.
+    The query is saved as an Excel workbook in the **Downloads** folder.
 
 1. Open the downloaded workbook to view your data. Select **Enable editing** and **Enable content** if requested in the top ribbon.
 
@@ -69,7 +69,7 @@ Get data from Azure Data Explorer datasource into Excel.
 
     :::image type="content" source="media/excel/complete-sign-in.png" alt-text="Screenshot that shows that show the sign-in pop-up window.":::
 
-1. In the **Navigator** pane, navigate to the correct table. In the table preview pane, select **Transform Data** to open the **Power Query Editor** and make changes to your data, or select **Load** to load it straight to Excel.
+1. In the **Navigator** pane, go to the correct table. In the table preview pane, select **Transform Data** to open the **Power Query Editor** and make changes to your data, or select **Load** to load it straight to Excel.
 
     :::image type="content" source="media/excel/navigate-table-preview-window.png" alt-text="Screenshot of the Table preview window.":::
 
