@@ -1,16 +1,16 @@
 ---
-title: Integrate Azure Functions with Azure Data Explorer using input and output bindings (preview)
+title: Integrate Azure Functions With Azure Data Explorer Using Input and Output Bindings (Preview)
 description: Learn how to use Azure Data Explorer bindings for Azure Functions.
 ms.reviewer: ramacg
 ms.topic: how-to
-ms.date: 09/13/2022
+ms.date: 02/23/2026
 ---
 
 # Integrate Azure Functions with Azure Data Explorer using input and output bindings (preview)
 
 [!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
 
-Azure Functions allow you to run serverless code in the cloud on a schedule or in response to an event. With Azure Data Explorer input and output bindings for Azure Functions, you can integrate Azure Data Explorer into your workflows to ingest data and run queries against your cluster.
+Azure Functions enables you to run serverless code in the cloud on a schedule or in response to an event. By using Azure Data Explorer input and output bindings for Azure Functions, you can integrate Azure Data Explorer into your workflows to ingest data and run queries against your cluster.
 
 ## Prerequisites
 
@@ -18,11 +18,11 @@ Azure Functions allow you to run serverless code in the cloud on a schedule or i
 - An Azure Data Explorer cluster and database with sample data. [Create a cluster and database](create-cluster-and-database.md).
 - A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
-Try out the integration with our [sample project](https://github.com/Azure/Webjobs.Extensions.Kusto/tree/main/samples/samples-csharp/)
+Try out the integration by using the [sample project](https://github.com/Azure/Webjobs.Extensions.Kusto/tree/main/samples/samples-csharp/).
 
 ## How to use Azure Data Explorer bindings for Azure Functions
 
-For information on how to use Azure Data Explorer bindings for Azure Functions, see the following topics:
+For information on how to use Azure Data Explorer bindings for Azure Functions, see the following articles:
 
 - [Azure Data Explorer bindings for Azure Functions overview](https://aka.ms/adx-docs-af-overview)
 - [Azure Data Explorer input bindings for Azure Functions](https://aka.ms/adx-docs-af-input)
@@ -34,13 +34,13 @@ The following sections describe some common scenarios for using Azure Data Explo
 
 ### Input bindings
 
-Input bindings run a Kusto Query Language (KQL) query or KQL function, optionally with parameters, and returns the output to the function.
+Input bindings run a Kusto Query Language (KQL) query or KQL function, optionally with parameters, and return the output to the function.
 
-The following sections describe some how to use input bindings in some common scenarios.
+The following sections describe how to use input bindings in some common scenarios.
 
 #### Scenario 1: An HTTP endpoint to query data from a cluster
 
-Using input bindings is applicable in situations where you need to expose Azure Data Explorer data through a REST API. In this scenario, you use an Azure Functions HTTP trigger to query data in your cluster. The scenario is particularly useful in situations where you need to provide programmatic access to Azure Data Explorer data for external applications or services. By exposing your data through a REST API, applications can readily consume the data without requiring them to connect directly to your cluster.
+Use input bindings when you need to expose Azure Data Explorer data through a REST API. In this scenario, you use an Azure Functions HTTP trigger to query data in your cluster. The scenario is useful in situations where you need to provide programmatic access to Azure Data Explorer data for external applications or services. Exposing your data through a REST API allows applications to readily consume the data without requiring them to connect directly to your cluster.
 
 The code defines a function with an HTTP trigger and an Azure Data Explorer input binding. The input binding specifies the query to run against the **Products** table in the **productsdb** database. The function uses the **productId** column as the predicate passed through as a parameter.
 
@@ -68,7 +68,7 @@ The code defines a function with an HTTP trigger and an Azure Data Explorer inpu
 }
 ```
 
-The function can then be invoked, as follows:
+You invoke the function as follows:
 
 ```powershell
 curl https://myfunctionapp.azurewebsites.net/api/getproducts/1
@@ -103,13 +103,13 @@ ILogger log)
 
 ## Output bindings
 
-Output bindings takes one or more rows and inserts them into an Azure Data Explorer table.
+Output bindings take one or more rows and insert them into an Azure Data Explorer table.
 
-The following sections describe some how to use output bindings in some common scenarios.
+The following sections describe how to use output bindings in some common scenarios.
 
 ## Scenario 1: HTTP endpoint to ingest data into a cluster
 
-The following scenario is applicable in situations where incoming HTTP requests need to be processed and ingested into your cluster. By using an output binding, incoming data from the request can be written into Azure Data Explorer tables.
+Use this scenario when you need to process incoming HTTP requests and ingest the data into your cluster. By using an output binding, you can write incoming data from the request into Azure Data Explorer tables.
 
 The code defines a function with an HTTP trigger and an Azure Data Explorer output binding. This function takes a JSON payload in the HTTP request body and writes it to the **products** table in the **productsdb** database.
 
@@ -131,7 +131,7 @@ public static IActionResult Run(
 }
 ```
 
-The function can then be invoked, as follows:
+You invoke the function as follows:
 
 ```powershell
 curl -X POST https://myfunctionapp.azurewebsites.net/api/addproductuni -d '{"Name":"Product1","ProductID":1,"Cost":100,"ActivatedOn":"2023-01-02T00:00:00"}'
@@ -139,9 +139,9 @@ curl -X POST https://myfunctionapp.azurewebsites.net/api/addproductuni -d '{"Nam
 
 ## Scenario 2: Ingest data from RabbitMQ or other messaging systems supported on Azure
 
-The following scenario is applicable in situations where data from a messaging system needs to be ingested into into your cluster. By using an output binding, incoming data from the messaging system can be ingested into Azure Data Explorer tables.
+Use this scenario when you need to ingest data from a messaging system into your cluster. By using an output binding, you can ingest incoming data from the messaging system into Azure Data Explorer tables.
 
-The code defines a function with messages, data in JSON format, incoming through a RabbitMQ trigger that are ingested into the **products** table in the **productsdb** database.
+The code defines a function with a RabbitMQ trigger. The function ingests messages, data in JSON format, into the **products** table in the **productsdb** database.
 
 ```csharp
 public class QueueTrigger
