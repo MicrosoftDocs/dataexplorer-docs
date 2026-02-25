@@ -3,20 +3,20 @@ title: Ingest from IoT Hub - Azure Data Explorer
 description: This article describes Ingest from IoT Hub in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 02/02/2026
+ms.date: 02/23/2026
 ---
 
 # IoT Hub data connection
 
 [Azure IoT Hub](/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. Azure Data Explorer offers continuous ingestion from customer-managed IoT Hubs, using its [Event Hubs compatible built in endpoint of device-to-cloud messages](/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
 
-The IoT ingestion pipeline goes through several steps. First, you create an IoT Hub, and register a device to it. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format) is ingested using the given [ingestion properties](#ingestion-properties). The Iot Hub connection needs to know [events routing](#events-routing) to connect to the Azure Data Explorer table. Data is embedded with selected properties according to the [event system properties mapping](#event-system-properties-mapping). You can manage this process through the [Azure portal](create-iot-hub-connection.md?tabs=portal), programmatically with [C#](create-iot-hub-connection-sdk.md?tabs=c-sharp) or [Python](create-iot-hub-connection-sdk.md?tabs=c-python), or with the [Azure Resource Manager template](create-iot-hub-connection.md?tabs=arm-template).
+The IoT ingestion pipeline goes through several steps. First, you create an IoT Hub and register a device to it. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format) is ingested using the given [ingestion properties](#ingestion-properties). The Iot Hub connection needs to know [events routing](#events-routing) to connect to the Azure Data Explorer table. Data is embedded with selected properties according to the [event system properties mapping](#event-system-properties-mapping). You can manage this process through the [Azure portal](create-iot-hub-connection.md?tabs=portal), programmatically with [C#](create-iot-hub-connection-sdk.md?tabs=c-sharp) or [Python](create-iot-hub-connection-sdk.md?tabs=c-python), or with the [Azure Resource Manager template](create-iot-hub-connection.md?tabs=arm-template).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 ## Data format
 
-* Data is read from the Event Hubs endpoint in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects.
+* The service reads data from the Event Hubs endpoint as [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects.
 * See [supported formats](ingestion-supported-formats.md).
     > [!NOTE]
     > IoT Hub doesn't support the .raw format.
