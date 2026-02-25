@@ -1,16 +1,16 @@
 ---
 title: Optimize for High Concurrency with Azure Data Explorer
-description: In this article, you learn to optimize your Azure Data Explorer setup for high concurrency.
+description: In this article, you'll learn how to optimize your Azure Data Explorer setup for high concurrency.
 ms.reviewer: miwalia
-ms.topic: concept-article
-ms.date: 02/02/2026
+ms.topic: conceptual
+ms.date: 02/23/2026
 ---
 
 # Optimize for high concurrency with Azure Data Explorer
 
 Highly concurrent applications are necessary in scenarios with a large user base, where the application simultaneously handles many requests with low latency and high throughput.
 
-Use cases include large-scale monitoring and alerting dashboards. Examples include Microsoft products and services such as [Azure Monitor](https://azure.microsoft.com/services/monitor/), [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/), and [Playfab](https://playfab.com/). All these services use Azure Data Explorer for serving high-concurrency workloads. Azure Data Explorer is a fast, fully managed big data analytics service for real-time analytics on large volumes of data streaming from applications, websites, IoT devices, and more.
+Use cases include large-scale monitoring and alerting dashboards. Examples include Microsoft products and services such as [Azure Monitor](https://azure.microsoft.com/products/monitor/), and [Playfab](https://playfab.com/). All these services use Azure Data Explorer for serving high-concurrency workloads. Azure Data Explorer is a fast, fully managed big data analytics service for real-time analytics on large volumes of data streaming from applications, websites, IoT devices, and more.
 
 > [!NOTE]
 > The actual number of queries that can run concurrently on a cluster depends on factors such as cluster SKU, data volumes, query complexity, and usage patterns.
@@ -103,4 +103,4 @@ The [Request rate limit policy](/kusto/management/request-rate-limit-policy?view
 
 Monitoring the health of your cluster resources helps you build an optimization plan by using the features suggested in the preceding sections. Azure Monitor for Azure Data Explorer provides a comprehensive view of your cluster's performance, operations, usage, and failures. Get insights on the queries' performance, concurrent queries, throttled queries, and various other metrics by selecting the **Insights (preview)** tab under the **Monitoring** section of the Azure Data Explorer cluster in the Azure portal.
 
-For information on monitoring clusters, see [Azure Monitor for Azure Data Explorer](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&amp;bc=/azure/data-explorer/breadcrumb/toc.json). For information on the individual metrics, see [Azure Data Explorer metrics](using-metrics.md#supported-azure-data-explorer-metrics).
+For information on monitoring clusters, see [Azure Monitor for Azure Data Explorer](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&amp;bc=/azure/data-explorer/breadcrumb/toc.json).
