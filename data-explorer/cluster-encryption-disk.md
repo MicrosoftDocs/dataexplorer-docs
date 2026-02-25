@@ -28,10 +28,9 @@ Your cluster security settings allow you to enable disk encryption on your clust
 
 ## Considerations
 
-The following considerations apply to encryption using Azure Disk Encryption:
+The following consideration apply to encryption using Azure Disk Encryption:
 
 * Performance impact of up to a single digit
-* Can't be used with sandboxes
 
 ## Related content
 
