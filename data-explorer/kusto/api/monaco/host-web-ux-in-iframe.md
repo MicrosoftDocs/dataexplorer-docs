@@ -124,7 +124,7 @@ To embed a dashboard, a trust relationship must be established between the host'
 
     ```json
       {
-        "resourceAppId": "35e917a9-4d95-4062-9d97-5781291353b9",
+        "resourceAppId": "00001111-aaaa-2222-bbbb-3333cccc4444",
         "resourceAccess": [
             {
                 "id": "388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c",
@@ -134,7 +134,7 @@ To embed a dashboard, a trust relationship must be established between the host'
       }
     ```
 
-    - `35e917a9-4d95-4062-9d97-5781291353b9` is the application ID of Azure Data Explorer dashboard service.  
+    - `00001111-aaaa-2222-bbbb-3333cccc4444` is the application ID of Azure Data Explorer dashboard service.  
     - `388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c` is the user_impersonation permission.
 
 1. In the **Manifest**, save your changes.
@@ -143,7 +143,7 @@ To embed a dashboard, a trust relationship must be established between the host'
 1. In Azure PowerShell, add the following new service principal for the app:
 
     ```powershell
-    New-MgServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
+    New-MgServicePrincipal -AppId 00001111-aaaa-2222-bbbb-3333cccc4444
     ```
 
 
