@@ -122,9 +122,15 @@ To embed a dashboard, a trust relationship must be established between the host'
 1. Select **requiredResourceAccess**.
 1. In the manifest, add the following entry:
 
+   > [!IMPORTANT]
+   > Replace `<RTD Metadata Service - Application ID>` with the application ID of the **RTD Metadata Service**. To get the application ID of this service, follow these steps:
+   > - Sign in to the Azure portal.
+   > - In the search bar, enter **RTD Metadata Service**, and then select the **Service Principal**: **RTD Metadata Service**.
+   > - On the **Enterprise Application** page for **RTD Metadata Service**, note down the value of the **Application ID**. 
+
     ```json
       {
-        "resourceAppId": "00001111-aaaa-2222-bbbb-3333cccc4444",
+        "resourceAppId": "<RTD Metadata Service - Application ID>",
         "resourceAccess": [
             {
                 "id": "388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c",
@@ -134,16 +140,18 @@ To embed a dashboard, a trust relationship must be established between the host'
       }
     ```
 
-    - `00001111-aaaa-2222-bbbb-3333cccc4444` is the application ID of Azure Data Explorer dashboard service.  
-    - `388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c` is the user_impersonation permission.
+    In the above code, `388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c` is the user_impersonation permission.
 
 1. In the **Manifest**, save your changes.
 1. Select **API permissions** and validate you have a new entry: **RTD Metadata Service**.
 1. Under Microsoft Graph, add permissions for `People.Read`, `User.ReadBasic.All`, and `Group.Read.All`.
 1. In Azure PowerShell, add the following new service principal for the app:
 
+   > [!IMPORTANT]
+   > Replace `<RTD Metadata Service - Application ID>` with the application ID of the **RTD Metadata Service** you got earlier. 
+
     ```powershell
-    New-MgServicePrincipal -AppId 00001111-aaaa-2222-bbbb-3333cccc4444
+    New-MgServicePrincipal -AppId <RTD Metadata Service - Application ID>
     ```
 
 
