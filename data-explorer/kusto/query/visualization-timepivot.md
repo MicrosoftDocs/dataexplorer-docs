@@ -15,7 +15,7 @@ The time pivot visualization is an interactive navigation over the events time-l
 > [!NOTE]
 >
 > * This visualization can only be used in the context of the [render operator](render-operator.md).
-> * This visualization can be used in Kusto.Explorer but isn't available in the Azure Data Explorer web UI.
+> * This visualization can be used in Kusto. Explorer but isn't available in the Azure Data Explorer web UI.
 
 ## Syntax
 
@@ -116,4 +116,4 @@ You can show the hierarchy of the individual spans in the same OpenTelemetry *tr
 
 The header in the first line is **[SPAN_KIND_CLIENT/POST]: 3275d2b91035ce2e** and is expanded to show the hierarchy.
 
-:::image type="content" source="media/visualization-timepivot/telemetry-time-pivot.png" lightbox="media/visualization-timepivot/telemetry-time-pivot.png" alt-text="Screenshot of the time pivot with expanded heirarchy.":::
+:::image type="content" source="media/visualization-timepivot/telemetry-time-pivot.png" lightbox="media/visualization-timepivot/telemetry-time-pivot.png" alt-text="Screenshot of the time pivot with expanded hierarchy.":::
