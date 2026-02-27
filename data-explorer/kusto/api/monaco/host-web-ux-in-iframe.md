@@ -33,7 +33,7 @@ The `workspace=<guid>` query parameter creates a separate workspace for the embe
 
 ### Handle authentication
 
-When embedding the web UI, the hosting page is responsible for authentication. The following diagrams describe the authentication flow.
+When you embed the web UI, the hosting page is responsible for authentication. The following diagrams describe the authentication flow.
 
 :::image type="content" source="../media/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" lightbox="../media/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" alt-text="Diagram that shows the authentication flow for an embedded web U I iframe.":::
 
@@ -60,7 +60,7 @@ Use the following steps to handle authentication:
     | Graph            | `People.Read`                                               | `People.Read`, `User.ReadBasic.All`, `Group.Read.All`             |
     | Dashboards       | `https://rtd-metadata.azurewebsites.net/user_impersonation` | `https://rtd-metadata.azurewebsites.net/user_impersonation`       |
   
-    For example, the following function maps scopes based on the information in the table.
+    For example, the following function maps the scopes based on the information in the table.
 
     ```javascript
         function mapScope(scope) {
@@ -74,7 +74,7 @@ Use the following steps to handle authentication:
 
 1. Get a [JWT access token](https://tools.ietf.org/html/rfc7519) from the [Perform Single Page Application (SPA) authentication](../rest/authenticate-with-msal.md#perform-single-page-application-spa-authentication) for the scope. This code replaces placeholder CODE-1.
 
-    For example, you can use @azure/MSAL-react to get the access token. The example uses the **mapScope** function you defined earlier.
+    For example, you can use `@azure/MSAL-react` to get the access token. The example uses the **mapScope** function you defined earlier.
 
     ```javascript
     import { useMsal } from "@azure/msal-react";
@@ -91,7 +91,7 @@ Use the following steps to handle authentication:
     ```
 
     > [!IMPORTANT]
-    > You can only use User Principal Name (UPN) for authentication, service principals are not supported.
+    > You can only use User Principal Name (UPN) for authentication, service principals aren't supported.
 
 1. Post a **postToken** message with the access token. This code replaces placeholder CODE-2:
 
@@ -166,7 +166,7 @@ To embed a dashboard, a trust relationship must be established between the host'
 >  <iframe src="https://dataexplorer.azure.com/dashboards?[feature-flags]" />
 > ```
 >
-> where `[feature-flags]` is:
+> The `[feature-flags]` is:
 >
 > ```html
 > "f-IFrameAuth": true,
@@ -197,7 +197,7 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-ShowPersona | Show the user name from the settings menu, in the top-right corner. | true |
 | f-UseMeControl | Show the user's account information | true |
 | f-IFrameAuth | If true, the web explorer expects the iframe to handle authentication and provide a token via a message. This parameter is required for iframe scenarios. | false |
-| f-PersistAfterEachRun | Usually, browsers persist in the unload event. However, the unload event isn't always triggered when hosting in an iframe. This flag triggers the **persisting local state** event after each query run. This limits any data loss that may occur, to only affect new query text that has never run. | false |
+| f-PersistAfterEachRun | Usually, browsers persist in the `unload` event. However, the `unload` event isn't always triggered when hosting in an iframe. This flag triggers the **persisting local state** event after each query run. This limits any data loss that may occur, to only affect new query text that has never run. | false |
 | f-ShowSmoothIngestion | If true, show the ingestion wizard experience when right-clicking on a database | true |
 | f-RefreshConnection | If true, always refreshes the schema when loading the page and never depends on local storage | false |
 | f-ShowPageHeader | If true, shows the page header that includes the Azure Data Explorer title and settings | true |
@@ -213,7 +213,7 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-DisableDashboardDelete | IF true, hides the dashboard delete button | false |
 | f-DisableTileRefresh | IF true, disables tiles refresh button in a dashboard | false |
 | f-DisableDashboardAutoRefresh | IF true, disables tiles auto refresh in a dashboard | false |
-| f-DisableExploreQuery | IF true, disables the explore query button of the tiles | false |
+| f-DisableExploreQuery | IF true, disables the **Explore query** button of the tiles | false |
 | f-DisableCrossFiltering | IF true, disables the cross filtering feature in dashboards | false |
 | f-HideDashboardParametersBar | IF true, hides the parameters bar in a dashboard | false |
 
