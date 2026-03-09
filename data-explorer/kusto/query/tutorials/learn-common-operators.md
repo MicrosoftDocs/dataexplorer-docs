@@ -3,9 +3,6 @@ title: "Tutorial: Learn Common Kusto Query Language Operators"
 description: This tutorial describes how to write queries using common operators in the Kusto Query Language to meet common query needs.
 ms.topic: tutorial
 ms.date: 02/12/2026
-author: hzargari-ms
-ms.author: v-hzargari
-ms.reviewer: v-hzargari
 ---
 
 # Tutorial: Learn common operators
