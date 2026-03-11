@@ -112,7 +112,3 @@ Use the sample log generator app as an example showing how to configure and use 
     ADXNLogSample
     | take 10
     ```
-
-    Your output should look similar to the following image:
-
-    :::image type="content" source="../../media/nlog-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results":::
