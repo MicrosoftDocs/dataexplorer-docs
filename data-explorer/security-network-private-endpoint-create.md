@@ -1,9 +1,9 @@
 ---
-title: Create a private endpoint for Azure Data Explorer
-description: In this article, you'll learn how to create a private endpoint for Azure Data Explorer.
+title: Create a Private Endpoint for Azure Data Explorer
+description: In this article, youll learn how to create a private endpoint for Azure Data Explorer.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 04/05/2022
+ms.date: 03/15/2026
 ms.custom: sfi-image-nochange
 ---
 
@@ -22,7 +22,7 @@ Private endpoints use private IP addresses from your virtual network to connect 
 
 ## Create a private endpoint
 
-There are several ways to create a private endpoint for a cluster.
+You can create a private endpoint for a cluster in several ways:
 
 * During the deployment of your cluster in the portal
 * By [creating a private endpoint](/azure/private-link/create-private-endpoint-portal) resource directly
@@ -30,9 +30,9 @@ There are several ways to create a private endpoint for a cluster.
 
 ### Create a private endpoint during the deployment of your cluster in the portal
 
-Use the following information to create a private endpoint whilst [creating your cluster](create-cluster-and-database.md).
+Use the following information to create a private endpoint while [creating your cluster](create-cluster-and-database.md).
 
-1. In the **Create an Azure Data Explorer cluster** page, select the **Network** tab.
+1. In **Create an Azure Data Explorer cluster**, select the **Network** tab.
 
 1. Under **Connectivity method**, select **Private Endpoints**.
 1. Under **Private Endpoint**, select **Add**.
@@ -46,7 +46,7 @@ Use the following information to create a private endpoint whilst [creating your
 
 Use the following information to create a private endpoint on an existing cluster.
 
-1. In the Azure portal, navigate to your cluster and then select **Networking**.
+1. In the Azure portal, go to your cluster and then select **Networking**.
 
 1. Select **Private endpoint connections**, and then select **+ Private endpoint**.
 
@@ -56,7 +56,7 @@ Use the following information to create a private endpoint on an existing cluste
 
 ### Configure your private endpoint
 
-1. On the **Basics** tab, fill out the basic cluster details with the following information, and then select on **Next**.
+1. On the **Basics** tab, fill out the basic cluster details with the following information, and then select **Next**.
 
     :::image type="content" source="media/security-network-private-endpoint/pe-create-2.png" alt-text="Screenshot of the create private endpoint page, showing the basic information.":::
 
@@ -80,11 +80,11 @@ Use the following information to create a private endpoint on an existing cluste
     | Target sub-resource | *cluster* | There's no other option |
     | | | |
 
-    Alternatively, you can select **Connect to an Azure resource by resource ID or alias**. This enables you to create a private endpoint to a cluster in another tenant or if you don't have at least **Reader** access on the resource.
+    Alternatively, you can select **Connect to an Azure resource by resource ID or alias**. This option enables you to create a private endpoint to a cluster in another tenant or if you don't have at least **Reader** access on the resource.
 
     | **Setting** | **Suggested value** | **Field description** |
     |---|---|---|
-    | ResourceId or alias | /subscriptions/... | The resource ID or alias that someone has shared with you. The easiest way to get the resource ID is to navigate to the cluster in the Azure portal and copy the Resource ID from the **Properties** sections |
+    | ResourceId or alias | /subscriptions/... | The resource ID or alias that someone shared with you. The easiest way to get the resource ID is to go to the cluster in the Azure portal and copy the Resource ID from the **Properties** sections |
     | Target sub-resource | *cluster* | There's no other option |
     | Request message | *Please approve* | The resource owner sees this message while managing private endpoint connection |
     | | | |
@@ -93,12 +93,12 @@ Use the following information to create a private endpoint on an existing cluste
 1. Under **Private IP configuration**, select **Dynamically allocate IP address**.
 
     > [!NOTE]
-    > The **Statically allocate IP address** option is not supported.
+    > The **Statically allocate IP address** option isn't supported.
 
 1. Under **Private DNS integration**, turn on the **Integrate with the private DNS zone**. It's needed to resolve the engine and data management endpoints including the storage accounts required for ingestion and export features.
 
     > [!NOTE]
-    > We recommend that you use the **Private DNS integration** option. If you have a situation where you can't use the option, follow the instructions under [Use a custom DNS server](#use-a-custom-dns-server).
+    > Use the **Private DNS integration** option. If you have a situation where you can't use the option, see [Use a custom DNS server](#use-a-custom-dns-server).
 
 1. Select **Next**.
 
@@ -112,15 +112,15 @@ Use the following information to create a private endpoint on an existing cluste
 
 ### Verify the private endpoint creation
 
-Once the creation of the private endpoint is complete, you'll be able to access it in the Azure portal.
+After the private endpoint is created, you can access it in the Azure portal.
 
 :::image type="content" source="media/security-network-private-endpoint/pe-create-6.png" alt-text="Screenshot of the create private endpoint page, showing the results of the private endpoint creation.":::
 
-To see all the private endpoints created for your cluster:
+To see all the private endpoints that you created for your cluster:
 
-1. In the Azure portal, navigate to your cluster and then select **Networking**
+1. In the Azure portal, go to your cluster and select **Networking**.
 
-1. Select **Private endpoint**. In the table, you can see all private endpoints created for your cluster.
+1. Select **Private endpoint**. In the table, you can see all private endpoints for your cluster.
 
     :::image type="content" source="media/security-network-private-endpoint/pe-create-7.png" alt-text="Screenshot of the networking page, showing the all private endpoints of the cluster in the Azure portal.":::
 
@@ -128,16 +128,16 @@ To see all the private endpoints created for your cluster:
 
 ### Use a custom DNS server
 
-In some situations, you may not be able to integrate with the private DNS zone of the virtual network. For example, you may be using your own DNS server or you create DNS records using the host files on your virtual machines. This section describes how to get to the DNS zones.
+In some situations, you can't integrate with the private DNS zone of the virtual network. For example, you might be using your own DNS server or you create DNS records by using the host files on your virtual machines. This section describes how to get to the DNS zones.
 
-1. Install [choco](https://chocolatey.org/install)
-1. Install *ARMClient*
+1. Install [choco](https://chocolatey.org/install).
+1. Install *ARMClient*.
 
    ```powerShell
    choco install armclient
    ```
 
-1. Log in with ARMClient
+1. Sign in by using *ARMClient*.
 
    ```powerShell
    armclient login
@@ -150,7 +150,7 @@ In some situations, you may not be able to integrate with the private DNS zone o
     armclient GET /subscriptions/<subscriptionIdADX>/resourceGroups/<resourceGroupNameADX>/providers/Microsoft.Kusto/clusters/<clusterName>/privateLinkResources?api-version=2022-02-01
     ```
 
-1. Check the response. The required DNS zones are in the "requiredZoneNames" array in the response of the result.
+1. Check the response. The required DNS zones are in the `requiredZoneNames` array in the response of the result.
 
     ```json
     {
@@ -185,12 +185,12 @@ In some situations, you may not be able to integrate with the private DNS zone o
     }
     ```
 
-1. in the Azure portal, navigate to your private endpoint, and **select DNS configuration**. On this page, you can get the required information for the IP address mapping to the DNS name.
+1. In the Azure portal, navigate to your private endpoint, and **select DNS configuration**. On this page, you can get the required information for the IP address mapping to the DNS name.
 
     :::image type="content" source="media/security-network-private-endpoint/pe-dns-config-inline.png" alt-text="Screenshot of the DNS configuration page, showing the DNS configuration of the private endpoint." lightbox="media/security-network-private-endpoint/pe-dns-config.png":::
 
     > [!WARNING]
-    > This information allows you to propagate your custom DNS server with the necessary records. We highly recommend that you integrate with the private DNS Zones of the virtual network and don't configure your own custom DNS server. The nature of private endpoints for Azure Data Explorer clusters is different than for other Azure PaaS services. In some situations, such as high ingestion loads,  in order to increase throughput it might be necessary for the service to scale out the number of storage accounts that are accessible via the private endpoint. If you choose to propagate your own custom DNS server, it is your responsibility to take care of updating the DNS records in such situations, and later removing records i the number of storage accounts is scaled back in.
+    > This information allows you to propagate your custom DNS server with the necessary records. Integrate with the private DNS Zones of the virtual network and don't configure your own custom DNS server. The nature of private endpoints for Azure Data Explorer clusters is different than for other Azure PaaS services. In some situations, such as high ingestion loads, to increase throughput it might be necessary for the service to scale out the number of storage accounts that are accessible through the private endpoint. If you choose to propagate your own custom DNS server, you're responsible for updating the DNS records in such situations, and later removing records if the number of storage accounts scales back.
 
 ## Related content
 
