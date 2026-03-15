@@ -245,7 +245,7 @@ You can deploy the Azure Resource Manager template by using the Azure portal or 
 
 ## Update the key version
 
-When you create a new version of a key, you need to update the cluster to use the new version. First, call `Get-AzKeyVaultKey` to get the latest version of the key. Then update the cluster's key vault properties to use the new version of the key, as shown in [Enable encryption with customer-managed keys](#enable-encryption-with-customer-managed-keys).
+When you create a new version of a key, you need to update the cluster to use the new version. First, call `Get-AzKeyVaultKey` to get the latest version of the key. Then update the cluster's key vault properties to use the new version of the key, as shown in [Enable encryption by using customer-managed keys](#enable-encryption-by-using-customer-managed-keys).
 
 ## Related content
 
