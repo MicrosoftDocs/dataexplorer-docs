@@ -1,9 +1,9 @@
 ---
-title: Create an app to get data using the managed streaming ingestion client
+title: Create an App to Get Data Using the Managed Streaming Ingestion Client
 description: Learn how to create an app to ingest data from a file or in-memory stream using the managed streaming ingestion client.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 02/03/2025
+ms.date: 03/15/2026
 zone_pivot_groups: ingest-api
  
 
@@ -15,52 +15,52 @@ zone_pivot_groups: ingest-api
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-Streaming Ingestion allows writing data to Kusto with near-real-time latencies. It’s also useful when writing small amounts of data to a large number of tables, making batching inefficient.
+Streaming ingestion enables you to write data to Kusto with near-real-time latencies. It's also useful when you need to write small amounts of data to a large number of tables, making batching inefficient.
 
-In this article, you’ll learn how to ingest data to Kusto using the managed streaming ingestion client. You'll ingest a data stream in the form of a file or in-memory stream.
+In this article, you learn how to ingest data to Kusto by using the managed streaming ingestion client. You ingest a data stream in the form of a file or in-memory stream.
 
 > [!NOTE]
-> Streaming ingestion is a high-velocity ingestion protocol. Ingesting with a *Managed Streaming Ingestion* or *Streaming Ingestion* client isn't the same as ingesting with a *Stream Source*.  
+> Streaming ingestion is a high-velocity ingestion protocol. Ingesting by using a *Managed Streaming Ingestion* or *Streaming Ingestion* client isn't the same as ingesting by using a *Stream Source*.  
 > 
-> The type of client refers to the _way_ data is ingested - When ingesting with a *Managed Streaming Ingestion* or *Streaming Ingestion* client, data is sent to Kusto using the streaming ingestion protocol - it uses a *Streaming Service* to allow for low latency ingestion.  
+> The type of client refers to the _way_ data is ingested. When you ingest by using a *Managed Streaming Ingestion* or *Streaming Ingestion* client, you send data to Kusto by using the streaming ingestion protocol. It uses a *Streaming Service* to allow for low latency ingestion.  
 > 
-> Ingesting from a *Stream Source* refers to how the data is stored. For example, in C# a *Stream Source* can be created from a `MemoryStream` object. This is as opposed to a *File Source* which is created from a file on disk.
+> Ingesting from a *Stream Source* refers to how the data is stored. For example, in C# you can create a *Stream Source* from a `MemoryStream` object. This approach is different from a *File Source*, which you create from a file on disk.
 > 
-> The ingestion method depends on the client used: with queued ingestion, the data from the source is first uploaded to blob storage and then queued for ingestion; with streaming ingestion, the data is sent directly to Kusto in the body of a streaming HTTP request.
+> The ingestion method depends on the client you use: with queued ingestion, the process first uploads data from the source to blob storage, and then it queues the data for ingestion. By using streaming ingestion, the process sends data directly to Kusto in the body of a streaming HTTP request.
 
 > [!IMPORTANT]
 >
-> The Ingest API now has two versions: V1 and V2. The V1 API is the original API, while the V2 API is a reimagined version that simplifies the ingest API while offering more customization.
+> The Ingest API now has two versions: V1 and V2. The V1 API is the original API. The V2 API is a reimagined version that simplifies the ingest API while offering more customization.
 >
 > Ingest Version 2 is in **preview** and is available in the following languages: C#
 > 
-> Also note, that the Query V2 API is not related to the Ingest V2 API.
+> Also, the Query V2 API isn't related to the Ingest V2 API.
 
 ## Streaming and Managed Streaming
 
-Kusto SDKs provide two flavors of Streaming Ingestion Clients, A *Streaming Ingestion Client* and *Managed Streaming Ingestion Client* where Managed Streaming has built-in retry and failover logic
+Kusto SDKs provide two flavors of streaming ingestion clients: a *Streaming Ingestion Client* and a *Managed Streaming Ingestion Client*. The *Managed Streaming Ingestion Client* includes built-in retry and failover logic.
 
 > [!NOTE]
-> This article shows how to use *Managed Streaming Ingestion*. If you wish to use plain *Streaming Ingestion* instead of *Managed Streaming*, simply change the instantiated client type to be *Streaming Ingestion Client*.
+> This article shows how to use *Managed Streaming Ingestion*. To use plain *Streaming Ingestion* instead of *Managed Streaming*, change the instantiated client type to *Streaming Ingestion Client*.
 
-When ingesting with a *Managed Streaming Ingestion* API, failures and retries are handled automatically as follows:
-+ Streaming requests that fail due to server-side size limitations are moved to queued ingestion.
-+ Data that's estimated to be larger than the streaming limit is automatically sent to queued ingestion.
+When you ingest data by using a *Managed Streaming Ingestion* API, it automatically handles failures and retries as follows:
++ It moves streaming requests that fail because of server-side size limitations to queued ingestion.
++ It automatically sends data that's estimated to be larger than the streaming limit to queued ingestion.
     + The size of the streaming limit depends on the format and compression of the data.
-    + It's possible to change the limit by setting the *Size Factor* in the *Managed Streaming Ingest Policy*, passed in initialization.
-+ Transient failures, for example throttling, are retried three times, then moved to queued ingestion.
-+ Permanent failures aren't retried.
+    + You can change the limit by setting the *Size Factor* in the *Managed Streaming Ingest Policy*, passed in initialization.
++ It retries transient failures, such as throttling, three times, and then moves the request to queued ingestion.
++ It doesn't retry permanent failures.
 
 > [!NOTE]
-> If the streaming ingestion fails and the data is moved to queued ingestion, then the data will take longer to be ingested, due to it being batched and queued for ingestion. You can control it via the [batching policy](/kusto/management/batching-policy).
+> If streaming ingestion fails and the system moves the data to queued ingestion, the data takes longer to ingest because the process batches and queues the data for ingestion. You can control this delay by using the [batching policy](/kusto/management/batching-policy).
 
 ## Limitations
 
-Data Streaming has some limitations compared to queuing data for ingestion.
+Data streaming has some limitations compared to queuing data for ingestion.
 
-+ Tags can’t be set on data.
-+ Mapping can only be provided using [`ingestionMappingReference`](/kusto/management/mappings?view=azure-data-explorer#mapping-with-ingestionmappingreference&preserve-view=true). Inline mapping isn't supported.
-+ The payload sent in the request can’t exceed 10 MB, regardless of format or compression.
++ You can't set tags on data.
++ You can only provide mapping by using [`ingestionMappingReference`](/kusto/management/mappings?view=azure-data-explorer#mapping-with-ingestionmappingreference&preserve-view=true). Inline mapping isn't supported.
++ The payload sent in the request can't exceed 10 MB, regardless of format or compression.
 + The `ignoreFirstRecord` property isn't supported for streaming ingestion, so ingested data must not contain a header row.
 
 For more information, see [Streaming Limitations](/azure/data-explorer/ingest-data-streaming#limitations).
@@ -73,7 +73,7 @@ For more information, see [Streaming Limitations](/azure/data-explorer/ingest-da
 
 ## Before you begin
 
-Before creating the app, the following steps are required. Each step is detailed in the following sections.
+Before creating the app, complete the following steps. Each step is detailed in the following sections.
 
 1. Configure streaming ingestion on your Azure Data Explorer cluster.
 1. Create a Kusto table to ingest the data into.
@@ -88,7 +88,7 @@ To configure streaming ingestion, see [Configure streaming ingestion on your Azu
 
 Run the following commands on your database via Kusto Explorer (Desktop) or Kusto Web Explorer.
 
-1. Create a Table Called Storm Events
+1. Create a table called Storm Events
 
 ```kql
 .create table MyStormEvents (StartTime:datetime, EndTime:datetime, State:string, DamageProperty:int, DamageCrops:int, Source:string, StormSummary:dynamic)
@@ -96,7 +96,7 @@ Run the following commands on your database via Kusto Explorer (Desktop) or Kust
 
 ### Enable the streaming ingestion policy
 
-Enable streaming ingestion on the table or on the entire database using one of the following commands:
+Enable streaming ingestion on the table or on the entire database by using one of the following commands:
 
 Table level:
 
@@ -117,7 +117,7 @@ For more information about streaming policy, see [Streaming ingestion policy](..
 
 ## Create a basic client application
 
-Create a basic client application which connects to the Kusto Help cluster.
+Create a basic client application that connects to the Kusto Help cluster.
 Enter the cluster query and ingest URI and database name in the relevant variables.
 The app uses two clients: one for querying and one for ingestion. Each client brings up a browser window to authenticate the user.
 
@@ -126,7 +126,7 @@ The app uses two clients: one for querying and one for ingestion. Each client br
 
 The code sample includes a service function `PrintResultAsValueList()` for printing query results.
 
-Add the Kusto libraries using the following commands:
+Add the Kusto libraries by using the following commands:
 
 ```powershell
 dotnet add package Microsoft.Azure.Kusto.Data
@@ -483,7 +483,7 @@ printResultsAsValueList(primaryResults);
 
 The code sample includes a service function `PrintResultAsValueList()` for printing query results.
 
-Add the Kusto libraries using the following commands:
+Add the Kusto libraries by using the following commands:
 
 ```powershell
 dotnet add package Microsoft.Azure.Kusto.Data
@@ -565,22 +565,22 @@ PrintResultAsValueList(result);
 
 ### [Python](#tab/python)
 
-Not applicable
+Not applicable.
 
 ### [TypeScript](#tab/typescript)
 
-Not applicable
+Not applicable.
 
 ### [Java](#tab/java)
 
-Not applicable
+Not applicable.
 
 
 ---
 
 :::zone-end
 
-The first time you run the application the results are as follows:
+The first time you run the application, you see the following results:
 
 ```plaintext
 Number of rows in MyStormEvents
@@ -603,7 +603,7 @@ row 1 :
 
 ### Stream in-memory data for ingestion
 
-To ingest data from memory, create a stream containing the data for ingestion.
+To ingest data from memory, create a stream that contains the data for ingestion.
 
 :::zone pivot="latest"
 ### [C#](#tab/c-sharp)
@@ -702,15 +702,15 @@ try (
 
 ### [Python](#tab/python)
 
-Not applicable
+Not applicable.
 
 ### [TypeScript](#tab/typescript)
 
-Not applicable
+Not applicable.
 
 ### [Java](#tab/java)
 
-Not applicable
+Not applicable.
 
 ---
 :::zone-end
