@@ -75,7 +75,7 @@ Use the following steps to handle authentication:
 
 1. Get a [JWT access token](https://tools.ietf.org/html/rfc7519) from the [Perform Single Page Application (SPA) authentication](../rest/authenticate-with-msal.md#perform-single-page-application-spa-authentication) for the scope. This code replaces placeholder CODE-1.
 
-    For example, you can use @azure/MSAL-react to get the access token. The example uses the **mapScope** function you defined earlier.
+    For example, you can use `@azure/MSAL-react` to get the access token. The example uses the **mapScope** function you defined earlier.
 
     ```javascript
     import { useMsal } from "@azure/msal-react";
@@ -123,9 +123,15 @@ To embed a dashboard, you must establish a trust relationship between the host's
 1. Select **requiredResourceAccess**.
 1. In the manifest, add the following entry:
 
+   > [!IMPORTANT]
+   > Replace `<RTD Metadata Service - Application ID>` with the application ID of the **RTD Metadata Service**. To get the application ID of this service, follow these steps:
+   > - Sign in to the Azure portal.
+   > - In the search bar, enter **RTD Metadata Service**, and then select the **Service Principal**: **RTD Metadata Service**.
+   > - On the **Enterprise Application** page for **RTD Metadata Service**, note down the value of the **Application ID**. 
+
     ```json
       {
-        "resourceAppId": "35e917a9-4d95-4062-9d97-5781291353b9",
+        "resourceAppId": "<RTD Metadata Service - Application ID>",
         "resourceAccess": [
             {
                 "id": "388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c",
@@ -135,16 +141,18 @@ To embed a dashboard, you must establish a trust relationship between the host's
       }
     ```
 
-    - `35e917a9-4d95-4062-9d97-5781291353b9` is the application ID of Azure Data Explorer dashboard service.  
-    - `388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c` is the user_impersonation permission.
+    In the above code, `388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c` is the user_impersonation permission.
 
 1. Save your changes in the **Manifest**.
 1. Select **API permissions** and validate you have a new entry: **RTD Metadata Service**.
 1. Under Microsoft Graph, add permissions for `People.Read`, `User.ReadBasic.All`, and `Group.Read.All`.
 1. In Azure PowerShell, add the following new service principal for the app:
 
+   > [!IMPORTANT]
+   > Replace `<RTD Metadata Service - Application ID>` with the application ID of the **RTD Metadata Service** you got earlier. 
+
     ```powershell
-    New-MgServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
+    New-MgServicePrincipal -AppId <RTD Metadata Service - Application ID>
     ```
 
 
@@ -159,7 +167,7 @@ To embed a dashboard, you must establish a trust relationship between the host's
 >  <iframe src="https://dataexplorer.azure.com/dashboards?[feature-flags]" />
 > ```
 >
-> where `[feature-flags]` is:
+> The `[feature-flags]` is:
 >
 > ```html
 > "f-IFrameAuth": true,
@@ -190,7 +198,7 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-ShowPersona | Show the user name from the settings menu, in the top-right corner. | true |
 | f-UseMeControl | Show the user's account information | true |
 | f-IFrameAuth | If true, the web explorer expects the iframe to handle authentication and provide a token via a message. This parameter is required for iframe scenarios. | false |
-| f-PersistAfterEachRun | Usually, browsers persist in the unload event. However, the unload event isn't always triggered when hosting in an iframe. This flag triggers the **persisting local state** event after each query run. This limits any data loss that may occur, to only affect new query text that has never run. | false |
+| f-PersistAfterEachRun | Usually, browsers persist in the `unload` event. However, the `unload` event isn't always triggered when hosting in an iframe. This flag triggers the **persisting local state** event after each query run. This limits any data loss that may occur, to only affect new query text that has never run. | false |
 | f-ShowSmoothIngestion | If true, show the ingestion wizard experience when right-clicking on a database | true |
 | f-RefreshConnection | If true, always refreshes the schema when loading the page and never depends on local storage | false |
 | f-ShowPageHeader | If true, shows the page header that includes the Azure Data Explorer title and settings | true |
@@ -206,7 +214,7 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-DisableDashboardDelete | IF true, hides the dashboard delete button | false |
 | f-DisableTileRefresh | IF true, disables tiles refresh button in a dashboard | false |
 | f-DisableDashboardAutoRefresh | IF true, disables tiles auto refresh in a dashboard | false |
-| f-DisableExploreQuery | IF true, disables the explore query button of the tiles | false |
+| f-DisableExploreQuery | IF true, disables the **Explore query** button of the tiles | false |
 | f-DisableCrossFiltering | IF true, disables the cross filtering feature in dashboards | false |
 | f-HideDashboardParametersBar | IF true, hides the parameters bar in a dashboard | false |
 

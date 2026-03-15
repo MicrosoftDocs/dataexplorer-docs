@@ -37,10 +37,10 @@ ms.date: 01/09/2025
       "id": "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-managed-identity",
       "location": "eastus",
       "name": "my-managed-identity",
-      "principalId": "00001111-aaaa-2222-bbbb-3333cccc4444",
+      "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
       "resourceGroup": "my-resource-group",
       "tags": {},
-      "tenantId": "00001111-aaaa-2222-bbbb-3333cccc4444",
+      "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
       "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
     }
     ```
