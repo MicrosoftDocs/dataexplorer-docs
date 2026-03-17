@@ -62,6 +62,9 @@ There are several query possibilities:
    Possible values are the same as for the client request property.
 * Add a `datascope=...` text immediately after a table reference in the query body.
    Possible values are `all` and `hotcache`.
+   If the table is referenced by using the [table() function](../query/table-function.md ),
+   then the data scope is provided as a second string argument to the function.
+   For example, `table("T", "hotcache") | count` means the same as `T datascope=hotcache | count`.
 
 The `default` value indicates use of the default settings, which determine that the query should cover all data.
 
