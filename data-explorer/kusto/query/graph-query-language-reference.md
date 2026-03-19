@@ -269,7 +269,7 @@ Finds the shortest paths between a set of source nodes and a set of target nodes
 Calculates single shortest path per source/target pair.
 
 ```gql
-MATCH P = ANY SHORTEST (n)-[]->(a) 
+MATCH P = ANY SHORTEST (n {station:"South-West"})-[]->{1,3}(a {station: "North"}) 
 RETURN P
 ```
 
@@ -278,7 +278,7 @@ RETURN P
 Calculates all shortest paths of equal minimum length.
 
 ```gql
-MATCH P = ALL SHORTEST (n)-[]->(a) 
+MATCH P = ALL SHORTEST (n {station:"South-West"})-[]->{1,3}(a {station: "North"}) 
 RETURN P
 ```
 
