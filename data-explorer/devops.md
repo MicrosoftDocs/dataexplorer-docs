@@ -50,7 +50,7 @@ You can use the following methods to execute admin commands against a cluster wi
 
 :::image type="content" source="media/devops/source-control-options.png" alt-text="Screenshot showing the command source control options.":::
 
-* Use a search pattern to get multiple command files from a local agent folder (build sources or release artifacts).
+* Use a search pattern to get multiple command files from a local agent folder (build sources or release artifacts). The single-line option supports multiple files with one command per file.
 
     :::image type="content" source="media/devops/local-folder-option.png" alt-text="Screenshot showing  the local folder option.":::
 
@@ -128,6 +128,8 @@ You can use the following methods to execute admin commands against a cluster wi
 
         :::image type="content" source="media/devops/add-service-endpoint.png" alt-text="Screenshot showing how to add a service connection.":::
 
+    1. If your admin commands are long-running asynchronous operations, select the **Wait for long Async Admin commands to complete** checkbox. When enabled, the task polls the operation status using `.show operations` until the command completes.
+
 1. Select **Save**, and then in the **Tasks** tab, verify that there are three tasks: **Deploy Tables**, **Deploy Functions**, and **Deploy Policies**.
 
     :::image type="content" source="media/devops/deploy-all-folders.png" alt-text="Screenshot showing how to deploy all folders.":::
@@ -203,7 +205,13 @@ Now the creation of a release pipeline for deployment to preproduction is comple
 
 The extension supports keyless authentication for Azure Data Explorer clusters. Keyless authentication lets you authenticate to Azure Data Explorer clusters without using a key. It's more secure and easier to manage.
 
+> [!NOTE]
+> Kusto Fabric cluster URLs are not supported for Workload Identity Federation (WIF) and Managed Identity authentication.
+
 ### Use Federated Identity Credentials (FIC) authentication in an Azure Data Explorer service connection
+
+> [!NOTE]
+> Starting with extension version 4.0.x, the Azure Data Explorer Service Endpoint supports Workload Identity Federation (WIF) authentication in addition to Service Principal Authentication.
 
 1. In your DevOps instance, go to **Project Settings** > **Service connections** > **New service connection** > **Azure Data Explorer**.
 1. Select **Federated Identity Credentials**, and enter your cluster URL, service principal ID, tenant ID, a service connection name, and then select **Save**.
@@ -334,6 +342,7 @@ The following table describes the key input parameters for the `ADXAdminCommand@
 The extension supports the following authentication methods:
 
 - **Azure Active Directory (AAD) App Registration** — Use `aadAppId`, `aadAppKey`, and `aadTenantId` to authenticate with a Service Principal. Store credentials as secure pipeline variables.
+- **Certificate-based authentication** — Use a certificate instead of an app key for Service Principal authentication. Store the certificate details as secure pipeline variables.
 - **Managed Identity** — Use an Azure Resource Manager service connection configured with Managed Identity. Set the `azureSubscription` input to the service connection name.
 - **Workload Identity Federation (WIF)** — Use an Azure Resource Manager service connection with Workload Identity Federation (automatic or manual). This is the recommended keyless approach. Set the `azureSubscription` input to the service connection name.
 
