@@ -3,7 +3,7 @@ title: Azure DevOps task for Azure Data Explorer
 description: Create a release pipeline and deploy schema changes to your database.
 ms.reviewer: shfeldma
 ms.topic: how-to
-ms.date: 09/28/2025
+ms.date: 03/24/2026
 ms.custom:
   - sfi-image-nochange
   - sfi-ropc-nochange
@@ -50,7 +50,7 @@ You can use the following methods to execute admin commands against a cluster wi
 
 :::image type="content" source="media/devops/source-control-options.png" alt-text="Screenshot showing the command source control options.":::
 
-* Use a search pattern to get multiple command files from a local agent folder (build sources or release artifacts).
+* Use a search pattern to get multiple command files from a local agent folder (build sources or release artifacts). The single-line option supports multiple files with one command per file.
 
     :::image type="content" source="media/devops/local-folder-option.png" alt-text="Screenshot showing  the local folder option.":::
 
@@ -128,6 +128,8 @@ You can use the following methods to execute admin commands against a cluster wi
 
         :::image type="content" source="media/devops/add-service-endpoint.png" alt-text="Screenshot showing how to add a service connection.":::
 
+    1. If your admin commands are long-running asynchronous operations, select the **Wait for long Async Admin commands to complete** checkbox. When enabled, the task polls the operation status using `.show operations` until the command completes.
+
 1. Select **Save**, and then in the **Tasks** tab, verify that there are three tasks: **Deploy Tables**, **Deploy Functions**, and **Deploy Policies**.
 
     :::image type="content" source="media/devops/deploy-all-folders.png" alt-text="Screenshot showing how to deploy all folders.":::
@@ -203,7 +205,13 @@ Now the creation of a release pipeline for deployment to preproduction is comple
 
 The extension supports keyless authentication for Azure Data Explorer clusters. Keyless authentication lets you authenticate to Azure Data Explorer clusters without using a key. It's more secure and easier to manage.
 
+> [!NOTE]
+> Kusto Fabric cluster URLs are not supported for Workload Identity Federation (WIF) and Managed Identity authentication.
+
 ### Use Federated Identity Credentials (FIC) authentication in an Azure Data Explorer service connection
+
+> [!NOTE]
+> Starting with extension version 4.0.x, the Azure Data Explorer Service Endpoint supports Workload Identity Federation (WIF) authentication in addition to Service Principal Authentication.
 
 1. In your DevOps instance, go to **Project Settings** > **Service connections** > **New service connection** > **Azure Data Explorer**.
 1. Select **Federated Identity Credentials**, and enter your cluster URL, service principal ID, tenant ID, a service connection name, and then select **Save**.
@@ -242,33 +250,110 @@ The extension supports keyless authentication for Azure Data Explorer clusters. 
 
 1. Fill out the required details, select **Verify**, and then select **Save**.
 
-## Yaml pipeline configuration
+## YAML pipeline configuration
 
 You can configure tasks using the Azure DevOps web UI or YAML code within the [pipeline schema](/azure/devops/pipelines/yaml-schema).
 
-### Admin command sample
+The extension provides three pipeline tasks, all accessible via YAML:
+
+- **Azure Data Explorer Command** (`ADXAdminCommand@5`) — Run admin/control commands against an ADX cluster
+- **Azure Data Explorer Query** — Run queries against an ADX cluster and parse the results
+- **Azure Data Explorer Query Server Gate** — Agentless task to gate releases depending on query outcome
+
+> [!TIP]
+> For enhanced security, use **Workload Identity Federation** or **Managed Identity** authentication via an Azure Resource Manager service connection instead of storing credentials directly in your pipeline. These keyless authentication methods are the recommended best practice.
+
+### Admin command sample — inline commands
+
+The following sample runs an inline admin command using an Azure Resource Manager (ARM) service connection, which supports Workload Identity Federation (WIF) and Managed Identity authentication:
 
 ```yaml
 steps:
-- task: Azure-Kusto.PublishToADX.PublishToADX.PublishToADX@4
-  displayName: '<Task Name>'
+- task: Azure-Kusto.ADXAdminCommands.PublishToADX.ADXAdminCommand@5
+  displayName: 'Run inline ADX admin command'
   inputs:
-    targetType: 'inline'
-    script: '<inline Script>'
-    waitForOperation: true
-    kustoUrls: '$(CONNECTIONSTRING):443?DatabaseName=""'
-    authType: 'armserviceconn'
-    connectedServiceARM: '<ARM Service Endpoint Name>'
-    serialDelay: 1000
-  `continueOnError: true`
-  condition: ne(variables['ProductVersion'], '') ## Custom condition Sample
+    clusterUri: 'https://<ClusterName>.<Region>.kusto.windows.net'
+    databaseName: '<DatabaseName>'
+    commandsSource: 'inline'
+    inlineCommands: |
+      .create-merge table MyTable (Id:int, Name:string, Timestamp:datetime)
+      .create-or-alter function MyFunction() { MyTable | take 10 }
+    azureSubscription: '<ARM Service Connection Name>'
+  continueOnError: true
 ```
+
+### Admin command sample — file-based commands
+
+The following sample runs admin commands from files matching a glob pattern, using AAD App Registration authentication:
+
+```yaml
+steps:
+- task: Azure-Kusto.ADXAdminCommands.PublishToADX.ADXAdminCommand@5
+  displayName: 'Deploy schema from files'
+  inputs:
+    clusterUri: 'https://<ClusterName>.<Region>.kusto.windows.net'
+    databaseName: '<DatabaseName>'
+    commandsSource: 'files'
+    commandFilesPattern: '**/*.csl'
+    aadAppId: '$(AAD_APP_ID)'
+    aadAppKey: '$(AAD_APP_KEY)'
+    aadTenantId: '$(AAD_TENANT_ID)'
+  continueOnError: true
+```
+
+You can also use `**/*.kql` as the glob pattern depending on your file naming convention.
+
+### Admin command sample — Azure Resource Manager service connection
+
+The following sample uses an Azure Resource Manager service connection, which supports **Workload Identity Federation (WIF)** and **Managed Identity** for keyless authentication:
+
+```yaml
+steps:
+- task: Azure-Kusto.ADXAdminCommands.PublishToADX.ADXAdminCommand@5
+  displayName: 'Deploy schema via ARM service connection'
+  inputs:
+    clusterUri: 'https://<ClusterName>.<Region>.kusto.windows.net'
+    databaseName: '<DatabaseName>'
+    commandsSource: 'files'
+    commandFilesPattern: '**/*.csl'
+    azureSubscription: '<ARM Service Connection Name>'
+  continueOnError: true
+  condition: ne(variables['ProductVersion'], '')
+```
+
+### Task input parameters
+
+The following table describes the key input parameters for the `ADXAdminCommand@5` task:
+
+| Parameter | Description |
+|--|--|
+| `clusterUri` | The base URI for the Kusto cluster (for example, `https://<ClusterName>.<Region>.kusto.windows.net`) |
+| `databaseName` | The name of the target database |
+| `commandsSource` | The source of commands: `inline` for inline KQL commands, or `files` for file-based commands |
+| `inlineCommands` | Inline KQL commands to run (used when `commandsSource` is `inline`) |
+| `commandFilesPattern` | Glob pattern for script files (used when `commandsSource` is `files`), for example `**/*.csl` or `**/*.kql` |
+| `aadAppId` | The Microsoft Entra App (Service Principal) ID for AAD App authentication |
+| `aadAppKey` | The Microsoft Entra App key/secret for AAD App authentication |
+| `aadTenantId` | The Microsoft Entra tenant ID for AAD App authentication |
+| `azureSubscription` | The name of the Azure Resource Manager service connection for ARM-based authentication (supports WIF and Managed Identity) |
+
+### Authentication methods
+
+The extension supports the following authentication methods:
+
+- **Azure Active Directory (AAD) App Registration** — Use `aadAppId`, `aadAppKey`, and `aadTenantId` to authenticate with a Service Principal. Store credentials as secure pipeline variables.
+- **Certificate-based authentication** — Use a certificate instead of an app key for Service Principal authentication. Store the certificate details as secure pipeline variables.
+- **Managed Identity** — Use an Azure Resource Manager service connection configured with Managed Identity. Set the `azureSubscription` input to the service connection name.
+- **Workload Identity Federation (WIF)** — Use an Azure Resource Manager service connection with Workload Identity Federation (automatic or manual). This is the recommended keyless approach. Set the `azureSubscription` input to the service connection name.
+
+> [!NOTE]
+> Workload Identity Federation (WIF) is a newer addition to the extension. It enables secretless authentication and is the recommended approach for new pipelines. For setup instructions, see [Use Federated Identity Credentials or Managed Identity in an Azure Resource Manager (ARM) service connection](#use-federated-identity-credentials-or-managed-identity-in-an-azure-resource-manager-arm-service-connection).
 
 ### Query sample
 
 ```yaml
 steps:
-- task: Azure-Kusto.PublishToADX.ADXQuery.ADXQuery@4
+- task: Azure-Kusto.PublishToADX.ADXQuery.ADXQuery@5
   displayName: '<Task Display Name>'
   inputs:
     targetType: 'inline'
