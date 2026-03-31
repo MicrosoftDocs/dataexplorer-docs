@@ -1,6 +1,8 @@
 ---
 title: 'Tutorial: Create your first graphs in Kusto Query Language'
 description: Learn how to model and query interconnected data using graph semantics in Kusto Query Language (KQL). Build transient and persistent graphs to analyze organizational hierarchies.
+author: spelluru
+ms.author: spelluru
 ms.service: azure-data-explorer
 ms.topic: tutorial
 ms.custom: mvc
