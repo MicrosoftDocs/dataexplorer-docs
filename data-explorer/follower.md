@@ -614,6 +614,7 @@ Review the following limitations:
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
 * Table level sharing properties aren't supported when following all databases.
 * In follower databases, to query external tables that use a Managed Identity as the authentication method, the Managed Identity must be added to the follower cluster. This capability doesn't work when the leader and follower clusters are provisioned in different tenants.
+* You can't store query results in a read-only followed database.
 
 ## Next step
 
