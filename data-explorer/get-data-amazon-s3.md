@@ -3,7 +3,7 @@ title: Get data from Amazon S3 into Azure Data Explorer
 description: Learn how to get data from Amazon S3 into Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 11/16/2023
+ms.date: 03/30/2026
 ms.custom: sfi-image-nochange
 ---
 # Get data from Amazon S3
@@ -25,7 +25,7 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 1. From the left menu, select **Query**.
 1. Right-click on the database where you want to ingest the data, and then select **Get data**.
 
-    :::image type="content" source="media/get-data-amazon-s3/get-data.png" alt-text="Screenshot of query tab, with right-click on a database and the get options dialog open." lightbox="media/get-data-amazon-s3/get-data.png":::
+    :::image type="content" source="media/get-data-file/get-data.png" alt-text="Screenshot of query tab, with right-click on a database and the get options dialog open." lightbox="media/get-data-file/get-data.png":::
 
 ## Source
 
@@ -33,7 +33,7 @@ In the **Get data window**, the **Source** tab is selected.
 
 Select the data source from the available list. In this example, you are ingesting data from **Amazon S3**.
 
-:::image type="content" source="media/get-data-amazon-s3/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-amazon-s3/select-data-source.png":::
+:::image type="content" source="media/get-data-file/source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/source.png":::
 
 ## Configure
 
