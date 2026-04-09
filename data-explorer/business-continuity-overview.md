@@ -13,69 +13,11 @@ ms.custom:
 
 # Business continuity and disaster recovery overview
 
-Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. This article discusses availability (intra-region) and disaster recovery. It details native capabilities and architectural considerations for a reliable Azure Data Explorer deployment. It details recovery from human errors, high availability, followed by multiple disaster recovery configurations. These configurations depend on recoverability requirements such as Recovery Point Objective (RPO) and Recovery Time Objective (RTO), needed effort, and cost.
+Business continuity and disaster recovery in Azure Data Explorer enables your business to continue operating in the face of a disruption. This article details multiple disaster recovery configurations depending on recoverability requirements (RPO and RTO), needed effort, and cost.
 
-## Mitigate disruptive events
-
-* [Human error](#human-error)
-* [High availability of Azure Data Explorer](#high-availability-of-azure-data-explorer)
-* [Outage of an Azure availability zone](#outage-of-an-azure-availability-zone)
-* [Outage of an Azure datacenter](#outage-of-an-azure-datacenter)
-* [Outage of an Azure region](#outage-of-an-azure-region)
-
-### Human error
-
-Human errors are inevitable. Users can accidentally drop a cluster, database, or a table.
-
-#### Accidental cluster or database deletion
-
-Accidental cluster or database deletion is an irrecoverable action. As the Azure Data Explorer resource owner, you can prevent data loss by enabling the delete [lock](/azure/azure-resource-manager/management/lock-resources) capability, available at the Azure resource level.
-
-#### Accidental table deletion
-
-Users with table admin permissions or higher are allowed to [drop tables](/kusto/management/drop-table-command?view=azure-data-explorer&preserve-view=true). If one of those users accidentally drops a table, you can recover it using the [`.undo drop table`](/kusto/management/undo-drop-table-command?view=azure-data-explorer&preserve-view=true) command. For this command to be successful, you must first enable the *recoverability* property in the [retention policy](/kusto/management/retention-policy?view=azure-data-explorer&preserve-view=true).
-
-#### Accidental external table deletion
-
-[External tables](/kusto/query/schema-entities/external-tables?view=azure-data-explorer&preserve-view=true) are Kusto query schema entities that reference data stored outside the database.
-Deletion of an external table only deletes the table metadata. You can recover it by re-executing the table creation command. Use the [soft delete](/azure/storage/blobs/storage-blob-soft-delete) capability to protect against accidental deletion or overwrite of a file/blob for a user-configured amount of time.
-
-### High availability of Azure Data Explorer
-
-High availability refers to the fault-tolerance of Azure Data Explorer, its components, and underlying dependencies within an Azure region. This fault tolerance avoids single points of failure (SPOF) in the implementation. In Azure Data Explorer, high availability includes the persistence layer, compute layer, and a leader-follower configuration.
-
-#### Persistence layer
-
-Azure Data Explorer uses Azure Storage as its durable persistence layer. Azure Storage automatically provides fault tolerance, with the default setting offering Locally Redundant Storage (LRS) within a data center. Three replicas are persisted. If a replica is lost while in use, another is deployed without disruption. Further resiliency is possible with Zone Redundant Storage (ZRS) that places replicas intelligently across Azure regional availability zones for maximum fault tolerance at an extra cost. ZRS enabled storage is automatically configured when the Azure Data Explorer cluster is deployed into [Availability Zones](create-cluster-and-database.md#create-a-cluster).
-
-#### Compute layer
-
-Azure Data Explorer is a distributed computing platform and can have two to many nodes depending on scale and node role type. At the time of provisioning, select availability zones to distribute the node deployment, across zones for maximum intra-region resiliency. An availability zone failure doesn't result in a complete outage but instead, performance degradation until recovery of the zone.
-
-#### Leader-follower cluster configuration
-
-Azure Data Explorer provides an optional [follower capability](follower.md) for a leader cluster to be followed by other follower clusters for read-only access to the leader's data and metadata. Changes in the leader, such as `create`, `append`, and `drop` are automatically synchronized to the follower. While the leaders could span Azure regions, the follower clusters should be hosted in the same regions as the leader. If the leader cluster is down or databases or tables are accidentally dropped, the follower clusters lose access until access is recovered in the leader.
-
-### Outage of an Azure availability zone
-
-Azure availability zones are unique physical locations within the same Azure region. They can protect an Azure Data Explorer cluster's compute and data from partial region failure. Zone failure is an availability scenario as it is intra-region.
-
-Pin an Azure Data Explorer cluster to the same zone as other connected Azure resources. For more information on enabling availability zones, see [create a cluster](create-cluster-and-database.md#create-a-cluster).
-
-> [!NOTE]
-> Deployment to availability zones is possible when creating a cluster or [can be migrated later](migrate-cluster-to-multiple-availability-zone.md).
-
-### Outage of an Azure datacenter
-
-Azure availability zones come with a cost and some customers choose to deploy without zone redundancy. With such an Azure Data Explorer deployment, an Azure datacenter outage results in cluster outage. Handling an Azure datacenter outage is therefore identical to that of an Azure region outage.
-
-### Outage of an Azure region
-
-Azure Data Explorer doesn't provide automatic protection against the outage of an entire Azure region. To minimize business impact if there's such an outage, multiple Azure Data Explorer clusters across [Azure paired regions](/azure/best-practices-availability-paired-regions). Based on your recovery time objective (RTO), recovery point objective (RPO), as well as effort and cost considerations, there are [multiple disaster recovery configurations](#disaster-recovery-configurations). Cost and performance optimizations are possible with Azure Advisor recommendations and [autoscale](manage-cluster-horizontal-scaling.md) configuration.
+For more information about the reliability options available for Azure Data Explorer, including availabilitry zone support, backup, and protection against some types of human error, see [Reliability in Azure Data Explorer](/azure/reliability/reliability-data-explorer).
 
 ## Disaster recovery configurations
-
- This section details multiple disaster recovery configurations depending on recoverability requirements (RPO and RTO), needed effort, and cost.
 
 Recovery time objective (RTO) refers to the time to recover from a disruption. For example, RTO of 2 hours means the application has to be up and running within two hours of a disruption. Recovery point objective (RPO) refers to the interval of time that might pass during a disruption before the quantity of data lost during that period is greater than the allowable threshold. For example, if the RPO is 24 hours, and an application has data beginning from 15 years ago, they're still within the parameters of the agreed-upon RPO.
 
