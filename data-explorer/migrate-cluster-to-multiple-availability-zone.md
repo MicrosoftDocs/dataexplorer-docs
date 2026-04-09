@@ -23,7 +23,7 @@ You can configure availability zones when creating a cluster [in the Azure porta
 >
 > - Once a cluster is configured with availability zones, you can't change the cluster to not use availability zones.
 > - Multiple zones aren't supported in all regions. Therefore, clusters located in these regions can't be set up to use availability zones.
-> - Using availability zones incurs additional costs.
+> - Using availability zones incurs additional costs for storage.
 
 > [!NOTE]
 >
@@ -40,9 +40,9 @@ In this article, you learn about:
 
 ## Prerequisites
 
-- Make sure your cluster is in a region where migration to multiple availability zones is supported.
+- Make sure your cluster is in a [region where multiple availability zones are supported](/azure/reliability/regions-list).
 
-- For migrating a cluster to support availability zones, you need a cluster that was deployed without any availability zones.
+- For migrating a cluster to support availability zones, you need a cluster that was deployed without availability zone support.
 - For changing the zones of a cluster, you need a cluster that is configured with availability zones.
 - For REST API, familiarize yourself with [Manage Azure resources by using the REST API](/azure/azure-resource-manager/management/manage-resources-rest).
 - For other programmatic methods, see [Prerequisites](create-cluster-database.md#prerequisites).
@@ -242,14 +242,14 @@ During the migration, the following message appears in the Azure portal, on the 
 
 When availability zones are configured, a cluster's resources are deployed as follows:
 
-- **Compute layer**: Azure Data Explorer is a distributed computing platform that has two or more nodes. If availability zones are configured, compute nodes are distributed across the defined availability zone for maximum intra-region resiliency. A zone failure might degrade cluster performance, until the failed compute resources are redeployed in the surviving zones. We recommended configuring the maximum available zones in a region.
+- **Compute layer**: Azure Data Explorer is a distributed computing platform that has two or more nodes. If availability zones are configured, compute nodes are distributed across the defined availability zones for maximum intra-region resiliency. A zone failure might degrade cluster performance, until the failed compute resources are redeployed in the surviving zones. We recommended configuring the maximum available zones in a region.
 
     > [!NOTE]
     >
     > - In some cases, due to compute capacity limitations, only partial availability zones will be available for the compute layer.
     > - A cluster's compute layer implements a best effort approach to evenly spread instances across selected zones.
 
-- **Persistent storage layer**: Clusters use Azure Storage as its durable persistence layer. If availability zones are configured, [ZRS](/azure/storage/common/storage-redundancy#zone-redundant-storage) is enabled, placing storage replicas across all three availability zones for maximum intra-region resiliency.
+- **Persistent storage layer**: Clusters use Azure Storage as its durable persistence layer. If availability zones are configured, [ZRS](/azure/storage/common/storage-redundancy#zone-redundant-storage) is enabled, placing three storage replicas across multiple availability zones for maximum intra-region resiliency.
 
     > [!NOTE]
     >
@@ -262,7 +262,7 @@ When an existing cluster that was deployed without any availability zones is con
 
 - Compute is distributed in the defined availability zones
 
-    The process of redistributing compute resources involves a preparation stage in which the zonal Compute resources cache is warmed. During the preparation stage, the existing cluster's compute resources continue to function, ensuring uninterrupted service. This preparation phase can take up to tens of minutes. The transition to the new compute resources only occurs once it's fully prepared and operational. This parallel processing approach ensures a relatively seamless experience, with only minimal service disruption during the switchover process, typically lasting between one to three minutes. However, it's important to note that query performance might be affected during the SKU migration. The degree of impact can vary depending on specific usage patterns.
+    The process of redistributing compute resources involves a preparation stage in which the zonal compute resources cache is warmed. During the preparation stage, the existing cluster's compute resources continue to function, ensuring uninterrupted service. This preparation phase can take up to tens of minutes. The transition to the new compute resources only occurs once it's fully prepared and operational. This parallel processing approach ensures a relatively seamless experience, with only minimal service disruption during the switchover process, typically lasting between one to three minutes. However, it's important to note that query performance might be affected during the SKU migration. The degree of impact can vary depending on specific usage patterns.
 
 - Historical persistent storage data is migrated to ZRS
 
