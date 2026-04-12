@@ -27,7 +27,7 @@ Expand a row to open a detailed view of the row content. This detailed view show
 
 1. On the left side of the row you want to expand, select the arrow icon **>**.
 
-    :::image type="content" source="media/web-query-data/expand-row-arrow.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI." lightbox="media/web-query-data/expand-row-arrow.png":::
+    :::image type="content" source="media/web-query-data/expand-row-arrow.png" alt-text="Screenshot of the arrow that expands the row in the Azure Data Explorer web UI." lightbox="media/web-query-data/expand-row-arrow.png":::
 
 1. In the detailed view that opens, you can do the following tasks:
 
