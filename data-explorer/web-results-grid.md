@@ -1,25 +1,25 @@
 ---
-title: 'Azure Data Explorer web UI results grid'
+title: Azure Data Explorer Web UI Results Grid
 description: Learn how to work with the results grid in the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 05/28/2023
+ms.date: 04/12/2026
 ms.custom: sfi-image-nochange
 ---
 
 # Azure Data Explorer web UI results grid
 
-In this guide, you'll learn how to work with query results in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) using the results grid. With the results grid, you can customize and manipulate your results, and enhance the efficiency and effectiveness of your data analysis.
+In this guide, you learn how to work with query results in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) by using the results grid. By using the results grid, you can customize and manipulate your results, and enhance the efficiency and effectiveness of your data analysis.
 
 To learn how to run queries, see [Quickstart: Query data in the Azure Data Explorer web UI](web-query-data.md).
 
 ## Prerequisites
 
-* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. You don't need an Azure subscription.
 * An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-and-database.md).
 
 ## Expand a cell
 
-Expand a cell to copy or view the cell content, which is especially helpful for viewing [dynamic](/kusto/query/scalar-data-types/dynamic?view=azure-data-explorer&preserve-view=true) data or long strings. Simply left-click a cell to open the detailed view.
+Expand a cell to copy or view the cell content. This feature is especially helpful for viewing [dynamic](/kusto/query/scalar-data-types/dynamic?view=azure-data-explorer&preserve-view=true) data or long strings. Left-click a cell to open the detailed view.
 
 ## Expand a row
 
@@ -29,7 +29,7 @@ Expand a row to open a detailed view of the row content. This detailed view show
 
     :::image type="content" source="media/web-query-data/expand-row-arrow.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI." lightbox="media/web-query-data/expand-row-arrow.png":::
 
-1. In the detailed view that opens, you can do the following:
+1. In the detailed view that opens, you can do the following tasks:
 
     :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI." lightbox="media/web-query-data/expand-row.png":::
 
@@ -81,7 +81,7 @@ Nested dynamic property-bag fields can become complex as you go deeper into thei
     | take 10
     ```
 
-1. Select the first result in the `StormSummary` column, which should be the last column.
+1. Select the first result in the `StormSummary` column, which is the last column.
 
 1. Select different fields within the result and see how the JPATH at the top of the window changes. For example, the following screenshot shows the path to the `Location` field, which is nested under the `Details` field within the `StormSummary` column dynamic property-bag object.
 
@@ -91,7 +91,7 @@ Nested dynamic property-bag fields can become complex as you go deeper into thei
 
 ## Add filter from dynamic field
 
-To add a specific dynamic field as a filter to your query, do the following:
+To add a specific dynamic field as a filter to your query, complete the following steps:
 
 1. Run the following query.
 
@@ -103,9 +103,9 @@ To add a specific dynamic field as a filter to your query, do the following:
     | take 10
     ```
 
-1. Select the first result in the `StormSummary` column, which should be the last column.
+1. Select the first result in the `StormSummary` column, which is the last column.
 
-1. Right-click on a field within a dynamic data and select **Add as filter**. For example, right-click on the `Location` field and add it as a filter.
+1. Right-click a field within a dynamic data and select **Add as filter**. For example, right-click the `Location` field and add it as a filter.
 
     :::image type="content" source="media/web-query-data/add-dynamic-field-as-filter.png" alt-text="Screenshot of add as filter option from dynamic field." lightbox="media/web-query-data/add-dynamic-field-as-filter.png":::
 
@@ -151,7 +151,7 @@ Within a result set, you can group the results by any column. After this groupin
     | where EventType == "Lake-Effect Snow"
     ```
 
-1. Mouse-over the **State** column, select the menu, and select **Group by State**.
+1. Mouse over the **State** column, select the menu, and select **Group by State**.
 
     :::image type="content" source="media/web-query-data/group-by.png" alt-text="Screenshot of a table with query results grouped by state." lightbox="media/web-query-data/group-by.png":::
 
@@ -163,7 +163,7 @@ Within a result set, you can group the results by any column. After this groupin
 
     :::image type="content" source="media/web-query-data/group-expanded.png" alt-text="Screenshot of a query results grid with California group expanded in the Azure Data Explorer web U I." border="false" lightbox="media/web-query-data/group-expanded.png":::
 
-1. Once you've grouped data by a column, you can use a value aggregation function to calculate statistics for each group. To do so, go to the column menu, choose **Value Aggregation**, and select the function type to use for that column.
+1. Once you group data by a column, use a value aggregation function to calculate statistics for each group. Go to the column menu, choose **Value Aggregation**, and select the function type to use for that column.
 
     :::image type="content" source="media/web-query-data/aggregate.png" alt-text="Screenshot of aggregate results when grouping column by results in the Azure Data Explorer web UI." lightbox="media/web-query-data/aggregate.png":::
 
@@ -236,7 +236,7 @@ To search for a specific expression within a result table, use the search capabi
 
     :::image type="content" source="media/web-query-data/search.png" alt-text="Screenshot highlighting the search bar in the table." lightbox="media/web-query-data/search.png":::
 
-1. All mentions of your searched expression are now highlighted in the table. You can navigate between them by clicking Enter to go forward, Shift+Enter to go backward, or by using the up and down buttons beside the search box to move around.
+1. All mentions of your searched expression are now highlighted in the table. You can navigate between them by pressing Enter to go forward, Shift+Enter to go backward, or by using the up and down buttons beside the search box to move around.
 
     :::image type="content" source="media/web-query-data/search-results.png" alt-text="Screenshot of a table containing highlighted expressions from search results."  lightbox="media/web-query-data/search-results.png":::
 
