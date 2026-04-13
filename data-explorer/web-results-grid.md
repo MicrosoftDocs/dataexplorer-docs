@@ -33,9 +33,9 @@ Expand a row to open a detailed view of the row content. This detailed view show
 
     :::image type="content" source="media/web-query-data/expand-row.png" alt-text="Screenshot of an expanded row in the Azure Data Explorer web UI." lightbox="media/web-query-data/expand-row.png":::
 
-    1. View and copy the content of each column.
-    1. Search within the detailed view. To learn how to do so, see [Search in detailed view](#search-in-detailed-view).
-    1. Switch reading pane modes between **Inline**, **Below**, and **Right**. The default mode is **Inline**, which shows the detailed view in a flyout pane. The **Below** and **Right** modes show the detailed view in a docked pane below or to the right of the results grid, respectively.
+    - View and copy the content of each column.
+    - Search within the detailed view. To learn how to do so, see [Search in detailed view](#search-in-detailed-view).
+    - Switch reading pane modes between **Inline**, **Below**, and **Right**. The default mode is **Inline**, which shows the detailed view in a flyout pane. The **Below** and **Right** modes show the detailed view in a docked pane below or to the right of the results grid, respectively.
 
     :::image type="content" source="media/web-query-data/expand-columns.png" alt-text="Screenshot of columns with expanded or collapsed data." lightbox="media/web-query-data/expand-columns.png":::
 
