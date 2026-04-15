@@ -3,11 +3,12 @@ title: .show table operations mirroring-statistics
 description: Learn how to use the `.show table operations mirroring-statistics` command to check the mirroring policy operations.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 04/22/2025
+ms.date: 04/14/2026
+monikerRange: "microsoft-fabric"
 ---
 # .show table operations mirroring-statistics
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)]
 
 Displays [mirroring policy](mirroring-policy.md) operations statistics for a table. Mirroring statistics allows you to verify the latency and status of your data export.
 
