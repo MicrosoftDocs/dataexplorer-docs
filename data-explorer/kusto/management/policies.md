@@ -2,7 +2,7 @@
 title: Policies overview
 description: Learn which policies are available for management.
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 04/15/2026
 ---
 # Policies overview
 
@@ -40,7 +40,7 @@ The following table provides an overview of the policies for managing your envir
 
 :::moniker range="azure-data-explorer"
 
-<!-- Mirroring policies are not supported in azure data explorer, so we will not show it in the list of policies for ADX. -->
+<!-- Mirroring policies are not supported in azure data explorer. Used Monikers. -->
 
 |Policy|Description|
 |--|--|
