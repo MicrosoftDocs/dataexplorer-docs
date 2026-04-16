@@ -1,7 +1,7 @@
 ---
 title: Monitoring data reference for Azure Data Explorer
 description: This article contains important reference material you need when you monitor Azure Data Explorer by using Azure Monitor.
-ms.date: 12/09/2024
+ms.date: 04/16/2026
 ms.custom: horz-monitor
 ms.topic: reference
 author: spelluru
@@ -72,6 +72,7 @@ The following table lists the metrics available for the Microsoft.Kusto/clusters
 - [ADXTableUsageStatistics](/azure/azure-monitor/reference/tables/adxtableusagestatistics#columns)
 - [ADXTableDetails](/azure/azure-monitor/reference/tables/adxtabledetails#columns)
 - [ADXJournal](/azure/azure-monitor/reference/tables/adxjournal#columns)
+- [ADXDataOperation](/azure/azure-monitor/reference/tables/adxdataoperation)
 
 [!INCLUDE [horz-monitor-ref-activity-log](~/../reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-activity-log.md)]
 
