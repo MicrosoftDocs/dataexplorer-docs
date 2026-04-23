@@ -115,9 +115,8 @@ To create a continuous export job with a query that references a table with [Row
 * Provide a managed identity as part of the continuous export configuration. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
 ::: moniker-end
 
-## Continuous export to delta table - Preview
+## Continuous export to delta table
 
-Continuous export to a delta table is currently in preview.
 
 > [!IMPORTANT]
 > Delta table partitioning isn't supported in continuous data export.
