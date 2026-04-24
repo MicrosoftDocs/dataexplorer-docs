@@ -308,12 +308,12 @@ Data Mastery help businesses harness the power of their data and make data-drive
 
 **Additional information**
 
-- [Data Mastery website](https://www.datamastery.ai/)
+- [Data Mastery website](https://www.data-mastery.com/au)
 
 **Success stories**
 
-- [https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-fortinet-logs](https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-fortinet-logs)
-- [https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-palo-alto-web-traffic-logs](https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-palo-alto-web-traffic-logs)
+- [https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-fortinet-logs](https://www.data-mastery.com/post/azure-data-explorer-real-time-analytics-fortinet-logs)
+- [https://www.datamastery.ai/post/azure-data-explorer-real-time-analytics-palo-alto-web-traffic-logs](https://www.data-mastery.com/post/azure-data-explorer-real-time-analytics-palo-alto-web-traffic-logs)
 
 ## Datacore IL Ltd
 
