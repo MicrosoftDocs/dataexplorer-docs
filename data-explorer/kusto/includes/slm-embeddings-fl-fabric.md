@@ -30,7 +30,7 @@ Currently the function supports [harrier-v1-270m](https://huggingface.co/microso
 * Download the artifacts in the KQL code below (at the end of the code block see the external_artifacts parameter that reference artifacts, e.g https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip) and upload them to your lakehouse.
 * In the KQL code below update the artifacts paths to their one lake paths (e.g. https://msit-onelake.dfs.fabric.microsoft.com/MY_WORKSPACE/MY_LAKEHOUSE.Lakehouse/Files/models/SLM/embedding_engine.zip).
 * You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database.
-* To optimize storage and latency you can delete external artifacts for models that are not used.
+* To optimize storage and latency you can delete external artifacts for models that aren't used.
 
 ### [Query-defined](#tab/query-defined)
 
