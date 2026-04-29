@@ -14,12 +14,12 @@ Workload groups allow you to group together sets of management commands and quer
 :::moniker range="azure-data-explorer"
 Together with [workload group policies](#workload-group-policies), workload groups serve as a resource governance system for incoming requests to the cluster. When a request is initiated, it gets classified into a workload group. The classification is based on a user-defined function defined as part of a [request classification policy](request-classification-policy.md). The request follows the policies assigned to the designated workload group throughout its execution.
 
-Workload groups are defined at the cluster level, and up to 10 custom groups can be defined in addition to the three [built-in workload groups](#built-in-workload-groups).
+Workload groups are defined at the cluster level, and up to 16 custom groups can be defined in addition to the three [built-in workload groups](#built-in-workload-groups).
 ::: moniker-end
  :::moniker range="microsoft-fabric"
 Together with [workload group policies](#workload-group-policies), workload groups serve as a resource governance system for incoming requests to the eventhouse. When a request is initiated, it gets classified into a workload group. The classification is based on a user-defined function defined as part of a [request classification policy](request-classification-policy.md). The request follows the policies assigned to the designated workload group throughout its execution.
 
-Workload groups are defined at the eventhouse level, and up to 10 custom groups can be defined in addition to the three [built-in workload groups](#built-in-workload-groups).
+Workload groups are defined at the eventhouse level, and up to 16 custom groups can be defined in addition to the three [built-in workload groups](#built-in-workload-groups).
 ::: moniker-end
 > [!NOTE]
 > Requests that aren't queries or management commands, such as streaming ingestion requests, aren't included in the scope of workload groups.
