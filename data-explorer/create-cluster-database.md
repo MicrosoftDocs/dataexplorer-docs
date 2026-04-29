@@ -4,14 +4,14 @@ description: Learn how to create an Azure Data Explorer cluster and database.
 ms.reviewer: lugoldbe
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 09/28/2025
+ms.date: 04/29/2026
 ---
 
 # Create an Azure Data Explorer cluster and database
 
 Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data streaming from applications, websites, IoT devices, and more. To use Azure Data Explorer, you first create a cluster, and create one or more databases in that cluster. Then, you can ingest (load) data into a database and run queries against it.
 
-In this article, you'll learn how to create a cluster and a database using either C#, Python, Go, the Azure CLI, PowerShell, or an Azure Resource Manager (ARM) template. To learn how to create a cluster and database using the Azure portal, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md).
+In this article, you'll learn how to create a cluster and a database using either C#, Python, Go, the Azure CLI, PowerShell, Bicep, or an Azure Resource Manager (ARM) template. To learn how to create a cluster and database using the Azure portal, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md).
 
 > For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-cluster-database).
 
@@ -81,6 +81,10 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
 ### Configure parameters
 
 The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps to set up the environment:
+
+### [Bicep template](#tab/bicep)
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ### [ARM template](#tab/arm)
 
@@ -400,6 +404,41 @@ The following code shows how to create a cluster.
     ```
 
 1. Confirm the successful creation of the cluster by verifying the result contains `provisioningState` as `Succeeded`.
+
+### [Bicep template](#tab/bicep)
+
+1. Define your parameters:
+
+    ```powershell
+    param clusters_name string = 'kusto${uniqueString(resourceGroup().id)}'
+    param location string = resourceGroup().location
+    ```
+
+1. Create a cluster resource in your Bicep file:
+
+    ```powershell
+    resource cluster 'Microsoft.Kusto/clusters@2023-05-02' = {
+    name: clusterName
+    location: location
+    
+    sku: {
+    name: 'Dev(No SLA)_Standard_D11_v2'
+    tier: 'Basic'
+    capacity: 1
+    }
+    
+    properties: {
+    engineType: 'V2'
+    publicNetworkAccess: 'Enabled'
+    }
+    }
+    ```
+
+1. Run the following command to check whether your cluster was successfully created:
+
+    ```powershell
+    az kusto cluster show --cluster-name <clusterName> --resource-group <resourceGroupName>
+    ```
 
 ### [ARM template](#tab/arm)
 
@@ -741,6 +780,44 @@ The following code shows how to create a database. The package imports and envir
 
     ```azurepowershell-interactive
     Get-AzKustoDatabase -ClusterName mykustocluster -ResourceGroupName testrg -Name mykustodatabase
+    ```
+
+### [Bicep template](#tab/bicep)
+
+1. Add a database (child resource) to the cluster resource in your Bicep file:
+
+    ```powershell
+    resource database 'Microsoft.Kusto/clusters/databases@2023-05-02' = {
+    parent: cluster
+    name: 'myDatabase'
+    properties: {
+    softDeletePeriod: 'P7D'
+    hotCachePeriod: 'P1D'
+    }
+    }
+    ```
+
+1. Assign principals (optional):
+
+    ```powershell
+    resource dbPrincipal 'Microsoft.Kusto/clusters/databases/principalAssignments@2023-05-02' = {
+    parent: database
+    name: 'adminAssignment'
+    properties: {
+    principalId: '<object-id>'
+    principalType: 'User'
+    role: 'Admin'
+    }
+    }
+    ```
+
+1. Deploy the Bicep template using the following command:
+
+    ```shell
+    az deployment group create \
+    --resource-group my-rg \
+    --template-file main.bicep \
+    --parameters clusterName=myCluster    
     ```
 
 ### [ARM template](#tab/arm)
