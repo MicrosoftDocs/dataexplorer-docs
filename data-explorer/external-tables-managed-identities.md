@@ -80,7 +80,6 @@ The following table shows the required permissions by external resource. To impo
 |--|--|--|--|
 |Azure Blob Storage | Storage Blob Data Reader | Storage Blob Data Contributor |[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
 |Data Lake Storage Gen2| Storage Blob Data Reader | Storage Blob Data Contributor |[Assign an Azure role](/azure/storage/blobs/assign-azure-role-data-access?tabs=portal)|
-|Data Lake Storage Gen1| Reader | Contributor |[Assign an Azure role](/azure/data-lake-store/data-lake-store-secure-data?branch=main#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts)
 
 ### [SQL Server](#tab/sql-server)
 

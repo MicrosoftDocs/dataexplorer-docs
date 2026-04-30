@@ -10,7 +10,7 @@ ms.date: 07/30/2025
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The commands in this article can be used to create or alter an Azure Storage [external table](../query/schema-entities/external-tables.md) in the database from which the command is executed. An Azure Storage external table references data located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
+The commands in this article can be used to create or alter an Azure Storage [external table](../query/schema-entities/external-tables.md) in the database from which the command is executed. An Azure Storage external table references data located in Azure Blob Storage or Azure Data Lake Storage Gen2.
 
 > [!NOTE]
 > If the table exists, the `.create` command fails with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
@@ -41,7 +41,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 |*Partitions*| `string` || A comma-separated list of columns by which the external table is partitioned. Partition column can exist in the data file itself, or as part of the file path. See [partitions formatting](#partitions-formatting) to learn how this value should look.|
 |*PathFormat*| `string` ||An external data folder URI path format to use with partitions. See [path format](#path-format).|
 |*DataFormat*| `string` | :heavy_check_mark:|The data format, which can be any of the [ingestion formats](../ingestion-supported-formats.md). We recommend using the `Parquet` format for external tables to improve query and export performance, unless you use `JSON` paths mapping. When using an external table for [export scenario](data-export/export-data-to-an-external-table.md), you're limited to the following formats: `CSV`, `TSV`, `JSON`, and `Parquet`.|
-|*StorageConnectionString*| `string` | :heavy_check_mark:|One or more comma-separated paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 file systems or Azure Data Lake Gen 1 containers, including credentials. The provided connection string determines the external table storage type. See [storage connection strings](../api/connection-strings/storage-connection-strings.md).|
+|*StorageConnectionString*| `string` | :heavy_check_mark:|One or more comma-separated paths to Azure Blob Storage blob containers or Azure Data Lake Storage Gen2 file systems, including credentials. The provided connection string determines the external table storage type. See [storage connection strings](../api/connection-strings/storage-connection-strings.md).|
 |*Property*| `string` ||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
 
 > [!NOTE]
@@ -58,23 +58,23 @@ The following table lists the supported authentication methods for Azure Storage
 
 ::: moniker range="azure-data-explorer"
 
-| Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | Data Lake Storage Gen1 |
-|--|--|--|
-|[Impersonation](../api/connection-strings/storage-connection-strings.md#impersonation)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
-|[Managed identity](../api/connection-strings/storage-connection-strings.md#managed-identity)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
-|[Shared Access (SAS) token](../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|**Read permissions:** List + Read<br/>**Write permissions:** Write|This authentication method isn't supported in Gen1.|
-|[Microsoft Entra access token](../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No additional permissions required.|No additional permissions required.|
-|[Storage account access key](../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No additional permissions required.|This authentication method isn't supported in Gen1.|
+| Authentication method | Azure Blob Storage / Data Lake Storage Gen2 |
+|--|--|
+|[Impersonation](../api/connection-strings/storage-connection-strings.md#impersonation)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|
+|[Managed identity](../api/connection-strings/storage-connection-strings.md#managed-identity)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|
+|[Shared Access (SAS) token](../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|**Read permissions:** List + Read<br/>**Write permissions:** Write|
+|[Microsoft Entra access token](../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No additional permissions required.|
+|[Storage account access key](../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No additional permissions required.|
 
 ::: moniker-end
 ::: moniker range="microsoft-fabric"
 
-| Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | Data Lake Storage Gen1 |
-|--|--|--|
-|[Impersonation](../api/connection-strings/storage-connection-strings.md#impersonation)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
-|[Shared Access (SAS) token](../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|**Read permissions:** List + Read<br/>**Write permissions:** Write|This authentication method isn't supported in Gen1.|
-|[Microsoft Entra access token](../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No additional permissions required.|No additional permissions required.|
-|[Storage account access key](../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No additional permissions required.|This authentication method isn't supported in Gen1.|
+| Authentication method | Azure Blob Storage / Data Lake Storage Gen2 |
+|--|--|
+|[Impersonation](../api/connection-strings/storage-connection-strings.md#impersonation)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|
+|[Shared Access (SAS) token](../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|**Read permissions:** List + Read<br/>**Write permissions:** Write|
+|[Microsoft Entra access token](../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No additional permissions required.|
+|[Storage account access key](../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No additional permissions required.|
 
 ::: moniker-end
 
