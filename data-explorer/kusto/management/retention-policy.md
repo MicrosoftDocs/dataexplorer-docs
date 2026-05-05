@@ -42,9 +42,7 @@ A retention policy includes the following properties:
   * Defaults to `Enabled`.
   * If set to `Enabled`, data deleted **due to retention policy** will be recoverable for 14 days after it's been soft-deleted.
   * It is not possible to configure the recoverability period.
-  * Recoverability is managed at the database level.
-    * Enabling it on a table or materialized view can propagate recoverability to the entire database and will typically result in database-wide data recoverability. 
-    * To fully disable recoverability, it should be disabled across all tables and materialized views
+  * Recoverability is managed at the database level - enabling it on a single table or materialized view will typically propagate the behavior to the entire database.
 
 
 > [!NOTE]
@@ -134,7 +132,7 @@ Set all tables in the database to have a soft-delete period of seven days and di
   
 > [!NOTE]
 >
-> Even though only `MySpecialTable` has recoverability enabled, the system will typically enable recoverability for the entire database as a result.
+> Even though only `MySpecialTable` has recoverability enabled, recoverability will effectively be enabled for the entire database
 
 ### Soft-delete period of seven days, and `MySpecialTable` keeps its data indefinitely
 
