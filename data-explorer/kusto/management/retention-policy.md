@@ -44,7 +44,6 @@ A retention policy includes the following properties:
   * It is not possible to configure the recoverability period.
   * Recoverability is managed at the database level - enabling it on a single table or materialized view will typically propagate the behavior to the entire database.
 
-
 > [!NOTE]
 >
 > Data that is deleted using [soft delete](../concepts/data-soft-delete.md) or [purge](../concepts/data-purge.md) is not recoverable regardless of any retention or recoverability settings.
