@@ -128,10 +128,6 @@ Set all tables in the database to have a soft-delete period of seven days and di
   .alter-merge table MyTable2 policy retention softdelete = 7d recoverability = disabled
   .alter-merge table MySpecialTable policy retention softdelete = 14d recoverability = enabled
   ```
-  
-> [!NOTE]
->
-> Even though only `MySpecialTable` has recoverability enabled, recoverability will effectively be enabled for the entire database
 
 ### Soft-delete period of seven days, and `MySpecialTable` keeps its data indefinitely
 
