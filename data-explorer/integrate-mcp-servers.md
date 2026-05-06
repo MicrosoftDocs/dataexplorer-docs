@@ -43,8 +43,7 @@ The MCP Server is at the core of the system and acts as a bridge between AI agen
 
 This architecture lets you build modular, scalable, and secure intelligent applications that respond to real-time signals. MCP uses a client-server architecture, so AI applications can interact with external tools efficiently. The architecture includes the following components:
 
-* **MCP Host**: The host environment where the AI model runs (like GPT-4, Claude, or Gemini).
-* **MCP Client**: An intermediary service forwards the AI model's requests to MCP servers, like GitHub Copilot, Cline, or Claude Desktop.
+- **MCP Host**: The application where AI interactions happen. For example, Visual Studio Code with GitHub Copilot, Claude Desktop, Cline. The host contains the AI model connection, a tool orchestrator, and one or more MCP clients.
 * **MCP Server**: Lightweight applications exposing specific capabilities by natural language APIs, databases. For example, to execute KQL queries for real-time data retrieval from ADX clusters.
 
 ## Key features
