@@ -1,12 +1,14 @@
 ---
 ms.topic: include
-ms.date: 04/27/2026
+ms.date: 05/07/2026
 ---
 
 The function `slm_embeddings_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that generates text embeddings using local Small Language Models (SLM). This function converts text into numerical vector representations that can be used for semantic search, similarity analysis, and other natural language processing tasks.
 Currently the function supports [harrier-v1-270m](https://huggingface.co/microsoft/harrier-oss-v1-270m), [jina-v2-small](https://huggingface.co/jinaai/jina-embeddings-v2-small-en), and [e5-small-v2](https://huggingface.co/intfloat/e5-small-v2) models.
 
-[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
+## Prerequisites
+
+* The `python()` plugin must be [enabled on the cluster](/azure/data-explorer/language-extensions#enable-language-extensions-on-your-cluster) with either the `3.11.7` or `3.11.7 DL` Python sandbox image. This is required for the inline Python used in the function. To review the package contents for these images, see [Python package reference](../query/python-package-reference.md).
 * Alter the cluster's [callout policy](../management/callout-policy.md) to allow access to the external artifacts (which are referenced in the KQL code below):
 
 ```kusto
