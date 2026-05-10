@@ -3,7 +3,7 @@ title: Comparing different multi-tenant solutions with Azure Data Explorer
 description: Learn about the different ways to architect a multi-tenant solution in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 06/20/2023
+ms.date: 05/10/2026
 ---
 # How to architect a multi-tenant solution with Azure Data Explorer
 
@@ -14,6 +14,10 @@ A *tenant* can represent a customer, a group of users, or any classifications of
 An important factor is the way end-users access their tenant data. When end-users access Azure Data Explorer directly, access control must be configured in Azure Data Explorer to isolate the user's view to their own data. When a proxy application accesses their data in Azure Data Explorer, the application can do the isolation.
 
 This article describes some deployment architectures and provides characteristics for each. You can use the characteristics to help you decide which architecture works best for your solution.
+
+> [!IMPORTANT]
+>
+> A multi-tenant solution is also supported in Microsoft Fabric's [Real-Time Intelligence](/fabric/real-time-intelligence/overview), using KQL databases inside an [Eventhouse](/fabric/real-time-intelligence/eventhouse).
 
 ## Noisy neighbor
 
