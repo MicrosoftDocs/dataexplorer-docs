@@ -11,7 +11,7 @@ The concept of multi-tenancy in Azure Data Explorer refers to serving different 
 
 > [!IMPORTANT]
 >
-> A multi-tenant solution is also supported in Microsoft Fabric's [Real-Time Intelligence](/fabric/real-time-intelligence/overview) workload, using KQL databases inside an [Eventhouse](/fabric/real-time-intelligence/eventhouse).
+> A multi-tenant solution can also be architected in Microsoft Fabric's [Real-Time Intelligence](/fabric/real-time-intelligence/overview) workload, using KQL databases inside an [Eventhouse](/fabric/real-time-intelligence/eventhouse).
 
 A *tenant* can represent a customer, a group of users, or any classifications of users where data needs to be segregated along the tenants' boundaries. You can also have multi-level multi-tenancy scenario, such as multiple applications that each have multiple tenants. This scenario isn't covered by this article but similar principles apply.
 
