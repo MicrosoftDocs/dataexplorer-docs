@@ -42,7 +42,7 @@ A retention policy includes the following properties:
   * Defaults to `Enabled`.
   * If set to `Enabled`, data deleted **due to retention policy** will be recoverable for 14 days after it's been soft-deleted.
   * It is not possible to configure the recoverability period.
-  * Recoverability is managed at the database level - enabling it on a single table or materialized view will typically propagate the behavior to the entire database.
+  * Recoverability is managed at the database level. Enabling it on a single table or materialized view will typically propagate the behavior to the entire database.
 
 > [!NOTE]
 >
@@ -128,6 +128,10 @@ Set all tables in the database to have a soft-delete period of seven days and di
   .alter-merge table MyTable2 policy retention softdelete = 7d recoverability = disabled
   .alter-merge table MySpecialTable policy retention softdelete = 14d recoverability = enabled
   ```
+
+> [!NOTE]
+>
+> [Recoverability](#the-policy-object) is managed at the database level, so enabling it on `MySpecialTable` may also enable it on tables `MyTable1` and `MyTable2`.
 
 ### Soft-delete period of seven days, and `MySpecialTable` keeps its data indefinitely
 
