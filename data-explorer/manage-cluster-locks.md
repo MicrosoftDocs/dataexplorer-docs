@@ -3,7 +3,7 @@ title: Manage Cluster Locks in Azure Data Explorer
 description: Learn how to manage Azure Data Explorer cluster locks to prevent accidental deletion of data using the Azure portal.
 ms.reviewer: orhasban
 ms.topic: how-to
-ms.date: 03/15/2026
+ms.date: 05/11/2026
 ---
 
 # Manage Azure Data Explorer cluster locks to prevent accidental deletion in your cluster
@@ -18,6 +18,9 @@ In the Azure portal, you can set **Delete** or **Read-only** locks that prevent 
 | **Read-only** | Authorized users can read a cluster, but they can't delete or update it. Applying this lock is similar to restricting all authorized users to the permissions that the Reader role provides. |
 
 This article describes how to lock and unlock your cluster by using the Azure portal. For more information about locking Azure resources by using the portal, see [Lock your resources to protect your infrastructure](/azure/azure-resource-manager/management/lock-resources). For information about how to lock your cluster programmatically, see [Management Locks - Create Or Update At Resource Level](/rest/api/resources/management-locks/create-or-update-at-resource-level).
+
+> [!IMPORTANT]
+> We recommend applying a lock to your cluster to protect against both accidental deletion and infrastructure-as-code scenarios. If you use tools like Terraform to manage your cluster infrastructure, a read-only lock is essential. Terraform may delete and recreate your cluster when it detects changes to read-only properties, resulting in complete data loss. An ARM lock prevents this destructive behavior.
 
 ## Lock your cluster in the Azure portal
 

@@ -3,7 +3,7 @@ title: Azure Data Explorer Business Continuity Overview
 description: Learn how Azure Data Explorer ensures business continuity and disaster recovery with high availability and disaster recovery configurations.
 ms.reviewer: ankhanol
 ms.topic: concept-article
-ms.date: 08/27/2025
+ms.date: 05/11/2026
 ms.custom:
   - ai-gen-docs-bap
   - ai-gen-title
@@ -82,6 +82,7 @@ This solution offers the least recoverability (highest RPO and RTO), is the lowe
 
 Regardless of which disaster recovery configuration is chosen, follow these best practices:
 
+* **Lock your cluster**: Apply a **Delete** ARM management lock to your clusters. This prevents accidental deletion and protects against infrastructure-as-code tools (such as Terraform) that may attempt to delete and recreate your cluster when modifying read-only properties. See [Manage cluster locks](manage-cluster-locks.md) for implementation guidance.
 * All database objects, policies, and configurations should be persisted in source control so they can be released to the cluster from your release automation tool. For more information, see [Azure DevOps support for Azure Data Explorer](devops.md).
 * Design, develop, and implement validation routines to ensure all clusters are in-sync from a data perspective. Azure Data Explorer supports [cross cluster joins](/kusto/query/cross-cluster-or-database-queries?pivots=azuredataexplorer?view=azure-data-explorer&preserve-view=true). A simple count or rows across tables can help validate.
 * Release procedures should involve governance checks and balances that ensure mirroring of the clusters.
