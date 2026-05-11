@@ -73,7 +73,7 @@ The characteristics of this architecture are:
 
 * **Provisioning a new tenant**: Provisioning a new tenant doesn't require any database creation or schema adjustment. The new **tenant ID** is used in new records.
 
-* **Removing a tenant**: Requires a [soft delete](/kusto/concepts/data-soft-delete?view=azure-data-explorer&preserve-view=true) or [purge](/kusto/concepts/data-purge?view=azure-data-explorer&preserve-view=true) of the tenant's data. The former is more efficient, while the latter supports GDPR obligations. You can batch multiple purges together, for example, at the end of week to limit the impact on resource consumption.
+* **Removing a tenant**: Requires a [soft delete](/kusto/concepts/data-soft-delete?view=azure-data-explorer&preserve-view=true) or [purge](/kusto/concepts/data-purge?view=azure-data-explorer&preserve-view=true) of the tenant's data. A soft delete is more efficient, while purge supports GDPR obligations. You can batch multiple purges together, for example, at the end of week to limit the impact on resource consumption.
 
     [!INCLUDE [gdpr-intro-sentence](includes/gdpr-intro-sentence.md)]
 
