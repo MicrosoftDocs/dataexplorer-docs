@@ -174,7 +174,7 @@ For example:
 * Set an RLS policy that masks personally identifiable information (PII), and enables developers to query production environments for troubleshooting purposes without violating compliance regulations.
 * A hospital can set an RLS policy that allows nurses to view data rows for their patients only.
 * A bank can set an RLS policy to restrict access to financial data rows based on an employee's business division or role.
-* A multi-tenant application can store data from many tenants in a single tableset (which is efficient). They would use an RLS policy to enforce a logical separation of each tenant's data rows from every other tenant's rows, so each tenant can see only its data rows.
+* A multitenant application can store data from many tenants in a single tableset (which is efficient). They would use an RLS policy to enforce a logical separation of each tenant's data rows from every other tenant's rows, so each tenant can see only its data rows.
 
 ## Performance impact on queries
 
