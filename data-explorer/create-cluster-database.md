@@ -59,7 +59,7 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
 ### [Azure CLI](#tab/azcli)
 
 > [!IMPORTANT]
-> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](https://learn.microsoft.com/cli/azure/kusto/cluster?view=azure-cli-latest) to ensure you have the latest CLI commands for Azure Data Explorer.
+> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](/cli/azure/kusto/cluster?view=azure-cli-latest&preserve-view=true) to ensure you have the latest CLI commands for Azure Data Explorer.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
@@ -164,44 +164,6 @@ Below is an example of an ARM template that creates an Azure Data Explorer clust
     ]
 }
 ```
-
-### Use the ARM template
-
-The following steps explain how to deploy the ARM template using PowerShell.
-
-1. Open [Azure Cloud Shell](https://shell.azure.com), and follow the instructions to sign in.
-1. Select **Copy** to copy the PowerShell script.
-
-    ```azurepowershell-interactive
-    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
-    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $resourceGroupName = "${projectName}rg"
-    $clusterName = "${projectName}cluster"
-    $parameters = @{}
-    $parameters.Add("clusters_kustocluster_name", $clusterName)
-    $templateUri = "https://azure.microsoft.com/resources/templates/kusto-cluster-database/"
-    New-AzResourceGroup -Name $resourceGroupName -Location $location
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -TemplateParameterObject $parameters
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-1. Right-click the shell console, and then select **Paste**.
-
-    > [!NOTE]
-    > It takes a few minutes to create an Azure Data Explorer cluster and database.
-
-1. To verify the deployment, use the following Azure PowerShell script. If the Cloud Shell is still open, you don't need to copy/run the first line (Read-Host).
-
-    ```azurepowershell-interactive
-    $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
-    
-    Install-Module -Name Az.Kusto
-    $resourceGroupName = "${projectName}rg"
-    $clusterName = "${projectName}cluster"
-    
-    Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
-    Write-Host "Press [ENTER] to continue ..."
-    ```
 
 ### [Bicep](#tab/bicep)
 
@@ -533,7 +495,7 @@ The following code shows how to create a cluster.
 ### [Azure CLI](#tab/azcli)
 
 > [!IMPORTANT]
-> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](https://learn.microsoft.com/cli/azure/kusto/cluster?view=azure-cli-latest) to ensure you have the latest CLI commands for Azure Data Explorer.
+> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](/cli/azure/kusto/cluster?view=azure-cli-latest&preserve-view=true) to ensure you have the latest CLI commands for Azure Data Explorer.
 
 1. Create your cluster by using the following command:
 
@@ -754,7 +716,7 @@ The following code shows how to create a database. The package imports and envir
 ### [Azure CLI](#tab/azcli)
 
 > [!IMPORTANT]
-> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](https://learn.microsoft.com/cli/azure/kusto/cluster?view=azure-cli-latest) to ensure you have the latest CLI commands for Azure Data Explorer.
+> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](/cli/azure/kusto/cluster?view=azure-cli-latest&preserve-view=true) to ensure you have the latest CLI commands for Azure Data Explorer.
 
 1. Create your database by using the following command:
 
