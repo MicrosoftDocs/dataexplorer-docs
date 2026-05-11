@@ -71,7 +71,7 @@ Take into account the following structures:
   - Problem/scenario (2-3 paragraphs): What challenges does this address?
   - How it works (2-4 paragraphs): Explain the feature's functionality
   - Use cases (2-3 scenarios): Specific examples of when to use this feature
-    - Multi-tenant environments
+    - Multitenant environments
     - Department-based access
     - Role-based permissions
     - Compliance requirements
