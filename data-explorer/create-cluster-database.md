@@ -101,8 +101,6 @@ This section guides you through the process of creating an Azure Data Explorer c
 
 ### [ARM template](#tab/arm)
 
-To learn how to deploy the following ARM template using PowerShell, see [Use the ARM template](#use-the-arm-template). Alternatively, you can [deploy the template in the Azure portal](/samples/azure/azure-quickstart-templates/kusto-cluster-database/) by selecting **Deploy to Azure**.
-
 ### ARM template
 
 Below is an example of an ARM template that creates an Azure Data Explorer cluster and a database within that cluster with minimal configuration. For full details and supported properties, see [ARM template cluster reference](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-arm-template) and [ARM template database reference](/azure/templates/microsoft.kusto/clusters/databases?pivots=deployment-language-arm-template).
