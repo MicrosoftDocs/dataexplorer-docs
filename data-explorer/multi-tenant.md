@@ -1,17 +1,17 @@
 ---
-title: Comparing different multi-tenant solutions with Azure Data Explorer
-description: Learn about the different ways to architect a multi-tenant solution in Azure Data Explorer.
+title: Comparing different multitenant solutions with Azure Data Explorer
+description: Learn about the different ways to architect a multitenant solution in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 05/10/2026
+ms.date: 05/11/2026
 ---
-# How to architect a multi-tenant solution with Azure Data Explorer
+# How to architect a multitenant solution with Azure Data Explorer
 
 The concept of multi-tenancy in Azure Data Explorer refers to serving different tenants and storing their data in a single cluster.
 
 > [!IMPORTANT]
 >
-> A multi-tenant solution can also be architected in Microsoft Fabric's [Real-Time Intelligence](/fabric/real-time-intelligence/overview) workload, using KQL databases inside an [Eventhouse](/fabric/real-time-intelligence/eventhouse).
+> A multitenant solution can also be architected in Microsoft Fabric's [Real-Time Intelligence](/fabric/real-time-intelligence/overview) workload, using KQL databases inside an [Eventhouse](/fabric/real-time-intelligence/eventhouse).
 
 A *tenant* can represent a customer, a group of users, or any classifications of users where data needs to be segregated along the tenants' boundaries. You can also have multi-level multi-tenancy scenario, such as multiple applications that each have multiple tenants. This scenario isn't covered by this article but similar principles apply.
 
@@ -37,7 +37,7 @@ The next sections explore deployment architectures in detail.  This section cont
 
 ## Architecture: One tenant per database
 
-:::image type="content" source="media/multi-tenant/one-tenant-per-db.png" alt-text="Diagram showing the architecture for one tenant per database.":::
+:::image type="content" source="media/multitenant/one-tenant-per-db.png" alt-text="Diagram showing the architecture for one tenant per database.":::
 
 This is a popular and straight forward architecture. Each tenant gets its own database. Each database has the same schema.
 
@@ -52,7 +52,7 @@ The characteristics of this architecture are:
 * **Retention and caching policies**: Each tenant can have its own unique policies, which enable you to provide custom retention and caching policies to your customers.
 
 * **Security boundary per tenant**:
-  * For multi-tenant application (proxy): Configure your application to target the relevant database. Use [access restriction](/kusto/query/cross-cluster-or-database-queries?view=azure-data-explorer&preserve-view=true#qualified-names-and-restrict-access-statements) on queries to prohibit [cross-database queries](/kusto/query/cross-cluster-or-database-queries?view=azure-data-explorer&preserve-view=true).
+  * For multitenant application (proxy): Configure your application to target the relevant database. Use [access restriction](/kusto/query/cross-cluster-or-database-queries?view=azure-data-explorer&preserve-view=true#qualified-names-and-restrict-access-statements) on queries to prohibit [cross-database queries](/kusto/query/cross-cluster-or-database-queries?view=azure-data-explorer&preserve-view=true).
   * For users with direct access: Users can be granted access at the [database level](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
 
 * **Aggregating data from multiple tenants at scale**: Use the [union operator](/kusto/query/union-operator?view=azure-data-explorer&preserve-view=true) to aggregate data between databases. However, this method can become cumbersome as the number of tenants increases. Even though aggregating data from multiple tenants might be a design goal from the tenant's perspective, it might be of interest for solution owner to aggregate data from all tenants to gather statistics.
@@ -65,7 +65,7 @@ The characteristics of this architecture are:
 
 ## Architecture: One table for many tenants
 
-:::image type="content" source="media/multi-tenant/one-db-for-many-tenants.png" alt-text="Diagram showing the architecture for one database for many tenants.":::
+:::image type="content" source="media/multitenant/one-db-for-many-tenants.png" alt-text="Diagram showing the architecture for one database for many tenants.":::
 
 This architecture is more aggressive in its consolidation, using a single database for all tenants. Each table in the database has a **Tenant ID** column, or equivalent, which allows for filtering for a single tenant's data. You can [partition](/kusto/management/partitioning-policy?view=azure-data-explorer&preserve-view=true) tables by tenant to improve query performance, since most queries are likely to filter by tenant. Where possible, you should consider partition with another column using a *compound* partition key. For example, you can create a *compound* partition key concatenating the **tenant ID** and another columns' values.
 
@@ -82,20 +82,20 @@ The characteristics of this architecture are:
 * **Retention and caching policies**: The policies are the same for all tenants since they all share the same table.
 
 * **Security boundary per tenant**:
-  * For multi-tenant application (proxy): Use the [Restrict statement](/kusto/query/restrict-statement?view=azure-data-explorer&preserve-view=true)
+  * For multitenant application (proxy): Use the [Restrict statement](/kusto/query/restrict-statement?view=azure-data-explorer&preserve-view=true)
   * For users with direct access: Use the [Row Level Security Policy](/kusto/management/row-level-security-policy) and familiarize yourself with its [limitations](/kusto/management/row-level-security-policy?view=azure-data-explorer&preserve-view=true#limitations). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
 
 * **Aggregating data from multiple tenants at scale**: Users with the sufficient access permissions can run a standard aggregation query on multiple tenants' data.
 
 * **Extents fragmentation**: Since all tenants ingest data into the same table, data can usually be consolidated and efficiently ingested in one, or a few, extents.
 
-* **Materialized views and partitioning policy**: These can be used on multi-tenant table. You can improve performance by partitioning on the **Tenant ID**, or equivalent, column. For more information, see [Scenarios for partition policies](/kusto/management/partitioning-policy?view=azure-data-explorer&preserve-view=true#supported-scenarios).
+* **Materialized views and partitioning policy**: These can be used on multitenant table. You can improve performance by partitioning on the **Tenant ID**, or equivalent, column. For more information, see [Scenarios for partition policies](/kusto/management/partitioning-policy?view=azure-data-explorer&preserve-view=true#supported-scenarios).
 
 * **Event Grid and Event Hubs data connections**: You consolidated data connections since data for all tenants ends up in one table.
 
 ## Architecture: One tenant per table in a single database
 
-:::image type="content" source="media/multi-tenant/one-tenant-per-table.png" alt-text="Diagram showing the architecture for one tenant per table.":::
+:::image type="content" source="media/multitenant/one-tenant-per-table.png" alt-text="Diagram showing the architecture for one tenant per table.":::
 
 This architecture is a combination of the previous architectures where the data of all tenants ends up in a single database but separate tables. This architecture fails to capture all the advantages of the other architectures.
 
