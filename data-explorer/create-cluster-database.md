@@ -4,7 +4,7 @@ description: Learn how to create an Azure Data Explorer cluster and database.
 ms.reviewer: lugoldbe
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 04/29/2026
+ms.date: 05/11/2026
 ---
 
 # Create an Azure Data Explorer cluster and database
@@ -18,6 +18,22 @@ In this article, you'll learn how to create a cluster and a database using eithe
 ## Prerequisites
 
 Prerequisites by method of cluster and database creation:
+
+### [ARM template](#tab/arm)
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
+
+### [Bicep](#tab/bicep)
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
+
+### [PowerShell](#tab/powershell)
+
+* Set up your environment using the instructions in [Use Kusto cmdlets in Azure PowerShell](/kusto/api/powershell/azure-powershell?view=azure-data-explorer&preserve-view=true).
+
+### Configure parameters
+
+The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps to set up the environment:
 
 ### [C#](#tab/csharp)
 
@@ -41,6 +57,9 @@ Prerequisites by method of cluster and database creation:
 * [A Microsoft Entra application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal). Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
 ### [Azure CLI](#tab/azcli)
+
+> [!IMPORTANT]
+> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](https://learn.microsoft.com/cli/azure/kusto/cluster?view=azure-cli-latest) to ensure you have the latest CLI commands for Azure Data Explorer.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
@@ -74,27 +93,182 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
     az group create --name testrg --location westus
     ```
 
-### [PowerShell](#tab/powershell)
-
-* Set up your environment using the instructions in [Use Kusto cmdlets in Azure PowerShell](/kusto/api/powershell/azure-powershell?view=azure-data-explorer&preserve-view=true).
-
-### Configure parameters
-
-The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps to set up the environment:
-
-### [Bicep template](#tab/bicep)
-
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-
-### [ARM template](#tab/arm)
-
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-
 ---
 
 ## Create an Azure Data Explorer cluster
 
 This section guides you through the process of creating an Azure Data Explorer cluster. Choose the relevant tab for your preferred method to create the cluster.
+
+### [ARM template](#tab/arm)
+
+To learn how to deploy the following ARM template using PowerShell, see [Use the ARM template](#use-the-arm-template). Alternatively, you can [deploy the template in the Azure portal](/samples/azure/azure-quickstart-templates/kusto-cluster-database/) by selecting **Deploy to Azure**.
+
+### ARM template
+
+Below is an example of an ARM template that creates an Azure Data Explorer cluster and a database within that cluster with minimal configuration. For full details and supported properties, see [ARM template cluster reference](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-arm-template) and [ARM template database reference](/azure/templates/microsoft.kusto/clusters/databases?pivots=deployment-language-arm-template).
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusters_kustocluster_name": {
+            "type": "string",
+            "defaultValue": "[concat('kusto', uniqueString(resourceGroup().id))]",
+            "metadata": {
+                "description": "Name of the cluster to create"
+            }
+        },
+        "databases_kustodb_name": {
+            "type": "string",
+            "defaultValue": "kustodb",
+            "metadata": {
+                "description": "Name of the database to create"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('clusters_kustocluster_name')]",
+            "type": "Microsoft.Kusto/clusters",
+            "apiVersion": "2025-02-14",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard_E8ads_v5",
+                "tier": "Standard",
+                "capacity": 2
+            }
+        },
+        {
+            "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
+            "type": "Microsoft.Kusto/clusters/databases",
+            "apiVersion": "2025-02-14",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
+            ],
+            "kind": "ReadWrite",
+            "properties": {
+                "softDeletePeriod": "P365D",
+                "hotCachePeriod": "P31D"
+            }
+        }
+    ]
+}
+```
+
+### Use the ARM template
+
+The following steps explain how to deploy the ARM template using PowerShell.
+
+1. Open [Azure Cloud Shell](https://shell.azure.com), and follow the instructions to sign in.
+1. Select **Copy** to copy the PowerShell script.
+
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+    $clusterName = "${projectName}cluster"
+    $parameters = @{}
+    $parameters.Add("clusters_kustocluster_name", $clusterName)
+    $templateUri = "https://azure.microsoft.com/resources/templates/kusto-cluster-database/"
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -TemplateParameterObject $parameters
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+1. Right-click the shell console, and then select **Paste**.
+
+    > [!NOTE]
+    > It takes a few minutes to create an Azure Data Explorer cluster and database.
+
+1. To verify the deployment, use the following Azure PowerShell script. If the Cloud Shell is still open, you don't need to copy/run the first line (Read-Host).
+
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
+    
+    Install-Module -Name Az.Kusto
+    $resourceGroupName = "${projectName}rg"
+    $clusterName = "${projectName}cluster"
+    
+    Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+### [Bicep](#tab/bicep)
+
+Below is an example of a Bicep template that creates an Azure Data Explorer cluster and a database within that cluster with minimal configuration. For full details and supported properties, see [Bicep cluster reference](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-bicep) and [Bicep database reference](/azure/templates/microsoft.kusto/clusters/databases?pivots=deployment-language-bicep).
+
+``` bicep
+    @description('Name of the cluster to create')
+    param clusterName string = 'kusto${uniqueString(resourceGroup().id)}'
+    
+    @description('Name of the database to create')
+    param databaseName string = 'kustodb'
+    
+    @description('Location for all resources.')
+    param location string = resourceGroup().location
+    
+    resource cluster 'Microsoft.Kusto/clusters@2025-02-14' = {
+      name: clusterName
+      location: location
+      sku: {
+        name: 'Standard_E8ads_v5'
+        tier: 'Standard'
+        capacity: 2
+      }
+    }
+    
+    
+    resource database 'Microsoft.Kusto/clusters/databases@2025-02-14' = {
+      parent: cluster
+      name: databaseName
+      location: location
+      kind: 'ReadWrite'
+      properties: {
+        softDeletePeriod: 'P365D'
+        hotCachePeriod: 'P31D'
+      }
+    }
+```
+
+Run the following command to check whether your cluster was successfully created:
+
+```powershell
+    az kusto cluster show --cluster-name <clusterName> --resource-group <resourceGroupName>
+```
+
+### [PowerShell](#tab/powershell)
+
+1. Create your cluster by using the following command:
+
+    ```azurepowershell-interactive
+     New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location westus2 -SkuTier Standard -SkuCapacity 2 -SkuName 'Standard_E8ads_v5'
+    ```
+
+   |**Setting** | **Suggested value** | **Field description**|
+   |---|---|---|
+   | Name | *mykustocluster* | The desired name of your cluster.|
+   | Sku | *Standard_E8ads_v5* | The SKU that will be used for your cluster. |
+   | ResourceGroupName | *testrg* | The resource group name where the cluster will be created. |
+
+    There are other optional parameters that you can use, such as the capacity of the cluster.
+
+1. Run the following command to check whether your cluster was successfully created:
+
+    ```azurepowershell-interactive
+    Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
+    ```
+
+1. Confirm the successful creation of the cluster by verifying the result contains `provisioningState` as `Succeeded`.
 
 ### [C#](#tab/csharp)
 
@@ -358,6 +532,9 @@ The following code shows how to create a cluster.
 
 ### [Azure CLI](#tab/azcli)
 
+> [!IMPORTANT]
+> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](https://learn.microsoft.com/cli/azure/kusto/cluster?view=azure-cli-latest) to ensure you have the latest CLI commands for Azure Data Explorer.
+
 1. Create your cluster by using the following command:
 
     ```azurecli-interactive
@@ -381,206 +558,41 @@ The following code shows how to create a cluster.
 
 1. Confirm the successful creation of the cluster by verifying the result contains `provisioningState` as `Succeeded`.
 
-### [PowerShell](#tab/powershell)
-
-1. Create your cluster by using the following command:
-
-    ```azurepowershell-interactive
-     New-AzKustoCluster -ResourceGroupName testrg -Name mykustocluster -Location westus2 -SkuTier Standard -SkuCapacity 2 -SkuName 'Standard_E8ads_v5'
-    ```
-
-   |**Setting** | **Suggested value** | **Field description**|
-   |---|---|---|
-   | Name | *mykustocluster* | The desired name of your cluster.|
-   | Sku | *Standard_E8ads_v5* | The SKU that will be used for your cluster. |
-   | ResourceGroupName | *testrg* | The resource group name where the cluster will be created. |
-
-    There are other optional parameters that you can use, such as the capacity of the cluster.
-
-1. Run the following command to check whether your cluster was successfully created:
-
-    ```azurepowershell-interactive
-    Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
-    ```
-
-1. Confirm the successful creation of the cluster by verifying the result contains `provisioningState` as `Succeeded`.
-
-### [Bicep template](#tab/bicep)
-
-1. Define your parameters:
-
-    ```powershell
-    param clusters_name string = 'kusto${uniqueString(resourceGroup().id)}'
-    param location string = resourceGroup().location
-    ```
-
-1. Create a cluster resource in your Bicep file:
-
-    ```powershell
-    resource cluster 'Microsoft.Kusto/clusters@2023-05-02' = {
-    name: clusterName
-    location: location
-    
-    sku: {
-    name: 'Dev(No SLA)_Standard_D11_v2'
-    tier: 'Basic'
-    capacity: 1
-    }
-    
-    properties: {
-    engineType: 'V2'
-    publicNetworkAccess: 'Enabled'
-    }
-    }
-    ```
-
-1. Run the following command to check whether your cluster was successfully created:
-
-    ```powershell
-    az kusto cluster show --cluster-name <clusterName> --resource-group <resourceGroupName>
-    ```
-
-### [ARM template](#tab/arm)
-
-To learn how to deploy the following ARM template using PowerShell, see [Use the ARM template](#use-the-arm-template). Alternatively, you can [deploy the template in the Azure portal](/samples/azure/azure-quickstart-templates/kusto-cluster-database/) by selecting **Deploy to Azure**.
-
-### ARM template
-
-You can use this template for your own deployments, or customize it to meet your requirements. For the JSON syntax and properties to use in a template, see [Microsoft.Kusto resource types](/azure/templates/microsoft.kusto/allversions).
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "clusters_kustocluster_name": {
-            "type": "string",
-            "defaultValue": "[concat('kusto', uniqueString(resourceGroup().id))]",
-            "metadata": {
-                "description": "Name of the cluster to create"
-            }
-        },
-        "databases_kustodb_name": {
-            "type": "string",
-            "defaultValue": "kustodb",
-            "metadata": {
-                "description": "Name of the database to create"
-            }
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]",
-            "metadata": {
-                "description": "Location for all resources."
-            }
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "name": "[parameters('clusters_kustocluster_name')]",
-            "type": "Microsoft.Kusto/clusters",
-            "sku": {
-                "name": "Standard_E8ads_v5",
-                "tier": "Standard",
-                "capacity": 2
-            },
-            "apiVersion": "2022-12-29",
-            "location": "[parameters('location')]",
-            "tags": {
-                "Created By": "GitHub quickstart template"
-            },
-            "properties": {
-                "trustedExternalTenants": [],
-                "optimizedAutoscale": {
-                    "version": 1,
-                    "isEnabled": true,
-                    "minimum": 2,
-                    "maximum": 10
-                },
-                "enableDiskEncryption": false,
-                "enableStreamingIngest": false,
-                "virtualNetworkConfiguration": {
-                    "subnetId": "<subnet resource id>",
-                    "enginePublicIpId": "<Engine service's public IP address resource id>",
-                    "dataManagementPublicIpId": "<Data management's service public IP address resource id>"
-                },
-                "keyVaultProperties": {
-                    "keyName": "<Key name>",
-                    "keyVaultUri": "<Key vault uri>",
-                    "userIdentity": "<ResourceId of user assigned managed identity>"
-                },
-                "enablePurge": false,
-                "enableDoubleEncryption": false,
-                "engineType": "V3"
-            },
-            "identity": {
-                "type": "SystemAssigned, UserAssigned",
-                "userAssignedIdentities": {
-                    "<ResourceId of managed identity>": {}
-                }
-            }
-        },
-        {
-            "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
-            "type": "Microsoft.Kusto/clusters/databases",
-            "apiVersion": "2022-12-29",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
-            ],
-            "properties": {
-                "softDeletePeriodInDays": 365,
-                "hotCachePeriodInDays": 31
-            }
-        }
-    ]
-}
-```
-
-### Use the ARM template
-
-The following steps explain how to deploy the ARM template using PowerShell.
-
-1. Open [Azure Cloud Shell](https://shell.azure.com), and follow the instructions to sign in.
-1. Select **Copy** to copy the PowerShell script.
-
-    ```azurepowershell-interactive
-    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
-    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $resourceGroupName = "${projectName}rg"
-    $clusterName = "${projectName}cluster"
-    $parameters = @{}
-    $parameters.Add("clusters_kustocluster_name", $clusterName)
-    $templateUri = "https://azure.microsoft.com/resources/templates/kusto-cluster-database/"
-    New-AzResourceGroup -Name $resourceGroupName -Location $location
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -TemplateParameterObject $parameters
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-1. Right-click the shell console, and then select **Paste**.
-
-    > [!NOTE]
-    > It takes a few minutes to create an Azure Data Explorer cluster and database.
-
-1. To verify the deployment, use the following Azure PowerShell script. If the Cloud Shell is still open, you don't need to copy/run the first line (Read-Host).
-
-    ```azurepowershell-interactive
-    $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
-    
-    Install-Module -Name Az.Kusto
-    $resourceGroupName = "${projectName}rg"
-    $clusterName = "${projectName}cluster"
-    
-    Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
 ---
 
 ## Create an Azure Data Explorer database
 
 In this section, you'll create a database within the cluster created in the previous section.
+
+### [ARM template](#tab/arm)
+
+The cluster and database are created together with the ARM template in the previous section.
+
+### [Bicep](#tab/bicep)
+
+The cluster and database are created together with the Bicep template in the previous section.
+
+### [PowerShell](#tab/powershell)
+
+1. Create your database by using the following command:
+
+    ```azurepowershell-interactive
+    New-AzKustoDatabase -ResourceGroupName testrg -ClusterName mykustocluster -Name mykustodatabase -SoftDeletePeriod 3650:00:00:00 -HotCachePeriod 3650:00:00:00
+    ```
+
+   |**Setting** | **Suggested value** | **Field description**|
+   |---|---|---|
+   | ClusterName | *mykustocluster* | The name of your cluster where the database will be created.|
+   | Name | *mykustodatabase* | The name of your database.|
+   | ResourceGroupName | *testrg* | The resource group name where the cluster will be created. |
+   | SoftDeletePeriod | *3650:00:00:00* | The amount of time that data will be kept available to query. |
+   | HotCachePeriod | *3650:00:00:00* | The amount of time that data will be kept in cache. |
+
+1. Run the following command to see the database that you created:
+
+    ```azurepowershell-interactive
+    Get-AzKustoDatabase -ClusterName mykustocluster -ResourceGroupName testrg -Name mykustodatabase
+    ```
 
 ### [C#](#tab/csharp)
 
@@ -741,6 +753,9 @@ The following code shows how to create a database. The package imports and envir
 
 ### [Azure CLI](#tab/azcli)
 
+> [!IMPORTANT]
+> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](https://learn.microsoft.com/cli/azure/kusto/cluster?view=azure-cli-latest) to ensure you have the latest CLI commands for Azure Data Explorer.
+
 1. Create your database by using the following command:
 
     ```azurecli-interactive
@@ -759,70 +774,6 @@ The following code shows how to create a database. The package imports and envir
     ```azurecli-interactive
     az kusto database show --database-name clidatabase --resource-group testrg --cluster-name azureclitest
     ```
-
-### [PowerShell](#tab/powershell)
-
-1. Create your database by using the following command:
-
-    ```azurepowershell-interactive
-    New-AzKustoDatabase -ResourceGroupName testrg -ClusterName mykustocluster -Name mykustodatabase -SoftDeletePeriod 3650:00:00:00 -HotCachePeriod 3650:00:00:00
-    ```
-
-   |**Setting** | **Suggested value** | **Field description**|
-   |---|---|---|
-   | ClusterName | *mykustocluster* | The name of your cluster where the database will be created.|
-   | Name | *mykustodatabase* | The name of your database.|
-   | ResourceGroupName | *testrg* | The resource group name where the cluster will be created. |
-   | SoftDeletePeriod | *3650:00:00:00* | The amount of time that data will be kept available to query. |
-   | HotCachePeriod | *3650:00:00:00* | The amount of time that data will be kept in cache. |
-
-1. Run the following command to see the database that you created:
-
-    ```azurepowershell-interactive
-    Get-AzKustoDatabase -ClusterName mykustocluster -ResourceGroupName testrg -Name mykustodatabase
-    ```
-
-### [Bicep template](#tab/bicep)
-
-1. Add a database (child resource) to the cluster resource in your Bicep file:
-
-    ```powershell
-    resource database 'Microsoft.Kusto/clusters/databases@2023-05-02' = {
-    parent: cluster
-    name: 'myDatabase'
-    properties: {
-    softDeletePeriod: 'P7D'
-    hotCachePeriod: 'P1D'
-    }
-    }
-    ```
-
-1. Assign principals (optional):
-
-    ```powershell
-    resource dbPrincipal 'Microsoft.Kusto/clusters/databases/principalAssignments@2023-05-02' = {
-    parent: database
-    name: 'adminAssignment'
-    properties: {
-    principalId: '<object-id>'
-    principalType: 'User'
-    role: 'Admin'
-    }
-    }
-    ```
-
-1. Deploy the Bicep template using the following command:
-
-    ```shell
-    az deployment group create \
-    --resource-group my-rg \
-    --template-file main.bicep \
-    --parameters clusterName=myCluster    
-    ```
-
-### [ARM template](#tab/arm)
-
-The cluster and database are created together with the ARM template in the previous section.
 
 ---
 
