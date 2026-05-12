@@ -17,7 +17,7 @@ In this article, you'll start with a new Power BI project and use the sample dat
 You need the following to complete this article:
 
 * A Microsoft account or a Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
+* [Power BI Desktop](https://powerbi.microsoft.com/getting-started-with-power-bi/) (select **DOWNLOAD FREE**)
 * [Enabling Dynamic M query parameters](/power-bi/connect-data/desktop-dynamic-m-query-parameters#enabling-dynamic-m-query-parameters)
 
 ## Add direct query connection to KQL function
