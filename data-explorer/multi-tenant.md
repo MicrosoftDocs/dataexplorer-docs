@@ -7,6 +7,12 @@ ms.date: 05/11/2026
 ---
 # How to architect a multitenant solution with Azure Data Explorer
 
+The concept of multi-tenancy in Azure Data Explorer refers to serving different tenants and storing their data in a single cluster.
+
+> [!IMPORTANT]
+>
+> A multitenant solution can also be architected in Microsoft Fabric's [Real-Time Intelligence](/fabric/real-time-intelligence/overview) workload, using KQL databases inside an [Eventhouse](/fabric/real-time-intelligence/eventhouse).
+
 [!INCLUDE [multitenancy](includes/cross-repo/multitenancy.md)]
 
 ## Related content
