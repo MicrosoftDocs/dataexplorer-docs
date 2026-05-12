@@ -3,6 +3,7 @@ ms.topic: include
 ms.date: 05/12/2026
 ---
 
+
 A *tenant* can represent a customer, a group of users, or any classifications of users where data needs to be segregated along the tenants boundaries. You can also have multilevel multitenancy scenario, such as multiple applications that each have multiple tenants. This article doesn't cover this scenario, but similar principles apply.
 
 An important factor is the way end-users access their tenant data. When end-users access Azure Data Explorer directly, access control must be configured in Azure Data Explorer to isolate the user's view to their own data. When a proxy application accesses their data in Azure Data Explorer, the application can do the isolation.
