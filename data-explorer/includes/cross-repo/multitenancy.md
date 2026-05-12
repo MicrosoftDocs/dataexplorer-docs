@@ -34,7 +34,7 @@ This is a popular and straight forward architecture. Each tenant gets its own da
 
 The characteristics of this architecture are:
 
-* **Provisioning a new tenant**: Requires creating a new database and [deploying schema entities](../..automated-deploy-overview.md#deploy-schema-entities) on it.
+* **Provisioning a new tenant**: Requires creating a new database and [deploying schema entities](/azure/data-explorer/automated-deploy-overview#deploy-schema-entities) on it.
 
 * **Removing a tenant**: Requires deleting the database. Deleting a database can be done in a few seconds. Consumes little and constant resources that aren't linear with tenant's data volume.
 
@@ -48,11 +48,11 @@ The characteristics of this architecture are:
 
 * **Aggregating data from multiple tenants at scale**: Use the [union operator](/kusto/query/union-operator?preserve-view=true) to aggregate data between databases. However, this method can become cumbersome as the number of tenants increases. Even though aggregating data from multiple tenants might be a design goal from the tenant's perspective, it might be of interest for solution owner to aggregate data from all tenants to gather statistics.
 
-* **Extents fragmentation**: Each tenant ingesting a few records per database table leads to the creation of small [extents](/kusto/management/extents-overview?preserve-view=true) that later need to be merged. This results in higher cost for extent management. Therefore, we strongly recommend using [streaming ingestion](ingest-data-streaming.md), such as Event Hubs or Event Grid ingestion. To use streaming ingestion, you must make sure it's enabled on the cluster and table.
+* **Extents fragmentation**: Each tenant ingesting a few records per database table leads to the creation of small [extents](/kusto/management/extents-overview?preserve-view=true) that later need to be merged. This results in higher cost for extent management. Therefore, we strongly recommend using [streaming ingestion](/azure/data-explorer/ingest-data-streaming), such as Event Hubs or Event Grid ingestion. To use streaming ingestion, you must make sure it's enabled on the cluster and table.
 
 * **Materialized views and partitioning policy**. As number of tenants increases, it's important to remember that there are limits to the number of [materialized views](/kusto/management/materialized-views/materialized-view-overview?preserve-view=true#performance-considerations) and [partition policies](/kusto/management/partitioning-policy?preserve-view=true#supported-scenarios) a cluster can run efficiently.
 
-* **Event Grid and Event Hubs data connections**: These data connections are created per database. Therefore, this architecture requires a data connection and Event Grid or Event Hubs instance per tenant, which adds management complexity. Consider using event routing for [Event Hubs](../..ingest-data-event-hub-overview.md#events-routing) and [Event Grid](../..ingest-data-event-grid-overview.md#events-routing).
+* **Event Grid and Event Hubs data connections**: These data connections are created per database. Therefore, this architecture requires a data connection and Event Grid or Event Hubs instance per tenant, which adds management complexity. Consider using event routing for [Event Hubs](/azure/data-explorer/ingest-data-event-hub-overview#events-routing) and [Event Grid](/azure/data-explorer/ingest-data-event-grid-overview#events-routing).
 
 ## Architecture: One table for many tenants
 

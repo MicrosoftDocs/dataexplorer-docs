@@ -1,9 +1,9 @@
 ---
-title: Comparing different multitenant solutions with Azure Data Explorer
+title: Comparing Different Multitenant Solutions with Azure Data Explorer
 description: Learn about the different ways to architect a multitenant solution in Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 05/11/2026
+ms.date: 05/12/2026
 ---
 # How to architect a multitenant solution with Azure Data Explorer
 
