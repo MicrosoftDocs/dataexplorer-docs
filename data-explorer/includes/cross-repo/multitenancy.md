@@ -28,7 +28,7 @@ The next sections explore deployment architectures in detail. This section contr
 
 ## Architecture: One tenant per database
 
-:::image type="content" source="../media/multitenant/one-tenant-per-db.png" alt-text="Diagram showing the architecture for one tenant per database.":::
+:::image type="content" source="/azure/data-explorer/media/multitenant/one-tenant-per-db.png" alt-text="Diagram showing the architecture for one tenant per database.":::
 
 This is a popular and straight forward architecture. Each tenant gets its own database. Each database has the same schema.
 
@@ -56,7 +56,7 @@ The characteristics of this architecture are:
 
 ## Architecture: One table for many tenants
 
-:::image type="content" source="../media/multitenant/one-db-for-many-tenants.png" alt-text="Diagram showing the architecture for one database for many tenants.":::
+:::image type="content" source="/azure/data-explorer/media/multitenant/one-db-for-many-tenants.png" alt-text="Diagram showing the architecture for one database for many tenants.":::
 
 This architecture is more aggressive in its consolidation, using a single database for all tenants. Each table in the database has a **Tenant ID** column, or equivalent, which allows for filtering for a single tenant's data. You can [partition](/kusto/management/partitioning-policy?preserve-view=true) tables by tenant to improve query performance, since most queries are likely to filter by tenant. Where possible, you should consider partition with another column using a *compound* partition key. For example, you can create a *compound* partition key concatenating the **tenant ID** and another columns' values.
 
@@ -80,11 +80,12 @@ The characteristics of this architecture are:
 
 * **Materialized views and partitioning policy**: These can be used on multitenant table. You can improve performance by partitioning on the **Tenant ID**, or equivalent, column. For more information, see [Scenarios for partition policies](/kusto/management/partitioning-policy?preserve-view=true#supported-scenarios).
 
-* **Event Grid and Event Hubs data connections**: You consolidated data connections since data for all tenants ends up in one table.
+* **Event Grid and Event Hubs data connections**: You consolidated data connections since da
+ta for all tenants ends up in one table.
 
 ## Architecture: One tenant per table in a single database
 
-:::image type="content" source="../media/multitenant/one-tenant-per-table.png" alt-text="Diagram showing the architecture for one tenant per table.":::
+:::image type="content" source="/azure/data-explorer/media/multitenant/one-tenant-per-table.png" alt-text="Diagram showing the architecture for one tenant per table.":::
 
 This architecture is a combination of the previous architectures where the data of all tenants ends up in a single database but separate tables. This architecture fails to capture all the advantages of the other architectures.
 
