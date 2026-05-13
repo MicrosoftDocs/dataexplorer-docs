@@ -80,8 +80,7 @@ The characteristics of this architecture are:
 
 * **Materialized views and partitioning policy**: These can be used on multitenant table. You can improve performance by partitioning on the **Tenant ID**, or equivalent, column. For more information, see [Scenarios for partition policies](/kusto/management/partitioning-policy?preserve-view=true#supported-scenarios).
 
-* **Event Grid and Event Hubs data connections**: You consolidated data connections since da
-ta for all tenants ends up in one table.
+* **Event Grid and Event Hubs data connections**: You consolidated data connections since data for all tenants ends up in one table.
 
 ## Architecture: One tenant per table in a single database
 
