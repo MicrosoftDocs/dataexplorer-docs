@@ -4,7 +4,7 @@ description: Learn how to create an Azure Data Explorer cluster and database.
 ms.reviewer: lugoldbe
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 05/11/2026
+ms.date: 05/13/2026
 ---
 
 # Create an Azure Data Explorer cluster and database
@@ -30,10 +30,6 @@ Prerequisites by method of cluster and database creation:
 ### [PowerShell](#tab/powershell)
 
 * Set up your environment using the instructions in [Use Kusto cmdlets in Azure PowerShell](/kusto/api/powershell/azure-powershell?view=azure-data-explorer&preserve-view=true).
-
-### Configure parameters
-
-The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps to set up the environment:
 
 ### [C#](#tab/csharp)
 
@@ -198,12 +194,6 @@ Below is an example of a Bicep template that creates an Azure Data Explorer clus
         hotCachePeriod: 'P31D'
       }
     }
-```
-
-Run the following command to check whether your cluster was successfully created:
-
-```powershell
-    az kusto cluster show --cluster-name <clusterName> --resource-group <resourceGroupName>
 ```
 
 ### [PowerShell](#tab/powershell)
