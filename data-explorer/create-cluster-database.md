@@ -55,7 +55,7 @@ Prerequisites by method of cluster and database creation:
 ### [Azure CLI](#tab/azcli)
 
 > [!IMPORTANT]
-> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](/cli/azure/kusto/cluster?view=azure-cli-latest&preserve-view=true) to ensure you have the latest CLI commands for Azure Data Explorer.
+> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using PowerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](/cli/azure/kusto/cluster?view=azure-cli-latest&preserve-view=true) to ensure you have the latest CLI commands for Azure Data Explorer.
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
@@ -483,7 +483,7 @@ The following code shows how to create a cluster.
 ### [Azure CLI](#tab/azcli)
 
 > [!IMPORTANT]
-> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](/cli/azure/kusto/cluster?view=azure-cli-latest&preserve-view=true) to ensure you have the latest CLI commands for Azure Data Explorer.
+> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using PowerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](/cli/azure/kusto/cluster?view=azure-cli-latest&preserve-view=true) to ensure you have the latest CLI commands for Azure Data Explorer.
 
 1. Create your cluster by using the following command:
 
@@ -704,7 +704,7 @@ The following code shows how to create a database. The package imports and envir
 ### [Azure CLI](#tab/azcli)
 
 > [!IMPORTANT]
-> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using powerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](/cli/azure/kusto/cluster?view=azure-cli-latest&preserve-view=true) to ensure you have the latest CLI commands for Azure Data Explorer.
+> The Kusto extension for Azure CLI is outdated and not maintained. We recommend using PowerShell or ARM/Bicep templates for cluster and database creation. If you choose to use Azure CLI, make sure to install the [Kusto extension](/cli/azure/kusto/cluster?view=azure-cli-latest&preserve-view=true) to ensure you have the latest CLI commands for Azure Data Explorer.
 
 1. Create your database by using the following command:
 
