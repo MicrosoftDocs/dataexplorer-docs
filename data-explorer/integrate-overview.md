@@ -2,7 +2,7 @@
 title: Integrations Overview
 description: Learn about the available data connectors, tools, and integrations, and their capabilities.
 ms.reviewer: aksdi
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/02/2026
 ---
 # Integrations overview
