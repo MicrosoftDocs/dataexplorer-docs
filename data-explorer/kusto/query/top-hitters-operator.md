@@ -1,9 +1,9 @@
 ---
 title:  top-hitters operator
 description: Learn how to use the top-hitters operator  to return an approximation for the most popular distinct values in the input.
-ms.reviewer: alexans
+ms.reviewer: zivc
 ms.topic: reference
-ms.date: 05/17/2025
+ms.date: 05/18/2026
 ---
 # top-hitters operator
 
