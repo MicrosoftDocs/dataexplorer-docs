@@ -37,6 +37,9 @@ Each storage type has a different connection string format. See the following ta
 | Amazon S3 | `https://` | `https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com/`*ObjectKey*[*CallerCredentials*] |
 | HTTP web services | `https://` | `https://`*Hostname*`/`*PathAndQuery* |
 
+> [!IMPORTANT]
+> The Azure Data Lake Storage Gen1 (`adl://`) scheme isn't supported by the [externaldata operator](../../query/externaldata-operator.md) or by `.create`/`.alter`/`.create-or-alter` of [Azure Storage external tables](../../management/external-tables-azure-storage.md) (including [delta external tables](../../management/external-tables-delta-lake.md)). For those scenarios, use Azure Blob Storage or Azure Data Lake Storage Gen2 connection strings.
+
 > [!NOTE]
 > To prevent secrets from showing up in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
 
