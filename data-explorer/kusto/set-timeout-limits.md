@@ -103,7 +103,7 @@ Set a custom server timeout in Power BI Desktop.
 
 ### Prerequisites
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/)
+* [Power BI Desktop](https://powerbi.microsoft.com/getting-started-with-power-bi/)
 
 ### Set timeout length
 
