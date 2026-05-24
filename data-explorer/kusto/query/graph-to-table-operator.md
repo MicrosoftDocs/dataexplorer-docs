@@ -34,7 +34,7 @@ The `graph-to-table` operator exports nodes or edges from a graph to tables.
 |*EdgesTableName*| `identifier` | :heavy_check_mark: |The name of the exported edges table.|
 |*ColumnName*| `identifier` ||Export the node hash ID, source node hash ID, or target node hash ID with the given column name.|
 
-[>!NOTE]
+> [!NOTE]
 >
 > At least one of *NodesTableName* or *EdgesTableName* is required, both can’t be left empty.
 
