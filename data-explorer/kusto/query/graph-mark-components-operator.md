@@ -3,7 +3,7 @@ title: graph-mark-components operator (preview)
 description: Learn how to use the graph-mark-components operator to find and mark all connected components of a graph.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 05/25/2025
+ms.date: 05/24/2026
 ---
 # graph-mark-components operator (preview)
 
@@ -22,7 +22,7 @@ The `graph-mark-components` operator finds all connected components of a graph a
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *G* | string |  :heavy_check_mark: | The graph source. |
+| *G* | graph |  :heavy_check_mark: | The graph source. |
 | *Kind* | string |  | The connected component kind, either `weak` (default) or `strong`. A weak component is a set of nodes connected by a path, ignoring the direction of edges. A strong component is a set of nodes connected in both directions, considering the edges' directions. |
 | *ComponentId* | string |  | The property name that denotes the component identifier. The default property name is `ComponentId`. |
 

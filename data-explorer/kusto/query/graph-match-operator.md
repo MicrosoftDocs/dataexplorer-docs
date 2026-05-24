@@ -3,7 +3,7 @@ title: graph-match operator
 description: Learn how to use the graph-match operator to search for all occurrences of a graph pattern in a graph.
 ms.reviewer: rocohen
 ms.topic: reference
-ms.date: 02/17/2025
+ms.date: 05/24/2026
 ---
 # graph-match operator
 
@@ -22,7 +22,7 @@ The `graph-match` operator searches for all occurrences of a graph pattern in an
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *G* | `string` |  :heavy_check_mark: | The input graph source. |
+| *G* | `graph` |  :heavy_check_mark: | The input graph source. |
 | *Pattern* | `string` |  :heavy_check_mark: | One or more comma delimited sequences of graph node elements connected by graph edge elements using graph notations. See [Graph pattern notation](#graph-pattern-notation). |
 | *Constraints* | `string` |  | A Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name. |
 | *Expression* | `string` | :heavy_check_mark: | The `project` clause converts each pattern to a row in a tabular result. The project expressions must be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. |
