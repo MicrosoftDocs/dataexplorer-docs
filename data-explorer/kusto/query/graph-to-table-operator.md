@@ -36,7 +36,7 @@ The `graph-to-table` operator exports nodes or edges from a graph to tables.
 
 > [!NOTE]
 >
-> At least one of *NodesTableName* or *EdgesTableName* is required, both can’t be left empty.
+> At least one of *NodesTableName* or *EdgesTableName* is required to output nodes and edges.
 
 ## Returns
 
