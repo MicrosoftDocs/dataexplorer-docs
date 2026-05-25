@@ -3,7 +3,7 @@ title: graph-to-table operator
 description: Learn how to use the graph-to-table operator to export nodes or edges from a graph to tables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 05/24/2026
 ---
 # graph-to-table operator
 
@@ -29,10 +29,14 @@ The `graph-to-table` operator exports nodes or edges from a graph to tables.
 
 |Name|Type|Required | Description |
 |---|---|---|---|
-|*G*| `string` | :heavy_check_mark:|The input graph source.|
-|*NodesTableName*| `string` ||The name of the exported nodes table.|
-|*EdgesTableName*| `string` ||The name of the exported edges table.|
-|*ColumnName*| `string` ||Export the node hash ID, source node hash ID, or target node hash ID with the given column name.|
+|*G*| `graph` | :heavy_check_mark:|The input graph source.|
+|*NodesTableName*| `identifier` ||The name of the exported nodes table.|
+|*EdgesTableName*| `identifier` | |The name of the exported edges table.|
+|*ColumnName*| `identifier` ||Export the node hash ID, source node hash ID, or target node hash ID with the given column name.|
+
+> [!NOTE]
+>
+> At least one of *NodesTableName* or *EdgesTableName* is required to output nodes and edges.
 
 ## Returns
 
