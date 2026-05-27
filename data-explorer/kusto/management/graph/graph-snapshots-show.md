@@ -1,9 +1,9 @@
 ---
 title: .show graph_snapshots command
 description: Learn how to list all graph snapshots for a graph model or all graph models using the .show graph_snapshots command.
-ms.reviewer: herauch
+ms.reviewer: royo
 ms.topic: reference
-ms.date: 05/24/2025
+ms.date: 05/27/2026
 ---
 
 # .show graph_snapshots (preview)
@@ -13,7 +13,7 @@ ms.date: 05/24/2025
 > [!NOTE]
 > This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
 
-Lists all graph snapshots for a specific graph model or for all graph models.
+Lists all graph snapshots for a specific graph model or for all graph models in the database.
 
 ## Permissions
 
