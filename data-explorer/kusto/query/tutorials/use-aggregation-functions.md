@@ -2,16 +2,16 @@
 title:  'Tutorial: Use aggregation functions in Kusto Query Language'
 description: Learn how to use aggregation functions in Kusto Query Language (KQL) to summarize and analyze data effectively in this step-by-step tutorial.
 ms.topic: tutorial
-ms.date: 09/15/2025
+ms.date: 05/27/2026
 ---
 
 # Tutorial: Use aggregation functions
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
-[Aggregation functions](../aggregation-functions.md) allow you to group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, for example a count, maximum, or average value.
+[Aggregation functions](../aggregation-functions.md) group and combine data from multiple rows into a summary value. The summary value depends on the chosen function, such as a count, maximum, or average value.
 
-In this tutorial, you'll learn how to:
+In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 >
@@ -36,7 +36,7 @@ This tutorial builds on the foundation from the first tutorial, [Learn common op
 
 ## Prerequisites
 
-To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
+To run the following queries, you need a query environment with access to the sample data. Use one of the following options:
 :::moniker range="azure-data-explorer"
 * A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
 ::: moniker-end
@@ -48,7 +48,7 @@ To run the following queries, you need a query environment with access to the sa
 
 ## Use the summarize operator
 
-The [summarize](../summarize-operator.md) operator is essential to performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses the provided aggregation function to combine each group in a single row.
+The [summarize](../summarize-operator.md) operator is essential for performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses the provided aggregation function to combine each group into a single row.
 
 Find the number of events by state using `summarize` with the [count](../count-aggregation-function.md) aggregation function.
 
@@ -75,9 +75,9 @@ StormEvents
 
 ## Visualize query results
 
-Visualizing query results in a chart or graph can help you identify patterns, trends, and outliers in your data. You can do this with the [render](../render-operator.md) operator.
+Visualizing query results in a chart or graph can help you identify patterns, trends, and outliers in your data. You can create these visualizations by using the [render](../render-operator.md) operator.
 
-Throughout the tutorial, you'll see examples of how to use `render` to display your results. For now, let's use `render` to see the results from the previous query in a bar chart.
+Throughout the tutorial, you see examples of how to use `render` to display your results. Some available chart types include bar charts, line charts, pie charts, and scatter charts. For now, use `render` to see the results from the previous query in a bar chart.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -94,9 +94,9 @@ StormEvents
 
 ## Conditionally count rows
 
-When analyzing your data, use [countif()](../countif-aggregation-function.md) to count rows based on a specific condition to understand how many rows meet the given criteria.
+When analyzing your data, use [countif()](../countif-aggregation-function.md) to count rows based on a specific condition. This function helps you understand how many rows meet the given criteria.
 
-The following query uses `countif()` to count of storms that caused damage. The query then uses the `top` operator to filter the results and display the states with the highest amount of crop damage caused by storms.
+The following query uses `countif()` to count storms that caused damage. The query then uses the `top` operator to filter the results and display the states with the highest amount of crop damage caused by storms.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -121,7 +121,7 @@ StormEvents
 
 ## Group data into bins
 
-To aggregate by numeric or time values, you'll first want to group the data into bins using the [bin()](../bin-function.md) function. Using `bin()` can help you understand how values are distributed within a certain range and make comparisons between different periods.
+To aggregate data by numeric or time values, first group the data into bins by using the [bin()](../bin-function.md) function. Using `bin()` helps you understand how values are distributed within a certain range and makes it easier to compare different periods.
 
 The following query counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](../scalar-data-types/timespan.md) value.
 
@@ -162,9 +162,9 @@ Add `| render timechart` to the end of the query to visualize the results.
 
 ## Calculate the min, max, avg, and sum
 
-To learn more about types of storms that cause crop damage, calculate the [min()](../min-aggregation-function.md), [max()](../max-aggregation-function.md), and [avg()](../avg-aggregation-function.md) crop damage for each event type, and then sort the result by the average damage.
+To learn more about the types of storms that cause crop damage, calculate the [min()](../min-aggregation-function.md), [max()](../max-aggregation-function.md), and [avg()](../avg-aggregation-function.md) crop damage for each event type. Then, sort the result by the average damage.
 
-Note that you can use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
+You can use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -193,7 +193,7 @@ StormEvents
 |Thunderstorm Wind|22000000|100|920328.36538461538|
 |...|...|...|...|
 
-The results of the previous query indicate that Frost/Freeze events resulted in the most crop damage on average. However, the [bin() query](#group-data-into-bins) showed that events with crop damage mostly took place in the summer months.
+The results of the previous query indicate that Frost/Freeze events result in the most crop damage on average. However, the [bin() query](#group-data-into-bins) shows that events with crop damage mostly take place in the summer months.
 
 Use [sum()](../sum-aggregation-function.md) to check the total number of damaged crops instead of the amount of events that caused some damage, as done with `count()` in the previous [bin() query](#group-data-into-bins).
 
@@ -215,11 +215,11 @@ StormEvents
 Now you can see a peak in crop damage in January, which probably was due to Frost/Freeze.
 
 > [!TIP]
-> Use [minif()](../minif-aggregation-function.md), [maxif()](../maxif-aggregation-function.md), [avgif()](../avgif-aggregation-function.md), and [sumif()](../sumif-aggregation-function.md) to perform conditional aggregations, like we did when in the [conditionally count rows](#conditionally-count-rows) section.
+> Use [minif()](../minif-aggregation-function.md), [maxif()](../maxif-aggregation-function.md), [avgif()](../avgif-aggregation-function.md), and [sumif()](../sumif-aggregation-function.md) to perform conditional aggregations, like you did in the [conditionally count rows](#conditionally-count-rows) section.
 
 ## Calculate percentages
 
-Calculating percentages can help you understand the distribution and proportion of different values within your data. This section covers two common methods for calculating percentages with the Kusto Query Language (KQL).
+Calculating percentages can help you understand the distribution and proportion of different values within your data. This section covers two common methods for calculating percentages by using the Kusto Query Language (KQL).
 
 ### Calculate percentage based on two columns
 
@@ -257,13 +257,13 @@ StormEvents
 |...|...|...|...|
 
 > [!NOTE]
-> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../toreal-function.md). This will ensure that you don't get truncated results due to integer division. For more information, see [Type rules for arithmetic operations](../numerical-operators.md#type-rules-for-arithmetic-operations).
+> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../toreal-function.md). This conversion ensures that you don't get truncated results due to integer division. For more information, see [Type rules for arithmetic operations](../numerical-operators.md#type-rules-for-arithmetic-operations).
 
 ### Calculate percentage based on table size
 
-To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable. [Let statements](../let-statement.md) are used to define variables within a query.
+To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable. Use [Let statements](../let-statement.md) to define variables within a query.
 
-Since [tabular expression statements](../tabular-expression-statements.md) return tabular results, use the [toscalar()](../toscalar-function.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
+Since [tabular expression statements](../tabular-expression-statements.md) return tabular results, use the [toscalar()](../toscalar-function.md) function to convert the tabular result of the `count()` function to a scalar value. Then, use the numeric value in the percentage calculation.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -383,17 +383,17 @@ StormEvents
 
 ## Perform aggregations over a sliding window
 
-The following example shows how to summarize columns using a sliding window.
+The following example shows how to summarize columns by using a sliding window.
 
-The query calculates the minimum, maximum, and average property damage of tornados, floods, and wildfires using a sliding window of seven days. Each record in the result set aggregates the preceding seven days, and the results contain a record per day in the analysis period.
+The query calculates the minimum, maximum, and average property damage of tornados, floods, and wildfires by using a sliding window of seven days. Each record in the result set aggregates the preceding seven days, and the results contain a record per day in the analysis period.
 
 Here's a step-by-step explanation of the query:
 
 1. Bin each record to a single day relative to `windowStart`.
 1. Add seven days to the bin value to set the end of the range for each record. If the value is out of the range of `windowStart` and `windowEnd`, adjust the value accordingly.
 1. Create an array of seven days for each record, starting from the current day of the record.
-1. Expand the array from step 3 with [mv-expand](../mv-expand-operator.md) in order to duplicate each record to seven records with one-day intervals between them.
-1. Perform the aggregations for each day. Due to step 4, this step actually summarizes the previous seven days.
+1. Expand the array from step 3 by using [mv-expand](../mv-expand-operator.md) to duplicate each record to seven records with one-day intervals between them.
+1. Perform the aggregations for each day. Because of step 4, this step actually summarizes the previous seven days.
 1. Exclude the first seven days from the final result because there's no seven-day lookback period for them.
 
 :::moniker range="azure-data-explorer"
