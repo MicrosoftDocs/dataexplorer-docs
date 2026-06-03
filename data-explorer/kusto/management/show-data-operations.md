@@ -3,7 +3,7 @@ title: .show data operations
 description: Learn how to use the `.show data operations` command to return data operations that reached a final state. 
 ms.reviewer: vrozov
 ms.topic: reference
-ms.date: 08/22/2024
+ms.date: 06/03/2026
 ---
 # .show data operations command
 
@@ -37,7 +37,7 @@ This command returns a table with the following columns:
 |Database |`string`|The database name.|
 |Table |`string`|The table name.|
 |ClientActivityId |`string`|The operation client activity ID.|
-|OperationKind |`string`| One of `BatchIngest`, `SetOrAppend`, `RowStoreSeal`, `MaterializedView`, `QueryAcceleration`, and `UpdatePolicy`.|
+|OperationKind |`string`| See [Operation Kinds](#operation-kind)|
 |OriginalSize |`long`| The original size of the ingested data. |
 |ExtentSize |`long`|The extent size.|
 |RowCount |`long`|The number of rows in the extent.|
@@ -46,6 +46,20 @@ This command returns a table with the following columns:
 |Duration |`timespan`| The duration of the operation.|
 |Principal |`string`|The identity that initiated the data operation. |
 |Properties |`dynamic`|Additional information about the data operation.|
+
+## Operation Kinds
+
+The operation kind column can take one of the following values:
+
+Operation Kind|Description
+-|-
+`BatchIngest`|Ingestion through one of the batch ingestion command (e.g. [.ingest into](data-ingestion/ingest-into-command.md)) or through managed ingestion
+`DataUpdate`|Ingestion resulting from [.update](update-table-command.md) command
+`SetOrAppend`|Ingestion through one of the [ingest through query commands](data-ingestion/ingest-from-query.md)
+`RowStoreSeal`|Sealing of row store ([streaming ingestion](../../ingest-data-streaming.md))
+`MaterializedView`|Materialization of records by [Materialized view](materialized-views/materialized-view-overview.md)
+`QueryAcceleration`|Ingestion of external table records for [query acceleration](query-acceleration-policy.md)
+`UpdatePolicy`|Ingestion due to [update policy](update-policy.md) processing records
 
 ## Example
 
