@@ -37,7 +37,7 @@ This command returns a table with the following columns:
 |Database |`string`|The database name.|
 |Table |`string`|The table name.|
 |ClientActivityId |`string`|The operation client activity ID.|
-|OperationKind |`string`| See [Operation Kinds](#operation-kind)|
+|OperationKind |`string`| See [Operation Kinds](#operation-kinds)|
 |OriginalSize |`long`| The original size of the ingested data. |
 |ExtentSize |`long`|The extent size.|
 |RowCount |`long`|The number of rows in the extent.|
@@ -56,7 +56,7 @@ Operation Kind|Description
 `BatchIngest`|Ingestion through one of the batch ingestion command (e.g. [.ingest into](data-ingestion/ingest-into-command.md)) or through managed ingestion
 `DataUpdate`|Ingestion resulting from [.update](update-table-command.md) command
 `SetOrAppend`|Ingestion through one of the [ingest through query commands](data-ingestion/ingest-from-query.md)
-`RowStoreSeal`|Sealing of row store ([streaming ingestion](../../ingest-data-streaming.md))
+`RowStoreSeal`|Sealing of row store [streaming ingestion](../../ingest-data-streaming.md)
 `MaterializedView`|Materialization of records by [Materialized view](materialized-views/materialized-view-overview.md)
 `QueryAcceleration`|Ingestion of external table records for [query acceleration](query-acceleration-policy.md)
 `UpdatePolicy`|Ingestion due to [update policy](update-policy.md) processing records
