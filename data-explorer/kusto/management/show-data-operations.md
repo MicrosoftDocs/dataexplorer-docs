@@ -52,14 +52,14 @@ This command returns a table with the following columns:
 The operation kind column can take one of the following values:
 
 Operation Kind|Description
--|-
-`BatchIngest`|Ingestion through one of the batch ingestion command (e.g. [.ingest into](data-ingestion/ingest-into-command.md)) or through managed ingestion
-`DataUpdate`|Ingestion resulting from [.update](update-table-command.md) command
-`SetOrAppend`|Ingestion through one of the [ingest through query commands](data-ingestion/ingest-from-query.md)
-`RowStoreSeal`|Sealing of row store [streaming ingestion](../../ingest-data-streaming.md)
-`MaterializedView`|Materialization of records by [Materialized view](materialized-views/materialized-view-overview.md)
-`QueryAcceleration`|Ingestion of external table records for [query acceleration](query-acceleration-policy.md)
-`UpdatePolicy`|Ingestion due to [update policy](update-policy.md) processing records
+| ------ |------ |
+| `BatchIngest`| Ingestion through one of the batch ingestion command (e.g. [.ingest into](data-ingestion/ingest-into-command.md)) or through managed ingestion |
+| `DataUpdate` | Ingestion resulting from [.update](update-table-command.md) command |
+| `SetOrAppend` | Ingestion through one of the [ingest through query commands](data-ingestion/ingest-from-query.md) |
+| `RowStoreSeal` | Sealing of row store [streaming ingestion](../../ingest-data-streaming.md) |
+| `MaterializedView` | Materialization of records by [Materialized view](materialized-views/materialized-view-overview.md) |
+| `QueryAcceleration` | Ingestion of external table records for [query acceleration](query-acceleration-policy.md) |
+| `UpdatePolicy` | Ingestion due to [update policy](update-policy.md) processing records |
 
 ## Example
 
