@@ -1,14 +1,18 @@
 ---
 title: Find an Azure Data Explorer partner
-description: Learn about our partners and how they can help you with Azure Data Explorer.
-ms.topic: concept-article
-ms.date: 02/01/2023
+description: Learn about the Azure Data Explorer Find My Partner Program and discover certified partners who can help with consulting, training, implementation, and support.
+ms.topic: article
+ms.date: 06/07/2026
+
+#customer intent: As an Azure Data Explorer user, I want to find certified partners so that I can get help with implementation, consulting, or training.
+
 ---
 # Find an Azure Data Explorer partner
 
 This article describes the partners of the Azure Data Explorer Find My Partner Program. Partners can help you with your Azure Data Explorer implementation, including consulting, training, and support.
 
-The services and expertise are chosen by the partner and shouldn't be considered as endorsement confirmation by Microsoft. The partner is solely responsible for the services it provides.
+> [!NOTE]
+> The services and expertise listed are chosen by each partner and don't represent endorsement by Microsoft. Partners are solely responsible for the services they provide.
 
 You can also get the list of partners by running the following query on the [help](https://help.kusto.windows.net) cluster:
 
@@ -31,7 +35,7 @@ Partner
 
 :::image type="icon" source="media/findmypartner/ait-white-logo.jpg":::
 
-We develop and design sophisticated, forward-looking software solutions based on the latest Microsoft technologies and advise our customers on the development process, architecture, and software design.
+AIT develops and designs sophisticated, forward-looking software solutions based on the latest Microsoft technologies and advises customers on the development process, architecture, and software design.
 
 **Partner type**
 
@@ -57,7 +61,7 @@ We develop and design sophisticated, forward-looking software solutions based on
 
 :::image type="icon" source="media/findmypartner/alten-logo.png":::
 
-ALTEN is the consulting and engineering organization working in various (niche) markets for the high-tech sector and ICT. The development of new High-Tech technologies is costly and requires specialist knowledge. Knowledge in the field of technology plays the most important role, the central pillar within ALTEN.
+ALTEN is the consulting and engineering organization working in various (niche) markets for the high-tech sector and ICT. The development of new High-Tech technologies is costly and requires specialist knowledge. Knowledge in the field of technology plays the most important role and is the central pillar within ALTEN.
 
 ALTEN also offers their specialist knowledge in the field of IT. We play an active role regarding quality, reliability, and innovations in the area of Big Data and Internet of Things with our partners in order to strengthen the digital transformation and sustainability.
 
@@ -119,7 +123,7 @@ AM Squared Provides specialist consulting, project, and support services with re
 
 beanTech is an IT company that has been supporting industries in the challenges of Digital Transformation for over 20 years.
 
-Competence and availability of the technical team, experience gained in hundreds of projects and technologies always at the state of the art respond perfectly to the needs of the modern manufacturing company that isn't looking for a simple supplier but a business partner to grow in its market.
+Competence and availability of the technical team, experience gained in hundreds of projects, and state-of-the-art technologies respond perfectly to the needs of the modern manufacturing company that isn't looking for a simple supplier, but rather a business partner to grow in its market.
 
 beanTech is the IT partner that can help you manage the entire data chain in the factory with a complete and integrated offer of solutions ranging from telemetry data acquisition to big data architecture on cloud, from web software development to operation management consultancy, from event analytics to the implementation of sophisticated artificial intelligence algorithms applied to improve performance.
 
@@ -178,7 +182,7 @@ Besides these general descriptions of our capabilities, one of our strongest sec
 
 :::image type="icon" source="media/findmypartner/centric-logo.png":::
 
-Our primary goal is to solve complex business problems. Whether crafting your data strategy, building a data warehouse or designing a custom solution to meet your unique needs, our consultants go beyond building technology. We take a holistic approach using data to solve business problems and capture opportunities. We look at the people, processes, and technology surrounding data and analytics to deliver insights within the context of your business. High-functioning data and analytics capabilities center around enabling the business to ask better questions – and get better answers – with consistency, a high degree of trust and timeliness.
+Centric Consulting's primary goal is to solve complex business problems. Whether crafting your data strategy, building a data warehouse, or designing a custom solution to meet your unique needs, consultants go beyond building technology. Centric takes a holistic approach, using data to solve business problems and capture opportunities. The team looks at the people, processes, and technology surrounding data and analytics to deliver insights within the context of your business. High-functioning data and analytics capabilities center around enabling the business to ask better questions and get better answers with consistency, a high degree of trust, and timeliness.
 
 **Partner type**
 
@@ -319,8 +323,8 @@ Data Mastery help businesses harness the power of their data and make data-drive
 
 :::image type="icon" source="media/findmypartner/datacore-logo.png":::
 
-Datacore provides professional services on Data, BI & AL solution on Azure services. Datacore develop best practices to implement Azure Data Explorer solution to variety needs for a fast and scalable data analysis platform easily and quickly and suitable for handling large amounts of diverse data in real time such as logs, tasks, distributing insights, for time series data and more.
-We're enabling our customers to make with Azure Data Explorer data-driven decisions and find hidden patterns and trends, which without this tool would be difficult.
+Datacore provides professional services on Data, BI & AI solutions on Azure services. Datacore develops best practices to implement Azure Data Explorer solutions to meet a variety of needs for a fast and scalable data analysis platform. These solutions handle large amounts of diverse data in real time, such as logs, tasks, distributing insights, and time series data.
+We enable our customers to make data-driven decisions with Azure Data Explorer and find hidden patterns and trends that would be difficult to uncover without this tool.
 
 **Partner type**
 
@@ -425,9 +429,9 @@ Elastacloud are experts at building complex real-time solutions using Azure Data
 
 :::image type="icon" source="media/findmypartner/fellowmind-logo.jpg":::
 
-Data & Analytics team within Fellowmind Denmark is a part of the entire Data & Analytics capacity in the organization that consists of 400 people working with data. In Denmark, the team is counting 35 experts with each their focus area – Power BI, Data Ingestion, Data Modelling etc.
+Data & Analytics team within Fellowmind Denmark is a part of the entire Data & Analytics capacity in the organization that consists of 400 people working with data. In Denmark, the team is counting 35 experts, each with their own focus area: Power BI, Data Ingestion, Data Modelling, and more.
 
-The team a broad experience within the entire Data Platform in Azure on both small, medium, large and enterprise clients – spanning private sector, public sector, and the utility sector.
+The team has broad experience within the entire Data Platform in Azure for small, medium, large, and enterprise clients, spanning private sector, public sector, and the utility sector.
 
 With the emerging focus on IoT, Telemetry and streaming data, the need for experts within this field has also expanded to the Danish Data & Analytics team with specific roles for the complete project approach.
 
@@ -592,7 +596,7 @@ Insight is ready to help you get more value from your data at any scale. Harness
 
 :::image type="icon" source="media/findmypartner/elasta-cloud-intelligent-spaces-logo.png":::
 
-A product spin-off of Elastacloud, Intelligent Spaces build an Azure backed Digital Twin for managing spaces used by business. Intelligent Spaces handles BIM collaboration and analytics, automated graph creation and a geospatial enrichment engine that produced 3D and AR visualizations. Operating at the intersection of spatial and real-time, their Digital Twin is connected to physical space using IoT technologies. Their Analytics Pack is an Azure Data Explorer powered, web UI that allows business users to drag and drop analytic operations that are then translated and executed directly in Azure Data Explorer. They've contributed the popular tool [AdxUtils](https://github.com/intelligentspaces/AdxUtils) back to the community. If you need Digital Twins or BIM integrations with Azure Data Explorer, contact Intelligent Spaces.
+A product spin-off of Elastacloud, Intelligent Spaces build an Azure backed Digital Twin for managing spaces used by business. Intelligent Spaces handles BIM collaboration and analytics, automated graph creation, and a geospatial enrichment engine that produces 3D and AR visualizations. Operating at the intersection of spatial and real-time, their Digital Twin is connected to physical space using IoT technologies. Their Analytics Pack is an Azure Data Explorer-powered web UI that allows business users to drag and drop analytic operations that are then translated and executed directly in Azure Data Explorer. They've contributed the popular tool [AdxUtils](https://github.com/intelligentspaces/AdxUtils) back to the community. If you need Digital Twins or BIM integrations with Azure Data Explorer, contact Intelligent Spaces.
 
 **Partner type**
 
@@ -812,7 +816,7 @@ Provide training around Azure Data Explorer.
 
 :::image type="icon" source="media/findmypartner/option-4-0-logo.png":::
 
-We have a Co-sell offering on the Azure Market place: https://azuremarketplace.microsoft.com/marketplace/consulting-services/option40ag1624272391965.02052010
+OPTION 4.0 AG has a [Co-sell offering on Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services/option40ag1624272391965.02052010).
 
 **Partner type**
 
@@ -835,7 +839,7 @@ We have a Co-sell offering on the Azure Market place: https://azuremarketplace.m
 
 :::image type="icon" source="media/findmypartner/orion-innovation-logo.jpg":::
 
-Orion Innovation is a Leader in Digital transformation services with a Design led, technology driven approach. We're a trusted partner to our Fortune 500, Large, Medium clients in their business transformation initiatives with 99% CSAT. With 25+ years of experience we bring deep domain expertise in Financial Services, Professional Services,  Healthcare & Life Sciences, Hi-Tech, Telecom, Media & Entertainment, Sports, and Education Verticals.  Our global team of 6,000+ associates  in 12 major delivery centers across USA, LATAM, Europe, and APAC delivers those digital transformation services around Experience Design, Digital Product Development, Data Analytics & AI, Cloud & Infrastructure, Business application & Modernization, Embedded & real time solutions, IoT/IIoT, Testing, and Cybersecurity. We're ISO 9001:2015, ISO/IEC 27001:2013 certified, and CMMI&reg;️ Level 3 compliant and have IP's covering Industry Solutions, Accelerators, and proprietary internal tools.
+Orion Innovation is a leader in digital transformation services with a design-led, technology-driven approach. The company is a trusted partner to Fortune 500 and mid-size clients in their business transformation initiatives with 99% CSAT. With 25+ years of experience, Orion brings deep domain expertise in financial services, professional services, healthcare & life sciences, hi-tech, telecom, media & entertainment, sports, and education verticals. A global team of 6,000+ associates in 12 major delivery centers across USA, LATAM, Europe, and APAC delivers digital transformation services around experience design, digital product development, data analytics & AI, cloud & infrastructure, business application & modernization, embedded & real-time solutions, IoT/IIoT, testing, and cybersecurity. Orion is ISO 9001:2015 and ISO/IEC 27001:2013 certified, CMMI&reg; Level 3 compliant, and holds IP covering industry solutions, accelerators, and proprietary internal tools.
 
 **Partner type**
 
@@ -1013,3 +1017,8 @@ Experienced company that is focused on full lifecycle custom software developmen
 
 - [Zure Ltd website](https://www.zure.com)
 - [Microsoft partner site for Zure Ltd](https://appsource.microsoft.com/marketplace/partner-dir/d4842539-1664-4a55-981e-a6a6643b6d02/overview)
+
+## Related content
+
+- [Azure Data Explorer overview](overview.md)
+- [Get started with Azure Data Explorer](start-for-free.md)
