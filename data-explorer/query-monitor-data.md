@@ -1,28 +1,29 @@
 ---
 title: 'Query data in Azure Monitor with Azure Data Explorer'
-description: 'In this article, query data in Azure Monitor (Application Insights resource and Log Analytics workspace) by creating Azure Data Explorer cross product queries.'
+description: Query data in Azure Monitor, including Application Insights and Log Analytics workspaces, by creating Azure Data Explorer cross-service queries.
 ms.reviewer: guywi-ms
 ms.topic: how-to
-ms.date: 05/28/2025
+ms.date: 06/07/2026
 ms.custom: sfi-image-nochange
 
-#Customer intent: I want to query data in Azure Monitor using Azure Data Explorer.
+#Customer intent: As a data analyst, I want to query data in Azure Monitor using Azure Data Explorer so that I can run cross-service queries against Log Analytics and Application Insights data.
+
 ---
 
 # Query data in Azure Monitor using Azure Data Explorer
 
-The Azure Data Explorer supports cross-service queries between Azure Data Explorer, [Application Insights resource (AI)](/azure/azure-monitor/app/app-insights-overview), and [Log Analytics workspace (LA)](/azure/azure-monitor/platform/data-platform-logs). You can query your Log Analytics workspace or Application Insights resource using Azure Data Explorer query tools and in a cross-service query. The article shows you how to create a cross-service query and add the Log Analytics workspace or Application Insights resource to the Azure Data Explorer web UI.
+Azure Data Explorer supports cross-service queries between Azure Data Explorer, [Application Insights resource (AI)](/azure/azure-monitor/app/app-insights-overview), and [Log Analytics workspace (LA)](/azure/azure-monitor/platform/data-platform-logs). You can query your Log Analytics workspace or Application Insights resource using Azure Data Explorer query tools and in a cross-service query. This article shows you how to create a cross-service query and add the Log Analytics workspace or Application Insights resource to the Azure Data Explorer web UI.
 
-The Azure Data Explorer cross-service queries flow:
+Azure Data Explorer cross-service query flow:
 
 :::image type="content" source="media/query-monitor-data/query-monitor-workflow.png" alt-text="Diagram showing the Azure Data Explorer cross-service query flow."  lightbox="media/query-monitor-data/query-monitor-workflow.png":::
-
-> [!IMPORTANT]
-> Starting July 1, 2025, querying log data and events requires TLS 1.2 or higher when using [query API endpoints for Log Analytics or Application Insights](/azure/azure-monitor/fundamentals/azure-monitor-network-access#logs-query-api-endpoints). For more information, see [Secure data in transit](/azure/azure-monitor/fundamentals/best-practices-security#secure-logs-data-in-transit).
 
 ## Add a Log Analytics workspace/Application Insights resource to Azure Data Explorer client tools
 
 Add a Log Analytics workspace or Application Insights resource to Azure Data Explorer client tools to enable cross-service queries for your clusters.
+
+> [!IMPORTANT]
+> Starting July 1, 2025, querying log data and events requires TLS 1.2 or higher when using [query API endpoints for Log Analytics or Application Insights](/azure/azure-monitor/fundamentals/azure-monitor-network-access#logs-query-api-endpoints). For more information, see [Secure data in transit](/azure/azure-monitor/fundamentals/best-practices-security#secure-logs-data-in-transit).
 
 1. Verify your Azure Data Explorer native cluster (such as **help** cluster) appears on the left menu before you connect to your Log Analytics workspace or Application Insights resource.
 
@@ -30,7 +31,7 @@ Add a Log Analytics workspace or Application Insights resource to Azure Data Exp
 
 1. In the [Azure Data Explorer UI](https://dataexplorer.azure.com/clusters), select **+ Add** then **Connection**.
 
-1. In the *Add Connection* window, add the URL and display name of the Log Analytics (LA) workspace or Application Insights (AI) resource.
+1. In the **Add Connection** window, add the URL and display name of the Log Analytics (LA) workspace or Application Insights (AI) resource.
 
     * For Log Analytics (LA) workspace: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
     * For Application Insights (AI) resource: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
@@ -42,12 +43,12 @@ Add a Log Analytics workspace or Application Insights resource to Azure Data Exp
 
     :::image type="content" source="media/query-monitor-data/add-connection.png" alt-text="Screenshot showing the add connection window." lightbox="media/query-monitor-data/add-connection.png":::
 
-    >[!NOTE]
+    > [!NOTE]
     >
-    >* There are different endpoints for the following:
-    >* Azure Government- `adx.monitor.azure.us/`
-    >* Azure China- `adx.monitor.azure.cn/`
-    >* If you add a connection to more than one Log Analytics workspace/Application insights resource, give each a different name. Otherwise they'll all have the same name in the left pane.
+    > * There are different endpoints for the following:
+    > * Azure Government: `adx.monitor.azure.us/`
+    > * Azure China: `adx.monitor.azure.cn/`
+    > * If you add a connection to more than one Log Analytics workspace/Application Insights resource, give each a different name. Otherwise they all have the same name in the left pane.
 
 1. After the connection is established, your Log Analytics workspace or Application Insights resource will appear in the left pane with your native Azure Data Explorer cluster.
 
@@ -67,8 +68,8 @@ You can run the queries using client tools that support Kusto queries, such as: 
 >
 > * The database should have the same name as the resource specified in the cross-service query. Names are case sensitive.
 > * In cross-service queries, make sure that Application Insights resource and Log Analytics workspace names are correct.
-> * If names contain special characters, they are replaced by URL encoding in the cross-service query.
-> * If names include characters that don't meet [KQL identifier name rules](/kusto/query/schema-entities/entity-names?view=azure-data-explorer&preserve-view=true), they are replaced by the dash **-** character.
+> * If names contain special characters, they're replaced by URL encoding in the cross-service query.
+> * If names include characters that don't meet [KQL identifier name rules](/kusto/query/schema-entities/entity-names?view=azure-data-explorer&preserve-view=true), they're replaced by the dash **-** character.
 
 ### Direct query on your Log Analytics workspace or Application Insights resources from Azure Data Explorer client tools
 
@@ -100,10 +101,10 @@ let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourceg
 union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
 
-:::image type="content" source="media/query-monitor-data/cross-query.png" alt-text="Screenshot showing cross service query from the Azure Data Explorer web U I.":::
+:::image type="content" source="media/query-monitor-data/cross-query.png" alt-text="Screenshot showing cross-service query from the Azure Data Explorer web UI.":::
 
 > [!TIP]
-> Using the [`join` operator](/kusto/query/join-operator), instead of union, may require a [`hint`](/kusto/query/join-operator?view=azure-data-explorer&preserve-view=true#hints) to run it on an Azure Data Explorer native cluster.
+> Using the [`join` operator](/kusto/query/join-operator), instead of union, might require a [`hint`](/kusto/query/join-operator?view=azure-data-explorer&preserve-view=true#hints) to run it on an Azure Data Explorer native cluster.
 
 ### Join data from an Azure Data Explorer cluster in one tenant with an Azure Monitor resource in another
 
@@ -117,16 +118,16 @@ If the Azure Data Explorer resource is in *tenant-name-a* and Log Analytics work
 
 ### Connect to Azure Data Explorer clusters from different tenants
 
-Kusto Explorer automatically signs you into the tenant to which the user account originally belongs. To access resources in other tenants with the same user account, the `tenantId` has to be explicitly specified in the connection string:
-`Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=<TenantId>`
+Kusto Explorer automatically signs you into the tenant to which the user account originally belongs. To access resources in other tenants with the same user account, you must explicitly specify the `tenantId` in the connection string:
+`Data Source=https://ade.applicationinsights.io/subscriptions/<SubscriptionId>/resourcegroups/<ResourceGroupName>;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=<TenantId>`
 
 >[!NOTE]
 >
-> The `tenantId` parameter is not directly configurable in the Azure Data Explorer web UI. For the `tenantId` use the Microsoft Entra identity.
+> The `tenantId` parameter isn't directly configurable in the Azure Data Explorer web UI. For the `tenantId`, use the Microsoft Entra identity.
 
 ## Function supportability
 
-The Azure Data Explorer cross-service queries support functions for both Application Insights resource and Log Analytics workspace.
+Azure Data Explorer cross-service queries support functions for both Application Insights resource and Log Analytics workspace.
 This capability enables cross-cluster queries to reference an Azure Monitor tabular function directly.
 The following commands are supported with the cross-service query:
 
@@ -144,7 +145,7 @@ The following commands are supported with the cross-service query:
 
 * Private Link (private endpoints) and IP restrictions don't support cross-service queries.
 
-## Additional syntax examples
+## Use other syntax options
 
 The following syntax options are available when calling the Application Insights resource or Log Analytics workspaces:
 
@@ -159,4 +160,4 @@ The following syntax options are available when calling the Application Insights
 
 ## Related content
 
-* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries](/kusto/query/tutorials/learn-common-operators?view=azure-data-explorer&preserve-view=true)
