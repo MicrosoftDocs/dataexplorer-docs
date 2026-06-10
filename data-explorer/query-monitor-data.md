@@ -47,7 +47,7 @@ Add a Log Analytics workspace or Application Insights resource to Azure Data Exp
     >
     > * There are different endpoints for the following:
     > * Azure Government: `adx.monitor.azure.us/`
-    > * Azure China: `adx.monitor.azure.cn/`
+    > * Azure operated by 21Vianet: `adx.monitor.azure.cn/`
     > * If you add a connection to more than one Log Analytics workspace/Application Insights resource, give each a different name. Otherwise they all have the same name in the left pane.
 
 1. After the connection is established, your Log Analytics workspace or Application Insights resource will appear in the left pane with your native Azure Data Explorer cluster.
