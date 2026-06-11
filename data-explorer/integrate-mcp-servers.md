@@ -5,7 +5,7 @@ ms.reviewer: sharmaanshul
 author: spelluru
 ms.author: spelluru
 ms.topic: concept-article
-ms.date: 09/14/2025
+ms.date: 06/09/2026
 ms.search.form: MCP, AI, agents
 
 #CustomerIntent: As an ADX AI developer, I want to use the RTI MCP server or Azure MCP server to create AI agents and AI applications.
@@ -57,6 +57,24 @@ This architecture lets you build modular, scalable, and secure intelligent appli
 **Plug-and-Play Integration**: MCP clients like GitHub Copilot, Claude, and Cline connect to RTI with minimal setup because of standardized APIs and discovery mechanisms.
 
 **Local Language Inference**: Use your preferred language to work with your data.
+
+## Considerations and Limitations
+
+### Security
+
+MCP as a phenomenon is very novel and cutting-edge. As with all new technology standards, consider doing a security review to ensure any systems that integrate with MCP servers follow all regulations and standards your system is expected to adhere to. This includes not only the RTI MCP servers, but any MCP client or agent that you choose to implement down to the model provider.
+
+You should follow Microsoft security guidance for MCP servers, including enabling Entra ID authentication, secure token management, and network isolation. For more information, see [Microsoft Security Documentation](https://learn.microsoft.com/security/).
+
+### Permissions and risk
+
+MCP clients can invoke operations based on the user's Entra ID permissions. Autonomous or misconfigured clients might perform destructive actions. Review and apply least-privilege permissions and implement safeguards before deployment.
+
+Certain safeguards, such as flags to prevent destructive operations, aren't standardized in the MCP specification and might not be supported by all clients.
+
+### Compliance responsibility
+
+This MCP server might be installed, used, and share data with clients and services, such as third-party LLMs, AI agents, or services that operate outside Fabric's compliance boundaries. You're responsible for ensuring that any integration complies with applicable organizational, regulatory, and contractual requirements.
 
 ## Related content
 
