@@ -14,7 +14,14 @@ Free cluster allows anyone with a Microsoft account or a Microsoft Entra user id
 
 The free cluster can be used for any purpose and is the ideal solution for anyone who wants to get started quickly with Azure Data Explorer. It allows you to explore the wide range of [data ingestion](ingest-data-overview.md) methods, use the [Kusto Query Language](/kusto/query/index?view=azure-data-explorer&preserve-view=true), and experience the incredible ingestion and query performance.
 
-The cluster's trial period is for a year and might automatically be extended. The cluster is provided *as-is* and isn't subject to the Azure Data Explorer service level agreement. At any time, you can upgrade the cluster to a full Azure Data Explorer cluster.
+> [!IMPORTANT]
+> 
+> * Microsoft grants you the right to access and use the **one** Free Cluster at no charge for commercial or non-commercial use for a period of one year.
+> * Microsoft may automatically renew the trial period.
+> * Your data is stored at a location of your choosing in one of three available geographies (Europe, Asia and North America).
+> * The cluster is provided free of charge, and as such is not subject to service layer agreement.
+> * You may upgrade the cluster to a full Azure Data Explorer cluster at any time.
+> * For additional terms and conditions, see the [Disclaimer](#disclaimer) section below.
 
 Start your journey by [creating your own free cluster](https://aka.ms/kustofree) and reviewing the [Microsoft Software License Terms](https://aka.ms/kustofreeeula).
 
@@ -60,6 +67,16 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 | Autoscale |  :heavy_check_mark: | |
 | Azure Monitor and Insights |  :heavy_check_mark: | |
 | Azure Resource Manager (ARM) templates |  :heavy_check_mark: | |
+
+## Disclaimer
+
+The following special terms apply to Azure Data Explorer Free Clusters
+
+* Free clusters are provided "as-is," "with all faults," and "as available," and are excluded from all service level agreements and warranties.
+* Microsoft may suspend or delete clusters, if it is deemed necessary for preventing unauthorized access, abusive or malicious use.
+* Unless otherwise noted, you should not use the free cluster to process Personal Data or other data that is subject to legal or regulatory compliance requirements. 
+* The following terms in the DPA do not apply to this Free Cluster: Processing of Personal Data; GDPR, Data Security, and HIPAA Business Associate.
+* Microsoft may change or discontinue the Free Cluster service at any time without notice.
 
 ## Related content
 
