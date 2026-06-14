@@ -1,16 +1,20 @@
 ---
 title: Find an Azure Data Explorer partner
-description: Learn about our partners and how they can help you with Azure Data Explorer.
-ms.topic: concept-article
-ms.date: 02/01/2023
+description: Learn about the Azure Data Explorer Find My Partner Program and discover certified partners who can help with consulting, training, implementation, and support.
+ms.topic: article
+ms.date: 06/14/2026
+
+#customer intent: As an Azure Data Explorer user, I want to find certified partners so that I can get help with implementation, consulting, or training.
+
 ---
 # Find an Azure Data Explorer partner
 
 This article describes the partners of the Azure Data Explorer Find My Partner Program. Partners can help you with your Azure Data Explorer implementation, including consulting, training, and support.
 
-The services and expertise are chosen by the partner and shouldn't be considered as endorsement confirmation by Microsoft. The partner is solely responsible for the services it provides.
+> [!NOTE]
+> Each partner chooses the services and expertise they list. Their choices don't represent endorsement by Microsoft. Partners are solely responsible for the services they provide.
 
-You can also get the list of partners by running the following query on the [help](https://help.kusto.windows.net) cluster:
+To get the list of partners, run the following query on the [help](https://help.kusto.windows.net) cluster:
 
 > [!div class="nextstepaction"]
 > [Run the query](https://dataexplorer.azure.com/clusters/help/databases/FindMyPartner?query=H4sIAAAAAAAAAwtILCrJSy0CAIoHlv4HAAAA)
@@ -31,7 +35,7 @@ Partner
 
 :::image type="icon" source="media/findmypartner/ait-white-logo.jpg":::
 
-We develop and design sophisticated, forward-looking software solutions based on the latest Microsoft technologies and advise our customers on the development process, architecture, and software design.
+AIT develops and designs sophisticated, forward-looking software solutions based on the latest Microsoft technologies. The company advises customers on the development process, architecture, and software design.
 
 **Partner type**
 
@@ -57,9 +61,9 @@ We develop and design sophisticated, forward-looking software solutions based on
 
 :::image type="icon" source="media/findmypartner/alten-logo.png":::
 
-ALTEN is the consulting and engineering organization working in various (niche) markets for the high-tech sector and ICT. The development of new High-Tech technologies is costly and requires specialist knowledge. Knowledge in the field of technology plays the most important role, the central pillar within ALTEN.
+ALTEN is the consulting and engineering organization working in various niche markets for the high-tech sector and ICT. The development of new high-tech technologies is costly and requires specialist knowledge. Knowledge in the field of technology plays the most important role and is the central pillar within ALTEN.
 
-ALTEN also offers their specialist knowledge in the field of IT. We play an active role regarding quality, reliability, and innovations in the area of Big Data and Internet of Things with our partners in order to strengthen the digital transformation and sustainability.
+ALTEN also offers its specialist knowledge in the field of IT. To strengthen the digital transformation and sustainability, the company and its partners play an active role regarding quality, reliability, and innovations in the area of Big Data and Internet of Things.
 
 **Partner type**
 
@@ -94,7 +98,7 @@ ALTEN also offers their specialist knowledge in the field of IT. We play an acti
 
 :::image type="icon" source="media/findmypartner/am-squared-logo.png":::
 
-AM Squared Provides specialist consulting, project, and support services with respect to an intelligent edge, IoT, and Azure Cloud Technologies.  We provide an enablement platform to support numerous industries in making sense of their data and analytics requirements in support of Digital Transformation. A key differentiator is to integrate OT Data Sources into the enablement platform powered by Azure Data Explorer.
+AM Squared provides specialist consulting, project, and support services for intelligent edge, IoT, and Azure Cloud technologies. The company offers an enablement platform to support numerous industries in making sense of their data and analytics requirements in support of digital transformation. A key differentiator is the integration of OT data sources into the enablement platform powered by Azure Data Explorer.
 
 **Partner type**
 
@@ -119,7 +123,7 @@ AM Squared Provides specialist consulting, project, and support services with re
 
 beanTech is an IT company that has been supporting industries in the challenges of Digital Transformation for over 20 years.
 
-Competence and availability of the technical team, experience gained in hundreds of projects and technologies always at the state of the art respond perfectly to the needs of the modern manufacturing company that isn't looking for a simple supplier but a business partner to grow in its market.
+The competence and availability of the technical team, along with experience gained in hundreds of projects and state-of-the-art technologies, perfectly meet the needs of the modern manufacturing company that isn't looking for a simple supplier, but rather a business partner to grow in its market.
 
 beanTech is the IT partner that can help you manage the entire data chain in the factory with a complete and integrated offer of solutions ranging from telemetry data acquisition to big data architecture on cloud, from web software development to operation management consultancy, from event analytics to the implementation of sophisticated artificial intelligence algorithms applied to improve performance.
 
@@ -150,13 +154,13 @@ beanTech is the IT partner that can help you manage the entire data chain in the
 
 :::image type="icon" source="media/findmypartner/capgemini-logo.jpg":::
 
-With the world becoming increasingly intelligent and entire value chains being transformed, data is an essential source of understanding and insight. But it’s not enough to have the data, it needs to be reliable, and you need to know how to use it.
+As the world becomes increasingly intelligent and entire value chains transform, data is an essential source of understanding and insight. But it's not enough to have the data. It needs to be reliable, and you need to know how to use it.
 
-Perform AI, our full-service portfolio, enables you to take advantage of the transformative power of data and artificial intelligence (AI). By becoming data-powered, your enterprise can adapt to the changing world and achieve sustainable competitive advantage.
+Perform AI, Capgemini's full-service portfolio, enables you to take advantage of the transformative power of data and artificial intelligence (AI). By becoming data-powered, your enterprise can adapt to the changing world and achieve sustainable competitive advantage.
 
 **"Activate data. Augment intelligence. Amplify outcomes."**
 
-Besides these general descriptions of our capabilities, one of our strongest sectors is Automotive, where we have the chance to work on plenty of IoT use cases and references with the Azure Data Explorer.
+Besides these general descriptions of their capabilities, one of their strongest sectors is Automotive, where they work on plenty of IoT use cases and references with Azure Data Explorer.
 
 **Partner type**
 
@@ -178,7 +182,7 @@ Besides these general descriptions of our capabilities, one of our strongest sec
 
 :::image type="icon" source="media/findmypartner/centric-logo.png":::
 
-Our primary goal is to solve complex business problems. Whether crafting your data strategy, building a data warehouse or designing a custom solution to meet your unique needs, our consultants go beyond building technology. We take a holistic approach using data to solve business problems and capture opportunities. We look at the people, processes, and technology surrounding data and analytics to deliver insights within the context of your business. High-functioning data and analytics capabilities center around enabling the business to ask better questions – and get better answers – with consistency, a high degree of trust and timeliness.
+Centric Consulting's primary goal is to solve complex business problems. Whether crafting your data strategy, building a data warehouse, or designing a custom solution to meet your unique needs, consultants go beyond building technology. Centric takes a holistic approach, using data to solve business problems and capture opportunities. The team looks at the people, processes, and technology surrounding data and analytics to deliver insights within the context of your business. High-functioning data and analytics capabilities center around enabling the business to ask better questions and get better answers with consistency, a high degree of trust, and timeliness.
 
 **Partner type**
 
@@ -203,9 +207,9 @@ Our primary goal is to solve complex business problems. Whether crafting your da
 
 :::image type="icon" source="media/findmypartner/logo-codit.png":::
 
-At Codit we want to help make the world an even smarter place.
-By creating customer cloud solutions that make the world’s data work better, we help our customers to evolve, and touch the lives of millions across the globe.
-Our team of 200 employees across our offices in Belgium, France, Portugal, Switzerland, the United Kingdom, The Netherlands, Malta, and Luxembourg use leading Microsoft Azure Cloud Native technologies to put the world’s data to work.
+At Codit, the aim is to help make the world an even smarter place.  
+By creating customer cloud solutions that make the world’s data work better, you help your customers evolve and touch the lives of millions across the globe.
+Your team of 200 employees across offices in Belgium, France, Portugal, Switzerland, the United Kingdom, The Netherlands, Malta, and Luxembourg uses leading Microsoft Azure Cloud Native technologies to put the world’s data to work.
 
 **Partner type**
 
@@ -235,7 +239,7 @@ Our team of 200 employees across our offices in Belgium, France, Portugal, Switz
 
 :::image type="icon" source="media/findmypartner/cyberproof-logo.png":::
 
-CyberProof, a UST company, helps our clients transform their security to a cost-effective, cloud-native technology architecture. Our next-generation Managed Detection & Response (MDR) service is built to support large, complex enterprises by combining expert human and virtual analysts. Our services are enabled by our purpose-built platform, the CyberProof Defense Center – enabling us to be more agile, collaborate better, and deliver powerful analytics. Our integrated security services include Threat Intelligence, Threat Hunting, and vulnerability Management. Our experts innovate to meet our clients’ needs with custom use cases, integrations, and automations.
+CyberProof, a UST company, helps clients transform their security to a cost-effective, cloud-native technology architecture. Their next-generation Managed Detection and Response (MDR) service supports large, complex enterprises by combining expert human and virtual analysts. Their purpose-built platform, the CyberProof Defense Center, enables them to be more agile, collaborate better, and deliver powerful analytics. Their integrated security services include Threat Intelligence, Threat Hunting, and Vulnerability Management. Their experts innovate to meet clients’ needs with custom use cases, integrations, and automations.
 
 **Partner type**
 
@@ -291,8 +295,8 @@ Data Addiction is a specialist provider of Microsoft Data and AI, and Dynamics 3
 
 :::image type="icon" source="media/findmypartner/data-mastery-logo.png":::
 
-Data Mastery is a Data Engineering and Advanced Analytics consultancy. Our specialty is the design, build, implementation, and management of data analytics solutions. Our consultants are experts in advanced analytics using Azure and Databricks.
-Data Mastery help businesses harness the power of their data and make data-driven decisions through advanced analytics, business intelligence, and modern data platforms. We have a wealth of knowledge and experience across the Utilities, Mining, Financial Services, Real Estate and Education sectors. We've delivered some of Sydney's most exciting Cloud Transformation projects and we look forward to helping you in your journey to the cloud.
+Data Mastery is a data engineering and advanced analytics consultancy. The company specializes in the design, build, implementation, and management of data analytics solutions. Its consultants are experts in advanced analytics using Azure and Databricks.
+Data Mastery helps businesses harness the power of their data and make data-driven decisions through advanced analytics, business intelligence, and modern data platforms. The company has a wealth of knowledge and experience across the utilities, mining, financial services, real estate, and education sectors. It has delivered some of Sydney's most exciting cloud transformation projects and looks forward to helping you in your journey to the cloud.
 
 **Partner type**
 
@@ -319,8 +323,8 @@ Data Mastery help businesses harness the power of their data and make data-drive
 
 :::image type="icon" source="media/findmypartner/datacore-logo.png":::
 
-Datacore provides professional services on Data, BI & AL solution on Azure services. Datacore develop best practices to implement Azure Data Explorer solution to variety needs for a fast and scalable data analysis platform easily and quickly and suitable for handling large amounts of diverse data in real time such as logs, tasks, distributing insights, for time series data and more.
-We're enabling our customers to make with Azure Data Explorer data-driven decisions and find hidden patterns and trends, which without this tool would be difficult.
+Datacore provides professional services on Data, BI, and AI solutions on Azure services. Datacore develops best practices to implement Azure Data Explorer solutions to meet various needs for a fast and scalable data analysis platform. These solutions handle large amounts of diverse data in real time, such as logs, tasks, distributing insights, and time series data.
+Datacore enables customers to make data-driven decisions with Azure Data Explorer and find hidden patterns and trends that would be difficult to uncover without this tool.
 
 **Partner type**
 
@@ -344,7 +348,7 @@ We're enabling our customers to make with Azure Data Explorer data-driven decisi
 
 :::image type="icon" source="media/findmypartner/Delegate-Logo.png":::
 
-Development and design of cloud native solutions based on the latest Microsoft technologies and services. Guidance and consultancy on DevOps processes and software design, architecture and development of highly scalable solutions.
+Development and design of cloud native solutions based on the latest Microsoft technologies and services. Guidance and consultancy on DevOps processes and software design, architecture, and development of highly scalable solutions.
 
 **Partner type**
 
@@ -376,9 +380,9 @@ Development and design of cloud native solutions based on the latest Microsoft t
 
 **IoT made simple**
 
-Device Insight is a specialist for Internet of Things and Industry 4.0 and one of the IoT pioneers in the DACH/GSA region. The company develops and operates customized applications, platforms, and IoT solutions in various industries and use case domains based on a wide range of Azure technologies. As such, Device Insight provides consulting for setting up, operating and maintaining Azure Data Explorer and has strong experience in using Azure Data Explorer as a time series database and analytics engine. Using Azure Data Explorer, the solutions provide deep insights based on IoT data, energy data, application logs and other time series data, integrated with datasets from other enterprise applications. Combining Azure Data Explorer with other Azure services, Device Insight provides end-to-end solutions for condition monitoring, predictive maintenance, digital customer portals, data platforms, smart services, energy optimization, production, and machine digitization and similar.
+Device Insight is a specialist for Internet of Things and Industry 4.0 and one of the IoT pioneers in the DACH/GSA region. The company develops and operates customized applications, platforms, and IoT solutions in various industries and use case domains based on a wide range of Azure technologies. As such, Device Insight provides consulting for setting up, operating, and maintaining Azure Data Explorer and has strong experience in using Azure Data Explorer as a time series database and analytics engine. By using Azure Data Explorer, the solutions provide deep insights based on IoT data, energy data, application logs, and other time series data, integrated with datasets from other enterprise applications. By combining Azure Data Explorer with other Azure services, Device Insight provides end-to-end solutions for condition monitoring, predictive maintenance, digital customer portals, data platforms, smart services, energy optimization, production, and machine digitization and similar.
 
-In addition to the 360-degree consulting & services, Device Insight offers the flexible application framework CENTERSIGHT scale. The framework offers many building blocks for IoT-related applications out of the box as managed services and comes with native support for Azure Data Explorer alongside a multi-tenancy and subtenancy capability. This allows companies to develop their custom IoT solutions faster and be able to manage end user access to the data stored in Azure Data Explorer on a fine-granular level.
+In addition to the 360-degree consulting and services, Device Insight offers the flexible application framework CENTERSIGHT scale. The framework offers many building blocks for IoT-related applications out of the box as managed services and comes with native support for Azure Data Explorer alongside a multitenancy and subtenancy capability. This support allows companies to develop their custom IoT solutions faster and manage end user access to the data stored in Azure Data Explorer on a fine-granular level.
 
 **Partner type**
 
@@ -401,7 +405,7 @@ In addition to the 360-degree consulting & services, Device Insight offers the f
 
 :::image type="icon" source="media/findmypartner/elasta-cloud-logo.png":::
 
-Elastacloud are experts at building complex real-time solutions using Azure Data Explorer. With a penchant for understanding event-driven architectures for high-performant, high-fidelity platforms, Elastacloud has used Azure Data Explorer to ingest, transform, and serve data for large scale cybersecurity analytics for Security Operations Centers (SOC) and IoT monitoring solutions serving billions of events an hour through real-time queries using KQL. Elastacloud have contributed the popular tool [DexCmd](https://github.com/elastacloud/dexcmdline) back to the community. If you need high performance, high-fidelity event driven platforms built that simplifies and abstract the user journey contact Elastacloud.
+Elastacloud is an expert at building complex real-time solutions by using Azure Data Explorer. With a strong understanding of event-driven architectures for high-performance, high-fidelity platforms, Elastacloud uses Azure Data Explorer to ingest, transform, and serve data for large scale cybersecurity analytics for Security Operations Centers (SOC) and IoT monitoring solutions that handle billions of events an hour through real-time queries by using KQL. Elastacloud contributed the popular tool [DexCmd](https://github.com/elastacloud/dexcmdline) back to the community. If you need high performance, high-fidelity event-driven platforms that simplify and abstract the user journey, contact Elastacloud.
 
 **Partner type**
 
@@ -425,9 +429,9 @@ Elastacloud are experts at building complex real-time solutions using Azure Data
 
 :::image type="icon" source="media/findmypartner/fellowmind-logo.jpg":::
 
-Data & Analytics team within Fellowmind Denmark is a part of the entire Data & Analytics capacity in the organization that consists of 400 people working with data. In Denmark, the team is counting 35 experts with each their focus area – Power BI, Data Ingestion, Data Modelling etc.
+The Data & Analytics team within Fellowmind Denmark is part of the entire Data & Analytics capacity in the organization. It consists of 400 people working with data. In Denmark, the team has 35 experts, each with their own focus area: Power BI, Data Ingestion, Data Modeling, and more.
 
-The team a broad experience within the entire Data Platform in Azure on both small, medium, large and enterprise clients – spanning private sector, public sector, and the utility sector.
+The team has broad experience within the entire Data Platform in Azure for small, medium, large, and enterprise clients, spanning private sector, public sector, and the utility sector.
 
 With the emerging focus on IoT, Telemetry and streaming data, the need for experts within this field has also expanded to the Danish Data & Analytics team with specific roles for the complete project approach.
 
@@ -452,14 +456,14 @@ With the emerging focus on IoT, Telemetry and streaming data, the need for exper
 
 :::image type="icon" source="media/findmypartner/gettech-logo.png":::
 
-Get Tech is a Microsoft Solutions Partner company with certifications for Azure Digital & App Innovation and Azure Data & AI. Our cloud architects form the backbone of our consultancy having a proven track record of building solutions for customers in the EMEA region. Our projects cover multiple technical areas from Azure infrastructure deployments, IoT architecture and data analytics platform designs, to cloud migrations. Our customers are from multiple domains, including the energy, healthcare, and travel industries.
+Get Tech is a Microsoft Solutions Partner company with certifications for Azure Digital & App Innovation and Azure Data & AI. The cloud architects form the backbone of the consultancy, with a proven track record of building solutions for customers in the EMEA region. Their projects cover multiple technical areas, from Azure infrastructure deployments, IoT architecture, and data analytics platform designs, to cloud migrations. Customers come from multiple domains, including the energy, healthcare, and travel industries.
 
 **Partner type**
 
 - SI
 - IoT Solution Provider
 - Cloud Native Software Engineering & Consulting
-- Data Engineering & Consulting for BI, ML or AI solutions
+- Data Engineering & Consulting for BI, ML, or AI solutions
 
 
 **Focus geography**
@@ -480,7 +484,7 @@ Get Tech is a Microsoft Solutions Partner company with certifications for Azure 
 
 :::image type="icon" source="media/findmypartner/azure-specialist-logo.png":::
 
-Consulting, architecture and implementation of cloud-native software for the MS Azure Cloud.
+Consulting, architecture, and implementation of cloud-native software for the Microsoft Azure Cloud.
 
 **Partner type**
 
@@ -504,13 +508,13 @@ Consulting, architecture and implementation of cloud-native software for the MS 
 :::image type="icon" source="media/findmypartner/ilink-digital-logo.png":::
 
 **Data Technology Jumpstart**\
-We help customers accelerate their project timings by familiarizing them with the Azure data platform technologies, and environment setup, providing reference solutions to the customer use-case and setting up guidance for best practices.
+The iLink Systems team helps you accelerate your project timelines by familiarizing you with the Azure data platform technologies and environment setup. They provide reference solutions for your use case and guidance for best practices.
 
 **Architecture Consulting**\
-Our experts work to architect solutions for our customer's most pressing data architecture use cases. We analyze the existing system, understand the current pain points and provide a future-proof reference architecture, execute a couple of sample use cases, and set up guidance for the best practices.
+The iLink Systems experts work to architect solutions for your most pressing data architecture use cases. They analyze the existing system, understand the current pain points, and provide a future-proof reference architecture. They execute a couple of sample use cases and set up guidance for the best practices.
 
 **Data Platform Build-up**\
-We build up our customer's data platforms powered with Azure data services. Our team enables our customers to create their own complete data platform from inception to production, set up processes for data analysis, data integration, exposing data as a product, and set up data governance and monitoring for different data-related programs and projects.
+The iLink Systems team builds your data platform powered by Azure data services. They enable you to create your own complete data platform from inception to production. They set up processes for data analysis, data integration, exposing data as a product, and set up data governance and monitoring for different data-related programs and projects.
 
 **Partner type**
 
@@ -566,11 +570,11 @@ InCycle provides expert consulting for companies seeking to harness data to inno
 
 :::image type="icon" source="media/findmypartner/insight-logo.jpg":::
 
-Insight is ready to help you get more value from your data at any scale. Harnessing the power of Azure Data Explorer, Insight can drive real-time intelligence discovery and delivery over your log, IoT, web-click, or other large-scale, fast-paced data with a secure, cost-effective solution.
+Insight helps you get more value from your data at any scale. By harnessing the power of Azure Data Explorer, Insight drives real-time intelligence discovery and delivery over your log, IoT, web-select, or other large-scale, fast-paced data with a secure, cost-effective solution.
 
 **Partner type**
 
-- global solutions integrator
+- Global solutions integrator
 - SI
 
 **Focus geography**
@@ -592,7 +596,7 @@ Insight is ready to help you get more value from your data at any scale. Harness
 
 :::image type="icon" source="media/findmypartner/elasta-cloud-intelligent-spaces-logo.png":::
 
-A product spin-off of Elastacloud, Intelligent Spaces build an Azure backed Digital Twin for managing spaces used by business. Intelligent Spaces handles BIM collaboration and analytics, automated graph creation and a geospatial enrichment engine that produced 3D and AR visualizations. Operating at the intersection of spatial and real-time, their Digital Twin is connected to physical space using IoT technologies. Their Analytics Pack is an Azure Data Explorer powered, web UI that allows business users to drag and drop analytic operations that are then translated and executed directly in Azure Data Explorer. They've contributed the popular tool [AdxUtils](https://github.com/intelligentspaces/AdxUtils) back to the community. If you need Digital Twins or BIM integrations with Azure Data Explorer, contact Intelligent Spaces.
+A product spin-off of Elastacloud, Intelligent Spaces builds an Azure-backed digital twin for managing spaces used by business. Intelligent Spaces handles BIM collaboration and analytics, automated graph creation, and a geospatial enrichment engine that produces 3D and AR visualizations. Operating at the intersection of spatial and real-time, their digital twin connects to physical space by using IoT technologies. Their Analytics Pack is an Azure Data Explorer-powered web UI that business users can use to drag and drop analytic operations that are then translated and executed directly in Azure Data Explorer. They contributed the popular tool [AdxUtils](https://github.com/intelligentspaces/AdxUtils) back to the community. If you need digital twins or BIM integrations with Azure Data Explorer, contact Intelligent Spaces.
 
 **Partner type**
 
@@ -616,17 +620,17 @@ A product spin-off of Elastacloud, Intelligent Spaces build an Azure backed Digi
 
 :::image type="icon" source="media/findmypartner/linkit-logo.png":::
 
-LINKIT serves more than 100 customers in the Netherlands and Germany, providing digital innovations that help customers accelerate IT to become frontrunners in their industry. For over 25 years, LINKIT helps solve business challenges by combining a winning approach, a knowledge-driven team, and powerful technology like Low-code platforms Mendix and OutSystems, as well as data, cloud & IoT technology.
+LINKIT serves more than 100 customers in the Netherlands and Germany, providing digital innovations that help customers accelerate IT to become frontrunners in their industry. For over 25 years, LINKIT helps solve business challenges by combining a winning approach, a knowledge-driven team, and powerful technology like low-code platforms Mendix and OutSystems, as well as data, cloud, and IoT technology.
 
 **Partner type**
 
-- IT-partner, focused on low-code software development, data engineering and cloud automation
+- IT partner, focused on low-code software development, data engineering, and cloud automation
 
 **Focus geography**
 
 - Netherlands
 - Germany
-- South-Africa
+- South Africa
 
 **Contact**
 
@@ -640,9 +644,9 @@ LINKIT serves more than 100 customers in the Netherlands and Germany, providing 
 
 :::image type="icon" source="media/findmypartner/mm-logo.jpg":::
 
-M&M Software is a technology and consulting company for digital solutions. Our range of services includes substantiated management and technology consulting, high qualified software development and maintenance as well as comprehensive quality assurance and IT services.
+M&M Software is a technology and consulting company for digital solutions. Their range of services includes substantiated management and technology consulting, highly qualified software development and maintenance, as well as comprehensive quality assurance and IT services.
 
-As a project partner for software development services, we drive the success of our customers and support them in the realization of their digital visions - from initial vision to the finished product. Software solutions from M&M pave the way for the future of an intelligently connected world.
+As a project partner for software development services, they drive the success of their customers and support them in the realization of their digital visions - from initial vision to the finished product. Software solutions from M&M pave the way for the future of an intelligently connected world.
 
 **Partner type**
 
@@ -671,10 +675,10 @@ As a project partner for software development services, we drive the success of 
 
 :::image type="icon" source="media/findmypartner/mandelbulb-logo.png":::
 
-Mandelbulb Technologies pioneers innovative Cloud Native, Data, and AI services, tailoring cutting-edge solutions for businesses seeking to amplify their digital footprint. 
-As partners to Microsoft, we excel in leveraging Microsoft's scalable solutions to deliver beyond client expectations, focusing on data-driven insights powered by advanced analytics, machine learning, and AI integrated with Azure's robust cloud capabilities. This ensures every solution is scalable and secure.
-Our expertise extends to Azure Data Explorer (ADX) implementation, crafting swift and scalable data analysis platforms that excel in real-time management of diverse datasets, including logs and time-series data. With ADX, we enable real-time insights and decision-making, uncovering trends that drive businesses forward.
-With a strong industry presence in Retail, Healthcare, Manufacturing, Finance, and Fleet & Logistics, Mandelbulb Technologies carves customized solutions that empower informed decision-making and drive exponential business growth.
+Mandelbulb Technologies pioneers innovative cloud native, data, and AI services, tailoring cutting-edge solutions for businesses seeking to amplify their digital footprint. 
+As partners to Microsoft, the company excels in using Microsoft's scalable solutions to deliver beyond client expectations, focusing on data-driven insights powered by advanced analytics, machine learning, and AI integrated with Azure's robust cloud capabilities. This approach ensures every solution is scalable and secure.
+The company's expertise extends to Azure Data Explorer (ADX) implementation, crafting swift and scalable data analysis platforms that excel in real-time management of diverse datasets, including logs and time-series data. By using ADX, the company enables real-time insights and decision-making, uncovering trends that drive businesses forward.
+With a strong industry presence in retail, healthcare, manufacturing, finance, and fleet and logistics, Mandelbulb Technologies carves customized solutions that empower informed decision-making and drive exponential business growth.
 
 **Partner type**
 
@@ -698,12 +702,12 @@ With a strong industry presence in Retail, Healthcare, Manufacturing, Finance, a
 
 :::image type="icon" source="media/findmypartner/maq-software-logo.png":::
 
-As 2021 Microsoft Power BI Partner of the Year, we engage with leading companies to accelerate their business intelligence and analytics initiatives. Our solutions enable our clients to improve their operations, reduce costs, increase sales, and build stronger customer relationships. Our clients consistently recognize us for providing architecture and governance frameworks, implementing best practices to optimize reports, and building team capability through training programs. Our innovative tools and 33 certified visuals expand Power BI capabilities to save time for decision makers.
-As a premier supplier to Microsoft for two decades, our clients benefit from our extensive insights on the platform and engineering practices. As a Microsoft Managed Partner, our clients benefit from our breadth and depth of expertise. With globally integrated teams in Redmond, Washington, and three locations in India, we deliver solutions with increased velocity and technical intensity. Inc. magazine has recognized us for sustained growth by listing us on the Inc. 5000 list 10 times – a rare honor.
+As the 2021 Microsoft Power BI Partner of the Year, MAQ Software works with leading companies to accelerate their business intelligence and analytics initiatives. Their solutions help clients improve operations, reduce costs, increase sales, and build stronger customer relationships. Clients consistently recognize MAQ Software for providing architecture and governance frameworks, implementing best practices to optimize reports, and building team capability through training programs. Their innovative tools and 33 certified visuals expand Power BI capabilities to save time for decision makers.
+As a premier supplier to Microsoft for two decades, clients benefit from MAQ Software's extensive insights on the platform and engineering practices. As a Microsoft Managed Partner, clients benefit from their breadth and depth of expertise. With globally integrated teams in Redmond, Washington, and three locations in India, they deliver solutions with increased velocity and technical intensity. Inc. magazine has recognized MAQ Software for sustained growth by listing them on the Inc. 5000 list 10 times – a rare honor.
 
 **Partner type**
 
-- SI mostly with SaaS Offerings
+- SI mostly with SaaS offerings
 
 **Focus geography**
 
@@ -727,7 +731,7 @@ As a premier supplier to Microsoft for two decades, our clients benefit from our
 
 :::image type="icon" source="media/findmypartner/mesh-systems-logo.png":::
 
-Mesh Systems is an IoT Solutions Provider that develops, operates, and manages end-to-end IoT solutions. Our full stack capabilities span hardware design, embedded software development, device connectivity, cloud-based services, and custom web/app development. Mesh Systems is the ideal partner to launch new connected products, scale a proof-of-value, and reach hyper growth production volume.
+Mesh Systems is an IoT Solutions Provider that develops, operates, and manages end-to-end IoT solutions. Its full stack capabilities span hardware design, embedded software development, device connectivity, cloud-based services, and custom web/app development. Mesh Systems is the ideal partner to launch new connected products, scale a proof-of-value, and reach hyper growth production volume.
 
 **Partner type**
 
@@ -757,7 +761,7 @@ Mesh Systems is an IoT Solutions Provider that develops, operates, and manages e
 
 :::image type="icon" source="media/findmypartner/msg-logo.jpg":::
 
-Msg is an independent, international group of companies with more than 10,000 employees worldwide.
+Msg is an independent, international group of companies with more than 10,000 employees worldwide. It's represented in 32 countries and supports its customers in their digital transformation. Founded in 1980, the consulting and IT company offers strategic business consulting and end-to-end solutions for the industries automotive, banking, consumer products, food, healthcare, insurance, life science & chemicals, manufacturing, public sector, telecommunications, travel & logistics, and utilities. Within the group, independent companies cover the wide variety of industry and topic-based competence. Msg systems ag forms the core of the company group.
 It's represented in 32 countries/regions and supports its customers in their digital transformation. Founded
 in 1980, the consulting and IT company‘s range of services includes strategic business consulting and
 end-to-end solutions for the industries automotive, banking, consumer products, food, healthcare
@@ -767,8 +771,8 @@ topic-based competence. Msg systems ag forms the core of the company group.
 
 **Partner type**
 
-- Development of Standard Software and Individual Solutions
-- System Integration
+- Development of standard software and individual solutions
+- System integration
 
 **Focus geography**
 
@@ -789,7 +793,7 @@ topic-based competence. Msg systems ag forms the core of the company group.
 
 :::image type="icon" source="media/findmypartner/no-logo.png":::
 
-Provide training around Azure Data Explorer.
+Provides training around Azure Data Explorer.
 
 **Partner type**
 
@@ -812,7 +816,7 @@ Provide training around Azure Data Explorer.
 
 :::image type="icon" source="media/findmypartner/option-4-0-logo.png":::
 
-We have a Co-sell offering on the Azure Market place: https://azuremarketplace.microsoft.com/marketplace/consulting-services/option40ag1624272391965.02052010
+OPTION 4.0 AG has a [Co-sell offering on Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services/option40ag1624272391965.02052010).
 
 **Partner type**
 
@@ -835,7 +839,7 @@ We have a Co-sell offering on the Azure Market place: https://azuremarketplace.m
 
 :::image type="icon" source="media/findmypartner/orion-innovation-logo.jpg":::
 
-Orion Innovation is a Leader in Digital transformation services with a Design led, technology driven approach. We're a trusted partner to our Fortune 500, Large, Medium clients in their business transformation initiatives with 99% CSAT. With 25+ years of experience we bring deep domain expertise in Financial Services, Professional Services,  Healthcare & Life Sciences, Hi-Tech, Telecom, Media & Entertainment, Sports, and Education Verticals.  Our global team of 6,000+ associates  in 12 major delivery centers across USA, LATAM, Europe, and APAC delivers those digital transformation services around Experience Design, Digital Product Development, Data Analytics & AI, Cloud & Infrastructure, Business application & Modernization, Embedded & real time solutions, IoT/IIoT, Testing, and Cybersecurity. We're ISO 9001:2015, ISO/IEC 27001:2013 certified, and CMMI&reg;️ Level 3 compliant and have IP's covering Industry Solutions, Accelerators, and proprietary internal tools.
+Orion Innovation is a leader in digital transformation services with a design-led, technology-driven approach. The company is a trusted partner to Fortune 500 and mid-size clients in their business transformation initiatives with 99% CSAT. With more than 25 years of experience, Orion brings deep domain expertise in financial services, professional services, healthcare and life sciences, hi-tech, telecom, media and entertainment, sports, and education verticals. A global team of more than 6,000 associates in 12 major delivery centers across the USA, LATAM, Europe, and APAC delivers digital transformation services around experience design, digital product development, data analytics and AI, cloud and infrastructure, business application and modernization, embedded and real-time solutions, IoT/IIoT, testing, and cybersecurity. Orion is ISO 9001:2015 and ISO/IEC 27001:2013 certified, CMMI&reg; Level 3 compliant, and holds IP covering industry solutions, accelerators, and proprietary internal tools.
 
 **Partner type**
 
@@ -861,7 +865,7 @@ Orion Innovation is a Leader in Digital transformation services with a Design le
 
 :::image type="icon" source="media/findmypartner/skypepointcloud-logo.png":::
 
-SkyPoint Cloud is a SaaS and Professional Services consultancy company headquartered in Portland, OR. SkyPoint’s Modern Data Stack Platform (MDSP) SaaS solution is a data ingestion hub to manage, clean, and analyze your data with automated pipelines and a myriad of integrations. SkyPoint Cloud Solutions Group (CSG) is our consultancy arm that provides custom data solutions, application development, managed business intelligence, training and mentoring for public and private sector clients.
+SkyPoint Cloud is a SaaS and professional services consultancy company headquartered in Portland, OR. SkyPoint’s Modern Data Stack Platform (MDSP) SaaS solution is a data ingestion hub to manage, clean, and analyze your data with automated pipelines and a myriad of integrations. SkyPoint Cloud Solutions Group (CSG) is the consultancy arm that provides custom data solutions, application development, managed business intelligence, training, and mentoring for public and private sector clients.
 
 **Partner type**
 
@@ -885,11 +889,11 @@ SkyPoint Cloud is a SaaS and Professional Services consultancy company headquart
 
 :::image type="icon" source="media/findmypartner/spartabi-logo.png":::
 
-SpartaBI provides boutique consulting and development services in the Microsoft data platform stack. We specialize in designing and implementing cloud based analytical systems.
+SpartaBI provides boutique consulting and development services in the Microsoft data platform stack. They specialize in designing and implementing cloud-based analytical systems.
 
-Azure Data Explorer combines a powerful and fast engine with many built-in utilizations that make life easier for both developers and users. It's an impressive PaaS offering that fits perfectly as a major player in many cloud architectures.
+Azure Data Explorer combines a powerful and fast engine with many built-in features that make life easier for both developers and users. It's an impressive PaaS offering that fits perfectly as a major player in many cloud architectures.
 
-We offer to put our experience and dedication into harnessing the impressive capabilities of Azure Data Explorer and take your solution to great heights.
+SpartaBI offers to put their experience and dedication into harnessing the impressive capabilities of Azure Data Explorer and take your solution to great heights.
 
 **Partner type**
 
@@ -913,7 +917,7 @@ We offer to put our experience and dedication into harnessing the impressive cap
 
 :::image type="icon" source="media/findmypartner/terawe-logo.png":::
 
-We have deep expertise with custom solutions and also have multiple solution offerings that help businesses move to the next stage of digital transformation and achieve greater efficiencies with the use of Microsoft's Data Platform and AI services.
+Terawe Corporation has deep expertise in custom solutions. It also offers multiple solutions that help businesses move to the next stage of digital transformation and achieve greater efficiencies by using Microsoft's Data Platform and AI services.
 
 **Partner type**
 
@@ -938,7 +942,7 @@ We have deep expertise with custom solutions and also have multiple solution off
 
 :::image type="icon" source="media/findmypartner/tricloud-logo.png":::
 
-Tricloud provides an end-to-end Industrial IoT Platform based on Azure IoT and Azure Data Explorer, to support the Digitalization efforts of modern industries. Tricloud supports enterprises in their cloud transformation with expert Azure consultants, specializing in Azure IoT and data analytics with Azure Data Explorer.
+Tricloud provides an end-to-end Industrial IoT Platform based on Azure IoT and Azure Data Explorer, to support the digitalization efforts of modern industries. Tricloud supports enterprises in their cloud transformation with expert Azure consultants, specializing in Azure IoT and data analytics with Azure Data Explorer.
 
 **Partner type**
 
@@ -966,11 +970,11 @@ Tricloud provides an end-to-end Industrial IoT Platform based on Azure IoT and A
 
 :::image type="icon" source="media/findmypartner/uptake-logo.png":::
 
-Uptake provides our customers with the scalable, secure ability to connect their machines, people, and data together to accelerate and unlock AI-enabled industrial intelligence to optimize costs, manage risks, and increase revenue assurance.
+Uptake provides customers with the scalable, secure ability to connect their machines, people, and data together to accelerate and unlock AI-enabled industrial intelligence to optimize costs, manage risks, and increase revenue assurance.
 
-Uptake is the intelligence system for industrial assets. With the power of data acquisition and artificial intelligence, Uptake gives all departments, such as maintenance, reliability, and operations teams, a single, shared, and contextualized view of every asset in an operation. Driven by powerful data science models and cloud computing, our products deliver insights to customers that help them predict and prevent asset failure, mitigate risk, optimize maintenance strategy and asset performance, reduce costs, assure productivity, and enhance safety. With 48+ patents and recognized for leadership in Industrial AI by Gartner, the World Economic Forum, CNBC, and Forbes, Uptake is headquartered in Chicago with presence in Canada, South America, Europe, India, and Australia.
+Uptake is the intelligence system for industrial assets. With the power of data acquisition and artificial intelligence, Uptake gives all departments, such as maintenance, reliability, and operations teams, a single, shared, and contextualized view of every asset in an operation. Driven by powerful data science models and cloud computing, the products deliver insights to customers that help them predict and prevent asset failure, mitigate risk, optimize maintenance strategy and asset performance, reduce costs, assure productivity, and enhance safety. With more than 48 patents and recognized for leadership in Industrial AI by Gartner, the World Economic Forum, CNBC, and Forbes, Uptake is headquartered in Chicago with presence in Canada, South America, Europe, India, and Australia.
 
-Uptake provides asset-intensive companies the transparency, traceable, secure, cost-effective ability to connect their machines, people, and data together providing assurance on ESG Reporting and Disclosure with Data granularity, accessibility, accuracy, and better governance.
+Uptake provides asset-intensive companies the transparency, traceable, secure, cost-effective ability to connect their machines, people, and data together providing assurance on ESG Reporting and Disclosure with data granularity, accessibility, accuracy, and better governance.
 
 **Partner type**
 
@@ -993,7 +997,7 @@ Uptake provides asset-intensive companies the transparency, traceable, secure, c
 
 :::image type="icon" source="media/findmypartner/zure-ltd-logo.jpg":::
 
-Experienced company that is focused on full lifecycle custom software development and integrations using Azure PaaS services.
+Experienced company that focuses on full lifecycle custom software development and integrations by using Azure PaaS services.
 
 **Partner type**
 
@@ -1013,3 +1017,8 @@ Experienced company that is focused on full lifecycle custom software developmen
 
 - [Zure Ltd website](https://www.zure.com)
 - [Microsoft partner site for Zure Ltd](https://appsource.microsoft.com/marketplace/partner-dir/d4842539-1664-4a55-981e-a6a6643b6d02/overview)
+
+## Related content
+
+- [Azure Data Explorer overview](data-explorer-overview.md)
+- [Get started with Azure Data Explorer](start-for-free.md)
