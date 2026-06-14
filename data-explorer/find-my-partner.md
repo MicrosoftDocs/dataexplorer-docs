@@ -2,7 +2,7 @@
 title: Find an Azure Data Explorer partner
 description: Learn about the Azure Data Explorer Find My Partner Program and discover certified partners who can help with consulting, training, implementation, and support.
 ms.topic: article
-ms.date: 06/07/2026
+ms.date: 06/14/2026
 
 #customer intent: As an Azure Data Explorer user, I want to find certified partners so that I can get help with implementation, consulting, or training.
 
@@ -207,7 +207,7 @@ Centric Consulting's primary goal is to solve complex business problems. Whether
 
 :::image type="icon" source="media/findmypartner/logo-codit.png":::
 
-At Codit,the aim is to help make the world an even smarter place.  
+At Codit, the aim is to help make the world an even smarter place.  
 By creating customer cloud solutions that make the world’s data work better, you help your customers evolve and touch the lives of millions across the globe.
 Your team of 200 employees across offices in Belgium, France, Portugal, Switzerland, the United Kingdom, The Netherlands, Malta, and Luxembourg uses leading Microsoft Azure Cloud Native technologies to put the world’s data to work.
 
@@ -1020,5 +1020,5 @@ Experienced company that focuses on full lifecycle custom software development a
 
 ## Related content
 
-- [Azure Data Explorer overview](overview.md)
+- [Azure Data Explorer overview](data-explorer-overview.md)
 - [Get started with Azure Data Explorer](start-for-free.md)
