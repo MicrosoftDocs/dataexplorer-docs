@@ -6,7 +6,8 @@ ms.author: spelluru
 ms.service: azure-data-explorer
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/26/2025
+ms.date: 06/10/2026
+#customer intent: As a data analyst, I want to create and query graphs in KQL so that I can analyze interconnected data like organizational hierarchies.
 ---
 
 # Tutorial: Create your first graphs in Kusto Query Language
@@ -15,7 +16,7 @@ ms.date: 05/26/2025
 
 Graph semantics in Kusto enables you to model and query data as interconnected networks, making it intuitive to analyze complex relationships like organizational hierarchies, social networks, and attack paths. Unlike traditional relational queries that rely on joins, graphs use direct relationships between entities to traverse connections efficiently.
 
-In this tutorial, you learn how to:
+In this tutorial, you:
 ::: moniker range="microsoft-fabric || azure-data-explorer"
 > [!div class="checklist"]
 >
@@ -32,7 +33,7 @@ In this tutorial, you learn how to:
 > * [Compare](#compare-transient-and-persistent-graphs) transient versus persistent graph approaches
 ::: moniker-end
 
-If you don't have an Azure Data Explorer cluster, [create a free cluster](/azure/data-explorer/start-for-free-web-ui) before you begin the tutorial.
+If you don't have an Azure Data Explorer cluster, [create a free cluster](/azure/data-explorer/start-for-free-web-ui) before you begin.
 
 ## Prerequisites
 
@@ -59,16 +60,16 @@ Navigate to the advanced hunting page to start querying Microsoft Sentinel data.
 ::: moniker-end
 
 ::: moniker range="azure-monitor"
-Navigate to Logs or to a Logs Analytics workspace in the Azure portal to start querying Azure Monitor data.
+Navigate to Logs or to a Log Analytics workspace in the Azure portal to start querying Azure Monitor data.
 ::: moniker-end
 
 ## Create a transient graph with organizational data
 
-In this section, you'll create your first graph using sample organizational data. Transient graphs are created dynamically during query execution using the `make-graph` operator, making them perfect for ad-hoc analysis and exploration.
+Create your first graph using sample organizational data. Transient graphs are created dynamically during query execution using the `make-graph` operator, which makes them ideal for ad-hoc analysis and exploration.
 
 You'll work with a simple company structure where employees report to managers. This organizational hierarchy provides an intuitive example for understanding graph relationships:
 
-:::image type="content" source="../media/graphs/tutorial-first-graph.png" alt-text="A diagram showing the organization hierarchy.":::
+:::image type="content" source="../media/graphs/tutorial-first-graph.png" alt-text="Diagram that shows the organizational hierarchy with Alice as CEO, Bob and Carol as managers, and Dave, Eve, and Frank as individual contributors.":::
 
 Create the organizational graph structure using employee and reporting relationship data:
 
@@ -116,9 +117,9 @@ reports
 
 ## Query relationships with graph-match patterns
 
-Now you'll learn to use the `graph-match` operator to find specific patterns in your organizational graph. The `graph-match` operator searches for relationships and connections within the graph structure.
+Use the `graph-match` operator to find specific patterns in your organizational graph. The `graph-match` operator searches for relationships and connections within the graph structure.
 
-First, find all employees who directly report to Alice by matching the immediate reporting relationship pattern:
+Find all employees who directly report to Alice by matching the immediate reporting relationship pattern:
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -206,9 +207,9 @@ reports
 > [!NOTE]
 > This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
 
-Persistent graphs are stored in the database and can be queried repeatedly without rebuilding the graph structure. You'll now create the same organizational structure as a persistent graph for better performance and reusability.
+Persistent graphs are stored in the database and can be queried repeatedly without rebuilding the graph structure. Create the same organizational structure as a persistent graph for better performance and reusability.
 
-Create functions that return your sample data, then define a graph model structure:
+Create functions that return your sample data, and then define a graph model structure:
 
 ```kusto
 // Create a function that returns employee data
@@ -293,7 +294,7 @@ graph("OrganizationGraph")
   project employee = employee.name, role = employee.role, age = employee.age
 ```
 
-Find all employees in Alice's organization including indirect reports:
+Find all employees in Alice's organization, including indirect reports:
 
 ```kusto
 graph("OrganizationGraph")
@@ -324,12 +325,12 @@ Understanding when to use each approach helps you choose the right method for yo
 | **Reusability** | Must rebuild for each query | Query repeatedly without rebuilding |
 | **Performance** | Good for smaller datasets | Optimized for large, complex graphs |
 | **Use cases** | Ad-hoc analysis, exploration | Production analytics, repeated queries |
-| **Memory limits** | Limited by node memory | Can handle larger datasets |
+| **Memory limits** | Limited by node memory | Handles larger datasets |
 
 ## Clean up resources
 
 ::: moniker range="azure-data-explorer || microsoft-fabric"
-If you're not going to continue using the persistent graph models, delete them with the following commands:
+If you don't plan to continue using the persistent graph models, delete them with the following commands:
 
 1. Drop the graph model:
 

@@ -1,9 +1,10 @@
 ---
 title: Clone a database schema - Azure Data Explorer
-description: Learn how to clone a database schema in Azure Data Explorer.
+description: Learn how to clone an Azure Data Explorer database schema using management commands. Export your schema as a CSL script and recreate it in a target database.
 ms.reviewer: zivc
 ms.topic: how-to
-ms.date: 09/26/2023
+ms.date: 06/10/2026
+#customer intent: As a database administrator, I want to clone a database schema so that I can replicate structure to another database without copying data.
 ---
 
 # Clone a database schema in Azure Data Explorer
@@ -16,10 +17,10 @@ This article explains how to use [management commands](/kusto/management/index?v
 
 ## Clone a database schema
 
-The following steps describe how to clone a database schema using the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). Alternatively, you can use the [Kusto client libraries](/kusto/api/client-libraries?view=azure-data-explorer&preserve-view=true) to run the same management commands. For more information, see [Create an app to run management commands](/kusto/api/get-started/app-management-commands?view=azure-data-explorer&preserve-view=true).
+These steps describe how to clone a database schema using the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). Alternatively, you can use the [Kusto client libraries](/kusto/api/client-libraries?view=azure-data-explorer&preserve-view=true) to run the same management commands. For more information, see [Create an app to run management commands](/kusto/api/get-started/app-management-commands?view=azure-data-explorer&preserve-view=true).
 
-1. From the left menu, select **Query**.
-1. In the [connection pane](web-ui-query-overview.md#view-clusters-and-databases), select the database whose schema you want to clone.
+1. Select **Query** from the left menu.
+1. Select the database whose schema you want to clone in the [connection pane](web-ui-query-overview.md#view-clusters-and-databases).
 
     :::image type="content" source="media/clone-database-schema/select-database.png" alt-text="Screenshot of selected database in connection pane." lightbox="media/clone-database-schema/select-database.png":::
     
@@ -29,9 +30,9 @@ The following steps describe how to clone a database schema using the [Azure Dat
     .show database schema as csl script with (ShowObfuscatedStrings = true)
     ```
 
-    This command returns a script of management commands to recreate the database schema. Note the number of returned records, which is used for verification in a later step. For more information, see [.show database schema command](/kusto/management/show-schema-database?view=azure-data-explorer&preserve-view=true#show-database-schema-as-csl-script).
+    This command returns a script of management commands to recreate the database schema. Note the number of returned records, which you'll use for verification in a later step. For more information, see [.show database schema command](/kusto/management/show-schema-database?view=azure-data-explorer&preserve-view=true#show-database-schema-as-csl-script).
 
-1. Copy the CSL script output. To do so, select all of the returned rows. Then, either right-click and select **Copy** or use the *Ctrl + C* keyboard shortcut.
+1. Copy the CSL script output by selecting all of the returned rows. Then, either right-click and select **Copy** or use the Ctrl+C keyboard shortcut.
 
     :::image type="content" source="media/clone-database-schema/copy-script-output.png" alt-text="Screenshot of the selected records and right-click menu." lightbox="media/clone-database-schema/copy-script-output.png":::
 
@@ -50,9 +51,9 @@ The following steps describe how to clone a database schema using the [Azure Dat
     .execute database script <| <CSLScript>
     ```
 
-    This command runs the commands from the script, recreating the database schema on the new database. For more information, see [.execute database script command](/kusto/management/execute-database-script?view=azure-data-explorer&preserve-view=true).
+    This command executes the script, recreating the database schema on the new database. For more information, see [.execute database script command](/kusto/management/execute-database-script?view=azure-data-explorer&preserve-view=true).
 
-1. Verify that the script ran correctly. To do so, check that the number of returned records is the same as the records from the show schema command. Then, scroll to the final command and check that the `Result` column is `Complete`. If a failure occurs, troubleshoot and run the command again.
+1. Verify that the script ran correctly by checking that the number of returned records matches the records from the show schema command. Then, scroll to the final command and check that the `Result` column is `Complete`. If a failure occurs, troubleshoot and run the command again.
 
     > [!NOTE]
     > You can rerun the script as often as needed without clearing resources from the previous run.

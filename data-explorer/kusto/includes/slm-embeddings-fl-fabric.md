@@ -46,9 +46,9 @@ let slm_embeddings_fl = (tbl:(*), text_col:string, embeddings_col:string, batch_
 {
     let kwargs = bag_pack('text_col', text_col, 'embeddings_col', embeddings_col, 'batch_size', batch_size, 'model_name', model_name, 'prefix', prefix);
     let code = ```if 1:
+		import os
 		from sandbox_utils import Zipackage
 		Zipackage.install('embedding_engine.zip')
-		Zipackage.install('tokenizers-0.22.1.whl')
 		
 		from embedding_factory import create_embedding_engine
 		
@@ -60,7 +60,8 @@ let slm_embeddings_fl = (tbl:(*), text_col:string, embeddings_col:string, batch_
 
 		Zipackage.install(f'{model_name}.zip')
 
-		engine = create_embedding_engine(model_name, cache_dir="C:\\Temp")
+		work_dir = os.environ.get("UPLOAD_PATH")               #  "/app/temp"
+		engine = create_embedding_engine(model_name, cache_dir=work_dir)
 		embeddings = engine.encode(df[text_col].tolist(), batch_size=batch_size, prefix=prefix)		#	prefix is used only for E5
 		
 		result = df
@@ -69,7 +70,6 @@ let slm_embeddings_fl = (tbl:(*), text_col:string, embeddings_col:string, batch_
     tbl
     | evaluate hint.distribution=per_node python(typeof(*), code, kwargs, external_artifacts = bag_pack(
     			'embedding_engine.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip;impersonate',
-				'tokenizers-0.22.1.whl', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/tokenizers-0.22.1-cp39-abi3-win_amd64.whl;impersonate',
 				'harrier-v1-270m.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/harrier-v1-270m.zip;impersonate',
 				'jina-v2-small.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/jina-v2-small.zip;impersonate',
 				'e5-small-v2.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/e5-small-v2.zip;impersonate'))
@@ -90,9 +90,9 @@ slm_embeddings_fl(tbl:(*), text_col:string, embeddings_col:string, batch_size:in
 {
     let kwargs = bag_pack('text_col', text_col, 'embeddings_col', embeddings_col, 'batch_size', batch_size, 'model_name', model_name, 'prefix', prefix);
     let code = ```if 1:
+		import os
 		from sandbox_utils import Zipackage
 		Zipackage.install('embedding_engine.zip')
-		Zipackage.install('tokenizers-0.22.1.whl')
 		
 		from embedding_factory import create_embedding_engine
 		
@@ -104,7 +104,8 @@ slm_embeddings_fl(tbl:(*), text_col:string, embeddings_col:string, batch_size:in
 
 		Zipackage.install(f'{model_name}.zip')
 
-		engine = create_embedding_engine(model_name, cache_dir="C:\\Temp")
+		work_dir = os.environ.get("UPLOAD_PATH")               #  "/app/temp"
+		engine = create_embedding_engine(model_name, cache_dir=work_dir)
 		embeddings = engine.encode(df[text_col].tolist(), batch_size=batch_size, prefix=prefix)		#	prefix is used only for E5
 		
 		result = df
@@ -113,7 +114,6 @@ slm_embeddings_fl(tbl:(*), text_col:string, embeddings_col:string, batch_size:in
     tbl
     | evaluate hint.distribution=per_node python(typeof(*), code, kwargs, external_artifacts = bag_pack(
     			'embedding_engine.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip;impersonate',
-				'tokenizers-0.22.1.whl', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/tokenizers-0.22.1-cp39-abi3-win_amd64.whl;impersonate',
 				'harrier-v1-270m.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/harrier-v1-270m.zip;impersonate',
 				'jina-v2-small.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/jina-v2-small.zip;impersonate',
 				'e5-small-v2.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/e5-small-v2.zip;impersonate'))
@@ -137,9 +137,9 @@ let slm_embeddings_fl = (tbl:(*), text_col:string, embeddings_col:string, batch_
 {
     let kwargs = bag_pack('text_col', text_col, 'embeddings_col', embeddings_col, 'batch_size', batch_size, 'model_name', model_name, 'prefix', prefix);
     let code = ```if 1:
+		import os
 		from sandbox_utils import Zipackage
 		Zipackage.install('embedding_engine.zip')
-		Zipackage.install('tokenizers-0.22.1.whl')
 		
 		from embedding_factory import create_embedding_engine
 		
@@ -151,7 +151,8 @@ let slm_embeddings_fl = (tbl:(*), text_col:string, embeddings_col:string, batch_
 
 		Zipackage.install(f'{model_name}.zip')
 
-		engine = create_embedding_engine(model_name, cache_dir="C:\\Temp")
+		work_dir = os.environ.get("UPLOAD_PATH")               #  "/app/temp"
+		engine = create_embedding_engine(model_name, cache_dir=work_dir)
 		embeddings = engine.encode(df[text_col].tolist(), batch_size=batch_size, prefix=prefix)		#	prefix is used only for E5
 		
 		result = df
@@ -160,7 +161,6 @@ let slm_embeddings_fl = (tbl:(*), text_col:string, embeddings_col:string, batch_
     tbl
     | evaluate hint.distribution=per_node python(typeof(*), code, kwargs, external_artifacts = bag_pack(
     			'embedding_engine.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip;impersonate',
-				'tokenizers-0.22.1.whl', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/tokenizers-0.22.1-cp39-abi3-win_amd64.whl;impersonate',
 				'harrier-v1-270m.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/harrier-v1-270m.zip;impersonate',
 				'jina-v2-small.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/jina-v2-small.zip;impersonate',
 				'e5-small-v2.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/e5-small-v2.zip;impersonate'))
