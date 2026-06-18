@@ -1,6 +1,6 @@
 ---
-title: Use the Model Context Protocol (MCP) Server With ADX Clusters
-description: Learn how to use Model Context Protocol (MCP) with Azure Data Explorer clusters to create AI agents and applications that analyze real-time data. Get started now!
+title: Use a Model Context Protocol (MCP) Server with Azure Data Explorer Clusters
+description: Learn how to use the Model Context Protocol (MCP) with Azure Data Explorer clusters to create AI agents and applications that analyze real-time data.
 ms.reviewer: sharmaanshul
 author: spelluru
 ms.author: spelluru
@@ -8,76 +8,75 @@ ms.topic: concept-article
 ms.date: 06/09/2026
 ms.search.form: MCP, AI, agents
 
-#CustomerIntent: As an ADX AI developer, I want to use the RTI MCP server or Azure MCP server to create AI agents and AI applications.
+#CustomerIntent: As an Azure Data Explorer AI developer, I want to use the Real-Time Intelligence MCP server or an Azure MCP Server instance to create AI agents and AI applications so that I can get AI-driven insights and actions.
 ---
 
-# Use MCP Servers with Azure Data Explorer (preview)
+# Use MCP servers with Azure Data Explorer (preview)
 
-Integrating Model Context Protocol (MCP) with Azure Data Explorer (ADX) clusters lets you get AI-driven insights and actions in real time. The MCP server lets AI agents or AI applications interact with ADX by providing tools through the MCP interface, so you can query and analyze data easily.
+The [Model Context Protocol](https://modelcontextprotocol.io/introduction) (MCP) lets AI models, like Azure OpenAI models, interact with external tools and resources. MCP makes it easier for agents to find, connect to, and use enterprise data.
 
-[Model Context Protocol](https://modelcontextprotocol.io/introduction) (MCP) is a protocol that lets AI models, like Azure OpenAI models, interact with external tools and resources. MCP makes it easier for agents to find, connect to, and use enterprise data.
+When you integrate MCP with Azure Data Explorer clusters, you get AI-driven insights and actions in real time. An MCP server lets AI agents or AI applications interact with Azure Data Explorer by providing tools through the MCP interface. You use these tools to query and analyze data.
 
 > [!NOTE]
->
 > This feature is in preview.
 
-The most common scenario for using the RTI or Azure MCP Server is to connect to it from an existing AI client, such as Cline, Claude, and GitHub copilot. The AI client can then use the available tools to access and interact with ADX resources using natural language.
+## Servers for building AI agents
 
-For example, you could use GitHub Copilot agent mode with the RTI MCP Server to list KQL databases or run natural language queries on ADX clusters.
+MCP support for Azure Data Explorer is a full open-source MCP server integration. It supports natural language queries and allows agents to discover schemas and metadata dynamically. An MCP server can be used with various AI clients, such as GitHub Copilot, Cline, or Claude Desktop.
 
-## Build AI Agents
+You can use the following MCP servers to integrate and build AI agents with Azure Data Explorer:
 
-MCP support for Azure Data Explorer is a full open-source MCP server integration. It supports natural language queries and allows agents to discover schemas and metadata dynamically. The MCP server can be used with various AI clients, such as GitHub Copilot, Cline, or Claude Desktop.
+* [Fabric Real-Time Intelligence MCP server (preview)](https://github.com/microsoft/fabric-rti-mcp/). This server is designed for use with Azure Data Explorer clusters or with a Real-Time Intelligence eventhouse. It provides a unified interface for AI agents to query, reason, and act on real-time data.
 
-You can use the following MCP Servers to integrate and build AI agents with Azure Data Explorer:
+* [Azure MCP Server instance (preview)](/azure/developer/azure-mcp-server/tools/azure-data-explorer). Azure MCP Server allows you to manage Azure Data Explorer resources by using natural language prompts. You can list clusters, view databases, query data, and more without remembering complex Kusto Query Language (KQL) syntax.
 
-* [Fabric RTI MCP Server (preview)](https://github.com/microsoft/fabric-rti-mcp/) - This server is designed for use with ADX clusters or with a Fabric Real-Time Intelligence (RTI) Eventhouse. It provides a unified interface for AI agents to query, reason, and act on real-time data.
+The most common scenario for using the Real-Time Intelligence MCP server or an Azure MCP Server instance is to connect to it from an existing AI client. The AI client can then use the available tools to access and interact with Azure Data Explorer resources by using natural language.
 
-* [Azure MCP Server (preview)](/azure/developer/azure-mcp-server/tools/azure-data-explorer) - The Azure MCP Server allows you to manage Azure Data Explorer resources using natural language prompts. You can list clusters, view databases, query data, and more without remembering complex Kusto Query Language (KQL) syntax.
+For example, you can use GitHub Copilot agent mode with the Real-Time Intelligence MCP server to list KQL databases or run natural language queries on Azure Data Explorer clusters.
 
 ## Architecture
 
-The MCP Server is at the core of the system and acts as a bridge between AI agents and ADX data sources. Agents send requests to the MCP server, which translates them into ADX queries.
+The MCP server is at the core of the system and acts as a bridge between AI agents and Azure Data Explorer data sources. Agents send requests to the MCP server, which translates them into Azure Data Explorer queries.
 
 :::image type="content" source="media/model-context-protocol/model-context-protocol-server-architecture.png" alt-text="Diagram that shows the MCP architecture.":::
 
-This architecture lets you build modular, scalable, and secure intelligent applications that respond to real-time signals. MCP uses a client-server architecture, so AI applications can interact with external tools efficiently. The architecture includes the following components:
+With this architecture, you can build modular, scalable, intelligent applications that respond to real-time signals. MCP uses a client/server architecture, so AI applications can interact with external tools efficiently. The architecture includes the following components:
 
-- **MCP Host**: The application where AI interactions happen. For example, Visual Studio Code with GitHub Copilot, Claude Desktop, Cline. The host contains the AI model connection, a tool orchestrator, and one or more MCP clients.
-* **MCP Server**: Lightweight applications exposing specific capabilities by natural language APIs, databases. For example, to execute KQL queries for real-time data retrieval from ADX clusters.
+* **MCP host**. The application where AI interactions happen. For example, the host can be Visual Studio Code with GitHub Copilot, Claude Desktop, or Cline. The host contains the AI model connection, a tool orchestrator, and one or more MCP clients.
+* **MCP server**. A lightweight application that exposes specific capabilities by using natural language APIs and databases. For example, you use an MCP server to run KQL queries for real-time data retrieval from Azure Data Explorer clusters.
 
 ## Key features
 
-**Real-Time Data Access**: Retrieval of data from ADX clusters in seconds.
+**Real-time data access**. Retrieve data from Azure Data Explorer clusters in seconds.
 
-**Natural Language Interfaces**: Users or agents ask questions in plain English or other languages, and the system turns them into optimized queries (NL2KQL).
+**Natural language interfaces**. Users or agents ask questions in plain English or other languages, and the system turns them into optimized queries. For more information, see [this blog post about the NL2KQL framework](https://techcommunity.microsoft.com/blog/securitycopilotblog/empowering-security-copilot-with-nl2kql-transforming-natural-language-into-insig/4388930).
 
-**Schema Discovery**: MCP servers show schema and metadata, so agents can learn data structures dynamically.
+**Schema discovery**. MCP servers show schema and metadata, so agents can learn data structures dynamically.
 
-**Plug-and-Play Integration**: MCP clients like GitHub Copilot, Claude, and Cline connect to RTI with minimal setup because of standardized APIs and discovery mechanisms.
+**Plug-and-play integration**. MCP clients like GitHub Copilot, Claude, and Cline connect to Real-Time Intelligence with minimal setup because of standardized APIs and discovery mechanisms.
 
-**Local Language Inference**: Use your preferred language to work with your data.
+**Local language inference**. Use your preferred language to work with your data.
 
-## Considerations and Limitations
+## Considerations and limitations
 
 ### Security
 
-MCP as a phenomenon is very novel and cutting-edge. As with all new technology standards, consider doing a security review to ensure any systems that integrate with MCP servers follow all regulations and standards your system is expected to adhere to. This includes not only the RTI MCP servers, but any MCP client or agent that you choose to implement down to the model provider.
+MCP is a new phenomenon. As with all new technology standards, consider doing a security review to ensure that any systems that integrate with MCP servers follow all regulations and standards that your system must adhere to. This review includes not only the Real-Time Intelligence MCP servers, but any MCP client or agent that you choose to implement (down to the model provider).
 
-You should follow Microsoft security guidance for MCP servers, including enabling Entra ID authentication, secure token management, and network isolation. For more information, see [Microsoft Security Documentation](https://learn.microsoft.com/security/).
+You should follow Microsoft security guidance for MCP servers, including enabling Microsoft Entra ID authentication, secure token management, and network isolation. For more information, see the [Microsoft security documentation](/security/).
 
 ### Permissions and risk
 
-MCP clients can invoke operations based on the user's Entra ID permissions. Autonomous or misconfigured clients might perform destructive actions. Review and apply least-privilege permissions and implement safeguards before deployment.
+MCP clients can invoke operations based on the user's Microsoft Entra ID permissions. Autonomous or misconfigured clients might perform destructive actions. Review and apply least-privilege permissions and implement safeguards before deployment.
 
 Certain safeguards, such as flags to prevent destructive operations, aren't standardized in the MCP specification and might not be supported by all clients.
 
 ### Compliance responsibility
 
-This MCP server might be installed, used, and share data with clients and services, such as third-party LLMs, AI agents, or services that operate outside Fabric's compliance boundaries. You're responsible for ensuring that any integration complies with applicable organizational, regulatory, and contractual requirements.
+An MCP server might be installed with, be used with, and share data with clients and services. These clients and services can include non-Microsoft large language models (LLMs), AI agents, or services that operate outside the compliance boundaries of Fabric. You're responsible for ensuring that any integration complies with applicable organizational, regulatory, and contractual requirements.
 
 ## Related content
 
-* [RTI MCP server](https://github.com/microsoft/fabric-rti-mcp/)
+* [Real-Time Intelligence MCP server](https://github.com/microsoft/fabric-rti-mcp/)
 * [Azure MCP Server](/azure/developer/azure-mcp-server/)
 * [Model Context Protocol (MCP) overview](https://modelcontextprotocol.io/introduction)
