@@ -1,33 +1,35 @@
 ---
-title: Migrate your cluster to support multiple availability zones (preview)
-description: This guide teaches you how to migrate your cluster to support multiple availability zones.
-ms.reviewer: iriskaminer
-ms.date: 03/09/2025
+title: "Migrate cluster to multiple availability zones (preview)"
+description: "Learn how to migrate your Azure Data Explorer cluster to support multiple availability zones for improved resiliency. Follow this step-by-step guide to get started."
+ms.date: 06/14/2026
+author: spelluru
+ms.author: spelluru
+ms.reviewer: 
 ms.topic: how-to
 ---
 # Migrate your cluster to support multiple availability zones (preview)
 
-Many Azure regions provide availability zones, which are separated groups of datacenters within a region. Availability zones are close enough to have low-latency connections to other availability zones. They're connected by a high-performance network with a round-trip latency of less than 2 ms. However, availability zones are far enough apart to reduce the likelihood that more than one will be affected by local outages or weather. Availability zones have independent power, cooling, and networking infrastructure. They're designed so that if one zone experiences an outage, then regional services, capacity, and high availability are supported by the remaining zones. For more information, see [Azure Availability Zones](/azure/availability-zones/az-overview).
+Many Azure regions provide availability zones, which are separated groups of datacenters within a region. Availability zones are close enough to have low-latency connections to other availability zones. They're connected by a high-performance network with a round-trip latency of less than 2 ms. However, availability zones are far enough apart to reduce the likelihood that local outages or weather affect more than one availability zone. Each availability zone has independent power, cooling, and networking infrastructure. They're designed so that if one zone experiences an outage, the remaining zones support regional services, capacity, and high availability. For more information, see [Azure Availability Zones](/azure/availability-zones/az-overview).
 
-Azure Data Explorer clusters can be configured to use availability zones in supported regions. By using availability zones, a cluster can better withstand the failure of a single datacenter in a region to support [business continuity](business-continuity-overview.md) scenarios.
+You can configure Azure Data Explorer clusters to use availability zones in supported regions. By using availability zones, a cluster can better withstand the failure of a single datacenter in a region to support [business continuity](business-continuity-overview.md) scenarios.
 
-You can configure availability zones when creating a cluster [in the Azure portal](create-cluster-and-database.md#create-a-cluster) or [programmatically](create-cluster-database.md) using one of the following methods:
+You can configure availability zones when creating a cluster [in the Azure portal](create-cluster-and-database.md#create-a-cluster) or [programmatically](create-cluster-database.md) by using one of the following methods:
 
 - REST API
 - C# SDK
 - Python SDK
 - PowerShell
-- ARM Template
+- ARM template
 
 > [!IMPORTANT]
 >
-> - Once a cluster is configured with availability zones, you can't change the cluster to not use availability zones.
-> - Multiple zones aren't supported in all regions. Therefore, clusters located in these regions can't be set up to use availability zones.
-> - Using availability zones incurs additional costs for storage.
+> - After you configure a cluster with availability zones, you can't change the cluster to not use availability zones.
+> - Not all regions support multiple zones. Therefore, you can't set up clusters in these regions to use availability zones.
+> - Using availability zones incurs extra costs for storage.
 
 > [!NOTE]
 >
-> - Before you proceed, make sure you familiar with the [migration process and considerations](#migration-process).
+> - Before you proceed, make sure you're familiar with the [Migration process and considerations](#migration-process-and-considerations).
 > - You can also use these steps to change the zones of an existing cluster that uses availability zones.
 
 In this article, you learn about:
@@ -36,14 +38,14 @@ In this article, you learn about:
 >
 > - How to [configure your cluster to support availability zones](#configure-your-cluster-to-support-availability-zones)
 > - The [architecture of clusters with availability zones](#architecture-of-clusters-with-availability-zones)
-> - The [migration process and considerations](#migration-process)
+> - The [migration process and considerations](#migration-process-and-considerations)
 
 ## Prerequisites
 
 - Make sure your cluster is in a [region where multiple availability zones are supported](/azure/reliability/regions-list).
 
-- For migrating a cluster to support availability zones, you need a cluster that was deployed without availability zone support.
-- For changing the zones of a cluster, you need a cluster that is configured with availability zones.
+- To migrate a cluster to support availability zones, you need a cluster that you deployed without availability zone support.
+- To change the zones of a cluster, you need a cluster that is configured with availability zones.
 - For REST API, familiarize yourself with [Manage Azure resources by using the REST API](/azure/azure-resource-manager/management/manage-resources-rest).
 - For other programmatic methods, see [Prerequisites](create-cluster-database.md#prerequisites).
 
@@ -57,9 +59,9 @@ You can get a list of availability zones for your cluster in the following ways:
 
 1. Under **Settings**, select **Scale up**.
 
-1. In the row for your cluster, the availability zones are listed in the **Availability zones** column.
+1. In the row for your cluster, the availability zones appear in the **Availability zones** column.
 
-    :::image type="content" source="media/migrate-cluster-to-multiple-availability-zone/availability-zones-list.png" lightbox="media/migrate-cluster-to-multiple-availability-zone/availability-zones-list.png" alt-text="Availability zones":::
+    :::image type="content" source="media/migrate-cluster-to-multiple-availability-zone/availability-zones-list.png" lightbox="media/migrate-cluster-to-multiple-availability-zone/availability-zones-list.png" alt-text="Screenshot of the Scale up page in the Azure portal showing the availability zones column with zones listed for the selected cluster.":::
 
 <!-- 
 
@@ -77,7 +79,7 @@ For example, the following command gets the list of availability zones for the `
 az account list-locations --query "[?name=='{westeurope}']"
 ```
 
-The availability zones are listed in the `availabilityZoneMappings` property.
+The `availabilityZoneMappings` property lists the availability zones.
 
 ```json
 [
@@ -108,9 +110,9 @@ The availability zones are listed in the `availabilityZoneMappings` property.
 
 ### [PowerShell](#tab/az-powershell)
 
-Before you start, make sure you have [az.Kusto cmdlets](/kusto/api/powershell/azure-powershell) installed and [signed in](/kusto/api/powershell/azure-powershell?view=azure-data-explorer&preserve-view=true#sign-in-to-azure), and then run the following command to get the list of availability zones for your cluster's region:
+Before you start, make sure you have [az.Kusto cmdlets](/kusto/api/powershell/azure-powershell) installed and [signed in](/kusto/api/powershell/azure-powershell?view=azure-data-explorer&preserve-view=true#sign-in-to-azure). Then, run the following command to get the list of availability zones for your cluster's region:
 
-1. Set the resource ID of your cluster. You can get your cluster's resource ID from the Azure portal from your cluster's **Properties** page.
+1. Set the resource ID of your cluster. You can get your cluster's resource ID from the Azure portal on your cluster's **Properties** page.
 
     ```powershell
     $resource_id = "<ClusterResourceID>"
@@ -150,7 +152,7 @@ Before you start, make sure you have [az.Kusto cmdlets](/kusto/api/powershell/az
 
 ## Configure your cluster to support availability zones
 
-To add availability zones to an existing cluster, you must update the cluster `zones` attribute with a list of the target availability zones. Follow the instructions for your preferred method, using the information in the following table:
+To add availability zones to an existing cluster, update the cluster `zones` attribute with a list of the target availability zones. Follow the instructions for your preferred method, using the information in the following table:
 
 | Parameter | Value |
 | --- | --- |
@@ -226,7 +228,7 @@ Update-AzKustoCluster -SubscriptionId {subscriptionId} -ResourceGroupName {resou
     "zones": [ "{zone1}", "{zone2}", "{zone3}" ]
     ```
 
-    For example, to set your zones to 1, 2, and 3, in the North Europe region, use the following template:
+    To set your zones to 1, 2, and 3 in the North Europe region, use the following template:
 
     :::code language="json" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.json" highlight="22":::
 
@@ -240,50 +242,50 @@ During the migration, the following message appears in the Azure portal, on the 
 
 ## Architecture of clusters with availability zones
 
-When availability zones are configured, a cluster's resources are deployed as follows:
+When you configure availability zones, the cluster deploys resources as follows:
 
-- **Compute layer**: Azure Data Explorer is a distributed computing platform that has two or more nodes. If availability zones are configured, compute nodes are distributed across the defined availability zones for maximum intra-region resiliency. A zone failure might degrade cluster performance, until the failed compute resources are redeployed in the surviving zones. We recommended configuring the maximum available zones in a region.
-
-    > [!NOTE]
-    >
-    > - In some cases, due to compute capacity limitations, only partial availability zones will be available for the compute layer.
-    > - A cluster's compute layer implements a best effort approach to evenly spread instances across selected zones.
-
-- **Persistent storage layer**: Clusters use Azure Storage as its durable persistence layer. If availability zones are configured, [ZRS](/azure/storage/common/storage-redundancy#zone-redundant-storage) is enabled, placing three storage replicas across multiple availability zones for maximum intra-region resiliency.
+- **Compute layer**: Azure Data Explorer is a distributed computing platform that has two or more nodes. If you configure availability zones, the cluster distributes compute nodes across the defined availability zones for maximum intra-region resiliency. A zone failure might degrade cluster performance, until the failed compute resources are redeployed in the surviving zones. Configure the maximum available zones in a region.
 
     > [!NOTE]
     >
-    > - ZRS incurs an additional cost.
-    > - When availability zones aren't configured, storage resources are deployed with the default setting of [Locally Redundant Storage (LRS)](/azure/storage/common/storage-redundancy#locally-redundant-storage), placing all 3 replicas is a single zone.
+    > - In some cases, due to compute capacity limitations, only partial availability zones are available for the compute layer.
+    > - A cluster's compute layer uses a best effort approach to evenly spread instances across selected zones.
 
-## Migration process
+- **Persistent storage layer**: Clusters use Azure Storage as their durable persistence layer. If you configure availability zones, the cluster enables [ZRS](/azure/storage/common/storage-redundancy#zone-redundant-storage), placing three storage replicas across multiple availability zones for maximum intra-region resiliency.
 
-When an existing cluster that was deployed without any availability zones is configured to support availability zones, the following steps take place as part of the migration process:
+    > [!NOTE]
+    >
+    > - ZRS incurs an extra cost.
+    > - When you don't configure availability zones, storage resources use the default setting of [Locally Redundant Storage (LRS)](/azure/storage/common/storage-redundancy#locally-redundant-storage), placing all three replicas in a single zone.
 
-- Compute is distributed in the defined availability zones
+## Migration process and considerations
 
-    The process of redistributing compute resources involves a preparation stage in which the zonal compute resources cache is warmed. During the preparation stage, the existing cluster's compute resources continue to function, ensuring uninterrupted service. This preparation phase can take up to tens of minutes. The transition to the new compute resources only occurs once it's fully prepared and operational. This parallel processing approach ensures a relatively seamless experience, with only minimal service disruption during the switchover process, typically lasting between one to three minutes. However, it's important to note that query performance might be affected during the SKU migration. The degree of impact can vary depending on specific usage patterns.
+When you configure an existing cluster that you deployed without any availability zones to support availability zones, the migration process performs the following steps:
 
-- Historical persistent storage data is migrated to ZRS
+- Distributes compute resources across the defined availability zones
 
-    The migration process is dependent on the regional support for the transition from LRS to ZRS storage, as well as the available storage accounts capacity in the selected zones. The transfer of historical data can be a time-consuming process, potentially taking several hours or even extending over to weeks.
+    The process of redistributing compute resources involves a preparation stage in which the zonal compute resources cache is warmed. During the preparation stage, the existing cluster's compute resources continue to function, ensuring uninterrupted service. This preparation phase can take up to tens of minutes. The transition to the new compute resources only occurs once they're fully prepared and operational. This parallel processing approach ensures a relatively seamless experience, with only minimal service disruption during the switchover process, typically lasting between one to three minutes. However, query performance might be affected during the SKU migration. The degree of impact can vary depending on specific usage patterns.
 
-- All new data is written to ZRS
+- Migrates historical persistent storage data to ZRS
 
-    After the request for migration to availability zones is initiated, all new data is replicated and stored in the ZRS configuration.
+    The migration process depends on regional support for the transition from LRS to ZRS storage, and the available storage accounts capacity in the selected zones. The transfer of historical data can be a time-consuming process, potentially taking several hours or even extending over to weeks.
+
+- Writes all new data to ZRS
+
+    After you initiate the request for migration to availability zones, the system replicates and stores all new data in the ZRS configuration.
 
     > [!NOTE]
     >
     > - Following the migration request, there might be a delay of up to several minutes before all new data begins to be written in the ZRS configuration.
-    > - If a cluster has streaming ingestion, then the recycling of new data to be written as ZRS data, can take up to 30 days.
+    > - If a cluster has streaming ingestion, then the recycling of new data to be written as ZRS data can take up to 30 days.
 
-- Zone status updated
+- Updates zone status
 
-    Once the migration request to availability zones is completed, the zone status is updated to reflect the supported zones. If the zone status is **Zonal Inconsistency**, it indicates that some compute or storage resources failed to migrate and aren't zonal. This generally occurs when there is insufficient zonal capacity available for some resources. In such cases, we recommend retrying the migration later when capacity is available.
+    Once the migration request to availability zones is completed, the system updates the zone status to reflect the supported zones. If the zone status is **Zonal Inconsistency**, it indicates that some compute or storage resources failed to migrate and aren't zonal. This condition generally occurs when there's insufficient zonal capacity available for some resources. In such cases, retry the migration later when capacity is available.
 
-### Considerations
+### Migration considerations
 
-The request for migration to availability zones might not be successful due to capacity constraints. For a successful migration, there must be sufficient compute and storage capacity to support the migration. If there are capacity limitations, you'll get an error message indicating the issue.
+Capacity constraints might prevent a successful migration request. For a successful migration, sufficient compute and storage capacity must support the migration. If capacity limitations exist, you receive an error message indicating the issue.
 
 ## Related content
 
