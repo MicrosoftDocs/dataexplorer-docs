@@ -50,7 +50,9 @@ The `graph-to-table` operator returns a tabular result, in which each row corres
 
 ### Nodes and edges
 
-The `graph-to-table` operator returns two tabular results, matching the previous descriptions.  
+The `graph-to-table` operator can return nodes and edges as separate tabular results using the [as operator](as-operator.md).
+Each result is assigned a name, and the `graph-to-table` statement must terminate with a semicolon.
+After that, additional tabular expressions (also separated by semicolons) can be used to return the named results.
 
 ## Examples
 
