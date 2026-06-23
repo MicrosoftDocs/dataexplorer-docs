@@ -3,7 +3,7 @@ title: .alter query acceleration policy command
 description: Learn how to use the .alter query acceleration policy command to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 11/30/2025
+ms.date: 06/01/2026
 ---
 
 # `.alter query acceleration policy` command
@@ -103,3 +103,13 @@ The command returns a table with one record that includes the modified policy ob
 - [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
 - [.show query acceleration policy command](show-query-acceleration-policy-command.md)
 - [.show external table operations query_acceleration statistics](show-external-table-operations-query-acceleration-statistics.md)
+
+## Example: Setting hot period for use with update policy
+
+To allow an accelerated external table to be referenced from an [update policy](update-policy.md) query, the `Hot` period must cover all data (>= 100 years):
+
+```Kusto
+.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "36500.00:00:00"}'
+```
+
+This enables the external table to be used with `external_table('MyExternalTable')` inside update policy functions. For more information, see [Use with update policies](query-acceleration-policy.md#use-with-update-policies).

@@ -3,7 +3,7 @@ title: Query Acceleration Troubleshooting Guide
 description: Learn how to troubleshoot for common errors encountered in query acceleration.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 12/08/2025
+ms.date: 06/01/2026
 ---
 
 # Troubleshoot query acceleration over external delta tables
@@ -235,3 +235,32 @@ Run the following command to view the remaining capacity:
   > [!NOTE]
   > Altering the capacity policy might have adverse effects on other operations. Alter the policy as a last resort at your own discretion.
 
+## Troubleshoot update policy failures involving external tables
+
+When an [update policy](update-policy.md) query references an accelerated external table, additional failure scenarios can occur. Use the [`.show ingestion failures`](ingestion-failures.md) command to identify update policy failures:
+
+```kusto
+.show ingestion failures
+| where FailedOn > ago(1h) and OriginatesFromUpdatePolicy == true
+```
+
+### Common update policy errors with external tables
+
+::: moniker range="azure-data-explorer"
+
+| Error | Cause | Resolution |
+|-------|-------|------------|
+| Update policy query references an external table without query acceleration covering all data | The external table's query acceleration policy has a `Hot` period < 100 years, or the policy is disabled. | Enable the query acceleration policy on the external table with `Hot` >= 100 years (for example, `"Hot": "36500.00:00:00"`). |
+| Managed identity is missing or invalid | The update policy references an external table with impersonation authentication but doesn't have a valid `ManagedIdentity` configured. | Add a valid `ManagedIdentity` (object ID or `system`) to the update policy. Ensure the identity has `AutomatedFlows` usage in the managed identity policy and appropriate storage permissions. |
+| External table access forbidden during update policy execution | The managed identity configured in the update policy doesn't have permissions on the external table's underlying storage. | Grant the managed identity read permissions on the storage account or container backing the external table. |
+
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+
+| Error | Cause | Resolution |
+|-------|-------|------------|
+| Update policy query references an external table without query acceleration covering all data | The external table's query acceleration policy has a `Hot` period < 100 years, or the policy is disabled. | Enable the query acceleration policy on the external table with `Hot` >= 100 years (for example, `"Hot": "36500.00:00:00"`). |
+| Owner principal is invalid or missing | The `OwnerPrincipalDetails` on the update policy is invalid or the owner no longer has access to the external table. | Re-alter the update policy to refresh the `OwnerPrincipalDetails`. Ensure the policy owner has access to the external table's underlying data. |
+
+::: moniker-end
