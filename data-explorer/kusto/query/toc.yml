@@ -128,6 +128,8 @@ items:
         href: fork-operator.md
       - name: getschema operator
         href: getschema-operator.md
+      - name: inline external table operator
+        href: inline-external-table-operator.md
       - name: invoke operator
         href: invoke-operator.md
       - name: join operator

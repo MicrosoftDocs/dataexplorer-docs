@@ -3,7 +3,7 @@ title: Run an update policy with a managed identity
 description:  This article describes how to use a managed identity for update policy.
 ms.reviewer: atefsawaed
 ms.topic: reference
-ms.date: 11/13/2024
+ms.date: 06/01/2026
 monikerRange: "azure-data-explorer"
 ms.custom: sfi-image-nochange
 ---
@@ -15,6 +15,7 @@ The update policy must be configured with a [managed identity](/azure/data-explo
 
 * When the update policy query references tables in other databases
 * When the update policy query references tables with an enabled [row level security policy](row-level-security-policy.md)
+* When the update policy query references an accelerated external table that uses impersonation authentication
 
 An update policy configured with a managed identity is performed on behalf of the managed identity.
 
@@ -136,6 +137,35 @@ For example, the following command alters the update policy of the table `MyTabl
         "Source": "MyTable",
         "Query": "MyUpdatePolicyFunction()",
         "IsTransactional": false,
+        "PropagateIngestionProperties": false,
+        "ManagedIdentity": "system"
+    }
+]
+```
+````
+
+---
+
+## Create an update policy that references an accelerated external table
+
+When the update policy query references an accelerated external table that uses impersonation authentication, you must configure the policy with a `ManagedIdentity`. The managed identity must have the appropriate permissions on the external table's underlying storage.
+
+> [!NOTE]
+> The external table must have a [query acceleration policy](query-acceleration-policy.md) enabled with a `Hot` period that covers all data (currently >= 100 years).
+
+### Example
+
+The following example creates an update policy whose query joins data from an accelerated external table using `external_table()`:
+
+````kusto
+.alter table MyDatabase.MyTargetTable policy update
+```
+[
+    {
+        "IsEnabled": true,
+        "Source": "MySourceTable",
+        "Query": "MySourceTable | join kind=leftouter (external_table('MyAcceleratedExternalTable')) on CommonKey | project-away CommonKey1",
+        "IsTransactional": true,
         "PropagateIngestionProperties": false,
         "ManagedIdentity": "system"
     }
