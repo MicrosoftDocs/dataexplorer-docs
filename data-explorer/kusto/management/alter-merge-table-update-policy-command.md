@@ -3,7 +3,7 @@ title:  .alter-merge table policy update command
 description: Learn how to use the `.alter-merge table policy` command to change the table's update policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 06/01/2026
 ---
 # .alter-merge table policy update command
 
@@ -59,3 +59,53 @@ The following command changes the update policy for a table using [multi-line st
 ]
 ```
 ````
+
+::: moniker range="azure-data-explorer"
+
+### Example with an accelerated external table reference
+
+The following example adds an update policy entry whose query joins data from an accelerated external table. Because the external table uses impersonation authentication, the policy must include a `ManagedIdentity`:
+
+````kusto
+.alter-merge table MyDatabase.MyTargetTable policy update
+```
+[
+    {
+        "IsEnabled": true,
+        "Source": "MySourceTable",
+        "Query": "MySourceTable | join kind=leftouter (external_table('MyAcceleratedExternalTable')) on CommonKey | project-away CommonKey1",
+        "IsTransactional": true,
+        "PropagateIngestionProperties": false,
+        "ManagedIdentity": "system"
+    }
+]
+```
+````
+
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+
+### Example with an accelerated external table reference
+
+The following example adds an update policy entry whose query joins data from an accelerated external table. In Fabric, the system automatically populates the `OwnerPrincipalDetails` property for authorization:
+
+````kusto
+.alter-merge table MyDatabase.MyTargetTable policy update
+```
+[
+    {
+        "IsEnabled": true,
+        "Source": "MySourceTable",
+        "Query": "MySourceTable | join kind=leftouter (external_table('MyAcceleratedExternalTable')) on CommonKey | project-away CommonKey1",
+        "IsTransactional": true,
+        "PropagateIngestionProperties": false
+    }
+]
+```
+````
+
+> [!NOTE]
+> When the policy is read back, the returned JSON may include a system-populated `OwnerPrincipalDetails` property. This property captures the identity of the user who sets or alters the update policy, and is used by the system for authorization when the query references external tables. The property is read-only and set automatically.
+
+::: moniker-end

@@ -3,7 +3,7 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2026
+ms.date: 06/01/2026
 ---
 
 # Update policy overview
@@ -53,7 +53,10 @@ If the update policy is defined on the target table, multiple queries can run on
 
 * The policy-related query can invoke stored functions, but:
   * It can't perform cross-cluster queries.
-  * It can't access external data or external tables.
+  * It can't access external data or external tables, with the following exception:
+    * The query *can* reference an accelerated external table using the [`external_table()` function](../query/external-table-function.md), provided that:
+      * The external table has a [query acceleration policy](query-acceleration-policy.md) enabled with a `Hot` period that covers all data (currently `Hot` >= 100 years).
+      * The update policy is configured with a `ManagedIdentity` property if the external table uses impersonation authentication.
   * It can't make callouts (by using a plugin).
 
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
@@ -67,7 +70,9 @@ If the update policy is defined on the target table, multiple queries can run on
 
 * The policy-related query can invoke stored functions, but:
   * It can't perform cross-eventhouse queries.
-  * It can't access external data or external tables.
+  * It can't access external data or external tables, with the following exception:
+    * The query *can* reference an accelerated external table using the [`external_table()` function](../query/external-table-function.md), provided that:
+      * The external table has a [query acceleration policy](query-acceleration-policy.md) enabled with a `Hot` period that covers all data (currently `Hot` >= 100 years).
   * It can't make callouts (by using a plugin).
 
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
@@ -115,7 +120,7 @@ Each such object is represented as a JSON property bag, with the following prope
 |Query |`string` |A query used to produce data for the update. |
 |IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*. If the policy is transactional and the update policy fails, the source table isn't updated. |
 |PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as [extent tags](extent-tags.md) and creation time, apply to the target table. |
-|ManagedIdentity | `string` | The managed identity on behalf of which the update policy runs. The managed identity can be an object ID, or the `system` reserved word. The update policy must be configured with a managed identity when the query references tables in other databases or tables with an enabled [row level security policy](row-level-security-policy.md). For more information, see [Use a managed identity to run a update policy](update-policy-with-managed-identity.md). |
+|ManagedIdentity | `string` | The managed identity on behalf of which the update policy runs. The managed identity can be an object ID, or the `system` reserved word. The update policy must be configured with a managed identity when the query references tables in other databases, tables with an enabled [row level security policy](row-level-security-policy.md), or accelerated external tables that use impersonation authentication. For more information, see [Use a managed identity to run a update policy](update-policy-with-managed-identity.md). |
 
 ::: moniker-end
 ::: moniker range="microsoft-fabric"
@@ -128,6 +133,7 @@ Each such object is represented as a JSON property bag, with the following prope
 |Query |`string` |A query used to produce data for the update |
 |IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*. If the policy is transactional and the update policy fails, the source table isn't updated. |
 |PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as [extent tags](extent-tags.md) and creation time, apply to the target table. |
+|OwnerPrincipalDetails | `object` | A system-populated, read-only property. Contains the principal details of the user who sets or alters the update policy, used for authorization when the update policy query references external tables. This property is automatically set by the system and can't be modified manually. |
 
 ::: moniker-end
 
