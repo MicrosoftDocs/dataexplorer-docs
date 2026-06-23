@@ -3,7 +3,7 @@ title: Query acceleration policy
 description: Learn how to use the query acceleration policy to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 09/16/2025
+ms.date: 06/01/2026
 ---
 # Query acceleration policy
 
@@ -50,3 +50,22 @@ To enable query acceleration in the Fabric UI, see [Query acceleration over OneL
 * [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
 * [.show query acceleration policy command](show-query-acceleration-policy-command.md)
 * [.show external table operations query_acceleration statistics](show-external-table-operations-query-acceleration-statistics.md)
+
+## Use with update policies
+
+Accelerated external tables can be referenced from an [update policy](update-policy.md) query using the [`external_table()` function](../query/external-table-function.md). This enables enriching or joining ingested data with external delta table data as part of the update policy transformation.
+
+The following conditions must be met:
+
+* The query acceleration policy must be **enabled** on the external table.
+* The `Hot` period must cover **all data** in the external table. Currently, this requires setting `Hot` to a value >= 100 years (for example, `"Hot": "36500.00:00:00"`).
+
+::: moniker range="azure-data-explorer"
+* If the external table uses impersonation authentication, the update policy must be configured with a `ManagedIdentity` that has appropriate permissions on the external table's underlying storage.
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+* In Fabric, the system automatically handles authorization through the `OwnerPrincipalDetails` property, which is populated when the update policy is created or altered.
+::: moniker-end
+
+For more information, see [Update policy overview - Query limitations](update-policy.md#query-limitations).
