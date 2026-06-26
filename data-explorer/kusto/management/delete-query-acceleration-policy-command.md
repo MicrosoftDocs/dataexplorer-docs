@@ -11,6 +11,9 @@ ms.date: 09/16/2025
 
 Deletes the [`query acceleration policy`](query-acceleration-policy.md) of a specific external delta table.
 
+> [!IMPORTANT]
+> If the `AutoUpdateSchema` property is enabled on the external table, you must first disable it by setting `AutoUpdateSchema` to `false` using [`.alter external table`](external-tables-delta-lake.md) before deleting the query acceleration policy.
+
 ## Permissions
 
 You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.

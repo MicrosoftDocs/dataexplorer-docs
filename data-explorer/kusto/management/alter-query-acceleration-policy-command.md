@@ -12,6 +12,9 @@ ms.date: 09/16/2025
 
 Alters the [query acceleration policy](query-acceleration-policy.md) of a specific external delta table.
 
+> [!IMPORTANT]
+> If the `AutoUpdateSchema` property is enabled on the external table and you intend to disable the policy, you must first disable `AutoUpdateSchema` by setting it to `false` using [`.alter external table`](external-tables-delta-lake.md) before disabling the query acceleration policy.
+
 For limitations, see [Limitations](query-acceleration-policy.md#limitations).
 
 ## Permissions
