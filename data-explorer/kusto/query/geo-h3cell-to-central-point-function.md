@@ -11,7 +11,7 @@ ms.date: 08/11/2024
 
 Calculates the geospatial coordinates that represent the center of an H3 Cell.
 
-Read more about [H3 Cell](https://eng.uber.com/h3/).
+Read more about [H3 Cell](https://h3geo.org/docs/library/index/cell/).
 
 ## Syntax
 
