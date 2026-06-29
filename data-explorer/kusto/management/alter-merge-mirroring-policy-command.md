@@ -30,7 +30,7 @@ Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring poli
 |*Partitions*| string| | A comma-separated list of columns used to divide the data into smaller partitions. See [Partitions formatting](#partitions-formatting). |
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-[!INCLUDE [partitions-formatting](../includes/partitions-formatting.md)]
+[!INCLUDE [mirroring-partitions-formatting](../includes/mirroring-partitions-formatting.md)]
 
 > [!NOTE]
 > Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.

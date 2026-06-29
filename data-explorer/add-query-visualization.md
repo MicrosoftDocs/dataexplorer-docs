@@ -1,19 +1,19 @@
 ---
-title: Add a query visualization in the web UI - Azure Data Explorer
+title: Add a Query Visualization in the Web UI - Azure Data Explorer
 description: Learn how to add a query visualization in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: how-to
-ms.date: 08/02/2023
+ms.date: 04/12/2026
 ---
 # Add and modify a query visualization in the web UI
 
-In this article, you'll learn how to create and customize visuals from query results, using the UI like that found in Azure Data Explorer Dashboards. These visuals can be further manipulated, and can be pinned in a [dashboard](azure-data-explorer-dashboards.md). The addition or modification of these visuals doesn't require rerunning the query, which can be especially useful for heavy queries.
+In this article, you learn how to create and customize visuals from query results by using the UI, such as the one found in Azure Data Explorer Dashboards. You can further manipulate these visuals and pin them in a [dashboard](azure-data-explorer-dashboards.md). You don't need to rerun the query to add or modify these visuals. This feature is especially useful for heavy queries.
 
 For a full list of available visuals, see [Visualization](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true#visualization). For visuals that are only available in the web UI or dashboards, see [Dashboard-specific visuals](dashboard-visuals.md).
 
 ## Prerequisites
 
-* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. You don't need an Azure subscription.
 * An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-and-database.md).
 
 ## Add a visual to a query
@@ -43,26 +43,26 @@ For a full list of available visuals, see [Visualization](/kusto/query/render-op
 
 ## Change an existing visualization
 
-There are two ways to use the visual formatting pane to change an existing visualization.
+Use the visual formatting pane to change an existing visualization.
 
 ### Visual created with UI
 
-If you've added a visual through the UI, you can change this visual by selecting the **Edit visual** tab in the results grid.
+If you add a visual through the UI, you can change this visual by selecting the **Edit visual** tab in the results grid.
 
 :::image type="content" source="media/add-query-visualization/edit-visual.png" alt-text="Screenshot of edit visual tab in the results grid in Azure Data Explorer web UI.":::
 
 ### Visual created in query
 
-If you've created a visual using the [render operator](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true), you can edit the visual by selecting **Visual** in the results grid.
+If you create a visual by using the [render operator](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true), select **Visual** in the results grid to edit the visual.
 
 :::image type="content" source="media/add-query-visualization/change-rendered-visual.png" alt-text="Screenshot of rendered visual as a bar chart that has been changed to a column chart in the visual formatting pane in Azure Data Explorer web UI." lightbox="media/add-query-visualization/change-rendered-visual.png":::
 
 > [!IMPORTANT]
-> Notice that the visual formatting pane has changed the visual representation, but has not modified the original query.
+> The visual formatting pane changes the visual representation, but doesn't modify the original query.
 
 ## Pin to dashboard
 
-After you have formatted your visual, you can pin this visual to a new or existing dashboard.
+After you format your visual, pin it to a new or existing dashboard.
 
 1. From the visual formatting pane, select **Pin to dashboard**.
 

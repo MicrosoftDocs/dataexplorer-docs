@@ -1,12 +1,12 @@
 ---
 ms.topic: include
-ms.date: 12/03/2024
+ms.date: 02/02/2026
 ---
 ## Create a Microsoft Entra service principal
 
-The Microsoft Entra service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programmatically, as in the following example.
+You can create the Microsoft Entra service principal through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programmatically, as shown in the following example.
 
-This service principal is the identity used by the connector to write data to your table in Kusto. You grant permissions for this service principal to access Kusto resources.
+The connector uses this service principal as the identity to write data to your table in Kusto. You grant permissions to this service principal to access Kusto resources.
 
 [!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
@@ -20,8 +20,8 @@ You can create a table with columns for each of these properties. Alternatively,
 
 To create a table for incoming logs from Fluent Bit:
 
-1. Browse to your query environment.
-1. Select the database where you'd like to create the table.
+1. Go to your query environment.
+1. Select the database where you want to create the table.
 1. Run the following [`.create table` command](/azure/data-explorer/kusto/management/create-table-command):
 
     ```kusto
@@ -34,8 +34,8 @@ To create a table for incoming logs from Fluent Bit:
 
 To create a table for incoming structured logs from Fluent Bit:
 
-1. Browse to your query environment.
-1. Select the database where you'd like to create the table.
+1. Go to your query environment.
+1. Select the database where you want to create the table.
 1. Run the [`.create table` command](/azure/data-explorer/kusto/management/create-table-command). For example, if your logs contain three fields named `myString`, `myInteger`, and `myDynamic`, you can create a table with the following schema:
 
     ```kusto

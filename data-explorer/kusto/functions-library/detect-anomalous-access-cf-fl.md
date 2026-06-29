@@ -110,7 +110,7 @@ let ItemSimilarities = (
 let Predictions = (
     accessTrainData
     | join kind=inner (ItemSimilarities) on scope and $left.resource == $right.resource1
-    | project entity, resource=resource2, usedOperation, similarity
+    | project entity, resource=resource, usedOperation, similarity
     | summarize accessAnomalyScore = sum(usedOperation * similarity) / sum(abs(similarity)) by entity, resource
     | extend accessAnomalyScore = iff(isnan(accessAnomalyScore), 0.0, accessAnomalyScore)
     | extend accessAnomalyScore = 1 - accessAnomalyScore
@@ -202,7 +202,7 @@ let ItemSimilarities = (
 let Predictions = (
     accessTrainData
     | join kind=inner (ItemSimilarities) on scope and $left.resource == $right.resource1
-    | project entity, resource=resource2, usedOperation, similarity
+    | project entity, resource=resource, usedOperation, similarity
     | summarize accessAnomalyScore = sum(usedOperation * similarity) / sum(abs(similarity)) by entity, resource
     | extend accessAnomalyScore = iff(isnan(accessAnomalyScore), 0.0, accessAnomalyScore)
     | extend accessAnomalyScore = 1 - accessAnomalyScore
@@ -300,7 +300,7 @@ let ItemSimilarities = (
 let Predictions = (
     accessTrainData
     | join kind=inner (ItemSimilarities) on scope and $left.resource == $right.resource1
-    | project entity, resource=resource2, usedOperation, similarity
+    | project entity, resource=resource, usedOperation, similarity
     | summarize accessAnomalyScore = sum(usedOperation * similarity) / sum(abs(similarity)) by entity, resource
     | extend accessAnomalyScore = iff(isnan(accessAnomalyScore), 0.0, accessAnomalyScore)
     | extend accessAnomalyScore = 1 - accessAnomalyScore

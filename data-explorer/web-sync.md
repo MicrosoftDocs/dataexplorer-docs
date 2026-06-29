@@ -20,7 +20,7 @@ Before enabling sync, consider the following points:
 
 * The first browser where syncing is enabled becomes the primary data source, overriding data in other browsers.
 * Data is account-specific and can't be shared across different user accounts on the same machine.
-* Syncing uploads your current device's data to the cloud, replacing local data on other browsers or devices with the cloud-stored version.
+* Syncing uploads your current device's data to the cloud, replacing local data on other browsers or devices with the cloud-stored version. However, user accounts that haven’t enabled Sync can still access the local profile as it existed before the Sync was turned on. If you need to access the replaced queries, use [`.show queries`](/kusto/management/show-queries-command). 
 * Synced data is stored in your tenant's region. If no Azure region exists in the tenant's region, data is stored in an Azure region in Europe.
 * Syncing is irreversible; once enabled:
     * Data is no longer stored exclusively on your device
@@ -49,6 +49,48 @@ To sync your profile data, follow these steps:
 
     >[!NOTE]
     > If the status doesn't display as expected, ensure that you're logged into the same account used for syncing.
+
+## Turn sync off
+
+If you enabled sync and want to stop syncing your Azure Data Explorer web UI profile, follow these steps:
+
+1. In the tab bar, select **Sync on**.
+2. In the dialog box, select **Turn sync off**.
+3. Confirm the action when prompted.
+
+### Important notes when turning sync off
+- Turning sync off **stops updating cloud data**, but the cloud profile previously uploaded is **not deleted**.
+- Your existing cloud profile remains the version that other browsers use when sync is turned on again.
+- Local browser data will no longer be uploaded or overwritten.
+
+## Turn sync back on
+
+If sync was previously disabled:
+
+1. In the tab bar, select **Sync off**.
+2. Select **Turn sync on**.
+3. Confirm that the browser you are enabling sync on contains the state you want to upload as the cloud profile.
+
+> [!WARNING]
+> When you turn sync back on, **this browser becomes the primary source again** and will overwrite cloud-stored data.
+
+## Determine the primary source of sync data
+
+The primary sync source is the **first browser/device where sync was turned on**.  
+This browser uploads its current tabs, settings, and connections to the cloud.
+
+To check which environment is used as the primary source:
+
+- Open the browser where sync is currently enabled.
+- Verify that **Sync on** appears in the tab bar.
+- Compare this browser’s state with what you see on other devices.  
+  If other devices match this one, it is the current primary source.
+
+If you want to change the primary source:
+
+1. Turn sync **off**.
+2. Open the browser that contains the data you want to use as the new primary environment.
+3. Turn sync **back on** on that browser.
 
 ## Related content
 

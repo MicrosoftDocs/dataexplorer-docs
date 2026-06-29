@@ -35,22 +35,20 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ### JSON property bag
 
-| Property   | Type       | Required           | Description                                                                                                                                                                                                               |
-| ---------- | ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| IsEnabled  | `Boolean`  |                    | Indicates whether the policy is enabled. This property is required if no query acceleration policy is defined on the external table.                                                                                                                                                                                   |
-| Hot        | `Timespan` |                    | The hot period defined in the query acceleration policy. Minimum value = 1 d. This property is required if no query acceleration policy is defined on the external table.                                                                                                                                             |
-| HotWindows | `DateTime` |                    | One or more optional time windows. Delta data files created within these time windows are accelerated.                                                                                                                    |
-| MaxAge     | `Timespan` |                    | The external table returns accelerated data if the last index refresh time is greater than @now - MaxAge. Otherwise, external table operates in nonaccelerated mode. Default is 5 minutes. Minimum is 1 minute. |
-
-> [!NOTE]
-> Query acceleration is applied to data within a specific time period, defined as `timespan`, starting from the `modificationTime` as stated for each file in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file).
+| Property   			| Type       | Required           | Description                                                                                                                                                                                                               |
+| --------------------- | ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| IsEnabled  			| `Boolean`  |                    | Indicates whether the policy is enabled. This property is required if no query acceleration policy is defined on the external table.                                                                                                                                                                                   |
+| Hot        			| `Timespan` |                    | The hot period defined in the query acceleration policy. Minimum value = 1 d. This property is required if no query acceleration policy is defined on the external table.                                                                                                                                             |
+| HotWindows 			| `DateTime` |                    | One or more optional time windows. Delta data files created within these time windows are accelerated.                                                                                                                    |
+| MaxAge     			| `Timespan` |                    | The external table returns accelerated data if the last index refresh time is greater than @now - MaxAge. Otherwise, external table operates in nonaccelerated mode. Default is 5 minutes. Minimum is 1 minute. |
+| HotDateTimeColumn     | `String`   |                    | Name of a datetime column used to determine hot-cache eligibility. A data file will be cached if its min/max stats for this column are within the configured Hot period and/or HotWindows. If not specified, eligibility is determined using the file modificationTime. Eligibility is computed using [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file) metadata only - setting this property does not add query-time overhead|
 
 ### Example
 
 In case the external table has query acceleration policy defined:
 
 ```json
-{ "Hot": "1.00:00:00" }
+{ "HotDateTimeColumn": "Col1" }
 ```
 
 In case the external table doesn't have query acceleration policy defined:

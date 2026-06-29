@@ -2,7 +2,7 @@
 title: Manage database security roles
 description: Learn how to use management commands to view, add, and remove security roles on a database level.
 ms.topic: reference
-ms.date: 07/07/2025
+ms.date: 02/22/2026
 ---
 
 # Manage database security roles
@@ -26,8 +26,8 @@ The following table shows the possible security roles on the database level and 
 
 |Role|Permissions|
 |--|--|
-|`admins` | View and modify the database and database entities.|
-|`users` | View the database and create new database entities.|
+|`admins` | View and modify the database and all its entities. Admins can create, modify, and drop any database entity. They have full database permissions except for `unrestrictedviewers` access (which they can grant themselves). Admins are automatically admins on all database entities.|
+|`users` | View and create database entities. Users can query all data except tables with [RestrictedViewAccess](restricted-view-access-policy.md) enabled. Automatically become admins of entities they create, but cannot modify other entities.|
 |`viewers` | View tables in the database where [RestrictedViewAccess](restricted-view-access-policy.md) isn't turned on.|
 |`unrestrictedviewers`| View the tables in the database even where [RestrictedViewAccess](restricted-view-access-policy.md) is turned on. The principal must also have `admins`, `viewers`, or `users` permissions. |
 |`ingestors` | Ingest data to the database without access to query. |

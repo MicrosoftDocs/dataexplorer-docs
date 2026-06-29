@@ -1,48 +1,48 @@
 ---
-title: Enable double encryption for your cluster in Azure Data Explorer
+title: Enable Double Encryption for Your Custer in Azure Data Explorer
 description: This article describes how to enable infrastructure encryption (double encryption) during cluster creation in Azure Data Explorer.
 ms.reviewer: toleibov
 ms.topic: how-to
 ms.custom: devx-track-arm-template
-ms.date: 02/04/2025
+ms.date: 03/15/2026
 ---
 
 # Enable double encryption for your cluster in Azure Data Explorer
 
-When you create a cluster, data is [automatically encrypted](/azure/storage/common/storage-service-encryption) at the service level. For greater data security, you can additionally enable [double encryption](/azure/storage/common/infrastructure-encryption-enable).
+When you create a cluster, the service [automatically encrypts](/azure/storage/common/storage-service-encryption) data at the service level. For greater data security, you can additionally enable [double encryption](/azure/storage/common/infrastructure-encryption-enable).
 
-When double encryption is enabled, data in the storage account is encrypted twice, using two different algorithms.
+When you enable double encryption, the cluster encrypts data in the storage account twice by using two different algorithms.
 
 > [!IMPORTANT]
 >
-> * Enabling double encryption is only possible during cluster creation.
-> * Once infrastructure encryption is enabled on your cluster, you **can't** disable it.
+> * You can enable double encryption only during cluster creation.
+> * After you enable infrastructure encryption on your cluster, you **can't** disable it.
 
 > For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/cluster-encryption-double).
 
 ## [Azure portal](#tab/portal)
 
-1. [Create an Azure Data Explorer cluster](create-cluster-and-database.md#create-a-cluster)
-1. In the **Security** tab > **Enable Double Encryption**, select **On**. To remove the double encryption, select **Off**.
+1. [Create an Azure Data Explorer cluster](create-cluster-and-database.md#create-a-cluster).
+1. In the **Security** tab, under **Enable Double Encryption**, select **On**. To remove double encryption, select **Off**.
 1. Select **Next:Network>** or **Review + create** to create the cluster.
 
     :::image type="content" source="media/double-encryption/double-encryption-portal.png" alt-text="Screenshot of security tab, showing double encryption being enabled on a new cluster.":::
 
 ## [C#](#tab/c-sharp)
 
-You can enable infrastructure encryption during cluster creation using C#.
+You can enable infrastructure encryption during cluster creation by using C#.
 
 ## Prerequisites
 
-Set up a managed identity using the Azure Data Explorer C# client:
+Set up a managed identity by using the Azure Data Explorer C# client:
 
 * Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
 * Install the [Azure.Identity NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication.
-* [Create a Microsoft Entra application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
+* [Create a Microsoft Entra application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. Add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 ## Create your cluster
 
-1. Create your cluster using the `enableDoubleEncryption` property:
+1. Create your cluster by using the `enableDoubleEncryption` property:
 
     ```csharp
     var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; //Directory (tenant) ID
@@ -63,23 +63,23 @@ Set up a managed identity using the Azure Data Explorer C# client:
     await clusters.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, clusterData);
     ```
 
-1. Run the following command to check if your cluster was successfully created:
+1. Run the following command to check if you created your cluster successfully:
 
     ```csharp
     clusterData = (await clusters.GetAsync(clusterName)).Value.Data;
     ```
 
-    If the result contains `ProvisioningState` with the `Succeeded` value, then the cluster was created successfully.
+    If the result contains `ProvisioningState` with the `Succeeded` value, you created your cluster successfully.
 
 ## [ARM template](#tab/arm)
 
-You can enable infrastructure encryption during cluster creation using Azure Resource Manager.
+You can enable infrastructure encryption during cluster creation by using Azure Resource Manager.
 
-An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database.md?tabs=arm).
+You can use an Azure Resource Manager template to automate deployment of your Azure resources. To learn more about deploying to Azure Data Explorer, see [Create an Azure Data Explorer cluster and database by using an Azure Resource Manager template](create-cluster-database.md?tabs=arm).
 
-## Add a system-assigned identity using an Azure Resource Manager template
+## Add a system-assigned identity by using an Azure Resource Manager template
 
-Add the 'EnableDoubleEncryption' type to tell Azure to enable infrastructure encryption (double encryption) for your cluster.
+Add the `EnableDoubleEncryption` type to tell Azure to enable infrastructure encryption (double encryption) for your cluster.
 
 ```json
 {

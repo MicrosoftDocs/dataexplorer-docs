@@ -52,7 +52,7 @@ The following table overviews the supported request properties.
 | `query_fanout_threads_percent` | `int` | Specifies the percentage of threads for executing fan-out. |
 | `query_force_row_level_security` | `bool` | If set to `true`, enforces [row level security](../../management/row-level-security-policy.md) rules, even if the policy is disabled. |
 | `query_language` | `string` | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
-| `query_log_query_parameters` | `bool` | Enables query parameters logging for later viewing in the [.show queries](../../management/show-queries-command.md) journal. |
+| `query_log_query_parameters` | `bool` | Enables query parameters logging for later viewing in the [.show queries](../../management/show-queries-command.md) journal. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `query_max_entities_in_union` | `long` | Overrides the default maximum number of columns a query is allowed to produce. |
 | `query_now` | `datetime` | Overrides the datetime value returned by the [now()](../../query/now-function.md) function. |
 | `query_optimize_fts_at_relop` |  `bool` | When set to `true`, enables an experimental optimization for queries that perform costly free-text search operations. For instance, `\|where * has "pattern"`. |
@@ -77,13 +77,13 @@ The following table overviews the supported request properties.
 | `request_readonly_hardline` |  `bool` | If set to `true`, then the request operates in a strict read-only mode. The request isn't able to write anything, and any noncompliant functionality, such as plugins, are disabled. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `request_remote_entities_disabled` | `bool` | If set to `true`, prevents the request from accessing remote databases and remote entities. |
 | `request_sandboxed_execution_disabled` | `bool` | If set to `true`, prevents the request from invoking code in the sandbox. |
-| `request_user` | `string` | Specifies the request user to be used in reporting. For example, [.show queries](../../management/show-queries-command.md). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
+| `request_user` | `string` | A free-text, caller-supplied identifier of the user on whose behalf the request is being made. It is captured in service-side diagnostic traces for correlation only. It does **not** populate the `User` column of [.show queries](../../management/show-queries-command.md) (that column always reflects the authenticated principal), and it is redacted (shown as `******`) wherever client request properties are surfaced. To pass caller context that should be visible in `.show queries`, or that should be consumed by the request classification policy, use `request_description` instead. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `results_error_reporting_placement` | `string`   | Determines the placement of errors in the result set. Options are `in_data`, `end_of_table`, and `end_of_dataset`. |
 | `results_progressive_enabled` | `bool` | If set to `true`, enables the progressive query stream. This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `results_v2_fragment_primary_tables` |  `bool` | Causes primary tables to be sent in multiple fragments, each containing a subset of the rows. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `results_v2_newlines_between_frames` |  `bool` | Adds new lines between frames in the results, in order to make it easier to parse them. |
 | `servertimeout` | `timespan` | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/set-statement.md). Instead, modify the option using the dashboard settings. |
-| `truncation_max_records` | `long` | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
+| `truncationmaxrecords` | `long` | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` | `long` | Overrides the default maximum data size a query is allowed to return to the caller (truncation). This option can't be modified as part of a [set statement](../../query/set-statement.md).|
 | `validatepermissions` | `bool` | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
 
@@ -101,6 +101,7 @@ You can set request properties in the following ways:
 > * `norequesttimeout`
 > * `queryconsistency`
 > * `query_language`
+> * `query_log_query_parameters`
 > * `query_weakconsistency_session_id`
 > * `request_app_name`
 > * `request_readonly`

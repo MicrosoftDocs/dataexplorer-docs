@@ -1,16 +1,14 @@
 ---
-title: Get data from Azure storage
+title: Get Data from Azure Storage
 description: Learn how to get data from Azure storage in Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 07/31/2025
+ms.date: 12/31/2025
 ---
 
 # Get data from Azure storage
 
 Data ingestion is the process used to load data from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Azure storage (ADLS Gen2 container, blob container, or individual blobs) into either a new or existing table.
-
-Ingestion from an Azure storage account is a one-time operation. To ingest data continuously, see [Configure streaming ingestion](ingest-data-streaming.md).
 
 For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -50,29 +48,31 @@ Select the data source from the available list. In this example, you're ingestin
 
 1. To add your source, select **Select container** or **Add URI**.
 
-    1. If you selected **Select container**, fill in the following fields:
+1. If you selected **Select container**, fill in the following fields:
 
-        :::image type="content" source="media/get-data-storage/configure-tab.png" alt-text="Screenshot of configure tab with new table entered and one sample data file selected." lightbox="media/get-data-storage/configure-tab.png":::
+    :::image type="content" source="media/get-data-storage/configure-tab.png" alt-text="Screenshot of configure tab with new table entered and one sample data file selected." lightbox="media/get-data-storage/configure-tab.png":::
 
-        | **Setting**                | **Field description**  |
-        |--------------------------|----------|
-        | Subscription               | The subscription ID where the storage account is located.     |
-        | Storage account      | The name that identifies your storage account.    |
-        | Container                  | The storage container you want to ingest.   |
-        | **File filters (optional)**       | |
-        | Folder path| Filters data to ingest files with a specific folder path. |
-        | File extension| Filters data to ingest files with a specific file extension only.|
+    | **Setting**                | **Field description**  |
+    |--------------------------|----------|
+    | Subscription               | The subscription ID where the storage account is located.     |
+    | Storage account      | The name that identifies your storage account.    |
+    | Container                  | The storage container you want to ingest.   |
+    | **File filters (optional)**       | |
+    | Folder path| Filters data to ingest files with a specific folder path. |
+    | File extension| Filters data to ingest files with a specific file extension only.|
 
-    1. If you selected **Add URI**, from the storage account, generate an SAS URL for the container or individual blobs you want to ingest. Set the permissions to **Read** and **List** for containers or **Read** for individual blobs. For more information, see [Generate a SAS token](/kusto/api/connection-strings/generate-sas-token?view=azure-data-explorer&preserve-view=true).
+1. If you selected **Add URI**:
 
-        1. Paste the URL into the **URI** field, and then select plus (**+**). You can add multiple URIs for individual blobs, or a single URI for a container.
+    1. From the storage account, generate an SAS URL for the container or individual blobs you want to ingest. Set the permissions to **Read** and **List** for containers or **Read** for individual blobs. For more information, see [Generate a SAS token](/kusto/api/connection-strings/generate-sas-token?view=azure-data-explorer&preserve-view=true).
 
-        :::image type="content" source="media/get-data-storage/add-uri.png" alt-text="Screenshot of configure tab with the connection string pasted in the URI field."  lightbox="media/get-data-storage/add-uri.png":::
+    1. Paste the URL into the **URI** field, and then select plus (**+**). You can add multiple URIs for individual blobs, or a single URI for a container.
 
-        > [!NOTE]
-        > * You can add up to 10 individual blobs. Each blob can be a max of 1 GB uncompressed.
-        > * You can ingest up to 5000 blobs from a single container.
-        > * You can't ingest individual blobs and containers in the same ingestion.
+    :::image type="content" source="media/get-data-storage/add-uri.png" alt-text="Screenshot of configure tab with the connection string pasted in the URI field."  lightbox="media/get-data-storage/add-uri.png":::
+
+    > [!NOTE]
+    > * You can add up to 10 individual blobs. Each blob can be a max of 1 GB uncompressed.
+    > * You can ingest up to 5,000 blobs from a single container.
+    > * You can't ingest individual blobs and containers in the same ingestion.
 
 1. Select **Next**
 
@@ -86,7 +86,6 @@ To complete the ingestion process, select **Finish**.
 
 Optionally:
 
-* Select **Command viewer** to view and copy the automatic commands generated from your inputs.
 * Use the **Schema definition file** dropdown to change the file that the schema is inferred from.
 * Change the automatically inferred data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
 * [Edit columns](#edit-columns).
@@ -102,7 +101,7 @@ Optionally:
 
 ## Summary
 
-In the **Data preparation** window, all three steps are marked with green check marks when data ingestion finishes successfully. You can view the commands that were used for each step, or select a card to query, visualize, or drop the ingested data.
+In the **Summary** window, all three steps are marked with green check marks when data ingestion finishes successfully. You can view the commands that were used for each step, or select a card to query, visualize, or drop the ingested data.
 
 :::image type="content" source="media/get-data-storage/summary.png" alt-text="Screenshot of summary page with successful ingestion completed." lightbox="media/get-data-storage/summary.png":::
 

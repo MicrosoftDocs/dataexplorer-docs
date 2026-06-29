@@ -3,13 +3,14 @@ title: .show table operations mirroring-statistics
 description: Learn how to use the `.show table operations mirroring-statistics` command to check the mirroring policy operations.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 04/22/2025
+ms.date: 04/14/2026
+monikerRange: "microsoft-fabric"
 ---
 # .show table operations mirroring-statistics
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)]
 
-Displays [mirroring policy](mirroring-policy.md) operations statistics for a table. Mirroring statistics allows you to verify the latency and status of your data export.
+Displays [mirroring policy](mirroring-policy.md) operations statistics for a table. Mirroring statistics helps you verify the latency and status of your data export.
 
 ## Syntax
 
@@ -28,15 +29,15 @@ Displays [mirroring policy](mirroring-policy.md) operations statistics for a tab
 | Property | Type | Description |
 |-----|-----|-----|
 |TableName | `string` | The name of the table. |
-|IsEnabled | `bool` |Indicates whether or not the mirroring policy is enabled. |
-|ManagedIdentityIdentifier |`string` | The identifier of the managed identity |
-|IsExportRunning | `bool` | Indicates whether or not the mirroring policy is running. |
+|IsEnabled | `bool` |Indicates whether the mirroring policy is enabled. |
+|ManagedIdentityIdentifier |`string` | The identifier of the managed identity. |
+|IsExportRunning | `bool` | Indicates whether the mirroring policy is running. |
 |LastExportStartTime | `datetime`| The start time of the last export. |
 |LastExportResult | `string` | The status of the last export result. |
 |LastExportedDataTime|`datetime` | The time of the last data export.  |
 |Latency | `timespan` |The maximum amount of time in minutes between the last and next time new data was added to your logical copy.  |
 |CompletionPercentage|`int` | The percentage of a task or operation completed. |
-|PendingDataSize|`int` | The size of data in bytes that is pending ingestion or processing.|
+|PendingDataSize|`int` | The size of data in bytes that's pending ingestion or processing.|
 
 [!INCLUDE [mirroring-note](../includes/mirroring-note.md)]
 

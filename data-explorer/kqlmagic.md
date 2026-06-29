@@ -3,7 +3,7 @@ title: Use a Notebook and Kqlmagic to Analyze Data in Azure Data Explorer
 description: Learn how to use the Kqlmagic extension in a Notebook to connect to and query data stored in Azure Data Explorer.
 ms.reviewer: ramacg
 ms.topic: how-to
-ms.date: 07/06/2025
+ms.date: 02/04/2026
 
 # Customer intent: I want to analyze data using Notebooks and Kqlmagic.
 ---
@@ -12,14 +12,14 @@ ms.date: 07/06/2025
 
 [Jupyter Notebook](https://jupyter.org/) is an open-source web application that allows you to create and share documents containing live code, equations, visualizations, and narrative text. It's useful for a wide range of tasks, such as data cleaning and transformation, numerical simulation, statistical modeling, data visualization, and machine learning.
 
-[Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true) operator. The Kqlmagic extension is compatible with Jupyter Lab, Visual Studio Code Jupyter extension, and Azure Data Studio, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
+[Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true) operator. The Kqlmagic extension is compatible with Jupyter Lab, and Visual Studio Code Jupyter extension, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
 
 In this article, learn how to use the Kqlmagic extension in a Notebook to connect to and query data stored in [Azure Data Explorer](https://dataexplorer.azure.com/home).
 
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
-* A Notebook installed on your local machine. Otherwise, use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic).
+* A Notebook installed on your local machine.
 * Python 3.6. To change the Jupyter Notebook kernel version to Python 3.6, select **Kernel** > **Change Kernel** > **Python 3.6**.
 
 ## Install kqlmagic

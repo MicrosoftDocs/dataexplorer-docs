@@ -1520,10 +1520,35 @@ items:
       - name: node_degree_out()
         displayName: graph, node, Node degree out node_degree_out, outdegree node_degree_out
         href: /kusto/query/node-degree-out?view=azure-data-explorer&preserve-view=true
+      - name: node_id()
+        displayName: graph, node, Node Id
+        href: /kusto/query/node-id?view=azure-data-explorer&preserve-view=true
+  - name: Visualization
+    items:
+    - name: Overview
+      href: /kusto/query/graph-visualization-overview?view=azure-data-explorer&preserve-view=true
+    - name: Kusto Explorer
+      href: /kusto/query/graph-visualization-kusto-explorer?view=azure-data-explorer&preserve-view=true
+    - name: Graphistry
+      href: /kusto/query/graph-visualization-graphistry?view=azure-data-explorer&preserve-view=true
+    - name: Custom visualization
+      href: /kusto/query/graph-visualization-custom?view=azure-data-explorer&preserve-view=true
   - name: Scenarios
     href: /kusto/query/graph-scenarios?view=azure-data-explorer&preserve-view=true
   - name: Best practices
     href: /kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true
+  - name: Additional query languages
+    items:
+    - name: Graph query language (GQL)
+      items:
+      - name: Query data using GQL
+        href: /kusto/query/graph-query-language?view=azure-data-explorer&preserve-view=true
+      - name: GQL reference
+        href: /kusto/query/graph-query-language-reference?view=azure-data-explorer&preserve-view=true
+      - name: GQL examples and use cases
+        href: /kusto/query/graph-query-language-use-cases?view=azure-data-explorer&preserve-view=true
+    - name: openCypher
+      href: /kusto/query/opencypher-graph-query-language?view=azure-data-explorer&preserve-view=true
 - name: Geospatial
   items:
   - name: Geospatial clustering

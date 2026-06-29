@@ -2,7 +2,7 @@
 title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer to query, analyze, and share data. This guide covers query modes, parameterization, and database management. Learn how to use Kusto.Explorer.
 ms.reviewer: alexans
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/02/2025
 ms.custom: sfi-image-nochange
 ---

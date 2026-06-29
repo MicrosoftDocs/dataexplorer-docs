@@ -1,32 +1,32 @@
 ---
-title: Connect a cluster behind a private endpoint to a Power BI service
+title: Connect a Cluster Behind a Private Endpoint to a Power BI Service
 description: Learn how to connect an Azure Data Explorer cluster behind a private endpoint to a Power BI service.
 ms.reviewer: danyhoter
 ms.topic: how-to
-ms.date: 10/15/2023
+ms.date: 02/23/2026
 ---
 
 # Connect a cluster behind a private endpoint to a Power BI service
 
 In this article, you learn how to connect to a Power BI service from an Azure Data Explorer cluster that's behind a private endpoint.
 
-A private endpoint is a network interface that uses private IP addresses from your virtual network. This network interface connects you privately and securely to your cluster powered by Azure Private Link. By enabling a private endpoint, you're bringing the service into your virtual network. For more information on private endpoints, see [Private endpoints for Azure Data Explorer](security-network-private-endpoint.md).
+A private endpoint is a network interface that uses private IP addresses from your virtual network. This network interface connects you privately and securely to your cluster powered by Azure Private Link. By enabling a private endpoint, you bring the service into your virtual network. For more information on private endpoints, see [Private endpoints for Azure Data Explorer](security-network-private-endpoint.md).
 
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra ID. An Azure subscription isn't required.
 * An Azure Data Explorer cluster behind a private endpoint. For more information, see [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md).
-* You must have [AllDatabasesViewer](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) permissions.
+* [AllDatabasesViewer](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true) permissions.
 * A data gateway installed on a virtual machine in the private endpoint. For more information, see [Install a data gateway](/data-integration/gateway/service-gateway-install).
 * Verify that the virtual machine where the data gateway is installed can access the data on the target cluster. For more information, see [Add a cluster connection](add-cluster-connection.md).
 * A [Power BI report](power-bi-data-connector.md?tabs=connector).
 
 ## Create a gateway connection
 
-You need to create a gateway connection and add a data source that can be used with that gateway. In this example, you bridge between your data gateway and a Power BI service by using an Azure Data Explorer cluster as the data source.
+You need to create a gateway connection and add a data source that you can use with that gateway. In this example, you bridge between your data gateway and a Power BI service by using an Azure Data Explorer cluster as the data source.
 
 1. Launch a Power BI service.
-1. In the upper-right corner of the Power BI service, select the gear icon ![Settings gear icon.](media/power-bi-private-endpoint/settings.png), and then **Manage connections and gateways**.
+1. In the upper-right corner of the Power BI service, select the gear icon ![Settings gear icon.](media/power-bi-private-endpoint/settings.png), and then select **Manage connections and gateways**.
 
     :::image type="content" source="media/power-bi-private-endpoint/manage-connections-gateways.png" alt-text="Screenshot of the Settings pane in the Power BI service. The option titled Manage connections and gateways is highlighted.":::
 
@@ -64,7 +64,7 @@ To use any cloud data sources, such as Azure Data Explorer, you must ensure that
 
 ## Upload report and configure dataset
 
-1. Select **Upload**, and browse for a Power BI report to upload to your workspace. Your report's dataset is uploaded along with your report.
+1. Select **Upload**, and browse for a Power BI report to upload to your workspace. You upload your report's dataset along with your report.
 1. Place your cursor over your report's dataset, and then select *More options* > **Settings**.
 
     :::image type="content" source="media/power-bi-private-endpoint/dataset.png" alt-text="Screenshot of a workspace in the Power BI service showing the more menu of dataset.":::
@@ -76,13 +76,13 @@ To use any cloud data sources, such as Azure Data Explorer, you must ensure that
 
 1. Under **Gateway**, select your gateway cluster name.
 1. Under **Actions**, use the dropdown menu to verify the data sources included in this dataset.
-1. Expand the **Maps to** dropdown, and then select the connection you created earlier. This allows the report to request data from your Azure Data Explorer cluster.
+1. Expand the **Maps to** dropdown, and then select the connection you created earlier. This selection allows the report to request data from your Azure Data Explorer cluster.
 1. Select **Apply**.
 
     > [!NOTE]
-    > When you upload or republish your report, you must associate the dataset to a gateway and corresponding data source again. The previous association is not maintained after republishing.
+    > When you upload or republish your report, you must associate the dataset to a gateway and corresponding data source again. The previous association isn't maintained after republishing.
 
-    You've successfully bridged between your on-premises data gateway and your Power BI report that uses an Azure Data Explorer cluster.
+    You successfully bridged between your on-premises data gateway and your Power BI report that uses an Azure Data Explorer cluster.
 
 1. Return to your workspace and then open your report to gain insights from the visualizations in your Power BI report.
 

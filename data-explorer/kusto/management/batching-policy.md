@@ -28,6 +28,7 @@ The following list shows the basic batching policy triggers to seal a batch. A b
 * `Size`: Batch size limit reached or exceeded
 * `Count`: Batch file number limit reached
 * `Time`: Batching time has expired
+* `FlushImmediatly`: A blob with ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) indication caused a batch to be sealed
 
 The `IngestionBatching` policy can be set on databases or tables. Default values are as follows: **5 minutes** maximum delay time, **500** items, total size of **1 GB**.
 
@@ -40,7 +41,7 @@ The `IngestionBatching` policy can be set on databases or tables. Default values
 
 The following list shows conditions to seal batches related to single blob ingestion. A batch is sealed and ingested when the conditions are met:
 
-* `SingleBlob_FlushImmediately`: Ingest a single blob because ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) was set
+* `SingleBlob_FlushImmediately`: **Deprecated!** Ingest a single blob because ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) was set
 * `SingleBlob_IngestIfNotExists`: Ingest a single blob because
 ['IngestIfNotExists'](../ingestion-properties.md#ingestion-properties) was set
 * `SingleBlob_IngestByTag`: Ingest a single blob because ['ingest-by'](extent-tags.md) was set

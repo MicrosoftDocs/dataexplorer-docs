@@ -1,18 +1,18 @@
 ---
-title: Create a managed private endpoint for Azure Data Explorer
+title: Create a Managed Private Endpoint for Azure Data Explorer
 description: In this article, you learn how to create a managed private endpoint for Azure Data Explorer.
 ms.reviewer: eladb
 ms.topic: how-to
-ms.date: 11/18/2024
+ms.date: 02/02/2026
 ms.custom: sfi-image-nochange
 ---
 
 # Create a managed private endpoint for Azure Data Explorer
 
-Managed private endpoints are an optional method to connect to Azure resources that are highly protected. They're one-way private connections that allow Azure Data Explorer to connect to other protected services. In this article, you'll learn how to create a managed private endpoint and connect it to your data source.
+Managed private endpoints are an optional method to connect to Azure resources that are highly protected. They're one-way private connections that allow Azure Data Explorer to connect to other protected services. In this article, you learn how to create a managed private endpoint and connect it to your data source.
 
 > [!NOTE]
-> We recommend using a managed identity to connect to [Azure Storage](/azure/storage/common/storage-network-security?tabs=azure-portal#grant-access-to-trusted-azure-services) (except the Event Grid flow) and [Azure Event Hubs](/azure/event-hubs/event-hubs-ip-filtering#trusted-microsoft-services), instead of managed private endpoints. To connect by using a managed identity, configure the Azure Storage or Event Hubs resource to recognize Azure Data Explorer as a trusted service. Then, use [Managed Identity](/azure/data-explorer/managed-identities-overview) to grant access by creating a network rule exception for trusted Azure services.
+> Instead of using managed private endpoints, use a managed identity to connect to [Azure Storage](/azure/storage/common/storage-network-security?tabs=azure-portal#grant-access-to-trusted-azure-services) (except the Event Grid flow) and [Azure Event Hubs](/azure/event-hubs/event-hubs-ip-filtering#trusted-microsoft-services). To connect by using a managed identity, configure the Azure Storage or Event Hubs resource to recognize Azure Data Explorer as a trusted service. Then, use [Managed Identity](/azure/data-explorer/managed-identities-overview) to grant access by creating a network rule exception for trusted Azure services.
 
 ## Prerequisites
 
@@ -20,17 +20,17 @@ Managed private endpoints are an optional method to connect to Azure resources t
 * An [Azure Data Explorer cluster](create-cluster-and-database.md) that isn't injected in a virtual network.
 * An [event hub](/azure/event-hubs/event-hubs-about) or a [Azure Storage](/azure/storage/blobs/storage-blobs-overview) blob in a subscription that is registered to the Microsoft.Network resource provider. For more information, see [Register subscription to resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal).
 
-## Create a managed private endpoint using the Azure portal
+## Create a managed private endpoint by using the Azure portal
 
-You can create a managed private endpoint using the portal for your cluster to use when accessing your storage.
+Create a managed private endpoint by using the portal for your cluster to use when accessing your storage.
 
-1. In the Azure portal, navigate to your cluster and then select **Networking**.
+1. In the Azure portal, go to your cluster and select **Networking**.
 
 1. Select **Managed private endpoints**, and then select **Add**.
 
-    :::image type="content" source="media/security-network-private-endpoint/mpe-create-1.png" alt-text="Screenshot of the networking page, showing the first step in the creation of a managed private endpoint.":::
+    :::image type="content" source="media/security-network-private-endpoint/manage-private-endpoints.png" alt-text="Screenshot of the networking page, showing the first step in the creation of a managed private endpoint.":::
 
-1. On the **New managed private endpoint** pane, fill out the resource details with the following information, and then select **Next**.
+1. On the **New managed private endpoint** pane, enter the resource details with the following information, and then select **Next**.
 
     :::image type="content" source="media/security-network-private-endpoint/mpe-create-2.png" alt-text="Screenshot of the networking page, showing the second step in the creation of a managed private endpoint.":::
 
@@ -38,28 +38,28 @@ You can create a managed private endpoint using the portal for your cluster to u
     |---|---|---|
     | Name | mpeToStorage | The name of the managed private endpoint |
     | Subscription | Your subscription | Select the Azure subscription that you want to use for your cluster |
-    | Resource type | *Microsoft.Storage/storageAccounts* | Select the relevant resources type you want for your data source. |
+    | Resource type | *Microsoft.Storage/storageAccounts* | Select the relevant resource type you want for your data source. |
     | Resource name | *share* | Choose the cluster that should be used as the destination for the new Azure Private Endpoint |
-    | Target sub-resource | *blob* | Select the relevant target for your data source. |
+    | Target subresource | *blob* | Select the relevant target for your data source. |
 
-1. select **Create** to create the managed private endpoint resource.
+1. Select **Create** to create the managed private endpoint resource.
 
-## Create a managed private endpoint using the REST API
+## Create a managed private endpoint by using the REST API
 
-Creating a managed private endpoint requires a single API call to the *Kusto* resource provider. You can establish a managed private endpoint to the following resource types:
+To create a managed private endpoint, make a single API call to the *Kusto* resource provider. You can create a managed private endpoint for the following resource types:
 
-* Microsoft.Storage/storageAccounts (sub-resource can be "blob" or "dfs")
-* Microsoft.EventHub/namespaces (sub-resource "namespace")
-* Microsoft.Devices/IoTHubs (sub-resource "iotHub")
-* Microsoft.KeyVault/vaults (sub-resource "vault")
-* Microsoft.Sql/servers (sub-resource "sqlServer")
-* Microsoft.Kusto/clusters (sub-resource "cluster")
-* Microsoft.DigitalTwins/digitalTwinsInstance (sub-resource "digitaltwinsinstance")
+* Microsoft.Storage/storageAccounts (subresource can be "blob" or "dfs")
+* Microsoft.EventHub/namespaces (subresource "namespace")
+* Microsoft.Devices/IoTHubs (subresource "iotHub")
+* Microsoft.KeyVault/vaults (subresource "vault")
+* Microsoft.Sql/servers (subresource "sqlServer")
+* Microsoft.Kusto/clusters (subresource "cluster")
+* Microsoft.DigitalTwins/digitalTwinsInstance (subresource "digitaltwinsinstance")
 
-In the following this example, you'll use the [ARMclient](https://chocolatey.org/packages/ARMClient) in PowerShell to create a managed private endpoint using the REST API.
+In the following example, you use [ARMclient](https://chocolatey.org/packages/ARMClient) in PowerShell to create a managed private endpoint by using the REST API.
 
 > [!NOTE]
-> Connecting to a storage account a "dfs" resource requires an additional managed private endpoint to the "blob" sub-resource.
+> Connecting to a storage account by using a "dfs" resource requires another managed private endpoint to the "blob" subresource.
 
 ### Prerequisites for using the REST API
 
@@ -70,7 +70,7 @@ In the following this example, you'll use the [ARMclient](https://chocolatey.org
    choco install armclient
    ```
 
-1. Log in with ARMClient
+1. Sign in by using ARMClient
 
    ```powerShell
    armclient login
@@ -186,9 +186,9 @@ To check the progress of the managed private endpoint migration, use the followi
 
 ## Approve the managed private endpoint
 
-Whichever method you used to create the managed private endpoint, you must approve its creation on the target resource. To approve a managed private endpoint to an Event Hubs service:
+Whichever method you use to create the managed private endpoint, you must approve its creation on the target resource. To approve a managed private endpoint to an Event Hubs service:
 
-1. In the Azure portal, navigate to your Event Hubs service and then select **Networking**.
+1. In the Azure portal, go to your Event Hubs service and then select **Networking**.
 
 1. Select **Private endpoint connections**, select the managed private endpoint you created, and then select **Approve**.
 
@@ -202,7 +202,7 @@ Your cluster can now connect to the resource using the managed private endpoint 
 
 ## Create multiple managed private endpoints
 
-You can create multiple managed private endpoints using ARM templates and Terraform. The following examples ensure that the managed private endpoint to the Event Hubs namespace is created before the one to the Storage account.
+You can create multiple managed private endpoints by using ARM templates and Terraform. The following examples ensure that the managed private endpoint to the Event Hubs namespace is created before the one to the Storage account.
 
 ### [ARM template](#tab/ARM-template)
 
@@ -315,7 +315,7 @@ resource "azapi_resource" "mpe_to_storage" {
 
 ## Automatic approval
 
-You can [automatically approve](/azure/private-link/private-endpoint-overview#access-to-a-private-link-resource-using-approval-workflow) a managed private endpoint if the requesting identity has the **Microsoft.\<Provider>/\<ResourceType>/privateEndpointConnectionsApproval/action** permission on the target resource of the managed private endpoint.
+If the requesting identity has the **Microsoft.\<Provider>/\<ResourceType>/privateEndpointConnectionsApproval/action** permission on the target resource of the managed private endpoint, you can [automatically approve](/azure/private-link/private-endpoint-overview#access-to-a-private-link-resource-using-approval-workflow) a managed private endpoint.
 
 ## Related content
 

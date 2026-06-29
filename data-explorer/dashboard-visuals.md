@@ -1,13 +1,14 @@
 ---
-title: Dashboard-specific visuals
+title: Dashboard-specific Visuals
 description: Visualizations available in Azure Data Explorer web UI or dashboards
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 02/21/2024
+ms.date: 02/02/2026
 ---
+
 # Dashboard-specific visuals
 
-All visualizations that are created in the context of the [render operator](/azure/data-explorer/kusto/query/render-operator) are available in dashboard visualizations. However, the following visualizations are only available in [Azure Data Explorer dashboards](azure-data-explorer-dashboards.md), Real-Time Dashboards, or [Azure Data Explorer web UI](/azure/data-explorer/add-query-visualization), and not with the render operator.
+All visualizations that you create in the context of the [render operator](/azure/data-explorer/kusto/query/render-operator) are available in dashboard visualizations. However, the following visualizations are only available in [Azure Data Explorer dashboards](azure-data-explorer-dashboards.md), Real-Time Dashboards, or [Azure Data Explorer web UI](/azure/data-explorer/add-query-visualization), and aren't available by using the render operator.
 
 To learn how to customize any dashboard visuals, see [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
 
@@ -15,9 +16,9 @@ For general information on dashboards in Azure Data Explorer, see [Visualize dat
 
 ## Funnel chart
 
-A funnel chart visualizes a linear process that has sequential, connected stages. Each funnel stage represents a percentage of the total. So, in most cases, a funnel chart is shaped like a funnel, with the first stage being the largest, and each subsequent stage smaller than its predecessor.
+A funnel chart visualizes a linear process that has sequential, connected stages. Each funnel stage represents a percentage of the total. In most cases, a funnel chart is shaped like a funnel, with the first stage being the largest, and each subsequent stage smaller than its predecessor.
 
-The following example visualizes the progression of Server requests, showing the total number of sessions, requests, and their completion status. It highlights the drop-off from sessions to requests and the proportion of completed versus incomplete requests.
+The following example visualizes the progression of server requests, showing the total number of sessions, requests, and their completion status. It highlights the drop-off from sessions to requests and the proportion of completed versus incomplete requests.
 
 ### Example query
 
@@ -56,13 +57,13 @@ funnelData
 
 A heatmap shows values for a main variable of interest across two axis variables as a grid of colored squares.
 
-To render a heatmap, the query must generate a table with three columns. The data used for the value field must be numeric. The columns that will be used for x and y values use the following rules:
+To render a heatmap, the query must generate a table with three columns. The data used for the value field must be numeric. The columns that you use for x and y values must follow these rules:
 
 - If the values in column *x* are in the `string` format, the values in the column *y* must also be in the `string` format.
 - If the values in column *x* are in the `datetime` format, the values in the column *y* must be numeric.
 
 > [!NOTE]
-> We recommend specifying each data field, instead of letting the tool infer the data source.
+> Specify each data field instead of letting the tool infer the data source.
 
 The following example shows the distribution of the five most frequent SQL metrics across different metric types. It highlights which metric types are most common for each SQL metric, making it easy to identify activity patterns in the top metrics.
 
@@ -72,7 +73,6 @@ The following example shows the distribution of the five most frequent SQL metri
 let topMetrics = TransformedServerMetrics
 | summarize TotalCount = count() by SQLMetrics
 | top 5 by TotalCount;  // pick only the 5 most common metrics
-
 TransformedServerMetrics
 | where SQLMetrics in (topMetrics | project SQLMetrics)
 | summarize Count = count() by SQLMetrics, MetricType

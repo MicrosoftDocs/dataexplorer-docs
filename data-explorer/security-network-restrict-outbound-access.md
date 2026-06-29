@@ -1,9 +1,8 @@
 ---
 title: Restrict outbound access from your Azure Data Explorer cluster
 description: Learn how to restrict the outbound access from your Azure Data Explorer cluster to other services.
-ms.reviewer: herauch
 ms.topic: how-to
-ms.date: 04/10/2025
+ms.date: 12/01/2025
 ---
 
 # Restrict outbound access from your Azure Data Explorer cluster
@@ -112,8 +111,7 @@ The following ARM template allows outbound access to specific FQDNs while keepin
       "properties": {
         "restrictOutboundNetworkAccess": "Enabled",
         "allowedFqdnList": [
-          "example.sql.azuresynapse.net",
-          "example.blob.core.windows.net"
+           "example.blob.core.windows.net"
         ]
       }
     }

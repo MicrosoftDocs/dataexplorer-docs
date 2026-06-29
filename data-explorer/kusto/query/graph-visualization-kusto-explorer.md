@@ -2,7 +2,7 @@
 title: Graph Visualization with Kusto Explorer
 description: Learn how to visualize graphs in Kusto Explorer, including interactive features and schema visualization capabilities.
 ms.reviewer: royo
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/27/2025
 ---
 

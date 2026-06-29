@@ -1,7 +1,7 @@
 ---
 title: Integrate Azure Data Explorer with Microsoft Purview
 description: Learn how to use Azure Data Explorer with Purview.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2023
 ---
 
@@ -25,7 +25,7 @@ For information on how to connect to Azure Data Explorer in Purview, see the fol
 
 The following section describes an example use case for integrating Azure Data Explorer with Purview.
 
-### View resource properties in multi-tenant deployment
+### View resource properties in multitenant deployment
 
 In Purview, you can configure scans on multiple clusters to gain insights into various cluster resources and their properties. This feature allows you to easily move between scans and get a summary of different cluster resources. For example, you can identify which databases are located in specific regions across multiple clusters.
 

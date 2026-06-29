@@ -1,19 +1,20 @@
 ---
-title: Embed the Azure Data Explorer web UI in an **iframe**.
-description: Learn how to embed the Azure Data Explorer web UI in an **iframe**.
+title: Embed the Azure Data Explorer Web UI in an iframe.
+description: Learn how to embed the Azure Data Explorer web UI in an iframe.
 ms.reviewer: izlisbon
 ms.topic: how-to
 ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done
-ms.date: 08/11/2024
+ms.date: 03/15/2026
 monikerRange: "azure-data-explorer"
 ---
+
 # Embed the Azure Data Explorer web UI in an iframe
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an iframe.
+You can embed the Azure Data Explorer web UI in an iframe and host it on third-party websites. This article describes how to embed the Azure Data Explorer web UI in an iframe.
 
-:::image type="content" source="../media/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::
+:::image type="content" source="../media/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web UI.":::
 
 All functionality is tested for accessibility and supports dark and light on-screen themes.
 
@@ -27,13 +28,13 @@ Add the following code to your website:
 ></iframe>
 ```
 
-The `f-IFrameAuth` query parameter tells the web UI *not* to redirect to get an authentication token and the `f-UseMeControl=false` parameter tells the web UI *not* to show the user account information pop-up window. These actions are necessary since the hosting website is responsible for authentication.
+The `f-IFrameAuth` query parameter tells the web UI *not* to redirect to get an authentication token, and the `f-UseMeControl=false` parameter tells the web UI *not* to show the user account information pop-up window. These actions are necessary because the hosting website is responsible for authentication.
 
-The `workspace=<guid>` query parameter creates a separate workspace for the embedded iframe. Workspace is a logic unit that contains tabs, queries, settings and connections. By setting it to a unique value, it prevents data sharing between the embedded and the non-embedded version of `https://dataexplorer.azure.com`.
+The `workspace=<guid>` query parameter creates a separate workspace for the embedded iframe. A workspace is a logical unit that contains tabs, queries, settings, and connections. By setting it to a unique value, it prevents data sharing between the embedded and the nonembedded version of `https://dataexplorer.azure.com`.
 
 ### Handle authentication
 
-When embedding the web UI, the hosting page is responsible for authentication. The following diagrams describe the authentication flow.
+When you embed the web UI, the hosting page handles authentication. The following diagrams describe the authentication flow.
 
 :::image type="content" source="../media/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" lightbox="../media/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" alt-text="Diagram that shows the authentication flow for an embedded web U I iframe.":::
 
@@ -60,7 +61,7 @@ Use the following steps to handle authentication:
     | Graph            | `People.Read`                                               | `People.Read`, `User.ReadBasic.All`, `Group.Read.All`             |
     | Dashboards       | `https://rtd-metadata.azurewebsites.net/user_impersonation` | `https://rtd-metadata.azurewebsites.net/user_impersonation`       |
   
-    For example, the following function maps scopes based on the information in the table.
+    For example, the following function maps the scopes based on the information in the table.
 
     ```javascript
         function mapScope(scope) {
@@ -74,7 +75,7 @@ Use the following steps to handle authentication:
 
 1. Get a [JWT access token](https://tools.ietf.org/html/rfc7519) from the [Perform Single Page Application (SPA) authentication](../rest/authenticate-with-msal.md#perform-single-page-application-spa-authentication) for the scope. This code replaces placeholder CODE-1.
 
-    For example, you can use @azure/MSAL-react to get the access token. The example uses the **mapScope** function you defined earlier.
+    For example, you can use `@azure/MSAL-react` to get the access token. The example uses the **mapScope** function you defined earlier.
 
     ```javascript
     import { useMsal } from "@azure/msal-react";
@@ -91,7 +92,7 @@ Use the following steps to handle authentication:
     ```
 
     > [!IMPORTANT]
-    > You can only use User Principal Name (UPN) for authentication, service principals are not supported.
+    > You can only use User Principal Name (UPN) for authentication; service principals aren't supported.
 
 1. Post a **postToken** message with the access token. This code replaces placeholder CODE-2:
 
@@ -105,26 +106,32 @@ Use the following steps to handle authentication:
     ```
 
     > [!IMPORTANT]
-    > The hosting window must refresh the token before expiration by sending a new **postToken** message with updated tokens. Otherwise, once the tokens expire, service calls will fail.
+    > The hosting window must refresh the token before expiration by sending a new **postToken** message with updated tokens. Otherwise, once the tokens expire, service calls fail.
 
 > [!TIP]
-> In our sample project, you can view an [application](https://github.com/Azure/azure-kusto-webexplorer-embedding/blob/main/src/app.js) that uses authentication.
+> In the sample project, you can view an [application](https://github.com/Azure/azure-kusto-webexplorer-embedding/blob/main/src/app.js) that uses authentication.
 
 ### Embed dashboards
 
-To embed a dashboard, a trust relationship must be established between the host's Microsoft Entra app and the Azure Data Explorer dashboard service (**RTD Metadata Service**).
+To embed a dashboard, you must establish a trust relationship between the host's Microsoft Entra app and the Azure Data Explorer dashboard service (**RTD Metadata Service**).
 
 1. Follow the steps in [Perform Single Page Application (SPA) authentication](../rest/authenticate-with-msal.md#perform-single-page-application-spa-authentication).
-1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed into the correct tenant. In the top-right corner, verify the identity used to sign into the portal.
+1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed in to the correct tenant. In the top-right corner, verify the identity used to sign in to the portal.
 1. In the resources pane, select **Microsoft Entra ID** > **App registrations**.
 1. Locate the app that uses the **on-behalf-of** flow and open it.
 1. Select **Manifest**.
 1. Select **requiredResourceAccess**.
 1. In the manifest, add the following entry:
 
+   > [!IMPORTANT]
+   > Replace `<RTD Metadata Service - Application ID>` with the application ID of the **RTD Metadata Service**. To get the application ID of this service, follow these steps:
+   > - Sign in to the Azure portal.
+   > - In the search bar, enter **RTD Metadata Service**, and then select the **Service Principal**: **RTD Metadata Service**.
+   > - On the **Enterprise Application** page for **RTD Metadata Service**, note down the value of the **Application ID**. 
+
     ```json
       {
-        "resourceAppId": "35e917a9-4d95-4062-9d97-5781291353b9",
+        "resourceAppId": "<RTD Metadata Service - Application ID>",
         "resourceAccess": [
             {
                 "id": "388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c",
@@ -134,20 +141,22 @@ To embed a dashboard, a trust relationship must be established between the host'
       }
     ```
 
-    - `35e917a9-4d95-4062-9d97-5781291353b9` is the application ID of Azure Data Explorer dashboard service.  
-    - `388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c` is the user_impersonation permission.
+    In the above code, `388e2b3a-fdb8-4f0b-ae3e-0692ca9efc1c` is the user_impersonation permission.
 
-1. In the **Manifest**, save your changes.
+1. Save your changes in the **Manifest**.
 1. Select **API permissions** and validate you have a new entry: **RTD Metadata Service**.
 1. Under Microsoft Graph, add permissions for `People.Read`, `User.ReadBasic.All`, and `Group.Read.All`.
 1. In Azure PowerShell, add the following new service principal for the app:
 
+   > [!IMPORTANT]
+   > Replace `<RTD Metadata Service - Application ID>` with the application ID of the **RTD Metadata Service** you got earlier. 
+
     ```powershell
-    New-MgServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
+    New-MgServicePrincipal -AppId <RTD Metadata Service - Application ID>
     ```
 
 
-    If you encounter the `Request_MultipleObjectsWithSameKeyValue` error, it means that the app is already in the tenant indicating it was added successfully.
+    If you encounter the `Request_MultipleObjectsWithSameKeyValue` error, the app is already in the tenant.
 
 1. In the **API permissions** page, select **Grant admin consent** to consent for all users.
 
@@ -158,7 +167,7 @@ To embed a dashboard, a trust relationship must be established between the host'
 >  <iframe src="https://dataexplorer.azure.com/dashboards?[feature-flags]" />
 > ```
 >
-> where `[feature-flags]` is:
+> The `[feature-flags]` is:
 >
 > ```html
 > "f-IFrameAuth": true,
@@ -174,7 +183,7 @@ To embed a dashboard, a trust relationship must be established between the host'
 > [!IMPORTANT]
 > The `f-IFrameAuth=true` flag is required for the iframe to work. The other flags are optional.
 
-The hosting app may want to control certain aspects of the user experience. For example, hide the connection pane, or disable connecting to other clusters.
+The hosting app might want to control certain aspects of the user experience. For example, hide the connection pane, or disable connecting to other clusters.
 For this scenario, the web explorer supports feature flags.
 
 A feature flag can be used in the URL as a query parameter. To disable adding other clusters, use <https://dataexplorer.azure.com/?f-ShowConnectionButtons=false> in the hosting app.
@@ -189,7 +198,7 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-ShowPersona | Show the user name from the settings menu, in the top-right corner. | true |
 | f-UseMeControl | Show the user's account information | true |
 | f-IFrameAuth | If true, the web explorer expects the iframe to handle authentication and provide a token via a message. This parameter is required for iframe scenarios. | false |
-| f-PersistAfterEachRun | Usually, browsers persist in the unload event. However, the unload event isn't always triggered when hosting in an iframe. This flag triggers the **persisting local state** event after each query run. This limits any data loss that may occur, to only affect new query text that has never run. | false |
+| f-PersistAfterEachRun | Usually, browsers persist in the `unload` event. However, the `unload` event isn't always triggered when hosting in an iframe. This flag triggers the **persisting local state** event after each query run. This limits any data loss that may occur, to only affect new query text that has never run. | false |
 | f-ShowSmoothIngestion | If true, show the ingestion wizard experience when right-clicking on a database | true |
 | f-RefreshConnection | If true, always refreshes the schema when loading the page and never depends on local storage | false |
 | f-ShowPageHeader | If true, shows the page header that includes the Azure Data Explorer title and settings | true |
@@ -205,7 +214,7 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-DisableDashboardDelete | IF true, hides the dashboard delete button | false |
 | f-DisableTileRefresh | IF true, disables tiles refresh button in a dashboard | false |
 | f-DisableDashboardAutoRefresh | IF true, disables tiles auto refresh in a dashboard | false |
-| f-DisableExploreQuery | IF true, disables the explore query button of the tiles | false |
+| f-DisableExploreQuery | IF true, disables the **Explore query** button of the tiles | false |
 | f-DisableCrossFiltering | IF true, disables the cross filtering feature in dashboards | false |
 | f-HideDashboardParametersBar | IF true, hides the parameters bar in a dashboard | false |
 

@@ -8,14 +8,26 @@ ms.date: 05/30/2022
 
 # Allow cross-tenant queries and commands
 
-Principals from multiple tenants can run queries and commands in a single Azure Data Explorer cluster. In this article, you'll learn how to give cluster access to principals from another tenant.
+Principals from multiple tenants can run queries and commands in a single Azure Data Explorer cluster. 
+In this article, you'll learn how to give cluster access to principals from another tenant.
+
+## Overview 
+
+In order for principals from tenants other then the cluster home tenant to use it,
+- The principal must have a role assignment permitting access to the cluster
+- The cluster must be configured to allow access to the external tenant 
+
+> [!NOTE]
+> * Validation of trusted external tenants **preceeds and is indepenent of** validation of role assignment.
+> * Allowed Tenants and Allowed Principals are managed indepently.
+> * Role assignments may exist for principals in tenants not permitted by the cluster.
+> * Removing a trusted external tenant does not implicitly drop role assignments of principals from this tenant. 
+
+## Configuring External Trusted Tenants
 
 To set the `trustedExternalTenants` on the cluster, use [ARM Templates](/azure/templates/microsoft.kusto/clusters?tabs=json#trustedexternaltenant-object), [AZ CLI](/cli/azure/kusto/cluster#az-kusto-cluster-update-optional-parameters), [PowerShell](/powershell/module/az.kusto/new-azkustocluster), [Azure Resource Explorer](https://resources.azure.com/), or send an [API request](/rest/api/azurerekusto/clusters/createorupdate#request-body).
 
 The following examples show how to define trusted tenants in the portal and with an API request.
-
-> [!NOTE]
-> The principal who will run queries or commands must also have a relevant database role. See also [role-based access control](/kusto/access-control/role-based-access-control?view=azure-data-explorer&preserve-view=true). Validation of correct roles takes place after validation of trusted external tenants.
 
 ## [Portal](#tab/portal)
 
@@ -84,8 +96,4 @@ PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-1234567
 
 ## Add Principals
 
-After updating the `trustedExternalTenants` property, you can give access to principals from the approved tenants. Use the Azure portal to give a principal [cluster level permissions](manage-cluster-permissions.md) or [database permissions](manage-database-permissions.md). Alternatively, to give access to a database, table, function, or materialized view level, use [management commands](/kusto/management/security-roles?view=azure-data-explorer&preserve-view=true).
-
-## Limitations
-
-The configuration of this feature applies solely to Microsoft Entra identities (Users, Applications, Groups) trying to connect to Azure Data Explorer. It has no impact on cross Microsoft Entra ingestion.
+After updating the `trustedExternalTenants` property, give access to principals from the approved tenants. Use ARM to give All Database level permissions. Alternatively, to give access to a database, table, function, or materialized view level, use [management commands](/kusto/management/security-roles?view=azure-data-explorer&preserve-view=true).

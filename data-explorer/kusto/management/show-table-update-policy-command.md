@@ -3,7 +3,7 @@ title: .show table policy update command
 description: Learn how to use the `.show table policy update` command to show the table's update policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 06/01/2026
 ---
 # .show table policy update command
 
@@ -35,6 +35,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 ## Returns
 
 Returns a JSON representation of the policy.
+
+::: moniker range="microsoft-fabric"
+
+> [!NOTE]
+> The returned policy JSON may include system-populated properties such as `OwnerPrincipalDetails`. This property is read-only and automatically set by the system for authorization when the update policy query references external tables.
+
+::: moniker-end
 
 ## Example
 

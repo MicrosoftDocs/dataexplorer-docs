@@ -3,7 +3,7 @@ title:  Kusto.Data exceptions
 description: This article describes Kusto.Data exceptions.
 ms.reviewer: yogilad
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 05/20/2026
 ms.custom: sfi-ropc-nochange
 ---
 # Kusto.Data exceptions
@@ -137,7 +137,7 @@ All service exceptions have a **Failure code** of `0`, no **Failure subcode**, a
 | `WeakConsistencyEntityNotFoundException` | Indicates a failure to locate an entity in weak consistency mode. |
 | `KustoDataStreamException` | Generic exception that carries error information inside a Kusto Data Stream. |
 | `KustoRequestThrottledException` | The request is denied due to throttling. </br> **Failure code**: 429 </br> **Failure subcode**: TooManyRequests </br> **Permanence**: False |
-| `KustoServicePartialQueryFailureIllFormattedDataException` | Carries error information inside a Kusto Data Stream indicating ill-formatted data. </br> **Failure code**: 400 </br> **Failure subcode**:IllFormattedData  </br> **Permanence**: True|
-| `KustoServicePartialQueryFailureLimitsExceededException` | Carries error information inside a Kusto Data Stream indicating that limits have been exceeded. </br> **Failure code**: 400 </br> **Failure subcode**: LimitsExceeded </br> **Permanence**: True|
-| `KustoServicePartialQueryFailureLowMemoryConditionException` |Carries error information inside a Kusto Data Stream indicating low memory conditions. </br> **Failure code**: 400 </br> **Failure subcode**: LowMemoryCondition </br> **Permanence**: True|
+| `KustoServicePartialQueryFailureIllFormattedDataException` | Carries error information inside a Kusto Data Stream indicating ill-formatted data. </br> **Failure code**: 400 </br> **Failure subcode**:IllFormattedData  </br> **Permanence**: False |
+| `KustoServicePartialQueryFailureLimitsExceededException` | Carries error information inside a Kusto Data Stream indicating that limits have been exceeded. </br> **Failure code**: 400 </br> **Failure subcode**: LimitsExceeded </br> **Permanence**: False |
+| `KustoServicePartialQueryFailureLowMemoryConditionException` |Carries error information inside a Kusto Data Stream indicating low memory conditions. </br> **Failure code**: 400 </br> **Failure subcode**: LowMemoryCondition </br> **Permanence**: False |
 | `KustoServiceTimeoutException` | Raised when request execution has timed-out on the service side. </br> **Failure code**: 504 </br> **Failure subcode**: RequestExecutionTimeout </br> **Permanence**: False |

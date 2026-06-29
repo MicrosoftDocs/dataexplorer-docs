@@ -3,8 +3,7 @@ title: Create an app to get data using queued ingestion
 description: Learn how to create an app to get data using queued ingestion of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 08/24/2025
-monikerRange: "azure-data-explorer"
+ms.date: 11/16/2025
 zone_pivot_groups: ingest-api
 ms.custom: sfi-ropc-nochange
  

@@ -1,7 +1,7 @@
 ---
-title: Ingest data with the Serilog sink into Azure Data Explorer
+title: Ingest Data With the Serilog Sink Into Azure Data Explorer
 description: Learn how to use the Azure Data Explorer Serilog sink to ingest data into your cluster.
-ms.date: 07/02/2024
+ms.date: 02/23/2026
 ms.topic: how-to
 ms.reviewer: ramacg
 ---
@@ -14,9 +14,10 @@ For a complete list of data connectors, see [Data integrations overview](integra
 ## Prerequisites
 
 * .NET SDK 6.0 or later
-* An Azure Data Explorer [cluster and database](/azure/data-explorer/create-cluster-and-database) with the default cache and retention policies.
-* [Azure Data Explorer query environment](https://dataexplorer.azure.com/) <a id=ingestion-uri></a>
-* Your Kusto cluster URI for the *TargetURI* value in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).
+* An Azure Data Explorer [cluster and database](/azure/data-explorer/create-cluster-and-database) with the default cache and retention policies
+* [Azure Data Explorer query environment](https://dataexplorer.azure.com/)
+* Your Kusto cluster URI for the *TargetURI* value in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*
+For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).
 
 [!INCLUDE [ingest-data-serilog-2](includes/cross-repo/ingest-data-serilog-2.md)]
 

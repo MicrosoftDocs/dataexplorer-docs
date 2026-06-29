@@ -16,6 +16,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure/synapse-analytics/quickstart-connect-azure-data-explorer.md",
+      "redirect_url": "/azure/data-explorer/integrate-overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "graph-overview.md",
       "redirect_url": "/kusto/query/graph-semantics-overview?view=azure-data-explorer&preserve-view=true",
       "redirect_document_id": false
@@ -487,6 +492,11 @@
     {
       "source_path": "vnet-endpoint-storage-event-hub.md",
       "redirect_url": "/azure/data-explorer/security-network-managed-private-endpoint-create",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "kusto/tools/azure-data-studio.md",
+      "redirect_url": "/azure/data-explorer/kusto/tools/kusto-explorer",
       "redirect_document_id": false
     }
   ]

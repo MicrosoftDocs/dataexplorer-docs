@@ -40,6 +40,13 @@ The `alias` statement is useful as a shorthand name for a database so it can be 
 > - The mapped Query and the mapped database-name must appear inside double-quotes(") or single-quotes(').
 ::: moniker-end
 
+> [!IMPORTANT]
+> Alias statements are supported only within the scope of a single query.
+>
+> Alias statements aren’t supported in function definitions, including user-defined functions, stored functions, or reusable query artifacts.
+>
+> Aliases must be defined and referenced within the same query and can’t be persisted or reused across queries.
+
 ## Examples
 
 [!INCLUDE [help-cluster](../includes/help-cluster-note.md)]

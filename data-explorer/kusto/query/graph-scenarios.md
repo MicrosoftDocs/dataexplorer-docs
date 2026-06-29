@@ -1,8 +1,8 @@
 ---
 title: Scenarios for using Kusto Query Language (KQL) graph semantics
 description: Learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
-ms.reviewer: herauch
-ms.topic: conceptual
+ms.reviewer: spelluru
+ms.topic: concept-article
 ms.date: 05/28/2025
 # Customer intent: As a data analyst, I want to learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ---

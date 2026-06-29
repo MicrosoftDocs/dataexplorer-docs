@@ -3,7 +3,7 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 08/25/2025
+ms.date: 04/20/2026
 ---
 
 # Visualize data with Azure Data Explorer dashboards
@@ -79,14 +79,15 @@ Dashboard tiles use Kusto Query Language snippets to retrieve data and render vi
 
     :::image type="content" source="media/adx-dashboards/resize-and-save.png" alt-text="Resize and save dashboard.":::
 
-## Pin tile from query
+## Pin query to dashboard
 
 You can also pin a query from the [query tab of the web UI](web-query-data.md).
 
 To pin a query:
 
 1. Create and run the query whose output you want to visualize in the dashboard.
-1. Select **Share** > **Pin to dashboard**.
+1. Select **Pin to dashboard** in the upper toolbar.    
+    :::image type="content" source="media/web-query-data/pin-to-dashboard-button.png" alt-text="Screenshot of the Pin to dashboard button.":::    
 1. In the **Pin to dashboard** pane:
     1. Provide a **Tile name**.
     1. The **Data source name** is auto populated from the query data source.
@@ -100,7 +101,7 @@ To pin a query:
 
 ## Use parameters
 
-Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with a tile. For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
+Parameters make your dashboard interactive and improve rendering performance. They act as filters on tiles that use them. Add parameters to queries to filter data and activate the filter. For more information, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
 
 ## Tile legend
 

@@ -3,7 +3,11 @@ title: .alter query acceleration policy command
 description: Learn how to use the .alter query acceleration policy command to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
+<<<<<<< shanisolomon/auto-update-schema-docs
 ms.date: 06/29/2026
+=======
+ms.date: 06/01/2026
+>>>>>>> main
 ---
 
 # `.alter query acceleration policy` command
@@ -33,26 +37,35 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 | _JSON-serialized policy_ | `string` | :heavy_check_mark: | String literal holding a [JSON property bag](#json-property-bag). |
 
 ### JSON property bag
+
 ::: moniker range="microsoft-fabric"
-| Property   		| Type       | Required           | Description                                                                                                                                                                                                               |
-| ---------- 		| ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| IsEnabled  		| `Boolean`  | :heavy_check_mark: | Indicates whether the policy is enabled.                                                                                                                                                                                  |
-| Hot        		| `Timespan` | :heavy_check_mark: | The hot period defined in the query acceleration policy. Minimum value = 1 d.                                                                                                                                             |
-| HotWindows 		| `DateTime` |                    | One or more optional time windows. Delta data files created within these time windows are accelerated.                                                                                                                    |
-| MaxAge     		| `Timespan` |                    | The external table returns accelerated data if the last index refresh time is greater than @now - MaxAge. Otherwise, the external table operates in non-accelerated mode. Default is 5 minutes. Minimum is 1 minute. |
+
+| Property            | Type       | Required           | Description                                                                                                                                                                                                                          |
+| ------------------- | ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| IsEnabled           | `Boolean`  | :heavy_check_mark: | Indicates whether the policy is enabled.                                                                                                                                                                                             |
+| Hot                 | `Timespan` | :heavy_check_mark: | The hot period defined in the query acceleration policy. Minimum value = 1 d.                                                                                                                                                        |
+| HotWindows          | `DateTime` |                    | One or more optional time windows. Delta data files created within these time windows are accelerated.                                                                                                                               |
+| MaxAge              | `Timespan` |                    | The external table returns accelerated data if the last index refresh time is greater than @now - MaxAge. Otherwise, the external table operates in non-accelerated mode. Default is 5 minutes. Minimum is 1 minute. This property can also be overridden at query time by using the [`external_table()` function's](../query/external-table-function.md) `MaxAgeOverride` parameter. |
+| HotDateTimeColumn   | `String`   |                    | The Name of a datetime column used to determine hot-cache eligibility. A data file will be cached if its min/max stats for this column are within the configured Hot period and/or HotWindows. If not specified, eligibility is determined using the file modificationTime. Eligibility is computed using [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file) metadata only - setting this property does not add query-time overhead |
+
 ::: moniker-end
 
 ::: moniker range="azure-data-explorer"
-| Property   		| Type       | Required           | Description                                                                                                                                                                                                               |
-| ---------- 		| ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| IsEnabled  		| `Boolean`  | :heavy_check_mark: | Indicates whether the policy is enabled.                                                                                                                                                                                  |
-| Hot        		| `Timespan` | :heavy_check_mark: | The hot period defined in the query acceleration policy. Minimum value = 1 d.                                                                                                                                             |
-| HotWindows 		| `DateTime` |                    | One or more optional time windows. Delta data files created within these time windows are accelerated.                                                                                                                    |
-| MaxAge     		| `Timespan` |                    | The external table returns accelerated data if the last index refresh time is greater than @now - MaxAge. Otherwise, the external table operates in non-accelerated mode. Default is 5 minutes. Minimum is 1 minute. |
-| ManagedIdentity   | `string`	 |                	  | Optional managed identity for which the query acceleration background operations are executed. This identity must have relevant delta table permissions and must be enabled for AutomatedFlows in the cluster / database managed identity policy. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview)|
+
+| Property            | Type       | Required           | Description                                                                                                                                                                                                                                                                                                                                 |
+| ------------------- | ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| IsEnabled           | `Boolean`  | :heavy_check_mark: | Indicates whether the policy is enabled.                                                                                                                                                                                                                                                                                                   |
+| Hot                 | `Timespan` | :heavy_check_mark: | The hot period defined in the query acceleration policy. Minimum value = 1 d.                                                                                                                                                                                                                                                              |
+| HotWindows          | `DateTime` |                    | One or more optional time windows. Delta data files created within these time windows are accelerated.                                                                                                                                                                                                                                     |
+| MaxAge              | `Timespan` |                    | The external table returns accelerated data if the last index refresh time is greater than @now - MaxAge. Otherwise, the external table operates in non-accelerated mode. Default is 5 minutes. Minimum is 1 minute. This property can also be overridden at query time by using the [`external_table()` function's](../query/external-table-function.md) `MaxAgeOverride` parameter. |
+| ManagedIdentity     | `string`   |                    | Optional managed identity for which the query acceleration background operations are executed. This identity must have relevant delta table permissions and must be enabled for AutomatedFlows in the cluster / database managed identity policy. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview). |
+| HotDateTimeColumn   | `String`   |                    | Optional. The name of a datetime column in the Delta table whose values will be used to determine hot-cache eligibility. When set, data files whose rows have values within the configured Hot period (and/or HotWindows) are selected for caching.                                                                                       |
+
 ::: moniker-end
+
 > [!NOTE]
-> Query acceleration is applied to data within a specific time period, defined as `timespan`, starting from the `modificationTime` as stated for each file in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file).
+>
+> Query acceleration is applied to data within a specific time period, based on the `modificationTime` as stated for each file in the [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file) by default. You can override the default behavior, by specifying the _HotDateTimeColumn_ property in the policy.
 
 ### Example
 
@@ -73,17 +86,23 @@ The command returns a table with one record that includes the modified policy ob
 | EntityType    | `string` | The type of the entity the policy applies to - `ExternalTable`                                |
 
 ## Example
+
 ::: moniker range="microsoft-fabric"
+
 ```Kusto
-.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00", "HotWindows":[{"MinValue":"2025-07-07 07:00:00","MaxValue":"2025-07-09 07:00:00"}], "MaxAge": "00:05:00"}'
+.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00", "HotWindows":[{"MinValue":"2025-07-07 07:00:00","MaxValue":"2025-07-09 07:00:00"}], "MaxAge": "00:05:00", "HotDateTimeColumn":"dt1"}'
 ```
+
 ::: moniker-end
 
 ::: moniker range="azure-data-explorer"
+
 ```Kusto
-.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00", "HotWindows":[{"MinValue":"2025-07-07 07:00:00","MaxValue":"2025-07-09 07:00:00"}], "MaxAge": "00:05:00", "ManagedIdentity": "12345678-1234-1234-1234-1234567890ab"}'
+.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "1.00:00:00", "HotWindows":[{"MinValue":"2025-07-07 07:00:00","MaxValue":"2025-07-09 07:00:00"}], "MaxAge": "00:05:00", "ManagedIdentity": "12345678-1234-1234-1234-1234567890ab", "HotDateTimeColumn":"dt1"}'
 ```
+
 ::: moniker-end
+
 ## Related content
 
 - [Query acceleration policy](query-acceleration-policy.md)
@@ -91,3 +110,13 @@ The command returns a table with one record that includes the modified policy ob
 - [.delete query acceleration policy command](delete-query-acceleration-policy-command.md)
 - [.show query acceleration policy command](show-query-acceleration-policy-command.md)
 - [.show external table operations query_acceleration statistics](show-external-table-operations-query-acceleration-statistics.md)
+
+## Example: Setting hot period for use with update policy
+
+To allow an accelerated external table to be referenced from an [update policy](update-policy.md) query, the `Hot` period must cover all data (>= 100 years):
+
+```Kusto
+.alter external table MyExternalTable policy query_acceleration '{"IsEnabled": true, "Hot": "36500.00:00:00"}'
+```
+
+This enables the external table to be used with `external_table('MyExternalTable')` inside update policy functions. For more information, see [Use with update policies](query-acceleration-policy.md#use-with-update-policies).

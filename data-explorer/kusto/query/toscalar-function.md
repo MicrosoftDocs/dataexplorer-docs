@@ -80,6 +80,62 @@ _dataset1
 |3|4|
 |5|6|
 
+### Additional mitigation patterns for real-world scenarios
+
+In many practical scenarios, you may want to compute a scalar value per row using
+an expression that performs its own aggregation, such as:
+
+```kusto
+| extend result = toscalar(T | where Key == key | summarize max(Value))
+```
+
+This pattern fails because `toscalar()` cannot be evaluated once per row.
+Use one of the supported mitigation patterns below.
+
+1. Pre-aggregate the data once and then join the aggregated results back to the main table for improved efficiency.
+
+```kusto
+let summary =
+    T
+    | summarize maxValue = max(Value) by Key;
+
+Dataset1
+| join kind=leftouter summary on Key
+| project Key, maxValue
+```
+
+2. Use `arg_max()` to retrieve the row with the highest value. This is useful when you need both the maximum value and the associated columns.
+
+```kusto
+let summary =
+    T
+    | summarize arg_max(Timestamp, *) by Key;
+
+Dataset1
+| lookup summary on Key
+```
+
+3. Use a `lookup` for key/value mappings to avoid row-context violations and ensure efficient dimension-table lookups.
+
+```kusto
+let lookupTable =
+    T | summarize maxValue = max(Value) by Key;
+
+Dataset1
+| lookup lookupTable on Key
+```
+
+4. Use window functions or `make-series` for time-window aggregations
+
+```kusto
+Dataset1
+| make-series maxValue = max(Value)
+      on Timestamp
+      from ago(1h) to now()
+      step 1m
+      by Key
+```
+
 ## Examples
 
 The examples in this section show how to use the syntax to help you get started.

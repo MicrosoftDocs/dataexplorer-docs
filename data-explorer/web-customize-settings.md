@@ -16,9 +16,9 @@ This article guides you through the process of customizing settings in the [Azur
 
 ## Go to the settings
 
-Select the settings icon :::image type="icon" source="media/web-customize-settings/settings-icon.png" border="false"::: on the top right, to open the **Settings** window.
+Select the settings icon on the top right, to open the **Settings** window.
 
-:::image type="content" source="media/web-customize-settings/settings-pane.png" alt-text="Screenshot of the Settings window.":::
+:::image type="content" source="media/web-customize-settings/settings-icon.png" alt-text="Screenshot of the Settings window and the settings icon highlighted.":::
 
 ## Set query recommendations
 

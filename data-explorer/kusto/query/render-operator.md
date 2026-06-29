@@ -3,16 +3,16 @@ title:  render operator
 description: Learn how to use the render operator to instruct the user agent to render a visualization of the query results.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 05/27/2026
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # render operator
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Instructs the user agent to render a visualization of the query results.  
+The `render` operator instructs the user agent to visualize query results. It must be the last operator in your query and works only with queries that produce a single tabular data stream.
 
-The render operator must be the last operator in the query, and can only be used with queries that produce a single tabular data stream result.  The render operator doesn't modify data. It injects an annotation ("Visualization") into the result's extended  properties. The annotation contains the information provided by the operator in the query. The interpretation of the visualization information is done by the user agent. Different agents, such as Kusto.Explorer or Azure Data Explorer web UI, may support different visualizations.
+The operator doesn't modify data. Instead, it adds a "Visualization" annotation to the result's extended properties, containing the visualization instructions from your query. Different user agents, such as Kusto.Explorer or Azure Data Explorer web UI, interpret and support different visualizations based on this information.
 
 The data model of the render operator looks at the tabular data as if it has
 three kinds of columns:
@@ -55,24 +55,24 @@ three kinds of columns:
 
 | *visualization* | Description | Illustration |
 |--|--|--|
-| [`anomalychart`](visualization-anomalychart.md) | Similar to timechart, but highlights anomalies using [series_decompose_anomalies](series-decompose-anomalies-function.md) function. | :::image type="icon" source="media/renderoperator/anomaly-chart.png" border="false"::: |
+| [`anomalychart`](visualization-anomalychart.md) | Similar to timechart, but highlights anomalies using the [series_decompose_anomalies](series-decompose-anomalies-function.md) function. | :::image type="icon" source="media/renderoperator/anomaly-chart.png" border="false"::: |
 | [`areachart`](visualization-areachart.md) | Area graph. | :::image type="icon" source="media/renderoperator/area-chart.png" border="false"::: |
-| [`barchart`](visualization-barchart.md) | displayed as horizontal strips. | :::image type="icon" source="media/renderoperator/bar-chart.png" border="false"::: |
-| [`card`](visualization-card.md) | First result record is treated as set of scalar values and shows as a card. | :::image type="icon" source="media/renderoperator/card.png" border="false"::: |
+| [`barchart`](visualization-barchart.md) | Displayed as horizontal strips. | :::image type="icon" source="media/renderoperator/bar-chart.png" border="false"::: |
+| [`card`](visualization-card.md) | The first result record is a set of scalar values and shows as a card. | :::image type="icon" source="media/renderoperator/card.png" border="false"::: |
 | [`columnchart`](visualization-columnchart.md) | Like `barchart` with vertical strips instead of horizontal strips. | :::image type="icon" source="media/renderoperator/column-chart.png" border="false"::: |
-| [`ladderchart`](visualization-ladderchart.md) | Last two columns are the x-axis, other columns are y-axis. | :::image type="icon" source="media/renderoperator/ladder-chart.png" border="false"::: |
+| [`ladderchart`](visualization-ladderchart.md) | The last two columns are the x-axis, and other columns are y-axis. | :::image type="icon" source="media/renderoperator/ladder-chart.png" border="false"::: |
 | [`linechart`](visualization-linechart.md) | Line graph. | :::image type="icon" source="media/renderoperator/line-chart.png" border="false"::: |
-| [`piechart`](visualization-piechart.md) | First column is color-axis, second column is numeric. | :::image type="icon" source="media/renderoperator/pie-chart.png" border="false"::: |
-| [`pivotchart`](visualization-pivotchart.md) | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types. | :::image type="icon" source="media/renderoperator/pivot-chart.png" border="false"::: |
+| [`piechart`](visualization-piechart.md) | The first column is the color-axis, and the second column is numeric. | :::image type="icon" source="media/renderoperator/pie-chart.png" border="false"::: |
+| [`pivotchart`](visualization-pivotchart.md) | Displays a pivot table and chart. You can interactively select data, columns, rows, and various chart types. | :::image type="icon" source="media/renderoperator/pivot-chart.png" border="false"::: |
 | [`scatterchart`](visualization-scatterchart.md) | Points graph. | :::image type="icon" source="media/renderoperator/scatter-chart.png" border="false"::: |
 | [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph. | :::image type="icon" source="media/renderoperator/stacked-area-chart.png" border="false"::: |
 | [`table`](visualization-table.md) | Default - results are shown as a table. | :::image type="icon" source="media/renderoperator/table-visualization.png" border="false"::: |
-| [`timechart`](visualization-timechart.md) | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. | :::image type="icon" source="media/renderoperator/visualization-timechart.png" border="false"::: |
-| [`timepivot`](visualization-timepivot.md) | Interactive navigation over the events time-line (pivoting on time axis) | :::image type="icon" source="media/renderoperator/visualization-time-pivot.png" border="false"::: |
+| [`timechart`](visualization-timechart.md) | Line graph. The first column is the x-axis, and must be datetime. Other (numeric) columns are y-axes. | :::image type="icon" source="media/renderoperator/visualization-timechart.png" border="false"::: |
+| [`timepivot`](visualization-timepivot.md) | Interactive navigation over the events time-line (pivoting on time axis). | :::image type="icon" source="media/renderoperator/visualization-time-pivot.png" border="false"::: |
 | [`treemap`](visualization-treemap.md) | Displays hierarchical data as a set of nested rectangles. | :::image type="icon" source="media/renderoperator/tree-map.png" border="false"::: |
 
 > [!NOTE]
-> The ladderchart, pivotchart, timepivot, and treemap visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
+> The ladderchart, pivotchart, timepivot, and treemap visualizations can be used in Kusto.Explorer but aren't available in the Azure Data Explorer web UI.
 
 ::: moniker-end
 
@@ -80,13 +80,13 @@ three kinds of columns:
 
 |*Visualization*     |Description| Illustration |
 |--------------------|----------|---------|
-| [`areachart`](visualization-areachart.md)| Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |  :::image type="icon" source="media/renderoperator/area-chart.png" border="false"::: |
-| [`barchart`](visualization-barchart.md)  | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.| :::image type="icon" source="media/renderoperator/bar-chart.png" border="false"::: |
+| [`areachart`](visualization-areachart.md)| Area graph. The first column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |  :::image type="icon" source="media/renderoperator/area-chart.png" border="false"::: |
+| [`barchart`](visualization-barchart.md)  | The first column is the x-axis and can be text, datetime, or numeric. Other columns are numeric and display as horizontal strips.| :::image type="icon" source="media/renderoperator/bar-chart.png" border="false"::: |
 | [`columnchart`](visualization-columnchart.md)| Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="media/renderoperator/column-chart.png" border="false"::: |
-| [`piechart`](visualization-piechart.md)  | First column is color-axis, second column is numeric. | :::image type="icon" source="media/renderoperator/pie-chart.png" border="false"::: |
-| [`scatterchart`](visualization-scatterchart.md)     | Points graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. | :::image type="icon" source="media/renderoperator/scatter-chart.png" border="false"::: |
+| [`piechart`](visualization-piechart.md)  | The first column is the color-axis, and the second column is numeric. | :::image type="icon" source="media/renderoperator/pie-chart.png" border="false"::: |
+| [`scatterchart`](visualization-scatterchart.md)     | Points graph. The first column is the x-axis and should be a numeric column. Other numeric columns are y-axes. | :::image type="icon" source="media/renderoperator/scatter-chart.png" border="false"::: |
 | [`table`](visualization-table.md)            | Default - results are shown as a table.| :::image type="icon" source="media/renderoperator/table-visualization.png" border="false"::: |
-| [`timechart`](visualization-timechart.md)         | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored).| :::image type="icon" source="media/renderoperator/visualization-timechart.png" border="false"::: |
+| [`timechart`](visualization-timechart.md)         | Line graph. The first column is the x-axis, and should be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored).| :::image type="icon" source="media/renderoperator/visualization-timechart.png" border="false"::: |
 
 ::: moniker-end
 
@@ -94,17 +94,17 @@ three kinds of columns:
 
 | *visualization*| Description| Illustration |
 |-----------|------------|---------|
-| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but highlights anomalies using [series_decompose_anomalies](series-decompose-anomalies-function.md) function. | :::image type="icon" source="media/renderoperator/anomaly-chart.png" border="false"::: |
+| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but highlights anomalies using the [series_decompose_anomalies](series-decompose-anomalies-function.md) function. | :::image type="icon" source="media/renderoperator/anomaly-chart.png" border="false"::: |
 | [`areachart`](visualization-areachart.md)               | Area graph.| :::image type="icon" source="media/renderoperator/area-chart.png" border="false"::: |
-| [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.| :::image type="icon" source="media/renderoperator/bar-chart.png" border="false"::: |
-| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.| :::image type="icon" source="media/renderoperator/card.png" border="false":::
+| [`barchart`](visualization-barchart.md)                 | Displayed as horizontal strips.| :::image type="icon" source="media/renderoperator/bar-chart.png" border="false"::: |
+| [`card`](visualization-card.md)                         | The first result record is a set of scalar values and shows as a card.| :::image type="icon" source="media/renderoperator/card.png" border="false":::
 | [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="media/renderoperator/column-chart.png" border="false"::: |
 | [`linechart`](visualization-linechart.md)               | Line graph. | :::image type="icon" source="media/renderoperator/line-chart.png" border="false"::: |
-| [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.| :::image type="icon" source="media/renderoperator/pie-chart.png" border="false"::: |
+| [`piechart`](visualization-piechart.md)                 | The first column is the color-axis, and the second column is numeric.| :::image type="icon" source="media/renderoperator/pie-chart.png" border="false"::: |
 | [`scatterchart`](visualization-scatterchart.md)         | Points graph.| :::image type="icon" source="media/renderoperator/scatter-chart.png" border="false"::: |
 | [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.| :::image type="icon" source="media/renderoperator/stacked-area-chart.png" border="false"::: |
 | [`table`](visualization-table.md)                       | Default - results are shown as a table.| :::image type="icon" source="media/renderoperator/table-visualization.png" border="false"::: |
-| [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. | :::image type="icon" source="media/renderoperator/visualization-timechart.png" border="false"::: |
+| [`timechart`](visualization-timechart.md)               | Line graph. The first column is the x-axis, and must be datetime. Other (numeric) columns are y-axes. | :::image type="icon" source="media/renderoperator/visualization-timechart.png" border="false"::: |
 
 ::: moniker-end
 
@@ -131,7 +131,7 @@ three kinds of columns:
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ysplit`      |How to split the visualization into multiple y-axis values. For more information, see [`y-split` property](#ysplit-property).                             |
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
-|`anomalycolumns`|Property relevant only for `anomalychart`. Comma-delimited list of columns, which will be considered as anomaly series and displayed as points on the chart|
+|`anomalycolumns`|Property relevant only for `anomalychart`. Comma-delimited list of columns, which are considered as anomaly series and displayed as points on the chart|
 
 ::: moniker-end
 
@@ -147,8 +147,8 @@ three kinds of columns:
 
 #### `kind` property
 
-This visualization can be further elaborated by providing the `kind` property.
-The supported values of this property are:
+You can further elaborate this visualization by providing the `kind` property.
+The supported values for this property are:
 
 |*Visualization*|`kind`             |Description                        |
 |---------------|-------------------|-----------------------------------|
@@ -181,18 +181,18 @@ Some visualizations support splitting into multiple y-axis values:
 
 ## How to render continuous data
 
-Several visualizations are used for rendering sequences of values, for example, `linechart`, `timechart`, and `areachart`.
-These visualizations have the following conceptual model:
+To render sequences of values, use several visualizations, such as `linechart`, `timechart`, and `areachart`.
+These visualizations follow the conceptual model:
 
-* One column in the table represents the x-axis of the data. This column can be explicitly defined using the
-    `xcolumn` property. If not defined, the user agent picks the first column that is appropriate for the visualization.
-  * For example: in the `timechart` visualization, the user agent uses the first `datetime` column.
-  * If this column is of type `dynamic` and it holds an array, the individual values in the array will be treated as the values of the x-axis.
+* One column in the table represents the x-axis of the data. You can explicitly define this column by using the
+    `xcolumn` property. If you don't define it, the user agent picks the first column that works for the visualization.
+  * For example, in the `timechart` visualization, the user agent uses the first `datetime` column.
+  * If this column is of type `dynamic` and it holds an array, the individual values in the array are treated as the values of the x-axis.
 * One or more columns in the table represent one or more measures that vary by the x-axis.
-    These columns can be explicitly defined using the `ycolumns` property. If not defined, the user agent picks all columns that are appropriate for the visualization.
-  * For example: in the `timechart` visualization, the user agent uses all columns with a numeric value that haven't been specified otherwise.
+    You can explicitly define these columns by using the `ycolumns` property. If you don't define it, the user agent picks all columns that work for the visualization.
+  * For example, in the `timechart` visualization, the user agent uses all columns with a numeric value that you didn't specify otherwise.
   * If the x-axis is an array, the values of each y-axis should also be an array of a similar length, with each y-axis occurring in a single column.
-* Zero or more columns in the table represent a unique set of dimensions that group together the measures. These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
+* Zero or more columns in the table represent a unique set of dimensions that group together the measures. You can specify these columns by using the `series` property, or the user agent picks them automatically from the columns that are otherwise unspecified.
 ::: moniker-end
 
 ::: moniker range="microsoft-fabric || azure-data-explorer"
@@ -213,11 +213,9 @@ These visualizations have the following conceptual model:
 three kinds of columns:
 >
 > * The x axis column (indicated by the `xcolumn` property).
-> * The series columns (any number of columns indicated by the `series` property.)
-> * The y axis columns (any number of columns indicated by the `ycolumns`
-  property).
-  For each record, the series has as many measurements ("points" in the chart)
-  as there are y-axis columns.
+> * The series columns (any number of columns indicated by the `series` property).
+> * The y axis columns (any number of columns indicated by the `ycolumns` property).
+> For each record, the series has as many measurements ("points" in the chart) as there are y-axis columns.
 
 ## Example
 

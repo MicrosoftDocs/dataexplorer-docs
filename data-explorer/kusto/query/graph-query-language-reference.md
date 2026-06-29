@@ -260,6 +260,32 @@ MATCH WALK (n)-[]->(a), TRAIL (n)-[]->(b)
 RETURN n, a, b
 ```
 
+### Shortest path
+
+Finds the shortest paths between a set of source nodes and a set of target nodes.
+
+### Single shortest path
+
+Calculates single shortest path per source/target pair.
+
+```gql
+MATCH P = ANY SHORTEST (n {station:"South-West"})-[]->{1,3}(a {station: "North"}) 
+RETURN P
+```
+
+### All shortest paths
+
+Calculates all shortest paths of equal minimum length.
+
+```gql
+MATCH P = ALL SHORTEST (n {station:"South-West"})-[]->{1,3}(a {station: "North"}) 
+RETURN P
+```
+
+#### Limitations:
+
+* Shortest path match clause can't contain multiple pattern sequences
+
 ## Functions and operators reference
 
 Graph Query Language (GQL) provides a rich set of functions and operators to work with graph patterns, nodes, edges, and properties.
@@ -352,7 +378,7 @@ RETURN COUNT(*) > 0 AS HasSuspiciousActivity
 
 ### Limitations
 
-- **Query structure**: All openCypher queries must start with a `MATCH` statement.
+- **Query structure**: All GQL queries must start with a `MATCH` statement.
 
 - **Reserved keywords**: Some GQL keywords can't be used as identifiers in queries. Some reserved keywords aren't immediately obvious (for example, `DATE` is a reserved keyword). If your graph data has property names that conflict with GQL reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts.
 

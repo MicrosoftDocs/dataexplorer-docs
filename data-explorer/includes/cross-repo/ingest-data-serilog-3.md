@@ -72,7 +72,7 @@ Use the following steps to:
 
     | Variable | Description |
     |---|---|
-    | `IngestionEndPointUri` | The [ingest URI](#ingestion-uri). |
+    | `IngestionEndPointUri` | The ingest URI. |
     | `DatabaseName` | The case-sensitive name of the target database. |
     | `TableName` | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a target table and ingestion mapping](#create-a-target-table-and-ingestion-mapping). |
     | `AppId` | The Application client ID required for Microsoft Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
@@ -116,7 +116,7 @@ If you don't have your own data to test, you can use the sample log generator ap
 
     | Variable | Description |
     |---|---|
-    | `IngestionEndPointUri` | The [ingest URI](#ingestion-uri). |
+    | `IngestionEndPointUri` | The ingest URI. |
     | `DatabaseName` | The case-sensitive name of the target database. |
     | `TableName` | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a target table and ingestion mapping](#create-a-target-table-and-ingestion-mapping). |
     | `AppId` | Application client ID required for Microsoft Entra service principal authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |

@@ -3,10 +3,10 @@ title: Queued Ingestion via REST API
 description: Learn how to use the REST API to submit blobs for ingestion into Azure Data Explorer tables.
 ms.reviewer: 
 ms.topic: reference
-ms.date: 10/28/2025
+ms.date: 12/11/2025
 ---
 
-# Queued ingestion via REST API
+# Queued ingestion via REST API (Preview)
 
 The queued ingestion REST API allows you to programmatically submit one or more blobs for ingestion into a specified database and table. This method is ideal for automated workflows and external systems that need to trigger ingestion dynamically.
 
@@ -16,7 +16,6 @@ To use the REST API for queued ingestion, you need:
 
 - **Ingestor** role with **table** scope to ingest data into an existing table.
 - **Database User** role to access the target database.
-- **Storage Blob Data Reader** role on the blob storage container.
 
 For more information, see [Role-based access control](../../access-control/role-based-access-control.md).
 
@@ -50,7 +49,7 @@ Each item in the `blobs` array must follow this structure:
 
 |Field|Type|Required|Description|
 |--|--|--|--|
-|`url`|`string`|  :heavy_check_mark: | The URL of the blob to ingest. The service performs light validation on this field.|
+|`url`|`string`|  :heavy_check_mark: | The URL of the blob to ingest. The service performs light validation on this field. The URL must be accessible by the service. For non-public blobs, include authentication information as part of the URL (for example, SAS token). See [storage connection strings](../../api/connection-strings/storage-connection-strings.md) for details|
 |`sourceId`|`Guid`|No|An identifier for the source blob.|
 |`rawSize`|`integer`|No|The size of the blob before compression (nullable).|
 
@@ -84,7 +83,7 @@ Authorization: Bearer <access_token>
   "blobs": [
     {
       "url": "https://example.com/blob1.csv.gz",
-      "sourceId": "123a6999-411e-4226-a333-w79992dd9b95",
+      "sourceId": "123a6999-411e-4226-a333-a79992dd9b95",
       "rawSize": 1048576
     }
   ],

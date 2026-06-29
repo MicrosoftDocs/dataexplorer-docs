@@ -3,7 +3,7 @@ title:  Materialized views limitations
 description: This article describes materialized views limitations.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 01/29/2025
+ms.date: 06/03/2026
 ---
 
 # Materialized views limitations and known issues
@@ -23,6 +23,7 @@ ms.date: 01/29/2025
 * The source table of a materialized view can't be a table with a [restricted view access policy](../restricted-view-access-policy.md).
 * A materialized view can't be created on top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view).
 * Materialized views can't be defined over [external tables](../../query/schema-entities/external-tables.md).
+* Materialized views cannot be queried with [cursors](../../query/database-cursor.md)
 
 > [!WARNING]
 >

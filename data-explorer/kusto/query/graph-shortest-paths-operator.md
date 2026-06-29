@@ -23,7 +23,7 @@ The `graph-shortest-paths` operator finds the shortest paths between a set of so
 
 | Name | Type | Required |Description |
 |---------------|-------------|----------|-----------------------------|
-| *G* | string | :heavy_check_mark: | The graph source, typically the output from a `make-graph` operation.                                                 |
+| *G* | graph | :heavy_check_mark: | The graph source, typically the output from a `make-graph` operation.                                                 |
 | *Pattern* | string | :heavy_check_mark: | A [path pattern](#path-pattern-notation) that describes the path to find. Patterns must include at least one variable length edge and can't contain multiple sequences. |
 | *Predicate* | expression | | A boolean expression that consists of properties of named variables in the pattern and constants. |
 | *Expression* | expression | :heavy_check_mark: | A scalar expression that defines the output row for each found path, using constants and references to properties of named variables in the pattern. |

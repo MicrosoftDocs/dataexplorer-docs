@@ -1,21 +1,22 @@
 ---
-title: Integrate the Monaco Editor with Kusto Query Language support in your app
+title: Integrate the Monaco Editor With Kusto Query Language Support in Your App
 description: Learn how to integrate the Monaco Editor with Kusto query support in your app.
 ms.reviewer: izlisbon
 ms.topic: how-to
-ms.date: 08/11/2024
+ms.date: 03/15/2026
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ms.custom: sfi-ropc-nochange
 ---
+
 # Integrate the Monaco Editor with Kusto Query Language support in your app
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-You can integrate the [Monaco Editor](https://microsoft.github.io/monaco-editor) with Kusto Query Language support (*monaco-kusto*) into your app. Integrating *monaco-kusto* into your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration. It offers you full flexibility to fashion the user experience that fits your needs.
+You can integrate the [Monaco Editor](https://microsoft.github.io/monaco-editor) with Kusto Query Language support (*monaco-kusto*) into your app. By integrating *monaco-kusto* into your app, you get an editing experience that includes completion, colorization, refactoring, renaming, and go-to-definition. You need to build a solution for authentication, query execution, result display, and schema exploration. This integration gives you full flexibility to create a user experience that fits your needs.
 
-In this article, you'll learn how to add *monaco-kusto* to the Monaco Editor and integrate it into your app. The package is available on [GitHub](https://github.com/Azure/monaco-kusto) and on *npm*.
+In this article, you'll learn how to add *monaco-kusto* to the Monaco Editor and integrate it into your app. You can find the package on [GitHub](https://github.com/Azure/monaco-kusto) and on *npm*.
 
-Use the following steps to integrate *monaco-kusto* into your app using *npm*.
+Use the following steps to integrate *monaco-kusto* into your app by using *npm*.
 
 **Step 1**: [Install the *monaco-kusto* package](#install-the-monaco-kusto-package)
 
@@ -38,7 +39,7 @@ Try out the integration with our [Sample project](#sample-project)!
     ```
 
     > [!NOTE]
-    > To customize the native Monaco Editor, see [Monaco Editor GitHub repo](https://github.com/microsoft/monaco-editor).
+    > To customize the native Monaco Editor, see the [Monaco Editor GitHub repo](https://github.com/microsoft/monaco-editor).
 
 1. Install the *monaco-kusto* npm package:
 
@@ -48,11 +49,11 @@ Try out the integration with our [Sample project](#sample-project)!
 
 ## Set up your app to use the *monaco-kusto* package
 
-You can set up your app to use *monaco-kusto* using one of the following methods:
+Set up your app to use *monaco-kusto* by using one of the following methods:
 
 ### [AMD module system](#tab/amd)
 
-1. Add the following HTML to pages where the Monaco Editor is used, such as your *index.html* file. They're required due to a dependency the package has on `kusto-language-service`.
+1. Add the following HTML to pages where you use the Monaco Editor, such as your *index.html* file. These elements are required due to a dependency the package has on `kusto-language-service`.
 
     ```html
     <script src="%PUBLIC_URL%/monaco-editor/min/vs/language/kusto/bridge.min.js"></script>
@@ -61,12 +62,12 @@ You can set up your app to use *monaco-kusto* using one of the following methods
     <script src="%PUBLIC_URL%/monaco-editor/min/vs/language/kusto/Kusto.Language.Bridge.min.js"></script>
     ```
 
-1. Copy the static files from the *monaco* and *monaco-kusto* packages to the **monaco-editor** folder on your web server. Your app will need to access these static files.
+1. Copy the static files from the *monaco* and *monaco-kusto* packages to the **monaco-editor** folder on your web server. Your app needs to access these static files.
 1. Use monaco to load them. For examples, see the [samples](https://github.com/Azure/monaco-kusto/tree/master/samples).
 
 ### [ESM (webpack)](#tab/esm)
 
-The following steps describe how to set up your app to use *monaco-kusto* using webpack. The default entry point for a project is the *src/index.js* file and the default configuration file is the *src/webpack.config.js* file. The following steps assume that you're using the default webpack project setup to bundle your app.
+The following steps describe how to set up your app to use *monaco-kusto* by using webpack. The default entry point for a project is the *src/index.js* file, and the default configuration file is the *src/webpack.config.js* file. The following steps assume that you're using the default webpack project setup to bundle your app.
 
 1. In the configuration file, add the following snippets:
     1. Under **resolve.alias**, add the following aliases:
@@ -93,7 +94,7 @@ The following steps describe how to set up your app to use *monaco-kusto* using 
         { test: /kustoMonarchLanguageDefinition/, loader: 'imports-loader?Kusto' },
         ```
 
-    1. Under **entry**, add the following entry point. Make a note the worker path returned, you'll need it later.
+    1. Under **entry**, add the following entry point. Make a note of the worker path returned, you need it later.
 
         ```javascript
         `@kusto/monaco-kusto/release/esm/kusto.worker.js`
@@ -138,7 +139,7 @@ The following steps describe how to set up your app to use *monaco-kusto* using 
 
 ## Add your database schema to the editor
 
-The *monaco-kusto* package provides a way to add your database schema to the editor. The schema enables the editor to provide auto-complete suggestions and other features.
+The *monaco-kusto* package provides a way to add your database schema to the editor. By adding the schema, the editor can offer auto-complete suggestions and other helpful features.
 
 Use the following structure to define the schema:
 
@@ -162,7 +163,7 @@ export function setSchema(editor) {
 }
 ```
 
-You can get your database schema using one of the following methods:
+You can get your database schema by using one of the following methods:
 
 ### [From your query environment](#tab/show)
 
@@ -237,7 +238,7 @@ Run the following commands from the root of the cloned repo:
     npm install
     ```
 
-1. Verify the project is working. If successful, the *index.html* will open.
+1. Verify the project is working. If successful, the *index.html* opens.
 
     ```bash
     npm run watch

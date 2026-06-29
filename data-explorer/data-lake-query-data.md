@@ -1,10 +1,11 @@
 ---
-title: Query data in Azure Data Lake using Azure Data Explorer
+title: Query Data in Azure Data Lake Using Azure Data Explorer
 description: Learn how to query data in Azure Data Lake using Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 06/10/2025
+ms.date: 04/12/2026
 ---
+
 # Query data in Azure Data Lake using Azure Data Explorer
 
 Azure Data Lake Storage is a highly scalable and cost-effective data lake solution for big data analytics. It combines the power of a high-performance file system with massive scale and economy to help you reduce your time to insight. Data Lake Storage Gen2 extends Azure Blob Storage capabilities and is optimized for analytics workloads.
@@ -49,7 +50,7 @@ dataformat=csv
 
 The external table is now visible in the left pane of the Azure Data Explorer web UI:
 
-:::image type="content" source="media/data-lake-query-data/external-tables-web-ui.png" alt-text="Screenshot that shows external table in Azure Data Explorer web UI.":::
+:::image type="content" source="media/data-lake-query-data/external-tables.png" alt-text="Screenshot that shows external table in Azure Data Explorer web UI.":::
 
 ## External table permissions
 
@@ -200,9 +201,7 @@ dataformat=csv
 )
 ```
 
-You can find the created **TaxiRides** table by looking at the left pane of the Azure Data Explorer web UI:
-
-:::image type="content" source="media/data-lake-query-data/taxirides-external-table.png" alt-text=" Screenshot showing the Taxi rides external table.":::
+You can find the created **TaxiRides** table by looking at the left pane of the Azure Data Explorer web UI.
 
 ### Query *TaxiRides* external table data
 
