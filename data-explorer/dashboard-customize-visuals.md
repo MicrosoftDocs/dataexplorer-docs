@@ -1,14 +1,14 @@
 ---
 title: Customize Azure Data Explorer Dashboard Visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
-ms.reviewer: gabil
+ms.reviewer: mibar
 ms.topic: how-to
-ms.date: 02/22/2026
+ms.date: 05/31/2026
 ---
 
 # Customize Azure Data Explorer dashboard visuals
 
-Azure Data Explorer dashboards are a collection of tiles that feature a visual representation supported by an underlying Kusto Query Language (KQL) query. This article explains how to edit the visualizations and queries of a dashboard tile and provides an overview of customization properties specific to each visualization type.
+Azure Data Explorer dashboards are a collection of tiles that feature a visual representation supported by an underlying Kusto Query Language (KQL) query. This article explains how to edit the visualizations and queries of a dashboard tile. It also provides an overview of customization properties specific to each visualization type.
 
 All visualizations that you create in the context of the [render operator](/kusto/query/render-operator?view=azure-data-explorer&preserve-view=true#visualization) are available in dashboard visualizations. Along with these visualizations, you can use some [dashboard-specific visuals](dashboard-visuals.md).
 
@@ -67,6 +67,66 @@ To configure data series colors:
 :::image type="content" source="media/dashboard-customize-visuals/data-color-series.png" alt-text="Screenshot of dashboard showing data series colors configuration in the visuals side pane." lightbox="media/dashboard-customize-visuals/data-color-series.png":::
 
 When you assign colors intentionally, viewers can interpret visuals at a glance without needing to read legends or labels. Consider using colors that align with your organization's standards or that naturally convey the meaning of each series, such as red for critical states or green for healthy metrics.
+
+## Time series visual (Preview)
+
+Use the Time series visual to display time-based data across multiple measures and categories. It plots numeric values over time, making it easier to identify trends, patterns, and anomalies.
+
+### Create a Time series visual
+
+> [!IMPORTANT]
+> Ensure your data includes a timestamp column and at least one numeric value column to visualize trends over time.
+
+To create and configure a Time series visual in your Azure Data Explorer dashboard:
+
+1. In the top menu, select **Viewing** and toggle to **Editing** mode.
+
+1. Select the **Edit** icon on the visual you want to customize.
+
+1. In the **Visual formatting** pane, open **Visual type** and select **Time series**.
+
+    :::image type="content" source="media/dashboard-customize-visuals/visual-type-list.png" alt-text="Screenshot of the Visualization pane showing the Time series option." lightbox="media/dashboard-customize-visuals/visual-type-list.png":::
+
+1. In the **Data** section, configure the following properties:
+
+    * **Time column (X-axis)**: Select the timestamp column that represents time intervals on the horizontal axis.
+
+    * **Measured data (Y-axis)**: Select one or more numeric fields to plot over time on the vertical axis.
+
+    * **Entities and Measures** (optional): Select categorical fields to group your data into multiple series.
+
+    :::image type="content" source="media/dashboard-customize-visuals/data-configuration.png" alt-text="Screenshot of the time series configuration pane." lightbox="media/dashboard-customize-visuals/data-configuration.png":::
+
+1. Customize your chart further by configuring properties such as:
+    * **Y-axis scaling:**
+        * Global (shared scale across charts)
+        * Separate (independent scales per chart)
+        * Adaptive (reduces the impact of outliers)
+
+    * **Colors:** Assign colors from a palette or per series.
+
+    * **Axis scale:** Switch between linear and logarithmic scale for different data distributions.
+
+    * **Zoom behavior:** Enable pan and zoom for interactive exploration.
+
+1. Select **Done** to save your settings and return to the dashboard.
+
+1. In the visual on the dashboard, you can interact with the Time series visual to explore your data:
+    * Use the **Entities and Measures** panel to control which data appears:
+        * Search for a specific series by name.
+        * Expand or collapse groups in the entity hierarchy.
+        * Select or clear checkboxes to show or hide series.
+        * Reorder series to control display and legend order.
+
+        This selection doesn't modify the underlying query.
+
+    * Adjust the time range using the timeline controls:
+       * Drag the time slider to zoom in or out on specific intervals.
+       * Enter start and end times to define a precise range.
+
+       When multiple measures are displayed, all charts remain synchronized to the selected time range.
+
+        :::image type="content" source="media/dashboard-customize-visuals/timeline.png" alt-text="Screenshot of the timeline controls in a Time series chart." lightbox="media/dashboard-customize-visuals/timeline.png":::
 
 ## Embed images
 
