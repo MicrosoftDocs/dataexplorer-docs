@@ -1,9 +1,9 @@
 ---
 title: Request rate limits enforcement policy
 description: Learn how to use the request rate limits enforcement policy to enforce request rate limits.
-ms.reviewer: yonil
+ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 01/02/2025
+ms.date: 07/01/2026
 ---
 # Request rate limits enforcement policy
 
