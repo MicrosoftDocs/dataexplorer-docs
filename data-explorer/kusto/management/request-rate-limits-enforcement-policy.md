@@ -31,11 +31,13 @@ Request rate limits can be enforced at one of the following levels:
 * `Database`:
   * Rate limits are enforced by the database admin node that manages the database the request was sent to.
   * If there are multiple database admin nodes, the configured rate limit is effectively multiplied by the number of database admin nodes.
+  * This multiplication applies to all [request rate limit policies](./request-rate-limit-policy.md).
 * `QueryHead`:
   * Rate limits for *queries* are enforced by the query head node that the query was routed to.
   * This option affects queries that are sent with either strong or weak [query consistency](../concepts/query-consistency.md).
     * Strongly consistent queries run on the database admin node, and the configured rate limit is effectively multiplied by the number of database admin nodes.
     * For weakly consistent queries, the configured rate limit is effectively multiplied by the number of query head nodes.
+  * The multiplication applies to all [request rate limit policies](./request-rate-limit-policy.md).
   * This option doesn't apply to *management commands*.
 
 > [!NOTE]
@@ -49,11 +51,13 @@ Request rate limits can be enforced at one of the following levels:
 * `Database`:
   * Rate limits are enforced by the database admin node that manages the database the request was sent to.
   * If there are multiple database admin nodes, the configured rate limit is effectively multiplied by the number of database admin nodes.
+  * This multiplication applies to all [request rate limit policies](./request-rate-limit-policy.md).
 * `QueryHead`:
   * Rate limits for *queries* are enforced by the query head node that the query was routed to.
   * This option affects queries that are sent with either strong or weak [query consistency](../concepts/query-consistency.md).
     * Strongly consistent queries run on the database admin node, and the configured rate limit is effectively multiplied by the number of database admin nodes.
     * For weakly consistent queries, the configured rate limit is effectively multiplied by the number of query head nodes.
+  * The multiplication applies to all [request rate limit policies](./request-rate-limit-policy.md).
   * This option doesn't apply to *management commands*.
 
 > [!NOTE]
@@ -96,6 +100,7 @@ Request rate limits can be enforced at one of the following levels:
 The effective rate limits for the `default` workload group are:
 
 :::moniker range="azure-data-explorer"
+
 * The maximum number of concurrent *cluster-scoped management commands* is `200`.
 * The maximum number of concurrent *database-scoped management commands* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
 * The maximum number of concurrent *strongly consistent queries* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
