@@ -100,7 +100,6 @@ Request rate limits can be enforced at one of the following levels:
 The effective rate limits for the `default` workload group are:
 
 :::moniker range="azure-data-explorer"
-
 * The maximum number of concurrent *cluster-scoped management commands* is `200`.
 * The maximum number of concurrent *database-scoped management commands* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
 * The maximum number of concurrent *strongly consistent queries* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
