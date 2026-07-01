@@ -1,16 +1,16 @@
 ---
 title:  Create and alter Azure Storage external tables
 description: This article describes how to create and alter external tables based on Azure Blob Storage or Azure Data Lake
-ms.reviewer: orspodek
+ms.reviewer: orspodek, natinimn
 ms.topic: reference
-ms.date: 07/30/2025
+ms.date: 07/01/2026
 ---
 
 # Create and alter Azure Storage external tables
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The commands in this article can be used to create or alter an Azure Storage [external table](../query/schema-entities/external-tables.md) in the database from which the command is executed. An Azure Storage external table references data located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
+The commands in this article can be used to create or alter an Azure Storage [external table](../query/schema-entities/external-tables.md) in the database from which the command is executed. An Azure Storage external table references data located in Azure Blob Storage, Azure Data Lake Store Gen1, Azure Data Lake Store Gen2, or OneLake (Microsoft Fabric).
 
 > [!NOTE]
 > If the table exists, the `.create` command fails with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
@@ -41,7 +41,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 |*Partitions*| `string` || A comma-separated list of columns by which the external table is partitioned. Partition column can exist in the data file itself, or as part of the file path. See [partitions formatting](#partitions-formatting) to learn how this value should look.|
 |*PathFormat*| `string` ||An external data folder URI path format to use with partitions. See [path format](#path-format).|
 |*DataFormat*| `string` | :heavy_check_mark:|The data format, which can be any of the [ingestion formats](../ingestion-supported-formats.md). We recommend using the `Parquet` format for external tables to improve query and export performance, unless you use `JSON` paths mapping. When using an external table for [export scenario](data-export/export-data-to-an-external-table.md), you're limited to the following formats: `CSV`, `TSV`, `JSON`, and `Parquet`.|
-|*StorageConnectionString*| `string` | :heavy_check_mark:|One or more comma-separated paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 file systems or Azure Data Lake Gen 1 containers, including credentials. The provided connection string determines the external table storage type. See [storage connection strings](../api/connection-strings/storage-connection-strings.md).|
+|*StorageConnectionString*| `string` | :heavy_check_mark:|One or more comma-separated paths to Azure Blob Storage blob containers, Azure Data Lake Gen 2 file systems, Azure Data Lake Gen 1 containers, or OneLake (Microsoft Fabric) paths, including credentials. The provided connection string determines the external table storage type. See [storage connection strings](../api/connection-strings/storage-connection-strings.md).|
 |*Property*| `string` ||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
 
 > [!NOTE]

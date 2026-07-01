@@ -1,9 +1,9 @@
 ---
 title:  Storage connection strings
 description: This article describes storage connection strings.
-ms.reviewer: shanisolomon
+ms.reviewer: shanisolomon, natinimn
 ms.topic: reference
-ms.date: 11/19/2024
+ms.date: 07/01/2026
 ---
 # Storage connection strings
 
@@ -16,6 +16,7 @@ The following types of external storage services are supported:
 * Azure Blob Storage (block blobs for read/write, append blobs for read)
 * Azure Data Lake Storage Gen2
 * Azure Data Lake Storage Gen1
+* OneLake (Microsoft Fabric)
 * Amazon S3
 
 Each type of storage has corresponding connection string formats used to describe the storage resources and how to access them.
@@ -34,8 +35,13 @@ Each storage type has a different connection string format. See the following ta
 | Azure Data Lake Storage Gen2 | `https://` | `https://`*StorageAccountName*`.dfs.core.windows.net/`*Filesystem*[`/`*PathToDirectoryOrFile*][*CallerCredentials*] |
 | Azure Data Lake Storage Gen2 | `abfss://` | `abfss://`*Filesystem*`@`*StorageAccountName*`.dfs.core.windows.net/`[*PathToDirectoryOrFile*][*CallerCredentials*] |
 | Azure Data Lake Storage Gen1 | `adl://` | `adl://`*StorageAccountName*.azuredatalakestore.net/*PathToDirectoryOrFile*[*CallerCredentials*] |
+| OneLake (Microsoft Fabric) - ADLS Gen2 Endpoint | `https://` | `https://onelake.dfs.fabric.microsoft.com/`*Workspace*`/`*Item*[`/`*PathToDirectoryOrFile*][*CallerCredentials*] |
+| OneLake (Microsoft Fabric) - ADLS Gen2 Endpoint | `abfss://` | `abfss://`*Workspace*`@onelake.dfs.fabric.microsoft.com/`*Item*[`/`*PathToDirectoryOrFile*][*CallerCredentials*] |
+| OneLake (Microsoft Fabric) - Blob Endpoint | `https://` | `https://onelake.blob.fabric.microsoft.com/`*Workspace*`/`*Item*[`/`*PathToDirectoryOrFile*][*CallerCredentials*] |
 | Amazon S3 | `https://` | `https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com/`*ObjectKey*[*CallerCredentials*] |
 | HTTP web services | `https://` | `https://`*Hostname*`/`*PathAndQuery* |
+
+For OneLake, *Workspace* is the Microsoft Fabric workspace name or GUID, and *Item* is the item name with its type suffix (for example, `MyLakehouse.Lakehouse`) or the item GUID. When you use GUIDs, specify them for both the workspace and the item and omit the type suffix, for example `https://onelake.dfs.fabric.microsoft.com/<WorkspaceGuid>/<ItemGuid>/Files/data`.
 
 > [!NOTE]
 > To prevent secrets from showing up in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
@@ -60,15 +66,15 @@ The following authentication methods are supported:
 
 The following table summarizes the available authentication methods for different external storage types.
 
-| Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | Available in Amazon S3? | When should you use this method? |
-|--|--|--|--|--|--|
-| [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use for attended flows when you need complex access control over the external storage. For example, in continuous export flows. You can also restrict storage access at the user level. |
-| [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use in unattended flows, where no Microsoft Entra principal can be derived to execute queries and commands. Managed identities are the only authentication solution. |
-| [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | SAS tokens have an expiration time. Use when accessing storage for a limited time. |
-| [Microsoft Entra access token](#azure-ad-access-token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Microsoft Entra tokens have an expiration time. Use when accessing storage for a limited time. |
-| [Storage account access key](#storage-account-access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | When you need to access resources on an ongoing basis. |
-| [Amazon Web Services Programmatic Access Keys](#amazon-web-services-programmatic-access-keys) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources on an ongoing basis. |
-| [Amazon Web Services S3 presigned URL](#amazon-web-services-s3-presigned-url) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources with a temp presigned URL. |
+| Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | Available in OneLake? | Available in Amazon S3? | When should you use this method? |
+|--|--|--|--|--|--|--|
+| [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use for attended flows when you need complex access control over the external storage. For example, in continuous export flows. You can also restrict storage access at the user level. |
+| [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use in unattended flows, where no Microsoft Entra principal can be derived to execute queries and commands. Managed identities are the only authentication solution. |
+| [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x: | SAS tokens have an expiration time. Use when accessing storage for a limited time. |
+| [Microsoft Entra access token](#azure-ad-access-token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Microsoft Entra tokens have an expiration time. Use when accessing storage for a limited time. |
+| [Storage account access key](#storage-account-access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x: | When you need to access resources on an ongoing basis. |
+| [Amazon Web Services Programmatic Access Keys](#amazon-web-services-programmatic-access-keys) | :x: | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources on an ongoing basis. |
+| [Amazon Web Services S3 presigned URL](#amazon-web-services-s3-presigned-url) | :x: | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources with a temp presigned URL. |
 
 ### Impersonation
 
