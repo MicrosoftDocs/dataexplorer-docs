@@ -1,9 +1,9 @@
 ---
 title: Request rate limit policy
 description: Learn how to use the request rate limit policy to limit the number of concurrent requests classified into a workload group.
-ms.reviewer: yonil
+ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 01/02/2025
+ms.date: 07/01/2026
 ---
 # Request rate limit policy
 
