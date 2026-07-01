@@ -11,6 +11,9 @@ ms.date: 01/02/2025
 
 The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group, per workload group or per principal.
 
+> [!WARNING]
+> Setting request rate limits too high may allow excessive resource consumption, potentially impacting cluster stability and performance for all users. If you're unsure about the appropriate values, consult with the support team.
+
 Rate limits are enforced at the level defined by the workload group's [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md).
 
 ## The policy object
