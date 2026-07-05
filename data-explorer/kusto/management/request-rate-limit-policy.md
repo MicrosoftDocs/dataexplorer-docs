@@ -1,9 +1,9 @@
 ---
 title: Request rate limit policy
 description: Learn how to use the request rate limit policy to limit the number of concurrent requests classified into a workload group.
-ms.reviewer: yonil
+ms.reviewer: yabenyaa
 ms.topic: reference
-ms.date: 01/02/2025
+ms.date: 07/01/2026
 ---
 # Request rate limit policy
 
@@ -34,7 +34,8 @@ A request rate limit of kind `ConcurrentRequests` includes the following propert
 
 > [!NOTE]
 >
-> * If a workload group doesn't have a specified limit on the maximum concurrent requests, it's subject to the default maximum value of `10000`.
+> * The `default` workload group includes a pre-configured `ConcurrentRequests` limit of `Cores-Per-Node x 10`. See [The `default` workload group](#the-default-workload-group).
+> * If a workload group doesn't have a specified limit on the maximum concurrent requests, it's subject to the default value of `10000`.
 
 When a request exceeds the limit on maximum number of concurrent requests:
 
