@@ -14,7 +14,7 @@ You can install the Azure Data Explorer Kusto emulator in the following ways:
 - **On your own device**: Consider using this option if you need to provision a local development environment
 - **On a CI/CD agent virtual machine (VM)**: Use this option if you require a CI/CD pipeline for running automated tests
 
-The emulator is available as a *Linux* Docker container image.
+The emulator is available as a *Linux* [OCI](https://opencontainers.org/) container image. It runs on any OCI-compatible container engine, such as Docker or Podman.
 
 In this article, you learn how to:
 
@@ -24,7 +24,7 @@ In this article, you learn how to:
 - [Ingest data](#ingest-data)
 - [Query data](#query-data)
 
-This article focuses on how to install the Linux Docker container on a Windows client.
+This article focuses on how to install the Linux container on a Windows client using Docker.
 
 ## Prerequisites
 
@@ -32,10 +32,10 @@ This article focuses on how to install the Linux Docker container on a Windows c
     - Windows Server 2022
     - Windows Server 2019 Version 10.0.17763.2928 or newer
     - Windows 11
-    - Any Linux distribution that supports Docker Client for Linux
+    - Any Linux distribution that supports an OCI container engine
 - A processor that supports SSE4.2/AVX2 instruction sets
 - At least 2 GB of RAM (4 GB or more recommended)
-- [Docker Client for Linux](https://docs.docker.com/desktop/install/linux-install/) or [Docker Client for Windows](https://docs.docker.com/desktop/windows/install/)
+- An OCI-compatible container engine, such as [Docker](https://docs.docker.com/get-docker/) or [Podman](https://podman.io/docs/installation)
 
 > [!IMPORTANT]
 > Linux distros only support Linux container images.
@@ -45,6 +45,9 @@ This article focuses on how to install the Linux Docker container on a Windows c
 
 The following steps are for using a shell to start the emulator using the [Kusto emulator container image](https://aka.ms/adx.emulator.image). For other options, see [Run emulator options](#run-emulator-options).
 
+> [!NOTE]
+> These steps use the `docker` command. The emulator is a standard OCI image, so you can run the same commands with another OCI engine such as Podman by replacing `docker` with `podman` (for example, `podman run` or `podman ps`).
+
 1. Run the following command to start the emulator.
 
     > [!IMPORTANT]
@@ -52,7 +55,7 @@ The following steps are for using a shell to start the emulator using the [Kusto
 
     > [!NOTE]
     >
-    > - The first time this command is run, Docker pulls the container image which is several GBs in size and might take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
+    > - The first time this command is run, the container engine pulls the container image which is several GBs in size and might take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
 
 1. To start the Linux container, make sure you use the `latest` or `stable` tag:
 
