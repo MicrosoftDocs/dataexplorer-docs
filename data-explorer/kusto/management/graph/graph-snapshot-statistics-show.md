@@ -11,7 +11,7 @@ ms.date: 02/02/2026
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 > [!NOTE]
-> This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
+> This feature is currently in preview. Functionality and syntax are subject to change before General Availability.
 
 Displays detailed statistics for a specific graph snapshot, including performance metrics, resource utilization, and processing details.
 
@@ -22,8 +22,6 @@ You must have at least [Database User, Database Viewer, or Database Monitor](../
 ## Syntax
 
 `.show` `graph_snapshot` *GraphModelName*`.`*SnapshotName* `statistics`
-
-[Learn more about syntax conventions](../../query/syntax-conventions.md).
 
 ## Parameters
 
@@ -124,7 +122,7 @@ The `Details` column contains a JSON object with information about the processin
 - Statistics include both processing metrics and final graph structure information
 - The `Details` column provides a step-by-step breakdown of the snapshot creation process
 - The command fails if the specified graph model doesn't exist
-- Only completed steps are shown. If a retry occurs, failed steps are not displayed
+- Only completed steps are shown. If a retry occurs, failed steps aren't displayed
 
 ## Related commands
 
