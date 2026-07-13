@@ -3,14 +3,14 @@ title:  Create and alter Azure Storage delta external tables
 description: This article describes how to create and alter delta external tables
 ms.reviewer: igborodi
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 07/13/2026
 ms.custom: sfi-ropc-nochange
 ---
 # Create and alter delta external tables on Azure Storage
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The commands in this article can be used to create or alter a delta [external table](../query/schema-entities/external-tables.md) in the database from which the command is executed. A delta external table references Delta Lake table data located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
+The commands in this article can be used to create or alter a delta [external table](../query/schema-entities/external-tables.md) in the database from which the command is executed. A delta external table references Delta Lake table data located in Azure Blob Storage or Azure Data Lake Storage Gen2.
 
 > [!NOTE]
 > If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
@@ -35,7 +35,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 |--|--|--|--|
 |*TableName*| `string` | :heavy_check_mark:|An external table name that adheres to the [entity names](../query/schema-entities/entity-names.md) rules. An external table can't have the same name as a regular table in the same database.|
 |*Schema*| `string` ||The optional external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.  If not specified, it will be automatically inferred from the delta log based on the latest delta table version.|
-|*StorageConnectionString*| `string` | :heavy_check_mark:|delta table root folder path, including credentials. Can point to Azure Blob Storage blob container, Azure Data Lake Gen 2 file system or Azure Data Lake Gen 1 container. The external table storage type is determined by the provided connection string. See [storage connection strings](../api/connection-strings/storage-connection-strings.md).|
+|*StorageConnectionString*| `string` | :heavy_check_mark:|delta table root folder path, including credentials. Can point to an Azure Blob Storage blob container or an Azure Data Lake Storage Gen2 file system. The external table storage type is determined by the provided connection string. See [storage connection strings](../api/connection-strings/storage-connection-strings.md).|
 |*Property*| `string` ||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
 
 > [!NOTE]
