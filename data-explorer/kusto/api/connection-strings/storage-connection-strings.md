@@ -3,7 +3,7 @@ title:  Storage connection strings
 description: This article describes storage connection strings.
 ms.reviewer: shanisolomon, natinimn
 ms.topic: reference
-ms.date: 07/01/2026
+ms.date: 07/13/2026
 ---
 # Storage connection strings
 
@@ -42,6 +42,9 @@ Each storage type has a different connection string format. See the following ta
 | HTTP web services | `https://` | `https://`*Hostname*`/`*PathAndQuery* |
 
 For OneLake, *Workspace* is the Microsoft Fabric workspace name or GUID, and *Item* is the item name with its type suffix (for example, `MyLakehouse.Lakehouse`) or the item GUID. When you use GUIDs, specify them for both the workspace and the item and omit the type suffix, for example `https://onelake.dfs.fabric.microsoft.com/<WorkspaceGuid>/<ItemGuid>/Files/data`.
+
+> [!IMPORTANT]
+> The Azure Data Lake Storage Gen1 (`adl://`) scheme isn't supported by the [externaldata operator](../../query/externaldata-operator.md) or by `.create`/`.alter`/`.create-or-alter` of [Azure Storage external tables](../../management/external-tables-azure-storage.md) (including [delta external tables](../../management/external-tables-delta-lake.md)). For those scenarios, use Azure Blob Storage or Azure Data Lake Storage Gen2 connection strings.
 
 > [!NOTE]
 > To prevent secrets from showing up in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
