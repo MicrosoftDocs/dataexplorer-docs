@@ -3,7 +3,7 @@ title:  externaldata operator
 description: Learn how to use the externaldata operator to return a data table of the given schema whose data was parsed from the specified storage artifact.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/27/2025
+ms.date: 07/13/2026
 ms.custom: sfi-ropc-nochange
 ---
 # externaldata operator

@@ -3,7 +3,7 @@ title: How to authenticate using managed identities with external tables in Azur
 description: Learn how to use managed identities with external tables in Azure Data Explorer cluster.
 ms.reviewer: itsagui
 ms.topic: how-to
-ms.date: 04/20/2023
+ms.date: 07/13/2026
 ms.custom: sfi-ropc-nochange
 ---
 
