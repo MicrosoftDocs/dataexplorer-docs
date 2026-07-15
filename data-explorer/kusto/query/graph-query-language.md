@@ -1,171 +1,104 @@
 ---
-title: GQL Graph Query Language (preview)
-description: This article describes Graph Query Language (GQL)
-ms.reviewer: herauch
+title: GQL
+description: This article describes GQL (Graph Query Language)
+ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 08/24/2025
+ms.date: 07/09/2026
 ---
-# Graph Query Language (GQL) (preview)
+
+# GQL (Graph Query Language)
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Graph Query Language (GQL) lets you use standardized graph pattern matching. GQL follows the [ISO GQL standard](https://www.iso.org/obp/ui/en/#iso:std:iso-iec:39075:ed-1:v1:en) for graph database queries.
-
-> [!NOTE]
-> GQL support is in preview. Features and syntax can change based on feedback and ongoing development.
-
-## Introduction
-
-Graph Query Language (GQL) is an emerging ISO standard for querying graph databases. GQL lets you use SQL-like syntax for graph pattern matching, so it's easier to analyze relationships in your data. This article explains how to use GQL, its benefits, and key features.
-
-GQL provides standardized graph pattern matching capabilities for analyzing relationships in your data using the ISO standard syntax.
+GQL (Graph Query Language) is an emerging ISO standard for querying graph databases that uses standardized graph pattern matching. It follows the [ISO GQL standard](https://www.iso.org/obp/ui/en/#iso:std:iso-iec:39075:ed-1:v1:en).
 
 ## Getting started
 
-To use GQL, you need:
+To use GQL, you need a graph data source that is either a [persistent graph](..\management\graph\graph-persistent-overview.md) (recommended for production scenarios) or a function that returns a transient graph (ending with a [make-graph](make-graph-operator.md) operator).
 
-- A graph data source that's either a [graph model](graph-operators.md) or a function returning a transient graph ending with a [make-graph](make-graph-operator.md) operator (see step 1).
-- Set specific client request properties (see step 2).
+## Prerequisites
 
-### Step 1: Create a graph reference
+Create a graph and set a graph reference for querying. Follow the steps described [here](run-graph-query-with-graph-reference.md).
 
-Before you use GQL, create a graph data source. This article uses an in-memory make-graph operator, but we recommend using a graph snapshot for production scenarios.
+## Query example
+
+A typical GQL query starts with a `MATCH` pattern, optionally filters and aggregates the matched rows, and can chain more processing stages with `NEXT`. The following query uses the movies graph to find actors whose name starts with `T` or with `K` who appeared in more than one movie released in 1990 or later, ordered from the most movies to the fewest:
 
 <!-- csl -->
 ```gql
-.create-or-alter function G_doc() {
-    let nodes = datatable(id:string, lbl:string, name:string, properties:dynamic)
-    [
-        "p1","Person","Alice",dynamic({"age": 25}),
-        "p2","Person","Bob",dynamic({"age": 30}),
-        "p3","Person","Carol",dynamic({"age": 28}),
-        "p4","Person","David",dynamic({"age": 35}),
-        "p5","Person","Emma",dynamic({"age": 26}),
-        "c1","Company","TechCorp",,
-        "c2","Company","DataSoft",,
-        "c3","Company","CloudInc",,
-        "ct1","City","Seattle",,
-        "ct2","City","Portland",,
-        "ct3","City","San Francisco",
-    ];
-    let edges = datatable(source:string, target:string, lbl:string, since:int)
-    [
-        "p1","c1","works_at",2020,
-        "p2","c1","works_at",2022,
-        "p3","c2","works_at",2023,
-        "p4","c3","works_at",2021,
-        "p5","c1","works_at",2024,
-        "p1","ct1","located_at",2019,
-        "p2","ct1","located_at",2021,
-        "p3","ct2","located_at",2022,
-        "p4","ct3","located_at",2020,
-        "p5","ct2","located_at",2023,
-        "c1","ct1","located_at",2015,
-        "c2","ct2","located_at",2018,
-        "c3","ct3","located_at",2017,
-        "p1","p2","knows",2019,
-        "p2","p3","knows",2021,
-        "p3","p4","knows",2022,
-        "p4","p5","knows",2023,
-        "p1","p4","likes",2020,
-        "p4","p1","likes",2020,
-        "p5","p2","likes",2022
-    ];
-    edges
-    | make-graph source --> target with nodes on id
-}
+MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
+WHERE m.Year >= 1990 AND (p.Name STARTS WITH 'T' OR p.Name STARTS WITH 'K')
+RETURN p.Name AS actor, COUNT(m) AS movieCount
+NEXT
+FILTER movieCount > 1
+RETURN actor, movieCount
+ORDER BY movieCount DESC
+LIMIT 1
 ```
 
-### Step 2: Configure client request properties
+| actor | movieCount |
+|---|---|
+| Actor1 | 3 |
 
-::: moniker range="azure-data-explorer"
-To run GQL queries, set three client request properties. Set these properties through the SDK, API, or directly in the [Kusto Explorer](../tools/kusto-explorer.md) or [Azure Data Explorer web  UI](/azure/data-explorer/web-ui-query-overview) by using directives.
-::: moniker-end
-::: moniker range="microsoft-fabric"
-To run GQL queries, set three client request properties. Set these properties through the SDK, API, or directly in the [Kusto Explorer](../tools/kusto-explorer.md) or [KQL queryset](/fabric/real-time-intelligence/kusto-query-set) by using directives.
-::: moniker-end
+Reading the query clause by clause:
 
-#### Set client request properties
+- `MATCH (p:Person)-[:ACTED_IN]->(m:Movie)` describes the pattern to find: a node with the `Person` label bound to the variable `p`, connected by an edge with the `ACTED_IN` label, to a node with the `Movie` label bound to the variable `m`. Labels (`:Person`, `:ACTED_IN`, `:Movie`) restrict which entities match, and the variables (`p`, `m`) let you refer to the matched entities in later clauses. The arrow `->` sets the direction, from actor to movie. Every query must begin with `MATCH`.
+- `WHERE` m.Year >= 1990 AND (p.Name STARTS WITH 'T' OR p.Name STARTS WITH 'K') filters the matched rows by a predicate before they're returned, here keeping only movies released in 1990 or later whose actor's name starts with `T` or `K`. `STARTS WITH` is a string predicate; you can also match the end of a value with `ENDS WITH`, or find a substring anywhere in the value with `CONTAINS`.
+- `RETURN p.Name AS actor, COUNT(m) AS movieCount` projects the output columns and renames them with `AS`. It includes an aggregation, `COUNT(m)`, which groups by the other returned column (`p.Name`) and produces one row per actor with the number of matching movies.
+- `NEXT` pipes the result of the preceding segment into a new query segment, so you can keep processing the rows you just produced, including the `movieCount` aggregate.
+- `FILTER movieCount > 1` keeps only the rows that satisfy a predicate. `FILTER` is the same as `WHERE` but acts as a standalone statement while `WHERE` comes with `MATCH`. `WHERE` is more performant as it allows to eliminate redundant data earlier in the query.
+- `RETURN actor, movieCount` projects the final columns, and `ORDER BY movieCount DESC` sorts the result from the highest movie count to the lowest.
+- `LIMIT 1` caps the result at the first row after sorting.
 
-> [!IMPORTANT]
-> Run each directive separately before you run your GQL query. The directives set up the query environment for GQL execution.
-
-<!-- csl -->
-```kql
-#crp query_language=gql
-```
-
-<!-- csl -->
-```kql
-#crp query_graph_reference=G_doc()
-```
-
-To use labels in GQL, set the label column name:
-
-<!-- csl -->
-```kql
-#crp query_graph_label_name=lbl
-```
+Each clause is optional except `MATCH`. Omit the aggregation, `NEXT`, `FILTER`, and `LIMIT` for simple lookups, and combine them when you need to aggregate and then filter on the aggregated values.
 
 > [!TIP]
-> Labels are optional in GQL, but they're often used to filter nodes and edges by type. Set the label column name to use labels in your GQL queries.
+> For better performance, use as few `MATCH` clauses as possible, ideally one per query. A single `MATCH` clause can still be as complex as needed: the pattern can be nontrivial and can include connected components, variable-length edges, and more.
 
-#### Set client request properties in programmatically
+> [!TIP]
+> Whenever a condition can be expressed against the matched pattern, prefer `WHERE` over a standalone `FILTER`. `WHERE` is coupled to `MATCH` and is evaluated as part of pattern matching, so the whole query runs more efficiently. Use `FILTER` only when you need to filter on values produced by a later stage, such as after `NEXT` or an aggregation.
 
-For programmatic access, set these client request properties:
+> [!TIP]
+> Use `RETURN COUNT(*)` for existence checks. If you only need to check whether a pattern exists, return `COUNT(*)` instead of returning the full results.
 
-- `query_language`: Set to `"gql"`.
-- `query_graph_reference`: Set to your graph function name (for example, `"G_doc()"`).
-- `query_graph_label_name`: Set to your label column name (for example, `"lbl"`).
+For the official International Standard for GQL, see [ISO/IEC 39075 Information Technology - Database Languages - GQL](https://www.iso.org/standard/76120.html).
 
-### Step 3: Run GQL queries
+## GQL guide
+For the GQL guide and supported features, see the [GQL guide](graph-query-language-guide.md). For all supported clauses see [GQL clauses](graph-query-language-clauses.md) and for functions, operators and predicates see [GQL scalar functions](graph-query-language-functions.md).
 
-After you finish setup, run GQL queries using standard GQL syntax. Use the examples below to explore basic and advanced GQL features.
+## Limitations
 
-## Examples
+- **Query structure**: All queries must start with a `MATCH` statement.
 
-Find basic examples for pattern matching and labels here. For more complex examples, see [GQL query patterns, examples, and common scenarios](graph-query-language-use-cases.md). For reference documentation including fundamentals and function details, see [Graph Query Language (GQL) reference](graph-query-language-reference.md).
+- **No graph modification operations**: Operations to change graph structures (such as `CREATE`/`DROP`/`ALTER` GRAPH, `INSERT`/`SET`/`REMOVE`/`DELETE`) and transactions (START `TRANSACTION`/`COMMIT`/`ROLLBACK`) are not supported. Use KQL for all graph creation, modification, and management tasks.
 
-### Example GQL query for basic pattern matching
-<!-- csl -->
-```gql
-MATCH (n)-[e]->(n2)
-RETURN COUNT(*) as CNT
-```
+- **Unsupported clauses**: `EXISTS`, `VALUE`, `CALL`, `EXCEPT`, `INTERSECT`.
 
-**Output**
+- **Unsupported functions, aggregates and predicates**: `SINH`, `COSH`, `TANH`, `DATE`, `TIME`, `LOCAL_TIME`, `LOCAL_DATETIME`, `ZONED_TIME`, `IS TYPED`, `DIRECTED`, `IS LABELED`, `SOURCE OF`, `DESTINATION OF`, `IS NORMALIZED`, `ALL_DIFFERENT`, `SAME`, `REGEXP_CONTAINS`, `POWER`, `LOG(base, x)`, `BYTE_LENGTH`, `OCTET_LENGTH`, `ROW_ID`, `BINARY_SEARCH`, `NORMALIZE`, `SOURCE`, `DESTINATION`, `ELEMENTS`, `RANGE`, `INNER_NODES`, `NULLIF`, `COALESCE`, `STDDEV_POP`,`STDDEV_SAMP`, `PERCENTILE_CONT`, `DISC`, `COLLECT_ELEMENTS`, `COLLECT_ONE`
 
-The following table shows the result of the query.
+- **Unsupported types**: `BYTES`, `BINARY`, `VARBINARY`, `DATE`, `TIME`
 
-| CNT |
-|-----|
-| 20  |
+- **Pattern matching**: `MATCH` and `OPTIONAL MATCH` are supported only for node entities, not for edge patterns. For multiple sequences per single `MATCH` clause, only single connected component patterns are supported. Undirected edges (`~`, `<~`, `~>`) are not supported. Quantified paths are not supported.
 
-### Example GQL query with labels
+- **Entity equivalence checks**: Checking entity equivalence using operators like `=` or `<>` between nodes or relationships (for example, `MATCH (n)-[]-(m) WHERE n <> m`) is not supported. Use the `element_id()` function or explicit field comparisons instead, such as `n.id <> m.id`.
 
-<!-- csl -->
-```gql
-MATCH (p:Person)-[e]->(target)
-RETURN p.name, target.name, e.lbl
-ORDER BY p.name, target.name
-LIMIT 2
-```
+- **Distinct**: Applying `DISTINCT` directly to entities is not supported. As an alternative, convert the entity to a string, for example: `MATCH p = (n :Person) RETURN DISTINCT tostring(p)`.
 
-**Output**
+- **Duration granularity**: Durations support up to days and smaller units down to nanoseconds. Larger-than-day units (for example, weeks, months, years) aren't supported.
 
-The following table shows the result of the query.
-
-| p.name | target.name | e.lbl |
-|--------|-------------|-------|
-| Alice  | Bob         | knows |
-| Alice  | David       | likes |
+> [!Note]
+> * Reserved keywords: Some GQL keywords cannot be used as identifiers in queries, and some reserved keywords are not immediately obvious. If your graph data has property names that conflict with GQL reserved keywords, use different property names in your graph schema or rename them to avoid parsing conflicts. A good practice is to escape these names with `backticks` or add a prefix or suffix such as `_`.
+>
+> * Time and timezone: The engine operates in UTC. Datetime literals must use appropriate formats; only the UTC time zone is supported via ZONED_DATETIME("2011-12-31 23:59:59.9").
 
 ## Related content
 
-- [Graph Query Language (GQL) reference](graph-query-language-reference.md)
-- [GQL query patterns, examples, and use cases](graph-query-language-use-cases.md)
-- [Graph operators overview](graph-operators.md)
-- [make-graph operator](make-graph-operator.md)
-- [graph-match operator](graph-match-operator.md)
 - [Tutorial: Create your first graph](tutorials/your-first-graph.md)
-- [Graph functions reference](graph-function.md)
+- [GQL Guide](graph-query-language-guide.md)
+- [GQL Clauses](graph-query-language-clauses.md)
+- [GQL Functions](graph-query-language-functions.md)
+- [Create a graph and set a graph reference for querying](run-graph-query-with-graph-reference.md)
+- [ISO/IEC 39075 Information Technology - Database Languages - GQL](https://www.iso.org/standard/76120.html)
+- [ISO GQL standard](https://www.iso.org/obp/ui/en/#iso:std:iso-iec:39075:ed-1:v1:en)
+- [make-graph operator](make-graph-operator.md)
+- [Create persistent graph](..\management\graph\graph-persistent-overview.md)
