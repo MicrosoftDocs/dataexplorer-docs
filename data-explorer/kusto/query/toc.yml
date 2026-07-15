@@ -1346,16 +1346,20 @@ items:
         href: graph-best-practices.md
       - name: Additional query languages
         items:
-          - name: Graph query language (GQL)
+          - name: GQL (Graph query language)
             items:
-              - name: Query data using GQL
+              - name: GQL
                 href: graph-query-language.md
-              - name: GQL reference
-                href: graph-query-language-reference.md
-              - name: GQL examples and use cases
-                href: graph-query-language-use-cases.md
+              - name: GQL guide
+                href: graph-query-language-guide.md
+              - name: GQL clauses
+                href: graph-query-language-clauses.md
+              - name: GQL functions
+                href: graph-query-language-functions.md
           - name: openCypher
             href: opencypher-graph-query-language.md
+          - name: How to run GQL or openCypher queries
+            href: run-graph-query-with-graph-reference.md
   - name: Geospatial
     items:
       - name: Geospatial clustering
