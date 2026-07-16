@@ -27,7 +27,7 @@ A typical GQL query starts with a `MATCH` pattern, optionally filters and aggreg
 <!-- csl -->
 ```gql
 MATCH (p:Person)-[:ACTED_IN]->(m:Movie)
-WHERE m.Year >= 1990 AND (p.Name STARTS WITH 'T' OR p.Name STARTS WITH 'K')
+WHERE m.Year >= 1990 AND p.Name STARTS WITH 'T'
 RETURN p.Name AS actor, COUNT(m) AS movieCount
 NEXT
 FILTER movieCount > 1
@@ -38,7 +38,7 @@ LIMIT 1
 
 | actor | movieCount |
 |---|---|
-| Actor1 | 3 |
+| Tom | 3 |
 
 Reading the query clause by clause:
 

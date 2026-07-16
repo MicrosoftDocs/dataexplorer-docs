@@ -65,9 +65,9 @@ match (m:Movie) return m.Title as MovieTitle
 | MovieTitle |
 |---|
 | m.Title |
-| Movie1 |
-| Movie2 |
-| Movie3 |
+| T1 |
+| T2 |
+| T3 |
 
 ### Edge patterns
 
@@ -90,10 +90,10 @@ match (p:Person)-[:ACTED_IN]->(m:Movie) return p.Name as actor, m.Title as movie
 
 |actor|movie|
 |---|---|
-|Actor1|Movie1|
-|Actor1|Movie2|
-|Actor1|Movie3|
-|Actor2|Movie1|
+|Tom|T1|
+|Tom|T2|
+|Tom|T3|
+|Kevin|T1|
 
 Count the matched patterns:
 
@@ -118,8 +118,8 @@ return p1.Name as firstActor, m.Title as movie, p2.Name as secondActor
 
 |firstActor|movie|secondActor|
 |---|---|---|
-|Actor1|Movie1|Actor2|
-|Actor2|Movie1|Actor1|
+|Tom|T1|Kevin|
+|Kevin|T1|Tom|
 
 ### Multiple sequences (Multi-path or "star" pattern)
 
@@ -133,9 +133,9 @@ return p.Name as person, m.Title as firstTitle, m2.Title as secondTitle
 
 |person|firstTitle|secondTitle|
 |---|---|---|
-|Actor1|Movie1|Movie2|
-|Actor1|Movie2|Movie2|
-|Actor1|Movie3|Movie2|
+|Tom|T1|T2|
+|Tom|T2|T2|
+|Tom|T3|T2|
 
 ### Variable-length edges
 
@@ -185,7 +185,7 @@ match (p :Female) return p.Name as name
 
 |name|
 |---|
-|Actor4|
+|Julia|
 
 Next query showcases a group label expression:
 
@@ -196,8 +196,8 @@ match ()-[e: !ACTED_IN & (DIRECTED | A) | E]->(m:Movie) return m.Title as title
 
 |title|
 |---|
-|Movie1|
-|Movie2|
+|T1|
+|T2|
 
 Reference the same variable with two labels to require both:
 
@@ -208,7 +208,7 @@ match (n:Male), (n:BestActorAward) return n.Name as name
 
 |name|
 |---|
-|Actor1|
+|Tom|
 
 The [`labels()`](graph-query-language-functions.md#graph-and-path-functions) function returns an element's labels as a list. It's useful in `WHERE` and `RETURN` clauses. For example, `'DIRECTED' IN labels(e)`.
 
@@ -220,10 +220,10 @@ return p.Name as name, labels(e) as EdgeLabels
 
 |name|EdgeLabels|
 |---|---|
-|Actor1|["ACTED_IN"]|
-|Actor1|["ACTED_IN"]|
-|Actor1|["ACTED_IN"]|
-|Actor2|["ACTED_IN"]|
+|Tom|["ACTED_IN"]|
+|Tom|["ACTED_IN"]|
+|Tom|["ACTED_IN"]|
+|Kevin|["ACTED_IN"]|
 
 ## Access node properties
 
@@ -237,9 +237,9 @@ return m.Title as title, m.Year as year
 
 |title|year|
 |---|---|
-|Movie1|1995|
-|Movie2|2011|
-|Movie3|2020|
+|T1|1995|
+|T2|2011|
+|T3|2020|
 
 The `[]` indexer accesses an element of a list or path by its integer position (zero-based), not a property by name. Combine it with dot notation to read a property of a path element. For example, `p[0]` is the first node of the path `p`, so `p[0].Name` returns that node's `Name`:
 
@@ -251,28 +251,28 @@ return p[0].Name as name
 
 |name|
 |---|
-|Actor1|
-|Actor1|
-|Actor1|
-|Actor2|
+|Tom|
+|Tom|
+|Tom|
+|Kevin|
 
 ## Comparisons
 
 GQL supports the standard comparison operators on scalar values: `=`, `<>` (not equal), `<`, `<=`, `>`, and `>=`.
 
-Next query filters out movies with title 'Movie1' from matched patterns:
+Next query filters out movies with title 'T1' from matched patterns:
 
 <!-- csl -->
 ```gql
 match (p:Person)-[:ACTED_IN]->(m:Movie)
-where m.Title <> 'Movie1'
+where m.Title <> 'T1'
 return p.Name as name, m.Title as title
 ```
 
 |name|title|
 |---|---|
-|Actor1|Movie2|
-|Actor1|Movie3|
+|Tom|T2|
+|Tom|T3|
 
 You can't compare two nodes or edges directly with `=` or `<>`. To test whether two entities are different, compare their identities with [`element_id()`](graph-query-language-functions.md#graph-and-path-functions) instead. For example, the following query finds pairs of distinct actors who appeared in the same movie:
 
@@ -285,8 +285,8 @@ return p1.Name as firstName, p2.Name as secondName, m.Title as title
 
 |firstName|secondName|title|
 |---|---|---|
-|Actor1|Actor2|Movie1|
-|Actor2|Actor1|Movie1|
+|Tom|Kevin|T1|
+|Kevin|Tom|T1|
 
 #### Filtering edges in a variable-length path
 
@@ -299,8 +299,8 @@ match ()-[e:DIRECTED]->+() return e[0].Name as personName, e[0].Role as personRo
 
 |personName|personRole|
 |---|---|
-|Actor3|Director|
-|Actor1|Director|
+|Ron|Director|
+|Tom|Director|
 
 <!-- csl -->
 ```gql
@@ -336,7 +336,7 @@ return to_json_string(p) as myPath
 
 |myPath|
 |---|
-|[{"Name":"Actor2", ... "Description":"A movie about space","Year":1995}]|
+|[{"Name":"Kevin", ... "Description":"A movie about space","Year":1995}]|
 
 ## Operators
 
@@ -354,10 +354,10 @@ return p.Name || ' born ' || cast(p.Born as string) as `Label`, p.Born + 1 as Ne
 
 |Label|NextYear|
 |---|---|
-|Actor1 born 1956|1957|
-|Actor2 born 1958|1959|
-|Actor3 born 1954|1955|
-|Actor4 born 1967|1968|
+|Tom born 1956|1957|
+|Kevin born 1958|1959|
+|Ron born 1954|1955|
+|Julia born 1967|1968|
 
 > [!NOTE]
 > The `Label` variable is escaped because label is a reserved keyword. To differentiate between GQL syntax and user variables, escape user variables. Alternatively, add a prefix or suffix `_`.
@@ -375,7 +375,7 @@ return `path`
 
 |path|
 |---|
-|[{"Name": "Actor2" ,..., "Drama", "History"]}]|
+|[{"Name": "Kevin" ,..., "Drama", "History"]}]|
 
 > [!TIP]
 > The path alias `path` is escaped because path is a reserved keyword. To differentiate between GQL syntax and user variables, you can escape user variables. Alternatively, add a prefix or suffix `_`.
@@ -387,7 +387,7 @@ match p1 = (n1)-[e]->{1,2}(n2), p2 = (:Movie & War) return p1, p2
 
 |p1|p2|
 |---|---|
-|[{  "Name": "Actor1" ,..., "War"  ]}]|[{ ,..., "War"  ]}]|
+|[{  "Name": "Tom" ,..., "War"  ]}]|[{ ,..., "War"  ]}]|
 
 The available path functions are `path_length`, `nodes`, and `edges` (also spelled `relationships`), which operate on a path variable. For details, see [Graph and path functions](graph-query-language-functions.md#graph-and-path-functions).
 
@@ -400,7 +400,7 @@ return nodes(p)[0] as firstNode, edges(p) as `edges`, path_length(p) as pathLeng
 
 |firstNode|edges|pathLength|
 |---|---|---|
-|{  "Name": "Actor2",  ...|[ ..."ACTED_IN"...  }]|1|
+|{  "Name": "Kevin",  ...|[ ..."ACTED_IN"...  }]|1|
 
 > [!NOTE]
 > The `edges` variable is escaped because edges is a reserved keyword. To differentiate between GQL syntax and user variables, you can escape user variables. Alternatively, add a prefix or suffix `_`.
@@ -409,13 +409,13 @@ You can combine these functions to return the nodes, edges, and length of a matc
 
 <!-- csl -->
 ```gql
-match p = (n0:Person)-[:DIRECTED]->(m:Movie {Title: 'Movie1'})
+match p = (n0:Person)-[:DIRECTED]->(m:Movie {Title: 'T1'})
 return nodes(p), edges(p), path_length(p)
 ```
 
 |nodes(p)|edges(p)|path_length(p)|
 |---|---|---|
-|[{"Name": "Actor3",...},{"Title": "Movie1", ...}]|[{..."DIRECTED"...}]|1|
+|[{"Name": "Ron",...},{"Title": "T1", ...}]|[{..."DIRECTED"...}]|1|
 
 ### Shortest paths
 
@@ -498,9 +498,9 @@ return m.Title as Title, count(*) as Actors, collect_list(p.Name) as ActorNames
 
 |Title|Actors|ActorNames|
 |---|---|---|
-|Movie3|1|[ "Actor1"]|
-|Movie2|1|[ "Actor1"]|
-|Movie1|2|[ "Actor1", "Actor2"]|
+|T3|1|[ "Tom"]|
+|T2|1|[ "Tom"]|
+|T1|2|[ "Tom", "Kevin"]|
 
 Next query calculates count of patterns:
 
@@ -524,9 +524,9 @@ return m.Title as Title, min(p.Born) as Earliest, max(p.Born) as Latest, avg(p.B
 
 |Title|Earliest|Latest|AvgBorn|
 |---|---|---|---|
-|Movie3|1956|1956|1956|
-|Movie2|1956|1956|1956|
-|Movie1|1956|1958|1957|
+|T3|1956|1956|1956|
+|T2|1956|1956|1956|
+|T1|1956|1958|1957|
 
 `sum` adds up a numeric expression across each group:
 
@@ -538,9 +538,9 @@ return m.Title as Title, sum(p.Born) as BornSum
 
 |Title|BornSum|
 |---|---|
-|Movie3|1956|
-|Movie2|1956|
-|Movie1|3914|
+|T3|1956|
+|T2|1956|
+|T1|3914|
 
 ### Aggregate by entity
 
@@ -554,9 +554,9 @@ return to_json_string(m) as Movie, count(*) as Actors
 
 |Movie|Actors|
 |---|---|
-|{"Title":"Movie3", ... }|1|
-|{"Title":"Movie2", ... }|1|
-|{"Title":"Movie1", ... }|2|
+|{"Title":"T3", ... }|1|
+|{"Title":"T2", ... }|1|
+|{"Title":"T1", ... }|2|
 
 Alternatively, convert the entity to a string with `CAST(entity AS string)`. This conversion also works as a grouping key:
 
@@ -568,9 +568,9 @@ return cast(m as string) as Movie, count(*) as Actors
 
 |Movie|Actors|
 |---|---|
-|{"Title":"Movie3", ... }|1|
-|{"Title":"Movie2", ... }|1|
-|{"Title":"Movie1", ... }|2|
+|{"Title":"T3", ... }|1|
+|{"Title":"T2", ... }|1|
+|{"Title":"T1", ... }|2|
 
 ## Composite queries
 
@@ -581,43 +581,43 @@ A query can contain more than one `MATCH` statement. How the statements relate d
 <!-- csl -->
 ```gql
 match (p:Person where p.Name starts with 'J')
-match (m:Movie where m.Title starts with 'G')
+match (m:Movie where m.Title starts with 'T3')
 return p.Name as name, m.Title as title
 ```
 
 |name|title|
 |---|---|
-|Actor4|Movie3|
+|Julia|T3|
 
 **Match sequence.** When a later `MATCH` reuses a variable bound by an earlier one, it continues from those bindings, joining the patterns on the shared variable.
 
 <!-- csl -->
 ```gql
-match (p:Person {Name: 'Actor1'})
+match (p:Person {Name: 'Tom'})
 match (p)-[:ACTED_IN]->(m:Movie)
 return m.Title as title
 ```
 
 |title|
 |---|
-|Movie3|
-|Movie2|
-|Movie1|
+|T3|
+|T2|
+|T1|
 
 > [!TIP]
 > Each additional `MATCH` may introduce another join. Whenever a relationship can be expressed within a single pattern, prefer fewer `MATCH` statements for better performance. For example, the query above is equivalent to, and faster when written as, a single statement:
 
 <!-- csl -->
  ```gql
- match (p:Person {Name: 'Actor1'}), (p)-[:ACTED_IN]->(m:Movie)
+ match (p:Person {Name: 'Tom'}), (p)-[:ACTED_IN]->(m:Movie)
  return m.Title as title
  ```
 
 |title|
 |---|
-|Movie3|
-|Movie2|
-|Movie1|
+|T3|
+|T2|
+|T1|
 
 ## Optional match
 
@@ -632,10 +632,10 @@ return p.Name as name, m.Title as title
 
 |name|title|
 |---|---|
-|Actor3|Movie1|
-|Actor1|Movie2|
-|Actor4| |
-|Actor2| |
+|Ron|T1|
+|Tom|T2|
+|Julia| |
+|Kevin| |
 
 ## Supported types
 
@@ -643,7 +643,7 @@ GQL values map to the underlying [Kusto scalar types](scalar-data-types/index.md
 
 | Kusto type | Description | GQL literal example |
 |---|---|---|
-| `string` | Unicode text. | `'Actor1'` |
+| `string` | Unicode text. | `'Tom'` |
 | `bool` | Boolean value. | `true`, `false` |
 | `int` | 32-bit signed integer. | `42` |
 | `long` | 64-bit signed integer. | `9000000000` |
@@ -674,10 +674,10 @@ return p.Name || ' (' || cast(p.Born as string) || ')' as `Label`
 
 |Label|
 |---|
-|Actor1 (1956)|
-|Actor2 (1958)|
-|Actor3 (1954)|
-|Actor4 (1967)|
+|Tom (1956)|
+|Kevin (1958)|
+|Ron (1954)|
+|Julia (1967)|
 
 > [!NOTE]
 > The `Label` variable is escaped because label is a reserved keyword. To differentiate between GQL syntax and user variables, you can escape user variables. Alternatively, add a prefix or suffix `_`.
@@ -747,13 +747,13 @@ limit 1
 
 <!-- csl -->
 ```gql
-match (n:Person {Name: 'Actor4'})
+match (n:Person {Name: 'Julia'})
 return to_json_string(n) as `Json`
 ```
 
 |Json|
 |---|
-|{"Name":"Actor4","Born":1967,"Label2":["Female","BestActressAward"]}|
+|{"Name":"Julia","Born":1967,"Label2":["Female","BestActressAward"]}|
 
 > [!NOTE]
 > The `Json` variable is escaped because json is a reserved keyword. To differentiate between GQL syntax and user variables, you can escape user variables. Alternatively, add a prefix or suffix `_`.
