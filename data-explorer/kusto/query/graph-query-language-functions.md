@@ -86,13 +86,13 @@ match () limit 1 return string_join(["a", "bc"], "") as result
 <!-- csl -->
 ```gql
 MATCH (p :Person)
-WHERE p.Name starts with 'Tom' or (p.Name ends with 's' and p.Name contains 'Han')
+WHERE p.Name starts with 'T'
 RETURN p.Name as actorName
 ```
 
 |actorName|
 |---|
-|Actor1|
+|Tom|
 
 ## Numeric functions
 
@@ -155,9 +155,9 @@ return m.Title as Title, case when m.Year < 2000 then 'C' else 'M' end as Era
 
 |Title|Era|
 |---|---|
-|Movie1|C|
-|Movie2|M|
-|Movie3|M|
+|T1|C|
+|T2|M|
+|T3|M|
 
 Simple form compares one expression against each `WHEN` value:
 
@@ -166,17 +166,17 @@ Simple form compares one expression against each `WHEN` value:
 match (m:Movie)
 return m.Title as Title,
     case m.Title
-        when 'Movie1' then 'A'
-        when 'Movie3' then 'G'
+        when 'T1' then 'A'
+        when 'T3' then 'G'
         else 'O'
     end as Name
 ```
 
 |Title|Name|
 |---|---|
-|Movie1|A|
-|Movie2|O|
-|Movie3|G|
+|T1|A|
+|T2|O|
+|T3|G|
 
 > [!NOTE]
 > Every `CASE` expression must include an `ELSE` clause. A `CASE` without `ELSE` isn't supported.
@@ -199,10 +199,10 @@ return m.Title as Title, cast(nodes(p)[0].Born as int) as ActorBorn
 
 |Title|ActorBorn|
 |---|---|
-|Movie3|1956|
-|Movie2|1956|
-|Movie1|1956|
-|Movie1|1958|
+|T3|1956|
+|T2|1956|
+|T1|1956|
+|T1|1958|
 
 <!-- csl -->
 ```gql
@@ -212,10 +212,10 @@ RETURN p.Name || ', ' || CAST(p.Born as string) as nameAndYear
 
 |nameAndYear|
 |---|
-|Actor1, 1956|
-|Actor2, 1958|
-|Actor3, 1954|
-|Actor4, 1967|
+|Tom, 1956|
+|Kevin, 1958|
+|Ron, 1954|
+|Julia, 1967|
 
 **Aggregating on object keys.** An aggregation key can't be an object (`dynamic`) value such as a node, edge, or property map. Convert the object value to a string first, using `to_json_string(...)` or `CAST(... AS string)`.
 
@@ -227,9 +227,9 @@ return to_json_string(p), count(m) as participatedInMoviesCount
 
 |to_json_string(p)|participatedInMoviesCount|
 |---|---|
-|{"Name":"Actor1", ... }|4|
-|{"Name":"Actor2", ... }|1|
-|{"Name":"Actor3", ... }|1|
+|{"Name":"Tom", ... }|4|
+|{"Name":"Kevin", ... }|1|
+|{"Name":"Ron", ... }|1|
 
 ## JSON functions
 
@@ -240,13 +240,13 @@ return to_json_string(p), count(m) as participatedInMoviesCount
 
 <!-- csl -->
 ```gql
-MATCH (n:Person {Name: 'Actor4'})
+MATCH (n:Person {Name: 'Julia'})
 RETURN TO_JSON_STRING(n) AS `json`
 ```
 
 |json|
 |---|
-|{"Name":"Actor4","Born":1967,"Label2":["Person ","Female ","BestActressAward "],"Label":"Person"}|
+|{"Name":"Julia","Born":1967,"Label2":["Person ","Female ","BestActressAward "],"Label":"Person"}|
 
 > [!TIP]
 > The result alias `json` is escaped because json is a reserved keyword
@@ -328,14 +328,14 @@ match () limit 1 return keys({"a":1, "b":2}) as my_keys
 <!-- csl -->
 ```gql
 MATCH (p:Person)
-WHERE p.Name IN ['Actor1', 'Actor2']
+WHERE p.Name IN ['Tom', 'Kevin']
 RETURN p.Name as actor
 ```
 
 |actor|
 |---|
-|Actor1|
-|Actor2|
+|Tom|
+|Kevin|
 
 <!-- csl -->
 ```gql
@@ -448,9 +448,9 @@ RETURN m.Title as Movie, COUNT(*) AS ActorsCount
 
 |Movie|ActorsCount|
 |---|---|
-|Movie1|2|
-|Movie2|1|
-|Movie3|1|
+|T1|2|
+|T2|1|
+|T3|1|
 
 <!-- csl -->
 ```gql
@@ -459,7 +459,7 @@ RETURN collect_list(distinct n.Name) as actors
 ```
 |actors|
 |---|
-|["Actor1", "Actor2"]|
+|["Tom", "Kevin"]|
 
 Find how many movies each actor acted in:
 
@@ -471,8 +471,8 @@ RETURN TO_JSON_STRING(n) as actor, count(m) as moviesCount
 
 |actor|moviesCount|
 |---|---|
-|{"Name":"Actor1", ... ,"Label":"Person"}|3|
-|{"Name":"Actor2", ... ,"Label":"Person"}|1|
+|{"Name":"Tom", ... ,"Label":"Person"}|3|
+|{"Name":"Kevin", ... ,"Label":"Person"}|1|
 
 > [!NOTE]
 > To group by or aggregate a node, edge, or path, first convert it to a string with `TO_JSON_STRING()` or `CAST(object AS string)`, because objects can't be used as grouping keys directly.
@@ -500,27 +500,27 @@ Other operators:
 <!-- csl -->
 ```gql
 match (p:Person)
-where p.Name in ['Actor1', 'Actor4']
+where p.Name in ['Tom', 'Julia']
 return p.Name as name
 ```
 
 |name|
 |---|
-|Actor1|
-|Actor4|
+|Tom|
+|Julia|
 
 Negate the test with `NOT` to keep only values that are absent from the list:
 
 <!-- csl -->
 ```gql
 match (p:Person)
-where not p.Name in ['Actor1', 'Actor2', 'Actor3']
+where not p.Name in ['Tom', 'Kevin', 'Ron']
 return p.Name as name
 ```
 
 |name|
 |---|
-|Actor4|
+|Julia|
 
 Other predicates:
 
@@ -533,14 +533,14 @@ Other predicates:
 <!-- csl -->
 ```gql
 MATCH (p:Person)
-WHERE p.Name IN ['Actor1', 'Actor2'] AND p.Born IS NOT NULL
+WHERE p.Name IN ['Tom', 'Kevin'] AND p.Born IS NOT NULL
 RETURN p.Name as name
 ```
 
 |name|
 |---|
-|Actor1|
-|Actor2|
+|Tom|
+|Kevin|
 
 It's possible to use `IS TRUE` or `IS FALSE` to test the result of a Boolean expression:
 
@@ -553,7 +553,7 @@ RETURN p.Name
 
 |name|
 |---|
-|Actor4|
+|Julia|
 
 ## Related content
 
