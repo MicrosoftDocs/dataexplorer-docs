@@ -24,27 +24,27 @@ The following example creates a movies graph of relationships between movies and
  {
      let Movies = datatable (Title: string, Description: string, Year: int, Label2: dynamic)
      [
-         'Movie1', 'A movie about space', 1995, dynamic(["Movie","Survival","Adventure","Drama","History"]),
-         'Movie2', 'Romantic comedy', 2011, dynamic(["Movie","Comedy","Drama","Romance"]),
-         'Movie3', 'War film', 2020, dynamic(["Movie","Drama","History","War"]),
+         'T1', 'A movie about space', 1995, dynamic(["Movie","Survival","Adventure","Drama","History"]),
+         'T2', 'Romantic comedy',     2011, dynamic(["Movie","Comedy","Drama","Romance"]),
+         'T3', 'War film',            2020, dynamic(["Movie","Drama","History","War"]),
      ]
      | extend Label = 'Movie';
      let People = datatable (Name: string, Born: int, Label2: dynamic)
      [
-         'Actor1', 1956, dynamic(["Person","Male","BestActorAward"]),
-         'Actor2', 1958, dynamic(["Person","Male"]),
-         'Actor3', 1954, dynamic(["Person","Male","BestDirectorAward"]),
-         'Actor4', 1967, dynamic(["Person","Female","BestActressAward"]),
+         'Tom',   1956, dynamic(["Person","Male","BestActorAward"]),
+         'Kevin', 1958, dynamic(["Person","Male"]),
+         'Ron',   1954, dynamic(["Person","Male","BestDirectorAward"]),
+         'Julia', 1967, dynamic(["Person","Female","BestActressAward"]),
      ]
      | extend Label = 'Person';
      let Actions = datatable(Name: string, Movie: string, Label: string, Label2: dynamic, Role: string)
      [
-         'Actor1', 'Movie1', 'ACTED_IN', dynamic(["ACTED_IN"]), 'Role1',
-         'Actor2', 'Movie1', 'ACTED_IN', dynamic(["ACTED_IN"]), 'Role2',
-         'Actor3', 'Movie1', 'DIRECTED', dynamic(["DIRECTED"]), 'Director',
-         'Actor1', 'Movie2', 'ACTED_IN', dynamic(["ACTED_IN"]), 'Movie2',
-         'Actor1', 'Movie2', 'DIRECTED', dynamic(["DIRECTED"]), 'Director',
-         'Actor1', 'Movie3', 'ACTED_IN', dynamic(["ACTED_IN"]), 'Role3',
+         'Tom',   'T1', 'ACTED_IN', dynamic(["ACTED_IN"]), 'Role1',
+         'Kevin', 'T1', 'ACTED_IN', dynamic(["ACTED_IN"]), 'Role2',
+         'Ron',   'T1', 'DIRECTED', dynamic(["DIRECTED"]), 'Director',
+         'Tom',   'T2', 'ACTED_IN', dynamic(["ACTED_IN"]), 'Role3',
+         'Tom',   'T2', 'DIRECTED', dynamic(["DIRECTED"]), 'Director',
+         'Tom',   'T3', 'ACTED_IN', dynamic(["ACTED_IN"]), 'Role4',
      ];
      Actions
     | make-graph Name --> Movie with People on Name, Movies on Title
@@ -79,10 +79,10 @@ Example:
       {
         "Query": "datatable(Name:string, Born:int, Label2:dynamic)
                     [
-                        'Actor1', 1956, dynamic(['Male', 'BestActorAward']),
-                        'Actor2', 1958, dynamic(['Male']),
-                        'Actor3', 1954, dynamic(['Male', 'BestDirectorAward']),
-                        'Actor4', 1967, dynamic(['Female', 'BestActressAward']),
+                        'Tom',   1956, dynamic(['Male', 'BestActorAward']),
+                        'Kevin', 1958, dynamic(['Male']),
+                        'Ron',   1954, dynamic(['Male', 'BestDirectorAward']),
+                        'Julia', 1967, dynamic(['Female', 'BestActressAward']),
                     ]",
         "NodeIdColumn": "Name",
         "Kind": "AddNodes",
@@ -92,9 +92,9 @@ Example:
       {
         "Query": "datatable(Title:string, Description:string, Year:int, Label2:dynamic) 
                     [
-                        'Movie1', 'A movie about space', 1995, dynamic(['Survival', 'Adventure', 'Drama', 'History']),
-                        'Movie2', 'Romantic comedy', 2011, dynamic(['Comedy', 'Drama', 'Romance']),
-                        'Movie3', 'War film', 2020, dynamic(['Drama', 'History', 'War']),
+                        'T1', 'A movie about space', 1995, dynamic(['Survival', 'Adventure', 'Drama', 'History']),
+                        'T2', 'Romantic comedy', 2011, dynamic(['Comedy', 'Drama', 'Romance']),
+                        'T3', 'War film', 2020, dynamic(['Drama', 'History', 'War']),
                     ]",
         "NodeIdColumn": "Title",
         "Kind": "AddNodes",
@@ -104,12 +104,12 @@ Example:
       {
         "Query": "datatable(Name:string, Movie:string, Role:string, Label2:string)
                     [
-                         'Actor1', 'Movie1', 'Role1',    'ACTED_IN',
-                         'Actor2', 'Movie1', 'Role2',    'ACTED_IN',
-                         'Actor1', 'Movie2', 'Movie2',   'ACTED_IN',
-                         'Actor1', 'Movie3', 'Role3',    'ACTED_IN',
-                         'Actor3', 'Movie1', 'Director', 'DIRECTED',
-                         'Actor1', 'Movie2', 'Director', 'DIRECTED',
+                         'Tom',   'T1', 'Role1',    'ACTED_IN',
+                         'Kevin', 'T1', 'Role2',    'ACTED_IN',
+                         'Tom',   'T2', 'Role3',    'ACTED_IN',
+                         'Tom',   'T3', 'Role4',    'ACTED_IN',
+                         'Ron',   'T1', 'Director', 'DIRECTED',
+                         'Tom',   'T2', 'Director', 'DIRECTED',
                     ]",
         "SourceColumn": "Name",
         "TargetColumn": "Movie",

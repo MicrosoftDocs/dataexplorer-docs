@@ -25,14 +25,14 @@ Use `WHERE` after the pattern to compare element properties with operators such 
 <!-- csl -->
 ```gql
 match (p:Person)-[:ACTED_IN]->(m:Movie)
-where (p.Name = 'Actor1' or p.Name = 'Actor3') and m.Title <> 'Movie1' and p.Born > 1901
+where (p.Name = 'Tom' or p.Name = 'Ron') and m.Title <> 'T1' and p.Born > 1901
 return p.Name as name, m.Title as title
 ```
 
 |name|title|
 |---|---|
-|Actor1|Movie3|
-|Actor1|Movie2|
+|Tom|T3|
+|Tom|T2|
 
 ### Negate a condition with NOT
 
@@ -47,7 +47,7 @@ return p.Name as name
 
 |name|
 |---|
-|Actor4|
+|Julia|
 
 The following two queries are equivalent. The first uses prefix `NOT`; the second uses the inline `NOT CONTAINS` predicate:
 
@@ -60,7 +60,8 @@ return p.Name as name
 
 |name|
 |---|
-|Actor4|
+|Tom|
+|Julia|
 
 <!-- csl -->
 ```gql
@@ -71,7 +72,8 @@ return p.Name
 
 |name|
 |---|
-|Actor4|
+|Tom|
+|Julia|
 
 ### Inline property filters
 
@@ -79,24 +81,24 @@ An inline `{property: value}` inside an element pattern is shorthand for an equa
 
 <!-- csl -->
 ```gql
-match (p:Person {Name: 'Actor1'})
+match (p:Person {Name: 'Tom'})
 return p.Name as name, p.Born as born
 ```
 
 |name|born|
 |---|---|
-|Actor1|1956|
+|Tom|1956|
 
 <!-- csl -->
 ```gql
 match (p:Person)
-where p.Name = 'Actor1'
+where p.Name = 'Tom'
 return p.Name as name, p.Born as born
 ```
 
 |name|born|
 |---|---|
-|Actor1|1956|
+|Tom|1956|
 
 Inline filters apply to edges as well as nodes:
 
@@ -108,74 +110,74 @@ return p.Name as name, m.Title as title
 
 |name|title|
 |---|---|
-|Actor2|Movie1|
+|Kevin|T1|
 
 ### Multiple inline conditions
 
-List several properties in one inline filter to require all of them; the pairs are combined with `AND`. This pattern matches only `Person` nodes where both `Name` is `'Actor1'` and `Born` is `1956`:
+List several properties in one inline filter to require all of them; the pairs are combined with `AND`. This pattern matches only `Person` nodes where both `Name` is `'Tom'` and `Born` is `1956`:
 
 <!-- csl -->
 ```gql
-match (p:Person {Name: 'Actor1', Born: 1956})
+match (p:Person {Name: 'Tom', Born: 1956})
 return p.Name as name, p.Born as born
 ```
 
 |name|born|
 |---|---|
-|Actor1|1956|
+|Tom|1956|
 
 Apply inline filters to several elements in the same pattern to constrain each node and edge at once:
 
 <!-- csl -->
 ```gql
-match (p:Person {Name: 'Actor2'})-[:ACTED_IN {Role: 'Role2'}]->(m:Movie {Title: 'Movie1'})
+match (p:Person {Name: 'Kevin'})-[:ACTED_IN {Role: 'Role2'}]->(m:Movie {Title: 'T1'})
 return p.Name as name, m.Title as title
 ```
 
 |name|title|
 |---|---|
-|Actor2|Movie1|
+|Kevin|T1|
 
 Inline filters and `WHERE` combine freely: use inline `{...}` for the equality checks and `WHERE` for everything else, such as ranges or `OR`:
 
 <!-- csl -->
 ```gql
-match (p:Person {Name: 'Actor1'})-[:ACTED_IN]->(m:Movie)
+match (p:Person {Name: 'Tom'})-[:ACTED_IN]->(m:Movie)
 where m.Year >= 1990
 return p.Name as name, m.Title as title
 ```
 
 |name|title|
 |---|---|
-|Actor1|Movie1|
-|Actor1|Movie2|
-|Actor1|Movie3|
+|Tom|T1|
+|Tom|T2|
+|Tom|T3|
 
 Inside a node or edge:
 
 <!-- csl -->
 ```gql
-match (p:Person)-[e where 'DIRECTED' in labels(e)]->(m:Movie where m.Title <> 'Movie1')
+match (p:Person)-[e where 'DIRECTED' in labels(e)]->(m:Movie where m.Title <> 'T1')
 return p.Name as name, m.Title as title
 ```
 
 |name|title|
 |---|---|
-|Actor1|Movie2|
+|Tom|T2|
 
 The `IN` predicate tests whether a value is one of the items in a list:
 
 <!-- csl -->
 ```gql
 match (p:Person)
-where p.Name in ['Actor1', 'Actor2']
+where p.Name in ['Tom', 'Kevin']
 return p.Name as name
 ```
 
 |name|
 |---|
-|Actor1|
-|Actor2|
+|Tom|
+|Kevin|
 
 To compare entities, use `element_id(n)` or property comparisons (`n.Name <> m.Name`); direct entity equality isn't supported.
 
@@ -191,10 +193,10 @@ return m.Title as Title, p.Name as Name
 
 |Title|Name|
 |---|---|
-|Movie3|Actor1|
-|Movie2|Actor1|
-|Movie1|Actor1|
-|Movie1|Actor2|
+|T3|Tom|
+|T2|Tom|
+|T1|Tom|
+|T1|Kevin|
 
 Return every bound variable with `*`:
 
@@ -206,7 +208,7 @@ return *
 
 |p|m|
 |---|---|
-|{"Name": "Actor1", .. ,"Description": "War film","Year": 2020<br>}|
+|{"Name": "Tom", .. ,|, .. ,"Description": "War film","Year": 2020}|
 
 ## DISTINCT
 
@@ -222,8 +224,8 @@ return distinct p.Name as name
 
 |name|
 |---|
-|Actor1|
-|Actor2|
+|Tom|
+|Kevin|
 
 `DISTINCT` also works inside aggregations, to aggregate over distinct values only:
 
@@ -235,9 +237,9 @@ return m.Title as Title, count(p.Name) as Actors, collect_list(distinct p.Name) 
 
 |Title|Actors|Names|
 |---|---|---|
-|Movie3|1|["Actor1"]|
-|Movie2|1|["Actor1"]|
-|Movie1|2|["Actor1","Actor2"]|
+|T3|1|["Tom"]|
+|T2|1|["Tom"]|
+|T1|2|["Tom","Kevin"]|
 
 ## ORDER BY
 
@@ -250,10 +252,10 @@ match (p:Person) return p.Name as name, p.Born as born order by p.Born desc
 
 |name|born|
 |---|---|
-|Actor4|1967|
-|Actor2|1958|
-|Actor1|1956|
-|Actor3|1954|
+|Julia|1967|
+|Kevin|1958|
+|Tom|1956|
+|Ron|1954|
 
 Sort by multiple keys, each with its own direction:
 
@@ -266,10 +268,10 @@ order by Name desc, Title asc
 
 |Name|Title|
 |---|---|
-|Actor1|Movie1|
-|Actor1|Movie3|
-|Actor1|Movie2|
-|Actor2|Movie1|
+|Tom|T1|
+|Tom|T3|
+|Tom|T2|
+|Kevin|T1|
 
 > [!NOTE]
 > Using `ORDER BY` directly after `MATCH` might not have an effect if the query has subsequent `NEXT` or join statements.
@@ -285,8 +287,8 @@ match (p:Person) return p.Name as name order by p.Born asc limit 2
 
 |name|
 |---|
-|Actor3|
-|Actor1|
+|Ron|
+|Tom|
 
 <!-- csl -->
 ```gql
@@ -295,8 +297,8 @@ match (p:Person) order by p.Born asc limit 2 return p.Name as name
 
 |name|
 |---|
-|Actor3|
-|Actor1|
+|Ron|
+|Tom|
 
 ## OFFSET
 
@@ -309,7 +311,7 @@ match (m:Movie) return m.Title as title order by m.Title offset 1 limit 1
 
 |title|
 |---|
-|Movie3|
+|T3|
 
 Like `LIMIT`, `OFFSET` can also sit directly after the `MATCH` pattern, before `RETURN`. In that position it skips matched rows before projection:
 
@@ -320,7 +322,7 @@ match (m:Movie) order by m.Title offset 1 return m.Title as title
 
 |title|
 |---|
-|Movie3|
+|T3|
 
 ## FOR
 
@@ -378,7 +380,7 @@ return p.Name as Name, BirthYear
 
 |Name|BirthYear|
 |---|---|
-|Actor2|1958|
+|Kevin|1958|
 
 Bind a constant and use it to filter:
 
@@ -392,8 +394,8 @@ return m.Title as title
 
 |Title|
 |---|
-|Movie2|
-|Movie3|
+|T2|
+|T3|
 
 Define multiple values, where one builds on another:
 
@@ -407,10 +409,10 @@ return p.Name as name, a, b
 
 |name|a|b|
 |---|---|---|
-|Actor1|1|4|
-|Actor2|1|4|
-|Actor3|1|4|
-|Actor4|1|4|
+|Tom|1|4|
+|Kevin|1|4|
+|Ron|1|4|
+|Julia|1|4|
 
 ## NEXT
 
@@ -429,13 +431,13 @@ return Actor, Title
 
 |Actor|Title|
 |---|---|
-|Actor1|Movie3|
+|Tom|T3|
 
 Carry a path forward, then compute over it:
 
 <!-- csl -->
 ```gql
-match p = (n0:Person)-[:DIRECTED]->(:Movie {Title: 'Movie1'})
+match p = (n0:Person)-[:DIRECTED]->(:Movie {Title: 'T1'})
 return *
 next
 return p, path_length(p) as Hops
@@ -446,7 +448,7 @@ Pass a node variable into a later `MATCH`:
 
 <!-- csl -->
 ```gql
-match (p:Person {Name: 'Actor1'})
+match (p:Person {Name: 'Tom'})
 return p
 next
 match (p)-[:ACTED_IN]->(m:Movie)
@@ -495,7 +497,7 @@ return p.Name as name
 
 |name|
 |---|
-|Actor1|
+|Tom|
 
 ## UNION
 
@@ -510,13 +512,13 @@ match (m:Movie) return m.Title as name
 
 |name|
 |---|
-|Actor1|
-|Actor2|
-|Actor3|
-|Actor4|
-|Movie1|
-|Movie2|
-|Movie3|
+|Tom|
+|Kevin|
+|Ron|
+|Julia|
+|T1|
+|T2|
+|T3|
 
 ## Related content
 
