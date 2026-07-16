@@ -26,7 +26,7 @@ Find all actors who acted in a movie.
 <!-- csl -->
 ```openCypher
 MATCH (n :Person)-[e :ACTED_IN]->(m: Movie)
-WHERE m.Title starts with 'A'
+WHERE m.Title starts with 'T1'
 RETURN n.Name as actorName, m.Title as movieTitle
 ORDER BY actorName desc
 LIMIT 2
@@ -36,8 +36,8 @@ LIMIT 2
 
 |  actorName  | movieTitle |
 |-------------| ---------  |
-| Actor1      | Movie1     |
-| Actor2      | Movie1     |
+| Tom         |     T1     |
+| Kevin       |     T1     |
 
 For more openCypher examples, see the [openCypher specification](https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf).
 
