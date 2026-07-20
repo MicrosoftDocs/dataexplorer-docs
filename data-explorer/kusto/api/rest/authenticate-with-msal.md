@@ -82,8 +82,31 @@ var authClient = ConfidentialClientApplicationBuilder.Create("<appId>")
     .WithClientSecret("<appKey>") // Can be replaced by .WithCertificate to authenticate with an X.509 certificate
     .Build();
 
+String resourceId = "";
+
+try {
+      // Get the appropriate resource id by querying the metadata
+      URL url = new URL(queryEndpointUri + "/v1/rest/auth/metadata");
+      HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+      conn.setRequestMethod("GET");
+      conn.connect();
+
+      Scanner scanner = new Scanner(url.openStream(), StandardCharsets.UTF_8);
+      String jsonResponse = scanner.useDelimiter("\\A").next();
+      scanner.close();
+
+      ObjectMapper mapper = new ObjectMapper();
+      JsonNode jsonNode = mapper.readTree(jsonResponse);
+      resourceId = jsonNode.path("AzureAD").path("KustoServiceResourceId").asText("https://kusto.kusto.windows.net");
+      // Append scope to resource id
+      resourceId = resourceId + "/.default";
+} catch (IOException e) {
+      System.err.println("Error fetching metadata: " + e.getMessage());
+      resourceId = "https://kusto.kusto.windows.net/.default";
+}
+
 var result = authClient.AcquireTokenForClient(
-    new[] { $"{kustoUri}/.default" } // Define scopes for accessing Azure Data Explorer cluster
+    new[] { $"{resourceId}/.default" } // Define scopes for accessing Azure Data Explorer cluster
 ).ExecuteAsync().Result;
 var bearerToken = result.AccessToken;
 
