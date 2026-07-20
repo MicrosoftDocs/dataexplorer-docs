@@ -86,7 +86,7 @@ String resourceId = "";
 
 try {
       // Get the appropriate resource id by querying the metadata
-      URL url = new URL(queryEndpointUri + "/v1/rest/auth/metadata");
+      URL url = new URL(kustoUri + "/v1/rest/auth/metadata");
       HttpURLConnection conn = (HttpURLConnection) url.openConnection();
       conn.setRequestMethod("GET");
       conn.connect();
