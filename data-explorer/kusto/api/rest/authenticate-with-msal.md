@@ -72,7 +72,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ## Perform application authentication with MSAL
 
-The following code sample shows how to use MSAL to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Microsoft Entra ID and have an app key or an X509v2 certificate issued by Microsoft Entra ID. To set up an application, see [Provision a Microsoft Entra application](../../access-control/provision-entra-id-app.md).
+The following code sample shows how to use MSAL to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Microsoft Entra ID and have an app key or an X509v2 certificate issued by Microsoft Entra ID. To set up an application, see [Provision a Microsoft Entra application](../../access-control/provision-entra-id-app.md). This is supported for the "ingest-" endpoint as well.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -89,7 +89,7 @@ var authClient = ConfidentialClientApplicationBuilder.Create("<appId>")
  {
       // Get the appropiate resource id by querying the metadata
       var httpClient = new HttpClient();
-      var response = httpClient.GetByteArrayAsync($"{queryEndpointUri}/v1/rest/auth/metadata").Result;
+      var response = httpClient.GetByteArrayAsync($"{kustoUri}/v1/rest/auth/metadata").Result;
       var json = JObject.Parse(Encoding.UTF8.GetString(response));
       resourceId = json["AzureAD"]?["KustoServiceResourceId"]?.ToString();
 }
