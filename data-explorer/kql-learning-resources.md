@@ -25,7 +25,7 @@ This training isn't product-specific, and provides basic KQL learning:
 
 * [Tutorial: Create geospatial visualizations](/kusto/query/tutorials/create-geospatial-visualizations?view=azure-data-explorer&preserve-view=true)
 * [Data analysis in Azure Data Explorer with Kusto Query Language](/training/paths/data-analysis-data-explorer-kusto-query-language/)
-* [Free Pluralsight training: Azure Data Explorer](https://www.pluralsight.com/partners/microsoft/azure-data-explorer)
+* [Free Pluralsight training: Azure Data Explorer](https://www.pluralsight.com/browse)
 
 ## Real-Time Intelligence in Microsoft Fabric
 
