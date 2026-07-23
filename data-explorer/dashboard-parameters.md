@@ -11,7 +11,7 @@ ai-usage: ai-assisted
 
 Parameters are used as building blocks for filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. A query can use one or more parameters.
 
-This article describes the creation and use of parameters and linked filters in dashboards. You can use parameters to filter dashboard visuals either by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#cross-filters-parameters).
+This article describes the creation and use of parameters and linked filters in dashboards. Use parameters to filter dashboard visuals either by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#cross-filters-parameters).
 
 > [!NOTE]
 > Parameter management is available in **Editing** mode to dashboard editors.
