@@ -397,6 +397,8 @@ items:
             href: web-ui-samples-dashboards.md
           - name: Share dashboards
             href: azure-data-explorer-dashboard-share.md
+          - name: Dashboard live refresh
+            href: dashboard-live-refresh.md
           - name: Troubleshoot dashboard tile errors
             href: dashboard-troubleshoot-tile-errors.md
       - name: Power BI
