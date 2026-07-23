@@ -1,15 +1,16 @@
 ---
 title: Graph sample datasets and examples
-description: Graph examples with detailed descriptions, use cases, and visualizations
+description: Explore prebuilt graph sample datasets on the Kusto help cluster and learn how to query them with graph operators in Kusto Query Language (KQL).
 ms.topic: concept-article
 ms.author: spelluru
 author: cosh
-ms.date: 08/14/2025
+ms.date: 07/23/2026
+ai-usage: ai-assisted
 ---
 
 # Graph sample datasets and examples
 
-This page lists existing graphs on our help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) in the **Samples** database and shows how to query them using the Kusto Query Language (KQL). These examples demonstrate querying prebuilt graph models without requiring any creation or setup steps.
+This article lists the graphs in the **Samples** database on the help cluster at [https://help.kusto.windows.net](https://help.kusto.windows.net) and shows how to query them by using the Kusto Query Language (KQL). These examples demonstrate querying prebuilt graph models without requiring any creation or setup steps.
 
 ## Simple educational graph for learning fundamentals
 
@@ -385,9 +386,9 @@ Usage: `graph("BloodHound_Entra")`
 
 **Graph Instance Example**:
 
-This example demonstrates Microsoft Entra and Entra identity relationships with complex privilege structures and potential attack paths in a cloud environment.
+This example demonstrates Microsoft Entra identity relationships with complex privilege structures and potential attack paths in a cloud environment.
 
-:::image type="content" source="media/graphs/graph-example-bloodhound-entra-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound Entra dataset":::
+:::image type="content" source="media/graphs/graph-example-bloodhound-entra-instance.png" alt-text="A graph containing a sample subgraph of the BloodHound Entra dataset.":::
 
 **Use Cases**:
 
