@@ -254,6 +254,10 @@ items:
             href: graph/graph-snapshot-statistics-show.md
           - name: .show graph_snapshots statistics
             href: graph/graph-snapshots-statistics-show.md
+          - name: .show graph_snapshot data statistics
+            href: graph/graph-snapshot-data-statistics-show.md
+          - name: .show graph_snapshots data statistics
+            href: graph/graph-snapshots-data-statistics-show.md
           - name: .show graph_snapshots failures
             href: graph/graph-snapshots-failures-show.md
       - name: Stored query results
