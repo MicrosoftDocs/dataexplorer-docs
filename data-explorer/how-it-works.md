@@ -33,7 +33,7 @@ For more information on data storage, see [Extents overview](/kusto/management/e
 
 ## Data cache
 
-Azure Data Explorer has a multi-hierarchy data cache system to ensure that the most relevant data is cached as closely as possible to the CPU. The cache system depends on the immutability of extents, and works entirely with [compressed data](#column-compression). To improve query performance, data remains compressed even in RAM and is only decompressed when required for a query.
+Azure Data Explorer uses a multilevel data cache system to keep the most relevant data as close as possible to the CPU. This cache system relies on the immutability of extents and works entirely with [compressed data](#column-compression). To boost query performance, data stays compressed even in RAM and is only decompressed when a query needs it.
 
 For more information on caching, see [Cache policy](/kusto/management/cache-policy?view=azure-data-explorer&preserve-view=true).
 
@@ -41,7 +41,7 @@ For more information on caching, see [Cache policy](/kusto/management/cache-poli
 
 Azure Data Explorer is designed to efficiently index free-text ([string](/kusto/query/scalar-data-types/string?view=azure-data-explorer&preserve-view=true)) and JSON-like ([dynamic](/kusto/query/scalar-data-types/dynamic?view=azure-data-explorer&preserve-view=true)) columns as data is ingested. The indexes maintain a level of granularity that enables evaluation of parts of the query based on the index without scanning the data.
 
-Continuous background optimization of extents through merging improves compression and indexing, ensuring efficient storage and low query latency. After extents reach a certain size, only the indexes are merged to enhance query performance without compromising efficiency.
+Continuous background optimization of extents through merging improves compression and indexing, ensuring efficient storage and low query latency. After extents reach a certain size, only the indexes merge to boost query performance without hurting efficiency.
 
 For more information on extent and index merging, see [Merge policy](/kusto/management/merge-policy?view=azure-data-explorer&preserve-view=true).
 

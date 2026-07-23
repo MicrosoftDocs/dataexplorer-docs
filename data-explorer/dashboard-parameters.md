@@ -11,7 +11,7 @@ ai-usage: ai-assisted
 
 Parameters are used as building blocks for filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. A query can use one or more parameters.
 
-This article describes the creation and use of parameters and linked filters in dashboards. Parameters can be used to filter dashboard visuals either by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#cross-filters-parameters).
+This article describes the creation and use of parameters and linked filters in dashboards. You can use parameters to filter dashboard visuals either by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#cross-filters-parameters).
 
 > [!NOTE]
 > Parameter management is available in **Editing** mode to dashboard editors.
@@ -78,10 +78,10 @@ The following indicators can be viewed in the parameter card:
 
 ## Use parameters in your query
 
-A parameter must be used in the query to make the filter applicable for that query visual. After you define a parameter, you can see it in the **Query** page filter top bar and in the query IntelliSense.
+To make a filter work for a query visual, you must use a parameter in the query. When you define a parameter, you see it in the **Query** page filter top bar and in the query IntelliSense.
 
 > [!NOTE]
-> If the parameter isn't used in the query, the filter remains inactive. After you add the parameter to the query, the filter becomes active.
+> If you don't use the parameter in the query, the filter stays inactive. When you add the parameter to the query, the filter becomes active.
 
 ## Parameter types
 
@@ -108,7 +108,7 @@ StormEvents
 | top 5 by TotalEvents
 ```
 
-After you save, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard by selecting from the dropdown: **Time range** (last x minutes/hours/days) or a **Custom time range**.
+After you save, the time range filter shows up on the dashboard. Now you can use it to filter the data on the card. You can filter your dashboard by selecting from the dropdown: **Time range** (last x minutes, hours, or days) or a **Custom time range**.
 
 :::image type="content" source="media/dashboard-parameters/time-range-parameter.png" alt-text="Screenshot showing how to filter using custom time range.":::
 

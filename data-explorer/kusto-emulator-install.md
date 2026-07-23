@@ -115,7 +115,7 @@ You can use any of the following options when running the emulator:
     docker run -v d:\host\local:/kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
     ```
 
-- Run on a different port: The Kusto emulator exposes access to the Kusto Query Engine on port 8080. In other examples, you mapped the host port 8080 to the emulator port 8080. You can use this option to map a different host to the engine.
+- Run on a different port: The Kusto emulator exposes access to the Kusto Query Engine on port 8080. In other examples, you mapped the host port 8080 to the emulator port 8080. Use this option to map a different host port to the engine.
 
     For example, to map port 9000 on the host to the engine, use the following command on Windows Server:
 
@@ -151,7 +151,7 @@ In the following sections, you use Kusto.Explorer to create a database, ingest d
 
 To store data and run queries, create a database or attach the emulator to an existing database.
 
-A database can be persisted in a container folder or on a [mounted folder](#run-emulator-options). A container folder's lifetime is bound to the container, so restarting the container loses any changes. Also, the container's virtual storage is less efficient than native storage. A mounted folder enables you to keep the data between container runs.
+You can persist a database in a container folder or on a [mounted folder](#run-emulator-options). A container folder's lifetime is bound to the container, so restarting the container loses any changes. Also, the container's virtual storage is less efficient than native storage. A mounted folder enables you to keep the data between container runs.
 
 In this example, you keep the data in the container.
 
