@@ -1,9 +1,10 @@
 ---
 title: Best practices for Kusto Query Language (KQL) graph semantics
-description: Learn about the best practices for Kusto Query Language (KQL) graph semantics.
+description: Learn best practices for KQL graph semantics, including transient and persistent graphs, performance tuning, and multitenant partitioning.
 ms.reviewer: herauch
 ms.topic: best-practice
-ms.date: 05/29/2025
+ms.date: 07/23/2026
+ai-usage: ai-assisted
 # Customer intent: As a data analyst, I want to learn about best practices for KQL graph semantics.
 ---
 
@@ -29,11 +30,11 @@ There are two approaches for working with graphs: transient and persistent.
 
 ### Transient graphs
 
-Created dynamically using the [`make-graph`](make-graph-operator.md) operator. These graphs exist only during query execution and are optimal for ad-hoc or exploratory analysis on small to medium datasets.
+Create transient graphs dynamically by using the [`make-graph`](make-graph-operator.md) operator. They exist only during query execution and are optimal for ad hoc or exploratory analysis on small to medium datasets.
 
 ### Persistent graphs
 
-Defined using [graph models](../management/graph/graph-model-overview.md) and [graph snapshots](../management/graph/graph-snapshot-overview.md). These graphs are stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
+Define persistent graphs by using [graph models](../management/graph/graph-model-overview.md) and [graph snapshots](../management/graph/graph-snapshot-overview.md). They're stored in the database, support schema and versioning, and are optimized for repeated, large-scale, or collaborative analysis.
 
 :::moniker-end
 
@@ -43,7 +44,7 @@ Transient graphs, created in-memory using the `make-graph` operator, are ideal f
 
 ### Optimize graph size for performance
 
-The [`make-graph`](make-graph-operator.md) creates an in-memory representation including both structure and properties. Optimize performance by:
+The [`make-graph`](make-graph-operator.md) operator creates an in-memory representation that includes both structure and properties. Optimize performance by:
 
 - **Apply filters early** - Select only relevant nodes, edges, and properties before graph creation
 - **Use projections** - Remove unnecessary columns to minimize memory consumption
@@ -124,7 +125,7 @@ Use the [arg_max aggregation](arg-max-aggregation-function.md) function to deter
 
 **Step 3: Create helper functions**
 
-Ensure only the materialized component is used and apply another filters:
+Make sure the query uses only the materialized component, and apply extra filters:
 
 ```kusto
 .create function currentEmployees () {
@@ -197,7 +198,7 @@ When working with complex graphs containing multiple node types, use a canonical
 
 Consider a factory manager investigating equipment issues and responsible personnel. The scenario combines asset graphs of production equipment with maintenance staff hierarchy:
 
-:::image type="content" source="media/graphs/factory-maintenance-analysis.png" alt-text="A graph of factory people, equiptment, and measurements":::
+:::image type="content" source="media/graphs/factory-maintenance-analysis.png" alt-text="A graph of factory people, equipment, and measurements":::
 
 The data for those entities can be stored directly in your cluster or acquired using query federation to a different service. To illustrate the example, the following tabular data is created as part of the query:
 
@@ -277,7 +278,6 @@ let edges =
 
 With the standardized nodes and edges data, you can create a graph using the [make-graph operator](make-graph-operator.md)
 
-
 ```kusto
 let graph = edges
 | make-graph source --> destination with nodes on nodeId;
@@ -310,15 +310,15 @@ The projection in `graph-match` shows that the temperature sensor exhibited an a
 
 ## Best practices for persistent graphs
 
-Persistent graphs, defined using [graph models](../management/graph/graph-model-overview.md), and [graph snapshots](../management/graph/graph-snapshot-overview.md), provide robust solutions for advanced graph analytics needs. These graphs excel in scenarios requiring repeated analysis of large, complex, or evolving data relationships, and facilitate collaboration by enabling teams to share standardized graph definitions and consistent analytical results. By persisting graph structures in the database, this approach significantly enhances performance for recurring queries and supports sophisticated versioning capabilities.
+Persistent graphs, defined using [graph models](../management/graph/graph-model-overview.md) and [graph snapshots](../management/graph/graph-snapshot-overview.md), support advanced graph analytics. They suit repeated analysis of large, complex, or evolving relationships, and let teams share standardized graph definitions for consistent results. Persisting graph structures in the database improves performance for recurring queries and supports versioning.
 
 ### Use schema and definition for consistency and performance
 
-A clear schema for your graph model is essential, as it specifies node and edge types along with their properties. This approach ensures data consistency and enables efficient querying. Utilize the `Definition` section to specify how nodes and edges are constructed from your tabular data through `AddNodes` and `AddEdges` steps.
+A clear schema for your graph model is essential, as it specifies node and edge types along with their properties. This approach ensures data consistency and enables efficient querying. Use the `Definition` section to specify how nodes and edges are constructed from your tabular data through `AddNodes` and `AddEdges` steps.
 
 ### Use static and dynamic labels for flexible modeling
 
-When modeling your graph, you can utilize both static and dynamic labeling approaches for optimal flexibility. Static labels are ideal for well-defined node and edge types that rarely change—define these in the `Schema` section and reference them in the `Labels` array of your steps. For cases where node or edge types are determined by data values (for example, when the type is stored in a column), use dynamic labels by specifying a `LabelsColumn` in your step to assign labels at runtime. This approach is especially useful for graphs with heterogeneous or evolving schemas. Both mechanisms can be effectively combined—you can define a `Labels` array for static labels and also specify a `LabelsColumn` to incorporate labels from your data, providing maximum flexibility when modeling complex graphs with both fixed and data-driven categorization.
+When modeling your graph, use both static and dynamic labeling approaches for optimal flexibility. Static labels work well for well-defined node and edge types that rarely change. Define these labels in the `Schema` section and reference them in the `Labels` array of your steps. For cases where node or edge types are determined by data values (for example, when the type is stored in a column), use dynamic labels by specifying a `LabelsColumn` in your step to assign labels at runtime. This approach is especially useful for graphs with heterogeneous or evolving schemas. You can effectively combine both mechanisms. You can define a `Labels` array for static labels and also specify a `LabelsColumn` to incorporate labels from your data, providing maximum flexibility when modeling complex graphs with both fixed and data-driven categorization.
 
 #### Example: Using dynamic labels for multiple node and edge types
 
@@ -363,9 +363,9 @@ This dynamic labeling approach provides exceptional flexibility when modeling gr
 
 ## Multitenant partitioning strategies for large-scale ISV scenarios
 
-In large organizations, particularly ISV scenarios, graphs can consist of multiple billions of nodes and edges. This scale presents unique challenges that require strategic partitioning approaches to maintain performance while managing costs and complexity.
+In large organizations, particularly independent software vendor (ISV) scenarios, graphs can consist of billions of nodes and edges. This scale presents unique challenges that require strategic partitioning approaches to maintain performance while managing costs and complexity.
 
-### Understanding the challenge
+### Large-scale multitenant challenges
 
 Large-scale multitenant environments often exhibit the following characteristics:
 
