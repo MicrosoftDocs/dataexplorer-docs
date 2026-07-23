@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   author: spelluru
   ms.author: spelluru
-  ms.date: 06/12/2025
+  ms.date: 07/23/2026
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -42,8 +42,10 @@ landingContent:
     linkLists:
       - linkListType: learn
         links:
-          - text: "Free Pluralsight training: Azure Data Explorer"
-            url: https://www.pluralsight.com/browse
+          - text: Data analysis in Azure Data Explorer with Kusto Query Language
+            url: /training/paths/data-analysis-data-explorer-kusto-query-language/
+          - text: Kusto Query Language learning resources
+            url: kql-learning-resources.md
   # Card
   - title: Create cluster and database
     linkLists:
@@ -102,7 +104,7 @@ landingContent:
       - linkListType: tutorial
         links:
           - text: Write KQL queries
-            url: /azure/data-explorer/kusto/query/tutorials/learn-common-operators
+            url: /kusto/query/tutorials/learn-common-operators
       - linkListType: how-to-guide
         links:
           - text: Query data in Azure Data Lake
