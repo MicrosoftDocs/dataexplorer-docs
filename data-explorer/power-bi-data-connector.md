@@ -3,14 +3,15 @@ title: Use data from Azure Data Explorer in Power BI
 description: Learn how to use Azure Data Explorer data in Power BI.
 ms.reviewer: danyhoter
 ms.topic: how-to
-ms.date: 06/05/2025
+ms.date: 07/23/2026
+ai-usage: ai-assisted
 
 #Customer intent: As a data analyst, I want to understand connection options in Power BI so I can choose the option most appropriate to my scenario.
 ---
 
 # Use Azure Data Explorer data in Power BI
 
-In this article, you'll learn about the different ways in which you can connect Azure Data Explorer as a data source to Power BI. Once connected, you can proceed to build Power BI reports.
+In this article, you learn about the different ways to connect Azure Data Explorer as a data source to Power BI. After you connect, you can build Power BI reports.
 
 ## Prerequisites
 
@@ -40,7 +41,7 @@ You can connect Azure Data Explorer as a data source to Power BI in the followin
 * Starting in Azure Data Explorer web UI and then pasting the data in Power BI Desktop.
 * Starting directly in Power BI Desktop and then adding the Azure Data Explorer connector.
 
-In the following steps, we'll be using the StormEvents table from our [help cluster](https://help.kusto.windows.net/) to demonstrate how to use Azure Data explorer data in Power BI.
+The following steps use the StormEvents table from the [help cluster](https://help.kusto.windows.net/) to demonstrate how to use Azure Data Explorer data in Power BI.
 
 ## [Web UI](#tab/web-ui/)
 
@@ -53,7 +54,7 @@ In the following steps, we'll be using the StormEvents table from our [help clus
     | take 1000
     ```
 
-1. From the **Export**  menu, select **Query to Power BI**.
+1. From the **Export** menu, select **Query to Power BI**.
 
     :::image type="content" source="media/power-bi-data-connector/query-to-power-bi.png" alt-text="Screenshot of Azure Data Explorer web UI, showing the open Share menu with the Query to Power BI option highlighted.":::
 
@@ -83,7 +84,7 @@ In the following steps, we'll be using the StormEvents table from our [help clus
 
 1. Search for *Azure Data Explorer*, select **Azure Data Explorer (Kusto)**, and then select **Connect**.
 
-    :::image type="content" source="media/power-bi-data-connector/connect-data.png" alt-text="Screenshot of the Get Data window, showing  Azure Data Explorer in the search bar with the connect option highlighted.":::
+    :::image type="content" source="media/power-bi-data-connector/connect-data.png" alt-text="Screenshot of the Get Data window, showing Azure Data Explorer in the search bar with the connect option highlighted.":::
 
 1. In the window that appears, fill out the form with the following information.
 
