@@ -1,10 +1,10 @@
 ---
 ms.topic: include
-ms.date: 05/07/2026
+ms.date: 07/26/2026
 ---
 
 The function `slm_embeddings_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that generates text embeddings using local Small Language Models (SLM). This function converts text into numerical vector representations that can be used for semantic search, similarity analysis, and other natural language processing tasks.
-Currently the function supports [harrier-v1-270m](https://huggingface.co/microsoft/harrier-oss-v1-270m), [jina-v2-small](https://huggingface.co/jinaai/jina-embeddings-v2-small-en), and [e5-small-v2](https://huggingface.co/intfloat/e5-small-v2) models.
+Currently, the function supports [harrier-v1-270m](https://huggingface.co/microsoft/harrier-oss-v1-270m), [jina-v2-small](https://huggingface.co/jinaai/jina-embeddings-v2-small-en), [e5-small-v2](https://huggingface.co/intfloat/e5-small-v2), and [SecBERT](https://huggingface.co/jackaduma/SecBERT) models. SecBERT is designed for cybersecurity text and generates 768-dimensional embeddings.
 
 ## Prerequisites
 
@@ -30,13 +30,14 @@ Note that this change requires [AllDatabasesAdmin](../access-control/role-based-
 |*text_col*| `string` | :heavy_check_mark:|The name of the column containing the text to embed.|
 |*embeddings_col*| `string` | :heavy_check_mark:|The name of the column to store the output embeddings.|
 |*batch_size*| `int` ||The number of texts to process in each batch. Default is 32.|
-|*model_name*| `string` ||The name of the embedding model to use. Supported values are `harrier-v1-270m` (default), `jina-v2-small`, and `e5-small-v2`.|
-|*prefix*| `string` ||The text prefix to add before each input. Default is `query:`. For the Harrier and E5 models, use `query:` for search queries and `passage:` for documents to be searched (for the Harrier model, `passage:` maps to the empty task). This parameter is ignored for the Jina model.|
+|*model_name*| `string` ||The name of the embedding model to use. Supported values are `harrier-v1-270m` (default), `jina-v2-small`, `e5-small-v2`, and `secbert`. The value must match the model artifact ZIP file name without the `.zip` extension.|
+|*prefix*| `string` ||The text prefix to add before each input. Default is `query:`. For the Harrier and E5 models, use `query:` for search queries and `passage:` for documents to be searched (for the Harrier model, `passage:` maps to the empty task). This parameter is ignored for the Jina and SecBERT models.|
 
 ## Function definition
 
-* You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database.
-* To optimize storage and latency you can delete external artifacts for models that are not used.
+* Define the function by either embedding its code as a query-defined function or creating it as a stored function in your database.
+* Each invocation loads the embedding engine and only the selected model artifact. To optimize storage, delete external artifacts for models that aren't used.
+* If the Python sandbox image doesn't include the `tokenizers` package, uncomment both `tokenizers-0.22.1.whl` lines in the function definition.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -48,11 +49,13 @@ Define the function using the following [let statement](../query/let-statement.m
 ~~~kusto
 let slm_embeddings_fl = (tbl:(*), text_col:string, embeddings_col:string, batch_size:int=32, model_name:string='harrier-v1-270m', prefix:string='query:')
 {
+    let artifact_root = 'https://artifactswestus.z22.web.core.windows.net/models/SLM/';
+    let engine_artifact = 'embedding_engine.zip';
     let kwargs = bag_pack('text_col', text_col, 'embeddings_col', embeddings_col, 'batch_size', batch_size, 'model_name', model_name, 'prefix', prefix);
     let code = ```if 1:
 		from sandbox_utils import Zipackage
 		Zipackage.install('embedding_engine.zip')
-		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
+#		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
 		
 		from embedding_factory import create_embedding_engine
 		
@@ -65,18 +68,18 @@ let slm_embeddings_fl = (tbl:(*), text_col:string, embeddings_col:string, batch_
 		Zipackage.install(f'{model_name}.zip')
 
 		engine = create_embedding_engine(model_name, cache_dir="C:\\Temp")
-		embeddings = engine.encode(df[text_col].tolist(), batch_size=batch_size, prefix=prefix)		#	prefix is used only for E5
+		embeddings = engine.encode(df[text_col].tolist(), batch_size=batch_size, prefix=prefix)		#	prefix is used by E5 and Harrier; Jina and SecBERT ignore it
 		
 		result = df
 		result[embeddings_col] = list(embeddings)
 	```;
     tbl
-    | evaluate hint.distribution=per_node python(typeof(*), code, kwargs, external_artifacts = bag_pack(
-    			'embedding_engine.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip',
-				'tokenizers-0.22.1.whl', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/tokenizers-0.22.1-cp39-abi3-win_amd64.whl',
-				'harrier-v1-270m.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/harrier-v1-270m.zip',
-				'jina-v2-small.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/jina-v2-small.zip',
-				'e5-small-v2.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/e5-small-v2.zip'))
+    | evaluate hint.distribution=per_node python(
+        typeof(*), code, kwargs,
+        external_artifacts=bag_pack(
+//          'tokenizers-0.22.1.whl', strcat(artifact_root, 'tokenizers-0.22.1-cp39-abi3-win_amd64.whl'),
+            'embedding_engine.zip', strcat(artifact_root, engine_artifact),
+            strcat(model_name, '.zip'), strcat(artifact_root, model_name, '.zip')))
 };
 // Write your query to use the function here.
 ~~~
@@ -92,11 +95,13 @@ Define the stored function once using the following [`.create function`](../mana
 .create-or-alter function with (folder = "Packages\\AI", docstring = "Embedding using local SLM")
 slm_embeddings_fl(tbl:(*), text_col:string, embeddings_col:string, batch_size:int=32, model_name:string='harrier-v1-270m', prefix:string='query:')
 {
+    let artifact_root = 'https://artifactswestus.z22.web.core.windows.net/models/SLM/';
+    let engine_artifact = 'embedding_engine.zip';
     let kwargs = bag_pack('text_col', text_col, 'embeddings_col', embeddings_col, 'batch_size', batch_size, 'model_name', model_name, 'prefix', prefix);
     let code = ```if 1:
 		from sandbox_utils import Zipackage
 		Zipackage.install('embedding_engine.zip')
-		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
+#		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
 		
 		from embedding_factory import create_embedding_engine
 		
@@ -109,18 +114,18 @@ slm_embeddings_fl(tbl:(*), text_col:string, embeddings_col:string, batch_size:in
 		Zipackage.install(f'{model_name}.zip')
 
 		engine = create_embedding_engine(model_name, cache_dir="C:\\Temp")
-		embeddings = engine.encode(df[text_col].tolist(), batch_size=batch_size, prefix=prefix)		#	prefix is used only for E5
+		embeddings = engine.encode(df[text_col].tolist(), batch_size=batch_size, prefix=prefix)		#	prefix is used by E5 and Harrier; Jina and SecBERT ignore it
 		
 		result = df
 		result[embeddings_col] = list(embeddings)
 	```;
     tbl
-    | evaluate hint.distribution=per_node python(typeof(*), code, kwargs, external_artifacts = bag_pack(
-    			'embedding_engine.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip',
-				'tokenizers-0.22.1.whl', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/tokenizers-0.22.1-cp39-abi3-win_amd64.whl',
-				'harrier-v1-270m.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/harrier-v1-270m.zip',
-				'jina-v2-small.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/jina-v2-small.zip',
-				'e5-small-v2.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/e5-small-v2.zip'))
+    | evaluate hint.distribution=per_node python(
+        typeof(*), code, kwargs,
+        external_artifacts=bag_pack(
+//          'tokenizers-0.22.1.whl', strcat(artifact_root, 'tokenizers-0.22.1-cp39-abi3-win_amd64.whl'),
+            'embedding_engine.zip', strcat(artifact_root, engine_artifact),
+            strcat(model_name, '.zip'), strcat(artifact_root, model_name, '.zip')))
 }
 ~~~
 
@@ -139,11 +144,13 @@ To use a query-defined function, invoke it after the embedded function definitio
 ~~~kusto
 let slm_embeddings_fl=(tbl:(*), text_col:string, embeddings_col:string, batch_size:int=32, model_name:string='harrier-v1-270m', prefix:string='query:')
 {
+    let artifact_root = 'https://artifactswestus.z22.web.core.windows.net/models/SLM/';
+    let engine_artifact = 'embedding_engine.zip';
     let kwargs = bag_pack('text_col', text_col, 'embeddings_col', embeddings_col, 'batch_size', batch_size, 'model_name', model_name, 'prefix', prefix);
     let code = ```if 1:
 		from sandbox_utils import Zipackage
 		Zipackage.install('embedding_engine.zip')
-		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
+#		Zipackage.install('tokenizers-0.22.1.whl')			# redundant if tokenizers package is included in the Python image
 		
 		from embedding_factory import create_embedding_engine
 		
@@ -156,18 +163,18 @@ let slm_embeddings_fl=(tbl:(*), text_col:string, embeddings_col:string, batch_si
 		Zipackage.install(f'{model_name}.zip')
 
 		engine = create_embedding_engine(model_name, cache_dir="C:\\Temp")
-		embeddings = engine.encode(df[text_col].tolist(), batch_size=batch_size, prefix=prefix)		#	prefix is used only for E5
+		embeddings = engine.encode(df[text_col].tolist(), batch_size=batch_size, prefix=prefix)		#	prefix is used by E5 and Harrier; Jina and SecBERT ignore it
 		
 		result = df
 		result[embeddings_col] = list(embeddings)
 	```;
     tbl
-    | evaluate hint.distribution=per_node python(typeof(*), code, kwargs, external_artifacts = bag_pack(
-    			'embedding_engine.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/embedding_engine.zip',
-				'tokenizers-0.22.1.whl', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/tokenizers-0.22.1-cp39-abi3-win_amd64.whl',
-				'harrier-v1-270m.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/harrier-v1-270m.zip',
-				'jina-v2-small.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/jina-v2-small.zip',
-				'e5-small-v2.zip', 'https://artifactswestus.z22.web.core.windows.net/models/SLM/e5-small-v2.zip'))
+    | evaluate hint.distribution=per_node python(
+        typeof(*), code, kwargs,
+        external_artifacts=bag_pack(
+//          'tokenizers-0.22.1.whl', strcat(artifact_root, 'tokenizers-0.22.1-cp39-abi3-win_amd64.whl'),
+            'embedding_engine.zip', strcat(artifact_root, engine_artifact),
+            strcat(model_name, '.zip'), strcat(artifact_root, model_name, '.zip')))
 };
 //
 // Create a sample dataset with text passages
