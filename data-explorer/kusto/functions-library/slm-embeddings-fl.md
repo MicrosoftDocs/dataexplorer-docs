@@ -3,7 +3,7 @@ title:  slm_embeddings_fl()
 description:  This article describes the slm_embeddings_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 12/16/2025
+ms.date: 07/26/2026
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # slm_embeddings_fl()
