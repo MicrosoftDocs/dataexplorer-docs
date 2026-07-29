@@ -2,8 +2,8 @@
 title: Ingest from storage using Event Grid subscription - Azure Data Explorer
 description: This article describes Ingest from storage using Event Grid subscription in Azure Data Explorer.
 ms.reviewer: leshalev
-ms.topic: how-to
-ms.date: 08/11/2025
+ms.topic: concept-article
+ms.date: 07/28/2026
 ms.custom:
   - devx-track-azurepowershell
   - sfi-ropc-nochange

@@ -3,16 +3,19 @@ title: Install the Azure Data Explorer Kusto emulator
 description: In this article, you learn how to install the Azure Data Explorer Kusto emulator and run your first query.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 06/30/2025
+ms.date: 07/23/2026
+ai-usage: ai-assisted
 ms.custom: sfi-image-nochange
 ---
 
 # Install the Azure Data Explorer Kusto emulator
 
+The Kusto emulator is a local environment that runs the Azure Data Explorer query engine in a Docker container. You can develop and test queries without provisioning an Azure cluster.
+
 You can install the Azure Data Explorer Kusto emulator in the following ways:
 
-- **On your own device**: Consider using this option if you need to provision a local development environment
-- **On a CI/CD agent virtual machine (VM)**: Use this option if you require a CI/CD pipeline for running automated tests
+- **On your own device**: Use this option if you need to set up a local development environment.
+- **On a CI/CD agent virtual machine (VM)**: Use this option if you need a CI/CD pipeline for running automated tests.
 
 The emulator is available as a *Linux* Docker container image.
 
@@ -35,11 +38,11 @@ This article focuses on how to install the Linux Docker container on a Windows c
     - Any Linux distribution that supports Docker Client for Linux
 - A processor that supports SSE4.2/AVX2 instruction sets
 - At least 2 GB of RAM (4 GB or more recommended)
-- [Docker Client for Linux](https://docs.docker.com/desktop/install/linux-install/) or [Docker Client for Windows](https://docs.docker.com/desktop/windows/install/)
+- [Docker Client for Linux](https://docs.docker.com/desktop/setup/install/linux/) or [Docker Client for Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 
 > [!IMPORTANT]
 > Linux distros only support Linux container images.
-> ARM processors are not supported.
+> ARM processors aren't supported.
 
 ## Install the Kusto emulator
 
@@ -52,7 +55,7 @@ The following steps are for using a shell to start the emulator using the [Kusto
 
     > [!NOTE]
     >
-    > - The first time this command is run, Docker pulls the container image which is several GBs in size and might take several minutes to download. Once downloaded, the image is cached and available for subsequent runs without having to download it again.
+    > - The first time you run this command, Docker pulls the container image, which is several GBs in size and might take several minutes to download. After it downloads, the image is cached and available for subsequent runs without having to download it again.
 
 1. To start the Linux container, make sure you use the `latest` or `stable` tag:
 
@@ -74,7 +77,7 @@ The following steps are for using a shell to start the emulator using the [Kusto
     a8b51bce21ad   mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest   "powershell -Command¦"   11 minutes ago   Up 10 minutes   0.0.0.0:8080->8080/tcp   contoso
     ```
 
-1. Run the following command to verify that Kusto emulator is running.  This command is for PowerShell, you could do something similar using `curl` in a Linux environment. The command runs the `.show cluster` query against the management API and it should return a *StatusCode* with value *200*.
+1. Run the following command to verify that the Kusto emulator is running. This command is for PowerShell; you can do something similar by using `curl` in a Linux environment. The command runs the `.show cluster` query against the management API and should return a *StatusCode* with value *200*.
 
     ```powershell
     Invoke-WebRequest -Method post -ContentType 'application/json' -Body '{"csl":".show cluster"}' http://localhost:8080/v1/rest/mgmt
@@ -114,7 +117,7 @@ You can use any of the following options when running the emulator:
     docker run -v d:\host\local:/kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer-linux:latest
     ```
 
-- Run on a different port: The Kusto emulator exposes access to the Kusto Query Engine on port 8080; hence in other examples you mapped the host port 8080 to the emulator port 8080. You can use this option to map a different host to the engine.
+- Run on a different port: The Kusto emulator exposes access to the Kusto Query Engine on port 8080. In other examples, you mapped the host port 8080 to the emulator port 8080. Use this option to map a different host port to the engine.
 
     For example, to map port 9000 on the host to the engine, use the following command on Windows Server:
 
@@ -150,9 +153,9 @@ In the following sections, you use Kusto.Explorer to create a database, ingest d
 
 To store data and run queries, create a database or attach the emulator to an existing database.
 
-A database can be persisted in a container folder or on a [mounted folder](#run-emulator-options). The former's lifetime is bound to the container, so restarting the container loses any changes. Also, the container virtual storage is less efficient than native one. Mounted folder enables you to keep the data between container runs.
+You can persist a database in a container folder or on a [mounted folder](#run-emulator-options). A container folder's lifetime is bound to the container, so restarting the container loses any changes. Also, the container's virtual storage is less efficient than native storage. A mounted folder enables you to keep the data between container runs.
 
-In this example, we keep the data on the container.
+In this example, you keep the data in the container.
 
 In the [Kusto.Explorer Query mode](/kusto/tools/kusto-explorer-using?view=azure-data-explorer&preserve-view=true#query-mode), run the following command to create a persistent database:
 
@@ -208,7 +211,7 @@ MyIngestedSample
 | summarize sum(Id), avg(Id)
 ```
 
-## Stopping the container
+## Stop the container
 
 1. You can stop the container by running the following command to obtain the container ID:
 

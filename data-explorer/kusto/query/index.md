@@ -1,10 +1,11 @@
 ---
-title:  Kusto Query Language (KQL) overview
-description: Learn about how to use Kusto Query Language (KQL) to explore data, discover patterns, identify anomalies, and create statistical models.
+title: Kusto Query Language (KQL) overview
+description: Learn how to use Kusto Query Language (KQL) to explore data, discover patterns, identify anomalies, and create statistical models.
 ms.reviewer: alexans
 ms.topic: landing-page
 ms.custom: build-2023, build-2023-dataai
-ms.date: 06/03/2025
+ms.date: 07/23/2026
+ai-usage: ai-assisted
 adobe-target: true
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
@@ -12,9 +13,9 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Kusto Query Language (KQL) is a powerful tool for exploring your data and discovering patterns, identifying anomalies and outliers, creating statistical modeling, and more.
+Kusto Query Language (KQL) is a powerful tool for exploring your data and discovering patterns, identifying anomalies and outliers, creating statistical models, and more.
 
-KQL is a simple yet powerful language to query structured, semi-structured, and unstructured data. The language is expressive, easy to read and understand the query intent, and optimized for authoring experiences. KQL is optimal for querying telemetry, metrics, and logs with deep support for text search and parsing, time-series operators and functions, analytics and aggregation, geospatial, vector similarity searches, and many other language constructs that provide the most optimal language for data analysis. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
+KQL is a simple yet powerful language to query structured, semi-structured, and unstructured data. The language is expressive, easy to read and understand the query intent, and optimized for authoring experiences. KQL is optimal for querying telemetry, metrics, and logs with deep support for text search and parsing, time-series operators and functions, analytics and aggregation, geospatial, vector similarity searches, and many other language constructs that provide the most optimal language for data analysis. The query uses schema entities that are organized in a hierarchy similar to SQL: databases, tables, and columns.
 
 If you have a background in scripting or working with databases, much of the content of this article should feel familiar. If not, don't worry, as the intuitive nature of the language quickly enables you to start writing your own queries and driving value for your organization.
 

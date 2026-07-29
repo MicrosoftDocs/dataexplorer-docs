@@ -94,6 +94,16 @@
       "source_path": "query/ai-embed-text-plugin.md",
       "redirect_url": "/kusto/query/ai-embeddings-plugin",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "query/graph-query-language-reference.md",
+      "redirect_url": "/kusto/graph-query-language-guide",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "query/graph-query-language-use-cases.md",
+      "redirect_url": "/kusto/graph-query-language-guide",
+      "redirect_document_id": false
     }
   ]
 }

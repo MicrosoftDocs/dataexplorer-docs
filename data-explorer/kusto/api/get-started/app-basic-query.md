@@ -3,7 +3,8 @@ title: Create an app to run basic queries
 description: Learn how to create an app to run basic queries using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 05/28/2025
+ms.date: 07/23/2026
+ai-usage: ai-assisted
 ms.custom: sfi-ropc-nochange
 #customer intent: To learn about creating an app to run basic queries using Kusto client libraries.
 ---
@@ -26,7 +27,7 @@ In this article, you learn how to:
 
 ## Run a basic query and process the results
 
-In your preferred IDE or text editor, create a project or file named *basic query* using the convention appropriate for your preferred language. Then add the following code:
+In your IDE or text editor, create a project or file named *basic query* by using the naming convention for your language. Then add the following code:
 
 1. Create a client app that connects to the [help cluster](https://dataexplorer.azure.com/clusters/help).
 
@@ -112,7 +113,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
 
     ---
 
-1. Define the database and query to run. The query returns the date, state, and total tornado related damage where the total damage exceeded 100 million dollars.
+1. Define the database and query to run. The query returns the date, state, and total tornado-related damage where the total damage exceeds $100 million.
 
     ### [C\#](#tab/csharp)
 
@@ -433,7 +434,7 @@ For example, you can modify the previous code to access the values of the `Start
 
 ### [C\#](#tab/csharp)
 
-In C#, you can only access the values of the columns by their ordinal positions in the result set. You can't use the column names; hence, the code remains the same.
+In C#, you can only access the values of the columns by their ordinal positions in the result set. You can't use the column names, so the code remains the same.
 
 ```csharp
 int columnNoStartTime = response.GetOrdinal("StartTime");
@@ -564,13 +565,13 @@ KustoOperationResult response = kusto_client.execute(database, query, crp);
 
 ## Use query parameters to protect user input
 
-Query parameters are important for maintaining the security and protection of your data. It safeguards it from potential malicious actors that may attempt to gain unauthorized access to or corrupt your data. For more information about parameterized queries, see [Query parameters declaration statement](../../query/query-parameters-statement.md).
+Query parameters help protect your data. They safeguard it from malicious actors who might attempt to gain unauthorized access to or corrupt your data. For more information about parameterized queries, see [Query parameters declaration statement](../../query/query-parameters-statement.md).
 
 For example, you can modify the previous code to pass the *EventType* value and *DailyDamage* minimum value as parameters to the query. To use parameters:
 
-1. Declare the parameters in the query text
-1. Substitute the property values in the query text with the parameter names
-1. Set the parameter values in the client request properties passed to the execute method
+1. Declare the parameters in the query text.
+1. Substitute the property values in the query text with the parameter names.
+1. Set the parameter values in the client request properties passed to the execute method.
 
 ### [C\#](#tab/csharp)
 

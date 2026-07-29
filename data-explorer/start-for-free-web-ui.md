@@ -1,16 +1,17 @@
 ---
-title: Create a free Azure Data Explorer cluster.
-description: This article you learn how to create a free cluster, ingest data, and run queries to gain insights into your data using your free cluster.
+title: Create a free Azure Data Explorer cluster
+description: Learn how to create a free cluster, ingest data, and run queries to gain insights into your data.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 06/10/2025
+ms.date: 07/23/2026
+ai-usage: ai-assisted
 ---
 
 # Create a free Azure Data Explorer cluster
 
-Creating your own [free cluster](start-for-free.md) gives you the opportunity to explore some of the incredible capabilities of Azure Data Explorer. In particular, it's a great way to experience our fast and highly scalable data exploration service for log and telemetry data, and use the powerful and intuitive Kusto Query Language to gain business insights into your data.
+By creating your own [free cluster](start-for-free.md), you can explore the capabilities of Azure Data Explorer. It's a great way to experience the fast and highly scalable data exploration service for log and telemetry data. Use the Kusto Query Language to gain business insights into your data.
 
-In this article, we show you how to create a free cluster, ingest data,  and run queries using your free cluster.
+In this article, you learn how to create a free cluster, ingest data, and run queries by using your free cluster.
 
 ## Prerequisites
 
@@ -27,7 +28,7 @@ A Microsoft account or a Microsoft Entra user identity to create a free cluster.
 On your cluster's overview page, you see the following:
 
 1. Your cluster's name, the option to upgrade to a full cluster, and the option to delete the cluster.
-1. Your cluster's location, policies, and URI links for connecting to your cluster via our [APIs](/kusto/api/index?view=azure-data-explorer&preserve-view=true) or other tools.
+1. Your cluster's location, policies, and URI links for connecting to your cluster via the [Kusto APIs](/kusto/api/index?view=azure-data-explorer&preserve-view=true) or other tools.
 1. [Quick actions](#quick-actions) you can take to get started with your cluster.
 1. A list of databases in your cluster.
 1. A list of data connections in your cluster.

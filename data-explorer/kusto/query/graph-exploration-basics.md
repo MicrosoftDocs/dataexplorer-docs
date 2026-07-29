@@ -3,7 +3,8 @@ title: Graph exploration basics
 description: Reusable Kusto Query Language (KQL) query patterns for exploring and analyzing graphs with graph semantics.
 ms.reviewer: herauch
 ms.topic: how-to
-ms.date: 08/21/2025
+ms.date: 07/23/2026
+ai-usage: ai-assisted
 # Customer intent: As a data analyst, I want ready-to-run KQL graph queries to explore graph datasets quickly.
 ---
 
@@ -11,14 +12,14 @@ ms.date: 08/21/2025
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-This page provides reusable Kusto Query Language (KQL) patterns for quickly exploring graph datasets and answering common questions about structure, nodes, edges, and properties.
+This article provides reusable Kusto Query Language (KQL) patterns for quickly exploring graph datasets and answering common questions about structure, nodes, edges, and properties.
 
 > [!TIP]
 > Looking for design and performance guidance? See [Best practices for graph semantics](graph-best-practices.md).
 
 ## Common analysis queries
 
-These reusable query patterns work across all graph models and help you understand the structure and characteristics of any graph dataset. The example below use sample graphs available on our [help cluster](https://help.kusto.windows.net) in the **Samples** database. For detailed information about these graphs, see [Graph sample datasets and examples](graph-sample-data.md). Use these queries to explore new graphs, perform basic analysis, or as starting points for more complex graph investigations.
+These reusable query patterns work across all graph models and help you understand the structure and characteristics of any graph dataset. These examples use sample graphs on the [help cluster](https://help.kusto.windows.net) in the **Samples** database. For detailed information about these graphs, see [Graph sample datasets and examples](graph-sample-data.md). Use these queries to explore new graphs, perform basic analysis, or as starting points for more complex graph investigations.
 
 ### Graph overview and statistics
 

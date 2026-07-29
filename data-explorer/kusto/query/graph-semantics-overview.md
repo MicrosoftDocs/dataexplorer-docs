@@ -2,7 +2,8 @@
 title: Graph semantics overview
 description: Learn about graph semantics and the different approaches to create and query graphs
 ms.topic: concept-article
-ms.date: 05/29/2025
+ms.date: 07/23/2026
+ai-usage: ai-assisted
 ---
 
 # Graph semantics overview
@@ -15,17 +16,17 @@ Graphs excel at representing complex data with many-to-many relationships, hiera
 
 The following graph illustrates a cybersecurity attack path scenario. Nodes represent entities such as external sources, users, and critical assets, while edges represent actions or relationships that form a potential attack sequence.
 
-:::image type="content" source="media/graphs/graph-scenario-cybersecurity.png" alt-text="Graph showing the cybersecurity scenario including  phishing email and path to accessing a sensitive database.":::
+:::image type="content" source="media/graphs/graph-scenario-cybersecurity.png" alt-text="Graph of a cybersecurity attack path from a phishing email to a sensitive database.":::
 
-Graph queries leverage graph structure to perform sophisticated operations such as finding paths, patterns, shortest distances, communities, and centrality measures. These capabilities make graphs powerful for modeling relationships, interactions, dependencies, and flows across domains—including social networks, supply chains, IoT device networks, digital twins, recommendation systems, and organizational structures.
+Graph queries use graph structure to perform sophisticated operations such as finding paths, patterns, shortest distances, communities, and centrality measures. These capabilities make graphs powerful for modeling relationships, interactions, dependencies, and flows across domains - including social networks, supply chains, IoT device networks, digital twins, recommendation systems, and organizational structures.
 
 The following graph shows a supply chain scenario where nodes represent suppliers, manufacturers, and distributors, and edges represent supply relationships. This example demonstrates how graphs model flows and dependencies across different business contexts.
 
-:::image type="content" source="media/graphs/graph-supply-chain.png" alt-text="Graph of two suppliers, manufacturer, and distributor, and the supply relationship.":::
+:::image type="content" source="media/graphs/graph-supply-chain.png" alt-text="Supply chain graph connecting two suppliers, a manufacturer, and a distributor through supply relationships.":::
 
 ## Why use graph semantics?
 
-Graph capabilities offer significant advantages by **leveraging existing data investments** while adding sophisticated relationship modeling:
+Graph capabilities offer significant advantages by **using existing data investments** while adding sophisticated relationship modeling:
 
 - **No data migration required** - Build graph models directly from current data without duplication.
 - **Cost-effective solution** - Eliminates the complexity and expense of dedicated graph databases.
@@ -87,13 +88,13 @@ Persistent graphs are essential for:
 - **Production workflows** - Automated systems requiring consistent graph access
 - **Historical comparison** - Time-based analysis of graph evolution and changes
 
-##### Example: Digital Twin Persistent Graph
+#### Example: Digital twin persistent graph
 
 :::image type="content" source="media/graphs/digital-twin-persistent-graph.png" alt-text="A graph showing the digital twin factory example with device relationships and equipment dependencies.":::
 
 In digital twin and IoT scenarios, persistent graphs support regular analysis of device relationships, equipment dependencies, and system evolution over time. Historical analysis allows comparing system states across different periods, tracking the evolution of assets, and conducting long-term trend analysis.
 
-##### Example: IoT and digital twin persistent graph
+#### Example: IoT and digital twin persistent graph
 
 IoT and digital twin applications benefit significantly from persistent graphs when modeling complex relationships between physical devices and their virtual representations across distributed systems. These graphs enable organizations to:
 
@@ -111,7 +112,7 @@ This persistent approach proves invaluable for managing complex IoT ecosystems a
 
 ## Graph querying capabilities
 
-Once a graph is established (through `make-graph` or from a snapshot), you can leverage the full suite of KQL graph operators for comprehensive analysis:
+After you create a graph (through `make-graph` or from a snapshot), you can use the full suite of KQL graph operators for comprehensive analysis:
 
 **Core operators:**
 
@@ -133,7 +134,7 @@ These capabilities support diverse use cases including customer journey analysis
 
 The following decision tree helps you select the most appropriate graph creation approach based on your specific requirements and constraints.
 
-### Decision Tree: Transient vs Persistent Graphs
+### Decision tree: transient vs. persistent graphs
 
 :::image type="content" source="media/graphs/decision-matrix-persistent-or-transient.png" alt-text="Flowchart showing a decision tree for when to use persistent or transient graphs.":::
 
@@ -168,14 +169,14 @@ Persistent graphs are essential when working with enterprise-scale data or when 
 ### Memory usage
 
 - **Transient graphs** - Limited by single cluster node memory, constraining use to datasets within available RAM
-- **Persistent graphs** - Leverage distributed storage and optimized access patterns for enterprise-scale data
+- **Persistent graphs** - Use distributed storage and optimized access patterns for enterprise-scale data.
 
 ### Query latency
 
 - **Transient graphs** - Include construction time in each query, with delays increasing for large datasets or external data sources
 - **Persistent graphs** - Eliminate construction latency through prebuilt snapshots, enabling rapid analysis
 
-External data source dependencies, such as cross cluster queries or external tables to SQL and CosmosDB, can significantly affect transient graph construction time because each query must wait for external responses.
+External data source dependencies, such as cross-cluster queries or external tables to SQL and Azure Cosmos DB, can significantly affect transient graph construction time because each query must wait for external responses.
 
 ### Data freshness
 

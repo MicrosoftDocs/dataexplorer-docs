@@ -3,14 +3,14 @@ title:  externaldata operator
 description: Learn how to use the externaldata operator to return a data table of the given schema whose data was parsed from the specified storage artifact.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/27/2025
+ms.date: 07/13/2026
 ms.custom: sfi-ropc-nochange
 ---
 # externaldata operator
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in Azure Blob Storage or a file in Azure Data Lake Storage.
+The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in Azure Blob Storage or a file in Azure Data Lake Storage Gen2.
 
 ::: moniker range="azure-data-explorer"
 > [!NOTE]

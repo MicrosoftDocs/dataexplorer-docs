@@ -3,14 +3,15 @@ title: Use parameters in Azure Data Explorer dashboards
 description: Learn how to use parameters as a building block for dashboard filters.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 06/05/2025
+ms.date: 07/23/2026
+ai-usage: ai-assisted
 ---
 
 # Use parameters in Azure Data Explorer dashboards
 
 Parameters are used as building blocks for filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. A query can use one or more parameters.
 
-This document describes the creation and use of parameters and linked filters in dashboards. Parameters can be used to filter dashboard visuals either by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#cross-filters-parameters).
+This article describes the creation and use of parameters and linked filters in dashboards. Use parameters to filter dashboard visuals either by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#cross-filters-parameters).
 
 > [!NOTE]
 > Parameter management is available in **Editing** mode to dashboard editors.
@@ -77,10 +78,10 @@ The following indicators can be viewed in the parameter card:
 
 ## Use parameters in your query
 
-A parameter must be used in the query to make the filter applicable for that query visual. Once defined, you can see the parameters in the **Query** page > filter top bar and in the query intellisense.
+To make a filter work for a query visual, you must use a parameter in the query. When you define a parameter, you see it in the **Query** page filter top bar and in the query IntelliSense.
 
 > [!NOTE]
-> If the parameter isn't used in the query, the filter remains inactive. Once the parameter is added to the query, the filter becomes active.
+> If you don't use the parameter in the query, the filter stays inactive. When you add the parameter to the query, the filter becomes active.
 
 ## Parameter types
 
@@ -107,7 +108,7 @@ StormEvents
 | top 5 by TotalEvents
 ```
 
-Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard by selecting from the dropdown: **Time range** (last x minutes/hours/days) or a **Custom time range**.
+After you save, the time range filter shows up on the dashboard. Now you can use it to filter the data on the card. You can filter your dashboard by selecting from the dropdown: **Time range** (last x minutes, hours, or days) or a **Custom time range**.
 
 :::image type="content" source="media/dashboard-parameters/time-range-parameter.png" alt-text="Screenshot showing how to filter using custom time range.":::
 
@@ -147,7 +148,7 @@ The parameter can be seen in the **Parameters** side pane, but aren't currently 
 
 #### Use a single-selection fixed-values parameter
 
-1. Run a sample query using the new *Event TypTope* parameter by using the `_eventType` variable name:
+1. Run a sample query that uses the new *Event Type* parameter by using the `_eventType` variable name:
 
     ```kusto
     StormEvents
@@ -248,13 +249,13 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 ### Multiple-selection query-based parameters
 
-Query-based parameter values are derived at dashboard load time by executing the user specified query. The following example shows how to can create a multiple-selection query-based parameter:
+Query-based parameter values come from running the user-specified query when the dashboard loads. The following example shows how to create a multiple-selection query-based parameter:
 
 #### Create a multiple-selection query-based parameter
 
 1. Select **Parameters** to open the **Parameters** pane and select **+ New parameter**.
 
-1. 1. Fill in the details as mentioned in [Use a single-selection fixed-values parameter](#use-a-single-selection-fixed-values-parameter) with the following changes:
+1. Fill in the details as described in [Use a single-selection fixed-values parameter](#use-a-single-selection-fixed-values-parameter) with the following changes:
 
     * **Label**: State
     * **Parameter type**: Multiple selection

@@ -56,7 +56,7 @@ For more information about KQL in Azure Data Explorer, see:
 
 * [Tutorial: Create geospatial visualizations](tutorials/create-geospatial-visualizations.md)
 * [Data analysis in Azure Data Explorer with Kusto Query Language](/training/paths/data-analysis-data-explorer-kusto-query-language/)
-* [Free Pluralsight training: Azure Data Explorer](https://www.pluralsight.com/partners/microsoft/azure-data-explorer)
+* [Free Pluralsight training: Azure Data Explorer](https://www.pluralsight.com/browse)
 ::: moniker-end
 
 ::: moniker range="microsoft-fabric"

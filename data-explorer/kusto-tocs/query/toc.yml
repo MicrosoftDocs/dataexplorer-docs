@@ -1539,14 +1539,16 @@ items:
     href: /kusto/query/graph-best-practices?view=azure-data-explorer&preserve-view=true
   - name: Additional query languages
     items:
-    - name: Graph query language (GQL)
+    - name: GQL (Graph query language)
       items:
-      - name: Query data using GQL
+      - name: GQL
         href: /kusto/query/graph-query-language?view=azure-data-explorer&preserve-view=true
-      - name: GQL reference
-        href: /kusto/query/graph-query-language-reference?view=azure-data-explorer&preserve-view=true
-      - name: GQL examples and use cases
-        href: /kusto/query/graph-query-language-use-cases?view=azure-data-explorer&preserve-view=true
+      - name: GQL Guide
+        href: /kusto/query/graph-query-language-guide?view=azure-data-explorer&preserve-view=true
+      - name: GQL Clauses
+        href: /kusto/query/graph-query-language-clauses?view=azure-data-explorer&preserve-view=true
+      - name: GQL Functions
+        href: /kusto/query/graph-query-language-functions?view=azure-data-explorer&preserve-view=true
     - name: openCypher
       href: /kusto/query/opencypher-graph-query-language?view=azure-data-explorer&preserve-view=true
 - name: Geospatial

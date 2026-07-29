@@ -3,7 +3,8 @@ title: Scenarios for using Kusto Query Language (KQL) graph semantics
 description: Learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ms.reviewer: spelluru
 ms.topic: concept-article
-ms.date: 05/28/2025
+ms.date: 07/23/2026
+ai-usage: ai-assisted
 # Customer intent: As a data analyst, I want to learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ---
 
@@ -204,7 +205,7 @@ For implementation examples and detailed code samples, see the [Time Series and 
 
 Digital twins provide virtual representations of physical objects or systems, enabling precise modeling and simulation of real-world entities. Graph semantics in KQL excels in digital twin scenarios because relationships between entities—facilities, equipment, sensors, and people—naturally form graph structures.
 
-:::image type="content" source="media/graphs/digital-twins-graph-historization.png" alt-text="Example image of a workflow diagram using  digital twins and graph historization.":::
+:::image type="content" source="media/graphs/digital-twins-graph-historization.png" alt-text="Example image of a workflow diagram using digital twins and graph historization.":::
 
 ### Digital twin capabilities with KQL
 

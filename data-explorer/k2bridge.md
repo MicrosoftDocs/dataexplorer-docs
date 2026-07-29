@@ -3,8 +3,9 @@ title: Visualize data from Azure Data Explorer using Kibana
 description: In this article, you learn how to set up Azure Data Explorer as a data source for Kibana
 ms.reviewer: guregini
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 07/28/2026
 ms.custom: sfi-image-nochange
+ai-usage: ai-assisted
 ---
 
 # Visualize data from Azure Data Explorer in Kibana with the K2Bridge open-source connector
@@ -46,10 +47,10 @@ Before you can visualize data from Azure Data Explorer in Kibana, have the follo
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 * An [Azure Data Explorer cluster and database](create-cluster-and-database.md). You will need the cluster's URL and the database name.
 * [Helm v3](https://github.com/helm/helm#install), the Kubernetes package manager.
-* Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Use version 1.21.2 or newer, with a minimum of three Azure Kubernetes Service nodes. Version 1.21.2 has been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/kubernetes-walkthrough) or [using the Azure portal](/azure/aks/kubernetes-walkthrough-portal).
+* Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Use version 1.21.2 or newer, with a minimum of three Azure Kubernetes Service nodes. Version 1.21.2 is tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/learn/quick-kubernetes-deploy-cli) or [using the Azure portal](/azure/aks/learn/quick-kubernetes-deploy-portal).
 * A Microsoft Entra service principal authorized to view data in Azure Data Explorer, including the client ID and client secret. Alternatively, you can use a [system-assigned managed identity](/azure/aks/use-managed-identity).
 
-If you choose to use a Microsoft Entra service principal, you will need to [create a Microsoft Entra service principal](/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). For the installation, you will need the ClientID and a Secret.
+If you choose to use a Microsoft Entra service principal, you need to [create a Microsoft Entra service principal](/entra/identity-platform/howto-create-service-principal-portal). For the installation, you need the ClientID and a Secret.
 We recommend a service principal with viewer permission and discourage you from using higher-level permissions. To assign permissions, see [Manage database permissions in the Azure portal](manage-database-permissions.md) or use management commands to [Manage database security roles](/kusto/management/manage-database-security-roles?view=azure-data-explorer&preserve-view=true).
 
 If you choose to use a system assigned identity, you will need to get the agent pool managed identity **ClientID** (located in the generated "[_MC_xxxx_]" [resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks)) 
@@ -93,7 +94,7 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         ```
 
         > [!NOTE]
-        > When using a managed identity, the ADX_CLIENT_ID value is the client ID of the managed identity, located in the generated "[_MC_xxxx_]" resource group. For more information, see [MC_ resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks). The ADX_SECRET_ID is only required if you use a Microsoft Entra service principal.
+        > When you use a managed identity, the `ADX_CLIENT_ID` value is the client ID of the managed identity, located in the generated `[_MC_xxxx_]` resource group. For more information, see [MC_ resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks). The `ADX_CLIENT_SECRET` is only required if you use a Microsoft Entra service principal.
 
     1. Optionally, enable Application Insights telemetry. If you're using Application Insights for the first time, [create an Application Insights resource](/azure/azure-monitor/app/create-new-resource). [Copy the instrumentation key](/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) to a variable.
 
@@ -118,7 +119,7 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set       settings.aadClientId="$ADX_CLIENT_ID" --set settings.useManagedIdentity=true --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=7.16_latest] [--set  settings.collectTelemetry=$COLLECT_TELEMETRY]
         ```
 
-        In [Configuration](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md), you can find the complete set of configuration options.
+        In [Configuration](https://github.com/microsoft/K2Bridge/blob/main/docs/configuration.md), you can find the complete set of configuration options.
 
     1. <a name="install-kibana-service"></a> The previous command's output suggests the next Helm command to deploy Kibana. Optionally, run this command:
 
@@ -204,7 +205,7 @@ When Azure Data Explorer is configured as a data source for Kibana, you can use 
 > Only kibana's Lucene query syntax is supported. Do not use the KQL option, which stands for Kibana Query Language.
 
 > [!Tip]
-> In [Searching](https://github.com/microsoft/K2Bridge/blob/master/docs/searching.md), you can find more search rules and logic.
+> In [Searching](https://github.com/microsoft/K2Bridge/blob/main/docs/searching.md), you can find more search rules and logic.
 
 1. To filter your search results, use the **Available field** list. The field list is where you can see:
 
