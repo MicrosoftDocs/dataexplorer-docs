@@ -1,17 +1,14 @@
 ---
 title: .show graph_model command
 description: Learn how to display specific graph model versions using the .show graph_model command with syntax and examples.
-ms.reviewer: herauch
+ms.reviewer: royo
 ms.topic: reference
-ms.date: 05/24/2025
+ms.date: 07/29/2026
 ---
 
-# .show graph_model (preview)
+# .show graph_model
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
-
-> [!NOTE]
-> This feature is currently in preview. Functionality and syntax are subject to change before General Availability.
 
 Shows the details of a specific graph model, including its versions.
 

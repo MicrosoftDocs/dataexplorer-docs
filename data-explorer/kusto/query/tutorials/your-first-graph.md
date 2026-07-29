@@ -6,7 +6,8 @@ ms.author: spelluru
 ms.service: azure-data-explorer
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/10/2026
+ms.reviewer: royo
+ms.date: 07/29/2026
 #customer intent: As a data analyst, I want to create and query graphs in KQL so that I can analyze interconnected data like organizational hierarchies.
 ---
 
@@ -203,9 +204,6 @@ reports
 ::: moniker range="azure-data-explorer || microsoft-fabric"
 
 ## Create a persistent graph model
-
-> [!NOTE]
-> This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
 
 Persistent graphs are stored in the database and can be queried repeatedly without rebuilding the graph structure. Create the same organizational structure as a persistent graph for better performance and reusability.
 
