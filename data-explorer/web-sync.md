@@ -2,7 +2,8 @@
 title: Access your Azure Data Explorer web UI data anywhere
 description: This guide teaches you how to access your Azure Data Explorer Web UI Data from anywhere using syncing.
 ms.topic: how-to
-ms.date: 05/13/2025
+ms.date: 07/28/2026
+ai-usage: ai-assisted
 #customer-intent: As a user, I want to learn how to sync my Azure Data Explorer web UI data so that I can access it from anywhere.
 ---
 
@@ -61,7 +62,7 @@ If you enabled sync and want to stop syncing your Azure Data Explorer web UI pro
 ### Important notes when turning sync off
 - Turning sync off **stops updating cloud data**, but the cloud profile previously uploaded is **not deleted**.
 - Your existing cloud profile remains the version that other browsers use when sync is turned on again.
-- Local browser data will no longer be uploaded or overwritten.
+- Local browser data is no longer uploaded or overwritten.
 
 ## Turn sync back on
 
@@ -72,7 +73,7 @@ If sync was previously disabled:
 3. Confirm that the browser you are enabling sync on contains the state you want to upload as the cloud profile.
 
 > [!WARNING]
-> When you turn sync back on, **this browser becomes the primary source again** and will overwrite cloud-stored data.
+> When you turn sync back on, **this browser becomes the primary source again** and overwrites cloud-stored data.
 
 ## Determine the primary source of sync data
 

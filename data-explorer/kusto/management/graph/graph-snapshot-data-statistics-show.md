@@ -3,15 +3,12 @@ title: .show graph_snapshot data statistics command
 description: Learn how to display storage profile statistics for a graph snapshot by using the .show graph_snapshot data statistics command.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 06/16/2026
+ms.date: 07/29/2026
 ---
 
-# .show graph_snapshot data statistics (preview)
+# .show graph_snapshot data statistics
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
-
-> [!NOTE]
-> This feature is currently in preview. Functionality and syntax are subject to change before General Availability.
 
 Displays a storage profile for a specific graph snapshot, including persisted size, compression, index footprint, and element count for nodes, edges, and graph structure data.
 

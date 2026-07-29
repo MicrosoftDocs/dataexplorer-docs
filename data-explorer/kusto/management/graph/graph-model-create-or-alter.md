@@ -2,15 +2,13 @@
 title: .create-or-alter graph_model command
 description: Learn how to create or alter a graph model using the create-or-alter graph_model command with syntax, parameters, and examples.
 ms.topic: reference
-ms.date: 05/24/2025
+ms.reviewer: royo
+ms.date: 07/29/2026
 ---
 
-# .create-or-alter graph_model (preview)
+# .create-or-alter graph_model
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
-
-> [!NOTE]
-> This feature is currently in preview. Functionality and syntax are subject to change before General Availability.
 
 Creates a new graph model or alters an existing one using the provided model definition payload.
 

@@ -10,10 +10,12 @@ ms.custom: sfi-image-nochange
 
 # Install the Azure Data Explorer Kusto emulator
 
+The Kusto emulator is a local environment that runs the Azure Data Explorer query engine in a Docker container. You can develop and test queries without provisioning an Azure cluster.
+
 You can install the Azure Data Explorer Kusto emulator in the following ways:
 
-- **On your own device**: Consider using this option if you need to provision a local development environment
-- **On a CI/CD agent virtual machine (VM)**: Use this option if you require a CI/CD pipeline for running automated tests
+- **On your own device**: Use this option if you need to set up a local development environment.
+- **On a CI/CD agent virtual machine (VM)**: Use this option if you need a CI/CD pipeline for running automated tests.
 
 The emulator is available as a *Linux* Docker container image.
 
@@ -36,7 +38,7 @@ This article focuses on how to install the Linux Docker container on a Windows c
     - Any Linux distribution that supports Docker Client for Linux
 - A processor that supports SSE4.2/AVX2 instruction sets
 - At least 2 GB of RAM (4 GB or more recommended)
-- [Docker Client for Linux](https://docs.docker.com/desktop/install/linux-install/) or [Docker Client for Windows](https://docs.docker.com/desktop/windows/install/)
+- [Docker Client for Linux](https://docs.docker.com/desktop/setup/install/linux/) or [Docker Client for Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 
 > [!IMPORTANT]
 > Linux distros only support Linux container images.
@@ -209,7 +211,7 @@ MyIngestedSample
 | summarize sum(Id), avg(Id)
 ```
 
-## Stopping the container
+## Stop the container
 
 1. You can stop the container by running the following command to obtain the container ID:
 

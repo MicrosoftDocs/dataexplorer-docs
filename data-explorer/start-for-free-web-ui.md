@@ -28,7 +28,7 @@ A Microsoft account or a Microsoft Entra user identity to create a free cluster.
 On your cluster's overview page, you see the following:
 
 1. Your cluster's name, the option to upgrade to a full cluster, and the option to delete the cluster.
-1. Your cluster's location, policies, and URI links for connecting to your cluster via our [APIs](/kusto/api/index?view=azure-data-explorer&preserve-view=true) or other tools.
+1. Your cluster's location, policies, and URI links for connecting to your cluster via the [Kusto APIs](/kusto/api/index?view=azure-data-explorer&preserve-view=true) or other tools.
 1. [Quick actions](#quick-actions) you can take to get started with your cluster.
 1. A list of databases in your cluster.
 1. A list of data connections in your cluster.

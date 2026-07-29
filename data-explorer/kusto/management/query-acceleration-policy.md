@@ -3,7 +3,7 @@ title: Query acceleration policy
 description: Learn how to use the query acceleration policy to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 06/01/2026
+ms.date: 06/29/2026
 ---
 # Query acceleration policy
 
@@ -30,7 +30,7 @@ To enable query acceleration in the Fabric UI, see [Query acceleration over OneL
 * Delta tables with checkpoint V2 aren't supported.
 * Query performance over accelerated external delta tables that have more than 2.5 million data files may not be optimal.
 * The feature assumes delta tables with static advanced features, for example column mapping doesn't change, partitions don't change, and so on. To change advanced features, first disable the policy, and once the change is made, re-enable the policy.
-* Schema changes on the delta table must also be followed with the respective `.alter` external delta table schema, which might result in acceleration starting from scratch if there was breaking schema change.
+* Schema changes on the delta table must also be followed with the respective `.alter` external delta table schema, which might result in acceleration starting from scratch if there was a breaking schema change. To automatically track schema changes, set the `AutoUpdateSchema` property to `true` on the external delta table. For more information, see [Create and alter delta external tables on Azure Storage](external-tables-delta-lake.md).
 * Parquet files larger than 1 GB won't be cached.
 * Manual edits to the delta table are not allowed and can lead to unexpected results.
 

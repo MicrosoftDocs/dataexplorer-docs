@@ -1,17 +1,14 @@
 ---
 title: .drop graph_model command
 description: Learn how to delete an existing graph model and all its versions using the .drop graph_model command.
-ms.reviewer: herauch
+ms.reviewer: royo
 ms.topic: reference
-ms.date: 05/28/2025
+ms.date: 07/29/2026
 ---
 
-# .drop graph_model (preview)
+# .drop graph_model
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
-
-> [!NOTE]
-> This feature is currently in preview. Functionality and syntax are subject to change before General Availability.
 
 Deletes an existing graph model and all its versions from the database, including any associated snapshots.
 

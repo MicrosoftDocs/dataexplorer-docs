@@ -1,7 +1,7 @@
 ---
 title: include file
 description: include file
-ms.service: iot-hub
+ms.service: azure-iot-hub
 services: iot-hub
 ms.topic: include
 ms.date: 02/14/2020
