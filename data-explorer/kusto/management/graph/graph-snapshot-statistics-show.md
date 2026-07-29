@@ -1,17 +1,14 @@
 ---
 title: .show graph_snapshot statistics command
 description: Learn how to display graph snapshot statistics using the .show graph_snapshot statistics command with syntax, parameters, and examples.
-ms.reviewer: vilauzon
+ms.reviewer: royo
 ms.topic: reference
-ms.date: 02/02/2026
+ms.date: 07/29/2026
 ---
 
-# .show graph_snapshot statistics (preview)
+# .show graph_snapshot statistics
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
-
-> [!NOTE]
-> This feature is currently in preview. Functionality and syntax are subject to change before General Availability.
 
 Displays detailed statistics for a specific graph snapshot, including performance metrics, resource utilization, and processing details.
 

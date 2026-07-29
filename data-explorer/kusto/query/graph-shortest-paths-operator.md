@@ -1,12 +1,12 @@
 ---
-title: graph-shortest-paths Operator (preview)
+title: graph-shortest-paths Operator
 description: Learn how to use the graph-shortest-paths operator to efficiently find the shortest paths from a given set of source nodes to a set of target nodes within a graph
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 02/17/2025
+ms.date: 07/29/2026
 ---
 
-# graph-shortest-paths Operator (preview)
+# graph-shortest-paths Operator
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 

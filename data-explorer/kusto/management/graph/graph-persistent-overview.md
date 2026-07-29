@@ -1,17 +1,14 @@
 ---
 title: Persistent graphs overview
 description: Learn about persistent graphs, including graph models, snapshots, and management commands for scalable graph analytics.
-ms.reviewer: herauch
+ms.reviewer: royo
 ms.topic: reference
-ms.date: 05/24/2025
+ms.date: 07/29/2026
 ---
 
-# Persistent graphs overview (preview)
+# Persistent graphs overview
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
-
-> [!NOTE]
-> This feature is currently in preview. Functionality and syntax are subject to change before General Availability.
 
 Persistent graphs enable you to store, manage, and query graph data structures at scale. Unlike transient graphs created with the [make-graph](../../query/make-graph-operator.md) operator, persistent graphs are durable database objects that persist beyond individual query executions, providing enterprise-grade graph analytics capabilities.
 

@@ -3,15 +3,12 @@ title: .show graph_snapshots command
 description: Learn how to list all graph snapshots for a graph model or all graph models using the .show graph_snapshots command.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 05/27/2026
+ms.date: 07/29/2026
 ---
 
-# .show graph_snapshots (preview)
+# .show graph_snapshots
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
-
-> [!NOTE]
-> This feature is currently in preview. Functionality and syntax are subject to change before General Availability.
 
 Lists all graph snapshots for a specific graph model or for all graph models in the database.
 

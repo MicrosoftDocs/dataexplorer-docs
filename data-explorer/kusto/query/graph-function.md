@@ -3,14 +3,11 @@ title: graph function
 description: Learn how to use the graph function to reference a persisted graph entity for querying.
 ms.reviewer: royo
 ms.topic: reference
-ms.date: 05/28/2025
+ms.date: 07/29/2026
 ---
-# graph function (preview)
+# graph function
 
 >[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
-
-> [!NOTE]
-> This feature is currently in public preview. Functionality and syntax are subject to change before General Availability.
 
 The `graph` function is an intrinsic function that enables querying of a persisted graph entity, similar to the `cluster()`, `database()`, `external_table()`, and `table()` functions. It supports retrieving either the most recent snapshot of the graph, a specific snapshot, or creating a transient graph from the model.
 
