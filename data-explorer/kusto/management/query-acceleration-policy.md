@@ -3,11 +3,7 @@ title: Query acceleration policy
 description: Learn how to use the query acceleration policy to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-<<<<<<< shanisolomon/auto-update-schema-docs
 ms.date: 06/29/2026
-=======
-ms.date: 06/01/2026
->>>>>>> main
 ---
 # Query acceleration policy
 
