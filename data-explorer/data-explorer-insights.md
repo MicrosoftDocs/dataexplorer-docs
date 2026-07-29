@@ -1,15 +1,16 @@
 ---
 title: Azure Data Explorer Clusters insights
-description: This article describes how to use Azure Data Explorer Clusters Insights.
-ms,reviewer: guregini
+description: This article describes how to use Azure Data Explorer Clusters insights.
+ms.reviewer: guregini
 ms.topic: concept-article
 ms.date: 05/24/2022
+ai-usage: ai-assisted
 ms.custom:
   - subject-monitoring
   - sfi-image-nochange
 ---
 
-# Azure Data Explorer Clusters Insights
+# Azure Data Explorer Clusters insights
 
 Azure Data Explorer Clusters Insights provides comprehensive monitoring of your clusters by delivering a unified view of your cluster performance, operations, usage, and failures.
 
@@ -102,7 +103,7 @@ The **Key Metrics** tab shows a unified view of some of the cluster's metrics. T
 
 ### Usage tab
 
-The **Usage** tab allows users to deep dive into the performance of the cluster's commands and queries. On this tab, you can:
+The **Usage** tab provides detailed insights into the performance of the cluster's commands and queries. On this tab, you can:
 
 - See which workload groups, users, and applications are sending the most queries or consuming the most CPU and memory. You can then understand which workloads are submitting the heaviest queries for the cluster to process.
 - Identify top workload groups, users, and applications by failed queries.
@@ -121,7 +122,7 @@ The **Tables** tab shows the latest and historical properties of tables in the c
 
 ### Cache tab
 
-The **Cache** tab allows users to analyze their actual queries' lookback window patterns and compare them to the configured cache policy (for each table). You can identify tables used by the most queries and tables that aren't queried at all, and adapt the cache policy accordingly.
+The **Cache** tab lets you analyze your actual queries' lookback window patterns and compare them to the configured cache policy for each table. You can identify tables used by the most queries and tables that aren't queried at all, and adapt the cache policy accordingly.
 
 You might get cache policy recommendations on specific tables in Azure Advisor. Currently, cache recommendations are available only from the [main Azure Advisor dashboard](azure-advisor.md#use-azure-advisor-recommendations). They're based on actual queries' lookback window in the past 30 days and an unoptimized cache policy for at least 95 percent of the queries.
 
@@ -140,7 +141,7 @@ On this tab, you can select a metric tile and deep dive to understand its trend 
 
 ### Ingestion tab (preview tab)
 
-The **Ingestion** tab allows you to monitor the status of queued ingestion operations to the cluster.
+The **Ingestion** tab lets you monitor the status of queued ingestion operations to the cluster.
 
 In the [queued ingestion](ingest-data-overview.md#continuous-data-ingestion) process, data ingestion is optimized for high throughput. This is done by grouping small chunks of incoming data into batches based on a configurable [ingestion batching policy](/kusto/management/batching-policy?view=azure-data-explorer&preserve-view=true).
 

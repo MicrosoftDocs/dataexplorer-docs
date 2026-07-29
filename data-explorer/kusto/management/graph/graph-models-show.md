@@ -1,17 +1,14 @@
 ---
 title: .show graph_models command
 description: Learn how to list all graph models in a database using the .show graph_models command with syntax, parameters, and examples.
-ms.reviewer: herauch
+ms.reviewer: royo
 ms.topic: reference
-ms.date: 05/24/2025
+ms.date: 07/29/2026
 ---
 
-# .show graph_models (preview)
+# .show graph_models
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
-
-> [!NOTE]
-> This feature is currently in preview. Functionality and syntax are subject to change before General Availability.
 
 Lists all graph models in the database, showing the latest version for each model by default.
 

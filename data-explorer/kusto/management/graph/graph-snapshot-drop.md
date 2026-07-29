@@ -1,17 +1,14 @@
 ---
 title: .drop graph_snapshot command
 description: Learn how to delete a specific graph snapshot using the .drop graph_snapshot command with syntax, parameters, and examples.
-ms.reviewer: herauch
+ms.reviewer: royo
 ms.topic: reference
-ms.date: 05/24/2025
+ms.date: 07/29/2026
 ---
 
-# .drop graph_snapshot (preview)
+# .drop graph_snapshot
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
-
-> [!NOTE]
-> This feature is currently in preview. Functionality and syntax are subject to change before General Availability.
 
 Deletes a specific graph snapshot from a graph model.
 

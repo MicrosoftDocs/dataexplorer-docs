@@ -148,7 +148,7 @@ The parameter can be seen in the **Parameters** side pane, but aren't currently 
 
 #### Use a single-selection fixed-values parameter
 
-1. Run a sample query using the new *Event TypTope* parameter by using the `_eventType` variable name:
+1. Run a sample query that uses the new *Event Type* parameter by using the `_eventType` variable name:
 
     ```kusto
     StormEvents
@@ -249,13 +249,13 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 ### Multiple-selection query-based parameters
 
-Query-based parameter values are derived at dashboard load time by executing the user specified query. The following example shows how to can create a multiple-selection query-based parameter:
+Query-based parameter values come from running the user-specified query when the dashboard loads. The following example shows how to create a multiple-selection query-based parameter:
 
 #### Create a multiple-selection query-based parameter
 
 1. Select **Parameters** to open the **Parameters** pane and select **+ New parameter**.
 
-1. 1. Fill in the details as mentioned in [Use a single-selection fixed-values parameter](#use-a-single-selection-fixed-values-parameter) with the following changes:
+1. Fill in the details as described in [Use a single-selection fixed-values parameter](#use-a-single-selection-fixed-values-parameter) with the following changes:
 
     * **Label**: State
     * **Parameter type**: Multiple selection

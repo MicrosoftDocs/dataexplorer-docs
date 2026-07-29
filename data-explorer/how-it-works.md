@@ -2,7 +2,7 @@
 title: How Azure Data Explorer works
 description: 'Learn more about how Azure Data Explorer works.'
 ms.reviewer: avnera
-ms.topic: how-to
+ms.topic: concept-article
 ms.date: 07/23/2026
 ai-usage: ai-assisted
 ---
@@ -63,11 +63,11 @@ For more information on specifying data sort order, see [Row order policy](/kust
 
 Azure Data Explorer uses distributed data query technology intended for fast ad hoc analytics on large unstructured data sets. Key features of this technology include:
 
-* Query-generated temporary data is stored in aggregated RAM
-* Relevant extents are marked on a query plan, providing snapshot isolation
-* Fast and efficient queries are prioritized with short [default timeouts](/kusto/set-timeout-limits?view=azure-data-explorer&preserve-view=true)
-* Native support for [cross-cluster queries](/kusto/query/cross-cluster-or-database-queries?view=azure-data-explorer&preserve-view=true) that minimizes inter-cluster data exchange
-* Queries are just-in-time compiled into highly efficient machine code, using data statistics from all extents and tailored to column encoding specifics
+* Query-generated temporary data is stored in aggregated RAM.
+* Relevant extents are marked on a query plan, providing snapshot isolation.
+* Fast and efficient queries are prioritized with short [default timeouts](/kusto/set-timeout-limits?view=azure-data-explorer&preserve-view=true).
+* Native support for [cross-cluster queries](/kusto/query/cross-cluster-or-database-queries?view=azure-data-explorer&preserve-view=true) that minimizes inter-cluster data exchange.
+* Queries are just-in-time compiled into highly efficient machine code, using data statistics from all extents and tailored to column encoding specifics.
 
 > [!NOTE]
 > Azure Data Explorer is designed to work with the [Kusto Query Language (KQL)](/kusto/query/index?view=azure-data-explorer&preserve-view=true), custom-built for Azure Data Explorer. Additionally, [T-SQL](t-sql.md) is supported.

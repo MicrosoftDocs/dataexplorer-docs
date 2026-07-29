@@ -26,13 +26,13 @@ Power BI supports *Import* and *DirectQuery* connectivity modes. When building P
 Use **Import** mode when:
 
 * Your dataset is small and you don't need near real-time data.
-* You perform [aggregation in Kusto](/kusto/query/aggregation-functions?view=azure-data-explorer&preserve-view=true).
+* You perform [aggregation in Kusto](/kusto/query/aggregation-functions).
 
 Use **DirectQuery** mode when:
 
 * Your dataset is large or you need near real-time data.
 
-For more information on connectivity modes, see [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about).
+For more information on connectivity modes, see [Import and DirectQuery connectivity modes](/power-bi/connect-data/desktop-directquery-about).
 
 ## Use data in Power BI
 
@@ -109,7 +109,7 @@ The following steps use the StormEvents table from the [help cluster](https://he
 
 1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents**, and then select **Load Data**.
 
-    Optionally, if you want to shape your data first, select **Transform data** to launch Power Query Editor. For more information, see [Shape data](/power-bi/fundamentals/desktop-getting-started?source=recommendations&branch=main#shape-data).
+    Optionally, if you want to shape your data first, select **Transform data** to launch Power Query Editor. For more information, see [Shape data](/power-bi/fundamentals/desktop-getting-started#shape-data).
 
     :::image type="content" source="media/power-bi-data-connector/select-table.png" alt-text="Screenshot of Navigator screen, showing that the StormEvents table is selected. The Load button is highlighted.":::
 

@@ -65,6 +65,7 @@ The supported authentication methods are the same as those supported by [Azure S
 | `fileExtension`   | `string`   | If set, specifies extension of the files. On write, files names will end with this suffix. On read, only files with this file extension will be read.           |
 | `encoding`        | `string`   | Specifies how the text is encoded: `UTF8NoBOM` (default) or `UTF8BOM`.             |
 | `dryRun`          | `bool`     | If set, the external table definition isn't persisted. This option is useful for validating the external table definition, especially in conjunction with the `filesPreview` or `sampleUris` parameter. |
+| `AutoUpdateSchema` | `bool`    | If set to `true`, the external table automatically tracks and reflects schema changes from the remote delta table. Schema is updated periodically, usually every several minutes, and may not reflect changes immediately. Requires a [query acceleration policy](query-acceleration-policy.md) to be enabled on the table. Only available when the schema is inferred (not user-provided). Default is `false`. |
 
 > [!NOTE]
 > The external delta table is accessed during creation, to infer the partitioning information and, optionally, the schema. Make sure that the table definition is valid and that the storage is accessible.

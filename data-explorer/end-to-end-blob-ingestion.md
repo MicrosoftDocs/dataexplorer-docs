@@ -1,15 +1,16 @@
 ---
-title: 'End-to-end blob ingestion into Azure Data Explorer'
-description: In this article, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example.
+title: 'Configure Azure Data Explorer to ingest from Azure Blob Storage'
+description: In this tutorial, you learn how to ingest blobs into Azure Data Explorer with an end-to-end example.
 ms.reviewer: lugoldbe
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 05/10/2023
+ai-usage: ai-assisted
 ms.custom:
   - devx-track-arm-template
   - sfi-ropc-nochange
 ---
 
-# End-to-end blob ingestion into Azure Data Explorer
+# Configure Azure Data Explorer to ingest from Azure Blob Storage
 
 Azure Data Explorer is a fast and scalable data exploration service for log and telemetry data. This article gives you an end-to-end example of how to ingest data from Azure Blob storage into Azure Data Explorer.
 
@@ -191,7 +192,7 @@ In this article, you use an Azure Resource Manager (ARM) template to create a re
     "variables": {
     },
     "resources": [{
-            "apiVersion": "2017-04-01",
+            "apiVersion": "2026-01-01",
             "type": "Microsoft.EventHub/namespaces",
             "name": "[parameters('eventHubNamespaceName')]",
             "location": "[parameters('location')]",
@@ -205,7 +206,7 @@ In this article, you use an Azure Resource Manager (ARM) template to create a re
                 "maximumThroughputUnits": 0
             }
         }, {
-            "apiVersion": "2017-04-01",
+            "apiVersion": "2026-01-01",
             "type": "Microsoft.EventHub/namespaces/eventhubs",
             "name": "[concat(parameters('eventHubNamespaceName'), '/', parameters('eventHubName'))]",
             "location": "[parameters('location')]",
@@ -218,7 +219,7 @@ In this article, you use an Azure Resource Manager (ARM) template to create a re
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[parameters('storageAccountName')]",
             "location": "[parameters('location')]",
-            "apiVersion": "2018-07-01",
+            "apiVersion": "2026-04-01",
             "sku": {
                 "name": "[parameters('storageAccountType')]"
             },
@@ -227,7 +228,7 @@ In this article, you use an Azure Resource Manager (ARM) template to create a re
                 {
                     "name": "[concat('default/', parameters('containerName'))]",
                     "type": "blobServices/containers",
-                    "apiVersion": "2018-07-01",
+                    "apiVersion": "2026-04-01",
                     "dependsOn": [
                         "[parameters('storageAccountName')]"
                     ],
@@ -245,7 +246,7 @@ In this article, you use an Azure Resource Manager (ARM) template to create a re
                 "tier": "Standard",
                 "capacity": 2
             },
-            "apiVersion": "2019-09-07",
+            "apiVersion": "2025-02-14",
             "location": "[parameters('location')]",
             "tags": {
                 "Created By": "GitHub quickstart template"
@@ -253,7 +254,7 @@ In this article, you use an Azure Resource Manager (ARM) template to create a re
         }, {
             "name": "[concat(parameters('kustoClusterName'), '/', parameters('kustoDatabaseName'))]",
             "type": "Microsoft.Kusto/clusters/databases",
-            "apiVersion": "2019-09-07",
+            "apiVersion": "2025-02-14",
             "location": "[parameters('location')]",
             "dependsOn": ["[resourceId('Microsoft.Kusto/clusters', parameters('kustoClusterName'))]"],
             "properties": {
@@ -262,7 +263,7 @@ In this article, you use an Azure Resource Manager (ARM) template to create a re
             }
         }, {
             "type": "Microsoft.Kusto/Clusters/principalAssignments",
-            "apiVersion": "2019-11-09",
+            "apiVersion": "2025-02-14",
             "name": "[concat(parameters('kustoClusterName'), '/', parameters('clusterPrincipalAssignmentName'))]",
             "dependsOn": ["[resourceId('Microsoft.Kusto/clusters', parameters('kustoClusterName'))]"],
             "properties": {
@@ -273,7 +274,7 @@ In this article, you use an Azure Resource Manager (ARM) template to create a re
             }
         }, {
             "type": "Microsoft.Kusto/Clusters/Databases/principalAssignments",
-            "apiVersion": "2019-11-09",
+            "apiVersion": "2025-02-14",
             "name": "[concat(parameters('kustoClusterName'), '/', parameters('kustoDatabaseName'), '/', parameters('databasePrincipalAssignmentName'))]",
             "dependsOn": ["[resourceId('Microsoft.Kusto/clusters/databases', parameters('kustoClusterName'), parameters('kustoDatabaseName'))]"],
             "properties": {
