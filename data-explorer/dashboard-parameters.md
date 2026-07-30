@@ -3,7 +3,7 @@ title: Use parameters in Azure Data Explorer dashboards
 description: Learn how to use parameters as a building block for dashboard filters.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 07/23/2026
+ms.date: 07/30/2026
 ai-usage: ai-assisted
 ---
 
@@ -28,25 +28,25 @@ To create a parameter:
 
 1. Switch from **Viewing** to **Editing** mode.
 
-    :::image type="content" source="media/dashboard-parameters/edit-dashboard.png" alt-text="Screenshot of the editing button in the upper toolbar.":::
+    :::image type="content" source="media/dashboard-parameters/edit-dashboard.png" alt-text="Screenshot of the editing button in the upper toolbar." lightbox="media/dashboard-parameters/edit-dashboard.png":::
 
 1. Select the **Parameters** button in the upper toolbar.
 
-    :::image type="content" source="media/dashboard-parameters/parameters-widget.png" alt-text="Screenshot of the parameters button in the upper toolbar.":::
+    :::image type="content" source="media/dashboard-parameters/parameters-widget.png" alt-text="Screenshot of the parameters button in the upper toolbar." lightbox="media/dashboard-parameters/parameters-widget.png":::
 
 1. Select the **+ Add** button in the **Add parameter** side pane.
 
-    :::image type="content" source="media/dashboard-parameters/parameters-pane.png" alt-text="Screenshot of the add parameter button in the side pane.":::
+    :::image type="content" source="media/dashboard-parameters/parameters-pane.png" alt-text="Screenshot of the add parameter button in the side pane." lightbox="media/dashboard-parameters/parameters-pane.png":::
 
 1. Fill in the relevant [properties](#supported-properties) for your parameter.
 
-    :::image type="content" source="media/dashboard-parameters/create-parameter.png" alt-text="Screenshot of the add parameter configuration side pane.":::
+    :::image type="content" source="media/dashboard-parameters/create-parameter.png" alt-text="Screenshot of the add parameter configuration side pane." lightbox="media/dashboard-parameters/create-parameter.png":::
 
 ## View parameters list
 
 To view the list of all dashboard parameters, select the **Parameters** button in the upper toolbar.
 
-:::image type="content" source="media/dashboard-parameters/parameters-list.png" alt-text="Screenshot of the parameters button highlighted and the list of parameters in the side pane.":::
+:::image type="content" source="media/dashboard-parameters/parameters-list.png" alt-text="Screenshot of the parameters button highlighted and the list of parameters in the side pane." lightbox="media/dashboard-parameters/parameters-list.png":::
 
 ### Supported properties
 
@@ -67,7 +67,7 @@ In the **Add parameter** side pane, configure the following properties:
 
 After selecting **Parameters** from the upper toolbar, you can [view the list of existing parameters](#view-parameters-list). In each parameter card, select the pencil widget to edit the parameter, the trash bin to delete, or select the **More [...]** menu to **Duplicate** or move the parameter. Alternatively, the cards can be reordered by drag and drop.
 
-:::image type="content" source="media/dashboard-parameters/edit-parameter.png" alt-text="Screenshot of sample parameters cards and their editing options.":::
+:::image type="content" source="media/dashboard-parameters/edit-parameter.png" alt-text="Screenshot of sample parameters cards and their editing options." lightbox="media/dashboard-parameters/edit-parameter.png":::
 
 The following indicators can be viewed in the parameter card:
 
@@ -110,7 +110,7 @@ StormEvents
 
 After you save, the time range filter shows up on the dashboard. Now you can use it to filter the data on the card. You can filter your dashboard by selecting from the dropdown: **Time range** (last x minutes, hours, or days) or a **Custom time range**.
 
-:::image type="content" source="media/dashboard-parameters/time-range-parameter.png" alt-text="Screenshot showing how to filter using custom time range.":::
+:::image type="content" source="media/dashboard-parameters/time-range-parameter.png" alt-text="Screenshot of filtering data using a custom time range." lightbox="media/dashboard-parameters/time-range-parameter.png":::
 
 ### Single-selection fixed-values parameters
 
@@ -162,7 +162,7 @@ The parameter can be seen in the **Parameters** side pane, but aren't currently 
 
 1. Select different values to update the visuals.
 
-    :::image type="content" source="media/dashboard-parameters/top-five-states.png" alt-text="Screenshow showing the top five states result.":::
+    :::image type="content" source="media/dashboard-parameters/top-five-states.png" alt-text="Screenshot of the top five states result." lightbox="media/dashboard-parameters/top-five-states.png":::
 
 ### Multiple-selection fixed-values parameters
 
@@ -197,7 +197,7 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
 1. Select one or more different values to update the visuals.
 
-    :::image type="content" source="media/dashboard-parameters/multiple-event-types.png" alt-text="Screenshot showing how to select multiple event types.":::
+    :::image type="content" source="media/dashboard-parameters/multiple-event-types.png" alt-text="Screenshot of selecting multiple event types." lightbox="media/dashboard-parameters/multiple-event-types.png":::
 
 ### Single-selection query-based parameters
 
@@ -362,17 +362,17 @@ To create a cross-filter, you must turn on the option in the visual, and then sp
     > [!IMPORTANT]
     > The column and parameter must be of the same data type.
 
-:::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of the edit visual page, showing the interactions tab.":::
+:::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of the edit visual page, showing the interactions tab." lightbox="media/dashboard-parameters/cross-filter-query.png":::
 
 ## Interact with your data using cross-filter
 
 Once the cross-filter is defined, you can use it to interact with your data. In visuals where you define cross-filters, you can select data points and use their values to filter the current dashboard page. For table visuals, select data points by right-clicking on the relevant cell and then in the context menu, select **Cross-filter**.
 
-:::image type="content" source="media/dashboard-parameters/cross-filter.jpg" alt-text="Screenshot of a table visual, showing the cross-filter context menu option.":::
+:::image type="content" source="media/dashboard-parameters/cross-filter.jpg" alt-text="Screenshot of a table visual, showing the cross-filter context menu option." lightbox="media/dashboard-parameters/cross-filter.jpg":::
 
 You can reset the cross-filter by selecting **Reset** at the top of the visual where it was selected.
 
-:::image type="content" source="media/dashboard-parameters/reset-button.jpg" alt-text="Screenshot of a table visual, showing the reset button.":::
+:::image type="content" source="media/dashboard-parameters/reset-button.jpg" alt-text="Screenshot of a table visual, showing the reset button." lightbox="media/dashboard-parameters/reset-button.jpg":::
 
 ## Use drillthroughs as dashboard parameters
 
@@ -386,7 +386,7 @@ To create a drillthrough, you must first turn on drillthroughs in the visual and
 
 1. In the right pane, select **Interactions**, then turn on drillthrough.
 
-    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-create.png" alt-text="Screenshot of drillthrough page, showing the turn-on option.":::
+    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-create.png" alt-text="Screenshot of drillthrough page, showing the turn-on option." lightbox="media/dashboard-parameters/drillthrough-visual-create.png":::
 
 1. Under **Drillthrough**, select **Create new**, and specify the following information. Optionally select **Add another pair** to add multiple parameters for a target page. Repeat this step to add drillthroughs to other pages in the current dashboard using different parameters.
 
@@ -404,7 +404,7 @@ To create a drillthrough, you must first turn on drillthroughs in the visual and
 
 Once drillthroughs are defined, you can use them to interact with your data. To do so, in visuals or tables where you define a drillthrough, right-click on a data point, and then select **Drill through to** > *destination page*. The values from the data point are used as the parameters to filter the visuals on the target page.
 
-:::image type="content" source="media/dashboard-parameters/drillthrough-combined.jpg" alt-text="Screenshot of a dashboard visual, showing the drillthrough interaction.":::
+:::image type="content" source="media/dashboard-parameters/drillthrough-combined.jpg" alt-text="Screenshot of a dashboard visual, showing the drillthrough interaction." lightbox="media/dashboard-parameters/drillthrough-combined.jpg":::
 
 To return to the source page, in the top-right of the destination page, select **Reset**. All filters assigned by the drillthrough are reset.
 
