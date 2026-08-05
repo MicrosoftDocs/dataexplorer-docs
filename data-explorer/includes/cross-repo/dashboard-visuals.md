@@ -1,7 +1,42 @@
 ---
 ms.topic: include
-ms.date: 02/21/2024
+ms.date: 08/05/2026
 ---
+## Stat
+
+You can use Stat in Azure Data Explorer dashboards and Fabric Real-Time Dashboards. It shows a single scalar value. Select it from the dashboard visual picker.
+
+> [!NOTE]
+> Until `render stat` is implemented, you can't select the Stat visual through the KQL `render` operator. For compatible clients, `render card` provides the closest query-level equivalent.
+
+### Example query
+
+```kusto
+StormEvents
+| summarize TotalEvents = count()
+```
+
+Select **Stat** as the visual type.
+
+## Multi Stat
+
+Multi Stat displays several values in a grid of slots. Select the visual through the dashboard visual picker.
+
+The query should return a label column and a value column. You can explicitly select the **Label column** and **Value column** in the visual settings.
+
+### Example query
+
+```kusto
+datatable(Status:string, Count:long)
+[
+    "Active", 42,
+    "Mitigated", 18,
+    "Resolved", 73
+]
+```
+
+In the visual settings, select the first output column as the **Label column**, and the second output column as the **Value column**.
+
 ## Funnel chart
 
 A funnel chart visualizes a linear process that has sequential, connected stages. Each funnel stage represents a percentage of the total. So, in most cases, a funnel chart is shaped like a funnel, with the first stage being the largest, and each subsequent stage smaller than its predecessor.
