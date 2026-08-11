@@ -46,3 +46,4 @@ MV | where avg_Duration > 1h
 ## Related content
 
 * [Materialized views](materialized-view-overview.md)
+* [Materialized views optimization](materialized-views-optimization.md)
