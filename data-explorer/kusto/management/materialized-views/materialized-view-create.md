@@ -284,92 +284,6 @@ The following aggregation functions are supported:
 * [`percentile`, `percentiles`](../../query/percentiles-aggregation-function.md)
 * [`tdigest`](../../query/tdigest-aggregation-function.md)
 
-### Performance tips
-
-* **Use a datetime group-by key**: Materialized views that have a `datetime` column as one of their group-by keys is more efficient than those that don't. The reason is that some optimizations can be applied only when there's a datetime group-by key. If adding a datetime group-by key doesn't change the semantics of your aggregation, we recommend that you add it. You can do this only if the `datetime` column is *immutable* for each unique entity.
-
-  For example, in the following aggregation:
-
-  ```kusto
-      SourceTable | summarize take_any(*) by EventId
-  ```
-
-  If `EventId` always has the same `Timestamp` value, and therefore adding `Timestamp` doesn't change the semantics of the aggregation, it's better to define the view as:
-
-  ```kusto
-      SourceTable | summarize take_any(*) by EventId, Timestamp
-  ```
-
-  > [!TIP]
-  > Late-arriving data in a datetime group-by key can have a negative impact on the materialized view's performance. For example, assume that a materialized view uses `bin(Timestamp, 1d)` as one of its group-by keys, and newly ingested records to the source table have old `Timestamp` values. These records might negatively affect the materialized view.
-  >
-  > If you expect late arriving records ingested to the source table, adjust the caching policy of the materialized view accordingly. For example, if records with Timestamp of six months ago are expected to be ingested to the source table, the materialization process needs to scan the materialized view for the previous six months. If this period is in cold cache, materialization experiences cache misses which have a negative impact on the performance of the view.
-  >
-  > If such late arriving records aren't expected, we recommend that in the materialized view query. Either filter these records out or normalize their timestamp values to the current time.
-
-* **Define a lookback period**: If applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [Lookback period](#lookback-period).  
-
-* **Add columns frequently used for filtering as group-by keys**: Materialized view queries are optimized when they're filtered by one of the materialized view's group-by keys. If you know that your query pattern will often filter by a column that's immutable according to a unique entity in the materialized view, include it in the materialized view's group-by keys.
-
-    For example, a materialized view exposes `arg_max` by a `ResourceId` value that is often filtered by `SubscriptionId`. Assuming that a `ResourceId` value always belongs to the same `SubscriptionId` value, define the materialized view query as:
-
-    ```kusto
-    .create materialized-view ArgMaxResourceId on table FactResources
-    {
-        FactResources | summarize arg_max(Timestamp, *) by SubscriptionId, ResourceId 
-    }
-    ```
-
-    The preceding definition is preferable over the following:
-
-    ```kusto
-    .create materialized-view ArgMaxResourceId on table FactResources
-    {
-        FactResources | summarize arg_max(Timestamp, *) by ResourceId 
-    }
-    ```
-
-* **Use update policies where appropriate**: The materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend that you move these operations to an [update policy](../update-policy.md). Leave only the aggregation for the materialized view.
-
-    For example, it's better to define the following update policy:
-
-    ```kusto
-    .alter-merge table Target policy update 
-    @'[{"IsEnabled": true, 
-        "Source": "SourceTable", 
-        "Query": 
-            "SourceTable 
-            | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)", 
-            | lookup DimResources on ResourceId
-            | mv-expand Events
-        "IsTransactional": false}]'  
-    ```
-
-    And define the following materialized view:
-
-    ```kusto
-    .create materialized-view Usage on table Events
-    {
-        Target 
-        | summarize count() by ResourceId 
-    }
-    ```
-
-    The alternative, of including the update policy as part of the materialized view query, might perform worse and therefore not recommended:
-
-    ```kusto
-    .create materialized-view Usage on table SourceTable
-    {
-        SourceTable
-        | extend ResourceId = strcat('subscriptions/', toupper(SubscriptionId), '/', resourceId)
-        | lookup DimResources on ResourceId
-        | mv-expand Events
-        | summarize count() by ResourceId
-    }
-    ```
-
-> [!TIP]
-> If you require the best query time performance, but you can tolerate some data latency, use the [materialized_view() function](../../query/materialized-view-function.md).
 
 ### Backfill a materialized view
 
@@ -555,6 +469,7 @@ If the cancellation isn't finished within 10 minutes, `CancellationState` indica
 
 * [Materialized views](materialized-view-overview.md)
 * [Materialized views use cases](materialized-view-use-cases.md)
+* [Materialized views optimization](materialized-views-optimization.md)
 * [.alter materialized-view](materialized-view-alter.md)
 * [.drop materialized-view](materialized-view-drop.md)
 * [.show materialized-view(s)](materialized-view-show-command.md)
