@@ -172,6 +172,8 @@ items:
       href: /kusto/management/materialized-views/materialized-view-policies?view=azure-data-explorer&preserve-view=true
     - name: Materialized views use cases
       href: /kusto/management/materialized-views/materialized-view-use-cases?view=azure-data-explorer&preserve-view=true
+    - name: Materialized views optimization
+      href: /kusto/management/materialized-views/materialized-views-optimization?view=azure-data-explorer&preserve-view=true
     - name: Materialized views data purge
       href: /kusto/management/materialized-views/materialized-view-purge?view=azure-data-explorer&preserve-view=true
     - name: Monitor materialized views
@@ -254,6 +256,10 @@ items:
       href: /kusto/management/graph/graph-snapshot-statistics-show?view=azure-data-explorer&preserve-view=true
     - name: .show graph_snapshots statistics
       href: /kusto/management/graph/graph-snapshots-statistics-show?view=azure-data-explorer&preserve-view=true
+    - name: .show graph_snapshot data statistics
+      href: /kusto/management/graph/graph-snapshot-data-statistics-show?view=azure-data-explorer&preserve-view=true
+    - name: .show graph_snapshots data statistics
+      href: /kusto/management/graph/graph-snapshots-data-statistics-show?view=azure-data-explorer&preserve-view=true
     - name: .show graph_snapshots failures
       href: /kusto/management/graph/graph-snapshots-failures-show?view=azure-data-explorer&preserve-view=true
   - name: Stored query results
@@ -551,6 +557,8 @@ items:
       displayName: .show table mirroring policy
     - name: .show database operations mirroring-statistics
       href: /kusto/management/show-database-operations-mirroring-statistics?view=azure-data-explorer&preserve-view=true
+    - name: .show table operations mirroring-status command
+      href: /kusto/management/show-table-operations-mirroring-status-command?view=azure-data-explorer&preserve-view=true
     - name: .show table operations mirroring-statistics
       href: /kusto/management/show-table-operations-mirroring-statistics?view=azure-data-explorer&preserve-view=true
     - name: .show table operations mirroring-exported-artifacts command
