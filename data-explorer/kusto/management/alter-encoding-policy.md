@@ -50,11 +50,10 @@ The following table contains the possible values for the *EncodingPolicyType* pa
 
 > [!NOTE]
 >
+> * The `BigObjectIndexed32` encoding policy is currently in preview. 
 > * The `BigObject`, `BigObject32`, and `BigObjectIndexed32` encoding policies are relevant for columns with [string](../query/scalar-data-types/string.md) or [dynamic](../query/scalar-data-types/dynamic.md) data types.
 > * Setting the `BigObjectIndexed32` policy raises the per-column maximum value size for that string or dynamic column to 32 MB, up from the default 1 MB. Values above the limit are still capped: `string` values are truncated to the limit (`MaxValueSize` property of the default policy is 1 MB), `dynamic` values are replaced with null. 
 > * Regardless of whether this policy is set, the maximum record (row) size remains 64 MB.
-
- [!INCLUDE [feature-preview-note](../includes/feature-preview-note.md)]
 
 
 ## Example
