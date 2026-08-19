@@ -1,9 +1,9 @@
 ---
 title: .alter column policy encoding command
 description: Learn how to use the `.alter column policy encoding` command to change the encoding policy.
-ms.reviewer: alexans
+ms.reviewer: guregini
 ms.topic: reference
-ms.date: 08/06/2026
+ms.date: 08/19/2026
 ---
 # .alter column policy encoding command
 
@@ -44,7 +44,7 @@ The following table contains the possible values for the *EncodingPolicyType* pa
 | `Identifier` | Suitable for columns that have data that represents ID-like information (for example, guids). This policy applies the required index for this column to gain both query performance and reduce size in the storage. |
 | `BigObject` | Suitable for columns of dynamic or string type, which holds large objects. For example, the output of [hll aggregate function](../query/hll-aggregation-function.md). This policy disables the index of this column and overrides `MaxValueSize` property in the encoding Policy to 2 MB. |
 | `BigObject32` | Similar to `BigObject` in terms of target scenarios. Overrides `MaxValueSize` property in the encoding Policy to 32 MB. |
-| `BigObjectIndexed32` | Similar to `BigObject32` in terms of target scenarios. This policy enables the index of large data in this column. |
+| `BigObjectIndexed32` (preview) | Similar to `BigObject32` in terms of target scenarios. This policy enables the index of large data in this column. |
 | `Vector16` | This profile is designed for storing vectors of floating-point numbers in 16 bits precision utilizing the [Bfloat16](https://en.wikipedia.org/wiki/Bfloat16_floating-point_format) instead of the default 64 bits. It is highly recommended for storing ML vector embeddings as it reduces storage requirements by a factor of 4 and accelerates vector processing functions such as [series_dot_product()](../query/series-dot-product-function.md) and [series_cosine_similarity()](../query/series-cosine-similarity-function.md), by orders of magnitude. |
 | `Null` | Sets the current default encoding policy to the column and clears the previous encoding policy profile. |
 
@@ -53,6 +53,9 @@ The following table contains the possible values for the *EncodingPolicyType* pa
 > * The `BigObject`, `BigObject32`, and `BigObjectIndexed32` encoding policies are relevant for columns with [string](../query/scalar-data-types/string.md) or [dynamic](../query/scalar-data-types/dynamic.md) data types.
 > * Setting the `BigObjectIndexed32` policy raises the per-column maximum value size for that string or dynamic column to 32 MB, up from the default 1 MB. Values above the limit are still capped: `string` values are truncated to the limit (`MaxValueSize` property of the default policy is 1 MB), `dynamic` values are replaced with null. 
 > * Regardless of whether this policy is set, the maximum record (row) size remains 64 MB.
+
+ [!INCLUDE [feature-preview-note](../includes/feature-preview-note.md)]
+
 
 ## Example
 

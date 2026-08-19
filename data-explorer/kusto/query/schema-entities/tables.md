@@ -1,9 +1,9 @@
 ---
 title:  Tables
 description:  This article describes Tables.
-ms.reviewer: orspodek
+ms.reviewer: guregini
 ms.topic: reference
-ms.date: 08/06/2026
+ms.date: 08/19/2026
 ---
 # Tables
 
