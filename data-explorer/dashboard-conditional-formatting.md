@@ -3,7 +3,7 @@ title: Apply conditional formatting to Azure Data Explorer dashboard visuals
 description: Learn how to apply conditional formatting to Azure Data Explorer dashboard visuals.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 08/26/2025
+ms.date: 08/19/2026
 ---
 
 # Apply conditional formatting to Azure Data Explorer dashboard visuals
@@ -15,7 +15,7 @@ For each visual, you have the flexibility to define one or more conditional form
 ## Prerequisites
 
 * Editor permissions on a [Azure Data Explorer dashboard](azure-data-explorer-dashboards.md)
-* A table, stat, or multi stat dashboard visual
+* A KPI, multi stat, stat, or table dashboard visual
 
 ## Add a conditional formatting rule
 
@@ -93,6 +93,12 @@ To color your results by value:
 1. Select **Save**. In the following example, the color changes based on the value in the `MetricType` column.
 
     :::image type="content" source="media/dashboard-customize-visuals/value.png" alt-text="Screenshot of results for coloring by value.":::
+
+## Conditional formatting a KPI visual
+
+In the **Visual setup** pane, you can apply conditional formatting to a KPI visual by selecting the **Conditional formatting** toggle. This option lets you define a rule that changes the color of the KPI within the predefined ranges.
+
+:::image type="content" source="media/dashboard-customize-visuals/kpi-conditional-formatting.png" alt-text="Screenshot of KPI visual conditional formatting." lightbox="media/dashboard-customize-visuals/kpi-conditional-formatting.png":::
 
 ## Related content
 
