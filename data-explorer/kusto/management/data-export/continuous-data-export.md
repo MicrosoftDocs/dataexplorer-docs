@@ -3,7 +3,7 @@ title:  Continuous data export
 description:  This article describes Continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/09/2026
+ms.date: 08/25/2026
 ---
 # Continuous data export overview
 
@@ -117,11 +117,81 @@ To create a continuous export job with a query that references a table with [Row
 
 ## Continuous export to delta table
 
-
 > [!IMPORTANT]
 > Delta table partitioning isn't supported in continuous data export.
 >
-> Kusto won't write to existing delta tables if the [delta protocol writer version](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#schema-serialization-format) is higher than 1.
+> Kusto won't write to existing delta tables if the [delta protocol writer version](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#schema-serialization-format) is higher than 1. The destination Delta table must use minimum reader version 1 and minimum writer version 1.
+
+::: moniker range="microsoft-fabric"
+
+Features such as `NOT NULL` constraints can increase the minimum Delta writer version and cause continuous export to fail with the following error:
+
+```text
+Unsupported minimum writer version: 2
+```
+
+In this example scenario, you have a `Customers` table that receives customer records from several departments. You want to continuously export new records for customers associated with the Sales department to a Delta table in a Lakehouse. The continuous export query filters the source table by department name and projects the columns that match the destination table schema.
+
+If you receive this error:
+
+1. Create a new Delta table in a Lakehouse notebook. Omit `NOT NULL` constraints and explicitly set both protocol versions to 1.
+
+    ```sql
+    %%sql
+    CREATE TABLE CustomersExportV1 (
+        CustomerId STRING,
+        Name STRING,
+        Address STRING,
+        City STRING,
+        DepartmentName STRING
+    )
+    USING DELTA
+    TBLPROPERTIES (
+        'delta.minReaderVersion' = '1',
+        'delta.minWriterVersion' = '1'
+    );
+    ```
+
+1. Create or recreate the Eventhouse shortcut so that it targets the new Delta table. Name the shortcut `customers`. The shortcut is exposed in the Eventhouse database as an external table.
+
+    :::image type="content" source="../../media/continuous-export/create-eventhouse-shortcut.png" alt-text="Screenshot of the Eventhouse database explorer with the New shortcut menu selected and existing shortcuts listed." lightbox="../../media/continuous-export/create-eventhouse-shortcut.png":::
+
+1. Create the source table and a continuous export that targets the external table. Then add sample records so that the continuous export processes them:
+
+    ```kusto
+    // Creates the source table.
+    .create table Customers (
+        customerId:string,
+        Name:string,
+        address:string,
+        City:string,
+        departmentName:string
+    )
+
+    // Continuously exports customers associated with the Sales department.
+    .create-or-alter continuous-export CustomersSalesExport
+    over (Customers)
+    to table customers
+    with (
+        intervalBetweenRuns=10m,
+        managedIdentity="system"
+    )
+    <| Customers
+    | where departmentName == "Sales"
+    | project customerId, Name, address, City, departmentName
+
+    // Adds sample customers after the continuous export is created.
+    .ingest inline into table Customers <|
+    C001,Contoso Madrid,Calle de Alcala 10,Madrid,Sales
+    C002,Fabrikam Barcelona,Avinguda Diagonal 20,Barcelona,Sales
+    C003,Northwind London,10 King Street,London,Marketing
+    C004,Adventure Works Paris,25 Rue de Rivoli,Paris,Finance
+    C005,Wide World Berlin,40 Friedrichstrasse,Berlin,Operations
+    ```
+
+Use a new table name if the protocol of an existing Delta table was upgraded. Changing table properties doesn't safely downgrade the Delta protocol of an existing table. For a noncontinuous export example, see [Export to a Delta table in Eventhouse](export-data-to-an-external-table.md#export-to-a-delta-table-in-eventhouse).
+
+::: moniker-end
 
 To define continuous export to a delta table, do the following steps:
 
