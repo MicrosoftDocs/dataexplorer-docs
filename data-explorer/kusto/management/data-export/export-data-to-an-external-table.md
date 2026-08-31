@@ -3,7 +3,7 @@ title:  .export to table
 description:  This article describes Export data to an external table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/01/2024
+ms.date: 08/25/2026
 ---
 # .export to table
 
@@ -89,6 +89,75 @@ In order to export to an external table, you must set up write permissions. For 
 * External table columns are mapped to suitable target format data types, according to [data types mapping](export-data-to-storage.md#data-types-mapping) rules.
 
 * Parquet native export is a more performant, resource light export mechanism. An exported `datetime` column is currently unsupported by Synapse SQL `COPY`.
+
+::: moniker range="microsoft-fabric"
+
+### Export to a Delta table in Eventhouse
+
+The destination Delta table must use minimum reader version 1 and minimum writer version 1. Features such as `NOT NULL` constraints can increase the minimum writer version and cause the export to fail with the following error:
+
+```text
+Unsupported minimum writer version: 2
+```
+
+In this example scenario, you have a `Customers` table that contains customers associated with several departments. You want to export only the customers associated with the Sales department to a Delta table in a Lakehouse. The export query filters the source table by department name and projects the columns that match the destination table schema.
+
+To resolve this error:
+
+1. Create a new Delta table in a Lakehouse notebook. Omit `NOT NULL` constraints and explicitly set both protocol versions to 1.
+
+    ```sql
+    %%sql
+    CREATE TABLE CustomersExportV1 (
+        CustomerId STRING,
+        Name STRING,
+        Address STRING,
+        City STRING,
+        DepartmentName STRING
+    )
+    USING DELTA
+    TBLPROPERTIES (
+        'delta.minReaderVersion' = '1',
+        'delta.minWriterVersion' = '1'
+    );
+    ```
+
+1. Create or recreate the Eventhouse shortcut so that it targets the new Delta table. Name the shortcut `customers`. The shortcut is exposed in the Eventhouse database as an external table.
+
+    :::image type="content" source="../../media/continuous-export/create-eventhouse-shortcut.png" alt-text="Screenshot of the Eventhouse database explorer with the New shortcut menu selected and existing shortcuts listed." lightbox="../../media/continuous-export/create-eventhouse-shortcut.png":::
+
+1. Create the source table, add sample records, and export the customers associated with the Sales department to the external table:
+
+    ```kusto
+    // Creates the source table.
+    .create table Customers (
+        customerId:string,
+        Name:string,
+        address:string,
+        City:string,
+        departmentName:string
+    )
+
+    // Adds sample customers associated with several departments.
+    .ingest inline into table Customers <|
+    C001,Contoso Madrid,Calle de Alcala 10,Madrid,Sales
+    C002,Fabrikam Barcelona,Avinguda Diagonal 20,Barcelona,Sales
+    C003,Northwind London,10 King Street,London,Marketing
+    C004,Adventure Works Paris,25 Rue de Rivoli,Paris,Finance
+    C005,Wide World Berlin,40 Friedrichstrasse,Berlin,Operations
+
+    // Exports customers associated with the Sales department.
+    .export to table customers
+    <| Customers
+    | where departmentName == "Sales"
+    | project customerId, Name, address, City, departmentName
+    ```
+
+Use a new table name if the protocol of an existing Delta table was upgraded. Changing table properties doesn't safely downgrade the Delta protocol of an existing table.
+
+This protocol requirement also applies to [continuous export](continuous-data-export.md#continuous-export-to-delta-table).
+
+::: moniker-end
 
 ### Number of files
 
