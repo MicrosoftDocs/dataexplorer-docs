@@ -34,20 +34,38 @@ The following limits are configurable:
 
 ## Example
 
-This policy configuration sets query consistency to weak and the maximum age for cached results to 5 minutes.
+This policy configuration sets query consistency to weak.
 
-```json
-"QueryConsistencyPolicy": {
-  "QueryConsistency": {
-    "IsRelaxable": true,
-    "Value": "Weak"
-  },
-  "CachedResultsMaxAge": {
-    "IsRelaxable": true,
-    "Value": "00:05:00"
-  }
+````kusto
+.alter-merge workload_group ['<my workload group>'] ```
+{
+  "QueryConsistencyPolicy": 
+  {
+    "QueryConsistency": {
+      "IsRelaxable": true,
+      "Value": "Weak"
+    }
+  } 
 }
 ```
+````
+
+This policy configuration sets the maximum age for cached results to 5 minutes.
+
+````kusto
+.alter-merge workload_group ['<my workload group>'] ```
+{
+  "QueryConsistencyPolicy": 
+  {
+    "CachedResultsMaxAge": {
+      "IsRelaxable": true,
+      "Value": "00:05:00"
+    }
+  } 
+}
+
+```
+````
 
 ::: moniker range="azure-data-explorer"
 ## Monitoring
