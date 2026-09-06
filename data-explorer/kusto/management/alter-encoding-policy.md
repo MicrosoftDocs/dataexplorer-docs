@@ -12,8 +12,8 @@ ms.date: 08/11/2024
 Alters the encoding policy. For an overview of the encoding policy, see [Encoding policy](encoding-policy.md).
 
 > [!NOTE]
-> Encoding policy changes do not affect data that has already been ingested.
-> Only new ingestion operations will be performed according to the new policy.
+> Encoding policy changes apply to new ingestion operations.
+> Data that has already been ingestion might sometimes undergo re-encoding, but this is not guaranteed.
 
 ## Permissions
 
