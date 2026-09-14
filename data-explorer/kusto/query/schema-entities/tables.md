@@ -1,9 +1,9 @@
 ---
 title:  Tables
 description:  This article describes Tables.
-ms.reviewer: orspodek
+ms.reviewer: guregini
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 08/19/2026
 ---
 # Tables
 
@@ -15,6 +15,7 @@ Tables occupy the same namespace as [stored functions](stored-functions.md). If 
 
 > [!NOTE]
 >
+> * The maximum record (row) size is 64 MB. 
 > * The maximum limit of tables per database is 10,000.
 > * Table names are case-sensitive. For more information, see [Identifier naming rules](entity-names.md#identifier-naming-rules).
 
