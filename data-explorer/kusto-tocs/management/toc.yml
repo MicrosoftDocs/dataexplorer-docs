@@ -602,6 +602,9 @@ items:
     - name: Query acceleration policy
       href: /kusto/management/query-acceleration-policy?view=azure-data-explorer&preserve-view=true
       displayName: external table, delta table
+    - name: Update policy over external delta tables
+      href: /kusto/management/update-policy?view=azure-data-explorer&preserve-view=true#update-policy-over-external-delta-tables-preview
+      displayName: external table, delta table
     - name: .alter query acceleration policy command
       href: /kusto/management/alter-query-acceleration-policy-command?view=azure-data-explorer&preserve-view=true
       displayName: external table, delta table
