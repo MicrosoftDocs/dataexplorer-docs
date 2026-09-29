@@ -3,7 +3,7 @@ title: Ingestion error codes - Azure Data Explorer
 description: This article lists ingestion error codes in Azure Data Explorer.
 ms.reviewer: vladikbr
 ms.topic: reference
-ms.date: 12/21/2023
+ms.date: 09/29/2026
 ---
 # Ingestion error codes
 
@@ -107,6 +107,9 @@ The **Ingestion result** metric provides information about the **Category** of i
 |General_TransientSchemaMismatch                   |Schema of target table when starting the ingestion doesn't match the schema when committing the ingestion.         |Transient           |
 |Timeout                                            |The operation has been aborted because of timeout.     |Transient           |
 |OutOfMemory                                       |Ingestion operation ran out of memory.                  |Transient           |
+|ServiceUnavailable_StreamingIngestionDatabaseUnderMaintenance|Streaming ingestion is temporarily unavailable because the database streaming ingestion policy is under maintenance.|Transient|
+|ServiceUnavailable_StreamingIngestionMaintenanceModeWriteProtected|Streaming ingestion is temporarily unavailable because the database is write-protected for maintenance.|Transient|
+|ServiceUnavailable_StreamingIngestionMetadataUnavailable|Streaming ingestion is temporarily unavailable because required service metadata couldn't be retrieved.|Transient|
 |Schema_PermanentUpdateFailure                     |Failed to update schema permanently.                    |Permanent           |
 
 ## Category: UpdatePolicyFailure
