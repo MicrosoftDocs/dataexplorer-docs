@@ -232,6 +232,12 @@ items:
       href: /kusto/management/graph/graph-persistent-overview?view=azure-data-explorer&preserve-view=true
     - name: Graph models overview
       href: /kusto/management/graph/graph-model-overview?view=azure-data-explorer&preserve-view=true
+    - name: Graph model policies
+      href: /kusto/management/graph/graph-model-policies?view=azure-data-explorer&preserve-view=true
+    - name: snapshot_indexing graph model policy
+      href: /kusto/management/graph/graph-model-policy-snapshot-indexing?view=azure-data-explorer&preserve-view=true
+    - name: graph_query graph model policy
+      href: /kusto/management/graph/graph-model-policy-graph-query?view=azure-data-explorer&preserve-view=true
     - name: .create-or-alter graph_model
       href: /kusto/management/graph/graph-model-create-or-alter?view=azure-data-explorer&preserve-view=true
     - name: .drop graph_model

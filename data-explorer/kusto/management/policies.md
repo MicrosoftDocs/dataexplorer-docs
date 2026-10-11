@@ -20,6 +20,7 @@ The following table provides an overview of the policies for managing your envir
 |[Capacity policy](capacity-policy.md)|Controls the compute resources of data management operations.|
 |[Encoding policy](encoding-policy.md)|Defines how data is encoded, compressed, and indexed.|
 |[Extent tags retention policy](extent-tags-retention-policy.md)|Controls the mechanism that automatically removes extent tags from tables.|
+|[Graph model policies](graph/graph-model-policies.md)|Control retention, caching, snapshot indexing, and default graph query behavior for graph models.|
 |[Ingestion batching policy](batching-policy.md)|Groups multiple data ingestion requests into batches for more efficient processing.|
 |[Ingestion time policy](ingestion-time-policy.md)|Adds a hidden datetime column to the table that records the time of ingestion.|
 |[ManagedIdentity policy](managed-identity-policy.md)|Controls which managed identities can be used for what purposes.|
@@ -50,6 +51,7 @@ The following table provides an overview of the policies for managing your envir
 |[Capacity policy](capacity-policy.md)|Controls the compute resources of data management operations.|
 |[Encoding policy](encoding-policy.md)|Defines how data is encoded, compressed, and indexed.|
 |[Extent tags retention policy](extent-tags-retention-policy.md)|Controls the mechanism that automatically removes extent tags from tables.|
+|[Graph model policies](graph/graph-model-policies.md)|Control retention, caching, snapshot indexing, and default graph query behavior for graph models.|
 |[Ingestion batching policy](batching-policy.md)|Groups multiple data ingestion requests into batches for more efficient processing.|
 |[Ingestion time policy](ingestion-time-policy.md)|Adds a hidden datetime column to the table that records the time of ingestion.|
 |[ManagedIdentity policy](managed-identity-policy.md)|Controls which managed identities can be used for what purposes.|
