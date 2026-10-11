@@ -11,13 +11,13 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 The `dax_request` plugin runs a Data Analysis Expressions (DAX) query against a Power BI semantic model and returns the results as a table. Process the returned table with standard Kusto Query Language (KQL) operators. Invoke the plugin with the [evaluate operator](evaluate-operator.md).
 
-The plugin uses the Power BI [Execute DAX Queries API](https://learn.microsoft.com/power-bi/developer/execute-dax-queries-arrow/overview), which returns results in Apache Arrow format. The plugin preserves supported column types when it converts the response to a KQL table.
+The plugin uses the Power BI [Execute DAX Queries API](/power-bi/developer/execute-dax-queries-arrow/overview), which returns results in Apache Arrow format. The plugin preserves supported column types when it converts the response to a KQL table.
 
 ## Prerequisites
 
 * The semantic model must be in a workspace assigned to a Fabric or Power BI Premium capacity.
 * The **Dataset Execute Queries REST API**, **Allow XMLA endpoints and Analyze in Excel with on-premises semantic models** tenant settings must be enabled.
-* You must have [Build permission](https://learn.microsoft.com/power-bi/connect-data/service-datasets-permissions) on the semantic model.
+* You must have [Build permission](/power-bi/connect-data/service-datasets-permissions) on the semantic model.
 * The cluster callout policy must allow `dax` callouts to `api.powerbi.com`. To change this policy, you need `AllDatabasesAdmin` or `Ops` permissions.
 
 ## Syntax
